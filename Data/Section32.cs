@@ -1,0 +1,150 @@
+
+            using System;
+            using System.Collections.Generic;
+            using System.Linq;
+            using System.Text;
+            using System.Threading.Tasks;
+
+namespace EncompassREST.Data
+    {
+        public class Section32
+{
+public decimal? treasurySecurityYield { get; set; }
+public decimal? maximumPercentageOfLoan { get; set; }
+public decimal? maximumPointsAndFees { get; set; }
+public bool? processingPortionOfFeeIndicator { get; set; }
+public bool? processingFeeToBeFinancedIndicator { get; set; }
+public bool? wireTransferPortionOfFeeIndicator { get; set; }
+public bool? wireTransferFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1110PortionOfFeeIndicator { get; set; }
+public bool? userDefined1110FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1205PortionOfFeeIndicator { get; set; }
+public bool? userDefined1205FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1206PortionOfFeeIndicator { get; set; }
+public bool? userDefined1206FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1111PortionOfFeeIndicator { get; set; }
+public bool? userDefined1111FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1112PortionOfFeeIndicator { get; set; }
+public bool? userDefined1112FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1113PortionOfFeeIndicator { get; set; }
+public bool? userDefined1113FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1114PortionOfFeeIndicator { get; set; }
+public bool? userDefined1114FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1307PortionOfFeeIndicator { get; set; }
+public bool? userDefined1307FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1308PortionOfFeeIndicator { get; set; }
+public bool? userDefined1308FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1309PortionOfFeeIndicator { get; set; }
+public bool? userDefined1309FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined821PortionOfFeeIndicator { get; set; }
+public bool? userDefined821FeeToBeFinancedIndicator { get; set; }
+public bool? mortgageInspectionPortionOfFeeIndicator { get; set; }
+public bool? mortgageInspectionFeeToBeFinancedIndicator { get; set; }
+public bool? assumptionPortionOfFeeIndicator { get; set; }
+public bool? assumptionFeeToBeFinancedIndicator { get; set; }
+public bool? attorneyPortionOfFeeIndicator { get; set; }
+public bool? attorneyFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined822PortionOfFeeIndicator { get; set; }
+public bool? userDefined822FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined823PortionOfFeeIndicator { get; set; }
+public bool? userDefined823FeeToBeFinancedIndicator { get; set; }
+public bool? titleSearchPortionOfFeeIndicator { get; set; }
+public bool? titleSearchFeeToBeFinancedIndicator { get; set; }
+public bool? titleExaminationPortionOfFeeIndicator { get; set; }
+public bool? titleExaminationFeeToBeFinancedIndicator { get; set; }
+public bool? titleBinderPortionOfFeeIndicator { get; set; }
+public bool? titleBinderFeeToBeFinancedIndicator { get; set; }
+public bool? mortgageInsurancePremiumPortionOfFeeIndicator { get; set; }
+public bool? mortgageInsurancePremiumFeeToBeFinancedIndicator { get; set; }
+public bool? mortgageInsurancePortionOfFeeIndicator { get; set; }
+public bool? mortgageInsuranceFeeToBeFinancedIndicator { get; set; }
+public decimal? userDefined1109BorPaidAmount { get; set; }
+public decimal? userDefined1110BorPaidAmount { get; set; }
+public decimal? rateSetIndex { get; set; }
+public decimal? hoepaAPR { get; set; }
+public decimal? prepayPenaltyPercentofAmtPrepaid { get; set; }
+public string exceed2PercentPrepayPenalty { get; set; }
+public string penaltyChargeMoreThan36Months { get; set; }
+public bool? mortgageBrokerPortionOfFeeIndicator { get; set; }
+public bool? userDefined813PortionOfFeeIndicator { get; set; }
+public bool? userDefined814PortionOfFeeIndicator { get; set; }
+public bool? userDefined815PortionOfFeeIndicator { get; set; }
+public string resultOfSecurityYieldTest { get; set; }
+public bool? userDefined816PortionOfFeeIndicator { get; set; }
+public bool? userDefined817PortionOfFeeIndicator { get; set; }
+public bool? userDefined818PortionOfFeeIndicator { get; set; }
+public bool? userDefined819PortionOfFeeIndicator { get; set; }
+public bool? userDefined820PortionOfFeeIndicator { get; set; }
+public bool? appraisalPortionOfFeeIndicator { get; set; }
+public bool? creditReportPortionOfFeeIndicator { get; set; }
+public bool? closingPortionOfFeeIndicator { get; set; }
+public bool? loanOriginationPortionOfFeeIndicator { get; set; }
+public bool? docPrepPortionOfFeeIndicator { get; set; }
+public bool? notaryPortionOfFeeIndicator { get; set; }
+public bool? titleInsurancePortionOfFeeIndicator { get; set; }
+public bool? userDefined1109PortionOfFeeIndicator { get; set; }
+public bool? recordingPortionOfFeeIndicator { get; set; }
+public bool? cityCountyTaxStampsPortionOfFeeIndicator { get; set; }
+public bool? stateTaxStampsPortionOfFeeIndicator { get; set; }
+public bool? userDefined1204PortionOfFeeIndicator { get; set; }
+public bool? loanDiscountPortionOfFeeIndicator { get; set; }
+public bool? surveyPortionOfFeeIndicator { get; set; }
+public bool? pestInspectionPortionOfFeeIndicator { get; set; }
+public bool? userDefined1303PortionOfFeeIndicator { get; set; }
+public bool? userDefined1304PortionOfFeeIndicator { get; set; }
+public bool? userDefined1305PortionOfFeeIndicator { get; set; }
+public bool? userDefined1306PortionOfFeeIndicator { get; set; }
+public decimal? totalPointsAndFees { get; set; }
+public string resultOfPointAndFees { get; set; }
+public decimal? hoepaFee { get; set; }
+public string loanQualifyAsHighCostMortgage { get; set; }
+public bool? loanOriginationFeeToBeFinancedIndicator { get; set; }
+public bool? loanDiscountFeeToBeFinancedIndicator { get; set; }
+public bool? lendersInspectionFeeToBeFinancedIndicator { get; set; }
+public bool? taxServiceFeeToBeFinancedIndicator { get; set; }
+public bool? underwritingFeeToBeFinancedIndicator { get; set; }
+public bool? mortgageBrokerFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined813FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined814FeeToBeFinancedIndicator { get; set; }
+public bool? lendersInspectionPortionOfFeeIndicator { get; set; }
+public bool? userDefined815FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined816FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined817FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined818FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined819FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined820FeeToBeFinancedIndicator { get; set; }
+public bool? appraisalFeeToBeFinancedIndicator { get; set; }
+public bool? creditReportFeeToBeFinancedIndicator { get; set; }
+public bool? closingFeeToBeFinancedIndicator { get; set; }
+public bool? docPrepFeeToBeFinancedIndicator { get; set; }
+public bool? taxServicePortionOfFeeIndicator { get; set; }
+public bool? notaryFeeToBeFinancedIndicator { get; set; }
+public bool? titleInsuranceFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1109FeeToBeFinancedIndicator { get; set; }
+public bool? recordingFeeToBeFinancedIndicator { get; set; }
+public bool? cityCountyTaxStampsFeeToBeFinancedIndicator { get; set; }
+public bool? stateTaxStampsFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1204FeeToBeFinancedIndicator { get; set; }
+public bool? surveyFeeToBeFinancedIndicator { get; set; }
+public bool? underwritingPortionOfFeeIndicator { get; set; }
+public bool? pestInspectionFeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1303FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1304FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1305FeeToBeFinancedIndicator { get; set; }
+public bool? userDefined1306FeeToBeFinancedIndicator { get; set; }
+public decimal? aprExceedsTsyForFirstMortgage { get; set; }
+public decimal? aprExceedsTsyForSubordinateMortgage { get; set; }
+public bool? section32Indicator { get; set; }
+public bool? otherHighCostIndicator { get; set; }
+public string jurisdications { get; set; }
+public decimal? section35AveragePrimeRate { get; set; }
+public string section35ResultOfSecurityYieldTest { get; set; }
+public string section35PriorAcquisitionSource { get; set; }
+public DateTime? section35PriorAcquisitionDate { get; set; }
+public decimal? section35PriorAcquisitionPrice { get; set; }
+public DateTime? section35SalesContractDate { get; set; }
+public string section35IsSecondAppraisalRequired { get; set; }
+public string id { get; set; }
+
+    }
+}
