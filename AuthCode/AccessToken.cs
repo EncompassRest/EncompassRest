@@ -138,9 +138,9 @@ namespace EncompassREST
             message.Content = rp.buildPostContent();
             message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
-            //var response  =  await AuthClient.SendAsync(message);
+            var response  =  await AuthClient.SendAsync(message);
 
-            var response = await AuthClient.PostAsync("token", rp.buildPostContent());
+            //var response = await AuthClient.PostAsync("token", rp.buildPostContent());
 
 
             if (response.IsSuccessStatusCode)
