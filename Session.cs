@@ -67,6 +67,11 @@ namespace EncompassREST
             get { return reports; }
         }
 
+        public Pipeline Pipeline
+        {
+            get { return pipeline; }
+        }
+
         public HttpClient RESTClient
         {
             get
@@ -113,40 +118,7 @@ namespace EncompassREST
             AccessToken = t;
 
         }
-        //[Obsolete()]
-        //public void StartSessionold()
-        //{
-        //    LoginPage lp = new EncompassREST.LoginPage(_ClientID);
-        //    if (lp.processLoginPage())
-        //    {
-        //        AuthenticationCode ac = new AuthenticationCode(lp, _ClientSecret, _InstanceID, _UserID, _Password);
-        //        //string code;
-        //        if (ac.retrieveAuthCode())
-        //        {
-        //            AccessToken at = new AccessToken(_ClientID, _ClientSecret,lp.RedirectURI,this);
-        //            if (at.retrieveAccessToken(ac.Code))
-        //            {
-        //                AccessToken = at;
-        //            }
-        //            else
-        //            {
-        //                throw new Exception("No AccessToken - " + at.ProcessingMessage);
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            throw new Exception("No Authorization Code - " + ac.ProcessingMessage);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Login page error - " + lp.ProcessingMessage);
-        //    }
-
-            
-        //}
-
+        
 
         internal void ClearAccessToken()
         {

@@ -8,6 +8,13 @@ namespace EncompassREST.PipelineModels
 {
     public class Filter
     {
-        public IFilter filter { get; set; }
+        public Filter()
+        {
+            terms = new List<PipelineModels.IFilter>();
+        }
+
+        public List<IFilter> terms { get; set; }
+
+
     }
 }

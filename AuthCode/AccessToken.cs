@@ -46,7 +46,7 @@ namespace EncompassREST
 
             _basicAuthValue = "Basic " + System.Convert.ToBase64String(Encoding.UTF8.GetBytes(clientID + ":" + clientSecret));
             AuthClient.DefaultRequestHeaders.Add("Authorization", _basicAuthValue);
-
+            
 
             _clientID = clientID;
             _clientSecret = clientSecret;
@@ -138,7 +138,11 @@ namespace EncompassREST
             message.Content = rp.buildPostContent();
             message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
-            var response = await AuthClient.SendAsync(message);
+            var response  =  await AuthClient.SendAsync(message);
+
+            //var response = await AuthClient.PostAsync("token", rp.buildPostContent());
+
+
             if (response.IsSuccessStatusCode)
             {
                 string tokenData = await response.Content.ReadAsStringAsync();
