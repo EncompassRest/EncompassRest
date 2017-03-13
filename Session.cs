@@ -67,6 +67,11 @@ namespace EncompassREST
             get { return reports; }
         }
 
+        public Pipeline Pipeline
+        {
+            get { return pipeline; }
+        }
+
         public HttpClient RESTClient
         {
             get
