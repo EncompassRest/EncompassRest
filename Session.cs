@@ -30,6 +30,10 @@ namespace EncompassREST
         private Reports reports;
         private Pipeline pipeline;
 
+
+        private DateTime _TokenExpires;
+        private DateTime _TokenLastCall;
+
         #region properties
         public AccessToken AccessToken
         {
@@ -37,7 +41,8 @@ namespace EncompassREST
             private set
             {
                 _AccessToken = value;
-                
+                _TokenLastCall = DateTime.Now;
+
                 IEnumerable<string> vals;
                 if (_client.DefaultRequestHeaders.TryGetValues("Authorization",out vals))
                     _client.DefaultRequestHeaders.Remove("Authorization");
@@ -78,6 +83,19 @@ namespace EncompassREST
             {
                 if (_AccessToken == null)
                     throw new SessionNotOpenException();
+
+                var now = DateTime.Now;
+
+                if ((now - _TokenLastCall).TotalMinutes > 12 ||
+                    (_TokenExpires - now).TotalMinutes <10)
+                {
+                    ClearAccessToken();
+                    StartSession();
+                }
+
+
+
+                _TokenLastCall = now;
                 return _client;
             }
         }
@@ -116,6 +134,8 @@ namespace EncompassREST
 
             t.getToken(_UserID, _Password).Wait();
             AccessToken = t;
+            var validate =  t.getTokenValidation().Result;
+            _TokenExpires = validate.GetExpirationDate();
 
         }
         

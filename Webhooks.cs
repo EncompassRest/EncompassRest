@@ -61,7 +61,7 @@ namespace EncompassREST
             var response = await _Session.RESTClient.PostAsync(API_PATH, new StringContent(jsonData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
-                return response.Headers.Location.Segments.Last();
+                return response.Headers.Location.ToString().Split("/".ToCharArray()).Last();
             }
             else
             {
