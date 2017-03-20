@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -162,7 +163,7 @@ namespace EncompassREST.Data
             if (part == "Application")
                 part = "applications";
 
-            if (obj.GetType().GetInterface("IList") != null)
+            if (obj is IList)
             {
                 var items = (IList)obj;
                 //get Item from list.
@@ -231,6 +232,7 @@ namespace EncompassREST.Data
 
             string part;
             string remaining;
+            string query = "";
             int index = Index;
 
             if (name.Contains("."))
@@ -257,12 +259,18 @@ namespace EncompassREST.Data
             if (part.Contains("["))
             {
                 var indextmp = Regex.Match(part, @"\[([^]]*)\]").Groups[1].Value;
-                int.TryParse(indextmp, out index);
+                if (!int.TryParse(indextmp, out index))
+                {
+                    return;
+                }
+
                 part = part.Substring(0, part.IndexOf("["));
             }
             if (part.Contains("{"))
             {
                 //use dynamic linq here to parse inline queries.
+                query = Regex.Match(part, @"\{([^]]*)\}").Groups[1].Value;
+                part = part.Substring(0, part.IndexOf("{"));
             }
 
 
@@ -282,6 +290,44 @@ namespace EncompassREST.Data
                     }
                     catch (IndexOutOfRangeException)
                     {
+                        return;
+                    }
+                }
+                else if (query != "")
+                {
+
+                    var results = items.AsQueryable().Where(query);
+                    if (results.Count() == 0)
+                    {
+                        return;
+                    }
+                    else if (results.Count() == 1)
+                    {
+                        obj =items[0];
+                    }
+                    else
+                    {
+                        IEnumerable<object> subitems = results as IEnumerable<object>;
+                        ExpandoObject localJO = new ExpandoObject();
+                        var ljo = localJO as IDictionary<string, object>;
+                        //List<object> results = new List<object>();
+                        int i = 0;
+                        foreach (object item in subitems)
+                        {
+                            ExpandoObject leo = new ExpandoObject();
+                            Type t = item.GetType();
+                            PropertyInfo inf = t.GetProperty(part);
+                            obj = inf.GetValue(item, null);
+
+                            obj.GetPropValueRecursive(leo, remaining, "", index);
+                            ljo.Add(i.ToString(), leo);
+                            i++;
+                        }
+                        var REGnam = new Regex("\\[.*?\\]");
+                        var nam = REGnam.Replace(FullName, string.Empty);
+
+                        var expandoDict = jo as IDictionary<string, object>;
+                        expandoDict.Add(nam, localJO);
                         return;
                     }
                 }
