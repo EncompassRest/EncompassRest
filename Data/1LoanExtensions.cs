@@ -237,7 +237,22 @@ namespace EncompassREST.Data
 
             if (name.Contains("."))
             {
-                part = name.Substring(0, name.IndexOf("."));
+                //ignore {} and []
+                int astart = name.IndexOf("{");
+                int aend = name.IndexOf("}");
+                int bstart = name.IndexOf("[");
+                int bend = name.IndexOf("]");
+
+                int dot = name.IndexOf(".");
+
+                if (astart<dot && dot<aend)
+                    dot = name.Substring(aend).IndexOf(".") + aend+2;
+
+                if (bstart < dot && dot < bend)
+                    dot = name.Substring(bend).IndexOf(".") + bend+2;
+
+
+                part = name.Substring(0, dot);
                 if (FullName == "")
                 {
                     FullName = part;
@@ -246,7 +261,10 @@ namespace EncompassREST.Data
                 {
                     FullName = FullName + "." + part;
                 }
-                remaining = name.Substring(part.Length + 1);
+                if (name.Length == part.Length)
+                    remaining = "";
+                else
+                    remaining = name.Substring(part.Length + 1);
             }
             else
             {
@@ -278,7 +296,7 @@ namespace EncompassREST.Data
                 part = "applications";
 
             //obj.GetType().GetInterface("IList") != null
-            if (obj is IList && remaining != "")
+            if (obj is IList && (remaining != "" || query != "" || index!= -1))
             {
                 var items = (IList)obj;
                 //get Item from list.
@@ -303,7 +321,9 @@ namespace EncompassREST.Data
                     }
                     else if (results.Count() == 1)
                     {
-                        obj =items[0];
+                        IEnumerator enumer = results.GetEnumerator();
+                        enumer.MoveNext();
+                        obj = enumer.Current; 
                     }
                     else
                     {
