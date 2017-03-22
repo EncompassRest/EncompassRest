@@ -123,14 +123,18 @@ namespace EncompassREST.Data
         #endregion
 
         #region recursive
-
-        public static string GetLoanValueRecursive(this Loan tLoan, string FieldPath, int ApplicationID = 0)
+        /// <summary>
+        /// Returns an object from the specific path
+        /// if there is a list entity and there is no specified query or index then it will default to the first item found
+        /// </summary>
+        /// <param name="tLoan"></param>
+        /// <param name="FieldPath"></param>
+        /// <param name="ApplicationID"></param>
+        /// <returns></returns>
+        public static object GetLoanValueRecursive(this Loan tLoan, string FieldPath, int ApplicationID = 0)
         {
             object val = GetPropValueRecursive(tLoan, FieldPath, ApplicationID);
-            if (val != null)
-                return val.ToString();
-            else
-                return "";
+            return val;
         }
 
         private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1)
@@ -141,11 +145,38 @@ namespace EncompassREST.Data
             string part;
             string remaining;
             int index = Index;
+            string query = "";
 
             if (name.Contains("."))
             {
-                part = name.Substring(0, name.IndexOf("."));
-                remaining = name.Substring(part.Length + 1);
+                //ignore {} and []
+                int astart = name.IndexOf("{");
+                int aend = name.IndexOf("}");
+                int bstart = name.IndexOf("[");
+                int bend = name.IndexOf("]");
+
+                int dot = name.IndexOf(".");
+
+                if (astart < dot && dot < aend)
+                    dot = name.Substring(aend).IndexOf(".") + aend + 2;
+
+                if (bstart < dot && dot < bend)
+                    dot = name.Substring(bend).IndexOf(".") + bend + 2;
+
+
+                part = name.Substring(0, dot);
+                if (name == "")
+                {
+                    name = part;
+                }
+                else
+                {
+                    name = name + "." + part;
+                }
+                if (name.Length == part.Length)
+                    remaining = "";
+                else
+                    remaining = name.Substring(part.Length + 1);
             }
             else
             {
@@ -157,9 +188,20 @@ namespace EncompassREST.Data
             if (part.Contains("["))
             {
                 var indextmp = Regex.Match(part, @"\[([^]]*)\]").Groups[1].Value;
-                int.TryParse(indextmp, out index);
+                if (!int.TryParse(indextmp, out index))
+                {
+                    return null;
+                }
+
                 part = part.Substring(0, part.IndexOf("["));
             }
+            if (part.Contains("{"))
+            {
+                //use dynamic linq here to parse inline queries.
+                query = Regex.Match(part, @"\{([^]]*)\}").Groups[1].Value;
+                part = part.Substring(0, part.IndexOf("{"));
+            }
+
             if (part == "Application")
                 part = "applications";
 
@@ -178,17 +220,24 @@ namespace EncompassREST.Data
                         return null;
                     }
                 }
+                else if (query != "")
+                {
+
+                    var results = items.AsQueryable().Where(query);
+                    if (results.Count() == 0)
+                    {
+                        return null;
+                   }
+                    else 
+                    {
+                        IEnumerator enumer = results.GetEnumerator();
+                        enumer.MoveNext();
+                        obj = enumer.Current;
+                    }
+                }
                 else
                 {
-                    List<object> results = new List<object>();
-                    foreach (object item in items)
-                    {
-                        Type t = item.GetType();
-                        PropertyInfo inf = t.GetProperty(part);
-                        obj = inf.GetValue(item, null);
-                        results.Add(obj.GetPropValueRecursive(remaining, index));
-                    }
-                    return string.Join(";", results.Where(x => x != null));
+                    obj = items[0];
                 }
             }
 
