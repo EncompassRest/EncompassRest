@@ -93,12 +93,12 @@ namespace EncompassREST.Reporting
             List<string> data = new List<string>();
             foreach (var kp in _Fields)
             {
-                data.Add(GetFieldData(loan, kp.Value));
+                data.Add(GetFieldData(loan, kp.Value).ToString());
             }
             return string.Join(",", data);
         }
         [Obsolete()]
-        private string GetFieldData(Loan loan, string Field)
+        private object GetFieldData(Loan loan, string Field)
         {
             //The magic happens here
             return loan.GetLoanValueRecursive(Field);

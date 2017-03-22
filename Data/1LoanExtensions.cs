@@ -165,14 +165,14 @@ namespace EncompassREST.Data
 
 
                 part = name.Substring(0, dot);
-                if (name == "")
-                {
-                    name = part;
-                }
-                else
-                {
-                    name = name + "." + part;
-                }
+                //if (name == "")
+                //{
+                //    name = part;
+                //}
+                //else
+                //{
+                //    name = name + "." + part;
+                //}
                 if (name.Length == part.Length)
                     remaining = "";
                 else
