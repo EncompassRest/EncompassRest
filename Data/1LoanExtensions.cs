@@ -131,9 +131,9 @@ namespace EncompassREST.Data
         /// <param name="FieldPath"></param>
         /// <param name="ApplicationID"></param>
         /// <returns></returns>
-        public static object GetLoanValueRecursive(this Loan tLoan, string FieldPath, int ApplicationID = 0)
+        public static object GetLoanValueRecursive(this Loan tLoan, string FieldPath, int Index = -1)
         {
-            object val = GetPropValueRecursive(tLoan, FieldPath, ApplicationID);
+            object val = GetPropValueRecursive(tLoan, FieldPath, Index);
             return val;
         }
 
@@ -200,6 +200,8 @@ namespace EncompassREST.Data
                 //use dynamic linq here to parse inline queries.
                 query = Regex.Match(part, @"\{([^]]*)\}").Groups[1].Value;
                 part = part.Substring(0, part.IndexOf("{"));
+                if (index >= 0)
+                    index = -1;
             }
 
             if (part == "Application")
@@ -214,6 +216,7 @@ namespace EncompassREST.Data
                     try
                     {
                         obj = items[index];
+                        index = -1;
                     }
                     catch (IndexOutOfRangeException)
                     {

@@ -1,4 +1,5 @@
-﻿using EncompassREST.PipelineModels;
+﻿using EncompassREST.HelperClasses;
+using EncompassREST.PipelineModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -24,8 +25,8 @@ namespace EncompassREST
             _session = Session;
         }
 
-
-        public async Task<string> postPipelineQueryAsync(Filter filter,List<SortOrderItem> sortItem,List<string> fields)
+        
+        public async Task<string> postPipelineQueryAsync(Filter filter,List<SortOrderItem> sortItem,List<string> fields, int limit = 0)
         {
             var obj = new
             {
@@ -33,12 +34,21 @@ namespace EncompassREST
                 sortOrder = sortItem,
                 fields = fields
             };
+            string paramList = "";
+            if (limit > 0)
+            {
+                RequestParameters rp = new HelperClasses.RequestParameters();
+                rp.Add("limit", limit.ToString());
+                paramList = rp.ToString();
+            }
 
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("{0}/loanPipeline",API_PATH));
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("{0}/loanPipeline" + paramList,API_PATH));
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
             settings.NullValueHandling = NullValueHandling.Ignore;
             message.Content = new StringContent(JsonConvert.SerializeObject(obj,settings), Encoding.UTF8, "application/json");
+            
+
 
             var response = await _session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
