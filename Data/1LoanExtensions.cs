@@ -137,7 +137,7 @@ namespace EncompassREST.Data
             return val;
         }
 
-        private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1)
+        private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1, string Query=null)
         {
             if (name.ToLower().StartsWith("loan."))
                 name = name.Substring(5);
@@ -145,7 +145,7 @@ namespace EncompassREST.Data
             string part;
             string remaining;
             int index = Index;
-            string query = "";
+            string query = Query;
 
             if (name.Contains("."))
             {
@@ -158,10 +158,10 @@ namespace EncompassREST.Data
                 int dot = name.IndexOf(".");
 
                 if (astart < dot && dot < aend)
-                    dot = name.Substring(aend).IndexOf(".") + aend + 2;
+                    dot = name.Substring(aend).IndexOf(".") + aend;
 
                 if (bstart < dot && dot < bend)
-                    dot = name.Substring(bend).IndexOf(".") + bend + 2;
+                    dot = name.Substring(bend).IndexOf(".") + bend;
 
 
                 part = name.Substring(0, dot);
@@ -222,16 +222,21 @@ namespace EncompassREST.Data
                     {
                         return null;
                     }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        return null;
+                    }
                 }
-                else if (query != "")
+                else if (query != null && query != "")
                 {
 
                     var results = items.AsQueryable().Where(query);
+                    query = null;
                     if (results.Count() == 0)
                     {
                         return null;
-                   }
-                    else 
+                    }
+                    else
                     {
                         IEnumerator enumer = results.GetEnumerator();
                         enumer.MoveNext();
@@ -249,7 +254,7 @@ namespace EncompassREST.Data
             obj = info.GetValue(obj, null);
             if (remaining != "")
             {
-                return obj.GetPropValueRecursive(remaining, index);
+                return obj.GetPropValueRecursive(remaining, index,query);
             }
             else
             {
