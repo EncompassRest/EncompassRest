@@ -58,6 +58,19 @@ namespace EncompassREST.Exceptions
             get { return _response.Content.ReadAsStringAsync().Result; }
         }
 
+        public string correlationID
+        {
+            get
+            {
+                var corr = _response.Headers.Where(x => x.Key == "X-Correlation-ID").Select(x => x.Value).FirstOrDefault();
+                if (corr != null)
+                    return corr.FirstOrDefault();
+                else
+                    return "NA";
+            }
+        }
+
+
         public RESTException(string message, HttpResponseMessage Response) : base(BaseMessageBuilder(message, Response))
         {
             _response = Response;

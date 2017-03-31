@@ -89,7 +89,7 @@ namespace EncompassREST
             RequestParameters rp = new RequestParameters();
             rp.Add("token", _token.AccessToken);
 
-            message.Headers.Authorization = new AuthenticationHeaderValue(_basicAuthValue);
+            //message.Headers.Authorization = new AuthenticationHeaderValue(_basicAuthValue);
 
             message.Content = rp.buildPostContent();
             message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
@@ -108,7 +108,7 @@ namespace EncompassREST
         public async Task<bool> deleteToken()
         {
             HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, "token/revocation");
-            message.Headers.Authorization = new AuthenticationHeaderValue(_basicAuthValue);
+            //message.Headers.Authorization = new AuthenticationHeaderValue(_basicAuthValue);
 
             RequestParameters rp = new RequestParameters();
             rp.Add("token", _token.AccessToken);

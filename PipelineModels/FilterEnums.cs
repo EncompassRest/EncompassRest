@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace EncompassREST.PipelineModels
 {
-    enum OperatorType
+    public enum OperatorType
     {
         and,
         or
     }
 
-    enum CanonicalNameValues
+    public enum CanonicalNameValues
     {
         Address1,
         Address2,

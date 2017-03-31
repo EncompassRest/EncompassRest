@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -29,110 +30,35 @@ namespace EncompassREST.Data
             return await tLoan.Session.Loans.PatchLoanAsync(JsonData, tLoan.encompassId);
         }
 
-        public static string GetLoanValue(this Loan tLoan, string FieldPath, int ApplicationID = 0)
-        {
-            object val = GetPropValue(tLoan, FieldPath, ApplicationID);
-            if (val != null)
-                return val.ToString();
-            else
-                return "";
-        }
-
-        #region Regular
-        public static async Task<object> GetEncompassFieldValue(this Loan tLoan, string EncompassFieldID, int ApplicationID = 0)
+        
+        public static async Task<object> GetEncompassFieldValue(this Loan tLoan, string EncompassFieldID)
         {
 
             var fieldPath = await tLoan.Session.Schemas.GetFieldPathAsync(EncompassFieldID);
-            var fieldBreadcrumbs = fieldPath.Split('.').ToList();
-            dynamic placeholder;
-            //for (int i = 1;i<fieldBreadcrumbs.Count();i++)
-            //{
-            //    string nextItem = fieldBreadcrumbs[i];
-
-            //}
-            placeholder = GetPropValue(tLoan, fieldPath, ApplicationID);
+            object placeholder;
+            placeholder = GetLoanValueRecursive(tLoan, fieldPath);
 
             return placeholder;
         }
-        private static Object GetPropValue(this Object obj, String name, int ApplicationID = 0)
-        {
-            if (name.ToLower().StartsWith("loan."))
-                name = name.Substring(5);
-
-            //string part = name.Substring(0, name.IndexOf("."));
-            //string remaining = name.Substring(part.Length);
-
-            foreach (String part in name.Split('.'))
-            {
-                if (obj == null) { return null; }
-
-                if (obj.GetType().GetInterface("IList") != null)
-                {
-                    var items = (IList)obj;
-                    //get Item from list.
-                    if (items.Count == 1)
-                        obj = items[0];
-                    else
-                    {
-                        List<object> results = new List<object>();
-                        foreach (object item in items)
-                        {
-                            Type t = obj.GetType();
-                            PropertyInfo inf = t.GetProperty(part);
-                            //obj = inf.GetValue(item, null);
-                            //item.GetPropValue()
-                        }
-                    }
-                }
-
-                Type type = obj.GetType();
-                PropertyInfo info = type.GetProperty(part);
-                if (info == null)
-                {
-                    if (part == "Application")
-                    {
-                        info = type.GetProperty("Applications");
-                        if (info == null)
-                            return null;
-
-                        IList oList = info.GetValue(obj, null) as IList;
-                        if (ApplicationID >= oList.Count)
-                            return null;
-                        obj = oList[ApplicationID];
-                        continue;
-
-                    }
-                    else
-                        return null;
-                }
-
-                obj = info.GetValue(obj, null);
-            }
-            return obj;
-        }
-
-        private static T GetPropValue<T>(this Object obj, String name)
-        {
-            Object retval = GetPropValue(obj, name);
-            if (retval == null) { return default(T); }
-
-            // throws InvalidCastException if types are incompatible
-            return (T)retval;
-        }
-        #endregion
+        
+        
 
         #region recursive
-
-        public static string GetLoanValueRecursive(this Loan tLoan, string FieldPath, int ApplicationID = 0)
+        /// <summary>
+        /// Returns an object from the specific path
+        /// if there is a list entity and there is no specified query or index then it will default to the first item found
+        /// </summary>
+        /// <param name="tLoan"></param>
+        /// <param name="FieldPath"></param>
+        /// <param name="ApplicationID"></param>
+        /// <returns></returns>
+        public static object GetLoanValueRecursive(this Loan tLoan, string FieldPath, int Index = -1)
         {
-            object val = GetPropValueRecursive(tLoan, FieldPath, ApplicationID);
-            if (val != null)
-                return val.ToString();
-            else
-                return "";
+            object val = GetPropValueRecursive(tLoan, FieldPath, Index);
+            return val;
         }
 
-        private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1)
+        private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1, string Query=null)
         {
             if (name.ToLower().StartsWith("loan."))
                 name = name.Substring(5);
@@ -140,11 +66,38 @@ namespace EncompassREST.Data
             string part;
             string remaining;
             int index = Index;
+            string query = Query;
 
             if (name.Contains("."))
             {
-                part = name.Substring(0, name.IndexOf("."));
-                remaining = name.Substring(part.Length + 1);
+                //ignore {} and []
+                int astart = name.IndexOf("{");
+                int aend = name.IndexOf("}");
+                int bstart = name.IndexOf("[");
+                int bend = name.IndexOf("]");
+
+                int dot = name.IndexOf(".");
+
+                if (astart < dot && dot < aend)
+                    dot = name.Substring(aend).IndexOf(".") + aend;
+
+                if (bstart < dot && dot < bend)
+                    dot = name.Substring(bend).IndexOf(".") + bend;
+
+
+                part = name.Substring(0, dot);
+                //if (name == "")
+                //{
+                //    name = part;
+                //}
+                //else
+                //{
+                //    name = name + "." + part;
+                //}
+                if (name.Length == part.Length)
+                    remaining = "";
+                else
+                    remaining = name.Substring(part.Length + 1);
             }
             else
             {
@@ -156,13 +109,26 @@ namespace EncompassREST.Data
             if (part.Contains("["))
             {
                 var indextmp = Regex.Match(part, @"\[([^]]*)\]").Groups[1].Value;
-                int.TryParse(indextmp, out index);
+                if (!int.TryParse(indextmp, out index))
+                {
+                    return null;
+                }
+
                 part = part.Substring(0, part.IndexOf("["));
             }
+            if (part.Contains("{"))
+            {
+                //use dynamic linq here to parse inline queries.
+                query = Regex.Match(part, @"\{([^]]*)\}").Groups[1].Value;
+                part = part.Substring(0, part.IndexOf("{"));
+                if (index >= 0)
+                    index = -1;
+            }
+
             if (part == "Application")
                 part = "applications";
 
-            if (obj.GetType().GetInterface("IList") != null)
+            if (obj is IList)
             {
                 var items = (IList)obj;
                 //get Item from list.
@@ -171,23 +137,36 @@ namespace EncompassREST.Data
                     try
                     {
                         obj = items[index];
+                        index = -1;
                     }
                     catch (IndexOutOfRangeException)
                     {
                         return null;
                     }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        return null;
+                    }
+                }
+                else if (query != null && query != "")
+                {
+
+                    var results = items.AsQueryable().Where(query);
+                    query = null;
+                    if (results.Count() == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        IEnumerator enumer = results.GetEnumerator();
+                        enumer.MoveNext();
+                        obj = enumer.Current;
+                    }
                 }
                 else
                 {
-                    List<object> results = new List<object>();
-                    foreach (object item in items)
-                    {
-                        Type t = item.GetType();
-                        PropertyInfo inf = t.GetProperty(part);
-                        obj = inf.GetValue(item, null);
-                        results.Add(obj.GetPropValueRecursive(remaining, index));
-                    }
-                    return string.Join(";", results.Where(x => x != null));
+                    obj = items[0];
                 }
             }
 
@@ -196,7 +175,7 @@ namespace EncompassREST.Data
             obj = info.GetValue(obj, null);
             if (remaining != "")
             {
-                return obj.GetPropValueRecursive(remaining, index);
+                return obj.GetPropValueRecursive(remaining, index,query);
             }
             else
             {
@@ -221,7 +200,7 @@ namespace EncompassREST.Data
             
             return JObject.Parse(JsonConvert.SerializeObject(ex));
         }
-        private static void GetPropValueRecursive(this Object obj, ExpandoObject jo, string name,string FullName = "",  int Index = -1)
+        private static void GetPropValueRecursive(this Object obj, ExpandoObject jo, string name,string FullName = "",  int Index = -1, string Query = null)
         {
             if (name.ToLower().StartsWith("loan."))
             {
@@ -231,11 +210,27 @@ namespace EncompassREST.Data
 
             string part;
             string remaining;
+            string query = Query;
             int index = Index;
 
             if (name.Contains("."))
             {
-                part = name.Substring(0, name.IndexOf("."));
+                //ignore {} and []
+                int astart = name.IndexOf("{");
+                int aend = name.IndexOf("}");
+                int bstart = name.IndexOf("[");
+                int bend = name.IndexOf("]");
+
+                int dot = name.IndexOf(".");
+
+                if (astart<dot && dot<aend)
+                    dot = name.Substring(aend).IndexOf(".") + aend;
+
+                if (bstart < dot && dot < bend)
+                    dot = name.Substring(bend).IndexOf(".") + bend;
+
+
+                part = name.Substring(0, dot);
                 if (FullName == "")
                 {
                     FullName = part;
@@ -244,7 +239,10 @@ namespace EncompassREST.Data
                 {
                     FullName = FullName + "." + part;
                 }
-                remaining = name.Substring(part.Length + 1);
+                if (name.Length == part.Length)
+                    remaining = "";
+                else
+                    remaining = name.Substring(part.Length + 1);
             }
             else
             {
@@ -257,12 +255,18 @@ namespace EncompassREST.Data
             if (part.Contains("["))
             {
                 var indextmp = Regex.Match(part, @"\[([^]]*)\]").Groups[1].Value;
-                int.TryParse(indextmp, out index);
+                if (!int.TryParse(indextmp, out index))
+                {
+                    return;
+                }
+
                 part = part.Substring(0, part.IndexOf("["));
             }
             if (part.Contains("{"))
             {
                 //use dynamic linq here to parse inline queries.
+                query = Regex.Match(part, @"\{([^]]*)\}").Groups[1].Value;
+                part = part.Substring(0, part.IndexOf("{"));
             }
 
 
@@ -270,7 +274,7 @@ namespace EncompassREST.Data
                 part = "applications";
 
             //obj.GetType().GetInterface("IList") != null
-            if (obj is IList && remaining != "")
+            if (obj is IList && (remaining != "" || query != "" || index!= -1))
             {
                 var items = (IList)obj;
                 //get Item from list.
@@ -282,6 +286,47 @@ namespace EncompassREST.Data
                     }
                     catch (IndexOutOfRangeException)
                     {
+                        return;
+                    }
+                }
+                else if (query!= null && query != "")
+                {
+
+                    var results = items.AsQueryable().Where(query);
+                    query = null;
+                    if (results.Count() == 0)
+                    {
+                        return;
+                    }
+                    else if (results.Count() == 1)
+                    {
+                        IEnumerator enumer = results.GetEnumerator();
+                        enumer.MoveNext();
+                        obj = enumer.Current; 
+                    }
+                    else
+                    {
+                        IEnumerable<object> subitems = results as IEnumerable<object>;
+                        ExpandoObject localJO = new ExpandoObject();
+                        var ljo = localJO as IDictionary<string, object>;
+                        //List<object> results = new List<object>();
+                        int i = 0;
+                        foreach (object item in subitems)
+                        {
+                            ExpandoObject leo = new ExpandoObject();
+                            Type t = item.GetType();
+                            PropertyInfo inf = t.GetProperty(part);
+                            obj = inf.GetValue(item, null);
+
+                            obj.GetPropValueRecursive(leo, remaining, "", index,query);
+                            ljo.Add(i.ToString(), leo);
+                            i++;
+                        }
+                        var REGnam = new Regex("\\[.*?\\]");
+                        var nam = REGnam.Replace(FullName, string.Empty);
+
+                        var expandoDict = jo as IDictionary<string, object>;
+                        expandoDict.Add(nam, localJO);
                         return;
                     }
                 }
@@ -298,7 +343,7 @@ namespace EncompassREST.Data
                         PropertyInfo inf = t.GetProperty(part);
                         obj = inf.GetValue(item, null);
                         
-                        obj.GetPropValueRecursive(leo, remaining, "", index);
+                        obj.GetPropValueRecursive(leo, remaining, "", index,query);
                         ljo.Add(i.ToString(), leo);
                         i++;
                     }
@@ -321,7 +366,7 @@ namespace EncompassREST.Data
             if (remaining != "")
             {
                 
-                obj.GetPropValueRecursive(jo, remaining, FullName, index);
+                obj.GetPropValueRecursive(jo, remaining, FullName, index,query);
 
 
                 return;

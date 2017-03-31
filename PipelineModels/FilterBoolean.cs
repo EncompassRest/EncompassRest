@@ -8,7 +8,7 @@ using Newtonsoft.Json.Converters;
 
 namespace EncompassREST.PipelineModels
 {
-    class FilterBoolean
+    public class FilterBoolean : IFilter
     {
         public FilterBoolean()
         {
