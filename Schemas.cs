@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,6 +33,7 @@ namespace EncompassREST
         }
         public async Task<string> GetSchemaAsync(IList<string> entities,bool includeFieldExtensions)
         {
+            
             RequestParameters rp = new RequestParameters();
             if (entities != null &&
                 entities.Count > 0)
@@ -40,8 +42,9 @@ namespace EncompassREST
             }
             rp.Add("includeFieldExtensions", includeFieldExtensions.ToString());
 
-
-            var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan" + rp.ToString());
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format(API_PATH + "/loan{0}",rp.ToString()));
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.GetAsync(API_PATH + "/loan" + rp.ToString());
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsStringAsync();
@@ -55,8 +58,9 @@ namespace EncompassREST
 
         public async Task<string> GetSchemaFieldAsync(string FieldID)
         {
-            var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan/" + FieldID);
-
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format(API_PATH + "/loan/{0}", FieldID));
+            //var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan/" + FieldID);
+            var response = await _Session.RESTClient.SendAsync(message);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsStringAsync();

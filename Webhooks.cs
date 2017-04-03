@@ -37,12 +37,14 @@ namespace EncompassREST
 
         public async Task<string> PutSubscriptionAsync(string subscriptionID, string newEndpoint)
         {
-            string api = API_PATH + "/" + subscriptionID;
+            //string api = API_PATH + "/" + subscriptionID;
         
             string newEndpointJSONstring = "{\"endpoint\": \"" + newEndpoint + "\"}";
-            
 
-            var response = await _Session.RESTClient.PutAsync(api, new StringContent(newEndpointJSONstring, Encoding.Unicode, "application/json"));
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Put, string.Format("{0}/{1}", API_PATH, subscriptionID));
+            message.Content = new StringContent(newEndpointJSONstring);
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.PutAsync(api, new StringContent(newEndpointJSONstring, Encoding.Unicode, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 return subscriptionID;
@@ -58,7 +60,12 @@ namespace EncompassREST
         public async Task<string> SubscribeAsync(string endpoint)
         {
             string jsonData = "{\"endpoint\": \"" + endpoint + "\"}";
-            var response = await _Session.RESTClient.PostAsync(API_PATH, new StringContent(jsonData, Encoding.UTF8, "application/json"));
+
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, API_PATH);
+            message.Content = new StringContent(jsonData);
+
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(jsonData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
                 return response.Headers.Location.ToString().Split("/".ToCharArray()).Last();
@@ -72,7 +79,10 @@ namespace EncompassREST
 
         public async Task<string> GetSubscriptionAsync()
         {
-            var response = await _Session.RESTClient.GetAsync(API_PATH);
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, API_PATH);
+
+            var response = await _Session.RESTClient.SendAsync(message);
+            //await _Session.RESTClient.GetAsync(API_PATH);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsStringAsync();
@@ -85,7 +95,9 @@ namespace EncompassREST
 
         public async Task CancelSubscriptionAsync(string SubscriptionID)
         {
-            var response = await _Session.RESTClient.DeleteAsync(API_PATH + "/" + SubscriptionID);
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Delete, string.Format("{0}/{1}",API_PATH,SubscriptionID));
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.DeleteAsync(API_PATH + "/" + SubscriptionID);
 
             if (response.StatusCode == HttpStatusCode.NoContent)
                 return;

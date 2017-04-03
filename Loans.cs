@@ -243,9 +243,10 @@ namespace EncompassREST
                     rp.Add("entities", string.Join(",", entities));
                 }
             }
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("{0}/{1}{2}", API_PATH, GUID, rp.ToString()));
 
-            
-            var response = await client.GetAsync(API_PATH + "/" + GUID + rp.ToString());
+            var response = await client.SendAsync(message);
+                //await client.GetAsync(API_PATH + "/" + GUID + rp.ToString());
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 Data.Loan l = new Loan(_Session); 
@@ -273,7 +274,11 @@ namespace EncompassREST
         
         public async Task<Data.Loan> PostLoanAsync(string LoanData)
         {
-            var response = await _Session.RESTClient.PostAsync(API_PATH, new StringContent(LoanData, Encoding.UTF8, "application/json"));
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("{0}", API_PATH));
+            message.Content = new StringContent(LoanData, Encoding.UTF8, "application/json");
+
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
                 var GUID = response.Headers.Location.ToString().Split('/').Last();
@@ -292,7 +297,11 @@ namespace EncompassREST
         
         public async Task<Data.Loan> PatchLoanAsync(string LoanData, string GUID)
         {
-            var response = await _Session.RESTClient.PatchAsync(API_PATH + "/" + GUID, new StringContent(LoanData, Encoding.UTF8, "application/json"));
+            HttpRequestMessage message = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}/{1}", API_PATH, GUID));
+            message.Content = new StringContent(LoanData, Encoding.UTF8, "application/json");
+
+            var response = await _Session.RESTClient.SendAsync(message);
+                //await _Session.RESTClient.PatchAsync(API_PATH + "/" + GUID, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
                 return await GetLoanAsync(GUID);
@@ -312,7 +321,10 @@ namespace EncompassREST
             if (GUID == "")
                 throw new InvalidOperationException("Missing GUID");
 
-            var response = await client.DeleteAsync(API_PATH + "/" + GUID);
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Delete, string.Format("{0}/{1}", API_PATH, GUID));
+
+            var response = await client.SendAsync(message);
+                //await client.DeleteAsync(API_PATH + "/" + GUID);
             if (response.StatusCode == HttpStatusCode.NoContent)
             {
                 Data.Loan tloan = null;
@@ -334,8 +346,9 @@ namespace EncompassREST
 
         public async Task<IEnumerable<string>> GetSupportedEntitiesAsync()
         {
-
-            var response = await client.GetAsync(API_PATH + "/supportedEntities");
+            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("{0}/supportedEntities", API_PATH));
+            var response = await client.SendAsync(message);
+                //await client.GetAsync(API_PATH + "/supportedEntities");
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
