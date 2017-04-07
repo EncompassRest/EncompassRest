@@ -172,6 +172,12 @@ namespace EncompassREST.Data
 
             Type type = obj.GetType();
             PropertyInfo info = type.GetProperty(part);
+
+            if (info == null) //property is not in json data
+            {
+                return null;
+            }
+
             obj = info.GetValue(obj, null);
             if (remaining != "")
             {
