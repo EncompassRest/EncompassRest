@@ -1,336 +1,333 @@
-﻿using EncompassREST.Data;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using EncompassREST.HelperClasses;
+using EncompassREST.Data;
 using EncompassREST.Exceptions;
+using EncompassREST.HelperClasses;
+using Newtonsoft.Json;
 
 namespace EncompassREST
 {
     public class Loans
     {
-        
-        private string API_PATH = "encompass/v1/loans";
-        private Session _Session;
-        private List<string> supportedEntities = new List<string> {
-  "AdditionalRequests",
-  "AdditionalStateDisclosure",
-  "AffiliatedBusinessArrangement",
-  "AntiSteeringLoanOption",
-  "Application",
-  "Asset",
-  "AUSTrackingLog",
-  "ATRQMBorrower",
-  "ATRQMCommon",
-  "Borrower",
-  "CoBorrower",
-  "Buydown",
-  "ClosingCost",
-  "ClosingDisclosure1",
-  "ClosingDisclosure2",
-  "ClosingDisclosure3",
-  "ClosingDisclosure4",
-  "ClosingDisclosure5",
-  "ClosingDocument",
-  "ClosingEntity",
-  "CommitmentTerms",
-  "ComplianceTestLog",
-  "Contact",
-  "ConstructionManagement",
-  "ConversationLog",
-  "Correspondent",
-  "CrmLog",
-  "CustomField",
-  "DataTracLog",
-  "DisclosureForm",
-  "DisclosureNotices",
-  "DisclosureTracking2015Log",
-  "DisclosureTrackingLog",
-  "DocumentLog",
-  "DownloadLog",
-  "DownPayment",
-  "EdmDocument",
-  "EdmLog",
-  "ElliLOCompensation",
-  "EmailTriggerLog",
-  "EmDocumentInvestor",
-  "EmDocumentLender",
-  "EmDocument",
-  "Employment",
-  "EnergyEfficientMortgageItem",
-  "EnergyEfficientMortgage",
-  "EscrowDisbursementTransaction",
-  "EscrowInterestTransaction",
-  "FannieMae",
-  "Fee",
-  "FeeVariance",
-  "FeeVarianceOther",
-  "FhaVaLoan",
-  "Form",
-  "FreddieMac",
-  "Funding",
-  "Gfe2010Fee",
-  "Gfe2010FwbcFwsc",
-  "Gfe2010GfeCharge",
-  "Gfe2010",
-  "Gfe2010Page",
-  "Gfe2010Section",
-  "Gfe2010WholePoc",
-  "GfeFee",
-  "GfeLien",
-  "Gfe",
-  "GfePayment",
-  "GfePayoff",
-  "HelocRepaymentDrawPeriod",
-  "Hmda",
-  "HomeCounselingProvider",
-  "HtmlEmailLog",
-  "Hud1EsDate",
-  "Hud1EsDueDate",
-  "Hud1EsItemize",
-  "Hud1Es",
-  "Hud1EsPayTo",
-  "Hud1EsSetup",
-  "HudLoanData",
-  "Income",
-  "InterimServicing",
-  "InterimServicingTransaction",
-  "Liability",
-  "Loan",
-  "LoanAssociate",
-  "LoanEstimate1",
-  "LoanEstimate2",
-  "LoanEstimate3",
-  "LoanProductData",
-  "LoanProgram",
-  "LoanSubmissionFee",
-  "LoanSubmission",
-  "LockCancellationLog",
-  "LockConfirmLog",
-  "LockDenialLog",
-  "LockRequestBorrower",
-  "LockRequestLog",
-  "LOCompensation",
-  "LogAlert",
-  "LogComment",
-  "LogEntryLog",
-  "LogRecord",
-  "LogSnapshotField",
-  "Mcaw",
-  "MilestoneFreeRoleLog",
-  "MilestoneLog",
-  "MilestoneTaskContact",
-  "MilestoneTaskLog",
-  "MilestoneTemplateLog",
-  "MilitaryService",
-  "Miscellaneous",
-  "NetTangibleBenefit",
-  "NewYorkFee",
-  "NewYorkPrimaryLender",
-  "OtherTransaction",
-  "PaymentReversalTransaction",
-  "PaymentTransaction",
-  "PostClosingConditionLog",
-  "PreliminaryConditionLog",
-  "PrepaymentPenalty",
-  "Prequalification",
-  "PrequalificationScenario",
-  "PreviousVaLoan",
-  "PriceAdjustment",
-  "PrintForm",
-  "PrintLog",
-  "PrivacyPolicy",
-  "ProfitManagementItem",
-  "ProfitManagement",
-  "Property",
-  "PurchaseAdvicePayout",
-  "PurchaseCredit",
-  "RateLock",
-  "RegistrationLog",
-  "RegulationZInterestRatePeriod",
-  "RegulationZ",
-  "RegulationZPayment",
-  "ReoProperty",
-  "Residence",
-  "RespaHudDetail",
-  "SchedulePaymentTransaction",
-  "SecondaryFinancingProvider",
-  "Section32",
-  "SelectedHomeCounselingProvider",
-  "SelfEmployedIncome",
-  "ServiceProviderContact",
-  "ServicingDisclosure",
-  "SettlementServiceCharge",
-  "ShippingContact",
-  "Shipping",
-  "StateDisclosure",
-  "StateLicense",
-  "StatementCreditDenial",
-  "StatusOnlineEvent",
-  "StatusOnlineLog",
-  "Tax4506",
-  "TPO",
-  "TQLComplianceAlert",
-  "TQLDocument",
-  "TQLFraudAlert",
-  "TQL",
-  "TQLReportInformation",
-  "TrustAccountItem",
-  "TrustAccount",
-  "Tsum",
-  "UCDDetail",
-  "Uldd",
-  "UnderwriterSummary",
-  "UnderwritingConditionLog",
-  "UsdaHouseholdIncome",
-  "Usda",
-  "VaLoanData",
-  "VerificationLog",
-  "LoanActionLog",
-  "FieldLockData",
-  "FundingFee"};
-        #region private properties
-        private AccessToken _AccessToken
+        private const string _apiPath = "encompass/v1/loans";
+        private readonly List<string> _supportedEntities = new List<string> {
+            "AdditionalRequests",
+            "AdditionalStateDisclosure",
+            "AffiliatedBusinessArrangement",
+            "AntiSteeringLoanOption",
+            "Application",
+            "Asset",
+            "AUSTrackingLog",
+            "ATRQMBorrower",
+            "ATRQMCommon",
+            "Borrower",
+            "CoBorrower",
+            "Buydown",
+            "ClosingCost",
+            "ClosingDisclosure1",
+            "ClosingDisclosure2",
+            "ClosingDisclosure3",
+            "ClosingDisclosure4",
+            "ClosingDisclosure5",
+            "ClosingDocument",
+            "ClosingEntity",
+            "CommitmentTerms",
+            "ComplianceTestLog",
+            "Contact",
+            "ConstructionManagement",
+            "ConversationLog",
+            "Correspondent",
+            "CrmLog",
+            "CustomField",
+            "DataTracLog",
+            "DisclosureForm",
+            "DisclosureNotices",
+            "DisclosureTracking2015Log",
+            "DisclosureTrackingLog",
+            "DocumentLog",
+            "DownloadLog",
+            "DownPayment",
+            "EdmDocument",
+            "EdmLog",
+            "ElliLOCompensation",
+            "EmailTriggerLog",
+            "EmDocumentInvestor",
+            "EmDocumentLender",
+            "EmDocument",
+            "Employment",
+            "EnergyEfficientMortgageItem",
+            "EnergyEfficientMortgage",
+            "EscrowDisbursementTransaction",
+            "EscrowInterestTransaction",
+            "FannieMae",
+            "Fee",
+            "FeeVariance",
+            "FeeVarianceOther",
+            "FhaVaLoan",
+            "Form",
+            "FreddieMac",
+            "Funding",
+            "Gfe2010Fee",
+            "Gfe2010FwbcFwsc",
+            "Gfe2010GfeCharge",
+            "Gfe2010",
+            "Gfe2010Page",
+            "Gfe2010Section",
+            "Gfe2010WholePoc",
+            "GfeFee",
+            "GfeLien",
+            "Gfe",
+            "GfePayment",
+            "GfePayoff",
+            "HelocRepaymentDrawPeriod",
+            "Hmda",
+            "HomeCounselingProvider",
+            "HtmlEmailLog",
+            "Hud1EsDate",
+            "Hud1EsDueDate",
+            "Hud1EsItemize",
+            "Hud1Es",
+            "Hud1EsPayTo",
+            "Hud1EsSetup",
+            "HudLoanData",
+            "Income",
+            "InterimServicing",
+            "InterimServicingTransaction",
+            "Liability",
+            "Loan",
+            "LoanAssociate",
+            "LoanEstimate1",
+            "LoanEstimate2",
+            "LoanEstimate3",
+            "LoanProductData",
+            "LoanProgram",
+            "LoanSubmissionFee",
+            "LoanSubmission",
+            "LockCancellationLog",
+            "LockConfirmLog",
+            "LockDenialLog",
+            "LockRequestBorrower",
+            "LockRequestLog",
+            "LOCompensation",
+            "LogAlert",
+            "LogComment",
+            "LogEntryLog",
+            "LogRecord",
+            "LogSnapshotField",
+            "Mcaw",
+            "MilestoneFreeRoleLog",
+            "MilestoneLog",
+            "MilestoneTaskContact",
+            "MilestoneTaskLog",
+            "MilestoneTemplateLog",
+            "MilitaryService",
+            "Miscellaneous",
+            "NetTangibleBenefit",
+            "NewYorkFee",
+            "NewYorkPrimaryLender",
+            "OtherTransaction",
+            "PaymentReversalTransaction",
+            "PaymentTransaction",
+            "PostClosingConditionLog",
+            "PreliminaryConditionLog",
+            "PrepaymentPenalty",
+            "Prequalification",
+            "PrequalificationScenario",
+            "PreviousVaLoan",
+            "PriceAdjustment",
+            "PrintForm",
+            "PrintLog",
+            "PrivacyPolicy",
+            "ProfitManagementItem",
+            "ProfitManagement",
+            "Property",
+            "PurchaseAdvicePayout",
+            "PurchaseCredit",
+            "RateLock",
+            "RegistrationLog",
+            "RegulationZInterestRatePeriod",
+            "RegulationZ",
+            "RegulationZPayment",
+            "ReoProperty",
+            "Residence",
+            "RespaHudDetail",
+            "SchedulePaymentTransaction",
+            "SecondaryFinancingProvider",
+            "Section32",
+            "SelectedHomeCounselingProvider",
+            "SelfEmployedIncome",
+            "ServiceProviderContact",
+            "ServicingDisclosure",
+            "SettlementServiceCharge",
+            "ShippingContact",
+            "Shipping",
+            "StateDisclosure",
+            "StateLicense",
+            "StatementCreditDenial",
+            "StatusOnlineEvent",
+            "StatusOnlineLog",
+            "Tax4506",
+            "TPO",
+            "TQLComplianceAlert",
+            "TQLDocument",
+            "TQLFraudAlert",
+            "TQL",
+            "TQLReportInformation",
+            "TrustAccountItem",
+            "TrustAccount",
+            "Tsum",
+            "UCDDetail",
+            "Uldd",
+            "UnderwriterSummary",
+            "UnderwritingConditionLog",
+            "UsdaHouseholdIncome",
+            "Usda",
+            "VaLoanData",
+            "VerificationLog",
+            "LoanActionLog",
+            "FieldLockData",
+            "FundingFee"
+        };
+
+        #region Private Properties
+        private AccessToken AccessToken
         {
             get
             {
-                return _Session.AccessToken;
+                return Session.AccessToken;
             }
         }
 
-        private HttpClient client
+        private HttpClient Client
         {
-            get { return _Session.RESTClient; }
+            get { return Session.RESTClient; }
         }
         #endregion
 
-        #region public properties
-        public Session Session
-        {
-            get { return _Session; }
-        }
+        #region Public Properties
+        public Session Session { get; }
         #endregion
 
-
-        public Loans(Session Session)
+        public Loans(Session session)
         {
-            _Session = Session;
+            Session = session;
         }
 
-        public async Task<Data.Loan> GetLoanAsync(string GUID)
+        public Task<Loan> GetLoanAsync(string guid)
         {
-            return await GetLoanAsync(GUID, null);
+            return GetLoanAsync(guid, null);
         }
 
-        public async Task<Data.Loan> GetLoanAsync(string GUID, IEnumerable<string> entities)
+        public async Task<Loan> GetLoanAsync(string guid, IEnumerable<string> entities)
         {
             //TaskCompletionSource<Loan> tcs = new TaskCompletionSource<Loan>();
-            RequestParameters rp = new RequestParameters();
+            var rp = new RequestParameters();
             if (entities!= null)
             {
                 if (entities.Count() > 0)
                 {
                     //var eList = await GetSupportedEntitiesAsync();
-                    var exList = entities.Except(supportedEntities);
+                    var exList = entities.Except(_supportedEntities);
                     if (exList.Count() > 0)
                         throw new InvalidEntitiesException(exList);
                     rp.Add("entities", string.Join(",", entities));
                 }
             }
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("{0}/{1}{2}", API_PATH, GUID, rp.ToString()));
+            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/{guid}{rp}");
 
-            var response = await client.SendAsync(message);
+            var response = await Client.SendAsync(message);
                 //await client.GetAsync(API_PATH + "/" + GUID + rp.ToString());
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                Data.Loan l = new Loan(_Session); 
-                await l.PopulateLoan(await response.Content.ReadAsStringAsync(), _Session);
+                var l = new Loan(Session); 
+                await l.PopulateLoan(await response.Content.ReadAsStringAsync(), Session);
                 return l;
                 //tcs.TrySetResult(l);
             }
             else if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                throw new FileNotFoundException("GUID Not found",GUID);
+                throw new FileNotFoundException("guid Not found", guid);
                 //tcs.TrySetException(new FileNotFoundException("GUID Not Found", GUID));
             }
             else
             {
-                throw new RESTException("GetLoanAsync",response);
+                throw new RESTException(nameof(GetLoanAsync), response);
                 //tcs.TrySetException(new RESTException("GetLoanAsync", response));
             }
             //return tcs.Task;
         }
 
-        public async Task<Data.Loan> PostLoanAsync(Data.Loan Loan)
+        public Task<Loan> PostLoanAsync(Loan loan)
         {
-            return await PostLoanAsync(Loan.JsonValue);
+            return PostLoanAsync(loan.JsonValue);
         }
         
-        public async Task<Data.Loan> PostLoanAsync(string LoanData)
+        public async Task<Loan> PostLoanAsync(string loanData)
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("{0}", API_PATH));
-            message.Content = new StringContent(LoanData, Encoding.UTF8, "application/json");
-
-            var response = await _Session.RESTClient.SendAsync(message);
+            var message = new HttpRequestMessage(HttpMethod.Post, _apiPath)
+            {
+                Content = new StringContent(loanData, Encoding.UTF8, "application/json")
+            };
+            var response = await Session.RESTClient.SendAsync(message);
                 //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
-                var GUID = response.Headers.Location.ToString().Split('/').Last();
-                return await GetLoanAsync(GUID);
+                var guid = response.Headers.Location.ToString().Split('/').Last();
+                return await GetLoanAsync(guid);
             }
             else
             {
-                throw new RESTException("PostLoanAsync", response);
+                throw new RESTException(nameof(PostLoanAsync), response);
             }
         }
 
-        public async Task<Data.Loan> PatchLoanAsync(Data.Loan Loan)
+        public Task<Loan> PatchLoanAsync(Loan loan)
         {
-            return await PatchLoanAsync(Loan.JsonValue, Loan.encompassId);
+            return PatchLoanAsync(loan.JsonValue, loan.encompassId);
         }
         
-        public async Task<Data.Loan> PatchLoanAsync(string LoanData, string GUID)
+        public async Task<Loan> PatchLoanAsync(string loanData, string guid)
         {
-            HttpRequestMessage message = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}/{1}", API_PATH, GUID));
-            message.Content = new StringContent(LoanData, Encoding.UTF8, "application/json");
-
-            var response = await _Session.RESTClient.SendAsync(message);
+            var message = new HttpRequestMessage(new HttpMethod("PATCH"), $"{_apiPath}/{guid}")
+            {
+                Content = new StringContent(loanData, Encoding.UTF8, "application/json")
+            };
+            var response = await Session.RESTClient.SendAsync(message);
                 //await _Session.RESTClient.PatchAsync(API_PATH + "/" + GUID, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
-                return await GetLoanAsync(GUID);
+                return await GetLoanAsync(guid);
             }
             else if (response.StatusCode == HttpStatusCode.Conflict) //409
             {
-                throw new LoanLockedException("PatchLoanAsync", response);
+                throw new LoanLockedException(nameof(PatchLoanAsync), response);
             }
             else
             {
-                throw new RESTException("PatchLoanAsync", response);
+                throw new RESTException(nameof(PatchLoanAsync), response);
             }
         }
 
-        public async Task<Data.Loan> DeleteLoanAsync(string GUID)
+        public async Task<Loan> DeleteLoanAsync(string guid)
         {
-            if (GUID == "")
-                throw new InvalidOperationException("Missing GUID");
+            if (guid == "")
+                throw new InvalidOperationException("Missing guid");
 
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Delete, string.Format("{0}/{1}", API_PATH, GUID));
+            var message = new HttpRequestMessage(HttpMethod.Delete, $"{_apiPath}/{guid}");
 
-            var response = await client.SendAsync(message);
+            var response = await Client.SendAsync(message);
                 //await client.DeleteAsync(API_PATH + "/" + GUID);
             if (response.StatusCode == HttpStatusCode.NoContent)
             {
-                Data.Loan tloan = null;
+                Loan tloan = null;
                 try
                 {
-                    tloan = await GetLoanAsync(GUID);
+                    tloan = await GetLoanAsync(guid);
                 }
                 catch (FileNotFoundException)
                 {
@@ -340,28 +337,26 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException("DeleteLoanAsync", response);
+                throw new RESTException(nameof(DeleteLoanAsync), response);
             }
         }
 
         public async Task<IEnumerable<string>> GetSupportedEntitiesAsync()
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("{0}/supportedEntities", API_PATH));
-            var response = await client.SendAsync(message);
+            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/supportedEntities");
+            var response = await Client.SendAsync(message);
                 //await client.GetAsync(API_PATH + "/supportedEntities");
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var c = content.Replace(((char)65279).ToString(),"");
+                var c = content.Replace(((char)65279).ToString(), "");
                 var data  = JsonConvert.DeserializeObject<IEnumerable<string>>(c);
                 return data;
             }
             else
             {
-                throw new RESTException("GetSupportedEntitiesAsync", response);
+                throw new RESTException(nameof(GetSupportedEntitiesAsync), response);
             }
         }
-
-
     }
 }

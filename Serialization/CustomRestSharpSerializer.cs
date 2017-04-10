@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.IO;
 using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace EncompassREST.Serialization
 {
-    
+
     public class NewtonsoftJsonSerializer
     {
-        private Newtonsoft.Json.JsonSerializer serializer;
+        private readonly JsonSerializer _serializer;
 
-        public NewtonsoftJsonSerializer(Newtonsoft.Json.JsonSerializer serializer)
+        public NewtonsoftJsonSerializer(JsonSerializer serializer)
         {
-            this.serializer = serializer;
+            _serializer = serializer;
         }
 
         public string Serialize(object obj)
@@ -25,7 +19,7 @@ namespace EncompassREST.Serialization
             {
                 using (var jsonTextWriter = new JsonTextWriter(stringWriter))
                 {
-                    serializer.Serialize(jsonTextWriter, obj);
+                    _serializer.Serialize(jsonTextWriter, obj);
                     return stringWriter.ToString();
                 }
             }
@@ -35,7 +29,7 @@ namespace EncompassREST.Serialization
         {
             get
             {
-                return new NewtonsoftJsonSerializer(new Newtonsoft.Json.JsonSerializer()
+                return new NewtonsoftJsonSerializer(new JsonSerializer
                 {
                     MissingMemberHandling = MissingMemberHandling.Ignore,
                     NullValueHandling = NullValueHandling.Ignore,
@@ -43,7 +37,5 @@ namespace EncompassREST.Serialization
                 });
             }
         }
-
-        
     }
 }

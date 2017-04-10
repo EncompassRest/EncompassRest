@@ -1,60 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EncompassREST.HelperClasses
 {
     public class RequestParameters : List<RequestParameter>
     {
-
         public RequestParameters()
         {
-
         }
 
-        public void Add(string Key, string Value)
+        public void Add(string key, string value)
         {
-            this.Add(new RequestParameter(Key, Value));
+            Add(new RequestParameter(key, value));
         }
 
         public override string ToString()
         {
-            if (this.Count > 0)
+            if (Count > 0)
             {
-                StringBuilder sb = new StringBuilder();
-                sb.Append("?");
-                sb.Append(String.Join("&",this));
+                var sb = new StringBuilder();
+                sb.Append('?');
+                var first = true;
+                foreach (var requestParameter in this)
+                {
+                    if (first)
+                    {
+                        first = false;
+                    }
+                    else
+                    {
+                        sb.Append('&');
+                    }
+                    sb.Append(requestParameter);
+                }
 
                 return sb.ToString();
             }
             else
             {
-                return "";
+                return string.Empty;
             }
         }
-
     }
 
     public class RequestParameter 
     {
-        public RequestParameter(string Key, string Value)
+        public string Key { get; set; }
+
+        public string Value { get; set; }
+
+        public RequestParameter(string key, string value)
         {
-            key = Key;
-            value = Value;
+            Key = key;
+            Value = value;
         }
-        public string key { get; set; }
-        public string value { get; set; }
 
         public override string ToString()
         {
-            return key + "=" + value;
+            return $"{Key}={Value}";
         }
     }
+
     public static class RequestParametersStatic
     {
-
-        
     }
 }

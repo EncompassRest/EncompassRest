@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace EncompassREST
 {
@@ -14,17 +13,15 @@ namespace EncompassREST
         public string TokenType { get; set; }
     }
 
-
-
     [DataContract]
     public class TokenValidateResponse
     {
         [DataMember(Name = "active")]
-        public bool isActive { get; set; }
+        public bool IsActive { get; set; }
         [DataMember(Name = "scope")]
         public string Scope { get; set; }
         [DataMember(Name = "client_id")]
-        public string ClientID { get; set; }
+        public string ClientId { get; set; }
         [DataMember(Name ="username")]
         public string Username { get; set; }
         [DataMember(Name ="token_type")]
@@ -34,7 +31,7 @@ namespace EncompassREST
         [DataMember(Name ="sub")]
         public string Sub { get; set; }
         [DataMember (Name = "encompass_instance_id")]
-        public string InstanceID { get; set; }
+        public string InstanceId { get; set; }
         [DataMember(Name ="user_name")]
         public string UserName { get; set; }
         [DataMember(Name ="user_key")]
@@ -50,7 +47,7 @@ namespace EncompassREST
 
         public DateTime GetExpirationDate()
         {
-            DateTime expires = DateTime.SpecifyKind(new DateTime(1970, 01, 01), DateTimeKind.Utc);
+            var expires = DateTime.SpecifyKind(new DateTime(1970, 01, 01), DateTimeKind.Utc);
 
             return DateTime.SpecifyKind(expires.AddSeconds(Expires), DateTimeKind.Local);
         }

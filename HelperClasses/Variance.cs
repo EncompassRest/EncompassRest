@@ -9,12 +9,12 @@ namespace EncompassREST.HelperClasses
     public class Variance
     {
         public string Prop { get; set; }
-        public object valA { get; set; }
-        public object valB { get; set; }
+        public object ValA { get; set; }
+        public object ValB { get; set; }
 
         public override string ToString()
         {
-            return string.Format("{0} : {1} <> {2}",Prop,valA,valB);
+            return $"{Prop} : {ValA} <> {ValB}";
         }
     }
 
@@ -22,16 +22,17 @@ namespace EncompassREST.HelperClasses
     {
         public static List<Variance> DetailedCompare<T>(this T val1, T val2, int instance = -1)
         {
-            List<Variance> variances = new List<Variance>();
+            var variances = new List<Variance>();
             FieldInfo[] fi = val1.GetType().GetFields();
             foreach (FieldInfo f in fi)
             {
-                Variance v = new Variance();
-                v.Prop = f.Name + ((instance > -1) ? instance.ToString() : "");
-                v.valA = f.GetValue(val1);
-                v.valB = f.GetValue(val2);
-
-                if (v.valA == null | v.valB == null)
+                var v = new Variance()
+                {
+                    Prop = f.Name + ((instance > -1) ? instance.ToString() : ""),
+                    ValA = f.GetValue(val1),
+                    ValB = f.GetValue(val2)
+                };
+                if (v.ValA == null | v.ValB == null)
                 {
                     variances.Add(v);
                     continue;
@@ -39,13 +40,13 @@ namespace EncompassREST.HelperClasses
 
                 if (f.GetType().GetInterfaces().Contains(typeof(IList)))
                 {
-                    IList valA = (IList)f.GetValue(val1);
-                    IList valB = (IList)f.GetValue(val2);
+                    var valA = (IList)f.GetValue(val1);
+                    var valB = (IList)f.GetValue(val2);
                     for (int i = 0; i < valA.Count; i++)
                     {
                         if (i > valB.Count)
                         {
-                            variances.Add(new Variance() { Prop = f.Name + i.ToString(), valA = i.ToString(), valB = "NA" });
+                            variances.Add(new Variance() { Prop = f.Name + i.ToString(), ValA = i.ToString(), ValB = "NA" });
                         }
                         else
                         {
@@ -56,18 +57,18 @@ namespace EncompassREST.HelperClasses
                     {
                         for (int j = valA.Count; j < valB.Count; j++)
                         {
-                            variances.Add(new Variance() { Prop = f.Name + j.ToString(), valB = j.ToString(), valA = "NA" });
+                            variances.Add(new Variance() { Prop = f.Name + j.ToString(), ValB = j.ToString(), ValA = "NA" });
                         }
                     }
                 }
                 else
                 {
-                    if (f.GetType().isSimple())
+                    if (f.GetType().IsSimple())
                     {
                         if (f.GetType() == typeof(Nullable<decimal>))
                         {
-                            Nullable<decimal> v1 = (Nullable<decimal>)v.valA;
-                            Nullable<decimal> v2 = (Nullable<decimal>)v.valB;
+                            var v1 = (decimal?)v.ValA;
+                            var v2 = (decimal?)v.ValB;
                             if ((v1.HasValue == false && v2.Value == 0)||
                                 (v2.HasValue == false && v1.Value == 0))
                             {
@@ -76,10 +77,10 @@ namespace EncompassREST.HelperClasses
                             }
                         }
 
-                        if (f.GetType() == typeof(Nullable<bool>))
+                        if (f.GetType() == typeof(bool?))
                         {
-                            var v1 = (Nullable<bool>)v.valA;
-                            var v2 = (Nullable<bool>)v.valB;
+                            var v1 = (bool?)v.ValA;
+                            var v2 = (bool?)v.ValB;
                             if ((v1.HasValue == false && v2.Value == false) ||
                                 (v2.HasValue == false && v1.Value == false))
                             {
@@ -88,7 +89,7 @@ namespace EncompassREST.HelperClasses
                             }
                         }
 
-                        if (!v.valA.Equals(v.valB))
+                        if (!v.ValA.Equals(v.ValB))
                             variances.Add(v);
                     }
                     else
@@ -101,11 +102,10 @@ namespace EncompassREST.HelperClasses
 
         }
 
-
-        public static bool isSimple(this Type type)
+        public static bool IsSimple(this Type type)
         {
             if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
-                return type.GetGenericArguments()[0].GetType().isSimple();
+                return type.GetGenericArguments()[0].GetType().IsSimple();
 
             return type.IsPrimitive ||
                 type.IsEnum ||

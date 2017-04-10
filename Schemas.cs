@@ -1,49 +1,45 @@
-﻿using EncompassREST.Exceptions;
-using EncompassREST.HelperClasses;
-using EncompassREST.JSONHelpers;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassREST.Exceptions;
+using EncompassREST.HelperClasses;
+using EncompassREST.JsonHelpers;
+using Newtonsoft.Json.Linq;
 
 namespace EncompassREST
 {
     public class Schemas
     {
-        private string API_PATH = "encompass/v1/schema";
-        private Session _Session;
+        private const string _apiPath = "encompass/v1/schema";
 
-        public Schemas(Session Session)
+        public Session Session { get; }
+
+        public Schemas(Session session)
         {
-            _Session = Session;
+            Session = session;
         }
 
-        public Session Session
+        public Task<string> GetSchemaAsync()
         {
-            get { return _Session; }
+            return GetSchemaAsync(null, true);
         }
 
-        public async Task<string> GetSchemaAsync()
-        {
-            return await GetSchemaAsync(null, true);
-        }
         public async Task<string> GetSchemaAsync(IList<string> entities,bool includeFieldExtensions)
         {
-            
-            RequestParameters rp = new RequestParameters();
+            var rp = new RequestParameters();
             if (entities != null &&
                 entities.Count > 0)
             {
-                rp.Add("entities", String.Join(",", entities));
+                rp.Add("entities", string.Join(",", entities));
             }
             rp.Add("includeFieldExtensions", includeFieldExtensions.ToString());
 
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format(API_PATH + "/loan{0}",rp.ToString()));
-            var response = await _Session.RESTClient.SendAsync(message);
+            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan{rp}");
+            var response = await Session.RESTClient.SendAsync(message);
                 //await _Session.RESTClient.GetAsync(API_PATH + "/loan" + rp.ToString());
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -51,42 +47,39 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException("getSchema", response);
+                throw new RESTException(nameof(GetSchemaAsync), response);
             }
-
         }
 
-        public async Task<string> GetSchemaFieldAsync(string FieldID)
+        public async Task<string> GetSchemaFieldAsync(string fieldId)
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format(API_PATH + "/loan/{0}", FieldID));
+            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan/{fieldId}");
             //var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan/" + FieldID);
-            var response = await _Session.RESTClient.SendAsync(message);
+            var response = await Session.RESTClient.SendAsync(message);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsStringAsync();
             }
             else
             {
-                throw new RESTException("GetSchemaField", response);
+                throw new RESTException(nameof(GetSchemaFieldAsync), response);
             }
         }
 
-        public async Task<string> GetFieldPathAsync(string FieldID)
+        public async Task<string> GetFieldPathAsync(string fieldId)
         {
             string schemaJson;
-            StringBuilder ReturnPath = new StringBuilder();
+            var ReturnPath = new StringBuilder();
             try
             {
-                schemaJson = await GetSchemaFieldAsync(FieldID);
+                schemaJson = await GetSchemaFieldAsync(fieldId);
             }
             catch (RESTException re)
             {
                 throw new RESTException("GetSchemaFieldAsync", re.Response);
             }
 
-            
-
-            JObject jsonMain = JObject.Parse(schemaJson);
+            var jsonMain = JObject.Parse(schemaJson);
             var entityTypes = jsonMain["entity_types"];
             foreach (var token in entityTypes)
             {
@@ -95,12 +88,11 @@ namespace EncompassREST
             }
 
             //jsonMain["entity_types"].Last["properties"]
-
-
-            var fieldIDTokens = jsonMain.FindTokens("field_id");
-            if (fieldIDTokens.Count == 1)
+            
+            var fieldIdTokens = jsonMain.FindTokens("field_id");
+            if (fieldIdTokens.Count == 1)
             {
-                var path = fieldIDTokens.FirstOrDefault().Path;
+                var path = fieldIdTokens.FirstOrDefault().Path;
                 var itemsInPath = path.Split('.');
                 ReturnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
             }
@@ -112,25 +104,24 @@ namespace EncompassREST
                 ReturnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
             }
 
-
             return ReturnPath.ToString();
         }
 
-        public async Task GenerateClassFilesFromSchemaAsync(string DestinationPath,string Namespace)
+        public async Task GenerateClassFilesFromSchemaAsync(string destinationPath, string @namespace)
         {
-            string RawSchema = await GetSchemaAsync();
+            var RawSchema = await GetSchemaAsync();
 
-            JToken jo = JToken.Parse(RawSchema);
+            var jo = JToken.Parse(RawSchema);
             var entities = jo["entity_types"];
-            foreach (JToken jt in entities.Children())
-                await GenerateClassFileFromSchemaAsync(DestinationPath,Namespace,((JProperty)jt).Name,jo);
-
+            foreach (var jt in entities.Children())
+                await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, ((JProperty)jt).Name, jo);
         }
-        private async Task GenerateClassFileFromSchemaAsync(string DestinationPath, string Namespace, string Section, JToken SchemaToken)
+
+        private async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string section, JToken schemaToken)
         {
             string entity;
-            StringBuilder sb = new StringBuilder();
-            string partial = (Section == "Loan") ? " partial " : "";
+            var sb = new StringBuilder();
+            var partial = (section == "Loan") ? " partial " : "";
             sb.Append(
 @"using System;
 using System.Collections.Generic;
@@ -138,19 +129,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace " + Namespace + @"
+namespace " + @namespace + @"
 {
-    public " + partial + "class " + Section + @"
+    public " + partial + "class " + section + @"
     {"
 );
-            var section = SchemaToken["entity_types"][Section]["properties"];
-            foreach (JToken SectionToken in section.Children())
+            var sectionProperties = schemaToken["entity_types"][section]["properties"];
+            foreach (var SectionToken in sectionProperties.Children())
             {
-                JProperty VariableProperty = (JProperty)SectionToken;
-                string vName = VariableProperty.Name;
+                var VariableProperty = (JProperty)SectionToken;
+                var vName = VariableProperty.Name;
                 vName = vName.Substring(0, 1).ToLower() + vName.Substring(1); //set proper case
 
-                var vType = SchemaToken["entity_types"][Section]["properties"][VariableProperty.Name]["type"];
+                var vType = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["type"];
 
                 switch(vType.ToString())
                 {
@@ -173,13 +164,13 @@ namespace " + Namespace + @"
                         //validate reserialization of these elements
                     case "set":
                     case "list":
-                        entity = SchemaToken["entity_types"][Section]["properties"][VariableProperty.Name]["element_type"].ToString();
+                        entity = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["element_type"].ToString();
                         entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
                         sb.AppendLine("        public List<"+entity + "> " + vName + " { get; set; }");
                         break;
 
                     case "entity":
-                        entity = SchemaToken["entity_types"][Section]["properties"][VariableProperty.Name]["element_type"].ToString();
+                        entity = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["element_type"].ToString();
                         entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
                         sb.AppendLine("        public " + entity + " " + vName + " { get; set; }");
                         break;
@@ -194,11 +185,10 @@ namespace " + Namespace + @"
 @"    }
 }"
 );
-            using (StreamWriter sw = new StreamWriter(Path.Combine(DestinationPath, Section + ".cs")))
+            using (var sw = new StreamWriter(Path.Combine(destinationPath, section + ".cs")))
             {
                 await sw.WriteAsync(sb.ToString());
             }
         }
-
     }
 }

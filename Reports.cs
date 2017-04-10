@@ -1,43 +1,26 @@
-﻿using EncompassREST.Data;
-using EncompassREST.Reporting;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EncompassREST.Reporting;
 
 namespace EncompassREST
 {
     public class Reports
     {
-        private Session eSession;
-        private Dictionary<Guid, Report> _ReportList;
+        private Dictionary<Guid, Report> _reportList;
 
-        public Session Session
+        public Session Session { get; }
+
+        public Reports(Session session)
         {
-            get { return eSession; }
+            Session = session;
+            _reportList = new Dictionary<Guid, Reporting.Report>();
         }
 
-        public Reports(Session Session)
+        public Report NewReport(string title = "")
         {
-            eSession = Session;
-            _ReportList = new Dictionary<Guid, Reporting.Report>();
-        }
-
-        public Report newReport(string Title = "")
-        {
-            var report = new Report(eSession, Title);
-            _ReportList.Add(report.ReportID, report);
+            var report = new Report(Session, title);
+            _reportList.Add(report.ReportId, report);
             return report;
         }
-
-
-        
-
-
-
     }
 }

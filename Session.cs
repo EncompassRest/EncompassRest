@@ -1,150 +1,112 @@
-﻿using EncompassREST.Exceptions;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+using EncompassREST.Exceptions;
 
 namespace EncompassREST
 {
     public class Session
     {
-        private string _ClientID;
-        private string _ClientSecret;
-        private string _InstanceID;
-        private string _UserID;
-        private string _Password;
-
+        private readonly string _clientId;
+        private readonly string _clientSecret;
+        private readonly string _instanceId;
+        private readonly string _userId;
+        private readonly string _password;
         //private string _SessionKey;
-        private AccessToken _AccessToken;
+        private AccessToken _accessToken;
+        private const string _apiUrl = "https://api.elliemae.com";
+        private readonly HttpClient _client;
 
-        private string API_URL = "https://api.elliemae.com";
+        private DateTime _tokenExpires;
+        private DateTime _tokenLastCall;
 
-        private HttpClient _client;
-
-        private Loans loans;
-        private Schemas schemas;
-        private Webhooks webhooks;
-        private Reports reports;
-        private Pipeline pipeline;
-
-
-        private DateTime _TokenExpires;
-        private DateTime _TokenLastCall;
-
-        #region properties
+        #region Properties
         public AccessToken AccessToken
         {
-            get { return _AccessToken; }
+            get
+            {
+                return _accessToken;
+            }
             private set
             {
-                _AccessToken = value;
-                _TokenLastCall = DateTime.Now;
+                _accessToken = value;
+                _tokenLastCall = DateTime.Now;
 
                 IEnumerable<string> vals;
-                if (_client.DefaultRequestHeaders.TryGetValues("Authorization",out vals))
+                if (_client.DefaultRequestHeaders.TryGetValues("Authorization", out vals))
                     _client.DefaultRequestHeaders.Remove("Authorization");
-                _client.DefaultRequestHeaders.Add("Authorization", _AccessToken.AuthenticationString);
+                _client.DefaultRequestHeaders.Add("Authorization", _accessToken.AuthenticationString);
             }
         }
 
-        
+        public Loans Loans { get; }
 
-        public Loans Loans
-        {
-            get { return loans; }
-        }
+        public Schemas Schemas { get; }
 
-        public Schemas Schemas
-        {
-            get { return schemas; }
-        }
+        public Webhooks Webhooks { get; }
 
-        public Webhooks Webhooks
-        {
-            get { return webhooks; }
-        }
+        public Reports Reports { get; }
 
-        public Reports Reports
-        {
-            get { return reports; }
-        }
-
-        public Pipeline Pipeline
-        {
-            get { return pipeline; }
-        }
+        public Pipeline Pipeline { get; }
 
         public HttpClient RESTClient
         {
             get
             {
-                if (_AccessToken == null)
+                if (_accessToken == null)
                     throw new SessionNotOpenException();
 
                 var now = DateTime.Now;
 
-                if ((now - _TokenLastCall).TotalMinutes > 12 ||
-                    (_TokenExpires - now).TotalMinutes <10)
+                if ((now - _tokenLastCall).TotalMinutes > 12 ||
+                    (_tokenExpires - now).TotalMinutes <10)
                 {
                     ClearAccessToken();
                     StartSession();
                 }
 
-
-
-                _TokenLastCall = now;
+                _tokenLastCall = now;
                 return _client;
             }
         }
         #endregion
 
-        public Session(string ClientID,
-                        string ClientSecret,
-                        string InstanceID,
-                        string UserID,
-                        string Password)
+        public Session(string clientId, string clientSecret, string instanceId, string userId, string password)
         {
-            _ClientID = ClientID;
-            _ClientSecret = ClientSecret;
-            _InstanceID = InstanceID;
-            _UserID = UserID;
-            _Password = Password;
+            _clientId = clientId;
+            _clientSecret = clientSecret;
+            _instanceId = instanceId;
+            _userId = userId;
+            _password = password;
 
-            _client = new HttpClient();
-            _client.BaseAddress = new Uri(API_URL);
-            ServicePointManager.DefaultConnectionLimit =100;
+            _client = new HttpClient()
+            {
+                BaseAddress = new Uri(_apiUrl)
+            };
+            ServicePointManager.DefaultConnectionLimit = 100;
 
-            _AccessToken = null;
-
-            loans = new Loans(this);
-            schemas = new Schemas(this);
-            webhooks = new Webhooks(this);
-            reports = new Reports(this);
-            pipeline = new Pipeline(this);
-
+            _accessToken = null;
+            Loans = new Loans(this);
+            Schemas = new Schemas(this);
+            Webhooks = new Webhooks(this);
+            Reports = new Reports(this);
+            Pipeline = new Pipeline(this);
         }
 
         public void StartSession()
         {
-
-            var t = new AccessToken(_ClientID, _ClientSecret, _InstanceID, this);
-
-            t.getToken(_UserID, _Password).Wait();
+            var t = new AccessToken(_clientId, _clientSecret, _instanceId, this);
+            t.GetTokenAsync(_userId, _password).Wait();
             AccessToken = t;
-            var validate =  t.getTokenValidation().Result;
-            _TokenExpires = validate.GetExpirationDate();
-
+            var validate =  t.GetTokenValidationAsync().Result;
+            _tokenExpires = validate.GetExpirationDate();
         }
-        
 
         internal void ClearAccessToken()
         {
-            _AccessToken = null;
+            _accessToken = null;
             _client.DefaultRequestHeaders.Remove("Authorization");
         }
-
     }
 }

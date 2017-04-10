@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EncompassREST.HelperClasses
@@ -18,7 +15,7 @@ namespace EncompassREST.HelperClasses
                 Content = iContent
             };
 
-            HttpResponseMessage response = new HttpResponseMessage();
+            var response = new HttpResponseMessage();
             try
             {
                 response = await client.SendAsync(request);
@@ -31,9 +28,9 @@ namespace EncompassREST.HelperClasses
             return response;
         }
 
-        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent iContent)
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent iContent)
         {
-            return await client.PatchAsync(new Uri(client.BaseAddress + requestUri), iContent);
+            return client.PatchAsync(new Uri(client.BaseAddress + requestUri), iContent);
         }
     }
 }
