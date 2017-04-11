@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace EncompassREST.Serialization
 {
-
     public class NewtonsoftJsonSerializer
     {
         private readonly JsonSerializer _serializer;

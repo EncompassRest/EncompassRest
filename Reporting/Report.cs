@@ -65,7 +65,7 @@ namespace EncompassREST.Reporting
         }
 
         [Obsolete]
-        public string GenerateCSVReport()
+        public string GenerateCsvReport()
         {
             var sb = new StringBuilder();
 

@@ -12,16 +12,16 @@ namespace EncompassREST
 {
     public class Documents
     {
-        private Loan _loan;
+        private readonly Loan _loan;
 
         public Session Session
         {
             get { return _loan.Session; }
         }
 
-        public Documents(Loan Loan)
+        public Documents(Loan loan)
         {
-            _loan = Loan;
+            _loan = loan;
         }
 
         public async Task<List<Document>> GetDocumentsListAsync()

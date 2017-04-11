@@ -11,27 +11,22 @@ namespace EncompassREST.Exceptions
 {
     public class FileNotFoundException : Exception
     {
-        private string _Data;
-        public string ExtraData { get { return _Data; } }
-        public FileNotFoundException(string message, string ExtraData) : base(message)
-        {
-            _Data = ExtraData;
+        public string ExtraData { get; }
 
+        public FileNotFoundException(string message, string extraData) : base(message)
+        {
+            ExtraData = extraData;
         }
     }
 
     public class LoanLockedException : RESTException
     {
-        private LoanLocked _loanLocked;
+        public LoanLocked LoanLocked { get; }
 
-        public LoanLocked LoanLocked
+        public LoanLockedException(string message, HttpResponseMessage response) : base(message, response)
         {
-            get { return _loanLocked; }
-        }
-        public LoanLockedException(string message, HttpResponseMessage Response) : base(message, Response)
-        {
-            var value =  Response.Content.ReadAsStringAsync().Result;
-            _loanLocked = JsonConvert.DeserializeObject<LoanLocked>(value);
+            var value =  response.Content.ReadAsStringAsync().Result;
+            LoanLocked = JsonConvert.DeserializeObject<LoanLocked>(value);
         }
     }
 

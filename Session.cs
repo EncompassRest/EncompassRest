@@ -60,7 +60,7 @@ namespace EncompassREST
                 var now = DateTime.Now;
 
                 if ((now - _tokenLastCall).TotalMinutes > 12 ||
-                    (_tokenExpires - now).TotalMinutes <10)
+                    (_tokenExpires - now).TotalMinutes < 10)
                 {
                     ClearAccessToken();
                     StartSession();

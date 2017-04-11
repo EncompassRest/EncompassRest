@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -28,7 +27,7 @@ namespace EncompassREST
             return GetSchemaAsync(null, true);
         }
 
-        public async Task<string> GetSchemaAsync(IList<string> entities,bool includeFieldExtensions)
+        public async Task<string> GetSchemaAsync(IList<string> entities, bool includeFieldExtensions)
         {
             var rp = new RequestParameters();
             if (entities != null &&
@@ -69,7 +68,7 @@ namespace EncompassREST
         public async Task<string> GetFieldPathAsync(string fieldId)
         {
             string schemaJson;
-            var ReturnPath = new StringBuilder();
+            var returnPath = new StringBuilder();
             try
             {
                 schemaJson = await GetSchemaFieldAsync(fieldId);
@@ -84,7 +83,7 @@ namespace EncompassREST
             foreach (var token in entityTypes)
             {
                 var p = (JProperty)token;
-                ReturnPath.Append(p.Name + ".");
+                returnPath.Append(p.Name + ".");
             }
 
             //jsonMain["entity_types"].Last["properties"]
@@ -94,17 +93,17 @@ namespace EncompassREST
             {
                 var path = fieldIdTokens.FirstOrDefault().Path;
                 var itemsInPath = path.Split('.');
-                ReturnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
+                returnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
             }
             else
             {
                 var fieldInstanceTokens = jsonMain.FindTokens("field_instances");
                 var path = fieldInstanceTokens.FirstOrDefault().Path;
                 var itemsInPath = path.Split('.');
-                ReturnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
+                returnPath.Append(itemsInPath.GetValue(itemsInPath.Count() - 2));
             }
 
-            return ReturnPath.ToString();
+            return returnPath.ToString();
         }
 
         public async Task GenerateClassFilesFromSchemaAsync(string destinationPath, string @namespace)
@@ -121,70 +120,64 @@ namespace EncompassREST
         {
             string entity;
             var sb = new StringBuilder();
-            var partial = (section == "Loan") ? " partial " : "";
+            var partial = (section == "Loan") ? "partial " : "";
             sb.Append(
-@"using System;
+$@"using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace " + @namespace + @"
-{
-    public " + partial + "class " + section + @"
-    {"
-);
+namespace {@namespace}
+{{
+    public {partial}class {section}
+    {{
+");
             var sectionProperties = schemaToken["entity_types"][section]["properties"];
-            foreach (var SectionToken in sectionProperties.Children())
+            foreach (var sectionToken in sectionProperties.Children())
             {
-                var VariableProperty = (JProperty)SectionToken;
-                var vName = VariableProperty.Name;
+                var variableProperty = (JProperty)sectionToken;
+                var vName = variableProperty.Name;
                 vName = vName.Substring(0, 1).ToLower() + vName.Substring(1); //set proper case
 
-                var vType = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["type"];
+                var vType = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["type"];
 
                 switch(vType.ToString())
                 {
                     case "string":
                     case "uuid":
-                        sb.AppendLine("        public string " + vName + " { get; set; }");
+                        sb.AppendLine($"        public string {vName} {{ get; set; }}");
                         break;
-
                     case "decimal":
                     case "bool":
                     case "int":
-                        sb.AppendLine("        public " + vType.ToString() +"? " + vName + " { get; set; }");
+                        sb.AppendLine($"        public {vType}? {vName} {{ get; set; }}");
                         break;
-
                     case "date":
                     case "datetime":
-                        sb.AppendLine("        public DateTime? " + vName + " { get; set; }");
+                        sb.AppendLine($"        public DateTime? {vName} {{ get; set; }}");
                         break;
-
                         //validate reserialization of these elements
                     case "set":
                     case "list":
-                        entity = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["element_type"].ToString();
+                        entity = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["element_type"].ToString();
                         entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                        sb.AppendLine("        public List<"+entity + "> " + vName + " { get; set; }");
+                        sb.AppendLine($"        public List<{entity}> {vName} {{ get; set; }}");
                         break;
-
                     case "entity":
-                        entity = schemaToken["entity_types"][section]["properties"][VariableProperty.Name]["element_type"].ToString();
+                        entity = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["element_type"].ToString();
                         entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                        sb.AppendLine("        public " + entity + " " + vName + " { get; set; }");
+                        sb.AppendLine($"        public {entity} {vName} {{ get; set; }}");
                         break;
-
                     default:
-                        sb.AppendLine("        public PROBLEM<" + VariableProperty.Name + "> " + vName + " { get; set; }");
+                        sb.AppendLine($"        public PROBLEM<{variableProperty.Name}> {vName} {{ get; set; }}");
                         break;
                 }
             }
 
             sb.Append(
 @"    }
-}"
-);
+}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, section + ".cs")))
             {
                 await sw.WriteAsync(sb.ToString());

@@ -7,12 +7,12 @@ namespace EncompassREST.HelperClasses
 {
     public static class HttpClientExtensions
     {
-        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent iContent)
+        public static async Task<HttpResponseMessage> PatchAsync(this HttpClient client, Uri requestUri, HttpContent content)
         {
             var method = new HttpMethod("PATCH");
             var request = new HttpRequestMessage(method, requestUri)
             {
-                Content = iContent
+                Content = content
             };
 
             var response = new HttpResponseMessage();
@@ -28,9 +28,9 @@ namespace EncompassREST.HelperClasses
             return response;
         }
 
-        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent iContent)
+        public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content)
         {
-            return client.PatchAsync(new Uri(client.BaseAddress + requestUri), iContent);
+            return client.PatchAsync(new Uri(client.BaseAddress + requestUri), content);
         }
     }
 }
