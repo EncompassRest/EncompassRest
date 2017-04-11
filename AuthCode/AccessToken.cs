@@ -120,7 +120,7 @@ namespace EncompassREST
             message.Content = rp.BuildPostContent();
             message.Content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
-            var response  =  await _authClient.SendAsync(message);
+            var response = await _authClient.SendAsync(message);
 
             //var response = await AuthClient.PostAsync("token", rp.buildPostContent());
 

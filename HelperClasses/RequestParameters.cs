@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace EncompassREST.HelperClasses
 {
@@ -17,30 +15,7 @@ namespace EncompassREST.HelperClasses
 
         public override string ToString()
         {
-            if (Count > 0)
-            {
-                var sb = new StringBuilder();
-                sb.Append('?');
-                var first = true;
-                foreach (var requestParameter in this)
-                {
-                    if (first)
-                    {
-                        first = false;
-                    }
-                    else
-                    {
-                        sb.Append('&');
-                    }
-                    sb.Append(requestParameter);
-                }
-
-                return sb.ToString();
-            }
-            else
-            {
-                return string.Empty;
-            }
+            return Count > 0 ? $"?{string.Join("&", this)}" : string.Empty;
         }
     }
 
