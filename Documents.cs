@@ -1,34 +1,32 @@
-﻿using EncompassREST.Data;
-using EncompassREST.LoanDocs;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassREST.Data;
+using EncompassREST.Exceptions;
+using EncompassREST.LoanDocs;
+using Newtonsoft.Json;
 
 namespace EncompassREST
 {
     public class Documents
     {
-        private Loan _loan;
-        
+        private readonly Loan _loan;
 
         public Session Session
         {
             get { return _loan.Session; }
         }
 
-        public Documents(Loan Loan)
+        public Documents(Loan loan)
         {
-            _loan = Loan;
-
+            _loan = loan;
         }
 
-        public async Task<List<Document>> getDocumentsListAsync()
+        public async Task<List<Document>> GetDocumentsListAsync()
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("loans/{0}/documents", _loan.encompassId));
+            var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents");
 
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
@@ -37,14 +35,13 @@ namespace EncompassREST
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("getDocuments", response);
+                throw new RESTException(nameof(GetDocumentsListAsync), response);
             }
-
         }
 
-        public async Task<Document> getDocumentAsync(string DocumentID)
+        public async Task<Document> GetDocumentAsync(string documentId)
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("loans/{0}/documents/{1}", _loan.encompassId,DocumentID));
+            var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents/{documentId}");
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
@@ -52,13 +49,13 @@ namespace EncompassREST
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("getDocuments", response);
+                throw new RESTException(nameof(GetDocumentAsync), response);
             }
         }
 
-        public async Task<List<Attachment>> getDocumentAttachmentListAsync(string DocumentID)
+        public async Task<List<Attachment>> GetDocumentAttachmentListAsync(string documentId)
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Get, string.Format("loans/{0}/documents/{1}/attachments", _loan.encompassId, DocumentID));
+            var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents/{documentId}/attachments");
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
@@ -66,11 +63,11 @@ namespace EncompassREST
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("getDocuments", response);
+                throw new RESTException(nameof(GetDocumentAttachmentListAsync), response);
             }
         }
 
-        public async Task<Document> postDocument(string title,string applicationId = "All")
+        public async Task<Document> PostDocumentAsync(string title, string applicationId = "All")
         {
             var newDoc = new
             {
@@ -79,29 +76,26 @@ namespace EncompassREST
                 entityId = 1,
                 entityType = "document"
             };
-            
-            
 
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("loans/{0}/documents", _loan.encompassId));
-            message.Content = new StringContent(JsonConvert.SerializeObject(newDoc), Encoding.UTF32, "application/json");
-
+            var message = new HttpRequestMessage(HttpMethod.Post, $"loans/{_loan.encompassId}/documents")
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(newDoc), Encoding.UTF32, "application/json")
+            };
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
-                var ID = response.Headers.Location.Segments.Last();
-                return await getDocumentAsync(ID);
+                var id = response.Headers.Location.Segments.Last();
+                return await GetDocumentAsync(id);
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("getDocuments", response);
+                throw new RESTException(nameof(PostDocumentAsync), response);
             }
-
         }
 
-
-        public async Task<string> getDownloadUrlAsync(Attachment attachment)
+        public async Task<string> GetDownloadUrlAsync(Attachment attachment)
         {
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("loans/{0}/attachments/{1}/url", _loan.encompassId,attachment.entityId));
+            var message = new HttpRequestMessage(HttpMethod.Post, $"loans/{_loan.encompassId}/attachments/{attachment.entityId}/url");
             var response = await Session.RESTClient.SendAsync(message);
 
             if (response.IsSuccessStatusCode)
@@ -111,9 +105,8 @@ namespace EncompassREST
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("getDownloadUrlAsync", response);
+                throw new RESTException(nameof(GetDownloadUrlAsync), response);
             }
         }
-
     }
 }

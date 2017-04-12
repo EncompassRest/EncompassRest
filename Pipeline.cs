@@ -1,32 +1,26 @@
-﻿using EncompassREST.HelperClasses;
-using EncompassREST.PipelineModels;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassREST.Exceptions;
+using EncompassREST.HelperClasses;
+using EncompassREST.PipelineModels;
+using Newtonsoft.Json;
 
 namespace EncompassREST
 {
     public class Pipeline
     {
-        private Session _session;
-        private string API_PATH = "encompass/v1";
+        private const string _apiPath = "encompass/v1";
 
-        public Session Session
+        public Session Session { get; }
+
+        public Pipeline(Session session)
         {
-            get { return _session; }
+            Session = session;
         }
-
-        public Pipeline(Session Session)
-        {
-            _session = Session;
-        }
-
         
-        public async Task<string> postPipelineQueryAsync(Filter filter,List<SortOrderItem> sortItem,List<string> fields, int limit = 0)
+        public async Task<string> PostPipelineQueryAsync(Filter filter, List<SortOrderItem> sortItem, List<string> fields, int limit = 0)
         {
             var obj = new
             {
@@ -34,35 +28,33 @@ namespace EncompassREST
                 sortOrder = sortItem,
                 fields = fields
             };
-            string paramList = "";
+            var paramList = "";
             if (limit > 0)
             {
-                RequestParameters rp = new HelperClasses.RequestParameters();
-                rp.Add("limit", limit.ToString());
+                var rp = new RequestParameters
+                {
+                    { "limit", limit.ToString() }
+                };
                 paramList = rp.ToString();
             }
 
-            HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, string.Format("{0}/loanPipeline" + paramList,API_PATH));
+            var message = new HttpRequestMessage(HttpMethod.Post, $"{_apiPath}/loanPipeline{paramList}");
 
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            settings.NullValueHandling = NullValueHandling.Ignore;
-            message.Content = new StringContent(JsonConvert.SerializeObject(obj,settings), Encoding.UTF8, "application/json");
-            
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            };
+            message.Content = new StringContent(JsonConvert.SerializeObject(obj, settings), Encoding.UTF8, "application/json");
 
-
-            var response = await _session.RESTClient.SendAsync(message);
+            var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsStringAsync();
             }
             else
             {
-                throw new EncompassREST.Exceptions.RESTException("postPipelineQueryAsync", response);
+                throw new RESTException("postPipelineQueryAsync", response);
             }
-            
         }
-
-
-
     }
 }

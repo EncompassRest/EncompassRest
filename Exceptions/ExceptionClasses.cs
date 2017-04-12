@@ -5,44 +5,35 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace EncompassREST.Exceptions
 {
     public class FileNotFoundException : Exception
     {
-        private string _Data;
-        public string ExtraData { get { return _Data; } }
-        public FileNotFoundException(string message, string ExtraData) : base(message)
-        {
-            _Data = ExtraData;
+        public string ExtraData { get; }
 
+        public FileNotFoundException(string message, string extraData) : base(message)
+        {
+            ExtraData = extraData;
         }
     }
 
-
-
     public class LoanLockedException : RESTException
     {
-        
-        private Exceptions.LoanLocked _loanLocked;
+        public LoanLocked LoanLocked { get; }
 
-        public Exceptions.LoanLocked LoanLocked
+        public LoanLockedException(string message, HttpResponseMessage response) : base(message, response)
         {
-            get { return _loanLocked; }
+            var value =  response.Content.ReadAsStringAsync().Result;
+            LoanLocked = JsonConvert.DeserializeObject<LoanLocked>(value);
         }
-        public LoanLockedException(string message, HttpResponseMessage Response) : base(message, Response)
-        {
-            string value =  Response.Content.ReadAsStringAsync().Result;
-            _loanLocked = JsonConvert.DeserializeObject<Exceptions.LoanLocked>(value);
-        }
-
     }
 
     public class RESTException : Exception
     {
         private HttpResponseMessage _response;
+
         public HttpStatusCode StatusCode
         {
             get { return _response.StatusCode; }
@@ -58,7 +49,7 @@ namespace EncompassREST.Exceptions
             get { return _response.Content.ReadAsStringAsync().Result; }
         }
 
-        public string correlationID
+        public string CorrelationId
         {
             get
             {
@@ -70,7 +61,6 @@ namespace EncompassREST.Exceptions
             }
         }
 
-
         public RESTException(string message, HttpResponseMessage Response) : base(BaseMessageBuilder(message, Response))
         {
             _response = Response;
@@ -78,7 +68,7 @@ namespace EncompassREST.Exceptions
 
         private static string BaseMessageBuilder(string message, HttpResponseMessage Response)
         {
-            StringBuilder errorString = new StringBuilder();
+            var errorString = new StringBuilder();
 
             if (message != "")
             {
@@ -106,14 +96,12 @@ namespace EncompassREST.Exceptions
                 /**/
                 //errorString.Append(Response.Content.ReadAsStringAsync().Result);
             }
-
             return errorString.ToString();
         }
     }
 
     public class SessionNotOpenException : Exception
     {
-
     }
 
     public class InvalidEntitiesException : Exception

@@ -5,65 +5,57 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EncompassREST.Reporting
 {
     public class Report
     {
-        private List<Loan> _Loans = new List<Loan>();
-        private Dictionary<string, string> _Fields = new Dictionary<string, string>();
-        private string _Title;
-        private Session _Session;
-        private Guid _ReportID;
+        private readonly List<Loan> _loans = new List<Loan>();
+        private readonly Dictionary<string, string> _fields = new Dictionary<string, string>();
+        private readonly string _title;
 
-        public Session Session
-        {
-            get { return _Session; }
-        }
+        public Session Session { get; }
 
-        public Guid ReportID
-        {
-            get { return _ReportID; }
-        }
+        public Guid ReportId { get; }
 
         public List<string> GuidList
         {
-            get { return _Loans.Select(x => x.encompassId).ToList(); }
+            get { return _loans.Select(x => x.encompassId).ToList(); }
         }
 
-        public Report(Session Session,string Title)
+        public Report(Session session, string title)
         {
-            _Title = Title;
-            _Session = Session;
-            _ReportID = Guid.NewGuid();
-        }
-        public void addLoan(string GUID)
-        {
-            var tLoan = _Session.Loans.GetLoanAsync(GUID).Result;
-            this.addLoan(tLoan);
+            _title = title;
+            Session = session;
+            ReportId = Guid.NewGuid();
         }
 
-        public void addLoan(Loan newLoan)
+        public void AddLoan(string guid)
         {
-            if (_Loans.Where(x => x.encompassId == newLoan.encompassId).Count() == 0) //ensure no duplicate loans
-                _Loans.Add(newLoan);
+            var tLoan = Session.Loans.GetLoanAsync(guid).Result;
+            AddLoan(tLoan);
         }
 
-        public void addFieldOutput(string Headder, string Field)
+        public void AddLoan(Loan newLoan)
         {
-            _Fields.Add(Headder, Field);
+            if (_loans.Where(x => x.encompassId == newLoan.encompassId).Count() == 0) //ensure no duplicate loans
+                _loans.Add(newLoan);
         }
 
-        public string generateJSONReport()
+        public void AddFieldOutput(string header, string field)
         {
-            ExpandoObject report = new ExpandoObject();
+            _fields.Add(header, field);
+        }
+
+        public string GenerateJsonReport()
+        {
+            var report = new ExpandoObject();
             var rep = report as IDictionary<string, object>;
-            foreach (var loan in _Loans)
+            foreach (var loan in _loans)
             {
-                ExpandoObject ja = new ExpandoObject();
+                var ja = new ExpandoObject();
                 var jaAdd = ja as IDictionary<string, object>;
-                foreach (var kp in _Fields)
+                foreach (var kp in _fields)
                 {
                     jaAdd.Add(kp.Key, loan.GetLoanValueJSONRecursive(kp.Value));
                 }
@@ -72,32 +64,33 @@ namespace EncompassREST.Reporting
             return JsonConvert.SerializeObject(report);
         }
 
-        [Obsolete()]
-        public string generateCSVReport()
+        [Obsolete]
+        public string GenerateCsvReport()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
-            sb.AppendLine(string.Join(",", _Fields.Select(x => x.Key)));
+            sb.AppendLine(string.Join(",", _fields.Select(x => x.Key)));
 
-
-            foreach (var loan in _Loans)
+            foreach (var loan in _loans)
             {
                 sb.AppendLine(GenerateLoanRow(loan));
             }
 
             return sb.ToString();
         }
-        [Obsolete()]
+
+        [Obsolete]
         private string GenerateLoanRow(Loan loan)
         {
-            List<string> data = new List<string>();
-            foreach (var kp in _Fields)
+            var data = new List<string>();
+            foreach (var kp in _fields)
             {
                 data.Add(GetFieldData(loan, kp.Value).ToString());
             }
             return string.Join(",", data);
         }
-        [Obsolete()]
+
+        [Obsolete]
         private object GetFieldData(Loan loan, string Field)
         {
             //The magic happens here
