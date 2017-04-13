@@ -34,20 +34,11 @@ namespace EncompassREST.Exceptions
     {
         private HttpResponseMessage _response;
 
-        public HttpStatusCode StatusCode
-        {
-            get { return _response.StatusCode; }
-        }
+        public HttpStatusCode StatusCode => _response.StatusCode;
 
-        public HttpResponseMessage Response
-        {
-            get { return _response; }
-        }
+        public HttpResponseMessage Response => _response;
 
-        public string Content
-        {
-            get { return _response.Content.ReadAsStringAsync().Result; }
-        }
+        public string Content => _response.Content.ReadAsStringAsync().Result;
 
         public string CorrelationId
         {
@@ -106,16 +97,11 @@ namespace EncompassREST.Exceptions
 
     public class InvalidEntitiesException : Exception
     {
-        private IEnumerable<string> _entitiesList;
+        public IEnumerable<string> InvalidEntitiesList { get; }
 
-        public IEnumerable<string> InvalidEntitesList
+        public InvalidEntitiesException(IEnumerable<string> invalidEntitiesList)
         {
-            get { return _entitiesList; }
-        }
-
-        public InvalidEntitiesException(IEnumerable<string> EntitesList)
-        {
-            _entitiesList = EntitesList;
+            InvalidEntitiesList = invalidEntitiesList;
         }
     }
 }

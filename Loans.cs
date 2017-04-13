@@ -195,18 +195,9 @@ namespace EncompassREST
         };
 
         #region Private Properties
-        private AccessToken AccessToken
-        {
-            get
-            {
-                return Session.AccessToken;
-            }
-        }
+        private AccessToken AccessToken => Session.AccessToken;
 
-        private HttpClient Client
-        {
-            get { return Session.RESTClient; }
-        }
+        private HttpClient Client => Session.RESTClient;
         #endregion
 
         #region Public Properties
@@ -218,10 +209,7 @@ namespace EncompassREST
             Session = session;
         }
 
-        public Task<Loan> GetLoanAsync(string guid)
-        {
-            return GetLoanAsync(guid, null);
-        }
+        public Task<Loan> GetLoanAsync(string guid) => GetLoanAsync(guid, null);
 
         public async Task<Loan> GetLoanAsync(string guid, IEnumerable<string> entities)
         {
@@ -262,11 +250,8 @@ namespace EncompassREST
             //return tcs.Task;
         }
 
-        public Task<Loan> PostLoanAsync(Loan loan)
-        {
-            return PostLoanAsync(loan.JsonValue);
-        }
-        
+        public Task<Loan> PostLoanAsync(Loan loan) => PostLoanAsync(loan.JsonValue);
+
         public async Task<Loan> PostLoanAsync(string loanData)
         {
             var message = new HttpRequestMessage(HttpMethod.Post, _apiPath)
@@ -286,11 +271,8 @@ namespace EncompassREST
             }
         }
 
-        public Task<Loan> PatchLoanAsync(Loan loan)
-        {
-            return PatchLoanAsync(loan.JsonValue, loan.encompassId);
-        }
-        
+        public Task<Loan> PatchLoanAsync(Loan loan) => PatchLoanAsync(loan.JsonValue, loan.encompassId);
+
         public async Task<Loan> PatchLoanAsync(string loanData, string guid)
         {
             var message = new HttpRequestMessage(new HttpMethod("PATCH"), $"{_apiPath}/{guid}")
