@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using EncompassREST.Json;
 
 namespace EncompassREST.Reporting
 {
@@ -57,11 +58,11 @@ namespace EncompassREST.Reporting
                 var jaAdd = ja as IDictionary<string, object>;
                 foreach (var kp in _fields)
                 {
-                    jaAdd.Add(kp.Key, loan.GetLoanValueJSONRecursive(kp.Value));
+                    jaAdd.Add(kp.Key, loan.GetLoanValueJsonRecursive(kp.Value));
                 }
                 rep.Add(loan.encompassId, ja);
             }
-            return JsonConvert.SerializeObject(report);
+            return report.ToJson();
         }
 
         [Obsolete]

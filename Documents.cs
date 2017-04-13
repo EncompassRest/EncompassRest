@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassREST.Data;
 using EncompassREST.Exceptions;
+using EncompassREST.Json;
 using EncompassREST.LoanDocs;
 using Newtonsoft.Json;
 
@@ -31,7 +32,7 @@ namespace EncompassREST
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<List<Document>>(await response.Content.ReadAsStringAsync());
+                return JsonHelper.FromJson<List<Document>>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -45,7 +46,7 @@ namespace EncompassREST
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<Document>(await response.Content.ReadAsStringAsync());
+                return JsonHelper.FromJson<Document>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -59,7 +60,7 @@ namespace EncompassREST
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<List<Attachment>>(await response.Content.ReadAsStringAsync());
+                return JsonHelper.FromJson<List<Attachment>>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -79,7 +80,7 @@ namespace EncompassREST
 
             var message = new HttpRequestMessage(HttpMethod.Post, $"loans/{_loan.encompassId}/documents")
             {
-                Content = new StringContent(JsonConvert.SerializeObject(newDoc), Encoding.UTF32, "application/json")
+                Content = new StringContent(newDoc.ToJson(), Encoding.UTF32, "application/json")
             };
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
@@ -100,7 +101,7 @@ namespace EncompassREST
 
             if (response.IsSuccessStatusCode)
             {
-                var mu = JsonConvert.DeserializeObject<MediaURL>(await response.Content.ReadAsStringAsync());
+                var mu = JsonHelper.FromJson<MediaURL>(await response.Content.ReadAsStringAsync());
                 return mu.mediaUrl;
             }
             else

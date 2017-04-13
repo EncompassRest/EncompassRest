@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassREST.Exceptions;
 using EncompassREST.HelperClasses;
+using EncompassREST.Json;
 using Newtonsoft.Json;
 
 namespace EncompassREST
@@ -78,7 +79,7 @@ namespace EncompassREST
             var response = await _authClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<TokenValidateResponse>(await response.Content.ReadAsStringAsync());
+                return JsonHelper.FromJson<TokenValidateResponse>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -127,7 +128,7 @@ namespace EncompassREST
             if (response.IsSuccessStatusCode)
             {
                 var tokenData = await response.Content.ReadAsStringAsync();
-                var tr = JsonConvert.DeserializeObject<TokenResponse>(tokenData);
+                var tr = JsonHelper.FromJson<TokenResponse>(tokenData);
                 _token = tr;
                 return true;
             }

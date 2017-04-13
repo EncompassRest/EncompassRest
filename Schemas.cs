@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassREST.Exceptions;
 using EncompassREST.HelperClasses;
-using EncompassREST.JsonHelpers;
+using EncompassREST.Json;
 using Newtonsoft.Json.Linq;
 
 namespace EncompassREST
