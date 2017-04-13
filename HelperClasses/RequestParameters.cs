@@ -8,15 +8,9 @@ namespace EncompassREST.HelperClasses
         {
         }
 
-        public void Add(string key, string value)
-        {
-            Add(new RequestParameter(key, value));
-        }
+        public void Add(string key, string value) => Add(new RequestParameter(key, value));
 
-        public override string ToString()
-        {
-            return Count > 0 ? $"?{string.Join("&", this)}" : string.Empty;
-        }
+        public override string ToString() => Count > 0 ? $"?{string.Join("&", this)}" : string.Empty;
     }
 
     public class RequestParameter 
@@ -31,10 +25,7 @@ namespace EncompassREST.HelperClasses
             Value = value;
         }
 
-        public override string ToString()
-        {
-            return $"{Key}={Value}";
-        }
+        public override string ToString() => $"{Key}={Value}";
     }
 
     public static class RequestParametersStatic

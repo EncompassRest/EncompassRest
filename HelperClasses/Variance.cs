@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace EncompassREST.HelperClasses
 {
@@ -12,10 +11,7 @@ namespace EncompassREST.HelperClasses
         public object ValA { get; set; }
         public object ValB { get; set; }
 
-        public override string ToString()
-        {
-            return $"{Prop} : {ValA} <> {ValB}";
-        }
+        public override string ToString() => $"{Prop} : {ValA} <> {ValB}";
     }
 
     public static class VarienceCheck
@@ -23,8 +19,8 @@ namespace EncompassREST.HelperClasses
         public static List<Variance> DetailedCompare<T>(this T val1, T val2, int instance = -1)
         {
             var variances = new List<Variance>();
-            FieldInfo[] fi = val1.GetType().GetFields();
-            foreach (FieldInfo f in fi)
+            var fi = val1.GetType().GetFields();
+            foreach (var f in fi)
             {
                 var v = new Variance()
                 {
@@ -65,7 +61,7 @@ namespace EncompassREST.HelperClasses
                 {
                     if (f.GetType().IsSimple())
                     {
-                        if (f.GetType() == typeof(Nullable<decimal>))
+                        if (f.GetType() == typeof(decimal?))
                         {
                             var v1 = (decimal?)v.ValA;
                             var v2 = (decimal?)v.ValB;

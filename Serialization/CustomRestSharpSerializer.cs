@@ -23,18 +23,12 @@ namespace EncompassREST.Serialization
                 }
             }
         }
-        
-        public static NewtonsoftJsonSerializer Default
+
+        public static NewtonsoftJsonSerializer Default => new NewtonsoftJsonSerializer(new JsonSerializer
         {
-            get
-            {
-                return new NewtonsoftJsonSerializer(new JsonSerializer
-                {
-                    MissingMemberHandling = MissingMemberHandling.Ignore,
-                    NullValueHandling = NullValueHandling.Ignore,
-                    DefaultValueHandling = DefaultValueHandling.Include
-                });
-            }
-        }
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Include
+        });
     }
 }

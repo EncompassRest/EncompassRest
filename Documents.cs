@@ -14,10 +14,7 @@ namespace EncompassREST
     {
         private readonly Loan _loan;
 
-        public Session Session
-        {
-            get { return _loan.Session; }
-        }
+        public Session Session => _loan.Session;
 
         public Documents(Loan loan)
         {

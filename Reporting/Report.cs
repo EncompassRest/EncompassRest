@@ -18,10 +18,7 @@ namespace EncompassREST.Reporting
 
         public Guid ReportId { get; }
 
-        public List<string> GuidList
-        {
-            get { return _loans.Select(x => x.encompassId).ToList(); }
-        }
+        public List<string> GuidList => _loans.Select(x => x.encompassId).ToList();
 
         public Report(Session session, string title)
         {

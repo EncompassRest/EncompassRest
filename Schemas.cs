@@ -22,10 +22,7 @@ namespace EncompassREST
             Session = session;
         }
 
-        public Task<string> GetSchemaAsync()
-        {
-            return GetSchemaAsync(null, true);
-        }
+        public Task<string> GetSchemaAsync() => GetSchemaAsync(null, true);
 
         public async Task<string> GetSchemaAsync(IList<string> entities, bool includeFieldExtensions)
         {

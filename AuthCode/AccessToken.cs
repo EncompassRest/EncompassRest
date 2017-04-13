@@ -24,21 +24,11 @@ namespace EncompassREST
         #region Properties
         public Session Session { get; }
 
-        public string Token
-        {
-            get
-            {
-                return _token.AccessToken;
-            }
-        }
+        public string Token => _token.AccessToken;
 
-        public string Type
-        {
-            get
-            {
-                return _token.TokenType;
-            }
-        }
+        public string Type => _token.TokenType;
+
+        public string AuthenticationString => $"{Type} {Token}";
         #endregion
 
         public AccessToken(string clientId, string clientSecret, string instanceId, Session session)
@@ -57,11 +47,6 @@ namespace EncompassREST
         }
 
         #region Public Methods
-        public string AuthenticationString
-        {
-            get { return $"{Type} {Token}"; }
-        }
-        
         public async Task<TokenValidateResponse> GetTokenValidationAsync()
         {
             var message = new HttpRequestMessage(HttpMethod.Post, "token/introspection");
