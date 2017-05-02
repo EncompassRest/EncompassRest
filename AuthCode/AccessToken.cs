@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -34,15 +35,15 @@ namespace EncompassREST
         public AccessToken(string clientId, string clientSecret, string instanceId, Session session)
         {
             Session = session;
+            _clientSecret = WebUtility.UrlEncode(clientSecret);
             _authClient = new HttpClient()
             {
                 BaseAddress = new Uri(_accessTokenUrlV2)
             };
-            _basicAuthValue = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{clientSecret}"));
+            _basicAuthValue = "Basic " + Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clientId}:{_clientSecret}"));
             _authClient.DefaultRequestHeaders.Add("Authorization", _basicAuthValue);
 
             _clientId = clientId;
-            _clientSecret = clientSecret;
             _instanceId = instanceId;
         }
 
