@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using EncompassREST.HelperClasses;
+using EncompassRest.HelperClasses;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public static class HelperStatics
     {

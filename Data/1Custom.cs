@@ -1,22 +1,17 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace EncompassREST.Data
+namespace EncompassRest.Data
 {
     public class EntityReference { }
     public class FileAttachmentReference { }
 
     public partial class Loan
     {
-        
-      
-        internal string _StartingData;
-        internal Session _Session;
+        internal string _startingData;
+        internal EncompassRestClient _client;
 
         internal Documents _Documents;
 
@@ -25,24 +20,22 @@ namespace EncompassREST.Data
             get { return _Documents; }
         }
 
-
-        public Loan(Session eSession)
+        public Loan(EncompassRestClient client)
         {
-            _Session = eSession;
-            _Documents = new EncompassREST.Documents(this);
+            _client = client;
+            _Documents = new EncompassRest.Documents(this);
         }
-
         
         public void Clear()
         {
-            Type type = this.GetType(); 
+            Type type = GetType(); 
 
             var propList = type.GetProperties();
             foreach (PropertyInfo prop in propList)
             {
                 if (prop.GetCustomAttributes(typeof(JsonIgnoreAttribute),false).Count()==0)
                 {
-                    Object obj = prop.GetValue(this, null);
+                    var obj = prop.GetValue(this, null);
                     if (obj == null)
                         continue;
 
@@ -65,14 +58,13 @@ namespace EncompassREST.Data
                     }
                 }
             }
-            _StartingData = "";
+            _startingData = "";
         }
-
 
         [JsonIgnore]
         public string RawData
         {
-            get { return _StartingData; }
+            get { return _startingData; }
         }
 
         [JsonIgnore]
@@ -86,13 +78,9 @@ namespace EncompassREST.Data
         }
 
         [JsonIgnore]
-        public Session Session
+        public EncompassRestClient Client
         {
-            get { return _Session; }
+            get { return _client; }
         }
-
-        
     }
-
-    
 }

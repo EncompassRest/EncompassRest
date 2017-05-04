@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace EncompassREST.Exceptions
+namespace EncompassRest.Exceptions
 {
     public class FileNotFoundException : Exception
     {
@@ -19,7 +19,7 @@ namespace EncompassREST.Exceptions
         }
     }
 
-    public class LoanLockedException : RESTException
+    public class LoanLockedException : RestException
     {
         public LoanLocked LoanLocked { get; }
 
@@ -30,7 +30,7 @@ namespace EncompassREST.Exceptions
         }
     }
 
-    public class RESTException : Exception
+    public class RestException : Exception
     {
         private HttpResponseMessage _response;
 
@@ -52,7 +52,7 @@ namespace EncompassREST.Exceptions
             }
         }
 
-        public RESTException(string message, HttpResponseMessage Response) : base(BaseMessageBuilder(message, Response))
+        public RestException(string message, HttpResponseMessage Response) : base(BaseMessageBuilder(message, Response))
         {
             _response = Response;
         }

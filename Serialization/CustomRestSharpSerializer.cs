@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 
-namespace EncompassREST.Serialization
+namespace EncompassRest.Serialization
 {
     public class NewtonsoftJsonSerializer
     {

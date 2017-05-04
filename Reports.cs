@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using EncompassREST.Reporting;
+using EncompassRest.Reporting;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Reports
     {
         private Dictionary<Guid, Report> _reportList;
 
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
 
-        public Reports(Session session)
+        public Reports(EncompassRestClient client)
         {
-            Session = session;
+            Client = client;
             _reportList = new Dictionary<Guid, Reporting.Report>();
         }
 
         public Report NewReport(string title = "")
         {
-            var report = new Report(Session, title);
+            var report = new Report(Client, title);
             _reportList.Add(report.ReportId, report);
             return report;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EncompassREST.LoanDocs
+namespace EncompassRest.LoanDocs
 {
     public class Role
     {

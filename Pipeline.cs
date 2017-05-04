@@ -2,22 +2,22 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassREST.Exceptions;
-using EncompassREST.HelperClasses;
-using EncompassREST.PipelineModels;
+using EncompassRest.Exceptions;
+using EncompassRest.HelperClasses;
+using EncompassRest.PipelineModels;
 using Newtonsoft.Json;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Pipeline
     {
         private const string _apiPath = "encompass/v1";
 
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
 
-        public Pipeline(Session session)
+        public Pipeline(EncompassRestClient client)
         {
-            Session = session;
+            Client = client;
         }
         
         public async Task<string> PostPipelineQueryAsync(Filter filter, List<SortOrderItem> sortItem, List<string> fields, int limit = 0)
@@ -46,14 +46,14 @@ namespace EncompassREST
             };
             message.Content = new StringContent(JsonConvert.SerializeObject(obj, settings), Encoding.UTF8, "application/json");
 
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsStringAsync();
             }
             else
             {
-                throw new RESTException("postPipelineQueryAsync", response);
+                throw new RestException("postPipelineQueryAsync", response);
             }
         }
     }

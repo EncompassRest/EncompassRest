@@ -1,4 +1,4 @@
-﻿using EncompassREST.Exceptions;
+﻿using EncompassRest.Exceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -12,29 +12,29 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace EncompassREST.Data 
+namespace EncompassRest.Data 
 {
     public static class LoanExtensions
     {
-        public static async Task PopulateLoan(this Loan tLoan, string JsonData, Session Session)
+        public static async Task PopulateLoan(this Loan tLoan, string JsonData, EncompassRestClient client)
         {
             //Loan l = await JsonConvert.DeserializeObjectAsync<Data.Loan>(JsonData);
             await Task.Factory.StartNew(() => JsonConvert.PopulateObject(JsonData, tLoan));
-            tLoan._StartingData = JsonData;
-            tLoan._Session = Session;
+            tLoan._startingData = JsonData;
+            tLoan._client = client;
             return;
         }
 
         public static async Task<Loan> PatchLoanAsync(this Loan tLoan, string JsonData)
         {
-            return await tLoan.Session.Loans.PatchLoanAsync(JsonData, tLoan.encompassId);
+            return await tLoan.Client.Loans.PatchLoanAsync(JsonData, tLoan.encompassId);
         }
 
         
         public static async Task<object> GetEncompassFieldValue(this Loan tLoan, string EncompassFieldID)
         {
 
-            var fieldPath = await tLoan.Session.Schemas.GetFieldPathAsync(EncompassFieldID);
+            var fieldPath = await tLoan.Client.Schemas.GetFieldPathAsync(EncompassFieldID);
             object placeholder;
             placeholder = GetLoanValueRecursive(tLoan, fieldPath);
 

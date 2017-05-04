@@ -7,8 +7,8 @@
     <ProjectGuid>{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EncompassREST</RootNamespace>
-    <AssemblyName>EncompassREST</AssemblyName>
+    <RootNamespace>EncompassRest</RootNamespace>
+    <AssemblyName>EncompassRest</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -52,8 +52,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,7 +73,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthCode\AccessToken.cs" />
+    <Compile Include="RetryHandler.cs" />
+    <Compile Include="TokenExpirationHandling.cs" />
+    <Compile Include="Token\AccessToken.cs" />
     <Compile Include="Documents.cs" />
     <Compile Include="Exceptions\InvalidFieldException.cs" />
     <Compile Include="linqExtension\Dynamic.cs" />
@@ -276,10 +278,15 @@
     <Compile Include="Loans.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HelperClasses\RequestParameters.cs" />
-    <Compile Include="AuthCode\HelperStatics.cs" />
+    <Compile Include="Token\HelperStatics.cs" />
     <Compile Include="Schemas.cs" />
-    <Compile Include="Session.cs" />
-    <Compile Include="AuthCode\TokenResponse.cs" />
+    <Compile Include="EncompassRestClient.cs" />
+    <Compile Include="Token\TokenIntrospectionResponse.cs" />
+    <Compile Include="Token\TokenResponse.cs" />
+    <Compile Include="Utilities\JsonContent.cs" />
+    <Compile Include="Utilities\JsonHelper.cs" />
+    <Compile Include="Utilities\KeyValuePair.cs" />
+    <Compile Include="Utilities\Preconditions.cs" />
     <Compile Include="Webhooks.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,18 +3,18 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassREST.Data;
-using EncompassREST.Exceptions;
-using EncompassREST.LoanDocs;
+using EncompassRest.Data;
+using EncompassRest.Exceptions;
+using EncompassRest.LoanDocs;
 using Newtonsoft.Json;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Documents
     {
         private readonly Loan _loan;
 
-        public Session Session => _loan.Session;
+        public EncompassRestClient Client => _loan.Client;
 
         public Documents(Loan loan)
         {
@@ -25,42 +25,42 @@ namespace EncompassREST
         {
             var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents");
 
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<List<Document>>(await response.Content.ReadAsStringAsync());
             }
             else
             {
-                throw new RESTException(nameof(GetDocumentsListAsync), response);
+                throw new RestException(nameof(GetDocumentsListAsync), response);
             }
         }
 
         public async Task<Document> GetDocumentAsync(string documentId)
         {
             var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents/{documentId}");
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<Document>(await response.Content.ReadAsStringAsync());
             }
             else
             {
-                throw new RESTException(nameof(GetDocumentAsync), response);
+                throw new RestException(nameof(GetDocumentAsync), response);
             }
         }
 
         public async Task<List<Attachment>> GetDocumentAttachmentListAsync(string documentId)
         {
             var message = new HttpRequestMessage(HttpMethod.Get, $"loans/{_loan.encompassId}/documents/{documentId}/attachments");
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<List<Attachment>>(await response.Content.ReadAsStringAsync());
             }
             else
             {
-                throw new RESTException(nameof(GetDocumentAttachmentListAsync), response);
+                throw new RestException(nameof(GetDocumentAttachmentListAsync), response);
             }
         }
 
@@ -78,7 +78,7 @@ namespace EncompassREST
             {
                 Content = new StringContent(JsonConvert.SerializeObject(newDoc), Encoding.UTF32, "application/json")
             };
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.IsSuccessStatusCode)
             {
                 var id = response.Headers.Location.Segments.Last();
@@ -86,14 +86,14 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(PostDocumentAsync), response);
+                throw new RestException(nameof(PostDocumentAsync), response);
             }
         }
 
         public async Task<string> GetDownloadUrlAsync(Attachment attachment)
         {
             var message = new HttpRequestMessage(HttpMethod.Post, $"loans/{_loan.encompassId}/attachments/{attachment.entityId}/url");
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
 
             if (response.IsSuccessStatusCode)
             {
@@ -102,7 +102,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(GetDownloadUrlAsync), response);
+                throw new RestException(nameof(GetDownloadUrlAsync), response);
             }
         }
     }
