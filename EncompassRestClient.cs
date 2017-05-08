@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.LoanBatch;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
 
@@ -52,6 +53,7 @@ namespace EncompassRest
         private Webhooks _webhooks;
         private Reports _reports;
         private Pipeline _pipeline;
+        private BatchUpdate _batchUpdate;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -100,6 +102,15 @@ namespace EncompassRest
             {
                 Pipeline loans;
                 return _pipeline ?? Interlocked.CompareExchange(ref _pipeline, (loans = new Pipeline(this)), null) ?? loans;
+            }
+        }
+
+        public BatchUpdate BatchUpdate
+        {
+            get
+            {
+                BatchUpdate batchUpdate;
+                return _batchUpdate ?? Interlocked.CompareExchange(ref _batchUpdate, (batchUpdate = new BatchUpdate(this)), null) ?? batchUpdate;
             }
         }
 

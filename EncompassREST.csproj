@@ -89,6 +89,11 @@
     <Compile Include="Filters\SortOrder.cs" />
     <Compile Include="Filters\StringFieldFilter.cs" />
     <Compile Include="Filters\StringFieldMatchType.cs" />
+    <Compile Include="LoanBatch\BatchUpdate.cs" />
+    <Compile Include="LoanBatch\BatchUpdateParameters.cs" />
+    <Compile Include="LoanBatch\BatchUpdateResponse.cs" />
+    <Compile Include="LoanBatch\BatchUpdateStatus.cs" />
+    <Compile Include="LoanBatch\FieldValuePair.cs" />
     <Compile Include="RetryHandler.cs" />
     <Compile Include="TokenExpirationHandling.cs" />
     <Compile Include="Token\AccessToken.cs" />
