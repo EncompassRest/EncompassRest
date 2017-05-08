@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace EncompassREST.JsonHelpers
+namespace EncompassRest.JsonHelpers
 {
     public static class JsonExtensions
     {

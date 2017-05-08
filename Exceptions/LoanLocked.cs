@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EncompassREST.Exceptions
+namespace EncompassRest.Exceptions
 {
     public class LoanLocked
     {

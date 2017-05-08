@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25029.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassREST", "EncompassREST.csproj", "{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EncompassRest", "EncompassRest.csproj", "{1BC65F57-9279-4E7E-A43F-0DE40DE559E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

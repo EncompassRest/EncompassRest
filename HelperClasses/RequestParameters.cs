@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EncompassREST.HelperClasses
+namespace EncompassRest.HelperClasses
 {
     public class RequestParameters : List<RequestParameter>
     {

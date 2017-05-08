@@ -5,12 +5,12 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassREST.Data;
-using EncompassREST.Exceptions;
-using EncompassREST.HelperClasses;
+using EncompassRest.Data;
+using EncompassRest.Exceptions;
+using EncompassRest.HelperClasses;
 using Newtonsoft.Json;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Loans
     {
@@ -194,19 +194,13 @@ namespace EncompassREST
             "FundingFee"
         };
 
-        #region Private Properties
-        private AccessToken AccessToken => Session.AccessToken;
-
-        private HttpClient Client => Session.RESTClient;
-        #endregion
-
         #region Public Properties
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
         #endregion
 
-        public Loans(Session session)
+        public Loans(EncompassRestClient client)
         {
-            Session = session;
+            Client = client;
         }
 
         public Task<Loan> GetLoanAsync(string guid) => GetLoanAsync(guid, null);
@@ -228,12 +222,12 @@ namespace EncompassREST
             }
             var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/{guid}{rp}");
 
-            var response = await Client.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await client.GetAsync(API_PATH + "/" + GUID + rp.ToString());
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                var l = new Loan(Session); 
-                await l.PopulateLoan(await response.Content.ReadAsStringAsync(), Session);
+                var l = new Loan(Client); 
+                await l.PopulateLoan(await response.Content.ReadAsStringAsync(), Client);
                 return l;
                 //tcs.TrySetResult(l);
             }
@@ -244,7 +238,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(GetLoanAsync), response);
+                throw new RestException(nameof(GetLoanAsync), response);
                 //tcs.TrySetException(new RESTException("GetLoanAsync", response));
             }
             //return tcs.Task;
@@ -258,7 +252,7 @@ namespace EncompassREST
             {
                 Content = new StringContent(loanData, Encoding.UTF8, "application/json")
             };
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
@@ -267,7 +261,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(PostLoanAsync), response);
+                throw new RestException(nameof(PostLoanAsync), response);
             }
         }
 
@@ -279,7 +273,7 @@ namespace EncompassREST
             {
                 Content = new StringContent(loanData, Encoding.UTF8, "application/json")
             };
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.PatchAsync(API_PATH + "/" + GUID, new StringContent(LoanData, Encoding.UTF8, "application/json"));
             if (response.IsSuccessStatusCode)
             {
@@ -291,7 +285,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(PatchLoanAsync), response);
+                throw new RestException(nameof(PatchLoanAsync), response);
             }
         }
 
@@ -302,7 +296,7 @@ namespace EncompassREST
 
             var message = new HttpRequestMessage(HttpMethod.Delete, $"{_apiPath}/{guid}");
 
-            var response = await Client.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await client.DeleteAsync(API_PATH + "/" + GUID);
             if (response.StatusCode == HttpStatusCode.NoContent)
             {
@@ -319,14 +313,14 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(DeleteLoanAsync), response);
+                throw new RestException(nameof(DeleteLoanAsync), response);
             }
         }
 
         public async Task<IEnumerable<string>> GetSupportedEntitiesAsync()
         {
             var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/supportedEntities");
-            var response = await Client.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await client.GetAsync(API_PATH + "/supportedEntities");
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -337,7 +331,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(GetSupportedEntitiesAsync), response);
+                throw new RestException(nameof(GetSupportedEntitiesAsync), response);
             }
         }
     }

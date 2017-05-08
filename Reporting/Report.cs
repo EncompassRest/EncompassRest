@@ -1,4 +1,4 @@
-﻿using EncompassREST.Data;
+﻿using EncompassRest.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 
-namespace EncompassREST.Reporting
+namespace EncompassRest.Reporting
 {
     public class Report
     {
@@ -14,22 +14,22 @@ namespace EncompassREST.Reporting
         private readonly Dictionary<string, string> _fields = new Dictionary<string, string>();
         private readonly string _title;
 
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
 
         public Guid ReportId { get; }
 
         public List<string> GuidList => _loans.Select(x => x.encompassId).ToList();
 
-        public Report(Session session, string title)
+        public Report(EncompassRestClient client, string title)
         {
             _title = title;
-            Session = session;
+            Client = client;
             ReportId = Guid.NewGuid();
         }
 
         public void AddLoan(string guid)
         {
-            var tLoan = Session.Loans.GetLoanAsync(guid).Result;
+            var tLoan = Client.Loans.GetLoanAsync(guid).Result;
             AddLoan(tLoan);
         }
 

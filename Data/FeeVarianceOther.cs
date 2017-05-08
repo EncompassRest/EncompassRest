@@ -5,7 +5,7 @@
             using System.Text;
             using System.Threading.Tasks;
 
-namespace EncompassREST.Data
+namespace EncompassRest.Data
     {
         public class FeeVarianceOther
 {

@@ -4,22 +4,22 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassREST.Exceptions;
-using EncompassREST.HelperClasses;
-using EncompassREST.JsonHelpers;
+using EncompassRest.Exceptions;
+using EncompassRest.HelperClasses;
+using EncompassRest.JsonHelpers;
 using Newtonsoft.Json.Linq;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Schemas
     {
         private const string _apiPath = "encompass/v1/schema";
 
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
 
-        public Schemas(Session session)
+        public Schemas(EncompassRestClient client)
         {
-            Session = session;
+            Client = client;
         }
 
         public Task<string> GetSchemaAsync() => GetSchemaAsync(null, true);
@@ -35,7 +35,7 @@ namespace EncompassREST
             rp.Add("includeFieldExtensions", includeFieldExtensions.ToString());
 
             var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan{rp}");
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.GetAsync(API_PATH + "/loan" + rp.ToString());
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -43,7 +43,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(GetSchemaAsync), response);
+                throw new RestException(nameof(GetSchemaAsync), response);
             }
         }
 
@@ -51,14 +51,14 @@ namespace EncompassREST
         {
             var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan/{fieldId}");
             //var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan/" + FieldID);
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsStringAsync();
             }
             else
             {
-                throw new RESTException(nameof(GetSchemaFieldAsync), response);
+                throw new RestException(nameof(GetSchemaFieldAsync), response);
             }
         }
 
@@ -70,9 +70,9 @@ namespace EncompassREST
             {
                 schemaJson = await GetSchemaFieldAsync(fieldId);
             }
-            catch (RESTException re)
+            catch (RestException re)
             {
-                throw new RESTException("GetSchemaFieldAsync", re.Response);
+                throw new RestException("GetSchemaFieldAsync", re.Response);
             }
 
             var jsonMain = JObject.Parse(schemaJson);

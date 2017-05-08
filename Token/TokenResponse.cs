@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     // make sure to add the reference the System.Runtime.Serialization.dll file.
     [DataContract]

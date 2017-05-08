@@ -2,20 +2,20 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using EncompassREST.Exceptions;
+using EncompassRest.Exceptions;
 using Newtonsoft.Json.Linq;
 
-namespace EncompassREST
+namespace EncompassRest
 {
     public class Webhooks
     {
         private const string _apiPath = "webhook/v1/subscriptions";
 
-        public Session Session { get; }
+        public EncompassRestClient Client { get; }
 
-        public Webhooks(Session session)
+        public Webhooks(EncompassRestClient client)
         {
-            Session = session;
+            Client = client;
         }
 
         public async Task<string> PutSubscriptionAsync(string newEndpoint)
@@ -36,7 +36,7 @@ namespace EncompassREST
             {
                 Content = new StringContent(newEndpointJSONstring)
             };
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.PutAsync(api, new StringContent(newEndpointJSONstring, Encoding.Unicode, "application/json"));
             if (response.IsSuccessStatusCode)
             {
@@ -44,7 +44,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(PutSubscriptionAsync), response);
+                throw new RestException(nameof(PutSubscriptionAsync), response);
             }
         }
 
@@ -56,7 +56,7 @@ namespace EncompassREST
             {
                 Content = new StringContent(jsonData)
             };
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(jsonData, Encoding.UTF8, "application/json"));
             if (response.StatusCode == HttpStatusCode.Created)
             {
@@ -64,7 +64,7 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(SubscribeAsync), response);
+                throw new RestException(nameof(SubscribeAsync), response);
             }
         }
 
@@ -72,7 +72,7 @@ namespace EncompassREST
         {
             var message = new HttpRequestMessage(HttpMethod.Get, _apiPath);
 
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
             //await _Session.RESTClient.GetAsync(API_PATH);
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -80,20 +80,20 @@ namespace EncompassREST
             }
             else
             {
-                throw new RESTException(nameof(GetSubscriptionAsync), response);
+                throw new RestException(nameof(GetSubscriptionAsync), response);
             }
         }
 
         public async Task CancelSubscriptionAsync(string subscriptionId)
         {
             var message = new HttpRequestMessage(HttpMethod.Delete, $"{_apiPath}/{subscriptionId}");
-            var response = await Session.RESTClient.SendAsync(message);
+            var response = await Client.HttpClient.SendAsync(message);
                 //await _Session.RESTClient.DeleteAsync(API_PATH + "/" + SubscriptionID);
 
             if (response.StatusCode == HttpStatusCode.NoContent)
                 return;
 
-            throw new RESTException(nameof(CancelSubscriptionAsync), response);
+            throw new RestException(nameof(CancelSubscriptionAsync), response);
         }
     }
 }
