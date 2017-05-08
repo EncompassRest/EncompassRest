@@ -8,7 +8,10 @@ namespace EncompassRest.LoanBatch
     {
         public EncompassRestClient Client { get; }
 
-        internal BatchUpdate(EncompassRestClient client) => Client = client;
+        internal BatchUpdate(EncompassRestClient client)
+        {
+            Client = client;
+        }
 
         public async Task<BatchUpdateStatus> GetStatusAsync(string requestId)
         {
