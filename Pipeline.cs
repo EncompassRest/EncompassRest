@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Exceptions;
 using EncompassRest.HelperClasses;
-using EncompassRest.PipelineModels;
+using EncompassRest.Filters;
 using Newtonsoft.Json;
 
 namespace EncompassRest
@@ -20,7 +20,7 @@ namespace EncompassRest
             Client = client;
         }
         
-        public async Task<string> PostPipelineQueryAsync(Filter filter, List<SortOrderItem> sortItem, List<string> fields, int limit = 0)
+        public async Task<string> PostPipelineQueryAsync(Filter filter, List<FieldSort> sortItem, List<string> fields, int limit = 0)
         {
             var obj = new
             {

@@ -52,6 +52,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Enums.NET, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
+      <HintPath>packages\Enums.NET.2.1.1\lib\net45\Enums.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -73,6 +76,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\CanonicalField.cs" />
+    <Compile Include="Filters\DateFieldFilter.cs" />
+    <Compile Include="Filters\DateFieldMatchPrecision.cs" />
+    <Compile Include="Filters\EmptyFieldFilter.cs" />
+    <Compile Include="Filters\FieldFilter.cs" />
+    <Compile Include="Filters\FieldSort.cs" />
+    <Compile Include="Filters\Filter.cs" />
+    <Compile Include="Filters\NotEmptyFieldFilter.cs" />
+    <Compile Include="Filters\NumericFieldFilter.cs" />
+    <Compile Include="Filters\OrdinalFieldMatchType.cs" />
+    <Compile Include="Filters\SortOrder.cs" />
+    <Compile Include="Filters\StringFieldFilter.cs" />
+    <Compile Include="Filters\StringFieldMatchType.cs" />
     <Compile Include="RetryHandler.cs" />
     <Compile Include="TokenExpirationHandling.cs" />
     <Compile Include="Token\AccessToken.cs" />
@@ -85,12 +101,6 @@
     <Compile Include="LoanDocs\MediaURL.cs" />
     <Compile Include="LoanDocs\Role.cs" />
     <Compile Include="Pipeline.cs" />
-    <Compile Include="PipelineModels\Filter.cs" />
-    <Compile Include="PipelineModels\FilterBoolean.cs" />
-    <Compile Include="PipelineModels\FilterEnums.cs" />
-    <Compile Include="PipelineModels\FilterTerm.cs" />
-    <Compile Include="PipelineModels\IFilter.cs" />
-    <Compile Include="PipelineModels\SortOrderItem.cs" />
     <Compile Include="Reports.cs" />
     <Compile Include="Reporting\Report.cs" />
     <Compile Include="Serialization\CustomRestSharpSerializer.cs" />
