@@ -1,4 +1,4 @@
-﻿using EncompassRest.Data;
+﻿using EncompassRest.Loans;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace EncompassRest.Reporting
 
         public Guid ReportId { get; }
 
-        public List<string> GuidList => _loans.Select(x => x.encompassId).ToList();
+        public List<string> GuidList => _loans.Select(x => x.EncompassId).ToList();
 
         public Report(EncompassRestClient client, string title)
         {
@@ -35,7 +35,7 @@ namespace EncompassRest.Reporting
 
         public void AddLoan(Loan newLoan)
         {
-            if (_loans.Where(x => x.encompassId == newLoan.encompassId).Count() == 0) //ensure no duplicate loans
+            if (_loans.Where(x => x.EncompassId == newLoan.EncompassId).Count() == 0) //ensure no duplicate loans
                 _loans.Add(newLoan);
         }
 
@@ -56,7 +56,7 @@ namespace EncompassRest.Reporting
                 {
                     jaAdd.Add(kp.Key, loan.GetLoanValueJSONRecursive(kp.Value));
                 }
-                rep.Add(loan.encompassId, ja);
+                rep.Add(loan.EncompassId, ja);
             }
             return JsonConvert.SerializeObject(report);
         }

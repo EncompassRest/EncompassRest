@@ -9,13 +9,13 @@ using Newtonsoft.Json;
 
 namespace EncompassRest
 {
-    public class Pipeline
+    public sealed class Pipeline
     {
-        private const string _apiPath = "encompass/v1";
+        private const string _apiPath = "encompass/v1/loanPipeline";
 
         public EncompassRestClient Client { get; }
 
-        public Pipeline(EncompassRestClient client)
+        internal Pipeline(EncompassRestClient client)
         {
             Client = client;
         }
@@ -38,7 +38,7 @@ namespace EncompassRest
                 paramList = rp.ToString();
             }
 
-            var message = new HttpRequestMessage(HttpMethod.Post, $"{_apiPath}/loanPipeline{paramList}");
+            var message = new HttpRequestMessage(HttpMethod.Post, $"{_apiPath}{paramList}");
 
             var settings = new JsonSerializerSettings
             {

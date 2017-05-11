@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,39 +12,35 @@ using Newtonsoft.Json.Linq;
 
 namespace EncompassRest
 {
-    public class Schemas
+    public sealed class Schemas
     {
         private const string _apiPath = "encompass/v1/schema";
 
         public EncompassRestClient Client { get; }
 
-        public Schemas(EncompassRestClient client)
+        internal Schemas(EncompassRestClient client)
         {
             Client = client;
         }
 
-        public Task<string> GetSchemaAsync() => GetSchemaAsync(null, true);
+        public Task<string> GetSchemaAsync() => GetSchemaAsync(null, false);
 
-        public async Task<string> GetSchemaAsync(IList<string> entities, bool includeFieldExtensions)
+        public async Task<string> GetSchemaAsync(IEnumerable<string> entities, bool includeFieldExtensions)
         {
             var rp = new RequestParameters();
-            if (entities != null &&
-                entities.Count > 0)
+            if (entities?.Any() == true)
             {
                 rp.Add("entities", string.Join(",", entities));
             }
-            rp.Add("includeFieldExtensions", includeFieldExtensions.ToString());
+            rp.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan{rp}");
-            var response = await Client.HttpClient.SendAsync(message);
-                //await _Session.RESTClient.GetAsync(API_PATH + "/loan" + rp.ToString());
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{rp}"))
             {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new RestException(nameof(GetSchemaAsync), response);
+                }
                 return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                throw new RestException(nameof(GetSchemaAsync), response);
             }
         }
 
@@ -105,71 +102,55 @@ namespace EncompassRest
 
         public async Task GenerateClassFilesFromSchemaAsync(string destinationPath, string @namespace)
         {
-            var RawSchema = await GetSchemaAsync();
+            var supportedEntities = await Client.Loans.GetSupportedEntitiesAsync();
+            var exceptions = new List<Exception>();
+            var badEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "CustomModelFields" };
+            foreach (var entity in supportedEntities)
+            {
+                if (badEntities.Contains(entity))
+                {
+                    continue;
+                }
+                try
+                {
+                    var rawSchema = await GetSchemaAsync(new[] { entity }, true);
 
-            var jo = JToken.Parse(RawSchema);
-            var entities = jo["entity_types"];
-            foreach (var jt in entities.Children())
-                await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, ((JProperty)jt).Name, jo);
+                    var jo = JToken.Parse(rawSchema);
+                    var entities = jo["entity_types"];
+                    foreach (var jt in entities.Children())
+                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, ((JProperty)jt).Name, jo);
+                }
+                catch (Exception ex)
+                {
+                    exceptions.Add(new Exception(entity, ex));
+                }
+            }
+            if (exceptions.Count > 0)
+            {
+                throw new AggregateException(exceptions);
+            }
         }
 
         private async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string section, JToken schemaToken)
         {
-            string entity;
             var sb = new StringBuilder();
-            var partial = (section == "Loan") ? "partial " : "";
             sb.Append(
 $@"using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace {@namespace}
 {{
-    public {partial}class {section}
+    public sealed {(section == "Loan" ? "partial " : "")}class {section}
     {{
 ");
             var sectionProperties = schemaToken["entity_types"][section]["properties"];
-            foreach (var sectionToken in sectionProperties.Children())
+            foreach (JProperty propertyToken in sectionProperties.Children())
             {
-                var variableProperty = (JProperty)sectionToken;
-                var vName = variableProperty.Name;
-                vName = vName.Substring(0, 1).ToLower() + vName.Substring(1); //set proper case
+                var vName = propertyToken.Name;
+                vName = vName.Substring(0, 1).ToUpper() + vName.Substring(1);
 
-                var vType = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["type"];
-
-                switch(vType.ToString())
-                {
-                    case "string":
-                    case "uuid":
-                        sb.AppendLine($"        public string {vName} {{ get; set; }}");
-                        break;
-                    case "decimal":
-                    case "bool":
-                    case "int":
-                        sb.AppendLine($"        public {vType}? {vName} {{ get; set; }}");
-                        break;
-                    case "date":
-                    case "datetime":
-                        sb.AppendLine($"        public DateTime? {vName} {{ get; set; }}");
-                        break;
-                        //validate reserialization of these elements
-                    case "set":
-                    case "list":
-                        entity = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["element_type"].ToString();
-                        entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                        sb.AppendLine($"        public List<{entity}> {vName} {{ get; set; }}");
-                        break;
-                    case "entity":
-                        entity = schemaToken["entity_types"][section]["properties"][variableProperty.Name]["element_type"].ToString();
-                        entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                        sb.AppendLine($"        public {entity} {vName} {{ get; set; }}");
-                        break;
-                    default:
-                        sb.AppendLine($"        public PROBLEM<{variableProperty.Name}> {vName} {{ get; set; }}");
-                        break;
-                }
+                var propertyType = GetPropertyType(propertyToken.Value);
+                sb.AppendLine($"        public {propertyType} {vName} {{ get; set; }}");
             }
 
             sb.Append(
@@ -178,6 +159,38 @@ namespace {@namespace}
             using (var sw = new StreamWriter(Path.Combine(destinationPath, section + ".cs")))
             {
                 await sw.WriteAsync(sb.ToString());
+            }
+        }
+
+        private string GetPropertyType(JToken propertyTokenValue)
+        {
+            var vType = propertyTokenValue["type"].ToString();
+            string entity;
+            switch (vType)
+            {
+                case "string":
+                case "uuid":
+                    return "string";
+                case "decimal":
+                case "NA<decimal>":
+                    return "decimal?";
+                case "bool":
+                case "int":
+                    return $"{vType}?";
+                case "date":
+                case "datetime":
+                    return "DateTime?";
+                case "set":
+                case "list":
+                    entity = propertyTokenValue["element_type"].ToString();
+                    entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
+                    return $"List<{entity}>";
+                case "entity":
+                    entity = propertyTokenValue["entity_type"].ToString();
+                    entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
+                    return entity;
+                default:
+                    return $"PROBLEM<{vType}>";
             }
         }
     }

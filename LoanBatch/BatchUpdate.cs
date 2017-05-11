@@ -6,6 +6,8 @@ namespace EncompassRest.LoanBatch
 {
     public sealed class BatchUpdate
     {
+        private const string _apiPath = "encompass/v1/loanBatch";
+
         public EncompassRestClient Client { get; }
 
         internal BatchUpdate(EncompassRestClient client)
@@ -17,7 +19,7 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
             
-            using (var response = await Client.HttpClient.GetAsync($"loanBatch/updateRequests/{requestId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/updateRequests/{requestId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -33,7 +35,7 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            using (var response = await Client.HttpClient.PostAsync("loanBatch/updateRequests", JsonContent.Create(parameters)).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", JsonContent.Create(parameters)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

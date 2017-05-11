@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
@@ -9,7 +10,7 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
-    public class EncompassRestClient
+    public sealed class EncompassRestClient : IDisposable
     {
         public static async Task<EncompassRestClient> CreateFromUserCredentialsAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling = TokenExpirationHandling.Default)
         {
@@ -48,7 +49,7 @@ namespace EncompassRest
         private readonly string _password;
 
         private HttpClient _httpClient;
-        private Loans _loans;
+        private Loans.Loans _loans;
         private Schemas _schemas;
         private Webhooks _webhooks;
         private Reports _reports;
@@ -60,12 +61,12 @@ namespace EncompassRest
 
         public TokenExpirationHandling TokenExpirationHandling { get; }
 
-        public Loans Loans
+        public Loans.Loans Loans
         {
             get
             {
-                Loans loans;
-                return _loans ?? Interlocked.CompareExchange(ref _loans, (loans = new Loans(this)), null) ?? loans;
+                Loans.Loans loans;
+                return _loans ?? Interlocked.CompareExchange(ref _loans, (loans = new Loans.Loans(this)), null) ?? loans;
             }
         }
 
@@ -122,7 +123,7 @@ namespace EncompassRest
                 if (httpClient == null)
                 {
                     HttpMessageHandler handler = new HttpClientHandler();
-                    if (_userId != null)
+                    if (TokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken)
                     {
                         handler = new RetryHandler(handler, async () =>
                         {
@@ -132,7 +133,7 @@ namespace EncompassRest
                     }
                     httpClient = new HttpClient(handler)
                     {
-                        BaseAddress = new Uri("https://api.elliemae.com/encompass/v1/")
+                        BaseAddress = new Uri("https://api.elliemae.com/")
                     };
                     httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
@@ -163,5 +164,27 @@ namespace EncompassRest
         }
 
         private AuthenticationHeaderValue GetAuthorizationHeader() => new AuthenticationHeaderValue(AccessToken.Type, AccessToken.Token);
+
+        private sealed class RetryHandler : DelegatingHandler
+        {
+            private readonly Func<Task<AuthenticationHeaderValue>> _reinitializeAuthorizationHeader;
+
+            public RetryHandler(HttpMessageHandler innerHandler, Func<Task<AuthenticationHeaderValue>> reinitializeAuthorizationHeader)
+                : base(innerHandler)
+            {
+                _reinitializeAuthorizationHeader = reinitializeAuthorizationHeader;
+            }
+
+            protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                if (!response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    request.Headers.Authorization = await _reinitializeAuthorizationHeader().ConfigureAwait(false);
+                    response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                }
+                return response;
+            }
+        }
     }
 }

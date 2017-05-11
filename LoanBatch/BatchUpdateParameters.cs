@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using EncompassRest.Data;
+using EncompassRest.Loans;
 using EncompassRest.Filters;
 using EncompassRest.Utilities;
 
