@@ -2,60 +2,57 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Exceptions;
-using EncompassRest.HelperClasses;
-using EncompassRest.JsonHelpers;
+using EncompassRest.Utilities;
 using Newtonsoft.Json.Linq;
 
-namespace EncompassRest
+namespace EncompassRest.Schema
 {
-    public sealed class Schemas
+    public sealed class Schema
     {
         private const string _apiPath = "encompass/v1/schema";
 
         public EncompassRestClient Client { get; }
 
-        internal Schemas(EncompassRestClient client)
+        internal Schema(EncompassRestClient client)
         {
             Client = client;
         }
 
-        public Task<string> GetSchemaAsync() => GetSchemaAsync(null, false);
-
-        public async Task<string> GetSchemaAsync(IEnumerable<string> entities, bool includeFieldExtensions)
+        public async Task<string> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false)
         {
-            var rp = new RequestParameters();
+            var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
             {
-                rp.Add("entities", string.Join(",", entities));
+                queryParameters.Add("entities", string.Join(",", entities));
             }
-            rp.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
+            queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{rp}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}"))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetSchemaAsync), response);
+                    throw new RestException(nameof(GetLoanSchemaAsync), response);
                 }
+
                 return await response.Content.ReadAsStringAsync();
             }
         }
 
-        public async Task<string> GetSchemaFieldAsync(string fieldId)
+        public async Task<string> GetFieldSchemaAsync(string fieldId)
         {
-            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/loan/{fieldId}");
-            //var response = await _Session.RESTClient.GetAsync(API_PATH + "/loan/" + FieldID);
-            var response = await Client.HttpClient.SendAsync(message);
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
+
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}"))
             {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new RestException(nameof(GetFieldSchemaAsync), response);
+                }
+
                 return await response.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                throw new RestException(nameof(GetSchemaFieldAsync), response);
             }
         }
 
@@ -65,11 +62,11 @@ namespace EncompassRest
             var returnPath = new StringBuilder();
             try
             {
-                schemaJson = await GetSchemaFieldAsync(fieldId);
+                schemaJson = await GetFieldSchemaAsync(fieldId);
             }
             catch (RestException re)
             {
-                throw new RestException("GetSchemaFieldAsync", re.Response);
+                throw new RestException(nameof(GetFieldPathAsync), re.Response);
             }
 
             var jsonMain = JObject.Parse(schemaJson);
@@ -113,7 +110,7 @@ namespace EncompassRest
                 }
                 try
                 {
-                    var rawSchema = await GetSchemaAsync(new[] { entity }, true);
+                    var rawSchema = await GetLoanSchemaAsync(new[] { entity }, true);
 
                     var jo = JToken.Parse(rawSchema);
                     var entities = jo["entity_types"];

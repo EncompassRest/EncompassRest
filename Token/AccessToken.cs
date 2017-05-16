@@ -12,7 +12,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Token
 {
-    public class AccessToken
+    public sealed class AccessToken
     {
         private HttpClient _tokenClient;
         private readonly string _clientId;

@@ -67,6 +67,7 @@
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
@@ -96,22 +97,22 @@
     <Compile Include="LoanBatch\BatchUpdateResponse.cs" />
     <Compile Include="LoanBatch\BatchUpdateStatus.cs" />
     <Compile Include="LoanBatch\FieldValuePair.cs" />
+    <Compile Include="LoanPipeline\LoanPipelineData.cs" />
+    <Compile Include="LoanPipeline\ViewPipelineParameters.cs" />
+    <Compile Include="Loans\Attachments\LoanAttachments.cs" />
+    <Compile Include="Loans\Documents\AssignmentAction.cs" />
+    <Compile Include="Loans\EntityInfo.cs" />
     <Compile Include="Loans\PrincipalDisbursementTransaction.cs" />
     <Compile Include="Loans\RemovedLogRecord.cs" />
     <Compile Include="TokenExpirationHandling.cs" />
     <Compile Include="Token\AccessToken.cs" />
-    <Compile Include="Loans\Documents.cs" />
+    <Compile Include="Loans\Documents\LoanDocuments.cs" />
     <Compile Include="Exceptions\InvalidFieldException.cs" />
-    <Compile Include="linqExtension\Dynamic.cs" />
-    <Compile Include="LoanDocs\Attachments.cs" />
-    <Compile Include="LoanDocs\Comment.cs" />
-    <Compile Include="LoanDocs\Document.cs" />
-    <Compile Include="LoanDocs\MediaURL.cs" />
-    <Compile Include="LoanDocs\Role.cs" />
-    <Compile Include="Pipeline.cs" />
-    <Compile Include="Reports.cs" />
-    <Compile Include="Reporting\Report.cs" />
-    <Compile Include="Serialization\CustomRestSharpSerializer.cs" />
+    <Compile Include="Utilities\Dynamic.cs" />
+    <Compile Include="Loans\Attachments\LoanAttachment.cs" />
+    <Compile Include="Loans\Documents\Comment.cs" />
+    <Compile Include="Loans\Documents\LoanDocument.cs" />
+    <Compile Include="LoanPipeline\Pipeline.cs" />
     <Compile Include="Loans\AdditionalRequests.cs" />
     <Compile Include="Loans\AdditionalStateDisclosure.cs" />
     <Compile Include="Loans\AffiliatedBusinessArrangement.cs" />
@@ -139,7 +140,7 @@
     <Compile Include="Loans\Correspondent.cs" />
     <Compile Include="Loans\CrmLog.cs" />
     <Compile Include="Loans\CustomField.cs" />
-    <Compile Include="Loans\1Custom.cs" />
+    <Compile Include="Loans\LoanCustomizations.cs" />
     <Compile Include="Loans\DataTracLog.cs" />
     <Compile Include="Loans\DisclosureForm.cs" />
     <Compile Include="Loans\DisclosureNotices.cs" />
@@ -288,24 +289,23 @@
     <Compile Include="Loans\UsdaHouseholdIncome.cs" />
     <Compile Include="Loans\VaLoanData.cs" />
     <Compile Include="Exceptions\LoanLocked.cs" />
-    <Compile Include="HelperClasses\Variance.cs" />
     <Compile Include="Loans\VerificationLog.cs" />
     <Compile Include="Exceptions\ExceptionClasses.cs" />
-    <Compile Include="HelperClasses\HttpClientExtensions.cs" />
-    <Compile Include="JsonHelpers\JsonExtensions.cs" />
+    <Compile Include="Utilities\HttpClientExtensions.cs" />
     <Compile Include="Loans\Loans.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="HelperClasses\RequestParameters.cs" />
-    <Compile Include="Token\HelperStatics.cs" />
-    <Compile Include="Schemas.cs" />
+    <Compile Include="Utilities\QueryParameter.cs" />
+    <Compile Include="Utilities\QueryParameters.cs" />
+    <Compile Include="Schema\Schema.cs" />
     <Compile Include="EncompassRestClient.cs" />
     <Compile Include="Token\TokenIntrospectionResponse.cs" />
-    <Compile Include="Token\TokenResponse.cs" />
     <Compile Include="Utilities\JsonContent.cs" />
     <Compile Include="Utilities\JsonHelper.cs" />
     <Compile Include="Utilities\KeyValuePair.cs" />
     <Compile Include="Utilities\Preconditions.cs" />
-    <Compile Include="Webhooks.cs" />
+    <Compile Include="Utilities\StringExtensions.cs" />
+    <Compile Include="Webhook\Webhook.cs" />
+    <Compile Include="Webhook\WebhookSubscription.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

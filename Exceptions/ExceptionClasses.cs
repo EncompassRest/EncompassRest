@@ -9,7 +9,7 @@ using System.Web.Http;
 
 namespace EncompassRest.Exceptions
 {
-    public class FileNotFoundException : Exception
+    public sealed class FileNotFoundException : Exception
     {
         public string ExtraData { get; }
 
@@ -19,7 +19,7 @@ namespace EncompassRest.Exceptions
         }
     }
 
-    public class LoanLockedException : RestException
+    public sealed class LoanLockedException : RestException
     {
         public LoanLocked LoanLocked { get; }
 
@@ -91,11 +91,11 @@ namespace EncompassRest.Exceptions
         }
     }
 
-    public class SessionNotOpenException : Exception
+    public sealed class SessionNotOpenException : Exception
     {
     }
 
-    public class InvalidEntitiesException : Exception
+    public sealed class InvalidEntitiesException : Exception
     {
         public IEnumerable<string> InvalidEntitiesList { get; }
 

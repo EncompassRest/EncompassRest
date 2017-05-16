@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.LoanBatch;
+using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
 
@@ -50,9 +51,8 @@ namespace EncompassRest
 
         private HttpClient _httpClient;
         private Loans.Loans _loans;
-        private Schemas _schemas;
-        private Webhooks _webhooks;
-        private Reports _reports;
+        private Schema.Schema _schema;
+        private Webhook.Webhook _webhooks;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
 
@@ -70,30 +70,21 @@ namespace EncompassRest
             }
         }
 
-        public Schemas Schemas
+        public Schema.Schema Schema
         {
             get
             {
-                Schemas schemas;
-                return _schemas ?? Interlocked.CompareExchange(ref _schemas, (schemas = new Schemas(this)), null) ?? schemas;
+                Schema.Schema schema;
+                return _schema ?? Interlocked.CompareExchange(ref _schema, (schema = new Schema.Schema(this)), null) ?? schema;
             }
         }
 
-        public Webhooks Webhooks
+        public Webhook.Webhook Webhook
         {
             get
             {
-                Webhooks webhooks;
-                return _webhooks ?? Interlocked.CompareExchange(ref _webhooks, (webhooks = new Webhooks(this)), null) ?? webhooks;
-            }
-        }
-
-        public Reports Reports
-        {
-            get
-            {
-                Reports reports;
-                return _reports ?? Interlocked.CompareExchange(ref _reports, (reports = new Reports(this)), null) ?? reports;
+                Webhook.Webhook webhooks;
+                return _webhooks ?? Interlocked.CompareExchange(ref _webhooks, (webhooks = new Webhook.Webhook(this)), null) ?? webhooks;
             }
         }
 

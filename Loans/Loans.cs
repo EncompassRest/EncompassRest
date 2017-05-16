@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Exceptions;
-using EncompassRest.HelperClasses;
+using EncompassRest.Loans.Attachments;
+using EncompassRest.Loans.Documents;
+using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -202,135 +202,102 @@ namespace EncompassRest.Loans
             Client = client;
         }
 
-        public Task<Loan> GetLoanAsync(string guid) => GetLoanAsync(guid, null);
-
-        public async Task<Loan> GetLoanAsync(string guid, IEnumerable<string> entities)
+        public LoanDocuments GetLoanDocuments(string loanId)
         {
-            //TaskCompletionSource<Loan> tcs = new TaskCompletionSource<Loan>();
-            var rp = new RequestParameters();
-            if (entities!= null)
-            {
-                if (entities.Count() > 0)
-                {
-                    //var eList = await GetSupportedEntitiesAsync();
-                    var exList = entities.Except(_supportedEntities);
-                    if (exList.Count() > 0)
-                        throw new InvalidEntitiesException(exList);
-                    rp.Add("entities", string.Join(",", entities));
-                }
-            }
-            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/{guid}{rp}");
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            var response = await Client.HttpClient.SendAsync(message);
-                //await client.GetAsync(API_PATH + "/" + GUID + rp.ToString());
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var l = new Loan(Client); 
-                await l.PopulateLoan(await response.Content.ReadAsStringAsync(), Client);
-                return l;
-                //tcs.TrySetResult(l);
-            }
-            else if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                throw new FileNotFoundException("guid Not found", guid);
-                //tcs.TrySetException(new FileNotFoundException("GUID Not Found", GUID));
-            }
-            else
-            {
-                throw new RestException(nameof(GetLoanAsync), response);
-                //tcs.TrySetException(new RESTException("GetLoanAsync", response));
-            }
-            //return tcs.Task;
+            return new LoanDocuments(Client, loanId);
         }
 
-        public Task<Loan> PostLoanAsync(Loan loan) => PostLoanAsync(loan.JsonValue);
-
-        public async Task<Loan> PostLoanAsync(string loanData)
+        public LoanAttachments GetLoanAttachments(string loanId)
         {
-            var message = new HttpRequestMessage(HttpMethod.Post, _apiPath)
-            {
-                Content = new StringContent(loanData, Encoding.UTF8, "application/json")
-            };
-            var response = await Client.HttpClient.SendAsync(message);
-                //await _Session.RESTClient.PostAsync(API_PATH, new StringContent(LoanData, Encoding.UTF8, "application/json"));
-            if (response.StatusCode == HttpStatusCode.Created)
-            {
-                var guid = response.Headers.Location.ToString().Split('/').Last();
-                return await GetLoanAsync(guid);
-            }
-            else
-            {
-                throw new RestException(nameof(PostLoanAsync), response);
-            }
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+
+            return new LoanAttachments(Client, loanId);
         }
 
-        public Task<Loan> PatchLoanAsync(Loan loan) => PatchLoanAsync(loan.JsonValue, loan.EncompassId);
-
-        public async Task<Loan> PatchLoanAsync(string loanData, string guid)
+        public async Task<Loan> GetLoanAsync(string loanId, IEnumerable<string> entities = null)
         {
-            var message = new HttpRequestMessage(new HttpMethod("PATCH"), $"{_apiPath}/{guid}")
-            {
-                Content = new StringContent(loanData, Encoding.UTF8, "application/json")
-            };
-            var response = await Client.HttpClient.SendAsync(message);
-                //await _Session.RESTClient.PatchAsync(API_PATH + "/" + GUID, new StringContent(LoanData, Encoding.UTF8, "application/json"));
-            if (response.IsSuccessStatusCode)
-            {
-                return await GetLoanAsync(guid);
-            }
-            else if (response.StatusCode == HttpStatusCode.Conflict) //409
-            {
-                throw new LoanLockedException(nameof(PatchLoanAsync), response);
-            }
-            else
-            {
-                throw new RestException(nameof(PatchLoanAsync), response);
-            }
-        }
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-        public async Task<Loan> DeleteLoanAsync(string guid)
-        {
-            if (guid == "")
-                throw new InvalidOperationException("Missing guid");
-
-            var message = new HttpRequestMessage(HttpMethod.Delete, $"{_apiPath}/{guid}");
-
-            var response = await Client.HttpClient.SendAsync(message);
-                //await client.DeleteAsync(API_PATH + "/" + GUID);
-            if (response.StatusCode == HttpStatusCode.NoContent)
+            var queryParameters = new QueryParameters();
+            if (entities?.Any() == true)
             {
-                Loan tloan = null;
-                try
+                var exList = entities.Except(_supportedEntities);
+                if (exList.Any())
                 {
-                    tloan = await GetLoanAsync(guid);
+                    throw new InvalidEntitiesException(exList);
                 }
-                catch (FileNotFoundException)
-                {
-                    
-                }
-                return tloan;
+                queryParameters.Add("entities", string.Join(",", entities));
             }
-            else
+
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{loanId}{queryParameters}"))
             {
-                throw new RestException(nameof(DeleteLoanAsync), response);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw response.StatusCode == HttpStatusCode.NotFound ? new FileNotFoundException("loan not found", loanId) : (Exception)new RestException(nameof(GetLoanAsync), response);
+                }
+
+                var loan = new Loan(Client, loanId);
+                var json = await response.Content.ReadAsStringAsync();
+                JsonHelper.PopulateFromJson(json, loan);
+                return loan;
             }
         }
 
         public async Task<IEnumerable<string>> GetSupportedEntitiesAsync()
         {
-            var message = new HttpRequestMessage(HttpMethod.Get, $"{_apiPath}/supportedEntities");
-            var response = await Client.HttpClient.SendAsync(message);
-                //await client.GetAsync(API_PATH + "/supportedEntities");
-            if (response.StatusCode == HttpStatusCode.OK)
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/supportedEntities"))
             {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new RestException(nameof(GetSupportedEntitiesAsync), response);
+                }
+
                 var content = await response.Content.ReadAsStringAsync();
-                //var content = content.Replace(((char)65279).ToString(), "");
-                var data = JsonConvert.DeserializeObject<IEnumerable<string>>(content);
-                return data;
+                return JsonConvert.DeserializeObject<IEnumerable<string>>(content);
             }
-            else
+        }
+
+        public async Task<string> CreateLoanAsync(Loan loan)
+        {
+            Preconditions.NotNull(loan, nameof(loan));
+
+            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(loan)))
             {
-                throw new RestException(nameof(GetSupportedEntitiesAsync), response);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new RestException(nameof(CreateLoanAsync), response);
+                }
+
+                var location = response.Headers.Location.OriginalString;
+                return location.Substring(location.LastIndexOf('/') + 1);
+            }
+        }
+
+        public async Task UpdateLoanAsync(Loan loan)
+        {
+            Preconditions.NotNull(loan, nameof(loan));
+
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loan.EncompassId}", JsonContent.Create(loan)))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw response.StatusCode == HttpStatusCode.Conflict ? new LoanLockedException(nameof(UpdateLoanAsync), response) : new RestException(nameof(UpdateLoanAsync), response);
+                }
+            }
+        }
+
+        public async Task DeleteLoanAsync(string loanId)
+        {
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+
+            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{loanId}"))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new RestException(nameof(DeleteLoanAsync), response);
+                }
             }
         }
     }
