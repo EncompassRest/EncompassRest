@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -28,7 +28,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -42,7 +42,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetDocumentsAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentsAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -50,7 +50,7 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public async Task<List<EntityInfo>> GetDocumentAttachmentsAsync(string documentId)
+        public async Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
@@ -58,11 +58,11 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetDocumentAttachmentsAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentAttachmentsAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
-                return JsonHelper.FromJson<List<EntityInfo>>(json);
+                return JsonHelper.FromJson<List<EntityReference>>(json);
             }
         }
 
@@ -74,11 +74,10 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(CreateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(CreateDocumentAsync), response);
                 }
 
-                var location = response.Headers.Location.OriginalString;
-                return location.Substring(location.LastIndexOf('/') + 1);
+                return Path.GetFileName(response.Headers.Location.OriginalString);
             }
         }
 
@@ -90,24 +89,25 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(UpdateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response);
                 }
             }
         }
 
-        public async Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, params EntityInfo[] attachmentEntities)
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, params EntityReference[] attachmentEntities) => AssignDocumentAttachmentsAsync(documentId, action, (IEnumerable<EntityReference>)attachmentEntities);
+
+        public async Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
             var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
-
             using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", JsonContent.Create(attachmentEntities)))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(UpdateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response);
                 }
             }
         }

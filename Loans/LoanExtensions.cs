@@ -15,14 +15,10 @@ namespace EncompassRest.Loans
 {
     public static class LoanExtensions
     {
-        public static async Task<object> GetEncompassFieldValue(this Loan tLoan, string EncompassFieldID)
+        public static async Task<object> GetEncompassFieldValue(this Loan loan, string fieldId)
         {
-
-            var fieldPath = await tLoan.Client.Schema.GetFieldPathAsync(EncompassFieldID);
-            object placeholder;
-            placeholder = GetLoanValueRecursive(tLoan, fieldPath);
-
-            return placeholder;
+            var fieldPath = await loan.Client.Schema.GetFieldPathAsync(fieldId);
+            return GetLoanValueRecursive(loan, fieldPath);
         }
 
         #region recursive
@@ -30,17 +26,16 @@ namespace EncompassRest.Loans
         /// Returns an object from the specific path
         /// if there is a list entity and there is no specified query or index then it will default to the first item found
         /// </summary>
-        /// <param name="tLoan"></param>
-        /// <param name="FieldPath"></param>
+        /// <param name="loan"></param>
+        /// <param name="fieldPath"></param>
         /// <param name="ApplicationID"></param>
         /// <returns></returns>
-        public static object GetLoanValueRecursive(this Loan tLoan, string FieldPath, int Index = -1)
+        public static object GetLoanValueRecursive(this Loan loan, string fieldPath, int index = -1)
         {
-            object val = GetPropValueRecursive(tLoan, FieldPath, Index);
-            return val;
+            return GetPropValueRecursive(loan, fieldPath, index);
         }
 
-        private static Object GetPropValueRecursive(this Object obj, String name, int Index = -1, string Query=null)
+        private static object GetPropValueRecursive(this object obj, string name, int Index = -1, string Query=null)
         {
             if (name.ToLower().StartsWith("loan."))
                 name = name.Substring(5);
@@ -174,12 +169,12 @@ namespace EncompassRest.Loans
         #endregion
 
         #region JSON
-        public static JObject GetLoanValueJSONRecursive(this Loan tLoan, string FieldPath)
+        public static JObject GetLoanValueJSONRecursive(this Loan loan, string fieldPath)
         {
             var ex = new ExpandoObject();
             try
             {
-                tLoan.GetPropValueRecursive(ex, FieldPath);
+                loan.GetPropValueRecursive(ex, fieldPath);
             }
             catch (InvalidFieldException IFE)
             {
@@ -188,7 +183,8 @@ namespace EncompassRest.Loans
             
             return JObject.Parse(JsonConvert.SerializeObject(ex));
         }
-        private static void GetPropValueRecursive(this Object obj, ExpandoObject jo, string name,string FullName = "",  int Index = -1, string Query = null)
+
+        private static void GetPropValueRecursive(this object obj, ExpandoObject jo, string name, string fullName = "", int Index = -1, string Query = null)
         {
             if (name.ToLower().StartsWith("loan."))
             {
@@ -219,13 +215,13 @@ namespace EncompassRest.Loans
 
 
                 part = name.Substring(0, dot);
-                if (FullName == "")
+                if (fullName == "")
                 {
-                    FullName = part;
+                    fullName = part;
                 }
                 else
                 {
-                    FullName = FullName + "." + part;
+                    fullName = fullName + "." + part;
                 }
                 if (name.Length == part.Length)
                     remaining = "";
@@ -234,7 +230,7 @@ namespace EncompassRest.Loans
             }
             else
             {
-                FullName = name;
+                fullName = name;
                 part = name;
                 remaining = "";
             }
@@ -311,7 +307,7 @@ namespace EncompassRest.Loans
                             i++;
                         }
                         var REGnam = new Regex("\\[.*?\\]");
-                        var nam = REGnam.Replace(FullName, string.Empty);
+                        var nam = REGnam.Replace(fullName, string.Empty);
 
                         var expandoDict = jo as IDictionary<string, object>;
                         expandoDict.Add(nam, localJO);
@@ -336,7 +332,7 @@ namespace EncompassRest.Loans
                         i++;
                     }
                     var REGnam = new Regex("\\[.*?\\]");
-                    var nam = REGnam.Replace(FullName, string.Empty);
+                    var nam = REGnam.Replace(fullName, string.Empty);
 
                     var expandoDict = jo as IDictionary<string, object>;
                     expandoDict.Add(nam, localJO);
@@ -348,13 +344,13 @@ namespace EncompassRest.Loans
             PropertyInfo info = type.GetProperty(part);
             if (info == null)
             {
-                throw new InvalidFieldException(FullName);
+                throw new InvalidFieldException(fullName);
             }
             obj = info.GetValue(obj, null);
             if (remaining != "")
             {
                 
-                obj.GetPropValueRecursive(jo, remaining, FullName, index,query);
+                obj.GetPropValueRecursive(jo, remaining, fullName, index,query);
 
 
                 return;
@@ -362,10 +358,10 @@ namespace EncompassRest.Loans
             else
             {
                 var expandoDict = jo as IDictionary<string, object>;
-                if (expandoDict.ContainsKey(FullName))
-                    expandoDict[FullName] = obj;
+                if (expandoDict.ContainsKey(fullName))
+                    expandoDict[fullName] = obj;
                 else
-                    expandoDict.Add(FullName, obj);
+                    expandoDict.Add(fullName, obj);
                 return;
             }
         }

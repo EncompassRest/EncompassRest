@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Webhook
@@ -24,7 +24,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetSubscriptionAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -38,7 +38,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetSubscriptionAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -50,15 +50,14 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
 
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(new { Endpoint = endpoint })))
+            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(new Subscription { Endpoint = endpoint })))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(CreateSubscriptionAsync), response);
+                    throw await RestException.CreateAsync(nameof(CreateSubscriptionAsync), response);
                 }
 
-                var location = response.Headers.Location.OriginalString;
-                return location.Substring(location.LastIndexOf('/') + 1);
+                return Path.GetFileName(response.Headers.Location.OriginalString);
             }
         }
 
@@ -67,11 +66,11 @@ namespace EncompassRest.Webhook
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Preconditions.NotNullOrEmpty(newEndpoint, nameof(newEndpoint));
 
-            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonContent.Create(new { Endpoint = newEndpoint })))
+            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonContent.Create(new Subscription { Endpoint = newEndpoint })))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(UpdateSubscriptionAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateSubscriptionAsync), response);
                 }
             }
         }
@@ -84,9 +83,14 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(DeleteSubscriptionAsync), response);
+                    throw await RestException.CreateAsync(nameof(DeleteSubscriptionAsync), response);
                 }
             }
+        }
+
+        private sealed class Subscription
+        {
+            public string Endpoint { get; set; }
         }
     }
 }

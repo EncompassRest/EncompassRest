@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.Attachments
@@ -27,7 +26,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetAttachment), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachment), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -41,7 +40,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetAttachment), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachment), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -57,7 +56,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetAttachmentUrlAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachmentUrlAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -79,7 +78,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(UpdateAttachmentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateAttachmentAsync), response);
                 }
             }
         }

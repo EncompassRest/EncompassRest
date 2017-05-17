@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.Documents
 {
     public sealed class LoanDocument
     {
-        public string DocumentId { get; set; }
+        public Guid? DocumentId { get; set; }
         public string TitleWithIndex { get; set; }
         public string ApplicationName { get; set; }
         public string MilestoneId { get; set; }
@@ -14,6 +14,9 @@ namespace EncompassRest.Loans.Documents
         public bool? ThirdPartyAllowed { get; set; }
         public bool? IsRequested { get; set; }
         public string RequestedBy { get; set; }
+        public bool? IsRerequested { get; set; }
+        public DateTime? DateRerequested { get; set; }
+        public string RerequestedBy { get; set; }
         public int? DaysDue { get; set; }
         public bool? IsRecieved { get; set; }
         public string RecievedBy { get; set; }
@@ -30,24 +33,25 @@ namespace EncompassRest.Loans.Documents
         public string Title { get; set; }
         public string Description { get; set; }
         public string RequestedFrom { get; set; }
-        public string ApplicationId { get; set; } = "All";
+        public string ApplicationId { get; set; }
         public string EmnSignature { get; set; }
-        public string Status { get; set; }
+        public DocumentStatus? Status { get; set; }
         public DateTime? StatusDate { get; set; }
         public DateTime? DateRequested { get; set; }
+        public DateTime? DateExpected { get; set; }
         public DateTime? DateRecieved { get; set; }
         public DateTime? DateReviewed { get; set; }
         public DateTime? DateReadyForUw { get; set; }
         public DateTime? DateReadyToShip { get; set; }
-        public List<Comment> Comments { get; set; }
-        public List<EntityInfo> Attachments { get; set; }
-        public List<EntityInfo> Roles { get; set; }
+        public List<DocumentComment> Comments { get; set; }
+        public List<FileAttachmentReference> Attachments { get; set; }
+        public List<EntityReference> Roles { get; set; }
 
         public LoanDocument()
         {
-            Comments = new List<Comment>();
-            Attachments = new List<EntityInfo>();
-            Roles = new List<EntityInfo>();
+            Comments = new List<DocumentComment>();
+            Attachments = new List<FileAttachmentReference>();
+            Roles = new List<EntityReference>();
         }
     }
 }

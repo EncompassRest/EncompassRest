@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest.Loans
 {
-    public sealed class EntityInfo
+    public class EntityReference
     {
         public string EntityId { get; set; }
         public string EntityType { get; set; }

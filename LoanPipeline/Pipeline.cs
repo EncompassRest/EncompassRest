@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.LoanPipeline
@@ -23,7 +22,7 @@ namespace EncompassRest.LoanPipeline
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetCanonicalNamesAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();
@@ -43,7 +42,7 @@ namespace EncompassRest.LoanPipeline
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(ViewPipelineAsync), response);
+                    throw await RestException.CreateAsync(nameof(ViewPipelineAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync();

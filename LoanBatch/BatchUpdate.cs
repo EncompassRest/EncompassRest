@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -31,7 +32,7 @@ namespace EncompassRest.LoanBatch
             }
         }
 
-        public async Task<BatchUpdateResponse> UpdateLoansAsync(BatchUpdateParameters parameters)
+        public async Task<string> UpdateLoansAsync(BatchUpdateParameters parameters)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
@@ -42,8 +43,7 @@ namespace EncompassRest.LoanBatch
                     throw new HttpRequestException("Bad request");
                 }
 
-                var location = response.Headers.Location.OriginalString;
-                return new BatchUpdateResponse { RequestId = location.Substring(location.LastIndexOf('/') + 1) };
+                return Path.GetFileName(response.Headers.Location.OriginalString);
             }
         }
     }

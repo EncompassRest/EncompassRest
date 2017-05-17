@@ -5,10 +5,6 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    // Placeholders to be replaced later with actual implementations
-    public class EntityReference { }
-    public class FileAttachmentReference { }
-
     public partial class Loan
     {
         [JsonIgnore]

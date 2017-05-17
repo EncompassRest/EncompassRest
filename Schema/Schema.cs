@@ -4,9 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 using EncompassRest.Utilities;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Schema
 {
@@ -21,7 +22,7 @@ namespace EncompassRest.Schema
             Client = client;
         }
 
-        public async Task<string> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false)
+        public async Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
@@ -34,14 +35,21 @@ namespace EncompassRest.Schema
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetLoanSchemaAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response);
                 }
 
-                return await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonHelper.FromJson<LoanSchema>(json);
             }
         }
 
-        public async Task<string> GetFieldSchemaAsync(string fieldId)
+        public async Task<LoanSchema> GetFieldSchemaAsync(string fieldId)
+        {
+            var json = await GetFieldSchemaJsonAsync(fieldId);
+            return JsonHelper.FromJson<LoanSchema>(json);
+        }
+
+        public async Task<string> GetFieldSchemaJsonAsync(string fieldId)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
@@ -49,7 +57,7 @@ namespace EncompassRest.Schema
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new RestException(nameof(GetFieldSchemaAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response);
                 }
 
                 return await response.Content.ReadAsStringAsync();
@@ -62,11 +70,11 @@ namespace EncompassRest.Schema
             var returnPath = new StringBuilder();
             try
             {
-                schemaJson = await GetFieldSchemaAsync(fieldId);
+                schemaJson = await GetFieldSchemaJsonAsync(fieldId);
             }
             catch (RestException re)
             {
-                throw new RestException(nameof(GetFieldPathAsync), re.Response);
+                throw await RestException.CreateAsync(nameof(GetFieldPathAsync), re.Response);
             }
 
             var jsonMain = JObject.Parse(schemaJson);
@@ -110,12 +118,12 @@ namespace EncompassRest.Schema
                 }
                 try
                 {
-                    var rawSchema = await GetLoanSchemaAsync(new[] { entity }, true);
+                    var loanSchema = await GetLoanSchemaAsync(new[] { entity }, true);
 
-                    var jo = JToken.Parse(rawSchema);
-                    var entities = jo["entity_types"];
-                    foreach (var jt in entities.Children())
-                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, ((JProperty)jt).Name, jo);
+                    foreach (var pair in loanSchema.EntityTypes)
+                    {
+                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, pair.Key, pair.Value);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -128,7 +136,7 @@ namespace EncompassRest.Schema
             }
         }
 
-        private async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string section, JToken schemaToken)
+        private async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string entityType, EntitySchema entitySchema)
         {
             var sb = new StringBuilder();
             sb.Append(
@@ -137,33 +145,31 @@ using System.Collections.Generic;
 
 namespace {@namespace}
 {{
-    public sealed {(section == "Loan" ? "partial " : "")}class {section}
+    public sealed {(entityType == "Loan" ? "partial " : "")}class {entityType}
     {{
 ");
-            var sectionProperties = schemaToken["entity_types"][section]["properties"];
-            foreach (JProperty propertyToken in sectionProperties.Children())
+            foreach (var pair in entitySchema.Properties)
             {
-                var vName = propertyToken.Name;
+                var vName = pair.Key;
                 vName = vName.Substring(0, 1).ToUpper() + vName.Substring(1);
 
-                var propertyType = GetPropertyType(propertyToken.Value);
+                var propertyType = GetPropertyType(pair.Value);
                 sb.AppendLine($"        public {propertyType} {vName} {{ get; set; }}");
             }
 
             sb.Append(
 @"    }
 }");
-            using (var sw = new StreamWriter(Path.Combine(destinationPath, section + ".cs")))
+            using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))
             {
                 await sw.WriteAsync(sb.ToString());
             }
         }
 
-        private string GetPropertyType(JToken propertyTokenValue)
+        private string GetPropertyType(FieldSchema fieldSchema)
         {
-            var vType = propertyTokenValue["type"].ToString();
-            string entity;
-            switch (vType)
+            var fieldType = fieldSchema.Type;
+            switch (fieldType)
             {
                 case "string":
                 case "uuid":
@@ -173,22 +179,54 @@ namespace {@namespace}
                     return "decimal?";
                 case "bool":
                 case "int":
-                    return $"{vType}?";
+                    return $"{fieldType}?";
                 case "date":
                 case "datetime":
                     return "DateTime?";
                 case "set":
                 case "list":
-                    entity = propertyTokenValue["element_type"].ToString();
-                    entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                    return $"List<{entity}>";
+                    var elementType = fieldSchema.ElementType;
+                    elementType = elementType.Substring(0, 1).ToUpper() + elementType.Substring(1);
+                    return $"List<{elementType}>";
                 case "entity":
-                    entity = propertyTokenValue["entity_type"].ToString();
-                    entity = entity.Substring(0, 1).ToUpper() + entity.Substring(1);
-                    return entity;
+                    var entityType =  fieldSchema.EntityType;
+                    entityType = entityType.Substring(0, 1).ToUpper() + entityType.Substring(1);
+                    return entityType;
                 default:
-                    return $"PROBLEM<{vType}>";
+                    return $"PROBLEM<{fieldType}>";
             }
         }
+    }
+
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), NamingStrategyParameters = new object[] { true, false })]
+    public sealed class LoanSchema
+    {
+        public string SchemaVersion { get; set; }
+        public Dictionary<string, EntitySchema> EntityTypes { get; set; }
+    }
+    
+    public sealed class EntitySchema
+    {
+        public Dictionary<string, FieldSchema> Properties { get; set; }
+    }
+
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), NamingStrategyParameters = new object[] { true, false })]
+    public sealed class FieldSchema
+    {
+        public string Format { get; set; }
+        public bool? ReadOnly { get; set; }
+        public bool? Nullable { get; set; }
+        public string Type { get; set; }
+        public List<FieldOption> AllowedValues { get; set; }
+        public string EntityType { get; set; }
+        public bool? Required { get; set; }
+        public string Description { get; set; }
+        public string ElementType { get; set; }
+    }
+
+    public sealed class FieldOption
+    {
+        public string Value { get; set; }
+        public string Text { get; set; }
     }
 }
