@@ -1,9 +1,7 @@
-# EncompassREST
-Encompass Next Generation REST .NET API
+# EncompassRest
+Encompass API Client Library for .NET
 
-
-To get started :  
-create a new session  
+To get started create a client object
 ```c#
-var session = new Session([API_ClientID],[API_Secret],[Encompass_Instance],[Encompass_UserID],[Encompass_Password]);
+var client = await EncompassRestClient.CreateFromUserCredentialsAsync([API_ClientID], [API_Secret], [Encompass_Instance], [Encompass_UserID], [Encompass_Password]);
 ```
