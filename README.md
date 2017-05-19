@@ -1,7 +1,10 @@
 # EncompassRest
 Encompass API Client Library for .NET
 
-To get started create a client object
+To get started create a client object within an async method
 ```c#
-var client = await EncompassRestClient.CreateFromUserCredentialsAsync([API_ClientID], [API_Secret], [Encompass_Instance], [Encompass_UserID], [Encompass_Password]);
+using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("apiClientId", "apiSecret", "encompassInstance", "encompassUserId", "encompassPassword"))
+{
+    // use client
+}
 ```
