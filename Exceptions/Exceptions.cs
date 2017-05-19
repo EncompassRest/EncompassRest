@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Web.Http;
 using System.Threading.Tasks;
 using EncompassRest.Exceptions;
 
@@ -41,19 +40,8 @@ namespace EncompassRest
 
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsAsync<HttpError>().ConfigureAwait(false);
-                if (error != null)
-                {
-                    sb.AppendLine(error.Message);
-
-                    var innerException = error.InnerException;
-                    if (innerException != null)
-                    {
-                        sb.AppendLine(innerException.Message);
-                    }
-
-                    sb.Append(error.StackTrace);
-                }
+                var error = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                sb.Append(error);
             }
             return sb.ToString();
         }
