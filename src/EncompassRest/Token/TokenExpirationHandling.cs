@@ -1,4 +1,4 @@
-﻿namespace EncompassRest
+﻿namespace EncompassRest.Token
 {
     public enum TokenExpirationHandling
     {

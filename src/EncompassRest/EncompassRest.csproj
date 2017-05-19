@@ -114,7 +114,7 @@
     <Compile Include="Schema\FieldOptionConverter.cs" />
     <Compile Include="Schema\FieldSchema.cs" />
     <Compile Include="Schema\LoanSchema.cs" />
-    <Compile Include="TokenExpirationHandling.cs" />
+    <Compile Include="Token\TokenExpirationHandling.cs" />
     <Compile Include="Token\AccessToken.cs" />
     <Compile Include="Loans\Documents\LoanDocuments.cs" />
     <Compile Include="Exceptions\InvalidFieldException.cs" />
