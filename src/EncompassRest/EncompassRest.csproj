@@ -318,7 +318,6 @@
     <Compile Include="Webhook\WebhookSubscription.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Loans\EntityGenerator.csx">
       <Generator>ScriptyGenerator</Generator>
       <LastGenOutput>EntityGenerator.log</LastGenOutput>
