@@ -1,4 +1,5 @@
 ﻿#r "../bin/EncompassRest.dll"
+#r "../../EncompassRest.EntityGenerator/bin/EncompassRest.EntityGenerator.dll"
 
 using System.IO;
 using System.Threading.Tasks;
@@ -15,6 +16,6 @@ Task.Run(async () =>
 {
     using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(clientId, clientSecret, instanceId, userId, password))
     {
-        await client.Schemas.GenerateClassFilesFromSchemaAsync(Path.GetDirectoryName(ScriptFilePath), "EncompassRest.Loans");
+        await EntityGenerator.GenerateClassFilesFromSchemaAsync(client, Path.GetDirectoryName(ScriptFilePath), "EncompassRest.Loans");
     }
 }).Wait();

@@ -293,6 +293,7 @@ namespace EncompassRest.Loans
         public string Id { get; set; }
         public List<ConversationLog> ConversationLogs { get; set; }
         public List<CrmLog> CrmLogs { get; set; }
+        public CustomModelFields CustomModelFields { get; set; }
         public List<DataTracLog> DataTracLogs { get; set; }
         public bool? DBIndicator { get; set; }
         public List<DisclosureTrackingLog> DisclosureTrackingLogs { get; set; }

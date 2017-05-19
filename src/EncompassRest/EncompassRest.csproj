@@ -100,6 +100,7 @@
     <Compile Include="Loans\Attachments\PageAnnotation.cs" />
     <Compile Include="Loans\Attachments\PageImage.cs" />
     <Compile Include="Loans\Attachments\PageThumbnail.cs" />
+    <Compile Include="Loans\CustomModelFields.cs" />
     <Compile Include="Loans\Documents\AssignmentAction.cs" />
     <Compile Include="Loans\Documents\DocumentStatus.cs" />
     <Compile Include="Loans\EntityReference.cs" />
@@ -107,6 +108,11 @@
     <Compile Include="Loans\LoanEntity.cs" />
     <Compile Include="Loans\PrincipalDisbursementTransaction.cs" />
     <Compile Include="Loans\RemovedLogRecord.cs" />
+    <Compile Include="Schema\EntitySchema.cs" />
+    <Compile Include="Schema\FieldOption.cs" />
+    <Compile Include="Schema\FieldOptionConverter.cs" />
+    <Compile Include="Schema\FieldSchema.cs" />
+    <Compile Include="Schema\LoanSchema.cs" />
     <Compile Include="TokenExpirationHandling.cs" />
     <Compile Include="Token\AccessToken.cs" />
     <Compile Include="Loans\Documents\LoanDocuments.cs" />
@@ -314,6 +320,7 @@
     <None Include="app.config" />
     <None Include="Loans\EntityGenerator.csx">
       <Generator>ScriptyGenerator</Generator>
+      <LastGenOutput>EntityGenerator.log</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
