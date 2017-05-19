@@ -17,7 +17,7 @@ namespace EncompassRest.Loans
     {
         public static async Task<object> GetEncompassFieldValue(this Loan loan, string fieldId)
         {
-            var fieldPath = await loan.Client.Schema.GetFieldPathAsync(fieldId);
+            var fieldPath = await loan.Client.Schema.GetFieldPathAsync(fieldId).ConfigureAwait(false);
             return GetLoanValueRecursive(loan, fieldPath);
         }
 

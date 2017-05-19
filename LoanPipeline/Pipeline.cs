@@ -18,14 +18,14 @@ namespace EncompassRest.LoanPipeline
 
         public async Task GetCanonicalNamesAsync()
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 // TODO: Parse json to .NET object
             }
         }
@@ -38,14 +38,14 @@ namespace EncompassRest.LoanPipeline
                 throw new ArgumentException("must be null or greater than 0", nameof(limit));
             }
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{(limit.HasValue ? $"?limit={limit}" : string.Empty)}", JsonContent.Create(parameters)))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{(limit.HasValue ? $"?limit={limit}" : string.Empty)}", JsonContent.Create(parameters)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(ViewPipelineAsync), response);
+                    throw await RestException.CreateAsync(nameof(ViewPipelineAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<List<LoanPipelineData>>(json);
             }
         }

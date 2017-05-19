@@ -54,15 +54,15 @@ namespace EncompassRest.Loans
                 queryParameters.Add("entities", string.Join(",", entities));
             }
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{loanId}{queryParameters}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{loanId}{queryParameters}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? new NotFoundException("loan not found", loanId) : (Exception)await RestException.CreateAsync(nameof(GetLoanAsync), response);
+                    throw response.StatusCode == HttpStatusCode.NotFound ? new NotFoundException("loan not found", loanId) : (Exception)await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
                 }
 
                 var loan = new Loan(Client, loanId);
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 JsonHelper.PopulateFromJson(json, loan);
                 return loan;
             }
@@ -70,14 +70,14 @@ namespace EncompassRest.Loans
 
         public async Task<List<string>> GetSupportedEntitiesAsync()
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/supportedEntities"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/supportedEntities").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetSupportedEntitiesAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetSupportedEntitiesAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonConvert.DeserializeObject<List<string>>(json);
             }
         }
@@ -86,11 +86,11 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNull(loan, nameof(loan));
 
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(loan)))
+            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(loan)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateLoanAsync), response);
+                    throw await RestException.CreateAsync(nameof(CreateLoanAsync), response).ConfigureAwait(false);
                 }
 
                 return Path.GetFileName(response.Headers.Location.OriginalString);
@@ -101,11 +101,11 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNull(loan, nameof(loan));
 
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loan.EncompassId}", JsonContent.Create(loan)))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loan.EncompassId}", JsonContent.Create(loan)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.Conflict ? await LoanLockedException.CreateAsync(nameof(UpdateLoanAsync), response) : await RestException.CreateAsync(nameof(UpdateLoanAsync), response);
+                    throw response.StatusCode == HttpStatusCode.Conflict ? await LoanLockedException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false);
                 }
             }
         }
@@ -114,11 +114,11 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{loanId}"))
+            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{loanId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(DeleteLoanAsync), response);
+                    throw await RestException.CreateAsync(nameof(DeleteLoanAsync), response).ConfigureAwait(false);
                 }
             }
         }

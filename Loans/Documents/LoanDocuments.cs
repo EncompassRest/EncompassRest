@@ -24,28 +24,28 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<LoanDocument>(json);
             }
         }
 
         public async Task<List<LoanDocument>> GetDocumentsAsync()
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentsAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentsAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<List<LoanDocument>>(json);
             }
         }
@@ -54,14 +54,14 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}/attachments"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}/attachments").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentAttachmentsAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetDocumentAttachmentsAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<List<EntityReference>>(json);
             }
         }
@@ -70,11 +70,11 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNull(document, nameof(document));
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents", JsonContent.Create(document)))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents", JsonContent.Create(document)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(CreateDocumentAsync), response).ConfigureAwait(false);
                 }
 
                 return Path.GetFileName(response.Headers.Location.OriginalString);
@@ -85,11 +85,11 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNull(document, nameof(document));
 
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{document.DocumentId}", JsonContent.Create(document)))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{document.DocumentId}", JsonContent.Create(document)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
                 }
             }
         }
@@ -103,11 +103,11 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
             var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", JsonContent.Create(attachmentEntities)))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", JsonContent.Create(attachmentEntities)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
                 }
             }
         }

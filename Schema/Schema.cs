@@ -31,21 +31,21 @@ namespace EncompassRest.Schema
             }
             queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<LoanSchema>(json);
             }
         }
 
         public async Task<LoanSchema> GetFieldSchemaAsync(string fieldId)
         {
-            var json = await GetFieldSchemaJsonAsync(fieldId);
+            var json = await GetFieldSchemaJsonAsync(fieldId).ConfigureAwait(false);
             return JsonHelper.FromJson<LoanSchema>(json);
         }
 
@@ -53,14 +53,14 @@ namespace EncompassRest.Schema
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                return await response.Content.ReadAsStringAsync();
+                return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
         }
 
@@ -70,11 +70,11 @@ namespace EncompassRest.Schema
             var returnPath = new StringBuilder();
             try
             {
-                schemaJson = await GetFieldSchemaJsonAsync(fieldId);
+                schemaJson = await GetFieldSchemaJsonAsync(fieldId).ConfigureAwait(false);
             }
             catch (RestException re)
             {
-                throw await RestException.CreateAsync(nameof(GetFieldPathAsync), re.Response);
+                throw await RestException.CreateAsync(nameof(GetFieldPathAsync), re.Response).ConfigureAwait(false);
             }
 
             var jsonMain = JObject.Parse(schemaJson);
@@ -107,7 +107,7 @@ namespace EncompassRest.Schema
 
         public async Task GenerateClassFilesFromSchemaAsync(string destinationPath, string @namespace)
         {
-            var supportedEntities = await Client.Loans.GetSupportedEntitiesAsync();
+            var supportedEntities = await Client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false);
             var exceptions = new List<Exception>();
             var badEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "CustomModelFields" };
             foreach (var entity in supportedEntities)
@@ -118,11 +118,11 @@ namespace EncompassRest.Schema
                 }
                 try
                 {
-                    var loanSchema = await GetLoanSchemaAsync(new[] { entity }, true);
+                    var loanSchema = await GetLoanSchemaAsync(new[] { entity }, true).ConfigureAwait(false);
 
                     foreach (var pair in loanSchema.EntityTypes)
                     {
-                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, pair.Key, pair.Value);
+                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, pair.Key, pair.Value).ConfigureAwait(false);
                     }
                 }
                 catch (Exception ex)
@@ -162,7 +162,7 @@ namespace {@namespace}
 }");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))
             {
-                await sw.WriteAsync(sb.ToString());
+                await sw.WriteAsync(sb.ToString()).ConfigureAwait(false);
             }
         }
 

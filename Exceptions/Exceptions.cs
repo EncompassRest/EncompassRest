@@ -25,8 +25,8 @@ namespace EncompassRest
     {
         internal static async Task<RestException> CreateAsync(string message, HttpResponseMessage response)
         {
-            var baseMessage = await BuildBaseMessageAsync(message, response);
-            var content = await response.Content.ReadAsStringAsync();
+            var baseMessage = await BuildBaseMessageAsync(message, response).ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return new RestException(baseMessage, response, content);
         }
 
@@ -41,7 +41,7 @@ namespace EncompassRest
 
             if (!response.IsSuccessStatusCode)
             {
-                var error = await response.Content.ReadAsAsync<HttpError>();
+                var error = await response.Content.ReadAsAsync<HttpError>().ConfigureAwait(false);
                 if (error != null)
                 {
                     sb.AppendLine(error.Message);
@@ -85,8 +85,8 @@ namespace EncompassRest
     {
         internal static new async Task<LoanLockedException> CreateAsync(string message, HttpResponseMessage response)
         {
-            var baseMessage = await BuildBaseMessageAsync(message, response);
-            var content = await response.Content.ReadAsStringAsync();
+            var baseMessage = await BuildBaseMessageAsync(message, response).ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return new LoanLockedException(baseMessage, response, content);
         }
 

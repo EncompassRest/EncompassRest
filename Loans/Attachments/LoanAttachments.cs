@@ -22,28 +22,28 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachment), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachment), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<LoanAttachment>(json);
             }
         }
 
         public async Task<List<LoanAttachment>> GetAttachments()
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments"))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachment), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachment), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonHelper.FromJson<List<LoanAttachment>>(json);
             }
         }
@@ -52,14 +52,14 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}/url", null))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}/url", null).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachmentUrlAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetAttachmentUrlAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync();
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var attachmentUrl = JsonHelper.FromJson<AttachmentUrl>(json);
                 return attachmentUrl.MediaUrl;
             }
@@ -74,11 +74,11 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachment, nameof(attachment));
 
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/attachments/{attachment.AttachmentId}", JsonContent.Create(attachment)))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/attachments/{attachment.AttachmentId}", JsonContent.Create(attachment)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateAttachmentAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateAttachmentAsync), response).ConfigureAwait(false);
                 }
             }
         }
