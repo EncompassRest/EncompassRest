@@ -18,7 +18,7 @@ namespace EncompassRest.Loans.Attachments
             LoanId = loanId;
         }
 
-        public async Task<LoanAttachment> GetAttachment(string attachmentId)
+        public async Task<LoanAttachment> GetAttachmentAsync(string attachmentId)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
@@ -26,7 +26,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachment), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
                 }
 
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -34,13 +34,13 @@ namespace EncompassRest.Loans.Attachments
             }
         }
 
-        public async Task<List<LoanAttachment>> GetAttachments()
+        public async Task<List<LoanAttachment>> GetAttachmentsAsync()
         {
             using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachment), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
                 }
 
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
