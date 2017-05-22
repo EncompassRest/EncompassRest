@@ -7,6 +7,8 @@
     <PackageLicenseUrl>https://github.com/hfcjweinstock/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
+    <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
