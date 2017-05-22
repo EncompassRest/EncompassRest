@@ -8,3 +8,5 @@ using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("ap
     // use client
 }
 ```
+
+Compatible with .NET Framework 4.5+ and .NET Standard 1.1+.

@@ -16,19 +16,19 @@ namespace EncompassRest.LoanPipeline
             Client = client;
         }
 
-        public async Task GetCanonicalNamesAsync()
-        {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions").ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
-                }
+        //public async Task GetCanonicalNamesAsync()
+        //{
+        //    using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions").ConfigureAwait(false))
+        //    {
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
+        //        }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                // TODO: Parse json to .NET object
-            }
-        }
+        //        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        //        // TODO: Parse json to .NET object
+        //    }
+        //}
         
         public async Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int? limit = null)
         {

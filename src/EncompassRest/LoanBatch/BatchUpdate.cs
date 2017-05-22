@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Net.Http;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -24,7 +23,7 @@ namespace EncompassRest.LoanBatch
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestException("Bad request");
+                    throw await RestException.CreateAsync(nameof(GetStatusAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -40,7 +39,7 @@ namespace EncompassRest.LoanBatch
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestException("Bad request");
+                    throw await RestException.CreateAsync(nameof(UpdateLoansAsync), response);
                 }
 
                 return Path.GetFileName(response.Headers.Location.OriginalString);

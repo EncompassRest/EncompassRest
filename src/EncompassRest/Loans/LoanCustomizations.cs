@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         {
         }
 
-        public Loan(EncompassRestClient client, string loanId)
+        internal Loan(EncompassRestClient client, string loanId)
         {
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));

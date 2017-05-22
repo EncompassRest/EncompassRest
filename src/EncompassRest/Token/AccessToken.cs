@@ -101,7 +101,7 @@ namespace EncompassRest.Token
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw new HttpRequestException("Failed to retrieve Access Token");
+                    throw await RestException.CreateAsync(nameof(SetTokenAsync), response);
                 }
 
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
