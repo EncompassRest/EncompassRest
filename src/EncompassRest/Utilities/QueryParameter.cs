@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using System.Net;
 
 namespace EncompassRest.Utilities
 {
@@ -14,6 +14,6 @@ namespace EncompassRest.Utilities
             Value = value;
         }
 
-        public override string ToString() => $"{HttpUtility.UrlEncode(Name)}={HttpUtility.UrlEncode(Value)}";
+        public override string ToString() => $"{WebUtility.UrlEncode(Name)}={WebUtility.UrlEncode(Value)}";
     }
 }

@@ -5,21 +5,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassRest.Exceptions;
 
 namespace EncompassRest
 {
-    public sealed class NotFoundException : Exception
-    {
-        public string ExtraData { get; }
-
-        public NotFoundException(string message, string extraData)
-            : base(message)
-        {
-            ExtraData = extraData;
-        }
-    }
-
     public class RestException : Exception
     {
         internal static async Task<RestException> CreateAsync(string message, HttpResponseMessage response)
@@ -84,6 +72,40 @@ namespace EncompassRest
             : base(message, response, content)
         {
             LoanLocked = JsonConvert.DeserializeObject<LoanLocked>(content);
+        }
+    }
+
+    public class LoanLocked
+    {
+        public string ErrorMessage { get; set; }
+        public string Id { get; set; }
+        public string InnerErrorMessage { get; set; }
+        public LoanLockedDetails Details { get; set; }
+    }
+
+    public class LoanLockedDetails
+    {
+        public bool CurrentlyLoggedOn { get; set; }
+        public string LoanId { get; set; }
+        public string LockedByFirstName { get; set; }
+        public string LockedByLastName { get; set; }
+        public string LockedBySessionId { get; set; }
+        public string LockedByUserId { get; set; }
+        public DateTime LockedSince { get; set; }
+    }
+
+    public sealed class NotFoundException : RestException
+    {
+        internal static new async Task<NotFoundException> CreateAsync(string message, HttpResponseMessage response)
+        {
+            var baseMessage = await BuildBaseMessageAsync(message, response).ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return new NotFoundException(baseMessage, response, content);
+        }
+
+        private NotFoundException(string message, HttpResponseMessage response, string content)
+            : base(message, response, content)
+        {
         }
     }
 }

@@ -58,7 +58,7 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? new NotFoundException("loan not found", loanId) : (Exception)await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
+                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetLoanAsync)}/{loanId}", response) : await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
                 }
 
                 var loan = new Loan(Client, loanId);
