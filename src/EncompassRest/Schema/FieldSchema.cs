@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Schema
 {
-    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), NamingStrategyParameters = new object[] { true, false })]
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public sealed class FieldSchema
     {
         public string Format { get; set; }

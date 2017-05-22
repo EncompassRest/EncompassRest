@@ -4,7 +4,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Token
 {
-    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), NamingStrategyParameters = new object[] { true, false }, ItemRequired = Required.Always)]
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
     public sealed class TokenIntrospectionResponse
     {
         private static readonly DateTime s_unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);

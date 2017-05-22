@@ -113,7 +113,7 @@ namespace EncompassRest.Token
 
         private FormUrlEncodedContent CreateAccessTokenContent() => new FormUrlEncodedContent(new[] { KeyValuePair.Create("token", Token) });
 
-        [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), NamingStrategyParameters = new object[] { true, false }, ItemRequired = Required.Always)]
+        [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
         private sealed class TokenResponse
         {
             public string AccessToken { get; set; }
