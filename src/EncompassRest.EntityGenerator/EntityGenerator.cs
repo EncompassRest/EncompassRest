@@ -14,16 +14,15 @@ namespace EncompassRest
         {
             Console.ReadLine();
 
-            // Do not commit values in these variables to source control
-            var clientId = args[0];
-            var clientSecret = args[1];
-            var instanceId = args[2];
-            var userId = args[3];
-            var password = args[4];
-            var destinationPath = args[5];
-
-            if (!string.IsNullOrEmpty(userId))
+            try
             {
+                var clientId = args[0];
+                var clientSecret = args[1];
+                var instanceId = args[2];
+                var userId = args[3];
+                var password = args[4];
+                var destinationPath = args[5];
+
                 Task.Run(async () =>
                 {
                     using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(clientId, clientSecret, instanceId, userId, password))
@@ -31,6 +30,11 @@ namespace EncompassRest
                         await GenerateClassFilesFromSchemaAsync(client, destinationPath, "EncompassRest.Loans");
                     }
                 }).Wait();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.ReadLine();
             }
         }
 
