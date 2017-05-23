@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassREST.Exceptions;
 using EncompassREST.HelperClasses;
+using EncompassREST.Json;
 using EncompassREST.PipelineModels;
 using Newtonsoft.Json;
 
@@ -44,7 +45,7 @@ namespace EncompassREST
             {
                 NullValueHandling = NullValueHandling.Ignore
             };
-            message.Content = new StringContent(JsonConvert.SerializeObject(obj, settings), Encoding.UTF8, "application/json");
+            message.Content = new StringContent(obj.ToJson(), Encoding.UTF8, "application/json");
 
             var response = await Session.RESTClient.SendAsync(message);
             if (response.IsSuccessStatusCode)

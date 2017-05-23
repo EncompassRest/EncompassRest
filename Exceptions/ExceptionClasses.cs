@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
+using EncompassREST.Json;
 
 namespace EncompassREST.Exceptions
 {
@@ -26,7 +27,7 @@ namespace EncompassREST.Exceptions
         public LoanLockedException(string message, HttpResponseMessage response) : base(message, response)
         {
             var value =  response.Content.ReadAsStringAsync().Result;
-            LoanLocked = JsonConvert.DeserializeObject<LoanLocked>(value);
+            LoanLocked = JsonHelper.FromJson<LoanLocked>(value);
         }
     }
 

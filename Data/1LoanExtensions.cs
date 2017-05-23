@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using EncompassREST.Json;
 
 namespace EncompassREST.Data 
 {
@@ -19,7 +20,7 @@ namespace EncompassREST.Data
         public static async Task PopulateLoan(this Loan tLoan, string JsonData, Session Session)
         {
             //Loan l = await JsonConvert.DeserializeObjectAsync<Data.Loan>(JsonData);
-            await Task.Factory.StartNew(() => JsonConvert.PopulateObject(JsonData, tLoan));
+            await Task.Factory.StartNew(() => JsonHelper.Populate(JsonData, tLoan));
             tLoan._StartingData = JsonData;
             tLoan._Session = Session;
             return;

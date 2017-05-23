@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
-namespace EncompassREST.JsonHelpers
+namespace EncompassREST.Json
 {
-    public static class JsonExtensions
+    internal static class JsonHelper
     {
         public static List<JToken> FindTokens(this JToken containerToken, string name)
         {
@@ -33,5 +35,21 @@ namespace EncompassREST.JsonHelpers
                 }
             }
         }
+
+        public static JsonSerializerSettings Settings { get; } = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            Formatting = Formatting.None,
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy()
+            }
+        };
+
+        public static string ToJson<T>(this T value) => JsonConvert.SerializeObject(value, typeof(T), Settings);
+
+        public static T FromJson<T>(string json) => JsonConvert.DeserializeObject<T>(json, Settings);
+
+        public static void Populate(string json, object value) => JsonConvert.PopulateObject(json, value, Settings);
     }
 }

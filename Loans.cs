@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using EncompassREST.Data;
 using EncompassREST.Exceptions;
 using EncompassREST.HelperClasses;
+using EncompassREST.Json;
 using Newtonsoft.Json;
 
 namespace EncompassREST
@@ -332,7 +333,7 @@ namespace EncompassREST
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var c = content.Replace(((char)65279).ToString(), "");
-                var data  = JsonConvert.DeserializeObject<IEnumerable<string>>(c);
+                var data = JsonHelper.FromJson<IEnumerable<string>>(c);
                 return data;
             }
             else
