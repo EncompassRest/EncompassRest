@@ -17,5 +17,7 @@ namespace EncompassRest.Schema
         public bool? Required { get; set; }
         public string Description { get; set; }
         public string ElementType { get; set; }
+        public string FieldId { get; set; }
+        public bool? FixedLength { get; set; }
     }
 }

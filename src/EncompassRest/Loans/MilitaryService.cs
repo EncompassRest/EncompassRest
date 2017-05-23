@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class MilitaryService
+    public sealed partial class MilitaryService
     {
-        public int? MilitaryServiceIndex { get; set; }
-        public string SSN { get; set; }
-        public string ServiceNumber { get; set; }
         public string Branch { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public JsonNullable<DateTime?> EndDate { get; set; }
+        public string Id { get; set; }
+        public int? MilitaryServiceIndex { get; set; }
         public string Name { get; set; }
         public string OfficerOrEnlisted { get; set; }
-        public string Id { get; set; }
+        public string ServiceNumber { get; set; }
+        public string SSN { get; set; }
+        public JsonNullable<DateTime?> StartDate { get; set; }
     }
 }

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class StateLicense
+    public sealed partial class StateLicense
     {
-        public string StateLicenseType { get; set; }
         public string AK { get; set; }
         public string AL { get; set; }
         public string AR { get; set; }
@@ -20,6 +19,7 @@ namespace EncompassRest.Loans
         public string GU { get; set; }
         public string HI { get; set; }
         public string IA { get; set; }
+        public string Id { get; set; }
         public string Idaho { get; set; }
         public string IL { get; set; }
         public string IN { get; set; }
@@ -50,6 +50,7 @@ namespace EncompassRest.Loans
         public string RI { get; set; }
         public string SC { get; set; }
         public string SD { get; set; }
+        public string StateLicenseType { get; set; }
         public string TN { get; set; }
         public string TX { get; set; }
         public string UT { get; set; }
@@ -60,6 +61,5 @@ namespace EncompassRest.Loans
         public string WI { get; set; }
         public string WV { get; set; }
         public string WY { get; set; }
-        public string Id { get; set; }
     }
 }

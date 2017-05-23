@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class RegulationZPayment
+    public sealed partial class RegulationZPayment
     {
-        public int? RegulationZPaymentIndex { get; set; }
-        public decimal? InterestRatePercent { get; set; }
-        public decimal? Balance { get; set; }
-        public int? NumberOfPayments { get; set; }
-        public decimal? MonthlyPayment { get; set; }
-        public DateTime? PaymentDate { get; set; }
+        public JsonNullable<decimal?> Balance { get; set; }
         public string Id { get; set; }
+        public JsonNullable<decimal?> InterestRatePercent { get; set; }
+        public JsonNullable<decimal?> MonthlyPayment { get; set; }
+        public JsonNullable<int?> NumberOfPayments { get; set; }
+        public JsonNullable<DateTime?> PaymentDate { get; set; }
+        public int? RegulationZPaymentIndex { get; set; }
     }
 }

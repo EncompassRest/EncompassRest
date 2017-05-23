@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class PrintForm
+    public sealed partial class PrintForm
     {
         public string Id { get; set; }
         public string Name { get; set; }

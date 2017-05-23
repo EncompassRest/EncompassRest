@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class Buydown
+    public sealed partial class Buydown
     {
-        public decimal? IncreaseRatePercent { get; set; }
-        public int? DurationMonthsCount { get; set; }
-        public int? ChangeFrequencyMonthsCount { get; set; }
-        public decimal? BuydownRatePercent { get; set; }
-        public decimal? SubsidyAmount { get; set; }
-        public decimal? FundTotalAmount { get; set; }
-        public decimal? FundBalanceAmount { get; set; }
-        public int? RemainingMonthsCount { get; set; }
-        public string Id { get; set; }
         public int? BuydownIndex { get; set; }
+        public JsonNullable<decimal?> BuydownRatePercent { get; set; }
+        public JsonNullable<int?> ChangeFrequencyMonthsCount { get; set; }
+        public JsonNullable<int?> DurationMonthsCount { get; set; }
+        public JsonNullable<decimal?> FundBalanceAmount { get; set; }
+        public JsonNullable<decimal?> FundTotalAmount { get; set; }
+        public string Id { get; set; }
+        public JsonNullable<decimal?> IncreaseRatePercent { get; set; }
+        public JsonNullable<int?> RemainingMonthsCount { get; set; }
+        public JsonNullable<decimal?> SubsidyAmount { get; set; }
     }
 }

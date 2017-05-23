@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class SettlementServiceCharge
+    public sealed partial class SettlementServiceCharge
     {
         public string Amount { get; set; }
         public string Description { get; set; }

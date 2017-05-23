@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class CustomModelFields
+    public sealed partial class CustomModelFields
     {
         public string Id { get; set; }
-        public bool? ProvideAmortizationScenario { get; set; }
-        public bool? ProvideWorstCaseScenario { get; set; }
-        public bool? ProvideBestCaseScenario { get; set; }
-        public bool? ProvideFHAScenario { get; set; }
+        public JsonNullable<bool?> ProvideAmortizationScenario { get; set; }
+        public JsonNullable<bool?> ProvideBestCaseScenario { get; set; }
+        public JsonNullable<bool?> ProvideFHAScenario { get; set; }
+        public JsonNullable<bool?> ProvideWorstCaseScenario { get; set; }
     }
 }

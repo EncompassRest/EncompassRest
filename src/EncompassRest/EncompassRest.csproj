@@ -19,4 +19,12 @@
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <AssemblyTitle>EncompassRest</AssemblyTitle>
+  </PropertyGroup>
 </Project>

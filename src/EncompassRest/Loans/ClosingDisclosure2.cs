@@ -3,32 +3,32 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class ClosingDisclosure2
+    public sealed partial class ClosingDisclosure2
     {
-        public decimal? LCAtClosing { get; set; }
-        public decimal? OriginationChargesSubTotal { get; set; }
-        public decimal? ServicesDidNotShopSubTotal { get; set; }
-        public decimal? ServicesDidShopSubTotal { get; set; }
-        public decimal? TotalLoanCost { get; set; }
-        public decimal? LastDisclosedLoanCosts { get; set; }
-        public decimal? TotalBorrowerPaidAtClosing { get; set; }
-        public decimal? TotalBorrowerPaidBeforeClosing { get; set; }
-        public decimal? TaxesGovermentFeesSubTotal { get; set; }
-        public decimal? PrepaidsSubTotal { get; set; }
-        public decimal? InitialEscrowSubTotal { get; set; }
-        public decimal? OtherSubTotal { get; set; }
-        public decimal? TotalOtherCost { get; set; }
-        public decimal? LastDisclosedOtherCosts { get; set; }
-        public decimal? TotalOtherCostAtClosing { get; set; }
-        public decimal? TotalOtherCostBeforeClosing { get; set; }
-        public decimal? TotalClosingCost { get; set; }
-        public decimal? BorrowerClosingCostAtClosing { get; set; }
-        public decimal? BorrowerClosingCostBeforeClosing { get; set; }
-        public decimal? SellerClosingCostAtClosing { get; set; }
-        public decimal? SellerClosingCostBeforeClosing { get; set; }
-        public decimal? ClosingCostPaidByOthers { get; set; }
-        public decimal? ClosingCostLenderCredits { get; set; }
-        public decimal? LastDisclosedLenderCredits { get; set; }
+        public JsonNullable<decimal?> BorrowerClosingCostAtClosing { get; set; }
+        public JsonNullable<decimal?> BorrowerClosingCostBeforeClosing { get; set; }
+        public JsonNullable<decimal?> ClosingCostLenderCredits { get; set; }
+        public JsonNullable<decimal?> ClosingCostPaidByOthers { get; set; }
         public string Id { get; set; }
+        public JsonNullable<decimal?> InitialEscrowSubTotal { get; set; }
+        public JsonNullable<decimal?> LastDisclosedLenderCredits { get; set; }
+        public JsonNullable<decimal?> LastDisclosedLoanCosts { get; set; }
+        public JsonNullable<decimal?> LastDisclosedOtherCosts { get; set; }
+        public JsonNullable<decimal?> LCAtClosing { get; set; }
+        public JsonNullable<decimal?> OriginationChargesSubTotal { get; set; }
+        public JsonNullable<decimal?> OtherSubTotal { get; set; }
+        public JsonNullable<decimal?> PrepaidsSubTotal { get; set; }
+        public JsonNullable<decimal?> SellerClosingCostAtClosing { get; set; }
+        public JsonNullable<decimal?> SellerClosingCostBeforeClosing { get; set; }
+        public JsonNullable<decimal?> ServicesDidNotShopSubTotal { get; set; }
+        public JsonNullable<decimal?> ServicesDidShopSubTotal { get; set; }
+        public JsonNullable<decimal?> TaxesGovermentFeesSubTotal { get; set; }
+        public JsonNullable<decimal?> TotalBorrowerPaidAtClosing { get; set; }
+        public JsonNullable<decimal?> TotalBorrowerPaidBeforeClosing { get; set; }
+        public JsonNullable<decimal?> TotalClosingCost { get; set; }
+        public JsonNullable<decimal?> TotalLoanCost { get; set; }
+        public JsonNullable<decimal?> TotalOtherCost { get; set; }
+        public JsonNullable<decimal?> TotalOtherCostAtClosing { get; set; }
+        public JsonNullable<decimal?> TotalOtherCostBeforeClosing { get; set; }
     }
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class HelocRepaymentDrawPeriod
+    public sealed partial class HelocRepaymentDrawPeriod
     {
-        public int? Year { get; set; }
-        public decimal? IndexRatePercent { get; set; }
-        public decimal? MarginRatePercent { get; set; }
-        public decimal? Apr { get; set; }
-        public decimal? MinimumMonthlyPaymentAmount { get; set; }
-        public string Id { get; set; }
+        public JsonNullable<decimal?> Apr { get; set; }
         public bool? DrawIndicator { get; set; }
+        public string Id { get; set; }
+        public JsonNullable<decimal?> IndexRatePercent { get; set; }
+        public JsonNullable<decimal?> MarginRatePercent { get; set; }
+        public JsonNullable<decimal?> MinimumMonthlyPaymentAmount { get; set; }
+        public JsonNullable<int?> Year { get; set; }
     }
 }

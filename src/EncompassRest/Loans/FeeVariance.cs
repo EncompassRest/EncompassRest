@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class FeeVariance
+    public sealed partial class FeeVariance
     {
-        public string FeeVarianceFeeType { get; set; }
-        public int? FeeVarianceChargeIndex { get; set; }
-        public decimal? InitialLE { get; set; }
-        public decimal? LE { get; set; }
-        public decimal? CD { get; set; }
-        public decimal? Itemization { get; set; }
+        public JsonNullable<decimal?> CD { get; set; }
         public string Description { get; set; }
-        public string Line { get; set; }
+        public JsonNullable<int?> FeeVarianceChargeIndex { get; set; }
+        public string FeeVarianceFeeType { get; set; }
         public string Id { get; set; }
+        public JsonNullable<decimal?> InitialLE { get; set; }
+        public JsonNullable<decimal?> Itemization { get; set; }
+        public JsonNullable<decimal?> LE { get; set; }
+        public string Line { get; set; }
     }
 }

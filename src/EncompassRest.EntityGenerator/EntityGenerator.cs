@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Schema;
@@ -9,6 +10,30 @@ namespace EncompassRest
 {
     public static class EntityGenerator
     {
+        public static void Main(string[] args)
+        {
+            Console.ReadLine();
+
+            // Do not commit values in these variables to source control
+            var clientId = args[0];
+            var clientSecret = args[1];
+            var instanceId = args[2];
+            var userId = args[3];
+            var password = args[4];
+            var destinationPath = args[5];
+
+            if (!string.IsNullOrEmpty(userId))
+            {
+                Task.Run(async () =>
+                {
+                    using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(clientId, clientSecret, instanceId, userId, password))
+                    {
+                        await GenerateClassFilesFromSchemaAsync(client, destinationPath, "EncompassRest.Loans");
+                    }
+                }).Wait();
+            }
+        }
+
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false);
@@ -48,13 +73,14 @@ using System.Collections.Generic;
 
 namespace {@namespace}
 {{
-    public sealed {(entityType == "Loan" ? "partial " : "")}class {entityType}
+    public sealed partial class {entityType}
     {{
 ");
-            foreach (var pair in entitySchema.Properties)
+            foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
-                var propertyType = GetPropertyType(pair.Value);
-                sb.AppendLine($"        public {propertyType} {pair.Key} {{ get; set; }}");
+                var fieldSchema = pair.Value;
+                var fieldType = GetFieldType(fieldSchema);
+                sb.AppendLine($"        public {(fieldSchema.Nullable != false ? $"JsonNullable<{fieldType}>" : fieldType)} {pair.Key} {{ get; set; }}");
             }
 
             sb.Append(
@@ -66,7 +92,7 @@ namespace {@namespace}
             }
         }
 
-        private static string GetPropertyType(FieldSchema fieldSchema)
+        private static string GetFieldType(FieldSchema fieldSchema)
         {
             var fieldType = fieldSchema.Type;
             switch (fieldType)

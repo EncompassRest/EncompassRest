@@ -3,45 +3,45 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class PrequalificationScenario
+    public sealed partial class PrequalificationScenario
     {
-        public decimal? MaximumLoanAmount { get; set; }
-        public decimal? Ltv { get; set; }
-        public decimal? Cltv { get; set; }
-        public decimal? DownPaymentPercent { get; set; }
-        public decimal? DownPaymentAmount { get; set; }
-        public decimal? TotalHe { get; set; }
-        public decimal? SubordinateFin { get; set; }
-        public decimal? QualTopRatioPercent { get; set; }
-        public decimal? QualBottomRatioPercent { get; set; }
-        public int? AppraisedValue { get; set; }
-        public decimal? MonthlyPayment { get; set; }
-        public decimal? TotalPayments { get; set; }
-        public decimal? TotalIncome { get; set; }
-        public decimal? TotalOtherExpense { get; set; }
-        public decimal? TotalPaidOffMortgage { get; set; }
-        public decimal? TotalPaidOffOthers { get; set; }
-        public decimal? TotalBaseCost { get; set; }
+        public JsonNullable<int?> AppraisedValue { get; set; }
+        public JsonNullable<decimal?> Apr { get; set; }
+        public JsonNullable<decimal?> CashToClose { get; set; }
+        public JsonNullable<decimal?> ClosingCost { get; set; }
+        public JsonNullable<decimal?> Cltv { get; set; }
         public string Comments { get; set; }
-        public decimal? TotalCashLeft { get; set; }
-        public decimal? PrepaidItemsEstimatedAmount { get; set; }
-        public decimal? TotalCosts { get; set; }
-        public decimal? TotalFinancing { get; set; }
-        public decimal? TotalCashAvailable { get; set; }
-        public decimal? FhaUpfrontMIPremiumPercent { get; set; }
-        public decimal? MiAndFundingFeeFinancedAmount { get; set; }
-        public decimal? TotalLoanAmount { get; set; }
-        public decimal? GrossNegativeCashFlow { get; set; }
-        public string CurrentStatus { get; set; }
         public string CreditScore { get; set; }
-        public decimal? SalesPrice { get; set; }
-        public decimal? LoanAmount { get; set; }
-        public decimal? ClosingCost { get; set; }
-        public decimal? CashToClose { get; set; }
-        public decimal? Apr { get; set; }
-        public decimal? MinimumIncome { get; set; }
-        public decimal? MaximumDebt { get; set; }
+        public string CurrentStatus { get; set; }
+        public JsonNullable<decimal?> DownPaymentAmount { get; set; }
+        public JsonNullable<decimal?> DownPaymentPercent { get; set; }
+        public JsonNullable<decimal?> FhaUpfrontMIPremiumPercent { get; set; }
+        public JsonNullable<decimal?> GrossNegativeCashFlow { get; set; }
         public string Id { get; set; }
+        public JsonNullable<decimal?> LoanAmount { get; set; }
+        public JsonNullable<decimal?> Ltv { get; set; }
+        public JsonNullable<decimal?> MaximumDebt { get; set; }
+        public JsonNullable<decimal?> MaximumLoanAmount { get; set; }
+        public JsonNullable<decimal?> MiAndFundingFeeFinancedAmount { get; set; }
+        public JsonNullable<decimal?> MinimumIncome { get; set; }
+        public JsonNullable<decimal?> MonthlyPayment { get; set; }
+        public JsonNullable<decimal?> PrepaidItemsEstimatedAmount { get; set; }
         public int? PrequalificationScenarioIndex { get; set; }
+        public JsonNullable<decimal?> QualBottomRatioPercent { get; set; }
+        public JsonNullable<decimal?> QualTopRatioPercent { get; set; }
+        public JsonNullable<decimal?> SalesPrice { get; set; }
+        public JsonNullable<decimal?> SubordinateFin { get; set; }
+        public JsonNullable<decimal?> TotalBaseCost { get; set; }
+        public JsonNullable<decimal?> TotalCashAvailable { get; set; }
+        public JsonNullable<decimal?> TotalCashLeft { get; set; }
+        public JsonNullable<decimal?> TotalCosts { get; set; }
+        public JsonNullable<decimal?> TotalFinancing { get; set; }
+        public JsonNullable<decimal?> TotalHe { get; set; }
+        public JsonNullable<decimal?> TotalIncome { get; set; }
+        public JsonNullable<decimal?> TotalLoanAmount { get; set; }
+        public JsonNullable<decimal?> TotalOtherExpense { get; set; }
+        public JsonNullable<decimal?> TotalPaidOffMortgage { get; set; }
+        public JsonNullable<decimal?> TotalPaidOffOthers { get; set; }
+        public JsonNullable<decimal?> TotalPayments { get; set; }
     }
 }

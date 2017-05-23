@@ -3,36 +3,36 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans
 {
-    public sealed class LoanSubmission
+    public sealed partial class LoanSubmission
     {
-        public decimal? AmountAvailable { get; set; }
-        public List<LoanSubmissionFee> LoanSubmissionFees { get; set; }
-        public bool? ReducedDocsIndicator { get; set; }
-        public decimal? TotalDiscountPointCharged { get; set; }
-        public string RateLock { get; set; }
-        public int? NumberOfDays { get; set; }
-        public decimal? TotalForDueLender { get; set; }
-        public decimal? TotalForDueBroker { get; set; }
-        public decimal? Total { get; set; }
-        public string Comments { get; set; }
-        public decimal? AmountRequiredToClose { get; set; }
-        public DateTime? LockDate { get; set; }
-        public DateTime? LockExpiresDate { get; set; }
-        public string ProgramCode { get; set; }
-        public string BuydownMonthsPerAdjustment { get; set; }
+        public JsonNullable<decimal?> AmountAvailable { get; set; }
+        public JsonNullable<decimal?> AmountRequiredToClose { get; set; }
         public string BuydownDescription { get; set; }
-        public decimal? TotalForPrimaryResidence { get; set; }
-        public bool? TaxesIndicator { get; set; }
-        public bool? HazardIndicator { get; set; }
-        public bool? MmmPmiIndicator { get; set; }
-        public bool? FloodIndicator { get; set; }
-        public bool? OtherIndicator { get; set; }
-        public string OtherDescription { get; set; }
-        public DateTime? DateLastPaymentReceived { get; set; }
-        public DateTime? LockDateTimestampUtc { get; set; }
-        public DateTime? CurrentRateSetDate { get; set; }
-        public DateTime? RateLockDisclosureDate { get; set; }
-        public bool? IsSecondaryRegistration { get; set; }
+        public string BuydownMonthsPerAdjustment { get; set; }
+        public string Comments { get; set; }
+        public JsonNullable<DateTime?> CurrentRateSetDate { get; set; }
+        public JsonNullable<DateTime?> DateLastPaymentReceived { get; set; }
+        public JsonNullable<bool?> FloodIndicator { get; set; }
+        public JsonNullable<bool?> HazardIndicator { get; set; }
         public string Id { get; set; }
+        public JsonNullable<bool?> IsSecondaryRegistration { get; set; }
+        public JsonNullable<List<LoanSubmissionFee>> LoanSubmissionFees { get; set; }
+        public JsonNullable<DateTime?> LockDate { get; set; }
+        public JsonNullable<DateTime?> LockDateTimestampUtc { get; set; }
+        public JsonNullable<DateTime?> LockExpiresDate { get; set; }
+        public JsonNullable<bool?> MmmPmiIndicator { get; set; }
+        public JsonNullable<int?> NumberOfDays { get; set; }
+        public string OtherDescription { get; set; }
+        public JsonNullable<bool?> OtherIndicator { get; set; }
+        public string ProgramCode { get; set; }
+        public string RateLock { get; set; }
+        public JsonNullable<DateTime?> RateLockDisclosureDate { get; set; }
+        public JsonNullable<bool?> ReducedDocsIndicator { get; set; }
+        public JsonNullable<bool?> TaxesIndicator { get; set; }
+        public JsonNullable<decimal?> Total { get; set; }
+        public JsonNullable<decimal?> TotalDiscountPointCharged { get; set; }
+        public JsonNullable<decimal?> TotalForDueBroker { get; set; }
+        public JsonNullable<decimal?> TotalForDueLender { get; set; }
+        public JsonNullable<decimal?> TotalForPrimaryResidence { get; set; }
     }
 }
