@@ -7,27 +7,34 @@ namespace EncompassRest.Loans
 {
     public sealed partial class HelocRepaymentDrawPeriod
     {
-        public Value<decimal?> Apr { get; set; }
+        private Value<decimal?> _apr;
+        public decimal? Apr { get { return _apr; } set { _apr = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApr() => !Apr.Clean;
-        public Value<bool?> DrawIndicator { get; set; }
+        public bool ShouldSerializeApr() => !_apr.Clean;
+        private Value<bool?> _drawIndicator;
+        public bool? DrawIndicator { get { return _drawIndicator; } set { _drawIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDrawIndicator() => !DrawIndicator.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDrawIndicator() => !_drawIndicator.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> IndexRatePercent { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _indexRatePercent;
+        public decimal? IndexRatePercent { get { return _indexRatePercent; } set { _indexRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexRatePercent() => !IndexRatePercent.Clean;
-        public Value<decimal?> MarginRatePercent { get; set; }
+        public bool ShouldSerializeIndexRatePercent() => !_indexRatePercent.Clean;
+        private Value<decimal?> _marginRatePercent;
+        public decimal? MarginRatePercent { get { return _marginRatePercent; } set { _marginRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMarginRatePercent() => !MarginRatePercent.Clean;
-        public Value<decimal?> MinimumMonthlyPaymentAmount { get; set; }
+        public bool ShouldSerializeMarginRatePercent() => !_marginRatePercent.Clean;
+        private Value<decimal?> _minimumMonthlyPaymentAmount;
+        public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumMonthlyPaymentAmount() => !MinimumMonthlyPaymentAmount.Clean;
-        public Value<int?> Year { get; set; }
+        public bool ShouldSerializeMinimumMonthlyPaymentAmount() => !_minimumMonthlyPaymentAmount.Clean;
+        private Value<int?> _year;
+        public int? Year { get { return _year; } set { _year = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeYear() => !Year.Clean;
+        public bool ShouldSerializeYear() => !_year.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -35,26 +42,26 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Apr.Clean
-                    && DrawIndicator.Clean
-                    && Id.Clean
-                    && IndexRatePercent.Clean
-                    && MarginRatePercent.Clean
-                    && MinimumMonthlyPaymentAmount.Clean
-                    && Year.Clean;
+                var clean = _apr.Clean
+                    && _drawIndicator.Clean
+                    && _id.Clean
+                    && _indexRatePercent.Clean
+                    && _marginRatePercent.Clean
+                    && _minimumMonthlyPaymentAmount.Clean
+                    && _year.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Apr; v0.Clean = value; Apr = v0;
-                var v1 = DrawIndicator; v1.Clean = value; DrawIndicator = v1;
-                var v2 = Id; v2.Clean = value; Id = v2;
-                var v3 = IndexRatePercent; v3.Clean = value; IndexRatePercent = v3;
-                var v4 = MarginRatePercent; v4.Clean = value; MarginRatePercent = v4;
-                var v5 = MinimumMonthlyPaymentAmount; v5.Clean = value; MinimumMonthlyPaymentAmount = v5;
-                var v6 = Year; v6.Clean = value; Year = v6;
+                var v0 = _apr; v0.Clean = value; _apr = v0;
+                var v1 = _drawIndicator; v1.Clean = value; _drawIndicator = v1;
+                var v2 = _id; v2.Clean = value; _id = v2;
+                var v3 = _indexRatePercent; v3.Clean = value; _indexRatePercent = v3;
+                var v4 = _marginRatePercent; v4.Clean = value; _marginRatePercent = v4;
+                var v5 = _minimumMonthlyPaymentAmount; v5.Clean = value; _minimumMonthlyPaymentAmount = v5;
+                var v6 = _year; v6.Clean = value; _year = v6;
                 _settingClean = 0;
             }
         }

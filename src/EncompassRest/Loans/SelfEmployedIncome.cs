@@ -7,30 +7,38 @@ namespace EncompassRest.Loans
 {
     public sealed partial class SelfEmployedIncome
     {
-        public Value<bool?> BoolFieldValue { get; set; }
+        private Value<bool?> _boolFieldValue;
+        public bool? BoolFieldValue { get { return _boolFieldValue; } set { _boolFieldValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBoolFieldValue() => !BoolFieldValue.Clean;
-        public Value<string> BusinessName { get; set; }
+        public bool ShouldSerializeBoolFieldValue() => !_boolFieldValue.Clean;
+        private Value<string> _businessName;
+        public string BusinessName { get { return _businessName; } set { _businessName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessName() => !BusinessName.Clean;
-        public Value<string> FieldName { get; set; }
+        public bool ShouldSerializeBusinessName() => !_businessName.Clean;
+        private Value<string> _fieldName;
+        public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldName() => !FieldName.Clean;
-        public Value<decimal?> FieldValue { get; set; }
+        public bool ShouldSerializeFieldName() => !_fieldName.Clean;
+        private Value<decimal?> _fieldValue;
+        public decimal? FieldValue { get { return _fieldValue; } set { _fieldValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldValue() => !FieldValue.Clean;
-        public Value<decimal?> FirstYearAmount { get; set; }
+        public bool ShouldSerializeFieldValue() => !_fieldValue.Clean;
+        private Value<decimal?> _firstYearAmount;
+        public decimal? FirstYearAmount { get { return _firstYearAmount; } set { _firstYearAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirstYearAmount() => !FirstYearAmount.Clean;
-        public Value<string> FormType { get; set; }
+        public bool ShouldSerializeFirstYearAmount() => !_firstYearAmount.Clean;
+        private Value<string> _formType;
+        public string FormType { get { return _formType; } set { _formType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormType() => !FormType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFormType() => !_formType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> SecondYearAmount { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _secondYearAmount;
+        public decimal? SecondYearAmount { get { return _secondYearAmount; } set { _secondYearAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecondYearAmount() => !SecondYearAmount.Clean;
+        public bool ShouldSerializeSecondYearAmount() => !_secondYearAmount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -38,28 +46,28 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = BoolFieldValue.Clean
-                    && BusinessName.Clean
-                    && FieldName.Clean
-                    && FieldValue.Clean
-                    && FirstYearAmount.Clean
-                    && FormType.Clean
-                    && Id.Clean
-                    && SecondYearAmount.Clean;
+                var clean = _boolFieldValue.Clean
+                    && _businessName.Clean
+                    && _fieldName.Clean
+                    && _fieldValue.Clean
+                    && _firstYearAmount.Clean
+                    && _formType.Clean
+                    && _id.Clean
+                    && _secondYearAmount.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = BoolFieldValue; v0.Clean = value; BoolFieldValue = v0;
-                var v1 = BusinessName; v1.Clean = value; BusinessName = v1;
-                var v2 = FieldName; v2.Clean = value; FieldName = v2;
-                var v3 = FieldValue; v3.Clean = value; FieldValue = v3;
-                var v4 = FirstYearAmount; v4.Clean = value; FirstYearAmount = v4;
-                var v5 = FormType; v5.Clean = value; FormType = v5;
-                var v6 = Id; v6.Clean = value; Id = v6;
-                var v7 = SecondYearAmount; v7.Clean = value; SecondYearAmount = v7;
+                var v0 = _boolFieldValue; v0.Clean = value; _boolFieldValue = v0;
+                var v1 = _businessName; v1.Clean = value; _businessName = v1;
+                var v2 = _fieldName; v2.Clean = value; _fieldName = v2;
+                var v3 = _fieldValue; v3.Clean = value; _fieldValue = v3;
+                var v4 = _firstYearAmount; v4.Clean = value; _firstYearAmount = v4;
+                var v5 = _formType; v5.Clean = value; _formType = v5;
+                var v6 = _id; v6.Clean = value; _id = v6;
+                var v7 = _secondYearAmount; v7.Clean = value; _secondYearAmount = v7;
                 _settingClean = 0;
             }
         }

@@ -7,27 +7,34 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Gfe2010GfeCharge
     {
-        public Value<bool?> ChargeBelow10Indicator { get; set; }
+        private Value<bool?> _chargeBelow10Indicator;
+        public bool? ChargeBelow10Indicator { get { return _chargeBelow10Indicator; } set { _chargeBelow10Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargeBelow10Indicator() => !ChargeBelow10Indicator.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeChargeBelow10Indicator() => !_chargeBelow10Indicator.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<int?> Gfe2010GfeChargeIndex { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<int?> _gfe2010GfeChargeIndex;
+        public int? Gfe2010GfeChargeIndex { get { return _gfe2010GfeChargeIndex; } set { _gfe2010GfeChargeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010GfeChargeIndex() => !Gfe2010GfeChargeIndex.Clean;
-        public Value<decimal?> GfeCharge { get; set; }
+        public bool ShouldSerializeGfe2010GfeChargeIndex() => !_gfe2010GfeChargeIndex.Clean;
+        private Value<decimal?> _gfeCharge;
+        public decimal? GfeCharge { get { return _gfeCharge; } set { _gfeCharge = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeCharge() => !GfeCharge.Clean;
-        public Value<decimal?> HudCharge { get; set; }
+        public bool ShouldSerializeGfeCharge() => !_gfeCharge.Clean;
+        private Value<decimal?> _hudCharge;
+        public decimal? HudCharge { get { return _hudCharge; } set { _hudCharge = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHudCharge() => !HudCharge.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHudCharge() => !_hudCharge.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> Line { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _line;
+        public string Line { get { return _line; } set { _line = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine() => !Line.Clean;
+        public bool ShouldSerializeLine() => !_line.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -35,26 +42,26 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ChargeBelow10Indicator.Clean
-                    && Description.Clean
-                    && Gfe2010GfeChargeIndex.Clean
-                    && GfeCharge.Clean
-                    && HudCharge.Clean
-                    && Id.Clean
-                    && Line.Clean;
+                var clean = _chargeBelow10Indicator.Clean
+                    && _description.Clean
+                    && _gfe2010GfeChargeIndex.Clean
+                    && _gfeCharge.Clean
+                    && _hudCharge.Clean
+                    && _id.Clean
+                    && _line.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ChargeBelow10Indicator; v0.Clean = value; ChargeBelow10Indicator = v0;
-                var v1 = Description; v1.Clean = value; Description = v1;
-                var v2 = Gfe2010GfeChargeIndex; v2.Clean = value; Gfe2010GfeChargeIndex = v2;
-                var v3 = GfeCharge; v3.Clean = value; GfeCharge = v3;
-                var v4 = HudCharge; v4.Clean = value; HudCharge = v4;
-                var v5 = Id; v5.Clean = value; Id = v5;
-                var v6 = Line; v6.Clean = value; Line = v6;
+                var v0 = _chargeBelow10Indicator; v0.Clean = value; _chargeBelow10Indicator = v0;
+                var v1 = _description; v1.Clean = value; _description = v1;
+                var v2 = _gfe2010GfeChargeIndex; v2.Clean = value; _gfe2010GfeChargeIndex = v2;
+                var v3 = _gfeCharge; v3.Clean = value; _gfeCharge = v3;
+                var v4 = _hudCharge; v4.Clean = value; _hudCharge = v4;
+                var v5 = _id; v5.Clean = value; _id = v5;
+                var v6 = _line; v6.Clean = value; _line = v6;
                 _settingClean = 0;
             }
         }

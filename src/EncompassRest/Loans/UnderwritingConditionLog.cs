@@ -7,174 +7,230 @@ namespace EncompassRest.Loans
 {
     public sealed partial class UnderwritingConditionLog
     {
-        public Value<string> AddedBy { get; set; }
+        private Value<string> _addedBy;
+        public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedBy() => !AddedBy.Clean;
-        public Value<List<LogAlert>> Alerts { get; set; }
+        public bool ShouldSerializeAddedBy() => !_addedBy.Clean;
+        private Value<List<LogAlert>> _alerts;
+        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !Alerts.Clean;
-        public Value<string> AlertsXml { get; set; }
+        public bool ShouldSerializeAlerts() => !_alerts.Clean;
+        private Value<string> _alertsXml;
+        public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlertsXml() => !AlertsXml.Clean;
-        public Value<bool?> AllowToClearIndicator { get; set; }
+        public bool ShouldSerializeAlertsXml() => !_alertsXml.Clean;
+        private Value<bool?> _allowToClearIndicator;
+        public bool? AllowToClearIndicator { get { return _allowToClearIndicator; } set { _allowToClearIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllowToClearIndicator() => !AllowToClearIndicator.Clean;
-        public Value<string> Category { get; set; }
+        public bool ShouldSerializeAllowToClearIndicator() => !_allowToClearIndicator.Clean;
+        private Value<string> _category;
+        public string Category { get { return _category; } set { _category = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCategory() => !Category.Clean;
-        public Value<bool?> Cleared { get; set; }
+        public bool ShouldSerializeCategory() => !_category.Clean;
+        private Value<bool?> _cleared;
+        public bool? Cleared { get { return _cleared; } set { _cleared = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCleared() => !Cleared.Clean;
-        public Value<string> ClearedBy { get; set; }
+        public bool ShouldSerializeCleared() => !_cleared.Clean;
+        private Value<string> _clearedBy;
+        public string ClearedBy { get { return _clearedBy; } set { _clearedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClearedBy() => !ClearedBy.Clean;
-        public Value<List<LogComment>> CommentList { get; set; }
+        public bool ShouldSerializeClearedBy() => !_clearedBy.Clean;
+        private Value<List<LogComment>> _commentList;
+        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !CommentList.Clean;
-        public Value<string> CommentListXml { get; set; }
+        public bool ShouldSerializeCommentList() => !_commentList.Clean;
+        private Value<string> _commentListXml;
+        public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentListXml() => !CommentListXml.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCommentListXml() => !_commentListXml.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<DateTime?> DateAddedUtc { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<DateTime?> _dateAddedUtc;
+        public DateTime? DateAddedUtc { get { return _dateAddedUtc; } set { _dateAddedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateAddedUtc() => !DateAddedUtc.Clean;
-        public Value<DateTime?> DateClearedUtc { get; set; }
+        public bool ShouldSerializeDateAddedUtc() => !_dateAddedUtc.Clean;
+        private Value<DateTime?> _dateClearedUtc;
+        public DateTime? DateClearedUtc { get { return _dateClearedUtc; } set { _dateClearedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateClearedUtc() => !DateClearedUtc.Clean;
-        public Value<DateTime?> DateExpected { get; set; }
+        public bool ShouldSerializeDateClearedUtc() => !_dateClearedUtc.Clean;
+        private Value<DateTime?> _dateExpected;
+        public DateTime? DateExpected { get { return _dateExpected; } set { _dateExpected = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpected() => !DateExpected.Clean;
-        public Value<DateTime?> DateExpiredUtc { get; set; }
+        public bool ShouldSerializeDateExpected() => !_dateExpected.Clean;
+        private Value<DateTime?> _dateExpiredUtc;
+        public DateTime? DateExpiredUtc { get { return _dateExpiredUtc; } set { _dateExpiredUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpiredUtc() => !DateExpiredUtc.Clean;
-        public Value<DateTime?> DateFulfilledUtc { get; set; }
+        public bool ShouldSerializeDateExpiredUtc() => !_dateExpiredUtc.Clean;
+        private Value<DateTime?> _dateFulfilledUtc;
+        public DateTime? DateFulfilledUtc { get { return _dateFulfilledUtc; } set { _dateFulfilledUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateFulfilledUtc() => !DateFulfilledUtc.Clean;
-        public Value<DateTime?> DateReceived { get; set; }
+        public bool ShouldSerializeDateFulfilledUtc() => !_dateFulfilledUtc.Clean;
+        private Value<DateTime?> _dateReceived;
+        public DateTime? DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReceived() => !DateReceived.Clean;
-        public Value<DateTime?> DateReceivedUtc { get; set; }
+        public bool ShouldSerializeDateReceived() => !_dateReceived.Clean;
+        private Value<DateTime?> _dateReceivedUtc;
+        public DateTime? DateReceivedUtc { get { return _dateReceivedUtc; } set { _dateReceivedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReceivedUtc() => !DateReceivedUtc.Clean;
-        public Value<DateTime?> DateRejectedUtc { get; set; }
+        public bool ShouldSerializeDateReceivedUtc() => !_dateReceivedUtc.Clean;
+        private Value<DateTime?> _dateRejectedUtc;
+        public DateTime? DateRejectedUtc { get { return _dateRejectedUtc; } set { _dateRejectedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRejectedUtc() => !DateRejectedUtc.Clean;
-        public Value<DateTime?> DateRequestedUtc { get; set; }
+        public bool ShouldSerializeDateRejectedUtc() => !_dateRejectedUtc.Clean;
+        private Value<DateTime?> _dateRequestedUtc;
+        public DateTime? DateRequestedUtc { get { return _dateRequestedUtc; } set { _dateRequestedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRequestedUtc() => !DateRequestedUtc.Clean;
-        public Value<DateTime?> DateRerequestedUtc { get; set; }
+        public bool ShouldSerializeDateRequestedUtc() => !_dateRequestedUtc.Clean;
+        private Value<DateTime?> _dateRerequestedUtc;
+        public DateTime? DateRerequestedUtc { get { return _dateRerequestedUtc; } set { _dateRerequestedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRerequestedUtc() => !DateRerequestedUtc.Clean;
-        public Value<DateTime?> DateReviewedUtc { get; set; }
+        public bool ShouldSerializeDateRerequestedUtc() => !_dateRerequestedUtc.Clean;
+        private Value<DateTime?> _dateReviewedUtc;
+        public DateTime? DateReviewedUtc { get { return _dateReviewedUtc; } set { _dateReviewedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReviewedUtc() => !DateReviewedUtc.Clean;
-        public Value<DateTime?> DateUtc { get; set; }
+        public bool ShouldSerializeDateReviewedUtc() => !_dateReviewedUtc.Clean;
+        private Value<DateTime?> _dateUtc;
+        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !DateUtc.Clean;
-        public Value<DateTime?> DateWaivedUtc { get; set; }
+        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
+        private Value<DateTime?> _dateWaivedUtc;
+        public DateTime? DateWaivedUtc { get { return _dateWaivedUtc; } set { _dateWaivedUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateWaivedUtc() => !DateWaivedUtc.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeDateWaivedUtc() => !_dateWaivedUtc.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<string> Details { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<string> _details;
+        public string Details { get { return _details; } set { _details = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDetails() => !Details.Clean;
-        public Value<bool?> Expected { get; set; }
+        public bool ShouldSerializeDetails() => !_details.Clean;
+        private Value<bool?> _expected;
+        public bool? Expected { get { return _expected; } set { _expected = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpected() => !Expected.Clean;
-        public Value<bool?> FileAttachmentsMigrated { get; set; }
+        public bool ShouldSerializeExpected() => !_expected.Clean;
+        private Value<bool?> _fileAttachmentsMigrated;
+        public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !FileAttachmentsMigrated.Clean;
-        public Value<int?> ForRoleId { get; set; }
+        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
+        private Value<int?> _forRoleId;
+        public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeForRoleId() => !ForRoleId.Clean;
-        public Value<bool?> Fulfilled { get; set; }
+        public bool ShouldSerializeForRoleId() => !_forRoleId.Clean;
+        private Value<bool?> _fulfilled;
+        public bool? Fulfilled { get { return _fulfilled; } set { _fulfilled = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFulfilled() => !Fulfilled.Clean;
-        public Value<string> FulfilledBy { get; set; }
+        public bool ShouldSerializeFulfilled() => !_fulfilled.Clean;
+        private Value<string> _fulfilledBy;
+        public string FulfilledBy { get { return _fulfilledBy; } set { _fulfilledBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFulfilledBy() => !FulfilledBy.Clean;
-        public Value<string> Guid { get; set; }
+        public bool ShouldSerializeFulfilledBy() => !_fulfilledBy.Clean;
+        private Value<string> _guid;
+        public string Guid { get { return _guid; } set { _guid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !Guid.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGuid() => !_guid.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsExternalIndicator { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isExternalIndicator;
+        public bool? IsExternalIndicator { get { return _isExternalIndicator; } set { _isExternalIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsExternalIndicator() => !IsExternalIndicator.Clean;
-        public Value<bool?> IsInternalIndicator { get; set; }
+        public bool ShouldSerializeIsExternalIndicator() => !_isExternalIndicator.Clean;
+        private Value<bool?> _isInternalIndicator;
+        public bool? IsInternalIndicator { get { return _isInternalIndicator; } set { _isInternalIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsInternalIndicator() => !IsInternalIndicator.Clean;
-        public Value<bool?> IsPastDue { get; set; }
+        public bool ShouldSerializeIsInternalIndicator() => !_isInternalIndicator.Clean;
+        private Value<bool?> _isPastDue;
+        public bool? IsPastDue { get { return _isPastDue; } set { _isPastDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsPastDue() => !IsPastDue.Clean;
-        public Value<bool?> IsSystemSpecificIndicator { get; set; }
+        public bool ShouldSerializeIsPastDue() => !_isPastDue.Clean;
+        private Value<bool?> _isSystemSpecificIndicator;
+        public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !IsSystemSpecificIndicator.Clean;
-        public Value<int?> LogRecordIndex { get; set; }
+        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
+        private Value<int?> _logRecordIndex;
+        public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !LogRecordIndex.Clean;
-        public Value<string> PairId { get; set; }
+        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
+        private Value<string> _pairId;
+        public string PairId { get { return _pairId; } set { _pairId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePairId() => !PairId.Clean;
-        public Value<string> PriorTo { get; set; }
+        public bool ShouldSerializePairId() => !_pairId.Clean;
+        private Value<string> _priorTo;
+        public string PriorTo { get { return _priorTo; } set { _priorTo = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriorTo() => !PriorTo.Clean;
-        public Value<bool?> Received { get; set; }
+        public bool ShouldSerializePriorTo() => !_priorTo.Clean;
+        private Value<bool?> _received;
+        public bool? Received { get { return _received; } set { _received = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceived() => !Received.Clean;
-        public Value<string> ReceivedBy { get; set; }
+        public bool ShouldSerializeReceived() => !_received.Clean;
+        private Value<string> _receivedBy;
+        public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivedBy() => !ReceivedBy.Clean;
-        public Value<bool?> Rejected { get; set; }
+        public bool ShouldSerializeReceivedBy() => !_receivedBy.Clean;
+        private Value<bool?> _rejected;
+        public bool? Rejected { get { return _rejected; } set { _rejected = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejected() => !Rejected.Clean;
-        public Value<string> RejectedBy { get; set; }
+        public bool ShouldSerializeRejected() => !_rejected.Clean;
+        private Value<string> _rejectedBy;
+        public string RejectedBy { get { return _rejectedBy; } set { _rejectedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejectedBy() => !RejectedBy.Clean;
-        public Value<bool?> Requested { get; set; }
+        public bool ShouldSerializeRejectedBy() => !_rejectedBy.Clean;
+        private Value<bool?> _requested;
+        public bool? Requested { get { return _requested; } set { _requested = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequested() => !Requested.Clean;
-        public Value<string> RequestedBy { get; set; }
+        public bool ShouldSerializeRequested() => !_requested.Clean;
+        private Value<string> _requestedBy;
+        public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestedBy() => !RequestedBy.Clean;
-        public Value<bool?> Rerequested { get; set; }
+        public bool ShouldSerializeRequestedBy() => !_requestedBy.Clean;
+        private Value<bool?> _rerequested;
+        public bool? Rerequested { get { return _rerequested; } set { _rerequested = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequested() => !Rerequested.Clean;
-        public Value<string> RerequestedBy { get; set; }
+        public bool ShouldSerializeRerequested() => !_rerequested.Clean;
+        private Value<string> _rerequestedBy;
+        public string RerequestedBy { get { return _rerequestedBy; } set { _rerequestedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequestedBy() => !RerequestedBy.Clean;
-        public Value<bool?> Reviewed { get; set; }
+        public bool ShouldSerializeRerequestedBy() => !_rerequestedBy.Clean;
+        private Value<bool?> _reviewed;
+        public bool? Reviewed { get { return _reviewed; } set { _reviewed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewed() => !Reviewed.Clean;
-        public Value<string> ReviewedBy { get; set; }
+        public bool ShouldSerializeReviewed() => !_reviewed.Clean;
+        private Value<string> _reviewedBy;
+        public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedBy() => !ReviewedBy.Clean;
-        public Value<string> Source { get; set; }
+        public bool ShouldSerializeReviewedBy() => !_reviewedBy.Clean;
+        private Value<string> _source;
+        public string Source { get { return _source; } set { _source = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSource() => !Source.Clean;
-        public Value<string> Status { get; set; }
+        public bool ShouldSerializeSource() => !_source.Clean;
+        private Value<string> _status;
+        public string Status { get { return _status; } set { _status = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatus() => !Status.Clean;
-        public Value<string> StatusDescription { get; set; }
+        public bool ShouldSerializeStatus() => !_status.Clean;
+        private Value<string> _statusDescription;
+        public string StatusDescription { get { return _statusDescription; } set { _statusDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatusDescription() => !StatusDescription.Clean;
-        public Value<string> SystemId { get; set; }
+        public bool ShouldSerializeStatusDescription() => !_statusDescription.Clean;
+        private Value<string> _systemId;
+        public string SystemId { get { return _systemId; } set { _systemId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !SystemId.Clean;
-        public Value<string> Title { get; set; }
+        public bool ShouldSerializeSystemId() => !_systemId.Clean;
+        private Value<string> _title;
+        public string Title { get { return _title; } set { _title = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !Title.Clean;
-        public Value<bool?> Waived { get; set; }
+        public bool ShouldSerializeTitle() => !_title.Clean;
+        private Value<bool?> _waived;
+        public bool? Waived { get { return _waived; } set { _waived = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWaived() => !Waived.Clean;
-        public Value<string> WaivedBy { get; set; }
+        public bool ShouldSerializeWaived() => !_waived.Clean;
+        private Value<string> _waivedBy;
+        public string WaivedBy { get { return _waivedBy; } set { _waivedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWaivedBy() => !WaivedBy.Clean;
+        public bool ShouldSerializeWaivedBy() => !_waivedBy.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -182,124 +238,124 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AddedBy.Clean
-                    && Alerts.Clean
-                    && AlertsXml.Clean
-                    && AllowToClearIndicator.Clean
-                    && Category.Clean
-                    && Cleared.Clean
-                    && ClearedBy.Clean
-                    && CommentList.Clean
-                    && CommentListXml.Clean
-                    && Comments.Clean
-                    && DateAddedUtc.Clean
-                    && DateClearedUtc.Clean
-                    && DateExpected.Clean
-                    && DateExpiredUtc.Clean
-                    && DateFulfilledUtc.Clean
-                    && DateReceived.Clean
-                    && DateReceivedUtc.Clean
-                    && DateRejectedUtc.Clean
-                    && DateRequestedUtc.Clean
-                    && DateRerequestedUtc.Clean
-                    && DateReviewedUtc.Clean
-                    && DateUtc.Clean
-                    && DateWaivedUtc.Clean
-                    && Description.Clean
-                    && Details.Clean
-                    && Expected.Clean
-                    && FileAttachmentsMigrated.Clean
-                    && ForRoleId.Clean
-                    && Fulfilled.Clean
-                    && FulfilledBy.Clean
-                    && Guid.Clean
-                    && Id.Clean
-                    && IsExternalIndicator.Clean
-                    && IsInternalIndicator.Clean
-                    && IsPastDue.Clean
-                    && IsSystemSpecificIndicator.Clean
-                    && LogRecordIndex.Clean
-                    && PairId.Clean
-                    && PriorTo.Clean
-                    && Received.Clean
-                    && ReceivedBy.Clean
-                    && Rejected.Clean
-                    && RejectedBy.Clean
-                    && Requested.Clean
-                    && RequestedBy.Clean
-                    && Rerequested.Clean
-                    && RerequestedBy.Clean
-                    && Reviewed.Clean
-                    && ReviewedBy.Clean
-                    && Source.Clean
-                    && Status.Clean
-                    && StatusDescription.Clean
-                    && SystemId.Clean
-                    && Title.Clean
-                    && Waived.Clean
-                    && WaivedBy.Clean;
+                var clean = _addedBy.Clean
+                    && _alerts.Clean
+                    && _alertsXml.Clean
+                    && _allowToClearIndicator.Clean
+                    && _category.Clean
+                    && _cleared.Clean
+                    && _clearedBy.Clean
+                    && _commentList.Clean
+                    && _commentListXml.Clean
+                    && _comments.Clean
+                    && _dateAddedUtc.Clean
+                    && _dateClearedUtc.Clean
+                    && _dateExpected.Clean
+                    && _dateExpiredUtc.Clean
+                    && _dateFulfilledUtc.Clean
+                    && _dateReceived.Clean
+                    && _dateReceivedUtc.Clean
+                    && _dateRejectedUtc.Clean
+                    && _dateRequestedUtc.Clean
+                    && _dateRerequestedUtc.Clean
+                    && _dateReviewedUtc.Clean
+                    && _dateUtc.Clean
+                    && _dateWaivedUtc.Clean
+                    && _description.Clean
+                    && _details.Clean
+                    && _expected.Clean
+                    && _fileAttachmentsMigrated.Clean
+                    && _forRoleId.Clean
+                    && _fulfilled.Clean
+                    && _fulfilledBy.Clean
+                    && _guid.Clean
+                    && _id.Clean
+                    && _isExternalIndicator.Clean
+                    && _isInternalIndicator.Clean
+                    && _isPastDue.Clean
+                    && _isSystemSpecificIndicator.Clean
+                    && _logRecordIndex.Clean
+                    && _pairId.Clean
+                    && _priorTo.Clean
+                    && _received.Clean
+                    && _receivedBy.Clean
+                    && _rejected.Clean
+                    && _rejectedBy.Clean
+                    && _requested.Clean
+                    && _requestedBy.Clean
+                    && _rerequested.Clean
+                    && _rerequestedBy.Clean
+                    && _reviewed.Clean
+                    && _reviewedBy.Clean
+                    && _source.Clean
+                    && _status.Clean
+                    && _statusDescription.Clean
+                    && _systemId.Clean
+                    && _title.Clean
+                    && _waived.Clean
+                    && _waivedBy.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AddedBy; v0.Clean = value; AddedBy = v0;
-                var v1 = Alerts; v1.Clean = value; Alerts = v1;
-                var v2 = AlertsXml; v2.Clean = value; AlertsXml = v2;
-                var v3 = AllowToClearIndicator; v3.Clean = value; AllowToClearIndicator = v3;
-                var v4 = Category; v4.Clean = value; Category = v4;
-                var v5 = Cleared; v5.Clean = value; Cleared = v5;
-                var v6 = ClearedBy; v6.Clean = value; ClearedBy = v6;
-                var v7 = CommentList; v7.Clean = value; CommentList = v7;
-                var v8 = CommentListXml; v8.Clean = value; CommentListXml = v8;
-                var v9 = Comments; v9.Clean = value; Comments = v9;
-                var v10 = DateAddedUtc; v10.Clean = value; DateAddedUtc = v10;
-                var v11 = DateClearedUtc; v11.Clean = value; DateClearedUtc = v11;
-                var v12 = DateExpected; v12.Clean = value; DateExpected = v12;
-                var v13 = DateExpiredUtc; v13.Clean = value; DateExpiredUtc = v13;
-                var v14 = DateFulfilledUtc; v14.Clean = value; DateFulfilledUtc = v14;
-                var v15 = DateReceived; v15.Clean = value; DateReceived = v15;
-                var v16 = DateReceivedUtc; v16.Clean = value; DateReceivedUtc = v16;
-                var v17 = DateRejectedUtc; v17.Clean = value; DateRejectedUtc = v17;
-                var v18 = DateRequestedUtc; v18.Clean = value; DateRequestedUtc = v18;
-                var v19 = DateRerequestedUtc; v19.Clean = value; DateRerequestedUtc = v19;
-                var v20 = DateReviewedUtc; v20.Clean = value; DateReviewedUtc = v20;
-                var v21 = DateUtc; v21.Clean = value; DateUtc = v21;
-                var v22 = DateWaivedUtc; v22.Clean = value; DateWaivedUtc = v22;
-                var v23 = Description; v23.Clean = value; Description = v23;
-                var v24 = Details; v24.Clean = value; Details = v24;
-                var v25 = Expected; v25.Clean = value; Expected = v25;
-                var v26 = FileAttachmentsMigrated; v26.Clean = value; FileAttachmentsMigrated = v26;
-                var v27 = ForRoleId; v27.Clean = value; ForRoleId = v27;
-                var v28 = Fulfilled; v28.Clean = value; Fulfilled = v28;
-                var v29 = FulfilledBy; v29.Clean = value; FulfilledBy = v29;
-                var v30 = Guid; v30.Clean = value; Guid = v30;
-                var v31 = Id; v31.Clean = value; Id = v31;
-                var v32 = IsExternalIndicator; v32.Clean = value; IsExternalIndicator = v32;
-                var v33 = IsInternalIndicator; v33.Clean = value; IsInternalIndicator = v33;
-                var v34 = IsPastDue; v34.Clean = value; IsPastDue = v34;
-                var v35 = IsSystemSpecificIndicator; v35.Clean = value; IsSystemSpecificIndicator = v35;
-                var v36 = LogRecordIndex; v36.Clean = value; LogRecordIndex = v36;
-                var v37 = PairId; v37.Clean = value; PairId = v37;
-                var v38 = PriorTo; v38.Clean = value; PriorTo = v38;
-                var v39 = Received; v39.Clean = value; Received = v39;
-                var v40 = ReceivedBy; v40.Clean = value; ReceivedBy = v40;
-                var v41 = Rejected; v41.Clean = value; Rejected = v41;
-                var v42 = RejectedBy; v42.Clean = value; RejectedBy = v42;
-                var v43 = Requested; v43.Clean = value; Requested = v43;
-                var v44 = RequestedBy; v44.Clean = value; RequestedBy = v44;
-                var v45 = Rerequested; v45.Clean = value; Rerequested = v45;
-                var v46 = RerequestedBy; v46.Clean = value; RerequestedBy = v46;
-                var v47 = Reviewed; v47.Clean = value; Reviewed = v47;
-                var v48 = ReviewedBy; v48.Clean = value; ReviewedBy = v48;
-                var v49 = Source; v49.Clean = value; Source = v49;
-                var v50 = Status; v50.Clean = value; Status = v50;
-                var v51 = StatusDescription; v51.Clean = value; StatusDescription = v51;
-                var v52 = SystemId; v52.Clean = value; SystemId = v52;
-                var v53 = Title; v53.Clean = value; Title = v53;
-                var v54 = Waived; v54.Clean = value; Waived = v54;
-                var v55 = WaivedBy; v55.Clean = value; WaivedBy = v55;
+                var v0 = _addedBy; v0.Clean = value; _addedBy = v0;
+                var v1 = _alerts; v1.Clean = value; _alerts = v1;
+                var v2 = _alertsXml; v2.Clean = value; _alertsXml = v2;
+                var v3 = _allowToClearIndicator; v3.Clean = value; _allowToClearIndicator = v3;
+                var v4 = _category; v4.Clean = value; _category = v4;
+                var v5 = _cleared; v5.Clean = value; _cleared = v5;
+                var v6 = _clearedBy; v6.Clean = value; _clearedBy = v6;
+                var v7 = _commentList; v7.Clean = value; _commentList = v7;
+                var v8 = _commentListXml; v8.Clean = value; _commentListXml = v8;
+                var v9 = _comments; v9.Clean = value; _comments = v9;
+                var v10 = _dateAddedUtc; v10.Clean = value; _dateAddedUtc = v10;
+                var v11 = _dateClearedUtc; v11.Clean = value; _dateClearedUtc = v11;
+                var v12 = _dateExpected; v12.Clean = value; _dateExpected = v12;
+                var v13 = _dateExpiredUtc; v13.Clean = value; _dateExpiredUtc = v13;
+                var v14 = _dateFulfilledUtc; v14.Clean = value; _dateFulfilledUtc = v14;
+                var v15 = _dateReceived; v15.Clean = value; _dateReceived = v15;
+                var v16 = _dateReceivedUtc; v16.Clean = value; _dateReceivedUtc = v16;
+                var v17 = _dateRejectedUtc; v17.Clean = value; _dateRejectedUtc = v17;
+                var v18 = _dateRequestedUtc; v18.Clean = value; _dateRequestedUtc = v18;
+                var v19 = _dateRerequestedUtc; v19.Clean = value; _dateRerequestedUtc = v19;
+                var v20 = _dateReviewedUtc; v20.Clean = value; _dateReviewedUtc = v20;
+                var v21 = _dateUtc; v21.Clean = value; _dateUtc = v21;
+                var v22 = _dateWaivedUtc; v22.Clean = value; _dateWaivedUtc = v22;
+                var v23 = _description; v23.Clean = value; _description = v23;
+                var v24 = _details; v24.Clean = value; _details = v24;
+                var v25 = _expected; v25.Clean = value; _expected = v25;
+                var v26 = _fileAttachmentsMigrated; v26.Clean = value; _fileAttachmentsMigrated = v26;
+                var v27 = _forRoleId; v27.Clean = value; _forRoleId = v27;
+                var v28 = _fulfilled; v28.Clean = value; _fulfilled = v28;
+                var v29 = _fulfilledBy; v29.Clean = value; _fulfilledBy = v29;
+                var v30 = _guid; v30.Clean = value; _guid = v30;
+                var v31 = _id; v31.Clean = value; _id = v31;
+                var v32 = _isExternalIndicator; v32.Clean = value; _isExternalIndicator = v32;
+                var v33 = _isInternalIndicator; v33.Clean = value; _isInternalIndicator = v33;
+                var v34 = _isPastDue; v34.Clean = value; _isPastDue = v34;
+                var v35 = _isSystemSpecificIndicator; v35.Clean = value; _isSystemSpecificIndicator = v35;
+                var v36 = _logRecordIndex; v36.Clean = value; _logRecordIndex = v36;
+                var v37 = _pairId; v37.Clean = value; _pairId = v37;
+                var v38 = _priorTo; v38.Clean = value; _priorTo = v38;
+                var v39 = _received; v39.Clean = value; _received = v39;
+                var v40 = _receivedBy; v40.Clean = value; _receivedBy = v40;
+                var v41 = _rejected; v41.Clean = value; _rejected = v41;
+                var v42 = _rejectedBy; v42.Clean = value; _rejectedBy = v42;
+                var v43 = _requested; v43.Clean = value; _requested = v43;
+                var v44 = _requestedBy; v44.Clean = value; _requestedBy = v44;
+                var v45 = _rerequested; v45.Clean = value; _rerequested = v45;
+                var v46 = _rerequestedBy; v46.Clean = value; _rerequestedBy = v46;
+                var v47 = _reviewed; v47.Clean = value; _reviewed = v47;
+                var v48 = _reviewedBy; v48.Clean = value; _reviewedBy = v48;
+                var v49 = _source; v49.Clean = value; _source = v49;
+                var v50 = _status; v50.Clean = value; _status = v50;
+                var v51 = _statusDescription; v51.Clean = value; _statusDescription = v51;
+                var v52 = _systemId; v52.Clean = value; _systemId = v52;
+                var v53 = _title; v53.Clean = value; _title = v53;
+                var v54 = _waived; v54.Clean = value; _waived = v54;
+                var v55 = _waivedBy; v55.Clean = value; _waivedBy = v55;
                 _settingClean = 0;
             }
         }

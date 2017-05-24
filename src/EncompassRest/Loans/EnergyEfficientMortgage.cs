@@ -7,99 +7,130 @@ namespace EncompassRest.Loans
 {
     public sealed partial class EnergyEfficientMortgage
     {
-        public Value<decimal?> AppraisedValue { get; set; }
+        private Value<decimal?> _appraisedValue;
+        public decimal? AppraisedValue { get { return _appraisedValue; } set { _appraisedValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisedValue() => !AppraisedValue.Clean;
-        public Value<decimal?> AuditCost { get; set; }
+        public bool ShouldSerializeAppraisedValue() => !_appraisedValue.Clean;
+        private Value<decimal?> _auditCost;
+        public decimal? AuditCost { get { return _auditCost; } set { _auditCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAuditCost() => !AuditCost.Clean;
-        public Value<decimal?> BackRatio { get; set; }
+        public bool ShouldSerializeAuditCost() => !_auditCost.Clean;
+        private Value<decimal?> _backRatio;
+        public decimal? BackRatio { get { return _backRatio; } set { _backRatio = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBackRatio() => !BackRatio.Clean;
-        public Value<decimal?> BaseLoanAmtFromTsum { get; set; }
+        public bool ShouldSerializeBackRatio() => !_backRatio.Clean;
+        private Value<decimal?> _baseLoanAmtFromTsum;
+        public decimal? BaseLoanAmtFromTsum { get { return _baseLoanAmtFromTsum; } set { _baseLoanAmtFromTsum = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBaseLoanAmtFromTsum() => !BaseLoanAmtFromTsum.Clean;
-        public Value<decimal?> CostEffectiveEnergyPackage { get; set; }
+        public bool ShouldSerializeBaseLoanAmtFromTsum() => !_baseLoanAmtFromTsum.Clean;
+        private Value<decimal?> _costEffectiveEnergyPackage;
+        public decimal? CostEffectiveEnergyPackage { get { return _costEffectiveEnergyPackage; } set { _costEffectiveEnergyPackage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCostEffectiveEnergyPackage() => !CostEffectiveEnergyPackage.Clean;
-        public Value<decimal?> EeCostMaximumAmount { get; set; }
+        public bool ShouldSerializeCostEffectiveEnergyPackage() => !_costEffectiveEnergyPackage.Clean;
+        private Value<decimal?> _eeCostMaximumAmount;
+        public decimal? EeCostMaximumAmount { get { return _eeCostMaximumAmount; } set { _eeCostMaximumAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEeCostMaximumAmount() => !EeCostMaximumAmount.Clean;
-        public Value<decimal?> EeImprovementsInstalledCost { get; set; }
+        public bool ShouldSerializeEeCostMaximumAmount() => !_eeCostMaximumAmount.Clean;
+        private Value<decimal?> _eeImprovementsInstalledCost;
+        public decimal? EeImprovementsInstalledCost { get { return _eeImprovementsInstalledCost; } set { _eeImprovementsInstalledCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEeImprovementsInstalledCost() => !EeImprovementsInstalledCost.Clean;
-        public Value<decimal?> EnergyCost { get; set; }
+        public bool ShouldSerializeEeImprovementsInstalledCost() => !_eeImprovementsInstalledCost.Clean;
+        private Value<decimal?> _energyCost;
+        public decimal? EnergyCost { get { return _energyCost; } set { _energyCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEnergyCost() => !EnergyCost.Clean;
-        public Value<decimal?> EnergySavings { get; set; }
+        public bool ShouldSerializeEnergyCost() => !_energyCost.Clean;
+        private Value<decimal?> _energySavings;
+        public decimal? EnergySavings { get { return _energySavings; } set { _energySavings = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEnergySavings() => !EnergySavings.Clean;
-        public Value<decimal?> Hoa { get; set; }
+        public bool ShouldSerializeEnergySavings() => !_energySavings.Clean;
+        private Value<decimal?> _hoa;
+        public decimal? Hoa { get { return _hoa; } set { _hoa = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHoa() => !Hoa.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHoa() => !_hoa.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> ImprovementCostExceed2000 { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _improvementCostExceed2000;
+        public decimal? ImprovementCostExceed2000 { get { return _improvementCostExceed2000; } set { _improvementCostExceed2000 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeImprovementCostExceed2000() => !ImprovementCostExceed2000.Clean;
-        public Value<decimal?> InspectionCost { get; set; }
+        public bool ShouldSerializeImprovementCostExceed2000() => !_improvementCostExceed2000.Clean;
+        private Value<decimal?> _inspectionCost;
+        public decimal? InspectionCost { get { return _inspectionCost; } set { _inspectionCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInspectionCost() => !InspectionCost.Clean;
-        public Value<decimal?> LesserC1ORC2 { get; set; }
+        public bool ShouldSerializeInspectionCost() => !_inspectionCost.Clean;
+        private Value<decimal?> _lesserC1ORC2;
+        public decimal? LesserC1ORC2 { get { return _lesserC1ORC2; } set { _lesserC1ORC2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLesserC1ORC2() => !LesserC1ORC2.Clean;
-        public Value<decimal?> MonthlyHousingPayment { get; set; }
+        public bool ShouldSerializeLesserC1ORC2() => !_lesserC1ORC2.Clean;
+        private Value<decimal?> _monthlyHousingPayment;
+        public decimal? MonthlyHousingPayment { get { return _monthlyHousingPayment; } set { _monthlyHousingPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyHousingPayment() => !MonthlyHousingPayment.Clean;
-        public Value<decimal?> MonthlyMI { get; set; }
+        public bool ShouldSerializeMonthlyHousingPayment() => !_monthlyHousingPayment.Clean;
+        private Value<decimal?> _monthlyMI;
+        public decimal? MonthlyMI { get { return _monthlyMI; } set { _monthlyMI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyMI() => !MonthlyMI.Clean;
-        public Value<decimal?> MortgageAmountUsedForQualifyingRate { get; set; }
+        public bool ShouldSerializeMonthlyMI() => !_monthlyMI.Clean;
+        private Value<decimal?> _mortgageAmountUsedForQualifyingRate;
+        public decimal? MortgageAmountUsedForQualifyingRate { get { return _mortgageAmountUsedForQualifyingRate; } set { _mortgageAmountUsedForQualifyingRate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageAmountUsedForQualifyingRate() => !MortgageAmountUsedForQualifyingRate.Clean;
-        public Value<decimal?> MortgageAmountUsedForQualifyingRateD1 { get; set; }
+        public bool ShouldSerializeMortgageAmountUsedForQualifyingRate() => !_mortgageAmountUsedForQualifyingRate.Clean;
+        private Value<decimal?> _mortgageAmountUsedForQualifyingRateD1;
+        public decimal? MortgageAmountUsedForQualifyingRateD1 { get { return _mortgageAmountUsedForQualifyingRateD1; } set { _mortgageAmountUsedForQualifyingRateD1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageAmountUsedForQualifyingRateD1() => !MortgageAmountUsedForQualifyingRateD1.Clean;
-        public Value<bool?> NewOrExisting { get; set; }
+        public bool ShouldSerializeMortgageAmountUsedForQualifyingRateD1() => !_mortgageAmountUsedForQualifyingRateD1.Clean;
+        private Value<bool?> _newOrExisting;
+        public bool? NewOrExisting { get { return _newOrExisting; } set { _newOrExisting = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewOrExisting() => !NewOrExisting.Clean;
-        public Value<decimal?> OriginalSalesPriceIfLess12Months { get; set; }
+        public bool ShouldSerializeNewOrExisting() => !_newOrExisting.Clean;
+        private Value<decimal?> _originalSalesPriceIfLess12Months;
+        public decimal? OriginalSalesPriceIfLess12Months { get { return _originalSalesPriceIfLess12Months; } set { _originalSalesPriceIfLess12Months = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginalSalesPriceIfLess12Months() => !OriginalSalesPriceIfLess12Months.Clean;
-        public Value<decimal?> OtherHousingPayment { get; set; }
+        public bool ShouldSerializeOriginalSalesPriceIfLess12Months() => !_originalSalesPriceIfLess12Months.Clean;
+        private Value<decimal?> _otherHousingPayment;
+        public decimal? OtherHousingPayment { get { return _otherHousingPayment; } set { _otherHousingPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherHousingPayment() => !OtherHousingPayment.Clean;
-        public Value<decimal?> SolarNotIncluded { get; set; }
+        public bool ShouldSerializeOtherHousingPayment() => !_otherHousingPayment.Clean;
+        private Value<decimal?> _solarNotIncluded;
+        public decimal? SolarNotIncluded { get { return _solarNotIncluded; } set { _solarNotIncluded = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSolarNotIncluded() => !SolarNotIncluded.Clean;
-        public Value<decimal?> SolarSystemCostAllowance { get; set; }
+        public bool ShouldSerializeSolarNotIncluded() => !_solarNotIncluded.Clean;
+        private Value<decimal?> _solarSystemCostAllowance;
+        public decimal? SolarSystemCostAllowance { get { return _solarSystemCostAllowance; } set { _solarSystemCostAllowance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSolarSystemCostAllowance() => !SolarSystemCostAllowance.Clean;
-        public Value<decimal?> TotalActualAmount { get; set; }
+        public bool ShouldSerializeSolarSystemCostAllowance() => !_solarSystemCostAllowance.Clean;
+        private Value<decimal?> _totalActualAmount;
+        public decimal? TotalActualAmount { get { return _totalActualAmount; } set { _totalActualAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalActualAmount() => !TotalActualAmount.Clean;
-        public Value<decimal?> TotalAllowedAmount { get; set; }
+        public bool ShouldSerializeTotalActualAmount() => !_totalActualAmount.Clean;
+        private Value<decimal?> _totalAllowedAmount;
+        public decimal? TotalAllowedAmount { get { return _totalAllowedAmount; } set { _totalAllowedAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalAllowedAmount() => !TotalAllowedAmount.Clean;
-        public Value<decimal?> TotalBaseEemLoanAmount { get; set; }
+        public bool ShouldSerializeTotalAllowedAmount() => !_totalAllowedAmount.Clean;
+        private Value<decimal?> _totalBaseEemLoanAmount;
+        public decimal? TotalBaseEemLoanAmount { get { return _totalBaseEemLoanAmount; } set { _totalBaseEemLoanAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalBaseEemLoanAmount() => !TotalBaseEemLoanAmount.Clean;
-        public Value<decimal?> TotalCombinedLoanAmount { get; set; }
+        public bool ShouldSerializeTotalBaseEemLoanAmount() => !_totalBaseEemLoanAmount.Clean;
+        private Value<decimal?> _totalCombinedLoanAmount;
+        public decimal? TotalCombinedLoanAmount { get { return _totalCombinedLoanAmount; } set { _totalCombinedLoanAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalCombinedLoanAmount() => !TotalCombinedLoanAmount.Clean;
-        public Value<decimal?> TotalMonthlyHousingPayment { get; set; }
+        public bool ShouldSerializeTotalCombinedLoanAmount() => !_totalCombinedLoanAmount.Clean;
+        private Value<decimal?> _totalMonthlyHousingPayment;
+        public decimal? TotalMonthlyHousingPayment { get { return _totalMonthlyHousingPayment; } set { _totalMonthlyHousingPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalMonthlyHousingPayment() => !TotalMonthlyHousingPayment.Clean;
-        public Value<decimal?> TotalMonthlyObligations { get; set; }
+        public bool ShouldSerializeTotalMonthlyHousingPayment() => !_totalMonthlyHousingPayment.Clean;
+        private Value<decimal?> _totalMonthlyObligations;
+        public decimal? TotalMonthlyObligations { get { return _totalMonthlyObligations; } set { _totalMonthlyObligations = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalMonthlyObligations() => !TotalMonthlyObligations.Clean;
-        public Value<decimal?> UfmipBasedOn { get; set; }
+        public bool ShouldSerializeTotalMonthlyObligations() => !_totalMonthlyObligations.Clean;
+        private Value<decimal?> _ufmipBasedOn;
+        public decimal? UfmipBasedOn { get { return _ufmipBasedOn; } set { _ufmipBasedOn = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUfmipBasedOn() => !UfmipBasedOn.Clean;
-        public Value<decimal?> UfmipFactor { get; set; }
+        public bool ShouldSerializeUfmipBasedOn() => !_ufmipBasedOn.Clean;
+        private Value<decimal?> _ufmipFactor;
+        public decimal? UfmipFactor { get { return _ufmipFactor; } set { _ufmipFactor = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUfmipFactor() => !UfmipFactor.Clean;
+        public bool ShouldSerializeUfmipFactor() => !_ufmipFactor.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -107,74 +138,74 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AppraisedValue.Clean
-                    && AuditCost.Clean
-                    && BackRatio.Clean
-                    && BaseLoanAmtFromTsum.Clean
-                    && CostEffectiveEnergyPackage.Clean
-                    && EeCostMaximumAmount.Clean
-                    && EeImprovementsInstalledCost.Clean
-                    && EnergyCost.Clean
-                    && EnergySavings.Clean
-                    && Hoa.Clean
-                    && Id.Clean
-                    && ImprovementCostExceed2000.Clean
-                    && InspectionCost.Clean
-                    && LesserC1ORC2.Clean
-                    && MonthlyHousingPayment.Clean
-                    && MonthlyMI.Clean
-                    && MortgageAmountUsedForQualifyingRate.Clean
-                    && MortgageAmountUsedForQualifyingRateD1.Clean
-                    && NewOrExisting.Clean
-                    && OriginalSalesPriceIfLess12Months.Clean
-                    && OtherHousingPayment.Clean
-                    && SolarNotIncluded.Clean
-                    && SolarSystemCostAllowance.Clean
-                    && TotalActualAmount.Clean
-                    && TotalAllowedAmount.Clean
-                    && TotalBaseEemLoanAmount.Clean
-                    && TotalCombinedLoanAmount.Clean
-                    && TotalMonthlyHousingPayment.Clean
-                    && TotalMonthlyObligations.Clean
-                    && UfmipBasedOn.Clean
-                    && UfmipFactor.Clean;
+                var clean = _appraisedValue.Clean
+                    && _auditCost.Clean
+                    && _backRatio.Clean
+                    && _baseLoanAmtFromTsum.Clean
+                    && _costEffectiveEnergyPackage.Clean
+                    && _eeCostMaximumAmount.Clean
+                    && _eeImprovementsInstalledCost.Clean
+                    && _energyCost.Clean
+                    && _energySavings.Clean
+                    && _hoa.Clean
+                    && _id.Clean
+                    && _improvementCostExceed2000.Clean
+                    && _inspectionCost.Clean
+                    && _lesserC1ORC2.Clean
+                    && _monthlyHousingPayment.Clean
+                    && _monthlyMI.Clean
+                    && _mortgageAmountUsedForQualifyingRate.Clean
+                    && _mortgageAmountUsedForQualifyingRateD1.Clean
+                    && _newOrExisting.Clean
+                    && _originalSalesPriceIfLess12Months.Clean
+                    && _otherHousingPayment.Clean
+                    && _solarNotIncluded.Clean
+                    && _solarSystemCostAllowance.Clean
+                    && _totalActualAmount.Clean
+                    && _totalAllowedAmount.Clean
+                    && _totalBaseEemLoanAmount.Clean
+                    && _totalCombinedLoanAmount.Clean
+                    && _totalMonthlyHousingPayment.Clean
+                    && _totalMonthlyObligations.Clean
+                    && _ufmipBasedOn.Clean
+                    && _ufmipFactor.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AppraisedValue; v0.Clean = value; AppraisedValue = v0;
-                var v1 = AuditCost; v1.Clean = value; AuditCost = v1;
-                var v2 = BackRatio; v2.Clean = value; BackRatio = v2;
-                var v3 = BaseLoanAmtFromTsum; v3.Clean = value; BaseLoanAmtFromTsum = v3;
-                var v4 = CostEffectiveEnergyPackage; v4.Clean = value; CostEffectiveEnergyPackage = v4;
-                var v5 = EeCostMaximumAmount; v5.Clean = value; EeCostMaximumAmount = v5;
-                var v6 = EeImprovementsInstalledCost; v6.Clean = value; EeImprovementsInstalledCost = v6;
-                var v7 = EnergyCost; v7.Clean = value; EnergyCost = v7;
-                var v8 = EnergySavings; v8.Clean = value; EnergySavings = v8;
-                var v9 = Hoa; v9.Clean = value; Hoa = v9;
-                var v10 = Id; v10.Clean = value; Id = v10;
-                var v11 = ImprovementCostExceed2000; v11.Clean = value; ImprovementCostExceed2000 = v11;
-                var v12 = InspectionCost; v12.Clean = value; InspectionCost = v12;
-                var v13 = LesserC1ORC2; v13.Clean = value; LesserC1ORC2 = v13;
-                var v14 = MonthlyHousingPayment; v14.Clean = value; MonthlyHousingPayment = v14;
-                var v15 = MonthlyMI; v15.Clean = value; MonthlyMI = v15;
-                var v16 = MortgageAmountUsedForQualifyingRate; v16.Clean = value; MortgageAmountUsedForQualifyingRate = v16;
-                var v17 = MortgageAmountUsedForQualifyingRateD1; v17.Clean = value; MortgageAmountUsedForQualifyingRateD1 = v17;
-                var v18 = NewOrExisting; v18.Clean = value; NewOrExisting = v18;
-                var v19 = OriginalSalesPriceIfLess12Months; v19.Clean = value; OriginalSalesPriceIfLess12Months = v19;
-                var v20 = OtherHousingPayment; v20.Clean = value; OtherHousingPayment = v20;
-                var v21 = SolarNotIncluded; v21.Clean = value; SolarNotIncluded = v21;
-                var v22 = SolarSystemCostAllowance; v22.Clean = value; SolarSystemCostAllowance = v22;
-                var v23 = TotalActualAmount; v23.Clean = value; TotalActualAmount = v23;
-                var v24 = TotalAllowedAmount; v24.Clean = value; TotalAllowedAmount = v24;
-                var v25 = TotalBaseEemLoanAmount; v25.Clean = value; TotalBaseEemLoanAmount = v25;
-                var v26 = TotalCombinedLoanAmount; v26.Clean = value; TotalCombinedLoanAmount = v26;
-                var v27 = TotalMonthlyHousingPayment; v27.Clean = value; TotalMonthlyHousingPayment = v27;
-                var v28 = TotalMonthlyObligations; v28.Clean = value; TotalMonthlyObligations = v28;
-                var v29 = UfmipBasedOn; v29.Clean = value; UfmipBasedOn = v29;
-                var v30 = UfmipFactor; v30.Clean = value; UfmipFactor = v30;
+                var v0 = _appraisedValue; v0.Clean = value; _appraisedValue = v0;
+                var v1 = _auditCost; v1.Clean = value; _auditCost = v1;
+                var v2 = _backRatio; v2.Clean = value; _backRatio = v2;
+                var v3 = _baseLoanAmtFromTsum; v3.Clean = value; _baseLoanAmtFromTsum = v3;
+                var v4 = _costEffectiveEnergyPackage; v4.Clean = value; _costEffectiveEnergyPackage = v4;
+                var v5 = _eeCostMaximumAmount; v5.Clean = value; _eeCostMaximumAmount = v5;
+                var v6 = _eeImprovementsInstalledCost; v6.Clean = value; _eeImprovementsInstalledCost = v6;
+                var v7 = _energyCost; v7.Clean = value; _energyCost = v7;
+                var v8 = _energySavings; v8.Clean = value; _energySavings = v8;
+                var v9 = _hoa; v9.Clean = value; _hoa = v9;
+                var v10 = _id; v10.Clean = value; _id = v10;
+                var v11 = _improvementCostExceed2000; v11.Clean = value; _improvementCostExceed2000 = v11;
+                var v12 = _inspectionCost; v12.Clean = value; _inspectionCost = v12;
+                var v13 = _lesserC1ORC2; v13.Clean = value; _lesserC1ORC2 = v13;
+                var v14 = _monthlyHousingPayment; v14.Clean = value; _monthlyHousingPayment = v14;
+                var v15 = _monthlyMI; v15.Clean = value; _monthlyMI = v15;
+                var v16 = _mortgageAmountUsedForQualifyingRate; v16.Clean = value; _mortgageAmountUsedForQualifyingRate = v16;
+                var v17 = _mortgageAmountUsedForQualifyingRateD1; v17.Clean = value; _mortgageAmountUsedForQualifyingRateD1 = v17;
+                var v18 = _newOrExisting; v18.Clean = value; _newOrExisting = v18;
+                var v19 = _originalSalesPriceIfLess12Months; v19.Clean = value; _originalSalesPriceIfLess12Months = v19;
+                var v20 = _otherHousingPayment; v20.Clean = value; _otherHousingPayment = v20;
+                var v21 = _solarNotIncluded; v21.Clean = value; _solarNotIncluded = v21;
+                var v22 = _solarSystemCostAllowance; v22.Clean = value; _solarSystemCostAllowance = v22;
+                var v23 = _totalActualAmount; v23.Clean = value; _totalActualAmount = v23;
+                var v24 = _totalAllowedAmount; v24.Clean = value; _totalAllowedAmount = v24;
+                var v25 = _totalBaseEemLoanAmount; v25.Clean = value; _totalBaseEemLoanAmount = v25;
+                var v26 = _totalCombinedLoanAmount; v26.Clean = value; _totalCombinedLoanAmount = v26;
+                var v27 = _totalMonthlyHousingPayment; v27.Clean = value; _totalMonthlyHousingPayment = v27;
+                var v28 = _totalMonthlyObligations; v28.Clean = value; _totalMonthlyObligations = v28;
+                var v29 = _ufmipBasedOn; v29.Clean = value; _ufmipBasedOn = v29;
+                var v30 = _ufmipFactor; v30.Clean = value; _ufmipFactor = v30;
                 _settingClean = 0;
             }
         }

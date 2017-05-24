@@ -7,273 +7,362 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Contact
     {
-        public Value<string> ABA { get; set; }
+        private Value<string> _aBA;
+        public string ABA { get { return _aBA; } set { _aBA = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeABA() => !_aBA.Clean;
+        private Value<string> _accountName;
+        public string AccountName { get { return _accountName; } set { _accountName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAccountName() => !_accountName.Clean;
+        private Value<string> _address;
+        public string Address { get { return _address; } set { _address = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAddress() => !_address.Clean;
+        private Value<string> _address2;
+        public string Address2 { get { return _address2; } set { _address2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAddress2() => !_address2.Clean;
+        private Value<bool?> _addToCdContactInfo;
+        public bool? AddToCdContactInfo { get { return _addToCdContactInfo; } set { _addToCdContactInfo = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAddToCdContactInfo() => !_addToCdContactInfo.Clean;
+        private Value<string> _appraisalMade;
+        public string AppraisalMade { get { return _appraisalMade; } set { _appraisalMade = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAppraisalMade() => !_appraisalMade.Clean;
+        private Value<DateTime?> _bizLicenseAuthDate;
+        public DateTime? BizLicenseAuthDate { get { return _bizLicenseAuthDate; } set { _bizLicenseAuthDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBizLicenseAuthDate() => !_bizLicenseAuthDate.Clean;
+        private Value<string> _bizLicenseAuthName;
+        public string BizLicenseAuthName { get { return _bizLicenseAuthName; } set { _bizLicenseAuthName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBizLicenseAuthName() => !_bizLicenseAuthName.Clean;
+        private Value<string> _bizLicenseAuthStateCode;
+        public string BizLicenseAuthStateCode { get { return _bizLicenseAuthStateCode; } set { _bizLicenseAuthStateCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBizLicenseAuthStateCode() => !_bizLicenseAuthStateCode.Clean;
+        private Value<string> _bizLicenseAuthType;
+        public string BizLicenseAuthType { get { return _bizLicenseAuthType; } set { _bizLicenseAuthType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBizLicenseAuthType() => !_bizLicenseAuthType.Clean;
+        private Value<string> _bizLicenseNumber;
+        public string BizLicenseNumber { get { return _bizLicenseNumber; } set { _bizLicenseNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBizLicenseNumber() => !_bizLicenseNumber.Clean;
+        private Value<bool?> _borrowerActingAsContractorIndicator;
+        public bool? BorrowerActingAsContractorIndicator { get { return _borrowerActingAsContractorIndicator; } set { _borrowerActingAsContractorIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerActingAsContractorIndicator() => !_borrowerActingAsContractorIndicator.Clean;
+        private Value<string> _brokerLenderType;
+        public string BrokerLenderType { get { return _brokerLenderType; } set { _brokerLenderType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBrokerLenderType() => !_brokerLenderType.Clean;
+        private Value<bool?> _brokerLicenseExempt;
+        public bool? BrokerLicenseExempt { get { return _brokerLicenseExempt; } set { _brokerLicenseExempt = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBrokerLicenseExempt() => !_brokerLicenseExempt.Clean;
+        private Value<string> _brokerLicenseType;
+        public string BrokerLicenseType { get { return _brokerLicenseType; } set { _brokerLicenseType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBrokerLicenseType() => !_brokerLicenseType.Clean;
+        private Value<string> _businessPhone;
+        public string BusinessPhone { get { return _businessPhone; } set { _businessPhone = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBusinessPhone() => !_businessPhone.Clean;
+        private Value<string> _categoryName;
+        public string CategoryName { get { return _categoryName; } set { _categoryName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCategoryName() => !_categoryName.Clean;
+        private Value<string> _cell;
+        public string Cell { get { return _cell; } set { _cell = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCell() => !_cell.Clean;
+        private Value<DateTime?> _checkConfirmedDate;
+        public DateTime? CheckConfirmedDate { get { return _checkConfirmedDate; } set { _checkConfirmedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCheckConfirmedDate() => !_checkConfirmedDate.Clean;
+        private Value<string> _city;
+        public string City { get { return _city; } set { _city = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCity() => !_city.Clean;
+        private Value<string> _clause;
+        public string Clause { get { return _clause; } set { _clause = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClause() => !_clause.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<string> _companyId;
+        public string CompanyId { get { return _companyId; } set { _companyId = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCompanyId() => !_companyId.Clean;
+        private Value<decimal?> _completionAffidavitPunchListTotal;
+        public decimal? CompletionAffidavitPunchListTotal { get { return _completionAffidavitPunchListTotal; } set { _completionAffidavitPunchListTotal = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCompletionAffidavitPunchListTotal() => !_completionAffidavitPunchListTotal.Clean;
+        private Value<int?> _contactIndex;
+        public int? ContactIndex { get { return _contactIndex; } set { _contactIndex = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactIndex() => !_contactIndex.Clean;
+        private Value<string> _contactName;
+        public string ContactName { get { return _contactName; } set { _contactName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactName() => !_contactName.Clean;
+        private Value<string> _contactNMLSNo;
+        public string ContactNMLSNo { get { return _contactNMLSNo; } set { _contactNMLSNo = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactNMLSNo() => !_contactNMLSNo.Clean;
+        private Value<string> _contactTitle;
+        public string ContactTitle { get { return _contactTitle; } set { _contactTitle = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactTitle() => !_contactTitle.Clean;
+        private Value<string> _contactType;
+        public string ContactType { get { return _contactType; } set { _contactType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactType() => !_contactType.Clean;
+        private Value<DateTime?> _designeeAcceptedDate;
+        public DateTime? DesigneeAcceptedDate { get { return _designeeAcceptedDate; } set { _designeeAcceptedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDesigneeAcceptedDate() => !_designeeAcceptedDate.Clean;
+        private Value<string> _email;
+        public string Email { get { return _email; } set { _email = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEmail() => !_email.Clean;
+        private Value<decimal?> _employerLiabilityInsuranceMin;
+        public decimal? EmployerLiabilityInsuranceMin { get { return _employerLiabilityInsuranceMin; } set { _employerLiabilityInsuranceMin = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEmployerLiabilityInsuranceMin() => !_employerLiabilityInsuranceMin.Clean;
+        private Value<string> _fax;
+        public string Fax { get { return _fax; } set { _fax = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFax() => !_fax.Clean;
+        private Value<string> _fax2;
+        public string Fax2 { get { return _fax2; } set { _fax2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFax2() => !_fax2.Clean;
+        private Value<string> _fhaLenderId;
+        public string FhaLenderId { get { return _fhaLenderId; } set { _fhaLenderId = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFhaLenderId() => !_fhaLenderId.Clean;
+        private Value<decimal?> _generalLiabilityInsuranceMin;
+        public decimal? GeneralLiabilityInsuranceMin { get { return _generalLiabilityInsuranceMin; } set { _generalLiabilityInsuranceMin = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGeneralLiabilityInsuranceMin() => !_generalLiabilityInsuranceMin.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _insuranceCertNumber;
+        public string InsuranceCertNumber { get { return _insuranceCertNumber; } set { _insuranceCertNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceCertNumber() => !_insuranceCertNumber.Clean;
+        private Value<decimal?> _insuranceCoverageAmount;
+        public decimal? InsuranceCoverageAmount { get { return _insuranceCoverageAmount; } set { _insuranceCoverageAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceCoverageAmount() => !_insuranceCoverageAmount.Clean;
+        private Value<DateTime?> _insuranceDeterminationDate;
+        public DateTime? InsuranceDeterminationDate { get { return _insuranceDeterminationDate; } set { _insuranceDeterminationDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceDeterminationDate() => !_insuranceDeterminationDate.Clean;
+        private Value<string> _insuranceDeterminationNumber;
+        public string InsuranceDeterminationNumber { get { return _insuranceDeterminationNumber; } set { _insuranceDeterminationNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceDeterminationNumber() => !_insuranceDeterminationNumber.Clean;
+        private Value<bool?> _insuranceFloodZone;
+        public bool? InsuranceFloodZone { get { return _insuranceFloodZone; } set { _insuranceFloodZone = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceFloodZone() => !_insuranceFloodZone.Clean;
+        private Value<string> _insuranceMap;
+        public string InsuranceMap { get { return _insuranceMap; } set { _insuranceMap = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceMap() => !_insuranceMap.Clean;
+        private Value<int?> _insuranceNoOfBedrooms;
+        public int? InsuranceNoOfBedrooms { get { return _insuranceNoOfBedrooms; } set { _insuranceNoOfBedrooms = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceNoOfBedrooms() => !_insuranceNoOfBedrooms.Clean;
+        private Value<decimal?> _insurancePremium;
+        public decimal? InsurancePremium { get { return _insurancePremium; } set { _insurancePremium = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsurancePremium() => !_insurancePremium.Clean;
+        private Value<string> _insuranceProjectType;
+        public string InsuranceProjectType { get { return _insuranceProjectType; } set { _insuranceProjectType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceProjectType() => !_insuranceProjectType.Clean;
+        private Value<DateTime?> _insuranceRenewalDate;
+        public DateTime? InsuranceRenewalDate { get { return _insuranceRenewalDate; } set { _insuranceRenewalDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInsuranceRenewalDate() => !_insuranceRenewalDate.Clean;
+        private Value<string> _investorGrade1;
+        public string InvestorGrade1 { get { return _investorGrade1; } set { _investorGrade1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorGrade1() => !_investorGrade1.Clean;
+        private Value<string> _investorGrade2;
+        public string InvestorGrade2 { get { return _investorGrade2; } set { _investorGrade2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorGrade2() => !_investorGrade2.Clean;
+        private Value<string> _investorGrade3;
+        public string InvestorGrade3 { get { return _investorGrade3; } set { _investorGrade3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorGrade3() => !_investorGrade3.Clean;
+        private Value<string> _investorLicense;
+        public string InvestorLicense { get { return _investorLicense; } set { _investorLicense = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorLicense() => !_investorLicense.Clean;
+        private Value<string> _investorLicenseType;
+        public string InvestorLicenseType { get { return _investorLicenseType; } set { _investorLicenseType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorLicenseType() => !_investorLicenseType.Clean;
+        private Value<string> _investorName1;
+        public string InvestorName1 { get { return _investorName1; } set { _investorName1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorName1() => !_investorName1.Clean;
+        private Value<string> _investorName2;
+        public string InvestorName2 { get { return _investorName2; } set { _investorName2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorName2() => !_investorName2.Clean;
+        private Value<string> _investorName3;
+        public string InvestorName3 { get { return _investorName3; } set { _investorName3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorName3() => !_investorName3.Clean;
+        private Value<string> _investorScore1;
+        public string InvestorScore1 { get { return _investorScore1; } set { _investorScore1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorScore1() => !_investorScore1.Clean;
+        private Value<string> _investorScore2;
+        public string InvestorScore2 { get { return _investorScore2; } set { _investorScore2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorScore2() => !_investorScore2.Clean;
+        private Value<string> _investorScore3;
+        public string InvestorScore3 { get { return _investorScore3; } set { _investorScore3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInvestorScore3() => !_investorScore3.Clean;
+        private Value<string> _lenderType;
+        public string LenderType { get { return _lenderType; } set { _lenderType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLenderType() => !_lenderType.Clean;
+        private Value<string> _license;
+        public string License { get { return _license; } set { _license = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicense() => !_license.Clean;
+        private Value<bool?> _licenseExempt;
+        public bool? LicenseExempt { get { return _licenseExempt; } set { _licenseExempt = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicenseExempt() => !_licenseExempt.Clean;
+        private Value<string> _licenseHomeState;
+        public string LicenseHomeState { get { return _licenseHomeState; } set { _licenseHomeState = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicenseHomeState() => !_licenseHomeState.Clean;
+        private Value<string> _licenseType;
+        public string LicenseType { get { return _licenseType; } set { _licenseType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLicenseType() => !_licenseType.Clean;
+        private Value<string> _lineItemNumber;
+        public string LineItemNumber { get { return _lineItemNumber; } set { _lineItemNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLineItemNumber() => !_lineItemNumber.Clean;
+        private Value<string> _loginId;
+        public string LoginId { get { return _loginId; } set { _loginId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeABA() => !ABA.Clean;
-        public Value<string> AccountName { get; set; }
+        public bool ShouldSerializeLoginId() => !_loginId.Clean;
+        private Value<string> _name;
+        public string Name { get { return _name; } set { _name = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccountName() => !AccountName.Clean;
-        public Value<string> Address { get; set; }
+        public bool ShouldSerializeName() => !_name.Clean;
+        private Value<string> _nmlsLicense;
+        public string NmlsLicense { get { return _nmlsLicense; } set { _nmlsLicense = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddress() => !Address.Clean;
-        public Value<string> Address2 { get; set; }
+        public bool ShouldSerializeNmlsLicense() => !_nmlsLicense.Clean;
+        private Value<bool?> _notNaturalPersonFlag;
+        public bool? NotNaturalPersonFlag { get { return _notNaturalPersonFlag; } set { _notNaturalPersonFlag = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddress2() => !Address2.Clean;
-        public Value<bool?> AddToCdContactInfo { get; set; }
+        public bool ShouldSerializeNotNaturalPersonFlag() => !_notNaturalPersonFlag.Clean;
+        private Value<string> _organizationState;
+        public string OrganizationState { get { return _organizationState; } set { _organizationState = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddToCdContactInfo() => !AddToCdContactInfo.Clean;
-        public Value<string> AppraisalMade { get; set; }
+        public bool ShouldSerializeOrganizationState() => !_organizationState.Clean;
+        private Value<string> _organizationType;
+        public string OrganizationType { get { return _organizationType; } set { _organizationType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalMade() => !AppraisalMade.Clean;
-        public Value<DateTime?> BizLicenseAuthDate { get; set; }
+        public bool ShouldSerializeOrganizationType() => !_organizationType.Clean;
+        private Value<DateTime?> _personalLicenseAuthDate;
+        public DateTime? PersonalLicenseAuthDate { get { return _personalLicenseAuthDate; } set { _personalLicenseAuthDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBizLicenseAuthDate() => !BizLicenseAuthDate.Clean;
-        public Value<string> BizLicenseAuthName { get; set; }
+        public bool ShouldSerializePersonalLicenseAuthDate() => !_personalLicenseAuthDate.Clean;
+        private Value<string> _personalLicenseAuthName;
+        public string PersonalLicenseAuthName { get { return _personalLicenseAuthName; } set { _personalLicenseAuthName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBizLicenseAuthName() => !BizLicenseAuthName.Clean;
-        public Value<string> BizLicenseAuthStateCode { get; set; }
+        public bool ShouldSerializePersonalLicenseAuthName() => !_personalLicenseAuthName.Clean;
+        private Value<string> _personalLicenseAuthStateCode;
+        public string PersonalLicenseAuthStateCode { get { return _personalLicenseAuthStateCode; } set { _personalLicenseAuthStateCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBizLicenseAuthStateCode() => !BizLicenseAuthStateCode.Clean;
-        public Value<string> BizLicenseAuthType { get; set; }
+        public bool ShouldSerializePersonalLicenseAuthStateCode() => !_personalLicenseAuthStateCode.Clean;
+        private Value<string> _personalLicenseAuthType;
+        public string PersonalLicenseAuthType { get { return _personalLicenseAuthType; } set { _personalLicenseAuthType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBizLicenseAuthType() => !BizLicenseAuthType.Clean;
-        public Value<string> BizLicenseNumber { get; set; }
+        public bool ShouldSerializePersonalLicenseAuthType() => !_personalLicenseAuthType.Clean;
+        private Value<string> _personalLicenseNumber;
+        public string PersonalLicenseNumber { get { return _personalLicenseNumber; } set { _personalLicenseNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBizLicenseNumber() => !BizLicenseNumber.Clean;
-        public Value<bool?> BorrowerActingAsContractorIndicator { get; set; }
+        public bool ShouldSerializePersonalLicenseNumber() => !_personalLicenseNumber.Clean;
+        private Value<string> _phone;
+        public string Phone { get { return _phone; } set { _phone = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerActingAsContractorIndicator() => !BorrowerActingAsContractorIndicator.Clean;
-        public Value<string> BrokerLenderType { get; set; }
+        public bool ShouldSerializePhone() => !_phone.Clean;
+        private Value<string> _phone2;
+        public string Phone2 { get { return _phone2; } set { _phone2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerLenderType() => !BrokerLenderType.Clean;
-        public Value<bool?> BrokerLicenseExempt { get; set; }
+        public bool ShouldSerializePhone2() => !_phone2.Clean;
+        private Value<string> _postalCode;
+        public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerLicenseExempt() => !BrokerLicenseExempt.Clean;
-        public Value<string> BrokerLicenseType { get; set; }
+        public bool ShouldSerializePostalCode() => !_postalCode.Clean;
+        private Value<string> _recCity;
+        public string RecCity { get { return _recCity; } set { _recCity = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerLicenseType() => !BrokerLicenseType.Clean;
-        public Value<string> BusinessPhone { get; set; }
+        public bool ShouldSerializeRecCity() => !_recCity.Clean;
+        private Value<string> _referenceNumber;
+        public string ReferenceNumber { get { return _referenceNumber; } set { _referenceNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessPhone() => !BusinessPhone.Clean;
-        public Value<string> CategoryName { get; set; }
+        public bool ShouldSerializeReferenceNumber() => !_referenceNumber.Clean;
+        private Value<string> _relationship;
+        public string Relationship { get { return _relationship; } set { _relationship = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCategoryName() => !CategoryName.Clean;
-        public Value<string> Cell { get; set; }
+        public bool ShouldSerializeRelationship() => !_relationship.Clean;
+        private Value<bool?> _settlementAgent;
+        public bool? SettlementAgent { get { return _settlementAgent; } set { _settlementAgent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCell() => !Cell.Clean;
-        public Value<DateTime?> CheckConfirmedDate { get; set; }
+        public bool ShouldSerializeSettlementAgent() => !_settlementAgent.Clean;
+        private Value<string> _state;
+        public string State { get { return _state; } set { _state = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCheckConfirmedDate() => !CheckConfirmedDate.Clean;
-        public Value<string> City { get; set; }
+        public bool ShouldSerializeState() => !_state.Clean;
+        private Value<string> _taxID;
+        public string TaxID { get { return _taxID; } set { _taxID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCity() => !City.Clean;
-        public Value<string> Clause { get; set; }
+        public bool ShouldSerializeTaxID() => !_taxID.Clean;
+        private Value<string> _tqlCommentHistory;
+        public string TqlCommentHistory { get { return _tqlCommentHistory; } set { _tqlCommentHistory = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClause() => !Clause.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeTqlCommentHistory() => !_tqlCommentHistory.Clean;
+        private Value<string> _tQLConsentSelection;
+        public string TQLConsentSelection { get { return _tQLConsentSelection; } set { _tQLConsentSelection = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<string> CompanyId { get; set; }
+        public bool ShouldSerializeTQLConsentSelection() => !_tQLConsentSelection.Clean;
+        private Value<int?> _tqlId;
+        public int? TqlId { get { return _tqlId; } set { _tqlId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompanyId() => !CompanyId.Clean;
-        public Value<decimal?> CompletionAffidavitPunchListTotal { get; set; }
+        public bool ShouldSerializeTqlId() => !_tqlId.Clean;
+        private Value<bool?> _tqlIsPublishingIndicator;
+        public bool? TqlIsPublishingIndicator { get { return _tqlIsPublishingIndicator; } set { _tqlIsPublishingIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletionAffidavitPunchListTotal() => !CompletionAffidavitPunchListTotal.Clean;
-        public Value<int?> ContactIndex { get; set; }
+        public bool ShouldSerializeTqlIsPublishingIndicator() => !_tqlIsPublishingIndicator.Clean;
+        private Value<string> _tqlName;
+        public string TqlName { get { return _tqlName; } set { _tqlName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactIndex() => !ContactIndex.Clean;
-        public Value<string> ContactName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactName() => !ContactName.Clean;
-        public Value<string> ContactNMLSNo { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactNMLSNo() => !ContactNMLSNo.Clean;
-        public Value<string> ContactTitle { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactTitle() => !ContactTitle.Clean;
-        public Value<string> ContactType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactType() => !ContactType.Clean;
-        public Value<DateTime?> DesigneeAcceptedDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDesigneeAcceptedDate() => !DesigneeAcceptedDate.Clean;
-        public Value<string> Email { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmail() => !Email.Clean;
-        public Value<decimal?> EmployerLiabilityInsuranceMin { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmployerLiabilityInsuranceMin() => !EmployerLiabilityInsuranceMin.Clean;
-        public Value<string> Fax { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFax() => !Fax.Clean;
-        public Value<string> Fax2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFax2() => !Fax2.Clean;
-        public Value<string> FhaLenderId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFhaLenderId() => !FhaLenderId.Clean;
-        public Value<decimal?> GeneralLiabilityInsuranceMin { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGeneralLiabilityInsuranceMin() => !GeneralLiabilityInsuranceMin.Clean;
-        public Value<string> Id { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> InsuranceCertNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceCertNumber() => !InsuranceCertNumber.Clean;
-        public Value<decimal?> InsuranceCoverageAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceCoverageAmount() => !InsuranceCoverageAmount.Clean;
-        public Value<DateTime?> InsuranceDeterminationDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceDeterminationDate() => !InsuranceDeterminationDate.Clean;
-        public Value<string> InsuranceDeterminationNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceDeterminationNumber() => !InsuranceDeterminationNumber.Clean;
-        public Value<bool?> InsuranceFloodZone { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceFloodZone() => !InsuranceFloodZone.Clean;
-        public Value<string> InsuranceMap { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceMap() => !InsuranceMap.Clean;
-        public Value<int?> InsuranceNoOfBedrooms { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceNoOfBedrooms() => !InsuranceNoOfBedrooms.Clean;
-        public Value<decimal?> InsurancePremium { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsurancePremium() => !InsurancePremium.Clean;
-        public Value<string> InsuranceProjectType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceProjectType() => !InsuranceProjectType.Clean;
-        public Value<DateTime?> InsuranceRenewalDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceRenewalDate() => !InsuranceRenewalDate.Clean;
-        public Value<string> InvestorGrade1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorGrade1() => !InvestorGrade1.Clean;
-        public Value<string> InvestorGrade2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorGrade2() => !InvestorGrade2.Clean;
-        public Value<string> InvestorGrade3 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorGrade3() => !InvestorGrade3.Clean;
-        public Value<string> InvestorLicense { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorLicense() => !InvestorLicense.Clean;
-        public Value<string> InvestorLicenseType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorLicenseType() => !InvestorLicenseType.Clean;
-        public Value<string> InvestorName1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorName1() => !InvestorName1.Clean;
-        public Value<string> InvestorName2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorName2() => !InvestorName2.Clean;
-        public Value<string> InvestorName3 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorName3() => !InvestorName3.Clean;
-        public Value<string> InvestorScore1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorScore1() => !InvestorScore1.Clean;
-        public Value<string> InvestorScore2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorScore2() => !InvestorScore2.Clean;
-        public Value<string> InvestorScore3 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorScore3() => !InvestorScore3.Clean;
-        public Value<string> LenderType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderType() => !LenderType.Clean;
-        public Value<string> License { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicense() => !License.Clean;
-        public Value<bool?> LicenseExempt { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicenseExempt() => !LicenseExempt.Clean;
-        public Value<string> LicenseHomeState { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicenseHomeState() => !LicenseHomeState.Clean;
-        public Value<string> LicenseType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLicenseType() => !LicenseType.Clean;
-        public Value<string> LineItemNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineItemNumber() => !LineItemNumber.Clean;
-        public Value<string> LoginId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoginId() => !LoginId.Clean;
-        public Value<string> Name { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeName() => !Name.Clean;
-        public Value<string> NmlsLicense { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNmlsLicense() => !NmlsLicense.Clean;
-        public Value<bool?> NotNaturalPersonFlag { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNotNaturalPersonFlag() => !NotNaturalPersonFlag.Clean;
-        public Value<string> OrganizationState { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrganizationState() => !OrganizationState.Clean;
-        public Value<string> OrganizationType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrganizationType() => !OrganizationType.Clean;
-        public Value<DateTime?> PersonalLicenseAuthDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePersonalLicenseAuthDate() => !PersonalLicenseAuthDate.Clean;
-        public Value<string> PersonalLicenseAuthName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePersonalLicenseAuthName() => !PersonalLicenseAuthName.Clean;
-        public Value<string> PersonalLicenseAuthStateCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePersonalLicenseAuthStateCode() => !PersonalLicenseAuthStateCode.Clean;
-        public Value<string> PersonalLicenseAuthType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePersonalLicenseAuthType() => !PersonalLicenseAuthType.Clean;
-        public Value<string> PersonalLicenseNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePersonalLicenseNumber() => !PersonalLicenseNumber.Clean;
-        public Value<string> Phone { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhone() => !Phone.Clean;
-        public Value<string> Phone2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhone2() => !Phone2.Clean;
-        public Value<string> PostalCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePostalCode() => !PostalCode.Clean;
-        public Value<string> RecCity { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecCity() => !RecCity.Clean;
-        public Value<string> ReferenceNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReferenceNumber() => !ReferenceNumber.Clean;
-        public Value<string> Relationship { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRelationship() => !Relationship.Clean;
-        public Value<bool?> SettlementAgent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgent() => !SettlementAgent.Clean;
-        public Value<string> State { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeState() => !State.Clean;
-        public Value<string> TaxID { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxID() => !TaxID.Clean;
-        public Value<string> TqlCommentHistory { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTqlCommentHistory() => !TqlCommentHistory.Clean;
-        public Value<string> TQLConsentSelection { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLConsentSelection() => !TQLConsentSelection.Clean;
-        public Value<int?> TqlId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTqlId() => !TqlId.Clean;
-        public Value<bool?> TqlIsPublishingIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTqlIsPublishingIndicator() => !TqlIsPublishingIndicator.Clean;
-        public Value<string> TqlName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTqlName() => !TqlName.Clean;
+        public bool ShouldSerializeTqlName() => !_tqlName.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -281,190 +370,190 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ABA.Clean
-                    && AccountName.Clean
-                    && Address.Clean
-                    && Address2.Clean
-                    && AddToCdContactInfo.Clean
-                    && AppraisalMade.Clean
-                    && BizLicenseAuthDate.Clean
-                    && BizLicenseAuthName.Clean
-                    && BizLicenseAuthStateCode.Clean
-                    && BizLicenseAuthType.Clean
-                    && BizLicenseNumber.Clean
-                    && BorrowerActingAsContractorIndicator.Clean
-                    && BrokerLenderType.Clean
-                    && BrokerLicenseExempt.Clean
-                    && BrokerLicenseType.Clean
-                    && BusinessPhone.Clean
-                    && CategoryName.Clean
-                    && Cell.Clean
-                    && CheckConfirmedDate.Clean
-                    && City.Clean
-                    && Clause.Clean
-                    && Comments.Clean
-                    && CompanyId.Clean
-                    && CompletionAffidavitPunchListTotal.Clean
-                    && ContactIndex.Clean
-                    && ContactName.Clean
-                    && ContactNMLSNo.Clean
-                    && ContactTitle.Clean
-                    && ContactType.Clean
-                    && DesigneeAcceptedDate.Clean
-                    && Email.Clean
-                    && EmployerLiabilityInsuranceMin.Clean
-                    && Fax.Clean
-                    && Fax2.Clean
-                    && FhaLenderId.Clean
-                    && GeneralLiabilityInsuranceMin.Clean
-                    && Id.Clean
-                    && InsuranceCertNumber.Clean
-                    && InsuranceCoverageAmount.Clean
-                    && InsuranceDeterminationDate.Clean
-                    && InsuranceDeterminationNumber.Clean
-                    && InsuranceFloodZone.Clean
-                    && InsuranceMap.Clean
-                    && InsuranceNoOfBedrooms.Clean
-                    && InsurancePremium.Clean
-                    && InsuranceProjectType.Clean
-                    && InsuranceRenewalDate.Clean
-                    && InvestorGrade1.Clean
-                    && InvestorGrade2.Clean
-                    && InvestorGrade3.Clean
-                    && InvestorLicense.Clean
-                    && InvestorLicenseType.Clean
-                    && InvestorName1.Clean
-                    && InvestorName2.Clean
-                    && InvestorName3.Clean
-                    && InvestorScore1.Clean
-                    && InvestorScore2.Clean
-                    && InvestorScore3.Clean
-                    && LenderType.Clean
-                    && License.Clean
-                    && LicenseExempt.Clean
-                    && LicenseHomeState.Clean
-                    && LicenseType.Clean
-                    && LineItemNumber.Clean
-                    && LoginId.Clean
-                    && Name.Clean
-                    && NmlsLicense.Clean
-                    && NotNaturalPersonFlag.Clean
-                    && OrganizationState.Clean
-                    && OrganizationType.Clean
-                    && PersonalLicenseAuthDate.Clean
-                    && PersonalLicenseAuthName.Clean
-                    && PersonalLicenseAuthStateCode.Clean
-                    && PersonalLicenseAuthType.Clean
-                    && PersonalLicenseNumber.Clean
-                    && Phone.Clean
-                    && Phone2.Clean
-                    && PostalCode.Clean
-                    && RecCity.Clean
-                    && ReferenceNumber.Clean
-                    && Relationship.Clean
-                    && SettlementAgent.Clean
-                    && State.Clean
-                    && TaxID.Clean
-                    && TqlCommentHistory.Clean
-                    && TQLConsentSelection.Clean
-                    && TqlId.Clean
-                    && TqlIsPublishingIndicator.Clean
-                    && TqlName.Clean;
+                var clean = _aBA.Clean
+                    && _accountName.Clean
+                    && _address.Clean
+                    && _address2.Clean
+                    && _addToCdContactInfo.Clean
+                    && _appraisalMade.Clean
+                    && _bizLicenseAuthDate.Clean
+                    && _bizLicenseAuthName.Clean
+                    && _bizLicenseAuthStateCode.Clean
+                    && _bizLicenseAuthType.Clean
+                    && _bizLicenseNumber.Clean
+                    && _borrowerActingAsContractorIndicator.Clean
+                    && _brokerLenderType.Clean
+                    && _brokerLicenseExempt.Clean
+                    && _brokerLicenseType.Clean
+                    && _businessPhone.Clean
+                    && _categoryName.Clean
+                    && _cell.Clean
+                    && _checkConfirmedDate.Clean
+                    && _city.Clean
+                    && _clause.Clean
+                    && _comments.Clean
+                    && _companyId.Clean
+                    && _completionAffidavitPunchListTotal.Clean
+                    && _contactIndex.Clean
+                    && _contactName.Clean
+                    && _contactNMLSNo.Clean
+                    && _contactTitle.Clean
+                    && _contactType.Clean
+                    && _designeeAcceptedDate.Clean
+                    && _email.Clean
+                    && _employerLiabilityInsuranceMin.Clean
+                    && _fax.Clean
+                    && _fax2.Clean
+                    && _fhaLenderId.Clean
+                    && _generalLiabilityInsuranceMin.Clean
+                    && _id.Clean
+                    && _insuranceCertNumber.Clean
+                    && _insuranceCoverageAmount.Clean
+                    && _insuranceDeterminationDate.Clean
+                    && _insuranceDeterminationNumber.Clean
+                    && _insuranceFloodZone.Clean
+                    && _insuranceMap.Clean
+                    && _insuranceNoOfBedrooms.Clean
+                    && _insurancePremium.Clean
+                    && _insuranceProjectType.Clean
+                    && _insuranceRenewalDate.Clean
+                    && _investorGrade1.Clean
+                    && _investorGrade2.Clean
+                    && _investorGrade3.Clean
+                    && _investorLicense.Clean
+                    && _investorLicenseType.Clean
+                    && _investorName1.Clean
+                    && _investorName2.Clean
+                    && _investorName3.Clean
+                    && _investorScore1.Clean
+                    && _investorScore2.Clean
+                    && _investorScore3.Clean
+                    && _lenderType.Clean
+                    && _license.Clean
+                    && _licenseExempt.Clean
+                    && _licenseHomeState.Clean
+                    && _licenseType.Clean
+                    && _lineItemNumber.Clean
+                    && _loginId.Clean
+                    && _name.Clean
+                    && _nmlsLicense.Clean
+                    && _notNaturalPersonFlag.Clean
+                    && _organizationState.Clean
+                    && _organizationType.Clean
+                    && _personalLicenseAuthDate.Clean
+                    && _personalLicenseAuthName.Clean
+                    && _personalLicenseAuthStateCode.Clean
+                    && _personalLicenseAuthType.Clean
+                    && _personalLicenseNumber.Clean
+                    && _phone.Clean
+                    && _phone2.Clean
+                    && _postalCode.Clean
+                    && _recCity.Clean
+                    && _referenceNumber.Clean
+                    && _relationship.Clean
+                    && _settlementAgent.Clean
+                    && _state.Clean
+                    && _taxID.Clean
+                    && _tqlCommentHistory.Clean
+                    && _tQLConsentSelection.Clean
+                    && _tqlId.Clean
+                    && _tqlIsPublishingIndicator.Clean
+                    && _tqlName.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ABA; v0.Clean = value; ABA = v0;
-                var v1 = AccountName; v1.Clean = value; AccountName = v1;
-                var v2 = Address; v2.Clean = value; Address = v2;
-                var v3 = Address2; v3.Clean = value; Address2 = v3;
-                var v4 = AddToCdContactInfo; v4.Clean = value; AddToCdContactInfo = v4;
-                var v5 = AppraisalMade; v5.Clean = value; AppraisalMade = v5;
-                var v6 = BizLicenseAuthDate; v6.Clean = value; BizLicenseAuthDate = v6;
-                var v7 = BizLicenseAuthName; v7.Clean = value; BizLicenseAuthName = v7;
-                var v8 = BizLicenseAuthStateCode; v8.Clean = value; BizLicenseAuthStateCode = v8;
-                var v9 = BizLicenseAuthType; v9.Clean = value; BizLicenseAuthType = v9;
-                var v10 = BizLicenseNumber; v10.Clean = value; BizLicenseNumber = v10;
-                var v11 = BorrowerActingAsContractorIndicator; v11.Clean = value; BorrowerActingAsContractorIndicator = v11;
-                var v12 = BrokerLenderType; v12.Clean = value; BrokerLenderType = v12;
-                var v13 = BrokerLicenseExempt; v13.Clean = value; BrokerLicenseExempt = v13;
-                var v14 = BrokerLicenseType; v14.Clean = value; BrokerLicenseType = v14;
-                var v15 = BusinessPhone; v15.Clean = value; BusinessPhone = v15;
-                var v16 = CategoryName; v16.Clean = value; CategoryName = v16;
-                var v17 = Cell; v17.Clean = value; Cell = v17;
-                var v18 = CheckConfirmedDate; v18.Clean = value; CheckConfirmedDate = v18;
-                var v19 = City; v19.Clean = value; City = v19;
-                var v20 = Clause; v20.Clean = value; Clause = v20;
-                var v21 = Comments; v21.Clean = value; Comments = v21;
-                var v22 = CompanyId; v22.Clean = value; CompanyId = v22;
-                var v23 = CompletionAffidavitPunchListTotal; v23.Clean = value; CompletionAffidavitPunchListTotal = v23;
-                var v24 = ContactIndex; v24.Clean = value; ContactIndex = v24;
-                var v25 = ContactName; v25.Clean = value; ContactName = v25;
-                var v26 = ContactNMLSNo; v26.Clean = value; ContactNMLSNo = v26;
-                var v27 = ContactTitle; v27.Clean = value; ContactTitle = v27;
-                var v28 = ContactType; v28.Clean = value; ContactType = v28;
-                var v29 = DesigneeAcceptedDate; v29.Clean = value; DesigneeAcceptedDate = v29;
-                var v30 = Email; v30.Clean = value; Email = v30;
-                var v31 = EmployerLiabilityInsuranceMin; v31.Clean = value; EmployerLiabilityInsuranceMin = v31;
-                var v32 = Fax; v32.Clean = value; Fax = v32;
-                var v33 = Fax2; v33.Clean = value; Fax2 = v33;
-                var v34 = FhaLenderId; v34.Clean = value; FhaLenderId = v34;
-                var v35 = GeneralLiabilityInsuranceMin; v35.Clean = value; GeneralLiabilityInsuranceMin = v35;
-                var v36 = Id; v36.Clean = value; Id = v36;
-                var v37 = InsuranceCertNumber; v37.Clean = value; InsuranceCertNumber = v37;
-                var v38 = InsuranceCoverageAmount; v38.Clean = value; InsuranceCoverageAmount = v38;
-                var v39 = InsuranceDeterminationDate; v39.Clean = value; InsuranceDeterminationDate = v39;
-                var v40 = InsuranceDeterminationNumber; v40.Clean = value; InsuranceDeterminationNumber = v40;
-                var v41 = InsuranceFloodZone; v41.Clean = value; InsuranceFloodZone = v41;
-                var v42 = InsuranceMap; v42.Clean = value; InsuranceMap = v42;
-                var v43 = InsuranceNoOfBedrooms; v43.Clean = value; InsuranceNoOfBedrooms = v43;
-                var v44 = InsurancePremium; v44.Clean = value; InsurancePremium = v44;
-                var v45 = InsuranceProjectType; v45.Clean = value; InsuranceProjectType = v45;
-                var v46 = InsuranceRenewalDate; v46.Clean = value; InsuranceRenewalDate = v46;
-                var v47 = InvestorGrade1; v47.Clean = value; InvestorGrade1 = v47;
-                var v48 = InvestorGrade2; v48.Clean = value; InvestorGrade2 = v48;
-                var v49 = InvestorGrade3; v49.Clean = value; InvestorGrade3 = v49;
-                var v50 = InvestorLicense; v50.Clean = value; InvestorLicense = v50;
-                var v51 = InvestorLicenseType; v51.Clean = value; InvestorLicenseType = v51;
-                var v52 = InvestorName1; v52.Clean = value; InvestorName1 = v52;
-                var v53 = InvestorName2; v53.Clean = value; InvestorName2 = v53;
-                var v54 = InvestorName3; v54.Clean = value; InvestorName3 = v54;
-                var v55 = InvestorScore1; v55.Clean = value; InvestorScore1 = v55;
-                var v56 = InvestorScore2; v56.Clean = value; InvestorScore2 = v56;
-                var v57 = InvestorScore3; v57.Clean = value; InvestorScore3 = v57;
-                var v58 = LenderType; v58.Clean = value; LenderType = v58;
-                var v59 = License; v59.Clean = value; License = v59;
-                var v60 = LicenseExempt; v60.Clean = value; LicenseExempt = v60;
-                var v61 = LicenseHomeState; v61.Clean = value; LicenseHomeState = v61;
-                var v62 = LicenseType; v62.Clean = value; LicenseType = v62;
-                var v63 = LineItemNumber; v63.Clean = value; LineItemNumber = v63;
-                var v64 = LoginId; v64.Clean = value; LoginId = v64;
-                var v65 = Name; v65.Clean = value; Name = v65;
-                var v66 = NmlsLicense; v66.Clean = value; NmlsLicense = v66;
-                var v67 = NotNaturalPersonFlag; v67.Clean = value; NotNaturalPersonFlag = v67;
-                var v68 = OrganizationState; v68.Clean = value; OrganizationState = v68;
-                var v69 = OrganizationType; v69.Clean = value; OrganizationType = v69;
-                var v70 = PersonalLicenseAuthDate; v70.Clean = value; PersonalLicenseAuthDate = v70;
-                var v71 = PersonalLicenseAuthName; v71.Clean = value; PersonalLicenseAuthName = v71;
-                var v72 = PersonalLicenseAuthStateCode; v72.Clean = value; PersonalLicenseAuthStateCode = v72;
-                var v73 = PersonalLicenseAuthType; v73.Clean = value; PersonalLicenseAuthType = v73;
-                var v74 = PersonalLicenseNumber; v74.Clean = value; PersonalLicenseNumber = v74;
-                var v75 = Phone; v75.Clean = value; Phone = v75;
-                var v76 = Phone2; v76.Clean = value; Phone2 = v76;
-                var v77 = PostalCode; v77.Clean = value; PostalCode = v77;
-                var v78 = RecCity; v78.Clean = value; RecCity = v78;
-                var v79 = ReferenceNumber; v79.Clean = value; ReferenceNumber = v79;
-                var v80 = Relationship; v80.Clean = value; Relationship = v80;
-                var v81 = SettlementAgent; v81.Clean = value; SettlementAgent = v81;
-                var v82 = State; v82.Clean = value; State = v82;
-                var v83 = TaxID; v83.Clean = value; TaxID = v83;
-                var v84 = TqlCommentHistory; v84.Clean = value; TqlCommentHistory = v84;
-                var v85 = TQLConsentSelection; v85.Clean = value; TQLConsentSelection = v85;
-                var v86 = TqlId; v86.Clean = value; TqlId = v86;
-                var v87 = TqlIsPublishingIndicator; v87.Clean = value; TqlIsPublishingIndicator = v87;
-                var v88 = TqlName; v88.Clean = value; TqlName = v88;
+                var v0 = _aBA; v0.Clean = value; _aBA = v0;
+                var v1 = _accountName; v1.Clean = value; _accountName = v1;
+                var v2 = _address; v2.Clean = value; _address = v2;
+                var v3 = _address2; v3.Clean = value; _address2 = v3;
+                var v4 = _addToCdContactInfo; v4.Clean = value; _addToCdContactInfo = v4;
+                var v5 = _appraisalMade; v5.Clean = value; _appraisalMade = v5;
+                var v6 = _bizLicenseAuthDate; v6.Clean = value; _bizLicenseAuthDate = v6;
+                var v7 = _bizLicenseAuthName; v7.Clean = value; _bizLicenseAuthName = v7;
+                var v8 = _bizLicenseAuthStateCode; v8.Clean = value; _bizLicenseAuthStateCode = v8;
+                var v9 = _bizLicenseAuthType; v9.Clean = value; _bizLicenseAuthType = v9;
+                var v10 = _bizLicenseNumber; v10.Clean = value; _bizLicenseNumber = v10;
+                var v11 = _borrowerActingAsContractorIndicator; v11.Clean = value; _borrowerActingAsContractorIndicator = v11;
+                var v12 = _brokerLenderType; v12.Clean = value; _brokerLenderType = v12;
+                var v13 = _brokerLicenseExempt; v13.Clean = value; _brokerLicenseExempt = v13;
+                var v14 = _brokerLicenseType; v14.Clean = value; _brokerLicenseType = v14;
+                var v15 = _businessPhone; v15.Clean = value; _businessPhone = v15;
+                var v16 = _categoryName; v16.Clean = value; _categoryName = v16;
+                var v17 = _cell; v17.Clean = value; _cell = v17;
+                var v18 = _checkConfirmedDate; v18.Clean = value; _checkConfirmedDate = v18;
+                var v19 = _city; v19.Clean = value; _city = v19;
+                var v20 = _clause; v20.Clean = value; _clause = v20;
+                var v21 = _comments; v21.Clean = value; _comments = v21;
+                var v22 = _companyId; v22.Clean = value; _companyId = v22;
+                var v23 = _completionAffidavitPunchListTotal; v23.Clean = value; _completionAffidavitPunchListTotal = v23;
+                var v24 = _contactIndex; v24.Clean = value; _contactIndex = v24;
+                var v25 = _contactName; v25.Clean = value; _contactName = v25;
+                var v26 = _contactNMLSNo; v26.Clean = value; _contactNMLSNo = v26;
+                var v27 = _contactTitle; v27.Clean = value; _contactTitle = v27;
+                var v28 = _contactType; v28.Clean = value; _contactType = v28;
+                var v29 = _designeeAcceptedDate; v29.Clean = value; _designeeAcceptedDate = v29;
+                var v30 = _email; v30.Clean = value; _email = v30;
+                var v31 = _employerLiabilityInsuranceMin; v31.Clean = value; _employerLiabilityInsuranceMin = v31;
+                var v32 = _fax; v32.Clean = value; _fax = v32;
+                var v33 = _fax2; v33.Clean = value; _fax2 = v33;
+                var v34 = _fhaLenderId; v34.Clean = value; _fhaLenderId = v34;
+                var v35 = _generalLiabilityInsuranceMin; v35.Clean = value; _generalLiabilityInsuranceMin = v35;
+                var v36 = _id; v36.Clean = value; _id = v36;
+                var v37 = _insuranceCertNumber; v37.Clean = value; _insuranceCertNumber = v37;
+                var v38 = _insuranceCoverageAmount; v38.Clean = value; _insuranceCoverageAmount = v38;
+                var v39 = _insuranceDeterminationDate; v39.Clean = value; _insuranceDeterminationDate = v39;
+                var v40 = _insuranceDeterminationNumber; v40.Clean = value; _insuranceDeterminationNumber = v40;
+                var v41 = _insuranceFloodZone; v41.Clean = value; _insuranceFloodZone = v41;
+                var v42 = _insuranceMap; v42.Clean = value; _insuranceMap = v42;
+                var v43 = _insuranceNoOfBedrooms; v43.Clean = value; _insuranceNoOfBedrooms = v43;
+                var v44 = _insurancePremium; v44.Clean = value; _insurancePremium = v44;
+                var v45 = _insuranceProjectType; v45.Clean = value; _insuranceProjectType = v45;
+                var v46 = _insuranceRenewalDate; v46.Clean = value; _insuranceRenewalDate = v46;
+                var v47 = _investorGrade1; v47.Clean = value; _investorGrade1 = v47;
+                var v48 = _investorGrade2; v48.Clean = value; _investorGrade2 = v48;
+                var v49 = _investorGrade3; v49.Clean = value; _investorGrade3 = v49;
+                var v50 = _investorLicense; v50.Clean = value; _investorLicense = v50;
+                var v51 = _investorLicenseType; v51.Clean = value; _investorLicenseType = v51;
+                var v52 = _investorName1; v52.Clean = value; _investorName1 = v52;
+                var v53 = _investorName2; v53.Clean = value; _investorName2 = v53;
+                var v54 = _investorName3; v54.Clean = value; _investorName3 = v54;
+                var v55 = _investorScore1; v55.Clean = value; _investorScore1 = v55;
+                var v56 = _investorScore2; v56.Clean = value; _investorScore2 = v56;
+                var v57 = _investorScore3; v57.Clean = value; _investorScore3 = v57;
+                var v58 = _lenderType; v58.Clean = value; _lenderType = v58;
+                var v59 = _license; v59.Clean = value; _license = v59;
+                var v60 = _licenseExempt; v60.Clean = value; _licenseExempt = v60;
+                var v61 = _licenseHomeState; v61.Clean = value; _licenseHomeState = v61;
+                var v62 = _licenseType; v62.Clean = value; _licenseType = v62;
+                var v63 = _lineItemNumber; v63.Clean = value; _lineItemNumber = v63;
+                var v64 = _loginId; v64.Clean = value; _loginId = v64;
+                var v65 = _name; v65.Clean = value; _name = v65;
+                var v66 = _nmlsLicense; v66.Clean = value; _nmlsLicense = v66;
+                var v67 = _notNaturalPersonFlag; v67.Clean = value; _notNaturalPersonFlag = v67;
+                var v68 = _organizationState; v68.Clean = value; _organizationState = v68;
+                var v69 = _organizationType; v69.Clean = value; _organizationType = v69;
+                var v70 = _personalLicenseAuthDate; v70.Clean = value; _personalLicenseAuthDate = v70;
+                var v71 = _personalLicenseAuthName; v71.Clean = value; _personalLicenseAuthName = v71;
+                var v72 = _personalLicenseAuthStateCode; v72.Clean = value; _personalLicenseAuthStateCode = v72;
+                var v73 = _personalLicenseAuthType; v73.Clean = value; _personalLicenseAuthType = v73;
+                var v74 = _personalLicenseNumber; v74.Clean = value; _personalLicenseNumber = v74;
+                var v75 = _phone; v75.Clean = value; _phone = v75;
+                var v76 = _phone2; v76.Clean = value; _phone2 = v76;
+                var v77 = _postalCode; v77.Clean = value; _postalCode = v77;
+                var v78 = _recCity; v78.Clean = value; _recCity = v78;
+                var v79 = _referenceNumber; v79.Clean = value; _referenceNumber = v79;
+                var v80 = _relationship; v80.Clean = value; _relationship = v80;
+                var v81 = _settlementAgent; v81.Clean = value; _settlementAgent = v81;
+                var v82 = _state; v82.Clean = value; _state = v82;
+                var v83 = _taxID; v83.Clean = value; _taxID = v83;
+                var v84 = _tqlCommentHistory; v84.Clean = value; _tqlCommentHistory = v84;
+                var v85 = _tQLConsentSelection; v85.Clean = value; _tQLConsentSelection = v85;
+                var v86 = _tqlId; v86.Clean = value; _tqlId = v86;
+                var v87 = _tqlIsPublishingIndicator; v87.Clean = value; _tqlIsPublishingIndicator = v87;
+                var v88 = _tqlName; v88.Clean = value; _tqlName = v88;
                 _settingClean = 0;
             }
         }

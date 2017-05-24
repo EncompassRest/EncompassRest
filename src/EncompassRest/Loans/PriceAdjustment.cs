@@ -7,24 +7,30 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PriceAdjustment
     {
-        public Value<string> AdjustmentType { get; set; }
+        private Value<string> _adjustmentType;
+        public string AdjustmentType { get { return _adjustmentType; } set { _adjustmentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentType() => !AdjustmentType.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeAdjustmentType() => !_adjustmentType.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> PriceAdjustmentType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _priceAdjustmentType;
+        public string PriceAdjustmentType { get { return _priceAdjustmentType; } set { _priceAdjustmentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriceAdjustmentType() => !PriceAdjustmentType.Clean;
-        public Value<decimal?> Rate { get; set; }
+        public bool ShouldSerializePriceAdjustmentType() => !_priceAdjustmentType.Clean;
+        private Value<decimal?> _rate;
+        public decimal? Rate { get { return _rate; } set { _rate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRate() => !Rate.Clean;
-        public Value<string> RateLockAdjustmentType { get; set; }
+        public bool ShouldSerializeRate() => !_rate.Clean;
+        private Value<string> _rateLockAdjustmentType;
+        public string RateLockAdjustmentType { get { return _rateLockAdjustmentType; } set { _rateLockAdjustmentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateLockAdjustmentType() => !RateLockAdjustmentType.Clean;
+        public bool ShouldSerializeRateLockAdjustmentType() => !_rateLockAdjustmentType.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -32,24 +38,24 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdjustmentType.Clean
-                    && Description.Clean
-                    && Id.Clean
-                    && PriceAdjustmentType.Clean
-                    && Rate.Clean
-                    && RateLockAdjustmentType.Clean;
+                var clean = _adjustmentType.Clean
+                    && _description.Clean
+                    && _id.Clean
+                    && _priceAdjustmentType.Clean
+                    && _rate.Clean
+                    && _rateLockAdjustmentType.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdjustmentType; v0.Clean = value; AdjustmentType = v0;
-                var v1 = Description; v1.Clean = value; Description = v1;
-                var v2 = Id; v2.Clean = value; Id = v2;
-                var v3 = PriceAdjustmentType; v3.Clean = value; PriceAdjustmentType = v3;
-                var v4 = Rate; v4.Clean = value; Rate = v4;
-                var v5 = RateLockAdjustmentType; v5.Clean = value; RateLockAdjustmentType = v5;
+                var v0 = _adjustmentType; v0.Clean = value; _adjustmentType = v0;
+                var v1 = _description; v1.Clean = value; _description = v1;
+                var v2 = _id; v2.Clean = value; _id = v2;
+                var v3 = _priceAdjustmentType; v3.Clean = value; _priceAdjustmentType = v3;
+                var v4 = _rate; v4.Clean = value; _rate = v4;
+                var v5 = _rateLockAdjustmentType; v5.Clean = value; _rateLockAdjustmentType = v5;
                 _settingClean = 0;
             }
         }

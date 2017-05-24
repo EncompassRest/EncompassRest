@@ -7,324 +7,430 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ClosingDisclosure1
     {
-        public Value<DateTime?> CDDateIssued { get; set; }
+        private Value<DateTime?> _cDDateIssued;
+        public DateTime? CDDateIssued { get { return _cDDateIssued; } set { _cDDateIssued = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCDDateIssued() => !_cDDateIssued.Clean;
+        private Value<string> _changedCircumstance;
+        public string ChangedCircumstance { get { return _changedCircumstance; } set { _changedCircumstance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeChangedCircumstance() => !_changedCircumstance.Clean;
+        private Value<bool?> _changedCircumstanceFlag;
+        public bool? ChangedCircumstanceFlag { get { return _changedCircumstanceFlag; } set { _changedCircumstanceFlag = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeChangedCircumstanceFlag() => !_changedCircumstanceFlag.Clean;
+        private Value<DateTime?> _changesReceivedDate;
+        public DateTime? ChangesReceivedDate { get { return _changesReceivedDate; } set { _changesReceivedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeChangesReceivedDate() => !_changesReceivedDate.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<string> _disclosureBy;
+        public string DisclosureBy { get { return _disclosureBy; } set { _disclosureBy = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureBy() => !_disclosureBy.Clean;
+        private Value<string> _disclosureComments;
+        public string DisclosureComments { get { return _disclosureComments; } set { _disclosureComments = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureComments() => !_disclosureComments.Clean;
+        private Value<DateTime?> _disclosureLastSentDate;
+        public DateTime? DisclosureLastSentDate { get { return _disclosureLastSentDate; } set { _disclosureLastSentDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureLastSentDate() => !_disclosureLastSentDate.Clean;
+        private Value<DateTime?> _disclosureReceivedDate;
+        public DateTime? DisclosureReceivedDate { get { return _disclosureReceivedDate; } set { _disclosureReceivedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureReceivedDate() => !_disclosureReceivedDate.Clean;
+        private Value<string> _disclosureSentMethod;
+        public string DisclosureSentMethod { get { return _disclosureSentMethod; } set { _disclosureSentMethod = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureSentMethod() => !_disclosureSentMethod.Clean;
+        private Value<string> _documentGUIDFinalExecutedCopyofAlternateCD;
+        public string DocumentGUIDFinalExecutedCopyofAlternateCD { get { return _documentGUIDFinalExecutedCopyofAlternateCD; } set { _documentGUIDFinalExecutedCopyofAlternateCD = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofAlternateCD() => !_documentGUIDFinalExecutedCopyofAlternateCD.Clean;
+        private Value<string> _documentGUIDFinalExecutedCopyofSellerCD;
+        public string DocumentGUIDFinalExecutedCopyofSellerCD { get { return _documentGUIDFinalExecutedCopyofSellerCD; } set { _documentGUIDFinalExecutedCopyofSellerCD = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofSellerCD() => !_documentGUIDFinalExecutedCopyofSellerCD.Clean;
+        private Value<string> _documentGUIDFinalExecutedCopyofStandardCD;
+        public string DocumentGUIDFinalExecutedCopyofStandardCD { get { return _documentGUIDFinalExecutedCopyofStandardCD; } set { _documentGUIDFinalExecutedCopyofStandardCD = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofStandardCD() => !_documentGUIDFinalExecutedCopyofStandardCD.Clean;
+        private Value<decimal?> _estimatedTaxesInsuranceAssessments;
+        public decimal? EstimatedTaxesInsuranceAssessments { get { return _estimatedTaxesInsuranceAssessments; } set { _estimatedTaxesInsuranceAssessments = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEstimatedTaxesInsuranceAssessments() => !_estimatedTaxesInsuranceAssessments.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _inEscrowHomeownerInsurance;
+        public string InEscrowHomeownerInsurance { get { return _inEscrowHomeownerInsurance; } set { _inEscrowHomeownerInsurance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInEscrowHomeownerInsurance() => !_inEscrowHomeownerInsurance.Clean;
+        private Value<string> _inEscrowOther;
+        public string InEscrowOther { get { return _inEscrowOther; } set { _inEscrowOther = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInEscrowOther() => !_inEscrowOther.Clean;
+        private Value<string> _inEscrowPropertyTaxes;
+        public string InEscrowPropertyTaxes { get { return _inEscrowPropertyTaxes; } set { _inEscrowPropertyTaxes = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInEscrowPropertyTaxes() => !_inEscrowPropertyTaxes.Clean;
+        private Value<DateTime?> _initialCDReceivedDate;
+        public DateTime? InitialCDReceivedDate { get { return _initialCDReceivedDate; } set { _initialCDReceivedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInitialCDReceivedDate() => !_initialCDReceivedDate.Clean;
+        private Value<string> _mICReference;
+        public string MICReference { get { return _mICReference; } set { _mICReference = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMICReference() => !_mICReference.Clean;
+        private Value<bool?> _notNaturalPersonFlag;
+        public bool? NotNaturalPersonFlag { get { return _notNaturalPersonFlag; } set { _notNaturalPersonFlag = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeNotNaturalPersonFlag() => !_notNaturalPersonFlag.Clean;
+        private Value<decimal?> _pPC1EstimatedEscrowAmount;
+        public decimal? PPC1EstimatedEscrowAmount { get { return _pPC1EstimatedEscrowAmount; } set { _pPC1EstimatedEscrowAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1EstimatedEscrowAmount() => !_pPC1EstimatedEscrowAmount.Clean;
+        private Value<string> _pPC1EstimatedEscrowAmountUI;
+        public string PPC1EstimatedEscrowAmountUI { get { return _pPC1EstimatedEscrowAmountUI; } set { _pPC1EstimatedEscrowAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1EstimatedEscrowAmountUI() => !_pPC1EstimatedEscrowAmountUI.Clean;
+        private Value<bool?> _pPC1InterestOnly;
+        public bool? PPC1InterestOnly { get { return _pPC1InterestOnly; } set { _pPC1InterestOnly = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1InterestOnly() => !_pPC1InterestOnly.Clean;
+        private Value<decimal?> _pPC1MaximumMonthlyPayment;
+        public decimal? PPC1MaximumMonthlyPayment { get { return _pPC1MaximumMonthlyPayment; } set { _pPC1MaximumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MaximumMonthlyPayment() => !_pPC1MaximumMonthlyPayment.Clean;
+        private Value<string> _pPC1MaximumMonthlyPaymentUI;
+        public string PPC1MaximumMonthlyPaymentUI { get { return _pPC1MaximumMonthlyPaymentUI; } set { _pPC1MaximumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MaximumMonthlyPaymentUI() => !_pPC1MaximumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC1MaximumPIPayment;
+        public decimal? PPC1MaximumPIPayment { get { return _pPC1MaximumPIPayment; } set { _pPC1MaximumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MaximumPIPayment() => !_pPC1MaximumPIPayment.Clean;
+        private Value<string> _pPC1MaximumPIPaymentUI;
+        public string PPC1MaximumPIPaymentUI { get { return _pPC1MaximumPIPaymentUI; } set { _pPC1MaximumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MaximumPIPaymentUI() => !_pPC1MaximumPIPaymentUI.Clean;
+        private Value<decimal?> _pPC1MIAmount;
+        public decimal? PPC1MIAmount { get { return _pPC1MIAmount; } set { _pPC1MIAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MIAmount() => !_pPC1MIAmount.Clean;
+        private Value<string> _pPC1MIAmountUI;
+        public string PPC1MIAmountUI { get { return _pPC1MIAmountUI; } set { _pPC1MIAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MIAmountUI() => !_pPC1MIAmountUI.Clean;
+        private Value<decimal?> _pPC1MinimumMonthlyPayment;
+        public decimal? PPC1MinimumMonthlyPayment { get { return _pPC1MinimumMonthlyPayment; } set { _pPC1MinimumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MinimumMonthlyPayment() => !_pPC1MinimumMonthlyPayment.Clean;
+        private Value<string> _pPC1MinimumMonthlyPaymentUI;
+        public string PPC1MinimumMonthlyPaymentUI { get { return _pPC1MinimumMonthlyPaymentUI; } set { _pPC1MinimumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MinimumMonthlyPaymentUI() => !_pPC1MinimumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC1MinimumPIPayment;
+        public decimal? PPC1MinimumPIPayment { get { return _pPC1MinimumPIPayment; } set { _pPC1MinimumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MinimumPIPayment() => !_pPC1MinimumPIPayment.Clean;
+        private Value<string> _pPC1MinimumPIPaymentUI;
+        public string PPC1MinimumPIPaymentUI { get { return _pPC1MinimumPIPaymentUI; } set { _pPC1MinimumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1MinimumPIPaymentUI() => !_pPC1MinimumPIPaymentUI.Clean;
+        private Value<int?> _pPC1Year;
+        public int? PPC1Year { get { return _pPC1Year; } set { _pPC1Year = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC1Year() => !_pPC1Year.Clean;
+        private Value<decimal?> _pPC2EstimatedEscrowAmount;
+        public decimal? PPC2EstimatedEscrowAmount { get { return _pPC2EstimatedEscrowAmount; } set { _pPC2EstimatedEscrowAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2EstimatedEscrowAmount() => !_pPC2EstimatedEscrowAmount.Clean;
+        private Value<string> _pPC2EstimatedEscrowAmountUI;
+        public string PPC2EstimatedEscrowAmountUI { get { return _pPC2EstimatedEscrowAmountUI; } set { _pPC2EstimatedEscrowAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2EstimatedEscrowAmountUI() => !_pPC2EstimatedEscrowAmountUI.Clean;
+        private Value<bool?> _pPC2InterestOnly;
+        public bool? PPC2InterestOnly { get { return _pPC2InterestOnly; } set { _pPC2InterestOnly = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2InterestOnly() => !_pPC2InterestOnly.Clean;
+        private Value<decimal?> _pPC2MaximumMonthlyPayment;
+        public decimal? PPC2MaximumMonthlyPayment { get { return _pPC2MaximumMonthlyPayment; } set { _pPC2MaximumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MaximumMonthlyPayment() => !_pPC2MaximumMonthlyPayment.Clean;
+        private Value<string> _pPC2MaximumMonthlyPaymentUI;
+        public string PPC2MaximumMonthlyPaymentUI { get { return _pPC2MaximumMonthlyPaymentUI; } set { _pPC2MaximumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MaximumMonthlyPaymentUI() => !_pPC2MaximumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC2MaximumPIPayment;
+        public decimal? PPC2MaximumPIPayment { get { return _pPC2MaximumPIPayment; } set { _pPC2MaximumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MaximumPIPayment() => !_pPC2MaximumPIPayment.Clean;
+        private Value<string> _pPC2MaximumPIPaymentUI;
+        public string PPC2MaximumPIPaymentUI { get { return _pPC2MaximumPIPaymentUI; } set { _pPC2MaximumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MaximumPIPaymentUI() => !_pPC2MaximumPIPaymentUI.Clean;
+        private Value<decimal?> _pPC2MIAmount;
+        public decimal? PPC2MIAmount { get { return _pPC2MIAmount; } set { _pPC2MIAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MIAmount() => !_pPC2MIAmount.Clean;
+        private Value<string> _pPC2MIAmountUI;
+        public string PPC2MIAmountUI { get { return _pPC2MIAmountUI; } set { _pPC2MIAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MIAmountUI() => !_pPC2MIAmountUI.Clean;
+        private Value<decimal?> _pPC2MinimumMonthlyPayment;
+        public decimal? PPC2MinimumMonthlyPayment { get { return _pPC2MinimumMonthlyPayment; } set { _pPC2MinimumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MinimumMonthlyPayment() => !_pPC2MinimumMonthlyPayment.Clean;
+        private Value<string> _pPC2MinimumMonthlyPaymentUI;
+        public string PPC2MinimumMonthlyPaymentUI { get { return _pPC2MinimumMonthlyPaymentUI; } set { _pPC2MinimumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MinimumMonthlyPaymentUI() => !_pPC2MinimumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC2MinimumPIPayment;
+        public decimal? PPC2MinimumPIPayment { get { return _pPC2MinimumPIPayment; } set { _pPC2MinimumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MinimumPIPayment() => !_pPC2MinimumPIPayment.Clean;
+        private Value<string> _pPC2MinimumPIPaymentUI;
+        public string PPC2MinimumPIPaymentUI { get { return _pPC2MinimumPIPaymentUI; } set { _pPC2MinimumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2MinimumPIPaymentUI() => !_pPC2MinimumPIPaymentUI.Clean;
+        private Value<int?> _pPC2YearFrom;
+        public int? PPC2YearFrom { get { return _pPC2YearFrom; } set { _pPC2YearFrom = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2YearFrom() => !_pPC2YearFrom.Clean;
+        private Value<int?> _pPC2YearTo;
+        public int? PPC2YearTo { get { return _pPC2YearTo; } set { _pPC2YearTo = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC2YearTo() => !_pPC2YearTo.Clean;
+        private Value<decimal?> _pPC3EstimatedEscrowAmount;
+        public decimal? PPC3EstimatedEscrowAmount { get { return _pPC3EstimatedEscrowAmount; } set { _pPC3EstimatedEscrowAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3EstimatedEscrowAmount() => !_pPC3EstimatedEscrowAmount.Clean;
+        private Value<string> _pPC3EstimatedEscrowAmountUI;
+        public string PPC3EstimatedEscrowAmountUI { get { return _pPC3EstimatedEscrowAmountUI; } set { _pPC3EstimatedEscrowAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3EstimatedEscrowAmountUI() => !_pPC3EstimatedEscrowAmountUI.Clean;
+        private Value<bool?> _pPC3InterestOnly;
+        public bool? PPC3InterestOnly { get { return _pPC3InterestOnly; } set { _pPC3InterestOnly = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3InterestOnly() => !_pPC3InterestOnly.Clean;
+        private Value<decimal?> _pPC3MaximumMonthlyPayment;
+        public decimal? PPC3MaximumMonthlyPayment { get { return _pPC3MaximumMonthlyPayment; } set { _pPC3MaximumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MaximumMonthlyPayment() => !_pPC3MaximumMonthlyPayment.Clean;
+        private Value<string> _pPC3MaximumMonthlyPaymentUI;
+        public string PPC3MaximumMonthlyPaymentUI { get { return _pPC3MaximumMonthlyPaymentUI; } set { _pPC3MaximumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MaximumMonthlyPaymentUI() => !_pPC3MaximumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC3MaximumPIPayment;
+        public decimal? PPC3MaximumPIPayment { get { return _pPC3MaximumPIPayment; } set { _pPC3MaximumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MaximumPIPayment() => !_pPC3MaximumPIPayment.Clean;
+        private Value<string> _pPC3MaximumPIPaymentUI;
+        public string PPC3MaximumPIPaymentUI { get { return _pPC3MaximumPIPaymentUI; } set { _pPC3MaximumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MaximumPIPaymentUI() => !_pPC3MaximumPIPaymentUI.Clean;
+        private Value<decimal?> _pPC3MIAmount;
+        public decimal? PPC3MIAmount { get { return _pPC3MIAmount; } set { _pPC3MIAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MIAmount() => !_pPC3MIAmount.Clean;
+        private Value<string> _pPC3MIAmountUI;
+        public string PPC3MIAmountUI { get { return _pPC3MIAmountUI; } set { _pPC3MIAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MIAmountUI() => !_pPC3MIAmountUI.Clean;
+        private Value<decimal?> _pPC3MinimumMonthlyPayment;
+        public decimal? PPC3MinimumMonthlyPayment { get { return _pPC3MinimumMonthlyPayment; } set { _pPC3MinimumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MinimumMonthlyPayment() => !_pPC3MinimumMonthlyPayment.Clean;
+        private Value<string> _pPC3MinimumMonthlyPaymentUI;
+        public string PPC3MinimumMonthlyPaymentUI { get { return _pPC3MinimumMonthlyPaymentUI; } set { _pPC3MinimumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MinimumMonthlyPaymentUI() => !_pPC3MinimumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC3MinimumPIPayment;
+        public decimal? PPC3MinimumPIPayment { get { return _pPC3MinimumPIPayment; } set { _pPC3MinimumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MinimumPIPayment() => !_pPC3MinimumPIPayment.Clean;
+        private Value<string> _pPC3MinimumPIPaymentUI;
+        public string PPC3MinimumPIPaymentUI { get { return _pPC3MinimumPIPaymentUI; } set { _pPC3MinimumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3MinimumPIPaymentUI() => !_pPC3MinimumPIPaymentUI.Clean;
+        private Value<int?> _pPC3YearFrom;
+        public int? PPC3YearFrom { get { return _pPC3YearFrom; } set { _pPC3YearFrom = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3YearFrom() => !_pPC3YearFrom.Clean;
+        private Value<int?> _pPC3YearTo;
+        public int? PPC3YearTo { get { return _pPC3YearTo; } set { _pPC3YearTo = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC3YearTo() => !_pPC3YearTo.Clean;
+        private Value<decimal?> _pPC4EstimatedEscrowAmount;
+        public decimal? PPC4EstimatedEscrowAmount { get { return _pPC4EstimatedEscrowAmount; } set { _pPC4EstimatedEscrowAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4EstimatedEscrowAmount() => !_pPC4EstimatedEscrowAmount.Clean;
+        private Value<string> _pPC4EstimatedEscrowAmountUI;
+        public string PPC4EstimatedEscrowAmountUI { get { return _pPC4EstimatedEscrowAmountUI; } set { _pPC4EstimatedEscrowAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4EstimatedEscrowAmountUI() => !_pPC4EstimatedEscrowAmountUI.Clean;
+        private Value<bool?> _pPC4InterestOnly;
+        public bool? PPC4InterestOnly { get { return _pPC4InterestOnly; } set { _pPC4InterestOnly = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4InterestOnly() => !_pPC4InterestOnly.Clean;
+        private Value<decimal?> _pPC4MaximumMonthlyPayment;
+        public decimal? PPC4MaximumMonthlyPayment { get { return _pPC4MaximumMonthlyPayment; } set { _pPC4MaximumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MaximumMonthlyPayment() => !_pPC4MaximumMonthlyPayment.Clean;
+        private Value<string> _pPC4MaximumMonthlyPaymentUI;
+        public string PPC4MaximumMonthlyPaymentUI { get { return _pPC4MaximumMonthlyPaymentUI; } set { _pPC4MaximumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MaximumMonthlyPaymentUI() => !_pPC4MaximumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC4MaximumPIPayment;
+        public decimal? PPC4MaximumPIPayment { get { return _pPC4MaximumPIPayment; } set { _pPC4MaximumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MaximumPIPayment() => !_pPC4MaximumPIPayment.Clean;
+        private Value<string> _pPC4MaximumPIPaymentUI;
+        public string PPC4MaximumPIPaymentUI { get { return _pPC4MaximumPIPaymentUI; } set { _pPC4MaximumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MaximumPIPaymentUI() => !_pPC4MaximumPIPaymentUI.Clean;
+        private Value<decimal?> _pPC4MIAmount;
+        public decimal? PPC4MIAmount { get { return _pPC4MIAmount; } set { _pPC4MIAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MIAmount() => !_pPC4MIAmount.Clean;
+        private Value<string> _pPC4MIAmountUI;
+        public string PPC4MIAmountUI { get { return _pPC4MIAmountUI; } set { _pPC4MIAmountUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MIAmountUI() => !_pPC4MIAmountUI.Clean;
+        private Value<decimal?> _pPC4MinimumMonthlyPayment;
+        public decimal? PPC4MinimumMonthlyPayment { get { return _pPC4MinimumMonthlyPayment; } set { _pPC4MinimumMonthlyPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MinimumMonthlyPayment() => !_pPC4MinimumMonthlyPayment.Clean;
+        private Value<string> _pPC4MinimumMonthlyPaymentUI;
+        public string PPC4MinimumMonthlyPaymentUI { get { return _pPC4MinimumMonthlyPaymentUI; } set { _pPC4MinimumMonthlyPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MinimumMonthlyPaymentUI() => !_pPC4MinimumMonthlyPaymentUI.Clean;
+        private Value<decimal?> _pPC4MinimumPIPayment;
+        public decimal? PPC4MinimumPIPayment { get { return _pPC4MinimumPIPayment; } set { _pPC4MinimumPIPayment = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MinimumPIPayment() => !_pPC4MinimumPIPayment.Clean;
+        private Value<string> _pPC4MinimumPIPaymentUI;
+        public string PPC4MinimumPIPaymentUI { get { return _pPC4MinimumPIPaymentUI; } set { _pPC4MinimumPIPaymentUI = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4MinimumPIPaymentUI() => !_pPC4MinimumPIPaymentUI.Clean;
+        private Value<int?> _pPC4YearFrom;
+        public int? PPC4YearFrom { get { return _pPC4YearFrom; } set { _pPC4YearFrom = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4YearFrom() => !_pPC4YearFrom.Clean;
+        private Value<int?> _pPC4YearTo;
+        public int? PPC4YearTo { get { return _pPC4YearTo; } set { _pPC4YearTo = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPC4YearTo() => !_pPC4YearTo.Clean;
+        private Value<bool?> _pPCEstimatedEscrowIndicator;
+        public bool? PPCEstimatedEscrowIndicator { get { return _pPCEstimatedEscrowIndicator; } set { _pPCEstimatedEscrowIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePPCEstimatedEscrowIndicator() => !_pPCEstimatedEscrowIndicator.Clean;
+        private Value<bool?> _pPCMortgageInsuranceIndicator;
+        public bool? PPCMortgageInsuranceIndicator { get { return _pPCMortgageInsuranceIndicator; } set { _pPCMortgageInsuranceIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDDateIssued() => !CDDateIssued.Clean;
-        public Value<string> ChangedCircumstance { get; set; }
+        public bool ShouldSerializePPCMortgageInsuranceIndicator() => !_pPCMortgageInsuranceIndicator.Clean;
+        private Value<bool?> _rangePaymentIndicatorC1;
+        public bool? RangePaymentIndicatorC1 { get { return _rangePaymentIndicatorC1; } set { _rangePaymentIndicatorC1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangedCircumstance() => !ChangedCircumstance.Clean;
-        public Value<bool?> ChangedCircumstanceFlag { get; set; }
+        public bool ShouldSerializeRangePaymentIndicatorC1() => !_rangePaymentIndicatorC1.Clean;
+        private Value<bool?> _rangePaymentIndicatorC2;
+        public bool? RangePaymentIndicatorC2 { get { return _rangePaymentIndicatorC2; } set { _rangePaymentIndicatorC2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangedCircumstanceFlag() => !ChangedCircumstanceFlag.Clean;
-        public Value<DateTime?> ChangesReceivedDate { get; set; }
+        public bool ShouldSerializeRangePaymentIndicatorC2() => !_rangePaymentIndicatorC2.Clean;
+        private Value<bool?> _rangePaymentIndicatorC3;
+        public bool? RangePaymentIndicatorC3 { get { return _rangePaymentIndicatorC3; } set { _rangePaymentIndicatorC3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangesReceivedDate() => !ChangesReceivedDate.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeRangePaymentIndicatorC3() => !_rangePaymentIndicatorC3.Clean;
+        private Value<bool?> _rangePaymentIndicatorC4;
+        public bool? RangePaymentIndicatorC4 { get { return _rangePaymentIndicatorC4; } set { _rangePaymentIndicatorC4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<string> DisclosureBy { get; set; }
+        public bool ShouldSerializeRangePaymentIndicatorC4() => !_rangePaymentIndicatorC4.Clean;
+        private Value<bool?> _reasonAdvancedReview;
+        public bool? ReasonAdvancedReview { get { return _reasonAdvancedReview; } set { _reasonAdvancedReview = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureBy() => !DisclosureBy.Clean;
-        public Value<string> DisclosureComments { get; set; }
+        public bool ShouldSerializeReasonAdvancedReview() => !_reasonAdvancedReview.Clean;
+        private Value<bool?> _reasonChangedCircumstanceElg;
+        public bool? ReasonChangedCircumstanceElg { get { return _reasonChangedCircumstanceElg; } set { _reasonChangedCircumstanceElg = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureComments() => !DisclosureComments.Clean;
-        public Value<DateTime?> DisclosureLastSentDate { get; set; }
+        public bool ShouldSerializeReasonChangedCircumstanceElg() => !_reasonChangedCircumstanceElg.Clean;
+        private Value<string> _reasonChangedCircumstanceFlags;
+        public string ReasonChangedCircumstanceFlags { get { return _reasonChangedCircumstanceFlags; } set { _reasonChangedCircumstanceFlags = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureLastSentDate() => !DisclosureLastSentDate.Clean;
-        public Value<DateTime?> DisclosureReceivedDate { get; set; }
+        public bool ShouldSerializeReasonChangedCircumstanceFlags() => !_reasonChangedCircumstanceFlags.Clean;
+        private Value<bool?> _reasonChangeInAPR;
+        public bool? ReasonChangeInAPR { get { return _reasonChangeInAPR; } set { _reasonChangeInAPR = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureReceivedDate() => !DisclosureReceivedDate.Clean;
-        public Value<string> DisclosureSentMethod { get; set; }
+        public bool ShouldSerializeReasonChangeInAPR() => !_reasonChangeInAPR.Clean;
+        private Value<bool?> _reasonChangeInLoanProduct;
+        public bool? ReasonChangeInLoanProduct { get { return _reasonChangeInLoanProduct; } set { _reasonChangeInLoanProduct = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureSentMethod() => !DisclosureSentMethod.Clean;
-        public Value<string> DocumentGUIDFinalExecutedCopyofAlternateCD { get; set; }
+        public bool ShouldSerializeReasonChangeInLoanProduct() => !_reasonChangeInLoanProduct.Clean;
+        private Value<bool?> _reasonChangeSettlementCharges;
+        public bool? ReasonChangeSettlementCharges { get { return _reasonChangeSettlementCharges; } set { _reasonChangeSettlementCharges = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofAlternateCD() => !DocumentGUIDFinalExecutedCopyofAlternateCD.Clean;
-        public Value<string> DocumentGUIDFinalExecutedCopyofSellerCD { get; set; }
+        public bool ShouldSerializeReasonChangeSettlementCharges() => !_reasonChangeSettlementCharges.Clean;
+        private Value<bool?> _reasonClericalErrorCorrection;
+        public bool? ReasonClericalErrorCorrection { get { return _reasonClericalErrorCorrection; } set { _reasonClericalErrorCorrection = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofSellerCD() => !DocumentGUIDFinalExecutedCopyofSellerCD.Clean;
-        public Value<string> DocumentGUIDFinalExecutedCopyofStandardCD { get; set; }
+        public bool ShouldSerializeReasonClericalErrorCorrection() => !_reasonClericalErrorCorrection.Clean;
+        private Value<bool?> _reasonInterestRatecharges;
+        public bool? ReasonInterestRatecharges { get { return _reasonInterestRatecharges; } set { _reasonInterestRatecharges = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDocumentGUIDFinalExecutedCopyofStandardCD() => !DocumentGUIDFinalExecutedCopyofStandardCD.Clean;
-        public Value<decimal?> EstimatedTaxesInsuranceAssessments { get; set; }
+        public bool ShouldSerializeReasonInterestRatecharges() => !_reasonInterestRatecharges.Clean;
+        private Value<bool?> _reasonOther;
+        public bool? ReasonOther { get { return _reasonOther; } set { _reasonOther = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEstimatedTaxesInsuranceAssessments() => !EstimatedTaxesInsuranceAssessments.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeReasonOther() => !_reasonOther.Clean;
+        private Value<string> _reasonOtherDescription;
+        public string ReasonOtherDescription { get { return _reasonOtherDescription; } set { _reasonOtherDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> InEscrowHomeownerInsurance { get; set; }
+        public bool ShouldSerializeReasonOtherDescription() => !_reasonOtherDescription.Clean;
+        private Value<bool?> _reasonPrepaymentPenalty;
+        public bool? ReasonPrepaymentPenalty { get { return _reasonPrepaymentPenalty; } set { _reasonPrepaymentPenalty = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInEscrowHomeownerInsurance() => !InEscrowHomeownerInsurance.Clean;
-        public Value<string> InEscrowOther { get; set; }
+        public bool ShouldSerializeReasonPrepaymentPenalty() => !_reasonPrepaymentPenalty.Clean;
+        private Value<bool?> _reasonRevisionsReqConsumer;
+        public bool? ReasonRevisionsReqConsumer { get { return _reasonRevisionsReqConsumer; } set { _reasonRevisionsReqConsumer = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInEscrowOther() => !InEscrowOther.Clean;
-        public Value<string> InEscrowPropertyTaxes { get; set; }
+        public bool ShouldSerializeReasonRevisionsReqConsumer() => !_reasonRevisionsReqConsumer.Clean;
+        private Value<bool?> _reasonToleranceCure;
+        public bool? ReasonToleranceCure { get { return _reasonToleranceCure; } set { _reasonToleranceCure = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInEscrowPropertyTaxes() => !InEscrowPropertyTaxes.Clean;
-        public Value<DateTime?> InitialCDReceivedDate { get; set; }
+        public bool ShouldSerializeReasonToleranceCure() => !_reasonToleranceCure.Clean;
+        private Value<DateTime?> _revisedCDDueDate;
+        public DateTime? RevisedCDDueDate { get { return _revisedCDDueDate; } set { _revisedCDDueDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialCDReceivedDate() => !InitialCDReceivedDate.Clean;
-        public Value<string> MICReference { get; set; }
+        public bool ShouldSerializeRevisedCDDueDate() => !_revisedCDDueDate.Clean;
+        private Value<DateTime?> _revisedCDReceivedDate;
+        public DateTime? RevisedCDReceivedDate { get { return _revisedCDReceivedDate; } set { _revisedCDReceivedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMICReference() => !MICReference.Clean;
-        public Value<bool?> NotNaturalPersonFlag { get; set; }
+        public bool ShouldSerializeRevisedCDReceivedDate() => !_revisedCDReceivedDate.Clean;
+        private Value<string> _sellerNames;
+        public string SellerNames { get { return _sellerNames; } set { _sellerNames = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNotNaturalPersonFlag() => !NotNaturalPersonFlag.Clean;
-        public Value<decimal?> PPC1EstimatedEscrowAmount { get; set; }
+        public bool ShouldSerializeSellerNames() => !_sellerNames.Clean;
+        private Value<string> _signatureTypeFinalExecutedCopyofAlternateCD;
+        public string SignatureTypeFinalExecutedCopyofAlternateCD { get { return _signatureTypeFinalExecutedCopyofAlternateCD; } set { _signatureTypeFinalExecutedCopyofAlternateCD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1EstimatedEscrowAmount() => !PPC1EstimatedEscrowAmount.Clean;
-        public Value<string> PPC1EstimatedEscrowAmountUI { get; set; }
+        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofAlternateCD() => !_signatureTypeFinalExecutedCopyofAlternateCD.Clean;
+        private Value<string> _signatureTypeFinalExecutedCopyofSellerCD;
+        public string SignatureTypeFinalExecutedCopyofSellerCD { get { return _signatureTypeFinalExecutedCopyofSellerCD; } set { _signatureTypeFinalExecutedCopyofSellerCD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1EstimatedEscrowAmountUI() => !PPC1EstimatedEscrowAmountUI.Clean;
-        public Value<bool?> PPC1InterestOnly { get; set; }
+        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofSellerCD() => !_signatureTypeFinalExecutedCopyofSellerCD.Clean;
+        private Value<string> _signatureTypeFinalExecutedCopyofStandardCD;
+        public string SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1InterestOnly() => !PPC1InterestOnly.Clean;
-        public Value<decimal?> PPC1MaximumMonthlyPayment { get; set; }
+        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofStandardCD() => !_signatureTypeFinalExecutedCopyofStandardCD.Clean;
+        private Value<decimal?> _totalCashToClose;
+        public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MaximumMonthlyPayment() => !PPC1MaximumMonthlyPayment.Clean;
-        public Value<string> PPC1MaximumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MaximumMonthlyPaymentUI() => !PPC1MaximumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC1MaximumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MaximumPIPayment() => !PPC1MaximumPIPayment.Clean;
-        public Value<string> PPC1MaximumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MaximumPIPaymentUI() => !PPC1MaximumPIPaymentUI.Clean;
-        public Value<decimal?> PPC1MIAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MIAmount() => !PPC1MIAmount.Clean;
-        public Value<string> PPC1MIAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MIAmountUI() => !PPC1MIAmountUI.Clean;
-        public Value<decimal?> PPC1MinimumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MinimumMonthlyPayment() => !PPC1MinimumMonthlyPayment.Clean;
-        public Value<string> PPC1MinimumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MinimumMonthlyPaymentUI() => !PPC1MinimumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC1MinimumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MinimumPIPayment() => !PPC1MinimumPIPayment.Clean;
-        public Value<string> PPC1MinimumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1MinimumPIPaymentUI() => !PPC1MinimumPIPaymentUI.Clean;
-        public Value<int?> PPC1Year { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC1Year() => !PPC1Year.Clean;
-        public Value<decimal?> PPC2EstimatedEscrowAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2EstimatedEscrowAmount() => !PPC2EstimatedEscrowAmount.Clean;
-        public Value<string> PPC2EstimatedEscrowAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2EstimatedEscrowAmountUI() => !PPC2EstimatedEscrowAmountUI.Clean;
-        public Value<bool?> PPC2InterestOnly { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2InterestOnly() => !PPC2InterestOnly.Clean;
-        public Value<decimal?> PPC2MaximumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MaximumMonthlyPayment() => !PPC2MaximumMonthlyPayment.Clean;
-        public Value<string> PPC2MaximumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MaximumMonthlyPaymentUI() => !PPC2MaximumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC2MaximumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MaximumPIPayment() => !PPC2MaximumPIPayment.Clean;
-        public Value<string> PPC2MaximumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MaximumPIPaymentUI() => !PPC2MaximumPIPaymentUI.Clean;
-        public Value<decimal?> PPC2MIAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MIAmount() => !PPC2MIAmount.Clean;
-        public Value<string> PPC2MIAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MIAmountUI() => !PPC2MIAmountUI.Clean;
-        public Value<decimal?> PPC2MinimumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MinimumMonthlyPayment() => !PPC2MinimumMonthlyPayment.Clean;
-        public Value<string> PPC2MinimumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MinimumMonthlyPaymentUI() => !PPC2MinimumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC2MinimumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MinimumPIPayment() => !PPC2MinimumPIPayment.Clean;
-        public Value<string> PPC2MinimumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2MinimumPIPaymentUI() => !PPC2MinimumPIPaymentUI.Clean;
-        public Value<int?> PPC2YearFrom { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2YearFrom() => !PPC2YearFrom.Clean;
-        public Value<int?> PPC2YearTo { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC2YearTo() => !PPC2YearTo.Clean;
-        public Value<decimal?> PPC3EstimatedEscrowAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3EstimatedEscrowAmount() => !PPC3EstimatedEscrowAmount.Clean;
-        public Value<string> PPC3EstimatedEscrowAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3EstimatedEscrowAmountUI() => !PPC3EstimatedEscrowAmountUI.Clean;
-        public Value<bool?> PPC3InterestOnly { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3InterestOnly() => !PPC3InterestOnly.Clean;
-        public Value<decimal?> PPC3MaximumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MaximumMonthlyPayment() => !PPC3MaximumMonthlyPayment.Clean;
-        public Value<string> PPC3MaximumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MaximumMonthlyPaymentUI() => !PPC3MaximumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC3MaximumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MaximumPIPayment() => !PPC3MaximumPIPayment.Clean;
-        public Value<string> PPC3MaximumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MaximumPIPaymentUI() => !PPC3MaximumPIPaymentUI.Clean;
-        public Value<decimal?> PPC3MIAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MIAmount() => !PPC3MIAmount.Clean;
-        public Value<string> PPC3MIAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MIAmountUI() => !PPC3MIAmountUI.Clean;
-        public Value<decimal?> PPC3MinimumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MinimumMonthlyPayment() => !PPC3MinimumMonthlyPayment.Clean;
-        public Value<string> PPC3MinimumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MinimumMonthlyPaymentUI() => !PPC3MinimumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC3MinimumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MinimumPIPayment() => !PPC3MinimumPIPayment.Clean;
-        public Value<string> PPC3MinimumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3MinimumPIPaymentUI() => !PPC3MinimumPIPaymentUI.Clean;
-        public Value<int?> PPC3YearFrom { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3YearFrom() => !PPC3YearFrom.Clean;
-        public Value<int?> PPC3YearTo { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC3YearTo() => !PPC3YearTo.Clean;
-        public Value<decimal?> PPC4EstimatedEscrowAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4EstimatedEscrowAmount() => !PPC4EstimatedEscrowAmount.Clean;
-        public Value<string> PPC4EstimatedEscrowAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4EstimatedEscrowAmountUI() => !PPC4EstimatedEscrowAmountUI.Clean;
-        public Value<bool?> PPC4InterestOnly { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4InterestOnly() => !PPC4InterestOnly.Clean;
-        public Value<decimal?> PPC4MaximumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MaximumMonthlyPayment() => !PPC4MaximumMonthlyPayment.Clean;
-        public Value<string> PPC4MaximumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MaximumMonthlyPaymentUI() => !PPC4MaximumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC4MaximumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MaximumPIPayment() => !PPC4MaximumPIPayment.Clean;
-        public Value<string> PPC4MaximumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MaximumPIPaymentUI() => !PPC4MaximumPIPaymentUI.Clean;
-        public Value<decimal?> PPC4MIAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MIAmount() => !PPC4MIAmount.Clean;
-        public Value<string> PPC4MIAmountUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MIAmountUI() => !PPC4MIAmountUI.Clean;
-        public Value<decimal?> PPC4MinimumMonthlyPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MinimumMonthlyPayment() => !PPC4MinimumMonthlyPayment.Clean;
-        public Value<string> PPC4MinimumMonthlyPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MinimumMonthlyPaymentUI() => !PPC4MinimumMonthlyPaymentUI.Clean;
-        public Value<decimal?> PPC4MinimumPIPayment { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MinimumPIPayment() => !PPC4MinimumPIPayment.Clean;
-        public Value<string> PPC4MinimumPIPaymentUI { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4MinimumPIPaymentUI() => !PPC4MinimumPIPaymentUI.Clean;
-        public Value<int?> PPC4YearFrom { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4YearFrom() => !PPC4YearFrom.Clean;
-        public Value<int?> PPC4YearTo { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPC4YearTo() => !PPC4YearTo.Clean;
-        public Value<bool?> PPCEstimatedEscrowIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPCEstimatedEscrowIndicator() => !PPCEstimatedEscrowIndicator.Clean;
-        public Value<bool?> PPCMortgageInsuranceIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePPCMortgageInsuranceIndicator() => !PPCMortgageInsuranceIndicator.Clean;
-        public Value<bool?> RangePaymentIndicatorC1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRangePaymentIndicatorC1() => !RangePaymentIndicatorC1.Clean;
-        public Value<bool?> RangePaymentIndicatorC2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRangePaymentIndicatorC2() => !RangePaymentIndicatorC2.Clean;
-        public Value<bool?> RangePaymentIndicatorC3 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRangePaymentIndicatorC3() => !RangePaymentIndicatorC3.Clean;
-        public Value<bool?> RangePaymentIndicatorC4 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRangePaymentIndicatorC4() => !RangePaymentIndicatorC4.Clean;
-        public Value<bool?> ReasonAdvancedReview { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonAdvancedReview() => !ReasonAdvancedReview.Clean;
-        public Value<bool?> ReasonChangedCircumstanceElg { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonChangedCircumstanceElg() => !ReasonChangedCircumstanceElg.Clean;
-        public Value<string> ReasonChangedCircumstanceFlags { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonChangedCircumstanceFlags() => !ReasonChangedCircumstanceFlags.Clean;
-        public Value<bool?> ReasonChangeInAPR { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonChangeInAPR() => !ReasonChangeInAPR.Clean;
-        public Value<bool?> ReasonChangeInLoanProduct { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonChangeInLoanProduct() => !ReasonChangeInLoanProduct.Clean;
-        public Value<bool?> ReasonChangeSettlementCharges { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonChangeSettlementCharges() => !ReasonChangeSettlementCharges.Clean;
-        public Value<bool?> ReasonClericalErrorCorrection { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonClericalErrorCorrection() => !ReasonClericalErrorCorrection.Clean;
-        public Value<bool?> ReasonInterestRatecharges { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonInterestRatecharges() => !ReasonInterestRatecharges.Clean;
-        public Value<bool?> ReasonOther { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonOther() => !ReasonOther.Clean;
-        public Value<string> ReasonOtherDescription { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonOtherDescription() => !ReasonOtherDescription.Clean;
-        public Value<bool?> ReasonPrepaymentPenalty { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonPrepaymentPenalty() => !ReasonPrepaymentPenalty.Clean;
-        public Value<bool?> ReasonRevisionsReqConsumer { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonRevisionsReqConsumer() => !ReasonRevisionsReqConsumer.Clean;
-        public Value<bool?> ReasonToleranceCure { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReasonToleranceCure() => !ReasonToleranceCure.Clean;
-        public Value<DateTime?> RevisedCDDueDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRevisedCDDueDate() => !RevisedCDDueDate.Clean;
-        public Value<DateTime?> RevisedCDReceivedDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRevisedCDReceivedDate() => !RevisedCDReceivedDate.Clean;
-        public Value<string> SellerNames { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerNames() => !SellerNames.Clean;
-        public Value<string> SignatureTypeFinalExecutedCopyofAlternateCD { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofAlternateCD() => !SignatureTypeFinalExecutedCopyofAlternateCD.Clean;
-        public Value<string> SignatureTypeFinalExecutedCopyofSellerCD { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofSellerCD() => !SignatureTypeFinalExecutedCopyofSellerCD.Clean;
-        public Value<string> SignatureTypeFinalExecutedCopyofStandardCD { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatureTypeFinalExecutedCopyofStandardCD() => !SignatureTypeFinalExecutedCopyofStandardCD.Clean;
-        public Value<decimal?> TotalCashToClose { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalCashToClose() => !TotalCashToClose.Clean;
+        public bool ShouldSerializeTotalCashToClose() => !_totalCashToClose.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -332,224 +438,224 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = CDDateIssued.Clean
-                    && ChangedCircumstance.Clean
-                    && ChangedCircumstanceFlag.Clean
-                    && ChangesReceivedDate.Clean
-                    && Comments.Clean
-                    && DisclosureBy.Clean
-                    && DisclosureComments.Clean
-                    && DisclosureLastSentDate.Clean
-                    && DisclosureReceivedDate.Clean
-                    && DisclosureSentMethod.Clean
-                    && DocumentGUIDFinalExecutedCopyofAlternateCD.Clean
-                    && DocumentGUIDFinalExecutedCopyofSellerCD.Clean
-                    && DocumentGUIDFinalExecutedCopyofStandardCD.Clean
-                    && EstimatedTaxesInsuranceAssessments.Clean
-                    && Id.Clean
-                    && InEscrowHomeownerInsurance.Clean
-                    && InEscrowOther.Clean
-                    && InEscrowPropertyTaxes.Clean
-                    && InitialCDReceivedDate.Clean
-                    && MICReference.Clean
-                    && NotNaturalPersonFlag.Clean
-                    && PPC1EstimatedEscrowAmount.Clean
-                    && PPC1EstimatedEscrowAmountUI.Clean
-                    && PPC1InterestOnly.Clean
-                    && PPC1MaximumMonthlyPayment.Clean
-                    && PPC1MaximumMonthlyPaymentUI.Clean
-                    && PPC1MaximumPIPayment.Clean
-                    && PPC1MaximumPIPaymentUI.Clean
-                    && PPC1MIAmount.Clean
-                    && PPC1MIAmountUI.Clean
-                    && PPC1MinimumMonthlyPayment.Clean
-                    && PPC1MinimumMonthlyPaymentUI.Clean
-                    && PPC1MinimumPIPayment.Clean
-                    && PPC1MinimumPIPaymentUI.Clean
-                    && PPC1Year.Clean
-                    && PPC2EstimatedEscrowAmount.Clean
-                    && PPC2EstimatedEscrowAmountUI.Clean
-                    && PPC2InterestOnly.Clean
-                    && PPC2MaximumMonthlyPayment.Clean
-                    && PPC2MaximumMonthlyPaymentUI.Clean
-                    && PPC2MaximumPIPayment.Clean
-                    && PPC2MaximumPIPaymentUI.Clean
-                    && PPC2MIAmount.Clean
-                    && PPC2MIAmountUI.Clean
-                    && PPC2MinimumMonthlyPayment.Clean
-                    && PPC2MinimumMonthlyPaymentUI.Clean
-                    && PPC2MinimumPIPayment.Clean
-                    && PPC2MinimumPIPaymentUI.Clean
-                    && PPC2YearFrom.Clean
-                    && PPC2YearTo.Clean
-                    && PPC3EstimatedEscrowAmount.Clean
-                    && PPC3EstimatedEscrowAmountUI.Clean
-                    && PPC3InterestOnly.Clean
-                    && PPC3MaximumMonthlyPayment.Clean
-                    && PPC3MaximumMonthlyPaymentUI.Clean
-                    && PPC3MaximumPIPayment.Clean
-                    && PPC3MaximumPIPaymentUI.Clean
-                    && PPC3MIAmount.Clean
-                    && PPC3MIAmountUI.Clean
-                    && PPC3MinimumMonthlyPayment.Clean
-                    && PPC3MinimumMonthlyPaymentUI.Clean
-                    && PPC3MinimumPIPayment.Clean
-                    && PPC3MinimumPIPaymentUI.Clean
-                    && PPC3YearFrom.Clean
-                    && PPC3YearTo.Clean
-                    && PPC4EstimatedEscrowAmount.Clean
-                    && PPC4EstimatedEscrowAmountUI.Clean
-                    && PPC4InterestOnly.Clean
-                    && PPC4MaximumMonthlyPayment.Clean
-                    && PPC4MaximumMonthlyPaymentUI.Clean
-                    && PPC4MaximumPIPayment.Clean
-                    && PPC4MaximumPIPaymentUI.Clean
-                    && PPC4MIAmount.Clean
-                    && PPC4MIAmountUI.Clean
-                    && PPC4MinimumMonthlyPayment.Clean
-                    && PPC4MinimumMonthlyPaymentUI.Clean
-                    && PPC4MinimumPIPayment.Clean
-                    && PPC4MinimumPIPaymentUI.Clean
-                    && PPC4YearFrom.Clean
-                    && PPC4YearTo.Clean
-                    && PPCEstimatedEscrowIndicator.Clean
-                    && PPCMortgageInsuranceIndicator.Clean
-                    && RangePaymentIndicatorC1.Clean
-                    && RangePaymentIndicatorC2.Clean
-                    && RangePaymentIndicatorC3.Clean
-                    && RangePaymentIndicatorC4.Clean
-                    && ReasonAdvancedReview.Clean
-                    && ReasonChangedCircumstanceElg.Clean
-                    && ReasonChangedCircumstanceFlags.Clean
-                    && ReasonChangeInAPR.Clean
-                    && ReasonChangeInLoanProduct.Clean
-                    && ReasonChangeSettlementCharges.Clean
-                    && ReasonClericalErrorCorrection.Clean
-                    && ReasonInterestRatecharges.Clean
-                    && ReasonOther.Clean
-                    && ReasonOtherDescription.Clean
-                    && ReasonPrepaymentPenalty.Clean
-                    && ReasonRevisionsReqConsumer.Clean
-                    && ReasonToleranceCure.Clean
-                    && RevisedCDDueDate.Clean
-                    && RevisedCDReceivedDate.Clean
-                    && SellerNames.Clean
-                    && SignatureTypeFinalExecutedCopyofAlternateCD.Clean
-                    && SignatureTypeFinalExecutedCopyofSellerCD.Clean
-                    && SignatureTypeFinalExecutedCopyofStandardCD.Clean
-                    && TotalCashToClose.Clean;
+                var clean = _cDDateIssued.Clean
+                    && _changedCircumstance.Clean
+                    && _changedCircumstanceFlag.Clean
+                    && _changesReceivedDate.Clean
+                    && _comments.Clean
+                    && _disclosureBy.Clean
+                    && _disclosureComments.Clean
+                    && _disclosureLastSentDate.Clean
+                    && _disclosureReceivedDate.Clean
+                    && _disclosureSentMethod.Clean
+                    && _documentGUIDFinalExecutedCopyofAlternateCD.Clean
+                    && _documentGUIDFinalExecutedCopyofSellerCD.Clean
+                    && _documentGUIDFinalExecutedCopyofStandardCD.Clean
+                    && _estimatedTaxesInsuranceAssessments.Clean
+                    && _id.Clean
+                    && _inEscrowHomeownerInsurance.Clean
+                    && _inEscrowOther.Clean
+                    && _inEscrowPropertyTaxes.Clean
+                    && _initialCDReceivedDate.Clean
+                    && _mICReference.Clean
+                    && _notNaturalPersonFlag.Clean
+                    && _pPC1EstimatedEscrowAmount.Clean
+                    && _pPC1EstimatedEscrowAmountUI.Clean
+                    && _pPC1InterestOnly.Clean
+                    && _pPC1MaximumMonthlyPayment.Clean
+                    && _pPC1MaximumMonthlyPaymentUI.Clean
+                    && _pPC1MaximumPIPayment.Clean
+                    && _pPC1MaximumPIPaymentUI.Clean
+                    && _pPC1MIAmount.Clean
+                    && _pPC1MIAmountUI.Clean
+                    && _pPC1MinimumMonthlyPayment.Clean
+                    && _pPC1MinimumMonthlyPaymentUI.Clean
+                    && _pPC1MinimumPIPayment.Clean
+                    && _pPC1MinimumPIPaymentUI.Clean
+                    && _pPC1Year.Clean
+                    && _pPC2EstimatedEscrowAmount.Clean
+                    && _pPC2EstimatedEscrowAmountUI.Clean
+                    && _pPC2InterestOnly.Clean
+                    && _pPC2MaximumMonthlyPayment.Clean
+                    && _pPC2MaximumMonthlyPaymentUI.Clean
+                    && _pPC2MaximumPIPayment.Clean
+                    && _pPC2MaximumPIPaymentUI.Clean
+                    && _pPC2MIAmount.Clean
+                    && _pPC2MIAmountUI.Clean
+                    && _pPC2MinimumMonthlyPayment.Clean
+                    && _pPC2MinimumMonthlyPaymentUI.Clean
+                    && _pPC2MinimumPIPayment.Clean
+                    && _pPC2MinimumPIPaymentUI.Clean
+                    && _pPC2YearFrom.Clean
+                    && _pPC2YearTo.Clean
+                    && _pPC3EstimatedEscrowAmount.Clean
+                    && _pPC3EstimatedEscrowAmountUI.Clean
+                    && _pPC3InterestOnly.Clean
+                    && _pPC3MaximumMonthlyPayment.Clean
+                    && _pPC3MaximumMonthlyPaymentUI.Clean
+                    && _pPC3MaximumPIPayment.Clean
+                    && _pPC3MaximumPIPaymentUI.Clean
+                    && _pPC3MIAmount.Clean
+                    && _pPC3MIAmountUI.Clean
+                    && _pPC3MinimumMonthlyPayment.Clean
+                    && _pPC3MinimumMonthlyPaymentUI.Clean
+                    && _pPC3MinimumPIPayment.Clean
+                    && _pPC3MinimumPIPaymentUI.Clean
+                    && _pPC3YearFrom.Clean
+                    && _pPC3YearTo.Clean
+                    && _pPC4EstimatedEscrowAmount.Clean
+                    && _pPC4EstimatedEscrowAmountUI.Clean
+                    && _pPC4InterestOnly.Clean
+                    && _pPC4MaximumMonthlyPayment.Clean
+                    && _pPC4MaximumMonthlyPaymentUI.Clean
+                    && _pPC4MaximumPIPayment.Clean
+                    && _pPC4MaximumPIPaymentUI.Clean
+                    && _pPC4MIAmount.Clean
+                    && _pPC4MIAmountUI.Clean
+                    && _pPC4MinimumMonthlyPayment.Clean
+                    && _pPC4MinimumMonthlyPaymentUI.Clean
+                    && _pPC4MinimumPIPayment.Clean
+                    && _pPC4MinimumPIPaymentUI.Clean
+                    && _pPC4YearFrom.Clean
+                    && _pPC4YearTo.Clean
+                    && _pPCEstimatedEscrowIndicator.Clean
+                    && _pPCMortgageInsuranceIndicator.Clean
+                    && _rangePaymentIndicatorC1.Clean
+                    && _rangePaymentIndicatorC2.Clean
+                    && _rangePaymentIndicatorC3.Clean
+                    && _rangePaymentIndicatorC4.Clean
+                    && _reasonAdvancedReview.Clean
+                    && _reasonChangedCircumstanceElg.Clean
+                    && _reasonChangedCircumstanceFlags.Clean
+                    && _reasonChangeInAPR.Clean
+                    && _reasonChangeInLoanProduct.Clean
+                    && _reasonChangeSettlementCharges.Clean
+                    && _reasonClericalErrorCorrection.Clean
+                    && _reasonInterestRatecharges.Clean
+                    && _reasonOther.Clean
+                    && _reasonOtherDescription.Clean
+                    && _reasonPrepaymentPenalty.Clean
+                    && _reasonRevisionsReqConsumer.Clean
+                    && _reasonToleranceCure.Clean
+                    && _revisedCDDueDate.Clean
+                    && _revisedCDReceivedDate.Clean
+                    && _sellerNames.Clean
+                    && _signatureTypeFinalExecutedCopyofAlternateCD.Clean
+                    && _signatureTypeFinalExecutedCopyofSellerCD.Clean
+                    && _signatureTypeFinalExecutedCopyofStandardCD.Clean
+                    && _totalCashToClose.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = CDDateIssued; v0.Clean = value; CDDateIssued = v0;
-                var v1 = ChangedCircumstance; v1.Clean = value; ChangedCircumstance = v1;
-                var v2 = ChangedCircumstanceFlag; v2.Clean = value; ChangedCircumstanceFlag = v2;
-                var v3 = ChangesReceivedDate; v3.Clean = value; ChangesReceivedDate = v3;
-                var v4 = Comments; v4.Clean = value; Comments = v4;
-                var v5 = DisclosureBy; v5.Clean = value; DisclosureBy = v5;
-                var v6 = DisclosureComments; v6.Clean = value; DisclosureComments = v6;
-                var v7 = DisclosureLastSentDate; v7.Clean = value; DisclosureLastSentDate = v7;
-                var v8 = DisclosureReceivedDate; v8.Clean = value; DisclosureReceivedDate = v8;
-                var v9 = DisclosureSentMethod; v9.Clean = value; DisclosureSentMethod = v9;
-                var v10 = DocumentGUIDFinalExecutedCopyofAlternateCD; v10.Clean = value; DocumentGUIDFinalExecutedCopyofAlternateCD = v10;
-                var v11 = DocumentGUIDFinalExecutedCopyofSellerCD; v11.Clean = value; DocumentGUIDFinalExecutedCopyofSellerCD = v11;
-                var v12 = DocumentGUIDFinalExecutedCopyofStandardCD; v12.Clean = value; DocumentGUIDFinalExecutedCopyofStandardCD = v12;
-                var v13 = EstimatedTaxesInsuranceAssessments; v13.Clean = value; EstimatedTaxesInsuranceAssessments = v13;
-                var v14 = Id; v14.Clean = value; Id = v14;
-                var v15 = InEscrowHomeownerInsurance; v15.Clean = value; InEscrowHomeownerInsurance = v15;
-                var v16 = InEscrowOther; v16.Clean = value; InEscrowOther = v16;
-                var v17 = InEscrowPropertyTaxes; v17.Clean = value; InEscrowPropertyTaxes = v17;
-                var v18 = InitialCDReceivedDate; v18.Clean = value; InitialCDReceivedDate = v18;
-                var v19 = MICReference; v19.Clean = value; MICReference = v19;
-                var v20 = NotNaturalPersonFlag; v20.Clean = value; NotNaturalPersonFlag = v20;
-                var v21 = PPC1EstimatedEscrowAmount; v21.Clean = value; PPC1EstimatedEscrowAmount = v21;
-                var v22 = PPC1EstimatedEscrowAmountUI; v22.Clean = value; PPC1EstimatedEscrowAmountUI = v22;
-                var v23 = PPC1InterestOnly; v23.Clean = value; PPC1InterestOnly = v23;
-                var v24 = PPC1MaximumMonthlyPayment; v24.Clean = value; PPC1MaximumMonthlyPayment = v24;
-                var v25 = PPC1MaximumMonthlyPaymentUI; v25.Clean = value; PPC1MaximumMonthlyPaymentUI = v25;
-                var v26 = PPC1MaximumPIPayment; v26.Clean = value; PPC1MaximumPIPayment = v26;
-                var v27 = PPC1MaximumPIPaymentUI; v27.Clean = value; PPC1MaximumPIPaymentUI = v27;
-                var v28 = PPC1MIAmount; v28.Clean = value; PPC1MIAmount = v28;
-                var v29 = PPC1MIAmountUI; v29.Clean = value; PPC1MIAmountUI = v29;
-                var v30 = PPC1MinimumMonthlyPayment; v30.Clean = value; PPC1MinimumMonthlyPayment = v30;
-                var v31 = PPC1MinimumMonthlyPaymentUI; v31.Clean = value; PPC1MinimumMonthlyPaymentUI = v31;
-                var v32 = PPC1MinimumPIPayment; v32.Clean = value; PPC1MinimumPIPayment = v32;
-                var v33 = PPC1MinimumPIPaymentUI; v33.Clean = value; PPC1MinimumPIPaymentUI = v33;
-                var v34 = PPC1Year; v34.Clean = value; PPC1Year = v34;
-                var v35 = PPC2EstimatedEscrowAmount; v35.Clean = value; PPC2EstimatedEscrowAmount = v35;
-                var v36 = PPC2EstimatedEscrowAmountUI; v36.Clean = value; PPC2EstimatedEscrowAmountUI = v36;
-                var v37 = PPC2InterestOnly; v37.Clean = value; PPC2InterestOnly = v37;
-                var v38 = PPC2MaximumMonthlyPayment; v38.Clean = value; PPC2MaximumMonthlyPayment = v38;
-                var v39 = PPC2MaximumMonthlyPaymentUI; v39.Clean = value; PPC2MaximumMonthlyPaymentUI = v39;
-                var v40 = PPC2MaximumPIPayment; v40.Clean = value; PPC2MaximumPIPayment = v40;
-                var v41 = PPC2MaximumPIPaymentUI; v41.Clean = value; PPC2MaximumPIPaymentUI = v41;
-                var v42 = PPC2MIAmount; v42.Clean = value; PPC2MIAmount = v42;
-                var v43 = PPC2MIAmountUI; v43.Clean = value; PPC2MIAmountUI = v43;
-                var v44 = PPC2MinimumMonthlyPayment; v44.Clean = value; PPC2MinimumMonthlyPayment = v44;
-                var v45 = PPC2MinimumMonthlyPaymentUI; v45.Clean = value; PPC2MinimumMonthlyPaymentUI = v45;
-                var v46 = PPC2MinimumPIPayment; v46.Clean = value; PPC2MinimumPIPayment = v46;
-                var v47 = PPC2MinimumPIPaymentUI; v47.Clean = value; PPC2MinimumPIPaymentUI = v47;
-                var v48 = PPC2YearFrom; v48.Clean = value; PPC2YearFrom = v48;
-                var v49 = PPC2YearTo; v49.Clean = value; PPC2YearTo = v49;
-                var v50 = PPC3EstimatedEscrowAmount; v50.Clean = value; PPC3EstimatedEscrowAmount = v50;
-                var v51 = PPC3EstimatedEscrowAmountUI; v51.Clean = value; PPC3EstimatedEscrowAmountUI = v51;
-                var v52 = PPC3InterestOnly; v52.Clean = value; PPC3InterestOnly = v52;
-                var v53 = PPC3MaximumMonthlyPayment; v53.Clean = value; PPC3MaximumMonthlyPayment = v53;
-                var v54 = PPC3MaximumMonthlyPaymentUI; v54.Clean = value; PPC3MaximumMonthlyPaymentUI = v54;
-                var v55 = PPC3MaximumPIPayment; v55.Clean = value; PPC3MaximumPIPayment = v55;
-                var v56 = PPC3MaximumPIPaymentUI; v56.Clean = value; PPC3MaximumPIPaymentUI = v56;
-                var v57 = PPC3MIAmount; v57.Clean = value; PPC3MIAmount = v57;
-                var v58 = PPC3MIAmountUI; v58.Clean = value; PPC3MIAmountUI = v58;
-                var v59 = PPC3MinimumMonthlyPayment; v59.Clean = value; PPC3MinimumMonthlyPayment = v59;
-                var v60 = PPC3MinimumMonthlyPaymentUI; v60.Clean = value; PPC3MinimumMonthlyPaymentUI = v60;
-                var v61 = PPC3MinimumPIPayment; v61.Clean = value; PPC3MinimumPIPayment = v61;
-                var v62 = PPC3MinimumPIPaymentUI; v62.Clean = value; PPC3MinimumPIPaymentUI = v62;
-                var v63 = PPC3YearFrom; v63.Clean = value; PPC3YearFrom = v63;
-                var v64 = PPC3YearTo; v64.Clean = value; PPC3YearTo = v64;
-                var v65 = PPC4EstimatedEscrowAmount; v65.Clean = value; PPC4EstimatedEscrowAmount = v65;
-                var v66 = PPC4EstimatedEscrowAmountUI; v66.Clean = value; PPC4EstimatedEscrowAmountUI = v66;
-                var v67 = PPC4InterestOnly; v67.Clean = value; PPC4InterestOnly = v67;
-                var v68 = PPC4MaximumMonthlyPayment; v68.Clean = value; PPC4MaximumMonthlyPayment = v68;
-                var v69 = PPC4MaximumMonthlyPaymentUI; v69.Clean = value; PPC4MaximumMonthlyPaymentUI = v69;
-                var v70 = PPC4MaximumPIPayment; v70.Clean = value; PPC4MaximumPIPayment = v70;
-                var v71 = PPC4MaximumPIPaymentUI; v71.Clean = value; PPC4MaximumPIPaymentUI = v71;
-                var v72 = PPC4MIAmount; v72.Clean = value; PPC4MIAmount = v72;
-                var v73 = PPC4MIAmountUI; v73.Clean = value; PPC4MIAmountUI = v73;
-                var v74 = PPC4MinimumMonthlyPayment; v74.Clean = value; PPC4MinimumMonthlyPayment = v74;
-                var v75 = PPC4MinimumMonthlyPaymentUI; v75.Clean = value; PPC4MinimumMonthlyPaymentUI = v75;
-                var v76 = PPC4MinimumPIPayment; v76.Clean = value; PPC4MinimumPIPayment = v76;
-                var v77 = PPC4MinimumPIPaymentUI; v77.Clean = value; PPC4MinimumPIPaymentUI = v77;
-                var v78 = PPC4YearFrom; v78.Clean = value; PPC4YearFrom = v78;
-                var v79 = PPC4YearTo; v79.Clean = value; PPC4YearTo = v79;
-                var v80 = PPCEstimatedEscrowIndicator; v80.Clean = value; PPCEstimatedEscrowIndicator = v80;
-                var v81 = PPCMortgageInsuranceIndicator; v81.Clean = value; PPCMortgageInsuranceIndicator = v81;
-                var v82 = RangePaymentIndicatorC1; v82.Clean = value; RangePaymentIndicatorC1 = v82;
-                var v83 = RangePaymentIndicatorC2; v83.Clean = value; RangePaymentIndicatorC2 = v83;
-                var v84 = RangePaymentIndicatorC3; v84.Clean = value; RangePaymentIndicatorC3 = v84;
-                var v85 = RangePaymentIndicatorC4; v85.Clean = value; RangePaymentIndicatorC4 = v85;
-                var v86 = ReasonAdvancedReview; v86.Clean = value; ReasonAdvancedReview = v86;
-                var v87 = ReasonChangedCircumstanceElg; v87.Clean = value; ReasonChangedCircumstanceElg = v87;
-                var v88 = ReasonChangedCircumstanceFlags; v88.Clean = value; ReasonChangedCircumstanceFlags = v88;
-                var v89 = ReasonChangeInAPR; v89.Clean = value; ReasonChangeInAPR = v89;
-                var v90 = ReasonChangeInLoanProduct; v90.Clean = value; ReasonChangeInLoanProduct = v90;
-                var v91 = ReasonChangeSettlementCharges; v91.Clean = value; ReasonChangeSettlementCharges = v91;
-                var v92 = ReasonClericalErrorCorrection; v92.Clean = value; ReasonClericalErrorCorrection = v92;
-                var v93 = ReasonInterestRatecharges; v93.Clean = value; ReasonInterestRatecharges = v93;
-                var v94 = ReasonOther; v94.Clean = value; ReasonOther = v94;
-                var v95 = ReasonOtherDescription; v95.Clean = value; ReasonOtherDescription = v95;
-                var v96 = ReasonPrepaymentPenalty; v96.Clean = value; ReasonPrepaymentPenalty = v96;
-                var v97 = ReasonRevisionsReqConsumer; v97.Clean = value; ReasonRevisionsReqConsumer = v97;
-                var v98 = ReasonToleranceCure; v98.Clean = value; ReasonToleranceCure = v98;
-                var v99 = RevisedCDDueDate; v99.Clean = value; RevisedCDDueDate = v99;
-                var v100 = RevisedCDReceivedDate; v100.Clean = value; RevisedCDReceivedDate = v100;
-                var v101 = SellerNames; v101.Clean = value; SellerNames = v101;
-                var v102 = SignatureTypeFinalExecutedCopyofAlternateCD; v102.Clean = value; SignatureTypeFinalExecutedCopyofAlternateCD = v102;
-                var v103 = SignatureTypeFinalExecutedCopyofSellerCD; v103.Clean = value; SignatureTypeFinalExecutedCopyofSellerCD = v103;
-                var v104 = SignatureTypeFinalExecutedCopyofStandardCD; v104.Clean = value; SignatureTypeFinalExecutedCopyofStandardCD = v104;
-                var v105 = TotalCashToClose; v105.Clean = value; TotalCashToClose = v105;
+                var v0 = _cDDateIssued; v0.Clean = value; _cDDateIssued = v0;
+                var v1 = _changedCircumstance; v1.Clean = value; _changedCircumstance = v1;
+                var v2 = _changedCircumstanceFlag; v2.Clean = value; _changedCircumstanceFlag = v2;
+                var v3 = _changesReceivedDate; v3.Clean = value; _changesReceivedDate = v3;
+                var v4 = _comments; v4.Clean = value; _comments = v4;
+                var v5 = _disclosureBy; v5.Clean = value; _disclosureBy = v5;
+                var v6 = _disclosureComments; v6.Clean = value; _disclosureComments = v6;
+                var v7 = _disclosureLastSentDate; v7.Clean = value; _disclosureLastSentDate = v7;
+                var v8 = _disclosureReceivedDate; v8.Clean = value; _disclosureReceivedDate = v8;
+                var v9 = _disclosureSentMethod; v9.Clean = value; _disclosureSentMethod = v9;
+                var v10 = _documentGUIDFinalExecutedCopyofAlternateCD; v10.Clean = value; _documentGUIDFinalExecutedCopyofAlternateCD = v10;
+                var v11 = _documentGUIDFinalExecutedCopyofSellerCD; v11.Clean = value; _documentGUIDFinalExecutedCopyofSellerCD = v11;
+                var v12 = _documentGUIDFinalExecutedCopyofStandardCD; v12.Clean = value; _documentGUIDFinalExecutedCopyofStandardCD = v12;
+                var v13 = _estimatedTaxesInsuranceAssessments; v13.Clean = value; _estimatedTaxesInsuranceAssessments = v13;
+                var v14 = _id; v14.Clean = value; _id = v14;
+                var v15 = _inEscrowHomeownerInsurance; v15.Clean = value; _inEscrowHomeownerInsurance = v15;
+                var v16 = _inEscrowOther; v16.Clean = value; _inEscrowOther = v16;
+                var v17 = _inEscrowPropertyTaxes; v17.Clean = value; _inEscrowPropertyTaxes = v17;
+                var v18 = _initialCDReceivedDate; v18.Clean = value; _initialCDReceivedDate = v18;
+                var v19 = _mICReference; v19.Clean = value; _mICReference = v19;
+                var v20 = _notNaturalPersonFlag; v20.Clean = value; _notNaturalPersonFlag = v20;
+                var v21 = _pPC1EstimatedEscrowAmount; v21.Clean = value; _pPC1EstimatedEscrowAmount = v21;
+                var v22 = _pPC1EstimatedEscrowAmountUI; v22.Clean = value; _pPC1EstimatedEscrowAmountUI = v22;
+                var v23 = _pPC1InterestOnly; v23.Clean = value; _pPC1InterestOnly = v23;
+                var v24 = _pPC1MaximumMonthlyPayment; v24.Clean = value; _pPC1MaximumMonthlyPayment = v24;
+                var v25 = _pPC1MaximumMonthlyPaymentUI; v25.Clean = value; _pPC1MaximumMonthlyPaymentUI = v25;
+                var v26 = _pPC1MaximumPIPayment; v26.Clean = value; _pPC1MaximumPIPayment = v26;
+                var v27 = _pPC1MaximumPIPaymentUI; v27.Clean = value; _pPC1MaximumPIPaymentUI = v27;
+                var v28 = _pPC1MIAmount; v28.Clean = value; _pPC1MIAmount = v28;
+                var v29 = _pPC1MIAmountUI; v29.Clean = value; _pPC1MIAmountUI = v29;
+                var v30 = _pPC1MinimumMonthlyPayment; v30.Clean = value; _pPC1MinimumMonthlyPayment = v30;
+                var v31 = _pPC1MinimumMonthlyPaymentUI; v31.Clean = value; _pPC1MinimumMonthlyPaymentUI = v31;
+                var v32 = _pPC1MinimumPIPayment; v32.Clean = value; _pPC1MinimumPIPayment = v32;
+                var v33 = _pPC1MinimumPIPaymentUI; v33.Clean = value; _pPC1MinimumPIPaymentUI = v33;
+                var v34 = _pPC1Year; v34.Clean = value; _pPC1Year = v34;
+                var v35 = _pPC2EstimatedEscrowAmount; v35.Clean = value; _pPC2EstimatedEscrowAmount = v35;
+                var v36 = _pPC2EstimatedEscrowAmountUI; v36.Clean = value; _pPC2EstimatedEscrowAmountUI = v36;
+                var v37 = _pPC2InterestOnly; v37.Clean = value; _pPC2InterestOnly = v37;
+                var v38 = _pPC2MaximumMonthlyPayment; v38.Clean = value; _pPC2MaximumMonthlyPayment = v38;
+                var v39 = _pPC2MaximumMonthlyPaymentUI; v39.Clean = value; _pPC2MaximumMonthlyPaymentUI = v39;
+                var v40 = _pPC2MaximumPIPayment; v40.Clean = value; _pPC2MaximumPIPayment = v40;
+                var v41 = _pPC2MaximumPIPaymentUI; v41.Clean = value; _pPC2MaximumPIPaymentUI = v41;
+                var v42 = _pPC2MIAmount; v42.Clean = value; _pPC2MIAmount = v42;
+                var v43 = _pPC2MIAmountUI; v43.Clean = value; _pPC2MIAmountUI = v43;
+                var v44 = _pPC2MinimumMonthlyPayment; v44.Clean = value; _pPC2MinimumMonthlyPayment = v44;
+                var v45 = _pPC2MinimumMonthlyPaymentUI; v45.Clean = value; _pPC2MinimumMonthlyPaymentUI = v45;
+                var v46 = _pPC2MinimumPIPayment; v46.Clean = value; _pPC2MinimumPIPayment = v46;
+                var v47 = _pPC2MinimumPIPaymentUI; v47.Clean = value; _pPC2MinimumPIPaymentUI = v47;
+                var v48 = _pPC2YearFrom; v48.Clean = value; _pPC2YearFrom = v48;
+                var v49 = _pPC2YearTo; v49.Clean = value; _pPC2YearTo = v49;
+                var v50 = _pPC3EstimatedEscrowAmount; v50.Clean = value; _pPC3EstimatedEscrowAmount = v50;
+                var v51 = _pPC3EstimatedEscrowAmountUI; v51.Clean = value; _pPC3EstimatedEscrowAmountUI = v51;
+                var v52 = _pPC3InterestOnly; v52.Clean = value; _pPC3InterestOnly = v52;
+                var v53 = _pPC3MaximumMonthlyPayment; v53.Clean = value; _pPC3MaximumMonthlyPayment = v53;
+                var v54 = _pPC3MaximumMonthlyPaymentUI; v54.Clean = value; _pPC3MaximumMonthlyPaymentUI = v54;
+                var v55 = _pPC3MaximumPIPayment; v55.Clean = value; _pPC3MaximumPIPayment = v55;
+                var v56 = _pPC3MaximumPIPaymentUI; v56.Clean = value; _pPC3MaximumPIPaymentUI = v56;
+                var v57 = _pPC3MIAmount; v57.Clean = value; _pPC3MIAmount = v57;
+                var v58 = _pPC3MIAmountUI; v58.Clean = value; _pPC3MIAmountUI = v58;
+                var v59 = _pPC3MinimumMonthlyPayment; v59.Clean = value; _pPC3MinimumMonthlyPayment = v59;
+                var v60 = _pPC3MinimumMonthlyPaymentUI; v60.Clean = value; _pPC3MinimumMonthlyPaymentUI = v60;
+                var v61 = _pPC3MinimumPIPayment; v61.Clean = value; _pPC3MinimumPIPayment = v61;
+                var v62 = _pPC3MinimumPIPaymentUI; v62.Clean = value; _pPC3MinimumPIPaymentUI = v62;
+                var v63 = _pPC3YearFrom; v63.Clean = value; _pPC3YearFrom = v63;
+                var v64 = _pPC3YearTo; v64.Clean = value; _pPC3YearTo = v64;
+                var v65 = _pPC4EstimatedEscrowAmount; v65.Clean = value; _pPC4EstimatedEscrowAmount = v65;
+                var v66 = _pPC4EstimatedEscrowAmountUI; v66.Clean = value; _pPC4EstimatedEscrowAmountUI = v66;
+                var v67 = _pPC4InterestOnly; v67.Clean = value; _pPC4InterestOnly = v67;
+                var v68 = _pPC4MaximumMonthlyPayment; v68.Clean = value; _pPC4MaximumMonthlyPayment = v68;
+                var v69 = _pPC4MaximumMonthlyPaymentUI; v69.Clean = value; _pPC4MaximumMonthlyPaymentUI = v69;
+                var v70 = _pPC4MaximumPIPayment; v70.Clean = value; _pPC4MaximumPIPayment = v70;
+                var v71 = _pPC4MaximumPIPaymentUI; v71.Clean = value; _pPC4MaximumPIPaymentUI = v71;
+                var v72 = _pPC4MIAmount; v72.Clean = value; _pPC4MIAmount = v72;
+                var v73 = _pPC4MIAmountUI; v73.Clean = value; _pPC4MIAmountUI = v73;
+                var v74 = _pPC4MinimumMonthlyPayment; v74.Clean = value; _pPC4MinimumMonthlyPayment = v74;
+                var v75 = _pPC4MinimumMonthlyPaymentUI; v75.Clean = value; _pPC4MinimumMonthlyPaymentUI = v75;
+                var v76 = _pPC4MinimumPIPayment; v76.Clean = value; _pPC4MinimumPIPayment = v76;
+                var v77 = _pPC4MinimumPIPaymentUI; v77.Clean = value; _pPC4MinimumPIPaymentUI = v77;
+                var v78 = _pPC4YearFrom; v78.Clean = value; _pPC4YearFrom = v78;
+                var v79 = _pPC4YearTo; v79.Clean = value; _pPC4YearTo = v79;
+                var v80 = _pPCEstimatedEscrowIndicator; v80.Clean = value; _pPCEstimatedEscrowIndicator = v80;
+                var v81 = _pPCMortgageInsuranceIndicator; v81.Clean = value; _pPCMortgageInsuranceIndicator = v81;
+                var v82 = _rangePaymentIndicatorC1; v82.Clean = value; _rangePaymentIndicatorC1 = v82;
+                var v83 = _rangePaymentIndicatorC2; v83.Clean = value; _rangePaymentIndicatorC2 = v83;
+                var v84 = _rangePaymentIndicatorC3; v84.Clean = value; _rangePaymentIndicatorC3 = v84;
+                var v85 = _rangePaymentIndicatorC4; v85.Clean = value; _rangePaymentIndicatorC4 = v85;
+                var v86 = _reasonAdvancedReview; v86.Clean = value; _reasonAdvancedReview = v86;
+                var v87 = _reasonChangedCircumstanceElg; v87.Clean = value; _reasonChangedCircumstanceElg = v87;
+                var v88 = _reasonChangedCircumstanceFlags; v88.Clean = value; _reasonChangedCircumstanceFlags = v88;
+                var v89 = _reasonChangeInAPR; v89.Clean = value; _reasonChangeInAPR = v89;
+                var v90 = _reasonChangeInLoanProduct; v90.Clean = value; _reasonChangeInLoanProduct = v90;
+                var v91 = _reasonChangeSettlementCharges; v91.Clean = value; _reasonChangeSettlementCharges = v91;
+                var v92 = _reasonClericalErrorCorrection; v92.Clean = value; _reasonClericalErrorCorrection = v92;
+                var v93 = _reasonInterestRatecharges; v93.Clean = value; _reasonInterestRatecharges = v93;
+                var v94 = _reasonOther; v94.Clean = value; _reasonOther = v94;
+                var v95 = _reasonOtherDescription; v95.Clean = value; _reasonOtherDescription = v95;
+                var v96 = _reasonPrepaymentPenalty; v96.Clean = value; _reasonPrepaymentPenalty = v96;
+                var v97 = _reasonRevisionsReqConsumer; v97.Clean = value; _reasonRevisionsReqConsumer = v97;
+                var v98 = _reasonToleranceCure; v98.Clean = value; _reasonToleranceCure = v98;
+                var v99 = _revisedCDDueDate; v99.Clean = value; _revisedCDDueDate = v99;
+                var v100 = _revisedCDReceivedDate; v100.Clean = value; _revisedCDReceivedDate = v100;
+                var v101 = _sellerNames; v101.Clean = value; _sellerNames = v101;
+                var v102 = _signatureTypeFinalExecutedCopyofAlternateCD; v102.Clean = value; _signatureTypeFinalExecutedCopyofAlternateCD = v102;
+                var v103 = _signatureTypeFinalExecutedCopyofSellerCD; v103.Clean = value; _signatureTypeFinalExecutedCopyofSellerCD = v103;
+                var v104 = _signatureTypeFinalExecutedCopyofStandardCD; v104.Clean = value; _signatureTypeFinalExecutedCopyofStandardCD = v104;
+                var v105 = _totalCashToClose; v105.Clean = value; _totalCashToClose = v105;
                 _settingClean = 0;
             }
         }

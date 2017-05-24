@@ -7,24 +7,30 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilestoneTemplateLog
     {
-        public Value<int?> ElliLogRecordId { get; set; }
+        private Value<int?> _elliLogRecordId;
+        public int? ElliLogRecordId { get { return _elliLogRecordId; } set { _elliLogRecordId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeElliLogRecordId() => !ElliLogRecordId.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeElliLogRecordId() => !_elliLogRecordId.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsTemplateDatesLocked { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isTemplateDatesLocked;
+        public bool? IsTemplateDatesLocked { get { return _isTemplateDatesLocked; } set { _isTemplateDatesLocked = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsTemplateDatesLocked() => !IsTemplateDatesLocked.Clean;
-        public Value<bool?> IsTemplateLocked { get; set; }
+        public bool ShouldSerializeIsTemplateDatesLocked() => !_isTemplateDatesLocked.Clean;
+        private Value<bool?> _isTemplateLocked;
+        public bool? IsTemplateLocked { get { return _isTemplateLocked; } set { _isTemplateLocked = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsTemplateLocked() => !IsTemplateLocked.Clean;
-        public Value<string> MilestoneTemplateID { get; set; }
+        public bool ShouldSerializeIsTemplateLocked() => !_isTemplateLocked.Clean;
+        private Value<string> _milestoneTemplateID;
+        public string MilestoneTemplateID { get { return _milestoneTemplateID; } set { _milestoneTemplateID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneTemplateID() => !MilestoneTemplateID.Clean;
-        public Value<string> MilestoneTemplateName { get; set; }
+        public bool ShouldSerializeMilestoneTemplateID() => !_milestoneTemplateID.Clean;
+        private Value<string> _milestoneTemplateName;
+        public string MilestoneTemplateName { get { return _milestoneTemplateName; } set { _milestoneTemplateName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneTemplateName() => !MilestoneTemplateName.Clean;
+        public bool ShouldSerializeMilestoneTemplateName() => !_milestoneTemplateName.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -32,24 +38,24 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ElliLogRecordId.Clean
-                    && Id.Clean
-                    && IsTemplateDatesLocked.Clean
-                    && IsTemplateLocked.Clean
-                    && MilestoneTemplateID.Clean
-                    && MilestoneTemplateName.Clean;
+                var clean = _elliLogRecordId.Clean
+                    && _id.Clean
+                    && _isTemplateDatesLocked.Clean
+                    && _isTemplateLocked.Clean
+                    && _milestoneTemplateID.Clean
+                    && _milestoneTemplateName.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ElliLogRecordId; v0.Clean = value; ElliLogRecordId = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = IsTemplateDatesLocked; v2.Clean = value; IsTemplateDatesLocked = v2;
-                var v3 = IsTemplateLocked; v3.Clean = value; IsTemplateLocked = v3;
-                var v4 = MilestoneTemplateID; v4.Clean = value; MilestoneTemplateID = v4;
-                var v5 = MilestoneTemplateName; v5.Clean = value; MilestoneTemplateName = v5;
+                var v0 = _elliLogRecordId; v0.Clean = value; _elliLogRecordId = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _isTemplateDatesLocked; v2.Clean = value; _isTemplateDatesLocked = v2;
+                var v3 = _isTemplateLocked; v3.Clean = value; _isTemplateLocked = v3;
+                var v4 = _milestoneTemplateID; v4.Clean = value; _milestoneTemplateID = v4;
+                var v5 = _milestoneTemplateName; v5.Clean = value; _milestoneTemplateName = v5;
                 _settingClean = 0;
             }
         }

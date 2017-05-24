@@ -7,60 +7,77 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilestoneLog
     {
-        public Value<List<LogAlert>> Alerts { get; set; }
+        private Value<List<LogAlert>> _alerts;
+        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !Alerts.Clean;
-        public Value<List<LogComment>> CommentList { get; set; }
+        public bool ShouldSerializeAlerts() => !_alerts.Clean;
+        private Value<List<LogComment>> _commentList;
+        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !CommentList.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCommentList() => !_commentList.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<DateTime?> DateUtc { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<DateTime?> _dateUtc;
+        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !DateUtc.Clean;
-        public Value<int?> Days { get; set; }
+        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
+        private Value<int?> _days;
+        public int? Days { get { return _days; } set { _days = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDays() => !Days.Clean;
-        public Value<bool?> DoneIndicator { get; set; }
+        public bool ShouldSerializeDays() => !_days.Clean;
+        private Value<bool?> _doneIndicator;
+        public bool? DoneIndicator { get { return _doneIndicator; } set { _doneIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDoneIndicator() => !DoneIndicator.Clean;
-        public Value<int?> Duration { get; set; }
+        public bool ShouldSerializeDoneIndicator() => !_doneIndicator.Clean;
+        private Value<int?> _duration;
+        public int? Duration { get { return _duration; } set { _duration = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDuration() => !Duration.Clean;
-        public Value<bool?> FileAttachmentsMigrated { get; set; }
+        public bool ShouldSerializeDuration() => !_duration.Clean;
+        private Value<bool?> _fileAttachmentsMigrated;
+        public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !FileAttachmentsMigrated.Clean;
-        public Value<string> Guid { get; set; }
+        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
+        private Value<string> _guid;
+        public string Guid { get { return _guid; } set { _guid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !Guid.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGuid() => !_guid.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsSystemSpecificIndicator { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isSystemSpecificIndicator;
+        public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !IsSystemSpecificIndicator.Clean;
+        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
         public LoanAssociate LoanAssociate { get; set; }
         [EditorBrowsable(EditorBrowsableState.Never)]
         public bool ShouldSerializeLoanAssociate() => LoanAssociate?.Clean == false;
-        public Value<int?> LogRecordIndex { get; set; }
+        private Value<int?> _logRecordIndex;
+        public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !LogRecordIndex.Clean;
-        public Value<string> MilestoneIdString { get; set; }
+        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
+        private Value<string> _milestoneIdString;
+        public string MilestoneIdString { get { return _milestoneIdString; } set { _milestoneIdString = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneIdString() => !MilestoneIdString.Clean;
-        public Value<bool?> ReviewedIndicator { get; set; }
+        public bool ShouldSerializeMilestoneIdString() => !_milestoneIdString.Clean;
+        private Value<bool?> _reviewedIndicator;
+        public bool? ReviewedIndicator { get { return _reviewedIndicator; } set { _reviewedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedIndicator() => !ReviewedIndicator.Clean;
-        public Value<string> RoleRequired { get; set; }
+        public bool ShouldSerializeReviewedIndicator() => !_reviewedIndicator.Clean;
+        private Value<string> _roleRequired;
+        public string RoleRequired { get { return _roleRequired; } set { _roleRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoleRequired() => !RoleRequired.Clean;
-        public Value<string> Stage { get; set; }
+        public bool ShouldSerializeRoleRequired() => !_roleRequired.Clean;
+        private Value<string> _stage;
+        public string Stage { get { return _stage; } set { _stage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStage() => !Stage.Clean;
-        public Value<string> SystemId { get; set; }
+        public bool ShouldSerializeStage() => !_stage.Clean;
+        private Value<string> _systemId;
+        public string SystemId { get { return _systemId; } set { _systemId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !SystemId.Clean;
+        public bool ShouldSerializeSystemId() => !_systemId.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -68,23 +85,23 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Alerts.Clean
-                    && CommentList.Clean
-                    && Comments.Clean
-                    && DateUtc.Clean
-                    && Days.Clean
-                    && DoneIndicator.Clean
-                    && Duration.Clean
-                    && FileAttachmentsMigrated.Clean
-                    && Guid.Clean
-                    && Id.Clean
-                    && IsSystemSpecificIndicator.Clean
-                    && LogRecordIndex.Clean
-                    && MilestoneIdString.Clean
-                    && ReviewedIndicator.Clean
-                    && RoleRequired.Clean
-                    && Stage.Clean
-                    && SystemId.Clean
+                var clean = _alerts.Clean
+                    && _commentList.Clean
+                    && _comments.Clean
+                    && _dateUtc.Clean
+                    && _days.Clean
+                    && _doneIndicator.Clean
+                    && _duration.Clean
+                    && _fileAttachmentsMigrated.Clean
+                    && _guid.Clean
+                    && _id.Clean
+                    && _isSystemSpecificIndicator.Clean
+                    && _logRecordIndex.Clean
+                    && _milestoneIdString.Clean
+                    && _reviewedIndicator.Clean
+                    && _roleRequired.Clean
+                    && _stage.Clean
+                    && _systemId.Clean
                     && LoanAssociate.Clean;
                 _gettingClean = 0;
                 return clean;
@@ -92,23 +109,23 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Alerts; v0.Clean = value; Alerts = v0;
-                var v1 = CommentList; v1.Clean = value; CommentList = v1;
-                var v2 = Comments; v2.Clean = value; Comments = v2;
-                var v3 = DateUtc; v3.Clean = value; DateUtc = v3;
-                var v4 = Days; v4.Clean = value; Days = v4;
-                var v5 = DoneIndicator; v5.Clean = value; DoneIndicator = v5;
-                var v6 = Duration; v6.Clean = value; Duration = v6;
-                var v7 = FileAttachmentsMigrated; v7.Clean = value; FileAttachmentsMigrated = v7;
-                var v8 = Guid; v8.Clean = value; Guid = v8;
-                var v9 = Id; v9.Clean = value; Id = v9;
-                var v10 = IsSystemSpecificIndicator; v10.Clean = value; IsSystemSpecificIndicator = v10;
-                var v11 = LogRecordIndex; v11.Clean = value; LogRecordIndex = v11;
-                var v12 = MilestoneIdString; v12.Clean = value; MilestoneIdString = v12;
-                var v13 = ReviewedIndicator; v13.Clean = value; ReviewedIndicator = v13;
-                var v14 = RoleRequired; v14.Clean = value; RoleRequired = v14;
-                var v15 = Stage; v15.Clean = value; Stage = v15;
-                var v16 = SystemId; v16.Clean = value; SystemId = v16;
+                var v0 = _alerts; v0.Clean = value; _alerts = v0;
+                var v1 = _commentList; v1.Clean = value; _commentList = v1;
+                var v2 = _comments; v2.Clean = value; _comments = v2;
+                var v3 = _dateUtc; v3.Clean = value; _dateUtc = v3;
+                var v4 = _days; v4.Clean = value; _days = v4;
+                var v5 = _doneIndicator; v5.Clean = value; _doneIndicator = v5;
+                var v6 = _duration; v6.Clean = value; _duration = v6;
+                var v7 = _fileAttachmentsMigrated; v7.Clean = value; _fileAttachmentsMigrated = v7;
+                var v8 = _guid; v8.Clean = value; _guid = v8;
+                var v9 = _id; v9.Clean = value; _id = v9;
+                var v10 = _isSystemSpecificIndicator; v10.Clean = value; _isSystemSpecificIndicator = v10;
+                var v11 = _logRecordIndex; v11.Clean = value; _logRecordIndex = v11;
+                var v12 = _milestoneIdString; v12.Clean = value; _milestoneIdString = v12;
+                var v13 = _reviewedIndicator; v13.Clean = value; _reviewedIndicator = v13;
+                var v14 = _roleRequired; v14.Clean = value; _roleRequired = v14;
+                var v15 = _stage; v15.Clean = value; _stage = v15;
+                var v16 = _systemId; v16.Clean = value; _systemId = v16;
                 if (LoanAssociate != null) LoanAssociate.Clean = value;
                 _settingClean = 0;
             }

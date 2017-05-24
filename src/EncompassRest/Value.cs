@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     /// <summary>
-    /// Value wrapper to use when dirty checking.
+    /// Value wrapper to use for dirty checking. It also serializes and deserializes properly.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(ValueConverter))]
-    public struct Value<T>
+    internal struct Value<T>
     {
         public static implicit operator T(Value<T> value) => value._value;
 

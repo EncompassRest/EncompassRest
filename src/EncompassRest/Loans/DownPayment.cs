@@ -7,18 +7,22 @@ namespace EncompassRest.Loans
 {
     public sealed partial class DownPayment
     {
-        public Value<decimal?> Amount { get; set; }
+        private Value<decimal?> _amount;
+        public decimal? Amount { get { return _amount; } set { _amount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !Amount.Clean;
-        public Value<string> DownPaymentType { get; set; }
+        public bool ShouldSerializeAmount() => !_amount.Clean;
+        private Value<string> _downPaymentType;
+        public string DownPaymentType { get { return _downPaymentType; } set { _downPaymentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPaymentType() => !DownPaymentType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDownPaymentType() => !_downPaymentType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> SourceDescription { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _sourceDescription;
+        public string SourceDescription { get { return _sourceDescription; } set { _sourceDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceDescription() => !SourceDescription.Clean;
+        public bool ShouldSerializeSourceDescription() => !_sourceDescription.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -26,20 +30,20 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Amount.Clean
-                    && DownPaymentType.Clean
-                    && Id.Clean
-                    && SourceDescription.Clean;
+                var clean = _amount.Clean
+                    && _downPaymentType.Clean
+                    && _id.Clean
+                    && _sourceDescription.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Amount; v0.Clean = value; Amount = v0;
-                var v1 = DownPaymentType; v1.Clean = value; DownPaymentType = v1;
-                var v2 = Id; v2.Clean = value; Id = v2;
-                var v3 = SourceDescription; v3.Clean = value; SourceDescription = v3;
+                var v0 = _amount; v0.Clean = value; _amount = v0;
+                var v1 = _downPaymentType; v1.Clean = value; _downPaymentType = v1;
+                var v2 = _id; v2.Clean = value; _id = v2;
+                var v3 = _sourceDescription; v3.Clean = value; _sourceDescription = v3;
                 _settingClean = 0;
             }
         }

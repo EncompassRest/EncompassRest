@@ -7,48 +7,62 @@ namespace EncompassRest.Loans
 {
     public sealed partial class EdmLog
     {
-        public Value<List<LogAlert>> Alerts { get; set; }
+        private Value<List<LogAlert>> _alerts;
+        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !Alerts.Clean;
-        public Value<List<LogComment>> CommentList { get; set; }
+        public bool ShouldSerializeAlerts() => !_alerts.Clean;
+        private Value<List<LogComment>> _commentList;
+        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !CommentList.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCommentList() => !_commentList.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<string> Creator { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<string> _creator;
+        public string Creator { get { return _creator; } set { _creator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreator() => !Creator.Clean;
-        public Value<DateTime?> DateUtc { get; set; }
+        public bool ShouldSerializeCreator() => !_creator.Clean;
+        private Value<DateTime?> _dateUtc;
+        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !DateUtc.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<List<EdmDocument>> Documents { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<List<EdmDocument>> _documents;
+        public List<EdmDocument> Documents { get { return _documents; } set { _documents = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDocuments() => !Documents.Clean;
-        public Value<bool?> FileAttachmentsMigrated { get; set; }
+        public bool ShouldSerializeDocuments() => !_documents.Clean;
+        private Value<bool?> _fileAttachmentsMigrated;
+        public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !FileAttachmentsMigrated.Clean;
-        public Value<string> Guid { get; set; }
+        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
+        private Value<string> _guid;
+        public string Guid { get { return _guid; } set { _guid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !Guid.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGuid() => !_guid.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsSystemSpecificIndicator { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isSystemSpecificIndicator;
+        public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !IsSystemSpecificIndicator.Clean;
-        public Value<int?> LogRecordIndex { get; set; }
+        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
+        private Value<int?> _logRecordIndex;
+        public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !LogRecordIndex.Clean;
-        public Value<string> SystemId { get; set; }
+        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
+        private Value<string> _systemId;
+        public string SystemId { get { return _systemId; } set { _systemId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !SystemId.Clean;
-        public Value<string> Url { get; set; }
+        public bool ShouldSerializeSystemId() => !_systemId.Clean;
+        private Value<string> _url;
+        public string Url { get { return _url; } set { _url = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUrl() => !Url.Clean;
+        public bool ShouldSerializeUrl() => !_url.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -56,40 +70,40 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Alerts.Clean
-                    && CommentList.Clean
-                    && Comments.Clean
-                    && Creator.Clean
-                    && DateUtc.Clean
-                    && Description.Clean
-                    && Documents.Clean
-                    && FileAttachmentsMigrated.Clean
-                    && Guid.Clean
-                    && Id.Clean
-                    && IsSystemSpecificIndicator.Clean
-                    && LogRecordIndex.Clean
-                    && SystemId.Clean
-                    && Url.Clean;
+                var clean = _alerts.Clean
+                    && _commentList.Clean
+                    && _comments.Clean
+                    && _creator.Clean
+                    && _dateUtc.Clean
+                    && _description.Clean
+                    && _documents.Clean
+                    && _fileAttachmentsMigrated.Clean
+                    && _guid.Clean
+                    && _id.Clean
+                    && _isSystemSpecificIndicator.Clean
+                    && _logRecordIndex.Clean
+                    && _systemId.Clean
+                    && _url.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Alerts; v0.Clean = value; Alerts = v0;
-                var v1 = CommentList; v1.Clean = value; CommentList = v1;
-                var v2 = Comments; v2.Clean = value; Comments = v2;
-                var v3 = Creator; v3.Clean = value; Creator = v3;
-                var v4 = DateUtc; v4.Clean = value; DateUtc = v4;
-                var v5 = Description; v5.Clean = value; Description = v5;
-                var v6 = Documents; v6.Clean = value; Documents = v6;
-                var v7 = FileAttachmentsMigrated; v7.Clean = value; FileAttachmentsMigrated = v7;
-                var v8 = Guid; v8.Clean = value; Guid = v8;
-                var v9 = Id; v9.Clean = value; Id = v9;
-                var v10 = IsSystemSpecificIndicator; v10.Clean = value; IsSystemSpecificIndicator = v10;
-                var v11 = LogRecordIndex; v11.Clean = value; LogRecordIndex = v11;
-                var v12 = SystemId; v12.Clean = value; SystemId = v12;
-                var v13 = Url; v13.Clean = value; Url = v13;
+                var v0 = _alerts; v0.Clean = value; _alerts = v0;
+                var v1 = _commentList; v1.Clean = value; _commentList = v1;
+                var v2 = _comments; v2.Clean = value; _comments = v2;
+                var v3 = _creator; v3.Clean = value; _creator = v3;
+                var v4 = _dateUtc; v4.Clean = value; _dateUtc = v4;
+                var v5 = _description; v5.Clean = value; _description = v5;
+                var v6 = _documents; v6.Clean = value; _documents = v6;
+                var v7 = _fileAttachmentsMigrated; v7.Clean = value; _fileAttachmentsMigrated = v7;
+                var v8 = _guid; v8.Clean = value; _guid = v8;
+                var v9 = _id; v9.Clean = value; _id = v9;
+                var v10 = _isSystemSpecificIndicator; v10.Clean = value; _isSystemSpecificIndicator = v10;
+                var v11 = _logRecordIndex; v11.Clean = value; _logRecordIndex = v11;
+                var v12 = _systemId; v12.Clean = value; _systemId = v12;
+                var v13 = _url; v13.Clean = value; _url = v13;
                 _settingClean = 0;
             }
         }

@@ -7,39 +7,50 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FundingFee
     {
-        public Value<bool?> BalanceChecked { get; set; }
+        private Value<bool?> _balanceChecked;
+        public bool? BalanceChecked { get { return _balanceChecked; } set { _balanceChecked = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalanceChecked() => !BalanceChecked.Clean;
-        public Value<string> CdLineId { get; set; }
+        public bool ShouldSerializeBalanceChecked() => !_balanceChecked.Clean;
+        private Value<string> _cdLineId;
+        public string CdLineId { get { return _cdLineId; } set { _cdLineId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCdLineId() => !CdLineId.Clean;
-        public Value<string> FeeDescription { get; set; }
+        public bool ShouldSerializeCdLineId() => !_cdLineId.Clean;
+        private Value<string> _feeDescription;
+        public string FeeDescription { get { return _feeDescription; } set { _feeDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDescription() => !FeeDescription.Clean;
-        public Value<string> FeeDescription2015 { get; set; }
+        public bool ShouldSerializeFeeDescription() => !_feeDescription.Clean;
+        private Value<string> _feeDescription2015;
+        public string FeeDescription2015 { get { return _feeDescription2015; } set { _feeDescription2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDescription2015() => !FeeDescription2015.Clean;
-        public Value<string> LineId { get; set; }
+        public bool ShouldSerializeFeeDescription2015() => !_feeDescription2015.Clean;
+        private Value<string> _lineId;
+        public string LineId { get { return _lineId; } set { _lineId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineId() => !LineId.Clean;
-        public Value<int?> LineNumber { get; set; }
+        public bool ShouldSerializeLineId() => !_lineId.Clean;
+        private Value<int?> _lineNumber;
+        public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !LineNumber.Clean;
-        public Value<string> PaidBy { get; set; }
+        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
+        private Value<string> _paidBy;
+        public string PaidBy { get { return _paidBy; } set { _paidBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidBy() => !PaidBy.Clean;
-        public Value<string> PaidTo { get; set; }
+        public bool ShouldSerializePaidBy() => !_paidBy.Clean;
+        private Value<string> _paidTo;
+        public string PaidTo { get { return _paidTo; } set { _paidTo = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidTo() => !PaidTo.Clean;
-        public Value<string> Payee { get; set; }
+        public bool ShouldSerializePaidTo() => !_paidTo.Clean;
+        private Value<string> _payee;
+        public string Payee { get { return _payee; } set { _payee = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePayee() => !Payee.Clean;
-        public Value<string> PocPaidBy { get; set; }
+        public bool ShouldSerializePayee() => !_payee.Clean;
+        private Value<string> _pocPaidBy;
+        public string PocPaidBy { get { return _pocPaidBy; } set { _pocPaidBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePocPaidBy() => !PocPaidBy.Clean;
-        public Value<string> PtcPaidBy { get; set; }
+        public bool ShouldSerializePocPaidBy() => !_pocPaidBy.Clean;
+        private Value<string> _ptcPaidBy;
+        public string PtcPaidBy { get { return _ptcPaidBy; } set { _ptcPaidBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePtcPaidBy() => !PtcPaidBy.Clean;
+        public bool ShouldSerializePtcPaidBy() => !_ptcPaidBy.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,34 +58,34 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = BalanceChecked.Clean
-                    && CdLineId.Clean
-                    && FeeDescription.Clean
-                    && FeeDescription2015.Clean
-                    && LineId.Clean
-                    && LineNumber.Clean
-                    && PaidBy.Clean
-                    && PaidTo.Clean
-                    && Payee.Clean
-                    && PocPaidBy.Clean
-                    && PtcPaidBy.Clean;
+                var clean = _balanceChecked.Clean
+                    && _cdLineId.Clean
+                    && _feeDescription.Clean
+                    && _feeDescription2015.Clean
+                    && _lineId.Clean
+                    && _lineNumber.Clean
+                    && _paidBy.Clean
+                    && _paidTo.Clean
+                    && _payee.Clean
+                    && _pocPaidBy.Clean
+                    && _ptcPaidBy.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = BalanceChecked; v0.Clean = value; BalanceChecked = v0;
-                var v1 = CdLineId; v1.Clean = value; CdLineId = v1;
-                var v2 = FeeDescription; v2.Clean = value; FeeDescription = v2;
-                var v3 = FeeDescription2015; v3.Clean = value; FeeDescription2015 = v3;
-                var v4 = LineId; v4.Clean = value; LineId = v4;
-                var v5 = LineNumber; v5.Clean = value; LineNumber = v5;
-                var v6 = PaidBy; v6.Clean = value; PaidBy = v6;
-                var v7 = PaidTo; v7.Clean = value; PaidTo = v7;
-                var v8 = Payee; v8.Clean = value; Payee = v8;
-                var v9 = PocPaidBy; v9.Clean = value; PocPaidBy = v9;
-                var v10 = PtcPaidBy; v10.Clean = value; PtcPaidBy = v10;
+                var v0 = _balanceChecked; v0.Clean = value; _balanceChecked = v0;
+                var v1 = _cdLineId; v1.Clean = value; _cdLineId = v1;
+                var v2 = _feeDescription; v2.Clean = value; _feeDescription = v2;
+                var v3 = _feeDescription2015; v3.Clean = value; _feeDescription2015 = v3;
+                var v4 = _lineId; v4.Clean = value; _lineId = v4;
+                var v5 = _lineNumber; v5.Clean = value; _lineNumber = v5;
+                var v6 = _paidBy; v6.Clean = value; _paidBy = v6;
+                var v7 = _paidTo; v7.Clean = value; _paidTo = v7;
+                var v8 = _payee; v8.Clean = value; _payee = v8;
+                var v9 = _pocPaidBy; v9.Clean = value; _pocPaidBy = v9;
+                var v10 = _ptcPaidBy; v10.Clean = value; _ptcPaidBy = v10;
                 _settingClean = 0;
             }
         }

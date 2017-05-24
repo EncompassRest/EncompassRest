@@ -7,36 +7,46 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Buydown
     {
-        public Value<int?> BuydownIndex { get; set; }
+        private Value<int?> _buydownIndex;
+        public int? BuydownIndex { get { return _buydownIndex; } set { _buydownIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIndex() => !BuydownIndex.Clean;
-        public Value<decimal?> BuydownRatePercent { get; set; }
+        public bool ShouldSerializeBuydownIndex() => !_buydownIndex.Clean;
+        private Value<decimal?> _buydownRatePercent;
+        public decimal? BuydownRatePercent { get { return _buydownRatePercent; } set { _buydownRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownRatePercent() => !BuydownRatePercent.Clean;
-        public Value<int?> ChangeFrequencyMonthsCount { get; set; }
+        public bool ShouldSerializeBuydownRatePercent() => !_buydownRatePercent.Clean;
+        private Value<int?> _changeFrequencyMonthsCount;
+        public int? ChangeFrequencyMonthsCount { get { return _changeFrequencyMonthsCount; } set { _changeFrequencyMonthsCount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangeFrequencyMonthsCount() => !ChangeFrequencyMonthsCount.Clean;
-        public Value<int?> DurationMonthsCount { get; set; }
+        public bool ShouldSerializeChangeFrequencyMonthsCount() => !_changeFrequencyMonthsCount.Clean;
+        private Value<int?> _durationMonthsCount;
+        public int? DurationMonthsCount { get { return _durationMonthsCount; } set { _durationMonthsCount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDurationMonthsCount() => !DurationMonthsCount.Clean;
-        public Value<decimal?> FundBalanceAmount { get; set; }
+        public bool ShouldSerializeDurationMonthsCount() => !_durationMonthsCount.Clean;
+        private Value<decimal?> _fundBalanceAmount;
+        public decimal? FundBalanceAmount { get { return _fundBalanceAmount; } set { _fundBalanceAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundBalanceAmount() => !FundBalanceAmount.Clean;
-        public Value<decimal?> FundTotalAmount { get; set; }
+        public bool ShouldSerializeFundBalanceAmount() => !_fundBalanceAmount.Clean;
+        private Value<decimal?> _fundTotalAmount;
+        public decimal? FundTotalAmount { get { return _fundTotalAmount; } set { _fundTotalAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundTotalAmount() => !FundTotalAmount.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFundTotalAmount() => !_fundTotalAmount.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> IncreaseRatePercent { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _increaseRatePercent;
+        public decimal? IncreaseRatePercent { get { return _increaseRatePercent; } set { _increaseRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIncreaseRatePercent() => !IncreaseRatePercent.Clean;
-        public Value<int?> RemainingMonthsCount { get; set; }
+        public bool ShouldSerializeIncreaseRatePercent() => !_increaseRatePercent.Clean;
+        private Value<int?> _remainingMonthsCount;
+        public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRemainingMonthsCount() => !RemainingMonthsCount.Clean;
-        public Value<decimal?> SubsidyAmount { get; set; }
+        public bool ShouldSerializeRemainingMonthsCount() => !_remainingMonthsCount.Clean;
+        private Value<decimal?> _subsidyAmount;
+        public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubsidyAmount() => !SubsidyAmount.Clean;
+        public bool ShouldSerializeSubsidyAmount() => !_subsidyAmount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -44,32 +54,32 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = BuydownIndex.Clean
-                    && BuydownRatePercent.Clean
-                    && ChangeFrequencyMonthsCount.Clean
-                    && DurationMonthsCount.Clean
-                    && FundBalanceAmount.Clean
-                    && FundTotalAmount.Clean
-                    && Id.Clean
-                    && IncreaseRatePercent.Clean
-                    && RemainingMonthsCount.Clean
-                    && SubsidyAmount.Clean;
+                var clean = _buydownIndex.Clean
+                    && _buydownRatePercent.Clean
+                    && _changeFrequencyMonthsCount.Clean
+                    && _durationMonthsCount.Clean
+                    && _fundBalanceAmount.Clean
+                    && _fundTotalAmount.Clean
+                    && _id.Clean
+                    && _increaseRatePercent.Clean
+                    && _remainingMonthsCount.Clean
+                    && _subsidyAmount.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = BuydownIndex; v0.Clean = value; BuydownIndex = v0;
-                var v1 = BuydownRatePercent; v1.Clean = value; BuydownRatePercent = v1;
-                var v2 = ChangeFrequencyMonthsCount; v2.Clean = value; ChangeFrequencyMonthsCount = v2;
-                var v3 = DurationMonthsCount; v3.Clean = value; DurationMonthsCount = v3;
-                var v4 = FundBalanceAmount; v4.Clean = value; FundBalanceAmount = v4;
-                var v5 = FundTotalAmount; v5.Clean = value; FundTotalAmount = v5;
-                var v6 = Id; v6.Clean = value; Id = v6;
-                var v7 = IncreaseRatePercent; v7.Clean = value; IncreaseRatePercent = v7;
-                var v8 = RemainingMonthsCount; v8.Clean = value; RemainingMonthsCount = v8;
-                var v9 = SubsidyAmount; v9.Clean = value; SubsidyAmount = v9;
+                var v0 = _buydownIndex; v0.Clean = value; _buydownIndex = v0;
+                var v1 = _buydownRatePercent; v1.Clean = value; _buydownRatePercent = v1;
+                var v2 = _changeFrequencyMonthsCount; v2.Clean = value; _changeFrequencyMonthsCount = v2;
+                var v3 = _durationMonthsCount; v3.Clean = value; _durationMonthsCount = v3;
+                var v4 = _fundBalanceAmount; v4.Clean = value; _fundBalanceAmount = v4;
+                var v5 = _fundTotalAmount; v5.Clean = value; _fundTotalAmount = v5;
+                var v6 = _id; v6.Clean = value; _id = v6;
+                var v7 = _increaseRatePercent; v7.Clean = value; _increaseRatePercent = v7;
+                var v8 = _remainingMonthsCount; v8.Clean = value; _remainingMonthsCount = v8;
+                var v9 = _subsidyAmount; v9.Clean = value; _subsidyAmount = v9;
                 _settingClean = 0;
             }
         }

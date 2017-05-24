@@ -7,99 +7,130 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ReoProperty
     {
-        public Value<DateTime?> AcquiredDate { get; set; }
+        private Value<DateTime?> _acquiredDate;
+        public DateTime? AcquiredDate { get { return _acquiredDate; } set { _acquiredDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAcquiredDate() => !AcquiredDate.Clean;
-        public Value<string> City { get; set; }
+        public bool ShouldSerializeAcquiredDate() => !_acquiredDate.Clean;
+        private Value<string> _city;
+        public string City { get { return _city; } set { _city = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCity() => !City.Clean;
-        public Value<string> DispositionStatusType { get; set; }
+        public bool ShouldSerializeCity() => !_city.Clean;
+        private Value<string> _dispositionStatusType;
+        public string DispositionStatusType { get { return _dispositionStatusType; } set { _dispositionStatusType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDispositionStatusType() => !DispositionStatusType.Clean;
-        public Value<bool?> EntityDeleted { get; set; }
+        public bool ShouldSerializeDispositionStatusType() => !_dispositionStatusType.Clean;
+        private Value<bool?> _entityDeleted;
+        public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEntityDeleted() => !EntityDeleted.Clean;
-        public Value<string> GsePropertyType { get; set; }
+        public bool ShouldSerializeEntityDeleted() => !_entityDeleted.Clean;
+        private Value<string> _gsePropertyType;
+        public string GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGsePropertyType() => !GsePropertyType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGsePropertyType() => !_gsePropertyType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsEmpty { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isEmpty;
+        public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsEmpty() => !IsEmpty.Clean;
-        public Value<decimal?> LienInstallmentAmount { get; set; }
+        public bool ShouldSerializeIsEmpty() => !_isEmpty.Clean;
+        private Value<decimal?> _lienInstallmentAmount;
+        public decimal? LienInstallmentAmount { get { return _lienInstallmentAmount; } set { _lienInstallmentAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLienInstallmentAmount() => !LienInstallmentAmount.Clean;
-        public Value<decimal?> LienUpbAmount { get; set; }
+        public bool ShouldSerializeLienInstallmentAmount() => !_lienInstallmentAmount.Clean;
+        private Value<decimal?> _lienUpbAmount;
+        public decimal? LienUpbAmount { get { return _lienUpbAmount; } set { _lienUpbAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLienUpbAmount() => !LienUpbAmount.Clean;
-        public Value<string> MaintenanceExpenseAmount { get; set; }
+        public bool ShouldSerializeLienUpbAmount() => !_lienUpbAmount.Clean;
+        private Value<string> _maintenanceExpenseAmount;
+        public string MaintenanceExpenseAmount { get { return _maintenanceExpenseAmount; } set { _maintenanceExpenseAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaintenanceExpenseAmount() => !MaintenanceExpenseAmount.Clean;
-        public Value<decimal?> MarketValueAmount { get; set; }
+        public bool ShouldSerializeMaintenanceExpenseAmount() => !_maintenanceExpenseAmount.Clean;
+        private Value<decimal?> _marketValueAmount;
+        public decimal? MarketValueAmount { get { return _marketValueAmount; } set { _marketValueAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMarketValueAmount() => !MarketValueAmount.Clean;
-        public Value<bool?> NoLinkToDocTrackIndicator { get; set; }
+        public bool ShouldSerializeMarketValueAmount() => !_marketValueAmount.Clean;
+        private Value<bool?> _noLinkToDocTrackIndicator;
+        public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !NoLinkToDocTrackIndicator.Clean;
-        public Value<decimal?> ParticipationPercentage { get; set; }
+        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !_noLinkToDocTrackIndicator.Clean;
+        private Value<decimal?> _participationPercentage;
+        public decimal? ParticipationPercentage { get { return _participationPercentage; } set { _participationPercentage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParticipationPercentage() => !ParticipationPercentage.Clean;
-        public Value<decimal?> PercentageofRental { get; set; }
+        public bool ShouldSerializeParticipationPercentage() => !_participationPercentage.Clean;
+        private Value<decimal?> _percentageofRental;
+        public decimal? PercentageofRental { get { return _percentageofRental; } set { _percentageofRental = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentageofRental() => !PercentageofRental.Clean;
-        public Value<string> PostalCode { get; set; }
+        public bool ShouldSerializePercentageofRental() => !_percentageofRental.Clean;
+        private Value<string> _postalCode;
+        public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePostalCode() => !PostalCode.Clean;
-        public Value<bool?> PrintAttachIndicator { get; set; }
+        public bool ShouldSerializePostalCode() => !_postalCode.Clean;
+        private Value<bool?> _printAttachIndicator;
+        public bool? PrintAttachIndicator { get { return _printAttachIndicator; } set { _printAttachIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintAttachIndicator() => !PrintAttachIndicator.Clean;
-        public Value<bool?> PrintUserNameIndicator { get; set; }
+        public bool ShouldSerializePrintAttachIndicator() => !_printAttachIndicator.Clean;
+        private Value<bool?> _printUserNameIndicator;
+        public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintUserNameIndicator() => !PrintUserNameIndicator.Clean;
-        public Value<string> PropertyUsageType { get; set; }
+        public bool ShouldSerializePrintUserNameIndicator() => !_printUserNameIndicator.Clean;
+        private Value<string> _propertyUsageType;
+        public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyUsageType() => !PropertyUsageType.Clean;
-        public Value<int?> PurchasePrice { get; set; }
+        public bool ShouldSerializePropertyUsageType() => !_propertyUsageType.Clean;
+        private Value<int?> _purchasePrice;
+        public int? PurchasePrice { get { return _purchasePrice; } set { _purchasePrice = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePurchasePrice() => !PurchasePrice.Clean;
-        public Value<decimal?> RentalIncomeGrossAmount { get; set; }
+        public bool ShouldSerializePurchasePrice() => !_purchasePrice.Clean;
+        private Value<decimal?> _rentalIncomeGrossAmount;
+        public decimal? RentalIncomeGrossAmount { get { return _rentalIncomeGrossAmount; } set { _rentalIncomeGrossAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRentalIncomeGrossAmount() => !RentalIncomeGrossAmount.Clean;
-        public Value<decimal?> RentalIncomeNetAmount { get; set; }
+        public bool ShouldSerializeRentalIncomeGrossAmount() => !_rentalIncomeGrossAmount.Clean;
+        private Value<decimal?> _rentalIncomeNetAmount;
+        public decimal? RentalIncomeNetAmount { get { return _rentalIncomeNetAmount; } set { _rentalIncomeNetAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRentalIncomeNetAmount() => !RentalIncomeNetAmount.Clean;
-        public Value<string> ReoComments { get; set; }
+        public bool ShouldSerializeRentalIncomeNetAmount() => !_rentalIncomeNetAmount.Clean;
+        private Value<string> _reoComments;
+        public string ReoComments { get { return _reoComments; } set { _reoComments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReoComments() => !ReoComments.Clean;
-        public Value<string> ReoId { get; set; }
+        public bool ShouldSerializeReoComments() => !_reoComments.Clean;
+        private Value<string> _reoId;
+        public string ReoId { get { return _reoId; } set { _reoId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReoId() => !ReoId.Clean;
-        public Value<int?> ReoPropertyIndex { get; set; }
+        public bool ShouldSerializeReoId() => !_reoId.Clean;
+        private Value<int?> _reoPropertyIndex;
+        public int? ReoPropertyIndex { get { return _reoPropertyIndex; } set { _reoPropertyIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReoPropertyIndex() => !ReoPropertyIndex.Clean;
-        public Value<DateTime?> RequestDate { get; set; }
+        public bool ShouldSerializeReoPropertyIndex() => !_reoPropertyIndex.Clean;
+        private Value<DateTime?> _requestDate;
+        public DateTime? RequestDate { get { return _requestDate; } set { _requestDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestDate() => !RequestDate.Clean;
-        public Value<string> State { get; set; }
+        public bool ShouldSerializeRequestDate() => !_requestDate.Clean;
+        private Value<string> _state;
+        public string State { get { return _state; } set { _state = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeState() => !State.Clean;
-        public Value<string> StreetAddress { get; set; }
+        public bool ShouldSerializeState() => !_state.Clean;
+        private Value<string> _streetAddress;
+        public string StreetAddress { get { return _streetAddress; } set { _streetAddress = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStreetAddress() => !StreetAddress.Clean;
-        public Value<bool?> SubjectIndicator { get; set; }
+        public bool ShouldSerializeStreetAddress() => !_streetAddress.Clean;
+        private Value<bool?> _subjectIndicator;
+        public bool? SubjectIndicator { get { return _subjectIndicator; } set { _subjectIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubjectIndicator() => !SubjectIndicator.Clean;
-        public Value<string> Title { get; set; }
+        public bool ShouldSerializeSubjectIndicator() => !_subjectIndicator.Clean;
+        private Value<string> _title;
+        public string Title { get { return _title; } set { _title = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !Title.Clean;
-        public Value<string> TitleFax { get; set; }
+        public bool ShouldSerializeTitle() => !_title.Clean;
+        private Value<string> _titleFax;
+        public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleFax() => !TitleFax.Clean;
-        public Value<string> TitlePhone { get; set; }
+        public bool ShouldSerializeTitleFax() => !_titleFax.Clean;
+        private Value<string> _titlePhone;
+        public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitlePhone() => !TitlePhone.Clean;
+        public bool ShouldSerializeTitlePhone() => !_titlePhone.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -107,74 +138,74 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AcquiredDate.Clean
-                    && City.Clean
-                    && DispositionStatusType.Clean
-                    && EntityDeleted.Clean
-                    && GsePropertyType.Clean
-                    && Id.Clean
-                    && IsEmpty.Clean
-                    && LienInstallmentAmount.Clean
-                    && LienUpbAmount.Clean
-                    && MaintenanceExpenseAmount.Clean
-                    && MarketValueAmount.Clean
-                    && NoLinkToDocTrackIndicator.Clean
-                    && ParticipationPercentage.Clean
-                    && PercentageofRental.Clean
-                    && PostalCode.Clean
-                    && PrintAttachIndicator.Clean
-                    && PrintUserNameIndicator.Clean
-                    && PropertyUsageType.Clean
-                    && PurchasePrice.Clean
-                    && RentalIncomeGrossAmount.Clean
-                    && RentalIncomeNetAmount.Clean
-                    && ReoComments.Clean
-                    && ReoId.Clean
-                    && ReoPropertyIndex.Clean
-                    && RequestDate.Clean
-                    && State.Clean
-                    && StreetAddress.Clean
-                    && SubjectIndicator.Clean
-                    && Title.Clean
-                    && TitleFax.Clean
-                    && TitlePhone.Clean;
+                var clean = _acquiredDate.Clean
+                    && _city.Clean
+                    && _dispositionStatusType.Clean
+                    && _entityDeleted.Clean
+                    && _gsePropertyType.Clean
+                    && _id.Clean
+                    && _isEmpty.Clean
+                    && _lienInstallmentAmount.Clean
+                    && _lienUpbAmount.Clean
+                    && _maintenanceExpenseAmount.Clean
+                    && _marketValueAmount.Clean
+                    && _noLinkToDocTrackIndicator.Clean
+                    && _participationPercentage.Clean
+                    && _percentageofRental.Clean
+                    && _postalCode.Clean
+                    && _printAttachIndicator.Clean
+                    && _printUserNameIndicator.Clean
+                    && _propertyUsageType.Clean
+                    && _purchasePrice.Clean
+                    && _rentalIncomeGrossAmount.Clean
+                    && _rentalIncomeNetAmount.Clean
+                    && _reoComments.Clean
+                    && _reoId.Clean
+                    && _reoPropertyIndex.Clean
+                    && _requestDate.Clean
+                    && _state.Clean
+                    && _streetAddress.Clean
+                    && _subjectIndicator.Clean
+                    && _title.Clean
+                    && _titleFax.Clean
+                    && _titlePhone.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AcquiredDate; v0.Clean = value; AcquiredDate = v0;
-                var v1 = City; v1.Clean = value; City = v1;
-                var v2 = DispositionStatusType; v2.Clean = value; DispositionStatusType = v2;
-                var v3 = EntityDeleted; v3.Clean = value; EntityDeleted = v3;
-                var v4 = GsePropertyType; v4.Clean = value; GsePropertyType = v4;
-                var v5 = Id; v5.Clean = value; Id = v5;
-                var v6 = IsEmpty; v6.Clean = value; IsEmpty = v6;
-                var v7 = LienInstallmentAmount; v7.Clean = value; LienInstallmentAmount = v7;
-                var v8 = LienUpbAmount; v8.Clean = value; LienUpbAmount = v8;
-                var v9 = MaintenanceExpenseAmount; v9.Clean = value; MaintenanceExpenseAmount = v9;
-                var v10 = MarketValueAmount; v10.Clean = value; MarketValueAmount = v10;
-                var v11 = NoLinkToDocTrackIndicator; v11.Clean = value; NoLinkToDocTrackIndicator = v11;
-                var v12 = ParticipationPercentage; v12.Clean = value; ParticipationPercentage = v12;
-                var v13 = PercentageofRental; v13.Clean = value; PercentageofRental = v13;
-                var v14 = PostalCode; v14.Clean = value; PostalCode = v14;
-                var v15 = PrintAttachIndicator; v15.Clean = value; PrintAttachIndicator = v15;
-                var v16 = PrintUserNameIndicator; v16.Clean = value; PrintUserNameIndicator = v16;
-                var v17 = PropertyUsageType; v17.Clean = value; PropertyUsageType = v17;
-                var v18 = PurchasePrice; v18.Clean = value; PurchasePrice = v18;
-                var v19 = RentalIncomeGrossAmount; v19.Clean = value; RentalIncomeGrossAmount = v19;
-                var v20 = RentalIncomeNetAmount; v20.Clean = value; RentalIncomeNetAmount = v20;
-                var v21 = ReoComments; v21.Clean = value; ReoComments = v21;
-                var v22 = ReoId; v22.Clean = value; ReoId = v22;
-                var v23 = ReoPropertyIndex; v23.Clean = value; ReoPropertyIndex = v23;
-                var v24 = RequestDate; v24.Clean = value; RequestDate = v24;
-                var v25 = State; v25.Clean = value; State = v25;
-                var v26 = StreetAddress; v26.Clean = value; StreetAddress = v26;
-                var v27 = SubjectIndicator; v27.Clean = value; SubjectIndicator = v27;
-                var v28 = Title; v28.Clean = value; Title = v28;
-                var v29 = TitleFax; v29.Clean = value; TitleFax = v29;
-                var v30 = TitlePhone; v30.Clean = value; TitlePhone = v30;
+                var v0 = _acquiredDate; v0.Clean = value; _acquiredDate = v0;
+                var v1 = _city; v1.Clean = value; _city = v1;
+                var v2 = _dispositionStatusType; v2.Clean = value; _dispositionStatusType = v2;
+                var v3 = _entityDeleted; v3.Clean = value; _entityDeleted = v3;
+                var v4 = _gsePropertyType; v4.Clean = value; _gsePropertyType = v4;
+                var v5 = _id; v5.Clean = value; _id = v5;
+                var v6 = _isEmpty; v6.Clean = value; _isEmpty = v6;
+                var v7 = _lienInstallmentAmount; v7.Clean = value; _lienInstallmentAmount = v7;
+                var v8 = _lienUpbAmount; v8.Clean = value; _lienUpbAmount = v8;
+                var v9 = _maintenanceExpenseAmount; v9.Clean = value; _maintenanceExpenseAmount = v9;
+                var v10 = _marketValueAmount; v10.Clean = value; _marketValueAmount = v10;
+                var v11 = _noLinkToDocTrackIndicator; v11.Clean = value; _noLinkToDocTrackIndicator = v11;
+                var v12 = _participationPercentage; v12.Clean = value; _participationPercentage = v12;
+                var v13 = _percentageofRental; v13.Clean = value; _percentageofRental = v13;
+                var v14 = _postalCode; v14.Clean = value; _postalCode = v14;
+                var v15 = _printAttachIndicator; v15.Clean = value; _printAttachIndicator = v15;
+                var v16 = _printUserNameIndicator; v16.Clean = value; _printUserNameIndicator = v16;
+                var v17 = _propertyUsageType; v17.Clean = value; _propertyUsageType = v17;
+                var v18 = _purchasePrice; v18.Clean = value; _purchasePrice = v18;
+                var v19 = _rentalIncomeGrossAmount; v19.Clean = value; _rentalIncomeGrossAmount = v19;
+                var v20 = _rentalIncomeNetAmount; v20.Clean = value; _rentalIncomeNetAmount = v20;
+                var v21 = _reoComments; v21.Clean = value; _reoComments = v21;
+                var v22 = _reoId; v22.Clean = value; _reoId = v22;
+                var v23 = _reoPropertyIndex; v23.Clean = value; _reoPropertyIndex = v23;
+                var v24 = _requestDate; v24.Clean = value; _requestDate = v24;
+                var v25 = _state; v25.Clean = value; _state = v25;
+                var v26 = _streetAddress; v26.Clean = value; _streetAddress = v26;
+                var v27 = _subjectIndicator; v27.Clean = value; _subjectIndicator = v27;
+                var v28 = _title; v28.Clean = value; _title = v28;
+                var v29 = _titleFax; v29.Clean = value; _titleFax = v29;
+                var v30 = _titlePhone; v30.Clean = value; _titlePhone = v30;
                 _settingClean = 0;
             }
         }

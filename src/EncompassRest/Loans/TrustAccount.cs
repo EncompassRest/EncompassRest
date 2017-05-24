@@ -7,21 +7,26 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TrustAccount
     {
-        public Value<decimal?> Balance { get; set; }
+        private Value<decimal?> _balance;
+        public decimal? Balance { get { return _balance; } set { _balance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalance() => !Balance.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeBalance() => !_balance.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> Total1 { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _total1;
+        public decimal? Total1 { get { return _total1; } set { _total1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal1() => !Total1.Clean;
-        public Value<decimal?> Total2 { get; set; }
+        public bool ShouldSerializeTotal1() => !_total1.Clean;
+        private Value<decimal?> _total2;
+        public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal2() => !Total2.Clean;
-        public Value<List<TrustAccountItem>> TrustAccountItems { get; set; }
+        public bool ShouldSerializeTotal2() => !_total2.Clean;
+        private Value<List<TrustAccountItem>> _trustAccountItems;
+        public List<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems; } set { _trustAccountItems = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrustAccountItems() => !TrustAccountItems.Clean;
+        public bool ShouldSerializeTrustAccountItems() => !_trustAccountItems.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -29,22 +34,22 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Balance.Clean
-                    && Id.Clean
-                    && Total1.Clean
-                    && Total2.Clean
-                    && TrustAccountItems.Clean;
+                var clean = _balance.Clean
+                    && _id.Clean
+                    && _total1.Clean
+                    && _total2.Clean
+                    && _trustAccountItems.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Balance; v0.Clean = value; Balance = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = Total1; v2.Clean = value; Total1 = v2;
-                var v3 = Total2; v3.Clean = value; Total2 = v3;
-                var v4 = TrustAccountItems; v4.Clean = value; TrustAccountItems = v4;
+                var v0 = _balance; v0.Clean = value; _balance = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _total1; v2.Clean = value; _total1 = v2;
+                var v3 = _total2; v3.Clean = value; _total2 = v3;
+                var v4 = _trustAccountItems; v4.Clean = value; _trustAccountItems = v4;
                 _settingClean = 0;
             }
         }

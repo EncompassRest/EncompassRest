@@ -7,18 +7,22 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Form
     {
-        public Value<int?> FormId { get; set; }
+        private Value<int?> _formId;
+        public int? FormId { get { return _formId; } set { _formId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormId() => !FormId.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFormId() => !_formId.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> Name { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _name;
+        public string Name { get { return _name; } set { _name = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeName() => !Name.Clean;
-        public Value<string> SystemId { get; set; }
+        public bool ShouldSerializeName() => !_name.Clean;
+        private Value<string> _systemId;
+        public string SystemId { get { return _systemId; } set { _systemId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !SystemId.Clean;
+        public bool ShouldSerializeSystemId() => !_systemId.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -26,20 +30,20 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = FormId.Clean
-                    && Id.Clean
-                    && Name.Clean
-                    && SystemId.Clean;
+                var clean = _formId.Clean
+                    && _id.Clean
+                    && _name.Clean
+                    && _systemId.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = FormId; v0.Clean = value; FormId = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = Name; v2.Clean = value; Name = v2;
-                var v3 = SystemId; v3.Clean = value; SystemId = v3;
+                var v0 = _formId; v0.Clean = value; _formId = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _name; v2.Clean = value; _name = v2;
+                var v3 = _systemId; v3.Clean = value; _systemId = v3;
                 _settingClean = 0;
             }
         }

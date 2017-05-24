@@ -7,108 +7,142 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Asset
     {
-        public Value<string> AccountIdentifier { get; set; }
+        private Value<string> _accountIdentifier;
+        public string AccountIdentifier { get { return _accountIdentifier; } set { _accountIdentifier = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccountIdentifier() => !AccountIdentifier.Clean;
-        public Value<string> AltId { get; set; }
+        public bool ShouldSerializeAccountIdentifier() => !_accountIdentifier.Clean;
+        private Value<string> _altId;
+        public string AltId { get { return _altId; } set { _altId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAltId() => !AltId.Clean;
-        public Value<int?> AssetIndex { get; set; }
+        public bool ShouldSerializeAltId() => !_altId.Clean;
+        private Value<int?> _assetIndex;
+        public int? AssetIndex { get { return _assetIndex; } set { _assetIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAssetIndex() => !AssetIndex.Clean;
-        public Value<string> AssetType { get; set; }
+        public bool ShouldSerializeAssetIndex() => !_assetIndex.Clean;
+        private Value<string> _assetType;
+        public string AssetType { get { return _assetType; } set { _assetType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAssetType() => !AssetType.Clean;
-        public Value<string> Attention { get; set; }
+        public bool ShouldSerializeAssetType() => !_assetType.Clean;
+        private Value<string> _attention;
+        public string Attention { get { return _attention; } set { _attention = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAttention() => !Attention.Clean;
-        public Value<string> BorrowerId { get; set; }
+        public bool ShouldSerializeAttention() => !_attention.Clean;
+        private Value<string> _borrowerId;
+        public string BorrowerId { get { return _borrowerId; } set { _borrowerId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerId() => !BorrowerId.Clean;
-        public Value<decimal?> CashOrMarketValueAmount { get; set; }
+        public bool ShouldSerializeBorrowerId() => !_borrowerId.Clean;
+        private Value<decimal?> _cashOrMarketValueAmount;
+        public decimal? CashOrMarketValueAmount { get { return _cashOrMarketValueAmount; } set { _cashOrMarketValueAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCashOrMarketValueAmount() => !CashOrMarketValueAmount.Clean;
-        public Value<string> DepositoryAccountName { get; set; }
+        public bool ShouldSerializeCashOrMarketValueAmount() => !_cashOrMarketValueAmount.Clean;
+        private Value<string> _depositoryAccountName;
+        public string DepositoryAccountName { get { return _depositoryAccountName; } set { _depositoryAccountName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDepositoryAccountName() => !DepositoryAccountName.Clean;
-        public Value<DateTime?> DepositoryRequestDate { get; set; }
+        public bool ShouldSerializeDepositoryAccountName() => !_depositoryAccountName.Clean;
+        private Value<DateTime?> _depositoryRequestDate;
+        public DateTime? DepositoryRequestDate { get { return _depositoryRequestDate; } set { _depositoryRequestDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDepositoryRequestDate() => !DepositoryRequestDate.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeDepositoryRequestDate() => !_depositoryRequestDate.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<bool?> EntityDeleted { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<bool?> _entityDeleted;
+        public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEntityDeleted() => !EntityDeleted.Clean;
-        public Value<string> HolderAddressCity { get; set; }
+        public bool ShouldSerializeEntityDeleted() => !_entityDeleted.Clean;
+        private Value<string> _holderAddressCity;
+        public string HolderAddressCity { get { return _holderAddressCity; } set { _holderAddressCity = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderAddressCity() => !HolderAddressCity.Clean;
-        public Value<string> HolderAddressPostalCode { get; set; }
+        public bool ShouldSerializeHolderAddressCity() => !_holderAddressCity.Clean;
+        private Value<string> _holderAddressPostalCode;
+        public string HolderAddressPostalCode { get { return _holderAddressPostalCode; } set { _holderAddressPostalCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderAddressPostalCode() => !HolderAddressPostalCode.Clean;
-        public Value<string> HolderAddressState { get; set; }
+        public bool ShouldSerializeHolderAddressPostalCode() => !_holderAddressPostalCode.Clean;
+        private Value<string> _holderAddressState;
+        public string HolderAddressState { get { return _holderAddressState; } set { _holderAddressState = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderAddressState() => !HolderAddressState.Clean;
-        public Value<string> HolderAddressStreetLine1 { get; set; }
+        public bool ShouldSerializeHolderAddressState() => !_holderAddressState.Clean;
+        private Value<string> _holderAddressStreetLine1;
+        public string HolderAddressStreetLine1 { get { return _holderAddressStreetLine1; } set { _holderAddressStreetLine1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderAddressStreetLine1() => !HolderAddressStreetLine1.Clean;
-        public Value<string> HolderComments { get; set; }
+        public bool ShouldSerializeHolderAddressStreetLine1() => !_holderAddressStreetLine1.Clean;
+        private Value<string> _holderComments;
+        public string HolderComments { get { return _holderComments; } set { _holderComments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderComments() => !HolderComments.Clean;
-        public Value<string> HolderEmail { get; set; }
+        public bool ShouldSerializeHolderComments() => !_holderComments.Clean;
+        private Value<string> _holderEmail;
+        public string HolderEmail { get { return _holderEmail; } set { _holderEmail = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderEmail() => !HolderEmail.Clean;
-        public Value<string> HolderFax { get; set; }
+        public bool ShouldSerializeHolderEmail() => !_holderEmail.Clean;
+        private Value<string> _holderFax;
+        public string HolderFax { get { return _holderFax; } set { _holderFax = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderFax() => !HolderFax.Clean;
-        public Value<string> HolderName { get; set; }
+        public bool ShouldSerializeHolderFax() => !_holderFax.Clean;
+        private Value<string> _holderName;
+        public string HolderName { get { return _holderName; } set { _holderName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderName() => !HolderName.Clean;
-        public Value<string> HolderPhone { get; set; }
+        public bool ShouldSerializeHolderName() => !_holderName.Clean;
+        private Value<string> _holderPhone;
+        public string HolderPhone { get { return _holderPhone; } set { _holderPhone = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderPhone() => !HolderPhone.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHolderPhone() => !_holderPhone.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsEmpty { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isEmpty;
+        public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsEmpty() => !IsEmpty.Clean;
-        public Value<bool?> IsVod { get; set; }
+        public bool ShouldSerializeIsEmpty() => !_isEmpty.Clean;
+        private Value<bool?> _isVod;
+        public bool? IsVod { get { return _isVod; } set { _isVod = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsVod() => !IsVod.Clean;
-        public Value<decimal?> LifeInsuranceFaceValueAmount { get; set; }
+        public bool ShouldSerializeIsVod() => !_isVod.Clean;
+        private Value<decimal?> _lifeInsuranceFaceValueAmount;
+        public decimal? LifeInsuranceFaceValueAmount { get { return _lifeInsuranceFaceValueAmount; } set { _lifeInsuranceFaceValueAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLifeInsuranceFaceValueAmount() => !LifeInsuranceFaceValueAmount.Clean;
-        public Value<string> NameInAccount { get; set; }
+        public bool ShouldSerializeLifeInsuranceFaceValueAmount() => !_lifeInsuranceFaceValueAmount.Clean;
+        private Value<string> _nameInAccount;
+        public string NameInAccount { get { return _nameInAccount; } set { _nameInAccount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNameInAccount() => !NameInAccount.Clean;
-        public Value<bool?> NoLinkToDocTrackIndicator { get; set; }
+        public bool ShouldSerializeNameInAccount() => !_nameInAccount.Clean;
+        private Value<bool?> _noLinkToDocTrackIndicator;
+        public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !NoLinkToDocTrackIndicator.Clean;
-        public Value<string> Owner { get; set; }
+        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !_noLinkToDocTrackIndicator.Clean;
+        private Value<string> _owner;
+        public string Owner { get { return _owner; } set { _owner = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOwner() => !Owner.Clean;
-        public Value<bool?> PrintAttachmentIndicator { get; set; }
+        public bool ShouldSerializeOwner() => !_owner.Clean;
+        private Value<bool?> _printAttachmentIndicator;
+        public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintAttachmentIndicator() => !PrintAttachmentIndicator.Clean;
-        public Value<bool?> PrintUserNameIndicator { get; set; }
+        public bool ShouldSerializePrintAttachmentIndicator() => !_printAttachmentIndicator.Clean;
+        private Value<bool?> _printUserNameIndicator;
+        public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintUserNameIndicator() => !PrintUserNameIndicator.Clean;
-        public Value<string> Title { get; set; }
+        public bool ShouldSerializePrintUserNameIndicator() => !_printUserNameIndicator.Clean;
+        private Value<string> _title;
+        public string Title { get { return _title; } set { _title = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !Title.Clean;
-        public Value<string> TitleFax { get; set; }
+        public bool ShouldSerializeTitle() => !_title.Clean;
+        private Value<string> _titleFax;
+        public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleFax() => !TitleFax.Clean;
-        public Value<string> TitlePhone { get; set; }
+        public bool ShouldSerializeTitleFax() => !_titleFax.Clean;
+        private Value<string> _titlePhone;
+        public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitlePhone() => !TitlePhone.Clean;
-        public Value<decimal?> Total { get; set; }
+        public bool ShouldSerializeTitlePhone() => !_titlePhone.Clean;
+        private Value<decimal?> _total;
+        public decimal? Total { get { return _total; } set { _total = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal() => !Total.Clean;
-        public Value<int?> VodIndex { get; set; }
+        public bool ShouldSerializeTotal() => !_total.Clean;
+        private Value<int?> _vodIndex;
+        public int? VodIndex { get { return _vodIndex; } set { _vodIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVodIndex() => !VodIndex.Clean;
+        public bool ShouldSerializeVodIndex() => !_vodIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -116,80 +150,80 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AccountIdentifier.Clean
-                    && AltId.Clean
-                    && AssetIndex.Clean
-                    && AssetType.Clean
-                    && Attention.Clean
-                    && BorrowerId.Clean
-                    && CashOrMarketValueAmount.Clean
-                    && DepositoryAccountName.Clean
-                    && DepositoryRequestDate.Clean
-                    && Description.Clean
-                    && EntityDeleted.Clean
-                    && HolderAddressCity.Clean
-                    && HolderAddressPostalCode.Clean
-                    && HolderAddressState.Clean
-                    && HolderAddressStreetLine1.Clean
-                    && HolderComments.Clean
-                    && HolderEmail.Clean
-                    && HolderFax.Clean
-                    && HolderName.Clean
-                    && HolderPhone.Clean
-                    && Id.Clean
-                    && IsEmpty.Clean
-                    && IsVod.Clean
-                    && LifeInsuranceFaceValueAmount.Clean
-                    && NameInAccount.Clean
-                    && NoLinkToDocTrackIndicator.Clean
-                    && Owner.Clean
-                    && PrintAttachmentIndicator.Clean
-                    && PrintUserNameIndicator.Clean
-                    && Title.Clean
-                    && TitleFax.Clean
-                    && TitlePhone.Clean
-                    && Total.Clean
-                    && VodIndex.Clean;
+                var clean = _accountIdentifier.Clean
+                    && _altId.Clean
+                    && _assetIndex.Clean
+                    && _assetType.Clean
+                    && _attention.Clean
+                    && _borrowerId.Clean
+                    && _cashOrMarketValueAmount.Clean
+                    && _depositoryAccountName.Clean
+                    && _depositoryRequestDate.Clean
+                    && _description.Clean
+                    && _entityDeleted.Clean
+                    && _holderAddressCity.Clean
+                    && _holderAddressPostalCode.Clean
+                    && _holderAddressState.Clean
+                    && _holderAddressStreetLine1.Clean
+                    && _holderComments.Clean
+                    && _holderEmail.Clean
+                    && _holderFax.Clean
+                    && _holderName.Clean
+                    && _holderPhone.Clean
+                    && _id.Clean
+                    && _isEmpty.Clean
+                    && _isVod.Clean
+                    && _lifeInsuranceFaceValueAmount.Clean
+                    && _nameInAccount.Clean
+                    && _noLinkToDocTrackIndicator.Clean
+                    && _owner.Clean
+                    && _printAttachmentIndicator.Clean
+                    && _printUserNameIndicator.Clean
+                    && _title.Clean
+                    && _titleFax.Clean
+                    && _titlePhone.Clean
+                    && _total.Clean
+                    && _vodIndex.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AccountIdentifier; v0.Clean = value; AccountIdentifier = v0;
-                var v1 = AltId; v1.Clean = value; AltId = v1;
-                var v2 = AssetIndex; v2.Clean = value; AssetIndex = v2;
-                var v3 = AssetType; v3.Clean = value; AssetType = v3;
-                var v4 = Attention; v4.Clean = value; Attention = v4;
-                var v5 = BorrowerId; v5.Clean = value; BorrowerId = v5;
-                var v6 = CashOrMarketValueAmount; v6.Clean = value; CashOrMarketValueAmount = v6;
-                var v7 = DepositoryAccountName; v7.Clean = value; DepositoryAccountName = v7;
-                var v8 = DepositoryRequestDate; v8.Clean = value; DepositoryRequestDate = v8;
-                var v9 = Description; v9.Clean = value; Description = v9;
-                var v10 = EntityDeleted; v10.Clean = value; EntityDeleted = v10;
-                var v11 = HolderAddressCity; v11.Clean = value; HolderAddressCity = v11;
-                var v12 = HolderAddressPostalCode; v12.Clean = value; HolderAddressPostalCode = v12;
-                var v13 = HolderAddressState; v13.Clean = value; HolderAddressState = v13;
-                var v14 = HolderAddressStreetLine1; v14.Clean = value; HolderAddressStreetLine1 = v14;
-                var v15 = HolderComments; v15.Clean = value; HolderComments = v15;
-                var v16 = HolderEmail; v16.Clean = value; HolderEmail = v16;
-                var v17 = HolderFax; v17.Clean = value; HolderFax = v17;
-                var v18 = HolderName; v18.Clean = value; HolderName = v18;
-                var v19 = HolderPhone; v19.Clean = value; HolderPhone = v19;
-                var v20 = Id; v20.Clean = value; Id = v20;
-                var v21 = IsEmpty; v21.Clean = value; IsEmpty = v21;
-                var v22 = IsVod; v22.Clean = value; IsVod = v22;
-                var v23 = LifeInsuranceFaceValueAmount; v23.Clean = value; LifeInsuranceFaceValueAmount = v23;
-                var v24 = NameInAccount; v24.Clean = value; NameInAccount = v24;
-                var v25 = NoLinkToDocTrackIndicator; v25.Clean = value; NoLinkToDocTrackIndicator = v25;
-                var v26 = Owner; v26.Clean = value; Owner = v26;
-                var v27 = PrintAttachmentIndicator; v27.Clean = value; PrintAttachmentIndicator = v27;
-                var v28 = PrintUserNameIndicator; v28.Clean = value; PrintUserNameIndicator = v28;
-                var v29 = Title; v29.Clean = value; Title = v29;
-                var v30 = TitleFax; v30.Clean = value; TitleFax = v30;
-                var v31 = TitlePhone; v31.Clean = value; TitlePhone = v31;
-                var v32 = Total; v32.Clean = value; Total = v32;
-                var v33 = VodIndex; v33.Clean = value; VodIndex = v33;
+                var v0 = _accountIdentifier; v0.Clean = value; _accountIdentifier = v0;
+                var v1 = _altId; v1.Clean = value; _altId = v1;
+                var v2 = _assetIndex; v2.Clean = value; _assetIndex = v2;
+                var v3 = _assetType; v3.Clean = value; _assetType = v3;
+                var v4 = _attention; v4.Clean = value; _attention = v4;
+                var v5 = _borrowerId; v5.Clean = value; _borrowerId = v5;
+                var v6 = _cashOrMarketValueAmount; v6.Clean = value; _cashOrMarketValueAmount = v6;
+                var v7 = _depositoryAccountName; v7.Clean = value; _depositoryAccountName = v7;
+                var v8 = _depositoryRequestDate; v8.Clean = value; _depositoryRequestDate = v8;
+                var v9 = _description; v9.Clean = value; _description = v9;
+                var v10 = _entityDeleted; v10.Clean = value; _entityDeleted = v10;
+                var v11 = _holderAddressCity; v11.Clean = value; _holderAddressCity = v11;
+                var v12 = _holderAddressPostalCode; v12.Clean = value; _holderAddressPostalCode = v12;
+                var v13 = _holderAddressState; v13.Clean = value; _holderAddressState = v13;
+                var v14 = _holderAddressStreetLine1; v14.Clean = value; _holderAddressStreetLine1 = v14;
+                var v15 = _holderComments; v15.Clean = value; _holderComments = v15;
+                var v16 = _holderEmail; v16.Clean = value; _holderEmail = v16;
+                var v17 = _holderFax; v17.Clean = value; _holderFax = v17;
+                var v18 = _holderName; v18.Clean = value; _holderName = v18;
+                var v19 = _holderPhone; v19.Clean = value; _holderPhone = v19;
+                var v20 = _id; v20.Clean = value; _id = v20;
+                var v21 = _isEmpty; v21.Clean = value; _isEmpty = v21;
+                var v22 = _isVod; v22.Clean = value; _isVod = v22;
+                var v23 = _lifeInsuranceFaceValueAmount; v23.Clean = value; _lifeInsuranceFaceValueAmount = v23;
+                var v24 = _nameInAccount; v24.Clean = value; _nameInAccount = v24;
+                var v25 = _noLinkToDocTrackIndicator; v25.Clean = value; _noLinkToDocTrackIndicator = v25;
+                var v26 = _owner; v26.Clean = value; _owner = v26;
+                var v27 = _printAttachmentIndicator; v27.Clean = value; _printAttachmentIndicator = v27;
+                var v28 = _printUserNameIndicator; v28.Clean = value; _printUserNameIndicator = v28;
+                var v29 = _title; v29.Clean = value; _title = v29;
+                var v30 = _titleFax; v30.Clean = value; _titleFax = v30;
+                var v31 = _titlePhone; v31.Clean = value; _titlePhone = v31;
+                var v32 = _total; v32.Clean = value; _total = v32;
+                var v33 = _vodIndex; v33.Clean = value; _vodIndex = v33;
                 _settingClean = 0;
             }
         }

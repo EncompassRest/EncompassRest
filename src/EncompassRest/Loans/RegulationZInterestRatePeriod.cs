@@ -7,39 +7,50 @@ namespace EncompassRest.Loans
 {
     public sealed partial class RegulationZInterestRatePeriod
     {
-        public Value<DateTime?> AdjustmentDate { get; set; }
+        private Value<DateTime?> _adjustmentDate;
+        public DateTime? AdjustmentDate { get { return _adjustmentDate; } set { _adjustmentDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentDate() => !AdjustmentDate.Clean;
-        public Value<int?> AdjustmentMonths { get; set; }
+        public bool ShouldSerializeAdjustmentDate() => !_adjustmentDate.Clean;
+        private Value<int?> _adjustmentMonths;
+        public int? AdjustmentMonths { get { return _adjustmentMonths; } set { _adjustmentMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentMonths() => !AdjustmentMonths.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeAdjustmentMonths() => !_adjustmentMonths.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> InterestPayment { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _interestPayment;
+        public decimal? InterestPayment { get { return _interestPayment; } set { _interestPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestPayment() => !InterestPayment.Clean;
-        public Value<decimal?> InterestPrincipalPayment { get; set; }
+        public bool ShouldSerializeInterestPayment() => !_interestPayment.Clean;
+        private Value<decimal?> _interestPrincipalPayment;
+        public decimal? InterestPrincipalPayment { get { return _interestPrincipalPayment; } set { _interestPrincipalPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestPrincipalPayment() => !InterestPrincipalPayment.Clean;
-        public Value<decimal?> InterestRatePercent { get; set; }
+        public bool ShouldSerializeInterestPrincipalPayment() => !_interestPrincipalPayment.Clean;
+        private Value<decimal?> _interestRatePercent;
+        public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRatePercent() => !InterestRatePercent.Clean;
-        public Value<decimal?> MonthlyPayment { get; set; }
+        public bool ShouldSerializeInterestRatePercent() => !_interestRatePercent.Clean;
+        private Value<decimal?> _monthlyPayment;
+        public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyPayment() => !MonthlyPayment.Clean;
-        public Value<decimal?> PrincipalPayment { get; set; }
+        public bool ShouldSerializeMonthlyPayment() => !_monthlyPayment.Clean;
+        private Value<decimal?> _principalPayment;
+        public decimal? PrincipalPayment { get { return _principalPayment; } set { _principalPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrincipalPayment() => !PrincipalPayment.Clean;
-        public Value<string> RegulationZInterestRatePeriodType { get; set; }
+        public bool ShouldSerializePrincipalPayment() => !_principalPayment.Clean;
+        private Value<string> _regulationZInterestRatePeriodType;
+        public string RegulationZInterestRatePeriodType { get { return _regulationZInterestRatePeriodType; } set { _regulationZInterestRatePeriodType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRegulationZInterestRatePeriodType() => !RegulationZInterestRatePeriodType.Clean;
-        public Value<decimal?> TaxInsuranceAmount { get; set; }
+        public bool ShouldSerializeRegulationZInterestRatePeriodType() => !_regulationZInterestRatePeriodType.Clean;
+        private Value<decimal?> _taxInsuranceAmount;
+        public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxInsuranceAmount() => !TaxInsuranceAmount.Clean;
-        public Value<decimal?> TotalPayment { get; set; }
+        public bool ShouldSerializeTaxInsuranceAmount() => !_taxInsuranceAmount.Clean;
+        private Value<decimal?> _totalPayment;
+        public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPayment() => !TotalPayment.Clean;
+        public bool ShouldSerializeTotalPayment() => !_totalPayment.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,34 +58,34 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdjustmentDate.Clean
-                    && AdjustmentMonths.Clean
-                    && Id.Clean
-                    && InterestPayment.Clean
-                    && InterestPrincipalPayment.Clean
-                    && InterestRatePercent.Clean
-                    && MonthlyPayment.Clean
-                    && PrincipalPayment.Clean
-                    && RegulationZInterestRatePeriodType.Clean
-                    && TaxInsuranceAmount.Clean
-                    && TotalPayment.Clean;
+                var clean = _adjustmentDate.Clean
+                    && _adjustmentMonths.Clean
+                    && _id.Clean
+                    && _interestPayment.Clean
+                    && _interestPrincipalPayment.Clean
+                    && _interestRatePercent.Clean
+                    && _monthlyPayment.Clean
+                    && _principalPayment.Clean
+                    && _regulationZInterestRatePeriodType.Clean
+                    && _taxInsuranceAmount.Clean
+                    && _totalPayment.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdjustmentDate; v0.Clean = value; AdjustmentDate = v0;
-                var v1 = AdjustmentMonths; v1.Clean = value; AdjustmentMonths = v1;
-                var v2 = Id; v2.Clean = value; Id = v2;
-                var v3 = InterestPayment; v3.Clean = value; InterestPayment = v3;
-                var v4 = InterestPrincipalPayment; v4.Clean = value; InterestPrincipalPayment = v4;
-                var v5 = InterestRatePercent; v5.Clean = value; InterestRatePercent = v5;
-                var v6 = MonthlyPayment; v6.Clean = value; MonthlyPayment = v6;
-                var v7 = PrincipalPayment; v7.Clean = value; PrincipalPayment = v7;
-                var v8 = RegulationZInterestRatePeriodType; v8.Clean = value; RegulationZInterestRatePeriodType = v8;
-                var v9 = TaxInsuranceAmount; v9.Clean = value; TaxInsuranceAmount = v9;
-                var v10 = TotalPayment; v10.Clean = value; TotalPayment = v10;
+                var v0 = _adjustmentDate; v0.Clean = value; _adjustmentDate = v0;
+                var v1 = _adjustmentMonths; v1.Clean = value; _adjustmentMonths = v1;
+                var v2 = _id; v2.Clean = value; _id = v2;
+                var v3 = _interestPayment; v3.Clean = value; _interestPayment = v3;
+                var v4 = _interestPrincipalPayment; v4.Clean = value; _interestPrincipalPayment = v4;
+                var v5 = _interestRatePercent; v5.Clean = value; _interestRatePercent = v5;
+                var v6 = _monthlyPayment; v6.Clean = value; _monthlyPayment = v6;
+                var v7 = _principalPayment; v7.Clean = value; _principalPayment = v7;
+                var v8 = _regulationZInterestRatePeriodType; v8.Clean = value; _regulationZInterestRatePeriodType = v8;
+                var v9 = _taxInsuranceAmount; v9.Clean = value; _taxInsuranceAmount = v9;
+                var v10 = _totalPayment; v10.Clean = value; _totalPayment = v10;
                 _settingClean = 0;
             }
         }

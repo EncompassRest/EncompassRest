@@ -7,18 +7,22 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LogSnapshotField
     {
-        public Value<string> FieldID { get; set; }
+        private Value<string> _fieldID;
+        public string FieldID { get { return _fieldID; } set { _fieldID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldID() => !FieldID.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFieldID() => !_fieldID.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> ModalPath { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _modalPath;
+        public string ModalPath { get { return _modalPath; } set { _modalPath = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModalPath() => !ModalPath.Clean;
-        public Value<string> Value { get; set; }
+        public bool ShouldSerializeModalPath() => !_modalPath.Clean;
+        private Value<string> _value;
+        public string Value { get { return _value; } set { _value = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeValue() => !Value.Clean;
+        public bool ShouldSerializeValue() => !_value.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -26,20 +30,20 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = FieldID.Clean
-                    && Id.Clean
-                    && ModalPath.Clean
-                    && Value.Clean;
+                var clean = _fieldID.Clean
+                    && _id.Clean
+                    && _modalPath.Clean
+                    && _value.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = FieldID; v0.Clean = value; FieldID = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = ModalPath; v2.Clean = value; ModalPath = v2;
-                var v3 = Value; v3.Clean = value; Value = v3;
+                var v0 = _fieldID; v0.Clean = value; _fieldID = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _modalPath; v2.Clean = value; _modalPath = v2;
+                var v3 = _value; v3.Clean = value; _value = v3;
                 _settingClean = 0;
             }
         }

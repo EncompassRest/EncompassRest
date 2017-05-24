@@ -7,15 +7,18 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PurchaseCredit
     {
-        public Value<decimal?> Amount { get; set; }
+        private Value<decimal?> _amount;
+        public decimal? Amount { get { return _amount; } set { _amount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !Amount.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeAmount() => !_amount.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> PurchaseCreditType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _purchaseCreditType;
+        public string PurchaseCreditType { get { return _purchaseCreditType; } set { _purchaseCreditType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePurchaseCreditType() => !PurchaseCreditType.Clean;
+        public bool ShouldSerializePurchaseCreditType() => !_purchaseCreditType.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -23,18 +26,18 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Amount.Clean
-                    && Id.Clean
-                    && PurchaseCreditType.Clean;
+                var clean = _amount.Clean
+                    && _id.Clean
+                    && _purchaseCreditType.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Amount; v0.Clean = value; Amount = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = PurchaseCreditType; v2.Clean = value; PurchaseCreditType = v2;
+                var v0 = _amount; v0.Clean = value; _amount = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _purchaseCreditType; v2.Clean = value; _purchaseCreditType = v2;
                 _settingClean = 0;
             }
         }

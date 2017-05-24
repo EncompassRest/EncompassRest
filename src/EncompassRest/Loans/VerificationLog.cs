@@ -7,216 +7,286 @@ namespace EncompassRest.Loans
 {
     public sealed partial class VerificationLog
     {
-        public Value<string> AccessedBy { get; set; }
+        private Value<string> _accessedBy;
+        public string AccessedBy { get { return _accessedBy; } set { _accessedBy = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAccessedBy() => !_accessedBy.Clean;
+        private Value<DateTime?> _accessedDateUtc;
+        public DateTime? AccessedDateUtc { get { return _accessedDateUtc; } set { _accessedDateUtc = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAccessedDateUtc() => !_accessedDateUtc.Clean;
+        private Value<string> _addedBy;
+        public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAddedBy() => !_addedBy.Clean;
+        private Value<List<LogAlert>> _alerts;
+        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAlerts() => !_alerts.Clean;
+        private Value<string> _alertsXml;
+        public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAlertsXml() => !_alertsXml.Clean;
+        private Value<string> _allowedRoleDelimitedList;
+        public string AllowedRoleDelimitedList { get { return _allowedRoleDelimitedList; } set { _allowedRoleDelimitedList = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAllowedRoleDelimitedList() => !_allowedRoleDelimitedList.Clean;
+        private Value<List<EntityReference>> _allowedRoles;
+        public List<EntityReference> AllowedRoles { get { return _allowedRoles; } set { _allowedRoles = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAllowedRoles() => !_allowedRoles.Clean;
+        private Value<string> _allowedRolesXml;
+        public string AllowedRolesXml { get { return _allowedRolesXml; } set { _allowedRolesXml = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAllowedRolesXml() => !_allowedRolesXml.Clean;
+        private Value<DateTime?> _archiveDateUtc;
+        public DateTime? ArchiveDateUtc { get { return _archiveDateUtc; } set { _archiveDateUtc = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeArchiveDateUtc() => !_archiveDateUtc.Clean;
+        private Value<string> _archivedBy;
+        public string ArchivedBy { get { return _archivedBy; } set { _archivedBy = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeArchivedBy() => !_archivedBy.Clean;
+        private Value<bool?> _closingDocumentIndicator;
+        public bool? ClosingDocumentIndicator { get { return _closingDocumentIndicator; } set { _closingDocumentIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClosingDocumentIndicator() => !_closingDocumentIndicator.Clean;
+        private Value<List<LogComment>> _commentList;
+        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCommentList() => !_commentList.Clean;
+        private Value<string> _commentListXml;
+        public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCommentListXml() => !_commentListXml.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<string> _company;
+        public string Company { get { return _company; } set { _company = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCompany() => !_company.Clean;
+        private Value<List<EntityReference>> _conditions;
+        public List<EntityReference> Conditions { get { return _conditions; } set { _conditions = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConditions() => !_conditions.Clean;
+        private Value<string> _conditionsXml;
+        public string ConditionsXml { get { return _conditionsXml; } set { _conditionsXml = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConditionsXml() => !_conditionsXml.Clean;
+        private Value<DateTime?> _dateAddedUtc;
+        public DateTime? DateAddedUtc { get { return _dateAddedUtc; } set { _dateAddedUtc = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateAddedUtc() => !_dateAddedUtc.Clean;
+        private Value<DateTime?> _dateExpected;
+        public DateTime? DateExpected { get { return _dateExpected; } set { _dateExpected = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateExpected() => !_dateExpected.Clean;
+        private Value<DateTime?> _dateExpires;
+        public DateTime? DateExpires { get { return _dateExpires; } set { _dateExpires = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateExpires() => !_dateExpires.Clean;
+        private Value<DateTime?> _dateReceived;
+        public DateTime? DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateReceived() => !_dateReceived.Clean;
+        private Value<DateTime?> _dateRequested;
+        public DateTime? DateRequested { get { return _dateRequested; } set { _dateRequested = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateRequested() => !_dateRequested.Clean;
+        private Value<DateTime?> _dateRerequested;
+        public DateTime? DateRerequested { get { return _dateRerequested; } set { _dateRerequested = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateRerequested() => !_dateRerequested.Clean;
+        private Value<DateTime?> _dateUtc;
+        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
+        private Value<int?> _daysDue;
+        public int? DaysDue { get { return _daysDue; } set { _daysDue = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDaysDue() => !_daysDue.Clean;
+        private Value<int?> _daysTillExpire;
+        public int? DaysTillExpire { get { return _daysTillExpire; } set { _daysTillExpire = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDaysTillExpire() => !_daysTillExpire.Clean;
+        private Value<string> _documentDateTimeType;
+        public string DocumentDateTimeType { get { return _documentDateTimeType; } set { _documentDateTimeType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDocumentDateTimeType() => !_documentDateTimeType.Clean;
+        private Value<bool?> _eDisclosureIndicator;
+        public bool? EDisclosureIndicator { get { return _eDisclosureIndicator; } set { _eDisclosureIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEDisclosureIndicator() => !_eDisclosureIndicator.Clean;
+        private Value<string> _ePassSignature;
+        public string EPassSignature { get { return _ePassSignature; } set { _ePassSignature = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEPassSignature() => !_ePassSignature.Clean;
+        private Value<bool?> _expected;
+        public bool? Expected { get { return _expected; } set { _expected = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExpected() => !_expected.Clean;
+        private Value<bool?> _expires;
+        public bool? Expires { get { return _expires; } set { _expires = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExpires() => !_expires.Clean;
+        private Value<bool?> _fileAttachmentsMigrated;
+        public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
+        private Value<string> _fileAttachmentsXml;
+        public string FileAttachmentsXml { get { return _fileAttachmentsXml; } set { _fileAttachmentsXml = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFileAttachmentsXml() => !_fileAttachmentsXml.Clean;
+        private Value<string> _guid;
+        public string Guid { get { return _guid; } set { _guid = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGuid() => !_guid.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isEPassIndicator;
+        public bool? IsEPassIndicator { get { return _isEPassIndicator; } set { _isEPassIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsEPassIndicator() => !_isEPassIndicator.Clean;
+        private Value<bool?> _isExpired;
+        public bool? IsExpired { get { return _isExpired; } set { _isExpired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsExpired() => !_isExpired.Clean;
+        private Value<bool?> _isExternalIndicator;
+        public bool? IsExternalIndicator { get { return _isExternalIndicator; } set { _isExternalIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsExternalIndicator() => !_isExternalIndicator.Clean;
+        private Value<bool?> _isPastDue;
+        public bool? IsPastDue { get { return _isPastDue; } set { _isPastDue = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsPastDue() => !_isPastDue.Clean;
+        private Value<bool?> _isSystemSpecificIndicator;
+        public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
+        private Value<bool?> _isThirdPartyDocIndicator;
+        public bool? IsThirdPartyDocIndicator { get { return _isThirdPartyDocIndicator; } set { _isThirdPartyDocIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsThirdPartyDocIndicator() => !_isThirdPartyDocIndicator.Clean;
+        private Value<bool?> _isTPOWebcenterPortalIndicator;
+        public bool? IsTPOWebcenterPortalIndicator { get { return _isTPOWebcenterPortalIndicator; } set { _isTPOWebcenterPortalIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsTPOWebcenterPortalIndicator() => !_isTPOWebcenterPortalIndicator.Clean;
+        private Value<bool?> _isWebCenterIndicator;
+        public bool? IsWebCenterIndicator { get { return _isWebCenterIndicator; } set { _isWebCenterIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIsWebCenterIndicator() => !_isWebCenterIndicator.Clean;
+        private Value<string> _logId;
+        public string LogId { get { return _logId; } set { _logId = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLogId() => !_logId.Clean;
+        private Value<int?> _logRecordIndex;
+        public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
+        private Value<DateTime?> _orderDateUtc;
+        public DateTime? OrderDateUtc { get { return _orderDateUtc; } set { _orderDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccessedBy() => !AccessedBy.Clean;
-        public Value<DateTime?> AccessedDateUtc { get; set; }
+        public bool ShouldSerializeOrderDateUtc() => !_orderDateUtc.Clean;
+        private Value<string> _pairId;
+        public string PairId { get { return _pairId; } set { _pairId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccessedDateUtc() => !AccessedDateUtc.Clean;
-        public Value<string> AddedBy { get; set; }
+        public bool ShouldSerializePairId() => !_pairId.Clean;
+        private Value<bool?> _preClosingDocumentIndicator;
+        public bool? PreClosingDocumentIndicator { get { return _preClosingDocumentIndicator; } set { _preClosingDocumentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedBy() => !AddedBy.Clean;
-        public Value<List<LogAlert>> Alerts { get; set; }
+        public bool ShouldSerializePreClosingDocumentIndicator() => !_preClosingDocumentIndicator.Clean;
+        private Value<bool?> _received;
+        public bool? Received { get { return _received; } set { _received = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !Alerts.Clean;
-        public Value<string> AlertsXml { get; set; }
+        public bool ShouldSerializeReceived() => !_received.Clean;
+        private Value<DateTime?> _receiveDateUtc;
+        public DateTime? ReceiveDateUtc { get { return _receiveDateUtc; } set { _receiveDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlertsXml() => !AlertsXml.Clean;
-        public Value<string> AllowedRoleDelimitedList { get; set; }
+        public bool ShouldSerializeReceiveDateUtc() => !_receiveDateUtc.Clean;
+        private Value<string> _receivedBy;
+        public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllowedRoleDelimitedList() => !AllowedRoleDelimitedList.Clean;
-        public Value<List<EntityReference>> AllowedRoles { get; set; }
+        public bool ShouldSerializeReceivedBy() => !_receivedBy.Clean;
+        private Value<DateTime?> _reorderDateUtc;
+        public DateTime? ReorderDateUtc { get { return _reorderDateUtc; } set { _reorderDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllowedRoles() => !AllowedRoles.Clean;
-        public Value<string> AllowedRolesXml { get; set; }
+        public bool ShouldSerializeReorderDateUtc() => !_reorderDateUtc.Clean;
+        private Value<bool?> _requested;
+        public bool? Requested { get { return _requested; } set { _requested = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllowedRolesXml() => !AllowedRolesXml.Clean;
-        public Value<DateTime?> ArchiveDateUtc { get; set; }
+        public bool ShouldSerializeRequested() => !_requested.Clean;
+        private Value<string> _requestedBy;
+        public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeArchiveDateUtc() => !ArchiveDateUtc.Clean;
-        public Value<string> ArchivedBy { get; set; }
+        public bool ShouldSerializeRequestedBy() => !_requestedBy.Clean;
+        private Value<string> _requestedFrom;
+        public string RequestedFrom { get { return _requestedFrom; } set { _requestedFrom = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeArchivedBy() => !ArchivedBy.Clean;
-        public Value<bool?> ClosingDocumentIndicator { get; set; }
+        public bool ShouldSerializeRequestedFrom() => !_requestedFrom.Clean;
+        private Value<bool?> _rerequested;
+        public bool? Rerequested { get { return _rerequested; } set { _rerequested = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosingDocumentIndicator() => !ClosingDocumentIndicator.Clean;
-        public Value<List<LogComment>> CommentList { get; set; }
+        public bool ShouldSerializeRerequested() => !_rerequested.Clean;
+        private Value<string> _rerequestedBy;
+        public string RerequestedBy { get { return _rerequestedBy; } set { _rerequestedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !CommentList.Clean;
-        public Value<string> CommentListXml { get; set; }
+        public bool ShouldSerializeRerequestedBy() => !_rerequestedBy.Clean;
+        private Value<bool?> _reviewed;
+        public bool? Reviewed { get { return _reviewed; } set { _reviewed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentListXml() => !CommentListXml.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeReviewed() => !_reviewed.Clean;
+        private Value<string> _reviewedBy;
+        public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<string> Company { get; set; }
+        public bool ShouldSerializeReviewedBy() => !_reviewedBy.Clean;
+        private Value<DateTime?> _reviewedDateUtc;
+        public DateTime? ReviewedDateUtc { get { return _reviewedDateUtc; } set { _reviewedDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompany() => !Company.Clean;
-        public Value<List<EntityReference>> Conditions { get; set; }
+        public bool ShouldSerializeReviewedDateUtc() => !_reviewedDateUtc.Clean;
+        private Value<bool?> _shippingReady;
+        public bool? ShippingReady { get { return _shippingReady; } set { _shippingReady = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditions() => !Conditions.Clean;
-        public Value<string> ConditionsXml { get; set; }
+        public bool ShouldSerializeShippingReady() => !_shippingReady.Clean;
+        private Value<string> _shippingReadyBy;
+        public string ShippingReadyBy { get { return _shippingReadyBy; } set { _shippingReadyBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditionsXml() => !ConditionsXml.Clean;
-        public Value<DateTime?> DateAddedUtc { get; set; }
+        public bool ShouldSerializeShippingReadyBy() => !_shippingReadyBy.Clean;
+        private Value<DateTime?> _shippingReadyDateUtc;
+        public DateTime? ShippingReadyDateUtc { get { return _shippingReadyDateUtc; } set { _shippingReadyDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateAddedUtc() => !DateAddedUtc.Clean;
-        public Value<DateTime?> DateExpected { get; set; }
+        public bool ShouldSerializeShippingReadyDateUtc() => !_shippingReadyDateUtc.Clean;
+        private Value<string> _stage;
+        public string Stage { get { return _stage; } set { _stage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpected() => !DateExpected.Clean;
-        public Value<DateTime?> DateExpires { get; set; }
+        public bool ShouldSerializeStage() => !_stage.Clean;
+        private Value<string> _status;
+        public string Status { get { return _status; } set { _status = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpires() => !DateExpires.Clean;
-        public Value<DateTime?> DateReceived { get; set; }
+        public bool ShouldSerializeStatus() => !_status.Clean;
+        private Value<string> _systemId;
+        public string SystemId { get { return _systemId; } set { _systemId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReceived() => !DateReceived.Clean;
-        public Value<DateTime?> DateRequested { get; set; }
+        public bool ShouldSerializeSystemId() => !_systemId.Clean;
+        private Value<string> _title;
+        public string Title { get { return _title; } set { _title = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRequested() => !DateRequested.Clean;
-        public Value<DateTime?> DateRerequested { get; set; }
+        public bool ShouldSerializeTitle() => !_title.Clean;
+        private Value<bool?> _underwritingReady;
+        public bool? UnderwritingReady { get { return _underwritingReady; } set { _underwritingReady = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRerequested() => !DateRerequested.Clean;
-        public Value<DateTime?> DateUtc { get; set; }
+        public bool ShouldSerializeUnderwritingReady() => !_underwritingReady.Clean;
+        private Value<string> _underwritingReadyBy;
+        public string UnderwritingReadyBy { get { return _underwritingReadyBy; } set { _underwritingReadyBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !DateUtc.Clean;
-        public Value<int?> DaysDue { get; set; }
+        public bool ShouldSerializeUnderwritingReadyBy() => !_underwritingReadyBy.Clean;
+        private Value<DateTime?> _underwritingReadyDateUtc;
+        public DateTime? UnderwritingReadyDateUtc { get { return _underwritingReadyDateUtc; } set { _underwritingReadyDateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDaysDue() => !DaysDue.Clean;
-        public Value<int?> DaysTillExpire { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDaysTillExpire() => !DaysTillExpire.Clean;
-        public Value<string> DocumentDateTimeType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDocumentDateTimeType() => !DocumentDateTimeType.Clean;
-        public Value<bool?> EDisclosureIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEDisclosureIndicator() => !EDisclosureIndicator.Clean;
-        public Value<string> EPassSignature { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEPassSignature() => !EPassSignature.Clean;
-        public Value<bool?> Expected { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpected() => !Expected.Clean;
-        public Value<bool?> Expires { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpires() => !Expires.Clean;
-        public Value<bool?> FileAttachmentsMigrated { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !FileAttachmentsMigrated.Clean;
-        public Value<string> FileAttachmentsXml { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsXml() => !FileAttachmentsXml.Clean;
-        public Value<string> Guid { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !Guid.Clean;
-        public Value<string> Id { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsEPassIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsEPassIndicator() => !IsEPassIndicator.Clean;
-        public Value<bool?> IsExpired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsExpired() => !IsExpired.Clean;
-        public Value<bool?> IsExternalIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsExternalIndicator() => !IsExternalIndicator.Clean;
-        public Value<bool?> IsPastDue { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsPastDue() => !IsPastDue.Clean;
-        public Value<bool?> IsSystemSpecificIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !IsSystemSpecificIndicator.Clean;
-        public Value<bool?> IsThirdPartyDocIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsThirdPartyDocIndicator() => !IsThirdPartyDocIndicator.Clean;
-        public Value<bool?> IsTPOWebcenterPortalIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsTPOWebcenterPortalIndicator() => !IsTPOWebcenterPortalIndicator.Clean;
-        public Value<bool?> IsWebCenterIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsWebCenterIndicator() => !IsWebCenterIndicator.Clean;
-        public Value<string> LogId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogId() => !LogId.Clean;
-        public Value<int?> LogRecordIndex { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !LogRecordIndex.Clean;
-        public Value<DateTime?> OrderDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderDateUtc() => !OrderDateUtc.Clean;
-        public Value<string> PairId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePairId() => !PairId.Clean;
-        public Value<bool?> PreClosingDocumentIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePreClosingDocumentIndicator() => !PreClosingDocumentIndicator.Clean;
-        public Value<bool?> Received { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceived() => !Received.Clean;
-        public Value<DateTime?> ReceiveDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceiveDateUtc() => !ReceiveDateUtc.Clean;
-        public Value<string> ReceivedBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivedBy() => !ReceivedBy.Clean;
-        public Value<DateTime?> ReorderDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReorderDateUtc() => !ReorderDateUtc.Clean;
-        public Value<bool?> Requested { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequested() => !Requested.Clean;
-        public Value<string> RequestedBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestedBy() => !RequestedBy.Clean;
-        public Value<string> RequestedFrom { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestedFrom() => !RequestedFrom.Clean;
-        public Value<bool?> Rerequested { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequested() => !Rerequested.Clean;
-        public Value<string> RerequestedBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequestedBy() => !RerequestedBy.Clean;
-        public Value<bool?> Reviewed { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewed() => !Reviewed.Clean;
-        public Value<string> ReviewedBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedBy() => !ReviewedBy.Clean;
-        public Value<DateTime?> ReviewedDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedDateUtc() => !ReviewedDateUtc.Clean;
-        public Value<bool?> ShippingReady { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShippingReady() => !ShippingReady.Clean;
-        public Value<string> ShippingReadyBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShippingReadyBy() => !ShippingReadyBy.Clean;
-        public Value<DateTime?> ShippingReadyDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShippingReadyDateUtc() => !ShippingReadyDateUtc.Clean;
-        public Value<string> Stage { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStage() => !Stage.Clean;
-        public Value<string> Status { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatus() => !Status.Clean;
-        public Value<string> SystemId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !SystemId.Clean;
-        public Value<string> Title { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !Title.Clean;
-        public Value<bool?> UnderwritingReady { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnderwritingReady() => !UnderwritingReady.Clean;
-        public Value<string> UnderwritingReadyBy { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnderwritingReadyBy() => !UnderwritingReadyBy.Clean;
-        public Value<DateTime?> UnderwritingReadyDateUtc { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnderwritingReadyDateUtc() => !UnderwritingReadyDateUtc.Clean;
+        public bool ShouldSerializeUnderwritingReadyDateUtc() => !_underwritingReadyDateUtc.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -224,152 +294,152 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AccessedBy.Clean
-                    && AccessedDateUtc.Clean
-                    && AddedBy.Clean
-                    && Alerts.Clean
-                    && AlertsXml.Clean
-                    && AllowedRoleDelimitedList.Clean
-                    && AllowedRoles.Clean
-                    && AllowedRolesXml.Clean
-                    && ArchiveDateUtc.Clean
-                    && ArchivedBy.Clean
-                    && ClosingDocumentIndicator.Clean
-                    && CommentList.Clean
-                    && CommentListXml.Clean
-                    && Comments.Clean
-                    && Company.Clean
-                    && Conditions.Clean
-                    && ConditionsXml.Clean
-                    && DateAddedUtc.Clean
-                    && DateExpected.Clean
-                    && DateExpires.Clean
-                    && DateReceived.Clean
-                    && DateRequested.Clean
-                    && DateRerequested.Clean
-                    && DateUtc.Clean
-                    && DaysDue.Clean
-                    && DaysTillExpire.Clean
-                    && DocumentDateTimeType.Clean
-                    && EDisclosureIndicator.Clean
-                    && EPassSignature.Clean
-                    && Expected.Clean
-                    && Expires.Clean
-                    && FileAttachmentsMigrated.Clean
-                    && FileAttachmentsXml.Clean
-                    && Guid.Clean
-                    && Id.Clean
-                    && IsEPassIndicator.Clean
-                    && IsExpired.Clean
-                    && IsExternalIndicator.Clean
-                    && IsPastDue.Clean
-                    && IsSystemSpecificIndicator.Clean
-                    && IsThirdPartyDocIndicator.Clean
-                    && IsTPOWebcenterPortalIndicator.Clean
-                    && IsWebCenterIndicator.Clean
-                    && LogId.Clean
-                    && LogRecordIndex.Clean
-                    && OrderDateUtc.Clean
-                    && PairId.Clean
-                    && PreClosingDocumentIndicator.Clean
-                    && Received.Clean
-                    && ReceiveDateUtc.Clean
-                    && ReceivedBy.Clean
-                    && ReorderDateUtc.Clean
-                    && Requested.Clean
-                    && RequestedBy.Clean
-                    && RequestedFrom.Clean
-                    && Rerequested.Clean
-                    && RerequestedBy.Clean
-                    && Reviewed.Clean
-                    && ReviewedBy.Clean
-                    && ReviewedDateUtc.Clean
-                    && ShippingReady.Clean
-                    && ShippingReadyBy.Clean
-                    && ShippingReadyDateUtc.Clean
-                    && Stage.Clean
-                    && Status.Clean
-                    && SystemId.Clean
-                    && Title.Clean
-                    && UnderwritingReady.Clean
-                    && UnderwritingReadyBy.Clean
-                    && UnderwritingReadyDateUtc.Clean;
+                var clean = _accessedBy.Clean
+                    && _accessedDateUtc.Clean
+                    && _addedBy.Clean
+                    && _alerts.Clean
+                    && _alertsXml.Clean
+                    && _allowedRoleDelimitedList.Clean
+                    && _allowedRoles.Clean
+                    && _allowedRolesXml.Clean
+                    && _archiveDateUtc.Clean
+                    && _archivedBy.Clean
+                    && _closingDocumentIndicator.Clean
+                    && _commentList.Clean
+                    && _commentListXml.Clean
+                    && _comments.Clean
+                    && _company.Clean
+                    && _conditions.Clean
+                    && _conditionsXml.Clean
+                    && _dateAddedUtc.Clean
+                    && _dateExpected.Clean
+                    && _dateExpires.Clean
+                    && _dateReceived.Clean
+                    && _dateRequested.Clean
+                    && _dateRerequested.Clean
+                    && _dateUtc.Clean
+                    && _daysDue.Clean
+                    && _daysTillExpire.Clean
+                    && _documentDateTimeType.Clean
+                    && _eDisclosureIndicator.Clean
+                    && _ePassSignature.Clean
+                    && _expected.Clean
+                    && _expires.Clean
+                    && _fileAttachmentsMigrated.Clean
+                    && _fileAttachmentsXml.Clean
+                    && _guid.Clean
+                    && _id.Clean
+                    && _isEPassIndicator.Clean
+                    && _isExpired.Clean
+                    && _isExternalIndicator.Clean
+                    && _isPastDue.Clean
+                    && _isSystemSpecificIndicator.Clean
+                    && _isThirdPartyDocIndicator.Clean
+                    && _isTPOWebcenterPortalIndicator.Clean
+                    && _isWebCenterIndicator.Clean
+                    && _logId.Clean
+                    && _logRecordIndex.Clean
+                    && _orderDateUtc.Clean
+                    && _pairId.Clean
+                    && _preClosingDocumentIndicator.Clean
+                    && _received.Clean
+                    && _receiveDateUtc.Clean
+                    && _receivedBy.Clean
+                    && _reorderDateUtc.Clean
+                    && _requested.Clean
+                    && _requestedBy.Clean
+                    && _requestedFrom.Clean
+                    && _rerequested.Clean
+                    && _rerequestedBy.Clean
+                    && _reviewed.Clean
+                    && _reviewedBy.Clean
+                    && _reviewedDateUtc.Clean
+                    && _shippingReady.Clean
+                    && _shippingReadyBy.Clean
+                    && _shippingReadyDateUtc.Clean
+                    && _stage.Clean
+                    && _status.Clean
+                    && _systemId.Clean
+                    && _title.Clean
+                    && _underwritingReady.Clean
+                    && _underwritingReadyBy.Clean
+                    && _underwritingReadyDateUtc.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AccessedBy; v0.Clean = value; AccessedBy = v0;
-                var v1 = AccessedDateUtc; v1.Clean = value; AccessedDateUtc = v1;
-                var v2 = AddedBy; v2.Clean = value; AddedBy = v2;
-                var v3 = Alerts; v3.Clean = value; Alerts = v3;
-                var v4 = AlertsXml; v4.Clean = value; AlertsXml = v4;
-                var v5 = AllowedRoleDelimitedList; v5.Clean = value; AllowedRoleDelimitedList = v5;
-                var v6 = AllowedRoles; v6.Clean = value; AllowedRoles = v6;
-                var v7 = AllowedRolesXml; v7.Clean = value; AllowedRolesXml = v7;
-                var v8 = ArchiveDateUtc; v8.Clean = value; ArchiveDateUtc = v8;
-                var v9 = ArchivedBy; v9.Clean = value; ArchivedBy = v9;
-                var v10 = ClosingDocumentIndicator; v10.Clean = value; ClosingDocumentIndicator = v10;
-                var v11 = CommentList; v11.Clean = value; CommentList = v11;
-                var v12 = CommentListXml; v12.Clean = value; CommentListXml = v12;
-                var v13 = Comments; v13.Clean = value; Comments = v13;
-                var v14 = Company; v14.Clean = value; Company = v14;
-                var v15 = Conditions; v15.Clean = value; Conditions = v15;
-                var v16 = ConditionsXml; v16.Clean = value; ConditionsXml = v16;
-                var v17 = DateAddedUtc; v17.Clean = value; DateAddedUtc = v17;
-                var v18 = DateExpected; v18.Clean = value; DateExpected = v18;
-                var v19 = DateExpires; v19.Clean = value; DateExpires = v19;
-                var v20 = DateReceived; v20.Clean = value; DateReceived = v20;
-                var v21 = DateRequested; v21.Clean = value; DateRequested = v21;
-                var v22 = DateRerequested; v22.Clean = value; DateRerequested = v22;
-                var v23 = DateUtc; v23.Clean = value; DateUtc = v23;
-                var v24 = DaysDue; v24.Clean = value; DaysDue = v24;
-                var v25 = DaysTillExpire; v25.Clean = value; DaysTillExpire = v25;
-                var v26 = DocumentDateTimeType; v26.Clean = value; DocumentDateTimeType = v26;
-                var v27 = EDisclosureIndicator; v27.Clean = value; EDisclosureIndicator = v27;
-                var v28 = EPassSignature; v28.Clean = value; EPassSignature = v28;
-                var v29 = Expected; v29.Clean = value; Expected = v29;
-                var v30 = Expires; v30.Clean = value; Expires = v30;
-                var v31 = FileAttachmentsMigrated; v31.Clean = value; FileAttachmentsMigrated = v31;
-                var v32 = FileAttachmentsXml; v32.Clean = value; FileAttachmentsXml = v32;
-                var v33 = Guid; v33.Clean = value; Guid = v33;
-                var v34 = Id; v34.Clean = value; Id = v34;
-                var v35 = IsEPassIndicator; v35.Clean = value; IsEPassIndicator = v35;
-                var v36 = IsExpired; v36.Clean = value; IsExpired = v36;
-                var v37 = IsExternalIndicator; v37.Clean = value; IsExternalIndicator = v37;
-                var v38 = IsPastDue; v38.Clean = value; IsPastDue = v38;
-                var v39 = IsSystemSpecificIndicator; v39.Clean = value; IsSystemSpecificIndicator = v39;
-                var v40 = IsThirdPartyDocIndicator; v40.Clean = value; IsThirdPartyDocIndicator = v40;
-                var v41 = IsTPOWebcenterPortalIndicator; v41.Clean = value; IsTPOWebcenterPortalIndicator = v41;
-                var v42 = IsWebCenterIndicator; v42.Clean = value; IsWebCenterIndicator = v42;
-                var v43 = LogId; v43.Clean = value; LogId = v43;
-                var v44 = LogRecordIndex; v44.Clean = value; LogRecordIndex = v44;
-                var v45 = OrderDateUtc; v45.Clean = value; OrderDateUtc = v45;
-                var v46 = PairId; v46.Clean = value; PairId = v46;
-                var v47 = PreClosingDocumentIndicator; v47.Clean = value; PreClosingDocumentIndicator = v47;
-                var v48 = Received; v48.Clean = value; Received = v48;
-                var v49 = ReceiveDateUtc; v49.Clean = value; ReceiveDateUtc = v49;
-                var v50 = ReceivedBy; v50.Clean = value; ReceivedBy = v50;
-                var v51 = ReorderDateUtc; v51.Clean = value; ReorderDateUtc = v51;
-                var v52 = Requested; v52.Clean = value; Requested = v52;
-                var v53 = RequestedBy; v53.Clean = value; RequestedBy = v53;
-                var v54 = RequestedFrom; v54.Clean = value; RequestedFrom = v54;
-                var v55 = Rerequested; v55.Clean = value; Rerequested = v55;
-                var v56 = RerequestedBy; v56.Clean = value; RerequestedBy = v56;
-                var v57 = Reviewed; v57.Clean = value; Reviewed = v57;
-                var v58 = ReviewedBy; v58.Clean = value; ReviewedBy = v58;
-                var v59 = ReviewedDateUtc; v59.Clean = value; ReviewedDateUtc = v59;
-                var v60 = ShippingReady; v60.Clean = value; ShippingReady = v60;
-                var v61 = ShippingReadyBy; v61.Clean = value; ShippingReadyBy = v61;
-                var v62 = ShippingReadyDateUtc; v62.Clean = value; ShippingReadyDateUtc = v62;
-                var v63 = Stage; v63.Clean = value; Stage = v63;
-                var v64 = Status; v64.Clean = value; Status = v64;
-                var v65 = SystemId; v65.Clean = value; SystemId = v65;
-                var v66 = Title; v66.Clean = value; Title = v66;
-                var v67 = UnderwritingReady; v67.Clean = value; UnderwritingReady = v67;
-                var v68 = UnderwritingReadyBy; v68.Clean = value; UnderwritingReadyBy = v68;
-                var v69 = UnderwritingReadyDateUtc; v69.Clean = value; UnderwritingReadyDateUtc = v69;
+                var v0 = _accessedBy; v0.Clean = value; _accessedBy = v0;
+                var v1 = _accessedDateUtc; v1.Clean = value; _accessedDateUtc = v1;
+                var v2 = _addedBy; v2.Clean = value; _addedBy = v2;
+                var v3 = _alerts; v3.Clean = value; _alerts = v3;
+                var v4 = _alertsXml; v4.Clean = value; _alertsXml = v4;
+                var v5 = _allowedRoleDelimitedList; v5.Clean = value; _allowedRoleDelimitedList = v5;
+                var v6 = _allowedRoles; v6.Clean = value; _allowedRoles = v6;
+                var v7 = _allowedRolesXml; v7.Clean = value; _allowedRolesXml = v7;
+                var v8 = _archiveDateUtc; v8.Clean = value; _archiveDateUtc = v8;
+                var v9 = _archivedBy; v9.Clean = value; _archivedBy = v9;
+                var v10 = _closingDocumentIndicator; v10.Clean = value; _closingDocumentIndicator = v10;
+                var v11 = _commentList; v11.Clean = value; _commentList = v11;
+                var v12 = _commentListXml; v12.Clean = value; _commentListXml = v12;
+                var v13 = _comments; v13.Clean = value; _comments = v13;
+                var v14 = _company; v14.Clean = value; _company = v14;
+                var v15 = _conditions; v15.Clean = value; _conditions = v15;
+                var v16 = _conditionsXml; v16.Clean = value; _conditionsXml = v16;
+                var v17 = _dateAddedUtc; v17.Clean = value; _dateAddedUtc = v17;
+                var v18 = _dateExpected; v18.Clean = value; _dateExpected = v18;
+                var v19 = _dateExpires; v19.Clean = value; _dateExpires = v19;
+                var v20 = _dateReceived; v20.Clean = value; _dateReceived = v20;
+                var v21 = _dateRequested; v21.Clean = value; _dateRequested = v21;
+                var v22 = _dateRerequested; v22.Clean = value; _dateRerequested = v22;
+                var v23 = _dateUtc; v23.Clean = value; _dateUtc = v23;
+                var v24 = _daysDue; v24.Clean = value; _daysDue = v24;
+                var v25 = _daysTillExpire; v25.Clean = value; _daysTillExpire = v25;
+                var v26 = _documentDateTimeType; v26.Clean = value; _documentDateTimeType = v26;
+                var v27 = _eDisclosureIndicator; v27.Clean = value; _eDisclosureIndicator = v27;
+                var v28 = _ePassSignature; v28.Clean = value; _ePassSignature = v28;
+                var v29 = _expected; v29.Clean = value; _expected = v29;
+                var v30 = _expires; v30.Clean = value; _expires = v30;
+                var v31 = _fileAttachmentsMigrated; v31.Clean = value; _fileAttachmentsMigrated = v31;
+                var v32 = _fileAttachmentsXml; v32.Clean = value; _fileAttachmentsXml = v32;
+                var v33 = _guid; v33.Clean = value; _guid = v33;
+                var v34 = _id; v34.Clean = value; _id = v34;
+                var v35 = _isEPassIndicator; v35.Clean = value; _isEPassIndicator = v35;
+                var v36 = _isExpired; v36.Clean = value; _isExpired = v36;
+                var v37 = _isExternalIndicator; v37.Clean = value; _isExternalIndicator = v37;
+                var v38 = _isPastDue; v38.Clean = value; _isPastDue = v38;
+                var v39 = _isSystemSpecificIndicator; v39.Clean = value; _isSystemSpecificIndicator = v39;
+                var v40 = _isThirdPartyDocIndicator; v40.Clean = value; _isThirdPartyDocIndicator = v40;
+                var v41 = _isTPOWebcenterPortalIndicator; v41.Clean = value; _isTPOWebcenterPortalIndicator = v41;
+                var v42 = _isWebCenterIndicator; v42.Clean = value; _isWebCenterIndicator = v42;
+                var v43 = _logId; v43.Clean = value; _logId = v43;
+                var v44 = _logRecordIndex; v44.Clean = value; _logRecordIndex = v44;
+                var v45 = _orderDateUtc; v45.Clean = value; _orderDateUtc = v45;
+                var v46 = _pairId; v46.Clean = value; _pairId = v46;
+                var v47 = _preClosingDocumentIndicator; v47.Clean = value; _preClosingDocumentIndicator = v47;
+                var v48 = _received; v48.Clean = value; _received = v48;
+                var v49 = _receiveDateUtc; v49.Clean = value; _receiveDateUtc = v49;
+                var v50 = _receivedBy; v50.Clean = value; _receivedBy = v50;
+                var v51 = _reorderDateUtc; v51.Clean = value; _reorderDateUtc = v51;
+                var v52 = _requested; v52.Clean = value; _requested = v52;
+                var v53 = _requestedBy; v53.Clean = value; _requestedBy = v53;
+                var v54 = _requestedFrom; v54.Clean = value; _requestedFrom = v54;
+                var v55 = _rerequested; v55.Clean = value; _rerequested = v55;
+                var v56 = _rerequestedBy; v56.Clean = value; _rerequestedBy = v56;
+                var v57 = _reviewed; v57.Clean = value; _reviewed = v57;
+                var v58 = _reviewedBy; v58.Clean = value; _reviewedBy = v58;
+                var v59 = _reviewedDateUtc; v59.Clean = value; _reviewedDateUtc = v59;
+                var v60 = _shippingReady; v60.Clean = value; _shippingReady = v60;
+                var v61 = _shippingReadyBy; v61.Clean = value; _shippingReadyBy = v61;
+                var v62 = _shippingReadyDateUtc; v62.Clean = value; _shippingReadyDateUtc = v62;
+                var v63 = _stage; v63.Clean = value; _stage = v63;
+                var v64 = _status; v64.Clean = value; _status = v64;
+                var v65 = _systemId; v65.Clean = value; _systemId = v65;
+                var v66 = _title; v66.Clean = value; _title = v66;
+                var v67 = _underwritingReady; v67.Clean = value; _underwritingReady = v67;
+                var v68 = _underwritingReadyBy; v68.Clean = value; _underwritingReadyBy = v68;
+                var v69 = _underwritingReadyDateUtc; v69.Clean = value; _underwritingReadyDateUtc = v69;
                 _settingClean = 0;
             }
         }

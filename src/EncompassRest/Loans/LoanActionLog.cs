@@ -7,27 +7,34 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanActionLog
     {
-        public Value<List<LogAlert>> Alerts { get; set; }
+        private Value<List<LogAlert>> _alerts;
+        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !Alerts.Clean;
-        public Value<List<LogComment>> CommentList { get; set; }
+        public bool ShouldSerializeAlerts() => !_alerts.Clean;
+        private Value<List<LogComment>> _commentList;
+        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !CommentList.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCommentList() => !_commentList.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<DateTime?> DateUtc { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<DateTime?> _dateUtc;
+        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !DateUtc.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> LoanActionType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _loanActionType;
+        public string LoanActionType { get { return _loanActionType; } set { _loanActionType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanActionType() => !LoanActionType.Clean;
-        public Value<string> TriggeredBy { get; set; }
+        public bool ShouldSerializeLoanActionType() => !_loanActionType.Clean;
+        private Value<string> _triggeredBy;
+        public string TriggeredBy { get { return _triggeredBy; } set { _triggeredBy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTriggeredBy() => !TriggeredBy.Clean;
+        public bool ShouldSerializeTriggeredBy() => !_triggeredBy.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -35,26 +42,26 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Alerts.Clean
-                    && CommentList.Clean
-                    && Comments.Clean
-                    && DateUtc.Clean
-                    && Id.Clean
-                    && LoanActionType.Clean
-                    && TriggeredBy.Clean;
+                var clean = _alerts.Clean
+                    && _commentList.Clean
+                    && _comments.Clean
+                    && _dateUtc.Clean
+                    && _id.Clean
+                    && _loanActionType.Clean
+                    && _triggeredBy.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Alerts; v0.Clean = value; Alerts = v0;
-                var v1 = CommentList; v1.Clean = value; CommentList = v1;
-                var v2 = Comments; v2.Clean = value; Comments = v2;
-                var v3 = DateUtc; v3.Clean = value; DateUtc = v3;
-                var v4 = Id; v4.Clean = value; Id = v4;
-                var v5 = LoanActionType; v5.Clean = value; LoanActionType = v5;
-                var v6 = TriggeredBy; v6.Clean = value; TriggeredBy = v6;
+                var v0 = _alerts; v0.Clean = value; _alerts = v0;
+                var v1 = _commentList; v1.Clean = value; _commentList = v1;
+                var v2 = _comments; v2.Clean = value; _comments = v2;
+                var v3 = _dateUtc; v3.Clean = value; _dateUtc = v3;
+                var v4 = _id; v4.Clean = value; _id = v4;
+                var v5 = _loanActionType; v5.Clean = value; _loanActionType = v5;
+                var v6 = _triggeredBy; v6.Clean = value; _triggeredBy = v6;
                 _settingClean = 0;
             }
         }

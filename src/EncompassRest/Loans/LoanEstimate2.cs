@@ -7,168 +7,222 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanEstimate2
     {
-        public Value<decimal?> ActualLenderCredits { get; set; }
+        private Value<decimal?> _actualLenderCredits;
+        public decimal? ActualLenderCredits { get { return _actualLenderCredits; } set { _actualLenderCredits = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActualLenderCredits() => !ActualLenderCredits.Clean;
-        public Value<decimal?> ActualSTDLESellerCredits { get; set; }
+        public bool ShouldSerializeActualLenderCredits() => !_actualLenderCredits.Clean;
+        private Value<decimal?> _actualSTDLESellerCredits;
+        public decimal? ActualSTDLESellerCredits { get { return _actualSTDLESellerCredits; } set { _actualSTDLESellerCredits = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActualSTDLESellerCredits() => !ActualSTDLESellerCredits.Clean;
-        public Value<decimal?> ActualSTDLETotalClosingCostJ { get; set; }
+        public bool ShouldSerializeActualSTDLESellerCredits() => !_actualSTDLESellerCredits.Clean;
+        private Value<decimal?> _actualSTDLETotalClosingCostJ;
+        public decimal? ActualSTDLETotalClosingCostJ { get { return _actualSTDLETotalClosingCostJ; } set { _actualSTDLETotalClosingCostJ = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActualSTDLETotalClosingCostJ() => !ActualSTDLETotalClosingCostJ.Clean;
-        public Value<decimal?> AdjustmentsOtherCredits { get; set; }
+        public bool ShouldSerializeActualSTDLETotalClosingCostJ() => !_actualSTDLETotalClosingCostJ.Clean;
+        private Value<decimal?> _adjustmentsOtherCredits;
+        public decimal? AdjustmentsOtherCredits { get { return _adjustmentsOtherCredits; } set { _adjustmentsOtherCredits = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCredits() => !AdjustmentsOtherCredits.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt1 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCredits() => !_adjustmentsOtherCredits.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt1;
+        public decimal? AdjustmentsOtherCreditsAmt1 { get { return _adjustmentsOtherCreditsAmt1; } set { _adjustmentsOtherCreditsAmt1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt1() => !AdjustmentsOtherCreditsAmt1.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt10 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt1() => !_adjustmentsOtherCreditsAmt1.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt10;
+        public decimal? AdjustmentsOtherCreditsAmt10 { get { return _adjustmentsOtherCreditsAmt10; } set { _adjustmentsOtherCreditsAmt10 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt10() => !AdjustmentsOtherCreditsAmt10.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt2 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt10() => !_adjustmentsOtherCreditsAmt10.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt2;
+        public decimal? AdjustmentsOtherCreditsAmt2 { get { return _adjustmentsOtherCreditsAmt2; } set { _adjustmentsOtherCreditsAmt2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt2() => !AdjustmentsOtherCreditsAmt2.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt3 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt2() => !_adjustmentsOtherCreditsAmt2.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt3;
+        public decimal? AdjustmentsOtherCreditsAmt3 { get { return _adjustmentsOtherCreditsAmt3; } set { _adjustmentsOtherCreditsAmt3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt3() => !AdjustmentsOtherCreditsAmt3.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt4 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt3() => !_adjustmentsOtherCreditsAmt3.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt4;
+        public decimal? AdjustmentsOtherCreditsAmt4 { get { return _adjustmentsOtherCreditsAmt4; } set { _adjustmentsOtherCreditsAmt4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt4() => !AdjustmentsOtherCreditsAmt4.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt5 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt4() => !_adjustmentsOtherCreditsAmt4.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt5;
+        public decimal? AdjustmentsOtherCreditsAmt5 { get { return _adjustmentsOtherCreditsAmt5; } set { _adjustmentsOtherCreditsAmt5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt5() => !AdjustmentsOtherCreditsAmt5.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt6 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt5() => !_adjustmentsOtherCreditsAmt5.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt6;
+        public decimal? AdjustmentsOtherCreditsAmt6 { get { return _adjustmentsOtherCreditsAmt6; } set { _adjustmentsOtherCreditsAmt6 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt6() => !AdjustmentsOtherCreditsAmt6.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt7 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt6() => !_adjustmentsOtherCreditsAmt6.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt7;
+        public decimal? AdjustmentsOtherCreditsAmt7 { get { return _adjustmentsOtherCreditsAmt7; } set { _adjustmentsOtherCreditsAmt7 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt7() => !AdjustmentsOtherCreditsAmt7.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt8 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt7() => !_adjustmentsOtherCreditsAmt7.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt8;
+        public decimal? AdjustmentsOtherCreditsAmt8 { get { return _adjustmentsOtherCreditsAmt8; } set { _adjustmentsOtherCreditsAmt8 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt8() => !AdjustmentsOtherCreditsAmt8.Clean;
-        public Value<decimal?> AdjustmentsOtherCreditsAmt9 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt8() => !_adjustmentsOtherCreditsAmt8.Clean;
+        private Value<decimal?> _adjustmentsOtherCreditsAmt9;
+        public decimal? AdjustmentsOtherCreditsAmt9 { get { return _adjustmentsOtherCreditsAmt9; } set { _adjustmentsOtherCreditsAmt9 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsAmt9() => !AdjustmentsOtherCreditsAmt9.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc1 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsAmt9() => !_adjustmentsOtherCreditsAmt9.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc1;
+        public string AdjustmentsOtherCreditsDesc1 { get { return _adjustmentsOtherCreditsDesc1; } set { _adjustmentsOtherCreditsDesc1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc1() => !AdjustmentsOtherCreditsDesc1.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc10 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc1() => !_adjustmentsOtherCreditsDesc1.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc10;
+        public string AdjustmentsOtherCreditsDesc10 { get { return _adjustmentsOtherCreditsDesc10; } set { _adjustmentsOtherCreditsDesc10 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc10() => !AdjustmentsOtherCreditsDesc10.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc2 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc10() => !_adjustmentsOtherCreditsDesc10.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc2;
+        public string AdjustmentsOtherCreditsDesc2 { get { return _adjustmentsOtherCreditsDesc2; } set { _adjustmentsOtherCreditsDesc2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc2() => !AdjustmentsOtherCreditsDesc2.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc3 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc2() => !_adjustmentsOtherCreditsDesc2.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc3;
+        public string AdjustmentsOtherCreditsDesc3 { get { return _adjustmentsOtherCreditsDesc3; } set { _adjustmentsOtherCreditsDesc3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc3() => !AdjustmentsOtherCreditsDesc3.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc4 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc3() => !_adjustmentsOtherCreditsDesc3.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc4;
+        public string AdjustmentsOtherCreditsDesc4 { get { return _adjustmentsOtherCreditsDesc4; } set { _adjustmentsOtherCreditsDesc4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc4() => !AdjustmentsOtherCreditsDesc4.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc5 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc4() => !_adjustmentsOtherCreditsDesc4.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc5;
+        public string AdjustmentsOtherCreditsDesc5 { get { return _adjustmentsOtherCreditsDesc5; } set { _adjustmentsOtherCreditsDesc5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc5() => !AdjustmentsOtherCreditsDesc5.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc6 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc5() => !_adjustmentsOtherCreditsDesc5.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc6;
+        public string AdjustmentsOtherCreditsDesc6 { get { return _adjustmentsOtherCreditsDesc6; } set { _adjustmentsOtherCreditsDesc6 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc6() => !AdjustmentsOtherCreditsDesc6.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc7 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc6() => !_adjustmentsOtherCreditsDesc6.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc7;
+        public string AdjustmentsOtherCreditsDesc7 { get { return _adjustmentsOtherCreditsDesc7; } set { _adjustmentsOtherCreditsDesc7 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc7() => !AdjustmentsOtherCreditsDesc7.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc8 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc7() => !_adjustmentsOtherCreditsDesc7.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc8;
+        public string AdjustmentsOtherCreditsDesc8 { get { return _adjustmentsOtherCreditsDesc8; } set { _adjustmentsOtherCreditsDesc8 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc8() => !AdjustmentsOtherCreditsDesc8.Clean;
-        public Value<string> AdjustmentsOtherCreditsDesc9 { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc8() => !_adjustmentsOtherCreditsDesc8.Clean;
+        private Value<string> _adjustmentsOtherCreditsDesc9;
+        public string AdjustmentsOtherCreditsDesc9 { get { return _adjustmentsOtherCreditsDesc9; } set { _adjustmentsOtherCreditsDesc9 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentsOtherCreditsDesc9() => !AdjustmentsOtherCreditsDesc9.Clean;
-        public Value<decimal?> ClosingCostsFinanced { get; set; }
+        public bool ShouldSerializeAdjustmentsOtherCreditsDesc9() => !_adjustmentsOtherCreditsDesc9.Clean;
+        private Value<decimal?> _closingCostsFinanced;
+        public decimal? ClosingCostsFinanced { get { return _closingCostsFinanced; } set { _closingCostsFinanced = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosingCostsFinanced() => !ClosingCostsFinanced.Clean;
-        public Value<decimal?> DownPayment { get; set; }
+        public bool ShouldSerializeClosingCostsFinanced() => !_closingCostsFinanced.Clean;
+        private Value<decimal?> _downPayment;
+        public decimal? DownPayment { get { return _downPayment; } set { _downPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPayment() => !DownPayment.Clean;
-        public Value<decimal?> EstimatedCashToCloseAV { get; set; }
+        public bool ShouldSerializeDownPayment() => !_downPayment.Clean;
+        private Value<decimal?> _estimatedCashToCloseAV;
+        public decimal? EstimatedCashToCloseAV { get { return _estimatedCashToCloseAV; } set { _estimatedCashToCloseAV = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEstimatedCashToCloseAV() => !EstimatedCashToCloseAV.Clean;
-        public Value<decimal?> EstimatedCashToCloseSV { get; set; }
+        public bool ShouldSerializeEstimatedCashToCloseAV() => !_estimatedCashToCloseAV.Clean;
+        private Value<decimal?> _estimatedCashToCloseSV;
+        public decimal? EstimatedCashToCloseSV { get { return _estimatedCashToCloseSV; } set { _estimatedCashToCloseSV = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEstimatedCashToCloseSV() => !EstimatedCashToCloseSV.Clean;
-        public Value<int?> EstimatedTotalPayoffsAndPaymentsAmount { get; set; }
+        public bool ShouldSerializeEstimatedCashToCloseSV() => !_estimatedCashToCloseSV.Clean;
+        private Value<int?> _estimatedTotalPayoffsAndPaymentsAmount;
+        public int? EstimatedTotalPayoffsAndPaymentsAmount { get { return _estimatedTotalPayoffsAndPaymentsAmount; } set { _estimatedTotalPayoffsAndPaymentsAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEstimatedTotalPayoffsAndPaymentsAmount() => !EstimatedTotalPayoffsAndPaymentsAmount.Clean;
-        public Value<int?> firstChangeFrequencyMonth { get; set; }
+        public bool ShouldSerializeEstimatedTotalPayoffsAndPaymentsAmount() => !_estimatedTotalPayoffsAndPaymentsAmount.Clean;
+        private Value<int?> _firstChangeFrequencyMonth;
+        public int? firstChangeFrequencyMonth { get { return _firstChangeFrequencyMonth; } set { _firstChangeFrequencyMonth = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializefirstChangeFrequencyMonth() => !firstChangeFrequencyMonth.Clean;
-        public Value<string> firstChangeMonthSuffix { get; set; }
+        public bool ShouldSerializefirstChangeFrequencyMonth() => !_firstChangeFrequencyMonth.Clean;
+        private Value<string> _firstChangeMonthSuffix;
+        public string firstChangeMonthSuffix { get { return _firstChangeMonthSuffix; } set { _firstChangeMonthSuffix = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializefirstChangeMonthSuffix() => !firstChangeMonthSuffix.Clean;
-        public Value<string> FromOrToBorrower { get; set; }
+        public bool ShouldSerializefirstChangeMonthSuffix() => !_firstChangeMonthSuffix.Clean;
+        private Value<string> _fromOrToBorrower;
+        public string FromOrToBorrower { get { return _fromOrToBorrower; } set { _fromOrToBorrower = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFromOrToBorrower() => !FromOrToBorrower.Clean;
-        public Value<decimal?> FundsForBorrower { get; set; }
+        public bool ShouldSerializeFromOrToBorrower() => !_fromOrToBorrower.Clean;
+        private Value<decimal?> _fundsForBorrower;
+        public decimal? FundsForBorrower { get { return _fundsForBorrower; } set { _fundsForBorrower = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundsForBorrower() => !FundsForBorrower.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFundsForBorrower() => !_fundsForBorrower.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> IndexMargin { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _indexMargin;
+        public string IndexMargin { get { return _indexMargin; } set { _indexMargin = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexMargin() => !IndexMargin.Clean;
-        public Value<int?> InitialEscrowPaymentClosingSubTotal { get; set; }
+        public bool ShouldSerializeIndexMargin() => !_indexMargin.Clean;
+        private Value<int?> _initialEscrowPaymentClosingSubTotal;
+        public int? InitialEscrowPaymentClosingSubTotal { get { return _initialEscrowPaymentClosingSubTotal; } set { _initialEscrowPaymentClosingSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialEscrowPaymentClosingSubTotal() => !InitialEscrowPaymentClosingSubTotal.Clean;
-        public Value<int?> LenderCredits { get; set; }
+        public bool ShouldSerializeInitialEscrowPaymentClosingSubTotal() => !_initialEscrowPaymentClosingSubTotal.Clean;
+        private Value<int?> _lenderCredits;
+        public int? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderCredits() => !LenderCredits.Clean;
-        public Value<int?> OriginationChargesSubTotal { get; set; }
+        public bool ShouldSerializeLenderCredits() => !_lenderCredits.Clean;
+        private Value<int?> _originationChargesSubTotal;
+        public int? OriginationChargesSubTotal { get { return _originationChargesSubTotal; } set { _originationChargesSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginationChargesSubTotal() => !OriginationChargesSubTotal.Clean;
-        public Value<int?> OtherSubTotal { get; set; }
+        public bool ShouldSerializeOriginationChargesSubTotal() => !_originationChargesSubTotal.Clean;
+        private Value<int?> _otherSubTotal;
+        public int? OtherSubTotal { get { return _otherSubTotal; } set { _otherSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherSubTotal() => !OtherSubTotal.Clean;
-        public Value<int?> PrepaidsSubTotal { get; set; }
+        public bool ShouldSerializeOtherSubTotal() => !_otherSubTotal.Clean;
+        private Value<int?> _prepaidsSubTotal;
+        public int? PrepaidsSubTotal { get { return _prepaidsSubTotal; } set { _prepaidsSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaidsSubTotal() => !PrepaidsSubTotal.Clean;
-        public Value<int?> SellerCreditAmount { get; set; }
+        public bool ShouldSerializePrepaidsSubTotal() => !_prepaidsSubTotal.Clean;
+        private Value<int?> _sellerCreditAmount;
+        public int? SellerCreditAmount { get { return _sellerCreditAmount; } set { _sellerCreditAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerCreditAmount() => !SellerCreditAmount.Clean;
-        public Value<int?> ServicesYouNotShopSubTotal { get; set; }
+        public bool ShouldSerializeSellerCreditAmount() => !_sellerCreditAmount.Clean;
+        private Value<int?> _servicesYouNotShopSubTotal;
+        public int? ServicesYouNotShopSubTotal { get { return _servicesYouNotShopSubTotal; } set { _servicesYouNotShopSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicesYouNotShopSubTotal() => !ServicesYouNotShopSubTotal.Clean;
-        public Value<int?> ServicesYouShopSubTotal { get; set; }
+        public bool ShouldSerializeServicesYouNotShopSubTotal() => !_servicesYouNotShopSubTotal.Clean;
+        private Value<int?> _servicesYouShopSubTotal;
+        public int? ServicesYouShopSubTotal { get { return _servicesYouShopSubTotal; } set { _servicesYouShopSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicesYouShopSubTotal() => !ServicesYouShopSubTotal.Clean;
-        public Value<string> subseqChangeMonthSuffix { get; set; }
+        public bool ShouldSerializeServicesYouShopSubTotal() => !_servicesYouShopSubTotal.Clean;
+        private Value<string> _subseqChangeMonthSuffix;
+        public string subseqChangeMonthSuffix { get { return _subseqChangeMonthSuffix; } set { _subseqChangeMonthSuffix = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializesubseqChangeMonthSuffix() => !subseqChangeMonthSuffix.Clean;
-        public Value<int?> TaxesGovFeesSubTotal { get; set; }
+        public bool ShouldSerializesubseqChangeMonthSuffix() => !_subseqChangeMonthSuffix.Clean;
+        private Value<int?> _taxesGovFeesSubTotal;
+        public int? TaxesGovFeesSubTotal { get { return _taxesGovFeesSubTotal; } set { _taxesGovFeesSubTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxesGovFeesSubTotal() => !TaxesGovFeesSubTotal.Clean;
-        public Value<decimal?> ThirdPartyPaymentsNotOtherwiseDisclosed { get; set; }
+        public bool ShouldSerializeTaxesGovFeesSubTotal() => !_taxesGovFeesSubTotal.Clean;
+        private Value<decimal?> _thirdPartyPaymentsNotOtherwiseDisclosed;
+        public decimal? ThirdPartyPaymentsNotOtherwiseDisclosed { get { return _thirdPartyPaymentsNotOtherwiseDisclosed; } set { _thirdPartyPaymentsNotOtherwiseDisclosed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThirdPartyPaymentsNotOtherwiseDisclosed() => !ThirdPartyPaymentsNotOtherwiseDisclosed.Clean;
-        public Value<int?> TotalClosingCosts { get; set; }
+        public bool ShouldSerializeThirdPartyPaymentsNotOtherwiseDisclosed() => !_thirdPartyPaymentsNotOtherwiseDisclosed.Clean;
+        private Value<int?> _totalClosingCosts;
+        public int? TotalClosingCosts { get { return _totalClosingCosts; } set { _totalClosingCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalClosingCosts() => !TotalClosingCosts.Clean;
-        public Value<int?> TotalLoanAndOtherCosts { get; set; }
+        public bool ShouldSerializeTotalClosingCosts() => !_totalClosingCosts.Clean;
+        private Value<int?> _totalLoanAndOtherCosts;
+        public int? TotalLoanAndOtherCosts { get { return _totalLoanAndOtherCosts; } set { _totalLoanAndOtherCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLoanAndOtherCosts() => !TotalLoanAndOtherCosts.Clean;
-        public Value<int?> TotalLoanCosts { get; set; }
+        public bool ShouldSerializeTotalLoanAndOtherCosts() => !_totalLoanAndOtherCosts.Clean;
+        private Value<int?> _totalLoanCosts;
+        public int? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLoanCosts() => !TotalLoanCosts.Clean;
-        public Value<int?> TotalOtherCosts { get; set; }
+        public bool ShouldSerializeTotalLoanCosts() => !_totalLoanCosts.Clean;
+        private Value<int?> _totalOtherCosts;
+        public int? TotalOtherCosts { get { return _totalOtherCosts; } set { _totalOtherCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalOtherCosts() => !TotalOtherCosts.Clean;
-        public Value<decimal?> UnroundedTotalLoanCosts { get; set; }
+        public bool ShouldSerializeTotalOtherCosts() => !_totalOtherCosts.Clean;
+        private Value<decimal?> _unroundedTotalLoanCosts;
+        public decimal? UnroundedTotalLoanCosts { get { return _unroundedTotalLoanCosts; } set { _unroundedTotalLoanCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnroundedTotalLoanCosts() => !UnroundedTotalLoanCosts.Clean;
-        public Value<decimal?> UnroundedTotalOtherCosts { get; set; }
+        public bool ShouldSerializeUnroundedTotalLoanCosts() => !_unroundedTotalLoanCosts.Clean;
+        private Value<decimal?> _unroundedTotalOtherCosts;
+        public decimal? UnroundedTotalOtherCosts { get { return _unroundedTotalOtherCosts; } set { _unroundedTotalOtherCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnroundedTotalOtherCosts() => !UnroundedTotalOtherCosts.Clean;
-        public Value<bool?> UseActualDownPaymentAndClosingCostsFinancedIndicator { get; set; }
+        public bool ShouldSerializeUnroundedTotalOtherCosts() => !_unroundedTotalOtherCosts.Clean;
+        private Value<bool?> _useActualDownPaymentAndClosingCostsFinancedIndicator;
+        public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get { return _useActualDownPaymentAndClosingCostsFinancedIndicator; } set { _useActualDownPaymentAndClosingCostsFinancedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUseActualDownPaymentAndClosingCostsFinancedIndicator() => !UseActualDownPaymentAndClosingCostsFinancedIndicator.Clean;
-        public Value<bool?> UseAlternate { get; set; }
+        public bool ShouldSerializeUseActualDownPaymentAndClosingCostsFinancedIndicator() => !_useActualDownPaymentAndClosingCostsFinancedIndicator.Clean;
+        private Value<bool?> _useAlternate;
+        public bool? UseAlternate { get { return _useAlternate; } set { _useAlternate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUseAlternate() => !UseAlternate.Clean;
+        public bool ShouldSerializeUseAlternate() => !_useAlternate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -176,120 +230,120 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ActualLenderCredits.Clean
-                    && ActualSTDLESellerCredits.Clean
-                    && ActualSTDLETotalClosingCostJ.Clean
-                    && AdjustmentsOtherCredits.Clean
-                    && AdjustmentsOtherCreditsAmt1.Clean
-                    && AdjustmentsOtherCreditsAmt10.Clean
-                    && AdjustmentsOtherCreditsAmt2.Clean
-                    && AdjustmentsOtherCreditsAmt3.Clean
-                    && AdjustmentsOtherCreditsAmt4.Clean
-                    && AdjustmentsOtherCreditsAmt5.Clean
-                    && AdjustmentsOtherCreditsAmt6.Clean
-                    && AdjustmentsOtherCreditsAmt7.Clean
-                    && AdjustmentsOtherCreditsAmt8.Clean
-                    && AdjustmentsOtherCreditsAmt9.Clean
-                    && AdjustmentsOtherCreditsDesc1.Clean
-                    && AdjustmentsOtherCreditsDesc10.Clean
-                    && AdjustmentsOtherCreditsDesc2.Clean
-                    && AdjustmentsOtherCreditsDesc3.Clean
-                    && AdjustmentsOtherCreditsDesc4.Clean
-                    && AdjustmentsOtherCreditsDesc5.Clean
-                    && AdjustmentsOtherCreditsDesc6.Clean
-                    && AdjustmentsOtherCreditsDesc7.Clean
-                    && AdjustmentsOtherCreditsDesc8.Clean
-                    && AdjustmentsOtherCreditsDesc9.Clean
-                    && ClosingCostsFinanced.Clean
-                    && DownPayment.Clean
-                    && EstimatedCashToCloseAV.Clean
-                    && EstimatedCashToCloseSV.Clean
-                    && EstimatedTotalPayoffsAndPaymentsAmount.Clean
-                    && firstChangeFrequencyMonth.Clean
-                    && firstChangeMonthSuffix.Clean
-                    && FromOrToBorrower.Clean
-                    && FundsForBorrower.Clean
-                    && Id.Clean
-                    && IndexMargin.Clean
-                    && InitialEscrowPaymentClosingSubTotal.Clean
-                    && LenderCredits.Clean
-                    && OriginationChargesSubTotal.Clean
-                    && OtherSubTotal.Clean
-                    && PrepaidsSubTotal.Clean
-                    && SellerCreditAmount.Clean
-                    && ServicesYouNotShopSubTotal.Clean
-                    && ServicesYouShopSubTotal.Clean
-                    && subseqChangeMonthSuffix.Clean
-                    && TaxesGovFeesSubTotal.Clean
-                    && ThirdPartyPaymentsNotOtherwiseDisclosed.Clean
-                    && TotalClosingCosts.Clean
-                    && TotalLoanAndOtherCosts.Clean
-                    && TotalLoanCosts.Clean
-                    && TotalOtherCosts.Clean
-                    && UnroundedTotalLoanCosts.Clean
-                    && UnroundedTotalOtherCosts.Clean
-                    && UseActualDownPaymentAndClosingCostsFinancedIndicator.Clean
-                    && UseAlternate.Clean;
+                var clean = _actualLenderCredits.Clean
+                    && _actualSTDLESellerCredits.Clean
+                    && _actualSTDLETotalClosingCostJ.Clean
+                    && _adjustmentsOtherCredits.Clean
+                    && _adjustmentsOtherCreditsAmt1.Clean
+                    && _adjustmentsOtherCreditsAmt10.Clean
+                    && _adjustmentsOtherCreditsAmt2.Clean
+                    && _adjustmentsOtherCreditsAmt3.Clean
+                    && _adjustmentsOtherCreditsAmt4.Clean
+                    && _adjustmentsOtherCreditsAmt5.Clean
+                    && _adjustmentsOtherCreditsAmt6.Clean
+                    && _adjustmentsOtherCreditsAmt7.Clean
+                    && _adjustmentsOtherCreditsAmt8.Clean
+                    && _adjustmentsOtherCreditsAmt9.Clean
+                    && _adjustmentsOtherCreditsDesc1.Clean
+                    && _adjustmentsOtherCreditsDesc10.Clean
+                    && _adjustmentsOtherCreditsDesc2.Clean
+                    && _adjustmentsOtherCreditsDesc3.Clean
+                    && _adjustmentsOtherCreditsDesc4.Clean
+                    && _adjustmentsOtherCreditsDesc5.Clean
+                    && _adjustmentsOtherCreditsDesc6.Clean
+                    && _adjustmentsOtherCreditsDesc7.Clean
+                    && _adjustmentsOtherCreditsDesc8.Clean
+                    && _adjustmentsOtherCreditsDesc9.Clean
+                    && _closingCostsFinanced.Clean
+                    && _downPayment.Clean
+                    && _estimatedCashToCloseAV.Clean
+                    && _estimatedCashToCloseSV.Clean
+                    && _estimatedTotalPayoffsAndPaymentsAmount.Clean
+                    && _firstChangeFrequencyMonth.Clean
+                    && _firstChangeMonthSuffix.Clean
+                    && _fromOrToBorrower.Clean
+                    && _fundsForBorrower.Clean
+                    && _id.Clean
+                    && _indexMargin.Clean
+                    && _initialEscrowPaymentClosingSubTotal.Clean
+                    && _lenderCredits.Clean
+                    && _originationChargesSubTotal.Clean
+                    && _otherSubTotal.Clean
+                    && _prepaidsSubTotal.Clean
+                    && _sellerCreditAmount.Clean
+                    && _servicesYouNotShopSubTotal.Clean
+                    && _servicesYouShopSubTotal.Clean
+                    && _subseqChangeMonthSuffix.Clean
+                    && _taxesGovFeesSubTotal.Clean
+                    && _thirdPartyPaymentsNotOtherwiseDisclosed.Clean
+                    && _totalClosingCosts.Clean
+                    && _totalLoanAndOtherCosts.Clean
+                    && _totalLoanCosts.Clean
+                    && _totalOtherCosts.Clean
+                    && _unroundedTotalLoanCosts.Clean
+                    && _unroundedTotalOtherCosts.Clean
+                    && _useActualDownPaymentAndClosingCostsFinancedIndicator.Clean
+                    && _useAlternate.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ActualLenderCredits; v0.Clean = value; ActualLenderCredits = v0;
-                var v1 = ActualSTDLESellerCredits; v1.Clean = value; ActualSTDLESellerCredits = v1;
-                var v2 = ActualSTDLETotalClosingCostJ; v2.Clean = value; ActualSTDLETotalClosingCostJ = v2;
-                var v3 = AdjustmentsOtherCredits; v3.Clean = value; AdjustmentsOtherCredits = v3;
-                var v4 = AdjustmentsOtherCreditsAmt1; v4.Clean = value; AdjustmentsOtherCreditsAmt1 = v4;
-                var v5 = AdjustmentsOtherCreditsAmt10; v5.Clean = value; AdjustmentsOtherCreditsAmt10 = v5;
-                var v6 = AdjustmentsOtherCreditsAmt2; v6.Clean = value; AdjustmentsOtherCreditsAmt2 = v6;
-                var v7 = AdjustmentsOtherCreditsAmt3; v7.Clean = value; AdjustmentsOtherCreditsAmt3 = v7;
-                var v8 = AdjustmentsOtherCreditsAmt4; v8.Clean = value; AdjustmentsOtherCreditsAmt4 = v8;
-                var v9 = AdjustmentsOtherCreditsAmt5; v9.Clean = value; AdjustmentsOtherCreditsAmt5 = v9;
-                var v10 = AdjustmentsOtherCreditsAmt6; v10.Clean = value; AdjustmentsOtherCreditsAmt6 = v10;
-                var v11 = AdjustmentsOtherCreditsAmt7; v11.Clean = value; AdjustmentsOtherCreditsAmt7 = v11;
-                var v12 = AdjustmentsOtherCreditsAmt8; v12.Clean = value; AdjustmentsOtherCreditsAmt8 = v12;
-                var v13 = AdjustmentsOtherCreditsAmt9; v13.Clean = value; AdjustmentsOtherCreditsAmt9 = v13;
-                var v14 = AdjustmentsOtherCreditsDesc1; v14.Clean = value; AdjustmentsOtherCreditsDesc1 = v14;
-                var v15 = AdjustmentsOtherCreditsDesc10; v15.Clean = value; AdjustmentsOtherCreditsDesc10 = v15;
-                var v16 = AdjustmentsOtherCreditsDesc2; v16.Clean = value; AdjustmentsOtherCreditsDesc2 = v16;
-                var v17 = AdjustmentsOtherCreditsDesc3; v17.Clean = value; AdjustmentsOtherCreditsDesc3 = v17;
-                var v18 = AdjustmentsOtherCreditsDesc4; v18.Clean = value; AdjustmentsOtherCreditsDesc4 = v18;
-                var v19 = AdjustmentsOtherCreditsDesc5; v19.Clean = value; AdjustmentsOtherCreditsDesc5 = v19;
-                var v20 = AdjustmentsOtherCreditsDesc6; v20.Clean = value; AdjustmentsOtherCreditsDesc6 = v20;
-                var v21 = AdjustmentsOtherCreditsDesc7; v21.Clean = value; AdjustmentsOtherCreditsDesc7 = v21;
-                var v22 = AdjustmentsOtherCreditsDesc8; v22.Clean = value; AdjustmentsOtherCreditsDesc8 = v22;
-                var v23 = AdjustmentsOtherCreditsDesc9; v23.Clean = value; AdjustmentsOtherCreditsDesc9 = v23;
-                var v24 = ClosingCostsFinanced; v24.Clean = value; ClosingCostsFinanced = v24;
-                var v25 = DownPayment; v25.Clean = value; DownPayment = v25;
-                var v26 = EstimatedCashToCloseAV; v26.Clean = value; EstimatedCashToCloseAV = v26;
-                var v27 = EstimatedCashToCloseSV; v27.Clean = value; EstimatedCashToCloseSV = v27;
-                var v28 = EstimatedTotalPayoffsAndPaymentsAmount; v28.Clean = value; EstimatedTotalPayoffsAndPaymentsAmount = v28;
-                var v29 = firstChangeFrequencyMonth; v29.Clean = value; firstChangeFrequencyMonth = v29;
-                var v30 = firstChangeMonthSuffix; v30.Clean = value; firstChangeMonthSuffix = v30;
-                var v31 = FromOrToBorrower; v31.Clean = value; FromOrToBorrower = v31;
-                var v32 = FundsForBorrower; v32.Clean = value; FundsForBorrower = v32;
-                var v33 = Id; v33.Clean = value; Id = v33;
-                var v34 = IndexMargin; v34.Clean = value; IndexMargin = v34;
-                var v35 = InitialEscrowPaymentClosingSubTotal; v35.Clean = value; InitialEscrowPaymentClosingSubTotal = v35;
-                var v36 = LenderCredits; v36.Clean = value; LenderCredits = v36;
-                var v37 = OriginationChargesSubTotal; v37.Clean = value; OriginationChargesSubTotal = v37;
-                var v38 = OtherSubTotal; v38.Clean = value; OtherSubTotal = v38;
-                var v39 = PrepaidsSubTotal; v39.Clean = value; PrepaidsSubTotal = v39;
-                var v40 = SellerCreditAmount; v40.Clean = value; SellerCreditAmount = v40;
-                var v41 = ServicesYouNotShopSubTotal; v41.Clean = value; ServicesYouNotShopSubTotal = v41;
-                var v42 = ServicesYouShopSubTotal; v42.Clean = value; ServicesYouShopSubTotal = v42;
-                var v43 = subseqChangeMonthSuffix; v43.Clean = value; subseqChangeMonthSuffix = v43;
-                var v44 = TaxesGovFeesSubTotal; v44.Clean = value; TaxesGovFeesSubTotal = v44;
-                var v45 = ThirdPartyPaymentsNotOtherwiseDisclosed; v45.Clean = value; ThirdPartyPaymentsNotOtherwiseDisclosed = v45;
-                var v46 = TotalClosingCosts; v46.Clean = value; TotalClosingCosts = v46;
-                var v47 = TotalLoanAndOtherCosts; v47.Clean = value; TotalLoanAndOtherCosts = v47;
-                var v48 = TotalLoanCosts; v48.Clean = value; TotalLoanCosts = v48;
-                var v49 = TotalOtherCosts; v49.Clean = value; TotalOtherCosts = v49;
-                var v50 = UnroundedTotalLoanCosts; v50.Clean = value; UnroundedTotalLoanCosts = v50;
-                var v51 = UnroundedTotalOtherCosts; v51.Clean = value; UnroundedTotalOtherCosts = v51;
-                var v52 = UseActualDownPaymentAndClosingCostsFinancedIndicator; v52.Clean = value; UseActualDownPaymentAndClosingCostsFinancedIndicator = v52;
-                var v53 = UseAlternate; v53.Clean = value; UseAlternate = v53;
+                var v0 = _actualLenderCredits; v0.Clean = value; _actualLenderCredits = v0;
+                var v1 = _actualSTDLESellerCredits; v1.Clean = value; _actualSTDLESellerCredits = v1;
+                var v2 = _actualSTDLETotalClosingCostJ; v2.Clean = value; _actualSTDLETotalClosingCostJ = v2;
+                var v3 = _adjustmentsOtherCredits; v3.Clean = value; _adjustmentsOtherCredits = v3;
+                var v4 = _adjustmentsOtherCreditsAmt1; v4.Clean = value; _adjustmentsOtherCreditsAmt1 = v4;
+                var v5 = _adjustmentsOtherCreditsAmt10; v5.Clean = value; _adjustmentsOtherCreditsAmt10 = v5;
+                var v6 = _adjustmentsOtherCreditsAmt2; v6.Clean = value; _adjustmentsOtherCreditsAmt2 = v6;
+                var v7 = _adjustmentsOtherCreditsAmt3; v7.Clean = value; _adjustmentsOtherCreditsAmt3 = v7;
+                var v8 = _adjustmentsOtherCreditsAmt4; v8.Clean = value; _adjustmentsOtherCreditsAmt4 = v8;
+                var v9 = _adjustmentsOtherCreditsAmt5; v9.Clean = value; _adjustmentsOtherCreditsAmt5 = v9;
+                var v10 = _adjustmentsOtherCreditsAmt6; v10.Clean = value; _adjustmentsOtherCreditsAmt6 = v10;
+                var v11 = _adjustmentsOtherCreditsAmt7; v11.Clean = value; _adjustmentsOtherCreditsAmt7 = v11;
+                var v12 = _adjustmentsOtherCreditsAmt8; v12.Clean = value; _adjustmentsOtherCreditsAmt8 = v12;
+                var v13 = _adjustmentsOtherCreditsAmt9; v13.Clean = value; _adjustmentsOtherCreditsAmt9 = v13;
+                var v14 = _adjustmentsOtherCreditsDesc1; v14.Clean = value; _adjustmentsOtherCreditsDesc1 = v14;
+                var v15 = _adjustmentsOtherCreditsDesc10; v15.Clean = value; _adjustmentsOtherCreditsDesc10 = v15;
+                var v16 = _adjustmentsOtherCreditsDesc2; v16.Clean = value; _adjustmentsOtherCreditsDesc2 = v16;
+                var v17 = _adjustmentsOtherCreditsDesc3; v17.Clean = value; _adjustmentsOtherCreditsDesc3 = v17;
+                var v18 = _adjustmentsOtherCreditsDesc4; v18.Clean = value; _adjustmentsOtherCreditsDesc4 = v18;
+                var v19 = _adjustmentsOtherCreditsDesc5; v19.Clean = value; _adjustmentsOtherCreditsDesc5 = v19;
+                var v20 = _adjustmentsOtherCreditsDesc6; v20.Clean = value; _adjustmentsOtherCreditsDesc6 = v20;
+                var v21 = _adjustmentsOtherCreditsDesc7; v21.Clean = value; _adjustmentsOtherCreditsDesc7 = v21;
+                var v22 = _adjustmentsOtherCreditsDesc8; v22.Clean = value; _adjustmentsOtherCreditsDesc8 = v22;
+                var v23 = _adjustmentsOtherCreditsDesc9; v23.Clean = value; _adjustmentsOtherCreditsDesc9 = v23;
+                var v24 = _closingCostsFinanced; v24.Clean = value; _closingCostsFinanced = v24;
+                var v25 = _downPayment; v25.Clean = value; _downPayment = v25;
+                var v26 = _estimatedCashToCloseAV; v26.Clean = value; _estimatedCashToCloseAV = v26;
+                var v27 = _estimatedCashToCloseSV; v27.Clean = value; _estimatedCashToCloseSV = v27;
+                var v28 = _estimatedTotalPayoffsAndPaymentsAmount; v28.Clean = value; _estimatedTotalPayoffsAndPaymentsAmount = v28;
+                var v29 = _firstChangeFrequencyMonth; v29.Clean = value; _firstChangeFrequencyMonth = v29;
+                var v30 = _firstChangeMonthSuffix; v30.Clean = value; _firstChangeMonthSuffix = v30;
+                var v31 = _fromOrToBorrower; v31.Clean = value; _fromOrToBorrower = v31;
+                var v32 = _fundsForBorrower; v32.Clean = value; _fundsForBorrower = v32;
+                var v33 = _id; v33.Clean = value; _id = v33;
+                var v34 = _indexMargin; v34.Clean = value; _indexMargin = v34;
+                var v35 = _initialEscrowPaymentClosingSubTotal; v35.Clean = value; _initialEscrowPaymentClosingSubTotal = v35;
+                var v36 = _lenderCredits; v36.Clean = value; _lenderCredits = v36;
+                var v37 = _originationChargesSubTotal; v37.Clean = value; _originationChargesSubTotal = v37;
+                var v38 = _otherSubTotal; v38.Clean = value; _otherSubTotal = v38;
+                var v39 = _prepaidsSubTotal; v39.Clean = value; _prepaidsSubTotal = v39;
+                var v40 = _sellerCreditAmount; v40.Clean = value; _sellerCreditAmount = v40;
+                var v41 = _servicesYouNotShopSubTotal; v41.Clean = value; _servicesYouNotShopSubTotal = v41;
+                var v42 = _servicesYouShopSubTotal; v42.Clean = value; _servicesYouShopSubTotal = v42;
+                var v43 = _subseqChangeMonthSuffix; v43.Clean = value; _subseqChangeMonthSuffix = v43;
+                var v44 = _taxesGovFeesSubTotal; v44.Clean = value; _taxesGovFeesSubTotal = v44;
+                var v45 = _thirdPartyPaymentsNotOtherwiseDisclosed; v45.Clean = value; _thirdPartyPaymentsNotOtherwiseDisclosed = v45;
+                var v46 = _totalClosingCosts; v46.Clean = value; _totalClosingCosts = v46;
+                var v47 = _totalLoanAndOtherCosts; v47.Clean = value; _totalLoanAndOtherCosts = v47;
+                var v48 = _totalLoanCosts; v48.Clean = value; _totalLoanCosts = v48;
+                var v49 = _totalOtherCosts; v49.Clean = value; _totalOtherCosts = v49;
+                var v50 = _unroundedTotalLoanCosts; v50.Clean = value; _unroundedTotalLoanCosts = v50;
+                var v51 = _unroundedTotalOtherCosts; v51.Clean = value; _unroundedTotalOtherCosts = v51;
+                var v52 = _useActualDownPaymentAndClosingCostsFinancedIndicator; v52.Clean = value; _useActualDownPaymentAndClosingCostsFinancedIndicator = v52;
+                var v53 = _useAlternate; v53.Clean = value; _useAlternate = v53;
                 _settingClean = 0;
             }
         }

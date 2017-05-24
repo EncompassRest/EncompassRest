@@ -83,21 +83,24 @@ namespace {@namespace}
     {{
 ");
 
-            var properties = new List<(string Name, bool IsEntity, string Type)>();
+            var properties = new List<(string Name, string FieldName, bool IsEntity)>();
 
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
                 var propertyType = GetPropertyType(propertySchema, out var isEntity);
+                var fieldName = propertyName;
                 if (!isEntity)
                 {
-                    propertyType = $"Value<{propertyType}>";
+                    fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                    sb.AppendLine($"        private Value<{propertyType}> {fieldName};");
                 }
-                properties.Add((propertyName, isEntity, propertyType));
-                sb.AppendLine($"        public {propertyType} {propertyName} {{ get; set; }}")
+                properties.Add((propertyName, fieldName, isEntity));
+                
+                sb.AppendLine($"        public {propertyType} {propertyName} {(isEntity ? "{ get; set; }" : $"{{ get {{ return {fieldName}; }} set {{ {fieldName} = value; }} }}")}")
                   .AppendLine("        [EditorBrowsable(EditorBrowsableState.Never)]")
-                  .AppendLine($"        public bool ShouldSerialize{propertyName}() => {(isEntity ? $"{propertyName}?.Clean == false" : $"!{propertyName}.Clean")};"); // Should be private but is not yet supported in Json.NET
+                  .AppendLine($"        public bool ShouldSerialize{propertyName}() => {(isEntity ? $"{fieldName}?.Clean == false" : $"!{fieldName}.Clean")};"); // Should be private but is not yet supported in Json.NET
             }
 
             // Sorts non entity types first
@@ -112,7 +115,7 @@ $@"        private int _gettingClean;
             get
             {{
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.Name}.Clean"))};
+                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.FieldName}.Clean"))};
                 _gettingClean = 0;
                 return clean;
             }}
@@ -121,7 +124,7 @@ $@"        private int _gettingClean;
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
                 {string.Join($"{Environment.NewLine}                ", properties.Select((property, index) =>
                     {
-                        var propertyName = property.Name;
+                        var propertyName = property.FieldName;
                         if (property.IsEntity)
                         {
                             return $"if ({propertyName} != null) {propertyName}.Clean = value;";

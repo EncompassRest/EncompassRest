@@ -7,186 +7,246 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Tax4506
     {
-        public Value<bool?> AccountTranscript { get; set; }
+        private Value<bool?> _accountTranscript;
+        public bool? AccountTranscript { get { return _accountTranscript; } set { _accountTranscript = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccountTranscript() => !AccountTranscript.Clean;
-        public Value<string> Address { get; set; }
+        public bool ShouldSerializeAccountTranscript() => !_accountTranscript.Clean;
+        private Value<string> _address;
+        public string Address { get { return _address; } set { _address = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddress() => !Address.Clean;
-        public Value<string> City { get; set; }
+        public bool ShouldSerializeAddress() => !_address.Clean;
+        private Value<string> _city;
+        public string City { get { return _city; } set { _city = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCity() => !City.Clean;
-        public Value<decimal?> CostForEachPeriod { get; set; }
+        public bool ShouldSerializeCity() => !_city.Clean;
+        private Value<decimal?> _costForEachPeriod;
+        public decimal? CostForEachPeriod { get { return _costForEachPeriod; } set { _costForEachPeriod = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCostForEachPeriod() => !CostForEachPeriod.Clean;
-        public Value<string> CurrentFirst { get; set; }
+        public bool ShouldSerializeCostForEachPeriod() => !_costForEachPeriod.Clean;
+        private Value<string> _currentFirst;
+        public string CurrentFirst { get { return _currentFirst; } set { _currentFirst = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentFirst() => !CurrentFirst.Clean;
-        public Value<string> CurrentLast { get; set; }
+        public bool ShouldSerializeCurrentFirst() => !_currentFirst.Clean;
+        private Value<string> _currentLast;
+        public string CurrentLast { get { return _currentLast; } set { _currentLast = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentLast() => !CurrentLast.Clean;
-        public Value<string> First { get; set; }
+        public bool ShouldSerializeCurrentLast() => !_currentLast.Clean;
+        private Value<string> _first;
+        public string First { get { return _first; } set { _first = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirst() => !First.Clean;
-        public Value<bool?> FormsSeriesTranscript { get; set; }
+        public bool ShouldSerializeFirst() => !_first.Clean;
+        private Value<bool?> _formsSeriesTranscript;
+        public bool? FormsSeriesTranscript { get { return _formsSeriesTranscript; } set { _formsSeriesTranscript = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormsSeriesTranscript() => !FormsSeriesTranscript.Clean;
-        public Value<string> HistoryId { get; set; }
+        public bool ShouldSerializeFormsSeriesTranscript() => !_formsSeriesTranscript.Clean;
+        private Value<string> _historyId;
+        public string HistoryId { get { return _historyId; } set { _historyId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHistoryId() => !HistoryId.Clean;
-        public Value<bool?> HistoryIndicator { get; set; }
+        public bool ShouldSerializeHistoryId() => !_historyId.Clean;
+        private Value<bool?> _historyIndicator;
+        public bool? HistoryIndicator { get { return _historyIndicator; } set { _historyIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHistoryIndicator() => !HistoryIndicator.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHistoryIndicator() => !_historyIndicator.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IfTaxRecordNotFound { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _ifTaxRecordNotFound;
+        public bool? IfTaxRecordNotFound { get { return _ifTaxRecordNotFound; } set { _ifTaxRecordNotFound = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIfTaxRecordNotFound() => !IfTaxRecordNotFound.Clean;
-        public Value<string> Last { get; set; }
+        public bool ShouldSerializeIfTaxRecordNotFound() => !_ifTaxRecordNotFound.Clean;
+        private Value<string> _last;
+        public string Last { get { return _last; } set { _last = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLast() => !Last.Clean;
-        public Value<DateTime?> LastUpdatedDate { get; set; }
+        public bool ShouldSerializeLast() => !_last.Clean;
+        private Value<DateTime?> _lastUpdatedDate;
+        public DateTime? LastUpdatedDate { get { return _lastUpdatedDate; } set { _lastUpdatedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUpdatedDate() => !LastUpdatedDate.Clean;
-        public Value<int?> LastUpdatedHistory { get; set; }
+        public bool ShouldSerializeLastUpdatedDate() => !_lastUpdatedDate.Clean;
+        private Value<int?> _lastUpdatedHistory;
+        public int? LastUpdatedHistory { get { return _lastUpdatedHistory; } set { _lastUpdatedHistory = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUpdatedHistory() => !LastUpdatedHistory.Clean;
-        public Value<string> LastUpdatedTime { get; set; }
+        public bool ShouldSerializeLastUpdatedHistory() => !_lastUpdatedHistory.Clean;
+        private Value<string> _lastUpdatedTime;
+        public string LastUpdatedTime { get { return _lastUpdatedTime; } set { _lastUpdatedTime = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUpdatedTime() => !LastUpdatedTime.Clean;
-        public Value<bool?> NotifiedIrsIdentityTheftIndicator { get; set; }
+        public bool ShouldSerializeLastUpdatedTime() => !_lastUpdatedTime.Clean;
+        private Value<bool?> _notifiedIrsIdentityTheftIndicator;
+        public bool? NotifiedIrsIdentityTheftIndicator { get { return _notifiedIrsIdentityTheftIndicator; } set { _notifiedIrsIdentityTheftIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNotifiedIrsIdentityTheftIndicator() => !NotifiedIrsIdentityTheftIndicator.Clean;
-        public Value<int?> NumberOfPeriods { get; set; }
+        public bool ShouldSerializeNotifiedIrsIdentityTheftIndicator() => !_notifiedIrsIdentityTheftIndicator.Clean;
+        private Value<int?> _numberOfPeriods;
+        public int? NumberOfPeriods { get { return _numberOfPeriods; } set { _numberOfPeriods = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumberOfPeriods() => !NumberOfPeriods.Clean;
-        public Value<string> Person { get; set; }
+        public bool ShouldSerializeNumberOfPeriods() => !_numberOfPeriods.Clean;
+        private Value<string> _person;
+        public string Person { get { return _person; } set { _person = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePerson() => !Person.Clean;
-        public Value<bool?> RecordOfAccount { get; set; }
+        public bool ShouldSerializePerson() => !_person.Clean;
+        private Value<bool?> _recordOfAccount;
+        public bool? RecordOfAccount { get { return _recordOfAccount; } set { _recordOfAccount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecordOfAccount() => !RecordOfAccount.Clean;
-        public Value<string> RequestorPhoneNumber { get; set; }
+        public bool ShouldSerializeRecordOfAccount() => !_recordOfAccount.Clean;
+        private Value<string> _requestorPhoneNumber;
+        public string RequestorPhoneNumber { get { return _requestorPhoneNumber; } set { _requestorPhoneNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestorPhoneNumber() => !RequestorPhoneNumber.Clean;
-        public Value<string> RequestorTitle { get; set; }
+        public bool ShouldSerializeRequestorPhoneNumber() => !_requestorPhoneNumber.Clean;
+        private Value<string> _requestorTitle;
+        public string RequestorTitle { get { return _requestorTitle; } set { _requestorTitle = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestorTitle() => !RequestorTitle.Clean;
-        public Value<DateTime?> RequestYear1 { get; set; }
+        public bool ShouldSerializeRequestorTitle() => !_requestorTitle.Clean;
+        private Value<DateTime?> _requestYear1;
+        public DateTime? RequestYear1 { get { return _requestYear1; } set { _requestYear1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear1() => !RequestYear1.Clean;
-        public Value<DateTime?> RequestYear2 { get; set; }
+        public bool ShouldSerializeRequestYear1() => !_requestYear1.Clean;
+        private Value<DateTime?> _requestYear2;
+        public DateTime? RequestYear2 { get { return _requestYear2; } set { _requestYear2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear2() => !RequestYear2.Clean;
-        public Value<DateTime?> RequestYear3 { get; set; }
+        public bool ShouldSerializeRequestYear2() => !_requestYear2.Clean;
+        private Value<DateTime?> _requestYear3;
+        public DateTime? RequestYear3 { get { return _requestYear3; } set { _requestYear3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear3() => !RequestYear3.Clean;
-        public Value<DateTime?> RequestYear4 { get; set; }
+        public bool ShouldSerializeRequestYear3() => !_requestYear3.Clean;
+        private Value<DateTime?> _requestYear4;
+        public DateTime? RequestYear4 { get { return _requestYear4; } set { _requestYear4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear4() => !RequestYear4.Clean;
-        public Value<DateTime?> RequestYear5 { get; set; }
+        public bool ShouldSerializeRequestYear4() => !_requestYear4.Clean;
+        private Value<DateTime?> _requestYear5;
+        public DateTime? RequestYear5 { get { return _requestYear5; } set { _requestYear5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear5() => !RequestYear5.Clean;
-        public Value<DateTime?> RequestYear6 { get; set; }
+        public bool ShouldSerializeRequestYear5() => !_requestYear5.Clean;
+        private Value<DateTime?> _requestYear6;
+        public DateTime? RequestYear6 { get { return _requestYear6; } set { _requestYear6 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear6() => !RequestYear6.Clean;
-        public Value<DateTime?> RequestYear7 { get; set; }
+        public bool ShouldSerializeRequestYear6() => !_requestYear6.Clean;
+        private Value<DateTime?> _requestYear7;
+        public DateTime? RequestYear7 { get { return _requestYear7; } set { _requestYear7 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear7() => !RequestYear7.Clean;
-        public Value<DateTime?> RequestYear8 { get; set; }
+        public bool ShouldSerializeRequestYear7() => !_requestYear7.Clean;
+        private Value<DateTime?> _requestYear8;
+        public DateTime? RequestYear8 { get { return _requestYear8; } set { _requestYear8 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestYear8() => !RequestYear8.Clean;
-        public Value<string> ReturnAddress { get; set; }
+        public bool ShouldSerializeRequestYear8() => !_requestYear8.Clean;
+        private Value<string> _returnAddress;
+        public string ReturnAddress { get { return _returnAddress; } set { _returnAddress = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReturnAddress() => !ReturnAddress.Clean;
-        public Value<string> ReturnCity { get; set; }
+        public bool ShouldSerializeReturnAddress() => !_returnAddress.Clean;
+        private Value<string> _returnCity;
+        public string ReturnCity { get { return _returnCity; } set { _returnCity = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReturnCity() => !ReturnCity.Clean;
-        public Value<string> ReturnState { get; set; }
+        public bool ShouldSerializeReturnCity() => !_returnCity.Clean;
+        private Value<string> _returnState;
+        public string ReturnState { get { return _returnState; } set { _returnState = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReturnState() => !ReturnState.Clean;
-        public Value<bool?> ReturnTranscript { get; set; }
+        public bool ShouldSerializeReturnState() => !_returnState.Clean;
+        private Value<bool?> _returnTranscript;
+        public bool? ReturnTranscript { get { return _returnTranscript; } set { _returnTranscript = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReturnTranscript() => !ReturnTranscript.Clean;
-        public Value<string> ReturnZip { get; set; }
+        public bool ShouldSerializeReturnTranscript() => !_returnTranscript.Clean;
+        private Value<string> _returnZip;
+        public string ReturnZip { get { return _returnZip; } set { _returnZip = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReturnZip() => !ReturnZip.Clean;
-        public Value<string> SelectedRecordNumber { get; set; }
+        public bool ShouldSerializeReturnZip() => !_returnZip.Clean;
+        private Value<string> _selectedRecordNumber;
+        public string SelectedRecordNumber { get { return _selectedRecordNumber; } set { _selectedRecordNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSelectedRecordNumber() => !SelectedRecordNumber.Clean;
-        public Value<string> SendAddress { get; set; }
+        public bool ShouldSerializeSelectedRecordNumber() => !_selectedRecordNumber.Clean;
+        private Value<string> _sendAddress;
+        public string SendAddress { get { return _sendAddress; } set { _sendAddress = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendAddress() => !SendAddress.Clean;
-        public Value<string> SendCity { get; set; }
+        public bool ShouldSerializeSendAddress() => !_sendAddress.Clean;
+        private Value<string> _sendCity;
+        public string SendCity { get { return _sendCity; } set { _sendCity = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendCity() => !SendCity.Clean;
-        public Value<string> SendFirst { get; set; }
+        public bool ShouldSerializeSendCity() => !_sendCity.Clean;
+        private Value<string> _sendFirst;
+        public string SendFirst { get { return _sendFirst; } set { _sendFirst = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendFirst() => !SendFirst.Clean;
-        public Value<string> SendLast { get; set; }
+        public bool ShouldSerializeSendFirst() => !_sendFirst.Clean;
+        private Value<string> _sendLast;
+        public string SendLast { get { return _sendLast; } set { _sendLast = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendLast() => !SendLast.Clean;
-        public Value<string> SendPhone { get; set; }
+        public bool ShouldSerializeSendLast() => !_sendLast.Clean;
+        private Value<string> _sendPhone;
+        public string SendPhone { get { return _sendPhone; } set { _sendPhone = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendPhone() => !SendPhone.Clean;
-        public Value<string> SendState { get; set; }
+        public bool ShouldSerializeSendPhone() => !_sendPhone.Clean;
+        private Value<string> _sendState;
+        public string SendState { get { return _sendState; } set { _sendState = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendState() => !SendState.Clean;
-        public Value<string> SendZip { get; set; }
+        public bool ShouldSerializeSendState() => !_sendState.Clean;
+        private Value<string> _sendZip;
+        public string SendZip { get { return _sendZip; } set { _sendZip = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSendZip() => !SendZip.Clean;
-        public Value<bool?> SignatoryAttestation { get; set; }
+        public bool ShouldSerializeSendZip() => !_sendZip.Clean;
+        private Value<bool?> _signatoryAttestation;
+        public bool? SignatoryAttestation { get { return _signatoryAttestation; } set { _signatoryAttestation = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatoryAttestation() => !SignatoryAttestation.Clean;
-        public Value<bool?> SignatoryAttestationT { get; set; }
+        public bool ShouldSerializeSignatoryAttestation() => !_signatoryAttestation.Clean;
+        private Value<bool?> _signatoryAttestationT;
+        public bool? SignatoryAttestationT { get { return _signatoryAttestationT; } set { _signatoryAttestationT = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatoryAttestationT() => !SignatoryAttestationT.Clean;
-        public Value<string> SpouseFirst { get; set; }
+        public bool ShouldSerializeSignatoryAttestationT() => !_signatoryAttestationT.Clean;
+        private Value<string> _spouseFirst;
+        public string SpouseFirst { get { return _spouseFirst; } set { _spouseFirst = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSpouseFirst() => !SpouseFirst.Clean;
-        public Value<string> SpouseLast { get; set; }
+        public bool ShouldSerializeSpouseFirst() => !_spouseFirst.Clean;
+        private Value<string> _spouseLast;
+        public string SpouseLast { get { return _spouseLast; } set { _spouseLast = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSpouseLast() => !SpouseLast.Clean;
-        public Value<string> SpouseSSN { get; set; }
+        public bool ShouldSerializeSpouseLast() => !_spouseLast.Clean;
+        private Value<string> _spouseSSN;
+        public string SpouseSSN { get { return _spouseSSN; } set { _spouseSSN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSpouseSSN() => !SpouseSSN.Clean;
-        public Value<bool?> SpouseUseEIN { get; set; }
+        public bool ShouldSerializeSpouseSSN() => !_spouseSSN.Clean;
+        private Value<bool?> _spouseUseEIN;
+        public bool? SpouseUseEIN { get { return _spouseUseEIN; } set { _spouseUseEIN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSpouseUseEIN() => !SpouseUseEIN.Clean;
-        public Value<string> SSN { get; set; }
+        public bool ShouldSerializeSpouseUseEIN() => !_spouseUseEIN.Clean;
+        private Value<string> _sSN;
+        public string SSN { get { return _sSN; } set { _sSN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSSN() => !SSN.Clean;
-        public Value<string> State { get; set; }
+        public bool ShouldSerializeSSN() => !_sSN.Clean;
+        private Value<string> _state;
+        public string State { get { return _state; } set { _state = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeState() => !State.Clean;
-        public Value<int?> Tax4506Index { get; set; }
+        public bool ShouldSerializeState() => !_state.Clean;
+        private Value<int?> _tax4506Index;
+        public int? Tax4506Index { get { return _tax4506Index; } set { _tax4506Index = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTax4506Index() => !Tax4506Index.Clean;
-        public Value<bool?> Tax4506TIndicator { get; set; }
+        public bool ShouldSerializeTax4506Index() => !_tax4506Index.Clean;
+        private Value<bool?> _tax4506TIndicator;
+        public bool? Tax4506TIndicator { get { return _tax4506TIndicator; } set { _tax4506TIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTax4506TIndicator() => !Tax4506TIndicator.Clean;
-        public Value<string> TaxFormNumber { get; set; }
+        public bool ShouldSerializeTax4506TIndicator() => !_tax4506TIndicator.Clean;
+        private Value<string> _taxFormNumber;
+        public string TaxFormNumber { get { return _taxFormNumber; } set { _taxFormNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxFormNumber() => !TaxFormNumber.Clean;
-        public Value<bool?> TheseCopiesMustBeCertified { get; set; }
+        public bool ShouldSerializeTaxFormNumber() => !_taxFormNumber.Clean;
+        private Value<bool?> _theseCopiesMustBeCertified;
+        public bool? TheseCopiesMustBeCertified { get { return _theseCopiesMustBeCertified; } set { _theseCopiesMustBeCertified = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTheseCopiesMustBeCertified() => !TheseCopiesMustBeCertified.Clean;
-        public Value<decimal?> TotalCost { get; set; }
+        public bool ShouldSerializeTheseCopiesMustBeCertified() => !_theseCopiesMustBeCertified.Clean;
+        private Value<decimal?> _totalCost;
+        public decimal? TotalCost { get { return _totalCost; } set { _totalCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalCost() => !TotalCost.Clean;
-        public Value<bool?> UseEIN { get; set; }
+        public bool ShouldSerializeTotalCost() => !_totalCost.Clean;
+        private Value<bool?> _useEIN;
+        public bool? UseEIN { get { return _useEIN; } set { _useEIN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUseEIN() => !UseEIN.Clean;
-        public Value<bool?> UseWellsFargoRules { get; set; }
+        public bool ShouldSerializeUseEIN() => !_useEIN.Clean;
+        private Value<bool?> _useWellsFargoRules;
+        public bool? UseWellsFargoRules { get { return _useWellsFargoRules; } set { _useWellsFargoRules = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUseWellsFargoRules() => !UseWellsFargoRules.Clean;
-        public Value<bool?> VerificationOfNonfiling { get; set; }
+        public bool ShouldSerializeUseWellsFargoRules() => !_useWellsFargoRules.Clean;
+        private Value<bool?> _verificationOfNonfiling;
+        public bool? VerificationOfNonfiling { get { return _verificationOfNonfiling; } set { _verificationOfNonfiling = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVerificationOfNonfiling() => !VerificationOfNonfiling.Clean;
-        public Value<string> Zip { get; set; }
+        public bool ShouldSerializeVerificationOfNonfiling() => !_verificationOfNonfiling.Clean;
+        private Value<string> _zip;
+        public string Zip { get { return _zip; } set { _zip = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeZip() => !Zip.Clean;
+        public bool ShouldSerializeZip() => !_zip.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -194,132 +254,132 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AccountTranscript.Clean
-                    && Address.Clean
-                    && City.Clean
-                    && CostForEachPeriod.Clean
-                    && CurrentFirst.Clean
-                    && CurrentLast.Clean
-                    && First.Clean
-                    && FormsSeriesTranscript.Clean
-                    && HistoryId.Clean
-                    && HistoryIndicator.Clean
-                    && Id.Clean
-                    && IfTaxRecordNotFound.Clean
-                    && Last.Clean
-                    && LastUpdatedDate.Clean
-                    && LastUpdatedHistory.Clean
-                    && LastUpdatedTime.Clean
-                    && NotifiedIrsIdentityTheftIndicator.Clean
-                    && NumberOfPeriods.Clean
-                    && Person.Clean
-                    && RecordOfAccount.Clean
-                    && RequestorPhoneNumber.Clean
-                    && RequestorTitle.Clean
-                    && RequestYear1.Clean
-                    && RequestYear2.Clean
-                    && RequestYear3.Clean
-                    && RequestYear4.Clean
-                    && RequestYear5.Clean
-                    && RequestYear6.Clean
-                    && RequestYear7.Clean
-                    && RequestYear8.Clean
-                    && ReturnAddress.Clean
-                    && ReturnCity.Clean
-                    && ReturnState.Clean
-                    && ReturnTranscript.Clean
-                    && ReturnZip.Clean
-                    && SelectedRecordNumber.Clean
-                    && SendAddress.Clean
-                    && SendCity.Clean
-                    && SendFirst.Clean
-                    && SendLast.Clean
-                    && SendPhone.Clean
-                    && SendState.Clean
-                    && SendZip.Clean
-                    && SignatoryAttestation.Clean
-                    && SignatoryAttestationT.Clean
-                    && SpouseFirst.Clean
-                    && SpouseLast.Clean
-                    && SpouseSSN.Clean
-                    && SpouseUseEIN.Clean
-                    && SSN.Clean
-                    && State.Clean
-                    && Tax4506Index.Clean
-                    && Tax4506TIndicator.Clean
-                    && TaxFormNumber.Clean
-                    && TheseCopiesMustBeCertified.Clean
-                    && TotalCost.Clean
-                    && UseEIN.Clean
-                    && UseWellsFargoRules.Clean
-                    && VerificationOfNonfiling.Clean
-                    && Zip.Clean;
+                var clean = _accountTranscript.Clean
+                    && _address.Clean
+                    && _city.Clean
+                    && _costForEachPeriod.Clean
+                    && _currentFirst.Clean
+                    && _currentLast.Clean
+                    && _first.Clean
+                    && _formsSeriesTranscript.Clean
+                    && _historyId.Clean
+                    && _historyIndicator.Clean
+                    && _id.Clean
+                    && _ifTaxRecordNotFound.Clean
+                    && _last.Clean
+                    && _lastUpdatedDate.Clean
+                    && _lastUpdatedHistory.Clean
+                    && _lastUpdatedTime.Clean
+                    && _notifiedIrsIdentityTheftIndicator.Clean
+                    && _numberOfPeriods.Clean
+                    && _person.Clean
+                    && _recordOfAccount.Clean
+                    && _requestorPhoneNumber.Clean
+                    && _requestorTitle.Clean
+                    && _requestYear1.Clean
+                    && _requestYear2.Clean
+                    && _requestYear3.Clean
+                    && _requestYear4.Clean
+                    && _requestYear5.Clean
+                    && _requestYear6.Clean
+                    && _requestYear7.Clean
+                    && _requestYear8.Clean
+                    && _returnAddress.Clean
+                    && _returnCity.Clean
+                    && _returnState.Clean
+                    && _returnTranscript.Clean
+                    && _returnZip.Clean
+                    && _selectedRecordNumber.Clean
+                    && _sendAddress.Clean
+                    && _sendCity.Clean
+                    && _sendFirst.Clean
+                    && _sendLast.Clean
+                    && _sendPhone.Clean
+                    && _sendState.Clean
+                    && _sendZip.Clean
+                    && _signatoryAttestation.Clean
+                    && _signatoryAttestationT.Clean
+                    && _spouseFirst.Clean
+                    && _spouseLast.Clean
+                    && _spouseSSN.Clean
+                    && _spouseUseEIN.Clean
+                    && _sSN.Clean
+                    && _state.Clean
+                    && _tax4506Index.Clean
+                    && _tax4506TIndicator.Clean
+                    && _taxFormNumber.Clean
+                    && _theseCopiesMustBeCertified.Clean
+                    && _totalCost.Clean
+                    && _useEIN.Clean
+                    && _useWellsFargoRules.Clean
+                    && _verificationOfNonfiling.Clean
+                    && _zip.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AccountTranscript; v0.Clean = value; AccountTranscript = v0;
-                var v1 = Address; v1.Clean = value; Address = v1;
-                var v2 = City; v2.Clean = value; City = v2;
-                var v3 = CostForEachPeriod; v3.Clean = value; CostForEachPeriod = v3;
-                var v4 = CurrentFirst; v4.Clean = value; CurrentFirst = v4;
-                var v5 = CurrentLast; v5.Clean = value; CurrentLast = v5;
-                var v6 = First; v6.Clean = value; First = v6;
-                var v7 = FormsSeriesTranscript; v7.Clean = value; FormsSeriesTranscript = v7;
-                var v8 = HistoryId; v8.Clean = value; HistoryId = v8;
-                var v9 = HistoryIndicator; v9.Clean = value; HistoryIndicator = v9;
-                var v10 = Id; v10.Clean = value; Id = v10;
-                var v11 = IfTaxRecordNotFound; v11.Clean = value; IfTaxRecordNotFound = v11;
-                var v12 = Last; v12.Clean = value; Last = v12;
-                var v13 = LastUpdatedDate; v13.Clean = value; LastUpdatedDate = v13;
-                var v14 = LastUpdatedHistory; v14.Clean = value; LastUpdatedHistory = v14;
-                var v15 = LastUpdatedTime; v15.Clean = value; LastUpdatedTime = v15;
-                var v16 = NotifiedIrsIdentityTheftIndicator; v16.Clean = value; NotifiedIrsIdentityTheftIndicator = v16;
-                var v17 = NumberOfPeriods; v17.Clean = value; NumberOfPeriods = v17;
-                var v18 = Person; v18.Clean = value; Person = v18;
-                var v19 = RecordOfAccount; v19.Clean = value; RecordOfAccount = v19;
-                var v20 = RequestorPhoneNumber; v20.Clean = value; RequestorPhoneNumber = v20;
-                var v21 = RequestorTitle; v21.Clean = value; RequestorTitle = v21;
-                var v22 = RequestYear1; v22.Clean = value; RequestYear1 = v22;
-                var v23 = RequestYear2; v23.Clean = value; RequestYear2 = v23;
-                var v24 = RequestYear3; v24.Clean = value; RequestYear3 = v24;
-                var v25 = RequestYear4; v25.Clean = value; RequestYear4 = v25;
-                var v26 = RequestYear5; v26.Clean = value; RequestYear5 = v26;
-                var v27 = RequestYear6; v27.Clean = value; RequestYear6 = v27;
-                var v28 = RequestYear7; v28.Clean = value; RequestYear7 = v28;
-                var v29 = RequestYear8; v29.Clean = value; RequestYear8 = v29;
-                var v30 = ReturnAddress; v30.Clean = value; ReturnAddress = v30;
-                var v31 = ReturnCity; v31.Clean = value; ReturnCity = v31;
-                var v32 = ReturnState; v32.Clean = value; ReturnState = v32;
-                var v33 = ReturnTranscript; v33.Clean = value; ReturnTranscript = v33;
-                var v34 = ReturnZip; v34.Clean = value; ReturnZip = v34;
-                var v35 = SelectedRecordNumber; v35.Clean = value; SelectedRecordNumber = v35;
-                var v36 = SendAddress; v36.Clean = value; SendAddress = v36;
-                var v37 = SendCity; v37.Clean = value; SendCity = v37;
-                var v38 = SendFirst; v38.Clean = value; SendFirst = v38;
-                var v39 = SendLast; v39.Clean = value; SendLast = v39;
-                var v40 = SendPhone; v40.Clean = value; SendPhone = v40;
-                var v41 = SendState; v41.Clean = value; SendState = v41;
-                var v42 = SendZip; v42.Clean = value; SendZip = v42;
-                var v43 = SignatoryAttestation; v43.Clean = value; SignatoryAttestation = v43;
-                var v44 = SignatoryAttestationT; v44.Clean = value; SignatoryAttestationT = v44;
-                var v45 = SpouseFirst; v45.Clean = value; SpouseFirst = v45;
-                var v46 = SpouseLast; v46.Clean = value; SpouseLast = v46;
-                var v47 = SpouseSSN; v47.Clean = value; SpouseSSN = v47;
-                var v48 = SpouseUseEIN; v48.Clean = value; SpouseUseEIN = v48;
-                var v49 = SSN; v49.Clean = value; SSN = v49;
-                var v50 = State; v50.Clean = value; State = v50;
-                var v51 = Tax4506Index; v51.Clean = value; Tax4506Index = v51;
-                var v52 = Tax4506TIndicator; v52.Clean = value; Tax4506TIndicator = v52;
-                var v53 = TaxFormNumber; v53.Clean = value; TaxFormNumber = v53;
-                var v54 = TheseCopiesMustBeCertified; v54.Clean = value; TheseCopiesMustBeCertified = v54;
-                var v55 = TotalCost; v55.Clean = value; TotalCost = v55;
-                var v56 = UseEIN; v56.Clean = value; UseEIN = v56;
-                var v57 = UseWellsFargoRules; v57.Clean = value; UseWellsFargoRules = v57;
-                var v58 = VerificationOfNonfiling; v58.Clean = value; VerificationOfNonfiling = v58;
-                var v59 = Zip; v59.Clean = value; Zip = v59;
+                var v0 = _accountTranscript; v0.Clean = value; _accountTranscript = v0;
+                var v1 = _address; v1.Clean = value; _address = v1;
+                var v2 = _city; v2.Clean = value; _city = v2;
+                var v3 = _costForEachPeriod; v3.Clean = value; _costForEachPeriod = v3;
+                var v4 = _currentFirst; v4.Clean = value; _currentFirst = v4;
+                var v5 = _currentLast; v5.Clean = value; _currentLast = v5;
+                var v6 = _first; v6.Clean = value; _first = v6;
+                var v7 = _formsSeriesTranscript; v7.Clean = value; _formsSeriesTranscript = v7;
+                var v8 = _historyId; v8.Clean = value; _historyId = v8;
+                var v9 = _historyIndicator; v9.Clean = value; _historyIndicator = v9;
+                var v10 = _id; v10.Clean = value; _id = v10;
+                var v11 = _ifTaxRecordNotFound; v11.Clean = value; _ifTaxRecordNotFound = v11;
+                var v12 = _last; v12.Clean = value; _last = v12;
+                var v13 = _lastUpdatedDate; v13.Clean = value; _lastUpdatedDate = v13;
+                var v14 = _lastUpdatedHistory; v14.Clean = value; _lastUpdatedHistory = v14;
+                var v15 = _lastUpdatedTime; v15.Clean = value; _lastUpdatedTime = v15;
+                var v16 = _notifiedIrsIdentityTheftIndicator; v16.Clean = value; _notifiedIrsIdentityTheftIndicator = v16;
+                var v17 = _numberOfPeriods; v17.Clean = value; _numberOfPeriods = v17;
+                var v18 = _person; v18.Clean = value; _person = v18;
+                var v19 = _recordOfAccount; v19.Clean = value; _recordOfAccount = v19;
+                var v20 = _requestorPhoneNumber; v20.Clean = value; _requestorPhoneNumber = v20;
+                var v21 = _requestorTitle; v21.Clean = value; _requestorTitle = v21;
+                var v22 = _requestYear1; v22.Clean = value; _requestYear1 = v22;
+                var v23 = _requestYear2; v23.Clean = value; _requestYear2 = v23;
+                var v24 = _requestYear3; v24.Clean = value; _requestYear3 = v24;
+                var v25 = _requestYear4; v25.Clean = value; _requestYear4 = v25;
+                var v26 = _requestYear5; v26.Clean = value; _requestYear5 = v26;
+                var v27 = _requestYear6; v27.Clean = value; _requestYear6 = v27;
+                var v28 = _requestYear7; v28.Clean = value; _requestYear7 = v28;
+                var v29 = _requestYear8; v29.Clean = value; _requestYear8 = v29;
+                var v30 = _returnAddress; v30.Clean = value; _returnAddress = v30;
+                var v31 = _returnCity; v31.Clean = value; _returnCity = v31;
+                var v32 = _returnState; v32.Clean = value; _returnState = v32;
+                var v33 = _returnTranscript; v33.Clean = value; _returnTranscript = v33;
+                var v34 = _returnZip; v34.Clean = value; _returnZip = v34;
+                var v35 = _selectedRecordNumber; v35.Clean = value; _selectedRecordNumber = v35;
+                var v36 = _sendAddress; v36.Clean = value; _sendAddress = v36;
+                var v37 = _sendCity; v37.Clean = value; _sendCity = v37;
+                var v38 = _sendFirst; v38.Clean = value; _sendFirst = v38;
+                var v39 = _sendLast; v39.Clean = value; _sendLast = v39;
+                var v40 = _sendPhone; v40.Clean = value; _sendPhone = v40;
+                var v41 = _sendState; v41.Clean = value; _sendState = v41;
+                var v42 = _sendZip; v42.Clean = value; _sendZip = v42;
+                var v43 = _signatoryAttestation; v43.Clean = value; _signatoryAttestation = v43;
+                var v44 = _signatoryAttestationT; v44.Clean = value; _signatoryAttestationT = v44;
+                var v45 = _spouseFirst; v45.Clean = value; _spouseFirst = v45;
+                var v46 = _spouseLast; v46.Clean = value; _spouseLast = v46;
+                var v47 = _spouseSSN; v47.Clean = value; _spouseSSN = v47;
+                var v48 = _spouseUseEIN; v48.Clean = value; _spouseUseEIN = v48;
+                var v49 = _sSN; v49.Clean = value; _sSN = v49;
+                var v50 = _state; v50.Clean = value; _state = v50;
+                var v51 = _tax4506Index; v51.Clean = value; _tax4506Index = v51;
+                var v52 = _tax4506TIndicator; v52.Clean = value; _tax4506TIndicator = v52;
+                var v53 = _taxFormNumber; v53.Clean = value; _taxFormNumber = v53;
+                var v54 = _theseCopiesMustBeCertified; v54.Clean = value; _theseCopiesMustBeCertified = v54;
+                var v55 = _totalCost; v55.Clean = value; _totalCost = v55;
+                var v56 = _useEIN; v56.Clean = value; _useEIN = v56;
+                var v57 = _useWellsFargoRules; v57.Clean = value; _useWellsFargoRules = v57;
+                var v58 = _verificationOfNonfiling; v58.Clean = value; _verificationOfNonfiling = v58;
+                var v59 = _zip; v59.Clean = value; _zip = v59;
                 _settingClean = 0;
             }
         }

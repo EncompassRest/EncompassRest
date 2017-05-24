@@ -7,84 +7,110 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLReportInformation
     {
-        public Value<string> AltId { get; set; }
+        private Value<string> _altId;
+        public string AltId { get { return _altId; } set { _altId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAltId() => !AltId.Clean;
-        public Value<string> BorrowerID1 { get; set; }
+        public bool ShouldSerializeAltId() => !_altId.Clean;
+        private Value<string> _borrowerID1;
+        public string BorrowerID1 { get { return _borrowerID1; } set { _borrowerID1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID1() => !BorrowerID1.Clean;
-        public Value<string> BorrowerID2 { get; set; }
+        public bool ShouldSerializeBorrowerID1() => !_borrowerID1.Clean;
+        private Value<string> _borrowerID2;
+        public string BorrowerID2 { get { return _borrowerID2; } set { _borrowerID2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID2() => !BorrowerID2.Clean;
-        public Value<string> BorrowerID3 { get; set; }
+        public bool ShouldSerializeBorrowerID2() => !_borrowerID2.Clean;
+        private Value<string> _borrowerID3;
+        public string BorrowerID3 { get { return _borrowerID3; } set { _borrowerID3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID3() => !BorrowerID3.Clean;
-        public Value<string> BorrowerID4 { get; set; }
+        public bool ShouldSerializeBorrowerID3() => !_borrowerID3.Clean;
+        private Value<string> _borrowerID4;
+        public string BorrowerID4 { get { return _borrowerID4; } set { _borrowerID4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID4() => !BorrowerID4.Clean;
-        public Value<DateTime?> CompletedDate { get; set; }
+        public bool ShouldSerializeBorrowerID4() => !_borrowerID4.Clean;
+        private Value<DateTime?> _completedDate;
+        public DateTime? CompletedDate { get { return _completedDate; } set { _completedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletedDate() => !CompletedDate.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeCompletedDate() => !_completedDate.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> Investor { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _investor;
+        public string Investor { get { return _investor; } set { _investor = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestor() => !Investor.Clean;
-        public Value<DateTime?> OrderDate { get; set; }
+        public bool ShouldSerializeInvestor() => !_investor.Clean;
+        private Value<DateTime?> _orderDate;
+        public DateTime? OrderDate { get { return _orderDate; } set { _orderDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderDate() => !OrderDate.Clean;
-        public Value<string> OrderNumber { get; set; }
+        public bool ShouldSerializeOrderDate() => !_orderDate.Clean;
+        private Value<string> _orderNumber;
+        public string OrderNumber { get { return _orderNumber; } set { _orderNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderNumber() => !OrderNumber.Clean;
-        public Value<string> OrderStatus { get; set; }
+        public bool ShouldSerializeOrderNumber() => !_orderNumber.Clean;
+        private Value<string> _orderStatus;
+        public string OrderStatus { get { return _orderStatus; } set { _orderStatus = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderStatus() => !OrderStatus.Clean;
-        public Value<decimal?> PercentVariance1 { get; set; }
+        public bool ShouldSerializeOrderStatus() => !_orderStatus.Clean;
+        private Value<decimal?> _percentVariance1;
+        public decimal? PercentVariance1 { get { return _percentVariance1; } set { _percentVariance1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance1() => !PercentVariance1.Clean;
-        public Value<decimal?> PercentVariance2 { get; set; }
+        public bool ShouldSerializePercentVariance1() => !_percentVariance1.Clean;
+        private Value<decimal?> _percentVariance2;
+        public decimal? PercentVariance2 { get { return _percentVariance2; } set { _percentVariance2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance2() => !PercentVariance2.Clean;
-        public Value<decimal?> PercentVariance3 { get; set; }
+        public bool ShouldSerializePercentVariance2() => !_percentVariance2.Clean;
+        private Value<decimal?> _percentVariance3;
+        public decimal? PercentVariance3 { get { return _percentVariance3; } set { _percentVariance3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance3() => !PercentVariance3.Clean;
-        public Value<decimal?> PercentVariance4 { get; set; }
+        public bool ShouldSerializePercentVariance3() => !_percentVariance3.Clean;
+        private Value<decimal?> _percentVariance4;
+        public decimal? PercentVariance4 { get { return _percentVariance4; } set { _percentVariance4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance4() => !PercentVariance4.Clean;
-        public Value<string> ProductsOrdered { get; set; }
+        public bool ShouldSerializePercentVariance4() => !_percentVariance4.Clean;
+        private Value<string> _productsOrdered;
+        public string ProductsOrdered { get { return _productsOrdered; } set { _productsOrdered = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProductsOrdered() => !ProductsOrdered.Clean;
-        public Value<string> ReportYear1 { get; set; }
+        public bool ShouldSerializeProductsOrdered() => !_productsOrdered.Clean;
+        private Value<string> _reportYear1;
+        public string ReportYear1 { get { return _reportYear1; } set { _reportYear1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear1() => !ReportYear1.Clean;
-        public Value<string> ReportYear2 { get; set; }
+        public bool ShouldSerializeReportYear1() => !_reportYear1.Clean;
+        private Value<string> _reportYear2;
+        public string ReportYear2 { get { return _reportYear2; } set { _reportYear2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear2() => !ReportYear2.Clean;
-        public Value<string> ReportYear3 { get; set; }
+        public bool ShouldSerializeReportYear2() => !_reportYear2.Clean;
+        private Value<string> _reportYear3;
+        public string ReportYear3 { get { return _reportYear3; } set { _reportYear3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear3() => !ReportYear3.Clean;
-        public Value<string> ReportYear4 { get; set; }
+        public bool ShouldSerializeReportYear3() => !_reportYear3.Clean;
+        private Value<string> _reportYear4;
+        public string ReportYear4 { get { return _reportYear4; } set { _reportYear4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear4() => !ReportYear4.Clean;
-        public Value<decimal?> TotalIncome1 { get; set; }
+        public bool ShouldSerializeReportYear4() => !_reportYear4.Clean;
+        private Value<decimal?> _totalIncome1;
+        public decimal? TotalIncome1 { get { return _totalIncome1; } set { _totalIncome1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome1() => !TotalIncome1.Clean;
-        public Value<decimal?> TotalIncome2 { get; set; }
+        public bool ShouldSerializeTotalIncome1() => !_totalIncome1.Clean;
+        private Value<decimal?> _totalIncome2;
+        public decimal? TotalIncome2 { get { return _totalIncome2; } set { _totalIncome2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome2() => !TotalIncome2.Clean;
-        public Value<decimal?> TotalIncome3 { get; set; }
+        public bool ShouldSerializeTotalIncome2() => !_totalIncome2.Clean;
+        private Value<decimal?> _totalIncome3;
+        public decimal? TotalIncome3 { get { return _totalIncome3; } set { _totalIncome3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome3() => !TotalIncome3.Clean;
-        public Value<decimal?> TotalIncome4 { get; set; }
+        public bool ShouldSerializeTotalIncome3() => !_totalIncome3.Clean;
+        private Value<decimal?> _totalIncome4;
+        public decimal? TotalIncome4 { get { return _totalIncome4; } set { _totalIncome4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome4() => !TotalIncome4.Clean;
-        public Value<string> TranscriptType { get; set; }
+        public bool ShouldSerializeTotalIncome4() => !_totalIncome4.Clean;
+        private Value<string> _transcriptType;
+        public string TranscriptType { get { return _transcriptType; } set { _transcriptType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTranscriptType() => !TranscriptType.Clean;
-        public Value<string> UserID { get; set; }
+        public bool ShouldSerializeTranscriptType() => !_transcriptType.Clean;
+        private Value<string> _userID;
+        public string UserID { get { return _userID; } set { _userID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserID() => !UserID.Clean;
+        public bool ShouldSerializeUserID() => !_userID.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -92,64 +118,64 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AltId.Clean
-                    && BorrowerID1.Clean
-                    && BorrowerID2.Clean
-                    && BorrowerID3.Clean
-                    && BorrowerID4.Clean
-                    && CompletedDate.Clean
-                    && Id.Clean
-                    && Investor.Clean
-                    && OrderDate.Clean
-                    && OrderNumber.Clean
-                    && OrderStatus.Clean
-                    && PercentVariance1.Clean
-                    && PercentVariance2.Clean
-                    && PercentVariance3.Clean
-                    && PercentVariance4.Clean
-                    && ProductsOrdered.Clean
-                    && ReportYear1.Clean
-                    && ReportYear2.Clean
-                    && ReportYear3.Clean
-                    && ReportYear4.Clean
-                    && TotalIncome1.Clean
-                    && TotalIncome2.Clean
-                    && TotalIncome3.Clean
-                    && TotalIncome4.Clean
-                    && TranscriptType.Clean
-                    && UserID.Clean;
+                var clean = _altId.Clean
+                    && _borrowerID1.Clean
+                    && _borrowerID2.Clean
+                    && _borrowerID3.Clean
+                    && _borrowerID4.Clean
+                    && _completedDate.Clean
+                    && _id.Clean
+                    && _investor.Clean
+                    && _orderDate.Clean
+                    && _orderNumber.Clean
+                    && _orderStatus.Clean
+                    && _percentVariance1.Clean
+                    && _percentVariance2.Clean
+                    && _percentVariance3.Clean
+                    && _percentVariance4.Clean
+                    && _productsOrdered.Clean
+                    && _reportYear1.Clean
+                    && _reportYear2.Clean
+                    && _reportYear3.Clean
+                    && _reportYear4.Clean
+                    && _totalIncome1.Clean
+                    && _totalIncome2.Clean
+                    && _totalIncome3.Clean
+                    && _totalIncome4.Clean
+                    && _transcriptType.Clean
+                    && _userID.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AltId; v0.Clean = value; AltId = v0;
-                var v1 = BorrowerID1; v1.Clean = value; BorrowerID1 = v1;
-                var v2 = BorrowerID2; v2.Clean = value; BorrowerID2 = v2;
-                var v3 = BorrowerID3; v3.Clean = value; BorrowerID3 = v3;
-                var v4 = BorrowerID4; v4.Clean = value; BorrowerID4 = v4;
-                var v5 = CompletedDate; v5.Clean = value; CompletedDate = v5;
-                var v6 = Id; v6.Clean = value; Id = v6;
-                var v7 = Investor; v7.Clean = value; Investor = v7;
-                var v8 = OrderDate; v8.Clean = value; OrderDate = v8;
-                var v9 = OrderNumber; v9.Clean = value; OrderNumber = v9;
-                var v10 = OrderStatus; v10.Clean = value; OrderStatus = v10;
-                var v11 = PercentVariance1; v11.Clean = value; PercentVariance1 = v11;
-                var v12 = PercentVariance2; v12.Clean = value; PercentVariance2 = v12;
-                var v13 = PercentVariance3; v13.Clean = value; PercentVariance3 = v13;
-                var v14 = PercentVariance4; v14.Clean = value; PercentVariance4 = v14;
-                var v15 = ProductsOrdered; v15.Clean = value; ProductsOrdered = v15;
-                var v16 = ReportYear1; v16.Clean = value; ReportYear1 = v16;
-                var v17 = ReportYear2; v17.Clean = value; ReportYear2 = v17;
-                var v18 = ReportYear3; v18.Clean = value; ReportYear3 = v18;
-                var v19 = ReportYear4; v19.Clean = value; ReportYear4 = v19;
-                var v20 = TotalIncome1; v20.Clean = value; TotalIncome1 = v20;
-                var v21 = TotalIncome2; v21.Clean = value; TotalIncome2 = v21;
-                var v22 = TotalIncome3; v22.Clean = value; TotalIncome3 = v22;
-                var v23 = TotalIncome4; v23.Clean = value; TotalIncome4 = v23;
-                var v24 = TranscriptType; v24.Clean = value; TranscriptType = v24;
-                var v25 = UserID; v25.Clean = value; UserID = v25;
+                var v0 = _altId; v0.Clean = value; _altId = v0;
+                var v1 = _borrowerID1; v1.Clean = value; _borrowerID1 = v1;
+                var v2 = _borrowerID2; v2.Clean = value; _borrowerID2 = v2;
+                var v3 = _borrowerID3; v3.Clean = value; _borrowerID3 = v3;
+                var v4 = _borrowerID4; v4.Clean = value; _borrowerID4 = v4;
+                var v5 = _completedDate; v5.Clean = value; _completedDate = v5;
+                var v6 = _id; v6.Clean = value; _id = v6;
+                var v7 = _investor; v7.Clean = value; _investor = v7;
+                var v8 = _orderDate; v8.Clean = value; _orderDate = v8;
+                var v9 = _orderNumber; v9.Clean = value; _orderNumber = v9;
+                var v10 = _orderStatus; v10.Clean = value; _orderStatus = v10;
+                var v11 = _percentVariance1; v11.Clean = value; _percentVariance1 = v11;
+                var v12 = _percentVariance2; v12.Clean = value; _percentVariance2 = v12;
+                var v13 = _percentVariance3; v13.Clean = value; _percentVariance3 = v13;
+                var v14 = _percentVariance4; v14.Clean = value; _percentVariance4 = v14;
+                var v15 = _productsOrdered; v15.Clean = value; _productsOrdered = v15;
+                var v16 = _reportYear1; v16.Clean = value; _reportYear1 = v16;
+                var v17 = _reportYear2; v17.Clean = value; _reportYear2 = v17;
+                var v18 = _reportYear3; v18.Clean = value; _reportYear3 = v18;
+                var v19 = _reportYear4; v19.Clean = value; _reportYear4 = v19;
+                var v20 = _totalIncome1; v20.Clean = value; _totalIncome1 = v20;
+                var v21 = _totalIncome2; v21.Clean = value; _totalIncome2 = v21;
+                var v22 = _totalIncome3; v22.Clean = value; _totalIncome3 = v22;
+                var v23 = _totalIncome4; v23.Clean = value; _totalIncome4 = v23;
+                var v24 = _transcriptType; v24.Clean = value; _transcriptType = v24;
+                var v25 = _userID; v25.Clean = value; _userID = v25;
                 _settingClean = 0;
             }
         }

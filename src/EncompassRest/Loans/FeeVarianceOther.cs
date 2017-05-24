@@ -7,111 +7,146 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FeeVarianceOther
     {
-        public Value<decimal?> AppliedCureAmount { get; set; }
+        private Value<decimal?> _appliedCureAmount;
+        public decimal? AppliedCureAmount { get { return _appliedCureAmount; } set { _appliedCureAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppliedCureAmount() => !AppliedCureAmount.Clean;
-        public Value<string> CannotDecreaseCDBaselineGuid { get; set; }
+        public bool ShouldSerializeAppliedCureAmount() => !_appliedCureAmount.Clean;
+        private Value<string> _cannotDecreaseCDBaselineGuid;
+        public string CannotDecreaseCDBaselineGuid { get { return _cannotDecreaseCDBaselineGuid; } set { _cannotDecreaseCDBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotDecreaseCDBaselineGuid() => !CannotDecreaseCDBaselineGuid.Clean;
-        public Value<string> CannotDecreaseLEBaselineGuid { get; set; }
+        public bool ShouldSerializeCannotDecreaseCDBaselineGuid() => !_cannotDecreaseCDBaselineGuid.Clean;
+        private Value<string> _cannotDecreaseLEBaselineGuid;
+        public string CannotDecreaseLEBaselineGuid { get { return _cannotDecreaseLEBaselineGuid; } set { _cannotDecreaseLEBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotDecreaseLEBaselineGuid() => !CannotDecreaseLEBaselineGuid.Clean;
-        public Value<string> CannotIncrease10CDBaselineGuid { get; set; }
+        public bool ShouldSerializeCannotDecreaseLEBaselineGuid() => !_cannotDecreaseLEBaselineGuid.Clean;
+        private Value<string> _cannotIncrease10CDBaselineGuid;
+        public string CannotIncrease10CDBaselineGuid { get { return _cannotIncrease10CDBaselineGuid; } set { _cannotIncrease10CDBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotIncrease10CDBaselineGuid() => !CannotIncrease10CDBaselineGuid.Clean;
-        public Value<string> CannotIncrease10LEBaselineGuid { get; set; }
+        public bool ShouldSerializeCannotIncrease10CDBaselineGuid() => !_cannotIncrease10CDBaselineGuid.Clean;
+        private Value<string> _cannotIncrease10LEBaselineGuid;
+        public string CannotIncrease10LEBaselineGuid { get { return _cannotIncrease10LEBaselineGuid; } set { _cannotIncrease10LEBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotIncrease10LEBaselineGuid() => !CannotIncrease10LEBaselineGuid.Clean;
-        public Value<string> CannotIncreaseCDBaselineGuid { get; set; }
+        public bool ShouldSerializeCannotIncrease10LEBaselineGuid() => !_cannotIncrease10LEBaselineGuid.Clean;
+        private Value<string> _cannotIncreaseCDBaselineGuid;
+        public string CannotIncreaseCDBaselineGuid { get { return _cannotIncreaseCDBaselineGuid; } set { _cannotIncreaseCDBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotIncreaseCDBaselineGuid() => !CannotIncreaseCDBaselineGuid.Clean;
-        public Value<string> CannotIncreaseLEBaselineGuid { get; set; }
+        public bool ShouldSerializeCannotIncreaseCDBaselineGuid() => !_cannotIncreaseCDBaselineGuid.Clean;
+        private Value<string> _cannotIncreaseLEBaselineGuid;
+        public string CannotIncreaseLEBaselineGuid { get { return _cannotIncreaseLEBaselineGuid; } set { _cannotIncreaseLEBaselineGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCannotIncreaseLEBaselineGuid() => !CannotIncreaseLEBaselineGuid.Clean;
-        public Value<string> CDInitialGuid { get; set; }
+        public bool ShouldSerializeCannotIncreaseLEBaselineGuid() => !_cannotIncreaseLEBaselineGuid.Clean;
+        private Value<string> _cDInitialGuid;
+        public string CDInitialGuid { get { return _cDInitialGuid; } set { _cDInitialGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDInitialGuid() => !CDInitialGuid.Clean;
-        public Value<string> CDLatestGuid { get; set; }
+        public bool ShouldSerializeCDInitialGuid() => !_cDInitialGuid.Clean;
+        private Value<string> _cDLatestGuid;
+        public string CDLatestGuid { get { return _cDLatestGuid; } set { _cDLatestGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDLatestGuid() => !CDLatestGuid.Clean;
-        public Value<string> CDPostConGuid { get; set; }
+        public bool ShouldSerializeCDLatestGuid() => !_cDLatestGuid.Clean;
+        private Value<string> _cDPostConGuid;
+        public string CDPostConGuid { get { return _cDPostConGuid; } set { _cDPostConGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDPostConGuid() => !CDPostConGuid.Clean;
-        public Value<string> CDRecentAppliedCure { get; set; }
+        public bool ShouldSerializeCDPostConGuid() => !_cDPostConGuid.Clean;
+        private Value<string> _cDRecentAppliedCure;
+        public string CDRecentAppliedCure { get { return _cDRecentAppliedCure; } set { _cDRecentAppliedCure = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDRecentAppliedCure() => !CDRecentAppliedCure.Clean;
-        public Value<DateTime?> ChargesCannotIncrease10CD1 { get; set; }
+        public bool ShouldSerializeCDRecentAppliedCure() => !_cDRecentAppliedCure.Clean;
+        private Value<DateTime?> _chargesCannotIncrease10CD1;
+        public DateTime? ChargesCannotIncrease10CD1 { get { return _chargesCannotIncrease10CD1; } set { _chargesCannotIncrease10CD1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesCannotIncrease10CD1() => !ChargesCannotIncrease10CD1.Clean;
-        public Value<DateTime?> ChargesCannotIncrease10InitialLE1 { get; set; }
+        public bool ShouldSerializeChargesCannotIncrease10CD1() => !_chargesCannotIncrease10CD1.Clean;
+        private Value<DateTime?> _chargesCannotIncrease10InitialLE1;
+        public DateTime? ChargesCannotIncrease10InitialLE1 { get { return _chargesCannotIncrease10InitialLE1; } set { _chargesCannotIncrease10InitialLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesCannotIncrease10InitialLE1() => !ChargesCannotIncrease10InitialLE1.Clean;
-        public Value<DateTime?> ChargesCannotIncrease10LE1 { get; set; }
+        public bool ShouldSerializeChargesCannotIncrease10InitialLE1() => !_chargesCannotIncrease10InitialLE1.Clean;
+        private Value<DateTime?> _chargesCannotIncrease10LE1;
+        public DateTime? ChargesCannotIncrease10LE1 { get { return _chargesCannotIncrease10LE1; } set { _chargesCannotIncrease10LE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesCannotIncrease10LE1() => !ChargesCannotIncrease10LE1.Clean;
-        public Value<DateTime?> ChargesThatCanChangeCD1 { get; set; }
+        public bool ShouldSerializeChargesCannotIncrease10LE1() => !_chargesCannotIncrease10LE1.Clean;
+        private Value<DateTime?> _chargesThatCanChangeCD1;
+        public DateTime? ChargesThatCanChangeCD1 { get { return _chargesThatCanChangeCD1; } set { _chargesThatCanChangeCD1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCanChangeCD1() => !ChargesThatCanChangeCD1.Clean;
-        public Value<DateTime?> ChargesThatCanChangeInitialLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCanChangeCD1() => !_chargesThatCanChangeCD1.Clean;
+        private Value<DateTime?> _chargesThatCanChangeInitialLE1;
+        public DateTime? ChargesThatCanChangeInitialLE1 { get { return _chargesThatCanChangeInitialLE1; } set { _chargesThatCanChangeInitialLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCanChangeInitialLE1() => !ChargesThatCanChangeInitialLE1.Clean;
-        public Value<DateTime?> ChargesThatCanChangeLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCanChangeInitialLE1() => !_chargesThatCanChangeInitialLE1.Clean;
+        private Value<DateTime?> _chargesThatCanChangeLE1;
+        public DateTime? ChargesThatCanChangeLE1 { get { return _chargesThatCanChangeLE1; } set { _chargesThatCanChangeLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCanChangeLE1() => !ChargesThatCanChangeLE1.Clean;
-        public Value<DateTime?> ChargesThatCannotDecreaseCD1 { get; set; }
+        public bool ShouldSerializeChargesThatCanChangeLE1() => !_chargesThatCanChangeLE1.Clean;
+        private Value<DateTime?> _chargesThatCannotDecreaseCD1;
+        public DateTime? ChargesThatCannotDecreaseCD1 { get { return _chargesThatCannotDecreaseCD1; } set { _chargesThatCannotDecreaseCD1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotDecreaseCD1() => !ChargesThatCannotDecreaseCD1.Clean;
-        public Value<DateTime?> ChargesThatCannotDecreaseInitialLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCannotDecreaseCD1() => !_chargesThatCannotDecreaseCD1.Clean;
+        private Value<DateTime?> _chargesThatCannotDecreaseInitialLE1;
+        public DateTime? ChargesThatCannotDecreaseInitialLE1 { get { return _chargesThatCannotDecreaseInitialLE1; } set { _chargesThatCannotDecreaseInitialLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotDecreaseInitialLE1() => !ChargesThatCannotDecreaseInitialLE1.Clean;
-        public Value<DateTime?> ChargesThatCannotDecreaseLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCannotDecreaseInitialLE1() => !_chargesThatCannotDecreaseInitialLE1.Clean;
+        private Value<DateTime?> _chargesThatCannotDecreaseLE1;
+        public DateTime? ChargesThatCannotDecreaseLE1 { get { return _chargesThatCannotDecreaseLE1; } set { _chargesThatCannotDecreaseLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotDecreaseLE1() => !ChargesThatCannotDecreaseLE1.Clean;
-        public Value<DateTime?> ChargesThatCannotIncreaseCD1 { get; set; }
+        public bool ShouldSerializeChargesThatCannotDecreaseLE1() => !_chargesThatCannotDecreaseLE1.Clean;
+        private Value<DateTime?> _chargesThatCannotIncreaseCD1;
+        public DateTime? ChargesThatCannotIncreaseCD1 { get { return _chargesThatCannotIncreaseCD1; } set { _chargesThatCannotIncreaseCD1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotIncreaseCD1() => !ChargesThatCannotIncreaseCD1.Clean;
-        public Value<DateTime?> ChargesThatCannotIncreaseInitialLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCannotIncreaseCD1() => !_chargesThatCannotIncreaseCD1.Clean;
+        private Value<DateTime?> _chargesThatCannotIncreaseInitialLE1;
+        public DateTime? ChargesThatCannotIncreaseInitialLE1 { get { return _chargesThatCannotIncreaseInitialLE1; } set { _chargesThatCannotIncreaseInitialLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotIncreaseInitialLE1() => !ChargesThatCannotIncreaseInitialLE1.Clean;
-        public Value<DateTime?> ChargesThatCannotIncreaseLE1 { get; set; }
+        public bool ShouldSerializeChargesThatCannotIncreaseInitialLE1() => !_chargesThatCannotIncreaseInitialLE1.Clean;
+        private Value<DateTime?> _chargesThatCannotIncreaseLE1;
+        public DateTime? ChargesThatCannotIncreaseLE1 { get { return _chargesThatCannotIncreaseLE1; } set { _chargesThatCannotIncreaseLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargesThatCannotIncreaseLE1() => !ChargesThatCannotIncreaseLE1.Clean;
-        public Value<string> DisclosureLogGUIDForECD { get; set; }
+        public bool ShouldSerializeChargesThatCannotIncreaseLE1() => !_chargesThatCannotIncreaseLE1.Clean;
+        private Value<string> _disclosureLogGUIDForECD;
+        public string DisclosureLogGUIDForECD { get { return _disclosureLogGUIDForECD; } set { _disclosureLogGUIDForECD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureLogGUIDForECD() => !DisclosureLogGUIDForECD.Clean;
-        public Value<DateTime?> GoodFaithAmountInitialLE1 { get; set; }
+        public bool ShouldSerializeDisclosureLogGUIDForECD() => !_disclosureLogGUIDForECD.Clean;
+        private Value<DateTime?> _goodFaithAmountInitialLE1;
+        public DateTime? GoodFaithAmountInitialLE1 { get { return _goodFaithAmountInitialLE1; } set { _goodFaithAmountInitialLE1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGoodFaithAmountInitialLE1() => !GoodFaithAmountInitialLE1.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGoodFaithAmountInitialLE1() => !_goodFaithAmountInitialLE1.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> LEBaselineUsedCannotDecrease { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _lEBaselineUsedCannotDecrease;
+        public bool? LEBaselineUsedCannotDecrease { get { return _lEBaselineUsedCannotDecrease; } set { _lEBaselineUsedCannotDecrease = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLEBaselineUsedCannotDecrease() => !LEBaselineUsedCannotDecrease.Clean;
-        public Value<bool?> LEBaselineUsedCannotIncrease { get; set; }
+        public bool ShouldSerializeLEBaselineUsedCannotDecrease() => !_lEBaselineUsedCannotDecrease.Clean;
+        private Value<bool?> _lEBaselineUsedCannotIncrease;
+        public bool? LEBaselineUsedCannotIncrease { get { return _lEBaselineUsedCannotIncrease; } set { _lEBaselineUsedCannotIncrease = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLEBaselineUsedCannotIncrease() => !LEBaselineUsedCannotIncrease.Clean;
-        public Value<bool?> LEBaselineUsedCannotIncrease10 { get; set; }
+        public bool ShouldSerializeLEBaselineUsedCannotIncrease() => !_lEBaselineUsedCannotIncrease.Clean;
+        private Value<bool?> _lEBaselineUsedCannotIncrease10;
+        public bool? LEBaselineUsedCannotIncrease10 { get { return _lEBaselineUsedCannotIncrease10; } set { _lEBaselineUsedCannotIncrease10 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLEBaselineUsedCannotIncrease10() => !LEBaselineUsedCannotIncrease10.Clean;
-        public Value<string> LEInitialDTGuid { get; set; }
+        public bool ShouldSerializeLEBaselineUsedCannotIncrease10() => !_lEBaselineUsedCannotIncrease10.Clean;
+        private Value<string> _lEInitialDTGuid;
+        public string LEInitialDTGuid { get { return _lEInitialDTGuid; } set { _lEInitialDTGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLEInitialDTGuid() => !LEInitialDTGuid.Clean;
-        public Value<string> LEInitialGuid { get; set; }
+        public bool ShouldSerializeLEInitialDTGuid() => !_lEInitialDTGuid.Clean;
+        private Value<string> _lEInitialGuid;
+        public string LEInitialGuid { get { return _lEInitialGuid; } set { _lEInitialGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLEInitialGuid() => !LEInitialGuid.Clean;
-        public Value<string> LELatestGuid { get; set; }
+        public bool ShouldSerializeLEInitialGuid() => !_lEInitialGuid.Clean;
+        private Value<string> _lELatestGuid;
+        public string LELatestGuid { get { return _lELatestGuid; } set { _lELatestGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLELatestGuid() => !LELatestGuid.Clean;
-        public Value<decimal?> RequiredCureAmount { get; set; }
+        public bool ShouldSerializeLELatestGuid() => !_lELatestGuid.Clean;
+        private Value<decimal?> _requiredCureAmount;
+        public decimal? RequiredCureAmount { get { return _requiredCureAmount; } set { _requiredCureAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequiredCureAmount() => !RequiredCureAmount.Clean;
-        public Value<string> SafeHarborGuid { get; set; }
+        public bool ShouldSerializeRequiredCureAmount() => !_requiredCureAmount.Clean;
+        private Value<string> _safeHarborGuid;
+        public string SafeHarborGuid { get { return _safeHarborGuid; } set { _safeHarborGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSafeHarborGuid() => !SafeHarborGuid.Clean;
-        public Value<string> SSPLGuid { get; set; }
+        public bool ShouldSerializeSafeHarborGuid() => !_safeHarborGuid.Clean;
+        private Value<string> _sSPLGuid;
+        public string SSPLGuid { get { return _sSPLGuid; } set { _sSPLGuid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSSPLGuid() => !SSPLGuid.Clean;
+        public bool ShouldSerializeSSPLGuid() => !_sSPLGuid.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -119,82 +154,82 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AppliedCureAmount.Clean
-                    && CannotDecreaseCDBaselineGuid.Clean
-                    && CannotDecreaseLEBaselineGuid.Clean
-                    && CannotIncrease10CDBaselineGuid.Clean
-                    && CannotIncrease10LEBaselineGuid.Clean
-                    && CannotIncreaseCDBaselineGuid.Clean
-                    && CannotIncreaseLEBaselineGuid.Clean
-                    && CDInitialGuid.Clean
-                    && CDLatestGuid.Clean
-                    && CDPostConGuid.Clean
-                    && CDRecentAppliedCure.Clean
-                    && ChargesCannotIncrease10CD1.Clean
-                    && ChargesCannotIncrease10InitialLE1.Clean
-                    && ChargesCannotIncrease10LE1.Clean
-                    && ChargesThatCanChangeCD1.Clean
-                    && ChargesThatCanChangeInitialLE1.Clean
-                    && ChargesThatCanChangeLE1.Clean
-                    && ChargesThatCannotDecreaseCD1.Clean
-                    && ChargesThatCannotDecreaseInitialLE1.Clean
-                    && ChargesThatCannotDecreaseLE1.Clean
-                    && ChargesThatCannotIncreaseCD1.Clean
-                    && ChargesThatCannotIncreaseInitialLE1.Clean
-                    && ChargesThatCannotIncreaseLE1.Clean
-                    && DisclosureLogGUIDForECD.Clean
-                    && GoodFaithAmountInitialLE1.Clean
-                    && Id.Clean
-                    && LEBaselineUsedCannotDecrease.Clean
-                    && LEBaselineUsedCannotIncrease.Clean
-                    && LEBaselineUsedCannotIncrease10.Clean
-                    && LEInitialDTGuid.Clean
-                    && LEInitialGuid.Clean
-                    && LELatestGuid.Clean
-                    && RequiredCureAmount.Clean
-                    && SafeHarborGuid.Clean
-                    && SSPLGuid.Clean;
+                var clean = _appliedCureAmount.Clean
+                    && _cannotDecreaseCDBaselineGuid.Clean
+                    && _cannotDecreaseLEBaselineGuid.Clean
+                    && _cannotIncrease10CDBaselineGuid.Clean
+                    && _cannotIncrease10LEBaselineGuid.Clean
+                    && _cannotIncreaseCDBaselineGuid.Clean
+                    && _cannotIncreaseLEBaselineGuid.Clean
+                    && _cDInitialGuid.Clean
+                    && _cDLatestGuid.Clean
+                    && _cDPostConGuid.Clean
+                    && _cDRecentAppliedCure.Clean
+                    && _chargesCannotIncrease10CD1.Clean
+                    && _chargesCannotIncrease10InitialLE1.Clean
+                    && _chargesCannotIncrease10LE1.Clean
+                    && _chargesThatCanChangeCD1.Clean
+                    && _chargesThatCanChangeInitialLE1.Clean
+                    && _chargesThatCanChangeLE1.Clean
+                    && _chargesThatCannotDecreaseCD1.Clean
+                    && _chargesThatCannotDecreaseInitialLE1.Clean
+                    && _chargesThatCannotDecreaseLE1.Clean
+                    && _chargesThatCannotIncreaseCD1.Clean
+                    && _chargesThatCannotIncreaseInitialLE1.Clean
+                    && _chargesThatCannotIncreaseLE1.Clean
+                    && _disclosureLogGUIDForECD.Clean
+                    && _goodFaithAmountInitialLE1.Clean
+                    && _id.Clean
+                    && _lEBaselineUsedCannotDecrease.Clean
+                    && _lEBaselineUsedCannotIncrease.Clean
+                    && _lEBaselineUsedCannotIncrease10.Clean
+                    && _lEInitialDTGuid.Clean
+                    && _lEInitialGuid.Clean
+                    && _lELatestGuid.Clean
+                    && _requiredCureAmount.Clean
+                    && _safeHarborGuid.Clean
+                    && _sSPLGuid.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AppliedCureAmount; v0.Clean = value; AppliedCureAmount = v0;
-                var v1 = CannotDecreaseCDBaselineGuid; v1.Clean = value; CannotDecreaseCDBaselineGuid = v1;
-                var v2 = CannotDecreaseLEBaselineGuid; v2.Clean = value; CannotDecreaseLEBaselineGuid = v2;
-                var v3 = CannotIncrease10CDBaselineGuid; v3.Clean = value; CannotIncrease10CDBaselineGuid = v3;
-                var v4 = CannotIncrease10LEBaselineGuid; v4.Clean = value; CannotIncrease10LEBaselineGuid = v4;
-                var v5 = CannotIncreaseCDBaselineGuid; v5.Clean = value; CannotIncreaseCDBaselineGuid = v5;
-                var v6 = CannotIncreaseLEBaselineGuid; v6.Clean = value; CannotIncreaseLEBaselineGuid = v6;
-                var v7 = CDInitialGuid; v7.Clean = value; CDInitialGuid = v7;
-                var v8 = CDLatestGuid; v8.Clean = value; CDLatestGuid = v8;
-                var v9 = CDPostConGuid; v9.Clean = value; CDPostConGuid = v9;
-                var v10 = CDRecentAppliedCure; v10.Clean = value; CDRecentAppliedCure = v10;
-                var v11 = ChargesCannotIncrease10CD1; v11.Clean = value; ChargesCannotIncrease10CD1 = v11;
-                var v12 = ChargesCannotIncrease10InitialLE1; v12.Clean = value; ChargesCannotIncrease10InitialLE1 = v12;
-                var v13 = ChargesCannotIncrease10LE1; v13.Clean = value; ChargesCannotIncrease10LE1 = v13;
-                var v14 = ChargesThatCanChangeCD1; v14.Clean = value; ChargesThatCanChangeCD1 = v14;
-                var v15 = ChargesThatCanChangeInitialLE1; v15.Clean = value; ChargesThatCanChangeInitialLE1 = v15;
-                var v16 = ChargesThatCanChangeLE1; v16.Clean = value; ChargesThatCanChangeLE1 = v16;
-                var v17 = ChargesThatCannotDecreaseCD1; v17.Clean = value; ChargesThatCannotDecreaseCD1 = v17;
-                var v18 = ChargesThatCannotDecreaseInitialLE1; v18.Clean = value; ChargesThatCannotDecreaseInitialLE1 = v18;
-                var v19 = ChargesThatCannotDecreaseLE1; v19.Clean = value; ChargesThatCannotDecreaseLE1 = v19;
-                var v20 = ChargesThatCannotIncreaseCD1; v20.Clean = value; ChargesThatCannotIncreaseCD1 = v20;
-                var v21 = ChargesThatCannotIncreaseInitialLE1; v21.Clean = value; ChargesThatCannotIncreaseInitialLE1 = v21;
-                var v22 = ChargesThatCannotIncreaseLE1; v22.Clean = value; ChargesThatCannotIncreaseLE1 = v22;
-                var v23 = DisclosureLogGUIDForECD; v23.Clean = value; DisclosureLogGUIDForECD = v23;
-                var v24 = GoodFaithAmountInitialLE1; v24.Clean = value; GoodFaithAmountInitialLE1 = v24;
-                var v25 = Id; v25.Clean = value; Id = v25;
-                var v26 = LEBaselineUsedCannotDecrease; v26.Clean = value; LEBaselineUsedCannotDecrease = v26;
-                var v27 = LEBaselineUsedCannotIncrease; v27.Clean = value; LEBaselineUsedCannotIncrease = v27;
-                var v28 = LEBaselineUsedCannotIncrease10; v28.Clean = value; LEBaselineUsedCannotIncrease10 = v28;
-                var v29 = LEInitialDTGuid; v29.Clean = value; LEInitialDTGuid = v29;
-                var v30 = LEInitialGuid; v30.Clean = value; LEInitialGuid = v30;
-                var v31 = LELatestGuid; v31.Clean = value; LELatestGuid = v31;
-                var v32 = RequiredCureAmount; v32.Clean = value; RequiredCureAmount = v32;
-                var v33 = SafeHarborGuid; v33.Clean = value; SafeHarborGuid = v33;
-                var v34 = SSPLGuid; v34.Clean = value; SSPLGuid = v34;
+                var v0 = _appliedCureAmount; v0.Clean = value; _appliedCureAmount = v0;
+                var v1 = _cannotDecreaseCDBaselineGuid; v1.Clean = value; _cannotDecreaseCDBaselineGuid = v1;
+                var v2 = _cannotDecreaseLEBaselineGuid; v2.Clean = value; _cannotDecreaseLEBaselineGuid = v2;
+                var v3 = _cannotIncrease10CDBaselineGuid; v3.Clean = value; _cannotIncrease10CDBaselineGuid = v3;
+                var v4 = _cannotIncrease10LEBaselineGuid; v4.Clean = value; _cannotIncrease10LEBaselineGuid = v4;
+                var v5 = _cannotIncreaseCDBaselineGuid; v5.Clean = value; _cannotIncreaseCDBaselineGuid = v5;
+                var v6 = _cannotIncreaseLEBaselineGuid; v6.Clean = value; _cannotIncreaseLEBaselineGuid = v6;
+                var v7 = _cDInitialGuid; v7.Clean = value; _cDInitialGuid = v7;
+                var v8 = _cDLatestGuid; v8.Clean = value; _cDLatestGuid = v8;
+                var v9 = _cDPostConGuid; v9.Clean = value; _cDPostConGuid = v9;
+                var v10 = _cDRecentAppliedCure; v10.Clean = value; _cDRecentAppliedCure = v10;
+                var v11 = _chargesCannotIncrease10CD1; v11.Clean = value; _chargesCannotIncrease10CD1 = v11;
+                var v12 = _chargesCannotIncrease10InitialLE1; v12.Clean = value; _chargesCannotIncrease10InitialLE1 = v12;
+                var v13 = _chargesCannotIncrease10LE1; v13.Clean = value; _chargesCannotIncrease10LE1 = v13;
+                var v14 = _chargesThatCanChangeCD1; v14.Clean = value; _chargesThatCanChangeCD1 = v14;
+                var v15 = _chargesThatCanChangeInitialLE1; v15.Clean = value; _chargesThatCanChangeInitialLE1 = v15;
+                var v16 = _chargesThatCanChangeLE1; v16.Clean = value; _chargesThatCanChangeLE1 = v16;
+                var v17 = _chargesThatCannotDecreaseCD1; v17.Clean = value; _chargesThatCannotDecreaseCD1 = v17;
+                var v18 = _chargesThatCannotDecreaseInitialLE1; v18.Clean = value; _chargesThatCannotDecreaseInitialLE1 = v18;
+                var v19 = _chargesThatCannotDecreaseLE1; v19.Clean = value; _chargesThatCannotDecreaseLE1 = v19;
+                var v20 = _chargesThatCannotIncreaseCD1; v20.Clean = value; _chargesThatCannotIncreaseCD1 = v20;
+                var v21 = _chargesThatCannotIncreaseInitialLE1; v21.Clean = value; _chargesThatCannotIncreaseInitialLE1 = v21;
+                var v22 = _chargesThatCannotIncreaseLE1; v22.Clean = value; _chargesThatCannotIncreaseLE1 = v22;
+                var v23 = _disclosureLogGUIDForECD; v23.Clean = value; _disclosureLogGUIDForECD = v23;
+                var v24 = _goodFaithAmountInitialLE1; v24.Clean = value; _goodFaithAmountInitialLE1 = v24;
+                var v25 = _id; v25.Clean = value; _id = v25;
+                var v26 = _lEBaselineUsedCannotDecrease; v26.Clean = value; _lEBaselineUsedCannotDecrease = v26;
+                var v27 = _lEBaselineUsedCannotIncrease; v27.Clean = value; _lEBaselineUsedCannotIncrease = v27;
+                var v28 = _lEBaselineUsedCannotIncrease10; v28.Clean = value; _lEBaselineUsedCannotIncrease10 = v28;
+                var v29 = _lEInitialDTGuid; v29.Clean = value; _lEInitialDTGuid = v29;
+                var v30 = _lEInitialGuid; v30.Clean = value; _lEInitialGuid = v30;
+                var v31 = _lELatestGuid; v31.Clean = value; _lELatestGuid = v31;
+                var v32 = _requiredCureAmount; v32.Clean = value; _requiredCureAmount = v32;
+                var v33 = _safeHarborGuid; v33.Clean = value; _safeHarborGuid = v33;
+                var v34 = _sSPLGuid; v34.Clean = value; _sSPLGuid = v34;
                 _settingClean = 0;
             }
         }

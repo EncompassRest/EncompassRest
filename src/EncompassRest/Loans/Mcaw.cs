@@ -7,147 +7,194 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Mcaw
     {
-        public Value<string> AdequacyOfAvailableAssetsType { get; set; }
+        private Value<string> _adequacyOfAvailableAssetsType;
+        public string AdequacyOfAvailableAssetsType { get { return _adequacyOfAvailableAssetsType; } set { _adequacyOfAvailableAssetsType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdequacyOfAvailableAssetsType() => !AdequacyOfAvailableAssetsType.Clean;
-        public Value<string> AdequacyOfEffectiveIncomeType { get; set; }
+        public bool ShouldSerializeAdequacyOfAvailableAssetsType() => !_adequacyOfAvailableAssetsType.Clean;
+        private Value<string> _adequacyOfEffectiveIncomeType;
+        public string AdequacyOfEffectiveIncomeType { get { return _adequacyOfEffectiveIncomeType; } set { _adequacyOfEffectiveIncomeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdequacyOfEffectiveIncomeType() => !AdequacyOfEffectiveIncomeType.Clean;
-        public Value<decimal?> AdjustedPurchasePrice { get; set; }
+        public bool ShouldSerializeAdequacyOfEffectiveIncomeType() => !_adequacyOfEffectiveIncomeType.Clean;
+        private Value<decimal?> _adjustedPurchasePrice;
+        public decimal? AdjustedPurchasePrice { get { return _adjustedPurchasePrice; } set { _adjustedPurchasePrice = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPurchasePrice() => !AdjustedPurchasePrice.Clean;
-        public Value<decimal?> AppraisedValue1 { get; set; }
+        public bool ShouldSerializeAdjustedPurchasePrice() => !_adjustedPurchasePrice.Clean;
+        private Value<decimal?> _appraisedValue1;
+        public decimal? AppraisedValue1 { get { return _appraisedValue1; } set { _appraisedValue1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisedValue1() => !AppraisedValue1.Clean;
-        public Value<decimal?> AppraisedValue2 { get; set; }
+        public bool ShouldSerializeAppraisedValue1() => !_appraisedValue1.Clean;
+        private Value<decimal?> _appraisedValue2;
+        public decimal? AppraisedValue2 { get { return _appraisedValue2; } set { _appraisedValue2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisedValue2() => !AppraisedValue2.Clean;
-        public Value<decimal?> BorrowerPaidClosingCost { get; set; }
+        public bool ShouldSerializeAppraisedValue2() => !_appraisedValue2.Clean;
+        private Value<decimal?> _borrowerPaidClosingCost;
+        public decimal? BorrowerPaidClosingCost { get { return _borrowerPaidClosingCost; } set { _borrowerPaidClosingCost = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerPaidClosingCost() => !BorrowerPaidClosingCost.Clean;
-        public Value<decimal?> CalculatedMortgageAmount { get; set; }
+        public bool ShouldSerializeBorrowerPaidClosingCost() => !_borrowerPaidClosingCost.Clean;
+        private Value<decimal?> _calculatedMortgageAmount;
+        public decimal? CalculatedMortgageAmount { get { return _calculatedMortgageAmount; } set { _calculatedMortgageAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCalculatedMortgageAmount() => !CalculatedMortgageAmount.Clean;
-        public Value<decimal?> CashReserves { get; set; }
+        public bool ShouldSerializeCalculatedMortgageAmount() => !_calculatedMortgageAmount.Clean;
+        private Value<decimal?> _cashReserves;
+        public decimal? CashReserves { get { return _cashReserves; } set { _cashReserves = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCashReserves() => !CashReserves.Clean;
-        public Value<string> ConstructionType { get; set; }
+        public bool ShouldSerializeCashReserves() => !_cashReserves.Clean;
+        private Value<string> _constructionType;
+        public string ConstructionType { get { return _constructionType; } set { _constructionType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionType() => !ConstructionType.Clean;
-        public Value<decimal?> ContractSalesPrice { get; set; }
+        public bool ShouldSerializeConstructionType() => !_constructionType.Clean;
+        private Value<decimal?> _contractSalesPrice;
+        public decimal? ContractSalesPrice { get { return _contractSalesPrice; } set { _contractSalesPrice = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContractSalesPrice() => !ContractSalesPrice.Clean;
-        public Value<string> CreditCharacteristicsType { get; set; }
+        public bool ShouldSerializeContractSalesPrice() => !_contractSalesPrice.Clean;
+        private Value<string> _creditCharacteristicsType;
+        public string CreditCharacteristicsType { get { return _creditCharacteristicsType; } set { _creditCharacteristicsType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreditCharacteristicsType() => !CreditCharacteristicsType.Clean;
-        public Value<decimal?> EquityToExSpouse { get; set; }
+        public bool ShouldSerializeCreditCharacteristicsType() => !_creditCharacteristicsType.Clean;
+        private Value<decimal?> _equityToExSpouse;
+        public decimal? EquityToExSpouse { get { return _equityToExSpouse; } set { _equityToExSpouse = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEquityToExSpouse() => !EquityToExSpouse.Clean;
-        public Value<decimal?> FhaMaxLoanAmount { get; set; }
+        public bool ShouldSerializeEquityToExSpouse() => !_equityToExSpouse.Clean;
+        private Value<decimal?> _fhaMaxLoanAmount;
+        public decimal? FhaMaxLoanAmount { get { return _fhaMaxLoanAmount; } set { _fhaMaxLoanAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFhaMaxLoanAmount() => !FhaMaxLoanAmount.Clean;
-        public Value<string> FhaUnderwriterChumsId { get; set; }
+        public bool ShouldSerializeFhaMaxLoanAmount() => !_fhaMaxLoanAmount.Clean;
+        private Value<string> _fhaUnderwriterChumsId;
+        public string FhaUnderwriterChumsId { get { return _fhaUnderwriterChumsId; } set { _fhaUnderwriterChumsId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFhaUnderwriterChumsId() => !FhaUnderwriterChumsId.Clean;
-        public Value<string> GiftFundsSource { get; set; }
+        public bool ShouldSerializeFhaUnderwriterChumsId() => !_fhaUnderwriterChumsId.Clean;
+        private Value<string> _giftFundsSource;
+        public string GiftFundsSource { get { return _giftFundsSource; } set { _giftFundsSource = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGiftFundsSource() => !GiftFundsSource.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGiftFundsSource() => !_giftFundsSource.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> LesserSalesPrice { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _lesserSalesPrice;
+        public decimal? LesserSalesPrice { get { return _lesserSalesPrice; } set { _lesserSalesPrice = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLesserSalesPrice() => !LesserSalesPrice.Clean;
-        public Value<decimal?> Ltv1 { get; set; }
+        public bool ShouldSerializeLesserSalesPrice() => !_lesserSalesPrice.Clean;
+        private Value<decimal?> _ltv1;
+        public decimal? Ltv1 { get { return _ltv1; } set { _ltv1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLtv1() => !Ltv1.Clean;
-        public Value<decimal?> Ltv2 { get; set; }
+        public bool ShouldSerializeLtv1() => !_ltv1.Clean;
+        private Value<decimal?> _ltv2;
+        public decimal? Ltv2 { get { return _ltv2; } set { _ltv2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLtv2() => !Ltv2.Clean;
-        public Value<decimal?> MaximumSellerContribution4Percent { get; set; }
+        public bool ShouldSerializeLtv2() => !_ltv2.Clean;
+        private Value<decimal?> _maximumSellerContribution4Percent;
+        public decimal? MaximumSellerContribution4Percent { get { return _maximumSellerContribution4Percent; } set { _maximumSellerContribution4Percent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumSellerContribution4Percent() => !MaximumSellerContribution4Percent.Clean;
-        public Value<decimal?> MortgageAmount { get; set; }
+        public bool ShouldSerializeMaximumSellerContribution4Percent() => !_maximumSellerContribution4Percent.Clean;
+        private Value<decimal?> _mortgageAmount;
+        public decimal? MortgageAmount { get { return _mortgageAmount; } set { _mortgageAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageAmount() => !MortgageAmount.Clean;
-        public Value<decimal?> MortgageAmountPercent { get; set; }
+        public bool ShouldSerializeMortgageAmount() => !_mortgageAmount.Clean;
+        private Value<decimal?> _mortgageAmountPercent;
+        public decimal? MortgageAmountPercent { get { return _mortgageAmountPercent; } set { _mortgageAmountPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageAmountPercent() => !MortgageAmountPercent.Clean;
-        public Value<decimal?> MortgageBasisPurchase { get; set; }
+        public bool ShouldSerializeMortgageAmountPercent() => !_mortgageAmountPercent.Clean;
+        private Value<decimal?> _mortgageBasisPurchase;
+        public decimal? MortgageBasisPurchase { get { return _mortgageBasisPurchase; } set { _mortgageBasisPurchase = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBasisPurchase() => !MortgageBasisPurchase.Clean;
-        public Value<decimal?> MortgageBasisRefinance { get; set; }
+        public bool ShouldSerializeMortgageBasisPurchase() => !_mortgageBasisPurchase.Clean;
+        private Value<decimal?> _mortgageBasisRefinance;
+        public decimal? MortgageBasisRefinance { get { return _mortgageBasisRefinance; } set { _mortgageBasisRefinance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBasisRefinance() => !MortgageBasisRefinance.Clean;
-        public Value<string> PaidType1 { get; set; }
+        public bool ShouldSerializeMortgageBasisRefinance() => !_mortgageBasisRefinance.Clean;
+        private Value<string> _paidType1;
+        public string PaidType1 { get { return _paidType1; } set { _paidType1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidType1() => !PaidType1.Clean;
-        public Value<string> PaidType2 { get; set; }
+        public bool ShouldSerializePaidType1() => !_paidType1.Clean;
+        private Value<string> _paidType2;
+        public string PaidType2 { get { return _paidType2; } set { _paidType2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidType2() => !PaidType2.Clean;
-        public Value<decimal?> PrincipalBalance { get; set; }
+        public bool ShouldSerializePaidType2() => !_paidType2.Clean;
+        private Value<decimal?> _principalBalance;
+        public decimal? PrincipalBalance { get { return _principalBalance; } set { _principalBalance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrincipalBalance() => !PrincipalBalance.Clean;
-        public Value<string> RefinanceType { get; set; }
+        public bool ShouldSerializePrincipalBalance() => !_principalBalance.Clean;
+        private Value<string> _refinanceType;
+        public string RefinanceType { get { return _refinanceType; } set { _refinanceType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRefinanceType() => !RefinanceType.Clean;
-        public Value<string> Remarks { get; set; }
+        public bool ShouldSerializeRefinanceType() => !_refinanceType.Clean;
+        private Value<string> _remarks;
+        public string Remarks { get { return _remarks; } set { _remarks = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRemarks() => !Remarks.Clean;
-        public Value<decimal?> RepairsAndImprovements { get; set; }
+        public bool ShouldSerializeRemarks() => !_remarks.Clean;
+        private Value<decimal?> _repairsAndImprovements;
+        public decimal? RepairsAndImprovements { get { return _repairsAndImprovements; } set { _repairsAndImprovements = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRepairsAndImprovements() => !RepairsAndImprovements.Clean;
-        public Value<string> RepairsAndImprovementsDescription { get; set; }
+        public bool ShouldSerializeRepairsAndImprovements() => !_repairsAndImprovements.Clean;
+        private Value<string> _repairsAndImprovementsDescription;
+        public string RepairsAndImprovementsDescription { get { return _repairsAndImprovementsDescription; } set { _repairsAndImprovementsDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRepairsAndImprovementsDescription() => !RepairsAndImprovementsDescription.Clean;
-        public Value<decimal?> RepairsImprovementAmount { get; set; }
+        public bool ShouldSerializeRepairsAndImprovementsDescription() => !_repairsAndImprovementsDescription.Clean;
+        private Value<decimal?> _repairsImprovementAmount;
+        public decimal? RepairsImprovementAmount { get { return _repairsImprovementAmount; } set { _repairsImprovementAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRepairsImprovementAmount() => !RepairsImprovementAmount.Clean;
-        public Value<decimal?> RepairsRequiredByAppraiser { get; set; }
+        public bool ShouldSerializeRepairsImprovementAmount() => !_repairsImprovementAmount.Clean;
+        private Value<decimal?> _repairsRequiredByAppraiser;
+        public decimal? RepairsRequiredByAppraiser { get { return _repairsRequiredByAppraiser; } set { _repairsRequiredByAppraiser = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRepairsRequiredByAppraiser() => !RepairsRequiredByAppraiser.Clean;
-        public Value<decimal?> RequiredInvestment { get; set; }
+        public bool ShouldSerializeRepairsRequiredByAppraiser() => !_repairsRequiredByAppraiser.Clean;
+        private Value<decimal?> _requiredInvestment;
+        public decimal? RequiredInvestment { get { return _requiredInvestment; } set { _requiredInvestment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequiredInvestment() => !RequiredInvestment.Clean;
-        public Value<decimal?> RequirementAdjustment { get; set; }
+        public bool ShouldSerializeRequiredInvestment() => !_requiredInvestment.Clean;
+        private Value<decimal?> _requirementAdjustment;
+        public decimal? RequirementAdjustment { get { return _requirementAdjustment; } set { _requirementAdjustment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequirementAdjustment() => !RequirementAdjustment.Clean;
-        public Value<bool?> RoundTo50Indicator { get; set; }
+        public bool ShouldSerializeRequirementAdjustment() => !_requirementAdjustment.Clean;
+        private Value<bool?> _roundTo50Indicator;
+        public bool? RoundTo50Indicator { get { return _roundTo50Indicator; } set { _roundTo50Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoundTo50Indicator() => !RoundTo50Indicator.Clean;
-        public Value<decimal?> SeasonedSubordinateLiens { get; set; }
+        public bool ShouldSerializeRoundTo50Indicator() => !_roundTo50Indicator.Clean;
+        private Value<decimal?> _seasonedSubordinateLiens;
+        public decimal? SeasonedSubordinateLiens { get { return _seasonedSubordinateLiens; } set { _seasonedSubordinateLiens = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSeasonedSubordinateLiens() => !SeasonedSubordinateLiens.Clean;
-        public Value<string> SecondMortgageSource { get; set; }
+        public bool ShouldSerializeSeasonedSubordinateLiens() => !_seasonedSubordinateLiens.Clean;
+        private Value<string> _secondMortgageSource;
+        public string SecondMortgageSource { get { return _secondMortgageSource; } set { _secondMortgageSource = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecondMortgageSource() => !SecondMortgageSource.Clean;
-        public Value<decimal?> SixPercentOfLineA1 { get; set; }
+        public bool ShouldSerializeSecondMortgageSource() => !_secondMortgageSource.Clean;
+        private Value<decimal?> _sixPercentOfLineA1;
+        public decimal? SixPercentOfLineA1 { get { return _sixPercentOfLineA1; } set { _sixPercentOfLineA1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSixPercentOfLineA1() => !SixPercentOfLineA1.Clean;
-        public Value<string> StabilityOfEffectiveIncomeType { get; set; }
+        public bool ShouldSerializeSixPercentOfLineA1() => !_sixPercentOfLineA1.Clean;
+        private Value<string> _stabilityOfEffectiveIncomeType;
+        public string StabilityOfEffectiveIncomeType { get { return _stabilityOfEffectiveIncomeType; } set { _stabilityOfEffectiveIncomeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStabilityOfEffectiveIncomeType() => !StabilityOfEffectiveIncomeType.Clean;
-        public Value<decimal?> StatutoryInvestment { get; set; }
+        public bool ShouldSerializeStabilityOfEffectiveIncomeType() => !_stabilityOfEffectiveIncomeType.Clean;
+        private Value<decimal?> _statutoryInvestment;
+        public decimal? StatutoryInvestment { get { return _statutoryInvestment; } set { _statutoryInvestment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatutoryInvestment() => !StatutoryInvestment.Clean;
-        public Value<decimal?> ToBePaidAmount { get; set; }
+        public bool ShouldSerializeStatutoryInvestment() => !_statutoryInvestment.Clean;
+        private Value<decimal?> _toBePaidAmount;
+        public decimal? ToBePaidAmount { get { return _toBePaidAmount; } set { _toBePaidAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeToBePaidAmount() => !ToBePaidAmount.Clean;
-        public Value<decimal?> TotalCashToClose { get; set; }
+        public bool ShouldSerializeToBePaidAmount() => !_toBePaidAmount.Clean;
+        private Value<decimal?> _totalCashToClose;
+        public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalCashToClose() => !TotalCashToClose.Clean;
-        public Value<decimal?> TotalRequirements { get; set; }
+        public bool ShouldSerializeTotalCashToClose() => !_totalCashToClose.Clean;
+        private Value<decimal?> _totalRequirements;
+        public decimal? TotalRequirements { get { return _totalRequirements; } set { _totalRequirements = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalRequirements() => !TotalRequirements.Clean;
-        public Value<decimal?> TotalSellerContribution { get; set; }
+        public bool ShouldSerializeTotalRequirements() => !_totalRequirements.Clean;
+        private Value<decimal?> _totalSellerContribution;
+        public decimal? TotalSellerContribution { get { return _totalSellerContribution; } set { _totalSellerContribution = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalSellerContribution() => !TotalSellerContribution.Clean;
-        public Value<decimal?> UnadjustedAcquisition { get; set; }
+        public bool ShouldSerializeTotalSellerContribution() => !_totalSellerContribution.Clean;
+        private Value<decimal?> _unadjustedAcquisition;
+        public decimal? UnadjustedAcquisition { get { return _unadjustedAcquisition; } set { _unadjustedAcquisition = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnadjustedAcquisition() => !UnadjustedAcquisition.Clean;
-        public Value<bool?> Use85PercentRuleIndicator { get; set; }
+        public bool ShouldSerializeUnadjustedAcquisition() => !_unadjustedAcquisition.Clean;
+        private Value<bool?> _use85PercentRuleIndicator;
+        public bool? Use85PercentRuleIndicator { get { return _use85PercentRuleIndicator; } set { _use85PercentRuleIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUse85PercentRuleIndicator() => !Use85PercentRuleIndicator.Clean;
+        public bool ShouldSerializeUse85PercentRuleIndicator() => !_use85PercentRuleIndicator.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -155,106 +202,106 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdequacyOfAvailableAssetsType.Clean
-                    && AdequacyOfEffectiveIncomeType.Clean
-                    && AdjustedPurchasePrice.Clean
-                    && AppraisedValue1.Clean
-                    && AppraisedValue2.Clean
-                    && BorrowerPaidClosingCost.Clean
-                    && CalculatedMortgageAmount.Clean
-                    && CashReserves.Clean
-                    && ConstructionType.Clean
-                    && ContractSalesPrice.Clean
-                    && CreditCharacteristicsType.Clean
-                    && EquityToExSpouse.Clean
-                    && FhaMaxLoanAmount.Clean
-                    && FhaUnderwriterChumsId.Clean
-                    && GiftFundsSource.Clean
-                    && Id.Clean
-                    && LesserSalesPrice.Clean
-                    && Ltv1.Clean
-                    && Ltv2.Clean
-                    && MaximumSellerContribution4Percent.Clean
-                    && MortgageAmount.Clean
-                    && MortgageAmountPercent.Clean
-                    && MortgageBasisPurchase.Clean
-                    && MortgageBasisRefinance.Clean
-                    && PaidType1.Clean
-                    && PaidType2.Clean
-                    && PrincipalBalance.Clean
-                    && RefinanceType.Clean
-                    && Remarks.Clean
-                    && RepairsAndImprovements.Clean
-                    && RepairsAndImprovementsDescription.Clean
-                    && RepairsImprovementAmount.Clean
-                    && RepairsRequiredByAppraiser.Clean
-                    && RequiredInvestment.Clean
-                    && RequirementAdjustment.Clean
-                    && RoundTo50Indicator.Clean
-                    && SeasonedSubordinateLiens.Clean
-                    && SecondMortgageSource.Clean
-                    && SixPercentOfLineA1.Clean
-                    && StabilityOfEffectiveIncomeType.Clean
-                    && StatutoryInvestment.Clean
-                    && ToBePaidAmount.Clean
-                    && TotalCashToClose.Clean
-                    && TotalRequirements.Clean
-                    && TotalSellerContribution.Clean
-                    && UnadjustedAcquisition.Clean
-                    && Use85PercentRuleIndicator.Clean;
+                var clean = _adequacyOfAvailableAssetsType.Clean
+                    && _adequacyOfEffectiveIncomeType.Clean
+                    && _adjustedPurchasePrice.Clean
+                    && _appraisedValue1.Clean
+                    && _appraisedValue2.Clean
+                    && _borrowerPaidClosingCost.Clean
+                    && _calculatedMortgageAmount.Clean
+                    && _cashReserves.Clean
+                    && _constructionType.Clean
+                    && _contractSalesPrice.Clean
+                    && _creditCharacteristicsType.Clean
+                    && _equityToExSpouse.Clean
+                    && _fhaMaxLoanAmount.Clean
+                    && _fhaUnderwriterChumsId.Clean
+                    && _giftFundsSource.Clean
+                    && _id.Clean
+                    && _lesserSalesPrice.Clean
+                    && _ltv1.Clean
+                    && _ltv2.Clean
+                    && _maximumSellerContribution4Percent.Clean
+                    && _mortgageAmount.Clean
+                    && _mortgageAmountPercent.Clean
+                    && _mortgageBasisPurchase.Clean
+                    && _mortgageBasisRefinance.Clean
+                    && _paidType1.Clean
+                    && _paidType2.Clean
+                    && _principalBalance.Clean
+                    && _refinanceType.Clean
+                    && _remarks.Clean
+                    && _repairsAndImprovements.Clean
+                    && _repairsAndImprovementsDescription.Clean
+                    && _repairsImprovementAmount.Clean
+                    && _repairsRequiredByAppraiser.Clean
+                    && _requiredInvestment.Clean
+                    && _requirementAdjustment.Clean
+                    && _roundTo50Indicator.Clean
+                    && _seasonedSubordinateLiens.Clean
+                    && _secondMortgageSource.Clean
+                    && _sixPercentOfLineA1.Clean
+                    && _stabilityOfEffectiveIncomeType.Clean
+                    && _statutoryInvestment.Clean
+                    && _toBePaidAmount.Clean
+                    && _totalCashToClose.Clean
+                    && _totalRequirements.Clean
+                    && _totalSellerContribution.Clean
+                    && _unadjustedAcquisition.Clean
+                    && _use85PercentRuleIndicator.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdequacyOfAvailableAssetsType; v0.Clean = value; AdequacyOfAvailableAssetsType = v0;
-                var v1 = AdequacyOfEffectiveIncomeType; v1.Clean = value; AdequacyOfEffectiveIncomeType = v1;
-                var v2 = AdjustedPurchasePrice; v2.Clean = value; AdjustedPurchasePrice = v2;
-                var v3 = AppraisedValue1; v3.Clean = value; AppraisedValue1 = v3;
-                var v4 = AppraisedValue2; v4.Clean = value; AppraisedValue2 = v4;
-                var v5 = BorrowerPaidClosingCost; v5.Clean = value; BorrowerPaidClosingCost = v5;
-                var v6 = CalculatedMortgageAmount; v6.Clean = value; CalculatedMortgageAmount = v6;
-                var v7 = CashReserves; v7.Clean = value; CashReserves = v7;
-                var v8 = ConstructionType; v8.Clean = value; ConstructionType = v8;
-                var v9 = ContractSalesPrice; v9.Clean = value; ContractSalesPrice = v9;
-                var v10 = CreditCharacteristicsType; v10.Clean = value; CreditCharacteristicsType = v10;
-                var v11 = EquityToExSpouse; v11.Clean = value; EquityToExSpouse = v11;
-                var v12 = FhaMaxLoanAmount; v12.Clean = value; FhaMaxLoanAmount = v12;
-                var v13 = FhaUnderwriterChumsId; v13.Clean = value; FhaUnderwriterChumsId = v13;
-                var v14 = GiftFundsSource; v14.Clean = value; GiftFundsSource = v14;
-                var v15 = Id; v15.Clean = value; Id = v15;
-                var v16 = LesserSalesPrice; v16.Clean = value; LesserSalesPrice = v16;
-                var v17 = Ltv1; v17.Clean = value; Ltv1 = v17;
-                var v18 = Ltv2; v18.Clean = value; Ltv2 = v18;
-                var v19 = MaximumSellerContribution4Percent; v19.Clean = value; MaximumSellerContribution4Percent = v19;
-                var v20 = MortgageAmount; v20.Clean = value; MortgageAmount = v20;
-                var v21 = MortgageAmountPercent; v21.Clean = value; MortgageAmountPercent = v21;
-                var v22 = MortgageBasisPurchase; v22.Clean = value; MortgageBasisPurchase = v22;
-                var v23 = MortgageBasisRefinance; v23.Clean = value; MortgageBasisRefinance = v23;
-                var v24 = PaidType1; v24.Clean = value; PaidType1 = v24;
-                var v25 = PaidType2; v25.Clean = value; PaidType2 = v25;
-                var v26 = PrincipalBalance; v26.Clean = value; PrincipalBalance = v26;
-                var v27 = RefinanceType; v27.Clean = value; RefinanceType = v27;
-                var v28 = Remarks; v28.Clean = value; Remarks = v28;
-                var v29 = RepairsAndImprovements; v29.Clean = value; RepairsAndImprovements = v29;
-                var v30 = RepairsAndImprovementsDescription; v30.Clean = value; RepairsAndImprovementsDescription = v30;
-                var v31 = RepairsImprovementAmount; v31.Clean = value; RepairsImprovementAmount = v31;
-                var v32 = RepairsRequiredByAppraiser; v32.Clean = value; RepairsRequiredByAppraiser = v32;
-                var v33 = RequiredInvestment; v33.Clean = value; RequiredInvestment = v33;
-                var v34 = RequirementAdjustment; v34.Clean = value; RequirementAdjustment = v34;
-                var v35 = RoundTo50Indicator; v35.Clean = value; RoundTo50Indicator = v35;
-                var v36 = SeasonedSubordinateLiens; v36.Clean = value; SeasonedSubordinateLiens = v36;
-                var v37 = SecondMortgageSource; v37.Clean = value; SecondMortgageSource = v37;
-                var v38 = SixPercentOfLineA1; v38.Clean = value; SixPercentOfLineA1 = v38;
-                var v39 = StabilityOfEffectiveIncomeType; v39.Clean = value; StabilityOfEffectiveIncomeType = v39;
-                var v40 = StatutoryInvestment; v40.Clean = value; StatutoryInvestment = v40;
-                var v41 = ToBePaidAmount; v41.Clean = value; ToBePaidAmount = v41;
-                var v42 = TotalCashToClose; v42.Clean = value; TotalCashToClose = v42;
-                var v43 = TotalRequirements; v43.Clean = value; TotalRequirements = v43;
-                var v44 = TotalSellerContribution; v44.Clean = value; TotalSellerContribution = v44;
-                var v45 = UnadjustedAcquisition; v45.Clean = value; UnadjustedAcquisition = v45;
-                var v46 = Use85PercentRuleIndicator; v46.Clean = value; Use85PercentRuleIndicator = v46;
+                var v0 = _adequacyOfAvailableAssetsType; v0.Clean = value; _adequacyOfAvailableAssetsType = v0;
+                var v1 = _adequacyOfEffectiveIncomeType; v1.Clean = value; _adequacyOfEffectiveIncomeType = v1;
+                var v2 = _adjustedPurchasePrice; v2.Clean = value; _adjustedPurchasePrice = v2;
+                var v3 = _appraisedValue1; v3.Clean = value; _appraisedValue1 = v3;
+                var v4 = _appraisedValue2; v4.Clean = value; _appraisedValue2 = v4;
+                var v5 = _borrowerPaidClosingCost; v5.Clean = value; _borrowerPaidClosingCost = v5;
+                var v6 = _calculatedMortgageAmount; v6.Clean = value; _calculatedMortgageAmount = v6;
+                var v7 = _cashReserves; v7.Clean = value; _cashReserves = v7;
+                var v8 = _constructionType; v8.Clean = value; _constructionType = v8;
+                var v9 = _contractSalesPrice; v9.Clean = value; _contractSalesPrice = v9;
+                var v10 = _creditCharacteristicsType; v10.Clean = value; _creditCharacteristicsType = v10;
+                var v11 = _equityToExSpouse; v11.Clean = value; _equityToExSpouse = v11;
+                var v12 = _fhaMaxLoanAmount; v12.Clean = value; _fhaMaxLoanAmount = v12;
+                var v13 = _fhaUnderwriterChumsId; v13.Clean = value; _fhaUnderwriterChumsId = v13;
+                var v14 = _giftFundsSource; v14.Clean = value; _giftFundsSource = v14;
+                var v15 = _id; v15.Clean = value; _id = v15;
+                var v16 = _lesserSalesPrice; v16.Clean = value; _lesserSalesPrice = v16;
+                var v17 = _ltv1; v17.Clean = value; _ltv1 = v17;
+                var v18 = _ltv2; v18.Clean = value; _ltv2 = v18;
+                var v19 = _maximumSellerContribution4Percent; v19.Clean = value; _maximumSellerContribution4Percent = v19;
+                var v20 = _mortgageAmount; v20.Clean = value; _mortgageAmount = v20;
+                var v21 = _mortgageAmountPercent; v21.Clean = value; _mortgageAmountPercent = v21;
+                var v22 = _mortgageBasisPurchase; v22.Clean = value; _mortgageBasisPurchase = v22;
+                var v23 = _mortgageBasisRefinance; v23.Clean = value; _mortgageBasisRefinance = v23;
+                var v24 = _paidType1; v24.Clean = value; _paidType1 = v24;
+                var v25 = _paidType2; v25.Clean = value; _paidType2 = v25;
+                var v26 = _principalBalance; v26.Clean = value; _principalBalance = v26;
+                var v27 = _refinanceType; v27.Clean = value; _refinanceType = v27;
+                var v28 = _remarks; v28.Clean = value; _remarks = v28;
+                var v29 = _repairsAndImprovements; v29.Clean = value; _repairsAndImprovements = v29;
+                var v30 = _repairsAndImprovementsDescription; v30.Clean = value; _repairsAndImprovementsDescription = v30;
+                var v31 = _repairsImprovementAmount; v31.Clean = value; _repairsImprovementAmount = v31;
+                var v32 = _repairsRequiredByAppraiser; v32.Clean = value; _repairsRequiredByAppraiser = v32;
+                var v33 = _requiredInvestment; v33.Clean = value; _requiredInvestment = v33;
+                var v34 = _requirementAdjustment; v34.Clean = value; _requirementAdjustment = v34;
+                var v35 = _roundTo50Indicator; v35.Clean = value; _roundTo50Indicator = v35;
+                var v36 = _seasonedSubordinateLiens; v36.Clean = value; _seasonedSubordinateLiens = v36;
+                var v37 = _secondMortgageSource; v37.Clean = value; _secondMortgageSource = v37;
+                var v38 = _sixPercentOfLineA1; v38.Clean = value; _sixPercentOfLineA1 = v38;
+                var v39 = _stabilityOfEffectiveIncomeType; v39.Clean = value; _stabilityOfEffectiveIncomeType = v39;
+                var v40 = _statutoryInvestment; v40.Clean = value; _statutoryInvestment = v40;
+                var v41 = _toBePaidAmount; v41.Clean = value; _toBePaidAmount = v41;
+                var v42 = _totalCashToClose; v42.Clean = value; _totalCashToClose = v42;
+                var v43 = _totalRequirements; v43.Clean = value; _totalRequirements = v43;
+                var v44 = _totalSellerContribution; v44.Clean = value; _totalSellerContribution = v44;
+                var v45 = _unadjustedAcquisition; v45.Clean = value; _unadjustedAcquisition = v45;
+                var v46 = _use85PercentRuleIndicator; v46.Clean = value; _use85PercentRuleIndicator = v46;
                 _settingClean = 0;
             }
         }

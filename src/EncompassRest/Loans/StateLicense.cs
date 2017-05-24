@@ -7,174 +7,230 @@ namespace EncompassRest.Loans
 {
     public sealed partial class StateLicense
     {
-        public Value<string> AK { get; set; }
+        private Value<string> _aK;
+        public string AK { get { return _aK; } set { _aK = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAK() => !AK.Clean;
-        public Value<string> AL { get; set; }
+        public bool ShouldSerializeAK() => !_aK.Clean;
+        private Value<string> _aL;
+        public string AL { get { return _aL; } set { _aL = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAL() => !AL.Clean;
-        public Value<string> AR { get; set; }
+        public bool ShouldSerializeAL() => !_aL.Clean;
+        private Value<string> _aR;
+        public string AR { get { return _aR; } set { _aR = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAR() => !AR.Clean;
-        public Value<string> AZ { get; set; }
+        public bool ShouldSerializeAR() => !_aR.Clean;
+        private Value<string> _aZ;
+        public string AZ { get { return _aZ; } set { _aZ = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAZ() => !AZ.Clean;
-        public Value<string> CA { get; set; }
+        public bool ShouldSerializeAZ() => !_aZ.Clean;
+        private Value<string> _cA;
+        public string CA { get { return _cA; } set { _cA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCA() => !CA.Clean;
-        public Value<string> CO { get; set; }
+        public bool ShouldSerializeCA() => !_cA.Clean;
+        private Value<string> _cO;
+        public string CO { get { return _cO; } set { _cO = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCO() => !CO.Clean;
-        public Value<string> CT { get; set; }
+        public bool ShouldSerializeCO() => !_cO.Clean;
+        private Value<string> _cT;
+        public string CT { get { return _cT; } set { _cT = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCT() => !CT.Clean;
-        public Value<string> DC { get; set; }
+        public bool ShouldSerializeCT() => !_cT.Clean;
+        private Value<string> _dC;
+        public string DC { get { return _dC; } set { _dC = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDC() => !DC.Clean;
-        public Value<string> DE { get; set; }
+        public bool ShouldSerializeDC() => !_dC.Clean;
+        private Value<string> _dE;
+        public string DE { get { return _dE; } set { _dE = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDE() => !DE.Clean;
-        public Value<string> FL { get; set; }
+        public bool ShouldSerializeDE() => !_dE.Clean;
+        private Value<string> _fL;
+        public string FL { get { return _fL; } set { _fL = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFL() => !FL.Clean;
-        public Value<string> GA { get; set; }
+        public bool ShouldSerializeFL() => !_fL.Clean;
+        private Value<string> _gA;
+        public string GA { get { return _gA; } set { _gA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGA() => !GA.Clean;
-        public Value<string> GU { get; set; }
+        public bool ShouldSerializeGA() => !_gA.Clean;
+        private Value<string> _gU;
+        public string GU { get { return _gU; } set { _gU = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGU() => !GU.Clean;
-        public Value<string> HI { get; set; }
+        public bool ShouldSerializeGU() => !_gU.Clean;
+        private Value<string> _hI;
+        public string HI { get { return _hI; } set { _hI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHI() => !HI.Clean;
-        public Value<string> IA { get; set; }
+        public bool ShouldSerializeHI() => !_hI.Clean;
+        private Value<string> _iA;
+        public string IA { get { return _iA; } set { _iA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIA() => !IA.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeIA() => !_iA.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> Idaho { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _idaho;
+        public string Idaho { get { return _idaho; } set { _idaho = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIdaho() => !Idaho.Clean;
-        public Value<string> IL { get; set; }
+        public bool ShouldSerializeIdaho() => !_idaho.Clean;
+        private Value<string> _iL;
+        public string IL { get { return _iL; } set { _iL = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIL() => !IL.Clean;
-        public Value<string> IN { get; set; }
+        public bool ShouldSerializeIL() => !_iL.Clean;
+        private Value<string> _iN;
+        public string IN { get { return _iN; } set { _iN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIN() => !IN.Clean;
-        public Value<string> KS { get; set; }
+        public bool ShouldSerializeIN() => !_iN.Clean;
+        private Value<string> _kS;
+        public string KS { get { return _kS; } set { _kS = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeKS() => !KS.Clean;
-        public Value<string> KY { get; set; }
+        public bool ShouldSerializeKS() => !_kS.Clean;
+        private Value<string> _kY;
+        public string KY { get { return _kY; } set { _kY = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeKY() => !KY.Clean;
-        public Value<string> LA { get; set; }
+        public bool ShouldSerializeKY() => !_kY.Clean;
+        private Value<string> _lA;
+        public string LA { get { return _lA; } set { _lA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLA() => !LA.Clean;
-        public Value<string> MA { get; set; }
+        public bool ShouldSerializeLA() => !_lA.Clean;
+        private Value<string> _mA;
+        public string MA { get { return _mA; } set { _mA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMA() => !MA.Clean;
-        public Value<string> MD { get; set; }
+        public bool ShouldSerializeMA() => !_mA.Clean;
+        private Value<string> _mD;
+        public string MD { get { return _mD; } set { _mD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMD() => !MD.Clean;
-        public Value<string> ME { get; set; }
+        public bool ShouldSerializeMD() => !_mD.Clean;
+        private Value<string> _mE;
+        public string ME { get { return _mE; } set { _mE = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeME() => !ME.Clean;
-        public Value<string> MI { get; set; }
+        public bool ShouldSerializeME() => !_mE.Clean;
+        private Value<string> _mI;
+        public string MI { get { return _mI; } set { _mI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMI() => !MI.Clean;
-        public Value<string> MN { get; set; }
+        public bool ShouldSerializeMI() => !_mI.Clean;
+        private Value<string> _mN;
+        public string MN { get { return _mN; } set { _mN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMN() => !MN.Clean;
-        public Value<string> MO { get; set; }
+        public bool ShouldSerializeMN() => !_mN.Clean;
+        private Value<string> _mO;
+        public string MO { get { return _mO; } set { _mO = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMO() => !MO.Clean;
-        public Value<string> MS { get; set; }
+        public bool ShouldSerializeMO() => !_mO.Clean;
+        private Value<string> _mS;
+        public string MS { get { return _mS; } set { _mS = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMS() => !MS.Clean;
-        public Value<string> MT { get; set; }
+        public bool ShouldSerializeMS() => !_mS.Clean;
+        private Value<string> _mT;
+        public string MT { get { return _mT; } set { _mT = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMT() => !MT.Clean;
-        public Value<string> NC { get; set; }
+        public bool ShouldSerializeMT() => !_mT.Clean;
+        private Value<string> _nC;
+        public string NC { get { return _nC; } set { _nC = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNC() => !NC.Clean;
-        public Value<string> ND { get; set; }
+        public bool ShouldSerializeNC() => !_nC.Clean;
+        private Value<string> _nD;
+        public string ND { get { return _nD; } set { _nD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeND() => !ND.Clean;
-        public Value<string> NE { get; set; }
+        public bool ShouldSerializeND() => !_nD.Clean;
+        private Value<string> _nE;
+        public string NE { get { return _nE; } set { _nE = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNE() => !NE.Clean;
-        public Value<string> NH { get; set; }
+        public bool ShouldSerializeNE() => !_nE.Clean;
+        private Value<string> _nH;
+        public string NH { get { return _nH; } set { _nH = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNH() => !NH.Clean;
-        public Value<string> NJ { get; set; }
+        public bool ShouldSerializeNH() => !_nH.Clean;
+        private Value<string> _nJ;
+        public string NJ { get { return _nJ; } set { _nJ = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNJ() => !NJ.Clean;
-        public Value<string> NM { get; set; }
+        public bool ShouldSerializeNJ() => !_nJ.Clean;
+        private Value<string> _nM;
+        public string NM { get { return _nM; } set { _nM = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNM() => !NM.Clean;
-        public Value<string> NV { get; set; }
+        public bool ShouldSerializeNM() => !_nM.Clean;
+        private Value<string> _nV;
+        public string NV { get { return _nV; } set { _nV = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNV() => !NV.Clean;
-        public Value<string> NY { get; set; }
+        public bool ShouldSerializeNV() => !_nV.Clean;
+        private Value<string> _nY;
+        public string NY { get { return _nY; } set { _nY = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNY() => !NY.Clean;
-        public Value<string> OH { get; set; }
+        public bool ShouldSerializeNY() => !_nY.Clean;
+        private Value<string> _oH;
+        public string OH { get { return _oH; } set { _oH = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOH() => !OH.Clean;
-        public Value<string> OK { get; set; }
+        public bool ShouldSerializeOH() => !_oH.Clean;
+        private Value<string> _oK;
+        public string OK { get { return _oK; } set { _oK = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOK() => !OK.Clean;
-        public Value<string> OR { get; set; }
+        public bool ShouldSerializeOK() => !_oK.Clean;
+        private Value<string> _oR;
+        public string OR { get { return _oR; } set { _oR = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOR() => !OR.Clean;
-        public Value<string> PA { get; set; }
+        public bool ShouldSerializeOR() => !_oR.Clean;
+        private Value<string> _pA;
+        public string PA { get { return _pA; } set { _pA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePA() => !PA.Clean;
-        public Value<string> PR { get; set; }
+        public bool ShouldSerializePA() => !_pA.Clean;
+        private Value<string> _pR;
+        public string PR { get { return _pR; } set { _pR = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePR() => !PR.Clean;
-        public Value<string> RI { get; set; }
+        public bool ShouldSerializePR() => !_pR.Clean;
+        private Value<string> _rI;
+        public string RI { get { return _rI; } set { _rI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRI() => !RI.Clean;
-        public Value<string> SC { get; set; }
+        public bool ShouldSerializeRI() => !_rI.Clean;
+        private Value<string> _sC;
+        public string SC { get { return _sC; } set { _sC = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSC() => !SC.Clean;
-        public Value<string> SD { get; set; }
+        public bool ShouldSerializeSC() => !_sC.Clean;
+        private Value<string> _sD;
+        public string SD { get { return _sD; } set { _sD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSD() => !SD.Clean;
-        public Value<string> StateLicenseType { get; set; }
+        public bool ShouldSerializeSD() => !_sD.Clean;
+        private Value<string> _stateLicenseType;
+        public string StateLicenseType { get { return _stateLicenseType; } set { _stateLicenseType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStateLicenseType() => !StateLicenseType.Clean;
-        public Value<string> TN { get; set; }
+        public bool ShouldSerializeStateLicenseType() => !_stateLicenseType.Clean;
+        private Value<string> _tN;
+        public string TN { get { return _tN; } set { _tN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTN() => !TN.Clean;
-        public Value<string> TX { get; set; }
+        public bool ShouldSerializeTN() => !_tN.Clean;
+        private Value<string> _tX;
+        public string TX { get { return _tX; } set { _tX = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTX() => !TX.Clean;
-        public Value<string> UT { get; set; }
+        public bool ShouldSerializeTX() => !_tX.Clean;
+        private Value<string> _uT;
+        public string UT { get { return _uT; } set { _uT = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUT() => !UT.Clean;
-        public Value<string> VA { get; set; }
+        public bool ShouldSerializeUT() => !_uT.Clean;
+        private Value<string> _vA;
+        public string VA { get { return _vA; } set { _vA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVA() => !VA.Clean;
-        public Value<string> VI { get; set; }
+        public bool ShouldSerializeVA() => !_vA.Clean;
+        private Value<string> _vI;
+        public string VI { get { return _vI; } set { _vI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVI() => !VI.Clean;
-        public Value<string> VT { get; set; }
+        public bool ShouldSerializeVI() => !_vI.Clean;
+        private Value<string> _vT;
+        public string VT { get { return _vT; } set { _vT = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVT() => !VT.Clean;
-        public Value<string> WA { get; set; }
+        public bool ShouldSerializeVT() => !_vT.Clean;
+        private Value<string> _wA;
+        public string WA { get { return _wA; } set { _wA = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWA() => !WA.Clean;
-        public Value<string> WI { get; set; }
+        public bool ShouldSerializeWA() => !_wA.Clean;
+        private Value<string> _wI;
+        public string WI { get { return _wI; } set { _wI = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWI() => !WI.Clean;
-        public Value<string> WV { get; set; }
+        public bool ShouldSerializeWI() => !_wI.Clean;
+        private Value<string> _wV;
+        public string WV { get { return _wV; } set { _wV = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWV() => !WV.Clean;
-        public Value<string> WY { get; set; }
+        public bool ShouldSerializeWV() => !_wV.Clean;
+        private Value<string> _wY;
+        public string WY { get { return _wY; } set { _wY = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWY() => !WY.Clean;
+        public bool ShouldSerializeWY() => !_wY.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -182,124 +238,124 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AK.Clean
-                    && AL.Clean
-                    && AR.Clean
-                    && AZ.Clean
-                    && CA.Clean
-                    && CO.Clean
-                    && CT.Clean
-                    && DC.Clean
-                    && DE.Clean
-                    && FL.Clean
-                    && GA.Clean
-                    && GU.Clean
-                    && HI.Clean
-                    && IA.Clean
-                    && Id.Clean
-                    && Idaho.Clean
-                    && IL.Clean
-                    && IN.Clean
-                    && KS.Clean
-                    && KY.Clean
-                    && LA.Clean
-                    && MA.Clean
-                    && MD.Clean
-                    && ME.Clean
-                    && MI.Clean
-                    && MN.Clean
-                    && MO.Clean
-                    && MS.Clean
-                    && MT.Clean
-                    && NC.Clean
-                    && ND.Clean
-                    && NE.Clean
-                    && NH.Clean
-                    && NJ.Clean
-                    && NM.Clean
-                    && NV.Clean
-                    && NY.Clean
-                    && OH.Clean
-                    && OK.Clean
-                    && OR.Clean
-                    && PA.Clean
-                    && PR.Clean
-                    && RI.Clean
-                    && SC.Clean
-                    && SD.Clean
-                    && StateLicenseType.Clean
-                    && TN.Clean
-                    && TX.Clean
-                    && UT.Clean
-                    && VA.Clean
-                    && VI.Clean
-                    && VT.Clean
-                    && WA.Clean
-                    && WI.Clean
-                    && WV.Clean
-                    && WY.Clean;
+                var clean = _aK.Clean
+                    && _aL.Clean
+                    && _aR.Clean
+                    && _aZ.Clean
+                    && _cA.Clean
+                    && _cO.Clean
+                    && _cT.Clean
+                    && _dC.Clean
+                    && _dE.Clean
+                    && _fL.Clean
+                    && _gA.Clean
+                    && _gU.Clean
+                    && _hI.Clean
+                    && _iA.Clean
+                    && _id.Clean
+                    && _idaho.Clean
+                    && _iL.Clean
+                    && _iN.Clean
+                    && _kS.Clean
+                    && _kY.Clean
+                    && _lA.Clean
+                    && _mA.Clean
+                    && _mD.Clean
+                    && _mE.Clean
+                    && _mI.Clean
+                    && _mN.Clean
+                    && _mO.Clean
+                    && _mS.Clean
+                    && _mT.Clean
+                    && _nC.Clean
+                    && _nD.Clean
+                    && _nE.Clean
+                    && _nH.Clean
+                    && _nJ.Clean
+                    && _nM.Clean
+                    && _nV.Clean
+                    && _nY.Clean
+                    && _oH.Clean
+                    && _oK.Clean
+                    && _oR.Clean
+                    && _pA.Clean
+                    && _pR.Clean
+                    && _rI.Clean
+                    && _sC.Clean
+                    && _sD.Clean
+                    && _stateLicenseType.Clean
+                    && _tN.Clean
+                    && _tX.Clean
+                    && _uT.Clean
+                    && _vA.Clean
+                    && _vI.Clean
+                    && _vT.Clean
+                    && _wA.Clean
+                    && _wI.Clean
+                    && _wV.Clean
+                    && _wY.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AK; v0.Clean = value; AK = v0;
-                var v1 = AL; v1.Clean = value; AL = v1;
-                var v2 = AR; v2.Clean = value; AR = v2;
-                var v3 = AZ; v3.Clean = value; AZ = v3;
-                var v4 = CA; v4.Clean = value; CA = v4;
-                var v5 = CO; v5.Clean = value; CO = v5;
-                var v6 = CT; v6.Clean = value; CT = v6;
-                var v7 = DC; v7.Clean = value; DC = v7;
-                var v8 = DE; v8.Clean = value; DE = v8;
-                var v9 = FL; v9.Clean = value; FL = v9;
-                var v10 = GA; v10.Clean = value; GA = v10;
-                var v11 = GU; v11.Clean = value; GU = v11;
-                var v12 = HI; v12.Clean = value; HI = v12;
-                var v13 = IA; v13.Clean = value; IA = v13;
-                var v14 = Id; v14.Clean = value; Id = v14;
-                var v15 = Idaho; v15.Clean = value; Idaho = v15;
-                var v16 = IL; v16.Clean = value; IL = v16;
-                var v17 = IN; v17.Clean = value; IN = v17;
-                var v18 = KS; v18.Clean = value; KS = v18;
-                var v19 = KY; v19.Clean = value; KY = v19;
-                var v20 = LA; v20.Clean = value; LA = v20;
-                var v21 = MA; v21.Clean = value; MA = v21;
-                var v22 = MD; v22.Clean = value; MD = v22;
-                var v23 = ME; v23.Clean = value; ME = v23;
-                var v24 = MI; v24.Clean = value; MI = v24;
-                var v25 = MN; v25.Clean = value; MN = v25;
-                var v26 = MO; v26.Clean = value; MO = v26;
-                var v27 = MS; v27.Clean = value; MS = v27;
-                var v28 = MT; v28.Clean = value; MT = v28;
-                var v29 = NC; v29.Clean = value; NC = v29;
-                var v30 = ND; v30.Clean = value; ND = v30;
-                var v31 = NE; v31.Clean = value; NE = v31;
-                var v32 = NH; v32.Clean = value; NH = v32;
-                var v33 = NJ; v33.Clean = value; NJ = v33;
-                var v34 = NM; v34.Clean = value; NM = v34;
-                var v35 = NV; v35.Clean = value; NV = v35;
-                var v36 = NY; v36.Clean = value; NY = v36;
-                var v37 = OH; v37.Clean = value; OH = v37;
-                var v38 = OK; v38.Clean = value; OK = v38;
-                var v39 = OR; v39.Clean = value; OR = v39;
-                var v40 = PA; v40.Clean = value; PA = v40;
-                var v41 = PR; v41.Clean = value; PR = v41;
-                var v42 = RI; v42.Clean = value; RI = v42;
-                var v43 = SC; v43.Clean = value; SC = v43;
-                var v44 = SD; v44.Clean = value; SD = v44;
-                var v45 = StateLicenseType; v45.Clean = value; StateLicenseType = v45;
-                var v46 = TN; v46.Clean = value; TN = v46;
-                var v47 = TX; v47.Clean = value; TX = v47;
-                var v48 = UT; v48.Clean = value; UT = v48;
-                var v49 = VA; v49.Clean = value; VA = v49;
-                var v50 = VI; v50.Clean = value; VI = v50;
-                var v51 = VT; v51.Clean = value; VT = v51;
-                var v52 = WA; v52.Clean = value; WA = v52;
-                var v53 = WI; v53.Clean = value; WI = v53;
-                var v54 = WV; v54.Clean = value; WV = v54;
-                var v55 = WY; v55.Clean = value; WY = v55;
+                var v0 = _aK; v0.Clean = value; _aK = v0;
+                var v1 = _aL; v1.Clean = value; _aL = v1;
+                var v2 = _aR; v2.Clean = value; _aR = v2;
+                var v3 = _aZ; v3.Clean = value; _aZ = v3;
+                var v4 = _cA; v4.Clean = value; _cA = v4;
+                var v5 = _cO; v5.Clean = value; _cO = v5;
+                var v6 = _cT; v6.Clean = value; _cT = v6;
+                var v7 = _dC; v7.Clean = value; _dC = v7;
+                var v8 = _dE; v8.Clean = value; _dE = v8;
+                var v9 = _fL; v9.Clean = value; _fL = v9;
+                var v10 = _gA; v10.Clean = value; _gA = v10;
+                var v11 = _gU; v11.Clean = value; _gU = v11;
+                var v12 = _hI; v12.Clean = value; _hI = v12;
+                var v13 = _iA; v13.Clean = value; _iA = v13;
+                var v14 = _id; v14.Clean = value; _id = v14;
+                var v15 = _idaho; v15.Clean = value; _idaho = v15;
+                var v16 = _iL; v16.Clean = value; _iL = v16;
+                var v17 = _iN; v17.Clean = value; _iN = v17;
+                var v18 = _kS; v18.Clean = value; _kS = v18;
+                var v19 = _kY; v19.Clean = value; _kY = v19;
+                var v20 = _lA; v20.Clean = value; _lA = v20;
+                var v21 = _mA; v21.Clean = value; _mA = v21;
+                var v22 = _mD; v22.Clean = value; _mD = v22;
+                var v23 = _mE; v23.Clean = value; _mE = v23;
+                var v24 = _mI; v24.Clean = value; _mI = v24;
+                var v25 = _mN; v25.Clean = value; _mN = v25;
+                var v26 = _mO; v26.Clean = value; _mO = v26;
+                var v27 = _mS; v27.Clean = value; _mS = v27;
+                var v28 = _mT; v28.Clean = value; _mT = v28;
+                var v29 = _nC; v29.Clean = value; _nC = v29;
+                var v30 = _nD; v30.Clean = value; _nD = v30;
+                var v31 = _nE; v31.Clean = value; _nE = v31;
+                var v32 = _nH; v32.Clean = value; _nH = v32;
+                var v33 = _nJ; v33.Clean = value; _nJ = v33;
+                var v34 = _nM; v34.Clean = value; _nM = v34;
+                var v35 = _nV; v35.Clean = value; _nV = v35;
+                var v36 = _nY; v36.Clean = value; _nY = v36;
+                var v37 = _oH; v37.Clean = value; _oH = v37;
+                var v38 = _oK; v38.Clean = value; _oK = v38;
+                var v39 = _oR; v39.Clean = value; _oR = v39;
+                var v40 = _pA; v40.Clean = value; _pA = v40;
+                var v41 = _pR; v41.Clean = value; _pR = v41;
+                var v42 = _rI; v42.Clean = value; _rI = v42;
+                var v43 = _sC; v43.Clean = value; _sC = v43;
+                var v44 = _sD; v44.Clean = value; _sD = v44;
+                var v45 = _stateLicenseType; v45.Clean = value; _stateLicenseType = v45;
+                var v46 = _tN; v46.Clean = value; _tN = v46;
+                var v47 = _tX; v47.Clean = value; _tX = v47;
+                var v48 = _uT; v48.Clean = value; _uT = v48;
+                var v49 = _vA; v49.Clean = value; _vA = v49;
+                var v50 = _vI; v50.Clean = value; _vI = v50;
+                var v51 = _vT; v51.Clean = value; _vT = v51;
+                var v52 = _wA; v52.Clean = value; _wA = v52;
+                var v53 = _wI; v53.Clean = value; _wI = v53;
+                var v54 = _wV; v54.Clean = value; _wV = v54;
+                var v55 = _wY; v55.Clean = value; _wY = v55;
                 _settingClean = 0;
             }
         }

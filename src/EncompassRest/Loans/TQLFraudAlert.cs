@@ -7,24 +7,30 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLFraudAlert
     {
-        public Value<string> Id { get; set; }
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> LastFraudOrderAlertCategories { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _lastFraudOrderAlertCategories;
+        public string LastFraudOrderAlertCategories { get { return _lastFraudOrderAlertCategories; } set { _lastFraudOrderAlertCategories = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderAlertCategories() => !LastFraudOrderAlertCategories.Clean;
-        public Value<string> LastFraudOrderAlertID { get; set; }
+        public bool ShouldSerializeLastFraudOrderAlertCategories() => !_lastFraudOrderAlertCategories.Clean;
+        private Value<string> _lastFraudOrderAlertID;
+        public string LastFraudOrderAlertID { get { return _lastFraudOrderAlertID; } set { _lastFraudOrderAlertID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderAlertID() => !LastFraudOrderAlertID.Clean;
-        public Value<string> LastFraudOrderAlertLevel { get; set; }
+        public bool ShouldSerializeLastFraudOrderAlertID() => !_lastFraudOrderAlertID.Clean;
+        private Value<string> _lastFraudOrderAlertLevel;
+        public string LastFraudOrderAlertLevel { get { return _lastFraudOrderAlertLevel; } set { _lastFraudOrderAlertLevel = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderAlertLevel() => !LastFraudOrderAlertLevel.Clean;
-        public Value<string> LastFraudOrderDescriptionOfAlerts { get; set; }
+        public bool ShouldSerializeLastFraudOrderAlertLevel() => !_lastFraudOrderAlertLevel.Clean;
+        private Value<string> _lastFraudOrderDescriptionOfAlerts;
+        public string LastFraudOrderDescriptionOfAlerts { get { return _lastFraudOrderDescriptionOfAlerts; } set { _lastFraudOrderDescriptionOfAlerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderDescriptionOfAlerts() => !LastFraudOrderDescriptionOfAlerts.Clean;
-        public Value<int?> TQLFraudAlertIndex { get; set; }
+        public bool ShouldSerializeLastFraudOrderDescriptionOfAlerts() => !_lastFraudOrderDescriptionOfAlerts.Clean;
+        private Value<int?> _tQLFraudAlertIndex;
+        public int? TQLFraudAlertIndex { get { return _tQLFraudAlertIndex; } set { _tQLFraudAlertIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertIndex() => !TQLFraudAlertIndex.Clean;
+        public bool ShouldSerializeTQLFraudAlertIndex() => !_tQLFraudAlertIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -32,24 +38,24 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Id.Clean
-                    && LastFraudOrderAlertCategories.Clean
-                    && LastFraudOrderAlertID.Clean
-                    && LastFraudOrderAlertLevel.Clean
-                    && LastFraudOrderDescriptionOfAlerts.Clean
-                    && TQLFraudAlertIndex.Clean;
+                var clean = _id.Clean
+                    && _lastFraudOrderAlertCategories.Clean
+                    && _lastFraudOrderAlertID.Clean
+                    && _lastFraudOrderAlertLevel.Clean
+                    && _lastFraudOrderDescriptionOfAlerts.Clean
+                    && _tQLFraudAlertIndex.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Id; v0.Clean = value; Id = v0;
-                var v1 = LastFraudOrderAlertCategories; v1.Clean = value; LastFraudOrderAlertCategories = v1;
-                var v2 = LastFraudOrderAlertID; v2.Clean = value; LastFraudOrderAlertID = v2;
-                var v3 = LastFraudOrderAlertLevel; v3.Clean = value; LastFraudOrderAlertLevel = v3;
-                var v4 = LastFraudOrderDescriptionOfAlerts; v4.Clean = value; LastFraudOrderDescriptionOfAlerts = v4;
-                var v5 = TQLFraudAlertIndex; v5.Clean = value; TQLFraudAlertIndex = v5;
+                var v0 = _id; v0.Clean = value; _id = v0;
+                var v1 = _lastFraudOrderAlertCategories; v1.Clean = value; _lastFraudOrderAlertCategories = v1;
+                var v2 = _lastFraudOrderAlertID; v2.Clean = value; _lastFraudOrderAlertID = v2;
+                var v3 = _lastFraudOrderAlertLevel; v3.Clean = value; _lastFraudOrderAlertLevel = v3;
+                var v4 = _lastFraudOrderDescriptionOfAlerts; v4.Clean = value; _lastFraudOrderDescriptionOfAlerts = v4;
+                var v5 = _tQLFraudAlertIndex; v5.Clean = value; _tQLFraudAlertIndex = v5;
                 _settingClean = 0;
             }
         }

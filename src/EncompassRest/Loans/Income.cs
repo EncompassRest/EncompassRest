@@ -7,27 +7,34 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Income
     {
-        public Value<decimal?> Amount { get; set; }
+        private Value<decimal?> _amount;
+        public decimal? Amount { get { return _amount; } set { _amount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !Amount.Clean;
-        public Value<bool?> CurrentIndicator { get; set; }
+        public bool ShouldSerializeAmount() => !_amount.Clean;
+        private Value<bool?> _currentIndicator;
+        public bool? CurrentIndicator { get { return _currentIndicator; } set { _currentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentIndicator() => !CurrentIndicator.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeCurrentIndicator() => !_currentIndicator.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> IncomeType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _incomeType;
+        public string IncomeType { get { return _incomeType; } set { _incomeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIncomeType() => !IncomeType.Clean;
-        public Value<int?> OtherIncomeIndex { get; set; }
+        public bool ShouldSerializeIncomeType() => !_incomeType.Clean;
+        private Value<int?> _otherIncomeIndex;
+        public int? OtherIncomeIndex { get { return _otherIncomeIndex; } set { _otherIncomeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherIncomeIndex() => !OtherIncomeIndex.Clean;
-        public Value<string> Owner { get; set; }
+        public bool ShouldSerializeOtherIncomeIndex() => !_otherIncomeIndex.Clean;
+        private Value<string> _owner;
+        public string Owner { get { return _owner; } set { _owner = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOwner() => !Owner.Clean;
+        public bool ShouldSerializeOwner() => !_owner.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -35,26 +42,26 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Amount.Clean
-                    && CurrentIndicator.Clean
-                    && Description.Clean
-                    && Id.Clean
-                    && IncomeType.Clean
-                    && OtherIncomeIndex.Clean
-                    && Owner.Clean;
+                var clean = _amount.Clean
+                    && _currentIndicator.Clean
+                    && _description.Clean
+                    && _id.Clean
+                    && _incomeType.Clean
+                    && _otherIncomeIndex.Clean
+                    && _owner.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Amount; v0.Clean = value; Amount = v0;
-                var v1 = CurrentIndicator; v1.Clean = value; CurrentIndicator = v1;
-                var v2 = Description; v2.Clean = value; Description = v2;
-                var v3 = Id; v3.Clean = value; Id = v3;
-                var v4 = IncomeType; v4.Clean = value; IncomeType = v4;
-                var v5 = OtherIncomeIndex; v5.Clean = value; OtherIncomeIndex = v5;
-                var v6 = Owner; v6.Clean = value; Owner = v6;
+                var v0 = _amount; v0.Clean = value; _amount = v0;
+                var v1 = _currentIndicator; v1.Clean = value; _currentIndicator = v1;
+                var v2 = _description; v2.Clean = value; _description = v2;
+                var v3 = _id; v3.Clean = value; _id = v3;
+                var v4 = _incomeType; v4.Clean = value; _incomeType = v4;
+                var v5 = _otherIncomeIndex; v5.Clean = value; _otherIncomeIndex = v5;
+                var v6 = _owner; v6.Clean = value; _owner = v6;
                 _settingClean = 0;
             }
         }

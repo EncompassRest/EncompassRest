@@ -7,204 +7,270 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQL
     {
-        public Value<string> Citibank4506TBaselineReportRequired { get; set; }
+        private Value<string> _citibank4506TBaselineReportRequired;
+        public string Citibank4506TBaselineReportRequired { get { return _citibank4506TBaselineReportRequired; } set { _citibank4506TBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCitibank4506TBaselineReportRequired() => !_citibank4506TBaselineReportRequired.Clean;
+        private Value<string> _citibankCCVPBaselineReportRequired;
+        public string CitibankCCVPBaselineReportRequired { get { return _citibankCCVPBaselineReportRequired; } set { _citibankCCVPBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCitibankCCVPBaselineReportRequired() => !_citibankCCVPBaselineReportRequired.Clean;
+        private Value<string> _citibankComplianceBaselineReportRequired;
+        public string CitibankComplianceBaselineReportRequired { get { return _citibankComplianceBaselineReportRequired; } set { _citibankComplianceBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCitibankComplianceBaselineReportRequired() => !_citibankComplianceBaselineReportRequired.Clean;
+        private Value<string> _citibankFloodBaselineReportRequired;
+        public string CitibankFloodBaselineReportRequired { get { return _citibankFloodBaselineReportRequired; } set { _citibankFloodBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCitibankFloodBaselineReportRequired() => !_citibankFloodBaselineReportRequired.Clean;
+        private Value<string> _citibankFraudBaselineReportRequired;
+        public string CitibankFraudBaselineReportRequired { get { return _citibankFraudBaselineReportRequired; } set { _citibankFraudBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCitibankFraudBaselineReportRequired() => !_citibankFraudBaselineReportRequired.Clean;
+        private Value<string> _currentInvestorPublishingStatus;
+        public string CurrentInvestorPublishingStatus { get { return _currentInvestorPublishingStatus; } set { _currentInvestorPublishingStatus = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCurrentInvestorPublishingStatus() => !_currentInvestorPublishingStatus.Clean;
+        private Value<int?> _driveAppVerifyScore;
+        public int? DriveAppVerifyScore { get { return _driveAppVerifyScore; } set { _driveAppVerifyScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDriveAppVerifyScore() => !_driveAppVerifyScore.Clean;
+        private Value<int?> _driveIDVerifyScore;
+        public int? DriveIDVerifyScore { get { return _driveIDVerifyScore; } set { _driveIDVerifyScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDriveIDVerifyScore() => !_driveIDVerifyScore.Clean;
+        private Value<int?> _drivePropertyVerifyScore;
+        public int? DrivePropertyVerifyScore { get { return _drivePropertyVerifyScore; } set { _drivePropertyVerifyScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDrivePropertyVerifyScore() => !_drivePropertyVerifyScore.Clean;
+        private Value<int?> _driveScore;
+        public int? DriveScore { get { return _driveScore; } set { _driveScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDriveScore() => !_driveScore.Clean;
+        private Value<string> _driveStatus;
+        public string DriveStatus { get { return _driveStatus; } set { _driveStatus = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDriveStatus() => !_driveStatus.Clean;
+        private Value<string> _homeward4506TBaselineReportRequired;
+        public string Homeward4506TBaselineReportRequired { get { return _homeward4506TBaselineReportRequired; } set { _homeward4506TBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHomeward4506TBaselineReportRequired() => !_homeward4506TBaselineReportRequired.Clean;
+        private Value<string> _homewardComplianceBaselineReportRequired;
+        public string HomewardComplianceBaselineReportRequired { get { return _homewardComplianceBaselineReportRequired; } set { _homewardComplianceBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHomewardComplianceBaselineReportRequired() => !_homewardComplianceBaselineReportRequired.Clean;
+        private Value<string> _homewardFloodBaselineReportRequired;
+        public string HomewardFloodBaselineReportRequired { get { return _homewardFloodBaselineReportRequired; } set { _homewardFloodBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHomewardFloodBaselineReportRequired() => !_homewardFloodBaselineReportRequired.Clean;
+        private Value<string> _homewardFraudBaselineReportRequired;
+        public string HomewardFraudBaselineReportRequired { get { return _homewardFraudBaselineReportRequired; } set { _homewardFraudBaselineReportRequired = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHomewardFraudBaselineReportRequired() => !_homewardFraudBaselineReportRequired.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<DateTime?> _lastCCVPCompletedDate;
+        public DateTime? LastCCVPCompletedDate { get { return _lastCCVPCompletedDate; } set { _lastCCVPCompletedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPCompletedDate() => !_lastCCVPCompletedDate.Clean;
+        private Value<string> _lastCCVPConfidenceScore;
+        public string LastCCVPConfidenceScore { get { return _lastCCVPConfidenceScore; } set { _lastCCVPConfidenceScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPConfidenceScore() => !_lastCCVPConfidenceScore.Clean;
+        private Value<string> _lastCCVPEstimatedValue;
+        public string LastCCVPEstimatedValue { get { return _lastCCVPEstimatedValue; } set { _lastCCVPEstimatedValue = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPEstimatedValue() => !_lastCCVPEstimatedValue.Clean;
+        private Value<string> _lastCCVPForecastDeviationScore;
+        public string LastCCVPForecastDeviationScore { get { return _lastCCVPForecastDeviationScore; } set { _lastCCVPForecastDeviationScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPForecastDeviationScore() => !_lastCCVPForecastDeviationScore.Clean;
+        private Value<string> _lastCCVPReportHistoryProResult;
+        public string LastCCVPReportHistoryProResult { get { return _lastCCVPReportHistoryProResult; } set { _lastCCVPReportHistoryProResult = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPReportHistoryProResult() => !_lastCCVPReportHistoryProResult.Clean;
+        private Value<string> _lastCCVPReportID;
+        public string LastCCVPReportID { get { return _lastCCVPReportID; } set { _lastCCVPReportID = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPReportID() => !_lastCCVPReportID.Clean;
+        private Value<string> _lastCCVPReportOrdered;
+        public string LastCCVPReportOrdered { get { return _lastCCVPReportOrdered; } set { _lastCCVPReportOrdered = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPReportOrdered() => !_lastCCVPReportOrdered.Clean;
+        private Value<string> _lastCCVPReportPassResult;
+        public string LastCCVPReportPassResult { get { return _lastCCVPReportPassResult; } set { _lastCCVPReportPassResult = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPReportPassResult() => !_lastCCVPReportPassResult.Clean;
+        private Value<string> _lastCCVPResultsReportReturned;
+        public string LastCCVPResultsReportReturned { get { return _lastCCVPResultsReportReturned; } set { _lastCCVPResultsReportReturned = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastCCVPResultsReportReturned() => !_lastCCVPResultsReportReturned.Clean;
+        private Value<DateTime?> _lastComplianceCompletedDate;
+        public DateTime? LastComplianceCompletedDate { get { return _lastComplianceCompletedDate; } set { _lastComplianceCompletedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceCompletedDate() => !_lastComplianceCompletedDate.Clean;
+        private Value<int?> _lastComplianceNumberOfAlertMessages;
+        public int? LastComplianceNumberOfAlertMessages { get { return _lastComplianceNumberOfAlertMessages; } set { _lastComplianceNumberOfAlertMessages = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceNumberOfAlertMessages() => !_lastComplianceNumberOfAlertMessages.Clean;
+        private Value<int?> _lastComplianceNumberOfErrorMessages;
+        public int? LastComplianceNumberOfErrorMessages { get { return _lastComplianceNumberOfErrorMessages; } set { _lastComplianceNumberOfErrorMessages = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceNumberOfErrorMessages() => !_lastComplianceNumberOfErrorMessages.Clean;
+        private Value<int?> _lastComplianceNumberOfFailMessages;
+        public int? LastComplianceNumberOfFailMessages { get { return _lastComplianceNumberOfFailMessages; } set { _lastComplianceNumberOfFailMessages = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceNumberOfFailMessages() => !_lastComplianceNumberOfFailMessages.Clean;
+        private Value<int?> _lastComplianceNumberOfPassMessages;
+        public int? LastComplianceNumberOfPassMessages { get { return _lastComplianceNumberOfPassMessages; } set { _lastComplianceNumberOfPassMessages = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceNumberOfPassMessages() => !_lastComplianceNumberOfPassMessages.Clean;
+        private Value<int?> _lastComplianceNumberOfWarningMessages;
+        public int? LastComplianceNumberOfWarningMessages { get { return _lastComplianceNumberOfWarningMessages; } set { _lastComplianceNumberOfWarningMessages = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceNumberOfWarningMessages() => !_lastComplianceNumberOfWarningMessages.Clean;
+        private Value<string> _lastComplianceOrderType;
+        public string LastComplianceOrderType { get { return _lastComplianceOrderType; } set { _lastComplianceOrderType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceOrderType() => !_lastComplianceOrderType.Clean;
+        private Value<string> _lastComplianceProductNameReportOrdered;
+        public string LastComplianceProductNameReportOrdered { get { return _lastComplianceProductNameReportOrdered; } set { _lastComplianceProductNameReportOrdered = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceProductNameReportOrdered() => !_lastComplianceProductNameReportOrdered.Clean;
+        private Value<string> _lastComplianceReportID;
+        public string LastComplianceReportID { get { return _lastComplianceReportID; } set { _lastComplianceReportID = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastComplianceReportID() => !_lastComplianceReportID.Clean;
+        private Value<int?> _lastFraudOrderAlerts;
+        public int? LastFraudOrderAlerts { get { return _lastFraudOrderAlerts; } set { _lastFraudOrderAlerts = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastFraudOrderAlerts() => !_lastFraudOrderAlerts.Clean;
+        private Value<DateTime?> _lastFraudOrderCompletedDate;
+        public DateTime? LastFraudOrderCompletedDate { get { return _lastFraudOrderCompletedDate; } set { _lastFraudOrderCompletedDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastFraudOrderCompletedDate() => !_lastFraudOrderCompletedDate.Clean;
+        private Value<string> _lastFraudOrderProduct;
+        public string LastFraudOrderProduct { get { return _lastFraudOrderProduct; } set { _lastFraudOrderProduct = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastFraudOrderProduct() => !_lastFraudOrderProduct.Clean;
+        private Value<string> _lastFraudReportID;
+        public string LastFraudReportID { get { return _lastFraudReportID; } set { _lastFraudReportID = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastFraudReportID() => !_lastFraudReportID.Clean;
+        private Value<string> _lastInvestorPublishingInvestor;
+        public string LastInvestorPublishingInvestor { get { return _lastInvestorPublishingInvestor; } set { _lastInvestorPublishingInvestor = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastInvestorPublishingInvestor() => !_lastInvestorPublishingInvestor.Clean;
+        private Value<DateTime?> _lastInvestorPublishingStatusChangeDate;
+        public DateTime? LastInvestorPublishingStatusChangeDate { get { return _lastInvestorPublishingStatusChangeDate; } set { _lastInvestorPublishingStatusChangeDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastInvestorPublishingStatusChangeDate() => !_lastInvestorPublishingStatusChangeDate.Clean;
+        private Value<string> _lastInvestorPublishingUserWhoChangeStatus;
+        public string LastInvestorPublishingUserWhoChangeStatus { get { return _lastInvestorPublishingUserWhoChangeStatus; } set { _lastInvestorPublishingUserWhoChangeStatus = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLastInvestorPublishingUserWhoChangeStatus() => !_lastInvestorPublishingUserWhoChangeStatus.Clean;
+        private Value<string> _lastUserIDWhoOrderedCCVP;
+        public string LastUserIDWhoOrderedCCVP { get { return _lastUserIDWhoOrderedCCVP; } set { _lastUserIDWhoOrderedCCVP = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCitibank4506TBaselineReportRequired() => !Citibank4506TBaselineReportRequired.Clean;
-        public Value<string> CitibankCCVPBaselineReportRequired { get; set; }
+        public bool ShouldSerializeLastUserIDWhoOrderedCCVP() => !_lastUserIDWhoOrderedCCVP.Clean;
+        private Value<string> _lastUserIDWhoOrderedCompliance;
+        public string LastUserIDWhoOrderedCompliance { get { return _lastUserIDWhoOrderedCompliance; } set { _lastUserIDWhoOrderedCompliance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCitibankCCVPBaselineReportRequired() => !CitibankCCVPBaselineReportRequired.Clean;
-        public Value<string> CitibankComplianceBaselineReportRequired { get; set; }
+        public bool ShouldSerializeLastUserIDWhoOrderedCompliance() => !_lastUserIDWhoOrderedCompliance.Clean;
+        private Value<string> _lastUserIDWhoOrderedFraudOrder;
+        public string LastUserIDWhoOrderedFraudOrder { get { return _lastUserIDWhoOrderedFraudOrder; } set { _lastUserIDWhoOrderedFraudOrder = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCitibankComplianceBaselineReportRequired() => !CitibankComplianceBaselineReportRequired.Clean;
-        public Value<string> CitibankFloodBaselineReportRequired { get; set; }
+        public bool ShouldSerializeLastUserIDWhoOrderedFraudOrder() => !_lastUserIDWhoOrderedFraudOrder.Clean;
+        private Value<string> _pHH4506TBaselineReportRequired;
+        public string PHH4506TBaselineReportRequired { get { return _pHH4506TBaselineReportRequired; } set { _pHH4506TBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCitibankFloodBaselineReportRequired() => !CitibankFloodBaselineReportRequired.Clean;
-        public Value<string> CitibankFraudBaselineReportRequired { get; set; }
+        public bool ShouldSerializePHH4506TBaselineReportRequired() => !_pHH4506TBaselineReportRequired.Clean;
+        private Value<string> _pHHComplianceBaselineReportRequired;
+        public string PHHComplianceBaselineReportRequired { get { return _pHHComplianceBaselineReportRequired; } set { _pHHComplianceBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCitibankFraudBaselineReportRequired() => !CitibankFraudBaselineReportRequired.Clean;
-        public Value<string> CurrentInvestorPublishingStatus { get; set; }
+        public bool ShouldSerializePHHComplianceBaselineReportRequired() => !_pHHComplianceBaselineReportRequired.Clean;
+        private Value<string> _pHHFloodBaselineReportRequired;
+        public string PHHFloodBaselineReportRequired { get { return _pHHFloodBaselineReportRequired; } set { _pHHFloodBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentInvestorPublishingStatus() => !CurrentInvestorPublishingStatus.Clean;
-        public Value<int?> DriveAppVerifyScore { get; set; }
+        public bool ShouldSerializePHHFloodBaselineReportRequired() => !_pHHFloodBaselineReportRequired.Clean;
+        private Value<string> _pHHFraudBaselineReportRequired;
+        public string PHHFraudBaselineReportRequired { get { return _pHHFraudBaselineReportRequired; } set { _pHHFraudBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDriveAppVerifyScore() => !DriveAppVerifyScore.Clean;
-        public Value<int?> DriveIDVerifyScore { get; set; }
+        public bool ShouldSerializePHHFraudBaselineReportRequired() => !_pHHFraudBaselineReportRequired.Clean;
+        private Value<string> _stonegate4506TBaselineReport;
+        public string Stonegate4506TBaselineReport { get { return _stonegate4506TBaselineReport; } set { _stonegate4506TBaselineReport = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDriveIDVerifyScore() => !DriveIDVerifyScore.Clean;
-        public Value<int?> DrivePropertyVerifyScore { get; set; }
+        public bool ShouldSerializeStonegate4506TBaselineReport() => !_stonegate4506TBaselineReport.Clean;
+        private Value<string> _stonegateComplianceBaselineReportRequired;
+        public string StonegateComplianceBaselineReportRequired { get { return _stonegateComplianceBaselineReportRequired; } set { _stonegateComplianceBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDrivePropertyVerifyScore() => !DrivePropertyVerifyScore.Clean;
-        public Value<int?> DriveScore { get; set; }
+        public bool ShouldSerializeStonegateComplianceBaselineReportRequired() => !_stonegateComplianceBaselineReportRequired.Clean;
+        private Value<string> _stonegateFloodBaselineReportRequired;
+        public string StonegateFloodBaselineReportRequired { get { return _stonegateFloodBaselineReportRequired; } set { _stonegateFloodBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDriveScore() => !DriveScore.Clean;
-        public Value<string> DriveStatus { get; set; }
+        public bool ShouldSerializeStonegateFloodBaselineReportRequired() => !_stonegateFloodBaselineReportRequired.Clean;
+        private Value<string> _stonegateFraudBaselineReportRequired;
+        public string StonegateFraudBaselineReportRequired { get { return _stonegateFraudBaselineReportRequired; } set { _stonegateFraudBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDriveStatus() => !DriveStatus.Clean;
-        public Value<string> Homeward4506TBaselineReportRequired { get; set; }
+        public bool ShouldSerializeStonegateFraudBaselineReportRequired() => !_stonegateFraudBaselineReportRequired.Clean;
+        private Value<List<TQLComplianceAlert>> _tQLComplianceAlerts;
+        public List<TQLComplianceAlert> TQLComplianceAlerts { get { return _tQLComplianceAlerts; } set { _tQLComplianceAlerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomeward4506TBaselineReportRequired() => !Homeward4506TBaselineReportRequired.Clean;
-        public Value<string> HomewardComplianceBaselineReportRequired { get; set; }
+        public bool ShouldSerializeTQLComplianceAlerts() => !_tQLComplianceAlerts.Clean;
+        private Value<List<TQLDocument>> _tQLDocuments;
+        public List<TQLDocument> TQLDocuments { get { return _tQLDocuments; } set { _tQLDocuments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomewardComplianceBaselineReportRequired() => !HomewardComplianceBaselineReportRequired.Clean;
-        public Value<string> HomewardFloodBaselineReportRequired { get; set; }
+        public bool ShouldSerializeTQLDocuments() => !_tQLDocuments.Clean;
+        private Value<List<TQLFraudAlert>> _tQLFraudAlerts;
+        public List<TQLFraudAlert> TQLFraudAlerts { get { return _tQLFraudAlerts; } set { _tQLFraudAlerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomewardFloodBaselineReportRequired() => !HomewardFloodBaselineReportRequired.Clean;
-        public Value<string> HomewardFraudBaselineReportRequired { get; set; }
+        public bool ShouldSerializeTQLFraudAlerts() => !_tQLFraudAlerts.Clean;
+        private Value<int?> _tQLFraudAlertsTotal;
+        public int? TQLFraudAlertsTotal { get { return _tQLFraudAlertsTotal; } set { _tQLFraudAlertsTotal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomewardFraudBaselineReportRequired() => !HomewardFraudBaselineReportRequired.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotal() => !_tQLFraudAlertsTotal.Clean;
+        private Value<int?> _tQLFraudAlertsTotalHigh;
+        public int? TQLFraudAlertsTotalHigh { get { return _tQLFraudAlertsTotalHigh; } set { _tQLFraudAlertsTotalHigh = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<DateTime?> LastCCVPCompletedDate { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalHigh() => !_tQLFraudAlertsTotalHigh.Clean;
+        private Value<int?> _tQLFraudAlertsTotalHighUnaddressed;
+        public int? TQLFraudAlertsTotalHighUnaddressed { get { return _tQLFraudAlertsTotalHighUnaddressed; } set { _tQLFraudAlertsTotalHighUnaddressed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPCompletedDate() => !LastCCVPCompletedDate.Clean;
-        public Value<string> LastCCVPConfidenceScore { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalHighUnaddressed() => !_tQLFraudAlertsTotalHighUnaddressed.Clean;
+        private Value<int?> _tQLFraudAlertsTotalLow;
+        public int? TQLFraudAlertsTotalLow { get { return _tQLFraudAlertsTotalLow; } set { _tQLFraudAlertsTotalLow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPConfidenceScore() => !LastCCVPConfidenceScore.Clean;
-        public Value<string> LastCCVPEstimatedValue { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalLow() => !_tQLFraudAlertsTotalLow.Clean;
+        private Value<int?> _tQLFraudAlertsTotalLowUnaddressed;
+        public int? TQLFraudAlertsTotalLowUnaddressed { get { return _tQLFraudAlertsTotalLowUnaddressed; } set { _tQLFraudAlertsTotalLowUnaddressed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPEstimatedValue() => !LastCCVPEstimatedValue.Clean;
-        public Value<string> LastCCVPForecastDeviationScore { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalLowUnaddressed() => !_tQLFraudAlertsTotalLowUnaddressed.Clean;
+        private Value<int?> _tQLFraudAlertsTotalMedium;
+        public int? TQLFraudAlertsTotalMedium { get { return _tQLFraudAlertsTotalMedium; } set { _tQLFraudAlertsTotalMedium = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPForecastDeviationScore() => !LastCCVPForecastDeviationScore.Clean;
-        public Value<string> LastCCVPReportHistoryProResult { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalMedium() => !_tQLFraudAlertsTotalMedium.Clean;
+        private Value<int?> _tQLFraudAlertsTotalMediumUnaddressed;
+        public int? TQLFraudAlertsTotalMediumUnaddressed { get { return _tQLFraudAlertsTotalMediumUnaddressed; } set { _tQLFraudAlertsTotalMediumUnaddressed = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPReportHistoryProResult() => !LastCCVPReportHistoryProResult.Clean;
-        public Value<string> LastCCVPReportID { get; set; }
+        public bool ShouldSerializeTQLFraudAlertsTotalMediumUnaddressed() => !_tQLFraudAlertsTotalMediumUnaddressed.Clean;
+        private Value<string> _wellsFargo4506TBaselineReportRequired;
+        public string WellsFargo4506TBaselineReportRequired { get { return _wellsFargo4506TBaselineReportRequired; } set { _wellsFargo4506TBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPReportID() => !LastCCVPReportID.Clean;
-        public Value<string> LastCCVPReportOrdered { get; set; }
+        public bool ShouldSerializeWellsFargo4506TBaselineReportRequired() => !_wellsFargo4506TBaselineReportRequired.Clean;
+        private Value<string> _wellsFargoComplianceBaselineReportRequired;
+        public string WellsFargoComplianceBaselineReportRequired { get { return _wellsFargoComplianceBaselineReportRequired; } set { _wellsFargoComplianceBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPReportOrdered() => !LastCCVPReportOrdered.Clean;
-        public Value<string> LastCCVPReportPassResult { get; set; }
+        public bool ShouldSerializeWellsFargoComplianceBaselineReportRequired() => !_wellsFargoComplianceBaselineReportRequired.Clean;
+        private Value<string> _wellsFargoFloodBaselineReportRequired;
+        public string WellsFargoFloodBaselineReportRequired { get { return _wellsFargoFloodBaselineReportRequired; } set { _wellsFargoFloodBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPReportPassResult() => !LastCCVPReportPassResult.Clean;
-        public Value<string> LastCCVPResultsReportReturned { get; set; }
+        public bool ShouldSerializeWellsFargoFloodBaselineReportRequired() => !_wellsFargoFloodBaselineReportRequired.Clean;
+        private Value<string> _wellsFargoFraudBaselineReportRequired;
+        public string WellsFargoFraudBaselineReportRequired { get { return _wellsFargoFraudBaselineReportRequired; } set { _wellsFargoFraudBaselineReportRequired = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastCCVPResultsReportReturned() => !LastCCVPResultsReportReturned.Clean;
-        public Value<DateTime?> LastComplianceCompletedDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceCompletedDate() => !LastComplianceCompletedDate.Clean;
-        public Value<int?> LastComplianceNumberOfAlertMessages { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceNumberOfAlertMessages() => !LastComplianceNumberOfAlertMessages.Clean;
-        public Value<int?> LastComplianceNumberOfErrorMessages { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceNumberOfErrorMessages() => !LastComplianceNumberOfErrorMessages.Clean;
-        public Value<int?> LastComplianceNumberOfFailMessages { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceNumberOfFailMessages() => !LastComplianceNumberOfFailMessages.Clean;
-        public Value<int?> LastComplianceNumberOfPassMessages { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceNumberOfPassMessages() => !LastComplianceNumberOfPassMessages.Clean;
-        public Value<int?> LastComplianceNumberOfWarningMessages { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceNumberOfWarningMessages() => !LastComplianceNumberOfWarningMessages.Clean;
-        public Value<string> LastComplianceOrderType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceOrderType() => !LastComplianceOrderType.Clean;
-        public Value<string> LastComplianceProductNameReportOrdered { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceProductNameReportOrdered() => !LastComplianceProductNameReportOrdered.Clean;
-        public Value<string> LastComplianceReportID { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceReportID() => !LastComplianceReportID.Clean;
-        public Value<int?> LastFraudOrderAlerts { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderAlerts() => !LastFraudOrderAlerts.Clean;
-        public Value<DateTime?> LastFraudOrderCompletedDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderCompletedDate() => !LastFraudOrderCompletedDate.Clean;
-        public Value<string> LastFraudOrderProduct { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudOrderProduct() => !LastFraudOrderProduct.Clean;
-        public Value<string> LastFraudReportID { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastFraudReportID() => !LastFraudReportID.Clean;
-        public Value<string> LastInvestorPublishingInvestor { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastInvestorPublishingInvestor() => !LastInvestorPublishingInvestor.Clean;
-        public Value<DateTime?> LastInvestorPublishingStatusChangeDate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastInvestorPublishingStatusChangeDate() => !LastInvestorPublishingStatusChangeDate.Clean;
-        public Value<string> LastInvestorPublishingUserWhoChangeStatus { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastInvestorPublishingUserWhoChangeStatus() => !LastInvestorPublishingUserWhoChangeStatus.Clean;
-        public Value<string> LastUserIDWhoOrderedCCVP { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUserIDWhoOrderedCCVP() => !LastUserIDWhoOrderedCCVP.Clean;
-        public Value<string> LastUserIDWhoOrderedCompliance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUserIDWhoOrderedCompliance() => !LastUserIDWhoOrderedCompliance.Clean;
-        public Value<string> LastUserIDWhoOrderedFraudOrder { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastUserIDWhoOrderedFraudOrder() => !LastUserIDWhoOrderedFraudOrder.Clean;
-        public Value<string> PHH4506TBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePHH4506TBaselineReportRequired() => !PHH4506TBaselineReportRequired.Clean;
-        public Value<string> PHHComplianceBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePHHComplianceBaselineReportRequired() => !PHHComplianceBaselineReportRequired.Clean;
-        public Value<string> PHHFloodBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePHHFloodBaselineReportRequired() => !PHHFloodBaselineReportRequired.Clean;
-        public Value<string> PHHFraudBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePHHFraudBaselineReportRequired() => !PHHFraudBaselineReportRequired.Clean;
-        public Value<string> Stonegate4506TBaselineReport { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStonegate4506TBaselineReport() => !Stonegate4506TBaselineReport.Clean;
-        public Value<string> StonegateComplianceBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStonegateComplianceBaselineReportRequired() => !StonegateComplianceBaselineReportRequired.Clean;
-        public Value<string> StonegateFloodBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStonegateFloodBaselineReportRequired() => !StonegateFloodBaselineReportRequired.Clean;
-        public Value<string> StonegateFraudBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStonegateFraudBaselineReportRequired() => !StonegateFraudBaselineReportRequired.Clean;
-        public Value<List<TQLComplianceAlert>> TQLComplianceAlerts { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLComplianceAlerts() => !TQLComplianceAlerts.Clean;
-        public Value<List<TQLDocument>> TQLDocuments { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLDocuments() => !TQLDocuments.Clean;
-        public Value<List<TQLFraudAlert>> TQLFraudAlerts { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlerts() => !TQLFraudAlerts.Clean;
-        public Value<int?> TQLFraudAlertsTotal { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotal() => !TQLFraudAlertsTotal.Clean;
-        public Value<int?> TQLFraudAlertsTotalHigh { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalHigh() => !TQLFraudAlertsTotalHigh.Clean;
-        public Value<int?> TQLFraudAlertsTotalHighUnaddressed { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalHighUnaddressed() => !TQLFraudAlertsTotalHighUnaddressed.Clean;
-        public Value<int?> TQLFraudAlertsTotalLow { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalLow() => !TQLFraudAlertsTotalLow.Clean;
-        public Value<int?> TQLFraudAlertsTotalLowUnaddressed { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalLowUnaddressed() => !TQLFraudAlertsTotalLowUnaddressed.Clean;
-        public Value<int?> TQLFraudAlertsTotalMedium { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalMedium() => !TQLFraudAlertsTotalMedium.Clean;
-        public Value<int?> TQLFraudAlertsTotalMediumUnaddressed { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLFraudAlertsTotalMediumUnaddressed() => !TQLFraudAlertsTotalMediumUnaddressed.Clean;
-        public Value<string> WellsFargo4506TBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWellsFargo4506TBaselineReportRequired() => !WellsFargo4506TBaselineReportRequired.Clean;
-        public Value<string> WellsFargoComplianceBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWellsFargoComplianceBaselineReportRequired() => !WellsFargoComplianceBaselineReportRequired.Clean;
-        public Value<string> WellsFargoFloodBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWellsFargoFloodBaselineReportRequired() => !WellsFargoFloodBaselineReportRequired.Clean;
-        public Value<string> WellsFargoFraudBaselineReportRequired { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWellsFargoFraudBaselineReportRequired() => !WellsFargoFraudBaselineReportRequired.Clean;
+        public bool ShouldSerializeWellsFargoFraudBaselineReportRequired() => !_wellsFargoFraudBaselineReportRequired.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -212,144 +278,144 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Citibank4506TBaselineReportRequired.Clean
-                    && CitibankCCVPBaselineReportRequired.Clean
-                    && CitibankComplianceBaselineReportRequired.Clean
-                    && CitibankFloodBaselineReportRequired.Clean
-                    && CitibankFraudBaselineReportRequired.Clean
-                    && CurrentInvestorPublishingStatus.Clean
-                    && DriveAppVerifyScore.Clean
-                    && DriveIDVerifyScore.Clean
-                    && DrivePropertyVerifyScore.Clean
-                    && DriveScore.Clean
-                    && DriveStatus.Clean
-                    && Homeward4506TBaselineReportRequired.Clean
-                    && HomewardComplianceBaselineReportRequired.Clean
-                    && HomewardFloodBaselineReportRequired.Clean
-                    && HomewardFraudBaselineReportRequired.Clean
-                    && Id.Clean
-                    && LastCCVPCompletedDate.Clean
-                    && LastCCVPConfidenceScore.Clean
-                    && LastCCVPEstimatedValue.Clean
-                    && LastCCVPForecastDeviationScore.Clean
-                    && LastCCVPReportHistoryProResult.Clean
-                    && LastCCVPReportID.Clean
-                    && LastCCVPReportOrdered.Clean
-                    && LastCCVPReportPassResult.Clean
-                    && LastCCVPResultsReportReturned.Clean
-                    && LastComplianceCompletedDate.Clean
-                    && LastComplianceNumberOfAlertMessages.Clean
-                    && LastComplianceNumberOfErrorMessages.Clean
-                    && LastComplianceNumberOfFailMessages.Clean
-                    && LastComplianceNumberOfPassMessages.Clean
-                    && LastComplianceNumberOfWarningMessages.Clean
-                    && LastComplianceOrderType.Clean
-                    && LastComplianceProductNameReportOrdered.Clean
-                    && LastComplianceReportID.Clean
-                    && LastFraudOrderAlerts.Clean
-                    && LastFraudOrderCompletedDate.Clean
-                    && LastFraudOrderProduct.Clean
-                    && LastFraudReportID.Clean
-                    && LastInvestorPublishingInvestor.Clean
-                    && LastInvestorPublishingStatusChangeDate.Clean
-                    && LastInvestorPublishingUserWhoChangeStatus.Clean
-                    && LastUserIDWhoOrderedCCVP.Clean
-                    && LastUserIDWhoOrderedCompliance.Clean
-                    && LastUserIDWhoOrderedFraudOrder.Clean
-                    && PHH4506TBaselineReportRequired.Clean
-                    && PHHComplianceBaselineReportRequired.Clean
-                    && PHHFloodBaselineReportRequired.Clean
-                    && PHHFraudBaselineReportRequired.Clean
-                    && Stonegate4506TBaselineReport.Clean
-                    && StonegateComplianceBaselineReportRequired.Clean
-                    && StonegateFloodBaselineReportRequired.Clean
-                    && StonegateFraudBaselineReportRequired.Clean
-                    && TQLComplianceAlerts.Clean
-                    && TQLDocuments.Clean
-                    && TQLFraudAlerts.Clean
-                    && TQLFraudAlertsTotal.Clean
-                    && TQLFraudAlertsTotalHigh.Clean
-                    && TQLFraudAlertsTotalHighUnaddressed.Clean
-                    && TQLFraudAlertsTotalLow.Clean
-                    && TQLFraudAlertsTotalLowUnaddressed.Clean
-                    && TQLFraudAlertsTotalMedium.Clean
-                    && TQLFraudAlertsTotalMediumUnaddressed.Clean
-                    && WellsFargo4506TBaselineReportRequired.Clean
-                    && WellsFargoComplianceBaselineReportRequired.Clean
-                    && WellsFargoFloodBaselineReportRequired.Clean
-                    && WellsFargoFraudBaselineReportRequired.Clean;
+                var clean = _citibank4506TBaselineReportRequired.Clean
+                    && _citibankCCVPBaselineReportRequired.Clean
+                    && _citibankComplianceBaselineReportRequired.Clean
+                    && _citibankFloodBaselineReportRequired.Clean
+                    && _citibankFraudBaselineReportRequired.Clean
+                    && _currentInvestorPublishingStatus.Clean
+                    && _driveAppVerifyScore.Clean
+                    && _driveIDVerifyScore.Clean
+                    && _drivePropertyVerifyScore.Clean
+                    && _driveScore.Clean
+                    && _driveStatus.Clean
+                    && _homeward4506TBaselineReportRequired.Clean
+                    && _homewardComplianceBaselineReportRequired.Clean
+                    && _homewardFloodBaselineReportRequired.Clean
+                    && _homewardFraudBaselineReportRequired.Clean
+                    && _id.Clean
+                    && _lastCCVPCompletedDate.Clean
+                    && _lastCCVPConfidenceScore.Clean
+                    && _lastCCVPEstimatedValue.Clean
+                    && _lastCCVPForecastDeviationScore.Clean
+                    && _lastCCVPReportHistoryProResult.Clean
+                    && _lastCCVPReportID.Clean
+                    && _lastCCVPReportOrdered.Clean
+                    && _lastCCVPReportPassResult.Clean
+                    && _lastCCVPResultsReportReturned.Clean
+                    && _lastComplianceCompletedDate.Clean
+                    && _lastComplianceNumberOfAlertMessages.Clean
+                    && _lastComplianceNumberOfErrorMessages.Clean
+                    && _lastComplianceNumberOfFailMessages.Clean
+                    && _lastComplianceNumberOfPassMessages.Clean
+                    && _lastComplianceNumberOfWarningMessages.Clean
+                    && _lastComplianceOrderType.Clean
+                    && _lastComplianceProductNameReportOrdered.Clean
+                    && _lastComplianceReportID.Clean
+                    && _lastFraudOrderAlerts.Clean
+                    && _lastFraudOrderCompletedDate.Clean
+                    && _lastFraudOrderProduct.Clean
+                    && _lastFraudReportID.Clean
+                    && _lastInvestorPublishingInvestor.Clean
+                    && _lastInvestorPublishingStatusChangeDate.Clean
+                    && _lastInvestorPublishingUserWhoChangeStatus.Clean
+                    && _lastUserIDWhoOrderedCCVP.Clean
+                    && _lastUserIDWhoOrderedCompliance.Clean
+                    && _lastUserIDWhoOrderedFraudOrder.Clean
+                    && _pHH4506TBaselineReportRequired.Clean
+                    && _pHHComplianceBaselineReportRequired.Clean
+                    && _pHHFloodBaselineReportRequired.Clean
+                    && _pHHFraudBaselineReportRequired.Clean
+                    && _stonegate4506TBaselineReport.Clean
+                    && _stonegateComplianceBaselineReportRequired.Clean
+                    && _stonegateFloodBaselineReportRequired.Clean
+                    && _stonegateFraudBaselineReportRequired.Clean
+                    && _tQLComplianceAlerts.Clean
+                    && _tQLDocuments.Clean
+                    && _tQLFraudAlerts.Clean
+                    && _tQLFraudAlertsTotal.Clean
+                    && _tQLFraudAlertsTotalHigh.Clean
+                    && _tQLFraudAlertsTotalHighUnaddressed.Clean
+                    && _tQLFraudAlertsTotalLow.Clean
+                    && _tQLFraudAlertsTotalLowUnaddressed.Clean
+                    && _tQLFraudAlertsTotalMedium.Clean
+                    && _tQLFraudAlertsTotalMediumUnaddressed.Clean
+                    && _wellsFargo4506TBaselineReportRequired.Clean
+                    && _wellsFargoComplianceBaselineReportRequired.Clean
+                    && _wellsFargoFloodBaselineReportRequired.Clean
+                    && _wellsFargoFraudBaselineReportRequired.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Citibank4506TBaselineReportRequired; v0.Clean = value; Citibank4506TBaselineReportRequired = v0;
-                var v1 = CitibankCCVPBaselineReportRequired; v1.Clean = value; CitibankCCVPBaselineReportRequired = v1;
-                var v2 = CitibankComplianceBaselineReportRequired; v2.Clean = value; CitibankComplianceBaselineReportRequired = v2;
-                var v3 = CitibankFloodBaselineReportRequired; v3.Clean = value; CitibankFloodBaselineReportRequired = v3;
-                var v4 = CitibankFraudBaselineReportRequired; v4.Clean = value; CitibankFraudBaselineReportRequired = v4;
-                var v5 = CurrentInvestorPublishingStatus; v5.Clean = value; CurrentInvestorPublishingStatus = v5;
-                var v6 = DriveAppVerifyScore; v6.Clean = value; DriveAppVerifyScore = v6;
-                var v7 = DriveIDVerifyScore; v7.Clean = value; DriveIDVerifyScore = v7;
-                var v8 = DrivePropertyVerifyScore; v8.Clean = value; DrivePropertyVerifyScore = v8;
-                var v9 = DriveScore; v9.Clean = value; DriveScore = v9;
-                var v10 = DriveStatus; v10.Clean = value; DriveStatus = v10;
-                var v11 = Homeward4506TBaselineReportRequired; v11.Clean = value; Homeward4506TBaselineReportRequired = v11;
-                var v12 = HomewardComplianceBaselineReportRequired; v12.Clean = value; HomewardComplianceBaselineReportRequired = v12;
-                var v13 = HomewardFloodBaselineReportRequired; v13.Clean = value; HomewardFloodBaselineReportRequired = v13;
-                var v14 = HomewardFraudBaselineReportRequired; v14.Clean = value; HomewardFraudBaselineReportRequired = v14;
-                var v15 = Id; v15.Clean = value; Id = v15;
-                var v16 = LastCCVPCompletedDate; v16.Clean = value; LastCCVPCompletedDate = v16;
-                var v17 = LastCCVPConfidenceScore; v17.Clean = value; LastCCVPConfidenceScore = v17;
-                var v18 = LastCCVPEstimatedValue; v18.Clean = value; LastCCVPEstimatedValue = v18;
-                var v19 = LastCCVPForecastDeviationScore; v19.Clean = value; LastCCVPForecastDeviationScore = v19;
-                var v20 = LastCCVPReportHistoryProResult; v20.Clean = value; LastCCVPReportHistoryProResult = v20;
-                var v21 = LastCCVPReportID; v21.Clean = value; LastCCVPReportID = v21;
-                var v22 = LastCCVPReportOrdered; v22.Clean = value; LastCCVPReportOrdered = v22;
-                var v23 = LastCCVPReportPassResult; v23.Clean = value; LastCCVPReportPassResult = v23;
-                var v24 = LastCCVPResultsReportReturned; v24.Clean = value; LastCCVPResultsReportReturned = v24;
-                var v25 = LastComplianceCompletedDate; v25.Clean = value; LastComplianceCompletedDate = v25;
-                var v26 = LastComplianceNumberOfAlertMessages; v26.Clean = value; LastComplianceNumberOfAlertMessages = v26;
-                var v27 = LastComplianceNumberOfErrorMessages; v27.Clean = value; LastComplianceNumberOfErrorMessages = v27;
-                var v28 = LastComplianceNumberOfFailMessages; v28.Clean = value; LastComplianceNumberOfFailMessages = v28;
-                var v29 = LastComplianceNumberOfPassMessages; v29.Clean = value; LastComplianceNumberOfPassMessages = v29;
-                var v30 = LastComplianceNumberOfWarningMessages; v30.Clean = value; LastComplianceNumberOfWarningMessages = v30;
-                var v31 = LastComplianceOrderType; v31.Clean = value; LastComplianceOrderType = v31;
-                var v32 = LastComplianceProductNameReportOrdered; v32.Clean = value; LastComplianceProductNameReportOrdered = v32;
-                var v33 = LastComplianceReportID; v33.Clean = value; LastComplianceReportID = v33;
-                var v34 = LastFraudOrderAlerts; v34.Clean = value; LastFraudOrderAlerts = v34;
-                var v35 = LastFraudOrderCompletedDate; v35.Clean = value; LastFraudOrderCompletedDate = v35;
-                var v36 = LastFraudOrderProduct; v36.Clean = value; LastFraudOrderProduct = v36;
-                var v37 = LastFraudReportID; v37.Clean = value; LastFraudReportID = v37;
-                var v38 = LastInvestorPublishingInvestor; v38.Clean = value; LastInvestorPublishingInvestor = v38;
-                var v39 = LastInvestorPublishingStatusChangeDate; v39.Clean = value; LastInvestorPublishingStatusChangeDate = v39;
-                var v40 = LastInvestorPublishingUserWhoChangeStatus; v40.Clean = value; LastInvestorPublishingUserWhoChangeStatus = v40;
-                var v41 = LastUserIDWhoOrderedCCVP; v41.Clean = value; LastUserIDWhoOrderedCCVP = v41;
-                var v42 = LastUserIDWhoOrderedCompliance; v42.Clean = value; LastUserIDWhoOrderedCompliance = v42;
-                var v43 = LastUserIDWhoOrderedFraudOrder; v43.Clean = value; LastUserIDWhoOrderedFraudOrder = v43;
-                var v44 = PHH4506TBaselineReportRequired; v44.Clean = value; PHH4506TBaselineReportRequired = v44;
-                var v45 = PHHComplianceBaselineReportRequired; v45.Clean = value; PHHComplianceBaselineReportRequired = v45;
-                var v46 = PHHFloodBaselineReportRequired; v46.Clean = value; PHHFloodBaselineReportRequired = v46;
-                var v47 = PHHFraudBaselineReportRequired; v47.Clean = value; PHHFraudBaselineReportRequired = v47;
-                var v48 = Stonegate4506TBaselineReport; v48.Clean = value; Stonegate4506TBaselineReport = v48;
-                var v49 = StonegateComplianceBaselineReportRequired; v49.Clean = value; StonegateComplianceBaselineReportRequired = v49;
-                var v50 = StonegateFloodBaselineReportRequired; v50.Clean = value; StonegateFloodBaselineReportRequired = v50;
-                var v51 = StonegateFraudBaselineReportRequired; v51.Clean = value; StonegateFraudBaselineReportRequired = v51;
-                var v52 = TQLComplianceAlerts; v52.Clean = value; TQLComplianceAlerts = v52;
-                var v53 = TQLDocuments; v53.Clean = value; TQLDocuments = v53;
-                var v54 = TQLFraudAlerts; v54.Clean = value; TQLFraudAlerts = v54;
-                var v55 = TQLFraudAlertsTotal; v55.Clean = value; TQLFraudAlertsTotal = v55;
-                var v56 = TQLFraudAlertsTotalHigh; v56.Clean = value; TQLFraudAlertsTotalHigh = v56;
-                var v57 = TQLFraudAlertsTotalHighUnaddressed; v57.Clean = value; TQLFraudAlertsTotalHighUnaddressed = v57;
-                var v58 = TQLFraudAlertsTotalLow; v58.Clean = value; TQLFraudAlertsTotalLow = v58;
-                var v59 = TQLFraudAlertsTotalLowUnaddressed; v59.Clean = value; TQLFraudAlertsTotalLowUnaddressed = v59;
-                var v60 = TQLFraudAlertsTotalMedium; v60.Clean = value; TQLFraudAlertsTotalMedium = v60;
-                var v61 = TQLFraudAlertsTotalMediumUnaddressed; v61.Clean = value; TQLFraudAlertsTotalMediumUnaddressed = v61;
-                var v62 = WellsFargo4506TBaselineReportRequired; v62.Clean = value; WellsFargo4506TBaselineReportRequired = v62;
-                var v63 = WellsFargoComplianceBaselineReportRequired; v63.Clean = value; WellsFargoComplianceBaselineReportRequired = v63;
-                var v64 = WellsFargoFloodBaselineReportRequired; v64.Clean = value; WellsFargoFloodBaselineReportRequired = v64;
-                var v65 = WellsFargoFraudBaselineReportRequired; v65.Clean = value; WellsFargoFraudBaselineReportRequired = v65;
+                var v0 = _citibank4506TBaselineReportRequired; v0.Clean = value; _citibank4506TBaselineReportRequired = v0;
+                var v1 = _citibankCCVPBaselineReportRequired; v1.Clean = value; _citibankCCVPBaselineReportRequired = v1;
+                var v2 = _citibankComplianceBaselineReportRequired; v2.Clean = value; _citibankComplianceBaselineReportRequired = v2;
+                var v3 = _citibankFloodBaselineReportRequired; v3.Clean = value; _citibankFloodBaselineReportRequired = v3;
+                var v4 = _citibankFraudBaselineReportRequired; v4.Clean = value; _citibankFraudBaselineReportRequired = v4;
+                var v5 = _currentInvestorPublishingStatus; v5.Clean = value; _currentInvestorPublishingStatus = v5;
+                var v6 = _driveAppVerifyScore; v6.Clean = value; _driveAppVerifyScore = v6;
+                var v7 = _driveIDVerifyScore; v7.Clean = value; _driveIDVerifyScore = v7;
+                var v8 = _drivePropertyVerifyScore; v8.Clean = value; _drivePropertyVerifyScore = v8;
+                var v9 = _driveScore; v9.Clean = value; _driveScore = v9;
+                var v10 = _driveStatus; v10.Clean = value; _driveStatus = v10;
+                var v11 = _homeward4506TBaselineReportRequired; v11.Clean = value; _homeward4506TBaselineReportRequired = v11;
+                var v12 = _homewardComplianceBaselineReportRequired; v12.Clean = value; _homewardComplianceBaselineReportRequired = v12;
+                var v13 = _homewardFloodBaselineReportRequired; v13.Clean = value; _homewardFloodBaselineReportRequired = v13;
+                var v14 = _homewardFraudBaselineReportRequired; v14.Clean = value; _homewardFraudBaselineReportRequired = v14;
+                var v15 = _id; v15.Clean = value; _id = v15;
+                var v16 = _lastCCVPCompletedDate; v16.Clean = value; _lastCCVPCompletedDate = v16;
+                var v17 = _lastCCVPConfidenceScore; v17.Clean = value; _lastCCVPConfidenceScore = v17;
+                var v18 = _lastCCVPEstimatedValue; v18.Clean = value; _lastCCVPEstimatedValue = v18;
+                var v19 = _lastCCVPForecastDeviationScore; v19.Clean = value; _lastCCVPForecastDeviationScore = v19;
+                var v20 = _lastCCVPReportHistoryProResult; v20.Clean = value; _lastCCVPReportHistoryProResult = v20;
+                var v21 = _lastCCVPReportID; v21.Clean = value; _lastCCVPReportID = v21;
+                var v22 = _lastCCVPReportOrdered; v22.Clean = value; _lastCCVPReportOrdered = v22;
+                var v23 = _lastCCVPReportPassResult; v23.Clean = value; _lastCCVPReportPassResult = v23;
+                var v24 = _lastCCVPResultsReportReturned; v24.Clean = value; _lastCCVPResultsReportReturned = v24;
+                var v25 = _lastComplianceCompletedDate; v25.Clean = value; _lastComplianceCompletedDate = v25;
+                var v26 = _lastComplianceNumberOfAlertMessages; v26.Clean = value; _lastComplianceNumberOfAlertMessages = v26;
+                var v27 = _lastComplianceNumberOfErrorMessages; v27.Clean = value; _lastComplianceNumberOfErrorMessages = v27;
+                var v28 = _lastComplianceNumberOfFailMessages; v28.Clean = value; _lastComplianceNumberOfFailMessages = v28;
+                var v29 = _lastComplianceNumberOfPassMessages; v29.Clean = value; _lastComplianceNumberOfPassMessages = v29;
+                var v30 = _lastComplianceNumberOfWarningMessages; v30.Clean = value; _lastComplianceNumberOfWarningMessages = v30;
+                var v31 = _lastComplianceOrderType; v31.Clean = value; _lastComplianceOrderType = v31;
+                var v32 = _lastComplianceProductNameReportOrdered; v32.Clean = value; _lastComplianceProductNameReportOrdered = v32;
+                var v33 = _lastComplianceReportID; v33.Clean = value; _lastComplianceReportID = v33;
+                var v34 = _lastFraudOrderAlerts; v34.Clean = value; _lastFraudOrderAlerts = v34;
+                var v35 = _lastFraudOrderCompletedDate; v35.Clean = value; _lastFraudOrderCompletedDate = v35;
+                var v36 = _lastFraudOrderProduct; v36.Clean = value; _lastFraudOrderProduct = v36;
+                var v37 = _lastFraudReportID; v37.Clean = value; _lastFraudReportID = v37;
+                var v38 = _lastInvestorPublishingInvestor; v38.Clean = value; _lastInvestorPublishingInvestor = v38;
+                var v39 = _lastInvestorPublishingStatusChangeDate; v39.Clean = value; _lastInvestorPublishingStatusChangeDate = v39;
+                var v40 = _lastInvestorPublishingUserWhoChangeStatus; v40.Clean = value; _lastInvestorPublishingUserWhoChangeStatus = v40;
+                var v41 = _lastUserIDWhoOrderedCCVP; v41.Clean = value; _lastUserIDWhoOrderedCCVP = v41;
+                var v42 = _lastUserIDWhoOrderedCompliance; v42.Clean = value; _lastUserIDWhoOrderedCompliance = v42;
+                var v43 = _lastUserIDWhoOrderedFraudOrder; v43.Clean = value; _lastUserIDWhoOrderedFraudOrder = v43;
+                var v44 = _pHH4506TBaselineReportRequired; v44.Clean = value; _pHH4506TBaselineReportRequired = v44;
+                var v45 = _pHHComplianceBaselineReportRequired; v45.Clean = value; _pHHComplianceBaselineReportRequired = v45;
+                var v46 = _pHHFloodBaselineReportRequired; v46.Clean = value; _pHHFloodBaselineReportRequired = v46;
+                var v47 = _pHHFraudBaselineReportRequired; v47.Clean = value; _pHHFraudBaselineReportRequired = v47;
+                var v48 = _stonegate4506TBaselineReport; v48.Clean = value; _stonegate4506TBaselineReport = v48;
+                var v49 = _stonegateComplianceBaselineReportRequired; v49.Clean = value; _stonegateComplianceBaselineReportRequired = v49;
+                var v50 = _stonegateFloodBaselineReportRequired; v50.Clean = value; _stonegateFloodBaselineReportRequired = v50;
+                var v51 = _stonegateFraudBaselineReportRequired; v51.Clean = value; _stonegateFraudBaselineReportRequired = v51;
+                var v52 = _tQLComplianceAlerts; v52.Clean = value; _tQLComplianceAlerts = v52;
+                var v53 = _tQLDocuments; v53.Clean = value; _tQLDocuments = v53;
+                var v54 = _tQLFraudAlerts; v54.Clean = value; _tQLFraudAlerts = v54;
+                var v55 = _tQLFraudAlertsTotal; v55.Clean = value; _tQLFraudAlertsTotal = v55;
+                var v56 = _tQLFraudAlertsTotalHigh; v56.Clean = value; _tQLFraudAlertsTotalHigh = v56;
+                var v57 = _tQLFraudAlertsTotalHighUnaddressed; v57.Clean = value; _tQLFraudAlertsTotalHighUnaddressed = v57;
+                var v58 = _tQLFraudAlertsTotalLow; v58.Clean = value; _tQLFraudAlertsTotalLow = v58;
+                var v59 = _tQLFraudAlertsTotalLowUnaddressed; v59.Clean = value; _tQLFraudAlertsTotalLowUnaddressed = v59;
+                var v60 = _tQLFraudAlertsTotalMedium; v60.Clean = value; _tQLFraudAlertsTotalMedium = v60;
+                var v61 = _tQLFraudAlertsTotalMediumUnaddressed; v61.Clean = value; _tQLFraudAlertsTotalMediumUnaddressed = v61;
+                var v62 = _wellsFargo4506TBaselineReportRequired; v62.Clean = value; _wellsFargo4506TBaselineReportRequired = v62;
+                var v63 = _wellsFargoComplianceBaselineReportRequired; v63.Clean = value; _wellsFargoComplianceBaselineReportRequired = v63;
+                var v64 = _wellsFargoFloodBaselineReportRequired; v64.Clean = value; _wellsFargoFloodBaselineReportRequired = v64;
+                var v65 = _wellsFargoFraudBaselineReportRequired; v65.Clean = value; _wellsFargoFraudBaselineReportRequired = v65;
                 _settingClean = 0;
             }
         }

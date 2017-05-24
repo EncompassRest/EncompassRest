@@ -7,246 +7,326 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Hmda
     {
-        public Value<string> ActionTaken { get; set; }
+        private Value<string> _actionTaken;
+        public string ActionTaken { get { return _actionTaken; } set { _actionTaken = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeActionTaken() => !_actionTaken.Clean;
+        private Value<string> _applicationDate;
+        public string ApplicationDate { get { return _applicationDate; } set { _applicationDate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeApplicationDate() => !_applicationDate.Clean;
+        private Value<string> _aUS1;
+        public string AUS1 { get { return _aUS1; } set { _aUS1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUS1() => !_aUS1.Clean;
+        private Value<string> _aUS2;
+        public string AUS2 { get { return _aUS2; } set { _aUS2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUS2() => !_aUS2.Clean;
+        private Value<string> _aUS3;
+        public string AUS3 { get { return _aUS3; } set { _aUS3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUS3() => !_aUS3.Clean;
+        private Value<string> _aUS4;
+        public string AUS4 { get { return _aUS4; } set { _aUS4 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUS4() => !_aUS4.Clean;
+        private Value<string> _aUS5;
+        public string AUS5 { get { return _aUS5; } set { _aUS5 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUS5() => !_aUS5.Clean;
+        private Value<string> _aUSRecommendation1;
+        public string AUSRecommendation1 { get { return _aUSRecommendation1; } set { _aUSRecommendation1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUSRecommendation1() => !_aUSRecommendation1.Clean;
+        private Value<string> _aUSRecommendation2;
+        public string AUSRecommendation2 { get { return _aUSRecommendation2; } set { _aUSRecommendation2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUSRecommendation2() => !_aUSRecommendation2.Clean;
+        private Value<string> _aUSRecommendation3;
+        public string AUSRecommendation3 { get { return _aUSRecommendation3; } set { _aUSRecommendation3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUSRecommendation3() => !_aUSRecommendation3.Clean;
+        private Value<string> _aUSRecommendation4;
+        public string AUSRecommendation4 { get { return _aUSRecommendation4; } set { _aUSRecommendation4 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUSRecommendation4() => !_aUSRecommendation4.Clean;
+        private Value<string> _aUSRecommendation5;
+        public string AUSRecommendation5 { get { return _aUSRecommendation5; } set { _aUSRecommendation5 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAUSRecommendation5() => !_aUSRecommendation5.Clean;
+        private Value<string> _businessOrCommercialPurpose;
+        public string BusinessOrCommercialPurpose { get { return _businessOrCommercialPurpose; } set { _businessOrCommercialPurpose = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBusinessOrCommercialPurpose() => !_businessOrCommercialPurpose.Clean;
+        private Value<string> _censusTrack;
+        public string CensusTrack { get { return _censusTrack; } set { _censusTrack = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCensusTrack() => !_censusTrack.Clean;
+        private Value<decimal?> _cLTV;
+        public decimal? CLTV { get { return _cLTV; } set { _cLTV = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCLTV() => !_cLTV.Clean;
+        private Value<string> _contactEmailAddress;
+        public string ContactEmailAddress { get { return _contactEmailAddress; } set { _contactEmailAddress = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactEmailAddress() => !_contactEmailAddress.Clean;
+        private Value<string> _contactFaxNumber;
+        public string ContactFaxNumber { get { return _contactFaxNumber; } set { _contactFaxNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactFaxNumber() => !_contactFaxNumber.Clean;
+        private Value<string> _contactName;
+        public string ContactName { get { return _contactName; } set { _contactName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactName() => !_contactName.Clean;
+        private Value<string> _contactOfficeCity;
+        public string ContactOfficeCity { get { return _contactOfficeCity; } set { _contactOfficeCity = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactOfficeCity() => !_contactOfficeCity.Clean;
+        private Value<string> _contactOfficeState;
+        public string ContactOfficeState { get { return _contactOfficeState; } set { _contactOfficeState = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactOfficeState() => !_contactOfficeState.Clean;
+        private Value<string> _contactOfficeStreetAddress;
+        public string ContactOfficeStreetAddress { get { return _contactOfficeStreetAddress; } set { _contactOfficeStreetAddress = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactOfficeStreetAddress() => !_contactOfficeStreetAddress.Clean;
+        private Value<string> _contactOfficeZIPCode;
+        public string ContactOfficeZIPCode { get { return _contactOfficeZIPCode; } set { _contactOfficeZIPCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactOfficeZIPCode() => !_contactOfficeZIPCode.Clean;
+        private Value<string> _contactPhoneNumber;
+        public string ContactPhoneNumber { get { return _contactPhoneNumber; } set { _contactPhoneNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeContactPhoneNumber() => !_contactPhoneNumber.Clean;
+        private Value<string> _countyCode;
+        public string CountyCode { get { return _countyCode; } set { _countyCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCountyCode() => !_countyCode.Clean;
+        private Value<decimal?> _debtToIncomeRatio;
+        public decimal? DebtToIncomeRatio { get { return _debtToIncomeRatio; } set { _debtToIncomeRatio = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDebtToIncomeRatio() => !_debtToIncomeRatio.Clean;
+        private Value<string> _denialReason1;
+        public string DenialReason1 { get { return _denialReason1; } set { _denialReason1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDenialReason1() => !_denialReason1.Clean;
+        private Value<string> _denialReason2;
+        public string DenialReason2 { get { return _denialReason2; } set { _denialReason2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDenialReason2() => !_denialReason2.Clean;
+        private Value<string> _denialReason3;
+        public string DenialReason3 { get { return _denialReason3; } set { _denialReason3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDenialReason3() => !_denialReason3.Clean;
+        private Value<string> _denialReason4;
+        public string DenialReason4 { get { return _denialReason4; } set { _denialReason4 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDenialReason4() => !_denialReason4.Clean;
+        private Value<decimal?> _discountPoints;
+        public decimal? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDiscountPoints() => !_discountPoints.Clean;
+        private Value<bool?> _excludeLoanFromHMDAReportIndicator;
+        public bool? ExcludeLoanFromHMDAReportIndicator { get { return _excludeLoanFromHMDAReportIndicator; } set { _excludeLoanFromHMDAReportIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExcludeLoanFromHMDAReportIndicator() => !_excludeLoanFromHMDAReportIndicator.Clean;
+        private Value<string> _federalAgency;
+        public string FederalAgency { get { return _federalAgency; } set { _federalAgency = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFederalAgency() => !_federalAgency.Clean;
+        private Value<string> _federalTaxpayerIdNumber;
+        public string FederalTaxpayerIdNumber { get { return _federalTaxpayerIdNumber; } set { _federalTaxpayerIdNumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFederalTaxpayerIdNumber() => !_federalTaxpayerIdNumber.Clean;
+        private Value<string> _financialInstitutionName;
+        public string FinancialInstitutionName { get { return _financialInstitutionName; } set { _financialInstitutionName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFinancialInstitutionName() => !_financialInstitutionName.Clean;
+        private Value<string> _hmdaPropertyZipCode;
+        public string HmdaPropertyZipCode { get { return _hmdaPropertyZipCode; } set { _hmdaPropertyZipCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHmdaPropertyZipCode() => !_hmdaPropertyZipCode.Clean;
+        private Value<string> _hOEPAStatus;
+        public string HOEPAStatus { get { return _hOEPAStatus; } set { _hOEPAStatus = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeHOEPAStatus() => !_hOEPAStatus.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _income;
+        public decimal? Income { get { return _income; } set { _income = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIncome() => !_income.Clean;
+        private Value<string> _initiallyPayableToYourInstitution;
+        public string InitiallyPayableToYourInstitution { get { return _initiallyPayableToYourInstitution; } set { _initiallyPayableToYourInstitution = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInitiallyPayableToYourInstitution() => !_initiallyPayableToYourInstitution.Clean;
+        private Value<decimal?> _interestRate;
+        public decimal? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInterestRate() => !_interestRate.Clean;
+        private Value<string> _introRatePeriod;
+        public string IntroRatePeriod { get { return _introRatePeriod; } set { _introRatePeriod = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIntroRatePeriod() => !_introRatePeriod.Clean;
+        private Value<string> _legalEntityIdentifier;
+        public string LegalEntityIdentifier { get { return _legalEntityIdentifier; } set { _legalEntityIdentifier = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLegalEntityIdentifier() => !_legalEntityIdentifier.Clean;
+        private Value<decimal?> _lenderCredits;
+        public decimal? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLenderCredits() => !_lenderCredits.Clean;
+        private Value<string> _lienStatus;
+        public string LienStatus { get { return _lienStatus; } set { _lienStatus = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLienStatus() => !_lienStatus.Clean;
+        private Value<decimal?> _loanAmount;
+        public decimal? LoanAmount { get { return _loanAmount; } set { _loanAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanAmount() => !_loanAmount.Clean;
+        private Value<string> _loanPurpose;
+        public string LoanPurpose { get { return _loanPurpose; } set { _loanPurpose = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanPurpose() => !_loanPurpose.Clean;
+        private Value<string> _loanTerm;
+        public string LoanTerm { get { return _loanTerm; } set { _loanTerm = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanTerm() => !_loanTerm.Clean;
+        private Value<string> _loanType;
+        public string LoanType { get { return _loanType; } set { _loanType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanType() => !_loanType.Clean;
+        private Value<string> _manufacturedHomeLandPropertyInterest;
+        public string ManufacturedHomeLandPropertyInterest { get { return _manufacturedHomeLandPropertyInterest; } set { _manufacturedHomeLandPropertyInterest = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeManufacturedHomeLandPropertyInterest() => !_manufacturedHomeLandPropertyInterest.Clean;
+        private Value<string> _manufacturedSecuredProperyType;
+        public string ManufacturedSecuredProperyType { get { return _manufacturedSecuredProperyType; } set { _manufacturedSecuredProperyType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeManufacturedSecuredProperyType() => !_manufacturedSecuredProperyType.Clean;
+        private Value<string> _mSANumber;
+        public string MSANumber { get { return _mSANumber; } set { _mSANumber = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMSANumber() => !_mSANumber.Clean;
+        private Value<string> _multifamilyNoUnits;
+        public string MultifamilyNoUnits { get { return _multifamilyNoUnits; } set { _multifamilyNoUnits = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMultifamilyNoUnits() => !_multifamilyNoUnits.Clean;
+        private Value<string> _nMLSLoanOriginatorID;
+        public string NMLSLoanOriginatorID { get { return _nMLSLoanOriginatorID; } set { _nMLSLoanOriginatorID = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeNMLSLoanOriginatorID() => !_nMLSLoanOriginatorID.Clean;
+        private Value<string> _openEndLineOfCredit;
+        public string OpenEndLineOfCredit { get { return _openEndLineOfCredit; } set { _openEndLineOfCredit = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeOpenEndLineOfCredit() => !_openEndLineOfCredit.Clean;
+        private Value<decimal?> _originationCharges;
+        public decimal? OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeOriginationCharges() => !_originationCharges.Clean;
+        private Value<string> _otherAUS;
+        public string OtherAUS { get { return _otherAUS; } set { _otherAUS = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActionTaken() => !ActionTaken.Clean;
-        public Value<string> ApplicationDate { get; set; }
+        public bool ShouldSerializeOtherAUS() => !_otherAUS.Clean;
+        private Value<string> _otherAUSRecommendations;
+        public string OtherAUSRecommendations { get { return _otherAUSRecommendations; } set { _otherAUSRecommendations = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApplicationDate() => !ApplicationDate.Clean;
-        public Value<string> AUS1 { get; set; }
+        public bool ShouldSerializeOtherAUSRecommendations() => !_otherAUSRecommendations.Clean;
+        private Value<string> _otherDenialReason;
+        public string OtherDenialReason { get { return _otherDenialReason; } set { _otherDenialReason = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUS1() => !AUS1.Clean;
-        public Value<string> AUS2 { get; set; }
+        public bool ShouldSerializeOtherDenialReason() => !_otherDenialReason.Clean;
+        private Value<string> _otherNonAmortization;
+        public string OtherNonAmortization { get { return _otherNonAmortization; } set { _otherNonAmortization = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUS2() => !AUS2.Clean;
-        public Value<string> AUS3 { get; set; }
+        public bool ShouldSerializeOtherNonAmortization() => !_otherNonAmortization.Clean;
+        private Value<string> _parentAddress;
+        public string ParentAddress { get { return _parentAddress; } set { _parentAddress = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUS3() => !AUS3.Clean;
-        public Value<string> AUS4 { get; set; }
+        public bool ShouldSerializeParentAddress() => !_parentAddress.Clean;
+        private Value<string> _parentCity;
+        public string ParentCity { get { return _parentCity; } set { _parentCity = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUS4() => !AUS4.Clean;
-        public Value<string> AUS5 { get; set; }
+        public bool ShouldSerializeParentCity() => !_parentCity.Clean;
+        private Value<string> _parentName;
+        public string ParentName { get { return _parentName; } set { _parentName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUS5() => !AUS5.Clean;
-        public Value<string> AUSRecommendation1 { get; set; }
+        public bool ShouldSerializeParentName() => !_parentName.Clean;
+        private Value<string> _parentState;
+        public string ParentState { get { return _parentState; } set { _parentState = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUSRecommendation1() => !AUSRecommendation1.Clean;
-        public Value<string> AUSRecommendation2 { get; set; }
+        public bool ShouldSerializeParentState() => !_parentState.Clean;
+        private Value<string> _parentZip;
+        public string ParentZip { get { return _parentZip; } set { _parentZip = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUSRecommendation2() => !AUSRecommendation2.Clean;
-        public Value<string> AUSRecommendation3 { get; set; }
+        public bool ShouldSerializeParentZip() => !_parentZip.Clean;
+        private Value<string> _preapprovals;
+        public string Preapprovals { get { return _preapprovals; } set { _preapprovals = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUSRecommendation3() => !AUSRecommendation3.Clean;
-        public Value<string> AUSRecommendation4 { get; set; }
+        public bool ShouldSerializePreapprovals() => !_preapprovals.Clean;
+        private Value<string> _prepaymentPenaltyPeriod;
+        public string PrepaymentPenaltyPeriod { get { return _prepaymentPenaltyPeriod; } set { _prepaymentPenaltyPeriod = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUSRecommendation4() => !AUSRecommendation4.Clean;
-        public Value<string> AUSRecommendation5 { get; set; }
+        public bool ShouldSerializePrepaymentPenaltyPeriod() => !_prepaymentPenaltyPeriod.Clean;
+        private Value<string> _propertyType;
+        public string PropertyType { get { return _propertyType; } set { _propertyType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAUSRecommendation5() => !AUSRecommendation5.Clean;
-        public Value<string> BusinessOrCommercialPurpose { get; set; }
+        public bool ShouldSerializePropertyType() => !_propertyType.Clean;
+        private Value<decimal?> _propertyValue;
+        public decimal? PropertyValue { get { return _propertyValue; } set { _propertyValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessOrCommercialPurpose() => !BusinessOrCommercialPurpose.Clean;
-        public Value<string> CensusTrack { get; set; }
+        public bool ShouldSerializePropertyValue() => !_propertyValue.Clean;
+        private Value<string> _qMStatus;
+        public string QMStatus { get { return _qMStatus; } set { _qMStatus = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCensusTrack() => !CensusTrack.Clean;
-        public Value<decimal?> CLTV { get; set; }
+        public bool ShouldSerializeQMStatus() => !_qMStatus.Clean;
+        private Value<decimal?> _rateSpread;
+        public decimal? RateSpread { get { return _rateSpread; } set { _rateSpread = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCLTV() => !CLTV.Clean;
-        public Value<string> ContactEmailAddress { get; set; }
+        public bool ShouldSerializeRateSpread() => !_rateSpread.Clean;
+        private Value<int?> _reportingYear;
+        public int? ReportingYear { get { return _reportingYear; } set { _reportingYear = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactEmailAddress() => !ContactEmailAddress.Clean;
-        public Value<string> ContactFaxNumber { get; set; }
+        public bool ShouldSerializeReportingYear() => !_reportingYear.Clean;
+        private Value<bool?> _reportPurposeOfLoanIndicator;
+        public bool? ReportPurposeOfLoanIndicator { get { return _reportPurposeOfLoanIndicator; } set { _reportPurposeOfLoanIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactFaxNumber() => !ContactFaxNumber.Clean;
-        public Value<string> ContactName { get; set; }
+        public bool ShouldSerializeReportPurposeOfLoanIndicator() => !_reportPurposeOfLoanIndicator.Clean;
+        private Value<string> _respondentID;
+        public string RespondentID { get { return _respondentID; } set { _respondentID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactName() => !ContactName.Clean;
-        public Value<string> ContactOfficeCity { get; set; }
+        public bool ShouldSerializeRespondentID() => !_respondentID.Clean;
+        private Value<string> _reverseMortgage;
+        public string ReverseMortgage { get { return _reverseMortgage; } set { _reverseMortgage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactOfficeCity() => !ContactOfficeCity.Clean;
-        public Value<string> ContactOfficeState { get; set; }
+        public bool ShouldSerializeReverseMortgage() => !_reverseMortgage.Clean;
+        private Value<string> _stateCode;
+        public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactOfficeState() => !ContactOfficeState.Clean;
-        public Value<string> ContactOfficeStreetAddress { get; set; }
+        public bool ShouldSerializeStateCode() => !_stateCode.Clean;
+        private Value<string> _submissionOfApplication;
+        public string SubmissionOfApplication { get { return _submissionOfApplication; } set { _submissionOfApplication = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactOfficeStreetAddress() => !ContactOfficeStreetAddress.Clean;
-        public Value<string> ContactOfficeZIPCode { get; set; }
+        public bool ShouldSerializeSubmissionOfApplication() => !_submissionOfApplication.Clean;
+        private Value<decimal?> _totalLoanCosts;
+        public decimal? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactOfficeZIPCode() => !ContactOfficeZIPCode.Clean;
-        public Value<string> ContactPhoneNumber { get; set; }
+        public bool ShouldSerializeTotalLoanCosts() => !_totalLoanCosts.Clean;
+        private Value<decimal?> _totalPointsAndFees;
+        public decimal? TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactPhoneNumber() => !ContactPhoneNumber.Clean;
-        public Value<string> CountyCode { get; set; }
+        public bool ShouldSerializeTotalPointsAndFees() => !_totalPointsAndFees.Clean;
+        private Value<string> _typeOfPurchaser;
+        public string TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCountyCode() => !CountyCode.Clean;
-        public Value<decimal?> DebtToIncomeRatio { get; set; }
+        public bool ShouldSerializeTypeOfPurchaser() => !_typeOfPurchaser.Clean;
+        private Value<string> _universalLoanId;
+        public string UniversalLoanId { get { return _universalLoanId; } set { _universalLoanId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDebtToIncomeRatio() => !DebtToIncomeRatio.Clean;
-        public Value<string> DenialReason1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDenialReason1() => !DenialReason1.Clean;
-        public Value<string> DenialReason2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDenialReason2() => !DenialReason2.Clean;
-        public Value<string> DenialReason3 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDenialReason3() => !DenialReason3.Clean;
-        public Value<string> DenialReason4 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDenialReason4() => !DenialReason4.Clean;
-        public Value<decimal?> DiscountPoints { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDiscountPoints() => !DiscountPoints.Clean;
-        public Value<bool?> ExcludeLoanFromHMDAReportIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExcludeLoanFromHMDAReportIndicator() => !ExcludeLoanFromHMDAReportIndicator.Clean;
-        public Value<string> FederalAgency { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFederalAgency() => !FederalAgency.Clean;
-        public Value<string> FederalTaxpayerIdNumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFederalTaxpayerIdNumber() => !FederalTaxpayerIdNumber.Clean;
-        public Value<string> FinancialInstitutionName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFinancialInstitutionName() => !FinancialInstitutionName.Clean;
-        public Value<string> HmdaPropertyZipCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHmdaPropertyZipCode() => !HmdaPropertyZipCode.Clean;
-        public Value<string> HOEPAStatus { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHOEPAStatus() => !HOEPAStatus.Clean;
-        public Value<string> Id { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> Income { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIncome() => !Income.Clean;
-        public Value<string> InitiallyPayableToYourInstitution { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitiallyPayableToYourInstitution() => !InitiallyPayableToYourInstitution.Clean;
-        public Value<decimal?> InterestRate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRate() => !InterestRate.Clean;
-        public Value<string> IntroRatePeriod { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIntroRatePeriod() => !IntroRatePeriod.Clean;
-        public Value<string> LegalEntityIdentifier { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLegalEntityIdentifier() => !LegalEntityIdentifier.Clean;
-        public Value<decimal?> LenderCredits { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderCredits() => !LenderCredits.Clean;
-        public Value<string> LienStatus { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLienStatus() => !LienStatus.Clean;
-        public Value<decimal?> LoanAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanAmount() => !LoanAmount.Clean;
-        public Value<string> LoanPurpose { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanPurpose() => !LoanPurpose.Clean;
-        public Value<string> LoanTerm { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanTerm() => !LoanTerm.Clean;
-        public Value<string> LoanType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanType() => !LoanType.Clean;
-        public Value<string> ManufacturedHomeLandPropertyInterest { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeManufacturedHomeLandPropertyInterest() => !ManufacturedHomeLandPropertyInterest.Clean;
-        public Value<string> ManufacturedSecuredProperyType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeManufacturedSecuredProperyType() => !ManufacturedSecuredProperyType.Clean;
-        public Value<string> MSANumber { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMSANumber() => !MSANumber.Clean;
-        public Value<string> MultifamilyNoUnits { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMultifamilyNoUnits() => !MultifamilyNoUnits.Clean;
-        public Value<string> NMLSLoanOriginatorID { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNMLSLoanOriginatorID() => !NMLSLoanOriginatorID.Clean;
-        public Value<string> OpenEndLineOfCredit { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOpenEndLineOfCredit() => !OpenEndLineOfCredit.Clean;
-        public Value<decimal?> OriginationCharges { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginationCharges() => !OriginationCharges.Clean;
-        public Value<string> OtherAUS { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAUS() => !OtherAUS.Clean;
-        public Value<string> OtherAUSRecommendations { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAUSRecommendations() => !OtherAUSRecommendations.Clean;
-        public Value<string> OtherDenialReason { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherDenialReason() => !OtherDenialReason.Clean;
-        public Value<string> OtherNonAmortization { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherNonAmortization() => !OtherNonAmortization.Clean;
-        public Value<string> ParentAddress { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParentAddress() => !ParentAddress.Clean;
-        public Value<string> ParentCity { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParentCity() => !ParentCity.Clean;
-        public Value<string> ParentName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParentName() => !ParentName.Clean;
-        public Value<string> ParentState { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParentState() => !ParentState.Clean;
-        public Value<string> ParentZip { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeParentZip() => !ParentZip.Clean;
-        public Value<string> Preapprovals { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePreapprovals() => !Preapprovals.Clean;
-        public Value<string> PrepaymentPenaltyPeriod { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaymentPenaltyPeriod() => !PrepaymentPenaltyPeriod.Clean;
-        public Value<string> PropertyType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyType() => !PropertyType.Clean;
-        public Value<decimal?> PropertyValue { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyValue() => !PropertyValue.Clean;
-        public Value<string> QMStatus { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeQMStatus() => !QMStatus.Clean;
-        public Value<decimal?> RateSpread { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateSpread() => !RateSpread.Clean;
-        public Value<int?> ReportingYear { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportingYear() => !ReportingYear.Clean;
-        public Value<bool?> ReportPurposeOfLoanIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportPurposeOfLoanIndicator() => !ReportPurposeOfLoanIndicator.Clean;
-        public Value<string> RespondentID { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRespondentID() => !RespondentID.Clean;
-        public Value<string> ReverseMortgage { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReverseMortgage() => !ReverseMortgage.Clean;
-        public Value<string> StateCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStateCode() => !StateCode.Clean;
-        public Value<string> SubmissionOfApplication { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubmissionOfApplication() => !SubmissionOfApplication.Clean;
-        public Value<decimal?> TotalLoanCosts { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLoanCosts() => !TotalLoanCosts.Clean;
-        public Value<decimal?> TotalPointsAndFees { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPointsAndFees() => !TotalPointsAndFees.Clean;
-        public Value<string> TypeOfPurchaser { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTypeOfPurchaser() => !TypeOfPurchaser.Clean;
-        public Value<string> UniversalLoanId { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUniversalLoanId() => !UniversalLoanId.Clean;
+        public bool ShouldSerializeUniversalLoanId() => !_universalLoanId.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -254,172 +334,172 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ActionTaken.Clean
-                    && ApplicationDate.Clean
-                    && AUS1.Clean
-                    && AUS2.Clean
-                    && AUS3.Clean
-                    && AUS4.Clean
-                    && AUS5.Clean
-                    && AUSRecommendation1.Clean
-                    && AUSRecommendation2.Clean
-                    && AUSRecommendation3.Clean
-                    && AUSRecommendation4.Clean
-                    && AUSRecommendation5.Clean
-                    && BusinessOrCommercialPurpose.Clean
-                    && CensusTrack.Clean
-                    && CLTV.Clean
-                    && ContactEmailAddress.Clean
-                    && ContactFaxNumber.Clean
-                    && ContactName.Clean
-                    && ContactOfficeCity.Clean
-                    && ContactOfficeState.Clean
-                    && ContactOfficeStreetAddress.Clean
-                    && ContactOfficeZIPCode.Clean
-                    && ContactPhoneNumber.Clean
-                    && CountyCode.Clean
-                    && DebtToIncomeRatio.Clean
-                    && DenialReason1.Clean
-                    && DenialReason2.Clean
-                    && DenialReason3.Clean
-                    && DenialReason4.Clean
-                    && DiscountPoints.Clean
-                    && ExcludeLoanFromHMDAReportIndicator.Clean
-                    && FederalAgency.Clean
-                    && FederalTaxpayerIdNumber.Clean
-                    && FinancialInstitutionName.Clean
-                    && HmdaPropertyZipCode.Clean
-                    && HOEPAStatus.Clean
-                    && Id.Clean
-                    && Income.Clean
-                    && InitiallyPayableToYourInstitution.Clean
-                    && InterestRate.Clean
-                    && IntroRatePeriod.Clean
-                    && LegalEntityIdentifier.Clean
-                    && LenderCredits.Clean
-                    && LienStatus.Clean
-                    && LoanAmount.Clean
-                    && LoanPurpose.Clean
-                    && LoanTerm.Clean
-                    && LoanType.Clean
-                    && ManufacturedHomeLandPropertyInterest.Clean
-                    && ManufacturedSecuredProperyType.Clean
-                    && MSANumber.Clean
-                    && MultifamilyNoUnits.Clean
-                    && NMLSLoanOriginatorID.Clean
-                    && OpenEndLineOfCredit.Clean
-                    && OriginationCharges.Clean
-                    && OtherAUS.Clean
-                    && OtherAUSRecommendations.Clean
-                    && OtherDenialReason.Clean
-                    && OtherNonAmortization.Clean
-                    && ParentAddress.Clean
-                    && ParentCity.Clean
-                    && ParentName.Clean
-                    && ParentState.Clean
-                    && ParentZip.Clean
-                    && Preapprovals.Clean
-                    && PrepaymentPenaltyPeriod.Clean
-                    && PropertyType.Clean
-                    && PropertyValue.Clean
-                    && QMStatus.Clean
-                    && RateSpread.Clean
-                    && ReportingYear.Clean
-                    && ReportPurposeOfLoanIndicator.Clean
-                    && RespondentID.Clean
-                    && ReverseMortgage.Clean
-                    && StateCode.Clean
-                    && SubmissionOfApplication.Clean
-                    && TotalLoanCosts.Clean
-                    && TotalPointsAndFees.Clean
-                    && TypeOfPurchaser.Clean
-                    && UniversalLoanId.Clean;
+                var clean = _actionTaken.Clean
+                    && _applicationDate.Clean
+                    && _aUS1.Clean
+                    && _aUS2.Clean
+                    && _aUS3.Clean
+                    && _aUS4.Clean
+                    && _aUS5.Clean
+                    && _aUSRecommendation1.Clean
+                    && _aUSRecommendation2.Clean
+                    && _aUSRecommendation3.Clean
+                    && _aUSRecommendation4.Clean
+                    && _aUSRecommendation5.Clean
+                    && _businessOrCommercialPurpose.Clean
+                    && _censusTrack.Clean
+                    && _cLTV.Clean
+                    && _contactEmailAddress.Clean
+                    && _contactFaxNumber.Clean
+                    && _contactName.Clean
+                    && _contactOfficeCity.Clean
+                    && _contactOfficeState.Clean
+                    && _contactOfficeStreetAddress.Clean
+                    && _contactOfficeZIPCode.Clean
+                    && _contactPhoneNumber.Clean
+                    && _countyCode.Clean
+                    && _debtToIncomeRatio.Clean
+                    && _denialReason1.Clean
+                    && _denialReason2.Clean
+                    && _denialReason3.Clean
+                    && _denialReason4.Clean
+                    && _discountPoints.Clean
+                    && _excludeLoanFromHMDAReportIndicator.Clean
+                    && _federalAgency.Clean
+                    && _federalTaxpayerIdNumber.Clean
+                    && _financialInstitutionName.Clean
+                    && _hmdaPropertyZipCode.Clean
+                    && _hOEPAStatus.Clean
+                    && _id.Clean
+                    && _income.Clean
+                    && _initiallyPayableToYourInstitution.Clean
+                    && _interestRate.Clean
+                    && _introRatePeriod.Clean
+                    && _legalEntityIdentifier.Clean
+                    && _lenderCredits.Clean
+                    && _lienStatus.Clean
+                    && _loanAmount.Clean
+                    && _loanPurpose.Clean
+                    && _loanTerm.Clean
+                    && _loanType.Clean
+                    && _manufacturedHomeLandPropertyInterest.Clean
+                    && _manufacturedSecuredProperyType.Clean
+                    && _mSANumber.Clean
+                    && _multifamilyNoUnits.Clean
+                    && _nMLSLoanOriginatorID.Clean
+                    && _openEndLineOfCredit.Clean
+                    && _originationCharges.Clean
+                    && _otherAUS.Clean
+                    && _otherAUSRecommendations.Clean
+                    && _otherDenialReason.Clean
+                    && _otherNonAmortization.Clean
+                    && _parentAddress.Clean
+                    && _parentCity.Clean
+                    && _parentName.Clean
+                    && _parentState.Clean
+                    && _parentZip.Clean
+                    && _preapprovals.Clean
+                    && _prepaymentPenaltyPeriod.Clean
+                    && _propertyType.Clean
+                    && _propertyValue.Clean
+                    && _qMStatus.Clean
+                    && _rateSpread.Clean
+                    && _reportingYear.Clean
+                    && _reportPurposeOfLoanIndicator.Clean
+                    && _respondentID.Clean
+                    && _reverseMortgage.Clean
+                    && _stateCode.Clean
+                    && _submissionOfApplication.Clean
+                    && _totalLoanCosts.Clean
+                    && _totalPointsAndFees.Clean
+                    && _typeOfPurchaser.Clean
+                    && _universalLoanId.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ActionTaken; v0.Clean = value; ActionTaken = v0;
-                var v1 = ApplicationDate; v1.Clean = value; ApplicationDate = v1;
-                var v2 = AUS1; v2.Clean = value; AUS1 = v2;
-                var v3 = AUS2; v3.Clean = value; AUS2 = v3;
-                var v4 = AUS3; v4.Clean = value; AUS3 = v4;
-                var v5 = AUS4; v5.Clean = value; AUS4 = v5;
-                var v6 = AUS5; v6.Clean = value; AUS5 = v6;
-                var v7 = AUSRecommendation1; v7.Clean = value; AUSRecommendation1 = v7;
-                var v8 = AUSRecommendation2; v8.Clean = value; AUSRecommendation2 = v8;
-                var v9 = AUSRecommendation3; v9.Clean = value; AUSRecommendation3 = v9;
-                var v10 = AUSRecommendation4; v10.Clean = value; AUSRecommendation4 = v10;
-                var v11 = AUSRecommendation5; v11.Clean = value; AUSRecommendation5 = v11;
-                var v12 = BusinessOrCommercialPurpose; v12.Clean = value; BusinessOrCommercialPurpose = v12;
-                var v13 = CensusTrack; v13.Clean = value; CensusTrack = v13;
-                var v14 = CLTV; v14.Clean = value; CLTV = v14;
-                var v15 = ContactEmailAddress; v15.Clean = value; ContactEmailAddress = v15;
-                var v16 = ContactFaxNumber; v16.Clean = value; ContactFaxNumber = v16;
-                var v17 = ContactName; v17.Clean = value; ContactName = v17;
-                var v18 = ContactOfficeCity; v18.Clean = value; ContactOfficeCity = v18;
-                var v19 = ContactOfficeState; v19.Clean = value; ContactOfficeState = v19;
-                var v20 = ContactOfficeStreetAddress; v20.Clean = value; ContactOfficeStreetAddress = v20;
-                var v21 = ContactOfficeZIPCode; v21.Clean = value; ContactOfficeZIPCode = v21;
-                var v22 = ContactPhoneNumber; v22.Clean = value; ContactPhoneNumber = v22;
-                var v23 = CountyCode; v23.Clean = value; CountyCode = v23;
-                var v24 = DebtToIncomeRatio; v24.Clean = value; DebtToIncomeRatio = v24;
-                var v25 = DenialReason1; v25.Clean = value; DenialReason1 = v25;
-                var v26 = DenialReason2; v26.Clean = value; DenialReason2 = v26;
-                var v27 = DenialReason3; v27.Clean = value; DenialReason3 = v27;
-                var v28 = DenialReason4; v28.Clean = value; DenialReason4 = v28;
-                var v29 = DiscountPoints; v29.Clean = value; DiscountPoints = v29;
-                var v30 = ExcludeLoanFromHMDAReportIndicator; v30.Clean = value; ExcludeLoanFromHMDAReportIndicator = v30;
-                var v31 = FederalAgency; v31.Clean = value; FederalAgency = v31;
-                var v32 = FederalTaxpayerIdNumber; v32.Clean = value; FederalTaxpayerIdNumber = v32;
-                var v33 = FinancialInstitutionName; v33.Clean = value; FinancialInstitutionName = v33;
-                var v34 = HmdaPropertyZipCode; v34.Clean = value; HmdaPropertyZipCode = v34;
-                var v35 = HOEPAStatus; v35.Clean = value; HOEPAStatus = v35;
-                var v36 = Id; v36.Clean = value; Id = v36;
-                var v37 = Income; v37.Clean = value; Income = v37;
-                var v38 = InitiallyPayableToYourInstitution; v38.Clean = value; InitiallyPayableToYourInstitution = v38;
-                var v39 = InterestRate; v39.Clean = value; InterestRate = v39;
-                var v40 = IntroRatePeriod; v40.Clean = value; IntroRatePeriod = v40;
-                var v41 = LegalEntityIdentifier; v41.Clean = value; LegalEntityIdentifier = v41;
-                var v42 = LenderCredits; v42.Clean = value; LenderCredits = v42;
-                var v43 = LienStatus; v43.Clean = value; LienStatus = v43;
-                var v44 = LoanAmount; v44.Clean = value; LoanAmount = v44;
-                var v45 = LoanPurpose; v45.Clean = value; LoanPurpose = v45;
-                var v46 = LoanTerm; v46.Clean = value; LoanTerm = v46;
-                var v47 = LoanType; v47.Clean = value; LoanType = v47;
-                var v48 = ManufacturedHomeLandPropertyInterest; v48.Clean = value; ManufacturedHomeLandPropertyInterest = v48;
-                var v49 = ManufacturedSecuredProperyType; v49.Clean = value; ManufacturedSecuredProperyType = v49;
-                var v50 = MSANumber; v50.Clean = value; MSANumber = v50;
-                var v51 = MultifamilyNoUnits; v51.Clean = value; MultifamilyNoUnits = v51;
-                var v52 = NMLSLoanOriginatorID; v52.Clean = value; NMLSLoanOriginatorID = v52;
-                var v53 = OpenEndLineOfCredit; v53.Clean = value; OpenEndLineOfCredit = v53;
-                var v54 = OriginationCharges; v54.Clean = value; OriginationCharges = v54;
-                var v55 = OtherAUS; v55.Clean = value; OtherAUS = v55;
-                var v56 = OtherAUSRecommendations; v56.Clean = value; OtherAUSRecommendations = v56;
-                var v57 = OtherDenialReason; v57.Clean = value; OtherDenialReason = v57;
-                var v58 = OtherNonAmortization; v58.Clean = value; OtherNonAmortization = v58;
-                var v59 = ParentAddress; v59.Clean = value; ParentAddress = v59;
-                var v60 = ParentCity; v60.Clean = value; ParentCity = v60;
-                var v61 = ParentName; v61.Clean = value; ParentName = v61;
-                var v62 = ParentState; v62.Clean = value; ParentState = v62;
-                var v63 = ParentZip; v63.Clean = value; ParentZip = v63;
-                var v64 = Preapprovals; v64.Clean = value; Preapprovals = v64;
-                var v65 = PrepaymentPenaltyPeriod; v65.Clean = value; PrepaymentPenaltyPeriod = v65;
-                var v66 = PropertyType; v66.Clean = value; PropertyType = v66;
-                var v67 = PropertyValue; v67.Clean = value; PropertyValue = v67;
-                var v68 = QMStatus; v68.Clean = value; QMStatus = v68;
-                var v69 = RateSpread; v69.Clean = value; RateSpread = v69;
-                var v70 = ReportingYear; v70.Clean = value; ReportingYear = v70;
-                var v71 = ReportPurposeOfLoanIndicator; v71.Clean = value; ReportPurposeOfLoanIndicator = v71;
-                var v72 = RespondentID; v72.Clean = value; RespondentID = v72;
-                var v73 = ReverseMortgage; v73.Clean = value; ReverseMortgage = v73;
-                var v74 = StateCode; v74.Clean = value; StateCode = v74;
-                var v75 = SubmissionOfApplication; v75.Clean = value; SubmissionOfApplication = v75;
-                var v76 = TotalLoanCosts; v76.Clean = value; TotalLoanCosts = v76;
-                var v77 = TotalPointsAndFees; v77.Clean = value; TotalPointsAndFees = v77;
-                var v78 = TypeOfPurchaser; v78.Clean = value; TypeOfPurchaser = v78;
-                var v79 = UniversalLoanId; v79.Clean = value; UniversalLoanId = v79;
+                var v0 = _actionTaken; v0.Clean = value; _actionTaken = v0;
+                var v1 = _applicationDate; v1.Clean = value; _applicationDate = v1;
+                var v2 = _aUS1; v2.Clean = value; _aUS1 = v2;
+                var v3 = _aUS2; v3.Clean = value; _aUS2 = v3;
+                var v4 = _aUS3; v4.Clean = value; _aUS3 = v4;
+                var v5 = _aUS4; v5.Clean = value; _aUS4 = v5;
+                var v6 = _aUS5; v6.Clean = value; _aUS5 = v6;
+                var v7 = _aUSRecommendation1; v7.Clean = value; _aUSRecommendation1 = v7;
+                var v8 = _aUSRecommendation2; v8.Clean = value; _aUSRecommendation2 = v8;
+                var v9 = _aUSRecommendation3; v9.Clean = value; _aUSRecommendation3 = v9;
+                var v10 = _aUSRecommendation4; v10.Clean = value; _aUSRecommendation4 = v10;
+                var v11 = _aUSRecommendation5; v11.Clean = value; _aUSRecommendation5 = v11;
+                var v12 = _businessOrCommercialPurpose; v12.Clean = value; _businessOrCommercialPurpose = v12;
+                var v13 = _censusTrack; v13.Clean = value; _censusTrack = v13;
+                var v14 = _cLTV; v14.Clean = value; _cLTV = v14;
+                var v15 = _contactEmailAddress; v15.Clean = value; _contactEmailAddress = v15;
+                var v16 = _contactFaxNumber; v16.Clean = value; _contactFaxNumber = v16;
+                var v17 = _contactName; v17.Clean = value; _contactName = v17;
+                var v18 = _contactOfficeCity; v18.Clean = value; _contactOfficeCity = v18;
+                var v19 = _contactOfficeState; v19.Clean = value; _contactOfficeState = v19;
+                var v20 = _contactOfficeStreetAddress; v20.Clean = value; _contactOfficeStreetAddress = v20;
+                var v21 = _contactOfficeZIPCode; v21.Clean = value; _contactOfficeZIPCode = v21;
+                var v22 = _contactPhoneNumber; v22.Clean = value; _contactPhoneNumber = v22;
+                var v23 = _countyCode; v23.Clean = value; _countyCode = v23;
+                var v24 = _debtToIncomeRatio; v24.Clean = value; _debtToIncomeRatio = v24;
+                var v25 = _denialReason1; v25.Clean = value; _denialReason1 = v25;
+                var v26 = _denialReason2; v26.Clean = value; _denialReason2 = v26;
+                var v27 = _denialReason3; v27.Clean = value; _denialReason3 = v27;
+                var v28 = _denialReason4; v28.Clean = value; _denialReason4 = v28;
+                var v29 = _discountPoints; v29.Clean = value; _discountPoints = v29;
+                var v30 = _excludeLoanFromHMDAReportIndicator; v30.Clean = value; _excludeLoanFromHMDAReportIndicator = v30;
+                var v31 = _federalAgency; v31.Clean = value; _federalAgency = v31;
+                var v32 = _federalTaxpayerIdNumber; v32.Clean = value; _federalTaxpayerIdNumber = v32;
+                var v33 = _financialInstitutionName; v33.Clean = value; _financialInstitutionName = v33;
+                var v34 = _hmdaPropertyZipCode; v34.Clean = value; _hmdaPropertyZipCode = v34;
+                var v35 = _hOEPAStatus; v35.Clean = value; _hOEPAStatus = v35;
+                var v36 = _id; v36.Clean = value; _id = v36;
+                var v37 = _income; v37.Clean = value; _income = v37;
+                var v38 = _initiallyPayableToYourInstitution; v38.Clean = value; _initiallyPayableToYourInstitution = v38;
+                var v39 = _interestRate; v39.Clean = value; _interestRate = v39;
+                var v40 = _introRatePeriod; v40.Clean = value; _introRatePeriod = v40;
+                var v41 = _legalEntityIdentifier; v41.Clean = value; _legalEntityIdentifier = v41;
+                var v42 = _lenderCredits; v42.Clean = value; _lenderCredits = v42;
+                var v43 = _lienStatus; v43.Clean = value; _lienStatus = v43;
+                var v44 = _loanAmount; v44.Clean = value; _loanAmount = v44;
+                var v45 = _loanPurpose; v45.Clean = value; _loanPurpose = v45;
+                var v46 = _loanTerm; v46.Clean = value; _loanTerm = v46;
+                var v47 = _loanType; v47.Clean = value; _loanType = v47;
+                var v48 = _manufacturedHomeLandPropertyInterest; v48.Clean = value; _manufacturedHomeLandPropertyInterest = v48;
+                var v49 = _manufacturedSecuredProperyType; v49.Clean = value; _manufacturedSecuredProperyType = v49;
+                var v50 = _mSANumber; v50.Clean = value; _mSANumber = v50;
+                var v51 = _multifamilyNoUnits; v51.Clean = value; _multifamilyNoUnits = v51;
+                var v52 = _nMLSLoanOriginatorID; v52.Clean = value; _nMLSLoanOriginatorID = v52;
+                var v53 = _openEndLineOfCredit; v53.Clean = value; _openEndLineOfCredit = v53;
+                var v54 = _originationCharges; v54.Clean = value; _originationCharges = v54;
+                var v55 = _otherAUS; v55.Clean = value; _otherAUS = v55;
+                var v56 = _otherAUSRecommendations; v56.Clean = value; _otherAUSRecommendations = v56;
+                var v57 = _otherDenialReason; v57.Clean = value; _otherDenialReason = v57;
+                var v58 = _otherNonAmortization; v58.Clean = value; _otherNonAmortization = v58;
+                var v59 = _parentAddress; v59.Clean = value; _parentAddress = v59;
+                var v60 = _parentCity; v60.Clean = value; _parentCity = v60;
+                var v61 = _parentName; v61.Clean = value; _parentName = v61;
+                var v62 = _parentState; v62.Clean = value; _parentState = v62;
+                var v63 = _parentZip; v63.Clean = value; _parentZip = v63;
+                var v64 = _preapprovals; v64.Clean = value; _preapprovals = v64;
+                var v65 = _prepaymentPenaltyPeriod; v65.Clean = value; _prepaymentPenaltyPeriod = v65;
+                var v66 = _propertyType; v66.Clean = value; _propertyType = v66;
+                var v67 = _propertyValue; v67.Clean = value; _propertyValue = v67;
+                var v68 = _qMStatus; v68.Clean = value; _qMStatus = v68;
+                var v69 = _rateSpread; v69.Clean = value; _rateSpread = v69;
+                var v70 = _reportingYear; v70.Clean = value; _reportingYear = v70;
+                var v71 = _reportPurposeOfLoanIndicator; v71.Clean = value; _reportPurposeOfLoanIndicator = v71;
+                var v72 = _respondentID; v72.Clean = value; _respondentID = v72;
+                var v73 = _reverseMortgage; v73.Clean = value; _reverseMortgage = v73;
+                var v74 = _stateCode; v74.Clean = value; _stateCode = v74;
+                var v75 = _submissionOfApplication; v75.Clean = value; _submissionOfApplication = v75;
+                var v76 = _totalLoanCosts; v76.Clean = value; _totalLoanCosts = v76;
+                var v77 = _totalPointsAndFees; v77.Clean = value; _totalPointsAndFees = v77;
+                var v78 = _typeOfPurchaser; v78.Clean = value; _typeOfPurchaser = v78;
+                var v79 = _universalLoanId; v79.Clean = value; _universalLoanId = v79;
                 _settingClean = 0;
             }
         }

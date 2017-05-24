@@ -7,21 +7,26 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLComplianceAlert
     {
-        public Value<string> Id { get; set; }
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> LastComplianceOrderAlertCategories { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _lastComplianceOrderAlertCategories;
+        public string LastComplianceOrderAlertCategories { get { return _lastComplianceOrderAlertCategories; } set { _lastComplianceOrderAlertCategories = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceOrderAlertCategories() => !LastComplianceOrderAlertCategories.Clean;
-        public Value<string> LastComplianceOrderAlertMessage { get; set; }
+        public bool ShouldSerializeLastComplianceOrderAlertCategories() => !_lastComplianceOrderAlertCategories.Clean;
+        private Value<string> _lastComplianceOrderAlertMessage;
+        public string LastComplianceOrderAlertMessage { get { return _lastComplianceOrderAlertMessage; } set { _lastComplianceOrderAlertMessage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceOrderAlertMessage() => !LastComplianceOrderAlertMessage.Clean;
-        public Value<string> LastComplianceOrderDescriptionOfAlerts { get; set; }
+        public bool ShouldSerializeLastComplianceOrderAlertMessage() => !_lastComplianceOrderAlertMessage.Clean;
+        private Value<string> _lastComplianceOrderDescriptionOfAlerts;
+        public string LastComplianceOrderDescriptionOfAlerts { get { return _lastComplianceOrderDescriptionOfAlerts; } set { _lastComplianceOrderDescriptionOfAlerts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastComplianceOrderDescriptionOfAlerts() => !LastComplianceOrderDescriptionOfAlerts.Clean;
-        public Value<int?> TQLComplianceAlertIndex { get; set; }
+        public bool ShouldSerializeLastComplianceOrderDescriptionOfAlerts() => !_lastComplianceOrderDescriptionOfAlerts.Clean;
+        private Value<int?> _tQLComplianceAlertIndex;
+        public int? TQLComplianceAlertIndex { get { return _tQLComplianceAlertIndex; } set { _tQLComplianceAlertIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTQLComplianceAlertIndex() => !TQLComplianceAlertIndex.Clean;
+        public bool ShouldSerializeTQLComplianceAlertIndex() => !_tQLComplianceAlertIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -29,22 +34,22 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Id.Clean
-                    && LastComplianceOrderAlertCategories.Clean
-                    && LastComplianceOrderAlertMessage.Clean
-                    && LastComplianceOrderDescriptionOfAlerts.Clean
-                    && TQLComplianceAlertIndex.Clean;
+                var clean = _id.Clean
+                    && _lastComplianceOrderAlertCategories.Clean
+                    && _lastComplianceOrderAlertMessage.Clean
+                    && _lastComplianceOrderDescriptionOfAlerts.Clean
+                    && _tQLComplianceAlertIndex.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Id; v0.Clean = value; Id = v0;
-                var v1 = LastComplianceOrderAlertCategories; v1.Clean = value; LastComplianceOrderAlertCategories = v1;
-                var v2 = LastComplianceOrderAlertMessage; v2.Clean = value; LastComplianceOrderAlertMessage = v2;
-                var v3 = LastComplianceOrderDescriptionOfAlerts; v3.Clean = value; LastComplianceOrderDescriptionOfAlerts = v3;
-                var v4 = TQLComplianceAlertIndex; v4.Clean = value; TQLComplianceAlertIndex = v4;
+                var v0 = _id; v0.Clean = value; _id = v0;
+                var v1 = _lastComplianceOrderAlertCategories; v1.Clean = value; _lastComplianceOrderAlertCategories = v1;
+                var v2 = _lastComplianceOrderAlertMessage; v2.Clean = value; _lastComplianceOrderAlertMessage = v2;
+                var v3 = _lastComplianceOrderDescriptionOfAlerts; v3.Clean = value; _lastComplianceOrderDescriptionOfAlerts = v3;
+                var v4 = _tQLComplianceAlertIndex; v4.Clean = value; _tQLComplianceAlertIndex = v4;
                 _settingClean = 0;
             }
         }

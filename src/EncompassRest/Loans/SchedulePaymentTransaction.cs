@@ -7,159 +7,210 @@ namespace EncompassRest.Loans
 {
     public sealed partial class SchedulePaymentTransaction
     {
-        public Value<decimal?> AdditionalEscrow { get; set; }
+        private Value<decimal?> _additionalEscrow;
+        public decimal? AdditionalEscrow { get { return _additionalEscrow; } set { _additionalEscrow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalEscrow() => !AdditionalEscrow.Clean;
-        public Value<decimal?> AdditionalPrincipal { get; set; }
+        public bool ShouldSerializeAdditionalEscrow() => !_additionalEscrow.Clean;
+        private Value<decimal?> _additionalPrincipal;
+        public decimal? AdditionalPrincipal { get { return _additionalPrincipal; } set { _additionalPrincipal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalPrincipal() => !AdditionalPrincipal.Clean;
-        public Value<decimal?> BuydownSubsidyAmount { get; set; }
+        public bool ShouldSerializeAdditionalPrincipal() => !_additionalPrincipal.Clean;
+        private Value<decimal?> _buydownSubsidyAmount;
+        public decimal? BuydownSubsidyAmount { get { return _buydownSubsidyAmount; } set { _buydownSubsidyAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownSubsidyAmount() => !BuydownSubsidyAmount.Clean;
-        public Value<decimal?> BuydownSubsidyAmountDue { get; set; }
+        public bool ShouldSerializeBuydownSubsidyAmount() => !_buydownSubsidyAmount.Clean;
+        private Value<decimal?> _buydownSubsidyAmountDue;
+        public decimal? BuydownSubsidyAmountDue { get { return _buydownSubsidyAmountDue; } set { _buydownSubsidyAmountDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownSubsidyAmountDue() => !BuydownSubsidyAmountDue.Clean;
-        public Value<decimal?> CityPropertyTax { get; set; }
+        public bool ShouldSerializeBuydownSubsidyAmountDue() => !_buydownSubsidyAmountDue.Clean;
+        private Value<decimal?> _cityPropertyTax;
+        public decimal? CityPropertyTax { get { return _cityPropertyTax; } set { _cityPropertyTax = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCityPropertyTax() => !CityPropertyTax.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCityPropertyTax() => !_cityPropertyTax.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<string> CreatedById { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<string> _createdById;
+        public string CreatedById { get { return _createdById; } set { _createdById = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedById() => !CreatedById.Clean;
-        public Value<string> CreatedByName { get; set; }
+        public bool ShouldSerializeCreatedById() => !_createdById.Clean;
+        private Value<string> _createdByName;
+        public string CreatedByName { get { return _createdByName; } set { _createdByName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedByName() => !CreatedByName.Clean;
-        public Value<DateTime?> CreatedDateTimeUtc { get; set; }
+        public bool ShouldSerializeCreatedByName() => !_createdByName.Clean;
+        private Value<DateTime?> _createdDateTimeUtc;
+        public DateTime? CreatedDateTimeUtc { get { return _createdDateTimeUtc; } set { _createdDateTimeUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedDateTimeUtc() => !CreatedDateTimeUtc.Clean;
-        public Value<decimal?> Escrow { get; set; }
+        public bool ShouldSerializeCreatedDateTimeUtc() => !_createdDateTimeUtc.Clean;
+        private Value<decimal?> _escrow;
+        public decimal? Escrow { get { return _escrow; } set { _escrow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrow() => !Escrow.Clean;
-        public Value<decimal?> EscrowCityPropertyTaxDue { get; set; }
+        public bool ShouldSerializeEscrow() => !_escrow.Clean;
+        private Value<decimal?> _escrowCityPropertyTaxDue;
+        public decimal? EscrowCityPropertyTaxDue { get { return _escrowCityPropertyTaxDue; } set { _escrowCityPropertyTaxDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowCityPropertyTaxDue() => !EscrowCityPropertyTaxDue.Clean;
-        public Value<decimal?> EscrowDue { get; set; }
+        public bool ShouldSerializeEscrowCityPropertyTaxDue() => !_escrowCityPropertyTaxDue.Clean;
+        private Value<decimal?> _escrowDue;
+        public decimal? EscrowDue { get { return _escrowDue; } set { _escrowDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowDue() => !EscrowDue.Clean;
-        public Value<decimal?> EscrowFloodInsuranceDue { get; set; }
+        public bool ShouldSerializeEscrowDue() => !_escrowDue.Clean;
+        private Value<decimal?> _escrowFloodInsuranceDue;
+        public decimal? EscrowFloodInsuranceDue { get { return _escrowFloodInsuranceDue; } set { _escrowFloodInsuranceDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowFloodInsuranceDue() => !EscrowFloodInsuranceDue.Clean;
-        public Value<decimal?> EscrowHazardInsuranceDue { get; set; }
+        public bool ShouldSerializeEscrowFloodInsuranceDue() => !_escrowFloodInsuranceDue.Clean;
+        private Value<decimal?> _escrowHazardInsuranceDue;
+        public decimal? EscrowHazardInsuranceDue { get { return _escrowHazardInsuranceDue; } set { _escrowHazardInsuranceDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowHazardInsuranceDue() => !EscrowHazardInsuranceDue.Clean;
-        public Value<decimal?> EscrowMortgageInsuranceDue { get; set; }
+        public bool ShouldSerializeEscrowHazardInsuranceDue() => !_escrowHazardInsuranceDue.Clean;
+        private Value<decimal?> _escrowMortgageInsuranceDue;
+        public decimal? EscrowMortgageInsuranceDue { get { return _escrowMortgageInsuranceDue; } set { _escrowMortgageInsuranceDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowMortgageInsuranceDue() => !EscrowMortgageInsuranceDue.Clean;
-        public Value<decimal?> EscrowOther1Due { get; set; }
+        public bool ShouldSerializeEscrowMortgageInsuranceDue() => !_escrowMortgageInsuranceDue.Clean;
+        private Value<decimal?> _escrowOther1Due;
+        public decimal? EscrowOther1Due { get { return _escrowOther1Due; } set { _escrowOther1Due = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowOther1Due() => !EscrowOther1Due.Clean;
-        public Value<decimal?> EscrowOther2Due { get; set; }
+        public bool ShouldSerializeEscrowOther1Due() => !_escrowOther1Due.Clean;
+        private Value<decimal?> _escrowOther2Due;
+        public decimal? EscrowOther2Due { get { return _escrowOther2Due; } set { _escrowOther2Due = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowOther2Due() => !EscrowOther2Due.Clean;
-        public Value<decimal?> EscrowOther3Due { get; set; }
+        public bool ShouldSerializeEscrowOther2Due() => !_escrowOther2Due.Clean;
+        private Value<decimal?> _escrowOther3Due;
+        public decimal? EscrowOther3Due { get { return _escrowOther3Due; } set { _escrowOther3Due = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowOther3Due() => !EscrowOther3Due.Clean;
-        public Value<decimal?> EscrowTaxDue { get; set; }
+        public bool ShouldSerializeEscrowOther3Due() => !_escrowOther3Due.Clean;
+        private Value<decimal?> _escrowTaxDue;
+        public decimal? EscrowTaxDue { get { return _escrowTaxDue; } set { _escrowTaxDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowTaxDue() => !EscrowTaxDue.Clean;
-        public Value<decimal?> EscrowUSDAMonthlyPremiumDue { get; set; }
+        public bool ShouldSerializeEscrowTaxDue() => !_escrowTaxDue.Clean;
+        private Value<decimal?> _escrowUSDAMonthlyPremiumDue;
+        public decimal? EscrowUSDAMonthlyPremiumDue { get { return _escrowUSDAMonthlyPremiumDue; } set { _escrowUSDAMonthlyPremiumDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowUSDAMonthlyPremiumDue() => !EscrowUSDAMonthlyPremiumDue.Clean;
-        public Value<decimal?> FloodInsurance { get; set; }
+        public bool ShouldSerializeEscrowUSDAMonthlyPremiumDue() => !_escrowUSDAMonthlyPremiumDue.Clean;
+        private Value<decimal?> _floodInsurance;
+        public decimal? FloodInsurance { get { return _floodInsurance; } set { _floodInsurance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsurance() => !FloodInsurance.Clean;
-        public Value<string> Guid { get; set; }
+        public bool ShouldSerializeFloodInsurance() => !_floodInsurance.Clean;
+        private Value<string> _guid;
+        public string Guid { get { return _guid; } set { _guid = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !Guid.Clean;
-        public Value<decimal?> HazardInsurance { get; set; }
+        public bool ShouldSerializeGuid() => !_guid.Clean;
+        private Value<decimal?> _hazardInsurance;
+        public decimal? HazardInsurance { get { return _hazardInsurance; } set { _hazardInsurance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardInsurance() => !HazardInsurance.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHazardInsurance() => !_hazardInsurance.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> IndexRate { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _indexRate;
+        public decimal? IndexRate { get { return _indexRate; } set { _indexRate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexRate() => !IndexRate.Clean;
-        public Value<decimal?> Interest { get; set; }
+        public bool ShouldSerializeIndexRate() => !_indexRate.Clean;
+        private Value<decimal?> _interest;
+        public decimal? Interest { get { return _interest; } set { _interest = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterest() => !Interest.Clean;
-        public Value<decimal?> InterestDue { get; set; }
+        public bool ShouldSerializeInterest() => !_interest.Clean;
+        private Value<decimal?> _interestDue;
+        public decimal? InterestDue { get { return _interestDue; } set { _interestDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestDue() => !InterestDue.Clean;
-        public Value<decimal?> InterestRate { get; set; }
+        public bool ShouldSerializeInterestDue() => !_interestDue.Clean;
+        private Value<decimal?> _interestRate;
+        public decimal? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRate() => !InterestRate.Clean;
-        public Value<decimal?> LateFee { get; set; }
+        public bool ShouldSerializeInterestRate() => !_interestRate.Clean;
+        private Value<decimal?> _lateFee;
+        public decimal? LateFee { get { return _lateFee; } set { _lateFee = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFee() => !LateFee.Clean;
-        public Value<DateTime?> LatePaymentDate { get; set; }
+        public bool ShouldSerializeLateFee() => !_lateFee.Clean;
+        private Value<DateTime?> _latePaymentDate;
+        public DateTime? LatePaymentDate { get { return _latePaymentDate; } set { _latePaymentDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLatePaymentDate() => !LatePaymentDate.Clean;
-        public Value<decimal?> MiscFee { get; set; }
+        public bool ShouldSerializeLatePaymentDate() => !_latePaymentDate.Clean;
+        private Value<decimal?> _miscFee;
+        public decimal? MiscFee { get { return _miscFee; } set { _miscFee = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMiscFee() => !MiscFee.Clean;
-        public Value<decimal?> MiscFeeDue { get; set; }
+        public bool ShouldSerializeMiscFee() => !_miscFee.Clean;
+        private Value<decimal?> _miscFeeDue;
+        public decimal? MiscFeeDue { get { return _miscFeeDue; } set { _miscFeeDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMiscFeeDue() => !MiscFeeDue.Clean;
-        public Value<string> ModifiedById { get; set; }
+        public bool ShouldSerializeMiscFeeDue() => !_miscFeeDue.Clean;
+        private Value<string> _modifiedById;
+        public string ModifiedById { get { return _modifiedById; } set { _modifiedById = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedById() => !ModifiedById.Clean;
-        public Value<string> ModifiedByName { get; set; }
+        public bool ShouldSerializeModifiedById() => !_modifiedById.Clean;
+        private Value<string> _modifiedByName;
+        public string ModifiedByName { get { return _modifiedByName; } set { _modifiedByName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedByName() => !ModifiedByName.Clean;
-        public Value<DateTime?> ModifiedDateTimeUtc { get; set; }
+        public bool ShouldSerializeModifiedByName() => !_modifiedByName.Clean;
+        private Value<DateTime?> _modifiedDateTimeUtc;
+        public DateTime? ModifiedDateTimeUtc { get { return _modifiedDateTimeUtc; } set { _modifiedDateTimeUtc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedDateTimeUtc() => !ModifiedDateTimeUtc.Clean;
-        public Value<decimal?> MortgageInsurance { get; set; }
+        public bool ShouldSerializeModifiedDateTimeUtc() => !_modifiedDateTimeUtc.Clean;
+        private Value<decimal?> _mortgageInsurance;
+        public decimal? MortgageInsurance { get { return _mortgageInsurance; } set { _mortgageInsurance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsurance() => !MortgageInsurance.Clean;
-        public Value<decimal?> Other1Escrow { get; set; }
+        public bool ShouldSerializeMortgageInsurance() => !_mortgageInsurance.Clean;
+        private Value<decimal?> _other1Escrow;
+        public decimal? Other1Escrow { get { return _other1Escrow; } set { _other1Escrow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOther1Escrow() => !Other1Escrow.Clean;
-        public Value<decimal?> Other2Escrow { get; set; }
+        public bool ShouldSerializeOther1Escrow() => !_other1Escrow.Clean;
+        private Value<decimal?> _other2Escrow;
+        public decimal? Other2Escrow { get { return _other2Escrow; } set { _other2Escrow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOther2Escrow() => !Other2Escrow.Clean;
-        public Value<decimal?> Other3Escrow { get; set; }
+        public bool ShouldSerializeOther2Escrow() => !_other2Escrow.Clean;
+        private Value<decimal?> _other3Escrow;
+        public decimal? Other3Escrow { get { return _other3Escrow; } set { _other3Escrow = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOther3Escrow() => !Other3Escrow.Clean;
-        public Value<int?> PaymentNumber { get; set; }
+        public bool ShouldSerializeOther3Escrow() => !_other3Escrow.Clean;
+        private Value<int?> _paymentNumber;
+        public int? PaymentNumber { get { return _paymentNumber; } set { _paymentNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentNumber() => !PaymentNumber.Clean;
-        public Value<DateTime?> PaymentReceiveDate { get; set; }
+        public bool ShouldSerializePaymentNumber() => !_paymentNumber.Clean;
+        private Value<DateTime?> _paymentReceiveDate;
+        public DateTime? PaymentReceiveDate { get { return _paymentReceiveDate; } set { _paymentReceiveDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentReceiveDate() => !PaymentReceiveDate.Clean;
-        public Value<decimal?> Principal { get; set; }
+        public bool ShouldSerializePaymentReceiveDate() => !_paymentReceiveDate.Clean;
+        private Value<decimal?> _principal;
+        public decimal? Principal { get { return _principal; } set { _principal = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrincipal() => !Principal.Clean;
-        public Value<decimal?> PrincipalDue { get; set; }
+        public bool ShouldSerializePrincipal() => !_principal.Clean;
+        private Value<decimal?> _principalDue;
+        public decimal? PrincipalDue { get { return _principalDue; } set { _principalDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrincipalDue() => !PrincipalDue.Clean;
-        public Value<string> ServicingPaymentMethod { get; set; }
+        public bool ShouldSerializePrincipalDue() => !_principalDue.Clean;
+        private Value<string> _servicingPaymentMethod;
+        public string ServicingPaymentMethod { get { return _servicingPaymentMethod; } set { _servicingPaymentMethod = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicingPaymentMethod() => !ServicingPaymentMethod.Clean;
-        public Value<string> ServicingTransactionType { get; set; }
+        public bool ShouldSerializeServicingPaymentMethod() => !_servicingPaymentMethod.Clean;
+        private Value<string> _servicingTransactionType;
+        public string ServicingTransactionType { get { return _servicingTransactionType; } set { _servicingTransactionType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicingTransactionType() => !ServicingTransactionType.Clean;
-        public Value<decimal?> Taxes { get; set; }
+        public bool ShouldSerializeServicingTransactionType() => !_servicingTransactionType.Clean;
+        private Value<decimal?> _taxes;
+        public decimal? Taxes { get { return _taxes; } set { _taxes = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxes() => !Taxes.Clean;
-        public Value<decimal?> TotalPastDue { get; set; }
+        public bool ShouldSerializeTaxes() => !_taxes.Clean;
+        private Value<decimal?> _totalPastDue;
+        public decimal? TotalPastDue { get { return _totalPastDue; } set { _totalPastDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPastDue() => !TotalPastDue.Clean;
-        public Value<decimal?> TransactionAmount { get; set; }
+        public bool ShouldSerializeTotalPastDue() => !_totalPastDue.Clean;
+        private Value<decimal?> _transactionAmount;
+        public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransactionAmount() => !TransactionAmount.Clean;
-        public Value<DateTime?> TransactionDate { get; set; }
+        public bool ShouldSerializeTransactionAmount() => !_transactionAmount.Clean;
+        private Value<DateTime?> _transactionDate;
+        public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransactionDate() => !TransactionDate.Clean;
-        public Value<decimal?> UnpaidLateFeeDue { get; set; }
+        public bool ShouldSerializeTransactionDate() => !_transactionDate.Clean;
+        private Value<decimal?> _unpaidLateFeeDue;
+        public decimal? UnpaidLateFeeDue { get { return _unpaidLateFeeDue; } set { _unpaidLateFeeDue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnpaidLateFeeDue() => !UnpaidLateFeeDue.Clean;
-        public Value<decimal?> USDAMonthlyPremium { get; set; }
+        public bool ShouldSerializeUnpaidLateFeeDue() => !_unpaidLateFeeDue.Clean;
+        private Value<decimal?> _uSDAMonthlyPremium;
+        public decimal? USDAMonthlyPremium { get { return _uSDAMonthlyPremium; } set { _uSDAMonthlyPremium = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUSDAMonthlyPremium() => !USDAMonthlyPremium.Clean;
+        public bool ShouldSerializeUSDAMonthlyPremium() => !_uSDAMonthlyPremium.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -167,114 +218,114 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdditionalEscrow.Clean
-                    && AdditionalPrincipal.Clean
-                    && BuydownSubsidyAmount.Clean
-                    && BuydownSubsidyAmountDue.Clean
-                    && CityPropertyTax.Clean
-                    && Comments.Clean
-                    && CreatedById.Clean
-                    && CreatedByName.Clean
-                    && CreatedDateTimeUtc.Clean
-                    && Escrow.Clean
-                    && EscrowCityPropertyTaxDue.Clean
-                    && EscrowDue.Clean
-                    && EscrowFloodInsuranceDue.Clean
-                    && EscrowHazardInsuranceDue.Clean
-                    && EscrowMortgageInsuranceDue.Clean
-                    && EscrowOther1Due.Clean
-                    && EscrowOther2Due.Clean
-                    && EscrowOther3Due.Clean
-                    && EscrowTaxDue.Clean
-                    && EscrowUSDAMonthlyPremiumDue.Clean
-                    && FloodInsurance.Clean
-                    && Guid.Clean
-                    && HazardInsurance.Clean
-                    && Id.Clean
-                    && IndexRate.Clean
-                    && Interest.Clean
-                    && InterestDue.Clean
-                    && InterestRate.Clean
-                    && LateFee.Clean
-                    && LatePaymentDate.Clean
-                    && MiscFee.Clean
-                    && MiscFeeDue.Clean
-                    && ModifiedById.Clean
-                    && ModifiedByName.Clean
-                    && ModifiedDateTimeUtc.Clean
-                    && MortgageInsurance.Clean
-                    && Other1Escrow.Clean
-                    && Other2Escrow.Clean
-                    && Other3Escrow.Clean
-                    && PaymentNumber.Clean
-                    && PaymentReceiveDate.Clean
-                    && Principal.Clean
-                    && PrincipalDue.Clean
-                    && ServicingPaymentMethod.Clean
-                    && ServicingTransactionType.Clean
-                    && Taxes.Clean
-                    && TotalPastDue.Clean
-                    && TransactionAmount.Clean
-                    && TransactionDate.Clean
-                    && UnpaidLateFeeDue.Clean
-                    && USDAMonthlyPremium.Clean;
+                var clean = _additionalEscrow.Clean
+                    && _additionalPrincipal.Clean
+                    && _buydownSubsidyAmount.Clean
+                    && _buydownSubsidyAmountDue.Clean
+                    && _cityPropertyTax.Clean
+                    && _comments.Clean
+                    && _createdById.Clean
+                    && _createdByName.Clean
+                    && _createdDateTimeUtc.Clean
+                    && _escrow.Clean
+                    && _escrowCityPropertyTaxDue.Clean
+                    && _escrowDue.Clean
+                    && _escrowFloodInsuranceDue.Clean
+                    && _escrowHazardInsuranceDue.Clean
+                    && _escrowMortgageInsuranceDue.Clean
+                    && _escrowOther1Due.Clean
+                    && _escrowOther2Due.Clean
+                    && _escrowOther3Due.Clean
+                    && _escrowTaxDue.Clean
+                    && _escrowUSDAMonthlyPremiumDue.Clean
+                    && _floodInsurance.Clean
+                    && _guid.Clean
+                    && _hazardInsurance.Clean
+                    && _id.Clean
+                    && _indexRate.Clean
+                    && _interest.Clean
+                    && _interestDue.Clean
+                    && _interestRate.Clean
+                    && _lateFee.Clean
+                    && _latePaymentDate.Clean
+                    && _miscFee.Clean
+                    && _miscFeeDue.Clean
+                    && _modifiedById.Clean
+                    && _modifiedByName.Clean
+                    && _modifiedDateTimeUtc.Clean
+                    && _mortgageInsurance.Clean
+                    && _other1Escrow.Clean
+                    && _other2Escrow.Clean
+                    && _other3Escrow.Clean
+                    && _paymentNumber.Clean
+                    && _paymentReceiveDate.Clean
+                    && _principal.Clean
+                    && _principalDue.Clean
+                    && _servicingPaymentMethod.Clean
+                    && _servicingTransactionType.Clean
+                    && _taxes.Clean
+                    && _totalPastDue.Clean
+                    && _transactionAmount.Clean
+                    && _transactionDate.Clean
+                    && _unpaidLateFeeDue.Clean
+                    && _uSDAMonthlyPremium.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdditionalEscrow; v0.Clean = value; AdditionalEscrow = v0;
-                var v1 = AdditionalPrincipal; v1.Clean = value; AdditionalPrincipal = v1;
-                var v2 = BuydownSubsidyAmount; v2.Clean = value; BuydownSubsidyAmount = v2;
-                var v3 = BuydownSubsidyAmountDue; v3.Clean = value; BuydownSubsidyAmountDue = v3;
-                var v4 = CityPropertyTax; v4.Clean = value; CityPropertyTax = v4;
-                var v5 = Comments; v5.Clean = value; Comments = v5;
-                var v6 = CreatedById; v6.Clean = value; CreatedById = v6;
-                var v7 = CreatedByName; v7.Clean = value; CreatedByName = v7;
-                var v8 = CreatedDateTimeUtc; v8.Clean = value; CreatedDateTimeUtc = v8;
-                var v9 = Escrow; v9.Clean = value; Escrow = v9;
-                var v10 = EscrowCityPropertyTaxDue; v10.Clean = value; EscrowCityPropertyTaxDue = v10;
-                var v11 = EscrowDue; v11.Clean = value; EscrowDue = v11;
-                var v12 = EscrowFloodInsuranceDue; v12.Clean = value; EscrowFloodInsuranceDue = v12;
-                var v13 = EscrowHazardInsuranceDue; v13.Clean = value; EscrowHazardInsuranceDue = v13;
-                var v14 = EscrowMortgageInsuranceDue; v14.Clean = value; EscrowMortgageInsuranceDue = v14;
-                var v15 = EscrowOther1Due; v15.Clean = value; EscrowOther1Due = v15;
-                var v16 = EscrowOther2Due; v16.Clean = value; EscrowOther2Due = v16;
-                var v17 = EscrowOther3Due; v17.Clean = value; EscrowOther3Due = v17;
-                var v18 = EscrowTaxDue; v18.Clean = value; EscrowTaxDue = v18;
-                var v19 = EscrowUSDAMonthlyPremiumDue; v19.Clean = value; EscrowUSDAMonthlyPremiumDue = v19;
-                var v20 = FloodInsurance; v20.Clean = value; FloodInsurance = v20;
-                var v21 = Guid; v21.Clean = value; Guid = v21;
-                var v22 = HazardInsurance; v22.Clean = value; HazardInsurance = v22;
-                var v23 = Id; v23.Clean = value; Id = v23;
-                var v24 = IndexRate; v24.Clean = value; IndexRate = v24;
-                var v25 = Interest; v25.Clean = value; Interest = v25;
-                var v26 = InterestDue; v26.Clean = value; InterestDue = v26;
-                var v27 = InterestRate; v27.Clean = value; InterestRate = v27;
-                var v28 = LateFee; v28.Clean = value; LateFee = v28;
-                var v29 = LatePaymentDate; v29.Clean = value; LatePaymentDate = v29;
-                var v30 = MiscFee; v30.Clean = value; MiscFee = v30;
-                var v31 = MiscFeeDue; v31.Clean = value; MiscFeeDue = v31;
-                var v32 = ModifiedById; v32.Clean = value; ModifiedById = v32;
-                var v33 = ModifiedByName; v33.Clean = value; ModifiedByName = v33;
-                var v34 = ModifiedDateTimeUtc; v34.Clean = value; ModifiedDateTimeUtc = v34;
-                var v35 = MortgageInsurance; v35.Clean = value; MortgageInsurance = v35;
-                var v36 = Other1Escrow; v36.Clean = value; Other1Escrow = v36;
-                var v37 = Other2Escrow; v37.Clean = value; Other2Escrow = v37;
-                var v38 = Other3Escrow; v38.Clean = value; Other3Escrow = v38;
-                var v39 = PaymentNumber; v39.Clean = value; PaymentNumber = v39;
-                var v40 = PaymentReceiveDate; v40.Clean = value; PaymentReceiveDate = v40;
-                var v41 = Principal; v41.Clean = value; Principal = v41;
-                var v42 = PrincipalDue; v42.Clean = value; PrincipalDue = v42;
-                var v43 = ServicingPaymentMethod; v43.Clean = value; ServicingPaymentMethod = v43;
-                var v44 = ServicingTransactionType; v44.Clean = value; ServicingTransactionType = v44;
-                var v45 = Taxes; v45.Clean = value; Taxes = v45;
-                var v46 = TotalPastDue; v46.Clean = value; TotalPastDue = v46;
-                var v47 = TransactionAmount; v47.Clean = value; TransactionAmount = v47;
-                var v48 = TransactionDate; v48.Clean = value; TransactionDate = v48;
-                var v49 = UnpaidLateFeeDue; v49.Clean = value; UnpaidLateFeeDue = v49;
-                var v50 = USDAMonthlyPremium; v50.Clean = value; USDAMonthlyPremium = v50;
+                var v0 = _additionalEscrow; v0.Clean = value; _additionalEscrow = v0;
+                var v1 = _additionalPrincipal; v1.Clean = value; _additionalPrincipal = v1;
+                var v2 = _buydownSubsidyAmount; v2.Clean = value; _buydownSubsidyAmount = v2;
+                var v3 = _buydownSubsidyAmountDue; v3.Clean = value; _buydownSubsidyAmountDue = v3;
+                var v4 = _cityPropertyTax; v4.Clean = value; _cityPropertyTax = v4;
+                var v5 = _comments; v5.Clean = value; _comments = v5;
+                var v6 = _createdById; v6.Clean = value; _createdById = v6;
+                var v7 = _createdByName; v7.Clean = value; _createdByName = v7;
+                var v8 = _createdDateTimeUtc; v8.Clean = value; _createdDateTimeUtc = v8;
+                var v9 = _escrow; v9.Clean = value; _escrow = v9;
+                var v10 = _escrowCityPropertyTaxDue; v10.Clean = value; _escrowCityPropertyTaxDue = v10;
+                var v11 = _escrowDue; v11.Clean = value; _escrowDue = v11;
+                var v12 = _escrowFloodInsuranceDue; v12.Clean = value; _escrowFloodInsuranceDue = v12;
+                var v13 = _escrowHazardInsuranceDue; v13.Clean = value; _escrowHazardInsuranceDue = v13;
+                var v14 = _escrowMortgageInsuranceDue; v14.Clean = value; _escrowMortgageInsuranceDue = v14;
+                var v15 = _escrowOther1Due; v15.Clean = value; _escrowOther1Due = v15;
+                var v16 = _escrowOther2Due; v16.Clean = value; _escrowOther2Due = v16;
+                var v17 = _escrowOther3Due; v17.Clean = value; _escrowOther3Due = v17;
+                var v18 = _escrowTaxDue; v18.Clean = value; _escrowTaxDue = v18;
+                var v19 = _escrowUSDAMonthlyPremiumDue; v19.Clean = value; _escrowUSDAMonthlyPremiumDue = v19;
+                var v20 = _floodInsurance; v20.Clean = value; _floodInsurance = v20;
+                var v21 = _guid; v21.Clean = value; _guid = v21;
+                var v22 = _hazardInsurance; v22.Clean = value; _hazardInsurance = v22;
+                var v23 = _id; v23.Clean = value; _id = v23;
+                var v24 = _indexRate; v24.Clean = value; _indexRate = v24;
+                var v25 = _interest; v25.Clean = value; _interest = v25;
+                var v26 = _interestDue; v26.Clean = value; _interestDue = v26;
+                var v27 = _interestRate; v27.Clean = value; _interestRate = v27;
+                var v28 = _lateFee; v28.Clean = value; _lateFee = v28;
+                var v29 = _latePaymentDate; v29.Clean = value; _latePaymentDate = v29;
+                var v30 = _miscFee; v30.Clean = value; _miscFee = v30;
+                var v31 = _miscFeeDue; v31.Clean = value; _miscFeeDue = v31;
+                var v32 = _modifiedById; v32.Clean = value; _modifiedById = v32;
+                var v33 = _modifiedByName; v33.Clean = value; _modifiedByName = v33;
+                var v34 = _modifiedDateTimeUtc; v34.Clean = value; _modifiedDateTimeUtc = v34;
+                var v35 = _mortgageInsurance; v35.Clean = value; _mortgageInsurance = v35;
+                var v36 = _other1Escrow; v36.Clean = value; _other1Escrow = v36;
+                var v37 = _other2Escrow; v37.Clean = value; _other2Escrow = v37;
+                var v38 = _other3Escrow; v38.Clean = value; _other3Escrow = v38;
+                var v39 = _paymentNumber; v39.Clean = value; _paymentNumber = v39;
+                var v40 = _paymentReceiveDate; v40.Clean = value; _paymentReceiveDate = v40;
+                var v41 = _principal; v41.Clean = value; _principal = v41;
+                var v42 = _principalDue; v42.Clean = value; _principalDue = v42;
+                var v43 = _servicingPaymentMethod; v43.Clean = value; _servicingPaymentMethod = v43;
+                var v44 = _servicingTransactionType; v44.Clean = value; _servicingTransactionType = v44;
+                var v45 = _taxes; v45.Clean = value; _taxes = v45;
+                var v46 = _totalPastDue; v46.Clean = value; _totalPastDue = v46;
+                var v47 = _transactionAmount; v47.Clean = value; _transactionAmount = v47;
+                var v48 = _transactionDate; v48.Clean = value; _transactionDate = v48;
+                var v49 = _unpaidLateFeeDue; v49.Clean = value; _unpaidLateFeeDue = v49;
+                var v50 = _uSDAMonthlyPremium; v50.Clean = value; _uSDAMonthlyPremium = v50;
                 _settingClean = 0;
             }
         }

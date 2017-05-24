@@ -7,210 +7,278 @@ namespace EncompassRest.Loans
 {
     public sealed partial class NetTangibleBenefit
     {
-        public Value<bool?> AprNotExceedIndicator { get; set; }
+        private Value<bool?> _aprNotExceedIndicator;
+        public bool? AprNotExceedIndicator { get { return _aprNotExceedIndicator; } set { _aprNotExceedIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAprNotExceedIndicator() => !_aprNotExceedIndicator.Clean;
+        private Value<bool?> _avoidingForeclosureIndicator;
+        public bool? AvoidingForeclosureIndicator { get { return _avoidingForeclosureIndicator; } set { _avoidingForeclosureIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAvoidingForeclosureIndicator() => !_avoidingForeclosureIndicator.Clean;
+        private Value<bool?> _beneficialChangedForBorrowerIndicator;
+        public bool? BeneficialChangedForBorrowerIndicator { get { return _beneficialChangedForBorrowerIndicator; } set { _beneficialChangedForBorrowerIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBeneficialChangedForBorrowerIndicator() => !_beneficialChangedForBorrowerIndicator.Clean;
+        private Value<string> _bonaFideFinancialEmergency;
+        public string BonaFideFinancialEmergency { get { return _bonaFideFinancialEmergency; } set { _bonaFideFinancialEmergency = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBonaFideFinancialEmergency() => !_bonaFideFinancialEmergency.Clean;
+        private Value<bool?> _borrowerCanRecoupCostofRefinancingIndicator;
+        public bool? BorrowerCanRecoupCostofRefinancingIndicator { get { return _borrowerCanRecoupCostofRefinancingIndicator; } set { _borrowerCanRecoupCostofRefinancingIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerCanRecoupCostofRefinancingIndicator() => !_borrowerCanRecoupCostofRefinancingIndicator.Clean;
+        private Value<bool?> _borrowerCanRecoupIndicator;
+        public bool? BorrowerCanRecoupIndicator { get { return _borrowerCanRecoupIndicator; } set { _borrowerCanRecoupIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerCanRecoupIndicator() => !_borrowerCanRecoupIndicator.Clean;
+        private Value<bool?> _borrowerMonthlyPaymentLowerThan20Indicator;
+        public bool? BorrowerMonthlyPaymentLowerThan20Indicator { get { return _borrowerMonthlyPaymentLowerThan20Indicator; } set { _borrowerMonthlyPaymentLowerThan20Indicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerMonthlyPaymentLowerThan20Indicator() => !_borrowerMonthlyPaymentLowerThan20Indicator.Clean;
+        private Value<string> _borrowerReceivedReasonable;
+        public string BorrowerReceivedReasonable { get { return _borrowerReceivedReasonable; } set { _borrowerReceivedReasonable = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerReceivedReasonable() => !_borrowerReceivedReasonable.Clean;
+        private Value<bool?> _borrowerReceivesAmountExcessCostAndFeesIndicator;
+        public bool? BorrowerReceivesAmountExcessCostAndFeesIndicator { get { return _borrowerReceivesAmountExcessCostAndFeesIndicator; } set { _borrowerReceivesAmountExcessCostAndFeesIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBorrowerReceivesAmountExcessCostAndFeesIndicator() => !_borrowerReceivesAmountExcessCostAndFeesIndicator.Clean;
+        private Value<bool?> _changeLoanFromArmtoFixedIndicator;
+        public bool? ChangeLoanFromArmtoFixedIndicator { get { return _changeLoanFromArmtoFixedIndicator; } set { _changeLoanFromArmtoFixedIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeChangeLoanFromArmtoFixedIndicator() => !_changeLoanFromArmtoFixedIndicator.Clean;
+        private Value<bool?> _changingLoanToFixedRateIndicator;
+        public bool? ChangingLoanToFixedRateIndicator { get { return _changingLoanToFixedRateIndicator; } set { _changingLoanToFixedRateIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeChangingLoanToFixedRateIndicator() => !_changingLoanToFixedRateIndicator.Clean;
+        private Value<bool?> _consolidatingOtherExistingLoansIntoNewLoanIndicator;
+        public bool? ConsolidatingOtherExistingLoansIntoNewLoanIndicator { get { return _consolidatingOtherExistingLoansIntoNewLoanIndicator; } set { _consolidatingOtherExistingLoansIntoNewLoanIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConsolidatingOtherExistingLoansIntoNewLoanIndicator() => !_consolidatingOtherExistingLoansIntoNewLoanIndicator.Clean;
+        private Value<bool?> _eliminatingBalloonPaymentIndicator;
+        public bool? EliminatingBalloonPaymentIndicator { get { return _eliminatingBalloonPaymentIndicator; } set { _eliminatingBalloonPaymentIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEliminatingBalloonPaymentIndicator() => !_eliminatingBalloonPaymentIndicator.Clean;
+        private Value<bool?> _eliminatingNegArmIndicator;
+        public bool? EliminatingNegArmIndicator { get { return _eliminatingNegArmIndicator; } set { _eliminatingNegArmIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEliminatingNegArmIndicator() => !_eliminatingNegArmIndicator.Clean;
+        private Value<bool?> _eliminatingPrivateMortgageInsuranceIndicator;
+        public bool? EliminatingPrivateMortgageInsuranceIndicator { get { return _eliminatingPrivateMortgageInsuranceIndicator; } set { _eliminatingPrivateMortgageInsuranceIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeEliminatingPrivateMortgageInsuranceIndicator() => !_eliminatingPrivateMortgageInsuranceIndicator.Clean;
+        private Value<decimal?> _existingLoanAprPercent;
+        public decimal? ExistingLoanAprPercent { get { return _existingLoanAprPercent; } set { _existingLoanAprPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanAprPercent() => !_existingLoanAprPercent.Clean;
+        private Value<bool?> _existingLoanBalloonIndicator;
+        public bool? ExistingLoanBalloonIndicator { get { return _existingLoanBalloonIndicator; } set { _existingLoanBalloonIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanBalloonIndicator() => !_existingLoanBalloonIndicator.Clean;
+        private Value<decimal?> _existingLoanBorrowerReceivesCashOutAmount;
+        public decimal? ExistingLoanBorrowerReceivesCashOutAmount { get { return _existingLoanBorrowerReceivesCashOutAmount; } set { _existingLoanBorrowerReceivesCashOutAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanBorrowerReceivesCashOutAmount() => !_existingLoanBorrowerReceivesCashOutAmount.Clean;
+        private Value<bool?> _existingLoanBorrowerReceivesCashOutIndicator;
+        public bool? ExistingLoanBorrowerReceivesCashOutIndicator { get { return _existingLoanBorrowerReceivesCashOutIndicator; } set { _existingLoanBorrowerReceivesCashOutIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanBorrowerReceivesCashOutIndicator() => !_existingLoanBorrowerReceivesCashOutIndicator.Clean;
+        private Value<decimal?> _existingLoanBottomRatioPercent;
+        public decimal? ExistingLoanBottomRatioPercent { get { return _existingLoanBottomRatioPercent; } set { _existingLoanBottomRatioPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanBottomRatioPercent() => !_existingLoanBottomRatioPercent.Clean;
+        private Value<DateTime?> _existingLoanDateLoanClosed;
+        public DateTime? ExistingLoanDateLoanClosed { get { return _existingLoanDateLoanClosed; } set { _existingLoanDateLoanClosed = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanDateLoanClosed() => !_existingLoanDateLoanClosed.Clean;
+        private Value<decimal?> _existingLoanFullyIndexRatePercent;
+        public decimal? ExistingLoanFullyIndexRatePercent { get { return _existingLoanFullyIndexRatePercent; } set { _existingLoanFullyIndexRatePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanFullyIndexRatePercent() => !_existingLoanFullyIndexRatePercent.Clean;
+        private Value<decimal?> _existingLoanInterestRatePercent;
+        public decimal? ExistingLoanInterestRatePercent { get { return _existingLoanInterestRatePercent; } set { _existingLoanInterestRatePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanInterestRatePercent() => !_existingLoanInterestRatePercent.Clean;
+        private Value<bool?> _existingLoanIsGuaranteedIndicator;
+        public bool? ExistingLoanIsGuaranteedIndicator { get { return _existingLoanIsGuaranteedIndicator; } set { _existingLoanIsGuaranteedIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanIsGuaranteedIndicator() => !_existingLoanIsGuaranteedIndicator.Clean;
+        private Value<bool?> _existingLoanIsLoanRefinancedAsSpecial;
+        public bool? ExistingLoanIsLoanRefinancedAsSpecial { get { return _existingLoanIsLoanRefinancedAsSpecial; } set { _existingLoanIsLoanRefinancedAsSpecial = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanIsLoanRefinancedAsSpecial() => !_existingLoanIsLoanRefinancedAsSpecial.Clean;
+        private Value<bool?> _existingLoanIsNegativeAmortizationFeatureIndicator;
+        public bool? ExistingLoanIsNegativeAmortizationFeatureIndicator { get { return _existingLoanIsNegativeAmortizationFeatureIndicator; } set { _existingLoanIsNegativeAmortizationFeatureIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanIsNegativeAmortizationFeatureIndicator() => !_existingLoanIsNegativeAmortizationFeatureIndicator.Clean;
+        private Value<bool?> _existingLoanIsPrepaymentPenalty;
+        public bool? ExistingLoanIsPrepaymentPenalty { get { return _existingLoanIsPrepaymentPenalty; } set { _existingLoanIsPrepaymentPenalty = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanIsPrepaymentPenalty() => !_existingLoanIsPrepaymentPenalty.Clean;
+        private Value<string> _existingLoanLoanAmortizationType;
+        public string ExistingLoanLoanAmortizationType { get { return _existingLoanLoanAmortizationType; } set { _existingLoanLoanAmortizationType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanLoanAmortizationType() => !_existingLoanLoanAmortizationType.Clean;
+        private Value<decimal?> _existingLoanLoanAmount;
+        public decimal? ExistingLoanLoanAmount { get { return _existingLoanLoanAmount; } set { _existingLoanLoanAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanLoanAmount() => !_existingLoanLoanAmount.Clean;
+        private Value<int?> _existingLoanLoanTerm;
+        public int? ExistingLoanLoanTerm { get { return _existingLoanLoanTerm; } set { _existingLoanLoanTerm = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanLoanTerm() => !_existingLoanLoanTerm.Clean;
+        private Value<decimal?> _existingLoanLtvPercent;
+        public decimal? ExistingLoanLtvPercent { get { return _existingLoanLtvPercent; } set { _existingLoanLtvPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanLtvPercent() => !_existingLoanLtvPercent.Clean;
+        private Value<decimal?> _existingLoanMaximumRatePercent;
+        public decimal? ExistingLoanMaximumRatePercent { get { return _existingLoanMaximumRatePercent; } set { _existingLoanMaximumRatePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanMaximumRatePercent() => !_existingLoanMaximumRatePercent.Clean;
+        private Value<int?> _existingLoanMonthsRemaining;
+        public int? ExistingLoanMonthsRemaining { get { return _existingLoanMonthsRemaining; } set { _existingLoanMonthsRemaining = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanMonthsRemaining() => !_existingLoanMonthsRemaining.Clean;
+        private Value<decimal?> _existingLoanPaymentAmount;
+        public decimal? ExistingLoanPaymentAmount { get { return _existingLoanPaymentAmount; } set { _existingLoanPaymentAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPaymentAmount() => !_existingLoanPaymentAmount.Clean;
+        private Value<decimal?> _existingLoanPaymentDifference;
+        public decimal? ExistingLoanPaymentDifference { get { return _existingLoanPaymentDifference; } set { _existingLoanPaymentDifference = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPaymentDifference() => !_existingLoanPaymentDifference.Clean;
+        private Value<decimal?> _existingLoanPaymentIncludeMiObligation;
+        public decimal? ExistingLoanPaymentIncludeMiObligation { get { return _existingLoanPaymentIncludeMiObligation; } set { _existingLoanPaymentIncludeMiObligation = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPaymentIncludeMiObligation() => !_existingLoanPaymentIncludeMiObligation.Clean;
+        private Value<decimal?> _existingLoanPaymentIncludeMortgageInsurance;
+        public decimal? ExistingLoanPaymentIncludeMortgageInsurance { get { return _existingLoanPaymentIncludeMortgageInsurance; } set { _existingLoanPaymentIncludeMortgageInsurance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPaymentIncludeMortgageInsurance() => !_existingLoanPaymentIncludeMortgageInsurance.Clean;
+        private Value<decimal?> _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
+        public decimal? ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan { get { return _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; } set { _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan() => !_existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean;
+        private Value<string> _existingLoanPrepaymentPenaltyBasedOn;
+        public string ExistingLoanPrepaymentPenaltyBasedOn { get { return _existingLoanPrepaymentPenaltyBasedOn; } set { _existingLoanPrepaymentPenaltyBasedOn = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPrepaymentPenaltyBasedOn() => !_existingLoanPrepaymentPenaltyBasedOn.Clean;
+        private Value<decimal?> _existingLoanPrepaymentPenaltyPercentage;
+        public decimal? ExistingLoanPrepaymentPenaltyPercentage { get { return _existingLoanPrepaymentPenaltyPercentage; } set { _existingLoanPrepaymentPenaltyPercentage = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPrepaymentPenaltyPercentage() => !_existingLoanPrepaymentPenaltyPercentage.Clean;
+        private Value<int?> _existingLoanPrepaymentPenaltyTerm;
+        public int? ExistingLoanPrepaymentPenaltyTerm { get { return _existingLoanPrepaymentPenaltyTerm; } set { _existingLoanPrepaymentPenaltyTerm = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPrepaymentPenaltyTerm() => !_existingLoanPrepaymentPenaltyTerm.Clean;
+        private Value<string> _existingLoanProvidedByLicenseeType;
+        public string ExistingLoanProvidedByLicenseeType { get { return _existingLoanProvidedByLicenseeType; } set { _existingLoanProvidedByLicenseeType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanProvidedByLicenseeType() => !_existingLoanProvidedByLicenseeType.Clean;
+        private Value<string> _existingLoanPurposeType;
+        public string ExistingLoanPurposeType { get { return _existingLoanPurposeType; } set { _existingLoanPurposeType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeExistingLoanPurposeType() => !_existingLoanPurposeType.Clean;
+        private Value<int?> _existingLoanRecoupCostsYears;
+        public int? ExistingLoanRecoupCostsYears { get { return _existingLoanRecoupCostsYears; } set { _existingLoanRecoupCostsYears = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAprNotExceedIndicator() => !AprNotExceedIndicator.Clean;
-        public Value<bool?> AvoidingForeclosureIndicator { get; set; }
+        public bool ShouldSerializeExistingLoanRecoupCostsYears() => !_existingLoanRecoupCostsYears.Clean;
+        private Value<decimal?> _existingLoanSavingsAmount;
+        public decimal? ExistingLoanSavingsAmount { get { return _existingLoanSavingsAmount; } set { _existingLoanSavingsAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAvoidingForeclosureIndicator() => !AvoidingForeclosureIndicator.Clean;
-        public Value<bool?> BeneficialChangedForBorrowerIndicator { get; set; }
+        public bool ShouldSerializeExistingLoanSavingsAmount() => !_existingLoanSavingsAmount.Clean;
+        private Value<decimal?> _existingLoanTotalDebtPayoff;
+        public decimal? ExistingLoanTotalDebtPayoff { get { return _existingLoanTotalDebtPayoff; } set { _existingLoanTotalDebtPayoff = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBeneficialChangedForBorrowerIndicator() => !BeneficialChangedForBorrowerIndicator.Clean;
-        public Value<string> BonaFideFinancialEmergency { get; set; }
+        public bool ShouldSerializeExistingLoanTotalDebtPayoff() => !_existingLoanTotalDebtPayoff.Clean;
+        private Value<decimal?> _existingLoanWeightedAverageInterestRatePercent;
+        public decimal? ExistingLoanWeightedAverageInterestRatePercent { get { return _existingLoanWeightedAverageInterestRatePercent; } set { _existingLoanWeightedAverageInterestRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBonaFideFinancialEmergency() => !BonaFideFinancialEmergency.Clean;
-        public Value<bool?> BorrowerCanRecoupCostofRefinancingIndicator { get; set; }
+        public bool ShouldSerializeExistingLoanWeightedAverageInterestRatePercent() => !_existingLoanWeightedAverageInterestRatePercent.Clean;
+        private Value<bool?> _homeLoanComplianceWith209;
+        public bool? HomeLoanComplianceWith209 { get { return _homeLoanComplianceWith209; } set { _homeLoanComplianceWith209 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerCanRecoupCostofRefinancingIndicator() => !BorrowerCanRecoupCostofRefinancingIndicator.Clean;
-        public Value<bool?> BorrowerCanRecoupIndicator { get; set; }
+        public bool ShouldSerializeHomeLoanComplianceWith209() => !_homeLoanComplianceWith209.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerCanRecoupIndicator() => !BorrowerCanRecoupIndicator.Clean;
-        public Value<bool?> BorrowerMonthlyPaymentLowerThan20Indicator { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _lenderDeterminedBorrowersInterest;
+        public bool? LenderDeterminedBorrowersInterest { get { return _lenderDeterminedBorrowersInterest; } set { _lenderDeterminedBorrowersInterest = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerMonthlyPaymentLowerThan20Indicator() => !BorrowerMonthlyPaymentLowerThan20Indicator.Clean;
-        public Value<string> BorrowerReceivedReasonable { get; set; }
+        public bool ShouldSerializeLenderDeterminedBorrowersInterest() => !_lenderDeterminedBorrowersInterest.Clean;
+        private Value<bool?> _newLoanIsGuaranteedIndicator;
+        public bool? NewLoanIsGuaranteedIndicator { get { return _newLoanIsGuaranteedIndicator; } set { _newLoanIsGuaranteedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerReceivedReasonable() => !BorrowerReceivedReasonable.Clean;
-        public Value<bool?> BorrowerReceivesAmountExcessCostAndFeesIndicator { get; set; }
+        public bool ShouldSerializeNewLoanIsGuaranteedIndicator() => !_newLoanIsGuaranteedIndicator.Clean;
+        private Value<bool?> _newLoanIsNegativeAmortizationFeatureIndicator;
+        public bool? NewLoanIsNegativeAmortizationFeatureIndicator { get { return _newLoanIsNegativeAmortizationFeatureIndicator; } set { _newLoanIsNegativeAmortizationFeatureIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerReceivesAmountExcessCostAndFeesIndicator() => !BorrowerReceivesAmountExcessCostAndFeesIndicator.Clean;
-        public Value<bool?> ChangeLoanFromArmtoFixedIndicator { get; set; }
+        public bool ShouldSerializeNewLoanIsNegativeAmortizationFeatureIndicator() => !_newLoanIsNegativeAmortizationFeatureIndicator.Clean;
+        private Value<bool?> _newLoanIsSafeHarborQM;
+        public bool? NewLoanIsSafeHarborQM { get { return _newLoanIsSafeHarborQM; } set { _newLoanIsSafeHarborQM = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangeLoanFromArmtoFixedIndicator() => !ChangeLoanFromArmtoFixedIndicator.Clean;
-        public Value<bool?> ChangingLoanToFixedRateIndicator { get; set; }
+        public bool ShouldSerializeNewLoanIsSafeHarborQM() => !_newLoanIsSafeHarborQM.Clean;
+        private Value<bool?> _newLoanIsSpecialMortgageOriginatedIndicator;
+        public bool? NewLoanIsSpecialMortgageOriginatedIndicator { get { return _newLoanIsSpecialMortgageOriginatedIndicator; } set { _newLoanIsSpecialMortgageOriginatedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangingLoanToFixedRateIndicator() => !ChangingLoanToFixedRateIndicator.Clean;
-        public Value<bool?> ConsolidatingOtherExistingLoansIntoNewLoanIndicator { get; set; }
+        public bool ShouldSerializeNewLoanIsSpecialMortgageOriginatedIndicator() => !_newLoanIsSpecialMortgageOriginatedIndicator.Clean;
+        private Value<decimal?> _newLoanPaymentWithMiDifference;
+        public decimal? NewLoanPaymentWithMiDifference { get { return _newLoanPaymentWithMiDifference; } set { _newLoanPaymentWithMiDifference = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConsolidatingOtherExistingLoansIntoNewLoanIndicator() => !ConsolidatingOtherExistingLoansIntoNewLoanIndicator.Clean;
-        public Value<bool?> EliminatingBalloonPaymentIndicator { get; set; }
+        public bool ShouldSerializeNewLoanPaymentWithMiDifference() => !_newLoanPaymentWithMiDifference.Clean;
+        private Value<decimal?> _newLoanPaymentWithObligationDifference;
+        public decimal? NewLoanPaymentWithObligationDifference { get { return _newLoanPaymentWithObligationDifference; } set { _newLoanPaymentWithObligationDifference = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEliminatingBalloonPaymentIndicator() => !EliminatingBalloonPaymentIndicator.Clean;
-        public Value<bool?> EliminatingNegArmIndicator { get; set; }
+        public bool ShouldSerializeNewLoanPaymentWithObligationDifference() => !_newLoanPaymentWithObligationDifference.Clean;
+        private Value<bool?> _newLoanPayOffConsolidateDebtIndicator;
+        public bool? NewLoanPayOffConsolidateDebtIndicator { get { return _newLoanPayOffConsolidateDebtIndicator; } set { _newLoanPayOffConsolidateDebtIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEliminatingNegArmIndicator() => !EliminatingNegArmIndicator.Clean;
-        public Value<bool?> EliminatingPrivateMortgageInsuranceIndicator { get; set; }
+        public bool ShouldSerializeNewLoanPayOffConsolidateDebtIndicator() => !_newLoanPayOffConsolidateDebtIndicator.Clean;
+        private Value<decimal?> _newLoanWeightedAverageInterestRatePercent;
+        public decimal? NewLoanWeightedAverageInterestRatePercent { get { return _newLoanWeightedAverageInterestRatePercent; } set { _newLoanWeightedAverageInterestRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEliminatingPrivateMortgageInsuranceIndicator() => !EliminatingPrivateMortgageInsuranceIndicator.Clean;
-        public Value<decimal?> ExistingLoanAprPercent { get; set; }
+        public bool ShouldSerializeNewLoanWeightedAverageInterestRatePercent() => !_newLoanWeightedAverageInterestRatePercent.Clean;
+        private Value<bool?> _obtainingLowerIntMonthlyPaymentIndicator;
+        public bool? ObtainingLowerIntMonthlyPaymentIndicator { get { return _obtainingLowerIntMonthlyPaymentIndicator; } set { _obtainingLowerIntMonthlyPaymentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanAprPercent() => !ExistingLoanAprPercent.Clean;
-        public Value<bool?> ExistingLoanBalloonIndicator { get; set; }
+        public bool ShouldSerializeObtainingLowerIntMonthlyPaymentIndicator() => !_obtainingLowerIntMonthlyPaymentIndicator.Clean;
+        private Value<bool?> _obtainingLowerIntRateIndicator;
+        public bool? ObtainingLowerIntRateIndicator { get { return _obtainingLowerIntRateIndicator; } set { _obtainingLowerIntRateIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanBalloonIndicator() => !ExistingLoanBalloonIndicator.Clean;
-        public Value<decimal?> ExistingLoanBorrowerReceivesCashOutAmount { get; set; }
+        public bool ShouldSerializeObtainingLowerIntRateIndicator() => !_obtainingLowerIntRateIndicator.Clean;
+        private Value<bool?> _obtainingShortAmortScheduleIndicator;
+        public bool? ObtainingShortAmortScheduleIndicator { get { return _obtainingShortAmortScheduleIndicator; } set { _obtainingShortAmortScheduleIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanBorrowerReceivesCashOutAmount() => !ExistingLoanBorrowerReceivesCashOutAmount.Clean;
-        public Value<bool?> ExistingLoanBorrowerReceivesCashOutIndicator { get; set; }
+        public bool ShouldSerializeObtainingShortAmortScheduleIndicator() => !_obtainingShortAmortScheduleIndicator.Clean;
+        private Value<bool?> _otherReason;
+        public bool? OtherReason { get { return _otherReason; } set { _otherReason = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanBorrowerReceivesCashOutIndicator() => !ExistingLoanBorrowerReceivesCashOutIndicator.Clean;
-        public Value<decimal?> ExistingLoanBottomRatioPercent { get; set; }
+        public bool ShouldSerializeOtherReason() => !_otherReason.Clean;
+        private Value<string> _otherReasonDescription;
+        public string OtherReasonDescription { get { return _otherReasonDescription; } set { _otherReasonDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanBottomRatioPercent() => !ExistingLoanBottomRatioPercent.Clean;
-        public Value<DateTime?> ExistingLoanDateLoanClosed { get; set; }
+        public bool ShouldSerializeOtherReasonDescription() => !_otherReasonDescription.Clean;
+        private Value<bool?> _printBorrowerInitialLinesIndicator;
+        public bool? PrintBorrowerInitialLinesIndicator { get { return _printBorrowerInitialLinesIndicator; } set { _printBorrowerInitialLinesIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanDateLoanClosed() => !ExistingLoanDateLoanClosed.Clean;
-        public Value<decimal?> ExistingLoanFullyIndexRatePercent { get; set; }
+        public bool ShouldSerializePrintBorrowerInitialLinesIndicator() => !_printBorrowerInitialLinesIndicator.Clean;
+        private Value<bool?> _proceedsOfNewLoanWillBeUsedIndicator;
+        public bool? ProceedsOfNewLoanWillBeUsedIndicator { get { return _proceedsOfNewLoanWillBeUsedIndicator; } set { _proceedsOfNewLoanWillBeUsedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanFullyIndexRatePercent() => !ExistingLoanFullyIndexRatePercent.Clean;
-        public Value<decimal?> ExistingLoanInterestRatePercent { get; set; }
+        public bool ShouldSerializeProceedsOfNewLoanWillBeUsedIndicator() => !_proceedsOfNewLoanWillBeUsedIndicator.Clean;
+        private Value<bool?> _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
+        public bool? ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator { get { return _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator; } set { _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanInterestRatePercent() => !ExistingLoanInterestRatePercent.Clean;
-        public Value<bool?> ExistingLoanIsGuaranteedIndicator { get; set; }
+        public bool ShouldSerializeReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator() => !_receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean;
+        private Value<bool?> _refinancingLoanIsHomeEquityIndicator;
+        public bool? RefinancingLoanIsHomeEquityIndicator { get { return _refinancingLoanIsHomeEquityIndicator; } set { _refinancingLoanIsHomeEquityIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanIsGuaranteedIndicator() => !ExistingLoanIsGuaranteedIndicator.Clean;
-        public Value<bool?> ExistingLoanIsLoanRefinancedAsSpecial { get; set; }
+        public bool ShouldSerializeRefinancingLoanIsHomeEquityIndicator() => !_refinancingLoanIsHomeEquityIndicator.Clean;
+        private Value<bool?> _refinancingRespondBonaFide;
+        public bool? RefinancingRespondBonaFide { get { return _refinancingRespondBonaFide; } set { _refinancingRespondBonaFide = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanIsLoanRefinancedAsSpecial() => !ExistingLoanIsLoanRefinancedAsSpecial.Clean;
-        public Value<bool?> ExistingLoanIsNegativeAmortizationFeatureIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanIsNegativeAmortizationFeatureIndicator() => !ExistingLoanIsNegativeAmortizationFeatureIndicator.Clean;
-        public Value<bool?> ExistingLoanIsPrepaymentPenalty { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanIsPrepaymentPenalty() => !ExistingLoanIsPrepaymentPenalty.Clean;
-        public Value<string> ExistingLoanLoanAmortizationType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanLoanAmortizationType() => !ExistingLoanLoanAmortizationType.Clean;
-        public Value<decimal?> ExistingLoanLoanAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanLoanAmount() => !ExistingLoanLoanAmount.Clean;
-        public Value<int?> ExistingLoanLoanTerm { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanLoanTerm() => !ExistingLoanLoanTerm.Clean;
-        public Value<decimal?> ExistingLoanLtvPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanLtvPercent() => !ExistingLoanLtvPercent.Clean;
-        public Value<decimal?> ExistingLoanMaximumRatePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanMaximumRatePercent() => !ExistingLoanMaximumRatePercent.Clean;
-        public Value<int?> ExistingLoanMonthsRemaining { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanMonthsRemaining() => !ExistingLoanMonthsRemaining.Clean;
-        public Value<decimal?> ExistingLoanPaymentAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPaymentAmount() => !ExistingLoanPaymentAmount.Clean;
-        public Value<decimal?> ExistingLoanPaymentDifference { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPaymentDifference() => !ExistingLoanPaymentDifference.Clean;
-        public Value<decimal?> ExistingLoanPaymentIncludeMiObligation { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPaymentIncludeMiObligation() => !ExistingLoanPaymentIncludeMiObligation.Clean;
-        public Value<decimal?> ExistingLoanPaymentIncludeMortgageInsurance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPaymentIncludeMortgageInsurance() => !ExistingLoanPaymentIncludeMortgageInsurance.Clean;
-        public Value<decimal?> ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan() => !ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean;
-        public Value<string> ExistingLoanPrepaymentPenaltyBasedOn { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPrepaymentPenaltyBasedOn() => !ExistingLoanPrepaymentPenaltyBasedOn.Clean;
-        public Value<decimal?> ExistingLoanPrepaymentPenaltyPercentage { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPrepaymentPenaltyPercentage() => !ExistingLoanPrepaymentPenaltyPercentage.Clean;
-        public Value<int?> ExistingLoanPrepaymentPenaltyTerm { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPrepaymentPenaltyTerm() => !ExistingLoanPrepaymentPenaltyTerm.Clean;
-        public Value<string> ExistingLoanProvidedByLicenseeType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanProvidedByLicenseeType() => !ExistingLoanProvidedByLicenseeType.Clean;
-        public Value<string> ExistingLoanPurposeType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanPurposeType() => !ExistingLoanPurposeType.Clean;
-        public Value<int?> ExistingLoanRecoupCostsYears { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanRecoupCostsYears() => !ExistingLoanRecoupCostsYears.Clean;
-        public Value<decimal?> ExistingLoanSavingsAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanSavingsAmount() => !ExistingLoanSavingsAmount.Clean;
-        public Value<decimal?> ExistingLoanTotalDebtPayoff { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanTotalDebtPayoff() => !ExistingLoanTotalDebtPayoff.Clean;
-        public Value<decimal?> ExistingLoanWeightedAverageInterestRatePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExistingLoanWeightedAverageInterestRatePercent() => !ExistingLoanWeightedAverageInterestRatePercent.Clean;
-        public Value<bool?> HomeLoanComplianceWith209 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomeLoanComplianceWith209() => !HomeLoanComplianceWith209.Clean;
-        public Value<string> Id { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> LenderDeterminedBorrowersInterest { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderDeterminedBorrowersInterest() => !LenderDeterminedBorrowersInterest.Clean;
-        public Value<bool?> NewLoanIsGuaranteedIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanIsGuaranteedIndicator() => !NewLoanIsGuaranteedIndicator.Clean;
-        public Value<bool?> NewLoanIsNegativeAmortizationFeatureIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanIsNegativeAmortizationFeatureIndicator() => !NewLoanIsNegativeAmortizationFeatureIndicator.Clean;
-        public Value<bool?> NewLoanIsSafeHarborQM { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanIsSafeHarborQM() => !NewLoanIsSafeHarborQM.Clean;
-        public Value<bool?> NewLoanIsSpecialMortgageOriginatedIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanIsSpecialMortgageOriginatedIndicator() => !NewLoanIsSpecialMortgageOriginatedIndicator.Clean;
-        public Value<decimal?> NewLoanPaymentWithMiDifference { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanPaymentWithMiDifference() => !NewLoanPaymentWithMiDifference.Clean;
-        public Value<decimal?> NewLoanPaymentWithObligationDifference { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanPaymentWithObligationDifference() => !NewLoanPaymentWithObligationDifference.Clean;
-        public Value<bool?> NewLoanPayOffConsolidateDebtIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanPayOffConsolidateDebtIndicator() => !NewLoanPayOffConsolidateDebtIndicator.Clean;
-        public Value<decimal?> NewLoanWeightedAverageInterestRatePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewLoanWeightedAverageInterestRatePercent() => !NewLoanWeightedAverageInterestRatePercent.Clean;
-        public Value<bool?> ObtainingLowerIntMonthlyPaymentIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeObtainingLowerIntMonthlyPaymentIndicator() => !ObtainingLowerIntMonthlyPaymentIndicator.Clean;
-        public Value<bool?> ObtainingLowerIntRateIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeObtainingLowerIntRateIndicator() => !ObtainingLowerIntRateIndicator.Clean;
-        public Value<bool?> ObtainingShortAmortScheduleIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeObtainingShortAmortScheduleIndicator() => !ObtainingShortAmortScheduleIndicator.Clean;
-        public Value<bool?> OtherReason { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherReason() => !OtherReason.Clean;
-        public Value<string> OtherReasonDescription { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherReasonDescription() => !OtherReasonDescription.Clean;
-        public Value<bool?> PrintBorrowerInitialLinesIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintBorrowerInitialLinesIndicator() => !PrintBorrowerInitialLinesIndicator.Clean;
-        public Value<bool?> ProceedsOfNewLoanWillBeUsedIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProceedsOfNewLoanWillBeUsedIndicator() => !ProceedsOfNewLoanWillBeUsedIndicator.Clean;
-        public Value<bool?> ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator() => !ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean;
-        public Value<bool?> RefinancingLoanIsHomeEquityIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRefinancingLoanIsHomeEquityIndicator() => !RefinancingLoanIsHomeEquityIndicator.Clean;
-        public Value<bool?> RefinancingRespondBonaFide { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRefinancingRespondBonaFide() => !RefinancingRespondBonaFide.Clean;
+        public bool ShouldSerializeRefinancingRespondBonaFide() => !_refinancingRespondBonaFide.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -218,148 +286,148 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AprNotExceedIndicator.Clean
-                    && AvoidingForeclosureIndicator.Clean
-                    && BeneficialChangedForBorrowerIndicator.Clean
-                    && BonaFideFinancialEmergency.Clean
-                    && BorrowerCanRecoupCostofRefinancingIndicator.Clean
-                    && BorrowerCanRecoupIndicator.Clean
-                    && BorrowerMonthlyPaymentLowerThan20Indicator.Clean
-                    && BorrowerReceivedReasonable.Clean
-                    && BorrowerReceivesAmountExcessCostAndFeesIndicator.Clean
-                    && ChangeLoanFromArmtoFixedIndicator.Clean
-                    && ChangingLoanToFixedRateIndicator.Clean
-                    && ConsolidatingOtherExistingLoansIntoNewLoanIndicator.Clean
-                    && EliminatingBalloonPaymentIndicator.Clean
-                    && EliminatingNegArmIndicator.Clean
-                    && EliminatingPrivateMortgageInsuranceIndicator.Clean
-                    && ExistingLoanAprPercent.Clean
-                    && ExistingLoanBalloonIndicator.Clean
-                    && ExistingLoanBorrowerReceivesCashOutAmount.Clean
-                    && ExistingLoanBorrowerReceivesCashOutIndicator.Clean
-                    && ExistingLoanBottomRatioPercent.Clean
-                    && ExistingLoanDateLoanClosed.Clean
-                    && ExistingLoanFullyIndexRatePercent.Clean
-                    && ExistingLoanInterestRatePercent.Clean
-                    && ExistingLoanIsGuaranteedIndicator.Clean
-                    && ExistingLoanIsLoanRefinancedAsSpecial.Clean
-                    && ExistingLoanIsNegativeAmortizationFeatureIndicator.Clean
-                    && ExistingLoanIsPrepaymentPenalty.Clean
-                    && ExistingLoanLoanAmortizationType.Clean
-                    && ExistingLoanLoanAmount.Clean
-                    && ExistingLoanLoanTerm.Clean
-                    && ExistingLoanLtvPercent.Clean
-                    && ExistingLoanMaximumRatePercent.Clean
-                    && ExistingLoanMonthsRemaining.Clean
-                    && ExistingLoanPaymentAmount.Clean
-                    && ExistingLoanPaymentDifference.Clean
-                    && ExistingLoanPaymentIncludeMiObligation.Clean
-                    && ExistingLoanPaymentIncludeMortgageInsurance.Clean
-                    && ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean
-                    && ExistingLoanPrepaymentPenaltyBasedOn.Clean
-                    && ExistingLoanPrepaymentPenaltyPercentage.Clean
-                    && ExistingLoanPrepaymentPenaltyTerm.Clean
-                    && ExistingLoanProvidedByLicenseeType.Clean
-                    && ExistingLoanPurposeType.Clean
-                    && ExistingLoanRecoupCostsYears.Clean
-                    && ExistingLoanSavingsAmount.Clean
-                    && ExistingLoanTotalDebtPayoff.Clean
-                    && ExistingLoanWeightedAverageInterestRatePercent.Clean
-                    && HomeLoanComplianceWith209.Clean
-                    && Id.Clean
-                    && LenderDeterminedBorrowersInterest.Clean
-                    && NewLoanIsGuaranteedIndicator.Clean
-                    && NewLoanIsNegativeAmortizationFeatureIndicator.Clean
-                    && NewLoanIsSafeHarborQM.Clean
-                    && NewLoanIsSpecialMortgageOriginatedIndicator.Clean
-                    && NewLoanPaymentWithMiDifference.Clean
-                    && NewLoanPaymentWithObligationDifference.Clean
-                    && NewLoanPayOffConsolidateDebtIndicator.Clean
-                    && NewLoanWeightedAverageInterestRatePercent.Clean
-                    && ObtainingLowerIntMonthlyPaymentIndicator.Clean
-                    && ObtainingLowerIntRateIndicator.Clean
-                    && ObtainingShortAmortScheduleIndicator.Clean
-                    && OtherReason.Clean
-                    && OtherReasonDescription.Clean
-                    && PrintBorrowerInitialLinesIndicator.Clean
-                    && ProceedsOfNewLoanWillBeUsedIndicator.Clean
-                    && ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean
-                    && RefinancingLoanIsHomeEquityIndicator.Clean
-                    && RefinancingRespondBonaFide.Clean;
+                var clean = _aprNotExceedIndicator.Clean
+                    && _avoidingForeclosureIndicator.Clean
+                    && _beneficialChangedForBorrowerIndicator.Clean
+                    && _bonaFideFinancialEmergency.Clean
+                    && _borrowerCanRecoupCostofRefinancingIndicator.Clean
+                    && _borrowerCanRecoupIndicator.Clean
+                    && _borrowerMonthlyPaymentLowerThan20Indicator.Clean
+                    && _borrowerReceivedReasonable.Clean
+                    && _borrowerReceivesAmountExcessCostAndFeesIndicator.Clean
+                    && _changeLoanFromArmtoFixedIndicator.Clean
+                    && _changingLoanToFixedRateIndicator.Clean
+                    && _consolidatingOtherExistingLoansIntoNewLoanIndicator.Clean
+                    && _eliminatingBalloonPaymentIndicator.Clean
+                    && _eliminatingNegArmIndicator.Clean
+                    && _eliminatingPrivateMortgageInsuranceIndicator.Clean
+                    && _existingLoanAprPercent.Clean
+                    && _existingLoanBalloonIndicator.Clean
+                    && _existingLoanBorrowerReceivesCashOutAmount.Clean
+                    && _existingLoanBorrowerReceivesCashOutIndicator.Clean
+                    && _existingLoanBottomRatioPercent.Clean
+                    && _existingLoanDateLoanClosed.Clean
+                    && _existingLoanFullyIndexRatePercent.Clean
+                    && _existingLoanInterestRatePercent.Clean
+                    && _existingLoanIsGuaranteedIndicator.Clean
+                    && _existingLoanIsLoanRefinancedAsSpecial.Clean
+                    && _existingLoanIsNegativeAmortizationFeatureIndicator.Clean
+                    && _existingLoanIsPrepaymentPenalty.Clean
+                    && _existingLoanLoanAmortizationType.Clean
+                    && _existingLoanLoanAmount.Clean
+                    && _existingLoanLoanTerm.Clean
+                    && _existingLoanLtvPercent.Clean
+                    && _existingLoanMaximumRatePercent.Clean
+                    && _existingLoanMonthsRemaining.Clean
+                    && _existingLoanPaymentAmount.Clean
+                    && _existingLoanPaymentDifference.Clean
+                    && _existingLoanPaymentIncludeMiObligation.Clean
+                    && _existingLoanPaymentIncludeMortgageInsurance.Clean
+                    && _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean
+                    && _existingLoanPrepaymentPenaltyBasedOn.Clean
+                    && _existingLoanPrepaymentPenaltyPercentage.Clean
+                    && _existingLoanPrepaymentPenaltyTerm.Clean
+                    && _existingLoanProvidedByLicenseeType.Clean
+                    && _existingLoanPurposeType.Clean
+                    && _existingLoanRecoupCostsYears.Clean
+                    && _existingLoanSavingsAmount.Clean
+                    && _existingLoanTotalDebtPayoff.Clean
+                    && _existingLoanWeightedAverageInterestRatePercent.Clean
+                    && _homeLoanComplianceWith209.Clean
+                    && _id.Clean
+                    && _lenderDeterminedBorrowersInterest.Clean
+                    && _newLoanIsGuaranteedIndicator.Clean
+                    && _newLoanIsNegativeAmortizationFeatureIndicator.Clean
+                    && _newLoanIsSafeHarborQM.Clean
+                    && _newLoanIsSpecialMortgageOriginatedIndicator.Clean
+                    && _newLoanPaymentWithMiDifference.Clean
+                    && _newLoanPaymentWithObligationDifference.Clean
+                    && _newLoanPayOffConsolidateDebtIndicator.Clean
+                    && _newLoanWeightedAverageInterestRatePercent.Clean
+                    && _obtainingLowerIntMonthlyPaymentIndicator.Clean
+                    && _obtainingLowerIntRateIndicator.Clean
+                    && _obtainingShortAmortScheduleIndicator.Clean
+                    && _otherReason.Clean
+                    && _otherReasonDescription.Clean
+                    && _printBorrowerInitialLinesIndicator.Clean
+                    && _proceedsOfNewLoanWillBeUsedIndicator.Clean
+                    && _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean
+                    && _refinancingLoanIsHomeEquityIndicator.Clean
+                    && _refinancingRespondBonaFide.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AprNotExceedIndicator; v0.Clean = value; AprNotExceedIndicator = v0;
-                var v1 = AvoidingForeclosureIndicator; v1.Clean = value; AvoidingForeclosureIndicator = v1;
-                var v2 = BeneficialChangedForBorrowerIndicator; v2.Clean = value; BeneficialChangedForBorrowerIndicator = v2;
-                var v3 = BonaFideFinancialEmergency; v3.Clean = value; BonaFideFinancialEmergency = v3;
-                var v4 = BorrowerCanRecoupCostofRefinancingIndicator; v4.Clean = value; BorrowerCanRecoupCostofRefinancingIndicator = v4;
-                var v5 = BorrowerCanRecoupIndicator; v5.Clean = value; BorrowerCanRecoupIndicator = v5;
-                var v6 = BorrowerMonthlyPaymentLowerThan20Indicator; v6.Clean = value; BorrowerMonthlyPaymentLowerThan20Indicator = v6;
-                var v7 = BorrowerReceivedReasonable; v7.Clean = value; BorrowerReceivedReasonable = v7;
-                var v8 = BorrowerReceivesAmountExcessCostAndFeesIndicator; v8.Clean = value; BorrowerReceivesAmountExcessCostAndFeesIndicator = v8;
-                var v9 = ChangeLoanFromArmtoFixedIndicator; v9.Clean = value; ChangeLoanFromArmtoFixedIndicator = v9;
-                var v10 = ChangingLoanToFixedRateIndicator; v10.Clean = value; ChangingLoanToFixedRateIndicator = v10;
-                var v11 = ConsolidatingOtherExistingLoansIntoNewLoanIndicator; v11.Clean = value; ConsolidatingOtherExistingLoansIntoNewLoanIndicator = v11;
-                var v12 = EliminatingBalloonPaymentIndicator; v12.Clean = value; EliminatingBalloonPaymentIndicator = v12;
-                var v13 = EliminatingNegArmIndicator; v13.Clean = value; EliminatingNegArmIndicator = v13;
-                var v14 = EliminatingPrivateMortgageInsuranceIndicator; v14.Clean = value; EliminatingPrivateMortgageInsuranceIndicator = v14;
-                var v15 = ExistingLoanAprPercent; v15.Clean = value; ExistingLoanAprPercent = v15;
-                var v16 = ExistingLoanBalloonIndicator; v16.Clean = value; ExistingLoanBalloonIndicator = v16;
-                var v17 = ExistingLoanBorrowerReceivesCashOutAmount; v17.Clean = value; ExistingLoanBorrowerReceivesCashOutAmount = v17;
-                var v18 = ExistingLoanBorrowerReceivesCashOutIndicator; v18.Clean = value; ExistingLoanBorrowerReceivesCashOutIndicator = v18;
-                var v19 = ExistingLoanBottomRatioPercent; v19.Clean = value; ExistingLoanBottomRatioPercent = v19;
-                var v20 = ExistingLoanDateLoanClosed; v20.Clean = value; ExistingLoanDateLoanClosed = v20;
-                var v21 = ExistingLoanFullyIndexRatePercent; v21.Clean = value; ExistingLoanFullyIndexRatePercent = v21;
-                var v22 = ExistingLoanInterestRatePercent; v22.Clean = value; ExistingLoanInterestRatePercent = v22;
-                var v23 = ExistingLoanIsGuaranteedIndicator; v23.Clean = value; ExistingLoanIsGuaranteedIndicator = v23;
-                var v24 = ExistingLoanIsLoanRefinancedAsSpecial; v24.Clean = value; ExistingLoanIsLoanRefinancedAsSpecial = v24;
-                var v25 = ExistingLoanIsNegativeAmortizationFeatureIndicator; v25.Clean = value; ExistingLoanIsNegativeAmortizationFeatureIndicator = v25;
-                var v26 = ExistingLoanIsPrepaymentPenalty; v26.Clean = value; ExistingLoanIsPrepaymentPenalty = v26;
-                var v27 = ExistingLoanLoanAmortizationType; v27.Clean = value; ExistingLoanLoanAmortizationType = v27;
-                var v28 = ExistingLoanLoanAmount; v28.Clean = value; ExistingLoanLoanAmount = v28;
-                var v29 = ExistingLoanLoanTerm; v29.Clean = value; ExistingLoanLoanTerm = v29;
-                var v30 = ExistingLoanLtvPercent; v30.Clean = value; ExistingLoanLtvPercent = v30;
-                var v31 = ExistingLoanMaximumRatePercent; v31.Clean = value; ExistingLoanMaximumRatePercent = v31;
-                var v32 = ExistingLoanMonthsRemaining; v32.Clean = value; ExistingLoanMonthsRemaining = v32;
-                var v33 = ExistingLoanPaymentAmount; v33.Clean = value; ExistingLoanPaymentAmount = v33;
-                var v34 = ExistingLoanPaymentDifference; v34.Clean = value; ExistingLoanPaymentDifference = v34;
-                var v35 = ExistingLoanPaymentIncludeMiObligation; v35.Clean = value; ExistingLoanPaymentIncludeMiObligation = v35;
-                var v36 = ExistingLoanPaymentIncludeMortgageInsurance; v36.Clean = value; ExistingLoanPaymentIncludeMortgageInsurance = v36;
-                var v37 = ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan; v37.Clean = value; ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan = v37;
-                var v38 = ExistingLoanPrepaymentPenaltyBasedOn; v38.Clean = value; ExistingLoanPrepaymentPenaltyBasedOn = v38;
-                var v39 = ExistingLoanPrepaymentPenaltyPercentage; v39.Clean = value; ExistingLoanPrepaymentPenaltyPercentage = v39;
-                var v40 = ExistingLoanPrepaymentPenaltyTerm; v40.Clean = value; ExistingLoanPrepaymentPenaltyTerm = v40;
-                var v41 = ExistingLoanProvidedByLicenseeType; v41.Clean = value; ExistingLoanProvidedByLicenseeType = v41;
-                var v42 = ExistingLoanPurposeType; v42.Clean = value; ExistingLoanPurposeType = v42;
-                var v43 = ExistingLoanRecoupCostsYears; v43.Clean = value; ExistingLoanRecoupCostsYears = v43;
-                var v44 = ExistingLoanSavingsAmount; v44.Clean = value; ExistingLoanSavingsAmount = v44;
-                var v45 = ExistingLoanTotalDebtPayoff; v45.Clean = value; ExistingLoanTotalDebtPayoff = v45;
-                var v46 = ExistingLoanWeightedAverageInterestRatePercent; v46.Clean = value; ExistingLoanWeightedAverageInterestRatePercent = v46;
-                var v47 = HomeLoanComplianceWith209; v47.Clean = value; HomeLoanComplianceWith209 = v47;
-                var v48 = Id; v48.Clean = value; Id = v48;
-                var v49 = LenderDeterminedBorrowersInterest; v49.Clean = value; LenderDeterminedBorrowersInterest = v49;
-                var v50 = NewLoanIsGuaranteedIndicator; v50.Clean = value; NewLoanIsGuaranteedIndicator = v50;
-                var v51 = NewLoanIsNegativeAmortizationFeatureIndicator; v51.Clean = value; NewLoanIsNegativeAmortizationFeatureIndicator = v51;
-                var v52 = NewLoanIsSafeHarborQM; v52.Clean = value; NewLoanIsSafeHarborQM = v52;
-                var v53 = NewLoanIsSpecialMortgageOriginatedIndicator; v53.Clean = value; NewLoanIsSpecialMortgageOriginatedIndicator = v53;
-                var v54 = NewLoanPaymentWithMiDifference; v54.Clean = value; NewLoanPaymentWithMiDifference = v54;
-                var v55 = NewLoanPaymentWithObligationDifference; v55.Clean = value; NewLoanPaymentWithObligationDifference = v55;
-                var v56 = NewLoanPayOffConsolidateDebtIndicator; v56.Clean = value; NewLoanPayOffConsolidateDebtIndicator = v56;
-                var v57 = NewLoanWeightedAverageInterestRatePercent; v57.Clean = value; NewLoanWeightedAverageInterestRatePercent = v57;
-                var v58 = ObtainingLowerIntMonthlyPaymentIndicator; v58.Clean = value; ObtainingLowerIntMonthlyPaymentIndicator = v58;
-                var v59 = ObtainingLowerIntRateIndicator; v59.Clean = value; ObtainingLowerIntRateIndicator = v59;
-                var v60 = ObtainingShortAmortScheduleIndicator; v60.Clean = value; ObtainingShortAmortScheduleIndicator = v60;
-                var v61 = OtherReason; v61.Clean = value; OtherReason = v61;
-                var v62 = OtherReasonDescription; v62.Clean = value; OtherReasonDescription = v62;
-                var v63 = PrintBorrowerInitialLinesIndicator; v63.Clean = value; PrintBorrowerInitialLinesIndicator = v63;
-                var v64 = ProceedsOfNewLoanWillBeUsedIndicator; v64.Clean = value; ProceedsOfNewLoanWillBeUsedIndicator = v64;
-                var v65 = ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator; v65.Clean = value; ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator = v65;
-                var v66 = RefinancingLoanIsHomeEquityIndicator; v66.Clean = value; RefinancingLoanIsHomeEquityIndicator = v66;
-                var v67 = RefinancingRespondBonaFide; v67.Clean = value; RefinancingRespondBonaFide = v67;
+                var v0 = _aprNotExceedIndicator; v0.Clean = value; _aprNotExceedIndicator = v0;
+                var v1 = _avoidingForeclosureIndicator; v1.Clean = value; _avoidingForeclosureIndicator = v1;
+                var v2 = _beneficialChangedForBorrowerIndicator; v2.Clean = value; _beneficialChangedForBorrowerIndicator = v2;
+                var v3 = _bonaFideFinancialEmergency; v3.Clean = value; _bonaFideFinancialEmergency = v3;
+                var v4 = _borrowerCanRecoupCostofRefinancingIndicator; v4.Clean = value; _borrowerCanRecoupCostofRefinancingIndicator = v4;
+                var v5 = _borrowerCanRecoupIndicator; v5.Clean = value; _borrowerCanRecoupIndicator = v5;
+                var v6 = _borrowerMonthlyPaymentLowerThan20Indicator; v6.Clean = value; _borrowerMonthlyPaymentLowerThan20Indicator = v6;
+                var v7 = _borrowerReceivedReasonable; v7.Clean = value; _borrowerReceivedReasonable = v7;
+                var v8 = _borrowerReceivesAmountExcessCostAndFeesIndicator; v8.Clean = value; _borrowerReceivesAmountExcessCostAndFeesIndicator = v8;
+                var v9 = _changeLoanFromArmtoFixedIndicator; v9.Clean = value; _changeLoanFromArmtoFixedIndicator = v9;
+                var v10 = _changingLoanToFixedRateIndicator; v10.Clean = value; _changingLoanToFixedRateIndicator = v10;
+                var v11 = _consolidatingOtherExistingLoansIntoNewLoanIndicator; v11.Clean = value; _consolidatingOtherExistingLoansIntoNewLoanIndicator = v11;
+                var v12 = _eliminatingBalloonPaymentIndicator; v12.Clean = value; _eliminatingBalloonPaymentIndicator = v12;
+                var v13 = _eliminatingNegArmIndicator; v13.Clean = value; _eliminatingNegArmIndicator = v13;
+                var v14 = _eliminatingPrivateMortgageInsuranceIndicator; v14.Clean = value; _eliminatingPrivateMortgageInsuranceIndicator = v14;
+                var v15 = _existingLoanAprPercent; v15.Clean = value; _existingLoanAprPercent = v15;
+                var v16 = _existingLoanBalloonIndicator; v16.Clean = value; _existingLoanBalloonIndicator = v16;
+                var v17 = _existingLoanBorrowerReceivesCashOutAmount; v17.Clean = value; _existingLoanBorrowerReceivesCashOutAmount = v17;
+                var v18 = _existingLoanBorrowerReceivesCashOutIndicator; v18.Clean = value; _existingLoanBorrowerReceivesCashOutIndicator = v18;
+                var v19 = _existingLoanBottomRatioPercent; v19.Clean = value; _existingLoanBottomRatioPercent = v19;
+                var v20 = _existingLoanDateLoanClosed; v20.Clean = value; _existingLoanDateLoanClosed = v20;
+                var v21 = _existingLoanFullyIndexRatePercent; v21.Clean = value; _existingLoanFullyIndexRatePercent = v21;
+                var v22 = _existingLoanInterestRatePercent; v22.Clean = value; _existingLoanInterestRatePercent = v22;
+                var v23 = _existingLoanIsGuaranteedIndicator; v23.Clean = value; _existingLoanIsGuaranteedIndicator = v23;
+                var v24 = _existingLoanIsLoanRefinancedAsSpecial; v24.Clean = value; _existingLoanIsLoanRefinancedAsSpecial = v24;
+                var v25 = _existingLoanIsNegativeAmortizationFeatureIndicator; v25.Clean = value; _existingLoanIsNegativeAmortizationFeatureIndicator = v25;
+                var v26 = _existingLoanIsPrepaymentPenalty; v26.Clean = value; _existingLoanIsPrepaymentPenalty = v26;
+                var v27 = _existingLoanLoanAmortizationType; v27.Clean = value; _existingLoanLoanAmortizationType = v27;
+                var v28 = _existingLoanLoanAmount; v28.Clean = value; _existingLoanLoanAmount = v28;
+                var v29 = _existingLoanLoanTerm; v29.Clean = value; _existingLoanLoanTerm = v29;
+                var v30 = _existingLoanLtvPercent; v30.Clean = value; _existingLoanLtvPercent = v30;
+                var v31 = _existingLoanMaximumRatePercent; v31.Clean = value; _existingLoanMaximumRatePercent = v31;
+                var v32 = _existingLoanMonthsRemaining; v32.Clean = value; _existingLoanMonthsRemaining = v32;
+                var v33 = _existingLoanPaymentAmount; v33.Clean = value; _existingLoanPaymentAmount = v33;
+                var v34 = _existingLoanPaymentDifference; v34.Clean = value; _existingLoanPaymentDifference = v34;
+                var v35 = _existingLoanPaymentIncludeMiObligation; v35.Clean = value; _existingLoanPaymentIncludeMiObligation = v35;
+                var v36 = _existingLoanPaymentIncludeMortgageInsurance; v36.Clean = value; _existingLoanPaymentIncludeMortgageInsurance = v36;
+                var v37 = _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; v37.Clean = value; _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = v37;
+                var v38 = _existingLoanPrepaymentPenaltyBasedOn; v38.Clean = value; _existingLoanPrepaymentPenaltyBasedOn = v38;
+                var v39 = _existingLoanPrepaymentPenaltyPercentage; v39.Clean = value; _existingLoanPrepaymentPenaltyPercentage = v39;
+                var v40 = _existingLoanPrepaymentPenaltyTerm; v40.Clean = value; _existingLoanPrepaymentPenaltyTerm = v40;
+                var v41 = _existingLoanProvidedByLicenseeType; v41.Clean = value; _existingLoanProvidedByLicenseeType = v41;
+                var v42 = _existingLoanPurposeType; v42.Clean = value; _existingLoanPurposeType = v42;
+                var v43 = _existingLoanRecoupCostsYears; v43.Clean = value; _existingLoanRecoupCostsYears = v43;
+                var v44 = _existingLoanSavingsAmount; v44.Clean = value; _existingLoanSavingsAmount = v44;
+                var v45 = _existingLoanTotalDebtPayoff; v45.Clean = value; _existingLoanTotalDebtPayoff = v45;
+                var v46 = _existingLoanWeightedAverageInterestRatePercent; v46.Clean = value; _existingLoanWeightedAverageInterestRatePercent = v46;
+                var v47 = _homeLoanComplianceWith209; v47.Clean = value; _homeLoanComplianceWith209 = v47;
+                var v48 = _id; v48.Clean = value; _id = v48;
+                var v49 = _lenderDeterminedBorrowersInterest; v49.Clean = value; _lenderDeterminedBorrowersInterest = v49;
+                var v50 = _newLoanIsGuaranteedIndicator; v50.Clean = value; _newLoanIsGuaranteedIndicator = v50;
+                var v51 = _newLoanIsNegativeAmortizationFeatureIndicator; v51.Clean = value; _newLoanIsNegativeAmortizationFeatureIndicator = v51;
+                var v52 = _newLoanIsSafeHarborQM; v52.Clean = value; _newLoanIsSafeHarborQM = v52;
+                var v53 = _newLoanIsSpecialMortgageOriginatedIndicator; v53.Clean = value; _newLoanIsSpecialMortgageOriginatedIndicator = v53;
+                var v54 = _newLoanPaymentWithMiDifference; v54.Clean = value; _newLoanPaymentWithMiDifference = v54;
+                var v55 = _newLoanPaymentWithObligationDifference; v55.Clean = value; _newLoanPaymentWithObligationDifference = v55;
+                var v56 = _newLoanPayOffConsolidateDebtIndicator; v56.Clean = value; _newLoanPayOffConsolidateDebtIndicator = v56;
+                var v57 = _newLoanWeightedAverageInterestRatePercent; v57.Clean = value; _newLoanWeightedAverageInterestRatePercent = v57;
+                var v58 = _obtainingLowerIntMonthlyPaymentIndicator; v58.Clean = value; _obtainingLowerIntMonthlyPaymentIndicator = v58;
+                var v59 = _obtainingLowerIntRateIndicator; v59.Clean = value; _obtainingLowerIntRateIndicator = v59;
+                var v60 = _obtainingShortAmortScheduleIndicator; v60.Clean = value; _obtainingShortAmortScheduleIndicator = v60;
+                var v61 = _otherReason; v61.Clean = value; _otherReason = v61;
+                var v62 = _otherReasonDescription; v62.Clean = value; _otherReasonDescription = v62;
+                var v63 = _printBorrowerInitialLinesIndicator; v63.Clean = value; _printBorrowerInitialLinesIndicator = v63;
+                var v64 = _proceedsOfNewLoanWillBeUsedIndicator; v64.Clean = value; _proceedsOfNewLoanWillBeUsedIndicator = v64;
+                var v65 = _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator; v65.Clean = value; _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator = v65;
+                var v66 = _refinancingLoanIsHomeEquityIndicator; v66.Clean = value; _refinancingLoanIsHomeEquityIndicator = v66;
+                var v67 = _refinancingRespondBonaFide; v67.Clean = value; _refinancingRespondBonaFide = v67;
                 _settingClean = 0;
             }
         }

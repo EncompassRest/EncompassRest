@@ -7,27 +7,34 @@ namespace EncompassRest.Loans
 {
     public sealed partial class RegulationZPayment
     {
-        public Value<decimal?> Balance { get; set; }
+        private Value<decimal?> _balance;
+        public decimal? Balance { get { return _balance; } set { _balance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalance() => !Balance.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeBalance() => !_balance.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> InterestRatePercent { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _interestRatePercent;
+        public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRatePercent() => !InterestRatePercent.Clean;
-        public Value<decimal?> MonthlyPayment { get; set; }
+        public bool ShouldSerializeInterestRatePercent() => !_interestRatePercent.Clean;
+        private Value<decimal?> _monthlyPayment;
+        public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyPayment() => !MonthlyPayment.Clean;
-        public Value<int?> NumberOfPayments { get; set; }
+        public bool ShouldSerializeMonthlyPayment() => !_monthlyPayment.Clean;
+        private Value<int?> _numberOfPayments;
+        public int? NumberOfPayments { get { return _numberOfPayments; } set { _numberOfPayments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumberOfPayments() => !NumberOfPayments.Clean;
-        public Value<DateTime?> PaymentDate { get; set; }
+        public bool ShouldSerializeNumberOfPayments() => !_numberOfPayments.Clean;
+        private Value<DateTime?> _paymentDate;
+        public DateTime? PaymentDate { get { return _paymentDate; } set { _paymentDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentDate() => !PaymentDate.Clean;
-        public Value<int?> RegulationZPaymentIndex { get; set; }
+        public bool ShouldSerializePaymentDate() => !_paymentDate.Clean;
+        private Value<int?> _regulationZPaymentIndex;
+        public int? RegulationZPaymentIndex { get { return _regulationZPaymentIndex; } set { _regulationZPaymentIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRegulationZPaymentIndex() => !RegulationZPaymentIndex.Clean;
+        public bool ShouldSerializeRegulationZPaymentIndex() => !_regulationZPaymentIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -35,26 +42,26 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Balance.Clean
-                    && Id.Clean
-                    && InterestRatePercent.Clean
-                    && MonthlyPayment.Clean
-                    && NumberOfPayments.Clean
-                    && PaymentDate.Clean
-                    && RegulationZPaymentIndex.Clean;
+                var clean = _balance.Clean
+                    && _id.Clean
+                    && _interestRatePercent.Clean
+                    && _monthlyPayment.Clean
+                    && _numberOfPayments.Clean
+                    && _paymentDate.Clean
+                    && _regulationZPaymentIndex.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Balance; v0.Clean = value; Balance = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = InterestRatePercent; v2.Clean = value; InterestRatePercent = v2;
-                var v3 = MonthlyPayment; v3.Clean = value; MonthlyPayment = v3;
-                var v4 = NumberOfPayments; v4.Clean = value; NumberOfPayments = v4;
-                var v5 = PaymentDate; v5.Clean = value; PaymentDate = v5;
-                var v6 = RegulationZPaymentIndex; v6.Clean = value; RegulationZPaymentIndex = v6;
+                var v0 = _balance; v0.Clean = value; _balance = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _interestRatePercent; v2.Clean = value; _interestRatePercent = v2;
+                var v3 = _monthlyPayment; v3.Clean = value; _monthlyPayment = v3;
+                var v4 = _numberOfPayments; v4.Clean = value; _numberOfPayments = v4;
+                var v5 = _paymentDate; v5.Clean = value; _paymentDate = v5;
+                var v6 = _regulationZPaymentIndex; v6.Clean = value; _regulationZPaymentIndex = v6;
                 _settingClean = 0;
             }
         }

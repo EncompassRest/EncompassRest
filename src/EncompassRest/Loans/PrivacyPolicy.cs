@@ -7,141 +7,186 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PrivacyPolicy
     {
-        public Value<string> AdditionalRightsDescription { get; set; }
+        private Value<string> _additionalRightsDescription;
+        public string AdditionalRightsDescription { get { return _additionalRightsDescription; } set { _additionalRightsDescription = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalRightsDescription() => !AdditionalRightsDescription.Clean;
-        public Value<string> AffiliateType { get; set; }
+        public bool ShouldSerializeAdditionalRightsDescription() => !_additionalRightsDescription.Clean;
+        private Value<string> _affiliateType;
+        public string AffiliateType { get { return _affiliateType; } set { _affiliateType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAffiliateType() => !AffiliateType.Clean;
-        public Value<string> AffiliateTypeExample1 { get; set; }
+        public bool ShouldSerializeAffiliateType() => !_affiliateType.Clean;
+        private Value<string> _affiliateTypeExample1;
+        public string AffiliateTypeExample1 { get { return _affiliateTypeExample1; } set { _affiliateTypeExample1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAffiliateTypeExample1() => !AffiliateTypeExample1.Clean;
-        public Value<string> AffiliateTypeExample2 { get; set; }
+        public bool ShouldSerializeAffiliateTypeExample1() => !_affiliateTypeExample1.Clean;
+        private Value<string> _affiliateTypeExample2;
+        public string AffiliateTypeExample2 { get { return _affiliateTypeExample2; } set { _affiliateTypeExample2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAffiliateTypeExample2() => !AffiliateTypeExample2.Clean;
-        public Value<string> AffiliateTypeExample3 { get; set; }
+        public bool ShouldSerializeAffiliateTypeExample2() => !_affiliateTypeExample2.Clean;
+        private Value<string> _affiliateTypeExample3;
+        public string AffiliateTypeExample3 { get { return _affiliateTypeExample3; } set { _affiliateTypeExample3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAffiliateTypeExample3() => !AffiliateTypeExample3.Clean;
-        public Value<string> AlsoCollectFrom { get; set; }
+        public bool ShouldSerializeAffiliateTypeExample3() => !_affiliateTypeExample3.Clean;
+        private Value<string> _alsoCollectFrom;
+        public string AlsoCollectFrom { get { return _alsoCollectFrom; } set { _alsoCollectFrom = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlsoCollectFrom() => !AlsoCollectFrom.Clean;
-        public Value<int?> DaysToUse { get; set; }
+        public bool ShouldSerializeAlsoCollectFrom() => !_alsoCollectFrom.Clean;
+        private Value<int?> _daysToUse;
+        public int? DaysToUse { get { return _daysToUse; } set { _daysToUse = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDaysToUse() => !DaysToUse.Clean;
-        public Value<string> HowToShare { get; set; }
+        public bool ShouldSerializeDaysToUse() => !_daysToUse.Clean;
+        private Value<string> _howToShare;
+        public string HowToShare { get { return _howToShare; } set { _howToShare = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHowToShare() => !HowToShare.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHowToShare() => !_howToShare.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> InformationShare1 { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _informationShare1;
+        public string InformationShare1 { get { return _informationShare1; } set { _informationShare1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare1() => !InformationShare1.Clean;
-        public Value<string> InformationShare2 { get; set; }
+        public bool ShouldSerializeInformationShare1() => !_informationShare1.Clean;
+        private Value<string> _informationShare2;
+        public string InformationShare2 { get { return _informationShare2; } set { _informationShare2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare2() => !InformationShare2.Clean;
-        public Value<string> InformationShare3 { get; set; }
+        public bool ShouldSerializeInformationShare2() => !_informationShare2.Clean;
+        private Value<string> _informationShare3;
+        public string InformationShare3 { get { return _informationShare3; } set { _informationShare3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare3() => !InformationShare3.Clean;
-        public Value<string> InformationShare4 { get; set; }
+        public bool ShouldSerializeInformationShare3() => !_informationShare3.Clean;
+        private Value<string> _informationShare4;
+        public string InformationShare4 { get { return _informationShare4; } set { _informationShare4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare4() => !InformationShare4.Clean;
-        public Value<string> InformationShare5 { get; set; }
+        public bool ShouldSerializeInformationShare4() => !_informationShare4.Clean;
+        private Value<string> _informationShare5;
+        public string InformationShare5 { get { return _informationShare5; } set { _informationShare5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare5() => !InformationShare5.Clean;
-        public Value<string> InformationShare6 { get; set; }
+        public bool ShouldSerializeInformationShare5() => !_informationShare5.Clean;
+        private Value<string> _informationShare6;
+        public string InformationShare6 { get { return _informationShare6; } set { _informationShare6 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare6() => !InformationShare6.Clean;
-        public Value<string> InformationShare7 { get; set; }
+        public bool ShouldSerializeInformationShare6() => !_informationShare6.Clean;
+        private Value<string> _informationShare7;
+        public string InformationShare7 { get { return _informationShare7; } set { _informationShare7 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationShare7() => !InformationShare7.Clean;
-        public Value<string> InformationTypesWeCollect1 { get; set; }
+        public bool ShouldSerializeInformationShare7() => !_informationShare7.Clean;
+        private Value<string> _informationTypesWeCollect1;
+        public string InformationTypesWeCollect1 { get { return _informationTypesWeCollect1; } set { _informationTypesWeCollect1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationTypesWeCollect1() => !InformationTypesWeCollect1.Clean;
-        public Value<string> InformationTypesWeCollect2 { get; set; }
+        public bool ShouldSerializeInformationTypesWeCollect1() => !_informationTypesWeCollect1.Clean;
+        private Value<string> _informationTypesWeCollect2;
+        public string InformationTypesWeCollect2 { get { return _informationTypesWeCollect2; } set { _informationTypesWeCollect2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationTypesWeCollect2() => !InformationTypesWeCollect2.Clean;
-        public Value<string> InformationTypesWeCollect3 { get; set; }
+        public bool ShouldSerializeInformationTypesWeCollect2() => !_informationTypesWeCollect2.Clean;
+        private Value<string> _informationTypesWeCollect3;
+        public string InformationTypesWeCollect3 { get { return _informationTypesWeCollect3; } set { _informationTypesWeCollect3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationTypesWeCollect3() => !InformationTypesWeCollect3.Clean;
-        public Value<string> InformationTypesWeCollect4 { get; set; }
+        public bool ShouldSerializeInformationTypesWeCollect3() => !_informationTypesWeCollect3.Clean;
+        private Value<string> _informationTypesWeCollect4;
+        public string InformationTypesWeCollect4 { get { return _informationTypesWeCollect4; } set { _informationTypesWeCollect4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationTypesWeCollect4() => !InformationTypesWeCollect4.Clean;
-        public Value<string> InformationTypesWeCollect5 { get; set; }
+        public bool ShouldSerializeInformationTypesWeCollect4() => !_informationTypesWeCollect4.Clean;
+        private Value<string> _informationTypesWeCollect5;
+        public string InformationTypesWeCollect5 { get { return _informationTypesWeCollect5; } set { _informationTypesWeCollect5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInformationTypesWeCollect5() => !InformationTypesWeCollect5.Clean;
-        public Value<string> JointMarketType { get; set; }
+        public bool ShouldSerializeInformationTypesWeCollect5() => !_informationTypesWeCollect5.Clean;
+        private Value<string> _jointMarketType;
+        public string JointMarketType { get { return _jointMarketType; } set { _jointMarketType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeJointMarketType() => !JointMarketType.Clean;
-        public Value<string> JointMarketTypeExample1 { get; set; }
+        public bool ShouldSerializeJointMarketType() => !_jointMarketType.Clean;
+        private Value<string> _jointMarketTypeExample1;
+        public string JointMarketTypeExample1 { get { return _jointMarketTypeExample1; } set { _jointMarketTypeExample1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeJointMarketTypeExample1() => !JointMarketTypeExample1.Clean;
-        public Value<string> LimitSharing1 { get; set; }
+        public bool ShouldSerializeJointMarketTypeExample1() => !_jointMarketTypeExample1.Clean;
+        private Value<string> _limitSharing1;
+        public string LimitSharing1 { get { return _limitSharing1; } set { _limitSharing1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing1() => !LimitSharing1.Clean;
-        public Value<string> LimitSharing2 { get; set; }
+        public bool ShouldSerializeLimitSharing1() => !_limitSharing1.Clean;
+        private Value<string> _limitSharing2;
+        public string LimitSharing2 { get { return _limitSharing2; } set { _limitSharing2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing2() => !LimitSharing2.Clean;
-        public Value<string> LimitSharing3 { get; set; }
+        public bool ShouldSerializeLimitSharing2() => !_limitSharing2.Clean;
+        private Value<string> _limitSharing3;
+        public string LimitSharing3 { get { return _limitSharing3; } set { _limitSharing3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing3() => !LimitSharing3.Clean;
-        public Value<string> LimitSharing4 { get; set; }
+        public bool ShouldSerializeLimitSharing3() => !_limitSharing3.Clean;
+        private Value<string> _limitSharing4;
+        public string LimitSharing4 { get { return _limitSharing4; } set { _limitSharing4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing4() => !LimitSharing4.Clean;
-        public Value<string> LimitSharing5 { get; set; }
+        public bool ShouldSerializeLimitSharing4() => !_limitSharing4.Clean;
+        private Value<string> _limitSharing5;
+        public string LimitSharing5 { get { return _limitSharing5; } set { _limitSharing5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing5() => !LimitSharing5.Clean;
-        public Value<string> LimitSharing6 { get; set; }
+        public bool ShouldSerializeLimitSharing5() => !_limitSharing5.Clean;
+        private Value<string> _limitSharing6;
+        public string LimitSharing6 { get { return _limitSharing6; } set { _limitSharing6 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing6() => !LimitSharing6.Clean;
-        public Value<string> LimitSharing7 { get; set; }
+        public bool ShouldSerializeLimitSharing6() => !_limitSharing6.Clean;
+        private Value<string> _limitSharing7;
+        public string LimitSharing7 { get { return _limitSharing7; } set { _limitSharing7 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLimitSharing7() => !LimitSharing7.Clean;
-        public Value<string> NonaffiliateType { get; set; }
+        public bool ShouldSerializeLimitSharing7() => !_limitSharing7.Clean;
+        private Value<string> _nonaffiliateType;
+        public string NonaffiliateType { get { return _nonaffiliateType; } set { _nonaffiliateType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNonaffiliateType() => !NonaffiliateType.Clean;
-        public Value<string> NonaffiliateTypeExample1 { get; set; }
+        public bool ShouldSerializeNonaffiliateType() => !_nonaffiliateType.Clean;
+        private Value<string> _nonaffiliateTypeExample1;
+        public string NonaffiliateTypeExample1 { get { return _nonaffiliateTypeExample1; } set { _nonaffiliateTypeExample1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNonaffiliateTypeExample1() => !NonaffiliateTypeExample1.Clean;
-        public Value<string> NotesForProtectPrivacy { get; set; }
+        public bool ShouldSerializeNonaffiliateTypeExample1() => !_nonaffiliateTypeExample1.Clean;
+        private Value<string> _notesForProtectPrivacy;
+        public string NotesForProtectPrivacy { get { return _notesForProtectPrivacy; } set { _notesForProtectPrivacy = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNotesForProtectPrivacy() => !NotesForProtectPrivacy.Clean;
-        public Value<string> OtherInformation { get; set; }
+        public bool ShouldSerializeNotesForProtectPrivacy() => !_notesForProtectPrivacy.Clean;
+        private Value<string> _otherInformation;
+        public string OtherInformation { get { return _otherInformation; } set { _otherInformation = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherInformation() => !OtherInformation.Clean;
-        public Value<string> PhoneForQuestion { get; set; }
+        public bool ShouldSerializeOtherInformation() => !_otherInformation.Clean;
+        private Value<string> _phoneForQuestion;
+        public string PhoneForQuestion { get { return _phoneForQuestion; } set { _phoneForQuestion = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhoneForQuestion() => !PhoneForQuestion.Clean;
-        public Value<string> PhoneToLimit { get; set; }
+        public bool ShouldSerializePhoneForQuestion() => !_phoneForQuestion.Clean;
+        private Value<string> _phoneToLimit;
+        public string PhoneToLimit { get { return _phoneToLimit; } set { _phoneToLimit = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhoneToLimit() => !PhoneToLimit.Clean;
-        public Value<string> PrintSelection { get; set; }
+        public bool ShouldSerializePhoneToLimit() => !_phoneToLimit.Clean;
+        private Value<string> _printSelection;
+        public string PrintSelection { get { return _printSelection; } set { _printSelection = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintSelection() => !PrintSelection.Clean;
-        public Value<string> ShareInfoWithJointMarketing { get; set; }
+        public bool ShouldSerializePrintSelection() => !_printSelection.Clean;
+        private Value<string> _shareInfoWithJointMarketing;
+        public string ShareInfoWithJointMarketing { get { return _shareInfoWithJointMarketing; } set { _shareInfoWithJointMarketing = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShareInfoWithJointMarketing() => !ShareInfoWithJointMarketing.Clean;
-        public Value<string> TimesToCollect1 { get; set; }
+        public bool ShouldSerializeShareInfoWithJointMarketing() => !_shareInfoWithJointMarketing.Clean;
+        private Value<string> _timesToCollect1;
+        public string TimesToCollect1 { get { return _timesToCollect1; } set { _timesToCollect1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimesToCollect1() => !TimesToCollect1.Clean;
-        public Value<string> TimesToCollect2 { get; set; }
+        public bool ShouldSerializeTimesToCollect1() => !_timesToCollect1.Clean;
+        private Value<string> _timesToCollect2;
+        public string TimesToCollect2 { get { return _timesToCollect2; } set { _timesToCollect2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimesToCollect2() => !TimesToCollect2.Clean;
-        public Value<string> TimesToCollect3 { get; set; }
+        public bool ShouldSerializeTimesToCollect2() => !_timesToCollect2.Clean;
+        private Value<string> _timesToCollect3;
+        public string TimesToCollect3 { get { return _timesToCollect3; } set { _timesToCollect3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimesToCollect3() => !TimesToCollect3.Clean;
-        public Value<string> TimesToCollect4 { get; set; }
+        public bool ShouldSerializeTimesToCollect3() => !_timesToCollect3.Clean;
+        private Value<string> _timesToCollect4;
+        public string TimesToCollect4 { get { return _timesToCollect4; } set { _timesToCollect4 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimesToCollect4() => !TimesToCollect4.Clean;
-        public Value<string> TimesToCollect5 { get; set; }
+        public bool ShouldSerializeTimesToCollect4() => !_timesToCollect4.Clean;
+        private Value<string> _timesToCollect5;
+        public string TimesToCollect5 { get { return _timesToCollect5; } set { _timesToCollect5 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimesToCollect5() => !TimesToCollect5.Clean;
-        public Value<string> WebsiteForQuestion { get; set; }
+        public bool ShouldSerializeTimesToCollect5() => !_timesToCollect5.Clean;
+        private Value<string> _websiteForQuestion;
+        public string WebsiteForQuestion { get { return _websiteForQuestion; } set { _websiteForQuestion = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWebsiteForQuestion() => !WebsiteForQuestion.Clean;
-        public Value<string> WebsiteToLimit { get; set; }
+        public bool ShouldSerializeWebsiteForQuestion() => !_websiteForQuestion.Clean;
+        private Value<string> _websiteToLimit;
+        public string WebsiteToLimit { get { return _websiteToLimit; } set { _websiteToLimit = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWebsiteToLimit() => !WebsiteToLimit.Clean;
+        public bool ShouldSerializeWebsiteToLimit() => !_websiteToLimit.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -149,102 +194,102 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdditionalRightsDescription.Clean
-                    && AffiliateType.Clean
-                    && AffiliateTypeExample1.Clean
-                    && AffiliateTypeExample2.Clean
-                    && AffiliateTypeExample3.Clean
-                    && AlsoCollectFrom.Clean
-                    && DaysToUse.Clean
-                    && HowToShare.Clean
-                    && Id.Clean
-                    && InformationShare1.Clean
-                    && InformationShare2.Clean
-                    && InformationShare3.Clean
-                    && InformationShare4.Clean
-                    && InformationShare5.Clean
-                    && InformationShare6.Clean
-                    && InformationShare7.Clean
-                    && InformationTypesWeCollect1.Clean
-                    && InformationTypesWeCollect2.Clean
-                    && InformationTypesWeCollect3.Clean
-                    && InformationTypesWeCollect4.Clean
-                    && InformationTypesWeCollect5.Clean
-                    && JointMarketType.Clean
-                    && JointMarketTypeExample1.Clean
-                    && LimitSharing1.Clean
-                    && LimitSharing2.Clean
-                    && LimitSharing3.Clean
-                    && LimitSharing4.Clean
-                    && LimitSharing5.Clean
-                    && LimitSharing6.Clean
-                    && LimitSharing7.Clean
-                    && NonaffiliateType.Clean
-                    && NonaffiliateTypeExample1.Clean
-                    && NotesForProtectPrivacy.Clean
-                    && OtherInformation.Clean
-                    && PhoneForQuestion.Clean
-                    && PhoneToLimit.Clean
-                    && PrintSelection.Clean
-                    && ShareInfoWithJointMarketing.Clean
-                    && TimesToCollect1.Clean
-                    && TimesToCollect2.Clean
-                    && TimesToCollect3.Clean
-                    && TimesToCollect4.Clean
-                    && TimesToCollect5.Clean
-                    && WebsiteForQuestion.Clean
-                    && WebsiteToLimit.Clean;
+                var clean = _additionalRightsDescription.Clean
+                    && _affiliateType.Clean
+                    && _affiliateTypeExample1.Clean
+                    && _affiliateTypeExample2.Clean
+                    && _affiliateTypeExample3.Clean
+                    && _alsoCollectFrom.Clean
+                    && _daysToUse.Clean
+                    && _howToShare.Clean
+                    && _id.Clean
+                    && _informationShare1.Clean
+                    && _informationShare2.Clean
+                    && _informationShare3.Clean
+                    && _informationShare4.Clean
+                    && _informationShare5.Clean
+                    && _informationShare6.Clean
+                    && _informationShare7.Clean
+                    && _informationTypesWeCollect1.Clean
+                    && _informationTypesWeCollect2.Clean
+                    && _informationTypesWeCollect3.Clean
+                    && _informationTypesWeCollect4.Clean
+                    && _informationTypesWeCollect5.Clean
+                    && _jointMarketType.Clean
+                    && _jointMarketTypeExample1.Clean
+                    && _limitSharing1.Clean
+                    && _limitSharing2.Clean
+                    && _limitSharing3.Clean
+                    && _limitSharing4.Clean
+                    && _limitSharing5.Clean
+                    && _limitSharing6.Clean
+                    && _limitSharing7.Clean
+                    && _nonaffiliateType.Clean
+                    && _nonaffiliateTypeExample1.Clean
+                    && _notesForProtectPrivacy.Clean
+                    && _otherInformation.Clean
+                    && _phoneForQuestion.Clean
+                    && _phoneToLimit.Clean
+                    && _printSelection.Clean
+                    && _shareInfoWithJointMarketing.Clean
+                    && _timesToCollect1.Clean
+                    && _timesToCollect2.Clean
+                    && _timesToCollect3.Clean
+                    && _timesToCollect4.Clean
+                    && _timesToCollect5.Clean
+                    && _websiteForQuestion.Clean
+                    && _websiteToLimit.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdditionalRightsDescription; v0.Clean = value; AdditionalRightsDescription = v0;
-                var v1 = AffiliateType; v1.Clean = value; AffiliateType = v1;
-                var v2 = AffiliateTypeExample1; v2.Clean = value; AffiliateTypeExample1 = v2;
-                var v3 = AffiliateTypeExample2; v3.Clean = value; AffiliateTypeExample2 = v3;
-                var v4 = AffiliateTypeExample3; v4.Clean = value; AffiliateTypeExample3 = v4;
-                var v5 = AlsoCollectFrom; v5.Clean = value; AlsoCollectFrom = v5;
-                var v6 = DaysToUse; v6.Clean = value; DaysToUse = v6;
-                var v7 = HowToShare; v7.Clean = value; HowToShare = v7;
-                var v8 = Id; v8.Clean = value; Id = v8;
-                var v9 = InformationShare1; v9.Clean = value; InformationShare1 = v9;
-                var v10 = InformationShare2; v10.Clean = value; InformationShare2 = v10;
-                var v11 = InformationShare3; v11.Clean = value; InformationShare3 = v11;
-                var v12 = InformationShare4; v12.Clean = value; InformationShare4 = v12;
-                var v13 = InformationShare5; v13.Clean = value; InformationShare5 = v13;
-                var v14 = InformationShare6; v14.Clean = value; InformationShare6 = v14;
-                var v15 = InformationShare7; v15.Clean = value; InformationShare7 = v15;
-                var v16 = InformationTypesWeCollect1; v16.Clean = value; InformationTypesWeCollect1 = v16;
-                var v17 = InformationTypesWeCollect2; v17.Clean = value; InformationTypesWeCollect2 = v17;
-                var v18 = InformationTypesWeCollect3; v18.Clean = value; InformationTypesWeCollect3 = v18;
-                var v19 = InformationTypesWeCollect4; v19.Clean = value; InformationTypesWeCollect4 = v19;
-                var v20 = InformationTypesWeCollect5; v20.Clean = value; InformationTypesWeCollect5 = v20;
-                var v21 = JointMarketType; v21.Clean = value; JointMarketType = v21;
-                var v22 = JointMarketTypeExample1; v22.Clean = value; JointMarketTypeExample1 = v22;
-                var v23 = LimitSharing1; v23.Clean = value; LimitSharing1 = v23;
-                var v24 = LimitSharing2; v24.Clean = value; LimitSharing2 = v24;
-                var v25 = LimitSharing3; v25.Clean = value; LimitSharing3 = v25;
-                var v26 = LimitSharing4; v26.Clean = value; LimitSharing4 = v26;
-                var v27 = LimitSharing5; v27.Clean = value; LimitSharing5 = v27;
-                var v28 = LimitSharing6; v28.Clean = value; LimitSharing6 = v28;
-                var v29 = LimitSharing7; v29.Clean = value; LimitSharing7 = v29;
-                var v30 = NonaffiliateType; v30.Clean = value; NonaffiliateType = v30;
-                var v31 = NonaffiliateTypeExample1; v31.Clean = value; NonaffiliateTypeExample1 = v31;
-                var v32 = NotesForProtectPrivacy; v32.Clean = value; NotesForProtectPrivacy = v32;
-                var v33 = OtherInformation; v33.Clean = value; OtherInformation = v33;
-                var v34 = PhoneForQuestion; v34.Clean = value; PhoneForQuestion = v34;
-                var v35 = PhoneToLimit; v35.Clean = value; PhoneToLimit = v35;
-                var v36 = PrintSelection; v36.Clean = value; PrintSelection = v36;
-                var v37 = ShareInfoWithJointMarketing; v37.Clean = value; ShareInfoWithJointMarketing = v37;
-                var v38 = TimesToCollect1; v38.Clean = value; TimesToCollect1 = v38;
-                var v39 = TimesToCollect2; v39.Clean = value; TimesToCollect2 = v39;
-                var v40 = TimesToCollect3; v40.Clean = value; TimesToCollect3 = v40;
-                var v41 = TimesToCollect4; v41.Clean = value; TimesToCollect4 = v41;
-                var v42 = TimesToCollect5; v42.Clean = value; TimesToCollect5 = v42;
-                var v43 = WebsiteForQuestion; v43.Clean = value; WebsiteForQuestion = v43;
-                var v44 = WebsiteToLimit; v44.Clean = value; WebsiteToLimit = v44;
+                var v0 = _additionalRightsDescription; v0.Clean = value; _additionalRightsDescription = v0;
+                var v1 = _affiliateType; v1.Clean = value; _affiliateType = v1;
+                var v2 = _affiliateTypeExample1; v2.Clean = value; _affiliateTypeExample1 = v2;
+                var v3 = _affiliateTypeExample2; v3.Clean = value; _affiliateTypeExample2 = v3;
+                var v4 = _affiliateTypeExample3; v4.Clean = value; _affiliateTypeExample3 = v4;
+                var v5 = _alsoCollectFrom; v5.Clean = value; _alsoCollectFrom = v5;
+                var v6 = _daysToUse; v6.Clean = value; _daysToUse = v6;
+                var v7 = _howToShare; v7.Clean = value; _howToShare = v7;
+                var v8 = _id; v8.Clean = value; _id = v8;
+                var v9 = _informationShare1; v9.Clean = value; _informationShare1 = v9;
+                var v10 = _informationShare2; v10.Clean = value; _informationShare2 = v10;
+                var v11 = _informationShare3; v11.Clean = value; _informationShare3 = v11;
+                var v12 = _informationShare4; v12.Clean = value; _informationShare4 = v12;
+                var v13 = _informationShare5; v13.Clean = value; _informationShare5 = v13;
+                var v14 = _informationShare6; v14.Clean = value; _informationShare6 = v14;
+                var v15 = _informationShare7; v15.Clean = value; _informationShare7 = v15;
+                var v16 = _informationTypesWeCollect1; v16.Clean = value; _informationTypesWeCollect1 = v16;
+                var v17 = _informationTypesWeCollect2; v17.Clean = value; _informationTypesWeCollect2 = v17;
+                var v18 = _informationTypesWeCollect3; v18.Clean = value; _informationTypesWeCollect3 = v18;
+                var v19 = _informationTypesWeCollect4; v19.Clean = value; _informationTypesWeCollect4 = v19;
+                var v20 = _informationTypesWeCollect5; v20.Clean = value; _informationTypesWeCollect5 = v20;
+                var v21 = _jointMarketType; v21.Clean = value; _jointMarketType = v21;
+                var v22 = _jointMarketTypeExample1; v22.Clean = value; _jointMarketTypeExample1 = v22;
+                var v23 = _limitSharing1; v23.Clean = value; _limitSharing1 = v23;
+                var v24 = _limitSharing2; v24.Clean = value; _limitSharing2 = v24;
+                var v25 = _limitSharing3; v25.Clean = value; _limitSharing3 = v25;
+                var v26 = _limitSharing4; v26.Clean = value; _limitSharing4 = v26;
+                var v27 = _limitSharing5; v27.Clean = value; _limitSharing5 = v27;
+                var v28 = _limitSharing6; v28.Clean = value; _limitSharing6 = v28;
+                var v29 = _limitSharing7; v29.Clean = value; _limitSharing7 = v29;
+                var v30 = _nonaffiliateType; v30.Clean = value; _nonaffiliateType = v30;
+                var v31 = _nonaffiliateTypeExample1; v31.Clean = value; _nonaffiliateTypeExample1 = v31;
+                var v32 = _notesForProtectPrivacy; v32.Clean = value; _notesForProtectPrivacy = v32;
+                var v33 = _otherInformation; v33.Clean = value; _otherInformation = v33;
+                var v34 = _phoneForQuestion; v34.Clean = value; _phoneForQuestion = v34;
+                var v35 = _phoneToLimit; v35.Clean = value; _phoneToLimit = v35;
+                var v36 = _printSelection; v36.Clean = value; _printSelection = v36;
+                var v37 = _shareInfoWithJointMarketing; v37.Clean = value; _shareInfoWithJointMarketing = v37;
+                var v38 = _timesToCollect1; v38.Clean = value; _timesToCollect1 = v38;
+                var v39 = _timesToCollect2; v39.Clean = value; _timesToCollect2 = v39;
+                var v40 = _timesToCollect3; v40.Clean = value; _timesToCollect3 = v40;
+                var v41 = _timesToCollect4; v41.Clean = value; _timesToCollect4 = v41;
+                var v42 = _timesToCollect5; v42.Clean = value; _timesToCollect5 = v42;
+                var v43 = _websiteForQuestion; v43.Clean = value; _websiteForQuestion = v43;
+                var v44 = _websiteToLimit; v44.Clean = value; _websiteToLimit = v44;
                 _settingClean = 0;
             }
         }

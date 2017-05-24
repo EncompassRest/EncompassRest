@@ -7,24 +7,30 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanSubmissionFee
     {
-        public Value<string> Description { get; set; }
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<decimal?> DueBroker { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<decimal?> _dueBroker;
+        public decimal? DueBroker { get { return _dueBroker; } set { _dueBroker = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDueBroker() => !DueBroker.Clean;
-        public Value<decimal?> DueLender { get; set; }
+        public bool ShouldSerializeDueBroker() => !_dueBroker.Clean;
+        private Value<decimal?> _dueLender;
+        public decimal? DueLender { get { return _dueLender; } set { _dueLender = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDueLender() => !DueLender.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDueLender() => !_dueLender.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> LoanSubmissionFeeType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _loanSubmissionFeeType;
+        public string LoanSubmissionFeeType { get { return _loanSubmissionFeeType; } set { _loanSubmissionFeeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanSubmissionFeeType() => !LoanSubmissionFeeType.Clean;
-        public Value<decimal?> Total { get; set; }
+        public bool ShouldSerializeLoanSubmissionFeeType() => !_loanSubmissionFeeType.Clean;
+        private Value<decimal?> _total;
+        public decimal? Total { get { return _total; } set { _total = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal() => !Total.Clean;
+        public bool ShouldSerializeTotal() => !_total.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -32,24 +38,24 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Description.Clean
-                    && DueBroker.Clean
-                    && DueLender.Clean
-                    && Id.Clean
-                    && LoanSubmissionFeeType.Clean
-                    && Total.Clean;
+                var clean = _description.Clean
+                    && _dueBroker.Clean
+                    && _dueLender.Clean
+                    && _id.Clean
+                    && _loanSubmissionFeeType.Clean
+                    && _total.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Description; v0.Clean = value; Description = v0;
-                var v1 = DueBroker; v1.Clean = value; DueBroker = v1;
-                var v2 = DueLender; v2.Clean = value; DueLender = v2;
-                var v3 = Id; v3.Clean = value; Id = v3;
-                var v4 = LoanSubmissionFeeType; v4.Clean = value; LoanSubmissionFeeType = v4;
-                var v5 = Total; v5.Clean = value; Total = v5;
+                var v0 = _description; v0.Clean = value; _description = v0;
+                var v1 = _dueBroker; v1.Clean = value; _dueBroker = v1;
+                var v2 = _dueLender; v2.Clean = value; _dueLender = v2;
+                var v3 = _id; v3.Clean = value; _id = v3;
+                var v4 = _loanSubmissionFeeType; v4.Clean = value; _loanSubmissionFeeType = v4;
+                var v5 = _total; v5.Clean = value; _total = v5;
                 _settingClean = 0;
             }
         }

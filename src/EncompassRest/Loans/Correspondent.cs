@@ -7,150 +7,198 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Correspondent
     {
-        public Value<decimal?> AdditionalLateFeeCharge { get; set; }
+        private Value<decimal?> _additionalLateFeeCharge;
+        public decimal? AdditionalLateFeeCharge { get { return _additionalLateFeeCharge; } set { _additionalLateFeeCharge = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalLateFeeCharge() => !AdditionalLateFeeCharge.Clean;
-        public Value<DateTime?> ApprovedToFundDate { get; set; }
+        public bool ShouldSerializeAdditionalLateFeeCharge() => !_additionalLateFeeCharge.Clean;
+        private Value<DateTime?> _approvedToFundDate;
+        public DateTime? ApprovedToFundDate { get { return _approvedToFundDate; } set { _approvedToFundDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApprovedToFundDate() => !ApprovedToFundDate.Clean;
-        public Value<decimal?> BasePrice { get; set; }
+        public bool ShouldSerializeApprovedToFundDate() => !_approvedToFundDate.Clean;
+        private Value<decimal?> _basePrice;
+        public decimal? BasePrice { get { return _basePrice; } set { _basePrice = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePrice() => !BasePrice.Clean;
-        public Value<string> CommitmentType { get; set; }
+        public bool ShouldSerializeBasePrice() => !_basePrice.Clean;
+        private Value<string> _commitmentType;
+        public string CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommitmentType() => !CommitmentType.Clean;
-        public Value<DateTime?> ConditionsReceivedDate { get; set; }
+        public bool ShouldSerializeCommitmentType() => !_commitmentType.Clean;
+        private Value<DateTime?> _conditionsReceivedDate;
+        public DateTime? ConditionsReceivedDate { get { return _conditionsReceivedDate; } set { _conditionsReceivedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditionsReceivedDate() => !ConditionsReceivedDate.Clean;
-        public Value<string> CorrespondentStatus { get; set; }
+        public bool ShouldSerializeConditionsReceivedDate() => !_conditionsReceivedDate.Clean;
+        private Value<string> _correspondentStatus;
+        public string CorrespondentStatus { get { return _correspondentStatus; } set { _correspondentStatus = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCorrespondentStatus() => !CorrespondentStatus.Clean;
-        public Value<DateTime?> DeliveryExpirationDate { get; set; }
+        public bool ShouldSerializeCorrespondentStatus() => !_correspondentStatus.Clean;
+        private Value<DateTime?> _deliveryExpirationDate;
+        public DateTime? DeliveryExpirationDate { get { return _deliveryExpirationDate; } set { _deliveryExpirationDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeliveryExpirationDate() => !DeliveryExpirationDate.Clean;
-        public Value<string> DeliveryType { get; set; }
+        public bool ShouldSerializeDeliveryExpirationDate() => !_deliveryExpirationDate.Clean;
+        private Value<string> _deliveryType;
+        public string DeliveryType { get { return _deliveryType; } set { _deliveryType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeliveryType() => !DeliveryType.Clean;
-        public Value<DateTime?> FundedDate { get; set; }
+        public bool ShouldSerializeDeliveryType() => !_deliveryType.Clean;
+        private Value<DateTime?> _fundedDate;
+        public DateTime? FundedDate { get { return _fundedDate; } set { _fundedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundedDate() => !FundedDate.Clean;
-        public Value<int?> GracePeriodDays { get; set; }
+        public bool ShouldSerializeFundedDate() => !_fundedDate.Clean;
+        private Value<int?> _gracePeriodDays;
+        public int? GracePeriodDays { get { return _gracePeriodDays; } set { _gracePeriodDays = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodDays() => !GracePeriodDays.Clean;
-        public Value<DateTime?> GracePeriodStartDate { get; set; }
+        public bool ShouldSerializeGracePeriodDays() => !_gracePeriodDays.Clean;
+        private Value<DateTime?> _gracePeriodStartDate;
+        public DateTime? GracePeriodStartDate { get { return _gracePeriodStartDate; } set { _gracePeriodStartDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodStartDate() => !GracePeriodStartDate.Clean;
-        public Value<string> GracePeriodStartTrigger { get; set; }
+        public bool ShouldSerializeGracePeriodStartDate() => !_gracePeriodStartDate.Clean;
+        private Value<string> _gracePeriodStartTrigger;
+        public string GracePeriodStartTrigger { get { return _gracePeriodStartTrigger; } set { _gracePeriodStartTrigger = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodStartTrigger() => !GracePeriodStartTrigger.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGracePeriodStartTrigger() => !_gracePeriodStartTrigger.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<DateTime?> InitialSuspenseDate { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<DateTime?> _initialSuspenseDate;
+        public DateTime? InitialSuspenseDate { get { return _initialSuspenseDate; } set { _initialSuspenseDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialSuspenseDate() => !InitialSuspenseDate.Clean;
-        public Value<DateTime?> LateDaysBegin { get; set; }
+        public bool ShouldSerializeInitialSuspenseDate() => !_initialSuspenseDate.Clean;
+        private Value<DateTime?> _lateDaysBegin;
+        public DateTime? LateDaysBegin { get { return _lateDaysBegin; } set { _lateDaysBegin = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysBegin() => !LateDaysBegin.Clean;
-        public Value<DateTime?> LateDaysEnd { get; set; }
+        public bool ShouldSerializeLateDaysBegin() => !_lateDaysBegin.Clean;
+        private Value<DateTime?> _lateDaysEnd;
+        public DateTime? LateDaysEnd { get { return _lateDaysEnd; } set { _lateDaysEnd = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysEnd() => !LateDaysEnd.Clean;
-        public Value<string> LateDaysEndTrigger { get; set; }
+        public bool ShouldSerializeLateDaysEnd() => !_lateDaysEnd.Clean;
+        private Value<string> _lateDaysEndTrigger;
+        public string LateDaysEndTrigger { get { return _lateDaysEndTrigger; } set { _lateDaysEndTrigger = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysEndTrigger() => !LateDaysEndTrigger.Clean;
-        public Value<string> LateFeeChargeType { get; set; }
+        public bool ShouldSerializeLateDaysEndTrigger() => !_lateDaysEndTrigger.Clean;
+        private Value<string> _lateFeeChargeType;
+        public string LateFeeChargeType { get { return _lateFeeChargeType; } set { _lateFeeChargeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeChargeType() => !LateFeeChargeType.Clean;
-        public Value<string> LateFeeFrequency { get; set; }
+        public bool ShouldSerializeLateFeeChargeType() => !_lateFeeChargeType.Clean;
+        private Value<string> _lateFeeFrequency;
+        public string LateFeeFrequency { get { return _lateFeeFrequency; } set { _lateFeeFrequency = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeFrequency() => !LateFeeFrequency.Clean;
-        public Value<string> LateFeeNotes { get; set; }
+        public bool ShouldSerializeLateFeeFrequency() => !_lateFeeFrequency.Clean;
+        private Value<string> _lateFeeNotes;
+        public string LateFeeNotes { get { return _lateFeeNotes; } set { _lateFeeNotes = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeNotes() => !LateFeeNotes.Clean;
-        public Value<decimal?> LateFeePercentage { get; set; }
+        public bool ShouldSerializeLateFeeNotes() => !_lateFeeNotes.Clean;
+        private Value<decimal?> _lateFeePercentage;
+        public decimal? LateFeePercentage { get { return _lateFeePercentage; } set { _lateFeePercentage = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeePercentage() => !LateFeePercentage.Clean;
-        public Value<decimal?> LateFeeTotalPriceAdjustment { get; set; }
+        public bool ShouldSerializeLateFeePercentage() => !_lateFeePercentage.Clean;
+        private Value<decimal?> _lateFeeTotalPriceAdjustment;
+        public decimal? LateFeeTotalPriceAdjustment { get { return _lateFeeTotalPriceAdjustment; } set { _lateFeeTotalPriceAdjustment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeTotalPriceAdjustment() => !LateFeeTotalPriceAdjustment.Clean;
-        public Value<DateTime?> LatestConditionsDate { get; set; }
+        public bool ShouldSerializeLateFeeTotalPriceAdjustment() => !_lateFeeTotalPriceAdjustment.Clean;
+        private Value<DateTime?> _latestConditionsDate;
+        public DateTime? LatestConditionsDate { get { return _latestConditionsDate; } set { _latestConditionsDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLatestConditionsDate() => !LatestConditionsDate.Clean;
-        public Value<int?> LFS_CalculateAs { get; set; }
+        public bool ShouldSerializeLatestConditionsDate() => !_latestConditionsDate.Clean;
+        private Value<int?> _lFS_CalculateAs;
+        public int? LFS_CalculateAs { get { return _lFS_CalculateAs; } set { _lFS_CalculateAs = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_CalculateAs() => !LFS_CalculateAs.Clean;
-        public Value<int?> LFS_DayCleared { get; set; }
+        public bool ShouldSerializeLFS_CalculateAs() => !_lFS_CalculateAs.Clean;
+        private Value<int?> _lFS_DayCleared;
+        public int? LFS_DayCleared { get { return _lFS_DayCleared; } set { _lFS_DayCleared = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayCleared() => !LFS_DayCleared.Clean;
-        public Value<string> LFS_DayClearedOtherDate { get; set; }
+        public bool ShouldSerializeLFS_DayCleared() => !_lFS_DayCleared.Clean;
+        private Value<string> _lFS_DayClearedOtherDate;
+        public string LFS_DayClearedOtherDate { get { return _lFS_DayClearedOtherDate; } set { _lFS_DayClearedOtherDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayClearedOtherDate() => !LFS_DayClearedOtherDate.Clean;
-        public Value<string> LFS_DayClearedOtherDateValue { get; set; }
+        public bool ShouldSerializeLFS_DayClearedOtherDate() => !_lFS_DayClearedOtherDate.Clean;
+        private Value<string> _lFS_DayClearedOtherDateValue;
+        public string LFS_DayClearedOtherDateValue { get { return _lFS_DayClearedOtherDateValue; } set { _lFS_DayClearedOtherDateValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayClearedOtherDateValue() => !LFS_DayClearedOtherDateValue.Clean;
-        public Value<int?> LFS_FeeHandledAs { get; set; }
+        public bool ShouldSerializeLFS_DayClearedOtherDateValue() => !_lFS_DayClearedOtherDateValue.Clean;
+        private Value<int?> _lFS_FeeHandledAs;
+        public int? LFS_FeeHandledAs { get { return _lFS_FeeHandledAs; } set { _lFS_FeeHandledAs = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_FeeHandledAs() => !LFS_FeeHandledAs.Clean;
-        public Value<int?> LFS_GracePeriodCalendar { get; set; }
+        public bool ShouldSerializeLFS_FeeHandledAs() => !_lFS_FeeHandledAs.Clean;
+        private Value<int?> _lFS_GracePeriodCalendar;
+        public int? LFS_GracePeriodCalendar { get { return _lFS_GracePeriodCalendar; } set { _lFS_GracePeriodCalendar = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodCalendar() => !LFS_GracePeriodCalendar.Clean;
-        public Value<int?> LFS_GracePeriodDays { get; set; }
+        public bool ShouldSerializeLFS_GracePeriodCalendar() => !_lFS_GracePeriodCalendar.Clean;
+        private Value<int?> _lFS_GracePeriodDays;
+        public int? LFS_GracePeriodDays { get { return _lFS_GracePeriodDays; } set { _lFS_GracePeriodDays = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodDays() => !LFS_GracePeriodDays.Clean;
-        public Value<int?> LFS_GracePeriodLaterOf { get; set; }
+        public bool ShouldSerializeLFS_GracePeriodDays() => !_lFS_GracePeriodDays.Clean;
+        private Value<int?> _lFS_GracePeriodLaterOf;
+        public int? LFS_GracePeriodLaterOf { get { return _lFS_GracePeriodLaterOf; } set { _lFS_GracePeriodLaterOf = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodLaterOf() => !LFS_GracePeriodLaterOf.Clean;
-        public Value<int?> LFS_GracePeriodStarts { get; set; }
+        public bool ShouldSerializeLFS_GracePeriodLaterOf() => !_lFS_GracePeriodLaterOf.Clean;
+        private Value<int?> _lFS_GracePeriodStarts;
+        public int? LFS_GracePeriodStarts { get { return _lFS_GracePeriodStarts; } set { _lFS_GracePeriodStarts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodStarts() => !LFS_GracePeriodStarts.Clean;
-        public Value<int?> LFS_IncludeDay { get; set; }
+        public bool ShouldSerializeLFS_GracePeriodStarts() => !_lFS_GracePeriodStarts.Clean;
+        private Value<int?> _lFS_IncludeDay;
+        public int? LFS_IncludeDay { get { return _lFS_IncludeDay; } set { _lFS_IncludeDay = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_IncludeDay() => !LFS_IncludeDay.Clean;
-        public Value<int?> LFS_LateFeeBasedOn { get; set; }
+        public bool ShouldSerializeLFS_IncludeDay() => !_lFS_IncludeDay.Clean;
+        private Value<int?> _lFS_LateFeeBasedOn;
+        public int? LFS_LateFeeBasedOn { get { return _lFS_LateFeeBasedOn; } set { _lFS_LateFeeBasedOn = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_LateFeeBasedOn() => !LFS_LateFeeBasedOn.Clean;
-        public Value<int?> LFS_MaxLateDays { get; set; }
+        public bool ShouldSerializeLFS_LateFeeBasedOn() => !_lFS_LateFeeBasedOn.Clean;
+        private Value<int?> _lFS_MaxLateDays;
+        public int? LFS_MaxLateDays { get { return _lFS_MaxLateDays; } set { _lFS_MaxLateDays = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_MaxLateDays() => !LFS_MaxLateDays.Clean;
-        public Value<string> LFS_OtherDate { get; set; }
+        public bool ShouldSerializeLFS_MaxLateDays() => !_lFS_MaxLateDays.Clean;
+        private Value<string> _lFS_OtherDate;
+        public string LFS_OtherDate { get { return _lFS_OtherDate; } set { _lFS_OtherDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_OtherDate() => !LFS_OtherDate.Clean;
-        public Value<string> LFS_OtherDateValue { get; set; }
+        public bool ShouldSerializeLFS_OtherDate() => !_lFS_OtherDate.Clean;
+        private Value<string> _lFS_OtherDateValue;
+        public string LFS_OtherDateValue { get { return _lFS_OtherDateValue; } set { _lFS_OtherDateValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_OtherDateValue() => !LFS_OtherDateValue.Clean;
-        public Value<int?> LFS_StartOnWeekend { get; set; }
+        public bool ShouldSerializeLFS_OtherDateValue() => !_lFS_OtherDateValue.Clean;
+        private Value<int?> _lFS_StartOnWeekend;
+        public int? LFS_StartOnWeekend { get { return _lFS_StartOnWeekend; } set { _lFS_StartOnWeekend = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_StartOnWeekend() => !LFS_StartOnWeekend.Clean;
-        public Value<DateTime?> NoteDate { get; set; }
+        public bool ShouldSerializeLFS_StartOnWeekend() => !_lFS_StartOnWeekend.Clean;
+        private Value<DateTime?> _noteDate;
+        public DateTime? NoteDate { get { return _noteDate; } set { _noteDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoteDate() => !NoteDate.Clean;
-        public Value<decimal?> OriginalPrincipalBalance { get; set; }
+        public bool ShouldSerializeNoteDate() => !_noteDate.Clean;
+        private Value<decimal?> _originalPrincipalBalance;
+        public decimal? OriginalPrincipalBalance { get { return _originalPrincipalBalance; } set { _originalPrincipalBalance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginalPrincipalBalance() => !OriginalPrincipalBalance.Clean;
-        public Value<string> Ratesheet { get; set; }
+        public bool ShouldSerializeOriginalPrincipalBalance() => !_originalPrincipalBalance.Clean;
+        private Value<string> _ratesheet;
+        public string Ratesheet { get { return _ratesheet; } set { _ratesheet = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRatesheet() => !Ratesheet.Clean;
-        public Value<DateTime?> ReceivedDate { get; set; }
+        public bool ShouldSerializeRatesheet() => !_ratesheet.Clean;
+        private Value<DateTime?> _receivedDate;
+        public DateTime? ReceivedDate { get { return _receivedDate; } set { _receivedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivedDate() => !ReceivedDate.Clean;
-        public Value<DateTime?> RejectedDate { get; set; }
+        public bool ShouldSerializeReceivedDate() => !_receivedDate.Clean;
+        private Value<DateTime?> _rejectedDate;
+        public DateTime? RejectedDate { get { return _rejectedDate; } set { _rejectedDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejectedDate() => !RejectedDate.Clean;
-        public Value<DateTime?> SubmittedforPurchaseDate { get; set; }
+        public bool ShouldSerializeRejectedDate() => !_rejectedDate.Clean;
+        private Value<DateTime?> _submittedforPurchaseDate;
+        public DateTime? SubmittedforPurchaseDate { get { return _submittedforPurchaseDate; } set { _submittedforPurchaseDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubmittedforPurchaseDate() => !SubmittedforPurchaseDate.Clean;
-        public Value<int?> TotalLateDays { get; set; }
+        public bool ShouldSerializeSubmittedforPurchaseDate() => !_submittedforPurchaseDate.Clean;
+        private Value<int?> _totalLateDays;
+        public int? TotalLateDays { get { return _totalLateDays; } set { _totalLateDays = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLateDays() => !TotalLateDays.Clean;
-        public Value<decimal?> TotalLateFee { get; set; }
+        public bool ShouldSerializeTotalLateDays() => !_totalLateDays.Clean;
+        private Value<decimal?> _totalLateFee;
+        public decimal? TotalLateFee { get { return _totalLateFee; } set { _totalLateFee = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLateFee() => !TotalLateFee.Clean;
-        public Value<decimal?> UnpaidPrincipalBalance { get; set; }
+        public bool ShouldSerializeTotalLateFee() => !_totalLateFee.Clean;
+        private Value<decimal?> _unpaidPrincipalBalance;
+        public decimal? UnpaidPrincipalBalance { get { return _unpaidPrincipalBalance; } set { _unpaidPrincipalBalance = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnpaidPrincipalBalance() => !UnpaidPrincipalBalance.Clean;
-        public Value<DateTime?> WithdrawnDate { get; set; }
+        public bool ShouldSerializeUnpaidPrincipalBalance() => !_unpaidPrincipalBalance.Clean;
+        private Value<DateTime?> _withdrawnDate;
+        public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithdrawnDate() => !WithdrawnDate.Clean;
+        public bool ShouldSerializeWithdrawnDate() => !_withdrawnDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -158,108 +206,108 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdditionalLateFeeCharge.Clean
-                    && ApprovedToFundDate.Clean
-                    && BasePrice.Clean
-                    && CommitmentType.Clean
-                    && ConditionsReceivedDate.Clean
-                    && CorrespondentStatus.Clean
-                    && DeliveryExpirationDate.Clean
-                    && DeliveryType.Clean
-                    && FundedDate.Clean
-                    && GracePeriodDays.Clean
-                    && GracePeriodStartDate.Clean
-                    && GracePeriodStartTrigger.Clean
-                    && Id.Clean
-                    && InitialSuspenseDate.Clean
-                    && LateDaysBegin.Clean
-                    && LateDaysEnd.Clean
-                    && LateDaysEndTrigger.Clean
-                    && LateFeeChargeType.Clean
-                    && LateFeeFrequency.Clean
-                    && LateFeeNotes.Clean
-                    && LateFeePercentage.Clean
-                    && LateFeeTotalPriceAdjustment.Clean
-                    && LatestConditionsDate.Clean
-                    && LFS_CalculateAs.Clean
-                    && LFS_DayCleared.Clean
-                    && LFS_DayClearedOtherDate.Clean
-                    && LFS_DayClearedOtherDateValue.Clean
-                    && LFS_FeeHandledAs.Clean
-                    && LFS_GracePeriodCalendar.Clean
-                    && LFS_GracePeriodDays.Clean
-                    && LFS_GracePeriodLaterOf.Clean
-                    && LFS_GracePeriodStarts.Clean
-                    && LFS_IncludeDay.Clean
-                    && LFS_LateFeeBasedOn.Clean
-                    && LFS_MaxLateDays.Clean
-                    && LFS_OtherDate.Clean
-                    && LFS_OtherDateValue.Clean
-                    && LFS_StartOnWeekend.Clean
-                    && NoteDate.Clean
-                    && OriginalPrincipalBalance.Clean
-                    && Ratesheet.Clean
-                    && ReceivedDate.Clean
-                    && RejectedDate.Clean
-                    && SubmittedforPurchaseDate.Clean
-                    && TotalLateDays.Clean
-                    && TotalLateFee.Clean
-                    && UnpaidPrincipalBalance.Clean
-                    && WithdrawnDate.Clean;
+                var clean = _additionalLateFeeCharge.Clean
+                    && _approvedToFundDate.Clean
+                    && _basePrice.Clean
+                    && _commitmentType.Clean
+                    && _conditionsReceivedDate.Clean
+                    && _correspondentStatus.Clean
+                    && _deliveryExpirationDate.Clean
+                    && _deliveryType.Clean
+                    && _fundedDate.Clean
+                    && _gracePeriodDays.Clean
+                    && _gracePeriodStartDate.Clean
+                    && _gracePeriodStartTrigger.Clean
+                    && _id.Clean
+                    && _initialSuspenseDate.Clean
+                    && _lateDaysBegin.Clean
+                    && _lateDaysEnd.Clean
+                    && _lateDaysEndTrigger.Clean
+                    && _lateFeeChargeType.Clean
+                    && _lateFeeFrequency.Clean
+                    && _lateFeeNotes.Clean
+                    && _lateFeePercentage.Clean
+                    && _lateFeeTotalPriceAdjustment.Clean
+                    && _latestConditionsDate.Clean
+                    && _lFS_CalculateAs.Clean
+                    && _lFS_DayCleared.Clean
+                    && _lFS_DayClearedOtherDate.Clean
+                    && _lFS_DayClearedOtherDateValue.Clean
+                    && _lFS_FeeHandledAs.Clean
+                    && _lFS_GracePeriodCalendar.Clean
+                    && _lFS_GracePeriodDays.Clean
+                    && _lFS_GracePeriodLaterOf.Clean
+                    && _lFS_GracePeriodStarts.Clean
+                    && _lFS_IncludeDay.Clean
+                    && _lFS_LateFeeBasedOn.Clean
+                    && _lFS_MaxLateDays.Clean
+                    && _lFS_OtherDate.Clean
+                    && _lFS_OtherDateValue.Clean
+                    && _lFS_StartOnWeekend.Clean
+                    && _noteDate.Clean
+                    && _originalPrincipalBalance.Clean
+                    && _ratesheet.Clean
+                    && _receivedDate.Clean
+                    && _rejectedDate.Clean
+                    && _submittedforPurchaseDate.Clean
+                    && _totalLateDays.Clean
+                    && _totalLateFee.Clean
+                    && _unpaidPrincipalBalance.Clean
+                    && _withdrawnDate.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdditionalLateFeeCharge; v0.Clean = value; AdditionalLateFeeCharge = v0;
-                var v1 = ApprovedToFundDate; v1.Clean = value; ApprovedToFundDate = v1;
-                var v2 = BasePrice; v2.Clean = value; BasePrice = v2;
-                var v3 = CommitmentType; v3.Clean = value; CommitmentType = v3;
-                var v4 = ConditionsReceivedDate; v4.Clean = value; ConditionsReceivedDate = v4;
-                var v5 = CorrespondentStatus; v5.Clean = value; CorrespondentStatus = v5;
-                var v6 = DeliveryExpirationDate; v6.Clean = value; DeliveryExpirationDate = v6;
-                var v7 = DeliveryType; v7.Clean = value; DeliveryType = v7;
-                var v8 = FundedDate; v8.Clean = value; FundedDate = v8;
-                var v9 = GracePeriodDays; v9.Clean = value; GracePeriodDays = v9;
-                var v10 = GracePeriodStartDate; v10.Clean = value; GracePeriodStartDate = v10;
-                var v11 = GracePeriodStartTrigger; v11.Clean = value; GracePeriodStartTrigger = v11;
-                var v12 = Id; v12.Clean = value; Id = v12;
-                var v13 = InitialSuspenseDate; v13.Clean = value; InitialSuspenseDate = v13;
-                var v14 = LateDaysBegin; v14.Clean = value; LateDaysBegin = v14;
-                var v15 = LateDaysEnd; v15.Clean = value; LateDaysEnd = v15;
-                var v16 = LateDaysEndTrigger; v16.Clean = value; LateDaysEndTrigger = v16;
-                var v17 = LateFeeChargeType; v17.Clean = value; LateFeeChargeType = v17;
-                var v18 = LateFeeFrequency; v18.Clean = value; LateFeeFrequency = v18;
-                var v19 = LateFeeNotes; v19.Clean = value; LateFeeNotes = v19;
-                var v20 = LateFeePercentage; v20.Clean = value; LateFeePercentage = v20;
-                var v21 = LateFeeTotalPriceAdjustment; v21.Clean = value; LateFeeTotalPriceAdjustment = v21;
-                var v22 = LatestConditionsDate; v22.Clean = value; LatestConditionsDate = v22;
-                var v23 = LFS_CalculateAs; v23.Clean = value; LFS_CalculateAs = v23;
-                var v24 = LFS_DayCleared; v24.Clean = value; LFS_DayCleared = v24;
-                var v25 = LFS_DayClearedOtherDate; v25.Clean = value; LFS_DayClearedOtherDate = v25;
-                var v26 = LFS_DayClearedOtherDateValue; v26.Clean = value; LFS_DayClearedOtherDateValue = v26;
-                var v27 = LFS_FeeHandledAs; v27.Clean = value; LFS_FeeHandledAs = v27;
-                var v28 = LFS_GracePeriodCalendar; v28.Clean = value; LFS_GracePeriodCalendar = v28;
-                var v29 = LFS_GracePeriodDays; v29.Clean = value; LFS_GracePeriodDays = v29;
-                var v30 = LFS_GracePeriodLaterOf; v30.Clean = value; LFS_GracePeriodLaterOf = v30;
-                var v31 = LFS_GracePeriodStarts; v31.Clean = value; LFS_GracePeriodStarts = v31;
-                var v32 = LFS_IncludeDay; v32.Clean = value; LFS_IncludeDay = v32;
-                var v33 = LFS_LateFeeBasedOn; v33.Clean = value; LFS_LateFeeBasedOn = v33;
-                var v34 = LFS_MaxLateDays; v34.Clean = value; LFS_MaxLateDays = v34;
-                var v35 = LFS_OtherDate; v35.Clean = value; LFS_OtherDate = v35;
-                var v36 = LFS_OtherDateValue; v36.Clean = value; LFS_OtherDateValue = v36;
-                var v37 = LFS_StartOnWeekend; v37.Clean = value; LFS_StartOnWeekend = v37;
-                var v38 = NoteDate; v38.Clean = value; NoteDate = v38;
-                var v39 = OriginalPrincipalBalance; v39.Clean = value; OriginalPrincipalBalance = v39;
-                var v40 = Ratesheet; v40.Clean = value; Ratesheet = v40;
-                var v41 = ReceivedDate; v41.Clean = value; ReceivedDate = v41;
-                var v42 = RejectedDate; v42.Clean = value; RejectedDate = v42;
-                var v43 = SubmittedforPurchaseDate; v43.Clean = value; SubmittedforPurchaseDate = v43;
-                var v44 = TotalLateDays; v44.Clean = value; TotalLateDays = v44;
-                var v45 = TotalLateFee; v45.Clean = value; TotalLateFee = v45;
-                var v46 = UnpaidPrincipalBalance; v46.Clean = value; UnpaidPrincipalBalance = v46;
-                var v47 = WithdrawnDate; v47.Clean = value; WithdrawnDate = v47;
+                var v0 = _additionalLateFeeCharge; v0.Clean = value; _additionalLateFeeCharge = v0;
+                var v1 = _approvedToFundDate; v1.Clean = value; _approvedToFundDate = v1;
+                var v2 = _basePrice; v2.Clean = value; _basePrice = v2;
+                var v3 = _commitmentType; v3.Clean = value; _commitmentType = v3;
+                var v4 = _conditionsReceivedDate; v4.Clean = value; _conditionsReceivedDate = v4;
+                var v5 = _correspondentStatus; v5.Clean = value; _correspondentStatus = v5;
+                var v6 = _deliveryExpirationDate; v6.Clean = value; _deliveryExpirationDate = v6;
+                var v7 = _deliveryType; v7.Clean = value; _deliveryType = v7;
+                var v8 = _fundedDate; v8.Clean = value; _fundedDate = v8;
+                var v9 = _gracePeriodDays; v9.Clean = value; _gracePeriodDays = v9;
+                var v10 = _gracePeriodStartDate; v10.Clean = value; _gracePeriodStartDate = v10;
+                var v11 = _gracePeriodStartTrigger; v11.Clean = value; _gracePeriodStartTrigger = v11;
+                var v12 = _id; v12.Clean = value; _id = v12;
+                var v13 = _initialSuspenseDate; v13.Clean = value; _initialSuspenseDate = v13;
+                var v14 = _lateDaysBegin; v14.Clean = value; _lateDaysBegin = v14;
+                var v15 = _lateDaysEnd; v15.Clean = value; _lateDaysEnd = v15;
+                var v16 = _lateDaysEndTrigger; v16.Clean = value; _lateDaysEndTrigger = v16;
+                var v17 = _lateFeeChargeType; v17.Clean = value; _lateFeeChargeType = v17;
+                var v18 = _lateFeeFrequency; v18.Clean = value; _lateFeeFrequency = v18;
+                var v19 = _lateFeeNotes; v19.Clean = value; _lateFeeNotes = v19;
+                var v20 = _lateFeePercentage; v20.Clean = value; _lateFeePercentage = v20;
+                var v21 = _lateFeeTotalPriceAdjustment; v21.Clean = value; _lateFeeTotalPriceAdjustment = v21;
+                var v22 = _latestConditionsDate; v22.Clean = value; _latestConditionsDate = v22;
+                var v23 = _lFS_CalculateAs; v23.Clean = value; _lFS_CalculateAs = v23;
+                var v24 = _lFS_DayCleared; v24.Clean = value; _lFS_DayCleared = v24;
+                var v25 = _lFS_DayClearedOtherDate; v25.Clean = value; _lFS_DayClearedOtherDate = v25;
+                var v26 = _lFS_DayClearedOtherDateValue; v26.Clean = value; _lFS_DayClearedOtherDateValue = v26;
+                var v27 = _lFS_FeeHandledAs; v27.Clean = value; _lFS_FeeHandledAs = v27;
+                var v28 = _lFS_GracePeriodCalendar; v28.Clean = value; _lFS_GracePeriodCalendar = v28;
+                var v29 = _lFS_GracePeriodDays; v29.Clean = value; _lFS_GracePeriodDays = v29;
+                var v30 = _lFS_GracePeriodLaterOf; v30.Clean = value; _lFS_GracePeriodLaterOf = v30;
+                var v31 = _lFS_GracePeriodStarts; v31.Clean = value; _lFS_GracePeriodStarts = v31;
+                var v32 = _lFS_IncludeDay; v32.Clean = value; _lFS_IncludeDay = v32;
+                var v33 = _lFS_LateFeeBasedOn; v33.Clean = value; _lFS_LateFeeBasedOn = v33;
+                var v34 = _lFS_MaxLateDays; v34.Clean = value; _lFS_MaxLateDays = v34;
+                var v35 = _lFS_OtherDate; v35.Clean = value; _lFS_OtherDate = v35;
+                var v36 = _lFS_OtherDateValue; v36.Clean = value; _lFS_OtherDateValue = v36;
+                var v37 = _lFS_StartOnWeekend; v37.Clean = value; _lFS_StartOnWeekend = v37;
+                var v38 = _noteDate; v38.Clean = value; _noteDate = v38;
+                var v39 = _originalPrincipalBalance; v39.Clean = value; _originalPrincipalBalance = v39;
+                var v40 = _ratesheet; v40.Clean = value; _ratesheet = v40;
+                var v41 = _receivedDate; v41.Clean = value; _receivedDate = v41;
+                var v42 = _rejectedDate; v42.Clean = value; _rejectedDate = v42;
+                var v43 = _submittedforPurchaseDate; v43.Clean = value; _submittedforPurchaseDate = v43;
+                var v44 = _totalLateDays; v44.Clean = value; _totalLateDays = v44;
+                var v45 = _totalLateFee; v45.Clean = value; _totalLateFee = v45;
+                var v46 = _unpaidPrincipalBalance; v46.Clean = value; _unpaidPrincipalBalance = v46;
+                var v47 = _withdrawnDate; v47.Clean = value; _withdrawnDate = v47;
                 _settingClean = 0;
             }
         }

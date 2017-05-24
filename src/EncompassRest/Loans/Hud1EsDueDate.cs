@@ -7,39 +7,50 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Hud1EsDueDate
     {
-        public Value<DateTime?> AnnualFee { get; set; }
+        private Value<DateTime?> _annualFee;
+        public DateTime? AnnualFee { get { return _annualFee; } set { _annualFee = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFee() => !AnnualFee.Clean;
-        public Value<DateTime?> FloodInsDisb { get; set; }
+        public bool ShouldSerializeAnnualFee() => !_annualFee.Clean;
+        private Value<DateTime?> _floodInsDisb;
+        public DateTime? FloodInsDisb { get { return _floodInsDisb; } set { _floodInsDisb = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsDisb() => !FloodInsDisb.Clean;
-        public Value<DateTime?> HazInsDisb { get; set; }
+        public bool ShouldSerializeFloodInsDisb() => !_floodInsDisb.Clean;
+        private Value<DateTime?> _hazInsDisb;
+        public DateTime? HazInsDisb { get { return _hazInsDisb; } set { _hazInsDisb = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsDisb() => !HazInsDisb.Clean;
-        public Value<int?> Hud1EsDueDateIndex { get; set; }
+        public bool ShouldSerializeHazInsDisb() => !_hazInsDisb.Clean;
+        private Value<int?> _hud1EsDueDateIndex;
+        public int? Hud1EsDueDateIndex { get { return _hud1EsDueDateIndex; } set { _hud1EsDueDateIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1EsDueDateIndex() => !Hud1EsDueDateIndex.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeHud1EsDueDateIndex() => !_hud1EsDueDateIndex.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<DateTime?> MtgInsDisb { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<DateTime?> _mtgInsDisb;
+        public DateTime? MtgInsDisb { get { return _mtgInsDisb; } set { _mtgInsDisb = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMtgInsDisb() => !MtgInsDisb.Clean;
-        public Value<DateTime?> SchoolTaxes { get; set; }
+        public bool ShouldSerializeMtgInsDisb() => !_mtgInsDisb.Clean;
+        private Value<DateTime?> _schoolTaxes;
+        public DateTime? SchoolTaxes { get { return _schoolTaxes; } set { _schoolTaxes = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSchoolTaxes() => !SchoolTaxes.Clean;
-        public Value<DateTime?> TaxDisb { get; set; }
+        public bool ShouldSerializeSchoolTaxes() => !_schoolTaxes.Clean;
+        private Value<DateTime?> _taxDisb;
+        public DateTime? TaxDisb { get { return _taxDisb; } set { _taxDisb = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxDisb() => !TaxDisb.Clean;
-        public Value<DateTime?> UserDefined1 { get; set; }
+        public bool ShouldSerializeTaxDisb() => !_taxDisb.Clean;
+        private Value<DateTime?> _userDefined1;
+        public DateTime? UserDefined1 { get { return _userDefined1; } set { _userDefined1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined1() => !UserDefined1.Clean;
-        public Value<DateTime?> UserDefined2 { get; set; }
+        public bool ShouldSerializeUserDefined1() => !_userDefined1.Clean;
+        private Value<DateTime?> _userDefined2;
+        public DateTime? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined2() => !UserDefined2.Clean;
-        public Value<DateTime?> UserDefined3 { get; set; }
+        public bool ShouldSerializeUserDefined2() => !_userDefined2.Clean;
+        private Value<DateTime?> _userDefined3;
+        public DateTime? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined3() => !UserDefined3.Clean;
+        public bool ShouldSerializeUserDefined3() => !_userDefined3.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,34 +58,34 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AnnualFee.Clean
-                    && FloodInsDisb.Clean
-                    && HazInsDisb.Clean
-                    && Hud1EsDueDateIndex.Clean
-                    && Id.Clean
-                    && MtgInsDisb.Clean
-                    && SchoolTaxes.Clean
-                    && TaxDisb.Clean
-                    && UserDefined1.Clean
-                    && UserDefined2.Clean
-                    && UserDefined3.Clean;
+                var clean = _annualFee.Clean
+                    && _floodInsDisb.Clean
+                    && _hazInsDisb.Clean
+                    && _hud1EsDueDateIndex.Clean
+                    && _id.Clean
+                    && _mtgInsDisb.Clean
+                    && _schoolTaxes.Clean
+                    && _taxDisb.Clean
+                    && _userDefined1.Clean
+                    && _userDefined2.Clean
+                    && _userDefined3.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AnnualFee; v0.Clean = value; AnnualFee = v0;
-                var v1 = FloodInsDisb; v1.Clean = value; FloodInsDisb = v1;
-                var v2 = HazInsDisb; v2.Clean = value; HazInsDisb = v2;
-                var v3 = Hud1EsDueDateIndex; v3.Clean = value; Hud1EsDueDateIndex = v3;
-                var v4 = Id; v4.Clean = value; Id = v4;
-                var v5 = MtgInsDisb; v5.Clean = value; MtgInsDisb = v5;
-                var v6 = SchoolTaxes; v6.Clean = value; SchoolTaxes = v6;
-                var v7 = TaxDisb; v7.Clean = value; TaxDisb = v7;
-                var v8 = UserDefined1; v8.Clean = value; UserDefined1 = v8;
-                var v9 = UserDefined2; v9.Clean = value; UserDefined2 = v9;
-                var v10 = UserDefined3; v10.Clean = value; UserDefined3 = v10;
+                var v0 = _annualFee; v0.Clean = value; _annualFee = v0;
+                var v1 = _floodInsDisb; v1.Clean = value; _floodInsDisb = v1;
+                var v2 = _hazInsDisb; v2.Clean = value; _hazInsDisb = v2;
+                var v3 = _hud1EsDueDateIndex; v3.Clean = value; _hud1EsDueDateIndex = v3;
+                var v4 = _id; v4.Clean = value; _id = v4;
+                var v5 = _mtgInsDisb; v5.Clean = value; _mtgInsDisb = v5;
+                var v6 = _schoolTaxes; v6.Clean = value; _schoolTaxes = v6;
+                var v7 = _taxDisb; v7.Clean = value; _taxDisb = v7;
+                var v8 = _userDefined1; v8.Clean = value; _userDefined1 = v8;
+                var v9 = _userDefined2; v9.Clean = value; _userDefined2 = v9;
+                var v10 = _userDefined3; v10.Clean = value; _userDefined3 = v10;
                 _settingClean = 0;
             }
         }

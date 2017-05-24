@@ -7,375 +7,498 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanProgram
     {
-        public Value<string> Acquisition { get; set; }
+        private Value<string> _acquisition;
+        public string Acquisition { get { return _acquisition; } set { _acquisition = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAcquisition() => !_acquisition.Clean;
+        private Value<string> _additionalArmInformation;
+        public string AdditionalArmInformation { get { return _additionalArmInformation; } set { _additionalArmInformation = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAdditionalArmInformation() => !_additionalArmInformation.Clean;
+        private Value<string> _allDateAndNumericalDisclosures;
+        public string AllDateAndNumericalDisclosures { get { return _allDateAndNumericalDisclosures; } set { _allDateAndNumericalDisclosures = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAllDateAndNumericalDisclosures() => !_allDateAndNumericalDisclosures.Clean;
+        private Value<decimal?> _annualFeeNeeded;
+        public decimal? AnnualFeeNeeded { get { return _annualFeeNeeded; } set { _annualFeeNeeded = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAnnualFeeNeeded() => !_annualFeeNeeded.Clean;
+        private Value<string> _armTypeDescription;
+        public string ArmTypeDescription { get { return _armTypeDescription; } set { _armTypeDescription = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeArmTypeDescription() => !_armTypeDescription.Clean;
+        private Value<string> _assumptionOnYourProperty;
+        public string AssumptionOnYourProperty { get { return _assumptionOnYourProperty; } set { _assumptionOnYourProperty = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeAssumptionOnYourProperty() => !_assumptionOnYourProperty.Clean;
+        private Value<int?> _balloonLoanMaturityTermMonths;
+        public int? BalloonLoanMaturityTermMonths { get { return _balloonLoanMaturityTermMonths; } set { _balloonLoanMaturityTermMonths = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBalloonLoanMaturityTermMonths() => !_balloonLoanMaturityTermMonths.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths1;
+        public int? BuydownChangeFrequencyMonths1 { get { return _buydownChangeFrequencyMonths1; } set { _buydownChangeFrequencyMonths1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths1() => !_buydownChangeFrequencyMonths1.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths2;
+        public int? BuydownChangeFrequencyMonths2 { get { return _buydownChangeFrequencyMonths2; } set { _buydownChangeFrequencyMonths2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths2() => !_buydownChangeFrequencyMonths2.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths3;
+        public int? BuydownChangeFrequencyMonths3 { get { return _buydownChangeFrequencyMonths3; } set { _buydownChangeFrequencyMonths3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths3() => !_buydownChangeFrequencyMonths3.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths4;
+        public int? BuydownChangeFrequencyMonths4 { get { return _buydownChangeFrequencyMonths4; } set { _buydownChangeFrequencyMonths4 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths4() => !_buydownChangeFrequencyMonths4.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths5;
+        public int? BuydownChangeFrequencyMonths5 { get { return _buydownChangeFrequencyMonths5; } set { _buydownChangeFrequencyMonths5 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths5() => !_buydownChangeFrequencyMonths5.Clean;
+        private Value<int?> _buydownChangeFrequencyMonths6;
+        public int? BuydownChangeFrequencyMonths6 { get { return _buydownChangeFrequencyMonths6; } set { _buydownChangeFrequencyMonths6 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownChangeFrequencyMonths6() => !_buydownChangeFrequencyMonths6.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent1;
+        public decimal? BuydownIncreaseRatePercent1 { get { return _buydownIncreaseRatePercent1; } set { _buydownIncreaseRatePercent1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent1() => !_buydownIncreaseRatePercent1.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent2;
+        public decimal? BuydownIncreaseRatePercent2 { get { return _buydownIncreaseRatePercent2; } set { _buydownIncreaseRatePercent2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent2() => !_buydownIncreaseRatePercent2.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent3;
+        public decimal? BuydownIncreaseRatePercent3 { get { return _buydownIncreaseRatePercent3; } set { _buydownIncreaseRatePercent3 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent3() => !_buydownIncreaseRatePercent3.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent4;
+        public decimal? BuydownIncreaseRatePercent4 { get { return _buydownIncreaseRatePercent4; } set { _buydownIncreaseRatePercent4 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent4() => !_buydownIncreaseRatePercent4.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent5;
+        public decimal? BuydownIncreaseRatePercent5 { get { return _buydownIncreaseRatePercent5; } set { _buydownIncreaseRatePercent5 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent5() => !_buydownIncreaseRatePercent5.Clean;
+        private Value<decimal?> _buydownIncreaseRatePercent6;
+        public decimal? BuydownIncreaseRatePercent6 { get { return _buydownIncreaseRatePercent6; } set { _buydownIncreaseRatePercent6 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeBuydownIncreaseRatePercent6() => !_buydownIncreaseRatePercent6.Clean;
+        private Value<string> _calculateBasedOnRemainingBalance;
+        public string CalculateBasedOnRemainingBalance { get { return _calculateBasedOnRemainingBalance; } set { _calculateBasedOnRemainingBalance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCalculateBasedOnRemainingBalance() => !_calculateBasedOnRemainingBalance.Clean;
+        private Value<string> _closingCostProgram;
+        public string ClosingCostProgram { get { return _closingCostProgram; } set { _closingCostProgram = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeClosingCostProgram() => !_closingCostProgram.Clean;
+        private Value<string> _constructionDescription;
+        public string ConstructionDescription { get { return _constructionDescription; } set { _constructionDescription = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConstructionDescription() => !_constructionDescription.Clean;
+        private Value<decimal?> _constructionInterestReserveAmount;
+        public decimal? ConstructionInterestReserveAmount { get { return _constructionInterestReserveAmount; } set { _constructionInterestReserveAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConstructionInterestReserveAmount() => !_constructionInterestReserveAmount.Clean;
+        private Value<string> _constructionLoanMethod;
+        public string ConstructionLoanMethod { get { return _constructionLoanMethod; } set { _constructionLoanMethod = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConstructionLoanMethod() => !_constructionLoanMethod.Clean;
+        private Value<int?> _constructionPeriodMonths;
+        public int? ConstructionPeriodMonths { get { return _constructionPeriodMonths; } set { _constructionPeriodMonths = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConstructionPeriodMonths() => !_constructionPeriodMonths.Clean;
+        private Value<decimal?> _constructionRate;
+        public decimal? ConstructionRate { get { return _constructionRate; } set { _constructionRate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConstructionRate() => !_constructionRate.Clean;
+        private Value<string> _convertible;
+        public string Convertible { get { return _convertible; } set { _convertible = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeConvertible() => !_convertible.Clean;
+        private Value<string> _creditDisability;
+        public string CreditDisability { get { return _creditDisability; } set { _creditDisability = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCreditDisability() => !_creditDisability.Clean;
+        private Value<string> _creditLifeInsurance;
+        public string CreditLifeInsurance { get { return _creditLifeInsurance; } set { _creditLifeInsurance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeCreditLifeInsurance() => !_creditLifeInsurance.Clean;
+        private Value<string> _demandFeature;
+        public string DemandFeature { get { return _demandFeature; } set { _demandFeature = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDemandFeature() => !_demandFeature.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<string> _disclosureType;
+        public string DisclosureType { get { return _disclosureType; } set { _disclosureType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDisclosureType() => !_disclosureType.Clean;
+        private Value<string> _discounted;
+        public string Discounted { get { return _discounted; } set { _discounted = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDiscounted() => !_discounted.Clean;
+        private Value<decimal?> _discountedRate;
+        public decimal? DiscountedRate { get { return _discountedRate; } set { _discountedRate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDiscountedRate() => !_discountedRate.Clean;
+        private Value<string> _drawRepayPeriodTableName;
+        public string DrawRepayPeriodTableName { get { return _drawRepayPeriodTableName; } set { _drawRepayPeriodTableName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeDrawRepayPeriodTableName() => !_drawRepayPeriodTableName.Clean;
+        private Value<decimal?> _fhaUpfrontMiPremiumPercent;
+        public decimal? FhaUpfrontMiPremiumPercent { get { return _fhaUpfrontMiPremiumPercent; } set { _fhaUpfrontMiPremiumPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFhaUpfrontMiPremiumPercent() => !_fhaUpfrontMiPremiumPercent.Clean;
+        private Value<string> _floodInsurance;
+        public string FloodInsurance { get { return _floodInsurance; } set { _floodInsurance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFloodInsurance() => !_floodInsurance.Clean;
+        private Value<decimal?> _floorPercent;
+        public decimal? FloorPercent { get { return _floorPercent; } set { _floorPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFloorPercent() => !_floorPercent.Clean;
+        private Value<decimal?> _fundingFeePaidInCash;
+        public decimal? FundingFeePaidInCash { get { return _fundingFeePaidInCash; } set { _fundingFeePaidInCash = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeFundingFeePaidInCash() => !_fundingFeePaidInCash.Clean;
+        private Value<decimal?> _gpmExtraPaymentForEarlyPayOff;
+        public decimal? GpmExtraPaymentForEarlyPayOff { get { return _gpmExtraPaymentForEarlyPayOff; } set { _gpmExtraPaymentForEarlyPayOff = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGpmExtraPaymentForEarlyPayOff() => !_gpmExtraPaymentForEarlyPayOff.Clean;
+        private Value<decimal?> _gpmRate;
+        public decimal? GpmRate { get { return _gpmRate; } set { _gpmRate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGpmRate() => !_gpmRate.Clean;
+        private Value<int?> _gpmYears;
+        public int? GpmYears { get { return _gpmYears; } set { _gpmYears = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeGpmYears() => !_gpmYears.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _ifYouPurchase;
+        public string IfYouPurchase { get { return _ifYouPurchase; } set { _ifYouPurchase = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIfYouPurchase() => !_ifYouPurchase.Clean;
+        private Value<string> _ifYouPurchaseType;
+        public string IfYouPurchaseType { get { return _ifYouPurchaseType; } set { _ifYouPurchaseType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIfYouPurchaseType() => !_ifYouPurchaseType.Clean;
+        private Value<decimal?> _indexCurrentValuePercent;
+        public decimal? IndexCurrentValuePercent { get { return _indexCurrentValuePercent; } set { _indexCurrentValuePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIndexCurrentValuePercent() => !_indexCurrentValuePercent.Clean;
+        private Value<decimal?> _indexMarginPercent;
+        public decimal? IndexMarginPercent { get { return _indexMarginPercent; } set { _indexMarginPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeIndexMarginPercent() => !_indexMarginPercent.Clean;
+        private Value<decimal?> _initialAdvanceAmount;
+        public decimal? InitialAdvanceAmount { get { return _initialAdvanceAmount; } set { _initialAdvanceAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInitialAdvanceAmount() => !_initialAdvanceAmount.Clean;
+        private Value<int?> _interestOnlyMonths;
+        public int? InterestOnlyMonths { get { return _interestOnlyMonths; } set { _interestOnlyMonths = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeInterestOnlyMonths() => !_interestOnlyMonths.Clean;
+        private Value<int?> _lateChargeDays;
+        public int? LateChargeDays { get { return _lateChargeDays; } set { _lateChargeDays = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLateChargeDays() => !_lateChargeDays.Clean;
+        private Value<decimal?> _lateChargePercent;
+        public decimal? LateChargePercent { get { return _lateChargePercent; } set { _lateChargePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLateChargePercent() => !_lateChargePercent.Clean;
+        private Value<string> _lateChargeType;
+        public string LateChargeType { get { return _lateChargeType; } set { _lateChargeType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLateChargeType() => !_lateChargeType.Clean;
+        private Value<string> _lenderInvestorCode;
+        public string LenderInvestorCode { get { return _lenderInvestorCode; } set { _lenderInvestorCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLenderInvestorCode() => !_lenderInvestorCode.Clean;
+        private Value<string> _lienPriorityType;
+        public string LienPriorityType { get { return _lienPriorityType; } set { _lienPriorityType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLienPriorityType() => !_lienPriorityType.Clean;
+        private Value<int?> _loanAmortizationTermMonths;
+        public int? LoanAmortizationTermMonths { get { return _loanAmortizationTermMonths; } set { _loanAmortizationTermMonths = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanAmortizationTermMonths() => !_loanAmortizationTermMonths.Clean;
+        private Value<string> _loanAmortizationType;
+        public string LoanAmortizationType { get { return _loanAmortizationType; } set { _loanAmortizationType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanAmortizationType() => !_loanAmortizationType.Clean;
+        private Value<string> _loanDocumentationType;
+        public string LoanDocumentationType { get { return _loanDocumentationType; } set { _loanDocumentationType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanDocumentationType() => !_loanDocumentationType.Clean;
+        private Value<string> _loanFeaturesPaymentFrequencyType;
+        public string LoanFeaturesPaymentFrequencyType { get { return _loanFeaturesPaymentFrequencyType; } set { _loanFeaturesPaymentFrequencyType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanFeaturesPaymentFrequencyType() => !_loanFeaturesPaymentFrequencyType.Clean;
+        private Value<string> _loanProgramName;
+        public string LoanProgramName { get { return _loanProgramName; } set { _loanProgramName = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLoanProgramName() => !_loanProgramName.Clean;
+        private Value<string> _lockField;
+        public string LockField { get { return _lockField; } set { _lockField = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeLockField() => !_lockField.Clean;
+        private Value<decimal?> _maxBackRatio;
+        public decimal? MaxBackRatio { get { return _maxBackRatio; } set { _maxBackRatio = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaxBackRatio() => !_maxBackRatio.Clean;
+        private Value<decimal?> _maxCltv;
+        public decimal? MaxCltv { get { return _maxCltv; } set { _maxCltv = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaxCltv() => !_maxCltv.Clean;
+        private Value<decimal?> _maxFrontRatio;
+        public decimal? MaxFrontRatio { get { return _maxFrontRatio; } set { _maxFrontRatio = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaxFrontRatio() => !_maxFrontRatio.Clean;
+        private Value<decimal?> _maximumBalance;
+        public decimal? MaximumBalance { get { return _maximumBalance; } set { _maximumBalance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaximumBalance() => !_maximumBalance.Clean;
+        private Value<decimal?> _maxLoanAmount;
+        public decimal? MaxLoanAmount { get { return _maxLoanAmount; } set { _maxLoanAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaxLoanAmount() => !_maxLoanAmount.Clean;
+        private Value<decimal?> _maxLtv;
+        public decimal? MaxLtv { get { return _maxLtv; } set { _maxLtv = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMaxLtv() => !_maxLtv.Clean;
+        private Value<string> _meansAnEstimate;
+        public string MeansAnEstimate { get { return _meansAnEstimate; } set { _meansAnEstimate = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMeansAnEstimate() => !_meansAnEstimate.Clean;
+        private Value<string> _miCalculationType;
+        public string MiCalculationType { get { return _miCalculationType; } set { _miCalculationType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMiCalculationType() => !_miCalculationType.Clean;
+        private Value<string> _midpointCancellation;
+        public string MidpointCancellation { get { return _midpointCancellation; } set { _midpointCancellation = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMidpointCancellation() => !_midpointCancellation.Clean;
+        private Value<string> _minCreditScore;
+        public string MinCreditScore { get { return _minCreditScore; } set { _minCreditScore = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMinCreditScore() => !_minCreditScore.Clean;
+        private Value<decimal?> _minimumAdvanceAmount;
+        public decimal? MinimumAdvanceAmount { get { return _minimumAdvanceAmount; } set { _minimumAdvanceAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMinimumAdvanceAmount() => !_minimumAdvanceAmount.Clean;
+        private Value<decimal?> _minimumAllowableApr;
+        public decimal? MinimumAllowableApr { get { return _minimumAllowableApr; } set { _minimumAllowableApr = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMinimumAllowableApr() => !_minimumAllowableApr.Clean;
+        private Value<decimal?> _minimumPaymentAmount;
+        public decimal? MinimumPaymentAmount { get { return _minimumPaymentAmount; } set { _minimumPaymentAmount = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMinimumPaymentAmount() => !_minimumPaymentAmount.Clean;
+        private Value<decimal?> _minimumPaymentPercent;
+        public decimal? MinimumPaymentPercent { get { return _minimumPaymentPercent; } set { _minimumPaymentPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMinimumPaymentPercent() => !_minimumPaymentPercent.Clean;
+        private Value<decimal?> _mipPaidInCash;
+        public decimal? MipPaidInCash { get { return _mipPaidInCash; } set { _mipPaidInCash = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMipPaidInCash() => !_mipPaidInCash.Clean;
+        private Value<string> _mmi;
+        public string Mmi { get { return _mmi; } set { _mmi = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMmi() => !_mmi.Clean;
+        private Value<decimal?> _mortgageInsuranceAdjustmentFactor1;
+        public decimal? MortgageInsuranceAdjustmentFactor1 { get { return _mortgageInsuranceAdjustmentFactor1; } set { _mortgageInsuranceAdjustmentFactor1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceAdjustmentFactor1() => !_mortgageInsuranceAdjustmentFactor1.Clean;
+        private Value<decimal?> _mortgageInsuranceAdjustmentFactor2;
+        public decimal? MortgageInsuranceAdjustmentFactor2 { get { return _mortgageInsuranceAdjustmentFactor2; } set { _mortgageInsuranceAdjustmentFactor2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceAdjustmentFactor2() => !_mortgageInsuranceAdjustmentFactor2.Clean;
+        private Value<decimal?> _mortgageInsuranceCancelPercent;
+        public decimal? MortgageInsuranceCancelPercent { get { return _mortgageInsuranceCancelPercent; } set { _mortgageInsuranceCancelPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceCancelPercent() => !_mortgageInsuranceCancelPercent.Clean;
+        private Value<decimal?> _mortgageInsuranceMonthlyPayment1;
+        public decimal? MortgageInsuranceMonthlyPayment1 { get { return _mortgageInsuranceMonthlyPayment1; } set { _mortgageInsuranceMonthlyPayment1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceMonthlyPayment1() => !_mortgageInsuranceMonthlyPayment1.Clean;
+        private Value<decimal?> _mortgageInsuranceMonthlyPayment2;
+        public decimal? MortgageInsuranceMonthlyPayment2 { get { return _mortgageInsuranceMonthlyPayment2; } set { _mortgageInsuranceMonthlyPayment2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceMonthlyPayment2() => !_mortgageInsuranceMonthlyPayment2.Clean;
+        private Value<int?> _mortgageInsuranceMonthsOfAdjustment1;
+        public int? MortgageInsuranceMonthsOfAdjustment1 { get { return _mortgageInsuranceMonthsOfAdjustment1; } set { _mortgageInsuranceMonthsOfAdjustment1 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceMonthsOfAdjustment1() => !_mortgageInsuranceMonthsOfAdjustment1.Clean;
+        private Value<int?> _mortgageInsuranceMonthsOfAdjustment2;
+        public int? MortgageInsuranceMonthsOfAdjustment2 { get { return _mortgageInsuranceMonthsOfAdjustment2; } set { _mortgageInsuranceMonthsOfAdjustment2 = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageInsuranceMonthsOfAdjustment2() => !_mortgageInsuranceMonthsOfAdjustment2.Clean;
+        private Value<string> _mortgageType;
+        public string MortgageType { get { return _mortgageType; } set { _mortgageType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeMortgageType() => !_mortgageType.Clean;
+        private Value<string> _otherAmortizationTypeDescription;
+        public string OtherAmortizationTypeDescription { get { return _otherAmortizationTypeDescription; } set { _otherAmortizationTypeDescription = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeOtherAmortizationTypeDescription() => !_otherAmortizationTypeDescription.Clean;
+        private Value<string> _otherLoanPurposeDescription;
+        public string OtherLoanPurposeDescription { get { return _otherLoanPurposeDescription; } set { _otherLoanPurposeDescription = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeOtherLoanPurposeDescription() => !_otherLoanPurposeDescription.Clean;
+        private Value<string> _otherMortgageTypeDescription;
+        public string OtherMortgageTypeDescription { get { return _otherMortgageTypeDescription; } set { _otherMortgageTypeDescription = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeOtherMortgageTypeDescription() => !_otherMortgageTypeDescription.Clean;
+        private Value<int?> _paymentAdjustmentDurationMonths;
+        public int? PaymentAdjustmentDurationMonths { get { return _paymentAdjustmentDurationMonths; } set { _paymentAdjustmentDurationMonths = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePaymentAdjustmentDurationMonths() => !_paymentAdjustmentDurationMonths.Clean;
+        private Value<decimal?> _paymentAdjustmentPeriodicCapPercent;
+        public decimal? PaymentAdjustmentPeriodicCapPercent { get { return _paymentAdjustmentPeriodicCapPercent; } set { _paymentAdjustmentPeriodicCapPercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePaymentAdjustmentPeriodicCapPercent() => !_paymentAdjustmentPeriodicCapPercent.Clean;
+        private Value<decimal?> _paymentFactor;
+        public decimal? PaymentFactor { get { return _paymentFactor; } set { _paymentFactor = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePaymentFactor() => !_paymentFactor.Clean;
+        private Value<decimal?> _percentageOfRental;
+        public decimal? PercentageOfRental { get { return _percentageOfRental; } set { _percentageOfRental = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePercentageOfRental() => !_percentageOfRental.Clean;
+        private Value<string> _perDiemCalculationMethodType;
+        public string PerDiemCalculationMethodType { get { return _perDiemCalculationMethodType; } set { _perDiemCalculationMethodType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePerDiemCalculationMethodType() => !_perDiemCalculationMethodType.Clean;
+        private Value<string> _pmi;
+        public string Pmi { get { return _pmi; } set { _pmi = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePmi() => !_pmi.Clean;
+        private Value<string> _prepaymentPenaltyIndicator;
+        public string PrepaymentPenaltyIndicator { get { return _prepaymentPenaltyIndicator; } set { _prepaymentPenaltyIndicator = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePrepaymentPenaltyIndicator() => !_prepaymentPenaltyIndicator.Clean;
+        private Value<string> _programCode;
+        public string ProgramCode { get { return _programCode; } set { _programCode = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeProgramCode() => !_programCode.Clean;
+        private Value<string> _propertyInsurance;
+        public string PropertyInsurance { get { return _propertyInsurance; } set { _propertyInsurance = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePropertyInsurance() => !_propertyInsurance.Clean;
+        private Value<string> _propertyUsageType;
+        public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializePropertyUsageType() => !_propertyUsageType.Clean;
+        private Value<decimal?> _qualifyingRatePercent;
+        public decimal? QualifyingRatePercent { get { return _qualifyingRatePercent; } set { _qualifyingRatePercent = value; } }
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool ShouldSerializeQualifyingRatePercent() => !_qualifyingRatePercent.Clean;
+        private Value<int?> _rateAdjustmentDurationMonths;
+        public int? RateAdjustmentDurationMonths { get { return _rateAdjustmentDurationMonths; } set { _rateAdjustmentDurationMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAcquisition() => !Acquisition.Clean;
-        public Value<string> AdditionalArmInformation { get; set; }
+        public bool ShouldSerializeRateAdjustmentDurationMonths() => !_rateAdjustmentDurationMonths.Clean;
+        private Value<decimal?> _rateAdjustmentLifetimeCapPercent;
+        public decimal? RateAdjustmentLifetimeCapPercent { get { return _rateAdjustmentLifetimeCapPercent; } set { _rateAdjustmentLifetimeCapPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalArmInformation() => !AdditionalArmInformation.Clean;
-        public Value<string> AllDateAndNumericalDisclosures { get; set; }
+        public bool ShouldSerializeRateAdjustmentLifetimeCapPercent() => !_rateAdjustmentLifetimeCapPercent.Clean;
+        private Value<decimal?> _rateAdjustmentPercent;
+        public decimal? RateAdjustmentPercent { get { return _rateAdjustmentPercent; } set { _rateAdjustmentPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllDateAndNumericalDisclosures() => !AllDateAndNumericalDisclosures.Clean;
-        public Value<decimal?> AnnualFeeNeeded { get; set; }
+        public bool ShouldSerializeRateAdjustmentPercent() => !_rateAdjustmentPercent.Clean;
+        private Value<decimal?> _rateAdjustmentSubsequentCapPercent;
+        public decimal? RateAdjustmentSubsequentCapPercent { get { return _rateAdjustmentSubsequentCapPercent; } set { _rateAdjustmentSubsequentCapPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFeeNeeded() => !AnnualFeeNeeded.Clean;
-        public Value<string> ArmTypeDescription { get; set; }
+        public bool ShouldSerializeRateAdjustmentSubsequentCapPercent() => !_rateAdjustmentSubsequentCapPercent.Clean;
+        private Value<int?> _rateAdjustmentSubsequentRateAdjustmentMonths;
+        public int? RateAdjustmentSubsequentRateAdjustmentMonths { get { return _rateAdjustmentSubsequentRateAdjustmentMonths; } set { _rateAdjustmentSubsequentRateAdjustmentMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeArmTypeDescription() => !ArmTypeDescription.Clean;
-        public Value<string> AssumptionOnYourProperty { get; set; }
+        public bool ShouldSerializeRateAdjustmentSubsequentRateAdjustmentMonths() => !_rateAdjustmentSubsequentRateAdjustmentMonths.Clean;
+        private Value<int?> _recastPaidMonths;
+        public int? RecastPaidMonths { get { return _recastPaidMonths; } set { _recastPaidMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAssumptionOnYourProperty() => !AssumptionOnYourProperty.Clean;
-        public Value<int?> BalloonLoanMaturityTermMonths { get; set; }
+        public bool ShouldSerializeRecastPaidMonths() => !_recastPaidMonths.Clean;
+        private Value<int?> _recastStopMonths;
+        public int? RecastStopMonths { get { return _recastStopMonths; } set { _recastStopMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalloonLoanMaturityTermMonths() => !BalloonLoanMaturityTermMonths.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths1 { get; set; }
+        public bool ShouldSerializeRecastStopMonths() => !_recastStopMonths.Clean;
+        private Value<string> _refundPaymentIndicator;
+        public string RefundPaymentIndicator { get { return _refundPaymentIndicator; } set { _refundPaymentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths1() => !BuydownChangeFrequencyMonths1.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths2 { get; set; }
+        public bool ShouldSerializeRefundPaymentIndicator() => !_refundPaymentIndicator.Clean;
+        private Value<decimal?> _requestedInterestRatePercent;
+        public decimal? RequestedInterestRatePercent { get { return _requestedInterestRatePercent; } set { _requestedInterestRatePercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths2() => !BuydownChangeFrequencyMonths2.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths3 { get; set; }
+        public bool ShouldSerializeRequestedInterestRatePercent() => !_requestedInterestRatePercent.Clean;
+        private Value<string> _requiredDeposit;
+        public string RequiredDeposit { get { return _requiredDeposit; } set { _requiredDeposit = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths3() => !BuydownChangeFrequencyMonths3.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths4 { get; set; }
+        public bool ShouldSerializeRequiredDeposit() => !_requiredDeposit.Clean;
+        private Value<decimal?> _roundPercent;
+        public decimal? RoundPercent { get { return _roundPercent; } set { _roundPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths4() => !BuydownChangeFrequencyMonths4.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths5 { get; set; }
+        public bool ShouldSerializeRoundPercent() => !_roundPercent.Clean;
+        private Value<string> _roundType;
+        public string RoundType { get { return _roundType; } set { _roundType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths5() => !BuydownChangeFrequencyMonths5.Clean;
-        public Value<int?> BuydownChangeFrequencyMonths6 { get; set; }
+        public bool ShouldSerializeRoundType() => !_roundType.Clean;
+        private Value<string> _securityInterestInNameOf;
+        public string SecurityInterestInNameOf { get { return _securityInterestInNameOf; } set { _securityInterestInNameOf = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownChangeFrequencyMonths6() => !BuydownChangeFrequencyMonths6.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent1 { get; set; }
+        public bool ShouldSerializeSecurityInterestInNameOf() => !_securityInterestInNameOf.Clean;
+        private Value<string> _securityType;
+        public string SecurityType { get { return _securityType; } set { _securityType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent1() => !BuydownIncreaseRatePercent1.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent2 { get; set; }
+        public bool ShouldSerializeSecurityType() => !_securityType.Clean;
+        private Value<decimal?> _subjectPropertyGrossRentalIncome;
+        public decimal? SubjectPropertyGrossRentalIncome { get { return _subjectPropertyGrossRentalIncome; } set { _subjectPropertyGrossRentalIncome = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent2() => !BuydownIncreaseRatePercent2.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent3 { get; set; }
+        public bool ShouldSerializeSubjectPropertyGrossRentalIncome() => !_subjectPropertyGrossRentalIncome.Clean;
+        private Value<decimal?> _teaserRate;
+        public decimal? TeaserRate { get { return _teaserRate; } set { _teaserRate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent3() => !BuydownIncreaseRatePercent3.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent4 { get; set; }
+        public bool ShouldSerializeTeaserRate() => !_teaserRate.Clean;
+        private Value<decimal?> _terminationFeeAmount;
+        public decimal? TerminationFeeAmount { get { return _terminationFeeAmount; } set { _terminationFeeAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent4() => !BuydownIncreaseRatePercent4.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent5 { get; set; }
+        public bool ShouldSerializeTerminationFeeAmount() => !_terminationFeeAmount.Clean;
+        private Value<int?> _terminationPeriodMonthsCount;
+        public int? TerminationPeriodMonthsCount { get { return _terminationPeriodMonthsCount; } set { _terminationPeriodMonthsCount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent5() => !BuydownIncreaseRatePercent5.Clean;
-        public Value<decimal?> BuydownIncreaseRatePercent6 { get; set; }
+        public bool ShouldSerializeTerminationPeriodMonthsCount() => !_terminationPeriodMonthsCount.Clean;
+        private Value<decimal?> _thirdPartyFeeFrom;
+        public decimal? ThirdPartyFeeFrom { get { return _thirdPartyFeeFrom; } set { _thirdPartyFeeFrom = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIncreaseRatePercent6() => !BuydownIncreaseRatePercent6.Clean;
-        public Value<string> CalculateBasedOnRemainingBalance { get; set; }
+        public bool ShouldSerializeThirdPartyFeeFrom() => !_thirdPartyFeeFrom.Clean;
+        private Value<decimal?> _thirdPartyFeeTo;
+        public decimal? ThirdPartyFeeTo { get { return _thirdPartyFeeTo; } set { _thirdPartyFeeTo = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCalculateBasedOnRemainingBalance() => !CalculateBasedOnRemainingBalance.Clean;
-        public Value<string> ClosingCostProgram { get; set; }
+        public bool ShouldSerializeThirdPartyFeeTo() => !_thirdPartyFeeTo.Clean;
+        private Value<string> _type;
+        public string Type { get { return _type; } set { _type = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosingCostProgram() => !ClosingCostProgram.Clean;
-        public Value<string> ConstructionDescription { get; set; }
+        public bool ShouldSerializeType() => !_type.Clean;
+        private Value<string> _useDaysInYears;
+        public string UseDaysInYears { get { return _useDaysInYears; } set { _useDaysInYears = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionDescription() => !ConstructionDescription.Clean;
-        public Value<decimal?> ConstructionInterestReserveAmount { get; set; }
+        public bool ShouldSerializeUseDaysInYears() => !_useDaysInYears.Clean;
+        private Value<string> _usePitiForRatio;
+        public string UsePitiForRatio { get { return _usePitiForRatio; } set { _usePitiForRatio = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionInterestReserveAmount() => !ConstructionInterestReserveAmount.Clean;
-        public Value<string> ConstructionLoanMethod { get; set; }
+        public bool ShouldSerializeUsePitiForRatio() => !_usePitiForRatio.Clean;
+        private Value<string> _variableRateFeature;
+        public string VariableRateFeature { get { return _variableRateFeature; } set { _variableRateFeature = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionLoanMethod() => !ConstructionLoanMethod.Clean;
-        public Value<int?> ConstructionPeriodMonths { get; set; }
+        public bool ShouldSerializeVariableRateFeature() => !_variableRateFeature.Clean;
+        private Value<decimal?> _yearlyTerm;
+        public decimal? YearlyTerm { get { return _yearlyTerm; } set { _yearlyTerm = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionPeriodMonths() => !ConstructionPeriodMonths.Clean;
-        public Value<decimal?> ConstructionRate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConstructionRate() => !ConstructionRate.Clean;
-        public Value<string> Convertible { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConvertible() => !Convertible.Clean;
-        public Value<string> CreditDisability { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreditDisability() => !CreditDisability.Clean;
-        public Value<string> CreditLifeInsurance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreditLifeInsurance() => !CreditLifeInsurance.Clean;
-        public Value<string> DemandFeature { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDemandFeature() => !DemandFeature.Clean;
-        public Value<string> Description { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<string> DisclosureType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureType() => !DisclosureType.Clean;
-        public Value<string> Discounted { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDiscounted() => !Discounted.Clean;
-        public Value<decimal?> DiscountedRate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDiscountedRate() => !DiscountedRate.Clean;
-        public Value<string> DrawRepayPeriodTableName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDrawRepayPeriodTableName() => !DrawRepayPeriodTableName.Clean;
-        public Value<decimal?> FhaUpfrontMiPremiumPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFhaUpfrontMiPremiumPercent() => !FhaUpfrontMiPremiumPercent.Clean;
-        public Value<string> FloodInsurance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsurance() => !FloodInsurance.Clean;
-        public Value<decimal?> FloorPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloorPercent() => !FloorPercent.Clean;
-        public Value<decimal?> FundingFeePaidInCash { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingFeePaidInCash() => !FundingFeePaidInCash.Clean;
-        public Value<decimal?> GpmExtraPaymentForEarlyPayOff { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGpmExtraPaymentForEarlyPayOff() => !GpmExtraPaymentForEarlyPayOff.Clean;
-        public Value<decimal?> GpmRate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGpmRate() => !GpmRate.Clean;
-        public Value<int?> GpmYears { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGpmYears() => !GpmYears.Clean;
-        public Value<string> Id { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> IfYouPurchase { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIfYouPurchase() => !IfYouPurchase.Clean;
-        public Value<string> IfYouPurchaseType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIfYouPurchaseType() => !IfYouPurchaseType.Clean;
-        public Value<decimal?> IndexCurrentValuePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexCurrentValuePercent() => !IndexCurrentValuePercent.Clean;
-        public Value<decimal?> IndexMarginPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexMarginPercent() => !IndexMarginPercent.Clean;
-        public Value<decimal?> InitialAdvanceAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialAdvanceAmount() => !InitialAdvanceAmount.Clean;
-        public Value<int?> InterestOnlyMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestOnlyMonths() => !InterestOnlyMonths.Clean;
-        public Value<int?> LateChargeDays { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateChargeDays() => !LateChargeDays.Clean;
-        public Value<decimal?> LateChargePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateChargePercent() => !LateChargePercent.Clean;
-        public Value<string> LateChargeType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateChargeType() => !LateChargeType.Clean;
-        public Value<string> LenderInvestorCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderInvestorCode() => !LenderInvestorCode.Clean;
-        public Value<string> LienPriorityType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLienPriorityType() => !LienPriorityType.Clean;
-        public Value<int?> LoanAmortizationTermMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanAmortizationTermMonths() => !LoanAmortizationTermMonths.Clean;
-        public Value<string> LoanAmortizationType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanAmortizationType() => !LoanAmortizationType.Clean;
-        public Value<string> LoanDocumentationType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanDocumentationType() => !LoanDocumentationType.Clean;
-        public Value<string> LoanFeaturesPaymentFrequencyType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanFeaturesPaymentFrequencyType() => !LoanFeaturesPaymentFrequencyType.Clean;
-        public Value<string> LoanProgramName { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanProgramName() => !LoanProgramName.Clean;
-        public Value<string> LockField { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLockField() => !LockField.Clean;
-        public Value<decimal?> MaxBackRatio { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxBackRatio() => !MaxBackRatio.Clean;
-        public Value<decimal?> MaxCltv { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxCltv() => !MaxCltv.Clean;
-        public Value<decimal?> MaxFrontRatio { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxFrontRatio() => !MaxFrontRatio.Clean;
-        public Value<decimal?> MaximumBalance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumBalance() => !MaximumBalance.Clean;
-        public Value<decimal?> MaxLoanAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxLoanAmount() => !MaxLoanAmount.Clean;
-        public Value<decimal?> MaxLtv { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxLtv() => !MaxLtv.Clean;
-        public Value<string> MeansAnEstimate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMeansAnEstimate() => !MeansAnEstimate.Clean;
-        public Value<string> MiCalculationType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMiCalculationType() => !MiCalculationType.Clean;
-        public Value<string> MidpointCancellation { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMidpointCancellation() => !MidpointCancellation.Clean;
-        public Value<string> MinCreditScore { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinCreditScore() => !MinCreditScore.Clean;
-        public Value<decimal?> MinimumAdvanceAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumAdvanceAmount() => !MinimumAdvanceAmount.Clean;
-        public Value<decimal?> MinimumAllowableApr { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumAllowableApr() => !MinimumAllowableApr.Clean;
-        public Value<decimal?> MinimumPaymentAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumPaymentAmount() => !MinimumPaymentAmount.Clean;
-        public Value<decimal?> MinimumPaymentPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumPaymentPercent() => !MinimumPaymentPercent.Clean;
-        public Value<decimal?> MipPaidInCash { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMipPaidInCash() => !MipPaidInCash.Clean;
-        public Value<string> Mmi { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMmi() => !Mmi.Clean;
-        public Value<decimal?> MortgageInsuranceAdjustmentFactor1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceAdjustmentFactor1() => !MortgageInsuranceAdjustmentFactor1.Clean;
-        public Value<decimal?> MortgageInsuranceAdjustmentFactor2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceAdjustmentFactor2() => !MortgageInsuranceAdjustmentFactor2.Clean;
-        public Value<decimal?> MortgageInsuranceCancelPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceCancelPercent() => !MortgageInsuranceCancelPercent.Clean;
-        public Value<decimal?> MortgageInsuranceMonthlyPayment1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceMonthlyPayment1() => !MortgageInsuranceMonthlyPayment1.Clean;
-        public Value<decimal?> MortgageInsuranceMonthlyPayment2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceMonthlyPayment2() => !MortgageInsuranceMonthlyPayment2.Clean;
-        public Value<int?> MortgageInsuranceMonthsOfAdjustment1 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceMonthsOfAdjustment1() => !MortgageInsuranceMonthsOfAdjustment1.Clean;
-        public Value<int?> MortgageInsuranceMonthsOfAdjustment2 { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageInsuranceMonthsOfAdjustment2() => !MortgageInsuranceMonthsOfAdjustment2.Clean;
-        public Value<string> MortgageType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageType() => !MortgageType.Clean;
-        public Value<string> OtherAmortizationTypeDescription { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAmortizationTypeDescription() => !OtherAmortizationTypeDescription.Clean;
-        public Value<string> OtherLoanPurposeDescription { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherLoanPurposeDescription() => !OtherLoanPurposeDescription.Clean;
-        public Value<string> OtherMortgageTypeDescription { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherMortgageTypeDescription() => !OtherMortgageTypeDescription.Clean;
-        public Value<int?> PaymentAdjustmentDurationMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentAdjustmentDurationMonths() => !PaymentAdjustmentDurationMonths.Clean;
-        public Value<decimal?> PaymentAdjustmentPeriodicCapPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentAdjustmentPeriodicCapPercent() => !PaymentAdjustmentPeriodicCapPercent.Clean;
-        public Value<decimal?> PaymentFactor { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentFactor() => !PaymentFactor.Clean;
-        public Value<decimal?> PercentageOfRental { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentageOfRental() => !PercentageOfRental.Clean;
-        public Value<string> PerDiemCalculationMethodType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePerDiemCalculationMethodType() => !PerDiemCalculationMethodType.Clean;
-        public Value<string> Pmi { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmi() => !Pmi.Clean;
-        public Value<string> PrepaymentPenaltyIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaymentPenaltyIndicator() => !PrepaymentPenaltyIndicator.Clean;
-        public Value<string> ProgramCode { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProgramCode() => !ProgramCode.Clean;
-        public Value<string> PropertyInsurance { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyInsurance() => !PropertyInsurance.Clean;
-        public Value<string> PropertyUsageType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyUsageType() => !PropertyUsageType.Clean;
-        public Value<decimal?> QualifyingRatePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeQualifyingRatePercent() => !QualifyingRatePercent.Clean;
-        public Value<int?> RateAdjustmentDurationMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateAdjustmentDurationMonths() => !RateAdjustmentDurationMonths.Clean;
-        public Value<decimal?> RateAdjustmentLifetimeCapPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateAdjustmentLifetimeCapPercent() => !RateAdjustmentLifetimeCapPercent.Clean;
-        public Value<decimal?> RateAdjustmentPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateAdjustmentPercent() => !RateAdjustmentPercent.Clean;
-        public Value<decimal?> RateAdjustmentSubsequentCapPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateAdjustmentSubsequentCapPercent() => !RateAdjustmentSubsequentCapPercent.Clean;
-        public Value<int?> RateAdjustmentSubsequentRateAdjustmentMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateAdjustmentSubsequentRateAdjustmentMonths() => !RateAdjustmentSubsequentRateAdjustmentMonths.Clean;
-        public Value<int?> RecastPaidMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecastPaidMonths() => !RecastPaidMonths.Clean;
-        public Value<int?> RecastStopMonths { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecastStopMonths() => !RecastStopMonths.Clean;
-        public Value<string> RefundPaymentIndicator { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRefundPaymentIndicator() => !RefundPaymentIndicator.Clean;
-        public Value<decimal?> RequestedInterestRatePercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestedInterestRatePercent() => !RequestedInterestRatePercent.Clean;
-        public Value<string> RequiredDeposit { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequiredDeposit() => !RequiredDeposit.Clean;
-        public Value<decimal?> RoundPercent { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoundPercent() => !RoundPercent.Clean;
-        public Value<string> RoundType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoundType() => !RoundType.Clean;
-        public Value<string> SecurityInterestInNameOf { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecurityInterestInNameOf() => !SecurityInterestInNameOf.Clean;
-        public Value<string> SecurityType { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecurityType() => !SecurityType.Clean;
-        public Value<decimal?> SubjectPropertyGrossRentalIncome { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubjectPropertyGrossRentalIncome() => !SubjectPropertyGrossRentalIncome.Clean;
-        public Value<decimal?> TeaserRate { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTeaserRate() => !TeaserRate.Clean;
-        public Value<decimal?> TerminationFeeAmount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTerminationFeeAmount() => !TerminationFeeAmount.Clean;
-        public Value<int?> TerminationPeriodMonthsCount { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTerminationPeriodMonthsCount() => !TerminationPeriodMonthsCount.Clean;
-        public Value<decimal?> ThirdPartyFeeFrom { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThirdPartyFeeFrom() => !ThirdPartyFeeFrom.Clean;
-        public Value<decimal?> ThirdPartyFeeTo { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThirdPartyFeeTo() => !ThirdPartyFeeTo.Clean;
-        public Value<string> Type { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeType() => !Type.Clean;
-        public Value<string> UseDaysInYears { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUseDaysInYears() => !UseDaysInYears.Clean;
-        public Value<string> UsePitiForRatio { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUsePitiForRatio() => !UsePitiForRatio.Clean;
-        public Value<string> VariableRateFeature { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVariableRateFeature() => !VariableRateFeature.Clean;
-        public Value<decimal?> YearlyTerm { get; set; }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeYearlyTerm() => !YearlyTerm.Clean;
+        public bool ShouldSerializeYearlyTerm() => !_yearlyTerm.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -383,258 +506,258 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Acquisition.Clean
-                    && AdditionalArmInformation.Clean
-                    && AllDateAndNumericalDisclosures.Clean
-                    && AnnualFeeNeeded.Clean
-                    && ArmTypeDescription.Clean
-                    && AssumptionOnYourProperty.Clean
-                    && BalloonLoanMaturityTermMonths.Clean
-                    && BuydownChangeFrequencyMonths1.Clean
-                    && BuydownChangeFrequencyMonths2.Clean
-                    && BuydownChangeFrequencyMonths3.Clean
-                    && BuydownChangeFrequencyMonths4.Clean
-                    && BuydownChangeFrequencyMonths5.Clean
-                    && BuydownChangeFrequencyMonths6.Clean
-                    && BuydownIncreaseRatePercent1.Clean
-                    && BuydownIncreaseRatePercent2.Clean
-                    && BuydownIncreaseRatePercent3.Clean
-                    && BuydownIncreaseRatePercent4.Clean
-                    && BuydownIncreaseRatePercent5.Clean
-                    && BuydownIncreaseRatePercent6.Clean
-                    && CalculateBasedOnRemainingBalance.Clean
-                    && ClosingCostProgram.Clean
-                    && ConstructionDescription.Clean
-                    && ConstructionInterestReserveAmount.Clean
-                    && ConstructionLoanMethod.Clean
-                    && ConstructionPeriodMonths.Clean
-                    && ConstructionRate.Clean
-                    && Convertible.Clean
-                    && CreditDisability.Clean
-                    && CreditLifeInsurance.Clean
-                    && DemandFeature.Clean
-                    && Description.Clean
-                    && DisclosureType.Clean
-                    && Discounted.Clean
-                    && DiscountedRate.Clean
-                    && DrawRepayPeriodTableName.Clean
-                    && FhaUpfrontMiPremiumPercent.Clean
-                    && FloodInsurance.Clean
-                    && FloorPercent.Clean
-                    && FundingFeePaidInCash.Clean
-                    && GpmExtraPaymentForEarlyPayOff.Clean
-                    && GpmRate.Clean
-                    && GpmYears.Clean
-                    && Id.Clean
-                    && IfYouPurchase.Clean
-                    && IfYouPurchaseType.Clean
-                    && IndexCurrentValuePercent.Clean
-                    && IndexMarginPercent.Clean
-                    && InitialAdvanceAmount.Clean
-                    && InterestOnlyMonths.Clean
-                    && LateChargeDays.Clean
-                    && LateChargePercent.Clean
-                    && LateChargeType.Clean
-                    && LenderInvestorCode.Clean
-                    && LienPriorityType.Clean
-                    && LoanAmortizationTermMonths.Clean
-                    && LoanAmortizationType.Clean
-                    && LoanDocumentationType.Clean
-                    && LoanFeaturesPaymentFrequencyType.Clean
-                    && LoanProgramName.Clean
-                    && LockField.Clean
-                    && MaxBackRatio.Clean
-                    && MaxCltv.Clean
-                    && MaxFrontRatio.Clean
-                    && MaximumBalance.Clean
-                    && MaxLoanAmount.Clean
-                    && MaxLtv.Clean
-                    && MeansAnEstimate.Clean
-                    && MiCalculationType.Clean
-                    && MidpointCancellation.Clean
-                    && MinCreditScore.Clean
-                    && MinimumAdvanceAmount.Clean
-                    && MinimumAllowableApr.Clean
-                    && MinimumPaymentAmount.Clean
-                    && MinimumPaymentPercent.Clean
-                    && MipPaidInCash.Clean
-                    && Mmi.Clean
-                    && MortgageInsuranceAdjustmentFactor1.Clean
-                    && MortgageInsuranceAdjustmentFactor2.Clean
-                    && MortgageInsuranceCancelPercent.Clean
-                    && MortgageInsuranceMonthlyPayment1.Clean
-                    && MortgageInsuranceMonthlyPayment2.Clean
-                    && MortgageInsuranceMonthsOfAdjustment1.Clean
-                    && MortgageInsuranceMonthsOfAdjustment2.Clean
-                    && MortgageType.Clean
-                    && OtherAmortizationTypeDescription.Clean
-                    && OtherLoanPurposeDescription.Clean
-                    && OtherMortgageTypeDescription.Clean
-                    && PaymentAdjustmentDurationMonths.Clean
-                    && PaymentAdjustmentPeriodicCapPercent.Clean
-                    && PaymentFactor.Clean
-                    && PercentageOfRental.Clean
-                    && PerDiemCalculationMethodType.Clean
-                    && Pmi.Clean
-                    && PrepaymentPenaltyIndicator.Clean
-                    && ProgramCode.Clean
-                    && PropertyInsurance.Clean
-                    && PropertyUsageType.Clean
-                    && QualifyingRatePercent.Clean
-                    && RateAdjustmentDurationMonths.Clean
-                    && RateAdjustmentLifetimeCapPercent.Clean
-                    && RateAdjustmentPercent.Clean
-                    && RateAdjustmentSubsequentCapPercent.Clean
-                    && RateAdjustmentSubsequentRateAdjustmentMonths.Clean
-                    && RecastPaidMonths.Clean
-                    && RecastStopMonths.Clean
-                    && RefundPaymentIndicator.Clean
-                    && RequestedInterestRatePercent.Clean
-                    && RequiredDeposit.Clean
-                    && RoundPercent.Clean
-                    && RoundType.Clean
-                    && SecurityInterestInNameOf.Clean
-                    && SecurityType.Clean
-                    && SubjectPropertyGrossRentalIncome.Clean
-                    && TeaserRate.Clean
-                    && TerminationFeeAmount.Clean
-                    && TerminationPeriodMonthsCount.Clean
-                    && ThirdPartyFeeFrom.Clean
-                    && ThirdPartyFeeTo.Clean
-                    && Type.Clean
-                    && UseDaysInYears.Clean
-                    && UsePitiForRatio.Clean
-                    && VariableRateFeature.Clean
-                    && YearlyTerm.Clean;
+                var clean = _acquisition.Clean
+                    && _additionalArmInformation.Clean
+                    && _allDateAndNumericalDisclosures.Clean
+                    && _annualFeeNeeded.Clean
+                    && _armTypeDescription.Clean
+                    && _assumptionOnYourProperty.Clean
+                    && _balloonLoanMaturityTermMonths.Clean
+                    && _buydownChangeFrequencyMonths1.Clean
+                    && _buydownChangeFrequencyMonths2.Clean
+                    && _buydownChangeFrequencyMonths3.Clean
+                    && _buydownChangeFrequencyMonths4.Clean
+                    && _buydownChangeFrequencyMonths5.Clean
+                    && _buydownChangeFrequencyMonths6.Clean
+                    && _buydownIncreaseRatePercent1.Clean
+                    && _buydownIncreaseRatePercent2.Clean
+                    && _buydownIncreaseRatePercent3.Clean
+                    && _buydownIncreaseRatePercent4.Clean
+                    && _buydownIncreaseRatePercent5.Clean
+                    && _buydownIncreaseRatePercent6.Clean
+                    && _calculateBasedOnRemainingBalance.Clean
+                    && _closingCostProgram.Clean
+                    && _constructionDescription.Clean
+                    && _constructionInterestReserveAmount.Clean
+                    && _constructionLoanMethod.Clean
+                    && _constructionPeriodMonths.Clean
+                    && _constructionRate.Clean
+                    && _convertible.Clean
+                    && _creditDisability.Clean
+                    && _creditLifeInsurance.Clean
+                    && _demandFeature.Clean
+                    && _description.Clean
+                    && _disclosureType.Clean
+                    && _discounted.Clean
+                    && _discountedRate.Clean
+                    && _drawRepayPeriodTableName.Clean
+                    && _fhaUpfrontMiPremiumPercent.Clean
+                    && _floodInsurance.Clean
+                    && _floorPercent.Clean
+                    && _fundingFeePaidInCash.Clean
+                    && _gpmExtraPaymentForEarlyPayOff.Clean
+                    && _gpmRate.Clean
+                    && _gpmYears.Clean
+                    && _id.Clean
+                    && _ifYouPurchase.Clean
+                    && _ifYouPurchaseType.Clean
+                    && _indexCurrentValuePercent.Clean
+                    && _indexMarginPercent.Clean
+                    && _initialAdvanceAmount.Clean
+                    && _interestOnlyMonths.Clean
+                    && _lateChargeDays.Clean
+                    && _lateChargePercent.Clean
+                    && _lateChargeType.Clean
+                    && _lenderInvestorCode.Clean
+                    && _lienPriorityType.Clean
+                    && _loanAmortizationTermMonths.Clean
+                    && _loanAmortizationType.Clean
+                    && _loanDocumentationType.Clean
+                    && _loanFeaturesPaymentFrequencyType.Clean
+                    && _loanProgramName.Clean
+                    && _lockField.Clean
+                    && _maxBackRatio.Clean
+                    && _maxCltv.Clean
+                    && _maxFrontRatio.Clean
+                    && _maximumBalance.Clean
+                    && _maxLoanAmount.Clean
+                    && _maxLtv.Clean
+                    && _meansAnEstimate.Clean
+                    && _miCalculationType.Clean
+                    && _midpointCancellation.Clean
+                    && _minCreditScore.Clean
+                    && _minimumAdvanceAmount.Clean
+                    && _minimumAllowableApr.Clean
+                    && _minimumPaymentAmount.Clean
+                    && _minimumPaymentPercent.Clean
+                    && _mipPaidInCash.Clean
+                    && _mmi.Clean
+                    && _mortgageInsuranceAdjustmentFactor1.Clean
+                    && _mortgageInsuranceAdjustmentFactor2.Clean
+                    && _mortgageInsuranceCancelPercent.Clean
+                    && _mortgageInsuranceMonthlyPayment1.Clean
+                    && _mortgageInsuranceMonthlyPayment2.Clean
+                    && _mortgageInsuranceMonthsOfAdjustment1.Clean
+                    && _mortgageInsuranceMonthsOfAdjustment2.Clean
+                    && _mortgageType.Clean
+                    && _otherAmortizationTypeDescription.Clean
+                    && _otherLoanPurposeDescription.Clean
+                    && _otherMortgageTypeDescription.Clean
+                    && _paymentAdjustmentDurationMonths.Clean
+                    && _paymentAdjustmentPeriodicCapPercent.Clean
+                    && _paymentFactor.Clean
+                    && _percentageOfRental.Clean
+                    && _perDiemCalculationMethodType.Clean
+                    && _pmi.Clean
+                    && _prepaymentPenaltyIndicator.Clean
+                    && _programCode.Clean
+                    && _propertyInsurance.Clean
+                    && _propertyUsageType.Clean
+                    && _qualifyingRatePercent.Clean
+                    && _rateAdjustmentDurationMonths.Clean
+                    && _rateAdjustmentLifetimeCapPercent.Clean
+                    && _rateAdjustmentPercent.Clean
+                    && _rateAdjustmentSubsequentCapPercent.Clean
+                    && _rateAdjustmentSubsequentRateAdjustmentMonths.Clean
+                    && _recastPaidMonths.Clean
+                    && _recastStopMonths.Clean
+                    && _refundPaymentIndicator.Clean
+                    && _requestedInterestRatePercent.Clean
+                    && _requiredDeposit.Clean
+                    && _roundPercent.Clean
+                    && _roundType.Clean
+                    && _securityInterestInNameOf.Clean
+                    && _securityType.Clean
+                    && _subjectPropertyGrossRentalIncome.Clean
+                    && _teaserRate.Clean
+                    && _terminationFeeAmount.Clean
+                    && _terminationPeriodMonthsCount.Clean
+                    && _thirdPartyFeeFrom.Clean
+                    && _thirdPartyFeeTo.Clean
+                    && _type.Clean
+                    && _useDaysInYears.Clean
+                    && _usePitiForRatio.Clean
+                    && _variableRateFeature.Clean
+                    && _yearlyTerm.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Acquisition; v0.Clean = value; Acquisition = v0;
-                var v1 = AdditionalArmInformation; v1.Clean = value; AdditionalArmInformation = v1;
-                var v2 = AllDateAndNumericalDisclosures; v2.Clean = value; AllDateAndNumericalDisclosures = v2;
-                var v3 = AnnualFeeNeeded; v3.Clean = value; AnnualFeeNeeded = v3;
-                var v4 = ArmTypeDescription; v4.Clean = value; ArmTypeDescription = v4;
-                var v5 = AssumptionOnYourProperty; v5.Clean = value; AssumptionOnYourProperty = v5;
-                var v6 = BalloonLoanMaturityTermMonths; v6.Clean = value; BalloonLoanMaturityTermMonths = v6;
-                var v7 = BuydownChangeFrequencyMonths1; v7.Clean = value; BuydownChangeFrequencyMonths1 = v7;
-                var v8 = BuydownChangeFrequencyMonths2; v8.Clean = value; BuydownChangeFrequencyMonths2 = v8;
-                var v9 = BuydownChangeFrequencyMonths3; v9.Clean = value; BuydownChangeFrequencyMonths3 = v9;
-                var v10 = BuydownChangeFrequencyMonths4; v10.Clean = value; BuydownChangeFrequencyMonths4 = v10;
-                var v11 = BuydownChangeFrequencyMonths5; v11.Clean = value; BuydownChangeFrequencyMonths5 = v11;
-                var v12 = BuydownChangeFrequencyMonths6; v12.Clean = value; BuydownChangeFrequencyMonths6 = v12;
-                var v13 = BuydownIncreaseRatePercent1; v13.Clean = value; BuydownIncreaseRatePercent1 = v13;
-                var v14 = BuydownIncreaseRatePercent2; v14.Clean = value; BuydownIncreaseRatePercent2 = v14;
-                var v15 = BuydownIncreaseRatePercent3; v15.Clean = value; BuydownIncreaseRatePercent3 = v15;
-                var v16 = BuydownIncreaseRatePercent4; v16.Clean = value; BuydownIncreaseRatePercent4 = v16;
-                var v17 = BuydownIncreaseRatePercent5; v17.Clean = value; BuydownIncreaseRatePercent5 = v17;
-                var v18 = BuydownIncreaseRatePercent6; v18.Clean = value; BuydownIncreaseRatePercent6 = v18;
-                var v19 = CalculateBasedOnRemainingBalance; v19.Clean = value; CalculateBasedOnRemainingBalance = v19;
-                var v20 = ClosingCostProgram; v20.Clean = value; ClosingCostProgram = v20;
-                var v21 = ConstructionDescription; v21.Clean = value; ConstructionDescription = v21;
-                var v22 = ConstructionInterestReserveAmount; v22.Clean = value; ConstructionInterestReserveAmount = v22;
-                var v23 = ConstructionLoanMethod; v23.Clean = value; ConstructionLoanMethod = v23;
-                var v24 = ConstructionPeriodMonths; v24.Clean = value; ConstructionPeriodMonths = v24;
-                var v25 = ConstructionRate; v25.Clean = value; ConstructionRate = v25;
-                var v26 = Convertible; v26.Clean = value; Convertible = v26;
-                var v27 = CreditDisability; v27.Clean = value; CreditDisability = v27;
-                var v28 = CreditLifeInsurance; v28.Clean = value; CreditLifeInsurance = v28;
-                var v29 = DemandFeature; v29.Clean = value; DemandFeature = v29;
-                var v30 = Description; v30.Clean = value; Description = v30;
-                var v31 = DisclosureType; v31.Clean = value; DisclosureType = v31;
-                var v32 = Discounted; v32.Clean = value; Discounted = v32;
-                var v33 = DiscountedRate; v33.Clean = value; DiscountedRate = v33;
-                var v34 = DrawRepayPeriodTableName; v34.Clean = value; DrawRepayPeriodTableName = v34;
-                var v35 = FhaUpfrontMiPremiumPercent; v35.Clean = value; FhaUpfrontMiPremiumPercent = v35;
-                var v36 = FloodInsurance; v36.Clean = value; FloodInsurance = v36;
-                var v37 = FloorPercent; v37.Clean = value; FloorPercent = v37;
-                var v38 = FundingFeePaidInCash; v38.Clean = value; FundingFeePaidInCash = v38;
-                var v39 = GpmExtraPaymentForEarlyPayOff; v39.Clean = value; GpmExtraPaymentForEarlyPayOff = v39;
-                var v40 = GpmRate; v40.Clean = value; GpmRate = v40;
-                var v41 = GpmYears; v41.Clean = value; GpmYears = v41;
-                var v42 = Id; v42.Clean = value; Id = v42;
-                var v43 = IfYouPurchase; v43.Clean = value; IfYouPurchase = v43;
-                var v44 = IfYouPurchaseType; v44.Clean = value; IfYouPurchaseType = v44;
-                var v45 = IndexCurrentValuePercent; v45.Clean = value; IndexCurrentValuePercent = v45;
-                var v46 = IndexMarginPercent; v46.Clean = value; IndexMarginPercent = v46;
-                var v47 = InitialAdvanceAmount; v47.Clean = value; InitialAdvanceAmount = v47;
-                var v48 = InterestOnlyMonths; v48.Clean = value; InterestOnlyMonths = v48;
-                var v49 = LateChargeDays; v49.Clean = value; LateChargeDays = v49;
-                var v50 = LateChargePercent; v50.Clean = value; LateChargePercent = v50;
-                var v51 = LateChargeType; v51.Clean = value; LateChargeType = v51;
-                var v52 = LenderInvestorCode; v52.Clean = value; LenderInvestorCode = v52;
-                var v53 = LienPriorityType; v53.Clean = value; LienPriorityType = v53;
-                var v54 = LoanAmortizationTermMonths; v54.Clean = value; LoanAmortizationTermMonths = v54;
-                var v55 = LoanAmortizationType; v55.Clean = value; LoanAmortizationType = v55;
-                var v56 = LoanDocumentationType; v56.Clean = value; LoanDocumentationType = v56;
-                var v57 = LoanFeaturesPaymentFrequencyType; v57.Clean = value; LoanFeaturesPaymentFrequencyType = v57;
-                var v58 = LoanProgramName; v58.Clean = value; LoanProgramName = v58;
-                var v59 = LockField; v59.Clean = value; LockField = v59;
-                var v60 = MaxBackRatio; v60.Clean = value; MaxBackRatio = v60;
-                var v61 = MaxCltv; v61.Clean = value; MaxCltv = v61;
-                var v62 = MaxFrontRatio; v62.Clean = value; MaxFrontRatio = v62;
-                var v63 = MaximumBalance; v63.Clean = value; MaximumBalance = v63;
-                var v64 = MaxLoanAmount; v64.Clean = value; MaxLoanAmount = v64;
-                var v65 = MaxLtv; v65.Clean = value; MaxLtv = v65;
-                var v66 = MeansAnEstimate; v66.Clean = value; MeansAnEstimate = v66;
-                var v67 = MiCalculationType; v67.Clean = value; MiCalculationType = v67;
-                var v68 = MidpointCancellation; v68.Clean = value; MidpointCancellation = v68;
-                var v69 = MinCreditScore; v69.Clean = value; MinCreditScore = v69;
-                var v70 = MinimumAdvanceAmount; v70.Clean = value; MinimumAdvanceAmount = v70;
-                var v71 = MinimumAllowableApr; v71.Clean = value; MinimumAllowableApr = v71;
-                var v72 = MinimumPaymentAmount; v72.Clean = value; MinimumPaymentAmount = v72;
-                var v73 = MinimumPaymentPercent; v73.Clean = value; MinimumPaymentPercent = v73;
-                var v74 = MipPaidInCash; v74.Clean = value; MipPaidInCash = v74;
-                var v75 = Mmi; v75.Clean = value; Mmi = v75;
-                var v76 = MortgageInsuranceAdjustmentFactor1; v76.Clean = value; MortgageInsuranceAdjustmentFactor1 = v76;
-                var v77 = MortgageInsuranceAdjustmentFactor2; v77.Clean = value; MortgageInsuranceAdjustmentFactor2 = v77;
-                var v78 = MortgageInsuranceCancelPercent; v78.Clean = value; MortgageInsuranceCancelPercent = v78;
-                var v79 = MortgageInsuranceMonthlyPayment1; v79.Clean = value; MortgageInsuranceMonthlyPayment1 = v79;
-                var v80 = MortgageInsuranceMonthlyPayment2; v80.Clean = value; MortgageInsuranceMonthlyPayment2 = v80;
-                var v81 = MortgageInsuranceMonthsOfAdjustment1; v81.Clean = value; MortgageInsuranceMonthsOfAdjustment1 = v81;
-                var v82 = MortgageInsuranceMonthsOfAdjustment2; v82.Clean = value; MortgageInsuranceMonthsOfAdjustment2 = v82;
-                var v83 = MortgageType; v83.Clean = value; MortgageType = v83;
-                var v84 = OtherAmortizationTypeDescription; v84.Clean = value; OtherAmortizationTypeDescription = v84;
-                var v85 = OtherLoanPurposeDescription; v85.Clean = value; OtherLoanPurposeDescription = v85;
-                var v86 = OtherMortgageTypeDescription; v86.Clean = value; OtherMortgageTypeDescription = v86;
-                var v87 = PaymentAdjustmentDurationMonths; v87.Clean = value; PaymentAdjustmentDurationMonths = v87;
-                var v88 = PaymentAdjustmentPeriodicCapPercent; v88.Clean = value; PaymentAdjustmentPeriodicCapPercent = v88;
-                var v89 = PaymentFactor; v89.Clean = value; PaymentFactor = v89;
-                var v90 = PercentageOfRental; v90.Clean = value; PercentageOfRental = v90;
-                var v91 = PerDiemCalculationMethodType; v91.Clean = value; PerDiemCalculationMethodType = v91;
-                var v92 = Pmi; v92.Clean = value; Pmi = v92;
-                var v93 = PrepaymentPenaltyIndicator; v93.Clean = value; PrepaymentPenaltyIndicator = v93;
-                var v94 = ProgramCode; v94.Clean = value; ProgramCode = v94;
-                var v95 = PropertyInsurance; v95.Clean = value; PropertyInsurance = v95;
-                var v96 = PropertyUsageType; v96.Clean = value; PropertyUsageType = v96;
-                var v97 = QualifyingRatePercent; v97.Clean = value; QualifyingRatePercent = v97;
-                var v98 = RateAdjustmentDurationMonths; v98.Clean = value; RateAdjustmentDurationMonths = v98;
-                var v99 = RateAdjustmentLifetimeCapPercent; v99.Clean = value; RateAdjustmentLifetimeCapPercent = v99;
-                var v100 = RateAdjustmentPercent; v100.Clean = value; RateAdjustmentPercent = v100;
-                var v101 = RateAdjustmentSubsequentCapPercent; v101.Clean = value; RateAdjustmentSubsequentCapPercent = v101;
-                var v102 = RateAdjustmentSubsequentRateAdjustmentMonths; v102.Clean = value; RateAdjustmentSubsequentRateAdjustmentMonths = v102;
-                var v103 = RecastPaidMonths; v103.Clean = value; RecastPaidMonths = v103;
-                var v104 = RecastStopMonths; v104.Clean = value; RecastStopMonths = v104;
-                var v105 = RefundPaymentIndicator; v105.Clean = value; RefundPaymentIndicator = v105;
-                var v106 = RequestedInterestRatePercent; v106.Clean = value; RequestedInterestRatePercent = v106;
-                var v107 = RequiredDeposit; v107.Clean = value; RequiredDeposit = v107;
-                var v108 = RoundPercent; v108.Clean = value; RoundPercent = v108;
-                var v109 = RoundType; v109.Clean = value; RoundType = v109;
-                var v110 = SecurityInterestInNameOf; v110.Clean = value; SecurityInterestInNameOf = v110;
-                var v111 = SecurityType; v111.Clean = value; SecurityType = v111;
-                var v112 = SubjectPropertyGrossRentalIncome; v112.Clean = value; SubjectPropertyGrossRentalIncome = v112;
-                var v113 = TeaserRate; v113.Clean = value; TeaserRate = v113;
-                var v114 = TerminationFeeAmount; v114.Clean = value; TerminationFeeAmount = v114;
-                var v115 = TerminationPeriodMonthsCount; v115.Clean = value; TerminationPeriodMonthsCount = v115;
-                var v116 = ThirdPartyFeeFrom; v116.Clean = value; ThirdPartyFeeFrom = v116;
-                var v117 = ThirdPartyFeeTo; v117.Clean = value; ThirdPartyFeeTo = v117;
-                var v118 = Type; v118.Clean = value; Type = v118;
-                var v119 = UseDaysInYears; v119.Clean = value; UseDaysInYears = v119;
-                var v120 = UsePitiForRatio; v120.Clean = value; UsePitiForRatio = v120;
-                var v121 = VariableRateFeature; v121.Clean = value; VariableRateFeature = v121;
-                var v122 = YearlyTerm; v122.Clean = value; YearlyTerm = v122;
+                var v0 = _acquisition; v0.Clean = value; _acquisition = v0;
+                var v1 = _additionalArmInformation; v1.Clean = value; _additionalArmInformation = v1;
+                var v2 = _allDateAndNumericalDisclosures; v2.Clean = value; _allDateAndNumericalDisclosures = v2;
+                var v3 = _annualFeeNeeded; v3.Clean = value; _annualFeeNeeded = v3;
+                var v4 = _armTypeDescription; v4.Clean = value; _armTypeDescription = v4;
+                var v5 = _assumptionOnYourProperty; v5.Clean = value; _assumptionOnYourProperty = v5;
+                var v6 = _balloonLoanMaturityTermMonths; v6.Clean = value; _balloonLoanMaturityTermMonths = v6;
+                var v7 = _buydownChangeFrequencyMonths1; v7.Clean = value; _buydownChangeFrequencyMonths1 = v7;
+                var v8 = _buydownChangeFrequencyMonths2; v8.Clean = value; _buydownChangeFrequencyMonths2 = v8;
+                var v9 = _buydownChangeFrequencyMonths3; v9.Clean = value; _buydownChangeFrequencyMonths3 = v9;
+                var v10 = _buydownChangeFrequencyMonths4; v10.Clean = value; _buydownChangeFrequencyMonths4 = v10;
+                var v11 = _buydownChangeFrequencyMonths5; v11.Clean = value; _buydownChangeFrequencyMonths5 = v11;
+                var v12 = _buydownChangeFrequencyMonths6; v12.Clean = value; _buydownChangeFrequencyMonths6 = v12;
+                var v13 = _buydownIncreaseRatePercent1; v13.Clean = value; _buydownIncreaseRatePercent1 = v13;
+                var v14 = _buydownIncreaseRatePercent2; v14.Clean = value; _buydownIncreaseRatePercent2 = v14;
+                var v15 = _buydownIncreaseRatePercent3; v15.Clean = value; _buydownIncreaseRatePercent3 = v15;
+                var v16 = _buydownIncreaseRatePercent4; v16.Clean = value; _buydownIncreaseRatePercent4 = v16;
+                var v17 = _buydownIncreaseRatePercent5; v17.Clean = value; _buydownIncreaseRatePercent5 = v17;
+                var v18 = _buydownIncreaseRatePercent6; v18.Clean = value; _buydownIncreaseRatePercent6 = v18;
+                var v19 = _calculateBasedOnRemainingBalance; v19.Clean = value; _calculateBasedOnRemainingBalance = v19;
+                var v20 = _closingCostProgram; v20.Clean = value; _closingCostProgram = v20;
+                var v21 = _constructionDescription; v21.Clean = value; _constructionDescription = v21;
+                var v22 = _constructionInterestReserveAmount; v22.Clean = value; _constructionInterestReserveAmount = v22;
+                var v23 = _constructionLoanMethod; v23.Clean = value; _constructionLoanMethod = v23;
+                var v24 = _constructionPeriodMonths; v24.Clean = value; _constructionPeriodMonths = v24;
+                var v25 = _constructionRate; v25.Clean = value; _constructionRate = v25;
+                var v26 = _convertible; v26.Clean = value; _convertible = v26;
+                var v27 = _creditDisability; v27.Clean = value; _creditDisability = v27;
+                var v28 = _creditLifeInsurance; v28.Clean = value; _creditLifeInsurance = v28;
+                var v29 = _demandFeature; v29.Clean = value; _demandFeature = v29;
+                var v30 = _description; v30.Clean = value; _description = v30;
+                var v31 = _disclosureType; v31.Clean = value; _disclosureType = v31;
+                var v32 = _discounted; v32.Clean = value; _discounted = v32;
+                var v33 = _discountedRate; v33.Clean = value; _discountedRate = v33;
+                var v34 = _drawRepayPeriodTableName; v34.Clean = value; _drawRepayPeriodTableName = v34;
+                var v35 = _fhaUpfrontMiPremiumPercent; v35.Clean = value; _fhaUpfrontMiPremiumPercent = v35;
+                var v36 = _floodInsurance; v36.Clean = value; _floodInsurance = v36;
+                var v37 = _floorPercent; v37.Clean = value; _floorPercent = v37;
+                var v38 = _fundingFeePaidInCash; v38.Clean = value; _fundingFeePaidInCash = v38;
+                var v39 = _gpmExtraPaymentForEarlyPayOff; v39.Clean = value; _gpmExtraPaymentForEarlyPayOff = v39;
+                var v40 = _gpmRate; v40.Clean = value; _gpmRate = v40;
+                var v41 = _gpmYears; v41.Clean = value; _gpmYears = v41;
+                var v42 = _id; v42.Clean = value; _id = v42;
+                var v43 = _ifYouPurchase; v43.Clean = value; _ifYouPurchase = v43;
+                var v44 = _ifYouPurchaseType; v44.Clean = value; _ifYouPurchaseType = v44;
+                var v45 = _indexCurrentValuePercent; v45.Clean = value; _indexCurrentValuePercent = v45;
+                var v46 = _indexMarginPercent; v46.Clean = value; _indexMarginPercent = v46;
+                var v47 = _initialAdvanceAmount; v47.Clean = value; _initialAdvanceAmount = v47;
+                var v48 = _interestOnlyMonths; v48.Clean = value; _interestOnlyMonths = v48;
+                var v49 = _lateChargeDays; v49.Clean = value; _lateChargeDays = v49;
+                var v50 = _lateChargePercent; v50.Clean = value; _lateChargePercent = v50;
+                var v51 = _lateChargeType; v51.Clean = value; _lateChargeType = v51;
+                var v52 = _lenderInvestorCode; v52.Clean = value; _lenderInvestorCode = v52;
+                var v53 = _lienPriorityType; v53.Clean = value; _lienPriorityType = v53;
+                var v54 = _loanAmortizationTermMonths; v54.Clean = value; _loanAmortizationTermMonths = v54;
+                var v55 = _loanAmortizationType; v55.Clean = value; _loanAmortizationType = v55;
+                var v56 = _loanDocumentationType; v56.Clean = value; _loanDocumentationType = v56;
+                var v57 = _loanFeaturesPaymentFrequencyType; v57.Clean = value; _loanFeaturesPaymentFrequencyType = v57;
+                var v58 = _loanProgramName; v58.Clean = value; _loanProgramName = v58;
+                var v59 = _lockField; v59.Clean = value; _lockField = v59;
+                var v60 = _maxBackRatio; v60.Clean = value; _maxBackRatio = v60;
+                var v61 = _maxCltv; v61.Clean = value; _maxCltv = v61;
+                var v62 = _maxFrontRatio; v62.Clean = value; _maxFrontRatio = v62;
+                var v63 = _maximumBalance; v63.Clean = value; _maximumBalance = v63;
+                var v64 = _maxLoanAmount; v64.Clean = value; _maxLoanAmount = v64;
+                var v65 = _maxLtv; v65.Clean = value; _maxLtv = v65;
+                var v66 = _meansAnEstimate; v66.Clean = value; _meansAnEstimate = v66;
+                var v67 = _miCalculationType; v67.Clean = value; _miCalculationType = v67;
+                var v68 = _midpointCancellation; v68.Clean = value; _midpointCancellation = v68;
+                var v69 = _minCreditScore; v69.Clean = value; _minCreditScore = v69;
+                var v70 = _minimumAdvanceAmount; v70.Clean = value; _minimumAdvanceAmount = v70;
+                var v71 = _minimumAllowableApr; v71.Clean = value; _minimumAllowableApr = v71;
+                var v72 = _minimumPaymentAmount; v72.Clean = value; _minimumPaymentAmount = v72;
+                var v73 = _minimumPaymentPercent; v73.Clean = value; _minimumPaymentPercent = v73;
+                var v74 = _mipPaidInCash; v74.Clean = value; _mipPaidInCash = v74;
+                var v75 = _mmi; v75.Clean = value; _mmi = v75;
+                var v76 = _mortgageInsuranceAdjustmentFactor1; v76.Clean = value; _mortgageInsuranceAdjustmentFactor1 = v76;
+                var v77 = _mortgageInsuranceAdjustmentFactor2; v77.Clean = value; _mortgageInsuranceAdjustmentFactor2 = v77;
+                var v78 = _mortgageInsuranceCancelPercent; v78.Clean = value; _mortgageInsuranceCancelPercent = v78;
+                var v79 = _mortgageInsuranceMonthlyPayment1; v79.Clean = value; _mortgageInsuranceMonthlyPayment1 = v79;
+                var v80 = _mortgageInsuranceMonthlyPayment2; v80.Clean = value; _mortgageInsuranceMonthlyPayment2 = v80;
+                var v81 = _mortgageInsuranceMonthsOfAdjustment1; v81.Clean = value; _mortgageInsuranceMonthsOfAdjustment1 = v81;
+                var v82 = _mortgageInsuranceMonthsOfAdjustment2; v82.Clean = value; _mortgageInsuranceMonthsOfAdjustment2 = v82;
+                var v83 = _mortgageType; v83.Clean = value; _mortgageType = v83;
+                var v84 = _otherAmortizationTypeDescription; v84.Clean = value; _otherAmortizationTypeDescription = v84;
+                var v85 = _otherLoanPurposeDescription; v85.Clean = value; _otherLoanPurposeDescription = v85;
+                var v86 = _otherMortgageTypeDescription; v86.Clean = value; _otherMortgageTypeDescription = v86;
+                var v87 = _paymentAdjustmentDurationMonths; v87.Clean = value; _paymentAdjustmentDurationMonths = v87;
+                var v88 = _paymentAdjustmentPeriodicCapPercent; v88.Clean = value; _paymentAdjustmentPeriodicCapPercent = v88;
+                var v89 = _paymentFactor; v89.Clean = value; _paymentFactor = v89;
+                var v90 = _percentageOfRental; v90.Clean = value; _percentageOfRental = v90;
+                var v91 = _perDiemCalculationMethodType; v91.Clean = value; _perDiemCalculationMethodType = v91;
+                var v92 = _pmi; v92.Clean = value; _pmi = v92;
+                var v93 = _prepaymentPenaltyIndicator; v93.Clean = value; _prepaymentPenaltyIndicator = v93;
+                var v94 = _programCode; v94.Clean = value; _programCode = v94;
+                var v95 = _propertyInsurance; v95.Clean = value; _propertyInsurance = v95;
+                var v96 = _propertyUsageType; v96.Clean = value; _propertyUsageType = v96;
+                var v97 = _qualifyingRatePercent; v97.Clean = value; _qualifyingRatePercent = v97;
+                var v98 = _rateAdjustmentDurationMonths; v98.Clean = value; _rateAdjustmentDurationMonths = v98;
+                var v99 = _rateAdjustmentLifetimeCapPercent; v99.Clean = value; _rateAdjustmentLifetimeCapPercent = v99;
+                var v100 = _rateAdjustmentPercent; v100.Clean = value; _rateAdjustmentPercent = v100;
+                var v101 = _rateAdjustmentSubsequentCapPercent; v101.Clean = value; _rateAdjustmentSubsequentCapPercent = v101;
+                var v102 = _rateAdjustmentSubsequentRateAdjustmentMonths; v102.Clean = value; _rateAdjustmentSubsequentRateAdjustmentMonths = v102;
+                var v103 = _recastPaidMonths; v103.Clean = value; _recastPaidMonths = v103;
+                var v104 = _recastStopMonths; v104.Clean = value; _recastStopMonths = v104;
+                var v105 = _refundPaymentIndicator; v105.Clean = value; _refundPaymentIndicator = v105;
+                var v106 = _requestedInterestRatePercent; v106.Clean = value; _requestedInterestRatePercent = v106;
+                var v107 = _requiredDeposit; v107.Clean = value; _requiredDeposit = v107;
+                var v108 = _roundPercent; v108.Clean = value; _roundPercent = v108;
+                var v109 = _roundType; v109.Clean = value; _roundType = v109;
+                var v110 = _securityInterestInNameOf; v110.Clean = value; _securityInterestInNameOf = v110;
+                var v111 = _securityType; v111.Clean = value; _securityType = v111;
+                var v112 = _subjectPropertyGrossRentalIncome; v112.Clean = value; _subjectPropertyGrossRentalIncome = v112;
+                var v113 = _teaserRate; v113.Clean = value; _teaserRate = v113;
+                var v114 = _terminationFeeAmount; v114.Clean = value; _terminationFeeAmount = v114;
+                var v115 = _terminationPeriodMonthsCount; v115.Clean = value; _terminationPeriodMonthsCount = v115;
+                var v116 = _thirdPartyFeeFrom; v116.Clean = value; _thirdPartyFeeFrom = v116;
+                var v117 = _thirdPartyFeeTo; v117.Clean = value; _thirdPartyFeeTo = v117;
+                var v118 = _type; v118.Clean = value; _type = v118;
+                var v119 = _useDaysInYears; v119.Clean = value; _useDaysInYears = v119;
+                var v120 = _usePitiForRatio; v120.Clean = value; _usePitiForRatio = v120;
+                var v121 = _variableRateFeature; v121.Clean = value; _variableRateFeature = v121;
+                var v122 = _yearlyTerm; v122.Clean = value; _yearlyTerm = v122;
                 _settingClean = 0;
             }
         }

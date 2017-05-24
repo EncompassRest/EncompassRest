@@ -7,39 +7,50 @@ namespace EncompassRest.Loans
 {
     public sealed partial class NewYorkFee
     {
-        public Value<string> Address { get; set; }
+        private Value<string> _address;
+        public string Address { get { return _address; } set { _address = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddress() => !Address.Clean;
-        public Value<decimal?> Amount { get; set; }
+        public bool ShouldSerializeAddress() => !_address.Clean;
+        private Value<decimal?> _amount;
+        public decimal? Amount { get { return _amount; } set { _amount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !Amount.Clean;
-        public Value<string> City { get; set; }
+        public bool ShouldSerializeAmount() => !_amount.Clean;
+        private Value<string> _city;
+        public string City { get { return _city; } set { _city = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCity() => !City.Clean;
-        public Value<string> Comments { get; set; }
+        public bool ShouldSerializeCity() => !_city.Clean;
+        private Value<string> _comments;
+        public string Comments { get { return _comments; } set { _comments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !Comments.Clean;
-        public Value<DateTime?> Date { get; set; }
+        public bool ShouldSerializeComments() => !_comments.Clean;
+        private Value<DateTime?> _date;
+        public DateTime? Date { get { return _date; } set { _date = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !Date.Clean;
-        public Value<string> FeeType { get; set; }
+        public bool ShouldSerializeDate() => !_date.Clean;
+        private Value<string> _feeType;
+        public string FeeType { get { return _feeType; } set { _feeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeType() => !FeeType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFeeType() => !_feeType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> Name { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _name;
+        public string Name { get { return _name; } set { _name = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeName() => !Name.Clean;
-        public Value<int?> NewYorkFeeIndex { get; set; }
+        public bool ShouldSerializeName() => !_name.Clean;
+        private Value<int?> _newYorkFeeIndex;
+        public int? NewYorkFeeIndex { get { return _newYorkFeeIndex; } set { _newYorkFeeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNewYorkFeeIndex() => !NewYorkFeeIndex.Clean;
-        public Value<string> PostalCode { get; set; }
+        public bool ShouldSerializeNewYorkFeeIndex() => !_newYorkFeeIndex.Clean;
+        private Value<string> _postalCode;
+        public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePostalCode() => !PostalCode.Clean;
-        public Value<string> State { get; set; }
+        public bool ShouldSerializePostalCode() => !_postalCode.Clean;
+        private Value<string> _state;
+        public string State { get { return _state; } set { _state = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeState() => !State.Clean;
+        public bool ShouldSerializeState() => !_state.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,34 +58,34 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = Address.Clean
-                    && Amount.Clean
-                    && City.Clean
-                    && Comments.Clean
-                    && Date.Clean
-                    && FeeType.Clean
-                    && Id.Clean
-                    && Name.Clean
-                    && NewYorkFeeIndex.Clean
-                    && PostalCode.Clean
-                    && State.Clean;
+                var clean = _address.Clean
+                    && _amount.Clean
+                    && _city.Clean
+                    && _comments.Clean
+                    && _date.Clean
+                    && _feeType.Clean
+                    && _id.Clean
+                    && _name.Clean
+                    && _newYorkFeeIndex.Clean
+                    && _postalCode.Clean
+                    && _state.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = Address; v0.Clean = value; Address = v0;
-                var v1 = Amount; v1.Clean = value; Amount = v1;
-                var v2 = City; v2.Clean = value; City = v2;
-                var v3 = Comments; v3.Clean = value; Comments = v3;
-                var v4 = Date; v4.Clean = value; Date = v4;
-                var v5 = FeeType; v5.Clean = value; FeeType = v5;
-                var v6 = Id; v6.Clean = value; Id = v6;
-                var v7 = Name; v7.Clean = value; Name = v7;
-                var v8 = NewYorkFeeIndex; v8.Clean = value; NewYorkFeeIndex = v8;
-                var v9 = PostalCode; v9.Clean = value; PostalCode = v9;
-                var v10 = State; v10.Clean = value; State = v10;
+                var v0 = _address; v0.Clean = value; _address = v0;
+                var v1 = _amount; v1.Clean = value; _amount = v1;
+                var v2 = _city; v2.Clean = value; _city = v2;
+                var v3 = _comments; v3.Clean = value; _comments = v3;
+                var v4 = _date; v4.Clean = value; _date = v4;
+                var v5 = _feeType; v5.Clean = value; _feeType = v5;
+                var v6 = _id; v6.Clean = value; _id = v6;
+                var v7 = _name; v7.Clean = value; _name = v7;
+                var v8 = _newYorkFeeIndex; v8.Clean = value; _newYorkFeeIndex = v8;
+                var v9 = _postalCode; v9.Clean = value; _postalCode = v9;
+                var v10 = _state; v10.Clean = value; _state = v10;
                 _settingClean = 0;
             }
         }

@@ -7,33 +7,42 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FeeVariance
     {
-        public Value<decimal?> CD { get; set; }
+        private Value<decimal?> _cD;
+        public decimal? CD { get { return _cD; } set { _cD = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCD() => !CD.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeCD() => !_cD.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<int?> FeeVarianceChargeIndex { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<int?> _feeVarianceChargeIndex;
+        public int? FeeVarianceChargeIndex { get { return _feeVarianceChargeIndex; } set { _feeVarianceChargeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeVarianceChargeIndex() => !FeeVarianceChargeIndex.Clean;
-        public Value<string> FeeVarianceFeeType { get; set; }
+        public bool ShouldSerializeFeeVarianceChargeIndex() => !_feeVarianceChargeIndex.Clean;
+        private Value<string> _feeVarianceFeeType;
+        public string FeeVarianceFeeType { get { return _feeVarianceFeeType; } set { _feeVarianceFeeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeVarianceFeeType() => !FeeVarianceFeeType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFeeVarianceFeeType() => !_feeVarianceFeeType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> InitialLE { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _initialLE;
+        public decimal? InitialLE { get { return _initialLE; } set { _initialLE = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialLE() => !InitialLE.Clean;
-        public Value<decimal?> Itemization { get; set; }
+        public bool ShouldSerializeInitialLE() => !_initialLE.Clean;
+        private Value<decimal?> _itemization;
+        public decimal? Itemization { get { return _itemization; } set { _itemization = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeItemization() => !Itemization.Clean;
-        public Value<decimal?> LE { get; set; }
+        public bool ShouldSerializeItemization() => !_itemization.Clean;
+        private Value<decimal?> _lE;
+        public decimal? LE { get { return _lE; } set { _lE = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLE() => !LE.Clean;
-        public Value<string> Line { get; set; }
+        public bool ShouldSerializeLE() => !_lE.Clean;
+        private Value<string> _line;
+        public string Line { get { return _line; } set { _line = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine() => !Line.Clean;
+        public bool ShouldSerializeLine() => !_line.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -41,30 +50,30 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = CD.Clean
-                    && Description.Clean
-                    && FeeVarianceChargeIndex.Clean
-                    && FeeVarianceFeeType.Clean
-                    && Id.Clean
-                    && InitialLE.Clean
-                    && Itemization.Clean
-                    && LE.Clean
-                    && Line.Clean;
+                var clean = _cD.Clean
+                    && _description.Clean
+                    && _feeVarianceChargeIndex.Clean
+                    && _feeVarianceFeeType.Clean
+                    && _id.Clean
+                    && _initialLE.Clean
+                    && _itemization.Clean
+                    && _lE.Clean
+                    && _line.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = CD; v0.Clean = value; CD = v0;
-                var v1 = Description; v1.Clean = value; Description = v1;
-                var v2 = FeeVarianceChargeIndex; v2.Clean = value; FeeVarianceChargeIndex = v2;
-                var v3 = FeeVarianceFeeType; v3.Clean = value; FeeVarianceFeeType = v3;
-                var v4 = Id; v4.Clean = value; Id = v4;
-                var v5 = InitialLE; v5.Clean = value; InitialLE = v5;
-                var v6 = Itemization; v6.Clean = value; Itemization = v6;
-                var v7 = LE; v7.Clean = value; LE = v7;
-                var v8 = Line; v8.Clean = value; Line = v8;
+                var v0 = _cD; v0.Clean = value; _cD = v0;
+                var v1 = _description; v1.Clean = value; _description = v1;
+                var v2 = _feeVarianceChargeIndex; v2.Clean = value; _feeVarianceChargeIndex = v2;
+                var v3 = _feeVarianceFeeType; v3.Clean = value; _feeVarianceFeeType = v3;
+                var v4 = _id; v4.Clean = value; _id = v4;
+                var v5 = _initialLE; v5.Clean = value; _initialLE = v5;
+                var v6 = _itemization; v6.Clean = value; _itemization = v6;
+                var v7 = _lE; v7.Clean = value; _lE = v7;
+                var v8 = _line; v8.Clean = value; _line = v8;
                 _settingClean = 0;
             }
         }

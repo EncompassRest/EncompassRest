@@ -7,54 +7,70 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Shipping
     {
-        public Value<DateTime?> ActualShipDate { get; set; }
+        private Value<DateTime?> _actualShipDate;
+        public DateTime? ActualShipDate { get { return _actualShipDate; } set { _actualShipDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActualShipDate() => !ActualShipDate.Clean;
-        public Value<string> CarrierName { get; set; }
+        public bool ShouldSerializeActualShipDate() => !_actualShipDate.Clean;
+        private Value<string> _carrierName;
+        public string CarrierName { get { return _carrierName; } set { _carrierName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCarrierName() => !CarrierName.Clean;
-        public Value<decimal?> DownPaymentAmount { get; set; }
+        public bool ShouldSerializeCarrierName() => !_carrierName.Clean;
+        private Value<decimal?> _downPaymentAmount;
+        public decimal? DownPaymentAmount { get { return _downPaymentAmount; } set { _downPaymentAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPaymentAmount() => !DownPaymentAmount.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDownPaymentAmount() => !_downPaymentAmount.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<DateTime?> InvestorDeliveryDate { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<DateTime?> _investorDeliveryDate;
+        public DateTime? InvestorDeliveryDate { get { return _investorDeliveryDate; } set { _investorDeliveryDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorDeliveryDate() => !InvestorDeliveryDate.Clean;
-        public Value<string> PackageTrackingNumber { get; set; }
+        public bool ShouldSerializeInvestorDeliveryDate() => !_investorDeliveryDate.Clean;
+        private Value<string> _packageTrackingNumber;
+        public string PackageTrackingNumber { get { return _packageTrackingNumber; } set { _packageTrackingNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePackageTrackingNumber() => !PackageTrackingNumber.Clean;
-        public Value<string> PhysicalFileStorageComments { get; set; }
+        public bool ShouldSerializePackageTrackingNumber() => !_packageTrackingNumber.Clean;
+        private Value<string> _physicalFileStorageComments;
+        public string PhysicalFileStorageComments { get { return _physicalFileStorageComments; } set { _physicalFileStorageComments = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageComments() => !PhysicalFileStorageComments.Clean;
-        public Value<string> PhysicalFileStorageId { get; set; }
+        public bool ShouldSerializePhysicalFileStorageComments() => !_physicalFileStorageComments.Clean;
+        private Value<string> _physicalFileStorageId;
+        public string PhysicalFileStorageId { get { return _physicalFileStorageId; } set { _physicalFileStorageId = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageId() => !PhysicalFileStorageId.Clean;
-        public Value<string> PhysicalFileStorageLocation { get; set; }
+        public bool ShouldSerializePhysicalFileStorageId() => !_physicalFileStorageId.Clean;
+        private Value<string> _physicalFileStorageLocation;
+        public string PhysicalFileStorageLocation { get { return _physicalFileStorageLocation; } set { _physicalFileStorageLocation = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageLocation() => !PhysicalFileStorageLocation.Clean;
-        public Value<string> PoolID { get; set; }
+        public bool ShouldSerializePhysicalFileStorageLocation() => !_physicalFileStorageLocation.Clean;
+        private Value<string> _poolID;
+        public string PoolID { get { return _poolID; } set { _poolID = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePoolID() => !PoolID.Clean;
-        public Value<string> PoolNumber { get; set; }
+        public bool ShouldSerializePoolID() => !_poolID.Clean;
+        private Value<string> _poolNumber;
+        public string PoolNumber { get { return _poolNumber; } set { _poolNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePoolNumber() => !PoolNumber.Clean;
-        public Value<string> RecordingNumber { get; set; }
+        public bool ShouldSerializePoolNumber() => !_poolNumber.Clean;
+        private Value<string> _recordingNumber;
+        public string RecordingNumber { get { return _recordingNumber; } set { _recordingNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecordingNumber() => !RecordingNumber.Clean;
-        public Value<string> ShipmentMethod { get; set; }
+        public bool ShouldSerializeRecordingNumber() => !_recordingNumber.Clean;
+        private Value<string> _shipmentMethod;
+        public string ShipmentMethod { get { return _shipmentMethod; } set { _shipmentMethod = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShipmentMethod() => !ShipmentMethod.Clean;
-        public Value<string> ShipperName { get; set; }
+        public bool ShouldSerializeShipmentMethod() => !_shipmentMethod.Clean;
+        private Value<string> _shipperName;
+        public string ShipperName { get { return _shipperName; } set { _shipperName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShipperName() => !ShipperName.Clean;
-        public Value<List<ShippingContact>> ShippingContacts { get; set; }
+        public bool ShouldSerializeShipperName() => !_shipperName.Clean;
+        private Value<List<ShippingContact>> _shippingContacts;
+        public List<ShippingContact> ShippingContacts { get { return _shippingContacts; } set { _shippingContacts = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShippingContacts() => !ShippingContacts.Clean;
-        public Value<DateTime?> TargetDeliveryDate { get; set; }
+        public bool ShouldSerializeShippingContacts() => !_shippingContacts.Clean;
+        private Value<DateTime?> _targetDeliveryDate;
+        public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTargetDeliveryDate() => !TargetDeliveryDate.Clean;
+        public bool ShouldSerializeTargetDeliveryDate() => !_targetDeliveryDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -62,44 +78,44 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = ActualShipDate.Clean
-                    && CarrierName.Clean
-                    && DownPaymentAmount.Clean
-                    && Id.Clean
-                    && InvestorDeliveryDate.Clean
-                    && PackageTrackingNumber.Clean
-                    && PhysicalFileStorageComments.Clean
-                    && PhysicalFileStorageId.Clean
-                    && PhysicalFileStorageLocation.Clean
-                    && PoolID.Clean
-                    && PoolNumber.Clean
-                    && RecordingNumber.Clean
-                    && ShipmentMethod.Clean
-                    && ShipperName.Clean
-                    && ShippingContacts.Clean
-                    && TargetDeliveryDate.Clean;
+                var clean = _actualShipDate.Clean
+                    && _carrierName.Clean
+                    && _downPaymentAmount.Clean
+                    && _id.Clean
+                    && _investorDeliveryDate.Clean
+                    && _packageTrackingNumber.Clean
+                    && _physicalFileStorageComments.Clean
+                    && _physicalFileStorageId.Clean
+                    && _physicalFileStorageLocation.Clean
+                    && _poolID.Clean
+                    && _poolNumber.Clean
+                    && _recordingNumber.Clean
+                    && _shipmentMethod.Clean
+                    && _shipperName.Clean
+                    && _shippingContacts.Clean
+                    && _targetDeliveryDate.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = ActualShipDate; v0.Clean = value; ActualShipDate = v0;
-                var v1 = CarrierName; v1.Clean = value; CarrierName = v1;
-                var v2 = DownPaymentAmount; v2.Clean = value; DownPaymentAmount = v2;
-                var v3 = Id; v3.Clean = value; Id = v3;
-                var v4 = InvestorDeliveryDate; v4.Clean = value; InvestorDeliveryDate = v4;
-                var v5 = PackageTrackingNumber; v5.Clean = value; PackageTrackingNumber = v5;
-                var v6 = PhysicalFileStorageComments; v6.Clean = value; PhysicalFileStorageComments = v6;
-                var v7 = PhysicalFileStorageId; v7.Clean = value; PhysicalFileStorageId = v7;
-                var v8 = PhysicalFileStorageLocation; v8.Clean = value; PhysicalFileStorageLocation = v8;
-                var v9 = PoolID; v9.Clean = value; PoolID = v9;
-                var v10 = PoolNumber; v10.Clean = value; PoolNumber = v10;
-                var v11 = RecordingNumber; v11.Clean = value; RecordingNumber = v11;
-                var v12 = ShipmentMethod; v12.Clean = value; ShipmentMethod = v12;
-                var v13 = ShipperName; v13.Clean = value; ShipperName = v13;
-                var v14 = ShippingContacts; v14.Clean = value; ShippingContacts = v14;
-                var v15 = TargetDeliveryDate; v15.Clean = value; TargetDeliveryDate = v15;
+                var v0 = _actualShipDate; v0.Clean = value; _actualShipDate = v0;
+                var v1 = _carrierName; v1.Clean = value; _carrierName = v1;
+                var v2 = _downPaymentAmount; v2.Clean = value; _downPaymentAmount = v2;
+                var v3 = _id; v3.Clean = value; _id = v3;
+                var v4 = _investorDeliveryDate; v4.Clean = value; _investorDeliveryDate = v4;
+                var v5 = _packageTrackingNumber; v5.Clean = value; _packageTrackingNumber = v5;
+                var v6 = _physicalFileStorageComments; v6.Clean = value; _physicalFileStorageComments = v6;
+                var v7 = _physicalFileStorageId; v7.Clean = value; _physicalFileStorageId = v7;
+                var v8 = _physicalFileStorageLocation; v8.Clean = value; _physicalFileStorageLocation = v8;
+                var v9 = _poolID; v9.Clean = value; _poolID = v9;
+                var v10 = _poolNumber; v10.Clean = value; _poolNumber = v10;
+                var v11 = _recordingNumber; v11.Clean = value; _recordingNumber = v11;
+                var v12 = _shipmentMethod; v12.Clean = value; _shipmentMethod = v12;
+                var v13 = _shipperName; v13.Clean = value; _shipperName = v13;
+                var v14 = _shippingContacts; v14.Clean = value; _shippingContacts = v14;
+                var v15 = _targetDeliveryDate; v15.Clean = value; _targetDeliveryDate = v15;
                 _settingClean = 0;
             }
         }

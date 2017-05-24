@@ -7,33 +7,42 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LockRequestBorrower
     {
-        public Value<string> EquifaxScore { get; set; }
+        private Value<string> _equifaxScore;
+        public string EquifaxScore { get { return _equifaxScore; } set { _equifaxScore = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEquifaxScore() => !EquifaxScore.Clean;
-        public Value<string> ExperianScore { get; set; }
+        public bool ShouldSerializeEquifaxScore() => !_equifaxScore.Clean;
+        private Value<string> _experianScore;
+        public string ExperianScore { get { return _experianScore; } set { _experianScore = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExperianScore() => !ExperianScore.Clean;
-        public Value<string> FirstName { get; set; }
+        public bool ShouldSerializeExperianScore() => !_experianScore.Clean;
+        private Value<string> _firstName;
+        public string FirstName { get { return _firstName; } set { _firstName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirstName() => !FirstName.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFirstName() => !_firstName.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> IsEmpty { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _isEmpty;
+        public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsEmpty() => !IsEmpty.Clean;
-        public Value<string> LastName { get; set; }
+        public bool ShouldSerializeIsEmpty() => !_isEmpty.Clean;
+        private Value<string> _lastName;
+        public string LastName { get { return _lastName; } set { _lastName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastName() => !LastName.Clean;
-        public Value<int?> LrbIndex { get; set; }
+        public bool ShouldSerializeLastName() => !_lastName.Clean;
+        private Value<int?> _lrbIndex;
+        public int? LrbIndex { get { return _lrbIndex; } set { _lrbIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLrbIndex() => !LrbIndex.Clean;
-        public Value<string> SSN { get; set; }
+        public bool ShouldSerializeLrbIndex() => !_lrbIndex.Clean;
+        private Value<string> _sSN;
+        public string SSN { get { return _sSN; } set { _sSN = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSSN() => !SSN.Clean;
-        public Value<string> TransUnionScore { get; set; }
+        public bool ShouldSerializeSSN() => !_sSN.Clean;
+        private Value<string> _transUnionScore;
+        public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransUnionScore() => !TransUnionScore.Clean;
+        public bool ShouldSerializeTransUnionScore() => !_transUnionScore.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -41,30 +50,30 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = EquifaxScore.Clean
-                    && ExperianScore.Clean
-                    && FirstName.Clean
-                    && Id.Clean
-                    && IsEmpty.Clean
-                    && LastName.Clean
-                    && LrbIndex.Clean
-                    && SSN.Clean
-                    && TransUnionScore.Clean;
+                var clean = _equifaxScore.Clean
+                    && _experianScore.Clean
+                    && _firstName.Clean
+                    && _id.Clean
+                    && _isEmpty.Clean
+                    && _lastName.Clean
+                    && _lrbIndex.Clean
+                    && _sSN.Clean
+                    && _transUnionScore.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = EquifaxScore; v0.Clean = value; EquifaxScore = v0;
-                var v1 = ExperianScore; v1.Clean = value; ExperianScore = v1;
-                var v2 = FirstName; v2.Clean = value; FirstName = v2;
-                var v3 = Id; v3.Clean = value; Id = v3;
-                var v4 = IsEmpty; v4.Clean = value; IsEmpty = v4;
-                var v5 = LastName; v5.Clean = value; LastName = v5;
-                var v6 = LrbIndex; v6.Clean = value; LrbIndex = v6;
-                var v7 = SSN; v7.Clean = value; SSN = v7;
-                var v8 = TransUnionScore; v8.Clean = value; TransUnionScore = v8;
+                var v0 = _equifaxScore; v0.Clean = value; _equifaxScore = v0;
+                var v1 = _experianScore; v1.Clean = value; _experianScore = v1;
+                var v2 = _firstName; v2.Clean = value; _firstName = v2;
+                var v3 = _id; v3.Clean = value; _id = v3;
+                var v4 = _isEmpty; v4.Clean = value; _isEmpty = v4;
+                var v5 = _lastName; v5.Clean = value; _lastName = v5;
+                var v6 = _lrbIndex; v6.Clean = value; _lrbIndex = v6;
+                var v7 = _sSN; v7.Clean = value; _sSN = v7;
+                var v8 = _transUnionScore; v8.Clean = value; _transUnionScore = v8;
                 _settingClean = 0;
             }
         }

@@ -7,18 +7,22 @@ namespace EncompassRest.Loans
 {
     public sealed partial class AdditionalStateDisclosure
     {
-        public Value<string> DisclosureName { get; set; }
+        private Value<string> _disclosureName;
+        public string DisclosureName { get { return _disclosureName; } set { _disclosureName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureName() => !DisclosureName.Clean;
-        public Value<string> DisclosureValue { get; set; }
+        public bool ShouldSerializeDisclosureName() => !_disclosureName.Clean;
+        private Value<string> _disclosureValue;
+        public string DisclosureValue { get { return _disclosureValue; } set { _disclosureValue = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureValue() => !DisclosureValue.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeDisclosureValue() => !_disclosureValue.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> StateCode { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _stateCode;
+        public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStateCode() => !StateCode.Clean;
+        public bool ShouldSerializeStateCode() => !_stateCode.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -26,20 +30,20 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = DisclosureName.Clean
-                    && DisclosureValue.Clean
-                    && Id.Clean
-                    && StateCode.Clean;
+                var clean = _disclosureName.Clean
+                    && _disclosureValue.Clean
+                    && _id.Clean
+                    && _stateCode.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = DisclosureName; v0.Clean = value; DisclosureName = v0;
-                var v1 = DisclosureValue; v1.Clean = value; DisclosureValue = v1;
-                var v2 = Id; v2.Clean = value; Id = v2;
-                var v3 = StateCode; v3.Clean = value; StateCode = v3;
+                var v0 = _disclosureName; v0.Clean = value; _disclosureName = v0;
+                var v1 = _disclosureValue; v1.Clean = value; _disclosureValue = v1;
+                var v2 = _id; v2.Clean = value; _id = v2;
+                var v3 = _stateCode; v3.Clean = value; _stateCode = v3;
                 _settingClean = 0;
             }
         }

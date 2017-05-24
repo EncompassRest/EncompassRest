@@ -7,66 +7,86 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ServicingDisclosure
     {
-        public Value<decimal?> DisclosurePercent1 { get; set; }
+        private Value<decimal?> _disclosurePercent1;
+        public decimal? DisclosurePercent1 { get { return _disclosurePercent1; } set { _disclosurePercent1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosurePercent1() => !DisclosurePercent1.Clean;
-        public Value<decimal?> DisclosurePercent2 { get; set; }
+        public bool ShouldSerializeDisclosurePercent1() => !_disclosurePercent1.Clean;
+        private Value<decimal?> _disclosurePercent2;
+        public decimal? DisclosurePercent2 { get { return _disclosurePercent2; } set { _disclosurePercent2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosurePercent2() => !DisclosurePercent2.Clean;
-        public Value<decimal?> DisclosurePercent3 { get; set; }
+        public bool ShouldSerializeDisclosurePercent2() => !_disclosurePercent2.Clean;
+        private Value<decimal?> _disclosurePercent3;
+        public decimal? DisclosurePercent3 { get { return _disclosurePercent3; } set { _disclosurePercent3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosurePercent3() => !DisclosurePercent3.Clean;
-        public Value<string> DisclosureYear1 { get; set; }
+        public bool ShouldSerializeDisclosurePercent3() => !_disclosurePercent3.Clean;
+        private Value<string> _disclosureYear1;
+        public string DisclosureYear1 { get { return _disclosureYear1; } set { _disclosureYear1 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureYear1() => !DisclosureYear1.Clean;
-        public Value<string> DisclosureYear2 { get; set; }
+        public bool ShouldSerializeDisclosureYear1() => !_disclosureYear1.Clean;
+        private Value<string> _disclosureYear2;
+        public string DisclosureYear2 { get { return _disclosureYear2; } set { _disclosureYear2 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureYear2() => !DisclosureYear2.Clean;
-        public Value<string> DisclosureYear3 { get; set; }
+        public bool ShouldSerializeDisclosureYear2() => !_disclosureYear2.Clean;
+        private Value<string> _disclosureYear3;
+        public string DisclosureYear3 { get { return _disclosureYear3; } set { _disclosureYear3 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureYear3() => !DisclosureYear3.Clean;
-        public Value<bool?> FiftyOneTo75Indicator { get; set; }
+        public bool ShouldSerializeDisclosureYear3() => !_disclosureYear3.Clean;
+        private Value<bool?> _fiftyOneTo75Indicator;
+        public bool? FiftyOneTo75Indicator { get { return _fiftyOneTo75Indicator; } set { _fiftyOneTo75Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFiftyOneTo75Indicator() => !FiftyOneTo75Indicator.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFiftyOneTo75Indicator() => !_fiftyOneTo75Indicator.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> SeventySixTo100Indicator { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _seventySixTo100Indicator;
+        public bool? SeventySixTo100Indicator { get { return _seventySixTo100Indicator; } set { _seventySixTo100Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSeventySixTo100Indicator() => !SeventySixTo100Indicator.Clean;
-        public Value<string> ThisEstimateType { get; set; }
+        public bool ShouldSerializeSeventySixTo100Indicator() => !_seventySixTo100Indicator.Clean;
+        private Value<string> _thisEstimateType;
+        public string ThisEstimateType { get { return _thisEstimateType; } set { _thisEstimateType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThisEstimateType() => !ThisEstimateType.Clean;
-        public Value<string> ThisInformationType { get; set; }
+        public bool ShouldSerializeThisEstimateType() => !_thisEstimateType.Clean;
+        private Value<string> _thisInformationType;
+        public string ThisInformationType { get { return _thisInformationType; } set { _thisInformationType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThisInformationType() => !ThisInformationType.Clean;
-        public Value<bool?> ThisIsOurRecordOfTransferingIndicator { get; set; }
+        public bool ShouldSerializeThisInformationType() => !_thisInformationType.Clean;
+        private Value<bool?> _thisIsOurRecordOfTransferingIndicator;
+        public bool? ThisIsOurRecordOfTransferingIndicator { get { return _thisIsOurRecordOfTransferingIndicator; } set { _thisIsOurRecordOfTransferingIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeThisIsOurRecordOfTransferingIndicator() => !ThisIsOurRecordOfTransferingIndicator.Clean;
-        public Value<bool?> TwentySixTo50Indicator { get; set; }
+        public bool ShouldSerializeThisIsOurRecordOfTransferingIndicator() => !_thisIsOurRecordOfTransferingIndicator.Clean;
+        private Value<bool?> _twentySixTo50Indicator;
+        public bool? TwentySixTo50Indicator { get { return _twentySixTo50Indicator; } set { _twentySixTo50Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTwentySixTo50Indicator() => !TwentySixTo50Indicator.Clean;
-        public Value<string> WeAreAbleType { get; set; }
+        public bool ShouldSerializeTwentySixTo50Indicator() => !_twentySixTo50Indicator.Clean;
+        private Value<string> _weAreAbleType;
+        public string WeAreAbleType { get { return _weAreAbleType; } set { _weAreAbleType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeAreAbleType() => !WeAreAbleType.Clean;
-        public Value<bool?> WeDoNotSellMortgageLoansIndicator { get; set; }
+        public bool ShouldSerializeWeAreAbleType() => !_weAreAbleType.Clean;
+        private Value<bool?> _weDoNotSellMortgageLoansIndicator;
+        public bool? WeDoNotSellMortgageLoansIndicator { get { return _weDoNotSellMortgageLoansIndicator; } set { _weDoNotSellMortgageLoansIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeDoNotSellMortgageLoansIndicator() => !WeDoNotSellMortgageLoansIndicator.Clean;
-        public Value<bool?> WeDoNotServiceMortgageLoansIndicator { get; set; }
+        public bool ShouldSerializeWeDoNotSellMortgageLoansIndicator() => !_weDoNotSellMortgageLoansIndicator.Clean;
+        private Value<bool?> _weDoNotServiceMortgageLoansIndicator;
+        public bool? WeDoNotServiceMortgageLoansIndicator { get { return _weDoNotServiceMortgageLoansIndicator; } set { _weDoNotServiceMortgageLoansIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeDoNotServiceMortgageLoansIndicator() => !WeDoNotServiceMortgageLoansIndicator.Clean;
-        public Value<bool?> WeHaveNotServicedMortgLoansIn3YrsIndicator { get; set; }
+        public bool ShouldSerializeWeDoNotServiceMortgageLoansIndicator() => !_weDoNotServiceMortgageLoansIndicator.Clean;
+        private Value<bool?> _weHaveNotServicedMortgLoansIn3YrsIndicator;
+        public bool? WeHaveNotServicedMortgLoansIn3YrsIndicator { get { return _weHaveNotServicedMortgLoansIn3YrsIndicator; } set { _weHaveNotServicedMortgLoansIn3YrsIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeHaveNotServicedMortgLoansIn3YrsIndicator() => !WeHaveNotServicedMortgLoansIn3YrsIndicator.Clean;
-        public Value<bool?> WeHavePreviouslyAssignedIndicator { get; set; }
+        public bool ShouldSerializeWeHaveNotServicedMortgLoansIn3YrsIndicator() => !_weHaveNotServicedMortgLoansIn3YrsIndicator.Clean;
+        private Value<bool?> _weHavePreviouslyAssignedIndicator;
+        public bool? WeHavePreviouslyAssignedIndicator { get { return _weHavePreviouslyAssignedIndicator; } set { _weHavePreviouslyAssignedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeHavePreviouslyAssignedIndicator() => !WeHavePreviouslyAssignedIndicator.Clean;
-        public Value<bool?> WeMayAssignIndicator { get; set; }
+        public bool ShouldSerializeWeHavePreviouslyAssignedIndicator() => !_weHavePreviouslyAssignedIndicator.Clean;
+        private Value<bool?> _weMayAssignIndicator;
+        public bool? WeMayAssignIndicator { get { return _weMayAssignIndicator; } set { _weMayAssignIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWeMayAssignIndicator() => !WeMayAssignIndicator.Clean;
-        public Value<bool?> ZeroTo25Indicator { get; set; }
+        public bool ShouldSerializeWeMayAssignIndicator() => !_weMayAssignIndicator.Clean;
+        private Value<bool?> _zeroTo25Indicator;
+        public bool? ZeroTo25Indicator { get { return _zeroTo25Indicator; } set { _zeroTo25Indicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeZeroTo25Indicator() => !ZeroTo25Indicator.Clean;
+        public bool ShouldSerializeZeroTo25Indicator() => !_zeroTo25Indicator.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -74,52 +94,52 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = DisclosurePercent1.Clean
-                    && DisclosurePercent2.Clean
-                    && DisclosurePercent3.Clean
-                    && DisclosureYear1.Clean
-                    && DisclosureYear2.Clean
-                    && DisclosureYear3.Clean
-                    && FiftyOneTo75Indicator.Clean
-                    && Id.Clean
-                    && SeventySixTo100Indicator.Clean
-                    && ThisEstimateType.Clean
-                    && ThisInformationType.Clean
-                    && ThisIsOurRecordOfTransferingIndicator.Clean
-                    && TwentySixTo50Indicator.Clean
-                    && WeAreAbleType.Clean
-                    && WeDoNotSellMortgageLoansIndicator.Clean
-                    && WeDoNotServiceMortgageLoansIndicator.Clean
-                    && WeHaveNotServicedMortgLoansIn3YrsIndicator.Clean
-                    && WeHavePreviouslyAssignedIndicator.Clean
-                    && WeMayAssignIndicator.Clean
-                    && ZeroTo25Indicator.Clean;
+                var clean = _disclosurePercent1.Clean
+                    && _disclosurePercent2.Clean
+                    && _disclosurePercent3.Clean
+                    && _disclosureYear1.Clean
+                    && _disclosureYear2.Clean
+                    && _disclosureYear3.Clean
+                    && _fiftyOneTo75Indicator.Clean
+                    && _id.Clean
+                    && _seventySixTo100Indicator.Clean
+                    && _thisEstimateType.Clean
+                    && _thisInformationType.Clean
+                    && _thisIsOurRecordOfTransferingIndicator.Clean
+                    && _twentySixTo50Indicator.Clean
+                    && _weAreAbleType.Clean
+                    && _weDoNotSellMortgageLoansIndicator.Clean
+                    && _weDoNotServiceMortgageLoansIndicator.Clean
+                    && _weHaveNotServicedMortgLoansIn3YrsIndicator.Clean
+                    && _weHavePreviouslyAssignedIndicator.Clean
+                    && _weMayAssignIndicator.Clean
+                    && _zeroTo25Indicator.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = DisclosurePercent1; v0.Clean = value; DisclosurePercent1 = v0;
-                var v1 = DisclosurePercent2; v1.Clean = value; DisclosurePercent2 = v1;
-                var v2 = DisclosurePercent3; v2.Clean = value; DisclosurePercent3 = v2;
-                var v3 = DisclosureYear1; v3.Clean = value; DisclosureYear1 = v3;
-                var v4 = DisclosureYear2; v4.Clean = value; DisclosureYear2 = v4;
-                var v5 = DisclosureYear3; v5.Clean = value; DisclosureYear3 = v5;
-                var v6 = FiftyOneTo75Indicator; v6.Clean = value; FiftyOneTo75Indicator = v6;
-                var v7 = Id; v7.Clean = value; Id = v7;
-                var v8 = SeventySixTo100Indicator; v8.Clean = value; SeventySixTo100Indicator = v8;
-                var v9 = ThisEstimateType; v9.Clean = value; ThisEstimateType = v9;
-                var v10 = ThisInformationType; v10.Clean = value; ThisInformationType = v10;
-                var v11 = ThisIsOurRecordOfTransferingIndicator; v11.Clean = value; ThisIsOurRecordOfTransferingIndicator = v11;
-                var v12 = TwentySixTo50Indicator; v12.Clean = value; TwentySixTo50Indicator = v12;
-                var v13 = WeAreAbleType; v13.Clean = value; WeAreAbleType = v13;
-                var v14 = WeDoNotSellMortgageLoansIndicator; v14.Clean = value; WeDoNotSellMortgageLoansIndicator = v14;
-                var v15 = WeDoNotServiceMortgageLoansIndicator; v15.Clean = value; WeDoNotServiceMortgageLoansIndicator = v15;
-                var v16 = WeHaveNotServicedMortgLoansIn3YrsIndicator; v16.Clean = value; WeHaveNotServicedMortgLoansIn3YrsIndicator = v16;
-                var v17 = WeHavePreviouslyAssignedIndicator; v17.Clean = value; WeHavePreviouslyAssignedIndicator = v17;
-                var v18 = WeMayAssignIndicator; v18.Clean = value; WeMayAssignIndicator = v18;
-                var v19 = ZeroTo25Indicator; v19.Clean = value; ZeroTo25Indicator = v19;
+                var v0 = _disclosurePercent1; v0.Clean = value; _disclosurePercent1 = v0;
+                var v1 = _disclosurePercent2; v1.Clean = value; _disclosurePercent2 = v1;
+                var v2 = _disclosurePercent3; v2.Clean = value; _disclosurePercent3 = v2;
+                var v3 = _disclosureYear1; v3.Clean = value; _disclosureYear1 = v3;
+                var v4 = _disclosureYear2; v4.Clean = value; _disclosureYear2 = v4;
+                var v5 = _disclosureYear3; v5.Clean = value; _disclosureYear3 = v5;
+                var v6 = _fiftyOneTo75Indicator; v6.Clean = value; _fiftyOneTo75Indicator = v6;
+                var v7 = _id; v7.Clean = value; _id = v7;
+                var v8 = _seventySixTo100Indicator; v8.Clean = value; _seventySixTo100Indicator = v8;
+                var v9 = _thisEstimateType; v9.Clean = value; _thisEstimateType = v9;
+                var v10 = _thisInformationType; v10.Clean = value; _thisInformationType = v10;
+                var v11 = _thisIsOurRecordOfTransferingIndicator; v11.Clean = value; _thisIsOurRecordOfTransferingIndicator = v11;
+                var v12 = _twentySixTo50Indicator; v12.Clean = value; _twentySixTo50Indicator = v12;
+                var v13 = _weAreAbleType; v13.Clean = value; _weAreAbleType = v13;
+                var v14 = _weDoNotSellMortgageLoansIndicator; v14.Clean = value; _weDoNotSellMortgageLoansIndicator = v14;
+                var v15 = _weDoNotServiceMortgageLoansIndicator; v15.Clean = value; _weDoNotServiceMortgageLoansIndicator = v15;
+                var v16 = _weHaveNotServicedMortgLoansIn3YrsIndicator; v16.Clean = value; _weHaveNotServicedMortgLoansIn3YrsIndicator = v16;
+                var v17 = _weHavePreviouslyAssignedIndicator; v17.Clean = value; _weHavePreviouslyAssignedIndicator = v17;
+                var v18 = _weMayAssignIndicator; v18.Clean = value; _weMayAssignIndicator = v18;
+                var v19 = _zeroTo25Indicator; v19.Clean = value; _zeroTo25Indicator = v19;
                 _settingClean = 0;
             }
         }

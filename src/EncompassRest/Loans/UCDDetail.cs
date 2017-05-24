@@ -7,39 +7,50 @@ namespace EncompassRest.Loans
 {
     public sealed partial class UCDDetail
     {
-        public Value<string> FeeAccountType { get; set; }
+        private Value<string> _feeAccountType;
+        public string FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeAccountType() => !FeeAccountType.Clean;
-        public Value<decimal?> FeeAmount { get; set; }
+        public bool ShouldSerializeFeeAccountType() => !_feeAccountType.Clean;
+        private Value<decimal?> _feeAmount;
+        public decimal? FeeAmount { get { return _feeAmount; } set { _feeAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeAmount() => !FeeAmount.Clean;
-        public Value<DateTime?> FeeDateFrom { get; set; }
+        public bool ShouldSerializeFeeAmount() => !_feeAmount.Clean;
+        private Value<DateTime?> _feeDateFrom;
+        public DateTime? FeeDateFrom { get { return _feeDateFrom; } set { _feeDateFrom = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDateFrom() => !FeeDateFrom.Clean;
-        public Value<DateTime?> FeeDateTo { get; set; }
+        public bool ShouldSerializeFeeDateFrom() => !_feeDateFrom.Clean;
+        private Value<DateTime?> _feeDateTo;
+        public DateTime? FeeDateTo { get { return _feeDateTo; } set { _feeDateTo = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDateTo() => !FeeDateTo.Clean;
-        public Value<string> FeeDesc { get; set; }
+        public bool ShouldSerializeFeeDateTo() => !_feeDateTo.Clean;
+        private Value<string> _feeDesc;
+        public string FeeDesc { get { return _feeDesc; } set { _feeDesc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDesc() => !FeeDesc.Clean;
-        public Value<int?> FeeIndex { get; set; }
+        public bool ShouldSerializeFeeDesc() => !_feeDesc.Clean;
+        private Value<int?> _feeIndex;
+        public int? FeeIndex { get { return _feeIndex; } set { _feeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeIndex() => !FeeIndex.Clean;
-        public Value<string> FeePaidTo { get; set; }
+        public bool ShouldSerializeFeeIndex() => !_feeIndex.Clean;
+        private Value<string> _feePaidTo;
+        public string FeePaidTo { get { return _feePaidTo; } set { _feePaidTo = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeePaidTo() => !FeePaidTo.Clean;
-        public Value<bool?> FeePOC { get; set; }
+        public bool ShouldSerializeFeePaidTo() => !_feePaidTo.Clean;
+        private Value<bool?> _feePOC;
+        public bool? FeePOC { get { return _feePOC; } set { _feePOC = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeePOC() => !FeePOC.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFeePOC() => !_feePOC.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<int?> LineNumber { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<int?> _lineNumber;
+        public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !LineNumber.Clean;
-        public Value<string> Section { get; set; }
+        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
+        private Value<string> _section;
+        public string Section { get { return _section; } set { _section = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSection() => !Section.Clean;
+        public bool ShouldSerializeSection() => !_section.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,34 +58,34 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = FeeAccountType.Clean
-                    && FeeAmount.Clean
-                    && FeeDateFrom.Clean
-                    && FeeDateTo.Clean
-                    && FeeDesc.Clean
-                    && FeeIndex.Clean
-                    && FeePaidTo.Clean
-                    && FeePOC.Clean
-                    && Id.Clean
-                    && LineNumber.Clean
-                    && Section.Clean;
+                var clean = _feeAccountType.Clean
+                    && _feeAmount.Clean
+                    && _feeDateFrom.Clean
+                    && _feeDateTo.Clean
+                    && _feeDesc.Clean
+                    && _feeIndex.Clean
+                    && _feePaidTo.Clean
+                    && _feePOC.Clean
+                    && _id.Clean
+                    && _lineNumber.Clean
+                    && _section.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = FeeAccountType; v0.Clean = value; FeeAccountType = v0;
-                var v1 = FeeAmount; v1.Clean = value; FeeAmount = v1;
-                var v2 = FeeDateFrom; v2.Clean = value; FeeDateFrom = v2;
-                var v3 = FeeDateTo; v3.Clean = value; FeeDateTo = v3;
-                var v4 = FeeDesc; v4.Clean = value; FeeDesc = v4;
-                var v5 = FeeIndex; v5.Clean = value; FeeIndex = v5;
-                var v6 = FeePaidTo; v6.Clean = value; FeePaidTo = v6;
-                var v7 = FeePOC; v7.Clean = value; FeePOC = v7;
-                var v8 = Id; v8.Clean = value; Id = v8;
-                var v9 = LineNumber; v9.Clean = value; LineNumber = v9;
-                var v10 = Section; v10.Clean = value; Section = v10;
+                var v0 = _feeAccountType; v0.Clean = value; _feeAccountType = v0;
+                var v1 = _feeAmount; v1.Clean = value; _feeAmount = v1;
+                var v2 = _feeDateFrom; v2.Clean = value; _feeDateFrom = v2;
+                var v3 = _feeDateTo; v3.Clean = value; _feeDateTo = v3;
+                var v4 = _feeDesc; v4.Clean = value; _feeDesc = v4;
+                var v5 = _feeIndex; v5.Clean = value; _feeIndex = v5;
+                var v6 = _feePaidTo; v6.Clean = value; _feePaidTo = v6;
+                var v7 = _feePOC; v7.Clean = value; _feePOC = v7;
+                var v8 = _id; v8.Clean = value; _id = v8;
+                var v9 = _lineNumber; v9.Clean = value; _lineNumber = v9;
+                var v10 = _section; v10.Clean = value; _section = v10;
                 _settingClean = 0;
             }
         }

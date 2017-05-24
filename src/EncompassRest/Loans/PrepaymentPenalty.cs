@@ -7,18 +7,22 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PrepaymentPenalty
     {
-        public Value<string> FullPrepaymentPenaltyOptionType { get; set; }
+        private Value<string> _fullPrepaymentPenaltyOptionType;
+        public string FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFullPrepaymentPenaltyOptionType() => !FullPrepaymentPenaltyOptionType.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFullPrepaymentPenaltyOptionType() => !_fullPrepaymentPenaltyOptionType.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<decimal?> PrepaymentPenaltyPercent { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<decimal?> _prepaymentPenaltyPercent;
+        public decimal? PrepaymentPenaltyPercent { get { return _prepaymentPenaltyPercent; } set { _prepaymentPenaltyPercent = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaymentPenaltyPercent() => !PrepaymentPenaltyPercent.Clean;
-        public Value<int?> TermMonthsCount { get; set; }
+        public bool ShouldSerializePrepaymentPenaltyPercent() => !_prepaymentPenaltyPercent.Clean;
+        private Value<int?> _termMonthsCount;
+        public int? TermMonthsCount { get { return _termMonthsCount; } set { _termMonthsCount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTermMonthsCount() => !TermMonthsCount.Clean;
+        public bool ShouldSerializeTermMonthsCount() => !_termMonthsCount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -26,20 +30,20 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = FullPrepaymentPenaltyOptionType.Clean
-                    && Id.Clean
-                    && PrepaymentPenaltyPercent.Clean
-                    && TermMonthsCount.Clean;
+                var clean = _fullPrepaymentPenaltyOptionType.Clean
+                    && _id.Clean
+                    && _prepaymentPenaltyPercent.Clean
+                    && _termMonthsCount.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = FullPrepaymentPenaltyOptionType; v0.Clean = value; FullPrepaymentPenaltyOptionType = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = PrepaymentPenaltyPercent; v2.Clean = value; PrepaymentPenaltyPercent = v2;
-                var v3 = TermMonthsCount; v3.Clean = value; TermMonthsCount = v3;
+                var v0 = _fullPrepaymentPenaltyOptionType; v0.Clean = value; _fullPrepaymentPenaltyOptionType = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _prepaymentPenaltyPercent; v2.Clean = value; _prepaymentPenaltyPercent = v2;
+                var v3 = _termMonthsCount; v3.Clean = value; _termMonthsCount = v3;
                 _settingClean = 0;
             }
         }

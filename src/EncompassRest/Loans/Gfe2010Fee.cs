@@ -7,183 +7,242 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Gfe2010Fee
     {
-        public Value<decimal?> AdditionalAmount { get; set; }
+        private Value<decimal?> _additionalAmount;
+        public decimal? AdditionalAmount { get { return _additionalAmount; } set { _additionalAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalAmount() => !AdditionalAmount.Clean;
-        public Value<decimal?> Amount { get; set; }
+        public bool ShouldSerializeAdditionalAmount() => !_additionalAmount.Clean;
+        private Value<decimal?> _amount;
+        public decimal? Amount { get { return _amount; } set { _amount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !Amount.Clean;
-        public Value<bool?> AprIndicator { get; set; }
+        public bool ShouldSerializeAmount() => !_amount.Clean;
+        private Value<bool?> _aprIndicator;
+        public bool? AprIndicator { get { return _aprIndicator; } set { _aprIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAprIndicator() => !AprIndicator.Clean;
-        public Value<decimal?> BorPaidAmount { get; set; }
+        public bool ShouldSerializeAprIndicator() => !_aprIndicator.Clean;
+        private Value<decimal?> _borPaidAmount;
+        public decimal? BorPaidAmount { get { return _borPaidAmount; } set { _borPaidAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorPaidAmount() => !BorPaidAmount.Clean;
-        public Value<decimal?> BorrowerAmountPaid2015 { get; set; }
+        public bool ShouldSerializeBorPaidAmount() => !_borPaidAmount.Clean;
+        private Value<decimal?> _borrowerAmountPaid2015;
+        public decimal? BorrowerAmountPaid2015 { get { return _borrowerAmountPaid2015; } set { _borrowerAmountPaid2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerAmountPaid2015() => !BorrowerAmountPaid2015.Clean;
-        public Value<bool?> BorrowerCanShopForIndicator2015 { get; set; }
+        public bool ShouldSerializeBorrowerAmountPaid2015() => !_borrowerAmountPaid2015.Clean;
+        private Value<bool?> _borrowerCanShopForIndicator2015;
+        public bool? BorrowerCanShopForIndicator2015 { get { return _borrowerCanShopForIndicator2015; } set { _borrowerCanShopForIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerCanShopForIndicator2015() => !BorrowerCanShopForIndicator2015.Clean;
-        public Value<bool?> BorrowerDidShopForIndicator2015 { get; set; }
+        public bool ShouldSerializeBorrowerCanShopForIndicator2015() => !_borrowerCanShopForIndicator2015.Clean;
+        private Value<bool?> _borrowerDidShopForIndicator2015;
+        public bool? BorrowerDidShopForIndicator2015 { get { return _borrowerDidShopForIndicator2015; } set { _borrowerDidShopForIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerDidShopForIndicator2015() => !BorrowerDidShopForIndicator2015.Clean;
-        public Value<decimal?> BorrowerFinanced2015 { get; set; }
+        public bool ShouldSerializeBorrowerDidShopForIndicator2015() => !_borrowerDidShopForIndicator2015.Clean;
+        private Value<decimal?> _borrowerFinanced2015;
+        public decimal? BorrowerFinanced2015 { get { return _borrowerFinanced2015; } set { _borrowerFinanced2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerFinanced2015() => !BorrowerFinanced2015.Clean;
-        public Value<decimal?> BorrowerPAC2015 { get; set; }
+        public bool ShouldSerializeBorrowerFinanced2015() => !_borrowerFinanced2015.Clean;
+        private Value<decimal?> _borrowerPAC2015;
+        public decimal? BorrowerPAC2015 { get { return _borrowerPAC2015; } set { _borrowerPAC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerPAC2015() => !BorrowerPAC2015.Clean;
-        public Value<decimal?> BorrowerPOC2015 { get; set; }
+        public bool ShouldSerializeBorrowerPAC2015() => !_borrowerPAC2015.Clean;
+        private Value<decimal?> _borrowerPOC2015;
+        public decimal? BorrowerPOC2015 { get { return _borrowerPOC2015; } set { _borrowerPOC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerPOC2015() => !BorrowerPOC2015.Clean;
-        public Value<decimal?> BorrowerPTC2015 { get; set; }
+        public bool ShouldSerializeBorrowerPOC2015() => !_borrowerPOC2015.Clean;
+        private Value<decimal?> _borrowerPTC2015;
+        public decimal? BorrowerPTC2015 { get { return _borrowerPTC2015; } set { _borrowerPTC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerPTC2015() => !BorrowerPTC2015.Clean;
-        public Value<bool?> BorrowerSelectIndicator { get; set; }
+        public bool ShouldSerializeBorrowerPTC2015() => !_borrowerPTC2015.Clean;
+        private Value<bool?> _borrowerSelectIndicator;
+        public bool? BorrowerSelectIndicator { get { return _borrowerSelectIndicator; } set { _borrowerSelectIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerSelectIndicator() => !BorrowerSelectIndicator.Clean;
-        public Value<decimal?> BrokerAmountPaid2015 { get; set; }
+        public bool ShouldSerializeBorrowerSelectIndicator() => !_borrowerSelectIndicator.Clean;
+        private Value<decimal?> _brokerAmountPaid2015;
+        public decimal? BrokerAmountPaid2015 { get { return _brokerAmountPaid2015; } set { _brokerAmountPaid2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerAmountPaid2015() => !BrokerAmountPaid2015.Clean;
-        public Value<decimal?> BrokerPAC2015 { get; set; }
+        public bool ShouldSerializeBrokerAmountPaid2015() => !_brokerAmountPaid2015.Clean;
+        private Value<decimal?> _brokerPAC2015;
+        public decimal? BrokerPAC2015 { get { return _brokerPAC2015; } set { _brokerPAC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerPAC2015() => !BrokerPAC2015.Clean;
-        public Value<decimal?> BrokerPOC2015 { get; set; }
+        public bool ShouldSerializeBrokerPAC2015() => !_brokerPAC2015.Clean;
+        private Value<decimal?> _brokerPOC2015;
+        public decimal? BrokerPOC2015 { get { return _brokerPOC2015; } set { _brokerPOC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerPOC2015() => !BrokerPOC2015.Clean;
-        public Value<string> Description { get; set; }
+        public bool ShouldSerializeBrokerPOC2015() => !_brokerPOC2015.Clean;
+        private Value<string> _description;
+        public string Description { get { return _description; } set { _description = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !Description.Clean;
-        public Value<bool?> EscrowedIndicator2015 { get; set; }
+        public bool ShouldSerializeDescription() => !_description.Clean;
+        private Value<bool?> _escrowedIndicator2015;
+        public bool? EscrowedIndicator2015 { get { return _escrowedIndicator2015; } set { _escrowedIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowedIndicator2015() => !EscrowedIndicator2015.Clean;
-        public Value<bool?> FinancedIndicator { get; set; }
+        public bool ShouldSerializeEscrowedIndicator2015() => !_escrowedIndicator2015.Clean;
+        private Value<bool?> _financedIndicator;
+        public bool? FinancedIndicator { get { return _financedIndicator; } set { _financedIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFinancedIndicator() => !FinancedIndicator.Clean;
-        public Value<int?> Gfe2010FeeIndex { get; set; }
+        public bool ShouldSerializeFinancedIndicator() => !_financedIndicator.Clean;
+        private Value<int?> _gfe2010FeeIndex;
+        public int? Gfe2010FeeIndex { get { return _gfe2010FeeIndex; } set { _gfe2010FeeIndex = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010FeeIndex() => !Gfe2010FeeIndex.Clean;
-        public Value<string> Gfe2010FeeParentType { get; set; }
+        public bool ShouldSerializeGfe2010FeeIndex() => !_gfe2010FeeIndex.Clean;
+        private Value<string> _gfe2010FeeParentType;
+        public string Gfe2010FeeParentType { get { return _gfe2010FeeParentType; } set { _gfe2010FeeParentType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010FeeParentType() => !Gfe2010FeeParentType.Clean;
-        public Value<string> Gfe2010FeeType { get; set; }
+        public bool ShouldSerializeGfe2010FeeParentType() => !_gfe2010FeeParentType.Clean;
+        private Value<string> _gfe2010FeeType;
+        public string Gfe2010FeeType { get { return _gfe2010FeeType; } set { _gfe2010FeeType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010FeeType() => !Gfe2010FeeType.Clean;
-        public Value<decimal?> GfeAmount { get; set; }
+        public bool ShouldSerializeGfe2010FeeType() => !_gfe2010FeeType.Clean;
+        private Value<decimal?> _gfeAmount;
+        public decimal? GfeAmount { get { return _gfeAmount; } set { _gfeAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeAmount() => !GfeAmount.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeGfeAmount() => !_gfeAmount.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<bool?> InsuranceIndicator2015 { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<bool?> _insuranceIndicator2015;
+        public bool? InsuranceIndicator2015 { get { return _insuranceIndicator2015; } set { _insuranceIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInsuranceIndicator2015() => !InsuranceIndicator2015.Clean;
-        public Value<decimal?> LastDisclosedClosingDisclosure2015 { get; set; }
+        public bool ShouldSerializeInsuranceIndicator2015() => !_insuranceIndicator2015.Clean;
+        private Value<decimal?> _lastDisclosedClosingDisclosure2015;
+        public decimal? LastDisclosedClosingDisclosure2015 { get { return _lastDisclosedClosingDisclosure2015; } set { _lastDisclosedClosingDisclosure2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastDisclosedClosingDisclosure2015() => !LastDisclosedClosingDisclosure2015.Clean;
-        public Value<int?> LastDisclosedLoanEstimate2015 { get; set; }
+        public bool ShouldSerializeLastDisclosedClosingDisclosure2015() => !_lastDisclosedClosingDisclosure2015.Clean;
+        private Value<int?> _lastDisclosedLoanEstimate2015;
+        public int? LastDisclosedLoanEstimate2015 { get { return _lastDisclosedLoanEstimate2015; } set { _lastDisclosedLoanEstimate2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastDisclosedLoanEstimate2015() => !LastDisclosedLoanEstimate2015.Clean;
-        public Value<decimal?> LenderAmountPaid2015 { get; set; }
+        public bool ShouldSerializeLastDisclosedLoanEstimate2015() => !_lastDisclosedLoanEstimate2015.Clean;
+        private Value<decimal?> _lenderAmountPaid2015;
+        public decimal? LenderAmountPaid2015 { get { return _lenderAmountPaid2015; } set { _lenderAmountPaid2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderAmountPaid2015() => !LenderAmountPaid2015.Clean;
-        public Value<decimal?> LenderPAC2015 { get; set; }
+        public bool ShouldSerializeLenderAmountPaid2015() => !_lenderAmountPaid2015.Clean;
+        private Value<decimal?> _lenderPAC2015;
+        public decimal? LenderPAC2015 { get { return _lenderPAC2015; } set { _lenderPAC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderPAC2015() => !LenderPAC2015.Clean;
-        public Value<decimal?> LenderPOC2015 { get; set; }
+        public bool ShouldSerializeLenderPAC2015() => !_lenderPAC2015.Clean;
+        private Value<decimal?> _lenderPOC2015;
+        public decimal? LenderPOC2015 { get { return _lenderPOC2015; } set { _lenderPOC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderPOC2015() => !LenderPOC2015.Clean;
-        public Value<decimal?> MonthlyPayment { get; set; }
+        public bool ShouldSerializeLenderPOC2015() => !_lenderPOC2015.Clean;
+        private Value<decimal?> _monthlyPayment;
+        public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyPayment() => !MonthlyPayment.Clean;
-        public Value<int?> NumberOfMonths { get; set; }
+        public bool ShouldSerializeMonthlyPayment() => !_monthlyPayment.Clean;
+        private Value<int?> _numberOfMonths;
+        public int? NumberOfMonths { get { return _numberOfMonths; } set { _numberOfMonths = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumberOfMonths() => !NumberOfMonths.Clean;
-        public Value<bool?> OptionalIndicator2015 { get; set; }
+        public bool ShouldSerializeNumberOfMonths() => !_numberOfMonths.Clean;
+        private Value<bool?> _optionalIndicator2015;
+        public bool? OptionalIndicator2015 { get { return _optionalIndicator2015; } set { _optionalIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOptionalIndicator2015() => !OptionalIndicator2015.Clean;
-        public Value<decimal?> OtherAmountPaid2015 { get; set; }
+        public bool ShouldSerializeOptionalIndicator2015() => !_optionalIndicator2015.Clean;
+        private Value<decimal?> _otherAmountPaid2015;
+        public decimal? OtherAmountPaid2015 { get { return _otherAmountPaid2015; } set { _otherAmountPaid2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAmountPaid2015() => !OtherAmountPaid2015.Clean;
-        public Value<decimal?> OtherPAC2015 { get; set; }
+        public bool ShouldSerializeOtherAmountPaid2015() => !_otherAmountPaid2015.Clean;
+        private Value<decimal?> _otherPAC2015;
+        public decimal? OtherPAC2015 { get { return _otherPAC2015; } set { _otherPAC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherPAC2015() => !OtherPAC2015.Clean;
-        public Value<decimal?> OtherPOC2015 { get; set; }
+        public bool ShouldSerializeOtherPAC2015() => !_otherPAC2015.Clean;
+        private Value<decimal?> _otherPOC2015;
+        public decimal? OtherPOC2015 { get { return _otherPOC2015; } set { _otherPOC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherPOC2015() => !OtherPOC2015.Clean;
-        public Value<string> PaidByType { get; set; }
+        public bool ShouldSerializeOtherPOC2015() => !_otherPOC2015.Clean;
+        private Value<string> _paidByType;
+        public string PaidByType { get { return _paidByType; } set { _paidByType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidByType() => !PaidByType.Clean;
-        public Value<string> PaidToName { get; set; }
+        public bool ShouldSerializePaidByType() => !_paidByType.Clean;
+        private Value<string> _paidToName;
+        public string PaidToName { get { return _paidToName; } set { _paidToName = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaidToName() => !PaidToName.Clean;
-        public Value<bool?> PocPtcIndicator { get; set; }
+        public bool ShouldSerializePaidToName() => !_paidToName.Clean;
+        private Value<bool?> _pocPtcIndicator;
+        public bool? PocPtcIndicator { get { return _pocPtcIndicator; } set { _pocPtcIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePocPtcIndicator() => !PocPtcIndicator.Clean;
-        public Value<bool?> PropertyIndicator2015 { get; set; }
+        public bool ShouldSerializePocPtcIndicator() => !_pocPtcIndicator.Clean;
+        private Value<bool?> _propertyIndicator2015;
+        public bool? PropertyIndicator2015 { get { return _propertyIndicator2015; } set { _propertyIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyIndicator2015() => !PropertyIndicator2015.Clean;
-        public Value<string> PtbType { get; set; }
+        public bool ShouldSerializePropertyIndicator2015() => !_propertyIndicator2015.Clean;
+        private Value<string> _ptbType;
+        public string PtbType { get { return _ptbType; } set { _ptbType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePtbType() => !PtbType.Clean;
-        public Value<decimal?> Rate { get; set; }
+        public bool ShouldSerializePtbType() => !_ptbType.Clean;
+        private Value<decimal?> _rate;
+        public decimal? Rate { get { return _rate; } set { _rate = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRate() => !Rate.Clean;
-        public Value<decimal?> RetainedAmount2015 { get; set; }
+        public bool ShouldSerializeRate() => !_rate.Clean;
+        private Value<decimal?> _retainedAmount2015;
+        public decimal? RetainedAmount2015 { get { return _retainedAmount2015; } set { _retainedAmount2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRetainedAmount2015() => !RetainedAmount2015.Clean;
-        public Value<decimal?> Sec32PointsAndFees2015 { get; set; }
+        public bool ShouldSerializeRetainedAmount2015() => !_retainedAmount2015.Clean;
+        private Value<decimal?> _sec32PointsAndFees2015;
+        public decimal? Sec32PointsAndFees2015 { get { return _sec32PointsAndFees2015; } set { _sec32PointsAndFees2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSec32PointsAndFees2015() => !Sec32PointsAndFees2015.Clean;
-        public Value<decimal?> SellerAmountPaid2015 { get; set; }
+        public bool ShouldSerializeSec32PointsAndFees2015() => !_sec32PointsAndFees2015.Clean;
+        private Value<decimal?> _sellerAmountPaid2015;
+        public decimal? SellerAmountPaid2015 { get { return _sellerAmountPaid2015; } set { _sellerAmountPaid2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerAmountPaid2015() => !SellerAmountPaid2015.Clean;
-        public Value<bool?> SellerCreditIndicator2015 { get; set; }
+        public bool ShouldSerializeSellerAmountPaid2015() => !_sellerAmountPaid2015.Clean;
+        private Value<bool?> _sellerCreditIndicator2015;
+        public bool? SellerCreditIndicator2015 { get { return _sellerCreditIndicator2015; } set { _sellerCreditIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerCreditIndicator2015() => !SellerCreditIndicator2015.Clean;
-        public Value<decimal?> SellerObligatedAmount2015 { get; set; }
+        public bool ShouldSerializeSellerCreditIndicator2015() => !_sellerCreditIndicator2015.Clean;
+        private Value<decimal?> _sellerObligatedAmount2015;
+        public decimal? SellerObligatedAmount2015 { get { return _sellerObligatedAmount2015; } set { _sellerObligatedAmount2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerObligatedAmount2015() => !SellerObligatedAmount2015.Clean;
-        public Value<bool?> SellerObligatedIndicator2015 { get; set; }
+        public bool ShouldSerializeSellerObligatedAmount2015() => !_sellerObligatedAmount2015.Clean;
+        private Value<bool?> _sellerObligatedIndicator2015;
+        public bool? SellerObligatedIndicator2015 { get { return _sellerObligatedIndicator2015; } set { _sellerObligatedIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerObligatedIndicator2015() => !SellerObligatedIndicator2015.Clean;
-        public Value<decimal?> SellerPAC2015 { get; set; }
+        public bool ShouldSerializeSellerObligatedIndicator2015() => !_sellerObligatedIndicator2015.Clean;
+        private Value<decimal?> _sellerPAC2015;
+        public decimal? SellerPAC2015 { get { return _sellerPAC2015; } set { _sellerPAC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerPAC2015() => !SellerPAC2015.Clean;
-        public Value<decimal?> SellerPOC2015 { get; set; }
+        public bool ShouldSerializeSellerPAC2015() => !_sellerPAC2015.Clean;
+        private Value<decimal?> _sellerPOC2015;
+        public decimal? SellerPOC2015 { get { return _sellerPOC2015; } set { _sellerPOC2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerPOC2015() => !SellerPOC2015.Clean;
-        public Value<decimal?> SelPaidAmount { get; set; }
+        public bool ShouldSerializeSellerPOC2015() => !_sellerPOC2015.Clean;
+        private Value<decimal?> _selPaidAmount;
+        public decimal? SelPaidAmount { get { return _selPaidAmount; } set { _selPaidAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSelPaidAmount() => !SelPaidAmount.Clean;
-        public Value<bool?> SimultaneousIssuanceIndicator2015 { get; set; }
+        public bool ShouldSerializeSelPaidAmount() => !_selPaidAmount.Clean;
+        private Value<bool?> _simultaneousIssuanceIndicator2015;
+        public bool? SimultaneousIssuanceIndicator2015 { get { return _simultaneousIssuanceIndicator2015; } set { _simultaneousIssuanceIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSimultaneousIssuanceIndicator2015() => !SimultaneousIssuanceIndicator2015.Clean;
-        public Value<bool?> TaxesIndicator2015 { get; set; }
+        public bool ShouldSerializeSimultaneousIssuanceIndicator2015() => !_simultaneousIssuanceIndicator2015.Clean;
+        private Value<bool?> _taxesIndicator2015;
+        public bool? TaxesIndicator2015 { get { return _taxesIndicator2015; } set { _taxesIndicator2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxesIndicator2015() => !TaxesIndicator2015.Clean;
-        public Value<bool?> TitleServiceSelectIndicator { get; set; }
+        public bool ShouldSerializeTaxesIndicator2015() => !_taxesIndicator2015.Clean;
+        private Value<bool?> _titleServiceSelectIndicator;
+        public bool? TitleServiceSelectIndicator { get { return _titleServiceSelectIndicator; } set { _titleServiceSelectIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleServiceSelectIndicator() => !TitleServiceSelectIndicator.Clean;
-        public Value<decimal?> TotalFeeAmount2015 { get; set; }
+        public bool ShouldSerializeTitleServiceSelectIndicator() => !_titleServiceSelectIndicator.Clean;
+        private Value<decimal?> _totalFeeAmount2015;
+        public decimal? TotalFeeAmount2015 { get { return _totalFeeAmount2015; } set { _totalFeeAmount2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalFeeAmount2015() => !TotalFeeAmount2015.Clean;
-        public Value<decimal?> TotalFeePercentage2015 { get; set; }
+        public bool ShouldSerializeTotalFeeAmount2015() => !_totalFeeAmount2015.Clean;
+        private Value<decimal?> _totalFeePercentage2015;
+        public decimal? TotalFeePercentage2015 { get { return _totalFeePercentage2015; } set { _totalFeePercentage2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalFeePercentage2015() => !TotalFeePercentage2015.Clean;
-        public Value<decimal?> TotalPaidByBLO2015 { get; set; }
+        public bool ShouldSerializeTotalFeePercentage2015() => !_totalFeePercentage2015.Clean;
+        private Value<decimal?> _totalPaidByBLO2015;
+        public decimal? TotalPaidByBLO2015 { get { return _totalPaidByBLO2015; } set { _totalPaidByBLO2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPaidByBLO2015() => !TotalPaidByBLO2015.Clean;
-        public Value<decimal?> UndiscountedInsurance2015 { get; set; }
+        public bool ShouldSerializeTotalPaidByBLO2015() => !_totalPaidByBLO2015.Clean;
+        private Value<decimal?> _undiscountedInsurance2015;
+        public decimal? UndiscountedInsurance2015 { get { return _undiscountedInsurance2015; } set { _undiscountedInsurance2015 = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUndiscountedInsurance2015() => !UndiscountedInsurance2015.Clean;
-        public Value<decimal?> WholePoc { get; set; }
+        public bool ShouldSerializeUndiscountedInsurance2015() => !_undiscountedInsurance2015.Clean;
+        private Value<decimal?> _wholePoc;
+        public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWholePoc() => !WholePoc.Clean;
-        public Value<string> WholePocPaidByType { get; set; }
+        public bool ShouldSerializeWholePoc() => !_wholePoc.Clean;
+        private Value<string> _wholePocPaidByType;
+        public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWholePocPaidByType() => !WholePocPaidByType.Clean;
+        public bool ShouldSerializeWholePocPaidByType() => !_wholePocPaidByType.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -191,130 +250,130 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = AdditionalAmount.Clean
-                    && Amount.Clean
-                    && AprIndicator.Clean
-                    && BorPaidAmount.Clean
-                    && BorrowerAmountPaid2015.Clean
-                    && BorrowerCanShopForIndicator2015.Clean
-                    && BorrowerDidShopForIndicator2015.Clean
-                    && BorrowerFinanced2015.Clean
-                    && BorrowerPAC2015.Clean
-                    && BorrowerPOC2015.Clean
-                    && BorrowerPTC2015.Clean
-                    && BorrowerSelectIndicator.Clean
-                    && BrokerAmountPaid2015.Clean
-                    && BrokerPAC2015.Clean
-                    && BrokerPOC2015.Clean
-                    && Description.Clean
-                    && EscrowedIndicator2015.Clean
-                    && FinancedIndicator.Clean
-                    && Gfe2010FeeIndex.Clean
-                    && Gfe2010FeeParentType.Clean
-                    && Gfe2010FeeType.Clean
-                    && GfeAmount.Clean
-                    && Id.Clean
-                    && InsuranceIndicator2015.Clean
-                    && LastDisclosedClosingDisclosure2015.Clean
-                    && LastDisclosedLoanEstimate2015.Clean
-                    && LenderAmountPaid2015.Clean
-                    && LenderPAC2015.Clean
-                    && LenderPOC2015.Clean
-                    && MonthlyPayment.Clean
-                    && NumberOfMonths.Clean
-                    && OptionalIndicator2015.Clean
-                    && OtherAmountPaid2015.Clean
-                    && OtherPAC2015.Clean
-                    && OtherPOC2015.Clean
-                    && PaidByType.Clean
-                    && PaidToName.Clean
-                    && PocPtcIndicator.Clean
-                    && PropertyIndicator2015.Clean
-                    && PtbType.Clean
-                    && Rate.Clean
-                    && RetainedAmount2015.Clean
-                    && Sec32PointsAndFees2015.Clean
-                    && SellerAmountPaid2015.Clean
-                    && SellerCreditIndicator2015.Clean
-                    && SellerObligatedAmount2015.Clean
-                    && SellerObligatedIndicator2015.Clean
-                    && SellerPAC2015.Clean
-                    && SellerPOC2015.Clean
-                    && SelPaidAmount.Clean
-                    && SimultaneousIssuanceIndicator2015.Clean
-                    && TaxesIndicator2015.Clean
-                    && TitleServiceSelectIndicator.Clean
-                    && TotalFeeAmount2015.Clean
-                    && TotalFeePercentage2015.Clean
-                    && TotalPaidByBLO2015.Clean
-                    && UndiscountedInsurance2015.Clean
-                    && WholePoc.Clean
-                    && WholePocPaidByType.Clean;
+                var clean = _additionalAmount.Clean
+                    && _amount.Clean
+                    && _aprIndicator.Clean
+                    && _borPaidAmount.Clean
+                    && _borrowerAmountPaid2015.Clean
+                    && _borrowerCanShopForIndicator2015.Clean
+                    && _borrowerDidShopForIndicator2015.Clean
+                    && _borrowerFinanced2015.Clean
+                    && _borrowerPAC2015.Clean
+                    && _borrowerPOC2015.Clean
+                    && _borrowerPTC2015.Clean
+                    && _borrowerSelectIndicator.Clean
+                    && _brokerAmountPaid2015.Clean
+                    && _brokerPAC2015.Clean
+                    && _brokerPOC2015.Clean
+                    && _description.Clean
+                    && _escrowedIndicator2015.Clean
+                    && _financedIndicator.Clean
+                    && _gfe2010FeeIndex.Clean
+                    && _gfe2010FeeParentType.Clean
+                    && _gfe2010FeeType.Clean
+                    && _gfeAmount.Clean
+                    && _id.Clean
+                    && _insuranceIndicator2015.Clean
+                    && _lastDisclosedClosingDisclosure2015.Clean
+                    && _lastDisclosedLoanEstimate2015.Clean
+                    && _lenderAmountPaid2015.Clean
+                    && _lenderPAC2015.Clean
+                    && _lenderPOC2015.Clean
+                    && _monthlyPayment.Clean
+                    && _numberOfMonths.Clean
+                    && _optionalIndicator2015.Clean
+                    && _otherAmountPaid2015.Clean
+                    && _otherPAC2015.Clean
+                    && _otherPOC2015.Clean
+                    && _paidByType.Clean
+                    && _paidToName.Clean
+                    && _pocPtcIndicator.Clean
+                    && _propertyIndicator2015.Clean
+                    && _ptbType.Clean
+                    && _rate.Clean
+                    && _retainedAmount2015.Clean
+                    && _sec32PointsAndFees2015.Clean
+                    && _sellerAmountPaid2015.Clean
+                    && _sellerCreditIndicator2015.Clean
+                    && _sellerObligatedAmount2015.Clean
+                    && _sellerObligatedIndicator2015.Clean
+                    && _sellerPAC2015.Clean
+                    && _sellerPOC2015.Clean
+                    && _selPaidAmount.Clean
+                    && _simultaneousIssuanceIndicator2015.Clean
+                    && _taxesIndicator2015.Clean
+                    && _titleServiceSelectIndicator.Clean
+                    && _totalFeeAmount2015.Clean
+                    && _totalFeePercentage2015.Clean
+                    && _totalPaidByBLO2015.Clean
+                    && _undiscountedInsurance2015.Clean
+                    && _wholePoc.Clean
+                    && _wholePocPaidByType.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = AdditionalAmount; v0.Clean = value; AdditionalAmount = v0;
-                var v1 = Amount; v1.Clean = value; Amount = v1;
-                var v2 = AprIndicator; v2.Clean = value; AprIndicator = v2;
-                var v3 = BorPaidAmount; v3.Clean = value; BorPaidAmount = v3;
-                var v4 = BorrowerAmountPaid2015; v4.Clean = value; BorrowerAmountPaid2015 = v4;
-                var v5 = BorrowerCanShopForIndicator2015; v5.Clean = value; BorrowerCanShopForIndicator2015 = v5;
-                var v6 = BorrowerDidShopForIndicator2015; v6.Clean = value; BorrowerDidShopForIndicator2015 = v6;
-                var v7 = BorrowerFinanced2015; v7.Clean = value; BorrowerFinanced2015 = v7;
-                var v8 = BorrowerPAC2015; v8.Clean = value; BorrowerPAC2015 = v8;
-                var v9 = BorrowerPOC2015; v9.Clean = value; BorrowerPOC2015 = v9;
-                var v10 = BorrowerPTC2015; v10.Clean = value; BorrowerPTC2015 = v10;
-                var v11 = BorrowerSelectIndicator; v11.Clean = value; BorrowerSelectIndicator = v11;
-                var v12 = BrokerAmountPaid2015; v12.Clean = value; BrokerAmountPaid2015 = v12;
-                var v13 = BrokerPAC2015; v13.Clean = value; BrokerPAC2015 = v13;
-                var v14 = BrokerPOC2015; v14.Clean = value; BrokerPOC2015 = v14;
-                var v15 = Description; v15.Clean = value; Description = v15;
-                var v16 = EscrowedIndicator2015; v16.Clean = value; EscrowedIndicator2015 = v16;
-                var v17 = FinancedIndicator; v17.Clean = value; FinancedIndicator = v17;
-                var v18 = Gfe2010FeeIndex; v18.Clean = value; Gfe2010FeeIndex = v18;
-                var v19 = Gfe2010FeeParentType; v19.Clean = value; Gfe2010FeeParentType = v19;
-                var v20 = Gfe2010FeeType; v20.Clean = value; Gfe2010FeeType = v20;
-                var v21 = GfeAmount; v21.Clean = value; GfeAmount = v21;
-                var v22 = Id; v22.Clean = value; Id = v22;
-                var v23 = InsuranceIndicator2015; v23.Clean = value; InsuranceIndicator2015 = v23;
-                var v24 = LastDisclosedClosingDisclosure2015; v24.Clean = value; LastDisclosedClosingDisclosure2015 = v24;
-                var v25 = LastDisclosedLoanEstimate2015; v25.Clean = value; LastDisclosedLoanEstimate2015 = v25;
-                var v26 = LenderAmountPaid2015; v26.Clean = value; LenderAmountPaid2015 = v26;
-                var v27 = LenderPAC2015; v27.Clean = value; LenderPAC2015 = v27;
-                var v28 = LenderPOC2015; v28.Clean = value; LenderPOC2015 = v28;
-                var v29 = MonthlyPayment; v29.Clean = value; MonthlyPayment = v29;
-                var v30 = NumberOfMonths; v30.Clean = value; NumberOfMonths = v30;
-                var v31 = OptionalIndicator2015; v31.Clean = value; OptionalIndicator2015 = v31;
-                var v32 = OtherAmountPaid2015; v32.Clean = value; OtherAmountPaid2015 = v32;
-                var v33 = OtherPAC2015; v33.Clean = value; OtherPAC2015 = v33;
-                var v34 = OtherPOC2015; v34.Clean = value; OtherPOC2015 = v34;
-                var v35 = PaidByType; v35.Clean = value; PaidByType = v35;
-                var v36 = PaidToName; v36.Clean = value; PaidToName = v36;
-                var v37 = PocPtcIndicator; v37.Clean = value; PocPtcIndicator = v37;
-                var v38 = PropertyIndicator2015; v38.Clean = value; PropertyIndicator2015 = v38;
-                var v39 = PtbType; v39.Clean = value; PtbType = v39;
-                var v40 = Rate; v40.Clean = value; Rate = v40;
-                var v41 = RetainedAmount2015; v41.Clean = value; RetainedAmount2015 = v41;
-                var v42 = Sec32PointsAndFees2015; v42.Clean = value; Sec32PointsAndFees2015 = v42;
-                var v43 = SellerAmountPaid2015; v43.Clean = value; SellerAmountPaid2015 = v43;
-                var v44 = SellerCreditIndicator2015; v44.Clean = value; SellerCreditIndicator2015 = v44;
-                var v45 = SellerObligatedAmount2015; v45.Clean = value; SellerObligatedAmount2015 = v45;
-                var v46 = SellerObligatedIndicator2015; v46.Clean = value; SellerObligatedIndicator2015 = v46;
-                var v47 = SellerPAC2015; v47.Clean = value; SellerPAC2015 = v47;
-                var v48 = SellerPOC2015; v48.Clean = value; SellerPOC2015 = v48;
-                var v49 = SelPaidAmount; v49.Clean = value; SelPaidAmount = v49;
-                var v50 = SimultaneousIssuanceIndicator2015; v50.Clean = value; SimultaneousIssuanceIndicator2015 = v50;
-                var v51 = TaxesIndicator2015; v51.Clean = value; TaxesIndicator2015 = v51;
-                var v52 = TitleServiceSelectIndicator; v52.Clean = value; TitleServiceSelectIndicator = v52;
-                var v53 = TotalFeeAmount2015; v53.Clean = value; TotalFeeAmount2015 = v53;
-                var v54 = TotalFeePercentage2015; v54.Clean = value; TotalFeePercentage2015 = v54;
-                var v55 = TotalPaidByBLO2015; v55.Clean = value; TotalPaidByBLO2015 = v55;
-                var v56 = UndiscountedInsurance2015; v56.Clean = value; UndiscountedInsurance2015 = v56;
-                var v57 = WholePoc; v57.Clean = value; WholePoc = v57;
-                var v58 = WholePocPaidByType; v58.Clean = value; WholePocPaidByType = v58;
+                var v0 = _additionalAmount; v0.Clean = value; _additionalAmount = v0;
+                var v1 = _amount; v1.Clean = value; _amount = v1;
+                var v2 = _aprIndicator; v2.Clean = value; _aprIndicator = v2;
+                var v3 = _borPaidAmount; v3.Clean = value; _borPaidAmount = v3;
+                var v4 = _borrowerAmountPaid2015; v4.Clean = value; _borrowerAmountPaid2015 = v4;
+                var v5 = _borrowerCanShopForIndicator2015; v5.Clean = value; _borrowerCanShopForIndicator2015 = v5;
+                var v6 = _borrowerDidShopForIndicator2015; v6.Clean = value; _borrowerDidShopForIndicator2015 = v6;
+                var v7 = _borrowerFinanced2015; v7.Clean = value; _borrowerFinanced2015 = v7;
+                var v8 = _borrowerPAC2015; v8.Clean = value; _borrowerPAC2015 = v8;
+                var v9 = _borrowerPOC2015; v9.Clean = value; _borrowerPOC2015 = v9;
+                var v10 = _borrowerPTC2015; v10.Clean = value; _borrowerPTC2015 = v10;
+                var v11 = _borrowerSelectIndicator; v11.Clean = value; _borrowerSelectIndicator = v11;
+                var v12 = _brokerAmountPaid2015; v12.Clean = value; _brokerAmountPaid2015 = v12;
+                var v13 = _brokerPAC2015; v13.Clean = value; _brokerPAC2015 = v13;
+                var v14 = _brokerPOC2015; v14.Clean = value; _brokerPOC2015 = v14;
+                var v15 = _description; v15.Clean = value; _description = v15;
+                var v16 = _escrowedIndicator2015; v16.Clean = value; _escrowedIndicator2015 = v16;
+                var v17 = _financedIndicator; v17.Clean = value; _financedIndicator = v17;
+                var v18 = _gfe2010FeeIndex; v18.Clean = value; _gfe2010FeeIndex = v18;
+                var v19 = _gfe2010FeeParentType; v19.Clean = value; _gfe2010FeeParentType = v19;
+                var v20 = _gfe2010FeeType; v20.Clean = value; _gfe2010FeeType = v20;
+                var v21 = _gfeAmount; v21.Clean = value; _gfeAmount = v21;
+                var v22 = _id; v22.Clean = value; _id = v22;
+                var v23 = _insuranceIndicator2015; v23.Clean = value; _insuranceIndicator2015 = v23;
+                var v24 = _lastDisclosedClosingDisclosure2015; v24.Clean = value; _lastDisclosedClosingDisclosure2015 = v24;
+                var v25 = _lastDisclosedLoanEstimate2015; v25.Clean = value; _lastDisclosedLoanEstimate2015 = v25;
+                var v26 = _lenderAmountPaid2015; v26.Clean = value; _lenderAmountPaid2015 = v26;
+                var v27 = _lenderPAC2015; v27.Clean = value; _lenderPAC2015 = v27;
+                var v28 = _lenderPOC2015; v28.Clean = value; _lenderPOC2015 = v28;
+                var v29 = _monthlyPayment; v29.Clean = value; _monthlyPayment = v29;
+                var v30 = _numberOfMonths; v30.Clean = value; _numberOfMonths = v30;
+                var v31 = _optionalIndicator2015; v31.Clean = value; _optionalIndicator2015 = v31;
+                var v32 = _otherAmountPaid2015; v32.Clean = value; _otherAmountPaid2015 = v32;
+                var v33 = _otherPAC2015; v33.Clean = value; _otherPAC2015 = v33;
+                var v34 = _otherPOC2015; v34.Clean = value; _otherPOC2015 = v34;
+                var v35 = _paidByType; v35.Clean = value; _paidByType = v35;
+                var v36 = _paidToName; v36.Clean = value; _paidToName = v36;
+                var v37 = _pocPtcIndicator; v37.Clean = value; _pocPtcIndicator = v37;
+                var v38 = _propertyIndicator2015; v38.Clean = value; _propertyIndicator2015 = v38;
+                var v39 = _ptbType; v39.Clean = value; _ptbType = v39;
+                var v40 = _rate; v40.Clean = value; _rate = v40;
+                var v41 = _retainedAmount2015; v41.Clean = value; _retainedAmount2015 = v41;
+                var v42 = _sec32PointsAndFees2015; v42.Clean = value; _sec32PointsAndFees2015 = v42;
+                var v43 = _sellerAmountPaid2015; v43.Clean = value; _sellerAmountPaid2015 = v43;
+                var v44 = _sellerCreditIndicator2015; v44.Clean = value; _sellerCreditIndicator2015 = v44;
+                var v45 = _sellerObligatedAmount2015; v45.Clean = value; _sellerObligatedAmount2015 = v45;
+                var v46 = _sellerObligatedIndicator2015; v46.Clean = value; _sellerObligatedIndicator2015 = v46;
+                var v47 = _sellerPAC2015; v47.Clean = value; _sellerPAC2015 = v47;
+                var v48 = _sellerPOC2015; v48.Clean = value; _sellerPOC2015 = v48;
+                var v49 = _selPaidAmount; v49.Clean = value; _selPaidAmount = v49;
+                var v50 = _simultaneousIssuanceIndicator2015; v50.Clean = value; _simultaneousIssuanceIndicator2015 = v50;
+                var v51 = _taxesIndicator2015; v51.Clean = value; _taxesIndicator2015 = v51;
+                var v52 = _titleServiceSelectIndicator; v52.Clean = value; _titleServiceSelectIndicator = v52;
+                var v53 = _totalFeeAmount2015; v53.Clean = value; _totalFeeAmount2015 = v53;
+                var v54 = _totalFeePercentage2015; v54.Clean = value; _totalFeePercentage2015 = v54;
+                var v55 = _totalPaidByBLO2015; v55.Clean = value; _totalPaidByBLO2015 = v55;
+                var v56 = _undiscountedInsurance2015; v56.Clean = value; _undiscountedInsurance2015 = v56;
+                var v57 = _wholePoc; v57.Clean = value; _wholePoc = v57;
+                var v58 = _wholePocPaidByType; v58.Clean = value; _wholePocPaidByType = v58;
                 _settingClean = 0;
             }
         }

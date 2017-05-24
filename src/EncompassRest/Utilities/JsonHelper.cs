@@ -12,7 +12,6 @@ namespace EncompassRest.Utilities
     {
         private static JsonSerializerSettings DefaultSettings { get; } = new JsonSerializerSettings
         {
-            NullValueHandling = NullValueHandling.Ignore,
             Formatting = Formatting.None,
             ContractResolver = new DefaultContractResolver
             {

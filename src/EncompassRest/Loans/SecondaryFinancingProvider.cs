@@ -7,36 +7,46 @@ namespace EncompassRest.Loans
 {
     public sealed partial class SecondaryFinancingProvider
     {
-        public Value<decimal?> FinancingAmount { get; set; }
+        private Value<decimal?> _financingAmount;
+        public decimal? FinancingAmount { get { return _financingAmount; } set { _financingAmount = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFinancingAmount() => !FinancingAmount.Clean;
-        public Value<string> Id { get; set; }
+        public bool ShouldSerializeFinancingAmount() => !_financingAmount.Clean;
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !Id.Clean;
-        public Value<string> SecondaryFinancingProviderType { get; set; }
+        public bool ShouldSerializeId() => !_id.Clean;
+        private Value<string> _secondaryFinancingProviderType;
+        public string SecondaryFinancingProviderType { get { return _secondaryFinancingProviderType; } set { _secondaryFinancingProviderType = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecondaryFinancingProviderType() => !SecondaryFinancingProviderType.Clean;
-        public Value<bool?> SellerFundedDapIndicator { get; set; }
+        public bool ShouldSerializeSecondaryFinancingProviderType() => !_secondaryFinancingProviderType.Clean;
+        private Value<bool?> _sellerFundedDapIndicator;
+        public bool? SellerFundedDapIndicator { get { return _sellerFundedDapIndicator; } set { _sellerFundedDapIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerFundedDapIndicator() => !SellerFundedDapIndicator.Clean;
-        public Value<string> Source { get; set; }
+        public bool ShouldSerializeSellerFundedDapIndicator() => !_sellerFundedDapIndicator.Clean;
+        private Value<string> _source;
+        public string Source { get { return _source; } set { _source = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSource() => !Source.Clean;
-        public Value<bool?> SourceFromFamilyIndicator { get; set; }
+        public bool ShouldSerializeSource() => !_source.Clean;
+        private Value<bool?> _sourceFromFamilyIndicator;
+        public bool? SourceFromFamilyIndicator { get { return _sourceFromFamilyIndicator; } set { _sourceFromFamilyIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromFamilyIndicator() => !SourceFromFamilyIndicator.Clean;
-        public Value<bool?> SourceFromGovernmentIndicator { get; set; }
+        public bool ShouldSerializeSourceFromFamilyIndicator() => !_sourceFromFamilyIndicator.Clean;
+        private Value<bool?> _sourceFromGovernmentIndicator;
+        public bool? SourceFromGovernmentIndicator { get { return _sourceFromGovernmentIndicator; } set { _sourceFromGovernmentIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromGovernmentIndicator() => !SourceFromGovernmentIndicator.Clean;
-        public Value<bool?> SourceFromNPIndicator { get; set; }
+        public bool ShouldSerializeSourceFromGovernmentIndicator() => !_sourceFromGovernmentIndicator.Clean;
+        private Value<bool?> _sourceFromNPIndicator;
+        public bool? SourceFromNPIndicator { get { return _sourceFromNPIndicator; } set { _sourceFromNPIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromNPIndicator() => !SourceFromNPIndicator.Clean;
-        public Value<bool?> SourceFromOtherIndicator { get; set; }
+        public bool ShouldSerializeSourceFromNPIndicator() => !_sourceFromNPIndicator.Clean;
+        private Value<bool?> _sourceFromOtherIndicator;
+        public bool? SourceFromOtherIndicator { get { return _sourceFromOtherIndicator; } set { _sourceFromOtherIndicator = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromOtherIndicator() => !SourceFromOtherIndicator.Clean;
-        public Value<string> SourceOtherDetail { get; set; }
+        public bool ShouldSerializeSourceFromOtherIndicator() => !_sourceFromOtherIndicator.Clean;
+        private Value<string> _sourceOtherDetail;
+        public string SourceOtherDetail { get { return _sourceOtherDetail; } set { _sourceOtherDetail = value; } }
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceOtherDetail() => !SourceOtherDetail.Clean;
+        public bool ShouldSerializeSourceOtherDetail() => !_sourceOtherDetail.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -44,32 +54,32 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = FinancingAmount.Clean
-                    && Id.Clean
-                    && SecondaryFinancingProviderType.Clean
-                    && SellerFundedDapIndicator.Clean
-                    && Source.Clean
-                    && SourceFromFamilyIndicator.Clean
-                    && SourceFromGovernmentIndicator.Clean
-                    && SourceFromNPIndicator.Clean
-                    && SourceFromOtherIndicator.Clean
-                    && SourceOtherDetail.Clean;
+                var clean = _financingAmount.Clean
+                    && _id.Clean
+                    && _secondaryFinancingProviderType.Clean
+                    && _sellerFundedDapIndicator.Clean
+                    && _source.Clean
+                    && _sourceFromFamilyIndicator.Clean
+                    && _sourceFromGovernmentIndicator.Clean
+                    && _sourceFromNPIndicator.Clean
+                    && _sourceFromOtherIndicator.Clean
+                    && _sourceOtherDetail.Clean;
                 _gettingClean = 0;
                 return clean;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = FinancingAmount; v0.Clean = value; FinancingAmount = v0;
-                var v1 = Id; v1.Clean = value; Id = v1;
-                var v2 = SecondaryFinancingProviderType; v2.Clean = value; SecondaryFinancingProviderType = v2;
-                var v3 = SellerFundedDapIndicator; v3.Clean = value; SellerFundedDapIndicator = v3;
-                var v4 = Source; v4.Clean = value; Source = v4;
-                var v5 = SourceFromFamilyIndicator; v5.Clean = value; SourceFromFamilyIndicator = v5;
-                var v6 = SourceFromGovernmentIndicator; v6.Clean = value; SourceFromGovernmentIndicator = v6;
-                var v7 = SourceFromNPIndicator; v7.Clean = value; SourceFromNPIndicator = v7;
-                var v8 = SourceFromOtherIndicator; v8.Clean = value; SourceFromOtherIndicator = v8;
-                var v9 = SourceOtherDetail; v9.Clean = value; SourceOtherDetail = v9;
+                var v0 = _financingAmount; v0.Clean = value; _financingAmount = v0;
+                var v1 = _id; v1.Clean = value; _id = v1;
+                var v2 = _secondaryFinancingProviderType; v2.Clean = value; _secondaryFinancingProviderType = v2;
+                var v3 = _sellerFundedDapIndicator; v3.Clean = value; _sellerFundedDapIndicator = v3;
+                var v4 = _source; v4.Clean = value; _source = v4;
+                var v5 = _sourceFromFamilyIndicator; v5.Clean = value; _sourceFromFamilyIndicator = v5;
+                var v6 = _sourceFromGovernmentIndicator; v6.Clean = value; _sourceFromGovernmentIndicator = v6;
+                var v7 = _sourceFromNPIndicator; v7.Clean = value; _sourceFromNPIndicator = v7;
+                var v8 = _sourceFromOtherIndicator; v8.Clean = value; _sourceFromOtherIndicator = v8;
+                var v9 = _sourceOtherDetail; v9.Clean = value; _sourceOtherDetail = v9;
                 _settingClean = 0;
             }
         }
