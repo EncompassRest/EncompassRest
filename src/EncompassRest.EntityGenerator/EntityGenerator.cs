@@ -74,32 +74,77 @@ namespace EncompassRest
             sb.Append(
 $@"using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading;
 
 namespace {@namespace}
 {{
     public sealed partial class {entityType}
     {{
 ");
+
+            var properties = new List<(string Name, bool IsEntity, string Type)>();
+
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
-                var fieldSchema = pair.Value;
-                var fieldType = GetFieldType(fieldSchema);
-                sb.AppendLine($"        public {(fieldSchema.Nullable != false ? $"JsonNullable<{fieldType}>" : fieldType)} {pair.Key} {{ get; set; }}");
+                var propertyName = pair.Key;
+                var propertySchema = pair.Value;
+                var propertyType = GetPropertyType(propertySchema, out var isEntity);
+                if (!isEntity)
+                {
+                    propertyType = $"Value<{propertyType}>";
+                }
+                properties.Add((propertyName, isEntity, propertyType));
+                sb.AppendLine($"        public {propertyType} {propertyName} {{ get; set; }}")
+                  .AppendLine("        [EditorBrowsable(EditorBrowsableState.Never)]")
+                  .AppendLine($"        public bool ShouldSerialize{propertyName}() => {(isEntity ? $"{propertyName}?.Clean == false" : $"!{propertyName}.Clean")};"); // Should be private but is not yet supported in Json.NET
             }
 
+            // Sorts non entity types first
+            properties = properties.OrderBy(property => property.IsEntity).ToList();
+
+            // Must ensure no circular cleaning
             sb.Append(
-@"    }
-}");
+$@"        private int _gettingClean;
+        private int _settingClean; 
+        internal bool Clean
+        {{
+            get
+            {{
+                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
+                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.Name}.Clean"))};
+                _gettingClean = 0;
+                return clean;
+            }}
+            set
+            {{
+                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
+                {string.Join($"{Environment.NewLine}                ", properties.Select((property, index) =>
+                    {
+                        var propertyName = property.Name;
+                        if (property.IsEntity)
+                        {
+                            return $"if ({propertyName} != null) {propertyName}.Clean = value;";
+                        }
+                        var variableName = $"v{index}";
+                        return $"var {variableName} = {propertyName}; {variableName}.Clean = value; {propertyName} = {variableName};";
+                    }))}
+                _settingClean = 0;
+            }}
+        }}
+    }}
+}}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))
             {
                 await sw.WriteAsync(sb.ToString()).ConfigureAwait(false);
             }
         }
 
-        private static string GetFieldType(FieldSchema fieldSchema)
+        private static string GetPropertyType(PropertySchema propertySchema, out bool isEntity)
         {
-            var fieldType = fieldSchema.Type;
-            switch (fieldType)
+            isEntity = false;
+            var propertyType = propertySchema.Type;
+            switch (propertyType)
             {
                 case "string":
                 case "uuid":
@@ -109,17 +154,18 @@ namespace {@namespace}
                     return "decimal?";
                 case "bool":
                 case "int":
-                    return $"{fieldType}?";
+                    return $"{propertyType}?";
                 case "date":
                 case "datetime":
                     return "DateTime?";
                 case "set":
                 case "list":
-                    return $"List<{fieldSchema.ElementType}>";
+                    return $"List<{propertySchema.ElementType}>";
                 case "entity":
-                    return fieldSchema.EntityType;
+                    isEntity = true;
+                    return propertySchema.EntityType;
                 default:
-                    return $"PROBLEM<{fieldType}>";
+                    return $"PROBLEM<{propertyType}>";
             }
         }
     }

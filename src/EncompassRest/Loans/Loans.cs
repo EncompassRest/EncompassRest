@@ -64,6 +64,7 @@ namespace EncompassRest.Loans
                 var loan = new Loan(Client, loanId);
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 JsonHelper.PopulateFromJson(json, loan);
+                loan.Clean = true;
                 return loan;
             }
         }
@@ -93,6 +94,7 @@ namespace EncompassRest.Loans
                     throw await RestException.CreateAsync(nameof(CreateLoanAsync), response).ConfigureAwait(false);
                 }
 
+                loan.Clean = true;
                 return Path.GetFileName(response.Headers.Location.OriginalString);
             }
         }
@@ -107,6 +109,7 @@ namespace EncompassRest.Loans
                 {
                     throw response.StatusCode == HttpStatusCode.Conflict ? await LoanLockedException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false);
                 }
+                loan.Clean = true;
             }
         }
 

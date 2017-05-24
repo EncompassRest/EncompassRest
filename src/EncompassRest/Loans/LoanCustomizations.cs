@@ -18,6 +18,7 @@ namespace EncompassRest.Loans
 
         public Loan()
         {
+            Clean = true;
         }
 
         internal Loan(EncompassRestClient client, string loanId)

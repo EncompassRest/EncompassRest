@@ -4,6 +4,6 @@ namespace EncompassRest.Schema
 {
     public sealed class EntitySchema
     {
-        public Dictionary<string, FieldSchema> Properties { get; set; }
+        public Dictionary<string, PropertySchema> Properties { get; set; }
     }
 }
