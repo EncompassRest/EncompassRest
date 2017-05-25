@@ -5,20 +5,14 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StatusOnlineEvent
+    public sealed partial class StatusOnlineEvent : IClean
     {
         private Value<string> _dateText;
         public string DateText { get { return _dateText; } set { _dateText = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateText() => !_dateText.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -41,5 +35,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

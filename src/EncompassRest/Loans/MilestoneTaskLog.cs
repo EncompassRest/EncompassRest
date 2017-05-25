@@ -5,136 +5,72 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTaskLog
+    public sealed partial class MilestoneTaskLog : IClean
     {
         private Value<DateTime?> _addDate;
         public DateTime? AddDate { get { return _addDate; } set { _addDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddDate() => !_addDate.Clean;
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedBy() => !_addedBy.Clean;
         private Value<string> _addedByUserId;
         public string AddedByUserId { get { return _addedByUserId; } set { _addedByUserId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedByUserId() => !_addedByUserId.Clean;
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !_alerts.Clean;
         private Value<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlertsXml() => !_alertsXml.Clean;
         private Value<List<LogComment>> _commentList;
         public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !_commentList.Clean;
         private Value<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentListXml() => !_commentListXml.Clean;
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !_comments.Clean;
         private Value<bool?> _completed;
         public bool? Completed { get { return _completed; } set { _completed = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompleted() => !_completed.Clean;
         private Value<string> _completedBy;
         public string CompletedBy { get { return _completedBy; } set { _completedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletedBy() => !_completedBy.Clean;
         private Value<string> _completedByUserId;
         public string CompletedByUserId { get { return _completedByUserId; } set { _completedByUserId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletedByUserId() => !_completedByUserId.Clean;
         private Value<DateTime?> _completedDateUtc;
         public DateTime? CompletedDateUtc { get { return _completedDateUtc; } set { _completedDateUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletedDateUtc() => !_completedDateUtc.Clean;
         private Value<int?> _contactCount;
         public int? ContactCount { get { return _contactCount; } set { _contactCount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactCount() => !_contactCount.Clean;
         private Value<List<MilestoneTaskContact>> _contacts;
         public List<MilestoneTaskContact> Contacts { get { return _contacts; } set { _contacts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContacts() => !_contacts.Clean;
         private Value<string> _contactsXml;
         public string ContactsXml { get { return _contactsXml; } set { _contactsXml = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactsXml() => !_contactsXml.Clean;
         private Value<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
         private Value<int?> _daysToComplete;
         public int? DaysToComplete { get { return _daysToComplete; } set { _daysToComplete = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDaysToComplete() => !_daysToComplete.Clean;
         private Value<int?> _daysToCompleteFromSetting;
         public int? DaysToCompleteFromSetting { get { return _daysToCompleteFromSetting; } set { _daysToCompleteFromSetting = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDaysToCompleteFromSetting() => !_daysToCompleteFromSetting.Clean;
         private Value<DateTime?> _expectedDate;
         public DateTime? ExpectedDate { get { return _expectedDate; } set { _expectedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpectedDate() => !_expectedDate.Clean;
         private Value<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
         private Value<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !_guid.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isRequiredIndicator;
         public bool? IsRequiredIndicator { get { return _isRequiredIndicator; } set { _isRequiredIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsRequiredIndicator() => !_isRequiredIndicator.Clean;
         private Value<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
         private Value<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
         private Value<DateTime?> _milestoneTaskLogDateUtc;
         public DateTime? MilestoneTaskLogDateUtc { get { return _milestoneTaskLogDateUtc; } set { _milestoneTaskLogDateUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneTaskLogDateUtc() => !_milestoneTaskLogDateUtc.Clean;
         private Value<string> _priority;
         public string Priority { get { return _priority; } set { _priority = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriority() => !_priority.Clean;
         private Value<string> _stage;
         public string Stage { get { return _stage; } set { _stage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStage() => !_stage.Clean;
         private Value<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !_systemId.Clean;
         private Value<string> _taskDescription;
         public string TaskDescription { get { return _taskDescription; } set { _taskDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaskDescription() => !_taskDescription.Clean;
         private Value<string> _taskGuid;
         public string TaskGuid { get { return _taskGuid; } set { _taskGuid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaskGuid() => !_taskGuid.Clean;
         private Value<string> _taskName;
         public string TaskName { get { return _taskName; } set { _taskName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaskName() => !_taskName.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -215,5 +151,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

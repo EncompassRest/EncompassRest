@@ -5,20 +5,14 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DisclosureForm
+    public sealed partial class DisclosureForm : IClean
     {
         private Value<string> _formName;
         public string FormName { get { return _formName; } set { _formName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormName() => !_formName.Clean;
         private Value<string> _formType;
         public string FormType { get { return _formType; } set { _formType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormType() => !_formType.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -41,5 +35,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

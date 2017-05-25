@@ -79,7 +79,7 @@ using System.Threading;
 
 namespace {@namespace}
 {{
-    public sealed partial class {entityType}
+    public sealed partial class {entityType} : IClean
     {{
 ");
 
@@ -97,10 +97,8 @@ namespace {@namespace}
                     sb.AppendLine($"        private Value<{propertyType}> {fieldName};");
                 }
                 properties.Add((propertyName, fieldName, isEntity));
-                
-                sb.AppendLine($"        public {propertyType} {propertyName} {(isEntity ? "{ get; set; }" : $"{{ get {{ return {fieldName}; }} set {{ {fieldName} = value; }} }}")}")
-                  .AppendLine("        [EditorBrowsable(EditorBrowsableState.Never)]")
-                  .AppendLine($"        public bool ShouldSerialize{propertyName}() => {(isEntity ? $"{fieldName}?.Clean == false" : $"!{fieldName}.Clean")};"); // Should be private but is not yet supported in Json.NET
+
+                sb.AppendLine($"        public {propertyType} {propertyName} {(isEntity ? "{ get; set; }" : $"{{ get {{ return {fieldName}; }} set {{ {fieldName} = value; }} }}")}");
             }
 
             // Sorts non entity types first
@@ -135,6 +133,7 @@ $@"        private int _gettingClean;
                 _settingClean = 0;
             }}
         }}
+        bool IClean.Clean {{ get {{ return Clean; }} set {{ Clean = value; }} }}
     }}
 }}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))

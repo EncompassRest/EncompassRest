@@ -5,168 +5,88 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Employment
+    public sealed partial class Employment : IClean
     {
         private Value<string> _addressCity;
         public string AddressCity { get { return _addressCity; } set { _addressCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressCity() => !_addressCity.Clean;
         private Value<string> _addressPostalCode;
         public string AddressPostalCode { get { return _addressPostalCode; } set { _addressPostalCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressPostalCode() => !_addressPostalCode.Clean;
         private Value<string> _addressState;
         public string AddressState { get { return _addressState; } set { _addressState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressState() => !_addressState.Clean;
         private Value<string> _addressStreetLine1;
         public string AddressStreetLine1 { get { return _addressStreetLine1; } set { _addressStreetLine1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressStreetLine1() => !_addressStreetLine1.Clean;
         private Value<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAltId() => !_altId.Clean;
         private Value<string> _attention;
         public string Attention { get { return _attention; } set { _attention = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAttention() => !_attention.Clean;
         private Value<string> _badgeOrEmployeeID;
         public string BadgeOrEmployeeID { get { return _badgeOrEmployeeID; } set { _badgeOrEmployeeID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBadgeOrEmployeeID() => !_badgeOrEmployeeID.Clean;
         private Value<decimal?> _basePayAmount;
         public decimal? BasePayAmount { get { return _basePayAmount; } set { _basePayAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePayAmount() => !_basePayAmount.Clean;
         private Value<decimal?> _bonusAmount;
         public decimal? BonusAmount { get { return _bonusAmount; } set { _bonusAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBonusAmount() => !_bonusAmount.Clean;
         private Value<string> _businessName;
         public string BusinessName { get { return _businessName; } set { _businessName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessName() => !_businessName.Clean;
         private Value<decimal?> _businessOwnedPercent;
         public decimal? BusinessOwnedPercent { get { return _businessOwnedPercent; } set { _businessOwnedPercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessOwnedPercent() => !_businessOwnedPercent.Clean;
         private Value<string> _businessPhone;
         public string BusinessPhone { get { return _businessPhone; } set { _businessPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessPhone() => !_businessPhone.Clean;
         private Value<decimal?> _commissionsAmount;
         public decimal? CommissionsAmount { get { return _commissionsAmount; } set { _commissionsAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommissionsAmount() => !_commissionsAmount.Clean;
         private Value<bool?> _currentEmploymentIndicator;
         public bool? CurrentEmploymentIndicator { get { return _currentEmploymentIndicator; } set { _currentEmploymentIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentEmploymentIndicator() => !_currentEmploymentIndicator.Clean;
         private Value<string> _email;
         public string Email { get { return _email; } set { _email = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmail() => !_email.Clean;
         private Value<string> _employerComments;
         public string EmployerComments { get { return _employerComments; } set { _employerComments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmployerComments() => !_employerComments.Clean;
         private Value<string> _employerName;
         public string EmployerName { get { return _employerName; } set { _employerName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmployerName() => !_employerName.Clean;
         private Value<DateTime?> _endDate;
         public DateTime? EndDate { get { return _endDate; } set { _endDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEndDate() => !_endDate.Clean;
         private Value<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEntityDeleted() => !_entityDeleted.Clean;
         private Value<string> _fax;
         public string Fax { get { return _fax; } set { _fax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFax() => !_fax.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<int?> _monthlyIncomeAmount;
         public int? MonthlyIncomeAmount { get { return _monthlyIncomeAmount; } set { _monthlyIncomeAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyIncomeAmount() => !_monthlyIncomeAmount.Clean;
         private Value<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !_noLinkToDocTrackIndicator.Clean;
         private Value<decimal?> _otherAmount;
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAmount() => !_otherAmount.Clean;
         private Value<decimal?> _overtimeAmount;
         public decimal? OvertimeAmount { get { return _overtimeAmount; } set { _overtimeAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOvertimeAmount() => !_overtimeAmount.Clean;
         private Value<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOwner() => !_owner.Clean;
         private Value<string> _phoneNumber;
         public string PhoneNumber { get { return _phoneNumber; } set { _phoneNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhoneNumber() => !_phoneNumber.Clean;
         private Value<string> _positionDescription;
         public string PositionDescription { get { return _positionDescription; } set { _positionDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePositionDescription() => !_positionDescription.Clean;
         private Value<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintAttachmentIndicator() => !_printAttachmentIndicator.Clean;
         private Value<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintUserNameIndicator() => !_printUserNameIndicator.Clean;
         private Value<bool?> _selfEmployedIndicator;
         public bool? SelfEmployedIndicator { get { return _selfEmployedIndicator; } set { _selfEmployedIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSelfEmployedIndicator() => !_selfEmployedIndicator.Clean;
         private Value<DateTime?> _startDate;
         public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStartDate() => !_startDate.Clean;
         private Value<int?> _timeInLineOfWorkMonths;
         public int? TimeInLineOfWorkMonths { get { return _timeInLineOfWorkMonths; } set { _timeInLineOfWorkMonths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimeInLineOfWorkMonths() => !_timeInLineOfWorkMonths.Clean;
         private Value<int?> _timeInLineOfWorkYears;
         public int? TimeInLineOfWorkYears { get { return _timeInLineOfWorkYears; } set { _timeInLineOfWorkYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimeInLineOfWorkYears() => !_timeInLineOfWorkYears.Clean;
         private Value<int?> _timeOnJobTermMonths;
         public int? TimeOnJobTermMonths { get { return _timeOnJobTermMonths; } set { _timeOnJobTermMonths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimeOnJobTermMonths() => !_timeOnJobTermMonths.Clean;
         private Value<int?> _timeOnJobTermYears;
         public int? TimeOnJobTermYears { get { return _timeOnJobTermYears; } set { _timeOnJobTermYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTimeOnJobTermYears() => !_timeOnJobTermYears.Clean;
         private Value<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !_title.Clean;
         private Value<string> _titleFax;
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleFax() => !_titleFax.Clean;
         private Value<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitlePhone() => !_titlePhone.Clean;
         private Value<DateTime?> _verificationRequestDate;
         public DateTime? VerificationRequestDate { get { return _verificationRequestDate; } set { _verificationRequestDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVerificationRequestDate() => !_verificationRequestDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -263,5 +183,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,32 +5,20 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PriceAdjustment
+    public sealed partial class PriceAdjustment : IClean
     {
         private Value<string> _adjustmentType;
         public string AdjustmentType { get { return _adjustmentType; } set { _adjustmentType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentType() => !_adjustmentType.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _priceAdjustmentType;
         public string PriceAdjustmentType { get { return _priceAdjustmentType; } set { _priceAdjustmentType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriceAdjustmentType() => !_priceAdjustmentType.Clean;
         private Value<decimal?> _rate;
         public decimal? Rate { get { return _rate; } set { _rate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRate() => !_rate.Clean;
         private Value<string> _rateLockAdjustmentType;
         public string RateLockAdjustmentType { get { return _rateLockAdjustmentType; } set { _rateLockAdjustmentType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRateLockAdjustmentType() => !_rateLockAdjustmentType.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -59,5 +47,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

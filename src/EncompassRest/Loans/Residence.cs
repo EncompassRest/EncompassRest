@@ -5,140 +5,74 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Residence
+    public sealed partial class Residence : IClean
     {
         private Value<string> _accountName;
         public string AccountName { get { return _accountName; } set { _accountName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAccountName() => !_accountName.Clean;
         private Value<string> _addressCity;
         public string AddressCity { get { return _addressCity; } set { _addressCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressCity() => !_addressCity.Clean;
         private Value<string> _addressPostalCode;
         public string AddressPostalCode { get { return _addressPostalCode; } set { _addressPostalCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressPostalCode() => !_addressPostalCode.Clean;
         private Value<string> _addressState;
         public string AddressState { get { return _addressState; } set { _addressState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressState() => !_addressState.Clean;
         private Value<string> _addressStreetLine1;
         public string AddressStreetLine1 { get { return _addressStreetLine1; } set { _addressStreetLine1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddressStreetLine1() => !_addressStreetLine1.Clean;
         private Value<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAltId() => !_altId.Clean;
         private Value<string> _applicantType;
         public string ApplicantType { get { return _applicantType; } set { _applicantType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApplicantType() => !_applicantType.Clean;
         private Value<string> _county;
         public string County { get { return _county; } set { _county = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCounty() => !_county.Clean;
         private Value<int?> _durationTermMonths;
         public int? DurationTermMonths { get { return _durationTermMonths; } set { _durationTermMonths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDurationTermMonths() => !_durationTermMonths.Clean;
         private Value<int?> _durationTermYears;
         public int? DurationTermYears { get { return _durationTermYears; } set { _durationTermYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDurationTermYears() => !_durationTermYears.Clean;
         private Value<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEntityDeleted() => !_entityDeleted.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _landlordAttention;
         public string LandlordAttention { get { return _landlordAttention; } set { _landlordAttention = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordAttention() => !_landlordAttention.Clean;
         private Value<string> _landlordCity;
         public string LandlordCity { get { return _landlordCity; } set { _landlordCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordCity() => !_landlordCity.Clean;
         private Value<string> _landlordComments;
         public string LandlordComments { get { return _landlordComments; } set { _landlordComments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordComments() => !_landlordComments.Clean;
         private Value<string> _landlordEmail;
         public string LandlordEmail { get { return _landlordEmail; } set { _landlordEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordEmail() => !_landlordEmail.Clean;
         private Value<string> _landlordFax;
         public string LandlordFax { get { return _landlordFax; } set { _landlordFax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordFax() => !_landlordFax.Clean;
         private Value<string> _landlordName;
         public string LandlordName { get { return _landlordName; } set { _landlordName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordName() => !_landlordName.Clean;
         private Value<string> _landlordPhone;
         public string LandlordPhone { get { return _landlordPhone; } set { _landlordPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordPhone() => !_landlordPhone.Clean;
         private Value<string> _landlordPostalCode;
         public string LandlordPostalCode { get { return _landlordPostalCode; } set { _landlordPostalCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordPostalCode() => !_landlordPostalCode.Clean;
         private Value<string> _landlordState;
         public string LandlordState { get { return _landlordState; } set { _landlordState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordState() => !_landlordState.Clean;
         private Value<string> _landlordStreet;
         public string LandlordStreet { get { return _landlordStreet; } set { _landlordStreet = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLandlordStreet() => !_landlordStreet.Clean;
         private Value<bool?> _mailingAddressIndicator;
         public bool? MailingAddressIndicator { get { return _mailingAddressIndicator; } set { _mailingAddressIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMailingAddressIndicator() => !_mailingAddressIndicator.Clean;
         private Value<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoLinkToDocTrackIndicator() => !_noLinkToDocTrackIndicator.Clean;
         private Value<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintAttachmentIndicator() => !_printAttachmentIndicator.Clean;
         private Value<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrintUserNameIndicator() => !_printUserNameIndicator.Clean;
         private Value<int?> _rent;
         public int? Rent { get { return _rent; } set { _rent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRent() => !_rent.Clean;
         private Value<DateTime?> _requestDate;
         public DateTime? RequestDate { get { return _requestDate; } set { _requestDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestDate() => !_requestDate.Clean;
         private Value<string> _residencyBasisType;
         public string ResidencyBasisType { get { return _residencyBasisType; } set { _residencyBasisType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeResidencyBasisType() => !_residencyBasisType.Clean;
         private Value<string> _residencyType;
         public string ResidencyType { get { return _residencyType; } set { _residencyType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeResidencyType() => !_residencyType.Clean;
         private Value<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !_title.Clean;
         private Value<string> _titleFax;
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleFax() => !_titleFax.Clean;
         private Value<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitlePhone() => !_titlePhone.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -221,5 +155,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

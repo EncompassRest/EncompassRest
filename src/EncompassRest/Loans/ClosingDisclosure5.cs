@@ -5,264 +5,136 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure5
+    public sealed partial class ClosingDisclosure5 : IClean
     {
         private Value<string> _cDLiabilityAfterForeclosure;
         public string CDLiabilityAfterForeclosure { get { return _cDLiabilityAfterForeclosure; } set { _cDLiabilityAfterForeclosure = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCDLiabilityAfterForeclosure() => !_cDLiabilityAfterForeclosure.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _lenderAddress;
         public string LenderAddress { get { return _lenderAddress; } set { _lenderAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderAddress() => !_lenderAddress.Clean;
         private Value<string> _lenderCity;
         public string LenderCity { get { return _lenderCity; } set { _lenderCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderCity() => !_lenderCity.Clean;
         private Value<string> _lenderContact;
         public string LenderContact { get { return _lenderContact; } set { _lenderContact = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderContact() => !_lenderContact.Clean;
         private Value<string> _lenderContactATLicenseID;
         public string LenderContactATLicenseID { get { return _lenderContactATLicenseID; } set { _lenderContactATLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderContactATLicenseID() => !_lenderContactATLicenseID.Clean;
         private Value<string> _lenderContactNMLSID;
         public string LenderContactNMLSID { get { return _lenderContactNMLSID; } set { _lenderContactNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderContactNMLSID() => !_lenderContactNMLSID.Clean;
         private Value<string> _lenderEmail;
         public string LenderEmail { get { return _lenderEmail; } set { _lenderEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderEmail() => !_lenderEmail.Clean;
         private Value<string> _lenderName;
         public string LenderName { get { return _lenderName; } set { _lenderName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderName() => !_lenderName.Clean;
         private Value<string> _lenderNMLSID;
         public string LenderNMLSID { get { return _lenderNMLSID; } set { _lenderNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderNMLSID() => !_lenderNMLSID.Clean;
         private Value<string> _lenderPhone;
         public string LenderPhone { get { return _lenderPhone; } set { _lenderPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderPhone() => !_lenderPhone.Clean;
         private Value<string> _lenderState;
         public string LenderState { get { return _lenderState; } set { _lenderState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderState() => !_lenderState.Clean;
         private Value<string> _lenderSTLicenseID;
         public string LenderSTLicenseID { get { return _lenderSTLicenseID; } set { _lenderSTLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderSTLicenseID() => !_lenderSTLicenseID.Clean;
         private Value<string> _lenderZip;
         public string LenderZip { get { return _lenderZip; } set { _lenderZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLenderZip() => !_lenderZip.Clean;
         private Value<string> _mortgageBrokerAddress;
         public string MortgageBrokerAddress { get { return _mortgageBrokerAddress; } set { _mortgageBrokerAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerAddress() => !_mortgageBrokerAddress.Clean;
         private Value<string> _mortgageBrokerCity;
         public string MortgageBrokerCity { get { return _mortgageBrokerCity; } set { _mortgageBrokerCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerCity() => !_mortgageBrokerCity.Clean;
         private Value<string> _mortgageBrokerContact;
         public string MortgageBrokerContact { get { return _mortgageBrokerContact; } set { _mortgageBrokerContact = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerContact() => !_mortgageBrokerContact.Clean;
         private Value<string> _mortgageBrokerContactATLicenseID;
         public string MortgageBrokerContactATLicenseID { get { return _mortgageBrokerContactATLicenseID; } set { _mortgageBrokerContactATLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerContactATLicenseID() => !_mortgageBrokerContactATLicenseID.Clean;
         private Value<string> _mortgageBrokerContactNMLSID;
         public string MortgageBrokerContactNMLSID { get { return _mortgageBrokerContactNMLSID; } set { _mortgageBrokerContactNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerContactNMLSID() => !_mortgageBrokerContactNMLSID.Clean;
         private Value<string> _mortgageBrokerEmail;
         public string MortgageBrokerEmail { get { return _mortgageBrokerEmail; } set { _mortgageBrokerEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerEmail() => !_mortgageBrokerEmail.Clean;
         private Value<string> _mortgageBrokerName;
         public string MortgageBrokerName { get { return _mortgageBrokerName; } set { _mortgageBrokerName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerName() => !_mortgageBrokerName.Clean;
         private Value<string> _mortgageBrokerNMLSID;
         public string MortgageBrokerNMLSID { get { return _mortgageBrokerNMLSID; } set { _mortgageBrokerNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerNMLSID() => !_mortgageBrokerNMLSID.Clean;
         private Value<string> _mortgageBrokerPhone;
         public string MortgageBrokerPhone { get { return _mortgageBrokerPhone; } set { _mortgageBrokerPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerPhone() => !_mortgageBrokerPhone.Clean;
         private Value<string> _mortgageBrokerState;
         public string MortgageBrokerState { get { return _mortgageBrokerState; } set { _mortgageBrokerState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerState() => !_mortgageBrokerState.Clean;
         private Value<string> _mortgageBrokerSTLicenseID;
         public string MortgageBrokerSTLicenseID { get { return _mortgageBrokerSTLicenseID; } set { _mortgageBrokerSTLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerSTLicenseID() => !_mortgageBrokerSTLicenseID.Clean;
         private Value<string> _mortgageBrokerZip;
         public string MortgageBrokerZip { get { return _mortgageBrokerZip; } set { _mortgageBrokerZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageBrokerZip() => !_mortgageBrokerZip.Clean;
         private Value<string> _realEstateBrokerBAddress;
         public string RealEstateBrokerBAddress { get { return _realEstateBrokerBAddress; } set { _realEstateBrokerBAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBAddress() => !_realEstateBrokerBAddress.Clean;
         private Value<string> _realEstateBrokerBCity;
         public string RealEstateBrokerBCity { get { return _realEstateBrokerBCity; } set { _realEstateBrokerBCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBCity() => !_realEstateBrokerBCity.Clean;
         private Value<string> _realEstateBrokerBContact;
         public string RealEstateBrokerBContact { get { return _realEstateBrokerBContact; } set { _realEstateBrokerBContact = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBContact() => !_realEstateBrokerBContact.Clean;
         private Value<string> _realEstateBrokerBContactATLicenseID;
         public string RealEstateBrokerBContactATLicenseID { get { return _realEstateBrokerBContactATLicenseID; } set { _realEstateBrokerBContactATLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBContactATLicenseID() => !_realEstateBrokerBContactATLicenseID.Clean;
         private Value<string> _realEstateBrokerBContactNMLSID;
         public string RealEstateBrokerBContactNMLSID { get { return _realEstateBrokerBContactNMLSID; } set { _realEstateBrokerBContactNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBContactNMLSID() => !_realEstateBrokerBContactNMLSID.Clean;
         private Value<string> _realEstateBrokerBEmail;
         public string RealEstateBrokerBEmail { get { return _realEstateBrokerBEmail; } set { _realEstateBrokerBEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBEmail() => !_realEstateBrokerBEmail.Clean;
         private Value<string> _realEstateBrokerBName;
         public string RealEstateBrokerBName { get { return _realEstateBrokerBName; } set { _realEstateBrokerBName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBName() => !_realEstateBrokerBName.Clean;
         private Value<string> _realEstateBrokerBNMLSID;
         public string RealEstateBrokerBNMLSID { get { return _realEstateBrokerBNMLSID; } set { _realEstateBrokerBNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBNMLSID() => !_realEstateBrokerBNMLSID.Clean;
         private Value<string> _realEstateBrokerBPhone;
         public string RealEstateBrokerBPhone { get { return _realEstateBrokerBPhone; } set { _realEstateBrokerBPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBPhone() => !_realEstateBrokerBPhone.Clean;
         private Value<string> _realEstateBrokerBState;
         public string RealEstateBrokerBState { get { return _realEstateBrokerBState; } set { _realEstateBrokerBState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBState() => !_realEstateBrokerBState.Clean;
         private Value<string> _realEstateBrokerBSTLicenseID;
         public string RealEstateBrokerBSTLicenseID { get { return _realEstateBrokerBSTLicenseID; } set { _realEstateBrokerBSTLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBSTLicenseID() => !_realEstateBrokerBSTLicenseID.Clean;
         private Value<string> _realEstateBrokerBZip;
         public string RealEstateBrokerBZip { get { return _realEstateBrokerBZip; } set { _realEstateBrokerBZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerBZip() => !_realEstateBrokerBZip.Clean;
         private Value<string> _realEstateBrokerSAddress;
         public string RealEstateBrokerSAddress { get { return _realEstateBrokerSAddress; } set { _realEstateBrokerSAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSAddress() => !_realEstateBrokerSAddress.Clean;
         private Value<string> _realEstateBrokerSCity;
         public string RealEstateBrokerSCity { get { return _realEstateBrokerSCity; } set { _realEstateBrokerSCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSCity() => !_realEstateBrokerSCity.Clean;
         private Value<string> _realEstateBrokerSContact;
         public string RealEstateBrokerSContact { get { return _realEstateBrokerSContact; } set { _realEstateBrokerSContact = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSContact() => !_realEstateBrokerSContact.Clean;
         private Value<string> _realEstateBrokerSContactATLicenseID;
         public string RealEstateBrokerSContactATLicenseID { get { return _realEstateBrokerSContactATLicenseID; } set { _realEstateBrokerSContactATLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSContactATLicenseID() => !_realEstateBrokerSContactATLicenseID.Clean;
         private Value<string> _realEstateBrokerSContactNMLSID;
         public string RealEstateBrokerSContactNMLSID { get { return _realEstateBrokerSContactNMLSID; } set { _realEstateBrokerSContactNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSContactNMLSID() => !_realEstateBrokerSContactNMLSID.Clean;
         private Value<string> _realEstateBrokerSEmail;
         public string RealEstateBrokerSEmail { get { return _realEstateBrokerSEmail; } set { _realEstateBrokerSEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSEmail() => !_realEstateBrokerSEmail.Clean;
         private Value<string> _realEstateBrokerSName;
         public string RealEstateBrokerSName { get { return _realEstateBrokerSName; } set { _realEstateBrokerSName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSName() => !_realEstateBrokerSName.Clean;
         private Value<string> _realEstateBrokerSNMLSID;
         public string RealEstateBrokerSNMLSID { get { return _realEstateBrokerSNMLSID; } set { _realEstateBrokerSNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSNMLSID() => !_realEstateBrokerSNMLSID.Clean;
         private Value<string> _realEstateBrokerSPhone;
         public string RealEstateBrokerSPhone { get { return _realEstateBrokerSPhone; } set { _realEstateBrokerSPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSPhone() => !_realEstateBrokerSPhone.Clean;
         private Value<string> _realEstateBrokerSState;
         public string RealEstateBrokerSState { get { return _realEstateBrokerSState; } set { _realEstateBrokerSState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSState() => !_realEstateBrokerSState.Clean;
         private Value<string> _realEstateBrokerSSTLicenseID;
         public string RealEstateBrokerSSTLicenseID { get { return _realEstateBrokerSSTLicenseID; } set { _realEstateBrokerSSTLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSSTLicenseID() => !_realEstateBrokerSSTLicenseID.Clean;
         private Value<string> _realEstateBrokerSZip;
         public string RealEstateBrokerSZip { get { return _realEstateBrokerSZip; } set { _realEstateBrokerSZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealEstateBrokerSZip() => !_realEstateBrokerSZip.Clean;
         private Value<string> _settlementAgentAddress;
         public string SettlementAgentAddress { get { return _settlementAgentAddress; } set { _settlementAgentAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentAddress() => !_settlementAgentAddress.Clean;
         private Value<string> _settlementAgentCity;
         public string SettlementAgentCity { get { return _settlementAgentCity; } set { _settlementAgentCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentCity() => !_settlementAgentCity.Clean;
         private Value<string> _settlementAgentContact;
         public string SettlementAgentContact { get { return _settlementAgentContact; } set { _settlementAgentContact = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentContact() => !_settlementAgentContact.Clean;
         private Value<string> _settlementAgentContactATLicenseID;
         public string SettlementAgentContactATLicenseID { get { return _settlementAgentContactATLicenseID; } set { _settlementAgentContactATLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentContactATLicenseID() => !_settlementAgentContactATLicenseID.Clean;
         private Value<string> _settlementAgentContactNMLSID;
         public string SettlementAgentContactNMLSID { get { return _settlementAgentContactNMLSID; } set { _settlementAgentContactNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentContactNMLSID() => !_settlementAgentContactNMLSID.Clean;
         private Value<string> _settlementAgentEmail;
         public string SettlementAgentEmail { get { return _settlementAgentEmail; } set { _settlementAgentEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentEmail() => !_settlementAgentEmail.Clean;
         private Value<string> _settlementAgentName;
         public string SettlementAgentName { get { return _settlementAgentName; } set { _settlementAgentName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentName() => !_settlementAgentName.Clean;
         private Value<string> _settlementAgentNMLSID;
         public string SettlementAgentNMLSID { get { return _settlementAgentNMLSID; } set { _settlementAgentNMLSID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentNMLSID() => !_settlementAgentNMLSID.Clean;
         private Value<string> _settlementAgentPhone;
         public string SettlementAgentPhone { get { return _settlementAgentPhone; } set { _settlementAgentPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentPhone() => !_settlementAgentPhone.Clean;
         private Value<string> _settlementAgentState;
         public string SettlementAgentState { get { return _settlementAgentState; } set { _settlementAgentState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentState() => !_settlementAgentState.Clean;
         private Value<string> _settlementAgentSTLicenseID;
         public string SettlementAgentSTLicenseID { get { return _settlementAgentSTLicenseID; } set { _settlementAgentSTLicenseID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentSTLicenseID() => !_settlementAgentSTLicenseID.Clean;
         private Value<string> _settlementAgentZip;
         public string SettlementAgentZip { get { return _settlementAgentZip; } set { _settlementAgentZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSettlementAgentZip() => !_settlementAgentZip.Clean;
         private Value<string> _signatureType;
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignatureType() => !_signatureType.Clean;
         private Value<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPayments() => !_totalPayments.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -407,5 +279,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,32 +5,20 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010FwbcFwsc
+    public sealed partial class Gfe2010FwbcFwsc : IClean
     {
         private Value<string> _fwbc;
         public string Fwbc { get { return _fwbc; } set { _fwbc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFwbc() => !_fwbc.Clean;
         private Value<string> _fwsc;
         public string Fwsc { get { return _fwsc; } set { _fwsc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFwsc() => !_fwsc.Clean;
         private Value<int?> _gfe2010FwbcFwscIndex;
         public int? Gfe2010FwbcFwscIndex { get { return _gfe2010FwbcFwscIndex; } set { _gfe2010FwbcFwscIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010FwbcFwscIndex() => !_gfe2010FwbcFwscIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _lineLetter;
         public string LineLetter { get { return _lineLetter; } set { _lineLetter = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineLetter() => !_lineLetter.Clean;
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -59,5 +47,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

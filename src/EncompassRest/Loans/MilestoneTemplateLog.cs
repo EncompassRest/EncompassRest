@@ -5,32 +5,20 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTemplateLog
+    public sealed partial class MilestoneTemplateLog : IClean
     {
         private Value<int?> _elliLogRecordId;
         public int? ElliLogRecordId { get { return _elliLogRecordId; } set { _elliLogRecordId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeElliLogRecordId() => !_elliLogRecordId.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isTemplateDatesLocked;
         public bool? IsTemplateDatesLocked { get { return _isTemplateDatesLocked; } set { _isTemplateDatesLocked = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsTemplateDatesLocked() => !_isTemplateDatesLocked.Clean;
         private Value<bool?> _isTemplateLocked;
         public bool? IsTemplateLocked { get { return _isTemplateLocked; } set { _isTemplateLocked = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsTemplateLocked() => !_isTemplateLocked.Clean;
         private Value<string> _milestoneTemplateID;
         public string MilestoneTemplateID { get { return _milestoneTemplateID; } set { _milestoneTemplateID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneTemplateID() => !_milestoneTemplateID.Clean;
         private Value<string> _milestoneTemplateName;
         public string MilestoneTemplateName { get { return _milestoneTemplateName; } set { _milestoneTemplateName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilestoneTemplateName() => !_milestoneTemplateName.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -59,5 +47,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

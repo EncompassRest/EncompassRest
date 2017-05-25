@@ -5,44 +5,26 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilitaryService
+    public sealed partial class MilitaryService : IClean
     {
         private Value<string> _branch;
         public string Branch { get { return _branch; } set { _branch = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBranch() => !_branch.Clean;
         private Value<DateTime?> _endDate;
         public DateTime? EndDate { get { return _endDate; } set { _endDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEndDate() => !_endDate.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<int?> _militaryServiceIndex;
         public int? MilitaryServiceIndex { get { return _militaryServiceIndex; } set { _militaryServiceIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMilitaryServiceIndex() => !_militaryServiceIndex.Clean;
         private Value<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeName() => !_name.Clean;
         private Value<string> _officerOrEnlisted;
         public string OfficerOrEnlisted { get { return _officerOrEnlisted; } set { _officerOrEnlisted = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOfficerOrEnlisted() => !_officerOrEnlisted.Clean;
         private Value<string> _serviceNumber;
         public string ServiceNumber { get { return _serviceNumber; } set { _serviceNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServiceNumber() => !_serviceNumber.Clean;
         private Value<string> _sSN;
         public string SSN { get { return _sSN; } set { _sSN = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSSN() => !_sSN.Clean;
         private Value<DateTime?> _startDate;
         public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStartDate() => !_startDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -77,5 +59,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

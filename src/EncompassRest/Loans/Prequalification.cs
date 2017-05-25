@@ -5,252 +5,130 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Prequalification
+    public sealed partial class Prequalification : IClean
     {
         private Value<decimal?> _afterTaxOwnMoSavings;
         public decimal? AfterTaxOwnMoSavings { get { return _afterTaxOwnMoSavings; } set { _afterTaxOwnMoSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAfterTaxOwnMoSavings() => !_afterTaxOwnMoSavings.Clean;
         private Value<decimal?> _afterTaxRentMoSavings;
         public decimal? AfterTaxRentMoSavings { get { return _afterTaxRentMoSavings; } set { _afterTaxRentMoSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAfterTaxRentMoSavings() => !_afterTaxRentMoSavings.Clean;
         private Value<decimal?> _annualHomeMaintenance;
         public decimal? AnnualHomeMaintenance { get { return _annualHomeMaintenance; } set { _annualHomeMaintenance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualHomeMaintenance() => !_annualHomeMaintenance.Clean;
         private Value<decimal?> _avgMoPmtSavings;
         public decimal? AvgMoPmtSavings { get { return _avgMoPmtSavings; } set { _avgMoPmtSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAvgMoPmtSavings() => !_avgMoPmtSavings.Clean;
         private Value<decimal?> _beforeTaxOwnMoPmt;
         public decimal? BeforeTaxOwnMoPmt { get { return _beforeTaxOwnMoPmt; } set { _beforeTaxOwnMoPmt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBeforeTaxOwnMoPmt() => !_beforeTaxOwnMoPmt.Clean;
         private Value<decimal?> _beforeTaxRentMoPmt;
         public decimal? BeforeTaxRentMoPmt { get { return _beforeTaxRentMoPmt; } set { _beforeTaxRentMoPmt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBeforeTaxRentMoPmt() => !_beforeTaxRentMoPmt.Clean;
         private Value<int?> _cashOutBalance;
         public int? CashOutBalance { get { return _cashOutBalance; } set { _cashOutBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCashOutBalance() => !_cashOutBalance.Clean;
         private Value<decimal?> _combinedGain;
         public decimal? CombinedGain { get { return _combinedGain; } set { _combinedGain = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCombinedGain() => !_combinedGain.Clean;
         private Value<decimal?> _costIncreasePerYear;
         public decimal? CostIncreasePerYear { get { return _costIncreasePerYear; } set { _costIncreasePerYear = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCostIncreasePerYear() => !_costIncreasePerYear.Clean;
         private Value<decimal?> _downPaymentAmount;
         public decimal? DownPaymentAmount { get { return _downPaymentAmount; } set { _downPaymentAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPaymentAmount() => !_downPaymentAmount.Clean;
         private Value<string> _favorableOption;
         public string FavorableOption { get { return _favorableOption; } set { _favorableOption = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFavorableOption() => !_favorableOption.Clean;
         private Value<decimal?> _homeSellingPriceAfterYears;
         public decimal? HomeSellingPriceAfterYears { get { return _homeSellingPriceAfterYears; } set { _homeSellingPriceAfterYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHomeSellingPriceAfterYears() => !_homeSellingPriceAfterYears.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _investmentGain;
         public decimal? InvestmentGain { get { return _investmentGain; } set { _investmentGain = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestmentGain() => !_investmentGain.Clean;
         private Value<decimal?> _maxLoanLimit;
         public decimal? MaxLoanLimit { get { return _maxLoanLimit; } set { _maxLoanLimit = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxLoanLimit() => !_maxLoanLimit.Clean;
         private Value<decimal?> _maxPropValue;
         public decimal? MaxPropValue { get { return _maxPropValue; } set { _maxPropValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxPropValue() => !_maxPropValue.Clean;
         private Value<decimal?> _minusDownPmtAndClosingCosts;
         public decimal? MinusDownPmtAndClosingCosts { get { return _minusDownPmtAndClosingCosts; } set { _minusDownPmtAndClosingCosts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinusDownPmtAndClosingCosts() => !_minusDownPmtAndClosingCosts.Clean;
         private Value<decimal?> _minusLoanBalance;
         public decimal? MinusLoanBalance { get { return _minusLoanBalance; } set { _minusLoanBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinusLoanBalance() => !_minusLoanBalance.Clean;
         private Value<decimal?> _monthlyBenefit;
         public decimal? MonthlyBenefit { get { return _monthlyBenefit; } set { _monthlyBenefit = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyBenefit() => !_monthlyBenefit.Clean;
         private Value<decimal?> _monthlyHomeAppreciation;
         public decimal? MonthlyHomeAppreciation { get { return _monthlyHomeAppreciation; } set { _monthlyHomeAppreciation = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyHomeAppreciation() => !_monthlyHomeAppreciation.Clean;
         private Value<decimal?> _monthlyHomeEquity;
         public decimal? MonthlyHomeEquity { get { return _monthlyHomeEquity; } set { _monthlyHomeEquity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyHomeEquity() => !_monthlyHomeEquity.Clean;
         private Value<decimal?> _monthlyIncomeTax;
         public decimal? MonthlyIncomeTax { get { return _monthlyIncomeTax; } set { _monthlyIncomeTax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyIncomeTax() => !_monthlyIncomeTax.Clean;
         private Value<decimal?> _monthlyInvestmentInterest;
         public decimal? MonthlyInvestmentInterest { get { return _monthlyInvestmentInterest; } set { _monthlyInvestmentInterest = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyInvestmentInterest() => !_monthlyInvestmentInterest.Clean;
         private Value<int?> _monthlySavings;
         public int? MonthlySavings { get { return _monthlySavings; } set { _monthlySavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlySavings() => !_monthlySavings.Clean;
         private Value<string> _numberOfMonths;
         public string NumberOfMonths { get { return _numberOfMonths; } set { _numberOfMonths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumberOfMonths() => !_numberOfMonths.Clean;
         private Value<decimal?> _percentAnnualHomeMaint;
         public decimal? PercentAnnualHomeMaint { get { return _percentAnnualHomeMaint; } set { _percentAnnualHomeMaint = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentAnnualHomeMaint() => !_percentAnnualHomeMaint.Clean;
         private Value<decimal?> _percentOfHomeAppreciation;
         public decimal? PercentOfHomeAppreciation { get { return _percentOfHomeAppreciation; } set { _percentOfHomeAppreciation = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentOfHomeAppreciation() => !_percentOfHomeAppreciation.Clean;
         private Value<decimal?> _percentOfIncomeTax;
         public decimal? PercentOfIncomeTax { get { return _percentOfIncomeTax; } set { _percentOfIncomeTax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentOfIncomeTax() => !_percentOfIncomeTax.Clean;
         private Value<decimal?> _percentOfInvestmentInterest;
         public decimal? PercentOfInvestmentInterest { get { return _percentOfInvestmentInterest; } set { _percentOfInvestmentInterest = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentOfInvestmentInterest() => !_percentOfInvestmentInterest.Clean;
         private Value<List<PrequalificationScenario>> _prequalificationScenarios;
         public List<PrequalificationScenario> PrequalificationScenarios { get { return _prequalificationScenarios; } set { _prequalificationScenarios = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrequalificationScenarios() => !_prequalificationScenarios.Clean;
         private Value<string> _qualificationStatus;
         public string QualificationStatus { get { return _qualificationStatus; } set { _qualificationStatus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeQualificationStatus() => !_qualificationStatus.Clean;
         private Value<decimal?> _rentalCost;
         public decimal? RentalCost { get { return _rentalCost; } set { _rentalCost = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRentalCost() => !_rentalCost.Clean;
         private Value<decimal?> _rentersInsurance;
         public decimal? RentersInsurance { get { return _rentersInsurance; } set { _rentersInsurance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRentersInsurance() => !_rentersInsurance.Clean;
         private Value<decimal?> _totalBenefit;
         public decimal? TotalBenefit { get { return _totalBenefit; } set { _totalBenefit = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalBenefit() => !_totalBenefit.Clean;
         private Value<decimal?> _totalCashFlow;
         public decimal? TotalCashFlow { get { return _totalCashFlow; } set { _totalCashFlow = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalCashFlow() => !_totalCashFlow.Clean;
         private Value<decimal?> _totalGain;
         public decimal? TotalGain { get { return _totalGain; } set { _totalGain = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalGain() => !_totalGain.Clean;
         private Value<decimal?> _totalHomeAppreciation;
         public decimal? TotalHomeAppreciation { get { return _totalHomeAppreciation; } set { _totalHomeAppreciation = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalHomeAppreciation() => !_totalHomeAppreciation.Clean;
         private Value<decimal?> _totalHomeEquity;
         public decimal? TotalHomeEquity { get { return _totalHomeEquity; } set { _totalHomeEquity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalHomeEquity() => !_totalHomeEquity.Clean;
         private Value<decimal?> _totalHousingExpense;
         public decimal? TotalHousingExpense { get { return _totalHousingExpense; } set { _totalHousingExpense = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalHousingExpense() => !_totalHousingExpense.Clean;
         private Value<decimal?> _totalIncomeTax;
         public decimal? TotalIncomeTax { get { return _totalIncomeTax; } set { _totalIncomeTax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncomeTax() => !_totalIncomeTax.Clean;
         private Value<decimal?> _totalInvestmentInterest;
         public decimal? TotalInvestmentInterest { get { return _totalInvestmentInterest; } set { _totalInvestmentInterest = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalInvestmentInterest() => !_totalInvestmentInterest.Clean;
         private Value<int?> _totalLiabilityPayment;
         public int? TotalLiabilityPayment { get { return _totalLiabilityPayment; } set { _totalLiabilityPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLiabilityPayment() => !_totalLiabilityPayment.Clean;
         private Value<int?> _totalLiabilityUnpaid;
         public int? TotalLiabilityUnpaid { get { return _totalLiabilityUnpaid; } set { _totalLiabilityUnpaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLiabilityUnpaid() => !_totalLiabilityUnpaid.Clean;
         private Value<int?> _totalLoanSavings;
         public int? TotalLoanSavings { get { return _totalLoanSavings; } set { _totalLoanSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLoanSavings() => !_totalLoanSavings.Clean;
         private Value<decimal?> _totalOtherExpenses;
         public decimal? TotalOtherExpenses { get { return _totalOtherExpenses; } set { _totalOtherExpenses = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalOtherExpenses() => !_totalOtherExpenses.Clean;
         private Value<decimal?> _totalOwnPmtOverYears;
         public decimal? TotalOwnPmtOverYears { get { return _totalOwnPmtOverYears; } set { _totalOwnPmtOverYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalOwnPmtOverYears() => !_totalOwnPmtOverYears.Clean;
         private Value<decimal?> _totalOwnTaxSavings;
         public decimal? TotalOwnTaxSavings { get { return _totalOwnTaxSavings; } set { _totalOwnTaxSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalOwnTaxSavings() => !_totalOwnTaxSavings.Clean;
         private Value<int?> _totalPaidOffBalance;
         public int? TotalPaidOffBalance { get { return _totalPaidOffBalance; } set { _totalPaidOffBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPaidOffBalance() => !_totalPaidOffBalance.Clean;
         private Value<int?> _totalPaidOffMonthly;
         public int? TotalPaidOffMonthly { get { return _totalPaidOffMonthly; } set { _totalPaidOffMonthly = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPaidOffMonthly() => !_totalPaidOffMonthly.Clean;
         private Value<decimal?> _totalPmtSavings;
         public decimal? TotalPmtSavings { get { return _totalPmtSavings; } set { _totalPmtSavings = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPmtSavings() => !_totalPmtSavings.Clean;
         private Value<decimal?> _totalRentPmtOverYears;
         public decimal? TotalRentPmtOverYears { get { return _totalRentPmtOverYears; } set { _totalRentPmtOverYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalRentPmtOverYears() => !_totalRentPmtOverYears.Clean;
         private Value<string> _withinLimits1;
         public string WithinLimits1 { get { return _withinLimits1; } set { _withinLimits1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits1() => !_withinLimits1.Clean;
         private Value<string> _withinLimits2;
         public string WithinLimits2 { get { return _withinLimits2; } set { _withinLimits2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits2() => !_withinLimits2.Clean;
         private Value<string> _withinLimits3;
         public string WithinLimits3 { get { return _withinLimits3; } set { _withinLimits3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits3() => !_withinLimits3.Clean;
         private Value<string> _withinLimits4;
         public string WithinLimits4 { get { return _withinLimits4; } set { _withinLimits4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits4() => !_withinLimits4.Clean;
         private Value<string> _withinLimits5;
         public string WithinLimits5 { get { return _withinLimits5; } set { _withinLimits5 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits5() => !_withinLimits5.Clean;
         private Value<string> _withinLimits6;
         public string WithinLimits6 { get { return _withinLimits6; } set { _withinLimits6 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits6() => !_withinLimits6.Clean;
         private Value<string> _withinLimits7;
         public string WithinLimits7 { get { return _withinLimits7; } set { _withinLimits7 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits7() => !_withinLimits7.Clean;
         private Value<string> _withinLimits8;
         public string WithinLimits8 { get { return _withinLimits8; } set { _withinLimits8 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits8() => !_withinLimits8.Clean;
         private Value<string> _withinLimits9;
         public string WithinLimits9 { get { return _withinLimits9; } set { _withinLimits9 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithinLimits9() => !_withinLimits9.Clean;
         private Value<int?> _yearsForComparison;
         public int? YearsForComparison { get { return _yearsForComparison; } set { _yearsForComparison = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeYearsForComparison() => !_yearsForComparison.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -389,5 +267,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

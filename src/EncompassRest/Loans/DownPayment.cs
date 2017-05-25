@@ -5,24 +5,16 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DownPayment
+    public sealed partial class DownPayment : IClean
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !_amount.Clean;
         private Value<string> _downPaymentType;
         public string DownPaymentType { get { return _downPaymentType; } set { _downPaymentType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPaymentType() => !_downPaymentType.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _sourceDescription;
         public string SourceDescription { get { return _sourceDescription; } set { _sourceDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceDescription() => !_sourceDescription.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,5 +39,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

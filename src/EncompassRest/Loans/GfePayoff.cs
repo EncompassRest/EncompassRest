@@ -5,24 +5,16 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfePayoff
+    public sealed partial class GfePayoff : IClean
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !_amount.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<int?> _gfePayoffIndex;
         public int? GfePayoffIndex { get { return _gfePayoffIndex; } set { _gfePayoffIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfePayoffIndex() => !_gfePayoffIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,5 +39,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

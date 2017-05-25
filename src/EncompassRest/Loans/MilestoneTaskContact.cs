@@ -5,52 +5,30 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTaskContact
+    public sealed partial class MilestoneTaskContact : IClean
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddress() => !_address.Clean;
         private Value<string> _city;
         public string City { get { return _city; } set { _city = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCity() => !_city.Clean;
         private Value<string> _contactId;
         public string ContactId { get { return _contactId; } set { _contactId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeContactId() => !_contactId.Clean;
         private Value<string> _email;
         public string Email { get { return _email; } set { _email = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmail() => !_email.Clean;
         private Value<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !_guid.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeName() => !_name.Clean;
         private Value<string> _phone;
         public string Phone { get { return _phone; } set { _phone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhone() => !_phone.Clean;
         private Value<string> _role;
         public string Role { get { return _role; } set { _role = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRole() => !_role.Clean;
         private Value<string> _state;
         public string State { get { return _state; } set { _state = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeState() => !_state.Clean;
         private Value<string> _zip;
         public string Zip { get { return _zip; } set { _zip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeZip() => !_zip.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -89,5 +67,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

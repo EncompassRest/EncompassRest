@@ -5,40 +5,24 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SelfEmployedIncome
+    public sealed partial class SelfEmployedIncome : IClean
     {
         private Value<bool?> _boolFieldValue;
         public bool? BoolFieldValue { get { return _boolFieldValue; } set { _boolFieldValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBoolFieldValue() => !_boolFieldValue.Clean;
         private Value<string> _businessName;
         public string BusinessName { get { return _businessName; } set { _businessName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBusinessName() => !_businessName.Clean;
         private Value<string> _fieldName;
         public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldName() => !_fieldName.Clean;
         private Value<decimal?> _fieldValue;
         public decimal? FieldValue { get { return _fieldValue; } set { _fieldValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldValue() => !_fieldValue.Clean;
         private Value<decimal?> _firstYearAmount;
         public decimal? FirstYearAmount { get { return _firstYearAmount; } set { _firstYearAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirstYearAmount() => !_firstYearAmount.Clean;
         private Value<string> _formType;
         public string FormType { get { return _formType; } set { _formType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFormType() => !_formType.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _secondYearAmount;
         public decimal? SecondYearAmount { get { return _secondYearAmount; } set { _secondYearAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecondYearAmount() => !_secondYearAmount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -71,5 +55,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,28 +5,18 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TrustAccount
+    public sealed partial class TrustAccount : IClean
     {
         private Value<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalance() => !_balance.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _total1;
         public decimal? Total1 { get { return _total1; } set { _total1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal1() => !_total1.Clean;
         private Value<decimal?> _total2;
         public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotal2() => !_total2.Clean;
         private Value<List<TrustAccountItem>> _trustAccountItems;
         public List<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems; } set { _trustAccountItems = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrustAccountItems() => !_trustAccountItems.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -53,5 +43,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

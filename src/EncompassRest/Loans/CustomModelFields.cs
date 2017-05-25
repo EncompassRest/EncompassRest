@@ -5,28 +5,18 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CustomModelFields
+    public sealed partial class CustomModelFields : IClean
     {
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _provideAmortizationScenario;
         public bool? ProvideAmortizationScenario { get { return _provideAmortizationScenario; } set { _provideAmortizationScenario = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProvideAmortizationScenario() => !_provideAmortizationScenario.Clean;
         private Value<bool?> _provideBestCaseScenario;
         public bool? ProvideBestCaseScenario { get { return _provideBestCaseScenario; } set { _provideBestCaseScenario = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProvideBestCaseScenario() => !_provideBestCaseScenario.Clean;
         private Value<bool?> _provideFHAScenario;
         public bool? ProvideFHAScenario { get { return _provideFHAScenario; } set { _provideFHAScenario = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProvideFHAScenario() => !_provideFHAScenario.Clean;
         private Value<bool?> _provideWorstCaseScenario;
         public bool? ProvideWorstCaseScenario { get { return _provideWorstCaseScenario; } set { _provideWorstCaseScenario = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProvideWorstCaseScenario() => !_provideWorstCaseScenario.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -53,5 +43,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

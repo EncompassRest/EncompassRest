@@ -5,48 +5,28 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Buydown
+    public sealed partial class Buydown : IClean
     {
         private Value<int?> _buydownIndex;
         public int? BuydownIndex { get { return _buydownIndex; } set { _buydownIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownIndex() => !_buydownIndex.Clean;
         private Value<decimal?> _buydownRatePercent;
         public decimal? BuydownRatePercent { get { return _buydownRatePercent; } set { _buydownRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBuydownRatePercent() => !_buydownRatePercent.Clean;
         private Value<int?> _changeFrequencyMonthsCount;
         public int? ChangeFrequencyMonthsCount { get { return _changeFrequencyMonthsCount; } set { _changeFrequencyMonthsCount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChangeFrequencyMonthsCount() => !_changeFrequencyMonthsCount.Clean;
         private Value<int?> _durationMonthsCount;
         public int? DurationMonthsCount { get { return _durationMonthsCount; } set { _durationMonthsCount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDurationMonthsCount() => !_durationMonthsCount.Clean;
         private Value<decimal?> _fundBalanceAmount;
         public decimal? FundBalanceAmount { get { return _fundBalanceAmount; } set { _fundBalanceAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundBalanceAmount() => !_fundBalanceAmount.Clean;
         private Value<decimal?> _fundTotalAmount;
         public decimal? FundTotalAmount { get { return _fundTotalAmount; } set { _fundTotalAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundTotalAmount() => !_fundTotalAmount.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _increaseRatePercent;
         public decimal? IncreaseRatePercent { get { return _increaseRatePercent; } set { _increaseRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIncreaseRatePercent() => !_increaseRatePercent.Clean;
         private Value<int?> _remainingMonthsCount;
         public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRemainingMonthsCount() => !_remainingMonthsCount.Clean;
         private Value<decimal?> _subsidyAmount;
         public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubsidyAmount() => !_subsidyAmount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -83,5 +63,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -10,7 +10,7 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(ValueConverter))]
-    internal struct Value<T>
+    internal struct Value<T> : IClean
     {
         public static implicit operator T(Value<T> value) => value._value;
 
@@ -18,7 +18,7 @@ namespace EncompassRest
 
         private readonly T _value;
 
-        internal bool Clean { get; set; }
+        public bool Clean { get; set; }
 
         public Value(T value)
         {

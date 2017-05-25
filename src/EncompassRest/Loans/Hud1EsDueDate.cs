@@ -5,52 +5,30 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsDueDate
+    public sealed partial class Hud1EsDueDate : IClean
     {
         private Value<DateTime?> _annualFee;
         public DateTime? AnnualFee { get { return _annualFee; } set { _annualFee = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFee() => !_annualFee.Clean;
         private Value<DateTime?> _floodInsDisb;
         public DateTime? FloodInsDisb { get { return _floodInsDisb; } set { _floodInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsDisb() => !_floodInsDisb.Clean;
         private Value<DateTime?> _hazInsDisb;
         public DateTime? HazInsDisb { get { return _hazInsDisb; } set { _hazInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsDisb() => !_hazInsDisb.Clean;
         private Value<int?> _hud1EsDueDateIndex;
         public int? Hud1EsDueDateIndex { get { return _hud1EsDueDateIndex; } set { _hud1EsDueDateIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1EsDueDateIndex() => !_hud1EsDueDateIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<DateTime?> _mtgInsDisb;
         public DateTime? MtgInsDisb { get { return _mtgInsDisb; } set { _mtgInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMtgInsDisb() => !_mtgInsDisb.Clean;
         private Value<DateTime?> _schoolTaxes;
         public DateTime? SchoolTaxes { get { return _schoolTaxes; } set { _schoolTaxes = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSchoolTaxes() => !_schoolTaxes.Clean;
         private Value<DateTime?> _taxDisb;
         public DateTime? TaxDisb { get { return _taxDisb; } set { _taxDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxDisb() => !_taxDisb.Clean;
         private Value<DateTime?> _userDefined1;
         public DateTime? UserDefined1 { get { return _userDefined1; } set { _userDefined1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined1() => !_userDefined1.Clean;
         private Value<DateTime?> _userDefined2;
         public DateTime? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined2() => !_userDefined2.Clean;
         private Value<DateTime?> _userDefined3;
         public DateTime? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined3() => !_userDefined3.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -89,5 +67,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

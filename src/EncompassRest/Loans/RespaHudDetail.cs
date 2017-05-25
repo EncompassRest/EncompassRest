@@ -5,44 +5,26 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RespaHudDetail
+    public sealed partial class RespaHudDetail : IClean
     {
         private Value<string> _creditDebt;
         public string CreditDebt { get { return _creditDebt; } set { _creditDebt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreditDebt() => !_creditDebt.Clean;
         private Value<string> _fWBC;
         public string FWBC { get { return _fWBC; } set { _fWBC = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFWBC() => !_fWBC.Clean;
         private Value<DateTime?> _hUD1LineItemFromDate;
         public DateTime? HUD1LineItemFromDate { get { return _hUD1LineItemFromDate; } set { _hUD1LineItemFromDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHUD1LineItemFromDate() => !_hUD1LineItemFromDate.Clean;
         private Value<DateTime?> _hUD1LineItemToDate;
         public DateTime? HUD1LineItemToDate { get { return _hUD1LineItemToDate; } set { _hUD1LineItemToDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHUD1LineItemToDate() => !_hUD1LineItemToDate.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _lineItemAmount;
         public decimal? LineItemAmount { get { return _lineItemAmount; } set { _lineItemAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineItemAmount() => !_lineItemAmount.Clean;
         private Value<string> _lineItemDescription;
         public string LineItemDescription { get { return _lineItemDescription; } set { _lineItemDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineItemDescription() => !_lineItemDescription.Clean;
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
         private Value<decimal?> _realValue;
         public decimal? RealValue { get { return _realValue; } set { _realValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRealValue() => !_realValue.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -77,5 +59,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

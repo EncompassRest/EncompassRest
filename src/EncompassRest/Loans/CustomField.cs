@@ -5,28 +5,18 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CustomField
+    public sealed partial class CustomField : IClean
     {
         private Value<DateTime?> _dateValue;
         public DateTime? DateValue { get { return _dateValue; } set { _dateValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateValue() => !_dateValue.Clean;
         private Value<string> _fieldName;
         public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldName() => !_fieldName.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _numericValue;
         public decimal? NumericValue { get { return _numericValue; } set { _numericValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumericValue() => !_numericValue.Clean;
         private Value<string> _stringValue;
         public string StringValue { get { return _stringValue; } set { _stringValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStringValue() => !_stringValue.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -53,5 +43,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

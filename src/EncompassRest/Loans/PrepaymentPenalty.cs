@@ -5,24 +5,16 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrepaymentPenalty
+    public sealed partial class PrepaymentPenalty : IClean
     {
         private Value<string> _fullPrepaymentPenaltyOptionType;
         public string FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFullPrepaymentPenaltyOptionType() => !_fullPrepaymentPenaltyOptionType.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _prepaymentPenaltyPercent;
         public decimal? PrepaymentPenaltyPercent { get { return _prepaymentPenaltyPercent; } set { _prepaymentPenaltyPercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaymentPenaltyPercent() => !_prepaymentPenaltyPercent.Clean;
         private Value<int?> _termMonthsCount;
         public int? TermMonthsCount { get { return _termMonthsCount; } set { _termMonthsCount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTermMonthsCount() => !_termMonthsCount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,5 +39,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

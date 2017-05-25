@@ -5,364 +5,186 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Page
+    public sealed partial class Gfe2010Page : IClean
     {
         private Value<int?> _balloonPaymentDueInYears;
         public int? BalloonPaymentDueInYears { get { return _balloonPaymentDueInYears; } set { _balloonPaymentDueInYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalloonPaymentDueInYears() => !_balloonPaymentDueInYears.Clean;
         private Value<string> _brokerCompensationFwbc;
         public string BrokerCompensationFwbc { get { return _brokerCompensationFwbc; } set { _brokerCompensationFwbc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerCompensationFwbc() => !_brokerCompensationFwbc.Clean;
         private Value<string> _brokerCompensationFwsc;
         public string BrokerCompensationFwsc { get { return _brokerCompensationFwsc; } set { _brokerCompensationFwsc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerCompensationFwsc() => !_brokerCompensationFwsc.Clean;
         private Value<decimal?> _curedGfeTotalTolerance;
         public decimal? CuredGfeTotalTolerance { get { return _curedGfeTotalTolerance; } set { _curedGfeTotalTolerance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCuredGfeTotalTolerance() => !_curedGfeTotalTolerance.Clean;
         private Value<DateTime?> _firstArmChangeDate;
         public DateTime? FirstArmChangeDate { get { return _firstArmChangeDate; } set { _firstArmChangeDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirstArmChangeDate() => !_firstArmChangeDate.Clean;
         private Value<List<Gfe2010FwbcFwsc>> _gfe2010FwbcFwscs;
         public List<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { return _gfe2010FwbcFwscs; } set { _gfe2010FwbcFwscs = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010FwbcFwscs() => !_gfe2010FwbcFwscs.Clean;
         private Value<List<Gfe2010GfeCharge>> _gfe2010GfeCharges;
         public List<Gfe2010GfeCharge> Gfe2010GfeCharges { get { return _gfe2010GfeCharges; } set { _gfe2010GfeCharges = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010GfeCharges() => !_gfe2010GfeCharges.Clean;
         private Value<string> _gfeRecordingCharges;
         public string GfeRecordingCharges { get { return _gfeRecordingCharges; } set { _gfeRecordingCharges = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeRecordingCharges() => !_gfeRecordingCharges.Clean;
         private Value<decimal?> _gfeTotalTolerance;
         public decimal? GfeTotalTolerance { get { return _gfeTotalTolerance; } set { _gfeTotalTolerance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeTotalTolerance() => !_gfeTotalTolerance.Clean;
         private Value<bool?> _hasEscrowAccountIndicator;
         public bool? HasEscrowAccountIndicator { get { return _hasEscrowAccountIndicator; } set { _hasEscrowAccountIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowAccountIndicator() => !_hasEscrowAccountIndicator.Clean;
         private Value<bool?> _hasEscrowCityPropertyTaxesIndicator;
         public bool? HasEscrowCityPropertyTaxesIndicator { get { return _hasEscrowCityPropertyTaxesIndicator; } set { _hasEscrowCityPropertyTaxesIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowCityPropertyTaxesIndicator() => !_hasEscrowCityPropertyTaxesIndicator.Clean;
         private Value<bool?> _hasEscrowFloodInsurancesIndicator;
         public bool? HasEscrowFloodInsurancesIndicator { get { return _hasEscrowFloodInsurancesIndicator; } set { _hasEscrowFloodInsurancesIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowFloodInsurancesIndicator() => !_hasEscrowFloodInsurancesIndicator.Clean;
         private Value<bool?> _hasEscrowHomeownerInsurancesIndicator;
         public bool? HasEscrowHomeownerInsurancesIndicator { get { return _hasEscrowHomeownerInsurancesIndicator; } set { _hasEscrowHomeownerInsurancesIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowHomeownerInsurancesIndicator() => !_hasEscrowHomeownerInsurancesIndicator.Clean;
         private Value<bool?> _hasEscrowPropertyTaxesIndicator;
         public bool? HasEscrowPropertyTaxesIndicator { get { return _hasEscrowPropertyTaxesIndicator; } set { _hasEscrowPropertyTaxesIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowPropertyTaxesIndicator() => !_hasEscrowPropertyTaxesIndicator.Clean;
         private Value<bool?> _hasEscrowUserDefinedIndicator1;
         public bool? HasEscrowUserDefinedIndicator1 { get { return _hasEscrowUserDefinedIndicator1; } set { _hasEscrowUserDefinedIndicator1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowUserDefinedIndicator1() => !_hasEscrowUserDefinedIndicator1.Clean;
         private Value<bool?> _hasEscrowUserDefinedIndicator2;
         public bool? HasEscrowUserDefinedIndicator2 { get { return _hasEscrowUserDefinedIndicator2; } set { _hasEscrowUserDefinedIndicator2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowUserDefinedIndicator2() => !_hasEscrowUserDefinedIndicator2.Clean;
         private Value<bool?> _hasEscrowUserDefinedIndicator3;
         public bool? HasEscrowUserDefinedIndicator3 { get { return _hasEscrowUserDefinedIndicator3; } set { _hasEscrowUserDefinedIndicator3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowUserDefinedIndicator3() => !_hasEscrowUserDefinedIndicator3.Clean;
         private Value<bool?> _hasEscrowUserDefinedIndicator4;
         public bool? HasEscrowUserDefinedIndicator4 { get { return _hasEscrowUserDefinedIndicator4; } set { _hasEscrowUserDefinedIndicator4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHasEscrowUserDefinedIndicator4() => !_hasEscrowUserDefinedIndicator4.Clean;
         private Value<decimal?> _highestArmRate;
         public decimal? HighestArmRate { get { return _highestArmRate; } set { _highestArmRate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHighestArmRate() => !_highestArmRate.Clean;
         private Value<decimal?> _hud1GovernmentRecordingCharge;
         public decimal? Hud1GovernmentRecordingCharge { get { return _hud1GovernmentRecordingCharge; } set { _hud1GovernmentRecordingCharge = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1GovernmentRecordingCharge() => !_hud1GovernmentRecordingCharge.Clean;
         private Value<decimal?> _hud1Pg1SellerPaidClosingCostsAmount;
         public decimal? Hud1Pg1SellerPaidClosingCostsAmount { get { return _hud1Pg1SellerPaidClosingCostsAmount; } set { _hud1Pg1SellerPaidClosingCostsAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1Pg1SellerPaidClosingCostsAmount() => !_hud1Pg1SellerPaidClosingCostsAmount.Clean;
         private Value<decimal?> _hud1Pg1TotalSettlementCharges;
         public decimal? Hud1Pg1TotalSettlementCharges { get { return _hud1Pg1TotalSettlementCharges; } set { _hud1Pg1TotalSettlementCharges = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1Pg1TotalSettlementCharges() => !_hud1Pg1TotalSettlementCharges.Clean;
         private Value<decimal?> _hud1Pg2SellerPaidClosingCostsAmount;
         public decimal? Hud1Pg2SellerPaidClosingCostsAmount { get { return _hud1Pg2SellerPaidClosingCostsAmount; } set { _hud1Pg2SellerPaidClosingCostsAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1Pg2SellerPaidClosingCostsAmount() => !_hud1Pg2SellerPaidClosingCostsAmount.Clean;
         private Value<decimal?> _hud1Pg2TotalSettlementCharges;
         public decimal? Hud1Pg2TotalSettlementCharges { get { return _hud1Pg2TotalSettlementCharges; } set { _hud1Pg2TotalSettlementCharges = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1Pg2TotalSettlementCharges() => !_hud1Pg2TotalSettlementCharges.Clean;
         private Value<decimal?> _hudTotalTolerance;
         public decimal? HudTotalTolerance { get { return _hudTotalTolerance; } set { _hudTotalTolerance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHudTotalTolerance() => !_hudTotalTolerance.Clean;
         private Value<decimal?> _hudTotalToleranceIncreasePercent;
         public decimal? HudTotalToleranceIncreasePercent { get { return _hudTotalToleranceIncreasePercent; } set { _hudTotalToleranceIncreasePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHudTotalToleranceIncreasePercent() => !_hudTotalToleranceIncreasePercent.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _line1101SellerPaidTotal;
         public decimal? Line1101SellerPaidTotal { get { return _line1101SellerPaidTotal; } set { _line1101SellerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine1101SellerPaidTotal() => !_line1101SellerPaidTotal.Clean;
         private Value<decimal?> _line1201SellerPaidTotal;
         public decimal? Line1201SellerPaidTotal { get { return _line1201SellerPaidTotal; } set { _line1201SellerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine1201SellerPaidTotal() => !_line1201SellerPaidTotal.Clean;
         private Value<decimal?> _line1301SellerPaidTotal;
         public decimal? Line1301SellerPaidTotal { get { return _line1301SellerPaidTotal; } set { _line1301SellerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine1301SellerPaidTotal() => !_line1301SellerPaidTotal.Clean;
         private Value<decimal?> _line801BorrowerPaidTotal;
         public decimal? Line801BorrowerPaidTotal { get { return _line801BorrowerPaidTotal; } set { _line801BorrowerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine801BorrowerPaidTotal() => !_line801BorrowerPaidTotal.Clean;
         private Value<decimal?> _line801SellerPaidTotal;
         public decimal? Line801SellerPaidTotal { get { return _line801SellerPaidTotal; } set { _line801SellerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine801SellerPaidTotal() => !_line801SellerPaidTotal.Clean;
         private Value<decimal?> _line802BorrowerPaidTotal;
         public decimal? Line802BorrowerPaidTotal { get { return _line802BorrowerPaidTotal; } set { _line802BorrowerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine802BorrowerPaidTotal() => !_line802BorrowerPaidTotal.Clean;
         private Value<decimal?> _line803BorrowerPaidTotal;
         public decimal? Line803BorrowerPaidTotal { get { return _line803BorrowerPaidTotal; } set { _line803BorrowerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine803BorrowerPaidTotal() => !_line803BorrowerPaidTotal.Clean;
         private Value<decimal?> _line803SellerPaidTotal;
         public decimal? Line803SellerPaidTotal { get { return _line803SellerPaidTotal; } set { _line803SellerPaidTotal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine803SellerPaidTotal() => !_line803SellerPaidTotal.Clean;
         private Value<bool?> _line818FwbcIndicator;
         public bool? Line818FwbcIndicator { get { return _line818FwbcIndicator; } set { _line818FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine818FwbcIndicator() => !_line818FwbcIndicator.Clean;
         private Value<bool?> _line818FwscIndicator;
         public bool? Line818FwscIndicator { get { return _line818FwscIndicator; } set { _line818FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine818FwscIndicator() => !_line818FwscIndicator.Clean;
         private Value<bool?> _line819FwbcIndicator;
         public bool? Line819FwbcIndicator { get { return _line819FwbcIndicator; } set { _line819FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine819FwbcIndicator() => !_line819FwbcIndicator.Clean;
         private Value<bool?> _line819FwscIndicator;
         public bool? Line819FwscIndicator { get { return _line819FwscIndicator; } set { _line819FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine819FwscIndicator() => !_line819FwscIndicator.Clean;
         private Value<bool?> _line820FwbcIndicator;
         public bool? Line820FwbcIndicator { get { return _line820FwbcIndicator; } set { _line820FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine820FwbcIndicator() => !_line820FwbcIndicator.Clean;
         private Value<bool?> _line820FwscIndicator;
         public bool? Line820FwscIndicator { get { return _line820FwscIndicator; } set { _line820FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine820FwscIndicator() => !_line820FwscIndicator.Clean;
         private Value<bool?> _line821FwbcIndicator;
         public bool? Line821FwbcIndicator { get { return _line821FwbcIndicator; } set { _line821FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine821FwbcIndicator() => !_line821FwbcIndicator.Clean;
         private Value<bool?> _line821FwscIndicator;
         public bool? Line821FwscIndicator { get { return _line821FwscIndicator; } set { _line821FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine821FwscIndicator() => !_line821FwscIndicator.Clean;
         private Value<bool?> _line822FwbcIndicator;
         public bool? Line822FwbcIndicator { get { return _line822FwbcIndicator; } set { _line822FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine822FwbcIndicator() => !_line822FwbcIndicator.Clean;
         private Value<bool?> _line822FwscIndicator;
         public bool? Line822FwscIndicator { get { return _line822FwscIndicator; } set { _line822FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine822FwscIndicator() => !_line822FwscIndicator.Clean;
         private Value<bool?> _line823FwbcIndicator;
         public bool? Line823FwbcIndicator { get { return _line823FwbcIndicator; } set { _line823FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine823FwbcIndicator() => !_line823FwbcIndicator.Clean;
         private Value<bool?> _line823FwscIndicator;
         public bool? Line823FwscIndicator { get { return _line823FwscIndicator; } set { _line823FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine823FwscIndicator() => !_line823FwscIndicator.Clean;
         private Value<bool?> _line824FwbcIndicator;
         public bool? Line824FwbcIndicator { get { return _line824FwbcIndicator; } set { _line824FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine824FwbcIndicator() => !_line824FwbcIndicator.Clean;
         private Value<bool?> _line824FwscIndicator;
         public bool? Line824FwscIndicator { get { return _line824FwscIndicator; } set { _line824FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine824FwscIndicator() => !_line824FwscIndicator.Clean;
         private Value<bool?> _line825FwbcIndicator;
         public bool? Line825FwbcIndicator { get { return _line825FwbcIndicator; } set { _line825FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine825FwbcIndicator() => !_line825FwbcIndicator.Clean;
         private Value<bool?> _line825FwscIndicator;
         public bool? Line825FwscIndicator { get { return _line825FwscIndicator; } set { _line825FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine825FwscIndicator() => !_line825FwscIndicator.Clean;
         private Value<bool?> _line826FwbcIndicator;
         public bool? Line826FwbcIndicator { get { return _line826FwbcIndicator; } set { _line826FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine826FwbcIndicator() => !_line826FwbcIndicator.Clean;
         private Value<bool?> _line826FwscIndicator;
         public bool? Line826FwscIndicator { get { return _line826FwscIndicator; } set { _line826FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine826FwscIndicator() => !_line826FwscIndicator.Clean;
         private Value<bool?> _line827FwbcIndicator;
         public bool? Line827FwbcIndicator { get { return _line827FwbcIndicator; } set { _line827FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine827FwbcIndicator() => !_line827FwbcIndicator.Clean;
         private Value<bool?> _line827FwscIndicator;
         public bool? Line827FwscIndicator { get { return _line827FwscIndicator; } set { _line827FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine827FwscIndicator() => !_line827FwscIndicator.Clean;
         private Value<bool?> _line828FwbcIndicator;
         public bool? Line828FwbcIndicator { get { return _line828FwbcIndicator; } set { _line828FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine828FwbcIndicator() => !_line828FwbcIndicator.Clean;
         private Value<bool?> _line828FwscIndicator;
         public bool? Line828FwscIndicator { get { return _line828FwscIndicator; } set { _line828FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine828FwscIndicator() => !_line828FwscIndicator.Clean;
         private Value<bool?> _line829FwbcIndicator;
         public bool? Line829FwbcIndicator { get { return _line829FwbcIndicator; } set { _line829FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine829FwbcIndicator() => !_line829FwbcIndicator.Clean;
         private Value<bool?> _line829FwscIndicator;
         public bool? Line829FwscIndicator { get { return _line829FwscIndicator; } set { _line829FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine829FwscIndicator() => !_line829FwscIndicator.Clean;
         private Value<bool?> _line830FwbcIndicator;
         public bool? Line830FwbcIndicator { get { return _line830FwbcIndicator; } set { _line830FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine830FwbcIndicator() => !_line830FwbcIndicator.Clean;
         private Value<bool?> _line830FwscIndicator;
         public bool? Line830FwscIndicator { get { return _line830FwscIndicator; } set { _line830FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine830FwscIndicator() => !_line830FwscIndicator.Clean;
         private Value<bool?> _line831FwbcIndicator;
         public bool? Line831FwbcIndicator { get { return _line831FwbcIndicator; } set { _line831FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine831FwbcIndicator() => !_line831FwbcIndicator.Clean;
         private Value<bool?> _line831FwscIndicator;
         public bool? Line831FwscIndicator { get { return _line831FwscIndicator; } set { _line831FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine831FwscIndicator() => !_line831FwscIndicator.Clean;
         private Value<bool?> _line832FwbcIndicator;
         public bool? Line832FwbcIndicator { get { return _line832FwbcIndicator; } set { _line832FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine832FwbcIndicator() => !_line832FwbcIndicator.Clean;
         private Value<bool?> _line832FwscIndicator;
         public bool? Line832FwscIndicator { get { return _line832FwscIndicator; } set { _line832FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine832FwscIndicator() => !_line832FwscIndicator.Clean;
         private Value<bool?> _line833FwbcIndicator;
         public bool? Line833FwbcIndicator { get { return _line833FwbcIndicator; } set { _line833FwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine833FwbcIndicator() => !_line833FwbcIndicator.Clean;
         private Value<bool?> _line833FwscIndicator;
         public bool? Line833FwscIndicator { get { return _line833FwscIndicator; } set { _line833FwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine833FwscIndicator() => !_line833FwscIndicator.Clean;
         private Value<bool?> _lineLFwbcIndicator;
         public bool? LineLFwbcIndicator { get { return _lineLFwbcIndicator; } set { _lineLFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineLFwbcIndicator() => !_lineLFwbcIndicator.Clean;
         private Value<bool?> _lineLFwscIndicator;
         public bool? LineLFwscIndicator { get { return _lineLFwscIndicator; } set { _lineLFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineLFwscIndicator() => !_lineLFwscIndicator.Clean;
         private Value<bool?> _lineMFwbcIndicator;
         public bool? LineMFwbcIndicator { get { return _lineMFwbcIndicator; } set { _lineMFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineMFwbcIndicator() => !_lineMFwbcIndicator.Clean;
         private Value<bool?> _lineMFwscIndicator;
         public bool? LineMFwscIndicator { get { return _lineMFwscIndicator; } set { _lineMFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineMFwscIndicator() => !_lineMFwscIndicator.Clean;
         private Value<bool?> _lineNFwbcIndicator;
         public bool? LineNFwbcIndicator { get { return _lineNFwbcIndicator; } set { _lineNFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNFwbcIndicator() => !_lineNFwbcIndicator.Clean;
         private Value<bool?> _lineNFwscIndicator;
         public bool? LineNFwscIndicator { get { return _lineNFwscIndicator; } set { _lineNFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNFwscIndicator() => !_lineNFwscIndicator.Clean;
         private Value<bool?> _lineOFwbcIndicator;
         public bool? LineOFwbcIndicator { get { return _lineOFwbcIndicator; } set { _lineOFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineOFwbcIndicator() => !_lineOFwbcIndicator.Clean;
         private Value<bool?> _lineOFwscIndicator;
         public bool? LineOFwscIndicator { get { return _lineOFwscIndicator; } set { _lineOFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineOFwscIndicator() => !_lineOFwscIndicator.Clean;
         private Value<bool?> _linePFwbcIndicator;
         public bool? LinePFwbcIndicator { get { return _linePFwbcIndicator; } set { _linePFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLinePFwbcIndicator() => !_linePFwbcIndicator.Clean;
         private Value<bool?> _linePFwscIndicator;
         public bool? LinePFwscIndicator { get { return _linePFwscIndicator; } set { _linePFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLinePFwscIndicator() => !_linePFwscIndicator.Clean;
         private Value<bool?> _lineQFwbcIndicator;
         public bool? LineQFwbcIndicator { get { return _lineQFwbcIndicator; } set { _lineQFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineQFwbcIndicator() => !_lineQFwbcIndicator.Clean;
         private Value<bool?> _lineQFwscIndicator;
         public bool? LineQFwscIndicator { get { return _lineQFwscIndicator; } set { _lineQFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineQFwscIndicator() => !_lineQFwscIndicator.Clean;
         private Value<bool?> _lineRFwbcIndicator;
         public bool? LineRFwbcIndicator { get { return _lineRFwbcIndicator; } set { _lineRFwbcIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineRFwbcIndicator() => !_lineRFwbcIndicator.Clean;
         private Value<bool?> _lineRFwscIndicator;
         public bool? LineRFwscIndicator { get { return _lineRFwscIndicator; } set { _lineRFwscIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineRFwscIndicator() => !_lineRFwscIndicator.Clean;
         private Value<decimal?> _lowestArmRate;
         public decimal? LowestArmRate { get { return _lowestArmRate; } set { _lowestArmRate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLowestArmRate() => !_lowestArmRate.Clean;
         private Value<bool?> _monthlyAmountIncludeInterestIndicator;
         public bool? MonthlyAmountIncludeInterestIndicator { get { return _monthlyAmountIncludeInterestIndicator; } set { _monthlyAmountIncludeInterestIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyAmountIncludeInterestIndicator() => !_monthlyAmountIncludeInterestIndicator.Clean;
         private Value<bool?> _monthlyAmountIncludeMiIndicator;
         public bool? MonthlyAmountIncludeMiIndicator { get { return _monthlyAmountIncludeMiIndicator; } set { _monthlyAmountIncludeMiIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyAmountIncludeMiIndicator() => !_monthlyAmountIncludeMiIndicator.Clean;
         private Value<bool?> _monthlyAmountIncludePrincipalIndicator;
         public bool? MonthlyAmountIncludePrincipalIndicator { get { return _monthlyAmountIncludePrincipalIndicator; } set { _monthlyAmountIncludePrincipalIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyAmountIncludePrincipalIndicator() => !_monthlyAmountIncludePrincipalIndicator.Clean;
         private Value<decimal?> _monthlyAmountWithEscrow;
         public decimal? MonthlyAmountWithEscrow { get { return _monthlyAmountWithEscrow; } set { _monthlyAmountWithEscrow = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyAmountWithEscrow() => !_monthlyAmountWithEscrow.Clean;
         private Value<decimal?> _monthlyEscrowPayment;
         public decimal? MonthlyEscrowPayment { get { return _monthlyEscrowPayment; } set { _monthlyEscrowPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyEscrowPayment() => !_monthlyEscrowPayment.Clean;
         private Value<decimal?> _prepaidInterest;
         public decimal? PrepaidInterest { get { return _prepaidInterest; } set { _prepaidInterest = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrepaidInterest() => !_prepaidInterest.Clean;
         private Value<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get { return _totalToleranceIncreaseAmount; } set { _totalToleranceIncreaseAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalToleranceIncreaseAmount() => !_totalToleranceIncreaseAmount.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -557,5 +379,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

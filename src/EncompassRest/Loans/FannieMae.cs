@@ -5,56 +5,32 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FannieMae
+    public sealed partial class FannieMae : IClean
     {
         private Value<decimal?> _cltv;
         public decimal? Cltv { get { return _cltv; } set { _cltv = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCltv() => !_cltv.Clean;
         private Value<string> _collateralUnderwriterScore;
         public string CollateralUnderwriterScore { get { return _collateralUnderwriterScore; } set { _collateralUnderwriterScore = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCollateralUnderwriterScore() => !_collateralUnderwriterScore.Clean;
         private Value<string> _community2ndRepaymentStructure;
         public string Community2ndRepaymentStructure { get { return _community2ndRepaymentStructure; } set { _community2ndRepaymentStructure = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommunity2ndRepaymentStructure() => !_community2ndRepaymentStructure.Clean;
         private Value<bool?> _communityLending;
         public bool? CommunityLending { get { return _communityLending; } set { _communityLending = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommunityLending() => !_communityLending.Clean;
         private Value<string> _duVersion;
         public string DuVersion { get { return _duVersion; } set { _duVersion = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDuVersion() => !_duVersion.Clean;
         private Value<decimal?> _hcltv;
         public decimal? Hcltv { get { return _hcltv; } set { _hcltv = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHcltv() => !_hcltv.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _interestedPartyContribution;
         public decimal? InterestedPartyContribution { get { return _interestedPartyContribution; } set { _interestedPartyContribution = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestedPartyContribution() => !_interestedPartyContribution.Clean;
         private Value<decimal?> _ltv;
         public decimal? Ltv { get { return _ltv; } set { _ltv = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLtv() => !_ltv.Clean;
         private Value<string> _mornetPlusCaseFileId;
         public string MornetPlusCaseFileId { get { return _mornetPlusCaseFileId; } set { _mornetPlusCaseFileId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMornetPlusCaseFileId() => !_mornetPlusCaseFileId.Clean;
         private Value<string> _propertyInspectionWaiverMessage;
         public string PropertyInspectionWaiverMessage { get { return _propertyInspectionWaiverMessage; } set { _propertyInspectionWaiverMessage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyInspectionWaiverMessage() => !_propertyInspectionWaiverMessage.Clean;
         private Value<bool?> _startUpMortgage;
         public bool? StartUpMortgage { get { return _startUpMortgage; } set { _startUpMortgage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStartUpMortgage() => !_startUpMortgage.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -95,5 +71,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

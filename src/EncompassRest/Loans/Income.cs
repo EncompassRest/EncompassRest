@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Income
+    public sealed partial class Income : IClean
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !_amount.Clean;
         private Value<bool?> _currentIndicator;
         public bool? CurrentIndicator { get { return _currentIndicator; } set { _currentIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCurrentIndicator() => !_currentIndicator.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _incomeType;
         public string IncomeType { get { return _incomeType; } set { _incomeType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIncomeType() => !_incomeType.Clean;
         private Value<int?> _otherIncomeIndex;
         public int? OtherIncomeIndex { get { return _otherIncomeIndex; } set { _otherIncomeIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherIncomeIndex() => !_otherIncomeIndex.Clean;
         private Value<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOwner() => !_owner.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

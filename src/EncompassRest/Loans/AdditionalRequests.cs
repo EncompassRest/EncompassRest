@@ -5,160 +5,84 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AdditionalRequests
+    public sealed partial class AdditionalRequests : IClean
     {
         private Value<string> _appraisalContactCellPhone;
         public string AppraisalContactCellPhone { get { return _appraisalContactCellPhone; } set { _appraisalContactCellPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactCellPhone() => !_appraisalContactCellPhone.Clean;
         private Value<string> _appraisalContactEmail;
         public string AppraisalContactEmail { get { return _appraisalContactEmail; } set { _appraisalContactEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactEmail() => !_appraisalContactEmail.Clean;
         private Value<string> _appraisalContactForEntry;
         public string AppraisalContactForEntry { get { return _appraisalContactForEntry; } set { _appraisalContactForEntry = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactForEntry() => !_appraisalContactForEntry.Clean;
         private Value<string> _appraisalContactHomePhone;
         public string AppraisalContactHomePhone { get { return _appraisalContactHomePhone; } set { _appraisalContactHomePhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactHomePhone() => !_appraisalContactHomePhone.Clean;
         private Value<string> _appraisalContactName;
         public string AppraisalContactName { get { return _appraisalContactName; } set { _appraisalContactName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactName() => !_appraisalContactName.Clean;
         private Value<string> _appraisalContactWorkPhone;
         public string AppraisalContactWorkPhone { get { return _appraisalContactWorkPhone; } set { _appraisalContactWorkPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalContactWorkPhone() => !_appraisalContactWorkPhone.Clean;
         private Value<DateTime?> _appraisalDateOrdered;
         public DateTime? AppraisalDateOrdered { get { return _appraisalDateOrdered; } set { _appraisalDateOrdered = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalDateOrdered() => !_appraisalDateOrdered.Clean;
         private Value<string> _appraisalDescription1;
         public string AppraisalDescription1 { get { return _appraisalDescription1; } set { _appraisalDescription1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalDescription1() => !_appraisalDescription1.Clean;
         private Value<string> _appraisalDescription2;
         public string AppraisalDescription2 { get { return _appraisalDescription2; } set { _appraisalDescription2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalDescription2() => !_appraisalDescription2.Clean;
         private Value<string> _appraisalDescription3;
         public string AppraisalDescription3 { get { return _appraisalDescription3; } set { _appraisalDescription3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalDescription3() => !_appraisalDescription3.Clean;
         private Value<bool?> _appraisalKeyPickUp;
         public bool? AppraisalKeyPickUp { get { return _appraisalKeyPickUp; } set { _appraisalKeyPickUp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalKeyPickUp() => !_appraisalKeyPickUp.Clean;
         private Value<bool?> _appraisalLockBox;
         public bool? AppraisalLockBox { get { return _appraisalLockBox; } set { _appraisalLockBox = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalLockBox() => !_appraisalLockBox.Clean;
         private Value<bool?> _appraisalVacant;
         public bool? AppraisalVacant { get { return _appraisalVacant; } set { _appraisalVacant = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalVacant() => !_appraisalVacant.Clean;
         private Value<string> _floodDescription1;
         public string FloodDescription1 { get { return _floodDescription1; } set { _floodDescription1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodDescription1() => !_floodDescription1.Clean;
         private Value<string> _floodDescription2;
         public string FloodDescription2 { get { return _floodDescription2; } set { _floodDescription2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodDescription2() => !_floodDescription2.Clean;
         private Value<string> _floodDescription3;
         public string FloodDescription3 { get { return _floodDescription3; } set { _floodDescription3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodDescription3() => !_floodDescription3.Clean;
         private Value<bool?> _floodInsuranceEscrowed;
         public bool? FloodInsuranceEscrowed { get { return _floodInsuranceEscrowed; } set { _floodInsuranceEscrowed = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsuranceEscrowed() => !_floodInsuranceEscrowed.Clean;
         private Value<string> _floodReplacementValue;
         public string FloodReplacementValue { get { return _floodReplacementValue; } set { _floodReplacementValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodReplacementValue() => !_floodReplacementValue.Clean;
         private Value<string> _hazardDescription1;
         public string HazardDescription1 { get { return _hazardDescription1; } set { _hazardDescription1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardDescription1() => !_hazardDescription1.Clean;
         private Value<string> _hazardDescription2;
         public string HazardDescription2 { get { return _hazardDescription2; } set { _hazardDescription2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardDescription2() => !_hazardDescription2.Clean;
         private Value<string> _hazardDescription3;
         public string HazardDescription3 { get { return _hazardDescription3; } set { _hazardDescription3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardDescription3() => !_hazardDescription3.Clean;
         private Value<bool?> _hazardInsuranceEscrowed;
         public bool? HazardInsuranceEscrowed { get { return _hazardInsuranceEscrowed; } set { _hazardInsuranceEscrowed = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardInsuranceEscrowed() => !_hazardInsuranceEscrowed.Clean;
         private Value<string> _hazardReplacementValue;
         public string HazardReplacementValue { get { return _hazardReplacementValue; } set { _hazardReplacementValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazardReplacementValue() => !_hazardReplacementValue.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _maximumDeductibleFloodAmount;
         public decimal? MaximumDeductibleFloodAmount { get { return _maximumDeductibleFloodAmount; } set { _maximumDeductibleFloodAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumDeductibleFloodAmount() => !_maximumDeductibleFloodAmount.Clean;
         private Value<decimal?> _maximumDeductibleFloodPercentage;
         public decimal? MaximumDeductibleFloodPercentage { get { return _maximumDeductibleFloodPercentage; } set { _maximumDeductibleFloodPercentage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumDeductibleFloodPercentage() => !_maximumDeductibleFloodPercentage.Clean;
         private Value<decimal?> _maximumDeductibleHazardAmount;
         public decimal? MaximumDeductibleHazardAmount { get { return _maximumDeductibleHazardAmount; } set { _maximumDeductibleHazardAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumDeductibleHazardAmount() => !_maximumDeductibleHazardAmount.Clean;
         private Value<decimal?> _maximumDeductibleHazardPercentage;
         public decimal? MaximumDeductibleHazardPercentage { get { return _maximumDeductibleHazardPercentage; } set { _maximumDeductibleHazardPercentage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaximumDeductibleHazardPercentage() => !_maximumDeductibleHazardPercentage.Clean;
         private Value<bool?> _titleContract;
         public bool? TitleContract { get { return _titleContract; } set { _titleContract = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleContract() => !_titleContract.Clean;
         private Value<string> _titleDescription1;
         public string TitleDescription1 { get { return _titleDescription1; } set { _titleDescription1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleDescription1() => !_titleDescription1.Clean;
         private Value<string> _titleDescription2;
         public string TitleDescription2 { get { return _titleDescription2; } set { _titleDescription2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleDescription2() => !_titleDescription2.Clean;
         private Value<string> _titleDescription3;
         public string TitleDescription3 { get { return _titleDescription3; } set { _titleDescription3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleDescription3() => !_titleDescription3.Clean;
         private Value<bool?> _titleInsRequirements;
         public bool? TitleInsRequirements { get { return _titleInsRequirements; } set { _titleInsRequirements = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleInsRequirements() => !_titleInsRequirements.Clean;
         private Value<bool?> _titleMailAway;
         public bool? TitleMailAway { get { return _titleMailAway; } set { _titleMailAway = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleMailAway() => !_titleMailAway.Clean;
         private Value<bool?> _titlePriorTitlePolicy;
         public bool? TitlePriorTitlePolicy { get { return _titlePriorTitlePolicy; } set { _titlePriorTitlePolicy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitlePriorTitlePolicy() => !_titlePriorTitlePolicy.Clean;
         private Value<bool?> _titleSurvey;
         public bool? TitleSurvey { get { return _titleSurvey; } set { _titleSurvey = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleSurvey() => !_titleSurvey.Clean;
         private Value<string> _titleTypeOfProperty;
         public string TitleTypeOfProperty { get { return _titleTypeOfProperty; } set { _titleTypeOfProperty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleTypeOfProperty() => !_titleTypeOfProperty.Clean;
         private Value<bool?> _titleWarrantyDeed;
         public bool? TitleWarrantyDeed { get { return _titleWarrantyDeed; } set { _titleWarrantyDeed = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitleWarrantyDeed() => !_titleWarrantyDeed.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -251,5 +175,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

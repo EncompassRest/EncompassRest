@@ -5,48 +5,28 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogComment
+    public sealed partial class LogComment : IClean
     {
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedBy() => !_addedBy.Clean;
         private Value<string> _addedByName;
         public string AddedByName { get { return _addedByName; } set { _addedByName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedByName() => !_addedByName.Clean;
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !_comments.Clean;
         private Value<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !_date.Clean;
         private Value<int?> _forRoleId;
         public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeForRoleId() => !_forRoleId.Clean;
         private Value<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !_guid.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isInternal;
         public bool? IsInternal { get { return _isInternal; } set { _isInternal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsInternal() => !_isInternal.Clean;
         private Value<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedBy() => !_reviewedBy.Clean;
         private Value<DateTime?> _reviewedDate;
         public DateTime? ReviewedDate { get { return _reviewedDate; } set { _reviewedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedDate() => !_reviewedDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -83,5 +63,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

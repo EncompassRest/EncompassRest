@@ -5,28 +5,18 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PurchaseAdvicePayout
+    public sealed partial class PurchaseAdvicePayout : IClean
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmount() => !_amount.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<decimal?> _diffAmount;
         public decimal? DiffAmount { get { return _diffAmount; } set { _diffAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDiffAmount() => !_diffAmount.Clean;
         private Value<decimal?> _expectedAmount;
         public decimal? ExpectedAmount { get { return _expectedAmount; } set { _expectedAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpectedAmount() => !_expectedAmount.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -53,5 +43,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

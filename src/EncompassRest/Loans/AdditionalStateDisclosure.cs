@@ -5,24 +5,16 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AdditionalStateDisclosure
+    public sealed partial class AdditionalStateDisclosure : IClean
     {
         private Value<string> _disclosureName;
         public string DisclosureName { get { return _disclosureName; } set { _disclosureName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureName() => !_disclosureName.Clean;
         private Value<string> _disclosureValue;
         public string DisclosureValue { get { return _disclosureValue; } set { _disclosureValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisclosureValue() => !_disclosureValue.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _stateCode;
         public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStateCode() => !_stateCode.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,5 +39,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

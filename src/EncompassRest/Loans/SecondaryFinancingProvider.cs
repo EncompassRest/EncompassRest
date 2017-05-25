@@ -5,48 +5,28 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SecondaryFinancingProvider
+    public sealed partial class SecondaryFinancingProvider : IClean
     {
         private Value<decimal?> _financingAmount;
         public decimal? FinancingAmount { get { return _financingAmount; } set { _financingAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFinancingAmount() => !_financingAmount.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _secondaryFinancingProviderType;
         public string SecondaryFinancingProviderType { get { return _secondaryFinancingProviderType; } set { _secondaryFinancingProviderType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSecondaryFinancingProviderType() => !_secondaryFinancingProviderType.Clean;
         private Value<bool?> _sellerFundedDapIndicator;
         public bool? SellerFundedDapIndicator { get { return _sellerFundedDapIndicator; } set { _sellerFundedDapIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSellerFundedDapIndicator() => !_sellerFundedDapIndicator.Clean;
         private Value<string> _source;
         public string Source { get { return _source; } set { _source = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSource() => !_source.Clean;
         private Value<bool?> _sourceFromFamilyIndicator;
         public bool? SourceFromFamilyIndicator { get { return _sourceFromFamilyIndicator; } set { _sourceFromFamilyIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromFamilyIndicator() => !_sourceFromFamilyIndicator.Clean;
         private Value<bool?> _sourceFromGovernmentIndicator;
         public bool? SourceFromGovernmentIndicator { get { return _sourceFromGovernmentIndicator; } set { _sourceFromGovernmentIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromGovernmentIndicator() => !_sourceFromGovernmentIndicator.Clean;
         private Value<bool?> _sourceFromNPIndicator;
         public bool? SourceFromNPIndicator { get { return _sourceFromNPIndicator; } set { _sourceFromNPIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromNPIndicator() => !_sourceFromNPIndicator.Clean;
         private Value<bool?> _sourceFromOtherIndicator;
         public bool? SourceFromOtherIndicator { get { return _sourceFromOtherIndicator; } set { _sourceFromOtherIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceFromOtherIndicator() => !_sourceFromOtherIndicator.Clean;
         private Value<string> _sourceOtherDetail;
         public string SourceOtherDetail { get { return _sourceOtherDetail; } set { _sourceOtherDetail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSourceOtherDetail() => !_sourceOtherDetail.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -83,5 +63,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

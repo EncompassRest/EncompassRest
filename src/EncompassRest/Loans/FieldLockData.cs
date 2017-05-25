@@ -5,20 +5,14 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FieldLockData
+    public sealed partial class FieldLockData : IClean
     {
         private Value<bool?> _lockRemoved;
         public bool? LockRemoved { get { return _lockRemoved; } set { _lockRemoved = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLockRemoved() => !_lockRemoved.Clean;
         private Value<string> _modelPath;
         public string ModelPath { get { return _modelPath; } set { _modelPath = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModelPath() => !_modelPath.Clean;
         private Value<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeValue() => !_value.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -41,5 +35,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

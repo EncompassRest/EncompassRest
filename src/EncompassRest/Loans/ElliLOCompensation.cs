@@ -5,164 +5,86 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ElliLOCompensation
+    public sealed partial class ElliLOCompensation : IClean
     {
         private Value<decimal?> _adjustedPlanAdditonalAmountForBroker;
         public decimal? AdjustedPlanAdditonalAmountForBroker { get { return _adjustedPlanAdditonalAmountForBroker; } set { _adjustedPlanAdditonalAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanAdditonalAmountForBroker() => !_adjustedPlanAdditonalAmountForBroker.Clean;
         private Value<decimal?> _adjustedPlanAdditonalAmountForOfficer;
         public decimal? AdjustedPlanAdditonalAmountForOfficer { get { return _adjustedPlanAdditonalAmountForOfficer; } set { _adjustedPlanAdditonalAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanAdditonalAmountForOfficer() => !_adjustedPlanAdditonalAmountForOfficer.Clean;
         private Value<decimal?> _adjustedPlanAmountForBroker;
         public decimal? AdjustedPlanAmountForBroker { get { return _adjustedPlanAmountForBroker; } set { _adjustedPlanAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanAmountForBroker() => !_adjustedPlanAmountForBroker.Clean;
         private Value<decimal?> _adjustedPlanAmountForOfficer;
         public decimal? AdjustedPlanAmountForOfficer { get { return _adjustedPlanAmountForOfficer; } set { _adjustedPlanAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanAmountForOfficer() => !_adjustedPlanAmountForOfficer.Clean;
         private Value<decimal?> _adjustedPlanRateForBroker;
         public decimal? AdjustedPlanRateForBroker { get { return _adjustedPlanRateForBroker; } set { _adjustedPlanRateForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanRateForBroker() => !_adjustedPlanRateForBroker.Clean;
         private Value<decimal?> _adjustedPlanRateForOfficer;
         public decimal? AdjustedPlanRateForOfficer { get { return _adjustedPlanRateForOfficer; } set { _adjustedPlanRateForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustedPlanRateForOfficer() => !_adjustedPlanRateForOfficer.Clean;
         private Value<string> _adjustmentDescription;
         public string AdjustmentDescription { get { return _adjustmentDescription; } set { _adjustmentDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentDescription() => !_adjustmentDescription.Clean;
         private Value<string> _adjustmentDescriptionForOfficer;
         public string AdjustmentDescriptionForOfficer { get { return _adjustmentDescriptionForOfficer; } set { _adjustmentDescriptionForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentDescriptionForOfficer() => !_adjustmentDescriptionForOfficer.Clean;
         private Value<decimal?> _basePlanAdditonalAmountForBroker;
         public decimal? BasePlanAdditonalAmountForBroker { get { return _basePlanAdditonalAmountForBroker; } set { _basePlanAdditonalAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanAdditonalAmountForBroker() => !_basePlanAdditonalAmountForBroker.Clean;
         private Value<decimal?> _basePlanAdditonalAmountForOfficer;
         public decimal? BasePlanAdditonalAmountForOfficer { get { return _basePlanAdditonalAmountForOfficer; } set { _basePlanAdditonalAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanAdditonalAmountForOfficer() => !_basePlanAdditonalAmountForOfficer.Clean;
         private Value<decimal?> _basePlanAmountForBroker;
         public decimal? BasePlanAmountForBroker { get { return _basePlanAmountForBroker; } set { _basePlanAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanAmountForBroker() => !_basePlanAmountForBroker.Clean;
         private Value<decimal?> _basePlanAmountForOfficer;
         public decimal? BasePlanAmountForOfficer { get { return _basePlanAmountForOfficer; } set { _basePlanAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanAmountForOfficer() => !_basePlanAmountForOfficer.Clean;
         private Value<decimal?> _basePlanMaximumAmountForBroker;
         public decimal? BasePlanMaximumAmountForBroker { get { return _basePlanMaximumAmountForBroker; } set { _basePlanMaximumAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanMaximumAmountForBroker() => !_basePlanMaximumAmountForBroker.Clean;
         private Value<decimal?> _basePlanMaximumAmountForOfficer;
         public decimal? BasePlanMaximumAmountForOfficer { get { return _basePlanMaximumAmountForOfficer; } set { _basePlanMaximumAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanMaximumAmountForOfficer() => !_basePlanMaximumAmountForOfficer.Clean;
         private Value<decimal?> _basePlanMinimumAmountForBroker;
         public decimal? BasePlanMinimumAmountForBroker { get { return _basePlanMinimumAmountForBroker; } set { _basePlanMinimumAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanMinimumAmountForBroker() => !_basePlanMinimumAmountForBroker.Clean;
         private Value<decimal?> _basePlanMinimumAmountForOfficer;
         public decimal? BasePlanMinimumAmountForOfficer { get { return _basePlanMinimumAmountForOfficer; } set { _basePlanMinimumAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanMinimumAmountForOfficer() => !_basePlanMinimumAmountForOfficer.Clean;
         private Value<decimal?> _basePlanRateForBroker;
         public decimal? BasePlanRateForBroker { get { return _basePlanRateForBroker; } set { _basePlanRateForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanRateForBroker() => !_basePlanRateForBroker.Clean;
         private Value<decimal?> _basePlanRateForOfficer;
         public decimal? BasePlanRateForOfficer { get { return _basePlanRateForOfficer; } set { _basePlanRateForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePlanRateForOfficer() => !_basePlanRateForOfficer.Clean;
         private Value<decimal?> _bonusCompAdditonalAmount;
         public decimal? BonusCompAdditonalAmount { get { return _bonusCompAdditonalAmount; } set { _bonusCompAdditonalAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBonusCompAdditonalAmount() => !_bonusCompAdditonalAmount.Clean;
         private Value<decimal?> _bonusCompAmount;
         public decimal? BonusCompAmount { get { return _bonusCompAmount; } set { _bonusCompAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBonusCompAmount() => !_bonusCompAmount.Clean;
         private Value<decimal?> _bonusCompRate;
         public decimal? BonusCompRate { get { return _bonusCompRate; } set { _bonusCompRate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBonusCompRate() => !_bonusCompRate.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<DateTime?> _lastAppliedDate;
         public DateTime? LastAppliedDate { get { return _lastAppliedDate; } set { _lastAppliedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastAppliedDate() => !_lastAppliedDate.Clean;
         private Value<string> _lastAppliedDateTime;
         public string LastAppliedDateTime { get { return _lastAppliedDateTime; } set { _lastAppliedDateTime = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastAppliedDateTime() => !_lastAppliedDateTime.Clean;
         private Value<string> _loanAmountType;
         public string LoanAmountType { get { return _loanAmountType; } set { _loanAmountType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanAmountType() => !_loanAmountType.Clean;
         private Value<string> _loanAmountTypeForOfficer;
         public string LoanAmountTypeForOfficer { get { return _loanAmountTypeForOfficer; } set { _loanAmountTypeForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanAmountTypeForOfficer() => !_loanAmountTypeForOfficer.Clean;
         private Value<string> _loanOriginatorID;
         public string LoanOriginatorID { get { return _loanOriginatorID; } set { _loanOriginatorID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanOriginatorID() => !_loanOriginatorID.Clean;
         private Value<string> _loanOriginatorIDForOfficer;
         public string LoanOriginatorIDForOfficer { get { return _loanOriginatorIDForOfficer; } set { _loanOriginatorIDForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanOriginatorIDForOfficer() => !_loanOriginatorIDForOfficer.Clean;
         private Value<string> _loanOriginatorName;
         public string LoanOriginatorName { get { return _loanOriginatorName; } set { _loanOriginatorName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanOriginatorName() => !_loanOriginatorName.Clean;
         private Value<string> _loanOriginatorNameForOfficer;
         public string LoanOriginatorNameForOfficer { get { return _loanOriginatorNameForOfficer; } set { _loanOriginatorNameForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanOriginatorNameForOfficer() => !_loanOriginatorNameForOfficer.Clean;
         private Value<decimal?> _netAdjustedAmountForBroker;
         public decimal? NetAdjustedAmountForBroker { get { return _netAdjustedAmountForBroker; } set { _netAdjustedAmountForBroker = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNetAdjustedAmountForBroker() => !_netAdjustedAmountForBroker.Clean;
         private Value<decimal?> _netAdjustedAmountForOfficer;
         public decimal? NetAdjustedAmountForOfficer { get { return _netAdjustedAmountForOfficer; } set { _netAdjustedAmountForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNetAdjustedAmountForOfficer() => !_netAdjustedAmountForOfficer.Clean;
         private Value<DateTime?> _planDate;
         public DateTime? PlanDate { get { return _planDate; } set { _planDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePlanDate() => !_planDate.Clean;
         private Value<string> _planName;
         public string PlanName { get { return _planName; } set { _planName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePlanName() => !_planName.Clean;
         private Value<string> _planNameForOfficer;
         public string PlanNameForOfficer { get { return _planNameForOfficer; } set { _planNameForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePlanNameForOfficer() => !_planNameForOfficer.Clean;
         private Value<string> _roundingMethod;
         public string RoundingMethod { get { return _roundingMethod; } set { _roundingMethod = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoundingMethod() => !_roundingMethod.Clean;
         private Value<string> _roundingMethodForOfficer;
         public string RoundingMethodForOfficer { get { return _roundingMethodForOfficer; } set { _roundingMethodForOfficer = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRoundingMethodForOfficer() => !_roundingMethodForOfficer.Clean;
         private Value<string> _triggerField;
         public string TriggerField { get { return _triggerField; } set { _triggerField = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTriggerField() => !_triggerField.Clean;
         private Value<string> _whoPaidCompensation;
         public string WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWhoPaidCompensation() => !_whoPaidCompensation.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -257,5 +179,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

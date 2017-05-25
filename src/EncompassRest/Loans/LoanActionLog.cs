@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanActionLog
+    public sealed partial class LoanActionLog : IClean
     {
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !_alerts.Clean;
         private Value<List<LogComment>> _commentList;
         public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !_commentList.Clean;
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !_comments.Clean;
         private Value<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _loanActionType;
         public string LoanActionType { get { return _loanActionType; } set { _loanActionType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanActionType() => !_loanActionType.Clean;
         private Value<string> _triggeredBy;
         public string TriggeredBy { get { return _triggeredBy; } set { _triggeredBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTriggeredBy() => !_triggeredBy.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

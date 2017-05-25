@@ -5,888 +5,448 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EmDocument
+    public sealed partial class EmDocument : IClean
     {
         private Value<string> _allngToNtPayToJrsdctn;
         public string AllngToNtPayToJrsdctn { get { return _allngToNtPayToJrsdctn; } set { _allngToNtPayToJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtPayToJrsdctn() => !_allngToNtPayToJrsdctn.Clean;
         private Value<string> _allngToNtPayToOrdNm;
         public string AllngToNtPayToOrdNm { get { return _allngToNtPayToOrdNm; } set { _allngToNtPayToOrdNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtPayToOrdNm() => !_allngToNtPayToOrdNm.Clean;
         private Value<string> _allngToNtPayToOrgTyp;
         public string AllngToNtPayToOrgTyp { get { return _allngToNtPayToOrgTyp; } set { _allngToNtPayToOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtPayToOrgTyp() => !_allngToNtPayToOrgTyp.Clean;
         private Value<string> _allngToNtPayToScsrsClaus;
         public string AllngToNtPayToScsrsClaus { get { return _allngToNtPayToScsrsClaus; } set { _allngToNtPayToScsrsClaus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtPayToScsrsClaus() => !_allngToNtPayToScsrsClaus.Clean;
         private Value<string> _allngToNtSignedByNm;
         public string AllngToNtSignedByNm { get { return _allngToNtSignedByNm; } set { _allngToNtSignedByNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByNm() => !_allngToNtSignedByNm.Clean;
         private Value<string> _allngToNtSignedByNm2;
         public string AllngToNtSignedByNm2 { get { return _allngToNtSignedByNm2; } set { _allngToNtSignedByNm2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByNm2() => !_allngToNtSignedByNm2.Clean;
         private Value<string> _allngToNtSignedByNm3;
         public string AllngToNtSignedByNm3 { get { return _allngToNtSignedByNm3; } set { _allngToNtSignedByNm3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByNm3() => !_allngToNtSignedByNm3.Clean;
         private Value<string> _allngToNtSignedByTtl;
         public string AllngToNtSignedByTtl { get { return _allngToNtSignedByTtl; } set { _allngToNtSignedByTtl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByTtl() => !_allngToNtSignedByTtl.Clean;
         private Value<string> _allngToNtSignedByTtl2;
         public string AllngToNtSignedByTtl2 { get { return _allngToNtSignedByTtl2; } set { _allngToNtSignedByTtl2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByTtl2() => !_allngToNtSignedByTtl2.Clean;
         private Value<string> _allngToNtSignedByTtl3;
         public string AllngToNtSignedByTtl3 { get { return _allngToNtSignedByTtl3; } set { _allngToNtSignedByTtl3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByTtl3() => !_allngToNtSignedByTtl3.Clean;
         private Value<string> _allngToNtSignedByTyp;
         public string AllngToNtSignedByTyp { get { return _allngToNtSignedByTyp; } set { _allngToNtSignedByTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtSignedByTyp() => !_allngToNtSignedByTyp.Clean;
         private Value<string> _allngToNtWithoutRcrse;
         public string AllngToNtWithoutRcrse { get { return _allngToNtWithoutRcrse; } set { _allngToNtWithoutRcrse = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllngToNtWithoutRcrse() => !_allngToNtWithoutRcrse.Clean;
         private Value<string> _apnLbl;
         public string ApnLbl { get { return _apnLbl; } set { _apnLbl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApnLbl() => !_apnLbl.Clean;
         private Value<bool?> _asgnPrepByLblTxtDesc;
         public bool? AsgnPrepByLblTxtDesc { get { return _asgnPrepByLblTxtDesc; } set { _asgnPrepByLblTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAsgnPrepByLblTxtDesc() => !_asgnPrepByLblTxtDesc.Clean;
         private Value<bool?> _asgnRecRtrnLblTxtDesc;
         public bool? AsgnRecRtrnLblTxtDesc { get { return _asgnRecRtrnLblTxtDesc; } set { _asgnRecRtrnLblTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAsgnRecRtrnLblTxtDesc() => !_asgnRecRtrnLblTxtDesc.Clean;
         private Value<string> _benCty;
         public string BenCty { get { return _benCty; } set { _benCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenCty() => !_benCty.Clean;
         private Value<string> _benJrsdctn;
         public string BenJrsdctn { get { return _benJrsdctn; } set { _benJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenJrsdctn() => !_benJrsdctn.Clean;
         private Value<string> _benNm;
         public string BenNm { get { return _benNm; } set { _benNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenNm() => !_benNm.Clean;
         private Value<string> _benOrgTyp;
         public string BenOrgTyp { get { return _benOrgTyp; } set { _benOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenOrgTyp() => !_benOrgTyp.Clean;
         private Value<string> _benStCd;
         public string BenStCd { get { return _benStCd; } set { _benStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenStCd() => !_benStCd.Clean;
         private Value<string> _benStreetAddr1;
         public string BenStreetAddr1 { get { return _benStreetAddr1; } set { _benStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenStreetAddr1() => !_benStreetAddr1.Clean;
         private Value<string> _benStreetAddr2;
         public string BenStreetAddr2 { get { return _benStreetAddr2; } set { _benStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenStreetAddr2() => !_benStreetAddr2.Clean;
         private Value<string> _benZip;
         public string BenZip { get { return _benZip; } set { _benZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenZip() => !_benZip.Clean;
         private Value<string> _closInstrLndCntcInfoCity;
         public string ClosInstrLndCntcInfoCity { get { return _closInstrLndCntcInfoCity; } set { _closInstrLndCntcInfoCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoCity() => !_closInstrLndCntcInfoCity.Clean;
         private Value<string> _closInstrLndCntcInfoCoNm;
         public string ClosInstrLndCntcInfoCoNm { get { return _closInstrLndCntcInfoCoNm; } set { _closInstrLndCntcInfoCoNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoCoNm() => !_closInstrLndCntcInfoCoNm.Clean;
         private Value<string> _closInstrLndCntcInfoSamePtyTypDesc;
         public string ClosInstrLndCntcInfoSamePtyTypDesc { get { return _closInstrLndCntcInfoSamePtyTypDesc; } set { _closInstrLndCntcInfoSamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoSamePtyTypDesc() => !_closInstrLndCntcInfoSamePtyTypDesc.Clean;
         private Value<string> _closInstrLndCntcInfoStCd;
         public string ClosInstrLndCntcInfoStCd { get { return _closInstrLndCntcInfoStCd; } set { _closInstrLndCntcInfoStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoStCd() => !_closInstrLndCntcInfoStCd.Clean;
         private Value<string> _closInstrLndCntcInfoStreetAddr1;
         public string ClosInstrLndCntcInfoStreetAddr1 { get { return _closInstrLndCntcInfoStreetAddr1; } set { _closInstrLndCntcInfoStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoStreetAddr1() => !_closInstrLndCntcInfoStreetAddr1.Clean;
         private Value<string> _closInstrLndCntcInfoStreetAddr2;
         public string ClosInstrLndCntcInfoStreetAddr2 { get { return _closInstrLndCntcInfoStreetAddr2; } set { _closInstrLndCntcInfoStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoStreetAddr2() => !_closInstrLndCntcInfoStreetAddr2.Clean;
         private Value<string> _closInstrLndCntcInfoZip;
         public string ClosInstrLndCntcInfoZip { get { return _closInstrLndCntcInfoZip; } set { _closInstrLndCntcInfoZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrLndCntcInfoZip() => !_closInstrLndCntcInfoZip.Clean;
         private Value<bool?> _closInstrPrtInvLossPayee;
         public bool? ClosInstrPrtInvLossPayee { get { return _closInstrPrtInvLossPayee; } set { _closInstrPrtInvLossPayee = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrPrtInvLossPayee() => !_closInstrPrtInvLossPayee.Clean;
         private Value<bool?> _closInstrStlmtAgtUseLndHud1;
         public bool? ClosInstrStlmtAgtUseLndHud1 { get { return _closInstrStlmtAgtUseLndHud1; } set { _closInstrStlmtAgtUseLndHud1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrStlmtAgtUseLndHud1() => !_closInstrStlmtAgtUseLndHud1.Clean;
         private Value<string> _closInstrTtlPlcyTyp;
         public string ClosInstrTtlPlcyTyp { get { return _closInstrTtlPlcyTyp; } set { _closInstrTtlPlcyTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClosInstrTtlPlcyTyp() => !_closInstrTtlPlcyTyp.Clean;
         private Value<string> _emxmlVersionId;
         public string EmxmlVersionId { get { return _emxmlVersionId; } set { _emxmlVersionId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEmxmlVersionId() => !_emxmlVersionId.Clean;
         private Value<string> _exeClosDocDlvrdToCty;
         public string ExeClosDocDlvrdToCty { get { return _exeClosDocDlvrdToCty; } set { _exeClosDocDlvrdToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToCty() => !_exeClosDocDlvrdToCty.Clean;
         private Value<string> _exeClosDocDlvrdToMiscTxtDesc;
         public string ExeClosDocDlvrdToMiscTxtDesc { get { return _exeClosDocDlvrdToMiscTxtDesc; } set { _exeClosDocDlvrdToMiscTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToMiscTxtDesc() => !_exeClosDocDlvrdToMiscTxtDesc.Clean;
         private Value<string> _exeClosDocDlvrdToNm;
         public string ExeClosDocDlvrdToNm { get { return _exeClosDocDlvrdToNm; } set { _exeClosDocDlvrdToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToNm() => !_exeClosDocDlvrdToNm.Clean;
         private Value<string> _exeClosDocDlvrdToSamePtyTypDesc;
         public string ExeClosDocDlvrdToSamePtyTypDesc { get { return _exeClosDocDlvrdToSamePtyTypDesc; } set { _exeClosDocDlvrdToSamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToSamePtyTypDesc() => !_exeClosDocDlvrdToSamePtyTypDesc.Clean;
         private Value<string> _exeClosDocDlvrdToStCd;
         public string ExeClosDocDlvrdToStCd { get { return _exeClosDocDlvrdToStCd; } set { _exeClosDocDlvrdToStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToStCd() => !_exeClosDocDlvrdToStCd.Clean;
         private Value<string> _exeClosDocDlvrdToStreetAddr1;
         public string ExeClosDocDlvrdToStreetAddr1 { get { return _exeClosDocDlvrdToStreetAddr1; } set { _exeClosDocDlvrdToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToStreetAddr1() => !_exeClosDocDlvrdToStreetAddr1.Clean;
         private Value<string> _exeClosDocDlvrdToStreetAddr2;
         public string ExeClosDocDlvrdToStreetAddr2 { get { return _exeClosDocDlvrdToStreetAddr2; } set { _exeClosDocDlvrdToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToStreetAddr2() => !_exeClosDocDlvrdToStreetAddr2.Clean;
         private Value<string> _exeClosDocDlvrdToZip;
         public string ExeClosDocDlvrdToZip { get { return _exeClosDocDlvrdToZip; } set { _exeClosDocDlvrdToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocDlvrdToZip() => !_exeClosDocDlvrdToZip.Clean;
         private Value<string> _exeClosDocExprDt;
         public string ExeClosDocExprDt { get { return _exeClosDocExprDt; } set { _exeClosDocExprDt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocExprDt() => !_exeClosDocExprDt.Clean;
         private Value<string> _exeClosDocToBeRtrnd;
         public string ExeClosDocToBeRtrnd { get { return _exeClosDocToBeRtrnd; } set { _exeClosDocToBeRtrnd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocToBeRtrnd() => !_exeClosDocToBeRtrnd.Clean;
         private Value<string> _exeClosDocToBeRtrndHrs;
         public string ExeClosDocToBeRtrndHrs { get { return _exeClosDocToBeRtrndHrs; } set { _exeClosDocToBeRtrndHrs = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExeClosDocToBeRtrndHrs() => !_exeClosDocToBeRtrndHrs.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToAddlLine1;
         public string FnlTtlePcyRecDocsSentToAddlLine1 { get { return _fnlTtlePcyRecDocsSentToAddlLine1; } set { _fnlTtlePcyRecDocsSentToAddlLine1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToAddlLine1() => !_fnlTtlePcyRecDocsSentToAddlLine1.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToAddlLine2;
         public string FnlTtlePcyRecDocsSentToAddlLine2 { get { return _fnlTtlePcyRecDocsSentToAddlLine2; } set { _fnlTtlePcyRecDocsSentToAddlLine2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToAddlLine2() => !_fnlTtlePcyRecDocsSentToAddlLine2.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToCty;
         public string FnlTtlePcyRecDocsSentToCty { get { return _fnlTtlePcyRecDocsSentToCty; } set { _fnlTtlePcyRecDocsSentToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToCty() => !_fnlTtlePcyRecDocsSentToCty.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToNm;
         public string FnlTtlePcyRecDocsSentToNm { get { return _fnlTtlePcyRecDocsSentToNm; } set { _fnlTtlePcyRecDocsSentToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToNm() => !_fnlTtlePcyRecDocsSentToNm.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToSamePtyTypDesc;
         public string FnlTtlePcyRecDocsSentToSamePtyTypDesc { get { return _fnlTtlePcyRecDocsSentToSamePtyTypDesc; } set { _fnlTtlePcyRecDocsSentToSamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToSamePtyTypDesc() => !_fnlTtlePcyRecDocsSentToSamePtyTypDesc.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToStcd;
         public string FnlTtlePcyRecDocsSentToStcd { get { return _fnlTtlePcyRecDocsSentToStcd; } set { _fnlTtlePcyRecDocsSentToStcd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToStcd() => !_fnlTtlePcyRecDocsSentToStcd.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToStreetAddr1;
         public string FnlTtlePcyRecDocsSentToStreetAddr1 { get { return _fnlTtlePcyRecDocsSentToStreetAddr1; } set { _fnlTtlePcyRecDocsSentToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToStreetAddr1() => !_fnlTtlePcyRecDocsSentToStreetAddr1.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToStreetAddr2;
         public string FnlTtlePcyRecDocsSentToStreetAddr2 { get { return _fnlTtlePcyRecDocsSentToStreetAddr2; } set { _fnlTtlePcyRecDocsSentToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToStreetAddr2() => !_fnlTtlePcyRecDocsSentToStreetAddr2.Clean;
         private Value<string> _fnlTtlePcyRecDocsSentToZip;
         public string FnlTtlePcyRecDocsSentToZip { get { return _fnlTtlePcyRecDocsSentToZip; } set { _fnlTtlePcyRecDocsSentToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFnlTtlePcyRecDocsSentToZip() => !_fnlTtlePcyRecDocsSentToZip.Clean;
         private Value<string> _hazInsurEndsmtMailToAdtlTxt;
         public string HazInsurEndsmtMailToAdtlTxt { get { return _hazInsurEndsmtMailToAdtlTxt; } set { _hazInsurEndsmtMailToAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToAdtlTxt() => !_hazInsurEndsmtMailToAdtlTxt.Clean;
         private Value<string> _hazInsurEndsmtMailToCty;
         public string HazInsurEndsmtMailToCty { get { return _hazInsurEndsmtMailToCty; } set { _hazInsurEndsmtMailToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToCty() => !_hazInsurEndsmtMailToCty.Clean;
         private Value<string> _hazInsurEndsmtMailToNm;
         public string HazInsurEndsmtMailToNm { get { return _hazInsurEndsmtMailToNm; } set { _hazInsurEndsmtMailToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToNm() => !_hazInsurEndsmtMailToNm.Clean;
         private Value<string> _hazInsurEndsmtMailToStCd;
         public string HazInsurEndsmtMailToStCd { get { return _hazInsurEndsmtMailToStCd; } set { _hazInsurEndsmtMailToStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToStCd() => !_hazInsurEndsmtMailToStCd.Clean;
         private Value<string> _hazInsurEndsmtMailToStreetAddr1;
         public string HazInsurEndsmtMailToStreetAddr1 { get { return _hazInsurEndsmtMailToStreetAddr1; } set { _hazInsurEndsmtMailToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToStreetAddr1() => !_hazInsurEndsmtMailToStreetAddr1.Clean;
         private Value<string> _hazInsurEndsmtMailToStreetAddr2;
         public string HazInsurEndsmtMailToStreetAddr2 { get { return _hazInsurEndsmtMailToStreetAddr2; } set { _hazInsurEndsmtMailToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToStreetAddr2() => !_hazInsurEndsmtMailToStreetAddr2.Clean;
         private Value<string> _hazInsurEndsmtMailToZip;
         public string HazInsurEndsmtMailToZip { get { return _hazInsurEndsmtMailToZip; } set { _hazInsurEndsmtMailToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsurEndsmtMailToZip() => !_hazInsurEndsmtMailToZip.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _mersAdtlCity;
         public string MersAdtlCity { get { return _mersAdtlCity; } set { _mersAdtlCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersAdtlCity() => !_mersAdtlCity.Clean;
         private Value<string> _mersAdtlStCd;
         public string MersAdtlStCd { get { return _mersAdtlStCd; } set { _mersAdtlStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersAdtlStCd() => !_mersAdtlStCd.Clean;
         private Value<string> _mersAdtlStreetAddr1;
         public string MersAdtlStreetAddr1 { get { return _mersAdtlStreetAddr1; } set { _mersAdtlStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersAdtlStreetAddr1() => !_mersAdtlStreetAddr1.Clean;
         private Value<string> _mersAdtlStreetAddr2;
         public string MersAdtlStreetAddr2 { get { return _mersAdtlStreetAddr2; } set { _mersAdtlStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersAdtlStreetAddr2() => !_mersAdtlStreetAddr2.Clean;
         private Value<string> _mersAdtlZip;
         public string MersAdtlZip { get { return _mersAdtlZip; } set { _mersAdtlZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersAdtlZip() => !_mersAdtlZip.Clean;
         private Value<string> _mersCty;
         public string MersCty { get { return _mersCty; } set { _mersCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersCty() => !_mersCty.Clean;
         private Value<string> _mersJrsdctn;
         public string MersJrsdctn { get { return _mersJrsdctn; } set { _mersJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersJrsdctn() => !_mersJrsdctn.Clean;
         private Value<string> _mersName;
         public string MersName { get { return _mersName; } set { _mersName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersName() => !_mersName.Clean;
         private Value<string> _mersOrgTyp;
         public string MersOrgTyp { get { return _mersOrgTyp; } set { _mersOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersOrgTyp() => !_mersOrgTyp.Clean;
         private Value<string> _mersPhoneNum;
         public string MersPhoneNum { get { return _mersPhoneNum; } set { _mersPhoneNum = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersPhoneNum() => !_mersPhoneNum.Clean;
         private Value<string> _mersStCd;
         public string MersStCd { get { return _mersStCd; } set { _mersStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersStCd() => !_mersStCd.Clean;
         private Value<string> _mersStreetAddr1;
         public string MersStreetAddr1 { get { return _mersStreetAddr1; } set { _mersStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersStreetAddr1() => !_mersStreetAddr1.Clean;
         private Value<string> _mersStreetAddr2;
         public string MersStreetAddr2 { get { return _mersStreetAddr2; } set { _mersStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersStreetAddr2() => !_mersStreetAddr2.Clean;
         private Value<string> _mersZip;
         public string MersZip { get { return _mersZip; } set { _mersZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMersZip() => !_mersZip.Clean;
         private Value<string> _ntEndrsmtPayToJrsdctn;
         public string NtEndrsmtPayToJrsdctn { get { return _ntEndrsmtPayToJrsdctn; } set { _ntEndrsmtPayToJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtPayToJrsdctn() => !_ntEndrsmtPayToJrsdctn.Clean;
         private Value<string> _ntEndrsmtPayToOrdNm;
         public string NtEndrsmtPayToOrdNm { get { return _ntEndrsmtPayToOrdNm; } set { _ntEndrsmtPayToOrdNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtPayToOrdNm() => !_ntEndrsmtPayToOrdNm.Clean;
         private Value<string> _ntEndrsmtPayToOrgTyp;
         public string NtEndrsmtPayToOrgTyp { get { return _ntEndrsmtPayToOrgTyp; } set { _ntEndrsmtPayToOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtPayToOrgTyp() => !_ntEndrsmtPayToOrgTyp.Clean;
         private Value<string> _ntEndrsmtPayToScsrsClaus;
         public string NtEndrsmtPayToScsrsClaus { get { return _ntEndrsmtPayToScsrsClaus; } set { _ntEndrsmtPayToScsrsClaus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtPayToScsrsClaus() => !_ntEndrsmtPayToScsrsClaus.Clean;
         private Value<string> _ntEndrsmtSgndBy1MiscTxt;
         public string NtEndrsmtSgndBy1MiscTxt { get { return _ntEndrsmtSgndBy1MiscTxt; } set { _ntEndrsmtSgndBy1MiscTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSgndBy1MiscTxt() => !_ntEndrsmtSgndBy1MiscTxt.Clean;
         private Value<string> _ntEndrsmtSgndBy2MiscTxt;
         public string NtEndrsmtSgndBy2MiscTxt { get { return _ntEndrsmtSgndBy2MiscTxt; } set { _ntEndrsmtSgndBy2MiscTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSgndBy2MiscTxt() => !_ntEndrsmtSgndBy2MiscTxt.Clean;
         private Value<string> _ntEndrsmtSignedByNm;
         public string NtEndrsmtSignedByNm { get { return _ntEndrsmtSignedByNm; } set { _ntEndrsmtSignedByNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByNm() => !_ntEndrsmtSignedByNm.Clean;
         private Value<string> _ntEndrsmtSignedByNm2;
         public string NtEndrsmtSignedByNm2 { get { return _ntEndrsmtSignedByNm2; } set { _ntEndrsmtSignedByNm2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByNm2() => !_ntEndrsmtSignedByNm2.Clean;
         private Value<string> _ntEndrsmtSignedByNm3;
         public string NtEndrsmtSignedByNm3 { get { return _ntEndrsmtSignedByNm3; } set { _ntEndrsmtSignedByNm3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByNm3() => !_ntEndrsmtSignedByNm3.Clean;
         private Value<string> _ntEndrsmtSignedByTtl;
         public string NtEndrsmtSignedByTtl { get { return _ntEndrsmtSignedByTtl; } set { _ntEndrsmtSignedByTtl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByTtl() => !_ntEndrsmtSignedByTtl.Clean;
         private Value<string> _ntEndrsmtSignedByTtl2;
         public string NtEndrsmtSignedByTtl2 { get { return _ntEndrsmtSignedByTtl2; } set { _ntEndrsmtSignedByTtl2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByTtl2() => !_ntEndrsmtSignedByTtl2.Clean;
         private Value<string> _ntEndrsmtSignedByTtl3;
         public string NtEndrsmtSignedByTtl3 { get { return _ntEndrsmtSignedByTtl3; } set { _ntEndrsmtSignedByTtl3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByTtl3() => !_ntEndrsmtSignedByTtl3.Clean;
         private Value<string> _ntEndrsmtSignedByTyp;
         public string NtEndrsmtSignedByTyp { get { return _ntEndrsmtSignedByTyp; } set { _ntEndrsmtSignedByTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtSignedByTyp() => !_ntEndrsmtSignedByTyp.Clean;
         private Value<string> _ntEndrsmtWithoutRcrse;
         public string NtEndrsmtWithoutRcrse { get { return _ntEndrsmtWithoutRcrse; } set { _ntEndrsmtWithoutRcrse = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndrsmtWithoutRcrse() => !_ntEndrsmtWithoutRcrse.Clean;
         private Value<string> _ntEndsmtThrdPtyAddr1;
         public string NtEndsmtThrdPtyAddr1 { get { return _ntEndsmtThrdPtyAddr1; } set { _ntEndsmtThrdPtyAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyAddr1() => !_ntEndsmtThrdPtyAddr1.Clean;
         private Value<string> _ntEndsmtThrdPtyAddr2;
         public string NtEndsmtThrdPtyAddr2 { get { return _ntEndsmtThrdPtyAddr2; } set { _ntEndsmtThrdPtyAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyAddr2() => !_ntEndsmtThrdPtyAddr2.Clean;
         private Value<string> _ntEndsmtThrdPtyCty;
         public string NtEndsmtThrdPtyCty { get { return _ntEndsmtThrdPtyCty; } set { _ntEndsmtThrdPtyCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyCty() => !_ntEndsmtThrdPtyCty.Clean;
         private Value<string> _ntEndsmtThrdPtyJrsdctn;
         public string NtEndsmtThrdPtyJrsdctn { get { return _ntEndsmtThrdPtyJrsdctn; } set { _ntEndsmtThrdPtyJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyJrsdctn() => !_ntEndsmtThrdPtyJrsdctn.Clean;
         private Value<string> _ntEndsmtThrdPtyName;
         public string NtEndsmtThrdPtyName { get { return _ntEndsmtThrdPtyName; } set { _ntEndsmtThrdPtyName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyName() => !_ntEndsmtThrdPtyName.Clean;
         private Value<string> _ntEndsmtThrdPtyOrgTyp;
         public string NtEndsmtThrdPtyOrgTyp { get { return _ntEndsmtThrdPtyOrgTyp; } set { _ntEndsmtThrdPtyOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyOrgTyp() => !_ntEndsmtThrdPtyOrgTyp.Clean;
         private Value<string> _ntEndsmtThrdPtyPhone;
         public string NtEndsmtThrdPtyPhone { get { return _ntEndsmtThrdPtyPhone; } set { _ntEndsmtThrdPtyPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyPhone() => !_ntEndsmtThrdPtyPhone.Clean;
         private Value<string> _ntEndsmtThrdPtyScsrClaus;
         public string NtEndsmtThrdPtyScsrClaus { get { return _ntEndsmtThrdPtyScsrClaus; } set { _ntEndsmtThrdPtyScsrClaus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyScsrClaus() => !_ntEndsmtThrdPtyScsrClaus.Clean;
         private Value<string> _ntEndsmtThrdPtyStCd;
         public string NtEndsmtThrdPtyStCd { get { return _ntEndsmtThrdPtyStCd; } set { _ntEndsmtThrdPtyStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyStCd() => !_ntEndsmtThrdPtyStCd.Clean;
         private Value<string> _ntEndsmtThrdPtyZip;
         public string NtEndsmtThrdPtyZip { get { return _ntEndsmtThrdPtyZip; } set { _ntEndsmtThrdPtyZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtEndsmtThrdPtyZip() => !_ntEndsmtThrdPtyZip.Clean;
         private Value<string> _ntPayToAdtlTxt;
         public string NtPayToAdtlTxt { get { return _ntPayToAdtlTxt; } set { _ntPayToAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToAdtlTxt() => !_ntPayToAdtlTxt.Clean;
         private Value<string> _ntPayToCty;
         public string NtPayToCty { get { return _ntPayToCty; } set { _ntPayToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToCty() => !_ntPayToCty.Clean;
         private Value<string> _ntPayToJrsdctn;
         public string NtPayToJrsdctn { get { return _ntPayToJrsdctn; } set { _ntPayToJrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToJrsdctn() => !_ntPayToJrsdctn.Clean;
         private Value<string> _ntPayToNm;
         public string NtPayToNm { get { return _ntPayToNm; } set { _ntPayToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToNm() => !_ntPayToNm.Clean;
         private Value<string> _ntPayToOrgTyp;
         public string NtPayToOrgTyp { get { return _ntPayToOrgTyp; } set { _ntPayToOrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToOrgTyp() => !_ntPayToOrgTyp.Clean;
         private Value<string> _ntPayToStCd;
         public string NtPayToStCd { get { return _ntPayToStCd; } set { _ntPayToStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToStCd() => !_ntPayToStCd.Clean;
         private Value<string> _ntPayToStreetAddr1;
         public string NtPayToStreetAddr1 { get { return _ntPayToStreetAddr1; } set { _ntPayToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToStreetAddr1() => !_ntPayToStreetAddr1.Clean;
         private Value<string> _ntPayToStreetAddr2;
         public string NtPayToStreetAddr2 { get { return _ntPayToStreetAddr2; } set { _ntPayToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToStreetAddr2() => !_ntPayToStreetAddr2.Clean;
         private Value<string> _ntPayToZip;
         public string NtPayToZip { get { return _ntPayToZip; } set { _ntPayToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNtPayToZip() => !_ntPayToZip.Clean;
         private Value<string> _pmtCpn2PayToAdtlTxt;
         public string PmtCpn2PayToAdtlTxt { get { return _pmtCpn2PayToAdtlTxt; } set { _pmtCpn2PayToAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToAdtlTxt() => !_pmtCpn2PayToAdtlTxt.Clean;
         private Value<string> _pmtCpn2PayToAdtlTxt2;
         public string PmtCpn2PayToAdtlTxt2 { get { return _pmtCpn2PayToAdtlTxt2; } set { _pmtCpn2PayToAdtlTxt2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToAdtlTxt2() => !_pmtCpn2PayToAdtlTxt2.Clean;
         private Value<string> _pmtCpn2PayToCty;
         public string PmtCpn2PayToCty { get { return _pmtCpn2PayToCty; } set { _pmtCpn2PayToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToCty() => !_pmtCpn2PayToCty.Clean;
         private Value<string> _pmtCpn2PayToNm;
         public string PmtCpn2PayToNm { get { return _pmtCpn2PayToNm; } set { _pmtCpn2PayToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToNm() => !_pmtCpn2PayToNm.Clean;
         private Value<string> _pmtCpn2PayToStCd;
         public string PmtCpn2PayToStCd { get { return _pmtCpn2PayToStCd; } set { _pmtCpn2PayToStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToStCd() => !_pmtCpn2PayToStCd.Clean;
         private Value<string> _pmtCpn2PayToStreetAddr1;
         public string PmtCpn2PayToStreetAddr1 { get { return _pmtCpn2PayToStreetAddr1; } set { _pmtCpn2PayToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToStreetAddr1() => !_pmtCpn2PayToStreetAddr1.Clean;
         private Value<string> _pmtCpn2PayToStreetAddr2;
         public string PmtCpn2PayToStreetAddr2 { get { return _pmtCpn2PayToStreetAddr2; } set { _pmtCpn2PayToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToStreetAddr2() => !_pmtCpn2PayToStreetAddr2.Clean;
         private Value<string> _pmtCpn2PayToZip;
         public string PmtCpn2PayToZip { get { return _pmtCpn2PayToZip; } set { _pmtCpn2PayToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpn2PayToZip() => !_pmtCpn2PayToZip.Clean;
         private Value<string> _pmtCpnPayToAdtlTxt;
         public string PmtCpnPayToAdtlTxt { get { return _pmtCpnPayToAdtlTxt; } set { _pmtCpnPayToAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToAdtlTxt() => !_pmtCpnPayToAdtlTxt.Clean;
         private Value<string> _pmtCpnPayToAdtlTxt2;
         public string PmtCpnPayToAdtlTxt2 { get { return _pmtCpnPayToAdtlTxt2; } set { _pmtCpnPayToAdtlTxt2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToAdtlTxt2() => !_pmtCpnPayToAdtlTxt2.Clean;
         private Value<string> _pmtCpnPayToCty;
         public string PmtCpnPayToCty { get { return _pmtCpnPayToCty; } set { _pmtCpnPayToCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToCty() => !_pmtCpnPayToCty.Clean;
         private Value<string> _pmtCpnPayToNm;
         public string PmtCpnPayToNm { get { return _pmtCpnPayToNm; } set { _pmtCpnPayToNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToNm() => !_pmtCpnPayToNm.Clean;
         private Value<string> _pmtCpnPayToStCd;
         public string PmtCpnPayToStCd { get { return _pmtCpnPayToStCd; } set { _pmtCpnPayToStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToStCd() => !_pmtCpnPayToStCd.Clean;
         private Value<string> _pmtCpnPayToStreetAddr1;
         public string PmtCpnPayToStreetAddr1 { get { return _pmtCpnPayToStreetAddr1; } set { _pmtCpnPayToStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToStreetAddr1() => !_pmtCpnPayToStreetAddr1.Clean;
         private Value<string> _pmtCpnPayToStreetAddr2;
         public string PmtCpnPayToStreetAddr2 { get { return _pmtCpnPayToStreetAddr2; } set { _pmtCpnPayToStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToStreetAddr2() => !_pmtCpnPayToStreetAddr2.Clean;
         private Value<string> _pmtCpnPayToZip;
         public string PmtCpnPayToZip { get { return _pmtCpnPayToZip; } set { _pmtCpnPayToZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePmtCpnPayToZip() => !_pmtCpnPayToZip.Clean;
         private Value<string> _prtAdtlDateHud1;
         public string PrtAdtlDateHud1 { get { return _prtAdtlDateHud1; } set { _prtAdtlDateHud1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtAdtlDateHud1() => !_prtAdtlDateHud1.Clean;
         private Value<bool?> _prtAllngToNtBool;
         public bool? PrtAllngToNtBool { get { return _prtAllngToNtBool; } set { _prtAllngToNtBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtAllngToNtBool() => !_prtAllngToNtBool.Clean;
         private Value<bool?> _prtCorpMsgAsgnBool;
         public bool? PrtCorpMsgAsgnBool { get { return _prtCorpMsgAsgnBool; } set { _prtCorpMsgAsgnBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtCorpMsgAsgnBool() => !_prtCorpMsgAsgnBool.Clean;
         private Value<string> _prtDocDtSctyIstrmtNtryAprncDt;
         public string PrtDocDtSctyIstrmtNtryAprncDt { get { return _prtDocDtSctyIstrmtNtryAprncDt; } set { _prtDocDtSctyIstrmtNtryAprncDt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtDocDtSctyIstrmtNtryAprncDt() => !_prtDocDtSctyIstrmtNtryAprncDt.Clean;
         private Value<bool?> _prtIndxTilBool;
         public bool? PrtIndxTilBool { get { return _prtIndxTilBool; } set { _prtIndxTilBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtIndxTilBool() => !_prtIndxTilBool.Clean;
         private Value<bool?> _prtInitBlckNtBool;
         public bool? PrtInitBlckNtBool { get { return _prtInitBlckNtBool; } set { _prtInitBlckNtBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInitBlckNtBool() => !_prtInitBlckNtBool.Clean;
         private Value<bool?> _prtInitBlckSctyIstrmtBool;
         public bool? PrtInitBlckSctyIstrmtBool { get { return _prtInitBlckSctyIstrmtBool; } set { _prtInitBlckSctyIstrmtBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInitBlckSctyIstrmtBool() => !_prtInitBlckSctyIstrmtBool.Clean;
         private Value<bool?> _prtInvLoanNumBool;
         public bool? PrtInvLoanNumBool { get { return _prtInvLoanNumBool; } set { _prtInvLoanNumBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInvLoanNumBool() => !_prtInvLoanNumBool.Clean;
         private Value<bool?> _prtInvLoanNumPmtCpn2Ind;
         public bool? PrtInvLoanNumPmtCpn2Ind { get { return _prtInvLoanNumPmtCpn2Ind; } set { _prtInvLoanNumPmtCpn2Ind = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInvLoanNumPmtCpn2Ind() => !_prtInvLoanNumPmtCpn2Ind.Clean;
         private Value<bool?> _prtInvLoanNumPmtCpnInd;
         public bool? PrtInvLoanNumPmtCpnInd { get { return _prtInvLoanNumPmtCpnInd; } set { _prtInvLoanNumPmtCpnInd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInvLoanNumPmtCpnInd() => !_prtInvLoanNumPmtCpnInd.Clean;
         private Value<bool?> _prtInvLossPayeeHazInsurDisBool;
         public bool? PrtInvLossPayeeHazInsurDisBool { get { return _prtInvLossPayeeHazInsurDisBool; } set { _prtInvLossPayeeHazInsurDisBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtInvLossPayeeHazInsurDisBool() => !_prtInvLossPayeeHazInsurDisBool.Clean;
         private Value<bool?> _prtLoanNumDeedBool;
         public bool? PrtLoanNumDeedBool { get { return _prtLoanNumDeedBool; } set { _prtLoanNumDeedBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtLoanNumDeedBool() => !_prtLoanNumDeedBool.Clean;
         private Value<bool?> _prtNtEndsmtBool;
         public bool? PrtNtEndsmtBool { get { return _prtNtEndsmtBool; } set { _prtNtEndsmtBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtNtEndsmtBool() => !_prtNtEndsmtBool.Clean;
         private Value<bool?> _prtNtPayToCorpMsgBool;
         public bool? PrtNtPayToCorpMsgBool { get { return _prtNtPayToCorpMsgBool; } set { _prtNtPayToCorpMsgBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtNtPayToCorpMsgBool() => !_prtNtPayToCorpMsgBool.Clean;
         private Value<bool?> _prtScsrsClausClosInstBool;
         public bool? PrtScsrsClausClosInstBool { get { return _prtScsrsClausClosInstBool; } set { _prtScsrsClausClosInstBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtScsrsClausClosInstBool() => !_prtScsrsClausClosInstBool.Clean;
         private Value<bool?> _prtScsrsClausHazInsurDisBool;
         public bool? PrtScsrsClausHazInsurDisBool { get { return _prtScsrsClausHazInsurDisBool; } set { _prtScsrsClausHazInsurDisBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtScsrsClausHazInsurDisBool() => !_prtScsrsClausHazInsurDisBool.Clean;
         private Value<bool?> _prtScsrsClausHazInsurLtrBool;
         public bool? PrtScsrsClausHazInsurLtrBool { get { return _prtScsrsClausHazInsurLtrBool; } set { _prtScsrsClausHazInsurLtrBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtScsrsClausHazInsurLtrBool() => !_prtScsrsClausHazInsurLtrBool.Clean;
         private Value<bool?> _prtScsrsClausPmtCpnBool;
         public bool? PrtScsrsClausPmtCpnBool { get { return _prtScsrsClausPmtCpnBool; } set { _prtScsrsClausPmtCpnBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtScsrsClausPmtCpnBool() => !_prtScsrsClausPmtCpnBool.Clean;
         private Value<bool?> _prtSctyIstrmtCorpMsgBool;
         public bool? PrtSctyIstrmtCorpMsgBool { get { return _prtSctyIstrmtCorpMsgBool; } set { _prtSctyIstrmtCorpMsgBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrtSctyIstrmtCorpMsgBool() => !_prtSctyIstrmtCorpMsgBool.Clean;
         private Value<string> _recRtrnAttnLnNmTxtDesc;
         public string RecRtrnAttnLnNmTxtDesc { get { return _recRtrnAttnLnNmTxtDesc; } set { _recRtrnAttnLnNmTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnAttnLnNmTxtDesc() => !_recRtrnAttnLnNmTxtDesc.Clean;
         private Value<string> _recRtrnCty;
         public string RecRtrnCty { get { return _recRtrnCty; } set { _recRtrnCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnCty() => !_recRtrnCty.Clean;
         private Value<string> _recRtrnLblTxtDesc;
         public string RecRtrnLblTxtDesc { get { return _recRtrnLblTxtDesc; } set { _recRtrnLblTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnLblTxtDesc() => !_recRtrnLblTxtDesc.Clean;
         private Value<string> _recRtrnNm;
         public string RecRtrnNm { get { return _recRtrnNm; } set { _recRtrnNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnNm() => !_recRtrnNm.Clean;
         private Value<string> _recRtrnNmSamePtyTypDesc;
         public string RecRtrnNmSamePtyTypDesc { get { return _recRtrnNmSamePtyTypDesc; } set { _recRtrnNmSamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnNmSamePtyTypDesc() => !_recRtrnNmSamePtyTypDesc.Clean;
         private Value<string> _recRtrnPhoneNum;
         public string RecRtrnPhoneNum { get { return _recRtrnPhoneNum; } set { _recRtrnPhoneNum = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnPhoneNum() => !_recRtrnPhoneNum.Clean;
         private Value<string> _recRtrnStCd;
         public string RecRtrnStCd { get { return _recRtrnStCd; } set { _recRtrnStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnStCd() => !_recRtrnStCd.Clean;
         private Value<string> _recRtrnStreetAddr1;
         public string RecRtrnStreetAddr1 { get { return _recRtrnStreetAddr1; } set { _recRtrnStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnStreetAddr1() => !_recRtrnStreetAddr1.Clean;
         private Value<string> _recRtrnStreetAddr2;
         public string RecRtrnStreetAddr2 { get { return _recRtrnStreetAddr2; } set { _recRtrnStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnStreetAddr2() => !_recRtrnStreetAddr2.Clean;
         private Value<string> _recRtrnTollFreePhoneNum;
         public string RecRtrnTollFreePhoneNum { get { return _recRtrnTollFreePhoneNum; } set { _recRtrnTollFreePhoneNum = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnTollFreePhoneNum() => !_recRtrnTollFreePhoneNum.Clean;
         private Value<string> _recRtrnZip;
         public string RecRtrnZip { get { return _recRtrnZip; } set { _recRtrnZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecRtrnZip() => !_recRtrnZip.Clean;
         private Value<bool?> _rtrnExeClosPkgToLndBrchBool;
         public bool? RtrnExeClosPkgToLndBrchBool { get { return _rtrnExeClosPkgToLndBrchBool; } set { _rtrnExeClosPkgToLndBrchBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtrnExeClosPkgToLndBrchBool() => !_rtrnExeClosPkgToLndBrchBool.Clean;
         private Value<string> _rtToCancelNtfcAdtlTxt;
         public string RtToCancelNtfcAdtlTxt { get { return _rtToCancelNtfcAdtlTxt; } set { _rtToCancelNtfcAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcAdtlTxt() => !_rtToCancelNtfcAdtlTxt.Clean;
         private Value<string> _rtToCancelNtfcCty;
         public string RtToCancelNtfcCty { get { return _rtToCancelNtfcCty; } set { _rtToCancelNtfcCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcCty() => !_rtToCancelNtfcCty.Clean;
         private Value<string> _rtToCancelNtfcEmail;
         public string RtToCancelNtfcEmail { get { return _rtToCancelNtfcEmail; } set { _rtToCancelNtfcEmail = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcEmail() => !_rtToCancelNtfcEmail.Clean;
         private Value<string> _rtToCancelNtfcFax;
         public string RtToCancelNtfcFax { get { return _rtToCancelNtfcFax; } set { _rtToCancelNtfcFax = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcFax() => !_rtToCancelNtfcFax.Clean;
         private Value<string> _rtToCancelNtfcNm;
         public string RtToCancelNtfcNm { get { return _rtToCancelNtfcNm; } set { _rtToCancelNtfcNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcNm() => !_rtToCancelNtfcNm.Clean;
         private Value<string> _rtToCancelNtfcStCd;
         public string RtToCancelNtfcStCd { get { return _rtToCancelNtfcStCd; } set { _rtToCancelNtfcStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcStCd() => !_rtToCancelNtfcStCd.Clean;
         private Value<string> _rtToCancelNtfcStreetAddr1;
         public string RtToCancelNtfcStreetAddr1 { get { return _rtToCancelNtfcStreetAddr1; } set { _rtToCancelNtfcStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcStreetAddr1() => !_rtToCancelNtfcStreetAddr1.Clean;
         private Value<string> _rtToCancelNtfcStreetAddr2;
         public string RtToCancelNtfcStreetAddr2 { get { return _rtToCancelNtfcStreetAddr2; } set { _rtToCancelNtfcStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcStreetAddr2() => !_rtToCancelNtfcStreetAddr2.Clean;
         private Value<string> _rtToCancelNtfcZip;
         public string RtToCancelNtfcZip { get { return _rtToCancelNtfcZip; } set { _rtToCancelNtfcZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelNtfcZip() => !_rtToCancelNtfcZip.Clean;
         private Value<string> _rtToCancelTransDtTyp;
         public string RtToCancelTransDtTyp { get { return _rtToCancelTransDtTyp; } set { _rtToCancelTransDtTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRtToCancelTransDtTyp() => !_rtToCancelTransDtTyp.Clean;
         private Value<string> _sctyIstrmtDCTrstFeePct;
         public string SctyIstrmtDCTrstFeePct { get { return _sctyIstrmtDCTrstFeePct; } set { _sctyIstrmtDCTrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtDCTrstFeePct() => !_sctyIstrmtDCTrstFeePct.Clean;
         private Value<string> _sctyIstrmtDEAttyFeePct;
         public string SctyIstrmtDEAttyFeePct { get { return _sctyIstrmtDEAttyFeePct; } set { _sctyIstrmtDEAttyFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtDEAttyFeePct() => !_sctyIstrmtDEAttyFeePct.Clean;
         private Value<decimal?> _sctyIstrmtLAAttyFeePct;
         public decimal? SctyIstrmtLAAttyFeePct { get { return _sctyIstrmtLAAttyFeePct; } set { _sctyIstrmtLAAttyFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtLAAttyFeePct() => !_sctyIstrmtLAAttyFeePct.Clean;
         private Value<decimal?> _sctyIstrmtLAMinAttyFeeAmt;
         public decimal? SctyIstrmtLAMinAttyFeeAmt { get { return _sctyIstrmtLAMinAttyFeeAmt; } set { _sctyIstrmtLAMinAttyFeeAmt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtLAMinAttyFeeAmt() => !_sctyIstrmtLAMinAttyFeeAmt.Clean;
         private Value<string> _sctyIstrmtMDTrstFeePct;
         public string SctyIstrmtMDTrstFeePct { get { return _sctyIstrmtMDTrstFeePct; } set { _sctyIstrmtMDTrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtMDTrstFeePct() => !_sctyIstrmtMDTrstFeePct.Clean;
         private Value<string> _sctyIstrmtMSTrstFeePct;
         public string SctyIstrmtMSTrstFeePct { get { return _sctyIstrmtMSTrstFeePct; } set { _sctyIstrmtMSTrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtMSTrstFeePct() => !_sctyIstrmtMSTrstFeePct.Clean;
         private Value<string> _sctyIstrmtNCAttyFeePct;
         public string SctyIstrmtNCAttyFeePct { get { return _sctyIstrmtNCAttyFeePct; } set { _sctyIstrmtNCAttyFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtNCAttyFeePct() => !_sctyIstrmtNCAttyFeePct.Clean;
         private Value<string> _sctyIstrmtNETrstFeePct;
         public string SctyIstrmtNETrstFeePct { get { return _sctyIstrmtNETrstFeePct; } set { _sctyIstrmtNETrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtNETrstFeePct() => !_sctyIstrmtNETrstFeePct.Clean;
         private Value<string> _sctyIstrmtNVAssmFeeAmt;
         public string SctyIstrmtNVAssmFeeAmt { get { return _sctyIstrmtNVAssmFeeAmt; } set { _sctyIstrmtNVAssmFeeAmt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtNVAssmFeeAmt() => !_sctyIstrmtNVAssmFeeAmt.Clean;
         private Value<string> _sctyIstrmtNVTrstFeePct;
         public string SctyIstrmtNVTrstFeePct { get { return _sctyIstrmtNVTrstFeePct; } set { _sctyIstrmtNVTrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtNVTrstFeePct() => !_sctyIstrmtNVTrstFeePct.Clean;
         private Value<string> _sctyIstrmtOKAssmFeeAmt;
         public string SctyIstrmtOKAssmFeeAmt { get { return _sctyIstrmtOKAssmFeeAmt; } set { _sctyIstrmtOKAssmFeeAmt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtOKAssmFeeAmt() => !_sctyIstrmtOKAssmFeeAmt.Clean;
         private Value<string> _sctyIstrmtPOBoxAddr1;
         public string SctyIstrmtPOBoxAddr1 { get { return _sctyIstrmtPOBoxAddr1; } set { _sctyIstrmtPOBoxAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPOBoxAddr1() => !_sctyIstrmtPOBoxAddr1.Clean;
         private Value<string> _sctyIstrmtPOBoxAddr2;
         public string SctyIstrmtPOBoxAddr2 { get { return _sctyIstrmtPOBoxAddr2; } set { _sctyIstrmtPOBoxAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPOBoxAddr2() => !_sctyIstrmtPOBoxAddr2.Clean;
         private Value<string> _sctyIstrmtPrepByAdtlTxt;
         public string SctyIstrmtPrepByAdtlTxt { get { return _sctyIstrmtPrepByAdtlTxt; } set { _sctyIstrmtPrepByAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByAdtlTxt() => !_sctyIstrmtPrepByAdtlTxt.Clean;
         private Value<string> _sctyIstrmtPrepByCoNm;
         public string SctyIstrmtPrepByCoNm { get { return _sctyIstrmtPrepByCoNm; } set { _sctyIstrmtPrepByCoNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByCoNm() => !_sctyIstrmtPrepByCoNm.Clean;
         private Value<string> _sctyIstrmtPrepByCty;
         public string SctyIstrmtPrepByCty { get { return _sctyIstrmtPrepByCty; } set { _sctyIstrmtPrepByCty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByCty() => !_sctyIstrmtPrepByCty.Clean;
         private Value<string> _sctyIstrmtPrepByIndvNm;
         public string SctyIstrmtPrepByIndvNm { get { return _sctyIstrmtPrepByIndvNm; } set { _sctyIstrmtPrepByIndvNm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByIndvNm() => !_sctyIstrmtPrepByIndvNm.Clean;
         private Value<string> _sctyIstrmtPrepByIndvTtl;
         public string SctyIstrmtPrepByIndvTtl { get { return _sctyIstrmtPrepByIndvTtl; } set { _sctyIstrmtPrepByIndvTtl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByIndvTtl() => !_sctyIstrmtPrepByIndvTtl.Clean;
         private Value<string> _sctyIstrmtPrepByPhone;
         public string SctyIstrmtPrepByPhone { get { return _sctyIstrmtPrepByPhone; } set { _sctyIstrmtPrepByPhone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByPhone() => !_sctyIstrmtPrepByPhone.Clean;
         private Value<string> _sctyIstrmtPrepBySamePtyTypDesc;
         public string SctyIstrmtPrepBySamePtyTypDesc { get { return _sctyIstrmtPrepBySamePtyTypDesc; } set { _sctyIstrmtPrepBySamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepBySamePtyTypDesc() => !_sctyIstrmtPrepBySamePtyTypDesc.Clean;
         private Value<string> _sctyIstrmtPrepByStCd;
         public string SctyIstrmtPrepByStCd { get { return _sctyIstrmtPrepByStCd; } set { _sctyIstrmtPrepByStCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByStCd() => !_sctyIstrmtPrepByStCd.Clean;
         private Value<string> _sctyIstrmtPrepByStreetAddr1;
         public string SctyIstrmtPrepByStreetAddr1 { get { return _sctyIstrmtPrepByStreetAddr1; } set { _sctyIstrmtPrepByStreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByStreetAddr1() => !_sctyIstrmtPrepByStreetAddr1.Clean;
         private Value<string> _sctyIstrmtPrepByStreetAddr2;
         public string SctyIstrmtPrepByStreetAddr2 { get { return _sctyIstrmtPrepByStreetAddr2; } set { _sctyIstrmtPrepByStreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByStreetAddr2() => !_sctyIstrmtPrepByStreetAddr2.Clean;
         private Value<string> _sctyIstrmtPrepByTxt;
         public string SctyIstrmtPrepByTxt { get { return _sctyIstrmtPrepByTxt; } set { _sctyIstrmtPrepByTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByTxt() => !_sctyIstrmtPrepByTxt.Clean;
         private Value<string> _sctyIstrmtPrepByZip;
         public string SctyIstrmtPrepByZip { get { return _sctyIstrmtPrepByZip; } set { _sctyIstrmtPrepByZip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtPrepByZip() => !_sctyIstrmtPrepByZip.Clean;
         private Value<string> _sctyIstrmtTtlAdtlTxt;
         public string SctyIstrmtTtlAdtlTxt { get { return _sctyIstrmtTtlAdtlTxt; } set { _sctyIstrmtTtlAdtlTxt = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtTtlAdtlTxt() => !_sctyIstrmtTtlAdtlTxt.Clean;
         private Value<bool?> _sctyIstrmtTtlAdtlTxtAbvTtl;
         public bool? SctyIstrmtTtlAdtlTxtAbvTtl { get { return _sctyIstrmtTtlAdtlTxtAbvTtl; } set { _sctyIstrmtTtlAdtlTxtAbvTtl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtTtlAdtlTxtAbvTtl() => !_sctyIstrmtTtlAdtlTxtAbvTtl.Clean;
         private Value<string> _sctyIstrmtVATrstFeePct;
         public string SctyIstrmtVATrstFeePct { get { return _sctyIstrmtVATrstFeePct; } set { _sctyIstrmtVATrstFeePct = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSctyIstrmtVATrstFeePct() => !_sctyIstrmtVATrstFeePct.Clean;
         private Value<string> _trst1Cnty;
         public string Trst1Cnty { get { return _trst1Cnty; } set { _trst1Cnty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Cnty() => !_trst1Cnty.Clean;
         private Value<string> _trst1Cty;
         public string Trst1Cty { get { return _trst1Cty; } set { _trst1Cty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Cty() => !_trst1Cty.Clean;
         private Value<bool?> _trst1IndvBool;
         public bool? Trst1IndvBool { get { return _trst1IndvBool; } set { _trst1IndvBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1IndvBool() => !_trst1IndvBool.Clean;
         private Value<string> _trst1Jrsdctn;
         public string Trst1Jrsdctn { get { return _trst1Jrsdctn; } set { _trst1Jrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Jrsdctn() => !_trst1Jrsdctn.Clean;
         private Value<string> _trst1Nm;
         public string Trst1Nm { get { return _trst1Nm; } set { _trst1Nm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Nm() => !_trst1Nm.Clean;
         private Value<string> _trst1OrgTyp;
         public string Trst1OrgTyp { get { return _trst1OrgTyp; } set { _trst1OrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1OrgTyp() => !_trst1OrgTyp.Clean;
         private Value<string> _trst1Phone;
         public string Trst1Phone { get { return _trst1Phone; } set { _trst1Phone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Phone() => !_trst1Phone.Clean;
         private Value<string> _trst1RsdtTxtDesc;
         public string Trst1RsdtTxtDesc { get { return _trst1RsdtTxtDesc; } set { _trst1RsdtTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1RsdtTxtDesc() => !_trst1RsdtTxtDesc.Clean;
         private Value<string> _trst1SamePtyTypDesc;
         public string Trst1SamePtyTypDesc { get { return _trst1SamePtyTypDesc; } set { _trst1SamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1SamePtyTypDesc() => !_trst1SamePtyTypDesc.Clean;
         private Value<string> _trst1StCd;
         public string Trst1StCd { get { return _trst1StCd; } set { _trst1StCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1StCd() => !_trst1StCd.Clean;
         private Value<string> _trst1StreetAddr1;
         public string Trst1StreetAddr1 { get { return _trst1StreetAddr1; } set { _trst1StreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1StreetAddr1() => !_trst1StreetAddr1.Clean;
         private Value<string> _trst1StreetAddr2;
         public string Trst1StreetAddr2 { get { return _trst1StreetAddr2; } set { _trst1StreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1StreetAddr2() => !_trst1StreetAddr2.Clean;
         private Value<string> _trst1Zip;
         public string Trst1Zip { get { return _trst1Zip; } set { _trst1Zip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst1Zip() => !_trst1Zip.Clean;
         private Value<string> _trst2Cnty;
         public string Trst2Cnty { get { return _trst2Cnty; } set { _trst2Cnty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Cnty() => !_trst2Cnty.Clean;
         private Value<string> _trst2Cty;
         public string Trst2Cty { get { return _trst2Cty; } set { _trst2Cty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Cty() => !_trst2Cty.Clean;
         private Value<bool?> _trst2IndvBool;
         public bool? Trst2IndvBool { get { return _trst2IndvBool; } set { _trst2IndvBool = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2IndvBool() => !_trst2IndvBool.Clean;
         private Value<string> _trst2Jrsdctn;
         public string Trst2Jrsdctn { get { return _trst2Jrsdctn; } set { _trst2Jrsdctn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Jrsdctn() => !_trst2Jrsdctn.Clean;
         private Value<string> _trst2Nm;
         public string Trst2Nm { get { return _trst2Nm; } set { _trst2Nm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Nm() => !_trst2Nm.Clean;
         private Value<string> _trst2OrgTyp;
         public string Trst2OrgTyp { get { return _trst2OrgTyp; } set { _trst2OrgTyp = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2OrgTyp() => !_trst2OrgTyp.Clean;
         private Value<string> _trst2Phone;
         public string Trst2Phone { get { return _trst2Phone; } set { _trst2Phone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Phone() => !_trst2Phone.Clean;
         private Value<string> _trst2RsdtTxtDesc;
         public string Trst2RsdtTxtDesc { get { return _trst2RsdtTxtDesc; } set { _trst2RsdtTxtDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2RsdtTxtDesc() => !_trst2RsdtTxtDesc.Clean;
         private Value<string> _trst2SamePtyTypDesc;
         public string Trst2SamePtyTypDesc { get { return _trst2SamePtyTypDesc; } set { _trst2SamePtyTypDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2SamePtyTypDesc() => !_trst2SamePtyTypDesc.Clean;
         private Value<string> _trst2StCd;
         public string Trst2StCd { get { return _trst2StCd; } set { _trst2StCd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2StCd() => !_trst2StCd.Clean;
         private Value<string> _trst2StreetAddr1;
         public string Trst2StreetAddr1 { get { return _trst2StreetAddr1; } set { _trst2StreetAddr1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2StreetAddr1() => !_trst2StreetAddr1.Clean;
         private Value<string> _trst2StreetAddr2;
         public string Trst2StreetAddr2 { get { return _trst2StreetAddr2; } set { _trst2StreetAddr2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2StreetAddr2() => !_trst2StreetAddr2.Clean;
         private Value<string> _trst2Zip;
         public string Trst2Zip { get { return _trst2Zip; } set { _trst2Zip = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrst2Zip() => !_trst2Zip.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -1343,5 +903,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

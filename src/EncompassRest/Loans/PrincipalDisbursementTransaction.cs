@@ -5,68 +5,38 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrincipalDisbursementTransaction
+    public sealed partial class PrincipalDisbursementTransaction : IClean
     {
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !_comments.Clean;
         private Value<string> _createdById;
         public string CreatedById { get { return _createdById; } set { _createdById = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedById() => !_createdById.Clean;
         private Value<string> _createdByName;
         public string CreatedByName { get { return _createdByName; } set { _createdByName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedByName() => !_createdByName.Clean;
         private Value<DateTime?> _createdDateTimeUtc;
         public DateTime? CreatedDateTimeUtc { get { return _createdDateTimeUtc; } set { _createdDateTimeUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreatedDateTimeUtc() => !_createdDateTimeUtc.Clean;
         private Value<DateTime?> _disbursementDate;
         public DateTime? DisbursementDate { get { return _disbursementDate; } set { _disbursementDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDisbursementDate() => !_disbursementDate.Clean;
         private Value<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !_guid.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _institutionName;
         public string InstitutionName { get { return _institutionName; } set { _institutionName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInstitutionName() => !_institutionName.Clean;
         private Value<string> _modifiedById;
         public string ModifiedById { get { return _modifiedById; } set { _modifiedById = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedById() => !_modifiedById.Clean;
         private Value<string> _modifiedByName;
         public string ModifiedByName { get { return _modifiedByName; } set { _modifiedByName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedByName() => !_modifiedByName.Clean;
         private Value<DateTime?> _modifiedDateTimeUtc;
         public DateTime? ModifiedDateTimeUtc { get { return _modifiedDateTimeUtc; } set { _modifiedDateTimeUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedDateTimeUtc() => !_modifiedDateTimeUtc.Clean;
         private Value<string> _servicingPaymentMethod;
         public string ServicingPaymentMethod { get { return _servicingPaymentMethod; } set { _servicingPaymentMethod = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicingPaymentMethod() => !_servicingPaymentMethod.Clean;
         private Value<string> _servicingTransactionType;
         public string ServicingTransactionType { get { return _servicingTransactionType; } set { _servicingTransactionType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeServicingTransactionType() => !_servicingTransactionType.Clean;
         private Value<decimal?> _transactionAmount;
         public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransactionAmount() => !_transactionAmount.Clean;
         private Value<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransactionDate() => !_transactionDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -113,5 +83,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

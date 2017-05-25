@@ -5,64 +5,36 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsDate
+    public sealed partial class Hud1EsDate : IClean
     {
         private Value<decimal?> _aggrMthDisb;
         public decimal? AggrMthDisb { get { return _aggrMthDisb; } set { _aggrMthDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAggrMthDisb() => !_aggrMthDisb.Clean;
         private Value<decimal?> _annualFee;
         public decimal? AnnualFee { get { return _annualFee; } set { _annualFee = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFee() => !_annualFee.Clean;
         private Value<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalance() => !_balance.Clean;
         private Value<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !_date.Clean;
         private Value<decimal?> _floodInsDisb;
         public decimal? FloodInsDisb { get { return _floodInsDisb; } set { _floodInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsDisb() => !_floodInsDisb.Clean;
         private Value<decimal?> _hazInsDisb;
         public decimal? HazInsDisb { get { return _hazInsDisb; } set { _hazInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsDisb() => !_hazInsDisb.Clean;
         private Value<int?> _hud1EsDateIndex;
         public int? Hud1EsDateIndex { get { return _hud1EsDateIndex; } set { _hud1EsDateIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1EsDateIndex() => !_hud1EsDateIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _mtgInsDisb;
         public decimal? MtgInsDisb { get { return _mtgInsDisb; } set { _mtgInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMtgInsDisb() => !_mtgInsDisb.Clean;
         private Value<decimal?> _schoolTaxes;
         public decimal? SchoolTaxes { get { return _schoolTaxes; } set { _schoolTaxes = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSchoolTaxes() => !_schoolTaxes.Clean;
         private Value<decimal?> _taxDisb;
         public decimal? TaxDisb { get { return _taxDisb; } set { _taxDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxDisb() => !_taxDisb.Clean;
         private Value<decimal?> _userDefined1;
         public decimal? UserDefined1 { get { return _userDefined1; } set { _userDefined1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined1() => !_userDefined1.Clean;
         private Value<decimal?> _userDefined2;
         public decimal? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined2() => !_userDefined2.Clean;
         private Value<decimal?> _userDefined3;
         public decimal? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined3() => !_userDefined3.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -107,5 +79,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

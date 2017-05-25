@@ -5,24 +5,16 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogSnapshotField
+    public sealed partial class LogSnapshotField : IClean
     {
         private Value<string> _fieldID;
         public string FieldID { get { return _fieldID; } set { _fieldID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFieldID() => !_fieldID.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _modalPath;
         public string ModalPath { get { return _modalPath; } set { _modalPath = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModalPath() => !_modalPath.Clean;
         private Value<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeValue() => !_value.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -47,5 +39,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,28 +5,18 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010WholePoc
+    public sealed partial class Gfe2010WholePoc : IClean
     {
         private Value<int?> _gfe2010WholePocIndex;
         public int? Gfe2010WholePocIndex { get { return _gfe2010WholePocIndex; } set { _gfe2010WholePocIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010WholePocIndex() => !_gfe2010WholePocIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
         private Value<decimal?> _wholePoc;
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWholePoc() => !_wholePoc.Clean;
         private Value<string> _wholePocPaidByType;
         public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWholePocPaidByType() => !_wholePocPaidByType.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -53,5 +43,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

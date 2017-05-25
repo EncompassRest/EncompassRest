@@ -5,92 +5,50 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Funding
+    public sealed partial class Funding : IClean
     {
         private Value<DateTime?> _collateralSentDate;
         public DateTime? CollateralSentDate { get { return _collateralSentDate; } set { _collateralSentDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCollateralSentDate() => !_collateralSentDate.Clean;
         private Value<string> _funderName;
         public string FunderName { get { return _funderName; } set { _funderName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFunderName() => !_funderName.Clean;
         private Value<string> _funderUrl;
         public string FunderUrl { get { return _funderUrl; } set { _funderUrl = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFunderUrl() => !_funderUrl.Clean;
         private Value<string> _fundingClearedBy;
         public string FundingClearedBy { get { return _fundingClearedBy; } set { _fundingClearedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingClearedBy() => !_fundingClearedBy.Clean;
         private Value<DateTime?> _fundingCloseDate;
         public DateTime? FundingCloseDate { get { return _fundingCloseDate; } set { _fundingCloseDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingCloseDate() => !_fundingCloseDate.Clean;
         private Value<string> _fundingFees;
         public string FundingFees { get { return _fundingFees; } set { _fundingFees = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingFees() => !_fundingFees.Clean;
         private Value<DateTime?> _fundingOrderDate;
         public DateTime? FundingOrderDate { get { return _fundingOrderDate; } set { _fundingOrderDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingOrderDate() => !_fundingOrderDate.Clean;
         private Value<string> _fundingType;
         public string FundingType { get { return _fundingType; } set { _fundingType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundingType() => !_fundingType.Clean;
         private Value<DateTime?> _fundsReleasedDate;
         public DateTime? FundsReleasedDate { get { return _fundsReleasedDate; } set { _fundsReleasedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundsReleasedDate() => !_fundsReleasedDate.Clean;
         private Value<string> _fundsReleaseNumber;
         public string FundsReleaseNumber { get { return _fundsReleaseNumber; } set { _fundsReleaseNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundsReleaseNumber() => !_fundsReleaseNumber.Clean;
         private Value<DateTime?> _fundsSentDate;
         public DateTime? FundsSentDate { get { return _fundsSentDate; } set { _fundsSentDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundsSentDate() => !_fundsSentDate.Clean;
         private Value<string> _fundsWireTo;
         public string FundsWireTo { get { return _fundsWireTo; } set { _fundsWireTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundsWireTo() => !_fundsWireTo.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<DateTime?> _sentToFunderDate;
         public DateTime? SentToFunderDate { get { return _sentToFunderDate; } set { _sentToFunderDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSentToFunderDate() => !_sentToFunderDate.Clean;
         private Value<string> _wiredToAbaNumber;
         public string WiredToAbaNumber { get { return _wiredToAbaNumber; } set { _wiredToAbaNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToAbaNumber() => !_wiredToAbaNumber.Clean;
         private Value<string> _wiredToAccountNumber;
         public string WiredToAccountNumber { get { return _wiredToAccountNumber; } set { _wiredToAccountNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToAccountNumber() => !_wiredToAccountNumber.Clean;
         private Value<string> _wiredToForCreditTo;
         public string WiredToForCreditTo { get { return _wiredToForCreditTo; } set { _wiredToForCreditTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToForCreditTo() => !_wiredToForCreditTo.Clean;
         private Value<string> _wiredToForCreditTo1;
         public string WiredToForCreditTo1 { get { return _wiredToForCreditTo1; } set { _wiredToForCreditTo1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToForCreditTo1() => !_wiredToForCreditTo1.Clean;
         private Value<string> _wiredToForCreditTo2;
         public string WiredToForCreditTo2 { get { return _wiredToForCreditTo2; } set { _wiredToForCreditTo2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToForCreditTo2() => !_wiredToForCreditTo2.Clean;
         private Value<string> _wiredToForFurtherCreditTo1;
         public string WiredToForFurtherCreditTo1 { get { return _wiredToForFurtherCreditTo1; } set { _wiredToForFurtherCreditTo1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToForFurtherCreditTo1() => !_wiredToForFurtherCreditTo1.Clean;
         private Value<string> _wiredToForFurtherCreditTo2;
         public string WiredToForFurtherCreditTo2 { get { return _wiredToForFurtherCreditTo2; } set { _wiredToForFurtherCreditTo2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWiredToForFurtherCreditTo2() => !_wiredToForFurtherCreditTo2.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -149,5 +107,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

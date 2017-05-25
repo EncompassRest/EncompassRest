@@ -5,200 +5,104 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Correspondent
+    public sealed partial class Correspondent : IClean
     {
         private Value<decimal?> _additionalLateFeeCharge;
         public decimal? AdditionalLateFeeCharge { get { return _additionalLateFeeCharge; } set { _additionalLateFeeCharge = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalLateFeeCharge() => !_additionalLateFeeCharge.Clean;
         private Value<DateTime?> _approvedToFundDate;
         public DateTime? ApprovedToFundDate { get { return _approvedToFundDate; } set { _approvedToFundDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApprovedToFundDate() => !_approvedToFundDate.Clean;
         private Value<decimal?> _basePrice;
         public decimal? BasePrice { get { return _basePrice; } set { _basePrice = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBasePrice() => !_basePrice.Clean;
         private Value<string> _commitmentType;
         public string CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommitmentType() => !_commitmentType.Clean;
         private Value<DateTime?> _conditionsReceivedDate;
         public DateTime? ConditionsReceivedDate { get { return _conditionsReceivedDate; } set { _conditionsReceivedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditionsReceivedDate() => !_conditionsReceivedDate.Clean;
         private Value<string> _correspondentStatus;
         public string CorrespondentStatus { get { return _correspondentStatus; } set { _correspondentStatus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCorrespondentStatus() => !_correspondentStatus.Clean;
         private Value<DateTime?> _deliveryExpirationDate;
         public DateTime? DeliveryExpirationDate { get { return _deliveryExpirationDate; } set { _deliveryExpirationDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeliveryExpirationDate() => !_deliveryExpirationDate.Clean;
         private Value<string> _deliveryType;
         public string DeliveryType { get { return _deliveryType; } set { _deliveryType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeliveryType() => !_deliveryType.Clean;
         private Value<DateTime?> _fundedDate;
         public DateTime? FundedDate { get { return _fundedDate; } set { _fundedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFundedDate() => !_fundedDate.Clean;
         private Value<int?> _gracePeriodDays;
         public int? GracePeriodDays { get { return _gracePeriodDays; } set { _gracePeriodDays = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodDays() => !_gracePeriodDays.Clean;
         private Value<DateTime?> _gracePeriodStartDate;
         public DateTime? GracePeriodStartDate { get { return _gracePeriodStartDate; } set { _gracePeriodStartDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodStartDate() => !_gracePeriodStartDate.Clean;
         private Value<string> _gracePeriodStartTrigger;
         public string GracePeriodStartTrigger { get { return _gracePeriodStartTrigger; } set { _gracePeriodStartTrigger = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGracePeriodStartTrigger() => !_gracePeriodStartTrigger.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<DateTime?> _initialSuspenseDate;
         public DateTime? InitialSuspenseDate { get { return _initialSuspenseDate; } set { _initialSuspenseDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInitialSuspenseDate() => !_initialSuspenseDate.Clean;
         private Value<DateTime?> _lateDaysBegin;
         public DateTime? LateDaysBegin { get { return _lateDaysBegin; } set { _lateDaysBegin = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysBegin() => !_lateDaysBegin.Clean;
         private Value<DateTime?> _lateDaysEnd;
         public DateTime? LateDaysEnd { get { return _lateDaysEnd; } set { _lateDaysEnd = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysEnd() => !_lateDaysEnd.Clean;
         private Value<string> _lateDaysEndTrigger;
         public string LateDaysEndTrigger { get { return _lateDaysEndTrigger; } set { _lateDaysEndTrigger = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateDaysEndTrigger() => !_lateDaysEndTrigger.Clean;
         private Value<string> _lateFeeChargeType;
         public string LateFeeChargeType { get { return _lateFeeChargeType; } set { _lateFeeChargeType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeChargeType() => !_lateFeeChargeType.Clean;
         private Value<string> _lateFeeFrequency;
         public string LateFeeFrequency { get { return _lateFeeFrequency; } set { _lateFeeFrequency = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeFrequency() => !_lateFeeFrequency.Clean;
         private Value<string> _lateFeeNotes;
         public string LateFeeNotes { get { return _lateFeeNotes; } set { _lateFeeNotes = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeNotes() => !_lateFeeNotes.Clean;
         private Value<decimal?> _lateFeePercentage;
         public decimal? LateFeePercentage { get { return _lateFeePercentage; } set { _lateFeePercentage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeePercentage() => !_lateFeePercentage.Clean;
         private Value<decimal?> _lateFeeTotalPriceAdjustment;
         public decimal? LateFeeTotalPriceAdjustment { get { return _lateFeeTotalPriceAdjustment; } set { _lateFeeTotalPriceAdjustment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLateFeeTotalPriceAdjustment() => !_lateFeeTotalPriceAdjustment.Clean;
         private Value<DateTime?> _latestConditionsDate;
         public DateTime? LatestConditionsDate { get { return _latestConditionsDate; } set { _latestConditionsDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLatestConditionsDate() => !_latestConditionsDate.Clean;
         private Value<int?> _lFS_CalculateAs;
         public int? LFS_CalculateAs { get { return _lFS_CalculateAs; } set { _lFS_CalculateAs = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_CalculateAs() => !_lFS_CalculateAs.Clean;
         private Value<int?> _lFS_DayCleared;
         public int? LFS_DayCleared { get { return _lFS_DayCleared; } set { _lFS_DayCleared = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayCleared() => !_lFS_DayCleared.Clean;
         private Value<string> _lFS_DayClearedOtherDate;
         public string LFS_DayClearedOtherDate { get { return _lFS_DayClearedOtherDate; } set { _lFS_DayClearedOtherDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayClearedOtherDate() => !_lFS_DayClearedOtherDate.Clean;
         private Value<string> _lFS_DayClearedOtherDateValue;
         public string LFS_DayClearedOtherDateValue { get { return _lFS_DayClearedOtherDateValue; } set { _lFS_DayClearedOtherDateValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_DayClearedOtherDateValue() => !_lFS_DayClearedOtherDateValue.Clean;
         private Value<int?> _lFS_FeeHandledAs;
         public int? LFS_FeeHandledAs { get { return _lFS_FeeHandledAs; } set { _lFS_FeeHandledAs = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_FeeHandledAs() => !_lFS_FeeHandledAs.Clean;
         private Value<int?> _lFS_GracePeriodCalendar;
         public int? LFS_GracePeriodCalendar { get { return _lFS_GracePeriodCalendar; } set { _lFS_GracePeriodCalendar = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodCalendar() => !_lFS_GracePeriodCalendar.Clean;
         private Value<int?> _lFS_GracePeriodDays;
         public int? LFS_GracePeriodDays { get { return _lFS_GracePeriodDays; } set { _lFS_GracePeriodDays = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodDays() => !_lFS_GracePeriodDays.Clean;
         private Value<int?> _lFS_GracePeriodLaterOf;
         public int? LFS_GracePeriodLaterOf { get { return _lFS_GracePeriodLaterOf; } set { _lFS_GracePeriodLaterOf = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodLaterOf() => !_lFS_GracePeriodLaterOf.Clean;
         private Value<int?> _lFS_GracePeriodStarts;
         public int? LFS_GracePeriodStarts { get { return _lFS_GracePeriodStarts; } set { _lFS_GracePeriodStarts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_GracePeriodStarts() => !_lFS_GracePeriodStarts.Clean;
         private Value<int?> _lFS_IncludeDay;
         public int? LFS_IncludeDay { get { return _lFS_IncludeDay; } set { _lFS_IncludeDay = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_IncludeDay() => !_lFS_IncludeDay.Clean;
         private Value<int?> _lFS_LateFeeBasedOn;
         public int? LFS_LateFeeBasedOn { get { return _lFS_LateFeeBasedOn; } set { _lFS_LateFeeBasedOn = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_LateFeeBasedOn() => !_lFS_LateFeeBasedOn.Clean;
         private Value<int?> _lFS_MaxLateDays;
         public int? LFS_MaxLateDays { get { return _lFS_MaxLateDays; } set { _lFS_MaxLateDays = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_MaxLateDays() => !_lFS_MaxLateDays.Clean;
         private Value<string> _lFS_OtherDate;
         public string LFS_OtherDate { get { return _lFS_OtherDate; } set { _lFS_OtherDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_OtherDate() => !_lFS_OtherDate.Clean;
         private Value<string> _lFS_OtherDateValue;
         public string LFS_OtherDateValue { get { return _lFS_OtherDateValue; } set { _lFS_OtherDateValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_OtherDateValue() => !_lFS_OtherDateValue.Clean;
         private Value<int?> _lFS_StartOnWeekend;
         public int? LFS_StartOnWeekend { get { return _lFS_StartOnWeekend; } set { _lFS_StartOnWeekend = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLFS_StartOnWeekend() => !_lFS_StartOnWeekend.Clean;
         private Value<DateTime?> _noteDate;
         public DateTime? NoteDate { get { return _noteDate; } set { _noteDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNoteDate() => !_noteDate.Clean;
         private Value<decimal?> _originalPrincipalBalance;
         public decimal? OriginalPrincipalBalance { get { return _originalPrincipalBalance; } set { _originalPrincipalBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginalPrincipalBalance() => !_originalPrincipalBalance.Clean;
         private Value<string> _ratesheet;
         public string Ratesheet { get { return _ratesheet; } set { _ratesheet = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRatesheet() => !_ratesheet.Clean;
         private Value<DateTime?> _receivedDate;
         public DateTime? ReceivedDate { get { return _receivedDate; } set { _receivedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivedDate() => !_receivedDate.Clean;
         private Value<DateTime?> _rejectedDate;
         public DateTime? RejectedDate { get { return _rejectedDate; } set { _rejectedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejectedDate() => !_rejectedDate.Clean;
         private Value<DateTime?> _submittedforPurchaseDate;
         public DateTime? SubmittedforPurchaseDate { get { return _submittedforPurchaseDate; } set { _submittedforPurchaseDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubmittedforPurchaseDate() => !_submittedforPurchaseDate.Clean;
         private Value<int?> _totalLateDays;
         public int? TotalLateDays { get { return _totalLateDays; } set { _totalLateDays = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLateDays() => !_totalLateDays.Clean;
         private Value<decimal?> _totalLateFee;
         public decimal? TotalLateFee { get { return _totalLateFee; } set { _totalLateFee = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalLateFee() => !_totalLateFee.Clean;
         private Value<decimal?> _unpaidPrincipalBalance;
         public decimal? UnpaidPrincipalBalance { get { return _unpaidPrincipalBalance; } set { _unpaidPrincipalBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUnpaidPrincipalBalance() => !_unpaidPrincipalBalance.Clean;
         private Value<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWithdrawnDate() => !_withdrawnDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -311,5 +215,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class HelocRepaymentDrawPeriod
+    public sealed partial class HelocRepaymentDrawPeriod : IClean
     {
         private Value<decimal?> _apr;
         public decimal? Apr { get { return _apr; } set { _apr = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApr() => !_apr.Clean;
         private Value<bool?> _drawIndicator;
         public bool? DrawIndicator { get { return _drawIndicator; } set { _drawIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDrawIndicator() => !_drawIndicator.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _indexRatePercent;
         public decimal? IndexRatePercent { get { return _indexRatePercent; } set { _indexRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIndexRatePercent() => !_indexRatePercent.Clean;
         private Value<decimal?> _marginRatePercent;
         public decimal? MarginRatePercent { get { return _marginRatePercent; } set { _marginRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMarginRatePercent() => !_marginRatePercent.Clean;
         private Value<decimal?> _minimumMonthlyPaymentAmount;
         public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMinimumMonthlyPaymentAmount() => !_minimumMonthlyPaymentAmount.Clean;
         private Value<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeYear() => !_year.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

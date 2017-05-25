@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -8,12 +10,39 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Utilities
 {
+    internal sealed class CustomContractResolver : DefaultContractResolver
+    {
+        protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+        {
+            var property = base.CreateProperty(member, memberSerialization);
+            var propertyInfo = member as PropertyInfo;
+            if (propertyInfo != null)
+            {
+                if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IClean)))
+                {
+                    property.ShouldSerialize = o => o != null && ((IClean)propertyInfo.GetValue(o))?.Clean == false;
+                }
+                else
+                {
+                    var propertyName = propertyInfo.Name;
+                    var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                    var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IClean)));
+                    if (backingField != null)
+                    {
+                        property.ShouldSerialize = o => o != null && ((IClean)backingField.GetValue(o))?.Clean == false;
+                    }
+                }
+            }
+            return property;
+        }
+    }
+
     internal static class JsonHelper
     {
         private static JsonSerializerSettings DefaultSettings { get; } = new JsonSerializerSettings
         {
             Formatting = Formatting.None,
-            ContractResolver = new DefaultContractResolver
+            ContractResolver = new CustomContractResolver
             {
                 NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false)
             },

@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsItemize
+    public sealed partial class Hud1EsItemize : IClean
     {
         private Value<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !_date.Clean;
         private Value<decimal?> _escrowPaymentBalance;
         public decimal? EscrowPaymentBalance { get { return _escrowPaymentBalance; } set { _escrowPaymentBalance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowPaymentBalance() => !_escrowPaymentBalance.Clean;
         private Value<string> _escrowPaymentDescription;
         public string EscrowPaymentDescription { get { return _escrowPaymentDescription; } set { _escrowPaymentDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowPaymentDescription() => !_escrowPaymentDescription.Clean;
         private Value<decimal?> _escrowPaymentFrom;
         public decimal? EscrowPaymentFrom { get { return _escrowPaymentFrom; } set { _escrowPaymentFrom = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowPaymentFrom() => !_escrowPaymentFrom.Clean;
         private Value<decimal?> _escrowPaymentTo;
         public decimal? EscrowPaymentTo { get { return _escrowPaymentTo; } set { _escrowPaymentTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEscrowPaymentTo() => !_escrowPaymentTo.Clean;
         private Value<int?> _hud1EsItemizeIndex;
         public int? Hud1EsItemizeIndex { get { return _hud1EsItemizeIndex; } set { _hud1EsItemizeIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1EsItemizeIndex() => !_hud1EsItemizeIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

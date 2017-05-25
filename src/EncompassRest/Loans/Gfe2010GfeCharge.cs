@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010GfeCharge
+    public sealed partial class Gfe2010GfeCharge : IClean
     {
         private Value<bool?> _chargeBelow10Indicator;
         public bool? ChargeBelow10Indicator { get { return _chargeBelow10Indicator; } set { _chargeBelow10Indicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeChargeBelow10Indicator() => !_chargeBelow10Indicator.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<int?> _gfe2010GfeChargeIndex;
         public int? Gfe2010GfeChargeIndex { get { return _gfe2010GfeChargeIndex; } set { _gfe2010GfeChargeIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfe2010GfeChargeIndex() => !_gfe2010GfeChargeIndex.Clean;
         private Value<decimal?> _gfeCharge;
         public decimal? GfeCharge { get { return _gfeCharge; } set { _gfeCharge = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeCharge() => !_gfeCharge.Clean;
         private Value<decimal?> _hudCharge;
         public decimal? HudCharge { get { return _hudCharge; } set { _hudCharge = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHudCharge() => !_hudCharge.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLine() => !_line.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

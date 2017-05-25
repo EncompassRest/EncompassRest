@@ -5,32 +5,20 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfeLien
+    public sealed partial class GfeLien : IClean
     {
         private Value<decimal?> _amountOwing;
         public decimal? AmountOwing { get { return _amountOwing; } set { _amountOwing = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmountOwing() => !_amountOwing.Clean;
         private Value<int?> _gfeLienIndex;
         public int? GfeLienIndex { get { return _gfeLienIndex; } set { _gfeLienIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeLienIndex() => !_gfeLienIndex.Clean;
         private Value<string> _gfeLienType;
         public string GfeLienType { get { return _gfeLienType; } set { _gfeLienType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeLienType() => !_gfeLienType.Clean;
         private Value<string> _holderName;
         public string HolderName { get { return _holderName; } set { _holderName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHolderName() => !_holderName.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _priority;
         public string Priority { get { return _priority; } set { _priority = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriority() => !_priority.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -59,5 +47,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

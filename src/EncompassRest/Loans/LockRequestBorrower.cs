@@ -5,44 +5,26 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockRequestBorrower
+    public sealed partial class LockRequestBorrower : IClean
     {
         private Value<string> _equifaxScore;
         public string EquifaxScore { get { return _equifaxScore; } set { _equifaxScore = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEquifaxScore() => !_equifaxScore.Clean;
         private Value<string> _experianScore;
         public string ExperianScore { get { return _experianScore; } set { _experianScore = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExperianScore() => !_experianScore.Clean;
         private Value<string> _firstName;
         public string FirstName { get { return _firstName; } set { _firstName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFirstName() => !_firstName.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isEmpty;
         public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsEmpty() => !_isEmpty.Clean;
         private Value<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLastName() => !_lastName.Clean;
         private Value<int?> _lrbIndex;
         public int? LrbIndex { get { return _lrbIndex; } set { _lrbIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLrbIndex() => !_lrbIndex.Clean;
         private Value<string> _sSN;
         public string SSN { get { return _sSN; } set { _sSN = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSSN() => !_sSN.Clean;
         private Value<string> _transUnionScore;
         public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTransUnionScore() => !_transUnionScore.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -77,5 +59,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

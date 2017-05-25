@@ -5,224 +5,116 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UnderwriterSummary
+    public sealed partial class UnderwriterSummary : IClean
     {
         private Value<string> _appraisal;
         public string Appraisal { get { return _appraisal; } set { _appraisal = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisal() => !_appraisal.Clean;
         private Value<DateTime?> _appraisalCompletedDate;
         public DateTime? AppraisalCompletedDate { get { return _appraisalCompletedDate; } set { _appraisalCompletedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalCompletedDate() => !_appraisalCompletedDate.Clean;
         private Value<DateTime?> _appraisalExpiredDate;
         public DateTime? AppraisalExpiredDate { get { return _appraisalExpiredDate; } set { _appraisalExpiredDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalExpiredDate() => !_appraisalExpiredDate.Clean;
         private Value<DateTime?> _appraisalOrderedDate;
         public DateTime? AppraisalOrderedDate { get { return _appraisalOrderedDate; } set { _appraisalOrderedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalOrderedDate() => !_appraisalOrderedDate.Clean;
         private Value<string> _appraisalType;
         public string AppraisalType { get { return _appraisalType; } set { _appraisalType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalType() => !_appraisalType.Clean;
         private Value<DateTime?> _approvalExpiredDate;
         public DateTime? ApprovalExpiredDate { get { return _approvalExpiredDate; } set { _approvalExpiredDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApprovalExpiredDate() => !_approvalExpiredDate.Clean;
         private Value<string> _approvedBy;
         public string ApprovedBy { get { return _approvedBy; } set { _approvedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApprovedBy() => !_approvedBy.Clean;
         private Value<DateTime?> _approvedDate;
         public DateTime? ApprovedDate { get { return _approvedDate; } set { _approvedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeApprovedDate() => !_approvedDate.Clean;
         private Value<string> _ausNumber;
         public string AusNumber { get { return _ausNumber; } set { _ausNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAusNumber() => !_ausNumber.Clean;
         private Value<DateTime?> _ausRunDate;
         public DateTime? AusRunDate { get { return _ausRunDate; } set { _ausRunDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAusRunDate() => !_ausRunDate.Clean;
         private Value<string> _ausSource;
         public string AusSource { get { return _ausSource; } set { _ausSource = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAusSource() => !_ausSource.Clean;
         private Value<bool?> _benefitRequiredIndicator;
         public bool? BenefitRequiredIndicator { get { return _benefitRequiredIndicator; } set { _benefitRequiredIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBenefitRequiredIndicator() => !_benefitRequiredIndicator.Clean;
         private Value<DateTime?> _clearToCloseDate;
         public DateTime? ClearToCloseDate { get { return _clearToCloseDate; } set { _clearToCloseDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClearToCloseDate() => !_clearToCloseDate.Clean;
         private Value<string> _concerns;
         public string Concerns { get { return _concerns; } set { _concerns = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConcerns() => !_concerns.Clean;
         private Value<string> _conditions;
         public string Conditions { get { return _conditions; } set { _conditions = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditions() => !_conditions.Clean;
         private Value<string> _credit;
         public string Credit { get { return _credit; } set { _credit = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCredit() => !_credit.Clean;
         private Value<DateTime?> _creditApprovalDate;
         public DateTime? CreditApprovalDate { get { return _creditApprovalDate; } set { _creditApprovalDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCreditApprovalDate() => !_creditApprovalDate.Clean;
         private Value<string> _deniedBy;
         public string DeniedBy { get { return _deniedBy; } set { _deniedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeniedBy() => !_deniedBy.Clean;
         private Value<DateTime?> _deniedDate;
         public DateTime? DeniedDate { get { return _deniedDate; } set { _deniedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDeniedDate() => !_deniedDate.Clean;
         private Value<DateTime?> _differentApprovalExpiredDate;
         public DateTime? DifferentApprovalExpiredDate { get { return _differentApprovalExpiredDate; } set { _differentApprovalExpiredDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDifferentApprovalExpiredDate() => !_differentApprovalExpiredDate.Clean;
         private Value<string> _differentApprovedBy;
         public string DifferentApprovedBy { get { return _differentApprovedBy; } set { _differentApprovedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDifferentApprovedBy() => !_differentApprovedBy.Clean;
         private Value<DateTime?> _differentApprovedDate;
         public DateTime? DifferentApprovedDate { get { return _differentApprovedDate; } set { _differentApprovedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDifferentApprovedDate() => !_differentApprovedDate.Clean;
         private Value<string> _exceptions;
         public string Exceptions { get { return _exceptions; } set { _exceptions = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExceptions() => !_exceptions.Clean;
         private Value<string> _exceptionSignOffBy;
         public string ExceptionSignOffBy { get { return _exceptionSignOffBy; } set { _exceptionSignOffBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExceptionSignOffBy() => !_exceptionSignOffBy.Clean;
         private Value<DateTime?> _exceptionSignOffDate;
         public DateTime? ExceptionSignOffDate { get { return _exceptionSignOffDate; } set { _exceptionSignOffDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExceptionSignOffDate() => !_exceptionSignOffDate.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isAgencyManually;
         public bool? IsAgencyManually { get { return _isAgencyManually; } set { _isAgencyManually = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsAgencyManually() => !_isAgencyManually.Clean;
         private Value<bool?> _isAgencyWaiver;
         public bool? IsAgencyWaiver { get { return _isAgencyWaiver; } set { _isAgencyWaiver = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsAgencyWaiver() => !_isAgencyWaiver.Clean;
         private Value<bool?> _isAgencyWithAgreement;
         public bool? IsAgencyWithAgreement { get { return _isAgencyWithAgreement; } set { _isAgencyWithAgreement = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsAgencyWithAgreement() => !_isAgencyWithAgreement.Clean;
         private Value<decimal?> _maxRate;
         public decimal? MaxRate { get { return _maxRate; } set { _maxRate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxRate() => !_maxRate.Clean;
         private Value<DateTime?> _miOrderedDate;
         public DateTime? MiOrderedDate { get { return _miOrderedDate; } set { _miOrderedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMiOrderedDate() => !_miOrderedDate.Clean;
         private Value<DateTime?> _miReceivedDate;
         public DateTime? MiReceivedDate { get { return _miReceivedDate; } set { _miReceivedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMiReceivedDate() => !_miReceivedDate.Clean;
         private Value<decimal?> _modifiedLoanAmount;
         public decimal? ModifiedLoanAmount { get { return _modifiedLoanAmount; } set { _modifiedLoanAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedLoanAmount() => !_modifiedLoanAmount.Clean;
         private Value<decimal?> _modifiedLoanRate;
         public decimal? ModifiedLoanRate { get { return _modifiedLoanRate; } set { _modifiedLoanRate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedLoanRate() => !_modifiedLoanRate.Clean;
         private Value<int?> _modifiedLoanTerm;
         public int? ModifiedLoanTerm { get { return _modifiedLoanTerm; } set { _modifiedLoanTerm = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedLoanTerm() => !_modifiedLoanTerm.Clean;
         private Value<decimal?> _modifiedLtv;
         public decimal? ModifiedLtv { get { return _modifiedLtv; } set { _modifiedLtv = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedLtv() => !_modifiedLtv.Clean;
         private Value<decimal?> _modifiedMonthlyPayment;
         public decimal? ModifiedMonthlyPayment { get { return _modifiedMonthlyPayment; } set { _modifiedMonthlyPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeModifiedMonthlyPayment() => !_modifiedMonthlyPayment.Clean;
         private Value<string> _originalAppraiser;
         public string OriginalAppraiser { get { return _originalAppraiser; } set { _originalAppraiser = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginalAppraiser() => !_originalAppraiser.Clean;
         private Value<decimal?> _originalAppraisersValue;
         public decimal? OriginalAppraisersValue { get { return _originalAppraisersValue; } set { _originalAppraisersValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOriginalAppraisersValue() => !_originalAppraisersValue.Clean;
         private Value<DateTime?> _resubmittedDate;
         public DateTime? ResubmittedDate { get { return _resubmittedDate; } set { _resubmittedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeResubmittedDate() => !_resubmittedDate.Clean;
         private Value<string> _reviewAppraiser;
         public string ReviewAppraiser { get { return _reviewAppraiser; } set { _reviewAppraiser = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewAppraiser() => !_reviewAppraiser.Clean;
         private Value<DateTime?> _reviewCompletedDate;
         public DateTime? ReviewCompletedDate { get { return _reviewCompletedDate; } set { _reviewCompletedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewCompletedDate() => !_reviewCompletedDate.Clean;
         private Value<DateTime?> _reviewRequestedDate;
         public DateTime? ReviewRequestedDate { get { return _reviewRequestedDate; } set { _reviewRequestedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewRequestedDate() => !_reviewRequestedDate.Clean;
         private Value<string> _reviewType;
         public string ReviewType { get { return _reviewType; } set { _reviewType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewType() => !_reviewType.Clean;
         private Value<decimal?> _reviewValue;
         public decimal? ReviewValue { get { return _reviewValue; } set { _reviewValue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewValue() => !_reviewValue.Clean;
         private Value<DateTime?> _sentToDate;
         public DateTime? SentToDate { get { return _sentToDate; } set { _sentToDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSentToDate() => !_sentToDate.Clean;
         private Value<string> _signOffBy;
         public string SignOffBy { get { return _signOffBy; } set { _signOffBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignOffBy() => !_signOffBy.Clean;
         private Value<DateTime?> _signOffDate;
         public DateTime? SignOffDate { get { return _signOffDate; } set { _signOffDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSignOffDate() => !_signOffDate.Clean;
         private Value<string> _strengths;
         public string Strengths { get { return _strengths; } set { _strengths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStrengths() => !_strengths.Clean;
         private Value<DateTime?> _submittedDate;
         public DateTime? SubmittedDate { get { return _submittedDate; } set { _submittedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubmittedDate() => !_submittedDate.Clean;
         private Value<string> _supervisoryAppraiserLicenseNumber;
         public string SupervisoryAppraiserLicenseNumber { get { return _supervisoryAppraiserLicenseNumber; } set { _supervisoryAppraiserLicenseNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSupervisoryAppraiserLicenseNumber() => !_supervisoryAppraiserLicenseNumber.Clean;
         private Value<string> _suspendedBy;
         public string SuspendedBy { get { return _suspendedBy; } set { _suspendedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSuspendedBy() => !_suspendedBy.Clean;
         private Value<DateTime?> _suspendedDate;
         public DateTime? SuspendedDate { get { return _suspendedDate; } set { _suspendedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSuspendedDate() => !_suspendedDate.Clean;
         private Value<string> _suspendedReasons;
         public string SuspendedReasons { get { return _suspendedReasons; } set { _suspendedReasons = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSuspendedReasons() => !_suspendedReasons.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -347,5 +239,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

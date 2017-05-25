@@ -5,232 +5,120 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UnderwritingConditionLog
+    public sealed partial class UnderwritingConditionLog : IClean
     {
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAddedBy() => !_addedBy.Clean;
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlerts() => !_alerts.Clean;
         private Value<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAlertsXml() => !_alertsXml.Clean;
         private Value<bool?> _allowToClearIndicator;
         public bool? AllowToClearIndicator { get { return _allowToClearIndicator; } set { _allowToClearIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAllowToClearIndicator() => !_allowToClearIndicator.Clean;
         private Value<string> _category;
         public string Category { get { return _category; } set { _category = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCategory() => !_category.Clean;
         private Value<bool?> _cleared;
         public bool? Cleared { get { return _cleared; } set { _cleared = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCleared() => !_cleared.Clean;
         private Value<string> _clearedBy;
         public string ClearedBy { get { return _clearedBy; } set { _clearedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeClearedBy() => !_clearedBy.Clean;
         private Value<List<LogComment>> _commentList;
         public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentList() => !_commentList.Clean;
         private Value<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommentListXml() => !_commentListXml.Clean;
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeComments() => !_comments.Clean;
         private Value<DateTime?> _dateAddedUtc;
         public DateTime? DateAddedUtc { get { return _dateAddedUtc; } set { _dateAddedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateAddedUtc() => !_dateAddedUtc.Clean;
         private Value<DateTime?> _dateClearedUtc;
         public DateTime? DateClearedUtc { get { return _dateClearedUtc; } set { _dateClearedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateClearedUtc() => !_dateClearedUtc.Clean;
         private Value<DateTime?> _dateExpected;
         public DateTime? DateExpected { get { return _dateExpected; } set { _dateExpected = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpected() => !_dateExpected.Clean;
         private Value<DateTime?> _dateExpiredUtc;
         public DateTime? DateExpiredUtc { get { return _dateExpiredUtc; } set { _dateExpiredUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateExpiredUtc() => !_dateExpiredUtc.Clean;
         private Value<DateTime?> _dateFulfilledUtc;
         public DateTime? DateFulfilledUtc { get { return _dateFulfilledUtc; } set { _dateFulfilledUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateFulfilledUtc() => !_dateFulfilledUtc.Clean;
         private Value<DateTime?> _dateReceived;
         public DateTime? DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReceived() => !_dateReceived.Clean;
         private Value<DateTime?> _dateReceivedUtc;
         public DateTime? DateReceivedUtc { get { return _dateReceivedUtc; } set { _dateReceivedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReceivedUtc() => !_dateReceivedUtc.Clean;
         private Value<DateTime?> _dateRejectedUtc;
         public DateTime? DateRejectedUtc { get { return _dateRejectedUtc; } set { _dateRejectedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRejectedUtc() => !_dateRejectedUtc.Clean;
         private Value<DateTime?> _dateRequestedUtc;
         public DateTime? DateRequestedUtc { get { return _dateRequestedUtc; } set { _dateRequestedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRequestedUtc() => !_dateRequestedUtc.Clean;
         private Value<DateTime?> _dateRerequestedUtc;
         public DateTime? DateRerequestedUtc { get { return _dateRerequestedUtc; } set { _dateRerequestedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateRerequestedUtc() => !_dateRerequestedUtc.Clean;
         private Value<DateTime?> _dateReviewedUtc;
         public DateTime? DateReviewedUtc { get { return _dateReviewedUtc; } set { _dateReviewedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateReviewedUtc() => !_dateReviewedUtc.Clean;
         private Value<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateUtc() => !_dateUtc.Clean;
         private Value<DateTime?> _dateWaivedUtc;
         public DateTime? DateWaivedUtc { get { return _dateWaivedUtc; } set { _dateWaivedUtc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateWaivedUtc() => !_dateWaivedUtc.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<string> _details;
         public string Details { get { return _details; } set { _details = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDetails() => !_details.Clean;
         private Value<bool?> _expected;
         public bool? Expected { get { return _expected; } set { _expected = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeExpected() => !_expected.Clean;
         private Value<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFileAttachmentsMigrated() => !_fileAttachmentsMigrated.Clean;
         private Value<int?> _forRoleId;
         public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeForRoleId() => !_forRoleId.Clean;
         private Value<bool?> _fulfilled;
         public bool? Fulfilled { get { return _fulfilled; } set { _fulfilled = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFulfilled() => !_fulfilled.Clean;
         private Value<string> _fulfilledBy;
         public string FulfilledBy { get { return _fulfilledBy; } set { _fulfilledBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFulfilledBy() => !_fulfilledBy.Clean;
         private Value<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGuid() => !_guid.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<bool?> _isExternalIndicator;
         public bool? IsExternalIndicator { get { return _isExternalIndicator; } set { _isExternalIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsExternalIndicator() => !_isExternalIndicator.Clean;
         private Value<bool?> _isInternalIndicator;
         public bool? IsInternalIndicator { get { return _isInternalIndicator; } set { _isInternalIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsInternalIndicator() => !_isInternalIndicator.Clean;
         private Value<bool?> _isPastDue;
         public bool? IsPastDue { get { return _isPastDue; } set { _isPastDue = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsPastDue() => !_isPastDue.Clean;
         private Value<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeIsSystemSpecificIndicator() => !_isSystemSpecificIndicator.Clean;
         private Value<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLogRecordIndex() => !_logRecordIndex.Clean;
         private Value<string> _pairId;
         public string PairId { get { return _pairId; } set { _pairId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePairId() => !_pairId.Clean;
         private Value<string> _priorTo;
         public string PriorTo { get { return _priorTo; } set { _priorTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePriorTo() => !_priorTo.Clean;
         private Value<bool?> _received;
         public bool? Received { get { return _received; } set { _received = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceived() => !_received.Clean;
         private Value<string> _receivedBy;
         public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceivedBy() => !_receivedBy.Clean;
         private Value<bool?> _rejected;
         public bool? Rejected { get { return _rejected; } set { _rejected = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejected() => !_rejected.Clean;
         private Value<string> _rejectedBy;
         public string RejectedBy { get { return _rejectedBy; } set { _rejectedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRejectedBy() => !_rejectedBy.Clean;
         private Value<bool?> _requested;
         public bool? Requested { get { return _requested; } set { _requested = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequested() => !_requested.Clean;
         private Value<string> _requestedBy;
         public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequestedBy() => !_requestedBy.Clean;
         private Value<bool?> _rerequested;
         public bool? Rerequested { get { return _rerequested; } set { _rerequested = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequested() => !_rerequested.Clean;
         private Value<string> _rerequestedBy;
         public string RerequestedBy { get { return _rerequestedBy; } set { _rerequestedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRerequestedBy() => !_rerequestedBy.Clean;
         private Value<bool?> _reviewed;
         public bool? Reviewed { get { return _reviewed; } set { _reviewed = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewed() => !_reviewed.Clean;
         private Value<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReviewedBy() => !_reviewedBy.Clean;
         private Value<string> _source;
         public string Source { get { return _source; } set { _source = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSource() => !_source.Clean;
         private Value<string> _status;
         public string Status { get { return _status; } set { _status = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatus() => !_status.Clean;
         private Value<string> _statusDescription;
         public string StatusDescription { get { return _statusDescription; } set { _statusDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeStatusDescription() => !_statusDescription.Clean;
         private Value<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSystemId() => !_systemId.Clean;
         private Value<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTitle() => !_title.Clean;
         private Value<bool?> _waived;
         public bool? Waived { get { return _waived; } set { _waived = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWaived() => !_waived.Clean;
         private Value<string> _waivedBy;
         public string WaivedBy { get { return _waivedBy; } set { _waivedBy = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeWaivedBy() => !_waivedBy.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -359,5 +247,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

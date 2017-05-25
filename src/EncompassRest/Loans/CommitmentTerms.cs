@@ -5,120 +5,64 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CommitmentTerms
+    public sealed partial class CommitmentTerms : IClean
     {
         private Value<DateTime?> _actionDate;
         public DateTime? ActionDate { get { return _actionDate; } set { _actionDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActionDate() => !_actionDate.Clean;
         private Value<string> _additionalConditions;
         public string AdditionalConditions { get { return _additionalConditions; } set { _additionalConditions = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalConditions() => !_additionalConditions.Clean;
         private Value<string> _additionalItems1;
         public string AdditionalItems1 { get { return _additionalItems1; } set { _additionalItems1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalItems1() => !_additionalItems1.Clean;
         private Value<string> _additionalItems2;
         public string AdditionalItems2 { get { return _additionalItems2; } set { _additionalItems2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalItems2() => !_additionalItems2.Clean;
         private Value<string> _additionalItems3;
         public string AdditionalItems3 { get { return _additionalItems3; } set { _additionalItems3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdditionalItems3() => !_additionalItems3.Clean;
         private Value<bool?> _appraisalDone;
         public bool? AppraisalDone { get { return _appraisalDone; } set { _appraisalDone = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAppraisalDone() => !_appraisalDone.Clean;
         private Value<decimal?> _assuranceOfCompletion;
         public decimal? AssuranceOfCompletion { get { return _assuranceOfCompletion; } set { _assuranceOfCompletion = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAssuranceOfCompletion() => !_assuranceOfCompletion.Clean;
         private Value<DateTime?> _commitmentDate;
         public DateTime? CommitmentDate { get { return _commitmentDate; } set { _commitmentDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommitmentDate() => !_commitmentDate.Clean;
         private Value<DateTime?> _commitmentExpired;
         public DateTime? CommitmentExpired { get { return _commitmentExpired; } set { _commitmentExpired = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommitmentExpired() => !_commitmentExpired.Clean;
         private Value<DateTime?> _commitmentIssued;
         public DateTime? CommitmentIssued { get { return _commitmentIssued; } set { _commitmentIssued = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCommitmentIssued() => !_commitmentIssued.Clean;
         private Value<bool?> _conditionalCommitmentUnderActg;
         public bool? ConditionalCommitmentUnderActg { get { return _conditionalCommitmentUnderActg; } set { _conditionalCommitmentUnderActg = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeConditionalCommitmentUnderActg() => !_conditionalCommitmentUnderActg.Clean;
         private Value<bool?> _eligibleForHighLtv;
         public bool? EligibleForHighLtv { get { return _eligibleForHighLtv; } set { _eligibleForHighLtv = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEligibleForHighLtv() => !_eligibleForHighLtv.Clean;
         private Value<int?> _estimatedRemainingYears;
         public int? EstimatedRemainingYears { get { return _estimatedRemainingYears; } set { _estimatedRemainingYears = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeEstimatedRemainingYears() => !_estimatedRemainingYears.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _improvedLivingAreas;
         public string ImprovedLivingAreas { get { return _improvedLivingAreas; } set { _improvedLivingAreas = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeImprovedLivingAreas() => !_improvedLivingAreas.Clean;
         private Value<bool?> _manufacturedHousing;
         public bool? ManufacturedHousing { get { return _manufacturedHousing; } set { _manufacturedHousing = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeManufacturedHousing() => !_manufacturedHousing.Clean;
         private Value<decimal?> _maxInsurableMortgage;
         public decimal? MaxInsurableMortgage { get { return _maxInsurableMortgage; } set { _maxInsurableMortgage = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMaxInsurableMortgage() => !_maxInsurableMortgage.Clean;
         private Value<string> _mortgageeAddress;
         public string MortgageeAddress { get { return _mortgageeAddress; } set { _mortgageeAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageeAddress() => !_mortgageeAddress.Clean;
         private Value<string> _mortgageeCity;
         public string MortgageeCity { get { return _mortgageeCity; } set { _mortgageeCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageeCity() => !_mortgageeCity.Clean;
         private Value<string> _mortgageeName;
         public string MortgageeName { get { return _mortgageeName; } set { _mortgageeName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageeName() => !_mortgageeName.Clean;
         private Value<string> _mortgageePostalCode;
         public string MortgageePostalCode { get { return _mortgageePostalCode; } set { _mortgageePostalCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageePostalCode() => !_mortgageePostalCode.Clean;
         private Value<string> _mortgageeState;
         public string MortgageeState { get { return _mortgageeState; } set { _mortgageeState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMortgageeState() => !_mortgageeState.Clean;
         private Value<string> _otherMonthlyExpenseDescription;
         public string OtherMonthlyExpenseDescription { get { return _otherMonthlyExpenseDescription; } set { _otherMonthlyExpenseDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherMonthlyExpenseDescription() => !_otherMonthlyExpenseDescription.Clean;
         private Value<DateTime?> _reportDate;
         public DateTime? ReportDate { get { return _reportDate; } set { _reportDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportDate() => !_reportDate.Clean;
         private Value<string> _requirementsNumber;
         public string RequirementsNumber { get { return _requirementsNumber; } set { _requirementsNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRequirementsNumber() => !_requirementsNumber.Clean;
         private Value<string> _subdivisionDescription;
         public string SubdivisionDescription { get { return _subdivisionDescription; } set { _subdivisionDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubdivisionDescription() => !_subdivisionDescription.Clean;
         private Value<string> _subdivisionRequirements;
         public string SubdivisionRequirements { get { return _subdivisionRequirements; } set { _subdivisionRequirements = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSubdivisionRequirements() => !_subdivisionRequirements.Clean;
         private Value<decimal?> _totalMonthlyExpense;
         public decimal? TotalMonthlyExpense { get { return _totalMonthlyExpense; } set { _totalMonthlyExpense = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalMonthlyExpense() => !_totalMonthlyExpense.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -191,5 +135,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

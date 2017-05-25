@@ -5,112 +5,60 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLReportInformation
+    public sealed partial class TQLReportInformation : IClean
     {
         private Value<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAltId() => !_altId.Clean;
         private Value<string> _borrowerID1;
         public string BorrowerID1 { get { return _borrowerID1; } set { _borrowerID1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID1() => !_borrowerID1.Clean;
         private Value<string> _borrowerID2;
         public string BorrowerID2 { get { return _borrowerID2; } set { _borrowerID2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID2() => !_borrowerID2.Clean;
         private Value<string> _borrowerID3;
         public string BorrowerID3 { get { return _borrowerID3; } set { _borrowerID3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID3() => !_borrowerID3.Clean;
         private Value<string> _borrowerID4;
         public string BorrowerID4 { get { return _borrowerID4; } set { _borrowerID4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBorrowerID4() => !_borrowerID4.Clean;
         private Value<DateTime?> _completedDate;
         public DateTime? CompletedDate { get { return _completedDate; } set { _completedDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCompletedDate() => !_completedDate.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _investor;
         public string Investor { get { return _investor; } set { _investor = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestor() => !_investor.Clean;
         private Value<DateTime?> _orderDate;
         public DateTime? OrderDate { get { return _orderDate; } set { _orderDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderDate() => !_orderDate.Clean;
         private Value<string> _orderNumber;
         public string OrderNumber { get { return _orderNumber; } set { _orderNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderNumber() => !_orderNumber.Clean;
         private Value<string> _orderStatus;
         public string OrderStatus { get { return _orderStatus; } set { _orderStatus = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOrderStatus() => !_orderStatus.Clean;
         private Value<decimal?> _percentVariance1;
         public decimal? PercentVariance1 { get { return _percentVariance1; } set { _percentVariance1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance1() => !_percentVariance1.Clean;
         private Value<decimal?> _percentVariance2;
         public decimal? PercentVariance2 { get { return _percentVariance2; } set { _percentVariance2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance2() => !_percentVariance2.Clean;
         private Value<decimal?> _percentVariance3;
         public decimal? PercentVariance3 { get { return _percentVariance3; } set { _percentVariance3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance3() => !_percentVariance3.Clean;
         private Value<decimal?> _percentVariance4;
         public decimal? PercentVariance4 { get { return _percentVariance4; } set { _percentVariance4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePercentVariance4() => !_percentVariance4.Clean;
         private Value<string> _productsOrdered;
         public string ProductsOrdered { get { return _productsOrdered; } set { _productsOrdered = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeProductsOrdered() => !_productsOrdered.Clean;
         private Value<string> _reportYear1;
         public string ReportYear1 { get { return _reportYear1; } set { _reportYear1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear1() => !_reportYear1.Clean;
         private Value<string> _reportYear2;
         public string ReportYear2 { get { return _reportYear2; } set { _reportYear2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear2() => !_reportYear2.Clean;
         private Value<string> _reportYear3;
         public string ReportYear3 { get { return _reportYear3; } set { _reportYear3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear3() => !_reportYear3.Clean;
         private Value<string> _reportYear4;
         public string ReportYear4 { get { return _reportYear4; } set { _reportYear4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReportYear4() => !_reportYear4.Clean;
         private Value<decimal?> _totalIncome1;
         public decimal? TotalIncome1 { get { return _totalIncome1; } set { _totalIncome1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome1() => !_totalIncome1.Clean;
         private Value<decimal?> _totalIncome2;
         public decimal? TotalIncome2 { get { return _totalIncome2; } set { _totalIncome2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome2() => !_totalIncome2.Clean;
         private Value<decimal?> _totalIncome3;
         public decimal? TotalIncome3 { get { return _totalIncome3; } set { _totalIncome3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome3() => !_totalIncome3.Clean;
         private Value<decimal?> _totalIncome4;
         public decimal? TotalIncome4 { get { return _totalIncome4; } set { _totalIncome4 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalIncome4() => !_totalIncome4.Clean;
         private Value<string> _transcriptType;
         public string TranscriptType { get { return _transcriptType; } set { _transcriptType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTranscriptType() => !_transcriptType.Clean;
         private Value<string> _userID;
         public string UserID { get { return _userID; } set { _userID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserID() => !_userID.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -179,5 +127,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

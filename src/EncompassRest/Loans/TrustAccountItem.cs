@@ -5,44 +5,26 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TrustAccountItem
+    public sealed partial class TrustAccountItem : IClean
     {
         private Value<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !_date.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _notes;
         public string Notes { get { return _notes; } set { _notes = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNotes() => !_notes.Clean;
         private Value<decimal?> _paymentAmount;
         public decimal? PaymentAmount { get { return _paymentAmount; } set { _paymentAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentAmount() => !_paymentAmount.Clean;
         private Value<string> _paymentCheckNo;
         public string PaymentCheckNo { get { return _paymentCheckNo; } set { _paymentCheckNo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentCheckNo() => !_paymentCheckNo.Clean;
         private Value<decimal?> _receiptAmount;
         public decimal? ReceiptAmount { get { return _receiptAmount; } set { _receiptAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceiptAmount() => !_receiptAmount.Clean;
         private Value<string> _receiptCheckNo;
         public string ReceiptCheckNo { get { return _receiptCheckNo; } set { _receiptCheckNo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeReceiptCheckNo() => !_receiptCheckNo.Clean;
         private Value<int?> _trustAccountItemIndex;
         public int? TrustAccountItemIndex { get { return _trustAccountItemIndex; } set { _trustAccountItemIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTrustAccountItemIndex() => !_trustAccountItemIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -77,5 +59,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

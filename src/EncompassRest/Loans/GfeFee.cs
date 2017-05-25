@@ -5,40 +5,24 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfeFee
+    public sealed partial class GfeFee : IClean
     {
         private Value<string> _amountDescription;
         public string AmountDescription { get { return _amountDescription; } set { _amountDescription = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAmountDescription() => !_amountDescription.Clean;
         private Value<decimal?> _brokerAmount;
         public decimal? BrokerAmount { get { return _brokerAmount; } set { _brokerAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBrokerAmount() => !_brokerAmount.Clean;
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDescription() => !_description.Clean;
         private Value<int?> _gfeFeeIndex;
         public int? GfeFeeIndex { get { return _gfeFeeIndex; } set { _gfeFeeIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeFeeIndex() => !_gfeFeeIndex.Clean;
         private Value<string> _gfeFeeType;
         public string GfeFeeType { get { return _gfeFeeType; } set { _gfeFeeType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeGfeFeeType() => !_gfeFeeType.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _otherAmount;
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeOtherAmount() => !_otherAmount.Clean;
         private Value<string> _rate;
         public string Rate { get { return _rate; } set { _rate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRate() => !_rate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -71,5 +55,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

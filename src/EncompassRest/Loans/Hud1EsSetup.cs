@@ -5,92 +5,50 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsSetup
+    public sealed partial class Hud1EsSetup : IClean
     {
         private Value<bool?> _annualFeePrepaid;
         public bool? AnnualFeePrepaid { get { return _annualFeePrepaid; } set { _annualFeePrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFeePrepaid() => !_annualFeePrepaid.Clean;
         private Value<int?> _annualFees;
         public int? AnnualFees { get { return _annualFees; } set { _annualFees = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAnnualFees() => !_annualFees.Clean;
         private Value<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDate() => !_date.Clean;
         private Value<int?> _floodInsDisb;
         public int? FloodInsDisb { get { return _floodInsDisb; } set { _floodInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsDisb() => !_floodInsDisb.Clean;
         private Value<bool?> _floodInsPrepaid;
         public bool? FloodInsPrepaid { get { return _floodInsPrepaid; } set { _floodInsPrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFloodInsPrepaid() => !_floodInsPrepaid.Clean;
         private Value<int?> _hazInsDisb;
         public int? HazInsDisb { get { return _hazInsDisb; } set { _hazInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsDisb() => !_hazInsDisb.Clean;
         private Value<bool?> _hazInsPrepaid;
         public bool? HazInsPrepaid { get { return _hazInsPrepaid; } set { _hazInsPrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHazInsPrepaid() => !_hazInsPrepaid.Clean;
         private Value<int?> _hud1EsSetupIndex;
         public int? Hud1EsSetupIndex { get { return _hud1EsSetupIndex; } set { _hud1EsSetupIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeHud1EsSetupIndex() => !_hud1EsSetupIndex.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<int?> _mtgInsDisb;
         public int? MtgInsDisb { get { return _mtgInsDisb; } set { _mtgInsDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMtgInsDisb() => !_mtgInsDisb.Clean;
         private Value<bool?> _mtgInsPrepaid;
         public bool? MtgInsPrepaid { get { return _mtgInsPrepaid; } set { _mtgInsPrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMtgInsPrepaid() => !_mtgInsPrepaid.Clean;
         private Value<int?> _schoolTaxes;
         public int? SchoolTaxes { get { return _schoolTaxes; } set { _schoolTaxes = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSchoolTaxes() => !_schoolTaxes.Clean;
         private Value<bool?> _schoolTaxesPrepaid;
         public bool? SchoolTaxesPrepaid { get { return _schoolTaxesPrepaid; } set { _schoolTaxesPrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSchoolTaxesPrepaid() => !_schoolTaxesPrepaid.Clean;
         private Value<int?> _taxDisb;
         public int? TaxDisb { get { return _taxDisb; } set { _taxDisb = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxDisb() => !_taxDisb.Clean;
         private Value<bool?> _taxPrepaid;
         public bool? TaxPrepaid { get { return _taxPrepaid; } set { _taxPrepaid = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxPrepaid() => !_taxPrepaid.Clean;
         private Value<int?> _userDefined1;
         public int? UserDefined1 { get { return _userDefined1; } set { _userDefined1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined1() => !_userDefined1.Clean;
         private Value<int?> _userDefined2;
         public int? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined2() => !_userDefined2.Clean;
         private Value<int?> _userDefined3;
         public int? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefined3() => !_userDefined3.Clean;
         private Value<bool?> _userDefinedPrepaid1;
         public bool? UserDefinedPrepaid1 { get { return _userDefinedPrepaid1; } set { _userDefinedPrepaid1 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefinedPrepaid1() => !_userDefinedPrepaid1.Clean;
         private Value<bool?> _userDefinedPrepaid2;
         public bool? UserDefinedPrepaid2 { get { return _userDefinedPrepaid2; } set { _userDefinedPrepaid2 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefinedPrepaid2() => !_userDefinedPrepaid2.Clean;
         private Value<bool?> _userDefinedPrepaid3;
         public bool? UserDefinedPrepaid3 { get { return _userDefinedPrepaid3; } set { _userDefinedPrepaid3 = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeUserDefinedPrepaid3() => !_userDefinedPrepaid3.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -149,5 +107,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

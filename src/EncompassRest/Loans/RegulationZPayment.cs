@@ -5,36 +5,22 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZPayment
+    public sealed partial class RegulationZPayment : IClean
     {
         private Value<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeBalance() => !_balance.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _interestRatePercent;
         public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRatePercent() => !_interestRatePercent.Clean;
         private Value<decimal?> _monthlyPayment;
         public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyPayment() => !_monthlyPayment.Clean;
         private Value<int?> _numberOfPayments;
         public int? NumberOfPayments { get { return _numberOfPayments; } set { _numberOfPayments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeNumberOfPayments() => !_numberOfPayments.Clean;
         private Value<DateTime?> _paymentDate;
         public DateTime? PaymentDate { get { return _paymentDate; } set { _paymentDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePaymentDate() => !_paymentDate.Clean;
         private Value<int?> _regulationZPaymentIndex;
         public int? RegulationZPaymentIndex { get { return _regulationZPaymentIndex; } set { _regulationZPaymentIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRegulationZPaymentIndex() => !_regulationZPaymentIndex.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -65,5 +51,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

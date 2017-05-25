@@ -5,52 +5,30 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UCDDetail
+    public sealed partial class UCDDetail : IClean
     {
         private Value<string> _feeAccountType;
         public string FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeAccountType() => !_feeAccountType.Clean;
         private Value<decimal?> _feeAmount;
         public decimal? FeeAmount { get { return _feeAmount; } set { _feeAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeAmount() => !_feeAmount.Clean;
         private Value<DateTime?> _feeDateFrom;
         public DateTime? FeeDateFrom { get { return _feeDateFrom; } set { _feeDateFrom = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDateFrom() => !_feeDateFrom.Clean;
         private Value<DateTime?> _feeDateTo;
         public DateTime? FeeDateTo { get { return _feeDateTo; } set { _feeDateTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDateTo() => !_feeDateTo.Clean;
         private Value<string> _feeDesc;
         public string FeeDesc { get { return _feeDesc; } set { _feeDesc = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeDesc() => !_feeDesc.Clean;
         private Value<int?> _feeIndex;
         public int? FeeIndex { get { return _feeIndex; } set { _feeIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeeIndex() => !_feeIndex.Clean;
         private Value<string> _feePaidTo;
         public string FeePaidTo { get { return _feePaidTo; } set { _feePaidTo = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeePaidTo() => !_feePaidTo.Clean;
         private Value<bool?> _feePOC;
         public bool? FeePOC { get { return _feePOC; } set { _feePOC = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeFeePOC() => !_feePOC.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLineNumber() => !_lineNumber.Clean;
         private Value<string> _section;
         public string Section { get { return _section; } set { _section = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeSection() => !_section.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -89,5 +67,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

@@ -5,52 +5,30 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PreviousVaLoan
+    public sealed partial class PreviousVaLoan : IClean
     {
         private Value<DateTime?> _dateOfLoan;
         public DateTime? DateOfLoan { get { return _dateOfLoan; } set { _dateOfLoan = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateOfLoan() => !_dateOfLoan.Clean;
         private Value<DateTime?> _dateSold;
         public DateTime? DateSold { get { return _dateSold; } set { _dateSold = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDateSold() => !_dateSold.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<string> _loanType;
         public string LoanType { get { return _loanType; } set { _loanType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeLoanType() => !_loanType.Clean;
         private Value<int?> _previousVaLoanIndex;
         public int? PreviousVaLoanIndex { get { return _previousVaLoanIndex; } set { _previousVaLoanIndex = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePreviousVaLoanIndex() => !_previousVaLoanIndex.Clean;
         private Value<string> _propertyAddress;
         public string PropertyAddress { get { return _propertyAddress; } set { _propertyAddress = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyAddress() => !_propertyAddress.Clean;
         private Value<string> _propertyCity;
         public string PropertyCity { get { return _propertyCity; } set { _propertyCity = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyCity() => !_propertyCity.Clean;
         private Value<bool?> _propertyOwned;
         public bool? PropertyOwned { get { return _propertyOwned; } set { _propertyOwned = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyOwned() => !_propertyOwned.Clean;
         private Value<string> _propertyPostalCode;
         public string PropertyPostalCode { get { return _propertyPostalCode; } set { _propertyPostalCode = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyPostalCode() => !_propertyPostalCode.Clean;
         private Value<string> _propertyState;
         public string PropertyState { get { return _propertyState; } set { _propertyState = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePropertyState() => !_propertyState.Clean;
         private Value<string> _vALoanNumber;
         public string VALoanNumber { get { return _vALoanNumber; } set { _vALoanNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeVALoanNumber() => !_vALoanNumber.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -89,5 +67,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

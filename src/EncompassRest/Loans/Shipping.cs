@@ -5,72 +5,40 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Shipping
+    public sealed partial class Shipping : IClean
     {
         private Value<DateTime?> _actualShipDate;
         public DateTime? ActualShipDate { get { return _actualShipDate; } set { _actualShipDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeActualShipDate() => !_actualShipDate.Clean;
         private Value<string> _carrierName;
         public string CarrierName { get { return _carrierName; } set { _carrierName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeCarrierName() => !_carrierName.Clean;
         private Value<decimal?> _downPaymentAmount;
         public decimal? DownPaymentAmount { get { return _downPaymentAmount; } set { _downPaymentAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeDownPaymentAmount() => !_downPaymentAmount.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<DateTime?> _investorDeliveryDate;
         public DateTime? InvestorDeliveryDate { get { return _investorDeliveryDate; } set { _investorDeliveryDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInvestorDeliveryDate() => !_investorDeliveryDate.Clean;
         private Value<string> _packageTrackingNumber;
         public string PackageTrackingNumber { get { return _packageTrackingNumber; } set { _packageTrackingNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePackageTrackingNumber() => !_packageTrackingNumber.Clean;
         private Value<string> _physicalFileStorageComments;
         public string PhysicalFileStorageComments { get { return _physicalFileStorageComments; } set { _physicalFileStorageComments = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageComments() => !_physicalFileStorageComments.Clean;
         private Value<string> _physicalFileStorageId;
         public string PhysicalFileStorageId { get { return _physicalFileStorageId; } set { _physicalFileStorageId = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageId() => !_physicalFileStorageId.Clean;
         private Value<string> _physicalFileStorageLocation;
         public string PhysicalFileStorageLocation { get { return _physicalFileStorageLocation; } set { _physicalFileStorageLocation = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePhysicalFileStorageLocation() => !_physicalFileStorageLocation.Clean;
         private Value<string> _poolID;
         public string PoolID { get { return _poolID; } set { _poolID = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePoolID() => !_poolID.Clean;
         private Value<string> _poolNumber;
         public string PoolNumber { get { return _poolNumber; } set { _poolNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePoolNumber() => !_poolNumber.Clean;
         private Value<string> _recordingNumber;
         public string RecordingNumber { get { return _recordingNumber; } set { _recordingNumber = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRecordingNumber() => !_recordingNumber.Clean;
         private Value<string> _shipmentMethod;
         public string ShipmentMethod { get { return _shipmentMethod; } set { _shipmentMethod = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShipmentMethod() => !_shipmentMethod.Clean;
         private Value<string> _shipperName;
         public string ShipperName { get { return _shipperName; } set { _shipperName = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShipperName() => !_shipperName.Clean;
         private Value<List<ShippingContact>> _shippingContacts;
         public List<ShippingContact> ShippingContacts { get { return _shippingContacts; } set { _shippingContacts = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeShippingContacts() => !_shippingContacts.Clean;
         private Value<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTargetDeliveryDate() => !_targetDeliveryDate.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -119,5 +87,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }

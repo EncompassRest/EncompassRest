@@ -5,52 +5,30 @@ using System.Threading;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZInterestRatePeriod
+    public sealed partial class RegulationZInterestRatePeriod : IClean
     {
         private Value<DateTime?> _adjustmentDate;
         public DateTime? AdjustmentDate { get { return _adjustmentDate; } set { _adjustmentDate = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentDate() => !_adjustmentDate.Clean;
         private Value<int?> _adjustmentMonths;
         public int? AdjustmentMonths { get { return _adjustmentMonths; } set { _adjustmentMonths = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeAdjustmentMonths() => !_adjustmentMonths.Clean;
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeId() => !_id.Clean;
         private Value<decimal?> _interestPayment;
         public decimal? InterestPayment { get { return _interestPayment; } set { _interestPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestPayment() => !_interestPayment.Clean;
         private Value<decimal?> _interestPrincipalPayment;
         public decimal? InterestPrincipalPayment { get { return _interestPrincipalPayment; } set { _interestPrincipalPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestPrincipalPayment() => !_interestPrincipalPayment.Clean;
         private Value<decimal?> _interestRatePercent;
         public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeInterestRatePercent() => !_interestRatePercent.Clean;
         private Value<decimal?> _monthlyPayment;
         public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeMonthlyPayment() => !_monthlyPayment.Clean;
         private Value<decimal?> _principalPayment;
         public decimal? PrincipalPayment { get { return _principalPayment; } set { _principalPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializePrincipalPayment() => !_principalPayment.Clean;
         private Value<string> _regulationZInterestRatePeriodType;
         public string RegulationZInterestRatePeriodType { get { return _regulationZInterestRatePeriodType; } set { _regulationZInterestRatePeriodType = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeRegulationZInterestRatePeriodType() => !_regulationZInterestRatePeriodType.Clean;
         private Value<decimal?> _taxInsuranceAmount;
         public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTaxInsuranceAmount() => !_taxInsuranceAmount.Clean;
         private Value<decimal?> _totalPayment;
         public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public bool ShouldSerializeTotalPayment() => !_totalPayment.Clean;
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -89,5 +67,6 @@ namespace EncompassRest.Loans
                 _settingClean = 0;
             }
         }
+        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
     }
 }
