@@ -58,12 +58,18 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetLoanAsync)}/{loanId}", response) : await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
+                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetLoanAsync)}/{loanId}", response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
                 }
 
                 var loan = new Loan(Client, loanId);
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                JsonHelper.PopulateFromJson(json, loan);
+
+                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        JsonHelper.PopulateFromJson(reader, loan);
+                    }
+                }
                 loan.Clean = true;
                 return loan;
             }
@@ -78,8 +84,7 @@ namespace EncompassRest.Loans
                     throw await RestException.CreateAsync(nameof(GetSupportedEntitiesAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonConvert.DeserializeObject<List<string>>(json);
+                return await response.Content.ReadAsAsync<List<string>>().ConfigureAwait(false);
             }
         }
 
@@ -87,7 +92,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNull(loan, nameof(loan));
 
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(loan)).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonStreamContent.Create(loan)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -103,7 +108,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNull(loan, nameof(loan));
 
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loan.EncompassId}", JsonContent.Create(loan)).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loan.EncompassId}", JsonStreamContent.Create(loan)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     /// <summary>
-    /// Value wrapper to use for dirty checking. It also serializes and deserializes properly.
+    /// Value wrapper to use for dirty checking. It also serializes and deserializes the value properly.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(ValueConverter))]
@@ -67,7 +67,7 @@ namespace EncompassRest
 
     internal sealed class ValueConverterInternal<T> : IValueConverter
     {
-        public object ReadJson(JsonReader reader, JsonSerializer serializer) => new Value<T>(serializer.Deserialize<T>(reader)) { Clean = true };
+        public object ReadJson(JsonReader reader, JsonSerializer serializer) => new Value<T>(serializer.Deserialize<T>(reader));
 
         public void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, (T)(Value<T>)value, typeof(T));
     }

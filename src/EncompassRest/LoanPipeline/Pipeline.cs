@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -38,15 +39,14 @@ namespace EncompassRest.LoanPipeline
                 throw new ArgumentException("must be null or greater than 0", nameof(limit));
             }
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{(limit.HasValue ? $"?limit={limit}" : string.Empty)}", JsonContent.Create(parameters)).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{(limit.HasValue ? $"?limit={limit}" : string.Empty)}", JsonStreamContent.Create(parameters)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(ViewPipelineAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<List<LoanPipelineData>>(json);
+                return await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
             }
         }
     }

@@ -23,11 +23,10 @@ namespace EncompassRest.LoanBatch
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetStatusAsync), response);
+                    throw await RestException.CreateAsync(nameof(GetStatusAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<BatchUpdateStatus>(json);
+                return await response.Content.ReadAsAsync<BatchUpdateStatus>().ConfigureAwait(false);
             }
         }
 
@@ -35,11 +34,11 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", JsonContent.Create(parameters)).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", JsonStreamContent.Create(parameters)).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateLoansAsync), response);
+                    throw await RestException.CreateAsync(nameof(UpdateLoansAsync), response).ConfigureAwait(false);
                 }
 
                 return Path.GetFileName(response.Headers.Location.OriginalString);

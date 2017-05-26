@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -64,8 +65,7 @@ namespace EncompassRest.Token
                     return null;
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<TokenIntrospectionResponse>(json);
+                return await response.Content.ReadAsAsync<TokenIntrospectionResponse>().ConfigureAwait(false);
             }
         }
 
@@ -101,11 +101,10 @@ namespace EncompassRest.Token
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(SetTokenAsync), response);
+                    throw await RestException.CreateAsync(nameof(SetTokenAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var tokenResponse = JsonHelper.FromJson<TokenResponse>(json);
+                var tokenResponse = await response.Content.ReadAsAsync<TokenResponse>().ConfigureAwait(false);
                 Token = tokenResponse.AccessToken;
                 Type = tokenResponse.TokenType;
             }

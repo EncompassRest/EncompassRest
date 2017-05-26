@@ -27,8 +27,7 @@ namespace EncompassRest.Webhook
                     throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<WebhookSubscription>(json);
+                return await response.Content.ReadAsAsync<WebhookSubscription>().ConfigureAwait(false);
             }
         }
 
@@ -41,8 +40,7 @@ namespace EncompassRest.Webhook
                     throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<List<WebhookSubscription>>(json);
+                return await response.Content.ReadAsAsync<List<WebhookSubscription>>().ConfigureAwait(false);
             }
         }
 
@@ -50,7 +48,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
 
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonContent.Create(new Subscription { Endpoint = endpoint })).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonStreamContent.Create(new Subscription { Endpoint = endpoint })).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -66,7 +64,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Preconditions.NotNullOrEmpty(newEndpoint, nameof(newEndpoint));
 
-            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonContent.Create(new Subscription { Endpoint = newEndpoint })).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonStreamContent.Create(new Subscription { Endpoint = newEndpoint })).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

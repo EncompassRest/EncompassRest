@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -32,8 +33,7 @@ namespace EncompassRest.Schema
                     throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<LoanSchema>(json);
+                return await response.Content.ReadAsAsync<LoanSchema>().ConfigureAwait(false);
             }
         }
 
@@ -48,8 +48,7 @@ namespace EncompassRest.Schema
                     throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return JsonHelper.FromJson<LoanSchema>(json);
+                return await response.Content.ReadAsAsync<LoanSchema>().ConfigureAwait(false);
             }
         }
     }
