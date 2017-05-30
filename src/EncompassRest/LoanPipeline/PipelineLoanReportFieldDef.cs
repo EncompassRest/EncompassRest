@@ -20,5 +20,6 @@ namespace EncompassRest.LoanPipeline
         public int ReportingDatabaseColumnType { get; set; }
         public int? DisplayType { get; set; }
         public List<string> RelatedFields { get; set; }
+        public bool? IsVolatile { get; set; }
     }
 }
