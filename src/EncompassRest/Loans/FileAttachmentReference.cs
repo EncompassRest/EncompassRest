@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest.Loans
 {
-    public class FileAttachmentReference : EntityReference
+    public sealed class FileAttachmentReference : EntityReference
     {
     }
 }

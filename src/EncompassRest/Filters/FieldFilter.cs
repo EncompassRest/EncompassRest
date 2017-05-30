@@ -19,7 +19,10 @@ namespace EncompassRest.Filters
         }
 
         internal FieldFilter(FieldFilter fieldFilter)
-            : base(fieldFilter) => CanonicalName = fieldFilter.CanonicalName;
+            : base(fieldFilter)
+        {
+            CanonicalName = fieldFilter.CanonicalName;
+        }
 
         public new FieldFilter Clone() => CloneFieldFilter();
 

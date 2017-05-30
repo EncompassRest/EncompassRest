@@ -7,8 +7,10 @@
     <PackageLicenseUrl>https://github.com/hfcjweinstock/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
+    <Summary>Encompass API Client Library for .NET</Summary>
     <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +26,11 @@
     <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>EncompassRest</AssemblyTitle>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
 </Project>

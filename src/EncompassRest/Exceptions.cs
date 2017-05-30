@@ -75,7 +75,7 @@ namespace EncompassRest
         }
     }
 
-    public class LoanLocked
+    public sealed class LoanLocked
     {
         public string ErrorMessage { get; set; }
         public string Id { get; set; }
@@ -83,7 +83,7 @@ namespace EncompassRest
         public LoanLockedDetails Details { get; set; }
     }
 
-    public class LoanLockedDetails
+    public sealed class LoanLockedDetails
     {
         public bool CurrentlyLoggedOn { get; set; }
         public string LoanId { get; set; }

@@ -12,8 +12,14 @@ namespace EncompassRest.Token
         [JsonProperty("exp")]
         private int _expiration
         {
-            get => (int)((Expiration - s_unixEpoch).TotalSeconds);
-            set => Expiration = s_unixEpoch.AddSeconds(value);
+            get
+            {
+                return (int)((Expiration - s_unixEpoch).TotalSeconds);
+            }
+            set
+            {
+                Expiration = s_unixEpoch.AddSeconds(value);
+            }
         }
 
         public bool Active { get; set; }

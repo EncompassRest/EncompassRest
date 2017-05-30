@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -7,7 +6,6 @@ using System.Threading.Tasks;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -62,7 +60,6 @@ namespace EncompassRest.Loans
                 }
 
                 var loan = new Loan(Client, loanId);
-
                 using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                 {
                     using (var reader = new StreamReader(stream))
