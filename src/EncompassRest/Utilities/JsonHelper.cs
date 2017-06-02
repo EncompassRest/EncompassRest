@@ -16,9 +16,9 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
-        private static readonly JsonSerializer s_serializer = JsonSerializer.Create(s_defaultSettings);
+        private static readonly JsonSerializer s_serializer = JsonSerializer.Create(DefaultSettings);
 
-        private static JsonSerializerSettings s_defaultSettings = new JsonSerializerSettings
+        public static JsonSerializerSettings DefaultSettings = new JsonSerializerSettings
         {
             Formatting = Formatting.None,
             ContractResolver = new CustomContractResolver()
@@ -144,14 +144,22 @@ namespace EncompassRest.Utilities
                 return property;
             }
 
-            protected override JsonContract CreateContract(Type objectType)
+            protected override JsonConverter ResolveContractConverter(Type objectType)
             {
-                var contract = base.CreateContract(objectType);
-                if (objectType.GetTypeInfo().IsEnum)
+                var typeInfo = objectType.GetTypeInfo();
+                if (typeInfo.IsEnum)
                 {
-                    contract.Converter = s_enumConverter;
+                    return s_enumConverter;
                 }
-                return contract;
+                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                {
+                    var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>();
+                    if (jsonConverterAttribute != null)
+                    {
+                        return (JsonConverter)Activator.CreateInstance(jsonConverterAttribute.ConverterType.MakeGenericType(typeInfo.GenericTypeArguments), jsonConverterAttribute.ConverterParameters);
+                    }
+                }
+                return base.ResolveContractConverter(objectType);
             }
         }
     }

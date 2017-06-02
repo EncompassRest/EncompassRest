@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -329,8 +330,8 @@ namespace EncompassRest.Loans
         public decimal? OriginationPointsAdditional { get { return _originationPointsAdditional; } set { _originationPointsAdditional = value; } }
         private Value<decimal?> _originationPointsPercentage;
         public decimal? OriginationPointsPercentage { get { return _originationPointsPercentage; } set { _originationPointsPercentage = value; } }
-        private Value<decimal?> _ownerTitleInsuranceAmount;
-        public decimal? OwnerTitleInsuranceAmount { get { return _ownerTitleInsuranceAmount; } set { _ownerTitleInsuranceAmount = value; } }
+        private Value<NA<decimal>?> _ownerTitleInsuranceAmount;
+        public NA<decimal>? OwnerTitleInsuranceAmount { get { return _ownerTitleInsuranceAmount; } set { _ownerTitleInsuranceAmount = value; } }
         private Value<bool?> _printNAInLockRateDays;
         public bool? PrintNAInLockRateDays { get { return _printNAInLockRateDays; } set { _printNAInLockRateDays = value; } }
         private Value<bool?> _printShoppingChartIndicator;
@@ -884,5 +885,10 @@ namespace EncompassRest.Loans
             }
         }
         bool IClean.Clean { get { return Clean; } set { Clean = value; } }
+        [JsonConstructor]
+        public Gfe2010()
+        {
+            Clean = true;
+        }
     }
 }

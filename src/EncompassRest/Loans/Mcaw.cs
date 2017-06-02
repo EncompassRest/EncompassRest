@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -212,5 +213,10 @@ namespace EncompassRest.Loans
             }
         }
         bool IClean.Clean { get { return Clean; } set { Clean = value; } }
+        [JsonConstructor]
+        public Mcaw()
+        {
+            Clean = true;
+        }
     }
 }

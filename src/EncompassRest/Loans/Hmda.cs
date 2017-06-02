@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -35,8 +36,8 @@ namespace EncompassRest.Loans
         public string BusinessOrCommercialPurpose { get { return _businessOrCommercialPurpose; } set { _businessOrCommercialPurpose = value; } }
         private Value<string> _censusTrack;
         public string CensusTrack { get { return _censusTrack; } set { _censusTrack = value; } }
-        private Value<decimal?> _cLTV;
-        public decimal? CLTV { get { return _cLTV; } set { _cLTV = value; } }
+        private Value<NA<decimal>?> _cLTV;
+        public NA<decimal>? CLTV { get { return _cLTV; } set { _cLTV = value; } }
         private Value<string> _contactEmailAddress;
         public string ContactEmailAddress { get { return _contactEmailAddress; } set { _contactEmailAddress = value; } }
         private Value<string> _contactFaxNumber;
@@ -55,8 +56,8 @@ namespace EncompassRest.Loans
         public string ContactPhoneNumber { get { return _contactPhoneNumber; } set { _contactPhoneNumber = value; } }
         private Value<string> _countyCode;
         public string CountyCode { get { return _countyCode; } set { _countyCode = value; } }
-        private Value<decimal?> _debtToIncomeRatio;
-        public decimal? DebtToIncomeRatio { get { return _debtToIncomeRatio; } set { _debtToIncomeRatio = value; } }
+        private Value<NA<decimal>?> _debtToIncomeRatio;
+        public NA<decimal>? DebtToIncomeRatio { get { return _debtToIncomeRatio; } set { _debtToIncomeRatio = value; } }
         private Value<string> _denialReason1;
         public string DenialReason1 { get { return _denialReason1; } set { _denialReason1 = value; } }
         private Value<string> _denialReason2;
@@ -65,8 +66,8 @@ namespace EncompassRest.Loans
         public string DenialReason3 { get { return _denialReason3; } set { _denialReason3 = value; } }
         private Value<string> _denialReason4;
         public string DenialReason4 { get { return _denialReason4; } set { _denialReason4 = value; } }
-        private Value<decimal?> _discountPoints;
-        public decimal? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
+        private Value<NA<decimal>?> _discountPoints;
+        public NA<decimal>? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
         private Value<bool?> _excludeLoanFromHMDAReportIndicator;
         public bool? ExcludeLoanFromHMDAReportIndicator { get { return _excludeLoanFromHMDAReportIndicator; } set { _excludeLoanFromHMDAReportIndicator = value; } }
         private Value<string> _federalAgency;
@@ -81,18 +82,18 @@ namespace EncompassRest.Loans
         public string HOEPAStatus { get { return _hOEPAStatus; } set { _hOEPAStatus = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _income;
-        public decimal? Income { get { return _income; } set { _income = value; } }
+        private Value<NA<decimal>?> _income;
+        public NA<decimal>? Income { get { return _income; } set { _income = value; } }
         private Value<string> _initiallyPayableToYourInstitution;
         public string InitiallyPayableToYourInstitution { get { return _initiallyPayableToYourInstitution; } set { _initiallyPayableToYourInstitution = value; } }
-        private Value<decimal?> _interestRate;
-        public decimal? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
+        private Value<NA<decimal>?> _interestRate;
+        public NA<decimal>? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
         private Value<string> _introRatePeriod;
         public string IntroRatePeriod { get { return _introRatePeriod; } set { _introRatePeriod = value; } }
         private Value<string> _legalEntityIdentifier;
         public string LegalEntityIdentifier { get { return _legalEntityIdentifier; } set { _legalEntityIdentifier = value; } }
-        private Value<decimal?> _lenderCredits;
-        public decimal? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
+        private Value<NA<decimal>?> _lenderCredits;
+        public NA<decimal>? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
         private Value<string> _lienStatus;
         public string LienStatus { get { return _lienStatus; } set { _lienStatus = value; } }
         private Value<decimal?> _loanAmount;
@@ -115,8 +116,8 @@ namespace EncompassRest.Loans
         public string NMLSLoanOriginatorID { get { return _nMLSLoanOriginatorID; } set { _nMLSLoanOriginatorID = value; } }
         private Value<string> _openEndLineOfCredit;
         public string OpenEndLineOfCredit { get { return _openEndLineOfCredit; } set { _openEndLineOfCredit = value; } }
-        private Value<decimal?> _originationCharges;
-        public decimal? OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
+        private Value<NA<decimal>?> _originationCharges;
+        public NA<decimal>? OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
         private Value<string> _otherAUS;
         public string OtherAUS { get { return _otherAUS; } set { _otherAUS = value; } }
         private Value<string> _otherAUSRecommendations;
@@ -141,12 +142,12 @@ namespace EncompassRest.Loans
         public string PrepaymentPenaltyPeriod { get { return _prepaymentPenaltyPeriod; } set { _prepaymentPenaltyPeriod = value; } }
         private Value<string> _propertyType;
         public string PropertyType { get { return _propertyType; } set { _propertyType = value; } }
-        private Value<decimal?> _propertyValue;
-        public decimal? PropertyValue { get { return _propertyValue; } set { _propertyValue = value; } }
+        private Value<NA<decimal>?> _propertyValue;
+        public NA<decimal>? PropertyValue { get { return _propertyValue; } set { _propertyValue = value; } }
         private Value<string> _qMStatus;
         public string QMStatus { get { return _qMStatus; } set { _qMStatus = value; } }
-        private Value<decimal?> _rateSpread;
-        public decimal? RateSpread { get { return _rateSpread; } set { _rateSpread = value; } }
+        private Value<NA<decimal>?> _rateSpread;
+        public NA<decimal>? RateSpread { get { return _rateSpread; } set { _rateSpread = value; } }
         private Value<int?> _reportingYear;
         public int? ReportingYear { get { return _reportingYear; } set { _reportingYear = value; } }
         private Value<bool?> _reportPurposeOfLoanIndicator;
@@ -159,10 +160,10 @@ namespace EncompassRest.Loans
         public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
         private Value<string> _submissionOfApplication;
         public string SubmissionOfApplication { get { return _submissionOfApplication; } set { _submissionOfApplication = value; } }
-        private Value<decimal?> _totalLoanCosts;
-        public decimal? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
-        private Value<decimal?> _totalPointsAndFees;
-        public decimal? TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
+        private Value<NA<decimal>?> _totalLoanCosts;
+        public NA<decimal>? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
+        private Value<NA<decimal>?> _totalPointsAndFees;
+        public NA<decimal>? TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
         private Value<string> _typeOfPurchaser;
         public string TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
         private Value<string> _universalLoanId;
@@ -344,5 +345,10 @@ namespace EncompassRest.Loans
             }
         }
         bool IClean.Clean { get { return Clean; } set { Clean = value; } }
+        [JsonConstructor]
+        public Hmda()
+        {
+            Clean = true;
+        }
     }
 }

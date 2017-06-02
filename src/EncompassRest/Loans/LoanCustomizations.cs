@@ -17,15 +17,6 @@ namespace EncompassRest.Loans
         public LoanAttachments Attachments { get; }
 
         /// <summary>
-        /// Loan create constructor
-        /// </summary>
-        [JsonConstructor]
-        public Loan()
-        {
-            Clean = true;
-        }
-
-        /// <summary>
         /// Loan update constructor
         /// </summary>
         /// <param name="client"></param>

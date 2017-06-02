@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -41,8 +42,8 @@ namespace EncompassRest.Loans
         public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
         private Value<decimal?> _mortgageAmount;
         public decimal? MortgageAmount { get { return _mortgageAmount; } set { _mortgageAmount = value; } }
-        private Value<decimal?> _newHUDBorPaidAmount;
-        public decimal? NewHUDBorPaidAmount { get { return _newHUDBorPaidAmount; } set { _newHUDBorPaidAmount = value; } }
+        private Value<NA<decimal>?> _newHUDBorPaidAmount;
+        public NA<decimal>? NewHUDBorPaidAmount { get { return _newHUDBorPaidAmount; } set { _newHUDBorPaidAmount = value; } }
         private Value<int?> _numberOfMonths;
         public int? NumberOfMonths { get { return _numberOfMonths; } set { _numberOfMonths = value; } }
         private Value<decimal?> _ownerCoverage;
@@ -156,5 +157,10 @@ namespace EncompassRest.Loans
             }
         }
         bool IClean.Clean { get { return Clean; } set { Clean = value; } }
+        [JsonConstructor]
+        public Fee()
+        {
+            Clean = true;
+        }
     }
 }

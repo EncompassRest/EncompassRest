@@ -76,6 +76,7 @@ $@"using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace {@namespace}
 {{
@@ -134,6 +135,11 @@ $@"        private int _gettingClean;
             }}
         }}
         bool IClean.Clean {{ get {{ return Clean; }} set {{ Clean = value; }} }}
+        [JsonConstructor]
+        public {entityType}()
+        {{
+            Clean = true;
+        }}
     }}
 }}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))
@@ -152,8 +158,8 @@ $@"        private int _gettingClean;
                 case "uuid":
                     return "string";
                 case "decimal":
-                case "NA<decimal>":
                     return "decimal?";
+                case "NA<decimal>":
                 case "bool":
                 case "int":
                     return $"{propertyType}?";
