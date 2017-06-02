@@ -154,7 +154,7 @@ namespace EncompassRest.Utilities
                 if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
                 {
                     var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>();
-                    if (jsonConverterAttribute != null)
+                    if (jsonConverterAttribute != null && jsonConverterAttribute.ConverterType.GetTypeInfo().IsGenericTypeDefinition)
                     {
                         return (JsonConverter)Activator.CreateInstance(jsonConverterAttribute.ConverterType.MakeGenericType(typeInfo.GenericTypeArguments), jsonConverterAttribute.ConverterParameters);
                     }
