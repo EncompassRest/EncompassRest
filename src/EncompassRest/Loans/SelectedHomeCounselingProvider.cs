@@ -8,6 +8,8 @@ namespace EncompassRest.Loans
 {
     public sealed partial class SelectedHomeCounselingProvider : IClean
     {
+        private Value<bool?> _affiliatedWithLenderIndicator;
+        public bool? AffiliatedWithLenderIndicator { get { return _affiliatedWithLenderIndicator; } set { _affiliatedWithLenderIndicator = value; } }
         private Value<string> _agencyAddress;
         public string AgencyAddress { get { return _agencyAddress; } set { _agencyAddress = value; } }
         private Value<string> _agencyAddressCity;
@@ -30,16 +32,22 @@ namespace EncompassRest.Loans
         public string AgencyPhoneTollFree { get { return _agencyPhoneTollFree; } set { _agencyPhoneTollFree = value; } }
         private Value<string> _agencyWebAddress;
         public string AgencyWebAddress { get { return _agencyWebAddress; } set { _agencyWebAddress = value; } }
+        private Value<bool?> _brrowerSelectCounselorIndicator;
+        public bool? BrrowerSelectCounselorIndicator { get { return _brrowerSelectCounselorIndicator; } set { _brrowerSelectCounselorIndicator = value; } }
         private Value<bool?> _certificationIssuedIndicator;
         public bool? CertificationIssuedIndicator { get { return _certificationIssuedIndicator; } set { _certificationIssuedIndicator = value; } }
         private Value<string> _counselingServicesProvided;
         public string CounselingServicesProvided { get { return _counselingServicesProvided; } set { _counselingServicesProvided = value; } }
         private Value<decimal?> _distanceMiles;
         public decimal? DistanceMiles { get { return _distanceMiles; } set { _distanceMiles = value; } }
+        private Value<string> _explanation;
+        public string Explanation { get { return _explanation; } set { _explanation = value; } }
         private Value<DateTime?> _homeCounselingCompletionDate;
         public DateTime? HomeCounselingCompletionDate { get { return _homeCounselingCompletionDate; } set { _homeCounselingCompletionDate = value; } }
         private Value<DateTime?> _homeCounselingDisclosureDate;
         public DateTime? HomeCounselingDisclosureDate { get { return _homeCounselingDisclosureDate; } set { _homeCounselingDisclosureDate = value; } }
+        private Value<DateTime?> _homeCounselingGeneratedDate;
+        public DateTime? HomeCounselingGeneratedDate { get { return _homeCounselingGeneratedDate; } set { _homeCounselingGeneratedDate = value; } }
         private Value<bool?> _homeCounselingRequiredIndicator;
         public bool? HomeCounselingRequiredIndicator { get { return _homeCounselingRequiredIndicator; } set { _homeCounselingRequiredIndicator = value; } }
         private Value<string> _id;
@@ -55,7 +63,8 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _agencyAddress.Clean
+                var clean = _affiliatedWithLenderIndicator.Clean
+                    && _agencyAddress.Clean
                     && _agencyAddressCity.Clean
                     && _agencyAddressPostalCode.Clean
                     && _agencyAddressState.Clean
@@ -66,11 +75,14 @@ namespace EncompassRest.Loans
                     && _agencyPhoneDirect.Clean
                     && _agencyPhoneTollFree.Clean
                     && _agencyWebAddress.Clean
+                    && _brrowerSelectCounselorIndicator.Clean
                     && _certificationIssuedIndicator.Clean
                     && _counselingServicesProvided.Clean
                     && _distanceMiles.Clean
+                    && _explanation.Clean
                     && _homeCounselingCompletionDate.Clean
                     && _homeCounselingDisclosureDate.Clean
+                    && _homeCounselingGeneratedDate.Clean
                     && _homeCounselingRequiredIndicator.Clean
                     && _id.Clean
                     && _languagesSupported.Clean
@@ -81,26 +93,30 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _agencyAddress; v0.Clean = value; _agencyAddress = v0;
-                var v1 = _agencyAddressCity; v1.Clean = value; _agencyAddressCity = v1;
-                var v2 = _agencyAddressPostalCode; v2.Clean = value; _agencyAddressPostalCode = v2;
-                var v3 = _agencyAddressState; v3.Clean = value; _agencyAddressState = v3;
-                var v4 = _agencyAffiliationDescription; v4.Clean = value; _agencyAffiliationDescription = v4;
-                var v5 = _agencyEmail; v5.Clean = value; _agencyEmail = v5;
-                var v6 = _agencyFax; v6.Clean = value; _agencyFax = v6;
-                var v7 = _agencyName; v7.Clean = value; _agencyName = v7;
-                var v8 = _agencyPhoneDirect; v8.Clean = value; _agencyPhoneDirect = v8;
-                var v9 = _agencyPhoneTollFree; v9.Clean = value; _agencyPhoneTollFree = v9;
-                var v10 = _agencyWebAddress; v10.Clean = value; _agencyWebAddress = v10;
-                var v11 = _certificationIssuedIndicator; v11.Clean = value; _certificationIssuedIndicator = v11;
-                var v12 = _counselingServicesProvided; v12.Clean = value; _counselingServicesProvided = v12;
-                var v13 = _distanceMiles; v13.Clean = value; _distanceMiles = v13;
-                var v14 = _homeCounselingCompletionDate; v14.Clean = value; _homeCounselingCompletionDate = v14;
-                var v15 = _homeCounselingDisclosureDate; v15.Clean = value; _homeCounselingDisclosureDate = v15;
-                var v16 = _homeCounselingRequiredIndicator; v16.Clean = value; _homeCounselingRequiredIndicator = v16;
-                var v17 = _id; v17.Clean = value; _id = v17;
-                var v18 = _languagesSupported; v18.Clean = value; _languagesSupported = v18;
-                var v19 = _selectedGUID; v19.Clean = value; _selectedGUID = v19;
+                var v0 = _affiliatedWithLenderIndicator; v0.Clean = value; _affiliatedWithLenderIndicator = v0;
+                var v1 = _agencyAddress; v1.Clean = value; _agencyAddress = v1;
+                var v2 = _agencyAddressCity; v2.Clean = value; _agencyAddressCity = v2;
+                var v3 = _agencyAddressPostalCode; v3.Clean = value; _agencyAddressPostalCode = v3;
+                var v4 = _agencyAddressState; v4.Clean = value; _agencyAddressState = v4;
+                var v5 = _agencyAffiliationDescription; v5.Clean = value; _agencyAffiliationDescription = v5;
+                var v6 = _agencyEmail; v6.Clean = value; _agencyEmail = v6;
+                var v7 = _agencyFax; v7.Clean = value; _agencyFax = v7;
+                var v8 = _agencyName; v8.Clean = value; _agencyName = v8;
+                var v9 = _agencyPhoneDirect; v9.Clean = value; _agencyPhoneDirect = v9;
+                var v10 = _agencyPhoneTollFree; v10.Clean = value; _agencyPhoneTollFree = v10;
+                var v11 = _agencyWebAddress; v11.Clean = value; _agencyWebAddress = v11;
+                var v12 = _brrowerSelectCounselorIndicator; v12.Clean = value; _brrowerSelectCounselorIndicator = v12;
+                var v13 = _certificationIssuedIndicator; v13.Clean = value; _certificationIssuedIndicator = v13;
+                var v14 = _counselingServicesProvided; v14.Clean = value; _counselingServicesProvided = v14;
+                var v15 = _distanceMiles; v15.Clean = value; _distanceMiles = v15;
+                var v16 = _explanation; v16.Clean = value; _explanation = v16;
+                var v17 = _homeCounselingCompletionDate; v17.Clean = value; _homeCounselingCompletionDate = v17;
+                var v18 = _homeCounselingDisclosureDate; v18.Clean = value; _homeCounselingDisclosureDate = v18;
+                var v19 = _homeCounselingGeneratedDate; v19.Clean = value; _homeCounselingGeneratedDate = v19;
+                var v20 = _homeCounselingRequiredIndicator; v20.Clean = value; _homeCounselingRequiredIndicator = v20;
+                var v21 = _id; v21.Clean = value; _id = v21;
+                var v22 = _languagesSupported; v22.Clean = value; _languagesSupported = v22;
+                var v23 = _selectedGUID; v23.Clean = value; _selectedGUID = v23;
                 _settingClean = 0;
             }
         }

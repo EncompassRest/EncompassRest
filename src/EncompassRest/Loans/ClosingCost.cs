@@ -29,6 +29,8 @@ namespace EncompassRest.Loans
         public ClosingDisclosure3 ClosingDisclosure3 { get; set; }
         public ClosingDisclosure4 ClosingDisclosure4 { get; set; }
         public ClosingDisclosure5 ClosingDisclosure5 { get; set; }
+        private Value<decimal?> _disclosedSalesPrice;
+        public decimal? DisclosedSalesPrice { get { return _disclosedSalesPrice; } set { _disclosedSalesPrice = value; } }
         private Value<string> _escrowCompanyName;
         public string EscrowCompanyName { get { return _escrowCompanyName; } set { _escrowCompanyName = value; } }
         private Value<string> _escrowTableDesc1;
@@ -141,6 +143,7 @@ namespace EncompassRest.Loans
                     && _brokerCommissionBasedUnitPrice.Clean
                     && _closingCostProgram.Clean
                     && _closingCostScenarioXml.Clean
+                    && _disclosedSalesPrice.Clean
                     && _escrowCompanyName.Clean
                     && _escrowTableDesc1.Clean
                     && _escrowTableDesc2.Clean
@@ -212,51 +215,52 @@ namespace EncompassRest.Loans
                 var v5 = _brokerCommissionBasedUnitPrice; v5.Clean = value; _brokerCommissionBasedUnitPrice = v5;
                 var v6 = _closingCostProgram; v6.Clean = value; _closingCostProgram = v6;
                 var v7 = _closingCostScenarioXml; v7.Clean = value; _closingCostScenarioXml = v7;
-                var v8 = _escrowCompanyName; v8.Clean = value; _escrowCompanyName = v8;
-                var v9 = _escrowTableDesc1; v9.Clean = value; _escrowTableDesc1 = v9;
-                var v10 = _escrowTableDesc2; v10.Clean = value; _escrowTableDesc2 = v10;
-                var v11 = _escrowTableDesc3; v11.Clean = value; _escrowTableDesc3 = v11;
-                var v12 = _escrowTableDesc4; v12.Clean = value; _escrowTableDesc4 = v12;
-                var v13 = _escrowTableDesc5; v13.Clean = value; _escrowTableDesc5 = v13;
-                var v14 = _escrowTableFee; v14.Clean = value; _escrowTableFee = v14;
-                var v15 = _escrowTableFee1; v15.Clean = value; _escrowTableFee1 = v15;
-                var v16 = _escrowTableFee2; v16.Clean = value; _escrowTableFee2 = v16;
-                var v17 = _escrowTableFee3; v17.Clean = value; _escrowTableFee3 = v17;
-                var v18 = _escrowTableFee4; v18.Clean = value; _escrowTableFee4 = v18;
-                var v19 = _escrowTableFee5; v19.Clean = value; _escrowTableFee5 = v19;
-                var v20 = _escrowTableName; v20.Clean = value; _escrowTableName = v20;
-                var v21 = _feeVariances; v21.Clean = value; _feeVariances = v21;
-                var v22 = _id; v22.Clean = value; _id = v22;
-                var v23 = _impoundHazInsRate; v23.Clean = value; _impoundHazInsRate = v23;
-                var v24 = _impoundMortgInsPremRate; v24.Clean = value; _impoundMortgInsPremRate = v24;
-                var v25 = _impoundMortgInsPremYearlyBasis; v25.Clean = value; _impoundMortgInsPremYearlyBasis = v25;
-                var v26 = _impoundTaxesRate; v26.Clean = value; _impoundTaxesRate = v26;
-                var v27 = _impoundType1; v27.Clean = value; _impoundType1 = v27;
-                var v28 = _impoundType2; v28.Clean = value; _impoundType2 = v28;
-                var v29 = _impoundType3; v29.Clean = value; _impoundType3 = v29;
-                var v30 = _impoundType4; v30.Clean = value; _impoundType4 = v30;
-                var v31 = _proposedMonthlyHazardInsurance; v31.Clean = value; _proposedMonthlyHazardInsurance = v31;
-                var v32 = _proposedMonthlyMortgageInsurance; v32.Clean = value; _proposedMonthlyMortgageInsurance = v32;
-                var v33 = _section1000BorrowerPaidTotalAmount; v33.Clean = value; _section1000BorrowerPaidTotalAmount = v33;
-                var v34 = _section1000SellerPaidTotalAmount; v34.Clean = value; _section1000SellerPaidTotalAmount = v34;
-                var v35 = _settlementClosingFeeNewHudBorPaidAmount; v35.Clean = value; _settlementClosingFeeNewHudBorPaidAmount = v35;
-                var v36 = _settlementClosingFeeNewHudSelPaidAmount; v36.Clean = value; _settlementClosingFeeNewHudSelPaidAmount = v36;
-                var v37 = _titleCompanyName; v37.Clean = value; _titleCompanyName = v37;
-                var v38 = _titleExaminationNewHudSelPaidAmount; v38.Clean = value; _titleExaminationNewHudSelPaidAmount = v38;
-                var v39 = _titleTable2010Name; v39.Clean = value; _titleTable2010Name = v39;
-                var v40 = _titleTableName; v40.Clean = value; _titleTableName = v40;
-                var v41 = _totalForBorPaid1; v41.Clean = value; _totalForBorPaid1 = v41;
-                var v42 = _totalForBorPaid2; v42.Clean = value; _totalForBorPaid2 = v42;
-                var v43 = _totalForBorPaid3; v43.Clean = value; _totalForBorPaid3 = v43;
-                var v44 = _totalForBorPaid4; v44.Clean = value; _totalForBorPaid4 = v44;
-                var v45 = _totalForBorPaid5; v45.Clean = value; _totalForBorPaid5 = v45;
-                var v46 = _totalForBorPaid6; v46.Clean = value; _totalForBorPaid6 = v46;
-                var v47 = _totalForSellerPaid1; v47.Clean = value; _totalForSellerPaid1 = v47;
-                var v48 = _totalForSellerPaid2; v48.Clean = value; _totalForSellerPaid2 = v48;
-                var v49 = _totalForSellerPaid3; v49.Clean = value; _totalForSellerPaid3 = v49;
-                var v50 = _totalForSellerPaid4; v50.Clean = value; _totalForSellerPaid4 = v50;
-                var v51 = _totalForSellerPaid5; v51.Clean = value; _totalForSellerPaid5 = v51;
-                var v52 = _totalForSellerPaid6; v52.Clean = value; _totalForSellerPaid6 = v52;
+                var v8 = _disclosedSalesPrice; v8.Clean = value; _disclosedSalesPrice = v8;
+                var v9 = _escrowCompanyName; v9.Clean = value; _escrowCompanyName = v9;
+                var v10 = _escrowTableDesc1; v10.Clean = value; _escrowTableDesc1 = v10;
+                var v11 = _escrowTableDesc2; v11.Clean = value; _escrowTableDesc2 = v11;
+                var v12 = _escrowTableDesc3; v12.Clean = value; _escrowTableDesc3 = v12;
+                var v13 = _escrowTableDesc4; v13.Clean = value; _escrowTableDesc4 = v13;
+                var v14 = _escrowTableDesc5; v14.Clean = value; _escrowTableDesc5 = v14;
+                var v15 = _escrowTableFee; v15.Clean = value; _escrowTableFee = v15;
+                var v16 = _escrowTableFee1; v16.Clean = value; _escrowTableFee1 = v16;
+                var v17 = _escrowTableFee2; v17.Clean = value; _escrowTableFee2 = v17;
+                var v18 = _escrowTableFee3; v18.Clean = value; _escrowTableFee3 = v18;
+                var v19 = _escrowTableFee4; v19.Clean = value; _escrowTableFee4 = v19;
+                var v20 = _escrowTableFee5; v20.Clean = value; _escrowTableFee5 = v20;
+                var v21 = _escrowTableName; v21.Clean = value; _escrowTableName = v21;
+                var v22 = _feeVariances; v22.Clean = value; _feeVariances = v22;
+                var v23 = _id; v23.Clean = value; _id = v23;
+                var v24 = _impoundHazInsRate; v24.Clean = value; _impoundHazInsRate = v24;
+                var v25 = _impoundMortgInsPremRate; v25.Clean = value; _impoundMortgInsPremRate = v25;
+                var v26 = _impoundMortgInsPremYearlyBasis; v26.Clean = value; _impoundMortgInsPremYearlyBasis = v26;
+                var v27 = _impoundTaxesRate; v27.Clean = value; _impoundTaxesRate = v27;
+                var v28 = _impoundType1; v28.Clean = value; _impoundType1 = v28;
+                var v29 = _impoundType2; v29.Clean = value; _impoundType2 = v29;
+                var v30 = _impoundType3; v30.Clean = value; _impoundType3 = v30;
+                var v31 = _impoundType4; v31.Clean = value; _impoundType4 = v31;
+                var v32 = _proposedMonthlyHazardInsurance; v32.Clean = value; _proposedMonthlyHazardInsurance = v32;
+                var v33 = _proposedMonthlyMortgageInsurance; v33.Clean = value; _proposedMonthlyMortgageInsurance = v33;
+                var v34 = _section1000BorrowerPaidTotalAmount; v34.Clean = value; _section1000BorrowerPaidTotalAmount = v34;
+                var v35 = _section1000SellerPaidTotalAmount; v35.Clean = value; _section1000SellerPaidTotalAmount = v35;
+                var v36 = _settlementClosingFeeNewHudBorPaidAmount; v36.Clean = value; _settlementClosingFeeNewHudBorPaidAmount = v36;
+                var v37 = _settlementClosingFeeNewHudSelPaidAmount; v37.Clean = value; _settlementClosingFeeNewHudSelPaidAmount = v37;
+                var v38 = _titleCompanyName; v38.Clean = value; _titleCompanyName = v38;
+                var v39 = _titleExaminationNewHudSelPaidAmount; v39.Clean = value; _titleExaminationNewHudSelPaidAmount = v39;
+                var v40 = _titleTable2010Name; v40.Clean = value; _titleTable2010Name = v40;
+                var v41 = _titleTableName; v41.Clean = value; _titleTableName = v41;
+                var v42 = _totalForBorPaid1; v42.Clean = value; _totalForBorPaid1 = v42;
+                var v43 = _totalForBorPaid2; v43.Clean = value; _totalForBorPaid2 = v43;
+                var v44 = _totalForBorPaid3; v44.Clean = value; _totalForBorPaid3 = v44;
+                var v45 = _totalForBorPaid4; v45.Clean = value; _totalForBorPaid4 = v45;
+                var v46 = _totalForBorPaid5; v46.Clean = value; _totalForBorPaid5 = v46;
+                var v47 = _totalForBorPaid6; v47.Clean = value; _totalForBorPaid6 = v47;
+                var v48 = _totalForSellerPaid1; v48.Clean = value; _totalForSellerPaid1 = v48;
+                var v49 = _totalForSellerPaid2; v49.Clean = value; _totalForSellerPaid2 = v49;
+                var v50 = _totalForSellerPaid3; v50.Clean = value; _totalForSellerPaid3 = v50;
+                var v51 = _totalForSellerPaid4; v51.Clean = value; _totalForSellerPaid4 = v51;
+                var v52 = _totalForSellerPaid5; v52.Clean = value; _totalForSellerPaid5 = v52;
+                var v53 = _totalForSellerPaid6; v53.Clean = value; _totalForSellerPaid6 = v53;
                 if (ClosingDisclosure1 != null) ClosingDisclosure1.Clean = value;
                 if (ClosingDisclosure2 != null) ClosingDisclosure2.Clean = value;
                 if (ClosingDisclosure3 != null) ClosingDisclosure3.Clean = value;

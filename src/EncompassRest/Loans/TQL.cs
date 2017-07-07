@@ -96,6 +96,12 @@ namespace EncompassRest.Loans
         public string LastUserIDWhoOrderedCompliance { get { return _lastUserIDWhoOrderedCompliance; } set { _lastUserIDWhoOrderedCompliance = value; } }
         private Value<string> _lastUserIDWhoOrderedFraudOrder;
         public string LastUserIDWhoOrderedFraudOrder { get { return _lastUserIDWhoOrderedFraudOrder; } set { _lastUserIDWhoOrderedFraudOrder = value; } }
+        private Value<bool?> _mIVendorsArchAutoOrderIndicator;
+        public bool? MIVendorsArchAutoOrderIndicator { get { return _mIVendorsArchAutoOrderIndicator; } set { _mIVendorsArchAutoOrderIndicator = value; } }
+        private Value<bool?> _mIVendorsMgicAutoOrderIndicator;
+        public bool? MIVendorsMgicAutoOrderIndicator { get { return _mIVendorsMgicAutoOrderIndicator; } set { _mIVendorsMgicAutoOrderIndicator = value; } }
+        private Value<bool?> _mIVendorsRadianAutoOrderIndicator;
+        public bool? MIVendorsRadianAutoOrderIndicator { get { return _mIVendorsRadianAutoOrderIndicator; } set { _mIVendorsRadianAutoOrderIndicator = value; } }
         private Value<string> _pHH4506TBaselineReportRequired;
         public string PHH4506TBaselineReportRequired { get { return _pHH4506TBaselineReportRequired; } set { _pHH4506TBaselineReportRequired = value; } }
         private Value<string> _pHHComplianceBaselineReportRequired;
@@ -191,6 +197,9 @@ namespace EncompassRest.Loans
                     && _lastUserIDWhoOrderedCCVP.Clean
                     && _lastUserIDWhoOrderedCompliance.Clean
                     && _lastUserIDWhoOrderedFraudOrder.Clean
+                    && _mIVendorsArchAutoOrderIndicator.Clean
+                    && _mIVendorsMgicAutoOrderIndicator.Clean
+                    && _mIVendorsRadianAutoOrderIndicator.Clean
                     && _pHH4506TBaselineReportRequired.Clean
                     && _pHHComplianceBaselineReportRequired.Clean
                     && _pHHFloodBaselineReportRequired.Clean
@@ -263,28 +272,31 @@ namespace EncompassRest.Loans
                 var v41 = _lastUserIDWhoOrderedCCVP; v41.Clean = value; _lastUserIDWhoOrderedCCVP = v41;
                 var v42 = _lastUserIDWhoOrderedCompliance; v42.Clean = value; _lastUserIDWhoOrderedCompliance = v42;
                 var v43 = _lastUserIDWhoOrderedFraudOrder; v43.Clean = value; _lastUserIDWhoOrderedFraudOrder = v43;
-                var v44 = _pHH4506TBaselineReportRequired; v44.Clean = value; _pHH4506TBaselineReportRequired = v44;
-                var v45 = _pHHComplianceBaselineReportRequired; v45.Clean = value; _pHHComplianceBaselineReportRequired = v45;
-                var v46 = _pHHFloodBaselineReportRequired; v46.Clean = value; _pHHFloodBaselineReportRequired = v46;
-                var v47 = _pHHFraudBaselineReportRequired; v47.Clean = value; _pHHFraudBaselineReportRequired = v47;
-                var v48 = _stonegate4506TBaselineReport; v48.Clean = value; _stonegate4506TBaselineReport = v48;
-                var v49 = _stonegateComplianceBaselineReportRequired; v49.Clean = value; _stonegateComplianceBaselineReportRequired = v49;
-                var v50 = _stonegateFloodBaselineReportRequired; v50.Clean = value; _stonegateFloodBaselineReportRequired = v50;
-                var v51 = _stonegateFraudBaselineReportRequired; v51.Clean = value; _stonegateFraudBaselineReportRequired = v51;
-                var v52 = _tQLComplianceAlerts; v52.Clean = value; _tQLComplianceAlerts = v52;
-                var v53 = _tQLDocuments; v53.Clean = value; _tQLDocuments = v53;
-                var v54 = _tQLFraudAlerts; v54.Clean = value; _tQLFraudAlerts = v54;
-                var v55 = _tQLFraudAlertsTotal; v55.Clean = value; _tQLFraudAlertsTotal = v55;
-                var v56 = _tQLFraudAlertsTotalHigh; v56.Clean = value; _tQLFraudAlertsTotalHigh = v56;
-                var v57 = _tQLFraudAlertsTotalHighUnaddressed; v57.Clean = value; _tQLFraudAlertsTotalHighUnaddressed = v57;
-                var v58 = _tQLFraudAlertsTotalLow; v58.Clean = value; _tQLFraudAlertsTotalLow = v58;
-                var v59 = _tQLFraudAlertsTotalLowUnaddressed; v59.Clean = value; _tQLFraudAlertsTotalLowUnaddressed = v59;
-                var v60 = _tQLFraudAlertsTotalMedium; v60.Clean = value; _tQLFraudAlertsTotalMedium = v60;
-                var v61 = _tQLFraudAlertsTotalMediumUnaddressed; v61.Clean = value; _tQLFraudAlertsTotalMediumUnaddressed = v61;
-                var v62 = _wellsFargo4506TBaselineReportRequired; v62.Clean = value; _wellsFargo4506TBaselineReportRequired = v62;
-                var v63 = _wellsFargoComplianceBaselineReportRequired; v63.Clean = value; _wellsFargoComplianceBaselineReportRequired = v63;
-                var v64 = _wellsFargoFloodBaselineReportRequired; v64.Clean = value; _wellsFargoFloodBaselineReportRequired = v64;
-                var v65 = _wellsFargoFraudBaselineReportRequired; v65.Clean = value; _wellsFargoFraudBaselineReportRequired = v65;
+                var v44 = _mIVendorsArchAutoOrderIndicator; v44.Clean = value; _mIVendorsArchAutoOrderIndicator = v44;
+                var v45 = _mIVendorsMgicAutoOrderIndicator; v45.Clean = value; _mIVendorsMgicAutoOrderIndicator = v45;
+                var v46 = _mIVendorsRadianAutoOrderIndicator; v46.Clean = value; _mIVendorsRadianAutoOrderIndicator = v46;
+                var v47 = _pHH4506TBaselineReportRequired; v47.Clean = value; _pHH4506TBaselineReportRequired = v47;
+                var v48 = _pHHComplianceBaselineReportRequired; v48.Clean = value; _pHHComplianceBaselineReportRequired = v48;
+                var v49 = _pHHFloodBaselineReportRequired; v49.Clean = value; _pHHFloodBaselineReportRequired = v49;
+                var v50 = _pHHFraudBaselineReportRequired; v50.Clean = value; _pHHFraudBaselineReportRequired = v50;
+                var v51 = _stonegate4506TBaselineReport; v51.Clean = value; _stonegate4506TBaselineReport = v51;
+                var v52 = _stonegateComplianceBaselineReportRequired; v52.Clean = value; _stonegateComplianceBaselineReportRequired = v52;
+                var v53 = _stonegateFloodBaselineReportRequired; v53.Clean = value; _stonegateFloodBaselineReportRequired = v53;
+                var v54 = _stonegateFraudBaselineReportRequired; v54.Clean = value; _stonegateFraudBaselineReportRequired = v54;
+                var v55 = _tQLComplianceAlerts; v55.Clean = value; _tQLComplianceAlerts = v55;
+                var v56 = _tQLDocuments; v56.Clean = value; _tQLDocuments = v56;
+                var v57 = _tQLFraudAlerts; v57.Clean = value; _tQLFraudAlerts = v57;
+                var v58 = _tQLFraudAlertsTotal; v58.Clean = value; _tQLFraudAlertsTotal = v58;
+                var v59 = _tQLFraudAlertsTotalHigh; v59.Clean = value; _tQLFraudAlertsTotalHigh = v59;
+                var v60 = _tQLFraudAlertsTotalHighUnaddressed; v60.Clean = value; _tQLFraudAlertsTotalHighUnaddressed = v60;
+                var v61 = _tQLFraudAlertsTotalLow; v61.Clean = value; _tQLFraudAlertsTotalLow = v61;
+                var v62 = _tQLFraudAlertsTotalLowUnaddressed; v62.Clean = value; _tQLFraudAlertsTotalLowUnaddressed = v62;
+                var v63 = _tQLFraudAlertsTotalMedium; v63.Clean = value; _tQLFraudAlertsTotalMedium = v63;
+                var v64 = _tQLFraudAlertsTotalMediumUnaddressed; v64.Clean = value; _tQLFraudAlertsTotalMediumUnaddressed = v64;
+                var v65 = _wellsFargo4506TBaselineReportRequired; v65.Clean = value; _wellsFargo4506TBaselineReportRequired = v65;
+                var v66 = _wellsFargoComplianceBaselineReportRequired; v66.Clean = value; _wellsFargoComplianceBaselineReportRequired = v66;
+                var v67 = _wellsFargoFloodBaselineReportRequired; v67.Clean = value; _wellsFargoFloodBaselineReportRequired = v67;
+                var v68 = _wellsFargoFraudBaselineReportRequired; v68.Clean = value; _wellsFargoFraudBaselineReportRequired = v68;
                 _settingClean = 0;
             }
         }

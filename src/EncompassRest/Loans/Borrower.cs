@@ -23,6 +23,10 @@ namespace EncompassRest.Loans
         public Application Application { get; set; }
         private Value<string> _applicationTakenMethodType;
         public string ApplicationTakenMethodType { get { return _applicationTakenMethodType; } set { _applicationTakenMethodType = value; } }
+        private Value<string> _assetRepAndWarrantyMessage;
+        public string AssetRepAndWarrantyMessage { get { return _assetRepAndWarrantyMessage; } set { _assetRepAndWarrantyMessage = value; } }
+        private Value<bool?> _assetRepAndWarrantyReliefAvailable;
+        public bool? AssetRepAndWarrantyReliefAvailable { get { return _assetRepAndWarrantyReliefAvailable; } set { _assetRepAndWarrantyReliefAvailable = value; } }
         private Value<bool?> _authorizedCreditReportIndicator;
         public bool? AuthorizedCreditReportIndicator { get { return _authorizedCreditReportIndicator; } set { _authorizedCreditReportIndicator = value; } }
         private Value<bool?> _authorizedToSignIndicator;
@@ -237,6 +241,14 @@ namespace EncompassRest.Loans
         public bool? HmdaFilipinoIndicator { get { return _hmdaFilipinoIndicator; } set { _hmdaFilipinoIndicator = value; } }
         private Value<string> _hmdaGenderType;
         public string HmdaGenderType { get { return _hmdaGenderType; } set { _hmdaGenderType = value; } }
+        private Value<bool?> _hmdaGendertypeDoNotWishIndicator;
+        public bool? HmdaGendertypeDoNotWishIndicator { get { return _hmdaGendertypeDoNotWishIndicator; } set { _hmdaGendertypeDoNotWishIndicator = value; } }
+        private Value<bool?> _hmdaGendertypeFemaleIndicator;
+        public bool? HmdaGendertypeFemaleIndicator { get { return _hmdaGendertypeFemaleIndicator; } set { _hmdaGendertypeFemaleIndicator = value; } }
+        private Value<bool?> _hmdaGendertypeMaleIndicator;
+        public bool? HmdaGendertypeMaleIndicator { get { return _hmdaGendertypeMaleIndicator; } set { _hmdaGendertypeMaleIndicator = value; } }
+        private Value<bool?> _hmdaGendertypeNotApplicableIndicator;
+        public bool? HmdaGendertypeNotApplicableIndicator { get { return _hmdaGendertypeNotApplicableIndicator; } set { _hmdaGendertypeNotApplicableIndicator = value; } }
         private Value<bool?> _hmdaGuamanianOrChamorroIndicator;
         public bool? HmdaGuamanianOrChamorroIndicator { get { return _hmdaGuamanianOrChamorroIndicator; } set { _hmdaGuamanianOrChamorroIndicator = value; } }
         private Value<bool?> _hmdaHispanicLatinoOtherOriginIndicator;
@@ -283,18 +295,34 @@ namespace EncompassRest.Loans
         public string HomePhoneNumber { get { return _homePhoneNumber; } set { _homePhoneNumber = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
+        private Value<string> _incomeRepAndWarrantyMessage;
+        public string IncomeRepAndWarrantyMessage { get { return _incomeRepAndWarrantyMessage; } set { _incomeRepAndWarrantyMessage = value; } }
+        private Value<bool?> _incomeRepAndWarrantyReliefAvailable;
+        public bool? IncomeRepAndWarrantyReliefAvailable { get { return _incomeRepAndWarrantyReliefAvailable; } set { _incomeRepAndWarrantyReliefAvailable = value; } }
         private Value<bool?> _intentToOccupyIndicator;
         public bool? IntentToOccupyIndicator { get { return _intentToOccupyIndicator; } set { _intentToOccupyIndicator = value; } }
         private Value<string> _intuitReportId;
         public string IntuitReportId { get { return _intuitReportId; } set { _intuitReportId = value; } }
+        private Value<bool?> _isBaseIncomeAvailable;
+        public bool? IsBaseIncomeAvailable { get { return _isBaseIncomeAvailable; } set { _isBaseIncomeAvailable = value; } }
+        private Value<bool?> _isBonusAvailable;
+        public bool? IsBonusAvailable { get { return _isBonusAvailable; } set { _isBonusAvailable = value; } }
         private Value<bool?> _isBorrower;
         public bool? IsBorrower { get { return _isBorrower; } set { _isBorrower = value; } }
+        private Value<bool?> _isCommissionAvailable;
+        public bool? IsCommissionAvailable { get { return _isCommissionAvailable; } set { _isCommissionAvailable = value; } }
         private Value<string> _isEthnicityBasedOnVisual;
         public string IsEthnicityBasedOnVisual { get { return _isEthnicityBasedOnVisual; } set { _isEthnicityBasedOnVisual = value; } }
+        private Value<bool?> _isOvertimeAvailable;
+        public bool? IsOvertimeAvailable { get { return _isOvertimeAvailable; } set { _isOvertimeAvailable = value; } }
         private Value<string> _isRaceBasedOnVisual;
         public string IsRaceBasedOnVisual { get { return _isRaceBasedOnVisual; } set { _isRaceBasedOnVisual = value; } }
+        private Value<bool?> _isSelfEmployed;
+        public bool? IsSelfEmployed { get { return _isSelfEmployed; } set { _isSelfEmployed = value; } }
         private Value<string> _isSexBasedOnVisual;
         public string IsSexBasedOnVisual { get { return _isSexBasedOnVisual; } set { _isSexBasedOnVisual = value; } }
+        private Value<bool?> _isSocialSecurityAvailable;
+        public bool? IsSocialSecurityAvailable { get { return _isSocialSecurityAvailable; } set { _isSocialSecurityAvailable = value; } }
         private Value<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         private Value<string> _lastNameWithSuffix;
@@ -337,8 +365,12 @@ namespace EncompassRest.Loans
         public string NearestRelativeState { get { return _nearestRelativeState; } set { _nearestRelativeState = value; } }
         private Value<bool?> _no3rdPartyEmailIndicator;
         public bool? No3rdPartyEmailIndicator { get { return _no3rdPartyEmailIndicator; } set { _no3rdPartyEmailIndicator = value; } }
+        private Value<bool?> _noCoApplicantEthnicityIndicator;
+        public bool? NoCoApplicantEthnicityIndicator { get { return _noCoApplicantEthnicityIndicator; } set { _noCoApplicantEthnicityIndicator = value; } }
         private Value<bool?> _noCoApplicantIndicator;
         public bool? NoCoApplicantIndicator { get { return _noCoApplicantIndicator; } set { _noCoApplicantIndicator = value; } }
+        private Value<bool?> _noCoApplicantSexIndicator;
+        public bool? NoCoApplicantSexIndicator { get { return _noCoApplicantSexIndicator; } set { _noCoApplicantSexIndicator = value; } }
         private Value<int?> _numberofTradelines;
         public int? NumberofTradelines { get { return _numberofTradelines; } set { _numberofTradelines = value; } }
         private Value<bool?> _obtainLoanFromRHSIndicator;
@@ -373,6 +405,10 @@ namespace EncompassRest.Loans
         public string PersonIncomeFrequencyType { get { return _personIncomeFrequencyType; } set { _personIncomeFrequencyType = value; } }
         private Value<decimal?> _personMonthlyIncome;
         public decimal? PersonMonthlyIncome { get { return _personMonthlyIncome; } set { _personMonthlyIncome = value; } }
+        private Value<bool?> _pIWAccepted;
+        public bool? PIWAccepted { get { return _pIWAccepted; } set { _pIWAccepted = value; } }
+        private Value<string> _pIWMessage;
+        public string PIWMessage { get { return _pIWMessage; } set { _pIWMessage = value; } }
         private Value<string> _poaOccupancyIntent;
         public string PoaOccupancyIntent { get { return _poaOccupancyIntent; } set { _poaOccupancyIntent = value; } }
         private Value<string> _poaSignatureText;
@@ -527,6 +563,10 @@ namespace EncompassRest.Loans
         public decimal? VaFederalTaxAmount { get { return _vaFederalTaxAmount; } set { _vaFederalTaxAmount = value; } }
         private Value<int?> _validDaysForConsentCount;
         public int? ValidDaysForConsentCount { get { return _validDaysForConsentCount; } set { _validDaysForConsentCount = value; } }
+        private Value<bool?> _valueRepAndWarrantyAvailable;
+        public bool? ValueRepAndWarrantyAvailable { get { return _valueRepAndWarrantyAvailable; } set { _valueRepAndWarrantyAvailable = value; } }
+        private Value<string> _valueRepAndWarrantyMessage;
+        public string ValueRepAndWarrantyMessage { get { return _valueRepAndWarrantyMessage; } set { _valueRepAndWarrantyMessage = value; } }
         private Value<decimal?> _vaNetTakeHomePayAmount;
         public decimal? VaNetTakeHomePayAmount { get { return _vaNetTakeHomePayAmount; } set { _vaNetTakeHomePayAmount = value; } }
         private Value<decimal?> _vaOtherAmount;
@@ -587,6 +627,8 @@ namespace EncompassRest.Loans
                     && _altId.Clean
                     && _applicantType.Clean
                     && _applicationTakenMethodType.Clean
+                    && _assetRepAndWarrantyMessage.Clean
+                    && _assetRepAndWarrantyReliefAvailable.Clean
                     && _authorizedCreditReportIndicator.Clean
                     && _authorizedToSignIndicator.Clean
                     && _bankAccountNumber.Clean
@@ -694,6 +736,10 @@ namespace EncompassRest.Loans
                     && _hmdaEthnicityType.Clean
                     && _hmdaFilipinoIndicator.Clean
                     && _hmdaGenderType.Clean
+                    && _hmdaGendertypeDoNotWishIndicator.Clean
+                    && _hmdaGendertypeFemaleIndicator.Clean
+                    && _hmdaGendertypeMaleIndicator.Clean
+                    && _hmdaGendertypeNotApplicableIndicator.Clean
                     && _hmdaGuamanianOrChamorroIndicator.Clean
                     && _hmdaHispanicLatinoOtherOriginIndicator.Clean
                     && _hmdaJapaneseIndicator.Clean
@@ -717,12 +763,20 @@ namespace EncompassRest.Loans
                     && _homeownerPastThreeYearsIndicator.Clean
                     && _homePhoneNumber.Clean
                     && _id.Clean
+                    && _incomeRepAndWarrantyMessage.Clean
+                    && _incomeRepAndWarrantyReliefAvailable.Clean
                     && _intentToOccupyIndicator.Clean
                     && _intuitReportId.Clean
+                    && _isBaseIncomeAvailable.Clean
+                    && _isBonusAvailable.Clean
                     && _isBorrower.Clean
+                    && _isCommissionAvailable.Clean
                     && _isEthnicityBasedOnVisual.Clean
+                    && _isOvertimeAvailable.Clean
                     && _isRaceBasedOnVisual.Clean
+                    && _isSelfEmployed.Clean
                     && _isSexBasedOnVisual.Clean
+                    && _isSocialSecurityAvailable.Clean
                     && _lastName.Clean
                     && _lastNameWithSuffix.Clean
                     && _loanForeclosureOrJudgementIndicator.Clean
@@ -744,7 +798,9 @@ namespace EncompassRest.Loans
                     && _nearestRelativeRelationship.Clean
                     && _nearestRelativeState.Clean
                     && _no3rdPartyEmailIndicator.Clean
+                    && _noCoApplicantEthnicityIndicator.Clean
                     && _noCoApplicantIndicator.Clean
+                    && _noCoApplicantSexIndicator.Clean
                     && _numberofTradelines.Clean
                     && _obtainLoanFromRHSIndicator.Clean
                     && _openBankruptcy2.Clean
@@ -762,6 +818,8 @@ namespace EncompassRest.Loans
                     && _personIncomeAmount.Clean
                     && _personIncomeFrequencyType.Clean
                     && _personMonthlyIncome.Clean
+                    && _pIWAccepted.Clean
+                    && _pIWMessage.Clean
                     && _poaOccupancyIntent.Clean
                     && _poaSignatureText.Clean
                     && _positiveCashFlow.Clean
@@ -839,6 +897,8 @@ namespace EncompassRest.Loans
                     && _userDefinedIncome.Clean
                     && _vaFederalTaxAmount.Clean
                     && _validDaysForConsentCount.Clean
+                    && _valueRepAndWarrantyAvailable.Clean
+                    && _valueRepAndWarrantyMessage.Clean
                     && _vaNetTakeHomePayAmount.Clean
                     && _vaOtherAmount.Clean
                     && _vaOtherNetIncomeAmount.Clean
@@ -876,281 +936,301 @@ namespace EncompassRest.Loans
                 var v4 = _altId; v4.Clean = value; _altId = v4;
                 var v5 = _applicantType; v5.Clean = value; _applicantType = v5;
                 var v6 = _applicationTakenMethodType; v6.Clean = value; _applicationTakenMethodType = v6;
-                var v7 = _authorizedCreditReportIndicator; v7.Clean = value; _authorizedCreditReportIndicator = v7;
-                var v8 = _authorizedToSignIndicator; v8.Clean = value; _authorizedToSignIndicator = v8;
-                var v9 = _bankAccountNumber; v9.Clean = value; _bankAccountNumber = v9;
-                var v10 = _bankAccountType; v10.Clean = value; _bankAccountType = v10;
-                var v11 = _bankContactAddress; v11.Clean = value; _bankContactAddress = v11;
-                var v12 = _bankContactCity; v12.Clean = value; _bankContactCity = v12;
-                var v13 = _bankContactName; v13.Clean = value; _bankContactName = v13;
-                var v14 = _bankContactPostalCode; v14.Clean = value; _bankContactPostalCode = v14;
-                var v15 = _bankContactState; v15.Clean = value; _bankContactState = v15;
-                var v16 = _bankruptcyIndicator; v16.Clean = value; _bankruptcyIndicator = v16;
-                var v17 = _bankruptcyStatus; v17.Clean = value; _bankruptcyStatus = v17;
-                var v18 = _baseMonthlyIncomeAmount; v18.Clean = value; _baseMonthlyIncomeAmount = v18;
-                var v19 = _birthDate; v19.Clean = value; _birthDate = v19;
-                var v20 = _borrowedDownPaymentIndicator; v20.Clean = value; _borrowedDownPaymentIndicator = v20;
-                var v21 = _borrowerConsentRequestDate; v21.Clean = value; _borrowerConsentRequestDate = v21;
-                var v22 = _borrowerIndex; v22.Clean = value; _borrowerIndex = v22;
-                var v23 = _borrowerType; v23.Clean = value; _borrowerType = v23;
-                var v24 = _borrowerTypeInSummary; v24.Clean = value; _borrowerTypeInSummary = v24;
-                var v25 = _caivrsIdentifier; v25.Clean = value; _caivrsIdentifier = v25;
-                var v26 = _citizenshipResidencyType; v26.Clean = value; _citizenshipResidencyType = v26;
-                var v27 = _coMakerEndorserOfNoteIndicator; v27.Clean = value; _coMakerEndorserOfNoteIndicator = v27;
-                var v28 = _commentOfCreditReport; v28.Clean = value; _commentOfCreditReport = v28;
-                var v29 = _confirmedCRDIL; v29.Clean = value; _confirmedCRDIL = v29;
-                var v30 = _confirmedCRFCEC; v30.Clean = value; _confirmedCRFCEC = v30;
-                var v31 = _confirmedCRFCIncorrect; v31.Clean = value; _confirmedCRFCIncorrect = v31;
-                var v32 = _confirmedCRPFS; v32.Clean = value; _confirmedCRPFS = v32;
-                var v33 = _confirmedOther; v33.Clean = value; _confirmedOther = v33;
-                var v34 = _confirmedOtherDescription; v34.Clean = value; _confirmedOtherDescription = v34;
-                var v35 = _creditCounseling; v35.Clean = value; _creditCounseling = v35;
-                var v36 = _creditReceivedDate; v36.Clean = value; _creditReceivedDate = v36;
-                var v37 = _creditReportAuthorizationMethod; v37.Clean = value; _creditReportAuthorizationMethod = v37;
-                var v38 = _creditScoreIndicator; v38.Clean = value; _creditScoreIndicator = v38;
-                var v39 = _dateAuthorizedCreditReport; v39.Clean = value; _dateAuthorizedCreditReport = v39;
-                var v40 = _dateOfBankruptcy; v40.Clean = value; _dateOfBankruptcy = v40;
-                var v41 = _dateOfForeclosure; v41.Clean = value; _dateOfForeclosure = v41;
-                var v42 = _declarationsJIndicator; v42.Clean = value; _declarationsJIndicator = v42;
-                var v43 = _declarationsKIndicator; v43.Clean = value; _declarationsKIndicator = v43;
-                var v44 = _dependentCount; v44.Clean = value; _dependentCount = v44;
-                var v45 = _dependentsAgesDescription; v45.Clean = value; _dependentsAgesDescription = v45;
-                var v46 = _disabledIndicator; v46.Clean = value; _disabledIndicator = v46;
-                var v47 = _emailAddressText; v47.Clean = value; _emailAddressText = v47;
-                var v48 = _equifax120Days; v48.Clean = value; _equifax120Days = v48;
-                var v49 = _equifax150Days; v49.Clean = value; _equifax150Days = v49;
-                var v50 = _equifax30Days; v50.Clean = value; _equifax30Days = v50;
-                var v51 = _equifax60Days; v51.Clean = value; _equifax60Days = v51;
-                var v52 = _equifax90Days; v52.Clean = value; _equifax90Days = v52;
-                var v53 = _equifaxCreditScoreForDisclosure; v53.Clean = value; _equifaxCreditScoreForDisclosure = v53;
-                var v54 = _equifaxCreditScoreRanksPercent; v54.Clean = value; _equifaxCreditScoreRanksPercent = v54;
-                var v55 = _equifaxDatePulled; v55.Clean = value; _equifaxDatePulled = v55;
-                var v56 = _equifaxFactorCode1; v56.Clean = value; _equifaxFactorCode1 = v56;
-                var v57 = _equifaxFactorCode2; v57.Clean = value; _equifaxFactorCode2 = v57;
-                var v58 = _equifaxFactorCode3; v58.Clean = value; _equifaxFactorCode3 = v58;
-                var v59 = _equifaxFactorCode4; v59.Clean = value; _equifaxFactorCode4 = v59;
-                var v60 = _equifaxFactorCode5; v60.Clean = value; _equifaxFactorCode5 = v60;
-                var v61 = _equifaxKeyFactor1; v61.Clean = value; _equifaxKeyFactor1 = v61;
-                var v62 = _equifaxKeyFactor2; v62.Clean = value; _equifaxKeyFactor2 = v62;
-                var v63 = _equifaxKeyFactor3; v63.Clean = value; _equifaxKeyFactor3 = v63;
-                var v64 = _equifaxKeyFactor4; v64.Clean = value; _equifaxKeyFactor4 = v64;
-                var v65 = _equifaxKeyFactor5; v65.Clean = value; _equifaxKeyFactor5 = v65;
-                var v66 = _equifaxMaterialTermsCreditByScore; v66.Clean = value; _equifaxMaterialTermsCreditByScore = v66;
-                var v67 = _equifaxScore; v67.Clean = value; _equifaxScore = v67;
-                var v68 = _experian120Days; v68.Clean = value; _experian120Days = v68;
-                var v69 = _experian150Days; v69.Clean = value; _experian150Days = v69;
-                var v70 = _experian30Days; v70.Clean = value; _experian30Days = v70;
-                var v71 = _experian60Days; v71.Clean = value; _experian60Days = v71;
-                var v72 = _experian90Days; v72.Clean = value; _experian90Days = v72;
-                var v73 = _experianCreditScore; v73.Clean = value; _experianCreditScore = v73;
-                var v74 = _experianCreditScoreForDisclosure; v74.Clean = value; _experianCreditScoreForDisclosure = v74;
-                var v75 = _experianCreditScoreRanksPercent; v75.Clean = value; _experianCreditScoreRanksPercent = v75;
-                var v76 = _experianDatePulled; v76.Clean = value; _experianDatePulled = v76;
-                var v77 = _experianFactorCode1; v77.Clean = value; _experianFactorCode1 = v77;
-                var v78 = _experianFactorCode2; v78.Clean = value; _experianFactorCode2 = v78;
-                var v79 = _experianFactorCode3; v79.Clean = value; _experianFactorCode3 = v79;
-                var v80 = _experianFactorCode4; v80.Clean = value; _experianFactorCode4 = v80;
-                var v81 = _experianFactorCode5; v81.Clean = value; _experianFactorCode5 = v81;
-                var v82 = _experianKeyFactor1; v82.Clean = value; _experianKeyFactor1 = v82;
-                var v83 = _experianKeyFactor2; v83.Clean = value; _experianKeyFactor2 = v83;
-                var v84 = _experianKeyFactor3; v84.Clean = value; _experianKeyFactor3 = v84;
-                var v85 = _experianKeyFactor4; v85.Clean = value; _experianKeyFactor4 = v85;
-                var v86 = _experianKeyFactor5; v86.Clean = value; _experianKeyFactor5 = v86;
-                var v87 = _experianMaterialTermsCreditByScore; v87.Clean = value; _experianMaterialTermsCreditByScore = v87;
-                var v88 = _firstName; v88.Clean = value; _firstName = v88;
-                var v89 = _firstNameWithMiddleName; v89.Clean = value; _firstNameWithMiddleName = v89;
-                var v90 = _firstTimeHomeBuyer; v90.Clean = value; _firstTimeHomeBuyer = v90;
-                var v91 = _foreclosureSatisfied; v91.Clean = value; _foreclosureSatisfied = v91;
-                var v92 = _foreclosureStatus; v92.Clean = value; _foreclosureStatus = v92;
-                var v93 = _freddieMacPerson1; v93.Clean = value; _freddieMacPerson1 = v93;
-                var v94 = _freddieMacPerson2; v94.Clean = value; _freddieMacPerson2 = v94;
-                var v95 = _fullName; v95.Clean = value; _fullName = v95;
-                var v96 = _fullNameWithSuffix; v96.Clean = value; _fullNameWithSuffix = v96;
-                var v97 = _highestCreditLimit; v97.Clean = value; _highestCreditLimit = v97;
-                var v98 = _hmda2003OtherRaceNationalOriginDescription; v98.Clean = value; _hmda2003OtherRaceNationalOriginDescription = v98;
-                var v99 = _hmda2003RaceNationalOriginType; v99.Clean = value; _hmda2003RaceNationalOriginType = v99;
-                var v100 = _hmdaAfricanAmericanIndicator; v100.Clean = value; _hmdaAfricanAmericanIndicator = v100;
-                var v101 = _hmdaAge; v101.Clean = value; _hmdaAge = v101;
-                var v102 = _hmdaAmericanIndianIndicator; v102.Clean = value; _hmdaAmericanIndianIndicator = v102;
-                var v103 = _hmdaAmericanIndianTribe; v103.Clean = value; _hmdaAmericanIndianTribe = v103;
-                var v104 = _hmdaAsianIndianIndicator; v104.Clean = value; _hmdaAsianIndianIndicator = v104;
-                var v105 = _hmdaAsianIndicator; v105.Clean = value; _hmdaAsianIndicator = v105;
-                var v106 = _hmdaAsianOtherRaceIndicator; v106.Clean = value; _hmdaAsianOtherRaceIndicator = v106;
-                var v107 = _hmdaChineseIndicator; v107.Clean = value; _hmdaChineseIndicator = v107;
-                var v108 = _hmdaCreditScoreForDecisionMaking; v108.Clean = value; _hmdaCreditScoreForDecisionMaking = v108;
-                var v109 = _hmdaCreditScoringModel; v109.Clean = value; _hmdaCreditScoringModel = v109;
-                var v110 = _hmdaCubanIndicator; v110.Clean = value; _hmdaCubanIndicator = v110;
-                var v111 = _hmdaEthnicityType; v111.Clean = value; _hmdaEthnicityType = v111;
-                var v112 = _hmdaFilipinoIndicator; v112.Clean = value; _hmdaFilipinoIndicator = v112;
-                var v113 = _hmdaGenderType; v113.Clean = value; _hmdaGenderType = v113;
-                var v114 = _hmdaGuamanianOrChamorroIndicator; v114.Clean = value; _hmdaGuamanianOrChamorroIndicator = v114;
-                var v115 = _hmdaHispanicLatinoOtherOriginIndicator; v115.Clean = value; _hmdaHispanicLatinoOtherOriginIndicator = v115;
-                var v116 = _hmdaJapaneseIndicator; v116.Clean = value; _hmdaJapaneseIndicator = v116;
-                var v117 = _hmdaKoreanIndicator; v117.Clean = value; _hmdaKoreanIndicator = v117;
-                var v118 = _hmdaMexicanIndicator; v118.Clean = value; _hmdaMexicanIndicator = v118;
-                var v119 = _hmdaNativeHawaiianIndicator; v119.Clean = value; _hmdaNativeHawaiianIndicator = v119;
-                var v120 = _hmdaNoCoApplicantIndicator; v120.Clean = value; _hmdaNoCoApplicantIndicator = v120;
-                var v121 = _hmdaNotApplicableIndicator; v121.Clean = value; _hmdaNotApplicableIndicator = v121;
-                var v122 = _hmdaNotProvidedIndicator; v122.Clean = value; _hmdaNotProvidedIndicator = v122;
-                var v123 = _hmdaOtherAsianRace; v123.Clean = value; _hmdaOtherAsianRace = v123;
-                var v124 = _hmdaOtherHispanicLatinoOrigin; v124.Clean = value; _hmdaOtherHispanicLatinoOrigin = v124;
-                var v125 = _hmdaOtherPacificIslanderRace; v125.Clean = value; _hmdaOtherPacificIslanderRace = v125;
-                var v126 = _hmdaOtherScoringModel; v126.Clean = value; _hmdaOtherScoringModel = v126;
-                var v127 = _hmdaPacificIslanderIndicator; v127.Clean = value; _hmdaPacificIslanderIndicator = v127;
-                var v128 = _hmdaPacificIslanderOtherIndicator; v128.Clean = value; _hmdaPacificIslanderOtherIndicator = v128;
-                var v129 = _hmdaPuertoRicanIndicator; v129.Clean = value; _hmdaPuertoRicanIndicator = v129;
-                var v130 = _hmdaRefusalIndicator; v130.Clean = value; _hmdaRefusalIndicator = v130;
-                var v131 = _hmdaSamoanIndicator; v131.Clean = value; _hmdaSamoanIndicator = v131;
-                var v132 = _hmdaVietnameseIndicator; v132.Clean = value; _hmdaVietnameseIndicator = v132;
-                var v133 = _hmdaWhiteIndicator; v133.Clean = value; _hmdaWhiteIndicator = v133;
-                var v134 = _homeownerPastThreeYearsIndicator; v134.Clean = value; _homeownerPastThreeYearsIndicator = v134;
-                var v135 = _homePhoneNumber; v135.Clean = value; _homePhoneNumber = v135;
-                var v136 = _id; v136.Clean = value; _id = v136;
-                var v137 = _intentToOccupyIndicator; v137.Clean = value; _intentToOccupyIndicator = v137;
-                var v138 = _intuitReportId; v138.Clean = value; _intuitReportId = v138;
-                var v139 = _isBorrower; v139.Clean = value; _isBorrower = v139;
-                var v140 = _isEthnicityBasedOnVisual; v140.Clean = value; _isEthnicityBasedOnVisual = v140;
-                var v141 = _isRaceBasedOnVisual; v141.Clean = value; _isRaceBasedOnVisual = v141;
-                var v142 = _isSexBasedOnVisual; v142.Clean = value; _isSexBasedOnVisual = v142;
-                var v143 = _lastName; v143.Clean = value; _lastName = v143;
-                var v144 = _lastNameWithSuffix; v144.Clean = value; _lastNameWithSuffix = v144;
-                var v145 = _loanForeclosureOrJudgementIndicator; v145.Clean = value; _loanForeclosureOrJudgementIndicator = v145;
-                var v146 = _lpdGsa; v146.Clean = value; _lpdGsa = v146;
-                var v147 = _mailingAddressSameAsPresentIndicator; v147.Clean = value; _mailingAddressSameAsPresentIndicator = v147;
-                var v148 = _maritalStatusType; v148.Clean = value; _maritalStatusType = v148;
-                var v149 = _middleCreditScore; v149.Clean = value; _middleCreditScore = v149;
-                var v150 = _middleFicoScore; v150.Clean = value; _middleFicoScore = v150;
-                var v151 = _middleName; v151.Clean = value; _middleName = v151;
-                var v152 = _minFicoScore; v152.Clean = value; _minFicoScore = v152;
-                var v153 = _mobilePhone; v153.Clean = value; _mobilePhone = v153;
-                var v154 = _mortgageOnCredit; v154.Clean = value; _mortgageOnCredit = v154;
-                var v155 = _nameToObtainLoanFromRHS; v155.Clean = value; _nameToObtainLoanFromRHS = v155;
-                var v156 = _nearestRelativeAddress; v156.Clean = value; _nearestRelativeAddress = v156;
-                var v157 = _nearestRelativeCity; v157.Clean = value; _nearestRelativeCity = v157;
-                var v158 = _nearestRelativeName; v158.Clean = value; _nearestRelativeName = v158;
-                var v159 = _nearestRelativePhone; v159.Clean = value; _nearestRelativePhone = v159;
-                var v160 = _nearestRelativePostalCode; v160.Clean = value; _nearestRelativePostalCode = v160;
-                var v161 = _nearestRelativeRelationship; v161.Clean = value; _nearestRelativeRelationship = v161;
-                var v162 = _nearestRelativeState; v162.Clean = value; _nearestRelativeState = v162;
-                var v163 = _no3rdPartyEmailIndicator; v163.Clean = value; _no3rdPartyEmailIndicator = v163;
-                var v164 = _noCoApplicantIndicator; v164.Clean = value; _noCoApplicantIndicator = v164;
-                var v165 = _numberofTradelines; v165.Clean = value; _numberofTradelines = v165;
-                var v166 = _obtainLoanFromRHSIndicator; v166.Clean = value; _obtainLoanFromRHSIndicator = v166;
-                var v167 = _openBankruptcy2; v167.Clean = value; _openBankruptcy2 = v167;
-                var v168 = _otherMonthlyIncomeAmount; v168.Clean = value; _otherMonthlyIncomeAmount = v168;
-                var v169 = _otherSumAmount; v169.Clean = value; _otherSumAmount = v169;
-                var v170 = _outstandingJudgementsIndicator; v170.Clean = value; _outstandingJudgementsIndicator = v170;
-                var v171 = _partyToLawsuitIndicator; v171.Clean = value; _partyToLawsuitIndicator = v171;
-                var v172 = _pass120Days; v172.Clean = value; _pass120Days = v172;
-                var v173 = _pass150Days; v173.Clean = value; _pass150Days = v173;
-                var v174 = _pass30Days; v174.Clean = value; _pass30Days = v174;
-                var v175 = _pass60Days; v175.Clean = value; _pass60Days = v175;
-                var v176 = _pass90Days; v176.Clean = value; _pass90Days = v176;
-                var v177 = _personFaxNumber; v177.Clean = value; _personFaxNumber = v177;
-                var v178 = _personHoursPerWeek; v178.Clean = value; _personHoursPerWeek = v178;
-                var v179 = _personIncomeAmount; v179.Clean = value; _personIncomeAmount = v179;
-                var v180 = _personIncomeFrequencyType; v180.Clean = value; _personIncomeFrequencyType = v180;
-                var v181 = _personMonthlyIncome; v181.Clean = value; _personMonthlyIncome = v181;
-                var v182 = _poaOccupancyIntent; v182.Clean = value; _poaOccupancyIntent = v182;
-                var v183 = _poaSignatureText; v183.Clean = value; _poaSignatureText = v183;
-                var v184 = _positiveCashFlow; v184.Clean = value; _positiveCashFlow = v184;
-                var v185 = _powerOfAttorneyName; v185.Clean = value; _powerOfAttorneyName = v185;
-                var v186 = _powerOfAttorneyTitleDescription; v186.Clean = value; _powerOfAttorneyTitleDescription = v186;
-                var v187 = _presentlyDelinquentIndicator; v187.Clean = value; _presentlyDelinquentIndicator = v187;
-                var v188 = _priorBankruptcy2; v188.Clean = value; _priorBankruptcy2 = v188;
-                var v189 = _priorForeclosure; v189.Clean = value; _priorForeclosure = v189;
-                var v190 = _priorPropertyTitleType; v190.Clean = value; _priorPropertyTitleType = v190;
-                var v191 = _priorPropertyUsageType; v191.Clean = value; _priorPropertyUsageType = v191;
-                var v192 = _propertyForeclosedPastSevenYearsIndicator; v192.Clean = value; _propertyForeclosedPastSevenYearsIndicator = v192;
-                var v193 = _relationshipDescription; v193.Clean = value; _relationshipDescription = v193;
-                var v194 = _relationshipWithRDEmployeeIndicator; v194.Clean = value; _relationshipWithRDEmployeeIndicator = v194;
-                var v195 = _schoolingTermYears; v195.Clean = value; _schoolingTermYears = v195;
-                var v196 = _sSA89BackgroundCheckIndicator; v196.Clean = value; _sSA89BackgroundCheckIndicator = v196;
-                var v197 = _sSA89BankingServiceIndicator; v197.Clean = value; _sSA89BankingServiceIndicator = v197;
-                var v198 = _sSA89CreditCheckIndicator; v198.Clean = value; _sSA89CreditCheckIndicator = v198;
-                var v199 = _sSA89LicenseRequirementIndicator; v199.Clean = value; _sSA89LicenseRequirementIndicator = v199;
-                var v200 = _sSA89MortgageServiceIndicator; v200.Clean = value; _sSA89MortgageServiceIndicator = v200;
-                var v201 = _sSA89OtherIndicator; v201.Clean = value; _sSA89OtherIndicator = v201;
-                var v202 = _subtotalLiquidAssetsMinusGiftAmount; v202.Clean = value; _subtotalLiquidAssetsMinusGiftAmount = v202;
-                var v203 = _suffixToName; v203.Clean = value; _suffixToName = v203;
-                var v204 = _tax4506LastInvestor; v204.Clean = value; _tax4506LastInvestor = v204;
-                var v205 = _tax4506LastOrderNumber; v205.Clean = value; _tax4506LastOrderNumber = v205;
-                var v206 = _tax4506LastOrderYear1; v206.Clean = value; _tax4506LastOrderYear1 = v206;
-                var v207 = _tax4506LastOrderYear2; v207.Clean = value; _tax4506LastOrderYear2 = v207;
-                var v208 = _tax4506LastOrderYear3; v208.Clean = value; _tax4506LastOrderYear3 = v208;
-                var v209 = _tax4506LastOrderYear4; v209.Clean = value; _tax4506LastOrderYear4 = v209;
-                var v210 = _tax4506LastProductsOrdered; v210.Clean = value; _tax4506LastProductsOrdered = v210;
-                var v211 = _tax4506LastStatus; v211.Clean = value; _tax4506LastStatus = v211;
-                var v212 = _tax4506LastTranscriptType; v212.Clean = value; _tax4506LastTranscriptType = v212;
-                var v213 = _tax4506LastUserIDWhoOrdered; v213.Clean = value; _tax4506LastUserIDWhoOrdered = v213;
-                var v214 = _tax4506TotalYearlyIncome1; v214.Clean = value; _tax4506TotalYearlyIncome1 = v214;
-                var v215 = _tax4506TotalYearlyIncome2; v215.Clean = value; _tax4506TotalYearlyIncome2 = v215;
-                var v216 = _tax4506TotalYearlyIncome3; v216.Clean = value; _tax4506TotalYearlyIncome3 = v216;
-                var v217 = _tax4506TotalYearlyIncome4; v217.Clean = value; _tax4506TotalYearlyIncome4 = v217;
-                var v218 = _tax4506TotalYearlyJointIncome1; v218.Clean = value; _tax4506TotalYearlyJointIncome1 = v218;
-                var v219 = _tax4506TotalYearlyJointIncome2; v219.Clean = value; _tax4506TotalYearlyJointIncome2 = v219;
-                var v220 = _tax4506TotalYearlyJointIncome3; v220.Clean = value; _tax4506TotalYearlyJointIncome3 = v220;
-                var v221 = _tax4506TotalYearlyJointIncome4; v221.Clean = value; _tax4506TotalYearlyJointIncome4 = v221;
-                var v222 = _tax4506TotalYearlyVarianceIncome1; v222.Clean = value; _tax4506TotalYearlyVarianceIncome1 = v222;
-                var v223 = _tax4506TotalYearlyVarianceIncome2; v223.Clean = value; _tax4506TotalYearlyVarianceIncome2 = v223;
-                var v224 = _tax4506TotalYearlyVarianceIncome3; v224.Clean = value; _tax4506TotalYearlyVarianceIncome3 = v224;
-                var v225 = _tax4506TotalYearlyVarianceIncome4; v225.Clean = value; _tax4506TotalYearlyVarianceIncome4 = v225;
-                var v226 = _tax4506TotalYearlyVarianceJointIncome1; v226.Clean = value; _tax4506TotalYearlyVarianceJointIncome1 = v226;
-                var v227 = _tax4506TotalYearlyVarianceJointIncome2; v227.Clean = value; _tax4506TotalYearlyVarianceJointIncome2 = v227;
-                var v228 = _tax4506TotalYearlyVarianceJointIncome3; v228.Clean = value; _tax4506TotalYearlyVarianceJointIncome3 = v228;
-                var v229 = _tax4506TotalYearlyVarianceJointIncome4; v229.Clean = value; _tax4506TotalYearlyVarianceJointIncome4 = v229;
-                var v230 = _taxIdentificationIdentifier; v230.Clean = value; _taxIdentificationIdentifier = v230;
-                var v231 = _totalLiabilitiesBalanceAmount; v231.Clean = value; _totalLiabilitiesBalanceAmount = v231;
-                var v232 = _totalMonthlyIncomeAmount; v232.Clean = value; _totalMonthlyIncomeAmount = v232;
-                var v233 = _totalMonthlyIncomeMinusNetRentalAmount; v233.Clean = value; _totalMonthlyIncomeMinusNetRentalAmount = v233;
-                var v234 = _totalPresentHousingExpenseAmount; v234.Clean = value; _totalPresentHousingExpenseAmount = v234;
-                var v235 = _transactionPurposeDescription; v235.Clean = value; _transactionPurposeDescription = v235;
-                var v236 = _transUnion120Days; v236.Clean = value; _transUnion120Days = v236;
-                var v237 = _transUnion150Days; v237.Clean = value; _transUnion150Days = v237;
-                var v238 = _transUnion30Days; v238.Clean = value; _transUnion30Days = v238;
-                var v239 = _transUnion60Days; v239.Clean = value; _transUnion60Days = v239;
-                var v240 = _transUnion90Days; v240.Clean = value; _transUnion90Days = v240;
-                var v241 = _transUnionCreditScoreForDisclosure; v241.Clean = value; _transUnionCreditScoreForDisclosure = v241;
-                var v242 = _transUnionCreditScoreRanksPercent; v242.Clean = value; _transUnionCreditScoreRanksPercent = v242;
-                var v243 = _transUnionDatePulled; v243.Clean = value; _transUnionDatePulled = v243;
-                var v244 = _transUnionFactorCode1; v244.Clean = value; _transUnionFactorCode1 = v244;
-                var v245 = _transUnionFactorCode2; v245.Clean = value; _transUnionFactorCode2 = v245;
-                var v246 = _transUnionFactorCode3; v246.Clean = value; _transUnionFactorCode3 = v246;
-                var v247 = _transUnionFactorCode4; v247.Clean = value; _transUnionFactorCode4 = v247;
-                var v248 = _transUnionFactorCode5; v248.Clean = value; _transUnionFactorCode5 = v248;
-                var v249 = _transUnionKeyFactor1; v249.Clean = value; _transUnionKeyFactor1 = v249;
-                var v250 = _transUnionKeyFactor2; v250.Clean = value; _transUnionKeyFactor2 = v250;
-                var v251 = _transUnionKeyFactor3; v251.Clean = value; _transUnionKeyFactor3 = v251;
-                var v252 = _transUnionKeyFactor4; v252.Clean = value; _transUnionKeyFactor4 = v252;
-                var v253 = _transUnionKeyFactor5; v253.Clean = value; _transUnionKeyFactor5 = v253;
-                var v254 = _transUnionMaterialTermsCreditByScore; v254.Clean = value; _transUnionMaterialTermsCreditByScore = v254;
-                var v255 = _transUnionScore; v255.Clean = value; _transUnionScore = v255;
-                var v256 = _userDefinedIncome; v256.Clean = value; _userDefinedIncome = v256;
-                var v257 = _vaFederalTaxAmount; v257.Clean = value; _vaFederalTaxAmount = v257;
-                var v258 = _validDaysForConsentCount; v258.Clean = value; _validDaysForConsentCount = v258;
-                var v259 = _vaNetTakeHomePayAmount; v259.Clean = value; _vaNetTakeHomePayAmount = v259;
-                var v260 = _vaOtherAmount; v260.Clean = value; _vaOtherAmount = v260;
-                var v261 = _vaOtherNetIncomeAmount; v261.Clean = value; _vaOtherNetIncomeAmount = v261;
-                var v262 = _vaRetirementAmount; v262.Clean = value; _vaRetirementAmount = v262;
-                var v263 = _vaStateTaxAmount; v263.Clean = value; _vaStateTaxAmount = v263;
-                var v264 = _vaTotalIncomeDeductionsAmount; v264.Clean = value; _vaTotalIncomeDeductionsAmount = v264;
-                var v265 = _vaTotalNetIncomeAmount; v265.Clean = value; _vaTotalNetIncomeAmount = v265;
-                var v266 = _vendor1; v266.Clean = value; _vendor1 = v266;
-                var v267 = _vendor10; v267.Clean = value; _vendor10 = v267;
-                var v268 = _vendor11; v268.Clean = value; _vendor11 = v268;
-                var v269 = _vendor12; v269.Clean = value; _vendor12 = v269;
-                var v270 = _vendor2; v270.Clean = value; _vendor2 = v270;
-                var v271 = _vendor3; v271.Clean = value; _vendor3 = v271;
-                var v272 = _vendor4; v272.Clean = value; _vendor4 = v272;
-                var v273 = _vendor5; v273.Clean = value; _vendor5 = v273;
-                var v274 = _vendor6; v274.Clean = value; _vendor6 = v274;
-                var v275 = _vendor7; v275.Clean = value; _vendor7 = v275;
-                var v276 = _vendor8; v276.Clean = value; _vendor8 = v276;
-                var v277 = _vendor9; v277.Clean = value; _vendor9 = v277;
-                var v278 = _vestingTrusteeOfType; v278.Clean = value; _vestingTrusteeOfType = v278;
-                var v279 = _veteranIndicator; v279.Clean = value; _veteranIndicator = v279;
-                var v280 = _workEmailAddress; v280.Clean = value; _workEmailAddress = v280;
-                var v281 = _yearsofCreditOnFile; v281.Clean = value; _yearsofCreditOnFile = v281;
+                var v7 = _assetRepAndWarrantyMessage; v7.Clean = value; _assetRepAndWarrantyMessage = v7;
+                var v8 = _assetRepAndWarrantyReliefAvailable; v8.Clean = value; _assetRepAndWarrantyReliefAvailable = v8;
+                var v9 = _authorizedCreditReportIndicator; v9.Clean = value; _authorizedCreditReportIndicator = v9;
+                var v10 = _authorizedToSignIndicator; v10.Clean = value; _authorizedToSignIndicator = v10;
+                var v11 = _bankAccountNumber; v11.Clean = value; _bankAccountNumber = v11;
+                var v12 = _bankAccountType; v12.Clean = value; _bankAccountType = v12;
+                var v13 = _bankContactAddress; v13.Clean = value; _bankContactAddress = v13;
+                var v14 = _bankContactCity; v14.Clean = value; _bankContactCity = v14;
+                var v15 = _bankContactName; v15.Clean = value; _bankContactName = v15;
+                var v16 = _bankContactPostalCode; v16.Clean = value; _bankContactPostalCode = v16;
+                var v17 = _bankContactState; v17.Clean = value; _bankContactState = v17;
+                var v18 = _bankruptcyIndicator; v18.Clean = value; _bankruptcyIndicator = v18;
+                var v19 = _bankruptcyStatus; v19.Clean = value; _bankruptcyStatus = v19;
+                var v20 = _baseMonthlyIncomeAmount; v20.Clean = value; _baseMonthlyIncomeAmount = v20;
+                var v21 = _birthDate; v21.Clean = value; _birthDate = v21;
+                var v22 = _borrowedDownPaymentIndicator; v22.Clean = value; _borrowedDownPaymentIndicator = v22;
+                var v23 = _borrowerConsentRequestDate; v23.Clean = value; _borrowerConsentRequestDate = v23;
+                var v24 = _borrowerIndex; v24.Clean = value; _borrowerIndex = v24;
+                var v25 = _borrowerType; v25.Clean = value; _borrowerType = v25;
+                var v26 = _borrowerTypeInSummary; v26.Clean = value; _borrowerTypeInSummary = v26;
+                var v27 = _caivrsIdentifier; v27.Clean = value; _caivrsIdentifier = v27;
+                var v28 = _citizenshipResidencyType; v28.Clean = value; _citizenshipResidencyType = v28;
+                var v29 = _coMakerEndorserOfNoteIndicator; v29.Clean = value; _coMakerEndorserOfNoteIndicator = v29;
+                var v30 = _commentOfCreditReport; v30.Clean = value; _commentOfCreditReport = v30;
+                var v31 = _confirmedCRDIL; v31.Clean = value; _confirmedCRDIL = v31;
+                var v32 = _confirmedCRFCEC; v32.Clean = value; _confirmedCRFCEC = v32;
+                var v33 = _confirmedCRFCIncorrect; v33.Clean = value; _confirmedCRFCIncorrect = v33;
+                var v34 = _confirmedCRPFS; v34.Clean = value; _confirmedCRPFS = v34;
+                var v35 = _confirmedOther; v35.Clean = value; _confirmedOther = v35;
+                var v36 = _confirmedOtherDescription; v36.Clean = value; _confirmedOtherDescription = v36;
+                var v37 = _creditCounseling; v37.Clean = value; _creditCounseling = v37;
+                var v38 = _creditReceivedDate; v38.Clean = value; _creditReceivedDate = v38;
+                var v39 = _creditReportAuthorizationMethod; v39.Clean = value; _creditReportAuthorizationMethod = v39;
+                var v40 = _creditScoreIndicator; v40.Clean = value; _creditScoreIndicator = v40;
+                var v41 = _dateAuthorizedCreditReport; v41.Clean = value; _dateAuthorizedCreditReport = v41;
+                var v42 = _dateOfBankruptcy; v42.Clean = value; _dateOfBankruptcy = v42;
+                var v43 = _dateOfForeclosure; v43.Clean = value; _dateOfForeclosure = v43;
+                var v44 = _declarationsJIndicator; v44.Clean = value; _declarationsJIndicator = v44;
+                var v45 = _declarationsKIndicator; v45.Clean = value; _declarationsKIndicator = v45;
+                var v46 = _dependentCount; v46.Clean = value; _dependentCount = v46;
+                var v47 = _dependentsAgesDescription; v47.Clean = value; _dependentsAgesDescription = v47;
+                var v48 = _disabledIndicator; v48.Clean = value; _disabledIndicator = v48;
+                var v49 = _emailAddressText; v49.Clean = value; _emailAddressText = v49;
+                var v50 = _equifax120Days; v50.Clean = value; _equifax120Days = v50;
+                var v51 = _equifax150Days; v51.Clean = value; _equifax150Days = v51;
+                var v52 = _equifax30Days; v52.Clean = value; _equifax30Days = v52;
+                var v53 = _equifax60Days; v53.Clean = value; _equifax60Days = v53;
+                var v54 = _equifax90Days; v54.Clean = value; _equifax90Days = v54;
+                var v55 = _equifaxCreditScoreForDisclosure; v55.Clean = value; _equifaxCreditScoreForDisclosure = v55;
+                var v56 = _equifaxCreditScoreRanksPercent; v56.Clean = value; _equifaxCreditScoreRanksPercent = v56;
+                var v57 = _equifaxDatePulled; v57.Clean = value; _equifaxDatePulled = v57;
+                var v58 = _equifaxFactorCode1; v58.Clean = value; _equifaxFactorCode1 = v58;
+                var v59 = _equifaxFactorCode2; v59.Clean = value; _equifaxFactorCode2 = v59;
+                var v60 = _equifaxFactorCode3; v60.Clean = value; _equifaxFactorCode3 = v60;
+                var v61 = _equifaxFactorCode4; v61.Clean = value; _equifaxFactorCode4 = v61;
+                var v62 = _equifaxFactorCode5; v62.Clean = value; _equifaxFactorCode5 = v62;
+                var v63 = _equifaxKeyFactor1; v63.Clean = value; _equifaxKeyFactor1 = v63;
+                var v64 = _equifaxKeyFactor2; v64.Clean = value; _equifaxKeyFactor2 = v64;
+                var v65 = _equifaxKeyFactor3; v65.Clean = value; _equifaxKeyFactor3 = v65;
+                var v66 = _equifaxKeyFactor4; v66.Clean = value; _equifaxKeyFactor4 = v66;
+                var v67 = _equifaxKeyFactor5; v67.Clean = value; _equifaxKeyFactor5 = v67;
+                var v68 = _equifaxMaterialTermsCreditByScore; v68.Clean = value; _equifaxMaterialTermsCreditByScore = v68;
+                var v69 = _equifaxScore; v69.Clean = value; _equifaxScore = v69;
+                var v70 = _experian120Days; v70.Clean = value; _experian120Days = v70;
+                var v71 = _experian150Days; v71.Clean = value; _experian150Days = v71;
+                var v72 = _experian30Days; v72.Clean = value; _experian30Days = v72;
+                var v73 = _experian60Days; v73.Clean = value; _experian60Days = v73;
+                var v74 = _experian90Days; v74.Clean = value; _experian90Days = v74;
+                var v75 = _experianCreditScore; v75.Clean = value; _experianCreditScore = v75;
+                var v76 = _experianCreditScoreForDisclosure; v76.Clean = value; _experianCreditScoreForDisclosure = v76;
+                var v77 = _experianCreditScoreRanksPercent; v77.Clean = value; _experianCreditScoreRanksPercent = v77;
+                var v78 = _experianDatePulled; v78.Clean = value; _experianDatePulled = v78;
+                var v79 = _experianFactorCode1; v79.Clean = value; _experianFactorCode1 = v79;
+                var v80 = _experianFactorCode2; v80.Clean = value; _experianFactorCode2 = v80;
+                var v81 = _experianFactorCode3; v81.Clean = value; _experianFactorCode3 = v81;
+                var v82 = _experianFactorCode4; v82.Clean = value; _experianFactorCode4 = v82;
+                var v83 = _experianFactorCode5; v83.Clean = value; _experianFactorCode5 = v83;
+                var v84 = _experianKeyFactor1; v84.Clean = value; _experianKeyFactor1 = v84;
+                var v85 = _experianKeyFactor2; v85.Clean = value; _experianKeyFactor2 = v85;
+                var v86 = _experianKeyFactor3; v86.Clean = value; _experianKeyFactor3 = v86;
+                var v87 = _experianKeyFactor4; v87.Clean = value; _experianKeyFactor4 = v87;
+                var v88 = _experianKeyFactor5; v88.Clean = value; _experianKeyFactor5 = v88;
+                var v89 = _experianMaterialTermsCreditByScore; v89.Clean = value; _experianMaterialTermsCreditByScore = v89;
+                var v90 = _firstName; v90.Clean = value; _firstName = v90;
+                var v91 = _firstNameWithMiddleName; v91.Clean = value; _firstNameWithMiddleName = v91;
+                var v92 = _firstTimeHomeBuyer; v92.Clean = value; _firstTimeHomeBuyer = v92;
+                var v93 = _foreclosureSatisfied; v93.Clean = value; _foreclosureSatisfied = v93;
+                var v94 = _foreclosureStatus; v94.Clean = value; _foreclosureStatus = v94;
+                var v95 = _freddieMacPerson1; v95.Clean = value; _freddieMacPerson1 = v95;
+                var v96 = _freddieMacPerson2; v96.Clean = value; _freddieMacPerson2 = v96;
+                var v97 = _fullName; v97.Clean = value; _fullName = v97;
+                var v98 = _fullNameWithSuffix; v98.Clean = value; _fullNameWithSuffix = v98;
+                var v99 = _highestCreditLimit; v99.Clean = value; _highestCreditLimit = v99;
+                var v100 = _hmda2003OtherRaceNationalOriginDescription; v100.Clean = value; _hmda2003OtherRaceNationalOriginDescription = v100;
+                var v101 = _hmda2003RaceNationalOriginType; v101.Clean = value; _hmda2003RaceNationalOriginType = v101;
+                var v102 = _hmdaAfricanAmericanIndicator; v102.Clean = value; _hmdaAfricanAmericanIndicator = v102;
+                var v103 = _hmdaAge; v103.Clean = value; _hmdaAge = v103;
+                var v104 = _hmdaAmericanIndianIndicator; v104.Clean = value; _hmdaAmericanIndianIndicator = v104;
+                var v105 = _hmdaAmericanIndianTribe; v105.Clean = value; _hmdaAmericanIndianTribe = v105;
+                var v106 = _hmdaAsianIndianIndicator; v106.Clean = value; _hmdaAsianIndianIndicator = v106;
+                var v107 = _hmdaAsianIndicator; v107.Clean = value; _hmdaAsianIndicator = v107;
+                var v108 = _hmdaAsianOtherRaceIndicator; v108.Clean = value; _hmdaAsianOtherRaceIndicator = v108;
+                var v109 = _hmdaChineseIndicator; v109.Clean = value; _hmdaChineseIndicator = v109;
+                var v110 = _hmdaCreditScoreForDecisionMaking; v110.Clean = value; _hmdaCreditScoreForDecisionMaking = v110;
+                var v111 = _hmdaCreditScoringModel; v111.Clean = value; _hmdaCreditScoringModel = v111;
+                var v112 = _hmdaCubanIndicator; v112.Clean = value; _hmdaCubanIndicator = v112;
+                var v113 = _hmdaEthnicityType; v113.Clean = value; _hmdaEthnicityType = v113;
+                var v114 = _hmdaFilipinoIndicator; v114.Clean = value; _hmdaFilipinoIndicator = v114;
+                var v115 = _hmdaGenderType; v115.Clean = value; _hmdaGenderType = v115;
+                var v116 = _hmdaGendertypeDoNotWishIndicator; v116.Clean = value; _hmdaGendertypeDoNotWishIndicator = v116;
+                var v117 = _hmdaGendertypeFemaleIndicator; v117.Clean = value; _hmdaGendertypeFemaleIndicator = v117;
+                var v118 = _hmdaGendertypeMaleIndicator; v118.Clean = value; _hmdaGendertypeMaleIndicator = v118;
+                var v119 = _hmdaGendertypeNotApplicableIndicator; v119.Clean = value; _hmdaGendertypeNotApplicableIndicator = v119;
+                var v120 = _hmdaGuamanianOrChamorroIndicator; v120.Clean = value; _hmdaGuamanianOrChamorroIndicator = v120;
+                var v121 = _hmdaHispanicLatinoOtherOriginIndicator; v121.Clean = value; _hmdaHispanicLatinoOtherOriginIndicator = v121;
+                var v122 = _hmdaJapaneseIndicator; v122.Clean = value; _hmdaJapaneseIndicator = v122;
+                var v123 = _hmdaKoreanIndicator; v123.Clean = value; _hmdaKoreanIndicator = v123;
+                var v124 = _hmdaMexicanIndicator; v124.Clean = value; _hmdaMexicanIndicator = v124;
+                var v125 = _hmdaNativeHawaiianIndicator; v125.Clean = value; _hmdaNativeHawaiianIndicator = v125;
+                var v126 = _hmdaNoCoApplicantIndicator; v126.Clean = value; _hmdaNoCoApplicantIndicator = v126;
+                var v127 = _hmdaNotApplicableIndicator; v127.Clean = value; _hmdaNotApplicableIndicator = v127;
+                var v128 = _hmdaNotProvidedIndicator; v128.Clean = value; _hmdaNotProvidedIndicator = v128;
+                var v129 = _hmdaOtherAsianRace; v129.Clean = value; _hmdaOtherAsianRace = v129;
+                var v130 = _hmdaOtherHispanicLatinoOrigin; v130.Clean = value; _hmdaOtherHispanicLatinoOrigin = v130;
+                var v131 = _hmdaOtherPacificIslanderRace; v131.Clean = value; _hmdaOtherPacificIslanderRace = v131;
+                var v132 = _hmdaOtherScoringModel; v132.Clean = value; _hmdaOtherScoringModel = v132;
+                var v133 = _hmdaPacificIslanderIndicator; v133.Clean = value; _hmdaPacificIslanderIndicator = v133;
+                var v134 = _hmdaPacificIslanderOtherIndicator; v134.Clean = value; _hmdaPacificIslanderOtherIndicator = v134;
+                var v135 = _hmdaPuertoRicanIndicator; v135.Clean = value; _hmdaPuertoRicanIndicator = v135;
+                var v136 = _hmdaRefusalIndicator; v136.Clean = value; _hmdaRefusalIndicator = v136;
+                var v137 = _hmdaSamoanIndicator; v137.Clean = value; _hmdaSamoanIndicator = v137;
+                var v138 = _hmdaVietnameseIndicator; v138.Clean = value; _hmdaVietnameseIndicator = v138;
+                var v139 = _hmdaWhiteIndicator; v139.Clean = value; _hmdaWhiteIndicator = v139;
+                var v140 = _homeownerPastThreeYearsIndicator; v140.Clean = value; _homeownerPastThreeYearsIndicator = v140;
+                var v141 = _homePhoneNumber; v141.Clean = value; _homePhoneNumber = v141;
+                var v142 = _id; v142.Clean = value; _id = v142;
+                var v143 = _incomeRepAndWarrantyMessage; v143.Clean = value; _incomeRepAndWarrantyMessage = v143;
+                var v144 = _incomeRepAndWarrantyReliefAvailable; v144.Clean = value; _incomeRepAndWarrantyReliefAvailable = v144;
+                var v145 = _intentToOccupyIndicator; v145.Clean = value; _intentToOccupyIndicator = v145;
+                var v146 = _intuitReportId; v146.Clean = value; _intuitReportId = v146;
+                var v147 = _isBaseIncomeAvailable; v147.Clean = value; _isBaseIncomeAvailable = v147;
+                var v148 = _isBonusAvailable; v148.Clean = value; _isBonusAvailable = v148;
+                var v149 = _isBorrower; v149.Clean = value; _isBorrower = v149;
+                var v150 = _isCommissionAvailable; v150.Clean = value; _isCommissionAvailable = v150;
+                var v151 = _isEthnicityBasedOnVisual; v151.Clean = value; _isEthnicityBasedOnVisual = v151;
+                var v152 = _isOvertimeAvailable; v152.Clean = value; _isOvertimeAvailable = v152;
+                var v153 = _isRaceBasedOnVisual; v153.Clean = value; _isRaceBasedOnVisual = v153;
+                var v154 = _isSelfEmployed; v154.Clean = value; _isSelfEmployed = v154;
+                var v155 = _isSexBasedOnVisual; v155.Clean = value; _isSexBasedOnVisual = v155;
+                var v156 = _isSocialSecurityAvailable; v156.Clean = value; _isSocialSecurityAvailable = v156;
+                var v157 = _lastName; v157.Clean = value; _lastName = v157;
+                var v158 = _lastNameWithSuffix; v158.Clean = value; _lastNameWithSuffix = v158;
+                var v159 = _loanForeclosureOrJudgementIndicator; v159.Clean = value; _loanForeclosureOrJudgementIndicator = v159;
+                var v160 = _lpdGsa; v160.Clean = value; _lpdGsa = v160;
+                var v161 = _mailingAddressSameAsPresentIndicator; v161.Clean = value; _mailingAddressSameAsPresentIndicator = v161;
+                var v162 = _maritalStatusType; v162.Clean = value; _maritalStatusType = v162;
+                var v163 = _middleCreditScore; v163.Clean = value; _middleCreditScore = v163;
+                var v164 = _middleFicoScore; v164.Clean = value; _middleFicoScore = v164;
+                var v165 = _middleName; v165.Clean = value; _middleName = v165;
+                var v166 = _minFicoScore; v166.Clean = value; _minFicoScore = v166;
+                var v167 = _mobilePhone; v167.Clean = value; _mobilePhone = v167;
+                var v168 = _mortgageOnCredit; v168.Clean = value; _mortgageOnCredit = v168;
+                var v169 = _nameToObtainLoanFromRHS; v169.Clean = value; _nameToObtainLoanFromRHS = v169;
+                var v170 = _nearestRelativeAddress; v170.Clean = value; _nearestRelativeAddress = v170;
+                var v171 = _nearestRelativeCity; v171.Clean = value; _nearestRelativeCity = v171;
+                var v172 = _nearestRelativeName; v172.Clean = value; _nearestRelativeName = v172;
+                var v173 = _nearestRelativePhone; v173.Clean = value; _nearestRelativePhone = v173;
+                var v174 = _nearestRelativePostalCode; v174.Clean = value; _nearestRelativePostalCode = v174;
+                var v175 = _nearestRelativeRelationship; v175.Clean = value; _nearestRelativeRelationship = v175;
+                var v176 = _nearestRelativeState; v176.Clean = value; _nearestRelativeState = v176;
+                var v177 = _no3rdPartyEmailIndicator; v177.Clean = value; _no3rdPartyEmailIndicator = v177;
+                var v178 = _noCoApplicantEthnicityIndicator; v178.Clean = value; _noCoApplicantEthnicityIndicator = v178;
+                var v179 = _noCoApplicantIndicator; v179.Clean = value; _noCoApplicantIndicator = v179;
+                var v180 = _noCoApplicantSexIndicator; v180.Clean = value; _noCoApplicantSexIndicator = v180;
+                var v181 = _numberofTradelines; v181.Clean = value; _numberofTradelines = v181;
+                var v182 = _obtainLoanFromRHSIndicator; v182.Clean = value; _obtainLoanFromRHSIndicator = v182;
+                var v183 = _openBankruptcy2; v183.Clean = value; _openBankruptcy2 = v183;
+                var v184 = _otherMonthlyIncomeAmount; v184.Clean = value; _otherMonthlyIncomeAmount = v184;
+                var v185 = _otherSumAmount; v185.Clean = value; _otherSumAmount = v185;
+                var v186 = _outstandingJudgementsIndicator; v186.Clean = value; _outstandingJudgementsIndicator = v186;
+                var v187 = _partyToLawsuitIndicator; v187.Clean = value; _partyToLawsuitIndicator = v187;
+                var v188 = _pass120Days; v188.Clean = value; _pass120Days = v188;
+                var v189 = _pass150Days; v189.Clean = value; _pass150Days = v189;
+                var v190 = _pass30Days; v190.Clean = value; _pass30Days = v190;
+                var v191 = _pass60Days; v191.Clean = value; _pass60Days = v191;
+                var v192 = _pass90Days; v192.Clean = value; _pass90Days = v192;
+                var v193 = _personFaxNumber; v193.Clean = value; _personFaxNumber = v193;
+                var v194 = _personHoursPerWeek; v194.Clean = value; _personHoursPerWeek = v194;
+                var v195 = _personIncomeAmount; v195.Clean = value; _personIncomeAmount = v195;
+                var v196 = _personIncomeFrequencyType; v196.Clean = value; _personIncomeFrequencyType = v196;
+                var v197 = _personMonthlyIncome; v197.Clean = value; _personMonthlyIncome = v197;
+                var v198 = _pIWAccepted; v198.Clean = value; _pIWAccepted = v198;
+                var v199 = _pIWMessage; v199.Clean = value; _pIWMessage = v199;
+                var v200 = _poaOccupancyIntent; v200.Clean = value; _poaOccupancyIntent = v200;
+                var v201 = _poaSignatureText; v201.Clean = value; _poaSignatureText = v201;
+                var v202 = _positiveCashFlow; v202.Clean = value; _positiveCashFlow = v202;
+                var v203 = _powerOfAttorneyName; v203.Clean = value; _powerOfAttorneyName = v203;
+                var v204 = _powerOfAttorneyTitleDescription; v204.Clean = value; _powerOfAttorneyTitleDescription = v204;
+                var v205 = _presentlyDelinquentIndicator; v205.Clean = value; _presentlyDelinquentIndicator = v205;
+                var v206 = _priorBankruptcy2; v206.Clean = value; _priorBankruptcy2 = v206;
+                var v207 = _priorForeclosure; v207.Clean = value; _priorForeclosure = v207;
+                var v208 = _priorPropertyTitleType; v208.Clean = value; _priorPropertyTitleType = v208;
+                var v209 = _priorPropertyUsageType; v209.Clean = value; _priorPropertyUsageType = v209;
+                var v210 = _propertyForeclosedPastSevenYearsIndicator; v210.Clean = value; _propertyForeclosedPastSevenYearsIndicator = v210;
+                var v211 = _relationshipDescription; v211.Clean = value; _relationshipDescription = v211;
+                var v212 = _relationshipWithRDEmployeeIndicator; v212.Clean = value; _relationshipWithRDEmployeeIndicator = v212;
+                var v213 = _schoolingTermYears; v213.Clean = value; _schoolingTermYears = v213;
+                var v214 = _sSA89BackgroundCheckIndicator; v214.Clean = value; _sSA89BackgroundCheckIndicator = v214;
+                var v215 = _sSA89BankingServiceIndicator; v215.Clean = value; _sSA89BankingServiceIndicator = v215;
+                var v216 = _sSA89CreditCheckIndicator; v216.Clean = value; _sSA89CreditCheckIndicator = v216;
+                var v217 = _sSA89LicenseRequirementIndicator; v217.Clean = value; _sSA89LicenseRequirementIndicator = v217;
+                var v218 = _sSA89MortgageServiceIndicator; v218.Clean = value; _sSA89MortgageServiceIndicator = v218;
+                var v219 = _sSA89OtherIndicator; v219.Clean = value; _sSA89OtherIndicator = v219;
+                var v220 = _subtotalLiquidAssetsMinusGiftAmount; v220.Clean = value; _subtotalLiquidAssetsMinusGiftAmount = v220;
+                var v221 = _suffixToName; v221.Clean = value; _suffixToName = v221;
+                var v222 = _tax4506LastInvestor; v222.Clean = value; _tax4506LastInvestor = v222;
+                var v223 = _tax4506LastOrderNumber; v223.Clean = value; _tax4506LastOrderNumber = v223;
+                var v224 = _tax4506LastOrderYear1; v224.Clean = value; _tax4506LastOrderYear1 = v224;
+                var v225 = _tax4506LastOrderYear2; v225.Clean = value; _tax4506LastOrderYear2 = v225;
+                var v226 = _tax4506LastOrderYear3; v226.Clean = value; _tax4506LastOrderYear3 = v226;
+                var v227 = _tax4506LastOrderYear4; v227.Clean = value; _tax4506LastOrderYear4 = v227;
+                var v228 = _tax4506LastProductsOrdered; v228.Clean = value; _tax4506LastProductsOrdered = v228;
+                var v229 = _tax4506LastStatus; v229.Clean = value; _tax4506LastStatus = v229;
+                var v230 = _tax4506LastTranscriptType; v230.Clean = value; _tax4506LastTranscriptType = v230;
+                var v231 = _tax4506LastUserIDWhoOrdered; v231.Clean = value; _tax4506LastUserIDWhoOrdered = v231;
+                var v232 = _tax4506TotalYearlyIncome1; v232.Clean = value; _tax4506TotalYearlyIncome1 = v232;
+                var v233 = _tax4506TotalYearlyIncome2; v233.Clean = value; _tax4506TotalYearlyIncome2 = v233;
+                var v234 = _tax4506TotalYearlyIncome3; v234.Clean = value; _tax4506TotalYearlyIncome3 = v234;
+                var v235 = _tax4506TotalYearlyIncome4; v235.Clean = value; _tax4506TotalYearlyIncome4 = v235;
+                var v236 = _tax4506TotalYearlyJointIncome1; v236.Clean = value; _tax4506TotalYearlyJointIncome1 = v236;
+                var v237 = _tax4506TotalYearlyJointIncome2; v237.Clean = value; _tax4506TotalYearlyJointIncome2 = v237;
+                var v238 = _tax4506TotalYearlyJointIncome3; v238.Clean = value; _tax4506TotalYearlyJointIncome3 = v238;
+                var v239 = _tax4506TotalYearlyJointIncome4; v239.Clean = value; _tax4506TotalYearlyJointIncome4 = v239;
+                var v240 = _tax4506TotalYearlyVarianceIncome1; v240.Clean = value; _tax4506TotalYearlyVarianceIncome1 = v240;
+                var v241 = _tax4506TotalYearlyVarianceIncome2; v241.Clean = value; _tax4506TotalYearlyVarianceIncome2 = v241;
+                var v242 = _tax4506TotalYearlyVarianceIncome3; v242.Clean = value; _tax4506TotalYearlyVarianceIncome3 = v242;
+                var v243 = _tax4506TotalYearlyVarianceIncome4; v243.Clean = value; _tax4506TotalYearlyVarianceIncome4 = v243;
+                var v244 = _tax4506TotalYearlyVarianceJointIncome1; v244.Clean = value; _tax4506TotalYearlyVarianceJointIncome1 = v244;
+                var v245 = _tax4506TotalYearlyVarianceJointIncome2; v245.Clean = value; _tax4506TotalYearlyVarianceJointIncome2 = v245;
+                var v246 = _tax4506TotalYearlyVarianceJointIncome3; v246.Clean = value; _tax4506TotalYearlyVarianceJointIncome3 = v246;
+                var v247 = _tax4506TotalYearlyVarianceJointIncome4; v247.Clean = value; _tax4506TotalYearlyVarianceJointIncome4 = v247;
+                var v248 = _taxIdentificationIdentifier; v248.Clean = value; _taxIdentificationIdentifier = v248;
+                var v249 = _totalLiabilitiesBalanceAmount; v249.Clean = value; _totalLiabilitiesBalanceAmount = v249;
+                var v250 = _totalMonthlyIncomeAmount; v250.Clean = value; _totalMonthlyIncomeAmount = v250;
+                var v251 = _totalMonthlyIncomeMinusNetRentalAmount; v251.Clean = value; _totalMonthlyIncomeMinusNetRentalAmount = v251;
+                var v252 = _totalPresentHousingExpenseAmount; v252.Clean = value; _totalPresentHousingExpenseAmount = v252;
+                var v253 = _transactionPurposeDescription; v253.Clean = value; _transactionPurposeDescription = v253;
+                var v254 = _transUnion120Days; v254.Clean = value; _transUnion120Days = v254;
+                var v255 = _transUnion150Days; v255.Clean = value; _transUnion150Days = v255;
+                var v256 = _transUnion30Days; v256.Clean = value; _transUnion30Days = v256;
+                var v257 = _transUnion60Days; v257.Clean = value; _transUnion60Days = v257;
+                var v258 = _transUnion90Days; v258.Clean = value; _transUnion90Days = v258;
+                var v259 = _transUnionCreditScoreForDisclosure; v259.Clean = value; _transUnionCreditScoreForDisclosure = v259;
+                var v260 = _transUnionCreditScoreRanksPercent; v260.Clean = value; _transUnionCreditScoreRanksPercent = v260;
+                var v261 = _transUnionDatePulled; v261.Clean = value; _transUnionDatePulled = v261;
+                var v262 = _transUnionFactorCode1; v262.Clean = value; _transUnionFactorCode1 = v262;
+                var v263 = _transUnionFactorCode2; v263.Clean = value; _transUnionFactorCode2 = v263;
+                var v264 = _transUnionFactorCode3; v264.Clean = value; _transUnionFactorCode3 = v264;
+                var v265 = _transUnionFactorCode4; v265.Clean = value; _transUnionFactorCode4 = v265;
+                var v266 = _transUnionFactorCode5; v266.Clean = value; _transUnionFactorCode5 = v266;
+                var v267 = _transUnionKeyFactor1; v267.Clean = value; _transUnionKeyFactor1 = v267;
+                var v268 = _transUnionKeyFactor2; v268.Clean = value; _transUnionKeyFactor2 = v268;
+                var v269 = _transUnionKeyFactor3; v269.Clean = value; _transUnionKeyFactor3 = v269;
+                var v270 = _transUnionKeyFactor4; v270.Clean = value; _transUnionKeyFactor4 = v270;
+                var v271 = _transUnionKeyFactor5; v271.Clean = value; _transUnionKeyFactor5 = v271;
+                var v272 = _transUnionMaterialTermsCreditByScore; v272.Clean = value; _transUnionMaterialTermsCreditByScore = v272;
+                var v273 = _transUnionScore; v273.Clean = value; _transUnionScore = v273;
+                var v274 = _userDefinedIncome; v274.Clean = value; _userDefinedIncome = v274;
+                var v275 = _vaFederalTaxAmount; v275.Clean = value; _vaFederalTaxAmount = v275;
+                var v276 = _validDaysForConsentCount; v276.Clean = value; _validDaysForConsentCount = v276;
+                var v277 = _valueRepAndWarrantyAvailable; v277.Clean = value; _valueRepAndWarrantyAvailable = v277;
+                var v278 = _valueRepAndWarrantyMessage; v278.Clean = value; _valueRepAndWarrantyMessage = v278;
+                var v279 = _vaNetTakeHomePayAmount; v279.Clean = value; _vaNetTakeHomePayAmount = v279;
+                var v280 = _vaOtherAmount; v280.Clean = value; _vaOtherAmount = v280;
+                var v281 = _vaOtherNetIncomeAmount; v281.Clean = value; _vaOtherNetIncomeAmount = v281;
+                var v282 = _vaRetirementAmount; v282.Clean = value; _vaRetirementAmount = v282;
+                var v283 = _vaStateTaxAmount; v283.Clean = value; _vaStateTaxAmount = v283;
+                var v284 = _vaTotalIncomeDeductionsAmount; v284.Clean = value; _vaTotalIncomeDeductionsAmount = v284;
+                var v285 = _vaTotalNetIncomeAmount; v285.Clean = value; _vaTotalNetIncomeAmount = v285;
+                var v286 = _vendor1; v286.Clean = value; _vendor1 = v286;
+                var v287 = _vendor10; v287.Clean = value; _vendor10 = v287;
+                var v288 = _vendor11; v288.Clean = value; _vendor11 = v288;
+                var v289 = _vendor12; v289.Clean = value; _vendor12 = v289;
+                var v290 = _vendor2; v290.Clean = value; _vendor2 = v290;
+                var v291 = _vendor3; v291.Clean = value; _vendor3 = v291;
+                var v292 = _vendor4; v292.Clean = value; _vendor4 = v292;
+                var v293 = _vendor5; v293.Clean = value; _vendor5 = v293;
+                var v294 = _vendor6; v294.Clean = value; _vendor6 = v294;
+                var v295 = _vendor7; v295.Clean = value; _vendor7 = v295;
+                var v296 = _vendor8; v296.Clean = value; _vendor8 = v296;
+                var v297 = _vendor9; v297.Clean = value; _vendor9 = v297;
+                var v298 = _vestingTrusteeOfType; v298.Clean = value; _vestingTrusteeOfType = v298;
+                var v299 = _veteranIndicator; v299.Clean = value; _veteranIndicator = v299;
+                var v300 = _workEmailAddress; v300.Clean = value; _workEmailAddress = v300;
+                var v301 = _yearsofCreditOnFile; v301.Clean = value; _yearsofCreditOnFile = v301;
                 if (Application != null) Application.Clean = value;
                 _settingClean = 0;
             }

@@ -68,6 +68,8 @@ namespace EncompassRest.Loans
         public string LimitSharing6 { get { return _limitSharing6; } set { _limitSharing6 = value; } }
         private Value<string> _limitSharing7;
         public string LimitSharing7 { get { return _limitSharing7; } set { _limitSharing7 = value; } }
+        private Value<string> _month;
+        public string Month { get { return _month; } set { _month = value; } }
         private Value<string> _nonaffiliateType;
         public string NonaffiliateType { get { return _nonaffiliateType; } set { _nonaffiliateType = value; } }
         private Value<string> _nonaffiliateTypeExample1;
@@ -98,6 +100,8 @@ namespace EncompassRest.Loans
         public string WebsiteForQuestion { get { return _websiteForQuestion; } set { _websiteForQuestion = value; } }
         private Value<string> _websiteToLimit;
         public string WebsiteToLimit { get { return _websiteToLimit; } set { _websiteToLimit = value; } }
+        private Value<int?> _year;
+        public int? Year { get { return _year; } set { _year = value; } }
         private int _gettingClean;
         private int _settingClean; 
         internal bool Clean
@@ -135,6 +139,7 @@ namespace EncompassRest.Loans
                     && _limitSharing5.Clean
                     && _limitSharing6.Clean
                     && _limitSharing7.Clean
+                    && _month.Clean
                     && _nonaffiliateType.Clean
                     && _nonaffiliateTypeExample1.Clean
                     && _notesForProtectPrivacy.Clean
@@ -149,7 +154,8 @@ namespace EncompassRest.Loans
                     && _timesToCollect4.Clean
                     && _timesToCollect5.Clean
                     && _websiteForQuestion.Clean
-                    && _websiteToLimit.Clean;
+                    && _websiteToLimit.Clean
+                    && _year.Clean;
                 _gettingClean = 0;
                 return clean;
             }
@@ -186,21 +192,23 @@ namespace EncompassRest.Loans
                 var v27 = _limitSharing5; v27.Clean = value; _limitSharing5 = v27;
                 var v28 = _limitSharing6; v28.Clean = value; _limitSharing6 = v28;
                 var v29 = _limitSharing7; v29.Clean = value; _limitSharing7 = v29;
-                var v30 = _nonaffiliateType; v30.Clean = value; _nonaffiliateType = v30;
-                var v31 = _nonaffiliateTypeExample1; v31.Clean = value; _nonaffiliateTypeExample1 = v31;
-                var v32 = _notesForProtectPrivacy; v32.Clean = value; _notesForProtectPrivacy = v32;
-                var v33 = _otherInformation; v33.Clean = value; _otherInformation = v33;
-                var v34 = _phoneForQuestion; v34.Clean = value; _phoneForQuestion = v34;
-                var v35 = _phoneToLimit; v35.Clean = value; _phoneToLimit = v35;
-                var v36 = _printSelection; v36.Clean = value; _printSelection = v36;
-                var v37 = _shareInfoWithJointMarketing; v37.Clean = value; _shareInfoWithJointMarketing = v37;
-                var v38 = _timesToCollect1; v38.Clean = value; _timesToCollect1 = v38;
-                var v39 = _timesToCollect2; v39.Clean = value; _timesToCollect2 = v39;
-                var v40 = _timesToCollect3; v40.Clean = value; _timesToCollect3 = v40;
-                var v41 = _timesToCollect4; v41.Clean = value; _timesToCollect4 = v41;
-                var v42 = _timesToCollect5; v42.Clean = value; _timesToCollect5 = v42;
-                var v43 = _websiteForQuestion; v43.Clean = value; _websiteForQuestion = v43;
-                var v44 = _websiteToLimit; v44.Clean = value; _websiteToLimit = v44;
+                var v30 = _month; v30.Clean = value; _month = v30;
+                var v31 = _nonaffiliateType; v31.Clean = value; _nonaffiliateType = v31;
+                var v32 = _nonaffiliateTypeExample1; v32.Clean = value; _nonaffiliateTypeExample1 = v32;
+                var v33 = _notesForProtectPrivacy; v33.Clean = value; _notesForProtectPrivacy = v33;
+                var v34 = _otherInformation; v34.Clean = value; _otherInformation = v34;
+                var v35 = _phoneForQuestion; v35.Clean = value; _phoneForQuestion = v35;
+                var v36 = _phoneToLimit; v36.Clean = value; _phoneToLimit = v36;
+                var v37 = _printSelection; v37.Clean = value; _printSelection = v37;
+                var v38 = _shareInfoWithJointMarketing; v38.Clean = value; _shareInfoWithJointMarketing = v38;
+                var v39 = _timesToCollect1; v39.Clean = value; _timesToCollect1 = v39;
+                var v40 = _timesToCollect2; v40.Clean = value; _timesToCollect2 = v40;
+                var v41 = _timesToCollect3; v41.Clean = value; _timesToCollect3 = v41;
+                var v42 = _timesToCollect4; v42.Clean = value; _timesToCollect4 = v42;
+                var v43 = _timesToCollect5; v43.Clean = value; _timesToCollect5 = v43;
+                var v44 = _websiteForQuestion; v44.Clean = value; _websiteForQuestion = v44;
+                var v45 = _websiteToLimit; v45.Clean = value; _websiteToLimit = v45;
+                var v46 = _year; v46.Clean = value; _year = v46;
                 _settingClean = 0;
             }
         }

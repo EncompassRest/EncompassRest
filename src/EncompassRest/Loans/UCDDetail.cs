@@ -20,6 +20,8 @@ namespace EncompassRest.Loans
         public string FeeDesc { get { return _feeDesc; } set { _feeDesc = value; } }
         private Value<int?> _feeIndex;
         public int? FeeIndex { get { return _feeIndex; } set { _feeIndex = value; } }
+        private Value<string> _feePaidBy;
+        public string FeePaidBy { get { return _feePaidBy; } set { _feePaidBy = value; } }
         private Value<string> _feePaidTo;
         public string FeePaidTo { get { return _feePaidTo; } set { _feePaidTo = value; } }
         private Value<bool?> _feePOC;
@@ -43,6 +45,7 @@ namespace EncompassRest.Loans
                     && _feeDateTo.Clean
                     && _feeDesc.Clean
                     && _feeIndex.Clean
+                    && _feePaidBy.Clean
                     && _feePaidTo.Clean
                     && _feePOC.Clean
                     && _id.Clean
@@ -60,11 +63,12 @@ namespace EncompassRest.Loans
                 var v3 = _feeDateTo; v3.Clean = value; _feeDateTo = v3;
                 var v4 = _feeDesc; v4.Clean = value; _feeDesc = v4;
                 var v5 = _feeIndex; v5.Clean = value; _feeIndex = v5;
-                var v6 = _feePaidTo; v6.Clean = value; _feePaidTo = v6;
-                var v7 = _feePOC; v7.Clean = value; _feePOC = v7;
-                var v8 = _id; v8.Clean = value; _id = v8;
-                var v9 = _lineNumber; v9.Clean = value; _lineNumber = v9;
-                var v10 = _section; v10.Clean = value; _section = v10;
+                var v6 = _feePaidBy; v6.Clean = value; _feePaidBy = v6;
+                var v7 = _feePaidTo; v7.Clean = value; _feePaidTo = v7;
+                var v8 = _feePOC; v8.Clean = value; _feePOC = v8;
+                var v9 = _id; v9.Clean = value; _id = v9;
+                var v10 = _lineNumber; v10.Clean = value; _lineNumber = v10;
+                var v11 = _section; v11.Clean = value; _section = v11;
                 _settingClean = 0;
             }
         }

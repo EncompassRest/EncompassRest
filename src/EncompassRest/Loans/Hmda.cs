@@ -76,8 +76,16 @@ namespace EncompassRest.Loans
         public string FederalTaxpayerIdNumber { get { return _federalTaxpayerIdNumber; } set { _federalTaxpayerIdNumber = value; } }
         private Value<string> _financialInstitutionName;
         public string FinancialInstitutionName { get { return _financialInstitutionName; } set { _financialInstitutionName = value; } }
+        private Value<string> _hmdaPropertyAddress;
+        public string HmdaPropertyAddress { get { return _hmdaPropertyAddress; } set { _hmdaPropertyAddress = value; } }
+        private Value<string> _hmdaPropertyCity;
+        public string HmdaPropertyCity { get { return _hmdaPropertyCity; } set { _hmdaPropertyCity = value; } }
+        private Value<string> _hmdaPropertyState;
+        public string HmdaPropertyState { get { return _hmdaPropertyState; } set { _hmdaPropertyState = value; } }
         private Value<string> _hmdaPropertyZipCode;
         public string HmdaPropertyZipCode { get { return _hmdaPropertyZipCode; } set { _hmdaPropertyZipCode = value; } }
+        private Value<bool?> _hmdaSyncAddressIndicator;
+        public bool? HmdaSyncAddressIndicator { get { return _hmdaSyncAddressIndicator; } set { _hmdaSyncAddressIndicator = value; } }
         private Value<string> _hOEPAStatus;
         public string HOEPAStatus { get { return _hOEPAStatus; } set { _hOEPAStatus = value; } }
         private Value<string> _id;
@@ -116,8 +124,8 @@ namespace EncompassRest.Loans
         public string NMLSLoanOriginatorID { get { return _nMLSLoanOriginatorID; } set { _nMLSLoanOriginatorID = value; } }
         private Value<string> _openEndLineOfCredit;
         public string OpenEndLineOfCredit { get { return _openEndLineOfCredit; } set { _openEndLineOfCredit = value; } }
-        private Value<NA<decimal>?> _originationCharges;
-        public NA<decimal>? OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
+        private Value<string> _originationCharges;
+        public string OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
         private Value<string> _otherAUS;
         public string OtherAUS { get { return _otherAUS; } set { _otherAUS = value; } }
         private Value<string> _otherAUSRecommendations;
@@ -152,6 +160,16 @@ namespace EncompassRest.Loans
         public int? ReportingYear { get { return _reportingYear; } set { _reportingYear = value; } }
         private Value<bool?> _reportPurposeOfLoanIndicator;
         public bool? ReportPurposeOfLoanIndicator { get { return _reportPurposeOfLoanIndicator; } set { _reportPurposeOfLoanIndicator = value; } }
+        private Value<string> _repurchasedActionDate;
+        public string RepurchasedActionDate { get { return _repurchasedActionDate; } set { _repurchasedActionDate = value; } }
+        private Value<string> _repurchasedActionTaken;
+        public string RepurchasedActionTaken { get { return _repurchasedActionTaken; } set { _repurchasedActionTaken = value; } }
+        private Value<decimal?> _repurchasedLoanAmount;
+        public decimal? RepurchasedLoanAmount { get { return _repurchasedLoanAmount; } set { _repurchasedLoanAmount = value; } }
+        private Value<int?> _repurchasedReportingYear;
+        public int? RepurchasedReportingYear { get { return _repurchasedReportingYear; } set { _repurchasedReportingYear = value; } }
+        private Value<string> _repurchasedTypeOfPurchaser;
+        public string RepurchasedTypeOfPurchaser { get { return _repurchasedTypeOfPurchaser; } set { _repurchasedTypeOfPurchaser = value; } }
         private Value<string> _respondentID;
         public string RespondentID { get { return _respondentID; } set { _respondentID = value; } }
         private Value<string> _reverseMortgage;
@@ -160,10 +178,10 @@ namespace EncompassRest.Loans
         public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
         private Value<string> _submissionOfApplication;
         public string SubmissionOfApplication { get { return _submissionOfApplication; } set { _submissionOfApplication = value; } }
-        private Value<NA<decimal>?> _totalLoanCosts;
-        public NA<decimal>? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
-        private Value<NA<decimal>?> _totalPointsAndFees;
-        public NA<decimal>? TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
+        private Value<string> _totalLoanCosts;
+        public string TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
+        private Value<string> _totalPointsAndFees;
+        public string TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
         private Value<string> _typeOfPurchaser;
         public string TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
         private Value<string> _universalLoanId;
@@ -209,7 +227,11 @@ namespace EncompassRest.Loans
                     && _federalAgency.Clean
                     && _federalTaxpayerIdNumber.Clean
                     && _financialInstitutionName.Clean
+                    && _hmdaPropertyAddress.Clean
+                    && _hmdaPropertyCity.Clean
+                    && _hmdaPropertyState.Clean
                     && _hmdaPropertyZipCode.Clean
+                    && _hmdaSyncAddressIndicator.Clean
                     && _hOEPAStatus.Clean
                     && _id.Clean
                     && _income.Clean
@@ -247,6 +269,11 @@ namespace EncompassRest.Loans
                     && _rateSpread.Clean
                     && _reportingYear.Clean
                     && _reportPurposeOfLoanIndicator.Clean
+                    && _repurchasedActionDate.Clean
+                    && _repurchasedActionTaken.Clean
+                    && _repurchasedLoanAmount.Clean
+                    && _repurchasedReportingYear.Clean
+                    && _repurchasedTypeOfPurchaser.Clean
                     && _respondentID.Clean
                     && _reverseMortgage.Clean
                     && _stateCode.Clean
@@ -295,52 +322,61 @@ namespace EncompassRest.Loans
                 var v31 = _federalAgency; v31.Clean = value; _federalAgency = v31;
                 var v32 = _federalTaxpayerIdNumber; v32.Clean = value; _federalTaxpayerIdNumber = v32;
                 var v33 = _financialInstitutionName; v33.Clean = value; _financialInstitutionName = v33;
-                var v34 = _hmdaPropertyZipCode; v34.Clean = value; _hmdaPropertyZipCode = v34;
-                var v35 = _hOEPAStatus; v35.Clean = value; _hOEPAStatus = v35;
-                var v36 = _id; v36.Clean = value; _id = v36;
-                var v37 = _income; v37.Clean = value; _income = v37;
-                var v38 = _initiallyPayableToYourInstitution; v38.Clean = value; _initiallyPayableToYourInstitution = v38;
-                var v39 = _interestRate; v39.Clean = value; _interestRate = v39;
-                var v40 = _introRatePeriod; v40.Clean = value; _introRatePeriod = v40;
-                var v41 = _legalEntityIdentifier; v41.Clean = value; _legalEntityIdentifier = v41;
-                var v42 = _lenderCredits; v42.Clean = value; _lenderCredits = v42;
-                var v43 = _lienStatus; v43.Clean = value; _lienStatus = v43;
-                var v44 = _loanAmount; v44.Clean = value; _loanAmount = v44;
-                var v45 = _loanPurpose; v45.Clean = value; _loanPurpose = v45;
-                var v46 = _loanTerm; v46.Clean = value; _loanTerm = v46;
-                var v47 = _loanType; v47.Clean = value; _loanType = v47;
-                var v48 = _manufacturedHomeLandPropertyInterest; v48.Clean = value; _manufacturedHomeLandPropertyInterest = v48;
-                var v49 = _manufacturedSecuredProperyType; v49.Clean = value; _manufacturedSecuredProperyType = v49;
-                var v50 = _mSANumber; v50.Clean = value; _mSANumber = v50;
-                var v51 = _multifamilyNoUnits; v51.Clean = value; _multifamilyNoUnits = v51;
-                var v52 = _nMLSLoanOriginatorID; v52.Clean = value; _nMLSLoanOriginatorID = v52;
-                var v53 = _openEndLineOfCredit; v53.Clean = value; _openEndLineOfCredit = v53;
-                var v54 = _originationCharges; v54.Clean = value; _originationCharges = v54;
-                var v55 = _otherAUS; v55.Clean = value; _otherAUS = v55;
-                var v56 = _otherAUSRecommendations; v56.Clean = value; _otherAUSRecommendations = v56;
-                var v57 = _otherDenialReason; v57.Clean = value; _otherDenialReason = v57;
-                var v58 = _otherNonAmortization; v58.Clean = value; _otherNonAmortization = v58;
-                var v59 = _parentAddress; v59.Clean = value; _parentAddress = v59;
-                var v60 = _parentCity; v60.Clean = value; _parentCity = v60;
-                var v61 = _parentName; v61.Clean = value; _parentName = v61;
-                var v62 = _parentState; v62.Clean = value; _parentState = v62;
-                var v63 = _parentZip; v63.Clean = value; _parentZip = v63;
-                var v64 = _preapprovals; v64.Clean = value; _preapprovals = v64;
-                var v65 = _prepaymentPenaltyPeriod; v65.Clean = value; _prepaymentPenaltyPeriod = v65;
-                var v66 = _propertyType; v66.Clean = value; _propertyType = v66;
-                var v67 = _propertyValue; v67.Clean = value; _propertyValue = v67;
-                var v68 = _qMStatus; v68.Clean = value; _qMStatus = v68;
-                var v69 = _rateSpread; v69.Clean = value; _rateSpread = v69;
-                var v70 = _reportingYear; v70.Clean = value; _reportingYear = v70;
-                var v71 = _reportPurposeOfLoanIndicator; v71.Clean = value; _reportPurposeOfLoanIndicator = v71;
-                var v72 = _respondentID; v72.Clean = value; _respondentID = v72;
-                var v73 = _reverseMortgage; v73.Clean = value; _reverseMortgage = v73;
-                var v74 = _stateCode; v74.Clean = value; _stateCode = v74;
-                var v75 = _submissionOfApplication; v75.Clean = value; _submissionOfApplication = v75;
-                var v76 = _totalLoanCosts; v76.Clean = value; _totalLoanCosts = v76;
-                var v77 = _totalPointsAndFees; v77.Clean = value; _totalPointsAndFees = v77;
-                var v78 = _typeOfPurchaser; v78.Clean = value; _typeOfPurchaser = v78;
-                var v79 = _universalLoanId; v79.Clean = value; _universalLoanId = v79;
+                var v34 = _hmdaPropertyAddress; v34.Clean = value; _hmdaPropertyAddress = v34;
+                var v35 = _hmdaPropertyCity; v35.Clean = value; _hmdaPropertyCity = v35;
+                var v36 = _hmdaPropertyState; v36.Clean = value; _hmdaPropertyState = v36;
+                var v37 = _hmdaPropertyZipCode; v37.Clean = value; _hmdaPropertyZipCode = v37;
+                var v38 = _hmdaSyncAddressIndicator; v38.Clean = value; _hmdaSyncAddressIndicator = v38;
+                var v39 = _hOEPAStatus; v39.Clean = value; _hOEPAStatus = v39;
+                var v40 = _id; v40.Clean = value; _id = v40;
+                var v41 = _income; v41.Clean = value; _income = v41;
+                var v42 = _initiallyPayableToYourInstitution; v42.Clean = value; _initiallyPayableToYourInstitution = v42;
+                var v43 = _interestRate; v43.Clean = value; _interestRate = v43;
+                var v44 = _introRatePeriod; v44.Clean = value; _introRatePeriod = v44;
+                var v45 = _legalEntityIdentifier; v45.Clean = value; _legalEntityIdentifier = v45;
+                var v46 = _lenderCredits; v46.Clean = value; _lenderCredits = v46;
+                var v47 = _lienStatus; v47.Clean = value; _lienStatus = v47;
+                var v48 = _loanAmount; v48.Clean = value; _loanAmount = v48;
+                var v49 = _loanPurpose; v49.Clean = value; _loanPurpose = v49;
+                var v50 = _loanTerm; v50.Clean = value; _loanTerm = v50;
+                var v51 = _loanType; v51.Clean = value; _loanType = v51;
+                var v52 = _manufacturedHomeLandPropertyInterest; v52.Clean = value; _manufacturedHomeLandPropertyInterest = v52;
+                var v53 = _manufacturedSecuredProperyType; v53.Clean = value; _manufacturedSecuredProperyType = v53;
+                var v54 = _mSANumber; v54.Clean = value; _mSANumber = v54;
+                var v55 = _multifamilyNoUnits; v55.Clean = value; _multifamilyNoUnits = v55;
+                var v56 = _nMLSLoanOriginatorID; v56.Clean = value; _nMLSLoanOriginatorID = v56;
+                var v57 = _openEndLineOfCredit; v57.Clean = value; _openEndLineOfCredit = v57;
+                var v58 = _originationCharges; v58.Clean = value; _originationCharges = v58;
+                var v59 = _otherAUS; v59.Clean = value; _otherAUS = v59;
+                var v60 = _otherAUSRecommendations; v60.Clean = value; _otherAUSRecommendations = v60;
+                var v61 = _otherDenialReason; v61.Clean = value; _otherDenialReason = v61;
+                var v62 = _otherNonAmortization; v62.Clean = value; _otherNonAmortization = v62;
+                var v63 = _parentAddress; v63.Clean = value; _parentAddress = v63;
+                var v64 = _parentCity; v64.Clean = value; _parentCity = v64;
+                var v65 = _parentName; v65.Clean = value; _parentName = v65;
+                var v66 = _parentState; v66.Clean = value; _parentState = v66;
+                var v67 = _parentZip; v67.Clean = value; _parentZip = v67;
+                var v68 = _preapprovals; v68.Clean = value; _preapprovals = v68;
+                var v69 = _prepaymentPenaltyPeriod; v69.Clean = value; _prepaymentPenaltyPeriod = v69;
+                var v70 = _propertyType; v70.Clean = value; _propertyType = v70;
+                var v71 = _propertyValue; v71.Clean = value; _propertyValue = v71;
+                var v72 = _qMStatus; v72.Clean = value; _qMStatus = v72;
+                var v73 = _rateSpread; v73.Clean = value; _rateSpread = v73;
+                var v74 = _reportingYear; v74.Clean = value; _reportingYear = v74;
+                var v75 = _reportPurposeOfLoanIndicator; v75.Clean = value; _reportPurposeOfLoanIndicator = v75;
+                var v76 = _repurchasedActionDate; v76.Clean = value; _repurchasedActionDate = v76;
+                var v77 = _repurchasedActionTaken; v77.Clean = value; _repurchasedActionTaken = v77;
+                var v78 = _repurchasedLoanAmount; v78.Clean = value; _repurchasedLoanAmount = v78;
+                var v79 = _repurchasedReportingYear; v79.Clean = value; _repurchasedReportingYear = v79;
+                var v80 = _repurchasedTypeOfPurchaser; v80.Clean = value; _repurchasedTypeOfPurchaser = v80;
+                var v81 = _respondentID; v81.Clean = value; _respondentID = v81;
+                var v82 = _reverseMortgage; v82.Clean = value; _reverseMortgage = v82;
+                var v83 = _stateCode; v83.Clean = value; _stateCode = v83;
+                var v84 = _submissionOfApplication; v84.Clean = value; _submissionOfApplication = v84;
+                var v85 = _totalLoanCosts; v85.Clean = value; _totalLoanCosts = v85;
+                var v86 = _totalPointsAndFees; v86.Clean = value; _totalPointsAndFees = v86;
+                var v87 = _typeOfPurchaser; v87.Clean = value; _typeOfPurchaser = v87;
+                var v88 = _universalLoanId; v88.Clean = value; _universalLoanId = v88;
                 _settingClean = 0;
             }
         }

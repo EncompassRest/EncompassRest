@@ -30,6 +30,8 @@ namespace EncompassRest.Loans
         public decimal? BonaFideDiscountPointAmount { get { return _bonaFideDiscountPointAmount; } set { _bonaFideDiscountPointAmount = value; } }
         private Value<bool?> _brokerCompensationWhenRateSet;
         public bool? BrokerCompensationWhenRateSet { get { return _brokerCompensationWhenRateSet; } set { _brokerCompensationWhenRateSet = value; } }
+        private Value<string> _collateralRepandWarrReliefEligibilityType;
+        public string CollateralRepandWarrReliefEligibilityType { get { return _collateralRepandWarrReliefEligibilityType; } set { _collateralRepandWarrReliefEligibilityType = value; } }
         private Value<decimal?> _compensationPTBFees;
         public decimal? CompensationPTBFees { get { return _compensationPTBFees; } set { _compensationPTBFees = value; } }
         private Value<decimal?> _creditInsPremiumFees;
@@ -52,6 +54,72 @@ namespace EncompassRest.Loans
         public decimal? DiscountPointFees { get { return _discountPointFees; } set { _discountPointFees = value; } }
         private Value<decimal?> _discountPointPercentage;
         public decimal? DiscountPointPercentage { get { return _discountPointPercentage; } set { _discountPointPercentage = value; } }
+        private Value<string> _documentationGuidelineMessages4V;
+        public string DocumentationGuidelineMessages4V { get { return _documentationGuidelineMessages4V; } set { _documentationGuidelineMessages4V = value; } }
+        private Value<string> _documentationGuidelineMessages5C;
+        public string DocumentationGuidelineMessages5C { get { return _documentationGuidelineMessages5C; } set { _documentationGuidelineMessages5C = value; } }
+        private Value<string> _documentationGuidelineMessages8Y;
+        public string DocumentationGuidelineMessages8Y { get { return _documentationGuidelineMessages8Y; } set { _documentationGuidelineMessages8Y = value; } }
+        private Value<string> _documentationGuidelineMessagesCN;
+        public string DocumentationGuidelineMessagesCN { get { return _documentationGuidelineMessagesCN; } set { _documentationGuidelineMessagesCN = value; } }
+        private Value<string> _documentationGuidelineMessagesCP;
+        public string DocumentationGuidelineMessagesCP { get { return _documentationGuidelineMessagesCP; } set { _documentationGuidelineMessagesCP = value; } }
+        private Value<string> _documentationGuidelineMessagesCV;
+        public string DocumentationGuidelineMessagesCV { get { return _documentationGuidelineMessagesCV; } set { _documentationGuidelineMessagesCV = value; } }
+        private Value<string> _documentationGuidelineMessagesCY;
+        public string DocumentationGuidelineMessagesCY { get { return _documentationGuidelineMessagesCY; } set { _documentationGuidelineMessagesCY = value; } }
+        private Value<string> _documentationGuidelineMessagesCZ;
+        public string DocumentationGuidelineMessagesCZ { get { return _documentationGuidelineMessagesCZ; } set { _documentationGuidelineMessagesCZ = value; } }
+        private Value<string> _documentationGuidelineMessagesDP;
+        public string DocumentationGuidelineMessagesDP { get { return _documentationGuidelineMessagesDP; } set { _documentationGuidelineMessagesDP = value; } }
+        private Value<string> _documentationGuidelineMessagesDZ;
+        public string DocumentationGuidelineMessagesDZ { get { return _documentationGuidelineMessagesDZ; } set { _documentationGuidelineMessagesDZ = value; } }
+        private Value<string> _documentationGuidelineMessagesE5;
+        public string DocumentationGuidelineMessagesE5 { get { return _documentationGuidelineMessagesE5; } set { _documentationGuidelineMessagesE5 = value; } }
+        private Value<string> _documentationGuidelineMessagesIM;
+        public string DocumentationGuidelineMessagesIM { get { return _documentationGuidelineMessagesIM; } set { _documentationGuidelineMessagesIM = value; } }
+        private Value<string> _documentationGuidelineMessagesIQ;
+        public string DocumentationGuidelineMessagesIQ { get { return _documentationGuidelineMessagesIQ; } set { _documentationGuidelineMessagesIQ = value; } }
+        private Value<string> _documentationGuidelineMessagesJF;
+        public string DocumentationGuidelineMessagesJF { get { return _documentationGuidelineMessagesJF; } set { _documentationGuidelineMessagesJF = value; } }
+        private Value<string> _documentationGuidelineMessagesQJ;
+        public string DocumentationGuidelineMessagesQJ { get { return _documentationGuidelineMessagesQJ; } set { _documentationGuidelineMessagesQJ = value; } }
+        private Value<string> _documentationGuidelineMessagesQN;
+        public string DocumentationGuidelineMessagesQN { get { return _documentationGuidelineMessagesQN; } set { _documentationGuidelineMessagesQN = value; } }
+        private Value<string> _documentationGuidelineMessagesQQ;
+        public string DocumentationGuidelineMessagesQQ { get { return _documentationGuidelineMessagesQQ; } set { _documentationGuidelineMessagesQQ = value; } }
+        private Value<string> _documentationGuidelineMessagesQS;
+        public string DocumentationGuidelineMessagesQS { get { return _documentationGuidelineMessagesQS; } set { _documentationGuidelineMessagesQS = value; } }
+        private Value<string> _documentationGuidelineMessagesU7;
+        public string DocumentationGuidelineMessagesU7 { get { return _documentationGuidelineMessagesU7; } set { _documentationGuidelineMessagesU7 = value; } }
+        private Value<string> _documentationGuidelineMessagesX1;
+        public string DocumentationGuidelineMessagesX1 { get { return _documentationGuidelineMessagesX1; } set { _documentationGuidelineMessagesX1 = value; } }
+        private Value<string> _documentationGuidelineMessagesX3;
+        public string DocumentationGuidelineMessagesX3 { get { return _documentationGuidelineMessagesX3; } set { _documentationGuidelineMessagesX3 = value; } }
+        private Value<string> _documentationGuidelineMessagesX5;
+        public string DocumentationGuidelineMessagesX5 { get { return _documentationGuidelineMessagesX5; } set { _documentationGuidelineMessagesX5 = value; } }
+        private Value<string> _documentationGuidelineMessagesX7;
+        public string DocumentationGuidelineMessagesX7 { get { return _documentationGuidelineMessagesX7; } set { _documentationGuidelineMessagesX7 = value; } }
+        private Value<string> _documentationGuidelineMessagesXA;
+        public string DocumentationGuidelineMessagesXA { get { return _documentationGuidelineMessagesXA; } set { _documentationGuidelineMessagesXA = value; } }
+        private Value<string> _documentationGuidelineMessagesXM;
+        public string DocumentationGuidelineMessagesXM { get { return _documentationGuidelineMessagesXM; } set { _documentationGuidelineMessagesXM = value; } }
+        private Value<string> _documentationGuidelineMessagesXP;
+        public string DocumentationGuidelineMessagesXP { get { return _documentationGuidelineMessagesXP; } set { _documentationGuidelineMessagesXP = value; } }
+        private Value<string> _documentationGuidelineMessagesXR;
+        public string DocumentationGuidelineMessagesXR { get { return _documentationGuidelineMessagesXR; } set { _documentationGuidelineMessagesXR = value; } }
+        private Value<string> _documentationGuidelineMessagesXT;
+        public string DocumentationGuidelineMessagesXT { get { return _documentationGuidelineMessagesXT; } set { _documentationGuidelineMessagesXT = value; } }
+        private Value<string> _documentationGuidelineMessagesY8;
+        public string DocumentationGuidelineMessagesY8 { get { return _documentationGuidelineMessagesY8; } set { _documentationGuidelineMessagesY8 = value; } }
+        private Value<string> _documentationGuidelineMessagesYG;
+        public string DocumentationGuidelineMessagesYG { get { return _documentationGuidelineMessagesYG; } set { _documentationGuidelineMessagesYG = value; } }
+        private Value<string> _documentationGuidelineMessagesYJ;
+        public string DocumentationGuidelineMessagesYJ { get { return _documentationGuidelineMessagesYJ; } set { _documentationGuidelineMessagesYJ = value; } }
+        private Value<string> _documentationGuidelineMessagesYY;
+        public string DocumentationGuidelineMessagesYY { get { return _documentationGuidelineMessagesYY; } set { _documentationGuidelineMessagesYY = value; } }
+        private Value<string> _documentationGuidelineMessagesYZ;
+        public string DocumentationGuidelineMessagesYZ { get { return _documentationGuidelineMessagesYZ; } set { _documentationGuidelineMessagesYZ = value; } }
         private Value<string> _eligibleNonStandardToStandard;
         public string EligibleNonStandardToStandard { get { return _eligibleNonStandardToStandard; } set { _eligibleNonStandardToStandard = value; } }
         private Value<decimal?> _financeChargeFees;
@@ -186,6 +254,18 @@ namespace EncompassRest.Loans
         public bool? IsEvaluatedResidualIncome { get { return _isEvaluatedResidualIncome; } set { _isEvaluatedResidualIncome = value; } }
         private Value<string> _isHigherPricedLoan;
         public string IsHigherPricedLoan { get { return _isHigherPricedLoan; } set { _isHigherPricedLoan = value; } }
+        private Value<string> _loanProcessingInformationD4;
+        public string LoanProcessingInformationD4 { get { return _loanProcessingInformationD4; } set { _loanProcessingInformationD4 = value; } }
+        private Value<string> _loanProcessingInformationGO;
+        public string LoanProcessingInformationGO { get { return _loanProcessingInformationGO; } set { _loanProcessingInformationGO = value; } }
+        private Value<string> _loanProcessingInformationHA;
+        public string LoanProcessingInformationHA { get { return _loanProcessingInformationHA; } set { _loanProcessingInformationHA = value; } }
+        private Value<string> _loanProcessingInformationLE;
+        public string LoanProcessingInformationLE { get { return _loanProcessingInformationLE; } set { _loanProcessingInformationLE = value; } }
+        private Value<string> _loanProcessingInformationLF;
+        public string LoanProcessingInformationLF { get { return _loanProcessingInformationLF; } set { _loanProcessingInformationLF = value; } }
+        private Value<string> _loanProcessingInformationMA;
+        public string LoanProcessingInformationMA { get { return _loanProcessingInformationMA; } set { _loanProcessingInformationMA = value; } }
         private Value<bool?> _loanProgram;
         public bool? LoanProgram { get { return _loanProgram; } set { _loanProgram = value; } }
         private Value<string> _loanProgramDescription;
@@ -358,6 +438,7 @@ namespace EncompassRest.Loans
                     && _bonaFideDiscountPoint.Clean
                     && _bonaFideDiscountPointAmount.Clean
                     && _brokerCompensationWhenRateSet.Clean
+                    && _collateralRepandWarrReliefEligibilityType.Clean
                     && _compensationPTBFees.Clean
                     && _creditInsPremiumFees.Clean
                     && _creditorType.Clean
@@ -369,6 +450,39 @@ namespace EncompassRest.Loans
                     && _discountPointAmount.Clean
                     && _discountPointFees.Clean
                     && _discountPointPercentage.Clean
+                    && _documentationGuidelineMessages4V.Clean
+                    && _documentationGuidelineMessages5C.Clean
+                    && _documentationGuidelineMessages8Y.Clean
+                    && _documentationGuidelineMessagesCN.Clean
+                    && _documentationGuidelineMessagesCP.Clean
+                    && _documentationGuidelineMessagesCV.Clean
+                    && _documentationGuidelineMessagesCY.Clean
+                    && _documentationGuidelineMessagesCZ.Clean
+                    && _documentationGuidelineMessagesDP.Clean
+                    && _documentationGuidelineMessagesDZ.Clean
+                    && _documentationGuidelineMessagesE5.Clean
+                    && _documentationGuidelineMessagesIM.Clean
+                    && _documentationGuidelineMessagesIQ.Clean
+                    && _documentationGuidelineMessagesJF.Clean
+                    && _documentationGuidelineMessagesQJ.Clean
+                    && _documentationGuidelineMessagesQN.Clean
+                    && _documentationGuidelineMessagesQQ.Clean
+                    && _documentationGuidelineMessagesQS.Clean
+                    && _documentationGuidelineMessagesU7.Clean
+                    && _documentationGuidelineMessagesX1.Clean
+                    && _documentationGuidelineMessagesX3.Clean
+                    && _documentationGuidelineMessagesX5.Clean
+                    && _documentationGuidelineMessagesX7.Clean
+                    && _documentationGuidelineMessagesXA.Clean
+                    && _documentationGuidelineMessagesXM.Clean
+                    && _documentationGuidelineMessagesXP.Clean
+                    && _documentationGuidelineMessagesXR.Clean
+                    && _documentationGuidelineMessagesXT.Clean
+                    && _documentationGuidelineMessagesY8.Clean
+                    && _documentationGuidelineMessagesYG.Clean
+                    && _documentationGuidelineMessagesYJ.Clean
+                    && _documentationGuidelineMessagesYY.Clean
+                    && _documentationGuidelineMessagesYZ.Clean
                     && _eligibleNonStandardToStandard.Clean
                     && _financeChargeFees.Clean
                     && _firstChangeRecase.Clean
@@ -436,6 +550,12 @@ namespace EncompassRest.Loans
                     && _isEvaluatedMonthlySimultaneousLoanPayment.Clean
                     && _isEvaluatedResidualIncome.Clean
                     && _isHigherPricedLoan.Clean
+                    && _loanProcessingInformationD4.Clean
+                    && _loanProcessingInformationGO.Clean
+                    && _loanProcessingInformationHA.Clean
+                    && _loanProcessingInformationLE.Clean
+                    && _loanProcessingInformationLF.Clean
+                    && _loanProcessingInformationMA.Clean
                     && _loanProgram.Clean
                     && _loanProgramDescription.Clean
                     && _loanRateFixedin5Years.Clean
@@ -530,161 +650,201 @@ namespace EncompassRest.Loans
                 var v8 = _bonaFideDiscountPoint; v8.Clean = value; _bonaFideDiscountPoint = v8;
                 var v9 = _bonaFideDiscountPointAmount; v9.Clean = value; _bonaFideDiscountPointAmount = v9;
                 var v10 = _brokerCompensationWhenRateSet; v10.Clean = value; _brokerCompensationWhenRateSet = v10;
-                var v11 = _compensationPTBFees; v11.Clean = value; _compensationPTBFees = v11;
-                var v12 = _creditInsPremiumFees; v12.Clean = value; _creditInsPremiumFees = v12;
-                var v13 = _creditorType; v13.Clean = value; _creditorType = v13;
-                var v14 = _creditorTypeDescription; v14.Clean = value; _creditorTypeDescription = v14;
-                var v15 = _creditType; v15.Clean = value; _creditType = v15;
-                var v16 = _currentQMFeeThresholdAmt; v16.Clean = value; _currentQMFeeThresholdAmt = v16;
-                var v17 = _currentQMFeeThresholdPercent; v17.Clean = value; _currentQMFeeThresholdPercent = v17;
-                var v18 = _dateOfLastMonthlyPayment; v18.Clean = value; _dateOfLastMonthlyPayment = v18;
-                var v19 = _discountPointAmount; v19.Clean = value; _discountPointAmount = v19;
-                var v20 = _discountPointFees; v20.Clean = value; _discountPointFees = v20;
-                var v21 = _discountPointPercentage; v21.Clean = value; _discountPointPercentage = v21;
-                var v22 = _eligibleNonStandardToStandard; v22.Clean = value; _eligibleNonStandardToStandard = v22;
-                var v23 = _financeChargeFees; v23.Clean = value; _financeChargeFees = v23;
-                var v24 = _firstChangeRecase; v24.Clean = value; _firstChangeRecase = v24;
-                var v25 = _firstPmtDateAfterRecast; v25.Clean = value; _firstPmtDateAfterRecast = v25;
-                var v26 = _fullPaymentAfterInterestOnly; v26.Clean = value; _fullPaymentAfterInterestOnly = v26;
-                var v27 = _fullyARMPaymentAfterNegAm; v27.Clean = value; _fullyARMPaymentAfterNegAm = v27;
-                var v28 = _fullyIndexRateHousingRatio; v28.Clean = value; _fullyIndexRateHousingRatio = v28;
-                var v29 = _fullyIndexRateMaxTotalPayment; v29.Clean = value; _fullyIndexRateMaxTotalPayment = v29;
-                var v30 = _fullyIndexRateMonthlyPayment; v30.Clean = value; _fullyIndexRateMonthlyPayment = v30;
-                var v31 = _fullyIndexRateTotalDebtRatio; v31.Clean = value; _fullyIndexRateTotalDebtRatio = v31;
-                var v32 = _generalATR_Status_Alimony; v32.Clean = value; _generalATR_Status_Alimony = v32;
-                var v33 = _generalATR_Status_Assets; v33.Clean = value; _generalATR_Status_Assets = v33;
-                var v34 = _generalATR_Status_ChildSupport; v34.Clean = value; _generalATR_Status_ChildSupport = v34;
-                var v35 = _generalATR_Status_CoveredLoan; v35.Clean = value; _generalATR_Status_CoveredLoan = v35;
-                var v36 = _generalATR_Status_CreditHistory; v36.Clean = value; _generalATR_Status_CreditHistory = v36;
-                var v37 = _generalATR_Status_DebtObligations; v37.Clean = value; _generalATR_Status_DebtObligations = v37;
-                var v38 = _generalATR_Status_DTI; v38.Clean = value; _generalATR_Status_DTI = v38;
-                var v39 = _generalATR_Status_Employment; v39.Clean = value; _generalATR_Status_Employment = v39;
-                var v40 = _generalATR_Status_Income; v40.Clean = value; _generalATR_Status_Income = v40;
-                var v41 = _generalATR_Status_MtgRelatedObligations; v41.Clean = value; _generalATR_Status_MtgRelatedObligations = v41;
-                var v42 = _generalATR_Status_Overall; v42.Clean = value; _generalATR_Status_Overall = v42;
-                var v43 = _generalATR_Status_ResidualIncome; v43.Clean = value; _generalATR_Status_ResidualIncome = v43;
-                var v44 = _generalATR_Status_SimultaneousLoan; v44.Clean = value; _generalATR_Status_SimultaneousLoan = v44;
-                var v45 = _gSEAgencyQM_CalculatedThreshold; v45.Clean = value; _gSEAgencyQM_CalculatedThreshold = v45;
-                var v46 = _gSEAgencyQM_Status_Alimony; v46.Clean = value; _gSEAgencyQM_Status_Alimony = v46;
-                var v47 = _gSEAgencyQM_Status_Assets; v47.Clean = value; _gSEAgencyQM_Status_Assets = v47;
-                var v48 = _gSEAgencyQM_Status_BalloonPayment; v48.Clean = value; _gSEAgencyQM_Status_BalloonPayment = v48;
-                var v49 = _gSEAgencyQM_Status_ChildSupport; v49.Clean = value; _gSEAgencyQM_Status_ChildSupport = v49;
-                var v50 = _gSEAgencyQM_Status_CoveredLoan; v50.Clean = value; _gSEAgencyQM_Status_CoveredLoan = v50;
-                var v51 = _gSEAgencyQM_Status_CreditHistory; v51.Clean = value; _gSEAgencyQM_Status_CreditHistory = v51;
-                var v52 = _gSEAgencyQM_Status_DebtObligations; v52.Clean = value; _gSEAgencyQM_Status_DebtObligations = v52;
-                var v53 = _gSEAgencyQM_Status_DTI; v53.Clean = value; _gSEAgencyQM_Status_DTI = v53;
-                var v54 = _gSEAgencyQM_Status_Employment; v54.Clean = value; _gSEAgencyQM_Status_Employment = v54;
-                var v55 = _gSEAgencyQM_Status_Income; v55.Clean = value; _gSEAgencyQM_Status_Income = v55;
-                var v56 = _gSEAgencyQM_Status_InterestOnly; v56.Clean = value; _gSEAgencyQM_Status_InterestOnly = v56;
-                var v57 = _gSEAgencyQM_Status_LoanTerm; v57.Clean = value; _gSEAgencyQM_Status_LoanTerm = v57;
-                var v58 = _gSEAgencyQM_Status_MtgRelatedObligations; v58.Clean = value; _gSEAgencyQM_Status_MtgRelatedObligations = v58;
-                var v59 = _gSEAgencyQM_Status_NegativeAmortization; v59.Clean = value; _gSEAgencyQM_Status_NegativeAmortization = v59;
-                var v60 = _gSEAgencyQM_Status_Overall; v60.Clean = value; _gSEAgencyQM_Status_Overall = v60;
-                var v61 = _gSEAgencyQM_Status_PointsFeesLimit; v61.Clean = value; _gSEAgencyQM_Status_PointsFeesLimit = v61;
-                var v62 = _gSEAgencyQM_Status_PrepaymentPenalty; v62.Clean = value; _gSEAgencyQM_Status_PrepaymentPenalty = v62;
-                var v63 = _gSEAgencyQM_Status_ResidualIncome; v63.Clean = value; _gSEAgencyQM_Status_ResidualIncome = v63;
-                var v64 = _gSEAgencyQM_Status_SafeHarborEligibility; v64.Clean = value; _gSEAgencyQM_Status_SafeHarborEligibility = v64;
-                var v65 = _gSEAgencyQM_Status_SimultaneousLoan; v65.Clean = value; _gSEAgencyQM_Status_SimultaneousLoan = v65;
-                var v66 = _has30DayLatePayment; v66.Clean = value; _has30DayLatePayment = v66;
-                var v67 = _id; v67.Clean = value; _id = v67;
-                var v68 = _initialMaxTotalPayment; v68.Clean = value; _initialMaxTotalPayment = v68;
-                var v69 = _initialRateHousingRatio; v69.Clean = value; _initialRateHousingRatio = v69;
-                var v70 = _initialRateMonthlyPayment; v70.Clean = value; _initialRateMonthlyPayment = v70;
-                var v71 = _initialRateTotalDebtRatio; v71.Clean = value; _initialRateTotalDebtRatio = v71;
-                var v72 = _interestOnlyMonths; v72.Clean = value; _interestOnlyMonths = v72;
-                var v73 = _interestOnlyRecastDate; v73.Clean = value; _interestOnlyRecastDate = v73;
-                var v74 = _isConsumerLiklyDefault; v74.Clean = value; _isConsumerLiklyDefault = v74;
-                var v75 = _isEligibleForSafeHarbor; v75.Clean = value; _isEligibleForSafeHarbor = v75;
-                var v76 = _isEvaluatedAlimonyObligations; v76.Clean = value; _isEvaluatedAlimonyObligations = v76;
-                var v77 = _isEvaluatedChildSupportObligations; v77.Clean = value; _isEvaluatedChildSupportObligations = v77;
-                var v78 = _isEvaluatedCreditHistory; v78.Clean = value; _isEvaluatedCreditHistory = v78;
-                var v79 = _isEvaluatedCurrentEmploymentStatus; v79.Clean = value; _isEvaluatedCurrentEmploymentStatus = v79;
-                var v80 = _isEvaluatedCurrentExpectedAssets; v80.Clean = value; _isEvaluatedCurrentExpectedAssets = v80;
-                var v81 = _isEvaluatedCurrentExpectedIncome; v81.Clean = value; _isEvaluatedCurrentExpectedIncome = v81;
-                var v82 = _isEvaluatedDebtObligations; v82.Clean = value; _isEvaluatedDebtObligations = v82;
-                var v83 = _isEvaluatedDebtToIncomeRatio; v83.Clean = value; _isEvaluatedDebtToIncomeRatio = v83;
-                var v84 = _isEvaluatedMonthlyCoveredLoanPayment; v84.Clean = value; _isEvaluatedMonthlyCoveredLoanPayment = v84;
-                var v85 = _isEvaluatedMonthlyMortgageRelatedObligations; v85.Clean = value; _isEvaluatedMonthlyMortgageRelatedObligations = v85;
-                var v86 = _isEvaluatedMonthlySimultaneousLoanPayment; v86.Clean = value; _isEvaluatedMonthlySimultaneousLoanPayment = v86;
-                var v87 = _isEvaluatedResidualIncome; v87.Clean = value; _isEvaluatedResidualIncome = v87;
-                var v88 = _isHigherPricedLoan; v88.Clean = value; _isHigherPricedLoan = v88;
-                var v89 = _loanProgram; v89.Clean = value; _loanProgram = v89;
-                var v90 = _loanProgramDescription; v90.Clean = value; _loanProgramDescription = v90;
-                var v91 = _loanRateFixedin5Years; v91.Clean = value; _loanRateFixedin5Years = v91;
-                var v92 = _lOBrokerCompensationAmount; v92.Clean = value; _lOBrokerCompensationAmount = v92;
-                var v93 = _max5YrsHousingRatio; v93.Clean = value; _max5YrsHousingRatio = v93;
-                var v94 = _max5YrsPrincipleAndInterest; v94.Clean = value; _max5YrsPrincipleAndInterest = v94;
-                var v95 = _max5YrsTotalDebtRatio; v95.Clean = value; _max5YrsTotalDebtRatio = v95;
-                var v96 = _max5YrsTotalPayment; v96.Clean = value; _max5YrsTotalPayment = v96;
-                var v97 = _maxPrepaymentPenaltyFees; v97.Clean = value; _maxPrepaymentPenaltyFees = v97;
-                var v98 = _negAmRecastDate; v98.Clean = value; _negAmRecastDate = v98;
-                var v99 = _paymentDecreasedBy10Percent; v99.Clean = value; _paymentDecreasedBy10Percent = v99;
-                var v100 = _pointsFeesThresholdMet; v100.Clean = value; _pointsFeesThresholdMet = v100;
-                var v101 = _prepaymentPenaltyPayoffFees; v101.Clean = value; _prepaymentPenaltyPayoffFees = v101;
-                var v102 = _prepayPenaltyPercentage; v102.Clean = value; _prepayPenaltyPercentage = v102;
-                var v103 = _preventConsumersDefault; v103.Clean = value; _preventConsumersDefault = v103;
-                var v104 = _principalBalanceIncreased; v104.Clean = value; _principalBalanceIncreased = v104;
-                var v105 = _principalHasDeferred; v105.Clean = value; _principalHasDeferred = v105;
-                var v106 = _qMLoanType; v106.Clean = value; _qMLoanType = v106;
-                var v107 = _rateReductionBasisPoints; v107.Clean = value; _rateReductionBasisPoints = v107;
-                var v108 = _rateReductionDiscountPoints; v108.Clean = value; _rateReductionDiscountPoints = v108;
-                var v109 = _rateReductionMaxBonaFideDiscountPoint; v109.Clean = value; _rateReductionMaxBonaFideDiscountPoint = v109;
-                var v110 = _realEstateFees; v110.Clean = value; _realEstateFees = v110;
-                var v111 = _recastDifferencePayment; v111.Clean = value; _recastDifferencePayment = v111;
-                var v112 = _regZTotalLoanAmount; v112.Clean = value; _regZTotalLoanAmount = v112;
-                var v113 = _requiredServicesLenderSelectedAmt; v113.Clean = value; _requiredServicesLenderSelectedAmt = v113;
-                var v114 = _smallCreditorQM_CalculatedThreshold; v114.Clean = value; _smallCreditorQM_CalculatedThreshold = v114;
-                var v115 = _smallCreditorQM_Status_Alimony; v115.Clean = value; _smallCreditorQM_Status_Alimony = v115;
-                var v116 = _smallCreditorQM_Status_Assets; v116.Clean = value; _smallCreditorQM_Status_Assets = v116;
-                var v117 = _smallCreditorQM_Status_BalloonPayment; v117.Clean = value; _smallCreditorQM_Status_BalloonPayment = v117;
-                var v118 = _smallCreditorQM_Status_ChildSupport; v118.Clean = value; _smallCreditorQM_Status_ChildSupport = v118;
-                var v119 = _smallCreditorQM_Status_CoveredLoan; v119.Clean = value; _smallCreditorQM_Status_CoveredLoan = v119;
-                var v120 = _smallCreditorQM_Status_DebtObligations; v120.Clean = value; _smallCreditorQM_Status_DebtObligations = v120;
-                var v121 = _smallCreditorQM_Status_DTI; v121.Clean = value; _smallCreditorQM_Status_DTI = v121;
-                var v122 = _smallCreditorQM_Status_Income; v122.Clean = value; _smallCreditorQM_Status_Income = v122;
-                var v123 = _smallCreditorQM_Status_InterestOnly; v123.Clean = value; _smallCreditorQM_Status_InterestOnly = v123;
-                var v124 = _smallCreditorQM_Status_LoanTerm; v124.Clean = value; _smallCreditorQM_Status_LoanTerm = v124;
-                var v125 = _smallCreditorQM_Status_MtgRelatedObligations; v125.Clean = value; _smallCreditorQM_Status_MtgRelatedObligations = v125;
-                var v126 = _smallCreditorQM_Status_NegativeAmortization; v126.Clean = value; _smallCreditorQM_Status_NegativeAmortization = v126;
-                var v127 = _smallCreditorQM_Status_Overall; v127.Clean = value; _smallCreditorQM_Status_Overall = v127;
-                var v128 = _smallCreditorQM_Status_PointsFeesLimit; v128.Clean = value; _smallCreditorQM_Status_PointsFeesLimit = v128;
-                var v129 = _smallCreditorQM_Status_PrepaymentPenalty; v129.Clean = value; _smallCreditorQM_Status_PrepaymentPenalty = v129;
-                var v130 = _smallCreditorQM_Status_ResidualIncome; v130.Clean = value; _smallCreditorQM_Status_ResidualIncome = v130;
-                var v131 = _smallCreditorQM_Status_SafeHarborEligibility; v131.Clean = value; _smallCreditorQM_Status_SafeHarborEligibility = v131;
-                var v132 = _standardQM_CalculatedThreshold; v132.Clean = value; _standardQM_CalculatedThreshold = v132;
-                var v133 = _standardQM_Status_Alimony; v133.Clean = value; _standardQM_Status_Alimony = v133;
-                var v134 = _standardQM_Status_Assets; v134.Clean = value; _standardQM_Status_Assets = v134;
-                var v135 = _standardQM_Status_BalloonPayment; v135.Clean = value; _standardQM_Status_BalloonPayment = v135;
-                var v136 = _standardQM_Status_ChildSupport; v136.Clean = value; _standardQM_Status_ChildSupport = v136;
-                var v137 = _standardQM_Status_CoveredLoan; v137.Clean = value; _standardQM_Status_CoveredLoan = v137;
-                var v138 = _standardQM_Status_CreditHistory; v138.Clean = value; _standardQM_Status_CreditHistory = v138;
-                var v139 = _standardQM_Status_DebtObligations; v139.Clean = value; _standardQM_Status_DebtObligations = v139;
-                var v140 = _standardQM_Status_DTI; v140.Clean = value; _standardQM_Status_DTI = v140;
-                var v141 = _standardQM_Status_Employment; v141.Clean = value; _standardQM_Status_Employment = v141;
-                var v142 = _standardQM_Status_Income; v142.Clean = value; _standardQM_Status_Income = v142;
-                var v143 = _standardQM_Status_InterestOnly; v143.Clean = value; _standardQM_Status_InterestOnly = v143;
-                var v144 = _standardQM_Status_LoanTerm; v144.Clean = value; _standardQM_Status_LoanTerm = v144;
-                var v145 = _standardQM_Status_MtgRelatedObligations; v145.Clean = value; _standardQM_Status_MtgRelatedObligations = v145;
-                var v146 = _standardQM_Status_NegativeAmortization; v146.Clean = value; _standardQM_Status_NegativeAmortization = v146;
-                var v147 = _standardQM_Status_Overall; v147.Clean = value; _standardQM_Status_Overall = v147;
-                var v148 = _standardQM_Status_PointsFeesLimit; v148.Clean = value; _standardQM_Status_PointsFeesLimit = v148;
-                var v149 = _standardQM_Status_PrepaymentPenalty; v149.Clean = value; _standardQM_Status_PrepaymentPenalty = v149;
-                var v150 = _standardQM_Status_ResidualIncome; v150.Clean = value; _standardQM_Status_ResidualIncome = v150;
-                var v151 = _standardQM_Status_SafeHarborEligibility; v151.Clean = value; _standardQM_Status_SafeHarborEligibility = v151;
-                var v152 = _standardQM_Status_SimultaneousLoan; v152.Clean = value; _standardQM_Status_SimultaneousLoan = v152;
-                var v153 = _startingAdjustedRateMaxBonaFideDiscountPoint; v153.Clean = value; _startingAdjustedRateMaxBonaFideDiscountPoint = v153;
-                var v154 = _status_CreditHistory; v154.Clean = value; _status_CreditHistory = v154;
-                var v155 = _status_SimultaneousLoan; v155.Clean = value; _status_SimultaneousLoan = v155;
-                var v156 = _thresholdExceedsQM; v156.Clean = value; _thresholdExceedsQM = v156;
-                var v157 = _titleServicesLenderTitleinsuranceFee; v157.Clean = value; _titleServicesLenderTitleinsuranceFee = v157;
-                var v158 = _totalCoMortgagorIncome; v158.Clean = value; _totalCoMortgagorIncome = v158;
-                var v159 = _totalIncome; v159.Clean = value; _totalIncome = v159;
-                var v160 = _totalPointsFeesSec32Percent; v160.Clean = value; _totalPointsFeesSec32Percent = v160;
-                var v161 = _transactionExemptFromRegZ; v161.Clean = value; _transactionExemptFromRegZ = v161;
-                var v162 = _unitCount; v162.Clean = value; _unitCount = v162;
-                var v163 = _upfrontPMIFees; v163.Clean = value; _upfrontPMIFees = v163;
-                var v164 = _withOriginalCreditor; v164.Clean = value; _withOriginalCreditor = v164;
-                var v165 = _writtenApplicationDate; v165.Clean = value; _writtenApplicationDate = v165;
+                var v11 = _collateralRepandWarrReliefEligibilityType; v11.Clean = value; _collateralRepandWarrReliefEligibilityType = v11;
+                var v12 = _compensationPTBFees; v12.Clean = value; _compensationPTBFees = v12;
+                var v13 = _creditInsPremiumFees; v13.Clean = value; _creditInsPremiumFees = v13;
+                var v14 = _creditorType; v14.Clean = value; _creditorType = v14;
+                var v15 = _creditorTypeDescription; v15.Clean = value; _creditorTypeDescription = v15;
+                var v16 = _creditType; v16.Clean = value; _creditType = v16;
+                var v17 = _currentQMFeeThresholdAmt; v17.Clean = value; _currentQMFeeThresholdAmt = v17;
+                var v18 = _currentQMFeeThresholdPercent; v18.Clean = value; _currentQMFeeThresholdPercent = v18;
+                var v19 = _dateOfLastMonthlyPayment; v19.Clean = value; _dateOfLastMonthlyPayment = v19;
+                var v20 = _discountPointAmount; v20.Clean = value; _discountPointAmount = v20;
+                var v21 = _discountPointFees; v21.Clean = value; _discountPointFees = v21;
+                var v22 = _discountPointPercentage; v22.Clean = value; _discountPointPercentage = v22;
+                var v23 = _documentationGuidelineMessages4V; v23.Clean = value; _documentationGuidelineMessages4V = v23;
+                var v24 = _documentationGuidelineMessages5C; v24.Clean = value; _documentationGuidelineMessages5C = v24;
+                var v25 = _documentationGuidelineMessages8Y; v25.Clean = value; _documentationGuidelineMessages8Y = v25;
+                var v26 = _documentationGuidelineMessagesCN; v26.Clean = value; _documentationGuidelineMessagesCN = v26;
+                var v27 = _documentationGuidelineMessagesCP; v27.Clean = value; _documentationGuidelineMessagesCP = v27;
+                var v28 = _documentationGuidelineMessagesCV; v28.Clean = value; _documentationGuidelineMessagesCV = v28;
+                var v29 = _documentationGuidelineMessagesCY; v29.Clean = value; _documentationGuidelineMessagesCY = v29;
+                var v30 = _documentationGuidelineMessagesCZ; v30.Clean = value; _documentationGuidelineMessagesCZ = v30;
+                var v31 = _documentationGuidelineMessagesDP; v31.Clean = value; _documentationGuidelineMessagesDP = v31;
+                var v32 = _documentationGuidelineMessagesDZ; v32.Clean = value; _documentationGuidelineMessagesDZ = v32;
+                var v33 = _documentationGuidelineMessagesE5; v33.Clean = value; _documentationGuidelineMessagesE5 = v33;
+                var v34 = _documentationGuidelineMessagesIM; v34.Clean = value; _documentationGuidelineMessagesIM = v34;
+                var v35 = _documentationGuidelineMessagesIQ; v35.Clean = value; _documentationGuidelineMessagesIQ = v35;
+                var v36 = _documentationGuidelineMessagesJF; v36.Clean = value; _documentationGuidelineMessagesJF = v36;
+                var v37 = _documentationGuidelineMessagesQJ; v37.Clean = value; _documentationGuidelineMessagesQJ = v37;
+                var v38 = _documentationGuidelineMessagesQN; v38.Clean = value; _documentationGuidelineMessagesQN = v38;
+                var v39 = _documentationGuidelineMessagesQQ; v39.Clean = value; _documentationGuidelineMessagesQQ = v39;
+                var v40 = _documentationGuidelineMessagesQS; v40.Clean = value; _documentationGuidelineMessagesQS = v40;
+                var v41 = _documentationGuidelineMessagesU7; v41.Clean = value; _documentationGuidelineMessagesU7 = v41;
+                var v42 = _documentationGuidelineMessagesX1; v42.Clean = value; _documentationGuidelineMessagesX1 = v42;
+                var v43 = _documentationGuidelineMessagesX3; v43.Clean = value; _documentationGuidelineMessagesX3 = v43;
+                var v44 = _documentationGuidelineMessagesX5; v44.Clean = value; _documentationGuidelineMessagesX5 = v44;
+                var v45 = _documentationGuidelineMessagesX7; v45.Clean = value; _documentationGuidelineMessagesX7 = v45;
+                var v46 = _documentationGuidelineMessagesXA; v46.Clean = value; _documentationGuidelineMessagesXA = v46;
+                var v47 = _documentationGuidelineMessagesXM; v47.Clean = value; _documentationGuidelineMessagesXM = v47;
+                var v48 = _documentationGuidelineMessagesXP; v48.Clean = value; _documentationGuidelineMessagesXP = v48;
+                var v49 = _documentationGuidelineMessagesXR; v49.Clean = value; _documentationGuidelineMessagesXR = v49;
+                var v50 = _documentationGuidelineMessagesXT; v50.Clean = value; _documentationGuidelineMessagesXT = v50;
+                var v51 = _documentationGuidelineMessagesY8; v51.Clean = value; _documentationGuidelineMessagesY8 = v51;
+                var v52 = _documentationGuidelineMessagesYG; v52.Clean = value; _documentationGuidelineMessagesYG = v52;
+                var v53 = _documentationGuidelineMessagesYJ; v53.Clean = value; _documentationGuidelineMessagesYJ = v53;
+                var v54 = _documentationGuidelineMessagesYY; v54.Clean = value; _documentationGuidelineMessagesYY = v54;
+                var v55 = _documentationGuidelineMessagesYZ; v55.Clean = value; _documentationGuidelineMessagesYZ = v55;
+                var v56 = _eligibleNonStandardToStandard; v56.Clean = value; _eligibleNonStandardToStandard = v56;
+                var v57 = _financeChargeFees; v57.Clean = value; _financeChargeFees = v57;
+                var v58 = _firstChangeRecase; v58.Clean = value; _firstChangeRecase = v58;
+                var v59 = _firstPmtDateAfterRecast; v59.Clean = value; _firstPmtDateAfterRecast = v59;
+                var v60 = _fullPaymentAfterInterestOnly; v60.Clean = value; _fullPaymentAfterInterestOnly = v60;
+                var v61 = _fullyARMPaymentAfterNegAm; v61.Clean = value; _fullyARMPaymentAfterNegAm = v61;
+                var v62 = _fullyIndexRateHousingRatio; v62.Clean = value; _fullyIndexRateHousingRatio = v62;
+                var v63 = _fullyIndexRateMaxTotalPayment; v63.Clean = value; _fullyIndexRateMaxTotalPayment = v63;
+                var v64 = _fullyIndexRateMonthlyPayment; v64.Clean = value; _fullyIndexRateMonthlyPayment = v64;
+                var v65 = _fullyIndexRateTotalDebtRatio; v65.Clean = value; _fullyIndexRateTotalDebtRatio = v65;
+                var v66 = _generalATR_Status_Alimony; v66.Clean = value; _generalATR_Status_Alimony = v66;
+                var v67 = _generalATR_Status_Assets; v67.Clean = value; _generalATR_Status_Assets = v67;
+                var v68 = _generalATR_Status_ChildSupport; v68.Clean = value; _generalATR_Status_ChildSupport = v68;
+                var v69 = _generalATR_Status_CoveredLoan; v69.Clean = value; _generalATR_Status_CoveredLoan = v69;
+                var v70 = _generalATR_Status_CreditHistory; v70.Clean = value; _generalATR_Status_CreditHistory = v70;
+                var v71 = _generalATR_Status_DebtObligations; v71.Clean = value; _generalATR_Status_DebtObligations = v71;
+                var v72 = _generalATR_Status_DTI; v72.Clean = value; _generalATR_Status_DTI = v72;
+                var v73 = _generalATR_Status_Employment; v73.Clean = value; _generalATR_Status_Employment = v73;
+                var v74 = _generalATR_Status_Income; v74.Clean = value; _generalATR_Status_Income = v74;
+                var v75 = _generalATR_Status_MtgRelatedObligations; v75.Clean = value; _generalATR_Status_MtgRelatedObligations = v75;
+                var v76 = _generalATR_Status_Overall; v76.Clean = value; _generalATR_Status_Overall = v76;
+                var v77 = _generalATR_Status_ResidualIncome; v77.Clean = value; _generalATR_Status_ResidualIncome = v77;
+                var v78 = _generalATR_Status_SimultaneousLoan; v78.Clean = value; _generalATR_Status_SimultaneousLoan = v78;
+                var v79 = _gSEAgencyQM_CalculatedThreshold; v79.Clean = value; _gSEAgencyQM_CalculatedThreshold = v79;
+                var v80 = _gSEAgencyQM_Status_Alimony; v80.Clean = value; _gSEAgencyQM_Status_Alimony = v80;
+                var v81 = _gSEAgencyQM_Status_Assets; v81.Clean = value; _gSEAgencyQM_Status_Assets = v81;
+                var v82 = _gSEAgencyQM_Status_BalloonPayment; v82.Clean = value; _gSEAgencyQM_Status_BalloonPayment = v82;
+                var v83 = _gSEAgencyQM_Status_ChildSupport; v83.Clean = value; _gSEAgencyQM_Status_ChildSupport = v83;
+                var v84 = _gSEAgencyQM_Status_CoveredLoan; v84.Clean = value; _gSEAgencyQM_Status_CoveredLoan = v84;
+                var v85 = _gSEAgencyQM_Status_CreditHistory; v85.Clean = value; _gSEAgencyQM_Status_CreditHistory = v85;
+                var v86 = _gSEAgencyQM_Status_DebtObligations; v86.Clean = value; _gSEAgencyQM_Status_DebtObligations = v86;
+                var v87 = _gSEAgencyQM_Status_DTI; v87.Clean = value; _gSEAgencyQM_Status_DTI = v87;
+                var v88 = _gSEAgencyQM_Status_Employment; v88.Clean = value; _gSEAgencyQM_Status_Employment = v88;
+                var v89 = _gSEAgencyQM_Status_Income; v89.Clean = value; _gSEAgencyQM_Status_Income = v89;
+                var v90 = _gSEAgencyQM_Status_InterestOnly; v90.Clean = value; _gSEAgencyQM_Status_InterestOnly = v90;
+                var v91 = _gSEAgencyQM_Status_LoanTerm; v91.Clean = value; _gSEAgencyQM_Status_LoanTerm = v91;
+                var v92 = _gSEAgencyQM_Status_MtgRelatedObligations; v92.Clean = value; _gSEAgencyQM_Status_MtgRelatedObligations = v92;
+                var v93 = _gSEAgencyQM_Status_NegativeAmortization; v93.Clean = value; _gSEAgencyQM_Status_NegativeAmortization = v93;
+                var v94 = _gSEAgencyQM_Status_Overall; v94.Clean = value; _gSEAgencyQM_Status_Overall = v94;
+                var v95 = _gSEAgencyQM_Status_PointsFeesLimit; v95.Clean = value; _gSEAgencyQM_Status_PointsFeesLimit = v95;
+                var v96 = _gSEAgencyQM_Status_PrepaymentPenalty; v96.Clean = value; _gSEAgencyQM_Status_PrepaymentPenalty = v96;
+                var v97 = _gSEAgencyQM_Status_ResidualIncome; v97.Clean = value; _gSEAgencyQM_Status_ResidualIncome = v97;
+                var v98 = _gSEAgencyQM_Status_SafeHarborEligibility; v98.Clean = value; _gSEAgencyQM_Status_SafeHarborEligibility = v98;
+                var v99 = _gSEAgencyQM_Status_SimultaneousLoan; v99.Clean = value; _gSEAgencyQM_Status_SimultaneousLoan = v99;
+                var v100 = _has30DayLatePayment; v100.Clean = value; _has30DayLatePayment = v100;
+                var v101 = _id; v101.Clean = value; _id = v101;
+                var v102 = _initialMaxTotalPayment; v102.Clean = value; _initialMaxTotalPayment = v102;
+                var v103 = _initialRateHousingRatio; v103.Clean = value; _initialRateHousingRatio = v103;
+                var v104 = _initialRateMonthlyPayment; v104.Clean = value; _initialRateMonthlyPayment = v104;
+                var v105 = _initialRateTotalDebtRatio; v105.Clean = value; _initialRateTotalDebtRatio = v105;
+                var v106 = _interestOnlyMonths; v106.Clean = value; _interestOnlyMonths = v106;
+                var v107 = _interestOnlyRecastDate; v107.Clean = value; _interestOnlyRecastDate = v107;
+                var v108 = _isConsumerLiklyDefault; v108.Clean = value; _isConsumerLiklyDefault = v108;
+                var v109 = _isEligibleForSafeHarbor; v109.Clean = value; _isEligibleForSafeHarbor = v109;
+                var v110 = _isEvaluatedAlimonyObligations; v110.Clean = value; _isEvaluatedAlimonyObligations = v110;
+                var v111 = _isEvaluatedChildSupportObligations; v111.Clean = value; _isEvaluatedChildSupportObligations = v111;
+                var v112 = _isEvaluatedCreditHistory; v112.Clean = value; _isEvaluatedCreditHistory = v112;
+                var v113 = _isEvaluatedCurrentEmploymentStatus; v113.Clean = value; _isEvaluatedCurrentEmploymentStatus = v113;
+                var v114 = _isEvaluatedCurrentExpectedAssets; v114.Clean = value; _isEvaluatedCurrentExpectedAssets = v114;
+                var v115 = _isEvaluatedCurrentExpectedIncome; v115.Clean = value; _isEvaluatedCurrentExpectedIncome = v115;
+                var v116 = _isEvaluatedDebtObligations; v116.Clean = value; _isEvaluatedDebtObligations = v116;
+                var v117 = _isEvaluatedDebtToIncomeRatio; v117.Clean = value; _isEvaluatedDebtToIncomeRatio = v117;
+                var v118 = _isEvaluatedMonthlyCoveredLoanPayment; v118.Clean = value; _isEvaluatedMonthlyCoveredLoanPayment = v118;
+                var v119 = _isEvaluatedMonthlyMortgageRelatedObligations; v119.Clean = value; _isEvaluatedMonthlyMortgageRelatedObligations = v119;
+                var v120 = _isEvaluatedMonthlySimultaneousLoanPayment; v120.Clean = value; _isEvaluatedMonthlySimultaneousLoanPayment = v120;
+                var v121 = _isEvaluatedResidualIncome; v121.Clean = value; _isEvaluatedResidualIncome = v121;
+                var v122 = _isHigherPricedLoan; v122.Clean = value; _isHigherPricedLoan = v122;
+                var v123 = _loanProcessingInformationD4; v123.Clean = value; _loanProcessingInformationD4 = v123;
+                var v124 = _loanProcessingInformationGO; v124.Clean = value; _loanProcessingInformationGO = v124;
+                var v125 = _loanProcessingInformationHA; v125.Clean = value; _loanProcessingInformationHA = v125;
+                var v126 = _loanProcessingInformationLE; v126.Clean = value; _loanProcessingInformationLE = v126;
+                var v127 = _loanProcessingInformationLF; v127.Clean = value; _loanProcessingInformationLF = v127;
+                var v128 = _loanProcessingInformationMA; v128.Clean = value; _loanProcessingInformationMA = v128;
+                var v129 = _loanProgram; v129.Clean = value; _loanProgram = v129;
+                var v130 = _loanProgramDescription; v130.Clean = value; _loanProgramDescription = v130;
+                var v131 = _loanRateFixedin5Years; v131.Clean = value; _loanRateFixedin5Years = v131;
+                var v132 = _lOBrokerCompensationAmount; v132.Clean = value; _lOBrokerCompensationAmount = v132;
+                var v133 = _max5YrsHousingRatio; v133.Clean = value; _max5YrsHousingRatio = v133;
+                var v134 = _max5YrsPrincipleAndInterest; v134.Clean = value; _max5YrsPrincipleAndInterest = v134;
+                var v135 = _max5YrsTotalDebtRatio; v135.Clean = value; _max5YrsTotalDebtRatio = v135;
+                var v136 = _max5YrsTotalPayment; v136.Clean = value; _max5YrsTotalPayment = v136;
+                var v137 = _maxPrepaymentPenaltyFees; v137.Clean = value; _maxPrepaymentPenaltyFees = v137;
+                var v138 = _negAmRecastDate; v138.Clean = value; _negAmRecastDate = v138;
+                var v139 = _paymentDecreasedBy10Percent; v139.Clean = value; _paymentDecreasedBy10Percent = v139;
+                var v140 = _pointsFeesThresholdMet; v140.Clean = value; _pointsFeesThresholdMet = v140;
+                var v141 = _prepaymentPenaltyPayoffFees; v141.Clean = value; _prepaymentPenaltyPayoffFees = v141;
+                var v142 = _prepayPenaltyPercentage; v142.Clean = value; _prepayPenaltyPercentage = v142;
+                var v143 = _preventConsumersDefault; v143.Clean = value; _preventConsumersDefault = v143;
+                var v144 = _principalBalanceIncreased; v144.Clean = value; _principalBalanceIncreased = v144;
+                var v145 = _principalHasDeferred; v145.Clean = value; _principalHasDeferred = v145;
+                var v146 = _qMLoanType; v146.Clean = value; _qMLoanType = v146;
+                var v147 = _rateReductionBasisPoints; v147.Clean = value; _rateReductionBasisPoints = v147;
+                var v148 = _rateReductionDiscountPoints; v148.Clean = value; _rateReductionDiscountPoints = v148;
+                var v149 = _rateReductionMaxBonaFideDiscountPoint; v149.Clean = value; _rateReductionMaxBonaFideDiscountPoint = v149;
+                var v150 = _realEstateFees; v150.Clean = value; _realEstateFees = v150;
+                var v151 = _recastDifferencePayment; v151.Clean = value; _recastDifferencePayment = v151;
+                var v152 = _regZTotalLoanAmount; v152.Clean = value; _regZTotalLoanAmount = v152;
+                var v153 = _requiredServicesLenderSelectedAmt; v153.Clean = value; _requiredServicesLenderSelectedAmt = v153;
+                var v154 = _smallCreditorQM_CalculatedThreshold; v154.Clean = value; _smallCreditorQM_CalculatedThreshold = v154;
+                var v155 = _smallCreditorQM_Status_Alimony; v155.Clean = value; _smallCreditorQM_Status_Alimony = v155;
+                var v156 = _smallCreditorQM_Status_Assets; v156.Clean = value; _smallCreditorQM_Status_Assets = v156;
+                var v157 = _smallCreditorQM_Status_BalloonPayment; v157.Clean = value; _smallCreditorQM_Status_BalloonPayment = v157;
+                var v158 = _smallCreditorQM_Status_ChildSupport; v158.Clean = value; _smallCreditorQM_Status_ChildSupport = v158;
+                var v159 = _smallCreditorQM_Status_CoveredLoan; v159.Clean = value; _smallCreditorQM_Status_CoveredLoan = v159;
+                var v160 = _smallCreditorQM_Status_DebtObligations; v160.Clean = value; _smallCreditorQM_Status_DebtObligations = v160;
+                var v161 = _smallCreditorQM_Status_DTI; v161.Clean = value; _smallCreditorQM_Status_DTI = v161;
+                var v162 = _smallCreditorQM_Status_Income; v162.Clean = value; _smallCreditorQM_Status_Income = v162;
+                var v163 = _smallCreditorQM_Status_InterestOnly; v163.Clean = value; _smallCreditorQM_Status_InterestOnly = v163;
+                var v164 = _smallCreditorQM_Status_LoanTerm; v164.Clean = value; _smallCreditorQM_Status_LoanTerm = v164;
+                var v165 = _smallCreditorQM_Status_MtgRelatedObligations; v165.Clean = value; _smallCreditorQM_Status_MtgRelatedObligations = v165;
+                var v166 = _smallCreditorQM_Status_NegativeAmortization; v166.Clean = value; _smallCreditorQM_Status_NegativeAmortization = v166;
+                var v167 = _smallCreditorQM_Status_Overall; v167.Clean = value; _smallCreditorQM_Status_Overall = v167;
+                var v168 = _smallCreditorQM_Status_PointsFeesLimit; v168.Clean = value; _smallCreditorQM_Status_PointsFeesLimit = v168;
+                var v169 = _smallCreditorQM_Status_PrepaymentPenalty; v169.Clean = value; _smallCreditorQM_Status_PrepaymentPenalty = v169;
+                var v170 = _smallCreditorQM_Status_ResidualIncome; v170.Clean = value; _smallCreditorQM_Status_ResidualIncome = v170;
+                var v171 = _smallCreditorQM_Status_SafeHarborEligibility; v171.Clean = value; _smallCreditorQM_Status_SafeHarborEligibility = v171;
+                var v172 = _standardQM_CalculatedThreshold; v172.Clean = value; _standardQM_CalculatedThreshold = v172;
+                var v173 = _standardQM_Status_Alimony; v173.Clean = value; _standardQM_Status_Alimony = v173;
+                var v174 = _standardQM_Status_Assets; v174.Clean = value; _standardQM_Status_Assets = v174;
+                var v175 = _standardQM_Status_BalloonPayment; v175.Clean = value; _standardQM_Status_BalloonPayment = v175;
+                var v176 = _standardQM_Status_ChildSupport; v176.Clean = value; _standardQM_Status_ChildSupport = v176;
+                var v177 = _standardQM_Status_CoveredLoan; v177.Clean = value; _standardQM_Status_CoveredLoan = v177;
+                var v178 = _standardQM_Status_CreditHistory; v178.Clean = value; _standardQM_Status_CreditHistory = v178;
+                var v179 = _standardQM_Status_DebtObligations; v179.Clean = value; _standardQM_Status_DebtObligations = v179;
+                var v180 = _standardQM_Status_DTI; v180.Clean = value; _standardQM_Status_DTI = v180;
+                var v181 = _standardQM_Status_Employment; v181.Clean = value; _standardQM_Status_Employment = v181;
+                var v182 = _standardQM_Status_Income; v182.Clean = value; _standardQM_Status_Income = v182;
+                var v183 = _standardQM_Status_InterestOnly; v183.Clean = value; _standardQM_Status_InterestOnly = v183;
+                var v184 = _standardQM_Status_LoanTerm; v184.Clean = value; _standardQM_Status_LoanTerm = v184;
+                var v185 = _standardQM_Status_MtgRelatedObligations; v185.Clean = value; _standardQM_Status_MtgRelatedObligations = v185;
+                var v186 = _standardQM_Status_NegativeAmortization; v186.Clean = value; _standardQM_Status_NegativeAmortization = v186;
+                var v187 = _standardQM_Status_Overall; v187.Clean = value; _standardQM_Status_Overall = v187;
+                var v188 = _standardQM_Status_PointsFeesLimit; v188.Clean = value; _standardQM_Status_PointsFeesLimit = v188;
+                var v189 = _standardQM_Status_PrepaymentPenalty; v189.Clean = value; _standardQM_Status_PrepaymentPenalty = v189;
+                var v190 = _standardQM_Status_ResidualIncome; v190.Clean = value; _standardQM_Status_ResidualIncome = v190;
+                var v191 = _standardQM_Status_SafeHarborEligibility; v191.Clean = value; _standardQM_Status_SafeHarborEligibility = v191;
+                var v192 = _standardQM_Status_SimultaneousLoan; v192.Clean = value; _standardQM_Status_SimultaneousLoan = v192;
+                var v193 = _startingAdjustedRateMaxBonaFideDiscountPoint; v193.Clean = value; _startingAdjustedRateMaxBonaFideDiscountPoint = v193;
+                var v194 = _status_CreditHistory; v194.Clean = value; _status_CreditHistory = v194;
+                var v195 = _status_SimultaneousLoan; v195.Clean = value; _status_SimultaneousLoan = v195;
+                var v196 = _thresholdExceedsQM; v196.Clean = value; _thresholdExceedsQM = v196;
+                var v197 = _titleServicesLenderTitleinsuranceFee; v197.Clean = value; _titleServicesLenderTitleinsuranceFee = v197;
+                var v198 = _totalCoMortgagorIncome; v198.Clean = value; _totalCoMortgagorIncome = v198;
+                var v199 = _totalIncome; v199.Clean = value; _totalIncome = v199;
+                var v200 = _totalPointsFeesSec32Percent; v200.Clean = value; _totalPointsFeesSec32Percent = v200;
+                var v201 = _transactionExemptFromRegZ; v201.Clean = value; _transactionExemptFromRegZ = v201;
+                var v202 = _unitCount; v202.Clean = value; _unitCount = v202;
+                var v203 = _upfrontPMIFees; v203.Clean = value; _upfrontPMIFees = v203;
+                var v204 = _withOriginalCreditor; v204.Clean = value; _withOriginalCreditor = v204;
+                var v205 = _writtenApplicationDate; v205.Clean = value; _writtenApplicationDate = v205;
                 _settingClean = 0;
             }
         }

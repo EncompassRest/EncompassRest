@@ -128,6 +128,8 @@ namespace EncompassRest.Loans
         public string Comments { get { return _comments; } set { _comments = value; } }
         private Value<string> _commitment;
         public string Commitment { get { return _commitment; } set { _commitment = value; } }
+        private Value<string> _commitmentType;
+        public string CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
         private Value<decimal?> _compGainLossPercentage;
         public decimal? CompGainLossPercentage { get { return _compGainLossPercentage; } set { _compGainLossPercentage = value; } }
         private Value<decimal?> _compGainLossPrice;
@@ -236,6 +238,44 @@ namespace EncompassRest.Loans
         public string CorporateApprovedby { get { return _corporateApprovedby; } set { _corporateApprovedby = value; } }
         private Value<decimal?> _corporatePrice;
         public decimal? CorporatePrice { get { return _corporatePrice; } set { _corporatePrice = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowAdditionalEscrow;
+        public decimal? CorrespondentAdditionalEscrowAdditionalEscrow { get { return _correspondentAdditionalEscrowAdditionalEscrow; } set { _correspondentAdditionalEscrowAdditionalEscrow = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowAmount1007;
+        public decimal? CorrespondentAdditionalEscrowAmount1007 { get { return _correspondentAdditionalEscrowAmount1007; } set { _correspondentAdditionalEscrowAmount1007 = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowAmount1008;
+        public decimal? CorrespondentAdditionalEscrowAmount1008 { get { return _correspondentAdditionalEscrowAmount1008; } set { _correspondentAdditionalEscrowAmount1008 = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowAmount1009;
+        public decimal? CorrespondentAdditionalEscrowAmount1009 { get { return _correspondentAdditionalEscrowAmount1009; } set { _correspondentAdditionalEscrowAmount1009 = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowCityPropertyTax;
+        public decimal? CorrespondentAdditionalEscrowCityPropertyTax { get { return _correspondentAdditionalEscrowCityPropertyTax; } set { _correspondentAdditionalEscrowCityPropertyTax = value; } }
+        private Value<string> _correspondentAdditionalEscrowDescription1007;
+        public string CorrespondentAdditionalEscrowDescription1007 { get { return _correspondentAdditionalEscrowDescription1007; } set { _correspondentAdditionalEscrowDescription1007 = value; } }
+        private Value<string> _correspondentAdditionalEscrowDescription1008;
+        public string CorrespondentAdditionalEscrowDescription1008 { get { return _correspondentAdditionalEscrowDescription1008; } set { _correspondentAdditionalEscrowDescription1008 = value; } }
+        private Value<string> _correspondentAdditionalEscrowDescription1009;
+        public string CorrespondentAdditionalEscrowDescription1009 { get { return _correspondentAdditionalEscrowDescription1009; } set { _correspondentAdditionalEscrowDescription1009 = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowFloodInsurance;
+        public decimal? CorrespondentAdditionalEscrowFloodInsurance { get { return _correspondentAdditionalEscrowFloodInsurance; } set { _correspondentAdditionalEscrowFloodInsurance = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowHomeInsurance;
+        public decimal? CorrespondentAdditionalEscrowHomeInsurance { get { return _correspondentAdditionalEscrowHomeInsurance; } set { _correspondentAdditionalEscrowHomeInsurance = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowMIMIP;
+        public decimal? CorrespondentAdditionalEscrowMIMIP { get { return _correspondentAdditionalEscrowMIMIP; } set { _correspondentAdditionalEscrowMIMIP = value; } }
+        private Value<int?> _correspondentAdditionalEscrowNumOfPayments;
+        public int? CorrespondentAdditionalEscrowNumOfPayments { get { return _correspondentAdditionalEscrowNumOfPayments; } set { _correspondentAdditionalEscrowNumOfPayments = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowOption1Amount;
+        public decimal? CorrespondentAdditionalEscrowOption1Amount { get { return _correspondentAdditionalEscrowOption1Amount; } set { _correspondentAdditionalEscrowOption1Amount = value; } }
+        private Value<string> _correspondentAdditionalEscrowOption1Desc;
+        public string CorrespondentAdditionalEscrowOption1Desc { get { return _correspondentAdditionalEscrowOption1Desc; } set { _correspondentAdditionalEscrowOption1Desc = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowOption2Amount;
+        public decimal? CorrespondentAdditionalEscrowOption2Amount { get { return _correspondentAdditionalEscrowOption2Amount; } set { _correspondentAdditionalEscrowOption2Amount = value; } }
+        private Value<string> _correspondentAdditionalEscrowOption2Desc;
+        public string CorrespondentAdditionalEscrowOption2Desc { get { return _correspondentAdditionalEscrowOption2Desc; } set { _correspondentAdditionalEscrowOption2Desc = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowPropertyTax;
+        public decimal? CorrespondentAdditionalEscrowPropertyTax { get { return _correspondentAdditionalEscrowPropertyTax; } set { _correspondentAdditionalEscrowPropertyTax = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowSumOfPayments;
+        public decimal? CorrespondentAdditionalEscrowSumOfPayments { get { return _correspondentAdditionalEscrowSumOfPayments; } set { _correspondentAdditionalEscrowSumOfPayments = value; } }
+        private Value<decimal?> _correspondentAdditionalEscrowUSDAAnnualFee;
+        public decimal? CorrespondentAdditionalEscrowUSDAAnnualFee { get { return _correspondentAdditionalEscrowUSDAAnnualFee; } set { _correspondentAdditionalEscrowUSDAAnnualFee = value; } }
         private Value<decimal?> _correspondentAdditionalLineAmount1;
         public decimal? CorrespondentAdditionalLineAmount1 { get { return _correspondentAdditionalLineAmount1; } set { _correspondentAdditionalLineAmount1 = value; } }
         private Value<decimal?> _correspondentAdditionalLineAmount10;
@@ -310,10 +350,82 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentCurrentPrincipal { get { return _correspondentCurrentPrincipal; } set { _correspondentCurrentPrincipal = value; } }
         private Value<DateTime?> _correspondentDate;
         public DateTime? CorrespondentDate { get { return _correspondentDate; } set { _correspondentDate = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsAmount1007;
+        public decimal? CorrespondentEscrowDisbursementsAmount1007 { get { return _correspondentEscrowDisbursementsAmount1007; } set { _correspondentEscrowDisbursementsAmount1007 = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsAmount1008;
+        public decimal? CorrespondentEscrowDisbursementsAmount1008 { get { return _correspondentEscrowDisbursementsAmount1008; } set { _correspondentEscrowDisbursementsAmount1008 = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsAmount1009;
+        public decimal? CorrespondentEscrowDisbursementsAmount1009 { get { return _correspondentEscrowDisbursementsAmount1009; } set { _correspondentEscrowDisbursementsAmount1009 = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsCityPropertyTax;
+        public decimal? CorrespondentEscrowDisbursementsCityPropertyTax { get { return _correspondentEscrowDisbursementsCityPropertyTax; } set { _correspondentEscrowDisbursementsCityPropertyTax = value; } }
+        private Value<string> _correspondentEscrowDisbursementsDescription1007;
+        public string CorrespondentEscrowDisbursementsDescription1007 { get { return _correspondentEscrowDisbursementsDescription1007; } set { _correspondentEscrowDisbursementsDescription1007 = value; } }
+        private Value<string> _correspondentEscrowDisbursementsDescription1008;
+        public string CorrespondentEscrowDisbursementsDescription1008 { get { return _correspondentEscrowDisbursementsDescription1008; } set { _correspondentEscrowDisbursementsDescription1008 = value; } }
+        private Value<string> _correspondentEscrowDisbursementsDescription1009;
+        public string CorrespondentEscrowDisbursementsDescription1009 { get { return _correspondentEscrowDisbursementsDescription1009; } set { _correspondentEscrowDisbursementsDescription1009 = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsEscrowsToBePaidBySeller;
+        public decimal? CorrespondentEscrowDisbursementsEscrowsToBePaidBySeller { get { return _correspondentEscrowDisbursementsEscrowsToBePaidBySeller; } set { _correspondentEscrowDisbursementsEscrowsToBePaidBySeller = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsEsrowFundedByInvestor;
+        public decimal? CorrespondentEscrowDisbursementsEsrowFundedByInvestor { get { return _correspondentEscrowDisbursementsEsrowFundedByInvestor; } set { _correspondentEscrowDisbursementsEsrowFundedByInvestor = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsFloodInsurance;
+        public decimal? CorrespondentEscrowDisbursementsFloodInsurance { get { return _correspondentEscrowDisbursementsFloodInsurance; } set { _correspondentEscrowDisbursementsFloodInsurance = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsHomeInsurance;
+        public decimal? CorrespondentEscrowDisbursementsHomeInsurance { get { return _correspondentEscrowDisbursementsHomeInsurance; } set { _correspondentEscrowDisbursementsHomeInsurance = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsMortgageInsurance;
+        public decimal? CorrespondentEscrowDisbursementsMortgageInsurance { get { return _correspondentEscrowDisbursementsMortgageInsurance; } set { _correspondentEscrowDisbursementsMortgageInsurance = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsOption1Amount;
+        public decimal? CorrespondentEscrowDisbursementsOption1Amount { get { return _correspondentEscrowDisbursementsOption1Amount; } set { _correspondentEscrowDisbursementsOption1Amount = value; } }
+        private Value<string> _correspondentEscrowDisbursementsOption1Desc;
+        public string CorrespondentEscrowDisbursementsOption1Desc { get { return _correspondentEscrowDisbursementsOption1Desc; } set { _correspondentEscrowDisbursementsOption1Desc = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsOption2Amount;
+        public decimal? CorrespondentEscrowDisbursementsOption2Amount { get { return _correspondentEscrowDisbursementsOption2Amount; } set { _correspondentEscrowDisbursementsOption2Amount = value; } }
+        private Value<string> _correspondentEscrowDisbursementsOption2Desc;
+        public string CorrespondentEscrowDisbursementsOption2Desc { get { return _correspondentEscrowDisbursementsOption2Desc; } set { _correspondentEscrowDisbursementsOption2Desc = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsPropertyTax;
+        public decimal? CorrespondentEscrowDisbursementsPropertyTax { get { return _correspondentEscrowDisbursementsPropertyTax; } set { _correspondentEscrowDisbursementsPropertyTax = value; } }
+        private Value<decimal?> _correspondentEscrowDisbursementsUSDAAnnualFee;
+        public decimal? CorrespondentEscrowDisbursementsUSDAAnnualFee { get { return _correspondentEscrowDisbursementsUSDAAnnualFee; } set { _correspondentEscrowDisbursementsUSDAAnnualFee = value; } }
         private Value<decimal?> _correspondentFinalBuyAmount;
         public decimal? CorrespondentFinalBuyAmount { get { return _correspondentFinalBuyAmount; } set { _correspondentFinalBuyAmount = value; } }
         private Value<decimal?> _correspondentFinalBuyPrice;
         public decimal? CorrespondentFinalBuyPrice { get { return _correspondentFinalBuyPrice; } set { _correspondentFinalBuyPrice = value; } }
+        private Value<decimal?> _correspondentFinalCDAggAdjAmount;
+        public decimal? CorrespondentFinalCDAggAdjAmount { get { return _correspondentFinalCDAggAdjAmount; } set { _correspondentFinalCDAggAdjAmount = value; } }
+        private Value<decimal?> _correspondentFinalCDAmount1007;
+        public decimal? CorrespondentFinalCDAmount1007 { get { return _correspondentFinalCDAmount1007; } set { _correspondentFinalCDAmount1007 = value; } }
+        private Value<decimal?> _correspondentFinalCDAmount1008;
+        public decimal? CorrespondentFinalCDAmount1008 { get { return _correspondentFinalCDAmount1008; } set { _correspondentFinalCDAmount1008 = value; } }
+        private Value<decimal?> _correspondentFinalCDAmount1009;
+        public decimal? CorrespondentFinalCDAmount1009 { get { return _correspondentFinalCDAmount1009; } set { _correspondentFinalCDAmount1009 = value; } }
+        private Value<decimal?> _correspondentFinalCDCityPropertyTax;
+        public decimal? CorrespondentFinalCDCityPropertyTax { get { return _correspondentFinalCDCityPropertyTax; } set { _correspondentFinalCDCityPropertyTax = value; } }
+        private Value<string> _correspondentFinalCDDescription1007;
+        public string CorrespondentFinalCDDescription1007 { get { return _correspondentFinalCDDescription1007; } set { _correspondentFinalCDDescription1007 = value; } }
+        private Value<string> _correspondentFinalCDDescription1008;
+        public string CorrespondentFinalCDDescription1008 { get { return _correspondentFinalCDDescription1008; } set { _correspondentFinalCDDescription1008 = value; } }
+        private Value<string> _correspondentFinalCDDescription1009;
+        public string CorrespondentFinalCDDescription1009 { get { return _correspondentFinalCDDescription1009; } set { _correspondentFinalCDDescription1009 = value; } }
+        private Value<decimal?> _correspondentFinalCDFloodInsurance;
+        public decimal? CorrespondentFinalCDFloodInsurance { get { return _correspondentFinalCDFloodInsurance; } set { _correspondentFinalCDFloodInsurance = value; } }
+        private Value<decimal?> _correspondentFinalCDHomeInsurance;
+        public decimal? CorrespondentFinalCDHomeInsurance { get { return _correspondentFinalCDHomeInsurance; } set { _correspondentFinalCDHomeInsurance = value; } }
+        private Value<decimal?> _correspondentFinalCDMortgageInsurance;
+        public decimal? CorrespondentFinalCDMortgageInsurance { get { return _correspondentFinalCDMortgageInsurance; } set { _correspondentFinalCDMortgageInsurance = value; } }
+        private Value<decimal?> _correspondentFinalCDOption1Amount;
+        public decimal? CorrespondentFinalCDOption1Amount { get { return _correspondentFinalCDOption1Amount; } set { _correspondentFinalCDOption1Amount = value; } }
+        private Value<string> _correspondentFinalCDOption1Desc;
+        public string CorrespondentFinalCDOption1Desc { get { return _correspondentFinalCDOption1Desc; } set { _correspondentFinalCDOption1Desc = value; } }
+        private Value<decimal?> _correspondentFinalCDOption2Amount;
+        public decimal? CorrespondentFinalCDOption2Amount { get { return _correspondentFinalCDOption2Amount; } set { _correspondentFinalCDOption2Amount = value; } }
+        private Value<string> _correspondentFinalCDOption2Desc;
+        public string CorrespondentFinalCDOption2Desc { get { return _correspondentFinalCDOption2Desc; } set { _correspondentFinalCDOption2Desc = value; } }
+        private Value<decimal?> _correspondentFinalCDPropertyTax;
+        public decimal? CorrespondentFinalCDPropertyTax { get { return _correspondentFinalCDPropertyTax; } set { _correspondentFinalCDPropertyTax = value; } }
+        private Value<decimal?> _correspondentFinalCDReservesCollectedAtClosing;
+        public decimal? CorrespondentFinalCDReservesCollectedAtClosing { get { return _correspondentFinalCDReservesCollectedAtClosing; } set { _correspondentFinalCDReservesCollectedAtClosing = value; } }
+        private Value<decimal?> _correspondentFinalCDUSDAAnnualFee;
+        public decimal? CorrespondentFinalCDUSDAAnnualFee { get { return _correspondentFinalCDUSDAAnnualFee; } set { _correspondentFinalCDUSDAAnnualFee = value; } }
         private Value<DateTime?> _correspondentFirstPaymentDate;
         public DateTime? CorrespondentFirstPaymentDate { get { return _correspondentFirstPaymentDate; } set { _correspondentFirstPaymentDate = value; } }
         private Value<decimal?> _correspondentImpounds;
@@ -328,6 +440,18 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentLateFeePriceAdjustment { get { return _correspondentLateFeePriceAdjustment; } set { _correspondentLateFeePriceAdjustment = value; } }
         private Value<DateTime?> _correspondentPaidToDate;
         public DateTime? CorrespondentPaidToDate { get { return _correspondentPaidToDate; } set { _correspondentPaidToDate = value; } }
+        private Value<DateTime?> _correspondentPaymentHistoryAnticipatedPurchaseDate;
+        public DateTime? CorrespondentPaymentHistoryAnticipatedPurchaseDate { get { return _correspondentPaymentHistoryAnticipatedPurchaseDate; } set { _correspondentPaymentHistoryAnticipatedPurchaseDate = value; } }
+        private Value<decimal?> _correspondentPaymentHistoryCalculatedPurchasedPrincipal;
+        public decimal? CorrespondentPaymentHistoryCalculatedPurchasedPrincipal { get { return _correspondentPaymentHistoryCalculatedPurchasedPrincipal; } set { _correspondentPaymentHistoryCalculatedPurchasedPrincipal = value; } }
+        private Value<DateTime?> _correspondentPaymentHistoryFirstBorrowerPaymentDueDate;
+        public DateTime? CorrespondentPaymentHistoryFirstBorrowerPaymentDueDate { get { return _correspondentPaymentHistoryFirstBorrowerPaymentDueDate; } set { _correspondentPaymentHistoryFirstBorrowerPaymentDueDate = value; } }
+        private Value<DateTime?> _correspondentPaymentHistoryFirstInvestorPaymentDate;
+        public DateTime? CorrespondentPaymentHistoryFirstInvestorPaymentDate { get { return _correspondentPaymentHistoryFirstInvestorPaymentDate; } set { _correspondentPaymentHistoryFirstInvestorPaymentDate = value; } }
+        private Value<DateTime?> _correspondentPaymentHistoryNoteDate;
+        public DateTime? CorrespondentPaymentHistoryNoteDate { get { return _correspondentPaymentHistoryNoteDate; } set { _correspondentPaymentHistoryNoteDate = value; } }
+        private Value<decimal?> _correspondentPaymentHistoryPricipalReduction;
+        public decimal? CorrespondentPaymentHistoryPricipalReduction { get { return _correspondentPaymentHistoryPricipalReduction; } set { _correspondentPaymentHistoryPricipalReduction = value; } }
         private Value<decimal?> _correspondentPurchasedPrincipal;
         public decimal? CorrespondentPurchasedPrincipal { get { return _correspondentPurchasedPrincipal; } set { _correspondentPurchasedPrincipal = value; } }
         private Value<string> _correspondentReconcilationComments;
@@ -336,6 +460,10 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentRemainingBuydownAmount { get { return _correspondentRemainingBuydownAmount; } set { _correspondentRemainingBuydownAmount = value; } }
         private Value<decimal?> _correspondentSRPAmount;
         public decimal? CorrespondentSRPAmount { get { return _correspondentSRPAmount; } set { _correspondentSRPAmount = value; } }
+        private Value<decimal?> _correspondentTotalBuyAmount;
+        public decimal? CorrespondentTotalBuyAmount { get { return _correspondentTotalBuyAmount; } set { _correspondentTotalBuyAmount = value; } }
+        private Value<decimal?> _correspondentTotalFees;
+        public decimal? CorrespondentTotalFees { get { return _correspondentTotalFees; } set { _correspondentTotalFees = value; } }
         private Value<string> _correspondentWarehouseBankABANum;
         public string CorrespondentWarehouseBankABANum { get { return _correspondentWarehouseBankABANum; } set { _correspondentWarehouseBankABANum = value; } }
         private Value<string> _correspondentWarehouseBankAcctNum;
@@ -376,6 +504,8 @@ namespace EncompassRest.Loans
         public bool? CorrespondentWarehouseBankTriPartyContractIndicator { get { return _correspondentWarehouseBankTriPartyContractIndicator; } set { _correspondentWarehouseBankTriPartyContractIndicator = value; } }
         private Value<bool?> _correspondentWarehouseBankUseDefaultContactIndicator;
         public bool? CorrespondentWarehouseBankUseDefaultContactIndicator { get { return _correspondentWarehouseBankUseDefaultContactIndicator; } set { _correspondentWarehouseBankUseDefaultContactIndicator = value; } }
+        private Value<string> _correspondentWarehouseBankWireConfirmationNumber;
+        public string CorrespondentWarehouseBankWireConfirmationNumber { get { return _correspondentWarehouseBankWireConfirmationNumber; } set { _correspondentWarehouseBankWireConfirmationNumber = value; } }
         private Value<bool?> _correspondentWarehouseBankWireInstructionsReceivedIndicator;
         public bool? CorrespondentWarehouseBankWireInstructionsReceivedIndicator { get { return _correspondentWarehouseBankWireInstructionsReceivedIndicator; } set { _correspondentWarehouseBankWireInstructionsReceivedIndicator = value; } }
         private Value<string> _correspondentWarehouseBankZip;
@@ -494,6 +624,8 @@ namespace EncompassRest.Loans
         public string ExtensionRequestPending { get { return _extensionRequestPending; } set { _extensionRequestPending = value; } }
         private Value<int?> _extensionSequenceNumber;
         public int? ExtensionSequenceNumber { get { return _extensionSequenceNumber; } set { _extensionSequenceNumber = value; } }
+        private Value<List<ExtraPayment>> _extraPayments;
+        public List<ExtraPayment> ExtraPayments { get { return _extraPayments; } set { _extraPayments = value; } }
         private Value<decimal?> _fHAUpfrontMIPremiumPercent;
         public decimal? FHAUpfrontMIPremiumPercent { get { return _fHAUpfrontMIPremiumPercent; } set { _fHAUpfrontMIPremiumPercent = value; } }
         private Value<int?> _financedNumberOfUnits;
@@ -842,6 +974,8 @@ namespace EncompassRest.Loans
         public decimal? SRP { get { return _sRP; } set { _sRP = value; } }
         private Value<decimal?> _sRPAmount;
         public decimal? SRPAmount { get { return _sRPAmount; } set { _sRPAmount = value; } }
+        private Value<decimal?> _sRPPaidOut;
+        public decimal? SRPPaidOut { get { return _sRPPaidOut; } set { _sRPPaidOut = value; } }
         private Value<string> _subjectPropertyCity;
         public string SubjectPropertyCity { get { return _subjectPropertyCity; } set { _subjectPropertyCity = value; } }
         private Value<bool?> _subjectPropertyCondotelIndicator;
@@ -939,6 +1073,7 @@ namespace EncompassRest.Loans
                     && _combinedLTV.Clean
                     && _comments.Clean
                     && _commitment.Clean
+                    && _commitmentType.Clean
                     && _compGainLossPercentage.Clean
                     && _compGainLossPrice.Clean
                     && _compGainLossTotalBuyPrice.Clean
@@ -993,6 +1128,25 @@ namespace EncompassRest.Loans
                     && _corporateApprovalDate.Clean
                     && _corporateApprovedby.Clean
                     && _corporatePrice.Clean
+                    && _correspondentAdditionalEscrowAdditionalEscrow.Clean
+                    && _correspondentAdditionalEscrowAmount1007.Clean
+                    && _correspondentAdditionalEscrowAmount1008.Clean
+                    && _correspondentAdditionalEscrowAmount1009.Clean
+                    && _correspondentAdditionalEscrowCityPropertyTax.Clean
+                    && _correspondentAdditionalEscrowDescription1007.Clean
+                    && _correspondentAdditionalEscrowDescription1008.Clean
+                    && _correspondentAdditionalEscrowDescription1009.Clean
+                    && _correspondentAdditionalEscrowFloodInsurance.Clean
+                    && _correspondentAdditionalEscrowHomeInsurance.Clean
+                    && _correspondentAdditionalEscrowMIMIP.Clean
+                    && _correspondentAdditionalEscrowNumOfPayments.Clean
+                    && _correspondentAdditionalEscrowOption1Amount.Clean
+                    && _correspondentAdditionalEscrowOption1Desc.Clean
+                    && _correspondentAdditionalEscrowOption2Amount.Clean
+                    && _correspondentAdditionalEscrowOption2Desc.Clean
+                    && _correspondentAdditionalEscrowPropertyTax.Clean
+                    && _correspondentAdditionalEscrowSumOfPayments.Clean
+                    && _correspondentAdditionalEscrowUSDAAnnualFee.Clean
                     && _correspondentAdditionalLineAmount1.Clean
                     && _correspondentAdditionalLineAmount10.Clean
                     && _correspondentAdditionalLineAmount11.Clean
@@ -1030,8 +1184,44 @@ namespace EncompassRest.Loans
                     && _correspondentCurrentImpounds.Clean
                     && _correspondentCurrentPrincipal.Clean
                     && _correspondentDate.Clean
+                    && _correspondentEscrowDisbursementsAmount1007.Clean
+                    && _correspondentEscrowDisbursementsAmount1008.Clean
+                    && _correspondentEscrowDisbursementsAmount1009.Clean
+                    && _correspondentEscrowDisbursementsCityPropertyTax.Clean
+                    && _correspondentEscrowDisbursementsDescription1007.Clean
+                    && _correspondentEscrowDisbursementsDescription1008.Clean
+                    && _correspondentEscrowDisbursementsDescription1009.Clean
+                    && _correspondentEscrowDisbursementsEscrowsToBePaidBySeller.Clean
+                    && _correspondentEscrowDisbursementsEsrowFundedByInvestor.Clean
+                    && _correspondentEscrowDisbursementsFloodInsurance.Clean
+                    && _correspondentEscrowDisbursementsHomeInsurance.Clean
+                    && _correspondentEscrowDisbursementsMortgageInsurance.Clean
+                    && _correspondentEscrowDisbursementsOption1Amount.Clean
+                    && _correspondentEscrowDisbursementsOption1Desc.Clean
+                    && _correspondentEscrowDisbursementsOption2Amount.Clean
+                    && _correspondentEscrowDisbursementsOption2Desc.Clean
+                    && _correspondentEscrowDisbursementsPropertyTax.Clean
+                    && _correspondentEscrowDisbursementsUSDAAnnualFee.Clean
                     && _correspondentFinalBuyAmount.Clean
                     && _correspondentFinalBuyPrice.Clean
+                    && _correspondentFinalCDAggAdjAmount.Clean
+                    && _correspondentFinalCDAmount1007.Clean
+                    && _correspondentFinalCDAmount1008.Clean
+                    && _correspondentFinalCDAmount1009.Clean
+                    && _correspondentFinalCDCityPropertyTax.Clean
+                    && _correspondentFinalCDDescription1007.Clean
+                    && _correspondentFinalCDDescription1008.Clean
+                    && _correspondentFinalCDDescription1009.Clean
+                    && _correspondentFinalCDFloodInsurance.Clean
+                    && _correspondentFinalCDHomeInsurance.Clean
+                    && _correspondentFinalCDMortgageInsurance.Clean
+                    && _correspondentFinalCDOption1Amount.Clean
+                    && _correspondentFinalCDOption1Desc.Clean
+                    && _correspondentFinalCDOption2Amount.Clean
+                    && _correspondentFinalCDOption2Desc.Clean
+                    && _correspondentFinalCDPropertyTax.Clean
+                    && _correspondentFinalCDReservesCollectedAtClosing.Clean
+                    && _correspondentFinalCDUSDAAnnualFee.Clean
                     && _correspondentFirstPaymentDate.Clean
                     && _correspondentImpounds.Clean
                     && _correspondentInterest.Clean
@@ -1039,10 +1229,18 @@ namespace EncompassRest.Loans
                     && _correspondentLateFeeAmount.Clean
                     && _correspondentLateFeePriceAdjustment.Clean
                     && _correspondentPaidToDate.Clean
+                    && _correspondentPaymentHistoryAnticipatedPurchaseDate.Clean
+                    && _correspondentPaymentHistoryCalculatedPurchasedPrincipal.Clean
+                    && _correspondentPaymentHistoryFirstBorrowerPaymentDueDate.Clean
+                    && _correspondentPaymentHistoryFirstInvestorPaymentDate.Clean
+                    && _correspondentPaymentHistoryNoteDate.Clean
+                    && _correspondentPaymentHistoryPricipalReduction.Clean
                     && _correspondentPurchasedPrincipal.Clean
                     && _correspondentReconcilationComments.Clean
                     && _correspondentRemainingBuydownAmount.Clean
                     && _correspondentSRPAmount.Clean
+                    && _correspondentTotalBuyAmount.Clean
+                    && _correspondentTotalFees.Clean
                     && _correspondentWarehouseBankABANum.Clean
                     && _correspondentWarehouseBankAcctNum.Clean
                     && _correspondentWarehouseBankAddress.Clean
@@ -1063,6 +1261,7 @@ namespace EncompassRest.Loans
                     && _correspondentWarehouseBankState.Clean
                     && _correspondentWarehouseBankTriPartyContractIndicator.Clean
                     && _correspondentWarehouseBankUseDefaultContactIndicator.Clean
+                    && _correspondentWarehouseBankWireConfirmationNumber.Clean
                     && _correspondentWarehouseBankWireInstructionsReceivedIndicator.Clean
                     && _correspondentWarehouseBankZip.Clean
                     && _creditScoreToUse.Clean
@@ -1122,6 +1321,7 @@ namespace EncompassRest.Loans
                     && _expectedSRP.Clean
                     && _extensionRequestPending.Clean
                     && _extensionSequenceNumber.Clean
+                    && _extraPayments.Clean
                     && _fHAUpfrontMIPremiumPercent.Clean
                     && _financedNumberOfUnits.Clean
                     && _firstPaymenTo.Clean
@@ -1296,6 +1496,7 @@ namespace EncompassRest.Loans
                     && _servicingReleaseIndicator.Clean
                     && _sRP.Clean
                     && _sRPAmount.Clean
+                    && _sRPPaidOut.Clean
                     && _subjectPropertyCity.Clean
                     && _subjectPropertyCondotelIndicator.Clean
                     && _subjectPropertyCounty.Clean
@@ -1377,378 +1578,445 @@ namespace EncompassRest.Loans
                 var v57 = _combinedLTV; v57.Clean = value; _combinedLTV = v57;
                 var v58 = _comments; v58.Clean = value; _comments = v58;
                 var v59 = _commitment; v59.Clean = value; _commitment = v59;
-                var v60 = _compGainLossPercentage; v60.Clean = value; _compGainLossPercentage = v60;
-                var v61 = _compGainLossPrice; v61.Clean = value; _compGainLossPrice = v61;
-                var v62 = _compGainLossTotalBuyPrice; v62.Clean = value; _compGainLossTotalBuyPrice = v62;
-                var v63 = _compGainLossTotalCompPrice; v63.Clean = value; _compGainLossTotalCompPrice = v63;
-                var v64 = _compInvestorAddress; v64.Clean = value; _compInvestorAddress = v64;
-                var v65 = _compInvestorCity; v65.Clean = value; _compInvestorCity = v65;
-                var v66 = _compInvestorCommitment; v66.Clean = value; _compInvestorCommitment = v66;
-                var v67 = _compInvestorContact; v67.Clean = value; _compInvestorContact = v67;
-                var v68 = _compInvestorEmail; v68.Clean = value; _compInvestorEmail = v68;
-                var v69 = _compInvestorLockType; v69.Clean = value; _compInvestorLockType = v69;
-                var v70 = _compInvestorName; v70.Clean = value; _compInvestorName = v70;
-                var v71 = _compInvestorPhone; v71.Clean = value; _compInvestorPhone = v71;
-                var v72 = _compInvestorPostalCode; v72.Clean = value; _compInvestorPostalCode = v72;
-                var v73 = _compInvestorProgramCode; v73.Clean = value; _compInvestorProgramCode = v73;
-                var v74 = _compInvestorState; v74.Clean = value; _compInvestorState = v74;
-                var v75 = _compInvestorTemplateName; v75.Clean = value; _compInvestorTemplateName = v75;
-                var v76 = _compInvestorWebsite; v76.Clean = value; _compInvestorWebsite = v76;
-                var v77 = _compSideAdjustments; v77.Clean = value; _compSideAdjustments = v77;
-                var v78 = _compSideComments; v78.Clean = value; _compSideComments = v78;
-                var v79 = _compSideComparisonedBy; v79.Clean = value; _compSideComparisonedBy = v79;
-                var v80 = _compSideCurrentRateSetDate; v80.Clean = value; _compSideCurrentRateSetDate = v80;
-                var v81 = _compSideDaystoExtend; v81.Clean = value; _compSideDaystoExtend = v81;
-                var v82 = _compSideDiscountYSP; v82.Clean = value; _compSideDiscountYSP = v82;
-                var v83 = _compSideExtendedLockExpires; v83.Clean = value; _compSideExtendedLockExpires = v83;
-                var v84 = _compSideInvestorStatus; v84.Clean = value; _compSideInvestorStatus = v84;
-                var v85 = _compSideInvestorStatusDate; v85.Clean = value; _compSideInvestorStatusDate = v85;
-                var v86 = _compSideInvestorTradeNumber; v86.Clean = value; _compSideInvestorTradeNumber = v86;
-                var v87 = _compSideLoanProgram; v87.Clean = value; _compSideLoanProgram = v87;
-                var v88 = _compSideLockDate; v88.Clean = value; _compSideLockDate = v88;
-                var v89 = _compSideLockExpires; v89.Clean = value; _compSideLockExpires = v89;
-                var v90 = _compSideLockExtendPriceAdjustment; v90.Clean = value; _compSideLockExtendPriceAdjustment = v90;
-                var v91 = _compSideMarginNetCompRate; v91.Clean = value; _compSideMarginNetCompRate = v91;
-                var v92 = _compSideMarginRate; v92.Clean = value; _compSideMarginRate = v92;
-                var v93 = _compSideMarginTotalAdjustment; v93.Clean = value; _compSideMarginTotalAdjustment = v93;
-                var v94 = _compSideMasterContractNumber; v94.Clean = value; _compSideMasterContractNumber = v94;
-                var v95 = _compSideNetCompPrice; v95.Clean = value; _compSideNetCompPrice = v95;
-                var v96 = _compSideNetCompRate; v96.Clean = value; _compSideNetCompRate = v96;
-                var v97 = _compSideNumberOfDays; v97.Clean = value; _compSideNumberOfDays = v97;
-                var v98 = _compSideOriginalLockExpires; v98.Clean = value; _compSideOriginalLockExpires = v98;
-                var v99 = _compSidePriceRate; v99.Clean = value; _compSidePriceRate = v99;
-                var v100 = _compSidePriceTotalAdjustment; v100.Clean = value; _compSidePriceTotalAdjustment = v100;
-                var v101 = _compSideRate; v101.Clean = value; _compSideRate = v101;
-                var v102 = _compSideRateSheetID; v102.Clean = value; _compSideRateSheetID = v102;
-                var v103 = _compSideRateTotalAdjustment; v103.Clean = value; _compSideRateTotalAdjustment = v103;
-                var v104 = _compSideRequestedBy; v104.Clean = value; _compSideRequestedBy = v104;
-                var v105 = _compSideServicingType; v105.Clean = value; _compSideServicingType = v105;
-                var v106 = _compSideSRPPaidOut; v106.Clean = value; _compSideSRPPaidOut = v106;
-                var v107 = _compSideTradeGuid; v107.Clean = value; _compSideTradeGuid = v107;
-                var v108 = _compSideTradeNumber; v108.Clean = value; _compSideTradeNumber = v108;
-                var v109 = _confirmedBy; v109.Clean = value; _confirmedBy = v109;
-                var v110 = _confirmedDate; v110.Clean = value; _confirmedDate = v110;
-                var v111 = _corporateApprovalDate; v111.Clean = value; _corporateApprovalDate = v111;
-                var v112 = _corporateApprovedby; v112.Clean = value; _corporateApprovedby = v112;
-                var v113 = _corporatePrice; v113.Clean = value; _corporatePrice = v113;
-                var v114 = _correspondentAdditionalLineAmount1; v114.Clean = value; _correspondentAdditionalLineAmount1 = v114;
-                var v115 = _correspondentAdditionalLineAmount10; v115.Clean = value; _correspondentAdditionalLineAmount10 = v115;
-                var v116 = _correspondentAdditionalLineAmount11; v116.Clean = value; _correspondentAdditionalLineAmount11 = v116;
-                var v117 = _correspondentAdditionalLineAmount12; v117.Clean = value; _correspondentAdditionalLineAmount12 = v117;
-                var v118 = _correspondentAdditionalLineAmount13; v118.Clean = value; _correspondentAdditionalLineAmount13 = v118;
-                var v119 = _correspondentAdditionalLineAmount2; v119.Clean = value; _correspondentAdditionalLineAmount2 = v119;
-                var v120 = _correspondentAdditionalLineAmount3; v120.Clean = value; _correspondentAdditionalLineAmount3 = v120;
-                var v121 = _correspondentAdditionalLineAmount4; v121.Clean = value; _correspondentAdditionalLineAmount4 = v121;
-                var v122 = _correspondentAdditionalLineAmount5; v122.Clean = value; _correspondentAdditionalLineAmount5 = v122;
-                var v123 = _correspondentAdditionalLineAmount6; v123.Clean = value; _correspondentAdditionalLineAmount6 = v123;
-                var v124 = _correspondentAdditionalLineAmount7; v124.Clean = value; _correspondentAdditionalLineAmount7 = v124;
-                var v125 = _correspondentAdditionalLineAmount8; v125.Clean = value; _correspondentAdditionalLineAmount8 = v125;
-                var v126 = _correspondentAdditionalLineAmount9; v126.Clean = value; _correspondentAdditionalLineAmount9 = v126;
-                var v127 = _correspondentAdditionalLineDescription1; v127.Clean = value; _correspondentAdditionalLineDescription1 = v127;
-                var v128 = _correspondentAdditionalLineDescription10; v128.Clean = value; _correspondentAdditionalLineDescription10 = v128;
-                var v129 = _correspondentAdditionalLineDescription11; v129.Clean = value; _correspondentAdditionalLineDescription11 = v129;
-                var v130 = _correspondentAdditionalLineDescription12; v130.Clean = value; _correspondentAdditionalLineDescription12 = v130;
-                var v131 = _correspondentAdditionalLineDescription2; v131.Clean = value; _correspondentAdditionalLineDescription2 = v131;
-                var v132 = _correspondentAdditionalLineDescription3; v132.Clean = value; _correspondentAdditionalLineDescription3 = v132;
-                var v133 = _correspondentAdditionalLineDescription4; v133.Clean = value; _correspondentAdditionalLineDescription4 = v133;
-                var v134 = _correspondentAdditionalLineDescription5; v134.Clean = value; _correspondentAdditionalLineDescription5 = v134;
-                var v135 = _correspondentAdditionalLineDescription6; v135.Clean = value; _correspondentAdditionalLineDescription6 = v135;
-                var v136 = _correspondentAdditionalLineDescription7; v136.Clean = value; _correspondentAdditionalLineDescription7 = v136;
-                var v137 = _correspondentAdditionalLineDescription8; v137.Clean = value; _correspondentAdditionalLineDescription8 = v137;
-                var v138 = _correspondentAdditionalLineDescription9; v138.Clean = value; _correspondentAdditionalLineDescription9 = v138;
-                var v139 = _correspondentAdditionalLineTotalAmount; v139.Clean = value; _correspondentAdditionalLineTotalAmount = v139;
-                var v140 = _correspondentAdjusterAmount1; v140.Clean = value; _correspondentAdjusterAmount1 = v140;
-                var v141 = _correspondentAdjusterAmount2; v141.Clean = value; _correspondentAdjusterAmount2 = v141;
-                var v142 = _correspondentAdjusterAmount3; v142.Clean = value; _correspondentAdjusterAmount3 = v142;
-                var v143 = _correspondentAdjusterDescription1; v143.Clean = value; _correspondentAdjusterDescription1 = v143;
-                var v144 = _correspondentAdjusterDescription2; v144.Clean = value; _correspondentAdjusterDescription2 = v144;
-                var v145 = _correspondentAdjusterDescription3; v145.Clean = value; _correspondentAdjusterDescription3 = v145;
-                var v146 = _correspondentConfirmedBy; v146.Clean = value; _correspondentConfirmedBy = v146;
-                var v147 = _correspondentConfirmedDate; v147.Clean = value; _correspondentConfirmedDate = v147;
-                var v148 = _correspondentCurrentImpounds; v148.Clean = value; _correspondentCurrentImpounds = v148;
-                var v149 = _correspondentCurrentPrincipal; v149.Clean = value; _correspondentCurrentPrincipal = v149;
-                var v150 = _correspondentDate; v150.Clean = value; _correspondentDate = v150;
-                var v151 = _correspondentFinalBuyAmount; v151.Clean = value; _correspondentFinalBuyAmount = v151;
-                var v152 = _correspondentFinalBuyPrice; v152.Clean = value; _correspondentFinalBuyPrice = v152;
-                var v153 = _correspondentFirstPaymentDate; v153.Clean = value; _correspondentFirstPaymentDate = v153;
-                var v154 = _correspondentImpounds; v154.Clean = value; _correspondentImpounds = v154;
-                var v155 = _correspondentInterest; v155.Clean = value; _correspondentInterest = v155;
-                var v156 = _correspondentInterestDays; v156.Clean = value; _correspondentInterestDays = v156;
-                var v157 = _correspondentLateFeeAmount; v157.Clean = value; _correspondentLateFeeAmount = v157;
-                var v158 = _correspondentLateFeePriceAdjustment; v158.Clean = value; _correspondentLateFeePriceAdjustment = v158;
-                var v159 = _correspondentPaidToDate; v159.Clean = value; _correspondentPaidToDate = v159;
-                var v160 = _correspondentPurchasedPrincipal; v160.Clean = value; _correspondentPurchasedPrincipal = v160;
-                var v161 = _correspondentReconcilationComments; v161.Clean = value; _correspondentReconcilationComments = v161;
-                var v162 = _correspondentRemainingBuydownAmount; v162.Clean = value; _correspondentRemainingBuydownAmount = v162;
-                var v163 = _correspondentSRPAmount; v163.Clean = value; _correspondentSRPAmount = v163;
-                var v164 = _correspondentWarehouseBankABANum; v164.Clean = value; _correspondentWarehouseBankABANum = v164;
-                var v165 = _correspondentWarehouseBankAcctNum; v165.Clean = value; _correspondentWarehouseBankAcctNum = v165;
-                var v166 = _correspondentWarehouseBankAddress; v166.Clean = value; _correspondentWarehouseBankAddress = v166;
-                var v167 = _correspondentWarehouseBankAddress1; v167.Clean = value; _correspondentWarehouseBankAddress1 = v167;
-                var v168 = _correspondentWarehouseBankBaileeExpirationDate; v168.Clean = value; _correspondentWarehouseBankBaileeExpirationDate = v168;
-                var v169 = _correspondentWarehouseBankBaileeLetterReceivedIndicator; v169.Clean = value; _correspondentWarehouseBankBaileeLetterReceivedIndicator = v169;
-                var v170 = _correspondentWarehouseBankBaileeLetterReqIndicator; v170.Clean = value; _correspondentWarehouseBankBaileeLetterReqIndicator = v170;
-                var v171 = _correspondentWarehouseBankCity; v171.Clean = value; _correspondentWarehouseBankCity = v171;
-                var v172 = _correspondentWarehouseBankContactEmail; v172.Clean = value; _correspondentWarehouseBankContactEmail = v172;
-                var v173 = _correspondentWarehouseBankContactFax; v173.Clean = value; _correspondentWarehouseBankContactFax = v173;
-                var v174 = _correspondentWarehouseBankContactName; v174.Clean = value; _correspondentWarehouseBankContactName = v174;
-                var v175 = _correspondentWarehouseBankContactPhone; v175.Clean = value; _correspondentWarehouseBankContactPhone = v175;
-                var v176 = _correspondentWarehouseBankDescription; v176.Clean = value; _correspondentWarehouseBankDescription = v176;
-                var v177 = _correspondentWarehouseBankId; v177.Clean = value; _correspondentWarehouseBankId = v177;
-                var v178 = _correspondentWarehouseBankName; v178.Clean = value; _correspondentWarehouseBankName = v178;
-                var v179 = _correspondentWarehouseBankNotes; v179.Clean = value; _correspondentWarehouseBankNotes = v179;
-                var v180 = _correspondentWarehouseBankSelfFunderIndicator; v180.Clean = value; _correspondentWarehouseBankSelfFunderIndicator = v180;
-                var v181 = _correspondentWarehouseBankState; v181.Clean = value; _correspondentWarehouseBankState = v181;
-                var v182 = _correspondentWarehouseBankTriPartyContractIndicator; v182.Clean = value; _correspondentWarehouseBankTriPartyContractIndicator = v182;
-                var v183 = _correspondentWarehouseBankUseDefaultContactIndicator; v183.Clean = value; _correspondentWarehouseBankUseDefaultContactIndicator = v183;
-                var v184 = _correspondentWarehouseBankWireInstructionsReceivedIndicator; v184.Clean = value; _correspondentWarehouseBankWireInstructionsReceivedIndicator = v184;
-                var v185 = _correspondentWarehouseBankZip; v185.Clean = value; _correspondentWarehouseBankZip = v185;
-                var v186 = _creditScoreToUse; v186.Clean = value; _creditScoreToUse = v186;
-                var v187 = _cumulatedDaystoExtend; v187.Clean = value; _cumulatedDaystoExtend = v187;
-                var v188 = _currentAdjustments; v188.Clean = value; _currentAdjustments = v188;
-                var v189 = _currentComments; v189.Clean = value; _currentComments = v189;
-                var v190 = _currentLockDate; v190.Clean = value; _currentLockDate = v190;
-                var v191 = _currentLockExpires; v191.Clean = value; _currentLockExpires = v191;
-                var v192 = _currentMarginRate; v192.Clean = value; _currentMarginRate = v192;
-                var v193 = _currentMarginRateRequested; v193.Clean = value; _currentMarginRateRequested = v193;
-                var v194 = _currentMarginTotalAdjustment; v194.Clean = value; _currentMarginTotalAdjustment = v194;
-                var v195 = _currentNumberOfDays; v195.Clean = value; _currentNumberOfDays = v195;
-                var v196 = _currentPriceRate; v196.Clean = value; _currentPriceRate = v196;
-                var v197 = _currentPriceRateRequested; v197.Clean = value; _currentPriceRateRequested = v197;
-                var v198 = _currentPriceTotalAdjustment; v198.Clean = value; _currentPriceTotalAdjustment = v198;
-                var v199 = _currentRate; v199.Clean = value; _currentRate = v199;
-                var v200 = _currentRateRequested; v200.Clean = value; _currentRateRequested = v200;
-                var v201 = _currentRateSetDate; v201.Clean = value; _currentRateSetDate = v201;
-                var v202 = _currentRateSheetID; v202.Clean = value; _currentRateSheetID = v202;
-                var v203 = _currentRateTotalAdjustment; v203.Clean = value; _currentRateTotalAdjustment = v203;
-                var v204 = _date; v204.Clean = value; _date = v204;
-                var v205 = _dateFirstPaymentToInvestor; v205.Clean = value; _dateFirstPaymentToInvestor = v205;
-                var v206 = _dateLockedWithInvestor; v206.Clean = value; _dateLockedWithInvestor = v206;
-                var v207 = _dateSold; v207.Clean = value; _dateSold = v207;
-                var v208 = _dateWarehoused; v208.Clean = value; _dateWarehoused = v208;
-                var v209 = _daysToExtend; v209.Clean = value; _daysToExtend = v209;
-                var v210 = _deliveryType; v210.Clean = value; _deliveryType = v210;
-                var v211 = _diffAmountReceived; v211.Clean = value; _diffAmountReceived = v211;
-                var v212 = _diffImpounds; v212.Clean = value; _diffImpounds = v212;
-                var v213 = _diffInterest; v213.Clean = value; _diffInterest = v213;
-                var v214 = _diffPremium; v214.Clean = value; _diffPremium = v214;
-                var v215 = _diffPrinciple; v215.Clean = value; _diffPrinciple = v215;
-                var v216 = _diffRemainingBuydownFunds; v216.Clean = value; _diffRemainingBuydownFunds = v216;
-                var v217 = _diffSellAmount; v217.Clean = value; _diffSellAmount = v217;
-                var v218 = _diffSellPrice; v218.Clean = value; _diffSellPrice = v218;
-                var v219 = _diffSellSideSRP; v219.Clean = value; _diffSellSideSRP = v219;
-                var v220 = _diffSRP; v220.Clean = value; _diffSRP = v220;
-                var v221 = _diffSRPAmount; v221.Clean = value; _diffSRPAmount = v221;
-                var v222 = _employmentBorrowerSelfEmployedIndicator1; v222.Clean = value; _employmentBorrowerSelfEmployedIndicator1 = v222;
-                var v223 = _employmentBorrowerSelfEmployedIndicator10; v223.Clean = value; _employmentBorrowerSelfEmployedIndicator10 = v223;
-                var v224 = _employmentBorrowerSelfEmployedIndicator11; v224.Clean = value; _employmentBorrowerSelfEmployedIndicator11 = v224;
-                var v225 = _employmentBorrowerSelfEmployedIndicator12; v225.Clean = value; _employmentBorrowerSelfEmployedIndicator12 = v225;
-                var v226 = _employmentBorrowerSelfEmployedIndicator2; v226.Clean = value; _employmentBorrowerSelfEmployedIndicator2 = v226;
-                var v227 = _employmentBorrowerSelfEmployedIndicator3; v227.Clean = value; _employmentBorrowerSelfEmployedIndicator3 = v227;
-                var v228 = _employmentBorrowerSelfEmployedIndicator4; v228.Clean = value; _employmentBorrowerSelfEmployedIndicator4 = v228;
-                var v229 = _employmentBorrowerSelfEmployedIndicator5; v229.Clean = value; _employmentBorrowerSelfEmployedIndicator5 = v229;
-                var v230 = _employmentBorrowerSelfEmployedIndicator6; v230.Clean = value; _employmentBorrowerSelfEmployedIndicator6 = v230;
-                var v231 = _employmentBorrowerSelfEmployedIndicator7; v231.Clean = value; _employmentBorrowerSelfEmployedIndicator7 = v231;
-                var v232 = _employmentBorrowerSelfEmployedIndicator8; v232.Clean = value; _employmentBorrowerSelfEmployedIndicator8 = v232;
-                var v233 = _employmentBorrowerSelfEmployedIndicator9; v233.Clean = value; _employmentBorrowerSelfEmployedIndicator9 = v233;
-                var v234 = _expectedAmountReceived; v234.Clean = value; _expectedAmountReceived = v234;
-                var v235 = _expectedImpounds; v235.Clean = value; _expectedImpounds = v235;
-                var v236 = _expectedInterest; v236.Clean = value; _expectedInterest = v236;
-                var v237 = _expectedPremium; v237.Clean = value; _expectedPremium = v237;
-                var v238 = _expectedPrinciple; v238.Clean = value; _expectedPrinciple = v238;
-                var v239 = _expectedRemainingBuydownFunds; v239.Clean = value; _expectedRemainingBuydownFunds = v239;
-                var v240 = _expectedSRP; v240.Clean = value; _expectedSRP = v240;
-                var v241 = _extensionRequestPending; v241.Clean = value; _extensionRequestPending = v241;
-                var v242 = _extensionSequenceNumber; v242.Clean = value; _extensionSequenceNumber = v242;
-                var v243 = _fHAUpfrontMIPremiumPercent; v243.Clean = value; _fHAUpfrontMIPremiumPercent = v243;
-                var v244 = _financedNumberOfUnits; v244.Clean = value; _financedNumberOfUnits = v244;
-                var v245 = _firstPaymenTo; v245.Clean = value; _firstPaymenTo = v245;
-                var v246 = _firstSubordinateAmount; v246.Clean = value; _firstSubordinateAmount = v246;
-                var v247 = _firstTimeHomebuyersIndicator; v247.Clean = value; _firstTimeHomebuyersIndicator = v247;
-                var v248 = _fNMProductPlanIdentifier; v248.Clean = value; _fNMProductPlanIdentifier = v248;
-                var v249 = _fundingAmount; v249.Clean = value; _fundingAmount = v249;
-                var v250 = _gainLossPercentage; v250.Clean = value; _gainLossPercentage = v250;
-                var v251 = _gainLossPrice; v251.Clean = value; _gainLossPrice = v251;
-                var v252 = _gainLossTotalBuyPrice; v252.Clean = value; _gainLossTotalBuyPrice = v252;
-                var v253 = _gPMRate; v253.Clean = value; _gPMRate = v253;
-                var v254 = _gPMYears; v254.Clean = value; _gPMYears = v254;
-                var v255 = _gSEPropertyType; v255.Clean = value; _gSEPropertyType = v255;
-                var v256 = _hedging; v256.Clean = value; _hedging = v256;
-                var v257 = _hELOCActualBalance; v257.Clean = value; _hELOCActualBalance = v257;
-                var v258 = _id; v258.Clean = value; _id = v258;
-                var v259 = _impounds; v259.Clean = value; _impounds = v259;
-                var v260 = _impoundType; v260.Clean = value; _impoundType = v260;
-                var v261 = _impoundWavied; v261.Clean = value; _impoundWavied = v261;
-                var v262 = _interest; v262.Clean = value; _interest = v262;
-                var v263 = _investorAddress; v263.Clean = value; _investorAddress = v263;
-                var v264 = _investorCity; v264.Clean = value; _investorCity = v264;
-                var v265 = _investorCommitment; v265.Clean = value; _investorCommitment = v265;
-                var v266 = _investorContact; v266.Clean = value; _investorContact = v266;
-                var v267 = _investorDeliveryDate; v267.Clean = value; _investorDeliveryDate = v267;
-                var v268 = _investorEmail; v268.Clean = value; _investorEmail = v268;
-                var v269 = _investorLoanNumber; v269.Clean = value; _investorLoanNumber = v269;
-                var v270 = _investorLockType; v270.Clean = value; _investorLockType = v270;
-                var v271 = _investorMERSNumber; v271.Clean = value; _investorMERSNumber = v271;
-                var v272 = _investorName; v272.Clean = value; _investorName = v272;
-                var v273 = _investorPhone; v273.Clean = value; _investorPhone = v273;
-                var v274 = _investorPostalCode; v274.Clean = value; _investorPostalCode = v274;
-                var v275 = _investorProgramCode; v275.Clean = value; _investorProgramCode = v275;
-                var v276 = _investorState; v276.Clean = value; _investorState = v276;
-                var v277 = _investorTargetDeliveryDate; v277.Clean = value; _investorTargetDeliveryDate = v277;
-                var v278 = _investorTemplateName; v278.Clean = value; _investorTemplateName = v278;
-                var v279 = _investorWebsite; v279.Clean = value; _investorWebsite = v279;
-                var v280 = _isCancelled; v280.Clean = value; _isCancelled = v280;
-                var v281 = _isDeliveryType; v281.Clean = value; _isDeliveryType = v281;
-                var v282 = _lenderPaidMortgageInsuranceIndicator; v282.Clean = value; _lenderPaidMortgageInsuranceIndicator = v282;
-                var v283 = _lienPriorityType; v283.Clean = value; _lienPriorityType = v283;
-                var v284 = _loanAmortizationTermMonths; v284.Clean = value; _loanAmortizationTermMonths = v284;
-                var v285 = _loanAmortizationType; v285.Clean = value; _loanAmortizationType = v285;
-                var v286 = _loanDocumentationType; v286.Clean = value; _loanDocumentationType = v286;
-                var v287 = _loanFor203K; v287.Clean = value; _loanFor203K = v287;
-                var v288 = _loanProgram; v288.Clean = value; _loanProgram = v288;
-                var v289 = _loanProgramFile; v289.Clean = value; _loanProgramFile = v289;
-                var v290 = _loanScheduledClosingDate; v290.Clean = value; _loanScheduledClosingDate = v290;
-                var v291 = _lockField; v291.Clean = value; _lockField = v291;
-                var v292 = _lockRequestAdjustments; v292.Clean = value; _lockRequestAdjustments = v292;
-                var v293 = _lockRequestBorrowers; v293.Clean = value; _lockRequestBorrowers = v293;
-                var v294 = _lockRequestLoanPurposeType; v294.Clean = value; _lockRequestLoanPurposeType = v294;
-                var v295 = _lTV; v295.Clean = value; _lTV = v295;
-                var v296 = _minFICO; v296.Clean = value; _minFICO = v296;
-                var v297 = _minFICO2; v297.Clean = value; _minFICO2 = v297;
-                var v298 = _mIPPaidInCash; v298.Clean = value; _mIPPaidInCash = v298;
-                var v299 = _mortgageType; v299.Clean = value; _mortgageType = v299;
-                var v300 = _netSellAmount; v300.Clean = value; _netSellAmount = v300;
-                var v301 = _netSellPrice; v301.Clean = value; _netSellPrice = v301;
-                var v302 = _nextPaymentDate; v302.Clean = value; _nextPaymentDate = v302;
-                var v303 = _noClosingCostOption; v303.Clean = value; _noClosingCostOption = v303;
-                var v304 = _oNRPLock; v304.Clean = value; _oNRPLock = v304;
-                var v305 = _otherAmortizationTypeDescription; v305.Clean = value; _otherAmortizationTypeDescription = v305;
-                var v306 = _otherSubordinateAmount; v306.Clean = value; _otherSubordinateAmount = v306;
-                var v307 = _penaltyTerm; v307.Clean = value; _penaltyTerm = v307;
-                var v308 = _perDiemInterestRoundingType; v308.Clean = value; _perDiemInterestRoundingType = v308;
-                var v309 = _planCode; v309.Clean = value; _planCode = v309;
-                var v310 = _premium; v310.Clean = value; _premium = v310;
-                var v311 = _prepayPenalty; v311.Clean = value; _prepayPenalty = v311;
-                var v312 = _priceAdjustment; v312.Clean = value; _priceAdjustment = v312;
-                var v313 = _priceAdjustments; v313.Clean = value; _priceAdjustments = v313;
-                var v314 = _pricingHistoryData; v314.Clean = value; _pricingHistoryData = v314;
-                var v315 = _pricingUpdated; v315.Clean = value; _pricingUpdated = v315;
-                var v316 = _principle; v316.Clean = value; _principle = v316;
-                var v317 = _profitMarginAdjustedBuyPrice; v317.Clean = value; _profitMarginAdjustedBuyPrice = v317;
-                var v318 = _propertyAppraisedValueAmount; v318.Clean = value; _propertyAppraisedValueAmount = v318;
-                var v319 = _propertyEstimatedValueAmount; v319.Clean = value; _propertyEstimatedValueAmount = v319;
-                var v320 = _propertyUsageType; v320.Clean = value; _propertyUsageType = v320;
-                var v321 = _purchaseAdviceNumberOfDays; v321.Clean = value; _purchaseAdviceNumberOfDays = v321;
-                var v322 = _purchaseAdvicePayouts; v322.Clean = value; _purchaseAdvicePayouts = v322;
-                var v323 = _purchasePriceAmount; v323.Clean = value; _purchasePriceAmount = v323;
-                var v324 = _rateRequestStatus; v324.Clean = value; _rateRequestStatus = v324;
-                var v325 = _rateStatus; v325.Clean = value; _rateStatus = v325;
-                var v326 = _reasonforBranchApproval; v326.Clean = value; _reasonforBranchApproval = v326;
-                var v327 = _reasonforCorporateApproval; v327.Clean = value; _reasonforCorporateApproval = v327;
-                var v328 = _reconciledDiff; v328.Clean = value; _reconciledDiff = v328;
-                var v329 = _reLockRequestPending; v329.Clean = value; _reLockRequestPending = v329;
-                var v330 = _remainingBuydownFunds; v330.Clean = value; _remainingBuydownFunds = v330;
-                var v331 = _requestComments; v331.Clean = value; _requestComments = v331;
-                var v332 = _requestCurrentRateSetDate; v332.Clean = value; _requestCurrentRateSetDate = v332;
-                var v333 = _requestDaystoExtend; v333.Clean = value; _requestDaystoExtend = v333;
-                var v334 = _requestExtendedLockExpires; v334.Clean = value; _requestExtendedLockExpires = v334;
-                var v335 = _requestFullfilledDateTime; v335.Clean = value; _requestFullfilledDateTime = v335;
-                var v336 = _requestImpoundType; v336.Clean = value; _requestImpoundType = v336;
-                var v337 = _requestImpoundWavied; v337.Clean = value; _requestImpoundWavied = v337;
-                var v338 = _requestLockCancellationComment; v338.Clean = value; _requestLockCancellationComment = v338;
-                var v339 = _requestLockCancellationDate; v339.Clean = value; _requestLockCancellationDate = v339;
-                var v340 = _requestLockDate; v340.Clean = value; _requestLockDate = v340;
-                var v341 = _requestLockExpires; v341.Clean = value; _requestLockExpires = v341;
-                var v342 = _requestLockExtendComment; v342.Clean = value; _requestLockExtendComment = v342;
-                var v343 = _requestLockExtendPriceAdjustment; v343.Clean = value; _requestLockExtendPriceAdjustment = v343;
-                var v344 = _requestLockType; v344.Clean = value; _requestLockType = v344;
-                var v345 = _requestMarginRate; v345.Clean = value; _requestMarginRate = v345;
-                var v346 = _requestMarginRateRequested; v346.Clean = value; _requestMarginRateRequested = v346;
-                var v347 = _requestMarginSRPPaidOut; v347.Clean = value; _requestMarginSRPPaidOut = v347;
-                var v348 = _requestMarginTotalAdjustment; v348.Clean = value; _requestMarginTotalAdjustment = v348;
-                var v349 = _requestNumberOfDays; v349.Clean = value; _requestNumberOfDays = v349;
-                var v350 = _requestOnrpEligible; v350.Clean = value; _requestOnrpEligible = v350;
-                var v351 = _requestOnrpLockDate; v351.Clean = value; _requestOnrpLockDate = v351;
-                var v352 = _requestOnrpLockTime; v352.Clean = value; _requestOnrpLockTime = v352;
-                var v353 = _requestOriginalLockExpires; v353.Clean = value; _requestOriginalLockExpires = v353;
-                var v354 = _requestPenaltyTerm; v354.Clean = value; _requestPenaltyTerm = v354;
-                var v355 = _requestPending; v355.Clean = value; _requestPending = v355;
-                var v356 = _requestPrepayPenalty; v356.Clean = value; _requestPrepayPenalty = v356;
-                var v357 = _requestPriceRate; v357.Clean = value; _requestPriceRate = v357;
-                var v358 = _requestPriceRateRequested; v358.Clean = value; _requestPriceRateRequested = v358;
-                var v359 = _requestPriceTotalAdjustment; v359.Clean = value; _requestPriceTotalAdjustment = v359;
-                var v360 = _requestRate; v360.Clean = value; _requestRate = v360;
-                var v361 = _requestRateRequested; v361.Clean = value; _requestRateRequested = v361;
-                var v362 = _requestRateSheetID; v362.Clean = value; _requestRateSheetID = v362;
-                var v363 = _requestRateTotalAdjustment; v363.Clean = value; _requestRateTotalAdjustment = v363;
-                var v364 = _requestStartingAdjPoint; v364.Clean = value; _requestStartingAdjPoint = v364;
-                var v365 = _requestStartingAdjRate; v365.Clean = value; _requestStartingAdjRate = v365;
-                var v366 = _requestType; v366.Clean = value; _requestType = v366;
-                var v367 = _requestUnDiscountedRate; v367.Clean = value; _requestUnDiscountedRate = v367;
-                var v368 = _roundToNearest50; v368.Clean = value; _roundToNearest50 = v368;
-                var v369 = _secondSubordinateAmount; v369.Clean = value; _secondSubordinateAmount = v369;
-                var v370 = _sellerPaidMIPremium; v370.Clean = value; _sellerPaidMIPremium = v370;
-                var v371 = _sellSideAdjustments; v371.Clean = value; _sellSideAdjustments = v371;
-                var v372 = _sellSideComments; v372.Clean = value; _sellSideComments = v372;
-                var v373 = _sellSideCommitmentContractNumber; v373.Clean = value; _sellSideCommitmentContractNumber = v373;
-                var v374 = _sellSideCommitmentDate; v374.Clean = value; _sellSideCommitmentDate = v374;
-                var v375 = _sellSideCurrentRateSetDate; v375.Clean = value; _sellSideCurrentRateSetDate = v375;
-                var v376 = _sellSideDaystoExtend; v376.Clean = value; _sellSideDaystoExtend = v376;
-                var v377 = _sellSideDiscountYSP; v377.Clean = value; _sellSideDiscountYSP = v377;
-                var v378 = _sellSideExtendedLockExpires; v378.Clean = value; _sellSideExtendedLockExpires = v378;
-                var v379 = _sellSideGuaranteeFee; v379.Clean = value; _sellSideGuaranteeFee = v379;
-                var v380 = _sellSideGuarantyBaseFee; v380.Clean = value; _sellSideGuarantyBaseFee = v380;
-                var v381 = _sellSideInvestorStatus; v381.Clean = value; _sellSideInvestorStatus = v381;
-                var v382 = _sellSideInvestorStatusDate; v382.Clean = value; _sellSideInvestorStatusDate = v382;
-                var v383 = _sellSideInvestorTradeNumber; v383.Clean = value; _sellSideInvestorTradeNumber = v383;
-                var v384 = _sellSideLoanProgram; v384.Clean = value; _sellSideLoanProgram = v384;
-                var v385 = _sellSideLockDate; v385.Clean = value; _sellSideLockDate = v385;
-                var v386 = _sellSideLockExpires; v386.Clean = value; _sellSideLockExpires = v386;
-                var v387 = _sellSideLockExtendPriceAdjustment; v387.Clean = value; _sellSideLockExtendPriceAdjustment = v387;
-                var v388 = _sellSideMarginNetSellRate; v388.Clean = value; _sellSideMarginNetSellRate = v388;
-                var v389 = _sellSideMarginRate; v389.Clean = value; _sellSideMarginRate = v389;
-                var v390 = _sellSideMarginTotalAdjustment; v390.Clean = value; _sellSideMarginTotalAdjustment = v390;
-                var v391 = _sellSideMasterContractNumber; v391.Clean = value; _sellSideMasterContractNumber = v391;
-                var v392 = _sellSideMSRValue; v392.Clean = value; _sellSideMSRValue = v392;
-                var v393 = _sellSideNetSellPrice; v393.Clean = value; _sellSideNetSellPrice = v393;
-                var v394 = _sellSideNetSellRate; v394.Clean = value; _sellSideNetSellRate = v394;
-                var v395 = _sellSideNumberOfDays; v395.Clean = value; _sellSideNumberOfDays = v395;
-                var v396 = _sellSideOriginalLockExpires; v396.Clean = value; _sellSideOriginalLockExpires = v396;
-                var v397 = _sellSidePoolID; v397.Clean = value; _sellSidePoolID = v397;
-                var v398 = _sellSidePoolNumber; v398.Clean = value; _sellSidePoolNumber = v398;
-                var v399 = _sellSidePriceRate; v399.Clean = value; _sellSidePriceRate = v399;
-                var v400 = _sellSidePriceTotalAdjustment; v400.Clean = value; _sellSidePriceTotalAdjustment = v400;
-                var v401 = _sellSideProductName; v401.Clean = value; _sellSideProductName = v401;
-                var v402 = _sellSideRate; v402.Clean = value; _sellSideRate = v402;
-                var v403 = _sellSideRateSheetID; v403.Clean = value; _sellSideRateSheetID = v403;
-                var v404 = _sellSideRateTotalAdjustment; v404.Clean = value; _sellSideRateTotalAdjustment = v404;
-                var v405 = _sellSideRequestedBy; v405.Clean = value; _sellSideRequestedBy = v405;
-                var v406 = _sellSideServicer; v406.Clean = value; _sellSideServicer = v406;
-                var v407 = _sellSideServicingFee; v407.Clean = value; _sellSideServicingFee = v407;
-                var v408 = _sellSideServicingType; v408.Clean = value; _sellSideServicingType = v408;
-                var v409 = _sellSideSRP; v409.Clean = value; _sellSideSRP = v409;
-                var v410 = _sellSideSRPPaidOut; v410.Clean = value; _sellSideSRPPaidOut = v410;
-                var v411 = _sellSideTradeGuid; v411.Clean = value; _sellSideTradeGuid = v411;
-                var v412 = _sellSideTradeMgmtPrevConfirmedLockGuid; v412.Clean = value; _sellSideTradeMgmtPrevConfirmedLockGuid = v412;
-                var v413 = _sellSideTradeNumber; v413.Clean = value; _sellSideTradeNumber = v413;
-                var v414 = _servicingReleaseIndicator; v414.Clean = value; _servicingReleaseIndicator = v414;
-                var v415 = _sRP; v415.Clean = value; _sRP = v415;
-                var v416 = _sRPAmount; v416.Clean = value; _sRPAmount = v416;
-                var v417 = _subjectPropertyCity; v417.Clean = value; _subjectPropertyCity = v417;
-                var v418 = _subjectPropertyCondotelIndicator; v418.Clean = value; _subjectPropertyCondotelIndicator = v418;
-                var v419 = _subjectPropertyCounty; v419.Clean = value; _subjectPropertyCounty = v419;
-                var v420 = _subjectPropertyNonWarrantableProjectIndicator; v420.Clean = value; _subjectPropertyNonWarrantableProjectIndicator = v420;
-                var v421 = _subjectPropertyPostalCode; v421.Clean = value; _subjectPropertyPostalCode = v421;
-                var v422 = _subjectPropertyState; v422.Clean = value; _subjectPropertyState = v422;
-                var v423 = _subjectPropertyStreetAddress; v423.Clean = value; _subjectPropertyStreetAddress = v423;
-                var v424 = _timeLockedWithInvestor; v424.Clean = value; _timeLockedWithInvestor = v424;
-                var v425 = _totalBuyPrice; v425.Clean = value; _totalBuyPrice = v425;
-                var v426 = _totalForLesserOfSumAsIs; v426.Clean = value; _totalForLesserOfSumAsIs = v426;
-                var v427 = _totalPrice; v427.Clean = value; _totalPrice = v427;
-                var v428 = _totalSubordinateFinancing; v428.Clean = value; _totalSubordinateFinancing = v428;
-                var v429 = _twelveMonthMortgageRentalHistoryIndicator; v429.Clean = value; _twelveMonthMortgageRentalHistoryIndicator = v429;
-                var v430 = _type; v430.Clean = value; _type = v430;
-                var v431 = _usePoint; v431.Clean = value; _usePoint = v431;
+                var v60 = _commitmentType; v60.Clean = value; _commitmentType = v60;
+                var v61 = _compGainLossPercentage; v61.Clean = value; _compGainLossPercentage = v61;
+                var v62 = _compGainLossPrice; v62.Clean = value; _compGainLossPrice = v62;
+                var v63 = _compGainLossTotalBuyPrice; v63.Clean = value; _compGainLossTotalBuyPrice = v63;
+                var v64 = _compGainLossTotalCompPrice; v64.Clean = value; _compGainLossTotalCompPrice = v64;
+                var v65 = _compInvestorAddress; v65.Clean = value; _compInvestorAddress = v65;
+                var v66 = _compInvestorCity; v66.Clean = value; _compInvestorCity = v66;
+                var v67 = _compInvestorCommitment; v67.Clean = value; _compInvestorCommitment = v67;
+                var v68 = _compInvestorContact; v68.Clean = value; _compInvestorContact = v68;
+                var v69 = _compInvestorEmail; v69.Clean = value; _compInvestorEmail = v69;
+                var v70 = _compInvestorLockType; v70.Clean = value; _compInvestorLockType = v70;
+                var v71 = _compInvestorName; v71.Clean = value; _compInvestorName = v71;
+                var v72 = _compInvestorPhone; v72.Clean = value; _compInvestorPhone = v72;
+                var v73 = _compInvestorPostalCode; v73.Clean = value; _compInvestorPostalCode = v73;
+                var v74 = _compInvestorProgramCode; v74.Clean = value; _compInvestorProgramCode = v74;
+                var v75 = _compInvestorState; v75.Clean = value; _compInvestorState = v75;
+                var v76 = _compInvestorTemplateName; v76.Clean = value; _compInvestorTemplateName = v76;
+                var v77 = _compInvestorWebsite; v77.Clean = value; _compInvestorWebsite = v77;
+                var v78 = _compSideAdjustments; v78.Clean = value; _compSideAdjustments = v78;
+                var v79 = _compSideComments; v79.Clean = value; _compSideComments = v79;
+                var v80 = _compSideComparisonedBy; v80.Clean = value; _compSideComparisonedBy = v80;
+                var v81 = _compSideCurrentRateSetDate; v81.Clean = value; _compSideCurrentRateSetDate = v81;
+                var v82 = _compSideDaystoExtend; v82.Clean = value; _compSideDaystoExtend = v82;
+                var v83 = _compSideDiscountYSP; v83.Clean = value; _compSideDiscountYSP = v83;
+                var v84 = _compSideExtendedLockExpires; v84.Clean = value; _compSideExtendedLockExpires = v84;
+                var v85 = _compSideInvestorStatus; v85.Clean = value; _compSideInvestorStatus = v85;
+                var v86 = _compSideInvestorStatusDate; v86.Clean = value; _compSideInvestorStatusDate = v86;
+                var v87 = _compSideInvestorTradeNumber; v87.Clean = value; _compSideInvestorTradeNumber = v87;
+                var v88 = _compSideLoanProgram; v88.Clean = value; _compSideLoanProgram = v88;
+                var v89 = _compSideLockDate; v89.Clean = value; _compSideLockDate = v89;
+                var v90 = _compSideLockExpires; v90.Clean = value; _compSideLockExpires = v90;
+                var v91 = _compSideLockExtendPriceAdjustment; v91.Clean = value; _compSideLockExtendPriceAdjustment = v91;
+                var v92 = _compSideMarginNetCompRate; v92.Clean = value; _compSideMarginNetCompRate = v92;
+                var v93 = _compSideMarginRate; v93.Clean = value; _compSideMarginRate = v93;
+                var v94 = _compSideMarginTotalAdjustment; v94.Clean = value; _compSideMarginTotalAdjustment = v94;
+                var v95 = _compSideMasterContractNumber; v95.Clean = value; _compSideMasterContractNumber = v95;
+                var v96 = _compSideNetCompPrice; v96.Clean = value; _compSideNetCompPrice = v96;
+                var v97 = _compSideNetCompRate; v97.Clean = value; _compSideNetCompRate = v97;
+                var v98 = _compSideNumberOfDays; v98.Clean = value; _compSideNumberOfDays = v98;
+                var v99 = _compSideOriginalLockExpires; v99.Clean = value; _compSideOriginalLockExpires = v99;
+                var v100 = _compSidePriceRate; v100.Clean = value; _compSidePriceRate = v100;
+                var v101 = _compSidePriceTotalAdjustment; v101.Clean = value; _compSidePriceTotalAdjustment = v101;
+                var v102 = _compSideRate; v102.Clean = value; _compSideRate = v102;
+                var v103 = _compSideRateSheetID; v103.Clean = value; _compSideRateSheetID = v103;
+                var v104 = _compSideRateTotalAdjustment; v104.Clean = value; _compSideRateTotalAdjustment = v104;
+                var v105 = _compSideRequestedBy; v105.Clean = value; _compSideRequestedBy = v105;
+                var v106 = _compSideServicingType; v106.Clean = value; _compSideServicingType = v106;
+                var v107 = _compSideSRPPaidOut; v107.Clean = value; _compSideSRPPaidOut = v107;
+                var v108 = _compSideTradeGuid; v108.Clean = value; _compSideTradeGuid = v108;
+                var v109 = _compSideTradeNumber; v109.Clean = value; _compSideTradeNumber = v109;
+                var v110 = _confirmedBy; v110.Clean = value; _confirmedBy = v110;
+                var v111 = _confirmedDate; v111.Clean = value; _confirmedDate = v111;
+                var v112 = _corporateApprovalDate; v112.Clean = value; _corporateApprovalDate = v112;
+                var v113 = _corporateApprovedby; v113.Clean = value; _corporateApprovedby = v113;
+                var v114 = _corporatePrice; v114.Clean = value; _corporatePrice = v114;
+                var v115 = _correspondentAdditionalEscrowAdditionalEscrow; v115.Clean = value; _correspondentAdditionalEscrowAdditionalEscrow = v115;
+                var v116 = _correspondentAdditionalEscrowAmount1007; v116.Clean = value; _correspondentAdditionalEscrowAmount1007 = v116;
+                var v117 = _correspondentAdditionalEscrowAmount1008; v117.Clean = value; _correspondentAdditionalEscrowAmount1008 = v117;
+                var v118 = _correspondentAdditionalEscrowAmount1009; v118.Clean = value; _correspondentAdditionalEscrowAmount1009 = v118;
+                var v119 = _correspondentAdditionalEscrowCityPropertyTax; v119.Clean = value; _correspondentAdditionalEscrowCityPropertyTax = v119;
+                var v120 = _correspondentAdditionalEscrowDescription1007; v120.Clean = value; _correspondentAdditionalEscrowDescription1007 = v120;
+                var v121 = _correspondentAdditionalEscrowDescription1008; v121.Clean = value; _correspondentAdditionalEscrowDescription1008 = v121;
+                var v122 = _correspondentAdditionalEscrowDescription1009; v122.Clean = value; _correspondentAdditionalEscrowDescription1009 = v122;
+                var v123 = _correspondentAdditionalEscrowFloodInsurance; v123.Clean = value; _correspondentAdditionalEscrowFloodInsurance = v123;
+                var v124 = _correspondentAdditionalEscrowHomeInsurance; v124.Clean = value; _correspondentAdditionalEscrowHomeInsurance = v124;
+                var v125 = _correspondentAdditionalEscrowMIMIP; v125.Clean = value; _correspondentAdditionalEscrowMIMIP = v125;
+                var v126 = _correspondentAdditionalEscrowNumOfPayments; v126.Clean = value; _correspondentAdditionalEscrowNumOfPayments = v126;
+                var v127 = _correspondentAdditionalEscrowOption1Amount; v127.Clean = value; _correspondentAdditionalEscrowOption1Amount = v127;
+                var v128 = _correspondentAdditionalEscrowOption1Desc; v128.Clean = value; _correspondentAdditionalEscrowOption1Desc = v128;
+                var v129 = _correspondentAdditionalEscrowOption2Amount; v129.Clean = value; _correspondentAdditionalEscrowOption2Amount = v129;
+                var v130 = _correspondentAdditionalEscrowOption2Desc; v130.Clean = value; _correspondentAdditionalEscrowOption2Desc = v130;
+                var v131 = _correspondentAdditionalEscrowPropertyTax; v131.Clean = value; _correspondentAdditionalEscrowPropertyTax = v131;
+                var v132 = _correspondentAdditionalEscrowSumOfPayments; v132.Clean = value; _correspondentAdditionalEscrowSumOfPayments = v132;
+                var v133 = _correspondentAdditionalEscrowUSDAAnnualFee; v133.Clean = value; _correspondentAdditionalEscrowUSDAAnnualFee = v133;
+                var v134 = _correspondentAdditionalLineAmount1; v134.Clean = value; _correspondentAdditionalLineAmount1 = v134;
+                var v135 = _correspondentAdditionalLineAmount10; v135.Clean = value; _correspondentAdditionalLineAmount10 = v135;
+                var v136 = _correspondentAdditionalLineAmount11; v136.Clean = value; _correspondentAdditionalLineAmount11 = v136;
+                var v137 = _correspondentAdditionalLineAmount12; v137.Clean = value; _correspondentAdditionalLineAmount12 = v137;
+                var v138 = _correspondentAdditionalLineAmount13; v138.Clean = value; _correspondentAdditionalLineAmount13 = v138;
+                var v139 = _correspondentAdditionalLineAmount2; v139.Clean = value; _correspondentAdditionalLineAmount2 = v139;
+                var v140 = _correspondentAdditionalLineAmount3; v140.Clean = value; _correspondentAdditionalLineAmount3 = v140;
+                var v141 = _correspondentAdditionalLineAmount4; v141.Clean = value; _correspondentAdditionalLineAmount4 = v141;
+                var v142 = _correspondentAdditionalLineAmount5; v142.Clean = value; _correspondentAdditionalLineAmount5 = v142;
+                var v143 = _correspondentAdditionalLineAmount6; v143.Clean = value; _correspondentAdditionalLineAmount6 = v143;
+                var v144 = _correspondentAdditionalLineAmount7; v144.Clean = value; _correspondentAdditionalLineAmount7 = v144;
+                var v145 = _correspondentAdditionalLineAmount8; v145.Clean = value; _correspondentAdditionalLineAmount8 = v145;
+                var v146 = _correspondentAdditionalLineAmount9; v146.Clean = value; _correspondentAdditionalLineAmount9 = v146;
+                var v147 = _correspondentAdditionalLineDescription1; v147.Clean = value; _correspondentAdditionalLineDescription1 = v147;
+                var v148 = _correspondentAdditionalLineDescription10; v148.Clean = value; _correspondentAdditionalLineDescription10 = v148;
+                var v149 = _correspondentAdditionalLineDescription11; v149.Clean = value; _correspondentAdditionalLineDescription11 = v149;
+                var v150 = _correspondentAdditionalLineDescription12; v150.Clean = value; _correspondentAdditionalLineDescription12 = v150;
+                var v151 = _correspondentAdditionalLineDescription2; v151.Clean = value; _correspondentAdditionalLineDescription2 = v151;
+                var v152 = _correspondentAdditionalLineDescription3; v152.Clean = value; _correspondentAdditionalLineDescription3 = v152;
+                var v153 = _correspondentAdditionalLineDescription4; v153.Clean = value; _correspondentAdditionalLineDescription4 = v153;
+                var v154 = _correspondentAdditionalLineDescription5; v154.Clean = value; _correspondentAdditionalLineDescription5 = v154;
+                var v155 = _correspondentAdditionalLineDescription6; v155.Clean = value; _correspondentAdditionalLineDescription6 = v155;
+                var v156 = _correspondentAdditionalLineDescription7; v156.Clean = value; _correspondentAdditionalLineDescription7 = v156;
+                var v157 = _correspondentAdditionalLineDescription8; v157.Clean = value; _correspondentAdditionalLineDescription8 = v157;
+                var v158 = _correspondentAdditionalLineDescription9; v158.Clean = value; _correspondentAdditionalLineDescription9 = v158;
+                var v159 = _correspondentAdditionalLineTotalAmount; v159.Clean = value; _correspondentAdditionalLineTotalAmount = v159;
+                var v160 = _correspondentAdjusterAmount1; v160.Clean = value; _correspondentAdjusterAmount1 = v160;
+                var v161 = _correspondentAdjusterAmount2; v161.Clean = value; _correspondentAdjusterAmount2 = v161;
+                var v162 = _correspondentAdjusterAmount3; v162.Clean = value; _correspondentAdjusterAmount3 = v162;
+                var v163 = _correspondentAdjusterDescription1; v163.Clean = value; _correspondentAdjusterDescription1 = v163;
+                var v164 = _correspondentAdjusterDescription2; v164.Clean = value; _correspondentAdjusterDescription2 = v164;
+                var v165 = _correspondentAdjusterDescription3; v165.Clean = value; _correspondentAdjusterDescription3 = v165;
+                var v166 = _correspondentConfirmedBy; v166.Clean = value; _correspondentConfirmedBy = v166;
+                var v167 = _correspondentConfirmedDate; v167.Clean = value; _correspondentConfirmedDate = v167;
+                var v168 = _correspondentCurrentImpounds; v168.Clean = value; _correspondentCurrentImpounds = v168;
+                var v169 = _correspondentCurrentPrincipal; v169.Clean = value; _correspondentCurrentPrincipal = v169;
+                var v170 = _correspondentDate; v170.Clean = value; _correspondentDate = v170;
+                var v171 = _correspondentEscrowDisbursementsAmount1007; v171.Clean = value; _correspondentEscrowDisbursementsAmount1007 = v171;
+                var v172 = _correspondentEscrowDisbursementsAmount1008; v172.Clean = value; _correspondentEscrowDisbursementsAmount1008 = v172;
+                var v173 = _correspondentEscrowDisbursementsAmount1009; v173.Clean = value; _correspondentEscrowDisbursementsAmount1009 = v173;
+                var v174 = _correspondentEscrowDisbursementsCityPropertyTax; v174.Clean = value; _correspondentEscrowDisbursementsCityPropertyTax = v174;
+                var v175 = _correspondentEscrowDisbursementsDescription1007; v175.Clean = value; _correspondentEscrowDisbursementsDescription1007 = v175;
+                var v176 = _correspondentEscrowDisbursementsDescription1008; v176.Clean = value; _correspondentEscrowDisbursementsDescription1008 = v176;
+                var v177 = _correspondentEscrowDisbursementsDescription1009; v177.Clean = value; _correspondentEscrowDisbursementsDescription1009 = v177;
+                var v178 = _correspondentEscrowDisbursementsEscrowsToBePaidBySeller; v178.Clean = value; _correspondentEscrowDisbursementsEscrowsToBePaidBySeller = v178;
+                var v179 = _correspondentEscrowDisbursementsEsrowFundedByInvestor; v179.Clean = value; _correspondentEscrowDisbursementsEsrowFundedByInvestor = v179;
+                var v180 = _correspondentEscrowDisbursementsFloodInsurance; v180.Clean = value; _correspondentEscrowDisbursementsFloodInsurance = v180;
+                var v181 = _correspondentEscrowDisbursementsHomeInsurance; v181.Clean = value; _correspondentEscrowDisbursementsHomeInsurance = v181;
+                var v182 = _correspondentEscrowDisbursementsMortgageInsurance; v182.Clean = value; _correspondentEscrowDisbursementsMortgageInsurance = v182;
+                var v183 = _correspondentEscrowDisbursementsOption1Amount; v183.Clean = value; _correspondentEscrowDisbursementsOption1Amount = v183;
+                var v184 = _correspondentEscrowDisbursementsOption1Desc; v184.Clean = value; _correspondentEscrowDisbursementsOption1Desc = v184;
+                var v185 = _correspondentEscrowDisbursementsOption2Amount; v185.Clean = value; _correspondentEscrowDisbursementsOption2Amount = v185;
+                var v186 = _correspondentEscrowDisbursementsOption2Desc; v186.Clean = value; _correspondentEscrowDisbursementsOption2Desc = v186;
+                var v187 = _correspondentEscrowDisbursementsPropertyTax; v187.Clean = value; _correspondentEscrowDisbursementsPropertyTax = v187;
+                var v188 = _correspondentEscrowDisbursementsUSDAAnnualFee; v188.Clean = value; _correspondentEscrowDisbursementsUSDAAnnualFee = v188;
+                var v189 = _correspondentFinalBuyAmount; v189.Clean = value; _correspondentFinalBuyAmount = v189;
+                var v190 = _correspondentFinalBuyPrice; v190.Clean = value; _correspondentFinalBuyPrice = v190;
+                var v191 = _correspondentFinalCDAggAdjAmount; v191.Clean = value; _correspondentFinalCDAggAdjAmount = v191;
+                var v192 = _correspondentFinalCDAmount1007; v192.Clean = value; _correspondentFinalCDAmount1007 = v192;
+                var v193 = _correspondentFinalCDAmount1008; v193.Clean = value; _correspondentFinalCDAmount1008 = v193;
+                var v194 = _correspondentFinalCDAmount1009; v194.Clean = value; _correspondentFinalCDAmount1009 = v194;
+                var v195 = _correspondentFinalCDCityPropertyTax; v195.Clean = value; _correspondentFinalCDCityPropertyTax = v195;
+                var v196 = _correspondentFinalCDDescription1007; v196.Clean = value; _correspondentFinalCDDescription1007 = v196;
+                var v197 = _correspondentFinalCDDescription1008; v197.Clean = value; _correspondentFinalCDDescription1008 = v197;
+                var v198 = _correspondentFinalCDDescription1009; v198.Clean = value; _correspondentFinalCDDescription1009 = v198;
+                var v199 = _correspondentFinalCDFloodInsurance; v199.Clean = value; _correspondentFinalCDFloodInsurance = v199;
+                var v200 = _correspondentFinalCDHomeInsurance; v200.Clean = value; _correspondentFinalCDHomeInsurance = v200;
+                var v201 = _correspondentFinalCDMortgageInsurance; v201.Clean = value; _correspondentFinalCDMortgageInsurance = v201;
+                var v202 = _correspondentFinalCDOption1Amount; v202.Clean = value; _correspondentFinalCDOption1Amount = v202;
+                var v203 = _correspondentFinalCDOption1Desc; v203.Clean = value; _correspondentFinalCDOption1Desc = v203;
+                var v204 = _correspondentFinalCDOption2Amount; v204.Clean = value; _correspondentFinalCDOption2Amount = v204;
+                var v205 = _correspondentFinalCDOption2Desc; v205.Clean = value; _correspondentFinalCDOption2Desc = v205;
+                var v206 = _correspondentFinalCDPropertyTax; v206.Clean = value; _correspondentFinalCDPropertyTax = v206;
+                var v207 = _correspondentFinalCDReservesCollectedAtClosing; v207.Clean = value; _correspondentFinalCDReservesCollectedAtClosing = v207;
+                var v208 = _correspondentFinalCDUSDAAnnualFee; v208.Clean = value; _correspondentFinalCDUSDAAnnualFee = v208;
+                var v209 = _correspondentFirstPaymentDate; v209.Clean = value; _correspondentFirstPaymentDate = v209;
+                var v210 = _correspondentImpounds; v210.Clean = value; _correspondentImpounds = v210;
+                var v211 = _correspondentInterest; v211.Clean = value; _correspondentInterest = v211;
+                var v212 = _correspondentInterestDays; v212.Clean = value; _correspondentInterestDays = v212;
+                var v213 = _correspondentLateFeeAmount; v213.Clean = value; _correspondentLateFeeAmount = v213;
+                var v214 = _correspondentLateFeePriceAdjustment; v214.Clean = value; _correspondentLateFeePriceAdjustment = v214;
+                var v215 = _correspondentPaidToDate; v215.Clean = value; _correspondentPaidToDate = v215;
+                var v216 = _correspondentPaymentHistoryAnticipatedPurchaseDate; v216.Clean = value; _correspondentPaymentHistoryAnticipatedPurchaseDate = v216;
+                var v217 = _correspondentPaymentHistoryCalculatedPurchasedPrincipal; v217.Clean = value; _correspondentPaymentHistoryCalculatedPurchasedPrincipal = v217;
+                var v218 = _correspondentPaymentHistoryFirstBorrowerPaymentDueDate; v218.Clean = value; _correspondentPaymentHistoryFirstBorrowerPaymentDueDate = v218;
+                var v219 = _correspondentPaymentHistoryFirstInvestorPaymentDate; v219.Clean = value; _correspondentPaymentHistoryFirstInvestorPaymentDate = v219;
+                var v220 = _correspondentPaymentHistoryNoteDate; v220.Clean = value; _correspondentPaymentHistoryNoteDate = v220;
+                var v221 = _correspondentPaymentHistoryPricipalReduction; v221.Clean = value; _correspondentPaymentHistoryPricipalReduction = v221;
+                var v222 = _correspondentPurchasedPrincipal; v222.Clean = value; _correspondentPurchasedPrincipal = v222;
+                var v223 = _correspondentReconcilationComments; v223.Clean = value; _correspondentReconcilationComments = v223;
+                var v224 = _correspondentRemainingBuydownAmount; v224.Clean = value; _correspondentRemainingBuydownAmount = v224;
+                var v225 = _correspondentSRPAmount; v225.Clean = value; _correspondentSRPAmount = v225;
+                var v226 = _correspondentTotalBuyAmount; v226.Clean = value; _correspondentTotalBuyAmount = v226;
+                var v227 = _correspondentTotalFees; v227.Clean = value; _correspondentTotalFees = v227;
+                var v228 = _correspondentWarehouseBankABANum; v228.Clean = value; _correspondentWarehouseBankABANum = v228;
+                var v229 = _correspondentWarehouseBankAcctNum; v229.Clean = value; _correspondentWarehouseBankAcctNum = v229;
+                var v230 = _correspondentWarehouseBankAddress; v230.Clean = value; _correspondentWarehouseBankAddress = v230;
+                var v231 = _correspondentWarehouseBankAddress1; v231.Clean = value; _correspondentWarehouseBankAddress1 = v231;
+                var v232 = _correspondentWarehouseBankBaileeExpirationDate; v232.Clean = value; _correspondentWarehouseBankBaileeExpirationDate = v232;
+                var v233 = _correspondentWarehouseBankBaileeLetterReceivedIndicator; v233.Clean = value; _correspondentWarehouseBankBaileeLetterReceivedIndicator = v233;
+                var v234 = _correspondentWarehouseBankBaileeLetterReqIndicator; v234.Clean = value; _correspondentWarehouseBankBaileeLetterReqIndicator = v234;
+                var v235 = _correspondentWarehouseBankCity; v235.Clean = value; _correspondentWarehouseBankCity = v235;
+                var v236 = _correspondentWarehouseBankContactEmail; v236.Clean = value; _correspondentWarehouseBankContactEmail = v236;
+                var v237 = _correspondentWarehouseBankContactFax; v237.Clean = value; _correspondentWarehouseBankContactFax = v237;
+                var v238 = _correspondentWarehouseBankContactName; v238.Clean = value; _correspondentWarehouseBankContactName = v238;
+                var v239 = _correspondentWarehouseBankContactPhone; v239.Clean = value; _correspondentWarehouseBankContactPhone = v239;
+                var v240 = _correspondentWarehouseBankDescription; v240.Clean = value; _correspondentWarehouseBankDescription = v240;
+                var v241 = _correspondentWarehouseBankId; v241.Clean = value; _correspondentWarehouseBankId = v241;
+                var v242 = _correspondentWarehouseBankName; v242.Clean = value; _correspondentWarehouseBankName = v242;
+                var v243 = _correspondentWarehouseBankNotes; v243.Clean = value; _correspondentWarehouseBankNotes = v243;
+                var v244 = _correspondentWarehouseBankSelfFunderIndicator; v244.Clean = value; _correspondentWarehouseBankSelfFunderIndicator = v244;
+                var v245 = _correspondentWarehouseBankState; v245.Clean = value; _correspondentWarehouseBankState = v245;
+                var v246 = _correspondentWarehouseBankTriPartyContractIndicator; v246.Clean = value; _correspondentWarehouseBankTriPartyContractIndicator = v246;
+                var v247 = _correspondentWarehouseBankUseDefaultContactIndicator; v247.Clean = value; _correspondentWarehouseBankUseDefaultContactIndicator = v247;
+                var v248 = _correspondentWarehouseBankWireConfirmationNumber; v248.Clean = value; _correspondentWarehouseBankWireConfirmationNumber = v248;
+                var v249 = _correspondentWarehouseBankWireInstructionsReceivedIndicator; v249.Clean = value; _correspondentWarehouseBankWireInstructionsReceivedIndicator = v249;
+                var v250 = _correspondentWarehouseBankZip; v250.Clean = value; _correspondentWarehouseBankZip = v250;
+                var v251 = _creditScoreToUse; v251.Clean = value; _creditScoreToUse = v251;
+                var v252 = _cumulatedDaystoExtend; v252.Clean = value; _cumulatedDaystoExtend = v252;
+                var v253 = _currentAdjustments; v253.Clean = value; _currentAdjustments = v253;
+                var v254 = _currentComments; v254.Clean = value; _currentComments = v254;
+                var v255 = _currentLockDate; v255.Clean = value; _currentLockDate = v255;
+                var v256 = _currentLockExpires; v256.Clean = value; _currentLockExpires = v256;
+                var v257 = _currentMarginRate; v257.Clean = value; _currentMarginRate = v257;
+                var v258 = _currentMarginRateRequested; v258.Clean = value; _currentMarginRateRequested = v258;
+                var v259 = _currentMarginTotalAdjustment; v259.Clean = value; _currentMarginTotalAdjustment = v259;
+                var v260 = _currentNumberOfDays; v260.Clean = value; _currentNumberOfDays = v260;
+                var v261 = _currentPriceRate; v261.Clean = value; _currentPriceRate = v261;
+                var v262 = _currentPriceRateRequested; v262.Clean = value; _currentPriceRateRequested = v262;
+                var v263 = _currentPriceTotalAdjustment; v263.Clean = value; _currentPriceTotalAdjustment = v263;
+                var v264 = _currentRate; v264.Clean = value; _currentRate = v264;
+                var v265 = _currentRateRequested; v265.Clean = value; _currentRateRequested = v265;
+                var v266 = _currentRateSetDate; v266.Clean = value; _currentRateSetDate = v266;
+                var v267 = _currentRateSheetID; v267.Clean = value; _currentRateSheetID = v267;
+                var v268 = _currentRateTotalAdjustment; v268.Clean = value; _currentRateTotalAdjustment = v268;
+                var v269 = _date; v269.Clean = value; _date = v269;
+                var v270 = _dateFirstPaymentToInvestor; v270.Clean = value; _dateFirstPaymentToInvestor = v270;
+                var v271 = _dateLockedWithInvestor; v271.Clean = value; _dateLockedWithInvestor = v271;
+                var v272 = _dateSold; v272.Clean = value; _dateSold = v272;
+                var v273 = _dateWarehoused; v273.Clean = value; _dateWarehoused = v273;
+                var v274 = _daysToExtend; v274.Clean = value; _daysToExtend = v274;
+                var v275 = _deliveryType; v275.Clean = value; _deliveryType = v275;
+                var v276 = _diffAmountReceived; v276.Clean = value; _diffAmountReceived = v276;
+                var v277 = _diffImpounds; v277.Clean = value; _diffImpounds = v277;
+                var v278 = _diffInterest; v278.Clean = value; _diffInterest = v278;
+                var v279 = _diffPremium; v279.Clean = value; _diffPremium = v279;
+                var v280 = _diffPrinciple; v280.Clean = value; _diffPrinciple = v280;
+                var v281 = _diffRemainingBuydownFunds; v281.Clean = value; _diffRemainingBuydownFunds = v281;
+                var v282 = _diffSellAmount; v282.Clean = value; _diffSellAmount = v282;
+                var v283 = _diffSellPrice; v283.Clean = value; _diffSellPrice = v283;
+                var v284 = _diffSellSideSRP; v284.Clean = value; _diffSellSideSRP = v284;
+                var v285 = _diffSRP; v285.Clean = value; _diffSRP = v285;
+                var v286 = _diffSRPAmount; v286.Clean = value; _diffSRPAmount = v286;
+                var v287 = _employmentBorrowerSelfEmployedIndicator1; v287.Clean = value; _employmentBorrowerSelfEmployedIndicator1 = v287;
+                var v288 = _employmentBorrowerSelfEmployedIndicator10; v288.Clean = value; _employmentBorrowerSelfEmployedIndicator10 = v288;
+                var v289 = _employmentBorrowerSelfEmployedIndicator11; v289.Clean = value; _employmentBorrowerSelfEmployedIndicator11 = v289;
+                var v290 = _employmentBorrowerSelfEmployedIndicator12; v290.Clean = value; _employmentBorrowerSelfEmployedIndicator12 = v290;
+                var v291 = _employmentBorrowerSelfEmployedIndicator2; v291.Clean = value; _employmentBorrowerSelfEmployedIndicator2 = v291;
+                var v292 = _employmentBorrowerSelfEmployedIndicator3; v292.Clean = value; _employmentBorrowerSelfEmployedIndicator3 = v292;
+                var v293 = _employmentBorrowerSelfEmployedIndicator4; v293.Clean = value; _employmentBorrowerSelfEmployedIndicator4 = v293;
+                var v294 = _employmentBorrowerSelfEmployedIndicator5; v294.Clean = value; _employmentBorrowerSelfEmployedIndicator5 = v294;
+                var v295 = _employmentBorrowerSelfEmployedIndicator6; v295.Clean = value; _employmentBorrowerSelfEmployedIndicator6 = v295;
+                var v296 = _employmentBorrowerSelfEmployedIndicator7; v296.Clean = value; _employmentBorrowerSelfEmployedIndicator7 = v296;
+                var v297 = _employmentBorrowerSelfEmployedIndicator8; v297.Clean = value; _employmentBorrowerSelfEmployedIndicator8 = v297;
+                var v298 = _employmentBorrowerSelfEmployedIndicator9; v298.Clean = value; _employmentBorrowerSelfEmployedIndicator9 = v298;
+                var v299 = _expectedAmountReceived; v299.Clean = value; _expectedAmountReceived = v299;
+                var v300 = _expectedImpounds; v300.Clean = value; _expectedImpounds = v300;
+                var v301 = _expectedInterest; v301.Clean = value; _expectedInterest = v301;
+                var v302 = _expectedPremium; v302.Clean = value; _expectedPremium = v302;
+                var v303 = _expectedPrinciple; v303.Clean = value; _expectedPrinciple = v303;
+                var v304 = _expectedRemainingBuydownFunds; v304.Clean = value; _expectedRemainingBuydownFunds = v304;
+                var v305 = _expectedSRP; v305.Clean = value; _expectedSRP = v305;
+                var v306 = _extensionRequestPending; v306.Clean = value; _extensionRequestPending = v306;
+                var v307 = _extensionSequenceNumber; v307.Clean = value; _extensionSequenceNumber = v307;
+                var v308 = _extraPayments; v308.Clean = value; _extraPayments = v308;
+                var v309 = _fHAUpfrontMIPremiumPercent; v309.Clean = value; _fHAUpfrontMIPremiumPercent = v309;
+                var v310 = _financedNumberOfUnits; v310.Clean = value; _financedNumberOfUnits = v310;
+                var v311 = _firstPaymenTo; v311.Clean = value; _firstPaymenTo = v311;
+                var v312 = _firstSubordinateAmount; v312.Clean = value; _firstSubordinateAmount = v312;
+                var v313 = _firstTimeHomebuyersIndicator; v313.Clean = value; _firstTimeHomebuyersIndicator = v313;
+                var v314 = _fNMProductPlanIdentifier; v314.Clean = value; _fNMProductPlanIdentifier = v314;
+                var v315 = _fundingAmount; v315.Clean = value; _fundingAmount = v315;
+                var v316 = _gainLossPercentage; v316.Clean = value; _gainLossPercentage = v316;
+                var v317 = _gainLossPrice; v317.Clean = value; _gainLossPrice = v317;
+                var v318 = _gainLossTotalBuyPrice; v318.Clean = value; _gainLossTotalBuyPrice = v318;
+                var v319 = _gPMRate; v319.Clean = value; _gPMRate = v319;
+                var v320 = _gPMYears; v320.Clean = value; _gPMYears = v320;
+                var v321 = _gSEPropertyType; v321.Clean = value; _gSEPropertyType = v321;
+                var v322 = _hedging; v322.Clean = value; _hedging = v322;
+                var v323 = _hELOCActualBalance; v323.Clean = value; _hELOCActualBalance = v323;
+                var v324 = _id; v324.Clean = value; _id = v324;
+                var v325 = _impounds; v325.Clean = value; _impounds = v325;
+                var v326 = _impoundType; v326.Clean = value; _impoundType = v326;
+                var v327 = _impoundWavied; v327.Clean = value; _impoundWavied = v327;
+                var v328 = _interest; v328.Clean = value; _interest = v328;
+                var v329 = _investorAddress; v329.Clean = value; _investorAddress = v329;
+                var v330 = _investorCity; v330.Clean = value; _investorCity = v330;
+                var v331 = _investorCommitment; v331.Clean = value; _investorCommitment = v331;
+                var v332 = _investorContact; v332.Clean = value; _investorContact = v332;
+                var v333 = _investorDeliveryDate; v333.Clean = value; _investorDeliveryDate = v333;
+                var v334 = _investorEmail; v334.Clean = value; _investorEmail = v334;
+                var v335 = _investorLoanNumber; v335.Clean = value; _investorLoanNumber = v335;
+                var v336 = _investorLockType; v336.Clean = value; _investorLockType = v336;
+                var v337 = _investorMERSNumber; v337.Clean = value; _investorMERSNumber = v337;
+                var v338 = _investorName; v338.Clean = value; _investorName = v338;
+                var v339 = _investorPhone; v339.Clean = value; _investorPhone = v339;
+                var v340 = _investorPostalCode; v340.Clean = value; _investorPostalCode = v340;
+                var v341 = _investorProgramCode; v341.Clean = value; _investorProgramCode = v341;
+                var v342 = _investorState; v342.Clean = value; _investorState = v342;
+                var v343 = _investorTargetDeliveryDate; v343.Clean = value; _investorTargetDeliveryDate = v343;
+                var v344 = _investorTemplateName; v344.Clean = value; _investorTemplateName = v344;
+                var v345 = _investorWebsite; v345.Clean = value; _investorWebsite = v345;
+                var v346 = _isCancelled; v346.Clean = value; _isCancelled = v346;
+                var v347 = _isDeliveryType; v347.Clean = value; _isDeliveryType = v347;
+                var v348 = _lenderPaidMortgageInsuranceIndicator; v348.Clean = value; _lenderPaidMortgageInsuranceIndicator = v348;
+                var v349 = _lienPriorityType; v349.Clean = value; _lienPriorityType = v349;
+                var v350 = _loanAmortizationTermMonths; v350.Clean = value; _loanAmortizationTermMonths = v350;
+                var v351 = _loanAmortizationType; v351.Clean = value; _loanAmortizationType = v351;
+                var v352 = _loanDocumentationType; v352.Clean = value; _loanDocumentationType = v352;
+                var v353 = _loanFor203K; v353.Clean = value; _loanFor203K = v353;
+                var v354 = _loanProgram; v354.Clean = value; _loanProgram = v354;
+                var v355 = _loanProgramFile; v355.Clean = value; _loanProgramFile = v355;
+                var v356 = _loanScheduledClosingDate; v356.Clean = value; _loanScheduledClosingDate = v356;
+                var v357 = _lockField; v357.Clean = value; _lockField = v357;
+                var v358 = _lockRequestAdjustments; v358.Clean = value; _lockRequestAdjustments = v358;
+                var v359 = _lockRequestBorrowers; v359.Clean = value; _lockRequestBorrowers = v359;
+                var v360 = _lockRequestLoanPurposeType; v360.Clean = value; _lockRequestLoanPurposeType = v360;
+                var v361 = _lTV; v361.Clean = value; _lTV = v361;
+                var v362 = _minFICO; v362.Clean = value; _minFICO = v362;
+                var v363 = _minFICO2; v363.Clean = value; _minFICO2 = v363;
+                var v364 = _mIPPaidInCash; v364.Clean = value; _mIPPaidInCash = v364;
+                var v365 = _mortgageType; v365.Clean = value; _mortgageType = v365;
+                var v366 = _netSellAmount; v366.Clean = value; _netSellAmount = v366;
+                var v367 = _netSellPrice; v367.Clean = value; _netSellPrice = v367;
+                var v368 = _nextPaymentDate; v368.Clean = value; _nextPaymentDate = v368;
+                var v369 = _noClosingCostOption; v369.Clean = value; _noClosingCostOption = v369;
+                var v370 = _oNRPLock; v370.Clean = value; _oNRPLock = v370;
+                var v371 = _otherAmortizationTypeDescription; v371.Clean = value; _otherAmortizationTypeDescription = v371;
+                var v372 = _otherSubordinateAmount; v372.Clean = value; _otherSubordinateAmount = v372;
+                var v373 = _penaltyTerm; v373.Clean = value; _penaltyTerm = v373;
+                var v374 = _perDiemInterestRoundingType; v374.Clean = value; _perDiemInterestRoundingType = v374;
+                var v375 = _planCode; v375.Clean = value; _planCode = v375;
+                var v376 = _premium; v376.Clean = value; _premium = v376;
+                var v377 = _prepayPenalty; v377.Clean = value; _prepayPenalty = v377;
+                var v378 = _priceAdjustment; v378.Clean = value; _priceAdjustment = v378;
+                var v379 = _priceAdjustments; v379.Clean = value; _priceAdjustments = v379;
+                var v380 = _pricingHistoryData; v380.Clean = value; _pricingHistoryData = v380;
+                var v381 = _pricingUpdated; v381.Clean = value; _pricingUpdated = v381;
+                var v382 = _principle; v382.Clean = value; _principle = v382;
+                var v383 = _profitMarginAdjustedBuyPrice; v383.Clean = value; _profitMarginAdjustedBuyPrice = v383;
+                var v384 = _propertyAppraisedValueAmount; v384.Clean = value; _propertyAppraisedValueAmount = v384;
+                var v385 = _propertyEstimatedValueAmount; v385.Clean = value; _propertyEstimatedValueAmount = v385;
+                var v386 = _propertyUsageType; v386.Clean = value; _propertyUsageType = v386;
+                var v387 = _purchaseAdviceNumberOfDays; v387.Clean = value; _purchaseAdviceNumberOfDays = v387;
+                var v388 = _purchaseAdvicePayouts; v388.Clean = value; _purchaseAdvicePayouts = v388;
+                var v389 = _purchasePriceAmount; v389.Clean = value; _purchasePriceAmount = v389;
+                var v390 = _rateRequestStatus; v390.Clean = value; _rateRequestStatus = v390;
+                var v391 = _rateStatus; v391.Clean = value; _rateStatus = v391;
+                var v392 = _reasonforBranchApproval; v392.Clean = value; _reasonforBranchApproval = v392;
+                var v393 = _reasonforCorporateApproval; v393.Clean = value; _reasonforCorporateApproval = v393;
+                var v394 = _reconciledDiff; v394.Clean = value; _reconciledDiff = v394;
+                var v395 = _reLockRequestPending; v395.Clean = value; _reLockRequestPending = v395;
+                var v396 = _remainingBuydownFunds; v396.Clean = value; _remainingBuydownFunds = v396;
+                var v397 = _requestComments; v397.Clean = value; _requestComments = v397;
+                var v398 = _requestCurrentRateSetDate; v398.Clean = value; _requestCurrentRateSetDate = v398;
+                var v399 = _requestDaystoExtend; v399.Clean = value; _requestDaystoExtend = v399;
+                var v400 = _requestExtendedLockExpires; v400.Clean = value; _requestExtendedLockExpires = v400;
+                var v401 = _requestFullfilledDateTime; v401.Clean = value; _requestFullfilledDateTime = v401;
+                var v402 = _requestImpoundType; v402.Clean = value; _requestImpoundType = v402;
+                var v403 = _requestImpoundWavied; v403.Clean = value; _requestImpoundWavied = v403;
+                var v404 = _requestLockCancellationComment; v404.Clean = value; _requestLockCancellationComment = v404;
+                var v405 = _requestLockCancellationDate; v405.Clean = value; _requestLockCancellationDate = v405;
+                var v406 = _requestLockDate; v406.Clean = value; _requestLockDate = v406;
+                var v407 = _requestLockExpires; v407.Clean = value; _requestLockExpires = v407;
+                var v408 = _requestLockExtendComment; v408.Clean = value; _requestLockExtendComment = v408;
+                var v409 = _requestLockExtendPriceAdjustment; v409.Clean = value; _requestLockExtendPriceAdjustment = v409;
+                var v410 = _requestLockType; v410.Clean = value; _requestLockType = v410;
+                var v411 = _requestMarginRate; v411.Clean = value; _requestMarginRate = v411;
+                var v412 = _requestMarginRateRequested; v412.Clean = value; _requestMarginRateRequested = v412;
+                var v413 = _requestMarginSRPPaidOut; v413.Clean = value; _requestMarginSRPPaidOut = v413;
+                var v414 = _requestMarginTotalAdjustment; v414.Clean = value; _requestMarginTotalAdjustment = v414;
+                var v415 = _requestNumberOfDays; v415.Clean = value; _requestNumberOfDays = v415;
+                var v416 = _requestOnrpEligible; v416.Clean = value; _requestOnrpEligible = v416;
+                var v417 = _requestOnrpLockDate; v417.Clean = value; _requestOnrpLockDate = v417;
+                var v418 = _requestOnrpLockTime; v418.Clean = value; _requestOnrpLockTime = v418;
+                var v419 = _requestOriginalLockExpires; v419.Clean = value; _requestOriginalLockExpires = v419;
+                var v420 = _requestPenaltyTerm; v420.Clean = value; _requestPenaltyTerm = v420;
+                var v421 = _requestPending; v421.Clean = value; _requestPending = v421;
+                var v422 = _requestPrepayPenalty; v422.Clean = value; _requestPrepayPenalty = v422;
+                var v423 = _requestPriceRate; v423.Clean = value; _requestPriceRate = v423;
+                var v424 = _requestPriceRateRequested; v424.Clean = value; _requestPriceRateRequested = v424;
+                var v425 = _requestPriceTotalAdjustment; v425.Clean = value; _requestPriceTotalAdjustment = v425;
+                var v426 = _requestRate; v426.Clean = value; _requestRate = v426;
+                var v427 = _requestRateRequested; v427.Clean = value; _requestRateRequested = v427;
+                var v428 = _requestRateSheetID; v428.Clean = value; _requestRateSheetID = v428;
+                var v429 = _requestRateTotalAdjustment; v429.Clean = value; _requestRateTotalAdjustment = v429;
+                var v430 = _requestStartingAdjPoint; v430.Clean = value; _requestStartingAdjPoint = v430;
+                var v431 = _requestStartingAdjRate; v431.Clean = value; _requestStartingAdjRate = v431;
+                var v432 = _requestType; v432.Clean = value; _requestType = v432;
+                var v433 = _requestUnDiscountedRate; v433.Clean = value; _requestUnDiscountedRate = v433;
+                var v434 = _roundToNearest50; v434.Clean = value; _roundToNearest50 = v434;
+                var v435 = _secondSubordinateAmount; v435.Clean = value; _secondSubordinateAmount = v435;
+                var v436 = _sellerPaidMIPremium; v436.Clean = value; _sellerPaidMIPremium = v436;
+                var v437 = _sellSideAdjustments; v437.Clean = value; _sellSideAdjustments = v437;
+                var v438 = _sellSideComments; v438.Clean = value; _sellSideComments = v438;
+                var v439 = _sellSideCommitmentContractNumber; v439.Clean = value; _sellSideCommitmentContractNumber = v439;
+                var v440 = _sellSideCommitmentDate; v440.Clean = value; _sellSideCommitmentDate = v440;
+                var v441 = _sellSideCurrentRateSetDate; v441.Clean = value; _sellSideCurrentRateSetDate = v441;
+                var v442 = _sellSideDaystoExtend; v442.Clean = value; _sellSideDaystoExtend = v442;
+                var v443 = _sellSideDiscountYSP; v443.Clean = value; _sellSideDiscountYSP = v443;
+                var v444 = _sellSideExtendedLockExpires; v444.Clean = value; _sellSideExtendedLockExpires = v444;
+                var v445 = _sellSideGuaranteeFee; v445.Clean = value; _sellSideGuaranteeFee = v445;
+                var v446 = _sellSideGuarantyBaseFee; v446.Clean = value; _sellSideGuarantyBaseFee = v446;
+                var v447 = _sellSideInvestorStatus; v447.Clean = value; _sellSideInvestorStatus = v447;
+                var v448 = _sellSideInvestorStatusDate; v448.Clean = value; _sellSideInvestorStatusDate = v448;
+                var v449 = _sellSideInvestorTradeNumber; v449.Clean = value; _sellSideInvestorTradeNumber = v449;
+                var v450 = _sellSideLoanProgram; v450.Clean = value; _sellSideLoanProgram = v450;
+                var v451 = _sellSideLockDate; v451.Clean = value; _sellSideLockDate = v451;
+                var v452 = _sellSideLockExpires; v452.Clean = value; _sellSideLockExpires = v452;
+                var v453 = _sellSideLockExtendPriceAdjustment; v453.Clean = value; _sellSideLockExtendPriceAdjustment = v453;
+                var v454 = _sellSideMarginNetSellRate; v454.Clean = value; _sellSideMarginNetSellRate = v454;
+                var v455 = _sellSideMarginRate; v455.Clean = value; _sellSideMarginRate = v455;
+                var v456 = _sellSideMarginTotalAdjustment; v456.Clean = value; _sellSideMarginTotalAdjustment = v456;
+                var v457 = _sellSideMasterContractNumber; v457.Clean = value; _sellSideMasterContractNumber = v457;
+                var v458 = _sellSideMSRValue; v458.Clean = value; _sellSideMSRValue = v458;
+                var v459 = _sellSideNetSellPrice; v459.Clean = value; _sellSideNetSellPrice = v459;
+                var v460 = _sellSideNetSellRate; v460.Clean = value; _sellSideNetSellRate = v460;
+                var v461 = _sellSideNumberOfDays; v461.Clean = value; _sellSideNumberOfDays = v461;
+                var v462 = _sellSideOriginalLockExpires; v462.Clean = value; _sellSideOriginalLockExpires = v462;
+                var v463 = _sellSidePoolID; v463.Clean = value; _sellSidePoolID = v463;
+                var v464 = _sellSidePoolNumber; v464.Clean = value; _sellSidePoolNumber = v464;
+                var v465 = _sellSidePriceRate; v465.Clean = value; _sellSidePriceRate = v465;
+                var v466 = _sellSidePriceTotalAdjustment; v466.Clean = value; _sellSidePriceTotalAdjustment = v466;
+                var v467 = _sellSideProductName; v467.Clean = value; _sellSideProductName = v467;
+                var v468 = _sellSideRate; v468.Clean = value; _sellSideRate = v468;
+                var v469 = _sellSideRateSheetID; v469.Clean = value; _sellSideRateSheetID = v469;
+                var v470 = _sellSideRateTotalAdjustment; v470.Clean = value; _sellSideRateTotalAdjustment = v470;
+                var v471 = _sellSideRequestedBy; v471.Clean = value; _sellSideRequestedBy = v471;
+                var v472 = _sellSideServicer; v472.Clean = value; _sellSideServicer = v472;
+                var v473 = _sellSideServicingFee; v473.Clean = value; _sellSideServicingFee = v473;
+                var v474 = _sellSideServicingType; v474.Clean = value; _sellSideServicingType = v474;
+                var v475 = _sellSideSRP; v475.Clean = value; _sellSideSRP = v475;
+                var v476 = _sellSideSRPPaidOut; v476.Clean = value; _sellSideSRPPaidOut = v476;
+                var v477 = _sellSideTradeGuid; v477.Clean = value; _sellSideTradeGuid = v477;
+                var v478 = _sellSideTradeMgmtPrevConfirmedLockGuid; v478.Clean = value; _sellSideTradeMgmtPrevConfirmedLockGuid = v478;
+                var v479 = _sellSideTradeNumber; v479.Clean = value; _sellSideTradeNumber = v479;
+                var v480 = _servicingReleaseIndicator; v480.Clean = value; _servicingReleaseIndicator = v480;
+                var v481 = _sRP; v481.Clean = value; _sRP = v481;
+                var v482 = _sRPAmount; v482.Clean = value; _sRPAmount = v482;
+                var v483 = _sRPPaidOut; v483.Clean = value; _sRPPaidOut = v483;
+                var v484 = _subjectPropertyCity; v484.Clean = value; _subjectPropertyCity = v484;
+                var v485 = _subjectPropertyCondotelIndicator; v485.Clean = value; _subjectPropertyCondotelIndicator = v485;
+                var v486 = _subjectPropertyCounty; v486.Clean = value; _subjectPropertyCounty = v486;
+                var v487 = _subjectPropertyNonWarrantableProjectIndicator; v487.Clean = value; _subjectPropertyNonWarrantableProjectIndicator = v487;
+                var v488 = _subjectPropertyPostalCode; v488.Clean = value; _subjectPropertyPostalCode = v488;
+                var v489 = _subjectPropertyState; v489.Clean = value; _subjectPropertyState = v489;
+                var v490 = _subjectPropertyStreetAddress; v490.Clean = value; _subjectPropertyStreetAddress = v490;
+                var v491 = _timeLockedWithInvestor; v491.Clean = value; _timeLockedWithInvestor = v491;
+                var v492 = _totalBuyPrice; v492.Clean = value; _totalBuyPrice = v492;
+                var v493 = _totalForLesserOfSumAsIs; v493.Clean = value; _totalForLesserOfSumAsIs = v493;
+                var v494 = _totalPrice; v494.Clean = value; _totalPrice = v494;
+                var v495 = _totalSubordinateFinancing; v495.Clean = value; _totalSubordinateFinancing = v495;
+                var v496 = _twelveMonthMortgageRentalHistoryIndicator; v496.Clean = value; _twelveMonthMortgageRentalHistoryIndicator = v496;
+                var v497 = _type; v497.Clean = value; _type = v497;
+                var v498 = _usePoint; v498.Clean = value; _usePoint = v498;
                 _settingClean = 0;
             }
         }

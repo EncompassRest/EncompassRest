@@ -24,12 +24,16 @@ namespace EncompassRest.Loans
         public string CannotIncreaseLEBaselineGuid { get { return _cannotIncreaseLEBaselineGuid; } set { _cannotIncreaseLEBaselineGuid = value; } }
         private Value<string> _cDInitialGuid;
         public string CDInitialGuid { get { return _cDInitialGuid; } set { _cDInitialGuid = value; } }
+        private Value<string> _cDInitialReceivedDateGuid;
+        public string CDInitialReceivedDateGuid { get { return _cDInitialReceivedDateGuid; } set { _cDInitialReceivedDateGuid = value; } }
         private Value<string> _cDLatestGuid;
         public string CDLatestGuid { get { return _cDLatestGuid; } set { _cDLatestGuid = value; } }
         private Value<string> _cDPostConGuid;
         public string CDPostConGuid { get { return _cDPostConGuid; } set { _cDPostConGuid = value; } }
         private Value<string> _cDRecentAppliedCure;
         public string CDRecentAppliedCure { get { return _cDRecentAppliedCure; } set { _cDRecentAppliedCure = value; } }
+        private Value<string> _cDRevisedReceivedDateGuid;
+        public string CDRevisedReceivedDateGuid { get { return _cDRevisedReceivedDateGuid; } set { _cDRevisedReceivedDateGuid = value; } }
         private Value<DateTime?> _chargesCannotIncrease10CD1;
         public DateTime? ChargesCannotIncrease10CD1 { get { return _chargesCannotIncrease10CD1; } set { _chargesCannotIncrease10CD1 = value; } }
         private Value<DateTime?> _chargesCannotIncrease10InitialLE1;
@@ -56,6 +60,8 @@ namespace EncompassRest.Loans
         public DateTime? ChargesThatCannotIncreaseLE1 { get { return _chargesThatCannotIncreaseLE1; } set { _chargesThatCannotIncreaseLE1 = value; } }
         private Value<string> _disclosureLogGUIDForECD;
         public string DisclosureLogGUIDForECD { get { return _disclosureLogGUIDForECD; } set { _disclosureLogGUIDForECD = value; } }
+        private Value<string> _disclosureLogGUIDReceivedForECD;
+        public string DisclosureLogGUIDReceivedForECD { get { return _disclosureLogGUIDReceivedForECD; } set { _disclosureLogGUIDReceivedForECD = value; } }
         private Value<DateTime?> _goodFaithAmountInitialLE1;
         public DateTime? GoodFaithAmountInitialLE1 { get { return _goodFaithAmountInitialLE1; } set { _goodFaithAmountInitialLE1 = value; } }
         private Value<string> _id;
@@ -70,8 +76,14 @@ namespace EncompassRest.Loans
         public string LEInitialDTGuid { get { return _lEInitialDTGuid; } set { _lEInitialDTGuid = value; } }
         private Value<string> _lEInitialGuid;
         public string LEInitialGuid { get { return _lEInitialGuid; } set { _lEInitialGuid = value; } }
+        private Value<string> _lEInitialReceivedDateGuid;
+        public string LEInitialReceivedDateGuid { get { return _lEInitialReceivedDateGuid; } set { _lEInitialReceivedDateGuid = value; } }
         private Value<string> _lELatestGuid;
         public string LELatestGuid { get { return _lELatestGuid; } set { _lELatestGuid = value; } }
+        private Value<string> _lERevisedReceivedDateGuid;
+        public string LERevisedReceivedDateGuid { get { return _lERevisedReceivedDateGuid; } set { _lERevisedReceivedDateGuid = value; } }
+        private Value<string> _lERevisedSentDateGuid;
+        public string LERevisedSentDateGuid { get { return _lERevisedSentDateGuid; } set { _lERevisedSentDateGuid = value; } }
         private Value<decimal?> _requiredCureAmount;
         public decimal? RequiredCureAmount { get { return _requiredCureAmount; } set { _requiredCureAmount = value; } }
         private Value<string> _safeHarborGuid;
@@ -93,9 +105,11 @@ namespace EncompassRest.Loans
                     && _cannotIncreaseCDBaselineGuid.Clean
                     && _cannotIncreaseLEBaselineGuid.Clean
                     && _cDInitialGuid.Clean
+                    && _cDInitialReceivedDateGuid.Clean
                     && _cDLatestGuid.Clean
                     && _cDPostConGuid.Clean
                     && _cDRecentAppliedCure.Clean
+                    && _cDRevisedReceivedDateGuid.Clean
                     && _chargesCannotIncrease10CD1.Clean
                     && _chargesCannotIncrease10InitialLE1.Clean
                     && _chargesCannotIncrease10LE1.Clean
@@ -109,6 +123,7 @@ namespace EncompassRest.Loans
                     && _chargesThatCannotIncreaseInitialLE1.Clean
                     && _chargesThatCannotIncreaseLE1.Clean
                     && _disclosureLogGUIDForECD.Clean
+                    && _disclosureLogGUIDReceivedForECD.Clean
                     && _goodFaithAmountInitialLE1.Clean
                     && _id.Clean
                     && _lEBaselineUsedCannotDecrease.Clean
@@ -116,7 +131,10 @@ namespace EncompassRest.Loans
                     && _lEBaselineUsedCannotIncrease10.Clean
                     && _lEInitialDTGuid.Clean
                     && _lEInitialGuid.Clean
+                    && _lEInitialReceivedDateGuid.Clean
                     && _lELatestGuid.Clean
+                    && _lERevisedReceivedDateGuid.Clean
+                    && _lERevisedSentDateGuid.Clean
                     && _requiredCureAmount.Clean
                     && _safeHarborGuid.Clean
                     && _sSPLGuid.Clean;
@@ -134,33 +152,39 @@ namespace EncompassRest.Loans
                 var v5 = _cannotIncreaseCDBaselineGuid; v5.Clean = value; _cannotIncreaseCDBaselineGuid = v5;
                 var v6 = _cannotIncreaseLEBaselineGuid; v6.Clean = value; _cannotIncreaseLEBaselineGuid = v6;
                 var v7 = _cDInitialGuid; v7.Clean = value; _cDInitialGuid = v7;
-                var v8 = _cDLatestGuid; v8.Clean = value; _cDLatestGuid = v8;
-                var v9 = _cDPostConGuid; v9.Clean = value; _cDPostConGuid = v9;
-                var v10 = _cDRecentAppliedCure; v10.Clean = value; _cDRecentAppliedCure = v10;
-                var v11 = _chargesCannotIncrease10CD1; v11.Clean = value; _chargesCannotIncrease10CD1 = v11;
-                var v12 = _chargesCannotIncrease10InitialLE1; v12.Clean = value; _chargesCannotIncrease10InitialLE1 = v12;
-                var v13 = _chargesCannotIncrease10LE1; v13.Clean = value; _chargesCannotIncrease10LE1 = v13;
-                var v14 = _chargesThatCanChangeCD1; v14.Clean = value; _chargesThatCanChangeCD1 = v14;
-                var v15 = _chargesThatCanChangeInitialLE1; v15.Clean = value; _chargesThatCanChangeInitialLE1 = v15;
-                var v16 = _chargesThatCanChangeLE1; v16.Clean = value; _chargesThatCanChangeLE1 = v16;
-                var v17 = _chargesThatCannotDecreaseCD1; v17.Clean = value; _chargesThatCannotDecreaseCD1 = v17;
-                var v18 = _chargesThatCannotDecreaseInitialLE1; v18.Clean = value; _chargesThatCannotDecreaseInitialLE1 = v18;
-                var v19 = _chargesThatCannotDecreaseLE1; v19.Clean = value; _chargesThatCannotDecreaseLE1 = v19;
-                var v20 = _chargesThatCannotIncreaseCD1; v20.Clean = value; _chargesThatCannotIncreaseCD1 = v20;
-                var v21 = _chargesThatCannotIncreaseInitialLE1; v21.Clean = value; _chargesThatCannotIncreaseInitialLE1 = v21;
-                var v22 = _chargesThatCannotIncreaseLE1; v22.Clean = value; _chargesThatCannotIncreaseLE1 = v22;
-                var v23 = _disclosureLogGUIDForECD; v23.Clean = value; _disclosureLogGUIDForECD = v23;
-                var v24 = _goodFaithAmountInitialLE1; v24.Clean = value; _goodFaithAmountInitialLE1 = v24;
-                var v25 = _id; v25.Clean = value; _id = v25;
-                var v26 = _lEBaselineUsedCannotDecrease; v26.Clean = value; _lEBaselineUsedCannotDecrease = v26;
-                var v27 = _lEBaselineUsedCannotIncrease; v27.Clean = value; _lEBaselineUsedCannotIncrease = v27;
-                var v28 = _lEBaselineUsedCannotIncrease10; v28.Clean = value; _lEBaselineUsedCannotIncrease10 = v28;
-                var v29 = _lEInitialDTGuid; v29.Clean = value; _lEInitialDTGuid = v29;
-                var v30 = _lEInitialGuid; v30.Clean = value; _lEInitialGuid = v30;
-                var v31 = _lELatestGuid; v31.Clean = value; _lELatestGuid = v31;
-                var v32 = _requiredCureAmount; v32.Clean = value; _requiredCureAmount = v32;
-                var v33 = _safeHarborGuid; v33.Clean = value; _safeHarborGuid = v33;
-                var v34 = _sSPLGuid; v34.Clean = value; _sSPLGuid = v34;
+                var v8 = _cDInitialReceivedDateGuid; v8.Clean = value; _cDInitialReceivedDateGuid = v8;
+                var v9 = _cDLatestGuid; v9.Clean = value; _cDLatestGuid = v9;
+                var v10 = _cDPostConGuid; v10.Clean = value; _cDPostConGuid = v10;
+                var v11 = _cDRecentAppliedCure; v11.Clean = value; _cDRecentAppliedCure = v11;
+                var v12 = _cDRevisedReceivedDateGuid; v12.Clean = value; _cDRevisedReceivedDateGuid = v12;
+                var v13 = _chargesCannotIncrease10CD1; v13.Clean = value; _chargesCannotIncrease10CD1 = v13;
+                var v14 = _chargesCannotIncrease10InitialLE1; v14.Clean = value; _chargesCannotIncrease10InitialLE1 = v14;
+                var v15 = _chargesCannotIncrease10LE1; v15.Clean = value; _chargesCannotIncrease10LE1 = v15;
+                var v16 = _chargesThatCanChangeCD1; v16.Clean = value; _chargesThatCanChangeCD1 = v16;
+                var v17 = _chargesThatCanChangeInitialLE1; v17.Clean = value; _chargesThatCanChangeInitialLE1 = v17;
+                var v18 = _chargesThatCanChangeLE1; v18.Clean = value; _chargesThatCanChangeLE1 = v18;
+                var v19 = _chargesThatCannotDecreaseCD1; v19.Clean = value; _chargesThatCannotDecreaseCD1 = v19;
+                var v20 = _chargesThatCannotDecreaseInitialLE1; v20.Clean = value; _chargesThatCannotDecreaseInitialLE1 = v20;
+                var v21 = _chargesThatCannotDecreaseLE1; v21.Clean = value; _chargesThatCannotDecreaseLE1 = v21;
+                var v22 = _chargesThatCannotIncreaseCD1; v22.Clean = value; _chargesThatCannotIncreaseCD1 = v22;
+                var v23 = _chargesThatCannotIncreaseInitialLE1; v23.Clean = value; _chargesThatCannotIncreaseInitialLE1 = v23;
+                var v24 = _chargesThatCannotIncreaseLE1; v24.Clean = value; _chargesThatCannotIncreaseLE1 = v24;
+                var v25 = _disclosureLogGUIDForECD; v25.Clean = value; _disclosureLogGUIDForECD = v25;
+                var v26 = _disclosureLogGUIDReceivedForECD; v26.Clean = value; _disclosureLogGUIDReceivedForECD = v26;
+                var v27 = _goodFaithAmountInitialLE1; v27.Clean = value; _goodFaithAmountInitialLE1 = v27;
+                var v28 = _id; v28.Clean = value; _id = v28;
+                var v29 = _lEBaselineUsedCannotDecrease; v29.Clean = value; _lEBaselineUsedCannotDecrease = v29;
+                var v30 = _lEBaselineUsedCannotIncrease; v30.Clean = value; _lEBaselineUsedCannotIncrease = v30;
+                var v31 = _lEBaselineUsedCannotIncrease10; v31.Clean = value; _lEBaselineUsedCannotIncrease10 = v31;
+                var v32 = _lEInitialDTGuid; v32.Clean = value; _lEInitialDTGuid = v32;
+                var v33 = _lEInitialGuid; v33.Clean = value; _lEInitialGuid = v33;
+                var v34 = _lEInitialReceivedDateGuid; v34.Clean = value; _lEInitialReceivedDateGuid = v34;
+                var v35 = _lELatestGuid; v35.Clean = value; _lELatestGuid = v35;
+                var v36 = _lERevisedReceivedDateGuid; v36.Clean = value; _lERevisedReceivedDateGuid = v36;
+                var v37 = _lERevisedSentDateGuid; v37.Clean = value; _lERevisedSentDateGuid = v37;
+                var v38 = _requiredCureAmount; v38.Clean = value; _requiredCureAmount = v38;
+                var v39 = _safeHarborGuid; v39.Clean = value; _safeHarborGuid = v39;
+                var v40 = _sSPLGuid; v40.Clean = value; _sSPLGuid = v40;
                 _settingClean = 0;
             }
         }

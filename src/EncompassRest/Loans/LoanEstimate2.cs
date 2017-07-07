@@ -80,6 +80,8 @@ namespace EncompassRest.Loans
         public string IndexMargin { get { return _indexMargin; } set { _indexMargin = value; } }
         private Value<int?> _initialEscrowPaymentClosingSubTotal;
         public int? InitialEscrowPaymentClosingSubTotal { get { return _initialEscrowPaymentClosingSubTotal; } set { _initialEscrowPaymentClosingSubTotal = value; } }
+        private Value<bool?> _itemizeServiceSectionCType;
+        public bool? ItemizeServiceSectionCType { get { return _itemizeServiceSectionCType; } set { _itemizeServiceSectionCType = value; } }
         private Value<int?> _lenderCredits;
         public int? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
         private Value<int?> _originationChargesSubTotal;
@@ -159,6 +161,7 @@ namespace EncompassRest.Loans
                     && _id.Clean
                     && _indexMargin.Clean
                     && _initialEscrowPaymentClosingSubTotal.Clean
+                    && _itemizeServiceSectionCType.Clean
                     && _lenderCredits.Clean
                     && _originationChargesSubTotal.Clean
                     && _otherSubTotal.Clean
@@ -219,24 +222,25 @@ namespace EncompassRest.Loans
                 var v33 = _id; v33.Clean = value; _id = v33;
                 var v34 = _indexMargin; v34.Clean = value; _indexMargin = v34;
                 var v35 = _initialEscrowPaymentClosingSubTotal; v35.Clean = value; _initialEscrowPaymentClosingSubTotal = v35;
-                var v36 = _lenderCredits; v36.Clean = value; _lenderCredits = v36;
-                var v37 = _originationChargesSubTotal; v37.Clean = value; _originationChargesSubTotal = v37;
-                var v38 = _otherSubTotal; v38.Clean = value; _otherSubTotal = v38;
-                var v39 = _prepaidsSubTotal; v39.Clean = value; _prepaidsSubTotal = v39;
-                var v40 = _sellerCreditAmount; v40.Clean = value; _sellerCreditAmount = v40;
-                var v41 = _servicesYouNotShopSubTotal; v41.Clean = value; _servicesYouNotShopSubTotal = v41;
-                var v42 = _servicesYouShopSubTotal; v42.Clean = value; _servicesYouShopSubTotal = v42;
-                var v43 = _subseqChangeMonthSuffix; v43.Clean = value; _subseqChangeMonthSuffix = v43;
-                var v44 = _taxesGovFeesSubTotal; v44.Clean = value; _taxesGovFeesSubTotal = v44;
-                var v45 = _thirdPartyPaymentsNotOtherwiseDisclosed; v45.Clean = value; _thirdPartyPaymentsNotOtherwiseDisclosed = v45;
-                var v46 = _totalClosingCosts; v46.Clean = value; _totalClosingCosts = v46;
-                var v47 = _totalLoanAndOtherCosts; v47.Clean = value; _totalLoanAndOtherCosts = v47;
-                var v48 = _totalLoanCosts; v48.Clean = value; _totalLoanCosts = v48;
-                var v49 = _totalOtherCosts; v49.Clean = value; _totalOtherCosts = v49;
-                var v50 = _unroundedTotalLoanCosts; v50.Clean = value; _unroundedTotalLoanCosts = v50;
-                var v51 = _unroundedTotalOtherCosts; v51.Clean = value; _unroundedTotalOtherCosts = v51;
-                var v52 = _useActualDownPaymentAndClosingCostsFinancedIndicator; v52.Clean = value; _useActualDownPaymentAndClosingCostsFinancedIndicator = v52;
-                var v53 = _useAlternate; v53.Clean = value; _useAlternate = v53;
+                var v36 = _itemizeServiceSectionCType; v36.Clean = value; _itemizeServiceSectionCType = v36;
+                var v37 = _lenderCredits; v37.Clean = value; _lenderCredits = v37;
+                var v38 = _originationChargesSubTotal; v38.Clean = value; _originationChargesSubTotal = v38;
+                var v39 = _otherSubTotal; v39.Clean = value; _otherSubTotal = v39;
+                var v40 = _prepaidsSubTotal; v40.Clean = value; _prepaidsSubTotal = v40;
+                var v41 = _sellerCreditAmount; v41.Clean = value; _sellerCreditAmount = v41;
+                var v42 = _servicesYouNotShopSubTotal; v42.Clean = value; _servicesYouNotShopSubTotal = v42;
+                var v43 = _servicesYouShopSubTotal; v43.Clean = value; _servicesYouShopSubTotal = v43;
+                var v44 = _subseqChangeMonthSuffix; v44.Clean = value; _subseqChangeMonthSuffix = v44;
+                var v45 = _taxesGovFeesSubTotal; v45.Clean = value; _taxesGovFeesSubTotal = v45;
+                var v46 = _thirdPartyPaymentsNotOtherwiseDisclosed; v46.Clean = value; _thirdPartyPaymentsNotOtherwiseDisclosed = v46;
+                var v47 = _totalClosingCosts; v47.Clean = value; _totalClosingCosts = v47;
+                var v48 = _totalLoanAndOtherCosts; v48.Clean = value; _totalLoanAndOtherCosts = v48;
+                var v49 = _totalLoanCosts; v49.Clean = value; _totalLoanCosts = v49;
+                var v50 = _totalOtherCosts; v50.Clean = value; _totalOtherCosts = v50;
+                var v51 = _unroundedTotalLoanCosts; v51.Clean = value; _unroundedTotalLoanCosts = v51;
+                var v52 = _unroundedTotalOtherCosts; v52.Clean = value; _unroundedTotalOtherCosts = v52;
+                var v53 = _useActualDownPaymentAndClosingCostsFinancedIndicator; v53.Clean = value; _useActualDownPaymentAndClosingCostsFinancedIndicator = v53;
+                var v54 = _useAlternate; v54.Clean = value; _useAlternate = v54;
                 _settingClean = 0;
             }
         }
