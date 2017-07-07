@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -16,10 +18,22 @@ namespace EncompassRest.Webhook
             Client = client;
         }
 
-        public async Task<WebhookSubscription> GetSubscriptionAsync(string subscriptionId)
+        public Task<WebhookSubscription> GetSubscriptionAsync(string subscriptionId)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
+            return GetSubscriptionInternalAsync(subscriptionId, response => response.Content.ReadAsAsync<WebhookSubscription>());
+        }
+
+        public Task<string> GetSubscriptionRawAsync(string subscriptionId)
+        {
+            Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
+
+            return GetSubscriptionInternalAsync(subscriptionId, response => response.Content.ReadAsStringAsync());
+        }
+
+        private async Task<T> GetSubscriptionInternalAsync<T>(string subscriptionId, Func<HttpResponseMessage, Task<T>> func)
+        {
             using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{subscriptionId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
@@ -27,11 +41,15 @@ namespace EncompassRest.Webhook
                     throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
-                return await response.Content.ReadAsAsync<WebhookSubscription>().ConfigureAwait(false);
+                return await func(response).ConfigureAwait(false);
             }
         }
 
-        public async Task<List<WebhookSubscription>> GetSubscriptionsAsync()
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync() => GetSubscriptionsInternalAsync(response => response.Content.ReadAsAsync<List<WebhookSubscription>>());
+
+        public Task<string> GetSubscriptionsRawAsync() => GetSubscriptionsInternalAsync(response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetSubscriptionsInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
         {
             using (var response = await Client.HttpClient.GetAsync(_apiPath).ConfigureAwait(false))
             {
@@ -40,7 +58,7 @@ namespace EncompassRest.Webhook
                     throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
-                return await response.Content.ReadAsAsync<List<WebhookSubscription>>().ConfigureAwait(false);
+                return await func(response).ConfigureAwait(false);
             }
         }
 

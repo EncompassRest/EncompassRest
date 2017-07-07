@@ -5,7 +5,7 @@ namespace EncompassRest.Loans.Documents
 {
     public sealed class LoanDocument
     {
-        public Guid? DocumentId { get; set; }
+        public string DocumentId { get; set; }
         public string TitleWithIndex { get; set; }
         public string ApplicationName { get; set; }
         public string MilestoneId { get; set; }

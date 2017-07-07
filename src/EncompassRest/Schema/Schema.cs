@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -16,7 +18,11 @@ namespace EncompassRest.Schema
             Client = client;
         }
 
-        public async Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false)
+        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsAsync<LoanSchema>());
+
+        public Task<string> GetLoanSchemaRawAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetLoanSchemaInternalAsync<T>(IEnumerable<string> entities, bool includeFieldExtensions, Func<HttpResponseMessage, Task<T>> func)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
@@ -32,14 +38,26 @@ namespace EncompassRest.Schema
                     throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                return await response.Content.ReadAsAsync<LoanSchema>().ConfigureAwait(false);
+                return await func(response).ConfigureAwait(false);
             }
         }
 
-        public async Task<LoanSchema> GetFieldSchemaAsync(string fieldId)
+        public Task<LoanSchema> GetFieldSchemaAsync(string fieldId)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
+            return GetFieldSchemaInternalAsync(fieldId, response => response.Content.ReadAsAsync<LoanSchema>());
+        }
+
+        public Task<string> GetFieldSchemaRawAsync(string fieldId)
+        {
+            Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
+
+            return GetFieldSchemaInternalAsync(fieldId, response => response.Content.ReadAsStringAsync());
+        }
+
+        private async Task<T> GetFieldSchemaInternalAsync<T>(string fieldId, Func<HttpResponseMessage, Task<T>> func)
+        {
             using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
@@ -47,7 +65,7 @@ namespace EncompassRest.Schema
                     throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response).ConfigureAwait(false);
                 }
 
-                return await response.Content.ReadAsAsync<LoanSchema>().ConfigureAwait(false);
+                return await func(response).ConfigureAwait(false);
             }
         }
     }

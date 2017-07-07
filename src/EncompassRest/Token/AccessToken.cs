@@ -55,16 +55,15 @@ namespace EncompassRest.Token
         }
 
         #region Public Methods
-        public async Task<TokenIntrospectionResponse> IntrospectAsync()
+        public Task<TokenIntrospectionResponse> IntrospectAsync() => IntrospectInternalAsync(response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null));
+
+        public Task<string> IntrospectRawAsync() => IntrospectInternalAsync(response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null));
+
+        private async Task<T> IntrospectInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
         {
             using (var response = await TokenClient.PostAsync("token/introspection", CreateAccessTokenContent()).ConfigureAwait(false))
             {
-                if (!response.IsSuccessStatusCode)
-                {
-                    return null;
-                }
-
-                return await response.Content.ReadAsAsync<TokenIntrospectionResponse>().ConfigureAwait(false);
+                return await func(response).ConfigureAwait(false);
             }
         }
 
