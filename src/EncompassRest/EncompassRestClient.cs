@@ -68,7 +68,7 @@ namespace EncompassRest
         private HttpClient _httpClient;
         private Loans.Loans _loans;
         private Schema.Schema _schema;
-        private Webhook.Webhook _webhooks;
+        private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
 
@@ -112,8 +112,8 @@ namespace EncompassRest
         {
             get
             {
-                Webhook.Webhook webhooks;
-                return _webhooks ?? Interlocked.CompareExchange(ref _webhooks, (webhooks = new Webhook.Webhook(this)), null) ?? webhooks;
+                Webhook.Webhook webhook;
+                return _webhook ?? Interlocked.CompareExchange(ref _webhook, (webhook = new Webhook.Webhook(this)), null) ?? webhook;
             }
         }
 
@@ -121,8 +121,8 @@ namespace EncompassRest
         {
             get
             {
-                Pipeline loans;
-                return _pipeline ?? Interlocked.CompareExchange(ref _pipeline, (loans = new Pipeline(this)), null) ?? loans;
+                Pipeline pipeline;
+                return _pipeline ?? Interlocked.CompareExchange(ref _pipeline, (pipeline = new Pipeline(this)), null) ?? pipeline;
             }
         }
 
