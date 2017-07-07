@@ -46,9 +46,6 @@ namespace EncompassRest.Token
 
         internal AccessToken(string clientId, string clientSecret, EncompassRestClient client)
         {
-            Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
-            Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
-
             _clientId = clientId;
             _clientSecret = clientSecret;
             Client = client;

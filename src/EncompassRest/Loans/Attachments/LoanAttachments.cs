@@ -64,10 +64,15 @@ namespace EncompassRest.Loans.Attachments
             }
         }
 
-        public async Task<string> GetAttachmentUrlAsync(string attachmentId)
+        public Task<string> GetAttachmentUrlAsync(string attachmentId)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
+            return GetAttachmentUrlInternalAsync(attachmentId);
+        }
+
+        private async Task<string> GetAttachmentUrlInternalAsync(string attachmentId)
+        {
             using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}/url", null).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)

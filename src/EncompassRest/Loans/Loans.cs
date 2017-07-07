@@ -178,10 +178,15 @@ namespace EncompassRest.Loans
             }
         }
 
-        public async Task DeleteLoanAsync(string loanId)
+        public Task DeleteLoanAsync(string loanId)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
+            return DeleteLoanInternalAsync(loanId);
+        }
+
+        private async Task DeleteLoanInternalAsync(string loanId)
+        {
             using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{loanId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)

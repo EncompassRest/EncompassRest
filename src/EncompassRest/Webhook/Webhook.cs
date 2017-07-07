@@ -62,10 +62,15 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public async Task<string> CreateSubscriptionAsync(string endpoint)
+        public Task<string> CreateSubscriptionAsync(string endpoint)
         {
             Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
 
+            return CreateSubscriptionInternalAsync(endpoint);
+        }
+
+        private async Task<string> CreateSubscriptionInternalAsync(string endpoint)
+        {
             using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonStreamContent.Create(new Subscription { Endpoint = endpoint })).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
@@ -77,11 +82,16 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public async Task UpdateSubscriptionAsync(string subscriptionId, string newEndpoint)
+        public Task UpdateSubscriptionAsync(string subscriptionId, string newEndpoint)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Preconditions.NotNullOrEmpty(newEndpoint, nameof(newEndpoint));
 
+            return UpdateSubscriptionInternalAsync(subscriptionId, newEndpoint);
+        }
+
+        private async Task UpdateSubscriptionInternalAsync(string subscriptionId, string newEndpoint)
+        {
             using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonStreamContent.Create(new Subscription { Endpoint = newEndpoint })).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
@@ -91,10 +101,15 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public async Task DeleteSubscriptionAsync(string subscriptionId)
+        public Task DeleteSubscriptionAsync(string subscriptionId)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
+            return DeleteSubscriptionInternalAsync(subscriptionId);
+        }
+
+        private async Task DeleteSubscriptionInternalAsync(string subscriptionId)
+        {
             using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{subscriptionId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
