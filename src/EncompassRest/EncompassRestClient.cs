@@ -61,6 +61,19 @@ namespace EncompassRest
 
         public TokenExpirationHandling TokenExpirationHandling { get; }
 
+        public TimeSpan Timeout
+        {
+            get
+            {
+                return HttpClient.Timeout;
+            }
+            set
+            {
+                HttpClient.Timeout = value;
+                AccessToken.TokenClient.Timeout = value;
+            }
+        }
+
         public Loans.Loans Loans
         {
             get

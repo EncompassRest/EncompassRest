@@ -25,7 +25,7 @@ namespace EncompassRest.Token
 
         public string Type { get; internal set; }
 
-        private HttpClient TokenClient
+        internal HttpClient TokenClient
         {
             get
             {
