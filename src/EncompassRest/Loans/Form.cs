@@ -33,10 +33,10 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _formId; v0.Clean = value; _formId = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _name; v2.Clean = value; _name = v2;
-                var v3 = _systemId; v3.Clean = value; _systemId = v3;
+                var formId = _formId; formId.Clean = value; _formId = formId;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 _settingClean = 0;
             }
         }

@@ -74,23 +74,23 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _commentList; v1.Clean = value; _commentList = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _dateUtc; v3.Clean = value; _dateUtc = v3;
-                var v4 = _days; v4.Clean = value; _days = v4;
-                var v5 = _doneIndicator; v5.Clean = value; _doneIndicator = v5;
-                var v6 = _duration; v6.Clean = value; _duration = v6;
-                var v7 = _fileAttachmentsMigrated; v7.Clean = value; _fileAttachmentsMigrated = v7;
-                var v8 = _guid; v8.Clean = value; _guid = v8;
-                var v9 = _id; v9.Clean = value; _id = v9;
-                var v10 = _isSystemSpecificIndicator; v10.Clean = value; _isSystemSpecificIndicator = v10;
-                var v11 = _logRecordIndex; v11.Clean = value; _logRecordIndex = v11;
-                var v12 = _milestoneIdString; v12.Clean = value; _milestoneIdString = v12;
-                var v13 = _reviewedIndicator; v13.Clean = value; _reviewedIndicator = v13;
-                var v14 = _roleRequired; v14.Clean = value; _roleRequired = v14;
-                var v15 = _stage; v15.Clean = value; _stage = v15;
-                var v16 = _systemId; v16.Clean = value; _systemId = v16;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var days = _days; days.Clean = value; _days = days;
+                var doneIndicator = _doneIndicator; doneIndicator.Clean = value; _doneIndicator = doneIndicator;
+                var duration = _duration; duration.Clean = value; _duration = duration;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var milestoneIdString = _milestoneIdString; milestoneIdString.Clean = value; _milestoneIdString = milestoneIdString;
+                var reviewedIndicator = _reviewedIndicator; reviewedIndicator.Clean = value; _reviewedIndicator = reviewedIndicator;
+                var roleRequired = _roleRequired; roleRequired.Clean = value; _roleRequired = roleRequired;
+                var stage = _stage; stage.Clean = value; _stage = stage;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 if (LoanAssociate != null) LoanAssociate.Clean = value;
                 _settingClean = 0;
             }

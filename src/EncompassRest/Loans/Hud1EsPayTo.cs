@@ -93,30 +93,30 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _address; v0.Clean = value; _address = v0;
-                var v1 = _amountLastPay; v1.Clean = value; _amountLastPay = v1;
-                var v2 = _amountNextDue; v2.Clean = value; _amountNextDue = v2;
-                var v3 = _city; v3.Clean = value; _city = v3;
-                var v4 = _contactName; v4.Clean = value; _contactName = v4;
-                var v5 = _coverageAmount; v5.Clean = value; _coverageAmount = v5;
-                var v6 = _datePaid; v6.Clean = value; _datePaid = v6;
-                var v7 = _delinquentDate; v7.Clean = value; _delinquentDate = v7;
-                var v8 = _email; v8.Clean = value; _email = v8;
-                var v9 = _fax; v9.Clean = value; _fax = v9;
-                var v10 = _feeType; v10.Clean = value; _feeType = v10;
-                var v11 = _hud1EsPayToIndex; v11.Clean = value; _hud1EsPayToIndex = v11;
-                var v12 = _id; v12.Clean = value; _id = v12;
-                var v13 = _maxDeductibleAmount; v13.Clean = value; _maxDeductibleAmount = v13;
-                var v14 = _maxDeductiblePercentage; v14.Clean = value; _maxDeductiblePercentage = v14;
-                var v15 = _name; v15.Clean = value; _name = v15;
-                var v16 = _nextDueDate; v16.Clean = value; _nextDueDate = v16;
-                var v17 = _paymentSchedule; v17.Clean = value; _paymentSchedule = v17;
-                var v18 = _phone; v18.Clean = value; _phone = v18;
-                var v19 = _policyNumber; v19.Clean = value; _policyNumber = v19;
-                var v20 = _postalCode; v20.Clean = value; _postalCode = v20;
-                var v21 = _premium; v21.Clean = value; _premium = v21;
-                var v22 = _renewalDate; v22.Clean = value; _renewalDate = v22;
-                var v23 = _state; v23.Clean = value; _state = v23;
+                var address = _address; address.Clean = value; _address = address;
+                var amountLastPay = _amountLastPay; amountLastPay.Clean = value; _amountLastPay = amountLastPay;
+                var amountNextDue = _amountNextDue; amountNextDue.Clean = value; _amountNextDue = amountNextDue;
+                var city = _city; city.Clean = value; _city = city;
+                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
+                var coverageAmount = _coverageAmount; coverageAmount.Clean = value; _coverageAmount = coverageAmount;
+                var datePaid = _datePaid; datePaid.Clean = value; _datePaid = datePaid;
+                var delinquentDate = _delinquentDate; delinquentDate.Clean = value; _delinquentDate = delinquentDate;
+                var email = _email; email.Clean = value; _email = email;
+                var fax = _fax; fax.Clean = value; _fax = fax;
+                var feeType = _feeType; feeType.Clean = value; _feeType = feeType;
+                var hud1EsPayToIndex = _hud1EsPayToIndex; hud1EsPayToIndex.Clean = value; _hud1EsPayToIndex = hud1EsPayToIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var maxDeductibleAmount = _maxDeductibleAmount; maxDeductibleAmount.Clean = value; _maxDeductibleAmount = maxDeductibleAmount;
+                var maxDeductiblePercentage = _maxDeductiblePercentage; maxDeductiblePercentage.Clean = value; _maxDeductiblePercentage = maxDeductiblePercentage;
+                var name = _name; name.Clean = value; _name = name;
+                var nextDueDate = _nextDueDate; nextDueDate.Clean = value; _nextDueDate = nextDueDate;
+                var paymentSchedule = _paymentSchedule; paymentSchedule.Clean = value; _paymentSchedule = paymentSchedule;
+                var phone = _phone; phone.Clean = value; _phone = phone;
+                var policyNumber = _policyNumber; policyNumber.Clean = value; _policyNumber = policyNumber;
+                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
+                var premium = _premium; premium.Clean = value; _premium = premium;
+                var renewalDate = _renewalDate; renewalDate.Clean = value; _renewalDate = renewalDate;
+                var state = _state; state.Clean = value; _state = state;
                 _settingClean = 0;
             }
         }

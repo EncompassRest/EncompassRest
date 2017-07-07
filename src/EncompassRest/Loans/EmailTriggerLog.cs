@@ -66,21 +66,21 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _body; v1.Clean = value; _body = v1;
-                var v2 = _commentList; v2.Clean = value; _commentList = v2;
-                var v3 = _comments; v3.Clean = value; _comments = v3;
-                var v4 = _dateUtc; v4.Clean = value; _dateUtc = v4;
-                var v5 = _fileAttachmentsMigrated; v5.Clean = value; _fileAttachmentsMigrated = v5;
-                var v6 = _guid; v6.Clean = value; _guid = v6;
-                var v7 = _id; v7.Clean = value; _id = v7;
-                var v8 = _inLogIndicator; v8.Clean = value; _inLogIndicator = v8;
-                var v9 = _isSystemSpecificIndicator; v9.Clean = value; _isSystemSpecificIndicator = v9;
-                var v10 = _logRecordIndex; v10.Clean = value; _logRecordIndex = v10;
-                var v11 = _recipients; v11.Clean = value; _recipients = v11;
-                var v12 = _sender; v12.Clean = value; _sender = v12;
-                var v13 = _subject; v13.Clean = value; _subject = v13;
-                var v14 = _systemId; v14.Clean = value; _systemId = v14;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var body = _body; body.Clean = value; _body = body;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var inLogIndicator = _inLogIndicator; inLogIndicator.Clean = value; _inLogIndicator = inLogIndicator;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var recipients = _recipients; recipients.Clean = value; _recipients = recipients;
+                var sender = _sender; sender.Clean = value; _sender = sender;
+                var subject = _subject; subject.Clean = value; _subject = subject;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 _settingClean = 0;
             }
         }

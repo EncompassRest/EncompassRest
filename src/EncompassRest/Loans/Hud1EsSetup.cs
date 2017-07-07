@@ -84,27 +84,27 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _annualFeePrepaid; v0.Clean = value; _annualFeePrepaid = v0;
-                var v1 = _annualFees; v1.Clean = value; _annualFees = v1;
-                var v2 = _date; v2.Clean = value; _date = v2;
-                var v3 = _floodInsDisb; v3.Clean = value; _floodInsDisb = v3;
-                var v4 = _floodInsPrepaid; v4.Clean = value; _floodInsPrepaid = v4;
-                var v5 = _hazInsDisb; v5.Clean = value; _hazInsDisb = v5;
-                var v6 = _hazInsPrepaid; v6.Clean = value; _hazInsPrepaid = v6;
-                var v7 = _hud1EsSetupIndex; v7.Clean = value; _hud1EsSetupIndex = v7;
-                var v8 = _id; v8.Clean = value; _id = v8;
-                var v9 = _mtgInsDisb; v9.Clean = value; _mtgInsDisb = v9;
-                var v10 = _mtgInsPrepaid; v10.Clean = value; _mtgInsPrepaid = v10;
-                var v11 = _schoolTaxes; v11.Clean = value; _schoolTaxes = v11;
-                var v12 = _schoolTaxesPrepaid; v12.Clean = value; _schoolTaxesPrepaid = v12;
-                var v13 = _taxDisb; v13.Clean = value; _taxDisb = v13;
-                var v14 = _taxPrepaid; v14.Clean = value; _taxPrepaid = v14;
-                var v15 = _userDefined1; v15.Clean = value; _userDefined1 = v15;
-                var v16 = _userDefined2; v16.Clean = value; _userDefined2 = v16;
-                var v17 = _userDefined3; v17.Clean = value; _userDefined3 = v17;
-                var v18 = _userDefinedPrepaid1; v18.Clean = value; _userDefinedPrepaid1 = v18;
-                var v19 = _userDefinedPrepaid2; v19.Clean = value; _userDefinedPrepaid2 = v19;
-                var v20 = _userDefinedPrepaid3; v20.Clean = value; _userDefinedPrepaid3 = v20;
+                var annualFeePrepaid = _annualFeePrepaid; annualFeePrepaid.Clean = value; _annualFeePrepaid = annualFeePrepaid;
+                var annualFees = _annualFees; annualFees.Clean = value; _annualFees = annualFees;
+                var date = _date; date.Clean = value; _date = date;
+                var floodInsDisb = _floodInsDisb; floodInsDisb.Clean = value; _floodInsDisb = floodInsDisb;
+                var floodInsPrepaid = _floodInsPrepaid; floodInsPrepaid.Clean = value; _floodInsPrepaid = floodInsPrepaid;
+                var hazInsDisb = _hazInsDisb; hazInsDisb.Clean = value; _hazInsDisb = hazInsDisb;
+                var hazInsPrepaid = _hazInsPrepaid; hazInsPrepaid.Clean = value; _hazInsPrepaid = hazInsPrepaid;
+                var hud1EsSetupIndex = _hud1EsSetupIndex; hud1EsSetupIndex.Clean = value; _hud1EsSetupIndex = hud1EsSetupIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var mtgInsDisb = _mtgInsDisb; mtgInsDisb.Clean = value; _mtgInsDisb = mtgInsDisb;
+                var mtgInsPrepaid = _mtgInsPrepaid; mtgInsPrepaid.Clean = value; _mtgInsPrepaid = mtgInsPrepaid;
+                var schoolTaxes = _schoolTaxes; schoolTaxes.Clean = value; _schoolTaxes = schoolTaxes;
+                var schoolTaxesPrepaid = _schoolTaxesPrepaid; schoolTaxesPrepaid.Clean = value; _schoolTaxesPrepaid = schoolTaxesPrepaid;
+                var taxDisb = _taxDisb; taxDisb.Clean = value; _taxDisb = taxDisb;
+                var taxPrepaid = _taxPrepaid; taxPrepaid.Clean = value; _taxPrepaid = taxPrepaid;
+                var userDefined1 = _userDefined1; userDefined1.Clean = value; _userDefined1 = userDefined1;
+                var userDefined2 = _userDefined2; userDefined2.Clean = value; _userDefined2 = userDefined2;
+                var userDefined3 = _userDefined3; userDefined3.Clean = value; _userDefined3 = userDefined3;
+                var userDefinedPrepaid1 = _userDefinedPrepaid1; userDefinedPrepaid1.Clean = value; _userDefinedPrepaid1 = userDefinedPrepaid1;
+                var userDefinedPrepaid2 = _userDefinedPrepaid2; userDefinedPrepaid2.Clean = value; _userDefinedPrepaid2 = userDefinedPrepaid2;
+                var userDefinedPrepaid3 = _userDefinedPrepaid3; userDefinedPrepaid3.Clean = value; _userDefinedPrepaid3 = userDefinedPrepaid3;
                 _settingClean = 0;
             }
         }

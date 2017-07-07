@@ -41,12 +41,12 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _dueDate; v0.Clean = value; _dueDate = v0;
-                var v1 = _followedUpDate; v1.Clean = value; _followedUpDate = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _roleId; v3.Clean = value; _roleId = v3;
-                var v4 = _systemId; v4.Clean = value; _systemId = v4;
-                var v5 = _userId; v5.Clean = value; _userId = v5;
+                var dueDate = _dueDate; dueDate.Clean = value; _dueDate = dueDate;
+                var followedUpDate = _followedUpDate; followedUpDate.Clean = value; _followedUpDate = followedUpDate;
+                var id = _id; id.Clean = value; _id = id;
+                var roleId = _roleId; roleId.Clean = value; _roleId = roleId;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
+                var userId = _userId; userId.Clean = value; _userId = userId;
                 if (LogRecord != null) LogRecord.Clean = value;
                 _settingClean = 0;
             }

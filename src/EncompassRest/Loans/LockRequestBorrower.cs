@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _equifaxScore; v0.Clean = value; _equifaxScore = v0;
-                var v1 = _experianScore; v1.Clean = value; _experianScore = v1;
-                var v2 = _firstName; v2.Clean = value; _firstName = v2;
-                var v3 = _id; v3.Clean = value; _id = v3;
-                var v4 = _isEmpty; v4.Clean = value; _isEmpty = v4;
-                var v5 = _lastName; v5.Clean = value; _lastName = v5;
-                var v6 = _lrbIndex; v6.Clean = value; _lrbIndex = v6;
-                var v7 = _sSN; v7.Clean = value; _sSN = v7;
-                var v8 = _transUnionScore; v8.Clean = value; _transUnionScore = v8;
+                var equifaxScore = _equifaxScore; equifaxScore.Clean = value; _equifaxScore = equifaxScore;
+                var experianScore = _experianScore; experianScore.Clean = value; _experianScore = experianScore;
+                var firstName = _firstName; firstName.Clean = value; _firstName = firstName;
+                var id = _id; id.Clean = value; _id = id;
+                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
+                var lastName = _lastName; lastName.Clean = value; _lastName = lastName;
+                var lrbIndex = _lrbIndex; lrbIndex.Clean = value; _lrbIndex = lrbIndex;
+                var sSN = _sSN; sSN.Clean = value; _sSN = sSN;
+                var transUnionScore = _transUnionScore; transUnionScore.Clean = value; _transUnionScore = transUnionScore;
                 _settingClean = 0;
             }
         }

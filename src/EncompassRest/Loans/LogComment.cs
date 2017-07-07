@@ -51,16 +51,16 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _addedBy; v0.Clean = value; _addedBy = v0;
-                var v1 = _addedByName; v1.Clean = value; _addedByName = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _date; v3.Clean = value; _date = v3;
-                var v4 = _forRoleId; v4.Clean = value; _forRoleId = v4;
-                var v5 = _guid; v5.Clean = value; _guid = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _isInternal; v7.Clean = value; _isInternal = v7;
-                var v8 = _reviewedBy; v8.Clean = value; _reviewedBy = v8;
-                var v9 = _reviewedDate; v9.Clean = value; _reviewedDate = v9;
+                var addedBy = _addedBy; addedBy.Clean = value; _addedBy = addedBy;
+                var addedByName = _addedByName; addedByName.Clean = value; _addedByName = addedByName;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var date = _date; date.Clean = value; _date = date;
+                var forRoleId = _forRoleId; forRoleId.Clean = value; _forRoleId = forRoleId;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isInternal = _isInternal; isInternal.Clean = value; _isInternal = isInternal;
+                var reviewedBy = _reviewedBy; reviewedBy.Clean = value; _reviewedBy = reviewedBy;
+                var reviewedDate = _reviewedDate; reviewedDate.Clean = value; _reviewedDate = reviewedDate;
                 _settingClean = 0;
             }
         }

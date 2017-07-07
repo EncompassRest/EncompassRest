@@ -45,14 +45,14 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _boolFieldValue; v0.Clean = value; _boolFieldValue = v0;
-                var v1 = _businessName; v1.Clean = value; _businessName = v1;
-                var v2 = _fieldName; v2.Clean = value; _fieldName = v2;
-                var v3 = _fieldValue; v3.Clean = value; _fieldValue = v3;
-                var v4 = _firstYearAmount; v4.Clean = value; _firstYearAmount = v4;
-                var v5 = _formType; v5.Clean = value; _formType = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _secondYearAmount; v7.Clean = value; _secondYearAmount = v7;
+                var boolFieldValue = _boolFieldValue; boolFieldValue.Clean = value; _boolFieldValue = boolFieldValue;
+                var businessName = _businessName; businessName.Clean = value; _businessName = businessName;
+                var fieldName = _fieldName; fieldName.Clean = value; _fieldName = fieldName;
+                var fieldValue = _fieldValue; fieldValue.Clean = value; _fieldValue = fieldValue;
+                var firstYearAmount = _firstYearAmount; firstYearAmount.Clean = value; _firstYearAmount = firstYearAmount;
+                var formType = _formType; formType.Clean = value; _formType = formType;
+                var id = _id; id.Clean = value; _id = id;
+                var secondYearAmount = _secondYearAmount; secondYearAmount.Clean = value; _secondYearAmount = secondYearAmount;
                 _settingClean = 0;
             }
         }

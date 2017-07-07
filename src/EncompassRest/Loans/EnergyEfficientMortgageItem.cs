@@ -39,12 +39,12 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _actualAmount; v0.Clean = value; _actualAmount = v0;
-                var v1 = _allowedAmount; v1.Clean = value; _allowedAmount = v1;
-                var v2 = _energyEfficientMortgageItemIndex; v2.Clean = value; _energyEfficientMortgageItemIndex = v2;
-                var v3 = _id; v3.Clean = value; _id = v3;
-                var v4 = _item; v4.Clean = value; _item = v4;
-                var v5 = _lineNumber; v5.Clean = value; _lineNumber = v5;
+                var actualAmount = _actualAmount; actualAmount.Clean = value; _actualAmount = actualAmount;
+                var allowedAmount = _allowedAmount; allowedAmount.Clean = value; _allowedAmount = allowedAmount;
+                var energyEfficientMortgageItemIndex = _energyEfficientMortgageItemIndex; energyEfficientMortgageItemIndex.Clean = value; _energyEfficientMortgageItemIndex = energyEfficientMortgageItemIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var item = _item; item.Clean = value; _item = item;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
                 _settingClean = 0;
             }
         }

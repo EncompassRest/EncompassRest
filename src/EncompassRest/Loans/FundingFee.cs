@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _balanceChecked; v0.Clean = value; _balanceChecked = v0;
-                var v1 = _cdLineId; v1.Clean = value; _cdLineId = v1;
-                var v2 = _feeDescription; v2.Clean = value; _feeDescription = v2;
-                var v3 = _feeDescription2015; v3.Clean = value; _feeDescription2015 = v3;
-                var v4 = _lineId; v4.Clean = value; _lineId = v4;
-                var v5 = _lineNumber; v5.Clean = value; _lineNumber = v5;
-                var v6 = _paidBy; v6.Clean = value; _paidBy = v6;
-                var v7 = _paidTo; v7.Clean = value; _paidTo = v7;
-                var v8 = _payee; v8.Clean = value; _payee = v8;
-                var v9 = _pocPaidBy; v9.Clean = value; _pocPaidBy = v9;
-                var v10 = _ptcPaidBy; v10.Clean = value; _ptcPaidBy = v10;
+                var balanceChecked = _balanceChecked; balanceChecked.Clean = value; _balanceChecked = balanceChecked;
+                var cdLineId = _cdLineId; cdLineId.Clean = value; _cdLineId = cdLineId;
+                var feeDescription = _feeDescription; feeDescription.Clean = value; _feeDescription = feeDescription;
+                var feeDescription2015 = _feeDescription2015; feeDescription2015.Clean = value; _feeDescription2015 = feeDescription2015;
+                var lineId = _lineId; lineId.Clean = value; _lineId = lineId;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
+                var paidBy = _paidBy; paidBy.Clean = value; _paidBy = paidBy;
+                var paidTo = _paidTo; paidTo.Clean = value; _paidTo = paidTo;
+                var payee = _payee; payee.Clean = value; _payee = payee;
+                var pocPaidBy = _pocPaidBy; pocPaidBy.Clean = value; _pocPaidBy = pocPaidBy;
+                var ptcPaidBy = _ptcPaidBy; ptcPaidBy.Clean = value; _ptcPaidBy = ptcPaidBy;
                 _settingClean = 0;
             }
         }

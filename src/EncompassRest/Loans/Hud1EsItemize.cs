@@ -42,13 +42,13 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _date; v0.Clean = value; _date = v0;
-                var v1 = _escrowPaymentBalance; v1.Clean = value; _escrowPaymentBalance = v1;
-                var v2 = _escrowPaymentDescription; v2.Clean = value; _escrowPaymentDescription = v2;
-                var v3 = _escrowPaymentFrom; v3.Clean = value; _escrowPaymentFrom = v3;
-                var v4 = _escrowPaymentTo; v4.Clean = value; _escrowPaymentTo = v4;
-                var v5 = _hud1EsItemizeIndex; v5.Clean = value; _hud1EsItemizeIndex = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
+                var date = _date; date.Clean = value; _date = date;
+                var escrowPaymentBalance = _escrowPaymentBalance; escrowPaymentBalance.Clean = value; _escrowPaymentBalance = escrowPaymentBalance;
+                var escrowPaymentDescription = _escrowPaymentDescription; escrowPaymentDescription.Clean = value; _escrowPaymentDescription = escrowPaymentDescription;
+                var escrowPaymentFrom = _escrowPaymentFrom; escrowPaymentFrom.Clean = value; _escrowPaymentFrom = escrowPaymentFrom;
+                var escrowPaymentTo = _escrowPaymentTo; escrowPaymentTo.Clean = value; _escrowPaymentTo = escrowPaymentTo;
+                var hud1EsItemizeIndex = _hud1EsItemizeIndex; hud1EsItemizeIndex.Clean = value; _hud1EsItemizeIndex = hud1EsItemizeIndex;
+                var id = _id; id.Clean = value; _id = id;
                 _settingClean = 0;
             }
         }

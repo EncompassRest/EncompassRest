@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _dateOfLoan; v0.Clean = value; _dateOfLoan = v0;
-                var v1 = _dateSold; v1.Clean = value; _dateSold = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _loanType; v3.Clean = value; _loanType = v3;
-                var v4 = _previousVaLoanIndex; v4.Clean = value; _previousVaLoanIndex = v4;
-                var v5 = _propertyAddress; v5.Clean = value; _propertyAddress = v5;
-                var v6 = _propertyCity; v6.Clean = value; _propertyCity = v6;
-                var v7 = _propertyOwned; v7.Clean = value; _propertyOwned = v7;
-                var v8 = _propertyPostalCode; v8.Clean = value; _propertyPostalCode = v8;
-                var v9 = _propertyState; v9.Clean = value; _propertyState = v9;
-                var v10 = _vALoanNumber; v10.Clean = value; _vALoanNumber = v10;
+                var dateOfLoan = _dateOfLoan; dateOfLoan.Clean = value; _dateOfLoan = dateOfLoan;
+                var dateSold = _dateSold; dateSold.Clean = value; _dateSold = dateSold;
+                var id = _id; id.Clean = value; _id = id;
+                var loanType = _loanType; loanType.Clean = value; _loanType = loanType;
+                var previousVaLoanIndex = _previousVaLoanIndex; previousVaLoanIndex.Clean = value; _previousVaLoanIndex = previousVaLoanIndex;
+                var propertyAddress = _propertyAddress; propertyAddress.Clean = value; _propertyAddress = propertyAddress;
+                var propertyCity = _propertyCity; propertyCity.Clean = value; _propertyCity = propertyCity;
+                var propertyOwned = _propertyOwned; propertyOwned.Clean = value; _propertyOwned = propertyOwned;
+                var propertyPostalCode = _propertyPostalCode; propertyPostalCode.Clean = value; _propertyPostalCode = propertyPostalCode;
+                var propertyState = _propertyState; propertyState.Clean = value; _propertyState = propertyState;
+                var vALoanNumber = _vALoanNumber; vALoanNumber.Clean = value; _vALoanNumber = vALoanNumber;
                 _settingClean = 0;
             }
         }

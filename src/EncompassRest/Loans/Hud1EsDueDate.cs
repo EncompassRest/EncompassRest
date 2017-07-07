@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _annualFee; v0.Clean = value; _annualFee = v0;
-                var v1 = _floodInsDisb; v1.Clean = value; _floodInsDisb = v1;
-                var v2 = _hazInsDisb; v2.Clean = value; _hazInsDisb = v2;
-                var v3 = _hud1EsDueDateIndex; v3.Clean = value; _hud1EsDueDateIndex = v3;
-                var v4 = _id; v4.Clean = value; _id = v4;
-                var v5 = _mtgInsDisb; v5.Clean = value; _mtgInsDisb = v5;
-                var v6 = _schoolTaxes; v6.Clean = value; _schoolTaxes = v6;
-                var v7 = _taxDisb; v7.Clean = value; _taxDisb = v7;
-                var v8 = _userDefined1; v8.Clean = value; _userDefined1 = v8;
-                var v9 = _userDefined2; v9.Clean = value; _userDefined2 = v9;
-                var v10 = _userDefined3; v10.Clean = value; _userDefined3 = v10;
+                var annualFee = _annualFee; annualFee.Clean = value; _annualFee = annualFee;
+                var floodInsDisb = _floodInsDisb; floodInsDisb.Clean = value; _floodInsDisb = floodInsDisb;
+                var hazInsDisb = _hazInsDisb; hazInsDisb.Clean = value; _hazInsDisb = hazInsDisb;
+                var hud1EsDueDateIndex = _hud1EsDueDateIndex; hud1EsDueDateIndex.Clean = value; _hud1EsDueDateIndex = hud1EsDueDateIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var mtgInsDisb = _mtgInsDisb; mtgInsDisb.Clean = value; _mtgInsDisb = mtgInsDisb;
+                var schoolTaxes = _schoolTaxes; schoolTaxes.Clean = value; _schoolTaxes = schoolTaxes;
+                var taxDisb = _taxDisb; taxDisb.Clean = value; _taxDisb = taxDisb;
+                var userDefined1 = _userDefined1; userDefined1.Clean = value; _userDefined1 = userDefined1;
+                var userDefined2 = _userDefined2; userDefined2.Clean = value; _userDefined2 = userDefined2;
+                var userDefined3 = _userDefined3; userDefined3.Clean = value; _userDefined3 = userDefined3;
                 _settingClean = 0;
             }
         }

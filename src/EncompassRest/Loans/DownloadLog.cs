@@ -78,25 +78,25 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _barcodePage; v1.Clean = value; _barcodePage = v1;
-                var v2 = _commentList; v2.Clean = value; _commentList = v2;
-                var v3 = _comments; v3.Clean = value; _comments = v3;
-                var v4 = _dateReceived; v4.Clean = value; _dateReceived = v4;
-                var v5 = _dateUtc; v5.Clean = value; _dateUtc = v5;
-                var v6 = _documentId; v6.Clean = value; _documentId = v6;
-                var v7 = _downloadId; v7.Clean = value; _downloadId = v7;
-                var v8 = _fileAttachmentsMigrated; v8.Clean = value; _fileAttachmentsMigrated = v8;
-                var v9 = _fileSource; v9.Clean = value; _fileSource = v9;
-                var v10 = _fileType; v10.Clean = value; _fileType = v10;
-                var v11 = _guid; v11.Clean = value; _guid = v11;
-                var v12 = _id; v12.Clean = value; _id = v12;
-                var v13 = _isSystemSpecificIndicator; v13.Clean = value; _isSystemSpecificIndicator = v13;
-                var v14 = _logRecordIndex; v14.Clean = value; _logRecordIndex = v14;
-                var v15 = _receivedBy; v15.Clean = value; _receivedBy = v15;
-                var v16 = _sender; v16.Clean = value; _sender = v16;
-                var v17 = _systemId; v17.Clean = value; _systemId = v17;
-                var v18 = _title; v18.Clean = value; _title = v18;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var barcodePage = _barcodePage; barcodePage.Clean = value; _barcodePage = barcodePage;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateReceived = _dateReceived; dateReceived.Clean = value; _dateReceived = dateReceived;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var documentId = _documentId; documentId.Clean = value; _documentId = documentId;
+                var downloadId = _downloadId; downloadId.Clean = value; _downloadId = downloadId;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var fileSource = _fileSource; fileSource.Clean = value; _fileSource = fileSource;
+                var fileType = _fileType; fileType.Clean = value; _fileType = fileType;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var receivedBy = _receivedBy; receivedBy.Clean = value; _receivedBy = receivedBy;
+                var sender = _sender; sender.Clean = value; _sender = sender;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
+                var title = _title; title.Clean = value; _title = title;
                 _settingClean = 0;
             }
         }

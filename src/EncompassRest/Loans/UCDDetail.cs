@@ -57,18 +57,18 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _feeAccountType; v0.Clean = value; _feeAccountType = v0;
-                var v1 = _feeAmount; v1.Clean = value; _feeAmount = v1;
-                var v2 = _feeDateFrom; v2.Clean = value; _feeDateFrom = v2;
-                var v3 = _feeDateTo; v3.Clean = value; _feeDateTo = v3;
-                var v4 = _feeDesc; v4.Clean = value; _feeDesc = v4;
-                var v5 = _feeIndex; v5.Clean = value; _feeIndex = v5;
-                var v6 = _feePaidBy; v6.Clean = value; _feePaidBy = v6;
-                var v7 = _feePaidTo; v7.Clean = value; _feePaidTo = v7;
-                var v8 = _feePOC; v8.Clean = value; _feePOC = v8;
-                var v9 = _id; v9.Clean = value; _id = v9;
-                var v10 = _lineNumber; v10.Clean = value; _lineNumber = v10;
-                var v11 = _section; v11.Clean = value; _section = v11;
+                var feeAccountType = _feeAccountType; feeAccountType.Clean = value; _feeAccountType = feeAccountType;
+                var feeAmount = _feeAmount; feeAmount.Clean = value; _feeAmount = feeAmount;
+                var feeDateFrom = _feeDateFrom; feeDateFrom.Clean = value; _feeDateFrom = feeDateFrom;
+                var feeDateTo = _feeDateTo; feeDateTo.Clean = value; _feeDateTo = feeDateTo;
+                var feeDesc = _feeDesc; feeDesc.Clean = value; _feeDesc = feeDesc;
+                var feeIndex = _feeIndex; feeIndex.Clean = value; _feeIndex = feeIndex;
+                var feePaidBy = _feePaidBy; feePaidBy.Clean = value; _feePaidBy = feePaidBy;
+                var feePaidTo = _feePaidTo; feePaidTo.Clean = value; _feePaidTo = feePaidTo;
+                var feePOC = _feePOC; feePOC.Clean = value; _feePOC = feePOC;
+                var id = _id; id.Clean = value; _id = id;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
+                var section = _section; section.Clean = value; _section = section;
                 _settingClean = 0;
             }
         }

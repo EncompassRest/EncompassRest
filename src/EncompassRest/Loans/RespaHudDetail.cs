@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _creditDebt; v0.Clean = value; _creditDebt = v0;
-                var v1 = _fWBC; v1.Clean = value; _fWBC = v1;
-                var v2 = _hUD1LineItemFromDate; v2.Clean = value; _hUD1LineItemFromDate = v2;
-                var v3 = _hUD1LineItemToDate; v3.Clean = value; _hUD1LineItemToDate = v3;
-                var v4 = _id; v4.Clean = value; _id = v4;
-                var v5 = _lineItemAmount; v5.Clean = value; _lineItemAmount = v5;
-                var v6 = _lineItemDescription; v6.Clean = value; _lineItemDescription = v6;
-                var v7 = _lineNumber; v7.Clean = value; _lineNumber = v7;
-                var v8 = _realValue; v8.Clean = value; _realValue = v8;
+                var creditDebt = _creditDebt; creditDebt.Clean = value; _creditDebt = creditDebt;
+                var fWBC = _fWBC; fWBC.Clean = value; _fWBC = fWBC;
+                var hUD1LineItemFromDate = _hUD1LineItemFromDate; hUD1LineItemFromDate.Clean = value; _hUD1LineItemFromDate = hUD1LineItemFromDate;
+                var hUD1LineItemToDate = _hUD1LineItemToDate; hUD1LineItemToDate.Clean = value; _hUD1LineItemToDate = hUD1LineItemToDate;
+                var id = _id; id.Clean = value; _id = id;
+                var lineItemAmount = _lineItemAmount; lineItemAmount.Clean = value; _lineItemAmount = lineItemAmount;
+                var lineItemDescription = _lineItemDescription; lineItemDescription.Clean = value; _lineItemDescription = lineItemDescription;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
+                var realValue = _realValue; realValue.Clean = value; _realValue = realValue;
                 _settingClean = 0;
             }
         }

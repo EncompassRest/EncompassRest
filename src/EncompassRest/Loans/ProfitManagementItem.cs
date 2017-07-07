@@ -42,13 +42,13 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _atPercent; v0.Clean = value; _atPercent = v0;
-                var v1 = _description; v1.Clean = value; _description = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _plusAmount; v3.Clean = value; _plusAmount = v3;
-                var v4 = _profitManagementItemIndex; v4.Clean = value; _profitManagementItemIndex = v4;
-                var v5 = _total; v5.Clean = value; _total = v5;
-                var v6 = _type; v6.Clean = value; _type = v6;
+                var atPercent = _atPercent; atPercent.Clean = value; _atPercent = atPercent;
+                var description = _description; description.Clean = value; _description = description;
+                var id = _id; id.Clean = value; _id = id;
+                var plusAmount = _plusAmount; plusAmount.Clean = value; _plusAmount = plusAmount;
+                var profitManagementItemIndex = _profitManagementItemIndex; profitManagementItemIndex.Clean = value; _profitManagementItemIndex = profitManagementItemIndex;
+                var total = _total; total.Clean = value; _total = total;
+                var type = _type; type.Clean = value; _type = type;
                 _settingClean = 0;
             }
         }

@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _date; v0.Clean = value; _date = v0;
-                var v1 = _description; v1.Clean = value; _description = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _notes; v3.Clean = value; _notes = v3;
-                var v4 = _paymentAmount; v4.Clean = value; _paymentAmount = v4;
-                var v5 = _paymentCheckNo; v5.Clean = value; _paymentCheckNo = v5;
-                var v6 = _receiptAmount; v6.Clean = value; _receiptAmount = v6;
-                var v7 = _receiptCheckNo; v7.Clean = value; _receiptCheckNo = v7;
-                var v8 = _trustAccountItemIndex; v8.Clean = value; _trustAccountItemIndex = v8;
+                var date = _date; date.Clean = value; _date = date;
+                var description = _description; description.Clean = value; _description = description;
+                var id = _id; id.Clean = value; _id = id;
+                var notes = _notes; notes.Clean = value; _notes = notes;
+                var paymentAmount = _paymentAmount; paymentAmount.Clean = value; _paymentAmount = paymentAmount;
+                var paymentCheckNo = _paymentCheckNo; paymentCheckNo.Clean = value; _paymentCheckNo = paymentCheckNo;
+                var receiptAmount = _receiptAmount; receiptAmount.Clean = value; _receiptAmount = receiptAmount;
+                var receiptCheckNo = _receiptCheckNo; receiptCheckNo.Clean = value; _receiptCheckNo = receiptCheckNo;
+                var trustAccountItemIndex = _trustAccountItemIndex; trustAccountItemIndex.Clean = value; _trustAccountItemIndex = trustAccountItemIndex;
                 _settingClean = 0;
             }
         }

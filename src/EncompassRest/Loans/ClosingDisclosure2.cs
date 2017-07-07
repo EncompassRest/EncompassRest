@@ -96,31 +96,31 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _borrowerClosingCostAtClosing; v0.Clean = value; _borrowerClosingCostAtClosing = v0;
-                var v1 = _borrowerClosingCostBeforeClosing; v1.Clean = value; _borrowerClosingCostBeforeClosing = v1;
-                var v2 = _closingCostLenderCredits; v2.Clean = value; _closingCostLenderCredits = v2;
-                var v3 = _closingCostPaidByOthers; v3.Clean = value; _closingCostPaidByOthers = v3;
-                var v4 = _id; v4.Clean = value; _id = v4;
-                var v5 = _initialEscrowSubTotal; v5.Clean = value; _initialEscrowSubTotal = v5;
-                var v6 = _lastDisclosedLenderCredits; v6.Clean = value; _lastDisclosedLenderCredits = v6;
-                var v7 = _lastDisclosedLoanCosts; v7.Clean = value; _lastDisclosedLoanCosts = v7;
-                var v8 = _lastDisclosedOtherCosts; v8.Clean = value; _lastDisclosedOtherCosts = v8;
-                var v9 = _lCAtClosing; v9.Clean = value; _lCAtClosing = v9;
-                var v10 = _originationChargesSubTotal; v10.Clean = value; _originationChargesSubTotal = v10;
-                var v11 = _otherSubTotal; v11.Clean = value; _otherSubTotal = v11;
-                var v12 = _prepaidsSubTotal; v12.Clean = value; _prepaidsSubTotal = v12;
-                var v13 = _sellerClosingCostAtClosing; v13.Clean = value; _sellerClosingCostAtClosing = v13;
-                var v14 = _sellerClosingCostBeforeClosing; v14.Clean = value; _sellerClosingCostBeforeClosing = v14;
-                var v15 = _servicesDidNotShopSubTotal; v15.Clean = value; _servicesDidNotShopSubTotal = v15;
-                var v16 = _servicesDidShopSubTotal; v16.Clean = value; _servicesDidShopSubTotal = v16;
-                var v17 = _taxesGovermentFeesSubTotal; v17.Clean = value; _taxesGovermentFeesSubTotal = v17;
-                var v18 = _totalBorrowerPaidAtClosing; v18.Clean = value; _totalBorrowerPaidAtClosing = v18;
-                var v19 = _totalBorrowerPaidBeforeClosing; v19.Clean = value; _totalBorrowerPaidBeforeClosing = v19;
-                var v20 = _totalClosingCost; v20.Clean = value; _totalClosingCost = v20;
-                var v21 = _totalLoanCost; v21.Clean = value; _totalLoanCost = v21;
-                var v22 = _totalOtherCost; v22.Clean = value; _totalOtherCost = v22;
-                var v23 = _totalOtherCostAtClosing; v23.Clean = value; _totalOtherCostAtClosing = v23;
-                var v24 = _totalOtherCostBeforeClosing; v24.Clean = value; _totalOtherCostBeforeClosing = v24;
+                var borrowerClosingCostAtClosing = _borrowerClosingCostAtClosing; borrowerClosingCostAtClosing.Clean = value; _borrowerClosingCostAtClosing = borrowerClosingCostAtClosing;
+                var borrowerClosingCostBeforeClosing = _borrowerClosingCostBeforeClosing; borrowerClosingCostBeforeClosing.Clean = value; _borrowerClosingCostBeforeClosing = borrowerClosingCostBeforeClosing;
+                var closingCostLenderCredits = _closingCostLenderCredits; closingCostLenderCredits.Clean = value; _closingCostLenderCredits = closingCostLenderCredits;
+                var closingCostPaidByOthers = _closingCostPaidByOthers; closingCostPaidByOthers.Clean = value; _closingCostPaidByOthers = closingCostPaidByOthers;
+                var id = _id; id.Clean = value; _id = id;
+                var initialEscrowSubTotal = _initialEscrowSubTotal; initialEscrowSubTotal.Clean = value; _initialEscrowSubTotal = initialEscrowSubTotal;
+                var lastDisclosedLenderCredits = _lastDisclosedLenderCredits; lastDisclosedLenderCredits.Clean = value; _lastDisclosedLenderCredits = lastDisclosedLenderCredits;
+                var lastDisclosedLoanCosts = _lastDisclosedLoanCosts; lastDisclosedLoanCosts.Clean = value; _lastDisclosedLoanCosts = lastDisclosedLoanCosts;
+                var lastDisclosedOtherCosts = _lastDisclosedOtherCosts; lastDisclosedOtherCosts.Clean = value; _lastDisclosedOtherCosts = lastDisclosedOtherCosts;
+                var lCAtClosing = _lCAtClosing; lCAtClosing.Clean = value; _lCAtClosing = lCAtClosing;
+                var originationChargesSubTotal = _originationChargesSubTotal; originationChargesSubTotal.Clean = value; _originationChargesSubTotal = originationChargesSubTotal;
+                var otherSubTotal = _otherSubTotal; otherSubTotal.Clean = value; _otherSubTotal = otherSubTotal;
+                var prepaidsSubTotal = _prepaidsSubTotal; prepaidsSubTotal.Clean = value; _prepaidsSubTotal = prepaidsSubTotal;
+                var sellerClosingCostAtClosing = _sellerClosingCostAtClosing; sellerClosingCostAtClosing.Clean = value; _sellerClosingCostAtClosing = sellerClosingCostAtClosing;
+                var sellerClosingCostBeforeClosing = _sellerClosingCostBeforeClosing; sellerClosingCostBeforeClosing.Clean = value; _sellerClosingCostBeforeClosing = sellerClosingCostBeforeClosing;
+                var servicesDidNotShopSubTotal = _servicesDidNotShopSubTotal; servicesDidNotShopSubTotal.Clean = value; _servicesDidNotShopSubTotal = servicesDidNotShopSubTotal;
+                var servicesDidShopSubTotal = _servicesDidShopSubTotal; servicesDidShopSubTotal.Clean = value; _servicesDidShopSubTotal = servicesDidShopSubTotal;
+                var taxesGovermentFeesSubTotal = _taxesGovermentFeesSubTotal; taxesGovermentFeesSubTotal.Clean = value; _taxesGovermentFeesSubTotal = taxesGovermentFeesSubTotal;
+                var totalBorrowerPaidAtClosing = _totalBorrowerPaidAtClosing; totalBorrowerPaidAtClosing.Clean = value; _totalBorrowerPaidAtClosing = totalBorrowerPaidAtClosing;
+                var totalBorrowerPaidBeforeClosing = _totalBorrowerPaidBeforeClosing; totalBorrowerPaidBeforeClosing.Clean = value; _totalBorrowerPaidBeforeClosing = totalBorrowerPaidBeforeClosing;
+                var totalClosingCost = _totalClosingCost; totalClosingCost.Clean = value; _totalClosingCost = totalClosingCost;
+                var totalLoanCost = _totalLoanCost; totalLoanCost.Clean = value; _totalLoanCost = totalLoanCost;
+                var totalOtherCost = _totalOtherCost; totalOtherCost.Clean = value; _totalOtherCost = totalOtherCost;
+                var totalOtherCostAtClosing = _totalOtherCostAtClosing; totalOtherCostAtClosing.Clean = value; _totalOtherCostAtClosing = totalOtherCostAtClosing;
+                var totalOtherCostBeforeClosing = _totalOtherCostBeforeClosing; totalOtherCostBeforeClosing.Clean = value; _totalOtherCostBeforeClosing = totalOtherCostBeforeClosing;
                 _settingClean = 0;
             }
         }

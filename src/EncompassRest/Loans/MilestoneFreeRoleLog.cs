@@ -53,16 +53,16 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _commentList; v1.Clean = value; _commentList = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _dateUtc; v3.Clean = value; _dateUtc = v3;
-                var v4 = _fileAttachmentsMigrated; v4.Clean = value; _fileAttachmentsMigrated = v4;
-                var v5 = _guid; v5.Clean = value; _guid = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _isSystemSpecificIndicator; v7.Clean = value; _isSystemSpecificIndicator = v7;
-                var v8 = _logRecordIndex; v8.Clean = value; _logRecordIndex = v8;
-                var v9 = _systemId; v9.Clean = value; _systemId = v9;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 if (LoanAssociate != null) LoanAssociate.Clean = value;
                 _settingClean = 0;
             }

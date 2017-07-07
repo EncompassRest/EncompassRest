@@ -69,22 +69,22 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _cltv; v0.Clean = value; _cltv = v0;
-                var v1 = _collateralUnderwriterScore; v1.Clean = value; _collateralUnderwriterScore = v1;
-                var v2 = _community2ndRepaymentStructure; v2.Clean = value; _community2ndRepaymentStructure = v2;
-                var v3 = _communityLending; v3.Clean = value; _communityLending = v3;
-                var v4 = _duVersion; v4.Clean = value; _duVersion = v4;
-                var v5 = _eCStatus1003; v5.Clean = value; _eCStatus1003 = v5;
-                var v6 = _hcltv; v6.Clean = value; _hcltv = v6;
-                var v7 = _id; v7.Clean = value; _id = v7;
-                var v8 = _interestedPartyContribution; v8.Clean = value; _interestedPartyContribution = v8;
-                var v9 = _ltv; v9.Clean = value; _ltv = v9;
-                var v10 = _mornetPlusCaseFileId; v10.Clean = value; _mornetPlusCaseFileId = v10;
-                var v11 = _propertyInspectionWaiverMessage; v11.Clean = value; _propertyInspectionWaiverMessage = v11;
-                var v12 = _startUpMortgage; v12.Clean = value; _startUpMortgage = v12;
-                var v13 = _uCDCollectionStatus; v13.Clean = value; _uCDCollectionStatus = v13;
-                var v14 = _uCDPStatus; v14.Clean = value; _uCDPStatus = v14;
-                var v15 = _uLDDECStatus; v15.Clean = value; _uLDDECStatus = v15;
+                var cltv = _cltv; cltv.Clean = value; _cltv = cltv;
+                var collateralUnderwriterScore = _collateralUnderwriterScore; collateralUnderwriterScore.Clean = value; _collateralUnderwriterScore = collateralUnderwriterScore;
+                var community2ndRepaymentStructure = _community2ndRepaymentStructure; community2ndRepaymentStructure.Clean = value; _community2ndRepaymentStructure = community2ndRepaymentStructure;
+                var communityLending = _communityLending; communityLending.Clean = value; _communityLending = communityLending;
+                var duVersion = _duVersion; duVersion.Clean = value; _duVersion = duVersion;
+                var eCStatus1003 = _eCStatus1003; eCStatus1003.Clean = value; _eCStatus1003 = eCStatus1003;
+                var hcltv = _hcltv; hcltv.Clean = value; _hcltv = hcltv;
+                var id = _id; id.Clean = value; _id = id;
+                var interestedPartyContribution = _interestedPartyContribution; interestedPartyContribution.Clean = value; _interestedPartyContribution = interestedPartyContribution;
+                var ltv = _ltv; ltv.Clean = value; _ltv = ltv;
+                var mornetPlusCaseFileId = _mornetPlusCaseFileId; mornetPlusCaseFileId.Clean = value; _mornetPlusCaseFileId = mornetPlusCaseFileId;
+                var propertyInspectionWaiverMessage = _propertyInspectionWaiverMessage; propertyInspectionWaiverMessage.Clean = value; _propertyInspectionWaiverMessage = propertyInspectionWaiverMessage;
+                var startUpMortgage = _startUpMortgage; startUpMortgage.Clean = value; _startUpMortgage = startUpMortgage;
+                var uCDCollectionStatus = _uCDCollectionStatus; uCDCollectionStatus.Clean = value; _uCDCollectionStatus = uCDCollectionStatus;
+                var uCDPStatus = _uCDPStatus; uCDPStatus.Clean = value; _uCDPStatus = uCDPStatus;
+                var uLDDECStatus = _uLDDECStatus; uLDDECStatus.Clean = value; _uLDDECStatus = uLDDECStatus;
                 _settingClean = 0;
             }
         }

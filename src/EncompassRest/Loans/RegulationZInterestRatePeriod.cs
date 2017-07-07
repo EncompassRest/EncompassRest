@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _adjustmentDate; v0.Clean = value; _adjustmentDate = v0;
-                var v1 = _adjustmentMonths; v1.Clean = value; _adjustmentMonths = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _interestPayment; v3.Clean = value; _interestPayment = v3;
-                var v4 = _interestPrincipalPayment; v4.Clean = value; _interestPrincipalPayment = v4;
-                var v5 = _interestRatePercent; v5.Clean = value; _interestRatePercent = v5;
-                var v6 = _monthlyPayment; v6.Clean = value; _monthlyPayment = v6;
-                var v7 = _principalPayment; v7.Clean = value; _principalPayment = v7;
-                var v8 = _regulationZInterestRatePeriodType; v8.Clean = value; _regulationZInterestRatePeriodType = v8;
-                var v9 = _taxInsuranceAmount; v9.Clean = value; _taxInsuranceAmount = v9;
-                var v10 = _totalPayment; v10.Clean = value; _totalPayment = v10;
+                var adjustmentDate = _adjustmentDate; adjustmentDate.Clean = value; _adjustmentDate = adjustmentDate;
+                var adjustmentMonths = _adjustmentMonths; adjustmentMonths.Clean = value; _adjustmentMonths = adjustmentMonths;
+                var id = _id; id.Clean = value; _id = id;
+                var interestPayment = _interestPayment; interestPayment.Clean = value; _interestPayment = interestPayment;
+                var interestPrincipalPayment = _interestPrincipalPayment; interestPrincipalPayment.Clean = value; _interestPrincipalPayment = interestPrincipalPayment;
+                var interestRatePercent = _interestRatePercent; interestRatePercent.Clean = value; _interestRatePercent = interestRatePercent;
+                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
+                var principalPayment = _principalPayment; principalPayment.Clean = value; _principalPayment = principalPayment;
+                var regulationZInterestRatePeriodType = _regulationZInterestRatePeriodType; regulationZInterestRatePeriodType.Clean = value; _regulationZInterestRatePeriodType = regulationZInterestRatePeriodType;
+                var taxInsuranceAmount = _taxInsuranceAmount; taxInsuranceAmount.Clean = value; _taxInsuranceAmount = taxInsuranceAmount;
+                var totalPayment = _totalPayment; totalPayment.Clean = value; _totalPayment = totalPayment;
                 _settingClean = 0;
             }
         }

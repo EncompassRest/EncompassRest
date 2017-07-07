@@ -81,26 +81,26 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _fixedRate; v0.Clean = value; _fixedRate = v0;
-                var v1 = _gfePaymentIndex; v1.Clean = value; _gfePaymentIndex = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _indexRate; v3.Clean = value; _indexRate = v3;
-                var v4 = _isBalanceReduced; v4.Clean = value; _isBalanceReduced = v4;
-                var v5 = _loanTypeExplanation; v5.Clean = value; _loanTypeExplanation = v5;
-                var v6 = _marginRate; v6.Clean = value; _marginRate = v6;
-                var v7 = _maximumDifference; v7.Clean = value; _maximumDifference = v7;
-                var v8 = _maximumRate; v8.Clean = value; _maximumRate = v8;
-                var v9 = _minimumDifference; v9.Clean = value; _minimumDifference = v9;
-                var v10 = _minimumMonthlyPayment; v10.Clean = value; _minimumMonthlyPayment = v10;
-                var v11 = _monthlyPaymentYear1; v11.Clean = value; _monthlyPaymentYear1 = v11;
-                var v12 = _monthlyPaymentYear6; v12.Clean = value; _monthlyPaymentYear6 = v12;
-                var v13 = _monthlyPaymentYear6Change; v13.Clean = value; _monthlyPaymentYear6Change = v13;
-                var v14 = _monthlyPaymentYear6MaxChange; v14.Clean = value; _monthlyPaymentYear6MaxChange = v14;
-                var v15 = _notOfferedIndicator; v15.Clean = value; _notOfferedIndicator = v15;
-                var v16 = _owedAfter5Years; v16.Clean = value; _owedAfter5Years = v16;
-                var v17 = _rateInMonth2; v17.Clean = value; _rateInMonth2 = v17;
-                var v18 = _reducedLoanBalance; v18.Clean = value; _reducedLoanBalance = v18;
-                var v19 = _reducedStatus; v19.Clean = value; _reducedStatus = v19;
+                var fixedRate = _fixedRate; fixedRate.Clean = value; _fixedRate = fixedRate;
+                var gfePaymentIndex = _gfePaymentIndex; gfePaymentIndex.Clean = value; _gfePaymentIndex = gfePaymentIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var indexRate = _indexRate; indexRate.Clean = value; _indexRate = indexRate;
+                var isBalanceReduced = _isBalanceReduced; isBalanceReduced.Clean = value; _isBalanceReduced = isBalanceReduced;
+                var loanTypeExplanation = _loanTypeExplanation; loanTypeExplanation.Clean = value; _loanTypeExplanation = loanTypeExplanation;
+                var marginRate = _marginRate; marginRate.Clean = value; _marginRate = marginRate;
+                var maximumDifference = _maximumDifference; maximumDifference.Clean = value; _maximumDifference = maximumDifference;
+                var maximumRate = _maximumRate; maximumRate.Clean = value; _maximumRate = maximumRate;
+                var minimumDifference = _minimumDifference; minimumDifference.Clean = value; _minimumDifference = minimumDifference;
+                var minimumMonthlyPayment = _minimumMonthlyPayment; minimumMonthlyPayment.Clean = value; _minimumMonthlyPayment = minimumMonthlyPayment;
+                var monthlyPaymentYear1 = _monthlyPaymentYear1; monthlyPaymentYear1.Clean = value; _monthlyPaymentYear1 = monthlyPaymentYear1;
+                var monthlyPaymentYear6 = _monthlyPaymentYear6; monthlyPaymentYear6.Clean = value; _monthlyPaymentYear6 = monthlyPaymentYear6;
+                var monthlyPaymentYear6Change = _monthlyPaymentYear6Change; monthlyPaymentYear6Change.Clean = value; _monthlyPaymentYear6Change = monthlyPaymentYear6Change;
+                var monthlyPaymentYear6MaxChange = _monthlyPaymentYear6MaxChange; monthlyPaymentYear6MaxChange.Clean = value; _monthlyPaymentYear6MaxChange = monthlyPaymentYear6MaxChange;
+                var notOfferedIndicator = _notOfferedIndicator; notOfferedIndicator.Clean = value; _notOfferedIndicator = notOfferedIndicator;
+                var owedAfter5Years = _owedAfter5Years; owedAfter5Years.Clean = value; _owedAfter5Years = owedAfter5Years;
+                var rateInMonth2 = _rateInMonth2; rateInMonth2.Clean = value; _rateInMonth2 = rateInMonth2;
+                var reducedLoanBalance = _reducedLoanBalance; reducedLoanBalance.Clean = value; _reducedLoanBalance = reducedLoanBalance;
+                var reducedStatus = _reducedStatus; reducedStatus.Clean = value; _reducedStatus = reducedStatus;
                 _settingClean = 0;
             }
         }

@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _cellPhone; v0.Clean = value; _cellPhone = v0;
-                var v1 = _email; v1.Clean = value; _email = v1;
-                var v2 = _fax; v2.Clean = value; _fax = v2;
-                var v3 = _id; v3.Clean = value; _id = v3;
-                var v4 = _idString; v4.Clean = value; _idString = v4;
-                var v5 = _loanAssociateType; v5.Clean = value; _loanAssociateType = v5;
-                var v6 = _name; v6.Clean = value; _name = v6;
-                var v7 = _phone; v7.Clean = value; _phone = v7;
-                var v8 = _roleId; v8.Clean = value; _roleId = v8;
-                var v9 = _roleName; v9.Clean = value; _roleName = v9;
-                var v10 = _writeAccess; v10.Clean = value; _writeAccess = v10;
+                var cellPhone = _cellPhone; cellPhone.Clean = value; _cellPhone = cellPhone;
+                var email = _email; email.Clean = value; _email = email;
+                var fax = _fax; fax.Clean = value; _fax = fax;
+                var id = _id; id.Clean = value; _id = id;
+                var idString = _idString; idString.Clean = value; _idString = idString;
+                var loanAssociateType = _loanAssociateType; loanAssociateType.Clean = value; _loanAssociateType = loanAssociateType;
+                var name = _name; name.Clean = value; _name = name;
+                var phone = _phone; phone.Clean = value; _phone = phone;
+                var roleId = _roleId; roleId.Clean = value; _roleId = roleId;
+                var roleName = _roleName; roleName.Clean = value; _roleName = roleName;
+                var writeAccess = _writeAccess; writeAccess.Clean = value; _writeAccess = writeAccess;
                 _settingClean = 0;
             }
         }

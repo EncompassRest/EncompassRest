@@ -66,21 +66,21 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alertIndicator; v0.Clean = value; _alertIndicator = v0;
-                var v1 = _alertsXml; v1.Clean = value; _alertsXml = v1;
-                var v2 = _cancelledBy; v2.Clean = value; _cancelledBy = v2;
-                var v3 = _cancelledById; v3.Clean = value; _cancelledById = v3;
-                var v4 = _commentListXml; v4.Clean = value; _commentListXml = v4;
-                var v5 = _comments; v5.Clean = value; _comments = v5;
-                var v6 = _dateUtc; v6.Clean = value; _dateUtc = v6;
-                var v7 = _fileAttachmentsMigrated; v7.Clean = value; _fileAttachmentsMigrated = v7;
-                var v8 = _guid; v8.Clean = value; _guid = v8;
-                var v9 = _id; v9.Clean = value; _id = v9;
-                var v10 = _isSystemSpecificIndicator; v10.Clean = value; _isSystemSpecificIndicator = v10;
-                var v11 = _logRecordIndex; v11.Clean = value; _logRecordIndex = v11;
-                var v12 = _requestGuid; v12.Clean = value; _requestGuid = v12;
-                var v13 = _systemId; v13.Clean = value; _systemId = v13;
-                var v14 = _timeCancelled; v14.Clean = value; _timeCancelled = v14;
+                var alertIndicator = _alertIndicator; alertIndicator.Clean = value; _alertIndicator = alertIndicator;
+                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
+                var cancelledBy = _cancelledBy; cancelledBy.Clean = value; _cancelledBy = cancelledBy;
+                var cancelledById = _cancelledById; cancelledById.Clean = value; _cancelledById = cancelledById;
+                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var requestGuid = _requestGuid; requestGuid.Clean = value; _requestGuid = requestGuid;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
+                var timeCancelled = _timeCancelled; timeCancelled.Clean = value; _timeCancelled = timeCancelled;
                 _settingClean = 0;
             }
         }

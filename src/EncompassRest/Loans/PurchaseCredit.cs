@@ -30,9 +30,9 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _amount; v0.Clean = value; _amount = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _purchaseCreditType; v2.Clean = value; _purchaseCreditType = v2;
+                var amount = _amount; amount.Clean = value; _amount = amount;
+                var id = _id; id.Clean = value; _id = id;
+                var purchaseCreditType = _purchaseCreditType; purchaseCreditType.Clean = value; _purchaseCreditType = purchaseCreditType;
                 _settingClean = 0;
             }
         }

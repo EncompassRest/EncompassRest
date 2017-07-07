@@ -72,23 +72,23 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _commentList; v1.Clean = value; _commentList = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _currentIndicator; v3.Clean = value; _currentIndicator = v3;
-                var v4 = _dateUtc; v4.Clean = value; _dateUtc = v4;
-                var v5 = _expiredDate; v5.Clean = value; _expiredDate = v5;
-                var v6 = _fileAttachmentsMigrated; v6.Clean = value; _fileAttachmentsMigrated = v6;
-                var v7 = _guid; v7.Clean = value; _guid = v7;
-                var v8 = _id; v8.Clean = value; _id = v8;
-                var v9 = _investorName; v9.Clean = value; _investorName = v9;
-                var v10 = _isSystemSpecificIndicator; v10.Clean = value; _isSystemSpecificIndicator = v10;
-                var v11 = _logRecordIndex; v11.Clean = value; _logRecordIndex = v11;
-                var v12 = _reference; v12.Clean = value; _reference = v12;
-                var v13 = _registeredById; v13.Clean = value; _registeredById = v13;
-                var v14 = _registeredByName; v14.Clean = value; _registeredByName = v14;
-                var v15 = _registeredDate; v15.Clean = value; _registeredDate = v15;
-                var v16 = _systemId; v16.Clean = value; _systemId = v16;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var currentIndicator = _currentIndicator; currentIndicator.Clean = value; _currentIndicator = currentIndicator;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var expiredDate = _expiredDate; expiredDate.Clean = value; _expiredDate = expiredDate;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var investorName = _investorName; investorName.Clean = value; _investorName = investorName;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var reference = _reference; reference.Clean = value; _reference = reference;
+                var registeredById = _registeredById; registeredById.Clean = value; _registeredById = registeredById;
+                var registeredByName = _registeredByName; registeredByName.Clean = value; _registeredByName = registeredByName;
+                var registeredDate = _registeredDate; registeredDate.Clean = value; _registeredDate = registeredDate;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 _settingClean = 0;
             }
         }

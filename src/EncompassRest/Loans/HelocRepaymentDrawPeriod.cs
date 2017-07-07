@@ -42,13 +42,13 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _apr; v0.Clean = value; _apr = v0;
-                var v1 = _drawIndicator; v1.Clean = value; _drawIndicator = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _indexRatePercent; v3.Clean = value; _indexRatePercent = v3;
-                var v4 = _marginRatePercent; v4.Clean = value; _marginRatePercent = v4;
-                var v5 = _minimumMonthlyPaymentAmount; v5.Clean = value; _minimumMonthlyPaymentAmount = v5;
-                var v6 = _year; v6.Clean = value; _year = v6;
+                var apr = _apr; apr.Clean = value; _apr = apr;
+                var drawIndicator = _drawIndicator; drawIndicator.Clean = value; _drawIndicator = drawIndicator;
+                var id = _id; id.Clean = value; _id = id;
+                var indexRatePercent = _indexRatePercent; indexRatePercent.Clean = value; _indexRatePercent = indexRatePercent;
+                var marginRatePercent = _marginRatePercent; marginRatePercent.Clean = value; _marginRatePercent = marginRatePercent;
+                var minimumMonthlyPaymentAmount = _minimumMonthlyPaymentAmount; minimumMonthlyPaymentAmount.Clean = value; _minimumMonthlyPaymentAmount = minimumMonthlyPaymentAmount;
+                var year = _year; year.Clean = value; _year = year;
                 _settingClean = 0;
             }
         }

@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _address; v0.Clean = value; _address = v0;
-                var v1 = _amount; v1.Clean = value; _amount = v1;
-                var v2 = _city; v2.Clean = value; _city = v2;
-                var v3 = _comments; v3.Clean = value; _comments = v3;
-                var v4 = _date; v4.Clean = value; _date = v4;
-                var v5 = _feeType; v5.Clean = value; _feeType = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _name; v7.Clean = value; _name = v7;
-                var v8 = _newYorkFeeIndex; v8.Clean = value; _newYorkFeeIndex = v8;
-                var v9 = _postalCode; v9.Clean = value; _postalCode = v9;
-                var v10 = _state; v10.Clean = value; _state = v10;
+                var address = _address; address.Clean = value; _address = address;
+                var amount = _amount; amount.Clean = value; _amount = amount;
+                var city = _city; city.Clean = value; _city = city;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var date = _date; date.Clean = value; _date = date;
+                var feeType = _feeType; feeType.Clean = value; _feeType = feeType;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var newYorkFeeIndex = _newYorkFeeIndex; newYorkFeeIndex.Clean = value; _newYorkFeeIndex = newYorkFeeIndex;
+                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
+                var state = _state; state.Clean = value; _state = state;
                 _settingClean = 0;
             }
         }

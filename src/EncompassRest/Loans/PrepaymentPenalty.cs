@@ -33,10 +33,10 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _fullPrepaymentPenaltyOptionType; v0.Clean = value; _fullPrepaymentPenaltyOptionType = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _prepaymentPenaltyPercent; v2.Clean = value; _prepaymentPenaltyPercent = v2;
-                var v3 = _termMonthsCount; v3.Clean = value; _termMonthsCount = v3;
+                var fullPrepaymentPenaltyOptionType = _fullPrepaymentPenaltyOptionType; fullPrepaymentPenaltyOptionType.Clean = value; _fullPrepaymentPenaltyOptionType = fullPrepaymentPenaltyOptionType;
+                var id = _id; id.Clean = value; _id = id;
+                var prepaymentPenaltyPercent = _prepaymentPenaltyPercent; prepaymentPenaltyPercent.Clean = value; _prepaymentPenaltyPercent = prepaymentPenaltyPercent;
+                var termMonthsCount = _termMonthsCount; termMonthsCount.Clean = value; _termMonthsCount = termMonthsCount;
                 _settingClean = 0;
             }
         }

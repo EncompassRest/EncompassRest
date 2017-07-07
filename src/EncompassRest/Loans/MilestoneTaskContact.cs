@@ -54,17 +54,17 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _address; v0.Clean = value; _address = v0;
-                var v1 = _city; v1.Clean = value; _city = v1;
-                var v2 = _contactId; v2.Clean = value; _contactId = v2;
-                var v3 = _email; v3.Clean = value; _email = v3;
-                var v4 = _guid; v4.Clean = value; _guid = v4;
-                var v5 = _id; v5.Clean = value; _id = v5;
-                var v6 = _name; v6.Clean = value; _name = v6;
-                var v7 = _phone; v7.Clean = value; _phone = v7;
-                var v8 = _role; v8.Clean = value; _role = v8;
-                var v9 = _state; v9.Clean = value; _state = v9;
-                var v10 = _zip; v10.Clean = value; _zip = v10;
+                var address = _address; address.Clean = value; _address = address;
+                var city = _city; city.Clean = value; _city = city;
+                var contactId = _contactId; contactId.Clean = value; _contactId = contactId;
+                var email = _email; email.Clean = value; _email = email;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var phone = _phone; phone.Clean = value; _phone = phone;
+                var role = _role; role.Clean = value; _role = role;
+                var state = _state; state.Clean = value; _state = state;
+                var zip = _zip; zip.Clean = value; _zip = zip;
                 _settingClean = 0;
             }
         }

@@ -69,22 +69,22 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _actualShipDate; v0.Clean = value; _actualShipDate = v0;
-                var v1 = _carrierName; v1.Clean = value; _carrierName = v1;
-                var v2 = _downPaymentAmount; v2.Clean = value; _downPaymentAmount = v2;
-                var v3 = _id; v3.Clean = value; _id = v3;
-                var v4 = _investorDeliveryDate; v4.Clean = value; _investorDeliveryDate = v4;
-                var v5 = _packageTrackingNumber; v5.Clean = value; _packageTrackingNumber = v5;
-                var v6 = _physicalFileStorageComments; v6.Clean = value; _physicalFileStorageComments = v6;
-                var v7 = _physicalFileStorageId; v7.Clean = value; _physicalFileStorageId = v7;
-                var v8 = _physicalFileStorageLocation; v8.Clean = value; _physicalFileStorageLocation = v8;
-                var v9 = _poolID; v9.Clean = value; _poolID = v9;
-                var v10 = _poolNumber; v10.Clean = value; _poolNumber = v10;
-                var v11 = _recordingNumber; v11.Clean = value; _recordingNumber = v11;
-                var v12 = _shipmentMethod; v12.Clean = value; _shipmentMethod = v12;
-                var v13 = _shipperName; v13.Clean = value; _shipperName = v13;
-                var v14 = _shippingContacts; v14.Clean = value; _shippingContacts = v14;
-                var v15 = _targetDeliveryDate; v15.Clean = value; _targetDeliveryDate = v15;
+                var actualShipDate = _actualShipDate; actualShipDate.Clean = value; _actualShipDate = actualShipDate;
+                var carrierName = _carrierName; carrierName.Clean = value; _carrierName = carrierName;
+                var downPaymentAmount = _downPaymentAmount; downPaymentAmount.Clean = value; _downPaymentAmount = downPaymentAmount;
+                var id = _id; id.Clean = value; _id = id;
+                var investorDeliveryDate = _investorDeliveryDate; investorDeliveryDate.Clean = value; _investorDeliveryDate = investorDeliveryDate;
+                var packageTrackingNumber = _packageTrackingNumber; packageTrackingNumber.Clean = value; _packageTrackingNumber = packageTrackingNumber;
+                var physicalFileStorageComments = _physicalFileStorageComments; physicalFileStorageComments.Clean = value; _physicalFileStorageComments = physicalFileStorageComments;
+                var physicalFileStorageId = _physicalFileStorageId; physicalFileStorageId.Clean = value; _physicalFileStorageId = physicalFileStorageId;
+                var physicalFileStorageLocation = _physicalFileStorageLocation; physicalFileStorageLocation.Clean = value; _physicalFileStorageLocation = physicalFileStorageLocation;
+                var poolID = _poolID; poolID.Clean = value; _poolID = poolID;
+                var poolNumber = _poolNumber; poolNumber.Clean = value; _poolNumber = poolNumber;
+                var recordingNumber = _recordingNumber; recordingNumber.Clean = value; _recordingNumber = recordingNumber;
+                var shipmentMethod = _shipmentMethod; shipmentMethod.Clean = value; _shipmentMethod = shipmentMethod;
+                var shipperName = _shipperName; shipperName.Clean = value; _shipperName = shipperName;
+                var shippingContacts = _shippingContacts; shippingContacts.Clean = value; _shippingContacts = shippingContacts;
+                var targetDeliveryDate = _targetDeliveryDate; targetDeliveryDate.Clean = value; _targetDeliveryDate = targetDeliveryDate;
                 _settingClean = 0;
             }
         }

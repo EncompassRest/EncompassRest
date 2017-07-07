@@ -36,11 +36,11 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _id; v0.Clean = value; _id = v0;
-                var v1 = _provideAmortizationScenario; v1.Clean = value; _provideAmortizationScenario = v1;
-                var v2 = _provideBestCaseScenario; v2.Clean = value; _provideBestCaseScenario = v2;
-                var v3 = _provideFHAScenario; v3.Clean = value; _provideFHAScenario = v3;
-                var v4 = _provideWorstCaseScenario; v4.Clean = value; _provideWorstCaseScenario = v4;
+                var id = _id; id.Clean = value; _id = id;
+                var provideAmortizationScenario = _provideAmortizationScenario; provideAmortizationScenario.Clean = value; _provideAmortizationScenario = provideAmortizationScenario;
+                var provideBestCaseScenario = _provideBestCaseScenario; provideBestCaseScenario.Clean = value; _provideBestCaseScenario = provideBestCaseScenario;
+                var provideFHAScenario = _provideFHAScenario; provideFHAScenario.Clean = value; _provideFHAScenario = provideFHAScenario;
+                var provideWorstCaseScenario = _provideWorstCaseScenario; provideWorstCaseScenario.Clean = value; _provideWorstCaseScenario = provideWorstCaseScenario;
                 _settingClean = 0;
             }
         }

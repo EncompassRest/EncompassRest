@@ -27,8 +27,8 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _id; v0.Clean = value; _id = v0;
-                var v1 = _tQLDocumentDeliveredDate; v1.Clean = value; _tQLDocumentDeliveredDate = v1;
+                var id = _id; id.Clean = value; _id = id;
+                var tQLDocumentDeliveredDate = _tQLDocumentDeliveredDate; tQLDocumentDeliveredDate.Clean = value; _tQLDocumentDeliveredDate = tQLDocumentDeliveredDate;
                 _settingClean = 0;
             }
         }

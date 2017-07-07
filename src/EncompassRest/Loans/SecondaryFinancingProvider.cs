@@ -51,16 +51,16 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _financingAmount; v0.Clean = value; _financingAmount = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _secondaryFinancingProviderType; v2.Clean = value; _secondaryFinancingProviderType = v2;
-                var v3 = _sellerFundedDapIndicator; v3.Clean = value; _sellerFundedDapIndicator = v3;
-                var v4 = _source; v4.Clean = value; _source = v4;
-                var v5 = _sourceFromFamilyIndicator; v5.Clean = value; _sourceFromFamilyIndicator = v5;
-                var v6 = _sourceFromGovernmentIndicator; v6.Clean = value; _sourceFromGovernmentIndicator = v6;
-                var v7 = _sourceFromNPIndicator; v7.Clean = value; _sourceFromNPIndicator = v7;
-                var v8 = _sourceFromOtherIndicator; v8.Clean = value; _sourceFromOtherIndicator = v8;
-                var v9 = _sourceOtherDetail; v9.Clean = value; _sourceOtherDetail = v9;
+                var financingAmount = _financingAmount; financingAmount.Clean = value; _financingAmount = financingAmount;
+                var id = _id; id.Clean = value; _id = id;
+                var secondaryFinancingProviderType = _secondaryFinancingProviderType; secondaryFinancingProviderType.Clean = value; _secondaryFinancingProviderType = secondaryFinancingProviderType;
+                var sellerFundedDapIndicator = _sellerFundedDapIndicator; sellerFundedDapIndicator.Clean = value; _sellerFundedDapIndicator = sellerFundedDapIndicator;
+                var source = _source; source.Clean = value; _source = source;
+                var sourceFromFamilyIndicator = _sourceFromFamilyIndicator; sourceFromFamilyIndicator.Clean = value; _sourceFromFamilyIndicator = sourceFromFamilyIndicator;
+                var sourceFromGovernmentIndicator = _sourceFromGovernmentIndicator; sourceFromGovernmentIndicator.Clean = value; _sourceFromGovernmentIndicator = sourceFromGovernmentIndicator;
+                var sourceFromNPIndicator = _sourceFromNPIndicator; sourceFromNPIndicator.Clean = value; _sourceFromNPIndicator = sourceFromNPIndicator;
+                var sourceFromOtherIndicator = _sourceFromOtherIndicator; sourceFromOtherIndicator.Clean = value; _sourceFromOtherIndicator = sourceFromOtherIndicator;
+                var sourceOtherDetail = _sourceOtherDetail; sourceOtherDetail.Clean = value; _sourceOtherDetail = sourceOtherDetail;
                 _settingClean = 0;
             }
         }

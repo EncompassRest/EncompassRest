@@ -39,12 +39,12 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _elliLogRecordId; v0.Clean = value; _elliLogRecordId = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _isTemplateDatesLocked; v2.Clean = value; _isTemplateDatesLocked = v2;
-                var v3 = _isTemplateLocked; v3.Clean = value; _isTemplateLocked = v3;
-                var v4 = _milestoneTemplateID; v4.Clean = value; _milestoneTemplateID = v4;
-                var v5 = _milestoneTemplateName; v5.Clean = value; _milestoneTemplateName = v5;
+                var elliLogRecordId = _elliLogRecordId; elliLogRecordId.Clean = value; _elliLogRecordId = elliLogRecordId;
+                var id = _id; id.Clean = value; _id = id;
+                var isTemplateDatesLocked = _isTemplateDatesLocked; isTemplateDatesLocked.Clean = value; _isTemplateDatesLocked = isTemplateDatesLocked;
+                var isTemplateLocked = _isTemplateLocked; isTemplateLocked.Clean = value; _isTemplateLocked = isTemplateLocked;
+                var milestoneTemplateID = _milestoneTemplateID; milestoneTemplateID.Clean = value; _milestoneTemplateID = milestoneTemplateID;
+                var milestoneTemplateName = _milestoneTemplateName; milestoneTemplateName.Clean = value; _milestoneTemplateName = milestoneTemplateName;
                 _settingClean = 0;
             }
         }

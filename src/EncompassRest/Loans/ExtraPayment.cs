@@ -30,9 +30,9 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _amount; v0.Clean = value; _amount = v0;
-                var v1 = _date; v1.Clean = value; _date = v1;
-                var v2 = _lineNumber; v2.Clean = value; _lineNumber = v2;
+                var amount = _amount; amount.Clean = value; _amount = amount;
+                var date = _date; date.Clean = value; _date = date;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
                 _settingClean = 0;
             }
         }

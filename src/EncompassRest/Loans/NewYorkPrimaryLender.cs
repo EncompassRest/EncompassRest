@@ -45,14 +45,14 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _address; v0.Clean = value; _address = v0;
-                var v1 = _city; v1.Clean = value; _city = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _id; v3.Clean = value; _id = v3;
-                var v4 = _name; v4.Clean = value; _name = v4;
-                var v5 = _newYorkPrimaryLenderIndex; v5.Clean = value; _newYorkPrimaryLenderIndex = v5;
-                var v6 = _postalCode; v6.Clean = value; _postalCode = v6;
-                var v7 = _state; v7.Clean = value; _state = v7;
+                var address = _address; address.Clean = value; _address = address;
+                var city = _city; city.Clean = value; _city = city;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var newYorkPrimaryLenderIndex = _newYorkPrimaryLenderIndex; newYorkPrimaryLenderIndex.Clean = value; _newYorkPrimaryLenderIndex = newYorkPrimaryLenderIndex;
+                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
+                var state = _state; state.Clean = value; _state = state;
                 _settingClean = 0;
             }
         }

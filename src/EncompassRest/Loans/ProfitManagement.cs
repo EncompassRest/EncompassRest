@@ -60,19 +60,19 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _commissionableGrossProfit; v0.Clean = value; _commissionableGrossProfit = v0;
-                var v1 = _expenseAmount1; v1.Clean = value; _expenseAmount1 = v1;
-                var v2 = _expenseAmount2; v2.Clean = value; _expenseAmount2 = v2;
-                var v3 = _expenseAmount3; v3.Clean = value; _expenseAmount3 = v3;
-                var v4 = _expenseAmount4; v4.Clean = value; _expenseAmount4 = v4;
-                var v5 = _expenseDescription1; v5.Clean = value; _expenseDescription1 = v5;
-                var v6 = _expenseDescription2; v6.Clean = value; _expenseDescription2 = v6;
-                var v7 = _expenseDescription3; v7.Clean = value; _expenseDescription3 = v7;
-                var v8 = _expenseDescription4; v8.Clean = value; _expenseDescription4 = v8;
-                var v9 = _grossCheckAmount; v9.Clean = value; _grossCheckAmount = v9;
-                var v10 = _id; v10.Clean = value; _id = v10;
-                var v11 = _netProfit; v11.Clean = value; _netProfit = v11;
-                var v12 = _profitManagementItems; v12.Clean = value; _profitManagementItems = v12;
+                var commissionableGrossProfit = _commissionableGrossProfit; commissionableGrossProfit.Clean = value; _commissionableGrossProfit = commissionableGrossProfit;
+                var expenseAmount1 = _expenseAmount1; expenseAmount1.Clean = value; _expenseAmount1 = expenseAmount1;
+                var expenseAmount2 = _expenseAmount2; expenseAmount2.Clean = value; _expenseAmount2 = expenseAmount2;
+                var expenseAmount3 = _expenseAmount3; expenseAmount3.Clean = value; _expenseAmount3 = expenseAmount3;
+                var expenseAmount4 = _expenseAmount4; expenseAmount4.Clean = value; _expenseAmount4 = expenseAmount4;
+                var expenseDescription1 = _expenseDescription1; expenseDescription1.Clean = value; _expenseDescription1 = expenseDescription1;
+                var expenseDescription2 = _expenseDescription2; expenseDescription2.Clean = value; _expenseDescription2 = expenseDescription2;
+                var expenseDescription3 = _expenseDescription3; expenseDescription3.Clean = value; _expenseDescription3 = expenseDescription3;
+                var expenseDescription4 = _expenseDescription4; expenseDescription4.Clean = value; _expenseDescription4 = expenseDescription4;
+                var grossCheckAmount = _grossCheckAmount; grossCheckAmount.Clean = value; _grossCheckAmount = grossCheckAmount;
+                var id = _id; id.Clean = value; _id = id;
+                var netProfit = _netProfit; netProfit.Clean = value; _netProfit = netProfit;
+                var profitManagementItems = _profitManagementItems; profitManagementItems.Clean = value; _profitManagementItems = profitManagementItems;
                 _settingClean = 0;
             }
         }

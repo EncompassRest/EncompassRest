@@ -63,20 +63,20 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _aggrMthDisb; v0.Clean = value; _aggrMthDisb = v0;
-                var v1 = _annualFee; v1.Clean = value; _annualFee = v1;
-                var v2 = _balance; v2.Clean = value; _balance = v2;
-                var v3 = _date; v3.Clean = value; _date = v3;
-                var v4 = _floodInsDisb; v4.Clean = value; _floodInsDisb = v4;
-                var v5 = _hazInsDisb; v5.Clean = value; _hazInsDisb = v5;
-                var v6 = _hud1EsDateIndex; v6.Clean = value; _hud1EsDateIndex = v6;
-                var v7 = _id; v7.Clean = value; _id = v7;
-                var v8 = _mtgInsDisb; v8.Clean = value; _mtgInsDisb = v8;
-                var v9 = _schoolTaxes; v9.Clean = value; _schoolTaxes = v9;
-                var v10 = _taxDisb; v10.Clean = value; _taxDisb = v10;
-                var v11 = _userDefined1; v11.Clean = value; _userDefined1 = v11;
-                var v12 = _userDefined2; v12.Clean = value; _userDefined2 = v12;
-                var v13 = _userDefined3; v13.Clean = value; _userDefined3 = v13;
+                var aggrMthDisb = _aggrMthDisb; aggrMthDisb.Clean = value; _aggrMthDisb = aggrMthDisb;
+                var annualFee = _annualFee; annualFee.Clean = value; _annualFee = annualFee;
+                var balance = _balance; balance.Clean = value; _balance = balance;
+                var date = _date; date.Clean = value; _date = date;
+                var floodInsDisb = _floodInsDisb; floodInsDisb.Clean = value; _floodInsDisb = floodInsDisb;
+                var hazInsDisb = _hazInsDisb; hazInsDisb.Clean = value; _hazInsDisb = hazInsDisb;
+                var hud1EsDateIndex = _hud1EsDateIndex; hud1EsDateIndex.Clean = value; _hud1EsDateIndex = hud1EsDateIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var mtgInsDisb = _mtgInsDisb; mtgInsDisb.Clean = value; _mtgInsDisb = mtgInsDisb;
+                var schoolTaxes = _schoolTaxes; schoolTaxes.Clean = value; _schoolTaxes = schoolTaxes;
+                var taxDisb = _taxDisb; taxDisb.Clean = value; _taxDisb = taxDisb;
+                var userDefined1 = _userDefined1; userDefined1.Clean = value; _userDefined1 = userDefined1;
+                var userDefined2 = _userDefined2; userDefined2.Clean = value; _userDefined2 = userDefined2;
+                var userDefined3 = _userDefined3; userDefined3.Clean = value; _userDefined3 = userDefined3;
                 _settingClean = 0;
             }
         }

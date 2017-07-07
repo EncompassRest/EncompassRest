@@ -39,12 +39,12 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _id; v0.Clean = value; _id = v0;
-                var v1 = _lastFraudOrderAlertCategories; v1.Clean = value; _lastFraudOrderAlertCategories = v1;
-                var v2 = _lastFraudOrderAlertID; v2.Clean = value; _lastFraudOrderAlertID = v2;
-                var v3 = _lastFraudOrderAlertLevel; v3.Clean = value; _lastFraudOrderAlertLevel = v3;
-                var v4 = _lastFraudOrderDescriptionOfAlerts; v4.Clean = value; _lastFraudOrderDescriptionOfAlerts = v4;
-                var v5 = _tQLFraudAlertIndex; v5.Clean = value; _tQLFraudAlertIndex = v5;
+                var id = _id; id.Clean = value; _id = id;
+                var lastFraudOrderAlertCategories = _lastFraudOrderAlertCategories; lastFraudOrderAlertCategories.Clean = value; _lastFraudOrderAlertCategories = lastFraudOrderAlertCategories;
+                var lastFraudOrderAlertID = _lastFraudOrderAlertID; lastFraudOrderAlertID.Clean = value; _lastFraudOrderAlertID = lastFraudOrderAlertID;
+                var lastFraudOrderAlertLevel = _lastFraudOrderAlertLevel; lastFraudOrderAlertLevel.Clean = value; _lastFraudOrderAlertLevel = lastFraudOrderAlertLevel;
+                var lastFraudOrderDescriptionOfAlerts = _lastFraudOrderDescriptionOfAlerts; lastFraudOrderDescriptionOfAlerts.Clean = value; _lastFraudOrderDescriptionOfAlerts = lastFraudOrderDescriptionOfAlerts;
+                var tQLFraudAlertIndex = _tQLFraudAlertIndex; tQLFraudAlertIndex.Clean = value; _tQLFraudAlertIndex = tQLFraudAlertIndex;
                 _settingClean = 0;
             }
         }

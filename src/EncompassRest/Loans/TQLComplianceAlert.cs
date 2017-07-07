@@ -36,11 +36,11 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _id; v0.Clean = value; _id = v0;
-                var v1 = _lastComplianceOrderAlertCategories; v1.Clean = value; _lastComplianceOrderAlertCategories = v1;
-                var v2 = _lastComplianceOrderAlertMessage; v2.Clean = value; _lastComplianceOrderAlertMessage = v2;
-                var v3 = _lastComplianceOrderDescriptionOfAlerts; v3.Clean = value; _lastComplianceOrderDescriptionOfAlerts = v3;
-                var v4 = _tQLComplianceAlertIndex; v4.Clean = value; _tQLComplianceAlertIndex = v4;
+                var id = _id; id.Clean = value; _id = id;
+                var lastComplianceOrderAlertCategories = _lastComplianceOrderAlertCategories; lastComplianceOrderAlertCategories.Clean = value; _lastComplianceOrderAlertCategories = lastComplianceOrderAlertCategories;
+                var lastComplianceOrderAlertMessage = _lastComplianceOrderAlertMessage; lastComplianceOrderAlertMessage.Clean = value; _lastComplianceOrderAlertMessage = lastComplianceOrderAlertMessage;
+                var lastComplianceOrderDescriptionOfAlerts = _lastComplianceOrderDescriptionOfAlerts; lastComplianceOrderDescriptionOfAlerts.Clean = value; _lastComplianceOrderDescriptionOfAlerts = lastComplianceOrderDescriptionOfAlerts;
+                var tQLComplianceAlertIndex = _tQLComplianceAlertIndex; tQLComplianceAlertIndex.Clean = value; _tQLComplianceAlertIndex = tQLComplianceAlertIndex;
                 _settingClean = 0;
             }
         }

@@ -99,32 +99,32 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _altId; v0.Clean = value; _altId = v0;
-                var v1 = _borrowerID1; v1.Clean = value; _borrowerID1 = v1;
-                var v2 = _borrowerID2; v2.Clean = value; _borrowerID2 = v2;
-                var v3 = _borrowerID3; v3.Clean = value; _borrowerID3 = v3;
-                var v4 = _borrowerID4; v4.Clean = value; _borrowerID4 = v4;
-                var v5 = _completedDate; v5.Clean = value; _completedDate = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _investor; v7.Clean = value; _investor = v7;
-                var v8 = _orderDate; v8.Clean = value; _orderDate = v8;
-                var v9 = _orderNumber; v9.Clean = value; _orderNumber = v9;
-                var v10 = _orderStatus; v10.Clean = value; _orderStatus = v10;
-                var v11 = _percentVariance1; v11.Clean = value; _percentVariance1 = v11;
-                var v12 = _percentVariance2; v12.Clean = value; _percentVariance2 = v12;
-                var v13 = _percentVariance3; v13.Clean = value; _percentVariance3 = v13;
-                var v14 = _percentVariance4; v14.Clean = value; _percentVariance4 = v14;
-                var v15 = _productsOrdered; v15.Clean = value; _productsOrdered = v15;
-                var v16 = _reportYear1; v16.Clean = value; _reportYear1 = v16;
-                var v17 = _reportYear2; v17.Clean = value; _reportYear2 = v17;
-                var v18 = _reportYear3; v18.Clean = value; _reportYear3 = v18;
-                var v19 = _reportYear4; v19.Clean = value; _reportYear4 = v19;
-                var v20 = _totalIncome1; v20.Clean = value; _totalIncome1 = v20;
-                var v21 = _totalIncome2; v21.Clean = value; _totalIncome2 = v21;
-                var v22 = _totalIncome3; v22.Clean = value; _totalIncome3 = v22;
-                var v23 = _totalIncome4; v23.Clean = value; _totalIncome4 = v23;
-                var v24 = _transcriptType; v24.Clean = value; _transcriptType = v24;
-                var v25 = _userID; v25.Clean = value; _userID = v25;
+                var altId = _altId; altId.Clean = value; _altId = altId;
+                var borrowerID1 = _borrowerID1; borrowerID1.Clean = value; _borrowerID1 = borrowerID1;
+                var borrowerID2 = _borrowerID2; borrowerID2.Clean = value; _borrowerID2 = borrowerID2;
+                var borrowerID3 = _borrowerID3; borrowerID3.Clean = value; _borrowerID3 = borrowerID3;
+                var borrowerID4 = _borrowerID4; borrowerID4.Clean = value; _borrowerID4 = borrowerID4;
+                var completedDate = _completedDate; completedDate.Clean = value; _completedDate = completedDate;
+                var id = _id; id.Clean = value; _id = id;
+                var investor = _investor; investor.Clean = value; _investor = investor;
+                var orderDate = _orderDate; orderDate.Clean = value; _orderDate = orderDate;
+                var orderNumber = _orderNumber; orderNumber.Clean = value; _orderNumber = orderNumber;
+                var orderStatus = _orderStatus; orderStatus.Clean = value; _orderStatus = orderStatus;
+                var percentVariance1 = _percentVariance1; percentVariance1.Clean = value; _percentVariance1 = percentVariance1;
+                var percentVariance2 = _percentVariance2; percentVariance2.Clean = value; _percentVariance2 = percentVariance2;
+                var percentVariance3 = _percentVariance3; percentVariance3.Clean = value; _percentVariance3 = percentVariance3;
+                var percentVariance4 = _percentVariance4; percentVariance4.Clean = value; _percentVariance4 = percentVariance4;
+                var productsOrdered = _productsOrdered; productsOrdered.Clean = value; _productsOrdered = productsOrdered;
+                var reportYear1 = _reportYear1; reportYear1.Clean = value; _reportYear1 = reportYear1;
+                var reportYear2 = _reportYear2; reportYear2.Clean = value; _reportYear2 = reportYear2;
+                var reportYear3 = _reportYear3; reportYear3.Clean = value; _reportYear3 = reportYear3;
+                var reportYear4 = _reportYear4; reportYear4.Clean = value; _reportYear4 = reportYear4;
+                var totalIncome1 = _totalIncome1; totalIncome1.Clean = value; _totalIncome1 = totalIncome1;
+                var totalIncome2 = _totalIncome2; totalIncome2.Clean = value; _totalIncome2 = totalIncome2;
+                var totalIncome3 = _totalIncome3; totalIncome3.Clean = value; _totalIncome3 = totalIncome3;
+                var totalIncome4 = _totalIncome4; totalIncome4.Clean = value; _totalIncome4 = totalIncome4;
+                var transcriptType = _transcriptType; transcriptType.Clean = value; _transcriptType = transcriptType;
+                var userID = _userID; userID.Clean = value; _userID = userID;
                 _settingClean = 0;
             }
         }

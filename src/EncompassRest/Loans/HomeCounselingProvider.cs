@@ -84,27 +84,27 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _agencyAddress; v0.Clean = value; _agencyAddress = v0;
-                var v1 = _agencyAddressCity; v1.Clean = value; _agencyAddressCity = v1;
-                var v2 = _agencyAddressPostalCode; v2.Clean = value; _agencyAddressPostalCode = v2;
-                var v3 = _agencyAddressState; v3.Clean = value; _agencyAddressState = v3;
-                var v4 = _agencyAffiliationDescription; v4.Clean = value; _agencyAffiliationDescription = v4;
-                var v5 = _agencyAffiliationIndicator; v5.Clean = value; _agencyAffiliationIndicator = v5;
-                var v6 = _agencyEmail; v6.Clean = value; _agencyEmail = v6;
-                var v7 = _agencyFax; v7.Clean = value; _agencyFax = v7;
-                var v8 = _agencyId; v8.Clean = value; _agencyId = v8;
-                var v9 = _agencyName; v9.Clean = value; _agencyName = v9;
-                var v10 = _agencyPhoneDirect; v10.Clean = value; _agencyPhoneDirect = v10;
-                var v11 = _agencyPhoneTollFree; v11.Clean = value; _agencyPhoneTollFree = v11;
-                var v12 = _agencySource; v12.Clean = value; _agencySource = v12;
-                var v13 = _agencyWebAddress; v13.Clean = value; _agencyWebAddress = v13;
-                var v14 = _counselingServicesProvided; v14.Clean = value; _counselingServicesProvided = v14;
-                var v15 = _distanceMiles; v15.Clean = value; _distanceMiles = v15;
-                var v16 = _homeCounselingProviderId; v16.Clean = value; _homeCounselingProviderId = v16;
-                var v17 = _homeCounselingProviderIndex; v17.Clean = value; _homeCounselingProviderIndex = v17;
-                var v18 = _id; v18.Clean = value; _id = v18;
-                var v19 = _languagesSupported; v19.Clean = value; _languagesSupported = v19;
-                var v20 = _selectedIndicator; v20.Clean = value; _selectedIndicator = v20;
+                var agencyAddress = _agencyAddress; agencyAddress.Clean = value; _agencyAddress = agencyAddress;
+                var agencyAddressCity = _agencyAddressCity; agencyAddressCity.Clean = value; _agencyAddressCity = agencyAddressCity;
+                var agencyAddressPostalCode = _agencyAddressPostalCode; agencyAddressPostalCode.Clean = value; _agencyAddressPostalCode = agencyAddressPostalCode;
+                var agencyAddressState = _agencyAddressState; agencyAddressState.Clean = value; _agencyAddressState = agencyAddressState;
+                var agencyAffiliationDescription = _agencyAffiliationDescription; agencyAffiliationDescription.Clean = value; _agencyAffiliationDescription = agencyAffiliationDescription;
+                var agencyAffiliationIndicator = _agencyAffiliationIndicator; agencyAffiliationIndicator.Clean = value; _agencyAffiliationIndicator = agencyAffiliationIndicator;
+                var agencyEmail = _agencyEmail; agencyEmail.Clean = value; _agencyEmail = agencyEmail;
+                var agencyFax = _agencyFax; agencyFax.Clean = value; _agencyFax = agencyFax;
+                var agencyId = _agencyId; agencyId.Clean = value; _agencyId = agencyId;
+                var agencyName = _agencyName; agencyName.Clean = value; _agencyName = agencyName;
+                var agencyPhoneDirect = _agencyPhoneDirect; agencyPhoneDirect.Clean = value; _agencyPhoneDirect = agencyPhoneDirect;
+                var agencyPhoneTollFree = _agencyPhoneTollFree; agencyPhoneTollFree.Clean = value; _agencyPhoneTollFree = agencyPhoneTollFree;
+                var agencySource = _agencySource; agencySource.Clean = value; _agencySource = agencySource;
+                var agencyWebAddress = _agencyWebAddress; agencyWebAddress.Clean = value; _agencyWebAddress = agencyWebAddress;
+                var counselingServicesProvided = _counselingServicesProvided; counselingServicesProvided.Clean = value; _counselingServicesProvided = counselingServicesProvided;
+                var distanceMiles = _distanceMiles; distanceMiles.Clean = value; _distanceMiles = distanceMiles;
+                var homeCounselingProviderId = _homeCounselingProviderId; homeCounselingProviderId.Clean = value; _homeCounselingProviderId = homeCounselingProviderId;
+                var homeCounselingProviderIndex = _homeCounselingProviderIndex; homeCounselingProviderIndex.Clean = value; _homeCounselingProviderIndex = homeCounselingProviderIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var languagesSupported = _languagesSupported; languagesSupported.Clean = value; _languagesSupported = languagesSupported;
+                var selectedIndicator = _selectedIndicator; selectedIndicator.Clean = value; _selectedIndicator = selectedIndicator;
                 _settingClean = 0;
             }
         }

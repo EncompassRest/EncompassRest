@@ -99,32 +99,32 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _appraisal; v0.Clean = value; _appraisal = v0;
-                var v1 = _assumption; v1.Clean = value; _assumption = v1;
-                var v2 = _constructionLoan; v2.Clean = value; _constructionLoan = v2;
-                var v3 = _homeownerInsurance; v3.Clean = value; _homeownerInsurance = v3;
-                var v4 = _id; v4.Clean = value; _id = v4;
-                var v5 = _in5YearsPrincipalYouWillHavePaidOff; v5.Clean = value; _in5YearsPrincipalYouWillHavePaidOff = v5;
-                var v6 = _in5YearsTotalYouWillHavePaid; v6.Clean = value; _in5YearsTotalYouWillHavePaid = v6;
-                var v7 = _lenderEmail; v7.Clean = value; _lenderEmail = v7;
-                var v8 = _lenderLicenseID; v8.Clean = value; _lenderLicenseID = v8;
-                var v9 = _lenderLicenseState; v9.Clean = value; _lenderLicenseState = v9;
-                var v10 = _lenderLoanOfficer; v10.Clean = value; _lenderLoanOfficer = v10;
-                var v11 = _lenderLoanOfficerLicenseState; v11.Clean = value; _lenderLoanOfficerLicenseState = v11;
-                var v12 = _lenderLoanOfficerNMLSId; v12.Clean = value; _lenderLoanOfficerNMLSId = v12;
-                var v13 = _lenderPhone; v13.Clean = value; _lenderPhone = v13;
-                var v14 = _mortgageBrokerEmail; v14.Clean = value; _mortgageBrokerEmail = v14;
-                var v15 = _mortgageBrokerLicenseID; v15.Clean = value; _mortgageBrokerLicenseID = v15;
-                var v16 = _mortgageBrokerLicenseState; v16.Clean = value; _mortgageBrokerLicenseState = v16;
-                var v17 = _mortgageBrokerLoanOfficer; v17.Clean = value; _mortgageBrokerLoanOfficer = v17;
-                var v18 = _mortgageBrokerLoanOfficerLicenseID; v18.Clean = value; _mortgageBrokerLoanOfficerLicenseID = v18;
-                var v19 = _mortgageBrokerLoanOfficerLicenseState; v19.Clean = value; _mortgageBrokerLoanOfficerLicenseState = v19;
-                var v20 = _mortgageBrokerLoanOfficerNMLSId; v20.Clean = value; _mortgageBrokerLoanOfficerNMLSId = v20;
-                var v21 = _mortgageBrokerPhone; v21.Clean = value; _mortgageBrokerPhone = v21;
-                var v22 = _mortgageLenderLoanOfficerLicenseID; v22.Clean = value; _mortgageLenderLoanOfficerLicenseID = v22;
-                var v23 = _servicing; v23.Clean = value; _servicing = v23;
-                var v24 = _signatureType; v24.Clean = value; _signatureType = v24;
-                var v25 = _totalInterestPercentage; v25.Clean = value; _totalInterestPercentage = v25;
+                var appraisal = _appraisal; appraisal.Clean = value; _appraisal = appraisal;
+                var assumption = _assumption; assumption.Clean = value; _assumption = assumption;
+                var constructionLoan = _constructionLoan; constructionLoan.Clean = value; _constructionLoan = constructionLoan;
+                var homeownerInsurance = _homeownerInsurance; homeownerInsurance.Clean = value; _homeownerInsurance = homeownerInsurance;
+                var id = _id; id.Clean = value; _id = id;
+                var in5YearsPrincipalYouWillHavePaidOff = _in5YearsPrincipalYouWillHavePaidOff; in5YearsPrincipalYouWillHavePaidOff.Clean = value; _in5YearsPrincipalYouWillHavePaidOff = in5YearsPrincipalYouWillHavePaidOff;
+                var in5YearsTotalYouWillHavePaid = _in5YearsTotalYouWillHavePaid; in5YearsTotalYouWillHavePaid.Clean = value; _in5YearsTotalYouWillHavePaid = in5YearsTotalYouWillHavePaid;
+                var lenderEmail = _lenderEmail; lenderEmail.Clean = value; _lenderEmail = lenderEmail;
+                var lenderLicenseID = _lenderLicenseID; lenderLicenseID.Clean = value; _lenderLicenseID = lenderLicenseID;
+                var lenderLicenseState = _lenderLicenseState; lenderLicenseState.Clean = value; _lenderLicenseState = lenderLicenseState;
+                var lenderLoanOfficer = _lenderLoanOfficer; lenderLoanOfficer.Clean = value; _lenderLoanOfficer = lenderLoanOfficer;
+                var lenderLoanOfficerLicenseState = _lenderLoanOfficerLicenseState; lenderLoanOfficerLicenseState.Clean = value; _lenderLoanOfficerLicenseState = lenderLoanOfficerLicenseState;
+                var lenderLoanOfficerNMLSId = _lenderLoanOfficerNMLSId; lenderLoanOfficerNMLSId.Clean = value; _lenderLoanOfficerNMLSId = lenderLoanOfficerNMLSId;
+                var lenderPhone = _lenderPhone; lenderPhone.Clean = value; _lenderPhone = lenderPhone;
+                var mortgageBrokerEmail = _mortgageBrokerEmail; mortgageBrokerEmail.Clean = value; _mortgageBrokerEmail = mortgageBrokerEmail;
+                var mortgageBrokerLicenseID = _mortgageBrokerLicenseID; mortgageBrokerLicenseID.Clean = value; _mortgageBrokerLicenseID = mortgageBrokerLicenseID;
+                var mortgageBrokerLicenseState = _mortgageBrokerLicenseState; mortgageBrokerLicenseState.Clean = value; _mortgageBrokerLicenseState = mortgageBrokerLicenseState;
+                var mortgageBrokerLoanOfficer = _mortgageBrokerLoanOfficer; mortgageBrokerLoanOfficer.Clean = value; _mortgageBrokerLoanOfficer = mortgageBrokerLoanOfficer;
+                var mortgageBrokerLoanOfficerLicenseID = _mortgageBrokerLoanOfficerLicenseID; mortgageBrokerLoanOfficerLicenseID.Clean = value; _mortgageBrokerLoanOfficerLicenseID = mortgageBrokerLoanOfficerLicenseID;
+                var mortgageBrokerLoanOfficerLicenseState = _mortgageBrokerLoanOfficerLicenseState; mortgageBrokerLoanOfficerLicenseState.Clean = value; _mortgageBrokerLoanOfficerLicenseState = mortgageBrokerLoanOfficerLicenseState;
+                var mortgageBrokerLoanOfficerNMLSId = _mortgageBrokerLoanOfficerNMLSId; mortgageBrokerLoanOfficerNMLSId.Clean = value; _mortgageBrokerLoanOfficerNMLSId = mortgageBrokerLoanOfficerNMLSId;
+                var mortgageBrokerPhone = _mortgageBrokerPhone; mortgageBrokerPhone.Clean = value; _mortgageBrokerPhone = mortgageBrokerPhone;
+                var mortgageLenderLoanOfficerLicenseID = _mortgageLenderLoanOfficerLicenseID; mortgageLenderLoanOfficerLicenseID.Clean = value; _mortgageLenderLoanOfficerLicenseID = mortgageLenderLoanOfficerLicenseID;
+                var servicing = _servicing; servicing.Clean = value; _servicing = servicing;
+                var signatureType = _signatureType; signatureType.Clean = value; _signatureType = signatureType;
+                var totalInterestPercentage = _totalInterestPercentage; totalInterestPercentage.Clean = value; _totalInterestPercentage = totalInterestPercentage;
                 _settingClean = 0;
             }
         }

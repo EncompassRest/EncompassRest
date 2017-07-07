@@ -66,21 +66,21 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _comments; v0.Clean = value; _comments = v0;
-                var v1 = _createdById; v1.Clean = value; _createdById = v1;
-                var v2 = _createdByName; v2.Clean = value; _createdByName = v2;
-                var v3 = _createdDateTimeUtc; v3.Clean = value; _createdDateTimeUtc = v3;
-                var v4 = _guid; v4.Clean = value; _guid = v4;
-                var v5 = _id; v5.Clean = value; _id = v5;
-                var v6 = _modifiedById; v6.Clean = value; _modifiedById = v6;
-                var v7 = _modifiedByName; v7.Clean = value; _modifiedByName = v7;
-                var v8 = _modifiedDateTimeUtc; v8.Clean = value; _modifiedDateTimeUtc = v8;
-                var v9 = _paymentId; v9.Clean = value; _paymentId = v9;
-                var v10 = _reversalType; v10.Clean = value; _reversalType = v10;
-                var v11 = _servicingPaymentMethod; v11.Clean = value; _servicingPaymentMethod = v11;
-                var v12 = _servicingTransactionType; v12.Clean = value; _servicingTransactionType = v12;
-                var v13 = _transactionAmount; v13.Clean = value; _transactionAmount = v13;
-                var v14 = _transactionDate; v14.Clean = value; _transactionDate = v14;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var createdById = _createdById; createdById.Clean = value; _createdById = createdById;
+                var createdByName = _createdByName; createdByName.Clean = value; _createdByName = createdByName;
+                var createdDateTimeUtc = _createdDateTimeUtc; createdDateTimeUtc.Clean = value; _createdDateTimeUtc = createdDateTimeUtc;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var modifiedById = _modifiedById; modifiedById.Clean = value; _modifiedById = modifiedById;
+                var modifiedByName = _modifiedByName; modifiedByName.Clean = value; _modifiedByName = modifiedByName;
+                var modifiedDateTimeUtc = _modifiedDateTimeUtc; modifiedDateTimeUtc.Clean = value; _modifiedDateTimeUtc = modifiedDateTimeUtc;
+                var paymentId = _paymentId; paymentId.Clean = value; _paymentId = paymentId;
+                var reversalType = _reversalType; reversalType.Clean = value; _reversalType = reversalType;
+                var servicingPaymentMethod = _servicingPaymentMethod; servicingPaymentMethod.Clean = value; _servicingPaymentMethod = servicingPaymentMethod;
+                var servicingTransactionType = _servicingTransactionType; servicingTransactionType.Clean = value; _servicingTransactionType = servicingTransactionType;
+                var transactionAmount = _transactionAmount; transactionAmount.Clean = value; _transactionAmount = transactionAmount;
+                var transactionDate = _transactionDate; transactionDate.Clean = value; _transactionDate = transactionDate;
                 _settingClean = 0;
             }
         }

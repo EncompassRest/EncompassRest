@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _commentList; v0.Clean = value; _commentList = v0;
-                var v1 = _comments; v1.Clean = value; _comments = v1;
-                var v2 = _dateUtc; v2.Clean = value; _dateUtc = v2;
-                var v3 = _fileAttachmentsMigrated; v3.Clean = value; _fileAttachmentsMigrated = v3;
-                var v4 = _guid; v4.Clean = value; _guid = v4;
-                var v5 = _id; v5.Clean = value; _id = v5;
-                var v6 = _isSystemSpecificIndicator; v6.Clean = value; _isSystemSpecificIndicator = v6;
-                var v7 = _logRecordIndex; v7.Clean = value; _logRecordIndex = v7;
-                var v8 = _systemId; v8.Clean = value; _systemId = v8;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
                 _settingClean = 0;
             }
         }

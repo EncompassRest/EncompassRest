@@ -42,13 +42,13 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _chargeBelow10Indicator; v0.Clean = value; _chargeBelow10Indicator = v0;
-                var v1 = _description; v1.Clean = value; _description = v1;
-                var v2 = _gfe2010GfeChargeIndex; v2.Clean = value; _gfe2010GfeChargeIndex = v2;
-                var v3 = _gfeCharge; v3.Clean = value; _gfeCharge = v3;
-                var v4 = _hudCharge; v4.Clean = value; _hudCharge = v4;
-                var v5 = _id; v5.Clean = value; _id = v5;
-                var v6 = _line; v6.Clean = value; _line = v6;
+                var chargeBelow10Indicator = _chargeBelow10Indicator; chargeBelow10Indicator.Clean = value; _chargeBelow10Indicator = chargeBelow10Indicator;
+                var description = _description; description.Clean = value; _description = description;
+                var gfe2010GfeChargeIndex = _gfe2010GfeChargeIndex; gfe2010GfeChargeIndex.Clean = value; _gfe2010GfeChargeIndex = gfe2010GfeChargeIndex;
+                var gfeCharge = _gfeCharge; gfeCharge.Clean = value; _gfeCharge = gfeCharge;
+                var hudCharge = _hudCharge; hudCharge.Clean = value; _hudCharge = hudCharge;
+                var id = _id; id.Clean = value; _id = id;
+                var line = _line; line.Clean = value; _line = line;
                 _settingClean = 0;
             }
         }

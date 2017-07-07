@@ -57,18 +57,18 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _age; v0.Clean = value; _age = v0;
-                var v1 = _analysisDocumenting; v1.Clean = value; _analysisDocumenting = v1;
-                var v2 = _annualNonWageIncome; v2.Clean = value; _annualNonWageIncome = v2;
-                var v3 = _annualWageIncome; v3.Clean = value; _annualWageIncome = v3;
-                var v4 = _disabledIndicator; v4.Clean = value; _disabledIndicator = v4;
-                var v5 = _fullTimeStudentIndicator; v5.Clean = value; _fullTimeStudentIndicator = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _name; v7.Clean = value; _name = v7;
-                var v8 = _recordOwnerType; v8.Clean = value; _recordOwnerType = v8;
-                var v9 = _sourceofNonWageIncomeDescription; v9.Clean = value; _sourceofNonWageIncomeDescription = v9;
-                var v10 = _sourceofWageIncomeEmployerName; v10.Clean = value; _sourceofWageIncomeEmployerName = v10;
-                var v11 = _usdaHouseholdIncomeIndex; v11.Clean = value; _usdaHouseholdIncomeIndex = v11;
+                var age = _age; age.Clean = value; _age = age;
+                var analysisDocumenting = _analysisDocumenting; analysisDocumenting.Clean = value; _analysisDocumenting = analysisDocumenting;
+                var annualNonWageIncome = _annualNonWageIncome; annualNonWageIncome.Clean = value; _annualNonWageIncome = annualNonWageIncome;
+                var annualWageIncome = _annualWageIncome; annualWageIncome.Clean = value; _annualWageIncome = annualWageIncome;
+                var disabledIndicator = _disabledIndicator; disabledIndicator.Clean = value; _disabledIndicator = disabledIndicator;
+                var fullTimeStudentIndicator = _fullTimeStudentIndicator; fullTimeStudentIndicator.Clean = value; _fullTimeStudentIndicator = fullTimeStudentIndicator;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var recordOwnerType = _recordOwnerType; recordOwnerType.Clean = value; _recordOwnerType = recordOwnerType;
+                var sourceofNonWageIncomeDescription = _sourceofNonWageIncomeDescription; sourceofNonWageIncomeDescription.Clean = value; _sourceofNonWageIncomeDescription = sourceofNonWageIncomeDescription;
+                var sourceofWageIncomeEmployerName = _sourceofWageIncomeEmployerName; sourceofWageIncomeEmployerName.Clean = value; _sourceofWageIncomeEmployerName = sourceofWageIncomeEmployerName;
+                var usdaHouseholdIncomeIndex = _usdaHouseholdIncomeIndex; usdaHouseholdIncomeIndex.Clean = value; _usdaHouseholdIncomeIndex = usdaHouseholdIncomeIndex;
                 _settingClean = 0;
             }
         }

@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _branch; v0.Clean = value; _branch = v0;
-                var v1 = _endDate; v1.Clean = value; _endDate = v1;
-                var v2 = _id; v2.Clean = value; _id = v2;
-                var v3 = _militaryServiceIndex; v3.Clean = value; _militaryServiceIndex = v3;
-                var v4 = _name; v4.Clean = value; _name = v4;
-                var v5 = _officerOrEnlisted; v5.Clean = value; _officerOrEnlisted = v5;
-                var v6 = _serviceNumber; v6.Clean = value; _serviceNumber = v6;
-                var v7 = _sSN; v7.Clean = value; _sSN = v7;
-                var v8 = _startDate; v8.Clean = value; _startDate = v8;
+                var branch = _branch; branch.Clean = value; _branch = branch;
+                var endDate = _endDate; endDate.Clean = value; _endDate = endDate;
+                var id = _id; id.Clean = value; _id = id;
+                var militaryServiceIndex = _militaryServiceIndex; militaryServiceIndex.Clean = value; _militaryServiceIndex = militaryServiceIndex;
+                var name = _name; name.Clean = value; _name = name;
+                var officerOrEnlisted = _officerOrEnlisted; officerOrEnlisted.Clean = value; _officerOrEnlisted = officerOrEnlisted;
+                var serviceNumber = _serviceNumber; serviceNumber.Clean = value; _serviceNumber = serviceNumber;
+                var sSN = _sSN; sSN.Clean = value; _sSN = sSN;
+                var startDate = _startDate; startDate.Clean = value; _startDate = startDate;
                 _settingClean = 0;
             }
         }

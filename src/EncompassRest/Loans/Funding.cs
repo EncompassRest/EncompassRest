@@ -84,27 +84,27 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _collateralSentDate; v0.Clean = value; _collateralSentDate = v0;
-                var v1 = _funderName; v1.Clean = value; _funderName = v1;
-                var v2 = _funderUrl; v2.Clean = value; _funderUrl = v2;
-                var v3 = _fundingClearedBy; v3.Clean = value; _fundingClearedBy = v3;
-                var v4 = _fundingCloseDate; v4.Clean = value; _fundingCloseDate = v4;
-                var v5 = _fundingFees; v5.Clean = value; _fundingFees = v5;
-                var v6 = _fundingOrderDate; v6.Clean = value; _fundingOrderDate = v6;
-                var v7 = _fundingType; v7.Clean = value; _fundingType = v7;
-                var v8 = _fundsReleasedDate; v8.Clean = value; _fundsReleasedDate = v8;
-                var v9 = _fundsReleaseNumber; v9.Clean = value; _fundsReleaseNumber = v9;
-                var v10 = _fundsSentDate; v10.Clean = value; _fundsSentDate = v10;
-                var v11 = _fundsWireTo; v11.Clean = value; _fundsWireTo = v11;
-                var v12 = _id; v12.Clean = value; _id = v12;
-                var v13 = _sentToFunderDate; v13.Clean = value; _sentToFunderDate = v13;
-                var v14 = _wiredToAbaNumber; v14.Clean = value; _wiredToAbaNumber = v14;
-                var v15 = _wiredToAccountNumber; v15.Clean = value; _wiredToAccountNumber = v15;
-                var v16 = _wiredToForCreditTo; v16.Clean = value; _wiredToForCreditTo = v16;
-                var v17 = _wiredToForCreditTo1; v17.Clean = value; _wiredToForCreditTo1 = v17;
-                var v18 = _wiredToForCreditTo2; v18.Clean = value; _wiredToForCreditTo2 = v18;
-                var v19 = _wiredToForFurtherCreditTo1; v19.Clean = value; _wiredToForFurtherCreditTo1 = v19;
-                var v20 = _wiredToForFurtherCreditTo2; v20.Clean = value; _wiredToForFurtherCreditTo2 = v20;
+                var collateralSentDate = _collateralSentDate; collateralSentDate.Clean = value; _collateralSentDate = collateralSentDate;
+                var funderName = _funderName; funderName.Clean = value; _funderName = funderName;
+                var funderUrl = _funderUrl; funderUrl.Clean = value; _funderUrl = funderUrl;
+                var fundingClearedBy = _fundingClearedBy; fundingClearedBy.Clean = value; _fundingClearedBy = fundingClearedBy;
+                var fundingCloseDate = _fundingCloseDate; fundingCloseDate.Clean = value; _fundingCloseDate = fundingCloseDate;
+                var fundingFees = _fundingFees; fundingFees.Clean = value; _fundingFees = fundingFees;
+                var fundingOrderDate = _fundingOrderDate; fundingOrderDate.Clean = value; _fundingOrderDate = fundingOrderDate;
+                var fundingType = _fundingType; fundingType.Clean = value; _fundingType = fundingType;
+                var fundsReleasedDate = _fundsReleasedDate; fundsReleasedDate.Clean = value; _fundsReleasedDate = fundsReleasedDate;
+                var fundsReleaseNumber = _fundsReleaseNumber; fundsReleaseNumber.Clean = value; _fundsReleaseNumber = fundsReleaseNumber;
+                var fundsSentDate = _fundsSentDate; fundsSentDate.Clean = value; _fundsSentDate = fundsSentDate;
+                var fundsWireTo = _fundsWireTo; fundsWireTo.Clean = value; _fundsWireTo = fundsWireTo;
+                var id = _id; id.Clean = value; _id = id;
+                var sentToFunderDate = _sentToFunderDate; sentToFunderDate.Clean = value; _sentToFunderDate = sentToFunderDate;
+                var wiredToAbaNumber = _wiredToAbaNumber; wiredToAbaNumber.Clean = value; _wiredToAbaNumber = wiredToAbaNumber;
+                var wiredToAccountNumber = _wiredToAccountNumber; wiredToAccountNumber.Clean = value; _wiredToAccountNumber = wiredToAccountNumber;
+                var wiredToForCreditTo = _wiredToForCreditTo; wiredToForCreditTo.Clean = value; _wiredToForCreditTo = wiredToForCreditTo;
+                var wiredToForCreditTo1 = _wiredToForCreditTo1; wiredToForCreditTo1.Clean = value; _wiredToForCreditTo1 = wiredToForCreditTo1;
+                var wiredToForCreditTo2 = _wiredToForCreditTo2; wiredToForCreditTo2.Clean = value; _wiredToForCreditTo2 = wiredToForCreditTo2;
+                var wiredToForFurtherCreditTo1 = _wiredToForFurtherCreditTo1; wiredToForFurtherCreditTo1.Clean = value; _wiredToForFurtherCreditTo1 = wiredToForFurtherCreditTo1;
+                var wiredToForFurtherCreditTo2 = _wiredToForFurtherCreditTo2; wiredToForFurtherCreditTo2.Clean = value; _wiredToForFurtherCreditTo2 = wiredToForFurtherCreditTo2;
                 _settingClean = 0;
             }
         }

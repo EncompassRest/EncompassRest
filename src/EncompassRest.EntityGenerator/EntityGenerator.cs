@@ -128,7 +128,11 @@ $@"        private int _gettingClean;
                         {
                             return $"if ({propertyName} != null) {propertyName}.Clean = value;";
                         }
-                        var variableName = $"v{index}";
+                        var variableName = propertyName.Substring(1);
+                        if (variableName == "value")
+                        {
+                            variableName = "v";
+                        }
                         return $"var {variableName} = {propertyName}; {variableName}.Clean = value; {propertyName} = {variableName};";
                     }))}
                 _settingClean = 0;

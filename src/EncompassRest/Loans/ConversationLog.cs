@@ -72,23 +72,23 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _alerts; v0.Clean = value; _alerts = v0;
-                var v1 = _commentList; v1.Clean = value; _commentList = v1;
-                var v2 = _comments; v2.Clean = value; _comments = v2;
-                var v3 = _company; v3.Clean = value; _company = v3;
-                var v4 = _dateUtc; v4.Clean = value; _dateUtc = v4;
-                var v5 = _email; v5.Clean = value; _email = v5;
-                var v6 = _fileAttachmentsMigrated; v6.Clean = value; _fileAttachmentsMigrated = v6;
-                var v7 = _guid; v7.Clean = value; _guid = v7;
-                var v8 = _id; v8.Clean = value; _id = v8;
-                var v9 = _inLogIndicator; v9.Clean = value; _inLogIndicator = v9;
-                var v10 = _isEmailIndicator; v10.Clean = value; _isEmailIndicator = v10;
-                var v11 = _isSystemSpecificIndicator; v11.Clean = value; _isSystemSpecificIndicator = v11;
-                var v12 = _logRecordIndex; v12.Clean = value; _logRecordIndex = v12;
-                var v13 = _name; v13.Clean = value; _name = v13;
-                var v14 = _phone; v14.Clean = value; _phone = v14;
-                var v15 = _systemId; v15.Clean = value; _systemId = v15;
-                var v16 = _userId; v16.Clean = value; _userId = v16;
+                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
+                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
+                var comments = _comments; comments.Clean = value; _comments = comments;
+                var company = _company; company.Clean = value; _company = company;
+                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
+                var email = _email; email.Clean = value; _email = email;
+                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
+                var guid = _guid; guid.Clean = value; _guid = guid;
+                var id = _id; id.Clean = value; _id = id;
+                var inLogIndicator = _inLogIndicator; inLogIndicator.Clean = value; _inLogIndicator = inLogIndicator;
+                var isEmailIndicator = _isEmailIndicator; isEmailIndicator.Clean = value; _isEmailIndicator = isEmailIndicator;
+                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
+                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
+                var name = _name; name.Clean = value; _name = name;
+                var phone = _phone; phone.Clean = value; _phone = phone;
+                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
+                var userId = _userId; userId.Clean = value; _userId = userId;
                 _settingClean = 0;
             }
         }

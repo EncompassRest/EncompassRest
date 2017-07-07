@@ -81,26 +81,26 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _disclosurePercent1; v0.Clean = value; _disclosurePercent1 = v0;
-                var v1 = _disclosurePercent2; v1.Clean = value; _disclosurePercent2 = v1;
-                var v2 = _disclosurePercent3; v2.Clean = value; _disclosurePercent3 = v2;
-                var v3 = _disclosureYear1; v3.Clean = value; _disclosureYear1 = v3;
-                var v4 = _disclosureYear2; v4.Clean = value; _disclosureYear2 = v4;
-                var v5 = _disclosureYear3; v5.Clean = value; _disclosureYear3 = v5;
-                var v6 = _fiftyOneTo75Indicator; v6.Clean = value; _fiftyOneTo75Indicator = v6;
-                var v7 = _id; v7.Clean = value; _id = v7;
-                var v8 = _seventySixTo100Indicator; v8.Clean = value; _seventySixTo100Indicator = v8;
-                var v9 = _thisEstimateType; v9.Clean = value; _thisEstimateType = v9;
-                var v10 = _thisInformationType; v10.Clean = value; _thisInformationType = v10;
-                var v11 = _thisIsOurRecordOfTransferingIndicator; v11.Clean = value; _thisIsOurRecordOfTransferingIndicator = v11;
-                var v12 = _twentySixTo50Indicator; v12.Clean = value; _twentySixTo50Indicator = v12;
-                var v13 = _weAreAbleType; v13.Clean = value; _weAreAbleType = v13;
-                var v14 = _weDoNotSellMortgageLoansIndicator; v14.Clean = value; _weDoNotSellMortgageLoansIndicator = v14;
-                var v15 = _weDoNotServiceMortgageLoansIndicator; v15.Clean = value; _weDoNotServiceMortgageLoansIndicator = v15;
-                var v16 = _weHaveNotServicedMortgLoansIn3YrsIndicator; v16.Clean = value; _weHaveNotServicedMortgLoansIn3YrsIndicator = v16;
-                var v17 = _weHavePreviouslyAssignedIndicator; v17.Clean = value; _weHavePreviouslyAssignedIndicator = v17;
-                var v18 = _weMayAssignIndicator; v18.Clean = value; _weMayAssignIndicator = v18;
-                var v19 = _zeroTo25Indicator; v19.Clean = value; _zeroTo25Indicator = v19;
+                var disclosurePercent1 = _disclosurePercent1; disclosurePercent1.Clean = value; _disclosurePercent1 = disclosurePercent1;
+                var disclosurePercent2 = _disclosurePercent2; disclosurePercent2.Clean = value; _disclosurePercent2 = disclosurePercent2;
+                var disclosurePercent3 = _disclosurePercent3; disclosurePercent3.Clean = value; _disclosurePercent3 = disclosurePercent3;
+                var disclosureYear1 = _disclosureYear1; disclosureYear1.Clean = value; _disclosureYear1 = disclosureYear1;
+                var disclosureYear2 = _disclosureYear2; disclosureYear2.Clean = value; _disclosureYear2 = disclosureYear2;
+                var disclosureYear3 = _disclosureYear3; disclosureYear3.Clean = value; _disclosureYear3 = disclosureYear3;
+                var fiftyOneTo75Indicator = _fiftyOneTo75Indicator; fiftyOneTo75Indicator.Clean = value; _fiftyOneTo75Indicator = fiftyOneTo75Indicator;
+                var id = _id; id.Clean = value; _id = id;
+                var seventySixTo100Indicator = _seventySixTo100Indicator; seventySixTo100Indicator.Clean = value; _seventySixTo100Indicator = seventySixTo100Indicator;
+                var thisEstimateType = _thisEstimateType; thisEstimateType.Clean = value; _thisEstimateType = thisEstimateType;
+                var thisInformationType = _thisInformationType; thisInformationType.Clean = value; _thisInformationType = thisInformationType;
+                var thisIsOurRecordOfTransferingIndicator = _thisIsOurRecordOfTransferingIndicator; thisIsOurRecordOfTransferingIndicator.Clean = value; _thisIsOurRecordOfTransferingIndicator = thisIsOurRecordOfTransferingIndicator;
+                var twentySixTo50Indicator = _twentySixTo50Indicator; twentySixTo50Indicator.Clean = value; _twentySixTo50Indicator = twentySixTo50Indicator;
+                var weAreAbleType = _weAreAbleType; weAreAbleType.Clean = value; _weAreAbleType = weAreAbleType;
+                var weDoNotSellMortgageLoansIndicator = _weDoNotSellMortgageLoansIndicator; weDoNotSellMortgageLoansIndicator.Clean = value; _weDoNotSellMortgageLoansIndicator = weDoNotSellMortgageLoansIndicator;
+                var weDoNotServiceMortgageLoansIndicator = _weDoNotServiceMortgageLoansIndicator; weDoNotServiceMortgageLoansIndicator.Clean = value; _weDoNotServiceMortgageLoansIndicator = weDoNotServiceMortgageLoansIndicator;
+                var weHaveNotServicedMortgLoansIn3YrsIndicator = _weHaveNotServicedMortgLoansIn3YrsIndicator; weHaveNotServicedMortgLoansIn3YrsIndicator.Clean = value; _weHaveNotServicedMortgLoansIn3YrsIndicator = weHaveNotServicedMortgLoansIn3YrsIndicator;
+                var weHavePreviouslyAssignedIndicator = _weHavePreviouslyAssignedIndicator; weHavePreviouslyAssignedIndicator.Clean = value; _weHavePreviouslyAssignedIndicator = weHavePreviouslyAssignedIndicator;
+                var weMayAssignIndicator = _weMayAssignIndicator; weMayAssignIndicator.Clean = value; _weMayAssignIndicator = weMayAssignIndicator;
+                var zeroTo25Indicator = _zeroTo25Indicator; zeroTo25Indicator.Clean = value; _zeroTo25Indicator = zeroTo25Indicator;
                 _settingClean = 0;
             }
         }

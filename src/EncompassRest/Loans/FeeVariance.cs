@@ -48,15 +48,15 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _cD; v0.Clean = value; _cD = v0;
-                var v1 = _description; v1.Clean = value; _description = v1;
-                var v2 = _feeVarianceChargeIndex; v2.Clean = value; _feeVarianceChargeIndex = v2;
-                var v3 = _feeVarianceFeeType; v3.Clean = value; _feeVarianceFeeType = v3;
-                var v4 = _id; v4.Clean = value; _id = v4;
-                var v5 = _initialLE; v5.Clean = value; _initialLE = v5;
-                var v6 = _itemization; v6.Clean = value; _itemization = v6;
-                var v7 = _lE; v7.Clean = value; _lE = v7;
-                var v8 = _line; v8.Clean = value; _line = v8;
+                var cD = _cD; cD.Clean = value; _cD = cD;
+                var description = _description; description.Clean = value; _description = description;
+                var feeVarianceChargeIndex = _feeVarianceChargeIndex; feeVarianceChargeIndex.Clean = value; _feeVarianceChargeIndex = feeVarianceChargeIndex;
+                var feeVarianceFeeType = _feeVarianceFeeType; feeVarianceFeeType.Clean = value; _feeVarianceFeeType = feeVarianceFeeType;
+                var id = _id; id.Clean = value; _id = id;
+                var initialLE = _initialLE; initialLE.Clean = value; _initialLE = initialLE;
+                var itemization = _itemization; itemization.Clean = value; _itemization = itemization;
+                var lE = _lE; lE.Clean = value; _lE = lE;
+                var line = _line; line.Clean = value; _line = line;
                 _settingClean = 0;
             }
         }

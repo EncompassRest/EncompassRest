@@ -36,11 +36,11 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _gfe2010WholePocIndex; v0.Clean = value; _gfe2010WholePocIndex = v0;
-                var v1 = _id; v1.Clean = value; _id = v1;
-                var v2 = _lineNumber; v2.Clean = value; _lineNumber = v2;
-                var v3 = _wholePoc; v3.Clean = value; _wholePoc = v3;
-                var v4 = _wholePocPaidByType; v4.Clean = value; _wholePocPaidByType = v4;
+                var gfe2010WholePocIndex = _gfe2010WholePocIndex; gfe2010WholePocIndex.Clean = value; _gfe2010WholePocIndex = gfe2010WholePocIndex;
+                var id = _id; id.Clean = value; _id = id;
+                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
+                var wholePoc = _wholePoc; wholePoc.Clean = value; _wholePoc = wholePoc;
+                var wholePocPaidByType = _wholePocPaidByType; wholePocPaidByType.Clean = value; _wholePocPaidByType = wholePocPaidByType;
                 _settingClean = 0;
             }
         }

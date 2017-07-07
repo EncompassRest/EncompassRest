@@ -57,18 +57,18 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var v0 = _address; v0.Clean = value; _address = v0;
-                var v1 = _address2; v1.Clean = value; _address2 = v1;
-                var v2 = _city; v2.Clean = value; _city = v2;
-                var v3 = _contactName; v3.Clean = value; _contactName = v3;
-                var v4 = _email; v4.Clean = value; _email = v4;
-                var v5 = _fax; v5.Clean = value; _fax = v5;
-                var v6 = _id; v6.Clean = value; _id = v6;
-                var v7 = _name; v7.Clean = value; _name = v7;
-                var v8 = _phone; v8.Clean = value; _phone = v8;
-                var v9 = _postalCode; v9.Clean = value; _postalCode = v9;
-                var v10 = _shippingContactType; v10.Clean = value; _shippingContactType = v10;
-                var v11 = _state; v11.Clean = value; _state = v11;
+                var address = _address; address.Clean = value; _address = address;
+                var address2 = _address2; address2.Clean = value; _address2 = address2;
+                var city = _city; city.Clean = value; _city = city;
+                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
+                var email = _email; email.Clean = value; _email = email;
+                var fax = _fax; fax.Clean = value; _fax = fax;
+                var id = _id; id.Clean = value; _id = id;
+                var name = _name; name.Clean = value; _name = name;
+                var phone = _phone; phone.Clean = value; _phone = phone;
+                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
+                var shippingContactType = _shippingContactType; shippingContactType.Clean = value; _shippingContactType = shippingContactType;
+                var state = _state; state.Clean = value; _state = state;
                 _settingClean = 0;
             }
         }
