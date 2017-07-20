@@ -46,7 +46,7 @@ namespace EncompassRest.Loans
                     && _isSystemSpecificIndicator.Clean
                     && _logRecordIndex.Clean
                     && _systemId.Clean
-                    && LoanAssociate.Clean;
+                    && LoanAssociate?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

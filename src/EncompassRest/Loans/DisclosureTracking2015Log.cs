@@ -112,6 +112,8 @@ namespace EncompassRest.Loans
         public string DisclosedMethodName { get { return _disclosedMethodName; } set { _disclosedMethodName = value; } }
         private Value<string> _disclosedMethodOther;
         public string DisclosedMethodOther { get { return _disclosedMethodOther; } set { _disclosedMethodOther = value; } }
+        private Value<string> _disclosedSalesPrice;
+        public string DisclosedSalesPrice { get { return _disclosedSalesPrice; } set { _disclosedSalesPrice = value; } }
         private Value<DateTime?> _disclosureCreatedDttmUtc;
         public DateTime? DisclosureCreatedDttmUtc { get { return _disclosureCreatedDttmUtc; } set { _disclosureCreatedDttmUtc = value; } }
         private Value<string> _disclosureMethod;
@@ -461,6 +463,7 @@ namespace EncompassRest.Loans
                     && _disclosedMethod.Clean
                     && _disclosedMethodName.Clean
                     && _disclosedMethodOther.Clean
+                    && _disclosedSalesPrice.Clean
                     && _disclosureCreatedDttmUtc.Clean
                     && _disclosureMethod.Clean
                     && _disclosureType.Clean
@@ -664,6 +667,7 @@ namespace EncompassRest.Loans
                 var disclosedMethod = _disclosedMethod; disclosedMethod.Clean = value; _disclosedMethod = disclosedMethod;
                 var disclosedMethodName = _disclosedMethodName; disclosedMethodName.Clean = value; _disclosedMethodName = disclosedMethodName;
                 var disclosedMethodOther = _disclosedMethodOther; disclosedMethodOther.Clean = value; _disclosedMethodOther = disclosedMethodOther;
+                var disclosedSalesPrice = _disclosedSalesPrice; disclosedSalesPrice.Clean = value; _disclosedSalesPrice = disclosedSalesPrice;
                 var disclosureCreatedDttmUtc = _disclosureCreatedDttmUtc; disclosureCreatedDttmUtc.Clean = value; _disclosureCreatedDttmUtc = disclosureCreatedDttmUtc;
                 var disclosureMethod = _disclosureMethod; disclosureMethod.Clean = value; _disclosureMethod = disclosureMethod;
                 var disclosureType = _disclosureType; disclosureType.Clean = value; _disclosureType = disclosureType;

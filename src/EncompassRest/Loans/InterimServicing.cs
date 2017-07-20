@@ -464,8 +464,8 @@ namespace EncompassRest.Loans
                     && _unpaidLateFee.Clean
                     && _unpaidMiscrFee.Clean
                     && _unpaidPrincipal.Clean
-                    && LastScheduledPayment.Clean
-                    && NextScheduledPayment.Clean;
+                    && LastScheduledPayment?.Clean != false
+                    && NextScheduledPayment?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

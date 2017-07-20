@@ -922,7 +922,7 @@ namespace EncompassRest.Loans
                     && _veteranIndicator.Clean
                     && _workEmailAddress.Clean
                     && _yearsofCreditOnFile.Clean
-                    && Application.Clean;
+                    && Application?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

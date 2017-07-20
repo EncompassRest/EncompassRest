@@ -427,7 +427,7 @@ namespace EncompassRest.Loans
                     && _utilityIncluded.Clean
                     && _validateAddressDate.Clean
                     && _valuation.Clean
-                    && Eem.Clean;
+                    && Eem?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

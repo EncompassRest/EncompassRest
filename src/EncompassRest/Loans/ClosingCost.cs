@@ -189,18 +189,18 @@ namespace EncompassRest.Loans
                     && _totalForSellerPaid4.Clean
                     && _totalForSellerPaid5.Clean
                     && _totalForSellerPaid6.Clean
-                    && ClosingDisclosure1.Clean
-                    && ClosingDisclosure2.Clean
-                    && ClosingDisclosure3.Clean
-                    && ClosingDisclosure4.Clean
-                    && ClosingDisclosure5.Clean
-                    && FeeVarianceOther.Clean
-                    && Gfe2010.Clean
-                    && Gfe2010Page.Clean
-                    && Gfe2010Section.Clean
-                    && LoanEstimate1.Clean
-                    && LoanEstimate2.Clean
-                    && LoanEstimate3.Clean;
+                    && ClosingDisclosure1?.Clean != false
+                    && ClosingDisclosure2?.Clean != false
+                    && ClosingDisclosure3?.Clean != false
+                    && ClosingDisclosure4?.Clean != false
+                    && ClosingDisclosure5?.Clean != false
+                    && FeeVarianceOther?.Clean != false
+                    && Gfe2010?.Clean != false
+                    && Gfe2010Page?.Clean != false
+                    && Gfe2010Section?.Clean != false
+                    && LoanEstimate1?.Clean != false
+                    && LoanEstimate2?.Clean != false
+                    && LoanEstimate3?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

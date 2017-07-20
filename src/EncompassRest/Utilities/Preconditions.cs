@@ -31,5 +31,23 @@ namespace EncompassRest.Utilities
                 throw new ArgumentException("cannot be null or empty", paramName);
             }
         }
+
+        public static void NullOrEmpty(string value, string paramName)
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentException("must be null or empty", paramName);
+            }
+        }
+        
+        public static void GreaterThan(int value, string paramName, int comparisonValue) => GreaterThan(value, paramName, comparisonValue, comparisonValue.ToString());
+        
+        public static void GreaterThan(int value, string paramName, int comparisonValue, string comparisonValueParamName)
+        {
+            if (value <= comparisonValue)
+            {
+                throw new ArgumentOutOfRangeException(paramName, $"must be greater than {comparisonValueParamName}");
+            }
+        }
     }
 }

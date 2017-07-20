@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -64,6 +65,7 @@ namespace EncompassRest.Loans.Attachments
             }
         }
 
+        //TODO: Add support for view query parameter, does this even make sense?
         public Task<string> GetAttachmentUrlAsync(string attachmentId)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
@@ -90,11 +92,23 @@ namespace EncompassRest.Loans.Attachments
             public string MediaUrl { get; set; }
         }
 
-        public Task UpdateAttachmentAsync(LoanAttachment attachment)
+        public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate)
         {
             Preconditions.NotNull(attachment, nameof(attachment));
 
-            return UpdateAttachmentInternalAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment));
+            return UpdateAttachmentInternalAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            {
+                if (populate)
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            JsonHelper.PopulateFromJson(reader, attachment);
+                        }
+                    }
+                }
+            });
         }
 
         public Task UpdateAttachmentRawAsync(string attachmentId, string attachment)
@@ -105,13 +119,18 @@ namespace EncompassRest.Loans.Attachments
             return UpdateAttachmentInternalAsync(attachmentId, new JsonContent(attachment));
         }
 
-        private async Task UpdateAttachmentInternalAsync(string attachmentId, HttpContent content)
+        private async Task UpdateAttachmentInternalAsync(string attachmentId, HttpContent content, QueryParameters queryParameters = null, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}{queryParameters}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(UpdateAttachmentAsync), response).ConfigureAwait(false);
+                }
+
+                if (func != null)
+                {
+                    await func(response).ConfigureAwait(false);
                 }
             }
         }

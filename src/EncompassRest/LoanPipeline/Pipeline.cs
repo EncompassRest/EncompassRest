@@ -34,27 +34,40 @@ namespace EncompassRest.LoanPipeline
             }
         }
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int? limit = null)
+        //TODO: Add support for cursor and pagination
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
-            if (limit <= 0)
-            {
-                throw new ArgumentException("must be null or greater than 0", nameof(limit));
-            }
-
-            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), limit, response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+            return ViewPipelineInternalAsync(parameters, null);
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit = null)
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int limit)
+        {
+            Preconditions.NotNull(parameters, nameof(parameters));
+            Preconditions.GreaterThan(limit, nameof(limit), 0);
+
+            return ViewPipelineInternalAsync(parameters, limit);
+        }
+
+        private Task<List<LoanPipelineData>> ViewPipelineInternalAsync(ViewPipelineParameters parameters, int? limit) => ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), limit, response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+
+        public Task<string> ViewPipelineRawAsync(string parameters)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
-            if (limit <= 0)
-            {
-                throw new ArgumentException("must be null or greater than 0", nameof(limit));
-            }
 
-            return ViewPipelineInternalAsync(new JsonContent(parameters), limit, response => response.Content.ReadAsStringAsync());
+            return ViewPipelineRawInternalAsync(parameters, null);
         }
+
+        public Task<string> ViewPipelineRawAsync(string parameters, int limit)
+        {
+            Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
+            Preconditions.GreaterThan(limit, nameof(limit), 0);
+
+            return ViewPipelineRawInternalAsync(parameters, limit);
+        }
+
+        private Task<string> ViewPipelineRawInternalAsync(string parameters, int? limit) => ViewPipelineInternalAsync(new JsonContent(parameters), limit, response => response.Content.ReadAsStringAsync());
 
         private async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, int? limit, Func<HttpResponseMessage, Task<T>> func)
         {

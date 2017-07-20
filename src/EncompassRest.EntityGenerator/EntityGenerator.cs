@@ -114,14 +114,14 @@ $@"        private int _gettingClean;
             get
             {{
                 if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.FieldName}.Clean"))};
+                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.FieldName}{(property.IsEntity ? "?.Clean != false" : ".Clean")}"))};
                 _gettingClean = 0;
                 return clean;
             }}
             set
             {{
                 if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                {string.Join($"{Environment.NewLine}                ", properties.Select((property, index) =>
+                {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
                     {
                         var propertyName = property.FieldName;
                         if (property.IsEntity)
@@ -162,7 +162,6 @@ $@"        private int _gettingClean;
                 case "uuid":
                     return "string";
                 case "decimal":
-                    return "decimal?";
                 case "NA<decimal>":
                 case "bool":
                 case "int":

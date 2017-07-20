@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
                     && _roleRequired.Clean
                     && _stage.Clean
                     && _systemId.Clean
-                    && LoanAssociate.Clean;
+                    && LoanAssociate?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

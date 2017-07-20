@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Schema
@@ -18,7 +19,11 @@ namespace EncompassRest.Schema
             Client = client;
         }
 
+        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<LoanEntity> entities, bool includeFieldExtensions = false) => GetLoanSchemaAsync(entities?.Select(entity => entity.ToJson().Unquote()), includeFieldExtensions);
+
         public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsAsync<LoanSchema>());
+
+        public Task<string> GetLoanSchemaRawAsync(IEnumerable<LoanEntity> entities, bool includeFieldExtensions = false) => GetLoanSchemaRawAsync(entities?.Select(entity => entity.ToJson().Unquote()), includeFieldExtensions);
 
         public Task<string> GetLoanSchemaRawAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsStringAsync());
 

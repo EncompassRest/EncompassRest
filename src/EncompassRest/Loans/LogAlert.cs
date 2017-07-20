@@ -34,7 +34,7 @@ namespace EncompassRest.Loans
                     && _roleId.Clean
                     && _systemId.Clean
                     && _userId.Clean
-                    && LogRecord.Clean;
+                    && LogRecord?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

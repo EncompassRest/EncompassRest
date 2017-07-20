@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
     public partial class Loan
     {
         [JsonIgnore]
-        public EncompassRestClient Client { get; }
+        public EncompassRestClient Client { get; private set; }
 
         [JsonIgnore]
-        public LoanDocuments Documents { get; }
+        public LoanDocuments Documents { get; private set; }
 
         [JsonIgnore]
-        public LoanAttachments Attachments { get; }
+        public LoanAttachments Attachments { get; private set; }
 
         /// <summary>
         /// Loan update constructor
@@ -26,11 +26,16 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            Client = client;
             EncompassId = loanId;
-            Documents = new LoanDocuments(client, loanId);
-            Attachments = new LoanAttachments(client, loanId);
+            Initialize(client);
             Clean = true;
+        }
+
+        internal void Initialize(EncompassRestClient client)
+        {
+            Client = client;
+            Documents = new LoanDocuments(client, EncompassId);
+            Attachments = new LoanAttachments(client, EncompassId);
         }
     }
 }

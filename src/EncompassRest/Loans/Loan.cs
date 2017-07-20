@@ -931,55 +931,55 @@ namespace EncompassRest.Loans
                     && _verificationLogs.Clean
                     && _virtualFields.Clean
                     && _websiteId.Clean
-                    && AdditionalRequests.Clean
-                    && ATRQMCommon.Clean
-                    && ClosingCost.Clean
-                    && ClosingDocument.Clean
-                    && CommitmentTerms.Clean
-                    && ConstructionManagement.Clean
-                    && Correspondent.Clean
-                    && CurrentApplication.Clean
-                    && CustomModelFields.Clean
-                    && DisclosureNotices.Clean
-                    && DownPayment.Clean
-                    && EmDocument.Clean
-                    && EmDocumentInvestor.Clean
-                    && EmDocumentLender.Clean
-                    && FannieMae.Clean
-                    && FhaVaLoan.Clean
-                    && FreddieMac.Clean
-                    && Funding.Clean
-                    && Gfe.Clean
-                    && Hmda.Clean
-                    && Hud1Es.Clean
-                    && HudLoanData.Clean
-                    && InterimServicing.Clean
-                    && LoanProductData.Clean
-                    && LoanSubmission.Clean
-                    && LOCompensation.Clean
-                    && Mcaw.Clean
-                    && Miscellaneous.Clean
-                    && NetTangibleBenefit.Clean
-                    && Prequalification.Clean
-                    && PrivacyPolicy.Clean
-                    && ProfitManagement.Clean
-                    && Property.Clean
-                    && RateLock.Clean
-                    && RegulationZ.Clean
-                    && Section32.Clean
-                    && SelectedHomeCounselingProvider.Clean
-                    && ServicingDisclosure.Clean
-                    && Shipping.Clean
-                    && StateDisclosure.Clean
-                    && StatementCreditDenial.Clean
-                    && TPO.Clean
-                    && TQL.Clean
-                    && TrustAccount.Clean
-                    && Tsum.Clean
-                    && Uldd.Clean
-                    && UnderwriterSummary.Clean
-                    && Usda.Clean
-                    && VaLoanData.Clean;
+                    && AdditionalRequests?.Clean != false
+                    && ATRQMCommon?.Clean != false
+                    && ClosingCost?.Clean != false
+                    && ClosingDocument?.Clean != false
+                    && CommitmentTerms?.Clean != false
+                    && ConstructionManagement?.Clean != false
+                    && Correspondent?.Clean != false
+                    && CurrentApplication?.Clean != false
+                    && CustomModelFields?.Clean != false
+                    && DisclosureNotices?.Clean != false
+                    && DownPayment?.Clean != false
+                    && EmDocument?.Clean != false
+                    && EmDocumentInvestor?.Clean != false
+                    && EmDocumentLender?.Clean != false
+                    && FannieMae?.Clean != false
+                    && FhaVaLoan?.Clean != false
+                    && FreddieMac?.Clean != false
+                    && Funding?.Clean != false
+                    && Gfe?.Clean != false
+                    && Hmda?.Clean != false
+                    && Hud1Es?.Clean != false
+                    && HudLoanData?.Clean != false
+                    && InterimServicing?.Clean != false
+                    && LoanProductData?.Clean != false
+                    && LoanSubmission?.Clean != false
+                    && LOCompensation?.Clean != false
+                    && Mcaw?.Clean != false
+                    && Miscellaneous?.Clean != false
+                    && NetTangibleBenefit?.Clean != false
+                    && Prequalification?.Clean != false
+                    && PrivacyPolicy?.Clean != false
+                    && ProfitManagement?.Clean != false
+                    && Property?.Clean != false
+                    && RateLock?.Clean != false
+                    && RegulationZ?.Clean != false
+                    && Section32?.Clean != false
+                    && SelectedHomeCounselingProvider?.Clean != false
+                    && ServicingDisclosure?.Clean != false
+                    && Shipping?.Clean != false
+                    && StateDisclosure?.Clean != false
+                    && StatementCreditDenial?.Clean != false
+                    && TPO?.Clean != false
+                    && TQL?.Clean != false
+                    && TrustAccount?.Clean != false
+                    && Tsum?.Clean != false
+                    && Uldd?.Clean != false
+                    && UnderwriterSummary?.Clean != false
+                    && Usda?.Clean != false
+                    && VaLoanData?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

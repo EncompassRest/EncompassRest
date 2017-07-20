@@ -93,38 +93,63 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public Task<string> CreateDocumentAsync(LoanDocument document)
+        public Task<string> CreateDocumentAsync(LoanDocument document, bool populate)
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return CreateDocumentInternalAsync(JsonStreamContent.Create(document));
+            return CreateDocumentInternalAsync(JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            {
+                if (populate)
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            JsonHelper.PopulateFromJson(reader, document);
+                        }
+                    }
+                }
+                return Path.GetFileName(response.Headers.Location.OriginalString);
+            });
         }
 
         public Task<string> CreateDocumentAsync(string document)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return CreateDocumentInternalAsync(new JsonContent(document));
+            return CreateDocumentInternalAsync(new JsonContent(document), null, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
         }
 
-        private async Task<string> CreateDocumentInternalAsync(HttpContent content)
+        private async Task<string> CreateDocumentInternalAsync(HttpContent content, QueryParameters queryParameters, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents{queryParameters}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(CreateDocumentAsync), response).ConfigureAwait(false);
                 }
 
-                return Path.GetFileName(response.Headers.Location.OriginalString);
+                return await func(response).ConfigureAwait(false);
             }
         }
-
-        public Task UpdateDocumentAsync(LoanDocument document)
+        
+        public Task UpdateDocumentAsync(LoanDocument document, bool populate)
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document));
+            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            {
+                if (populate)
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            JsonHelper.PopulateFromJson(reader, document);
+                        }
+                    }
+                }
+            });
         }
 
         public Task UpdateDocumentAsync(string documentId, string document)
@@ -135,13 +160,18 @@ namespace EncompassRest.Loans.Documents
             return UpdateDocumentInternalAsync(documentId, new JsonContent(document));
         }
 
-        private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content)
+        private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content, QueryParameters queryParameters = null, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
+                }
+
+                if (func != null)
+                {
+                    await func(response).ConfigureAwait(false);
                 }
             }
         }

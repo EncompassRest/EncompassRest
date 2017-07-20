@@ -112,51 +112,71 @@ namespace EncompassRest.Loans
             }
         }
 
-        public Task<string> CreateLoanAsync(Loan loan)
+        public Task<string> CreateLoanAsync(Loan loan, bool populate)
         {
             Preconditions.NotNull(loan, nameof(loan));
+            Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            return CreateLoanInternalAsync(loan);
-        }
-
-        private async Task<string> CreateLoanInternalAsync(Loan loan)
-        {
-            var loanId = await CreateLoanInternalAsync(JsonStreamContent.Create(loan)).ConfigureAwait(false);
-            loan.Clean = true;
-            return loanId;
+            return CreateLoanInternalAsync(JsonStreamContent.Create(loan), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            {
+                var loanId = Path.GetFileName(response.Headers.Location.OriginalString);
+                loan.EncompassId = loanId;
+                loan.Initialize(Client);
+                if (populate)
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            JsonHelper.PopulateFromJson(reader, loan);
+                        }
+                    }
+                }
+                loan.Clean = true;
+                return loanId;
+            });
         }
 
         public Task<string> CreateLoanRawAsync(string loan)
         {
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return CreateLoanInternalAsync(new JsonContent(loan));
+            return CreateLoanInternalAsync(new JsonContent(loan), null, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
         }
 
-        private async Task<string> CreateLoanInternalAsync(HttpContent content)
+        private async Task<string> CreateLoanInternalAsync(HttpContent content, QueryParameters queryParameters, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{queryParameters}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(CreateLoanAsync), response).ConfigureAwait(false);
                 }
-                
-                return Path.GetFileName(response.Headers.Location.OriginalString);
+
+                return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task UpdateLoanAsync(Loan loan)
+        public Task UpdateLoanAsync(Loan loan, bool populate)
         {
             Preconditions.NotNull(loan, nameof(loan));
+            Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            return UpdateLoanInternalAsync(loan);
-        }
-
-        private async Task UpdateLoanInternalAsync(Loan loan)
-        {
-            await UpdateLoanInternalAsync(loan.EncompassId, JsonStreamContent.Create(loan));
-            loan.Clean = true;
+            loan.Initialize(Client);
+            return UpdateLoanInternalAsync(loan.EncompassId, JsonStreamContent.Create(loan), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            {
+                if (populate)
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                    {
+                        using (var reader = new StreamReader(stream))
+                        {
+                            JsonHelper.PopulateFromJson(reader, loan);
+                        }
+                    }
+                }
+                loan.Clean = true;
+            });
         }
 
         public Task UpdateLoanRawAsync(string loanId, string loan)
@@ -167,13 +187,18 @@ namespace EncompassRest.Loans
             return UpdateLoanInternalAsync(loanId, new JsonContent(loan));
         }
 
-        private async Task UpdateLoanInternalAsync(string loanId, HttpContent content)
+        private async Task UpdateLoanInternalAsync(string loanId, HttpContent content, QueryParameters queryParameters = null, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loanId}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loanId}{queryParameters}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw response.StatusCode == HttpStatusCode.Conflict ? await LoanLockedException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false);
+                }
+
+                if (func != null)
+                {
+                    await func(response).ConfigureAwait(false);
                 }
             }
         }

@@ -606,9 +606,9 @@ namespace EncompassRest.Loans
                     && _vACreditStandards.Clean
                     && _vaSummarySpouseIncomeAmount.Clean
                     && _vaSummaryTotalMonthlyGrossIncomeAmount.Clean
-                    && ATRQMBorrower.Clean
-                    && Borrower.Clean
-                    && Coborrower.Clean;
+                    && ATRQMBorrower?.Clean != false
+                    && Borrower?.Clean != false
+                    && Coborrower?.Clean != false;
                 _gettingClean = 0;
                 return clean;
             }

@@ -466,6 +466,8 @@ namespace EncompassRest.Loans
         public decimal? CorrespondentTotalFees { get { return _correspondentTotalFees; } set { _correspondentTotalFees = value; } }
         private Value<string> _correspondentWarehouseBankABANum;
         public string CorrespondentWarehouseBankABANum { get { return _correspondentWarehouseBankABANum; } set { _correspondentWarehouseBankABANum = value; } }
+        private Value<string> _correspondentWarehouseBankAcctName;
+        public string CorrespondentWarehouseBankAcctName { get { return _correspondentWarehouseBankAcctName; } set { _correspondentWarehouseBankAcctName = value; } }
         private Value<string> _correspondentWarehouseBankAcctNum;
         public string CorrespondentWarehouseBankAcctNum { get { return _correspondentWarehouseBankAcctNum; } set { _correspondentWarehouseBankAcctNum = value; } }
         private Value<string> _correspondentWarehouseBankAddress;
@@ -490,6 +492,10 @@ namespace EncompassRest.Loans
         public string CorrespondentWarehouseBankContactPhone { get { return _correspondentWarehouseBankContactPhone; } set { _correspondentWarehouseBankContactPhone = value; } }
         private Value<string> _correspondentWarehouseBankDescription;
         public string CorrespondentWarehouseBankDescription { get { return _correspondentWarehouseBankDescription; } set { _correspondentWarehouseBankDescription = value; } }
+        private Value<string> _correspondentWarehouseBankFurtherCreditAcctName;
+        public string CorrespondentWarehouseBankFurtherCreditAcctName { get { return _correspondentWarehouseBankFurtherCreditAcctName; } set { _correspondentWarehouseBankFurtherCreditAcctName = value; } }
+        private Value<string> _correspondentWarehouseBankFurtherCreditAcctNum;
+        public string CorrespondentWarehouseBankFurtherCreditAcctNum { get { return _correspondentWarehouseBankFurtherCreditAcctNum; } set { _correspondentWarehouseBankFurtherCreditAcctNum = value; } }
         private Value<int?> _correspondentWarehouseBankId;
         public int? CorrespondentWarehouseBankId { get { return _correspondentWarehouseBankId; } set { _correspondentWarehouseBankId = value; } }
         private Value<string> _correspondentWarehouseBankName;
@@ -1242,6 +1248,7 @@ namespace EncompassRest.Loans
                     && _correspondentTotalBuyAmount.Clean
                     && _correspondentTotalFees.Clean
                     && _correspondentWarehouseBankABANum.Clean
+                    && _correspondentWarehouseBankAcctName.Clean
                     && _correspondentWarehouseBankAcctNum.Clean
                     && _correspondentWarehouseBankAddress.Clean
                     && _correspondentWarehouseBankAddress1.Clean
@@ -1254,6 +1261,8 @@ namespace EncompassRest.Loans
                     && _correspondentWarehouseBankContactName.Clean
                     && _correspondentWarehouseBankContactPhone.Clean
                     && _correspondentWarehouseBankDescription.Clean
+                    && _correspondentWarehouseBankFurtherCreditAcctName.Clean
+                    && _correspondentWarehouseBankFurtherCreditAcctNum.Clean
                     && _correspondentWarehouseBankId.Clean
                     && _correspondentWarehouseBankName.Clean
                     && _correspondentWarehouseBankNotes.Clean
@@ -1747,6 +1756,7 @@ namespace EncompassRest.Loans
                 var correspondentTotalBuyAmount = _correspondentTotalBuyAmount; correspondentTotalBuyAmount.Clean = value; _correspondentTotalBuyAmount = correspondentTotalBuyAmount;
                 var correspondentTotalFees = _correspondentTotalFees; correspondentTotalFees.Clean = value; _correspondentTotalFees = correspondentTotalFees;
                 var correspondentWarehouseBankABANum = _correspondentWarehouseBankABANum; correspondentWarehouseBankABANum.Clean = value; _correspondentWarehouseBankABANum = correspondentWarehouseBankABANum;
+                var correspondentWarehouseBankAcctName = _correspondentWarehouseBankAcctName; correspondentWarehouseBankAcctName.Clean = value; _correspondentWarehouseBankAcctName = correspondentWarehouseBankAcctName;
                 var correspondentWarehouseBankAcctNum = _correspondentWarehouseBankAcctNum; correspondentWarehouseBankAcctNum.Clean = value; _correspondentWarehouseBankAcctNum = correspondentWarehouseBankAcctNum;
                 var correspondentWarehouseBankAddress = _correspondentWarehouseBankAddress; correspondentWarehouseBankAddress.Clean = value; _correspondentWarehouseBankAddress = correspondentWarehouseBankAddress;
                 var correspondentWarehouseBankAddress1 = _correspondentWarehouseBankAddress1; correspondentWarehouseBankAddress1.Clean = value; _correspondentWarehouseBankAddress1 = correspondentWarehouseBankAddress1;
@@ -1759,6 +1769,8 @@ namespace EncompassRest.Loans
                 var correspondentWarehouseBankContactName = _correspondentWarehouseBankContactName; correspondentWarehouseBankContactName.Clean = value; _correspondentWarehouseBankContactName = correspondentWarehouseBankContactName;
                 var correspondentWarehouseBankContactPhone = _correspondentWarehouseBankContactPhone; correspondentWarehouseBankContactPhone.Clean = value; _correspondentWarehouseBankContactPhone = correspondentWarehouseBankContactPhone;
                 var correspondentWarehouseBankDescription = _correspondentWarehouseBankDescription; correspondentWarehouseBankDescription.Clean = value; _correspondentWarehouseBankDescription = correspondentWarehouseBankDescription;
+                var correspondentWarehouseBankFurtherCreditAcctName = _correspondentWarehouseBankFurtherCreditAcctName; correspondentWarehouseBankFurtherCreditAcctName.Clean = value; _correspondentWarehouseBankFurtherCreditAcctName = correspondentWarehouseBankFurtherCreditAcctName;
+                var correspondentWarehouseBankFurtherCreditAcctNum = _correspondentWarehouseBankFurtherCreditAcctNum; correspondentWarehouseBankFurtherCreditAcctNum.Clean = value; _correspondentWarehouseBankFurtherCreditAcctNum = correspondentWarehouseBankFurtherCreditAcctNum;
                 var correspondentWarehouseBankId = _correspondentWarehouseBankId; correspondentWarehouseBankId.Clean = value; _correspondentWarehouseBankId = correspondentWarehouseBankId;
                 var correspondentWarehouseBankName = _correspondentWarehouseBankName; correspondentWarehouseBankName.Clean = value; _correspondentWarehouseBankName = correspondentWarehouseBankName;
                 var correspondentWarehouseBankNotes = _correspondentWarehouseBankNotes; correspondentWarehouseBankNotes.Clean = value; _correspondentWarehouseBankNotes = correspondentWarehouseBankNotes;
