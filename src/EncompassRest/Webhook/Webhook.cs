@@ -9,13 +9,30 @@ namespace EncompassRest.Webhook
 {
     public sealed class Webhook
     {
-        private const string _apiPath = "webhook/v1/subscriptions";
+        private const string _apiPath = "webhook/v1";
 
         public EncompassRestClient Client { get; }
 
         internal Webhook(EncompassRestClient client)
         {
             Client = client;
+        }
+
+        public Task<List<WebhookResource>> GetResourcesAsync() => GetResourcesInternalAsync(response => response.Content.ReadAsAsync<List<WebhookResource>>());
+
+        public Task<string> GetResourcesRawAsync() => GetResourcesInternalAsync(response => response.Content.ReadAsStringAsync());
+
+        public async Task<T> GetResourcesInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
+        {
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/resources").ConfigureAwait(false))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw await RestException.CreateAsync(nameof(GetResourcesAsync), response).ConfigureAwait(false);
+                }
+
+                return await func(response).ConfigureAwait(false);
+            }
         }
 
         public Task<WebhookSubscription> GetSubscriptionAsync(string subscriptionId)
@@ -34,7 +51,7 @@ namespace EncompassRest.Webhook
 
         private async Task<T> GetSubscriptionInternalAsync<T>(string subscriptionId, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{subscriptionId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/subscriptions/{subscriptionId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -51,27 +68,34 @@ namespace EncompassRest.Webhook
 
         private async Task<T> GetSubscriptionsInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync(_apiPath).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/subscriptions").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(GetSubscriptionsAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task<string> CreateSubscriptionAsync(string endpoint)
+        public Task<string> CreateSubscriptionAsync(WebhookSubscription subscription)
         {
-            Preconditions.NotNullOrEmpty(endpoint, nameof(endpoint));
+            Preconditions.NotNull(subscription, nameof(subscription));
 
-            return CreateSubscriptionInternalAsync(endpoint);
+            return CreateSubscriptionInternalAsync(JsonStreamContent.Create(subscription));
         }
 
-        private async Task<string> CreateSubscriptionInternalAsync(string endpoint)
+        public Task<string> CreateSubscriptionRawAsync(string subscription)
         {
-            using (var response = await Client.HttpClient.PostAsync(_apiPath, JsonStreamContent.Create(new Subscription { Endpoint = endpoint })).ConfigureAwait(false))
+            Preconditions.NotNullOrEmpty(subscription, nameof(subscription));
+
+            return CreateSubscriptionInternalAsync(new JsonContent(subscription));
+        }
+
+        private async Task<string> CreateSubscriptionInternalAsync(HttpContent content)
+        {
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/subscriptions", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -82,17 +106,25 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public Task UpdateSubscriptionAsync(string subscriptionId, string newEndpoint)
+        public Task UpdateSubscriptionAsync(string subscriptionId, WebhookSubscription subscription)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
-            Preconditions.NotNullOrEmpty(newEndpoint, nameof(newEndpoint));
+            Preconditions.NotNull(subscription, nameof(subscription));
 
-            return UpdateSubscriptionInternalAsync(subscriptionId, newEndpoint);
+            return UpdateSubscriptionInternalAsync(subscriptionId, JsonStreamContent.Create(subscription));
         }
 
-        private async Task UpdateSubscriptionInternalAsync(string subscriptionId, string newEndpoint)
+        public Task UpdateSubscriptionRawAsync(string subscriptionId, string subscription)
         {
-            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/{subscriptionId}", JsonStreamContent.Create(new Subscription { Endpoint = newEndpoint })).ConfigureAwait(false))
+            Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
+            Preconditions.NotNullOrEmpty(subscription, nameof(subscription));
+
+            return UpdateSubscriptionInternalAsync(subscriptionId, new JsonContent(subscription));
+        }
+
+        private async Task UpdateSubscriptionInternalAsync(string subscriptionId, HttpContent content)
+        {
+            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/subscriptions/{subscriptionId}", content).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -110,18 +142,13 @@ namespace EncompassRest.Webhook
 
         private async Task DeleteSubscriptionInternalAsync(string subscriptionId)
         {
-            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{subscriptionId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/subscriptions/{subscriptionId}").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(DeleteSubscriptionAsync), response).ConfigureAwait(false);
                 }
             }
-        }
-
-        private sealed class Subscription
-        {
-            public string Endpoint { get; set; }
         }
     }
 }
