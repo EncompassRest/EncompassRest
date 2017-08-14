@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
@@ -19,15 +20,31 @@ namespace EncompassRest.Schema
             Client = client;
         }
 
-        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<LoanEntity> entities, bool includeFieldExtensions = false) => GetLoanSchemaAsync(entities?.Select(entity => entity.ToJson().Unquote()), includeFieldExtensions);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, params LoanEntity[] entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<LoanSchema> GetLoanSchemaAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsAsync<LoanSchema>());
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<string> GetLoanSchemaRawAsync(IEnumerable<LoanEntity> entities, bool includeFieldExtensions = false) => GetLoanSchemaRawAsync(entities?.Select(entity => entity.ToJson().Unquote()), includeFieldExtensions);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
 
-        public Task<string> GetLoanSchemaRawAsync(IEnumerable<string> entities = null, bool includeFieldExtensions = false) => GetLoanSchemaInternalAsync(entities, includeFieldExtensions, response => response.Content.ReadAsStringAsync());
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, params string[] entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        private async Task<T> GetLoanSchemaInternalAsync<T>(IEnumerable<string> entities, bool includeFieldExtensions, Func<HttpResponseMessage, Task<T>> func)
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
+
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken) => GetLoanSchemaInternalAsync(includeFieldExtensions, entities, cancellationToken, response => response.Content.ReadAsAsync<LoanSchema>());
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, params LoanEntity[] entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaRawAsync(includeFieldExtensions, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, params string[] entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<string> entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken) => GetLoanSchemaInternalAsync(includeFieldExtensions, entities, cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetLoanSchemaInternalAsync<T>(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
@@ -36,7 +53,7 @@ namespace EncompassRest.Schema
             }
             queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -47,23 +64,27 @@ namespace EncompassRest.Schema
             }
         }
 
-        public Task<LoanSchema> GetFieldSchemaAsync(string fieldId)
+        public Task<LoanSchema> GetFieldSchemaAsync(string fieldId) => GetFieldSchemaAsync(fieldId, CancellationToken.None);
+
+        public Task<LoanSchema> GetFieldSchemaAsync(string fieldId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return GetFieldSchemaInternalAsync(fieldId, response => response.Content.ReadAsAsync<LoanSchema>());
+            return GetFieldSchemaInternalAsync(fieldId, cancellationToken, response => response.Content.ReadAsAsync<LoanSchema>());
         }
 
-        public Task<string> GetFieldSchemaRawAsync(string fieldId)
+        public Task<string> GetFieldSchemaRawAsync(string fieldId) => GetFieldSchemaRawAsync(fieldId, CancellationToken.None);
+
+        public Task<string> GetFieldSchemaRawAsync(string fieldId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return GetFieldSchemaInternalAsync(fieldId, response => response.Content.ReadAsStringAsync());
+            return GetFieldSchemaInternalAsync(fieldId, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetFieldSchemaInternalAsync<T>(string fieldId, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetFieldSchemaInternalAsync<T>(string fieldId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

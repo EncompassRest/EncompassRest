@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -22,23 +23,27 @@ namespace EncompassRest.Loans.Documents
             LoanId = loanId;
         }
 
-        public Task<LoanDocument> GetDocumentAsync(string documentId)
+        public Task<LoanDocument> GetDocumentAsync(string documentId) => GetDocumentAsync(documentId, CancellationToken.None);
+
+        public Task<LoanDocument> GetDocumentAsync(string documentId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetDocumentInternalAsync(documentId, response => response.Content.ReadAsAsync<LoanDocument>());
+            return GetDocumentInternalAsync(documentId, cancellationToken, response => response.Content.ReadAsAsync<LoanDocument>());
         }
 
-        public Task<string> GetDocumentRawAsync(string documentId)
+        public Task<string> GetDocumentRawAsync(string documentId) => GetDocumentRawAsync(documentId, CancellationToken.None);
+
+        public Task<string> GetDocumentRawAsync(string documentId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetDocumentInternalAsync(documentId, response => response.Content.ReadAsStringAsync());
+            return GetDocumentInternalAsync(documentId, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetDocumentInternalAsync<T>(string documentId, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetDocumentInternalAsync<T>(string documentId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -49,13 +54,17 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public Task<List<LoanDocument>> GetDocumentsAsync() => GetDocumentsInternalAsync(response => response.Content.ReadAsAsync<List<LoanDocument>>());
+        public Task<List<LoanDocument>> GetDocumentsAsync() => GetDocumentsAsync(CancellationToken.None);
 
-        public Task<string> GetDocumentsRawAsync() => GetDocumentsInternalAsync(response => response.Content.ReadAsStringAsync());
+        public Task<List<LoanDocument>> GetDocumentsAsync(CancellationToken cancellationToken) => GetDocumentsInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<List<LoanDocument>>());
 
-        private async Task<T> GetDocumentsInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
+        public Task<string> GetDocumentsRawAsync() => GetDocumentsRawAsync(CancellationToken.None);
+
+        public Task<string> GetDocumentsRawAsync(CancellationToken cancellationToken) => GetDocumentsInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetDocumentsInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -66,23 +75,27 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId)
+        public Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId) => GetDocumentAttachmentsAsync(documentId, CancellationToken.None);
+
+        public Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetDocumentAttachmentsInternalAsync(documentId, response => response.Content.ReadAsAsync<List<EntityReference>>());
+            return GetDocumentAttachmentsInternalAsync(documentId, cancellationToken, response => response.Content.ReadAsAsync<List<EntityReference>>());
         }
 
-        public Task<string> GetDocumentAttachmentsRawAsync(string documentId)
+        public Task<string> GetDocumentAttachmentsRawAsync(string documentId) => GetDocumentAttachmentsRawAsync(documentId, CancellationToken.None);
+
+        public Task<string> GetDocumentAttachmentsRawAsync(string documentId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetDocumentAttachmentsInternalAsync(documentId, response => response.Content.ReadAsStringAsync());
+            return GetDocumentAttachmentsInternalAsync(documentId, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetDocumentAttachmentsInternalAsync<T>(string documentId, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetDocumentAttachmentsInternalAsync<T>(string documentId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}/attachments").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/documents/{documentId}/attachments", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -93,11 +106,13 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public Task<string> CreateDocumentAsync(LoanDocument document, bool populate)
+        public Task<string> CreateDocumentAsync(LoanDocument document, bool populate) => CreateDocumentAsync(document, populate, CancellationToken.None);
+
+        public Task<string> CreateDocumentAsync(LoanDocument document, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return CreateDocumentInternalAsync(JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            return CreateDocumentInternalAsync(JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -113,16 +128,18 @@ namespace EncompassRest.Loans.Documents
             });
         }
 
-        public Task<string> CreateDocumentAsync(string document)
+        public Task<string> CreateDocumentRawAsync(string document) => CreateDocumentRawAsync(document, CancellationToken.None);
+
+        public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return CreateDocumentInternalAsync(new JsonContent(document), null, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return CreateDocumentInternalAsync(new JsonContent(document), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
         }
 
-        private async Task<string> CreateDocumentInternalAsync(HttpContent content, QueryParameters queryParameters, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> CreateDocumentInternalAsync(HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents{queryParameters}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/documents{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -132,12 +149,15 @@ namespace EncompassRest.Loans.Documents
                 return await func(response).ConfigureAwait(false);
             }
         }
-        
-        public Task UpdateDocumentAsync(LoanDocument document, bool populate)
+
+        public Task UpdateDocumentAsync(LoanDocument document, bool populate) => UpdateDocumentAsync(document, populate, CancellationToken.None);
+
+
+        public Task UpdateDocumentAsync(LoanDocument document, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, async response =>
+            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -152,17 +172,19 @@ namespace EncompassRest.Loans.Documents
             });
         }
 
-        public Task UpdateDocumentAsync(string documentId, string document)
+        public Task UpdateDocumentRawAsync(string documentId, string document) => UpdateDocumentRawAsync(documentId, document, CancellationToken.None);
+
+        public Task UpdateDocumentRawAsync(string documentId, string document, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(documentId, new JsonContent(document));
+            return UpdateDocumentInternalAsync(documentId, new JsonContent(document), null, cancellationToken);
         }
 
-        private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content, QueryParameters queryParameters = null, Func<HttpResponseMessage, Task> func = null)
+        private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -176,30 +198,34 @@ namespace EncompassRest.Loans.Documents
             }
         }
 
-        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, params EntityReference[] attachmentEntities) => AssignDocumentAttachmentsAsync(documentId, action, (IEnumerable<EntityReference>)attachmentEntities);
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, params EntityReference[] attachmentEntities) => AssignDocumentAttachmentsAsync(documentId, action, attachmentEntities, CancellationToken.None);
 
-        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities)
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities) => AssignDocumentAttachmentsAsync(documentId, action, attachmentEntities, CancellationToken.None);
+
+        public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            return AssignDocumentAttachmentsInternalAsync(documentId, action, JsonStreamContent.Create(attachmentEntities));
+            return AssignDocumentAttachmentsInternalAsync(documentId, action, JsonStreamContent.Create(attachmentEntities), cancellationToken);
         }
 
-        public Task AssignDocumentAttachmentsRawAsync(string documentId, AssignmentAction action, string attachmentEntities)
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, AssignmentAction action, string attachmentEntities) => AssignDocumentAttachmentsRawAsync(documentId, action, attachmentEntities, CancellationToken.None);
+
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, AssignmentAction action, string attachmentEntities, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            return AssignDocumentAttachmentsInternalAsync(documentId, action, new JsonContent(attachmentEntities));
+            return AssignDocumentAttachmentsInternalAsync(documentId, action, new JsonContent(attachmentEntities), cancellationToken);
         }
 
-        private async Task AssignDocumentAttachmentsInternalAsync(string documentId, AssignmentAction action, HttpContent content)
+        private async Task AssignDocumentAttachmentsInternalAsync(string documentId, AssignmentAction action, HttpContent content, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

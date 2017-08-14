@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -17,13 +18,17 @@ namespace EncompassRest.LoanPipeline
             Client = client;
         }
 
-        public Task<CanonicalNames> GetCanonicalNamesAsync() => GetCanonicalNamesInternalAsync(response => response.Content.ReadAsAsync<CanonicalNames>());
+        public Task<CanonicalNames> GetCanonicalNamesAsync() => GetCanonicalNamesAsync(CancellationToken.None);
 
-        public Task<string> GetCanonicalNamesRawAsync() => GetCanonicalNamesInternalAsync(response => response.Content.ReadAsStringAsync());
+        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken) => GetCanonicalNamesInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<CanonicalNames>());
 
-        private async Task<T> GetCanonicalNamesInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
+        public Task<string> GetCanonicalNamesRawAsync() => GetCanonicalNamesRawAsync(CancellationToken.None);
+
+        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken) => GetCanonicalNamesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetCanonicalNamesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -36,40 +41,41 @@ namespace EncompassRest.LoanPipeline
 
         //TODO: Add support for cursor and pagination
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters)
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters) => ViewPipelineAsync(parameters, null, CancellationToken.None);
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, CancellationToken cancellationToken) => ViewPipelineAsync(parameters, null, cancellationToken);
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int? limit) => ViewPipelineAsync(parameters, limit, CancellationToken.None);
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int? limit, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
-            return ViewPipelineInternalAsync(parameters, null);
+            if (limit.HasValue)
+            {
+                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
+            }
+
+            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), limit, cancellationToken, response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
         }
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(ViewPipelineParameters parameters, int limit)
-        {
-            Preconditions.NotNull(parameters, nameof(parameters));
-            Preconditions.GreaterThan(limit, nameof(limit), 0);
+        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, null, CancellationToken.None);
 
-            return ViewPipelineInternalAsync(parameters, limit);
-        }
+        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, null, cancellationToken);
 
-        private Task<List<LoanPipelineData>> ViewPipelineInternalAsync(ViewPipelineParameters parameters, int? limit) => ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), limit, response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+        public Task<string> ViewPipelineRawAsync(string parameters, int? limit) => ViewPipelineRawAsync(parameters, limit, CancellationToken.None);
 
-        public Task<string> ViewPipelineRawAsync(string parameters)
-        {
-            Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
-
-            return ViewPipelineRawInternalAsync(parameters, null);
-        }
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int limit)
+        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
-            Preconditions.GreaterThan(limit, nameof(limit), 0);
+            if (limit.HasValue)
+            {
+                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
+            }
 
-            return ViewPipelineRawInternalAsync(parameters, limit);
+            return ViewPipelineInternalAsync(new JsonContent(parameters), limit, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private Task<string> ViewPipelineRawInternalAsync(string parameters, int? limit) => ViewPipelineInternalAsync(new JsonContent(parameters), limit, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, int? limit, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, int? limit, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             var queryParameters = new QueryParameters();
             if (limit.HasValue)
@@ -77,7 +83,7 @@ namespace EncompassRest.LoanPipeline
                 queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
             }
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{queryParameters}", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

@@ -13,7 +13,9 @@ namespace EncompassRest
 {
     public sealed class EncompassRestClient : IDisposable
     {
-        public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling = TokenExpirationHandling.Default)
+        public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling = TokenExpirationHandling.Default) => CreateFromUserCredentialsAsync(clientId, clientSecret, instanceId, userId, password, tokenExpirationHandling, CancellationToken.None);
+
+        public static Task<EncompassRestClient> CreateFromUserCredentialsAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
             Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
@@ -21,30 +23,30 @@ namespace EncompassRest
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
             Preconditions.NotNullOrEmpty(password, nameof(password));
 
-            return CreateFromUserCredentialsInternalAsync(clientId, clientSecret, instanceId, userId, password, tokenExpirationHandling);
+            return CreateFromUserCredentialsInternalAsync(clientId, clientSecret, instanceId, userId, password, tokenExpirationHandling, cancellationToken);
         }
 
-        private static async Task<EncompassRestClient> CreateFromUserCredentialsInternalAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling)
+        private static async Task<EncompassRestClient> CreateFromUserCredentialsInternalAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling, CancellationToken cancellationToken)
         {
             var client = tokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken ? new EncompassRestClient(clientId, clientSecret, instanceId, userId, password, tokenExpirationHandling) : new EncompassRestClient(clientId, clientSecret);
-            await client.AccessToken.SetTokenWithUserCredentialsAsync(instanceId, userId, password).ConfigureAwait(false);
+            await client.AccessToken.SetTokenWithUserCredentialsAsync(instanceId, userId, password, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
-        public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode)
+        public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
             Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
             Preconditions.NotNullOrEmpty(redirectUri, nameof(redirectUri));
             Preconditions.NotNullOrEmpty(authorizationCode, nameof(authorizationCode));
 
-            return CreateFromAuthorizationCodeInternalAsync(clientSecret, clientSecret, redirectUri, authorizationCode);
+            return CreateFromAuthorizationCodeInternalAsync(clientSecret, clientSecret, redirectUri, authorizationCode, cancellationToken);
         }
 
-        private static async Task<EncompassRestClient> CreateFromAuthorizationCodeInternalAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode)
+        private static async Task<EncompassRestClient> CreateFromAuthorizationCodeInternalAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken)
         {
             var client = new EncompassRestClient(clientId, clientSecret);
-            await client.AccessToken.SetTokenWithAuthorizationCodeAsync(redirectUri, authorizationCode).ConfigureAwait(false);
+            await client.AccessToken.SetTokenWithAuthorizationCodeAsync(redirectUri, authorizationCode, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -145,9 +147,9 @@ namespace EncompassRest
                     HttpMessageHandler handler = new HttpClientHandler();
                     if (TokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken)
                     {
-                        handler = new RetryHandler(handler, async () =>
+                        handler = new RetryHandler(handler, async cancellationToken =>
                         {
-                            await AccessToken.SetTokenWithUserCredentialsAsync(_instanceId, _userId, _password).ConfigureAwait(false);
+                            await AccessToken.SetTokenWithUserCredentialsAsync(_instanceId, _userId, _password, cancellationToken).ConfigureAwait(false);
                             return httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
                         });
                     }
@@ -187,9 +189,9 @@ namespace EncompassRest
 
         private sealed class RetryHandler : DelegatingHandler
         {
-            private readonly Func<Task<AuthenticationHeaderValue>> _reinitializeAuthorizationHeader;
+            private readonly Func<CancellationToken, Task<AuthenticationHeaderValue>> _reinitializeAuthorizationHeader;
 
-            public RetryHandler(HttpMessageHandler innerHandler, Func<Task<AuthenticationHeaderValue>> reinitializeAuthorizationHeader)
+            public RetryHandler(HttpMessageHandler innerHandler, Func<CancellationToken, Task<AuthenticationHeaderValue>> reinitializeAuthorizationHeader)
                 : base(innerHandler)
             {
                 _reinitializeAuthorizationHeader = reinitializeAuthorizationHeader;
@@ -200,7 +202,7 @@ namespace EncompassRest
                 var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    request.Headers.Authorization = await _reinitializeAuthorizationHeader().ConfigureAwait(false);
+                    request.Headers.Authorization = await _reinitializeAuthorizationHeader(cancellationToken).ConfigureAwait(false);
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                 }
                 return response;

@@ -52,21 +52,27 @@ namespace EncompassRest.Token
         }
 
         #region Public Methods
-        public Task<TokenIntrospectionResponse> IntrospectAsync() => IntrospectInternalAsync(response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null));
+        public Task<TokenIntrospectionResponse> IntrospectAsync() => IntrospectAsync(CancellationToken.None);
 
-        public Task<string> IntrospectRawAsync() => IntrospectInternalAsync(response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null));
+        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken) => IntrospectInternalAsync(cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null));
 
-        private async Task<T> IntrospectInternalAsync<T>(Func<HttpResponseMessage, Task<T>> func)
+        public Task<string> IntrospectRawAsync() => IntrospectRawAsync(CancellationToken.None);
+
+        public Task<string> IntrospectRawAsync(CancellationToken cancellationToken) => IntrospectInternalAsync(cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null));
+
+        private async Task<T> IntrospectInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await TokenClient.PostAsync("token/introspection", CreateAccessTokenContent()).ConfigureAwait(false))
+            using (var response = await TokenClient.PostAsync("token/introspection", CreateAccessTokenContent(), cancellationToken).ConfigureAwait(false))
             {
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public async Task<bool> RevokeAsync()
+        public Task<bool> RevokeAsync() => RevokeAsync(CancellationToken.None);
+
+        public async Task<bool> RevokeAsync(CancellationToken cancellationToken)
         {
-            using (var response = await TokenClient.PostAsync("token/revocation", CreateAccessTokenContent()).ConfigureAwait(false))
+            using (var response = await TokenClient.PostAsync("token/revocation", CreateAccessTokenContent(), cancellationToken).ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
@@ -76,23 +82,23 @@ namespace EncompassRest.Token
 
         internal void Dispose() => _tokenClient?.Dispose();
 
-        internal Task SetTokenWithUserCredentialsAsync(string instanceId, string userId, string password) => SetTokenAsync(new[]
+        internal Task SetTokenWithUserCredentialsAsync(string instanceId, string userId, string password, CancellationToken cancellationToken) => SetTokenAsync(new[]
             {
                 KeyValuePair.Create("grant_type", "password"),
                 KeyValuePair.Create("username", $"{userId}@encompass:{instanceId}"),
                 KeyValuePair.Create("password", password)
-            });
+            }, cancellationToken);
 
-        internal Task SetTokenWithAuthorizationCodeAsync(string redirectUri, string authorizationCode) => SetTokenAsync(new[]
+        internal Task SetTokenWithAuthorizationCodeAsync(string redirectUri, string authorizationCode, CancellationToken cancellationToken) => SetTokenAsync(new[]
             {
                 KeyValuePair.Create("grant_type", "authorization_code"),
                 KeyValuePair.Create("redirect_uri", redirectUri),
                 KeyValuePair.Create("code", authorizationCode)
-            });
+            }, cancellationToken);
 
-        private async Task SetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection)
+        private async Task SetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, CancellationToken cancellationToken)
         {
-            using (var response = await TokenClient.PostAsync("token", new FormUrlEncodedContent(nameValueCollection)).ConfigureAwait(false))
+            using (var response = await TokenClient.PostAsync("token", new FormUrlEncodedContent(nameValueCollection), cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

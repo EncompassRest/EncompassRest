@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -17,23 +18,27 @@ namespace EncompassRest.LoanBatch
             Client = client;
         }
 
-        public Task<BatchUpdateStatus> GetStatusAsync(string requestId)
+        public Task<BatchUpdateStatus> GetStatusAsync(string requestId) => GetStatusAsync(requestId, CancellationToken.None);
+
+        public Task<BatchUpdateStatus> GetStatusAsync(string requestId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
-            return GetStatusInternalAsync(requestId, response => response.Content.ReadAsAsync<BatchUpdateStatus>());
+            return GetStatusInternalAsync(requestId, cancellationToken, response => response.Content.ReadAsAsync<BatchUpdateStatus>());
         }
 
-        public Task<string> GetStatusRawAsync(string requestId)
+        public Task<string> GetStatusRawAsync(string requestId) => GetStatusRawAsync(requestId, CancellationToken.None);
+
+        public Task<string> GetStatusRawAsync(string requestId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
-            return GetStatusInternalAsync(requestId, response => response.Content.ReadAsStringAsync());
+            return GetStatusInternalAsync(requestId, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetStatusInternalAsync<T>(string requestId, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetStatusInternalAsync<T>(string requestId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/updateRequests/{requestId}").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/updateRequests/{requestId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -44,23 +49,27 @@ namespace EncompassRest.LoanBatch
             }
         }
 
-        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters)
+        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters) => UpdateLoansAsync(parameters, CancellationToken.None);
+
+        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return UpdateLoansInternalAsync(JsonStreamContent.Create(parameters));
+            return UpdateLoansInternalAsync(JsonStreamContent.Create(parameters), cancellationToken);
         }
 
-        public Task<string> UpdateLoansRawAsync(string parameters)
+        public Task<string> UpdateLoansRawAsync(string parameters) => UpdateLoansRawAsync(parameters, CancellationToken.None);
+
+        public Task<string> UpdateLoansRawAsync(string parameters, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return UpdateLoansInternalAsync(new JsonContent(parameters));
+            return UpdateLoansInternalAsync(new JsonContent(parameters), cancellationToken);
         }
 
-        private async Task<string> UpdateLoansInternalAsync(HttpContent content)
+        private async Task<string> UpdateLoansInternalAsync(HttpContent content, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", content).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
