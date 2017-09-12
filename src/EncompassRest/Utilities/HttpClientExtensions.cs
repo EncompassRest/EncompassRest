@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EncompassRest.Utilities
 {
-    public static class HttpClientExtensions
+    internal static class HttpClientExtensions
     {
         public static Task<HttpResponseMessage> PatchAsync(this HttpClient client, string requestUri, HttpContent content) => client.PatchAsync(requestUri, content, CancellationToken.None);
 

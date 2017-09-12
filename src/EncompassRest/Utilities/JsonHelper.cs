@@ -16,14 +16,12 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
-        private static readonly JsonSerializer s_serializer = JsonSerializer.Create(DefaultSettings);
-
-        public static JsonSerializerSettings DefaultSettings = new JsonSerializerSettings
+        private static readonly JsonSerializer s_serializer = JsonSerializer.Create(new JsonSerializerSettings
         {
             Formatting = Formatting.None,
             ObjectCreationHandling = ObjectCreationHandling.Replace,
             ContractResolver = new CustomContractResolver()
-        };
+        });
 
         public static T FromJson<T>(string json) => (T)FromJson(json, typeof(T));
 
@@ -108,6 +106,17 @@ namespace EncompassRest.Utilities
                 using (var reader = new StreamReader(stream))
                 {
                     return FromJson<T>(reader);
+                }
+            }
+        }
+
+        public static async Task PopulateAsync(this HttpContent content, object target)
+        {
+            using (var stream = await content.ReadAsStreamAsync().ConfigureAwait(false))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    PopulateFromJson(reader, target);
                 }
             }
         }

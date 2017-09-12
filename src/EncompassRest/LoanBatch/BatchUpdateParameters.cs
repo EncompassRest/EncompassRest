@@ -4,17 +4,22 @@ using System.Linq;
 using EncompassRest.Loans;
 using EncompassRest.Filters;
 using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest.LoanBatch
 {
     public sealed class BatchUpdateParameters
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Filter Filter { get; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> LoanGuids { get; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<FieldValuePair> LoanFields { get; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Loan LoanData { get; }
 
         public BatchUpdateParameters(Filter filter, IEnumerable<FieldValuePair> loanFields)

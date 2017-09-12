@@ -107,7 +107,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(subscription, nameof(subscription));
 
-            return CreateSubscriptionInternalAsync(new JsonContent(subscription), cancellationToken);
+            return CreateSubscriptionInternalAsync(new JsonStringContent(subscription), cancellationToken);
         }
 
         private async Task<string> CreateSubscriptionInternalAsync(HttpContent content, CancellationToken cancellationToken)
@@ -140,7 +140,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
             Preconditions.NotNullOrEmpty(subscription, nameof(subscription));
 
-            return UpdateSubscriptionInternalAsync(subscriptionId, new JsonContent(subscription), cancellationToken);
+            return UpdateSubscriptionInternalAsync(subscriptionId, new JsonStringContent(subscription), cancellationToken);
         }
 
         private async Task UpdateSubscriptionInternalAsync(string subscriptionId, HttpContent content, CancellationToken cancellationToken)

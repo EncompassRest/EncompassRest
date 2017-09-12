@@ -60,13 +60,7 @@ namespace EncompassRest.Loans
             return GetLoanInternalAsync(loanId, entities, cancellationToken, async response =>
             {
                 var loan = new Loan(Client, loanId);
-                using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                {
-                    using (var reader = new StreamReader(stream))
-                    {
-                        JsonHelper.PopulateFromJson(reader, loan);
-                    }
-                }
+                await response.Content.PopulateAsync(loan).ConfigureAwait(false);
                 loan.Clean = true;
                 return loan;
             });
@@ -147,13 +141,7 @@ namespace EncompassRest.Loans
                 loan.Initialize(Client);
                 if (populate)
                 {
-                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            JsonHelper.PopulateFromJson(reader, loan);
-                        }
-                    }
+                    await response.Content.PopulateAsync(loan).ConfigureAwait(false);
                 }
                 loan.Clean = true;
                 return loanId;
@@ -166,7 +154,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return CreateLoanInternalAsync(new JsonContent(loan), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return CreateLoanInternalAsync(new JsonStringContent(loan), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
         }
 
         private async Task<string> CreateLoanInternalAsync(HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
@@ -194,13 +182,7 @@ namespace EncompassRest.Loans
             {
                 if (populate)
                 {
-                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            JsonHelper.PopulateFromJson(reader, loan);
-                        }
-                    }
+                    await response.Content.PopulateAsync(loan).ConfigureAwait(false);
                 }
                 loan.Clean = true;
             });
@@ -213,7 +195,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return UpdateLoanInternalAsync(loanId, new JsonContent(loan), null, cancellationToken);
+            return UpdateLoanInternalAsync(loanId, new JsonStringContent(loan), null, cancellationToken);
         }
 
         private async Task UpdateLoanInternalAsync(string loanId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)

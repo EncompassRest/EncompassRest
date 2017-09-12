@@ -8,7 +8,7 @@ namespace EncompassRest.LoanBatch
         [JsonRequired]
         public string FieldId { get; }
 
-        [JsonProperty(NullValueHandling = NullValueHandling.Include, Required = Required.AllowNull)]
+        [JsonProperty(Required = Required.AllowNull)]
         public object Value { get; }
 
         public FieldValuePair(string fieldId, object value)

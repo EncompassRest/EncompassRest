@@ -64,7 +64,7 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return UpdateLoansInternalAsync(new JsonContent(parameters), cancellationToken);
+            return UpdateLoansInternalAsync(new JsonStringContent(parameters), cancellationToken);
         }
 
         private async Task<string> UpdateLoansInternalAsync(HttpContent content, CancellationToken cancellationToken)

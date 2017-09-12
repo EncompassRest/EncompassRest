@@ -49,7 +49,7 @@ namespace EncompassRest
                 {
                     try
                     {
-                        var loanSchema = await client.Schema.GetLoanSchemaAsync(new[] { entity }, true).ConfigureAwait(false);
+                        var loanSchema = await client.Schema.GetLoanSchemaAsync(true, entity).ConfigureAwait(false);
 
                         foreach (var pair in loanSchema.EntityTypes)
                         {

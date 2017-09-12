@@ -33,7 +33,7 @@ namespace EncompassRest.Utilities
 
         protected override Task SerializeToStreamAsync(Stream stream, TransportContext context)
         {
-            using (var writer = new StreamWriter(stream, Encoding.UTF8))
+            using (var writer = new StreamWriter(stream, Encoding.UTF8, 4096, true))
             {
                 JsonHelper.ToJson(Value, Type, writer);
             }

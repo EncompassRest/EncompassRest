@@ -72,7 +72,7 @@ namespace EncompassRest.LoanPipeline
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
             }
 
-            return ViewPipelineInternalAsync(new JsonContent(parameters), limit, cancellationToken, response => response.Content.ReadAsStringAsync());
+            return ViewPipelineInternalAsync(new JsonStringContent(parameters), limit, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
         private async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, int? limit, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)

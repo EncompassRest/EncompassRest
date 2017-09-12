@@ -9,10 +9,10 @@ namespace EncompassRest.Filters
     {
         private Filter _parent;
 
-        [JsonProperty("operator")]
+        [JsonProperty("operator", NullValueHandling = NullValueHandling.Ignore)]
         private readonly FilterOperator? _operator;
 
-        [JsonProperty("terms")]
+        [JsonProperty("terms", NullValueHandling = NullValueHandling.Ignore)]
         private readonly List<Filter> _terms;
 
         internal Filter()

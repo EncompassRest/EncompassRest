@@ -116,13 +116,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (populate)
                 {
-                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            JsonHelper.PopulateFromJson(reader, document);
-                        }
-                    }
+                    await response.Content.PopulateAsync(document).ConfigureAwait(false);
                 }
                 return Path.GetFileName(response.Headers.Location.OriginalString);
             });
@@ -134,7 +128,7 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return CreateDocumentInternalAsync(new JsonContent(document), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return CreateDocumentInternalAsync(new JsonStringContent(document), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
         }
 
         private async Task<string> CreateDocumentInternalAsync(HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
@@ -161,13 +155,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (populate)
                 {
-                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            JsonHelper.PopulateFromJson(reader, document);
-                        }
-                    }
+                    await response.Content.PopulateAsync(document).ConfigureAwait(false);
                 }
             });
         }
@@ -179,7 +167,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(documentId, new JsonContent(document), null, cancellationToken);
+            return UpdateDocumentInternalAsync(documentId, new JsonStringContent(document), null, cancellationToken);
         }
 
         private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
@@ -219,7 +207,7 @@ namespace EncompassRest.Loans.Documents
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            return AssignDocumentAttachmentsInternalAsync(documentId, action, new JsonContent(attachmentEntities), cancellationToken);
+            return AssignDocumentAttachmentsInternalAsync(documentId, action, new JsonStringContent(attachmentEntities), cancellationToken);
         }
 
         private async Task AssignDocumentAttachmentsInternalAsync(string documentId, AssignmentAction action, HttpContent content, CancellationToken cancellationToken)

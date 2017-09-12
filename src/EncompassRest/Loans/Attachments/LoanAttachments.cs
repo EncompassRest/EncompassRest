@@ -113,13 +113,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (populate)
                 {
-                    using (var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
-                    {
-                        using (var reader = new StreamReader(stream))
-                        {
-                            JsonHelper.PopulateFromJson(reader, attachment);
-                        }
-                    }
+                    await response.Content.PopulateAsync(attachment).ConfigureAwait(false);
                 }
             });
         }
@@ -131,7 +125,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
-            return UpdateAttachmentInternalAsync(attachmentId, new JsonContent(attachment), null, cancellationToken);
+            return UpdateAttachmentInternalAsync(attachmentId, new JsonStringContent(attachment), null, cancellationToken);
         }
 
         private async Task UpdateAttachmentInternalAsync(string attachmentId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
