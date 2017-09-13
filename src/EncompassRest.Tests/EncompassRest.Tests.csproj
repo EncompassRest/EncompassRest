@@ -16,4 +16,8 @@
     <ProjectReference Include="..\EncompassRest\EncompassRest.csproj" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
 </Project>

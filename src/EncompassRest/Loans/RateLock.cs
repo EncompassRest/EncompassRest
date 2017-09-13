@@ -820,8 +820,8 @@ namespace EncompassRest.Loans
         public string RequestFullfilledDateTime { get { return _requestFullfilledDateTime; } set { _requestFullfilledDateTime = value; } }
         private Value<string> _requestImpoundType;
         public string RequestImpoundType { get { return _requestImpoundType; } set { _requestImpoundType = value; } }
-        private Value<string> _requestImpoundWavied;
-        public string RequestImpoundWavied { get { return _requestImpoundWavied; } set { _requestImpoundWavied = value; } }
+        private Value<string> _requestImpoundWaived;
+        public string RequestImpoundWaived { get { return _requestImpoundWaived; } set { _requestImpoundWaived = value; } }
         private Value<string> _requestLockCancellationComment;
         public string RequestLockCancellationComment { get { return _requestLockCancellationComment; } set { _requestLockCancellationComment = value; } }
         private Value<DateTime?> _requestLockCancellationDate;
@@ -1425,7 +1425,7 @@ namespace EncompassRest.Loans
                     || _requestExtendedLockExpires.Dirty
                     || _requestFullfilledDateTime.Dirty
                     || _requestImpoundType.Dirty
-                    || _requestImpoundWavied.Dirty
+                    || _requestImpoundWaived.Dirty
                     || _requestLockCancellationComment.Dirty
                     || _requestLockCancellationDate.Dirty
                     || _requestLockDate.Dirty
@@ -1933,7 +1933,7 @@ namespace EncompassRest.Loans
                 _requestExtendedLockExpires.Dirty = value;
                 _requestFullfilledDateTime.Dirty = value;
                 _requestImpoundType.Dirty = value;
-                _requestImpoundWavied.Dirty = value;
+                _requestImpoundWaived.Dirty = value;
                 _requestLockCancellationComment.Dirty = value;
                 _requestLockCancellationDate.Dirty = value;
                 _requestLockDate.Dirty = value;

@@ -15,29 +15,27 @@ namespace EncompassRest.LoanPipeline
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> LoanGuids { get; }
 
-        [JsonRequired]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> Fields { get; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<FieldSort> SortOrder { get; }
 
-        public ViewPipelineParameters(Filter filter, IEnumerable<string> fields, IEnumerable<FieldSort> sortOrder = null)
+        public ViewPipelineParameters(Filter filter, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
         {
             Preconditions.NotNull(filter, nameof(filter));
-            Preconditions.NotNullOrEmpty(fields, nameof(fields));
 
             Filter = filter;
-            Fields = new ReadOnlyCollection<string>(fields.ToList());
+            Fields = fields != null ? new ReadOnlyCollection<string>(fields.ToList()) : null;
             SortOrder = sortOrder != null ? new ReadOnlyCollection<FieldSort>(sortOrder.ToList()) : null;
         }
 
-        public ViewPipelineParameters(IEnumerable<string> loanGuids, IEnumerable<string> fields, IEnumerable<FieldSort> sortOrder = null)
+        public ViewPipelineParameters(IEnumerable<string> loanGuids, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
         {
             Preconditions.NotNullOrEmpty(loanGuids, nameof(loanGuids));
-            Preconditions.NotNullOrEmpty(fields, nameof(fields));
 
             LoanGuids = new ReadOnlyCollection<string>(loanGuids.ToList());
-            Fields = new ReadOnlyCollection<string>(fields.ToList());
+            Fields = fields != null ? new ReadOnlyCollection<string>(fields.ToList()) : null;
             SortOrder = sortOrder != null ? new ReadOnlyCollection<FieldSort>(sortOrder.ToList()) : null;
         }
     }

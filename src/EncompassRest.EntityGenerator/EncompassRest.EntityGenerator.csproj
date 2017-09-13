@@ -51,6 +51,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EncompassRest.Tests\EncompassRest.Tests.csproj">
+      <Project>{3292c30a-1f1d-40a4-886c-3fe0477b6d56}</Project>
+      <Name>EncompassRest.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EncompassRest\EncompassRest.csproj">
       <Project>{1bc65f57-9279-4e7e-a43f-0de40de559e4}</Project>
       <Name>EncompassRest</Name>

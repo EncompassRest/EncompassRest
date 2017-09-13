@@ -165,7 +165,7 @@ namespace EncompassRest
         }
         #endregion
 
-        private EncompassRestClient(string clientId, string clientSecret)
+        internal EncompassRestClient(string clientId, string clientSecret)
         {
             AccessToken = new AccessToken(clientId, clientSecret, this);
         }

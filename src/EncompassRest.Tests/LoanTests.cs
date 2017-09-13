@@ -1,11 +1,12 @@
-﻿using EncompassRest.Loans;
+﻿using System.Threading.Tasks;
+using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
 {
     [TestClass]
-    public class LoanTests
+    public class LoanTests : TestBaseClass
     {
         [TestMethod]
         public void Loan_Empty_Serialization()
@@ -33,5 +34,17 @@ namespace EncompassRest.Tests
             };
             Assert.AreEqual(@"{""tltv"":null}", loan.ToJson());
         }
+
+        [TestMethod]
+        public async Task Loan_CreateAndDelete()
+        {
+            using (var client = GetTestClient())
+            {
+                var loan = new Loan();
+                var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
+                await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false);
+            }
+        }
     }
 }
+ 

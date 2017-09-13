@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanPipeline
 {
-    [JsonObject(ItemRequired = Required.Always)]
     public sealed class LoanPipelineData
     {
         private Dictionary<string, string> _fields;
 
+        [JsonRequired]
         public string LoanGuid { get; set; }
 
         public Dictionary<string, string> Fields

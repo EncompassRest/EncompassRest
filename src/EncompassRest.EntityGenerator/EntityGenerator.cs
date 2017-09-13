@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Schema;
+using EncompassRest.Tests;
 
 namespace EncompassRest
 {
@@ -16,18 +17,11 @@ namespace EncompassRest
 
             try
             {
-                var clientId = args[0];
-                var clientSecret = args[1];
-                var instanceId = args[2];
-                var userId = args[3];
-                var password = args[4];
-                var destinationPath = args[5];
-
                 Task.Run(async () =>
                 {
-                    using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(clientId, clientSecret, instanceId, userId, password))
+                    using (var client = TestBaseClass.GetTestClient())
                     {
-                        await GenerateClassFilesFromSchemaAsync(client, destinationPath, "EncompassRest.Loans");
+                        await GenerateClassFilesFromSchemaAsync(client, "Loans", "EncompassRest.Loans");
                     }
                 }).Wait();
             }
@@ -42,21 +36,25 @@ namespace EncompassRest
         {
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false);
             var exceptions = new List<Exception>();
-            var badEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "ElliUCDFields", "NonVols" };
+            var knownBadEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "ElliUCDFields", "NonVols" };
             foreach (var entity in supportedEntities)
             {
-                if (!badEntities.Contains(entity))
+                try
                 {
-                    try
-                    {
-                        var loanSchema = await client.Schema.GetLoanSchemaAsync(true, entity).ConfigureAwait(false);
+                    var loanSchema = await client.Schema.GetLoanSchemaAsync(true, entity).ConfigureAwait(false);
 
-                        foreach (var pair in loanSchema.EntityTypes)
-                        {
-                            await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, pair.Key, pair.Value).ConfigureAwait(false);
-                        }
+                    foreach (var pair in loanSchema.EntityTypes)
+                    {
+                        await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, pair.Key, pair.Value).ConfigureAwait(false);
                     }
-                    catch (Exception ex)
+                    if (knownBadEntities.Contains(entity))
+                    {
+                        Console.WriteLine($"Schema for {entity} can now be retrieved");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (!knownBadEntities.Contains(entity))
                     {
                         exceptions.Add(new Exception(entity, ex));
                     }
