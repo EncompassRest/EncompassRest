@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Loan : IClean
+    public sealed partial class Loan : IDirty
     {
         public AdditionalRequests AdditionalRequests { get; set; }
         private Value<DateTime?> _adverseActionDate;
@@ -635,703 +635,698 @@ namespace EncompassRest.Loans
         public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
         private Value<string> _websiteId;
         public string WebsiteId { get { return _websiteId; } set { _websiteId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _adverseActionDate.Clean
-                    && _affiliatedBusinessArrangements.Clean
-                    && _agencyCaseIdentifier.Clean
-                    && _alterationsImprovementsOrRepairsAmount.Clean
-                    && _applications.Clean
-                    && _applicationTakenMethodType.Clean
-                    && _aprDisclosureDate.Clean
-                    && _armTypeDescription.Clean
-                    && _baseLoanAmount.Clean
-                    && _belowMarketSubordinateFinancingIndicator.Clean
-                    && _billingCategory.Clean
-                    && _biweeklyPaymentAmount.Clean
-                    && _bLTV.Clean
-                    && _borrowerCoBorrowerMarriedIndicator.Clean
-                    && _borrowerPaidClosingCostsAmount.Clean
-                    && _borrowerPaidDiscountPointsAmount.Clean
-                    && _borrowerPaidFHAVAClosingCostsAmount.Clean
-                    && _borrowerRequestedLoanAmount.Clean
-                    && _brokerPaidClosingCostsAmount.Clean
-                    && _buydownIndicator.Clean
-                    && _buydownMonthlyPaymentAmount.Clean
-                    && _buydownRatePercent.Clean
-                    && _cashFromToBorrowerAmount.Clean
-                    && _channel.Clean
-                    && _closingBillingDate.Clean
-                    && _closingCostProgram.Clean
-                    && _closingCostsAndPrepaidsFromOtherLienAmount.Clean
-                    && _closingCostsPaidByOthersAmount.Clean
-                    && _closingDocsStackingOrder.Clean
-                    && _collateralManagerScore.Clean
-                    && _combinedLtv.Clean
-                    && _commitmentNumber.Clean
-                    && _complianceTestLogs.Clean
-                    && _conformingJumbo.Clean
-                    && _consumerConnectSiteID.Clean
-                    && _contacts.Clean
-                    && _contactUpdatedIndicator.Clean
-                    && _contractSellerCreditAmount.Clean
-                    && _conversationLogs.Clean
-                    && _copyBrokerToLenderIndicator.Clean
-                    && _copyLoanNumLenderCaseNum.Clean
-                    && _creditScoreToUse.Clean
-                    && _crmLogs.Clean
-                    && _currentApplicationIndex.Clean
-                    && _currentApplicationIsPrimary.Clean
-                    && _currentFirstMortgageHolderType.Clean
-                    && _customFields.Clean
-                    && _dataTracLogs.Clean
-                    && _dBIndicator.Clean
-                    && _deductOverwireAmountIndicator.Clean
-                    && _disableESignConsentAlert.Clean
-                    && _disableKeyPricingAlert.Clean
-                    && _disclosureTracking2015Logs.Clean
-                    && _disclosureTrackingLogs.Clean
-                    && _discountPoint.Clean
-                    && _docEngine.Clean
-                    && _documentLogs.Clean
-                    && _doNotCheckEmail.Clean
-                    && _doNotPrintCompensationFees.Clean
-                    && _downloadLogs.Clean
-                    && _downPaymentPercent.Clean
-                    && _edmLogs.Clean
-                    && _elliUCDFields.Clean
-                    && _emailTriggerLogs.Clean
-                    && _emXmlVersionId.Clean
-                    && _encompassId.Clean
-                    && _encompassVersion.Clean
-                    && _enforceCountyLoanLimit.Clean
-                    && _estimatedClosingCostsAmount.Clean
-                    && _estimatedConstructionInterest.Clean
-                    && _estimatedPrepaidItemsAmount.Clean
-                    && _exportLoanNumber.Clean
-                    && _fees.Clean
-                    && _fhaMiPremiumRefundAmount.Clean
-                    && _fHAVALoanOriginatorIdentifier.Clean
-                    && _fieldLockData.Clean
-                    && _firstAdjustmentMinimum.Clean
-                    && _firstSubordinateLienAmount.Clean
-                    && _firstTimeHomebuyersIndicator.Clean
-                    && _fnmCommunityLendingProductName.Clean
-                    && _fnmCommunitySecondsIndicator.Clean
-                    && _fnmNeighborsMortgageEligibilityIndicator.Clean
-                    && _forms.Clean
-                    && _fraudScore.Clean
-                    && _fundingDeductionList.Clean
-                    && _fundingFeeList.Clean
-                    && _fundingFees.Clean
-                    && _governmentLoanLenderIdentifier.Clean
-                    && _governmentLoanSponsorIdentifier.Clean
-                    && _governmentMortgageCreditCertificateAmount.Clean
-                    && _hasAbusinessRelationshipWith.Clean
-                    && _hcltvHtltv.Clean
-                    && _helocTeaserRate.Clean
-                    && _homeCounselingProviders.Clean
-                    && _homeCounselingProvidersDistance.Clean
-                    && _homeCounselingProvidersLanguageNames.Clean
-                    && _homeCounselingProvidersServiceNames.Clean
-                    && _householdSizeCount.Clean
-                    && _htmlEmailLogs.Clean
-                    && _hudIncomeLimitAdjustmentFactor.Clean
-                    && _hudLendingIncomeLimitAmount.Clean
-                    && _hudMedianIncomeAmount.Clean
-                    && _id.Clean
-                    && _includeUSDAFeeInClosing.Clean
-                    && _initialInterestRate.Clean
-                    && _insuranceAuthorizationIndicator.Clean
-                    && _interviewerApplicationSignedDate.Clean
-                    && _interviewerEmail.Clean
-                    && _interviewerLicenseIdentifier.Clean
-                    && _interviewerPhoneNumber.Clean
-                    && _interviewersCompanyStateLicense.Clean
-                    && _interviewersId.Clean
-                    && _inverviewerName.Clean
-                    && _isCreditorProhibitsBorrower.Clean
-                    && _isEmployeeLoan.Clean
-                    && _isLSSecondaryFile.Clean
-                    && _isRequiredInterestReserveCompoundInterest.Clean
-                    && _landIfAcquiredSeperatelyAmount.Clean
-                    && _leadSource.Clean
-                    && _lenderCaseIdentifier.Clean
-                    && _lenderChannel.Clean
-                    && _lenderCreditsInFunding.Clean
-                    && _lenderInvestorCode.Clean
-                    && _lenderPaidClosignCostsDotAmount.Clean
-                    && _lenderPaidClosingCostsAmount.Clean
-                    && _lesserAppraisedValueOrSalesPrice.Clean
-                    && _lifeInsuranceCoverageAmount.Clean
-                    && _lifeInsuranceEstimatedMonthlyAmount.Clean
-                    && _lifeInsuranceTotalProtectedMonthlyAmount.Clean
-                    && _linkId.Clean
-                    && _loanActionLogs.Clean
-                    && _loanAmortizationTermMonths.Clean
-                    && _loanAmortizationType.Clean
-                    && _loanCreatedDate.Clean
-                    && _loanCreatedDateUtc.Clean
-                    && _loanIdNumber.Clean
-                    && _loanImportStatusIndicator.Clean
-                    && _loanLinkSyncType.Clean
-                    && _loanNumber.Clean
-                    && _loanProgramName.Clean
-                    && _loanPrograms.Clean
-                    && _loanPurposeOfRefinanceType.Clean
-                    && _loanSource.Clean
-                    && _loanTotalProposedMonthlyMaintenanceAmount.Clean
-                    && _loanTotalProposedMonthlyUtilitiesAmount.Clean
-                    && _loanUnderwriterCHUMSIdentifier.Clean
-                    && _loanVALoanProcedureType.Clean
-                    && _loanVARateReductionInitialComputationTotalAmount.Clean
-                    && _loanVAResidualIncomeAmount.Clean
-                    && _loanVersionId.Clean
-                    && _lockConfirmLogs.Clean
-                    && _lockDenialLogs.Clean
-                    && _lockRequestLogs.Clean
-                    && _logEntryLogs.Clean
-                    && _ltv.Clean
-                    && _ltvPropertyValue.Clean
-                    && _masterCommitmentNumber.Clean
-                    && _maturityDate.Clean
-                    && _maxBackRatio.Clean
-                    && _maxFrontRatio.Clean
-                    && _mersNumber.Clean
-                    && _mersNumberRegistrationDate.Clean
-                    && _miAndFundingFeeFinancedAmount.Clean
-                    && _miAndFundingFeeTotalAmount.Clean
-                    && _milestoneApprovedDate.Clean
-                    && _milestoneApprovedDueDate.Clean
-                    && _milestoneCompletedDate.Clean
-                    && _milestoneCompletedDueDate.Clean
-                    && _milestoneCurrentDateUtc.Clean
-                    && _milestoneCurrentName.Clean
-                    && _milestoneDocSignedDate.Clean
-                    && _milestoneDocSignedDueDate.Clean
-                    && _milestoneDuration.Clean
-                    && _milestoneFileStartedDate.Clean
-                    && _milestoneFreeRoleLogs.Clean
-                    && _milestoneFundedDate.Clean
-                    && _milestoneFundedDueDate.Clean
-                    && _milestoneLogs.Clean
-                    && _milestoneProcessedDate.Clean
-                    && _milestoneStage.Clean
-                    && _milestoneSubmittedDate.Clean
-                    && _milestoneSubmittedDueDate.Clean
-                    && _milestoneTaskLogs.Clean
-                    && _milestoneTemplateLogs.Clean
-                    && _mipBorrowerPaidInCashAmount.Clean
-                    && _mipPaidInCashAmount.Clean
-                    && _monthlyPIPaymentAmountForLE1andCD1.Clean
-                    && _mortgageInsurancePremiumFHARefundAmount.Clean
-                    && _mortgageInsurancePremiumUpfrontFactorPercent.Clean
-                    && _mortgageType.Clean
-                    && _msaIdentifier.Clean
-                    && _newFirstMortgageAmount.Clean
-                    && _nmlsLoanOriginatorId.Clean
-                    && _noClosingCostOption.Clean
-                    && _notRequiredForPurchaseSaleOrRefinance.Clean
-                    && _notRequiredForSettlementOfYourLoan.Clean
-                    && _occupancyType.Clean
-                    && _openingDocsInvestorCode.Clean
-                    && _openingDocsLoanProgramType.Clean
-                    && _openingDocsPlanDescription.Clean
-                    && _openingDocsPlanId.Clean
-                    && _openingDocsProgramCode.Clean
-                    && _openingDocsStackingOrder.Clean
-                    && _organizationCode.Clean
-                    && _originationDate.Clean
-                    && _otherAmortizationTypeDescription.Clean
-                    && _otherMortgageTypeDescription.Clean
-                    && _otherPaidClosingCostsAmount.Clean
-                    && _overwireAmount.Clean
-                    && _paymentScheduleCalcRequiredIndicator.Clean
-                    && _percentageOfOwnership.Clean
-                    && _percentageOwnershipInterest.Clean
-                    && _pmiIndicator.Clean
-                    && _postClosingConditionLogs.Clean
-                    && _preliminaryConditionLogs.Clean
-                    && _principalAndInterestMonthlyPaymentAmount.Clean
-                    && _print2003Application.Clean
-                    && _printLogs.Clean
-                    && _propertyAppraisedValueAmount.Clean
-                    && _propertyEnergyEfficientHomeIndicator.Clean
-                    && _propertyEstimatedValueAmount.Clean
-                    && _proposedDuesAmount.Clean
-                    && _proposedFirstMortgageAmount.Clean
-                    && _proposedGroundRentAmount.Clean
-                    && _proposedHazardInsuranceAmount.Clean
-                    && _proposedHousingExpenseTotal.Clean
-                    && _proposedMortgageInsuranceAmount.Clean
-                    && _proposedOtherAmount.Clean
-                    && _proposedOtherMortgagesAmount.Clean
-                    && _proposedRealEstateTaxesAmount.Clean
-                    && _purchaseCredits.Clean
-                    && _purchasePriceAmount.Clean
-                    && _referralAddress.Clean
-                    && _referralCity.Clean
-                    && _referralFeeAmount.Clean
-                    && _referralPostalCode.Clean
-                    && _referralSource.Clean
-                    && _referralState.Clean
-                    && _refinanceIncludingDebtsToBePaidOffAmount.Clean
-                    && _registrationLogs.Clean
-                    && _removedLogRecords.Clean
-                    && _repurchaseCostAmount.Clean
-                    && _repurchaseDate.Clean
-                    && _requestedInterestRatePercent.Clean
-                    && _salesConcessionAmount.Clean
-                    && _secondSubordinateAmount.Clean
-                    && _sectionOfActType.Clean
-                    && _sellerPaidClosingCostsAmount.Clean
-                    && _serviceProviderAdditionalInfo.Clean
-                    && _serviceProviderContacts.Clean
-                    && _serviceProviderDateIssued.Clean
-                    && _setForSettlementServicesOfAnAttorney.Clean
-                    && _setForTheSettlementServicesListed.Clean
-                    && _settlementServiceCharges.Clean
-                    && _simpleRefinanceType.Clean
-                    && _startingAdjPrice.Clean
-                    && _startingAdjRate.Clean
-                    && _statusOnlineLogs.Clean
-                    && _subjectPropertyGrossRentalIncomeAmount.Clean
-                    && _subjectPropertyOccupancyPercent.Clean
-                    && _subordinateLienAmount.Clean
-                    && _systemIdGuid.Clean
-                    && _tilApplicationDate.Clean
-                    && _titleHolderName1.Clean
-                    && _titleHolderName2.Clean
-                    && _tltv.Clean
-                    && _totalClosingCostsAmount.Clean
-                    && _totalDeductionsAmount.Clean
-                    && _totalFeesCostAmount.Clean
-                    && _totalFeesCreditAmount.Clean
-                    && _totalNonborrowerPaidClosingCostsAmount.Clean
-                    && _totalPaidOutsideClosingAmount.Clean
-                    && _totalPaidToBrokerAmount.Clean
-                    && _totalWireTransferAmount.Clean
-                    && _twelveMonthMortgageRentalHistoryIndicator.Clean
-                    && _underwritingConditionLogs.Clean
-                    && _underwritingEscrowIndicator.Clean
-                    && _undiscountedRate.Clean
-                    && _unimprovedAppraisedValue.Clean
-                    && _unimprovedEstimatedValue.Clean
-                    && _urlPage4Comments.Clean
-                    && _usdaGovernmentLoanType.Clean
-                    && _use2018DiIndicator.Clean
-                    && _useNew2015FormsIndicator.Clean
-                    && _useNewHudIndicator.Clean
-                    && _vAEntitlementAmount.Clean
-                    && _verificationLogs.Clean
-                    && _virtualFields.Clean
-                    && _websiteId.Clean
-                    && AdditionalRequests?.Clean != false
-                    && ATRQMCommon?.Clean != false
-                    && ClosingCost?.Clean != false
-                    && ClosingDocument?.Clean != false
-                    && CommitmentTerms?.Clean != false
-                    && ConstructionManagement?.Clean != false
-                    && Correspondent?.Clean != false
-                    && CurrentApplication?.Clean != false
-                    && CustomModelFields?.Clean != false
-                    && DisclosureNotices?.Clean != false
-                    && DownPayment?.Clean != false
-                    && EmDocument?.Clean != false
-                    && EmDocumentInvestor?.Clean != false
-                    && EmDocumentLender?.Clean != false
-                    && FannieMae?.Clean != false
-                    && FhaVaLoan?.Clean != false
-                    && FreddieMac?.Clean != false
-                    && Funding?.Clean != false
-                    && Gfe?.Clean != false
-                    && Hmda?.Clean != false
-                    && Hud1Es?.Clean != false
-                    && HudLoanData?.Clean != false
-                    && InterimServicing?.Clean != false
-                    && LoanProductData?.Clean != false
-                    && LoanSubmission?.Clean != false
-                    && LOCompensation?.Clean != false
-                    && Mcaw?.Clean != false
-                    && Miscellaneous?.Clean != false
-                    && NetTangibleBenefit?.Clean != false
-                    && Prequalification?.Clean != false
-                    && PrivacyPolicy?.Clean != false
-                    && ProfitManagement?.Clean != false
-                    && Property?.Clean != false
-                    && RateLock?.Clean != false
-                    && RegulationZ?.Clean != false
-                    && Section32?.Clean != false
-                    && SelectedHomeCounselingProvider?.Clean != false
-                    && ServicingDisclosure?.Clean != false
-                    && Shipping?.Clean != false
-                    && StateDisclosure?.Clean != false
-                    && StatementCreditDenial?.Clean != false
-                    && TPO?.Clean != false
-                    && TQL?.Clean != false
-                    && TrustAccount?.Clean != false
-                    && Tsum?.Clean != false
-                    && Uldd?.Clean != false
-                    && UnderwriterSummary?.Clean != false
-                    && Usda?.Clean != false
-                    && VaLoanData?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _adverseActionDate.Dirty
+                    || _affiliatedBusinessArrangements.Dirty
+                    || _agencyCaseIdentifier.Dirty
+                    || _alterationsImprovementsOrRepairsAmount.Dirty
+                    || _applications.Dirty
+                    || _applicationTakenMethodType.Dirty
+                    || _aprDisclosureDate.Dirty
+                    || _armTypeDescription.Dirty
+                    || _baseLoanAmount.Dirty
+                    || _belowMarketSubordinateFinancingIndicator.Dirty
+                    || _billingCategory.Dirty
+                    || _biweeklyPaymentAmount.Dirty
+                    || _bLTV.Dirty
+                    || _borrowerCoBorrowerMarriedIndicator.Dirty
+                    || _borrowerPaidClosingCostsAmount.Dirty
+                    || _borrowerPaidDiscountPointsAmount.Dirty
+                    || _borrowerPaidFHAVAClosingCostsAmount.Dirty
+                    || _borrowerRequestedLoanAmount.Dirty
+                    || _brokerPaidClosingCostsAmount.Dirty
+                    || _buydownIndicator.Dirty
+                    || _buydownMonthlyPaymentAmount.Dirty
+                    || _buydownRatePercent.Dirty
+                    || _cashFromToBorrowerAmount.Dirty
+                    || _channel.Dirty
+                    || _closingBillingDate.Dirty
+                    || _closingCostProgram.Dirty
+                    || _closingCostsAndPrepaidsFromOtherLienAmount.Dirty
+                    || _closingCostsPaidByOthersAmount.Dirty
+                    || _closingDocsStackingOrder.Dirty
+                    || _collateralManagerScore.Dirty
+                    || _combinedLtv.Dirty
+                    || _commitmentNumber.Dirty
+                    || _complianceTestLogs.Dirty
+                    || _conformingJumbo.Dirty
+                    || _consumerConnectSiteID.Dirty
+                    || _contacts.Dirty
+                    || _contactUpdatedIndicator.Dirty
+                    || _contractSellerCreditAmount.Dirty
+                    || _conversationLogs.Dirty
+                    || _copyBrokerToLenderIndicator.Dirty
+                    || _copyLoanNumLenderCaseNum.Dirty
+                    || _creditScoreToUse.Dirty
+                    || _crmLogs.Dirty
+                    || _currentApplicationIndex.Dirty
+                    || _currentApplicationIsPrimary.Dirty
+                    || _currentFirstMortgageHolderType.Dirty
+                    || _customFields.Dirty
+                    || _dataTracLogs.Dirty
+                    || _dBIndicator.Dirty
+                    || _deductOverwireAmountIndicator.Dirty
+                    || _disableESignConsentAlert.Dirty
+                    || _disableKeyPricingAlert.Dirty
+                    || _disclosureTracking2015Logs.Dirty
+                    || _disclosureTrackingLogs.Dirty
+                    || _discountPoint.Dirty
+                    || _docEngine.Dirty
+                    || _documentLogs.Dirty
+                    || _doNotCheckEmail.Dirty
+                    || _doNotPrintCompensationFees.Dirty
+                    || _downloadLogs.Dirty
+                    || _downPaymentPercent.Dirty
+                    || _edmLogs.Dirty
+                    || _elliUCDFields.Dirty
+                    || _emailTriggerLogs.Dirty
+                    || _emXmlVersionId.Dirty
+                    || _encompassId.Dirty
+                    || _encompassVersion.Dirty
+                    || _enforceCountyLoanLimit.Dirty
+                    || _estimatedClosingCostsAmount.Dirty
+                    || _estimatedConstructionInterest.Dirty
+                    || _estimatedPrepaidItemsAmount.Dirty
+                    || _exportLoanNumber.Dirty
+                    || _fees.Dirty
+                    || _fhaMiPremiumRefundAmount.Dirty
+                    || _fHAVALoanOriginatorIdentifier.Dirty
+                    || _fieldLockData.Dirty
+                    || _firstAdjustmentMinimum.Dirty
+                    || _firstSubordinateLienAmount.Dirty
+                    || _firstTimeHomebuyersIndicator.Dirty
+                    || _fnmCommunityLendingProductName.Dirty
+                    || _fnmCommunitySecondsIndicator.Dirty
+                    || _fnmNeighborsMortgageEligibilityIndicator.Dirty
+                    || _forms.Dirty
+                    || _fraudScore.Dirty
+                    || _fundingDeductionList.Dirty
+                    || _fundingFeeList.Dirty
+                    || _fundingFees.Dirty
+                    || _governmentLoanLenderIdentifier.Dirty
+                    || _governmentLoanSponsorIdentifier.Dirty
+                    || _governmentMortgageCreditCertificateAmount.Dirty
+                    || _hasAbusinessRelationshipWith.Dirty
+                    || _hcltvHtltv.Dirty
+                    || _helocTeaserRate.Dirty
+                    || _homeCounselingProviders.Dirty
+                    || _homeCounselingProvidersDistance.Dirty
+                    || _homeCounselingProvidersLanguageNames.Dirty
+                    || _homeCounselingProvidersServiceNames.Dirty
+                    || _householdSizeCount.Dirty
+                    || _htmlEmailLogs.Dirty
+                    || _hudIncomeLimitAdjustmentFactor.Dirty
+                    || _hudLendingIncomeLimitAmount.Dirty
+                    || _hudMedianIncomeAmount.Dirty
+                    || _id.Dirty
+                    || _includeUSDAFeeInClosing.Dirty
+                    || _initialInterestRate.Dirty
+                    || _insuranceAuthorizationIndicator.Dirty
+                    || _interviewerApplicationSignedDate.Dirty
+                    || _interviewerEmail.Dirty
+                    || _interviewerLicenseIdentifier.Dirty
+                    || _interviewerPhoneNumber.Dirty
+                    || _interviewersCompanyStateLicense.Dirty
+                    || _interviewersId.Dirty
+                    || _inverviewerName.Dirty
+                    || _isCreditorProhibitsBorrower.Dirty
+                    || _isEmployeeLoan.Dirty
+                    || _isLSSecondaryFile.Dirty
+                    || _isRequiredInterestReserveCompoundInterest.Dirty
+                    || _landIfAcquiredSeperatelyAmount.Dirty
+                    || _leadSource.Dirty
+                    || _lenderCaseIdentifier.Dirty
+                    || _lenderChannel.Dirty
+                    || _lenderCreditsInFunding.Dirty
+                    || _lenderInvestorCode.Dirty
+                    || _lenderPaidClosignCostsDotAmount.Dirty
+                    || _lenderPaidClosingCostsAmount.Dirty
+                    || _lesserAppraisedValueOrSalesPrice.Dirty
+                    || _lifeInsuranceCoverageAmount.Dirty
+                    || _lifeInsuranceEstimatedMonthlyAmount.Dirty
+                    || _lifeInsuranceTotalProtectedMonthlyAmount.Dirty
+                    || _linkId.Dirty
+                    || _loanActionLogs.Dirty
+                    || _loanAmortizationTermMonths.Dirty
+                    || _loanAmortizationType.Dirty
+                    || _loanCreatedDate.Dirty
+                    || _loanCreatedDateUtc.Dirty
+                    || _loanIdNumber.Dirty
+                    || _loanImportStatusIndicator.Dirty
+                    || _loanLinkSyncType.Dirty
+                    || _loanNumber.Dirty
+                    || _loanProgramName.Dirty
+                    || _loanPrograms.Dirty
+                    || _loanPurposeOfRefinanceType.Dirty
+                    || _loanSource.Dirty
+                    || _loanTotalProposedMonthlyMaintenanceAmount.Dirty
+                    || _loanTotalProposedMonthlyUtilitiesAmount.Dirty
+                    || _loanUnderwriterCHUMSIdentifier.Dirty
+                    || _loanVALoanProcedureType.Dirty
+                    || _loanVARateReductionInitialComputationTotalAmount.Dirty
+                    || _loanVAResidualIncomeAmount.Dirty
+                    || _loanVersionId.Dirty
+                    || _lockConfirmLogs.Dirty
+                    || _lockDenialLogs.Dirty
+                    || _lockRequestLogs.Dirty
+                    || _logEntryLogs.Dirty
+                    || _ltv.Dirty
+                    || _ltvPropertyValue.Dirty
+                    || _masterCommitmentNumber.Dirty
+                    || _maturityDate.Dirty
+                    || _maxBackRatio.Dirty
+                    || _maxFrontRatio.Dirty
+                    || _mersNumber.Dirty
+                    || _mersNumberRegistrationDate.Dirty
+                    || _miAndFundingFeeFinancedAmount.Dirty
+                    || _miAndFundingFeeTotalAmount.Dirty
+                    || _milestoneApprovedDate.Dirty
+                    || _milestoneApprovedDueDate.Dirty
+                    || _milestoneCompletedDate.Dirty
+                    || _milestoneCompletedDueDate.Dirty
+                    || _milestoneCurrentDateUtc.Dirty
+                    || _milestoneCurrentName.Dirty
+                    || _milestoneDocSignedDate.Dirty
+                    || _milestoneDocSignedDueDate.Dirty
+                    || _milestoneDuration.Dirty
+                    || _milestoneFileStartedDate.Dirty
+                    || _milestoneFreeRoleLogs.Dirty
+                    || _milestoneFundedDate.Dirty
+                    || _milestoneFundedDueDate.Dirty
+                    || _milestoneLogs.Dirty
+                    || _milestoneProcessedDate.Dirty
+                    || _milestoneStage.Dirty
+                    || _milestoneSubmittedDate.Dirty
+                    || _milestoneSubmittedDueDate.Dirty
+                    || _milestoneTaskLogs.Dirty
+                    || _milestoneTemplateLogs.Dirty
+                    || _mipBorrowerPaidInCashAmount.Dirty
+                    || _mipPaidInCashAmount.Dirty
+                    || _monthlyPIPaymentAmountForLE1andCD1.Dirty
+                    || _mortgageInsurancePremiumFHARefundAmount.Dirty
+                    || _mortgageInsurancePremiumUpfrontFactorPercent.Dirty
+                    || _mortgageType.Dirty
+                    || _msaIdentifier.Dirty
+                    || _newFirstMortgageAmount.Dirty
+                    || _nmlsLoanOriginatorId.Dirty
+                    || _noClosingCostOption.Dirty
+                    || _notRequiredForPurchaseSaleOrRefinance.Dirty
+                    || _notRequiredForSettlementOfYourLoan.Dirty
+                    || _occupancyType.Dirty
+                    || _openingDocsInvestorCode.Dirty
+                    || _openingDocsLoanProgramType.Dirty
+                    || _openingDocsPlanDescription.Dirty
+                    || _openingDocsPlanId.Dirty
+                    || _openingDocsProgramCode.Dirty
+                    || _openingDocsStackingOrder.Dirty
+                    || _organizationCode.Dirty
+                    || _originationDate.Dirty
+                    || _otherAmortizationTypeDescription.Dirty
+                    || _otherMortgageTypeDescription.Dirty
+                    || _otherPaidClosingCostsAmount.Dirty
+                    || _overwireAmount.Dirty
+                    || _paymentScheduleCalcRequiredIndicator.Dirty
+                    || _percentageOfOwnership.Dirty
+                    || _percentageOwnershipInterest.Dirty
+                    || _pmiIndicator.Dirty
+                    || _postClosingConditionLogs.Dirty
+                    || _preliminaryConditionLogs.Dirty
+                    || _principalAndInterestMonthlyPaymentAmount.Dirty
+                    || _print2003Application.Dirty
+                    || _printLogs.Dirty
+                    || _propertyAppraisedValueAmount.Dirty
+                    || _propertyEnergyEfficientHomeIndicator.Dirty
+                    || _propertyEstimatedValueAmount.Dirty
+                    || _proposedDuesAmount.Dirty
+                    || _proposedFirstMortgageAmount.Dirty
+                    || _proposedGroundRentAmount.Dirty
+                    || _proposedHazardInsuranceAmount.Dirty
+                    || _proposedHousingExpenseTotal.Dirty
+                    || _proposedMortgageInsuranceAmount.Dirty
+                    || _proposedOtherAmount.Dirty
+                    || _proposedOtherMortgagesAmount.Dirty
+                    || _proposedRealEstateTaxesAmount.Dirty
+                    || _purchaseCredits.Dirty
+                    || _purchasePriceAmount.Dirty
+                    || _referralAddress.Dirty
+                    || _referralCity.Dirty
+                    || _referralFeeAmount.Dirty
+                    || _referralPostalCode.Dirty
+                    || _referralSource.Dirty
+                    || _referralState.Dirty
+                    || _refinanceIncludingDebtsToBePaidOffAmount.Dirty
+                    || _registrationLogs.Dirty
+                    || _removedLogRecords.Dirty
+                    || _repurchaseCostAmount.Dirty
+                    || _repurchaseDate.Dirty
+                    || _requestedInterestRatePercent.Dirty
+                    || _salesConcessionAmount.Dirty
+                    || _secondSubordinateAmount.Dirty
+                    || _sectionOfActType.Dirty
+                    || _sellerPaidClosingCostsAmount.Dirty
+                    || _serviceProviderAdditionalInfo.Dirty
+                    || _serviceProviderContacts.Dirty
+                    || _serviceProviderDateIssued.Dirty
+                    || _setForSettlementServicesOfAnAttorney.Dirty
+                    || _setForTheSettlementServicesListed.Dirty
+                    || _settlementServiceCharges.Dirty
+                    || _simpleRefinanceType.Dirty
+                    || _startingAdjPrice.Dirty
+                    || _startingAdjRate.Dirty
+                    || _statusOnlineLogs.Dirty
+                    || _subjectPropertyGrossRentalIncomeAmount.Dirty
+                    || _subjectPropertyOccupancyPercent.Dirty
+                    || _subordinateLienAmount.Dirty
+                    || _systemIdGuid.Dirty
+                    || _tilApplicationDate.Dirty
+                    || _titleHolderName1.Dirty
+                    || _titleHolderName2.Dirty
+                    || _tltv.Dirty
+                    || _totalClosingCostsAmount.Dirty
+                    || _totalDeductionsAmount.Dirty
+                    || _totalFeesCostAmount.Dirty
+                    || _totalFeesCreditAmount.Dirty
+                    || _totalNonborrowerPaidClosingCostsAmount.Dirty
+                    || _totalPaidOutsideClosingAmount.Dirty
+                    || _totalPaidToBrokerAmount.Dirty
+                    || _totalWireTransferAmount.Dirty
+                    || _twelveMonthMortgageRentalHistoryIndicator.Dirty
+                    || _underwritingConditionLogs.Dirty
+                    || _underwritingEscrowIndicator.Dirty
+                    || _undiscountedRate.Dirty
+                    || _unimprovedAppraisedValue.Dirty
+                    || _unimprovedEstimatedValue.Dirty
+                    || _urlPage4Comments.Dirty
+                    || _usdaGovernmentLoanType.Dirty
+                    || _use2018DiIndicator.Dirty
+                    || _useNew2015FormsIndicator.Dirty
+                    || _useNewHudIndicator.Dirty
+                    || _vAEntitlementAmount.Dirty
+                    || _verificationLogs.Dirty
+                    || _virtualFields.Dirty
+                    || _websiteId.Dirty
+                    || AdditionalRequests?.Dirty == true
+                    || ATRQMCommon?.Dirty == true
+                    || ClosingCost?.Dirty == true
+                    || ClosingDocument?.Dirty == true
+                    || CommitmentTerms?.Dirty == true
+                    || ConstructionManagement?.Dirty == true
+                    || Correspondent?.Dirty == true
+                    || CurrentApplication?.Dirty == true
+                    || CustomModelFields?.Dirty == true
+                    || DisclosureNotices?.Dirty == true
+                    || DownPayment?.Dirty == true
+                    || EmDocument?.Dirty == true
+                    || EmDocumentInvestor?.Dirty == true
+                    || EmDocumentLender?.Dirty == true
+                    || FannieMae?.Dirty == true
+                    || FhaVaLoan?.Dirty == true
+                    || FreddieMac?.Dirty == true
+                    || Funding?.Dirty == true
+                    || Gfe?.Dirty == true
+                    || Hmda?.Dirty == true
+                    || Hud1Es?.Dirty == true
+                    || HudLoanData?.Dirty == true
+                    || InterimServicing?.Dirty == true
+                    || LoanProductData?.Dirty == true
+                    || LoanSubmission?.Dirty == true
+                    || LOCompensation?.Dirty == true
+                    || Mcaw?.Dirty == true
+                    || Miscellaneous?.Dirty == true
+                    || NetTangibleBenefit?.Dirty == true
+                    || Prequalification?.Dirty == true
+                    || PrivacyPolicy?.Dirty == true
+                    || ProfitManagement?.Dirty == true
+                    || Property?.Dirty == true
+                    || RateLock?.Dirty == true
+                    || RegulationZ?.Dirty == true
+                    || Section32?.Dirty == true
+                    || SelectedHomeCounselingProvider?.Dirty == true
+                    || ServicingDisclosure?.Dirty == true
+                    || Shipping?.Dirty == true
+                    || StateDisclosure?.Dirty == true
+                    || StatementCreditDenial?.Dirty == true
+                    || TPO?.Dirty == true
+                    || TQL?.Dirty == true
+                    || TrustAccount?.Dirty == true
+                    || Tsum?.Dirty == true
+                    || Uldd?.Dirty == true
+                    || UnderwriterSummary?.Dirty == true
+                    || Usda?.Dirty == true
+                    || VaLoanData?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var adverseActionDate = _adverseActionDate; adverseActionDate.Clean = value; _adverseActionDate = adverseActionDate;
-                var affiliatedBusinessArrangements = _affiliatedBusinessArrangements; affiliatedBusinessArrangements.Clean = value; _affiliatedBusinessArrangements = affiliatedBusinessArrangements;
-                var agencyCaseIdentifier = _agencyCaseIdentifier; agencyCaseIdentifier.Clean = value; _agencyCaseIdentifier = agencyCaseIdentifier;
-                var alterationsImprovementsOrRepairsAmount = _alterationsImprovementsOrRepairsAmount; alterationsImprovementsOrRepairsAmount.Clean = value; _alterationsImprovementsOrRepairsAmount = alterationsImprovementsOrRepairsAmount;
-                var applications = _applications; applications.Clean = value; _applications = applications;
-                var applicationTakenMethodType = _applicationTakenMethodType; applicationTakenMethodType.Clean = value; _applicationTakenMethodType = applicationTakenMethodType;
-                var aprDisclosureDate = _aprDisclosureDate; aprDisclosureDate.Clean = value; _aprDisclosureDate = aprDisclosureDate;
-                var armTypeDescription = _armTypeDescription; armTypeDescription.Clean = value; _armTypeDescription = armTypeDescription;
-                var baseLoanAmount = _baseLoanAmount; baseLoanAmount.Clean = value; _baseLoanAmount = baseLoanAmount;
-                var belowMarketSubordinateFinancingIndicator = _belowMarketSubordinateFinancingIndicator; belowMarketSubordinateFinancingIndicator.Clean = value; _belowMarketSubordinateFinancingIndicator = belowMarketSubordinateFinancingIndicator;
-                var billingCategory = _billingCategory; billingCategory.Clean = value; _billingCategory = billingCategory;
-                var biweeklyPaymentAmount = _biweeklyPaymentAmount; biweeklyPaymentAmount.Clean = value; _biweeklyPaymentAmount = biweeklyPaymentAmount;
-                var bLTV = _bLTV; bLTV.Clean = value; _bLTV = bLTV;
-                var borrowerCoBorrowerMarriedIndicator = _borrowerCoBorrowerMarriedIndicator; borrowerCoBorrowerMarriedIndicator.Clean = value; _borrowerCoBorrowerMarriedIndicator = borrowerCoBorrowerMarriedIndicator;
-                var borrowerPaidClosingCostsAmount = _borrowerPaidClosingCostsAmount; borrowerPaidClosingCostsAmount.Clean = value; _borrowerPaidClosingCostsAmount = borrowerPaidClosingCostsAmount;
-                var borrowerPaidDiscountPointsAmount = _borrowerPaidDiscountPointsAmount; borrowerPaidDiscountPointsAmount.Clean = value; _borrowerPaidDiscountPointsAmount = borrowerPaidDiscountPointsAmount;
-                var borrowerPaidFHAVAClosingCostsAmount = _borrowerPaidFHAVAClosingCostsAmount; borrowerPaidFHAVAClosingCostsAmount.Clean = value; _borrowerPaidFHAVAClosingCostsAmount = borrowerPaidFHAVAClosingCostsAmount;
-                var borrowerRequestedLoanAmount = _borrowerRequestedLoanAmount; borrowerRequestedLoanAmount.Clean = value; _borrowerRequestedLoanAmount = borrowerRequestedLoanAmount;
-                var brokerPaidClosingCostsAmount = _brokerPaidClosingCostsAmount; brokerPaidClosingCostsAmount.Clean = value; _brokerPaidClosingCostsAmount = brokerPaidClosingCostsAmount;
-                var buydownIndicator = _buydownIndicator; buydownIndicator.Clean = value; _buydownIndicator = buydownIndicator;
-                var buydownMonthlyPaymentAmount = _buydownMonthlyPaymentAmount; buydownMonthlyPaymentAmount.Clean = value; _buydownMonthlyPaymentAmount = buydownMonthlyPaymentAmount;
-                var buydownRatePercent = _buydownRatePercent; buydownRatePercent.Clean = value; _buydownRatePercent = buydownRatePercent;
-                var cashFromToBorrowerAmount = _cashFromToBorrowerAmount; cashFromToBorrowerAmount.Clean = value; _cashFromToBorrowerAmount = cashFromToBorrowerAmount;
-                var channel = _channel; channel.Clean = value; _channel = channel;
-                var closingBillingDate = _closingBillingDate; closingBillingDate.Clean = value; _closingBillingDate = closingBillingDate;
-                var closingCostProgram = _closingCostProgram; closingCostProgram.Clean = value; _closingCostProgram = closingCostProgram;
-                var closingCostsAndPrepaidsFromOtherLienAmount = _closingCostsAndPrepaidsFromOtherLienAmount; closingCostsAndPrepaidsFromOtherLienAmount.Clean = value; _closingCostsAndPrepaidsFromOtherLienAmount = closingCostsAndPrepaidsFromOtherLienAmount;
-                var closingCostsPaidByOthersAmount = _closingCostsPaidByOthersAmount; closingCostsPaidByOthersAmount.Clean = value; _closingCostsPaidByOthersAmount = closingCostsPaidByOthersAmount;
-                var closingDocsStackingOrder = _closingDocsStackingOrder; closingDocsStackingOrder.Clean = value; _closingDocsStackingOrder = closingDocsStackingOrder;
-                var collateralManagerScore = _collateralManagerScore; collateralManagerScore.Clean = value; _collateralManagerScore = collateralManagerScore;
-                var combinedLtv = _combinedLtv; combinedLtv.Clean = value; _combinedLtv = combinedLtv;
-                var commitmentNumber = _commitmentNumber; commitmentNumber.Clean = value; _commitmentNumber = commitmentNumber;
-                var complianceTestLogs = _complianceTestLogs; complianceTestLogs.Clean = value; _complianceTestLogs = complianceTestLogs;
-                var conformingJumbo = _conformingJumbo; conformingJumbo.Clean = value; _conformingJumbo = conformingJumbo;
-                var consumerConnectSiteID = _consumerConnectSiteID; consumerConnectSiteID.Clean = value; _consumerConnectSiteID = consumerConnectSiteID;
-                var contacts = _contacts; contacts.Clean = value; _contacts = contacts;
-                var contactUpdatedIndicator = _contactUpdatedIndicator; contactUpdatedIndicator.Clean = value; _contactUpdatedIndicator = contactUpdatedIndicator;
-                var contractSellerCreditAmount = _contractSellerCreditAmount; contractSellerCreditAmount.Clean = value; _contractSellerCreditAmount = contractSellerCreditAmount;
-                var conversationLogs = _conversationLogs; conversationLogs.Clean = value; _conversationLogs = conversationLogs;
-                var copyBrokerToLenderIndicator = _copyBrokerToLenderIndicator; copyBrokerToLenderIndicator.Clean = value; _copyBrokerToLenderIndicator = copyBrokerToLenderIndicator;
-                var copyLoanNumLenderCaseNum = _copyLoanNumLenderCaseNum; copyLoanNumLenderCaseNum.Clean = value; _copyLoanNumLenderCaseNum = copyLoanNumLenderCaseNum;
-                var creditScoreToUse = _creditScoreToUse; creditScoreToUse.Clean = value; _creditScoreToUse = creditScoreToUse;
-                var crmLogs = _crmLogs; crmLogs.Clean = value; _crmLogs = crmLogs;
-                var currentApplicationIndex = _currentApplicationIndex; currentApplicationIndex.Clean = value; _currentApplicationIndex = currentApplicationIndex;
-                var currentApplicationIsPrimary = _currentApplicationIsPrimary; currentApplicationIsPrimary.Clean = value; _currentApplicationIsPrimary = currentApplicationIsPrimary;
-                var currentFirstMortgageHolderType = _currentFirstMortgageHolderType; currentFirstMortgageHolderType.Clean = value; _currentFirstMortgageHolderType = currentFirstMortgageHolderType;
-                var customFields = _customFields; customFields.Clean = value; _customFields = customFields;
-                var dataTracLogs = _dataTracLogs; dataTracLogs.Clean = value; _dataTracLogs = dataTracLogs;
-                var dBIndicator = _dBIndicator; dBIndicator.Clean = value; _dBIndicator = dBIndicator;
-                var deductOverwireAmountIndicator = _deductOverwireAmountIndicator; deductOverwireAmountIndicator.Clean = value; _deductOverwireAmountIndicator = deductOverwireAmountIndicator;
-                var disableESignConsentAlert = _disableESignConsentAlert; disableESignConsentAlert.Clean = value; _disableESignConsentAlert = disableESignConsentAlert;
-                var disableKeyPricingAlert = _disableKeyPricingAlert; disableKeyPricingAlert.Clean = value; _disableKeyPricingAlert = disableKeyPricingAlert;
-                var disclosureTracking2015Logs = _disclosureTracking2015Logs; disclosureTracking2015Logs.Clean = value; _disclosureTracking2015Logs = disclosureTracking2015Logs;
-                var disclosureTrackingLogs = _disclosureTrackingLogs; disclosureTrackingLogs.Clean = value; _disclosureTrackingLogs = disclosureTrackingLogs;
-                var discountPoint = _discountPoint; discountPoint.Clean = value; _discountPoint = discountPoint;
-                var docEngine = _docEngine; docEngine.Clean = value; _docEngine = docEngine;
-                var documentLogs = _documentLogs; documentLogs.Clean = value; _documentLogs = documentLogs;
-                var doNotCheckEmail = _doNotCheckEmail; doNotCheckEmail.Clean = value; _doNotCheckEmail = doNotCheckEmail;
-                var doNotPrintCompensationFees = _doNotPrintCompensationFees; doNotPrintCompensationFees.Clean = value; _doNotPrintCompensationFees = doNotPrintCompensationFees;
-                var downloadLogs = _downloadLogs; downloadLogs.Clean = value; _downloadLogs = downloadLogs;
-                var downPaymentPercent = _downPaymentPercent; downPaymentPercent.Clean = value; _downPaymentPercent = downPaymentPercent;
-                var edmLogs = _edmLogs; edmLogs.Clean = value; _edmLogs = edmLogs;
-                var elliUCDFields = _elliUCDFields; elliUCDFields.Clean = value; _elliUCDFields = elliUCDFields;
-                var emailTriggerLogs = _emailTriggerLogs; emailTriggerLogs.Clean = value; _emailTriggerLogs = emailTriggerLogs;
-                var emXmlVersionId = _emXmlVersionId; emXmlVersionId.Clean = value; _emXmlVersionId = emXmlVersionId;
-                var encompassId = _encompassId; encompassId.Clean = value; _encompassId = encompassId;
-                var encompassVersion = _encompassVersion; encompassVersion.Clean = value; _encompassVersion = encompassVersion;
-                var enforceCountyLoanLimit = _enforceCountyLoanLimit; enforceCountyLoanLimit.Clean = value; _enforceCountyLoanLimit = enforceCountyLoanLimit;
-                var estimatedClosingCostsAmount = _estimatedClosingCostsAmount; estimatedClosingCostsAmount.Clean = value; _estimatedClosingCostsAmount = estimatedClosingCostsAmount;
-                var estimatedConstructionInterest = _estimatedConstructionInterest; estimatedConstructionInterest.Clean = value; _estimatedConstructionInterest = estimatedConstructionInterest;
-                var estimatedPrepaidItemsAmount = _estimatedPrepaidItemsAmount; estimatedPrepaidItemsAmount.Clean = value; _estimatedPrepaidItemsAmount = estimatedPrepaidItemsAmount;
-                var exportLoanNumber = _exportLoanNumber; exportLoanNumber.Clean = value; _exportLoanNumber = exportLoanNumber;
-                var fees = _fees; fees.Clean = value; _fees = fees;
-                var fhaMiPremiumRefundAmount = _fhaMiPremiumRefundAmount; fhaMiPremiumRefundAmount.Clean = value; _fhaMiPremiumRefundAmount = fhaMiPremiumRefundAmount;
-                var fHAVALoanOriginatorIdentifier = _fHAVALoanOriginatorIdentifier; fHAVALoanOriginatorIdentifier.Clean = value; _fHAVALoanOriginatorIdentifier = fHAVALoanOriginatorIdentifier;
-                var fieldLockData = _fieldLockData; fieldLockData.Clean = value; _fieldLockData = fieldLockData;
-                var firstAdjustmentMinimum = _firstAdjustmentMinimum; firstAdjustmentMinimum.Clean = value; _firstAdjustmentMinimum = firstAdjustmentMinimum;
-                var firstSubordinateLienAmount = _firstSubordinateLienAmount; firstSubordinateLienAmount.Clean = value; _firstSubordinateLienAmount = firstSubordinateLienAmount;
-                var firstTimeHomebuyersIndicator = _firstTimeHomebuyersIndicator; firstTimeHomebuyersIndicator.Clean = value; _firstTimeHomebuyersIndicator = firstTimeHomebuyersIndicator;
-                var fnmCommunityLendingProductName = _fnmCommunityLendingProductName; fnmCommunityLendingProductName.Clean = value; _fnmCommunityLendingProductName = fnmCommunityLendingProductName;
-                var fnmCommunitySecondsIndicator = _fnmCommunitySecondsIndicator; fnmCommunitySecondsIndicator.Clean = value; _fnmCommunitySecondsIndicator = fnmCommunitySecondsIndicator;
-                var fnmNeighborsMortgageEligibilityIndicator = _fnmNeighborsMortgageEligibilityIndicator; fnmNeighborsMortgageEligibilityIndicator.Clean = value; _fnmNeighborsMortgageEligibilityIndicator = fnmNeighborsMortgageEligibilityIndicator;
-                var forms = _forms; forms.Clean = value; _forms = forms;
-                var fraudScore = _fraudScore; fraudScore.Clean = value; _fraudScore = fraudScore;
-                var fundingDeductionList = _fundingDeductionList; fundingDeductionList.Clean = value; _fundingDeductionList = fundingDeductionList;
-                var fundingFeeList = _fundingFeeList; fundingFeeList.Clean = value; _fundingFeeList = fundingFeeList;
-                var fundingFees = _fundingFees; fundingFees.Clean = value; _fundingFees = fundingFees;
-                var governmentLoanLenderIdentifier = _governmentLoanLenderIdentifier; governmentLoanLenderIdentifier.Clean = value; _governmentLoanLenderIdentifier = governmentLoanLenderIdentifier;
-                var governmentLoanSponsorIdentifier = _governmentLoanSponsorIdentifier; governmentLoanSponsorIdentifier.Clean = value; _governmentLoanSponsorIdentifier = governmentLoanSponsorIdentifier;
-                var governmentMortgageCreditCertificateAmount = _governmentMortgageCreditCertificateAmount; governmentMortgageCreditCertificateAmount.Clean = value; _governmentMortgageCreditCertificateAmount = governmentMortgageCreditCertificateAmount;
-                var hasAbusinessRelationshipWith = _hasAbusinessRelationshipWith; hasAbusinessRelationshipWith.Clean = value; _hasAbusinessRelationshipWith = hasAbusinessRelationshipWith;
-                var hcltvHtltv = _hcltvHtltv; hcltvHtltv.Clean = value; _hcltvHtltv = hcltvHtltv;
-                var helocTeaserRate = _helocTeaserRate; helocTeaserRate.Clean = value; _helocTeaserRate = helocTeaserRate;
-                var homeCounselingProviders = _homeCounselingProviders; homeCounselingProviders.Clean = value; _homeCounselingProviders = homeCounselingProviders;
-                var homeCounselingProvidersDistance = _homeCounselingProvidersDistance; homeCounselingProvidersDistance.Clean = value; _homeCounselingProvidersDistance = homeCounselingProvidersDistance;
-                var homeCounselingProvidersLanguageNames = _homeCounselingProvidersLanguageNames; homeCounselingProvidersLanguageNames.Clean = value; _homeCounselingProvidersLanguageNames = homeCounselingProvidersLanguageNames;
-                var homeCounselingProvidersServiceNames = _homeCounselingProvidersServiceNames; homeCounselingProvidersServiceNames.Clean = value; _homeCounselingProvidersServiceNames = homeCounselingProvidersServiceNames;
-                var householdSizeCount = _householdSizeCount; householdSizeCount.Clean = value; _householdSizeCount = householdSizeCount;
-                var htmlEmailLogs = _htmlEmailLogs; htmlEmailLogs.Clean = value; _htmlEmailLogs = htmlEmailLogs;
-                var hudIncomeLimitAdjustmentFactor = _hudIncomeLimitAdjustmentFactor; hudIncomeLimitAdjustmentFactor.Clean = value; _hudIncomeLimitAdjustmentFactor = hudIncomeLimitAdjustmentFactor;
-                var hudLendingIncomeLimitAmount = _hudLendingIncomeLimitAmount; hudLendingIncomeLimitAmount.Clean = value; _hudLendingIncomeLimitAmount = hudLendingIncomeLimitAmount;
-                var hudMedianIncomeAmount = _hudMedianIncomeAmount; hudMedianIncomeAmount.Clean = value; _hudMedianIncomeAmount = hudMedianIncomeAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var includeUSDAFeeInClosing = _includeUSDAFeeInClosing; includeUSDAFeeInClosing.Clean = value; _includeUSDAFeeInClosing = includeUSDAFeeInClosing;
-                var initialInterestRate = _initialInterestRate; initialInterestRate.Clean = value; _initialInterestRate = initialInterestRate;
-                var insuranceAuthorizationIndicator = _insuranceAuthorizationIndicator; insuranceAuthorizationIndicator.Clean = value; _insuranceAuthorizationIndicator = insuranceAuthorizationIndicator;
-                var interviewerApplicationSignedDate = _interviewerApplicationSignedDate; interviewerApplicationSignedDate.Clean = value; _interviewerApplicationSignedDate = interviewerApplicationSignedDate;
-                var interviewerEmail = _interviewerEmail; interviewerEmail.Clean = value; _interviewerEmail = interviewerEmail;
-                var interviewerLicenseIdentifier = _interviewerLicenseIdentifier; interviewerLicenseIdentifier.Clean = value; _interviewerLicenseIdentifier = interviewerLicenseIdentifier;
-                var interviewerPhoneNumber = _interviewerPhoneNumber; interviewerPhoneNumber.Clean = value; _interviewerPhoneNumber = interviewerPhoneNumber;
-                var interviewersCompanyStateLicense = _interviewersCompanyStateLicense; interviewersCompanyStateLicense.Clean = value; _interviewersCompanyStateLicense = interviewersCompanyStateLicense;
-                var interviewersId = _interviewersId; interviewersId.Clean = value; _interviewersId = interviewersId;
-                var inverviewerName = _inverviewerName; inverviewerName.Clean = value; _inverviewerName = inverviewerName;
-                var isCreditorProhibitsBorrower = _isCreditorProhibitsBorrower; isCreditorProhibitsBorrower.Clean = value; _isCreditorProhibitsBorrower = isCreditorProhibitsBorrower;
-                var isEmployeeLoan = _isEmployeeLoan; isEmployeeLoan.Clean = value; _isEmployeeLoan = isEmployeeLoan;
-                var isLSSecondaryFile = _isLSSecondaryFile; isLSSecondaryFile.Clean = value; _isLSSecondaryFile = isLSSecondaryFile;
-                var isRequiredInterestReserveCompoundInterest = _isRequiredInterestReserveCompoundInterest; isRequiredInterestReserveCompoundInterest.Clean = value; _isRequiredInterestReserveCompoundInterest = isRequiredInterestReserveCompoundInterest;
-                var landIfAcquiredSeperatelyAmount = _landIfAcquiredSeperatelyAmount; landIfAcquiredSeperatelyAmount.Clean = value; _landIfAcquiredSeperatelyAmount = landIfAcquiredSeperatelyAmount;
-                var leadSource = _leadSource; leadSource.Clean = value; _leadSource = leadSource;
-                var lenderCaseIdentifier = _lenderCaseIdentifier; lenderCaseIdentifier.Clean = value; _lenderCaseIdentifier = lenderCaseIdentifier;
-                var lenderChannel = _lenderChannel; lenderChannel.Clean = value; _lenderChannel = lenderChannel;
-                var lenderCreditsInFunding = _lenderCreditsInFunding; lenderCreditsInFunding.Clean = value; _lenderCreditsInFunding = lenderCreditsInFunding;
-                var lenderInvestorCode = _lenderInvestorCode; lenderInvestorCode.Clean = value; _lenderInvestorCode = lenderInvestorCode;
-                var lenderPaidClosignCostsDotAmount = _lenderPaidClosignCostsDotAmount; lenderPaidClosignCostsDotAmount.Clean = value; _lenderPaidClosignCostsDotAmount = lenderPaidClosignCostsDotAmount;
-                var lenderPaidClosingCostsAmount = _lenderPaidClosingCostsAmount; lenderPaidClosingCostsAmount.Clean = value; _lenderPaidClosingCostsAmount = lenderPaidClosingCostsAmount;
-                var lesserAppraisedValueOrSalesPrice = _lesserAppraisedValueOrSalesPrice; lesserAppraisedValueOrSalesPrice.Clean = value; _lesserAppraisedValueOrSalesPrice = lesserAppraisedValueOrSalesPrice;
-                var lifeInsuranceCoverageAmount = _lifeInsuranceCoverageAmount; lifeInsuranceCoverageAmount.Clean = value; _lifeInsuranceCoverageAmount = lifeInsuranceCoverageAmount;
-                var lifeInsuranceEstimatedMonthlyAmount = _lifeInsuranceEstimatedMonthlyAmount; lifeInsuranceEstimatedMonthlyAmount.Clean = value; _lifeInsuranceEstimatedMonthlyAmount = lifeInsuranceEstimatedMonthlyAmount;
-                var lifeInsuranceTotalProtectedMonthlyAmount = _lifeInsuranceTotalProtectedMonthlyAmount; lifeInsuranceTotalProtectedMonthlyAmount.Clean = value; _lifeInsuranceTotalProtectedMonthlyAmount = lifeInsuranceTotalProtectedMonthlyAmount;
-                var linkId = _linkId; linkId.Clean = value; _linkId = linkId;
-                var loanActionLogs = _loanActionLogs; loanActionLogs.Clean = value; _loanActionLogs = loanActionLogs;
-                var loanAmortizationTermMonths = _loanAmortizationTermMonths; loanAmortizationTermMonths.Clean = value; _loanAmortizationTermMonths = loanAmortizationTermMonths;
-                var loanAmortizationType = _loanAmortizationType; loanAmortizationType.Clean = value; _loanAmortizationType = loanAmortizationType;
-                var loanCreatedDate = _loanCreatedDate; loanCreatedDate.Clean = value; _loanCreatedDate = loanCreatedDate;
-                var loanCreatedDateUtc = _loanCreatedDateUtc; loanCreatedDateUtc.Clean = value; _loanCreatedDateUtc = loanCreatedDateUtc;
-                var loanIdNumber = _loanIdNumber; loanIdNumber.Clean = value; _loanIdNumber = loanIdNumber;
-                var loanImportStatusIndicator = _loanImportStatusIndicator; loanImportStatusIndicator.Clean = value; _loanImportStatusIndicator = loanImportStatusIndicator;
-                var loanLinkSyncType = _loanLinkSyncType; loanLinkSyncType.Clean = value; _loanLinkSyncType = loanLinkSyncType;
-                var loanNumber = _loanNumber; loanNumber.Clean = value; _loanNumber = loanNumber;
-                var loanProgramName = _loanProgramName; loanProgramName.Clean = value; _loanProgramName = loanProgramName;
-                var loanPrograms = _loanPrograms; loanPrograms.Clean = value; _loanPrograms = loanPrograms;
-                var loanPurposeOfRefinanceType = _loanPurposeOfRefinanceType; loanPurposeOfRefinanceType.Clean = value; _loanPurposeOfRefinanceType = loanPurposeOfRefinanceType;
-                var loanSource = _loanSource; loanSource.Clean = value; _loanSource = loanSource;
-                var loanTotalProposedMonthlyMaintenanceAmount = _loanTotalProposedMonthlyMaintenanceAmount; loanTotalProposedMonthlyMaintenanceAmount.Clean = value; _loanTotalProposedMonthlyMaintenanceAmount = loanTotalProposedMonthlyMaintenanceAmount;
-                var loanTotalProposedMonthlyUtilitiesAmount = _loanTotalProposedMonthlyUtilitiesAmount; loanTotalProposedMonthlyUtilitiesAmount.Clean = value; _loanTotalProposedMonthlyUtilitiesAmount = loanTotalProposedMonthlyUtilitiesAmount;
-                var loanUnderwriterCHUMSIdentifier = _loanUnderwriterCHUMSIdentifier; loanUnderwriterCHUMSIdentifier.Clean = value; _loanUnderwriterCHUMSIdentifier = loanUnderwriterCHUMSIdentifier;
-                var loanVALoanProcedureType = _loanVALoanProcedureType; loanVALoanProcedureType.Clean = value; _loanVALoanProcedureType = loanVALoanProcedureType;
-                var loanVARateReductionInitialComputationTotalAmount = _loanVARateReductionInitialComputationTotalAmount; loanVARateReductionInitialComputationTotalAmount.Clean = value; _loanVARateReductionInitialComputationTotalAmount = loanVARateReductionInitialComputationTotalAmount;
-                var loanVAResidualIncomeAmount = _loanVAResidualIncomeAmount; loanVAResidualIncomeAmount.Clean = value; _loanVAResidualIncomeAmount = loanVAResidualIncomeAmount;
-                var loanVersionId = _loanVersionId; loanVersionId.Clean = value; _loanVersionId = loanVersionId;
-                var lockConfirmLogs = _lockConfirmLogs; lockConfirmLogs.Clean = value; _lockConfirmLogs = lockConfirmLogs;
-                var lockDenialLogs = _lockDenialLogs; lockDenialLogs.Clean = value; _lockDenialLogs = lockDenialLogs;
-                var lockRequestLogs = _lockRequestLogs; lockRequestLogs.Clean = value; _lockRequestLogs = lockRequestLogs;
-                var logEntryLogs = _logEntryLogs; logEntryLogs.Clean = value; _logEntryLogs = logEntryLogs;
-                var ltv = _ltv; ltv.Clean = value; _ltv = ltv;
-                var ltvPropertyValue = _ltvPropertyValue; ltvPropertyValue.Clean = value; _ltvPropertyValue = ltvPropertyValue;
-                var masterCommitmentNumber = _masterCommitmentNumber; masterCommitmentNumber.Clean = value; _masterCommitmentNumber = masterCommitmentNumber;
-                var maturityDate = _maturityDate; maturityDate.Clean = value; _maturityDate = maturityDate;
-                var maxBackRatio = _maxBackRatio; maxBackRatio.Clean = value; _maxBackRatio = maxBackRatio;
-                var maxFrontRatio = _maxFrontRatio; maxFrontRatio.Clean = value; _maxFrontRatio = maxFrontRatio;
-                var mersNumber = _mersNumber; mersNumber.Clean = value; _mersNumber = mersNumber;
-                var mersNumberRegistrationDate = _mersNumberRegistrationDate; mersNumberRegistrationDate.Clean = value; _mersNumberRegistrationDate = mersNumberRegistrationDate;
-                var miAndFundingFeeFinancedAmount = _miAndFundingFeeFinancedAmount; miAndFundingFeeFinancedAmount.Clean = value; _miAndFundingFeeFinancedAmount = miAndFundingFeeFinancedAmount;
-                var miAndFundingFeeTotalAmount = _miAndFundingFeeTotalAmount; miAndFundingFeeTotalAmount.Clean = value; _miAndFundingFeeTotalAmount = miAndFundingFeeTotalAmount;
-                var milestoneApprovedDate = _milestoneApprovedDate; milestoneApprovedDate.Clean = value; _milestoneApprovedDate = milestoneApprovedDate;
-                var milestoneApprovedDueDate = _milestoneApprovedDueDate; milestoneApprovedDueDate.Clean = value; _milestoneApprovedDueDate = milestoneApprovedDueDate;
-                var milestoneCompletedDate = _milestoneCompletedDate; milestoneCompletedDate.Clean = value; _milestoneCompletedDate = milestoneCompletedDate;
-                var milestoneCompletedDueDate = _milestoneCompletedDueDate; milestoneCompletedDueDate.Clean = value; _milestoneCompletedDueDate = milestoneCompletedDueDate;
-                var milestoneCurrentDateUtc = _milestoneCurrentDateUtc; milestoneCurrentDateUtc.Clean = value; _milestoneCurrentDateUtc = milestoneCurrentDateUtc;
-                var milestoneCurrentName = _milestoneCurrentName; milestoneCurrentName.Clean = value; _milestoneCurrentName = milestoneCurrentName;
-                var milestoneDocSignedDate = _milestoneDocSignedDate; milestoneDocSignedDate.Clean = value; _milestoneDocSignedDate = milestoneDocSignedDate;
-                var milestoneDocSignedDueDate = _milestoneDocSignedDueDate; milestoneDocSignedDueDate.Clean = value; _milestoneDocSignedDueDate = milestoneDocSignedDueDate;
-                var milestoneDuration = _milestoneDuration; milestoneDuration.Clean = value; _milestoneDuration = milestoneDuration;
-                var milestoneFileStartedDate = _milestoneFileStartedDate; milestoneFileStartedDate.Clean = value; _milestoneFileStartedDate = milestoneFileStartedDate;
-                var milestoneFreeRoleLogs = _milestoneFreeRoleLogs; milestoneFreeRoleLogs.Clean = value; _milestoneFreeRoleLogs = milestoneFreeRoleLogs;
-                var milestoneFundedDate = _milestoneFundedDate; milestoneFundedDate.Clean = value; _milestoneFundedDate = milestoneFundedDate;
-                var milestoneFundedDueDate = _milestoneFundedDueDate; milestoneFundedDueDate.Clean = value; _milestoneFundedDueDate = milestoneFundedDueDate;
-                var milestoneLogs = _milestoneLogs; milestoneLogs.Clean = value; _milestoneLogs = milestoneLogs;
-                var milestoneProcessedDate = _milestoneProcessedDate; milestoneProcessedDate.Clean = value; _milestoneProcessedDate = milestoneProcessedDate;
-                var milestoneStage = _milestoneStage; milestoneStage.Clean = value; _milestoneStage = milestoneStage;
-                var milestoneSubmittedDate = _milestoneSubmittedDate; milestoneSubmittedDate.Clean = value; _milestoneSubmittedDate = milestoneSubmittedDate;
-                var milestoneSubmittedDueDate = _milestoneSubmittedDueDate; milestoneSubmittedDueDate.Clean = value; _milestoneSubmittedDueDate = milestoneSubmittedDueDate;
-                var milestoneTaskLogs = _milestoneTaskLogs; milestoneTaskLogs.Clean = value; _milestoneTaskLogs = milestoneTaskLogs;
-                var milestoneTemplateLogs = _milestoneTemplateLogs; milestoneTemplateLogs.Clean = value; _milestoneTemplateLogs = milestoneTemplateLogs;
-                var mipBorrowerPaidInCashAmount = _mipBorrowerPaidInCashAmount; mipBorrowerPaidInCashAmount.Clean = value; _mipBorrowerPaidInCashAmount = mipBorrowerPaidInCashAmount;
-                var mipPaidInCashAmount = _mipPaidInCashAmount; mipPaidInCashAmount.Clean = value; _mipPaidInCashAmount = mipPaidInCashAmount;
-                var monthlyPIPaymentAmountForLE1andCD1 = _monthlyPIPaymentAmountForLE1andCD1; monthlyPIPaymentAmountForLE1andCD1.Clean = value; _monthlyPIPaymentAmountForLE1andCD1 = monthlyPIPaymentAmountForLE1andCD1;
-                var mortgageInsurancePremiumFHARefundAmount = _mortgageInsurancePremiumFHARefundAmount; mortgageInsurancePremiumFHARefundAmount.Clean = value; _mortgageInsurancePremiumFHARefundAmount = mortgageInsurancePremiumFHARefundAmount;
-                var mortgageInsurancePremiumUpfrontFactorPercent = _mortgageInsurancePremiumUpfrontFactorPercent; mortgageInsurancePremiumUpfrontFactorPercent.Clean = value; _mortgageInsurancePremiumUpfrontFactorPercent = mortgageInsurancePremiumUpfrontFactorPercent;
-                var mortgageType = _mortgageType; mortgageType.Clean = value; _mortgageType = mortgageType;
-                var msaIdentifier = _msaIdentifier; msaIdentifier.Clean = value; _msaIdentifier = msaIdentifier;
-                var newFirstMortgageAmount = _newFirstMortgageAmount; newFirstMortgageAmount.Clean = value; _newFirstMortgageAmount = newFirstMortgageAmount;
-                var nmlsLoanOriginatorId = _nmlsLoanOriginatorId; nmlsLoanOriginatorId.Clean = value; _nmlsLoanOriginatorId = nmlsLoanOriginatorId;
-                var noClosingCostOption = _noClosingCostOption; noClosingCostOption.Clean = value; _noClosingCostOption = noClosingCostOption;
-                var notRequiredForPurchaseSaleOrRefinance = _notRequiredForPurchaseSaleOrRefinance; notRequiredForPurchaseSaleOrRefinance.Clean = value; _notRequiredForPurchaseSaleOrRefinance = notRequiredForPurchaseSaleOrRefinance;
-                var notRequiredForSettlementOfYourLoan = _notRequiredForSettlementOfYourLoan; notRequiredForSettlementOfYourLoan.Clean = value; _notRequiredForSettlementOfYourLoan = notRequiredForSettlementOfYourLoan;
-                var occupancyType = _occupancyType; occupancyType.Clean = value; _occupancyType = occupancyType;
-                var openingDocsInvestorCode = _openingDocsInvestorCode; openingDocsInvestorCode.Clean = value; _openingDocsInvestorCode = openingDocsInvestorCode;
-                var openingDocsLoanProgramType = _openingDocsLoanProgramType; openingDocsLoanProgramType.Clean = value; _openingDocsLoanProgramType = openingDocsLoanProgramType;
-                var openingDocsPlanDescription = _openingDocsPlanDescription; openingDocsPlanDescription.Clean = value; _openingDocsPlanDescription = openingDocsPlanDescription;
-                var openingDocsPlanId = _openingDocsPlanId; openingDocsPlanId.Clean = value; _openingDocsPlanId = openingDocsPlanId;
-                var openingDocsProgramCode = _openingDocsProgramCode; openingDocsProgramCode.Clean = value; _openingDocsProgramCode = openingDocsProgramCode;
-                var openingDocsStackingOrder = _openingDocsStackingOrder; openingDocsStackingOrder.Clean = value; _openingDocsStackingOrder = openingDocsStackingOrder;
-                var organizationCode = _organizationCode; organizationCode.Clean = value; _organizationCode = organizationCode;
-                var originationDate = _originationDate; originationDate.Clean = value; _originationDate = originationDate;
-                var otherAmortizationTypeDescription = _otherAmortizationTypeDescription; otherAmortizationTypeDescription.Clean = value; _otherAmortizationTypeDescription = otherAmortizationTypeDescription;
-                var otherMortgageTypeDescription = _otherMortgageTypeDescription; otherMortgageTypeDescription.Clean = value; _otherMortgageTypeDescription = otherMortgageTypeDescription;
-                var otherPaidClosingCostsAmount = _otherPaidClosingCostsAmount; otherPaidClosingCostsAmount.Clean = value; _otherPaidClosingCostsAmount = otherPaidClosingCostsAmount;
-                var overwireAmount = _overwireAmount; overwireAmount.Clean = value; _overwireAmount = overwireAmount;
-                var paymentScheduleCalcRequiredIndicator = _paymentScheduleCalcRequiredIndicator; paymentScheduleCalcRequiredIndicator.Clean = value; _paymentScheduleCalcRequiredIndicator = paymentScheduleCalcRequiredIndicator;
-                var percentageOfOwnership = _percentageOfOwnership; percentageOfOwnership.Clean = value; _percentageOfOwnership = percentageOfOwnership;
-                var percentageOwnershipInterest = _percentageOwnershipInterest; percentageOwnershipInterest.Clean = value; _percentageOwnershipInterest = percentageOwnershipInterest;
-                var pmiIndicator = _pmiIndicator; pmiIndicator.Clean = value; _pmiIndicator = pmiIndicator;
-                var postClosingConditionLogs = _postClosingConditionLogs; postClosingConditionLogs.Clean = value; _postClosingConditionLogs = postClosingConditionLogs;
-                var preliminaryConditionLogs = _preliminaryConditionLogs; preliminaryConditionLogs.Clean = value; _preliminaryConditionLogs = preliminaryConditionLogs;
-                var principalAndInterestMonthlyPaymentAmount = _principalAndInterestMonthlyPaymentAmount; principalAndInterestMonthlyPaymentAmount.Clean = value; _principalAndInterestMonthlyPaymentAmount = principalAndInterestMonthlyPaymentAmount;
-                var print2003Application = _print2003Application; print2003Application.Clean = value; _print2003Application = print2003Application;
-                var printLogs = _printLogs; printLogs.Clean = value; _printLogs = printLogs;
-                var propertyAppraisedValueAmount = _propertyAppraisedValueAmount; propertyAppraisedValueAmount.Clean = value; _propertyAppraisedValueAmount = propertyAppraisedValueAmount;
-                var propertyEnergyEfficientHomeIndicator = _propertyEnergyEfficientHomeIndicator; propertyEnergyEfficientHomeIndicator.Clean = value; _propertyEnergyEfficientHomeIndicator = propertyEnergyEfficientHomeIndicator;
-                var propertyEstimatedValueAmount = _propertyEstimatedValueAmount; propertyEstimatedValueAmount.Clean = value; _propertyEstimatedValueAmount = propertyEstimatedValueAmount;
-                var proposedDuesAmount = _proposedDuesAmount; proposedDuesAmount.Clean = value; _proposedDuesAmount = proposedDuesAmount;
-                var proposedFirstMortgageAmount = _proposedFirstMortgageAmount; proposedFirstMortgageAmount.Clean = value; _proposedFirstMortgageAmount = proposedFirstMortgageAmount;
-                var proposedGroundRentAmount = _proposedGroundRentAmount; proposedGroundRentAmount.Clean = value; _proposedGroundRentAmount = proposedGroundRentAmount;
-                var proposedHazardInsuranceAmount = _proposedHazardInsuranceAmount; proposedHazardInsuranceAmount.Clean = value; _proposedHazardInsuranceAmount = proposedHazardInsuranceAmount;
-                var proposedHousingExpenseTotal = _proposedHousingExpenseTotal; proposedHousingExpenseTotal.Clean = value; _proposedHousingExpenseTotal = proposedHousingExpenseTotal;
-                var proposedMortgageInsuranceAmount = _proposedMortgageInsuranceAmount; proposedMortgageInsuranceAmount.Clean = value; _proposedMortgageInsuranceAmount = proposedMortgageInsuranceAmount;
-                var proposedOtherAmount = _proposedOtherAmount; proposedOtherAmount.Clean = value; _proposedOtherAmount = proposedOtherAmount;
-                var proposedOtherMortgagesAmount = _proposedOtherMortgagesAmount; proposedOtherMortgagesAmount.Clean = value; _proposedOtherMortgagesAmount = proposedOtherMortgagesAmount;
-                var proposedRealEstateTaxesAmount = _proposedRealEstateTaxesAmount; proposedRealEstateTaxesAmount.Clean = value; _proposedRealEstateTaxesAmount = proposedRealEstateTaxesAmount;
-                var purchaseCredits = _purchaseCredits; purchaseCredits.Clean = value; _purchaseCredits = purchaseCredits;
-                var purchasePriceAmount = _purchasePriceAmount; purchasePriceAmount.Clean = value; _purchasePriceAmount = purchasePriceAmount;
-                var referralAddress = _referralAddress; referralAddress.Clean = value; _referralAddress = referralAddress;
-                var referralCity = _referralCity; referralCity.Clean = value; _referralCity = referralCity;
-                var referralFeeAmount = _referralFeeAmount; referralFeeAmount.Clean = value; _referralFeeAmount = referralFeeAmount;
-                var referralPostalCode = _referralPostalCode; referralPostalCode.Clean = value; _referralPostalCode = referralPostalCode;
-                var referralSource = _referralSource; referralSource.Clean = value; _referralSource = referralSource;
-                var referralState = _referralState; referralState.Clean = value; _referralState = referralState;
-                var refinanceIncludingDebtsToBePaidOffAmount = _refinanceIncludingDebtsToBePaidOffAmount; refinanceIncludingDebtsToBePaidOffAmount.Clean = value; _refinanceIncludingDebtsToBePaidOffAmount = refinanceIncludingDebtsToBePaidOffAmount;
-                var registrationLogs = _registrationLogs; registrationLogs.Clean = value; _registrationLogs = registrationLogs;
-                var removedLogRecords = _removedLogRecords; removedLogRecords.Clean = value; _removedLogRecords = removedLogRecords;
-                var repurchaseCostAmount = _repurchaseCostAmount; repurchaseCostAmount.Clean = value; _repurchaseCostAmount = repurchaseCostAmount;
-                var repurchaseDate = _repurchaseDate; repurchaseDate.Clean = value; _repurchaseDate = repurchaseDate;
-                var requestedInterestRatePercent = _requestedInterestRatePercent; requestedInterestRatePercent.Clean = value; _requestedInterestRatePercent = requestedInterestRatePercent;
-                var salesConcessionAmount = _salesConcessionAmount; salesConcessionAmount.Clean = value; _salesConcessionAmount = salesConcessionAmount;
-                var secondSubordinateAmount = _secondSubordinateAmount; secondSubordinateAmount.Clean = value; _secondSubordinateAmount = secondSubordinateAmount;
-                var sectionOfActType = _sectionOfActType; sectionOfActType.Clean = value; _sectionOfActType = sectionOfActType;
-                var sellerPaidClosingCostsAmount = _sellerPaidClosingCostsAmount; sellerPaidClosingCostsAmount.Clean = value; _sellerPaidClosingCostsAmount = sellerPaidClosingCostsAmount;
-                var serviceProviderAdditionalInfo = _serviceProviderAdditionalInfo; serviceProviderAdditionalInfo.Clean = value; _serviceProviderAdditionalInfo = serviceProviderAdditionalInfo;
-                var serviceProviderContacts = _serviceProviderContacts; serviceProviderContacts.Clean = value; _serviceProviderContacts = serviceProviderContacts;
-                var serviceProviderDateIssued = _serviceProviderDateIssued; serviceProviderDateIssued.Clean = value; _serviceProviderDateIssued = serviceProviderDateIssued;
-                var setForSettlementServicesOfAnAttorney = _setForSettlementServicesOfAnAttorney; setForSettlementServicesOfAnAttorney.Clean = value; _setForSettlementServicesOfAnAttorney = setForSettlementServicesOfAnAttorney;
-                var setForTheSettlementServicesListed = _setForTheSettlementServicesListed; setForTheSettlementServicesListed.Clean = value; _setForTheSettlementServicesListed = setForTheSettlementServicesListed;
-                var settlementServiceCharges = _settlementServiceCharges; settlementServiceCharges.Clean = value; _settlementServiceCharges = settlementServiceCharges;
-                var simpleRefinanceType = _simpleRefinanceType; simpleRefinanceType.Clean = value; _simpleRefinanceType = simpleRefinanceType;
-                var startingAdjPrice = _startingAdjPrice; startingAdjPrice.Clean = value; _startingAdjPrice = startingAdjPrice;
-                var startingAdjRate = _startingAdjRate; startingAdjRate.Clean = value; _startingAdjRate = startingAdjRate;
-                var statusOnlineLogs = _statusOnlineLogs; statusOnlineLogs.Clean = value; _statusOnlineLogs = statusOnlineLogs;
-                var subjectPropertyGrossRentalIncomeAmount = _subjectPropertyGrossRentalIncomeAmount; subjectPropertyGrossRentalIncomeAmount.Clean = value; _subjectPropertyGrossRentalIncomeAmount = subjectPropertyGrossRentalIncomeAmount;
-                var subjectPropertyOccupancyPercent = _subjectPropertyOccupancyPercent; subjectPropertyOccupancyPercent.Clean = value; _subjectPropertyOccupancyPercent = subjectPropertyOccupancyPercent;
-                var subordinateLienAmount = _subordinateLienAmount; subordinateLienAmount.Clean = value; _subordinateLienAmount = subordinateLienAmount;
-                var systemIdGuid = _systemIdGuid; systemIdGuid.Clean = value; _systemIdGuid = systemIdGuid;
-                var tilApplicationDate = _tilApplicationDate; tilApplicationDate.Clean = value; _tilApplicationDate = tilApplicationDate;
-                var titleHolderName1 = _titleHolderName1; titleHolderName1.Clean = value; _titleHolderName1 = titleHolderName1;
-                var titleHolderName2 = _titleHolderName2; titleHolderName2.Clean = value; _titleHolderName2 = titleHolderName2;
-                var tltv = _tltv; tltv.Clean = value; _tltv = tltv;
-                var totalClosingCostsAmount = _totalClosingCostsAmount; totalClosingCostsAmount.Clean = value; _totalClosingCostsAmount = totalClosingCostsAmount;
-                var totalDeductionsAmount = _totalDeductionsAmount; totalDeductionsAmount.Clean = value; _totalDeductionsAmount = totalDeductionsAmount;
-                var totalFeesCostAmount = _totalFeesCostAmount; totalFeesCostAmount.Clean = value; _totalFeesCostAmount = totalFeesCostAmount;
-                var totalFeesCreditAmount = _totalFeesCreditAmount; totalFeesCreditAmount.Clean = value; _totalFeesCreditAmount = totalFeesCreditAmount;
-                var totalNonborrowerPaidClosingCostsAmount = _totalNonborrowerPaidClosingCostsAmount; totalNonborrowerPaidClosingCostsAmount.Clean = value; _totalNonborrowerPaidClosingCostsAmount = totalNonborrowerPaidClosingCostsAmount;
-                var totalPaidOutsideClosingAmount = _totalPaidOutsideClosingAmount; totalPaidOutsideClosingAmount.Clean = value; _totalPaidOutsideClosingAmount = totalPaidOutsideClosingAmount;
-                var totalPaidToBrokerAmount = _totalPaidToBrokerAmount; totalPaidToBrokerAmount.Clean = value; _totalPaidToBrokerAmount = totalPaidToBrokerAmount;
-                var totalWireTransferAmount = _totalWireTransferAmount; totalWireTransferAmount.Clean = value; _totalWireTransferAmount = totalWireTransferAmount;
-                var twelveMonthMortgageRentalHistoryIndicator = _twelveMonthMortgageRentalHistoryIndicator; twelveMonthMortgageRentalHistoryIndicator.Clean = value; _twelveMonthMortgageRentalHistoryIndicator = twelveMonthMortgageRentalHistoryIndicator;
-                var underwritingConditionLogs = _underwritingConditionLogs; underwritingConditionLogs.Clean = value; _underwritingConditionLogs = underwritingConditionLogs;
-                var underwritingEscrowIndicator = _underwritingEscrowIndicator; underwritingEscrowIndicator.Clean = value; _underwritingEscrowIndicator = underwritingEscrowIndicator;
-                var undiscountedRate = _undiscountedRate; undiscountedRate.Clean = value; _undiscountedRate = undiscountedRate;
-                var unimprovedAppraisedValue = _unimprovedAppraisedValue; unimprovedAppraisedValue.Clean = value; _unimprovedAppraisedValue = unimprovedAppraisedValue;
-                var unimprovedEstimatedValue = _unimprovedEstimatedValue; unimprovedEstimatedValue.Clean = value; _unimprovedEstimatedValue = unimprovedEstimatedValue;
-                var urlPage4Comments = _urlPage4Comments; urlPage4Comments.Clean = value; _urlPage4Comments = urlPage4Comments;
-                var usdaGovernmentLoanType = _usdaGovernmentLoanType; usdaGovernmentLoanType.Clean = value; _usdaGovernmentLoanType = usdaGovernmentLoanType;
-                var use2018DiIndicator = _use2018DiIndicator; use2018DiIndicator.Clean = value; _use2018DiIndicator = use2018DiIndicator;
-                var useNew2015FormsIndicator = _useNew2015FormsIndicator; useNew2015FormsIndicator.Clean = value; _useNew2015FormsIndicator = useNew2015FormsIndicator;
-                var useNewHudIndicator = _useNewHudIndicator; useNewHudIndicator.Clean = value; _useNewHudIndicator = useNewHudIndicator;
-                var vAEntitlementAmount = _vAEntitlementAmount; vAEntitlementAmount.Clean = value; _vAEntitlementAmount = vAEntitlementAmount;
-                var verificationLogs = _verificationLogs; verificationLogs.Clean = value; _verificationLogs = verificationLogs;
-                var virtualFields = _virtualFields; virtualFields.Clean = value; _virtualFields = virtualFields;
-                var websiteId = _websiteId; websiteId.Clean = value; _websiteId = websiteId;
-                if (AdditionalRequests != null) AdditionalRequests.Clean = value;
-                if (ATRQMCommon != null) ATRQMCommon.Clean = value;
-                if (ClosingCost != null) ClosingCost.Clean = value;
-                if (ClosingDocument != null) ClosingDocument.Clean = value;
-                if (CommitmentTerms != null) CommitmentTerms.Clean = value;
-                if (ConstructionManagement != null) ConstructionManagement.Clean = value;
-                if (Correspondent != null) Correspondent.Clean = value;
-                if (CurrentApplication != null) CurrentApplication.Clean = value;
-                if (CustomModelFields != null) CustomModelFields.Clean = value;
-                if (DisclosureNotices != null) DisclosureNotices.Clean = value;
-                if (DownPayment != null) DownPayment.Clean = value;
-                if (EmDocument != null) EmDocument.Clean = value;
-                if (EmDocumentInvestor != null) EmDocumentInvestor.Clean = value;
-                if (EmDocumentLender != null) EmDocumentLender.Clean = value;
-                if (FannieMae != null) FannieMae.Clean = value;
-                if (FhaVaLoan != null) FhaVaLoan.Clean = value;
-                if (FreddieMac != null) FreddieMac.Clean = value;
-                if (Funding != null) Funding.Clean = value;
-                if (Gfe != null) Gfe.Clean = value;
-                if (Hmda != null) Hmda.Clean = value;
-                if (Hud1Es != null) Hud1Es.Clean = value;
-                if (HudLoanData != null) HudLoanData.Clean = value;
-                if (InterimServicing != null) InterimServicing.Clean = value;
-                if (LoanProductData != null) LoanProductData.Clean = value;
-                if (LoanSubmission != null) LoanSubmission.Clean = value;
-                if (LOCompensation != null) LOCompensation.Clean = value;
-                if (Mcaw != null) Mcaw.Clean = value;
-                if (Miscellaneous != null) Miscellaneous.Clean = value;
-                if (NetTangibleBenefit != null) NetTangibleBenefit.Clean = value;
-                if (Prequalification != null) Prequalification.Clean = value;
-                if (PrivacyPolicy != null) PrivacyPolicy.Clean = value;
-                if (ProfitManagement != null) ProfitManagement.Clean = value;
-                if (Property != null) Property.Clean = value;
-                if (RateLock != null) RateLock.Clean = value;
-                if (RegulationZ != null) RegulationZ.Clean = value;
-                if (Section32 != null) Section32.Clean = value;
-                if (SelectedHomeCounselingProvider != null) SelectedHomeCounselingProvider.Clean = value;
-                if (ServicingDisclosure != null) ServicingDisclosure.Clean = value;
-                if (Shipping != null) Shipping.Clean = value;
-                if (StateDisclosure != null) StateDisclosure.Clean = value;
-                if (StatementCreditDenial != null) StatementCreditDenial.Clean = value;
-                if (TPO != null) TPO.Clean = value;
-                if (TQL != null) TQL.Clean = value;
-                if (TrustAccount != null) TrustAccount.Clean = value;
-                if (Tsum != null) Tsum.Clean = value;
-                if (Uldd != null) Uldd.Clean = value;
-                if (UnderwriterSummary != null) UnderwriterSummary.Clean = value;
-                if (Usda != null) Usda.Clean = value;
-                if (VaLoanData != null) VaLoanData.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _adverseActionDate.Dirty = value;
+                _affiliatedBusinessArrangements.Dirty = value;
+                _agencyCaseIdentifier.Dirty = value;
+                _alterationsImprovementsOrRepairsAmount.Dirty = value;
+                _applications.Dirty = value;
+                _applicationTakenMethodType.Dirty = value;
+                _aprDisclosureDate.Dirty = value;
+                _armTypeDescription.Dirty = value;
+                _baseLoanAmount.Dirty = value;
+                _belowMarketSubordinateFinancingIndicator.Dirty = value;
+                _billingCategory.Dirty = value;
+                _biweeklyPaymentAmount.Dirty = value;
+                _bLTV.Dirty = value;
+                _borrowerCoBorrowerMarriedIndicator.Dirty = value;
+                _borrowerPaidClosingCostsAmount.Dirty = value;
+                _borrowerPaidDiscountPointsAmount.Dirty = value;
+                _borrowerPaidFHAVAClosingCostsAmount.Dirty = value;
+                _borrowerRequestedLoanAmount.Dirty = value;
+                _brokerPaidClosingCostsAmount.Dirty = value;
+                _buydownIndicator.Dirty = value;
+                _buydownMonthlyPaymentAmount.Dirty = value;
+                _buydownRatePercent.Dirty = value;
+                _cashFromToBorrowerAmount.Dirty = value;
+                _channel.Dirty = value;
+                _closingBillingDate.Dirty = value;
+                _closingCostProgram.Dirty = value;
+                _closingCostsAndPrepaidsFromOtherLienAmount.Dirty = value;
+                _closingCostsPaidByOthersAmount.Dirty = value;
+                _closingDocsStackingOrder.Dirty = value;
+                _collateralManagerScore.Dirty = value;
+                _combinedLtv.Dirty = value;
+                _commitmentNumber.Dirty = value;
+                _complianceTestLogs.Dirty = value;
+                _conformingJumbo.Dirty = value;
+                _consumerConnectSiteID.Dirty = value;
+                _contacts.Dirty = value;
+                _contactUpdatedIndicator.Dirty = value;
+                _contractSellerCreditAmount.Dirty = value;
+                _conversationLogs.Dirty = value;
+                _copyBrokerToLenderIndicator.Dirty = value;
+                _copyLoanNumLenderCaseNum.Dirty = value;
+                _creditScoreToUse.Dirty = value;
+                _crmLogs.Dirty = value;
+                _currentApplicationIndex.Dirty = value;
+                _currentApplicationIsPrimary.Dirty = value;
+                _currentFirstMortgageHolderType.Dirty = value;
+                _customFields.Dirty = value;
+                _dataTracLogs.Dirty = value;
+                _dBIndicator.Dirty = value;
+                _deductOverwireAmountIndicator.Dirty = value;
+                _disableESignConsentAlert.Dirty = value;
+                _disableKeyPricingAlert.Dirty = value;
+                _disclosureTracking2015Logs.Dirty = value;
+                _disclosureTrackingLogs.Dirty = value;
+                _discountPoint.Dirty = value;
+                _docEngine.Dirty = value;
+                _documentLogs.Dirty = value;
+                _doNotCheckEmail.Dirty = value;
+                _doNotPrintCompensationFees.Dirty = value;
+                _downloadLogs.Dirty = value;
+                _downPaymentPercent.Dirty = value;
+                _edmLogs.Dirty = value;
+                _elliUCDFields.Dirty = value;
+                _emailTriggerLogs.Dirty = value;
+                _emXmlVersionId.Dirty = value;
+                _encompassId.Dirty = value;
+                _encompassVersion.Dirty = value;
+                _enforceCountyLoanLimit.Dirty = value;
+                _estimatedClosingCostsAmount.Dirty = value;
+                _estimatedConstructionInterest.Dirty = value;
+                _estimatedPrepaidItemsAmount.Dirty = value;
+                _exportLoanNumber.Dirty = value;
+                _fees.Dirty = value;
+                _fhaMiPremiumRefundAmount.Dirty = value;
+                _fHAVALoanOriginatorIdentifier.Dirty = value;
+                _fieldLockData.Dirty = value;
+                _firstAdjustmentMinimum.Dirty = value;
+                _firstSubordinateLienAmount.Dirty = value;
+                _firstTimeHomebuyersIndicator.Dirty = value;
+                _fnmCommunityLendingProductName.Dirty = value;
+                _fnmCommunitySecondsIndicator.Dirty = value;
+                _fnmNeighborsMortgageEligibilityIndicator.Dirty = value;
+                _forms.Dirty = value;
+                _fraudScore.Dirty = value;
+                _fundingDeductionList.Dirty = value;
+                _fundingFeeList.Dirty = value;
+                _fundingFees.Dirty = value;
+                _governmentLoanLenderIdentifier.Dirty = value;
+                _governmentLoanSponsorIdentifier.Dirty = value;
+                _governmentMortgageCreditCertificateAmount.Dirty = value;
+                _hasAbusinessRelationshipWith.Dirty = value;
+                _hcltvHtltv.Dirty = value;
+                _helocTeaserRate.Dirty = value;
+                _homeCounselingProviders.Dirty = value;
+                _homeCounselingProvidersDistance.Dirty = value;
+                _homeCounselingProvidersLanguageNames.Dirty = value;
+                _homeCounselingProvidersServiceNames.Dirty = value;
+                _householdSizeCount.Dirty = value;
+                _htmlEmailLogs.Dirty = value;
+                _hudIncomeLimitAdjustmentFactor.Dirty = value;
+                _hudLendingIncomeLimitAmount.Dirty = value;
+                _hudMedianIncomeAmount.Dirty = value;
+                _id.Dirty = value;
+                _includeUSDAFeeInClosing.Dirty = value;
+                _initialInterestRate.Dirty = value;
+                _insuranceAuthorizationIndicator.Dirty = value;
+                _interviewerApplicationSignedDate.Dirty = value;
+                _interviewerEmail.Dirty = value;
+                _interviewerLicenseIdentifier.Dirty = value;
+                _interviewerPhoneNumber.Dirty = value;
+                _interviewersCompanyStateLicense.Dirty = value;
+                _interviewersId.Dirty = value;
+                _inverviewerName.Dirty = value;
+                _isCreditorProhibitsBorrower.Dirty = value;
+                _isEmployeeLoan.Dirty = value;
+                _isLSSecondaryFile.Dirty = value;
+                _isRequiredInterestReserveCompoundInterest.Dirty = value;
+                _landIfAcquiredSeperatelyAmount.Dirty = value;
+                _leadSource.Dirty = value;
+                _lenderCaseIdentifier.Dirty = value;
+                _lenderChannel.Dirty = value;
+                _lenderCreditsInFunding.Dirty = value;
+                _lenderInvestorCode.Dirty = value;
+                _lenderPaidClosignCostsDotAmount.Dirty = value;
+                _lenderPaidClosingCostsAmount.Dirty = value;
+                _lesserAppraisedValueOrSalesPrice.Dirty = value;
+                _lifeInsuranceCoverageAmount.Dirty = value;
+                _lifeInsuranceEstimatedMonthlyAmount.Dirty = value;
+                _lifeInsuranceTotalProtectedMonthlyAmount.Dirty = value;
+                _linkId.Dirty = value;
+                _loanActionLogs.Dirty = value;
+                _loanAmortizationTermMonths.Dirty = value;
+                _loanAmortizationType.Dirty = value;
+                _loanCreatedDate.Dirty = value;
+                _loanCreatedDateUtc.Dirty = value;
+                _loanIdNumber.Dirty = value;
+                _loanImportStatusIndicator.Dirty = value;
+                _loanLinkSyncType.Dirty = value;
+                _loanNumber.Dirty = value;
+                _loanProgramName.Dirty = value;
+                _loanPrograms.Dirty = value;
+                _loanPurposeOfRefinanceType.Dirty = value;
+                _loanSource.Dirty = value;
+                _loanTotalProposedMonthlyMaintenanceAmount.Dirty = value;
+                _loanTotalProposedMonthlyUtilitiesAmount.Dirty = value;
+                _loanUnderwriterCHUMSIdentifier.Dirty = value;
+                _loanVALoanProcedureType.Dirty = value;
+                _loanVARateReductionInitialComputationTotalAmount.Dirty = value;
+                _loanVAResidualIncomeAmount.Dirty = value;
+                _loanVersionId.Dirty = value;
+                _lockConfirmLogs.Dirty = value;
+                _lockDenialLogs.Dirty = value;
+                _lockRequestLogs.Dirty = value;
+                _logEntryLogs.Dirty = value;
+                _ltv.Dirty = value;
+                _ltvPropertyValue.Dirty = value;
+                _masterCommitmentNumber.Dirty = value;
+                _maturityDate.Dirty = value;
+                _maxBackRatio.Dirty = value;
+                _maxFrontRatio.Dirty = value;
+                _mersNumber.Dirty = value;
+                _mersNumberRegistrationDate.Dirty = value;
+                _miAndFundingFeeFinancedAmount.Dirty = value;
+                _miAndFundingFeeTotalAmount.Dirty = value;
+                _milestoneApprovedDate.Dirty = value;
+                _milestoneApprovedDueDate.Dirty = value;
+                _milestoneCompletedDate.Dirty = value;
+                _milestoneCompletedDueDate.Dirty = value;
+                _milestoneCurrentDateUtc.Dirty = value;
+                _milestoneCurrentName.Dirty = value;
+                _milestoneDocSignedDate.Dirty = value;
+                _milestoneDocSignedDueDate.Dirty = value;
+                _milestoneDuration.Dirty = value;
+                _milestoneFileStartedDate.Dirty = value;
+                _milestoneFreeRoleLogs.Dirty = value;
+                _milestoneFundedDate.Dirty = value;
+                _milestoneFundedDueDate.Dirty = value;
+                _milestoneLogs.Dirty = value;
+                _milestoneProcessedDate.Dirty = value;
+                _milestoneStage.Dirty = value;
+                _milestoneSubmittedDate.Dirty = value;
+                _milestoneSubmittedDueDate.Dirty = value;
+                _milestoneTaskLogs.Dirty = value;
+                _milestoneTemplateLogs.Dirty = value;
+                _mipBorrowerPaidInCashAmount.Dirty = value;
+                _mipPaidInCashAmount.Dirty = value;
+                _monthlyPIPaymentAmountForLE1andCD1.Dirty = value;
+                _mortgageInsurancePremiumFHARefundAmount.Dirty = value;
+                _mortgageInsurancePremiumUpfrontFactorPercent.Dirty = value;
+                _mortgageType.Dirty = value;
+                _msaIdentifier.Dirty = value;
+                _newFirstMortgageAmount.Dirty = value;
+                _nmlsLoanOriginatorId.Dirty = value;
+                _noClosingCostOption.Dirty = value;
+                _notRequiredForPurchaseSaleOrRefinance.Dirty = value;
+                _notRequiredForSettlementOfYourLoan.Dirty = value;
+                _occupancyType.Dirty = value;
+                _openingDocsInvestorCode.Dirty = value;
+                _openingDocsLoanProgramType.Dirty = value;
+                _openingDocsPlanDescription.Dirty = value;
+                _openingDocsPlanId.Dirty = value;
+                _openingDocsProgramCode.Dirty = value;
+                _openingDocsStackingOrder.Dirty = value;
+                _organizationCode.Dirty = value;
+                _originationDate.Dirty = value;
+                _otherAmortizationTypeDescription.Dirty = value;
+                _otherMortgageTypeDescription.Dirty = value;
+                _otherPaidClosingCostsAmount.Dirty = value;
+                _overwireAmount.Dirty = value;
+                _paymentScheduleCalcRequiredIndicator.Dirty = value;
+                _percentageOfOwnership.Dirty = value;
+                _percentageOwnershipInterest.Dirty = value;
+                _pmiIndicator.Dirty = value;
+                _postClosingConditionLogs.Dirty = value;
+                _preliminaryConditionLogs.Dirty = value;
+                _principalAndInterestMonthlyPaymentAmount.Dirty = value;
+                _print2003Application.Dirty = value;
+                _printLogs.Dirty = value;
+                _propertyAppraisedValueAmount.Dirty = value;
+                _propertyEnergyEfficientHomeIndicator.Dirty = value;
+                _propertyEstimatedValueAmount.Dirty = value;
+                _proposedDuesAmount.Dirty = value;
+                _proposedFirstMortgageAmount.Dirty = value;
+                _proposedGroundRentAmount.Dirty = value;
+                _proposedHazardInsuranceAmount.Dirty = value;
+                _proposedHousingExpenseTotal.Dirty = value;
+                _proposedMortgageInsuranceAmount.Dirty = value;
+                _proposedOtherAmount.Dirty = value;
+                _proposedOtherMortgagesAmount.Dirty = value;
+                _proposedRealEstateTaxesAmount.Dirty = value;
+                _purchaseCredits.Dirty = value;
+                _purchasePriceAmount.Dirty = value;
+                _referralAddress.Dirty = value;
+                _referralCity.Dirty = value;
+                _referralFeeAmount.Dirty = value;
+                _referralPostalCode.Dirty = value;
+                _referralSource.Dirty = value;
+                _referralState.Dirty = value;
+                _refinanceIncludingDebtsToBePaidOffAmount.Dirty = value;
+                _registrationLogs.Dirty = value;
+                _removedLogRecords.Dirty = value;
+                _repurchaseCostAmount.Dirty = value;
+                _repurchaseDate.Dirty = value;
+                _requestedInterestRatePercent.Dirty = value;
+                _salesConcessionAmount.Dirty = value;
+                _secondSubordinateAmount.Dirty = value;
+                _sectionOfActType.Dirty = value;
+                _sellerPaidClosingCostsAmount.Dirty = value;
+                _serviceProviderAdditionalInfo.Dirty = value;
+                _serviceProviderContacts.Dirty = value;
+                _serviceProviderDateIssued.Dirty = value;
+                _setForSettlementServicesOfAnAttorney.Dirty = value;
+                _setForTheSettlementServicesListed.Dirty = value;
+                _settlementServiceCharges.Dirty = value;
+                _simpleRefinanceType.Dirty = value;
+                _startingAdjPrice.Dirty = value;
+                _startingAdjRate.Dirty = value;
+                _statusOnlineLogs.Dirty = value;
+                _subjectPropertyGrossRentalIncomeAmount.Dirty = value;
+                _subjectPropertyOccupancyPercent.Dirty = value;
+                _subordinateLienAmount.Dirty = value;
+                _systemIdGuid.Dirty = value;
+                _tilApplicationDate.Dirty = value;
+                _titleHolderName1.Dirty = value;
+                _titleHolderName2.Dirty = value;
+                _tltv.Dirty = value;
+                _totalClosingCostsAmount.Dirty = value;
+                _totalDeductionsAmount.Dirty = value;
+                _totalFeesCostAmount.Dirty = value;
+                _totalFeesCreditAmount.Dirty = value;
+                _totalNonborrowerPaidClosingCostsAmount.Dirty = value;
+                _totalPaidOutsideClosingAmount.Dirty = value;
+                _totalPaidToBrokerAmount.Dirty = value;
+                _totalWireTransferAmount.Dirty = value;
+                _twelveMonthMortgageRentalHistoryIndicator.Dirty = value;
+                _underwritingConditionLogs.Dirty = value;
+                _underwritingEscrowIndicator.Dirty = value;
+                _undiscountedRate.Dirty = value;
+                _unimprovedAppraisedValue.Dirty = value;
+                _unimprovedEstimatedValue.Dirty = value;
+                _urlPage4Comments.Dirty = value;
+                _usdaGovernmentLoanType.Dirty = value;
+                _use2018DiIndicator.Dirty = value;
+                _useNew2015FormsIndicator.Dirty = value;
+                _useNewHudIndicator.Dirty = value;
+                _vAEntitlementAmount.Dirty = value;
+                _verificationLogs.Dirty = value;
+                _virtualFields.Dirty = value;
+                _websiteId.Dirty = value;
+                if (AdditionalRequests != null) AdditionalRequests.Dirty = value;
+                if (ATRQMCommon != null) ATRQMCommon.Dirty = value;
+                if (ClosingCost != null) ClosingCost.Dirty = value;
+                if (ClosingDocument != null) ClosingDocument.Dirty = value;
+                if (CommitmentTerms != null) CommitmentTerms.Dirty = value;
+                if (ConstructionManagement != null) ConstructionManagement.Dirty = value;
+                if (Correspondent != null) Correspondent.Dirty = value;
+                if (CurrentApplication != null) CurrentApplication.Dirty = value;
+                if (CustomModelFields != null) CustomModelFields.Dirty = value;
+                if (DisclosureNotices != null) DisclosureNotices.Dirty = value;
+                if (DownPayment != null) DownPayment.Dirty = value;
+                if (EmDocument != null) EmDocument.Dirty = value;
+                if (EmDocumentInvestor != null) EmDocumentInvestor.Dirty = value;
+                if (EmDocumentLender != null) EmDocumentLender.Dirty = value;
+                if (FannieMae != null) FannieMae.Dirty = value;
+                if (FhaVaLoan != null) FhaVaLoan.Dirty = value;
+                if (FreddieMac != null) FreddieMac.Dirty = value;
+                if (Funding != null) Funding.Dirty = value;
+                if (Gfe != null) Gfe.Dirty = value;
+                if (Hmda != null) Hmda.Dirty = value;
+                if (Hud1Es != null) Hud1Es.Dirty = value;
+                if (HudLoanData != null) HudLoanData.Dirty = value;
+                if (InterimServicing != null) InterimServicing.Dirty = value;
+                if (LoanProductData != null) LoanProductData.Dirty = value;
+                if (LoanSubmission != null) LoanSubmission.Dirty = value;
+                if (LOCompensation != null) LOCompensation.Dirty = value;
+                if (Mcaw != null) Mcaw.Dirty = value;
+                if (Miscellaneous != null) Miscellaneous.Dirty = value;
+                if (NetTangibleBenefit != null) NetTangibleBenefit.Dirty = value;
+                if (Prequalification != null) Prequalification.Dirty = value;
+                if (PrivacyPolicy != null) PrivacyPolicy.Dirty = value;
+                if (ProfitManagement != null) ProfitManagement.Dirty = value;
+                if (Property != null) Property.Dirty = value;
+                if (RateLock != null) RateLock.Dirty = value;
+                if (RegulationZ != null) RegulationZ.Dirty = value;
+                if (Section32 != null) Section32.Dirty = value;
+                if (SelectedHomeCounselingProvider != null) SelectedHomeCounselingProvider.Dirty = value;
+                if (ServicingDisclosure != null) ServicingDisclosure.Dirty = value;
+                if (Shipping != null) Shipping.Dirty = value;
+                if (StateDisclosure != null) StateDisclosure.Dirty = value;
+                if (StatementCreditDenial != null) StatementCreditDenial.Dirty = value;
+                if (TPO != null) TPO.Dirty = value;
+                if (TQL != null) TQL.Dirty = value;
+                if (TrustAccount != null) TrustAccount.Dirty = value;
+                if (Tsum != null) Tsum.Dirty = value;
+                if (Uldd != null) Uldd.Dirty = value;
+                if (UnderwriterSummary != null) UnderwriterSummary.Dirty = value;
+                if (Usda != null) Usda.Dirty = value;
+                if (VaLoanData != null) VaLoanData.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Loan()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

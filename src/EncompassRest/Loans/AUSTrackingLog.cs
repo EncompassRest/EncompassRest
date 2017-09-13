@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AUSTrackingLog : IClean
+    public sealed partial class AUSTrackingLog : IDirty
     {
         private Value<int?> _aUSTrackingLogIndex;
         public int? AUSTrackingLogIndex { get { return _aUSTrackingLogIndex; } set { _aUSTrackingLogIndex = value; } }
@@ -438,457 +438,452 @@ namespace EncompassRest.Loans
         public string Log_UnderwritingRiskAssessType { get { return _log_UnderwritingRiskAssessType; } set { _log_UnderwritingRiskAssessType = value; } }
         private Value<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get { return _log_WithUndisclosedDebt; } set { _log_WithUndisclosedDebt = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aUSTrackingLogIndex.Clean
-                    && _batchDocumentRefId.Clean
-                    && _id.Clean
-                    && _isEmpty.Clean
-                    && _isHistory.Clean
-                    && _log_AcceptPlusEligible.Clean
-                    && _log_AffordableProductType.Clean
-                    && _log_AllOtherPayments.Clean
-                    && _log_AmortizationMonths.Clean
-                    && _log_AmortizationType.Clean
-                    && _log_AmtSubordinateFin.Clean
-                    && _log_AppraisalTypeMAF.Clean
-                    && _log_AppraisedValue.Clean
-                    && _log_ARMQualifyingRate.Clean
-                    && _log_AssessmentType.Clean
-                    && _log_AUSRecommendation.Clean
-                    && _log_AUSStatus.Clean
-                    && _log_AUSTrackingType.Clean
-                    && _log_AUSTransactionID.Clean
-                    && _log_AUSVersion.Clean
-                    && _log_Balloon.Clean
-                    && _log_BalloonTerm.Clean
-                    && _log_BorrowerAssetAmount.Clean
-                    && _log_BorrowerAssetName.Clean
-                    && _log_BorrowerAssetType.Clean
-                    && _log_BorrowerCreditScore1.Clean
-                    && _log_BorrowerCreditScore2.Clean
-                    && _log_BorrowerCreditScore3.Clean
-                    && _log_BorrowerEquifaxBEACON.Clean
-                    && _log_BorrowerExperianFICO.Clean
-                    && _log_BorrowerIncomeAmount.Clean
-                    && _log_BorrowerIncomeName.Clean
-                    && _log_BorrowerIncomeType.Clean
-                    && _log_BorrowerInstitutionName.Clean
-                    && _log_BorrowerName.Clean
-                    && _log_BorrowerScoreName.Clean
-                    && _log_BorrowerTransUnionEmpirica.Clean
-                    && _log_BorrowerType1.Clean
-                    && _log_BorrowerType2.Clean
-                    && _log_BoughtDownRate.Clean
-                    && _log_Buydown.Clean
-                    && _log_CashBack.Clean
-                    && _log_CashOutAmount.Clean
-                    && _log_CLTV.Clean
-                    && _log_CoBorrowerAssetAmount.Clean
-                    && _log_CoBorrowerAssetName.Clean
-                    && _log_CoBorrowerAssetType.Clean
-                    && _log_CoBorrowerCreditScore1.Clean
-                    && _log_CoBorrowerCreditScore2.Clean
-                    && _log_CoBorrowerCreditScore3.Clean
-                    && _log_CoBorrowerEquifaxBEACON.Clean
-                    && _log_CoBorrowerExperianFICO.Clean
-                    && _log_CoBorrowerIncomeAmount.Clean
-                    && _log_CoBorrowerIncomeName.Clean
-                    && _log_CoBorrowerIncomeType.Clean
-                    && _log_CoBorrowerInstitutionName.Clean
-                    && _log_CoborrowerName.Clean
-                    && _log_CoBorrowerScoreName.Clean
-                    && _log_CoBorrowerTransUnionEmpirica.Clean
-                    && _log_Code1.Clean
-                    && _log_Code2.Clean
-                    && _log_CodeDescription1.Clean
-                    && _log_CodeDescription2.Clean
-                    && _log_CommunityLending.Clean
-                    && _log_CreatedOn.Clean
-                    && _log_CreditAgency1.Clean
-                    && _log_CreditAgency2.Clean
-                    && _log_CreditReportDate1.Clean
-                    && _log_CreditReportDate2.Clean
-                    && _log_CreditReportID1.Clean
-                    && _log_CreditReportID2.Clean
-                    && _log_CuredAmortizationType.Clean
-                    && _log_CuredAppraisedValue.Clean
-                    && _log_CuredCLTV.Clean
-                    && _log_CuredHousingExpenseRatio.Clean
-                    && _log_CuredLoanPurpose.Clean
-                    && _log_CuredLoanTerm.Clean
-                    && _log_CuredLoanType.Clean
-                    && _log_CuredLTV.Clean
-                    && _log_CuredNoteRate.Clean
-                    && _log_CuredProposedTotalHousingPayment.Clean
-                    && _log_CuredRefinancePurpose.Clean
-                    && _log_CuredTotalExpenseRatio.Clean
-                    && _log_CuredTotalLoanAmount.Clean
-                    && _log_CuredTotalMonthlyIncome.Clean
-                    && _log_DateTimeAssessed.Clean
-                    && _log_DateTimeRequested.Clean
-                    && _log_DebtRatio.Clean
-                    && _log_DocumentationLevel.Clean
-                    && _log_DUCaseIDorLPAUSKey.Clean
-                    && _log_DUPropertyType.Clean
-                    && _log_eFolderGUID.Clean
-                    && _log_ExcessAvailableAssetsNoVerified.Clean
-                    && _log_FinancedMIAmount.Clean
-                    && _log_FirstPandI.Clean
-                    && _log_FirstSubmissionDate.Clean
-                    && _log_FirstSubmissionTime.Clean
-                    && _log_FreddieDocClass.Clean
-                    && _log_FundsRequiredClose.Clean
-                    && _log_GUID.Clean
-                    && _log_HLCTV.Clean
-                    && _log_HousingExpense.Clean
-                    && _log_HousingExpenseRatio.Clean
-                    && _log_HousingRatio.Clean
-                    && _log_HTLTV.Clean
-                    && _log_IncludingLess10Mos.Clean
-                    && _log_IncomeAssetBase.Clean
-                    && _log_IncomeAssetBonus.Clean
-                    && _log_IncomeAssetCommission.Clean
-                    && _log_IncomeAssetOther.Clean
-                    && _log_IncomeAssetOvertime.Clean
-                    && _log_IncomeAssetPosCashFlow.Clean
-                    && _log_IncomeAssetPositiveNetRental.Clean
-                    && _log_IndicatorScore.Clean
-                    && _log_IntendedUseofProperty.Clean
-                    && _log_LCLAEvaluatedServiceConclusion1.Clean
-                    && _log_LCLAEvaluatedServiceConclusion2.Clean
-                    && _log_LCLAEvaluatedServiceConclusion3.Clean
-                    && _log_LCLAEvaluatedServiceConclusion4.Clean
-                    && _log_LCLAEvaluatedServiceType1.Clean
-                    && _log_LCLAEvaluatedServiceType2.Clean
-                    && _log_LCLAEvaluatedServiceType3.Clean
-                    && _log_LCLAEvaluatedServiceType4.Clean
-                    && _log_LenderLoan.Clean
-                    && _log_LienType.Clean
-                    && _log_LoanAmount.Clean
-                    && _log_LoanApplicationID.Clean
-                    && _log_LoanProcessingStage.Clean
-                    && _log_LoanProspectorID.Clean
-                    && _log_LoanPurpose.Clean
-                    && _log_LoanTerm.Clean
-                    && _log_LoanType.Clean
-                    && _log_LPAssmtExpDate.Clean
-                    && _log_LPPropertyType.Clean
-                    && _log_LPVersion.Clean
-                    && _log_LQACollateralRepWarrantyServiceConclusion.Clean
-                    && _log_LQACreditRiskAssessmentConclusion.Clean
-                    && _log_LQADataCompareFieldConclusion.Clean
-                    && _log_LQADataCompareFieldName.Clean
-                    && _log_LQADataCompareResult.Clean
-                    && _log_LQALPKey.Clean
-                    && _log_LQAPurchaseEligibilityResult.Clean
-                    && _log_LQARiskAssessmentKey.Clean
-                    && _log_LQASubmissionDateTime.Clean
-                    && _log_LTV.Clean
-                    && _log_MaxMortgageLimit.Clean
-                    && _log_MIDecision.Clean
-                    && _log_MortgageType.Clean
-                    && _log_NegAmortizationType.Clean
-                    && _log_NegativeNetRental.Clean
-                    && _log_NetCashBack.Clean
-                    && _log_NewConstruction.Clean
-                    && _log_NoteRate.Clean
-                    && _log_NOTPNumber.Clean
-                    && _log_NoUnits.Clean
-                    && _log_NumberOfSubmissions.Clean
-                    && _log_OccupancyStatus.Clean
-                    && _log_OccupantDebtRatio.Clean
-                    && _log_OccupantHousingRatio.Clean
-                    && _log_OfferingIdentifier.Clean
-                    && _log_OriginatingCompany.Clean
-                    && _log_OwnerExistingMtg.Clean
-                    && _log_PandI.Clean
-                    && _log_PaymentFrequency.Clean
-                    && _log_PresentAddress.Clean
-                    && _log_PresentAddressCity.Clean
-                    && _log_PresentAddressState.Clean
-                    && _log_PresentAddressZipCode.Clean
-                    && _log_PresentHousingExpense.Clean
-                    && _log_PresentPrincipalHousingPayment.Clean
-                    && _log_PropertyAddress.Clean
-                    && _log_PropertyCity.Clean
-                    && _log_PropertyState.Clean
-                    && _log_PropertyZipcode.Clean
-                    && _log_ProposedHazardInsurance.Clean
-                    && _log_ProposedHOAFees.Clean
-                    && _log_ProposedHousingPITI.Clean
-                    && _log_ProposedMortgageInsurance.Clean
-                    && _log_ProposedOtherPayment.Clean
-                    && _log_ProposedTaxes.Clean
-                    && _log_ProposedTotalHousingPayment.Clean
-                    && _log_ProposedTotalMonthlyDebt.Clean
-                    && _log_PurchaseEligibility.Clean
-                    && _log_QualifyingRate.Clean
-                    && _log_RecordType.Clean
-                    && _log_RefinancePurpose.Clean
-                    && _log_Reserves.Clean
-                    && _log_ReservesRequiredVerified.Clean
-                    && _log_RiskClass.Clean
-                    && _log_SalesConcessions.Clean
-                    && _log_SalesPrice.Clean
-                    && _log_SecondPandI.Clean
-                    && _log_SelectedBorrower.Clean
-                    && _log_SelectedRepository.Clean
-                    && _log_SellerNumber.Clean
-                    && _log_SubjNegCashFlow.Clean
-                    && _log_SubmissionDate.Clean
-                    && _log_SubmissionNumber.Clean
-                    && _log_SubmissionTime.Clean
-                    && _log_SubmittedBy.Clean
-                    && _log_SubmittingCompany.Clean
-                    && _log_TemporarySubsidyBuydown.Clean
-                    && _log_TLTV.Clean
-                    && _log_TotalAsset.Clean
-                    && _log_TotalExpense.Clean
-                    && _log_TotalExpensePmt.Clean
-                    && _log_TotalExpenseRatio.Clean
-                    && _log_TotalFundsVerified.Clean
-                    && _log_TotalLoanAmount.Clean
-                    && _log_TotalMonthlyIncome.Clean
-                    && _log_TPONumber.Clean
-                    && _log_TransactionID.Clean
-                    && _log_UnderwritingRiskAssessOther.Clean
-                    && _log_UnderwritingRiskAssessType.Clean
-                    && _log_WithUndisclosedDebt.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aUSTrackingLogIndex.Dirty
+                    || _batchDocumentRefId.Dirty
+                    || _id.Dirty
+                    || _isEmpty.Dirty
+                    || _isHistory.Dirty
+                    || _log_AcceptPlusEligible.Dirty
+                    || _log_AffordableProductType.Dirty
+                    || _log_AllOtherPayments.Dirty
+                    || _log_AmortizationMonths.Dirty
+                    || _log_AmortizationType.Dirty
+                    || _log_AmtSubordinateFin.Dirty
+                    || _log_AppraisalTypeMAF.Dirty
+                    || _log_AppraisedValue.Dirty
+                    || _log_ARMQualifyingRate.Dirty
+                    || _log_AssessmentType.Dirty
+                    || _log_AUSRecommendation.Dirty
+                    || _log_AUSStatus.Dirty
+                    || _log_AUSTrackingType.Dirty
+                    || _log_AUSTransactionID.Dirty
+                    || _log_AUSVersion.Dirty
+                    || _log_Balloon.Dirty
+                    || _log_BalloonTerm.Dirty
+                    || _log_BorrowerAssetAmount.Dirty
+                    || _log_BorrowerAssetName.Dirty
+                    || _log_BorrowerAssetType.Dirty
+                    || _log_BorrowerCreditScore1.Dirty
+                    || _log_BorrowerCreditScore2.Dirty
+                    || _log_BorrowerCreditScore3.Dirty
+                    || _log_BorrowerEquifaxBEACON.Dirty
+                    || _log_BorrowerExperianFICO.Dirty
+                    || _log_BorrowerIncomeAmount.Dirty
+                    || _log_BorrowerIncomeName.Dirty
+                    || _log_BorrowerIncomeType.Dirty
+                    || _log_BorrowerInstitutionName.Dirty
+                    || _log_BorrowerName.Dirty
+                    || _log_BorrowerScoreName.Dirty
+                    || _log_BorrowerTransUnionEmpirica.Dirty
+                    || _log_BorrowerType1.Dirty
+                    || _log_BorrowerType2.Dirty
+                    || _log_BoughtDownRate.Dirty
+                    || _log_Buydown.Dirty
+                    || _log_CashBack.Dirty
+                    || _log_CashOutAmount.Dirty
+                    || _log_CLTV.Dirty
+                    || _log_CoBorrowerAssetAmount.Dirty
+                    || _log_CoBorrowerAssetName.Dirty
+                    || _log_CoBorrowerAssetType.Dirty
+                    || _log_CoBorrowerCreditScore1.Dirty
+                    || _log_CoBorrowerCreditScore2.Dirty
+                    || _log_CoBorrowerCreditScore3.Dirty
+                    || _log_CoBorrowerEquifaxBEACON.Dirty
+                    || _log_CoBorrowerExperianFICO.Dirty
+                    || _log_CoBorrowerIncomeAmount.Dirty
+                    || _log_CoBorrowerIncomeName.Dirty
+                    || _log_CoBorrowerIncomeType.Dirty
+                    || _log_CoBorrowerInstitutionName.Dirty
+                    || _log_CoborrowerName.Dirty
+                    || _log_CoBorrowerScoreName.Dirty
+                    || _log_CoBorrowerTransUnionEmpirica.Dirty
+                    || _log_Code1.Dirty
+                    || _log_Code2.Dirty
+                    || _log_CodeDescription1.Dirty
+                    || _log_CodeDescription2.Dirty
+                    || _log_CommunityLending.Dirty
+                    || _log_CreatedOn.Dirty
+                    || _log_CreditAgency1.Dirty
+                    || _log_CreditAgency2.Dirty
+                    || _log_CreditReportDate1.Dirty
+                    || _log_CreditReportDate2.Dirty
+                    || _log_CreditReportID1.Dirty
+                    || _log_CreditReportID2.Dirty
+                    || _log_CuredAmortizationType.Dirty
+                    || _log_CuredAppraisedValue.Dirty
+                    || _log_CuredCLTV.Dirty
+                    || _log_CuredHousingExpenseRatio.Dirty
+                    || _log_CuredLoanPurpose.Dirty
+                    || _log_CuredLoanTerm.Dirty
+                    || _log_CuredLoanType.Dirty
+                    || _log_CuredLTV.Dirty
+                    || _log_CuredNoteRate.Dirty
+                    || _log_CuredProposedTotalHousingPayment.Dirty
+                    || _log_CuredRefinancePurpose.Dirty
+                    || _log_CuredTotalExpenseRatio.Dirty
+                    || _log_CuredTotalLoanAmount.Dirty
+                    || _log_CuredTotalMonthlyIncome.Dirty
+                    || _log_DateTimeAssessed.Dirty
+                    || _log_DateTimeRequested.Dirty
+                    || _log_DebtRatio.Dirty
+                    || _log_DocumentationLevel.Dirty
+                    || _log_DUCaseIDorLPAUSKey.Dirty
+                    || _log_DUPropertyType.Dirty
+                    || _log_eFolderGUID.Dirty
+                    || _log_ExcessAvailableAssetsNoVerified.Dirty
+                    || _log_FinancedMIAmount.Dirty
+                    || _log_FirstPandI.Dirty
+                    || _log_FirstSubmissionDate.Dirty
+                    || _log_FirstSubmissionTime.Dirty
+                    || _log_FreddieDocClass.Dirty
+                    || _log_FundsRequiredClose.Dirty
+                    || _log_GUID.Dirty
+                    || _log_HLCTV.Dirty
+                    || _log_HousingExpense.Dirty
+                    || _log_HousingExpenseRatio.Dirty
+                    || _log_HousingRatio.Dirty
+                    || _log_HTLTV.Dirty
+                    || _log_IncludingLess10Mos.Dirty
+                    || _log_IncomeAssetBase.Dirty
+                    || _log_IncomeAssetBonus.Dirty
+                    || _log_IncomeAssetCommission.Dirty
+                    || _log_IncomeAssetOther.Dirty
+                    || _log_IncomeAssetOvertime.Dirty
+                    || _log_IncomeAssetPosCashFlow.Dirty
+                    || _log_IncomeAssetPositiveNetRental.Dirty
+                    || _log_IndicatorScore.Dirty
+                    || _log_IntendedUseofProperty.Dirty
+                    || _log_LCLAEvaluatedServiceConclusion1.Dirty
+                    || _log_LCLAEvaluatedServiceConclusion2.Dirty
+                    || _log_LCLAEvaluatedServiceConclusion3.Dirty
+                    || _log_LCLAEvaluatedServiceConclusion4.Dirty
+                    || _log_LCLAEvaluatedServiceType1.Dirty
+                    || _log_LCLAEvaluatedServiceType2.Dirty
+                    || _log_LCLAEvaluatedServiceType3.Dirty
+                    || _log_LCLAEvaluatedServiceType4.Dirty
+                    || _log_LenderLoan.Dirty
+                    || _log_LienType.Dirty
+                    || _log_LoanAmount.Dirty
+                    || _log_LoanApplicationID.Dirty
+                    || _log_LoanProcessingStage.Dirty
+                    || _log_LoanProspectorID.Dirty
+                    || _log_LoanPurpose.Dirty
+                    || _log_LoanTerm.Dirty
+                    || _log_LoanType.Dirty
+                    || _log_LPAssmtExpDate.Dirty
+                    || _log_LPPropertyType.Dirty
+                    || _log_LPVersion.Dirty
+                    || _log_LQACollateralRepWarrantyServiceConclusion.Dirty
+                    || _log_LQACreditRiskAssessmentConclusion.Dirty
+                    || _log_LQADataCompareFieldConclusion.Dirty
+                    || _log_LQADataCompareFieldName.Dirty
+                    || _log_LQADataCompareResult.Dirty
+                    || _log_LQALPKey.Dirty
+                    || _log_LQAPurchaseEligibilityResult.Dirty
+                    || _log_LQARiskAssessmentKey.Dirty
+                    || _log_LQASubmissionDateTime.Dirty
+                    || _log_LTV.Dirty
+                    || _log_MaxMortgageLimit.Dirty
+                    || _log_MIDecision.Dirty
+                    || _log_MortgageType.Dirty
+                    || _log_NegAmortizationType.Dirty
+                    || _log_NegativeNetRental.Dirty
+                    || _log_NetCashBack.Dirty
+                    || _log_NewConstruction.Dirty
+                    || _log_NoteRate.Dirty
+                    || _log_NOTPNumber.Dirty
+                    || _log_NoUnits.Dirty
+                    || _log_NumberOfSubmissions.Dirty
+                    || _log_OccupancyStatus.Dirty
+                    || _log_OccupantDebtRatio.Dirty
+                    || _log_OccupantHousingRatio.Dirty
+                    || _log_OfferingIdentifier.Dirty
+                    || _log_OriginatingCompany.Dirty
+                    || _log_OwnerExistingMtg.Dirty
+                    || _log_PandI.Dirty
+                    || _log_PaymentFrequency.Dirty
+                    || _log_PresentAddress.Dirty
+                    || _log_PresentAddressCity.Dirty
+                    || _log_PresentAddressState.Dirty
+                    || _log_PresentAddressZipCode.Dirty
+                    || _log_PresentHousingExpense.Dirty
+                    || _log_PresentPrincipalHousingPayment.Dirty
+                    || _log_PropertyAddress.Dirty
+                    || _log_PropertyCity.Dirty
+                    || _log_PropertyState.Dirty
+                    || _log_PropertyZipcode.Dirty
+                    || _log_ProposedHazardInsurance.Dirty
+                    || _log_ProposedHOAFees.Dirty
+                    || _log_ProposedHousingPITI.Dirty
+                    || _log_ProposedMortgageInsurance.Dirty
+                    || _log_ProposedOtherPayment.Dirty
+                    || _log_ProposedTaxes.Dirty
+                    || _log_ProposedTotalHousingPayment.Dirty
+                    || _log_ProposedTotalMonthlyDebt.Dirty
+                    || _log_PurchaseEligibility.Dirty
+                    || _log_QualifyingRate.Dirty
+                    || _log_RecordType.Dirty
+                    || _log_RefinancePurpose.Dirty
+                    || _log_Reserves.Dirty
+                    || _log_ReservesRequiredVerified.Dirty
+                    || _log_RiskClass.Dirty
+                    || _log_SalesConcessions.Dirty
+                    || _log_SalesPrice.Dirty
+                    || _log_SecondPandI.Dirty
+                    || _log_SelectedBorrower.Dirty
+                    || _log_SelectedRepository.Dirty
+                    || _log_SellerNumber.Dirty
+                    || _log_SubjNegCashFlow.Dirty
+                    || _log_SubmissionDate.Dirty
+                    || _log_SubmissionNumber.Dirty
+                    || _log_SubmissionTime.Dirty
+                    || _log_SubmittedBy.Dirty
+                    || _log_SubmittingCompany.Dirty
+                    || _log_TemporarySubsidyBuydown.Dirty
+                    || _log_TLTV.Dirty
+                    || _log_TotalAsset.Dirty
+                    || _log_TotalExpense.Dirty
+                    || _log_TotalExpensePmt.Dirty
+                    || _log_TotalExpenseRatio.Dirty
+                    || _log_TotalFundsVerified.Dirty
+                    || _log_TotalLoanAmount.Dirty
+                    || _log_TotalMonthlyIncome.Dirty
+                    || _log_TPONumber.Dirty
+                    || _log_TransactionID.Dirty
+                    || _log_UnderwritingRiskAssessOther.Dirty
+                    || _log_UnderwritingRiskAssessType.Dirty
+                    || _log_WithUndisclosedDebt.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aUSTrackingLogIndex = _aUSTrackingLogIndex; aUSTrackingLogIndex.Clean = value; _aUSTrackingLogIndex = aUSTrackingLogIndex;
-                var batchDocumentRefId = _batchDocumentRefId; batchDocumentRefId.Clean = value; _batchDocumentRefId = batchDocumentRefId;
-                var id = _id; id.Clean = value; _id = id;
-                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
-                var isHistory = _isHistory; isHistory.Clean = value; _isHistory = isHistory;
-                var log_AcceptPlusEligible = _log_AcceptPlusEligible; log_AcceptPlusEligible.Clean = value; _log_AcceptPlusEligible = log_AcceptPlusEligible;
-                var log_AffordableProductType = _log_AffordableProductType; log_AffordableProductType.Clean = value; _log_AffordableProductType = log_AffordableProductType;
-                var log_AllOtherPayments = _log_AllOtherPayments; log_AllOtherPayments.Clean = value; _log_AllOtherPayments = log_AllOtherPayments;
-                var log_AmortizationMonths = _log_AmortizationMonths; log_AmortizationMonths.Clean = value; _log_AmortizationMonths = log_AmortizationMonths;
-                var log_AmortizationType = _log_AmortizationType; log_AmortizationType.Clean = value; _log_AmortizationType = log_AmortizationType;
-                var log_AmtSubordinateFin = _log_AmtSubordinateFin; log_AmtSubordinateFin.Clean = value; _log_AmtSubordinateFin = log_AmtSubordinateFin;
-                var log_AppraisalTypeMAF = _log_AppraisalTypeMAF; log_AppraisalTypeMAF.Clean = value; _log_AppraisalTypeMAF = log_AppraisalTypeMAF;
-                var log_AppraisedValue = _log_AppraisedValue; log_AppraisedValue.Clean = value; _log_AppraisedValue = log_AppraisedValue;
-                var log_ARMQualifyingRate = _log_ARMQualifyingRate; log_ARMQualifyingRate.Clean = value; _log_ARMQualifyingRate = log_ARMQualifyingRate;
-                var log_AssessmentType = _log_AssessmentType; log_AssessmentType.Clean = value; _log_AssessmentType = log_AssessmentType;
-                var log_AUSRecommendation = _log_AUSRecommendation; log_AUSRecommendation.Clean = value; _log_AUSRecommendation = log_AUSRecommendation;
-                var log_AUSStatus = _log_AUSStatus; log_AUSStatus.Clean = value; _log_AUSStatus = log_AUSStatus;
-                var log_AUSTrackingType = _log_AUSTrackingType; log_AUSTrackingType.Clean = value; _log_AUSTrackingType = log_AUSTrackingType;
-                var log_AUSTransactionID = _log_AUSTransactionID; log_AUSTransactionID.Clean = value; _log_AUSTransactionID = log_AUSTransactionID;
-                var log_AUSVersion = _log_AUSVersion; log_AUSVersion.Clean = value; _log_AUSVersion = log_AUSVersion;
-                var log_Balloon = _log_Balloon; log_Balloon.Clean = value; _log_Balloon = log_Balloon;
-                var log_BalloonTerm = _log_BalloonTerm; log_BalloonTerm.Clean = value; _log_BalloonTerm = log_BalloonTerm;
-                var log_BorrowerAssetAmount = _log_BorrowerAssetAmount; log_BorrowerAssetAmount.Clean = value; _log_BorrowerAssetAmount = log_BorrowerAssetAmount;
-                var log_BorrowerAssetName = _log_BorrowerAssetName; log_BorrowerAssetName.Clean = value; _log_BorrowerAssetName = log_BorrowerAssetName;
-                var log_BorrowerAssetType = _log_BorrowerAssetType; log_BorrowerAssetType.Clean = value; _log_BorrowerAssetType = log_BorrowerAssetType;
-                var log_BorrowerCreditScore1 = _log_BorrowerCreditScore1; log_BorrowerCreditScore1.Clean = value; _log_BorrowerCreditScore1 = log_BorrowerCreditScore1;
-                var log_BorrowerCreditScore2 = _log_BorrowerCreditScore2; log_BorrowerCreditScore2.Clean = value; _log_BorrowerCreditScore2 = log_BorrowerCreditScore2;
-                var log_BorrowerCreditScore3 = _log_BorrowerCreditScore3; log_BorrowerCreditScore3.Clean = value; _log_BorrowerCreditScore3 = log_BorrowerCreditScore3;
-                var log_BorrowerEquifaxBEACON = _log_BorrowerEquifaxBEACON; log_BorrowerEquifaxBEACON.Clean = value; _log_BorrowerEquifaxBEACON = log_BorrowerEquifaxBEACON;
-                var log_BorrowerExperianFICO = _log_BorrowerExperianFICO; log_BorrowerExperianFICO.Clean = value; _log_BorrowerExperianFICO = log_BorrowerExperianFICO;
-                var log_BorrowerIncomeAmount = _log_BorrowerIncomeAmount; log_BorrowerIncomeAmount.Clean = value; _log_BorrowerIncomeAmount = log_BorrowerIncomeAmount;
-                var log_BorrowerIncomeName = _log_BorrowerIncomeName; log_BorrowerIncomeName.Clean = value; _log_BorrowerIncomeName = log_BorrowerIncomeName;
-                var log_BorrowerIncomeType = _log_BorrowerIncomeType; log_BorrowerIncomeType.Clean = value; _log_BorrowerIncomeType = log_BorrowerIncomeType;
-                var log_BorrowerInstitutionName = _log_BorrowerInstitutionName; log_BorrowerInstitutionName.Clean = value; _log_BorrowerInstitutionName = log_BorrowerInstitutionName;
-                var log_BorrowerName = _log_BorrowerName; log_BorrowerName.Clean = value; _log_BorrowerName = log_BorrowerName;
-                var log_BorrowerScoreName = _log_BorrowerScoreName; log_BorrowerScoreName.Clean = value; _log_BorrowerScoreName = log_BorrowerScoreName;
-                var log_BorrowerTransUnionEmpirica = _log_BorrowerTransUnionEmpirica; log_BorrowerTransUnionEmpirica.Clean = value; _log_BorrowerTransUnionEmpirica = log_BorrowerTransUnionEmpirica;
-                var log_BorrowerType1 = _log_BorrowerType1; log_BorrowerType1.Clean = value; _log_BorrowerType1 = log_BorrowerType1;
-                var log_BorrowerType2 = _log_BorrowerType2; log_BorrowerType2.Clean = value; _log_BorrowerType2 = log_BorrowerType2;
-                var log_BoughtDownRate = _log_BoughtDownRate; log_BoughtDownRate.Clean = value; _log_BoughtDownRate = log_BoughtDownRate;
-                var log_Buydown = _log_Buydown; log_Buydown.Clean = value; _log_Buydown = log_Buydown;
-                var log_CashBack = _log_CashBack; log_CashBack.Clean = value; _log_CashBack = log_CashBack;
-                var log_CashOutAmount = _log_CashOutAmount; log_CashOutAmount.Clean = value; _log_CashOutAmount = log_CashOutAmount;
-                var log_CLTV = _log_CLTV; log_CLTV.Clean = value; _log_CLTV = log_CLTV;
-                var log_CoBorrowerAssetAmount = _log_CoBorrowerAssetAmount; log_CoBorrowerAssetAmount.Clean = value; _log_CoBorrowerAssetAmount = log_CoBorrowerAssetAmount;
-                var log_CoBorrowerAssetName = _log_CoBorrowerAssetName; log_CoBorrowerAssetName.Clean = value; _log_CoBorrowerAssetName = log_CoBorrowerAssetName;
-                var log_CoBorrowerAssetType = _log_CoBorrowerAssetType; log_CoBorrowerAssetType.Clean = value; _log_CoBorrowerAssetType = log_CoBorrowerAssetType;
-                var log_CoBorrowerCreditScore1 = _log_CoBorrowerCreditScore1; log_CoBorrowerCreditScore1.Clean = value; _log_CoBorrowerCreditScore1 = log_CoBorrowerCreditScore1;
-                var log_CoBorrowerCreditScore2 = _log_CoBorrowerCreditScore2; log_CoBorrowerCreditScore2.Clean = value; _log_CoBorrowerCreditScore2 = log_CoBorrowerCreditScore2;
-                var log_CoBorrowerCreditScore3 = _log_CoBorrowerCreditScore3; log_CoBorrowerCreditScore3.Clean = value; _log_CoBorrowerCreditScore3 = log_CoBorrowerCreditScore3;
-                var log_CoBorrowerEquifaxBEACON = _log_CoBorrowerEquifaxBEACON; log_CoBorrowerEquifaxBEACON.Clean = value; _log_CoBorrowerEquifaxBEACON = log_CoBorrowerEquifaxBEACON;
-                var log_CoBorrowerExperianFICO = _log_CoBorrowerExperianFICO; log_CoBorrowerExperianFICO.Clean = value; _log_CoBorrowerExperianFICO = log_CoBorrowerExperianFICO;
-                var log_CoBorrowerIncomeAmount = _log_CoBorrowerIncomeAmount; log_CoBorrowerIncomeAmount.Clean = value; _log_CoBorrowerIncomeAmount = log_CoBorrowerIncomeAmount;
-                var log_CoBorrowerIncomeName = _log_CoBorrowerIncomeName; log_CoBorrowerIncomeName.Clean = value; _log_CoBorrowerIncomeName = log_CoBorrowerIncomeName;
-                var log_CoBorrowerIncomeType = _log_CoBorrowerIncomeType; log_CoBorrowerIncomeType.Clean = value; _log_CoBorrowerIncomeType = log_CoBorrowerIncomeType;
-                var log_CoBorrowerInstitutionName = _log_CoBorrowerInstitutionName; log_CoBorrowerInstitutionName.Clean = value; _log_CoBorrowerInstitutionName = log_CoBorrowerInstitutionName;
-                var log_CoborrowerName = _log_CoborrowerName; log_CoborrowerName.Clean = value; _log_CoborrowerName = log_CoborrowerName;
-                var log_CoBorrowerScoreName = _log_CoBorrowerScoreName; log_CoBorrowerScoreName.Clean = value; _log_CoBorrowerScoreName = log_CoBorrowerScoreName;
-                var log_CoBorrowerTransUnionEmpirica = _log_CoBorrowerTransUnionEmpirica; log_CoBorrowerTransUnionEmpirica.Clean = value; _log_CoBorrowerTransUnionEmpirica = log_CoBorrowerTransUnionEmpirica;
-                var log_Code1 = _log_Code1; log_Code1.Clean = value; _log_Code1 = log_Code1;
-                var log_Code2 = _log_Code2; log_Code2.Clean = value; _log_Code2 = log_Code2;
-                var log_CodeDescription1 = _log_CodeDescription1; log_CodeDescription1.Clean = value; _log_CodeDescription1 = log_CodeDescription1;
-                var log_CodeDescription2 = _log_CodeDescription2; log_CodeDescription2.Clean = value; _log_CodeDescription2 = log_CodeDescription2;
-                var log_CommunityLending = _log_CommunityLending; log_CommunityLending.Clean = value; _log_CommunityLending = log_CommunityLending;
-                var log_CreatedOn = _log_CreatedOn; log_CreatedOn.Clean = value; _log_CreatedOn = log_CreatedOn;
-                var log_CreditAgency1 = _log_CreditAgency1; log_CreditAgency1.Clean = value; _log_CreditAgency1 = log_CreditAgency1;
-                var log_CreditAgency2 = _log_CreditAgency2; log_CreditAgency2.Clean = value; _log_CreditAgency2 = log_CreditAgency2;
-                var log_CreditReportDate1 = _log_CreditReportDate1; log_CreditReportDate1.Clean = value; _log_CreditReportDate1 = log_CreditReportDate1;
-                var log_CreditReportDate2 = _log_CreditReportDate2; log_CreditReportDate2.Clean = value; _log_CreditReportDate2 = log_CreditReportDate2;
-                var log_CreditReportID1 = _log_CreditReportID1; log_CreditReportID1.Clean = value; _log_CreditReportID1 = log_CreditReportID1;
-                var log_CreditReportID2 = _log_CreditReportID2; log_CreditReportID2.Clean = value; _log_CreditReportID2 = log_CreditReportID2;
-                var log_CuredAmortizationType = _log_CuredAmortizationType; log_CuredAmortizationType.Clean = value; _log_CuredAmortizationType = log_CuredAmortizationType;
-                var log_CuredAppraisedValue = _log_CuredAppraisedValue; log_CuredAppraisedValue.Clean = value; _log_CuredAppraisedValue = log_CuredAppraisedValue;
-                var log_CuredCLTV = _log_CuredCLTV; log_CuredCLTV.Clean = value; _log_CuredCLTV = log_CuredCLTV;
-                var log_CuredHousingExpenseRatio = _log_CuredHousingExpenseRatio; log_CuredHousingExpenseRatio.Clean = value; _log_CuredHousingExpenseRatio = log_CuredHousingExpenseRatio;
-                var log_CuredLoanPurpose = _log_CuredLoanPurpose; log_CuredLoanPurpose.Clean = value; _log_CuredLoanPurpose = log_CuredLoanPurpose;
-                var log_CuredLoanTerm = _log_CuredLoanTerm; log_CuredLoanTerm.Clean = value; _log_CuredLoanTerm = log_CuredLoanTerm;
-                var log_CuredLoanType = _log_CuredLoanType; log_CuredLoanType.Clean = value; _log_CuredLoanType = log_CuredLoanType;
-                var log_CuredLTV = _log_CuredLTV; log_CuredLTV.Clean = value; _log_CuredLTV = log_CuredLTV;
-                var log_CuredNoteRate = _log_CuredNoteRate; log_CuredNoteRate.Clean = value; _log_CuredNoteRate = log_CuredNoteRate;
-                var log_CuredProposedTotalHousingPayment = _log_CuredProposedTotalHousingPayment; log_CuredProposedTotalHousingPayment.Clean = value; _log_CuredProposedTotalHousingPayment = log_CuredProposedTotalHousingPayment;
-                var log_CuredRefinancePurpose = _log_CuredRefinancePurpose; log_CuredRefinancePurpose.Clean = value; _log_CuredRefinancePurpose = log_CuredRefinancePurpose;
-                var log_CuredTotalExpenseRatio = _log_CuredTotalExpenseRatio; log_CuredTotalExpenseRatio.Clean = value; _log_CuredTotalExpenseRatio = log_CuredTotalExpenseRatio;
-                var log_CuredTotalLoanAmount = _log_CuredTotalLoanAmount; log_CuredTotalLoanAmount.Clean = value; _log_CuredTotalLoanAmount = log_CuredTotalLoanAmount;
-                var log_CuredTotalMonthlyIncome = _log_CuredTotalMonthlyIncome; log_CuredTotalMonthlyIncome.Clean = value; _log_CuredTotalMonthlyIncome = log_CuredTotalMonthlyIncome;
-                var log_DateTimeAssessed = _log_DateTimeAssessed; log_DateTimeAssessed.Clean = value; _log_DateTimeAssessed = log_DateTimeAssessed;
-                var log_DateTimeRequested = _log_DateTimeRequested; log_DateTimeRequested.Clean = value; _log_DateTimeRequested = log_DateTimeRequested;
-                var log_DebtRatio = _log_DebtRatio; log_DebtRatio.Clean = value; _log_DebtRatio = log_DebtRatio;
-                var log_DocumentationLevel = _log_DocumentationLevel; log_DocumentationLevel.Clean = value; _log_DocumentationLevel = log_DocumentationLevel;
-                var log_DUCaseIDorLPAUSKey = _log_DUCaseIDorLPAUSKey; log_DUCaseIDorLPAUSKey.Clean = value; _log_DUCaseIDorLPAUSKey = log_DUCaseIDorLPAUSKey;
-                var log_DUPropertyType = _log_DUPropertyType; log_DUPropertyType.Clean = value; _log_DUPropertyType = log_DUPropertyType;
-                var log_eFolderGUID = _log_eFolderGUID; log_eFolderGUID.Clean = value; _log_eFolderGUID = log_eFolderGUID;
-                var log_ExcessAvailableAssetsNoVerified = _log_ExcessAvailableAssetsNoVerified; log_ExcessAvailableAssetsNoVerified.Clean = value; _log_ExcessAvailableAssetsNoVerified = log_ExcessAvailableAssetsNoVerified;
-                var log_FinancedMIAmount = _log_FinancedMIAmount; log_FinancedMIAmount.Clean = value; _log_FinancedMIAmount = log_FinancedMIAmount;
-                var log_FirstPandI = _log_FirstPandI; log_FirstPandI.Clean = value; _log_FirstPandI = log_FirstPandI;
-                var log_FirstSubmissionDate = _log_FirstSubmissionDate; log_FirstSubmissionDate.Clean = value; _log_FirstSubmissionDate = log_FirstSubmissionDate;
-                var log_FirstSubmissionTime = _log_FirstSubmissionTime; log_FirstSubmissionTime.Clean = value; _log_FirstSubmissionTime = log_FirstSubmissionTime;
-                var log_FreddieDocClass = _log_FreddieDocClass; log_FreddieDocClass.Clean = value; _log_FreddieDocClass = log_FreddieDocClass;
-                var log_FundsRequiredClose = _log_FundsRequiredClose; log_FundsRequiredClose.Clean = value; _log_FundsRequiredClose = log_FundsRequiredClose;
-                var log_GUID = _log_GUID; log_GUID.Clean = value; _log_GUID = log_GUID;
-                var log_HLCTV = _log_HLCTV; log_HLCTV.Clean = value; _log_HLCTV = log_HLCTV;
-                var log_HousingExpense = _log_HousingExpense; log_HousingExpense.Clean = value; _log_HousingExpense = log_HousingExpense;
-                var log_HousingExpenseRatio = _log_HousingExpenseRatio; log_HousingExpenseRatio.Clean = value; _log_HousingExpenseRatio = log_HousingExpenseRatio;
-                var log_HousingRatio = _log_HousingRatio; log_HousingRatio.Clean = value; _log_HousingRatio = log_HousingRatio;
-                var log_HTLTV = _log_HTLTV; log_HTLTV.Clean = value; _log_HTLTV = log_HTLTV;
-                var log_IncludingLess10Mos = _log_IncludingLess10Mos; log_IncludingLess10Mos.Clean = value; _log_IncludingLess10Mos = log_IncludingLess10Mos;
-                var log_IncomeAssetBase = _log_IncomeAssetBase; log_IncomeAssetBase.Clean = value; _log_IncomeAssetBase = log_IncomeAssetBase;
-                var log_IncomeAssetBonus = _log_IncomeAssetBonus; log_IncomeAssetBonus.Clean = value; _log_IncomeAssetBonus = log_IncomeAssetBonus;
-                var log_IncomeAssetCommission = _log_IncomeAssetCommission; log_IncomeAssetCommission.Clean = value; _log_IncomeAssetCommission = log_IncomeAssetCommission;
-                var log_IncomeAssetOther = _log_IncomeAssetOther; log_IncomeAssetOther.Clean = value; _log_IncomeAssetOther = log_IncomeAssetOther;
-                var log_IncomeAssetOvertime = _log_IncomeAssetOvertime; log_IncomeAssetOvertime.Clean = value; _log_IncomeAssetOvertime = log_IncomeAssetOvertime;
-                var log_IncomeAssetPosCashFlow = _log_IncomeAssetPosCashFlow; log_IncomeAssetPosCashFlow.Clean = value; _log_IncomeAssetPosCashFlow = log_IncomeAssetPosCashFlow;
-                var log_IncomeAssetPositiveNetRental = _log_IncomeAssetPositiveNetRental; log_IncomeAssetPositiveNetRental.Clean = value; _log_IncomeAssetPositiveNetRental = log_IncomeAssetPositiveNetRental;
-                var log_IndicatorScore = _log_IndicatorScore; log_IndicatorScore.Clean = value; _log_IndicatorScore = log_IndicatorScore;
-                var log_IntendedUseofProperty = _log_IntendedUseofProperty; log_IntendedUseofProperty.Clean = value; _log_IntendedUseofProperty = log_IntendedUseofProperty;
-                var log_LCLAEvaluatedServiceConclusion1 = _log_LCLAEvaluatedServiceConclusion1; log_LCLAEvaluatedServiceConclusion1.Clean = value; _log_LCLAEvaluatedServiceConclusion1 = log_LCLAEvaluatedServiceConclusion1;
-                var log_LCLAEvaluatedServiceConclusion2 = _log_LCLAEvaluatedServiceConclusion2; log_LCLAEvaluatedServiceConclusion2.Clean = value; _log_LCLAEvaluatedServiceConclusion2 = log_LCLAEvaluatedServiceConclusion2;
-                var log_LCLAEvaluatedServiceConclusion3 = _log_LCLAEvaluatedServiceConclusion3; log_LCLAEvaluatedServiceConclusion3.Clean = value; _log_LCLAEvaluatedServiceConclusion3 = log_LCLAEvaluatedServiceConclusion3;
-                var log_LCLAEvaluatedServiceConclusion4 = _log_LCLAEvaluatedServiceConclusion4; log_LCLAEvaluatedServiceConclusion4.Clean = value; _log_LCLAEvaluatedServiceConclusion4 = log_LCLAEvaluatedServiceConclusion4;
-                var log_LCLAEvaluatedServiceType1 = _log_LCLAEvaluatedServiceType1; log_LCLAEvaluatedServiceType1.Clean = value; _log_LCLAEvaluatedServiceType1 = log_LCLAEvaluatedServiceType1;
-                var log_LCLAEvaluatedServiceType2 = _log_LCLAEvaluatedServiceType2; log_LCLAEvaluatedServiceType2.Clean = value; _log_LCLAEvaluatedServiceType2 = log_LCLAEvaluatedServiceType2;
-                var log_LCLAEvaluatedServiceType3 = _log_LCLAEvaluatedServiceType3; log_LCLAEvaluatedServiceType3.Clean = value; _log_LCLAEvaluatedServiceType3 = log_LCLAEvaluatedServiceType3;
-                var log_LCLAEvaluatedServiceType4 = _log_LCLAEvaluatedServiceType4; log_LCLAEvaluatedServiceType4.Clean = value; _log_LCLAEvaluatedServiceType4 = log_LCLAEvaluatedServiceType4;
-                var log_LenderLoan = _log_LenderLoan; log_LenderLoan.Clean = value; _log_LenderLoan = log_LenderLoan;
-                var log_LienType = _log_LienType; log_LienType.Clean = value; _log_LienType = log_LienType;
-                var log_LoanAmount = _log_LoanAmount; log_LoanAmount.Clean = value; _log_LoanAmount = log_LoanAmount;
-                var log_LoanApplicationID = _log_LoanApplicationID; log_LoanApplicationID.Clean = value; _log_LoanApplicationID = log_LoanApplicationID;
-                var log_LoanProcessingStage = _log_LoanProcessingStage; log_LoanProcessingStage.Clean = value; _log_LoanProcessingStage = log_LoanProcessingStage;
-                var log_LoanProspectorID = _log_LoanProspectorID; log_LoanProspectorID.Clean = value; _log_LoanProspectorID = log_LoanProspectorID;
-                var log_LoanPurpose = _log_LoanPurpose; log_LoanPurpose.Clean = value; _log_LoanPurpose = log_LoanPurpose;
-                var log_LoanTerm = _log_LoanTerm; log_LoanTerm.Clean = value; _log_LoanTerm = log_LoanTerm;
-                var log_LoanType = _log_LoanType; log_LoanType.Clean = value; _log_LoanType = log_LoanType;
-                var log_LPAssmtExpDate = _log_LPAssmtExpDate; log_LPAssmtExpDate.Clean = value; _log_LPAssmtExpDate = log_LPAssmtExpDate;
-                var log_LPPropertyType = _log_LPPropertyType; log_LPPropertyType.Clean = value; _log_LPPropertyType = log_LPPropertyType;
-                var log_LPVersion = _log_LPVersion; log_LPVersion.Clean = value; _log_LPVersion = log_LPVersion;
-                var log_LQACollateralRepWarrantyServiceConclusion = _log_LQACollateralRepWarrantyServiceConclusion; log_LQACollateralRepWarrantyServiceConclusion.Clean = value; _log_LQACollateralRepWarrantyServiceConclusion = log_LQACollateralRepWarrantyServiceConclusion;
-                var log_LQACreditRiskAssessmentConclusion = _log_LQACreditRiskAssessmentConclusion; log_LQACreditRiskAssessmentConclusion.Clean = value; _log_LQACreditRiskAssessmentConclusion = log_LQACreditRiskAssessmentConclusion;
-                var log_LQADataCompareFieldConclusion = _log_LQADataCompareFieldConclusion; log_LQADataCompareFieldConclusion.Clean = value; _log_LQADataCompareFieldConclusion = log_LQADataCompareFieldConclusion;
-                var log_LQADataCompareFieldName = _log_LQADataCompareFieldName; log_LQADataCompareFieldName.Clean = value; _log_LQADataCompareFieldName = log_LQADataCompareFieldName;
-                var log_LQADataCompareResult = _log_LQADataCompareResult; log_LQADataCompareResult.Clean = value; _log_LQADataCompareResult = log_LQADataCompareResult;
-                var log_LQALPKey = _log_LQALPKey; log_LQALPKey.Clean = value; _log_LQALPKey = log_LQALPKey;
-                var log_LQAPurchaseEligibilityResult = _log_LQAPurchaseEligibilityResult; log_LQAPurchaseEligibilityResult.Clean = value; _log_LQAPurchaseEligibilityResult = log_LQAPurchaseEligibilityResult;
-                var log_LQARiskAssessmentKey = _log_LQARiskAssessmentKey; log_LQARiskAssessmentKey.Clean = value; _log_LQARiskAssessmentKey = log_LQARiskAssessmentKey;
-                var log_LQASubmissionDateTime = _log_LQASubmissionDateTime; log_LQASubmissionDateTime.Clean = value; _log_LQASubmissionDateTime = log_LQASubmissionDateTime;
-                var log_LTV = _log_LTV; log_LTV.Clean = value; _log_LTV = log_LTV;
-                var log_MaxMortgageLimit = _log_MaxMortgageLimit; log_MaxMortgageLimit.Clean = value; _log_MaxMortgageLimit = log_MaxMortgageLimit;
-                var log_MIDecision = _log_MIDecision; log_MIDecision.Clean = value; _log_MIDecision = log_MIDecision;
-                var log_MortgageType = _log_MortgageType; log_MortgageType.Clean = value; _log_MortgageType = log_MortgageType;
-                var log_NegAmortizationType = _log_NegAmortizationType; log_NegAmortizationType.Clean = value; _log_NegAmortizationType = log_NegAmortizationType;
-                var log_NegativeNetRental = _log_NegativeNetRental; log_NegativeNetRental.Clean = value; _log_NegativeNetRental = log_NegativeNetRental;
-                var log_NetCashBack = _log_NetCashBack; log_NetCashBack.Clean = value; _log_NetCashBack = log_NetCashBack;
-                var log_NewConstruction = _log_NewConstruction; log_NewConstruction.Clean = value; _log_NewConstruction = log_NewConstruction;
-                var log_NoteRate = _log_NoteRate; log_NoteRate.Clean = value; _log_NoteRate = log_NoteRate;
-                var log_NOTPNumber = _log_NOTPNumber; log_NOTPNumber.Clean = value; _log_NOTPNumber = log_NOTPNumber;
-                var log_NoUnits = _log_NoUnits; log_NoUnits.Clean = value; _log_NoUnits = log_NoUnits;
-                var log_NumberOfSubmissions = _log_NumberOfSubmissions; log_NumberOfSubmissions.Clean = value; _log_NumberOfSubmissions = log_NumberOfSubmissions;
-                var log_OccupancyStatus = _log_OccupancyStatus; log_OccupancyStatus.Clean = value; _log_OccupancyStatus = log_OccupancyStatus;
-                var log_OccupantDebtRatio = _log_OccupantDebtRatio; log_OccupantDebtRatio.Clean = value; _log_OccupantDebtRatio = log_OccupantDebtRatio;
-                var log_OccupantHousingRatio = _log_OccupantHousingRatio; log_OccupantHousingRatio.Clean = value; _log_OccupantHousingRatio = log_OccupantHousingRatio;
-                var log_OfferingIdentifier = _log_OfferingIdentifier; log_OfferingIdentifier.Clean = value; _log_OfferingIdentifier = log_OfferingIdentifier;
-                var log_OriginatingCompany = _log_OriginatingCompany; log_OriginatingCompany.Clean = value; _log_OriginatingCompany = log_OriginatingCompany;
-                var log_OwnerExistingMtg = _log_OwnerExistingMtg; log_OwnerExistingMtg.Clean = value; _log_OwnerExistingMtg = log_OwnerExistingMtg;
-                var log_PandI = _log_PandI; log_PandI.Clean = value; _log_PandI = log_PandI;
-                var log_PaymentFrequency = _log_PaymentFrequency; log_PaymentFrequency.Clean = value; _log_PaymentFrequency = log_PaymentFrequency;
-                var log_PresentAddress = _log_PresentAddress; log_PresentAddress.Clean = value; _log_PresentAddress = log_PresentAddress;
-                var log_PresentAddressCity = _log_PresentAddressCity; log_PresentAddressCity.Clean = value; _log_PresentAddressCity = log_PresentAddressCity;
-                var log_PresentAddressState = _log_PresentAddressState; log_PresentAddressState.Clean = value; _log_PresentAddressState = log_PresentAddressState;
-                var log_PresentAddressZipCode = _log_PresentAddressZipCode; log_PresentAddressZipCode.Clean = value; _log_PresentAddressZipCode = log_PresentAddressZipCode;
-                var log_PresentHousingExpense = _log_PresentHousingExpense; log_PresentHousingExpense.Clean = value; _log_PresentHousingExpense = log_PresentHousingExpense;
-                var log_PresentPrincipalHousingPayment = _log_PresentPrincipalHousingPayment; log_PresentPrincipalHousingPayment.Clean = value; _log_PresentPrincipalHousingPayment = log_PresentPrincipalHousingPayment;
-                var log_PropertyAddress = _log_PropertyAddress; log_PropertyAddress.Clean = value; _log_PropertyAddress = log_PropertyAddress;
-                var log_PropertyCity = _log_PropertyCity; log_PropertyCity.Clean = value; _log_PropertyCity = log_PropertyCity;
-                var log_PropertyState = _log_PropertyState; log_PropertyState.Clean = value; _log_PropertyState = log_PropertyState;
-                var log_PropertyZipcode = _log_PropertyZipcode; log_PropertyZipcode.Clean = value; _log_PropertyZipcode = log_PropertyZipcode;
-                var log_ProposedHazardInsurance = _log_ProposedHazardInsurance; log_ProposedHazardInsurance.Clean = value; _log_ProposedHazardInsurance = log_ProposedHazardInsurance;
-                var log_ProposedHOAFees = _log_ProposedHOAFees; log_ProposedHOAFees.Clean = value; _log_ProposedHOAFees = log_ProposedHOAFees;
-                var log_ProposedHousingPITI = _log_ProposedHousingPITI; log_ProposedHousingPITI.Clean = value; _log_ProposedHousingPITI = log_ProposedHousingPITI;
-                var log_ProposedMortgageInsurance = _log_ProposedMortgageInsurance; log_ProposedMortgageInsurance.Clean = value; _log_ProposedMortgageInsurance = log_ProposedMortgageInsurance;
-                var log_ProposedOtherPayment = _log_ProposedOtherPayment; log_ProposedOtherPayment.Clean = value; _log_ProposedOtherPayment = log_ProposedOtherPayment;
-                var log_ProposedTaxes = _log_ProposedTaxes; log_ProposedTaxes.Clean = value; _log_ProposedTaxes = log_ProposedTaxes;
-                var log_ProposedTotalHousingPayment = _log_ProposedTotalHousingPayment; log_ProposedTotalHousingPayment.Clean = value; _log_ProposedTotalHousingPayment = log_ProposedTotalHousingPayment;
-                var log_ProposedTotalMonthlyDebt = _log_ProposedTotalMonthlyDebt; log_ProposedTotalMonthlyDebt.Clean = value; _log_ProposedTotalMonthlyDebt = log_ProposedTotalMonthlyDebt;
-                var log_PurchaseEligibility = _log_PurchaseEligibility; log_PurchaseEligibility.Clean = value; _log_PurchaseEligibility = log_PurchaseEligibility;
-                var log_QualifyingRate = _log_QualifyingRate; log_QualifyingRate.Clean = value; _log_QualifyingRate = log_QualifyingRate;
-                var log_RecordType = _log_RecordType; log_RecordType.Clean = value; _log_RecordType = log_RecordType;
-                var log_RefinancePurpose = _log_RefinancePurpose; log_RefinancePurpose.Clean = value; _log_RefinancePurpose = log_RefinancePurpose;
-                var log_Reserves = _log_Reserves; log_Reserves.Clean = value; _log_Reserves = log_Reserves;
-                var log_ReservesRequiredVerified = _log_ReservesRequiredVerified; log_ReservesRequiredVerified.Clean = value; _log_ReservesRequiredVerified = log_ReservesRequiredVerified;
-                var log_RiskClass = _log_RiskClass; log_RiskClass.Clean = value; _log_RiskClass = log_RiskClass;
-                var log_SalesConcessions = _log_SalesConcessions; log_SalesConcessions.Clean = value; _log_SalesConcessions = log_SalesConcessions;
-                var log_SalesPrice = _log_SalesPrice; log_SalesPrice.Clean = value; _log_SalesPrice = log_SalesPrice;
-                var log_SecondPandI = _log_SecondPandI; log_SecondPandI.Clean = value; _log_SecondPandI = log_SecondPandI;
-                var log_SelectedBorrower = _log_SelectedBorrower; log_SelectedBorrower.Clean = value; _log_SelectedBorrower = log_SelectedBorrower;
-                var log_SelectedRepository = _log_SelectedRepository; log_SelectedRepository.Clean = value; _log_SelectedRepository = log_SelectedRepository;
-                var log_SellerNumber = _log_SellerNumber; log_SellerNumber.Clean = value; _log_SellerNumber = log_SellerNumber;
-                var log_SubjNegCashFlow = _log_SubjNegCashFlow; log_SubjNegCashFlow.Clean = value; _log_SubjNegCashFlow = log_SubjNegCashFlow;
-                var log_SubmissionDate = _log_SubmissionDate; log_SubmissionDate.Clean = value; _log_SubmissionDate = log_SubmissionDate;
-                var log_SubmissionNumber = _log_SubmissionNumber; log_SubmissionNumber.Clean = value; _log_SubmissionNumber = log_SubmissionNumber;
-                var log_SubmissionTime = _log_SubmissionTime; log_SubmissionTime.Clean = value; _log_SubmissionTime = log_SubmissionTime;
-                var log_SubmittedBy = _log_SubmittedBy; log_SubmittedBy.Clean = value; _log_SubmittedBy = log_SubmittedBy;
-                var log_SubmittingCompany = _log_SubmittingCompany; log_SubmittingCompany.Clean = value; _log_SubmittingCompany = log_SubmittingCompany;
-                var log_TemporarySubsidyBuydown = _log_TemporarySubsidyBuydown; log_TemporarySubsidyBuydown.Clean = value; _log_TemporarySubsidyBuydown = log_TemporarySubsidyBuydown;
-                var log_TLTV = _log_TLTV; log_TLTV.Clean = value; _log_TLTV = log_TLTV;
-                var log_TotalAsset = _log_TotalAsset; log_TotalAsset.Clean = value; _log_TotalAsset = log_TotalAsset;
-                var log_TotalExpense = _log_TotalExpense; log_TotalExpense.Clean = value; _log_TotalExpense = log_TotalExpense;
-                var log_TotalExpensePmt = _log_TotalExpensePmt; log_TotalExpensePmt.Clean = value; _log_TotalExpensePmt = log_TotalExpensePmt;
-                var log_TotalExpenseRatio = _log_TotalExpenseRatio; log_TotalExpenseRatio.Clean = value; _log_TotalExpenseRatio = log_TotalExpenseRatio;
-                var log_TotalFundsVerified = _log_TotalFundsVerified; log_TotalFundsVerified.Clean = value; _log_TotalFundsVerified = log_TotalFundsVerified;
-                var log_TotalLoanAmount = _log_TotalLoanAmount; log_TotalLoanAmount.Clean = value; _log_TotalLoanAmount = log_TotalLoanAmount;
-                var log_TotalMonthlyIncome = _log_TotalMonthlyIncome; log_TotalMonthlyIncome.Clean = value; _log_TotalMonthlyIncome = log_TotalMonthlyIncome;
-                var log_TPONumber = _log_TPONumber; log_TPONumber.Clean = value; _log_TPONumber = log_TPONumber;
-                var log_TransactionID = _log_TransactionID; log_TransactionID.Clean = value; _log_TransactionID = log_TransactionID;
-                var log_UnderwritingRiskAssessOther = _log_UnderwritingRiskAssessOther; log_UnderwritingRiskAssessOther.Clean = value; _log_UnderwritingRiskAssessOther = log_UnderwritingRiskAssessOther;
-                var log_UnderwritingRiskAssessType = _log_UnderwritingRiskAssessType; log_UnderwritingRiskAssessType.Clean = value; _log_UnderwritingRiskAssessType = log_UnderwritingRiskAssessType;
-                var log_WithUndisclosedDebt = _log_WithUndisclosedDebt; log_WithUndisclosedDebt.Clean = value; _log_WithUndisclosedDebt = log_WithUndisclosedDebt;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aUSTrackingLogIndex.Dirty = value;
+                _batchDocumentRefId.Dirty = value;
+                _id.Dirty = value;
+                _isEmpty.Dirty = value;
+                _isHistory.Dirty = value;
+                _log_AcceptPlusEligible.Dirty = value;
+                _log_AffordableProductType.Dirty = value;
+                _log_AllOtherPayments.Dirty = value;
+                _log_AmortizationMonths.Dirty = value;
+                _log_AmortizationType.Dirty = value;
+                _log_AmtSubordinateFin.Dirty = value;
+                _log_AppraisalTypeMAF.Dirty = value;
+                _log_AppraisedValue.Dirty = value;
+                _log_ARMQualifyingRate.Dirty = value;
+                _log_AssessmentType.Dirty = value;
+                _log_AUSRecommendation.Dirty = value;
+                _log_AUSStatus.Dirty = value;
+                _log_AUSTrackingType.Dirty = value;
+                _log_AUSTransactionID.Dirty = value;
+                _log_AUSVersion.Dirty = value;
+                _log_Balloon.Dirty = value;
+                _log_BalloonTerm.Dirty = value;
+                _log_BorrowerAssetAmount.Dirty = value;
+                _log_BorrowerAssetName.Dirty = value;
+                _log_BorrowerAssetType.Dirty = value;
+                _log_BorrowerCreditScore1.Dirty = value;
+                _log_BorrowerCreditScore2.Dirty = value;
+                _log_BorrowerCreditScore3.Dirty = value;
+                _log_BorrowerEquifaxBEACON.Dirty = value;
+                _log_BorrowerExperianFICO.Dirty = value;
+                _log_BorrowerIncomeAmount.Dirty = value;
+                _log_BorrowerIncomeName.Dirty = value;
+                _log_BorrowerIncomeType.Dirty = value;
+                _log_BorrowerInstitutionName.Dirty = value;
+                _log_BorrowerName.Dirty = value;
+                _log_BorrowerScoreName.Dirty = value;
+                _log_BorrowerTransUnionEmpirica.Dirty = value;
+                _log_BorrowerType1.Dirty = value;
+                _log_BorrowerType2.Dirty = value;
+                _log_BoughtDownRate.Dirty = value;
+                _log_Buydown.Dirty = value;
+                _log_CashBack.Dirty = value;
+                _log_CashOutAmount.Dirty = value;
+                _log_CLTV.Dirty = value;
+                _log_CoBorrowerAssetAmount.Dirty = value;
+                _log_CoBorrowerAssetName.Dirty = value;
+                _log_CoBorrowerAssetType.Dirty = value;
+                _log_CoBorrowerCreditScore1.Dirty = value;
+                _log_CoBorrowerCreditScore2.Dirty = value;
+                _log_CoBorrowerCreditScore3.Dirty = value;
+                _log_CoBorrowerEquifaxBEACON.Dirty = value;
+                _log_CoBorrowerExperianFICO.Dirty = value;
+                _log_CoBorrowerIncomeAmount.Dirty = value;
+                _log_CoBorrowerIncomeName.Dirty = value;
+                _log_CoBorrowerIncomeType.Dirty = value;
+                _log_CoBorrowerInstitutionName.Dirty = value;
+                _log_CoborrowerName.Dirty = value;
+                _log_CoBorrowerScoreName.Dirty = value;
+                _log_CoBorrowerTransUnionEmpirica.Dirty = value;
+                _log_Code1.Dirty = value;
+                _log_Code2.Dirty = value;
+                _log_CodeDescription1.Dirty = value;
+                _log_CodeDescription2.Dirty = value;
+                _log_CommunityLending.Dirty = value;
+                _log_CreatedOn.Dirty = value;
+                _log_CreditAgency1.Dirty = value;
+                _log_CreditAgency2.Dirty = value;
+                _log_CreditReportDate1.Dirty = value;
+                _log_CreditReportDate2.Dirty = value;
+                _log_CreditReportID1.Dirty = value;
+                _log_CreditReportID2.Dirty = value;
+                _log_CuredAmortizationType.Dirty = value;
+                _log_CuredAppraisedValue.Dirty = value;
+                _log_CuredCLTV.Dirty = value;
+                _log_CuredHousingExpenseRatio.Dirty = value;
+                _log_CuredLoanPurpose.Dirty = value;
+                _log_CuredLoanTerm.Dirty = value;
+                _log_CuredLoanType.Dirty = value;
+                _log_CuredLTV.Dirty = value;
+                _log_CuredNoteRate.Dirty = value;
+                _log_CuredProposedTotalHousingPayment.Dirty = value;
+                _log_CuredRefinancePurpose.Dirty = value;
+                _log_CuredTotalExpenseRatio.Dirty = value;
+                _log_CuredTotalLoanAmount.Dirty = value;
+                _log_CuredTotalMonthlyIncome.Dirty = value;
+                _log_DateTimeAssessed.Dirty = value;
+                _log_DateTimeRequested.Dirty = value;
+                _log_DebtRatio.Dirty = value;
+                _log_DocumentationLevel.Dirty = value;
+                _log_DUCaseIDorLPAUSKey.Dirty = value;
+                _log_DUPropertyType.Dirty = value;
+                _log_eFolderGUID.Dirty = value;
+                _log_ExcessAvailableAssetsNoVerified.Dirty = value;
+                _log_FinancedMIAmount.Dirty = value;
+                _log_FirstPandI.Dirty = value;
+                _log_FirstSubmissionDate.Dirty = value;
+                _log_FirstSubmissionTime.Dirty = value;
+                _log_FreddieDocClass.Dirty = value;
+                _log_FundsRequiredClose.Dirty = value;
+                _log_GUID.Dirty = value;
+                _log_HLCTV.Dirty = value;
+                _log_HousingExpense.Dirty = value;
+                _log_HousingExpenseRatio.Dirty = value;
+                _log_HousingRatio.Dirty = value;
+                _log_HTLTV.Dirty = value;
+                _log_IncludingLess10Mos.Dirty = value;
+                _log_IncomeAssetBase.Dirty = value;
+                _log_IncomeAssetBonus.Dirty = value;
+                _log_IncomeAssetCommission.Dirty = value;
+                _log_IncomeAssetOther.Dirty = value;
+                _log_IncomeAssetOvertime.Dirty = value;
+                _log_IncomeAssetPosCashFlow.Dirty = value;
+                _log_IncomeAssetPositiveNetRental.Dirty = value;
+                _log_IndicatorScore.Dirty = value;
+                _log_IntendedUseofProperty.Dirty = value;
+                _log_LCLAEvaluatedServiceConclusion1.Dirty = value;
+                _log_LCLAEvaluatedServiceConclusion2.Dirty = value;
+                _log_LCLAEvaluatedServiceConclusion3.Dirty = value;
+                _log_LCLAEvaluatedServiceConclusion4.Dirty = value;
+                _log_LCLAEvaluatedServiceType1.Dirty = value;
+                _log_LCLAEvaluatedServiceType2.Dirty = value;
+                _log_LCLAEvaluatedServiceType3.Dirty = value;
+                _log_LCLAEvaluatedServiceType4.Dirty = value;
+                _log_LenderLoan.Dirty = value;
+                _log_LienType.Dirty = value;
+                _log_LoanAmount.Dirty = value;
+                _log_LoanApplicationID.Dirty = value;
+                _log_LoanProcessingStage.Dirty = value;
+                _log_LoanProspectorID.Dirty = value;
+                _log_LoanPurpose.Dirty = value;
+                _log_LoanTerm.Dirty = value;
+                _log_LoanType.Dirty = value;
+                _log_LPAssmtExpDate.Dirty = value;
+                _log_LPPropertyType.Dirty = value;
+                _log_LPVersion.Dirty = value;
+                _log_LQACollateralRepWarrantyServiceConclusion.Dirty = value;
+                _log_LQACreditRiskAssessmentConclusion.Dirty = value;
+                _log_LQADataCompareFieldConclusion.Dirty = value;
+                _log_LQADataCompareFieldName.Dirty = value;
+                _log_LQADataCompareResult.Dirty = value;
+                _log_LQALPKey.Dirty = value;
+                _log_LQAPurchaseEligibilityResult.Dirty = value;
+                _log_LQARiskAssessmentKey.Dirty = value;
+                _log_LQASubmissionDateTime.Dirty = value;
+                _log_LTV.Dirty = value;
+                _log_MaxMortgageLimit.Dirty = value;
+                _log_MIDecision.Dirty = value;
+                _log_MortgageType.Dirty = value;
+                _log_NegAmortizationType.Dirty = value;
+                _log_NegativeNetRental.Dirty = value;
+                _log_NetCashBack.Dirty = value;
+                _log_NewConstruction.Dirty = value;
+                _log_NoteRate.Dirty = value;
+                _log_NOTPNumber.Dirty = value;
+                _log_NoUnits.Dirty = value;
+                _log_NumberOfSubmissions.Dirty = value;
+                _log_OccupancyStatus.Dirty = value;
+                _log_OccupantDebtRatio.Dirty = value;
+                _log_OccupantHousingRatio.Dirty = value;
+                _log_OfferingIdentifier.Dirty = value;
+                _log_OriginatingCompany.Dirty = value;
+                _log_OwnerExistingMtg.Dirty = value;
+                _log_PandI.Dirty = value;
+                _log_PaymentFrequency.Dirty = value;
+                _log_PresentAddress.Dirty = value;
+                _log_PresentAddressCity.Dirty = value;
+                _log_PresentAddressState.Dirty = value;
+                _log_PresentAddressZipCode.Dirty = value;
+                _log_PresentHousingExpense.Dirty = value;
+                _log_PresentPrincipalHousingPayment.Dirty = value;
+                _log_PropertyAddress.Dirty = value;
+                _log_PropertyCity.Dirty = value;
+                _log_PropertyState.Dirty = value;
+                _log_PropertyZipcode.Dirty = value;
+                _log_ProposedHazardInsurance.Dirty = value;
+                _log_ProposedHOAFees.Dirty = value;
+                _log_ProposedHousingPITI.Dirty = value;
+                _log_ProposedMortgageInsurance.Dirty = value;
+                _log_ProposedOtherPayment.Dirty = value;
+                _log_ProposedTaxes.Dirty = value;
+                _log_ProposedTotalHousingPayment.Dirty = value;
+                _log_ProposedTotalMonthlyDebt.Dirty = value;
+                _log_PurchaseEligibility.Dirty = value;
+                _log_QualifyingRate.Dirty = value;
+                _log_RecordType.Dirty = value;
+                _log_RefinancePurpose.Dirty = value;
+                _log_Reserves.Dirty = value;
+                _log_ReservesRequiredVerified.Dirty = value;
+                _log_RiskClass.Dirty = value;
+                _log_SalesConcessions.Dirty = value;
+                _log_SalesPrice.Dirty = value;
+                _log_SecondPandI.Dirty = value;
+                _log_SelectedBorrower.Dirty = value;
+                _log_SelectedRepository.Dirty = value;
+                _log_SellerNumber.Dirty = value;
+                _log_SubjNegCashFlow.Dirty = value;
+                _log_SubmissionDate.Dirty = value;
+                _log_SubmissionNumber.Dirty = value;
+                _log_SubmissionTime.Dirty = value;
+                _log_SubmittedBy.Dirty = value;
+                _log_SubmittingCompany.Dirty = value;
+                _log_TemporarySubsidyBuydown.Dirty = value;
+                _log_TLTV.Dirty = value;
+                _log_TotalAsset.Dirty = value;
+                _log_TotalExpense.Dirty = value;
+                _log_TotalExpensePmt.Dirty = value;
+                _log_TotalExpenseRatio.Dirty = value;
+                _log_TotalFundsVerified.Dirty = value;
+                _log_TotalLoanAmount.Dirty = value;
+                _log_TotalMonthlyIncome.Dirty = value;
+                _log_TPONumber.Dirty = value;
+                _log_TransactionID.Dirty = value;
+                _log_UnderwritingRiskAssessOther.Dirty = value;
+                _log_UnderwritingRiskAssessType.Dirty = value;
+                _log_WithUndisclosedDebt.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public AUSTrackingLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

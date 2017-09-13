@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class NewYorkPrimaryLender : IClean
+    public sealed partial class NewYorkPrimaryLender : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -24,43 +24,38 @@ namespace EncompassRest.Loans
         public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
         private Value<string> _state;
         public string State { get { return _state; } set { _state = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _city.Clean
-                    && _comments.Clean
-                    && _id.Clean
-                    && _name.Clean
-                    && _newYorkPrimaryLenderIndex.Clean
-                    && _postalCode.Clean
-                    && _state.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _city.Dirty
+                    || _comments.Dirty
+                    || _id.Dirty
+                    || _name.Dirty
+                    || _newYorkPrimaryLenderIndex.Dirty
+                    || _postalCode.Dirty
+                    || _state.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var city = _city; city.Clean = value; _city = city;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var id = _id; id.Clean = value; _id = id;
-                var name = _name; name.Clean = value; _name = name;
-                var newYorkPrimaryLenderIndex = _newYorkPrimaryLenderIndex; newYorkPrimaryLenderIndex.Clean = value; _newYorkPrimaryLenderIndex = newYorkPrimaryLenderIndex;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var state = _state; state.Clean = value; _state = state;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _city.Dirty = value;
+                _comments.Dirty = value;
+                _id.Dirty = value;
+                _name.Dirty = value;
+                _newYorkPrimaryLenderIndex.Dirty = value;
+                _postalCode.Dirty = value;
+                _state.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public NewYorkPrimaryLender()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
@@ -123,7 +122,7 @@ namespace EncompassRest.Utilities
 
         private sealed class CustomContractResolver : DefaultContractResolver
         {
-            private static readonly StringEnumConverter s_enumConverter = new StringEnumConverter(true);
+            private static readonly JsonConverter s_enumConverter = new EnumJsonConverter(EnumOutput.CamelCaseName);
 
             public CustomContractResolver()
             {
@@ -136,18 +135,23 @@ namespace EncompassRest.Utilities
                 var propertyInfo = member as PropertyInfo;
                 if (propertyInfo != null)
                 {
-                    if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IClean)))
+                    var enumOutputAttribute = propertyInfo.GetCustomAttribute<EnumOutputAttribute>(false);
+                    if (enumOutputAttribute != null)
                     {
-                        property.ShouldSerialize = o => o != null && ((IClean)propertyInfo.GetValue(o))?.Clean == false;
+                        property.Converter = new EnumJsonConverter(enumOutputAttribute.EnumOutput);
+                    }
+                    if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                    {
+                        property.ShouldSerialize = o => o != null && ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
                     }
                     else
                     {
                         var propertyName = propertyInfo.Name;
                         var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IClean)));
+                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
                         if (backingField != null)
                         {
-                            property.ShouldSerialize = o => o != null && ((IClean)backingField.GetValue(o))?.Clean == false;
+                            property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
                         }
                     }
                 }
@@ -156,17 +160,17 @@ namespace EncompassRest.Utilities
 
             protected override JsonConverter ResolveContractConverter(Type objectType)
             {
-                var typeInfo = objectType.GetTypeInfo();
-                if (typeInfo.IsEnum)
+                var typeData = TypeData.Get(objectType);
+                if (typeData.IsEnum || typeData.NonNullableValueTypeData?.IsEnum == true)
                 {
                     return s_enumConverter;
                 }
-                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                if (typeData.TypeInfo.IsGenericType && !typeData.TypeInfo.IsGenericTypeDefinition)
                 {
-                    var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>();
+                    var jsonConverterAttribute = typeData.TypeInfo.GetCustomAttribute<JsonConverterAttribute>();
                     if (jsonConverterAttribute != null && jsonConverterAttribute.ConverterType.GetTypeInfo().IsGenericTypeDefinition)
                     {
-                        return (JsonConverter)Activator.CreateInstance(jsonConverterAttribute.ConverterType.MakeGenericType(typeInfo.GenericTypeArguments), jsonConverterAttribute.ConverterParameters);
+                        return (JsonConverter)Activator.CreateInstance(jsonConverterAttribute.ConverterType.MakeGenericType(typeData.TypeInfo.GenericTypeArguments), jsonConverterAttribute.ConverterParameters);
                     }
                 }
                 return base.ResolveContractConverter(objectType);

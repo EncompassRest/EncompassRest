@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PaymentTransaction : IClean
+    public sealed partial class PaymentTransaction : IDirty
     {
         private Value<string> _accountHolder;
         public string AccountHolder { get { return _accountHolder; } set { _accountHolder = value; } }
@@ -110,129 +110,124 @@ namespace EncompassRest.Loans
         public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
         private Value<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountHolder.Clean
-                    && _accountNumber.Clean
-                    && _additionalEscrow.Clean
-                    && _additionalPrincipal.Clean
-                    && _buydownSubsidyAmount.Clean
-                    && _checkNumber.Clean
-                    && _comments.Clean
-                    && _commonAmount.Clean
-                    && _commonDate.Clean
-                    && _createdById.Clean
-                    && _createdByName.Clean
-                    && _createdDateTimeUtc.Clean
-                    && _escrow.Clean
-                    && _escrowCityPropertyTax.Clean
-                    && _escrowFloodInsurance.Clean
-                    && _escrowHazardInsurance.Clean
-                    && _escrowMortgageInsurance.Clean
-                    && _escrowOther1.Clean
-                    && _escrowOther2.Clean
-                    && _escrowOther3.Clean
-                    && _escrowTax.Clean
-                    && _escrowUSDAMonthlyPremium.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _indexRate.Clean
-                    && _institutionName.Clean
-                    && _institutionRouting.Clean
-                    && _interest.Clean
-                    && _interestRate.Clean
-                    && _lateFee.Clean
-                    && _lateFeeIfLate.Clean
-                    && _latePaymentDate.Clean
-                    && _miscFee.Clean
-                    && _modifiedById.Clean
-                    && _modifiedByName.Clean
-                    && _modifiedDateTimeUtc.Clean
-                    && _paymentDepositedDate.Clean
-                    && _paymentDueDate.Clean
-                    && _paymentIndexDate.Clean
-                    && _paymentNumber.Clean
-                    && _paymentReceivedDate.Clean
-                    && _principal.Clean
-                    && _reference.Clean
-                    && _schedulePayLogMiscFee.Clean
-                    && _servicingPaymentMethod.Clean
-                    && _servicingTransactionType.Clean
-                    && _statementDate.Clean
-                    && _totalAmountDue.Clean
-                    && _totalAmountReceived.Clean
-                    && _transactionAmount.Clean
-                    && _transactionDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountHolder.Dirty
+                    || _accountNumber.Dirty
+                    || _additionalEscrow.Dirty
+                    || _additionalPrincipal.Dirty
+                    || _buydownSubsidyAmount.Dirty
+                    || _checkNumber.Dirty
+                    || _comments.Dirty
+                    || _commonAmount.Dirty
+                    || _commonDate.Dirty
+                    || _createdById.Dirty
+                    || _createdByName.Dirty
+                    || _createdDateTimeUtc.Dirty
+                    || _escrow.Dirty
+                    || _escrowCityPropertyTax.Dirty
+                    || _escrowFloodInsurance.Dirty
+                    || _escrowHazardInsurance.Dirty
+                    || _escrowMortgageInsurance.Dirty
+                    || _escrowOther1.Dirty
+                    || _escrowOther2.Dirty
+                    || _escrowOther3.Dirty
+                    || _escrowTax.Dirty
+                    || _escrowUSDAMonthlyPremium.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _indexRate.Dirty
+                    || _institutionName.Dirty
+                    || _institutionRouting.Dirty
+                    || _interest.Dirty
+                    || _interestRate.Dirty
+                    || _lateFee.Dirty
+                    || _lateFeeIfLate.Dirty
+                    || _latePaymentDate.Dirty
+                    || _miscFee.Dirty
+                    || _modifiedById.Dirty
+                    || _modifiedByName.Dirty
+                    || _modifiedDateTimeUtc.Dirty
+                    || _paymentDepositedDate.Dirty
+                    || _paymentDueDate.Dirty
+                    || _paymentIndexDate.Dirty
+                    || _paymentNumber.Dirty
+                    || _paymentReceivedDate.Dirty
+                    || _principal.Dirty
+                    || _reference.Dirty
+                    || _schedulePayLogMiscFee.Dirty
+                    || _servicingPaymentMethod.Dirty
+                    || _servicingTransactionType.Dirty
+                    || _statementDate.Dirty
+                    || _totalAmountDue.Dirty
+                    || _totalAmountReceived.Dirty
+                    || _transactionAmount.Dirty
+                    || _transactionDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountHolder = _accountHolder; accountHolder.Clean = value; _accountHolder = accountHolder;
-                var accountNumber = _accountNumber; accountNumber.Clean = value; _accountNumber = accountNumber;
-                var additionalEscrow = _additionalEscrow; additionalEscrow.Clean = value; _additionalEscrow = additionalEscrow;
-                var additionalPrincipal = _additionalPrincipal; additionalPrincipal.Clean = value; _additionalPrincipal = additionalPrincipal;
-                var buydownSubsidyAmount = _buydownSubsidyAmount; buydownSubsidyAmount.Clean = value; _buydownSubsidyAmount = buydownSubsidyAmount;
-                var checkNumber = _checkNumber; checkNumber.Clean = value; _checkNumber = checkNumber;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var commonAmount = _commonAmount; commonAmount.Clean = value; _commonAmount = commonAmount;
-                var commonDate = _commonDate; commonDate.Clean = value; _commonDate = commonDate;
-                var createdById = _createdById; createdById.Clean = value; _createdById = createdById;
-                var createdByName = _createdByName; createdByName.Clean = value; _createdByName = createdByName;
-                var createdDateTimeUtc = _createdDateTimeUtc; createdDateTimeUtc.Clean = value; _createdDateTimeUtc = createdDateTimeUtc;
-                var escrow = _escrow; escrow.Clean = value; _escrow = escrow;
-                var escrowCityPropertyTax = _escrowCityPropertyTax; escrowCityPropertyTax.Clean = value; _escrowCityPropertyTax = escrowCityPropertyTax;
-                var escrowFloodInsurance = _escrowFloodInsurance; escrowFloodInsurance.Clean = value; _escrowFloodInsurance = escrowFloodInsurance;
-                var escrowHazardInsurance = _escrowHazardInsurance; escrowHazardInsurance.Clean = value; _escrowHazardInsurance = escrowHazardInsurance;
-                var escrowMortgageInsurance = _escrowMortgageInsurance; escrowMortgageInsurance.Clean = value; _escrowMortgageInsurance = escrowMortgageInsurance;
-                var escrowOther1 = _escrowOther1; escrowOther1.Clean = value; _escrowOther1 = escrowOther1;
-                var escrowOther2 = _escrowOther2; escrowOther2.Clean = value; _escrowOther2 = escrowOther2;
-                var escrowOther3 = _escrowOther3; escrowOther3.Clean = value; _escrowOther3 = escrowOther3;
-                var escrowTax = _escrowTax; escrowTax.Clean = value; _escrowTax = escrowTax;
-                var escrowUSDAMonthlyPremium = _escrowUSDAMonthlyPremium; escrowUSDAMonthlyPremium.Clean = value; _escrowUSDAMonthlyPremium = escrowUSDAMonthlyPremium;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var indexRate = _indexRate; indexRate.Clean = value; _indexRate = indexRate;
-                var institutionName = _institutionName; institutionName.Clean = value; _institutionName = institutionName;
-                var institutionRouting = _institutionRouting; institutionRouting.Clean = value; _institutionRouting = institutionRouting;
-                var interest = _interest; interest.Clean = value; _interest = interest;
-                var interestRate = _interestRate; interestRate.Clean = value; _interestRate = interestRate;
-                var lateFee = _lateFee; lateFee.Clean = value; _lateFee = lateFee;
-                var lateFeeIfLate = _lateFeeIfLate; lateFeeIfLate.Clean = value; _lateFeeIfLate = lateFeeIfLate;
-                var latePaymentDate = _latePaymentDate; latePaymentDate.Clean = value; _latePaymentDate = latePaymentDate;
-                var miscFee = _miscFee; miscFee.Clean = value; _miscFee = miscFee;
-                var modifiedById = _modifiedById; modifiedById.Clean = value; _modifiedById = modifiedById;
-                var modifiedByName = _modifiedByName; modifiedByName.Clean = value; _modifiedByName = modifiedByName;
-                var modifiedDateTimeUtc = _modifiedDateTimeUtc; modifiedDateTimeUtc.Clean = value; _modifiedDateTimeUtc = modifiedDateTimeUtc;
-                var paymentDepositedDate = _paymentDepositedDate; paymentDepositedDate.Clean = value; _paymentDepositedDate = paymentDepositedDate;
-                var paymentDueDate = _paymentDueDate; paymentDueDate.Clean = value; _paymentDueDate = paymentDueDate;
-                var paymentIndexDate = _paymentIndexDate; paymentIndexDate.Clean = value; _paymentIndexDate = paymentIndexDate;
-                var paymentNumber = _paymentNumber; paymentNumber.Clean = value; _paymentNumber = paymentNumber;
-                var paymentReceivedDate = _paymentReceivedDate; paymentReceivedDate.Clean = value; _paymentReceivedDate = paymentReceivedDate;
-                var principal = _principal; principal.Clean = value; _principal = principal;
-                var reference = _reference; reference.Clean = value; _reference = reference;
-                var schedulePayLogMiscFee = _schedulePayLogMiscFee; schedulePayLogMiscFee.Clean = value; _schedulePayLogMiscFee = schedulePayLogMiscFee;
-                var servicingPaymentMethod = _servicingPaymentMethod; servicingPaymentMethod.Clean = value; _servicingPaymentMethod = servicingPaymentMethod;
-                var servicingTransactionType = _servicingTransactionType; servicingTransactionType.Clean = value; _servicingTransactionType = servicingTransactionType;
-                var statementDate = _statementDate; statementDate.Clean = value; _statementDate = statementDate;
-                var totalAmountDue = _totalAmountDue; totalAmountDue.Clean = value; _totalAmountDue = totalAmountDue;
-                var totalAmountReceived = _totalAmountReceived; totalAmountReceived.Clean = value; _totalAmountReceived = totalAmountReceived;
-                var transactionAmount = _transactionAmount; transactionAmount.Clean = value; _transactionAmount = transactionAmount;
-                var transactionDate = _transactionDate; transactionDate.Clean = value; _transactionDate = transactionDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountHolder.Dirty = value;
+                _accountNumber.Dirty = value;
+                _additionalEscrow.Dirty = value;
+                _additionalPrincipal.Dirty = value;
+                _buydownSubsidyAmount.Dirty = value;
+                _checkNumber.Dirty = value;
+                _comments.Dirty = value;
+                _commonAmount.Dirty = value;
+                _commonDate.Dirty = value;
+                _createdById.Dirty = value;
+                _createdByName.Dirty = value;
+                _createdDateTimeUtc.Dirty = value;
+                _escrow.Dirty = value;
+                _escrowCityPropertyTax.Dirty = value;
+                _escrowFloodInsurance.Dirty = value;
+                _escrowHazardInsurance.Dirty = value;
+                _escrowMortgageInsurance.Dirty = value;
+                _escrowOther1.Dirty = value;
+                _escrowOther2.Dirty = value;
+                _escrowOther3.Dirty = value;
+                _escrowTax.Dirty = value;
+                _escrowUSDAMonthlyPremium.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _indexRate.Dirty = value;
+                _institutionName.Dirty = value;
+                _institutionRouting.Dirty = value;
+                _interest.Dirty = value;
+                _interestRate.Dirty = value;
+                _lateFee.Dirty = value;
+                _lateFeeIfLate.Dirty = value;
+                _latePaymentDate.Dirty = value;
+                _miscFee.Dirty = value;
+                _modifiedById.Dirty = value;
+                _modifiedByName.Dirty = value;
+                _modifiedDateTimeUtc.Dirty = value;
+                _paymentDepositedDate.Dirty = value;
+                _paymentDueDate.Dirty = value;
+                _paymentIndexDate.Dirty = value;
+                _paymentNumber.Dirty = value;
+                _paymentReceivedDate.Dirty = value;
+                _principal.Dirty = value;
+                _reference.Dirty = value;
+                _schedulePayLogMiscFee.Dirty = value;
+                _servicingPaymentMethod.Dirty = value;
+                _servicingTransactionType.Dirty = value;
+                _statementDate.Dirty = value;
+                _totalAmountDue.Dirty = value;
+                _totalAmountReceived.Dirty = value;
+                _transactionAmount.Dirty = value;
+                _transactionDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PaymentTransaction()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

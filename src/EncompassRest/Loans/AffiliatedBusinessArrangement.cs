@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AffiliatedBusinessArrangement : IClean
+    public sealed partial class AffiliatedBusinessArrangement : IDirty
     {
         private Value<int?> _affiliatedBusinessArrangementIndex;
         public int? AffiliatedBusinessArrangementIndex { get { return _affiliatedBusinessArrangementIndex; } set { _affiliatedBusinessArrangementIndex = value; } }
@@ -68,87 +68,82 @@ namespace EncompassRest.Loans
         public string ServiceDescription6 { get { return _serviceDescription6; } set { _serviceDescription6 = value; } }
         private Value<bool?> _settlementIndicator;
         public bool? SettlementIndicator { get { return _settlementIndicator; } set { _settlementIndicator = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _affiliatedBusinessArrangementIndex.Clean
-                    && _affiliateName.Clean
-                    && _chargeRangeChargesDescription1.Clean
-                    && _chargeRangeChargesDescription2.Clean
-                    && _chargeRangeChargesDescription3.Clean
-                    && _chargeRangeChargesDescription4.Clean
-                    && _chargeRangeChargesDescription5.Clean
-                    && _chargeRangeChargesDescription6.Clean
-                    && _id.Clean
-                    && _lenderAddress.Clean
-                    && _lenderAddressCity.Clean
-                    && _lenderAddressState.Clean
-                    && _lenderAddressZipcode.Clean
-                    && _lenderName.Clean
-                    && _natureOfRelationship.Clean
-                    && _percentOwnershipInterest.Clean
-                    && _purchaseSaleRefinanceIndicator.Clean
-                    && _requiredUseIndicator1.Clean
-                    && _requiredUseIndicator2.Clean
-                    && _requiredUseIndicator3.Clean
-                    && _requiredUseIndicator4.Clean
-                    && _requiredUseIndicator5.Clean
-                    && _requiredUseIndicator6.Clean
-                    && _serviceDescription1.Clean
-                    && _serviceDescription2.Clean
-                    && _serviceDescription3.Clean
-                    && _serviceDescription4.Clean
-                    && _serviceDescription5.Clean
-                    && _serviceDescription6.Clean
-                    && _settlementIndicator.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _affiliatedBusinessArrangementIndex.Dirty
+                    || _affiliateName.Dirty
+                    || _chargeRangeChargesDescription1.Dirty
+                    || _chargeRangeChargesDescription2.Dirty
+                    || _chargeRangeChargesDescription3.Dirty
+                    || _chargeRangeChargesDescription4.Dirty
+                    || _chargeRangeChargesDescription5.Dirty
+                    || _chargeRangeChargesDescription6.Dirty
+                    || _id.Dirty
+                    || _lenderAddress.Dirty
+                    || _lenderAddressCity.Dirty
+                    || _lenderAddressState.Dirty
+                    || _lenderAddressZipcode.Dirty
+                    || _lenderName.Dirty
+                    || _natureOfRelationship.Dirty
+                    || _percentOwnershipInterest.Dirty
+                    || _purchaseSaleRefinanceIndicator.Dirty
+                    || _requiredUseIndicator1.Dirty
+                    || _requiredUseIndicator2.Dirty
+                    || _requiredUseIndicator3.Dirty
+                    || _requiredUseIndicator4.Dirty
+                    || _requiredUseIndicator5.Dirty
+                    || _requiredUseIndicator6.Dirty
+                    || _serviceDescription1.Dirty
+                    || _serviceDescription2.Dirty
+                    || _serviceDescription3.Dirty
+                    || _serviceDescription4.Dirty
+                    || _serviceDescription5.Dirty
+                    || _serviceDescription6.Dirty
+                    || _settlementIndicator.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var affiliatedBusinessArrangementIndex = _affiliatedBusinessArrangementIndex; affiliatedBusinessArrangementIndex.Clean = value; _affiliatedBusinessArrangementIndex = affiliatedBusinessArrangementIndex;
-                var affiliateName = _affiliateName; affiliateName.Clean = value; _affiliateName = affiliateName;
-                var chargeRangeChargesDescription1 = _chargeRangeChargesDescription1; chargeRangeChargesDescription1.Clean = value; _chargeRangeChargesDescription1 = chargeRangeChargesDescription1;
-                var chargeRangeChargesDescription2 = _chargeRangeChargesDescription2; chargeRangeChargesDescription2.Clean = value; _chargeRangeChargesDescription2 = chargeRangeChargesDescription2;
-                var chargeRangeChargesDescription3 = _chargeRangeChargesDescription3; chargeRangeChargesDescription3.Clean = value; _chargeRangeChargesDescription3 = chargeRangeChargesDescription3;
-                var chargeRangeChargesDescription4 = _chargeRangeChargesDescription4; chargeRangeChargesDescription4.Clean = value; _chargeRangeChargesDescription4 = chargeRangeChargesDescription4;
-                var chargeRangeChargesDescription5 = _chargeRangeChargesDescription5; chargeRangeChargesDescription5.Clean = value; _chargeRangeChargesDescription5 = chargeRangeChargesDescription5;
-                var chargeRangeChargesDescription6 = _chargeRangeChargesDescription6; chargeRangeChargesDescription6.Clean = value; _chargeRangeChargesDescription6 = chargeRangeChargesDescription6;
-                var id = _id; id.Clean = value; _id = id;
-                var lenderAddress = _lenderAddress; lenderAddress.Clean = value; _lenderAddress = lenderAddress;
-                var lenderAddressCity = _lenderAddressCity; lenderAddressCity.Clean = value; _lenderAddressCity = lenderAddressCity;
-                var lenderAddressState = _lenderAddressState; lenderAddressState.Clean = value; _lenderAddressState = lenderAddressState;
-                var lenderAddressZipcode = _lenderAddressZipcode; lenderAddressZipcode.Clean = value; _lenderAddressZipcode = lenderAddressZipcode;
-                var lenderName = _lenderName; lenderName.Clean = value; _lenderName = lenderName;
-                var natureOfRelationship = _natureOfRelationship; natureOfRelationship.Clean = value; _natureOfRelationship = natureOfRelationship;
-                var percentOwnershipInterest = _percentOwnershipInterest; percentOwnershipInterest.Clean = value; _percentOwnershipInterest = percentOwnershipInterest;
-                var purchaseSaleRefinanceIndicator = _purchaseSaleRefinanceIndicator; purchaseSaleRefinanceIndicator.Clean = value; _purchaseSaleRefinanceIndicator = purchaseSaleRefinanceIndicator;
-                var requiredUseIndicator1 = _requiredUseIndicator1; requiredUseIndicator1.Clean = value; _requiredUseIndicator1 = requiredUseIndicator1;
-                var requiredUseIndicator2 = _requiredUseIndicator2; requiredUseIndicator2.Clean = value; _requiredUseIndicator2 = requiredUseIndicator2;
-                var requiredUseIndicator3 = _requiredUseIndicator3; requiredUseIndicator3.Clean = value; _requiredUseIndicator3 = requiredUseIndicator3;
-                var requiredUseIndicator4 = _requiredUseIndicator4; requiredUseIndicator4.Clean = value; _requiredUseIndicator4 = requiredUseIndicator4;
-                var requiredUseIndicator5 = _requiredUseIndicator5; requiredUseIndicator5.Clean = value; _requiredUseIndicator5 = requiredUseIndicator5;
-                var requiredUseIndicator6 = _requiredUseIndicator6; requiredUseIndicator6.Clean = value; _requiredUseIndicator6 = requiredUseIndicator6;
-                var serviceDescription1 = _serviceDescription1; serviceDescription1.Clean = value; _serviceDescription1 = serviceDescription1;
-                var serviceDescription2 = _serviceDescription2; serviceDescription2.Clean = value; _serviceDescription2 = serviceDescription2;
-                var serviceDescription3 = _serviceDescription3; serviceDescription3.Clean = value; _serviceDescription3 = serviceDescription3;
-                var serviceDescription4 = _serviceDescription4; serviceDescription4.Clean = value; _serviceDescription4 = serviceDescription4;
-                var serviceDescription5 = _serviceDescription5; serviceDescription5.Clean = value; _serviceDescription5 = serviceDescription5;
-                var serviceDescription6 = _serviceDescription6; serviceDescription6.Clean = value; _serviceDescription6 = serviceDescription6;
-                var settlementIndicator = _settlementIndicator; settlementIndicator.Clean = value; _settlementIndicator = settlementIndicator;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _affiliatedBusinessArrangementIndex.Dirty = value;
+                _affiliateName.Dirty = value;
+                _chargeRangeChargesDescription1.Dirty = value;
+                _chargeRangeChargesDescription2.Dirty = value;
+                _chargeRangeChargesDescription3.Dirty = value;
+                _chargeRangeChargesDescription4.Dirty = value;
+                _chargeRangeChargesDescription5.Dirty = value;
+                _chargeRangeChargesDescription6.Dirty = value;
+                _id.Dirty = value;
+                _lenderAddress.Dirty = value;
+                _lenderAddressCity.Dirty = value;
+                _lenderAddressState.Dirty = value;
+                _lenderAddressZipcode.Dirty = value;
+                _lenderName.Dirty = value;
+                _natureOfRelationship.Dirty = value;
+                _percentOwnershipInterest.Dirty = value;
+                _purchaseSaleRefinanceIndicator.Dirty = value;
+                _requiredUseIndicator1.Dirty = value;
+                _requiredUseIndicator2.Dirty = value;
+                _requiredUseIndicator3.Dirty = value;
+                _requiredUseIndicator4.Dirty = value;
+                _requiredUseIndicator5.Dirty = value;
+                _requiredUseIndicator6.Dirty = value;
+                _serviceDescription1.Dirty = value;
+                _serviceDescription2.Dirty = value;
+                _serviceDescription3.Dirty = value;
+                _serviceDescription4.Dirty = value;
+                _serviceDescription5.Dirty = value;
+                _serviceDescription6.Dirty = value;
+                _settlementIndicator.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public AffiliatedBusinessArrangement()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

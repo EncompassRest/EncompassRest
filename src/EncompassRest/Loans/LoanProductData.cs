@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanProductData : IClean
+    public sealed partial class LoanProductData : IDirty
     {
         private Value<decimal?> _annualFeeNeededAmount;
         public decimal? AnnualFeeNeededAmount { get { return _annualFeeNeededAmount; } set { _annualFeeNeededAmount = value; } }
@@ -214,233 +214,228 @@ namespace EncompassRest.Loans
         public decimal? TransactionFees { get { return _transactionFees; } set { _transactionFees = value; } }
         private Value<decimal?> _wireFee;
         public decimal? WireFee { get { return _wireFee; } set { _wireFee = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _annualFeeNeededAmount.Clean
-                    && _applyLifeCapLowIndicator.Clean
-                    && _armDisclosureType.Clean
-                    && _armIndexType.Clean
-                    && _balloonIndicator.Clean
-                    && _balloonLoanMaturityTermMonthsCount.Clean
-                    && _borrowerEstimatedClosingDate.Clean
-                    && _branchLocationNmlsId.Clean
-                    && _branchManagerNmlsId.Clean
-                    && _buydowns.Clean
-                    && _convertibleIndicator.Clean
-                    && _discounted.Clean
-                    && _discountedRate.Clean
-                    && _drawPeriodMonthsCount.Clean
-                    && _escrowWaiverIndicator.Clean
-                    && _excludeLoanFromNMLSReportIndicator.Clean
-                    && _floorBasis.Clean
-                    && _floorPercent.Clean
-                    && _floorVerbiage.Clean
-                    && _fnmProductPlanIdentifier.Clean
-                    && _freddieMacArmIndexType.Clean
-                    && _freOfferingIdentifier.Clean
-                    && _fullPrepaymentPenaltyOptionType.Clean
-                    && _gseProjectClassificationType.Clean
-                    && _gsePropertyType.Clean
-                    && _hardPrepaymentPenaltyMonths.Clean
-                    && _helocPeriodTemplateName.Clean
-                    && _helocRepaymentDrawPeriods.Clean
-                    && _id.Clean
-                    && _indexCurrentValuePercent.Clean
-                    && _indexLookbackPeriod.Clean
-                    && _indexMarginPercent.Clean
-                    && _initialAdvanceAmount.Clean
-                    && _initialApplicationAmount.Clean
-                    && _inquiryOrPreQualificationIndicator.Clean
-                    && _lienPriorityType.Clean
-                    && _loanDocumentationType.Clean
-                    && _loanRepaymentType.Clean
-                    && _loanScheduledClosingDate.Clean
-                    && _maximumMonthlyPayment.Clean
-                    && _maxLifeInterestCapPercent.Clean
-                    && _miCoveragePercent.Clean
-                    && _minimumAdvanceAmount.Clean
-                    && _minimumAllowableApr.Clean
-                    && _minimumDrawPeroidPaymentPercent.Clean
-                    && _minimumPaymentAmount.Clean
-                    && _minimumPaymentLessThanAmount.Clean
-                    && _minimumPaymentPercent.Clean
-                    && _minimumPaymentUpbAmount.Clean
-                    && _minimumPaymentUpbPercent.Clean
-                    && _minimumRepayPeriodPaymentPercent.Clean
-                    && _monthsAppliedToPrepaymentPenaltyFeeCount.Clean
-                    && _negativeAmortizationLimitPercent.Clean
-                    && _netInitialAndFinal.Clean
-                    && _nmlsDocumentationType.Clean
-                    && _nmlsFirstMortgageType.Clean
-                    && _nmlsLoanType.Clean
-                    && _nmlsOptionARMIndicator.Clean
-                    && _nmlsPiggyBackOrFundedHELOCIndicator.Clean
-                    && _nmlsProductionSoldToType.Clean
-                    && _nmlsRefinancePurposeType.Clean
-                    && _nmlsReverseMortgageType.Clean
-                    && _oralRequestForExtensionOfCreditIndicator.Clean
-                    && _overLimitCharge.Clean
-                    && _overLimitReturnCharge.Clean
-                    && _participationFees.Clean
-                    && _paymentAdjustmentDurationMonthsCount.Clean
-                    && _paymentAdjustmentPeriodicCapPercent.Clean
-                    && _paymentFrequencyType.Clean
-                    && _prepaymentPenalties.Clean
-                    && _prepaymentPenaltyBasedOn.Clean
-                    && _prepaymentPenaltyIndicator.Clean
-                    && _prepaymentPenaltyPercent.Clean
-                    && _prepaymentPenaltyTermMonthsCount.Clean
-                    && _prepaymentPenaltyVerbiage.Clean
-                    && _productName.Clean
-                    && _qualifyingRatePercent.Clean
-                    && _rateAdjustmentDurationMonthsCount.Clean
-                    && _rateAdjustmentLifetimeCapPercent.Clean
-                    && _rateAdjustmentPercent.Clean
-                    && _rateAdjustmentSubsequentCapPercent.Clean
-                    && _releaseRecoringCharge.Clean
-                    && _remainingBuydownAmount.Clean
-                    && _repayPeriodMonthsCount.Clean
-                    && _returnedCheckCharge.Clean
-                    && _returnedCheckChargeRatePercent.Clean
-                    && _returnedCheckMaxCharge.Clean
-                    && _returnedCheckMinCharge.Clean
-                    && _roundPercent.Clean
-                    && _roundType.Clean
-                    && _scheduledFirstPaymentAdjustmentDate.Clean
-                    && _scheduledFirstPaymentDate.Clean
-                    && _stopPaymentCharge.Clean
-                    && _subsequentRateAdjustmentMonthsCount.Clean
-                    && _terminationFeeAmount.Clean
-                    && _terminationPeriodMonthsCount.Clean
-                    && _thirdPartyFeeFromAmount.Clean
-                    && _thirdPartyFeeToAmount.Clean
-                    && _timelyPaymentRateReductionPercent.Clean
-                    && _timelyPaymentRewards.Clean
-                    && _totalSubsidyAmount.Clean
-                    && _transactionFees.Clean
-                    && _wireFee.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _annualFeeNeededAmount.Dirty
+                    || _applyLifeCapLowIndicator.Dirty
+                    || _armDisclosureType.Dirty
+                    || _armIndexType.Dirty
+                    || _balloonIndicator.Dirty
+                    || _balloonLoanMaturityTermMonthsCount.Dirty
+                    || _borrowerEstimatedClosingDate.Dirty
+                    || _branchLocationNmlsId.Dirty
+                    || _branchManagerNmlsId.Dirty
+                    || _buydowns.Dirty
+                    || _convertibleIndicator.Dirty
+                    || _discounted.Dirty
+                    || _discountedRate.Dirty
+                    || _drawPeriodMonthsCount.Dirty
+                    || _escrowWaiverIndicator.Dirty
+                    || _excludeLoanFromNMLSReportIndicator.Dirty
+                    || _floorBasis.Dirty
+                    || _floorPercent.Dirty
+                    || _floorVerbiage.Dirty
+                    || _fnmProductPlanIdentifier.Dirty
+                    || _freddieMacArmIndexType.Dirty
+                    || _freOfferingIdentifier.Dirty
+                    || _fullPrepaymentPenaltyOptionType.Dirty
+                    || _gseProjectClassificationType.Dirty
+                    || _gsePropertyType.Dirty
+                    || _hardPrepaymentPenaltyMonths.Dirty
+                    || _helocPeriodTemplateName.Dirty
+                    || _helocRepaymentDrawPeriods.Dirty
+                    || _id.Dirty
+                    || _indexCurrentValuePercent.Dirty
+                    || _indexLookbackPeriod.Dirty
+                    || _indexMarginPercent.Dirty
+                    || _initialAdvanceAmount.Dirty
+                    || _initialApplicationAmount.Dirty
+                    || _inquiryOrPreQualificationIndicator.Dirty
+                    || _lienPriorityType.Dirty
+                    || _loanDocumentationType.Dirty
+                    || _loanRepaymentType.Dirty
+                    || _loanScheduledClosingDate.Dirty
+                    || _maximumMonthlyPayment.Dirty
+                    || _maxLifeInterestCapPercent.Dirty
+                    || _miCoveragePercent.Dirty
+                    || _minimumAdvanceAmount.Dirty
+                    || _minimumAllowableApr.Dirty
+                    || _minimumDrawPeroidPaymentPercent.Dirty
+                    || _minimumPaymentAmount.Dirty
+                    || _minimumPaymentLessThanAmount.Dirty
+                    || _minimumPaymentPercent.Dirty
+                    || _minimumPaymentUpbAmount.Dirty
+                    || _minimumPaymentUpbPercent.Dirty
+                    || _minimumRepayPeriodPaymentPercent.Dirty
+                    || _monthsAppliedToPrepaymentPenaltyFeeCount.Dirty
+                    || _negativeAmortizationLimitPercent.Dirty
+                    || _netInitialAndFinal.Dirty
+                    || _nmlsDocumentationType.Dirty
+                    || _nmlsFirstMortgageType.Dirty
+                    || _nmlsLoanType.Dirty
+                    || _nmlsOptionARMIndicator.Dirty
+                    || _nmlsPiggyBackOrFundedHELOCIndicator.Dirty
+                    || _nmlsProductionSoldToType.Dirty
+                    || _nmlsRefinancePurposeType.Dirty
+                    || _nmlsReverseMortgageType.Dirty
+                    || _oralRequestForExtensionOfCreditIndicator.Dirty
+                    || _overLimitCharge.Dirty
+                    || _overLimitReturnCharge.Dirty
+                    || _participationFees.Dirty
+                    || _paymentAdjustmentDurationMonthsCount.Dirty
+                    || _paymentAdjustmentPeriodicCapPercent.Dirty
+                    || _paymentFrequencyType.Dirty
+                    || _prepaymentPenalties.Dirty
+                    || _prepaymentPenaltyBasedOn.Dirty
+                    || _prepaymentPenaltyIndicator.Dirty
+                    || _prepaymentPenaltyPercent.Dirty
+                    || _prepaymentPenaltyTermMonthsCount.Dirty
+                    || _prepaymentPenaltyVerbiage.Dirty
+                    || _productName.Dirty
+                    || _qualifyingRatePercent.Dirty
+                    || _rateAdjustmentDurationMonthsCount.Dirty
+                    || _rateAdjustmentLifetimeCapPercent.Dirty
+                    || _rateAdjustmentPercent.Dirty
+                    || _rateAdjustmentSubsequentCapPercent.Dirty
+                    || _releaseRecoringCharge.Dirty
+                    || _remainingBuydownAmount.Dirty
+                    || _repayPeriodMonthsCount.Dirty
+                    || _returnedCheckCharge.Dirty
+                    || _returnedCheckChargeRatePercent.Dirty
+                    || _returnedCheckMaxCharge.Dirty
+                    || _returnedCheckMinCharge.Dirty
+                    || _roundPercent.Dirty
+                    || _roundType.Dirty
+                    || _scheduledFirstPaymentAdjustmentDate.Dirty
+                    || _scheduledFirstPaymentDate.Dirty
+                    || _stopPaymentCharge.Dirty
+                    || _subsequentRateAdjustmentMonthsCount.Dirty
+                    || _terminationFeeAmount.Dirty
+                    || _terminationPeriodMonthsCount.Dirty
+                    || _thirdPartyFeeFromAmount.Dirty
+                    || _thirdPartyFeeToAmount.Dirty
+                    || _timelyPaymentRateReductionPercent.Dirty
+                    || _timelyPaymentRewards.Dirty
+                    || _totalSubsidyAmount.Dirty
+                    || _transactionFees.Dirty
+                    || _wireFee.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var annualFeeNeededAmount = _annualFeeNeededAmount; annualFeeNeededAmount.Clean = value; _annualFeeNeededAmount = annualFeeNeededAmount;
-                var applyLifeCapLowIndicator = _applyLifeCapLowIndicator; applyLifeCapLowIndicator.Clean = value; _applyLifeCapLowIndicator = applyLifeCapLowIndicator;
-                var armDisclosureType = _armDisclosureType; armDisclosureType.Clean = value; _armDisclosureType = armDisclosureType;
-                var armIndexType = _armIndexType; armIndexType.Clean = value; _armIndexType = armIndexType;
-                var balloonIndicator = _balloonIndicator; balloonIndicator.Clean = value; _balloonIndicator = balloonIndicator;
-                var balloonLoanMaturityTermMonthsCount = _balloonLoanMaturityTermMonthsCount; balloonLoanMaturityTermMonthsCount.Clean = value; _balloonLoanMaturityTermMonthsCount = balloonLoanMaturityTermMonthsCount;
-                var borrowerEstimatedClosingDate = _borrowerEstimatedClosingDate; borrowerEstimatedClosingDate.Clean = value; _borrowerEstimatedClosingDate = borrowerEstimatedClosingDate;
-                var branchLocationNmlsId = _branchLocationNmlsId; branchLocationNmlsId.Clean = value; _branchLocationNmlsId = branchLocationNmlsId;
-                var branchManagerNmlsId = _branchManagerNmlsId; branchManagerNmlsId.Clean = value; _branchManagerNmlsId = branchManagerNmlsId;
-                var buydowns = _buydowns; buydowns.Clean = value; _buydowns = buydowns;
-                var convertibleIndicator = _convertibleIndicator; convertibleIndicator.Clean = value; _convertibleIndicator = convertibleIndicator;
-                var discounted = _discounted; discounted.Clean = value; _discounted = discounted;
-                var discountedRate = _discountedRate; discountedRate.Clean = value; _discountedRate = discountedRate;
-                var drawPeriodMonthsCount = _drawPeriodMonthsCount; drawPeriodMonthsCount.Clean = value; _drawPeriodMonthsCount = drawPeriodMonthsCount;
-                var escrowWaiverIndicator = _escrowWaiverIndicator; escrowWaiverIndicator.Clean = value; _escrowWaiverIndicator = escrowWaiverIndicator;
-                var excludeLoanFromNMLSReportIndicator = _excludeLoanFromNMLSReportIndicator; excludeLoanFromNMLSReportIndicator.Clean = value; _excludeLoanFromNMLSReportIndicator = excludeLoanFromNMLSReportIndicator;
-                var floorBasis = _floorBasis; floorBasis.Clean = value; _floorBasis = floorBasis;
-                var floorPercent = _floorPercent; floorPercent.Clean = value; _floorPercent = floorPercent;
-                var floorVerbiage = _floorVerbiage; floorVerbiage.Clean = value; _floorVerbiage = floorVerbiage;
-                var fnmProductPlanIdentifier = _fnmProductPlanIdentifier; fnmProductPlanIdentifier.Clean = value; _fnmProductPlanIdentifier = fnmProductPlanIdentifier;
-                var freddieMacArmIndexType = _freddieMacArmIndexType; freddieMacArmIndexType.Clean = value; _freddieMacArmIndexType = freddieMacArmIndexType;
-                var freOfferingIdentifier = _freOfferingIdentifier; freOfferingIdentifier.Clean = value; _freOfferingIdentifier = freOfferingIdentifier;
-                var fullPrepaymentPenaltyOptionType = _fullPrepaymentPenaltyOptionType; fullPrepaymentPenaltyOptionType.Clean = value; _fullPrepaymentPenaltyOptionType = fullPrepaymentPenaltyOptionType;
-                var gseProjectClassificationType = _gseProjectClassificationType; gseProjectClassificationType.Clean = value; _gseProjectClassificationType = gseProjectClassificationType;
-                var gsePropertyType = _gsePropertyType; gsePropertyType.Clean = value; _gsePropertyType = gsePropertyType;
-                var hardPrepaymentPenaltyMonths = _hardPrepaymentPenaltyMonths; hardPrepaymentPenaltyMonths.Clean = value; _hardPrepaymentPenaltyMonths = hardPrepaymentPenaltyMonths;
-                var helocPeriodTemplateName = _helocPeriodTemplateName; helocPeriodTemplateName.Clean = value; _helocPeriodTemplateName = helocPeriodTemplateName;
-                var helocRepaymentDrawPeriods = _helocRepaymentDrawPeriods; helocRepaymentDrawPeriods.Clean = value; _helocRepaymentDrawPeriods = helocRepaymentDrawPeriods;
-                var id = _id; id.Clean = value; _id = id;
-                var indexCurrentValuePercent = _indexCurrentValuePercent; indexCurrentValuePercent.Clean = value; _indexCurrentValuePercent = indexCurrentValuePercent;
-                var indexLookbackPeriod = _indexLookbackPeriod; indexLookbackPeriod.Clean = value; _indexLookbackPeriod = indexLookbackPeriod;
-                var indexMarginPercent = _indexMarginPercent; indexMarginPercent.Clean = value; _indexMarginPercent = indexMarginPercent;
-                var initialAdvanceAmount = _initialAdvanceAmount; initialAdvanceAmount.Clean = value; _initialAdvanceAmount = initialAdvanceAmount;
-                var initialApplicationAmount = _initialApplicationAmount; initialApplicationAmount.Clean = value; _initialApplicationAmount = initialApplicationAmount;
-                var inquiryOrPreQualificationIndicator = _inquiryOrPreQualificationIndicator; inquiryOrPreQualificationIndicator.Clean = value; _inquiryOrPreQualificationIndicator = inquiryOrPreQualificationIndicator;
-                var lienPriorityType = _lienPriorityType; lienPriorityType.Clean = value; _lienPriorityType = lienPriorityType;
-                var loanDocumentationType = _loanDocumentationType; loanDocumentationType.Clean = value; _loanDocumentationType = loanDocumentationType;
-                var loanRepaymentType = _loanRepaymentType; loanRepaymentType.Clean = value; _loanRepaymentType = loanRepaymentType;
-                var loanScheduledClosingDate = _loanScheduledClosingDate; loanScheduledClosingDate.Clean = value; _loanScheduledClosingDate = loanScheduledClosingDate;
-                var maximumMonthlyPayment = _maximumMonthlyPayment; maximumMonthlyPayment.Clean = value; _maximumMonthlyPayment = maximumMonthlyPayment;
-                var maxLifeInterestCapPercent = _maxLifeInterestCapPercent; maxLifeInterestCapPercent.Clean = value; _maxLifeInterestCapPercent = maxLifeInterestCapPercent;
-                var miCoveragePercent = _miCoveragePercent; miCoveragePercent.Clean = value; _miCoveragePercent = miCoveragePercent;
-                var minimumAdvanceAmount = _minimumAdvanceAmount; minimumAdvanceAmount.Clean = value; _minimumAdvanceAmount = minimumAdvanceAmount;
-                var minimumAllowableApr = _minimumAllowableApr; minimumAllowableApr.Clean = value; _minimumAllowableApr = minimumAllowableApr;
-                var minimumDrawPeroidPaymentPercent = _minimumDrawPeroidPaymentPercent; minimumDrawPeroidPaymentPercent.Clean = value; _minimumDrawPeroidPaymentPercent = minimumDrawPeroidPaymentPercent;
-                var minimumPaymentAmount = _minimumPaymentAmount; minimumPaymentAmount.Clean = value; _minimumPaymentAmount = minimumPaymentAmount;
-                var minimumPaymentLessThanAmount = _minimumPaymentLessThanAmount; minimumPaymentLessThanAmount.Clean = value; _minimumPaymentLessThanAmount = minimumPaymentLessThanAmount;
-                var minimumPaymentPercent = _minimumPaymentPercent; minimumPaymentPercent.Clean = value; _minimumPaymentPercent = minimumPaymentPercent;
-                var minimumPaymentUpbAmount = _minimumPaymentUpbAmount; minimumPaymentUpbAmount.Clean = value; _minimumPaymentUpbAmount = minimumPaymentUpbAmount;
-                var minimumPaymentUpbPercent = _minimumPaymentUpbPercent; minimumPaymentUpbPercent.Clean = value; _minimumPaymentUpbPercent = minimumPaymentUpbPercent;
-                var minimumRepayPeriodPaymentPercent = _minimumRepayPeriodPaymentPercent; minimumRepayPeriodPaymentPercent.Clean = value; _minimumRepayPeriodPaymentPercent = minimumRepayPeriodPaymentPercent;
-                var monthsAppliedToPrepaymentPenaltyFeeCount = _monthsAppliedToPrepaymentPenaltyFeeCount; monthsAppliedToPrepaymentPenaltyFeeCount.Clean = value; _monthsAppliedToPrepaymentPenaltyFeeCount = monthsAppliedToPrepaymentPenaltyFeeCount;
-                var negativeAmortizationLimitPercent = _negativeAmortizationLimitPercent; negativeAmortizationLimitPercent.Clean = value; _negativeAmortizationLimitPercent = negativeAmortizationLimitPercent;
-                var netInitialAndFinal = _netInitialAndFinal; netInitialAndFinal.Clean = value; _netInitialAndFinal = netInitialAndFinal;
-                var nmlsDocumentationType = _nmlsDocumentationType; nmlsDocumentationType.Clean = value; _nmlsDocumentationType = nmlsDocumentationType;
-                var nmlsFirstMortgageType = _nmlsFirstMortgageType; nmlsFirstMortgageType.Clean = value; _nmlsFirstMortgageType = nmlsFirstMortgageType;
-                var nmlsLoanType = _nmlsLoanType; nmlsLoanType.Clean = value; _nmlsLoanType = nmlsLoanType;
-                var nmlsOptionARMIndicator = _nmlsOptionARMIndicator; nmlsOptionARMIndicator.Clean = value; _nmlsOptionARMIndicator = nmlsOptionARMIndicator;
-                var nmlsPiggyBackOrFundedHELOCIndicator = _nmlsPiggyBackOrFundedHELOCIndicator; nmlsPiggyBackOrFundedHELOCIndicator.Clean = value; _nmlsPiggyBackOrFundedHELOCIndicator = nmlsPiggyBackOrFundedHELOCIndicator;
-                var nmlsProductionSoldToType = _nmlsProductionSoldToType; nmlsProductionSoldToType.Clean = value; _nmlsProductionSoldToType = nmlsProductionSoldToType;
-                var nmlsRefinancePurposeType = _nmlsRefinancePurposeType; nmlsRefinancePurposeType.Clean = value; _nmlsRefinancePurposeType = nmlsRefinancePurposeType;
-                var nmlsReverseMortgageType = _nmlsReverseMortgageType; nmlsReverseMortgageType.Clean = value; _nmlsReverseMortgageType = nmlsReverseMortgageType;
-                var oralRequestForExtensionOfCreditIndicator = _oralRequestForExtensionOfCreditIndicator; oralRequestForExtensionOfCreditIndicator.Clean = value; _oralRequestForExtensionOfCreditIndicator = oralRequestForExtensionOfCreditIndicator;
-                var overLimitCharge = _overLimitCharge; overLimitCharge.Clean = value; _overLimitCharge = overLimitCharge;
-                var overLimitReturnCharge = _overLimitReturnCharge; overLimitReturnCharge.Clean = value; _overLimitReturnCharge = overLimitReturnCharge;
-                var participationFees = _participationFees; participationFees.Clean = value; _participationFees = participationFees;
-                var paymentAdjustmentDurationMonthsCount = _paymentAdjustmentDurationMonthsCount; paymentAdjustmentDurationMonthsCount.Clean = value; _paymentAdjustmentDurationMonthsCount = paymentAdjustmentDurationMonthsCount;
-                var paymentAdjustmentPeriodicCapPercent = _paymentAdjustmentPeriodicCapPercent; paymentAdjustmentPeriodicCapPercent.Clean = value; _paymentAdjustmentPeriodicCapPercent = paymentAdjustmentPeriodicCapPercent;
-                var paymentFrequencyType = _paymentFrequencyType; paymentFrequencyType.Clean = value; _paymentFrequencyType = paymentFrequencyType;
-                var prepaymentPenalties = _prepaymentPenalties; prepaymentPenalties.Clean = value; _prepaymentPenalties = prepaymentPenalties;
-                var prepaymentPenaltyBasedOn = _prepaymentPenaltyBasedOn; prepaymentPenaltyBasedOn.Clean = value; _prepaymentPenaltyBasedOn = prepaymentPenaltyBasedOn;
-                var prepaymentPenaltyIndicator = _prepaymentPenaltyIndicator; prepaymentPenaltyIndicator.Clean = value; _prepaymentPenaltyIndicator = prepaymentPenaltyIndicator;
-                var prepaymentPenaltyPercent = _prepaymentPenaltyPercent; prepaymentPenaltyPercent.Clean = value; _prepaymentPenaltyPercent = prepaymentPenaltyPercent;
-                var prepaymentPenaltyTermMonthsCount = _prepaymentPenaltyTermMonthsCount; prepaymentPenaltyTermMonthsCount.Clean = value; _prepaymentPenaltyTermMonthsCount = prepaymentPenaltyTermMonthsCount;
-                var prepaymentPenaltyVerbiage = _prepaymentPenaltyVerbiage; prepaymentPenaltyVerbiage.Clean = value; _prepaymentPenaltyVerbiage = prepaymentPenaltyVerbiage;
-                var productName = _productName; productName.Clean = value; _productName = productName;
-                var qualifyingRatePercent = _qualifyingRatePercent; qualifyingRatePercent.Clean = value; _qualifyingRatePercent = qualifyingRatePercent;
-                var rateAdjustmentDurationMonthsCount = _rateAdjustmentDurationMonthsCount; rateAdjustmentDurationMonthsCount.Clean = value; _rateAdjustmentDurationMonthsCount = rateAdjustmentDurationMonthsCount;
-                var rateAdjustmentLifetimeCapPercent = _rateAdjustmentLifetimeCapPercent; rateAdjustmentLifetimeCapPercent.Clean = value; _rateAdjustmentLifetimeCapPercent = rateAdjustmentLifetimeCapPercent;
-                var rateAdjustmentPercent = _rateAdjustmentPercent; rateAdjustmentPercent.Clean = value; _rateAdjustmentPercent = rateAdjustmentPercent;
-                var rateAdjustmentSubsequentCapPercent = _rateAdjustmentSubsequentCapPercent; rateAdjustmentSubsequentCapPercent.Clean = value; _rateAdjustmentSubsequentCapPercent = rateAdjustmentSubsequentCapPercent;
-                var releaseRecoringCharge = _releaseRecoringCharge; releaseRecoringCharge.Clean = value; _releaseRecoringCharge = releaseRecoringCharge;
-                var remainingBuydownAmount = _remainingBuydownAmount; remainingBuydownAmount.Clean = value; _remainingBuydownAmount = remainingBuydownAmount;
-                var repayPeriodMonthsCount = _repayPeriodMonthsCount; repayPeriodMonthsCount.Clean = value; _repayPeriodMonthsCount = repayPeriodMonthsCount;
-                var returnedCheckCharge = _returnedCheckCharge; returnedCheckCharge.Clean = value; _returnedCheckCharge = returnedCheckCharge;
-                var returnedCheckChargeRatePercent = _returnedCheckChargeRatePercent; returnedCheckChargeRatePercent.Clean = value; _returnedCheckChargeRatePercent = returnedCheckChargeRatePercent;
-                var returnedCheckMaxCharge = _returnedCheckMaxCharge; returnedCheckMaxCharge.Clean = value; _returnedCheckMaxCharge = returnedCheckMaxCharge;
-                var returnedCheckMinCharge = _returnedCheckMinCharge; returnedCheckMinCharge.Clean = value; _returnedCheckMinCharge = returnedCheckMinCharge;
-                var roundPercent = _roundPercent; roundPercent.Clean = value; _roundPercent = roundPercent;
-                var roundType = _roundType; roundType.Clean = value; _roundType = roundType;
-                var scheduledFirstPaymentAdjustmentDate = _scheduledFirstPaymentAdjustmentDate; scheduledFirstPaymentAdjustmentDate.Clean = value; _scheduledFirstPaymentAdjustmentDate = scheduledFirstPaymentAdjustmentDate;
-                var scheduledFirstPaymentDate = _scheduledFirstPaymentDate; scheduledFirstPaymentDate.Clean = value; _scheduledFirstPaymentDate = scheduledFirstPaymentDate;
-                var stopPaymentCharge = _stopPaymentCharge; stopPaymentCharge.Clean = value; _stopPaymentCharge = stopPaymentCharge;
-                var subsequentRateAdjustmentMonthsCount = _subsequentRateAdjustmentMonthsCount; subsequentRateAdjustmentMonthsCount.Clean = value; _subsequentRateAdjustmentMonthsCount = subsequentRateAdjustmentMonthsCount;
-                var terminationFeeAmount = _terminationFeeAmount; terminationFeeAmount.Clean = value; _terminationFeeAmount = terminationFeeAmount;
-                var terminationPeriodMonthsCount = _terminationPeriodMonthsCount; terminationPeriodMonthsCount.Clean = value; _terminationPeriodMonthsCount = terminationPeriodMonthsCount;
-                var thirdPartyFeeFromAmount = _thirdPartyFeeFromAmount; thirdPartyFeeFromAmount.Clean = value; _thirdPartyFeeFromAmount = thirdPartyFeeFromAmount;
-                var thirdPartyFeeToAmount = _thirdPartyFeeToAmount; thirdPartyFeeToAmount.Clean = value; _thirdPartyFeeToAmount = thirdPartyFeeToAmount;
-                var timelyPaymentRateReductionPercent = _timelyPaymentRateReductionPercent; timelyPaymentRateReductionPercent.Clean = value; _timelyPaymentRateReductionPercent = timelyPaymentRateReductionPercent;
-                var timelyPaymentRewards = _timelyPaymentRewards; timelyPaymentRewards.Clean = value; _timelyPaymentRewards = timelyPaymentRewards;
-                var totalSubsidyAmount = _totalSubsidyAmount; totalSubsidyAmount.Clean = value; _totalSubsidyAmount = totalSubsidyAmount;
-                var transactionFees = _transactionFees; transactionFees.Clean = value; _transactionFees = transactionFees;
-                var wireFee = _wireFee; wireFee.Clean = value; _wireFee = wireFee;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _annualFeeNeededAmount.Dirty = value;
+                _applyLifeCapLowIndicator.Dirty = value;
+                _armDisclosureType.Dirty = value;
+                _armIndexType.Dirty = value;
+                _balloonIndicator.Dirty = value;
+                _balloonLoanMaturityTermMonthsCount.Dirty = value;
+                _borrowerEstimatedClosingDate.Dirty = value;
+                _branchLocationNmlsId.Dirty = value;
+                _branchManagerNmlsId.Dirty = value;
+                _buydowns.Dirty = value;
+                _convertibleIndicator.Dirty = value;
+                _discounted.Dirty = value;
+                _discountedRate.Dirty = value;
+                _drawPeriodMonthsCount.Dirty = value;
+                _escrowWaiverIndicator.Dirty = value;
+                _excludeLoanFromNMLSReportIndicator.Dirty = value;
+                _floorBasis.Dirty = value;
+                _floorPercent.Dirty = value;
+                _floorVerbiage.Dirty = value;
+                _fnmProductPlanIdentifier.Dirty = value;
+                _freddieMacArmIndexType.Dirty = value;
+                _freOfferingIdentifier.Dirty = value;
+                _fullPrepaymentPenaltyOptionType.Dirty = value;
+                _gseProjectClassificationType.Dirty = value;
+                _gsePropertyType.Dirty = value;
+                _hardPrepaymentPenaltyMonths.Dirty = value;
+                _helocPeriodTemplateName.Dirty = value;
+                _helocRepaymentDrawPeriods.Dirty = value;
+                _id.Dirty = value;
+                _indexCurrentValuePercent.Dirty = value;
+                _indexLookbackPeriod.Dirty = value;
+                _indexMarginPercent.Dirty = value;
+                _initialAdvanceAmount.Dirty = value;
+                _initialApplicationAmount.Dirty = value;
+                _inquiryOrPreQualificationIndicator.Dirty = value;
+                _lienPriorityType.Dirty = value;
+                _loanDocumentationType.Dirty = value;
+                _loanRepaymentType.Dirty = value;
+                _loanScheduledClosingDate.Dirty = value;
+                _maximumMonthlyPayment.Dirty = value;
+                _maxLifeInterestCapPercent.Dirty = value;
+                _miCoveragePercent.Dirty = value;
+                _minimumAdvanceAmount.Dirty = value;
+                _minimumAllowableApr.Dirty = value;
+                _minimumDrawPeroidPaymentPercent.Dirty = value;
+                _minimumPaymentAmount.Dirty = value;
+                _minimumPaymentLessThanAmount.Dirty = value;
+                _minimumPaymentPercent.Dirty = value;
+                _minimumPaymentUpbAmount.Dirty = value;
+                _minimumPaymentUpbPercent.Dirty = value;
+                _minimumRepayPeriodPaymentPercent.Dirty = value;
+                _monthsAppliedToPrepaymentPenaltyFeeCount.Dirty = value;
+                _negativeAmortizationLimitPercent.Dirty = value;
+                _netInitialAndFinal.Dirty = value;
+                _nmlsDocumentationType.Dirty = value;
+                _nmlsFirstMortgageType.Dirty = value;
+                _nmlsLoanType.Dirty = value;
+                _nmlsOptionARMIndicator.Dirty = value;
+                _nmlsPiggyBackOrFundedHELOCIndicator.Dirty = value;
+                _nmlsProductionSoldToType.Dirty = value;
+                _nmlsRefinancePurposeType.Dirty = value;
+                _nmlsReverseMortgageType.Dirty = value;
+                _oralRequestForExtensionOfCreditIndicator.Dirty = value;
+                _overLimitCharge.Dirty = value;
+                _overLimitReturnCharge.Dirty = value;
+                _participationFees.Dirty = value;
+                _paymentAdjustmentDurationMonthsCount.Dirty = value;
+                _paymentAdjustmentPeriodicCapPercent.Dirty = value;
+                _paymentFrequencyType.Dirty = value;
+                _prepaymentPenalties.Dirty = value;
+                _prepaymentPenaltyBasedOn.Dirty = value;
+                _prepaymentPenaltyIndicator.Dirty = value;
+                _prepaymentPenaltyPercent.Dirty = value;
+                _prepaymentPenaltyTermMonthsCount.Dirty = value;
+                _prepaymentPenaltyVerbiage.Dirty = value;
+                _productName.Dirty = value;
+                _qualifyingRatePercent.Dirty = value;
+                _rateAdjustmentDurationMonthsCount.Dirty = value;
+                _rateAdjustmentLifetimeCapPercent.Dirty = value;
+                _rateAdjustmentPercent.Dirty = value;
+                _rateAdjustmentSubsequentCapPercent.Dirty = value;
+                _releaseRecoringCharge.Dirty = value;
+                _remainingBuydownAmount.Dirty = value;
+                _repayPeriodMonthsCount.Dirty = value;
+                _returnedCheckCharge.Dirty = value;
+                _returnedCheckChargeRatePercent.Dirty = value;
+                _returnedCheckMaxCharge.Dirty = value;
+                _returnedCheckMinCharge.Dirty = value;
+                _roundPercent.Dirty = value;
+                _roundType.Dirty = value;
+                _scheduledFirstPaymentAdjustmentDate.Dirty = value;
+                _scheduledFirstPaymentDate.Dirty = value;
+                _stopPaymentCharge.Dirty = value;
+                _subsequentRateAdjustmentMonthsCount.Dirty = value;
+                _terminationFeeAmount.Dirty = value;
+                _terminationPeriodMonthsCount.Dirty = value;
+                _thirdPartyFeeFromAmount.Dirty = value;
+                _thirdPartyFeeToAmount.Dirty = value;
+                _timelyPaymentRateReductionPercent.Dirty = value;
+                _timelyPaymentRewards.Dirty = value;
+                _totalSubsidyAmount.Dirty = value;
+                _transactionFees.Dirty = value;
+                _wireFee.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LoanProductData()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

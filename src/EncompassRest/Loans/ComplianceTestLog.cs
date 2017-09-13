@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ComplianceTestLog : IClean
+    public sealed partial class ComplianceTestLog : IDirty
     {
         private Value<string> _details;
         public string Details { get { return _details; } set { _details = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public string Result { get { return _result; } set { _result = value; } }
         private Value<bool?> _showAlert;
         public bool? ShowAlert { get { return _showAlert; } set { _showAlert = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _details.Clean
-                    && _name.Clean
-                    && _result.Clean
-                    && _showAlert.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _details.Dirty
+                    || _name.Dirty
+                    || _result.Dirty
+                    || _showAlert.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var details = _details; details.Clean = value; _details = details;
-                var name = _name; name.Clean = value; _name = name;
-                var result = _result; result.Clean = value; _result = result;
-                var showAlert = _showAlert; showAlert.Clean = value; _showAlert = showAlert;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _details.Dirty = value;
+                _name.Dirty = value;
+                _result.Dirty = value;
+                _showAlert.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ComplianceTestLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

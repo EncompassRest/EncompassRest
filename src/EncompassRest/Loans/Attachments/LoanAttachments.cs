@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace EncompassRest.Loans.Attachments
 {
     public sealed class LoanAttachments
     {
-        private const string _apiPath = "encompass/v1/loans";
+        private const string s_apiPath = "encompass/v1/loans";
 
         public EncompassRestClient Client { get; }
 
@@ -28,7 +27,12 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            return GetAttachmentInternalAsync(attachmentId, cancellationToken, response => response.Content.ReadAsAsync<LoanAttachment>());
+            return GetAttachmentInternalAsync(attachmentId, cancellationToken, async response =>
+            {
+                var attachment = await response.Content.ReadAsAsync<LoanAttachment>().ConfigureAwait(false);
+                attachment.Dirty = false;
+                return attachment;
+            });
         }
 
         public Task<string> GetAttachmentRawAsync(string attachmentId) => GetAttachmentRawAsync(attachmentId, CancellationToken.None);
@@ -42,7 +46,7 @@ namespace EncompassRest.Loans.Attachments
 
         private async Task<T> GetAttachmentInternalAsync<T>(string attachmentId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -55,7 +59,15 @@ namespace EncompassRest.Loans.Attachments
 
         public Task<List<LoanAttachment>> GetAttachmentsAsync() => GetAttachmentsAsync(CancellationToken.None);
 
-        public Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken) => GetAttachmentsInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<List<LoanAttachment>>());
+        public Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken) => GetAttachmentsInternalAsync(cancellationToken, async response =>
+        {
+            var attachments = await response.Content.ReadAsAsync<List<LoanAttachment>>().ConfigureAwait(false);
+            foreach (var attachment in attachments)
+            {
+                attachment.Dirty = false;
+            }
+            return attachments;
+        });
 
         public Task<string> GetAttachmentsRawAsync() => GetAttachmentsRawAsync(CancellationToken.None);
 
@@ -63,7 +75,7 @@ namespace EncompassRest.Loans.Attachments
 
         private async Task<T> GetAttachmentsInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{LoanId}/attachments", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/{LoanId}/attachments", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -86,7 +98,7 @@ namespace EncompassRest.Loans.Attachments
 
         private async Task<string> GetAttachmentUrlInternalAsync(string attachmentId, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}/url", null, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}/url", null, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -115,6 +127,7 @@ namespace EncompassRest.Loans.Attachments
                 {
                     await response.Content.PopulateAsync(attachment).ConfigureAwait(false);
                 }
+                attachment.Dirty = false;
             });
         }
 
@@ -130,7 +143,7 @@ namespace EncompassRest.Loans.Attachments
 
         private async Task UpdateAttachmentInternalAsync(string attachmentId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{LoanId}/attachments/{attachmentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

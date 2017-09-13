@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ServiceProviderContact : IClean
+    public sealed partial class ServiceProviderContact : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -86,105 +86,100 @@ namespace EncompassRest.Loans
         public string State { get { return _state; } set { _state = value; } }
         private Value<string> _webUrl;
         public string WebUrl { get { return _webUrl; } set { _webUrl = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _city.Clean
-                    && _contactName.Clean
-                    && _cost.Clean
-                    && _email.Clean
-                    && _fax.Clean
-                    && _feeAmt1.Clean
-                    && _feeAmt10.Clean
-                    && _feeAmt2.Clean
-                    && _feeAmt3.Clean
-                    && _feeAmt4.Clean
-                    && _feeAmt5.Clean
-                    && _feeAmt6.Clean
-                    && _feeAmt7.Clean
-                    && _feeAmt8.Clean
-                    && _feeAmt9.Clean
-                    && _feeDesc1.Clean
-                    && _feeDesc10.Clean
-                    && _feeDesc2.Clean
-                    && _feeDesc3.Clean
-                    && _feeDesc4.Clean
-                    && _feeDesc5.Clean
-                    && _feeDesc6.Clean
-                    && _feeDesc7.Clean
-                    && _feeDesc8.Clean
-                    && _feeDesc9.Clean
-                    && _id.Clean
-                    && _lineItemNumber.Clean
-                    && _phone.Clean
-                    && _postalCode.Clean
-                    && _providerIndex.Clean
-                    && _providerName.Clean
-                    && _relationship.Clean
-                    && _serviceProvided.Clean
-                    && _serviceProviderId.Clean
-                    && _serviceType.Clean
-                    && _shopFor.Clean
-                    && _state.Clean
-                    && _webUrl.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _city.Dirty
+                    || _contactName.Dirty
+                    || _cost.Dirty
+                    || _email.Dirty
+                    || _fax.Dirty
+                    || _feeAmt1.Dirty
+                    || _feeAmt10.Dirty
+                    || _feeAmt2.Dirty
+                    || _feeAmt3.Dirty
+                    || _feeAmt4.Dirty
+                    || _feeAmt5.Dirty
+                    || _feeAmt6.Dirty
+                    || _feeAmt7.Dirty
+                    || _feeAmt8.Dirty
+                    || _feeAmt9.Dirty
+                    || _feeDesc1.Dirty
+                    || _feeDesc10.Dirty
+                    || _feeDesc2.Dirty
+                    || _feeDesc3.Dirty
+                    || _feeDesc4.Dirty
+                    || _feeDesc5.Dirty
+                    || _feeDesc6.Dirty
+                    || _feeDesc7.Dirty
+                    || _feeDesc8.Dirty
+                    || _feeDesc9.Dirty
+                    || _id.Dirty
+                    || _lineItemNumber.Dirty
+                    || _phone.Dirty
+                    || _postalCode.Dirty
+                    || _providerIndex.Dirty
+                    || _providerName.Dirty
+                    || _relationship.Dirty
+                    || _serviceProvided.Dirty
+                    || _serviceProviderId.Dirty
+                    || _serviceType.Dirty
+                    || _shopFor.Dirty
+                    || _state.Dirty
+                    || _webUrl.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var city = _city; city.Clean = value; _city = city;
-                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
-                var cost = _cost; cost.Clean = value; _cost = cost;
-                var email = _email; email.Clean = value; _email = email;
-                var fax = _fax; fax.Clean = value; _fax = fax;
-                var feeAmt1 = _feeAmt1; feeAmt1.Clean = value; _feeAmt1 = feeAmt1;
-                var feeAmt10 = _feeAmt10; feeAmt10.Clean = value; _feeAmt10 = feeAmt10;
-                var feeAmt2 = _feeAmt2; feeAmt2.Clean = value; _feeAmt2 = feeAmt2;
-                var feeAmt3 = _feeAmt3; feeAmt3.Clean = value; _feeAmt3 = feeAmt3;
-                var feeAmt4 = _feeAmt4; feeAmt4.Clean = value; _feeAmt4 = feeAmt4;
-                var feeAmt5 = _feeAmt5; feeAmt5.Clean = value; _feeAmt5 = feeAmt5;
-                var feeAmt6 = _feeAmt6; feeAmt6.Clean = value; _feeAmt6 = feeAmt6;
-                var feeAmt7 = _feeAmt7; feeAmt7.Clean = value; _feeAmt7 = feeAmt7;
-                var feeAmt8 = _feeAmt8; feeAmt8.Clean = value; _feeAmt8 = feeAmt8;
-                var feeAmt9 = _feeAmt9; feeAmt9.Clean = value; _feeAmt9 = feeAmt9;
-                var feeDesc1 = _feeDesc1; feeDesc1.Clean = value; _feeDesc1 = feeDesc1;
-                var feeDesc10 = _feeDesc10; feeDesc10.Clean = value; _feeDesc10 = feeDesc10;
-                var feeDesc2 = _feeDesc2; feeDesc2.Clean = value; _feeDesc2 = feeDesc2;
-                var feeDesc3 = _feeDesc3; feeDesc3.Clean = value; _feeDesc3 = feeDesc3;
-                var feeDesc4 = _feeDesc4; feeDesc4.Clean = value; _feeDesc4 = feeDesc4;
-                var feeDesc5 = _feeDesc5; feeDesc5.Clean = value; _feeDesc5 = feeDesc5;
-                var feeDesc6 = _feeDesc6; feeDesc6.Clean = value; _feeDesc6 = feeDesc6;
-                var feeDesc7 = _feeDesc7; feeDesc7.Clean = value; _feeDesc7 = feeDesc7;
-                var feeDesc8 = _feeDesc8; feeDesc8.Clean = value; _feeDesc8 = feeDesc8;
-                var feeDesc9 = _feeDesc9; feeDesc9.Clean = value; _feeDesc9 = feeDesc9;
-                var id = _id; id.Clean = value; _id = id;
-                var lineItemNumber = _lineItemNumber; lineItemNumber.Clean = value; _lineItemNumber = lineItemNumber;
-                var phone = _phone; phone.Clean = value; _phone = phone;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var providerIndex = _providerIndex; providerIndex.Clean = value; _providerIndex = providerIndex;
-                var providerName = _providerName; providerName.Clean = value; _providerName = providerName;
-                var relationship = _relationship; relationship.Clean = value; _relationship = relationship;
-                var serviceProvided = _serviceProvided; serviceProvided.Clean = value; _serviceProvided = serviceProvided;
-                var serviceProviderId = _serviceProviderId; serviceProviderId.Clean = value; _serviceProviderId = serviceProviderId;
-                var serviceType = _serviceType; serviceType.Clean = value; _serviceType = serviceType;
-                var shopFor = _shopFor; shopFor.Clean = value; _shopFor = shopFor;
-                var state = _state; state.Clean = value; _state = state;
-                var webUrl = _webUrl; webUrl.Clean = value; _webUrl = webUrl;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _city.Dirty = value;
+                _contactName.Dirty = value;
+                _cost.Dirty = value;
+                _email.Dirty = value;
+                _fax.Dirty = value;
+                _feeAmt1.Dirty = value;
+                _feeAmt10.Dirty = value;
+                _feeAmt2.Dirty = value;
+                _feeAmt3.Dirty = value;
+                _feeAmt4.Dirty = value;
+                _feeAmt5.Dirty = value;
+                _feeAmt6.Dirty = value;
+                _feeAmt7.Dirty = value;
+                _feeAmt8.Dirty = value;
+                _feeAmt9.Dirty = value;
+                _feeDesc1.Dirty = value;
+                _feeDesc10.Dirty = value;
+                _feeDesc2.Dirty = value;
+                _feeDesc3.Dirty = value;
+                _feeDesc4.Dirty = value;
+                _feeDesc5.Dirty = value;
+                _feeDesc6.Dirty = value;
+                _feeDesc7.Dirty = value;
+                _feeDesc8.Dirty = value;
+                _feeDesc9.Dirty = value;
+                _id.Dirty = value;
+                _lineItemNumber.Dirty = value;
+                _phone.Dirty = value;
+                _postalCode.Dirty = value;
+                _providerIndex.Dirty = value;
+                _providerName.Dirty = value;
+                _relationship.Dirty = value;
+                _serviceProvided.Dirty = value;
+                _serviceProviderId.Dirty = value;
+                _serviceType.Dirty = value;
+                _shopFor.Dirty = value;
+                _state.Dirty = value;
+                _webUrl.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ServiceProviderContact()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

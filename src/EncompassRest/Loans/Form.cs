@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Form : IClean
+    public sealed partial class Form : IDirty
     {
         private Value<int?> _formId;
         public int? FormId { get { return _formId; } set { _formId = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public string Name { get { return _name; } set { _name = value; } }
         private Value<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _formId.Clean
-                    && _id.Clean
-                    && _name.Clean
-                    && _systemId.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _formId.Dirty
+                    || _id.Dirty
+                    || _name.Dirty
+                    || _systemId.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var formId = _formId; formId.Clean = value; _formId = formId;
-                var id = _id; id.Clean = value; _id = id;
-                var name = _name; name.Clean = value; _name = name;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _formId.Dirty = value;
+                _id.Dirty = value;
+                _name.Dirty = value;
+                _systemId.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Form()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

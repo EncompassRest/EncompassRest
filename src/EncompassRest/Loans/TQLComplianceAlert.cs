@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLComplianceAlert : IClean
+    public sealed partial class TQLComplianceAlert : IDirty
     {
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
@@ -18,37 +18,32 @@ namespace EncompassRest.Loans
         public string LastComplianceOrderDescriptionOfAlerts { get { return _lastComplianceOrderDescriptionOfAlerts; } set { _lastComplianceOrderDescriptionOfAlerts = value; } }
         private Value<int?> _tQLComplianceAlertIndex;
         public int? TQLComplianceAlertIndex { get { return _tQLComplianceAlertIndex; } set { _tQLComplianceAlertIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _id.Clean
-                    && _lastComplianceOrderAlertCategories.Clean
-                    && _lastComplianceOrderAlertMessage.Clean
-                    && _lastComplianceOrderDescriptionOfAlerts.Clean
-                    && _tQLComplianceAlertIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _id.Dirty
+                    || _lastComplianceOrderAlertCategories.Dirty
+                    || _lastComplianceOrderAlertMessage.Dirty
+                    || _lastComplianceOrderDescriptionOfAlerts.Dirty
+                    || _tQLComplianceAlertIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var id = _id; id.Clean = value; _id = id;
-                var lastComplianceOrderAlertCategories = _lastComplianceOrderAlertCategories; lastComplianceOrderAlertCategories.Clean = value; _lastComplianceOrderAlertCategories = lastComplianceOrderAlertCategories;
-                var lastComplianceOrderAlertMessage = _lastComplianceOrderAlertMessage; lastComplianceOrderAlertMessage.Clean = value; _lastComplianceOrderAlertMessage = lastComplianceOrderAlertMessage;
-                var lastComplianceOrderDescriptionOfAlerts = _lastComplianceOrderDescriptionOfAlerts; lastComplianceOrderDescriptionOfAlerts.Clean = value; _lastComplianceOrderDescriptionOfAlerts = lastComplianceOrderDescriptionOfAlerts;
-                var tQLComplianceAlertIndex = _tQLComplianceAlertIndex; tQLComplianceAlertIndex.Clean = value; _tQLComplianceAlertIndex = tQLComplianceAlertIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _id.Dirty = value;
+                _lastComplianceOrderAlertCategories.Dirty = value;
+                _lastComplianceOrderAlertMessage.Dirty = value;
+                _lastComplianceOrderDescriptionOfAlerts.Dirty = value;
+                _tQLComplianceAlertIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TQLComplianceAlert()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

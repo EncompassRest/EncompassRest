@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Fee : IClean
+    public sealed partial class Fee : IDirty
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
@@ -74,93 +74,88 @@ namespace EncompassRest.Loans
         public decimal? TruncatedAmountPerDay { get { return _truncatedAmountPerDay; } set { _truncatedAmountPerDay = value; } }
         private Value<bool?> _use4Decimals;
         public bool? Use4Decimals { get { return _use4Decimals; } set { _use4Decimals = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amount.Clean
-                    && _amountPerDay.Clean
-                    && _borPaidAmount.Clean
-                    && _dateFrom.Clean
-                    && _dateTo.Clean
-                    && _days.Clean
-                    && _deedAmount.Clean
-                    && _description.Clean
-                    && _feeType.Clean
-                    && _fHA.Clean
-                    && _fWBC.Clean
-                    && _fWSC.Clean
-                    && _id.Clean
-                    && _includeAboveNumber.Clean
-                    && _lenderCoverage.Clean
-                    && _monthlyPayment.Clean
-                    && _mortgageAmount.Clean
-                    && _newHUDBorPaidAmount.Clean
-                    && _numberOfMonths.Clean
-                    && _ownerCoverage.Clean
-                    && _paidBy.Clean
-                    && _paidInAdvance.Clean
-                    && _paidToBroker.Clean
-                    && _paidToName.Clean
-                    && _paidToOthers.Clean
-                    && _percentage.Clean
-                    && _pFC.Clean
-                    && _pOC.Clean
-                    && _pTB.Clean
-                    && _releasesAmount.Clean
-                    && _sellerPaidAmount.Clean
-                    && _truncatedAmountPerDay.Clean
-                    && _use4Decimals.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amount.Dirty
+                    || _amountPerDay.Dirty
+                    || _borPaidAmount.Dirty
+                    || _dateFrom.Dirty
+                    || _dateTo.Dirty
+                    || _days.Dirty
+                    || _deedAmount.Dirty
+                    || _description.Dirty
+                    || _feeType.Dirty
+                    || _fHA.Dirty
+                    || _fWBC.Dirty
+                    || _fWSC.Dirty
+                    || _id.Dirty
+                    || _includeAboveNumber.Dirty
+                    || _lenderCoverage.Dirty
+                    || _monthlyPayment.Dirty
+                    || _mortgageAmount.Dirty
+                    || _newHUDBorPaidAmount.Dirty
+                    || _numberOfMonths.Dirty
+                    || _ownerCoverage.Dirty
+                    || _paidBy.Dirty
+                    || _paidInAdvance.Dirty
+                    || _paidToBroker.Dirty
+                    || _paidToName.Dirty
+                    || _paidToOthers.Dirty
+                    || _percentage.Dirty
+                    || _pFC.Dirty
+                    || _pOC.Dirty
+                    || _pTB.Dirty
+                    || _releasesAmount.Dirty
+                    || _sellerPaidAmount.Dirty
+                    || _truncatedAmountPerDay.Dirty
+                    || _use4Decimals.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amount = _amount; amount.Clean = value; _amount = amount;
-                var amountPerDay = _amountPerDay; amountPerDay.Clean = value; _amountPerDay = amountPerDay;
-                var borPaidAmount = _borPaidAmount; borPaidAmount.Clean = value; _borPaidAmount = borPaidAmount;
-                var dateFrom = _dateFrom; dateFrom.Clean = value; _dateFrom = dateFrom;
-                var dateTo = _dateTo; dateTo.Clean = value; _dateTo = dateTo;
-                var days = _days; days.Clean = value; _days = days;
-                var deedAmount = _deedAmount; deedAmount.Clean = value; _deedAmount = deedAmount;
-                var description = _description; description.Clean = value; _description = description;
-                var feeType = _feeType; feeType.Clean = value; _feeType = feeType;
-                var fHA = _fHA; fHA.Clean = value; _fHA = fHA;
-                var fWBC = _fWBC; fWBC.Clean = value; _fWBC = fWBC;
-                var fWSC = _fWSC; fWSC.Clean = value; _fWSC = fWSC;
-                var id = _id; id.Clean = value; _id = id;
-                var includeAboveNumber = _includeAboveNumber; includeAboveNumber.Clean = value; _includeAboveNumber = includeAboveNumber;
-                var lenderCoverage = _lenderCoverage; lenderCoverage.Clean = value; _lenderCoverage = lenderCoverage;
-                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
-                var mortgageAmount = _mortgageAmount; mortgageAmount.Clean = value; _mortgageAmount = mortgageAmount;
-                var newHUDBorPaidAmount = _newHUDBorPaidAmount; newHUDBorPaidAmount.Clean = value; _newHUDBorPaidAmount = newHUDBorPaidAmount;
-                var numberOfMonths = _numberOfMonths; numberOfMonths.Clean = value; _numberOfMonths = numberOfMonths;
-                var ownerCoverage = _ownerCoverage; ownerCoverage.Clean = value; _ownerCoverage = ownerCoverage;
-                var paidBy = _paidBy; paidBy.Clean = value; _paidBy = paidBy;
-                var paidInAdvance = _paidInAdvance; paidInAdvance.Clean = value; _paidInAdvance = paidInAdvance;
-                var paidToBroker = _paidToBroker; paidToBroker.Clean = value; _paidToBroker = paidToBroker;
-                var paidToName = _paidToName; paidToName.Clean = value; _paidToName = paidToName;
-                var paidToOthers = _paidToOthers; paidToOthers.Clean = value; _paidToOthers = paidToOthers;
-                var percentage = _percentage; percentage.Clean = value; _percentage = percentage;
-                var pFC = _pFC; pFC.Clean = value; _pFC = pFC;
-                var pOC = _pOC; pOC.Clean = value; _pOC = pOC;
-                var pTB = _pTB; pTB.Clean = value; _pTB = pTB;
-                var releasesAmount = _releasesAmount; releasesAmount.Clean = value; _releasesAmount = releasesAmount;
-                var sellerPaidAmount = _sellerPaidAmount; sellerPaidAmount.Clean = value; _sellerPaidAmount = sellerPaidAmount;
-                var truncatedAmountPerDay = _truncatedAmountPerDay; truncatedAmountPerDay.Clean = value; _truncatedAmountPerDay = truncatedAmountPerDay;
-                var use4Decimals = _use4Decimals; use4Decimals.Clean = value; _use4Decimals = use4Decimals;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amount.Dirty = value;
+                _amountPerDay.Dirty = value;
+                _borPaidAmount.Dirty = value;
+                _dateFrom.Dirty = value;
+                _dateTo.Dirty = value;
+                _days.Dirty = value;
+                _deedAmount.Dirty = value;
+                _description.Dirty = value;
+                _feeType.Dirty = value;
+                _fHA.Dirty = value;
+                _fWBC.Dirty = value;
+                _fWSC.Dirty = value;
+                _id.Dirty = value;
+                _includeAboveNumber.Dirty = value;
+                _lenderCoverage.Dirty = value;
+                _monthlyPayment.Dirty = value;
+                _mortgageAmount.Dirty = value;
+                _newHUDBorPaidAmount.Dirty = value;
+                _numberOfMonths.Dirty = value;
+                _ownerCoverage.Dirty = value;
+                _paidBy.Dirty = value;
+                _paidInAdvance.Dirty = value;
+                _paidToBroker.Dirty = value;
+                _paidToName.Dirty = value;
+                _paidToOthers.Dirty = value;
+                _percentage.Dirty = value;
+                _pFC.Dirty = value;
+                _pOC.Dirty = value;
+                _pTB.Dirty = value;
+                _releasesAmount.Dirty = value;
+                _sellerPaidAmount.Dirty = value;
+                _truncatedAmountPerDay.Dirty = value;
+                _use4Decimals.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Fee()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

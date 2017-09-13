@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Application : IClean
+    public sealed partial class Application : IDirty
     {
         private Value<string> _accountNumber1;
         public string AccountNumber1 { get { return _accountNumber1; } set { _accountNumber1 = value; } }
@@ -403,425 +403,420 @@ namespace EncompassRest.Loans
         public decimal? VaSummarySpouseIncomeAmount { get { return _vaSummarySpouseIncomeAmount; } set { _vaSummarySpouseIncomeAmount = value; } }
         private Value<decimal?> _vaSummaryTotalMonthlyGrossIncomeAmount;
         public decimal? VaSummaryTotalMonthlyGrossIncomeAmount { get { return _vaSummaryTotalMonthlyGrossIncomeAmount; } set { _vaSummaryTotalMonthlyGrossIncomeAmount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountNumber1.Clean
-                    && _accountNumber2.Clean
-                    && _allOtherPaymentsAmount.Clean
-                    && _applicationId.Clean
-                    && _applicationIndex.Clean
-                    && _applicationSignedDate.Clean
-                    && _assets.Clean
-                    && _assetsAvailableAmount.Clean
-                    && _aTRQMBorrowers.Clean
-                    && _aUSTrackingLogs.Clean
-                    && _balanceAvailableFamilySupportGuideline.Clean
-                    && _bottomRatioPercent.Clean
-                    && _brwCoBrwTotalTaxDeductions.Clean
-                    && _creditAliasName1.Clean
-                    && _creditAliasName2.Clean
-                    && _creditorName1.Clean
-                    && _creditorName2.Clean
-                    && _creditReportReferenceIdentifier.Clean
-                    && _employment.Clean
-                    && _entityDeleted.Clean
-                    && _equifaxAddress.Clean
-                    && _equifaxCity.Clean
-                    && _equifaxFax.Clean
-                    && _equifaxModel.Clean
-                    && _equifaxName.Clean
-                    && _equifaxPhone.Clean
-                    && _equifaxPostalCode.Clean
-                    && _equifaxScoreRangeFrom.Clean
-                    && _equifaxScoreRangeTo.Clean
-                    && _equifaxState.Clean
-                    && _equifaxWebsite.Clean
-                    && _experianAddress.Clean
-                    && _experianCity.Clean
-                    && _experianFax.Clean
-                    && _experianModel.Clean
-                    && _experianName.Clean
-                    && _experianPhone.Clean
-                    && _experianPostalCode.Clean
-                    && _experianScoreRangeFrom.Clean
-                    && _experianScoreRangeTo.Clean
-                    && _experianState.Clean
-                    && _experianWebsite.Clean
-                    && _fhaVaDebtIncomeRatio.Clean
-                    && _fhaVaFamilySupportAmount.Clean
-                    && _fhaVaTotalEstimatedMonthlyShelterExpenseAmount.Clean
-                    && _fhaVaTotalNetEffectiveIncomeAmount.Clean
-                    && _fhaVaTotalNetIncomeAmount.Clean
-                    && _fhaVaTotalNetTakeHomePayAmount.Clean
-                    && _fhaVaTotalOtherNetIncome.Clean
-                    && _firstMortgagePrincipalAndInterestAmount.Clean
-                    && _freddieMacCreditReportReferenceIdentifier.Clean
-                    && _freddieMacOccupantDebtRatio.Clean
-                    && _freddieMacOccupantHousingRatio.Clean
-                    && _freDebtToHousingGapRatio.Clean
-                    && _grossBaseIncomeAmount.Clean
-                    && _grossIncomeForComortSet.Clean
-                    && _grossNegativeCashFlow.Clean
-                    && _grossOtherIncomeAmount.Clean
-                    && _grossPositiveCashFlow.Clean
-                    && _hazardInsuranceAmount.Clean
-                    && _homeownersAssociationDuesAndCondoFeesAmount.Clean
-                    && _hudAutoLienHolderName1.Clean
-                    && _hudAutoLienHolderName2.Clean
-                    && _hudAutoLoanAmount1.Clean
-                    && _hudAutoLoanAmount2.Clean
-                    && _hudAutoMonthlyPayment1.Clean
-                    && _hudAutoMonthlyPayment2.Clean
-                    && _hudAutoPresentBalance1.Clean
-                    && _hudAutoPresentBalance2.Clean
-                    && _hudAutoYearAndMake1.Clean
-                    && _hudAutoYearAndMake2.Clean
-                    && _hudLoanAmount1.Clean
-                    && _hudLoanAmount10.Clean
-                    && _hudLoanAmount11.Clean
-                    && _hudLoanAmount2.Clean
-                    && _hudLoanAmount3.Clean
-                    && _hudLoanAmount4.Clean
-                    && _hudLoanAmount5.Clean
-                    && _hudLoanAmount6.Clean
-                    && _hudLoanAmount7.Clean
-                    && _hudLoanAmount8.Clean
-                    && _hudLoanAmount9.Clean
-                    && _hudRealEstateFhaInsured1.Clean
-                    && _hudRealEstateFhaInsured2.Clean
-                    && _hudRealEstateLienHolder1.Clean
-                    && _hudRealEstateLienHolder2.Clean
-                    && _hudRealEstateLoanAmount1.Clean
-                    && _hudRealEstateLoanAmount2.Clean
-                    && _hudRealEstateMonthlyPayment1.Clean
-                    && _hudRealEstateMonthlyPayment2.Clean
-                    && _hudRealEstatePresentBalance1.Clean
-                    && _hudRealEstatePresentBalance2.Clean
-                    && _id.Clean
-                    && _income.Clean
-                    && _incomeOfBorrowersSpouseUsedIndicator.Clean
-                    && _incomeOtherThanBorrowerUsedIndicator.Clean
-                    && _jointAssetLiabilityReportingIndicator.Clean
-                    && _liabilities.Clean
-                    && _liquidAssetsComortSet.Clean
-                    && _mcawBorrowerOtherMonthlyIncomeAmount.Clean
-                    && _mcawCoborrowerOtherMonthlyIncomeAmount.Clean
-                    && _mcawGrossMonthlyIncomeAmount.Clean
-                    && _mcawMortgagePaymentToIncome1Amount.Clean
-                    && _mcawMortgagePaymentToIncome2Amount.Clean
-                    && _mcawOtherAmount.Clean
-                    && _mcawOtherDebtsAndObligationsAmount.Clean
-                    && _mcawTotalFixedPaymentForPurchaseAmount.Clean
-                    && _mcawTotalFixedPaymentForRefinanceAmount.Clean
-                    && _mcawTotalFixedPaymentToIncome1Amount.Clean
-                    && _mcawTotalFixedPaymentToIncome2Amount.Clean
-                    && _mcawTotalMonthlyPaymentsAmount.Clean
-                    && _mcawTotalMortgagePaymentAmount.Clean
-                    && _monthlyExpenseComortSet.Clean
-                    && _monthlyHousingExpenseAmount.Clean
-                    && _monthlyInstallmentExpenseAmount.Clean
-                    && _monthlyNegativeRealEstateAmount.Clean
-                    && _monthlySecondHomeAmount.Clean
-                    && _mortgageInsuranceAmount.Clean
-                    && _netWorthAmount.Clean
-                    && _otherHousingExpenseAmount.Clean
-                    && _otherItemsDeducted.Clean
-                    && _otherMortgagePrincipalAndInterestAmount.Clean
-                    && _pastCreditRecord.Clean
-                    && _presentHousingExpComortSet.Clean
-                    && _primaryResidenceComortSet.Clean
-                    && _propertyUsageType.Clean
-                    && _proposedDuesAmount.Clean
-                    && _proposedFirstMortgageAmount.Clean
-                    && _proposedGroundRentAmount.Clean
-                    && _proposedHazardInsuranceAmount.Clean
-                    && _proposedMortgageInsuranceAmount.Clean
-                    && _proposedOtherAmount.Clean
-                    && _proposedOtherMortgagesAmount.Clean
-                    && _proposedRealEstateTaxesAmount.Clean
-                    && _realEstateTaxAmount.Clean
-                    && _rentAmount.Clean
-                    && _reoProperties.Clean
-                    && _reoTotalGrossRentalIncomeAmount.Clean
-                    && _reoTotalMaintenanceAmount.Clean
-                    && _reoTotalMarketValueAmount.Clean
-                    && _reoTotalMortgagePaymentsAmount.Clean
-                    && _reoTotalMortgagesAndLiensAmount.Clean
-                    && _reoTotalNetRentalIncomeAmount.Clean
-                    && _residences.Clean
-                    && _selfEmployedIncomes.Clean
-                    && _sofDBorrowerAddress.Clean
-                    && _sofDBorrowerAddressCity.Clean
-                    && _sofDBorrowerAddressState.Clean
-                    && _sofDBorrowerAddressType.Clean
-                    && _sofDBorrowerAddressZipcode.Clean
-                    && _sofDCoBorrowerAddress.Clean
-                    && _sofDCoBorrowerAddressCity.Clean
-                    && _sofDCoBorrowerAddressState.Clean
-                    && _sofDCoBorrowerAddressType.Clean
-                    && _sofDCoBorrowerAddressZipcode.Clean
-                    && _spouseIncomeConsider.Clean
-                    && _tax4506s.Clean
-                    && _topRatioPercent.Clean
-                    && _totalAssetsAmount.Clean
-                    && _totalBaseIncomeAmount.Clean
-                    && _totalBonusAmount.Clean
-                    && _totalCommissionsAmount.Clean
-                    && _totalDeposit.Clean
-                    && _totalDividendsInterestAmount.Clean
-                    && _totalEmploymentAmount.Clean
-                    && _totalFixedPaymentAmount.Clean
-                    && _totalGrossMonthlyIncomeAmount.Clean
-                    && _totalIncomeAmount.Clean
-                    && _totalMonthlyPaymentAmount.Clean
-                    && _totalMortgagesBalanceAmount.Clean
-                    && _totalMortgagesMonthlyPaymentAmount.Clean
-                    && _totalNetRentalIncomeAmount.Clean
-                    && _totalOther1Amount.Clean
-                    && _totalOther2Amount.Clean
-                    && _totalOvertimeAmount.Clean
-                    && _totalPaymentsAmount.Clean
-                    && _totalPrimaryHousingExpenseAmount.Clean
-                    && _totalReoMarketValueAmount.Clean
-                    && _totalUserDefinedIncome.Clean
-                    && _tQLReports.Clean
-                    && _transUnionAddress.Clean
-                    && _transUnionCity.Clean
-                    && _transUnionFax.Clean
-                    && _transUnionModel.Clean
-                    && _transUnionName.Clean
-                    && _transUnionPhone.Clean
-                    && _transUnionPostalCode.Clean
-                    && _transUnionScoreRangeFrom.Clean
-                    && _transUnionScoreRangeTo.Clean
-                    && _transUnionState.Clean
-                    && _transUnionWebsite.Clean
-                    && _userDefinedIncome.Clean
-                    && _userDefinedIncomeDescription.Clean
-                    && _vACreditStandards.Clean
-                    && _vaSummarySpouseIncomeAmount.Clean
-                    && _vaSummaryTotalMonthlyGrossIncomeAmount.Clean
-                    && ATRQMBorrower?.Clean != false
-                    && Borrower?.Clean != false
-                    && Coborrower?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountNumber1.Dirty
+                    || _accountNumber2.Dirty
+                    || _allOtherPaymentsAmount.Dirty
+                    || _applicationId.Dirty
+                    || _applicationIndex.Dirty
+                    || _applicationSignedDate.Dirty
+                    || _assets.Dirty
+                    || _assetsAvailableAmount.Dirty
+                    || _aTRQMBorrowers.Dirty
+                    || _aUSTrackingLogs.Dirty
+                    || _balanceAvailableFamilySupportGuideline.Dirty
+                    || _bottomRatioPercent.Dirty
+                    || _brwCoBrwTotalTaxDeductions.Dirty
+                    || _creditAliasName1.Dirty
+                    || _creditAliasName2.Dirty
+                    || _creditorName1.Dirty
+                    || _creditorName2.Dirty
+                    || _creditReportReferenceIdentifier.Dirty
+                    || _employment.Dirty
+                    || _entityDeleted.Dirty
+                    || _equifaxAddress.Dirty
+                    || _equifaxCity.Dirty
+                    || _equifaxFax.Dirty
+                    || _equifaxModel.Dirty
+                    || _equifaxName.Dirty
+                    || _equifaxPhone.Dirty
+                    || _equifaxPostalCode.Dirty
+                    || _equifaxScoreRangeFrom.Dirty
+                    || _equifaxScoreRangeTo.Dirty
+                    || _equifaxState.Dirty
+                    || _equifaxWebsite.Dirty
+                    || _experianAddress.Dirty
+                    || _experianCity.Dirty
+                    || _experianFax.Dirty
+                    || _experianModel.Dirty
+                    || _experianName.Dirty
+                    || _experianPhone.Dirty
+                    || _experianPostalCode.Dirty
+                    || _experianScoreRangeFrom.Dirty
+                    || _experianScoreRangeTo.Dirty
+                    || _experianState.Dirty
+                    || _experianWebsite.Dirty
+                    || _fhaVaDebtIncomeRatio.Dirty
+                    || _fhaVaFamilySupportAmount.Dirty
+                    || _fhaVaTotalEstimatedMonthlyShelterExpenseAmount.Dirty
+                    || _fhaVaTotalNetEffectiveIncomeAmount.Dirty
+                    || _fhaVaTotalNetIncomeAmount.Dirty
+                    || _fhaVaTotalNetTakeHomePayAmount.Dirty
+                    || _fhaVaTotalOtherNetIncome.Dirty
+                    || _firstMortgagePrincipalAndInterestAmount.Dirty
+                    || _freddieMacCreditReportReferenceIdentifier.Dirty
+                    || _freddieMacOccupantDebtRatio.Dirty
+                    || _freddieMacOccupantHousingRatio.Dirty
+                    || _freDebtToHousingGapRatio.Dirty
+                    || _grossBaseIncomeAmount.Dirty
+                    || _grossIncomeForComortSet.Dirty
+                    || _grossNegativeCashFlow.Dirty
+                    || _grossOtherIncomeAmount.Dirty
+                    || _grossPositiveCashFlow.Dirty
+                    || _hazardInsuranceAmount.Dirty
+                    || _homeownersAssociationDuesAndCondoFeesAmount.Dirty
+                    || _hudAutoLienHolderName1.Dirty
+                    || _hudAutoLienHolderName2.Dirty
+                    || _hudAutoLoanAmount1.Dirty
+                    || _hudAutoLoanAmount2.Dirty
+                    || _hudAutoMonthlyPayment1.Dirty
+                    || _hudAutoMonthlyPayment2.Dirty
+                    || _hudAutoPresentBalance1.Dirty
+                    || _hudAutoPresentBalance2.Dirty
+                    || _hudAutoYearAndMake1.Dirty
+                    || _hudAutoYearAndMake2.Dirty
+                    || _hudLoanAmount1.Dirty
+                    || _hudLoanAmount10.Dirty
+                    || _hudLoanAmount11.Dirty
+                    || _hudLoanAmount2.Dirty
+                    || _hudLoanAmount3.Dirty
+                    || _hudLoanAmount4.Dirty
+                    || _hudLoanAmount5.Dirty
+                    || _hudLoanAmount6.Dirty
+                    || _hudLoanAmount7.Dirty
+                    || _hudLoanAmount8.Dirty
+                    || _hudLoanAmount9.Dirty
+                    || _hudRealEstateFhaInsured1.Dirty
+                    || _hudRealEstateFhaInsured2.Dirty
+                    || _hudRealEstateLienHolder1.Dirty
+                    || _hudRealEstateLienHolder2.Dirty
+                    || _hudRealEstateLoanAmount1.Dirty
+                    || _hudRealEstateLoanAmount2.Dirty
+                    || _hudRealEstateMonthlyPayment1.Dirty
+                    || _hudRealEstateMonthlyPayment2.Dirty
+                    || _hudRealEstatePresentBalance1.Dirty
+                    || _hudRealEstatePresentBalance2.Dirty
+                    || _id.Dirty
+                    || _income.Dirty
+                    || _incomeOfBorrowersSpouseUsedIndicator.Dirty
+                    || _incomeOtherThanBorrowerUsedIndicator.Dirty
+                    || _jointAssetLiabilityReportingIndicator.Dirty
+                    || _liabilities.Dirty
+                    || _liquidAssetsComortSet.Dirty
+                    || _mcawBorrowerOtherMonthlyIncomeAmount.Dirty
+                    || _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty
+                    || _mcawGrossMonthlyIncomeAmount.Dirty
+                    || _mcawMortgagePaymentToIncome1Amount.Dirty
+                    || _mcawMortgagePaymentToIncome2Amount.Dirty
+                    || _mcawOtherAmount.Dirty
+                    || _mcawOtherDebtsAndObligationsAmount.Dirty
+                    || _mcawTotalFixedPaymentForPurchaseAmount.Dirty
+                    || _mcawTotalFixedPaymentForRefinanceAmount.Dirty
+                    || _mcawTotalFixedPaymentToIncome1Amount.Dirty
+                    || _mcawTotalFixedPaymentToIncome2Amount.Dirty
+                    || _mcawTotalMonthlyPaymentsAmount.Dirty
+                    || _mcawTotalMortgagePaymentAmount.Dirty
+                    || _monthlyExpenseComortSet.Dirty
+                    || _monthlyHousingExpenseAmount.Dirty
+                    || _monthlyInstallmentExpenseAmount.Dirty
+                    || _monthlyNegativeRealEstateAmount.Dirty
+                    || _monthlySecondHomeAmount.Dirty
+                    || _mortgageInsuranceAmount.Dirty
+                    || _netWorthAmount.Dirty
+                    || _otherHousingExpenseAmount.Dirty
+                    || _otherItemsDeducted.Dirty
+                    || _otherMortgagePrincipalAndInterestAmount.Dirty
+                    || _pastCreditRecord.Dirty
+                    || _presentHousingExpComortSet.Dirty
+                    || _primaryResidenceComortSet.Dirty
+                    || _propertyUsageType.Dirty
+                    || _proposedDuesAmount.Dirty
+                    || _proposedFirstMortgageAmount.Dirty
+                    || _proposedGroundRentAmount.Dirty
+                    || _proposedHazardInsuranceAmount.Dirty
+                    || _proposedMortgageInsuranceAmount.Dirty
+                    || _proposedOtherAmount.Dirty
+                    || _proposedOtherMortgagesAmount.Dirty
+                    || _proposedRealEstateTaxesAmount.Dirty
+                    || _realEstateTaxAmount.Dirty
+                    || _rentAmount.Dirty
+                    || _reoProperties.Dirty
+                    || _reoTotalGrossRentalIncomeAmount.Dirty
+                    || _reoTotalMaintenanceAmount.Dirty
+                    || _reoTotalMarketValueAmount.Dirty
+                    || _reoTotalMortgagePaymentsAmount.Dirty
+                    || _reoTotalMortgagesAndLiensAmount.Dirty
+                    || _reoTotalNetRentalIncomeAmount.Dirty
+                    || _residences.Dirty
+                    || _selfEmployedIncomes.Dirty
+                    || _sofDBorrowerAddress.Dirty
+                    || _sofDBorrowerAddressCity.Dirty
+                    || _sofDBorrowerAddressState.Dirty
+                    || _sofDBorrowerAddressType.Dirty
+                    || _sofDBorrowerAddressZipcode.Dirty
+                    || _sofDCoBorrowerAddress.Dirty
+                    || _sofDCoBorrowerAddressCity.Dirty
+                    || _sofDCoBorrowerAddressState.Dirty
+                    || _sofDCoBorrowerAddressType.Dirty
+                    || _sofDCoBorrowerAddressZipcode.Dirty
+                    || _spouseIncomeConsider.Dirty
+                    || _tax4506s.Dirty
+                    || _topRatioPercent.Dirty
+                    || _totalAssetsAmount.Dirty
+                    || _totalBaseIncomeAmount.Dirty
+                    || _totalBonusAmount.Dirty
+                    || _totalCommissionsAmount.Dirty
+                    || _totalDeposit.Dirty
+                    || _totalDividendsInterestAmount.Dirty
+                    || _totalEmploymentAmount.Dirty
+                    || _totalFixedPaymentAmount.Dirty
+                    || _totalGrossMonthlyIncomeAmount.Dirty
+                    || _totalIncomeAmount.Dirty
+                    || _totalMonthlyPaymentAmount.Dirty
+                    || _totalMortgagesBalanceAmount.Dirty
+                    || _totalMortgagesMonthlyPaymentAmount.Dirty
+                    || _totalNetRentalIncomeAmount.Dirty
+                    || _totalOther1Amount.Dirty
+                    || _totalOther2Amount.Dirty
+                    || _totalOvertimeAmount.Dirty
+                    || _totalPaymentsAmount.Dirty
+                    || _totalPrimaryHousingExpenseAmount.Dirty
+                    || _totalReoMarketValueAmount.Dirty
+                    || _totalUserDefinedIncome.Dirty
+                    || _tQLReports.Dirty
+                    || _transUnionAddress.Dirty
+                    || _transUnionCity.Dirty
+                    || _transUnionFax.Dirty
+                    || _transUnionModel.Dirty
+                    || _transUnionName.Dirty
+                    || _transUnionPhone.Dirty
+                    || _transUnionPostalCode.Dirty
+                    || _transUnionScoreRangeFrom.Dirty
+                    || _transUnionScoreRangeTo.Dirty
+                    || _transUnionState.Dirty
+                    || _transUnionWebsite.Dirty
+                    || _userDefinedIncome.Dirty
+                    || _userDefinedIncomeDescription.Dirty
+                    || _vACreditStandards.Dirty
+                    || _vaSummarySpouseIncomeAmount.Dirty
+                    || _vaSummaryTotalMonthlyGrossIncomeAmount.Dirty
+                    || ATRQMBorrower?.Dirty == true
+                    || Borrower?.Dirty == true
+                    || Coborrower?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountNumber1 = _accountNumber1; accountNumber1.Clean = value; _accountNumber1 = accountNumber1;
-                var accountNumber2 = _accountNumber2; accountNumber2.Clean = value; _accountNumber2 = accountNumber2;
-                var allOtherPaymentsAmount = _allOtherPaymentsAmount; allOtherPaymentsAmount.Clean = value; _allOtherPaymentsAmount = allOtherPaymentsAmount;
-                var applicationId = _applicationId; applicationId.Clean = value; _applicationId = applicationId;
-                var applicationIndex = _applicationIndex; applicationIndex.Clean = value; _applicationIndex = applicationIndex;
-                var applicationSignedDate = _applicationSignedDate; applicationSignedDate.Clean = value; _applicationSignedDate = applicationSignedDate;
-                var assets = _assets; assets.Clean = value; _assets = assets;
-                var assetsAvailableAmount = _assetsAvailableAmount; assetsAvailableAmount.Clean = value; _assetsAvailableAmount = assetsAvailableAmount;
-                var aTRQMBorrowers = _aTRQMBorrowers; aTRQMBorrowers.Clean = value; _aTRQMBorrowers = aTRQMBorrowers;
-                var aUSTrackingLogs = _aUSTrackingLogs; aUSTrackingLogs.Clean = value; _aUSTrackingLogs = aUSTrackingLogs;
-                var balanceAvailableFamilySupportGuideline = _balanceAvailableFamilySupportGuideline; balanceAvailableFamilySupportGuideline.Clean = value; _balanceAvailableFamilySupportGuideline = balanceAvailableFamilySupportGuideline;
-                var bottomRatioPercent = _bottomRatioPercent; bottomRatioPercent.Clean = value; _bottomRatioPercent = bottomRatioPercent;
-                var brwCoBrwTotalTaxDeductions = _brwCoBrwTotalTaxDeductions; brwCoBrwTotalTaxDeductions.Clean = value; _brwCoBrwTotalTaxDeductions = brwCoBrwTotalTaxDeductions;
-                var creditAliasName1 = _creditAliasName1; creditAliasName1.Clean = value; _creditAliasName1 = creditAliasName1;
-                var creditAliasName2 = _creditAliasName2; creditAliasName2.Clean = value; _creditAliasName2 = creditAliasName2;
-                var creditorName1 = _creditorName1; creditorName1.Clean = value; _creditorName1 = creditorName1;
-                var creditorName2 = _creditorName2; creditorName2.Clean = value; _creditorName2 = creditorName2;
-                var creditReportReferenceIdentifier = _creditReportReferenceIdentifier; creditReportReferenceIdentifier.Clean = value; _creditReportReferenceIdentifier = creditReportReferenceIdentifier;
-                var employment = _employment; employment.Clean = value; _employment = employment;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var equifaxAddress = _equifaxAddress; equifaxAddress.Clean = value; _equifaxAddress = equifaxAddress;
-                var equifaxCity = _equifaxCity; equifaxCity.Clean = value; _equifaxCity = equifaxCity;
-                var equifaxFax = _equifaxFax; equifaxFax.Clean = value; _equifaxFax = equifaxFax;
-                var equifaxModel = _equifaxModel; equifaxModel.Clean = value; _equifaxModel = equifaxModel;
-                var equifaxName = _equifaxName; equifaxName.Clean = value; _equifaxName = equifaxName;
-                var equifaxPhone = _equifaxPhone; equifaxPhone.Clean = value; _equifaxPhone = equifaxPhone;
-                var equifaxPostalCode = _equifaxPostalCode; equifaxPostalCode.Clean = value; _equifaxPostalCode = equifaxPostalCode;
-                var equifaxScoreRangeFrom = _equifaxScoreRangeFrom; equifaxScoreRangeFrom.Clean = value; _equifaxScoreRangeFrom = equifaxScoreRangeFrom;
-                var equifaxScoreRangeTo = _equifaxScoreRangeTo; equifaxScoreRangeTo.Clean = value; _equifaxScoreRangeTo = equifaxScoreRangeTo;
-                var equifaxState = _equifaxState; equifaxState.Clean = value; _equifaxState = equifaxState;
-                var equifaxWebsite = _equifaxWebsite; equifaxWebsite.Clean = value; _equifaxWebsite = equifaxWebsite;
-                var experianAddress = _experianAddress; experianAddress.Clean = value; _experianAddress = experianAddress;
-                var experianCity = _experianCity; experianCity.Clean = value; _experianCity = experianCity;
-                var experianFax = _experianFax; experianFax.Clean = value; _experianFax = experianFax;
-                var experianModel = _experianModel; experianModel.Clean = value; _experianModel = experianModel;
-                var experianName = _experianName; experianName.Clean = value; _experianName = experianName;
-                var experianPhone = _experianPhone; experianPhone.Clean = value; _experianPhone = experianPhone;
-                var experianPostalCode = _experianPostalCode; experianPostalCode.Clean = value; _experianPostalCode = experianPostalCode;
-                var experianScoreRangeFrom = _experianScoreRangeFrom; experianScoreRangeFrom.Clean = value; _experianScoreRangeFrom = experianScoreRangeFrom;
-                var experianScoreRangeTo = _experianScoreRangeTo; experianScoreRangeTo.Clean = value; _experianScoreRangeTo = experianScoreRangeTo;
-                var experianState = _experianState; experianState.Clean = value; _experianState = experianState;
-                var experianWebsite = _experianWebsite; experianWebsite.Clean = value; _experianWebsite = experianWebsite;
-                var fhaVaDebtIncomeRatio = _fhaVaDebtIncomeRatio; fhaVaDebtIncomeRatio.Clean = value; _fhaVaDebtIncomeRatio = fhaVaDebtIncomeRatio;
-                var fhaVaFamilySupportAmount = _fhaVaFamilySupportAmount; fhaVaFamilySupportAmount.Clean = value; _fhaVaFamilySupportAmount = fhaVaFamilySupportAmount;
-                var fhaVaTotalEstimatedMonthlyShelterExpenseAmount = _fhaVaTotalEstimatedMonthlyShelterExpenseAmount; fhaVaTotalEstimatedMonthlyShelterExpenseAmount.Clean = value; _fhaVaTotalEstimatedMonthlyShelterExpenseAmount = fhaVaTotalEstimatedMonthlyShelterExpenseAmount;
-                var fhaVaTotalNetEffectiveIncomeAmount = _fhaVaTotalNetEffectiveIncomeAmount; fhaVaTotalNetEffectiveIncomeAmount.Clean = value; _fhaVaTotalNetEffectiveIncomeAmount = fhaVaTotalNetEffectiveIncomeAmount;
-                var fhaVaTotalNetIncomeAmount = _fhaVaTotalNetIncomeAmount; fhaVaTotalNetIncomeAmount.Clean = value; _fhaVaTotalNetIncomeAmount = fhaVaTotalNetIncomeAmount;
-                var fhaVaTotalNetTakeHomePayAmount = _fhaVaTotalNetTakeHomePayAmount; fhaVaTotalNetTakeHomePayAmount.Clean = value; _fhaVaTotalNetTakeHomePayAmount = fhaVaTotalNetTakeHomePayAmount;
-                var fhaVaTotalOtherNetIncome = _fhaVaTotalOtherNetIncome; fhaVaTotalOtherNetIncome.Clean = value; _fhaVaTotalOtherNetIncome = fhaVaTotalOtherNetIncome;
-                var firstMortgagePrincipalAndInterestAmount = _firstMortgagePrincipalAndInterestAmount; firstMortgagePrincipalAndInterestAmount.Clean = value; _firstMortgagePrincipalAndInterestAmount = firstMortgagePrincipalAndInterestAmount;
-                var freddieMacCreditReportReferenceIdentifier = _freddieMacCreditReportReferenceIdentifier; freddieMacCreditReportReferenceIdentifier.Clean = value; _freddieMacCreditReportReferenceIdentifier = freddieMacCreditReportReferenceIdentifier;
-                var freddieMacOccupantDebtRatio = _freddieMacOccupantDebtRatio; freddieMacOccupantDebtRatio.Clean = value; _freddieMacOccupantDebtRatio = freddieMacOccupantDebtRatio;
-                var freddieMacOccupantHousingRatio = _freddieMacOccupantHousingRatio; freddieMacOccupantHousingRatio.Clean = value; _freddieMacOccupantHousingRatio = freddieMacOccupantHousingRatio;
-                var freDebtToHousingGapRatio = _freDebtToHousingGapRatio; freDebtToHousingGapRatio.Clean = value; _freDebtToHousingGapRatio = freDebtToHousingGapRatio;
-                var grossBaseIncomeAmount = _grossBaseIncomeAmount; grossBaseIncomeAmount.Clean = value; _grossBaseIncomeAmount = grossBaseIncomeAmount;
-                var grossIncomeForComortSet = _grossIncomeForComortSet; grossIncomeForComortSet.Clean = value; _grossIncomeForComortSet = grossIncomeForComortSet;
-                var grossNegativeCashFlow = _grossNegativeCashFlow; grossNegativeCashFlow.Clean = value; _grossNegativeCashFlow = grossNegativeCashFlow;
-                var grossOtherIncomeAmount = _grossOtherIncomeAmount; grossOtherIncomeAmount.Clean = value; _grossOtherIncomeAmount = grossOtherIncomeAmount;
-                var grossPositiveCashFlow = _grossPositiveCashFlow; grossPositiveCashFlow.Clean = value; _grossPositiveCashFlow = grossPositiveCashFlow;
-                var hazardInsuranceAmount = _hazardInsuranceAmount; hazardInsuranceAmount.Clean = value; _hazardInsuranceAmount = hazardInsuranceAmount;
-                var homeownersAssociationDuesAndCondoFeesAmount = _homeownersAssociationDuesAndCondoFeesAmount; homeownersAssociationDuesAndCondoFeesAmount.Clean = value; _homeownersAssociationDuesAndCondoFeesAmount = homeownersAssociationDuesAndCondoFeesAmount;
-                var hudAutoLienHolderName1 = _hudAutoLienHolderName1; hudAutoLienHolderName1.Clean = value; _hudAutoLienHolderName1 = hudAutoLienHolderName1;
-                var hudAutoLienHolderName2 = _hudAutoLienHolderName2; hudAutoLienHolderName2.Clean = value; _hudAutoLienHolderName2 = hudAutoLienHolderName2;
-                var hudAutoLoanAmount1 = _hudAutoLoanAmount1; hudAutoLoanAmount1.Clean = value; _hudAutoLoanAmount1 = hudAutoLoanAmount1;
-                var hudAutoLoanAmount2 = _hudAutoLoanAmount2; hudAutoLoanAmount2.Clean = value; _hudAutoLoanAmount2 = hudAutoLoanAmount2;
-                var hudAutoMonthlyPayment1 = _hudAutoMonthlyPayment1; hudAutoMonthlyPayment1.Clean = value; _hudAutoMonthlyPayment1 = hudAutoMonthlyPayment1;
-                var hudAutoMonthlyPayment2 = _hudAutoMonthlyPayment2; hudAutoMonthlyPayment2.Clean = value; _hudAutoMonthlyPayment2 = hudAutoMonthlyPayment2;
-                var hudAutoPresentBalance1 = _hudAutoPresentBalance1; hudAutoPresentBalance1.Clean = value; _hudAutoPresentBalance1 = hudAutoPresentBalance1;
-                var hudAutoPresentBalance2 = _hudAutoPresentBalance2; hudAutoPresentBalance2.Clean = value; _hudAutoPresentBalance2 = hudAutoPresentBalance2;
-                var hudAutoYearAndMake1 = _hudAutoYearAndMake1; hudAutoYearAndMake1.Clean = value; _hudAutoYearAndMake1 = hudAutoYearAndMake1;
-                var hudAutoYearAndMake2 = _hudAutoYearAndMake2; hudAutoYearAndMake2.Clean = value; _hudAutoYearAndMake2 = hudAutoYearAndMake2;
-                var hudLoanAmount1 = _hudLoanAmount1; hudLoanAmount1.Clean = value; _hudLoanAmount1 = hudLoanAmount1;
-                var hudLoanAmount10 = _hudLoanAmount10; hudLoanAmount10.Clean = value; _hudLoanAmount10 = hudLoanAmount10;
-                var hudLoanAmount11 = _hudLoanAmount11; hudLoanAmount11.Clean = value; _hudLoanAmount11 = hudLoanAmount11;
-                var hudLoanAmount2 = _hudLoanAmount2; hudLoanAmount2.Clean = value; _hudLoanAmount2 = hudLoanAmount2;
-                var hudLoanAmount3 = _hudLoanAmount3; hudLoanAmount3.Clean = value; _hudLoanAmount3 = hudLoanAmount3;
-                var hudLoanAmount4 = _hudLoanAmount4; hudLoanAmount4.Clean = value; _hudLoanAmount4 = hudLoanAmount4;
-                var hudLoanAmount5 = _hudLoanAmount5; hudLoanAmount5.Clean = value; _hudLoanAmount5 = hudLoanAmount5;
-                var hudLoanAmount6 = _hudLoanAmount6; hudLoanAmount6.Clean = value; _hudLoanAmount6 = hudLoanAmount6;
-                var hudLoanAmount7 = _hudLoanAmount7; hudLoanAmount7.Clean = value; _hudLoanAmount7 = hudLoanAmount7;
-                var hudLoanAmount8 = _hudLoanAmount8; hudLoanAmount8.Clean = value; _hudLoanAmount8 = hudLoanAmount8;
-                var hudLoanAmount9 = _hudLoanAmount9; hudLoanAmount9.Clean = value; _hudLoanAmount9 = hudLoanAmount9;
-                var hudRealEstateFhaInsured1 = _hudRealEstateFhaInsured1; hudRealEstateFhaInsured1.Clean = value; _hudRealEstateFhaInsured1 = hudRealEstateFhaInsured1;
-                var hudRealEstateFhaInsured2 = _hudRealEstateFhaInsured2; hudRealEstateFhaInsured2.Clean = value; _hudRealEstateFhaInsured2 = hudRealEstateFhaInsured2;
-                var hudRealEstateLienHolder1 = _hudRealEstateLienHolder1; hudRealEstateLienHolder1.Clean = value; _hudRealEstateLienHolder1 = hudRealEstateLienHolder1;
-                var hudRealEstateLienHolder2 = _hudRealEstateLienHolder2; hudRealEstateLienHolder2.Clean = value; _hudRealEstateLienHolder2 = hudRealEstateLienHolder2;
-                var hudRealEstateLoanAmount1 = _hudRealEstateLoanAmount1; hudRealEstateLoanAmount1.Clean = value; _hudRealEstateLoanAmount1 = hudRealEstateLoanAmount1;
-                var hudRealEstateLoanAmount2 = _hudRealEstateLoanAmount2; hudRealEstateLoanAmount2.Clean = value; _hudRealEstateLoanAmount2 = hudRealEstateLoanAmount2;
-                var hudRealEstateMonthlyPayment1 = _hudRealEstateMonthlyPayment1; hudRealEstateMonthlyPayment1.Clean = value; _hudRealEstateMonthlyPayment1 = hudRealEstateMonthlyPayment1;
-                var hudRealEstateMonthlyPayment2 = _hudRealEstateMonthlyPayment2; hudRealEstateMonthlyPayment2.Clean = value; _hudRealEstateMonthlyPayment2 = hudRealEstateMonthlyPayment2;
-                var hudRealEstatePresentBalance1 = _hudRealEstatePresentBalance1; hudRealEstatePresentBalance1.Clean = value; _hudRealEstatePresentBalance1 = hudRealEstatePresentBalance1;
-                var hudRealEstatePresentBalance2 = _hudRealEstatePresentBalance2; hudRealEstatePresentBalance2.Clean = value; _hudRealEstatePresentBalance2 = hudRealEstatePresentBalance2;
-                var id = _id; id.Clean = value; _id = id;
-                var income = _income; income.Clean = value; _income = income;
-                var incomeOfBorrowersSpouseUsedIndicator = _incomeOfBorrowersSpouseUsedIndicator; incomeOfBorrowersSpouseUsedIndicator.Clean = value; _incomeOfBorrowersSpouseUsedIndicator = incomeOfBorrowersSpouseUsedIndicator;
-                var incomeOtherThanBorrowerUsedIndicator = _incomeOtherThanBorrowerUsedIndicator; incomeOtherThanBorrowerUsedIndicator.Clean = value; _incomeOtherThanBorrowerUsedIndicator = incomeOtherThanBorrowerUsedIndicator;
-                var jointAssetLiabilityReportingIndicator = _jointAssetLiabilityReportingIndicator; jointAssetLiabilityReportingIndicator.Clean = value; _jointAssetLiabilityReportingIndicator = jointAssetLiabilityReportingIndicator;
-                var liabilities = _liabilities; liabilities.Clean = value; _liabilities = liabilities;
-                var liquidAssetsComortSet = _liquidAssetsComortSet; liquidAssetsComortSet.Clean = value; _liquidAssetsComortSet = liquidAssetsComortSet;
-                var mcawBorrowerOtherMonthlyIncomeAmount = _mcawBorrowerOtherMonthlyIncomeAmount; mcawBorrowerOtherMonthlyIncomeAmount.Clean = value; _mcawBorrowerOtherMonthlyIncomeAmount = mcawBorrowerOtherMonthlyIncomeAmount;
-                var mcawCoborrowerOtherMonthlyIncomeAmount = _mcawCoborrowerOtherMonthlyIncomeAmount; mcawCoborrowerOtherMonthlyIncomeAmount.Clean = value; _mcawCoborrowerOtherMonthlyIncomeAmount = mcawCoborrowerOtherMonthlyIncomeAmount;
-                var mcawGrossMonthlyIncomeAmount = _mcawGrossMonthlyIncomeAmount; mcawGrossMonthlyIncomeAmount.Clean = value; _mcawGrossMonthlyIncomeAmount = mcawGrossMonthlyIncomeAmount;
-                var mcawMortgagePaymentToIncome1Amount = _mcawMortgagePaymentToIncome1Amount; mcawMortgagePaymentToIncome1Amount.Clean = value; _mcawMortgagePaymentToIncome1Amount = mcawMortgagePaymentToIncome1Amount;
-                var mcawMortgagePaymentToIncome2Amount = _mcawMortgagePaymentToIncome2Amount; mcawMortgagePaymentToIncome2Amount.Clean = value; _mcawMortgagePaymentToIncome2Amount = mcawMortgagePaymentToIncome2Amount;
-                var mcawOtherAmount = _mcawOtherAmount; mcawOtherAmount.Clean = value; _mcawOtherAmount = mcawOtherAmount;
-                var mcawOtherDebtsAndObligationsAmount = _mcawOtherDebtsAndObligationsAmount; mcawOtherDebtsAndObligationsAmount.Clean = value; _mcawOtherDebtsAndObligationsAmount = mcawOtherDebtsAndObligationsAmount;
-                var mcawTotalFixedPaymentForPurchaseAmount = _mcawTotalFixedPaymentForPurchaseAmount; mcawTotalFixedPaymentForPurchaseAmount.Clean = value; _mcawTotalFixedPaymentForPurchaseAmount = mcawTotalFixedPaymentForPurchaseAmount;
-                var mcawTotalFixedPaymentForRefinanceAmount = _mcawTotalFixedPaymentForRefinanceAmount; mcawTotalFixedPaymentForRefinanceAmount.Clean = value; _mcawTotalFixedPaymentForRefinanceAmount = mcawTotalFixedPaymentForRefinanceAmount;
-                var mcawTotalFixedPaymentToIncome1Amount = _mcawTotalFixedPaymentToIncome1Amount; mcawTotalFixedPaymentToIncome1Amount.Clean = value; _mcawTotalFixedPaymentToIncome1Amount = mcawTotalFixedPaymentToIncome1Amount;
-                var mcawTotalFixedPaymentToIncome2Amount = _mcawTotalFixedPaymentToIncome2Amount; mcawTotalFixedPaymentToIncome2Amount.Clean = value; _mcawTotalFixedPaymentToIncome2Amount = mcawTotalFixedPaymentToIncome2Amount;
-                var mcawTotalMonthlyPaymentsAmount = _mcawTotalMonthlyPaymentsAmount; mcawTotalMonthlyPaymentsAmount.Clean = value; _mcawTotalMonthlyPaymentsAmount = mcawTotalMonthlyPaymentsAmount;
-                var mcawTotalMortgagePaymentAmount = _mcawTotalMortgagePaymentAmount; mcawTotalMortgagePaymentAmount.Clean = value; _mcawTotalMortgagePaymentAmount = mcawTotalMortgagePaymentAmount;
-                var monthlyExpenseComortSet = _monthlyExpenseComortSet; monthlyExpenseComortSet.Clean = value; _monthlyExpenseComortSet = monthlyExpenseComortSet;
-                var monthlyHousingExpenseAmount = _monthlyHousingExpenseAmount; monthlyHousingExpenseAmount.Clean = value; _monthlyHousingExpenseAmount = monthlyHousingExpenseAmount;
-                var monthlyInstallmentExpenseAmount = _monthlyInstallmentExpenseAmount; monthlyInstallmentExpenseAmount.Clean = value; _monthlyInstallmentExpenseAmount = monthlyInstallmentExpenseAmount;
-                var monthlyNegativeRealEstateAmount = _monthlyNegativeRealEstateAmount; monthlyNegativeRealEstateAmount.Clean = value; _monthlyNegativeRealEstateAmount = monthlyNegativeRealEstateAmount;
-                var monthlySecondHomeAmount = _monthlySecondHomeAmount; monthlySecondHomeAmount.Clean = value; _monthlySecondHomeAmount = monthlySecondHomeAmount;
-                var mortgageInsuranceAmount = _mortgageInsuranceAmount; mortgageInsuranceAmount.Clean = value; _mortgageInsuranceAmount = mortgageInsuranceAmount;
-                var netWorthAmount = _netWorthAmount; netWorthAmount.Clean = value; _netWorthAmount = netWorthAmount;
-                var otherHousingExpenseAmount = _otherHousingExpenseAmount; otherHousingExpenseAmount.Clean = value; _otherHousingExpenseAmount = otherHousingExpenseAmount;
-                var otherItemsDeducted = _otherItemsDeducted; otherItemsDeducted.Clean = value; _otherItemsDeducted = otherItemsDeducted;
-                var otherMortgagePrincipalAndInterestAmount = _otherMortgagePrincipalAndInterestAmount; otherMortgagePrincipalAndInterestAmount.Clean = value; _otherMortgagePrincipalAndInterestAmount = otherMortgagePrincipalAndInterestAmount;
-                var pastCreditRecord = _pastCreditRecord; pastCreditRecord.Clean = value; _pastCreditRecord = pastCreditRecord;
-                var presentHousingExpComortSet = _presentHousingExpComortSet; presentHousingExpComortSet.Clean = value; _presentHousingExpComortSet = presentHousingExpComortSet;
-                var primaryResidenceComortSet = _primaryResidenceComortSet; primaryResidenceComortSet.Clean = value; _primaryResidenceComortSet = primaryResidenceComortSet;
-                var propertyUsageType = _propertyUsageType; propertyUsageType.Clean = value; _propertyUsageType = propertyUsageType;
-                var proposedDuesAmount = _proposedDuesAmount; proposedDuesAmount.Clean = value; _proposedDuesAmount = proposedDuesAmount;
-                var proposedFirstMortgageAmount = _proposedFirstMortgageAmount; proposedFirstMortgageAmount.Clean = value; _proposedFirstMortgageAmount = proposedFirstMortgageAmount;
-                var proposedGroundRentAmount = _proposedGroundRentAmount; proposedGroundRentAmount.Clean = value; _proposedGroundRentAmount = proposedGroundRentAmount;
-                var proposedHazardInsuranceAmount = _proposedHazardInsuranceAmount; proposedHazardInsuranceAmount.Clean = value; _proposedHazardInsuranceAmount = proposedHazardInsuranceAmount;
-                var proposedMortgageInsuranceAmount = _proposedMortgageInsuranceAmount; proposedMortgageInsuranceAmount.Clean = value; _proposedMortgageInsuranceAmount = proposedMortgageInsuranceAmount;
-                var proposedOtherAmount = _proposedOtherAmount; proposedOtherAmount.Clean = value; _proposedOtherAmount = proposedOtherAmount;
-                var proposedOtherMortgagesAmount = _proposedOtherMortgagesAmount; proposedOtherMortgagesAmount.Clean = value; _proposedOtherMortgagesAmount = proposedOtherMortgagesAmount;
-                var proposedRealEstateTaxesAmount = _proposedRealEstateTaxesAmount; proposedRealEstateTaxesAmount.Clean = value; _proposedRealEstateTaxesAmount = proposedRealEstateTaxesAmount;
-                var realEstateTaxAmount = _realEstateTaxAmount; realEstateTaxAmount.Clean = value; _realEstateTaxAmount = realEstateTaxAmount;
-                var rentAmount = _rentAmount; rentAmount.Clean = value; _rentAmount = rentAmount;
-                var reoProperties = _reoProperties; reoProperties.Clean = value; _reoProperties = reoProperties;
-                var reoTotalGrossRentalIncomeAmount = _reoTotalGrossRentalIncomeAmount; reoTotalGrossRentalIncomeAmount.Clean = value; _reoTotalGrossRentalIncomeAmount = reoTotalGrossRentalIncomeAmount;
-                var reoTotalMaintenanceAmount = _reoTotalMaintenanceAmount; reoTotalMaintenanceAmount.Clean = value; _reoTotalMaintenanceAmount = reoTotalMaintenanceAmount;
-                var reoTotalMarketValueAmount = _reoTotalMarketValueAmount; reoTotalMarketValueAmount.Clean = value; _reoTotalMarketValueAmount = reoTotalMarketValueAmount;
-                var reoTotalMortgagePaymentsAmount = _reoTotalMortgagePaymentsAmount; reoTotalMortgagePaymentsAmount.Clean = value; _reoTotalMortgagePaymentsAmount = reoTotalMortgagePaymentsAmount;
-                var reoTotalMortgagesAndLiensAmount = _reoTotalMortgagesAndLiensAmount; reoTotalMortgagesAndLiensAmount.Clean = value; _reoTotalMortgagesAndLiensAmount = reoTotalMortgagesAndLiensAmount;
-                var reoTotalNetRentalIncomeAmount = _reoTotalNetRentalIncomeAmount; reoTotalNetRentalIncomeAmount.Clean = value; _reoTotalNetRentalIncomeAmount = reoTotalNetRentalIncomeAmount;
-                var residences = _residences; residences.Clean = value; _residences = residences;
-                var selfEmployedIncomes = _selfEmployedIncomes; selfEmployedIncomes.Clean = value; _selfEmployedIncomes = selfEmployedIncomes;
-                var sofDBorrowerAddress = _sofDBorrowerAddress; sofDBorrowerAddress.Clean = value; _sofDBorrowerAddress = sofDBorrowerAddress;
-                var sofDBorrowerAddressCity = _sofDBorrowerAddressCity; sofDBorrowerAddressCity.Clean = value; _sofDBorrowerAddressCity = sofDBorrowerAddressCity;
-                var sofDBorrowerAddressState = _sofDBorrowerAddressState; sofDBorrowerAddressState.Clean = value; _sofDBorrowerAddressState = sofDBorrowerAddressState;
-                var sofDBorrowerAddressType = _sofDBorrowerAddressType; sofDBorrowerAddressType.Clean = value; _sofDBorrowerAddressType = sofDBorrowerAddressType;
-                var sofDBorrowerAddressZipcode = _sofDBorrowerAddressZipcode; sofDBorrowerAddressZipcode.Clean = value; _sofDBorrowerAddressZipcode = sofDBorrowerAddressZipcode;
-                var sofDCoBorrowerAddress = _sofDCoBorrowerAddress; sofDCoBorrowerAddress.Clean = value; _sofDCoBorrowerAddress = sofDCoBorrowerAddress;
-                var sofDCoBorrowerAddressCity = _sofDCoBorrowerAddressCity; sofDCoBorrowerAddressCity.Clean = value; _sofDCoBorrowerAddressCity = sofDCoBorrowerAddressCity;
-                var sofDCoBorrowerAddressState = _sofDCoBorrowerAddressState; sofDCoBorrowerAddressState.Clean = value; _sofDCoBorrowerAddressState = sofDCoBorrowerAddressState;
-                var sofDCoBorrowerAddressType = _sofDCoBorrowerAddressType; sofDCoBorrowerAddressType.Clean = value; _sofDCoBorrowerAddressType = sofDCoBorrowerAddressType;
-                var sofDCoBorrowerAddressZipcode = _sofDCoBorrowerAddressZipcode; sofDCoBorrowerAddressZipcode.Clean = value; _sofDCoBorrowerAddressZipcode = sofDCoBorrowerAddressZipcode;
-                var spouseIncomeConsider = _spouseIncomeConsider; spouseIncomeConsider.Clean = value; _spouseIncomeConsider = spouseIncomeConsider;
-                var tax4506s = _tax4506s; tax4506s.Clean = value; _tax4506s = tax4506s;
-                var topRatioPercent = _topRatioPercent; topRatioPercent.Clean = value; _topRatioPercent = topRatioPercent;
-                var totalAssetsAmount = _totalAssetsAmount; totalAssetsAmount.Clean = value; _totalAssetsAmount = totalAssetsAmount;
-                var totalBaseIncomeAmount = _totalBaseIncomeAmount; totalBaseIncomeAmount.Clean = value; _totalBaseIncomeAmount = totalBaseIncomeAmount;
-                var totalBonusAmount = _totalBonusAmount; totalBonusAmount.Clean = value; _totalBonusAmount = totalBonusAmount;
-                var totalCommissionsAmount = _totalCommissionsAmount; totalCommissionsAmount.Clean = value; _totalCommissionsAmount = totalCommissionsAmount;
-                var totalDeposit = _totalDeposit; totalDeposit.Clean = value; _totalDeposit = totalDeposit;
-                var totalDividendsInterestAmount = _totalDividendsInterestAmount; totalDividendsInterestAmount.Clean = value; _totalDividendsInterestAmount = totalDividendsInterestAmount;
-                var totalEmploymentAmount = _totalEmploymentAmount; totalEmploymentAmount.Clean = value; _totalEmploymentAmount = totalEmploymentAmount;
-                var totalFixedPaymentAmount = _totalFixedPaymentAmount; totalFixedPaymentAmount.Clean = value; _totalFixedPaymentAmount = totalFixedPaymentAmount;
-                var totalGrossMonthlyIncomeAmount = _totalGrossMonthlyIncomeAmount; totalGrossMonthlyIncomeAmount.Clean = value; _totalGrossMonthlyIncomeAmount = totalGrossMonthlyIncomeAmount;
-                var totalIncomeAmount = _totalIncomeAmount; totalIncomeAmount.Clean = value; _totalIncomeAmount = totalIncomeAmount;
-                var totalMonthlyPaymentAmount = _totalMonthlyPaymentAmount; totalMonthlyPaymentAmount.Clean = value; _totalMonthlyPaymentAmount = totalMonthlyPaymentAmount;
-                var totalMortgagesBalanceAmount = _totalMortgagesBalanceAmount; totalMortgagesBalanceAmount.Clean = value; _totalMortgagesBalanceAmount = totalMortgagesBalanceAmount;
-                var totalMortgagesMonthlyPaymentAmount = _totalMortgagesMonthlyPaymentAmount; totalMortgagesMonthlyPaymentAmount.Clean = value; _totalMortgagesMonthlyPaymentAmount = totalMortgagesMonthlyPaymentAmount;
-                var totalNetRentalIncomeAmount = _totalNetRentalIncomeAmount; totalNetRentalIncomeAmount.Clean = value; _totalNetRentalIncomeAmount = totalNetRentalIncomeAmount;
-                var totalOther1Amount = _totalOther1Amount; totalOther1Amount.Clean = value; _totalOther1Amount = totalOther1Amount;
-                var totalOther2Amount = _totalOther2Amount; totalOther2Amount.Clean = value; _totalOther2Amount = totalOther2Amount;
-                var totalOvertimeAmount = _totalOvertimeAmount; totalOvertimeAmount.Clean = value; _totalOvertimeAmount = totalOvertimeAmount;
-                var totalPaymentsAmount = _totalPaymentsAmount; totalPaymentsAmount.Clean = value; _totalPaymentsAmount = totalPaymentsAmount;
-                var totalPrimaryHousingExpenseAmount = _totalPrimaryHousingExpenseAmount; totalPrimaryHousingExpenseAmount.Clean = value; _totalPrimaryHousingExpenseAmount = totalPrimaryHousingExpenseAmount;
-                var totalReoMarketValueAmount = _totalReoMarketValueAmount; totalReoMarketValueAmount.Clean = value; _totalReoMarketValueAmount = totalReoMarketValueAmount;
-                var totalUserDefinedIncome = _totalUserDefinedIncome; totalUserDefinedIncome.Clean = value; _totalUserDefinedIncome = totalUserDefinedIncome;
-                var tQLReports = _tQLReports; tQLReports.Clean = value; _tQLReports = tQLReports;
-                var transUnionAddress = _transUnionAddress; transUnionAddress.Clean = value; _transUnionAddress = transUnionAddress;
-                var transUnionCity = _transUnionCity; transUnionCity.Clean = value; _transUnionCity = transUnionCity;
-                var transUnionFax = _transUnionFax; transUnionFax.Clean = value; _transUnionFax = transUnionFax;
-                var transUnionModel = _transUnionModel; transUnionModel.Clean = value; _transUnionModel = transUnionModel;
-                var transUnionName = _transUnionName; transUnionName.Clean = value; _transUnionName = transUnionName;
-                var transUnionPhone = _transUnionPhone; transUnionPhone.Clean = value; _transUnionPhone = transUnionPhone;
-                var transUnionPostalCode = _transUnionPostalCode; transUnionPostalCode.Clean = value; _transUnionPostalCode = transUnionPostalCode;
-                var transUnionScoreRangeFrom = _transUnionScoreRangeFrom; transUnionScoreRangeFrom.Clean = value; _transUnionScoreRangeFrom = transUnionScoreRangeFrom;
-                var transUnionScoreRangeTo = _transUnionScoreRangeTo; transUnionScoreRangeTo.Clean = value; _transUnionScoreRangeTo = transUnionScoreRangeTo;
-                var transUnionState = _transUnionState; transUnionState.Clean = value; _transUnionState = transUnionState;
-                var transUnionWebsite = _transUnionWebsite; transUnionWebsite.Clean = value; _transUnionWebsite = transUnionWebsite;
-                var userDefinedIncome = _userDefinedIncome; userDefinedIncome.Clean = value; _userDefinedIncome = userDefinedIncome;
-                var userDefinedIncomeDescription = _userDefinedIncomeDescription; userDefinedIncomeDescription.Clean = value; _userDefinedIncomeDescription = userDefinedIncomeDescription;
-                var vACreditStandards = _vACreditStandards; vACreditStandards.Clean = value; _vACreditStandards = vACreditStandards;
-                var vaSummarySpouseIncomeAmount = _vaSummarySpouseIncomeAmount; vaSummarySpouseIncomeAmount.Clean = value; _vaSummarySpouseIncomeAmount = vaSummarySpouseIncomeAmount;
-                var vaSummaryTotalMonthlyGrossIncomeAmount = _vaSummaryTotalMonthlyGrossIncomeAmount; vaSummaryTotalMonthlyGrossIncomeAmount.Clean = value; _vaSummaryTotalMonthlyGrossIncomeAmount = vaSummaryTotalMonthlyGrossIncomeAmount;
-                if (ATRQMBorrower != null) ATRQMBorrower.Clean = value;
-                if (Borrower != null) Borrower.Clean = value;
-                if (Coborrower != null) Coborrower.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountNumber1.Dirty = value;
+                _accountNumber2.Dirty = value;
+                _allOtherPaymentsAmount.Dirty = value;
+                _applicationId.Dirty = value;
+                _applicationIndex.Dirty = value;
+                _applicationSignedDate.Dirty = value;
+                _assets.Dirty = value;
+                _assetsAvailableAmount.Dirty = value;
+                _aTRQMBorrowers.Dirty = value;
+                _aUSTrackingLogs.Dirty = value;
+                _balanceAvailableFamilySupportGuideline.Dirty = value;
+                _bottomRatioPercent.Dirty = value;
+                _brwCoBrwTotalTaxDeductions.Dirty = value;
+                _creditAliasName1.Dirty = value;
+                _creditAliasName2.Dirty = value;
+                _creditorName1.Dirty = value;
+                _creditorName2.Dirty = value;
+                _creditReportReferenceIdentifier.Dirty = value;
+                _employment.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _equifaxAddress.Dirty = value;
+                _equifaxCity.Dirty = value;
+                _equifaxFax.Dirty = value;
+                _equifaxModel.Dirty = value;
+                _equifaxName.Dirty = value;
+                _equifaxPhone.Dirty = value;
+                _equifaxPostalCode.Dirty = value;
+                _equifaxScoreRangeFrom.Dirty = value;
+                _equifaxScoreRangeTo.Dirty = value;
+                _equifaxState.Dirty = value;
+                _equifaxWebsite.Dirty = value;
+                _experianAddress.Dirty = value;
+                _experianCity.Dirty = value;
+                _experianFax.Dirty = value;
+                _experianModel.Dirty = value;
+                _experianName.Dirty = value;
+                _experianPhone.Dirty = value;
+                _experianPostalCode.Dirty = value;
+                _experianScoreRangeFrom.Dirty = value;
+                _experianScoreRangeTo.Dirty = value;
+                _experianState.Dirty = value;
+                _experianWebsite.Dirty = value;
+                _fhaVaDebtIncomeRatio.Dirty = value;
+                _fhaVaFamilySupportAmount.Dirty = value;
+                _fhaVaTotalEstimatedMonthlyShelterExpenseAmount.Dirty = value;
+                _fhaVaTotalNetEffectiveIncomeAmount.Dirty = value;
+                _fhaVaTotalNetIncomeAmount.Dirty = value;
+                _fhaVaTotalNetTakeHomePayAmount.Dirty = value;
+                _fhaVaTotalOtherNetIncome.Dirty = value;
+                _firstMortgagePrincipalAndInterestAmount.Dirty = value;
+                _freddieMacCreditReportReferenceIdentifier.Dirty = value;
+                _freddieMacOccupantDebtRatio.Dirty = value;
+                _freddieMacOccupantHousingRatio.Dirty = value;
+                _freDebtToHousingGapRatio.Dirty = value;
+                _grossBaseIncomeAmount.Dirty = value;
+                _grossIncomeForComortSet.Dirty = value;
+                _grossNegativeCashFlow.Dirty = value;
+                _grossOtherIncomeAmount.Dirty = value;
+                _grossPositiveCashFlow.Dirty = value;
+                _hazardInsuranceAmount.Dirty = value;
+                _homeownersAssociationDuesAndCondoFeesAmount.Dirty = value;
+                _hudAutoLienHolderName1.Dirty = value;
+                _hudAutoLienHolderName2.Dirty = value;
+                _hudAutoLoanAmount1.Dirty = value;
+                _hudAutoLoanAmount2.Dirty = value;
+                _hudAutoMonthlyPayment1.Dirty = value;
+                _hudAutoMonthlyPayment2.Dirty = value;
+                _hudAutoPresentBalance1.Dirty = value;
+                _hudAutoPresentBalance2.Dirty = value;
+                _hudAutoYearAndMake1.Dirty = value;
+                _hudAutoYearAndMake2.Dirty = value;
+                _hudLoanAmount1.Dirty = value;
+                _hudLoanAmount10.Dirty = value;
+                _hudLoanAmount11.Dirty = value;
+                _hudLoanAmount2.Dirty = value;
+                _hudLoanAmount3.Dirty = value;
+                _hudLoanAmount4.Dirty = value;
+                _hudLoanAmount5.Dirty = value;
+                _hudLoanAmount6.Dirty = value;
+                _hudLoanAmount7.Dirty = value;
+                _hudLoanAmount8.Dirty = value;
+                _hudLoanAmount9.Dirty = value;
+                _hudRealEstateFhaInsured1.Dirty = value;
+                _hudRealEstateFhaInsured2.Dirty = value;
+                _hudRealEstateLienHolder1.Dirty = value;
+                _hudRealEstateLienHolder2.Dirty = value;
+                _hudRealEstateLoanAmount1.Dirty = value;
+                _hudRealEstateLoanAmount2.Dirty = value;
+                _hudRealEstateMonthlyPayment1.Dirty = value;
+                _hudRealEstateMonthlyPayment2.Dirty = value;
+                _hudRealEstatePresentBalance1.Dirty = value;
+                _hudRealEstatePresentBalance2.Dirty = value;
+                _id.Dirty = value;
+                _income.Dirty = value;
+                _incomeOfBorrowersSpouseUsedIndicator.Dirty = value;
+                _incomeOtherThanBorrowerUsedIndicator.Dirty = value;
+                _jointAssetLiabilityReportingIndicator.Dirty = value;
+                _liabilities.Dirty = value;
+                _liquidAssetsComortSet.Dirty = value;
+                _mcawBorrowerOtherMonthlyIncomeAmount.Dirty = value;
+                _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty = value;
+                _mcawGrossMonthlyIncomeAmount.Dirty = value;
+                _mcawMortgagePaymentToIncome1Amount.Dirty = value;
+                _mcawMortgagePaymentToIncome2Amount.Dirty = value;
+                _mcawOtherAmount.Dirty = value;
+                _mcawOtherDebtsAndObligationsAmount.Dirty = value;
+                _mcawTotalFixedPaymentForPurchaseAmount.Dirty = value;
+                _mcawTotalFixedPaymentForRefinanceAmount.Dirty = value;
+                _mcawTotalFixedPaymentToIncome1Amount.Dirty = value;
+                _mcawTotalFixedPaymentToIncome2Amount.Dirty = value;
+                _mcawTotalMonthlyPaymentsAmount.Dirty = value;
+                _mcawTotalMortgagePaymentAmount.Dirty = value;
+                _monthlyExpenseComortSet.Dirty = value;
+                _monthlyHousingExpenseAmount.Dirty = value;
+                _monthlyInstallmentExpenseAmount.Dirty = value;
+                _monthlyNegativeRealEstateAmount.Dirty = value;
+                _monthlySecondHomeAmount.Dirty = value;
+                _mortgageInsuranceAmount.Dirty = value;
+                _netWorthAmount.Dirty = value;
+                _otherHousingExpenseAmount.Dirty = value;
+                _otherItemsDeducted.Dirty = value;
+                _otherMortgagePrincipalAndInterestAmount.Dirty = value;
+                _pastCreditRecord.Dirty = value;
+                _presentHousingExpComortSet.Dirty = value;
+                _primaryResidenceComortSet.Dirty = value;
+                _propertyUsageType.Dirty = value;
+                _proposedDuesAmount.Dirty = value;
+                _proposedFirstMortgageAmount.Dirty = value;
+                _proposedGroundRentAmount.Dirty = value;
+                _proposedHazardInsuranceAmount.Dirty = value;
+                _proposedMortgageInsuranceAmount.Dirty = value;
+                _proposedOtherAmount.Dirty = value;
+                _proposedOtherMortgagesAmount.Dirty = value;
+                _proposedRealEstateTaxesAmount.Dirty = value;
+                _realEstateTaxAmount.Dirty = value;
+                _rentAmount.Dirty = value;
+                _reoProperties.Dirty = value;
+                _reoTotalGrossRentalIncomeAmount.Dirty = value;
+                _reoTotalMaintenanceAmount.Dirty = value;
+                _reoTotalMarketValueAmount.Dirty = value;
+                _reoTotalMortgagePaymentsAmount.Dirty = value;
+                _reoTotalMortgagesAndLiensAmount.Dirty = value;
+                _reoTotalNetRentalIncomeAmount.Dirty = value;
+                _residences.Dirty = value;
+                _selfEmployedIncomes.Dirty = value;
+                _sofDBorrowerAddress.Dirty = value;
+                _sofDBorrowerAddressCity.Dirty = value;
+                _sofDBorrowerAddressState.Dirty = value;
+                _sofDBorrowerAddressType.Dirty = value;
+                _sofDBorrowerAddressZipcode.Dirty = value;
+                _sofDCoBorrowerAddress.Dirty = value;
+                _sofDCoBorrowerAddressCity.Dirty = value;
+                _sofDCoBorrowerAddressState.Dirty = value;
+                _sofDCoBorrowerAddressType.Dirty = value;
+                _sofDCoBorrowerAddressZipcode.Dirty = value;
+                _spouseIncomeConsider.Dirty = value;
+                _tax4506s.Dirty = value;
+                _topRatioPercent.Dirty = value;
+                _totalAssetsAmount.Dirty = value;
+                _totalBaseIncomeAmount.Dirty = value;
+                _totalBonusAmount.Dirty = value;
+                _totalCommissionsAmount.Dirty = value;
+                _totalDeposit.Dirty = value;
+                _totalDividendsInterestAmount.Dirty = value;
+                _totalEmploymentAmount.Dirty = value;
+                _totalFixedPaymentAmount.Dirty = value;
+                _totalGrossMonthlyIncomeAmount.Dirty = value;
+                _totalIncomeAmount.Dirty = value;
+                _totalMonthlyPaymentAmount.Dirty = value;
+                _totalMortgagesBalanceAmount.Dirty = value;
+                _totalMortgagesMonthlyPaymentAmount.Dirty = value;
+                _totalNetRentalIncomeAmount.Dirty = value;
+                _totalOther1Amount.Dirty = value;
+                _totalOther2Amount.Dirty = value;
+                _totalOvertimeAmount.Dirty = value;
+                _totalPaymentsAmount.Dirty = value;
+                _totalPrimaryHousingExpenseAmount.Dirty = value;
+                _totalReoMarketValueAmount.Dirty = value;
+                _totalUserDefinedIncome.Dirty = value;
+                _tQLReports.Dirty = value;
+                _transUnionAddress.Dirty = value;
+                _transUnionCity.Dirty = value;
+                _transUnionFax.Dirty = value;
+                _transUnionModel.Dirty = value;
+                _transUnionName.Dirty = value;
+                _transUnionPhone.Dirty = value;
+                _transUnionPostalCode.Dirty = value;
+                _transUnionScoreRangeFrom.Dirty = value;
+                _transUnionScoreRangeTo.Dirty = value;
+                _transUnionState.Dirty = value;
+                _transUnionWebsite.Dirty = value;
+                _userDefinedIncome.Dirty = value;
+                _userDefinedIncomeDescription.Dirty = value;
+                _vACreditStandards.Dirty = value;
+                _vaSummarySpouseIncomeAmount.Dirty = value;
+                _vaSummaryTotalMonthlyGrossIncomeAmount.Dirty = value;
+                if (ATRQMBorrower != null) ATRQMBorrower.Dirty = value;
+                if (Borrower != null) Borrower.Dirty = value;
+                if (Coborrower != null) Coborrower.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Application()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hmda : IClean
+    public sealed partial class Hmda : IDirty
     {
         private Value<string> _actionTaken;
         public string ActionTaken { get { return _actionTaken; } set { _actionTaken = value; } }
@@ -186,205 +186,200 @@ namespace EncompassRest.Loans
         public string TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
         private Value<string> _universalLoanId;
         public string UniversalLoanId { get { return _universalLoanId; } set { _universalLoanId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actionTaken.Clean
-                    && _applicationDate.Clean
-                    && _aUS1.Clean
-                    && _aUS2.Clean
-                    && _aUS3.Clean
-                    && _aUS4.Clean
-                    && _aUS5.Clean
-                    && _aUSRecommendation1.Clean
-                    && _aUSRecommendation2.Clean
-                    && _aUSRecommendation3.Clean
-                    && _aUSRecommendation4.Clean
-                    && _aUSRecommendation5.Clean
-                    && _businessOrCommercialPurpose.Clean
-                    && _censusTrack.Clean
-                    && _cLTV.Clean
-                    && _contactEmailAddress.Clean
-                    && _contactFaxNumber.Clean
-                    && _contactName.Clean
-                    && _contactOfficeCity.Clean
-                    && _contactOfficeState.Clean
-                    && _contactOfficeStreetAddress.Clean
-                    && _contactOfficeZIPCode.Clean
-                    && _contactPhoneNumber.Clean
-                    && _countyCode.Clean
-                    && _debtToIncomeRatio.Clean
-                    && _denialReason1.Clean
-                    && _denialReason2.Clean
-                    && _denialReason3.Clean
-                    && _denialReason4.Clean
-                    && _discountPoints.Clean
-                    && _excludeLoanFromHMDAReportIndicator.Clean
-                    && _federalAgency.Clean
-                    && _federalTaxpayerIdNumber.Clean
-                    && _financialInstitutionName.Clean
-                    && _hmdaPropertyAddress.Clean
-                    && _hmdaPropertyCity.Clean
-                    && _hmdaPropertyState.Clean
-                    && _hmdaPropertyZipCode.Clean
-                    && _hmdaSyncAddressIndicator.Clean
-                    && _hOEPAStatus.Clean
-                    && _id.Clean
-                    && _income.Clean
-                    && _initiallyPayableToYourInstitution.Clean
-                    && _interestRate.Clean
-                    && _introRatePeriod.Clean
-                    && _legalEntityIdentifier.Clean
-                    && _lenderCredits.Clean
-                    && _lienStatus.Clean
-                    && _loanAmount.Clean
-                    && _loanPurpose.Clean
-                    && _loanTerm.Clean
-                    && _loanType.Clean
-                    && _manufacturedHomeLandPropertyInterest.Clean
-                    && _manufacturedSecuredProperyType.Clean
-                    && _mSANumber.Clean
-                    && _multifamilyNoUnits.Clean
-                    && _nMLSLoanOriginatorID.Clean
-                    && _openEndLineOfCredit.Clean
-                    && _originationCharges.Clean
-                    && _otherAUS.Clean
-                    && _otherAUSRecommendations.Clean
-                    && _otherDenialReason.Clean
-                    && _otherNonAmortization.Clean
-                    && _parentAddress.Clean
-                    && _parentCity.Clean
-                    && _parentName.Clean
-                    && _parentState.Clean
-                    && _parentZip.Clean
-                    && _preapprovals.Clean
-                    && _prepaymentPenaltyPeriod.Clean
-                    && _propertyType.Clean
-                    && _propertyValue.Clean
-                    && _qMStatus.Clean
-                    && _rateSpread.Clean
-                    && _reportingYear.Clean
-                    && _reportPurposeOfLoanIndicator.Clean
-                    && _repurchasedActionDate.Clean
-                    && _repurchasedActionTaken.Clean
-                    && _repurchasedLoanAmount.Clean
-                    && _repurchasedReportingYear.Clean
-                    && _repurchasedTypeOfPurchaser.Clean
-                    && _respondentID.Clean
-                    && _reverseMortgage.Clean
-                    && _stateCode.Clean
-                    && _submissionOfApplication.Clean
-                    && _totalLoanCosts.Clean
-                    && _totalPointsAndFees.Clean
-                    && _typeOfPurchaser.Clean
-                    && _universalLoanId.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actionTaken.Dirty
+                    || _applicationDate.Dirty
+                    || _aUS1.Dirty
+                    || _aUS2.Dirty
+                    || _aUS3.Dirty
+                    || _aUS4.Dirty
+                    || _aUS5.Dirty
+                    || _aUSRecommendation1.Dirty
+                    || _aUSRecommendation2.Dirty
+                    || _aUSRecommendation3.Dirty
+                    || _aUSRecommendation4.Dirty
+                    || _aUSRecommendation5.Dirty
+                    || _businessOrCommercialPurpose.Dirty
+                    || _censusTrack.Dirty
+                    || _cLTV.Dirty
+                    || _contactEmailAddress.Dirty
+                    || _contactFaxNumber.Dirty
+                    || _contactName.Dirty
+                    || _contactOfficeCity.Dirty
+                    || _contactOfficeState.Dirty
+                    || _contactOfficeStreetAddress.Dirty
+                    || _contactOfficeZIPCode.Dirty
+                    || _contactPhoneNumber.Dirty
+                    || _countyCode.Dirty
+                    || _debtToIncomeRatio.Dirty
+                    || _denialReason1.Dirty
+                    || _denialReason2.Dirty
+                    || _denialReason3.Dirty
+                    || _denialReason4.Dirty
+                    || _discountPoints.Dirty
+                    || _excludeLoanFromHMDAReportIndicator.Dirty
+                    || _federalAgency.Dirty
+                    || _federalTaxpayerIdNumber.Dirty
+                    || _financialInstitutionName.Dirty
+                    || _hmdaPropertyAddress.Dirty
+                    || _hmdaPropertyCity.Dirty
+                    || _hmdaPropertyState.Dirty
+                    || _hmdaPropertyZipCode.Dirty
+                    || _hmdaSyncAddressIndicator.Dirty
+                    || _hOEPAStatus.Dirty
+                    || _id.Dirty
+                    || _income.Dirty
+                    || _initiallyPayableToYourInstitution.Dirty
+                    || _interestRate.Dirty
+                    || _introRatePeriod.Dirty
+                    || _legalEntityIdentifier.Dirty
+                    || _lenderCredits.Dirty
+                    || _lienStatus.Dirty
+                    || _loanAmount.Dirty
+                    || _loanPurpose.Dirty
+                    || _loanTerm.Dirty
+                    || _loanType.Dirty
+                    || _manufacturedHomeLandPropertyInterest.Dirty
+                    || _manufacturedSecuredProperyType.Dirty
+                    || _mSANumber.Dirty
+                    || _multifamilyNoUnits.Dirty
+                    || _nMLSLoanOriginatorID.Dirty
+                    || _openEndLineOfCredit.Dirty
+                    || _originationCharges.Dirty
+                    || _otherAUS.Dirty
+                    || _otherAUSRecommendations.Dirty
+                    || _otherDenialReason.Dirty
+                    || _otherNonAmortization.Dirty
+                    || _parentAddress.Dirty
+                    || _parentCity.Dirty
+                    || _parentName.Dirty
+                    || _parentState.Dirty
+                    || _parentZip.Dirty
+                    || _preapprovals.Dirty
+                    || _prepaymentPenaltyPeriod.Dirty
+                    || _propertyType.Dirty
+                    || _propertyValue.Dirty
+                    || _qMStatus.Dirty
+                    || _rateSpread.Dirty
+                    || _reportingYear.Dirty
+                    || _reportPurposeOfLoanIndicator.Dirty
+                    || _repurchasedActionDate.Dirty
+                    || _repurchasedActionTaken.Dirty
+                    || _repurchasedLoanAmount.Dirty
+                    || _repurchasedReportingYear.Dirty
+                    || _repurchasedTypeOfPurchaser.Dirty
+                    || _respondentID.Dirty
+                    || _reverseMortgage.Dirty
+                    || _stateCode.Dirty
+                    || _submissionOfApplication.Dirty
+                    || _totalLoanCosts.Dirty
+                    || _totalPointsAndFees.Dirty
+                    || _typeOfPurchaser.Dirty
+                    || _universalLoanId.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actionTaken = _actionTaken; actionTaken.Clean = value; _actionTaken = actionTaken;
-                var applicationDate = _applicationDate; applicationDate.Clean = value; _applicationDate = applicationDate;
-                var aUS1 = _aUS1; aUS1.Clean = value; _aUS1 = aUS1;
-                var aUS2 = _aUS2; aUS2.Clean = value; _aUS2 = aUS2;
-                var aUS3 = _aUS3; aUS3.Clean = value; _aUS3 = aUS3;
-                var aUS4 = _aUS4; aUS4.Clean = value; _aUS4 = aUS4;
-                var aUS5 = _aUS5; aUS5.Clean = value; _aUS5 = aUS5;
-                var aUSRecommendation1 = _aUSRecommendation1; aUSRecommendation1.Clean = value; _aUSRecommendation1 = aUSRecommendation1;
-                var aUSRecommendation2 = _aUSRecommendation2; aUSRecommendation2.Clean = value; _aUSRecommendation2 = aUSRecommendation2;
-                var aUSRecommendation3 = _aUSRecommendation3; aUSRecommendation3.Clean = value; _aUSRecommendation3 = aUSRecommendation3;
-                var aUSRecommendation4 = _aUSRecommendation4; aUSRecommendation4.Clean = value; _aUSRecommendation4 = aUSRecommendation4;
-                var aUSRecommendation5 = _aUSRecommendation5; aUSRecommendation5.Clean = value; _aUSRecommendation5 = aUSRecommendation5;
-                var businessOrCommercialPurpose = _businessOrCommercialPurpose; businessOrCommercialPurpose.Clean = value; _businessOrCommercialPurpose = businessOrCommercialPurpose;
-                var censusTrack = _censusTrack; censusTrack.Clean = value; _censusTrack = censusTrack;
-                var cLTV = _cLTV; cLTV.Clean = value; _cLTV = cLTV;
-                var contactEmailAddress = _contactEmailAddress; contactEmailAddress.Clean = value; _contactEmailAddress = contactEmailAddress;
-                var contactFaxNumber = _contactFaxNumber; contactFaxNumber.Clean = value; _contactFaxNumber = contactFaxNumber;
-                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
-                var contactOfficeCity = _contactOfficeCity; contactOfficeCity.Clean = value; _contactOfficeCity = contactOfficeCity;
-                var contactOfficeState = _contactOfficeState; contactOfficeState.Clean = value; _contactOfficeState = contactOfficeState;
-                var contactOfficeStreetAddress = _contactOfficeStreetAddress; contactOfficeStreetAddress.Clean = value; _contactOfficeStreetAddress = contactOfficeStreetAddress;
-                var contactOfficeZIPCode = _contactOfficeZIPCode; contactOfficeZIPCode.Clean = value; _contactOfficeZIPCode = contactOfficeZIPCode;
-                var contactPhoneNumber = _contactPhoneNumber; contactPhoneNumber.Clean = value; _contactPhoneNumber = contactPhoneNumber;
-                var countyCode = _countyCode; countyCode.Clean = value; _countyCode = countyCode;
-                var debtToIncomeRatio = _debtToIncomeRatio; debtToIncomeRatio.Clean = value; _debtToIncomeRatio = debtToIncomeRatio;
-                var denialReason1 = _denialReason1; denialReason1.Clean = value; _denialReason1 = denialReason1;
-                var denialReason2 = _denialReason2; denialReason2.Clean = value; _denialReason2 = denialReason2;
-                var denialReason3 = _denialReason3; denialReason3.Clean = value; _denialReason3 = denialReason3;
-                var denialReason4 = _denialReason4; denialReason4.Clean = value; _denialReason4 = denialReason4;
-                var discountPoints = _discountPoints; discountPoints.Clean = value; _discountPoints = discountPoints;
-                var excludeLoanFromHMDAReportIndicator = _excludeLoanFromHMDAReportIndicator; excludeLoanFromHMDAReportIndicator.Clean = value; _excludeLoanFromHMDAReportIndicator = excludeLoanFromHMDAReportIndicator;
-                var federalAgency = _federalAgency; federalAgency.Clean = value; _federalAgency = federalAgency;
-                var federalTaxpayerIdNumber = _federalTaxpayerIdNumber; federalTaxpayerIdNumber.Clean = value; _federalTaxpayerIdNumber = federalTaxpayerIdNumber;
-                var financialInstitutionName = _financialInstitutionName; financialInstitutionName.Clean = value; _financialInstitutionName = financialInstitutionName;
-                var hmdaPropertyAddress = _hmdaPropertyAddress; hmdaPropertyAddress.Clean = value; _hmdaPropertyAddress = hmdaPropertyAddress;
-                var hmdaPropertyCity = _hmdaPropertyCity; hmdaPropertyCity.Clean = value; _hmdaPropertyCity = hmdaPropertyCity;
-                var hmdaPropertyState = _hmdaPropertyState; hmdaPropertyState.Clean = value; _hmdaPropertyState = hmdaPropertyState;
-                var hmdaPropertyZipCode = _hmdaPropertyZipCode; hmdaPropertyZipCode.Clean = value; _hmdaPropertyZipCode = hmdaPropertyZipCode;
-                var hmdaSyncAddressIndicator = _hmdaSyncAddressIndicator; hmdaSyncAddressIndicator.Clean = value; _hmdaSyncAddressIndicator = hmdaSyncAddressIndicator;
-                var hOEPAStatus = _hOEPAStatus; hOEPAStatus.Clean = value; _hOEPAStatus = hOEPAStatus;
-                var id = _id; id.Clean = value; _id = id;
-                var income = _income; income.Clean = value; _income = income;
-                var initiallyPayableToYourInstitution = _initiallyPayableToYourInstitution; initiallyPayableToYourInstitution.Clean = value; _initiallyPayableToYourInstitution = initiallyPayableToYourInstitution;
-                var interestRate = _interestRate; interestRate.Clean = value; _interestRate = interestRate;
-                var introRatePeriod = _introRatePeriod; introRatePeriod.Clean = value; _introRatePeriod = introRatePeriod;
-                var legalEntityIdentifier = _legalEntityIdentifier; legalEntityIdentifier.Clean = value; _legalEntityIdentifier = legalEntityIdentifier;
-                var lenderCredits = _lenderCredits; lenderCredits.Clean = value; _lenderCredits = lenderCredits;
-                var lienStatus = _lienStatus; lienStatus.Clean = value; _lienStatus = lienStatus;
-                var loanAmount = _loanAmount; loanAmount.Clean = value; _loanAmount = loanAmount;
-                var loanPurpose = _loanPurpose; loanPurpose.Clean = value; _loanPurpose = loanPurpose;
-                var loanTerm = _loanTerm; loanTerm.Clean = value; _loanTerm = loanTerm;
-                var loanType = _loanType; loanType.Clean = value; _loanType = loanType;
-                var manufacturedHomeLandPropertyInterest = _manufacturedHomeLandPropertyInterest; manufacturedHomeLandPropertyInterest.Clean = value; _manufacturedHomeLandPropertyInterest = manufacturedHomeLandPropertyInterest;
-                var manufacturedSecuredProperyType = _manufacturedSecuredProperyType; manufacturedSecuredProperyType.Clean = value; _manufacturedSecuredProperyType = manufacturedSecuredProperyType;
-                var mSANumber = _mSANumber; mSANumber.Clean = value; _mSANumber = mSANumber;
-                var multifamilyNoUnits = _multifamilyNoUnits; multifamilyNoUnits.Clean = value; _multifamilyNoUnits = multifamilyNoUnits;
-                var nMLSLoanOriginatorID = _nMLSLoanOriginatorID; nMLSLoanOriginatorID.Clean = value; _nMLSLoanOriginatorID = nMLSLoanOriginatorID;
-                var openEndLineOfCredit = _openEndLineOfCredit; openEndLineOfCredit.Clean = value; _openEndLineOfCredit = openEndLineOfCredit;
-                var originationCharges = _originationCharges; originationCharges.Clean = value; _originationCharges = originationCharges;
-                var otherAUS = _otherAUS; otherAUS.Clean = value; _otherAUS = otherAUS;
-                var otherAUSRecommendations = _otherAUSRecommendations; otherAUSRecommendations.Clean = value; _otherAUSRecommendations = otherAUSRecommendations;
-                var otherDenialReason = _otherDenialReason; otherDenialReason.Clean = value; _otherDenialReason = otherDenialReason;
-                var otherNonAmortization = _otherNonAmortization; otherNonAmortization.Clean = value; _otherNonAmortization = otherNonAmortization;
-                var parentAddress = _parentAddress; parentAddress.Clean = value; _parentAddress = parentAddress;
-                var parentCity = _parentCity; parentCity.Clean = value; _parentCity = parentCity;
-                var parentName = _parentName; parentName.Clean = value; _parentName = parentName;
-                var parentState = _parentState; parentState.Clean = value; _parentState = parentState;
-                var parentZip = _parentZip; parentZip.Clean = value; _parentZip = parentZip;
-                var preapprovals = _preapprovals; preapprovals.Clean = value; _preapprovals = preapprovals;
-                var prepaymentPenaltyPeriod = _prepaymentPenaltyPeriod; prepaymentPenaltyPeriod.Clean = value; _prepaymentPenaltyPeriod = prepaymentPenaltyPeriod;
-                var propertyType = _propertyType; propertyType.Clean = value; _propertyType = propertyType;
-                var propertyValue = _propertyValue; propertyValue.Clean = value; _propertyValue = propertyValue;
-                var qMStatus = _qMStatus; qMStatus.Clean = value; _qMStatus = qMStatus;
-                var rateSpread = _rateSpread; rateSpread.Clean = value; _rateSpread = rateSpread;
-                var reportingYear = _reportingYear; reportingYear.Clean = value; _reportingYear = reportingYear;
-                var reportPurposeOfLoanIndicator = _reportPurposeOfLoanIndicator; reportPurposeOfLoanIndicator.Clean = value; _reportPurposeOfLoanIndicator = reportPurposeOfLoanIndicator;
-                var repurchasedActionDate = _repurchasedActionDate; repurchasedActionDate.Clean = value; _repurchasedActionDate = repurchasedActionDate;
-                var repurchasedActionTaken = _repurchasedActionTaken; repurchasedActionTaken.Clean = value; _repurchasedActionTaken = repurchasedActionTaken;
-                var repurchasedLoanAmount = _repurchasedLoanAmount; repurchasedLoanAmount.Clean = value; _repurchasedLoanAmount = repurchasedLoanAmount;
-                var repurchasedReportingYear = _repurchasedReportingYear; repurchasedReportingYear.Clean = value; _repurchasedReportingYear = repurchasedReportingYear;
-                var repurchasedTypeOfPurchaser = _repurchasedTypeOfPurchaser; repurchasedTypeOfPurchaser.Clean = value; _repurchasedTypeOfPurchaser = repurchasedTypeOfPurchaser;
-                var respondentID = _respondentID; respondentID.Clean = value; _respondentID = respondentID;
-                var reverseMortgage = _reverseMortgage; reverseMortgage.Clean = value; _reverseMortgage = reverseMortgage;
-                var stateCode = _stateCode; stateCode.Clean = value; _stateCode = stateCode;
-                var submissionOfApplication = _submissionOfApplication; submissionOfApplication.Clean = value; _submissionOfApplication = submissionOfApplication;
-                var totalLoanCosts = _totalLoanCosts; totalLoanCosts.Clean = value; _totalLoanCosts = totalLoanCosts;
-                var totalPointsAndFees = _totalPointsAndFees; totalPointsAndFees.Clean = value; _totalPointsAndFees = totalPointsAndFees;
-                var typeOfPurchaser = _typeOfPurchaser; typeOfPurchaser.Clean = value; _typeOfPurchaser = typeOfPurchaser;
-                var universalLoanId = _universalLoanId; universalLoanId.Clean = value; _universalLoanId = universalLoanId;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actionTaken.Dirty = value;
+                _applicationDate.Dirty = value;
+                _aUS1.Dirty = value;
+                _aUS2.Dirty = value;
+                _aUS3.Dirty = value;
+                _aUS4.Dirty = value;
+                _aUS5.Dirty = value;
+                _aUSRecommendation1.Dirty = value;
+                _aUSRecommendation2.Dirty = value;
+                _aUSRecommendation3.Dirty = value;
+                _aUSRecommendation4.Dirty = value;
+                _aUSRecommendation5.Dirty = value;
+                _businessOrCommercialPurpose.Dirty = value;
+                _censusTrack.Dirty = value;
+                _cLTV.Dirty = value;
+                _contactEmailAddress.Dirty = value;
+                _contactFaxNumber.Dirty = value;
+                _contactName.Dirty = value;
+                _contactOfficeCity.Dirty = value;
+                _contactOfficeState.Dirty = value;
+                _contactOfficeStreetAddress.Dirty = value;
+                _contactOfficeZIPCode.Dirty = value;
+                _contactPhoneNumber.Dirty = value;
+                _countyCode.Dirty = value;
+                _debtToIncomeRatio.Dirty = value;
+                _denialReason1.Dirty = value;
+                _denialReason2.Dirty = value;
+                _denialReason3.Dirty = value;
+                _denialReason4.Dirty = value;
+                _discountPoints.Dirty = value;
+                _excludeLoanFromHMDAReportIndicator.Dirty = value;
+                _federalAgency.Dirty = value;
+                _federalTaxpayerIdNumber.Dirty = value;
+                _financialInstitutionName.Dirty = value;
+                _hmdaPropertyAddress.Dirty = value;
+                _hmdaPropertyCity.Dirty = value;
+                _hmdaPropertyState.Dirty = value;
+                _hmdaPropertyZipCode.Dirty = value;
+                _hmdaSyncAddressIndicator.Dirty = value;
+                _hOEPAStatus.Dirty = value;
+                _id.Dirty = value;
+                _income.Dirty = value;
+                _initiallyPayableToYourInstitution.Dirty = value;
+                _interestRate.Dirty = value;
+                _introRatePeriod.Dirty = value;
+                _legalEntityIdentifier.Dirty = value;
+                _lenderCredits.Dirty = value;
+                _lienStatus.Dirty = value;
+                _loanAmount.Dirty = value;
+                _loanPurpose.Dirty = value;
+                _loanTerm.Dirty = value;
+                _loanType.Dirty = value;
+                _manufacturedHomeLandPropertyInterest.Dirty = value;
+                _manufacturedSecuredProperyType.Dirty = value;
+                _mSANumber.Dirty = value;
+                _multifamilyNoUnits.Dirty = value;
+                _nMLSLoanOriginatorID.Dirty = value;
+                _openEndLineOfCredit.Dirty = value;
+                _originationCharges.Dirty = value;
+                _otherAUS.Dirty = value;
+                _otherAUSRecommendations.Dirty = value;
+                _otherDenialReason.Dirty = value;
+                _otherNonAmortization.Dirty = value;
+                _parentAddress.Dirty = value;
+                _parentCity.Dirty = value;
+                _parentName.Dirty = value;
+                _parentState.Dirty = value;
+                _parentZip.Dirty = value;
+                _preapprovals.Dirty = value;
+                _prepaymentPenaltyPeriod.Dirty = value;
+                _propertyType.Dirty = value;
+                _propertyValue.Dirty = value;
+                _qMStatus.Dirty = value;
+                _rateSpread.Dirty = value;
+                _reportingYear.Dirty = value;
+                _reportPurposeOfLoanIndicator.Dirty = value;
+                _repurchasedActionDate.Dirty = value;
+                _repurchasedActionTaken.Dirty = value;
+                _repurchasedLoanAmount.Dirty = value;
+                _repurchasedReportingYear.Dirty = value;
+                _repurchasedTypeOfPurchaser.Dirty = value;
+                _respondentID.Dirty = value;
+                _reverseMortgage.Dirty = value;
+                _stateCode.Dirty = value;
+                _submissionOfApplication.Dirty = value;
+                _totalLoanCosts.Dirty = value;
+                _totalPointsAndFees.Dirty = value;
+                _typeOfPurchaser.Dirty = value;
+                _universalLoanId.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Hmda()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

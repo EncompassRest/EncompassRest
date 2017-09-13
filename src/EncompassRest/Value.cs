@@ -4,7 +4,7 @@
     /// Value wrapper to use for dirty checking.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal struct Value<T> : IClean
+    internal struct Value<T> : IDirty
     {
         public static implicit operator T(Value<T> value) => value._value;
 
@@ -12,12 +12,12 @@
 
         private readonly T _value;
 
-        public bool Clean { get; set; }
+        public bool Dirty { get; set; }
 
         public Value(T value)
         {
             _value = value;
-            Clean = false;
+            Dirty = true;
         }
 
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

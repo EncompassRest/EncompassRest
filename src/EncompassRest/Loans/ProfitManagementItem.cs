@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ProfitManagementItem : IClean
+    public sealed partial class ProfitManagementItem : IDirty
     {
         private Value<decimal?> _atPercent;
         public decimal? AtPercent { get { return _atPercent; } set { _atPercent = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public decimal? Total { get { return _total; } set { _total = value; } }
         private Value<string> _type;
         public string Type { get { return _type; } set { _type = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _atPercent.Clean
-                    && _description.Clean
-                    && _id.Clean
-                    && _plusAmount.Clean
-                    && _profitManagementItemIndex.Clean
-                    && _total.Clean
-                    && _type.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _atPercent.Dirty
+                    || _description.Dirty
+                    || _id.Dirty
+                    || _plusAmount.Dirty
+                    || _profitManagementItemIndex.Dirty
+                    || _total.Dirty
+                    || _type.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var atPercent = _atPercent; atPercent.Clean = value; _atPercent = atPercent;
-                var description = _description; description.Clean = value; _description = description;
-                var id = _id; id.Clean = value; _id = id;
-                var plusAmount = _plusAmount; plusAmount.Clean = value; _plusAmount = plusAmount;
-                var profitManagementItemIndex = _profitManagementItemIndex; profitManagementItemIndex.Clean = value; _profitManagementItemIndex = profitManagementItemIndex;
-                var total = _total; total.Clean = value; _total = total;
-                var type = _type; type.Clean = value; _type = type;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _atPercent.Dirty = value;
+                _description.Dirty = value;
+                _id.Dirty = value;
+                _plusAmount.Dirty = value;
+                _profitManagementItemIndex.Dirty = value;
+                _total.Dirty = value;
+                _type.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ProfitManagementItem()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Section : IClean
+    public sealed partial class Gfe2010Section : IDirty
     {
         private Value<bool?> _borrowerSelectIndicator903;
         public bool? BorrowerSelectIndicator903 { get { return _borrowerSelectIndicator903; } set { _borrowerSelectIndicator903 = value; } }
@@ -272,291 +272,286 @@ namespace EncompassRest.Loans
         public decimal? Section900HudGfeVaFundingFee { get { return _section900HudGfeVaFundingFee; } set { _section900HudGfeVaFundingFee = value; } }
         private Value<bool?> _useActualPaymentChange;
         public bool? UseActualPaymentChange { get { return _useActualPaymentChange; } set { _useActualPaymentChange = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _borrowerSelectIndicator903.Clean
-                    && _borrowerSelectIndicator904.Clean
-                    && _borrowerSelectIndicator906.Clean
-                    && _borrowerSelectIndicator907.Clean
-                    && _borrowerSelectIndicator908.Clean
-                    && _borrowerSelectIndicator909.Clean
-                    && _borrowerSelectIndicator910.Clean
-                    && _hudGfeLine1109.Clean
-                    && _hudGfeLine1110.Clean
-                    && _hudGfeLine1111.Clean
-                    && _hudGfeLine1112.Clean
-                    && _hudGfeLine1113.Clean
-                    && _hudGfeLine1114.Clean
-                    && _id.Clean
-                    && _line1001.Clean
-                    && _line1001BorPaidTotal.Clean
-                    && _line1002.Clean
-                    && _line1003.Clean
-                    && _line1004.Clean
-                    && _line1005.Clean
-                    && _line1006.Clean
-                    && _line1007.Clean
-                    && _line1008.Clean
-                    && _line1009.Clean
-                    && _line1010.Clean
-                    && _line1011.Clean
-                    && _line1101.Clean
-                    && _line1101BorPaidTotal.Clean
-                    && _line1101SellerPaidAtoF.Clean
-                    && _line1102.Clean
-                    && _line1103.Clean
-                    && _line1103PTAAmount.Clean
-                    && _line1104.Clean
-                    && _line1104PTAAmount.Clean
-                    && _line1107.Clean
-                    && _line1108.Clean
-                    && _line1109.Clean
-                    && _line1110.Clean
-                    && _line1115.Clean
-                    && _line1116.Clean
-                    && _line1201BorPaidTotal.Clean
-                    && _line1209.Clean
-                    && _line1210.Clean
-                    && _line1301BorPaidTotal.Clean
-                    && _line1302.Clean
-                    && _line1310.Clean
-                    && _line1311.Clean
-                    && _line1312.Clean
-                    && _line1313.Clean
-                    && _line1314.Clean
-                    && _line1315.Clean
-                    && _line1316.Clean
-                    && _line1317.Clean
-                    && _line1318.Clean
-                    && _line1319.Clean
-                    && _line1320.Clean
-                    && _line701.Clean
-                    && _line702.Clean
-                    && _line703.Clean
-                    && _line704.Clean
-                    && _line803x.Clean
-                    && _line807Company.Clean
-                    && _line808.Clean
-                    && _line809.Clean
-                    && _line810.Clean
-                    && _line811.Clean
-                    && _line812.Clean
-                    && _line819.Clean
-                    && _line820.Clean
-                    && _line821.Clean
-                    && _line822.Clean
-                    && _line823.Clean
-                    && _line824.Clean
-                    && _line825.Clean
-                    && _line826.Clean
-                    && _line827.Clean
-                    && _line828.Clean
-                    && _line829.Clean
-                    && _line830.Clean
-                    && _line831.Clean
-                    && _line832.Clean
-                    && _line833.Clean
-                    && _line834.Clean
-                    && _line835.Clean
-                    && _line904.Clean
-                    && _line909.Clean
-                    && _line910.Clean
-                    && _line911.Clean
-                    && _line912.Clean
-                    && _loanTermTableCustomized.Clean
-                    && _loCompensationItemizeFeesIndicator.Clean
-                    && _loCompensationLenderTotalPaidOriginatorAmount.Clean
-                    && _loCompensationLenderTotalPaidOriginatorAmountForGFE.Clean
-                    && _loCompensationLenderTotalPaidOriginatorAmountForLOTool.Clean
-                    && _loCompensationNewHudLenderTotalPaidOriginatorAmount.Clean
-                    && _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount.Clean
-                    && _loCompensationNewHudTotalLoCompensationAmount.Clean
-                    && _loCompensationTotalBorrowerPaidDiscountPointAmount4.Clean
-                    && _loCompensationTotalLoCompensationAmount.Clean
-                    && _loCompensationTotalSellerPaidDiscountPointAmount4.Clean
-                    && _loCompensationUseLoCompensationToolIndicator.Clean
-                    && _projectedPaymentTableColumns.Clean
-                    && _projectedPaymentTableCustomized.Clean
-                    && _projectedPaymentTableType.Clean
-                    && _section1000AggregateAdjust.Clean
-                    && _section1000HudGuaranteeFeeAprIndicator.Clean
-                    && _section1100BorrowerSelectIndicator1.Clean
-                    && _section1100BorrowerSelectIndicator10.Clean
-                    && _section1100BorrowerSelectIndicator2.Clean
-                    && _section1100BorrowerSelectIndicator3.Clean
-                    && _section1100BorrowerSelectIndicator4.Clean
-                    && _section1100BorrowerSelectIndicator5.Clean
-                    && _section1100BorrowerSelectIndicator6.Clean
-                    && _section1100BorrowerSelectIndicator7.Clean
-                    && _section1100BorrowerSelectIndicator8.Clean
-                    && _section1100BorrowerSelectIndicator9.Clean
-                    && _section1100ItemizeFeesIndicator.Clean
-                    && _section1200TotalTransferTaxes.Clean
-                    && _section800BonaFideIndicator.Clean
-                    && _section800BorrowerPaidInitialDiscountPointAmount.Clean
-                    && _section800ChargeAmount.Clean
-                    && _section800CreditChargeType.Clean
-                    && _section800IncludeOriginationPointsCreditType.Clean
-                    && _section800InitialDiscountPoint.Clean
-                    && _section800InitialDiscountPointAdditionalAmount.Clean
-                    && _section800InitialDiscountRate.Clean
-                    && _section800ItemizeFeesIndicator.Clean
-                    && _section800SelChargeAmount.Clean
-                    && _section800TotalTransferTaxes.Clean
-                    && _section900HomeownerInsurance.Clean
-                    && _section900HudGfeVaFundingFee.Clean
-                    && _useActualPaymentChange.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _borrowerSelectIndicator903.Dirty
+                    || _borrowerSelectIndicator904.Dirty
+                    || _borrowerSelectIndicator906.Dirty
+                    || _borrowerSelectIndicator907.Dirty
+                    || _borrowerSelectIndicator908.Dirty
+                    || _borrowerSelectIndicator909.Dirty
+                    || _borrowerSelectIndicator910.Dirty
+                    || _hudGfeLine1109.Dirty
+                    || _hudGfeLine1110.Dirty
+                    || _hudGfeLine1111.Dirty
+                    || _hudGfeLine1112.Dirty
+                    || _hudGfeLine1113.Dirty
+                    || _hudGfeLine1114.Dirty
+                    || _id.Dirty
+                    || _line1001.Dirty
+                    || _line1001BorPaidTotal.Dirty
+                    || _line1002.Dirty
+                    || _line1003.Dirty
+                    || _line1004.Dirty
+                    || _line1005.Dirty
+                    || _line1006.Dirty
+                    || _line1007.Dirty
+                    || _line1008.Dirty
+                    || _line1009.Dirty
+                    || _line1010.Dirty
+                    || _line1011.Dirty
+                    || _line1101.Dirty
+                    || _line1101BorPaidTotal.Dirty
+                    || _line1101SellerPaidAtoF.Dirty
+                    || _line1102.Dirty
+                    || _line1103.Dirty
+                    || _line1103PTAAmount.Dirty
+                    || _line1104.Dirty
+                    || _line1104PTAAmount.Dirty
+                    || _line1107.Dirty
+                    || _line1108.Dirty
+                    || _line1109.Dirty
+                    || _line1110.Dirty
+                    || _line1115.Dirty
+                    || _line1116.Dirty
+                    || _line1201BorPaidTotal.Dirty
+                    || _line1209.Dirty
+                    || _line1210.Dirty
+                    || _line1301BorPaidTotal.Dirty
+                    || _line1302.Dirty
+                    || _line1310.Dirty
+                    || _line1311.Dirty
+                    || _line1312.Dirty
+                    || _line1313.Dirty
+                    || _line1314.Dirty
+                    || _line1315.Dirty
+                    || _line1316.Dirty
+                    || _line1317.Dirty
+                    || _line1318.Dirty
+                    || _line1319.Dirty
+                    || _line1320.Dirty
+                    || _line701.Dirty
+                    || _line702.Dirty
+                    || _line703.Dirty
+                    || _line704.Dirty
+                    || _line803x.Dirty
+                    || _line807Company.Dirty
+                    || _line808.Dirty
+                    || _line809.Dirty
+                    || _line810.Dirty
+                    || _line811.Dirty
+                    || _line812.Dirty
+                    || _line819.Dirty
+                    || _line820.Dirty
+                    || _line821.Dirty
+                    || _line822.Dirty
+                    || _line823.Dirty
+                    || _line824.Dirty
+                    || _line825.Dirty
+                    || _line826.Dirty
+                    || _line827.Dirty
+                    || _line828.Dirty
+                    || _line829.Dirty
+                    || _line830.Dirty
+                    || _line831.Dirty
+                    || _line832.Dirty
+                    || _line833.Dirty
+                    || _line834.Dirty
+                    || _line835.Dirty
+                    || _line904.Dirty
+                    || _line909.Dirty
+                    || _line910.Dirty
+                    || _line911.Dirty
+                    || _line912.Dirty
+                    || _loanTermTableCustomized.Dirty
+                    || _loCompensationItemizeFeesIndicator.Dirty
+                    || _loCompensationLenderTotalPaidOriginatorAmount.Dirty
+                    || _loCompensationLenderTotalPaidOriginatorAmountForGFE.Dirty
+                    || _loCompensationLenderTotalPaidOriginatorAmountForLOTool.Dirty
+                    || _loCompensationNewHudLenderTotalPaidOriginatorAmount.Dirty
+                    || _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount.Dirty
+                    || _loCompensationNewHudTotalLoCompensationAmount.Dirty
+                    || _loCompensationTotalBorrowerPaidDiscountPointAmount4.Dirty
+                    || _loCompensationTotalLoCompensationAmount.Dirty
+                    || _loCompensationTotalSellerPaidDiscountPointAmount4.Dirty
+                    || _loCompensationUseLoCompensationToolIndicator.Dirty
+                    || _projectedPaymentTableColumns.Dirty
+                    || _projectedPaymentTableCustomized.Dirty
+                    || _projectedPaymentTableType.Dirty
+                    || _section1000AggregateAdjust.Dirty
+                    || _section1000HudGuaranteeFeeAprIndicator.Dirty
+                    || _section1100BorrowerSelectIndicator1.Dirty
+                    || _section1100BorrowerSelectIndicator10.Dirty
+                    || _section1100BorrowerSelectIndicator2.Dirty
+                    || _section1100BorrowerSelectIndicator3.Dirty
+                    || _section1100BorrowerSelectIndicator4.Dirty
+                    || _section1100BorrowerSelectIndicator5.Dirty
+                    || _section1100BorrowerSelectIndicator6.Dirty
+                    || _section1100BorrowerSelectIndicator7.Dirty
+                    || _section1100BorrowerSelectIndicator8.Dirty
+                    || _section1100BorrowerSelectIndicator9.Dirty
+                    || _section1100ItemizeFeesIndicator.Dirty
+                    || _section1200TotalTransferTaxes.Dirty
+                    || _section800BonaFideIndicator.Dirty
+                    || _section800BorrowerPaidInitialDiscountPointAmount.Dirty
+                    || _section800ChargeAmount.Dirty
+                    || _section800CreditChargeType.Dirty
+                    || _section800IncludeOriginationPointsCreditType.Dirty
+                    || _section800InitialDiscountPoint.Dirty
+                    || _section800InitialDiscountPointAdditionalAmount.Dirty
+                    || _section800InitialDiscountRate.Dirty
+                    || _section800ItemizeFeesIndicator.Dirty
+                    || _section800SelChargeAmount.Dirty
+                    || _section800TotalTransferTaxes.Dirty
+                    || _section900HomeownerInsurance.Dirty
+                    || _section900HudGfeVaFundingFee.Dirty
+                    || _useActualPaymentChange.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var borrowerSelectIndicator903 = _borrowerSelectIndicator903; borrowerSelectIndicator903.Clean = value; _borrowerSelectIndicator903 = borrowerSelectIndicator903;
-                var borrowerSelectIndicator904 = _borrowerSelectIndicator904; borrowerSelectIndicator904.Clean = value; _borrowerSelectIndicator904 = borrowerSelectIndicator904;
-                var borrowerSelectIndicator906 = _borrowerSelectIndicator906; borrowerSelectIndicator906.Clean = value; _borrowerSelectIndicator906 = borrowerSelectIndicator906;
-                var borrowerSelectIndicator907 = _borrowerSelectIndicator907; borrowerSelectIndicator907.Clean = value; _borrowerSelectIndicator907 = borrowerSelectIndicator907;
-                var borrowerSelectIndicator908 = _borrowerSelectIndicator908; borrowerSelectIndicator908.Clean = value; _borrowerSelectIndicator908 = borrowerSelectIndicator908;
-                var borrowerSelectIndicator909 = _borrowerSelectIndicator909; borrowerSelectIndicator909.Clean = value; _borrowerSelectIndicator909 = borrowerSelectIndicator909;
-                var borrowerSelectIndicator910 = _borrowerSelectIndicator910; borrowerSelectIndicator910.Clean = value; _borrowerSelectIndicator910 = borrowerSelectIndicator910;
-                var hudGfeLine1109 = _hudGfeLine1109; hudGfeLine1109.Clean = value; _hudGfeLine1109 = hudGfeLine1109;
-                var hudGfeLine1110 = _hudGfeLine1110; hudGfeLine1110.Clean = value; _hudGfeLine1110 = hudGfeLine1110;
-                var hudGfeLine1111 = _hudGfeLine1111; hudGfeLine1111.Clean = value; _hudGfeLine1111 = hudGfeLine1111;
-                var hudGfeLine1112 = _hudGfeLine1112; hudGfeLine1112.Clean = value; _hudGfeLine1112 = hudGfeLine1112;
-                var hudGfeLine1113 = _hudGfeLine1113; hudGfeLine1113.Clean = value; _hudGfeLine1113 = hudGfeLine1113;
-                var hudGfeLine1114 = _hudGfeLine1114; hudGfeLine1114.Clean = value; _hudGfeLine1114 = hudGfeLine1114;
-                var id = _id; id.Clean = value; _id = id;
-                var line1001 = _line1001; line1001.Clean = value; _line1001 = line1001;
-                var line1001BorPaidTotal = _line1001BorPaidTotal; line1001BorPaidTotal.Clean = value; _line1001BorPaidTotal = line1001BorPaidTotal;
-                var line1002 = _line1002; line1002.Clean = value; _line1002 = line1002;
-                var line1003 = _line1003; line1003.Clean = value; _line1003 = line1003;
-                var line1004 = _line1004; line1004.Clean = value; _line1004 = line1004;
-                var line1005 = _line1005; line1005.Clean = value; _line1005 = line1005;
-                var line1006 = _line1006; line1006.Clean = value; _line1006 = line1006;
-                var line1007 = _line1007; line1007.Clean = value; _line1007 = line1007;
-                var line1008 = _line1008; line1008.Clean = value; _line1008 = line1008;
-                var line1009 = _line1009; line1009.Clean = value; _line1009 = line1009;
-                var line1010 = _line1010; line1010.Clean = value; _line1010 = line1010;
-                var line1011 = _line1011; line1011.Clean = value; _line1011 = line1011;
-                var line1101 = _line1101; line1101.Clean = value; _line1101 = line1101;
-                var line1101BorPaidTotal = _line1101BorPaidTotal; line1101BorPaidTotal.Clean = value; _line1101BorPaidTotal = line1101BorPaidTotal;
-                var line1101SellerPaidAtoF = _line1101SellerPaidAtoF; line1101SellerPaidAtoF.Clean = value; _line1101SellerPaidAtoF = line1101SellerPaidAtoF;
-                var line1102 = _line1102; line1102.Clean = value; _line1102 = line1102;
-                var line1103 = _line1103; line1103.Clean = value; _line1103 = line1103;
-                var line1103PTAAmount = _line1103PTAAmount; line1103PTAAmount.Clean = value; _line1103PTAAmount = line1103PTAAmount;
-                var line1104 = _line1104; line1104.Clean = value; _line1104 = line1104;
-                var line1104PTAAmount = _line1104PTAAmount; line1104PTAAmount.Clean = value; _line1104PTAAmount = line1104PTAAmount;
-                var line1107 = _line1107; line1107.Clean = value; _line1107 = line1107;
-                var line1108 = _line1108; line1108.Clean = value; _line1108 = line1108;
-                var line1109 = _line1109; line1109.Clean = value; _line1109 = line1109;
-                var line1110 = _line1110; line1110.Clean = value; _line1110 = line1110;
-                var line1115 = _line1115; line1115.Clean = value; _line1115 = line1115;
-                var line1116 = _line1116; line1116.Clean = value; _line1116 = line1116;
-                var line1201BorPaidTotal = _line1201BorPaidTotal; line1201BorPaidTotal.Clean = value; _line1201BorPaidTotal = line1201BorPaidTotal;
-                var line1209 = _line1209; line1209.Clean = value; _line1209 = line1209;
-                var line1210 = _line1210; line1210.Clean = value; _line1210 = line1210;
-                var line1301BorPaidTotal = _line1301BorPaidTotal; line1301BorPaidTotal.Clean = value; _line1301BorPaidTotal = line1301BorPaidTotal;
-                var line1302 = _line1302; line1302.Clean = value; _line1302 = line1302;
-                var line1310 = _line1310; line1310.Clean = value; _line1310 = line1310;
-                var line1311 = _line1311; line1311.Clean = value; _line1311 = line1311;
-                var line1312 = _line1312; line1312.Clean = value; _line1312 = line1312;
-                var line1313 = _line1313; line1313.Clean = value; _line1313 = line1313;
-                var line1314 = _line1314; line1314.Clean = value; _line1314 = line1314;
-                var line1315 = _line1315; line1315.Clean = value; _line1315 = line1315;
-                var line1316 = _line1316; line1316.Clean = value; _line1316 = line1316;
-                var line1317 = _line1317; line1317.Clean = value; _line1317 = line1317;
-                var line1318 = _line1318; line1318.Clean = value; _line1318 = line1318;
-                var line1319 = _line1319; line1319.Clean = value; _line1319 = line1319;
-                var line1320 = _line1320; line1320.Clean = value; _line1320 = line1320;
-                var line701 = _line701; line701.Clean = value; _line701 = line701;
-                var line702 = _line702; line702.Clean = value; _line702 = line702;
-                var line703 = _line703; line703.Clean = value; _line703 = line703;
-                var line704 = _line704; line704.Clean = value; _line704 = line704;
-                var line803x = _line803x; line803x.Clean = value; _line803x = line803x;
-                var line807Company = _line807Company; line807Company.Clean = value; _line807Company = line807Company;
-                var line808 = _line808; line808.Clean = value; _line808 = line808;
-                var line809 = _line809; line809.Clean = value; _line809 = line809;
-                var line810 = _line810; line810.Clean = value; _line810 = line810;
-                var line811 = _line811; line811.Clean = value; _line811 = line811;
-                var line812 = _line812; line812.Clean = value; _line812 = line812;
-                var line819 = _line819; line819.Clean = value; _line819 = line819;
-                var line820 = _line820; line820.Clean = value; _line820 = line820;
-                var line821 = _line821; line821.Clean = value; _line821 = line821;
-                var line822 = _line822; line822.Clean = value; _line822 = line822;
-                var line823 = _line823; line823.Clean = value; _line823 = line823;
-                var line824 = _line824; line824.Clean = value; _line824 = line824;
-                var line825 = _line825; line825.Clean = value; _line825 = line825;
-                var line826 = _line826; line826.Clean = value; _line826 = line826;
-                var line827 = _line827; line827.Clean = value; _line827 = line827;
-                var line828 = _line828; line828.Clean = value; _line828 = line828;
-                var line829 = _line829; line829.Clean = value; _line829 = line829;
-                var line830 = _line830; line830.Clean = value; _line830 = line830;
-                var line831 = _line831; line831.Clean = value; _line831 = line831;
-                var line832 = _line832; line832.Clean = value; _line832 = line832;
-                var line833 = _line833; line833.Clean = value; _line833 = line833;
-                var line834 = _line834; line834.Clean = value; _line834 = line834;
-                var line835 = _line835; line835.Clean = value; _line835 = line835;
-                var line904 = _line904; line904.Clean = value; _line904 = line904;
-                var line909 = _line909; line909.Clean = value; _line909 = line909;
-                var line910 = _line910; line910.Clean = value; _line910 = line910;
-                var line911 = _line911; line911.Clean = value; _line911 = line911;
-                var line912 = _line912; line912.Clean = value; _line912 = line912;
-                var loanTermTableCustomized = _loanTermTableCustomized; loanTermTableCustomized.Clean = value; _loanTermTableCustomized = loanTermTableCustomized;
-                var loCompensationItemizeFeesIndicator = _loCompensationItemizeFeesIndicator; loCompensationItemizeFeesIndicator.Clean = value; _loCompensationItemizeFeesIndicator = loCompensationItemizeFeesIndicator;
-                var loCompensationLenderTotalPaidOriginatorAmount = _loCompensationLenderTotalPaidOriginatorAmount; loCompensationLenderTotalPaidOriginatorAmount.Clean = value; _loCompensationLenderTotalPaidOriginatorAmount = loCompensationLenderTotalPaidOriginatorAmount;
-                var loCompensationLenderTotalPaidOriginatorAmountForGFE = _loCompensationLenderTotalPaidOriginatorAmountForGFE; loCompensationLenderTotalPaidOriginatorAmountForGFE.Clean = value; _loCompensationLenderTotalPaidOriginatorAmountForGFE = loCompensationLenderTotalPaidOriginatorAmountForGFE;
-                var loCompensationLenderTotalPaidOriginatorAmountForLOTool = _loCompensationLenderTotalPaidOriginatorAmountForLOTool; loCompensationLenderTotalPaidOriginatorAmountForLOTool.Clean = value; _loCompensationLenderTotalPaidOriginatorAmountForLOTool = loCompensationLenderTotalPaidOriginatorAmountForLOTool;
-                var loCompensationNewHudLenderTotalPaidOriginatorAmount = _loCompensationNewHudLenderTotalPaidOriginatorAmount; loCompensationNewHudLenderTotalPaidOriginatorAmount.Clean = value; _loCompensationNewHudLenderTotalPaidOriginatorAmount = loCompensationNewHudLenderTotalPaidOriginatorAmount;
-                var loCompensationNewHudTotalBorrowerPaidDiscountPointAmount = _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount; loCompensationNewHudTotalBorrowerPaidDiscountPointAmount.Clean = value; _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount = loCompensationNewHudTotalBorrowerPaidDiscountPointAmount;
-                var loCompensationNewHudTotalLoCompensationAmount = _loCompensationNewHudTotalLoCompensationAmount; loCompensationNewHudTotalLoCompensationAmount.Clean = value; _loCompensationNewHudTotalLoCompensationAmount = loCompensationNewHudTotalLoCompensationAmount;
-                var loCompensationTotalBorrowerPaidDiscountPointAmount4 = _loCompensationTotalBorrowerPaidDiscountPointAmount4; loCompensationTotalBorrowerPaidDiscountPointAmount4.Clean = value; _loCompensationTotalBorrowerPaidDiscountPointAmount4 = loCompensationTotalBorrowerPaidDiscountPointAmount4;
-                var loCompensationTotalLoCompensationAmount = _loCompensationTotalLoCompensationAmount; loCompensationTotalLoCompensationAmount.Clean = value; _loCompensationTotalLoCompensationAmount = loCompensationTotalLoCompensationAmount;
-                var loCompensationTotalSellerPaidDiscountPointAmount4 = _loCompensationTotalSellerPaidDiscountPointAmount4; loCompensationTotalSellerPaidDiscountPointAmount4.Clean = value; _loCompensationTotalSellerPaidDiscountPointAmount4 = loCompensationTotalSellerPaidDiscountPointAmount4;
-                var loCompensationUseLoCompensationToolIndicator = _loCompensationUseLoCompensationToolIndicator; loCompensationUseLoCompensationToolIndicator.Clean = value; _loCompensationUseLoCompensationToolIndicator = loCompensationUseLoCompensationToolIndicator;
-                var projectedPaymentTableColumns = _projectedPaymentTableColumns; projectedPaymentTableColumns.Clean = value; _projectedPaymentTableColumns = projectedPaymentTableColumns;
-                var projectedPaymentTableCustomized = _projectedPaymentTableCustomized; projectedPaymentTableCustomized.Clean = value; _projectedPaymentTableCustomized = projectedPaymentTableCustomized;
-                var projectedPaymentTableType = _projectedPaymentTableType; projectedPaymentTableType.Clean = value; _projectedPaymentTableType = projectedPaymentTableType;
-                var section1000AggregateAdjust = _section1000AggregateAdjust; section1000AggregateAdjust.Clean = value; _section1000AggregateAdjust = section1000AggregateAdjust;
-                var section1000HudGuaranteeFeeAprIndicator = _section1000HudGuaranteeFeeAprIndicator; section1000HudGuaranteeFeeAprIndicator.Clean = value; _section1000HudGuaranteeFeeAprIndicator = section1000HudGuaranteeFeeAprIndicator;
-                var section1100BorrowerSelectIndicator1 = _section1100BorrowerSelectIndicator1; section1100BorrowerSelectIndicator1.Clean = value; _section1100BorrowerSelectIndicator1 = section1100BorrowerSelectIndicator1;
-                var section1100BorrowerSelectIndicator10 = _section1100BorrowerSelectIndicator10; section1100BorrowerSelectIndicator10.Clean = value; _section1100BorrowerSelectIndicator10 = section1100BorrowerSelectIndicator10;
-                var section1100BorrowerSelectIndicator2 = _section1100BorrowerSelectIndicator2; section1100BorrowerSelectIndicator2.Clean = value; _section1100BorrowerSelectIndicator2 = section1100BorrowerSelectIndicator2;
-                var section1100BorrowerSelectIndicator3 = _section1100BorrowerSelectIndicator3; section1100BorrowerSelectIndicator3.Clean = value; _section1100BorrowerSelectIndicator3 = section1100BorrowerSelectIndicator3;
-                var section1100BorrowerSelectIndicator4 = _section1100BorrowerSelectIndicator4; section1100BorrowerSelectIndicator4.Clean = value; _section1100BorrowerSelectIndicator4 = section1100BorrowerSelectIndicator4;
-                var section1100BorrowerSelectIndicator5 = _section1100BorrowerSelectIndicator5; section1100BorrowerSelectIndicator5.Clean = value; _section1100BorrowerSelectIndicator5 = section1100BorrowerSelectIndicator5;
-                var section1100BorrowerSelectIndicator6 = _section1100BorrowerSelectIndicator6; section1100BorrowerSelectIndicator6.Clean = value; _section1100BorrowerSelectIndicator6 = section1100BorrowerSelectIndicator6;
-                var section1100BorrowerSelectIndicator7 = _section1100BorrowerSelectIndicator7; section1100BorrowerSelectIndicator7.Clean = value; _section1100BorrowerSelectIndicator7 = section1100BorrowerSelectIndicator7;
-                var section1100BorrowerSelectIndicator8 = _section1100BorrowerSelectIndicator8; section1100BorrowerSelectIndicator8.Clean = value; _section1100BorrowerSelectIndicator8 = section1100BorrowerSelectIndicator8;
-                var section1100BorrowerSelectIndicator9 = _section1100BorrowerSelectIndicator9; section1100BorrowerSelectIndicator9.Clean = value; _section1100BorrowerSelectIndicator9 = section1100BorrowerSelectIndicator9;
-                var section1100ItemizeFeesIndicator = _section1100ItemizeFeesIndicator; section1100ItemizeFeesIndicator.Clean = value; _section1100ItemizeFeesIndicator = section1100ItemizeFeesIndicator;
-                var section1200TotalTransferTaxes = _section1200TotalTransferTaxes; section1200TotalTransferTaxes.Clean = value; _section1200TotalTransferTaxes = section1200TotalTransferTaxes;
-                var section800BonaFideIndicator = _section800BonaFideIndicator; section800BonaFideIndicator.Clean = value; _section800BonaFideIndicator = section800BonaFideIndicator;
-                var section800BorrowerPaidInitialDiscountPointAmount = _section800BorrowerPaidInitialDiscountPointAmount; section800BorrowerPaidInitialDiscountPointAmount.Clean = value; _section800BorrowerPaidInitialDiscountPointAmount = section800BorrowerPaidInitialDiscountPointAmount;
-                var section800ChargeAmount = _section800ChargeAmount; section800ChargeAmount.Clean = value; _section800ChargeAmount = section800ChargeAmount;
-                var section800CreditChargeType = _section800CreditChargeType; section800CreditChargeType.Clean = value; _section800CreditChargeType = section800CreditChargeType;
-                var section800IncludeOriginationPointsCreditType = _section800IncludeOriginationPointsCreditType; section800IncludeOriginationPointsCreditType.Clean = value; _section800IncludeOriginationPointsCreditType = section800IncludeOriginationPointsCreditType;
-                var section800InitialDiscountPoint = _section800InitialDiscountPoint; section800InitialDiscountPoint.Clean = value; _section800InitialDiscountPoint = section800InitialDiscountPoint;
-                var section800InitialDiscountPointAdditionalAmount = _section800InitialDiscountPointAdditionalAmount; section800InitialDiscountPointAdditionalAmount.Clean = value; _section800InitialDiscountPointAdditionalAmount = section800InitialDiscountPointAdditionalAmount;
-                var section800InitialDiscountRate = _section800InitialDiscountRate; section800InitialDiscountRate.Clean = value; _section800InitialDiscountRate = section800InitialDiscountRate;
-                var section800ItemizeFeesIndicator = _section800ItemizeFeesIndicator; section800ItemizeFeesIndicator.Clean = value; _section800ItemizeFeesIndicator = section800ItemizeFeesIndicator;
-                var section800SelChargeAmount = _section800SelChargeAmount; section800SelChargeAmount.Clean = value; _section800SelChargeAmount = section800SelChargeAmount;
-                var section800TotalTransferTaxes = _section800TotalTransferTaxes; section800TotalTransferTaxes.Clean = value; _section800TotalTransferTaxes = section800TotalTransferTaxes;
-                var section900HomeownerInsurance = _section900HomeownerInsurance; section900HomeownerInsurance.Clean = value; _section900HomeownerInsurance = section900HomeownerInsurance;
-                var section900HudGfeVaFundingFee = _section900HudGfeVaFundingFee; section900HudGfeVaFundingFee.Clean = value; _section900HudGfeVaFundingFee = section900HudGfeVaFundingFee;
-                var useActualPaymentChange = _useActualPaymentChange; useActualPaymentChange.Clean = value; _useActualPaymentChange = useActualPaymentChange;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _borrowerSelectIndicator903.Dirty = value;
+                _borrowerSelectIndicator904.Dirty = value;
+                _borrowerSelectIndicator906.Dirty = value;
+                _borrowerSelectIndicator907.Dirty = value;
+                _borrowerSelectIndicator908.Dirty = value;
+                _borrowerSelectIndicator909.Dirty = value;
+                _borrowerSelectIndicator910.Dirty = value;
+                _hudGfeLine1109.Dirty = value;
+                _hudGfeLine1110.Dirty = value;
+                _hudGfeLine1111.Dirty = value;
+                _hudGfeLine1112.Dirty = value;
+                _hudGfeLine1113.Dirty = value;
+                _hudGfeLine1114.Dirty = value;
+                _id.Dirty = value;
+                _line1001.Dirty = value;
+                _line1001BorPaidTotal.Dirty = value;
+                _line1002.Dirty = value;
+                _line1003.Dirty = value;
+                _line1004.Dirty = value;
+                _line1005.Dirty = value;
+                _line1006.Dirty = value;
+                _line1007.Dirty = value;
+                _line1008.Dirty = value;
+                _line1009.Dirty = value;
+                _line1010.Dirty = value;
+                _line1011.Dirty = value;
+                _line1101.Dirty = value;
+                _line1101BorPaidTotal.Dirty = value;
+                _line1101SellerPaidAtoF.Dirty = value;
+                _line1102.Dirty = value;
+                _line1103.Dirty = value;
+                _line1103PTAAmount.Dirty = value;
+                _line1104.Dirty = value;
+                _line1104PTAAmount.Dirty = value;
+                _line1107.Dirty = value;
+                _line1108.Dirty = value;
+                _line1109.Dirty = value;
+                _line1110.Dirty = value;
+                _line1115.Dirty = value;
+                _line1116.Dirty = value;
+                _line1201BorPaidTotal.Dirty = value;
+                _line1209.Dirty = value;
+                _line1210.Dirty = value;
+                _line1301BorPaidTotal.Dirty = value;
+                _line1302.Dirty = value;
+                _line1310.Dirty = value;
+                _line1311.Dirty = value;
+                _line1312.Dirty = value;
+                _line1313.Dirty = value;
+                _line1314.Dirty = value;
+                _line1315.Dirty = value;
+                _line1316.Dirty = value;
+                _line1317.Dirty = value;
+                _line1318.Dirty = value;
+                _line1319.Dirty = value;
+                _line1320.Dirty = value;
+                _line701.Dirty = value;
+                _line702.Dirty = value;
+                _line703.Dirty = value;
+                _line704.Dirty = value;
+                _line803x.Dirty = value;
+                _line807Company.Dirty = value;
+                _line808.Dirty = value;
+                _line809.Dirty = value;
+                _line810.Dirty = value;
+                _line811.Dirty = value;
+                _line812.Dirty = value;
+                _line819.Dirty = value;
+                _line820.Dirty = value;
+                _line821.Dirty = value;
+                _line822.Dirty = value;
+                _line823.Dirty = value;
+                _line824.Dirty = value;
+                _line825.Dirty = value;
+                _line826.Dirty = value;
+                _line827.Dirty = value;
+                _line828.Dirty = value;
+                _line829.Dirty = value;
+                _line830.Dirty = value;
+                _line831.Dirty = value;
+                _line832.Dirty = value;
+                _line833.Dirty = value;
+                _line834.Dirty = value;
+                _line835.Dirty = value;
+                _line904.Dirty = value;
+                _line909.Dirty = value;
+                _line910.Dirty = value;
+                _line911.Dirty = value;
+                _line912.Dirty = value;
+                _loanTermTableCustomized.Dirty = value;
+                _loCompensationItemizeFeesIndicator.Dirty = value;
+                _loCompensationLenderTotalPaidOriginatorAmount.Dirty = value;
+                _loCompensationLenderTotalPaidOriginatorAmountForGFE.Dirty = value;
+                _loCompensationLenderTotalPaidOriginatorAmountForLOTool.Dirty = value;
+                _loCompensationNewHudLenderTotalPaidOriginatorAmount.Dirty = value;
+                _loCompensationNewHudTotalBorrowerPaidDiscountPointAmount.Dirty = value;
+                _loCompensationNewHudTotalLoCompensationAmount.Dirty = value;
+                _loCompensationTotalBorrowerPaidDiscountPointAmount4.Dirty = value;
+                _loCompensationTotalLoCompensationAmount.Dirty = value;
+                _loCompensationTotalSellerPaidDiscountPointAmount4.Dirty = value;
+                _loCompensationUseLoCompensationToolIndicator.Dirty = value;
+                _projectedPaymentTableColumns.Dirty = value;
+                _projectedPaymentTableCustomized.Dirty = value;
+                _projectedPaymentTableType.Dirty = value;
+                _section1000AggregateAdjust.Dirty = value;
+                _section1000HudGuaranteeFeeAprIndicator.Dirty = value;
+                _section1100BorrowerSelectIndicator1.Dirty = value;
+                _section1100BorrowerSelectIndicator10.Dirty = value;
+                _section1100BorrowerSelectIndicator2.Dirty = value;
+                _section1100BorrowerSelectIndicator3.Dirty = value;
+                _section1100BorrowerSelectIndicator4.Dirty = value;
+                _section1100BorrowerSelectIndicator5.Dirty = value;
+                _section1100BorrowerSelectIndicator6.Dirty = value;
+                _section1100BorrowerSelectIndicator7.Dirty = value;
+                _section1100BorrowerSelectIndicator8.Dirty = value;
+                _section1100BorrowerSelectIndicator9.Dirty = value;
+                _section1100ItemizeFeesIndicator.Dirty = value;
+                _section1200TotalTransferTaxes.Dirty = value;
+                _section800BonaFideIndicator.Dirty = value;
+                _section800BorrowerPaidInitialDiscountPointAmount.Dirty = value;
+                _section800ChargeAmount.Dirty = value;
+                _section800CreditChargeType.Dirty = value;
+                _section800IncludeOriginationPointsCreditType.Dirty = value;
+                _section800InitialDiscountPoint.Dirty = value;
+                _section800InitialDiscountPointAdditionalAmount.Dirty = value;
+                _section800InitialDiscountRate.Dirty = value;
+                _section800ItemizeFeesIndicator.Dirty = value;
+                _section800SelChargeAmount.Dirty = value;
+                _section800TotalTransferTaxes.Dirty = value;
+                _section900HomeownerInsurance.Dirty = value;
+                _section900HudGfeVaFundingFee.Dirty = value;
+                _useActualPaymentChange.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010Section()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

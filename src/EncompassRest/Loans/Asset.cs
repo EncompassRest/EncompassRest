@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Asset : IClean
+    public sealed partial class Asset : IDirty
     {
         private Value<string> _accountIdentifier;
         public string AccountIdentifier { get { return _accountIdentifier; } set { _accountIdentifier = value; } }
@@ -76,95 +76,90 @@ namespace EncompassRest.Loans
         public decimal? Total { get { return _total; } set { _total = value; } }
         private Value<int?> _vodIndex;
         public int? VodIndex { get { return _vodIndex; } set { _vodIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountIdentifier.Clean
-                    && _altId.Clean
-                    && _assetIndex.Clean
-                    && _assetType.Clean
-                    && _attention.Clean
-                    && _borrowerId.Clean
-                    && _cashOrMarketValueAmount.Clean
-                    && _depositoryAccountName.Clean
-                    && _depositoryRequestDate.Clean
-                    && _description.Clean
-                    && _entityDeleted.Clean
-                    && _holderAddressCity.Clean
-                    && _holderAddressPostalCode.Clean
-                    && _holderAddressState.Clean
-                    && _holderAddressStreetLine1.Clean
-                    && _holderComments.Clean
-                    && _holderEmail.Clean
-                    && _holderFax.Clean
-                    && _holderName.Clean
-                    && _holderPhone.Clean
-                    && _id.Clean
-                    && _isEmpty.Clean
-                    && _isVod.Clean
-                    && _lifeInsuranceFaceValueAmount.Clean
-                    && _nameInAccount.Clean
-                    && _noLinkToDocTrackIndicator.Clean
-                    && _owner.Clean
-                    && _printAttachmentIndicator.Clean
-                    && _printUserNameIndicator.Clean
-                    && _title.Clean
-                    && _titleFax.Clean
-                    && _titlePhone.Clean
-                    && _total.Clean
-                    && _vodIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountIdentifier.Dirty
+                    || _altId.Dirty
+                    || _assetIndex.Dirty
+                    || _assetType.Dirty
+                    || _attention.Dirty
+                    || _borrowerId.Dirty
+                    || _cashOrMarketValueAmount.Dirty
+                    || _depositoryAccountName.Dirty
+                    || _depositoryRequestDate.Dirty
+                    || _description.Dirty
+                    || _entityDeleted.Dirty
+                    || _holderAddressCity.Dirty
+                    || _holderAddressPostalCode.Dirty
+                    || _holderAddressState.Dirty
+                    || _holderAddressStreetLine1.Dirty
+                    || _holderComments.Dirty
+                    || _holderEmail.Dirty
+                    || _holderFax.Dirty
+                    || _holderName.Dirty
+                    || _holderPhone.Dirty
+                    || _id.Dirty
+                    || _isEmpty.Dirty
+                    || _isVod.Dirty
+                    || _lifeInsuranceFaceValueAmount.Dirty
+                    || _nameInAccount.Dirty
+                    || _noLinkToDocTrackIndicator.Dirty
+                    || _owner.Dirty
+                    || _printAttachmentIndicator.Dirty
+                    || _printUserNameIndicator.Dirty
+                    || _title.Dirty
+                    || _titleFax.Dirty
+                    || _titlePhone.Dirty
+                    || _total.Dirty
+                    || _vodIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountIdentifier = _accountIdentifier; accountIdentifier.Clean = value; _accountIdentifier = accountIdentifier;
-                var altId = _altId; altId.Clean = value; _altId = altId;
-                var assetIndex = _assetIndex; assetIndex.Clean = value; _assetIndex = assetIndex;
-                var assetType = _assetType; assetType.Clean = value; _assetType = assetType;
-                var attention = _attention; attention.Clean = value; _attention = attention;
-                var borrowerId = _borrowerId; borrowerId.Clean = value; _borrowerId = borrowerId;
-                var cashOrMarketValueAmount = _cashOrMarketValueAmount; cashOrMarketValueAmount.Clean = value; _cashOrMarketValueAmount = cashOrMarketValueAmount;
-                var depositoryAccountName = _depositoryAccountName; depositoryAccountName.Clean = value; _depositoryAccountName = depositoryAccountName;
-                var depositoryRequestDate = _depositoryRequestDate; depositoryRequestDate.Clean = value; _depositoryRequestDate = depositoryRequestDate;
-                var description = _description; description.Clean = value; _description = description;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var holderAddressCity = _holderAddressCity; holderAddressCity.Clean = value; _holderAddressCity = holderAddressCity;
-                var holderAddressPostalCode = _holderAddressPostalCode; holderAddressPostalCode.Clean = value; _holderAddressPostalCode = holderAddressPostalCode;
-                var holderAddressState = _holderAddressState; holderAddressState.Clean = value; _holderAddressState = holderAddressState;
-                var holderAddressStreetLine1 = _holderAddressStreetLine1; holderAddressStreetLine1.Clean = value; _holderAddressStreetLine1 = holderAddressStreetLine1;
-                var holderComments = _holderComments; holderComments.Clean = value; _holderComments = holderComments;
-                var holderEmail = _holderEmail; holderEmail.Clean = value; _holderEmail = holderEmail;
-                var holderFax = _holderFax; holderFax.Clean = value; _holderFax = holderFax;
-                var holderName = _holderName; holderName.Clean = value; _holderName = holderName;
-                var holderPhone = _holderPhone; holderPhone.Clean = value; _holderPhone = holderPhone;
-                var id = _id; id.Clean = value; _id = id;
-                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
-                var isVod = _isVod; isVod.Clean = value; _isVod = isVod;
-                var lifeInsuranceFaceValueAmount = _lifeInsuranceFaceValueAmount; lifeInsuranceFaceValueAmount.Clean = value; _lifeInsuranceFaceValueAmount = lifeInsuranceFaceValueAmount;
-                var nameInAccount = _nameInAccount; nameInAccount.Clean = value; _nameInAccount = nameInAccount;
-                var noLinkToDocTrackIndicator = _noLinkToDocTrackIndicator; noLinkToDocTrackIndicator.Clean = value; _noLinkToDocTrackIndicator = noLinkToDocTrackIndicator;
-                var owner = _owner; owner.Clean = value; _owner = owner;
-                var printAttachmentIndicator = _printAttachmentIndicator; printAttachmentIndicator.Clean = value; _printAttachmentIndicator = printAttachmentIndicator;
-                var printUserNameIndicator = _printUserNameIndicator; printUserNameIndicator.Clean = value; _printUserNameIndicator = printUserNameIndicator;
-                var title = _title; title.Clean = value; _title = title;
-                var titleFax = _titleFax; titleFax.Clean = value; _titleFax = titleFax;
-                var titlePhone = _titlePhone; titlePhone.Clean = value; _titlePhone = titlePhone;
-                var total = _total; total.Clean = value; _total = total;
-                var vodIndex = _vodIndex; vodIndex.Clean = value; _vodIndex = vodIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountIdentifier.Dirty = value;
+                _altId.Dirty = value;
+                _assetIndex.Dirty = value;
+                _assetType.Dirty = value;
+                _attention.Dirty = value;
+                _borrowerId.Dirty = value;
+                _cashOrMarketValueAmount.Dirty = value;
+                _depositoryAccountName.Dirty = value;
+                _depositoryRequestDate.Dirty = value;
+                _description.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _holderAddressCity.Dirty = value;
+                _holderAddressPostalCode.Dirty = value;
+                _holderAddressState.Dirty = value;
+                _holderAddressStreetLine1.Dirty = value;
+                _holderComments.Dirty = value;
+                _holderEmail.Dirty = value;
+                _holderFax.Dirty = value;
+                _holderName.Dirty = value;
+                _holderPhone.Dirty = value;
+                _id.Dirty = value;
+                _isEmpty.Dirty = value;
+                _isVod.Dirty = value;
+                _lifeInsuranceFaceValueAmount.Dirty = value;
+                _nameInAccount.Dirty = value;
+                _noLinkToDocTrackIndicator.Dirty = value;
+                _owner.Dirty = value;
+                _printAttachmentIndicator.Dirty = value;
+                _printUserNameIndicator.Dirty = value;
+                _title.Dirty = value;
+                _titleFax.Dirty = value;
+                _titlePhone.Dirty = value;
+                _total.Dirty = value;
+                _vodIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Asset()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

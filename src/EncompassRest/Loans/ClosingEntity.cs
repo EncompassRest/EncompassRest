@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingEntity : IClean
+    public sealed partial class ClosingEntity : IDirty
     {
         private Value<string> _alias;
         public string Alias { get { return _alias; } set { _alias = value; } }
@@ -80,99 +80,94 @@ namespace EncompassRest.Loans
         public string VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
         private Value<string> _vestingType;
         public string VestingType { get { return _vestingType; } set { _vestingType = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alias.Clean
-                    && _assignee.Clean
-                    && _authorizedToSignIndicator.Clean
-                    && _borrowerPair.Clean
-                    && _city.Clean
-                    && _closingEntityType.Clean
-                    && _comments.Clean
-                    && _county.Clean
-                    && _dateOfBirth.Clean
-                    && _fax.Clean
-                    && _id.Clean
-                    && _occupancyIntent.Clean
-                    && _occupancyStatus.Clean
-                    && _organizationType.Clean
-                    && _organizedUnderTheLawsOfJurisdictionName.Clean
-                    && _phone.Clean
-                    && _phone1.Clean
-                    && _phone2.Clean
-                    && _poaSignatureText.Clean
-                    && _postalCode.Clean
-                    && _powerOfAttorney.Clean
-                    && _recordableDocumentTrustDate.Clean
-                    && _recordCity.Clean
-                    && _ssn.Clean
-                    && _state.Clean
-                    && _streetAddress.Clean
-                    && _taxIdentificationNumberIdentifier.Clean
-                    && _trustOfficerName1.Clean
-                    && _trustOfficerName2.Clean
-                    && _trustOfficerTitle1.Clean
-                    && _trustOfficerTitle2.Clean
-                    && _unparsedName.Clean
-                    && _vesting.Clean
-                    && _vestingGuid.Clean
-                    && _vestingTrusteeOfType.Clean
-                    && _vestingType.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alias.Dirty
+                    || _assignee.Dirty
+                    || _authorizedToSignIndicator.Dirty
+                    || _borrowerPair.Dirty
+                    || _city.Dirty
+                    || _closingEntityType.Dirty
+                    || _comments.Dirty
+                    || _county.Dirty
+                    || _dateOfBirth.Dirty
+                    || _fax.Dirty
+                    || _id.Dirty
+                    || _occupancyIntent.Dirty
+                    || _occupancyStatus.Dirty
+                    || _organizationType.Dirty
+                    || _organizedUnderTheLawsOfJurisdictionName.Dirty
+                    || _phone.Dirty
+                    || _phone1.Dirty
+                    || _phone2.Dirty
+                    || _poaSignatureText.Dirty
+                    || _postalCode.Dirty
+                    || _powerOfAttorney.Dirty
+                    || _recordableDocumentTrustDate.Dirty
+                    || _recordCity.Dirty
+                    || _ssn.Dirty
+                    || _state.Dirty
+                    || _streetAddress.Dirty
+                    || _taxIdentificationNumberIdentifier.Dirty
+                    || _trustOfficerName1.Dirty
+                    || _trustOfficerName2.Dirty
+                    || _trustOfficerTitle1.Dirty
+                    || _trustOfficerTitle2.Dirty
+                    || _unparsedName.Dirty
+                    || _vesting.Dirty
+                    || _vestingGuid.Dirty
+                    || _vestingTrusteeOfType.Dirty
+                    || _vestingType.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alias = _alias; alias.Clean = value; _alias = alias;
-                var assignee = _assignee; assignee.Clean = value; _assignee = assignee;
-                var authorizedToSignIndicator = _authorizedToSignIndicator; authorizedToSignIndicator.Clean = value; _authorizedToSignIndicator = authorizedToSignIndicator;
-                var borrowerPair = _borrowerPair; borrowerPair.Clean = value; _borrowerPair = borrowerPair;
-                var city = _city; city.Clean = value; _city = city;
-                var closingEntityType = _closingEntityType; closingEntityType.Clean = value; _closingEntityType = closingEntityType;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var county = _county; county.Clean = value; _county = county;
-                var dateOfBirth = _dateOfBirth; dateOfBirth.Clean = value; _dateOfBirth = dateOfBirth;
-                var fax = _fax; fax.Clean = value; _fax = fax;
-                var id = _id; id.Clean = value; _id = id;
-                var occupancyIntent = _occupancyIntent; occupancyIntent.Clean = value; _occupancyIntent = occupancyIntent;
-                var occupancyStatus = _occupancyStatus; occupancyStatus.Clean = value; _occupancyStatus = occupancyStatus;
-                var organizationType = _organizationType; organizationType.Clean = value; _organizationType = organizationType;
-                var organizedUnderTheLawsOfJurisdictionName = _organizedUnderTheLawsOfJurisdictionName; organizedUnderTheLawsOfJurisdictionName.Clean = value; _organizedUnderTheLawsOfJurisdictionName = organizedUnderTheLawsOfJurisdictionName;
-                var phone = _phone; phone.Clean = value; _phone = phone;
-                var phone1 = _phone1; phone1.Clean = value; _phone1 = phone1;
-                var phone2 = _phone2; phone2.Clean = value; _phone2 = phone2;
-                var poaSignatureText = _poaSignatureText; poaSignatureText.Clean = value; _poaSignatureText = poaSignatureText;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var powerOfAttorney = _powerOfAttorney; powerOfAttorney.Clean = value; _powerOfAttorney = powerOfAttorney;
-                var recordableDocumentTrustDate = _recordableDocumentTrustDate; recordableDocumentTrustDate.Clean = value; _recordableDocumentTrustDate = recordableDocumentTrustDate;
-                var recordCity = _recordCity; recordCity.Clean = value; _recordCity = recordCity;
-                var ssn = _ssn; ssn.Clean = value; _ssn = ssn;
-                var state = _state; state.Clean = value; _state = state;
-                var streetAddress = _streetAddress; streetAddress.Clean = value; _streetAddress = streetAddress;
-                var taxIdentificationNumberIdentifier = _taxIdentificationNumberIdentifier; taxIdentificationNumberIdentifier.Clean = value; _taxIdentificationNumberIdentifier = taxIdentificationNumberIdentifier;
-                var trustOfficerName1 = _trustOfficerName1; trustOfficerName1.Clean = value; _trustOfficerName1 = trustOfficerName1;
-                var trustOfficerName2 = _trustOfficerName2; trustOfficerName2.Clean = value; _trustOfficerName2 = trustOfficerName2;
-                var trustOfficerTitle1 = _trustOfficerTitle1; trustOfficerTitle1.Clean = value; _trustOfficerTitle1 = trustOfficerTitle1;
-                var trustOfficerTitle2 = _trustOfficerTitle2; trustOfficerTitle2.Clean = value; _trustOfficerTitle2 = trustOfficerTitle2;
-                var unparsedName = _unparsedName; unparsedName.Clean = value; _unparsedName = unparsedName;
-                var vesting = _vesting; vesting.Clean = value; _vesting = vesting;
-                var vestingGuid = _vestingGuid; vestingGuid.Clean = value; _vestingGuid = vestingGuid;
-                var vestingTrusteeOfType = _vestingTrusteeOfType; vestingTrusteeOfType.Clean = value; _vestingTrusteeOfType = vestingTrusteeOfType;
-                var vestingType = _vestingType; vestingType.Clean = value; _vestingType = vestingType;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alias.Dirty = value;
+                _assignee.Dirty = value;
+                _authorizedToSignIndicator.Dirty = value;
+                _borrowerPair.Dirty = value;
+                _city.Dirty = value;
+                _closingEntityType.Dirty = value;
+                _comments.Dirty = value;
+                _county.Dirty = value;
+                _dateOfBirth.Dirty = value;
+                _fax.Dirty = value;
+                _id.Dirty = value;
+                _occupancyIntent.Dirty = value;
+                _occupancyStatus.Dirty = value;
+                _organizationType.Dirty = value;
+                _organizedUnderTheLawsOfJurisdictionName.Dirty = value;
+                _phone.Dirty = value;
+                _phone1.Dirty = value;
+                _phone2.Dirty = value;
+                _poaSignatureText.Dirty = value;
+                _postalCode.Dirty = value;
+                _powerOfAttorney.Dirty = value;
+                _recordableDocumentTrustDate.Dirty = value;
+                _recordCity.Dirty = value;
+                _ssn.Dirty = value;
+                _state.Dirty = value;
+                _streetAddress.Dirty = value;
+                _taxIdentificationNumberIdentifier.Dirty = value;
+                _trustOfficerName1.Dirty = value;
+                _trustOfficerName2.Dirty = value;
+                _trustOfficerTitle1.Dirty = value;
+                _trustOfficerTitle2.Dirty = value;
+                _unparsedName.Dirty = value;
+                _vesting.Dirty = value;
+                _vestingGuid.Dirty = value;
+                _vestingTrusteeOfType.Dirty = value;
+                _vestingType.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingEntity()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

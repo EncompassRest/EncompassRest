@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Property : IClean
+    public sealed partial class Property : IDirty
     {
         private Value<string> _assessorsParcelIdentifier;
         public string AssessorsParcelIdentifier { get { return _assessorsParcelIdentifier; } set { _assessorsParcelIdentifier = value; } }
@@ -118,137 +118,132 @@ namespace EncompassRest.Loans
         public string TypeRecordingJurisdiction { get { return _typeRecordingJurisdiction; } set { _typeRecordingJurisdiction = value; } }
         private Value<string> _unincorporatedAreaName;
         public string UnincorporatedAreaName { get { return _unincorporatedAreaName; } set { _unincorporatedAreaName = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _assessorsParcelIdentifier.Clean
-                    && _blockIdentifier.Clean
-                    && _borrowerHomesteadIndicator.Clean
-                    && _buildingStatusType.Clean
-                    && _city.Clean
-                    && _condotelIndicator.Clean
-                    && _constructionImprovementCostsAmount.Clean
-                    && _county.Clean
-                    && _financedNumberOfUnits.Clean
-                    && _floodCertificationIdentifier.Clean
-                    && _freCashOutAmount.Clean
-                    && _gseRefinancePurposeType.Clean
-                    && _gseTitleMannerHeldDescription.Clean
-                    && _id.Clean
-                    && _isConstructionPhaseDisclosedSeparately.Clean
-                    && _landEstimatedValueAmount.Clean
-                    && _legalDescriptionText1.Clean
-                    && _legalDescriptionText2.Clean
-                    && _linkedIsConstructionPhaseDisclosedSeparately.Clean
-                    && _linkedLoanPurposeType.Clean
-                    && _loanPurposeType.Clean
-                    && _lotAcres.Clean
-                    && _lotIdentifier.Clean
-                    && _nameRecordingJurisdiction.Clean
-                    && _nonwarrantableProjectIndicator.Clean
-                    && _numberOfStories.Clean
-                    && _otherLoanPurposeDescription.Clean
-                    && _postalCode.Clean
-                    && _priorLoanRecordationBookNumber.Clean
-                    && _priorLoanRecordationCurrentPrincipalAmount.Clean
-                    && _priorLoanRecordationOriginalPrincipalAmount.Clean
-                    && _priorLoanRecordationPageNumber.Clean
-                    && _prodIsSpInUnderservedArea.Clean
-                    && _propertyAcquiredYear.Clean
-                    && _propertyExistingLienAmount.Clean
-                    && _propertyLeaseholdExpirationDate.Clean
-                    && _propertyOriginalCostAmount.Clean
-                    && _propertyRightsType.Clean
-                    && _propertyUsageType.Clean
-                    && _refinanceImprovementCostsAmount.Clean
-                    && _refinanceImprovementsType.Clean
-                    && _refinancePropertyAcquiredYear.Clean
-                    && _refinancePropertyExistingLienAmount.Clean
-                    && _refinancePropertyOriginalCostAmount.Clean
-                    && _refinanceProposedImprovementsDescription.Clean
-                    && _ruralAreaIndicator.Clean
-                    && _sectionIdentifier.Clean
-                    && _state.Clean
-                    && _streetAddress.Clean
-                    && _streetAddress2.Clean
-                    && _structureBuiltYear.Clean
-                    && _texasContinuousMoneyLoanIndicator.Clean
-                    && _totalConstructionValueAmount.Clean
-                    && _typeRecordingJurisdiction.Clean
-                    && _unincorporatedAreaName.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _assessorsParcelIdentifier.Dirty
+                    || _blockIdentifier.Dirty
+                    || _borrowerHomesteadIndicator.Dirty
+                    || _buildingStatusType.Dirty
+                    || _city.Dirty
+                    || _condotelIndicator.Dirty
+                    || _constructionImprovementCostsAmount.Dirty
+                    || _county.Dirty
+                    || _financedNumberOfUnits.Dirty
+                    || _floodCertificationIdentifier.Dirty
+                    || _freCashOutAmount.Dirty
+                    || _gseRefinancePurposeType.Dirty
+                    || _gseTitleMannerHeldDescription.Dirty
+                    || _id.Dirty
+                    || _isConstructionPhaseDisclosedSeparately.Dirty
+                    || _landEstimatedValueAmount.Dirty
+                    || _legalDescriptionText1.Dirty
+                    || _legalDescriptionText2.Dirty
+                    || _linkedIsConstructionPhaseDisclosedSeparately.Dirty
+                    || _linkedLoanPurposeType.Dirty
+                    || _loanPurposeType.Dirty
+                    || _lotAcres.Dirty
+                    || _lotIdentifier.Dirty
+                    || _nameRecordingJurisdiction.Dirty
+                    || _nonwarrantableProjectIndicator.Dirty
+                    || _numberOfStories.Dirty
+                    || _otherLoanPurposeDescription.Dirty
+                    || _postalCode.Dirty
+                    || _priorLoanRecordationBookNumber.Dirty
+                    || _priorLoanRecordationCurrentPrincipalAmount.Dirty
+                    || _priorLoanRecordationOriginalPrincipalAmount.Dirty
+                    || _priorLoanRecordationPageNumber.Dirty
+                    || _prodIsSpInUnderservedArea.Dirty
+                    || _propertyAcquiredYear.Dirty
+                    || _propertyExistingLienAmount.Dirty
+                    || _propertyLeaseholdExpirationDate.Dirty
+                    || _propertyOriginalCostAmount.Dirty
+                    || _propertyRightsType.Dirty
+                    || _propertyUsageType.Dirty
+                    || _refinanceImprovementCostsAmount.Dirty
+                    || _refinanceImprovementsType.Dirty
+                    || _refinancePropertyAcquiredYear.Dirty
+                    || _refinancePropertyExistingLienAmount.Dirty
+                    || _refinancePropertyOriginalCostAmount.Dirty
+                    || _refinanceProposedImprovementsDescription.Dirty
+                    || _ruralAreaIndicator.Dirty
+                    || _sectionIdentifier.Dirty
+                    || _state.Dirty
+                    || _streetAddress.Dirty
+                    || _streetAddress2.Dirty
+                    || _structureBuiltYear.Dirty
+                    || _texasContinuousMoneyLoanIndicator.Dirty
+                    || _totalConstructionValueAmount.Dirty
+                    || _typeRecordingJurisdiction.Dirty
+                    || _unincorporatedAreaName.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var assessorsParcelIdentifier = _assessorsParcelIdentifier; assessorsParcelIdentifier.Clean = value; _assessorsParcelIdentifier = assessorsParcelIdentifier;
-                var blockIdentifier = _blockIdentifier; blockIdentifier.Clean = value; _blockIdentifier = blockIdentifier;
-                var borrowerHomesteadIndicator = _borrowerHomesteadIndicator; borrowerHomesteadIndicator.Clean = value; _borrowerHomesteadIndicator = borrowerHomesteadIndicator;
-                var buildingStatusType = _buildingStatusType; buildingStatusType.Clean = value; _buildingStatusType = buildingStatusType;
-                var city = _city; city.Clean = value; _city = city;
-                var condotelIndicator = _condotelIndicator; condotelIndicator.Clean = value; _condotelIndicator = condotelIndicator;
-                var constructionImprovementCostsAmount = _constructionImprovementCostsAmount; constructionImprovementCostsAmount.Clean = value; _constructionImprovementCostsAmount = constructionImprovementCostsAmount;
-                var county = _county; county.Clean = value; _county = county;
-                var financedNumberOfUnits = _financedNumberOfUnits; financedNumberOfUnits.Clean = value; _financedNumberOfUnits = financedNumberOfUnits;
-                var floodCertificationIdentifier = _floodCertificationIdentifier; floodCertificationIdentifier.Clean = value; _floodCertificationIdentifier = floodCertificationIdentifier;
-                var freCashOutAmount = _freCashOutAmount; freCashOutAmount.Clean = value; _freCashOutAmount = freCashOutAmount;
-                var gseRefinancePurposeType = _gseRefinancePurposeType; gseRefinancePurposeType.Clean = value; _gseRefinancePurposeType = gseRefinancePurposeType;
-                var gseTitleMannerHeldDescription = _gseTitleMannerHeldDescription; gseTitleMannerHeldDescription.Clean = value; _gseTitleMannerHeldDescription = gseTitleMannerHeldDescription;
-                var id = _id; id.Clean = value; _id = id;
-                var isConstructionPhaseDisclosedSeparately = _isConstructionPhaseDisclosedSeparately; isConstructionPhaseDisclosedSeparately.Clean = value; _isConstructionPhaseDisclosedSeparately = isConstructionPhaseDisclosedSeparately;
-                var landEstimatedValueAmount = _landEstimatedValueAmount; landEstimatedValueAmount.Clean = value; _landEstimatedValueAmount = landEstimatedValueAmount;
-                var legalDescriptionText1 = _legalDescriptionText1; legalDescriptionText1.Clean = value; _legalDescriptionText1 = legalDescriptionText1;
-                var legalDescriptionText2 = _legalDescriptionText2; legalDescriptionText2.Clean = value; _legalDescriptionText2 = legalDescriptionText2;
-                var linkedIsConstructionPhaseDisclosedSeparately = _linkedIsConstructionPhaseDisclosedSeparately; linkedIsConstructionPhaseDisclosedSeparately.Clean = value; _linkedIsConstructionPhaseDisclosedSeparately = linkedIsConstructionPhaseDisclosedSeparately;
-                var linkedLoanPurposeType = _linkedLoanPurposeType; linkedLoanPurposeType.Clean = value; _linkedLoanPurposeType = linkedLoanPurposeType;
-                var loanPurposeType = _loanPurposeType; loanPurposeType.Clean = value; _loanPurposeType = loanPurposeType;
-                var lotAcres = _lotAcres; lotAcres.Clean = value; _lotAcres = lotAcres;
-                var lotIdentifier = _lotIdentifier; lotIdentifier.Clean = value; _lotIdentifier = lotIdentifier;
-                var nameRecordingJurisdiction = _nameRecordingJurisdiction; nameRecordingJurisdiction.Clean = value; _nameRecordingJurisdiction = nameRecordingJurisdiction;
-                var nonwarrantableProjectIndicator = _nonwarrantableProjectIndicator; nonwarrantableProjectIndicator.Clean = value; _nonwarrantableProjectIndicator = nonwarrantableProjectIndicator;
-                var numberOfStories = _numberOfStories; numberOfStories.Clean = value; _numberOfStories = numberOfStories;
-                var otherLoanPurposeDescription = _otherLoanPurposeDescription; otherLoanPurposeDescription.Clean = value; _otherLoanPurposeDescription = otherLoanPurposeDescription;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var priorLoanRecordationBookNumber = _priorLoanRecordationBookNumber; priorLoanRecordationBookNumber.Clean = value; _priorLoanRecordationBookNumber = priorLoanRecordationBookNumber;
-                var priorLoanRecordationCurrentPrincipalAmount = _priorLoanRecordationCurrentPrincipalAmount; priorLoanRecordationCurrentPrincipalAmount.Clean = value; _priorLoanRecordationCurrentPrincipalAmount = priorLoanRecordationCurrentPrincipalAmount;
-                var priorLoanRecordationOriginalPrincipalAmount = _priorLoanRecordationOriginalPrincipalAmount; priorLoanRecordationOriginalPrincipalAmount.Clean = value; _priorLoanRecordationOriginalPrincipalAmount = priorLoanRecordationOriginalPrincipalAmount;
-                var priorLoanRecordationPageNumber = _priorLoanRecordationPageNumber; priorLoanRecordationPageNumber.Clean = value; _priorLoanRecordationPageNumber = priorLoanRecordationPageNumber;
-                var prodIsSpInUnderservedArea = _prodIsSpInUnderservedArea; prodIsSpInUnderservedArea.Clean = value; _prodIsSpInUnderservedArea = prodIsSpInUnderservedArea;
-                var propertyAcquiredYear = _propertyAcquiredYear; propertyAcquiredYear.Clean = value; _propertyAcquiredYear = propertyAcquiredYear;
-                var propertyExistingLienAmount = _propertyExistingLienAmount; propertyExistingLienAmount.Clean = value; _propertyExistingLienAmount = propertyExistingLienAmount;
-                var propertyLeaseholdExpirationDate = _propertyLeaseholdExpirationDate; propertyLeaseholdExpirationDate.Clean = value; _propertyLeaseholdExpirationDate = propertyLeaseholdExpirationDate;
-                var propertyOriginalCostAmount = _propertyOriginalCostAmount; propertyOriginalCostAmount.Clean = value; _propertyOriginalCostAmount = propertyOriginalCostAmount;
-                var propertyRightsType = _propertyRightsType; propertyRightsType.Clean = value; _propertyRightsType = propertyRightsType;
-                var propertyUsageType = _propertyUsageType; propertyUsageType.Clean = value; _propertyUsageType = propertyUsageType;
-                var refinanceImprovementCostsAmount = _refinanceImprovementCostsAmount; refinanceImprovementCostsAmount.Clean = value; _refinanceImprovementCostsAmount = refinanceImprovementCostsAmount;
-                var refinanceImprovementsType = _refinanceImprovementsType; refinanceImprovementsType.Clean = value; _refinanceImprovementsType = refinanceImprovementsType;
-                var refinancePropertyAcquiredYear = _refinancePropertyAcquiredYear; refinancePropertyAcquiredYear.Clean = value; _refinancePropertyAcquiredYear = refinancePropertyAcquiredYear;
-                var refinancePropertyExistingLienAmount = _refinancePropertyExistingLienAmount; refinancePropertyExistingLienAmount.Clean = value; _refinancePropertyExistingLienAmount = refinancePropertyExistingLienAmount;
-                var refinancePropertyOriginalCostAmount = _refinancePropertyOriginalCostAmount; refinancePropertyOriginalCostAmount.Clean = value; _refinancePropertyOriginalCostAmount = refinancePropertyOriginalCostAmount;
-                var refinanceProposedImprovementsDescription = _refinanceProposedImprovementsDescription; refinanceProposedImprovementsDescription.Clean = value; _refinanceProposedImprovementsDescription = refinanceProposedImprovementsDescription;
-                var ruralAreaIndicator = _ruralAreaIndicator; ruralAreaIndicator.Clean = value; _ruralAreaIndicator = ruralAreaIndicator;
-                var sectionIdentifier = _sectionIdentifier; sectionIdentifier.Clean = value; _sectionIdentifier = sectionIdentifier;
-                var state = _state; state.Clean = value; _state = state;
-                var streetAddress = _streetAddress; streetAddress.Clean = value; _streetAddress = streetAddress;
-                var streetAddress2 = _streetAddress2; streetAddress2.Clean = value; _streetAddress2 = streetAddress2;
-                var structureBuiltYear = _structureBuiltYear; structureBuiltYear.Clean = value; _structureBuiltYear = structureBuiltYear;
-                var texasContinuousMoneyLoanIndicator = _texasContinuousMoneyLoanIndicator; texasContinuousMoneyLoanIndicator.Clean = value; _texasContinuousMoneyLoanIndicator = texasContinuousMoneyLoanIndicator;
-                var totalConstructionValueAmount = _totalConstructionValueAmount; totalConstructionValueAmount.Clean = value; _totalConstructionValueAmount = totalConstructionValueAmount;
-                var typeRecordingJurisdiction = _typeRecordingJurisdiction; typeRecordingJurisdiction.Clean = value; _typeRecordingJurisdiction = typeRecordingJurisdiction;
-                var unincorporatedAreaName = _unincorporatedAreaName; unincorporatedAreaName.Clean = value; _unincorporatedAreaName = unincorporatedAreaName;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _assessorsParcelIdentifier.Dirty = value;
+                _blockIdentifier.Dirty = value;
+                _borrowerHomesteadIndicator.Dirty = value;
+                _buildingStatusType.Dirty = value;
+                _city.Dirty = value;
+                _condotelIndicator.Dirty = value;
+                _constructionImprovementCostsAmount.Dirty = value;
+                _county.Dirty = value;
+                _financedNumberOfUnits.Dirty = value;
+                _floodCertificationIdentifier.Dirty = value;
+                _freCashOutAmount.Dirty = value;
+                _gseRefinancePurposeType.Dirty = value;
+                _gseTitleMannerHeldDescription.Dirty = value;
+                _id.Dirty = value;
+                _isConstructionPhaseDisclosedSeparately.Dirty = value;
+                _landEstimatedValueAmount.Dirty = value;
+                _legalDescriptionText1.Dirty = value;
+                _legalDescriptionText2.Dirty = value;
+                _linkedIsConstructionPhaseDisclosedSeparately.Dirty = value;
+                _linkedLoanPurposeType.Dirty = value;
+                _loanPurposeType.Dirty = value;
+                _lotAcres.Dirty = value;
+                _lotIdentifier.Dirty = value;
+                _nameRecordingJurisdiction.Dirty = value;
+                _nonwarrantableProjectIndicator.Dirty = value;
+                _numberOfStories.Dirty = value;
+                _otherLoanPurposeDescription.Dirty = value;
+                _postalCode.Dirty = value;
+                _priorLoanRecordationBookNumber.Dirty = value;
+                _priorLoanRecordationCurrentPrincipalAmount.Dirty = value;
+                _priorLoanRecordationOriginalPrincipalAmount.Dirty = value;
+                _priorLoanRecordationPageNumber.Dirty = value;
+                _prodIsSpInUnderservedArea.Dirty = value;
+                _propertyAcquiredYear.Dirty = value;
+                _propertyExistingLienAmount.Dirty = value;
+                _propertyLeaseholdExpirationDate.Dirty = value;
+                _propertyOriginalCostAmount.Dirty = value;
+                _propertyRightsType.Dirty = value;
+                _propertyUsageType.Dirty = value;
+                _refinanceImprovementCostsAmount.Dirty = value;
+                _refinanceImprovementsType.Dirty = value;
+                _refinancePropertyAcquiredYear.Dirty = value;
+                _refinancePropertyExistingLienAmount.Dirty = value;
+                _refinancePropertyOriginalCostAmount.Dirty = value;
+                _refinanceProposedImprovementsDescription.Dirty = value;
+                _ruralAreaIndicator.Dirty = value;
+                _sectionIdentifier.Dirty = value;
+                _state.Dirty = value;
+                _streetAddress.Dirty = value;
+                _streetAddress2.Dirty = value;
+                _structureBuiltYear.Dirty = value;
+                _texasContinuousMoneyLoanIndicator.Dirty = value;
+                _totalConstructionValueAmount.Dirty = value;
+                _typeRecordingJurisdiction.Dirty = value;
+                _unincorporatedAreaName.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Property()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

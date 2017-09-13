@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FannieMae : IClean
+    public sealed partial class FannieMae : IDirty
     {
         private Value<decimal?> _cltv;
         public decimal? Cltv { get { return _cltv; } set { _cltv = value; } }
@@ -40,59 +40,54 @@ namespace EncompassRest.Loans
         public string UCDPStatus { get { return _uCDPStatus; } set { _uCDPStatus = value; } }
         private Value<string> _uLDDECStatus;
         public string ULDDECStatus { get { return _uLDDECStatus; } set { _uLDDECStatus = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _cltv.Clean
-                    && _collateralUnderwriterScore.Clean
-                    && _community2ndRepaymentStructure.Clean
-                    && _communityLending.Clean
-                    && _duVersion.Clean
-                    && _eCStatus1003.Clean
-                    && _hcltv.Clean
-                    && _id.Clean
-                    && _interestedPartyContribution.Clean
-                    && _ltv.Clean
-                    && _mornetPlusCaseFileId.Clean
-                    && _propertyInspectionWaiverMessage.Clean
-                    && _startUpMortgage.Clean
-                    && _uCDCollectionStatus.Clean
-                    && _uCDPStatus.Clean
-                    && _uLDDECStatus.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _cltv.Dirty
+                    || _collateralUnderwriterScore.Dirty
+                    || _community2ndRepaymentStructure.Dirty
+                    || _communityLending.Dirty
+                    || _duVersion.Dirty
+                    || _eCStatus1003.Dirty
+                    || _hcltv.Dirty
+                    || _id.Dirty
+                    || _interestedPartyContribution.Dirty
+                    || _ltv.Dirty
+                    || _mornetPlusCaseFileId.Dirty
+                    || _propertyInspectionWaiverMessage.Dirty
+                    || _startUpMortgage.Dirty
+                    || _uCDCollectionStatus.Dirty
+                    || _uCDPStatus.Dirty
+                    || _uLDDECStatus.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var cltv = _cltv; cltv.Clean = value; _cltv = cltv;
-                var collateralUnderwriterScore = _collateralUnderwriterScore; collateralUnderwriterScore.Clean = value; _collateralUnderwriterScore = collateralUnderwriterScore;
-                var community2ndRepaymentStructure = _community2ndRepaymentStructure; community2ndRepaymentStructure.Clean = value; _community2ndRepaymentStructure = community2ndRepaymentStructure;
-                var communityLending = _communityLending; communityLending.Clean = value; _communityLending = communityLending;
-                var duVersion = _duVersion; duVersion.Clean = value; _duVersion = duVersion;
-                var eCStatus1003 = _eCStatus1003; eCStatus1003.Clean = value; _eCStatus1003 = eCStatus1003;
-                var hcltv = _hcltv; hcltv.Clean = value; _hcltv = hcltv;
-                var id = _id; id.Clean = value; _id = id;
-                var interestedPartyContribution = _interestedPartyContribution; interestedPartyContribution.Clean = value; _interestedPartyContribution = interestedPartyContribution;
-                var ltv = _ltv; ltv.Clean = value; _ltv = ltv;
-                var mornetPlusCaseFileId = _mornetPlusCaseFileId; mornetPlusCaseFileId.Clean = value; _mornetPlusCaseFileId = mornetPlusCaseFileId;
-                var propertyInspectionWaiverMessage = _propertyInspectionWaiverMessage; propertyInspectionWaiverMessage.Clean = value; _propertyInspectionWaiverMessage = propertyInspectionWaiverMessage;
-                var startUpMortgage = _startUpMortgage; startUpMortgage.Clean = value; _startUpMortgage = startUpMortgage;
-                var uCDCollectionStatus = _uCDCollectionStatus; uCDCollectionStatus.Clean = value; _uCDCollectionStatus = uCDCollectionStatus;
-                var uCDPStatus = _uCDPStatus; uCDPStatus.Clean = value; _uCDPStatus = uCDPStatus;
-                var uLDDECStatus = _uLDDECStatus; uLDDECStatus.Clean = value; _uLDDECStatus = uLDDECStatus;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _cltv.Dirty = value;
+                _collateralUnderwriterScore.Dirty = value;
+                _community2ndRepaymentStructure.Dirty = value;
+                _communityLending.Dirty = value;
+                _duVersion.Dirty = value;
+                _eCStatus1003.Dirty = value;
+                _hcltv.Dirty = value;
+                _id.Dirty = value;
+                _interestedPartyContribution.Dirty = value;
+                _ltv.Dirty = value;
+                _mornetPlusCaseFileId.Dirty = value;
+                _propertyInspectionWaiverMessage.Dirty = value;
+                _startUpMortgage.Dirty = value;
+                _uCDCollectionStatus.Dirty = value;
+                _uCDPStatus.Dirty = value;
+                _uLDDECStatus.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FannieMae()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZInterestRatePeriod : IClean
+    public sealed partial class RegulationZInterestRatePeriod : IDirty
     {
         private Value<DateTime?> _adjustmentDate;
         public DateTime? AdjustmentDate { get { return _adjustmentDate; } set { _adjustmentDate = value; } }
@@ -30,49 +30,44 @@ namespace EncompassRest.Loans
         public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
         private Value<decimal?> _totalPayment;
         public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _adjustmentDate.Clean
-                    && _adjustmentMonths.Clean
-                    && _id.Clean
-                    && _interestPayment.Clean
-                    && _interestPrincipalPayment.Clean
-                    && _interestRatePercent.Clean
-                    && _monthlyPayment.Clean
-                    && _principalPayment.Clean
-                    && _regulationZInterestRatePeriodType.Clean
-                    && _taxInsuranceAmount.Clean
-                    && _totalPayment.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _adjustmentDate.Dirty
+                    || _adjustmentMonths.Dirty
+                    || _id.Dirty
+                    || _interestPayment.Dirty
+                    || _interestPrincipalPayment.Dirty
+                    || _interestRatePercent.Dirty
+                    || _monthlyPayment.Dirty
+                    || _principalPayment.Dirty
+                    || _regulationZInterestRatePeriodType.Dirty
+                    || _taxInsuranceAmount.Dirty
+                    || _totalPayment.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var adjustmentDate = _adjustmentDate; adjustmentDate.Clean = value; _adjustmentDate = adjustmentDate;
-                var adjustmentMonths = _adjustmentMonths; adjustmentMonths.Clean = value; _adjustmentMonths = adjustmentMonths;
-                var id = _id; id.Clean = value; _id = id;
-                var interestPayment = _interestPayment; interestPayment.Clean = value; _interestPayment = interestPayment;
-                var interestPrincipalPayment = _interestPrincipalPayment; interestPrincipalPayment.Clean = value; _interestPrincipalPayment = interestPrincipalPayment;
-                var interestRatePercent = _interestRatePercent; interestRatePercent.Clean = value; _interestRatePercent = interestRatePercent;
-                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
-                var principalPayment = _principalPayment; principalPayment.Clean = value; _principalPayment = principalPayment;
-                var regulationZInterestRatePeriodType = _regulationZInterestRatePeriodType; regulationZInterestRatePeriodType.Clean = value; _regulationZInterestRatePeriodType = regulationZInterestRatePeriodType;
-                var taxInsuranceAmount = _taxInsuranceAmount; taxInsuranceAmount.Clean = value; _taxInsuranceAmount = taxInsuranceAmount;
-                var totalPayment = _totalPayment; totalPayment.Clean = value; _totalPayment = totalPayment;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _adjustmentDate.Dirty = value;
+                _adjustmentMonths.Dirty = value;
+                _id.Dirty = value;
+                _interestPayment.Dirty = value;
+                _interestPrincipalPayment.Dirty = value;
+                _interestRatePercent.Dirty = value;
+                _monthlyPayment.Dirty = value;
+                _principalPayment.Dirty = value;
+                _regulationZInterestRatePeriodType.Dirty = value;
+                _taxInsuranceAmount.Dirty = value;
+                _totalPayment.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public RegulationZInterestRatePeriod()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogSnapshotField : IClean
+    public sealed partial class LogSnapshotField : IDirty
     {
         private Value<string> _fieldID;
         public string FieldID { get { return _fieldID; } set { _fieldID = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public string ModalPath { get { return _modalPath; } set { _modalPath = value; } }
         private Value<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _fieldID.Clean
-                    && _id.Clean
-                    && _modalPath.Clean
-                    && _value.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _fieldID.Dirty
+                    || _id.Dirty
+                    || _modalPath.Dirty
+                    || _value.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var fieldID = _fieldID; fieldID.Clean = value; _fieldID = fieldID;
-                var id = _id; id.Clean = value; _id = id;
-                var modalPath = _modalPath; modalPath.Clean = value; _modalPath = modalPath;
-                var v = _value; v.Clean = value; _value = v;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _fieldID.Dirty = value;
+                _id.Dirty = value;
+                _modalPath.Dirty = value;
+                _value.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LogSnapshotField()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

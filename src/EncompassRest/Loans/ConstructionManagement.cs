@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ConstructionManagement : IClean
+    public sealed partial class ConstructionManagement : IDirty
     {
         private Value<string> _additionalDisbursementsConditions;
         public string AdditionalDisbursementsConditions { get { return _additionalDisbursementsConditions; } set { _additionalDisbursementsConditions = value; } }
@@ -148,167 +148,162 @@ namespace EncompassRest.Loans
         public DateTime? WaterTestDate { get { return _waterTestDate; } set { _waterTestDate = value; } }
         private Value<bool?> _waterTestIndicator;
         public bool? WaterTestIndicator { get { return _waterTestIndicator; } set { _waterTestIndicator = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalDisbursementsConditions.Clean
-                    && _architectsCertificateDate.Clean
-                    && _architectsCertificateIndicator.Clean
-                    && _asCompletedAppraisedValue.Clean
-                    && _asCompletedPurchasePrice.Clean
-                    && _budgetDate.Clean
-                    && _budgetIndicator.Clean
-                    && _commitmentExpirationDate.Clean
-                    && _commitmentLetterDate.Clean
-                    && _constCompletionDate.Clean
-                    && _constOnlyAmortizationType.Clean
-                    && _constructionContractIndicator.Clean
-                    && _constructionContractIssuedDate.Clean
-                    && _constructionContractReceivedDate.Clean
-                    && _constructionPeriodIncludedInLoanTermFlag.Clean
-                    && _contractorsAgreementDate.Clean
-                    && _contractorsAgreementIndicator.Clean
-                    && _environmentalAssessmentDate.Clean
-                    && _environmentalAssessmentIndicator.Clean
-                    && _floodHazardDeterminationDate.Clean
-                    && _floodHazardDeterminationIndicator.Clean
-                    && _futureAdvancePeriod.Clean
-                    && _holdbackAmount.Clean
-                    && _holdbackPercent.Clean
-                    && _lienAgentNorthCarolinaDate.Clean
-                    && _lienAgentNorthCarolinaIndicator.Clean
-                    && _listOfConstructionAgreementsDate.Clean
-                    && _listOfConstructionAgreementsIndicator.Clean
-                    && _maxLTVPercent.Clean
-                    && _minimumDaysBetweenDisbursements.Clean
-                    && _otherDate.Clean
-                    && _otherDescription.Clean
-                    && _otherIndicator.Clean
-                    && _partialPrepaymentsElection.Clean
-                    && _paymentAndPerformanceBondsDate.Clean
-                    && _paymentAndPerformanceBondsIndicator.Clean
-                    && _percolationTestDate.Clean
-                    && _percolationTestIndicator.Clean
-                    && _permitsDate.Clean
-                    && _permitsIndicator.Clean
-                    && _plansAndSpecificationsDate.Clean
-                    && _plansAndSpecificationsIndicator.Clean
-                    && _projectDelaySurchargePercent.Clean
-                    && _returnLendersCopyCommitmentDays.Clean
-                    && _securedBySeparateProperty.Clean
-                    && _soilReportDate.Clean
-                    && _soilReportIndicator.Clean
-                    && _surveyDate.Clean
-                    && _surveyIndicator.Clean
-                    && _takeOutCommitmentDate.Clean
-                    && _takeOutCommitmentIndicator.Clean
-                    && _takeOutCommitmentIssuedDate.Clean
-                    && _takeOutLenderAddress.Clean
-                    && _takeOutLenderCity.Clean
-                    && _takeOutLenderContactName.Clean
-                    && _takeOutLenderContactTitle.Clean
-                    && _takeOutLenderEmail.Clean
-                    && _takeOutLenderFax.Clean
-                    && _takeOutLenderLicenseNumber.Clean
-                    && _takeOutLenderName.Clean
-                    && _takeOutLenderNMLSNumber.Clean
-                    && _takeOutLenderPhone.Clean
-                    && _takeOutLenderState.Clean
-                    && _takeOutLenderZip.Clean
-                    && _titleInsuranceDate.Clean
-                    && _titleInsuranceIndicator.Clean
-                    && _utilityLettersDate.Clean
-                    && _utilityLettersIndicator.Clean
-                    && _waterTestDate.Clean
-                    && _waterTestIndicator.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalDisbursementsConditions.Dirty
+                    || _architectsCertificateDate.Dirty
+                    || _architectsCertificateIndicator.Dirty
+                    || _asCompletedAppraisedValue.Dirty
+                    || _asCompletedPurchasePrice.Dirty
+                    || _budgetDate.Dirty
+                    || _budgetIndicator.Dirty
+                    || _commitmentExpirationDate.Dirty
+                    || _commitmentLetterDate.Dirty
+                    || _constCompletionDate.Dirty
+                    || _constOnlyAmortizationType.Dirty
+                    || _constructionContractIndicator.Dirty
+                    || _constructionContractIssuedDate.Dirty
+                    || _constructionContractReceivedDate.Dirty
+                    || _constructionPeriodIncludedInLoanTermFlag.Dirty
+                    || _contractorsAgreementDate.Dirty
+                    || _contractorsAgreementIndicator.Dirty
+                    || _environmentalAssessmentDate.Dirty
+                    || _environmentalAssessmentIndicator.Dirty
+                    || _floodHazardDeterminationDate.Dirty
+                    || _floodHazardDeterminationIndicator.Dirty
+                    || _futureAdvancePeriod.Dirty
+                    || _holdbackAmount.Dirty
+                    || _holdbackPercent.Dirty
+                    || _lienAgentNorthCarolinaDate.Dirty
+                    || _lienAgentNorthCarolinaIndicator.Dirty
+                    || _listOfConstructionAgreementsDate.Dirty
+                    || _listOfConstructionAgreementsIndicator.Dirty
+                    || _maxLTVPercent.Dirty
+                    || _minimumDaysBetweenDisbursements.Dirty
+                    || _otherDate.Dirty
+                    || _otherDescription.Dirty
+                    || _otherIndicator.Dirty
+                    || _partialPrepaymentsElection.Dirty
+                    || _paymentAndPerformanceBondsDate.Dirty
+                    || _paymentAndPerformanceBondsIndicator.Dirty
+                    || _percolationTestDate.Dirty
+                    || _percolationTestIndicator.Dirty
+                    || _permitsDate.Dirty
+                    || _permitsIndicator.Dirty
+                    || _plansAndSpecificationsDate.Dirty
+                    || _plansAndSpecificationsIndicator.Dirty
+                    || _projectDelaySurchargePercent.Dirty
+                    || _returnLendersCopyCommitmentDays.Dirty
+                    || _securedBySeparateProperty.Dirty
+                    || _soilReportDate.Dirty
+                    || _soilReportIndicator.Dirty
+                    || _surveyDate.Dirty
+                    || _surveyIndicator.Dirty
+                    || _takeOutCommitmentDate.Dirty
+                    || _takeOutCommitmentIndicator.Dirty
+                    || _takeOutCommitmentIssuedDate.Dirty
+                    || _takeOutLenderAddress.Dirty
+                    || _takeOutLenderCity.Dirty
+                    || _takeOutLenderContactName.Dirty
+                    || _takeOutLenderContactTitle.Dirty
+                    || _takeOutLenderEmail.Dirty
+                    || _takeOutLenderFax.Dirty
+                    || _takeOutLenderLicenseNumber.Dirty
+                    || _takeOutLenderName.Dirty
+                    || _takeOutLenderNMLSNumber.Dirty
+                    || _takeOutLenderPhone.Dirty
+                    || _takeOutLenderState.Dirty
+                    || _takeOutLenderZip.Dirty
+                    || _titleInsuranceDate.Dirty
+                    || _titleInsuranceIndicator.Dirty
+                    || _utilityLettersDate.Dirty
+                    || _utilityLettersIndicator.Dirty
+                    || _waterTestDate.Dirty
+                    || _waterTestIndicator.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalDisbursementsConditions = _additionalDisbursementsConditions; additionalDisbursementsConditions.Clean = value; _additionalDisbursementsConditions = additionalDisbursementsConditions;
-                var architectsCertificateDate = _architectsCertificateDate; architectsCertificateDate.Clean = value; _architectsCertificateDate = architectsCertificateDate;
-                var architectsCertificateIndicator = _architectsCertificateIndicator; architectsCertificateIndicator.Clean = value; _architectsCertificateIndicator = architectsCertificateIndicator;
-                var asCompletedAppraisedValue = _asCompletedAppraisedValue; asCompletedAppraisedValue.Clean = value; _asCompletedAppraisedValue = asCompletedAppraisedValue;
-                var asCompletedPurchasePrice = _asCompletedPurchasePrice; asCompletedPurchasePrice.Clean = value; _asCompletedPurchasePrice = asCompletedPurchasePrice;
-                var budgetDate = _budgetDate; budgetDate.Clean = value; _budgetDate = budgetDate;
-                var budgetIndicator = _budgetIndicator; budgetIndicator.Clean = value; _budgetIndicator = budgetIndicator;
-                var commitmentExpirationDate = _commitmentExpirationDate; commitmentExpirationDate.Clean = value; _commitmentExpirationDate = commitmentExpirationDate;
-                var commitmentLetterDate = _commitmentLetterDate; commitmentLetterDate.Clean = value; _commitmentLetterDate = commitmentLetterDate;
-                var constCompletionDate = _constCompletionDate; constCompletionDate.Clean = value; _constCompletionDate = constCompletionDate;
-                var constOnlyAmortizationType = _constOnlyAmortizationType; constOnlyAmortizationType.Clean = value; _constOnlyAmortizationType = constOnlyAmortizationType;
-                var constructionContractIndicator = _constructionContractIndicator; constructionContractIndicator.Clean = value; _constructionContractIndicator = constructionContractIndicator;
-                var constructionContractIssuedDate = _constructionContractIssuedDate; constructionContractIssuedDate.Clean = value; _constructionContractIssuedDate = constructionContractIssuedDate;
-                var constructionContractReceivedDate = _constructionContractReceivedDate; constructionContractReceivedDate.Clean = value; _constructionContractReceivedDate = constructionContractReceivedDate;
-                var constructionPeriodIncludedInLoanTermFlag = _constructionPeriodIncludedInLoanTermFlag; constructionPeriodIncludedInLoanTermFlag.Clean = value; _constructionPeriodIncludedInLoanTermFlag = constructionPeriodIncludedInLoanTermFlag;
-                var contractorsAgreementDate = _contractorsAgreementDate; contractorsAgreementDate.Clean = value; _contractorsAgreementDate = contractorsAgreementDate;
-                var contractorsAgreementIndicator = _contractorsAgreementIndicator; contractorsAgreementIndicator.Clean = value; _contractorsAgreementIndicator = contractorsAgreementIndicator;
-                var environmentalAssessmentDate = _environmentalAssessmentDate; environmentalAssessmentDate.Clean = value; _environmentalAssessmentDate = environmentalAssessmentDate;
-                var environmentalAssessmentIndicator = _environmentalAssessmentIndicator; environmentalAssessmentIndicator.Clean = value; _environmentalAssessmentIndicator = environmentalAssessmentIndicator;
-                var floodHazardDeterminationDate = _floodHazardDeterminationDate; floodHazardDeterminationDate.Clean = value; _floodHazardDeterminationDate = floodHazardDeterminationDate;
-                var floodHazardDeterminationIndicator = _floodHazardDeterminationIndicator; floodHazardDeterminationIndicator.Clean = value; _floodHazardDeterminationIndicator = floodHazardDeterminationIndicator;
-                var futureAdvancePeriod = _futureAdvancePeriod; futureAdvancePeriod.Clean = value; _futureAdvancePeriod = futureAdvancePeriod;
-                var holdbackAmount = _holdbackAmount; holdbackAmount.Clean = value; _holdbackAmount = holdbackAmount;
-                var holdbackPercent = _holdbackPercent; holdbackPercent.Clean = value; _holdbackPercent = holdbackPercent;
-                var lienAgentNorthCarolinaDate = _lienAgentNorthCarolinaDate; lienAgentNorthCarolinaDate.Clean = value; _lienAgentNorthCarolinaDate = lienAgentNorthCarolinaDate;
-                var lienAgentNorthCarolinaIndicator = _lienAgentNorthCarolinaIndicator; lienAgentNorthCarolinaIndicator.Clean = value; _lienAgentNorthCarolinaIndicator = lienAgentNorthCarolinaIndicator;
-                var listOfConstructionAgreementsDate = _listOfConstructionAgreementsDate; listOfConstructionAgreementsDate.Clean = value; _listOfConstructionAgreementsDate = listOfConstructionAgreementsDate;
-                var listOfConstructionAgreementsIndicator = _listOfConstructionAgreementsIndicator; listOfConstructionAgreementsIndicator.Clean = value; _listOfConstructionAgreementsIndicator = listOfConstructionAgreementsIndicator;
-                var maxLTVPercent = _maxLTVPercent; maxLTVPercent.Clean = value; _maxLTVPercent = maxLTVPercent;
-                var minimumDaysBetweenDisbursements = _minimumDaysBetweenDisbursements; minimumDaysBetweenDisbursements.Clean = value; _minimumDaysBetweenDisbursements = minimumDaysBetweenDisbursements;
-                var otherDate = _otherDate; otherDate.Clean = value; _otherDate = otherDate;
-                var otherDescription = _otherDescription; otherDescription.Clean = value; _otherDescription = otherDescription;
-                var otherIndicator = _otherIndicator; otherIndicator.Clean = value; _otherIndicator = otherIndicator;
-                var partialPrepaymentsElection = _partialPrepaymentsElection; partialPrepaymentsElection.Clean = value; _partialPrepaymentsElection = partialPrepaymentsElection;
-                var paymentAndPerformanceBondsDate = _paymentAndPerformanceBondsDate; paymentAndPerformanceBondsDate.Clean = value; _paymentAndPerformanceBondsDate = paymentAndPerformanceBondsDate;
-                var paymentAndPerformanceBondsIndicator = _paymentAndPerformanceBondsIndicator; paymentAndPerformanceBondsIndicator.Clean = value; _paymentAndPerformanceBondsIndicator = paymentAndPerformanceBondsIndicator;
-                var percolationTestDate = _percolationTestDate; percolationTestDate.Clean = value; _percolationTestDate = percolationTestDate;
-                var percolationTestIndicator = _percolationTestIndicator; percolationTestIndicator.Clean = value; _percolationTestIndicator = percolationTestIndicator;
-                var permitsDate = _permitsDate; permitsDate.Clean = value; _permitsDate = permitsDate;
-                var permitsIndicator = _permitsIndicator; permitsIndicator.Clean = value; _permitsIndicator = permitsIndicator;
-                var plansAndSpecificationsDate = _plansAndSpecificationsDate; plansAndSpecificationsDate.Clean = value; _plansAndSpecificationsDate = plansAndSpecificationsDate;
-                var plansAndSpecificationsIndicator = _plansAndSpecificationsIndicator; plansAndSpecificationsIndicator.Clean = value; _plansAndSpecificationsIndicator = plansAndSpecificationsIndicator;
-                var projectDelaySurchargePercent = _projectDelaySurchargePercent; projectDelaySurchargePercent.Clean = value; _projectDelaySurchargePercent = projectDelaySurchargePercent;
-                var returnLendersCopyCommitmentDays = _returnLendersCopyCommitmentDays; returnLendersCopyCommitmentDays.Clean = value; _returnLendersCopyCommitmentDays = returnLendersCopyCommitmentDays;
-                var securedBySeparateProperty = _securedBySeparateProperty; securedBySeparateProperty.Clean = value; _securedBySeparateProperty = securedBySeparateProperty;
-                var soilReportDate = _soilReportDate; soilReportDate.Clean = value; _soilReportDate = soilReportDate;
-                var soilReportIndicator = _soilReportIndicator; soilReportIndicator.Clean = value; _soilReportIndicator = soilReportIndicator;
-                var surveyDate = _surveyDate; surveyDate.Clean = value; _surveyDate = surveyDate;
-                var surveyIndicator = _surveyIndicator; surveyIndicator.Clean = value; _surveyIndicator = surveyIndicator;
-                var takeOutCommitmentDate = _takeOutCommitmentDate; takeOutCommitmentDate.Clean = value; _takeOutCommitmentDate = takeOutCommitmentDate;
-                var takeOutCommitmentIndicator = _takeOutCommitmentIndicator; takeOutCommitmentIndicator.Clean = value; _takeOutCommitmentIndicator = takeOutCommitmentIndicator;
-                var takeOutCommitmentIssuedDate = _takeOutCommitmentIssuedDate; takeOutCommitmentIssuedDate.Clean = value; _takeOutCommitmentIssuedDate = takeOutCommitmentIssuedDate;
-                var takeOutLenderAddress = _takeOutLenderAddress; takeOutLenderAddress.Clean = value; _takeOutLenderAddress = takeOutLenderAddress;
-                var takeOutLenderCity = _takeOutLenderCity; takeOutLenderCity.Clean = value; _takeOutLenderCity = takeOutLenderCity;
-                var takeOutLenderContactName = _takeOutLenderContactName; takeOutLenderContactName.Clean = value; _takeOutLenderContactName = takeOutLenderContactName;
-                var takeOutLenderContactTitle = _takeOutLenderContactTitle; takeOutLenderContactTitle.Clean = value; _takeOutLenderContactTitle = takeOutLenderContactTitle;
-                var takeOutLenderEmail = _takeOutLenderEmail; takeOutLenderEmail.Clean = value; _takeOutLenderEmail = takeOutLenderEmail;
-                var takeOutLenderFax = _takeOutLenderFax; takeOutLenderFax.Clean = value; _takeOutLenderFax = takeOutLenderFax;
-                var takeOutLenderLicenseNumber = _takeOutLenderLicenseNumber; takeOutLenderLicenseNumber.Clean = value; _takeOutLenderLicenseNumber = takeOutLenderLicenseNumber;
-                var takeOutLenderName = _takeOutLenderName; takeOutLenderName.Clean = value; _takeOutLenderName = takeOutLenderName;
-                var takeOutLenderNMLSNumber = _takeOutLenderNMLSNumber; takeOutLenderNMLSNumber.Clean = value; _takeOutLenderNMLSNumber = takeOutLenderNMLSNumber;
-                var takeOutLenderPhone = _takeOutLenderPhone; takeOutLenderPhone.Clean = value; _takeOutLenderPhone = takeOutLenderPhone;
-                var takeOutLenderState = _takeOutLenderState; takeOutLenderState.Clean = value; _takeOutLenderState = takeOutLenderState;
-                var takeOutLenderZip = _takeOutLenderZip; takeOutLenderZip.Clean = value; _takeOutLenderZip = takeOutLenderZip;
-                var titleInsuranceDate = _titleInsuranceDate; titleInsuranceDate.Clean = value; _titleInsuranceDate = titleInsuranceDate;
-                var titleInsuranceIndicator = _titleInsuranceIndicator; titleInsuranceIndicator.Clean = value; _titleInsuranceIndicator = titleInsuranceIndicator;
-                var utilityLettersDate = _utilityLettersDate; utilityLettersDate.Clean = value; _utilityLettersDate = utilityLettersDate;
-                var utilityLettersIndicator = _utilityLettersIndicator; utilityLettersIndicator.Clean = value; _utilityLettersIndicator = utilityLettersIndicator;
-                var waterTestDate = _waterTestDate; waterTestDate.Clean = value; _waterTestDate = waterTestDate;
-                var waterTestIndicator = _waterTestIndicator; waterTestIndicator.Clean = value; _waterTestIndicator = waterTestIndicator;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalDisbursementsConditions.Dirty = value;
+                _architectsCertificateDate.Dirty = value;
+                _architectsCertificateIndicator.Dirty = value;
+                _asCompletedAppraisedValue.Dirty = value;
+                _asCompletedPurchasePrice.Dirty = value;
+                _budgetDate.Dirty = value;
+                _budgetIndicator.Dirty = value;
+                _commitmentExpirationDate.Dirty = value;
+                _commitmentLetterDate.Dirty = value;
+                _constCompletionDate.Dirty = value;
+                _constOnlyAmortizationType.Dirty = value;
+                _constructionContractIndicator.Dirty = value;
+                _constructionContractIssuedDate.Dirty = value;
+                _constructionContractReceivedDate.Dirty = value;
+                _constructionPeriodIncludedInLoanTermFlag.Dirty = value;
+                _contractorsAgreementDate.Dirty = value;
+                _contractorsAgreementIndicator.Dirty = value;
+                _environmentalAssessmentDate.Dirty = value;
+                _environmentalAssessmentIndicator.Dirty = value;
+                _floodHazardDeterminationDate.Dirty = value;
+                _floodHazardDeterminationIndicator.Dirty = value;
+                _futureAdvancePeriod.Dirty = value;
+                _holdbackAmount.Dirty = value;
+                _holdbackPercent.Dirty = value;
+                _lienAgentNorthCarolinaDate.Dirty = value;
+                _lienAgentNorthCarolinaIndicator.Dirty = value;
+                _listOfConstructionAgreementsDate.Dirty = value;
+                _listOfConstructionAgreementsIndicator.Dirty = value;
+                _maxLTVPercent.Dirty = value;
+                _minimumDaysBetweenDisbursements.Dirty = value;
+                _otherDate.Dirty = value;
+                _otherDescription.Dirty = value;
+                _otherIndicator.Dirty = value;
+                _partialPrepaymentsElection.Dirty = value;
+                _paymentAndPerformanceBondsDate.Dirty = value;
+                _paymentAndPerformanceBondsIndicator.Dirty = value;
+                _percolationTestDate.Dirty = value;
+                _percolationTestIndicator.Dirty = value;
+                _permitsDate.Dirty = value;
+                _permitsIndicator.Dirty = value;
+                _plansAndSpecificationsDate.Dirty = value;
+                _plansAndSpecificationsIndicator.Dirty = value;
+                _projectDelaySurchargePercent.Dirty = value;
+                _returnLendersCopyCommitmentDays.Dirty = value;
+                _securedBySeparateProperty.Dirty = value;
+                _soilReportDate.Dirty = value;
+                _soilReportIndicator.Dirty = value;
+                _surveyDate.Dirty = value;
+                _surveyIndicator.Dirty = value;
+                _takeOutCommitmentDate.Dirty = value;
+                _takeOutCommitmentIndicator.Dirty = value;
+                _takeOutCommitmentIssuedDate.Dirty = value;
+                _takeOutLenderAddress.Dirty = value;
+                _takeOutLenderCity.Dirty = value;
+                _takeOutLenderContactName.Dirty = value;
+                _takeOutLenderContactTitle.Dirty = value;
+                _takeOutLenderEmail.Dirty = value;
+                _takeOutLenderFax.Dirty = value;
+                _takeOutLenderLicenseNumber.Dirty = value;
+                _takeOutLenderName.Dirty = value;
+                _takeOutLenderNMLSNumber.Dirty = value;
+                _takeOutLenderPhone.Dirty = value;
+                _takeOutLenderState.Dirty = value;
+                _takeOutLenderZip.Dirty = value;
+                _titleInsuranceDate.Dirty = value;
+                _titleInsuranceIndicator.Dirty = value;
+                _utilityLettersDate.Dirty = value;
+                _utilityLettersIndicator.Dirty = value;
+                _waterTestDate.Dirty = value;
+                _waterTestIndicator.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ConstructionManagement()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

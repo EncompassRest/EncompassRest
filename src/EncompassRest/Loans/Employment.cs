@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Employment : IClean
+    public sealed partial class Employment : IDirty
     {
         private Value<string> _addressCity;
         public string AddressCity { get { return _addressCity; } set { _addressCity = value; } }
@@ -88,107 +88,102 @@ namespace EncompassRest.Loans
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
         private Value<DateTime?> _verificationRequestDate;
         public DateTime? VerificationRequestDate { get { return _verificationRequestDate; } set { _verificationRequestDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _addressCity.Clean
-                    && _addressPostalCode.Clean
-                    && _addressState.Clean
-                    && _addressStreetLine1.Clean
-                    && _altId.Clean
-                    && _attention.Clean
-                    && _badgeOrEmployeeID.Clean
-                    && _basePayAmount.Clean
-                    && _bonusAmount.Clean
-                    && _businessName.Clean
-                    && _businessOwnedPercent.Clean
-                    && _businessPhone.Clean
-                    && _commissionsAmount.Clean
-                    && _currentEmploymentIndicator.Clean
-                    && _email.Clean
-                    && _employerComments.Clean
-                    && _employerName.Clean
-                    && _endDate.Clean
-                    && _entityDeleted.Clean
-                    && _fax.Clean
-                    && _id.Clean
-                    && _monthlyIncomeAmount.Clean
-                    && _noLinkToDocTrackIndicator.Clean
-                    && _otherAmount.Clean
-                    && _overtimeAmount.Clean
-                    && _owner.Clean
-                    && _phoneNumber.Clean
-                    && _positionDescription.Clean
-                    && _printAttachmentIndicator.Clean
-                    && _printUserNameIndicator.Clean
-                    && _selfEmployedIndicator.Clean
-                    && _startDate.Clean
-                    && _timeInLineOfWorkMonths.Clean
-                    && _timeInLineOfWorkYears.Clean
-                    && _timeOnJobTermMonths.Clean
-                    && _timeOnJobTermYears.Clean
-                    && _title.Clean
-                    && _titleFax.Clean
-                    && _titlePhone.Clean
-                    && _verificationRequestDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _addressCity.Dirty
+                    || _addressPostalCode.Dirty
+                    || _addressState.Dirty
+                    || _addressStreetLine1.Dirty
+                    || _altId.Dirty
+                    || _attention.Dirty
+                    || _badgeOrEmployeeID.Dirty
+                    || _basePayAmount.Dirty
+                    || _bonusAmount.Dirty
+                    || _businessName.Dirty
+                    || _businessOwnedPercent.Dirty
+                    || _businessPhone.Dirty
+                    || _commissionsAmount.Dirty
+                    || _currentEmploymentIndicator.Dirty
+                    || _email.Dirty
+                    || _employerComments.Dirty
+                    || _employerName.Dirty
+                    || _endDate.Dirty
+                    || _entityDeleted.Dirty
+                    || _fax.Dirty
+                    || _id.Dirty
+                    || _monthlyIncomeAmount.Dirty
+                    || _noLinkToDocTrackIndicator.Dirty
+                    || _otherAmount.Dirty
+                    || _overtimeAmount.Dirty
+                    || _owner.Dirty
+                    || _phoneNumber.Dirty
+                    || _positionDescription.Dirty
+                    || _printAttachmentIndicator.Dirty
+                    || _printUserNameIndicator.Dirty
+                    || _selfEmployedIndicator.Dirty
+                    || _startDate.Dirty
+                    || _timeInLineOfWorkMonths.Dirty
+                    || _timeInLineOfWorkYears.Dirty
+                    || _timeOnJobTermMonths.Dirty
+                    || _timeOnJobTermYears.Dirty
+                    || _title.Dirty
+                    || _titleFax.Dirty
+                    || _titlePhone.Dirty
+                    || _verificationRequestDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var addressCity = _addressCity; addressCity.Clean = value; _addressCity = addressCity;
-                var addressPostalCode = _addressPostalCode; addressPostalCode.Clean = value; _addressPostalCode = addressPostalCode;
-                var addressState = _addressState; addressState.Clean = value; _addressState = addressState;
-                var addressStreetLine1 = _addressStreetLine1; addressStreetLine1.Clean = value; _addressStreetLine1 = addressStreetLine1;
-                var altId = _altId; altId.Clean = value; _altId = altId;
-                var attention = _attention; attention.Clean = value; _attention = attention;
-                var badgeOrEmployeeID = _badgeOrEmployeeID; badgeOrEmployeeID.Clean = value; _badgeOrEmployeeID = badgeOrEmployeeID;
-                var basePayAmount = _basePayAmount; basePayAmount.Clean = value; _basePayAmount = basePayAmount;
-                var bonusAmount = _bonusAmount; bonusAmount.Clean = value; _bonusAmount = bonusAmount;
-                var businessName = _businessName; businessName.Clean = value; _businessName = businessName;
-                var businessOwnedPercent = _businessOwnedPercent; businessOwnedPercent.Clean = value; _businessOwnedPercent = businessOwnedPercent;
-                var businessPhone = _businessPhone; businessPhone.Clean = value; _businessPhone = businessPhone;
-                var commissionsAmount = _commissionsAmount; commissionsAmount.Clean = value; _commissionsAmount = commissionsAmount;
-                var currentEmploymentIndicator = _currentEmploymentIndicator; currentEmploymentIndicator.Clean = value; _currentEmploymentIndicator = currentEmploymentIndicator;
-                var email = _email; email.Clean = value; _email = email;
-                var employerComments = _employerComments; employerComments.Clean = value; _employerComments = employerComments;
-                var employerName = _employerName; employerName.Clean = value; _employerName = employerName;
-                var endDate = _endDate; endDate.Clean = value; _endDate = endDate;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var fax = _fax; fax.Clean = value; _fax = fax;
-                var id = _id; id.Clean = value; _id = id;
-                var monthlyIncomeAmount = _monthlyIncomeAmount; monthlyIncomeAmount.Clean = value; _monthlyIncomeAmount = monthlyIncomeAmount;
-                var noLinkToDocTrackIndicator = _noLinkToDocTrackIndicator; noLinkToDocTrackIndicator.Clean = value; _noLinkToDocTrackIndicator = noLinkToDocTrackIndicator;
-                var otherAmount = _otherAmount; otherAmount.Clean = value; _otherAmount = otherAmount;
-                var overtimeAmount = _overtimeAmount; overtimeAmount.Clean = value; _overtimeAmount = overtimeAmount;
-                var owner = _owner; owner.Clean = value; _owner = owner;
-                var phoneNumber = _phoneNumber; phoneNumber.Clean = value; _phoneNumber = phoneNumber;
-                var positionDescription = _positionDescription; positionDescription.Clean = value; _positionDescription = positionDescription;
-                var printAttachmentIndicator = _printAttachmentIndicator; printAttachmentIndicator.Clean = value; _printAttachmentIndicator = printAttachmentIndicator;
-                var printUserNameIndicator = _printUserNameIndicator; printUserNameIndicator.Clean = value; _printUserNameIndicator = printUserNameIndicator;
-                var selfEmployedIndicator = _selfEmployedIndicator; selfEmployedIndicator.Clean = value; _selfEmployedIndicator = selfEmployedIndicator;
-                var startDate = _startDate; startDate.Clean = value; _startDate = startDate;
-                var timeInLineOfWorkMonths = _timeInLineOfWorkMonths; timeInLineOfWorkMonths.Clean = value; _timeInLineOfWorkMonths = timeInLineOfWorkMonths;
-                var timeInLineOfWorkYears = _timeInLineOfWorkYears; timeInLineOfWorkYears.Clean = value; _timeInLineOfWorkYears = timeInLineOfWorkYears;
-                var timeOnJobTermMonths = _timeOnJobTermMonths; timeOnJobTermMonths.Clean = value; _timeOnJobTermMonths = timeOnJobTermMonths;
-                var timeOnJobTermYears = _timeOnJobTermYears; timeOnJobTermYears.Clean = value; _timeOnJobTermYears = timeOnJobTermYears;
-                var title = _title; title.Clean = value; _title = title;
-                var titleFax = _titleFax; titleFax.Clean = value; _titleFax = titleFax;
-                var titlePhone = _titlePhone; titlePhone.Clean = value; _titlePhone = titlePhone;
-                var verificationRequestDate = _verificationRequestDate; verificationRequestDate.Clean = value; _verificationRequestDate = verificationRequestDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _addressCity.Dirty = value;
+                _addressPostalCode.Dirty = value;
+                _addressState.Dirty = value;
+                _addressStreetLine1.Dirty = value;
+                _altId.Dirty = value;
+                _attention.Dirty = value;
+                _badgeOrEmployeeID.Dirty = value;
+                _basePayAmount.Dirty = value;
+                _bonusAmount.Dirty = value;
+                _businessName.Dirty = value;
+                _businessOwnedPercent.Dirty = value;
+                _businessPhone.Dirty = value;
+                _commissionsAmount.Dirty = value;
+                _currentEmploymentIndicator.Dirty = value;
+                _email.Dirty = value;
+                _employerComments.Dirty = value;
+                _employerName.Dirty = value;
+                _endDate.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _fax.Dirty = value;
+                _id.Dirty = value;
+                _monthlyIncomeAmount.Dirty = value;
+                _noLinkToDocTrackIndicator.Dirty = value;
+                _otherAmount.Dirty = value;
+                _overtimeAmount.Dirty = value;
+                _owner.Dirty = value;
+                _phoneNumber.Dirty = value;
+                _positionDescription.Dirty = value;
+                _printAttachmentIndicator.Dirty = value;
+                _printUserNameIndicator.Dirty = value;
+                _selfEmployedIndicator.Dirty = value;
+                _startDate.Dirty = value;
+                _timeInLineOfWorkMonths.Dirty = value;
+                _timeInLineOfWorkYears.Dirty = value;
+                _timeOnJobTermMonths.Dirty = value;
+                _timeOnJobTermYears.Dirty = value;
+                _title.Dirty = value;
+                _titleFax.Dirty = value;
+                _titlePhone.Dirty = value;
+                _verificationRequestDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Employment()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

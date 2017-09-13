@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StateLicense : IClean
+    public sealed partial class StateLicense : IDirty
     {
         private Value<string> _aK;
         public string AK { get { return _aK; } set { _aK = value; } }
@@ -120,139 +120,134 @@ namespace EncompassRest.Loans
         public string WV { get { return _wV; } set { _wV = value; } }
         private Value<string> _wY;
         public string WY { get { return _wY; } set { _wY = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aK.Clean
-                    && _aL.Clean
-                    && _aR.Clean
-                    && _aZ.Clean
-                    && _cA.Clean
-                    && _cO.Clean
-                    && _cT.Clean
-                    && _dC.Clean
-                    && _dE.Clean
-                    && _fL.Clean
-                    && _gA.Clean
-                    && _gU.Clean
-                    && _hI.Clean
-                    && _iA.Clean
-                    && _id.Clean
-                    && _idaho.Clean
-                    && _iL.Clean
-                    && _iN.Clean
-                    && _kS.Clean
-                    && _kY.Clean
-                    && _lA.Clean
-                    && _mA.Clean
-                    && _mD.Clean
-                    && _mE.Clean
-                    && _mI.Clean
-                    && _mN.Clean
-                    && _mO.Clean
-                    && _mS.Clean
-                    && _mT.Clean
-                    && _nC.Clean
-                    && _nD.Clean
-                    && _nE.Clean
-                    && _nH.Clean
-                    && _nJ.Clean
-                    && _nM.Clean
-                    && _nV.Clean
-                    && _nY.Clean
-                    && _oH.Clean
-                    && _oK.Clean
-                    && _oR.Clean
-                    && _pA.Clean
-                    && _pR.Clean
-                    && _rI.Clean
-                    && _sC.Clean
-                    && _sD.Clean
-                    && _stateLicenseType.Clean
-                    && _tN.Clean
-                    && _tX.Clean
-                    && _uT.Clean
-                    && _vA.Clean
-                    && _vI.Clean
-                    && _vT.Clean
-                    && _wA.Clean
-                    && _wI.Clean
-                    && _wV.Clean
-                    && _wY.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aK.Dirty
+                    || _aL.Dirty
+                    || _aR.Dirty
+                    || _aZ.Dirty
+                    || _cA.Dirty
+                    || _cO.Dirty
+                    || _cT.Dirty
+                    || _dC.Dirty
+                    || _dE.Dirty
+                    || _fL.Dirty
+                    || _gA.Dirty
+                    || _gU.Dirty
+                    || _hI.Dirty
+                    || _iA.Dirty
+                    || _id.Dirty
+                    || _idaho.Dirty
+                    || _iL.Dirty
+                    || _iN.Dirty
+                    || _kS.Dirty
+                    || _kY.Dirty
+                    || _lA.Dirty
+                    || _mA.Dirty
+                    || _mD.Dirty
+                    || _mE.Dirty
+                    || _mI.Dirty
+                    || _mN.Dirty
+                    || _mO.Dirty
+                    || _mS.Dirty
+                    || _mT.Dirty
+                    || _nC.Dirty
+                    || _nD.Dirty
+                    || _nE.Dirty
+                    || _nH.Dirty
+                    || _nJ.Dirty
+                    || _nM.Dirty
+                    || _nV.Dirty
+                    || _nY.Dirty
+                    || _oH.Dirty
+                    || _oK.Dirty
+                    || _oR.Dirty
+                    || _pA.Dirty
+                    || _pR.Dirty
+                    || _rI.Dirty
+                    || _sC.Dirty
+                    || _sD.Dirty
+                    || _stateLicenseType.Dirty
+                    || _tN.Dirty
+                    || _tX.Dirty
+                    || _uT.Dirty
+                    || _vA.Dirty
+                    || _vI.Dirty
+                    || _vT.Dirty
+                    || _wA.Dirty
+                    || _wI.Dirty
+                    || _wV.Dirty
+                    || _wY.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aK = _aK; aK.Clean = value; _aK = aK;
-                var aL = _aL; aL.Clean = value; _aL = aL;
-                var aR = _aR; aR.Clean = value; _aR = aR;
-                var aZ = _aZ; aZ.Clean = value; _aZ = aZ;
-                var cA = _cA; cA.Clean = value; _cA = cA;
-                var cO = _cO; cO.Clean = value; _cO = cO;
-                var cT = _cT; cT.Clean = value; _cT = cT;
-                var dC = _dC; dC.Clean = value; _dC = dC;
-                var dE = _dE; dE.Clean = value; _dE = dE;
-                var fL = _fL; fL.Clean = value; _fL = fL;
-                var gA = _gA; gA.Clean = value; _gA = gA;
-                var gU = _gU; gU.Clean = value; _gU = gU;
-                var hI = _hI; hI.Clean = value; _hI = hI;
-                var iA = _iA; iA.Clean = value; _iA = iA;
-                var id = _id; id.Clean = value; _id = id;
-                var idaho = _idaho; idaho.Clean = value; _idaho = idaho;
-                var iL = _iL; iL.Clean = value; _iL = iL;
-                var iN = _iN; iN.Clean = value; _iN = iN;
-                var kS = _kS; kS.Clean = value; _kS = kS;
-                var kY = _kY; kY.Clean = value; _kY = kY;
-                var lA = _lA; lA.Clean = value; _lA = lA;
-                var mA = _mA; mA.Clean = value; _mA = mA;
-                var mD = _mD; mD.Clean = value; _mD = mD;
-                var mE = _mE; mE.Clean = value; _mE = mE;
-                var mI = _mI; mI.Clean = value; _mI = mI;
-                var mN = _mN; mN.Clean = value; _mN = mN;
-                var mO = _mO; mO.Clean = value; _mO = mO;
-                var mS = _mS; mS.Clean = value; _mS = mS;
-                var mT = _mT; mT.Clean = value; _mT = mT;
-                var nC = _nC; nC.Clean = value; _nC = nC;
-                var nD = _nD; nD.Clean = value; _nD = nD;
-                var nE = _nE; nE.Clean = value; _nE = nE;
-                var nH = _nH; nH.Clean = value; _nH = nH;
-                var nJ = _nJ; nJ.Clean = value; _nJ = nJ;
-                var nM = _nM; nM.Clean = value; _nM = nM;
-                var nV = _nV; nV.Clean = value; _nV = nV;
-                var nY = _nY; nY.Clean = value; _nY = nY;
-                var oH = _oH; oH.Clean = value; _oH = oH;
-                var oK = _oK; oK.Clean = value; _oK = oK;
-                var oR = _oR; oR.Clean = value; _oR = oR;
-                var pA = _pA; pA.Clean = value; _pA = pA;
-                var pR = _pR; pR.Clean = value; _pR = pR;
-                var rI = _rI; rI.Clean = value; _rI = rI;
-                var sC = _sC; sC.Clean = value; _sC = sC;
-                var sD = _sD; sD.Clean = value; _sD = sD;
-                var stateLicenseType = _stateLicenseType; stateLicenseType.Clean = value; _stateLicenseType = stateLicenseType;
-                var tN = _tN; tN.Clean = value; _tN = tN;
-                var tX = _tX; tX.Clean = value; _tX = tX;
-                var uT = _uT; uT.Clean = value; _uT = uT;
-                var vA = _vA; vA.Clean = value; _vA = vA;
-                var vI = _vI; vI.Clean = value; _vI = vI;
-                var vT = _vT; vT.Clean = value; _vT = vT;
-                var wA = _wA; wA.Clean = value; _wA = wA;
-                var wI = _wI; wI.Clean = value; _wI = wI;
-                var wV = _wV; wV.Clean = value; _wV = wV;
-                var wY = _wY; wY.Clean = value; _wY = wY;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aK.Dirty = value;
+                _aL.Dirty = value;
+                _aR.Dirty = value;
+                _aZ.Dirty = value;
+                _cA.Dirty = value;
+                _cO.Dirty = value;
+                _cT.Dirty = value;
+                _dC.Dirty = value;
+                _dE.Dirty = value;
+                _fL.Dirty = value;
+                _gA.Dirty = value;
+                _gU.Dirty = value;
+                _hI.Dirty = value;
+                _iA.Dirty = value;
+                _id.Dirty = value;
+                _idaho.Dirty = value;
+                _iL.Dirty = value;
+                _iN.Dirty = value;
+                _kS.Dirty = value;
+                _kY.Dirty = value;
+                _lA.Dirty = value;
+                _mA.Dirty = value;
+                _mD.Dirty = value;
+                _mE.Dirty = value;
+                _mI.Dirty = value;
+                _mN.Dirty = value;
+                _mO.Dirty = value;
+                _mS.Dirty = value;
+                _mT.Dirty = value;
+                _nC.Dirty = value;
+                _nD.Dirty = value;
+                _nE.Dirty = value;
+                _nH.Dirty = value;
+                _nJ.Dirty = value;
+                _nM.Dirty = value;
+                _nV.Dirty = value;
+                _nY.Dirty = value;
+                _oH.Dirty = value;
+                _oK.Dirty = value;
+                _oR.Dirty = value;
+                _pA.Dirty = value;
+                _pR.Dirty = value;
+                _rI.Dirty = value;
+                _sC.Dirty = value;
+                _sD.Dirty = value;
+                _stateLicenseType.Dirty = value;
+                _tN.Dirty = value;
+                _tX.Dirty = value;
+                _uT.Dirty = value;
+                _vA.Dirty = value;
+                _vI.Dirty = value;
+                _vT.Dirty = value;
+                _wA.Dirty = value;
+                _wI.Dirty = value;
+                _wV.Dirty = value;
+                _wY.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public StateLicense()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

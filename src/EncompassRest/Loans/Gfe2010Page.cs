@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Page : IClean
+    public sealed partial class Gfe2010Page : IDirty
     {
         private Value<int?> _balloonPaymentDueInYears;
         public int? BalloonPaymentDueInYears { get { return _balloonPaymentDueInYears; } set { _balloonPaymentDueInYears = value; } }
@@ -186,205 +186,200 @@ namespace EncompassRest.Loans
         public decimal? PrepaidInterest { get { return _prepaidInterest; } set { _prepaidInterest = value; } }
         private Value<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get { return _totalToleranceIncreaseAmount; } set { _totalToleranceIncreaseAmount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _balloonPaymentDueInYears.Clean
-                    && _brokerCompensationFwbc.Clean
-                    && _brokerCompensationFwsc.Clean
-                    && _curedGfeTotalTolerance.Clean
-                    && _firstArmChangeDate.Clean
-                    && _gfe2010FwbcFwscs.Clean
-                    && _gfe2010GfeCharges.Clean
-                    && _gfeRecordingCharges.Clean
-                    && _gfeTotalTolerance.Clean
-                    && _hasEscrowAccountIndicator.Clean
-                    && _hasEscrowCityPropertyTaxesIndicator.Clean
-                    && _hasEscrowFloodInsurancesIndicator.Clean
-                    && _hasEscrowHomeownerInsurancesIndicator.Clean
-                    && _hasEscrowPropertyTaxesIndicator.Clean
-                    && _hasEscrowUserDefinedIndicator1.Clean
-                    && _hasEscrowUserDefinedIndicator2.Clean
-                    && _hasEscrowUserDefinedIndicator3.Clean
-                    && _hasEscrowUserDefinedIndicator4.Clean
-                    && _highestArmRate.Clean
-                    && _hud1GovernmentRecordingCharge.Clean
-                    && _hud1Pg1SellerPaidClosingCostsAmount.Clean
-                    && _hud1Pg1TotalSettlementCharges.Clean
-                    && _hud1Pg2SellerPaidClosingCostsAmount.Clean
-                    && _hud1Pg2TotalSettlementCharges.Clean
-                    && _hudTotalTolerance.Clean
-                    && _hudTotalToleranceIncreasePercent.Clean
-                    && _id.Clean
-                    && _line1101SellerPaidTotal.Clean
-                    && _line1201SellerPaidTotal.Clean
-                    && _line1301SellerPaidTotal.Clean
-                    && _line801BorrowerPaidTotal.Clean
-                    && _line801SellerPaidTotal.Clean
-                    && _line802BorrowerPaidTotal.Clean
-                    && _line803BorrowerPaidTotal.Clean
-                    && _line803SellerPaidTotal.Clean
-                    && _line818FwbcIndicator.Clean
-                    && _line818FwscIndicator.Clean
-                    && _line819FwbcIndicator.Clean
-                    && _line819FwscIndicator.Clean
-                    && _line820FwbcIndicator.Clean
-                    && _line820FwscIndicator.Clean
-                    && _line821FwbcIndicator.Clean
-                    && _line821FwscIndicator.Clean
-                    && _line822FwbcIndicator.Clean
-                    && _line822FwscIndicator.Clean
-                    && _line823FwbcIndicator.Clean
-                    && _line823FwscIndicator.Clean
-                    && _line824FwbcIndicator.Clean
-                    && _line824FwscIndicator.Clean
-                    && _line825FwbcIndicator.Clean
-                    && _line825FwscIndicator.Clean
-                    && _line826FwbcIndicator.Clean
-                    && _line826FwscIndicator.Clean
-                    && _line827FwbcIndicator.Clean
-                    && _line827FwscIndicator.Clean
-                    && _line828FwbcIndicator.Clean
-                    && _line828FwscIndicator.Clean
-                    && _line829FwbcIndicator.Clean
-                    && _line829FwscIndicator.Clean
-                    && _line830FwbcIndicator.Clean
-                    && _line830FwscIndicator.Clean
-                    && _line831FwbcIndicator.Clean
-                    && _line831FwscIndicator.Clean
-                    && _line832FwbcIndicator.Clean
-                    && _line832FwscIndicator.Clean
-                    && _line833FwbcIndicator.Clean
-                    && _line833FwscIndicator.Clean
-                    && _lineLFwbcIndicator.Clean
-                    && _lineLFwscIndicator.Clean
-                    && _lineMFwbcIndicator.Clean
-                    && _lineMFwscIndicator.Clean
-                    && _lineNFwbcIndicator.Clean
-                    && _lineNFwscIndicator.Clean
-                    && _lineOFwbcIndicator.Clean
-                    && _lineOFwscIndicator.Clean
-                    && _linePFwbcIndicator.Clean
-                    && _linePFwscIndicator.Clean
-                    && _lineQFwbcIndicator.Clean
-                    && _lineQFwscIndicator.Clean
-                    && _lineRFwbcIndicator.Clean
-                    && _lineRFwscIndicator.Clean
-                    && _lowestArmRate.Clean
-                    && _monthlyAmountIncludeInterestIndicator.Clean
-                    && _monthlyAmountIncludeMiIndicator.Clean
-                    && _monthlyAmountIncludePrincipalIndicator.Clean
-                    && _monthlyAmountWithEscrow.Clean
-                    && _monthlyEscrowPayment.Clean
-                    && _prepaidInterest.Clean
-                    && _totalToleranceIncreaseAmount.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _balloonPaymentDueInYears.Dirty
+                    || _brokerCompensationFwbc.Dirty
+                    || _brokerCompensationFwsc.Dirty
+                    || _curedGfeTotalTolerance.Dirty
+                    || _firstArmChangeDate.Dirty
+                    || _gfe2010FwbcFwscs.Dirty
+                    || _gfe2010GfeCharges.Dirty
+                    || _gfeRecordingCharges.Dirty
+                    || _gfeTotalTolerance.Dirty
+                    || _hasEscrowAccountIndicator.Dirty
+                    || _hasEscrowCityPropertyTaxesIndicator.Dirty
+                    || _hasEscrowFloodInsurancesIndicator.Dirty
+                    || _hasEscrowHomeownerInsurancesIndicator.Dirty
+                    || _hasEscrowPropertyTaxesIndicator.Dirty
+                    || _hasEscrowUserDefinedIndicator1.Dirty
+                    || _hasEscrowUserDefinedIndicator2.Dirty
+                    || _hasEscrowUserDefinedIndicator3.Dirty
+                    || _hasEscrowUserDefinedIndicator4.Dirty
+                    || _highestArmRate.Dirty
+                    || _hud1GovernmentRecordingCharge.Dirty
+                    || _hud1Pg1SellerPaidClosingCostsAmount.Dirty
+                    || _hud1Pg1TotalSettlementCharges.Dirty
+                    || _hud1Pg2SellerPaidClosingCostsAmount.Dirty
+                    || _hud1Pg2TotalSettlementCharges.Dirty
+                    || _hudTotalTolerance.Dirty
+                    || _hudTotalToleranceIncreasePercent.Dirty
+                    || _id.Dirty
+                    || _line1101SellerPaidTotal.Dirty
+                    || _line1201SellerPaidTotal.Dirty
+                    || _line1301SellerPaidTotal.Dirty
+                    || _line801BorrowerPaidTotal.Dirty
+                    || _line801SellerPaidTotal.Dirty
+                    || _line802BorrowerPaidTotal.Dirty
+                    || _line803BorrowerPaidTotal.Dirty
+                    || _line803SellerPaidTotal.Dirty
+                    || _line818FwbcIndicator.Dirty
+                    || _line818FwscIndicator.Dirty
+                    || _line819FwbcIndicator.Dirty
+                    || _line819FwscIndicator.Dirty
+                    || _line820FwbcIndicator.Dirty
+                    || _line820FwscIndicator.Dirty
+                    || _line821FwbcIndicator.Dirty
+                    || _line821FwscIndicator.Dirty
+                    || _line822FwbcIndicator.Dirty
+                    || _line822FwscIndicator.Dirty
+                    || _line823FwbcIndicator.Dirty
+                    || _line823FwscIndicator.Dirty
+                    || _line824FwbcIndicator.Dirty
+                    || _line824FwscIndicator.Dirty
+                    || _line825FwbcIndicator.Dirty
+                    || _line825FwscIndicator.Dirty
+                    || _line826FwbcIndicator.Dirty
+                    || _line826FwscIndicator.Dirty
+                    || _line827FwbcIndicator.Dirty
+                    || _line827FwscIndicator.Dirty
+                    || _line828FwbcIndicator.Dirty
+                    || _line828FwscIndicator.Dirty
+                    || _line829FwbcIndicator.Dirty
+                    || _line829FwscIndicator.Dirty
+                    || _line830FwbcIndicator.Dirty
+                    || _line830FwscIndicator.Dirty
+                    || _line831FwbcIndicator.Dirty
+                    || _line831FwscIndicator.Dirty
+                    || _line832FwbcIndicator.Dirty
+                    || _line832FwscIndicator.Dirty
+                    || _line833FwbcIndicator.Dirty
+                    || _line833FwscIndicator.Dirty
+                    || _lineLFwbcIndicator.Dirty
+                    || _lineLFwscIndicator.Dirty
+                    || _lineMFwbcIndicator.Dirty
+                    || _lineMFwscIndicator.Dirty
+                    || _lineNFwbcIndicator.Dirty
+                    || _lineNFwscIndicator.Dirty
+                    || _lineOFwbcIndicator.Dirty
+                    || _lineOFwscIndicator.Dirty
+                    || _linePFwbcIndicator.Dirty
+                    || _linePFwscIndicator.Dirty
+                    || _lineQFwbcIndicator.Dirty
+                    || _lineQFwscIndicator.Dirty
+                    || _lineRFwbcIndicator.Dirty
+                    || _lineRFwscIndicator.Dirty
+                    || _lowestArmRate.Dirty
+                    || _monthlyAmountIncludeInterestIndicator.Dirty
+                    || _monthlyAmountIncludeMiIndicator.Dirty
+                    || _monthlyAmountIncludePrincipalIndicator.Dirty
+                    || _monthlyAmountWithEscrow.Dirty
+                    || _monthlyEscrowPayment.Dirty
+                    || _prepaidInterest.Dirty
+                    || _totalToleranceIncreaseAmount.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var balloonPaymentDueInYears = _balloonPaymentDueInYears; balloonPaymentDueInYears.Clean = value; _balloonPaymentDueInYears = balloonPaymentDueInYears;
-                var brokerCompensationFwbc = _brokerCompensationFwbc; brokerCompensationFwbc.Clean = value; _brokerCompensationFwbc = brokerCompensationFwbc;
-                var brokerCompensationFwsc = _brokerCompensationFwsc; brokerCompensationFwsc.Clean = value; _brokerCompensationFwsc = brokerCompensationFwsc;
-                var curedGfeTotalTolerance = _curedGfeTotalTolerance; curedGfeTotalTolerance.Clean = value; _curedGfeTotalTolerance = curedGfeTotalTolerance;
-                var firstArmChangeDate = _firstArmChangeDate; firstArmChangeDate.Clean = value; _firstArmChangeDate = firstArmChangeDate;
-                var gfe2010FwbcFwscs = _gfe2010FwbcFwscs; gfe2010FwbcFwscs.Clean = value; _gfe2010FwbcFwscs = gfe2010FwbcFwscs;
-                var gfe2010GfeCharges = _gfe2010GfeCharges; gfe2010GfeCharges.Clean = value; _gfe2010GfeCharges = gfe2010GfeCharges;
-                var gfeRecordingCharges = _gfeRecordingCharges; gfeRecordingCharges.Clean = value; _gfeRecordingCharges = gfeRecordingCharges;
-                var gfeTotalTolerance = _gfeTotalTolerance; gfeTotalTolerance.Clean = value; _gfeTotalTolerance = gfeTotalTolerance;
-                var hasEscrowAccountIndicator = _hasEscrowAccountIndicator; hasEscrowAccountIndicator.Clean = value; _hasEscrowAccountIndicator = hasEscrowAccountIndicator;
-                var hasEscrowCityPropertyTaxesIndicator = _hasEscrowCityPropertyTaxesIndicator; hasEscrowCityPropertyTaxesIndicator.Clean = value; _hasEscrowCityPropertyTaxesIndicator = hasEscrowCityPropertyTaxesIndicator;
-                var hasEscrowFloodInsurancesIndicator = _hasEscrowFloodInsurancesIndicator; hasEscrowFloodInsurancesIndicator.Clean = value; _hasEscrowFloodInsurancesIndicator = hasEscrowFloodInsurancesIndicator;
-                var hasEscrowHomeownerInsurancesIndicator = _hasEscrowHomeownerInsurancesIndicator; hasEscrowHomeownerInsurancesIndicator.Clean = value; _hasEscrowHomeownerInsurancesIndicator = hasEscrowHomeownerInsurancesIndicator;
-                var hasEscrowPropertyTaxesIndicator = _hasEscrowPropertyTaxesIndicator; hasEscrowPropertyTaxesIndicator.Clean = value; _hasEscrowPropertyTaxesIndicator = hasEscrowPropertyTaxesIndicator;
-                var hasEscrowUserDefinedIndicator1 = _hasEscrowUserDefinedIndicator1; hasEscrowUserDefinedIndicator1.Clean = value; _hasEscrowUserDefinedIndicator1 = hasEscrowUserDefinedIndicator1;
-                var hasEscrowUserDefinedIndicator2 = _hasEscrowUserDefinedIndicator2; hasEscrowUserDefinedIndicator2.Clean = value; _hasEscrowUserDefinedIndicator2 = hasEscrowUserDefinedIndicator2;
-                var hasEscrowUserDefinedIndicator3 = _hasEscrowUserDefinedIndicator3; hasEscrowUserDefinedIndicator3.Clean = value; _hasEscrowUserDefinedIndicator3 = hasEscrowUserDefinedIndicator3;
-                var hasEscrowUserDefinedIndicator4 = _hasEscrowUserDefinedIndicator4; hasEscrowUserDefinedIndicator4.Clean = value; _hasEscrowUserDefinedIndicator4 = hasEscrowUserDefinedIndicator4;
-                var highestArmRate = _highestArmRate; highestArmRate.Clean = value; _highestArmRate = highestArmRate;
-                var hud1GovernmentRecordingCharge = _hud1GovernmentRecordingCharge; hud1GovernmentRecordingCharge.Clean = value; _hud1GovernmentRecordingCharge = hud1GovernmentRecordingCharge;
-                var hud1Pg1SellerPaidClosingCostsAmount = _hud1Pg1SellerPaidClosingCostsAmount; hud1Pg1SellerPaidClosingCostsAmount.Clean = value; _hud1Pg1SellerPaidClosingCostsAmount = hud1Pg1SellerPaidClosingCostsAmount;
-                var hud1Pg1TotalSettlementCharges = _hud1Pg1TotalSettlementCharges; hud1Pg1TotalSettlementCharges.Clean = value; _hud1Pg1TotalSettlementCharges = hud1Pg1TotalSettlementCharges;
-                var hud1Pg2SellerPaidClosingCostsAmount = _hud1Pg2SellerPaidClosingCostsAmount; hud1Pg2SellerPaidClosingCostsAmount.Clean = value; _hud1Pg2SellerPaidClosingCostsAmount = hud1Pg2SellerPaidClosingCostsAmount;
-                var hud1Pg2TotalSettlementCharges = _hud1Pg2TotalSettlementCharges; hud1Pg2TotalSettlementCharges.Clean = value; _hud1Pg2TotalSettlementCharges = hud1Pg2TotalSettlementCharges;
-                var hudTotalTolerance = _hudTotalTolerance; hudTotalTolerance.Clean = value; _hudTotalTolerance = hudTotalTolerance;
-                var hudTotalToleranceIncreasePercent = _hudTotalToleranceIncreasePercent; hudTotalToleranceIncreasePercent.Clean = value; _hudTotalToleranceIncreasePercent = hudTotalToleranceIncreasePercent;
-                var id = _id; id.Clean = value; _id = id;
-                var line1101SellerPaidTotal = _line1101SellerPaidTotal; line1101SellerPaidTotal.Clean = value; _line1101SellerPaidTotal = line1101SellerPaidTotal;
-                var line1201SellerPaidTotal = _line1201SellerPaidTotal; line1201SellerPaidTotal.Clean = value; _line1201SellerPaidTotal = line1201SellerPaidTotal;
-                var line1301SellerPaidTotal = _line1301SellerPaidTotal; line1301SellerPaidTotal.Clean = value; _line1301SellerPaidTotal = line1301SellerPaidTotal;
-                var line801BorrowerPaidTotal = _line801BorrowerPaidTotal; line801BorrowerPaidTotal.Clean = value; _line801BorrowerPaidTotal = line801BorrowerPaidTotal;
-                var line801SellerPaidTotal = _line801SellerPaidTotal; line801SellerPaidTotal.Clean = value; _line801SellerPaidTotal = line801SellerPaidTotal;
-                var line802BorrowerPaidTotal = _line802BorrowerPaidTotal; line802BorrowerPaidTotal.Clean = value; _line802BorrowerPaidTotal = line802BorrowerPaidTotal;
-                var line803BorrowerPaidTotal = _line803BorrowerPaidTotal; line803BorrowerPaidTotal.Clean = value; _line803BorrowerPaidTotal = line803BorrowerPaidTotal;
-                var line803SellerPaidTotal = _line803SellerPaidTotal; line803SellerPaidTotal.Clean = value; _line803SellerPaidTotal = line803SellerPaidTotal;
-                var line818FwbcIndicator = _line818FwbcIndicator; line818FwbcIndicator.Clean = value; _line818FwbcIndicator = line818FwbcIndicator;
-                var line818FwscIndicator = _line818FwscIndicator; line818FwscIndicator.Clean = value; _line818FwscIndicator = line818FwscIndicator;
-                var line819FwbcIndicator = _line819FwbcIndicator; line819FwbcIndicator.Clean = value; _line819FwbcIndicator = line819FwbcIndicator;
-                var line819FwscIndicator = _line819FwscIndicator; line819FwscIndicator.Clean = value; _line819FwscIndicator = line819FwscIndicator;
-                var line820FwbcIndicator = _line820FwbcIndicator; line820FwbcIndicator.Clean = value; _line820FwbcIndicator = line820FwbcIndicator;
-                var line820FwscIndicator = _line820FwscIndicator; line820FwscIndicator.Clean = value; _line820FwscIndicator = line820FwscIndicator;
-                var line821FwbcIndicator = _line821FwbcIndicator; line821FwbcIndicator.Clean = value; _line821FwbcIndicator = line821FwbcIndicator;
-                var line821FwscIndicator = _line821FwscIndicator; line821FwscIndicator.Clean = value; _line821FwscIndicator = line821FwscIndicator;
-                var line822FwbcIndicator = _line822FwbcIndicator; line822FwbcIndicator.Clean = value; _line822FwbcIndicator = line822FwbcIndicator;
-                var line822FwscIndicator = _line822FwscIndicator; line822FwscIndicator.Clean = value; _line822FwscIndicator = line822FwscIndicator;
-                var line823FwbcIndicator = _line823FwbcIndicator; line823FwbcIndicator.Clean = value; _line823FwbcIndicator = line823FwbcIndicator;
-                var line823FwscIndicator = _line823FwscIndicator; line823FwscIndicator.Clean = value; _line823FwscIndicator = line823FwscIndicator;
-                var line824FwbcIndicator = _line824FwbcIndicator; line824FwbcIndicator.Clean = value; _line824FwbcIndicator = line824FwbcIndicator;
-                var line824FwscIndicator = _line824FwscIndicator; line824FwscIndicator.Clean = value; _line824FwscIndicator = line824FwscIndicator;
-                var line825FwbcIndicator = _line825FwbcIndicator; line825FwbcIndicator.Clean = value; _line825FwbcIndicator = line825FwbcIndicator;
-                var line825FwscIndicator = _line825FwscIndicator; line825FwscIndicator.Clean = value; _line825FwscIndicator = line825FwscIndicator;
-                var line826FwbcIndicator = _line826FwbcIndicator; line826FwbcIndicator.Clean = value; _line826FwbcIndicator = line826FwbcIndicator;
-                var line826FwscIndicator = _line826FwscIndicator; line826FwscIndicator.Clean = value; _line826FwscIndicator = line826FwscIndicator;
-                var line827FwbcIndicator = _line827FwbcIndicator; line827FwbcIndicator.Clean = value; _line827FwbcIndicator = line827FwbcIndicator;
-                var line827FwscIndicator = _line827FwscIndicator; line827FwscIndicator.Clean = value; _line827FwscIndicator = line827FwscIndicator;
-                var line828FwbcIndicator = _line828FwbcIndicator; line828FwbcIndicator.Clean = value; _line828FwbcIndicator = line828FwbcIndicator;
-                var line828FwscIndicator = _line828FwscIndicator; line828FwscIndicator.Clean = value; _line828FwscIndicator = line828FwscIndicator;
-                var line829FwbcIndicator = _line829FwbcIndicator; line829FwbcIndicator.Clean = value; _line829FwbcIndicator = line829FwbcIndicator;
-                var line829FwscIndicator = _line829FwscIndicator; line829FwscIndicator.Clean = value; _line829FwscIndicator = line829FwscIndicator;
-                var line830FwbcIndicator = _line830FwbcIndicator; line830FwbcIndicator.Clean = value; _line830FwbcIndicator = line830FwbcIndicator;
-                var line830FwscIndicator = _line830FwscIndicator; line830FwscIndicator.Clean = value; _line830FwscIndicator = line830FwscIndicator;
-                var line831FwbcIndicator = _line831FwbcIndicator; line831FwbcIndicator.Clean = value; _line831FwbcIndicator = line831FwbcIndicator;
-                var line831FwscIndicator = _line831FwscIndicator; line831FwscIndicator.Clean = value; _line831FwscIndicator = line831FwscIndicator;
-                var line832FwbcIndicator = _line832FwbcIndicator; line832FwbcIndicator.Clean = value; _line832FwbcIndicator = line832FwbcIndicator;
-                var line832FwscIndicator = _line832FwscIndicator; line832FwscIndicator.Clean = value; _line832FwscIndicator = line832FwscIndicator;
-                var line833FwbcIndicator = _line833FwbcIndicator; line833FwbcIndicator.Clean = value; _line833FwbcIndicator = line833FwbcIndicator;
-                var line833FwscIndicator = _line833FwscIndicator; line833FwscIndicator.Clean = value; _line833FwscIndicator = line833FwscIndicator;
-                var lineLFwbcIndicator = _lineLFwbcIndicator; lineLFwbcIndicator.Clean = value; _lineLFwbcIndicator = lineLFwbcIndicator;
-                var lineLFwscIndicator = _lineLFwscIndicator; lineLFwscIndicator.Clean = value; _lineLFwscIndicator = lineLFwscIndicator;
-                var lineMFwbcIndicator = _lineMFwbcIndicator; lineMFwbcIndicator.Clean = value; _lineMFwbcIndicator = lineMFwbcIndicator;
-                var lineMFwscIndicator = _lineMFwscIndicator; lineMFwscIndicator.Clean = value; _lineMFwscIndicator = lineMFwscIndicator;
-                var lineNFwbcIndicator = _lineNFwbcIndicator; lineNFwbcIndicator.Clean = value; _lineNFwbcIndicator = lineNFwbcIndicator;
-                var lineNFwscIndicator = _lineNFwscIndicator; lineNFwscIndicator.Clean = value; _lineNFwscIndicator = lineNFwscIndicator;
-                var lineOFwbcIndicator = _lineOFwbcIndicator; lineOFwbcIndicator.Clean = value; _lineOFwbcIndicator = lineOFwbcIndicator;
-                var lineOFwscIndicator = _lineOFwscIndicator; lineOFwscIndicator.Clean = value; _lineOFwscIndicator = lineOFwscIndicator;
-                var linePFwbcIndicator = _linePFwbcIndicator; linePFwbcIndicator.Clean = value; _linePFwbcIndicator = linePFwbcIndicator;
-                var linePFwscIndicator = _linePFwscIndicator; linePFwscIndicator.Clean = value; _linePFwscIndicator = linePFwscIndicator;
-                var lineQFwbcIndicator = _lineQFwbcIndicator; lineQFwbcIndicator.Clean = value; _lineQFwbcIndicator = lineQFwbcIndicator;
-                var lineQFwscIndicator = _lineQFwscIndicator; lineQFwscIndicator.Clean = value; _lineQFwscIndicator = lineQFwscIndicator;
-                var lineRFwbcIndicator = _lineRFwbcIndicator; lineRFwbcIndicator.Clean = value; _lineRFwbcIndicator = lineRFwbcIndicator;
-                var lineRFwscIndicator = _lineRFwscIndicator; lineRFwscIndicator.Clean = value; _lineRFwscIndicator = lineRFwscIndicator;
-                var lowestArmRate = _lowestArmRate; lowestArmRate.Clean = value; _lowestArmRate = lowestArmRate;
-                var monthlyAmountIncludeInterestIndicator = _monthlyAmountIncludeInterestIndicator; monthlyAmountIncludeInterestIndicator.Clean = value; _monthlyAmountIncludeInterestIndicator = monthlyAmountIncludeInterestIndicator;
-                var monthlyAmountIncludeMiIndicator = _monthlyAmountIncludeMiIndicator; monthlyAmountIncludeMiIndicator.Clean = value; _monthlyAmountIncludeMiIndicator = monthlyAmountIncludeMiIndicator;
-                var monthlyAmountIncludePrincipalIndicator = _monthlyAmountIncludePrincipalIndicator; monthlyAmountIncludePrincipalIndicator.Clean = value; _monthlyAmountIncludePrincipalIndicator = monthlyAmountIncludePrincipalIndicator;
-                var monthlyAmountWithEscrow = _monthlyAmountWithEscrow; monthlyAmountWithEscrow.Clean = value; _monthlyAmountWithEscrow = monthlyAmountWithEscrow;
-                var monthlyEscrowPayment = _monthlyEscrowPayment; monthlyEscrowPayment.Clean = value; _monthlyEscrowPayment = monthlyEscrowPayment;
-                var prepaidInterest = _prepaidInterest; prepaidInterest.Clean = value; _prepaidInterest = prepaidInterest;
-                var totalToleranceIncreaseAmount = _totalToleranceIncreaseAmount; totalToleranceIncreaseAmount.Clean = value; _totalToleranceIncreaseAmount = totalToleranceIncreaseAmount;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _balloonPaymentDueInYears.Dirty = value;
+                _brokerCompensationFwbc.Dirty = value;
+                _brokerCompensationFwsc.Dirty = value;
+                _curedGfeTotalTolerance.Dirty = value;
+                _firstArmChangeDate.Dirty = value;
+                _gfe2010FwbcFwscs.Dirty = value;
+                _gfe2010GfeCharges.Dirty = value;
+                _gfeRecordingCharges.Dirty = value;
+                _gfeTotalTolerance.Dirty = value;
+                _hasEscrowAccountIndicator.Dirty = value;
+                _hasEscrowCityPropertyTaxesIndicator.Dirty = value;
+                _hasEscrowFloodInsurancesIndicator.Dirty = value;
+                _hasEscrowHomeownerInsurancesIndicator.Dirty = value;
+                _hasEscrowPropertyTaxesIndicator.Dirty = value;
+                _hasEscrowUserDefinedIndicator1.Dirty = value;
+                _hasEscrowUserDefinedIndicator2.Dirty = value;
+                _hasEscrowUserDefinedIndicator3.Dirty = value;
+                _hasEscrowUserDefinedIndicator4.Dirty = value;
+                _highestArmRate.Dirty = value;
+                _hud1GovernmentRecordingCharge.Dirty = value;
+                _hud1Pg1SellerPaidClosingCostsAmount.Dirty = value;
+                _hud1Pg1TotalSettlementCharges.Dirty = value;
+                _hud1Pg2SellerPaidClosingCostsAmount.Dirty = value;
+                _hud1Pg2TotalSettlementCharges.Dirty = value;
+                _hudTotalTolerance.Dirty = value;
+                _hudTotalToleranceIncreasePercent.Dirty = value;
+                _id.Dirty = value;
+                _line1101SellerPaidTotal.Dirty = value;
+                _line1201SellerPaidTotal.Dirty = value;
+                _line1301SellerPaidTotal.Dirty = value;
+                _line801BorrowerPaidTotal.Dirty = value;
+                _line801SellerPaidTotal.Dirty = value;
+                _line802BorrowerPaidTotal.Dirty = value;
+                _line803BorrowerPaidTotal.Dirty = value;
+                _line803SellerPaidTotal.Dirty = value;
+                _line818FwbcIndicator.Dirty = value;
+                _line818FwscIndicator.Dirty = value;
+                _line819FwbcIndicator.Dirty = value;
+                _line819FwscIndicator.Dirty = value;
+                _line820FwbcIndicator.Dirty = value;
+                _line820FwscIndicator.Dirty = value;
+                _line821FwbcIndicator.Dirty = value;
+                _line821FwscIndicator.Dirty = value;
+                _line822FwbcIndicator.Dirty = value;
+                _line822FwscIndicator.Dirty = value;
+                _line823FwbcIndicator.Dirty = value;
+                _line823FwscIndicator.Dirty = value;
+                _line824FwbcIndicator.Dirty = value;
+                _line824FwscIndicator.Dirty = value;
+                _line825FwbcIndicator.Dirty = value;
+                _line825FwscIndicator.Dirty = value;
+                _line826FwbcIndicator.Dirty = value;
+                _line826FwscIndicator.Dirty = value;
+                _line827FwbcIndicator.Dirty = value;
+                _line827FwscIndicator.Dirty = value;
+                _line828FwbcIndicator.Dirty = value;
+                _line828FwscIndicator.Dirty = value;
+                _line829FwbcIndicator.Dirty = value;
+                _line829FwscIndicator.Dirty = value;
+                _line830FwbcIndicator.Dirty = value;
+                _line830FwscIndicator.Dirty = value;
+                _line831FwbcIndicator.Dirty = value;
+                _line831FwscIndicator.Dirty = value;
+                _line832FwbcIndicator.Dirty = value;
+                _line832FwscIndicator.Dirty = value;
+                _line833FwbcIndicator.Dirty = value;
+                _line833FwscIndicator.Dirty = value;
+                _lineLFwbcIndicator.Dirty = value;
+                _lineLFwscIndicator.Dirty = value;
+                _lineMFwbcIndicator.Dirty = value;
+                _lineMFwscIndicator.Dirty = value;
+                _lineNFwbcIndicator.Dirty = value;
+                _lineNFwscIndicator.Dirty = value;
+                _lineOFwbcIndicator.Dirty = value;
+                _lineOFwscIndicator.Dirty = value;
+                _linePFwbcIndicator.Dirty = value;
+                _linePFwscIndicator.Dirty = value;
+                _lineQFwbcIndicator.Dirty = value;
+                _lineQFwscIndicator.Dirty = value;
+                _lineRFwbcIndicator.Dirty = value;
+                _lineRFwscIndicator.Dirty = value;
+                _lowestArmRate.Dirty = value;
+                _monthlyAmountIncludeInterestIndicator.Dirty = value;
+                _monthlyAmountIncludeMiIndicator.Dirty = value;
+                _monthlyAmountIncludePrincipalIndicator.Dirty = value;
+                _monthlyAmountWithEscrow.Dirty = value;
+                _monthlyEscrowPayment.Dirty = value;
+                _prepaidInterest.Dirty = value;
+                _totalToleranceIncreaseAmount.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010Page()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

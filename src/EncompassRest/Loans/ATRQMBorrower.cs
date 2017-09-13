@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ATRQMBorrower : IClean
+    public sealed partial class ATRQMBorrower : IDirty
     {
         private Value<int?> _aTRQMBorrowerIndex;
         public int? ATRQMBorrowerIndex { get { return _aTRQMBorrowerIndex; } set { _aTRQMBorrowerIndex = value; } }
@@ -470,489 +470,484 @@ namespace EncompassRest.Loans
         public string UnderwritingRiskAssessOther { get { return _underwritingRiskAssessOther; } set { _underwritingRiskAssessOther = value; } }
         private Value<string> _underwritingRiskAssessType;
         public string UnderwritingRiskAssessType { get { return _underwritingRiskAssessType; } set { _underwritingRiskAssessType = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aTRQMBorrowerIndex.Clean
-                    && _aUSRecommendation.Clean
-                    && _aUSVersion.Clean
-                    && _borBonusAverageOvertime.Clean
-                    && _borBonusMostRecentAmount.Clean
-                    && _borBonusMostRecentMonths.Clean
-                    && _borBonusMostRecentYear.Clean
-                    && _borBonusPreviousAmount1.Clean
-                    && _borBonusPreviousAmount2.Clean
-                    && _borBonusPreviousMonths1.Clean
-                    && _borBonusPreviousMonths2.Clean
-                    && _borBonusPreviousYear1.Clean
-                    && _borBonusPreviousYear2.Clean
-                    && _borCommissionAverageOvertime.Clean
-                    && _borCommissionMostRecentAmount.Clean
-                    && _borCommissionMostRecentMonths.Clean
-                    && _borCommissionMostRecentYear.Clean
-                    && _borCommissionPreviousAmount1.Clean
-                    && _borCommissionPreviousAmount2.Clean
-                    && _borCommissionPreviousMonths1.Clean
-                    && _borCommissionPreviousMonths2.Clean
-                    && _borCommissionPreviousYear1.Clean
-                    && _borCommissionPreviousYear2.Clean
-                    && _borContingentLiabilitiesLiabilityAmount1.Clean
-                    && _borContingentLiabilitiesLiabilityAmount2.Clean
-                    && _borContingentLiabilitiesLiabilityAmount3.Clean
-                    && _borContingentLiabilitiesLiabilityDescription1.Clean
-                    && _borContingentLiabilitiesLiabilityDescription2.Clean
-                    && _borContingentLiabilitiesLiabilityDescription3.Clean
-                    && _borContingentLiabilitiesTotalLiabilityAmount.Clean
-                    && _borCosignedObligationsCarLoanPayment.Clean
-                    && _borCosignedObligationsMortgagePayment.Clean
-                    && _borCosignedObligationsOtherPayment.Clean
-                    && _borCosignedObligationsOtherPaymentDescription.Clean
-                    && _borCosignedObligationsStudentLoanPayment.Clean
-                    && _borCosignedObligationsTotalCoMortgagorLiabilities.Clean
-                    && _borDividendAverageDividend.Clean
-                    && _borDividendPreviousAmount1.Clean
-                    && _borDividendPreviousAmount2.Clean
-                    && _borDividendPreviousMonths1.Clean
-                    && _borDividendPreviousMonths2.Clean
-                    && _borDividendPreviousYear1.Clean
-                    && _borDividendPreviousYear2.Clean
-                    && _borDividendRequiredForCashAmount.Clean
-                    && _borInterestAverageDividend.Clean
-                    && _borInterestPreviousAmount1.Clean
-                    && _borInterestPreviousAmount2.Clean
-                    && _borInterestPreviousMonths1.Clean
-                    && _borInterestPreviousMonths2.Clean
-                    && _borInterestPreviousYear1.Clean
-                    && _borInterestPreviousYear2.Clean
-                    && _borInterestRequiredForCashAmount.Clean
-                    && _borMilitaryAllowanceClothingAllowance.Clean
-                    && _borMilitaryAllowanceOtherAllowance.Clean
-                    && _borMilitaryAllowanceOtherAllowanceDescription.Clean
-                    && _borMilitaryAllowanceQuartersAllowance.Clean
-                    && _borMilitaryAllowanceRationsAllowance.Clean
-                    && _borMilitaryAllowanceTotalAllowance.Clean
-                    && _borMilitaryAllowanceVariableHousingAllowance.Clean
-                    && _borMilitaryBasePay.Clean
-                    && _borMilitaryCombatPay.Clean
-                    && _borMilitaryFlightPay.Clean
-                    && _borMilitaryHazardPay.Clean
-                    && _borMilitaryOverseasPay.Clean
-                    && _borMilitaryPropPay.Clean
-                    && _borMilitaryTotalPay.Clean
-                    && _borMonthlyEmplymentIncomeBaseIncome.Clean
-                    && _borMonthlyEmplymentIncomeBonuseIncome.Clean
-                    && _borMonthlyEmplymentIncomeCommissionIncome.Clean
-                    && _borMonthlyEmplymentIncomeDividendInterestIncome.Clean
-                    && _borMonthlyEmplymentIncomeOtherIncome1.Clean
-                    && _borMonthlyEmplymentIncomeOtherIncome2.Clean
-                    && _borMonthlyEmplymentIncomeOvertimeIncome.Clean
-                    && _borMonthlyEmplymentIncomeTotalEmploymentIncome.Clean
-                    && _borNonEmploymentIncomeGovtAssitProgramIncome.Clean
-                    && _borNonEmploymentIncomeHomeownSubsidyIncome.Clean
-                    && _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome.Clean
-                    && _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome.Clean
-                    && _borNonEmploymentIncomeMilitaryIncome.Clean
-                    && _borNonEmploymentIncomeMtgCreditCertificateIncome.Clean
-                    && _borNonEmploymentIncomeTotalNonEmploymentIncome.Clean
-                    && _borNonEmploymentIncomeVABenefitIncome.Clean
-                    && _borNonTaxableIncomeChildSupportIncome.Clean
-                    && _borNonTaxableIncomeDisabilityIncome.Clean
-                    && _borNonTaxableIncomeFedGovtEmplRetirementIncome.Clean
-                    && _borNonTaxableIncomeMilitaryAllowances.Clean
-                    && _borNonTaxableIncomeOtherIncome.Clean
-                    && _borNonTaxableIncomePublicAssistPayments.Clean
-                    && _borNonTaxableIncomeRailroadRetirementBenefits.Clean
-                    && _borNonTaxableIncomeSocialSecurityIncome.Clean
-                    && _borNonTaxableIncomeStateGovtEmplRetirementIncome.Clean
-                    && _borNonTaxableIncomeTotalNonTaxableIncome.Clean
-                    && _borOtherNotesReceivableIncome.Clean
-                    && _borOtherOtherIncome.Clean
-                    && _borOtherParttimeIncome.Clean
-                    && _borOtherRetirementIncome.Clean
-                    && _borOtherSeasonalIncome.Clean
-                    && _borOtherSocialSecurityIncome.Clean
-                    && _borOtherTipIncome.Clean
-                    && _borOtherTrustIncome.Clean
-                    && _borOtherUnemploymentIncome.Clean
-                    && _borOvertimeAverageOvertime.Clean
-                    && _borOvertimeMostRecentAmount.Clean
-                    && _borOvertimeMostRecentMonths.Clean
-                    && _borOvertimeMostRecentYear.Clean
-                    && _borOvertimePreviousAmount1.Clean
-                    && _borOvertimePreviousAmount2.Clean
-                    && _borOvertimePreviousMonths1.Clean
-                    && _borOvertimePreviousMonths2.Clean
-                    && _borOvertimePreviousYear1.Clean
-                    && _borOvertimePreviousYear2.Clean
-                    && _borProjectedIncomeProjectedBonuses.Clean
-                    && _borProjectedIncomeProjectedCostLivingAdjustment.Clean
-                    && _borProjectedIncomeProjectedNewJobIncome.Clean
-                    && _borProjectedIncomeProjectedPerformanceRaises.Clean
-                    && _borProjectedIncomeTotalProjectedIncome.Clean
-                    && _cobBonusAverageOvertime.Clean
-                    && _cobBonusMostRecentAmount.Clean
-                    && _cobBonusMostRecentMonths.Clean
-                    && _cobBonusMostRecentYear.Clean
-                    && _cobBonusPreviousAmount1.Clean
-                    && _cobBonusPreviousAmount2.Clean
-                    && _cobBonusPreviousMonths1.Clean
-                    && _cobBonusPreviousMonths2.Clean
-                    && _cobBonusPreviousYear1.Clean
-                    && _cobBonusPreviousYear2.Clean
-                    && _cobCommissionAverageOvertime.Clean
-                    && _cobCommissionMostRecentAmount.Clean
-                    && _cobCommissionMostRecentMonths.Clean
-                    && _cobCommissionMostRecentYear.Clean
-                    && _cobCommissionPreviousAmount1.Clean
-                    && _cobCommissionPreviousAmount2.Clean
-                    && _cobCommissionPreviousMonths1.Clean
-                    && _cobCommissionPreviousMonths2.Clean
-                    && _cobCommissionPreviousYear1.Clean
-                    && _cobCommissionPreviousYear2.Clean
-                    && _cobDividendAverageDividend.Clean
-                    && _cobDividendPreviousAmount1.Clean
-                    && _cobDividendPreviousAmount2.Clean
-                    && _cobDividendPreviousMonths1.Clean
-                    && _cobDividendPreviousMonths2.Clean
-                    && _cobDividendPreviousYear1.Clean
-                    && _cobDividendPreviousYear2.Clean
-                    && _cobDividendRequiredForCashAmount.Clean
-                    && _cobInterestAverageDividend.Clean
-                    && _cobInterestPreviousAmount1.Clean
-                    && _cobInterestPreviousAmount2.Clean
-                    && _cobInterestPreviousMonths1.Clean
-                    && _cobInterestPreviousMonths2.Clean
-                    && _cobInterestPreviousYear1.Clean
-                    && _cobInterestPreviousYear2.Clean
-                    && _cobInterestRequiredForCashAmount.Clean
-                    && _cobMilitaryAllowanceClothingAllowance.Clean
-                    && _cobMilitaryAllowanceOtherAllowance.Clean
-                    && _cobMilitaryAllowanceQuartersAllowance.Clean
-                    && _cobMilitaryAllowanceRationsAllowance.Clean
-                    && _cobMilitaryAllowanceTotalAllowance.Clean
-                    && _cobMilitaryAllowanceVariableHousingAllowance.Clean
-                    && _cobMilitaryBasePay.Clean
-                    && _cobMilitaryCombatPay.Clean
-                    && _cobMilitaryFlightPay.Clean
-                    && _cobMilitaryHazardPay.Clean
-                    && _cobMilitaryOverseasPay.Clean
-                    && _cobMilitaryPropPay.Clean
-                    && _cobMilitaryTotalPay.Clean
-                    && _cobMonthlyEmplymentIncomeBaseIncome.Clean
-                    && _cobMonthlyEmplymentIncomeBonuseIncome.Clean
-                    && _cobMonthlyEmplymentIncomeCommissionIncome.Clean
-                    && _cobMonthlyEmplymentIncomeDividendInterestIncome.Clean
-                    && _cobMonthlyEmplymentIncomeOtherIncome1.Clean
-                    && _cobMonthlyEmplymentIncomeOtherIncome2.Clean
-                    && _cobMonthlyEmplymentIncomeOvertimeIncome.Clean
-                    && _cobMonthlyEmplymentIncomeTotalEmploymentIncome.Clean
-                    && _cobNonEmploymentIncomeGovtAssitProgramIncome.Clean
-                    && _cobNonEmploymentIncomeHomeownSubsidyIncome.Clean
-                    && _cobNonEmploymentIncomeMilitaryIncome.Clean
-                    && _cobNonEmploymentIncomeMtgCreditCertificateIncome.Clean
-                    && _cobNonEmploymentIncomeTotalNonEmploymentIncome.Clean
-                    && _cobNonEmploymentIncomeVABenefitIncome.Clean
-                    && _cobNonTaxableIncomeChildSupportIncome.Clean
-                    && _cobNonTaxableIncomeDisabilityIncome.Clean
-                    && _cobNonTaxableIncomeFedGovtEmplRetirementIncome.Clean
-                    && _cobNonTaxableIncomeMilitaryAllowances.Clean
-                    && _cobNonTaxableIncomeOtherIncome.Clean
-                    && _cobNonTaxableIncomePublicAssistPayments.Clean
-                    && _cobNonTaxableIncomeRailroadRetirementBenefits.Clean
-                    && _cobNonTaxableIncomeSocialSecurityIncome.Clean
-                    && _cobNonTaxableIncomeStateGovtEmplRetirementIncome.Clean
-                    && _cobNonTaxableIncomeTotalNonTaxableIncome.Clean
-                    && _cobOtherNotesReceivableIncome.Clean
-                    && _cobOtherOtherIncome.Clean
-                    && _cobOtherParttimeIncome.Clean
-                    && _cobOtherRetirementIncome.Clean
-                    && _cobOtherSeasonalIncome.Clean
-                    && _cobOtherSocialSecurityIncome.Clean
-                    && _cobOtherTipIncome.Clean
-                    && _cobOtherTrustIncome.Clean
-                    && _cobOtherUnemploymentIncome.Clean
-                    && _cobOvertimeAverageOvertime.Clean
-                    && _cobOvertimeMostRecentAmount.Clean
-                    && _cobOvertimeMostRecentMonths.Clean
-                    && _cobOvertimeMostRecentYear.Clean
-                    && _cobOvertimePreviousAmount1.Clean
-                    && _cobOvertimePreviousAmount2.Clean
-                    && _cobOvertimePreviousMonths1.Clean
-                    && _cobOvertimePreviousMonths2.Clean
-                    && _cobOvertimePreviousYear1.Clean
-                    && _cobOvertimePreviousYear2.Clean
-                    && _cobProjectedIncomeProjectedBonuses.Clean
-                    && _cobProjectedIncomeProjectedCostLivingAdjustment.Clean
-                    && _cobProjectedIncomeProjectedNewJobIncome.Clean
-                    && _cobProjectedIncomeProjectedPerformanceRaises.Clean
-                    && _cobProjectedIncomeTotalProjectedIncome.Clean
-                    && _dUCaseIDorLPAUSKey.Clean
-                    && _firstSubmissionDate.Clean
-                    && _firstSubmissionTime.Clean
-                    && _freddieDocClass.Clean
-                    && _housingRatio.Clean
-                    && _id.Clean
-                    && _isEmpty.Clean
-                    && _submissionDate.Clean
-                    && _submissionNumber.Clean
-                    && _submissionTime.Clean
-                    && _submittedBy.Clean
-                    && _totalExpenseRatio.Clean
-                    && _totalHousingPayment.Clean
-                    && _totalMonthlyAssets.Clean
-                    && _totalMonthlyDebt.Clean
-                    && _totalMonthlyIncome.Clean
-                    && _underwritingRiskAssessOther.Clean
-                    && _underwritingRiskAssessType.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aTRQMBorrowerIndex.Dirty
+                    || _aUSRecommendation.Dirty
+                    || _aUSVersion.Dirty
+                    || _borBonusAverageOvertime.Dirty
+                    || _borBonusMostRecentAmount.Dirty
+                    || _borBonusMostRecentMonths.Dirty
+                    || _borBonusMostRecentYear.Dirty
+                    || _borBonusPreviousAmount1.Dirty
+                    || _borBonusPreviousAmount2.Dirty
+                    || _borBonusPreviousMonths1.Dirty
+                    || _borBonusPreviousMonths2.Dirty
+                    || _borBonusPreviousYear1.Dirty
+                    || _borBonusPreviousYear2.Dirty
+                    || _borCommissionAverageOvertime.Dirty
+                    || _borCommissionMostRecentAmount.Dirty
+                    || _borCommissionMostRecentMonths.Dirty
+                    || _borCommissionMostRecentYear.Dirty
+                    || _borCommissionPreviousAmount1.Dirty
+                    || _borCommissionPreviousAmount2.Dirty
+                    || _borCommissionPreviousMonths1.Dirty
+                    || _borCommissionPreviousMonths2.Dirty
+                    || _borCommissionPreviousYear1.Dirty
+                    || _borCommissionPreviousYear2.Dirty
+                    || _borContingentLiabilitiesLiabilityAmount1.Dirty
+                    || _borContingentLiabilitiesLiabilityAmount2.Dirty
+                    || _borContingentLiabilitiesLiabilityAmount3.Dirty
+                    || _borContingentLiabilitiesLiabilityDescription1.Dirty
+                    || _borContingentLiabilitiesLiabilityDescription2.Dirty
+                    || _borContingentLiabilitiesLiabilityDescription3.Dirty
+                    || _borContingentLiabilitiesTotalLiabilityAmount.Dirty
+                    || _borCosignedObligationsCarLoanPayment.Dirty
+                    || _borCosignedObligationsMortgagePayment.Dirty
+                    || _borCosignedObligationsOtherPayment.Dirty
+                    || _borCosignedObligationsOtherPaymentDescription.Dirty
+                    || _borCosignedObligationsStudentLoanPayment.Dirty
+                    || _borCosignedObligationsTotalCoMortgagorLiabilities.Dirty
+                    || _borDividendAverageDividend.Dirty
+                    || _borDividendPreviousAmount1.Dirty
+                    || _borDividendPreviousAmount2.Dirty
+                    || _borDividendPreviousMonths1.Dirty
+                    || _borDividendPreviousMonths2.Dirty
+                    || _borDividendPreviousYear1.Dirty
+                    || _borDividendPreviousYear2.Dirty
+                    || _borDividendRequiredForCashAmount.Dirty
+                    || _borInterestAverageDividend.Dirty
+                    || _borInterestPreviousAmount1.Dirty
+                    || _borInterestPreviousAmount2.Dirty
+                    || _borInterestPreviousMonths1.Dirty
+                    || _borInterestPreviousMonths2.Dirty
+                    || _borInterestPreviousYear1.Dirty
+                    || _borInterestPreviousYear2.Dirty
+                    || _borInterestRequiredForCashAmount.Dirty
+                    || _borMilitaryAllowanceClothingAllowance.Dirty
+                    || _borMilitaryAllowanceOtherAllowance.Dirty
+                    || _borMilitaryAllowanceOtherAllowanceDescription.Dirty
+                    || _borMilitaryAllowanceQuartersAllowance.Dirty
+                    || _borMilitaryAllowanceRationsAllowance.Dirty
+                    || _borMilitaryAllowanceTotalAllowance.Dirty
+                    || _borMilitaryAllowanceVariableHousingAllowance.Dirty
+                    || _borMilitaryBasePay.Dirty
+                    || _borMilitaryCombatPay.Dirty
+                    || _borMilitaryFlightPay.Dirty
+                    || _borMilitaryHazardPay.Dirty
+                    || _borMilitaryOverseasPay.Dirty
+                    || _borMilitaryPropPay.Dirty
+                    || _borMilitaryTotalPay.Dirty
+                    || _borMonthlyEmplymentIncomeBaseIncome.Dirty
+                    || _borMonthlyEmplymentIncomeBonuseIncome.Dirty
+                    || _borMonthlyEmplymentIncomeCommissionIncome.Dirty
+                    || _borMonthlyEmplymentIncomeDividendInterestIncome.Dirty
+                    || _borMonthlyEmplymentIncomeOtherIncome1.Dirty
+                    || _borMonthlyEmplymentIncomeOtherIncome2.Dirty
+                    || _borMonthlyEmplymentIncomeOvertimeIncome.Dirty
+                    || _borMonthlyEmplymentIncomeTotalEmploymentIncome.Dirty
+                    || _borNonEmploymentIncomeGovtAssitProgramIncome.Dirty
+                    || _borNonEmploymentIncomeHomeownSubsidyIncome.Dirty
+                    || _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome.Dirty
+                    || _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome.Dirty
+                    || _borNonEmploymentIncomeMilitaryIncome.Dirty
+                    || _borNonEmploymentIncomeMtgCreditCertificateIncome.Dirty
+                    || _borNonEmploymentIncomeTotalNonEmploymentIncome.Dirty
+                    || _borNonEmploymentIncomeVABenefitIncome.Dirty
+                    || _borNonTaxableIncomeChildSupportIncome.Dirty
+                    || _borNonTaxableIncomeDisabilityIncome.Dirty
+                    || _borNonTaxableIncomeFedGovtEmplRetirementIncome.Dirty
+                    || _borNonTaxableIncomeMilitaryAllowances.Dirty
+                    || _borNonTaxableIncomeOtherIncome.Dirty
+                    || _borNonTaxableIncomePublicAssistPayments.Dirty
+                    || _borNonTaxableIncomeRailroadRetirementBenefits.Dirty
+                    || _borNonTaxableIncomeSocialSecurityIncome.Dirty
+                    || _borNonTaxableIncomeStateGovtEmplRetirementIncome.Dirty
+                    || _borNonTaxableIncomeTotalNonTaxableIncome.Dirty
+                    || _borOtherNotesReceivableIncome.Dirty
+                    || _borOtherOtherIncome.Dirty
+                    || _borOtherParttimeIncome.Dirty
+                    || _borOtherRetirementIncome.Dirty
+                    || _borOtherSeasonalIncome.Dirty
+                    || _borOtherSocialSecurityIncome.Dirty
+                    || _borOtherTipIncome.Dirty
+                    || _borOtherTrustIncome.Dirty
+                    || _borOtherUnemploymentIncome.Dirty
+                    || _borOvertimeAverageOvertime.Dirty
+                    || _borOvertimeMostRecentAmount.Dirty
+                    || _borOvertimeMostRecentMonths.Dirty
+                    || _borOvertimeMostRecentYear.Dirty
+                    || _borOvertimePreviousAmount1.Dirty
+                    || _borOvertimePreviousAmount2.Dirty
+                    || _borOvertimePreviousMonths1.Dirty
+                    || _borOvertimePreviousMonths2.Dirty
+                    || _borOvertimePreviousYear1.Dirty
+                    || _borOvertimePreviousYear2.Dirty
+                    || _borProjectedIncomeProjectedBonuses.Dirty
+                    || _borProjectedIncomeProjectedCostLivingAdjustment.Dirty
+                    || _borProjectedIncomeProjectedNewJobIncome.Dirty
+                    || _borProjectedIncomeProjectedPerformanceRaises.Dirty
+                    || _borProjectedIncomeTotalProjectedIncome.Dirty
+                    || _cobBonusAverageOvertime.Dirty
+                    || _cobBonusMostRecentAmount.Dirty
+                    || _cobBonusMostRecentMonths.Dirty
+                    || _cobBonusMostRecentYear.Dirty
+                    || _cobBonusPreviousAmount1.Dirty
+                    || _cobBonusPreviousAmount2.Dirty
+                    || _cobBonusPreviousMonths1.Dirty
+                    || _cobBonusPreviousMonths2.Dirty
+                    || _cobBonusPreviousYear1.Dirty
+                    || _cobBonusPreviousYear2.Dirty
+                    || _cobCommissionAverageOvertime.Dirty
+                    || _cobCommissionMostRecentAmount.Dirty
+                    || _cobCommissionMostRecentMonths.Dirty
+                    || _cobCommissionMostRecentYear.Dirty
+                    || _cobCommissionPreviousAmount1.Dirty
+                    || _cobCommissionPreviousAmount2.Dirty
+                    || _cobCommissionPreviousMonths1.Dirty
+                    || _cobCommissionPreviousMonths2.Dirty
+                    || _cobCommissionPreviousYear1.Dirty
+                    || _cobCommissionPreviousYear2.Dirty
+                    || _cobDividendAverageDividend.Dirty
+                    || _cobDividendPreviousAmount1.Dirty
+                    || _cobDividendPreviousAmount2.Dirty
+                    || _cobDividendPreviousMonths1.Dirty
+                    || _cobDividendPreviousMonths2.Dirty
+                    || _cobDividendPreviousYear1.Dirty
+                    || _cobDividendPreviousYear2.Dirty
+                    || _cobDividendRequiredForCashAmount.Dirty
+                    || _cobInterestAverageDividend.Dirty
+                    || _cobInterestPreviousAmount1.Dirty
+                    || _cobInterestPreviousAmount2.Dirty
+                    || _cobInterestPreviousMonths1.Dirty
+                    || _cobInterestPreviousMonths2.Dirty
+                    || _cobInterestPreviousYear1.Dirty
+                    || _cobInterestPreviousYear2.Dirty
+                    || _cobInterestRequiredForCashAmount.Dirty
+                    || _cobMilitaryAllowanceClothingAllowance.Dirty
+                    || _cobMilitaryAllowanceOtherAllowance.Dirty
+                    || _cobMilitaryAllowanceQuartersAllowance.Dirty
+                    || _cobMilitaryAllowanceRationsAllowance.Dirty
+                    || _cobMilitaryAllowanceTotalAllowance.Dirty
+                    || _cobMilitaryAllowanceVariableHousingAllowance.Dirty
+                    || _cobMilitaryBasePay.Dirty
+                    || _cobMilitaryCombatPay.Dirty
+                    || _cobMilitaryFlightPay.Dirty
+                    || _cobMilitaryHazardPay.Dirty
+                    || _cobMilitaryOverseasPay.Dirty
+                    || _cobMilitaryPropPay.Dirty
+                    || _cobMilitaryTotalPay.Dirty
+                    || _cobMonthlyEmplymentIncomeBaseIncome.Dirty
+                    || _cobMonthlyEmplymentIncomeBonuseIncome.Dirty
+                    || _cobMonthlyEmplymentIncomeCommissionIncome.Dirty
+                    || _cobMonthlyEmplymentIncomeDividendInterestIncome.Dirty
+                    || _cobMonthlyEmplymentIncomeOtherIncome1.Dirty
+                    || _cobMonthlyEmplymentIncomeOtherIncome2.Dirty
+                    || _cobMonthlyEmplymentIncomeOvertimeIncome.Dirty
+                    || _cobMonthlyEmplymentIncomeTotalEmploymentIncome.Dirty
+                    || _cobNonEmploymentIncomeGovtAssitProgramIncome.Dirty
+                    || _cobNonEmploymentIncomeHomeownSubsidyIncome.Dirty
+                    || _cobNonEmploymentIncomeMilitaryIncome.Dirty
+                    || _cobNonEmploymentIncomeMtgCreditCertificateIncome.Dirty
+                    || _cobNonEmploymentIncomeTotalNonEmploymentIncome.Dirty
+                    || _cobNonEmploymentIncomeVABenefitIncome.Dirty
+                    || _cobNonTaxableIncomeChildSupportIncome.Dirty
+                    || _cobNonTaxableIncomeDisabilityIncome.Dirty
+                    || _cobNonTaxableIncomeFedGovtEmplRetirementIncome.Dirty
+                    || _cobNonTaxableIncomeMilitaryAllowances.Dirty
+                    || _cobNonTaxableIncomeOtherIncome.Dirty
+                    || _cobNonTaxableIncomePublicAssistPayments.Dirty
+                    || _cobNonTaxableIncomeRailroadRetirementBenefits.Dirty
+                    || _cobNonTaxableIncomeSocialSecurityIncome.Dirty
+                    || _cobNonTaxableIncomeStateGovtEmplRetirementIncome.Dirty
+                    || _cobNonTaxableIncomeTotalNonTaxableIncome.Dirty
+                    || _cobOtherNotesReceivableIncome.Dirty
+                    || _cobOtherOtherIncome.Dirty
+                    || _cobOtherParttimeIncome.Dirty
+                    || _cobOtherRetirementIncome.Dirty
+                    || _cobOtherSeasonalIncome.Dirty
+                    || _cobOtherSocialSecurityIncome.Dirty
+                    || _cobOtherTipIncome.Dirty
+                    || _cobOtherTrustIncome.Dirty
+                    || _cobOtherUnemploymentIncome.Dirty
+                    || _cobOvertimeAverageOvertime.Dirty
+                    || _cobOvertimeMostRecentAmount.Dirty
+                    || _cobOvertimeMostRecentMonths.Dirty
+                    || _cobOvertimeMostRecentYear.Dirty
+                    || _cobOvertimePreviousAmount1.Dirty
+                    || _cobOvertimePreviousAmount2.Dirty
+                    || _cobOvertimePreviousMonths1.Dirty
+                    || _cobOvertimePreviousMonths2.Dirty
+                    || _cobOvertimePreviousYear1.Dirty
+                    || _cobOvertimePreviousYear2.Dirty
+                    || _cobProjectedIncomeProjectedBonuses.Dirty
+                    || _cobProjectedIncomeProjectedCostLivingAdjustment.Dirty
+                    || _cobProjectedIncomeProjectedNewJobIncome.Dirty
+                    || _cobProjectedIncomeProjectedPerformanceRaises.Dirty
+                    || _cobProjectedIncomeTotalProjectedIncome.Dirty
+                    || _dUCaseIDorLPAUSKey.Dirty
+                    || _firstSubmissionDate.Dirty
+                    || _firstSubmissionTime.Dirty
+                    || _freddieDocClass.Dirty
+                    || _housingRatio.Dirty
+                    || _id.Dirty
+                    || _isEmpty.Dirty
+                    || _submissionDate.Dirty
+                    || _submissionNumber.Dirty
+                    || _submissionTime.Dirty
+                    || _submittedBy.Dirty
+                    || _totalExpenseRatio.Dirty
+                    || _totalHousingPayment.Dirty
+                    || _totalMonthlyAssets.Dirty
+                    || _totalMonthlyDebt.Dirty
+                    || _totalMonthlyIncome.Dirty
+                    || _underwritingRiskAssessOther.Dirty
+                    || _underwritingRiskAssessType.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aTRQMBorrowerIndex = _aTRQMBorrowerIndex; aTRQMBorrowerIndex.Clean = value; _aTRQMBorrowerIndex = aTRQMBorrowerIndex;
-                var aUSRecommendation = _aUSRecommendation; aUSRecommendation.Clean = value; _aUSRecommendation = aUSRecommendation;
-                var aUSVersion = _aUSVersion; aUSVersion.Clean = value; _aUSVersion = aUSVersion;
-                var borBonusAverageOvertime = _borBonusAverageOvertime; borBonusAverageOvertime.Clean = value; _borBonusAverageOvertime = borBonusAverageOvertime;
-                var borBonusMostRecentAmount = _borBonusMostRecentAmount; borBonusMostRecentAmount.Clean = value; _borBonusMostRecentAmount = borBonusMostRecentAmount;
-                var borBonusMostRecentMonths = _borBonusMostRecentMonths; borBonusMostRecentMonths.Clean = value; _borBonusMostRecentMonths = borBonusMostRecentMonths;
-                var borBonusMostRecentYear = _borBonusMostRecentYear; borBonusMostRecentYear.Clean = value; _borBonusMostRecentYear = borBonusMostRecentYear;
-                var borBonusPreviousAmount1 = _borBonusPreviousAmount1; borBonusPreviousAmount1.Clean = value; _borBonusPreviousAmount1 = borBonusPreviousAmount1;
-                var borBonusPreviousAmount2 = _borBonusPreviousAmount2; borBonusPreviousAmount2.Clean = value; _borBonusPreviousAmount2 = borBonusPreviousAmount2;
-                var borBonusPreviousMonths1 = _borBonusPreviousMonths1; borBonusPreviousMonths1.Clean = value; _borBonusPreviousMonths1 = borBonusPreviousMonths1;
-                var borBonusPreviousMonths2 = _borBonusPreviousMonths2; borBonusPreviousMonths2.Clean = value; _borBonusPreviousMonths2 = borBonusPreviousMonths2;
-                var borBonusPreviousYear1 = _borBonusPreviousYear1; borBonusPreviousYear1.Clean = value; _borBonusPreviousYear1 = borBonusPreviousYear1;
-                var borBonusPreviousYear2 = _borBonusPreviousYear2; borBonusPreviousYear2.Clean = value; _borBonusPreviousYear2 = borBonusPreviousYear2;
-                var borCommissionAverageOvertime = _borCommissionAverageOvertime; borCommissionAverageOvertime.Clean = value; _borCommissionAverageOvertime = borCommissionAverageOvertime;
-                var borCommissionMostRecentAmount = _borCommissionMostRecentAmount; borCommissionMostRecentAmount.Clean = value; _borCommissionMostRecentAmount = borCommissionMostRecentAmount;
-                var borCommissionMostRecentMonths = _borCommissionMostRecentMonths; borCommissionMostRecentMonths.Clean = value; _borCommissionMostRecentMonths = borCommissionMostRecentMonths;
-                var borCommissionMostRecentYear = _borCommissionMostRecentYear; borCommissionMostRecentYear.Clean = value; _borCommissionMostRecentYear = borCommissionMostRecentYear;
-                var borCommissionPreviousAmount1 = _borCommissionPreviousAmount1; borCommissionPreviousAmount1.Clean = value; _borCommissionPreviousAmount1 = borCommissionPreviousAmount1;
-                var borCommissionPreviousAmount2 = _borCommissionPreviousAmount2; borCommissionPreviousAmount2.Clean = value; _borCommissionPreviousAmount2 = borCommissionPreviousAmount2;
-                var borCommissionPreviousMonths1 = _borCommissionPreviousMonths1; borCommissionPreviousMonths1.Clean = value; _borCommissionPreviousMonths1 = borCommissionPreviousMonths1;
-                var borCommissionPreviousMonths2 = _borCommissionPreviousMonths2; borCommissionPreviousMonths2.Clean = value; _borCommissionPreviousMonths2 = borCommissionPreviousMonths2;
-                var borCommissionPreviousYear1 = _borCommissionPreviousYear1; borCommissionPreviousYear1.Clean = value; _borCommissionPreviousYear1 = borCommissionPreviousYear1;
-                var borCommissionPreviousYear2 = _borCommissionPreviousYear2; borCommissionPreviousYear2.Clean = value; _borCommissionPreviousYear2 = borCommissionPreviousYear2;
-                var borContingentLiabilitiesLiabilityAmount1 = _borContingentLiabilitiesLiabilityAmount1; borContingentLiabilitiesLiabilityAmount1.Clean = value; _borContingentLiabilitiesLiabilityAmount1 = borContingentLiabilitiesLiabilityAmount1;
-                var borContingentLiabilitiesLiabilityAmount2 = _borContingentLiabilitiesLiabilityAmount2; borContingentLiabilitiesLiabilityAmount2.Clean = value; _borContingentLiabilitiesLiabilityAmount2 = borContingentLiabilitiesLiabilityAmount2;
-                var borContingentLiabilitiesLiabilityAmount3 = _borContingentLiabilitiesLiabilityAmount3; borContingentLiabilitiesLiabilityAmount3.Clean = value; _borContingentLiabilitiesLiabilityAmount3 = borContingentLiabilitiesLiabilityAmount3;
-                var borContingentLiabilitiesLiabilityDescription1 = _borContingentLiabilitiesLiabilityDescription1; borContingentLiabilitiesLiabilityDescription1.Clean = value; _borContingentLiabilitiesLiabilityDescription1 = borContingentLiabilitiesLiabilityDescription1;
-                var borContingentLiabilitiesLiabilityDescription2 = _borContingentLiabilitiesLiabilityDescription2; borContingentLiabilitiesLiabilityDescription2.Clean = value; _borContingentLiabilitiesLiabilityDescription2 = borContingentLiabilitiesLiabilityDescription2;
-                var borContingentLiabilitiesLiabilityDescription3 = _borContingentLiabilitiesLiabilityDescription3; borContingentLiabilitiesLiabilityDescription3.Clean = value; _borContingentLiabilitiesLiabilityDescription3 = borContingentLiabilitiesLiabilityDescription3;
-                var borContingentLiabilitiesTotalLiabilityAmount = _borContingentLiabilitiesTotalLiabilityAmount; borContingentLiabilitiesTotalLiabilityAmount.Clean = value; _borContingentLiabilitiesTotalLiabilityAmount = borContingentLiabilitiesTotalLiabilityAmount;
-                var borCosignedObligationsCarLoanPayment = _borCosignedObligationsCarLoanPayment; borCosignedObligationsCarLoanPayment.Clean = value; _borCosignedObligationsCarLoanPayment = borCosignedObligationsCarLoanPayment;
-                var borCosignedObligationsMortgagePayment = _borCosignedObligationsMortgagePayment; borCosignedObligationsMortgagePayment.Clean = value; _borCosignedObligationsMortgagePayment = borCosignedObligationsMortgagePayment;
-                var borCosignedObligationsOtherPayment = _borCosignedObligationsOtherPayment; borCosignedObligationsOtherPayment.Clean = value; _borCosignedObligationsOtherPayment = borCosignedObligationsOtherPayment;
-                var borCosignedObligationsOtherPaymentDescription = _borCosignedObligationsOtherPaymentDescription; borCosignedObligationsOtherPaymentDescription.Clean = value; _borCosignedObligationsOtherPaymentDescription = borCosignedObligationsOtherPaymentDescription;
-                var borCosignedObligationsStudentLoanPayment = _borCosignedObligationsStudentLoanPayment; borCosignedObligationsStudentLoanPayment.Clean = value; _borCosignedObligationsStudentLoanPayment = borCosignedObligationsStudentLoanPayment;
-                var borCosignedObligationsTotalCoMortgagorLiabilities = _borCosignedObligationsTotalCoMortgagorLiabilities; borCosignedObligationsTotalCoMortgagorLiabilities.Clean = value; _borCosignedObligationsTotalCoMortgagorLiabilities = borCosignedObligationsTotalCoMortgagorLiabilities;
-                var borDividendAverageDividend = _borDividendAverageDividend; borDividendAverageDividend.Clean = value; _borDividendAverageDividend = borDividendAverageDividend;
-                var borDividendPreviousAmount1 = _borDividendPreviousAmount1; borDividendPreviousAmount1.Clean = value; _borDividendPreviousAmount1 = borDividendPreviousAmount1;
-                var borDividendPreviousAmount2 = _borDividendPreviousAmount2; borDividendPreviousAmount2.Clean = value; _borDividendPreviousAmount2 = borDividendPreviousAmount2;
-                var borDividendPreviousMonths1 = _borDividendPreviousMonths1; borDividendPreviousMonths1.Clean = value; _borDividendPreviousMonths1 = borDividendPreviousMonths1;
-                var borDividendPreviousMonths2 = _borDividendPreviousMonths2; borDividendPreviousMonths2.Clean = value; _borDividendPreviousMonths2 = borDividendPreviousMonths2;
-                var borDividendPreviousYear1 = _borDividendPreviousYear1; borDividendPreviousYear1.Clean = value; _borDividendPreviousYear1 = borDividendPreviousYear1;
-                var borDividendPreviousYear2 = _borDividendPreviousYear2; borDividendPreviousYear2.Clean = value; _borDividendPreviousYear2 = borDividendPreviousYear2;
-                var borDividendRequiredForCashAmount = _borDividendRequiredForCashAmount; borDividendRequiredForCashAmount.Clean = value; _borDividendRequiredForCashAmount = borDividendRequiredForCashAmount;
-                var borInterestAverageDividend = _borInterestAverageDividend; borInterestAverageDividend.Clean = value; _borInterestAverageDividend = borInterestAverageDividend;
-                var borInterestPreviousAmount1 = _borInterestPreviousAmount1; borInterestPreviousAmount1.Clean = value; _borInterestPreviousAmount1 = borInterestPreviousAmount1;
-                var borInterestPreviousAmount2 = _borInterestPreviousAmount2; borInterestPreviousAmount2.Clean = value; _borInterestPreviousAmount2 = borInterestPreviousAmount2;
-                var borInterestPreviousMonths1 = _borInterestPreviousMonths1; borInterestPreviousMonths1.Clean = value; _borInterestPreviousMonths1 = borInterestPreviousMonths1;
-                var borInterestPreviousMonths2 = _borInterestPreviousMonths2; borInterestPreviousMonths2.Clean = value; _borInterestPreviousMonths2 = borInterestPreviousMonths2;
-                var borInterestPreviousYear1 = _borInterestPreviousYear1; borInterestPreviousYear1.Clean = value; _borInterestPreviousYear1 = borInterestPreviousYear1;
-                var borInterestPreviousYear2 = _borInterestPreviousYear2; borInterestPreviousYear2.Clean = value; _borInterestPreviousYear2 = borInterestPreviousYear2;
-                var borInterestRequiredForCashAmount = _borInterestRequiredForCashAmount; borInterestRequiredForCashAmount.Clean = value; _borInterestRequiredForCashAmount = borInterestRequiredForCashAmount;
-                var borMilitaryAllowanceClothingAllowance = _borMilitaryAllowanceClothingAllowance; borMilitaryAllowanceClothingAllowance.Clean = value; _borMilitaryAllowanceClothingAllowance = borMilitaryAllowanceClothingAllowance;
-                var borMilitaryAllowanceOtherAllowance = _borMilitaryAllowanceOtherAllowance; borMilitaryAllowanceOtherAllowance.Clean = value; _borMilitaryAllowanceOtherAllowance = borMilitaryAllowanceOtherAllowance;
-                var borMilitaryAllowanceOtherAllowanceDescription = _borMilitaryAllowanceOtherAllowanceDescription; borMilitaryAllowanceOtherAllowanceDescription.Clean = value; _borMilitaryAllowanceOtherAllowanceDescription = borMilitaryAllowanceOtherAllowanceDescription;
-                var borMilitaryAllowanceQuartersAllowance = _borMilitaryAllowanceQuartersAllowance; borMilitaryAllowanceQuartersAllowance.Clean = value; _borMilitaryAllowanceQuartersAllowance = borMilitaryAllowanceQuartersAllowance;
-                var borMilitaryAllowanceRationsAllowance = _borMilitaryAllowanceRationsAllowance; borMilitaryAllowanceRationsAllowance.Clean = value; _borMilitaryAllowanceRationsAllowance = borMilitaryAllowanceRationsAllowance;
-                var borMilitaryAllowanceTotalAllowance = _borMilitaryAllowanceTotalAllowance; borMilitaryAllowanceTotalAllowance.Clean = value; _borMilitaryAllowanceTotalAllowance = borMilitaryAllowanceTotalAllowance;
-                var borMilitaryAllowanceVariableHousingAllowance = _borMilitaryAllowanceVariableHousingAllowance; borMilitaryAllowanceVariableHousingAllowance.Clean = value; _borMilitaryAllowanceVariableHousingAllowance = borMilitaryAllowanceVariableHousingAllowance;
-                var borMilitaryBasePay = _borMilitaryBasePay; borMilitaryBasePay.Clean = value; _borMilitaryBasePay = borMilitaryBasePay;
-                var borMilitaryCombatPay = _borMilitaryCombatPay; borMilitaryCombatPay.Clean = value; _borMilitaryCombatPay = borMilitaryCombatPay;
-                var borMilitaryFlightPay = _borMilitaryFlightPay; borMilitaryFlightPay.Clean = value; _borMilitaryFlightPay = borMilitaryFlightPay;
-                var borMilitaryHazardPay = _borMilitaryHazardPay; borMilitaryHazardPay.Clean = value; _borMilitaryHazardPay = borMilitaryHazardPay;
-                var borMilitaryOverseasPay = _borMilitaryOverseasPay; borMilitaryOverseasPay.Clean = value; _borMilitaryOverseasPay = borMilitaryOverseasPay;
-                var borMilitaryPropPay = _borMilitaryPropPay; borMilitaryPropPay.Clean = value; _borMilitaryPropPay = borMilitaryPropPay;
-                var borMilitaryTotalPay = _borMilitaryTotalPay; borMilitaryTotalPay.Clean = value; _borMilitaryTotalPay = borMilitaryTotalPay;
-                var borMonthlyEmplymentIncomeBaseIncome = _borMonthlyEmplymentIncomeBaseIncome; borMonthlyEmplymentIncomeBaseIncome.Clean = value; _borMonthlyEmplymentIncomeBaseIncome = borMonthlyEmplymentIncomeBaseIncome;
-                var borMonthlyEmplymentIncomeBonuseIncome = _borMonthlyEmplymentIncomeBonuseIncome; borMonthlyEmplymentIncomeBonuseIncome.Clean = value; _borMonthlyEmplymentIncomeBonuseIncome = borMonthlyEmplymentIncomeBonuseIncome;
-                var borMonthlyEmplymentIncomeCommissionIncome = _borMonthlyEmplymentIncomeCommissionIncome; borMonthlyEmplymentIncomeCommissionIncome.Clean = value; _borMonthlyEmplymentIncomeCommissionIncome = borMonthlyEmplymentIncomeCommissionIncome;
-                var borMonthlyEmplymentIncomeDividendInterestIncome = _borMonthlyEmplymentIncomeDividendInterestIncome; borMonthlyEmplymentIncomeDividendInterestIncome.Clean = value; _borMonthlyEmplymentIncomeDividendInterestIncome = borMonthlyEmplymentIncomeDividendInterestIncome;
-                var borMonthlyEmplymentIncomeOtherIncome1 = _borMonthlyEmplymentIncomeOtherIncome1; borMonthlyEmplymentIncomeOtherIncome1.Clean = value; _borMonthlyEmplymentIncomeOtherIncome1 = borMonthlyEmplymentIncomeOtherIncome1;
-                var borMonthlyEmplymentIncomeOtherIncome2 = _borMonthlyEmplymentIncomeOtherIncome2; borMonthlyEmplymentIncomeOtherIncome2.Clean = value; _borMonthlyEmplymentIncomeOtherIncome2 = borMonthlyEmplymentIncomeOtherIncome2;
-                var borMonthlyEmplymentIncomeOvertimeIncome = _borMonthlyEmplymentIncomeOvertimeIncome; borMonthlyEmplymentIncomeOvertimeIncome.Clean = value; _borMonthlyEmplymentIncomeOvertimeIncome = borMonthlyEmplymentIncomeOvertimeIncome;
-                var borMonthlyEmplymentIncomeTotalEmploymentIncome = _borMonthlyEmplymentIncomeTotalEmploymentIncome; borMonthlyEmplymentIncomeTotalEmploymentIncome.Clean = value; _borMonthlyEmplymentIncomeTotalEmploymentIncome = borMonthlyEmplymentIncomeTotalEmploymentIncome;
-                var borNonEmploymentIncomeGovtAssitProgramIncome = _borNonEmploymentIncomeGovtAssitProgramIncome; borNonEmploymentIncomeGovtAssitProgramIncome.Clean = value; _borNonEmploymentIncomeGovtAssitProgramIncome = borNonEmploymentIncomeGovtAssitProgramIncome;
-                var borNonEmploymentIncomeHomeownSubsidyIncome = _borNonEmploymentIncomeHomeownSubsidyIncome; borNonEmploymentIncomeHomeownSubsidyIncome.Clean = value; _borNonEmploymentIncomeHomeownSubsidyIncome = borNonEmploymentIncomeHomeownSubsidyIncome;
-                var borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome = _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome; borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome.Clean = value; _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome = borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome;
-                var borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome = _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome; borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome.Clean = value; _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome = borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome;
-                var borNonEmploymentIncomeMilitaryIncome = _borNonEmploymentIncomeMilitaryIncome; borNonEmploymentIncomeMilitaryIncome.Clean = value; _borNonEmploymentIncomeMilitaryIncome = borNonEmploymentIncomeMilitaryIncome;
-                var borNonEmploymentIncomeMtgCreditCertificateIncome = _borNonEmploymentIncomeMtgCreditCertificateIncome; borNonEmploymentIncomeMtgCreditCertificateIncome.Clean = value; _borNonEmploymentIncomeMtgCreditCertificateIncome = borNonEmploymentIncomeMtgCreditCertificateIncome;
-                var borNonEmploymentIncomeTotalNonEmploymentIncome = _borNonEmploymentIncomeTotalNonEmploymentIncome; borNonEmploymentIncomeTotalNonEmploymentIncome.Clean = value; _borNonEmploymentIncomeTotalNonEmploymentIncome = borNonEmploymentIncomeTotalNonEmploymentIncome;
-                var borNonEmploymentIncomeVABenefitIncome = _borNonEmploymentIncomeVABenefitIncome; borNonEmploymentIncomeVABenefitIncome.Clean = value; _borNonEmploymentIncomeVABenefitIncome = borNonEmploymentIncomeVABenefitIncome;
-                var borNonTaxableIncomeChildSupportIncome = _borNonTaxableIncomeChildSupportIncome; borNonTaxableIncomeChildSupportIncome.Clean = value; _borNonTaxableIncomeChildSupportIncome = borNonTaxableIncomeChildSupportIncome;
-                var borNonTaxableIncomeDisabilityIncome = _borNonTaxableIncomeDisabilityIncome; borNonTaxableIncomeDisabilityIncome.Clean = value; _borNonTaxableIncomeDisabilityIncome = borNonTaxableIncomeDisabilityIncome;
-                var borNonTaxableIncomeFedGovtEmplRetirementIncome = _borNonTaxableIncomeFedGovtEmplRetirementIncome; borNonTaxableIncomeFedGovtEmplRetirementIncome.Clean = value; _borNonTaxableIncomeFedGovtEmplRetirementIncome = borNonTaxableIncomeFedGovtEmplRetirementIncome;
-                var borNonTaxableIncomeMilitaryAllowances = _borNonTaxableIncomeMilitaryAllowances; borNonTaxableIncomeMilitaryAllowances.Clean = value; _borNonTaxableIncomeMilitaryAllowances = borNonTaxableIncomeMilitaryAllowances;
-                var borNonTaxableIncomeOtherIncome = _borNonTaxableIncomeOtherIncome; borNonTaxableIncomeOtherIncome.Clean = value; _borNonTaxableIncomeOtherIncome = borNonTaxableIncomeOtherIncome;
-                var borNonTaxableIncomePublicAssistPayments = _borNonTaxableIncomePublicAssistPayments; borNonTaxableIncomePublicAssistPayments.Clean = value; _borNonTaxableIncomePublicAssistPayments = borNonTaxableIncomePublicAssistPayments;
-                var borNonTaxableIncomeRailroadRetirementBenefits = _borNonTaxableIncomeRailroadRetirementBenefits; borNonTaxableIncomeRailroadRetirementBenefits.Clean = value; _borNonTaxableIncomeRailroadRetirementBenefits = borNonTaxableIncomeRailroadRetirementBenefits;
-                var borNonTaxableIncomeSocialSecurityIncome = _borNonTaxableIncomeSocialSecurityIncome; borNonTaxableIncomeSocialSecurityIncome.Clean = value; _borNonTaxableIncomeSocialSecurityIncome = borNonTaxableIncomeSocialSecurityIncome;
-                var borNonTaxableIncomeStateGovtEmplRetirementIncome = _borNonTaxableIncomeStateGovtEmplRetirementIncome; borNonTaxableIncomeStateGovtEmplRetirementIncome.Clean = value; _borNonTaxableIncomeStateGovtEmplRetirementIncome = borNonTaxableIncomeStateGovtEmplRetirementIncome;
-                var borNonTaxableIncomeTotalNonTaxableIncome = _borNonTaxableIncomeTotalNonTaxableIncome; borNonTaxableIncomeTotalNonTaxableIncome.Clean = value; _borNonTaxableIncomeTotalNonTaxableIncome = borNonTaxableIncomeTotalNonTaxableIncome;
-                var borOtherNotesReceivableIncome = _borOtherNotesReceivableIncome; borOtherNotesReceivableIncome.Clean = value; _borOtherNotesReceivableIncome = borOtherNotesReceivableIncome;
-                var borOtherOtherIncome = _borOtherOtherIncome; borOtherOtherIncome.Clean = value; _borOtherOtherIncome = borOtherOtherIncome;
-                var borOtherParttimeIncome = _borOtherParttimeIncome; borOtherParttimeIncome.Clean = value; _borOtherParttimeIncome = borOtherParttimeIncome;
-                var borOtherRetirementIncome = _borOtherRetirementIncome; borOtherRetirementIncome.Clean = value; _borOtherRetirementIncome = borOtherRetirementIncome;
-                var borOtherSeasonalIncome = _borOtherSeasonalIncome; borOtherSeasonalIncome.Clean = value; _borOtherSeasonalIncome = borOtherSeasonalIncome;
-                var borOtherSocialSecurityIncome = _borOtherSocialSecurityIncome; borOtherSocialSecurityIncome.Clean = value; _borOtherSocialSecurityIncome = borOtherSocialSecurityIncome;
-                var borOtherTipIncome = _borOtherTipIncome; borOtherTipIncome.Clean = value; _borOtherTipIncome = borOtherTipIncome;
-                var borOtherTrustIncome = _borOtherTrustIncome; borOtherTrustIncome.Clean = value; _borOtherTrustIncome = borOtherTrustIncome;
-                var borOtherUnemploymentIncome = _borOtherUnemploymentIncome; borOtherUnemploymentIncome.Clean = value; _borOtherUnemploymentIncome = borOtherUnemploymentIncome;
-                var borOvertimeAverageOvertime = _borOvertimeAverageOvertime; borOvertimeAverageOvertime.Clean = value; _borOvertimeAverageOvertime = borOvertimeAverageOvertime;
-                var borOvertimeMostRecentAmount = _borOvertimeMostRecentAmount; borOvertimeMostRecentAmount.Clean = value; _borOvertimeMostRecentAmount = borOvertimeMostRecentAmount;
-                var borOvertimeMostRecentMonths = _borOvertimeMostRecentMonths; borOvertimeMostRecentMonths.Clean = value; _borOvertimeMostRecentMonths = borOvertimeMostRecentMonths;
-                var borOvertimeMostRecentYear = _borOvertimeMostRecentYear; borOvertimeMostRecentYear.Clean = value; _borOvertimeMostRecentYear = borOvertimeMostRecentYear;
-                var borOvertimePreviousAmount1 = _borOvertimePreviousAmount1; borOvertimePreviousAmount1.Clean = value; _borOvertimePreviousAmount1 = borOvertimePreviousAmount1;
-                var borOvertimePreviousAmount2 = _borOvertimePreviousAmount2; borOvertimePreviousAmount2.Clean = value; _borOvertimePreviousAmount2 = borOvertimePreviousAmount2;
-                var borOvertimePreviousMonths1 = _borOvertimePreviousMonths1; borOvertimePreviousMonths1.Clean = value; _borOvertimePreviousMonths1 = borOvertimePreviousMonths1;
-                var borOvertimePreviousMonths2 = _borOvertimePreviousMonths2; borOvertimePreviousMonths2.Clean = value; _borOvertimePreviousMonths2 = borOvertimePreviousMonths2;
-                var borOvertimePreviousYear1 = _borOvertimePreviousYear1; borOvertimePreviousYear1.Clean = value; _borOvertimePreviousYear1 = borOvertimePreviousYear1;
-                var borOvertimePreviousYear2 = _borOvertimePreviousYear2; borOvertimePreviousYear2.Clean = value; _borOvertimePreviousYear2 = borOvertimePreviousYear2;
-                var borProjectedIncomeProjectedBonuses = _borProjectedIncomeProjectedBonuses; borProjectedIncomeProjectedBonuses.Clean = value; _borProjectedIncomeProjectedBonuses = borProjectedIncomeProjectedBonuses;
-                var borProjectedIncomeProjectedCostLivingAdjustment = _borProjectedIncomeProjectedCostLivingAdjustment; borProjectedIncomeProjectedCostLivingAdjustment.Clean = value; _borProjectedIncomeProjectedCostLivingAdjustment = borProjectedIncomeProjectedCostLivingAdjustment;
-                var borProjectedIncomeProjectedNewJobIncome = _borProjectedIncomeProjectedNewJobIncome; borProjectedIncomeProjectedNewJobIncome.Clean = value; _borProjectedIncomeProjectedNewJobIncome = borProjectedIncomeProjectedNewJobIncome;
-                var borProjectedIncomeProjectedPerformanceRaises = _borProjectedIncomeProjectedPerformanceRaises; borProjectedIncomeProjectedPerformanceRaises.Clean = value; _borProjectedIncomeProjectedPerformanceRaises = borProjectedIncomeProjectedPerformanceRaises;
-                var borProjectedIncomeTotalProjectedIncome = _borProjectedIncomeTotalProjectedIncome; borProjectedIncomeTotalProjectedIncome.Clean = value; _borProjectedIncomeTotalProjectedIncome = borProjectedIncomeTotalProjectedIncome;
-                var cobBonusAverageOvertime = _cobBonusAverageOvertime; cobBonusAverageOvertime.Clean = value; _cobBonusAverageOvertime = cobBonusAverageOvertime;
-                var cobBonusMostRecentAmount = _cobBonusMostRecentAmount; cobBonusMostRecentAmount.Clean = value; _cobBonusMostRecentAmount = cobBonusMostRecentAmount;
-                var cobBonusMostRecentMonths = _cobBonusMostRecentMonths; cobBonusMostRecentMonths.Clean = value; _cobBonusMostRecentMonths = cobBonusMostRecentMonths;
-                var cobBonusMostRecentYear = _cobBonusMostRecentYear; cobBonusMostRecentYear.Clean = value; _cobBonusMostRecentYear = cobBonusMostRecentYear;
-                var cobBonusPreviousAmount1 = _cobBonusPreviousAmount1; cobBonusPreviousAmount1.Clean = value; _cobBonusPreviousAmount1 = cobBonusPreviousAmount1;
-                var cobBonusPreviousAmount2 = _cobBonusPreviousAmount2; cobBonusPreviousAmount2.Clean = value; _cobBonusPreviousAmount2 = cobBonusPreviousAmount2;
-                var cobBonusPreviousMonths1 = _cobBonusPreviousMonths1; cobBonusPreviousMonths1.Clean = value; _cobBonusPreviousMonths1 = cobBonusPreviousMonths1;
-                var cobBonusPreviousMonths2 = _cobBonusPreviousMonths2; cobBonusPreviousMonths2.Clean = value; _cobBonusPreviousMonths2 = cobBonusPreviousMonths2;
-                var cobBonusPreviousYear1 = _cobBonusPreviousYear1; cobBonusPreviousYear1.Clean = value; _cobBonusPreviousYear1 = cobBonusPreviousYear1;
-                var cobBonusPreviousYear2 = _cobBonusPreviousYear2; cobBonusPreviousYear2.Clean = value; _cobBonusPreviousYear2 = cobBonusPreviousYear2;
-                var cobCommissionAverageOvertime = _cobCommissionAverageOvertime; cobCommissionAverageOvertime.Clean = value; _cobCommissionAverageOvertime = cobCommissionAverageOvertime;
-                var cobCommissionMostRecentAmount = _cobCommissionMostRecentAmount; cobCommissionMostRecentAmount.Clean = value; _cobCommissionMostRecentAmount = cobCommissionMostRecentAmount;
-                var cobCommissionMostRecentMonths = _cobCommissionMostRecentMonths; cobCommissionMostRecentMonths.Clean = value; _cobCommissionMostRecentMonths = cobCommissionMostRecentMonths;
-                var cobCommissionMostRecentYear = _cobCommissionMostRecentYear; cobCommissionMostRecentYear.Clean = value; _cobCommissionMostRecentYear = cobCommissionMostRecentYear;
-                var cobCommissionPreviousAmount1 = _cobCommissionPreviousAmount1; cobCommissionPreviousAmount1.Clean = value; _cobCommissionPreviousAmount1 = cobCommissionPreviousAmount1;
-                var cobCommissionPreviousAmount2 = _cobCommissionPreviousAmount2; cobCommissionPreviousAmount2.Clean = value; _cobCommissionPreviousAmount2 = cobCommissionPreviousAmount2;
-                var cobCommissionPreviousMonths1 = _cobCommissionPreviousMonths1; cobCommissionPreviousMonths1.Clean = value; _cobCommissionPreviousMonths1 = cobCommissionPreviousMonths1;
-                var cobCommissionPreviousMonths2 = _cobCommissionPreviousMonths2; cobCommissionPreviousMonths2.Clean = value; _cobCommissionPreviousMonths2 = cobCommissionPreviousMonths2;
-                var cobCommissionPreviousYear1 = _cobCommissionPreviousYear1; cobCommissionPreviousYear1.Clean = value; _cobCommissionPreviousYear1 = cobCommissionPreviousYear1;
-                var cobCommissionPreviousYear2 = _cobCommissionPreviousYear2; cobCommissionPreviousYear2.Clean = value; _cobCommissionPreviousYear2 = cobCommissionPreviousYear2;
-                var cobDividendAverageDividend = _cobDividendAverageDividend; cobDividendAverageDividend.Clean = value; _cobDividendAverageDividend = cobDividendAverageDividend;
-                var cobDividendPreviousAmount1 = _cobDividendPreviousAmount1; cobDividendPreviousAmount1.Clean = value; _cobDividendPreviousAmount1 = cobDividendPreviousAmount1;
-                var cobDividendPreviousAmount2 = _cobDividendPreviousAmount2; cobDividendPreviousAmount2.Clean = value; _cobDividendPreviousAmount2 = cobDividendPreviousAmount2;
-                var cobDividendPreviousMonths1 = _cobDividendPreviousMonths1; cobDividendPreviousMonths1.Clean = value; _cobDividendPreviousMonths1 = cobDividendPreviousMonths1;
-                var cobDividendPreviousMonths2 = _cobDividendPreviousMonths2; cobDividendPreviousMonths2.Clean = value; _cobDividendPreviousMonths2 = cobDividendPreviousMonths2;
-                var cobDividendPreviousYear1 = _cobDividendPreviousYear1; cobDividendPreviousYear1.Clean = value; _cobDividendPreviousYear1 = cobDividendPreviousYear1;
-                var cobDividendPreviousYear2 = _cobDividendPreviousYear2; cobDividendPreviousYear2.Clean = value; _cobDividendPreviousYear2 = cobDividendPreviousYear2;
-                var cobDividendRequiredForCashAmount = _cobDividendRequiredForCashAmount; cobDividendRequiredForCashAmount.Clean = value; _cobDividendRequiredForCashAmount = cobDividendRequiredForCashAmount;
-                var cobInterestAverageDividend = _cobInterestAverageDividend; cobInterestAverageDividend.Clean = value; _cobInterestAverageDividend = cobInterestAverageDividend;
-                var cobInterestPreviousAmount1 = _cobInterestPreviousAmount1; cobInterestPreviousAmount1.Clean = value; _cobInterestPreviousAmount1 = cobInterestPreviousAmount1;
-                var cobInterestPreviousAmount2 = _cobInterestPreviousAmount2; cobInterestPreviousAmount2.Clean = value; _cobInterestPreviousAmount2 = cobInterestPreviousAmount2;
-                var cobInterestPreviousMonths1 = _cobInterestPreviousMonths1; cobInterestPreviousMonths1.Clean = value; _cobInterestPreviousMonths1 = cobInterestPreviousMonths1;
-                var cobInterestPreviousMonths2 = _cobInterestPreviousMonths2; cobInterestPreviousMonths2.Clean = value; _cobInterestPreviousMonths2 = cobInterestPreviousMonths2;
-                var cobInterestPreviousYear1 = _cobInterestPreviousYear1; cobInterestPreviousYear1.Clean = value; _cobInterestPreviousYear1 = cobInterestPreviousYear1;
-                var cobInterestPreviousYear2 = _cobInterestPreviousYear2; cobInterestPreviousYear2.Clean = value; _cobInterestPreviousYear2 = cobInterestPreviousYear2;
-                var cobInterestRequiredForCashAmount = _cobInterestRequiredForCashAmount; cobInterestRequiredForCashAmount.Clean = value; _cobInterestRequiredForCashAmount = cobInterestRequiredForCashAmount;
-                var cobMilitaryAllowanceClothingAllowance = _cobMilitaryAllowanceClothingAllowance; cobMilitaryAllowanceClothingAllowance.Clean = value; _cobMilitaryAllowanceClothingAllowance = cobMilitaryAllowanceClothingAllowance;
-                var cobMilitaryAllowanceOtherAllowance = _cobMilitaryAllowanceOtherAllowance; cobMilitaryAllowanceOtherAllowance.Clean = value; _cobMilitaryAllowanceOtherAllowance = cobMilitaryAllowanceOtherAllowance;
-                var cobMilitaryAllowanceQuartersAllowance = _cobMilitaryAllowanceQuartersAllowance; cobMilitaryAllowanceQuartersAllowance.Clean = value; _cobMilitaryAllowanceQuartersAllowance = cobMilitaryAllowanceQuartersAllowance;
-                var cobMilitaryAllowanceRationsAllowance = _cobMilitaryAllowanceRationsAllowance; cobMilitaryAllowanceRationsAllowance.Clean = value; _cobMilitaryAllowanceRationsAllowance = cobMilitaryAllowanceRationsAllowance;
-                var cobMilitaryAllowanceTotalAllowance = _cobMilitaryAllowanceTotalAllowance; cobMilitaryAllowanceTotalAllowance.Clean = value; _cobMilitaryAllowanceTotalAllowance = cobMilitaryAllowanceTotalAllowance;
-                var cobMilitaryAllowanceVariableHousingAllowance = _cobMilitaryAllowanceVariableHousingAllowance; cobMilitaryAllowanceVariableHousingAllowance.Clean = value; _cobMilitaryAllowanceVariableHousingAllowance = cobMilitaryAllowanceVariableHousingAllowance;
-                var cobMilitaryBasePay = _cobMilitaryBasePay; cobMilitaryBasePay.Clean = value; _cobMilitaryBasePay = cobMilitaryBasePay;
-                var cobMilitaryCombatPay = _cobMilitaryCombatPay; cobMilitaryCombatPay.Clean = value; _cobMilitaryCombatPay = cobMilitaryCombatPay;
-                var cobMilitaryFlightPay = _cobMilitaryFlightPay; cobMilitaryFlightPay.Clean = value; _cobMilitaryFlightPay = cobMilitaryFlightPay;
-                var cobMilitaryHazardPay = _cobMilitaryHazardPay; cobMilitaryHazardPay.Clean = value; _cobMilitaryHazardPay = cobMilitaryHazardPay;
-                var cobMilitaryOverseasPay = _cobMilitaryOverseasPay; cobMilitaryOverseasPay.Clean = value; _cobMilitaryOverseasPay = cobMilitaryOverseasPay;
-                var cobMilitaryPropPay = _cobMilitaryPropPay; cobMilitaryPropPay.Clean = value; _cobMilitaryPropPay = cobMilitaryPropPay;
-                var cobMilitaryTotalPay = _cobMilitaryTotalPay; cobMilitaryTotalPay.Clean = value; _cobMilitaryTotalPay = cobMilitaryTotalPay;
-                var cobMonthlyEmplymentIncomeBaseIncome = _cobMonthlyEmplymentIncomeBaseIncome; cobMonthlyEmplymentIncomeBaseIncome.Clean = value; _cobMonthlyEmplymentIncomeBaseIncome = cobMonthlyEmplymentIncomeBaseIncome;
-                var cobMonthlyEmplymentIncomeBonuseIncome = _cobMonthlyEmplymentIncomeBonuseIncome; cobMonthlyEmplymentIncomeBonuseIncome.Clean = value; _cobMonthlyEmplymentIncomeBonuseIncome = cobMonthlyEmplymentIncomeBonuseIncome;
-                var cobMonthlyEmplymentIncomeCommissionIncome = _cobMonthlyEmplymentIncomeCommissionIncome; cobMonthlyEmplymentIncomeCommissionIncome.Clean = value; _cobMonthlyEmplymentIncomeCommissionIncome = cobMonthlyEmplymentIncomeCommissionIncome;
-                var cobMonthlyEmplymentIncomeDividendInterestIncome = _cobMonthlyEmplymentIncomeDividendInterestIncome; cobMonthlyEmplymentIncomeDividendInterestIncome.Clean = value; _cobMonthlyEmplymentIncomeDividendInterestIncome = cobMonthlyEmplymentIncomeDividendInterestIncome;
-                var cobMonthlyEmplymentIncomeOtherIncome1 = _cobMonthlyEmplymentIncomeOtherIncome1; cobMonthlyEmplymentIncomeOtherIncome1.Clean = value; _cobMonthlyEmplymentIncomeOtherIncome1 = cobMonthlyEmplymentIncomeOtherIncome1;
-                var cobMonthlyEmplymentIncomeOtherIncome2 = _cobMonthlyEmplymentIncomeOtherIncome2; cobMonthlyEmplymentIncomeOtherIncome2.Clean = value; _cobMonthlyEmplymentIncomeOtherIncome2 = cobMonthlyEmplymentIncomeOtherIncome2;
-                var cobMonthlyEmplymentIncomeOvertimeIncome = _cobMonthlyEmplymentIncomeOvertimeIncome; cobMonthlyEmplymentIncomeOvertimeIncome.Clean = value; _cobMonthlyEmplymentIncomeOvertimeIncome = cobMonthlyEmplymentIncomeOvertimeIncome;
-                var cobMonthlyEmplymentIncomeTotalEmploymentIncome = _cobMonthlyEmplymentIncomeTotalEmploymentIncome; cobMonthlyEmplymentIncomeTotalEmploymentIncome.Clean = value; _cobMonthlyEmplymentIncomeTotalEmploymentIncome = cobMonthlyEmplymentIncomeTotalEmploymentIncome;
-                var cobNonEmploymentIncomeGovtAssitProgramIncome = _cobNonEmploymentIncomeGovtAssitProgramIncome; cobNonEmploymentIncomeGovtAssitProgramIncome.Clean = value; _cobNonEmploymentIncomeGovtAssitProgramIncome = cobNonEmploymentIncomeGovtAssitProgramIncome;
-                var cobNonEmploymentIncomeHomeownSubsidyIncome = _cobNonEmploymentIncomeHomeownSubsidyIncome; cobNonEmploymentIncomeHomeownSubsidyIncome.Clean = value; _cobNonEmploymentIncomeHomeownSubsidyIncome = cobNonEmploymentIncomeHomeownSubsidyIncome;
-                var cobNonEmploymentIncomeMilitaryIncome = _cobNonEmploymentIncomeMilitaryIncome; cobNonEmploymentIncomeMilitaryIncome.Clean = value; _cobNonEmploymentIncomeMilitaryIncome = cobNonEmploymentIncomeMilitaryIncome;
-                var cobNonEmploymentIncomeMtgCreditCertificateIncome = _cobNonEmploymentIncomeMtgCreditCertificateIncome; cobNonEmploymentIncomeMtgCreditCertificateIncome.Clean = value; _cobNonEmploymentIncomeMtgCreditCertificateIncome = cobNonEmploymentIncomeMtgCreditCertificateIncome;
-                var cobNonEmploymentIncomeTotalNonEmploymentIncome = _cobNonEmploymentIncomeTotalNonEmploymentIncome; cobNonEmploymentIncomeTotalNonEmploymentIncome.Clean = value; _cobNonEmploymentIncomeTotalNonEmploymentIncome = cobNonEmploymentIncomeTotalNonEmploymentIncome;
-                var cobNonEmploymentIncomeVABenefitIncome = _cobNonEmploymentIncomeVABenefitIncome; cobNonEmploymentIncomeVABenefitIncome.Clean = value; _cobNonEmploymentIncomeVABenefitIncome = cobNonEmploymentIncomeVABenefitIncome;
-                var cobNonTaxableIncomeChildSupportIncome = _cobNonTaxableIncomeChildSupportIncome; cobNonTaxableIncomeChildSupportIncome.Clean = value; _cobNonTaxableIncomeChildSupportIncome = cobNonTaxableIncomeChildSupportIncome;
-                var cobNonTaxableIncomeDisabilityIncome = _cobNonTaxableIncomeDisabilityIncome; cobNonTaxableIncomeDisabilityIncome.Clean = value; _cobNonTaxableIncomeDisabilityIncome = cobNonTaxableIncomeDisabilityIncome;
-                var cobNonTaxableIncomeFedGovtEmplRetirementIncome = _cobNonTaxableIncomeFedGovtEmplRetirementIncome; cobNonTaxableIncomeFedGovtEmplRetirementIncome.Clean = value; _cobNonTaxableIncomeFedGovtEmplRetirementIncome = cobNonTaxableIncomeFedGovtEmplRetirementIncome;
-                var cobNonTaxableIncomeMilitaryAllowances = _cobNonTaxableIncomeMilitaryAllowances; cobNonTaxableIncomeMilitaryAllowances.Clean = value; _cobNonTaxableIncomeMilitaryAllowances = cobNonTaxableIncomeMilitaryAllowances;
-                var cobNonTaxableIncomeOtherIncome = _cobNonTaxableIncomeOtherIncome; cobNonTaxableIncomeOtherIncome.Clean = value; _cobNonTaxableIncomeOtherIncome = cobNonTaxableIncomeOtherIncome;
-                var cobNonTaxableIncomePublicAssistPayments = _cobNonTaxableIncomePublicAssistPayments; cobNonTaxableIncomePublicAssistPayments.Clean = value; _cobNonTaxableIncomePublicAssistPayments = cobNonTaxableIncomePublicAssistPayments;
-                var cobNonTaxableIncomeRailroadRetirementBenefits = _cobNonTaxableIncomeRailroadRetirementBenefits; cobNonTaxableIncomeRailroadRetirementBenefits.Clean = value; _cobNonTaxableIncomeRailroadRetirementBenefits = cobNonTaxableIncomeRailroadRetirementBenefits;
-                var cobNonTaxableIncomeSocialSecurityIncome = _cobNonTaxableIncomeSocialSecurityIncome; cobNonTaxableIncomeSocialSecurityIncome.Clean = value; _cobNonTaxableIncomeSocialSecurityIncome = cobNonTaxableIncomeSocialSecurityIncome;
-                var cobNonTaxableIncomeStateGovtEmplRetirementIncome = _cobNonTaxableIncomeStateGovtEmplRetirementIncome; cobNonTaxableIncomeStateGovtEmplRetirementIncome.Clean = value; _cobNonTaxableIncomeStateGovtEmplRetirementIncome = cobNonTaxableIncomeStateGovtEmplRetirementIncome;
-                var cobNonTaxableIncomeTotalNonTaxableIncome = _cobNonTaxableIncomeTotalNonTaxableIncome; cobNonTaxableIncomeTotalNonTaxableIncome.Clean = value; _cobNonTaxableIncomeTotalNonTaxableIncome = cobNonTaxableIncomeTotalNonTaxableIncome;
-                var cobOtherNotesReceivableIncome = _cobOtherNotesReceivableIncome; cobOtherNotesReceivableIncome.Clean = value; _cobOtherNotesReceivableIncome = cobOtherNotesReceivableIncome;
-                var cobOtherOtherIncome = _cobOtherOtherIncome; cobOtherOtherIncome.Clean = value; _cobOtherOtherIncome = cobOtherOtherIncome;
-                var cobOtherParttimeIncome = _cobOtherParttimeIncome; cobOtherParttimeIncome.Clean = value; _cobOtherParttimeIncome = cobOtherParttimeIncome;
-                var cobOtherRetirementIncome = _cobOtherRetirementIncome; cobOtherRetirementIncome.Clean = value; _cobOtherRetirementIncome = cobOtherRetirementIncome;
-                var cobOtherSeasonalIncome = _cobOtherSeasonalIncome; cobOtherSeasonalIncome.Clean = value; _cobOtherSeasonalIncome = cobOtherSeasonalIncome;
-                var cobOtherSocialSecurityIncome = _cobOtherSocialSecurityIncome; cobOtherSocialSecurityIncome.Clean = value; _cobOtherSocialSecurityIncome = cobOtherSocialSecurityIncome;
-                var cobOtherTipIncome = _cobOtherTipIncome; cobOtherTipIncome.Clean = value; _cobOtherTipIncome = cobOtherTipIncome;
-                var cobOtherTrustIncome = _cobOtherTrustIncome; cobOtherTrustIncome.Clean = value; _cobOtherTrustIncome = cobOtherTrustIncome;
-                var cobOtherUnemploymentIncome = _cobOtherUnemploymentIncome; cobOtherUnemploymentIncome.Clean = value; _cobOtherUnemploymentIncome = cobOtherUnemploymentIncome;
-                var cobOvertimeAverageOvertime = _cobOvertimeAverageOvertime; cobOvertimeAverageOvertime.Clean = value; _cobOvertimeAverageOvertime = cobOvertimeAverageOvertime;
-                var cobOvertimeMostRecentAmount = _cobOvertimeMostRecentAmount; cobOvertimeMostRecentAmount.Clean = value; _cobOvertimeMostRecentAmount = cobOvertimeMostRecentAmount;
-                var cobOvertimeMostRecentMonths = _cobOvertimeMostRecentMonths; cobOvertimeMostRecentMonths.Clean = value; _cobOvertimeMostRecentMonths = cobOvertimeMostRecentMonths;
-                var cobOvertimeMostRecentYear = _cobOvertimeMostRecentYear; cobOvertimeMostRecentYear.Clean = value; _cobOvertimeMostRecentYear = cobOvertimeMostRecentYear;
-                var cobOvertimePreviousAmount1 = _cobOvertimePreviousAmount1; cobOvertimePreviousAmount1.Clean = value; _cobOvertimePreviousAmount1 = cobOvertimePreviousAmount1;
-                var cobOvertimePreviousAmount2 = _cobOvertimePreviousAmount2; cobOvertimePreviousAmount2.Clean = value; _cobOvertimePreviousAmount2 = cobOvertimePreviousAmount2;
-                var cobOvertimePreviousMonths1 = _cobOvertimePreviousMonths1; cobOvertimePreviousMonths1.Clean = value; _cobOvertimePreviousMonths1 = cobOvertimePreviousMonths1;
-                var cobOvertimePreviousMonths2 = _cobOvertimePreviousMonths2; cobOvertimePreviousMonths2.Clean = value; _cobOvertimePreviousMonths2 = cobOvertimePreviousMonths2;
-                var cobOvertimePreviousYear1 = _cobOvertimePreviousYear1; cobOvertimePreviousYear1.Clean = value; _cobOvertimePreviousYear1 = cobOvertimePreviousYear1;
-                var cobOvertimePreviousYear2 = _cobOvertimePreviousYear2; cobOvertimePreviousYear2.Clean = value; _cobOvertimePreviousYear2 = cobOvertimePreviousYear2;
-                var cobProjectedIncomeProjectedBonuses = _cobProjectedIncomeProjectedBonuses; cobProjectedIncomeProjectedBonuses.Clean = value; _cobProjectedIncomeProjectedBonuses = cobProjectedIncomeProjectedBonuses;
-                var cobProjectedIncomeProjectedCostLivingAdjustment = _cobProjectedIncomeProjectedCostLivingAdjustment; cobProjectedIncomeProjectedCostLivingAdjustment.Clean = value; _cobProjectedIncomeProjectedCostLivingAdjustment = cobProjectedIncomeProjectedCostLivingAdjustment;
-                var cobProjectedIncomeProjectedNewJobIncome = _cobProjectedIncomeProjectedNewJobIncome; cobProjectedIncomeProjectedNewJobIncome.Clean = value; _cobProjectedIncomeProjectedNewJobIncome = cobProjectedIncomeProjectedNewJobIncome;
-                var cobProjectedIncomeProjectedPerformanceRaises = _cobProjectedIncomeProjectedPerformanceRaises; cobProjectedIncomeProjectedPerformanceRaises.Clean = value; _cobProjectedIncomeProjectedPerformanceRaises = cobProjectedIncomeProjectedPerformanceRaises;
-                var cobProjectedIncomeTotalProjectedIncome = _cobProjectedIncomeTotalProjectedIncome; cobProjectedIncomeTotalProjectedIncome.Clean = value; _cobProjectedIncomeTotalProjectedIncome = cobProjectedIncomeTotalProjectedIncome;
-                var dUCaseIDorLPAUSKey = _dUCaseIDorLPAUSKey; dUCaseIDorLPAUSKey.Clean = value; _dUCaseIDorLPAUSKey = dUCaseIDorLPAUSKey;
-                var firstSubmissionDate = _firstSubmissionDate; firstSubmissionDate.Clean = value; _firstSubmissionDate = firstSubmissionDate;
-                var firstSubmissionTime = _firstSubmissionTime; firstSubmissionTime.Clean = value; _firstSubmissionTime = firstSubmissionTime;
-                var freddieDocClass = _freddieDocClass; freddieDocClass.Clean = value; _freddieDocClass = freddieDocClass;
-                var housingRatio = _housingRatio; housingRatio.Clean = value; _housingRatio = housingRatio;
-                var id = _id; id.Clean = value; _id = id;
-                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
-                var submissionDate = _submissionDate; submissionDate.Clean = value; _submissionDate = submissionDate;
-                var submissionNumber = _submissionNumber; submissionNumber.Clean = value; _submissionNumber = submissionNumber;
-                var submissionTime = _submissionTime; submissionTime.Clean = value; _submissionTime = submissionTime;
-                var submittedBy = _submittedBy; submittedBy.Clean = value; _submittedBy = submittedBy;
-                var totalExpenseRatio = _totalExpenseRatio; totalExpenseRatio.Clean = value; _totalExpenseRatio = totalExpenseRatio;
-                var totalHousingPayment = _totalHousingPayment; totalHousingPayment.Clean = value; _totalHousingPayment = totalHousingPayment;
-                var totalMonthlyAssets = _totalMonthlyAssets; totalMonthlyAssets.Clean = value; _totalMonthlyAssets = totalMonthlyAssets;
-                var totalMonthlyDebt = _totalMonthlyDebt; totalMonthlyDebt.Clean = value; _totalMonthlyDebt = totalMonthlyDebt;
-                var totalMonthlyIncome = _totalMonthlyIncome; totalMonthlyIncome.Clean = value; _totalMonthlyIncome = totalMonthlyIncome;
-                var underwritingRiskAssessOther = _underwritingRiskAssessOther; underwritingRiskAssessOther.Clean = value; _underwritingRiskAssessOther = underwritingRiskAssessOther;
-                var underwritingRiskAssessType = _underwritingRiskAssessType; underwritingRiskAssessType.Clean = value; _underwritingRiskAssessType = underwritingRiskAssessType;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aTRQMBorrowerIndex.Dirty = value;
+                _aUSRecommendation.Dirty = value;
+                _aUSVersion.Dirty = value;
+                _borBonusAverageOvertime.Dirty = value;
+                _borBonusMostRecentAmount.Dirty = value;
+                _borBonusMostRecentMonths.Dirty = value;
+                _borBonusMostRecentYear.Dirty = value;
+                _borBonusPreviousAmount1.Dirty = value;
+                _borBonusPreviousAmount2.Dirty = value;
+                _borBonusPreviousMonths1.Dirty = value;
+                _borBonusPreviousMonths2.Dirty = value;
+                _borBonusPreviousYear1.Dirty = value;
+                _borBonusPreviousYear2.Dirty = value;
+                _borCommissionAverageOvertime.Dirty = value;
+                _borCommissionMostRecentAmount.Dirty = value;
+                _borCommissionMostRecentMonths.Dirty = value;
+                _borCommissionMostRecentYear.Dirty = value;
+                _borCommissionPreviousAmount1.Dirty = value;
+                _borCommissionPreviousAmount2.Dirty = value;
+                _borCommissionPreviousMonths1.Dirty = value;
+                _borCommissionPreviousMonths2.Dirty = value;
+                _borCommissionPreviousYear1.Dirty = value;
+                _borCommissionPreviousYear2.Dirty = value;
+                _borContingentLiabilitiesLiabilityAmount1.Dirty = value;
+                _borContingentLiabilitiesLiabilityAmount2.Dirty = value;
+                _borContingentLiabilitiesLiabilityAmount3.Dirty = value;
+                _borContingentLiabilitiesLiabilityDescription1.Dirty = value;
+                _borContingentLiabilitiesLiabilityDescription2.Dirty = value;
+                _borContingentLiabilitiesLiabilityDescription3.Dirty = value;
+                _borContingentLiabilitiesTotalLiabilityAmount.Dirty = value;
+                _borCosignedObligationsCarLoanPayment.Dirty = value;
+                _borCosignedObligationsMortgagePayment.Dirty = value;
+                _borCosignedObligationsOtherPayment.Dirty = value;
+                _borCosignedObligationsOtherPaymentDescription.Dirty = value;
+                _borCosignedObligationsStudentLoanPayment.Dirty = value;
+                _borCosignedObligationsTotalCoMortgagorLiabilities.Dirty = value;
+                _borDividendAverageDividend.Dirty = value;
+                _borDividendPreviousAmount1.Dirty = value;
+                _borDividendPreviousAmount2.Dirty = value;
+                _borDividendPreviousMonths1.Dirty = value;
+                _borDividendPreviousMonths2.Dirty = value;
+                _borDividendPreviousYear1.Dirty = value;
+                _borDividendPreviousYear2.Dirty = value;
+                _borDividendRequiredForCashAmount.Dirty = value;
+                _borInterestAverageDividend.Dirty = value;
+                _borInterestPreviousAmount1.Dirty = value;
+                _borInterestPreviousAmount2.Dirty = value;
+                _borInterestPreviousMonths1.Dirty = value;
+                _borInterestPreviousMonths2.Dirty = value;
+                _borInterestPreviousYear1.Dirty = value;
+                _borInterestPreviousYear2.Dirty = value;
+                _borInterestRequiredForCashAmount.Dirty = value;
+                _borMilitaryAllowanceClothingAllowance.Dirty = value;
+                _borMilitaryAllowanceOtherAllowance.Dirty = value;
+                _borMilitaryAllowanceOtherAllowanceDescription.Dirty = value;
+                _borMilitaryAllowanceQuartersAllowance.Dirty = value;
+                _borMilitaryAllowanceRationsAllowance.Dirty = value;
+                _borMilitaryAllowanceTotalAllowance.Dirty = value;
+                _borMilitaryAllowanceVariableHousingAllowance.Dirty = value;
+                _borMilitaryBasePay.Dirty = value;
+                _borMilitaryCombatPay.Dirty = value;
+                _borMilitaryFlightPay.Dirty = value;
+                _borMilitaryHazardPay.Dirty = value;
+                _borMilitaryOverseasPay.Dirty = value;
+                _borMilitaryPropPay.Dirty = value;
+                _borMilitaryTotalPay.Dirty = value;
+                _borMonthlyEmplymentIncomeBaseIncome.Dirty = value;
+                _borMonthlyEmplymentIncomeBonuseIncome.Dirty = value;
+                _borMonthlyEmplymentIncomeCommissionIncome.Dirty = value;
+                _borMonthlyEmplymentIncomeDividendInterestIncome.Dirty = value;
+                _borMonthlyEmplymentIncomeOtherIncome1.Dirty = value;
+                _borMonthlyEmplymentIncomeOtherIncome2.Dirty = value;
+                _borMonthlyEmplymentIncomeOvertimeIncome.Dirty = value;
+                _borMonthlyEmplymentIncomeTotalEmploymentIncome.Dirty = value;
+                _borNonEmploymentIncomeGovtAssitProgramIncome.Dirty = value;
+                _borNonEmploymentIncomeHomeownSubsidyIncome.Dirty = value;
+                _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome.Dirty = value;
+                _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome.Dirty = value;
+                _borNonEmploymentIncomeMilitaryIncome.Dirty = value;
+                _borNonEmploymentIncomeMtgCreditCertificateIncome.Dirty = value;
+                _borNonEmploymentIncomeTotalNonEmploymentIncome.Dirty = value;
+                _borNonEmploymentIncomeVABenefitIncome.Dirty = value;
+                _borNonTaxableIncomeChildSupportIncome.Dirty = value;
+                _borNonTaxableIncomeDisabilityIncome.Dirty = value;
+                _borNonTaxableIncomeFedGovtEmplRetirementIncome.Dirty = value;
+                _borNonTaxableIncomeMilitaryAllowances.Dirty = value;
+                _borNonTaxableIncomeOtherIncome.Dirty = value;
+                _borNonTaxableIncomePublicAssistPayments.Dirty = value;
+                _borNonTaxableIncomeRailroadRetirementBenefits.Dirty = value;
+                _borNonTaxableIncomeSocialSecurityIncome.Dirty = value;
+                _borNonTaxableIncomeStateGovtEmplRetirementIncome.Dirty = value;
+                _borNonTaxableIncomeTotalNonTaxableIncome.Dirty = value;
+                _borOtherNotesReceivableIncome.Dirty = value;
+                _borOtherOtherIncome.Dirty = value;
+                _borOtherParttimeIncome.Dirty = value;
+                _borOtherRetirementIncome.Dirty = value;
+                _borOtherSeasonalIncome.Dirty = value;
+                _borOtherSocialSecurityIncome.Dirty = value;
+                _borOtherTipIncome.Dirty = value;
+                _borOtherTrustIncome.Dirty = value;
+                _borOtherUnemploymentIncome.Dirty = value;
+                _borOvertimeAverageOvertime.Dirty = value;
+                _borOvertimeMostRecentAmount.Dirty = value;
+                _borOvertimeMostRecentMonths.Dirty = value;
+                _borOvertimeMostRecentYear.Dirty = value;
+                _borOvertimePreviousAmount1.Dirty = value;
+                _borOvertimePreviousAmount2.Dirty = value;
+                _borOvertimePreviousMonths1.Dirty = value;
+                _borOvertimePreviousMonths2.Dirty = value;
+                _borOvertimePreviousYear1.Dirty = value;
+                _borOvertimePreviousYear2.Dirty = value;
+                _borProjectedIncomeProjectedBonuses.Dirty = value;
+                _borProjectedIncomeProjectedCostLivingAdjustment.Dirty = value;
+                _borProjectedIncomeProjectedNewJobIncome.Dirty = value;
+                _borProjectedIncomeProjectedPerformanceRaises.Dirty = value;
+                _borProjectedIncomeTotalProjectedIncome.Dirty = value;
+                _cobBonusAverageOvertime.Dirty = value;
+                _cobBonusMostRecentAmount.Dirty = value;
+                _cobBonusMostRecentMonths.Dirty = value;
+                _cobBonusMostRecentYear.Dirty = value;
+                _cobBonusPreviousAmount1.Dirty = value;
+                _cobBonusPreviousAmount2.Dirty = value;
+                _cobBonusPreviousMonths1.Dirty = value;
+                _cobBonusPreviousMonths2.Dirty = value;
+                _cobBonusPreviousYear1.Dirty = value;
+                _cobBonusPreviousYear2.Dirty = value;
+                _cobCommissionAverageOvertime.Dirty = value;
+                _cobCommissionMostRecentAmount.Dirty = value;
+                _cobCommissionMostRecentMonths.Dirty = value;
+                _cobCommissionMostRecentYear.Dirty = value;
+                _cobCommissionPreviousAmount1.Dirty = value;
+                _cobCommissionPreviousAmount2.Dirty = value;
+                _cobCommissionPreviousMonths1.Dirty = value;
+                _cobCommissionPreviousMonths2.Dirty = value;
+                _cobCommissionPreviousYear1.Dirty = value;
+                _cobCommissionPreviousYear2.Dirty = value;
+                _cobDividendAverageDividend.Dirty = value;
+                _cobDividendPreviousAmount1.Dirty = value;
+                _cobDividendPreviousAmount2.Dirty = value;
+                _cobDividendPreviousMonths1.Dirty = value;
+                _cobDividendPreviousMonths2.Dirty = value;
+                _cobDividendPreviousYear1.Dirty = value;
+                _cobDividendPreviousYear2.Dirty = value;
+                _cobDividendRequiredForCashAmount.Dirty = value;
+                _cobInterestAverageDividend.Dirty = value;
+                _cobInterestPreviousAmount1.Dirty = value;
+                _cobInterestPreviousAmount2.Dirty = value;
+                _cobInterestPreviousMonths1.Dirty = value;
+                _cobInterestPreviousMonths2.Dirty = value;
+                _cobInterestPreviousYear1.Dirty = value;
+                _cobInterestPreviousYear2.Dirty = value;
+                _cobInterestRequiredForCashAmount.Dirty = value;
+                _cobMilitaryAllowanceClothingAllowance.Dirty = value;
+                _cobMilitaryAllowanceOtherAllowance.Dirty = value;
+                _cobMilitaryAllowanceQuartersAllowance.Dirty = value;
+                _cobMilitaryAllowanceRationsAllowance.Dirty = value;
+                _cobMilitaryAllowanceTotalAllowance.Dirty = value;
+                _cobMilitaryAllowanceVariableHousingAllowance.Dirty = value;
+                _cobMilitaryBasePay.Dirty = value;
+                _cobMilitaryCombatPay.Dirty = value;
+                _cobMilitaryFlightPay.Dirty = value;
+                _cobMilitaryHazardPay.Dirty = value;
+                _cobMilitaryOverseasPay.Dirty = value;
+                _cobMilitaryPropPay.Dirty = value;
+                _cobMilitaryTotalPay.Dirty = value;
+                _cobMonthlyEmplymentIncomeBaseIncome.Dirty = value;
+                _cobMonthlyEmplymentIncomeBonuseIncome.Dirty = value;
+                _cobMonthlyEmplymentIncomeCommissionIncome.Dirty = value;
+                _cobMonthlyEmplymentIncomeDividendInterestIncome.Dirty = value;
+                _cobMonthlyEmplymentIncomeOtherIncome1.Dirty = value;
+                _cobMonthlyEmplymentIncomeOtherIncome2.Dirty = value;
+                _cobMonthlyEmplymentIncomeOvertimeIncome.Dirty = value;
+                _cobMonthlyEmplymentIncomeTotalEmploymentIncome.Dirty = value;
+                _cobNonEmploymentIncomeGovtAssitProgramIncome.Dirty = value;
+                _cobNonEmploymentIncomeHomeownSubsidyIncome.Dirty = value;
+                _cobNonEmploymentIncomeMilitaryIncome.Dirty = value;
+                _cobNonEmploymentIncomeMtgCreditCertificateIncome.Dirty = value;
+                _cobNonEmploymentIncomeTotalNonEmploymentIncome.Dirty = value;
+                _cobNonEmploymentIncomeVABenefitIncome.Dirty = value;
+                _cobNonTaxableIncomeChildSupportIncome.Dirty = value;
+                _cobNonTaxableIncomeDisabilityIncome.Dirty = value;
+                _cobNonTaxableIncomeFedGovtEmplRetirementIncome.Dirty = value;
+                _cobNonTaxableIncomeMilitaryAllowances.Dirty = value;
+                _cobNonTaxableIncomeOtherIncome.Dirty = value;
+                _cobNonTaxableIncomePublicAssistPayments.Dirty = value;
+                _cobNonTaxableIncomeRailroadRetirementBenefits.Dirty = value;
+                _cobNonTaxableIncomeSocialSecurityIncome.Dirty = value;
+                _cobNonTaxableIncomeStateGovtEmplRetirementIncome.Dirty = value;
+                _cobNonTaxableIncomeTotalNonTaxableIncome.Dirty = value;
+                _cobOtherNotesReceivableIncome.Dirty = value;
+                _cobOtherOtherIncome.Dirty = value;
+                _cobOtherParttimeIncome.Dirty = value;
+                _cobOtherRetirementIncome.Dirty = value;
+                _cobOtherSeasonalIncome.Dirty = value;
+                _cobOtherSocialSecurityIncome.Dirty = value;
+                _cobOtherTipIncome.Dirty = value;
+                _cobOtherTrustIncome.Dirty = value;
+                _cobOtherUnemploymentIncome.Dirty = value;
+                _cobOvertimeAverageOvertime.Dirty = value;
+                _cobOvertimeMostRecentAmount.Dirty = value;
+                _cobOvertimeMostRecentMonths.Dirty = value;
+                _cobOvertimeMostRecentYear.Dirty = value;
+                _cobOvertimePreviousAmount1.Dirty = value;
+                _cobOvertimePreviousAmount2.Dirty = value;
+                _cobOvertimePreviousMonths1.Dirty = value;
+                _cobOvertimePreviousMonths2.Dirty = value;
+                _cobOvertimePreviousYear1.Dirty = value;
+                _cobOvertimePreviousYear2.Dirty = value;
+                _cobProjectedIncomeProjectedBonuses.Dirty = value;
+                _cobProjectedIncomeProjectedCostLivingAdjustment.Dirty = value;
+                _cobProjectedIncomeProjectedNewJobIncome.Dirty = value;
+                _cobProjectedIncomeProjectedPerformanceRaises.Dirty = value;
+                _cobProjectedIncomeTotalProjectedIncome.Dirty = value;
+                _dUCaseIDorLPAUSKey.Dirty = value;
+                _firstSubmissionDate.Dirty = value;
+                _firstSubmissionTime.Dirty = value;
+                _freddieDocClass.Dirty = value;
+                _housingRatio.Dirty = value;
+                _id.Dirty = value;
+                _isEmpty.Dirty = value;
+                _submissionDate.Dirty = value;
+                _submissionNumber.Dirty = value;
+                _submissionTime.Dirty = value;
+                _submittedBy.Dirty = value;
+                _totalExpenseRatio.Dirty = value;
+                _totalHousingPayment.Dirty = value;
+                _totalMonthlyAssets.Dirty = value;
+                _totalMonthlyDebt.Dirty = value;
+                _totalMonthlyIncome.Dirty = value;
+                _underwritingRiskAssessOther.Dirty = value;
+                _underwritingRiskAssessType.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ATRQMBorrower()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

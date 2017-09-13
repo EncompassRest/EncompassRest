@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanSubmission : IClean
+    public sealed partial class LoanSubmission : IDirty
     {
         private Value<decimal?> _amountAvailable;
         public decimal? AmountAvailable { get { return _amountAvailable; } set { _amountAvailable = value; } }
@@ -66,85 +66,80 @@ namespace EncompassRest.Loans
         public decimal? TotalForDueLender { get { return _totalForDueLender; } set { _totalForDueLender = value; } }
         private Value<decimal?> _totalForPrimaryResidence;
         public decimal? TotalForPrimaryResidence { get { return _totalForPrimaryResidence; } set { _totalForPrimaryResidence = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amountAvailable.Clean
-                    && _amountRequiredToClose.Clean
-                    && _buydownDescription.Clean
-                    && _buydownMonthsPerAdjustment.Clean
-                    && _comments.Clean
-                    && _currentRateSetDate.Clean
-                    && _dateLastPaymentReceived.Clean
-                    && _floodIndicator.Clean
-                    && _hazardIndicator.Clean
-                    && _id.Clean
-                    && _isSecondaryRegistration.Clean
-                    && _loanSubmissionFees.Clean
-                    && _lockDate.Clean
-                    && _lockDateTimestampUtc.Clean
-                    && _lockExpiresDate.Clean
-                    && _mmmPmiIndicator.Clean
-                    && _numberOfDays.Clean
-                    && _otherDescription.Clean
-                    && _otherIndicator.Clean
-                    && _programCode.Clean
-                    && _rateLock.Clean
-                    && _rateLockDisclosureDate.Clean
-                    && _reducedDocsIndicator.Clean
-                    && _taxesIndicator.Clean
-                    && _total.Clean
-                    && _totalDiscountPointCharged.Clean
-                    && _totalForDueBroker.Clean
-                    && _totalForDueLender.Clean
-                    && _totalForPrimaryResidence.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amountAvailable.Dirty
+                    || _amountRequiredToClose.Dirty
+                    || _buydownDescription.Dirty
+                    || _buydownMonthsPerAdjustment.Dirty
+                    || _comments.Dirty
+                    || _currentRateSetDate.Dirty
+                    || _dateLastPaymentReceived.Dirty
+                    || _floodIndicator.Dirty
+                    || _hazardIndicator.Dirty
+                    || _id.Dirty
+                    || _isSecondaryRegistration.Dirty
+                    || _loanSubmissionFees.Dirty
+                    || _lockDate.Dirty
+                    || _lockDateTimestampUtc.Dirty
+                    || _lockExpiresDate.Dirty
+                    || _mmmPmiIndicator.Dirty
+                    || _numberOfDays.Dirty
+                    || _otherDescription.Dirty
+                    || _otherIndicator.Dirty
+                    || _programCode.Dirty
+                    || _rateLock.Dirty
+                    || _rateLockDisclosureDate.Dirty
+                    || _reducedDocsIndicator.Dirty
+                    || _taxesIndicator.Dirty
+                    || _total.Dirty
+                    || _totalDiscountPointCharged.Dirty
+                    || _totalForDueBroker.Dirty
+                    || _totalForDueLender.Dirty
+                    || _totalForPrimaryResidence.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amountAvailable = _amountAvailable; amountAvailable.Clean = value; _amountAvailable = amountAvailable;
-                var amountRequiredToClose = _amountRequiredToClose; amountRequiredToClose.Clean = value; _amountRequiredToClose = amountRequiredToClose;
-                var buydownDescription = _buydownDescription; buydownDescription.Clean = value; _buydownDescription = buydownDescription;
-                var buydownMonthsPerAdjustment = _buydownMonthsPerAdjustment; buydownMonthsPerAdjustment.Clean = value; _buydownMonthsPerAdjustment = buydownMonthsPerAdjustment;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var currentRateSetDate = _currentRateSetDate; currentRateSetDate.Clean = value; _currentRateSetDate = currentRateSetDate;
-                var dateLastPaymentReceived = _dateLastPaymentReceived; dateLastPaymentReceived.Clean = value; _dateLastPaymentReceived = dateLastPaymentReceived;
-                var floodIndicator = _floodIndicator; floodIndicator.Clean = value; _floodIndicator = floodIndicator;
-                var hazardIndicator = _hazardIndicator; hazardIndicator.Clean = value; _hazardIndicator = hazardIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var isSecondaryRegistration = _isSecondaryRegistration; isSecondaryRegistration.Clean = value; _isSecondaryRegistration = isSecondaryRegistration;
-                var loanSubmissionFees = _loanSubmissionFees; loanSubmissionFees.Clean = value; _loanSubmissionFees = loanSubmissionFees;
-                var lockDate = _lockDate; lockDate.Clean = value; _lockDate = lockDate;
-                var lockDateTimestampUtc = _lockDateTimestampUtc; lockDateTimestampUtc.Clean = value; _lockDateTimestampUtc = lockDateTimestampUtc;
-                var lockExpiresDate = _lockExpiresDate; lockExpiresDate.Clean = value; _lockExpiresDate = lockExpiresDate;
-                var mmmPmiIndicator = _mmmPmiIndicator; mmmPmiIndicator.Clean = value; _mmmPmiIndicator = mmmPmiIndicator;
-                var numberOfDays = _numberOfDays; numberOfDays.Clean = value; _numberOfDays = numberOfDays;
-                var otherDescription = _otherDescription; otherDescription.Clean = value; _otherDescription = otherDescription;
-                var otherIndicator = _otherIndicator; otherIndicator.Clean = value; _otherIndicator = otherIndicator;
-                var programCode = _programCode; programCode.Clean = value; _programCode = programCode;
-                var rateLock = _rateLock; rateLock.Clean = value; _rateLock = rateLock;
-                var rateLockDisclosureDate = _rateLockDisclosureDate; rateLockDisclosureDate.Clean = value; _rateLockDisclosureDate = rateLockDisclosureDate;
-                var reducedDocsIndicator = _reducedDocsIndicator; reducedDocsIndicator.Clean = value; _reducedDocsIndicator = reducedDocsIndicator;
-                var taxesIndicator = _taxesIndicator; taxesIndicator.Clean = value; _taxesIndicator = taxesIndicator;
-                var total = _total; total.Clean = value; _total = total;
-                var totalDiscountPointCharged = _totalDiscountPointCharged; totalDiscountPointCharged.Clean = value; _totalDiscountPointCharged = totalDiscountPointCharged;
-                var totalForDueBroker = _totalForDueBroker; totalForDueBroker.Clean = value; _totalForDueBroker = totalForDueBroker;
-                var totalForDueLender = _totalForDueLender; totalForDueLender.Clean = value; _totalForDueLender = totalForDueLender;
-                var totalForPrimaryResidence = _totalForPrimaryResidence; totalForPrimaryResidence.Clean = value; _totalForPrimaryResidence = totalForPrimaryResidence;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amountAvailable.Dirty = value;
+                _amountRequiredToClose.Dirty = value;
+                _buydownDescription.Dirty = value;
+                _buydownMonthsPerAdjustment.Dirty = value;
+                _comments.Dirty = value;
+                _currentRateSetDate.Dirty = value;
+                _dateLastPaymentReceived.Dirty = value;
+                _floodIndicator.Dirty = value;
+                _hazardIndicator.Dirty = value;
+                _id.Dirty = value;
+                _isSecondaryRegistration.Dirty = value;
+                _loanSubmissionFees.Dirty = value;
+                _lockDate.Dirty = value;
+                _lockDateTimestampUtc.Dirty = value;
+                _lockExpiresDate.Dirty = value;
+                _mmmPmiIndicator.Dirty = value;
+                _numberOfDays.Dirty = value;
+                _otherDescription.Dirty = value;
+                _otherIndicator.Dirty = value;
+                _programCode.Dirty = value;
+                _rateLock.Dirty = value;
+                _rateLockDisclosureDate.Dirty = value;
+                _reducedDocsIndicator.Dirty = value;
+                _taxesIndicator.Dirty = value;
+                _total.Dirty = value;
+                _totalDiscountPointCharged.Dirty = value;
+                _totalForDueBroker.Dirty = value;
+                _totalForDueLender.Dirty = value;
+                _totalForPrimaryResidence.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LoanSubmission()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

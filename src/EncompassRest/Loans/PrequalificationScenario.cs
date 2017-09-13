@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrequalificationScenario : IClean
+    public sealed partial class PrequalificationScenario : IDirty
     {
         private Value<int?> _appraisedValue;
         public int? AppraisedValue { get { return _appraisedValue; } set { _appraisedValue = value; } }
@@ -84,103 +84,98 @@ namespace EncompassRest.Loans
         public decimal? TotalPaidOffOthers { get { return _totalPaidOffOthers; } set { _totalPaidOffOthers = value; } }
         private Value<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _appraisedValue.Clean
-                    && _apr.Clean
-                    && _cashToClose.Clean
-                    && _closingCost.Clean
-                    && _cltv.Clean
-                    && _comments.Clean
-                    && _creditScore.Clean
-                    && _currentStatus.Clean
-                    && _downPaymentAmount.Clean
-                    && _downPaymentPercent.Clean
-                    && _fhaUpfrontMIPremiumPercent.Clean
-                    && _grossNegativeCashFlow.Clean
-                    && _id.Clean
-                    && _loanAmount.Clean
-                    && _ltv.Clean
-                    && _maximumDebt.Clean
-                    && _maximumLoanAmount.Clean
-                    && _miAndFundingFeeFinancedAmount.Clean
-                    && _minimumIncome.Clean
-                    && _monthlyPayment.Clean
-                    && _prepaidItemsEstimatedAmount.Clean
-                    && _prequalificationScenarioIndex.Clean
-                    && _qualBottomRatioPercent.Clean
-                    && _qualTopRatioPercent.Clean
-                    && _salesPrice.Clean
-                    && _subordinateFin.Clean
-                    && _totalBaseCost.Clean
-                    && _totalCashAvailable.Clean
-                    && _totalCashLeft.Clean
-                    && _totalCosts.Clean
-                    && _totalFinancing.Clean
-                    && _totalHe.Clean
-                    && _totalIncome.Clean
-                    && _totalLoanAmount.Clean
-                    && _totalOtherExpense.Clean
-                    && _totalPaidOffMortgage.Clean
-                    && _totalPaidOffOthers.Clean
-                    && _totalPayments.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _appraisedValue.Dirty
+                    || _apr.Dirty
+                    || _cashToClose.Dirty
+                    || _closingCost.Dirty
+                    || _cltv.Dirty
+                    || _comments.Dirty
+                    || _creditScore.Dirty
+                    || _currentStatus.Dirty
+                    || _downPaymentAmount.Dirty
+                    || _downPaymentPercent.Dirty
+                    || _fhaUpfrontMIPremiumPercent.Dirty
+                    || _grossNegativeCashFlow.Dirty
+                    || _id.Dirty
+                    || _loanAmount.Dirty
+                    || _ltv.Dirty
+                    || _maximumDebt.Dirty
+                    || _maximumLoanAmount.Dirty
+                    || _miAndFundingFeeFinancedAmount.Dirty
+                    || _minimumIncome.Dirty
+                    || _monthlyPayment.Dirty
+                    || _prepaidItemsEstimatedAmount.Dirty
+                    || _prequalificationScenarioIndex.Dirty
+                    || _qualBottomRatioPercent.Dirty
+                    || _qualTopRatioPercent.Dirty
+                    || _salesPrice.Dirty
+                    || _subordinateFin.Dirty
+                    || _totalBaseCost.Dirty
+                    || _totalCashAvailable.Dirty
+                    || _totalCashLeft.Dirty
+                    || _totalCosts.Dirty
+                    || _totalFinancing.Dirty
+                    || _totalHe.Dirty
+                    || _totalIncome.Dirty
+                    || _totalLoanAmount.Dirty
+                    || _totalOtherExpense.Dirty
+                    || _totalPaidOffMortgage.Dirty
+                    || _totalPaidOffOthers.Dirty
+                    || _totalPayments.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var appraisedValue = _appraisedValue; appraisedValue.Clean = value; _appraisedValue = appraisedValue;
-                var apr = _apr; apr.Clean = value; _apr = apr;
-                var cashToClose = _cashToClose; cashToClose.Clean = value; _cashToClose = cashToClose;
-                var closingCost = _closingCost; closingCost.Clean = value; _closingCost = closingCost;
-                var cltv = _cltv; cltv.Clean = value; _cltv = cltv;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var creditScore = _creditScore; creditScore.Clean = value; _creditScore = creditScore;
-                var currentStatus = _currentStatus; currentStatus.Clean = value; _currentStatus = currentStatus;
-                var downPaymentAmount = _downPaymentAmount; downPaymentAmount.Clean = value; _downPaymentAmount = downPaymentAmount;
-                var downPaymentPercent = _downPaymentPercent; downPaymentPercent.Clean = value; _downPaymentPercent = downPaymentPercent;
-                var fhaUpfrontMIPremiumPercent = _fhaUpfrontMIPremiumPercent; fhaUpfrontMIPremiumPercent.Clean = value; _fhaUpfrontMIPremiumPercent = fhaUpfrontMIPremiumPercent;
-                var grossNegativeCashFlow = _grossNegativeCashFlow; grossNegativeCashFlow.Clean = value; _grossNegativeCashFlow = grossNegativeCashFlow;
-                var id = _id; id.Clean = value; _id = id;
-                var loanAmount = _loanAmount; loanAmount.Clean = value; _loanAmount = loanAmount;
-                var ltv = _ltv; ltv.Clean = value; _ltv = ltv;
-                var maximumDebt = _maximumDebt; maximumDebt.Clean = value; _maximumDebt = maximumDebt;
-                var maximumLoanAmount = _maximumLoanAmount; maximumLoanAmount.Clean = value; _maximumLoanAmount = maximumLoanAmount;
-                var miAndFundingFeeFinancedAmount = _miAndFundingFeeFinancedAmount; miAndFundingFeeFinancedAmount.Clean = value; _miAndFundingFeeFinancedAmount = miAndFundingFeeFinancedAmount;
-                var minimumIncome = _minimumIncome; minimumIncome.Clean = value; _minimumIncome = minimumIncome;
-                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
-                var prepaidItemsEstimatedAmount = _prepaidItemsEstimatedAmount; prepaidItemsEstimatedAmount.Clean = value; _prepaidItemsEstimatedAmount = prepaidItemsEstimatedAmount;
-                var prequalificationScenarioIndex = _prequalificationScenarioIndex; prequalificationScenarioIndex.Clean = value; _prequalificationScenarioIndex = prequalificationScenarioIndex;
-                var qualBottomRatioPercent = _qualBottomRatioPercent; qualBottomRatioPercent.Clean = value; _qualBottomRatioPercent = qualBottomRatioPercent;
-                var qualTopRatioPercent = _qualTopRatioPercent; qualTopRatioPercent.Clean = value; _qualTopRatioPercent = qualTopRatioPercent;
-                var salesPrice = _salesPrice; salesPrice.Clean = value; _salesPrice = salesPrice;
-                var subordinateFin = _subordinateFin; subordinateFin.Clean = value; _subordinateFin = subordinateFin;
-                var totalBaseCost = _totalBaseCost; totalBaseCost.Clean = value; _totalBaseCost = totalBaseCost;
-                var totalCashAvailable = _totalCashAvailable; totalCashAvailable.Clean = value; _totalCashAvailable = totalCashAvailable;
-                var totalCashLeft = _totalCashLeft; totalCashLeft.Clean = value; _totalCashLeft = totalCashLeft;
-                var totalCosts = _totalCosts; totalCosts.Clean = value; _totalCosts = totalCosts;
-                var totalFinancing = _totalFinancing; totalFinancing.Clean = value; _totalFinancing = totalFinancing;
-                var totalHe = _totalHe; totalHe.Clean = value; _totalHe = totalHe;
-                var totalIncome = _totalIncome; totalIncome.Clean = value; _totalIncome = totalIncome;
-                var totalLoanAmount = _totalLoanAmount; totalLoanAmount.Clean = value; _totalLoanAmount = totalLoanAmount;
-                var totalOtherExpense = _totalOtherExpense; totalOtherExpense.Clean = value; _totalOtherExpense = totalOtherExpense;
-                var totalPaidOffMortgage = _totalPaidOffMortgage; totalPaidOffMortgage.Clean = value; _totalPaidOffMortgage = totalPaidOffMortgage;
-                var totalPaidOffOthers = _totalPaidOffOthers; totalPaidOffOthers.Clean = value; _totalPaidOffOthers = totalPaidOffOthers;
-                var totalPayments = _totalPayments; totalPayments.Clean = value; _totalPayments = totalPayments;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _appraisedValue.Dirty = value;
+                _apr.Dirty = value;
+                _cashToClose.Dirty = value;
+                _closingCost.Dirty = value;
+                _cltv.Dirty = value;
+                _comments.Dirty = value;
+                _creditScore.Dirty = value;
+                _currentStatus.Dirty = value;
+                _downPaymentAmount.Dirty = value;
+                _downPaymentPercent.Dirty = value;
+                _fhaUpfrontMIPremiumPercent.Dirty = value;
+                _grossNegativeCashFlow.Dirty = value;
+                _id.Dirty = value;
+                _loanAmount.Dirty = value;
+                _ltv.Dirty = value;
+                _maximumDebt.Dirty = value;
+                _maximumLoanAmount.Dirty = value;
+                _miAndFundingFeeFinancedAmount.Dirty = value;
+                _minimumIncome.Dirty = value;
+                _monthlyPayment.Dirty = value;
+                _prepaidItemsEstimatedAmount.Dirty = value;
+                _prequalificationScenarioIndex.Dirty = value;
+                _qualBottomRatioPercent.Dirty = value;
+                _qualTopRatioPercent.Dirty = value;
+                _salesPrice.Dirty = value;
+                _subordinateFin.Dirty = value;
+                _totalBaseCost.Dirty = value;
+                _totalCashAvailable.Dirty = value;
+                _totalCashLeft.Dirty = value;
+                _totalCosts.Dirty = value;
+                _totalFinancing.Dirty = value;
+                _totalHe.Dirty = value;
+                _totalIncome.Dirty = value;
+                _totalLoanAmount.Dirty = value;
+                _totalOtherExpense.Dirty = value;
+                _totalPaidOffMortgage.Dirty = value;
+                _totalPaidOffOthers.Dirty = value;
+                _totalPayments.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PrequalificationScenario()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

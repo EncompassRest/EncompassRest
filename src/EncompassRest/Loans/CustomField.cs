@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CustomField : IClean
+    public sealed partial class CustomField : IDirty
     {
         private Value<DateTime?> _dateValue;
         public DateTime? DateValue { get { return _dateValue; } set { _dateValue = value; } }
@@ -18,37 +18,32 @@ namespace EncompassRest.Loans
         public decimal? NumericValue { get { return _numericValue; } set { _numericValue = value; } }
         private Value<string> _stringValue;
         public string StringValue { get { return _stringValue; } set { _stringValue = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _dateValue.Clean
-                    && _fieldName.Clean
-                    && _id.Clean
-                    && _numericValue.Clean
-                    && _stringValue.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _dateValue.Dirty
+                    || _fieldName.Dirty
+                    || _id.Dirty
+                    || _numericValue.Dirty
+                    || _stringValue.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var dateValue = _dateValue; dateValue.Clean = value; _dateValue = dateValue;
-                var fieldName = _fieldName; fieldName.Clean = value; _fieldName = fieldName;
-                var id = _id; id.Clean = value; _id = id;
-                var numericValue = _numericValue; numericValue.Clean = value; _numericValue = numericValue;
-                var stringValue = _stringValue; stringValue.Clean = value; _stringValue = stringValue;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _dateValue.Dirty = value;
+                _fieldName.Dirty = value;
+                _id.Dirty = value;
+                _numericValue.Dirty = value;
+                _stringValue.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public CustomField()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

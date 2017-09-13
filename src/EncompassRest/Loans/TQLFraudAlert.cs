@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLFraudAlert : IClean
+    public sealed partial class TQLFraudAlert : IDirty
     {
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
@@ -20,39 +20,34 @@ namespace EncompassRest.Loans
         public string LastFraudOrderDescriptionOfAlerts { get { return _lastFraudOrderDescriptionOfAlerts; } set { _lastFraudOrderDescriptionOfAlerts = value; } }
         private Value<int?> _tQLFraudAlertIndex;
         public int? TQLFraudAlertIndex { get { return _tQLFraudAlertIndex; } set { _tQLFraudAlertIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _id.Clean
-                    && _lastFraudOrderAlertCategories.Clean
-                    && _lastFraudOrderAlertID.Clean
-                    && _lastFraudOrderAlertLevel.Clean
-                    && _lastFraudOrderDescriptionOfAlerts.Clean
-                    && _tQLFraudAlertIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _id.Dirty
+                    || _lastFraudOrderAlertCategories.Dirty
+                    || _lastFraudOrderAlertID.Dirty
+                    || _lastFraudOrderAlertLevel.Dirty
+                    || _lastFraudOrderDescriptionOfAlerts.Dirty
+                    || _tQLFraudAlertIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var id = _id; id.Clean = value; _id = id;
-                var lastFraudOrderAlertCategories = _lastFraudOrderAlertCategories; lastFraudOrderAlertCategories.Clean = value; _lastFraudOrderAlertCategories = lastFraudOrderAlertCategories;
-                var lastFraudOrderAlertID = _lastFraudOrderAlertID; lastFraudOrderAlertID.Clean = value; _lastFraudOrderAlertID = lastFraudOrderAlertID;
-                var lastFraudOrderAlertLevel = _lastFraudOrderAlertLevel; lastFraudOrderAlertLevel.Clean = value; _lastFraudOrderAlertLevel = lastFraudOrderAlertLevel;
-                var lastFraudOrderDescriptionOfAlerts = _lastFraudOrderDescriptionOfAlerts; lastFraudOrderDescriptionOfAlerts.Clean = value; _lastFraudOrderDescriptionOfAlerts = lastFraudOrderDescriptionOfAlerts;
-                var tQLFraudAlertIndex = _tQLFraudAlertIndex; tQLFraudAlertIndex.Clean = value; _tQLFraudAlertIndex = tQLFraudAlertIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _id.Dirty = value;
+                _lastFraudOrderAlertCategories.Dirty = value;
+                _lastFraudOrderAlertID.Dirty = value;
+                _lastFraudOrderAlertLevel.Dirty = value;
+                _lastFraudOrderDescriptionOfAlerts.Dirty = value;
+                _tQLFraudAlertIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TQLFraudAlert()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

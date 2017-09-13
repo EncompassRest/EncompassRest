@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PreviousVaLoan : IClean
+    public sealed partial class PreviousVaLoan : IDirty
     {
         private Value<DateTime?> _dateOfLoan;
         public DateTime? DateOfLoan { get { return _dateOfLoan; } set { _dateOfLoan = value; } }
@@ -30,49 +30,44 @@ namespace EncompassRest.Loans
         public string PropertyState { get { return _propertyState; } set { _propertyState = value; } }
         private Value<string> _vALoanNumber;
         public string VALoanNumber { get { return _vALoanNumber; } set { _vALoanNumber = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _dateOfLoan.Clean
-                    && _dateSold.Clean
-                    && _id.Clean
-                    && _loanType.Clean
-                    && _previousVaLoanIndex.Clean
-                    && _propertyAddress.Clean
-                    && _propertyCity.Clean
-                    && _propertyOwned.Clean
-                    && _propertyPostalCode.Clean
-                    && _propertyState.Clean
-                    && _vALoanNumber.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _dateOfLoan.Dirty
+                    || _dateSold.Dirty
+                    || _id.Dirty
+                    || _loanType.Dirty
+                    || _previousVaLoanIndex.Dirty
+                    || _propertyAddress.Dirty
+                    || _propertyCity.Dirty
+                    || _propertyOwned.Dirty
+                    || _propertyPostalCode.Dirty
+                    || _propertyState.Dirty
+                    || _vALoanNumber.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var dateOfLoan = _dateOfLoan; dateOfLoan.Clean = value; _dateOfLoan = dateOfLoan;
-                var dateSold = _dateSold; dateSold.Clean = value; _dateSold = dateSold;
-                var id = _id; id.Clean = value; _id = id;
-                var loanType = _loanType; loanType.Clean = value; _loanType = loanType;
-                var previousVaLoanIndex = _previousVaLoanIndex; previousVaLoanIndex.Clean = value; _previousVaLoanIndex = previousVaLoanIndex;
-                var propertyAddress = _propertyAddress; propertyAddress.Clean = value; _propertyAddress = propertyAddress;
-                var propertyCity = _propertyCity; propertyCity.Clean = value; _propertyCity = propertyCity;
-                var propertyOwned = _propertyOwned; propertyOwned.Clean = value; _propertyOwned = propertyOwned;
-                var propertyPostalCode = _propertyPostalCode; propertyPostalCode.Clean = value; _propertyPostalCode = propertyPostalCode;
-                var propertyState = _propertyState; propertyState.Clean = value; _propertyState = propertyState;
-                var vALoanNumber = _vALoanNumber; vALoanNumber.Clean = value; _vALoanNumber = vALoanNumber;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _dateOfLoan.Dirty = value;
+                _dateSold.Dirty = value;
+                _id.Dirty = value;
+                _loanType.Dirty = value;
+                _previousVaLoanIndex.Dirty = value;
+                _propertyAddress.Dirty = value;
+                _propertyCity.Dirty = value;
+                _propertyOwned.Dirty = value;
+                _propertyPostalCode.Dirty = value;
+                _propertyState.Dirty = value;
+                _vALoanNumber.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PreviousVaLoan()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

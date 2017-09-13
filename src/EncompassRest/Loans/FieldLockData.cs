@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FieldLockData : IClean
+    public sealed partial class FieldLockData : IDirty
     {
         private Value<bool?> _lockRemoved;
         public bool? LockRemoved { get { return _lockRemoved; } set { _lockRemoved = value; } }
@@ -14,33 +14,28 @@ namespace EncompassRest.Loans
         public string ModelPath { get { return _modelPath; } set { _modelPath = value; } }
         private Value<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _lockRemoved.Clean
-                    && _modelPath.Clean
-                    && _value.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _lockRemoved.Dirty
+                    || _modelPath.Dirty
+                    || _value.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var lockRemoved = _lockRemoved; lockRemoved.Clean = value; _lockRemoved = lockRemoved;
-                var modelPath = _modelPath; modelPath.Clean = value; _modelPath = modelPath;
-                var v = _value; v.Clean = value; _value = v;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _lockRemoved.Dirty = value;
+                _modelPath.Dirty = value;
+                _value.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FieldLockData()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

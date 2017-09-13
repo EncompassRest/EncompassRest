@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
 
             EncompassId = loanId;
             Initialize(client);
-            Clean = true;
+            Dirty = true;
         }
 
         internal void Initialize(EncompassRestClient client)
@@ -36,6 +36,14 @@ namespace EncompassRest.Loans
             Client = client;
             Documents = new LoanDocuments(client, EncompassId);
             Attachments = new LoanAttachments(client, EncompassId);
+        }
+
+        /// <summary>
+        /// Loan creation constructor
+        /// </summary>
+        [JsonConstructor]
+        public Loan()
+        {
         }
     }
 }

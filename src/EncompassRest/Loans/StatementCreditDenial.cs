@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StatementCreditDenial : IClean
+    public sealed partial class StatementCreditDenial : IDirty
     {
         private Value<bool?> _additionalStatement;
         public bool? AdditionalStatement { get { return _additionalStatement; } set { _additionalStatement = value; } }
@@ -148,167 +148,162 @@ namespace EncompassRest.Loans
         public bool? WeDoNotGrantCredit { get { return _weDoNotGrantCredit; } set { _weDoNotGrantCredit = value; } }
         private Value<bool?> _withdrawnByApplicant;
         public bool? WithdrawnByApplicant { get { return _withdrawnByApplicant; } set { _withdrawnByApplicant = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalStatement.Clean
-                    && _bankruptcy.Clean
-                    && _collateralNotSufficient.Clean
-                    && _creditApplicationIncomplete.Clean
-                    && _creditReportObtainedFromConsumerReportingAgency.Clean
-                    && _delinquentCreditObligations.Clean
-                    && _denialDate.Clean
-                    && _denialDescription.Clean
-                    && _denialMailedOn.Clean
-                    && _denialOther1.Clean
-                    && _denialOther2.Clean
-                    && _denialOtherDesc1.Clean
-                    && _denialOtherDesc2.Clean
-                    && _deniedBy.Clean
-                    && _deniedByFhlmc.Clean
-                    && _deniedByFnma.Clean
-                    && _deniedByHud.Clean
-                    && _deniedByOther.Clean
-                    && _deniedByVa.Clean
-                    && _descriptionofAccount1.Clean
-                    && _descriptionofAccount2.Clean
-                    && _descriptionofAccount3.Clean
-                    && _descriptionofActionTaken1.Clean
-                    && _descriptionofActionTaken2.Clean
-                    && _ecoaAddress.Clean
-                    && _ecoaAddress2.Clean
-                    && _ecoaCity.Clean
-                    && _ecoaName.Clean
-                    && _ecoaPhone.Clean
-                    && _ecoaPostalCode.Clean
-                    && _ecoaState.Clean
-                    && _excessiveObligations.Clean
-                    && _garnishment.Clean
-                    && _id.Clean
-                    && _inadequateCollateral.Clean
-                    && _informationFromAConsumerReportingAgency.Clean
-                    && _informationObtainedFromOutsideSource.Clean
-                    && _informationObtainedInReportFromCra.Clean
-                    && _insufficientCreditFile.Clean
-                    && _insufficientCreditReference.Clean
-                    && _insufficientData.Clean
-                    && _insufficientFundsToCloseLoan.Clean
-                    && _insufficientIncomeForTotalObligations.Clean
-                    && _insufficientStabilityOfIncome.Clean
-                    && _lackOfCashReserves.Clean
-                    && _lenderInvestorAddress.Clean
-                    && _lenderInvestorCity.Clean
-                    && _lenderInvestorName.Clean
-                    && _lenderInvestorPhone.Clean
-                    && _lenderInvestorPostalCode.Clean
-                    && _lenderInvestorState.Clean
-                    && _lengthOfEmployment.Clean
-                    && _noCreditFile.Clean
-                    && _numberRecentInquiriesCredit.Clean
-                    && _otherDescription.Clean
-                    && _poorCreditPerformance.Clean
-                    && _temporaryOrIrregularEmployment.Clean
-                    && _temporaryResidence.Clean
-                    && _toShortPeriodOfResidence.Clean
-                    && _unableToVerifyCreditReferences.Clean
-                    && _unableToVerifyEmployment.Clean
-                    && _unableToVerifyIncome.Clean
-                    && _unableToVerifyResidence.Clean
-                    && _unacceptableAppraisal.Clean
-                    && _unacceptableCreditReferencesProvided.Clean
-                    && _unacceptableLeaseholdEstate.Clean
-                    && _unacceptablePaymentRecordOnPreviousMtg.Clean
-                    && _unacceptableProperty.Clean
-                    && _weDoNotGrantCredit.Clean
-                    && _withdrawnByApplicant.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalStatement.Dirty
+                    || _bankruptcy.Dirty
+                    || _collateralNotSufficient.Dirty
+                    || _creditApplicationIncomplete.Dirty
+                    || _creditReportObtainedFromConsumerReportingAgency.Dirty
+                    || _delinquentCreditObligations.Dirty
+                    || _denialDate.Dirty
+                    || _denialDescription.Dirty
+                    || _denialMailedOn.Dirty
+                    || _denialOther1.Dirty
+                    || _denialOther2.Dirty
+                    || _denialOtherDesc1.Dirty
+                    || _denialOtherDesc2.Dirty
+                    || _deniedBy.Dirty
+                    || _deniedByFhlmc.Dirty
+                    || _deniedByFnma.Dirty
+                    || _deniedByHud.Dirty
+                    || _deniedByOther.Dirty
+                    || _deniedByVa.Dirty
+                    || _descriptionofAccount1.Dirty
+                    || _descriptionofAccount2.Dirty
+                    || _descriptionofAccount3.Dirty
+                    || _descriptionofActionTaken1.Dirty
+                    || _descriptionofActionTaken2.Dirty
+                    || _ecoaAddress.Dirty
+                    || _ecoaAddress2.Dirty
+                    || _ecoaCity.Dirty
+                    || _ecoaName.Dirty
+                    || _ecoaPhone.Dirty
+                    || _ecoaPostalCode.Dirty
+                    || _ecoaState.Dirty
+                    || _excessiveObligations.Dirty
+                    || _garnishment.Dirty
+                    || _id.Dirty
+                    || _inadequateCollateral.Dirty
+                    || _informationFromAConsumerReportingAgency.Dirty
+                    || _informationObtainedFromOutsideSource.Dirty
+                    || _informationObtainedInReportFromCra.Dirty
+                    || _insufficientCreditFile.Dirty
+                    || _insufficientCreditReference.Dirty
+                    || _insufficientData.Dirty
+                    || _insufficientFundsToCloseLoan.Dirty
+                    || _insufficientIncomeForTotalObligations.Dirty
+                    || _insufficientStabilityOfIncome.Dirty
+                    || _lackOfCashReserves.Dirty
+                    || _lenderInvestorAddress.Dirty
+                    || _lenderInvestorCity.Dirty
+                    || _lenderInvestorName.Dirty
+                    || _lenderInvestorPhone.Dirty
+                    || _lenderInvestorPostalCode.Dirty
+                    || _lenderInvestorState.Dirty
+                    || _lengthOfEmployment.Dirty
+                    || _noCreditFile.Dirty
+                    || _numberRecentInquiriesCredit.Dirty
+                    || _otherDescription.Dirty
+                    || _poorCreditPerformance.Dirty
+                    || _temporaryOrIrregularEmployment.Dirty
+                    || _temporaryResidence.Dirty
+                    || _toShortPeriodOfResidence.Dirty
+                    || _unableToVerifyCreditReferences.Dirty
+                    || _unableToVerifyEmployment.Dirty
+                    || _unableToVerifyIncome.Dirty
+                    || _unableToVerifyResidence.Dirty
+                    || _unacceptableAppraisal.Dirty
+                    || _unacceptableCreditReferencesProvided.Dirty
+                    || _unacceptableLeaseholdEstate.Dirty
+                    || _unacceptablePaymentRecordOnPreviousMtg.Dirty
+                    || _unacceptableProperty.Dirty
+                    || _weDoNotGrantCredit.Dirty
+                    || _withdrawnByApplicant.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalStatement = _additionalStatement; additionalStatement.Clean = value; _additionalStatement = additionalStatement;
-                var bankruptcy = _bankruptcy; bankruptcy.Clean = value; _bankruptcy = bankruptcy;
-                var collateralNotSufficient = _collateralNotSufficient; collateralNotSufficient.Clean = value; _collateralNotSufficient = collateralNotSufficient;
-                var creditApplicationIncomplete = _creditApplicationIncomplete; creditApplicationIncomplete.Clean = value; _creditApplicationIncomplete = creditApplicationIncomplete;
-                var creditReportObtainedFromConsumerReportingAgency = _creditReportObtainedFromConsumerReportingAgency; creditReportObtainedFromConsumerReportingAgency.Clean = value; _creditReportObtainedFromConsumerReportingAgency = creditReportObtainedFromConsumerReportingAgency;
-                var delinquentCreditObligations = _delinquentCreditObligations; delinquentCreditObligations.Clean = value; _delinquentCreditObligations = delinquentCreditObligations;
-                var denialDate = _denialDate; denialDate.Clean = value; _denialDate = denialDate;
-                var denialDescription = _denialDescription; denialDescription.Clean = value; _denialDescription = denialDescription;
-                var denialMailedOn = _denialMailedOn; denialMailedOn.Clean = value; _denialMailedOn = denialMailedOn;
-                var denialOther1 = _denialOther1; denialOther1.Clean = value; _denialOther1 = denialOther1;
-                var denialOther2 = _denialOther2; denialOther2.Clean = value; _denialOther2 = denialOther2;
-                var denialOtherDesc1 = _denialOtherDesc1; denialOtherDesc1.Clean = value; _denialOtherDesc1 = denialOtherDesc1;
-                var denialOtherDesc2 = _denialOtherDesc2; denialOtherDesc2.Clean = value; _denialOtherDesc2 = denialOtherDesc2;
-                var deniedBy = _deniedBy; deniedBy.Clean = value; _deniedBy = deniedBy;
-                var deniedByFhlmc = _deniedByFhlmc; deniedByFhlmc.Clean = value; _deniedByFhlmc = deniedByFhlmc;
-                var deniedByFnma = _deniedByFnma; deniedByFnma.Clean = value; _deniedByFnma = deniedByFnma;
-                var deniedByHud = _deniedByHud; deniedByHud.Clean = value; _deniedByHud = deniedByHud;
-                var deniedByOther = _deniedByOther; deniedByOther.Clean = value; _deniedByOther = deniedByOther;
-                var deniedByVa = _deniedByVa; deniedByVa.Clean = value; _deniedByVa = deniedByVa;
-                var descriptionofAccount1 = _descriptionofAccount1; descriptionofAccount1.Clean = value; _descriptionofAccount1 = descriptionofAccount1;
-                var descriptionofAccount2 = _descriptionofAccount2; descriptionofAccount2.Clean = value; _descriptionofAccount2 = descriptionofAccount2;
-                var descriptionofAccount3 = _descriptionofAccount3; descriptionofAccount3.Clean = value; _descriptionofAccount3 = descriptionofAccount3;
-                var descriptionofActionTaken1 = _descriptionofActionTaken1; descriptionofActionTaken1.Clean = value; _descriptionofActionTaken1 = descriptionofActionTaken1;
-                var descriptionofActionTaken2 = _descriptionofActionTaken2; descriptionofActionTaken2.Clean = value; _descriptionofActionTaken2 = descriptionofActionTaken2;
-                var ecoaAddress = _ecoaAddress; ecoaAddress.Clean = value; _ecoaAddress = ecoaAddress;
-                var ecoaAddress2 = _ecoaAddress2; ecoaAddress2.Clean = value; _ecoaAddress2 = ecoaAddress2;
-                var ecoaCity = _ecoaCity; ecoaCity.Clean = value; _ecoaCity = ecoaCity;
-                var ecoaName = _ecoaName; ecoaName.Clean = value; _ecoaName = ecoaName;
-                var ecoaPhone = _ecoaPhone; ecoaPhone.Clean = value; _ecoaPhone = ecoaPhone;
-                var ecoaPostalCode = _ecoaPostalCode; ecoaPostalCode.Clean = value; _ecoaPostalCode = ecoaPostalCode;
-                var ecoaState = _ecoaState; ecoaState.Clean = value; _ecoaState = ecoaState;
-                var excessiveObligations = _excessiveObligations; excessiveObligations.Clean = value; _excessiveObligations = excessiveObligations;
-                var garnishment = _garnishment; garnishment.Clean = value; _garnishment = garnishment;
-                var id = _id; id.Clean = value; _id = id;
-                var inadequateCollateral = _inadequateCollateral; inadequateCollateral.Clean = value; _inadequateCollateral = inadequateCollateral;
-                var informationFromAConsumerReportingAgency = _informationFromAConsumerReportingAgency; informationFromAConsumerReportingAgency.Clean = value; _informationFromAConsumerReportingAgency = informationFromAConsumerReportingAgency;
-                var informationObtainedFromOutsideSource = _informationObtainedFromOutsideSource; informationObtainedFromOutsideSource.Clean = value; _informationObtainedFromOutsideSource = informationObtainedFromOutsideSource;
-                var informationObtainedInReportFromCra = _informationObtainedInReportFromCra; informationObtainedInReportFromCra.Clean = value; _informationObtainedInReportFromCra = informationObtainedInReportFromCra;
-                var insufficientCreditFile = _insufficientCreditFile; insufficientCreditFile.Clean = value; _insufficientCreditFile = insufficientCreditFile;
-                var insufficientCreditReference = _insufficientCreditReference; insufficientCreditReference.Clean = value; _insufficientCreditReference = insufficientCreditReference;
-                var insufficientData = _insufficientData; insufficientData.Clean = value; _insufficientData = insufficientData;
-                var insufficientFundsToCloseLoan = _insufficientFundsToCloseLoan; insufficientFundsToCloseLoan.Clean = value; _insufficientFundsToCloseLoan = insufficientFundsToCloseLoan;
-                var insufficientIncomeForTotalObligations = _insufficientIncomeForTotalObligations; insufficientIncomeForTotalObligations.Clean = value; _insufficientIncomeForTotalObligations = insufficientIncomeForTotalObligations;
-                var insufficientStabilityOfIncome = _insufficientStabilityOfIncome; insufficientStabilityOfIncome.Clean = value; _insufficientStabilityOfIncome = insufficientStabilityOfIncome;
-                var lackOfCashReserves = _lackOfCashReserves; lackOfCashReserves.Clean = value; _lackOfCashReserves = lackOfCashReserves;
-                var lenderInvestorAddress = _lenderInvestorAddress; lenderInvestorAddress.Clean = value; _lenderInvestorAddress = lenderInvestorAddress;
-                var lenderInvestorCity = _lenderInvestorCity; lenderInvestorCity.Clean = value; _lenderInvestorCity = lenderInvestorCity;
-                var lenderInvestorName = _lenderInvestorName; lenderInvestorName.Clean = value; _lenderInvestorName = lenderInvestorName;
-                var lenderInvestorPhone = _lenderInvestorPhone; lenderInvestorPhone.Clean = value; _lenderInvestorPhone = lenderInvestorPhone;
-                var lenderInvestorPostalCode = _lenderInvestorPostalCode; lenderInvestorPostalCode.Clean = value; _lenderInvestorPostalCode = lenderInvestorPostalCode;
-                var lenderInvestorState = _lenderInvestorState; lenderInvestorState.Clean = value; _lenderInvestorState = lenderInvestorState;
-                var lengthOfEmployment = _lengthOfEmployment; lengthOfEmployment.Clean = value; _lengthOfEmployment = lengthOfEmployment;
-                var noCreditFile = _noCreditFile; noCreditFile.Clean = value; _noCreditFile = noCreditFile;
-                var numberRecentInquiriesCredit = _numberRecentInquiriesCredit; numberRecentInquiriesCredit.Clean = value; _numberRecentInquiriesCredit = numberRecentInquiriesCredit;
-                var otherDescription = _otherDescription; otherDescription.Clean = value; _otherDescription = otherDescription;
-                var poorCreditPerformance = _poorCreditPerformance; poorCreditPerformance.Clean = value; _poorCreditPerformance = poorCreditPerformance;
-                var temporaryOrIrregularEmployment = _temporaryOrIrregularEmployment; temporaryOrIrregularEmployment.Clean = value; _temporaryOrIrregularEmployment = temporaryOrIrregularEmployment;
-                var temporaryResidence = _temporaryResidence; temporaryResidence.Clean = value; _temporaryResidence = temporaryResidence;
-                var toShortPeriodOfResidence = _toShortPeriodOfResidence; toShortPeriodOfResidence.Clean = value; _toShortPeriodOfResidence = toShortPeriodOfResidence;
-                var unableToVerifyCreditReferences = _unableToVerifyCreditReferences; unableToVerifyCreditReferences.Clean = value; _unableToVerifyCreditReferences = unableToVerifyCreditReferences;
-                var unableToVerifyEmployment = _unableToVerifyEmployment; unableToVerifyEmployment.Clean = value; _unableToVerifyEmployment = unableToVerifyEmployment;
-                var unableToVerifyIncome = _unableToVerifyIncome; unableToVerifyIncome.Clean = value; _unableToVerifyIncome = unableToVerifyIncome;
-                var unableToVerifyResidence = _unableToVerifyResidence; unableToVerifyResidence.Clean = value; _unableToVerifyResidence = unableToVerifyResidence;
-                var unacceptableAppraisal = _unacceptableAppraisal; unacceptableAppraisal.Clean = value; _unacceptableAppraisal = unacceptableAppraisal;
-                var unacceptableCreditReferencesProvided = _unacceptableCreditReferencesProvided; unacceptableCreditReferencesProvided.Clean = value; _unacceptableCreditReferencesProvided = unacceptableCreditReferencesProvided;
-                var unacceptableLeaseholdEstate = _unacceptableLeaseholdEstate; unacceptableLeaseholdEstate.Clean = value; _unacceptableLeaseholdEstate = unacceptableLeaseholdEstate;
-                var unacceptablePaymentRecordOnPreviousMtg = _unacceptablePaymentRecordOnPreviousMtg; unacceptablePaymentRecordOnPreviousMtg.Clean = value; _unacceptablePaymentRecordOnPreviousMtg = unacceptablePaymentRecordOnPreviousMtg;
-                var unacceptableProperty = _unacceptableProperty; unacceptableProperty.Clean = value; _unacceptableProperty = unacceptableProperty;
-                var weDoNotGrantCredit = _weDoNotGrantCredit; weDoNotGrantCredit.Clean = value; _weDoNotGrantCredit = weDoNotGrantCredit;
-                var withdrawnByApplicant = _withdrawnByApplicant; withdrawnByApplicant.Clean = value; _withdrawnByApplicant = withdrawnByApplicant;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalStatement.Dirty = value;
+                _bankruptcy.Dirty = value;
+                _collateralNotSufficient.Dirty = value;
+                _creditApplicationIncomplete.Dirty = value;
+                _creditReportObtainedFromConsumerReportingAgency.Dirty = value;
+                _delinquentCreditObligations.Dirty = value;
+                _denialDate.Dirty = value;
+                _denialDescription.Dirty = value;
+                _denialMailedOn.Dirty = value;
+                _denialOther1.Dirty = value;
+                _denialOther2.Dirty = value;
+                _denialOtherDesc1.Dirty = value;
+                _denialOtherDesc2.Dirty = value;
+                _deniedBy.Dirty = value;
+                _deniedByFhlmc.Dirty = value;
+                _deniedByFnma.Dirty = value;
+                _deniedByHud.Dirty = value;
+                _deniedByOther.Dirty = value;
+                _deniedByVa.Dirty = value;
+                _descriptionofAccount1.Dirty = value;
+                _descriptionofAccount2.Dirty = value;
+                _descriptionofAccount3.Dirty = value;
+                _descriptionofActionTaken1.Dirty = value;
+                _descriptionofActionTaken2.Dirty = value;
+                _ecoaAddress.Dirty = value;
+                _ecoaAddress2.Dirty = value;
+                _ecoaCity.Dirty = value;
+                _ecoaName.Dirty = value;
+                _ecoaPhone.Dirty = value;
+                _ecoaPostalCode.Dirty = value;
+                _ecoaState.Dirty = value;
+                _excessiveObligations.Dirty = value;
+                _garnishment.Dirty = value;
+                _id.Dirty = value;
+                _inadequateCollateral.Dirty = value;
+                _informationFromAConsumerReportingAgency.Dirty = value;
+                _informationObtainedFromOutsideSource.Dirty = value;
+                _informationObtainedInReportFromCra.Dirty = value;
+                _insufficientCreditFile.Dirty = value;
+                _insufficientCreditReference.Dirty = value;
+                _insufficientData.Dirty = value;
+                _insufficientFundsToCloseLoan.Dirty = value;
+                _insufficientIncomeForTotalObligations.Dirty = value;
+                _insufficientStabilityOfIncome.Dirty = value;
+                _lackOfCashReserves.Dirty = value;
+                _lenderInvestorAddress.Dirty = value;
+                _lenderInvestorCity.Dirty = value;
+                _lenderInvestorName.Dirty = value;
+                _lenderInvestorPhone.Dirty = value;
+                _lenderInvestorPostalCode.Dirty = value;
+                _lenderInvestorState.Dirty = value;
+                _lengthOfEmployment.Dirty = value;
+                _noCreditFile.Dirty = value;
+                _numberRecentInquiriesCredit.Dirty = value;
+                _otherDescription.Dirty = value;
+                _poorCreditPerformance.Dirty = value;
+                _temporaryOrIrregularEmployment.Dirty = value;
+                _temporaryResidence.Dirty = value;
+                _toShortPeriodOfResidence.Dirty = value;
+                _unableToVerifyCreditReferences.Dirty = value;
+                _unableToVerifyEmployment.Dirty = value;
+                _unableToVerifyIncome.Dirty = value;
+                _unableToVerifyResidence.Dirty = value;
+                _unacceptableAppraisal.Dirty = value;
+                _unacceptableCreditReferencesProvided.Dirty = value;
+                _unacceptableLeaseholdEstate.Dirty = value;
+                _unacceptablePaymentRecordOnPreviousMtg.Dirty = value;
+                _unacceptableProperty.Dirty = value;
+                _weDoNotGrantCredit.Dirty = value;
+                _withdrawnByApplicant.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public StatementCreditDenial()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

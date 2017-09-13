@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsPayTo : IClean
+    public sealed partial class Hud1EsPayTo : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -56,75 +56,70 @@ namespace EncompassRest.Loans
         public DateTime? RenewalDate { get { return _renewalDate; } set { _renewalDate = value; } }
         private Value<string> _state;
         public string State { get { return _state; } set { _state = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _amountLastPay.Clean
-                    && _amountNextDue.Clean
-                    && _city.Clean
-                    && _contactName.Clean
-                    && _coverageAmount.Clean
-                    && _datePaid.Clean
-                    && _delinquentDate.Clean
-                    && _email.Clean
-                    && _fax.Clean
-                    && _feeType.Clean
-                    && _hud1EsPayToIndex.Clean
-                    && _id.Clean
-                    && _maxDeductibleAmount.Clean
-                    && _maxDeductiblePercentage.Clean
-                    && _name.Clean
-                    && _nextDueDate.Clean
-                    && _paymentSchedule.Clean
-                    && _phone.Clean
-                    && _policyNumber.Clean
-                    && _postalCode.Clean
-                    && _premium.Clean
-                    && _renewalDate.Clean
-                    && _state.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _amountLastPay.Dirty
+                    || _amountNextDue.Dirty
+                    || _city.Dirty
+                    || _contactName.Dirty
+                    || _coverageAmount.Dirty
+                    || _datePaid.Dirty
+                    || _delinquentDate.Dirty
+                    || _email.Dirty
+                    || _fax.Dirty
+                    || _feeType.Dirty
+                    || _hud1EsPayToIndex.Dirty
+                    || _id.Dirty
+                    || _maxDeductibleAmount.Dirty
+                    || _maxDeductiblePercentage.Dirty
+                    || _name.Dirty
+                    || _nextDueDate.Dirty
+                    || _paymentSchedule.Dirty
+                    || _phone.Dirty
+                    || _policyNumber.Dirty
+                    || _postalCode.Dirty
+                    || _premium.Dirty
+                    || _renewalDate.Dirty
+                    || _state.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var amountLastPay = _amountLastPay; amountLastPay.Clean = value; _amountLastPay = amountLastPay;
-                var amountNextDue = _amountNextDue; amountNextDue.Clean = value; _amountNextDue = amountNextDue;
-                var city = _city; city.Clean = value; _city = city;
-                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
-                var coverageAmount = _coverageAmount; coverageAmount.Clean = value; _coverageAmount = coverageAmount;
-                var datePaid = _datePaid; datePaid.Clean = value; _datePaid = datePaid;
-                var delinquentDate = _delinquentDate; delinquentDate.Clean = value; _delinquentDate = delinquentDate;
-                var email = _email; email.Clean = value; _email = email;
-                var fax = _fax; fax.Clean = value; _fax = fax;
-                var feeType = _feeType; feeType.Clean = value; _feeType = feeType;
-                var hud1EsPayToIndex = _hud1EsPayToIndex; hud1EsPayToIndex.Clean = value; _hud1EsPayToIndex = hud1EsPayToIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var maxDeductibleAmount = _maxDeductibleAmount; maxDeductibleAmount.Clean = value; _maxDeductibleAmount = maxDeductibleAmount;
-                var maxDeductiblePercentage = _maxDeductiblePercentage; maxDeductiblePercentage.Clean = value; _maxDeductiblePercentage = maxDeductiblePercentage;
-                var name = _name; name.Clean = value; _name = name;
-                var nextDueDate = _nextDueDate; nextDueDate.Clean = value; _nextDueDate = nextDueDate;
-                var paymentSchedule = _paymentSchedule; paymentSchedule.Clean = value; _paymentSchedule = paymentSchedule;
-                var phone = _phone; phone.Clean = value; _phone = phone;
-                var policyNumber = _policyNumber; policyNumber.Clean = value; _policyNumber = policyNumber;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var premium = _premium; premium.Clean = value; _premium = premium;
-                var renewalDate = _renewalDate; renewalDate.Clean = value; _renewalDate = renewalDate;
-                var state = _state; state.Clean = value; _state = state;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _amountLastPay.Dirty = value;
+                _amountNextDue.Dirty = value;
+                _city.Dirty = value;
+                _contactName.Dirty = value;
+                _coverageAmount.Dirty = value;
+                _datePaid.Dirty = value;
+                _delinquentDate.Dirty = value;
+                _email.Dirty = value;
+                _fax.Dirty = value;
+                _feeType.Dirty = value;
+                _hud1EsPayToIndex.Dirty = value;
+                _id.Dirty = value;
+                _maxDeductibleAmount.Dirty = value;
+                _maxDeductiblePercentage.Dirty = value;
+                _name.Dirty = value;
+                _nextDueDate.Dirty = value;
+                _paymentSchedule.Dirty = value;
+                _phone.Dirty = value;
+                _policyNumber.Dirty = value;
+                _postalCode.Dirty = value;
+                _premium.Dirty = value;
+                _renewalDate.Dirty = value;
+                _state.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Hud1EsPayTo()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

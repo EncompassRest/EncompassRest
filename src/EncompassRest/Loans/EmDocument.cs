@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EmDocument : IClean
+    public sealed partial class EmDocument : IDirty
     {
         private Value<string> _allngToNtPayToJrsdctn;
         public string AllngToNtPayToJrsdctn { get { return _allngToNtPayToJrsdctn; } set { _allngToNtPayToJrsdctn = value; } }
@@ -448,467 +448,462 @@ namespace EncompassRest.Loans
         public string Trst2StreetAddr2 { get { return _trst2StreetAddr2; } set { _trst2StreetAddr2 = value; } }
         private Value<string> _trst2Zip;
         public string Trst2Zip { get { return _trst2Zip; } set { _trst2Zip = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _allngToNtPayToJrsdctn.Clean
-                    && _allngToNtPayToOrdNm.Clean
-                    && _allngToNtPayToOrgTyp.Clean
-                    && _allngToNtPayToScsrsClaus.Clean
-                    && _allngToNtSignedByNm.Clean
-                    && _allngToNtSignedByNm2.Clean
-                    && _allngToNtSignedByNm3.Clean
-                    && _allngToNtSignedByTtl.Clean
-                    && _allngToNtSignedByTtl2.Clean
-                    && _allngToNtSignedByTtl3.Clean
-                    && _allngToNtSignedByTyp.Clean
-                    && _allngToNtWithoutRcrse.Clean
-                    && _apnLbl.Clean
-                    && _asgnPrepByLblTxtDesc.Clean
-                    && _asgnRecRtrnLblTxtDesc.Clean
-                    && _benCty.Clean
-                    && _benJrsdctn.Clean
-                    && _benNm.Clean
-                    && _benOrgTyp.Clean
-                    && _benStCd.Clean
-                    && _benStreetAddr1.Clean
-                    && _benStreetAddr2.Clean
-                    && _benZip.Clean
-                    && _closInstrLndCntcInfoCity.Clean
-                    && _closInstrLndCntcInfoCoNm.Clean
-                    && _closInstrLndCntcInfoSamePtyTypDesc.Clean
-                    && _closInstrLndCntcInfoStCd.Clean
-                    && _closInstrLndCntcInfoStreetAddr1.Clean
-                    && _closInstrLndCntcInfoStreetAddr2.Clean
-                    && _closInstrLndCntcInfoZip.Clean
-                    && _closInstrPrtInvLossPayee.Clean
-                    && _closInstrStlmtAgtUseLndHud1.Clean
-                    && _closInstrTtlPlcyTyp.Clean
-                    && _emxmlVersionId.Clean
-                    && _exeClosDocDlvrdToCty.Clean
-                    && _exeClosDocDlvrdToMiscTxtDesc.Clean
-                    && _exeClosDocDlvrdToNm.Clean
-                    && _exeClosDocDlvrdToSamePtyTypDesc.Clean
-                    && _exeClosDocDlvrdToStCd.Clean
-                    && _exeClosDocDlvrdToStreetAddr1.Clean
-                    && _exeClosDocDlvrdToStreetAddr2.Clean
-                    && _exeClosDocDlvrdToZip.Clean
-                    && _exeClosDocExprDt.Clean
-                    && _exeClosDocToBeRtrnd.Clean
-                    && _exeClosDocToBeRtrndHrs.Clean
-                    && _fnlTtlePcyRecDocsSentToAddlLine1.Clean
-                    && _fnlTtlePcyRecDocsSentToAddlLine2.Clean
-                    && _fnlTtlePcyRecDocsSentToCty.Clean
-                    && _fnlTtlePcyRecDocsSentToNm.Clean
-                    && _fnlTtlePcyRecDocsSentToSamePtyTypDesc.Clean
-                    && _fnlTtlePcyRecDocsSentToStcd.Clean
-                    && _fnlTtlePcyRecDocsSentToStreetAddr1.Clean
-                    && _fnlTtlePcyRecDocsSentToStreetAddr2.Clean
-                    && _fnlTtlePcyRecDocsSentToZip.Clean
-                    && _hazInsurEndsmtMailToAdtlTxt.Clean
-                    && _hazInsurEndsmtMailToCty.Clean
-                    && _hazInsurEndsmtMailToNm.Clean
-                    && _hazInsurEndsmtMailToStCd.Clean
-                    && _hazInsurEndsmtMailToStreetAddr1.Clean
-                    && _hazInsurEndsmtMailToStreetAddr2.Clean
-                    && _hazInsurEndsmtMailToZip.Clean
-                    && _id.Clean
-                    && _mersAdtlCity.Clean
-                    && _mersAdtlStCd.Clean
-                    && _mersAdtlStreetAddr1.Clean
-                    && _mersAdtlStreetAddr2.Clean
-                    && _mersAdtlZip.Clean
-                    && _mersCty.Clean
-                    && _mersJrsdctn.Clean
-                    && _mersName.Clean
-                    && _mersOrgTyp.Clean
-                    && _mersPhoneNum.Clean
-                    && _mersStCd.Clean
-                    && _mersStreetAddr1.Clean
-                    && _mersStreetAddr2.Clean
-                    && _mersZip.Clean
-                    && _ntEndrsmtPayToJrsdctn.Clean
-                    && _ntEndrsmtPayToOrdNm.Clean
-                    && _ntEndrsmtPayToOrgTyp.Clean
-                    && _ntEndrsmtPayToScsrsClaus.Clean
-                    && _ntEndrsmtSgndBy1MiscTxt.Clean
-                    && _ntEndrsmtSgndBy2MiscTxt.Clean
-                    && _ntEndrsmtSignedByNm.Clean
-                    && _ntEndrsmtSignedByNm2.Clean
-                    && _ntEndrsmtSignedByNm3.Clean
-                    && _ntEndrsmtSignedByTtl.Clean
-                    && _ntEndrsmtSignedByTtl2.Clean
-                    && _ntEndrsmtSignedByTtl3.Clean
-                    && _ntEndrsmtSignedByTyp.Clean
-                    && _ntEndrsmtWithoutRcrse.Clean
-                    && _ntEndsmtThrdPtyAddr1.Clean
-                    && _ntEndsmtThrdPtyAddr2.Clean
-                    && _ntEndsmtThrdPtyCty.Clean
-                    && _ntEndsmtThrdPtyJrsdctn.Clean
-                    && _ntEndsmtThrdPtyName.Clean
-                    && _ntEndsmtThrdPtyOrgTyp.Clean
-                    && _ntEndsmtThrdPtyPhone.Clean
-                    && _ntEndsmtThrdPtyScsrClaus.Clean
-                    && _ntEndsmtThrdPtyStCd.Clean
-                    && _ntEndsmtThrdPtyZip.Clean
-                    && _ntPayToAdtlTxt.Clean
-                    && _ntPayToCty.Clean
-                    && _ntPayToJrsdctn.Clean
-                    && _ntPayToNm.Clean
-                    && _ntPayToOrgTyp.Clean
-                    && _ntPayToStCd.Clean
-                    && _ntPayToStreetAddr1.Clean
-                    && _ntPayToStreetAddr2.Clean
-                    && _ntPayToZip.Clean
-                    && _pmtCpn2PayToAdtlTxt.Clean
-                    && _pmtCpn2PayToAdtlTxt2.Clean
-                    && _pmtCpn2PayToCty.Clean
-                    && _pmtCpn2PayToNm.Clean
-                    && _pmtCpn2PayToStCd.Clean
-                    && _pmtCpn2PayToStreetAddr1.Clean
-                    && _pmtCpn2PayToStreetAddr2.Clean
-                    && _pmtCpn2PayToZip.Clean
-                    && _pmtCpnPayToAdtlTxt.Clean
-                    && _pmtCpnPayToAdtlTxt2.Clean
-                    && _pmtCpnPayToCty.Clean
-                    && _pmtCpnPayToNm.Clean
-                    && _pmtCpnPayToStCd.Clean
-                    && _pmtCpnPayToStreetAddr1.Clean
-                    && _pmtCpnPayToStreetAddr2.Clean
-                    && _pmtCpnPayToZip.Clean
-                    && _prtAdtlDateHud1.Clean
-                    && _prtAllngToNtBool.Clean
-                    && _prtCorpMsgAsgnBool.Clean
-                    && _prtDocDtSctyIstrmtNtryAprncDt.Clean
-                    && _prtIndxTilBool.Clean
-                    && _prtInitBlckNtBool.Clean
-                    && _prtInitBlckSctyIstrmtBool.Clean
-                    && _prtInvLoanNumBool.Clean
-                    && _prtInvLoanNumPmtCpn2Ind.Clean
-                    && _prtInvLoanNumPmtCpnInd.Clean
-                    && _prtInvLossPayeeHazInsurDisBool.Clean
-                    && _prtLoanNumDeedBool.Clean
-                    && _prtNtEndsmtBool.Clean
-                    && _prtNtPayToCorpMsgBool.Clean
-                    && _prtScsrsClausClosInstBool.Clean
-                    && _prtScsrsClausHazInsurDisBool.Clean
-                    && _prtScsrsClausHazInsurLtrBool.Clean
-                    && _prtScsrsClausPmtCpnBool.Clean
-                    && _prtSctyIstrmtCorpMsgBool.Clean
-                    && _recRtrnAttnLnNmTxtDesc.Clean
-                    && _recRtrnCty.Clean
-                    && _recRtrnLblTxtDesc.Clean
-                    && _recRtrnNm.Clean
-                    && _recRtrnNmSamePtyTypDesc.Clean
-                    && _recRtrnPhoneNum.Clean
-                    && _recRtrnStCd.Clean
-                    && _recRtrnStreetAddr1.Clean
-                    && _recRtrnStreetAddr2.Clean
-                    && _recRtrnTollFreePhoneNum.Clean
-                    && _recRtrnZip.Clean
-                    && _rtrnExeClosPkgToLndBrchBool.Clean
-                    && _rtToCancelNtfcAdtlTxt.Clean
-                    && _rtToCancelNtfcCty.Clean
-                    && _rtToCancelNtfcEmail.Clean
-                    && _rtToCancelNtfcFax.Clean
-                    && _rtToCancelNtfcNm.Clean
-                    && _rtToCancelNtfcStCd.Clean
-                    && _rtToCancelNtfcStreetAddr1.Clean
-                    && _rtToCancelNtfcStreetAddr2.Clean
-                    && _rtToCancelNtfcZip.Clean
-                    && _rtToCancelTransDtTyp.Clean
-                    && _sctyIstrmtDCTrstFeePct.Clean
-                    && _sctyIstrmtDEAttyFeePct.Clean
-                    && _sctyIstrmtLAAttyFeePct.Clean
-                    && _sctyIstrmtLAMinAttyFeeAmt.Clean
-                    && _sctyIstrmtMDTrstFeePct.Clean
-                    && _sctyIstrmtMSTrstFeePct.Clean
-                    && _sctyIstrmtNCAttyFeePct.Clean
-                    && _sctyIstrmtNETrstFeePct.Clean
-                    && _sctyIstrmtNVAssmFeeAmt.Clean
-                    && _sctyIstrmtNVTrstFeePct.Clean
-                    && _sctyIstrmtOKAssmFeeAmt.Clean
-                    && _sctyIstrmtPOBoxAddr1.Clean
-                    && _sctyIstrmtPOBoxAddr2.Clean
-                    && _sctyIstrmtPrepByAdtlTxt.Clean
-                    && _sctyIstrmtPrepByCoNm.Clean
-                    && _sctyIstrmtPrepByCty.Clean
-                    && _sctyIstrmtPrepByIndvNm.Clean
-                    && _sctyIstrmtPrepByIndvTtl.Clean
-                    && _sctyIstrmtPrepByPhone.Clean
-                    && _sctyIstrmtPrepBySamePtyTypDesc.Clean
-                    && _sctyIstrmtPrepByStCd.Clean
-                    && _sctyIstrmtPrepByStreetAddr1.Clean
-                    && _sctyIstrmtPrepByStreetAddr2.Clean
-                    && _sctyIstrmtPrepByTxt.Clean
-                    && _sctyIstrmtPrepByZip.Clean
-                    && _sctyIstrmtTtlAdtlTxt.Clean
-                    && _sctyIstrmtTtlAdtlTxtAbvTtl.Clean
-                    && _sctyIstrmtVATrstFeePct.Clean
-                    && _trst1Cnty.Clean
-                    && _trst1Cty.Clean
-                    && _trst1IndvBool.Clean
-                    && _trst1Jrsdctn.Clean
-                    && _trst1Nm.Clean
-                    && _trst1OrgTyp.Clean
-                    && _trst1Phone.Clean
-                    && _trst1RsdtTxtDesc.Clean
-                    && _trst1SamePtyTypDesc.Clean
-                    && _trst1StCd.Clean
-                    && _trst1StreetAddr1.Clean
-                    && _trst1StreetAddr2.Clean
-                    && _trst1Zip.Clean
-                    && _trst2Cnty.Clean
-                    && _trst2Cty.Clean
-                    && _trst2IndvBool.Clean
-                    && _trst2Jrsdctn.Clean
-                    && _trst2Nm.Clean
-                    && _trst2OrgTyp.Clean
-                    && _trst2Phone.Clean
-                    && _trst2RsdtTxtDesc.Clean
-                    && _trst2SamePtyTypDesc.Clean
-                    && _trst2StCd.Clean
-                    && _trst2StreetAddr1.Clean
-                    && _trst2StreetAddr2.Clean
-                    && _trst2Zip.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _allngToNtPayToJrsdctn.Dirty
+                    || _allngToNtPayToOrdNm.Dirty
+                    || _allngToNtPayToOrgTyp.Dirty
+                    || _allngToNtPayToScsrsClaus.Dirty
+                    || _allngToNtSignedByNm.Dirty
+                    || _allngToNtSignedByNm2.Dirty
+                    || _allngToNtSignedByNm3.Dirty
+                    || _allngToNtSignedByTtl.Dirty
+                    || _allngToNtSignedByTtl2.Dirty
+                    || _allngToNtSignedByTtl3.Dirty
+                    || _allngToNtSignedByTyp.Dirty
+                    || _allngToNtWithoutRcrse.Dirty
+                    || _apnLbl.Dirty
+                    || _asgnPrepByLblTxtDesc.Dirty
+                    || _asgnRecRtrnLblTxtDesc.Dirty
+                    || _benCty.Dirty
+                    || _benJrsdctn.Dirty
+                    || _benNm.Dirty
+                    || _benOrgTyp.Dirty
+                    || _benStCd.Dirty
+                    || _benStreetAddr1.Dirty
+                    || _benStreetAddr2.Dirty
+                    || _benZip.Dirty
+                    || _closInstrLndCntcInfoCity.Dirty
+                    || _closInstrLndCntcInfoCoNm.Dirty
+                    || _closInstrLndCntcInfoSamePtyTypDesc.Dirty
+                    || _closInstrLndCntcInfoStCd.Dirty
+                    || _closInstrLndCntcInfoStreetAddr1.Dirty
+                    || _closInstrLndCntcInfoStreetAddr2.Dirty
+                    || _closInstrLndCntcInfoZip.Dirty
+                    || _closInstrPrtInvLossPayee.Dirty
+                    || _closInstrStlmtAgtUseLndHud1.Dirty
+                    || _closInstrTtlPlcyTyp.Dirty
+                    || _emxmlVersionId.Dirty
+                    || _exeClosDocDlvrdToCty.Dirty
+                    || _exeClosDocDlvrdToMiscTxtDesc.Dirty
+                    || _exeClosDocDlvrdToNm.Dirty
+                    || _exeClosDocDlvrdToSamePtyTypDesc.Dirty
+                    || _exeClosDocDlvrdToStCd.Dirty
+                    || _exeClosDocDlvrdToStreetAddr1.Dirty
+                    || _exeClosDocDlvrdToStreetAddr2.Dirty
+                    || _exeClosDocDlvrdToZip.Dirty
+                    || _exeClosDocExprDt.Dirty
+                    || _exeClosDocToBeRtrnd.Dirty
+                    || _exeClosDocToBeRtrndHrs.Dirty
+                    || _fnlTtlePcyRecDocsSentToAddlLine1.Dirty
+                    || _fnlTtlePcyRecDocsSentToAddlLine2.Dirty
+                    || _fnlTtlePcyRecDocsSentToCty.Dirty
+                    || _fnlTtlePcyRecDocsSentToNm.Dirty
+                    || _fnlTtlePcyRecDocsSentToSamePtyTypDesc.Dirty
+                    || _fnlTtlePcyRecDocsSentToStcd.Dirty
+                    || _fnlTtlePcyRecDocsSentToStreetAddr1.Dirty
+                    || _fnlTtlePcyRecDocsSentToStreetAddr2.Dirty
+                    || _fnlTtlePcyRecDocsSentToZip.Dirty
+                    || _hazInsurEndsmtMailToAdtlTxt.Dirty
+                    || _hazInsurEndsmtMailToCty.Dirty
+                    || _hazInsurEndsmtMailToNm.Dirty
+                    || _hazInsurEndsmtMailToStCd.Dirty
+                    || _hazInsurEndsmtMailToStreetAddr1.Dirty
+                    || _hazInsurEndsmtMailToStreetAddr2.Dirty
+                    || _hazInsurEndsmtMailToZip.Dirty
+                    || _id.Dirty
+                    || _mersAdtlCity.Dirty
+                    || _mersAdtlStCd.Dirty
+                    || _mersAdtlStreetAddr1.Dirty
+                    || _mersAdtlStreetAddr2.Dirty
+                    || _mersAdtlZip.Dirty
+                    || _mersCty.Dirty
+                    || _mersJrsdctn.Dirty
+                    || _mersName.Dirty
+                    || _mersOrgTyp.Dirty
+                    || _mersPhoneNum.Dirty
+                    || _mersStCd.Dirty
+                    || _mersStreetAddr1.Dirty
+                    || _mersStreetAddr2.Dirty
+                    || _mersZip.Dirty
+                    || _ntEndrsmtPayToJrsdctn.Dirty
+                    || _ntEndrsmtPayToOrdNm.Dirty
+                    || _ntEndrsmtPayToOrgTyp.Dirty
+                    || _ntEndrsmtPayToScsrsClaus.Dirty
+                    || _ntEndrsmtSgndBy1MiscTxt.Dirty
+                    || _ntEndrsmtSgndBy2MiscTxt.Dirty
+                    || _ntEndrsmtSignedByNm.Dirty
+                    || _ntEndrsmtSignedByNm2.Dirty
+                    || _ntEndrsmtSignedByNm3.Dirty
+                    || _ntEndrsmtSignedByTtl.Dirty
+                    || _ntEndrsmtSignedByTtl2.Dirty
+                    || _ntEndrsmtSignedByTtl3.Dirty
+                    || _ntEndrsmtSignedByTyp.Dirty
+                    || _ntEndrsmtWithoutRcrse.Dirty
+                    || _ntEndsmtThrdPtyAddr1.Dirty
+                    || _ntEndsmtThrdPtyAddr2.Dirty
+                    || _ntEndsmtThrdPtyCty.Dirty
+                    || _ntEndsmtThrdPtyJrsdctn.Dirty
+                    || _ntEndsmtThrdPtyName.Dirty
+                    || _ntEndsmtThrdPtyOrgTyp.Dirty
+                    || _ntEndsmtThrdPtyPhone.Dirty
+                    || _ntEndsmtThrdPtyScsrClaus.Dirty
+                    || _ntEndsmtThrdPtyStCd.Dirty
+                    || _ntEndsmtThrdPtyZip.Dirty
+                    || _ntPayToAdtlTxt.Dirty
+                    || _ntPayToCty.Dirty
+                    || _ntPayToJrsdctn.Dirty
+                    || _ntPayToNm.Dirty
+                    || _ntPayToOrgTyp.Dirty
+                    || _ntPayToStCd.Dirty
+                    || _ntPayToStreetAddr1.Dirty
+                    || _ntPayToStreetAddr2.Dirty
+                    || _ntPayToZip.Dirty
+                    || _pmtCpn2PayToAdtlTxt.Dirty
+                    || _pmtCpn2PayToAdtlTxt2.Dirty
+                    || _pmtCpn2PayToCty.Dirty
+                    || _pmtCpn2PayToNm.Dirty
+                    || _pmtCpn2PayToStCd.Dirty
+                    || _pmtCpn2PayToStreetAddr1.Dirty
+                    || _pmtCpn2PayToStreetAddr2.Dirty
+                    || _pmtCpn2PayToZip.Dirty
+                    || _pmtCpnPayToAdtlTxt.Dirty
+                    || _pmtCpnPayToAdtlTxt2.Dirty
+                    || _pmtCpnPayToCty.Dirty
+                    || _pmtCpnPayToNm.Dirty
+                    || _pmtCpnPayToStCd.Dirty
+                    || _pmtCpnPayToStreetAddr1.Dirty
+                    || _pmtCpnPayToStreetAddr2.Dirty
+                    || _pmtCpnPayToZip.Dirty
+                    || _prtAdtlDateHud1.Dirty
+                    || _prtAllngToNtBool.Dirty
+                    || _prtCorpMsgAsgnBool.Dirty
+                    || _prtDocDtSctyIstrmtNtryAprncDt.Dirty
+                    || _prtIndxTilBool.Dirty
+                    || _prtInitBlckNtBool.Dirty
+                    || _prtInitBlckSctyIstrmtBool.Dirty
+                    || _prtInvLoanNumBool.Dirty
+                    || _prtInvLoanNumPmtCpn2Ind.Dirty
+                    || _prtInvLoanNumPmtCpnInd.Dirty
+                    || _prtInvLossPayeeHazInsurDisBool.Dirty
+                    || _prtLoanNumDeedBool.Dirty
+                    || _prtNtEndsmtBool.Dirty
+                    || _prtNtPayToCorpMsgBool.Dirty
+                    || _prtScsrsClausClosInstBool.Dirty
+                    || _prtScsrsClausHazInsurDisBool.Dirty
+                    || _prtScsrsClausHazInsurLtrBool.Dirty
+                    || _prtScsrsClausPmtCpnBool.Dirty
+                    || _prtSctyIstrmtCorpMsgBool.Dirty
+                    || _recRtrnAttnLnNmTxtDesc.Dirty
+                    || _recRtrnCty.Dirty
+                    || _recRtrnLblTxtDesc.Dirty
+                    || _recRtrnNm.Dirty
+                    || _recRtrnNmSamePtyTypDesc.Dirty
+                    || _recRtrnPhoneNum.Dirty
+                    || _recRtrnStCd.Dirty
+                    || _recRtrnStreetAddr1.Dirty
+                    || _recRtrnStreetAddr2.Dirty
+                    || _recRtrnTollFreePhoneNum.Dirty
+                    || _recRtrnZip.Dirty
+                    || _rtrnExeClosPkgToLndBrchBool.Dirty
+                    || _rtToCancelNtfcAdtlTxt.Dirty
+                    || _rtToCancelNtfcCty.Dirty
+                    || _rtToCancelNtfcEmail.Dirty
+                    || _rtToCancelNtfcFax.Dirty
+                    || _rtToCancelNtfcNm.Dirty
+                    || _rtToCancelNtfcStCd.Dirty
+                    || _rtToCancelNtfcStreetAddr1.Dirty
+                    || _rtToCancelNtfcStreetAddr2.Dirty
+                    || _rtToCancelNtfcZip.Dirty
+                    || _rtToCancelTransDtTyp.Dirty
+                    || _sctyIstrmtDCTrstFeePct.Dirty
+                    || _sctyIstrmtDEAttyFeePct.Dirty
+                    || _sctyIstrmtLAAttyFeePct.Dirty
+                    || _sctyIstrmtLAMinAttyFeeAmt.Dirty
+                    || _sctyIstrmtMDTrstFeePct.Dirty
+                    || _sctyIstrmtMSTrstFeePct.Dirty
+                    || _sctyIstrmtNCAttyFeePct.Dirty
+                    || _sctyIstrmtNETrstFeePct.Dirty
+                    || _sctyIstrmtNVAssmFeeAmt.Dirty
+                    || _sctyIstrmtNVTrstFeePct.Dirty
+                    || _sctyIstrmtOKAssmFeeAmt.Dirty
+                    || _sctyIstrmtPOBoxAddr1.Dirty
+                    || _sctyIstrmtPOBoxAddr2.Dirty
+                    || _sctyIstrmtPrepByAdtlTxt.Dirty
+                    || _sctyIstrmtPrepByCoNm.Dirty
+                    || _sctyIstrmtPrepByCty.Dirty
+                    || _sctyIstrmtPrepByIndvNm.Dirty
+                    || _sctyIstrmtPrepByIndvTtl.Dirty
+                    || _sctyIstrmtPrepByPhone.Dirty
+                    || _sctyIstrmtPrepBySamePtyTypDesc.Dirty
+                    || _sctyIstrmtPrepByStCd.Dirty
+                    || _sctyIstrmtPrepByStreetAddr1.Dirty
+                    || _sctyIstrmtPrepByStreetAddr2.Dirty
+                    || _sctyIstrmtPrepByTxt.Dirty
+                    || _sctyIstrmtPrepByZip.Dirty
+                    || _sctyIstrmtTtlAdtlTxt.Dirty
+                    || _sctyIstrmtTtlAdtlTxtAbvTtl.Dirty
+                    || _sctyIstrmtVATrstFeePct.Dirty
+                    || _trst1Cnty.Dirty
+                    || _trst1Cty.Dirty
+                    || _trst1IndvBool.Dirty
+                    || _trst1Jrsdctn.Dirty
+                    || _trst1Nm.Dirty
+                    || _trst1OrgTyp.Dirty
+                    || _trst1Phone.Dirty
+                    || _trst1RsdtTxtDesc.Dirty
+                    || _trst1SamePtyTypDesc.Dirty
+                    || _trst1StCd.Dirty
+                    || _trst1StreetAddr1.Dirty
+                    || _trst1StreetAddr2.Dirty
+                    || _trst1Zip.Dirty
+                    || _trst2Cnty.Dirty
+                    || _trst2Cty.Dirty
+                    || _trst2IndvBool.Dirty
+                    || _trst2Jrsdctn.Dirty
+                    || _trst2Nm.Dirty
+                    || _trst2OrgTyp.Dirty
+                    || _trst2Phone.Dirty
+                    || _trst2RsdtTxtDesc.Dirty
+                    || _trst2SamePtyTypDesc.Dirty
+                    || _trst2StCd.Dirty
+                    || _trst2StreetAddr1.Dirty
+                    || _trst2StreetAddr2.Dirty
+                    || _trst2Zip.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var allngToNtPayToJrsdctn = _allngToNtPayToJrsdctn; allngToNtPayToJrsdctn.Clean = value; _allngToNtPayToJrsdctn = allngToNtPayToJrsdctn;
-                var allngToNtPayToOrdNm = _allngToNtPayToOrdNm; allngToNtPayToOrdNm.Clean = value; _allngToNtPayToOrdNm = allngToNtPayToOrdNm;
-                var allngToNtPayToOrgTyp = _allngToNtPayToOrgTyp; allngToNtPayToOrgTyp.Clean = value; _allngToNtPayToOrgTyp = allngToNtPayToOrgTyp;
-                var allngToNtPayToScsrsClaus = _allngToNtPayToScsrsClaus; allngToNtPayToScsrsClaus.Clean = value; _allngToNtPayToScsrsClaus = allngToNtPayToScsrsClaus;
-                var allngToNtSignedByNm = _allngToNtSignedByNm; allngToNtSignedByNm.Clean = value; _allngToNtSignedByNm = allngToNtSignedByNm;
-                var allngToNtSignedByNm2 = _allngToNtSignedByNm2; allngToNtSignedByNm2.Clean = value; _allngToNtSignedByNm2 = allngToNtSignedByNm2;
-                var allngToNtSignedByNm3 = _allngToNtSignedByNm3; allngToNtSignedByNm3.Clean = value; _allngToNtSignedByNm3 = allngToNtSignedByNm3;
-                var allngToNtSignedByTtl = _allngToNtSignedByTtl; allngToNtSignedByTtl.Clean = value; _allngToNtSignedByTtl = allngToNtSignedByTtl;
-                var allngToNtSignedByTtl2 = _allngToNtSignedByTtl2; allngToNtSignedByTtl2.Clean = value; _allngToNtSignedByTtl2 = allngToNtSignedByTtl2;
-                var allngToNtSignedByTtl3 = _allngToNtSignedByTtl3; allngToNtSignedByTtl3.Clean = value; _allngToNtSignedByTtl3 = allngToNtSignedByTtl3;
-                var allngToNtSignedByTyp = _allngToNtSignedByTyp; allngToNtSignedByTyp.Clean = value; _allngToNtSignedByTyp = allngToNtSignedByTyp;
-                var allngToNtWithoutRcrse = _allngToNtWithoutRcrse; allngToNtWithoutRcrse.Clean = value; _allngToNtWithoutRcrse = allngToNtWithoutRcrse;
-                var apnLbl = _apnLbl; apnLbl.Clean = value; _apnLbl = apnLbl;
-                var asgnPrepByLblTxtDesc = _asgnPrepByLblTxtDesc; asgnPrepByLblTxtDesc.Clean = value; _asgnPrepByLblTxtDesc = asgnPrepByLblTxtDesc;
-                var asgnRecRtrnLblTxtDesc = _asgnRecRtrnLblTxtDesc; asgnRecRtrnLblTxtDesc.Clean = value; _asgnRecRtrnLblTxtDesc = asgnRecRtrnLblTxtDesc;
-                var benCty = _benCty; benCty.Clean = value; _benCty = benCty;
-                var benJrsdctn = _benJrsdctn; benJrsdctn.Clean = value; _benJrsdctn = benJrsdctn;
-                var benNm = _benNm; benNm.Clean = value; _benNm = benNm;
-                var benOrgTyp = _benOrgTyp; benOrgTyp.Clean = value; _benOrgTyp = benOrgTyp;
-                var benStCd = _benStCd; benStCd.Clean = value; _benStCd = benStCd;
-                var benStreetAddr1 = _benStreetAddr1; benStreetAddr1.Clean = value; _benStreetAddr1 = benStreetAddr1;
-                var benStreetAddr2 = _benStreetAddr2; benStreetAddr2.Clean = value; _benStreetAddr2 = benStreetAddr2;
-                var benZip = _benZip; benZip.Clean = value; _benZip = benZip;
-                var closInstrLndCntcInfoCity = _closInstrLndCntcInfoCity; closInstrLndCntcInfoCity.Clean = value; _closInstrLndCntcInfoCity = closInstrLndCntcInfoCity;
-                var closInstrLndCntcInfoCoNm = _closInstrLndCntcInfoCoNm; closInstrLndCntcInfoCoNm.Clean = value; _closInstrLndCntcInfoCoNm = closInstrLndCntcInfoCoNm;
-                var closInstrLndCntcInfoSamePtyTypDesc = _closInstrLndCntcInfoSamePtyTypDesc; closInstrLndCntcInfoSamePtyTypDesc.Clean = value; _closInstrLndCntcInfoSamePtyTypDesc = closInstrLndCntcInfoSamePtyTypDesc;
-                var closInstrLndCntcInfoStCd = _closInstrLndCntcInfoStCd; closInstrLndCntcInfoStCd.Clean = value; _closInstrLndCntcInfoStCd = closInstrLndCntcInfoStCd;
-                var closInstrLndCntcInfoStreetAddr1 = _closInstrLndCntcInfoStreetAddr1; closInstrLndCntcInfoStreetAddr1.Clean = value; _closInstrLndCntcInfoStreetAddr1 = closInstrLndCntcInfoStreetAddr1;
-                var closInstrLndCntcInfoStreetAddr2 = _closInstrLndCntcInfoStreetAddr2; closInstrLndCntcInfoStreetAddr2.Clean = value; _closInstrLndCntcInfoStreetAddr2 = closInstrLndCntcInfoStreetAddr2;
-                var closInstrLndCntcInfoZip = _closInstrLndCntcInfoZip; closInstrLndCntcInfoZip.Clean = value; _closInstrLndCntcInfoZip = closInstrLndCntcInfoZip;
-                var closInstrPrtInvLossPayee = _closInstrPrtInvLossPayee; closInstrPrtInvLossPayee.Clean = value; _closInstrPrtInvLossPayee = closInstrPrtInvLossPayee;
-                var closInstrStlmtAgtUseLndHud1 = _closInstrStlmtAgtUseLndHud1; closInstrStlmtAgtUseLndHud1.Clean = value; _closInstrStlmtAgtUseLndHud1 = closInstrStlmtAgtUseLndHud1;
-                var closInstrTtlPlcyTyp = _closInstrTtlPlcyTyp; closInstrTtlPlcyTyp.Clean = value; _closInstrTtlPlcyTyp = closInstrTtlPlcyTyp;
-                var emxmlVersionId = _emxmlVersionId; emxmlVersionId.Clean = value; _emxmlVersionId = emxmlVersionId;
-                var exeClosDocDlvrdToCty = _exeClosDocDlvrdToCty; exeClosDocDlvrdToCty.Clean = value; _exeClosDocDlvrdToCty = exeClosDocDlvrdToCty;
-                var exeClosDocDlvrdToMiscTxtDesc = _exeClosDocDlvrdToMiscTxtDesc; exeClosDocDlvrdToMiscTxtDesc.Clean = value; _exeClosDocDlvrdToMiscTxtDesc = exeClosDocDlvrdToMiscTxtDesc;
-                var exeClosDocDlvrdToNm = _exeClosDocDlvrdToNm; exeClosDocDlvrdToNm.Clean = value; _exeClosDocDlvrdToNm = exeClosDocDlvrdToNm;
-                var exeClosDocDlvrdToSamePtyTypDesc = _exeClosDocDlvrdToSamePtyTypDesc; exeClosDocDlvrdToSamePtyTypDesc.Clean = value; _exeClosDocDlvrdToSamePtyTypDesc = exeClosDocDlvrdToSamePtyTypDesc;
-                var exeClosDocDlvrdToStCd = _exeClosDocDlvrdToStCd; exeClosDocDlvrdToStCd.Clean = value; _exeClosDocDlvrdToStCd = exeClosDocDlvrdToStCd;
-                var exeClosDocDlvrdToStreetAddr1 = _exeClosDocDlvrdToStreetAddr1; exeClosDocDlvrdToStreetAddr1.Clean = value; _exeClosDocDlvrdToStreetAddr1 = exeClosDocDlvrdToStreetAddr1;
-                var exeClosDocDlvrdToStreetAddr2 = _exeClosDocDlvrdToStreetAddr2; exeClosDocDlvrdToStreetAddr2.Clean = value; _exeClosDocDlvrdToStreetAddr2 = exeClosDocDlvrdToStreetAddr2;
-                var exeClosDocDlvrdToZip = _exeClosDocDlvrdToZip; exeClosDocDlvrdToZip.Clean = value; _exeClosDocDlvrdToZip = exeClosDocDlvrdToZip;
-                var exeClosDocExprDt = _exeClosDocExprDt; exeClosDocExprDt.Clean = value; _exeClosDocExprDt = exeClosDocExprDt;
-                var exeClosDocToBeRtrnd = _exeClosDocToBeRtrnd; exeClosDocToBeRtrnd.Clean = value; _exeClosDocToBeRtrnd = exeClosDocToBeRtrnd;
-                var exeClosDocToBeRtrndHrs = _exeClosDocToBeRtrndHrs; exeClosDocToBeRtrndHrs.Clean = value; _exeClosDocToBeRtrndHrs = exeClosDocToBeRtrndHrs;
-                var fnlTtlePcyRecDocsSentToAddlLine1 = _fnlTtlePcyRecDocsSentToAddlLine1; fnlTtlePcyRecDocsSentToAddlLine1.Clean = value; _fnlTtlePcyRecDocsSentToAddlLine1 = fnlTtlePcyRecDocsSentToAddlLine1;
-                var fnlTtlePcyRecDocsSentToAddlLine2 = _fnlTtlePcyRecDocsSentToAddlLine2; fnlTtlePcyRecDocsSentToAddlLine2.Clean = value; _fnlTtlePcyRecDocsSentToAddlLine2 = fnlTtlePcyRecDocsSentToAddlLine2;
-                var fnlTtlePcyRecDocsSentToCty = _fnlTtlePcyRecDocsSentToCty; fnlTtlePcyRecDocsSentToCty.Clean = value; _fnlTtlePcyRecDocsSentToCty = fnlTtlePcyRecDocsSentToCty;
-                var fnlTtlePcyRecDocsSentToNm = _fnlTtlePcyRecDocsSentToNm; fnlTtlePcyRecDocsSentToNm.Clean = value; _fnlTtlePcyRecDocsSentToNm = fnlTtlePcyRecDocsSentToNm;
-                var fnlTtlePcyRecDocsSentToSamePtyTypDesc = _fnlTtlePcyRecDocsSentToSamePtyTypDesc; fnlTtlePcyRecDocsSentToSamePtyTypDesc.Clean = value; _fnlTtlePcyRecDocsSentToSamePtyTypDesc = fnlTtlePcyRecDocsSentToSamePtyTypDesc;
-                var fnlTtlePcyRecDocsSentToStcd = _fnlTtlePcyRecDocsSentToStcd; fnlTtlePcyRecDocsSentToStcd.Clean = value; _fnlTtlePcyRecDocsSentToStcd = fnlTtlePcyRecDocsSentToStcd;
-                var fnlTtlePcyRecDocsSentToStreetAddr1 = _fnlTtlePcyRecDocsSentToStreetAddr1; fnlTtlePcyRecDocsSentToStreetAddr1.Clean = value; _fnlTtlePcyRecDocsSentToStreetAddr1 = fnlTtlePcyRecDocsSentToStreetAddr1;
-                var fnlTtlePcyRecDocsSentToStreetAddr2 = _fnlTtlePcyRecDocsSentToStreetAddr2; fnlTtlePcyRecDocsSentToStreetAddr2.Clean = value; _fnlTtlePcyRecDocsSentToStreetAddr2 = fnlTtlePcyRecDocsSentToStreetAddr2;
-                var fnlTtlePcyRecDocsSentToZip = _fnlTtlePcyRecDocsSentToZip; fnlTtlePcyRecDocsSentToZip.Clean = value; _fnlTtlePcyRecDocsSentToZip = fnlTtlePcyRecDocsSentToZip;
-                var hazInsurEndsmtMailToAdtlTxt = _hazInsurEndsmtMailToAdtlTxt; hazInsurEndsmtMailToAdtlTxt.Clean = value; _hazInsurEndsmtMailToAdtlTxt = hazInsurEndsmtMailToAdtlTxt;
-                var hazInsurEndsmtMailToCty = _hazInsurEndsmtMailToCty; hazInsurEndsmtMailToCty.Clean = value; _hazInsurEndsmtMailToCty = hazInsurEndsmtMailToCty;
-                var hazInsurEndsmtMailToNm = _hazInsurEndsmtMailToNm; hazInsurEndsmtMailToNm.Clean = value; _hazInsurEndsmtMailToNm = hazInsurEndsmtMailToNm;
-                var hazInsurEndsmtMailToStCd = _hazInsurEndsmtMailToStCd; hazInsurEndsmtMailToStCd.Clean = value; _hazInsurEndsmtMailToStCd = hazInsurEndsmtMailToStCd;
-                var hazInsurEndsmtMailToStreetAddr1 = _hazInsurEndsmtMailToStreetAddr1; hazInsurEndsmtMailToStreetAddr1.Clean = value; _hazInsurEndsmtMailToStreetAddr1 = hazInsurEndsmtMailToStreetAddr1;
-                var hazInsurEndsmtMailToStreetAddr2 = _hazInsurEndsmtMailToStreetAddr2; hazInsurEndsmtMailToStreetAddr2.Clean = value; _hazInsurEndsmtMailToStreetAddr2 = hazInsurEndsmtMailToStreetAddr2;
-                var hazInsurEndsmtMailToZip = _hazInsurEndsmtMailToZip; hazInsurEndsmtMailToZip.Clean = value; _hazInsurEndsmtMailToZip = hazInsurEndsmtMailToZip;
-                var id = _id; id.Clean = value; _id = id;
-                var mersAdtlCity = _mersAdtlCity; mersAdtlCity.Clean = value; _mersAdtlCity = mersAdtlCity;
-                var mersAdtlStCd = _mersAdtlStCd; mersAdtlStCd.Clean = value; _mersAdtlStCd = mersAdtlStCd;
-                var mersAdtlStreetAddr1 = _mersAdtlStreetAddr1; mersAdtlStreetAddr1.Clean = value; _mersAdtlStreetAddr1 = mersAdtlStreetAddr1;
-                var mersAdtlStreetAddr2 = _mersAdtlStreetAddr2; mersAdtlStreetAddr2.Clean = value; _mersAdtlStreetAddr2 = mersAdtlStreetAddr2;
-                var mersAdtlZip = _mersAdtlZip; mersAdtlZip.Clean = value; _mersAdtlZip = mersAdtlZip;
-                var mersCty = _mersCty; mersCty.Clean = value; _mersCty = mersCty;
-                var mersJrsdctn = _mersJrsdctn; mersJrsdctn.Clean = value; _mersJrsdctn = mersJrsdctn;
-                var mersName = _mersName; mersName.Clean = value; _mersName = mersName;
-                var mersOrgTyp = _mersOrgTyp; mersOrgTyp.Clean = value; _mersOrgTyp = mersOrgTyp;
-                var mersPhoneNum = _mersPhoneNum; mersPhoneNum.Clean = value; _mersPhoneNum = mersPhoneNum;
-                var mersStCd = _mersStCd; mersStCd.Clean = value; _mersStCd = mersStCd;
-                var mersStreetAddr1 = _mersStreetAddr1; mersStreetAddr1.Clean = value; _mersStreetAddr1 = mersStreetAddr1;
-                var mersStreetAddr2 = _mersStreetAddr2; mersStreetAddr2.Clean = value; _mersStreetAddr2 = mersStreetAddr2;
-                var mersZip = _mersZip; mersZip.Clean = value; _mersZip = mersZip;
-                var ntEndrsmtPayToJrsdctn = _ntEndrsmtPayToJrsdctn; ntEndrsmtPayToJrsdctn.Clean = value; _ntEndrsmtPayToJrsdctn = ntEndrsmtPayToJrsdctn;
-                var ntEndrsmtPayToOrdNm = _ntEndrsmtPayToOrdNm; ntEndrsmtPayToOrdNm.Clean = value; _ntEndrsmtPayToOrdNm = ntEndrsmtPayToOrdNm;
-                var ntEndrsmtPayToOrgTyp = _ntEndrsmtPayToOrgTyp; ntEndrsmtPayToOrgTyp.Clean = value; _ntEndrsmtPayToOrgTyp = ntEndrsmtPayToOrgTyp;
-                var ntEndrsmtPayToScsrsClaus = _ntEndrsmtPayToScsrsClaus; ntEndrsmtPayToScsrsClaus.Clean = value; _ntEndrsmtPayToScsrsClaus = ntEndrsmtPayToScsrsClaus;
-                var ntEndrsmtSgndBy1MiscTxt = _ntEndrsmtSgndBy1MiscTxt; ntEndrsmtSgndBy1MiscTxt.Clean = value; _ntEndrsmtSgndBy1MiscTxt = ntEndrsmtSgndBy1MiscTxt;
-                var ntEndrsmtSgndBy2MiscTxt = _ntEndrsmtSgndBy2MiscTxt; ntEndrsmtSgndBy2MiscTxt.Clean = value; _ntEndrsmtSgndBy2MiscTxt = ntEndrsmtSgndBy2MiscTxt;
-                var ntEndrsmtSignedByNm = _ntEndrsmtSignedByNm; ntEndrsmtSignedByNm.Clean = value; _ntEndrsmtSignedByNm = ntEndrsmtSignedByNm;
-                var ntEndrsmtSignedByNm2 = _ntEndrsmtSignedByNm2; ntEndrsmtSignedByNm2.Clean = value; _ntEndrsmtSignedByNm2 = ntEndrsmtSignedByNm2;
-                var ntEndrsmtSignedByNm3 = _ntEndrsmtSignedByNm3; ntEndrsmtSignedByNm3.Clean = value; _ntEndrsmtSignedByNm3 = ntEndrsmtSignedByNm3;
-                var ntEndrsmtSignedByTtl = _ntEndrsmtSignedByTtl; ntEndrsmtSignedByTtl.Clean = value; _ntEndrsmtSignedByTtl = ntEndrsmtSignedByTtl;
-                var ntEndrsmtSignedByTtl2 = _ntEndrsmtSignedByTtl2; ntEndrsmtSignedByTtl2.Clean = value; _ntEndrsmtSignedByTtl2 = ntEndrsmtSignedByTtl2;
-                var ntEndrsmtSignedByTtl3 = _ntEndrsmtSignedByTtl3; ntEndrsmtSignedByTtl3.Clean = value; _ntEndrsmtSignedByTtl3 = ntEndrsmtSignedByTtl3;
-                var ntEndrsmtSignedByTyp = _ntEndrsmtSignedByTyp; ntEndrsmtSignedByTyp.Clean = value; _ntEndrsmtSignedByTyp = ntEndrsmtSignedByTyp;
-                var ntEndrsmtWithoutRcrse = _ntEndrsmtWithoutRcrse; ntEndrsmtWithoutRcrse.Clean = value; _ntEndrsmtWithoutRcrse = ntEndrsmtWithoutRcrse;
-                var ntEndsmtThrdPtyAddr1 = _ntEndsmtThrdPtyAddr1; ntEndsmtThrdPtyAddr1.Clean = value; _ntEndsmtThrdPtyAddr1 = ntEndsmtThrdPtyAddr1;
-                var ntEndsmtThrdPtyAddr2 = _ntEndsmtThrdPtyAddr2; ntEndsmtThrdPtyAddr2.Clean = value; _ntEndsmtThrdPtyAddr2 = ntEndsmtThrdPtyAddr2;
-                var ntEndsmtThrdPtyCty = _ntEndsmtThrdPtyCty; ntEndsmtThrdPtyCty.Clean = value; _ntEndsmtThrdPtyCty = ntEndsmtThrdPtyCty;
-                var ntEndsmtThrdPtyJrsdctn = _ntEndsmtThrdPtyJrsdctn; ntEndsmtThrdPtyJrsdctn.Clean = value; _ntEndsmtThrdPtyJrsdctn = ntEndsmtThrdPtyJrsdctn;
-                var ntEndsmtThrdPtyName = _ntEndsmtThrdPtyName; ntEndsmtThrdPtyName.Clean = value; _ntEndsmtThrdPtyName = ntEndsmtThrdPtyName;
-                var ntEndsmtThrdPtyOrgTyp = _ntEndsmtThrdPtyOrgTyp; ntEndsmtThrdPtyOrgTyp.Clean = value; _ntEndsmtThrdPtyOrgTyp = ntEndsmtThrdPtyOrgTyp;
-                var ntEndsmtThrdPtyPhone = _ntEndsmtThrdPtyPhone; ntEndsmtThrdPtyPhone.Clean = value; _ntEndsmtThrdPtyPhone = ntEndsmtThrdPtyPhone;
-                var ntEndsmtThrdPtyScsrClaus = _ntEndsmtThrdPtyScsrClaus; ntEndsmtThrdPtyScsrClaus.Clean = value; _ntEndsmtThrdPtyScsrClaus = ntEndsmtThrdPtyScsrClaus;
-                var ntEndsmtThrdPtyStCd = _ntEndsmtThrdPtyStCd; ntEndsmtThrdPtyStCd.Clean = value; _ntEndsmtThrdPtyStCd = ntEndsmtThrdPtyStCd;
-                var ntEndsmtThrdPtyZip = _ntEndsmtThrdPtyZip; ntEndsmtThrdPtyZip.Clean = value; _ntEndsmtThrdPtyZip = ntEndsmtThrdPtyZip;
-                var ntPayToAdtlTxt = _ntPayToAdtlTxt; ntPayToAdtlTxt.Clean = value; _ntPayToAdtlTxt = ntPayToAdtlTxt;
-                var ntPayToCty = _ntPayToCty; ntPayToCty.Clean = value; _ntPayToCty = ntPayToCty;
-                var ntPayToJrsdctn = _ntPayToJrsdctn; ntPayToJrsdctn.Clean = value; _ntPayToJrsdctn = ntPayToJrsdctn;
-                var ntPayToNm = _ntPayToNm; ntPayToNm.Clean = value; _ntPayToNm = ntPayToNm;
-                var ntPayToOrgTyp = _ntPayToOrgTyp; ntPayToOrgTyp.Clean = value; _ntPayToOrgTyp = ntPayToOrgTyp;
-                var ntPayToStCd = _ntPayToStCd; ntPayToStCd.Clean = value; _ntPayToStCd = ntPayToStCd;
-                var ntPayToStreetAddr1 = _ntPayToStreetAddr1; ntPayToStreetAddr1.Clean = value; _ntPayToStreetAddr1 = ntPayToStreetAddr1;
-                var ntPayToStreetAddr2 = _ntPayToStreetAddr2; ntPayToStreetAddr2.Clean = value; _ntPayToStreetAddr2 = ntPayToStreetAddr2;
-                var ntPayToZip = _ntPayToZip; ntPayToZip.Clean = value; _ntPayToZip = ntPayToZip;
-                var pmtCpn2PayToAdtlTxt = _pmtCpn2PayToAdtlTxt; pmtCpn2PayToAdtlTxt.Clean = value; _pmtCpn2PayToAdtlTxt = pmtCpn2PayToAdtlTxt;
-                var pmtCpn2PayToAdtlTxt2 = _pmtCpn2PayToAdtlTxt2; pmtCpn2PayToAdtlTxt2.Clean = value; _pmtCpn2PayToAdtlTxt2 = pmtCpn2PayToAdtlTxt2;
-                var pmtCpn2PayToCty = _pmtCpn2PayToCty; pmtCpn2PayToCty.Clean = value; _pmtCpn2PayToCty = pmtCpn2PayToCty;
-                var pmtCpn2PayToNm = _pmtCpn2PayToNm; pmtCpn2PayToNm.Clean = value; _pmtCpn2PayToNm = pmtCpn2PayToNm;
-                var pmtCpn2PayToStCd = _pmtCpn2PayToStCd; pmtCpn2PayToStCd.Clean = value; _pmtCpn2PayToStCd = pmtCpn2PayToStCd;
-                var pmtCpn2PayToStreetAddr1 = _pmtCpn2PayToStreetAddr1; pmtCpn2PayToStreetAddr1.Clean = value; _pmtCpn2PayToStreetAddr1 = pmtCpn2PayToStreetAddr1;
-                var pmtCpn2PayToStreetAddr2 = _pmtCpn2PayToStreetAddr2; pmtCpn2PayToStreetAddr2.Clean = value; _pmtCpn2PayToStreetAddr2 = pmtCpn2PayToStreetAddr2;
-                var pmtCpn2PayToZip = _pmtCpn2PayToZip; pmtCpn2PayToZip.Clean = value; _pmtCpn2PayToZip = pmtCpn2PayToZip;
-                var pmtCpnPayToAdtlTxt = _pmtCpnPayToAdtlTxt; pmtCpnPayToAdtlTxt.Clean = value; _pmtCpnPayToAdtlTxt = pmtCpnPayToAdtlTxt;
-                var pmtCpnPayToAdtlTxt2 = _pmtCpnPayToAdtlTxt2; pmtCpnPayToAdtlTxt2.Clean = value; _pmtCpnPayToAdtlTxt2 = pmtCpnPayToAdtlTxt2;
-                var pmtCpnPayToCty = _pmtCpnPayToCty; pmtCpnPayToCty.Clean = value; _pmtCpnPayToCty = pmtCpnPayToCty;
-                var pmtCpnPayToNm = _pmtCpnPayToNm; pmtCpnPayToNm.Clean = value; _pmtCpnPayToNm = pmtCpnPayToNm;
-                var pmtCpnPayToStCd = _pmtCpnPayToStCd; pmtCpnPayToStCd.Clean = value; _pmtCpnPayToStCd = pmtCpnPayToStCd;
-                var pmtCpnPayToStreetAddr1 = _pmtCpnPayToStreetAddr1; pmtCpnPayToStreetAddr1.Clean = value; _pmtCpnPayToStreetAddr1 = pmtCpnPayToStreetAddr1;
-                var pmtCpnPayToStreetAddr2 = _pmtCpnPayToStreetAddr2; pmtCpnPayToStreetAddr2.Clean = value; _pmtCpnPayToStreetAddr2 = pmtCpnPayToStreetAddr2;
-                var pmtCpnPayToZip = _pmtCpnPayToZip; pmtCpnPayToZip.Clean = value; _pmtCpnPayToZip = pmtCpnPayToZip;
-                var prtAdtlDateHud1 = _prtAdtlDateHud1; prtAdtlDateHud1.Clean = value; _prtAdtlDateHud1 = prtAdtlDateHud1;
-                var prtAllngToNtBool = _prtAllngToNtBool; prtAllngToNtBool.Clean = value; _prtAllngToNtBool = prtAllngToNtBool;
-                var prtCorpMsgAsgnBool = _prtCorpMsgAsgnBool; prtCorpMsgAsgnBool.Clean = value; _prtCorpMsgAsgnBool = prtCorpMsgAsgnBool;
-                var prtDocDtSctyIstrmtNtryAprncDt = _prtDocDtSctyIstrmtNtryAprncDt; prtDocDtSctyIstrmtNtryAprncDt.Clean = value; _prtDocDtSctyIstrmtNtryAprncDt = prtDocDtSctyIstrmtNtryAprncDt;
-                var prtIndxTilBool = _prtIndxTilBool; prtIndxTilBool.Clean = value; _prtIndxTilBool = prtIndxTilBool;
-                var prtInitBlckNtBool = _prtInitBlckNtBool; prtInitBlckNtBool.Clean = value; _prtInitBlckNtBool = prtInitBlckNtBool;
-                var prtInitBlckSctyIstrmtBool = _prtInitBlckSctyIstrmtBool; prtInitBlckSctyIstrmtBool.Clean = value; _prtInitBlckSctyIstrmtBool = prtInitBlckSctyIstrmtBool;
-                var prtInvLoanNumBool = _prtInvLoanNumBool; prtInvLoanNumBool.Clean = value; _prtInvLoanNumBool = prtInvLoanNumBool;
-                var prtInvLoanNumPmtCpn2Ind = _prtInvLoanNumPmtCpn2Ind; prtInvLoanNumPmtCpn2Ind.Clean = value; _prtInvLoanNumPmtCpn2Ind = prtInvLoanNumPmtCpn2Ind;
-                var prtInvLoanNumPmtCpnInd = _prtInvLoanNumPmtCpnInd; prtInvLoanNumPmtCpnInd.Clean = value; _prtInvLoanNumPmtCpnInd = prtInvLoanNumPmtCpnInd;
-                var prtInvLossPayeeHazInsurDisBool = _prtInvLossPayeeHazInsurDisBool; prtInvLossPayeeHazInsurDisBool.Clean = value; _prtInvLossPayeeHazInsurDisBool = prtInvLossPayeeHazInsurDisBool;
-                var prtLoanNumDeedBool = _prtLoanNumDeedBool; prtLoanNumDeedBool.Clean = value; _prtLoanNumDeedBool = prtLoanNumDeedBool;
-                var prtNtEndsmtBool = _prtNtEndsmtBool; prtNtEndsmtBool.Clean = value; _prtNtEndsmtBool = prtNtEndsmtBool;
-                var prtNtPayToCorpMsgBool = _prtNtPayToCorpMsgBool; prtNtPayToCorpMsgBool.Clean = value; _prtNtPayToCorpMsgBool = prtNtPayToCorpMsgBool;
-                var prtScsrsClausClosInstBool = _prtScsrsClausClosInstBool; prtScsrsClausClosInstBool.Clean = value; _prtScsrsClausClosInstBool = prtScsrsClausClosInstBool;
-                var prtScsrsClausHazInsurDisBool = _prtScsrsClausHazInsurDisBool; prtScsrsClausHazInsurDisBool.Clean = value; _prtScsrsClausHazInsurDisBool = prtScsrsClausHazInsurDisBool;
-                var prtScsrsClausHazInsurLtrBool = _prtScsrsClausHazInsurLtrBool; prtScsrsClausHazInsurLtrBool.Clean = value; _prtScsrsClausHazInsurLtrBool = prtScsrsClausHazInsurLtrBool;
-                var prtScsrsClausPmtCpnBool = _prtScsrsClausPmtCpnBool; prtScsrsClausPmtCpnBool.Clean = value; _prtScsrsClausPmtCpnBool = prtScsrsClausPmtCpnBool;
-                var prtSctyIstrmtCorpMsgBool = _prtSctyIstrmtCorpMsgBool; prtSctyIstrmtCorpMsgBool.Clean = value; _prtSctyIstrmtCorpMsgBool = prtSctyIstrmtCorpMsgBool;
-                var recRtrnAttnLnNmTxtDesc = _recRtrnAttnLnNmTxtDesc; recRtrnAttnLnNmTxtDesc.Clean = value; _recRtrnAttnLnNmTxtDesc = recRtrnAttnLnNmTxtDesc;
-                var recRtrnCty = _recRtrnCty; recRtrnCty.Clean = value; _recRtrnCty = recRtrnCty;
-                var recRtrnLblTxtDesc = _recRtrnLblTxtDesc; recRtrnLblTxtDesc.Clean = value; _recRtrnLblTxtDesc = recRtrnLblTxtDesc;
-                var recRtrnNm = _recRtrnNm; recRtrnNm.Clean = value; _recRtrnNm = recRtrnNm;
-                var recRtrnNmSamePtyTypDesc = _recRtrnNmSamePtyTypDesc; recRtrnNmSamePtyTypDesc.Clean = value; _recRtrnNmSamePtyTypDesc = recRtrnNmSamePtyTypDesc;
-                var recRtrnPhoneNum = _recRtrnPhoneNum; recRtrnPhoneNum.Clean = value; _recRtrnPhoneNum = recRtrnPhoneNum;
-                var recRtrnStCd = _recRtrnStCd; recRtrnStCd.Clean = value; _recRtrnStCd = recRtrnStCd;
-                var recRtrnStreetAddr1 = _recRtrnStreetAddr1; recRtrnStreetAddr1.Clean = value; _recRtrnStreetAddr1 = recRtrnStreetAddr1;
-                var recRtrnStreetAddr2 = _recRtrnStreetAddr2; recRtrnStreetAddr2.Clean = value; _recRtrnStreetAddr2 = recRtrnStreetAddr2;
-                var recRtrnTollFreePhoneNum = _recRtrnTollFreePhoneNum; recRtrnTollFreePhoneNum.Clean = value; _recRtrnTollFreePhoneNum = recRtrnTollFreePhoneNum;
-                var recRtrnZip = _recRtrnZip; recRtrnZip.Clean = value; _recRtrnZip = recRtrnZip;
-                var rtrnExeClosPkgToLndBrchBool = _rtrnExeClosPkgToLndBrchBool; rtrnExeClosPkgToLndBrchBool.Clean = value; _rtrnExeClosPkgToLndBrchBool = rtrnExeClosPkgToLndBrchBool;
-                var rtToCancelNtfcAdtlTxt = _rtToCancelNtfcAdtlTxt; rtToCancelNtfcAdtlTxt.Clean = value; _rtToCancelNtfcAdtlTxt = rtToCancelNtfcAdtlTxt;
-                var rtToCancelNtfcCty = _rtToCancelNtfcCty; rtToCancelNtfcCty.Clean = value; _rtToCancelNtfcCty = rtToCancelNtfcCty;
-                var rtToCancelNtfcEmail = _rtToCancelNtfcEmail; rtToCancelNtfcEmail.Clean = value; _rtToCancelNtfcEmail = rtToCancelNtfcEmail;
-                var rtToCancelNtfcFax = _rtToCancelNtfcFax; rtToCancelNtfcFax.Clean = value; _rtToCancelNtfcFax = rtToCancelNtfcFax;
-                var rtToCancelNtfcNm = _rtToCancelNtfcNm; rtToCancelNtfcNm.Clean = value; _rtToCancelNtfcNm = rtToCancelNtfcNm;
-                var rtToCancelNtfcStCd = _rtToCancelNtfcStCd; rtToCancelNtfcStCd.Clean = value; _rtToCancelNtfcStCd = rtToCancelNtfcStCd;
-                var rtToCancelNtfcStreetAddr1 = _rtToCancelNtfcStreetAddr1; rtToCancelNtfcStreetAddr1.Clean = value; _rtToCancelNtfcStreetAddr1 = rtToCancelNtfcStreetAddr1;
-                var rtToCancelNtfcStreetAddr2 = _rtToCancelNtfcStreetAddr2; rtToCancelNtfcStreetAddr2.Clean = value; _rtToCancelNtfcStreetAddr2 = rtToCancelNtfcStreetAddr2;
-                var rtToCancelNtfcZip = _rtToCancelNtfcZip; rtToCancelNtfcZip.Clean = value; _rtToCancelNtfcZip = rtToCancelNtfcZip;
-                var rtToCancelTransDtTyp = _rtToCancelTransDtTyp; rtToCancelTransDtTyp.Clean = value; _rtToCancelTransDtTyp = rtToCancelTransDtTyp;
-                var sctyIstrmtDCTrstFeePct = _sctyIstrmtDCTrstFeePct; sctyIstrmtDCTrstFeePct.Clean = value; _sctyIstrmtDCTrstFeePct = sctyIstrmtDCTrstFeePct;
-                var sctyIstrmtDEAttyFeePct = _sctyIstrmtDEAttyFeePct; sctyIstrmtDEAttyFeePct.Clean = value; _sctyIstrmtDEAttyFeePct = sctyIstrmtDEAttyFeePct;
-                var sctyIstrmtLAAttyFeePct = _sctyIstrmtLAAttyFeePct; sctyIstrmtLAAttyFeePct.Clean = value; _sctyIstrmtLAAttyFeePct = sctyIstrmtLAAttyFeePct;
-                var sctyIstrmtLAMinAttyFeeAmt = _sctyIstrmtLAMinAttyFeeAmt; sctyIstrmtLAMinAttyFeeAmt.Clean = value; _sctyIstrmtLAMinAttyFeeAmt = sctyIstrmtLAMinAttyFeeAmt;
-                var sctyIstrmtMDTrstFeePct = _sctyIstrmtMDTrstFeePct; sctyIstrmtMDTrstFeePct.Clean = value; _sctyIstrmtMDTrstFeePct = sctyIstrmtMDTrstFeePct;
-                var sctyIstrmtMSTrstFeePct = _sctyIstrmtMSTrstFeePct; sctyIstrmtMSTrstFeePct.Clean = value; _sctyIstrmtMSTrstFeePct = sctyIstrmtMSTrstFeePct;
-                var sctyIstrmtNCAttyFeePct = _sctyIstrmtNCAttyFeePct; sctyIstrmtNCAttyFeePct.Clean = value; _sctyIstrmtNCAttyFeePct = sctyIstrmtNCAttyFeePct;
-                var sctyIstrmtNETrstFeePct = _sctyIstrmtNETrstFeePct; sctyIstrmtNETrstFeePct.Clean = value; _sctyIstrmtNETrstFeePct = sctyIstrmtNETrstFeePct;
-                var sctyIstrmtNVAssmFeeAmt = _sctyIstrmtNVAssmFeeAmt; sctyIstrmtNVAssmFeeAmt.Clean = value; _sctyIstrmtNVAssmFeeAmt = sctyIstrmtNVAssmFeeAmt;
-                var sctyIstrmtNVTrstFeePct = _sctyIstrmtNVTrstFeePct; sctyIstrmtNVTrstFeePct.Clean = value; _sctyIstrmtNVTrstFeePct = sctyIstrmtNVTrstFeePct;
-                var sctyIstrmtOKAssmFeeAmt = _sctyIstrmtOKAssmFeeAmt; sctyIstrmtOKAssmFeeAmt.Clean = value; _sctyIstrmtOKAssmFeeAmt = sctyIstrmtOKAssmFeeAmt;
-                var sctyIstrmtPOBoxAddr1 = _sctyIstrmtPOBoxAddr1; sctyIstrmtPOBoxAddr1.Clean = value; _sctyIstrmtPOBoxAddr1 = sctyIstrmtPOBoxAddr1;
-                var sctyIstrmtPOBoxAddr2 = _sctyIstrmtPOBoxAddr2; sctyIstrmtPOBoxAddr2.Clean = value; _sctyIstrmtPOBoxAddr2 = sctyIstrmtPOBoxAddr2;
-                var sctyIstrmtPrepByAdtlTxt = _sctyIstrmtPrepByAdtlTxt; sctyIstrmtPrepByAdtlTxt.Clean = value; _sctyIstrmtPrepByAdtlTxt = sctyIstrmtPrepByAdtlTxt;
-                var sctyIstrmtPrepByCoNm = _sctyIstrmtPrepByCoNm; sctyIstrmtPrepByCoNm.Clean = value; _sctyIstrmtPrepByCoNm = sctyIstrmtPrepByCoNm;
-                var sctyIstrmtPrepByCty = _sctyIstrmtPrepByCty; sctyIstrmtPrepByCty.Clean = value; _sctyIstrmtPrepByCty = sctyIstrmtPrepByCty;
-                var sctyIstrmtPrepByIndvNm = _sctyIstrmtPrepByIndvNm; sctyIstrmtPrepByIndvNm.Clean = value; _sctyIstrmtPrepByIndvNm = sctyIstrmtPrepByIndvNm;
-                var sctyIstrmtPrepByIndvTtl = _sctyIstrmtPrepByIndvTtl; sctyIstrmtPrepByIndvTtl.Clean = value; _sctyIstrmtPrepByIndvTtl = sctyIstrmtPrepByIndvTtl;
-                var sctyIstrmtPrepByPhone = _sctyIstrmtPrepByPhone; sctyIstrmtPrepByPhone.Clean = value; _sctyIstrmtPrepByPhone = sctyIstrmtPrepByPhone;
-                var sctyIstrmtPrepBySamePtyTypDesc = _sctyIstrmtPrepBySamePtyTypDesc; sctyIstrmtPrepBySamePtyTypDesc.Clean = value; _sctyIstrmtPrepBySamePtyTypDesc = sctyIstrmtPrepBySamePtyTypDesc;
-                var sctyIstrmtPrepByStCd = _sctyIstrmtPrepByStCd; sctyIstrmtPrepByStCd.Clean = value; _sctyIstrmtPrepByStCd = sctyIstrmtPrepByStCd;
-                var sctyIstrmtPrepByStreetAddr1 = _sctyIstrmtPrepByStreetAddr1; sctyIstrmtPrepByStreetAddr1.Clean = value; _sctyIstrmtPrepByStreetAddr1 = sctyIstrmtPrepByStreetAddr1;
-                var sctyIstrmtPrepByStreetAddr2 = _sctyIstrmtPrepByStreetAddr2; sctyIstrmtPrepByStreetAddr2.Clean = value; _sctyIstrmtPrepByStreetAddr2 = sctyIstrmtPrepByStreetAddr2;
-                var sctyIstrmtPrepByTxt = _sctyIstrmtPrepByTxt; sctyIstrmtPrepByTxt.Clean = value; _sctyIstrmtPrepByTxt = sctyIstrmtPrepByTxt;
-                var sctyIstrmtPrepByZip = _sctyIstrmtPrepByZip; sctyIstrmtPrepByZip.Clean = value; _sctyIstrmtPrepByZip = sctyIstrmtPrepByZip;
-                var sctyIstrmtTtlAdtlTxt = _sctyIstrmtTtlAdtlTxt; sctyIstrmtTtlAdtlTxt.Clean = value; _sctyIstrmtTtlAdtlTxt = sctyIstrmtTtlAdtlTxt;
-                var sctyIstrmtTtlAdtlTxtAbvTtl = _sctyIstrmtTtlAdtlTxtAbvTtl; sctyIstrmtTtlAdtlTxtAbvTtl.Clean = value; _sctyIstrmtTtlAdtlTxtAbvTtl = sctyIstrmtTtlAdtlTxtAbvTtl;
-                var sctyIstrmtVATrstFeePct = _sctyIstrmtVATrstFeePct; sctyIstrmtVATrstFeePct.Clean = value; _sctyIstrmtVATrstFeePct = sctyIstrmtVATrstFeePct;
-                var trst1Cnty = _trst1Cnty; trst1Cnty.Clean = value; _trst1Cnty = trst1Cnty;
-                var trst1Cty = _trst1Cty; trst1Cty.Clean = value; _trst1Cty = trst1Cty;
-                var trst1IndvBool = _trst1IndvBool; trst1IndvBool.Clean = value; _trst1IndvBool = trst1IndvBool;
-                var trst1Jrsdctn = _trst1Jrsdctn; trst1Jrsdctn.Clean = value; _trst1Jrsdctn = trst1Jrsdctn;
-                var trst1Nm = _trst1Nm; trst1Nm.Clean = value; _trst1Nm = trst1Nm;
-                var trst1OrgTyp = _trst1OrgTyp; trst1OrgTyp.Clean = value; _trst1OrgTyp = trst1OrgTyp;
-                var trst1Phone = _trst1Phone; trst1Phone.Clean = value; _trst1Phone = trst1Phone;
-                var trst1RsdtTxtDesc = _trst1RsdtTxtDesc; trst1RsdtTxtDesc.Clean = value; _trst1RsdtTxtDesc = trst1RsdtTxtDesc;
-                var trst1SamePtyTypDesc = _trst1SamePtyTypDesc; trst1SamePtyTypDesc.Clean = value; _trst1SamePtyTypDesc = trst1SamePtyTypDesc;
-                var trst1StCd = _trst1StCd; trst1StCd.Clean = value; _trst1StCd = trst1StCd;
-                var trst1StreetAddr1 = _trst1StreetAddr1; trst1StreetAddr1.Clean = value; _trst1StreetAddr1 = trst1StreetAddr1;
-                var trst1StreetAddr2 = _trst1StreetAddr2; trst1StreetAddr2.Clean = value; _trst1StreetAddr2 = trst1StreetAddr2;
-                var trst1Zip = _trst1Zip; trst1Zip.Clean = value; _trst1Zip = trst1Zip;
-                var trst2Cnty = _trst2Cnty; trst2Cnty.Clean = value; _trst2Cnty = trst2Cnty;
-                var trst2Cty = _trst2Cty; trst2Cty.Clean = value; _trst2Cty = trst2Cty;
-                var trst2IndvBool = _trst2IndvBool; trst2IndvBool.Clean = value; _trst2IndvBool = trst2IndvBool;
-                var trst2Jrsdctn = _trst2Jrsdctn; trst2Jrsdctn.Clean = value; _trst2Jrsdctn = trst2Jrsdctn;
-                var trst2Nm = _trst2Nm; trst2Nm.Clean = value; _trst2Nm = trst2Nm;
-                var trst2OrgTyp = _trst2OrgTyp; trst2OrgTyp.Clean = value; _trst2OrgTyp = trst2OrgTyp;
-                var trst2Phone = _trst2Phone; trst2Phone.Clean = value; _trst2Phone = trst2Phone;
-                var trst2RsdtTxtDesc = _trst2RsdtTxtDesc; trst2RsdtTxtDesc.Clean = value; _trst2RsdtTxtDesc = trst2RsdtTxtDesc;
-                var trst2SamePtyTypDesc = _trst2SamePtyTypDesc; trst2SamePtyTypDesc.Clean = value; _trst2SamePtyTypDesc = trst2SamePtyTypDesc;
-                var trst2StCd = _trst2StCd; trst2StCd.Clean = value; _trst2StCd = trst2StCd;
-                var trst2StreetAddr1 = _trst2StreetAddr1; trst2StreetAddr1.Clean = value; _trst2StreetAddr1 = trst2StreetAddr1;
-                var trst2StreetAddr2 = _trst2StreetAddr2; trst2StreetAddr2.Clean = value; _trst2StreetAddr2 = trst2StreetAddr2;
-                var trst2Zip = _trst2Zip; trst2Zip.Clean = value; _trst2Zip = trst2Zip;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _allngToNtPayToJrsdctn.Dirty = value;
+                _allngToNtPayToOrdNm.Dirty = value;
+                _allngToNtPayToOrgTyp.Dirty = value;
+                _allngToNtPayToScsrsClaus.Dirty = value;
+                _allngToNtSignedByNm.Dirty = value;
+                _allngToNtSignedByNm2.Dirty = value;
+                _allngToNtSignedByNm3.Dirty = value;
+                _allngToNtSignedByTtl.Dirty = value;
+                _allngToNtSignedByTtl2.Dirty = value;
+                _allngToNtSignedByTtl3.Dirty = value;
+                _allngToNtSignedByTyp.Dirty = value;
+                _allngToNtWithoutRcrse.Dirty = value;
+                _apnLbl.Dirty = value;
+                _asgnPrepByLblTxtDesc.Dirty = value;
+                _asgnRecRtrnLblTxtDesc.Dirty = value;
+                _benCty.Dirty = value;
+                _benJrsdctn.Dirty = value;
+                _benNm.Dirty = value;
+                _benOrgTyp.Dirty = value;
+                _benStCd.Dirty = value;
+                _benStreetAddr1.Dirty = value;
+                _benStreetAddr2.Dirty = value;
+                _benZip.Dirty = value;
+                _closInstrLndCntcInfoCity.Dirty = value;
+                _closInstrLndCntcInfoCoNm.Dirty = value;
+                _closInstrLndCntcInfoSamePtyTypDesc.Dirty = value;
+                _closInstrLndCntcInfoStCd.Dirty = value;
+                _closInstrLndCntcInfoStreetAddr1.Dirty = value;
+                _closInstrLndCntcInfoStreetAddr2.Dirty = value;
+                _closInstrLndCntcInfoZip.Dirty = value;
+                _closInstrPrtInvLossPayee.Dirty = value;
+                _closInstrStlmtAgtUseLndHud1.Dirty = value;
+                _closInstrTtlPlcyTyp.Dirty = value;
+                _emxmlVersionId.Dirty = value;
+                _exeClosDocDlvrdToCty.Dirty = value;
+                _exeClosDocDlvrdToMiscTxtDesc.Dirty = value;
+                _exeClosDocDlvrdToNm.Dirty = value;
+                _exeClosDocDlvrdToSamePtyTypDesc.Dirty = value;
+                _exeClosDocDlvrdToStCd.Dirty = value;
+                _exeClosDocDlvrdToStreetAddr1.Dirty = value;
+                _exeClosDocDlvrdToStreetAddr2.Dirty = value;
+                _exeClosDocDlvrdToZip.Dirty = value;
+                _exeClosDocExprDt.Dirty = value;
+                _exeClosDocToBeRtrnd.Dirty = value;
+                _exeClosDocToBeRtrndHrs.Dirty = value;
+                _fnlTtlePcyRecDocsSentToAddlLine1.Dirty = value;
+                _fnlTtlePcyRecDocsSentToAddlLine2.Dirty = value;
+                _fnlTtlePcyRecDocsSentToCty.Dirty = value;
+                _fnlTtlePcyRecDocsSentToNm.Dirty = value;
+                _fnlTtlePcyRecDocsSentToSamePtyTypDesc.Dirty = value;
+                _fnlTtlePcyRecDocsSentToStcd.Dirty = value;
+                _fnlTtlePcyRecDocsSentToStreetAddr1.Dirty = value;
+                _fnlTtlePcyRecDocsSentToStreetAddr2.Dirty = value;
+                _fnlTtlePcyRecDocsSentToZip.Dirty = value;
+                _hazInsurEndsmtMailToAdtlTxt.Dirty = value;
+                _hazInsurEndsmtMailToCty.Dirty = value;
+                _hazInsurEndsmtMailToNm.Dirty = value;
+                _hazInsurEndsmtMailToStCd.Dirty = value;
+                _hazInsurEndsmtMailToStreetAddr1.Dirty = value;
+                _hazInsurEndsmtMailToStreetAddr2.Dirty = value;
+                _hazInsurEndsmtMailToZip.Dirty = value;
+                _id.Dirty = value;
+                _mersAdtlCity.Dirty = value;
+                _mersAdtlStCd.Dirty = value;
+                _mersAdtlStreetAddr1.Dirty = value;
+                _mersAdtlStreetAddr2.Dirty = value;
+                _mersAdtlZip.Dirty = value;
+                _mersCty.Dirty = value;
+                _mersJrsdctn.Dirty = value;
+                _mersName.Dirty = value;
+                _mersOrgTyp.Dirty = value;
+                _mersPhoneNum.Dirty = value;
+                _mersStCd.Dirty = value;
+                _mersStreetAddr1.Dirty = value;
+                _mersStreetAddr2.Dirty = value;
+                _mersZip.Dirty = value;
+                _ntEndrsmtPayToJrsdctn.Dirty = value;
+                _ntEndrsmtPayToOrdNm.Dirty = value;
+                _ntEndrsmtPayToOrgTyp.Dirty = value;
+                _ntEndrsmtPayToScsrsClaus.Dirty = value;
+                _ntEndrsmtSgndBy1MiscTxt.Dirty = value;
+                _ntEndrsmtSgndBy2MiscTxt.Dirty = value;
+                _ntEndrsmtSignedByNm.Dirty = value;
+                _ntEndrsmtSignedByNm2.Dirty = value;
+                _ntEndrsmtSignedByNm3.Dirty = value;
+                _ntEndrsmtSignedByTtl.Dirty = value;
+                _ntEndrsmtSignedByTtl2.Dirty = value;
+                _ntEndrsmtSignedByTtl3.Dirty = value;
+                _ntEndrsmtSignedByTyp.Dirty = value;
+                _ntEndrsmtWithoutRcrse.Dirty = value;
+                _ntEndsmtThrdPtyAddr1.Dirty = value;
+                _ntEndsmtThrdPtyAddr2.Dirty = value;
+                _ntEndsmtThrdPtyCty.Dirty = value;
+                _ntEndsmtThrdPtyJrsdctn.Dirty = value;
+                _ntEndsmtThrdPtyName.Dirty = value;
+                _ntEndsmtThrdPtyOrgTyp.Dirty = value;
+                _ntEndsmtThrdPtyPhone.Dirty = value;
+                _ntEndsmtThrdPtyScsrClaus.Dirty = value;
+                _ntEndsmtThrdPtyStCd.Dirty = value;
+                _ntEndsmtThrdPtyZip.Dirty = value;
+                _ntPayToAdtlTxt.Dirty = value;
+                _ntPayToCty.Dirty = value;
+                _ntPayToJrsdctn.Dirty = value;
+                _ntPayToNm.Dirty = value;
+                _ntPayToOrgTyp.Dirty = value;
+                _ntPayToStCd.Dirty = value;
+                _ntPayToStreetAddr1.Dirty = value;
+                _ntPayToStreetAddr2.Dirty = value;
+                _ntPayToZip.Dirty = value;
+                _pmtCpn2PayToAdtlTxt.Dirty = value;
+                _pmtCpn2PayToAdtlTxt2.Dirty = value;
+                _pmtCpn2PayToCty.Dirty = value;
+                _pmtCpn2PayToNm.Dirty = value;
+                _pmtCpn2PayToStCd.Dirty = value;
+                _pmtCpn2PayToStreetAddr1.Dirty = value;
+                _pmtCpn2PayToStreetAddr2.Dirty = value;
+                _pmtCpn2PayToZip.Dirty = value;
+                _pmtCpnPayToAdtlTxt.Dirty = value;
+                _pmtCpnPayToAdtlTxt2.Dirty = value;
+                _pmtCpnPayToCty.Dirty = value;
+                _pmtCpnPayToNm.Dirty = value;
+                _pmtCpnPayToStCd.Dirty = value;
+                _pmtCpnPayToStreetAddr1.Dirty = value;
+                _pmtCpnPayToStreetAddr2.Dirty = value;
+                _pmtCpnPayToZip.Dirty = value;
+                _prtAdtlDateHud1.Dirty = value;
+                _prtAllngToNtBool.Dirty = value;
+                _prtCorpMsgAsgnBool.Dirty = value;
+                _prtDocDtSctyIstrmtNtryAprncDt.Dirty = value;
+                _prtIndxTilBool.Dirty = value;
+                _prtInitBlckNtBool.Dirty = value;
+                _prtInitBlckSctyIstrmtBool.Dirty = value;
+                _prtInvLoanNumBool.Dirty = value;
+                _prtInvLoanNumPmtCpn2Ind.Dirty = value;
+                _prtInvLoanNumPmtCpnInd.Dirty = value;
+                _prtInvLossPayeeHazInsurDisBool.Dirty = value;
+                _prtLoanNumDeedBool.Dirty = value;
+                _prtNtEndsmtBool.Dirty = value;
+                _prtNtPayToCorpMsgBool.Dirty = value;
+                _prtScsrsClausClosInstBool.Dirty = value;
+                _prtScsrsClausHazInsurDisBool.Dirty = value;
+                _prtScsrsClausHazInsurLtrBool.Dirty = value;
+                _prtScsrsClausPmtCpnBool.Dirty = value;
+                _prtSctyIstrmtCorpMsgBool.Dirty = value;
+                _recRtrnAttnLnNmTxtDesc.Dirty = value;
+                _recRtrnCty.Dirty = value;
+                _recRtrnLblTxtDesc.Dirty = value;
+                _recRtrnNm.Dirty = value;
+                _recRtrnNmSamePtyTypDesc.Dirty = value;
+                _recRtrnPhoneNum.Dirty = value;
+                _recRtrnStCd.Dirty = value;
+                _recRtrnStreetAddr1.Dirty = value;
+                _recRtrnStreetAddr2.Dirty = value;
+                _recRtrnTollFreePhoneNum.Dirty = value;
+                _recRtrnZip.Dirty = value;
+                _rtrnExeClosPkgToLndBrchBool.Dirty = value;
+                _rtToCancelNtfcAdtlTxt.Dirty = value;
+                _rtToCancelNtfcCty.Dirty = value;
+                _rtToCancelNtfcEmail.Dirty = value;
+                _rtToCancelNtfcFax.Dirty = value;
+                _rtToCancelNtfcNm.Dirty = value;
+                _rtToCancelNtfcStCd.Dirty = value;
+                _rtToCancelNtfcStreetAddr1.Dirty = value;
+                _rtToCancelNtfcStreetAddr2.Dirty = value;
+                _rtToCancelNtfcZip.Dirty = value;
+                _rtToCancelTransDtTyp.Dirty = value;
+                _sctyIstrmtDCTrstFeePct.Dirty = value;
+                _sctyIstrmtDEAttyFeePct.Dirty = value;
+                _sctyIstrmtLAAttyFeePct.Dirty = value;
+                _sctyIstrmtLAMinAttyFeeAmt.Dirty = value;
+                _sctyIstrmtMDTrstFeePct.Dirty = value;
+                _sctyIstrmtMSTrstFeePct.Dirty = value;
+                _sctyIstrmtNCAttyFeePct.Dirty = value;
+                _sctyIstrmtNETrstFeePct.Dirty = value;
+                _sctyIstrmtNVAssmFeeAmt.Dirty = value;
+                _sctyIstrmtNVTrstFeePct.Dirty = value;
+                _sctyIstrmtOKAssmFeeAmt.Dirty = value;
+                _sctyIstrmtPOBoxAddr1.Dirty = value;
+                _sctyIstrmtPOBoxAddr2.Dirty = value;
+                _sctyIstrmtPrepByAdtlTxt.Dirty = value;
+                _sctyIstrmtPrepByCoNm.Dirty = value;
+                _sctyIstrmtPrepByCty.Dirty = value;
+                _sctyIstrmtPrepByIndvNm.Dirty = value;
+                _sctyIstrmtPrepByIndvTtl.Dirty = value;
+                _sctyIstrmtPrepByPhone.Dirty = value;
+                _sctyIstrmtPrepBySamePtyTypDesc.Dirty = value;
+                _sctyIstrmtPrepByStCd.Dirty = value;
+                _sctyIstrmtPrepByStreetAddr1.Dirty = value;
+                _sctyIstrmtPrepByStreetAddr2.Dirty = value;
+                _sctyIstrmtPrepByTxt.Dirty = value;
+                _sctyIstrmtPrepByZip.Dirty = value;
+                _sctyIstrmtTtlAdtlTxt.Dirty = value;
+                _sctyIstrmtTtlAdtlTxtAbvTtl.Dirty = value;
+                _sctyIstrmtVATrstFeePct.Dirty = value;
+                _trst1Cnty.Dirty = value;
+                _trst1Cty.Dirty = value;
+                _trst1IndvBool.Dirty = value;
+                _trst1Jrsdctn.Dirty = value;
+                _trst1Nm.Dirty = value;
+                _trst1OrgTyp.Dirty = value;
+                _trst1Phone.Dirty = value;
+                _trst1RsdtTxtDesc.Dirty = value;
+                _trst1SamePtyTypDesc.Dirty = value;
+                _trst1StCd.Dirty = value;
+                _trst1StreetAddr1.Dirty = value;
+                _trst1StreetAddr2.Dirty = value;
+                _trst1Zip.Dirty = value;
+                _trst2Cnty.Dirty = value;
+                _trst2Cty.Dirty = value;
+                _trst2IndvBool.Dirty = value;
+                _trst2Jrsdctn.Dirty = value;
+                _trst2Nm.Dirty = value;
+                _trst2OrgTyp.Dirty = value;
+                _trst2Phone.Dirty = value;
+                _trst2RsdtTxtDesc.Dirty = value;
+                _trst2SamePtyTypDesc.Dirty = value;
+                _trst2StCd.Dirty = value;
+                _trst2StreetAddr1.Dirty = value;
+                _trst2StreetAddr2.Dirty = value;
+                _trst2Zip.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public EmDocument()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

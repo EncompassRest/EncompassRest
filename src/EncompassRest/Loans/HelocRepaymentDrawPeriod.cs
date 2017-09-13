@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class HelocRepaymentDrawPeriod : IClean
+    public sealed partial class HelocRepaymentDrawPeriod : IDirty
     {
         private Value<decimal?> _apr;
         public decimal? Apr { get { return _apr; } set { _apr = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
         private Value<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _apr.Clean
-                    && _drawIndicator.Clean
-                    && _id.Clean
-                    && _indexRatePercent.Clean
-                    && _marginRatePercent.Clean
-                    && _minimumMonthlyPaymentAmount.Clean
-                    && _year.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _apr.Dirty
+                    || _drawIndicator.Dirty
+                    || _id.Dirty
+                    || _indexRatePercent.Dirty
+                    || _marginRatePercent.Dirty
+                    || _minimumMonthlyPaymentAmount.Dirty
+                    || _year.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var apr = _apr; apr.Clean = value; _apr = apr;
-                var drawIndicator = _drawIndicator; drawIndicator.Clean = value; _drawIndicator = drawIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var indexRatePercent = _indexRatePercent; indexRatePercent.Clean = value; _indexRatePercent = indexRatePercent;
-                var marginRatePercent = _marginRatePercent; marginRatePercent.Clean = value; _marginRatePercent = marginRatePercent;
-                var minimumMonthlyPaymentAmount = _minimumMonthlyPaymentAmount; minimumMonthlyPaymentAmount.Clean = value; _minimumMonthlyPaymentAmount = minimumMonthlyPaymentAmount;
-                var year = _year; year.Clean = value; _year = year;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _apr.Dirty = value;
+                _drawIndicator.Dirty = value;
+                _id.Dirty = value;
+                _indexRatePercent.Dirty = value;
+                _marginRatePercent.Dirty = value;
+                _minimumMonthlyPaymentAmount.Dirty = value;
+                _year.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public HelocRepaymentDrawPeriod()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogComment : IClean
+    public sealed partial class LogComment : IDirty
     {
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
@@ -28,47 +28,42 @@ namespace EncompassRest.Loans
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
         private Value<DateTime?> _reviewedDate;
         public DateTime? ReviewedDate { get { return _reviewedDate; } set { _reviewedDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _addedBy.Clean
-                    && _addedByName.Clean
-                    && _comments.Clean
-                    && _date.Clean
-                    && _forRoleId.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isInternal.Clean
-                    && _reviewedBy.Clean
-                    && _reviewedDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _addedBy.Dirty
+                    || _addedByName.Dirty
+                    || _comments.Dirty
+                    || _date.Dirty
+                    || _forRoleId.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isInternal.Dirty
+                    || _reviewedBy.Dirty
+                    || _reviewedDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var addedBy = _addedBy; addedBy.Clean = value; _addedBy = addedBy;
-                var addedByName = _addedByName; addedByName.Clean = value; _addedByName = addedByName;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var date = _date; date.Clean = value; _date = date;
-                var forRoleId = _forRoleId; forRoleId.Clean = value; _forRoleId = forRoleId;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isInternal = _isInternal; isInternal.Clean = value; _isInternal = isInternal;
-                var reviewedBy = _reviewedBy; reviewedBy.Clean = value; _reviewedBy = reviewedBy;
-                var reviewedDate = _reviewedDate; reviewedDate.Clean = value; _reviewedDate = reviewedDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _addedBy.Dirty = value;
+                _addedByName.Dirty = value;
+                _comments.Dirty = value;
+                _date.Dirty = value;
+                _forRoleId.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isInternal.Dirty = value;
+                _reviewedBy.Dirty = value;
+                _reviewedDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LogComment()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

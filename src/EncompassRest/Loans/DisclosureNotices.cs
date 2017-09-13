@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DisclosureNotices : IClean
+    public sealed partial class DisclosureNotices : IDirty
     {
         private Value<bool?> _antiCoercionStatementIndicator;
         public bool? AntiCoercionStatementIndicator { get { return _antiCoercionStatementIndicator; } set { _antiCoercionStatementIndicator = value; } }
@@ -108,127 +108,122 @@ namespace EncompassRest.Loans
         public bool? ReleaseMortgageInformationIndicator { get { return _releaseMortgageInformationIndicator; } set { _releaseMortgageInformationIndicator = value; } }
         private Value<bool?> _rightToFinancialPrivacyActIndicator;
         public bool? RightToFinancialPrivacyActIndicator { get { return _rightToFinancialPrivacyActIndicator; } set { _rightToFinancialPrivacyActIndicator = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _antiCoercionStatementIndicator.Clean
-                    && _commitmentIssuedByAddress.Clean
-                    && _commitmentIssuedByCity.Clean
-                    && _commitmentIssuedByContactName.Clean
-                    && _commitmentIssuedByName.Clean
-                    && _commitmentIssuedByPhone.Clean
-                    && _commitmentIssuedByPostalCode.Clean
-                    && _commitmentIssuedByState.Clean
-                    && _consumerHandbookOnAdjustableRateMortgages.Clean
-                    && _daysToReceiveWrittenRequest.Clean
-                    && _daysToReturnToLender.Clean
-                    && _discloseNonPublicPersonalInformation.Clean
-                    && _ecoaAddress.Clean
-                    && _ecoaAddress2.Clean
-                    && _ecoaCity.Clean
-                    && _ecoaName.Clean
-                    && _ecoaPhone.Clean
-                    && _ecoaPostalCode.Clean
-                    && _ecoaState.Clean
-                    && _fairLendingNoticeDescription1.Clean
-                    && _fairLendingNoticeDescription2.Clean
-                    && _fairLendingNoticeDescription3.Clean
-                    && _fairLendingNoticeDescription4.Clean
-                    && _fairLendingNoticeDescription5.Clean
-                    && _fairLendingNoticeDescription6.Clean
-                    && _fairLendingNoticeDescription7.Clean
-                    && _fairLendingNoticeDescription8.Clean
-                    && _femaCommunityName.Clean
-                    && _floodInsuranceNotificationIndicator.Clean
-                    && _id.Clean
-                    && _informationDisclosureAuthorizationIndicator.Clean
-                    && _licensedMortgageBrokerUnder.Clean
-                    && _locatedInNfipIndicator.Clean
-                    && _lossPayeeClause.Clean
-                    && _mapPanelNumber.Clean
-                    && _nFIPCommunityNumber.Clean
-                    && _nFIPMapEffectiveRevisedDate.Clean
-                    && _nonFinancialCompaniesDescription1.Clean
-                    && _nonFinancialCompaniesDescription2.Clean
-                    && _nonFinancialCompaniesDescription3.Clean
-                    && _nonFinancialCompaniesDescription4.Clean
-                    && _notLocatedInNfipIndicator.Clean
-                    && _occupancyStatementIndicator.Clean
-                    && _optOut.Clean
-                    && _optOutPhone.Clean
-                    && _releaseBankingInformationIndicator.Clean
-                    && _releaseEmploymentInformationIndicator.Clean
-                    && _releaseInformationInConnectionWithCreditReportIndicator.Clean
-                    && _releaseMortgageInformationIndicator.Clean
-                    && _rightToFinancialPrivacyActIndicator.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _antiCoercionStatementIndicator.Dirty
+                    || _commitmentIssuedByAddress.Dirty
+                    || _commitmentIssuedByCity.Dirty
+                    || _commitmentIssuedByContactName.Dirty
+                    || _commitmentIssuedByName.Dirty
+                    || _commitmentIssuedByPhone.Dirty
+                    || _commitmentIssuedByPostalCode.Dirty
+                    || _commitmentIssuedByState.Dirty
+                    || _consumerHandbookOnAdjustableRateMortgages.Dirty
+                    || _daysToReceiveWrittenRequest.Dirty
+                    || _daysToReturnToLender.Dirty
+                    || _discloseNonPublicPersonalInformation.Dirty
+                    || _ecoaAddress.Dirty
+                    || _ecoaAddress2.Dirty
+                    || _ecoaCity.Dirty
+                    || _ecoaName.Dirty
+                    || _ecoaPhone.Dirty
+                    || _ecoaPostalCode.Dirty
+                    || _ecoaState.Dirty
+                    || _fairLendingNoticeDescription1.Dirty
+                    || _fairLendingNoticeDescription2.Dirty
+                    || _fairLendingNoticeDescription3.Dirty
+                    || _fairLendingNoticeDescription4.Dirty
+                    || _fairLendingNoticeDescription5.Dirty
+                    || _fairLendingNoticeDescription6.Dirty
+                    || _fairLendingNoticeDescription7.Dirty
+                    || _fairLendingNoticeDescription8.Dirty
+                    || _femaCommunityName.Dirty
+                    || _floodInsuranceNotificationIndicator.Dirty
+                    || _id.Dirty
+                    || _informationDisclosureAuthorizationIndicator.Dirty
+                    || _licensedMortgageBrokerUnder.Dirty
+                    || _locatedInNfipIndicator.Dirty
+                    || _lossPayeeClause.Dirty
+                    || _mapPanelNumber.Dirty
+                    || _nFIPCommunityNumber.Dirty
+                    || _nFIPMapEffectiveRevisedDate.Dirty
+                    || _nonFinancialCompaniesDescription1.Dirty
+                    || _nonFinancialCompaniesDescription2.Dirty
+                    || _nonFinancialCompaniesDescription3.Dirty
+                    || _nonFinancialCompaniesDescription4.Dirty
+                    || _notLocatedInNfipIndicator.Dirty
+                    || _occupancyStatementIndicator.Dirty
+                    || _optOut.Dirty
+                    || _optOutPhone.Dirty
+                    || _releaseBankingInformationIndicator.Dirty
+                    || _releaseEmploymentInformationIndicator.Dirty
+                    || _releaseInformationInConnectionWithCreditReportIndicator.Dirty
+                    || _releaseMortgageInformationIndicator.Dirty
+                    || _rightToFinancialPrivacyActIndicator.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var antiCoercionStatementIndicator = _antiCoercionStatementIndicator; antiCoercionStatementIndicator.Clean = value; _antiCoercionStatementIndicator = antiCoercionStatementIndicator;
-                var commitmentIssuedByAddress = _commitmentIssuedByAddress; commitmentIssuedByAddress.Clean = value; _commitmentIssuedByAddress = commitmentIssuedByAddress;
-                var commitmentIssuedByCity = _commitmentIssuedByCity; commitmentIssuedByCity.Clean = value; _commitmentIssuedByCity = commitmentIssuedByCity;
-                var commitmentIssuedByContactName = _commitmentIssuedByContactName; commitmentIssuedByContactName.Clean = value; _commitmentIssuedByContactName = commitmentIssuedByContactName;
-                var commitmentIssuedByName = _commitmentIssuedByName; commitmentIssuedByName.Clean = value; _commitmentIssuedByName = commitmentIssuedByName;
-                var commitmentIssuedByPhone = _commitmentIssuedByPhone; commitmentIssuedByPhone.Clean = value; _commitmentIssuedByPhone = commitmentIssuedByPhone;
-                var commitmentIssuedByPostalCode = _commitmentIssuedByPostalCode; commitmentIssuedByPostalCode.Clean = value; _commitmentIssuedByPostalCode = commitmentIssuedByPostalCode;
-                var commitmentIssuedByState = _commitmentIssuedByState; commitmentIssuedByState.Clean = value; _commitmentIssuedByState = commitmentIssuedByState;
-                var consumerHandbookOnAdjustableRateMortgages = _consumerHandbookOnAdjustableRateMortgages; consumerHandbookOnAdjustableRateMortgages.Clean = value; _consumerHandbookOnAdjustableRateMortgages = consumerHandbookOnAdjustableRateMortgages;
-                var daysToReceiveWrittenRequest = _daysToReceiveWrittenRequest; daysToReceiveWrittenRequest.Clean = value; _daysToReceiveWrittenRequest = daysToReceiveWrittenRequest;
-                var daysToReturnToLender = _daysToReturnToLender; daysToReturnToLender.Clean = value; _daysToReturnToLender = daysToReturnToLender;
-                var discloseNonPublicPersonalInformation = _discloseNonPublicPersonalInformation; discloseNonPublicPersonalInformation.Clean = value; _discloseNonPublicPersonalInformation = discloseNonPublicPersonalInformation;
-                var ecoaAddress = _ecoaAddress; ecoaAddress.Clean = value; _ecoaAddress = ecoaAddress;
-                var ecoaAddress2 = _ecoaAddress2; ecoaAddress2.Clean = value; _ecoaAddress2 = ecoaAddress2;
-                var ecoaCity = _ecoaCity; ecoaCity.Clean = value; _ecoaCity = ecoaCity;
-                var ecoaName = _ecoaName; ecoaName.Clean = value; _ecoaName = ecoaName;
-                var ecoaPhone = _ecoaPhone; ecoaPhone.Clean = value; _ecoaPhone = ecoaPhone;
-                var ecoaPostalCode = _ecoaPostalCode; ecoaPostalCode.Clean = value; _ecoaPostalCode = ecoaPostalCode;
-                var ecoaState = _ecoaState; ecoaState.Clean = value; _ecoaState = ecoaState;
-                var fairLendingNoticeDescription1 = _fairLendingNoticeDescription1; fairLendingNoticeDescription1.Clean = value; _fairLendingNoticeDescription1 = fairLendingNoticeDescription1;
-                var fairLendingNoticeDescription2 = _fairLendingNoticeDescription2; fairLendingNoticeDescription2.Clean = value; _fairLendingNoticeDescription2 = fairLendingNoticeDescription2;
-                var fairLendingNoticeDescription3 = _fairLendingNoticeDescription3; fairLendingNoticeDescription3.Clean = value; _fairLendingNoticeDescription3 = fairLendingNoticeDescription3;
-                var fairLendingNoticeDescription4 = _fairLendingNoticeDescription4; fairLendingNoticeDescription4.Clean = value; _fairLendingNoticeDescription4 = fairLendingNoticeDescription4;
-                var fairLendingNoticeDescription5 = _fairLendingNoticeDescription5; fairLendingNoticeDescription5.Clean = value; _fairLendingNoticeDescription5 = fairLendingNoticeDescription5;
-                var fairLendingNoticeDescription6 = _fairLendingNoticeDescription6; fairLendingNoticeDescription6.Clean = value; _fairLendingNoticeDescription6 = fairLendingNoticeDescription6;
-                var fairLendingNoticeDescription7 = _fairLendingNoticeDescription7; fairLendingNoticeDescription7.Clean = value; _fairLendingNoticeDescription7 = fairLendingNoticeDescription7;
-                var fairLendingNoticeDescription8 = _fairLendingNoticeDescription8; fairLendingNoticeDescription8.Clean = value; _fairLendingNoticeDescription8 = fairLendingNoticeDescription8;
-                var femaCommunityName = _femaCommunityName; femaCommunityName.Clean = value; _femaCommunityName = femaCommunityName;
-                var floodInsuranceNotificationIndicator = _floodInsuranceNotificationIndicator; floodInsuranceNotificationIndicator.Clean = value; _floodInsuranceNotificationIndicator = floodInsuranceNotificationIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var informationDisclosureAuthorizationIndicator = _informationDisclosureAuthorizationIndicator; informationDisclosureAuthorizationIndicator.Clean = value; _informationDisclosureAuthorizationIndicator = informationDisclosureAuthorizationIndicator;
-                var licensedMortgageBrokerUnder = _licensedMortgageBrokerUnder; licensedMortgageBrokerUnder.Clean = value; _licensedMortgageBrokerUnder = licensedMortgageBrokerUnder;
-                var locatedInNfipIndicator = _locatedInNfipIndicator; locatedInNfipIndicator.Clean = value; _locatedInNfipIndicator = locatedInNfipIndicator;
-                var lossPayeeClause = _lossPayeeClause; lossPayeeClause.Clean = value; _lossPayeeClause = lossPayeeClause;
-                var mapPanelNumber = _mapPanelNumber; mapPanelNumber.Clean = value; _mapPanelNumber = mapPanelNumber;
-                var nFIPCommunityNumber = _nFIPCommunityNumber; nFIPCommunityNumber.Clean = value; _nFIPCommunityNumber = nFIPCommunityNumber;
-                var nFIPMapEffectiveRevisedDate = _nFIPMapEffectiveRevisedDate; nFIPMapEffectiveRevisedDate.Clean = value; _nFIPMapEffectiveRevisedDate = nFIPMapEffectiveRevisedDate;
-                var nonFinancialCompaniesDescription1 = _nonFinancialCompaniesDescription1; nonFinancialCompaniesDescription1.Clean = value; _nonFinancialCompaniesDescription1 = nonFinancialCompaniesDescription1;
-                var nonFinancialCompaniesDescription2 = _nonFinancialCompaniesDescription2; nonFinancialCompaniesDescription2.Clean = value; _nonFinancialCompaniesDescription2 = nonFinancialCompaniesDescription2;
-                var nonFinancialCompaniesDescription3 = _nonFinancialCompaniesDescription3; nonFinancialCompaniesDescription3.Clean = value; _nonFinancialCompaniesDescription3 = nonFinancialCompaniesDescription3;
-                var nonFinancialCompaniesDescription4 = _nonFinancialCompaniesDescription4; nonFinancialCompaniesDescription4.Clean = value; _nonFinancialCompaniesDescription4 = nonFinancialCompaniesDescription4;
-                var notLocatedInNfipIndicator = _notLocatedInNfipIndicator; notLocatedInNfipIndicator.Clean = value; _notLocatedInNfipIndicator = notLocatedInNfipIndicator;
-                var occupancyStatementIndicator = _occupancyStatementIndicator; occupancyStatementIndicator.Clean = value; _occupancyStatementIndicator = occupancyStatementIndicator;
-                var optOut = _optOut; optOut.Clean = value; _optOut = optOut;
-                var optOutPhone = _optOutPhone; optOutPhone.Clean = value; _optOutPhone = optOutPhone;
-                var releaseBankingInformationIndicator = _releaseBankingInformationIndicator; releaseBankingInformationIndicator.Clean = value; _releaseBankingInformationIndicator = releaseBankingInformationIndicator;
-                var releaseEmploymentInformationIndicator = _releaseEmploymentInformationIndicator; releaseEmploymentInformationIndicator.Clean = value; _releaseEmploymentInformationIndicator = releaseEmploymentInformationIndicator;
-                var releaseInformationInConnectionWithCreditReportIndicator = _releaseInformationInConnectionWithCreditReportIndicator; releaseInformationInConnectionWithCreditReportIndicator.Clean = value; _releaseInformationInConnectionWithCreditReportIndicator = releaseInformationInConnectionWithCreditReportIndicator;
-                var releaseMortgageInformationIndicator = _releaseMortgageInformationIndicator; releaseMortgageInformationIndicator.Clean = value; _releaseMortgageInformationIndicator = releaseMortgageInformationIndicator;
-                var rightToFinancialPrivacyActIndicator = _rightToFinancialPrivacyActIndicator; rightToFinancialPrivacyActIndicator.Clean = value; _rightToFinancialPrivacyActIndicator = rightToFinancialPrivacyActIndicator;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _antiCoercionStatementIndicator.Dirty = value;
+                _commitmentIssuedByAddress.Dirty = value;
+                _commitmentIssuedByCity.Dirty = value;
+                _commitmentIssuedByContactName.Dirty = value;
+                _commitmentIssuedByName.Dirty = value;
+                _commitmentIssuedByPhone.Dirty = value;
+                _commitmentIssuedByPostalCode.Dirty = value;
+                _commitmentIssuedByState.Dirty = value;
+                _consumerHandbookOnAdjustableRateMortgages.Dirty = value;
+                _daysToReceiveWrittenRequest.Dirty = value;
+                _daysToReturnToLender.Dirty = value;
+                _discloseNonPublicPersonalInformation.Dirty = value;
+                _ecoaAddress.Dirty = value;
+                _ecoaAddress2.Dirty = value;
+                _ecoaCity.Dirty = value;
+                _ecoaName.Dirty = value;
+                _ecoaPhone.Dirty = value;
+                _ecoaPostalCode.Dirty = value;
+                _ecoaState.Dirty = value;
+                _fairLendingNoticeDescription1.Dirty = value;
+                _fairLendingNoticeDescription2.Dirty = value;
+                _fairLendingNoticeDescription3.Dirty = value;
+                _fairLendingNoticeDescription4.Dirty = value;
+                _fairLendingNoticeDescription5.Dirty = value;
+                _fairLendingNoticeDescription6.Dirty = value;
+                _fairLendingNoticeDescription7.Dirty = value;
+                _fairLendingNoticeDescription8.Dirty = value;
+                _femaCommunityName.Dirty = value;
+                _floodInsuranceNotificationIndicator.Dirty = value;
+                _id.Dirty = value;
+                _informationDisclosureAuthorizationIndicator.Dirty = value;
+                _licensedMortgageBrokerUnder.Dirty = value;
+                _locatedInNfipIndicator.Dirty = value;
+                _lossPayeeClause.Dirty = value;
+                _mapPanelNumber.Dirty = value;
+                _nFIPCommunityNumber.Dirty = value;
+                _nFIPMapEffectiveRevisedDate.Dirty = value;
+                _nonFinancialCompaniesDescription1.Dirty = value;
+                _nonFinancialCompaniesDescription2.Dirty = value;
+                _nonFinancialCompaniesDescription3.Dirty = value;
+                _nonFinancialCompaniesDescription4.Dirty = value;
+                _notLocatedInNfipIndicator.Dirty = value;
+                _occupancyStatementIndicator.Dirty = value;
+                _optOut.Dirty = value;
+                _optOutPhone.Dirty = value;
+                _releaseBankingInformationIndicator.Dirty = value;
+                _releaseEmploymentInformationIndicator.Dirty = value;
+                _releaseInformationInConnectionWithCreditReportIndicator.Dirty = value;
+                _releaseMortgageInformationIndicator.Dirty = value;
+                _rightToFinancialPrivacyActIndicator.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public DisclosureNotices()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

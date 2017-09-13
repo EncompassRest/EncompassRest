@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQL : IClean
+    public sealed partial class TQL : IDirty
     {
         private Value<string> _citibank4506TBaselineReportRequired;
         public string Citibank4506TBaselineReportRequired { get { return _citibank4506TBaselineReportRequired; } set { _citibank4506TBaselineReportRequired = value; } }
@@ -146,165 +146,160 @@ namespace EncompassRest.Loans
         public string WellsFargoFloodBaselineReportRequired { get { return _wellsFargoFloodBaselineReportRequired; } set { _wellsFargoFloodBaselineReportRequired = value; } }
         private Value<string> _wellsFargoFraudBaselineReportRequired;
         public string WellsFargoFraudBaselineReportRequired { get { return _wellsFargoFraudBaselineReportRequired; } set { _wellsFargoFraudBaselineReportRequired = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _citibank4506TBaselineReportRequired.Clean
-                    && _citibankCCVPBaselineReportRequired.Clean
-                    && _citibankComplianceBaselineReportRequired.Clean
-                    && _citibankFloodBaselineReportRequired.Clean
-                    && _citibankFraudBaselineReportRequired.Clean
-                    && _currentInvestorPublishingStatus.Clean
-                    && _driveAppVerifyScore.Clean
-                    && _driveIDVerifyScore.Clean
-                    && _drivePropertyVerifyScore.Clean
-                    && _driveScore.Clean
-                    && _driveStatus.Clean
-                    && _homeward4506TBaselineReportRequired.Clean
-                    && _homewardComplianceBaselineReportRequired.Clean
-                    && _homewardFloodBaselineReportRequired.Clean
-                    && _homewardFraudBaselineReportRequired.Clean
-                    && _id.Clean
-                    && _lastCCVPCompletedDate.Clean
-                    && _lastCCVPConfidenceScore.Clean
-                    && _lastCCVPEstimatedValue.Clean
-                    && _lastCCVPForecastDeviationScore.Clean
-                    && _lastCCVPReportHistoryProResult.Clean
-                    && _lastCCVPReportID.Clean
-                    && _lastCCVPReportOrdered.Clean
-                    && _lastCCVPReportPassResult.Clean
-                    && _lastCCVPResultsReportReturned.Clean
-                    && _lastComplianceCompletedDate.Clean
-                    && _lastComplianceNumberOfAlertMessages.Clean
-                    && _lastComplianceNumberOfErrorMessages.Clean
-                    && _lastComplianceNumberOfFailMessages.Clean
-                    && _lastComplianceNumberOfPassMessages.Clean
-                    && _lastComplianceNumberOfWarningMessages.Clean
-                    && _lastComplianceOrderType.Clean
-                    && _lastComplianceProductNameReportOrdered.Clean
-                    && _lastComplianceReportID.Clean
-                    && _lastFraudOrderAlerts.Clean
-                    && _lastFraudOrderCompletedDate.Clean
-                    && _lastFraudOrderProduct.Clean
-                    && _lastFraudReportID.Clean
-                    && _lastInvestorPublishingInvestor.Clean
-                    && _lastInvestorPublishingStatusChangeDate.Clean
-                    && _lastInvestorPublishingUserWhoChangeStatus.Clean
-                    && _lastUserIDWhoOrderedCCVP.Clean
-                    && _lastUserIDWhoOrderedCompliance.Clean
-                    && _lastUserIDWhoOrderedFraudOrder.Clean
-                    && _mIVendorsArchAutoOrderIndicator.Clean
-                    && _mIVendorsMgicAutoOrderIndicator.Clean
-                    && _mIVendorsRadianAutoOrderIndicator.Clean
-                    && _pHH4506TBaselineReportRequired.Clean
-                    && _pHHComplianceBaselineReportRequired.Clean
-                    && _pHHFloodBaselineReportRequired.Clean
-                    && _pHHFraudBaselineReportRequired.Clean
-                    && _stonegate4506TBaselineReport.Clean
-                    && _stonegateComplianceBaselineReportRequired.Clean
-                    && _stonegateFloodBaselineReportRequired.Clean
-                    && _stonegateFraudBaselineReportRequired.Clean
-                    && _tQLComplianceAlerts.Clean
-                    && _tQLDocuments.Clean
-                    && _tQLFraudAlerts.Clean
-                    && _tQLFraudAlertsTotal.Clean
-                    && _tQLFraudAlertsTotalHigh.Clean
-                    && _tQLFraudAlertsTotalHighUnaddressed.Clean
-                    && _tQLFraudAlertsTotalLow.Clean
-                    && _tQLFraudAlertsTotalLowUnaddressed.Clean
-                    && _tQLFraudAlertsTotalMedium.Clean
-                    && _tQLFraudAlertsTotalMediumUnaddressed.Clean
-                    && _wellsFargo4506TBaselineReportRequired.Clean
-                    && _wellsFargoComplianceBaselineReportRequired.Clean
-                    && _wellsFargoFloodBaselineReportRequired.Clean
-                    && _wellsFargoFraudBaselineReportRequired.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _citibank4506TBaselineReportRequired.Dirty
+                    || _citibankCCVPBaselineReportRequired.Dirty
+                    || _citibankComplianceBaselineReportRequired.Dirty
+                    || _citibankFloodBaselineReportRequired.Dirty
+                    || _citibankFraudBaselineReportRequired.Dirty
+                    || _currentInvestorPublishingStatus.Dirty
+                    || _driveAppVerifyScore.Dirty
+                    || _driveIDVerifyScore.Dirty
+                    || _drivePropertyVerifyScore.Dirty
+                    || _driveScore.Dirty
+                    || _driveStatus.Dirty
+                    || _homeward4506TBaselineReportRequired.Dirty
+                    || _homewardComplianceBaselineReportRequired.Dirty
+                    || _homewardFloodBaselineReportRequired.Dirty
+                    || _homewardFraudBaselineReportRequired.Dirty
+                    || _id.Dirty
+                    || _lastCCVPCompletedDate.Dirty
+                    || _lastCCVPConfidenceScore.Dirty
+                    || _lastCCVPEstimatedValue.Dirty
+                    || _lastCCVPForecastDeviationScore.Dirty
+                    || _lastCCVPReportHistoryProResult.Dirty
+                    || _lastCCVPReportID.Dirty
+                    || _lastCCVPReportOrdered.Dirty
+                    || _lastCCVPReportPassResult.Dirty
+                    || _lastCCVPResultsReportReturned.Dirty
+                    || _lastComplianceCompletedDate.Dirty
+                    || _lastComplianceNumberOfAlertMessages.Dirty
+                    || _lastComplianceNumberOfErrorMessages.Dirty
+                    || _lastComplianceNumberOfFailMessages.Dirty
+                    || _lastComplianceNumberOfPassMessages.Dirty
+                    || _lastComplianceNumberOfWarningMessages.Dirty
+                    || _lastComplianceOrderType.Dirty
+                    || _lastComplianceProductNameReportOrdered.Dirty
+                    || _lastComplianceReportID.Dirty
+                    || _lastFraudOrderAlerts.Dirty
+                    || _lastFraudOrderCompletedDate.Dirty
+                    || _lastFraudOrderProduct.Dirty
+                    || _lastFraudReportID.Dirty
+                    || _lastInvestorPublishingInvestor.Dirty
+                    || _lastInvestorPublishingStatusChangeDate.Dirty
+                    || _lastInvestorPublishingUserWhoChangeStatus.Dirty
+                    || _lastUserIDWhoOrderedCCVP.Dirty
+                    || _lastUserIDWhoOrderedCompliance.Dirty
+                    || _lastUserIDWhoOrderedFraudOrder.Dirty
+                    || _mIVendorsArchAutoOrderIndicator.Dirty
+                    || _mIVendorsMgicAutoOrderIndicator.Dirty
+                    || _mIVendorsRadianAutoOrderIndicator.Dirty
+                    || _pHH4506TBaselineReportRequired.Dirty
+                    || _pHHComplianceBaselineReportRequired.Dirty
+                    || _pHHFloodBaselineReportRequired.Dirty
+                    || _pHHFraudBaselineReportRequired.Dirty
+                    || _stonegate4506TBaselineReport.Dirty
+                    || _stonegateComplianceBaselineReportRequired.Dirty
+                    || _stonegateFloodBaselineReportRequired.Dirty
+                    || _stonegateFraudBaselineReportRequired.Dirty
+                    || _tQLComplianceAlerts.Dirty
+                    || _tQLDocuments.Dirty
+                    || _tQLFraudAlerts.Dirty
+                    || _tQLFraudAlertsTotal.Dirty
+                    || _tQLFraudAlertsTotalHigh.Dirty
+                    || _tQLFraudAlertsTotalHighUnaddressed.Dirty
+                    || _tQLFraudAlertsTotalLow.Dirty
+                    || _tQLFraudAlertsTotalLowUnaddressed.Dirty
+                    || _tQLFraudAlertsTotalMedium.Dirty
+                    || _tQLFraudAlertsTotalMediumUnaddressed.Dirty
+                    || _wellsFargo4506TBaselineReportRequired.Dirty
+                    || _wellsFargoComplianceBaselineReportRequired.Dirty
+                    || _wellsFargoFloodBaselineReportRequired.Dirty
+                    || _wellsFargoFraudBaselineReportRequired.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var citibank4506TBaselineReportRequired = _citibank4506TBaselineReportRequired; citibank4506TBaselineReportRequired.Clean = value; _citibank4506TBaselineReportRequired = citibank4506TBaselineReportRequired;
-                var citibankCCVPBaselineReportRequired = _citibankCCVPBaselineReportRequired; citibankCCVPBaselineReportRequired.Clean = value; _citibankCCVPBaselineReportRequired = citibankCCVPBaselineReportRequired;
-                var citibankComplianceBaselineReportRequired = _citibankComplianceBaselineReportRequired; citibankComplianceBaselineReportRequired.Clean = value; _citibankComplianceBaselineReportRequired = citibankComplianceBaselineReportRequired;
-                var citibankFloodBaselineReportRequired = _citibankFloodBaselineReportRequired; citibankFloodBaselineReportRequired.Clean = value; _citibankFloodBaselineReportRequired = citibankFloodBaselineReportRequired;
-                var citibankFraudBaselineReportRequired = _citibankFraudBaselineReportRequired; citibankFraudBaselineReportRequired.Clean = value; _citibankFraudBaselineReportRequired = citibankFraudBaselineReportRequired;
-                var currentInvestorPublishingStatus = _currentInvestorPublishingStatus; currentInvestorPublishingStatus.Clean = value; _currentInvestorPublishingStatus = currentInvestorPublishingStatus;
-                var driveAppVerifyScore = _driveAppVerifyScore; driveAppVerifyScore.Clean = value; _driveAppVerifyScore = driveAppVerifyScore;
-                var driveIDVerifyScore = _driveIDVerifyScore; driveIDVerifyScore.Clean = value; _driveIDVerifyScore = driveIDVerifyScore;
-                var drivePropertyVerifyScore = _drivePropertyVerifyScore; drivePropertyVerifyScore.Clean = value; _drivePropertyVerifyScore = drivePropertyVerifyScore;
-                var driveScore = _driveScore; driveScore.Clean = value; _driveScore = driveScore;
-                var driveStatus = _driveStatus; driveStatus.Clean = value; _driveStatus = driveStatus;
-                var homeward4506TBaselineReportRequired = _homeward4506TBaselineReportRequired; homeward4506TBaselineReportRequired.Clean = value; _homeward4506TBaselineReportRequired = homeward4506TBaselineReportRequired;
-                var homewardComplianceBaselineReportRequired = _homewardComplianceBaselineReportRequired; homewardComplianceBaselineReportRequired.Clean = value; _homewardComplianceBaselineReportRequired = homewardComplianceBaselineReportRequired;
-                var homewardFloodBaselineReportRequired = _homewardFloodBaselineReportRequired; homewardFloodBaselineReportRequired.Clean = value; _homewardFloodBaselineReportRequired = homewardFloodBaselineReportRequired;
-                var homewardFraudBaselineReportRequired = _homewardFraudBaselineReportRequired; homewardFraudBaselineReportRequired.Clean = value; _homewardFraudBaselineReportRequired = homewardFraudBaselineReportRequired;
-                var id = _id; id.Clean = value; _id = id;
-                var lastCCVPCompletedDate = _lastCCVPCompletedDate; lastCCVPCompletedDate.Clean = value; _lastCCVPCompletedDate = lastCCVPCompletedDate;
-                var lastCCVPConfidenceScore = _lastCCVPConfidenceScore; lastCCVPConfidenceScore.Clean = value; _lastCCVPConfidenceScore = lastCCVPConfidenceScore;
-                var lastCCVPEstimatedValue = _lastCCVPEstimatedValue; lastCCVPEstimatedValue.Clean = value; _lastCCVPEstimatedValue = lastCCVPEstimatedValue;
-                var lastCCVPForecastDeviationScore = _lastCCVPForecastDeviationScore; lastCCVPForecastDeviationScore.Clean = value; _lastCCVPForecastDeviationScore = lastCCVPForecastDeviationScore;
-                var lastCCVPReportHistoryProResult = _lastCCVPReportHistoryProResult; lastCCVPReportHistoryProResult.Clean = value; _lastCCVPReportHistoryProResult = lastCCVPReportHistoryProResult;
-                var lastCCVPReportID = _lastCCVPReportID; lastCCVPReportID.Clean = value; _lastCCVPReportID = lastCCVPReportID;
-                var lastCCVPReportOrdered = _lastCCVPReportOrdered; lastCCVPReportOrdered.Clean = value; _lastCCVPReportOrdered = lastCCVPReportOrdered;
-                var lastCCVPReportPassResult = _lastCCVPReportPassResult; lastCCVPReportPassResult.Clean = value; _lastCCVPReportPassResult = lastCCVPReportPassResult;
-                var lastCCVPResultsReportReturned = _lastCCVPResultsReportReturned; lastCCVPResultsReportReturned.Clean = value; _lastCCVPResultsReportReturned = lastCCVPResultsReportReturned;
-                var lastComplianceCompletedDate = _lastComplianceCompletedDate; lastComplianceCompletedDate.Clean = value; _lastComplianceCompletedDate = lastComplianceCompletedDate;
-                var lastComplianceNumberOfAlertMessages = _lastComplianceNumberOfAlertMessages; lastComplianceNumberOfAlertMessages.Clean = value; _lastComplianceNumberOfAlertMessages = lastComplianceNumberOfAlertMessages;
-                var lastComplianceNumberOfErrorMessages = _lastComplianceNumberOfErrorMessages; lastComplianceNumberOfErrorMessages.Clean = value; _lastComplianceNumberOfErrorMessages = lastComplianceNumberOfErrorMessages;
-                var lastComplianceNumberOfFailMessages = _lastComplianceNumberOfFailMessages; lastComplianceNumberOfFailMessages.Clean = value; _lastComplianceNumberOfFailMessages = lastComplianceNumberOfFailMessages;
-                var lastComplianceNumberOfPassMessages = _lastComplianceNumberOfPassMessages; lastComplianceNumberOfPassMessages.Clean = value; _lastComplianceNumberOfPassMessages = lastComplianceNumberOfPassMessages;
-                var lastComplianceNumberOfWarningMessages = _lastComplianceNumberOfWarningMessages; lastComplianceNumberOfWarningMessages.Clean = value; _lastComplianceNumberOfWarningMessages = lastComplianceNumberOfWarningMessages;
-                var lastComplianceOrderType = _lastComplianceOrderType; lastComplianceOrderType.Clean = value; _lastComplianceOrderType = lastComplianceOrderType;
-                var lastComplianceProductNameReportOrdered = _lastComplianceProductNameReportOrdered; lastComplianceProductNameReportOrdered.Clean = value; _lastComplianceProductNameReportOrdered = lastComplianceProductNameReportOrdered;
-                var lastComplianceReportID = _lastComplianceReportID; lastComplianceReportID.Clean = value; _lastComplianceReportID = lastComplianceReportID;
-                var lastFraudOrderAlerts = _lastFraudOrderAlerts; lastFraudOrderAlerts.Clean = value; _lastFraudOrderAlerts = lastFraudOrderAlerts;
-                var lastFraudOrderCompletedDate = _lastFraudOrderCompletedDate; lastFraudOrderCompletedDate.Clean = value; _lastFraudOrderCompletedDate = lastFraudOrderCompletedDate;
-                var lastFraudOrderProduct = _lastFraudOrderProduct; lastFraudOrderProduct.Clean = value; _lastFraudOrderProduct = lastFraudOrderProduct;
-                var lastFraudReportID = _lastFraudReportID; lastFraudReportID.Clean = value; _lastFraudReportID = lastFraudReportID;
-                var lastInvestorPublishingInvestor = _lastInvestorPublishingInvestor; lastInvestorPublishingInvestor.Clean = value; _lastInvestorPublishingInvestor = lastInvestorPublishingInvestor;
-                var lastInvestorPublishingStatusChangeDate = _lastInvestorPublishingStatusChangeDate; lastInvestorPublishingStatusChangeDate.Clean = value; _lastInvestorPublishingStatusChangeDate = lastInvestorPublishingStatusChangeDate;
-                var lastInvestorPublishingUserWhoChangeStatus = _lastInvestorPublishingUserWhoChangeStatus; lastInvestorPublishingUserWhoChangeStatus.Clean = value; _lastInvestorPublishingUserWhoChangeStatus = lastInvestorPublishingUserWhoChangeStatus;
-                var lastUserIDWhoOrderedCCVP = _lastUserIDWhoOrderedCCVP; lastUserIDWhoOrderedCCVP.Clean = value; _lastUserIDWhoOrderedCCVP = lastUserIDWhoOrderedCCVP;
-                var lastUserIDWhoOrderedCompliance = _lastUserIDWhoOrderedCompliance; lastUserIDWhoOrderedCompliance.Clean = value; _lastUserIDWhoOrderedCompliance = lastUserIDWhoOrderedCompliance;
-                var lastUserIDWhoOrderedFraudOrder = _lastUserIDWhoOrderedFraudOrder; lastUserIDWhoOrderedFraudOrder.Clean = value; _lastUserIDWhoOrderedFraudOrder = lastUserIDWhoOrderedFraudOrder;
-                var mIVendorsArchAutoOrderIndicator = _mIVendorsArchAutoOrderIndicator; mIVendorsArchAutoOrderIndicator.Clean = value; _mIVendorsArchAutoOrderIndicator = mIVendorsArchAutoOrderIndicator;
-                var mIVendorsMgicAutoOrderIndicator = _mIVendorsMgicAutoOrderIndicator; mIVendorsMgicAutoOrderIndicator.Clean = value; _mIVendorsMgicAutoOrderIndicator = mIVendorsMgicAutoOrderIndicator;
-                var mIVendorsRadianAutoOrderIndicator = _mIVendorsRadianAutoOrderIndicator; mIVendorsRadianAutoOrderIndicator.Clean = value; _mIVendorsRadianAutoOrderIndicator = mIVendorsRadianAutoOrderIndicator;
-                var pHH4506TBaselineReportRequired = _pHH4506TBaselineReportRequired; pHH4506TBaselineReportRequired.Clean = value; _pHH4506TBaselineReportRequired = pHH4506TBaselineReportRequired;
-                var pHHComplianceBaselineReportRequired = _pHHComplianceBaselineReportRequired; pHHComplianceBaselineReportRequired.Clean = value; _pHHComplianceBaselineReportRequired = pHHComplianceBaselineReportRequired;
-                var pHHFloodBaselineReportRequired = _pHHFloodBaselineReportRequired; pHHFloodBaselineReportRequired.Clean = value; _pHHFloodBaselineReportRequired = pHHFloodBaselineReportRequired;
-                var pHHFraudBaselineReportRequired = _pHHFraudBaselineReportRequired; pHHFraudBaselineReportRequired.Clean = value; _pHHFraudBaselineReportRequired = pHHFraudBaselineReportRequired;
-                var stonegate4506TBaselineReport = _stonegate4506TBaselineReport; stonegate4506TBaselineReport.Clean = value; _stonegate4506TBaselineReport = stonegate4506TBaselineReport;
-                var stonegateComplianceBaselineReportRequired = _stonegateComplianceBaselineReportRequired; stonegateComplianceBaselineReportRequired.Clean = value; _stonegateComplianceBaselineReportRequired = stonegateComplianceBaselineReportRequired;
-                var stonegateFloodBaselineReportRequired = _stonegateFloodBaselineReportRequired; stonegateFloodBaselineReportRequired.Clean = value; _stonegateFloodBaselineReportRequired = stonegateFloodBaselineReportRequired;
-                var stonegateFraudBaselineReportRequired = _stonegateFraudBaselineReportRequired; stonegateFraudBaselineReportRequired.Clean = value; _stonegateFraudBaselineReportRequired = stonegateFraudBaselineReportRequired;
-                var tQLComplianceAlerts = _tQLComplianceAlerts; tQLComplianceAlerts.Clean = value; _tQLComplianceAlerts = tQLComplianceAlerts;
-                var tQLDocuments = _tQLDocuments; tQLDocuments.Clean = value; _tQLDocuments = tQLDocuments;
-                var tQLFraudAlerts = _tQLFraudAlerts; tQLFraudAlerts.Clean = value; _tQLFraudAlerts = tQLFraudAlerts;
-                var tQLFraudAlertsTotal = _tQLFraudAlertsTotal; tQLFraudAlertsTotal.Clean = value; _tQLFraudAlertsTotal = tQLFraudAlertsTotal;
-                var tQLFraudAlertsTotalHigh = _tQLFraudAlertsTotalHigh; tQLFraudAlertsTotalHigh.Clean = value; _tQLFraudAlertsTotalHigh = tQLFraudAlertsTotalHigh;
-                var tQLFraudAlertsTotalHighUnaddressed = _tQLFraudAlertsTotalHighUnaddressed; tQLFraudAlertsTotalHighUnaddressed.Clean = value; _tQLFraudAlertsTotalHighUnaddressed = tQLFraudAlertsTotalHighUnaddressed;
-                var tQLFraudAlertsTotalLow = _tQLFraudAlertsTotalLow; tQLFraudAlertsTotalLow.Clean = value; _tQLFraudAlertsTotalLow = tQLFraudAlertsTotalLow;
-                var tQLFraudAlertsTotalLowUnaddressed = _tQLFraudAlertsTotalLowUnaddressed; tQLFraudAlertsTotalLowUnaddressed.Clean = value; _tQLFraudAlertsTotalLowUnaddressed = tQLFraudAlertsTotalLowUnaddressed;
-                var tQLFraudAlertsTotalMedium = _tQLFraudAlertsTotalMedium; tQLFraudAlertsTotalMedium.Clean = value; _tQLFraudAlertsTotalMedium = tQLFraudAlertsTotalMedium;
-                var tQLFraudAlertsTotalMediumUnaddressed = _tQLFraudAlertsTotalMediumUnaddressed; tQLFraudAlertsTotalMediumUnaddressed.Clean = value; _tQLFraudAlertsTotalMediumUnaddressed = tQLFraudAlertsTotalMediumUnaddressed;
-                var wellsFargo4506TBaselineReportRequired = _wellsFargo4506TBaselineReportRequired; wellsFargo4506TBaselineReportRequired.Clean = value; _wellsFargo4506TBaselineReportRequired = wellsFargo4506TBaselineReportRequired;
-                var wellsFargoComplianceBaselineReportRequired = _wellsFargoComplianceBaselineReportRequired; wellsFargoComplianceBaselineReportRequired.Clean = value; _wellsFargoComplianceBaselineReportRequired = wellsFargoComplianceBaselineReportRequired;
-                var wellsFargoFloodBaselineReportRequired = _wellsFargoFloodBaselineReportRequired; wellsFargoFloodBaselineReportRequired.Clean = value; _wellsFargoFloodBaselineReportRequired = wellsFargoFloodBaselineReportRequired;
-                var wellsFargoFraudBaselineReportRequired = _wellsFargoFraudBaselineReportRequired; wellsFargoFraudBaselineReportRequired.Clean = value; _wellsFargoFraudBaselineReportRequired = wellsFargoFraudBaselineReportRequired;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _citibank4506TBaselineReportRequired.Dirty = value;
+                _citibankCCVPBaselineReportRequired.Dirty = value;
+                _citibankComplianceBaselineReportRequired.Dirty = value;
+                _citibankFloodBaselineReportRequired.Dirty = value;
+                _citibankFraudBaselineReportRequired.Dirty = value;
+                _currentInvestorPublishingStatus.Dirty = value;
+                _driveAppVerifyScore.Dirty = value;
+                _driveIDVerifyScore.Dirty = value;
+                _drivePropertyVerifyScore.Dirty = value;
+                _driveScore.Dirty = value;
+                _driveStatus.Dirty = value;
+                _homeward4506TBaselineReportRequired.Dirty = value;
+                _homewardComplianceBaselineReportRequired.Dirty = value;
+                _homewardFloodBaselineReportRequired.Dirty = value;
+                _homewardFraudBaselineReportRequired.Dirty = value;
+                _id.Dirty = value;
+                _lastCCVPCompletedDate.Dirty = value;
+                _lastCCVPConfidenceScore.Dirty = value;
+                _lastCCVPEstimatedValue.Dirty = value;
+                _lastCCVPForecastDeviationScore.Dirty = value;
+                _lastCCVPReportHistoryProResult.Dirty = value;
+                _lastCCVPReportID.Dirty = value;
+                _lastCCVPReportOrdered.Dirty = value;
+                _lastCCVPReportPassResult.Dirty = value;
+                _lastCCVPResultsReportReturned.Dirty = value;
+                _lastComplianceCompletedDate.Dirty = value;
+                _lastComplianceNumberOfAlertMessages.Dirty = value;
+                _lastComplianceNumberOfErrorMessages.Dirty = value;
+                _lastComplianceNumberOfFailMessages.Dirty = value;
+                _lastComplianceNumberOfPassMessages.Dirty = value;
+                _lastComplianceNumberOfWarningMessages.Dirty = value;
+                _lastComplianceOrderType.Dirty = value;
+                _lastComplianceProductNameReportOrdered.Dirty = value;
+                _lastComplianceReportID.Dirty = value;
+                _lastFraudOrderAlerts.Dirty = value;
+                _lastFraudOrderCompletedDate.Dirty = value;
+                _lastFraudOrderProduct.Dirty = value;
+                _lastFraudReportID.Dirty = value;
+                _lastInvestorPublishingInvestor.Dirty = value;
+                _lastInvestorPublishingStatusChangeDate.Dirty = value;
+                _lastInvestorPublishingUserWhoChangeStatus.Dirty = value;
+                _lastUserIDWhoOrderedCCVP.Dirty = value;
+                _lastUserIDWhoOrderedCompliance.Dirty = value;
+                _lastUserIDWhoOrderedFraudOrder.Dirty = value;
+                _mIVendorsArchAutoOrderIndicator.Dirty = value;
+                _mIVendorsMgicAutoOrderIndicator.Dirty = value;
+                _mIVendorsRadianAutoOrderIndicator.Dirty = value;
+                _pHH4506TBaselineReportRequired.Dirty = value;
+                _pHHComplianceBaselineReportRequired.Dirty = value;
+                _pHHFloodBaselineReportRequired.Dirty = value;
+                _pHHFraudBaselineReportRequired.Dirty = value;
+                _stonegate4506TBaselineReport.Dirty = value;
+                _stonegateComplianceBaselineReportRequired.Dirty = value;
+                _stonegateFloodBaselineReportRequired.Dirty = value;
+                _stonegateFraudBaselineReportRequired.Dirty = value;
+                _tQLComplianceAlerts.Dirty = value;
+                _tQLDocuments.Dirty = value;
+                _tQLFraudAlerts.Dirty = value;
+                _tQLFraudAlertsTotal.Dirty = value;
+                _tQLFraudAlertsTotalHigh.Dirty = value;
+                _tQLFraudAlertsTotalHighUnaddressed.Dirty = value;
+                _tQLFraudAlertsTotalLow.Dirty = value;
+                _tQLFraudAlertsTotalLowUnaddressed.Dirty = value;
+                _tQLFraudAlertsTotalMedium.Dirty = value;
+                _tQLFraudAlertsTotalMediumUnaddressed.Dirty = value;
+                _wellsFargo4506TBaselineReportRequired.Dirty = value;
+                _wellsFargoComplianceBaselineReportRequired.Dirty = value;
+                _wellsFargoFloodBaselineReportRequired.Dirty = value;
+                _wellsFargoFraudBaselineReportRequired.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TQL()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

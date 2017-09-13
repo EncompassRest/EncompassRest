@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Residence : IClean
+    public sealed partial class Residence : IDirty
     {
         private Value<string> _accountName;
         public string AccountName { get { return _accountName; } set { _accountName = value; } }
@@ -74,93 +74,88 @@ namespace EncompassRest.Loans
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
         private Value<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountName.Clean
-                    && _addressCity.Clean
-                    && _addressPostalCode.Clean
-                    && _addressState.Clean
-                    && _addressStreetLine1.Clean
-                    && _altId.Clean
-                    && _applicantType.Clean
-                    && _county.Clean
-                    && _durationTermMonths.Clean
-                    && _durationTermYears.Clean
-                    && _entityDeleted.Clean
-                    && _id.Clean
-                    && _landlordAttention.Clean
-                    && _landlordCity.Clean
-                    && _landlordComments.Clean
-                    && _landlordEmail.Clean
-                    && _landlordFax.Clean
-                    && _landlordName.Clean
-                    && _landlordPhone.Clean
-                    && _landlordPostalCode.Clean
-                    && _landlordState.Clean
-                    && _landlordStreet.Clean
-                    && _mailingAddressIndicator.Clean
-                    && _noLinkToDocTrackIndicator.Clean
-                    && _printAttachmentIndicator.Clean
-                    && _printUserNameIndicator.Clean
-                    && _rent.Clean
-                    && _requestDate.Clean
-                    && _residencyBasisType.Clean
-                    && _residencyType.Clean
-                    && _title.Clean
-                    && _titleFax.Clean
-                    && _titlePhone.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountName.Dirty
+                    || _addressCity.Dirty
+                    || _addressPostalCode.Dirty
+                    || _addressState.Dirty
+                    || _addressStreetLine1.Dirty
+                    || _altId.Dirty
+                    || _applicantType.Dirty
+                    || _county.Dirty
+                    || _durationTermMonths.Dirty
+                    || _durationTermYears.Dirty
+                    || _entityDeleted.Dirty
+                    || _id.Dirty
+                    || _landlordAttention.Dirty
+                    || _landlordCity.Dirty
+                    || _landlordComments.Dirty
+                    || _landlordEmail.Dirty
+                    || _landlordFax.Dirty
+                    || _landlordName.Dirty
+                    || _landlordPhone.Dirty
+                    || _landlordPostalCode.Dirty
+                    || _landlordState.Dirty
+                    || _landlordStreet.Dirty
+                    || _mailingAddressIndicator.Dirty
+                    || _noLinkToDocTrackIndicator.Dirty
+                    || _printAttachmentIndicator.Dirty
+                    || _printUserNameIndicator.Dirty
+                    || _rent.Dirty
+                    || _requestDate.Dirty
+                    || _residencyBasisType.Dirty
+                    || _residencyType.Dirty
+                    || _title.Dirty
+                    || _titleFax.Dirty
+                    || _titlePhone.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountName = _accountName; accountName.Clean = value; _accountName = accountName;
-                var addressCity = _addressCity; addressCity.Clean = value; _addressCity = addressCity;
-                var addressPostalCode = _addressPostalCode; addressPostalCode.Clean = value; _addressPostalCode = addressPostalCode;
-                var addressState = _addressState; addressState.Clean = value; _addressState = addressState;
-                var addressStreetLine1 = _addressStreetLine1; addressStreetLine1.Clean = value; _addressStreetLine1 = addressStreetLine1;
-                var altId = _altId; altId.Clean = value; _altId = altId;
-                var applicantType = _applicantType; applicantType.Clean = value; _applicantType = applicantType;
-                var county = _county; county.Clean = value; _county = county;
-                var durationTermMonths = _durationTermMonths; durationTermMonths.Clean = value; _durationTermMonths = durationTermMonths;
-                var durationTermYears = _durationTermYears; durationTermYears.Clean = value; _durationTermYears = durationTermYears;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var id = _id; id.Clean = value; _id = id;
-                var landlordAttention = _landlordAttention; landlordAttention.Clean = value; _landlordAttention = landlordAttention;
-                var landlordCity = _landlordCity; landlordCity.Clean = value; _landlordCity = landlordCity;
-                var landlordComments = _landlordComments; landlordComments.Clean = value; _landlordComments = landlordComments;
-                var landlordEmail = _landlordEmail; landlordEmail.Clean = value; _landlordEmail = landlordEmail;
-                var landlordFax = _landlordFax; landlordFax.Clean = value; _landlordFax = landlordFax;
-                var landlordName = _landlordName; landlordName.Clean = value; _landlordName = landlordName;
-                var landlordPhone = _landlordPhone; landlordPhone.Clean = value; _landlordPhone = landlordPhone;
-                var landlordPostalCode = _landlordPostalCode; landlordPostalCode.Clean = value; _landlordPostalCode = landlordPostalCode;
-                var landlordState = _landlordState; landlordState.Clean = value; _landlordState = landlordState;
-                var landlordStreet = _landlordStreet; landlordStreet.Clean = value; _landlordStreet = landlordStreet;
-                var mailingAddressIndicator = _mailingAddressIndicator; mailingAddressIndicator.Clean = value; _mailingAddressIndicator = mailingAddressIndicator;
-                var noLinkToDocTrackIndicator = _noLinkToDocTrackIndicator; noLinkToDocTrackIndicator.Clean = value; _noLinkToDocTrackIndicator = noLinkToDocTrackIndicator;
-                var printAttachmentIndicator = _printAttachmentIndicator; printAttachmentIndicator.Clean = value; _printAttachmentIndicator = printAttachmentIndicator;
-                var printUserNameIndicator = _printUserNameIndicator; printUserNameIndicator.Clean = value; _printUserNameIndicator = printUserNameIndicator;
-                var rent = _rent; rent.Clean = value; _rent = rent;
-                var requestDate = _requestDate; requestDate.Clean = value; _requestDate = requestDate;
-                var residencyBasisType = _residencyBasisType; residencyBasisType.Clean = value; _residencyBasisType = residencyBasisType;
-                var residencyType = _residencyType; residencyType.Clean = value; _residencyType = residencyType;
-                var title = _title; title.Clean = value; _title = title;
-                var titleFax = _titleFax; titleFax.Clean = value; _titleFax = titleFax;
-                var titlePhone = _titlePhone; titlePhone.Clean = value; _titlePhone = titlePhone;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountName.Dirty = value;
+                _addressCity.Dirty = value;
+                _addressPostalCode.Dirty = value;
+                _addressState.Dirty = value;
+                _addressStreetLine1.Dirty = value;
+                _altId.Dirty = value;
+                _applicantType.Dirty = value;
+                _county.Dirty = value;
+                _durationTermMonths.Dirty = value;
+                _durationTermYears.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _id.Dirty = value;
+                _landlordAttention.Dirty = value;
+                _landlordCity.Dirty = value;
+                _landlordComments.Dirty = value;
+                _landlordEmail.Dirty = value;
+                _landlordFax.Dirty = value;
+                _landlordName.Dirty = value;
+                _landlordPhone.Dirty = value;
+                _landlordPostalCode.Dirty = value;
+                _landlordState.Dirty = value;
+                _landlordStreet.Dirty = value;
+                _mailingAddressIndicator.Dirty = value;
+                _noLinkToDocTrackIndicator.Dirty = value;
+                _printAttachmentIndicator.Dirty = value;
+                _printUserNameIndicator.Dirty = value;
+                _rent.Dirty = value;
+                _requestDate.Dirty = value;
+                _residencyBasisType.Dirty = value;
+                _residencyType.Dirty = value;
+                _title.Dirty = value;
+                _titleFax.Dirty = value;
+                _titlePhone.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Residence()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

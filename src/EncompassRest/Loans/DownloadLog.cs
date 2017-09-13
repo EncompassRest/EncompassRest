@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DownloadLog : IClean
+    public sealed partial class DownloadLog : IDirty
     {
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
@@ -46,65 +46,60 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alerts.Clean
-                    && _barcodePage.Clean
-                    && _commentList.Clean
-                    && _comments.Clean
-                    && _dateReceived.Clean
-                    && _dateUtc.Clean
-                    && _documentId.Clean
-                    && _downloadId.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _fileSource.Clean
-                    && _fileType.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _receivedBy.Clean
-                    && _sender.Clean
-                    && _systemId.Clean
-                    && _title.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alerts.Dirty
+                    || _barcodePage.Dirty
+                    || _commentList.Dirty
+                    || _comments.Dirty
+                    || _dateReceived.Dirty
+                    || _dateUtc.Dirty
+                    || _documentId.Dirty
+                    || _downloadId.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _fileSource.Dirty
+                    || _fileType.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _receivedBy.Dirty
+                    || _sender.Dirty
+                    || _systemId.Dirty
+                    || _title.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var barcodePage = _barcodePage; barcodePage.Clean = value; _barcodePage = barcodePage;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateReceived = _dateReceived; dateReceived.Clean = value; _dateReceived = dateReceived;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var documentId = _documentId; documentId.Clean = value; _documentId = documentId;
-                var downloadId = _downloadId; downloadId.Clean = value; _downloadId = downloadId;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var fileSource = _fileSource; fileSource.Clean = value; _fileSource = fileSource;
-                var fileType = _fileType; fileType.Clean = value; _fileType = fileType;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var receivedBy = _receivedBy; receivedBy.Clean = value; _receivedBy = receivedBy;
-                var sender = _sender; sender.Clean = value; _sender = sender;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var title = _title; title.Clean = value; _title = title;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alerts.Dirty = value;
+                _barcodePage.Dirty = value;
+                _commentList.Dirty = value;
+                _comments.Dirty = value;
+                _dateReceived.Dirty = value;
+                _dateUtc.Dirty = value;
+                _documentId.Dirty = value;
+                _downloadId.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _fileSource.Dirty = value;
+                _fileType.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _receivedBy.Dirty = value;
+                _sender.Dirty = value;
+                _systemId.Dirty = value;
+                _title.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public DownloadLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

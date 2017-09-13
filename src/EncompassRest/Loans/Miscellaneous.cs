@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Miscellaneous : IClean
+    public sealed partial class Miscellaneous : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -194,213 +194,208 @@ namespace EncompassRest.Loans
         public string UseRegZMi { get { return _useRegZMi; } set { _useRegZMi = value; } }
         private Value<string> _zip;
         public string Zip { get { return _zip; } set { _zip = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _borrowerDescription1.Clean
-                    && _borrowerDescription2.Clean
-                    && _borrowerDescription3.Clean
-                    && _borrowerDescription4.Clean
-                    && _borrowerDescription5.Clean
-                    && _borrowerDescription6.Clean
-                    && _borrowerDescription7.Clean
-                    && _city.Clean
-                    && _closingCostProgramFile.Clean
-                    && _closingTaxYear.Clean
-                    && _closingTaxYearInterestReceived.Clean
-                    && _copyFromSubjectProperty.Clean
-                    && _dataTracLoanId.Clean
-                    && _docSetFile.Clean
-                    && _factorForRevolvingDebt.Clean
-                    && _fannieDuAutoOrderIndicator.Clean
-                    && _fannieEcAutoOrderIndicator.Clean
-                    && _floodInsuranceExcluded.Clean
-                    && _formListFile.Clean
-                    && _freddieLPAAutoOrderIndicator.Clean
-                    && _freddieLQAAutoOrderIndicator.Clean
-                    && _housingExpenseIntRate1.Clean
-                    && _housingExpenseIntRate2.Clean
-                    && _housingExpenseLoanAmt1.Clean
-                    && _housingExpenseLoanAmt2.Clean
-                    && _housingExpensePayment1.Clean
-                    && _housingExpensePayment2.Clean
-                    && _housingExpenseTerm1.Clean
-                    && _housingExpenseTerm2.Clean
-                    && _id.Clean
-                    && _isSameAddresswithPayer.Clean
-                    && _line1006Excluded.Clean
-                    && _line1007Excluded.Clean
-                    && _line1008Excluded.Clean
-                    && _line1010Excluded.Clean
-                    && _loanProgramFile.Clean
-                    && _loanTemplateFile.Clean
-                    && _maventATRQMResult.Clean
-                    && _maventAutoOrderIndicator.Clean
-                    && _maventCraxResult.Clean
-                    && _maventEnterpriseResult.Clean
-                    && _maventGseResult.Clean
-                    && _maventHighCostResult.Clean
-                    && _maventHmdaResult.Clean
-                    && _maventHpmlResult.Clean
-                    && _maventLicenseResult.Clean
-                    && _maventNmlsResult.Clean
-                    && _maventOfacResult.Clean
-                    && _maventOrderedBy.Clean
-                    && _maventOrderedDate.Clean
-                    && _maventOtherResult.Clean
-                    && _maventReviewResult.Clean
-                    && _maventStateResult.Clean
-                    && _maventTilaRorResult.Clean
-                    && _maventTilaToleranceResult.Clean
-                    && _mIPremiums.Clean
-                    && _miscDataFile.Clean
-                    && _monthsToExclude.Clean
-                    && _optimalBlueHistoryData.Clean
-                    && _optimalBlueRequest.Clean
-                    && _optimalBlueResponse.Clean
-                    && _otherPresentHousingExpense.Clean
-                    && _outstandingMtgPrincipal.Clean
-                    && _outstandingMtgPrincipalDate.Clean
-                    && _participateHomePoints.Clean
-                    && _partnerEmail.Clean
-                    && _partnerName.Clean
-                    && _partnerPhone.Clean
-                    && _pointsPaid.Clean
-                    && _rateRegistrationExpirationDate.Clean
-                    && _rateRegistrationInvestorName.Clean
-                    && _rateRegistrationLoanIsRegistered.Clean
-                    && _rateRegistrationReference.Clean
-                    && _rateRegistrationRegisteredBy.Clean
-                    && _rateRegistrationRegisteredUserId.Clean
-                    && _rateRegistrationRegistrationDate.Clean
-                    && _refundOrOverpaidInterest.Clean
-                    && _schoolTaxExcluded.Clean
-                    && _state.Clean
-                    && _statusUrl.Clean
-                    && _submitDate.Clean
-                    && _subTaxYear.Clean
-                    && _subTaxYearInterestReceived.Clean
-                    && _subTaxYearMIPremiums.Clean
-                    && _subTaxYearPointsPaid.Clean
-                    && _subTaxYearRefundOrOverpaidInterest.Clean
-                    && _taxId.Clean
-                    && _totalBox4.Clean
-                    && _totalYearlyMi.Clean
-                    && _useGfeTax.Clean
-                    && _useRegZMi.Clean
-                    && _zip.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _borrowerDescription1.Dirty
+                    || _borrowerDescription2.Dirty
+                    || _borrowerDescription3.Dirty
+                    || _borrowerDescription4.Dirty
+                    || _borrowerDescription5.Dirty
+                    || _borrowerDescription6.Dirty
+                    || _borrowerDescription7.Dirty
+                    || _city.Dirty
+                    || _closingCostProgramFile.Dirty
+                    || _closingTaxYear.Dirty
+                    || _closingTaxYearInterestReceived.Dirty
+                    || _copyFromSubjectProperty.Dirty
+                    || _dataTracLoanId.Dirty
+                    || _docSetFile.Dirty
+                    || _factorForRevolvingDebt.Dirty
+                    || _fannieDuAutoOrderIndicator.Dirty
+                    || _fannieEcAutoOrderIndicator.Dirty
+                    || _floodInsuranceExcluded.Dirty
+                    || _formListFile.Dirty
+                    || _freddieLPAAutoOrderIndicator.Dirty
+                    || _freddieLQAAutoOrderIndicator.Dirty
+                    || _housingExpenseIntRate1.Dirty
+                    || _housingExpenseIntRate2.Dirty
+                    || _housingExpenseLoanAmt1.Dirty
+                    || _housingExpenseLoanAmt2.Dirty
+                    || _housingExpensePayment1.Dirty
+                    || _housingExpensePayment2.Dirty
+                    || _housingExpenseTerm1.Dirty
+                    || _housingExpenseTerm2.Dirty
+                    || _id.Dirty
+                    || _isSameAddresswithPayer.Dirty
+                    || _line1006Excluded.Dirty
+                    || _line1007Excluded.Dirty
+                    || _line1008Excluded.Dirty
+                    || _line1010Excluded.Dirty
+                    || _loanProgramFile.Dirty
+                    || _loanTemplateFile.Dirty
+                    || _maventATRQMResult.Dirty
+                    || _maventAutoOrderIndicator.Dirty
+                    || _maventCraxResult.Dirty
+                    || _maventEnterpriseResult.Dirty
+                    || _maventGseResult.Dirty
+                    || _maventHighCostResult.Dirty
+                    || _maventHmdaResult.Dirty
+                    || _maventHpmlResult.Dirty
+                    || _maventLicenseResult.Dirty
+                    || _maventNmlsResult.Dirty
+                    || _maventOfacResult.Dirty
+                    || _maventOrderedBy.Dirty
+                    || _maventOrderedDate.Dirty
+                    || _maventOtherResult.Dirty
+                    || _maventReviewResult.Dirty
+                    || _maventStateResult.Dirty
+                    || _maventTilaRorResult.Dirty
+                    || _maventTilaToleranceResult.Dirty
+                    || _mIPremiums.Dirty
+                    || _miscDataFile.Dirty
+                    || _monthsToExclude.Dirty
+                    || _optimalBlueHistoryData.Dirty
+                    || _optimalBlueRequest.Dirty
+                    || _optimalBlueResponse.Dirty
+                    || _otherPresentHousingExpense.Dirty
+                    || _outstandingMtgPrincipal.Dirty
+                    || _outstandingMtgPrincipalDate.Dirty
+                    || _participateHomePoints.Dirty
+                    || _partnerEmail.Dirty
+                    || _partnerName.Dirty
+                    || _partnerPhone.Dirty
+                    || _pointsPaid.Dirty
+                    || _rateRegistrationExpirationDate.Dirty
+                    || _rateRegistrationInvestorName.Dirty
+                    || _rateRegistrationLoanIsRegistered.Dirty
+                    || _rateRegistrationReference.Dirty
+                    || _rateRegistrationRegisteredBy.Dirty
+                    || _rateRegistrationRegisteredUserId.Dirty
+                    || _rateRegistrationRegistrationDate.Dirty
+                    || _refundOrOverpaidInterest.Dirty
+                    || _schoolTaxExcluded.Dirty
+                    || _state.Dirty
+                    || _statusUrl.Dirty
+                    || _submitDate.Dirty
+                    || _subTaxYear.Dirty
+                    || _subTaxYearInterestReceived.Dirty
+                    || _subTaxYearMIPremiums.Dirty
+                    || _subTaxYearPointsPaid.Dirty
+                    || _subTaxYearRefundOrOverpaidInterest.Dirty
+                    || _taxId.Dirty
+                    || _totalBox4.Dirty
+                    || _totalYearlyMi.Dirty
+                    || _useGfeTax.Dirty
+                    || _useRegZMi.Dirty
+                    || _zip.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var borrowerDescription1 = _borrowerDescription1; borrowerDescription1.Clean = value; _borrowerDescription1 = borrowerDescription1;
-                var borrowerDescription2 = _borrowerDescription2; borrowerDescription2.Clean = value; _borrowerDescription2 = borrowerDescription2;
-                var borrowerDescription3 = _borrowerDescription3; borrowerDescription3.Clean = value; _borrowerDescription3 = borrowerDescription3;
-                var borrowerDescription4 = _borrowerDescription4; borrowerDescription4.Clean = value; _borrowerDescription4 = borrowerDescription4;
-                var borrowerDescription5 = _borrowerDescription5; borrowerDescription5.Clean = value; _borrowerDescription5 = borrowerDescription5;
-                var borrowerDescription6 = _borrowerDescription6; borrowerDescription6.Clean = value; _borrowerDescription6 = borrowerDescription6;
-                var borrowerDescription7 = _borrowerDescription7; borrowerDescription7.Clean = value; _borrowerDescription7 = borrowerDescription7;
-                var city = _city; city.Clean = value; _city = city;
-                var closingCostProgramFile = _closingCostProgramFile; closingCostProgramFile.Clean = value; _closingCostProgramFile = closingCostProgramFile;
-                var closingTaxYear = _closingTaxYear; closingTaxYear.Clean = value; _closingTaxYear = closingTaxYear;
-                var closingTaxYearInterestReceived = _closingTaxYearInterestReceived; closingTaxYearInterestReceived.Clean = value; _closingTaxYearInterestReceived = closingTaxYearInterestReceived;
-                var copyFromSubjectProperty = _copyFromSubjectProperty; copyFromSubjectProperty.Clean = value; _copyFromSubjectProperty = copyFromSubjectProperty;
-                var dataTracLoanId = _dataTracLoanId; dataTracLoanId.Clean = value; _dataTracLoanId = dataTracLoanId;
-                var docSetFile = _docSetFile; docSetFile.Clean = value; _docSetFile = docSetFile;
-                var factorForRevolvingDebt = _factorForRevolvingDebt; factorForRevolvingDebt.Clean = value; _factorForRevolvingDebt = factorForRevolvingDebt;
-                var fannieDuAutoOrderIndicator = _fannieDuAutoOrderIndicator; fannieDuAutoOrderIndicator.Clean = value; _fannieDuAutoOrderIndicator = fannieDuAutoOrderIndicator;
-                var fannieEcAutoOrderIndicator = _fannieEcAutoOrderIndicator; fannieEcAutoOrderIndicator.Clean = value; _fannieEcAutoOrderIndicator = fannieEcAutoOrderIndicator;
-                var floodInsuranceExcluded = _floodInsuranceExcluded; floodInsuranceExcluded.Clean = value; _floodInsuranceExcluded = floodInsuranceExcluded;
-                var formListFile = _formListFile; formListFile.Clean = value; _formListFile = formListFile;
-                var freddieLPAAutoOrderIndicator = _freddieLPAAutoOrderIndicator; freddieLPAAutoOrderIndicator.Clean = value; _freddieLPAAutoOrderIndicator = freddieLPAAutoOrderIndicator;
-                var freddieLQAAutoOrderIndicator = _freddieLQAAutoOrderIndicator; freddieLQAAutoOrderIndicator.Clean = value; _freddieLQAAutoOrderIndicator = freddieLQAAutoOrderIndicator;
-                var housingExpenseIntRate1 = _housingExpenseIntRate1; housingExpenseIntRate1.Clean = value; _housingExpenseIntRate1 = housingExpenseIntRate1;
-                var housingExpenseIntRate2 = _housingExpenseIntRate2; housingExpenseIntRate2.Clean = value; _housingExpenseIntRate2 = housingExpenseIntRate2;
-                var housingExpenseLoanAmt1 = _housingExpenseLoanAmt1; housingExpenseLoanAmt1.Clean = value; _housingExpenseLoanAmt1 = housingExpenseLoanAmt1;
-                var housingExpenseLoanAmt2 = _housingExpenseLoanAmt2; housingExpenseLoanAmt2.Clean = value; _housingExpenseLoanAmt2 = housingExpenseLoanAmt2;
-                var housingExpensePayment1 = _housingExpensePayment1; housingExpensePayment1.Clean = value; _housingExpensePayment1 = housingExpensePayment1;
-                var housingExpensePayment2 = _housingExpensePayment2; housingExpensePayment2.Clean = value; _housingExpensePayment2 = housingExpensePayment2;
-                var housingExpenseTerm1 = _housingExpenseTerm1; housingExpenseTerm1.Clean = value; _housingExpenseTerm1 = housingExpenseTerm1;
-                var housingExpenseTerm2 = _housingExpenseTerm2; housingExpenseTerm2.Clean = value; _housingExpenseTerm2 = housingExpenseTerm2;
-                var id = _id; id.Clean = value; _id = id;
-                var isSameAddresswithPayer = _isSameAddresswithPayer; isSameAddresswithPayer.Clean = value; _isSameAddresswithPayer = isSameAddresswithPayer;
-                var line1006Excluded = _line1006Excluded; line1006Excluded.Clean = value; _line1006Excluded = line1006Excluded;
-                var line1007Excluded = _line1007Excluded; line1007Excluded.Clean = value; _line1007Excluded = line1007Excluded;
-                var line1008Excluded = _line1008Excluded; line1008Excluded.Clean = value; _line1008Excluded = line1008Excluded;
-                var line1010Excluded = _line1010Excluded; line1010Excluded.Clean = value; _line1010Excluded = line1010Excluded;
-                var loanProgramFile = _loanProgramFile; loanProgramFile.Clean = value; _loanProgramFile = loanProgramFile;
-                var loanTemplateFile = _loanTemplateFile; loanTemplateFile.Clean = value; _loanTemplateFile = loanTemplateFile;
-                var maventATRQMResult = _maventATRQMResult; maventATRQMResult.Clean = value; _maventATRQMResult = maventATRQMResult;
-                var maventAutoOrderIndicator = _maventAutoOrderIndicator; maventAutoOrderIndicator.Clean = value; _maventAutoOrderIndicator = maventAutoOrderIndicator;
-                var maventCraxResult = _maventCraxResult; maventCraxResult.Clean = value; _maventCraxResult = maventCraxResult;
-                var maventEnterpriseResult = _maventEnterpriseResult; maventEnterpriseResult.Clean = value; _maventEnterpriseResult = maventEnterpriseResult;
-                var maventGseResult = _maventGseResult; maventGseResult.Clean = value; _maventGseResult = maventGseResult;
-                var maventHighCostResult = _maventHighCostResult; maventHighCostResult.Clean = value; _maventHighCostResult = maventHighCostResult;
-                var maventHmdaResult = _maventHmdaResult; maventHmdaResult.Clean = value; _maventHmdaResult = maventHmdaResult;
-                var maventHpmlResult = _maventHpmlResult; maventHpmlResult.Clean = value; _maventHpmlResult = maventHpmlResult;
-                var maventLicenseResult = _maventLicenseResult; maventLicenseResult.Clean = value; _maventLicenseResult = maventLicenseResult;
-                var maventNmlsResult = _maventNmlsResult; maventNmlsResult.Clean = value; _maventNmlsResult = maventNmlsResult;
-                var maventOfacResult = _maventOfacResult; maventOfacResult.Clean = value; _maventOfacResult = maventOfacResult;
-                var maventOrderedBy = _maventOrderedBy; maventOrderedBy.Clean = value; _maventOrderedBy = maventOrderedBy;
-                var maventOrderedDate = _maventOrderedDate; maventOrderedDate.Clean = value; _maventOrderedDate = maventOrderedDate;
-                var maventOtherResult = _maventOtherResult; maventOtherResult.Clean = value; _maventOtherResult = maventOtherResult;
-                var maventReviewResult = _maventReviewResult; maventReviewResult.Clean = value; _maventReviewResult = maventReviewResult;
-                var maventStateResult = _maventStateResult; maventStateResult.Clean = value; _maventStateResult = maventStateResult;
-                var maventTilaRorResult = _maventTilaRorResult; maventTilaRorResult.Clean = value; _maventTilaRorResult = maventTilaRorResult;
-                var maventTilaToleranceResult = _maventTilaToleranceResult; maventTilaToleranceResult.Clean = value; _maventTilaToleranceResult = maventTilaToleranceResult;
-                var mIPremiums = _mIPremiums; mIPremiums.Clean = value; _mIPremiums = mIPremiums;
-                var miscDataFile = _miscDataFile; miscDataFile.Clean = value; _miscDataFile = miscDataFile;
-                var monthsToExclude = _monthsToExclude; monthsToExclude.Clean = value; _monthsToExclude = monthsToExclude;
-                var optimalBlueHistoryData = _optimalBlueHistoryData; optimalBlueHistoryData.Clean = value; _optimalBlueHistoryData = optimalBlueHistoryData;
-                var optimalBlueRequest = _optimalBlueRequest; optimalBlueRequest.Clean = value; _optimalBlueRequest = optimalBlueRequest;
-                var optimalBlueResponse = _optimalBlueResponse; optimalBlueResponse.Clean = value; _optimalBlueResponse = optimalBlueResponse;
-                var otherPresentHousingExpense = _otherPresentHousingExpense; otherPresentHousingExpense.Clean = value; _otherPresentHousingExpense = otherPresentHousingExpense;
-                var outstandingMtgPrincipal = _outstandingMtgPrincipal; outstandingMtgPrincipal.Clean = value; _outstandingMtgPrincipal = outstandingMtgPrincipal;
-                var outstandingMtgPrincipalDate = _outstandingMtgPrincipalDate; outstandingMtgPrincipalDate.Clean = value; _outstandingMtgPrincipalDate = outstandingMtgPrincipalDate;
-                var participateHomePoints = _participateHomePoints; participateHomePoints.Clean = value; _participateHomePoints = participateHomePoints;
-                var partnerEmail = _partnerEmail; partnerEmail.Clean = value; _partnerEmail = partnerEmail;
-                var partnerName = _partnerName; partnerName.Clean = value; _partnerName = partnerName;
-                var partnerPhone = _partnerPhone; partnerPhone.Clean = value; _partnerPhone = partnerPhone;
-                var pointsPaid = _pointsPaid; pointsPaid.Clean = value; _pointsPaid = pointsPaid;
-                var rateRegistrationExpirationDate = _rateRegistrationExpirationDate; rateRegistrationExpirationDate.Clean = value; _rateRegistrationExpirationDate = rateRegistrationExpirationDate;
-                var rateRegistrationInvestorName = _rateRegistrationInvestorName; rateRegistrationInvestorName.Clean = value; _rateRegistrationInvestorName = rateRegistrationInvestorName;
-                var rateRegistrationLoanIsRegistered = _rateRegistrationLoanIsRegistered; rateRegistrationLoanIsRegistered.Clean = value; _rateRegistrationLoanIsRegistered = rateRegistrationLoanIsRegistered;
-                var rateRegistrationReference = _rateRegistrationReference; rateRegistrationReference.Clean = value; _rateRegistrationReference = rateRegistrationReference;
-                var rateRegistrationRegisteredBy = _rateRegistrationRegisteredBy; rateRegistrationRegisteredBy.Clean = value; _rateRegistrationRegisteredBy = rateRegistrationRegisteredBy;
-                var rateRegistrationRegisteredUserId = _rateRegistrationRegisteredUserId; rateRegistrationRegisteredUserId.Clean = value; _rateRegistrationRegisteredUserId = rateRegistrationRegisteredUserId;
-                var rateRegistrationRegistrationDate = _rateRegistrationRegistrationDate; rateRegistrationRegistrationDate.Clean = value; _rateRegistrationRegistrationDate = rateRegistrationRegistrationDate;
-                var refundOrOverpaidInterest = _refundOrOverpaidInterest; refundOrOverpaidInterest.Clean = value; _refundOrOverpaidInterest = refundOrOverpaidInterest;
-                var schoolTaxExcluded = _schoolTaxExcluded; schoolTaxExcluded.Clean = value; _schoolTaxExcluded = schoolTaxExcluded;
-                var state = _state; state.Clean = value; _state = state;
-                var statusUrl = _statusUrl; statusUrl.Clean = value; _statusUrl = statusUrl;
-                var submitDate = _submitDate; submitDate.Clean = value; _submitDate = submitDate;
-                var subTaxYear = _subTaxYear; subTaxYear.Clean = value; _subTaxYear = subTaxYear;
-                var subTaxYearInterestReceived = _subTaxYearInterestReceived; subTaxYearInterestReceived.Clean = value; _subTaxYearInterestReceived = subTaxYearInterestReceived;
-                var subTaxYearMIPremiums = _subTaxYearMIPremiums; subTaxYearMIPremiums.Clean = value; _subTaxYearMIPremiums = subTaxYearMIPremiums;
-                var subTaxYearPointsPaid = _subTaxYearPointsPaid; subTaxYearPointsPaid.Clean = value; _subTaxYearPointsPaid = subTaxYearPointsPaid;
-                var subTaxYearRefundOrOverpaidInterest = _subTaxYearRefundOrOverpaidInterest; subTaxYearRefundOrOverpaidInterest.Clean = value; _subTaxYearRefundOrOverpaidInterest = subTaxYearRefundOrOverpaidInterest;
-                var taxId = _taxId; taxId.Clean = value; _taxId = taxId;
-                var totalBox4 = _totalBox4; totalBox4.Clean = value; _totalBox4 = totalBox4;
-                var totalYearlyMi = _totalYearlyMi; totalYearlyMi.Clean = value; _totalYearlyMi = totalYearlyMi;
-                var useGfeTax = _useGfeTax; useGfeTax.Clean = value; _useGfeTax = useGfeTax;
-                var useRegZMi = _useRegZMi; useRegZMi.Clean = value; _useRegZMi = useRegZMi;
-                var zip = _zip; zip.Clean = value; _zip = zip;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _borrowerDescription1.Dirty = value;
+                _borrowerDescription2.Dirty = value;
+                _borrowerDescription3.Dirty = value;
+                _borrowerDescription4.Dirty = value;
+                _borrowerDescription5.Dirty = value;
+                _borrowerDescription6.Dirty = value;
+                _borrowerDescription7.Dirty = value;
+                _city.Dirty = value;
+                _closingCostProgramFile.Dirty = value;
+                _closingTaxYear.Dirty = value;
+                _closingTaxYearInterestReceived.Dirty = value;
+                _copyFromSubjectProperty.Dirty = value;
+                _dataTracLoanId.Dirty = value;
+                _docSetFile.Dirty = value;
+                _factorForRevolvingDebt.Dirty = value;
+                _fannieDuAutoOrderIndicator.Dirty = value;
+                _fannieEcAutoOrderIndicator.Dirty = value;
+                _floodInsuranceExcluded.Dirty = value;
+                _formListFile.Dirty = value;
+                _freddieLPAAutoOrderIndicator.Dirty = value;
+                _freddieLQAAutoOrderIndicator.Dirty = value;
+                _housingExpenseIntRate1.Dirty = value;
+                _housingExpenseIntRate2.Dirty = value;
+                _housingExpenseLoanAmt1.Dirty = value;
+                _housingExpenseLoanAmt2.Dirty = value;
+                _housingExpensePayment1.Dirty = value;
+                _housingExpensePayment2.Dirty = value;
+                _housingExpenseTerm1.Dirty = value;
+                _housingExpenseTerm2.Dirty = value;
+                _id.Dirty = value;
+                _isSameAddresswithPayer.Dirty = value;
+                _line1006Excluded.Dirty = value;
+                _line1007Excluded.Dirty = value;
+                _line1008Excluded.Dirty = value;
+                _line1010Excluded.Dirty = value;
+                _loanProgramFile.Dirty = value;
+                _loanTemplateFile.Dirty = value;
+                _maventATRQMResult.Dirty = value;
+                _maventAutoOrderIndicator.Dirty = value;
+                _maventCraxResult.Dirty = value;
+                _maventEnterpriseResult.Dirty = value;
+                _maventGseResult.Dirty = value;
+                _maventHighCostResult.Dirty = value;
+                _maventHmdaResult.Dirty = value;
+                _maventHpmlResult.Dirty = value;
+                _maventLicenseResult.Dirty = value;
+                _maventNmlsResult.Dirty = value;
+                _maventOfacResult.Dirty = value;
+                _maventOrderedBy.Dirty = value;
+                _maventOrderedDate.Dirty = value;
+                _maventOtherResult.Dirty = value;
+                _maventReviewResult.Dirty = value;
+                _maventStateResult.Dirty = value;
+                _maventTilaRorResult.Dirty = value;
+                _maventTilaToleranceResult.Dirty = value;
+                _mIPremiums.Dirty = value;
+                _miscDataFile.Dirty = value;
+                _monthsToExclude.Dirty = value;
+                _optimalBlueHistoryData.Dirty = value;
+                _optimalBlueRequest.Dirty = value;
+                _optimalBlueResponse.Dirty = value;
+                _otherPresentHousingExpense.Dirty = value;
+                _outstandingMtgPrincipal.Dirty = value;
+                _outstandingMtgPrincipalDate.Dirty = value;
+                _participateHomePoints.Dirty = value;
+                _partnerEmail.Dirty = value;
+                _partnerName.Dirty = value;
+                _partnerPhone.Dirty = value;
+                _pointsPaid.Dirty = value;
+                _rateRegistrationExpirationDate.Dirty = value;
+                _rateRegistrationInvestorName.Dirty = value;
+                _rateRegistrationLoanIsRegistered.Dirty = value;
+                _rateRegistrationReference.Dirty = value;
+                _rateRegistrationRegisteredBy.Dirty = value;
+                _rateRegistrationRegisteredUserId.Dirty = value;
+                _rateRegistrationRegistrationDate.Dirty = value;
+                _refundOrOverpaidInterest.Dirty = value;
+                _schoolTaxExcluded.Dirty = value;
+                _state.Dirty = value;
+                _statusUrl.Dirty = value;
+                _submitDate.Dirty = value;
+                _subTaxYear.Dirty = value;
+                _subTaxYearInterestReceived.Dirty = value;
+                _subTaxYearMIPremiums.Dirty = value;
+                _subTaxYearPointsPaid.Dirty = value;
+                _subTaxYearRefundOrOverpaidInterest.Dirty = value;
+                _taxId.Dirty = value;
+                _totalBox4.Dirty = value;
+                _totalYearlyMi.Dirty = value;
+                _useGfeTax.Dirty = value;
+                _useRegZMi.Dirty = value;
+                _zip.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Miscellaneous()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

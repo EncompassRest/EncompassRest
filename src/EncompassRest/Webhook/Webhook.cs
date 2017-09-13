@@ -10,7 +10,7 @@ namespace EncompassRest.Webhook
 {
     public sealed class Webhook
     {
-        private const string _apiPath = "webhook/v1";
+        private const string s_apiPath = "webhook/v1";
 
         public EncompassRestClient Client { get; }
 
@@ -27,9 +27,9 @@ namespace EncompassRest.Webhook
 
         public Task<string> GetResourcesRawAsync(CancellationToken cancellationToken) => GetResourcesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
 
-        public async Task<T> GetResourcesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetResourcesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/resources", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/resources", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -60,7 +60,7 @@ namespace EncompassRest.Webhook
 
         private async Task<T> GetSubscriptionInternalAsync<T>(string subscriptionId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -81,7 +81,7 @@ namespace EncompassRest.Webhook
 
         private async Task<T> GetSubscriptionsInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/subscriptions", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -112,7 +112,7 @@ namespace EncompassRest.Webhook
 
         private async Task<string> CreateSubscriptionInternalAsync(HttpContent content, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/subscriptions", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/subscriptions", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -145,7 +145,7 @@ namespace EncompassRest.Webhook
 
         private async Task UpdateSubscriptionInternalAsync(string subscriptionId, HttpContent content, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.PutAsync($"{_apiPath}/subscriptions/{subscriptionId}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PutAsync($"{s_apiPath}/subscriptions/{subscriptionId}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -165,7 +165,7 @@ namespace EncompassRest.Webhook
 
         private async Task DeleteSubscriptionInternalAsync(string subscriptionId, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTaskLog : IClean
+    public sealed partial class MilestoneTaskLog : IDirty
     {
         private Value<DateTime?> _addDate;
         public DateTime? AddDate { get { return _addDate; } set { _addDate = value; } }
@@ -72,91 +72,86 @@ namespace EncompassRest.Loans
         public string TaskGuid { get { return _taskGuid; } set { _taskGuid = value; } }
         private Value<string> _taskName;
         public string TaskName { get { return _taskName; } set { _taskName = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _addDate.Clean
-                    && _addedBy.Clean
-                    && _addedByUserId.Clean
-                    && _alerts.Clean
-                    && _alertsXml.Clean
-                    && _commentList.Clean
-                    && _commentListXml.Clean
-                    && _comments.Clean
-                    && _completed.Clean
-                    && _completedBy.Clean
-                    && _completedByUserId.Clean
-                    && _completedDateUtc.Clean
-                    && _contactCount.Clean
-                    && _contacts.Clean
-                    && _contactsXml.Clean
-                    && _dateUtc.Clean
-                    && _daysToComplete.Clean
-                    && _daysToCompleteFromSetting.Clean
-                    && _expectedDate.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isRequiredIndicator.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _milestoneTaskLogDateUtc.Clean
-                    && _priority.Clean
-                    && _stage.Clean
-                    && _systemId.Clean
-                    && _taskDescription.Clean
-                    && _taskGuid.Clean
-                    && _taskName.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _addDate.Dirty
+                    || _addedBy.Dirty
+                    || _addedByUserId.Dirty
+                    || _alerts.Dirty
+                    || _alertsXml.Dirty
+                    || _commentList.Dirty
+                    || _commentListXml.Dirty
+                    || _comments.Dirty
+                    || _completed.Dirty
+                    || _completedBy.Dirty
+                    || _completedByUserId.Dirty
+                    || _completedDateUtc.Dirty
+                    || _contactCount.Dirty
+                    || _contacts.Dirty
+                    || _contactsXml.Dirty
+                    || _dateUtc.Dirty
+                    || _daysToComplete.Dirty
+                    || _daysToCompleteFromSetting.Dirty
+                    || _expectedDate.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isRequiredIndicator.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _milestoneTaskLogDateUtc.Dirty
+                    || _priority.Dirty
+                    || _stage.Dirty
+                    || _systemId.Dirty
+                    || _taskDescription.Dirty
+                    || _taskGuid.Dirty
+                    || _taskName.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var addDate = _addDate; addDate.Clean = value; _addDate = addDate;
-                var addedBy = _addedBy; addedBy.Clean = value; _addedBy = addedBy;
-                var addedByUserId = _addedByUserId; addedByUserId.Clean = value; _addedByUserId = addedByUserId;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var completed = _completed; completed.Clean = value; _completed = completed;
-                var completedBy = _completedBy; completedBy.Clean = value; _completedBy = completedBy;
-                var completedByUserId = _completedByUserId; completedByUserId.Clean = value; _completedByUserId = completedByUserId;
-                var completedDateUtc = _completedDateUtc; completedDateUtc.Clean = value; _completedDateUtc = completedDateUtc;
-                var contactCount = _contactCount; contactCount.Clean = value; _contactCount = contactCount;
-                var contacts = _contacts; contacts.Clean = value; _contacts = contacts;
-                var contactsXml = _contactsXml; contactsXml.Clean = value; _contactsXml = contactsXml;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var daysToComplete = _daysToComplete; daysToComplete.Clean = value; _daysToComplete = daysToComplete;
-                var daysToCompleteFromSetting = _daysToCompleteFromSetting; daysToCompleteFromSetting.Clean = value; _daysToCompleteFromSetting = daysToCompleteFromSetting;
-                var expectedDate = _expectedDate; expectedDate.Clean = value; _expectedDate = expectedDate;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isRequiredIndicator = _isRequiredIndicator; isRequiredIndicator.Clean = value; _isRequiredIndicator = isRequiredIndicator;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var milestoneTaskLogDateUtc = _milestoneTaskLogDateUtc; milestoneTaskLogDateUtc.Clean = value; _milestoneTaskLogDateUtc = milestoneTaskLogDateUtc;
-                var priority = _priority; priority.Clean = value; _priority = priority;
-                var stage = _stage; stage.Clean = value; _stage = stage;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var taskDescription = _taskDescription; taskDescription.Clean = value; _taskDescription = taskDescription;
-                var taskGuid = _taskGuid; taskGuid.Clean = value; _taskGuid = taskGuid;
-                var taskName = _taskName; taskName.Clean = value; _taskName = taskName;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _addDate.Dirty = value;
+                _addedBy.Dirty = value;
+                _addedByUserId.Dirty = value;
+                _alerts.Dirty = value;
+                _alertsXml.Dirty = value;
+                _commentList.Dirty = value;
+                _commentListXml.Dirty = value;
+                _comments.Dirty = value;
+                _completed.Dirty = value;
+                _completedBy.Dirty = value;
+                _completedByUserId.Dirty = value;
+                _completedDateUtc.Dirty = value;
+                _contactCount.Dirty = value;
+                _contacts.Dirty = value;
+                _contactsXml.Dirty = value;
+                _dateUtc.Dirty = value;
+                _daysToComplete.Dirty = value;
+                _daysToCompleteFromSetting.Dirty = value;
+                _expectedDate.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isRequiredIndicator.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _milestoneTaskLogDateUtc.Dirty = value;
+                _priority.Dirty = value;
+                _stage.Dirty = value;
+                _systemId.Dirty = value;
+                _taskDescription.Dirty = value;
+                _taskGuid.Dirty = value;
+                _taskName.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public MilestoneTaskLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfeLien : IClean
+    public sealed partial class GfeLien : IDirty
     {
         private Value<decimal?> _amountOwing;
         public decimal? AmountOwing { get { return _amountOwing; } set { _amountOwing = value; } }
@@ -20,39 +20,34 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<string> _priority;
         public string Priority { get { return _priority; } set { _priority = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amountOwing.Clean
-                    && _gfeLienIndex.Clean
-                    && _gfeLienType.Clean
-                    && _holderName.Clean
-                    && _id.Clean
-                    && _priority.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amountOwing.Dirty
+                    || _gfeLienIndex.Dirty
+                    || _gfeLienType.Dirty
+                    || _holderName.Dirty
+                    || _id.Dirty
+                    || _priority.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amountOwing = _amountOwing; amountOwing.Clean = value; _amountOwing = amountOwing;
-                var gfeLienIndex = _gfeLienIndex; gfeLienIndex.Clean = value; _gfeLienIndex = gfeLienIndex;
-                var gfeLienType = _gfeLienType; gfeLienType.Clean = value; _gfeLienType = gfeLienType;
-                var holderName = _holderName; holderName.Clean = value; _holderName = holderName;
-                var id = _id; id.Clean = value; _id = id;
-                var priority = _priority; priority.Clean = value; _priority = priority;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amountOwing.Dirty = value;
+                _gfeLienIndex.Dirty = value;
+                _gfeLienType.Dirty = value;
+                _holderName.Dirty = value;
+                _id.Dirty = value;
+                _priority.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public GfeLien()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

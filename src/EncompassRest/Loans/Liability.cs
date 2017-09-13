@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Liability : IClean
+    public sealed partial class Liability : IDirty
     {
         private Value<string> _accountIdentifier;
         public string AccountIdentifier { get { return _accountIdentifier; } set { _accountIdentifier = value; } }
@@ -122,141 +122,136 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalanceAmount { get { return _unpaidBalanceAmount; } set { _unpaidBalanceAmount = value; } }
         private Value<int?> _volIndex;
         public int? VolIndex { get { return _volIndex; } set { _volIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountIdentifier.Clean
-                    && _accountIndicator.Clean
-                    && _attention.Clean
-                    && _date.Clean
-                    && _description.Clean
-                    && _descriptionOfPurpose.Clean
-                    && _entityDeleted.Clean
-                    && _exclusionIndicator.Clean
-                    && _holderAddressCity.Clean
-                    && _holderAddressPostalCode.Clean
-                    && _holderAddressState.Clean
-                    && _holderAddressStreetLine1.Clean
-                    && _holderComments.Clean
-                    && _holderEmail.Clean
-                    && _holderFax.Clean
-                    && _holderName.Clean
-                    && _holderPhone.Clean
-                    && _id.Clean
-                    && _isDebtNotSecuredToSubjectPropertyIndicator.Clean
-                    && _lates12Month120Day.Clean
-                    && _lates12Month150Day.Clean
-                    && _lates12Month30Day.Clean
-                    && _lates12Month60Day.Clean
-                    && _lates12Month90Day.Clean
-                    && _lates24Month120Day.Clean
-                    && _lates24Month150Day.Clean
-                    && _lates24Month30Day.Clean
-                    && _lates24Month60Day.Clean
-                    && _lates24Month90Day.Clean
-                    && _lates25Month120Day.Clean
-                    && _lates25Month150Day.Clean
-                    && _lates25Month30Day.Clean
-                    && _lates25Month60Day.Clean
-                    && _lates25Month90Day.Clean
-                    && _liabilityIndex.Clean
-                    && _liabilityType.Clean
-                    && _monthlyPaymentAmount.Clean
-                    && _monthsToExclude.Clean
-                    && _nameInAccount.Clean
-                    && _noLinkToDocTrackIndicator.Clean
-                    && _owner.Clean
-                    && _payoffIncludedIndicator.Clean
-                    && _payoffStatusIndicator.Clean
-                    && _prepaymentPenaltyAmount.Clean
-                    && _printAttachmentIndicator.Clean
-                    && _printUserNameIndicator.Clean
-                    && _remainingTermMonths.Clean
-                    && _reoId.Clean
-                    && _requestId.Clean
-                    && _subjectLoanResubordinationIndicator.Clean
-                    && _title.Clean
-                    && _titleFax.Clean
-                    && _titlePhone.Clean
-                    && _toBePaidOffAmount.Clean
-                    && _uCDPayoffType.Clean
-                    && _unpaidBalanceAmount.Clean
-                    && _volIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountIdentifier.Dirty
+                    || _accountIndicator.Dirty
+                    || _attention.Dirty
+                    || _date.Dirty
+                    || _description.Dirty
+                    || _descriptionOfPurpose.Dirty
+                    || _entityDeleted.Dirty
+                    || _exclusionIndicator.Dirty
+                    || _holderAddressCity.Dirty
+                    || _holderAddressPostalCode.Dirty
+                    || _holderAddressState.Dirty
+                    || _holderAddressStreetLine1.Dirty
+                    || _holderComments.Dirty
+                    || _holderEmail.Dirty
+                    || _holderFax.Dirty
+                    || _holderName.Dirty
+                    || _holderPhone.Dirty
+                    || _id.Dirty
+                    || _isDebtNotSecuredToSubjectPropertyIndicator.Dirty
+                    || _lates12Month120Day.Dirty
+                    || _lates12Month150Day.Dirty
+                    || _lates12Month30Day.Dirty
+                    || _lates12Month60Day.Dirty
+                    || _lates12Month90Day.Dirty
+                    || _lates24Month120Day.Dirty
+                    || _lates24Month150Day.Dirty
+                    || _lates24Month30Day.Dirty
+                    || _lates24Month60Day.Dirty
+                    || _lates24Month90Day.Dirty
+                    || _lates25Month120Day.Dirty
+                    || _lates25Month150Day.Dirty
+                    || _lates25Month30Day.Dirty
+                    || _lates25Month60Day.Dirty
+                    || _lates25Month90Day.Dirty
+                    || _liabilityIndex.Dirty
+                    || _liabilityType.Dirty
+                    || _monthlyPaymentAmount.Dirty
+                    || _monthsToExclude.Dirty
+                    || _nameInAccount.Dirty
+                    || _noLinkToDocTrackIndicator.Dirty
+                    || _owner.Dirty
+                    || _payoffIncludedIndicator.Dirty
+                    || _payoffStatusIndicator.Dirty
+                    || _prepaymentPenaltyAmount.Dirty
+                    || _printAttachmentIndicator.Dirty
+                    || _printUserNameIndicator.Dirty
+                    || _remainingTermMonths.Dirty
+                    || _reoId.Dirty
+                    || _requestId.Dirty
+                    || _subjectLoanResubordinationIndicator.Dirty
+                    || _title.Dirty
+                    || _titleFax.Dirty
+                    || _titlePhone.Dirty
+                    || _toBePaidOffAmount.Dirty
+                    || _uCDPayoffType.Dirty
+                    || _unpaidBalanceAmount.Dirty
+                    || _volIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountIdentifier = _accountIdentifier; accountIdentifier.Clean = value; _accountIdentifier = accountIdentifier;
-                var accountIndicator = _accountIndicator; accountIndicator.Clean = value; _accountIndicator = accountIndicator;
-                var attention = _attention; attention.Clean = value; _attention = attention;
-                var date = _date; date.Clean = value; _date = date;
-                var description = _description; description.Clean = value; _description = description;
-                var descriptionOfPurpose = _descriptionOfPurpose; descriptionOfPurpose.Clean = value; _descriptionOfPurpose = descriptionOfPurpose;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var exclusionIndicator = _exclusionIndicator; exclusionIndicator.Clean = value; _exclusionIndicator = exclusionIndicator;
-                var holderAddressCity = _holderAddressCity; holderAddressCity.Clean = value; _holderAddressCity = holderAddressCity;
-                var holderAddressPostalCode = _holderAddressPostalCode; holderAddressPostalCode.Clean = value; _holderAddressPostalCode = holderAddressPostalCode;
-                var holderAddressState = _holderAddressState; holderAddressState.Clean = value; _holderAddressState = holderAddressState;
-                var holderAddressStreetLine1 = _holderAddressStreetLine1; holderAddressStreetLine1.Clean = value; _holderAddressStreetLine1 = holderAddressStreetLine1;
-                var holderComments = _holderComments; holderComments.Clean = value; _holderComments = holderComments;
-                var holderEmail = _holderEmail; holderEmail.Clean = value; _holderEmail = holderEmail;
-                var holderFax = _holderFax; holderFax.Clean = value; _holderFax = holderFax;
-                var holderName = _holderName; holderName.Clean = value; _holderName = holderName;
-                var holderPhone = _holderPhone; holderPhone.Clean = value; _holderPhone = holderPhone;
-                var id = _id; id.Clean = value; _id = id;
-                var isDebtNotSecuredToSubjectPropertyIndicator = _isDebtNotSecuredToSubjectPropertyIndicator; isDebtNotSecuredToSubjectPropertyIndicator.Clean = value; _isDebtNotSecuredToSubjectPropertyIndicator = isDebtNotSecuredToSubjectPropertyIndicator;
-                var lates12Month120Day = _lates12Month120Day; lates12Month120Day.Clean = value; _lates12Month120Day = lates12Month120Day;
-                var lates12Month150Day = _lates12Month150Day; lates12Month150Day.Clean = value; _lates12Month150Day = lates12Month150Day;
-                var lates12Month30Day = _lates12Month30Day; lates12Month30Day.Clean = value; _lates12Month30Day = lates12Month30Day;
-                var lates12Month60Day = _lates12Month60Day; lates12Month60Day.Clean = value; _lates12Month60Day = lates12Month60Day;
-                var lates12Month90Day = _lates12Month90Day; lates12Month90Day.Clean = value; _lates12Month90Day = lates12Month90Day;
-                var lates24Month120Day = _lates24Month120Day; lates24Month120Day.Clean = value; _lates24Month120Day = lates24Month120Day;
-                var lates24Month150Day = _lates24Month150Day; lates24Month150Day.Clean = value; _lates24Month150Day = lates24Month150Day;
-                var lates24Month30Day = _lates24Month30Day; lates24Month30Day.Clean = value; _lates24Month30Day = lates24Month30Day;
-                var lates24Month60Day = _lates24Month60Day; lates24Month60Day.Clean = value; _lates24Month60Day = lates24Month60Day;
-                var lates24Month90Day = _lates24Month90Day; lates24Month90Day.Clean = value; _lates24Month90Day = lates24Month90Day;
-                var lates25Month120Day = _lates25Month120Day; lates25Month120Day.Clean = value; _lates25Month120Day = lates25Month120Day;
-                var lates25Month150Day = _lates25Month150Day; lates25Month150Day.Clean = value; _lates25Month150Day = lates25Month150Day;
-                var lates25Month30Day = _lates25Month30Day; lates25Month30Day.Clean = value; _lates25Month30Day = lates25Month30Day;
-                var lates25Month60Day = _lates25Month60Day; lates25Month60Day.Clean = value; _lates25Month60Day = lates25Month60Day;
-                var lates25Month90Day = _lates25Month90Day; lates25Month90Day.Clean = value; _lates25Month90Day = lates25Month90Day;
-                var liabilityIndex = _liabilityIndex; liabilityIndex.Clean = value; _liabilityIndex = liabilityIndex;
-                var liabilityType = _liabilityType; liabilityType.Clean = value; _liabilityType = liabilityType;
-                var monthlyPaymentAmount = _monthlyPaymentAmount; monthlyPaymentAmount.Clean = value; _monthlyPaymentAmount = monthlyPaymentAmount;
-                var monthsToExclude = _monthsToExclude; monthsToExclude.Clean = value; _monthsToExclude = monthsToExclude;
-                var nameInAccount = _nameInAccount; nameInAccount.Clean = value; _nameInAccount = nameInAccount;
-                var noLinkToDocTrackIndicator = _noLinkToDocTrackIndicator; noLinkToDocTrackIndicator.Clean = value; _noLinkToDocTrackIndicator = noLinkToDocTrackIndicator;
-                var owner = _owner; owner.Clean = value; _owner = owner;
-                var payoffIncludedIndicator = _payoffIncludedIndicator; payoffIncludedIndicator.Clean = value; _payoffIncludedIndicator = payoffIncludedIndicator;
-                var payoffStatusIndicator = _payoffStatusIndicator; payoffStatusIndicator.Clean = value; _payoffStatusIndicator = payoffStatusIndicator;
-                var prepaymentPenaltyAmount = _prepaymentPenaltyAmount; prepaymentPenaltyAmount.Clean = value; _prepaymentPenaltyAmount = prepaymentPenaltyAmount;
-                var printAttachmentIndicator = _printAttachmentIndicator; printAttachmentIndicator.Clean = value; _printAttachmentIndicator = printAttachmentIndicator;
-                var printUserNameIndicator = _printUserNameIndicator; printUserNameIndicator.Clean = value; _printUserNameIndicator = printUserNameIndicator;
-                var remainingTermMonths = _remainingTermMonths; remainingTermMonths.Clean = value; _remainingTermMonths = remainingTermMonths;
-                var reoId = _reoId; reoId.Clean = value; _reoId = reoId;
-                var requestId = _requestId; requestId.Clean = value; _requestId = requestId;
-                var subjectLoanResubordinationIndicator = _subjectLoanResubordinationIndicator; subjectLoanResubordinationIndicator.Clean = value; _subjectLoanResubordinationIndicator = subjectLoanResubordinationIndicator;
-                var title = _title; title.Clean = value; _title = title;
-                var titleFax = _titleFax; titleFax.Clean = value; _titleFax = titleFax;
-                var titlePhone = _titlePhone; titlePhone.Clean = value; _titlePhone = titlePhone;
-                var toBePaidOffAmount = _toBePaidOffAmount; toBePaidOffAmount.Clean = value; _toBePaidOffAmount = toBePaidOffAmount;
-                var uCDPayoffType = _uCDPayoffType; uCDPayoffType.Clean = value; _uCDPayoffType = uCDPayoffType;
-                var unpaidBalanceAmount = _unpaidBalanceAmount; unpaidBalanceAmount.Clean = value; _unpaidBalanceAmount = unpaidBalanceAmount;
-                var volIndex = _volIndex; volIndex.Clean = value; _volIndex = volIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountIdentifier.Dirty = value;
+                _accountIndicator.Dirty = value;
+                _attention.Dirty = value;
+                _date.Dirty = value;
+                _description.Dirty = value;
+                _descriptionOfPurpose.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _exclusionIndicator.Dirty = value;
+                _holderAddressCity.Dirty = value;
+                _holderAddressPostalCode.Dirty = value;
+                _holderAddressState.Dirty = value;
+                _holderAddressStreetLine1.Dirty = value;
+                _holderComments.Dirty = value;
+                _holderEmail.Dirty = value;
+                _holderFax.Dirty = value;
+                _holderName.Dirty = value;
+                _holderPhone.Dirty = value;
+                _id.Dirty = value;
+                _isDebtNotSecuredToSubjectPropertyIndicator.Dirty = value;
+                _lates12Month120Day.Dirty = value;
+                _lates12Month150Day.Dirty = value;
+                _lates12Month30Day.Dirty = value;
+                _lates12Month60Day.Dirty = value;
+                _lates12Month90Day.Dirty = value;
+                _lates24Month120Day.Dirty = value;
+                _lates24Month150Day.Dirty = value;
+                _lates24Month30Day.Dirty = value;
+                _lates24Month60Day.Dirty = value;
+                _lates24Month90Day.Dirty = value;
+                _lates25Month120Day.Dirty = value;
+                _lates25Month150Day.Dirty = value;
+                _lates25Month30Day.Dirty = value;
+                _lates25Month60Day.Dirty = value;
+                _lates25Month90Day.Dirty = value;
+                _liabilityIndex.Dirty = value;
+                _liabilityType.Dirty = value;
+                _monthlyPaymentAmount.Dirty = value;
+                _monthsToExclude.Dirty = value;
+                _nameInAccount.Dirty = value;
+                _noLinkToDocTrackIndicator.Dirty = value;
+                _owner.Dirty = value;
+                _payoffIncludedIndicator.Dirty = value;
+                _payoffStatusIndicator.Dirty = value;
+                _prepaymentPenaltyAmount.Dirty = value;
+                _printAttachmentIndicator.Dirty = value;
+                _printUserNameIndicator.Dirty = value;
+                _remainingTermMonths.Dirty = value;
+                _reoId.Dirty = value;
+                _requestId.Dirty = value;
+                _subjectLoanResubordinationIndicator.Dirty = value;
+                _title.Dirty = value;
+                _titleFax.Dirty = value;
+                _titlePhone.Dirty = value;
+                _toBePaidOffAmount.Dirty = value;
+                _uCDPayoffType.Dirty = value;
+                _unpaidBalanceAmount.Dirty = value;
+                _volIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Liability()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

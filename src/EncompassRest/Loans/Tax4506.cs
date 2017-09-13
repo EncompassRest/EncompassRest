@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Tax4506 : IClean
+    public sealed partial class Tax4506 : IDirty
     {
         private Value<bool?> _accountTranscript;
         public bool? AccountTranscript { get { return _accountTranscript; } set { _accountTranscript = value; } }
@@ -128,147 +128,142 @@ namespace EncompassRest.Loans
         public bool? VerificationOfNonfiling { get { return _verificationOfNonfiling; } set { _verificationOfNonfiling = value; } }
         private Value<string> _zip;
         public string Zip { get { return _zip; } set { _zip = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountTranscript.Clean
-                    && _address.Clean
-                    && _city.Clean
-                    && _costForEachPeriod.Clean
-                    && _currentFirst.Clean
-                    && _currentLast.Clean
-                    && _first.Clean
-                    && _formsSeriesTranscript.Clean
-                    && _historyId.Clean
-                    && _historyIndicator.Clean
-                    && _id.Clean
-                    && _ifTaxRecordNotFound.Clean
-                    && _last.Clean
-                    && _lastUpdatedDate.Clean
-                    && _lastUpdatedHistory.Clean
-                    && _lastUpdatedTime.Clean
-                    && _notifiedIrsIdentityTheftIndicator.Clean
-                    && _numberOfPeriods.Clean
-                    && _person.Clean
-                    && _recordOfAccount.Clean
-                    && _requestorPhoneNumber.Clean
-                    && _requestorTitle.Clean
-                    && _requestYear1.Clean
-                    && _requestYear2.Clean
-                    && _requestYear3.Clean
-                    && _requestYear4.Clean
-                    && _requestYear5.Clean
-                    && _requestYear6.Clean
-                    && _requestYear7.Clean
-                    && _requestYear8.Clean
-                    && _returnAddress.Clean
-                    && _returnCity.Clean
-                    && _returnState.Clean
-                    && _returnTranscript.Clean
-                    && _returnZip.Clean
-                    && _selectedRecordNumber.Clean
-                    && _sendAddress.Clean
-                    && _sendCity.Clean
-                    && _sendFirst.Clean
-                    && _sendLast.Clean
-                    && _sendPhone.Clean
-                    && _sendState.Clean
-                    && _sendZip.Clean
-                    && _signatoryAttestation.Clean
-                    && _signatoryAttestationT.Clean
-                    && _spouseFirst.Clean
-                    && _spouseLast.Clean
-                    && _spouseSSN.Clean
-                    && _spouseUseEIN.Clean
-                    && _sSN.Clean
-                    && _state.Clean
-                    && _tax4506Index.Clean
-                    && _tax4506TIndicator.Clean
-                    && _taxFormNumber.Clean
-                    && _theseCopiesMustBeCertified.Clean
-                    && _totalCost.Clean
-                    && _useEIN.Clean
-                    && _useWellsFargoRules.Clean
-                    && _verificationOfNonfiling.Clean
-                    && _zip.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountTranscript.Dirty
+                    || _address.Dirty
+                    || _city.Dirty
+                    || _costForEachPeriod.Dirty
+                    || _currentFirst.Dirty
+                    || _currentLast.Dirty
+                    || _first.Dirty
+                    || _formsSeriesTranscript.Dirty
+                    || _historyId.Dirty
+                    || _historyIndicator.Dirty
+                    || _id.Dirty
+                    || _ifTaxRecordNotFound.Dirty
+                    || _last.Dirty
+                    || _lastUpdatedDate.Dirty
+                    || _lastUpdatedHistory.Dirty
+                    || _lastUpdatedTime.Dirty
+                    || _notifiedIrsIdentityTheftIndicator.Dirty
+                    || _numberOfPeriods.Dirty
+                    || _person.Dirty
+                    || _recordOfAccount.Dirty
+                    || _requestorPhoneNumber.Dirty
+                    || _requestorTitle.Dirty
+                    || _requestYear1.Dirty
+                    || _requestYear2.Dirty
+                    || _requestYear3.Dirty
+                    || _requestYear4.Dirty
+                    || _requestYear5.Dirty
+                    || _requestYear6.Dirty
+                    || _requestYear7.Dirty
+                    || _requestYear8.Dirty
+                    || _returnAddress.Dirty
+                    || _returnCity.Dirty
+                    || _returnState.Dirty
+                    || _returnTranscript.Dirty
+                    || _returnZip.Dirty
+                    || _selectedRecordNumber.Dirty
+                    || _sendAddress.Dirty
+                    || _sendCity.Dirty
+                    || _sendFirst.Dirty
+                    || _sendLast.Dirty
+                    || _sendPhone.Dirty
+                    || _sendState.Dirty
+                    || _sendZip.Dirty
+                    || _signatoryAttestation.Dirty
+                    || _signatoryAttestationT.Dirty
+                    || _spouseFirst.Dirty
+                    || _spouseLast.Dirty
+                    || _spouseSSN.Dirty
+                    || _spouseUseEIN.Dirty
+                    || _sSN.Dirty
+                    || _state.Dirty
+                    || _tax4506Index.Dirty
+                    || _tax4506TIndicator.Dirty
+                    || _taxFormNumber.Dirty
+                    || _theseCopiesMustBeCertified.Dirty
+                    || _totalCost.Dirty
+                    || _useEIN.Dirty
+                    || _useWellsFargoRules.Dirty
+                    || _verificationOfNonfiling.Dirty
+                    || _zip.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountTranscript = _accountTranscript; accountTranscript.Clean = value; _accountTranscript = accountTranscript;
-                var address = _address; address.Clean = value; _address = address;
-                var city = _city; city.Clean = value; _city = city;
-                var costForEachPeriod = _costForEachPeriod; costForEachPeriod.Clean = value; _costForEachPeriod = costForEachPeriod;
-                var currentFirst = _currentFirst; currentFirst.Clean = value; _currentFirst = currentFirst;
-                var currentLast = _currentLast; currentLast.Clean = value; _currentLast = currentLast;
-                var first = _first; first.Clean = value; _first = first;
-                var formsSeriesTranscript = _formsSeriesTranscript; formsSeriesTranscript.Clean = value; _formsSeriesTranscript = formsSeriesTranscript;
-                var historyId = _historyId; historyId.Clean = value; _historyId = historyId;
-                var historyIndicator = _historyIndicator; historyIndicator.Clean = value; _historyIndicator = historyIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var ifTaxRecordNotFound = _ifTaxRecordNotFound; ifTaxRecordNotFound.Clean = value; _ifTaxRecordNotFound = ifTaxRecordNotFound;
-                var last = _last; last.Clean = value; _last = last;
-                var lastUpdatedDate = _lastUpdatedDate; lastUpdatedDate.Clean = value; _lastUpdatedDate = lastUpdatedDate;
-                var lastUpdatedHistory = _lastUpdatedHistory; lastUpdatedHistory.Clean = value; _lastUpdatedHistory = lastUpdatedHistory;
-                var lastUpdatedTime = _lastUpdatedTime; lastUpdatedTime.Clean = value; _lastUpdatedTime = lastUpdatedTime;
-                var notifiedIrsIdentityTheftIndicator = _notifiedIrsIdentityTheftIndicator; notifiedIrsIdentityTheftIndicator.Clean = value; _notifiedIrsIdentityTheftIndicator = notifiedIrsIdentityTheftIndicator;
-                var numberOfPeriods = _numberOfPeriods; numberOfPeriods.Clean = value; _numberOfPeriods = numberOfPeriods;
-                var person = _person; person.Clean = value; _person = person;
-                var recordOfAccount = _recordOfAccount; recordOfAccount.Clean = value; _recordOfAccount = recordOfAccount;
-                var requestorPhoneNumber = _requestorPhoneNumber; requestorPhoneNumber.Clean = value; _requestorPhoneNumber = requestorPhoneNumber;
-                var requestorTitle = _requestorTitle; requestorTitle.Clean = value; _requestorTitle = requestorTitle;
-                var requestYear1 = _requestYear1; requestYear1.Clean = value; _requestYear1 = requestYear1;
-                var requestYear2 = _requestYear2; requestYear2.Clean = value; _requestYear2 = requestYear2;
-                var requestYear3 = _requestYear3; requestYear3.Clean = value; _requestYear3 = requestYear3;
-                var requestYear4 = _requestYear4; requestYear4.Clean = value; _requestYear4 = requestYear4;
-                var requestYear5 = _requestYear5; requestYear5.Clean = value; _requestYear5 = requestYear5;
-                var requestYear6 = _requestYear6; requestYear6.Clean = value; _requestYear6 = requestYear6;
-                var requestYear7 = _requestYear7; requestYear7.Clean = value; _requestYear7 = requestYear7;
-                var requestYear8 = _requestYear8; requestYear8.Clean = value; _requestYear8 = requestYear8;
-                var returnAddress = _returnAddress; returnAddress.Clean = value; _returnAddress = returnAddress;
-                var returnCity = _returnCity; returnCity.Clean = value; _returnCity = returnCity;
-                var returnState = _returnState; returnState.Clean = value; _returnState = returnState;
-                var returnTranscript = _returnTranscript; returnTranscript.Clean = value; _returnTranscript = returnTranscript;
-                var returnZip = _returnZip; returnZip.Clean = value; _returnZip = returnZip;
-                var selectedRecordNumber = _selectedRecordNumber; selectedRecordNumber.Clean = value; _selectedRecordNumber = selectedRecordNumber;
-                var sendAddress = _sendAddress; sendAddress.Clean = value; _sendAddress = sendAddress;
-                var sendCity = _sendCity; sendCity.Clean = value; _sendCity = sendCity;
-                var sendFirst = _sendFirst; sendFirst.Clean = value; _sendFirst = sendFirst;
-                var sendLast = _sendLast; sendLast.Clean = value; _sendLast = sendLast;
-                var sendPhone = _sendPhone; sendPhone.Clean = value; _sendPhone = sendPhone;
-                var sendState = _sendState; sendState.Clean = value; _sendState = sendState;
-                var sendZip = _sendZip; sendZip.Clean = value; _sendZip = sendZip;
-                var signatoryAttestation = _signatoryAttestation; signatoryAttestation.Clean = value; _signatoryAttestation = signatoryAttestation;
-                var signatoryAttestationT = _signatoryAttestationT; signatoryAttestationT.Clean = value; _signatoryAttestationT = signatoryAttestationT;
-                var spouseFirst = _spouseFirst; spouseFirst.Clean = value; _spouseFirst = spouseFirst;
-                var spouseLast = _spouseLast; spouseLast.Clean = value; _spouseLast = spouseLast;
-                var spouseSSN = _spouseSSN; spouseSSN.Clean = value; _spouseSSN = spouseSSN;
-                var spouseUseEIN = _spouseUseEIN; spouseUseEIN.Clean = value; _spouseUseEIN = spouseUseEIN;
-                var sSN = _sSN; sSN.Clean = value; _sSN = sSN;
-                var state = _state; state.Clean = value; _state = state;
-                var tax4506Index = _tax4506Index; tax4506Index.Clean = value; _tax4506Index = tax4506Index;
-                var tax4506TIndicator = _tax4506TIndicator; tax4506TIndicator.Clean = value; _tax4506TIndicator = tax4506TIndicator;
-                var taxFormNumber = _taxFormNumber; taxFormNumber.Clean = value; _taxFormNumber = taxFormNumber;
-                var theseCopiesMustBeCertified = _theseCopiesMustBeCertified; theseCopiesMustBeCertified.Clean = value; _theseCopiesMustBeCertified = theseCopiesMustBeCertified;
-                var totalCost = _totalCost; totalCost.Clean = value; _totalCost = totalCost;
-                var useEIN = _useEIN; useEIN.Clean = value; _useEIN = useEIN;
-                var useWellsFargoRules = _useWellsFargoRules; useWellsFargoRules.Clean = value; _useWellsFargoRules = useWellsFargoRules;
-                var verificationOfNonfiling = _verificationOfNonfiling; verificationOfNonfiling.Clean = value; _verificationOfNonfiling = verificationOfNonfiling;
-                var zip = _zip; zip.Clean = value; _zip = zip;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountTranscript.Dirty = value;
+                _address.Dirty = value;
+                _city.Dirty = value;
+                _costForEachPeriod.Dirty = value;
+                _currentFirst.Dirty = value;
+                _currentLast.Dirty = value;
+                _first.Dirty = value;
+                _formsSeriesTranscript.Dirty = value;
+                _historyId.Dirty = value;
+                _historyIndicator.Dirty = value;
+                _id.Dirty = value;
+                _ifTaxRecordNotFound.Dirty = value;
+                _last.Dirty = value;
+                _lastUpdatedDate.Dirty = value;
+                _lastUpdatedHistory.Dirty = value;
+                _lastUpdatedTime.Dirty = value;
+                _notifiedIrsIdentityTheftIndicator.Dirty = value;
+                _numberOfPeriods.Dirty = value;
+                _person.Dirty = value;
+                _recordOfAccount.Dirty = value;
+                _requestorPhoneNumber.Dirty = value;
+                _requestorTitle.Dirty = value;
+                _requestYear1.Dirty = value;
+                _requestYear2.Dirty = value;
+                _requestYear3.Dirty = value;
+                _requestYear4.Dirty = value;
+                _requestYear5.Dirty = value;
+                _requestYear6.Dirty = value;
+                _requestYear7.Dirty = value;
+                _requestYear8.Dirty = value;
+                _returnAddress.Dirty = value;
+                _returnCity.Dirty = value;
+                _returnState.Dirty = value;
+                _returnTranscript.Dirty = value;
+                _returnZip.Dirty = value;
+                _selectedRecordNumber.Dirty = value;
+                _sendAddress.Dirty = value;
+                _sendCity.Dirty = value;
+                _sendFirst.Dirty = value;
+                _sendLast.Dirty = value;
+                _sendPhone.Dirty = value;
+                _sendState.Dirty = value;
+                _sendZip.Dirty = value;
+                _signatoryAttestation.Dirty = value;
+                _signatoryAttestationT.Dirty = value;
+                _spouseFirst.Dirty = value;
+                _spouseLast.Dirty = value;
+                _spouseSSN.Dirty = value;
+                _spouseUseEIN.Dirty = value;
+                _sSN.Dirty = value;
+                _state.Dirty = value;
+                _tax4506Index.Dirty = value;
+                _tax4506TIndicator.Dirty = value;
+                _taxFormNumber.Dirty = value;
+                _theseCopiesMustBeCertified.Dirty = value;
+                _totalCost.Dirty = value;
+                _useEIN.Dirty = value;
+                _useWellsFargoRules.Dirty = value;
+                _verificationOfNonfiling.Dirty = value;
+                _zip.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Tax4506()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

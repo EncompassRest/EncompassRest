@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure1 : IClean
+    public sealed partial class ClosingDisclosure1 : IDirty
     {
         private Value<DateTime?> _cDDateIssued;
         public DateTime? CDDateIssued { get { return _cDDateIssued; } set { _cDDateIssued = value; } }
@@ -220,239 +220,234 @@ namespace EncompassRest.Loans
         public string SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
         private Value<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _cDDateIssued.Clean
-                    && _changedCircumstance.Clean
-                    && _changedCircumstanceFlag.Clean
-                    && _changesReceivedDate.Clean
-                    && _comments.Clean
-                    && _disclosureBy.Clean
-                    && _disclosureComments.Clean
-                    && _disclosureLastSentDate.Clean
-                    && _disclosureReceivedDate.Clean
-                    && _disclosureSentMethod.Clean
-                    && _documentGUIDFinalExecutedCopyofAlternateCD.Clean
-                    && _documentGUIDFinalExecutedCopyofSellerCD.Clean
-                    && _documentGUIDFinalExecutedCopyofStandardCD.Clean
-                    && _estimatedTaxesInsuranceAssessments.Clean
-                    && _id.Clean
-                    && _inEscrowHomeownerInsurance.Clean
-                    && _inEscrowOther.Clean
-                    && _inEscrowPropertyTaxes.Clean
-                    && _initialCDReceivedDate.Clean
-                    && _mICReference.Clean
-                    && _notNaturalPersonFlag.Clean
-                    && _pPC1EstimatedEscrowAmount.Clean
-                    && _pPC1EstimatedEscrowAmountUI.Clean
-                    && _pPC1InterestOnly.Clean
-                    && _pPC1MaximumMonthlyPayment.Clean
-                    && _pPC1MaximumMonthlyPaymentUI.Clean
-                    && _pPC1MaximumPIPayment.Clean
-                    && _pPC1MaximumPIPaymentUI.Clean
-                    && _pPC1MIAmount.Clean
-                    && _pPC1MIAmountUI.Clean
-                    && _pPC1MinimumMonthlyPayment.Clean
-                    && _pPC1MinimumMonthlyPaymentUI.Clean
-                    && _pPC1MinimumPIPayment.Clean
-                    && _pPC1MinimumPIPaymentUI.Clean
-                    && _pPC1Year.Clean
-                    && _pPC2EstimatedEscrowAmount.Clean
-                    && _pPC2EstimatedEscrowAmountUI.Clean
-                    && _pPC2InterestOnly.Clean
-                    && _pPC2MaximumMonthlyPayment.Clean
-                    && _pPC2MaximumMonthlyPaymentUI.Clean
-                    && _pPC2MaximumPIPayment.Clean
-                    && _pPC2MaximumPIPaymentUI.Clean
-                    && _pPC2MIAmount.Clean
-                    && _pPC2MIAmountUI.Clean
-                    && _pPC2MinimumMonthlyPayment.Clean
-                    && _pPC2MinimumMonthlyPaymentUI.Clean
-                    && _pPC2MinimumPIPayment.Clean
-                    && _pPC2MinimumPIPaymentUI.Clean
-                    && _pPC2YearFrom.Clean
-                    && _pPC2YearTo.Clean
-                    && _pPC3EstimatedEscrowAmount.Clean
-                    && _pPC3EstimatedEscrowAmountUI.Clean
-                    && _pPC3InterestOnly.Clean
-                    && _pPC3MaximumMonthlyPayment.Clean
-                    && _pPC3MaximumMonthlyPaymentUI.Clean
-                    && _pPC3MaximumPIPayment.Clean
-                    && _pPC3MaximumPIPaymentUI.Clean
-                    && _pPC3MIAmount.Clean
-                    && _pPC3MIAmountUI.Clean
-                    && _pPC3MinimumMonthlyPayment.Clean
-                    && _pPC3MinimumMonthlyPaymentUI.Clean
-                    && _pPC3MinimumPIPayment.Clean
-                    && _pPC3MinimumPIPaymentUI.Clean
-                    && _pPC3YearFrom.Clean
-                    && _pPC3YearTo.Clean
-                    && _pPC4EstimatedEscrowAmount.Clean
-                    && _pPC4EstimatedEscrowAmountUI.Clean
-                    && _pPC4InterestOnly.Clean
-                    && _pPC4MaximumMonthlyPayment.Clean
-                    && _pPC4MaximumMonthlyPaymentUI.Clean
-                    && _pPC4MaximumPIPayment.Clean
-                    && _pPC4MaximumPIPaymentUI.Clean
-                    && _pPC4MIAmount.Clean
-                    && _pPC4MIAmountUI.Clean
-                    && _pPC4MinimumMonthlyPayment.Clean
-                    && _pPC4MinimumMonthlyPaymentUI.Clean
-                    && _pPC4MinimumPIPayment.Clean
-                    && _pPC4MinimumPIPaymentUI.Clean
-                    && _pPC4YearFrom.Clean
-                    && _pPC4YearTo.Clean
-                    && _pPCEstimatedEscrowIndicator.Clean
-                    && _pPCMortgageInsuranceIndicator.Clean
-                    && _rangePaymentIndicatorC1.Clean
-                    && _rangePaymentIndicatorC2.Clean
-                    && _rangePaymentIndicatorC3.Clean
-                    && _rangePaymentIndicatorC4.Clean
-                    && _reasonAdvancedReview.Clean
-                    && _reasonChangedCircumstanceElg.Clean
-                    && _reasonChangedCircumstanceFlags.Clean
-                    && _reasonChangeInAPR.Clean
-                    && _reasonChangeInLoanProduct.Clean
-                    && _reasonChangeSettlementCharges.Clean
-                    && _reasonClericalErrorCorrection.Clean
-                    && _reasonInterestRatecharges.Clean
-                    && _reasonOther.Clean
-                    && _reasonOtherDescription.Clean
-                    && _reasonPrepaymentPenalty.Clean
-                    && _reasonRevisionsReqConsumer.Clean
-                    && _reasonToleranceCure.Clean
-                    && _revisedCDDueDate.Clean
-                    && _revisedCDReceivedDate.Clean
-                    && _sellerNames.Clean
-                    && _signatureTypeFinalExecutedCopyofAlternateCD.Clean
-                    && _signatureTypeFinalExecutedCopyofSellerCD.Clean
-                    && _signatureTypeFinalExecutedCopyofStandardCD.Clean
-                    && _totalCashToClose.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _cDDateIssued.Dirty
+                    || _changedCircumstance.Dirty
+                    || _changedCircumstanceFlag.Dirty
+                    || _changesReceivedDate.Dirty
+                    || _comments.Dirty
+                    || _disclosureBy.Dirty
+                    || _disclosureComments.Dirty
+                    || _disclosureLastSentDate.Dirty
+                    || _disclosureReceivedDate.Dirty
+                    || _disclosureSentMethod.Dirty
+                    || _documentGUIDFinalExecutedCopyofAlternateCD.Dirty
+                    || _documentGUIDFinalExecutedCopyofSellerCD.Dirty
+                    || _documentGUIDFinalExecutedCopyofStandardCD.Dirty
+                    || _estimatedTaxesInsuranceAssessments.Dirty
+                    || _id.Dirty
+                    || _inEscrowHomeownerInsurance.Dirty
+                    || _inEscrowOther.Dirty
+                    || _inEscrowPropertyTaxes.Dirty
+                    || _initialCDReceivedDate.Dirty
+                    || _mICReference.Dirty
+                    || _notNaturalPersonFlag.Dirty
+                    || _pPC1EstimatedEscrowAmount.Dirty
+                    || _pPC1EstimatedEscrowAmountUI.Dirty
+                    || _pPC1InterestOnly.Dirty
+                    || _pPC1MaximumMonthlyPayment.Dirty
+                    || _pPC1MaximumMonthlyPaymentUI.Dirty
+                    || _pPC1MaximumPIPayment.Dirty
+                    || _pPC1MaximumPIPaymentUI.Dirty
+                    || _pPC1MIAmount.Dirty
+                    || _pPC1MIAmountUI.Dirty
+                    || _pPC1MinimumMonthlyPayment.Dirty
+                    || _pPC1MinimumMonthlyPaymentUI.Dirty
+                    || _pPC1MinimumPIPayment.Dirty
+                    || _pPC1MinimumPIPaymentUI.Dirty
+                    || _pPC1Year.Dirty
+                    || _pPC2EstimatedEscrowAmount.Dirty
+                    || _pPC2EstimatedEscrowAmountUI.Dirty
+                    || _pPC2InterestOnly.Dirty
+                    || _pPC2MaximumMonthlyPayment.Dirty
+                    || _pPC2MaximumMonthlyPaymentUI.Dirty
+                    || _pPC2MaximumPIPayment.Dirty
+                    || _pPC2MaximumPIPaymentUI.Dirty
+                    || _pPC2MIAmount.Dirty
+                    || _pPC2MIAmountUI.Dirty
+                    || _pPC2MinimumMonthlyPayment.Dirty
+                    || _pPC2MinimumMonthlyPaymentUI.Dirty
+                    || _pPC2MinimumPIPayment.Dirty
+                    || _pPC2MinimumPIPaymentUI.Dirty
+                    || _pPC2YearFrom.Dirty
+                    || _pPC2YearTo.Dirty
+                    || _pPC3EstimatedEscrowAmount.Dirty
+                    || _pPC3EstimatedEscrowAmountUI.Dirty
+                    || _pPC3InterestOnly.Dirty
+                    || _pPC3MaximumMonthlyPayment.Dirty
+                    || _pPC3MaximumMonthlyPaymentUI.Dirty
+                    || _pPC3MaximumPIPayment.Dirty
+                    || _pPC3MaximumPIPaymentUI.Dirty
+                    || _pPC3MIAmount.Dirty
+                    || _pPC3MIAmountUI.Dirty
+                    || _pPC3MinimumMonthlyPayment.Dirty
+                    || _pPC3MinimumMonthlyPaymentUI.Dirty
+                    || _pPC3MinimumPIPayment.Dirty
+                    || _pPC3MinimumPIPaymentUI.Dirty
+                    || _pPC3YearFrom.Dirty
+                    || _pPC3YearTo.Dirty
+                    || _pPC4EstimatedEscrowAmount.Dirty
+                    || _pPC4EstimatedEscrowAmountUI.Dirty
+                    || _pPC4InterestOnly.Dirty
+                    || _pPC4MaximumMonthlyPayment.Dirty
+                    || _pPC4MaximumMonthlyPaymentUI.Dirty
+                    || _pPC4MaximumPIPayment.Dirty
+                    || _pPC4MaximumPIPaymentUI.Dirty
+                    || _pPC4MIAmount.Dirty
+                    || _pPC4MIAmountUI.Dirty
+                    || _pPC4MinimumMonthlyPayment.Dirty
+                    || _pPC4MinimumMonthlyPaymentUI.Dirty
+                    || _pPC4MinimumPIPayment.Dirty
+                    || _pPC4MinimumPIPaymentUI.Dirty
+                    || _pPC4YearFrom.Dirty
+                    || _pPC4YearTo.Dirty
+                    || _pPCEstimatedEscrowIndicator.Dirty
+                    || _pPCMortgageInsuranceIndicator.Dirty
+                    || _rangePaymentIndicatorC1.Dirty
+                    || _rangePaymentIndicatorC2.Dirty
+                    || _rangePaymentIndicatorC3.Dirty
+                    || _rangePaymentIndicatorC4.Dirty
+                    || _reasonAdvancedReview.Dirty
+                    || _reasonChangedCircumstanceElg.Dirty
+                    || _reasonChangedCircumstanceFlags.Dirty
+                    || _reasonChangeInAPR.Dirty
+                    || _reasonChangeInLoanProduct.Dirty
+                    || _reasonChangeSettlementCharges.Dirty
+                    || _reasonClericalErrorCorrection.Dirty
+                    || _reasonInterestRatecharges.Dirty
+                    || _reasonOther.Dirty
+                    || _reasonOtherDescription.Dirty
+                    || _reasonPrepaymentPenalty.Dirty
+                    || _reasonRevisionsReqConsumer.Dirty
+                    || _reasonToleranceCure.Dirty
+                    || _revisedCDDueDate.Dirty
+                    || _revisedCDReceivedDate.Dirty
+                    || _sellerNames.Dirty
+                    || _signatureTypeFinalExecutedCopyofAlternateCD.Dirty
+                    || _signatureTypeFinalExecutedCopyofSellerCD.Dirty
+                    || _signatureTypeFinalExecutedCopyofStandardCD.Dirty
+                    || _totalCashToClose.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var cDDateIssued = _cDDateIssued; cDDateIssued.Clean = value; _cDDateIssued = cDDateIssued;
-                var changedCircumstance = _changedCircumstance; changedCircumstance.Clean = value; _changedCircumstance = changedCircumstance;
-                var changedCircumstanceFlag = _changedCircumstanceFlag; changedCircumstanceFlag.Clean = value; _changedCircumstanceFlag = changedCircumstanceFlag;
-                var changesReceivedDate = _changesReceivedDate; changesReceivedDate.Clean = value; _changesReceivedDate = changesReceivedDate;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var disclosureBy = _disclosureBy; disclosureBy.Clean = value; _disclosureBy = disclosureBy;
-                var disclosureComments = _disclosureComments; disclosureComments.Clean = value; _disclosureComments = disclosureComments;
-                var disclosureLastSentDate = _disclosureLastSentDate; disclosureLastSentDate.Clean = value; _disclosureLastSentDate = disclosureLastSentDate;
-                var disclosureReceivedDate = _disclosureReceivedDate; disclosureReceivedDate.Clean = value; _disclosureReceivedDate = disclosureReceivedDate;
-                var disclosureSentMethod = _disclosureSentMethod; disclosureSentMethod.Clean = value; _disclosureSentMethod = disclosureSentMethod;
-                var documentGUIDFinalExecutedCopyofAlternateCD = _documentGUIDFinalExecutedCopyofAlternateCD; documentGUIDFinalExecutedCopyofAlternateCD.Clean = value; _documentGUIDFinalExecutedCopyofAlternateCD = documentGUIDFinalExecutedCopyofAlternateCD;
-                var documentGUIDFinalExecutedCopyofSellerCD = _documentGUIDFinalExecutedCopyofSellerCD; documentGUIDFinalExecutedCopyofSellerCD.Clean = value; _documentGUIDFinalExecutedCopyofSellerCD = documentGUIDFinalExecutedCopyofSellerCD;
-                var documentGUIDFinalExecutedCopyofStandardCD = _documentGUIDFinalExecutedCopyofStandardCD; documentGUIDFinalExecutedCopyofStandardCD.Clean = value; _documentGUIDFinalExecutedCopyofStandardCD = documentGUIDFinalExecutedCopyofStandardCD;
-                var estimatedTaxesInsuranceAssessments = _estimatedTaxesInsuranceAssessments; estimatedTaxesInsuranceAssessments.Clean = value; _estimatedTaxesInsuranceAssessments = estimatedTaxesInsuranceAssessments;
-                var id = _id; id.Clean = value; _id = id;
-                var inEscrowHomeownerInsurance = _inEscrowHomeownerInsurance; inEscrowHomeownerInsurance.Clean = value; _inEscrowHomeownerInsurance = inEscrowHomeownerInsurance;
-                var inEscrowOther = _inEscrowOther; inEscrowOther.Clean = value; _inEscrowOther = inEscrowOther;
-                var inEscrowPropertyTaxes = _inEscrowPropertyTaxes; inEscrowPropertyTaxes.Clean = value; _inEscrowPropertyTaxes = inEscrowPropertyTaxes;
-                var initialCDReceivedDate = _initialCDReceivedDate; initialCDReceivedDate.Clean = value; _initialCDReceivedDate = initialCDReceivedDate;
-                var mICReference = _mICReference; mICReference.Clean = value; _mICReference = mICReference;
-                var notNaturalPersonFlag = _notNaturalPersonFlag; notNaturalPersonFlag.Clean = value; _notNaturalPersonFlag = notNaturalPersonFlag;
-                var pPC1EstimatedEscrowAmount = _pPC1EstimatedEscrowAmount; pPC1EstimatedEscrowAmount.Clean = value; _pPC1EstimatedEscrowAmount = pPC1EstimatedEscrowAmount;
-                var pPC1EstimatedEscrowAmountUI = _pPC1EstimatedEscrowAmountUI; pPC1EstimatedEscrowAmountUI.Clean = value; _pPC1EstimatedEscrowAmountUI = pPC1EstimatedEscrowAmountUI;
-                var pPC1InterestOnly = _pPC1InterestOnly; pPC1InterestOnly.Clean = value; _pPC1InterestOnly = pPC1InterestOnly;
-                var pPC1MaximumMonthlyPayment = _pPC1MaximumMonthlyPayment; pPC1MaximumMonthlyPayment.Clean = value; _pPC1MaximumMonthlyPayment = pPC1MaximumMonthlyPayment;
-                var pPC1MaximumMonthlyPaymentUI = _pPC1MaximumMonthlyPaymentUI; pPC1MaximumMonthlyPaymentUI.Clean = value; _pPC1MaximumMonthlyPaymentUI = pPC1MaximumMonthlyPaymentUI;
-                var pPC1MaximumPIPayment = _pPC1MaximumPIPayment; pPC1MaximumPIPayment.Clean = value; _pPC1MaximumPIPayment = pPC1MaximumPIPayment;
-                var pPC1MaximumPIPaymentUI = _pPC1MaximumPIPaymentUI; pPC1MaximumPIPaymentUI.Clean = value; _pPC1MaximumPIPaymentUI = pPC1MaximumPIPaymentUI;
-                var pPC1MIAmount = _pPC1MIAmount; pPC1MIAmount.Clean = value; _pPC1MIAmount = pPC1MIAmount;
-                var pPC1MIAmountUI = _pPC1MIAmountUI; pPC1MIAmountUI.Clean = value; _pPC1MIAmountUI = pPC1MIAmountUI;
-                var pPC1MinimumMonthlyPayment = _pPC1MinimumMonthlyPayment; pPC1MinimumMonthlyPayment.Clean = value; _pPC1MinimumMonthlyPayment = pPC1MinimumMonthlyPayment;
-                var pPC1MinimumMonthlyPaymentUI = _pPC1MinimumMonthlyPaymentUI; pPC1MinimumMonthlyPaymentUI.Clean = value; _pPC1MinimumMonthlyPaymentUI = pPC1MinimumMonthlyPaymentUI;
-                var pPC1MinimumPIPayment = _pPC1MinimumPIPayment; pPC1MinimumPIPayment.Clean = value; _pPC1MinimumPIPayment = pPC1MinimumPIPayment;
-                var pPC1MinimumPIPaymentUI = _pPC1MinimumPIPaymentUI; pPC1MinimumPIPaymentUI.Clean = value; _pPC1MinimumPIPaymentUI = pPC1MinimumPIPaymentUI;
-                var pPC1Year = _pPC1Year; pPC1Year.Clean = value; _pPC1Year = pPC1Year;
-                var pPC2EstimatedEscrowAmount = _pPC2EstimatedEscrowAmount; pPC2EstimatedEscrowAmount.Clean = value; _pPC2EstimatedEscrowAmount = pPC2EstimatedEscrowAmount;
-                var pPC2EstimatedEscrowAmountUI = _pPC2EstimatedEscrowAmountUI; pPC2EstimatedEscrowAmountUI.Clean = value; _pPC2EstimatedEscrowAmountUI = pPC2EstimatedEscrowAmountUI;
-                var pPC2InterestOnly = _pPC2InterestOnly; pPC2InterestOnly.Clean = value; _pPC2InterestOnly = pPC2InterestOnly;
-                var pPC2MaximumMonthlyPayment = _pPC2MaximumMonthlyPayment; pPC2MaximumMonthlyPayment.Clean = value; _pPC2MaximumMonthlyPayment = pPC2MaximumMonthlyPayment;
-                var pPC2MaximumMonthlyPaymentUI = _pPC2MaximumMonthlyPaymentUI; pPC2MaximumMonthlyPaymentUI.Clean = value; _pPC2MaximumMonthlyPaymentUI = pPC2MaximumMonthlyPaymentUI;
-                var pPC2MaximumPIPayment = _pPC2MaximumPIPayment; pPC2MaximumPIPayment.Clean = value; _pPC2MaximumPIPayment = pPC2MaximumPIPayment;
-                var pPC2MaximumPIPaymentUI = _pPC2MaximumPIPaymentUI; pPC2MaximumPIPaymentUI.Clean = value; _pPC2MaximumPIPaymentUI = pPC2MaximumPIPaymentUI;
-                var pPC2MIAmount = _pPC2MIAmount; pPC2MIAmount.Clean = value; _pPC2MIAmount = pPC2MIAmount;
-                var pPC2MIAmountUI = _pPC2MIAmountUI; pPC2MIAmountUI.Clean = value; _pPC2MIAmountUI = pPC2MIAmountUI;
-                var pPC2MinimumMonthlyPayment = _pPC2MinimumMonthlyPayment; pPC2MinimumMonthlyPayment.Clean = value; _pPC2MinimumMonthlyPayment = pPC2MinimumMonthlyPayment;
-                var pPC2MinimumMonthlyPaymentUI = _pPC2MinimumMonthlyPaymentUI; pPC2MinimumMonthlyPaymentUI.Clean = value; _pPC2MinimumMonthlyPaymentUI = pPC2MinimumMonthlyPaymentUI;
-                var pPC2MinimumPIPayment = _pPC2MinimumPIPayment; pPC2MinimumPIPayment.Clean = value; _pPC2MinimumPIPayment = pPC2MinimumPIPayment;
-                var pPC2MinimumPIPaymentUI = _pPC2MinimumPIPaymentUI; pPC2MinimumPIPaymentUI.Clean = value; _pPC2MinimumPIPaymentUI = pPC2MinimumPIPaymentUI;
-                var pPC2YearFrom = _pPC2YearFrom; pPC2YearFrom.Clean = value; _pPC2YearFrom = pPC2YearFrom;
-                var pPC2YearTo = _pPC2YearTo; pPC2YearTo.Clean = value; _pPC2YearTo = pPC2YearTo;
-                var pPC3EstimatedEscrowAmount = _pPC3EstimatedEscrowAmount; pPC3EstimatedEscrowAmount.Clean = value; _pPC3EstimatedEscrowAmount = pPC3EstimatedEscrowAmount;
-                var pPC3EstimatedEscrowAmountUI = _pPC3EstimatedEscrowAmountUI; pPC3EstimatedEscrowAmountUI.Clean = value; _pPC3EstimatedEscrowAmountUI = pPC3EstimatedEscrowAmountUI;
-                var pPC3InterestOnly = _pPC3InterestOnly; pPC3InterestOnly.Clean = value; _pPC3InterestOnly = pPC3InterestOnly;
-                var pPC3MaximumMonthlyPayment = _pPC3MaximumMonthlyPayment; pPC3MaximumMonthlyPayment.Clean = value; _pPC3MaximumMonthlyPayment = pPC3MaximumMonthlyPayment;
-                var pPC3MaximumMonthlyPaymentUI = _pPC3MaximumMonthlyPaymentUI; pPC3MaximumMonthlyPaymentUI.Clean = value; _pPC3MaximumMonthlyPaymentUI = pPC3MaximumMonthlyPaymentUI;
-                var pPC3MaximumPIPayment = _pPC3MaximumPIPayment; pPC3MaximumPIPayment.Clean = value; _pPC3MaximumPIPayment = pPC3MaximumPIPayment;
-                var pPC3MaximumPIPaymentUI = _pPC3MaximumPIPaymentUI; pPC3MaximumPIPaymentUI.Clean = value; _pPC3MaximumPIPaymentUI = pPC3MaximumPIPaymentUI;
-                var pPC3MIAmount = _pPC3MIAmount; pPC3MIAmount.Clean = value; _pPC3MIAmount = pPC3MIAmount;
-                var pPC3MIAmountUI = _pPC3MIAmountUI; pPC3MIAmountUI.Clean = value; _pPC3MIAmountUI = pPC3MIAmountUI;
-                var pPC3MinimumMonthlyPayment = _pPC3MinimumMonthlyPayment; pPC3MinimumMonthlyPayment.Clean = value; _pPC3MinimumMonthlyPayment = pPC3MinimumMonthlyPayment;
-                var pPC3MinimumMonthlyPaymentUI = _pPC3MinimumMonthlyPaymentUI; pPC3MinimumMonthlyPaymentUI.Clean = value; _pPC3MinimumMonthlyPaymentUI = pPC3MinimumMonthlyPaymentUI;
-                var pPC3MinimumPIPayment = _pPC3MinimumPIPayment; pPC3MinimumPIPayment.Clean = value; _pPC3MinimumPIPayment = pPC3MinimumPIPayment;
-                var pPC3MinimumPIPaymentUI = _pPC3MinimumPIPaymentUI; pPC3MinimumPIPaymentUI.Clean = value; _pPC3MinimumPIPaymentUI = pPC3MinimumPIPaymentUI;
-                var pPC3YearFrom = _pPC3YearFrom; pPC3YearFrom.Clean = value; _pPC3YearFrom = pPC3YearFrom;
-                var pPC3YearTo = _pPC3YearTo; pPC3YearTo.Clean = value; _pPC3YearTo = pPC3YearTo;
-                var pPC4EstimatedEscrowAmount = _pPC4EstimatedEscrowAmount; pPC4EstimatedEscrowAmount.Clean = value; _pPC4EstimatedEscrowAmount = pPC4EstimatedEscrowAmount;
-                var pPC4EstimatedEscrowAmountUI = _pPC4EstimatedEscrowAmountUI; pPC4EstimatedEscrowAmountUI.Clean = value; _pPC4EstimatedEscrowAmountUI = pPC4EstimatedEscrowAmountUI;
-                var pPC4InterestOnly = _pPC4InterestOnly; pPC4InterestOnly.Clean = value; _pPC4InterestOnly = pPC4InterestOnly;
-                var pPC4MaximumMonthlyPayment = _pPC4MaximumMonthlyPayment; pPC4MaximumMonthlyPayment.Clean = value; _pPC4MaximumMonthlyPayment = pPC4MaximumMonthlyPayment;
-                var pPC4MaximumMonthlyPaymentUI = _pPC4MaximumMonthlyPaymentUI; pPC4MaximumMonthlyPaymentUI.Clean = value; _pPC4MaximumMonthlyPaymentUI = pPC4MaximumMonthlyPaymentUI;
-                var pPC4MaximumPIPayment = _pPC4MaximumPIPayment; pPC4MaximumPIPayment.Clean = value; _pPC4MaximumPIPayment = pPC4MaximumPIPayment;
-                var pPC4MaximumPIPaymentUI = _pPC4MaximumPIPaymentUI; pPC4MaximumPIPaymentUI.Clean = value; _pPC4MaximumPIPaymentUI = pPC4MaximumPIPaymentUI;
-                var pPC4MIAmount = _pPC4MIAmount; pPC4MIAmount.Clean = value; _pPC4MIAmount = pPC4MIAmount;
-                var pPC4MIAmountUI = _pPC4MIAmountUI; pPC4MIAmountUI.Clean = value; _pPC4MIAmountUI = pPC4MIAmountUI;
-                var pPC4MinimumMonthlyPayment = _pPC4MinimumMonthlyPayment; pPC4MinimumMonthlyPayment.Clean = value; _pPC4MinimumMonthlyPayment = pPC4MinimumMonthlyPayment;
-                var pPC4MinimumMonthlyPaymentUI = _pPC4MinimumMonthlyPaymentUI; pPC4MinimumMonthlyPaymentUI.Clean = value; _pPC4MinimumMonthlyPaymentUI = pPC4MinimumMonthlyPaymentUI;
-                var pPC4MinimumPIPayment = _pPC4MinimumPIPayment; pPC4MinimumPIPayment.Clean = value; _pPC4MinimumPIPayment = pPC4MinimumPIPayment;
-                var pPC4MinimumPIPaymentUI = _pPC4MinimumPIPaymentUI; pPC4MinimumPIPaymentUI.Clean = value; _pPC4MinimumPIPaymentUI = pPC4MinimumPIPaymentUI;
-                var pPC4YearFrom = _pPC4YearFrom; pPC4YearFrom.Clean = value; _pPC4YearFrom = pPC4YearFrom;
-                var pPC4YearTo = _pPC4YearTo; pPC4YearTo.Clean = value; _pPC4YearTo = pPC4YearTo;
-                var pPCEstimatedEscrowIndicator = _pPCEstimatedEscrowIndicator; pPCEstimatedEscrowIndicator.Clean = value; _pPCEstimatedEscrowIndicator = pPCEstimatedEscrowIndicator;
-                var pPCMortgageInsuranceIndicator = _pPCMortgageInsuranceIndicator; pPCMortgageInsuranceIndicator.Clean = value; _pPCMortgageInsuranceIndicator = pPCMortgageInsuranceIndicator;
-                var rangePaymentIndicatorC1 = _rangePaymentIndicatorC1; rangePaymentIndicatorC1.Clean = value; _rangePaymentIndicatorC1 = rangePaymentIndicatorC1;
-                var rangePaymentIndicatorC2 = _rangePaymentIndicatorC2; rangePaymentIndicatorC2.Clean = value; _rangePaymentIndicatorC2 = rangePaymentIndicatorC2;
-                var rangePaymentIndicatorC3 = _rangePaymentIndicatorC3; rangePaymentIndicatorC3.Clean = value; _rangePaymentIndicatorC3 = rangePaymentIndicatorC3;
-                var rangePaymentIndicatorC4 = _rangePaymentIndicatorC4; rangePaymentIndicatorC4.Clean = value; _rangePaymentIndicatorC4 = rangePaymentIndicatorC4;
-                var reasonAdvancedReview = _reasonAdvancedReview; reasonAdvancedReview.Clean = value; _reasonAdvancedReview = reasonAdvancedReview;
-                var reasonChangedCircumstanceElg = _reasonChangedCircumstanceElg; reasonChangedCircumstanceElg.Clean = value; _reasonChangedCircumstanceElg = reasonChangedCircumstanceElg;
-                var reasonChangedCircumstanceFlags = _reasonChangedCircumstanceFlags; reasonChangedCircumstanceFlags.Clean = value; _reasonChangedCircumstanceFlags = reasonChangedCircumstanceFlags;
-                var reasonChangeInAPR = _reasonChangeInAPR; reasonChangeInAPR.Clean = value; _reasonChangeInAPR = reasonChangeInAPR;
-                var reasonChangeInLoanProduct = _reasonChangeInLoanProduct; reasonChangeInLoanProduct.Clean = value; _reasonChangeInLoanProduct = reasonChangeInLoanProduct;
-                var reasonChangeSettlementCharges = _reasonChangeSettlementCharges; reasonChangeSettlementCharges.Clean = value; _reasonChangeSettlementCharges = reasonChangeSettlementCharges;
-                var reasonClericalErrorCorrection = _reasonClericalErrorCorrection; reasonClericalErrorCorrection.Clean = value; _reasonClericalErrorCorrection = reasonClericalErrorCorrection;
-                var reasonInterestRatecharges = _reasonInterestRatecharges; reasonInterestRatecharges.Clean = value; _reasonInterestRatecharges = reasonInterestRatecharges;
-                var reasonOther = _reasonOther; reasonOther.Clean = value; _reasonOther = reasonOther;
-                var reasonOtherDescription = _reasonOtherDescription; reasonOtherDescription.Clean = value; _reasonOtherDescription = reasonOtherDescription;
-                var reasonPrepaymentPenalty = _reasonPrepaymentPenalty; reasonPrepaymentPenalty.Clean = value; _reasonPrepaymentPenalty = reasonPrepaymentPenalty;
-                var reasonRevisionsReqConsumer = _reasonRevisionsReqConsumer; reasonRevisionsReqConsumer.Clean = value; _reasonRevisionsReqConsumer = reasonRevisionsReqConsumer;
-                var reasonToleranceCure = _reasonToleranceCure; reasonToleranceCure.Clean = value; _reasonToleranceCure = reasonToleranceCure;
-                var revisedCDDueDate = _revisedCDDueDate; revisedCDDueDate.Clean = value; _revisedCDDueDate = revisedCDDueDate;
-                var revisedCDReceivedDate = _revisedCDReceivedDate; revisedCDReceivedDate.Clean = value; _revisedCDReceivedDate = revisedCDReceivedDate;
-                var sellerNames = _sellerNames; sellerNames.Clean = value; _sellerNames = sellerNames;
-                var signatureTypeFinalExecutedCopyofAlternateCD = _signatureTypeFinalExecutedCopyofAlternateCD; signatureTypeFinalExecutedCopyofAlternateCD.Clean = value; _signatureTypeFinalExecutedCopyofAlternateCD = signatureTypeFinalExecutedCopyofAlternateCD;
-                var signatureTypeFinalExecutedCopyofSellerCD = _signatureTypeFinalExecutedCopyofSellerCD; signatureTypeFinalExecutedCopyofSellerCD.Clean = value; _signatureTypeFinalExecutedCopyofSellerCD = signatureTypeFinalExecutedCopyofSellerCD;
-                var signatureTypeFinalExecutedCopyofStandardCD = _signatureTypeFinalExecutedCopyofStandardCD; signatureTypeFinalExecutedCopyofStandardCD.Clean = value; _signatureTypeFinalExecutedCopyofStandardCD = signatureTypeFinalExecutedCopyofStandardCD;
-                var totalCashToClose = _totalCashToClose; totalCashToClose.Clean = value; _totalCashToClose = totalCashToClose;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _cDDateIssued.Dirty = value;
+                _changedCircumstance.Dirty = value;
+                _changedCircumstanceFlag.Dirty = value;
+                _changesReceivedDate.Dirty = value;
+                _comments.Dirty = value;
+                _disclosureBy.Dirty = value;
+                _disclosureComments.Dirty = value;
+                _disclosureLastSentDate.Dirty = value;
+                _disclosureReceivedDate.Dirty = value;
+                _disclosureSentMethod.Dirty = value;
+                _documentGUIDFinalExecutedCopyofAlternateCD.Dirty = value;
+                _documentGUIDFinalExecutedCopyofSellerCD.Dirty = value;
+                _documentGUIDFinalExecutedCopyofStandardCD.Dirty = value;
+                _estimatedTaxesInsuranceAssessments.Dirty = value;
+                _id.Dirty = value;
+                _inEscrowHomeownerInsurance.Dirty = value;
+                _inEscrowOther.Dirty = value;
+                _inEscrowPropertyTaxes.Dirty = value;
+                _initialCDReceivedDate.Dirty = value;
+                _mICReference.Dirty = value;
+                _notNaturalPersonFlag.Dirty = value;
+                _pPC1EstimatedEscrowAmount.Dirty = value;
+                _pPC1EstimatedEscrowAmountUI.Dirty = value;
+                _pPC1InterestOnly.Dirty = value;
+                _pPC1MaximumMonthlyPayment.Dirty = value;
+                _pPC1MaximumMonthlyPaymentUI.Dirty = value;
+                _pPC1MaximumPIPayment.Dirty = value;
+                _pPC1MaximumPIPaymentUI.Dirty = value;
+                _pPC1MIAmount.Dirty = value;
+                _pPC1MIAmountUI.Dirty = value;
+                _pPC1MinimumMonthlyPayment.Dirty = value;
+                _pPC1MinimumMonthlyPaymentUI.Dirty = value;
+                _pPC1MinimumPIPayment.Dirty = value;
+                _pPC1MinimumPIPaymentUI.Dirty = value;
+                _pPC1Year.Dirty = value;
+                _pPC2EstimatedEscrowAmount.Dirty = value;
+                _pPC2EstimatedEscrowAmountUI.Dirty = value;
+                _pPC2InterestOnly.Dirty = value;
+                _pPC2MaximumMonthlyPayment.Dirty = value;
+                _pPC2MaximumMonthlyPaymentUI.Dirty = value;
+                _pPC2MaximumPIPayment.Dirty = value;
+                _pPC2MaximumPIPaymentUI.Dirty = value;
+                _pPC2MIAmount.Dirty = value;
+                _pPC2MIAmountUI.Dirty = value;
+                _pPC2MinimumMonthlyPayment.Dirty = value;
+                _pPC2MinimumMonthlyPaymentUI.Dirty = value;
+                _pPC2MinimumPIPayment.Dirty = value;
+                _pPC2MinimumPIPaymentUI.Dirty = value;
+                _pPC2YearFrom.Dirty = value;
+                _pPC2YearTo.Dirty = value;
+                _pPC3EstimatedEscrowAmount.Dirty = value;
+                _pPC3EstimatedEscrowAmountUI.Dirty = value;
+                _pPC3InterestOnly.Dirty = value;
+                _pPC3MaximumMonthlyPayment.Dirty = value;
+                _pPC3MaximumMonthlyPaymentUI.Dirty = value;
+                _pPC3MaximumPIPayment.Dirty = value;
+                _pPC3MaximumPIPaymentUI.Dirty = value;
+                _pPC3MIAmount.Dirty = value;
+                _pPC3MIAmountUI.Dirty = value;
+                _pPC3MinimumMonthlyPayment.Dirty = value;
+                _pPC3MinimumMonthlyPaymentUI.Dirty = value;
+                _pPC3MinimumPIPayment.Dirty = value;
+                _pPC3MinimumPIPaymentUI.Dirty = value;
+                _pPC3YearFrom.Dirty = value;
+                _pPC3YearTo.Dirty = value;
+                _pPC4EstimatedEscrowAmount.Dirty = value;
+                _pPC4EstimatedEscrowAmountUI.Dirty = value;
+                _pPC4InterestOnly.Dirty = value;
+                _pPC4MaximumMonthlyPayment.Dirty = value;
+                _pPC4MaximumMonthlyPaymentUI.Dirty = value;
+                _pPC4MaximumPIPayment.Dirty = value;
+                _pPC4MaximumPIPaymentUI.Dirty = value;
+                _pPC4MIAmount.Dirty = value;
+                _pPC4MIAmountUI.Dirty = value;
+                _pPC4MinimumMonthlyPayment.Dirty = value;
+                _pPC4MinimumMonthlyPaymentUI.Dirty = value;
+                _pPC4MinimumPIPayment.Dirty = value;
+                _pPC4MinimumPIPaymentUI.Dirty = value;
+                _pPC4YearFrom.Dirty = value;
+                _pPC4YearTo.Dirty = value;
+                _pPCEstimatedEscrowIndicator.Dirty = value;
+                _pPCMortgageInsuranceIndicator.Dirty = value;
+                _rangePaymentIndicatorC1.Dirty = value;
+                _rangePaymentIndicatorC2.Dirty = value;
+                _rangePaymentIndicatorC3.Dirty = value;
+                _rangePaymentIndicatorC4.Dirty = value;
+                _reasonAdvancedReview.Dirty = value;
+                _reasonChangedCircumstanceElg.Dirty = value;
+                _reasonChangedCircumstanceFlags.Dirty = value;
+                _reasonChangeInAPR.Dirty = value;
+                _reasonChangeInLoanProduct.Dirty = value;
+                _reasonChangeSettlementCharges.Dirty = value;
+                _reasonClericalErrorCorrection.Dirty = value;
+                _reasonInterestRatecharges.Dirty = value;
+                _reasonOther.Dirty = value;
+                _reasonOtherDescription.Dirty = value;
+                _reasonPrepaymentPenalty.Dirty = value;
+                _reasonRevisionsReqConsumer.Dirty = value;
+                _reasonToleranceCure.Dirty = value;
+                _revisedCDDueDate.Dirty = value;
+                _revisedCDReceivedDate.Dirty = value;
+                _sellerNames.Dirty = value;
+                _signatureTypeFinalExecutedCopyofAlternateCD.Dirty = value;
+                _signatureTypeFinalExecutedCopyofSellerCD.Dirty = value;
+                _signatureTypeFinalExecutedCopyofStandardCD.Dirty = value;
+                _totalCashToClose.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDisclosure1()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

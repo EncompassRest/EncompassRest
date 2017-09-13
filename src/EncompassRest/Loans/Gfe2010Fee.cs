@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Fee : IClean
+    public sealed partial class Gfe2010Fee : IDirty
     {
         private Value<decimal?> _additionalAmount;
         public decimal? AdditionalAmount { get { return _additionalAmount; } set { _additionalAmount = value; } }
@@ -126,145 +126,140 @@ namespace EncompassRest.Loans
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
         private Value<string> _wholePocPaidByType;
         public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalAmount.Clean
-                    && _amount.Clean
-                    && _aprIndicator.Clean
-                    && _borPaidAmount.Clean
-                    && _borrowerAmountPaid2015.Clean
-                    && _borrowerCanShopForIndicator2015.Clean
-                    && _borrowerDidShopForIndicator2015.Clean
-                    && _borrowerFinanced2015.Clean
-                    && _borrowerPAC2015.Clean
-                    && _borrowerPOC2015.Clean
-                    && _borrowerPTC2015.Clean
-                    && _borrowerSelectIndicator.Clean
-                    && _brokerAmountPaid2015.Clean
-                    && _brokerPAC2015.Clean
-                    && _brokerPOC2015.Clean
-                    && _description.Clean
-                    && _escrowedIndicator2015.Clean
-                    && _financedIndicator.Clean
-                    && _gfe2010FeeIndex.Clean
-                    && _gfe2010FeeParentType.Clean
-                    && _gfe2010FeeType.Clean
-                    && _gfeAmount.Clean
-                    && _id.Clean
-                    && _insuranceIndicator2015.Clean
-                    && _lastDisclosedClosingDisclosure2015.Clean
-                    && _lastDisclosedLoanEstimate2015.Clean
-                    && _lenderAmountPaid2015.Clean
-                    && _lenderPAC2015.Clean
-                    && _lenderPOC2015.Clean
-                    && _monthlyPayment.Clean
-                    && _numberOfMonths.Clean
-                    && _optionalIndicator2015.Clean
-                    && _otherAmountPaid2015.Clean
-                    && _otherPAC2015.Clean
-                    && _otherPOC2015.Clean
-                    && _paidByType.Clean
-                    && _paidToName.Clean
-                    && _pocPtcIndicator.Clean
-                    && _propertyIndicator2015.Clean
-                    && _ptbType.Clean
-                    && _rate.Clean
-                    && _retainedAmount2015.Clean
-                    && _sec32PointsAndFees2015.Clean
-                    && _sellerAmountPaid2015.Clean
-                    && _sellerCreditIndicator2015.Clean
-                    && _sellerObligatedAmount2015.Clean
-                    && _sellerObligatedIndicator2015.Clean
-                    && _sellerPAC2015.Clean
-                    && _sellerPOC2015.Clean
-                    && _selPaidAmount.Clean
-                    && _simultaneousIssuanceIndicator2015.Clean
-                    && _taxesIndicator2015.Clean
-                    && _titleServiceSelectIndicator.Clean
-                    && _totalFeeAmount2015.Clean
-                    && _totalFeePercentage2015.Clean
-                    && _totalPaidByBLO2015.Clean
-                    && _undiscountedInsurance2015.Clean
-                    && _wholePoc.Clean
-                    && _wholePocPaidByType.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalAmount.Dirty
+                    || _amount.Dirty
+                    || _aprIndicator.Dirty
+                    || _borPaidAmount.Dirty
+                    || _borrowerAmountPaid2015.Dirty
+                    || _borrowerCanShopForIndicator2015.Dirty
+                    || _borrowerDidShopForIndicator2015.Dirty
+                    || _borrowerFinanced2015.Dirty
+                    || _borrowerPAC2015.Dirty
+                    || _borrowerPOC2015.Dirty
+                    || _borrowerPTC2015.Dirty
+                    || _borrowerSelectIndicator.Dirty
+                    || _brokerAmountPaid2015.Dirty
+                    || _brokerPAC2015.Dirty
+                    || _brokerPOC2015.Dirty
+                    || _description.Dirty
+                    || _escrowedIndicator2015.Dirty
+                    || _financedIndicator.Dirty
+                    || _gfe2010FeeIndex.Dirty
+                    || _gfe2010FeeParentType.Dirty
+                    || _gfe2010FeeType.Dirty
+                    || _gfeAmount.Dirty
+                    || _id.Dirty
+                    || _insuranceIndicator2015.Dirty
+                    || _lastDisclosedClosingDisclosure2015.Dirty
+                    || _lastDisclosedLoanEstimate2015.Dirty
+                    || _lenderAmountPaid2015.Dirty
+                    || _lenderPAC2015.Dirty
+                    || _lenderPOC2015.Dirty
+                    || _monthlyPayment.Dirty
+                    || _numberOfMonths.Dirty
+                    || _optionalIndicator2015.Dirty
+                    || _otherAmountPaid2015.Dirty
+                    || _otherPAC2015.Dirty
+                    || _otherPOC2015.Dirty
+                    || _paidByType.Dirty
+                    || _paidToName.Dirty
+                    || _pocPtcIndicator.Dirty
+                    || _propertyIndicator2015.Dirty
+                    || _ptbType.Dirty
+                    || _rate.Dirty
+                    || _retainedAmount2015.Dirty
+                    || _sec32PointsAndFees2015.Dirty
+                    || _sellerAmountPaid2015.Dirty
+                    || _sellerCreditIndicator2015.Dirty
+                    || _sellerObligatedAmount2015.Dirty
+                    || _sellerObligatedIndicator2015.Dirty
+                    || _sellerPAC2015.Dirty
+                    || _sellerPOC2015.Dirty
+                    || _selPaidAmount.Dirty
+                    || _simultaneousIssuanceIndicator2015.Dirty
+                    || _taxesIndicator2015.Dirty
+                    || _titleServiceSelectIndicator.Dirty
+                    || _totalFeeAmount2015.Dirty
+                    || _totalFeePercentage2015.Dirty
+                    || _totalPaidByBLO2015.Dirty
+                    || _undiscountedInsurance2015.Dirty
+                    || _wholePoc.Dirty
+                    || _wholePocPaidByType.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalAmount = _additionalAmount; additionalAmount.Clean = value; _additionalAmount = additionalAmount;
-                var amount = _amount; amount.Clean = value; _amount = amount;
-                var aprIndicator = _aprIndicator; aprIndicator.Clean = value; _aprIndicator = aprIndicator;
-                var borPaidAmount = _borPaidAmount; borPaidAmount.Clean = value; _borPaidAmount = borPaidAmount;
-                var borrowerAmountPaid2015 = _borrowerAmountPaid2015; borrowerAmountPaid2015.Clean = value; _borrowerAmountPaid2015 = borrowerAmountPaid2015;
-                var borrowerCanShopForIndicator2015 = _borrowerCanShopForIndicator2015; borrowerCanShopForIndicator2015.Clean = value; _borrowerCanShopForIndicator2015 = borrowerCanShopForIndicator2015;
-                var borrowerDidShopForIndicator2015 = _borrowerDidShopForIndicator2015; borrowerDidShopForIndicator2015.Clean = value; _borrowerDidShopForIndicator2015 = borrowerDidShopForIndicator2015;
-                var borrowerFinanced2015 = _borrowerFinanced2015; borrowerFinanced2015.Clean = value; _borrowerFinanced2015 = borrowerFinanced2015;
-                var borrowerPAC2015 = _borrowerPAC2015; borrowerPAC2015.Clean = value; _borrowerPAC2015 = borrowerPAC2015;
-                var borrowerPOC2015 = _borrowerPOC2015; borrowerPOC2015.Clean = value; _borrowerPOC2015 = borrowerPOC2015;
-                var borrowerPTC2015 = _borrowerPTC2015; borrowerPTC2015.Clean = value; _borrowerPTC2015 = borrowerPTC2015;
-                var borrowerSelectIndicator = _borrowerSelectIndicator; borrowerSelectIndicator.Clean = value; _borrowerSelectIndicator = borrowerSelectIndicator;
-                var brokerAmountPaid2015 = _brokerAmountPaid2015; brokerAmountPaid2015.Clean = value; _brokerAmountPaid2015 = brokerAmountPaid2015;
-                var brokerPAC2015 = _brokerPAC2015; brokerPAC2015.Clean = value; _brokerPAC2015 = brokerPAC2015;
-                var brokerPOC2015 = _brokerPOC2015; brokerPOC2015.Clean = value; _brokerPOC2015 = brokerPOC2015;
-                var description = _description; description.Clean = value; _description = description;
-                var escrowedIndicator2015 = _escrowedIndicator2015; escrowedIndicator2015.Clean = value; _escrowedIndicator2015 = escrowedIndicator2015;
-                var financedIndicator = _financedIndicator; financedIndicator.Clean = value; _financedIndicator = financedIndicator;
-                var gfe2010FeeIndex = _gfe2010FeeIndex; gfe2010FeeIndex.Clean = value; _gfe2010FeeIndex = gfe2010FeeIndex;
-                var gfe2010FeeParentType = _gfe2010FeeParentType; gfe2010FeeParentType.Clean = value; _gfe2010FeeParentType = gfe2010FeeParentType;
-                var gfe2010FeeType = _gfe2010FeeType; gfe2010FeeType.Clean = value; _gfe2010FeeType = gfe2010FeeType;
-                var gfeAmount = _gfeAmount; gfeAmount.Clean = value; _gfeAmount = gfeAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var insuranceIndicator2015 = _insuranceIndicator2015; insuranceIndicator2015.Clean = value; _insuranceIndicator2015 = insuranceIndicator2015;
-                var lastDisclosedClosingDisclosure2015 = _lastDisclosedClosingDisclosure2015; lastDisclosedClosingDisclosure2015.Clean = value; _lastDisclosedClosingDisclosure2015 = lastDisclosedClosingDisclosure2015;
-                var lastDisclosedLoanEstimate2015 = _lastDisclosedLoanEstimate2015; lastDisclosedLoanEstimate2015.Clean = value; _lastDisclosedLoanEstimate2015 = lastDisclosedLoanEstimate2015;
-                var lenderAmountPaid2015 = _lenderAmountPaid2015; lenderAmountPaid2015.Clean = value; _lenderAmountPaid2015 = lenderAmountPaid2015;
-                var lenderPAC2015 = _lenderPAC2015; lenderPAC2015.Clean = value; _lenderPAC2015 = lenderPAC2015;
-                var lenderPOC2015 = _lenderPOC2015; lenderPOC2015.Clean = value; _lenderPOC2015 = lenderPOC2015;
-                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
-                var numberOfMonths = _numberOfMonths; numberOfMonths.Clean = value; _numberOfMonths = numberOfMonths;
-                var optionalIndicator2015 = _optionalIndicator2015; optionalIndicator2015.Clean = value; _optionalIndicator2015 = optionalIndicator2015;
-                var otherAmountPaid2015 = _otherAmountPaid2015; otherAmountPaid2015.Clean = value; _otherAmountPaid2015 = otherAmountPaid2015;
-                var otherPAC2015 = _otherPAC2015; otherPAC2015.Clean = value; _otherPAC2015 = otherPAC2015;
-                var otherPOC2015 = _otherPOC2015; otherPOC2015.Clean = value; _otherPOC2015 = otherPOC2015;
-                var paidByType = _paidByType; paidByType.Clean = value; _paidByType = paidByType;
-                var paidToName = _paidToName; paidToName.Clean = value; _paidToName = paidToName;
-                var pocPtcIndicator = _pocPtcIndicator; pocPtcIndicator.Clean = value; _pocPtcIndicator = pocPtcIndicator;
-                var propertyIndicator2015 = _propertyIndicator2015; propertyIndicator2015.Clean = value; _propertyIndicator2015 = propertyIndicator2015;
-                var ptbType = _ptbType; ptbType.Clean = value; _ptbType = ptbType;
-                var rate = _rate; rate.Clean = value; _rate = rate;
-                var retainedAmount2015 = _retainedAmount2015; retainedAmount2015.Clean = value; _retainedAmount2015 = retainedAmount2015;
-                var sec32PointsAndFees2015 = _sec32PointsAndFees2015; sec32PointsAndFees2015.Clean = value; _sec32PointsAndFees2015 = sec32PointsAndFees2015;
-                var sellerAmountPaid2015 = _sellerAmountPaid2015; sellerAmountPaid2015.Clean = value; _sellerAmountPaid2015 = sellerAmountPaid2015;
-                var sellerCreditIndicator2015 = _sellerCreditIndicator2015; sellerCreditIndicator2015.Clean = value; _sellerCreditIndicator2015 = sellerCreditIndicator2015;
-                var sellerObligatedAmount2015 = _sellerObligatedAmount2015; sellerObligatedAmount2015.Clean = value; _sellerObligatedAmount2015 = sellerObligatedAmount2015;
-                var sellerObligatedIndicator2015 = _sellerObligatedIndicator2015; sellerObligatedIndicator2015.Clean = value; _sellerObligatedIndicator2015 = sellerObligatedIndicator2015;
-                var sellerPAC2015 = _sellerPAC2015; sellerPAC2015.Clean = value; _sellerPAC2015 = sellerPAC2015;
-                var sellerPOC2015 = _sellerPOC2015; sellerPOC2015.Clean = value; _sellerPOC2015 = sellerPOC2015;
-                var selPaidAmount = _selPaidAmount; selPaidAmount.Clean = value; _selPaidAmount = selPaidAmount;
-                var simultaneousIssuanceIndicator2015 = _simultaneousIssuanceIndicator2015; simultaneousIssuanceIndicator2015.Clean = value; _simultaneousIssuanceIndicator2015 = simultaneousIssuanceIndicator2015;
-                var taxesIndicator2015 = _taxesIndicator2015; taxesIndicator2015.Clean = value; _taxesIndicator2015 = taxesIndicator2015;
-                var titleServiceSelectIndicator = _titleServiceSelectIndicator; titleServiceSelectIndicator.Clean = value; _titleServiceSelectIndicator = titleServiceSelectIndicator;
-                var totalFeeAmount2015 = _totalFeeAmount2015; totalFeeAmount2015.Clean = value; _totalFeeAmount2015 = totalFeeAmount2015;
-                var totalFeePercentage2015 = _totalFeePercentage2015; totalFeePercentage2015.Clean = value; _totalFeePercentage2015 = totalFeePercentage2015;
-                var totalPaidByBLO2015 = _totalPaidByBLO2015; totalPaidByBLO2015.Clean = value; _totalPaidByBLO2015 = totalPaidByBLO2015;
-                var undiscountedInsurance2015 = _undiscountedInsurance2015; undiscountedInsurance2015.Clean = value; _undiscountedInsurance2015 = undiscountedInsurance2015;
-                var wholePoc = _wholePoc; wholePoc.Clean = value; _wholePoc = wholePoc;
-                var wholePocPaidByType = _wholePocPaidByType; wholePocPaidByType.Clean = value; _wholePocPaidByType = wholePocPaidByType;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalAmount.Dirty = value;
+                _amount.Dirty = value;
+                _aprIndicator.Dirty = value;
+                _borPaidAmount.Dirty = value;
+                _borrowerAmountPaid2015.Dirty = value;
+                _borrowerCanShopForIndicator2015.Dirty = value;
+                _borrowerDidShopForIndicator2015.Dirty = value;
+                _borrowerFinanced2015.Dirty = value;
+                _borrowerPAC2015.Dirty = value;
+                _borrowerPOC2015.Dirty = value;
+                _borrowerPTC2015.Dirty = value;
+                _borrowerSelectIndicator.Dirty = value;
+                _brokerAmountPaid2015.Dirty = value;
+                _brokerPAC2015.Dirty = value;
+                _brokerPOC2015.Dirty = value;
+                _description.Dirty = value;
+                _escrowedIndicator2015.Dirty = value;
+                _financedIndicator.Dirty = value;
+                _gfe2010FeeIndex.Dirty = value;
+                _gfe2010FeeParentType.Dirty = value;
+                _gfe2010FeeType.Dirty = value;
+                _gfeAmount.Dirty = value;
+                _id.Dirty = value;
+                _insuranceIndicator2015.Dirty = value;
+                _lastDisclosedClosingDisclosure2015.Dirty = value;
+                _lastDisclosedLoanEstimate2015.Dirty = value;
+                _lenderAmountPaid2015.Dirty = value;
+                _lenderPAC2015.Dirty = value;
+                _lenderPOC2015.Dirty = value;
+                _monthlyPayment.Dirty = value;
+                _numberOfMonths.Dirty = value;
+                _optionalIndicator2015.Dirty = value;
+                _otherAmountPaid2015.Dirty = value;
+                _otherPAC2015.Dirty = value;
+                _otherPOC2015.Dirty = value;
+                _paidByType.Dirty = value;
+                _paidToName.Dirty = value;
+                _pocPtcIndicator.Dirty = value;
+                _propertyIndicator2015.Dirty = value;
+                _ptbType.Dirty = value;
+                _rate.Dirty = value;
+                _retainedAmount2015.Dirty = value;
+                _sec32PointsAndFees2015.Dirty = value;
+                _sellerAmountPaid2015.Dirty = value;
+                _sellerCreditIndicator2015.Dirty = value;
+                _sellerObligatedAmount2015.Dirty = value;
+                _sellerObligatedIndicator2015.Dirty = value;
+                _sellerPAC2015.Dirty = value;
+                _sellerPOC2015.Dirty = value;
+                _selPaidAmount.Dirty = value;
+                _simultaneousIssuanceIndicator2015.Dirty = value;
+                _taxesIndicator2015.Dirty = value;
+                _titleServiceSelectIndicator.Dirty = value;
+                _totalFeeAmount2015.Dirty = value;
+                _totalFeePercentage2015.Dirty = value;
+                _totalPaidByBLO2015.Dirty = value;
+                _undiscountedInsurance2015.Dirty = value;
+                _wholePoc.Dirty = value;
+                _wholePocPaidByType.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010Fee()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

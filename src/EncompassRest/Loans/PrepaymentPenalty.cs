@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrepaymentPenalty : IClean
+    public sealed partial class PrepaymentPenalty : IDirty
     {
         private Value<string> _fullPrepaymentPenaltyOptionType;
         public string FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public decimal? PrepaymentPenaltyPercent { get { return _prepaymentPenaltyPercent; } set { _prepaymentPenaltyPercent = value; } }
         private Value<int?> _termMonthsCount;
         public int? TermMonthsCount { get { return _termMonthsCount; } set { _termMonthsCount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _fullPrepaymentPenaltyOptionType.Clean
-                    && _id.Clean
-                    && _prepaymentPenaltyPercent.Clean
-                    && _termMonthsCount.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _fullPrepaymentPenaltyOptionType.Dirty
+                    || _id.Dirty
+                    || _prepaymentPenaltyPercent.Dirty
+                    || _termMonthsCount.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var fullPrepaymentPenaltyOptionType = _fullPrepaymentPenaltyOptionType; fullPrepaymentPenaltyOptionType.Clean = value; _fullPrepaymentPenaltyOptionType = fullPrepaymentPenaltyOptionType;
-                var id = _id; id.Clean = value; _id = id;
-                var prepaymentPenaltyPercent = _prepaymentPenaltyPercent; prepaymentPenaltyPercent.Clean = value; _prepaymentPenaltyPercent = prepaymentPenaltyPercent;
-                var termMonthsCount = _termMonthsCount; termMonthsCount.Clean = value; _termMonthsCount = termMonthsCount;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _fullPrepaymentPenaltyOptionType.Dirty = value;
+                _id.Dirty = value;
+                _prepaymentPenaltyPercent.Dirty = value;
+                _termMonthsCount.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PrepaymentPenalty()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EnergyEfficientMortgageItem : IClean
+    public sealed partial class EnergyEfficientMortgageItem : IDirty
     {
         private Value<decimal?> _actualAmount;
         public decimal? ActualAmount { get { return _actualAmount; } set { _actualAmount = value; } }
@@ -20,39 +20,34 @@ namespace EncompassRest.Loans
         public string Item { get { return _item; } set { _item = value; } }
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actualAmount.Clean
-                    && _allowedAmount.Clean
-                    && _energyEfficientMortgageItemIndex.Clean
-                    && _id.Clean
-                    && _item.Clean
-                    && _lineNumber.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actualAmount.Dirty
+                    || _allowedAmount.Dirty
+                    || _energyEfficientMortgageItemIndex.Dirty
+                    || _id.Dirty
+                    || _item.Dirty
+                    || _lineNumber.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actualAmount = _actualAmount; actualAmount.Clean = value; _actualAmount = actualAmount;
-                var allowedAmount = _allowedAmount; allowedAmount.Clean = value; _allowedAmount = allowedAmount;
-                var energyEfficientMortgageItemIndex = _energyEfficientMortgageItemIndex; energyEfficientMortgageItemIndex.Clean = value; _energyEfficientMortgageItemIndex = energyEfficientMortgageItemIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var item = _item; item.Clean = value; _item = item;
-                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actualAmount.Dirty = value;
+                _allowedAmount.Dirty = value;
+                _energyEfficientMortgageItemIndex.Dirty = value;
+                _id.Dirty = value;
+                _item.Dirty = value;
+                _lineNumber.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public EnergyEfficientMortgageItem()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

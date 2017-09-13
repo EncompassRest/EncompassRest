@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010GfeCharge : IClean
+    public sealed partial class Gfe2010GfeCharge : IDirty
     {
         private Value<bool?> _chargeBelow10Indicator;
         public bool? ChargeBelow10Indicator { get { return _chargeBelow10Indicator; } set { _chargeBelow10Indicator = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _chargeBelow10Indicator.Clean
-                    && _description.Clean
-                    && _gfe2010GfeChargeIndex.Clean
-                    && _gfeCharge.Clean
-                    && _hudCharge.Clean
-                    && _id.Clean
-                    && _line.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _chargeBelow10Indicator.Dirty
+                    || _description.Dirty
+                    || _gfe2010GfeChargeIndex.Dirty
+                    || _gfeCharge.Dirty
+                    || _hudCharge.Dirty
+                    || _id.Dirty
+                    || _line.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var chargeBelow10Indicator = _chargeBelow10Indicator; chargeBelow10Indicator.Clean = value; _chargeBelow10Indicator = chargeBelow10Indicator;
-                var description = _description; description.Clean = value; _description = description;
-                var gfe2010GfeChargeIndex = _gfe2010GfeChargeIndex; gfe2010GfeChargeIndex.Clean = value; _gfe2010GfeChargeIndex = gfe2010GfeChargeIndex;
-                var gfeCharge = _gfeCharge; gfeCharge.Clean = value; _gfeCharge = gfeCharge;
-                var hudCharge = _hudCharge; hudCharge.Clean = value; _hudCharge = hudCharge;
-                var id = _id; id.Clean = value; _id = id;
-                var line = _line; line.Clean = value; _line = line;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _chargeBelow10Indicator.Dirty = value;
+                _description.Dirty = value;
+                _gfe2010GfeChargeIndex.Dirty = value;
+                _gfeCharge.Dirty = value;
+                _hudCharge.Dirty = value;
+                _id.Dirty = value;
+                _line.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010GfeCharge()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

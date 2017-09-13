@@ -9,7 +9,7 @@ namespace EncompassRest.LoanPipeline
 {
     public sealed class Pipeline
     {
-        private const string _apiPath = "encompass/v1/loanPipeline";
+        private const string s_apiPath = "encompass/v1/loanPipeline";
 
         public EncompassRestClient Client { get; }
 
@@ -28,7 +28,7 @@ namespace EncompassRest.LoanPipeline
 
         private async Task<T> GetCanonicalNamesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/fieldDefinitions", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/fieldDefinitions", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -83,7 +83,7 @@ namespace EncompassRest.LoanPipeline
                 queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
             }
 
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

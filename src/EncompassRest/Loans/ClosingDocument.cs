@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDocument : IClean
+    public sealed partial class ClosingDocument : IDirty
     {
         private Value<string> _additionalLienHolderAddress;
         public string AdditionalLienHolderAddress { get { return _additionalLienHolderAddress; } set { _additionalLienHolderAddress = value; } }
@@ -356,375 +356,370 @@ namespace EncompassRest.Loans
         public string Trust2Beneficiaries { get { return _trust2Beneficiaries; } set { _trust2Beneficiaries = value; } }
         private Value<string> _weConductBusiness;
         public string WeConductBusiness { get { return _weConductBusiness; } set { _weConductBusiness = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalLienHolderAddress.Clean
-                    && _additionalLienHolderAddressCity.Clean
-                    && _additionalLienHolderAddressPostalCode.Clean
-                    && _additionalLienHolderAddressState.Clean
-                    && _additionalLienHolderName.Clean
-                    && _additionalOriginalPincipalAmountSecured.Clean
-                    && _additionalSigVerbiageType.Clean
-                    && _additionalStateDisclosures.Clean
-                    && _affectedByInterest.Clean
-                    && _alternateLender.Clean
-                    && _altLenderId.Clean
-                    && _antiSteeringLoanOptions.Clean
-                    && _areAbleToServiceIndicator.Clean
-                    && _associatedDocumentNumber.Clean
-                    && _beneficiaries.Clean
-                    && _borrowerConsentType1.Clean
-                    && _borrowerConsentType2.Clean
-                    && _borrowerOrganizationType1.Clean
-                    && _borrowerOrganizationType2.Clean
-                    && _borrowerOrganizedUnderTheLawsOfJurisdictionName1.Clean
-                    && _borrowerOrganizedUnderTheLawsOfJurisdictionName2.Clean
-                    && _borrowerTaxIdentificationNumberIdentifier1.Clean
-                    && _borrowerTaxIdentificationNumberIdentifier2.Clean
-                    && _borrowerTrustAmendedDateOrYear1.Clean
-                    && _borrowerTrustAmendedDateOrYear2.Clean
-                    && _borrowerTrustDateOrYear1.Clean
-                    && _borrowerTrustDateOrYear2.Clean
-                    && _borrowerUnparsedName1.Clean
-                    && _borrowerUnparsedName2.Clean
-                    && _brokerAuthorizedRepresentativeTitle.Clean
-                    && _brokerCompensationMethod.Clean
-                    && _brokerFeeRefundConditions1.Clean
-                    && _brokerFeeRefundConditions2.Clean
-                    && _brokerFeeRefundConditions3.Clean
-                    && _brokerForPlacingLoan.Clean
-                    && _brokerInterestRateEffect.Clean
-                    && _brokerLenderRelationship.Clean
-                    && _brokerLicenseNumberIdentifier.Clean
-                    && _brokerNameAsLicensed.Clean
-                    && _brokerTaxIdentificationNumberIdentifier.Clean
-                    && _brokerWithLenders.Clean
-                    && _cashCheckFromBorrower.Clean
-                    && _closingDocsLoanProgramType.Clean
-                    && _closingEntities.Clean
-                    && _closingProvider.Clean
-                    && _closingState.Clean
-                    && _complianceJurisdictionCounty.Clean
-                    && _compliancePropertyIdentifiedDate.Clean
-                    && _conditionDescription.Clean
-                    && _conflictofInterestCheck1.Clean
-                    && _conflictofInterestCheck2.Clean
-                    && _conflictofInterestCheck3.Clean
-                    && _conflictofInterestCheck4.Clean
-                    && _conflictofInterestCheck5.Clean
-                    && _conflictofInterestCheck6.Clean
-                    && _coopApartmentNumber.Clean
-                    && _coopAssignmentLeaseDate.Clean
-                    && _coopAttorneyInFact.Clean
-                    && _coopBuildingName.Clean
-                    && _coopCompanyExistsUnderTHeLawsOf.Clean
-                    && _coopCompanyName.Clean
-                    && _coopProprietaryLeaseDate.Clean
-                    && _coopSharesOwned.Clean
-                    && _coopStockCertificationNumber.Clean
-                    && _coopVacancyPercentNotification.Clean
-                    && _customOtherRiderDescription.Clean
-                    && _disbursementDate.Clean
-                    && _disbursementsToBorrower.Clean
-                    && _disclosureAlternateLender.Clean
-                    && _disclosureCompanyFunction.Clean
-                    && _disclosurePlanCode.Clean
-                    && _docReportGUID.Clean
-                    && _documentPreparationDate.Clean
-                    && _documentSigningDate.Clean
-                    && _drawCity.Clean
-                    && _drawCounty.Clean
-                    && _drawState.Clean
-                    && _employeeofMortgageLender.Clean
-                    && _expectToAssignSellOrTransferPercent.Clean
-                    && _finalVestingDescription.Clean
-                    && _firstTransferYear.Clean
-                    && _firstTransferYearValue.Clean
-                    && _hoursDocumentsNeededPriorToDisbursementCount.Clean
-                    && _housingIndicator.Clean
-                    && _housingProgramName.Clean
-                    && _hUD1FileNumberIdentifier.Clean
-                    && _hUD1SettlementAgentUnparsedAddress.Clean
-                    && _hUD1SettlementAgentUnparsedName.Clean
-                    && _hUD1SettlementDate.Clean
-                    && _id.Clean
-                    && _includeSafeHaborDisclosure.Clean
-                    && _investorCode.Clean
-                    && _lastAuditDate.Clean
-                    && _lastDocumentOrdered.Clean
-                    && _legalAttached.Clean
-                    && _lenderAuthorizedRepresentativeTitle.Clean
-                    && _lenderBrokerRepresents.Clean
-                    && _lienHolderAddress.Clean
-                    && _lienHolderAddressCity.Clean
-                    && _lienHolderAddressPostalCode.Clean
-                    && _lienHolderAddressState.Clean
-                    && _lienHolderName.Clean
-                    && _loanIsLocked.Clean
-                    && _loanOption.Clean
-                    && _lockInFeeType.Clean
-                    && _mfgHomeAnchored.Clean
-                    && _mfgHomeCertificateOfTitleIdentifier.Clean
-                    && _mfgHomeCertificateOfTitleType.Clean
-                    && _mfgHomeDescription.Clean
-                    && _mfgHomeHUDCertificationLabelIdentifier.Clean
-                    && _mfgHomeLengthFeetCount.Clean
-                    && _mfgHomeMakeIdentifier.Clean
-                    && _mfgHomeManufacturer.Clean
-                    && _mfgHomeManufacturerAddress.Clean
-                    && _mfgHomeManufacturerCity.Clean
-                    && _mfgHomeManufacturerPhoneNumber.Clean
-                    && _mfgHomeManufacturerPostalCode.Clean
-                    && _mfgHomeManufacturerState.Clean
-                    && _mfgHomeManufactureYear.Clean
-                    && _mfgHomeModelIdentifier.Clean
-                    && _mfgHomeNewOrUsed.Clean
-                    && _mfgHomeSerialNumberIdentifier.Clean
-                    && _mfgHomeWidthFeetCount.Clean
-                    && _mineralRightsDescription.Clean
-                    && _mortgageType.Clean
-                    && _numberBrokerAgreements.Clean
-                    && _numberSuccessfulBrokerAgreements.Clean
-                    && _officeOfRecordationName.Clean
-                    && _onlyOneEntity.Clean
-                    && _optionSelectedReason.Clean
-                    && _originalPincipalAmountSecured.Clean
-                    && _otherOptionDescription.Clean
-                    && _parentAffiliatedCoName.Clean
-                    && _payToTheOrderOfDescription.Clean
-                    && _perDiemCalculationMethodType.Clean
-                    && _planCode.Clean
-                    && _planCodeDescription.Clean
-                    && _planCodeId.Clean
-                    && _preliminaryTitleReportDate.Clean
-                    && _prepaymentPenaltyDescriptions1.Clean
-                    && _prepaymentPenaltyDescriptions2.Clean
-                    && _prepaymentPenaltyDescriptions3.Clean
-                    && _processingNumberDays.Clean
-                    && _programCode.Clean
-                    && _programSponsor.Clean
-                    && _propertyIsLandTrust.Clean
-                    && _propertyTaxMessageDescription.Clean
-                    && _rateLockRefundConditions1.Clean
-                    && _rateLockRefundConditions2.Clean
-                    && _rateLockRefundConditions3.Clean
-                    && _recordingJurisdictionName.Clean
-                    && _refinanceBalloonMortgageGuarantee.Clean
-                    && _refinanceRightOfRescissionExemptFlag.Clean
-                    && _renewalExtensionDescription.Clean
-                    && _rescissionDate.Clean
-                    && _respaHudDetails.Clean
-                    && _rMLANamePreceding10Years.Clean
-                    && _rmlLenderBrokerRepresents.Clean
-                    && _secondTransferYear.Clean
-                    && _secondTransferYearValue.Clean
-                    && _signatureDateFor1003.Clean
-                    && _specialFloodHazardAreaIndictor.Clean
-                    && _stateLicenses.Clean
-                    && _suretyCompanyName.Clean
-                    && _syncInterestDateDisbursementDate.Clean
-                    && _termiteReportRequiredIndicator.Clean
-                    && _textDescription.Clean
-                    && _thirdTransferYear.Clean
-                    && _thirdTransferYearValue.Clean
-                    && _titleReportItemsDescription.Clean
-                    && _titleReportRequiredEndorsementsDescription.Clean
-                    && _totalDisbursed.Clean
-                    && _trust2Beneficiaries.Clean
-                    && _weConductBusiness.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalLienHolderAddress.Dirty
+                    || _additionalLienHolderAddressCity.Dirty
+                    || _additionalLienHolderAddressPostalCode.Dirty
+                    || _additionalLienHolderAddressState.Dirty
+                    || _additionalLienHolderName.Dirty
+                    || _additionalOriginalPincipalAmountSecured.Dirty
+                    || _additionalSigVerbiageType.Dirty
+                    || _additionalStateDisclosures.Dirty
+                    || _affectedByInterest.Dirty
+                    || _alternateLender.Dirty
+                    || _altLenderId.Dirty
+                    || _antiSteeringLoanOptions.Dirty
+                    || _areAbleToServiceIndicator.Dirty
+                    || _associatedDocumentNumber.Dirty
+                    || _beneficiaries.Dirty
+                    || _borrowerConsentType1.Dirty
+                    || _borrowerConsentType2.Dirty
+                    || _borrowerOrganizationType1.Dirty
+                    || _borrowerOrganizationType2.Dirty
+                    || _borrowerOrganizedUnderTheLawsOfJurisdictionName1.Dirty
+                    || _borrowerOrganizedUnderTheLawsOfJurisdictionName2.Dirty
+                    || _borrowerTaxIdentificationNumberIdentifier1.Dirty
+                    || _borrowerTaxIdentificationNumberIdentifier2.Dirty
+                    || _borrowerTrustAmendedDateOrYear1.Dirty
+                    || _borrowerTrustAmendedDateOrYear2.Dirty
+                    || _borrowerTrustDateOrYear1.Dirty
+                    || _borrowerTrustDateOrYear2.Dirty
+                    || _borrowerUnparsedName1.Dirty
+                    || _borrowerUnparsedName2.Dirty
+                    || _brokerAuthorizedRepresentativeTitle.Dirty
+                    || _brokerCompensationMethod.Dirty
+                    || _brokerFeeRefundConditions1.Dirty
+                    || _brokerFeeRefundConditions2.Dirty
+                    || _brokerFeeRefundConditions3.Dirty
+                    || _brokerForPlacingLoan.Dirty
+                    || _brokerInterestRateEffect.Dirty
+                    || _brokerLenderRelationship.Dirty
+                    || _brokerLicenseNumberIdentifier.Dirty
+                    || _brokerNameAsLicensed.Dirty
+                    || _brokerTaxIdentificationNumberIdentifier.Dirty
+                    || _brokerWithLenders.Dirty
+                    || _cashCheckFromBorrower.Dirty
+                    || _closingDocsLoanProgramType.Dirty
+                    || _closingEntities.Dirty
+                    || _closingProvider.Dirty
+                    || _closingState.Dirty
+                    || _complianceJurisdictionCounty.Dirty
+                    || _compliancePropertyIdentifiedDate.Dirty
+                    || _conditionDescription.Dirty
+                    || _conflictofInterestCheck1.Dirty
+                    || _conflictofInterestCheck2.Dirty
+                    || _conflictofInterestCheck3.Dirty
+                    || _conflictofInterestCheck4.Dirty
+                    || _conflictofInterestCheck5.Dirty
+                    || _conflictofInterestCheck6.Dirty
+                    || _coopApartmentNumber.Dirty
+                    || _coopAssignmentLeaseDate.Dirty
+                    || _coopAttorneyInFact.Dirty
+                    || _coopBuildingName.Dirty
+                    || _coopCompanyExistsUnderTHeLawsOf.Dirty
+                    || _coopCompanyName.Dirty
+                    || _coopProprietaryLeaseDate.Dirty
+                    || _coopSharesOwned.Dirty
+                    || _coopStockCertificationNumber.Dirty
+                    || _coopVacancyPercentNotification.Dirty
+                    || _customOtherRiderDescription.Dirty
+                    || _disbursementDate.Dirty
+                    || _disbursementsToBorrower.Dirty
+                    || _disclosureAlternateLender.Dirty
+                    || _disclosureCompanyFunction.Dirty
+                    || _disclosurePlanCode.Dirty
+                    || _docReportGUID.Dirty
+                    || _documentPreparationDate.Dirty
+                    || _documentSigningDate.Dirty
+                    || _drawCity.Dirty
+                    || _drawCounty.Dirty
+                    || _drawState.Dirty
+                    || _employeeofMortgageLender.Dirty
+                    || _expectToAssignSellOrTransferPercent.Dirty
+                    || _finalVestingDescription.Dirty
+                    || _firstTransferYear.Dirty
+                    || _firstTransferYearValue.Dirty
+                    || _hoursDocumentsNeededPriorToDisbursementCount.Dirty
+                    || _housingIndicator.Dirty
+                    || _housingProgramName.Dirty
+                    || _hUD1FileNumberIdentifier.Dirty
+                    || _hUD1SettlementAgentUnparsedAddress.Dirty
+                    || _hUD1SettlementAgentUnparsedName.Dirty
+                    || _hUD1SettlementDate.Dirty
+                    || _id.Dirty
+                    || _includeSafeHaborDisclosure.Dirty
+                    || _investorCode.Dirty
+                    || _lastAuditDate.Dirty
+                    || _lastDocumentOrdered.Dirty
+                    || _legalAttached.Dirty
+                    || _lenderAuthorizedRepresentativeTitle.Dirty
+                    || _lenderBrokerRepresents.Dirty
+                    || _lienHolderAddress.Dirty
+                    || _lienHolderAddressCity.Dirty
+                    || _lienHolderAddressPostalCode.Dirty
+                    || _lienHolderAddressState.Dirty
+                    || _lienHolderName.Dirty
+                    || _loanIsLocked.Dirty
+                    || _loanOption.Dirty
+                    || _lockInFeeType.Dirty
+                    || _mfgHomeAnchored.Dirty
+                    || _mfgHomeCertificateOfTitleIdentifier.Dirty
+                    || _mfgHomeCertificateOfTitleType.Dirty
+                    || _mfgHomeDescription.Dirty
+                    || _mfgHomeHUDCertificationLabelIdentifier.Dirty
+                    || _mfgHomeLengthFeetCount.Dirty
+                    || _mfgHomeMakeIdentifier.Dirty
+                    || _mfgHomeManufacturer.Dirty
+                    || _mfgHomeManufacturerAddress.Dirty
+                    || _mfgHomeManufacturerCity.Dirty
+                    || _mfgHomeManufacturerPhoneNumber.Dirty
+                    || _mfgHomeManufacturerPostalCode.Dirty
+                    || _mfgHomeManufacturerState.Dirty
+                    || _mfgHomeManufactureYear.Dirty
+                    || _mfgHomeModelIdentifier.Dirty
+                    || _mfgHomeNewOrUsed.Dirty
+                    || _mfgHomeSerialNumberIdentifier.Dirty
+                    || _mfgHomeWidthFeetCount.Dirty
+                    || _mineralRightsDescription.Dirty
+                    || _mortgageType.Dirty
+                    || _numberBrokerAgreements.Dirty
+                    || _numberSuccessfulBrokerAgreements.Dirty
+                    || _officeOfRecordationName.Dirty
+                    || _onlyOneEntity.Dirty
+                    || _optionSelectedReason.Dirty
+                    || _originalPincipalAmountSecured.Dirty
+                    || _otherOptionDescription.Dirty
+                    || _parentAffiliatedCoName.Dirty
+                    || _payToTheOrderOfDescription.Dirty
+                    || _perDiemCalculationMethodType.Dirty
+                    || _planCode.Dirty
+                    || _planCodeDescription.Dirty
+                    || _planCodeId.Dirty
+                    || _preliminaryTitleReportDate.Dirty
+                    || _prepaymentPenaltyDescriptions1.Dirty
+                    || _prepaymentPenaltyDescriptions2.Dirty
+                    || _prepaymentPenaltyDescriptions3.Dirty
+                    || _processingNumberDays.Dirty
+                    || _programCode.Dirty
+                    || _programSponsor.Dirty
+                    || _propertyIsLandTrust.Dirty
+                    || _propertyTaxMessageDescription.Dirty
+                    || _rateLockRefundConditions1.Dirty
+                    || _rateLockRefundConditions2.Dirty
+                    || _rateLockRefundConditions3.Dirty
+                    || _recordingJurisdictionName.Dirty
+                    || _refinanceBalloonMortgageGuarantee.Dirty
+                    || _refinanceRightOfRescissionExemptFlag.Dirty
+                    || _renewalExtensionDescription.Dirty
+                    || _rescissionDate.Dirty
+                    || _respaHudDetails.Dirty
+                    || _rMLANamePreceding10Years.Dirty
+                    || _rmlLenderBrokerRepresents.Dirty
+                    || _secondTransferYear.Dirty
+                    || _secondTransferYearValue.Dirty
+                    || _signatureDateFor1003.Dirty
+                    || _specialFloodHazardAreaIndictor.Dirty
+                    || _stateLicenses.Dirty
+                    || _suretyCompanyName.Dirty
+                    || _syncInterestDateDisbursementDate.Dirty
+                    || _termiteReportRequiredIndicator.Dirty
+                    || _textDescription.Dirty
+                    || _thirdTransferYear.Dirty
+                    || _thirdTransferYearValue.Dirty
+                    || _titleReportItemsDescription.Dirty
+                    || _titleReportRequiredEndorsementsDescription.Dirty
+                    || _totalDisbursed.Dirty
+                    || _trust2Beneficiaries.Dirty
+                    || _weConductBusiness.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalLienHolderAddress = _additionalLienHolderAddress; additionalLienHolderAddress.Clean = value; _additionalLienHolderAddress = additionalLienHolderAddress;
-                var additionalLienHolderAddressCity = _additionalLienHolderAddressCity; additionalLienHolderAddressCity.Clean = value; _additionalLienHolderAddressCity = additionalLienHolderAddressCity;
-                var additionalLienHolderAddressPostalCode = _additionalLienHolderAddressPostalCode; additionalLienHolderAddressPostalCode.Clean = value; _additionalLienHolderAddressPostalCode = additionalLienHolderAddressPostalCode;
-                var additionalLienHolderAddressState = _additionalLienHolderAddressState; additionalLienHolderAddressState.Clean = value; _additionalLienHolderAddressState = additionalLienHolderAddressState;
-                var additionalLienHolderName = _additionalLienHolderName; additionalLienHolderName.Clean = value; _additionalLienHolderName = additionalLienHolderName;
-                var additionalOriginalPincipalAmountSecured = _additionalOriginalPincipalAmountSecured; additionalOriginalPincipalAmountSecured.Clean = value; _additionalOriginalPincipalAmountSecured = additionalOriginalPincipalAmountSecured;
-                var additionalSigVerbiageType = _additionalSigVerbiageType; additionalSigVerbiageType.Clean = value; _additionalSigVerbiageType = additionalSigVerbiageType;
-                var additionalStateDisclosures = _additionalStateDisclosures; additionalStateDisclosures.Clean = value; _additionalStateDisclosures = additionalStateDisclosures;
-                var affectedByInterest = _affectedByInterest; affectedByInterest.Clean = value; _affectedByInterest = affectedByInterest;
-                var alternateLender = _alternateLender; alternateLender.Clean = value; _alternateLender = alternateLender;
-                var altLenderId = _altLenderId; altLenderId.Clean = value; _altLenderId = altLenderId;
-                var antiSteeringLoanOptions = _antiSteeringLoanOptions; antiSteeringLoanOptions.Clean = value; _antiSteeringLoanOptions = antiSteeringLoanOptions;
-                var areAbleToServiceIndicator = _areAbleToServiceIndicator; areAbleToServiceIndicator.Clean = value; _areAbleToServiceIndicator = areAbleToServiceIndicator;
-                var associatedDocumentNumber = _associatedDocumentNumber; associatedDocumentNumber.Clean = value; _associatedDocumentNumber = associatedDocumentNumber;
-                var beneficiaries = _beneficiaries; beneficiaries.Clean = value; _beneficiaries = beneficiaries;
-                var borrowerConsentType1 = _borrowerConsentType1; borrowerConsentType1.Clean = value; _borrowerConsentType1 = borrowerConsentType1;
-                var borrowerConsentType2 = _borrowerConsentType2; borrowerConsentType2.Clean = value; _borrowerConsentType2 = borrowerConsentType2;
-                var borrowerOrganizationType1 = _borrowerOrganizationType1; borrowerOrganizationType1.Clean = value; _borrowerOrganizationType1 = borrowerOrganizationType1;
-                var borrowerOrganizationType2 = _borrowerOrganizationType2; borrowerOrganizationType2.Clean = value; _borrowerOrganizationType2 = borrowerOrganizationType2;
-                var borrowerOrganizedUnderTheLawsOfJurisdictionName1 = _borrowerOrganizedUnderTheLawsOfJurisdictionName1; borrowerOrganizedUnderTheLawsOfJurisdictionName1.Clean = value; _borrowerOrganizedUnderTheLawsOfJurisdictionName1 = borrowerOrganizedUnderTheLawsOfJurisdictionName1;
-                var borrowerOrganizedUnderTheLawsOfJurisdictionName2 = _borrowerOrganizedUnderTheLawsOfJurisdictionName2; borrowerOrganizedUnderTheLawsOfJurisdictionName2.Clean = value; _borrowerOrganizedUnderTheLawsOfJurisdictionName2 = borrowerOrganizedUnderTheLawsOfJurisdictionName2;
-                var borrowerTaxIdentificationNumberIdentifier1 = _borrowerTaxIdentificationNumberIdentifier1; borrowerTaxIdentificationNumberIdentifier1.Clean = value; _borrowerTaxIdentificationNumberIdentifier1 = borrowerTaxIdentificationNumberIdentifier1;
-                var borrowerTaxIdentificationNumberIdentifier2 = _borrowerTaxIdentificationNumberIdentifier2; borrowerTaxIdentificationNumberIdentifier2.Clean = value; _borrowerTaxIdentificationNumberIdentifier2 = borrowerTaxIdentificationNumberIdentifier2;
-                var borrowerTrustAmendedDateOrYear1 = _borrowerTrustAmendedDateOrYear1; borrowerTrustAmendedDateOrYear1.Clean = value; _borrowerTrustAmendedDateOrYear1 = borrowerTrustAmendedDateOrYear1;
-                var borrowerTrustAmendedDateOrYear2 = _borrowerTrustAmendedDateOrYear2; borrowerTrustAmendedDateOrYear2.Clean = value; _borrowerTrustAmendedDateOrYear2 = borrowerTrustAmendedDateOrYear2;
-                var borrowerTrustDateOrYear1 = _borrowerTrustDateOrYear1; borrowerTrustDateOrYear1.Clean = value; _borrowerTrustDateOrYear1 = borrowerTrustDateOrYear1;
-                var borrowerTrustDateOrYear2 = _borrowerTrustDateOrYear2; borrowerTrustDateOrYear2.Clean = value; _borrowerTrustDateOrYear2 = borrowerTrustDateOrYear2;
-                var borrowerUnparsedName1 = _borrowerUnparsedName1; borrowerUnparsedName1.Clean = value; _borrowerUnparsedName1 = borrowerUnparsedName1;
-                var borrowerUnparsedName2 = _borrowerUnparsedName2; borrowerUnparsedName2.Clean = value; _borrowerUnparsedName2 = borrowerUnparsedName2;
-                var brokerAuthorizedRepresentativeTitle = _brokerAuthorizedRepresentativeTitle; brokerAuthorizedRepresentativeTitle.Clean = value; _brokerAuthorizedRepresentativeTitle = brokerAuthorizedRepresentativeTitle;
-                var brokerCompensationMethod = _brokerCompensationMethod; brokerCompensationMethod.Clean = value; _brokerCompensationMethod = brokerCompensationMethod;
-                var brokerFeeRefundConditions1 = _brokerFeeRefundConditions1; brokerFeeRefundConditions1.Clean = value; _brokerFeeRefundConditions1 = brokerFeeRefundConditions1;
-                var brokerFeeRefundConditions2 = _brokerFeeRefundConditions2; brokerFeeRefundConditions2.Clean = value; _brokerFeeRefundConditions2 = brokerFeeRefundConditions2;
-                var brokerFeeRefundConditions3 = _brokerFeeRefundConditions3; brokerFeeRefundConditions3.Clean = value; _brokerFeeRefundConditions3 = brokerFeeRefundConditions3;
-                var brokerForPlacingLoan = _brokerForPlacingLoan; brokerForPlacingLoan.Clean = value; _brokerForPlacingLoan = brokerForPlacingLoan;
-                var brokerInterestRateEffect = _brokerInterestRateEffect; brokerInterestRateEffect.Clean = value; _brokerInterestRateEffect = brokerInterestRateEffect;
-                var brokerLenderRelationship = _brokerLenderRelationship; brokerLenderRelationship.Clean = value; _brokerLenderRelationship = brokerLenderRelationship;
-                var brokerLicenseNumberIdentifier = _brokerLicenseNumberIdentifier; brokerLicenseNumberIdentifier.Clean = value; _brokerLicenseNumberIdentifier = brokerLicenseNumberIdentifier;
-                var brokerNameAsLicensed = _brokerNameAsLicensed; brokerNameAsLicensed.Clean = value; _brokerNameAsLicensed = brokerNameAsLicensed;
-                var brokerTaxIdentificationNumberIdentifier = _brokerTaxIdentificationNumberIdentifier; brokerTaxIdentificationNumberIdentifier.Clean = value; _brokerTaxIdentificationNumberIdentifier = brokerTaxIdentificationNumberIdentifier;
-                var brokerWithLenders = _brokerWithLenders; brokerWithLenders.Clean = value; _brokerWithLenders = brokerWithLenders;
-                var cashCheckFromBorrower = _cashCheckFromBorrower; cashCheckFromBorrower.Clean = value; _cashCheckFromBorrower = cashCheckFromBorrower;
-                var closingDocsLoanProgramType = _closingDocsLoanProgramType; closingDocsLoanProgramType.Clean = value; _closingDocsLoanProgramType = closingDocsLoanProgramType;
-                var closingEntities = _closingEntities; closingEntities.Clean = value; _closingEntities = closingEntities;
-                var closingProvider = _closingProvider; closingProvider.Clean = value; _closingProvider = closingProvider;
-                var closingState = _closingState; closingState.Clean = value; _closingState = closingState;
-                var complianceJurisdictionCounty = _complianceJurisdictionCounty; complianceJurisdictionCounty.Clean = value; _complianceJurisdictionCounty = complianceJurisdictionCounty;
-                var compliancePropertyIdentifiedDate = _compliancePropertyIdentifiedDate; compliancePropertyIdentifiedDate.Clean = value; _compliancePropertyIdentifiedDate = compliancePropertyIdentifiedDate;
-                var conditionDescription = _conditionDescription; conditionDescription.Clean = value; _conditionDescription = conditionDescription;
-                var conflictofInterestCheck1 = _conflictofInterestCheck1; conflictofInterestCheck1.Clean = value; _conflictofInterestCheck1 = conflictofInterestCheck1;
-                var conflictofInterestCheck2 = _conflictofInterestCheck2; conflictofInterestCheck2.Clean = value; _conflictofInterestCheck2 = conflictofInterestCheck2;
-                var conflictofInterestCheck3 = _conflictofInterestCheck3; conflictofInterestCheck3.Clean = value; _conflictofInterestCheck3 = conflictofInterestCheck3;
-                var conflictofInterestCheck4 = _conflictofInterestCheck4; conflictofInterestCheck4.Clean = value; _conflictofInterestCheck4 = conflictofInterestCheck4;
-                var conflictofInterestCheck5 = _conflictofInterestCheck5; conflictofInterestCheck5.Clean = value; _conflictofInterestCheck5 = conflictofInterestCheck5;
-                var conflictofInterestCheck6 = _conflictofInterestCheck6; conflictofInterestCheck6.Clean = value; _conflictofInterestCheck6 = conflictofInterestCheck6;
-                var coopApartmentNumber = _coopApartmentNumber; coopApartmentNumber.Clean = value; _coopApartmentNumber = coopApartmentNumber;
-                var coopAssignmentLeaseDate = _coopAssignmentLeaseDate; coopAssignmentLeaseDate.Clean = value; _coopAssignmentLeaseDate = coopAssignmentLeaseDate;
-                var coopAttorneyInFact = _coopAttorneyInFact; coopAttorneyInFact.Clean = value; _coopAttorneyInFact = coopAttorneyInFact;
-                var coopBuildingName = _coopBuildingName; coopBuildingName.Clean = value; _coopBuildingName = coopBuildingName;
-                var coopCompanyExistsUnderTHeLawsOf = _coopCompanyExistsUnderTHeLawsOf; coopCompanyExistsUnderTHeLawsOf.Clean = value; _coopCompanyExistsUnderTHeLawsOf = coopCompanyExistsUnderTHeLawsOf;
-                var coopCompanyName = _coopCompanyName; coopCompanyName.Clean = value; _coopCompanyName = coopCompanyName;
-                var coopProprietaryLeaseDate = _coopProprietaryLeaseDate; coopProprietaryLeaseDate.Clean = value; _coopProprietaryLeaseDate = coopProprietaryLeaseDate;
-                var coopSharesOwned = _coopSharesOwned; coopSharesOwned.Clean = value; _coopSharesOwned = coopSharesOwned;
-                var coopStockCertificationNumber = _coopStockCertificationNumber; coopStockCertificationNumber.Clean = value; _coopStockCertificationNumber = coopStockCertificationNumber;
-                var coopVacancyPercentNotification = _coopVacancyPercentNotification; coopVacancyPercentNotification.Clean = value; _coopVacancyPercentNotification = coopVacancyPercentNotification;
-                var customOtherRiderDescription = _customOtherRiderDescription; customOtherRiderDescription.Clean = value; _customOtherRiderDescription = customOtherRiderDescription;
-                var disbursementDate = _disbursementDate; disbursementDate.Clean = value; _disbursementDate = disbursementDate;
-                var disbursementsToBorrower = _disbursementsToBorrower; disbursementsToBorrower.Clean = value; _disbursementsToBorrower = disbursementsToBorrower;
-                var disclosureAlternateLender = _disclosureAlternateLender; disclosureAlternateLender.Clean = value; _disclosureAlternateLender = disclosureAlternateLender;
-                var disclosureCompanyFunction = _disclosureCompanyFunction; disclosureCompanyFunction.Clean = value; _disclosureCompanyFunction = disclosureCompanyFunction;
-                var disclosurePlanCode = _disclosurePlanCode; disclosurePlanCode.Clean = value; _disclosurePlanCode = disclosurePlanCode;
-                var docReportGUID = _docReportGUID; docReportGUID.Clean = value; _docReportGUID = docReportGUID;
-                var documentPreparationDate = _documentPreparationDate; documentPreparationDate.Clean = value; _documentPreparationDate = documentPreparationDate;
-                var documentSigningDate = _documentSigningDate; documentSigningDate.Clean = value; _documentSigningDate = documentSigningDate;
-                var drawCity = _drawCity; drawCity.Clean = value; _drawCity = drawCity;
-                var drawCounty = _drawCounty; drawCounty.Clean = value; _drawCounty = drawCounty;
-                var drawState = _drawState; drawState.Clean = value; _drawState = drawState;
-                var employeeofMortgageLender = _employeeofMortgageLender; employeeofMortgageLender.Clean = value; _employeeofMortgageLender = employeeofMortgageLender;
-                var expectToAssignSellOrTransferPercent = _expectToAssignSellOrTransferPercent; expectToAssignSellOrTransferPercent.Clean = value; _expectToAssignSellOrTransferPercent = expectToAssignSellOrTransferPercent;
-                var finalVestingDescription = _finalVestingDescription; finalVestingDescription.Clean = value; _finalVestingDescription = finalVestingDescription;
-                var firstTransferYear = _firstTransferYear; firstTransferYear.Clean = value; _firstTransferYear = firstTransferYear;
-                var firstTransferYearValue = _firstTransferYearValue; firstTransferYearValue.Clean = value; _firstTransferYearValue = firstTransferYearValue;
-                var hoursDocumentsNeededPriorToDisbursementCount = _hoursDocumentsNeededPriorToDisbursementCount; hoursDocumentsNeededPriorToDisbursementCount.Clean = value; _hoursDocumentsNeededPriorToDisbursementCount = hoursDocumentsNeededPriorToDisbursementCount;
-                var housingIndicator = _housingIndicator; housingIndicator.Clean = value; _housingIndicator = housingIndicator;
-                var housingProgramName = _housingProgramName; housingProgramName.Clean = value; _housingProgramName = housingProgramName;
-                var hUD1FileNumberIdentifier = _hUD1FileNumberIdentifier; hUD1FileNumberIdentifier.Clean = value; _hUD1FileNumberIdentifier = hUD1FileNumberIdentifier;
-                var hUD1SettlementAgentUnparsedAddress = _hUD1SettlementAgentUnparsedAddress; hUD1SettlementAgentUnparsedAddress.Clean = value; _hUD1SettlementAgentUnparsedAddress = hUD1SettlementAgentUnparsedAddress;
-                var hUD1SettlementAgentUnparsedName = _hUD1SettlementAgentUnparsedName; hUD1SettlementAgentUnparsedName.Clean = value; _hUD1SettlementAgentUnparsedName = hUD1SettlementAgentUnparsedName;
-                var hUD1SettlementDate = _hUD1SettlementDate; hUD1SettlementDate.Clean = value; _hUD1SettlementDate = hUD1SettlementDate;
-                var id = _id; id.Clean = value; _id = id;
-                var includeSafeHaborDisclosure = _includeSafeHaborDisclosure; includeSafeHaborDisclosure.Clean = value; _includeSafeHaborDisclosure = includeSafeHaborDisclosure;
-                var investorCode = _investorCode; investorCode.Clean = value; _investorCode = investorCode;
-                var lastAuditDate = _lastAuditDate; lastAuditDate.Clean = value; _lastAuditDate = lastAuditDate;
-                var lastDocumentOrdered = _lastDocumentOrdered; lastDocumentOrdered.Clean = value; _lastDocumentOrdered = lastDocumentOrdered;
-                var legalAttached = _legalAttached; legalAttached.Clean = value; _legalAttached = legalAttached;
-                var lenderAuthorizedRepresentativeTitle = _lenderAuthorizedRepresentativeTitle; lenderAuthorizedRepresentativeTitle.Clean = value; _lenderAuthorizedRepresentativeTitle = lenderAuthorizedRepresentativeTitle;
-                var lenderBrokerRepresents = _lenderBrokerRepresents; lenderBrokerRepresents.Clean = value; _lenderBrokerRepresents = lenderBrokerRepresents;
-                var lienHolderAddress = _lienHolderAddress; lienHolderAddress.Clean = value; _lienHolderAddress = lienHolderAddress;
-                var lienHolderAddressCity = _lienHolderAddressCity; lienHolderAddressCity.Clean = value; _lienHolderAddressCity = lienHolderAddressCity;
-                var lienHolderAddressPostalCode = _lienHolderAddressPostalCode; lienHolderAddressPostalCode.Clean = value; _lienHolderAddressPostalCode = lienHolderAddressPostalCode;
-                var lienHolderAddressState = _lienHolderAddressState; lienHolderAddressState.Clean = value; _lienHolderAddressState = lienHolderAddressState;
-                var lienHolderName = _lienHolderName; lienHolderName.Clean = value; _lienHolderName = lienHolderName;
-                var loanIsLocked = _loanIsLocked; loanIsLocked.Clean = value; _loanIsLocked = loanIsLocked;
-                var loanOption = _loanOption; loanOption.Clean = value; _loanOption = loanOption;
-                var lockInFeeType = _lockInFeeType; lockInFeeType.Clean = value; _lockInFeeType = lockInFeeType;
-                var mfgHomeAnchored = _mfgHomeAnchored; mfgHomeAnchored.Clean = value; _mfgHomeAnchored = mfgHomeAnchored;
-                var mfgHomeCertificateOfTitleIdentifier = _mfgHomeCertificateOfTitleIdentifier; mfgHomeCertificateOfTitleIdentifier.Clean = value; _mfgHomeCertificateOfTitleIdentifier = mfgHomeCertificateOfTitleIdentifier;
-                var mfgHomeCertificateOfTitleType = _mfgHomeCertificateOfTitleType; mfgHomeCertificateOfTitleType.Clean = value; _mfgHomeCertificateOfTitleType = mfgHomeCertificateOfTitleType;
-                var mfgHomeDescription = _mfgHomeDescription; mfgHomeDescription.Clean = value; _mfgHomeDescription = mfgHomeDescription;
-                var mfgHomeHUDCertificationLabelIdentifier = _mfgHomeHUDCertificationLabelIdentifier; mfgHomeHUDCertificationLabelIdentifier.Clean = value; _mfgHomeHUDCertificationLabelIdentifier = mfgHomeHUDCertificationLabelIdentifier;
-                var mfgHomeLengthFeetCount = _mfgHomeLengthFeetCount; mfgHomeLengthFeetCount.Clean = value; _mfgHomeLengthFeetCount = mfgHomeLengthFeetCount;
-                var mfgHomeMakeIdentifier = _mfgHomeMakeIdentifier; mfgHomeMakeIdentifier.Clean = value; _mfgHomeMakeIdentifier = mfgHomeMakeIdentifier;
-                var mfgHomeManufacturer = _mfgHomeManufacturer; mfgHomeManufacturer.Clean = value; _mfgHomeManufacturer = mfgHomeManufacturer;
-                var mfgHomeManufacturerAddress = _mfgHomeManufacturerAddress; mfgHomeManufacturerAddress.Clean = value; _mfgHomeManufacturerAddress = mfgHomeManufacturerAddress;
-                var mfgHomeManufacturerCity = _mfgHomeManufacturerCity; mfgHomeManufacturerCity.Clean = value; _mfgHomeManufacturerCity = mfgHomeManufacturerCity;
-                var mfgHomeManufacturerPhoneNumber = _mfgHomeManufacturerPhoneNumber; mfgHomeManufacturerPhoneNumber.Clean = value; _mfgHomeManufacturerPhoneNumber = mfgHomeManufacturerPhoneNumber;
-                var mfgHomeManufacturerPostalCode = _mfgHomeManufacturerPostalCode; mfgHomeManufacturerPostalCode.Clean = value; _mfgHomeManufacturerPostalCode = mfgHomeManufacturerPostalCode;
-                var mfgHomeManufacturerState = _mfgHomeManufacturerState; mfgHomeManufacturerState.Clean = value; _mfgHomeManufacturerState = mfgHomeManufacturerState;
-                var mfgHomeManufactureYear = _mfgHomeManufactureYear; mfgHomeManufactureYear.Clean = value; _mfgHomeManufactureYear = mfgHomeManufactureYear;
-                var mfgHomeModelIdentifier = _mfgHomeModelIdentifier; mfgHomeModelIdentifier.Clean = value; _mfgHomeModelIdentifier = mfgHomeModelIdentifier;
-                var mfgHomeNewOrUsed = _mfgHomeNewOrUsed; mfgHomeNewOrUsed.Clean = value; _mfgHomeNewOrUsed = mfgHomeNewOrUsed;
-                var mfgHomeSerialNumberIdentifier = _mfgHomeSerialNumberIdentifier; mfgHomeSerialNumberIdentifier.Clean = value; _mfgHomeSerialNumberIdentifier = mfgHomeSerialNumberIdentifier;
-                var mfgHomeWidthFeetCount = _mfgHomeWidthFeetCount; mfgHomeWidthFeetCount.Clean = value; _mfgHomeWidthFeetCount = mfgHomeWidthFeetCount;
-                var mineralRightsDescription = _mineralRightsDescription; mineralRightsDescription.Clean = value; _mineralRightsDescription = mineralRightsDescription;
-                var mortgageType = _mortgageType; mortgageType.Clean = value; _mortgageType = mortgageType;
-                var numberBrokerAgreements = _numberBrokerAgreements; numberBrokerAgreements.Clean = value; _numberBrokerAgreements = numberBrokerAgreements;
-                var numberSuccessfulBrokerAgreements = _numberSuccessfulBrokerAgreements; numberSuccessfulBrokerAgreements.Clean = value; _numberSuccessfulBrokerAgreements = numberSuccessfulBrokerAgreements;
-                var officeOfRecordationName = _officeOfRecordationName; officeOfRecordationName.Clean = value; _officeOfRecordationName = officeOfRecordationName;
-                var onlyOneEntity = _onlyOneEntity; onlyOneEntity.Clean = value; _onlyOneEntity = onlyOneEntity;
-                var optionSelectedReason = _optionSelectedReason; optionSelectedReason.Clean = value; _optionSelectedReason = optionSelectedReason;
-                var originalPincipalAmountSecured = _originalPincipalAmountSecured; originalPincipalAmountSecured.Clean = value; _originalPincipalAmountSecured = originalPincipalAmountSecured;
-                var otherOptionDescription = _otherOptionDescription; otherOptionDescription.Clean = value; _otherOptionDescription = otherOptionDescription;
-                var parentAffiliatedCoName = _parentAffiliatedCoName; parentAffiliatedCoName.Clean = value; _parentAffiliatedCoName = parentAffiliatedCoName;
-                var payToTheOrderOfDescription = _payToTheOrderOfDescription; payToTheOrderOfDescription.Clean = value; _payToTheOrderOfDescription = payToTheOrderOfDescription;
-                var perDiemCalculationMethodType = _perDiemCalculationMethodType; perDiemCalculationMethodType.Clean = value; _perDiemCalculationMethodType = perDiemCalculationMethodType;
-                var planCode = _planCode; planCode.Clean = value; _planCode = planCode;
-                var planCodeDescription = _planCodeDescription; planCodeDescription.Clean = value; _planCodeDescription = planCodeDescription;
-                var planCodeId = _planCodeId; planCodeId.Clean = value; _planCodeId = planCodeId;
-                var preliminaryTitleReportDate = _preliminaryTitleReportDate; preliminaryTitleReportDate.Clean = value; _preliminaryTitleReportDate = preliminaryTitleReportDate;
-                var prepaymentPenaltyDescriptions1 = _prepaymentPenaltyDescriptions1; prepaymentPenaltyDescriptions1.Clean = value; _prepaymentPenaltyDescriptions1 = prepaymentPenaltyDescriptions1;
-                var prepaymentPenaltyDescriptions2 = _prepaymentPenaltyDescriptions2; prepaymentPenaltyDescriptions2.Clean = value; _prepaymentPenaltyDescriptions2 = prepaymentPenaltyDescriptions2;
-                var prepaymentPenaltyDescriptions3 = _prepaymentPenaltyDescriptions3; prepaymentPenaltyDescriptions3.Clean = value; _prepaymentPenaltyDescriptions3 = prepaymentPenaltyDescriptions3;
-                var processingNumberDays = _processingNumberDays; processingNumberDays.Clean = value; _processingNumberDays = processingNumberDays;
-                var programCode = _programCode; programCode.Clean = value; _programCode = programCode;
-                var programSponsor = _programSponsor; programSponsor.Clean = value; _programSponsor = programSponsor;
-                var propertyIsLandTrust = _propertyIsLandTrust; propertyIsLandTrust.Clean = value; _propertyIsLandTrust = propertyIsLandTrust;
-                var propertyTaxMessageDescription = _propertyTaxMessageDescription; propertyTaxMessageDescription.Clean = value; _propertyTaxMessageDescription = propertyTaxMessageDescription;
-                var rateLockRefundConditions1 = _rateLockRefundConditions1; rateLockRefundConditions1.Clean = value; _rateLockRefundConditions1 = rateLockRefundConditions1;
-                var rateLockRefundConditions2 = _rateLockRefundConditions2; rateLockRefundConditions2.Clean = value; _rateLockRefundConditions2 = rateLockRefundConditions2;
-                var rateLockRefundConditions3 = _rateLockRefundConditions3; rateLockRefundConditions3.Clean = value; _rateLockRefundConditions3 = rateLockRefundConditions3;
-                var recordingJurisdictionName = _recordingJurisdictionName; recordingJurisdictionName.Clean = value; _recordingJurisdictionName = recordingJurisdictionName;
-                var refinanceBalloonMortgageGuarantee = _refinanceBalloonMortgageGuarantee; refinanceBalloonMortgageGuarantee.Clean = value; _refinanceBalloonMortgageGuarantee = refinanceBalloonMortgageGuarantee;
-                var refinanceRightOfRescissionExemptFlag = _refinanceRightOfRescissionExemptFlag; refinanceRightOfRescissionExemptFlag.Clean = value; _refinanceRightOfRescissionExemptFlag = refinanceRightOfRescissionExemptFlag;
-                var renewalExtensionDescription = _renewalExtensionDescription; renewalExtensionDescription.Clean = value; _renewalExtensionDescription = renewalExtensionDescription;
-                var rescissionDate = _rescissionDate; rescissionDate.Clean = value; _rescissionDate = rescissionDate;
-                var respaHudDetails = _respaHudDetails; respaHudDetails.Clean = value; _respaHudDetails = respaHudDetails;
-                var rMLANamePreceding10Years = _rMLANamePreceding10Years; rMLANamePreceding10Years.Clean = value; _rMLANamePreceding10Years = rMLANamePreceding10Years;
-                var rmlLenderBrokerRepresents = _rmlLenderBrokerRepresents; rmlLenderBrokerRepresents.Clean = value; _rmlLenderBrokerRepresents = rmlLenderBrokerRepresents;
-                var secondTransferYear = _secondTransferYear; secondTransferYear.Clean = value; _secondTransferYear = secondTransferYear;
-                var secondTransferYearValue = _secondTransferYearValue; secondTransferYearValue.Clean = value; _secondTransferYearValue = secondTransferYearValue;
-                var signatureDateFor1003 = _signatureDateFor1003; signatureDateFor1003.Clean = value; _signatureDateFor1003 = signatureDateFor1003;
-                var specialFloodHazardAreaIndictor = _specialFloodHazardAreaIndictor; specialFloodHazardAreaIndictor.Clean = value; _specialFloodHazardAreaIndictor = specialFloodHazardAreaIndictor;
-                var stateLicenses = _stateLicenses; stateLicenses.Clean = value; _stateLicenses = stateLicenses;
-                var suretyCompanyName = _suretyCompanyName; suretyCompanyName.Clean = value; _suretyCompanyName = suretyCompanyName;
-                var syncInterestDateDisbursementDate = _syncInterestDateDisbursementDate; syncInterestDateDisbursementDate.Clean = value; _syncInterestDateDisbursementDate = syncInterestDateDisbursementDate;
-                var termiteReportRequiredIndicator = _termiteReportRequiredIndicator; termiteReportRequiredIndicator.Clean = value; _termiteReportRequiredIndicator = termiteReportRequiredIndicator;
-                var textDescription = _textDescription; textDescription.Clean = value; _textDescription = textDescription;
-                var thirdTransferYear = _thirdTransferYear; thirdTransferYear.Clean = value; _thirdTransferYear = thirdTransferYear;
-                var thirdTransferYearValue = _thirdTransferYearValue; thirdTransferYearValue.Clean = value; _thirdTransferYearValue = thirdTransferYearValue;
-                var titleReportItemsDescription = _titleReportItemsDescription; titleReportItemsDescription.Clean = value; _titleReportItemsDescription = titleReportItemsDescription;
-                var titleReportRequiredEndorsementsDescription = _titleReportRequiredEndorsementsDescription; titleReportRequiredEndorsementsDescription.Clean = value; _titleReportRequiredEndorsementsDescription = titleReportRequiredEndorsementsDescription;
-                var totalDisbursed = _totalDisbursed; totalDisbursed.Clean = value; _totalDisbursed = totalDisbursed;
-                var trust2Beneficiaries = _trust2Beneficiaries; trust2Beneficiaries.Clean = value; _trust2Beneficiaries = trust2Beneficiaries;
-                var weConductBusiness = _weConductBusiness; weConductBusiness.Clean = value; _weConductBusiness = weConductBusiness;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalLienHolderAddress.Dirty = value;
+                _additionalLienHolderAddressCity.Dirty = value;
+                _additionalLienHolderAddressPostalCode.Dirty = value;
+                _additionalLienHolderAddressState.Dirty = value;
+                _additionalLienHolderName.Dirty = value;
+                _additionalOriginalPincipalAmountSecured.Dirty = value;
+                _additionalSigVerbiageType.Dirty = value;
+                _additionalStateDisclosures.Dirty = value;
+                _affectedByInterest.Dirty = value;
+                _alternateLender.Dirty = value;
+                _altLenderId.Dirty = value;
+                _antiSteeringLoanOptions.Dirty = value;
+                _areAbleToServiceIndicator.Dirty = value;
+                _associatedDocumentNumber.Dirty = value;
+                _beneficiaries.Dirty = value;
+                _borrowerConsentType1.Dirty = value;
+                _borrowerConsentType2.Dirty = value;
+                _borrowerOrganizationType1.Dirty = value;
+                _borrowerOrganizationType2.Dirty = value;
+                _borrowerOrganizedUnderTheLawsOfJurisdictionName1.Dirty = value;
+                _borrowerOrganizedUnderTheLawsOfJurisdictionName2.Dirty = value;
+                _borrowerTaxIdentificationNumberIdentifier1.Dirty = value;
+                _borrowerTaxIdentificationNumberIdentifier2.Dirty = value;
+                _borrowerTrustAmendedDateOrYear1.Dirty = value;
+                _borrowerTrustAmendedDateOrYear2.Dirty = value;
+                _borrowerTrustDateOrYear1.Dirty = value;
+                _borrowerTrustDateOrYear2.Dirty = value;
+                _borrowerUnparsedName1.Dirty = value;
+                _borrowerUnparsedName2.Dirty = value;
+                _brokerAuthorizedRepresentativeTitle.Dirty = value;
+                _brokerCompensationMethod.Dirty = value;
+                _brokerFeeRefundConditions1.Dirty = value;
+                _brokerFeeRefundConditions2.Dirty = value;
+                _brokerFeeRefundConditions3.Dirty = value;
+                _brokerForPlacingLoan.Dirty = value;
+                _brokerInterestRateEffect.Dirty = value;
+                _brokerLenderRelationship.Dirty = value;
+                _brokerLicenseNumberIdentifier.Dirty = value;
+                _brokerNameAsLicensed.Dirty = value;
+                _brokerTaxIdentificationNumberIdentifier.Dirty = value;
+                _brokerWithLenders.Dirty = value;
+                _cashCheckFromBorrower.Dirty = value;
+                _closingDocsLoanProgramType.Dirty = value;
+                _closingEntities.Dirty = value;
+                _closingProvider.Dirty = value;
+                _closingState.Dirty = value;
+                _complianceJurisdictionCounty.Dirty = value;
+                _compliancePropertyIdentifiedDate.Dirty = value;
+                _conditionDescription.Dirty = value;
+                _conflictofInterestCheck1.Dirty = value;
+                _conflictofInterestCheck2.Dirty = value;
+                _conflictofInterestCheck3.Dirty = value;
+                _conflictofInterestCheck4.Dirty = value;
+                _conflictofInterestCheck5.Dirty = value;
+                _conflictofInterestCheck6.Dirty = value;
+                _coopApartmentNumber.Dirty = value;
+                _coopAssignmentLeaseDate.Dirty = value;
+                _coopAttorneyInFact.Dirty = value;
+                _coopBuildingName.Dirty = value;
+                _coopCompanyExistsUnderTHeLawsOf.Dirty = value;
+                _coopCompanyName.Dirty = value;
+                _coopProprietaryLeaseDate.Dirty = value;
+                _coopSharesOwned.Dirty = value;
+                _coopStockCertificationNumber.Dirty = value;
+                _coopVacancyPercentNotification.Dirty = value;
+                _customOtherRiderDescription.Dirty = value;
+                _disbursementDate.Dirty = value;
+                _disbursementsToBorrower.Dirty = value;
+                _disclosureAlternateLender.Dirty = value;
+                _disclosureCompanyFunction.Dirty = value;
+                _disclosurePlanCode.Dirty = value;
+                _docReportGUID.Dirty = value;
+                _documentPreparationDate.Dirty = value;
+                _documentSigningDate.Dirty = value;
+                _drawCity.Dirty = value;
+                _drawCounty.Dirty = value;
+                _drawState.Dirty = value;
+                _employeeofMortgageLender.Dirty = value;
+                _expectToAssignSellOrTransferPercent.Dirty = value;
+                _finalVestingDescription.Dirty = value;
+                _firstTransferYear.Dirty = value;
+                _firstTransferYearValue.Dirty = value;
+                _hoursDocumentsNeededPriorToDisbursementCount.Dirty = value;
+                _housingIndicator.Dirty = value;
+                _housingProgramName.Dirty = value;
+                _hUD1FileNumberIdentifier.Dirty = value;
+                _hUD1SettlementAgentUnparsedAddress.Dirty = value;
+                _hUD1SettlementAgentUnparsedName.Dirty = value;
+                _hUD1SettlementDate.Dirty = value;
+                _id.Dirty = value;
+                _includeSafeHaborDisclosure.Dirty = value;
+                _investorCode.Dirty = value;
+                _lastAuditDate.Dirty = value;
+                _lastDocumentOrdered.Dirty = value;
+                _legalAttached.Dirty = value;
+                _lenderAuthorizedRepresentativeTitle.Dirty = value;
+                _lenderBrokerRepresents.Dirty = value;
+                _lienHolderAddress.Dirty = value;
+                _lienHolderAddressCity.Dirty = value;
+                _lienHolderAddressPostalCode.Dirty = value;
+                _lienHolderAddressState.Dirty = value;
+                _lienHolderName.Dirty = value;
+                _loanIsLocked.Dirty = value;
+                _loanOption.Dirty = value;
+                _lockInFeeType.Dirty = value;
+                _mfgHomeAnchored.Dirty = value;
+                _mfgHomeCertificateOfTitleIdentifier.Dirty = value;
+                _mfgHomeCertificateOfTitleType.Dirty = value;
+                _mfgHomeDescription.Dirty = value;
+                _mfgHomeHUDCertificationLabelIdentifier.Dirty = value;
+                _mfgHomeLengthFeetCount.Dirty = value;
+                _mfgHomeMakeIdentifier.Dirty = value;
+                _mfgHomeManufacturer.Dirty = value;
+                _mfgHomeManufacturerAddress.Dirty = value;
+                _mfgHomeManufacturerCity.Dirty = value;
+                _mfgHomeManufacturerPhoneNumber.Dirty = value;
+                _mfgHomeManufacturerPostalCode.Dirty = value;
+                _mfgHomeManufacturerState.Dirty = value;
+                _mfgHomeManufactureYear.Dirty = value;
+                _mfgHomeModelIdentifier.Dirty = value;
+                _mfgHomeNewOrUsed.Dirty = value;
+                _mfgHomeSerialNumberIdentifier.Dirty = value;
+                _mfgHomeWidthFeetCount.Dirty = value;
+                _mineralRightsDescription.Dirty = value;
+                _mortgageType.Dirty = value;
+                _numberBrokerAgreements.Dirty = value;
+                _numberSuccessfulBrokerAgreements.Dirty = value;
+                _officeOfRecordationName.Dirty = value;
+                _onlyOneEntity.Dirty = value;
+                _optionSelectedReason.Dirty = value;
+                _originalPincipalAmountSecured.Dirty = value;
+                _otherOptionDescription.Dirty = value;
+                _parentAffiliatedCoName.Dirty = value;
+                _payToTheOrderOfDescription.Dirty = value;
+                _perDiemCalculationMethodType.Dirty = value;
+                _planCode.Dirty = value;
+                _planCodeDescription.Dirty = value;
+                _planCodeId.Dirty = value;
+                _preliminaryTitleReportDate.Dirty = value;
+                _prepaymentPenaltyDescriptions1.Dirty = value;
+                _prepaymentPenaltyDescriptions2.Dirty = value;
+                _prepaymentPenaltyDescriptions3.Dirty = value;
+                _processingNumberDays.Dirty = value;
+                _programCode.Dirty = value;
+                _programSponsor.Dirty = value;
+                _propertyIsLandTrust.Dirty = value;
+                _propertyTaxMessageDescription.Dirty = value;
+                _rateLockRefundConditions1.Dirty = value;
+                _rateLockRefundConditions2.Dirty = value;
+                _rateLockRefundConditions3.Dirty = value;
+                _recordingJurisdictionName.Dirty = value;
+                _refinanceBalloonMortgageGuarantee.Dirty = value;
+                _refinanceRightOfRescissionExemptFlag.Dirty = value;
+                _renewalExtensionDescription.Dirty = value;
+                _rescissionDate.Dirty = value;
+                _respaHudDetails.Dirty = value;
+                _rMLANamePreceding10Years.Dirty = value;
+                _rmlLenderBrokerRepresents.Dirty = value;
+                _secondTransferYear.Dirty = value;
+                _secondTransferYearValue.Dirty = value;
+                _signatureDateFor1003.Dirty = value;
+                _specialFloodHazardAreaIndictor.Dirty = value;
+                _stateLicenses.Dirty = value;
+                _suretyCompanyName.Dirty = value;
+                _syncInterestDateDisbursementDate.Dirty = value;
+                _termiteReportRequiredIndicator.Dirty = value;
+                _textDescription.Dirty = value;
+                _thirdTransferYear.Dirty = value;
+                _thirdTransferYearValue.Dirty = value;
+                _titleReportItemsDescription.Dirty = value;
+                _titleReportRequiredEndorsementsDescription.Dirty = value;
+                _totalDisbursed.Dirty = value;
+                _trust2Beneficiaries.Dirty = value;
+                _weConductBusiness.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDocument()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

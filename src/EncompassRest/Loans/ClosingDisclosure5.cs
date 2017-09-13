@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure5 : IClean
+    public sealed partial class ClosingDisclosure5 : IDirty
     {
         private Value<string> _cDLiabilityAfterForeclosure;
         public string CDLiabilityAfterForeclosure { get { return _cDLiabilityAfterForeclosure; } set { _cDLiabilityAfterForeclosure = value; } }
@@ -136,155 +136,150 @@ namespace EncompassRest.Loans
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private Value<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _cDLiabilityAfterForeclosure.Clean
-                    && _id.Clean
-                    && _lenderAddress.Clean
-                    && _lenderCity.Clean
-                    && _lenderContact.Clean
-                    && _lenderContactATLicenseID.Clean
-                    && _lenderContactNMLSID.Clean
-                    && _lenderEmail.Clean
-                    && _lenderName.Clean
-                    && _lenderNMLSID.Clean
-                    && _lenderPhone.Clean
-                    && _lenderState.Clean
-                    && _lenderSTLicenseID.Clean
-                    && _lenderZip.Clean
-                    && _mortgageBrokerAddress.Clean
-                    && _mortgageBrokerCity.Clean
-                    && _mortgageBrokerContact.Clean
-                    && _mortgageBrokerContactATLicenseID.Clean
-                    && _mortgageBrokerContactNMLSID.Clean
-                    && _mortgageBrokerEmail.Clean
-                    && _mortgageBrokerName.Clean
-                    && _mortgageBrokerNMLSID.Clean
-                    && _mortgageBrokerPhone.Clean
-                    && _mortgageBrokerState.Clean
-                    && _mortgageBrokerSTLicenseID.Clean
-                    && _mortgageBrokerZip.Clean
-                    && _realEstateBrokerBAddress.Clean
-                    && _realEstateBrokerBCity.Clean
-                    && _realEstateBrokerBContact.Clean
-                    && _realEstateBrokerBContactATLicenseID.Clean
-                    && _realEstateBrokerBContactNMLSID.Clean
-                    && _realEstateBrokerBEmail.Clean
-                    && _realEstateBrokerBName.Clean
-                    && _realEstateBrokerBNMLSID.Clean
-                    && _realEstateBrokerBPhone.Clean
-                    && _realEstateBrokerBState.Clean
-                    && _realEstateBrokerBSTLicenseID.Clean
-                    && _realEstateBrokerBZip.Clean
-                    && _realEstateBrokerSAddress.Clean
-                    && _realEstateBrokerSCity.Clean
-                    && _realEstateBrokerSContact.Clean
-                    && _realEstateBrokerSContactATLicenseID.Clean
-                    && _realEstateBrokerSContactNMLSID.Clean
-                    && _realEstateBrokerSEmail.Clean
-                    && _realEstateBrokerSName.Clean
-                    && _realEstateBrokerSNMLSID.Clean
-                    && _realEstateBrokerSPhone.Clean
-                    && _realEstateBrokerSState.Clean
-                    && _realEstateBrokerSSTLicenseID.Clean
-                    && _realEstateBrokerSZip.Clean
-                    && _settlementAgentAddress.Clean
-                    && _settlementAgentCity.Clean
-                    && _settlementAgentContact.Clean
-                    && _settlementAgentContactATLicenseID.Clean
-                    && _settlementAgentContactNMLSID.Clean
-                    && _settlementAgentEmail.Clean
-                    && _settlementAgentName.Clean
-                    && _settlementAgentNMLSID.Clean
-                    && _settlementAgentPhone.Clean
-                    && _settlementAgentState.Clean
-                    && _settlementAgentSTLicenseID.Clean
-                    && _settlementAgentZip.Clean
-                    && _signatureType.Clean
-                    && _totalPayments.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _cDLiabilityAfterForeclosure.Dirty
+                    || _id.Dirty
+                    || _lenderAddress.Dirty
+                    || _lenderCity.Dirty
+                    || _lenderContact.Dirty
+                    || _lenderContactATLicenseID.Dirty
+                    || _lenderContactNMLSID.Dirty
+                    || _lenderEmail.Dirty
+                    || _lenderName.Dirty
+                    || _lenderNMLSID.Dirty
+                    || _lenderPhone.Dirty
+                    || _lenderState.Dirty
+                    || _lenderSTLicenseID.Dirty
+                    || _lenderZip.Dirty
+                    || _mortgageBrokerAddress.Dirty
+                    || _mortgageBrokerCity.Dirty
+                    || _mortgageBrokerContact.Dirty
+                    || _mortgageBrokerContactATLicenseID.Dirty
+                    || _mortgageBrokerContactNMLSID.Dirty
+                    || _mortgageBrokerEmail.Dirty
+                    || _mortgageBrokerName.Dirty
+                    || _mortgageBrokerNMLSID.Dirty
+                    || _mortgageBrokerPhone.Dirty
+                    || _mortgageBrokerState.Dirty
+                    || _mortgageBrokerSTLicenseID.Dirty
+                    || _mortgageBrokerZip.Dirty
+                    || _realEstateBrokerBAddress.Dirty
+                    || _realEstateBrokerBCity.Dirty
+                    || _realEstateBrokerBContact.Dirty
+                    || _realEstateBrokerBContactATLicenseID.Dirty
+                    || _realEstateBrokerBContactNMLSID.Dirty
+                    || _realEstateBrokerBEmail.Dirty
+                    || _realEstateBrokerBName.Dirty
+                    || _realEstateBrokerBNMLSID.Dirty
+                    || _realEstateBrokerBPhone.Dirty
+                    || _realEstateBrokerBState.Dirty
+                    || _realEstateBrokerBSTLicenseID.Dirty
+                    || _realEstateBrokerBZip.Dirty
+                    || _realEstateBrokerSAddress.Dirty
+                    || _realEstateBrokerSCity.Dirty
+                    || _realEstateBrokerSContact.Dirty
+                    || _realEstateBrokerSContactATLicenseID.Dirty
+                    || _realEstateBrokerSContactNMLSID.Dirty
+                    || _realEstateBrokerSEmail.Dirty
+                    || _realEstateBrokerSName.Dirty
+                    || _realEstateBrokerSNMLSID.Dirty
+                    || _realEstateBrokerSPhone.Dirty
+                    || _realEstateBrokerSState.Dirty
+                    || _realEstateBrokerSSTLicenseID.Dirty
+                    || _realEstateBrokerSZip.Dirty
+                    || _settlementAgentAddress.Dirty
+                    || _settlementAgentCity.Dirty
+                    || _settlementAgentContact.Dirty
+                    || _settlementAgentContactATLicenseID.Dirty
+                    || _settlementAgentContactNMLSID.Dirty
+                    || _settlementAgentEmail.Dirty
+                    || _settlementAgentName.Dirty
+                    || _settlementAgentNMLSID.Dirty
+                    || _settlementAgentPhone.Dirty
+                    || _settlementAgentState.Dirty
+                    || _settlementAgentSTLicenseID.Dirty
+                    || _settlementAgentZip.Dirty
+                    || _signatureType.Dirty
+                    || _totalPayments.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var cDLiabilityAfterForeclosure = _cDLiabilityAfterForeclosure; cDLiabilityAfterForeclosure.Clean = value; _cDLiabilityAfterForeclosure = cDLiabilityAfterForeclosure;
-                var id = _id; id.Clean = value; _id = id;
-                var lenderAddress = _lenderAddress; lenderAddress.Clean = value; _lenderAddress = lenderAddress;
-                var lenderCity = _lenderCity; lenderCity.Clean = value; _lenderCity = lenderCity;
-                var lenderContact = _lenderContact; lenderContact.Clean = value; _lenderContact = lenderContact;
-                var lenderContactATLicenseID = _lenderContactATLicenseID; lenderContactATLicenseID.Clean = value; _lenderContactATLicenseID = lenderContactATLicenseID;
-                var lenderContactNMLSID = _lenderContactNMLSID; lenderContactNMLSID.Clean = value; _lenderContactNMLSID = lenderContactNMLSID;
-                var lenderEmail = _lenderEmail; lenderEmail.Clean = value; _lenderEmail = lenderEmail;
-                var lenderName = _lenderName; lenderName.Clean = value; _lenderName = lenderName;
-                var lenderNMLSID = _lenderNMLSID; lenderNMLSID.Clean = value; _lenderNMLSID = lenderNMLSID;
-                var lenderPhone = _lenderPhone; lenderPhone.Clean = value; _lenderPhone = lenderPhone;
-                var lenderState = _lenderState; lenderState.Clean = value; _lenderState = lenderState;
-                var lenderSTLicenseID = _lenderSTLicenseID; lenderSTLicenseID.Clean = value; _lenderSTLicenseID = lenderSTLicenseID;
-                var lenderZip = _lenderZip; lenderZip.Clean = value; _lenderZip = lenderZip;
-                var mortgageBrokerAddress = _mortgageBrokerAddress; mortgageBrokerAddress.Clean = value; _mortgageBrokerAddress = mortgageBrokerAddress;
-                var mortgageBrokerCity = _mortgageBrokerCity; mortgageBrokerCity.Clean = value; _mortgageBrokerCity = mortgageBrokerCity;
-                var mortgageBrokerContact = _mortgageBrokerContact; mortgageBrokerContact.Clean = value; _mortgageBrokerContact = mortgageBrokerContact;
-                var mortgageBrokerContactATLicenseID = _mortgageBrokerContactATLicenseID; mortgageBrokerContactATLicenseID.Clean = value; _mortgageBrokerContactATLicenseID = mortgageBrokerContactATLicenseID;
-                var mortgageBrokerContactNMLSID = _mortgageBrokerContactNMLSID; mortgageBrokerContactNMLSID.Clean = value; _mortgageBrokerContactNMLSID = mortgageBrokerContactNMLSID;
-                var mortgageBrokerEmail = _mortgageBrokerEmail; mortgageBrokerEmail.Clean = value; _mortgageBrokerEmail = mortgageBrokerEmail;
-                var mortgageBrokerName = _mortgageBrokerName; mortgageBrokerName.Clean = value; _mortgageBrokerName = mortgageBrokerName;
-                var mortgageBrokerNMLSID = _mortgageBrokerNMLSID; mortgageBrokerNMLSID.Clean = value; _mortgageBrokerNMLSID = mortgageBrokerNMLSID;
-                var mortgageBrokerPhone = _mortgageBrokerPhone; mortgageBrokerPhone.Clean = value; _mortgageBrokerPhone = mortgageBrokerPhone;
-                var mortgageBrokerState = _mortgageBrokerState; mortgageBrokerState.Clean = value; _mortgageBrokerState = mortgageBrokerState;
-                var mortgageBrokerSTLicenseID = _mortgageBrokerSTLicenseID; mortgageBrokerSTLicenseID.Clean = value; _mortgageBrokerSTLicenseID = mortgageBrokerSTLicenseID;
-                var mortgageBrokerZip = _mortgageBrokerZip; mortgageBrokerZip.Clean = value; _mortgageBrokerZip = mortgageBrokerZip;
-                var realEstateBrokerBAddress = _realEstateBrokerBAddress; realEstateBrokerBAddress.Clean = value; _realEstateBrokerBAddress = realEstateBrokerBAddress;
-                var realEstateBrokerBCity = _realEstateBrokerBCity; realEstateBrokerBCity.Clean = value; _realEstateBrokerBCity = realEstateBrokerBCity;
-                var realEstateBrokerBContact = _realEstateBrokerBContact; realEstateBrokerBContact.Clean = value; _realEstateBrokerBContact = realEstateBrokerBContact;
-                var realEstateBrokerBContactATLicenseID = _realEstateBrokerBContactATLicenseID; realEstateBrokerBContactATLicenseID.Clean = value; _realEstateBrokerBContactATLicenseID = realEstateBrokerBContactATLicenseID;
-                var realEstateBrokerBContactNMLSID = _realEstateBrokerBContactNMLSID; realEstateBrokerBContactNMLSID.Clean = value; _realEstateBrokerBContactNMLSID = realEstateBrokerBContactNMLSID;
-                var realEstateBrokerBEmail = _realEstateBrokerBEmail; realEstateBrokerBEmail.Clean = value; _realEstateBrokerBEmail = realEstateBrokerBEmail;
-                var realEstateBrokerBName = _realEstateBrokerBName; realEstateBrokerBName.Clean = value; _realEstateBrokerBName = realEstateBrokerBName;
-                var realEstateBrokerBNMLSID = _realEstateBrokerBNMLSID; realEstateBrokerBNMLSID.Clean = value; _realEstateBrokerBNMLSID = realEstateBrokerBNMLSID;
-                var realEstateBrokerBPhone = _realEstateBrokerBPhone; realEstateBrokerBPhone.Clean = value; _realEstateBrokerBPhone = realEstateBrokerBPhone;
-                var realEstateBrokerBState = _realEstateBrokerBState; realEstateBrokerBState.Clean = value; _realEstateBrokerBState = realEstateBrokerBState;
-                var realEstateBrokerBSTLicenseID = _realEstateBrokerBSTLicenseID; realEstateBrokerBSTLicenseID.Clean = value; _realEstateBrokerBSTLicenseID = realEstateBrokerBSTLicenseID;
-                var realEstateBrokerBZip = _realEstateBrokerBZip; realEstateBrokerBZip.Clean = value; _realEstateBrokerBZip = realEstateBrokerBZip;
-                var realEstateBrokerSAddress = _realEstateBrokerSAddress; realEstateBrokerSAddress.Clean = value; _realEstateBrokerSAddress = realEstateBrokerSAddress;
-                var realEstateBrokerSCity = _realEstateBrokerSCity; realEstateBrokerSCity.Clean = value; _realEstateBrokerSCity = realEstateBrokerSCity;
-                var realEstateBrokerSContact = _realEstateBrokerSContact; realEstateBrokerSContact.Clean = value; _realEstateBrokerSContact = realEstateBrokerSContact;
-                var realEstateBrokerSContactATLicenseID = _realEstateBrokerSContactATLicenseID; realEstateBrokerSContactATLicenseID.Clean = value; _realEstateBrokerSContactATLicenseID = realEstateBrokerSContactATLicenseID;
-                var realEstateBrokerSContactNMLSID = _realEstateBrokerSContactNMLSID; realEstateBrokerSContactNMLSID.Clean = value; _realEstateBrokerSContactNMLSID = realEstateBrokerSContactNMLSID;
-                var realEstateBrokerSEmail = _realEstateBrokerSEmail; realEstateBrokerSEmail.Clean = value; _realEstateBrokerSEmail = realEstateBrokerSEmail;
-                var realEstateBrokerSName = _realEstateBrokerSName; realEstateBrokerSName.Clean = value; _realEstateBrokerSName = realEstateBrokerSName;
-                var realEstateBrokerSNMLSID = _realEstateBrokerSNMLSID; realEstateBrokerSNMLSID.Clean = value; _realEstateBrokerSNMLSID = realEstateBrokerSNMLSID;
-                var realEstateBrokerSPhone = _realEstateBrokerSPhone; realEstateBrokerSPhone.Clean = value; _realEstateBrokerSPhone = realEstateBrokerSPhone;
-                var realEstateBrokerSState = _realEstateBrokerSState; realEstateBrokerSState.Clean = value; _realEstateBrokerSState = realEstateBrokerSState;
-                var realEstateBrokerSSTLicenseID = _realEstateBrokerSSTLicenseID; realEstateBrokerSSTLicenseID.Clean = value; _realEstateBrokerSSTLicenseID = realEstateBrokerSSTLicenseID;
-                var realEstateBrokerSZip = _realEstateBrokerSZip; realEstateBrokerSZip.Clean = value; _realEstateBrokerSZip = realEstateBrokerSZip;
-                var settlementAgentAddress = _settlementAgentAddress; settlementAgentAddress.Clean = value; _settlementAgentAddress = settlementAgentAddress;
-                var settlementAgentCity = _settlementAgentCity; settlementAgentCity.Clean = value; _settlementAgentCity = settlementAgentCity;
-                var settlementAgentContact = _settlementAgentContact; settlementAgentContact.Clean = value; _settlementAgentContact = settlementAgentContact;
-                var settlementAgentContactATLicenseID = _settlementAgentContactATLicenseID; settlementAgentContactATLicenseID.Clean = value; _settlementAgentContactATLicenseID = settlementAgentContactATLicenseID;
-                var settlementAgentContactNMLSID = _settlementAgentContactNMLSID; settlementAgentContactNMLSID.Clean = value; _settlementAgentContactNMLSID = settlementAgentContactNMLSID;
-                var settlementAgentEmail = _settlementAgentEmail; settlementAgentEmail.Clean = value; _settlementAgentEmail = settlementAgentEmail;
-                var settlementAgentName = _settlementAgentName; settlementAgentName.Clean = value; _settlementAgentName = settlementAgentName;
-                var settlementAgentNMLSID = _settlementAgentNMLSID; settlementAgentNMLSID.Clean = value; _settlementAgentNMLSID = settlementAgentNMLSID;
-                var settlementAgentPhone = _settlementAgentPhone; settlementAgentPhone.Clean = value; _settlementAgentPhone = settlementAgentPhone;
-                var settlementAgentState = _settlementAgentState; settlementAgentState.Clean = value; _settlementAgentState = settlementAgentState;
-                var settlementAgentSTLicenseID = _settlementAgentSTLicenseID; settlementAgentSTLicenseID.Clean = value; _settlementAgentSTLicenseID = settlementAgentSTLicenseID;
-                var settlementAgentZip = _settlementAgentZip; settlementAgentZip.Clean = value; _settlementAgentZip = settlementAgentZip;
-                var signatureType = _signatureType; signatureType.Clean = value; _signatureType = signatureType;
-                var totalPayments = _totalPayments; totalPayments.Clean = value; _totalPayments = totalPayments;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _cDLiabilityAfterForeclosure.Dirty = value;
+                _id.Dirty = value;
+                _lenderAddress.Dirty = value;
+                _lenderCity.Dirty = value;
+                _lenderContact.Dirty = value;
+                _lenderContactATLicenseID.Dirty = value;
+                _lenderContactNMLSID.Dirty = value;
+                _lenderEmail.Dirty = value;
+                _lenderName.Dirty = value;
+                _lenderNMLSID.Dirty = value;
+                _lenderPhone.Dirty = value;
+                _lenderState.Dirty = value;
+                _lenderSTLicenseID.Dirty = value;
+                _lenderZip.Dirty = value;
+                _mortgageBrokerAddress.Dirty = value;
+                _mortgageBrokerCity.Dirty = value;
+                _mortgageBrokerContact.Dirty = value;
+                _mortgageBrokerContactATLicenseID.Dirty = value;
+                _mortgageBrokerContactNMLSID.Dirty = value;
+                _mortgageBrokerEmail.Dirty = value;
+                _mortgageBrokerName.Dirty = value;
+                _mortgageBrokerNMLSID.Dirty = value;
+                _mortgageBrokerPhone.Dirty = value;
+                _mortgageBrokerState.Dirty = value;
+                _mortgageBrokerSTLicenseID.Dirty = value;
+                _mortgageBrokerZip.Dirty = value;
+                _realEstateBrokerBAddress.Dirty = value;
+                _realEstateBrokerBCity.Dirty = value;
+                _realEstateBrokerBContact.Dirty = value;
+                _realEstateBrokerBContactATLicenseID.Dirty = value;
+                _realEstateBrokerBContactNMLSID.Dirty = value;
+                _realEstateBrokerBEmail.Dirty = value;
+                _realEstateBrokerBName.Dirty = value;
+                _realEstateBrokerBNMLSID.Dirty = value;
+                _realEstateBrokerBPhone.Dirty = value;
+                _realEstateBrokerBState.Dirty = value;
+                _realEstateBrokerBSTLicenseID.Dirty = value;
+                _realEstateBrokerBZip.Dirty = value;
+                _realEstateBrokerSAddress.Dirty = value;
+                _realEstateBrokerSCity.Dirty = value;
+                _realEstateBrokerSContact.Dirty = value;
+                _realEstateBrokerSContactATLicenseID.Dirty = value;
+                _realEstateBrokerSContactNMLSID.Dirty = value;
+                _realEstateBrokerSEmail.Dirty = value;
+                _realEstateBrokerSName.Dirty = value;
+                _realEstateBrokerSNMLSID.Dirty = value;
+                _realEstateBrokerSPhone.Dirty = value;
+                _realEstateBrokerSState.Dirty = value;
+                _realEstateBrokerSSTLicenseID.Dirty = value;
+                _realEstateBrokerSZip.Dirty = value;
+                _settlementAgentAddress.Dirty = value;
+                _settlementAgentCity.Dirty = value;
+                _settlementAgentContact.Dirty = value;
+                _settlementAgentContactATLicenseID.Dirty = value;
+                _settlementAgentContactNMLSID.Dirty = value;
+                _settlementAgentEmail.Dirty = value;
+                _settlementAgentName.Dirty = value;
+                _settlementAgentNMLSID.Dirty = value;
+                _settlementAgentPhone.Dirty = value;
+                _settlementAgentState.Dirty = value;
+                _settlementAgentSTLicenseID.Dirty = value;
+                _settlementAgentZip.Dirty = value;
+                _signatureType.Dirty = value;
+                _totalPayments.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDisclosure5()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

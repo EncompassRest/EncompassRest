@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EmDocumentLender : IClean
+    public sealed partial class EmDocumentLender : IDirty
     {
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
@@ -156,175 +156,170 @@ namespace EncompassRest.Loans
         public string LndVaIdNum { get { return _lndVaIdNum; } set { _lndVaIdNum = value; } }
         private Value<string> _lndZip;
         public string LndZip { get { return _lndZip; } set { _lndZip = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _id.Clean
-                    && _lndBrchCty.Clean
-                    && _lndBrchFax.Clean
-                    && _lndBrchJrsdctn.Clean
-                    && _lndBrchNm.Clean
-                    && _lndBrchOrgTyp.Clean
-                    && _lndBrchPhone.Clean
-                    && _lndBrchStCd.Clean
-                    && _lndBrchStreetAddr1.Clean
-                    && _lndBrchStreetAddr2.Clean
-                    && _lndBrchTollFreePhone.Clean
-                    && _lndBrchUrl.Clean
-                    && _lndBrchZip.Clean
-                    && _lndCnty.Clean
-                    && _lndCty.Clean
-                    && _lndFaxNum.Clean
-                    && _lndFhaOrgntrId.Clean
-                    && _lndFhaSpnsrId.Clean
-                    && _lndJrsdctn.Clean
-                    && _lndLossPayeeAdtlTxt.Clean
-                    && _lndLossPayeeCntctEmail.Clean
-                    && _lndLossPayeeCntctFax.Clean
-                    && _lndLossPayeeCntctNm.Clean
-                    && _lndLossPayeeCntctPhone.Clean
-                    && _lndLossPayeeCty.Clean
-                    && _lndLossPayeeJrsdctn.Clean
-                    && _lndLossPayeeNm.Clean
-                    && _lndLossPayeeOrgTyp.Clean
-                    && _lndLossPayeeScsrsClausTxtDesc.Clean
-                    && _lndLossPayeeStCd.Clean
-                    && _lndLossPayeeStreetAddr1.Clean
-                    && _lndLossPayeeStreetAddr2.Clean
-                    && _lndLossPayeeZip.Clean
-                    && _lndMersIdNum.Clean
-                    && _lndNm.Clean
-                    && _lndNmlsIdNum.Clean
-                    && _lndNtryCmsnBndNumIdntfr.Clean
-                    && _lndNtryCmsnCnty.Clean
-                    && _lndNtryCmsnExprDt.Clean
-                    && _lndNtryCmsnNumIdntfr.Clean
-                    && _lndNtryCmsnSt.Clean
-                    && _lndNtryCty.Clean
-                    && _lndNtryNm.Clean
-                    && _lndNtryStCd.Clean
-                    && _lndNtryStreetAddr1.Clean
-                    && _lndNtryStreetAddr2.Clean
-                    && _lndNtryTtlOrRank.Clean
-                    && _lndNtryZip.Clean
-                    && _lndOrgTyp.Clean
-                    && _lndPhoneNum.Clean
-                    && _lndStCd.Clean
-                    && _lndStreetAddr1.Clean
-                    && _lndStreetAddr2.Clean
-                    && _lndSvcrAdtlTxt.Clean
-                    && _lndSvcrCntctNm.Clean
-                    && _lndSvcrCntctPhoneNum.Clean
-                    && _lndSvcrCntctTollFreePhoneNum.Clean
-                    && _lndSvcrCty.Clean
-                    && _lndSvcrDayOp.Clean
-                    && _lndSvcrDayOpAddl.Clean
-                    && _lndSvcrHrsOp.Clean
-                    && _lndSvcrHrsOpAddl.Clean
-                    && _lndSvcrJrsdctn.Clean
-                    && _lndSvcrNm.Clean
-                    && _lndSvcrOrgTyp.Clean
-                    && _lndSvcrStCd.Clean
-                    && _lndSvcrStreetAddr1.Clean
-                    && _lndSvcrStreetAddr2.Clean
-                    && _lndSvcrZip.Clean
-                    && _lndTaxIDNum.Clean
-                    && _lndTollFreePhoneNum.Clean
-                    && _lndUrl.Clean
-                    && _lndVaIdNum.Clean
-                    && _lndZip.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _id.Dirty
+                    || _lndBrchCty.Dirty
+                    || _lndBrchFax.Dirty
+                    || _lndBrchJrsdctn.Dirty
+                    || _lndBrchNm.Dirty
+                    || _lndBrchOrgTyp.Dirty
+                    || _lndBrchPhone.Dirty
+                    || _lndBrchStCd.Dirty
+                    || _lndBrchStreetAddr1.Dirty
+                    || _lndBrchStreetAddr2.Dirty
+                    || _lndBrchTollFreePhone.Dirty
+                    || _lndBrchUrl.Dirty
+                    || _lndBrchZip.Dirty
+                    || _lndCnty.Dirty
+                    || _lndCty.Dirty
+                    || _lndFaxNum.Dirty
+                    || _lndFhaOrgntrId.Dirty
+                    || _lndFhaSpnsrId.Dirty
+                    || _lndJrsdctn.Dirty
+                    || _lndLossPayeeAdtlTxt.Dirty
+                    || _lndLossPayeeCntctEmail.Dirty
+                    || _lndLossPayeeCntctFax.Dirty
+                    || _lndLossPayeeCntctNm.Dirty
+                    || _lndLossPayeeCntctPhone.Dirty
+                    || _lndLossPayeeCty.Dirty
+                    || _lndLossPayeeJrsdctn.Dirty
+                    || _lndLossPayeeNm.Dirty
+                    || _lndLossPayeeOrgTyp.Dirty
+                    || _lndLossPayeeScsrsClausTxtDesc.Dirty
+                    || _lndLossPayeeStCd.Dirty
+                    || _lndLossPayeeStreetAddr1.Dirty
+                    || _lndLossPayeeStreetAddr2.Dirty
+                    || _lndLossPayeeZip.Dirty
+                    || _lndMersIdNum.Dirty
+                    || _lndNm.Dirty
+                    || _lndNmlsIdNum.Dirty
+                    || _lndNtryCmsnBndNumIdntfr.Dirty
+                    || _lndNtryCmsnCnty.Dirty
+                    || _lndNtryCmsnExprDt.Dirty
+                    || _lndNtryCmsnNumIdntfr.Dirty
+                    || _lndNtryCmsnSt.Dirty
+                    || _lndNtryCty.Dirty
+                    || _lndNtryNm.Dirty
+                    || _lndNtryStCd.Dirty
+                    || _lndNtryStreetAddr1.Dirty
+                    || _lndNtryStreetAddr2.Dirty
+                    || _lndNtryTtlOrRank.Dirty
+                    || _lndNtryZip.Dirty
+                    || _lndOrgTyp.Dirty
+                    || _lndPhoneNum.Dirty
+                    || _lndStCd.Dirty
+                    || _lndStreetAddr1.Dirty
+                    || _lndStreetAddr2.Dirty
+                    || _lndSvcrAdtlTxt.Dirty
+                    || _lndSvcrCntctNm.Dirty
+                    || _lndSvcrCntctPhoneNum.Dirty
+                    || _lndSvcrCntctTollFreePhoneNum.Dirty
+                    || _lndSvcrCty.Dirty
+                    || _lndSvcrDayOp.Dirty
+                    || _lndSvcrDayOpAddl.Dirty
+                    || _lndSvcrHrsOp.Dirty
+                    || _lndSvcrHrsOpAddl.Dirty
+                    || _lndSvcrJrsdctn.Dirty
+                    || _lndSvcrNm.Dirty
+                    || _lndSvcrOrgTyp.Dirty
+                    || _lndSvcrStCd.Dirty
+                    || _lndSvcrStreetAddr1.Dirty
+                    || _lndSvcrStreetAddr2.Dirty
+                    || _lndSvcrZip.Dirty
+                    || _lndTaxIDNum.Dirty
+                    || _lndTollFreePhoneNum.Dirty
+                    || _lndUrl.Dirty
+                    || _lndVaIdNum.Dirty
+                    || _lndZip.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var id = _id; id.Clean = value; _id = id;
-                var lndBrchCty = _lndBrchCty; lndBrchCty.Clean = value; _lndBrchCty = lndBrchCty;
-                var lndBrchFax = _lndBrchFax; lndBrchFax.Clean = value; _lndBrchFax = lndBrchFax;
-                var lndBrchJrsdctn = _lndBrchJrsdctn; lndBrchJrsdctn.Clean = value; _lndBrchJrsdctn = lndBrchJrsdctn;
-                var lndBrchNm = _lndBrchNm; lndBrchNm.Clean = value; _lndBrchNm = lndBrchNm;
-                var lndBrchOrgTyp = _lndBrchOrgTyp; lndBrchOrgTyp.Clean = value; _lndBrchOrgTyp = lndBrchOrgTyp;
-                var lndBrchPhone = _lndBrchPhone; lndBrchPhone.Clean = value; _lndBrchPhone = lndBrchPhone;
-                var lndBrchStCd = _lndBrchStCd; lndBrchStCd.Clean = value; _lndBrchStCd = lndBrchStCd;
-                var lndBrchStreetAddr1 = _lndBrchStreetAddr1; lndBrchStreetAddr1.Clean = value; _lndBrchStreetAddr1 = lndBrchStreetAddr1;
-                var lndBrchStreetAddr2 = _lndBrchStreetAddr2; lndBrchStreetAddr2.Clean = value; _lndBrchStreetAddr2 = lndBrchStreetAddr2;
-                var lndBrchTollFreePhone = _lndBrchTollFreePhone; lndBrchTollFreePhone.Clean = value; _lndBrchTollFreePhone = lndBrchTollFreePhone;
-                var lndBrchUrl = _lndBrchUrl; lndBrchUrl.Clean = value; _lndBrchUrl = lndBrchUrl;
-                var lndBrchZip = _lndBrchZip; lndBrchZip.Clean = value; _lndBrchZip = lndBrchZip;
-                var lndCnty = _lndCnty; lndCnty.Clean = value; _lndCnty = lndCnty;
-                var lndCty = _lndCty; lndCty.Clean = value; _lndCty = lndCty;
-                var lndFaxNum = _lndFaxNum; lndFaxNum.Clean = value; _lndFaxNum = lndFaxNum;
-                var lndFhaOrgntrId = _lndFhaOrgntrId; lndFhaOrgntrId.Clean = value; _lndFhaOrgntrId = lndFhaOrgntrId;
-                var lndFhaSpnsrId = _lndFhaSpnsrId; lndFhaSpnsrId.Clean = value; _lndFhaSpnsrId = lndFhaSpnsrId;
-                var lndJrsdctn = _lndJrsdctn; lndJrsdctn.Clean = value; _lndJrsdctn = lndJrsdctn;
-                var lndLossPayeeAdtlTxt = _lndLossPayeeAdtlTxt; lndLossPayeeAdtlTxt.Clean = value; _lndLossPayeeAdtlTxt = lndLossPayeeAdtlTxt;
-                var lndLossPayeeCntctEmail = _lndLossPayeeCntctEmail; lndLossPayeeCntctEmail.Clean = value; _lndLossPayeeCntctEmail = lndLossPayeeCntctEmail;
-                var lndLossPayeeCntctFax = _lndLossPayeeCntctFax; lndLossPayeeCntctFax.Clean = value; _lndLossPayeeCntctFax = lndLossPayeeCntctFax;
-                var lndLossPayeeCntctNm = _lndLossPayeeCntctNm; lndLossPayeeCntctNm.Clean = value; _lndLossPayeeCntctNm = lndLossPayeeCntctNm;
-                var lndLossPayeeCntctPhone = _lndLossPayeeCntctPhone; lndLossPayeeCntctPhone.Clean = value; _lndLossPayeeCntctPhone = lndLossPayeeCntctPhone;
-                var lndLossPayeeCty = _lndLossPayeeCty; lndLossPayeeCty.Clean = value; _lndLossPayeeCty = lndLossPayeeCty;
-                var lndLossPayeeJrsdctn = _lndLossPayeeJrsdctn; lndLossPayeeJrsdctn.Clean = value; _lndLossPayeeJrsdctn = lndLossPayeeJrsdctn;
-                var lndLossPayeeNm = _lndLossPayeeNm; lndLossPayeeNm.Clean = value; _lndLossPayeeNm = lndLossPayeeNm;
-                var lndLossPayeeOrgTyp = _lndLossPayeeOrgTyp; lndLossPayeeOrgTyp.Clean = value; _lndLossPayeeOrgTyp = lndLossPayeeOrgTyp;
-                var lndLossPayeeScsrsClausTxtDesc = _lndLossPayeeScsrsClausTxtDesc; lndLossPayeeScsrsClausTxtDesc.Clean = value; _lndLossPayeeScsrsClausTxtDesc = lndLossPayeeScsrsClausTxtDesc;
-                var lndLossPayeeStCd = _lndLossPayeeStCd; lndLossPayeeStCd.Clean = value; _lndLossPayeeStCd = lndLossPayeeStCd;
-                var lndLossPayeeStreetAddr1 = _lndLossPayeeStreetAddr1; lndLossPayeeStreetAddr1.Clean = value; _lndLossPayeeStreetAddr1 = lndLossPayeeStreetAddr1;
-                var lndLossPayeeStreetAddr2 = _lndLossPayeeStreetAddr2; lndLossPayeeStreetAddr2.Clean = value; _lndLossPayeeStreetAddr2 = lndLossPayeeStreetAddr2;
-                var lndLossPayeeZip = _lndLossPayeeZip; lndLossPayeeZip.Clean = value; _lndLossPayeeZip = lndLossPayeeZip;
-                var lndMersIdNum = _lndMersIdNum; lndMersIdNum.Clean = value; _lndMersIdNum = lndMersIdNum;
-                var lndNm = _lndNm; lndNm.Clean = value; _lndNm = lndNm;
-                var lndNmlsIdNum = _lndNmlsIdNum; lndNmlsIdNum.Clean = value; _lndNmlsIdNum = lndNmlsIdNum;
-                var lndNtryCmsnBndNumIdntfr = _lndNtryCmsnBndNumIdntfr; lndNtryCmsnBndNumIdntfr.Clean = value; _lndNtryCmsnBndNumIdntfr = lndNtryCmsnBndNumIdntfr;
-                var lndNtryCmsnCnty = _lndNtryCmsnCnty; lndNtryCmsnCnty.Clean = value; _lndNtryCmsnCnty = lndNtryCmsnCnty;
-                var lndNtryCmsnExprDt = _lndNtryCmsnExprDt; lndNtryCmsnExprDt.Clean = value; _lndNtryCmsnExprDt = lndNtryCmsnExprDt;
-                var lndNtryCmsnNumIdntfr = _lndNtryCmsnNumIdntfr; lndNtryCmsnNumIdntfr.Clean = value; _lndNtryCmsnNumIdntfr = lndNtryCmsnNumIdntfr;
-                var lndNtryCmsnSt = _lndNtryCmsnSt; lndNtryCmsnSt.Clean = value; _lndNtryCmsnSt = lndNtryCmsnSt;
-                var lndNtryCty = _lndNtryCty; lndNtryCty.Clean = value; _lndNtryCty = lndNtryCty;
-                var lndNtryNm = _lndNtryNm; lndNtryNm.Clean = value; _lndNtryNm = lndNtryNm;
-                var lndNtryStCd = _lndNtryStCd; lndNtryStCd.Clean = value; _lndNtryStCd = lndNtryStCd;
-                var lndNtryStreetAddr1 = _lndNtryStreetAddr1; lndNtryStreetAddr1.Clean = value; _lndNtryStreetAddr1 = lndNtryStreetAddr1;
-                var lndNtryStreetAddr2 = _lndNtryStreetAddr2; lndNtryStreetAddr2.Clean = value; _lndNtryStreetAddr2 = lndNtryStreetAddr2;
-                var lndNtryTtlOrRank = _lndNtryTtlOrRank; lndNtryTtlOrRank.Clean = value; _lndNtryTtlOrRank = lndNtryTtlOrRank;
-                var lndNtryZip = _lndNtryZip; lndNtryZip.Clean = value; _lndNtryZip = lndNtryZip;
-                var lndOrgTyp = _lndOrgTyp; lndOrgTyp.Clean = value; _lndOrgTyp = lndOrgTyp;
-                var lndPhoneNum = _lndPhoneNum; lndPhoneNum.Clean = value; _lndPhoneNum = lndPhoneNum;
-                var lndStCd = _lndStCd; lndStCd.Clean = value; _lndStCd = lndStCd;
-                var lndStreetAddr1 = _lndStreetAddr1; lndStreetAddr1.Clean = value; _lndStreetAddr1 = lndStreetAddr1;
-                var lndStreetAddr2 = _lndStreetAddr2; lndStreetAddr2.Clean = value; _lndStreetAddr2 = lndStreetAddr2;
-                var lndSvcrAdtlTxt = _lndSvcrAdtlTxt; lndSvcrAdtlTxt.Clean = value; _lndSvcrAdtlTxt = lndSvcrAdtlTxt;
-                var lndSvcrCntctNm = _lndSvcrCntctNm; lndSvcrCntctNm.Clean = value; _lndSvcrCntctNm = lndSvcrCntctNm;
-                var lndSvcrCntctPhoneNum = _lndSvcrCntctPhoneNum; lndSvcrCntctPhoneNum.Clean = value; _lndSvcrCntctPhoneNum = lndSvcrCntctPhoneNum;
-                var lndSvcrCntctTollFreePhoneNum = _lndSvcrCntctTollFreePhoneNum; lndSvcrCntctTollFreePhoneNum.Clean = value; _lndSvcrCntctTollFreePhoneNum = lndSvcrCntctTollFreePhoneNum;
-                var lndSvcrCty = _lndSvcrCty; lndSvcrCty.Clean = value; _lndSvcrCty = lndSvcrCty;
-                var lndSvcrDayOp = _lndSvcrDayOp; lndSvcrDayOp.Clean = value; _lndSvcrDayOp = lndSvcrDayOp;
-                var lndSvcrDayOpAddl = _lndSvcrDayOpAddl; lndSvcrDayOpAddl.Clean = value; _lndSvcrDayOpAddl = lndSvcrDayOpAddl;
-                var lndSvcrHrsOp = _lndSvcrHrsOp; lndSvcrHrsOp.Clean = value; _lndSvcrHrsOp = lndSvcrHrsOp;
-                var lndSvcrHrsOpAddl = _lndSvcrHrsOpAddl; lndSvcrHrsOpAddl.Clean = value; _lndSvcrHrsOpAddl = lndSvcrHrsOpAddl;
-                var lndSvcrJrsdctn = _lndSvcrJrsdctn; lndSvcrJrsdctn.Clean = value; _lndSvcrJrsdctn = lndSvcrJrsdctn;
-                var lndSvcrNm = _lndSvcrNm; lndSvcrNm.Clean = value; _lndSvcrNm = lndSvcrNm;
-                var lndSvcrOrgTyp = _lndSvcrOrgTyp; lndSvcrOrgTyp.Clean = value; _lndSvcrOrgTyp = lndSvcrOrgTyp;
-                var lndSvcrStCd = _lndSvcrStCd; lndSvcrStCd.Clean = value; _lndSvcrStCd = lndSvcrStCd;
-                var lndSvcrStreetAddr1 = _lndSvcrStreetAddr1; lndSvcrStreetAddr1.Clean = value; _lndSvcrStreetAddr1 = lndSvcrStreetAddr1;
-                var lndSvcrStreetAddr2 = _lndSvcrStreetAddr2; lndSvcrStreetAddr2.Clean = value; _lndSvcrStreetAddr2 = lndSvcrStreetAddr2;
-                var lndSvcrZip = _lndSvcrZip; lndSvcrZip.Clean = value; _lndSvcrZip = lndSvcrZip;
-                var lndTaxIDNum = _lndTaxIDNum; lndTaxIDNum.Clean = value; _lndTaxIDNum = lndTaxIDNum;
-                var lndTollFreePhoneNum = _lndTollFreePhoneNum; lndTollFreePhoneNum.Clean = value; _lndTollFreePhoneNum = lndTollFreePhoneNum;
-                var lndUrl = _lndUrl; lndUrl.Clean = value; _lndUrl = lndUrl;
-                var lndVaIdNum = _lndVaIdNum; lndVaIdNum.Clean = value; _lndVaIdNum = lndVaIdNum;
-                var lndZip = _lndZip; lndZip.Clean = value; _lndZip = lndZip;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _id.Dirty = value;
+                _lndBrchCty.Dirty = value;
+                _lndBrchFax.Dirty = value;
+                _lndBrchJrsdctn.Dirty = value;
+                _lndBrchNm.Dirty = value;
+                _lndBrchOrgTyp.Dirty = value;
+                _lndBrchPhone.Dirty = value;
+                _lndBrchStCd.Dirty = value;
+                _lndBrchStreetAddr1.Dirty = value;
+                _lndBrchStreetAddr2.Dirty = value;
+                _lndBrchTollFreePhone.Dirty = value;
+                _lndBrchUrl.Dirty = value;
+                _lndBrchZip.Dirty = value;
+                _lndCnty.Dirty = value;
+                _lndCty.Dirty = value;
+                _lndFaxNum.Dirty = value;
+                _lndFhaOrgntrId.Dirty = value;
+                _lndFhaSpnsrId.Dirty = value;
+                _lndJrsdctn.Dirty = value;
+                _lndLossPayeeAdtlTxt.Dirty = value;
+                _lndLossPayeeCntctEmail.Dirty = value;
+                _lndLossPayeeCntctFax.Dirty = value;
+                _lndLossPayeeCntctNm.Dirty = value;
+                _lndLossPayeeCntctPhone.Dirty = value;
+                _lndLossPayeeCty.Dirty = value;
+                _lndLossPayeeJrsdctn.Dirty = value;
+                _lndLossPayeeNm.Dirty = value;
+                _lndLossPayeeOrgTyp.Dirty = value;
+                _lndLossPayeeScsrsClausTxtDesc.Dirty = value;
+                _lndLossPayeeStCd.Dirty = value;
+                _lndLossPayeeStreetAddr1.Dirty = value;
+                _lndLossPayeeStreetAddr2.Dirty = value;
+                _lndLossPayeeZip.Dirty = value;
+                _lndMersIdNum.Dirty = value;
+                _lndNm.Dirty = value;
+                _lndNmlsIdNum.Dirty = value;
+                _lndNtryCmsnBndNumIdntfr.Dirty = value;
+                _lndNtryCmsnCnty.Dirty = value;
+                _lndNtryCmsnExprDt.Dirty = value;
+                _lndNtryCmsnNumIdntfr.Dirty = value;
+                _lndNtryCmsnSt.Dirty = value;
+                _lndNtryCty.Dirty = value;
+                _lndNtryNm.Dirty = value;
+                _lndNtryStCd.Dirty = value;
+                _lndNtryStreetAddr1.Dirty = value;
+                _lndNtryStreetAddr2.Dirty = value;
+                _lndNtryTtlOrRank.Dirty = value;
+                _lndNtryZip.Dirty = value;
+                _lndOrgTyp.Dirty = value;
+                _lndPhoneNum.Dirty = value;
+                _lndStCd.Dirty = value;
+                _lndStreetAddr1.Dirty = value;
+                _lndStreetAddr2.Dirty = value;
+                _lndSvcrAdtlTxt.Dirty = value;
+                _lndSvcrCntctNm.Dirty = value;
+                _lndSvcrCntctPhoneNum.Dirty = value;
+                _lndSvcrCntctTollFreePhoneNum.Dirty = value;
+                _lndSvcrCty.Dirty = value;
+                _lndSvcrDayOp.Dirty = value;
+                _lndSvcrDayOpAddl.Dirty = value;
+                _lndSvcrHrsOp.Dirty = value;
+                _lndSvcrHrsOpAddl.Dirty = value;
+                _lndSvcrJrsdctn.Dirty = value;
+                _lndSvcrNm.Dirty = value;
+                _lndSvcrOrgTyp.Dirty = value;
+                _lndSvcrStCd.Dirty = value;
+                _lndSvcrStreetAddr1.Dirty = value;
+                _lndSvcrStreetAddr2.Dirty = value;
+                _lndSvcrZip.Dirty = value;
+                _lndTaxIDNum.Dirty = value;
+                _lndTollFreePhoneNum.Dirty = value;
+                _lndUrl.Dirty = value;
+                _lndVaIdNum.Dirty = value;
+                _lndZip.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public EmDocumentLender()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

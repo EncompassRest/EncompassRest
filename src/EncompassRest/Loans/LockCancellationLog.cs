@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockCancellationLog : IClean
+    public sealed partial class LockCancellationLog : IDirty
     {
         private Value<bool?> _alertIndicator;
         public bool? AlertIndicator { get { return _alertIndicator; } set { _alertIndicator = value; } }
@@ -38,57 +38,52 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _timeCancelled;
         public string TimeCancelled { get { return _timeCancelled; } set { _timeCancelled = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alertIndicator.Clean
-                    && _alertsXml.Clean
-                    && _cancelledBy.Clean
-                    && _cancelledById.Clean
-                    && _commentListXml.Clean
-                    && _comments.Clean
-                    && _dateUtc.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _requestGuid.Clean
-                    && _systemId.Clean
-                    && _timeCancelled.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alertIndicator.Dirty
+                    || _alertsXml.Dirty
+                    || _cancelledBy.Dirty
+                    || _cancelledById.Dirty
+                    || _commentListXml.Dirty
+                    || _comments.Dirty
+                    || _dateUtc.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _requestGuid.Dirty
+                    || _systemId.Dirty
+                    || _timeCancelled.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alertIndicator = _alertIndicator; alertIndicator.Clean = value; _alertIndicator = alertIndicator;
-                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
-                var cancelledBy = _cancelledBy; cancelledBy.Clean = value; _cancelledBy = cancelledBy;
-                var cancelledById = _cancelledById; cancelledById.Clean = value; _cancelledById = cancelledById;
-                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var requestGuid = _requestGuid; requestGuid.Clean = value; _requestGuid = requestGuid;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var timeCancelled = _timeCancelled; timeCancelled.Clean = value; _timeCancelled = timeCancelled;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alertIndicator.Dirty = value;
+                _alertsXml.Dirty = value;
+                _cancelledBy.Dirty = value;
+                _cancelledById.Dirty = value;
+                _commentListXml.Dirty = value;
+                _comments.Dirty = value;
+                _dateUtc.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _requestGuid.Dirty = value;
+                _systemId.Dirty = value;
+                _timeCancelled.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LockCancellationLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

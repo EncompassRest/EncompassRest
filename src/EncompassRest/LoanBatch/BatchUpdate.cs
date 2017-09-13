@@ -9,7 +9,7 @@ namespace EncompassRest.LoanBatch
 {
     public sealed class BatchUpdate
     {
-        private const string _apiPath = "encompass/v1/loanBatch";
+        private const string s_apiPath = "encompass/v1/loanBatch";
 
         public EncompassRestClient Client { get; }
 
@@ -38,7 +38,7 @@ namespace EncompassRest.LoanBatch
 
         private async Task<T> GetStatusInternalAsync<T>(string requestId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/updateRequests/{requestId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/updateRequests/{requestId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -69,7 +69,7 @@ namespace EncompassRest.LoanBatch
 
         private async Task<string> UpdateLoansInternalAsync(HttpContent content, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}/updateRequests", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/updateRequests", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

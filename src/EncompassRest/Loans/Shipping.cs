@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Shipping : IClean
+    public sealed partial class Shipping : IDirty
     {
         private Value<DateTime?> _actualShipDate;
         public DateTime? ActualShipDate { get { return _actualShipDate; } set { _actualShipDate = value; } }
@@ -40,59 +40,54 @@ namespace EncompassRest.Loans
         public List<ShippingContact> ShippingContacts { get { return _shippingContacts; } set { _shippingContacts = value; } }
         private Value<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actualShipDate.Clean
-                    && _carrierName.Clean
-                    && _downPaymentAmount.Clean
-                    && _id.Clean
-                    && _investorDeliveryDate.Clean
-                    && _packageTrackingNumber.Clean
-                    && _physicalFileStorageComments.Clean
-                    && _physicalFileStorageId.Clean
-                    && _physicalFileStorageLocation.Clean
-                    && _poolID.Clean
-                    && _poolNumber.Clean
-                    && _recordingNumber.Clean
-                    && _shipmentMethod.Clean
-                    && _shipperName.Clean
-                    && _shippingContacts.Clean
-                    && _targetDeliveryDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actualShipDate.Dirty
+                    || _carrierName.Dirty
+                    || _downPaymentAmount.Dirty
+                    || _id.Dirty
+                    || _investorDeliveryDate.Dirty
+                    || _packageTrackingNumber.Dirty
+                    || _physicalFileStorageComments.Dirty
+                    || _physicalFileStorageId.Dirty
+                    || _physicalFileStorageLocation.Dirty
+                    || _poolID.Dirty
+                    || _poolNumber.Dirty
+                    || _recordingNumber.Dirty
+                    || _shipmentMethod.Dirty
+                    || _shipperName.Dirty
+                    || _shippingContacts.Dirty
+                    || _targetDeliveryDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actualShipDate = _actualShipDate; actualShipDate.Clean = value; _actualShipDate = actualShipDate;
-                var carrierName = _carrierName; carrierName.Clean = value; _carrierName = carrierName;
-                var downPaymentAmount = _downPaymentAmount; downPaymentAmount.Clean = value; _downPaymentAmount = downPaymentAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var investorDeliveryDate = _investorDeliveryDate; investorDeliveryDate.Clean = value; _investorDeliveryDate = investorDeliveryDate;
-                var packageTrackingNumber = _packageTrackingNumber; packageTrackingNumber.Clean = value; _packageTrackingNumber = packageTrackingNumber;
-                var physicalFileStorageComments = _physicalFileStorageComments; physicalFileStorageComments.Clean = value; _physicalFileStorageComments = physicalFileStorageComments;
-                var physicalFileStorageId = _physicalFileStorageId; physicalFileStorageId.Clean = value; _physicalFileStorageId = physicalFileStorageId;
-                var physicalFileStorageLocation = _physicalFileStorageLocation; physicalFileStorageLocation.Clean = value; _physicalFileStorageLocation = physicalFileStorageLocation;
-                var poolID = _poolID; poolID.Clean = value; _poolID = poolID;
-                var poolNumber = _poolNumber; poolNumber.Clean = value; _poolNumber = poolNumber;
-                var recordingNumber = _recordingNumber; recordingNumber.Clean = value; _recordingNumber = recordingNumber;
-                var shipmentMethod = _shipmentMethod; shipmentMethod.Clean = value; _shipmentMethod = shipmentMethod;
-                var shipperName = _shipperName; shipperName.Clean = value; _shipperName = shipperName;
-                var shippingContacts = _shippingContacts; shippingContacts.Clean = value; _shippingContacts = shippingContacts;
-                var targetDeliveryDate = _targetDeliveryDate; targetDeliveryDate.Clean = value; _targetDeliveryDate = targetDeliveryDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actualShipDate.Dirty = value;
+                _carrierName.Dirty = value;
+                _downPaymentAmount.Dirty = value;
+                _id.Dirty = value;
+                _investorDeliveryDate.Dirty = value;
+                _packageTrackingNumber.Dirty = value;
+                _physicalFileStorageComments.Dirty = value;
+                _physicalFileStorageId.Dirty = value;
+                _physicalFileStorageLocation.Dirty = value;
+                _poolID.Dirty = value;
+                _poolNumber.Dirty = value;
+                _recordingNumber.Dirty = value;
+                _shipmentMethod.Dirty = value;
+                _shipperName.Dirty = value;
+                _shippingContacts.Dirty = value;
+                _targetDeliveryDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Shipping()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

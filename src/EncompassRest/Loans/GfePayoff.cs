@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfePayoff : IClean
+    public sealed partial class GfePayoff : IDirty
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public int? GfePayoffIndex { get { return _gfePayoffIndex; } set { _gfePayoffIndex = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amount.Clean
-                    && _description.Clean
-                    && _gfePayoffIndex.Clean
-                    && _id.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amount.Dirty
+                    || _description.Dirty
+                    || _gfePayoffIndex.Dirty
+                    || _id.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amount = _amount; amount.Clean = value; _amount = amount;
-                var description = _description; description.Clean = value; _description = description;
-                var gfePayoffIndex = _gfePayoffIndex; gfePayoffIndex.Clean = value; _gfePayoffIndex = gfePayoffIndex;
-                var id = _id; id.Clean = value; _id = id;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amount.Dirty = value;
+                _description.Dirty = value;
+                _gfePayoffIndex.Dirty = value;
+                _id.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public GfePayoff()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

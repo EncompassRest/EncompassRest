@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Borrower : IClean
+    public sealed partial class Borrower : IDirty
     {
         private Value<string> _acountChekAssetId;
         public string AcountChekAssetId { get { return _acountChekAssetId; } set { _acountChekAssetId = value; } }
@@ -613,633 +613,628 @@ namespace EncompassRest.Loans
         public string WorkEmailAddress { get { return _workEmailAddress; } set { _workEmailAddress = value; } }
         private Value<int?> _yearsofCreditOnFile;
         public int? YearsofCreditOnFile { get { return _yearsofCreditOnFile; } set { _yearsofCreditOnFile = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _acountChekAssetId.Clean
-                    && _ageAtApplicationYearsCount.Clean
-                    && _aliasName.Clean
-                    && _alimonyChildSupportObligationIndicator.Clean
-                    && _altId.Clean
-                    && _applicantType.Clean
-                    && _applicationTakenMethodType.Clean
-                    && _assetRepAndWarrantyMessage.Clean
-                    && _assetRepAndWarrantyReliefAvailable.Clean
-                    && _authorizedCreditReportIndicator.Clean
-                    && _authorizedToSignIndicator.Clean
-                    && _bankAccountNumber.Clean
-                    && _bankAccountType.Clean
-                    && _bankContactAddress.Clean
-                    && _bankContactCity.Clean
-                    && _bankContactName.Clean
-                    && _bankContactPostalCode.Clean
-                    && _bankContactState.Clean
-                    && _bankruptcyIndicator.Clean
-                    && _bankruptcyStatus.Clean
-                    && _baseMonthlyIncomeAmount.Clean
-                    && _birthDate.Clean
-                    && _borrowedDownPaymentIndicator.Clean
-                    && _borrowerConsentRequestDate.Clean
-                    && _borrowerIndex.Clean
-                    && _borrowerType.Clean
-                    && _borrowerTypeInSummary.Clean
-                    && _caivrsIdentifier.Clean
-                    && _citizenshipResidencyType.Clean
-                    && _coMakerEndorserOfNoteIndicator.Clean
-                    && _commentOfCreditReport.Clean
-                    && _confirmedCRDIL.Clean
-                    && _confirmedCRFCEC.Clean
-                    && _confirmedCRFCIncorrect.Clean
-                    && _confirmedCRPFS.Clean
-                    && _confirmedOther.Clean
-                    && _confirmedOtherDescription.Clean
-                    && _creditCounseling.Clean
-                    && _creditReceivedDate.Clean
-                    && _creditReportAuthorizationMethod.Clean
-                    && _creditScoreIndicator.Clean
-                    && _dateAuthorizedCreditReport.Clean
-                    && _dateOfBankruptcy.Clean
-                    && _dateOfForeclosure.Clean
-                    && _declarationsJIndicator.Clean
-                    && _declarationsKIndicator.Clean
-                    && _dependentCount.Clean
-                    && _dependentsAgesDescription.Clean
-                    && _disabledIndicator.Clean
-                    && _emailAddressText.Clean
-                    && _equifax120Days.Clean
-                    && _equifax150Days.Clean
-                    && _equifax30Days.Clean
-                    && _equifax60Days.Clean
-                    && _equifax90Days.Clean
-                    && _equifaxCreditScoreForDisclosure.Clean
-                    && _equifaxCreditScoreRanksPercent.Clean
-                    && _equifaxDatePulled.Clean
-                    && _equifaxFactorCode1.Clean
-                    && _equifaxFactorCode2.Clean
-                    && _equifaxFactorCode3.Clean
-                    && _equifaxFactorCode4.Clean
-                    && _equifaxFactorCode5.Clean
-                    && _equifaxKeyFactor1.Clean
-                    && _equifaxKeyFactor2.Clean
-                    && _equifaxKeyFactor3.Clean
-                    && _equifaxKeyFactor4.Clean
-                    && _equifaxKeyFactor5.Clean
-                    && _equifaxMaterialTermsCreditByScore.Clean
-                    && _equifaxScore.Clean
-                    && _experian120Days.Clean
-                    && _experian150Days.Clean
-                    && _experian30Days.Clean
-                    && _experian60Days.Clean
-                    && _experian90Days.Clean
-                    && _experianCreditScore.Clean
-                    && _experianCreditScoreForDisclosure.Clean
-                    && _experianCreditScoreRanksPercent.Clean
-                    && _experianDatePulled.Clean
-                    && _experianFactorCode1.Clean
-                    && _experianFactorCode2.Clean
-                    && _experianFactorCode3.Clean
-                    && _experianFactorCode4.Clean
-                    && _experianFactorCode5.Clean
-                    && _experianKeyFactor1.Clean
-                    && _experianKeyFactor2.Clean
-                    && _experianKeyFactor3.Clean
-                    && _experianKeyFactor4.Clean
-                    && _experianKeyFactor5.Clean
-                    && _experianMaterialTermsCreditByScore.Clean
-                    && _firstName.Clean
-                    && _firstNameWithMiddleName.Clean
-                    && _firstTimeHomeBuyer.Clean
-                    && _foreclosureSatisfied.Clean
-                    && _foreclosureStatus.Clean
-                    && _freddieMacPerson1.Clean
-                    && _freddieMacPerson2.Clean
-                    && _fullName.Clean
-                    && _fullNameWithSuffix.Clean
-                    && _highestCreditLimit.Clean
-                    && _hmda2003OtherRaceNationalOriginDescription.Clean
-                    && _hmda2003RaceNationalOriginType.Clean
-                    && _hmdaAfricanAmericanIndicator.Clean
-                    && _hmdaAge.Clean
-                    && _hmdaAmericanIndianIndicator.Clean
-                    && _hmdaAmericanIndianTribe.Clean
-                    && _hmdaAsianIndianIndicator.Clean
-                    && _hmdaAsianIndicator.Clean
-                    && _hmdaAsianOtherRaceIndicator.Clean
-                    && _hmdaChineseIndicator.Clean
-                    && _hmdaCreditScoreForDecisionMaking.Clean
-                    && _hmdaCreditScoringModel.Clean
-                    && _hmdaCubanIndicator.Clean
-                    && _hmdaEthnicityType.Clean
-                    && _hmdaFilipinoIndicator.Clean
-                    && _hmdaGenderType.Clean
-                    && _hmdaGendertypeDoNotWishIndicator.Clean
-                    && _hmdaGendertypeFemaleIndicator.Clean
-                    && _hmdaGendertypeMaleIndicator.Clean
-                    && _hmdaGendertypeNotApplicableIndicator.Clean
-                    && _hmdaGuamanianOrChamorroIndicator.Clean
-                    && _hmdaHispanicLatinoOtherOriginIndicator.Clean
-                    && _hmdaJapaneseIndicator.Clean
-                    && _hmdaKoreanIndicator.Clean
-                    && _hmdaMexicanIndicator.Clean
-                    && _hmdaNativeHawaiianIndicator.Clean
-                    && _hmdaNoCoApplicantIndicator.Clean
-                    && _hmdaNotApplicableIndicator.Clean
-                    && _hmdaNotProvidedIndicator.Clean
-                    && _hmdaOtherAsianRace.Clean
-                    && _hmdaOtherHispanicLatinoOrigin.Clean
-                    && _hmdaOtherPacificIslanderRace.Clean
-                    && _hmdaOtherScoringModel.Clean
-                    && _hmdaPacificIslanderIndicator.Clean
-                    && _hmdaPacificIslanderOtherIndicator.Clean
-                    && _hmdaPuertoRicanIndicator.Clean
-                    && _hmdaRefusalIndicator.Clean
-                    && _hmdaSamoanIndicator.Clean
-                    && _hmdaVietnameseIndicator.Clean
-                    && _hmdaWhiteIndicator.Clean
-                    && _homeownerPastThreeYearsIndicator.Clean
-                    && _homePhoneNumber.Clean
-                    && _id.Clean
-                    && _incomeRepAndWarrantyMessage.Clean
-                    && _incomeRepAndWarrantyReliefAvailable.Clean
-                    && _intentToOccupyIndicator.Clean
-                    && _intuitReportId.Clean
-                    && _isBaseIncomeAvailable.Clean
-                    && _isBonusAvailable.Clean
-                    && _isBorrower.Clean
-                    && _isCommissionAvailable.Clean
-                    && _isEthnicityBasedOnVisual.Clean
-                    && _isOvertimeAvailable.Clean
-                    && _isRaceBasedOnVisual.Clean
-                    && _isSelfEmployed.Clean
-                    && _isSexBasedOnVisual.Clean
-                    && _isSocialSecurityAvailable.Clean
-                    && _lastName.Clean
-                    && _lastNameWithSuffix.Clean
-                    && _loanForeclosureOrJudgementIndicator.Clean
-                    && _lpdGsa.Clean
-                    && _mailingAddressSameAsPresentIndicator.Clean
-                    && _maritalStatusType.Clean
-                    && _middleCreditScore.Clean
-                    && _middleFicoScore.Clean
-                    && _middleName.Clean
-                    && _minFicoScore.Clean
-                    && _mobilePhone.Clean
-                    && _mortgageOnCredit.Clean
-                    && _nameToObtainLoanFromRHS.Clean
-                    && _nearestRelativeAddress.Clean
-                    && _nearestRelativeCity.Clean
-                    && _nearestRelativeName.Clean
-                    && _nearestRelativePhone.Clean
-                    && _nearestRelativePostalCode.Clean
-                    && _nearestRelativeRelationship.Clean
-                    && _nearestRelativeState.Clean
-                    && _no3rdPartyEmailIndicator.Clean
-                    && _noCoApplicantEthnicityIndicator.Clean
-                    && _noCoApplicantIndicator.Clean
-                    && _noCoApplicantSexIndicator.Clean
-                    && _numberofTradelines.Clean
-                    && _obtainLoanFromRHSIndicator.Clean
-                    && _openBankruptcy2.Clean
-                    && _otherMonthlyIncomeAmount.Clean
-                    && _otherSumAmount.Clean
-                    && _outstandingJudgementsIndicator.Clean
-                    && _partyToLawsuitIndicator.Clean
-                    && _pass120Days.Clean
-                    && _pass150Days.Clean
-                    && _pass30Days.Clean
-                    && _pass60Days.Clean
-                    && _pass90Days.Clean
-                    && _personFaxNumber.Clean
-                    && _personHoursPerWeek.Clean
-                    && _personIncomeAmount.Clean
-                    && _personIncomeFrequencyType.Clean
-                    && _personMonthlyIncome.Clean
-                    && _pIWAccepted.Clean
-                    && _pIWMessage.Clean
-                    && _poaOccupancyIntent.Clean
-                    && _poaSignatureText.Clean
-                    && _positiveCashFlow.Clean
-                    && _powerOfAttorneyName.Clean
-                    && _powerOfAttorneyTitleDescription.Clean
-                    && _presentlyDelinquentIndicator.Clean
-                    && _priorBankruptcy2.Clean
-                    && _priorForeclosure.Clean
-                    && _priorPropertyTitleType.Clean
-                    && _priorPropertyUsageType.Clean
-                    && _propertyForeclosedPastSevenYearsIndicator.Clean
-                    && _relationshipDescription.Clean
-                    && _relationshipWithRDEmployeeIndicator.Clean
-                    && _schoolingTermYears.Clean
-                    && _sSA89BackgroundCheckIndicator.Clean
-                    && _sSA89BankingServiceIndicator.Clean
-                    && _sSA89CreditCheckIndicator.Clean
-                    && _sSA89LicenseRequirementIndicator.Clean
-                    && _sSA89MortgageServiceIndicator.Clean
-                    && _sSA89OtherIndicator.Clean
-                    && _subtotalLiquidAssetsMinusGiftAmount.Clean
-                    && _suffixToName.Clean
-                    && _tax4506LastInvestor.Clean
-                    && _tax4506LastOrderNumber.Clean
-                    && _tax4506LastOrderYear1.Clean
-                    && _tax4506LastOrderYear2.Clean
-                    && _tax4506LastOrderYear3.Clean
-                    && _tax4506LastOrderYear4.Clean
-                    && _tax4506LastProductsOrdered.Clean
-                    && _tax4506LastStatus.Clean
-                    && _tax4506LastTranscriptType.Clean
-                    && _tax4506LastUserIDWhoOrdered.Clean
-                    && _tax4506TotalYearlyIncome1.Clean
-                    && _tax4506TotalYearlyIncome2.Clean
-                    && _tax4506TotalYearlyIncome3.Clean
-                    && _tax4506TotalYearlyIncome4.Clean
-                    && _tax4506TotalYearlyJointIncome1.Clean
-                    && _tax4506TotalYearlyJointIncome2.Clean
-                    && _tax4506TotalYearlyJointIncome3.Clean
-                    && _tax4506TotalYearlyJointIncome4.Clean
-                    && _tax4506TotalYearlyVarianceIncome1.Clean
-                    && _tax4506TotalYearlyVarianceIncome2.Clean
-                    && _tax4506TotalYearlyVarianceIncome3.Clean
-                    && _tax4506TotalYearlyVarianceIncome4.Clean
-                    && _tax4506TotalYearlyVarianceJointIncome1.Clean
-                    && _tax4506TotalYearlyVarianceJointIncome2.Clean
-                    && _tax4506TotalYearlyVarianceJointIncome3.Clean
-                    && _tax4506TotalYearlyVarianceJointIncome4.Clean
-                    && _taxIdentificationIdentifier.Clean
-                    && _totalLiabilitiesBalanceAmount.Clean
-                    && _totalMonthlyIncomeAmount.Clean
-                    && _totalMonthlyIncomeMinusNetRentalAmount.Clean
-                    && _totalPresentHousingExpenseAmount.Clean
-                    && _transactionPurposeDescription.Clean
-                    && _transUnion120Days.Clean
-                    && _transUnion150Days.Clean
-                    && _transUnion30Days.Clean
-                    && _transUnion60Days.Clean
-                    && _transUnion90Days.Clean
-                    && _transUnionCreditScoreForDisclosure.Clean
-                    && _transUnionCreditScoreRanksPercent.Clean
-                    && _transUnionDatePulled.Clean
-                    && _transUnionFactorCode1.Clean
-                    && _transUnionFactorCode2.Clean
-                    && _transUnionFactorCode3.Clean
-                    && _transUnionFactorCode4.Clean
-                    && _transUnionFactorCode5.Clean
-                    && _transUnionKeyFactor1.Clean
-                    && _transUnionKeyFactor2.Clean
-                    && _transUnionKeyFactor3.Clean
-                    && _transUnionKeyFactor4.Clean
-                    && _transUnionKeyFactor5.Clean
-                    && _transUnionMaterialTermsCreditByScore.Clean
-                    && _transUnionScore.Clean
-                    && _userDefinedIncome.Clean
-                    && _vaFederalTaxAmount.Clean
-                    && _validDaysForConsentCount.Clean
-                    && _valueRepAndWarrantyAvailable.Clean
-                    && _valueRepAndWarrantyMessage.Clean
-                    && _vaNetTakeHomePayAmount.Clean
-                    && _vaOtherAmount.Clean
-                    && _vaOtherNetIncomeAmount.Clean
-                    && _vaRetirementAmount.Clean
-                    && _vaStateTaxAmount.Clean
-                    && _vaTotalIncomeDeductionsAmount.Clean
-                    && _vaTotalNetIncomeAmount.Clean
-                    && _vendor1.Clean
-                    && _vendor10.Clean
-                    && _vendor11.Clean
-                    && _vendor12.Clean
-                    && _vendor2.Clean
-                    && _vendor3.Clean
-                    && _vendor4.Clean
-                    && _vendor5.Clean
-                    && _vendor6.Clean
-                    && _vendor7.Clean
-                    && _vendor8.Clean
-                    && _vendor9.Clean
-                    && _vestingTrusteeOfType.Clean
-                    && _veteranIndicator.Clean
-                    && _workEmailAddress.Clean
-                    && _yearsofCreditOnFile.Clean
-                    && Application?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _acountChekAssetId.Dirty
+                    || _ageAtApplicationYearsCount.Dirty
+                    || _aliasName.Dirty
+                    || _alimonyChildSupportObligationIndicator.Dirty
+                    || _altId.Dirty
+                    || _applicantType.Dirty
+                    || _applicationTakenMethodType.Dirty
+                    || _assetRepAndWarrantyMessage.Dirty
+                    || _assetRepAndWarrantyReliefAvailable.Dirty
+                    || _authorizedCreditReportIndicator.Dirty
+                    || _authorizedToSignIndicator.Dirty
+                    || _bankAccountNumber.Dirty
+                    || _bankAccountType.Dirty
+                    || _bankContactAddress.Dirty
+                    || _bankContactCity.Dirty
+                    || _bankContactName.Dirty
+                    || _bankContactPostalCode.Dirty
+                    || _bankContactState.Dirty
+                    || _bankruptcyIndicator.Dirty
+                    || _bankruptcyStatus.Dirty
+                    || _baseMonthlyIncomeAmount.Dirty
+                    || _birthDate.Dirty
+                    || _borrowedDownPaymentIndicator.Dirty
+                    || _borrowerConsentRequestDate.Dirty
+                    || _borrowerIndex.Dirty
+                    || _borrowerType.Dirty
+                    || _borrowerTypeInSummary.Dirty
+                    || _caivrsIdentifier.Dirty
+                    || _citizenshipResidencyType.Dirty
+                    || _coMakerEndorserOfNoteIndicator.Dirty
+                    || _commentOfCreditReport.Dirty
+                    || _confirmedCRDIL.Dirty
+                    || _confirmedCRFCEC.Dirty
+                    || _confirmedCRFCIncorrect.Dirty
+                    || _confirmedCRPFS.Dirty
+                    || _confirmedOther.Dirty
+                    || _confirmedOtherDescription.Dirty
+                    || _creditCounseling.Dirty
+                    || _creditReceivedDate.Dirty
+                    || _creditReportAuthorizationMethod.Dirty
+                    || _creditScoreIndicator.Dirty
+                    || _dateAuthorizedCreditReport.Dirty
+                    || _dateOfBankruptcy.Dirty
+                    || _dateOfForeclosure.Dirty
+                    || _declarationsJIndicator.Dirty
+                    || _declarationsKIndicator.Dirty
+                    || _dependentCount.Dirty
+                    || _dependentsAgesDescription.Dirty
+                    || _disabledIndicator.Dirty
+                    || _emailAddressText.Dirty
+                    || _equifax120Days.Dirty
+                    || _equifax150Days.Dirty
+                    || _equifax30Days.Dirty
+                    || _equifax60Days.Dirty
+                    || _equifax90Days.Dirty
+                    || _equifaxCreditScoreForDisclosure.Dirty
+                    || _equifaxCreditScoreRanksPercent.Dirty
+                    || _equifaxDatePulled.Dirty
+                    || _equifaxFactorCode1.Dirty
+                    || _equifaxFactorCode2.Dirty
+                    || _equifaxFactorCode3.Dirty
+                    || _equifaxFactorCode4.Dirty
+                    || _equifaxFactorCode5.Dirty
+                    || _equifaxKeyFactor1.Dirty
+                    || _equifaxKeyFactor2.Dirty
+                    || _equifaxKeyFactor3.Dirty
+                    || _equifaxKeyFactor4.Dirty
+                    || _equifaxKeyFactor5.Dirty
+                    || _equifaxMaterialTermsCreditByScore.Dirty
+                    || _equifaxScore.Dirty
+                    || _experian120Days.Dirty
+                    || _experian150Days.Dirty
+                    || _experian30Days.Dirty
+                    || _experian60Days.Dirty
+                    || _experian90Days.Dirty
+                    || _experianCreditScore.Dirty
+                    || _experianCreditScoreForDisclosure.Dirty
+                    || _experianCreditScoreRanksPercent.Dirty
+                    || _experianDatePulled.Dirty
+                    || _experianFactorCode1.Dirty
+                    || _experianFactorCode2.Dirty
+                    || _experianFactorCode3.Dirty
+                    || _experianFactorCode4.Dirty
+                    || _experianFactorCode5.Dirty
+                    || _experianKeyFactor1.Dirty
+                    || _experianKeyFactor2.Dirty
+                    || _experianKeyFactor3.Dirty
+                    || _experianKeyFactor4.Dirty
+                    || _experianKeyFactor5.Dirty
+                    || _experianMaterialTermsCreditByScore.Dirty
+                    || _firstName.Dirty
+                    || _firstNameWithMiddleName.Dirty
+                    || _firstTimeHomeBuyer.Dirty
+                    || _foreclosureSatisfied.Dirty
+                    || _foreclosureStatus.Dirty
+                    || _freddieMacPerson1.Dirty
+                    || _freddieMacPerson2.Dirty
+                    || _fullName.Dirty
+                    || _fullNameWithSuffix.Dirty
+                    || _highestCreditLimit.Dirty
+                    || _hmda2003OtherRaceNationalOriginDescription.Dirty
+                    || _hmda2003RaceNationalOriginType.Dirty
+                    || _hmdaAfricanAmericanIndicator.Dirty
+                    || _hmdaAge.Dirty
+                    || _hmdaAmericanIndianIndicator.Dirty
+                    || _hmdaAmericanIndianTribe.Dirty
+                    || _hmdaAsianIndianIndicator.Dirty
+                    || _hmdaAsianIndicator.Dirty
+                    || _hmdaAsianOtherRaceIndicator.Dirty
+                    || _hmdaChineseIndicator.Dirty
+                    || _hmdaCreditScoreForDecisionMaking.Dirty
+                    || _hmdaCreditScoringModel.Dirty
+                    || _hmdaCubanIndicator.Dirty
+                    || _hmdaEthnicityType.Dirty
+                    || _hmdaFilipinoIndicator.Dirty
+                    || _hmdaGenderType.Dirty
+                    || _hmdaGendertypeDoNotWishIndicator.Dirty
+                    || _hmdaGendertypeFemaleIndicator.Dirty
+                    || _hmdaGendertypeMaleIndicator.Dirty
+                    || _hmdaGendertypeNotApplicableIndicator.Dirty
+                    || _hmdaGuamanianOrChamorroIndicator.Dirty
+                    || _hmdaHispanicLatinoOtherOriginIndicator.Dirty
+                    || _hmdaJapaneseIndicator.Dirty
+                    || _hmdaKoreanIndicator.Dirty
+                    || _hmdaMexicanIndicator.Dirty
+                    || _hmdaNativeHawaiianIndicator.Dirty
+                    || _hmdaNoCoApplicantIndicator.Dirty
+                    || _hmdaNotApplicableIndicator.Dirty
+                    || _hmdaNotProvidedIndicator.Dirty
+                    || _hmdaOtherAsianRace.Dirty
+                    || _hmdaOtherHispanicLatinoOrigin.Dirty
+                    || _hmdaOtherPacificIslanderRace.Dirty
+                    || _hmdaOtherScoringModel.Dirty
+                    || _hmdaPacificIslanderIndicator.Dirty
+                    || _hmdaPacificIslanderOtherIndicator.Dirty
+                    || _hmdaPuertoRicanIndicator.Dirty
+                    || _hmdaRefusalIndicator.Dirty
+                    || _hmdaSamoanIndicator.Dirty
+                    || _hmdaVietnameseIndicator.Dirty
+                    || _hmdaWhiteIndicator.Dirty
+                    || _homeownerPastThreeYearsIndicator.Dirty
+                    || _homePhoneNumber.Dirty
+                    || _id.Dirty
+                    || _incomeRepAndWarrantyMessage.Dirty
+                    || _incomeRepAndWarrantyReliefAvailable.Dirty
+                    || _intentToOccupyIndicator.Dirty
+                    || _intuitReportId.Dirty
+                    || _isBaseIncomeAvailable.Dirty
+                    || _isBonusAvailable.Dirty
+                    || _isBorrower.Dirty
+                    || _isCommissionAvailable.Dirty
+                    || _isEthnicityBasedOnVisual.Dirty
+                    || _isOvertimeAvailable.Dirty
+                    || _isRaceBasedOnVisual.Dirty
+                    || _isSelfEmployed.Dirty
+                    || _isSexBasedOnVisual.Dirty
+                    || _isSocialSecurityAvailable.Dirty
+                    || _lastName.Dirty
+                    || _lastNameWithSuffix.Dirty
+                    || _loanForeclosureOrJudgementIndicator.Dirty
+                    || _lpdGsa.Dirty
+                    || _mailingAddressSameAsPresentIndicator.Dirty
+                    || _maritalStatusType.Dirty
+                    || _middleCreditScore.Dirty
+                    || _middleFicoScore.Dirty
+                    || _middleName.Dirty
+                    || _minFicoScore.Dirty
+                    || _mobilePhone.Dirty
+                    || _mortgageOnCredit.Dirty
+                    || _nameToObtainLoanFromRHS.Dirty
+                    || _nearestRelativeAddress.Dirty
+                    || _nearestRelativeCity.Dirty
+                    || _nearestRelativeName.Dirty
+                    || _nearestRelativePhone.Dirty
+                    || _nearestRelativePostalCode.Dirty
+                    || _nearestRelativeRelationship.Dirty
+                    || _nearestRelativeState.Dirty
+                    || _no3rdPartyEmailIndicator.Dirty
+                    || _noCoApplicantEthnicityIndicator.Dirty
+                    || _noCoApplicantIndicator.Dirty
+                    || _noCoApplicantSexIndicator.Dirty
+                    || _numberofTradelines.Dirty
+                    || _obtainLoanFromRHSIndicator.Dirty
+                    || _openBankruptcy2.Dirty
+                    || _otherMonthlyIncomeAmount.Dirty
+                    || _otherSumAmount.Dirty
+                    || _outstandingJudgementsIndicator.Dirty
+                    || _partyToLawsuitIndicator.Dirty
+                    || _pass120Days.Dirty
+                    || _pass150Days.Dirty
+                    || _pass30Days.Dirty
+                    || _pass60Days.Dirty
+                    || _pass90Days.Dirty
+                    || _personFaxNumber.Dirty
+                    || _personHoursPerWeek.Dirty
+                    || _personIncomeAmount.Dirty
+                    || _personIncomeFrequencyType.Dirty
+                    || _personMonthlyIncome.Dirty
+                    || _pIWAccepted.Dirty
+                    || _pIWMessage.Dirty
+                    || _poaOccupancyIntent.Dirty
+                    || _poaSignatureText.Dirty
+                    || _positiveCashFlow.Dirty
+                    || _powerOfAttorneyName.Dirty
+                    || _powerOfAttorneyTitleDescription.Dirty
+                    || _presentlyDelinquentIndicator.Dirty
+                    || _priorBankruptcy2.Dirty
+                    || _priorForeclosure.Dirty
+                    || _priorPropertyTitleType.Dirty
+                    || _priorPropertyUsageType.Dirty
+                    || _propertyForeclosedPastSevenYearsIndicator.Dirty
+                    || _relationshipDescription.Dirty
+                    || _relationshipWithRDEmployeeIndicator.Dirty
+                    || _schoolingTermYears.Dirty
+                    || _sSA89BackgroundCheckIndicator.Dirty
+                    || _sSA89BankingServiceIndicator.Dirty
+                    || _sSA89CreditCheckIndicator.Dirty
+                    || _sSA89LicenseRequirementIndicator.Dirty
+                    || _sSA89MortgageServiceIndicator.Dirty
+                    || _sSA89OtherIndicator.Dirty
+                    || _subtotalLiquidAssetsMinusGiftAmount.Dirty
+                    || _suffixToName.Dirty
+                    || _tax4506LastInvestor.Dirty
+                    || _tax4506LastOrderNumber.Dirty
+                    || _tax4506LastOrderYear1.Dirty
+                    || _tax4506LastOrderYear2.Dirty
+                    || _tax4506LastOrderYear3.Dirty
+                    || _tax4506LastOrderYear4.Dirty
+                    || _tax4506LastProductsOrdered.Dirty
+                    || _tax4506LastStatus.Dirty
+                    || _tax4506LastTranscriptType.Dirty
+                    || _tax4506LastUserIDWhoOrdered.Dirty
+                    || _tax4506TotalYearlyIncome1.Dirty
+                    || _tax4506TotalYearlyIncome2.Dirty
+                    || _tax4506TotalYearlyIncome3.Dirty
+                    || _tax4506TotalYearlyIncome4.Dirty
+                    || _tax4506TotalYearlyJointIncome1.Dirty
+                    || _tax4506TotalYearlyJointIncome2.Dirty
+                    || _tax4506TotalYearlyJointIncome3.Dirty
+                    || _tax4506TotalYearlyJointIncome4.Dirty
+                    || _tax4506TotalYearlyVarianceIncome1.Dirty
+                    || _tax4506TotalYearlyVarianceIncome2.Dirty
+                    || _tax4506TotalYearlyVarianceIncome3.Dirty
+                    || _tax4506TotalYearlyVarianceIncome4.Dirty
+                    || _tax4506TotalYearlyVarianceJointIncome1.Dirty
+                    || _tax4506TotalYearlyVarianceJointIncome2.Dirty
+                    || _tax4506TotalYearlyVarianceJointIncome3.Dirty
+                    || _tax4506TotalYearlyVarianceJointIncome4.Dirty
+                    || _taxIdentificationIdentifier.Dirty
+                    || _totalLiabilitiesBalanceAmount.Dirty
+                    || _totalMonthlyIncomeAmount.Dirty
+                    || _totalMonthlyIncomeMinusNetRentalAmount.Dirty
+                    || _totalPresentHousingExpenseAmount.Dirty
+                    || _transactionPurposeDescription.Dirty
+                    || _transUnion120Days.Dirty
+                    || _transUnion150Days.Dirty
+                    || _transUnion30Days.Dirty
+                    || _transUnion60Days.Dirty
+                    || _transUnion90Days.Dirty
+                    || _transUnionCreditScoreForDisclosure.Dirty
+                    || _transUnionCreditScoreRanksPercent.Dirty
+                    || _transUnionDatePulled.Dirty
+                    || _transUnionFactorCode1.Dirty
+                    || _transUnionFactorCode2.Dirty
+                    || _transUnionFactorCode3.Dirty
+                    || _transUnionFactorCode4.Dirty
+                    || _transUnionFactorCode5.Dirty
+                    || _transUnionKeyFactor1.Dirty
+                    || _transUnionKeyFactor2.Dirty
+                    || _transUnionKeyFactor3.Dirty
+                    || _transUnionKeyFactor4.Dirty
+                    || _transUnionKeyFactor5.Dirty
+                    || _transUnionMaterialTermsCreditByScore.Dirty
+                    || _transUnionScore.Dirty
+                    || _userDefinedIncome.Dirty
+                    || _vaFederalTaxAmount.Dirty
+                    || _validDaysForConsentCount.Dirty
+                    || _valueRepAndWarrantyAvailable.Dirty
+                    || _valueRepAndWarrantyMessage.Dirty
+                    || _vaNetTakeHomePayAmount.Dirty
+                    || _vaOtherAmount.Dirty
+                    || _vaOtherNetIncomeAmount.Dirty
+                    || _vaRetirementAmount.Dirty
+                    || _vaStateTaxAmount.Dirty
+                    || _vaTotalIncomeDeductionsAmount.Dirty
+                    || _vaTotalNetIncomeAmount.Dirty
+                    || _vendor1.Dirty
+                    || _vendor10.Dirty
+                    || _vendor11.Dirty
+                    || _vendor12.Dirty
+                    || _vendor2.Dirty
+                    || _vendor3.Dirty
+                    || _vendor4.Dirty
+                    || _vendor5.Dirty
+                    || _vendor6.Dirty
+                    || _vendor7.Dirty
+                    || _vendor8.Dirty
+                    || _vendor9.Dirty
+                    || _vestingTrusteeOfType.Dirty
+                    || _veteranIndicator.Dirty
+                    || _workEmailAddress.Dirty
+                    || _yearsofCreditOnFile.Dirty
+                    || Application?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var acountChekAssetId = _acountChekAssetId; acountChekAssetId.Clean = value; _acountChekAssetId = acountChekAssetId;
-                var ageAtApplicationYearsCount = _ageAtApplicationYearsCount; ageAtApplicationYearsCount.Clean = value; _ageAtApplicationYearsCount = ageAtApplicationYearsCount;
-                var aliasName = _aliasName; aliasName.Clean = value; _aliasName = aliasName;
-                var alimonyChildSupportObligationIndicator = _alimonyChildSupportObligationIndicator; alimonyChildSupportObligationIndicator.Clean = value; _alimonyChildSupportObligationIndicator = alimonyChildSupportObligationIndicator;
-                var altId = _altId; altId.Clean = value; _altId = altId;
-                var applicantType = _applicantType; applicantType.Clean = value; _applicantType = applicantType;
-                var applicationTakenMethodType = _applicationTakenMethodType; applicationTakenMethodType.Clean = value; _applicationTakenMethodType = applicationTakenMethodType;
-                var assetRepAndWarrantyMessage = _assetRepAndWarrantyMessage; assetRepAndWarrantyMessage.Clean = value; _assetRepAndWarrantyMessage = assetRepAndWarrantyMessage;
-                var assetRepAndWarrantyReliefAvailable = _assetRepAndWarrantyReliefAvailable; assetRepAndWarrantyReliefAvailable.Clean = value; _assetRepAndWarrantyReliefAvailable = assetRepAndWarrantyReliefAvailable;
-                var authorizedCreditReportIndicator = _authorizedCreditReportIndicator; authorizedCreditReportIndicator.Clean = value; _authorizedCreditReportIndicator = authorizedCreditReportIndicator;
-                var authorizedToSignIndicator = _authorizedToSignIndicator; authorizedToSignIndicator.Clean = value; _authorizedToSignIndicator = authorizedToSignIndicator;
-                var bankAccountNumber = _bankAccountNumber; bankAccountNumber.Clean = value; _bankAccountNumber = bankAccountNumber;
-                var bankAccountType = _bankAccountType; bankAccountType.Clean = value; _bankAccountType = bankAccountType;
-                var bankContactAddress = _bankContactAddress; bankContactAddress.Clean = value; _bankContactAddress = bankContactAddress;
-                var bankContactCity = _bankContactCity; bankContactCity.Clean = value; _bankContactCity = bankContactCity;
-                var bankContactName = _bankContactName; bankContactName.Clean = value; _bankContactName = bankContactName;
-                var bankContactPostalCode = _bankContactPostalCode; bankContactPostalCode.Clean = value; _bankContactPostalCode = bankContactPostalCode;
-                var bankContactState = _bankContactState; bankContactState.Clean = value; _bankContactState = bankContactState;
-                var bankruptcyIndicator = _bankruptcyIndicator; bankruptcyIndicator.Clean = value; _bankruptcyIndicator = bankruptcyIndicator;
-                var bankruptcyStatus = _bankruptcyStatus; bankruptcyStatus.Clean = value; _bankruptcyStatus = bankruptcyStatus;
-                var baseMonthlyIncomeAmount = _baseMonthlyIncomeAmount; baseMonthlyIncomeAmount.Clean = value; _baseMonthlyIncomeAmount = baseMonthlyIncomeAmount;
-                var birthDate = _birthDate; birthDate.Clean = value; _birthDate = birthDate;
-                var borrowedDownPaymentIndicator = _borrowedDownPaymentIndicator; borrowedDownPaymentIndicator.Clean = value; _borrowedDownPaymentIndicator = borrowedDownPaymentIndicator;
-                var borrowerConsentRequestDate = _borrowerConsentRequestDate; borrowerConsentRequestDate.Clean = value; _borrowerConsentRequestDate = borrowerConsentRequestDate;
-                var borrowerIndex = _borrowerIndex; borrowerIndex.Clean = value; _borrowerIndex = borrowerIndex;
-                var borrowerType = _borrowerType; borrowerType.Clean = value; _borrowerType = borrowerType;
-                var borrowerTypeInSummary = _borrowerTypeInSummary; borrowerTypeInSummary.Clean = value; _borrowerTypeInSummary = borrowerTypeInSummary;
-                var caivrsIdentifier = _caivrsIdentifier; caivrsIdentifier.Clean = value; _caivrsIdentifier = caivrsIdentifier;
-                var citizenshipResidencyType = _citizenshipResidencyType; citizenshipResidencyType.Clean = value; _citizenshipResidencyType = citizenshipResidencyType;
-                var coMakerEndorserOfNoteIndicator = _coMakerEndorserOfNoteIndicator; coMakerEndorserOfNoteIndicator.Clean = value; _coMakerEndorserOfNoteIndicator = coMakerEndorserOfNoteIndicator;
-                var commentOfCreditReport = _commentOfCreditReport; commentOfCreditReport.Clean = value; _commentOfCreditReport = commentOfCreditReport;
-                var confirmedCRDIL = _confirmedCRDIL; confirmedCRDIL.Clean = value; _confirmedCRDIL = confirmedCRDIL;
-                var confirmedCRFCEC = _confirmedCRFCEC; confirmedCRFCEC.Clean = value; _confirmedCRFCEC = confirmedCRFCEC;
-                var confirmedCRFCIncorrect = _confirmedCRFCIncorrect; confirmedCRFCIncorrect.Clean = value; _confirmedCRFCIncorrect = confirmedCRFCIncorrect;
-                var confirmedCRPFS = _confirmedCRPFS; confirmedCRPFS.Clean = value; _confirmedCRPFS = confirmedCRPFS;
-                var confirmedOther = _confirmedOther; confirmedOther.Clean = value; _confirmedOther = confirmedOther;
-                var confirmedOtherDescription = _confirmedOtherDescription; confirmedOtherDescription.Clean = value; _confirmedOtherDescription = confirmedOtherDescription;
-                var creditCounseling = _creditCounseling; creditCounseling.Clean = value; _creditCounseling = creditCounseling;
-                var creditReceivedDate = _creditReceivedDate; creditReceivedDate.Clean = value; _creditReceivedDate = creditReceivedDate;
-                var creditReportAuthorizationMethod = _creditReportAuthorizationMethod; creditReportAuthorizationMethod.Clean = value; _creditReportAuthorizationMethod = creditReportAuthorizationMethod;
-                var creditScoreIndicator = _creditScoreIndicator; creditScoreIndicator.Clean = value; _creditScoreIndicator = creditScoreIndicator;
-                var dateAuthorizedCreditReport = _dateAuthorizedCreditReport; dateAuthorizedCreditReport.Clean = value; _dateAuthorizedCreditReport = dateAuthorizedCreditReport;
-                var dateOfBankruptcy = _dateOfBankruptcy; dateOfBankruptcy.Clean = value; _dateOfBankruptcy = dateOfBankruptcy;
-                var dateOfForeclosure = _dateOfForeclosure; dateOfForeclosure.Clean = value; _dateOfForeclosure = dateOfForeclosure;
-                var declarationsJIndicator = _declarationsJIndicator; declarationsJIndicator.Clean = value; _declarationsJIndicator = declarationsJIndicator;
-                var declarationsKIndicator = _declarationsKIndicator; declarationsKIndicator.Clean = value; _declarationsKIndicator = declarationsKIndicator;
-                var dependentCount = _dependentCount; dependentCount.Clean = value; _dependentCount = dependentCount;
-                var dependentsAgesDescription = _dependentsAgesDescription; dependentsAgesDescription.Clean = value; _dependentsAgesDescription = dependentsAgesDescription;
-                var disabledIndicator = _disabledIndicator; disabledIndicator.Clean = value; _disabledIndicator = disabledIndicator;
-                var emailAddressText = _emailAddressText; emailAddressText.Clean = value; _emailAddressText = emailAddressText;
-                var equifax120Days = _equifax120Days; equifax120Days.Clean = value; _equifax120Days = equifax120Days;
-                var equifax150Days = _equifax150Days; equifax150Days.Clean = value; _equifax150Days = equifax150Days;
-                var equifax30Days = _equifax30Days; equifax30Days.Clean = value; _equifax30Days = equifax30Days;
-                var equifax60Days = _equifax60Days; equifax60Days.Clean = value; _equifax60Days = equifax60Days;
-                var equifax90Days = _equifax90Days; equifax90Days.Clean = value; _equifax90Days = equifax90Days;
-                var equifaxCreditScoreForDisclosure = _equifaxCreditScoreForDisclosure; equifaxCreditScoreForDisclosure.Clean = value; _equifaxCreditScoreForDisclosure = equifaxCreditScoreForDisclosure;
-                var equifaxCreditScoreRanksPercent = _equifaxCreditScoreRanksPercent; equifaxCreditScoreRanksPercent.Clean = value; _equifaxCreditScoreRanksPercent = equifaxCreditScoreRanksPercent;
-                var equifaxDatePulled = _equifaxDatePulled; equifaxDatePulled.Clean = value; _equifaxDatePulled = equifaxDatePulled;
-                var equifaxFactorCode1 = _equifaxFactorCode1; equifaxFactorCode1.Clean = value; _equifaxFactorCode1 = equifaxFactorCode1;
-                var equifaxFactorCode2 = _equifaxFactorCode2; equifaxFactorCode2.Clean = value; _equifaxFactorCode2 = equifaxFactorCode2;
-                var equifaxFactorCode3 = _equifaxFactorCode3; equifaxFactorCode3.Clean = value; _equifaxFactorCode3 = equifaxFactorCode3;
-                var equifaxFactorCode4 = _equifaxFactorCode4; equifaxFactorCode4.Clean = value; _equifaxFactorCode4 = equifaxFactorCode4;
-                var equifaxFactorCode5 = _equifaxFactorCode5; equifaxFactorCode5.Clean = value; _equifaxFactorCode5 = equifaxFactorCode5;
-                var equifaxKeyFactor1 = _equifaxKeyFactor1; equifaxKeyFactor1.Clean = value; _equifaxKeyFactor1 = equifaxKeyFactor1;
-                var equifaxKeyFactor2 = _equifaxKeyFactor2; equifaxKeyFactor2.Clean = value; _equifaxKeyFactor2 = equifaxKeyFactor2;
-                var equifaxKeyFactor3 = _equifaxKeyFactor3; equifaxKeyFactor3.Clean = value; _equifaxKeyFactor3 = equifaxKeyFactor3;
-                var equifaxKeyFactor4 = _equifaxKeyFactor4; equifaxKeyFactor4.Clean = value; _equifaxKeyFactor4 = equifaxKeyFactor4;
-                var equifaxKeyFactor5 = _equifaxKeyFactor5; equifaxKeyFactor5.Clean = value; _equifaxKeyFactor5 = equifaxKeyFactor5;
-                var equifaxMaterialTermsCreditByScore = _equifaxMaterialTermsCreditByScore; equifaxMaterialTermsCreditByScore.Clean = value; _equifaxMaterialTermsCreditByScore = equifaxMaterialTermsCreditByScore;
-                var equifaxScore = _equifaxScore; equifaxScore.Clean = value; _equifaxScore = equifaxScore;
-                var experian120Days = _experian120Days; experian120Days.Clean = value; _experian120Days = experian120Days;
-                var experian150Days = _experian150Days; experian150Days.Clean = value; _experian150Days = experian150Days;
-                var experian30Days = _experian30Days; experian30Days.Clean = value; _experian30Days = experian30Days;
-                var experian60Days = _experian60Days; experian60Days.Clean = value; _experian60Days = experian60Days;
-                var experian90Days = _experian90Days; experian90Days.Clean = value; _experian90Days = experian90Days;
-                var experianCreditScore = _experianCreditScore; experianCreditScore.Clean = value; _experianCreditScore = experianCreditScore;
-                var experianCreditScoreForDisclosure = _experianCreditScoreForDisclosure; experianCreditScoreForDisclosure.Clean = value; _experianCreditScoreForDisclosure = experianCreditScoreForDisclosure;
-                var experianCreditScoreRanksPercent = _experianCreditScoreRanksPercent; experianCreditScoreRanksPercent.Clean = value; _experianCreditScoreRanksPercent = experianCreditScoreRanksPercent;
-                var experianDatePulled = _experianDatePulled; experianDatePulled.Clean = value; _experianDatePulled = experianDatePulled;
-                var experianFactorCode1 = _experianFactorCode1; experianFactorCode1.Clean = value; _experianFactorCode1 = experianFactorCode1;
-                var experianFactorCode2 = _experianFactorCode2; experianFactorCode2.Clean = value; _experianFactorCode2 = experianFactorCode2;
-                var experianFactorCode3 = _experianFactorCode3; experianFactorCode3.Clean = value; _experianFactorCode3 = experianFactorCode3;
-                var experianFactorCode4 = _experianFactorCode4; experianFactorCode4.Clean = value; _experianFactorCode4 = experianFactorCode4;
-                var experianFactorCode5 = _experianFactorCode5; experianFactorCode5.Clean = value; _experianFactorCode5 = experianFactorCode5;
-                var experianKeyFactor1 = _experianKeyFactor1; experianKeyFactor1.Clean = value; _experianKeyFactor1 = experianKeyFactor1;
-                var experianKeyFactor2 = _experianKeyFactor2; experianKeyFactor2.Clean = value; _experianKeyFactor2 = experianKeyFactor2;
-                var experianKeyFactor3 = _experianKeyFactor3; experianKeyFactor3.Clean = value; _experianKeyFactor3 = experianKeyFactor3;
-                var experianKeyFactor4 = _experianKeyFactor4; experianKeyFactor4.Clean = value; _experianKeyFactor4 = experianKeyFactor4;
-                var experianKeyFactor5 = _experianKeyFactor5; experianKeyFactor5.Clean = value; _experianKeyFactor5 = experianKeyFactor5;
-                var experianMaterialTermsCreditByScore = _experianMaterialTermsCreditByScore; experianMaterialTermsCreditByScore.Clean = value; _experianMaterialTermsCreditByScore = experianMaterialTermsCreditByScore;
-                var firstName = _firstName; firstName.Clean = value; _firstName = firstName;
-                var firstNameWithMiddleName = _firstNameWithMiddleName; firstNameWithMiddleName.Clean = value; _firstNameWithMiddleName = firstNameWithMiddleName;
-                var firstTimeHomeBuyer = _firstTimeHomeBuyer; firstTimeHomeBuyer.Clean = value; _firstTimeHomeBuyer = firstTimeHomeBuyer;
-                var foreclosureSatisfied = _foreclosureSatisfied; foreclosureSatisfied.Clean = value; _foreclosureSatisfied = foreclosureSatisfied;
-                var foreclosureStatus = _foreclosureStatus; foreclosureStatus.Clean = value; _foreclosureStatus = foreclosureStatus;
-                var freddieMacPerson1 = _freddieMacPerson1; freddieMacPerson1.Clean = value; _freddieMacPerson1 = freddieMacPerson1;
-                var freddieMacPerson2 = _freddieMacPerson2; freddieMacPerson2.Clean = value; _freddieMacPerson2 = freddieMacPerson2;
-                var fullName = _fullName; fullName.Clean = value; _fullName = fullName;
-                var fullNameWithSuffix = _fullNameWithSuffix; fullNameWithSuffix.Clean = value; _fullNameWithSuffix = fullNameWithSuffix;
-                var highestCreditLimit = _highestCreditLimit; highestCreditLimit.Clean = value; _highestCreditLimit = highestCreditLimit;
-                var hmda2003OtherRaceNationalOriginDescription = _hmda2003OtherRaceNationalOriginDescription; hmda2003OtherRaceNationalOriginDescription.Clean = value; _hmda2003OtherRaceNationalOriginDescription = hmda2003OtherRaceNationalOriginDescription;
-                var hmda2003RaceNationalOriginType = _hmda2003RaceNationalOriginType; hmda2003RaceNationalOriginType.Clean = value; _hmda2003RaceNationalOriginType = hmda2003RaceNationalOriginType;
-                var hmdaAfricanAmericanIndicator = _hmdaAfricanAmericanIndicator; hmdaAfricanAmericanIndicator.Clean = value; _hmdaAfricanAmericanIndicator = hmdaAfricanAmericanIndicator;
-                var hmdaAge = _hmdaAge; hmdaAge.Clean = value; _hmdaAge = hmdaAge;
-                var hmdaAmericanIndianIndicator = _hmdaAmericanIndianIndicator; hmdaAmericanIndianIndicator.Clean = value; _hmdaAmericanIndianIndicator = hmdaAmericanIndianIndicator;
-                var hmdaAmericanIndianTribe = _hmdaAmericanIndianTribe; hmdaAmericanIndianTribe.Clean = value; _hmdaAmericanIndianTribe = hmdaAmericanIndianTribe;
-                var hmdaAsianIndianIndicator = _hmdaAsianIndianIndicator; hmdaAsianIndianIndicator.Clean = value; _hmdaAsianIndianIndicator = hmdaAsianIndianIndicator;
-                var hmdaAsianIndicator = _hmdaAsianIndicator; hmdaAsianIndicator.Clean = value; _hmdaAsianIndicator = hmdaAsianIndicator;
-                var hmdaAsianOtherRaceIndicator = _hmdaAsianOtherRaceIndicator; hmdaAsianOtherRaceIndicator.Clean = value; _hmdaAsianOtherRaceIndicator = hmdaAsianOtherRaceIndicator;
-                var hmdaChineseIndicator = _hmdaChineseIndicator; hmdaChineseIndicator.Clean = value; _hmdaChineseIndicator = hmdaChineseIndicator;
-                var hmdaCreditScoreForDecisionMaking = _hmdaCreditScoreForDecisionMaking; hmdaCreditScoreForDecisionMaking.Clean = value; _hmdaCreditScoreForDecisionMaking = hmdaCreditScoreForDecisionMaking;
-                var hmdaCreditScoringModel = _hmdaCreditScoringModel; hmdaCreditScoringModel.Clean = value; _hmdaCreditScoringModel = hmdaCreditScoringModel;
-                var hmdaCubanIndicator = _hmdaCubanIndicator; hmdaCubanIndicator.Clean = value; _hmdaCubanIndicator = hmdaCubanIndicator;
-                var hmdaEthnicityType = _hmdaEthnicityType; hmdaEthnicityType.Clean = value; _hmdaEthnicityType = hmdaEthnicityType;
-                var hmdaFilipinoIndicator = _hmdaFilipinoIndicator; hmdaFilipinoIndicator.Clean = value; _hmdaFilipinoIndicator = hmdaFilipinoIndicator;
-                var hmdaGenderType = _hmdaGenderType; hmdaGenderType.Clean = value; _hmdaGenderType = hmdaGenderType;
-                var hmdaGendertypeDoNotWishIndicator = _hmdaGendertypeDoNotWishIndicator; hmdaGendertypeDoNotWishIndicator.Clean = value; _hmdaGendertypeDoNotWishIndicator = hmdaGendertypeDoNotWishIndicator;
-                var hmdaGendertypeFemaleIndicator = _hmdaGendertypeFemaleIndicator; hmdaGendertypeFemaleIndicator.Clean = value; _hmdaGendertypeFemaleIndicator = hmdaGendertypeFemaleIndicator;
-                var hmdaGendertypeMaleIndicator = _hmdaGendertypeMaleIndicator; hmdaGendertypeMaleIndicator.Clean = value; _hmdaGendertypeMaleIndicator = hmdaGendertypeMaleIndicator;
-                var hmdaGendertypeNotApplicableIndicator = _hmdaGendertypeNotApplicableIndicator; hmdaGendertypeNotApplicableIndicator.Clean = value; _hmdaGendertypeNotApplicableIndicator = hmdaGendertypeNotApplicableIndicator;
-                var hmdaGuamanianOrChamorroIndicator = _hmdaGuamanianOrChamorroIndicator; hmdaGuamanianOrChamorroIndicator.Clean = value; _hmdaGuamanianOrChamorroIndicator = hmdaGuamanianOrChamorroIndicator;
-                var hmdaHispanicLatinoOtherOriginIndicator = _hmdaHispanicLatinoOtherOriginIndicator; hmdaHispanicLatinoOtherOriginIndicator.Clean = value; _hmdaHispanicLatinoOtherOriginIndicator = hmdaHispanicLatinoOtherOriginIndicator;
-                var hmdaJapaneseIndicator = _hmdaJapaneseIndicator; hmdaJapaneseIndicator.Clean = value; _hmdaJapaneseIndicator = hmdaJapaneseIndicator;
-                var hmdaKoreanIndicator = _hmdaKoreanIndicator; hmdaKoreanIndicator.Clean = value; _hmdaKoreanIndicator = hmdaKoreanIndicator;
-                var hmdaMexicanIndicator = _hmdaMexicanIndicator; hmdaMexicanIndicator.Clean = value; _hmdaMexicanIndicator = hmdaMexicanIndicator;
-                var hmdaNativeHawaiianIndicator = _hmdaNativeHawaiianIndicator; hmdaNativeHawaiianIndicator.Clean = value; _hmdaNativeHawaiianIndicator = hmdaNativeHawaiianIndicator;
-                var hmdaNoCoApplicantIndicator = _hmdaNoCoApplicantIndicator; hmdaNoCoApplicantIndicator.Clean = value; _hmdaNoCoApplicantIndicator = hmdaNoCoApplicantIndicator;
-                var hmdaNotApplicableIndicator = _hmdaNotApplicableIndicator; hmdaNotApplicableIndicator.Clean = value; _hmdaNotApplicableIndicator = hmdaNotApplicableIndicator;
-                var hmdaNotProvidedIndicator = _hmdaNotProvidedIndicator; hmdaNotProvidedIndicator.Clean = value; _hmdaNotProvidedIndicator = hmdaNotProvidedIndicator;
-                var hmdaOtherAsianRace = _hmdaOtherAsianRace; hmdaOtherAsianRace.Clean = value; _hmdaOtherAsianRace = hmdaOtherAsianRace;
-                var hmdaOtherHispanicLatinoOrigin = _hmdaOtherHispanicLatinoOrigin; hmdaOtherHispanicLatinoOrigin.Clean = value; _hmdaOtherHispanicLatinoOrigin = hmdaOtherHispanicLatinoOrigin;
-                var hmdaOtherPacificIslanderRace = _hmdaOtherPacificIslanderRace; hmdaOtherPacificIslanderRace.Clean = value; _hmdaOtherPacificIslanderRace = hmdaOtherPacificIslanderRace;
-                var hmdaOtherScoringModel = _hmdaOtherScoringModel; hmdaOtherScoringModel.Clean = value; _hmdaOtherScoringModel = hmdaOtherScoringModel;
-                var hmdaPacificIslanderIndicator = _hmdaPacificIslanderIndicator; hmdaPacificIslanderIndicator.Clean = value; _hmdaPacificIslanderIndicator = hmdaPacificIslanderIndicator;
-                var hmdaPacificIslanderOtherIndicator = _hmdaPacificIslanderOtherIndicator; hmdaPacificIslanderOtherIndicator.Clean = value; _hmdaPacificIslanderOtherIndicator = hmdaPacificIslanderOtherIndicator;
-                var hmdaPuertoRicanIndicator = _hmdaPuertoRicanIndicator; hmdaPuertoRicanIndicator.Clean = value; _hmdaPuertoRicanIndicator = hmdaPuertoRicanIndicator;
-                var hmdaRefusalIndicator = _hmdaRefusalIndicator; hmdaRefusalIndicator.Clean = value; _hmdaRefusalIndicator = hmdaRefusalIndicator;
-                var hmdaSamoanIndicator = _hmdaSamoanIndicator; hmdaSamoanIndicator.Clean = value; _hmdaSamoanIndicator = hmdaSamoanIndicator;
-                var hmdaVietnameseIndicator = _hmdaVietnameseIndicator; hmdaVietnameseIndicator.Clean = value; _hmdaVietnameseIndicator = hmdaVietnameseIndicator;
-                var hmdaWhiteIndicator = _hmdaWhiteIndicator; hmdaWhiteIndicator.Clean = value; _hmdaWhiteIndicator = hmdaWhiteIndicator;
-                var homeownerPastThreeYearsIndicator = _homeownerPastThreeYearsIndicator; homeownerPastThreeYearsIndicator.Clean = value; _homeownerPastThreeYearsIndicator = homeownerPastThreeYearsIndicator;
-                var homePhoneNumber = _homePhoneNumber; homePhoneNumber.Clean = value; _homePhoneNumber = homePhoneNumber;
-                var id = _id; id.Clean = value; _id = id;
-                var incomeRepAndWarrantyMessage = _incomeRepAndWarrantyMessage; incomeRepAndWarrantyMessage.Clean = value; _incomeRepAndWarrantyMessage = incomeRepAndWarrantyMessage;
-                var incomeRepAndWarrantyReliefAvailable = _incomeRepAndWarrantyReliefAvailable; incomeRepAndWarrantyReliefAvailable.Clean = value; _incomeRepAndWarrantyReliefAvailable = incomeRepAndWarrantyReliefAvailable;
-                var intentToOccupyIndicator = _intentToOccupyIndicator; intentToOccupyIndicator.Clean = value; _intentToOccupyIndicator = intentToOccupyIndicator;
-                var intuitReportId = _intuitReportId; intuitReportId.Clean = value; _intuitReportId = intuitReportId;
-                var isBaseIncomeAvailable = _isBaseIncomeAvailable; isBaseIncomeAvailable.Clean = value; _isBaseIncomeAvailable = isBaseIncomeAvailable;
-                var isBonusAvailable = _isBonusAvailable; isBonusAvailable.Clean = value; _isBonusAvailable = isBonusAvailable;
-                var isBorrower = _isBorrower; isBorrower.Clean = value; _isBorrower = isBorrower;
-                var isCommissionAvailable = _isCommissionAvailable; isCommissionAvailable.Clean = value; _isCommissionAvailable = isCommissionAvailable;
-                var isEthnicityBasedOnVisual = _isEthnicityBasedOnVisual; isEthnicityBasedOnVisual.Clean = value; _isEthnicityBasedOnVisual = isEthnicityBasedOnVisual;
-                var isOvertimeAvailable = _isOvertimeAvailable; isOvertimeAvailable.Clean = value; _isOvertimeAvailable = isOvertimeAvailable;
-                var isRaceBasedOnVisual = _isRaceBasedOnVisual; isRaceBasedOnVisual.Clean = value; _isRaceBasedOnVisual = isRaceBasedOnVisual;
-                var isSelfEmployed = _isSelfEmployed; isSelfEmployed.Clean = value; _isSelfEmployed = isSelfEmployed;
-                var isSexBasedOnVisual = _isSexBasedOnVisual; isSexBasedOnVisual.Clean = value; _isSexBasedOnVisual = isSexBasedOnVisual;
-                var isSocialSecurityAvailable = _isSocialSecurityAvailable; isSocialSecurityAvailable.Clean = value; _isSocialSecurityAvailable = isSocialSecurityAvailable;
-                var lastName = _lastName; lastName.Clean = value; _lastName = lastName;
-                var lastNameWithSuffix = _lastNameWithSuffix; lastNameWithSuffix.Clean = value; _lastNameWithSuffix = lastNameWithSuffix;
-                var loanForeclosureOrJudgementIndicator = _loanForeclosureOrJudgementIndicator; loanForeclosureOrJudgementIndicator.Clean = value; _loanForeclosureOrJudgementIndicator = loanForeclosureOrJudgementIndicator;
-                var lpdGsa = _lpdGsa; lpdGsa.Clean = value; _lpdGsa = lpdGsa;
-                var mailingAddressSameAsPresentIndicator = _mailingAddressSameAsPresentIndicator; mailingAddressSameAsPresentIndicator.Clean = value; _mailingAddressSameAsPresentIndicator = mailingAddressSameAsPresentIndicator;
-                var maritalStatusType = _maritalStatusType; maritalStatusType.Clean = value; _maritalStatusType = maritalStatusType;
-                var middleCreditScore = _middleCreditScore; middleCreditScore.Clean = value; _middleCreditScore = middleCreditScore;
-                var middleFicoScore = _middleFicoScore; middleFicoScore.Clean = value; _middleFicoScore = middleFicoScore;
-                var middleName = _middleName; middleName.Clean = value; _middleName = middleName;
-                var minFicoScore = _minFicoScore; minFicoScore.Clean = value; _minFicoScore = minFicoScore;
-                var mobilePhone = _mobilePhone; mobilePhone.Clean = value; _mobilePhone = mobilePhone;
-                var mortgageOnCredit = _mortgageOnCredit; mortgageOnCredit.Clean = value; _mortgageOnCredit = mortgageOnCredit;
-                var nameToObtainLoanFromRHS = _nameToObtainLoanFromRHS; nameToObtainLoanFromRHS.Clean = value; _nameToObtainLoanFromRHS = nameToObtainLoanFromRHS;
-                var nearestRelativeAddress = _nearestRelativeAddress; nearestRelativeAddress.Clean = value; _nearestRelativeAddress = nearestRelativeAddress;
-                var nearestRelativeCity = _nearestRelativeCity; nearestRelativeCity.Clean = value; _nearestRelativeCity = nearestRelativeCity;
-                var nearestRelativeName = _nearestRelativeName; nearestRelativeName.Clean = value; _nearestRelativeName = nearestRelativeName;
-                var nearestRelativePhone = _nearestRelativePhone; nearestRelativePhone.Clean = value; _nearestRelativePhone = nearestRelativePhone;
-                var nearestRelativePostalCode = _nearestRelativePostalCode; nearestRelativePostalCode.Clean = value; _nearestRelativePostalCode = nearestRelativePostalCode;
-                var nearestRelativeRelationship = _nearestRelativeRelationship; nearestRelativeRelationship.Clean = value; _nearestRelativeRelationship = nearestRelativeRelationship;
-                var nearestRelativeState = _nearestRelativeState; nearestRelativeState.Clean = value; _nearestRelativeState = nearestRelativeState;
-                var no3rdPartyEmailIndicator = _no3rdPartyEmailIndicator; no3rdPartyEmailIndicator.Clean = value; _no3rdPartyEmailIndicator = no3rdPartyEmailIndicator;
-                var noCoApplicantEthnicityIndicator = _noCoApplicantEthnicityIndicator; noCoApplicantEthnicityIndicator.Clean = value; _noCoApplicantEthnicityIndicator = noCoApplicantEthnicityIndicator;
-                var noCoApplicantIndicator = _noCoApplicantIndicator; noCoApplicantIndicator.Clean = value; _noCoApplicantIndicator = noCoApplicantIndicator;
-                var noCoApplicantSexIndicator = _noCoApplicantSexIndicator; noCoApplicantSexIndicator.Clean = value; _noCoApplicantSexIndicator = noCoApplicantSexIndicator;
-                var numberofTradelines = _numberofTradelines; numberofTradelines.Clean = value; _numberofTradelines = numberofTradelines;
-                var obtainLoanFromRHSIndicator = _obtainLoanFromRHSIndicator; obtainLoanFromRHSIndicator.Clean = value; _obtainLoanFromRHSIndicator = obtainLoanFromRHSIndicator;
-                var openBankruptcy2 = _openBankruptcy2; openBankruptcy2.Clean = value; _openBankruptcy2 = openBankruptcy2;
-                var otherMonthlyIncomeAmount = _otherMonthlyIncomeAmount; otherMonthlyIncomeAmount.Clean = value; _otherMonthlyIncomeAmount = otherMonthlyIncomeAmount;
-                var otherSumAmount = _otherSumAmount; otherSumAmount.Clean = value; _otherSumAmount = otherSumAmount;
-                var outstandingJudgementsIndicator = _outstandingJudgementsIndicator; outstandingJudgementsIndicator.Clean = value; _outstandingJudgementsIndicator = outstandingJudgementsIndicator;
-                var partyToLawsuitIndicator = _partyToLawsuitIndicator; partyToLawsuitIndicator.Clean = value; _partyToLawsuitIndicator = partyToLawsuitIndicator;
-                var pass120Days = _pass120Days; pass120Days.Clean = value; _pass120Days = pass120Days;
-                var pass150Days = _pass150Days; pass150Days.Clean = value; _pass150Days = pass150Days;
-                var pass30Days = _pass30Days; pass30Days.Clean = value; _pass30Days = pass30Days;
-                var pass60Days = _pass60Days; pass60Days.Clean = value; _pass60Days = pass60Days;
-                var pass90Days = _pass90Days; pass90Days.Clean = value; _pass90Days = pass90Days;
-                var personFaxNumber = _personFaxNumber; personFaxNumber.Clean = value; _personFaxNumber = personFaxNumber;
-                var personHoursPerWeek = _personHoursPerWeek; personHoursPerWeek.Clean = value; _personHoursPerWeek = personHoursPerWeek;
-                var personIncomeAmount = _personIncomeAmount; personIncomeAmount.Clean = value; _personIncomeAmount = personIncomeAmount;
-                var personIncomeFrequencyType = _personIncomeFrequencyType; personIncomeFrequencyType.Clean = value; _personIncomeFrequencyType = personIncomeFrequencyType;
-                var personMonthlyIncome = _personMonthlyIncome; personMonthlyIncome.Clean = value; _personMonthlyIncome = personMonthlyIncome;
-                var pIWAccepted = _pIWAccepted; pIWAccepted.Clean = value; _pIWAccepted = pIWAccepted;
-                var pIWMessage = _pIWMessage; pIWMessage.Clean = value; _pIWMessage = pIWMessage;
-                var poaOccupancyIntent = _poaOccupancyIntent; poaOccupancyIntent.Clean = value; _poaOccupancyIntent = poaOccupancyIntent;
-                var poaSignatureText = _poaSignatureText; poaSignatureText.Clean = value; _poaSignatureText = poaSignatureText;
-                var positiveCashFlow = _positiveCashFlow; positiveCashFlow.Clean = value; _positiveCashFlow = positiveCashFlow;
-                var powerOfAttorneyName = _powerOfAttorneyName; powerOfAttorneyName.Clean = value; _powerOfAttorneyName = powerOfAttorneyName;
-                var powerOfAttorneyTitleDescription = _powerOfAttorneyTitleDescription; powerOfAttorneyTitleDescription.Clean = value; _powerOfAttorneyTitleDescription = powerOfAttorneyTitleDescription;
-                var presentlyDelinquentIndicator = _presentlyDelinquentIndicator; presentlyDelinquentIndicator.Clean = value; _presentlyDelinquentIndicator = presentlyDelinquentIndicator;
-                var priorBankruptcy2 = _priorBankruptcy2; priorBankruptcy2.Clean = value; _priorBankruptcy2 = priorBankruptcy2;
-                var priorForeclosure = _priorForeclosure; priorForeclosure.Clean = value; _priorForeclosure = priorForeclosure;
-                var priorPropertyTitleType = _priorPropertyTitleType; priorPropertyTitleType.Clean = value; _priorPropertyTitleType = priorPropertyTitleType;
-                var priorPropertyUsageType = _priorPropertyUsageType; priorPropertyUsageType.Clean = value; _priorPropertyUsageType = priorPropertyUsageType;
-                var propertyForeclosedPastSevenYearsIndicator = _propertyForeclosedPastSevenYearsIndicator; propertyForeclosedPastSevenYearsIndicator.Clean = value; _propertyForeclosedPastSevenYearsIndicator = propertyForeclosedPastSevenYearsIndicator;
-                var relationshipDescription = _relationshipDescription; relationshipDescription.Clean = value; _relationshipDescription = relationshipDescription;
-                var relationshipWithRDEmployeeIndicator = _relationshipWithRDEmployeeIndicator; relationshipWithRDEmployeeIndicator.Clean = value; _relationshipWithRDEmployeeIndicator = relationshipWithRDEmployeeIndicator;
-                var schoolingTermYears = _schoolingTermYears; schoolingTermYears.Clean = value; _schoolingTermYears = schoolingTermYears;
-                var sSA89BackgroundCheckIndicator = _sSA89BackgroundCheckIndicator; sSA89BackgroundCheckIndicator.Clean = value; _sSA89BackgroundCheckIndicator = sSA89BackgroundCheckIndicator;
-                var sSA89BankingServiceIndicator = _sSA89BankingServiceIndicator; sSA89BankingServiceIndicator.Clean = value; _sSA89BankingServiceIndicator = sSA89BankingServiceIndicator;
-                var sSA89CreditCheckIndicator = _sSA89CreditCheckIndicator; sSA89CreditCheckIndicator.Clean = value; _sSA89CreditCheckIndicator = sSA89CreditCheckIndicator;
-                var sSA89LicenseRequirementIndicator = _sSA89LicenseRequirementIndicator; sSA89LicenseRequirementIndicator.Clean = value; _sSA89LicenseRequirementIndicator = sSA89LicenseRequirementIndicator;
-                var sSA89MortgageServiceIndicator = _sSA89MortgageServiceIndicator; sSA89MortgageServiceIndicator.Clean = value; _sSA89MortgageServiceIndicator = sSA89MortgageServiceIndicator;
-                var sSA89OtherIndicator = _sSA89OtherIndicator; sSA89OtherIndicator.Clean = value; _sSA89OtherIndicator = sSA89OtherIndicator;
-                var subtotalLiquidAssetsMinusGiftAmount = _subtotalLiquidAssetsMinusGiftAmount; subtotalLiquidAssetsMinusGiftAmount.Clean = value; _subtotalLiquidAssetsMinusGiftAmount = subtotalLiquidAssetsMinusGiftAmount;
-                var suffixToName = _suffixToName; suffixToName.Clean = value; _suffixToName = suffixToName;
-                var tax4506LastInvestor = _tax4506LastInvestor; tax4506LastInvestor.Clean = value; _tax4506LastInvestor = tax4506LastInvestor;
-                var tax4506LastOrderNumber = _tax4506LastOrderNumber; tax4506LastOrderNumber.Clean = value; _tax4506LastOrderNumber = tax4506LastOrderNumber;
-                var tax4506LastOrderYear1 = _tax4506LastOrderYear1; tax4506LastOrderYear1.Clean = value; _tax4506LastOrderYear1 = tax4506LastOrderYear1;
-                var tax4506LastOrderYear2 = _tax4506LastOrderYear2; tax4506LastOrderYear2.Clean = value; _tax4506LastOrderYear2 = tax4506LastOrderYear2;
-                var tax4506LastOrderYear3 = _tax4506LastOrderYear3; tax4506LastOrderYear3.Clean = value; _tax4506LastOrderYear3 = tax4506LastOrderYear3;
-                var tax4506LastOrderYear4 = _tax4506LastOrderYear4; tax4506LastOrderYear4.Clean = value; _tax4506LastOrderYear4 = tax4506LastOrderYear4;
-                var tax4506LastProductsOrdered = _tax4506LastProductsOrdered; tax4506LastProductsOrdered.Clean = value; _tax4506LastProductsOrdered = tax4506LastProductsOrdered;
-                var tax4506LastStatus = _tax4506LastStatus; tax4506LastStatus.Clean = value; _tax4506LastStatus = tax4506LastStatus;
-                var tax4506LastTranscriptType = _tax4506LastTranscriptType; tax4506LastTranscriptType.Clean = value; _tax4506LastTranscriptType = tax4506LastTranscriptType;
-                var tax4506LastUserIDWhoOrdered = _tax4506LastUserIDWhoOrdered; tax4506LastUserIDWhoOrdered.Clean = value; _tax4506LastUserIDWhoOrdered = tax4506LastUserIDWhoOrdered;
-                var tax4506TotalYearlyIncome1 = _tax4506TotalYearlyIncome1; tax4506TotalYearlyIncome1.Clean = value; _tax4506TotalYearlyIncome1 = tax4506TotalYearlyIncome1;
-                var tax4506TotalYearlyIncome2 = _tax4506TotalYearlyIncome2; tax4506TotalYearlyIncome2.Clean = value; _tax4506TotalYearlyIncome2 = tax4506TotalYearlyIncome2;
-                var tax4506TotalYearlyIncome3 = _tax4506TotalYearlyIncome3; tax4506TotalYearlyIncome3.Clean = value; _tax4506TotalYearlyIncome3 = tax4506TotalYearlyIncome3;
-                var tax4506TotalYearlyIncome4 = _tax4506TotalYearlyIncome4; tax4506TotalYearlyIncome4.Clean = value; _tax4506TotalYearlyIncome4 = tax4506TotalYearlyIncome4;
-                var tax4506TotalYearlyJointIncome1 = _tax4506TotalYearlyJointIncome1; tax4506TotalYearlyJointIncome1.Clean = value; _tax4506TotalYearlyJointIncome1 = tax4506TotalYearlyJointIncome1;
-                var tax4506TotalYearlyJointIncome2 = _tax4506TotalYearlyJointIncome2; tax4506TotalYearlyJointIncome2.Clean = value; _tax4506TotalYearlyJointIncome2 = tax4506TotalYearlyJointIncome2;
-                var tax4506TotalYearlyJointIncome3 = _tax4506TotalYearlyJointIncome3; tax4506TotalYearlyJointIncome3.Clean = value; _tax4506TotalYearlyJointIncome3 = tax4506TotalYearlyJointIncome3;
-                var tax4506TotalYearlyJointIncome4 = _tax4506TotalYearlyJointIncome4; tax4506TotalYearlyJointIncome4.Clean = value; _tax4506TotalYearlyJointIncome4 = tax4506TotalYearlyJointIncome4;
-                var tax4506TotalYearlyVarianceIncome1 = _tax4506TotalYearlyVarianceIncome1; tax4506TotalYearlyVarianceIncome1.Clean = value; _tax4506TotalYearlyVarianceIncome1 = tax4506TotalYearlyVarianceIncome1;
-                var tax4506TotalYearlyVarianceIncome2 = _tax4506TotalYearlyVarianceIncome2; tax4506TotalYearlyVarianceIncome2.Clean = value; _tax4506TotalYearlyVarianceIncome2 = tax4506TotalYearlyVarianceIncome2;
-                var tax4506TotalYearlyVarianceIncome3 = _tax4506TotalYearlyVarianceIncome3; tax4506TotalYearlyVarianceIncome3.Clean = value; _tax4506TotalYearlyVarianceIncome3 = tax4506TotalYearlyVarianceIncome3;
-                var tax4506TotalYearlyVarianceIncome4 = _tax4506TotalYearlyVarianceIncome4; tax4506TotalYearlyVarianceIncome4.Clean = value; _tax4506TotalYearlyVarianceIncome4 = tax4506TotalYearlyVarianceIncome4;
-                var tax4506TotalYearlyVarianceJointIncome1 = _tax4506TotalYearlyVarianceJointIncome1; tax4506TotalYearlyVarianceJointIncome1.Clean = value; _tax4506TotalYearlyVarianceJointIncome1 = tax4506TotalYearlyVarianceJointIncome1;
-                var tax4506TotalYearlyVarianceJointIncome2 = _tax4506TotalYearlyVarianceJointIncome2; tax4506TotalYearlyVarianceJointIncome2.Clean = value; _tax4506TotalYearlyVarianceJointIncome2 = tax4506TotalYearlyVarianceJointIncome2;
-                var tax4506TotalYearlyVarianceJointIncome3 = _tax4506TotalYearlyVarianceJointIncome3; tax4506TotalYearlyVarianceJointIncome3.Clean = value; _tax4506TotalYearlyVarianceJointIncome3 = tax4506TotalYearlyVarianceJointIncome3;
-                var tax4506TotalYearlyVarianceJointIncome4 = _tax4506TotalYearlyVarianceJointIncome4; tax4506TotalYearlyVarianceJointIncome4.Clean = value; _tax4506TotalYearlyVarianceJointIncome4 = tax4506TotalYearlyVarianceJointIncome4;
-                var taxIdentificationIdentifier = _taxIdentificationIdentifier; taxIdentificationIdentifier.Clean = value; _taxIdentificationIdentifier = taxIdentificationIdentifier;
-                var totalLiabilitiesBalanceAmount = _totalLiabilitiesBalanceAmount; totalLiabilitiesBalanceAmount.Clean = value; _totalLiabilitiesBalanceAmount = totalLiabilitiesBalanceAmount;
-                var totalMonthlyIncomeAmount = _totalMonthlyIncomeAmount; totalMonthlyIncomeAmount.Clean = value; _totalMonthlyIncomeAmount = totalMonthlyIncomeAmount;
-                var totalMonthlyIncomeMinusNetRentalAmount = _totalMonthlyIncomeMinusNetRentalAmount; totalMonthlyIncomeMinusNetRentalAmount.Clean = value; _totalMonthlyIncomeMinusNetRentalAmount = totalMonthlyIncomeMinusNetRentalAmount;
-                var totalPresentHousingExpenseAmount = _totalPresentHousingExpenseAmount; totalPresentHousingExpenseAmount.Clean = value; _totalPresentHousingExpenseAmount = totalPresentHousingExpenseAmount;
-                var transactionPurposeDescription = _transactionPurposeDescription; transactionPurposeDescription.Clean = value; _transactionPurposeDescription = transactionPurposeDescription;
-                var transUnion120Days = _transUnion120Days; transUnion120Days.Clean = value; _transUnion120Days = transUnion120Days;
-                var transUnion150Days = _transUnion150Days; transUnion150Days.Clean = value; _transUnion150Days = transUnion150Days;
-                var transUnion30Days = _transUnion30Days; transUnion30Days.Clean = value; _transUnion30Days = transUnion30Days;
-                var transUnion60Days = _transUnion60Days; transUnion60Days.Clean = value; _transUnion60Days = transUnion60Days;
-                var transUnion90Days = _transUnion90Days; transUnion90Days.Clean = value; _transUnion90Days = transUnion90Days;
-                var transUnionCreditScoreForDisclosure = _transUnionCreditScoreForDisclosure; transUnionCreditScoreForDisclosure.Clean = value; _transUnionCreditScoreForDisclosure = transUnionCreditScoreForDisclosure;
-                var transUnionCreditScoreRanksPercent = _transUnionCreditScoreRanksPercent; transUnionCreditScoreRanksPercent.Clean = value; _transUnionCreditScoreRanksPercent = transUnionCreditScoreRanksPercent;
-                var transUnionDatePulled = _transUnionDatePulled; transUnionDatePulled.Clean = value; _transUnionDatePulled = transUnionDatePulled;
-                var transUnionFactorCode1 = _transUnionFactorCode1; transUnionFactorCode1.Clean = value; _transUnionFactorCode1 = transUnionFactorCode1;
-                var transUnionFactorCode2 = _transUnionFactorCode2; transUnionFactorCode2.Clean = value; _transUnionFactorCode2 = transUnionFactorCode2;
-                var transUnionFactorCode3 = _transUnionFactorCode3; transUnionFactorCode3.Clean = value; _transUnionFactorCode3 = transUnionFactorCode3;
-                var transUnionFactorCode4 = _transUnionFactorCode4; transUnionFactorCode4.Clean = value; _transUnionFactorCode4 = transUnionFactorCode4;
-                var transUnionFactorCode5 = _transUnionFactorCode5; transUnionFactorCode5.Clean = value; _transUnionFactorCode5 = transUnionFactorCode5;
-                var transUnionKeyFactor1 = _transUnionKeyFactor1; transUnionKeyFactor1.Clean = value; _transUnionKeyFactor1 = transUnionKeyFactor1;
-                var transUnionKeyFactor2 = _transUnionKeyFactor2; transUnionKeyFactor2.Clean = value; _transUnionKeyFactor2 = transUnionKeyFactor2;
-                var transUnionKeyFactor3 = _transUnionKeyFactor3; transUnionKeyFactor3.Clean = value; _transUnionKeyFactor3 = transUnionKeyFactor3;
-                var transUnionKeyFactor4 = _transUnionKeyFactor4; transUnionKeyFactor4.Clean = value; _transUnionKeyFactor4 = transUnionKeyFactor4;
-                var transUnionKeyFactor5 = _transUnionKeyFactor5; transUnionKeyFactor5.Clean = value; _transUnionKeyFactor5 = transUnionKeyFactor5;
-                var transUnionMaterialTermsCreditByScore = _transUnionMaterialTermsCreditByScore; transUnionMaterialTermsCreditByScore.Clean = value; _transUnionMaterialTermsCreditByScore = transUnionMaterialTermsCreditByScore;
-                var transUnionScore = _transUnionScore; transUnionScore.Clean = value; _transUnionScore = transUnionScore;
-                var userDefinedIncome = _userDefinedIncome; userDefinedIncome.Clean = value; _userDefinedIncome = userDefinedIncome;
-                var vaFederalTaxAmount = _vaFederalTaxAmount; vaFederalTaxAmount.Clean = value; _vaFederalTaxAmount = vaFederalTaxAmount;
-                var validDaysForConsentCount = _validDaysForConsentCount; validDaysForConsentCount.Clean = value; _validDaysForConsentCount = validDaysForConsentCount;
-                var valueRepAndWarrantyAvailable = _valueRepAndWarrantyAvailable; valueRepAndWarrantyAvailable.Clean = value; _valueRepAndWarrantyAvailable = valueRepAndWarrantyAvailable;
-                var valueRepAndWarrantyMessage = _valueRepAndWarrantyMessage; valueRepAndWarrantyMessage.Clean = value; _valueRepAndWarrantyMessage = valueRepAndWarrantyMessage;
-                var vaNetTakeHomePayAmount = _vaNetTakeHomePayAmount; vaNetTakeHomePayAmount.Clean = value; _vaNetTakeHomePayAmount = vaNetTakeHomePayAmount;
-                var vaOtherAmount = _vaOtherAmount; vaOtherAmount.Clean = value; _vaOtherAmount = vaOtherAmount;
-                var vaOtherNetIncomeAmount = _vaOtherNetIncomeAmount; vaOtherNetIncomeAmount.Clean = value; _vaOtherNetIncomeAmount = vaOtherNetIncomeAmount;
-                var vaRetirementAmount = _vaRetirementAmount; vaRetirementAmount.Clean = value; _vaRetirementAmount = vaRetirementAmount;
-                var vaStateTaxAmount = _vaStateTaxAmount; vaStateTaxAmount.Clean = value; _vaStateTaxAmount = vaStateTaxAmount;
-                var vaTotalIncomeDeductionsAmount = _vaTotalIncomeDeductionsAmount; vaTotalIncomeDeductionsAmount.Clean = value; _vaTotalIncomeDeductionsAmount = vaTotalIncomeDeductionsAmount;
-                var vaTotalNetIncomeAmount = _vaTotalNetIncomeAmount; vaTotalNetIncomeAmount.Clean = value; _vaTotalNetIncomeAmount = vaTotalNetIncomeAmount;
-                var vendor1 = _vendor1; vendor1.Clean = value; _vendor1 = vendor1;
-                var vendor10 = _vendor10; vendor10.Clean = value; _vendor10 = vendor10;
-                var vendor11 = _vendor11; vendor11.Clean = value; _vendor11 = vendor11;
-                var vendor12 = _vendor12; vendor12.Clean = value; _vendor12 = vendor12;
-                var vendor2 = _vendor2; vendor2.Clean = value; _vendor2 = vendor2;
-                var vendor3 = _vendor3; vendor3.Clean = value; _vendor3 = vendor3;
-                var vendor4 = _vendor4; vendor4.Clean = value; _vendor4 = vendor4;
-                var vendor5 = _vendor5; vendor5.Clean = value; _vendor5 = vendor5;
-                var vendor6 = _vendor6; vendor6.Clean = value; _vendor6 = vendor6;
-                var vendor7 = _vendor7; vendor7.Clean = value; _vendor7 = vendor7;
-                var vendor8 = _vendor8; vendor8.Clean = value; _vendor8 = vendor8;
-                var vendor9 = _vendor9; vendor9.Clean = value; _vendor9 = vendor9;
-                var vestingTrusteeOfType = _vestingTrusteeOfType; vestingTrusteeOfType.Clean = value; _vestingTrusteeOfType = vestingTrusteeOfType;
-                var veteranIndicator = _veteranIndicator; veteranIndicator.Clean = value; _veteranIndicator = veteranIndicator;
-                var workEmailAddress = _workEmailAddress; workEmailAddress.Clean = value; _workEmailAddress = workEmailAddress;
-                var yearsofCreditOnFile = _yearsofCreditOnFile; yearsofCreditOnFile.Clean = value; _yearsofCreditOnFile = yearsofCreditOnFile;
-                if (Application != null) Application.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _acountChekAssetId.Dirty = value;
+                _ageAtApplicationYearsCount.Dirty = value;
+                _aliasName.Dirty = value;
+                _alimonyChildSupportObligationIndicator.Dirty = value;
+                _altId.Dirty = value;
+                _applicantType.Dirty = value;
+                _applicationTakenMethodType.Dirty = value;
+                _assetRepAndWarrantyMessage.Dirty = value;
+                _assetRepAndWarrantyReliefAvailable.Dirty = value;
+                _authorizedCreditReportIndicator.Dirty = value;
+                _authorizedToSignIndicator.Dirty = value;
+                _bankAccountNumber.Dirty = value;
+                _bankAccountType.Dirty = value;
+                _bankContactAddress.Dirty = value;
+                _bankContactCity.Dirty = value;
+                _bankContactName.Dirty = value;
+                _bankContactPostalCode.Dirty = value;
+                _bankContactState.Dirty = value;
+                _bankruptcyIndicator.Dirty = value;
+                _bankruptcyStatus.Dirty = value;
+                _baseMonthlyIncomeAmount.Dirty = value;
+                _birthDate.Dirty = value;
+                _borrowedDownPaymentIndicator.Dirty = value;
+                _borrowerConsentRequestDate.Dirty = value;
+                _borrowerIndex.Dirty = value;
+                _borrowerType.Dirty = value;
+                _borrowerTypeInSummary.Dirty = value;
+                _caivrsIdentifier.Dirty = value;
+                _citizenshipResidencyType.Dirty = value;
+                _coMakerEndorserOfNoteIndicator.Dirty = value;
+                _commentOfCreditReport.Dirty = value;
+                _confirmedCRDIL.Dirty = value;
+                _confirmedCRFCEC.Dirty = value;
+                _confirmedCRFCIncorrect.Dirty = value;
+                _confirmedCRPFS.Dirty = value;
+                _confirmedOther.Dirty = value;
+                _confirmedOtherDescription.Dirty = value;
+                _creditCounseling.Dirty = value;
+                _creditReceivedDate.Dirty = value;
+                _creditReportAuthorizationMethod.Dirty = value;
+                _creditScoreIndicator.Dirty = value;
+                _dateAuthorizedCreditReport.Dirty = value;
+                _dateOfBankruptcy.Dirty = value;
+                _dateOfForeclosure.Dirty = value;
+                _declarationsJIndicator.Dirty = value;
+                _declarationsKIndicator.Dirty = value;
+                _dependentCount.Dirty = value;
+                _dependentsAgesDescription.Dirty = value;
+                _disabledIndicator.Dirty = value;
+                _emailAddressText.Dirty = value;
+                _equifax120Days.Dirty = value;
+                _equifax150Days.Dirty = value;
+                _equifax30Days.Dirty = value;
+                _equifax60Days.Dirty = value;
+                _equifax90Days.Dirty = value;
+                _equifaxCreditScoreForDisclosure.Dirty = value;
+                _equifaxCreditScoreRanksPercent.Dirty = value;
+                _equifaxDatePulled.Dirty = value;
+                _equifaxFactorCode1.Dirty = value;
+                _equifaxFactorCode2.Dirty = value;
+                _equifaxFactorCode3.Dirty = value;
+                _equifaxFactorCode4.Dirty = value;
+                _equifaxFactorCode5.Dirty = value;
+                _equifaxKeyFactor1.Dirty = value;
+                _equifaxKeyFactor2.Dirty = value;
+                _equifaxKeyFactor3.Dirty = value;
+                _equifaxKeyFactor4.Dirty = value;
+                _equifaxKeyFactor5.Dirty = value;
+                _equifaxMaterialTermsCreditByScore.Dirty = value;
+                _equifaxScore.Dirty = value;
+                _experian120Days.Dirty = value;
+                _experian150Days.Dirty = value;
+                _experian30Days.Dirty = value;
+                _experian60Days.Dirty = value;
+                _experian90Days.Dirty = value;
+                _experianCreditScore.Dirty = value;
+                _experianCreditScoreForDisclosure.Dirty = value;
+                _experianCreditScoreRanksPercent.Dirty = value;
+                _experianDatePulled.Dirty = value;
+                _experianFactorCode1.Dirty = value;
+                _experianFactorCode2.Dirty = value;
+                _experianFactorCode3.Dirty = value;
+                _experianFactorCode4.Dirty = value;
+                _experianFactorCode5.Dirty = value;
+                _experianKeyFactor1.Dirty = value;
+                _experianKeyFactor2.Dirty = value;
+                _experianKeyFactor3.Dirty = value;
+                _experianKeyFactor4.Dirty = value;
+                _experianKeyFactor5.Dirty = value;
+                _experianMaterialTermsCreditByScore.Dirty = value;
+                _firstName.Dirty = value;
+                _firstNameWithMiddleName.Dirty = value;
+                _firstTimeHomeBuyer.Dirty = value;
+                _foreclosureSatisfied.Dirty = value;
+                _foreclosureStatus.Dirty = value;
+                _freddieMacPerson1.Dirty = value;
+                _freddieMacPerson2.Dirty = value;
+                _fullName.Dirty = value;
+                _fullNameWithSuffix.Dirty = value;
+                _highestCreditLimit.Dirty = value;
+                _hmda2003OtherRaceNationalOriginDescription.Dirty = value;
+                _hmda2003RaceNationalOriginType.Dirty = value;
+                _hmdaAfricanAmericanIndicator.Dirty = value;
+                _hmdaAge.Dirty = value;
+                _hmdaAmericanIndianIndicator.Dirty = value;
+                _hmdaAmericanIndianTribe.Dirty = value;
+                _hmdaAsianIndianIndicator.Dirty = value;
+                _hmdaAsianIndicator.Dirty = value;
+                _hmdaAsianOtherRaceIndicator.Dirty = value;
+                _hmdaChineseIndicator.Dirty = value;
+                _hmdaCreditScoreForDecisionMaking.Dirty = value;
+                _hmdaCreditScoringModel.Dirty = value;
+                _hmdaCubanIndicator.Dirty = value;
+                _hmdaEthnicityType.Dirty = value;
+                _hmdaFilipinoIndicator.Dirty = value;
+                _hmdaGenderType.Dirty = value;
+                _hmdaGendertypeDoNotWishIndicator.Dirty = value;
+                _hmdaGendertypeFemaleIndicator.Dirty = value;
+                _hmdaGendertypeMaleIndicator.Dirty = value;
+                _hmdaGendertypeNotApplicableIndicator.Dirty = value;
+                _hmdaGuamanianOrChamorroIndicator.Dirty = value;
+                _hmdaHispanicLatinoOtherOriginIndicator.Dirty = value;
+                _hmdaJapaneseIndicator.Dirty = value;
+                _hmdaKoreanIndicator.Dirty = value;
+                _hmdaMexicanIndicator.Dirty = value;
+                _hmdaNativeHawaiianIndicator.Dirty = value;
+                _hmdaNoCoApplicantIndicator.Dirty = value;
+                _hmdaNotApplicableIndicator.Dirty = value;
+                _hmdaNotProvidedIndicator.Dirty = value;
+                _hmdaOtherAsianRace.Dirty = value;
+                _hmdaOtherHispanicLatinoOrigin.Dirty = value;
+                _hmdaOtherPacificIslanderRace.Dirty = value;
+                _hmdaOtherScoringModel.Dirty = value;
+                _hmdaPacificIslanderIndicator.Dirty = value;
+                _hmdaPacificIslanderOtherIndicator.Dirty = value;
+                _hmdaPuertoRicanIndicator.Dirty = value;
+                _hmdaRefusalIndicator.Dirty = value;
+                _hmdaSamoanIndicator.Dirty = value;
+                _hmdaVietnameseIndicator.Dirty = value;
+                _hmdaWhiteIndicator.Dirty = value;
+                _homeownerPastThreeYearsIndicator.Dirty = value;
+                _homePhoneNumber.Dirty = value;
+                _id.Dirty = value;
+                _incomeRepAndWarrantyMessage.Dirty = value;
+                _incomeRepAndWarrantyReliefAvailable.Dirty = value;
+                _intentToOccupyIndicator.Dirty = value;
+                _intuitReportId.Dirty = value;
+                _isBaseIncomeAvailable.Dirty = value;
+                _isBonusAvailable.Dirty = value;
+                _isBorrower.Dirty = value;
+                _isCommissionAvailable.Dirty = value;
+                _isEthnicityBasedOnVisual.Dirty = value;
+                _isOvertimeAvailable.Dirty = value;
+                _isRaceBasedOnVisual.Dirty = value;
+                _isSelfEmployed.Dirty = value;
+                _isSexBasedOnVisual.Dirty = value;
+                _isSocialSecurityAvailable.Dirty = value;
+                _lastName.Dirty = value;
+                _lastNameWithSuffix.Dirty = value;
+                _loanForeclosureOrJudgementIndicator.Dirty = value;
+                _lpdGsa.Dirty = value;
+                _mailingAddressSameAsPresentIndicator.Dirty = value;
+                _maritalStatusType.Dirty = value;
+                _middleCreditScore.Dirty = value;
+                _middleFicoScore.Dirty = value;
+                _middleName.Dirty = value;
+                _minFicoScore.Dirty = value;
+                _mobilePhone.Dirty = value;
+                _mortgageOnCredit.Dirty = value;
+                _nameToObtainLoanFromRHS.Dirty = value;
+                _nearestRelativeAddress.Dirty = value;
+                _nearestRelativeCity.Dirty = value;
+                _nearestRelativeName.Dirty = value;
+                _nearestRelativePhone.Dirty = value;
+                _nearestRelativePostalCode.Dirty = value;
+                _nearestRelativeRelationship.Dirty = value;
+                _nearestRelativeState.Dirty = value;
+                _no3rdPartyEmailIndicator.Dirty = value;
+                _noCoApplicantEthnicityIndicator.Dirty = value;
+                _noCoApplicantIndicator.Dirty = value;
+                _noCoApplicantSexIndicator.Dirty = value;
+                _numberofTradelines.Dirty = value;
+                _obtainLoanFromRHSIndicator.Dirty = value;
+                _openBankruptcy2.Dirty = value;
+                _otherMonthlyIncomeAmount.Dirty = value;
+                _otherSumAmount.Dirty = value;
+                _outstandingJudgementsIndicator.Dirty = value;
+                _partyToLawsuitIndicator.Dirty = value;
+                _pass120Days.Dirty = value;
+                _pass150Days.Dirty = value;
+                _pass30Days.Dirty = value;
+                _pass60Days.Dirty = value;
+                _pass90Days.Dirty = value;
+                _personFaxNumber.Dirty = value;
+                _personHoursPerWeek.Dirty = value;
+                _personIncomeAmount.Dirty = value;
+                _personIncomeFrequencyType.Dirty = value;
+                _personMonthlyIncome.Dirty = value;
+                _pIWAccepted.Dirty = value;
+                _pIWMessage.Dirty = value;
+                _poaOccupancyIntent.Dirty = value;
+                _poaSignatureText.Dirty = value;
+                _positiveCashFlow.Dirty = value;
+                _powerOfAttorneyName.Dirty = value;
+                _powerOfAttorneyTitleDescription.Dirty = value;
+                _presentlyDelinquentIndicator.Dirty = value;
+                _priorBankruptcy2.Dirty = value;
+                _priorForeclosure.Dirty = value;
+                _priorPropertyTitleType.Dirty = value;
+                _priorPropertyUsageType.Dirty = value;
+                _propertyForeclosedPastSevenYearsIndicator.Dirty = value;
+                _relationshipDescription.Dirty = value;
+                _relationshipWithRDEmployeeIndicator.Dirty = value;
+                _schoolingTermYears.Dirty = value;
+                _sSA89BackgroundCheckIndicator.Dirty = value;
+                _sSA89BankingServiceIndicator.Dirty = value;
+                _sSA89CreditCheckIndicator.Dirty = value;
+                _sSA89LicenseRequirementIndicator.Dirty = value;
+                _sSA89MortgageServiceIndicator.Dirty = value;
+                _sSA89OtherIndicator.Dirty = value;
+                _subtotalLiquidAssetsMinusGiftAmount.Dirty = value;
+                _suffixToName.Dirty = value;
+                _tax4506LastInvestor.Dirty = value;
+                _tax4506LastOrderNumber.Dirty = value;
+                _tax4506LastOrderYear1.Dirty = value;
+                _tax4506LastOrderYear2.Dirty = value;
+                _tax4506LastOrderYear3.Dirty = value;
+                _tax4506LastOrderYear4.Dirty = value;
+                _tax4506LastProductsOrdered.Dirty = value;
+                _tax4506LastStatus.Dirty = value;
+                _tax4506LastTranscriptType.Dirty = value;
+                _tax4506LastUserIDWhoOrdered.Dirty = value;
+                _tax4506TotalYearlyIncome1.Dirty = value;
+                _tax4506TotalYearlyIncome2.Dirty = value;
+                _tax4506TotalYearlyIncome3.Dirty = value;
+                _tax4506TotalYearlyIncome4.Dirty = value;
+                _tax4506TotalYearlyJointIncome1.Dirty = value;
+                _tax4506TotalYearlyJointIncome2.Dirty = value;
+                _tax4506TotalYearlyJointIncome3.Dirty = value;
+                _tax4506TotalYearlyJointIncome4.Dirty = value;
+                _tax4506TotalYearlyVarianceIncome1.Dirty = value;
+                _tax4506TotalYearlyVarianceIncome2.Dirty = value;
+                _tax4506TotalYearlyVarianceIncome3.Dirty = value;
+                _tax4506TotalYearlyVarianceIncome4.Dirty = value;
+                _tax4506TotalYearlyVarianceJointIncome1.Dirty = value;
+                _tax4506TotalYearlyVarianceJointIncome2.Dirty = value;
+                _tax4506TotalYearlyVarianceJointIncome3.Dirty = value;
+                _tax4506TotalYearlyVarianceJointIncome4.Dirty = value;
+                _taxIdentificationIdentifier.Dirty = value;
+                _totalLiabilitiesBalanceAmount.Dirty = value;
+                _totalMonthlyIncomeAmount.Dirty = value;
+                _totalMonthlyIncomeMinusNetRentalAmount.Dirty = value;
+                _totalPresentHousingExpenseAmount.Dirty = value;
+                _transactionPurposeDescription.Dirty = value;
+                _transUnion120Days.Dirty = value;
+                _transUnion150Days.Dirty = value;
+                _transUnion30Days.Dirty = value;
+                _transUnion60Days.Dirty = value;
+                _transUnion90Days.Dirty = value;
+                _transUnionCreditScoreForDisclosure.Dirty = value;
+                _transUnionCreditScoreRanksPercent.Dirty = value;
+                _transUnionDatePulled.Dirty = value;
+                _transUnionFactorCode1.Dirty = value;
+                _transUnionFactorCode2.Dirty = value;
+                _transUnionFactorCode3.Dirty = value;
+                _transUnionFactorCode4.Dirty = value;
+                _transUnionFactorCode5.Dirty = value;
+                _transUnionKeyFactor1.Dirty = value;
+                _transUnionKeyFactor2.Dirty = value;
+                _transUnionKeyFactor3.Dirty = value;
+                _transUnionKeyFactor4.Dirty = value;
+                _transUnionKeyFactor5.Dirty = value;
+                _transUnionMaterialTermsCreditByScore.Dirty = value;
+                _transUnionScore.Dirty = value;
+                _userDefinedIncome.Dirty = value;
+                _vaFederalTaxAmount.Dirty = value;
+                _validDaysForConsentCount.Dirty = value;
+                _valueRepAndWarrantyAvailable.Dirty = value;
+                _valueRepAndWarrantyMessage.Dirty = value;
+                _vaNetTakeHomePayAmount.Dirty = value;
+                _vaOtherAmount.Dirty = value;
+                _vaOtherNetIncomeAmount.Dirty = value;
+                _vaRetirementAmount.Dirty = value;
+                _vaStateTaxAmount.Dirty = value;
+                _vaTotalIncomeDeductionsAmount.Dirty = value;
+                _vaTotalNetIncomeAmount.Dirty = value;
+                _vendor1.Dirty = value;
+                _vendor10.Dirty = value;
+                _vendor11.Dirty = value;
+                _vendor12.Dirty = value;
+                _vendor2.Dirty = value;
+                _vendor3.Dirty = value;
+                _vendor4.Dirty = value;
+                _vendor5.Dirty = value;
+                _vendor6.Dirty = value;
+                _vendor7.Dirty = value;
+                _vendor8.Dirty = value;
+                _vendor9.Dirty = value;
+                _vestingTrusteeOfType.Dirty = value;
+                _veteranIndicator.Dirty = value;
+                _workEmailAddress.Dirty = value;
+                _yearsofCreditOnFile.Dirty = value;
+                if (Application != null) Application.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Borrower()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

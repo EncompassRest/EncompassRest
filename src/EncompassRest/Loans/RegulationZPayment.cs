@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZPayment : IClean
+    public sealed partial class RegulationZPayment : IDirty
     {
         private Value<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public DateTime? PaymentDate { get { return _paymentDate; } set { _paymentDate = value; } }
         private Value<int?> _regulationZPaymentIndex;
         public int? RegulationZPaymentIndex { get { return _regulationZPaymentIndex; } set { _regulationZPaymentIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _balance.Clean
-                    && _id.Clean
-                    && _interestRatePercent.Clean
-                    && _monthlyPayment.Clean
-                    && _numberOfPayments.Clean
-                    && _paymentDate.Clean
-                    && _regulationZPaymentIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _balance.Dirty
+                    || _id.Dirty
+                    || _interestRatePercent.Dirty
+                    || _monthlyPayment.Dirty
+                    || _numberOfPayments.Dirty
+                    || _paymentDate.Dirty
+                    || _regulationZPaymentIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var balance = _balance; balance.Clean = value; _balance = balance;
-                var id = _id; id.Clean = value; _id = id;
-                var interestRatePercent = _interestRatePercent; interestRatePercent.Clean = value; _interestRatePercent = interestRatePercent;
-                var monthlyPayment = _monthlyPayment; monthlyPayment.Clean = value; _monthlyPayment = monthlyPayment;
-                var numberOfPayments = _numberOfPayments; numberOfPayments.Clean = value; _numberOfPayments = numberOfPayments;
-                var paymentDate = _paymentDate; paymentDate.Clean = value; _paymentDate = paymentDate;
-                var regulationZPaymentIndex = _regulationZPaymentIndex; regulationZPaymentIndex.Clean = value; _regulationZPaymentIndex = regulationZPaymentIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _balance.Dirty = value;
+                _id.Dirty = value;
+                _interestRatePercent.Dirty = value;
+                _monthlyPayment.Dirty = value;
+                _numberOfPayments.Dirty = value;
+                _paymentDate.Dirty = value;
+                _regulationZPaymentIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public RegulationZPayment()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

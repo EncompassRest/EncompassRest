@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogAlert : IClean
+    public sealed partial class LogAlert : IDirty
     {
         private Value<DateTime?> _dueDate;
         public DateTime? DueDate { get { return _dueDate; } set { _dueDate = value; } }
@@ -21,41 +21,36 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _userId;
         public string UserId { get { return _userId; } set { _userId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _dueDate.Clean
-                    && _followedUpDate.Clean
-                    && _id.Clean
-                    && _roleId.Clean
-                    && _systemId.Clean
-                    && _userId.Clean
-                    && LogRecord?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _dueDate.Dirty
+                    || _followedUpDate.Dirty
+                    || _id.Dirty
+                    || _roleId.Dirty
+                    || _systemId.Dirty
+                    || _userId.Dirty
+                    || LogRecord?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var dueDate = _dueDate; dueDate.Clean = value; _dueDate = dueDate;
-                var followedUpDate = _followedUpDate; followedUpDate.Clean = value; _followedUpDate = followedUpDate;
-                var id = _id; id.Clean = value; _id = id;
-                var roleId = _roleId; roleId.Clean = value; _roleId = roleId;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var userId = _userId; userId.Clean = value; _userId = userId;
-                if (LogRecord != null) LogRecord.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _dueDate.Dirty = value;
+                _followedUpDate.Dirty = value;
+                _id.Dirty = value;
+                _roleId.Dirty = value;
+                _systemId.Dirty = value;
+                _userId.Dirty = value;
+                if (LogRecord != null) LogRecord.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LogAlert()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

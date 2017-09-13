@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ElliLOCompensation : IClean
+    public sealed partial class ElliLOCompensation : IDirty
     {
         private Value<decimal?> _adjustedPlanAdditonalAmountForBroker;
         public decimal? AdjustedPlanAdditonalAmountForBroker { get { return _adjustedPlanAdditonalAmountForBroker; } set { _adjustedPlanAdditonalAmountForBroker = value; } }
@@ -86,105 +86,100 @@ namespace EncompassRest.Loans
         public string TriggerField { get { return _triggerField; } set { _triggerField = value; } }
         private Value<string> _whoPaidCompensation;
         public string WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _adjustedPlanAdditonalAmountForBroker.Clean
-                    && _adjustedPlanAdditonalAmountForOfficer.Clean
-                    && _adjustedPlanAmountForBroker.Clean
-                    && _adjustedPlanAmountForOfficer.Clean
-                    && _adjustedPlanRateForBroker.Clean
-                    && _adjustedPlanRateForOfficer.Clean
-                    && _adjustmentDescription.Clean
-                    && _adjustmentDescriptionForOfficer.Clean
-                    && _basePlanAdditonalAmountForBroker.Clean
-                    && _basePlanAdditonalAmountForOfficer.Clean
-                    && _basePlanAmountForBroker.Clean
-                    && _basePlanAmountForOfficer.Clean
-                    && _basePlanMaximumAmountForBroker.Clean
-                    && _basePlanMaximumAmountForOfficer.Clean
-                    && _basePlanMinimumAmountForBroker.Clean
-                    && _basePlanMinimumAmountForOfficer.Clean
-                    && _basePlanRateForBroker.Clean
-                    && _basePlanRateForOfficer.Clean
-                    && _bonusCompAdditonalAmount.Clean
-                    && _bonusCompAmount.Clean
-                    && _bonusCompRate.Clean
-                    && _id.Clean
-                    && _lastAppliedDate.Clean
-                    && _lastAppliedDateTime.Clean
-                    && _loanAmountType.Clean
-                    && _loanAmountTypeForOfficer.Clean
-                    && _loanOriginatorID.Clean
-                    && _loanOriginatorIDForOfficer.Clean
-                    && _loanOriginatorName.Clean
-                    && _loanOriginatorNameForOfficer.Clean
-                    && _netAdjustedAmountForBroker.Clean
-                    && _netAdjustedAmountForOfficer.Clean
-                    && _planDate.Clean
-                    && _planName.Clean
-                    && _planNameForOfficer.Clean
-                    && _roundingMethod.Clean
-                    && _roundingMethodForOfficer.Clean
-                    && _triggerField.Clean
-                    && _whoPaidCompensation.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _adjustedPlanAdditonalAmountForBroker.Dirty
+                    || _adjustedPlanAdditonalAmountForOfficer.Dirty
+                    || _adjustedPlanAmountForBroker.Dirty
+                    || _adjustedPlanAmountForOfficer.Dirty
+                    || _adjustedPlanRateForBroker.Dirty
+                    || _adjustedPlanRateForOfficer.Dirty
+                    || _adjustmentDescription.Dirty
+                    || _adjustmentDescriptionForOfficer.Dirty
+                    || _basePlanAdditonalAmountForBroker.Dirty
+                    || _basePlanAdditonalAmountForOfficer.Dirty
+                    || _basePlanAmountForBroker.Dirty
+                    || _basePlanAmountForOfficer.Dirty
+                    || _basePlanMaximumAmountForBroker.Dirty
+                    || _basePlanMaximumAmountForOfficer.Dirty
+                    || _basePlanMinimumAmountForBroker.Dirty
+                    || _basePlanMinimumAmountForOfficer.Dirty
+                    || _basePlanRateForBroker.Dirty
+                    || _basePlanRateForOfficer.Dirty
+                    || _bonusCompAdditonalAmount.Dirty
+                    || _bonusCompAmount.Dirty
+                    || _bonusCompRate.Dirty
+                    || _id.Dirty
+                    || _lastAppliedDate.Dirty
+                    || _lastAppliedDateTime.Dirty
+                    || _loanAmountType.Dirty
+                    || _loanAmountTypeForOfficer.Dirty
+                    || _loanOriginatorID.Dirty
+                    || _loanOriginatorIDForOfficer.Dirty
+                    || _loanOriginatorName.Dirty
+                    || _loanOriginatorNameForOfficer.Dirty
+                    || _netAdjustedAmountForBroker.Dirty
+                    || _netAdjustedAmountForOfficer.Dirty
+                    || _planDate.Dirty
+                    || _planName.Dirty
+                    || _planNameForOfficer.Dirty
+                    || _roundingMethod.Dirty
+                    || _roundingMethodForOfficer.Dirty
+                    || _triggerField.Dirty
+                    || _whoPaidCompensation.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var adjustedPlanAdditonalAmountForBroker = _adjustedPlanAdditonalAmountForBroker; adjustedPlanAdditonalAmountForBroker.Clean = value; _adjustedPlanAdditonalAmountForBroker = adjustedPlanAdditonalAmountForBroker;
-                var adjustedPlanAdditonalAmountForOfficer = _adjustedPlanAdditonalAmountForOfficer; adjustedPlanAdditonalAmountForOfficer.Clean = value; _adjustedPlanAdditonalAmountForOfficer = adjustedPlanAdditonalAmountForOfficer;
-                var adjustedPlanAmountForBroker = _adjustedPlanAmountForBroker; adjustedPlanAmountForBroker.Clean = value; _adjustedPlanAmountForBroker = adjustedPlanAmountForBroker;
-                var adjustedPlanAmountForOfficer = _adjustedPlanAmountForOfficer; adjustedPlanAmountForOfficer.Clean = value; _adjustedPlanAmountForOfficer = adjustedPlanAmountForOfficer;
-                var adjustedPlanRateForBroker = _adjustedPlanRateForBroker; adjustedPlanRateForBroker.Clean = value; _adjustedPlanRateForBroker = adjustedPlanRateForBroker;
-                var adjustedPlanRateForOfficer = _adjustedPlanRateForOfficer; adjustedPlanRateForOfficer.Clean = value; _adjustedPlanRateForOfficer = adjustedPlanRateForOfficer;
-                var adjustmentDescription = _adjustmentDescription; adjustmentDescription.Clean = value; _adjustmentDescription = adjustmentDescription;
-                var adjustmentDescriptionForOfficer = _adjustmentDescriptionForOfficer; adjustmentDescriptionForOfficer.Clean = value; _adjustmentDescriptionForOfficer = adjustmentDescriptionForOfficer;
-                var basePlanAdditonalAmountForBroker = _basePlanAdditonalAmountForBroker; basePlanAdditonalAmountForBroker.Clean = value; _basePlanAdditonalAmountForBroker = basePlanAdditonalAmountForBroker;
-                var basePlanAdditonalAmountForOfficer = _basePlanAdditonalAmountForOfficer; basePlanAdditonalAmountForOfficer.Clean = value; _basePlanAdditonalAmountForOfficer = basePlanAdditonalAmountForOfficer;
-                var basePlanAmountForBroker = _basePlanAmountForBroker; basePlanAmountForBroker.Clean = value; _basePlanAmountForBroker = basePlanAmountForBroker;
-                var basePlanAmountForOfficer = _basePlanAmountForOfficer; basePlanAmountForOfficer.Clean = value; _basePlanAmountForOfficer = basePlanAmountForOfficer;
-                var basePlanMaximumAmountForBroker = _basePlanMaximumAmountForBroker; basePlanMaximumAmountForBroker.Clean = value; _basePlanMaximumAmountForBroker = basePlanMaximumAmountForBroker;
-                var basePlanMaximumAmountForOfficer = _basePlanMaximumAmountForOfficer; basePlanMaximumAmountForOfficer.Clean = value; _basePlanMaximumAmountForOfficer = basePlanMaximumAmountForOfficer;
-                var basePlanMinimumAmountForBroker = _basePlanMinimumAmountForBroker; basePlanMinimumAmountForBroker.Clean = value; _basePlanMinimumAmountForBroker = basePlanMinimumAmountForBroker;
-                var basePlanMinimumAmountForOfficer = _basePlanMinimumAmountForOfficer; basePlanMinimumAmountForOfficer.Clean = value; _basePlanMinimumAmountForOfficer = basePlanMinimumAmountForOfficer;
-                var basePlanRateForBroker = _basePlanRateForBroker; basePlanRateForBroker.Clean = value; _basePlanRateForBroker = basePlanRateForBroker;
-                var basePlanRateForOfficer = _basePlanRateForOfficer; basePlanRateForOfficer.Clean = value; _basePlanRateForOfficer = basePlanRateForOfficer;
-                var bonusCompAdditonalAmount = _bonusCompAdditonalAmount; bonusCompAdditonalAmount.Clean = value; _bonusCompAdditonalAmount = bonusCompAdditonalAmount;
-                var bonusCompAmount = _bonusCompAmount; bonusCompAmount.Clean = value; _bonusCompAmount = bonusCompAmount;
-                var bonusCompRate = _bonusCompRate; bonusCompRate.Clean = value; _bonusCompRate = bonusCompRate;
-                var id = _id; id.Clean = value; _id = id;
-                var lastAppliedDate = _lastAppliedDate; lastAppliedDate.Clean = value; _lastAppliedDate = lastAppliedDate;
-                var lastAppliedDateTime = _lastAppliedDateTime; lastAppliedDateTime.Clean = value; _lastAppliedDateTime = lastAppliedDateTime;
-                var loanAmountType = _loanAmountType; loanAmountType.Clean = value; _loanAmountType = loanAmountType;
-                var loanAmountTypeForOfficer = _loanAmountTypeForOfficer; loanAmountTypeForOfficer.Clean = value; _loanAmountTypeForOfficer = loanAmountTypeForOfficer;
-                var loanOriginatorID = _loanOriginatorID; loanOriginatorID.Clean = value; _loanOriginatorID = loanOriginatorID;
-                var loanOriginatorIDForOfficer = _loanOriginatorIDForOfficer; loanOriginatorIDForOfficer.Clean = value; _loanOriginatorIDForOfficer = loanOriginatorIDForOfficer;
-                var loanOriginatorName = _loanOriginatorName; loanOriginatorName.Clean = value; _loanOriginatorName = loanOriginatorName;
-                var loanOriginatorNameForOfficer = _loanOriginatorNameForOfficer; loanOriginatorNameForOfficer.Clean = value; _loanOriginatorNameForOfficer = loanOriginatorNameForOfficer;
-                var netAdjustedAmountForBroker = _netAdjustedAmountForBroker; netAdjustedAmountForBroker.Clean = value; _netAdjustedAmountForBroker = netAdjustedAmountForBroker;
-                var netAdjustedAmountForOfficer = _netAdjustedAmountForOfficer; netAdjustedAmountForOfficer.Clean = value; _netAdjustedAmountForOfficer = netAdjustedAmountForOfficer;
-                var planDate = _planDate; planDate.Clean = value; _planDate = planDate;
-                var planName = _planName; planName.Clean = value; _planName = planName;
-                var planNameForOfficer = _planNameForOfficer; planNameForOfficer.Clean = value; _planNameForOfficer = planNameForOfficer;
-                var roundingMethod = _roundingMethod; roundingMethod.Clean = value; _roundingMethod = roundingMethod;
-                var roundingMethodForOfficer = _roundingMethodForOfficer; roundingMethodForOfficer.Clean = value; _roundingMethodForOfficer = roundingMethodForOfficer;
-                var triggerField = _triggerField; triggerField.Clean = value; _triggerField = triggerField;
-                var whoPaidCompensation = _whoPaidCompensation; whoPaidCompensation.Clean = value; _whoPaidCompensation = whoPaidCompensation;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _adjustedPlanAdditonalAmountForBroker.Dirty = value;
+                _adjustedPlanAdditonalAmountForOfficer.Dirty = value;
+                _adjustedPlanAmountForBroker.Dirty = value;
+                _adjustedPlanAmountForOfficer.Dirty = value;
+                _adjustedPlanRateForBroker.Dirty = value;
+                _adjustedPlanRateForOfficer.Dirty = value;
+                _adjustmentDescription.Dirty = value;
+                _adjustmentDescriptionForOfficer.Dirty = value;
+                _basePlanAdditonalAmountForBroker.Dirty = value;
+                _basePlanAdditonalAmountForOfficer.Dirty = value;
+                _basePlanAmountForBroker.Dirty = value;
+                _basePlanAmountForOfficer.Dirty = value;
+                _basePlanMaximumAmountForBroker.Dirty = value;
+                _basePlanMaximumAmountForOfficer.Dirty = value;
+                _basePlanMinimumAmountForBroker.Dirty = value;
+                _basePlanMinimumAmountForOfficer.Dirty = value;
+                _basePlanRateForBroker.Dirty = value;
+                _basePlanRateForOfficer.Dirty = value;
+                _bonusCompAdditonalAmount.Dirty = value;
+                _bonusCompAmount.Dirty = value;
+                _bonusCompRate.Dirty = value;
+                _id.Dirty = value;
+                _lastAppliedDate.Dirty = value;
+                _lastAppliedDateTime.Dirty = value;
+                _loanAmountType.Dirty = value;
+                _loanAmountTypeForOfficer.Dirty = value;
+                _loanOriginatorID.Dirty = value;
+                _loanOriginatorIDForOfficer.Dirty = value;
+                _loanOriginatorName.Dirty = value;
+                _loanOriginatorNameForOfficer.Dirty = value;
+                _netAdjustedAmountForBroker.Dirty = value;
+                _netAdjustedAmountForOfficer.Dirty = value;
+                _planDate.Dirty = value;
+                _planName.Dirty = value;
+                _planNameForOfficer.Dirty = value;
+                _roundingMethod.Dirty = value;
+                _roundingMethodForOfficer.Dirty = value;
+                _triggerField.Dirty = value;
+                _whoPaidCompensation.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ElliLOCompensation()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

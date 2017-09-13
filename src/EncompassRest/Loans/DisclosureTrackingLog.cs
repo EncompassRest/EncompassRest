@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DisclosureTrackingLog : IClean
+    public sealed partial class DisclosureTrackingLog : IDirty
     {
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
@@ -158,177 +158,172 @@ namespace EncompassRest.Loans
         public string SnapshotXml { get { return _snapshotXml; } set { _snapshotXml = value; } }
         private Value<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alerts.Clean
-                    && _alertsXml.Clean
-                    && _applicationDate.Clean
-                    && _borrowerName.Clean
-                    && _borrowerPairId.Clean
-                    && _coBorrowerName.Clean
-                    && _commentList.Clean
-                    && _commentListXml.Clean
-                    && _comments.Clean
-                    && _containGfe.Clean
-                    && _containSafeHarbor.Clean
-                    && _containTil.Clean
-                    && _dateUtc.Clean
-                    && _disclosedAPR.Clean
-                    && _disclosedBy.Clean
-                    && _disclosedByFullName.Clean
-                    && _disclosedMethod.Clean
-                    && _disclosureCreatedDttmUtc.Clean
-                    && _eDisclosureApplicationPackageIndicator.Clean
-                    && _eDisclosureApprovalPackageIndicator.Clean
-                    && _eDisclosureBorrowerAcceptConsentDate.Clean
-                    && _eDisclosureBorrowereSignedDate.Clean
-                    && _eDisclosureBorrowerRejectConsentDate.Clean
-                    && _eDisclosureBorrowerViewConsentDate.Clean
-                    && _eDisclosureBorrowerViewMessageDate.Clean
-                    && _eDisclosureBorrowerWetSignedDate.Clean
-                    && _eDisclosureCoBorrowerAcceptConsentDate.Clean
-                    && _eDisclosureCoBorrowereSignedDate.Clean
-                    && _eDisclosureCoBorrowerRejectConsentDate.Clean
-                    && _eDisclosureCoBorrowerViewConsentDate.Clean
-                    && _eDisclosureCoBorrowerViewMessageDate.Clean
-                    && _eDisclosureCoBorrowerWebSignedDate.Clean
-                    && _eDisclosureConsentPdf.Clean
-                    && _eDisclosureDisclosedMessage.Clean
-                    && _eDisclosureLockPackageIndicator.Clean
-                    && _eDisclosureManualFulfillmentComment.Clean
-                    && _eDisclosureManualFulfillmentDate.Clean
-                    && _eDisclosureManualFulfillmentMethod.Clean
-                    && _eDisclosureManuallyFulfilledBy.Clean
-                    && _eDisclosurePackageCreatedDate.Clean
-                    && _eDisclosurePackageId.Clean
-                    && _eDisclosurePackageViewableFile.Clean
-                    && _eDisclosureThreeDayPackageIndicator.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _financeCharge.Clean
-                    && _forms.Clean
-                    && _formsXml.Clean
-                    && _fulfillmentOrderedBy.Clean
-                    && _fullfillmentProcessedDate.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isDisclosed.Clean
-                    && _isDisclosedAprLocked.Clean
-                    && _isDisclosedByLocked.Clean
-                    && _isDisclosedFinanceChargeLocked.Clean
-                    && _isDisclosedReceivedDateLocked.Clean
-                    && _isLocked.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _isWetSignedIndicator.Clean
-                    && _loanAmount.Clean
-                    && _loanProgram.Clean
-                    && _lockedDisclosedAprField.Clean
-                    && _lockedDisclosedByField.Clean
-                    && _lockedDisclosedFinanceChargeField.Clean
-                    && _lockedDisclosedReceivedDate.Clean
-                    && _logRecordIndex.Clean
-                    && _manuallyCreated.Clean
-                    && _propertyAddress.Clean
-                    && _propertyCity.Clean
-                    && _propertyState.Clean
-                    && _propertyZip.Clean
-                    && _receivedDate.Clean
-                    && _snapshotFields.Clean
-                    && _snapshotXml.Clean
-                    && _systemId.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alerts.Dirty
+                    || _alertsXml.Dirty
+                    || _applicationDate.Dirty
+                    || _borrowerName.Dirty
+                    || _borrowerPairId.Dirty
+                    || _coBorrowerName.Dirty
+                    || _commentList.Dirty
+                    || _commentListXml.Dirty
+                    || _comments.Dirty
+                    || _containGfe.Dirty
+                    || _containSafeHarbor.Dirty
+                    || _containTil.Dirty
+                    || _dateUtc.Dirty
+                    || _disclosedAPR.Dirty
+                    || _disclosedBy.Dirty
+                    || _disclosedByFullName.Dirty
+                    || _disclosedMethod.Dirty
+                    || _disclosureCreatedDttmUtc.Dirty
+                    || _eDisclosureApplicationPackageIndicator.Dirty
+                    || _eDisclosureApprovalPackageIndicator.Dirty
+                    || _eDisclosureBorrowerAcceptConsentDate.Dirty
+                    || _eDisclosureBorrowereSignedDate.Dirty
+                    || _eDisclosureBorrowerRejectConsentDate.Dirty
+                    || _eDisclosureBorrowerViewConsentDate.Dirty
+                    || _eDisclosureBorrowerViewMessageDate.Dirty
+                    || _eDisclosureBorrowerWetSignedDate.Dirty
+                    || _eDisclosureCoBorrowerAcceptConsentDate.Dirty
+                    || _eDisclosureCoBorrowereSignedDate.Dirty
+                    || _eDisclosureCoBorrowerRejectConsentDate.Dirty
+                    || _eDisclosureCoBorrowerViewConsentDate.Dirty
+                    || _eDisclosureCoBorrowerViewMessageDate.Dirty
+                    || _eDisclosureCoBorrowerWebSignedDate.Dirty
+                    || _eDisclosureConsentPdf.Dirty
+                    || _eDisclosureDisclosedMessage.Dirty
+                    || _eDisclosureLockPackageIndicator.Dirty
+                    || _eDisclosureManualFulfillmentComment.Dirty
+                    || _eDisclosureManualFulfillmentDate.Dirty
+                    || _eDisclosureManualFulfillmentMethod.Dirty
+                    || _eDisclosureManuallyFulfilledBy.Dirty
+                    || _eDisclosurePackageCreatedDate.Dirty
+                    || _eDisclosurePackageId.Dirty
+                    || _eDisclosurePackageViewableFile.Dirty
+                    || _eDisclosureThreeDayPackageIndicator.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _financeCharge.Dirty
+                    || _forms.Dirty
+                    || _formsXml.Dirty
+                    || _fulfillmentOrderedBy.Dirty
+                    || _fullfillmentProcessedDate.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isDisclosed.Dirty
+                    || _isDisclosedAprLocked.Dirty
+                    || _isDisclosedByLocked.Dirty
+                    || _isDisclosedFinanceChargeLocked.Dirty
+                    || _isDisclosedReceivedDateLocked.Dirty
+                    || _isLocked.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _isWetSignedIndicator.Dirty
+                    || _loanAmount.Dirty
+                    || _loanProgram.Dirty
+                    || _lockedDisclosedAprField.Dirty
+                    || _lockedDisclosedByField.Dirty
+                    || _lockedDisclosedFinanceChargeField.Dirty
+                    || _lockedDisclosedReceivedDate.Dirty
+                    || _logRecordIndex.Dirty
+                    || _manuallyCreated.Dirty
+                    || _propertyAddress.Dirty
+                    || _propertyCity.Dirty
+                    || _propertyState.Dirty
+                    || _propertyZip.Dirty
+                    || _receivedDate.Dirty
+                    || _snapshotFields.Dirty
+                    || _snapshotXml.Dirty
+                    || _systemId.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
-                var applicationDate = _applicationDate; applicationDate.Clean = value; _applicationDate = applicationDate;
-                var borrowerName = _borrowerName; borrowerName.Clean = value; _borrowerName = borrowerName;
-                var borrowerPairId = _borrowerPairId; borrowerPairId.Clean = value; _borrowerPairId = borrowerPairId;
-                var coBorrowerName = _coBorrowerName; coBorrowerName.Clean = value; _coBorrowerName = coBorrowerName;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var containGfe = _containGfe; containGfe.Clean = value; _containGfe = containGfe;
-                var containSafeHarbor = _containSafeHarbor; containSafeHarbor.Clean = value; _containSafeHarbor = containSafeHarbor;
-                var containTil = _containTil; containTil.Clean = value; _containTil = containTil;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var disclosedAPR = _disclosedAPR; disclosedAPR.Clean = value; _disclosedAPR = disclosedAPR;
-                var disclosedBy = _disclosedBy; disclosedBy.Clean = value; _disclosedBy = disclosedBy;
-                var disclosedByFullName = _disclosedByFullName; disclosedByFullName.Clean = value; _disclosedByFullName = disclosedByFullName;
-                var disclosedMethod = _disclosedMethod; disclosedMethod.Clean = value; _disclosedMethod = disclosedMethod;
-                var disclosureCreatedDttmUtc = _disclosureCreatedDttmUtc; disclosureCreatedDttmUtc.Clean = value; _disclosureCreatedDttmUtc = disclosureCreatedDttmUtc;
-                var eDisclosureApplicationPackageIndicator = _eDisclosureApplicationPackageIndicator; eDisclosureApplicationPackageIndicator.Clean = value; _eDisclosureApplicationPackageIndicator = eDisclosureApplicationPackageIndicator;
-                var eDisclosureApprovalPackageIndicator = _eDisclosureApprovalPackageIndicator; eDisclosureApprovalPackageIndicator.Clean = value; _eDisclosureApprovalPackageIndicator = eDisclosureApprovalPackageIndicator;
-                var eDisclosureBorrowerAcceptConsentDate = _eDisclosureBorrowerAcceptConsentDate; eDisclosureBorrowerAcceptConsentDate.Clean = value; _eDisclosureBorrowerAcceptConsentDate = eDisclosureBorrowerAcceptConsentDate;
-                var eDisclosureBorrowereSignedDate = _eDisclosureBorrowereSignedDate; eDisclosureBorrowereSignedDate.Clean = value; _eDisclosureBorrowereSignedDate = eDisclosureBorrowereSignedDate;
-                var eDisclosureBorrowerRejectConsentDate = _eDisclosureBorrowerRejectConsentDate; eDisclosureBorrowerRejectConsentDate.Clean = value; _eDisclosureBorrowerRejectConsentDate = eDisclosureBorrowerRejectConsentDate;
-                var eDisclosureBorrowerViewConsentDate = _eDisclosureBorrowerViewConsentDate; eDisclosureBorrowerViewConsentDate.Clean = value; _eDisclosureBorrowerViewConsentDate = eDisclosureBorrowerViewConsentDate;
-                var eDisclosureBorrowerViewMessageDate = _eDisclosureBorrowerViewMessageDate; eDisclosureBorrowerViewMessageDate.Clean = value; _eDisclosureBorrowerViewMessageDate = eDisclosureBorrowerViewMessageDate;
-                var eDisclosureBorrowerWetSignedDate = _eDisclosureBorrowerWetSignedDate; eDisclosureBorrowerWetSignedDate.Clean = value; _eDisclosureBorrowerWetSignedDate = eDisclosureBorrowerWetSignedDate;
-                var eDisclosureCoBorrowerAcceptConsentDate = _eDisclosureCoBorrowerAcceptConsentDate; eDisclosureCoBorrowerAcceptConsentDate.Clean = value; _eDisclosureCoBorrowerAcceptConsentDate = eDisclosureCoBorrowerAcceptConsentDate;
-                var eDisclosureCoBorrowereSignedDate = _eDisclosureCoBorrowereSignedDate; eDisclosureCoBorrowereSignedDate.Clean = value; _eDisclosureCoBorrowereSignedDate = eDisclosureCoBorrowereSignedDate;
-                var eDisclosureCoBorrowerRejectConsentDate = _eDisclosureCoBorrowerRejectConsentDate; eDisclosureCoBorrowerRejectConsentDate.Clean = value; _eDisclosureCoBorrowerRejectConsentDate = eDisclosureCoBorrowerRejectConsentDate;
-                var eDisclosureCoBorrowerViewConsentDate = _eDisclosureCoBorrowerViewConsentDate; eDisclosureCoBorrowerViewConsentDate.Clean = value; _eDisclosureCoBorrowerViewConsentDate = eDisclosureCoBorrowerViewConsentDate;
-                var eDisclosureCoBorrowerViewMessageDate = _eDisclosureCoBorrowerViewMessageDate; eDisclosureCoBorrowerViewMessageDate.Clean = value; _eDisclosureCoBorrowerViewMessageDate = eDisclosureCoBorrowerViewMessageDate;
-                var eDisclosureCoBorrowerWebSignedDate = _eDisclosureCoBorrowerWebSignedDate; eDisclosureCoBorrowerWebSignedDate.Clean = value; _eDisclosureCoBorrowerWebSignedDate = eDisclosureCoBorrowerWebSignedDate;
-                var eDisclosureConsentPdf = _eDisclosureConsentPdf; eDisclosureConsentPdf.Clean = value; _eDisclosureConsentPdf = eDisclosureConsentPdf;
-                var eDisclosureDisclosedMessage = _eDisclosureDisclosedMessage; eDisclosureDisclosedMessage.Clean = value; _eDisclosureDisclosedMessage = eDisclosureDisclosedMessage;
-                var eDisclosureLockPackageIndicator = _eDisclosureLockPackageIndicator; eDisclosureLockPackageIndicator.Clean = value; _eDisclosureLockPackageIndicator = eDisclosureLockPackageIndicator;
-                var eDisclosureManualFulfillmentComment = _eDisclosureManualFulfillmentComment; eDisclosureManualFulfillmentComment.Clean = value; _eDisclosureManualFulfillmentComment = eDisclosureManualFulfillmentComment;
-                var eDisclosureManualFulfillmentDate = _eDisclosureManualFulfillmentDate; eDisclosureManualFulfillmentDate.Clean = value; _eDisclosureManualFulfillmentDate = eDisclosureManualFulfillmentDate;
-                var eDisclosureManualFulfillmentMethod = _eDisclosureManualFulfillmentMethod; eDisclosureManualFulfillmentMethod.Clean = value; _eDisclosureManualFulfillmentMethod = eDisclosureManualFulfillmentMethod;
-                var eDisclosureManuallyFulfilledBy = _eDisclosureManuallyFulfilledBy; eDisclosureManuallyFulfilledBy.Clean = value; _eDisclosureManuallyFulfilledBy = eDisclosureManuallyFulfilledBy;
-                var eDisclosurePackageCreatedDate = _eDisclosurePackageCreatedDate; eDisclosurePackageCreatedDate.Clean = value; _eDisclosurePackageCreatedDate = eDisclosurePackageCreatedDate;
-                var eDisclosurePackageId = _eDisclosurePackageId; eDisclosurePackageId.Clean = value; _eDisclosurePackageId = eDisclosurePackageId;
-                var eDisclosurePackageViewableFile = _eDisclosurePackageViewableFile; eDisclosurePackageViewableFile.Clean = value; _eDisclosurePackageViewableFile = eDisclosurePackageViewableFile;
-                var eDisclosureThreeDayPackageIndicator = _eDisclosureThreeDayPackageIndicator; eDisclosureThreeDayPackageIndicator.Clean = value; _eDisclosureThreeDayPackageIndicator = eDisclosureThreeDayPackageIndicator;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var financeCharge = _financeCharge; financeCharge.Clean = value; _financeCharge = financeCharge;
-                var forms = _forms; forms.Clean = value; _forms = forms;
-                var formsXml = _formsXml; formsXml.Clean = value; _formsXml = formsXml;
-                var fulfillmentOrderedBy = _fulfillmentOrderedBy; fulfillmentOrderedBy.Clean = value; _fulfillmentOrderedBy = fulfillmentOrderedBy;
-                var fullfillmentProcessedDate = _fullfillmentProcessedDate; fullfillmentProcessedDate.Clean = value; _fullfillmentProcessedDate = fullfillmentProcessedDate;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isDisclosed = _isDisclosed; isDisclosed.Clean = value; _isDisclosed = isDisclosed;
-                var isDisclosedAprLocked = _isDisclosedAprLocked; isDisclosedAprLocked.Clean = value; _isDisclosedAprLocked = isDisclosedAprLocked;
-                var isDisclosedByLocked = _isDisclosedByLocked; isDisclosedByLocked.Clean = value; _isDisclosedByLocked = isDisclosedByLocked;
-                var isDisclosedFinanceChargeLocked = _isDisclosedFinanceChargeLocked; isDisclosedFinanceChargeLocked.Clean = value; _isDisclosedFinanceChargeLocked = isDisclosedFinanceChargeLocked;
-                var isDisclosedReceivedDateLocked = _isDisclosedReceivedDateLocked; isDisclosedReceivedDateLocked.Clean = value; _isDisclosedReceivedDateLocked = isDisclosedReceivedDateLocked;
-                var isLocked = _isLocked; isLocked.Clean = value; _isLocked = isLocked;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var isWetSignedIndicator = _isWetSignedIndicator; isWetSignedIndicator.Clean = value; _isWetSignedIndicator = isWetSignedIndicator;
-                var loanAmount = _loanAmount; loanAmount.Clean = value; _loanAmount = loanAmount;
-                var loanProgram = _loanProgram; loanProgram.Clean = value; _loanProgram = loanProgram;
-                var lockedDisclosedAprField = _lockedDisclosedAprField; lockedDisclosedAprField.Clean = value; _lockedDisclosedAprField = lockedDisclosedAprField;
-                var lockedDisclosedByField = _lockedDisclosedByField; lockedDisclosedByField.Clean = value; _lockedDisclosedByField = lockedDisclosedByField;
-                var lockedDisclosedFinanceChargeField = _lockedDisclosedFinanceChargeField; lockedDisclosedFinanceChargeField.Clean = value; _lockedDisclosedFinanceChargeField = lockedDisclosedFinanceChargeField;
-                var lockedDisclosedReceivedDate = _lockedDisclosedReceivedDate; lockedDisclosedReceivedDate.Clean = value; _lockedDisclosedReceivedDate = lockedDisclosedReceivedDate;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var manuallyCreated = _manuallyCreated; manuallyCreated.Clean = value; _manuallyCreated = manuallyCreated;
-                var propertyAddress = _propertyAddress; propertyAddress.Clean = value; _propertyAddress = propertyAddress;
-                var propertyCity = _propertyCity; propertyCity.Clean = value; _propertyCity = propertyCity;
-                var propertyState = _propertyState; propertyState.Clean = value; _propertyState = propertyState;
-                var propertyZip = _propertyZip; propertyZip.Clean = value; _propertyZip = propertyZip;
-                var receivedDate = _receivedDate; receivedDate.Clean = value; _receivedDate = receivedDate;
-                var snapshotFields = _snapshotFields; snapshotFields.Clean = value; _snapshotFields = snapshotFields;
-                var snapshotXml = _snapshotXml; snapshotXml.Clean = value; _snapshotXml = snapshotXml;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alerts.Dirty = value;
+                _alertsXml.Dirty = value;
+                _applicationDate.Dirty = value;
+                _borrowerName.Dirty = value;
+                _borrowerPairId.Dirty = value;
+                _coBorrowerName.Dirty = value;
+                _commentList.Dirty = value;
+                _commentListXml.Dirty = value;
+                _comments.Dirty = value;
+                _containGfe.Dirty = value;
+                _containSafeHarbor.Dirty = value;
+                _containTil.Dirty = value;
+                _dateUtc.Dirty = value;
+                _disclosedAPR.Dirty = value;
+                _disclosedBy.Dirty = value;
+                _disclosedByFullName.Dirty = value;
+                _disclosedMethod.Dirty = value;
+                _disclosureCreatedDttmUtc.Dirty = value;
+                _eDisclosureApplicationPackageIndicator.Dirty = value;
+                _eDisclosureApprovalPackageIndicator.Dirty = value;
+                _eDisclosureBorrowerAcceptConsentDate.Dirty = value;
+                _eDisclosureBorrowereSignedDate.Dirty = value;
+                _eDisclosureBorrowerRejectConsentDate.Dirty = value;
+                _eDisclosureBorrowerViewConsentDate.Dirty = value;
+                _eDisclosureBorrowerViewMessageDate.Dirty = value;
+                _eDisclosureBorrowerWetSignedDate.Dirty = value;
+                _eDisclosureCoBorrowerAcceptConsentDate.Dirty = value;
+                _eDisclosureCoBorrowereSignedDate.Dirty = value;
+                _eDisclosureCoBorrowerRejectConsentDate.Dirty = value;
+                _eDisclosureCoBorrowerViewConsentDate.Dirty = value;
+                _eDisclosureCoBorrowerViewMessageDate.Dirty = value;
+                _eDisclosureCoBorrowerWebSignedDate.Dirty = value;
+                _eDisclosureConsentPdf.Dirty = value;
+                _eDisclosureDisclosedMessage.Dirty = value;
+                _eDisclosureLockPackageIndicator.Dirty = value;
+                _eDisclosureManualFulfillmentComment.Dirty = value;
+                _eDisclosureManualFulfillmentDate.Dirty = value;
+                _eDisclosureManualFulfillmentMethod.Dirty = value;
+                _eDisclosureManuallyFulfilledBy.Dirty = value;
+                _eDisclosurePackageCreatedDate.Dirty = value;
+                _eDisclosurePackageId.Dirty = value;
+                _eDisclosurePackageViewableFile.Dirty = value;
+                _eDisclosureThreeDayPackageIndicator.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _financeCharge.Dirty = value;
+                _forms.Dirty = value;
+                _formsXml.Dirty = value;
+                _fulfillmentOrderedBy.Dirty = value;
+                _fullfillmentProcessedDate.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isDisclosed.Dirty = value;
+                _isDisclosedAprLocked.Dirty = value;
+                _isDisclosedByLocked.Dirty = value;
+                _isDisclosedFinanceChargeLocked.Dirty = value;
+                _isDisclosedReceivedDateLocked.Dirty = value;
+                _isLocked.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _isWetSignedIndicator.Dirty = value;
+                _loanAmount.Dirty = value;
+                _loanProgram.Dirty = value;
+                _lockedDisclosedAprField.Dirty = value;
+                _lockedDisclosedByField.Dirty = value;
+                _lockedDisclosedFinanceChargeField.Dirty = value;
+                _lockedDisclosedReceivedDate.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _manuallyCreated.Dirty = value;
+                _propertyAddress.Dirty = value;
+                _propertyCity.Dirty = value;
+                _propertyState.Dirty = value;
+                _propertyZip.Dirty = value;
+                _receivedDate.Dirty = value;
+                _snapshotFields.Dirty = value;
+                _snapshotXml.Dirty = value;
+                _systemId.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public DisclosureTrackingLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

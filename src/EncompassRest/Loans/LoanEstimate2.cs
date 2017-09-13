@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanEstimate2 : IClean
+    public sealed partial class LoanEstimate2 : IDirty
     {
         private Value<decimal?> _actualLenderCredits;
         public decimal? ActualLenderCredits { get { return _actualLenderCredits; } set { _actualLenderCredits = value; } }
@@ -118,137 +118,132 @@ namespace EncompassRest.Loans
         public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get { return _useActualDownPaymentAndClosingCostsFinancedIndicator; } set { _useActualDownPaymentAndClosingCostsFinancedIndicator = value; } }
         private Value<bool?> _useAlternate;
         public bool? UseAlternate { get { return _useAlternate; } set { _useAlternate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actualLenderCredits.Clean
-                    && _actualSTDLESellerCredits.Clean
-                    && _actualSTDLETotalClosingCostJ.Clean
-                    && _adjustmentsOtherCredits.Clean
-                    && _adjustmentsOtherCreditsAmt1.Clean
-                    && _adjustmentsOtherCreditsAmt10.Clean
-                    && _adjustmentsOtherCreditsAmt2.Clean
-                    && _adjustmentsOtherCreditsAmt3.Clean
-                    && _adjustmentsOtherCreditsAmt4.Clean
-                    && _adjustmentsOtherCreditsAmt5.Clean
-                    && _adjustmentsOtherCreditsAmt6.Clean
-                    && _adjustmentsOtherCreditsAmt7.Clean
-                    && _adjustmentsOtherCreditsAmt8.Clean
-                    && _adjustmentsOtherCreditsAmt9.Clean
-                    && _adjustmentsOtherCreditsDesc1.Clean
-                    && _adjustmentsOtherCreditsDesc10.Clean
-                    && _adjustmentsOtherCreditsDesc2.Clean
-                    && _adjustmentsOtherCreditsDesc3.Clean
-                    && _adjustmentsOtherCreditsDesc4.Clean
-                    && _adjustmentsOtherCreditsDesc5.Clean
-                    && _adjustmentsOtherCreditsDesc6.Clean
-                    && _adjustmentsOtherCreditsDesc7.Clean
-                    && _adjustmentsOtherCreditsDesc8.Clean
-                    && _adjustmentsOtherCreditsDesc9.Clean
-                    && _closingCostsFinanced.Clean
-                    && _downPayment.Clean
-                    && _estimatedCashToCloseAV.Clean
-                    && _estimatedCashToCloseSV.Clean
-                    && _estimatedTotalPayoffsAndPaymentsAmount.Clean
-                    && _firstChangeFrequencyMonth.Clean
-                    && _firstChangeMonthSuffix.Clean
-                    && _fromOrToBorrower.Clean
-                    && _fundsForBorrower.Clean
-                    && _id.Clean
-                    && _indexMargin.Clean
-                    && _initialEscrowPaymentClosingSubTotal.Clean
-                    && _itemizeServiceSectionCType.Clean
-                    && _lenderCredits.Clean
-                    && _originationChargesSubTotal.Clean
-                    && _otherSubTotal.Clean
-                    && _prepaidsSubTotal.Clean
-                    && _sellerCreditAmount.Clean
-                    && _servicesYouNotShopSubTotal.Clean
-                    && _servicesYouShopSubTotal.Clean
-                    && _subseqChangeMonthSuffix.Clean
-                    && _taxesGovFeesSubTotal.Clean
-                    && _thirdPartyPaymentsNotOtherwiseDisclosed.Clean
-                    && _totalClosingCosts.Clean
-                    && _totalLoanAndOtherCosts.Clean
-                    && _totalLoanCosts.Clean
-                    && _totalOtherCosts.Clean
-                    && _unroundedTotalLoanCosts.Clean
-                    && _unroundedTotalOtherCosts.Clean
-                    && _useActualDownPaymentAndClosingCostsFinancedIndicator.Clean
-                    && _useAlternate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actualLenderCredits.Dirty
+                    || _actualSTDLESellerCredits.Dirty
+                    || _actualSTDLETotalClosingCostJ.Dirty
+                    || _adjustmentsOtherCredits.Dirty
+                    || _adjustmentsOtherCreditsAmt1.Dirty
+                    || _adjustmentsOtherCreditsAmt10.Dirty
+                    || _adjustmentsOtherCreditsAmt2.Dirty
+                    || _adjustmentsOtherCreditsAmt3.Dirty
+                    || _adjustmentsOtherCreditsAmt4.Dirty
+                    || _adjustmentsOtherCreditsAmt5.Dirty
+                    || _adjustmentsOtherCreditsAmt6.Dirty
+                    || _adjustmentsOtherCreditsAmt7.Dirty
+                    || _adjustmentsOtherCreditsAmt8.Dirty
+                    || _adjustmentsOtherCreditsAmt9.Dirty
+                    || _adjustmentsOtherCreditsDesc1.Dirty
+                    || _adjustmentsOtherCreditsDesc10.Dirty
+                    || _adjustmentsOtherCreditsDesc2.Dirty
+                    || _adjustmentsOtherCreditsDesc3.Dirty
+                    || _adjustmentsOtherCreditsDesc4.Dirty
+                    || _adjustmentsOtherCreditsDesc5.Dirty
+                    || _adjustmentsOtherCreditsDesc6.Dirty
+                    || _adjustmentsOtherCreditsDesc7.Dirty
+                    || _adjustmentsOtherCreditsDesc8.Dirty
+                    || _adjustmentsOtherCreditsDesc9.Dirty
+                    || _closingCostsFinanced.Dirty
+                    || _downPayment.Dirty
+                    || _estimatedCashToCloseAV.Dirty
+                    || _estimatedCashToCloseSV.Dirty
+                    || _estimatedTotalPayoffsAndPaymentsAmount.Dirty
+                    || _firstChangeFrequencyMonth.Dirty
+                    || _firstChangeMonthSuffix.Dirty
+                    || _fromOrToBorrower.Dirty
+                    || _fundsForBorrower.Dirty
+                    || _id.Dirty
+                    || _indexMargin.Dirty
+                    || _initialEscrowPaymentClosingSubTotal.Dirty
+                    || _itemizeServiceSectionCType.Dirty
+                    || _lenderCredits.Dirty
+                    || _originationChargesSubTotal.Dirty
+                    || _otherSubTotal.Dirty
+                    || _prepaidsSubTotal.Dirty
+                    || _sellerCreditAmount.Dirty
+                    || _servicesYouNotShopSubTotal.Dirty
+                    || _servicesYouShopSubTotal.Dirty
+                    || _subseqChangeMonthSuffix.Dirty
+                    || _taxesGovFeesSubTotal.Dirty
+                    || _thirdPartyPaymentsNotOtherwiseDisclosed.Dirty
+                    || _totalClosingCosts.Dirty
+                    || _totalLoanAndOtherCosts.Dirty
+                    || _totalLoanCosts.Dirty
+                    || _totalOtherCosts.Dirty
+                    || _unroundedTotalLoanCosts.Dirty
+                    || _unroundedTotalOtherCosts.Dirty
+                    || _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty
+                    || _useAlternate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actualLenderCredits = _actualLenderCredits; actualLenderCredits.Clean = value; _actualLenderCredits = actualLenderCredits;
-                var actualSTDLESellerCredits = _actualSTDLESellerCredits; actualSTDLESellerCredits.Clean = value; _actualSTDLESellerCredits = actualSTDLESellerCredits;
-                var actualSTDLETotalClosingCostJ = _actualSTDLETotalClosingCostJ; actualSTDLETotalClosingCostJ.Clean = value; _actualSTDLETotalClosingCostJ = actualSTDLETotalClosingCostJ;
-                var adjustmentsOtherCredits = _adjustmentsOtherCredits; adjustmentsOtherCredits.Clean = value; _adjustmentsOtherCredits = adjustmentsOtherCredits;
-                var adjustmentsOtherCreditsAmt1 = _adjustmentsOtherCreditsAmt1; adjustmentsOtherCreditsAmt1.Clean = value; _adjustmentsOtherCreditsAmt1 = adjustmentsOtherCreditsAmt1;
-                var adjustmentsOtherCreditsAmt10 = _adjustmentsOtherCreditsAmt10; adjustmentsOtherCreditsAmt10.Clean = value; _adjustmentsOtherCreditsAmt10 = adjustmentsOtherCreditsAmt10;
-                var adjustmentsOtherCreditsAmt2 = _adjustmentsOtherCreditsAmt2; adjustmentsOtherCreditsAmt2.Clean = value; _adjustmentsOtherCreditsAmt2 = adjustmentsOtherCreditsAmt2;
-                var adjustmentsOtherCreditsAmt3 = _adjustmentsOtherCreditsAmt3; adjustmentsOtherCreditsAmt3.Clean = value; _adjustmentsOtherCreditsAmt3 = adjustmentsOtherCreditsAmt3;
-                var adjustmentsOtherCreditsAmt4 = _adjustmentsOtherCreditsAmt4; adjustmentsOtherCreditsAmt4.Clean = value; _adjustmentsOtherCreditsAmt4 = adjustmentsOtherCreditsAmt4;
-                var adjustmentsOtherCreditsAmt5 = _adjustmentsOtherCreditsAmt5; adjustmentsOtherCreditsAmt5.Clean = value; _adjustmentsOtherCreditsAmt5 = adjustmentsOtherCreditsAmt5;
-                var adjustmentsOtherCreditsAmt6 = _adjustmentsOtherCreditsAmt6; adjustmentsOtherCreditsAmt6.Clean = value; _adjustmentsOtherCreditsAmt6 = adjustmentsOtherCreditsAmt6;
-                var adjustmentsOtherCreditsAmt7 = _adjustmentsOtherCreditsAmt7; adjustmentsOtherCreditsAmt7.Clean = value; _adjustmentsOtherCreditsAmt7 = adjustmentsOtherCreditsAmt7;
-                var adjustmentsOtherCreditsAmt8 = _adjustmentsOtherCreditsAmt8; adjustmentsOtherCreditsAmt8.Clean = value; _adjustmentsOtherCreditsAmt8 = adjustmentsOtherCreditsAmt8;
-                var adjustmentsOtherCreditsAmt9 = _adjustmentsOtherCreditsAmt9; adjustmentsOtherCreditsAmt9.Clean = value; _adjustmentsOtherCreditsAmt9 = adjustmentsOtherCreditsAmt9;
-                var adjustmentsOtherCreditsDesc1 = _adjustmentsOtherCreditsDesc1; adjustmentsOtherCreditsDesc1.Clean = value; _adjustmentsOtherCreditsDesc1 = adjustmentsOtherCreditsDesc1;
-                var adjustmentsOtherCreditsDesc10 = _adjustmentsOtherCreditsDesc10; adjustmentsOtherCreditsDesc10.Clean = value; _adjustmentsOtherCreditsDesc10 = adjustmentsOtherCreditsDesc10;
-                var adjustmentsOtherCreditsDesc2 = _adjustmentsOtherCreditsDesc2; adjustmentsOtherCreditsDesc2.Clean = value; _adjustmentsOtherCreditsDesc2 = adjustmentsOtherCreditsDesc2;
-                var adjustmentsOtherCreditsDesc3 = _adjustmentsOtherCreditsDesc3; adjustmentsOtherCreditsDesc3.Clean = value; _adjustmentsOtherCreditsDesc3 = adjustmentsOtherCreditsDesc3;
-                var adjustmentsOtherCreditsDesc4 = _adjustmentsOtherCreditsDesc4; adjustmentsOtherCreditsDesc4.Clean = value; _adjustmentsOtherCreditsDesc4 = adjustmentsOtherCreditsDesc4;
-                var adjustmentsOtherCreditsDesc5 = _adjustmentsOtherCreditsDesc5; adjustmentsOtherCreditsDesc5.Clean = value; _adjustmentsOtherCreditsDesc5 = adjustmentsOtherCreditsDesc5;
-                var adjustmentsOtherCreditsDesc6 = _adjustmentsOtherCreditsDesc6; adjustmentsOtherCreditsDesc6.Clean = value; _adjustmentsOtherCreditsDesc6 = adjustmentsOtherCreditsDesc6;
-                var adjustmentsOtherCreditsDesc7 = _adjustmentsOtherCreditsDesc7; adjustmentsOtherCreditsDesc7.Clean = value; _adjustmentsOtherCreditsDesc7 = adjustmentsOtherCreditsDesc7;
-                var adjustmentsOtherCreditsDesc8 = _adjustmentsOtherCreditsDesc8; adjustmentsOtherCreditsDesc8.Clean = value; _adjustmentsOtherCreditsDesc8 = adjustmentsOtherCreditsDesc8;
-                var adjustmentsOtherCreditsDesc9 = _adjustmentsOtherCreditsDesc9; adjustmentsOtherCreditsDesc9.Clean = value; _adjustmentsOtherCreditsDesc9 = adjustmentsOtherCreditsDesc9;
-                var closingCostsFinanced = _closingCostsFinanced; closingCostsFinanced.Clean = value; _closingCostsFinanced = closingCostsFinanced;
-                var downPayment = _downPayment; downPayment.Clean = value; _downPayment = downPayment;
-                var estimatedCashToCloseAV = _estimatedCashToCloseAV; estimatedCashToCloseAV.Clean = value; _estimatedCashToCloseAV = estimatedCashToCloseAV;
-                var estimatedCashToCloseSV = _estimatedCashToCloseSV; estimatedCashToCloseSV.Clean = value; _estimatedCashToCloseSV = estimatedCashToCloseSV;
-                var estimatedTotalPayoffsAndPaymentsAmount = _estimatedTotalPayoffsAndPaymentsAmount; estimatedTotalPayoffsAndPaymentsAmount.Clean = value; _estimatedTotalPayoffsAndPaymentsAmount = estimatedTotalPayoffsAndPaymentsAmount;
-                var firstChangeFrequencyMonth = _firstChangeFrequencyMonth; firstChangeFrequencyMonth.Clean = value; _firstChangeFrequencyMonth = firstChangeFrequencyMonth;
-                var firstChangeMonthSuffix = _firstChangeMonthSuffix; firstChangeMonthSuffix.Clean = value; _firstChangeMonthSuffix = firstChangeMonthSuffix;
-                var fromOrToBorrower = _fromOrToBorrower; fromOrToBorrower.Clean = value; _fromOrToBorrower = fromOrToBorrower;
-                var fundsForBorrower = _fundsForBorrower; fundsForBorrower.Clean = value; _fundsForBorrower = fundsForBorrower;
-                var id = _id; id.Clean = value; _id = id;
-                var indexMargin = _indexMargin; indexMargin.Clean = value; _indexMargin = indexMargin;
-                var initialEscrowPaymentClosingSubTotal = _initialEscrowPaymentClosingSubTotal; initialEscrowPaymentClosingSubTotal.Clean = value; _initialEscrowPaymentClosingSubTotal = initialEscrowPaymentClosingSubTotal;
-                var itemizeServiceSectionCType = _itemizeServiceSectionCType; itemizeServiceSectionCType.Clean = value; _itemizeServiceSectionCType = itemizeServiceSectionCType;
-                var lenderCredits = _lenderCredits; lenderCredits.Clean = value; _lenderCredits = lenderCredits;
-                var originationChargesSubTotal = _originationChargesSubTotal; originationChargesSubTotal.Clean = value; _originationChargesSubTotal = originationChargesSubTotal;
-                var otherSubTotal = _otherSubTotal; otherSubTotal.Clean = value; _otherSubTotal = otherSubTotal;
-                var prepaidsSubTotal = _prepaidsSubTotal; prepaidsSubTotal.Clean = value; _prepaidsSubTotal = prepaidsSubTotal;
-                var sellerCreditAmount = _sellerCreditAmount; sellerCreditAmount.Clean = value; _sellerCreditAmount = sellerCreditAmount;
-                var servicesYouNotShopSubTotal = _servicesYouNotShopSubTotal; servicesYouNotShopSubTotal.Clean = value; _servicesYouNotShopSubTotal = servicesYouNotShopSubTotal;
-                var servicesYouShopSubTotal = _servicesYouShopSubTotal; servicesYouShopSubTotal.Clean = value; _servicesYouShopSubTotal = servicesYouShopSubTotal;
-                var subseqChangeMonthSuffix = _subseqChangeMonthSuffix; subseqChangeMonthSuffix.Clean = value; _subseqChangeMonthSuffix = subseqChangeMonthSuffix;
-                var taxesGovFeesSubTotal = _taxesGovFeesSubTotal; taxesGovFeesSubTotal.Clean = value; _taxesGovFeesSubTotal = taxesGovFeesSubTotal;
-                var thirdPartyPaymentsNotOtherwiseDisclosed = _thirdPartyPaymentsNotOtherwiseDisclosed; thirdPartyPaymentsNotOtherwiseDisclosed.Clean = value; _thirdPartyPaymentsNotOtherwiseDisclosed = thirdPartyPaymentsNotOtherwiseDisclosed;
-                var totalClosingCosts = _totalClosingCosts; totalClosingCosts.Clean = value; _totalClosingCosts = totalClosingCosts;
-                var totalLoanAndOtherCosts = _totalLoanAndOtherCosts; totalLoanAndOtherCosts.Clean = value; _totalLoanAndOtherCosts = totalLoanAndOtherCosts;
-                var totalLoanCosts = _totalLoanCosts; totalLoanCosts.Clean = value; _totalLoanCosts = totalLoanCosts;
-                var totalOtherCosts = _totalOtherCosts; totalOtherCosts.Clean = value; _totalOtherCosts = totalOtherCosts;
-                var unroundedTotalLoanCosts = _unroundedTotalLoanCosts; unroundedTotalLoanCosts.Clean = value; _unroundedTotalLoanCosts = unroundedTotalLoanCosts;
-                var unroundedTotalOtherCosts = _unroundedTotalOtherCosts; unroundedTotalOtherCosts.Clean = value; _unroundedTotalOtherCosts = unroundedTotalOtherCosts;
-                var useActualDownPaymentAndClosingCostsFinancedIndicator = _useActualDownPaymentAndClosingCostsFinancedIndicator; useActualDownPaymentAndClosingCostsFinancedIndicator.Clean = value; _useActualDownPaymentAndClosingCostsFinancedIndicator = useActualDownPaymentAndClosingCostsFinancedIndicator;
-                var useAlternate = _useAlternate; useAlternate.Clean = value; _useAlternate = useAlternate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actualLenderCredits.Dirty = value;
+                _actualSTDLESellerCredits.Dirty = value;
+                _actualSTDLETotalClosingCostJ.Dirty = value;
+                _adjustmentsOtherCredits.Dirty = value;
+                _adjustmentsOtherCreditsAmt1.Dirty = value;
+                _adjustmentsOtherCreditsAmt10.Dirty = value;
+                _adjustmentsOtherCreditsAmt2.Dirty = value;
+                _adjustmentsOtherCreditsAmt3.Dirty = value;
+                _adjustmentsOtherCreditsAmt4.Dirty = value;
+                _adjustmentsOtherCreditsAmt5.Dirty = value;
+                _adjustmentsOtherCreditsAmt6.Dirty = value;
+                _adjustmentsOtherCreditsAmt7.Dirty = value;
+                _adjustmentsOtherCreditsAmt8.Dirty = value;
+                _adjustmentsOtherCreditsAmt9.Dirty = value;
+                _adjustmentsOtherCreditsDesc1.Dirty = value;
+                _adjustmentsOtherCreditsDesc10.Dirty = value;
+                _adjustmentsOtherCreditsDesc2.Dirty = value;
+                _adjustmentsOtherCreditsDesc3.Dirty = value;
+                _adjustmentsOtherCreditsDesc4.Dirty = value;
+                _adjustmentsOtherCreditsDesc5.Dirty = value;
+                _adjustmentsOtherCreditsDesc6.Dirty = value;
+                _adjustmentsOtherCreditsDesc7.Dirty = value;
+                _adjustmentsOtherCreditsDesc8.Dirty = value;
+                _adjustmentsOtherCreditsDesc9.Dirty = value;
+                _closingCostsFinanced.Dirty = value;
+                _downPayment.Dirty = value;
+                _estimatedCashToCloseAV.Dirty = value;
+                _estimatedCashToCloseSV.Dirty = value;
+                _estimatedTotalPayoffsAndPaymentsAmount.Dirty = value;
+                _firstChangeFrequencyMonth.Dirty = value;
+                _firstChangeMonthSuffix.Dirty = value;
+                _fromOrToBorrower.Dirty = value;
+                _fundsForBorrower.Dirty = value;
+                _id.Dirty = value;
+                _indexMargin.Dirty = value;
+                _initialEscrowPaymentClosingSubTotal.Dirty = value;
+                _itemizeServiceSectionCType.Dirty = value;
+                _lenderCredits.Dirty = value;
+                _originationChargesSubTotal.Dirty = value;
+                _otherSubTotal.Dirty = value;
+                _prepaidsSubTotal.Dirty = value;
+                _sellerCreditAmount.Dirty = value;
+                _servicesYouNotShopSubTotal.Dirty = value;
+                _servicesYouShopSubTotal.Dirty = value;
+                _subseqChangeMonthSuffix.Dirty = value;
+                _taxesGovFeesSubTotal.Dirty = value;
+                _thirdPartyPaymentsNotOtherwiseDisclosed.Dirty = value;
+                _totalClosingCosts.Dirty = value;
+                _totalLoanAndOtherCosts.Dirty = value;
+                _totalLoanCosts.Dirty = value;
+                _totalOtherCosts.Dirty = value;
+                _unroundedTotalLoanCosts.Dirty = value;
+                _unroundedTotalOtherCosts.Dirty = value;
+                _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty = value;
+                _useAlternate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LoanEstimate2()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

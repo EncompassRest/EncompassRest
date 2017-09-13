@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010WholePoc : IClean
+    public sealed partial class Gfe2010WholePoc : IDirty
     {
         private Value<int?> _gfe2010WholePocIndex;
         public int? Gfe2010WholePocIndex { get { return _gfe2010WholePocIndex; } set { _gfe2010WholePocIndex = value; } }
@@ -18,37 +18,32 @@ namespace EncompassRest.Loans
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
         private Value<string> _wholePocPaidByType;
         public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _gfe2010WholePocIndex.Clean
-                    && _id.Clean
-                    && _lineNumber.Clean
-                    && _wholePoc.Clean
-                    && _wholePocPaidByType.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _gfe2010WholePocIndex.Dirty
+                    || _id.Dirty
+                    || _lineNumber.Dirty
+                    || _wholePoc.Dirty
+                    || _wholePocPaidByType.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var gfe2010WholePocIndex = _gfe2010WholePocIndex; gfe2010WholePocIndex.Clean = value; _gfe2010WholePocIndex = gfe2010WholePocIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
-                var wholePoc = _wholePoc; wholePoc.Clean = value; _wholePoc = wholePoc;
-                var wholePocPaidByType = _wholePocPaidByType; wholePocPaidByType.Clean = value; _wholePocPaidByType = wholePocPaidByType;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _gfe2010WholePocIndex.Dirty = value;
+                _id.Dirty = value;
+                _lineNumber.Dirty = value;
+                _wholePoc.Dirty = value;
+                _wholePocPaidByType.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010WholePoc()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

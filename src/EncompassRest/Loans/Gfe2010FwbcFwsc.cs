@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010FwbcFwsc : IClean
+    public sealed partial class Gfe2010FwbcFwsc : IDirty
     {
         private Value<string> _fwbc;
         public string Fwbc { get { return _fwbc; } set { _fwbc = value; } }
@@ -20,39 +20,34 @@ namespace EncompassRest.Loans
         public string LineLetter { get { return _lineLetter; } set { _lineLetter = value; } }
         private Value<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _fwbc.Clean
-                    && _fwsc.Clean
-                    && _gfe2010FwbcFwscIndex.Clean
-                    && _id.Clean
-                    && _lineLetter.Clean
-                    && _lineNumber.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _fwbc.Dirty
+                    || _fwsc.Dirty
+                    || _gfe2010FwbcFwscIndex.Dirty
+                    || _id.Dirty
+                    || _lineLetter.Dirty
+                    || _lineNumber.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var fwbc = _fwbc; fwbc.Clean = value; _fwbc = fwbc;
-                var fwsc = _fwsc; fwsc.Clean = value; _fwsc = fwsc;
-                var gfe2010FwbcFwscIndex = _gfe2010FwbcFwscIndex; gfe2010FwbcFwscIndex.Clean = value; _gfe2010FwbcFwscIndex = gfe2010FwbcFwscIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var lineLetter = _lineLetter; lineLetter.Clean = value; _lineLetter = lineLetter;
-                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _fwbc.Dirty = value;
+                _fwsc.Dirty = value;
+                _gfe2010FwbcFwscIndex.Dirty = value;
+                _id.Dirty = value;
+                _lineLetter.Dirty = value;
+                _lineNumber.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe2010FwbcFwsc()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

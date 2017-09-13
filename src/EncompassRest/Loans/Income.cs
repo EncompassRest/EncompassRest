@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Income : IClean
+    public sealed partial class Income : IDirty
     {
         private Value<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public int? OtherIncomeIndex { get { return _otherIncomeIndex; } set { _otherIncomeIndex = value; } }
         private Value<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amount.Clean
-                    && _currentIndicator.Clean
-                    && _description.Clean
-                    && _id.Clean
-                    && _incomeType.Clean
-                    && _otherIncomeIndex.Clean
-                    && _owner.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amount.Dirty
+                    || _currentIndicator.Dirty
+                    || _description.Dirty
+                    || _id.Dirty
+                    || _incomeType.Dirty
+                    || _otherIncomeIndex.Dirty
+                    || _owner.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amount = _amount; amount.Clean = value; _amount = amount;
-                var currentIndicator = _currentIndicator; currentIndicator.Clean = value; _currentIndicator = currentIndicator;
-                var description = _description; description.Clean = value; _description = description;
-                var id = _id; id.Clean = value; _id = id;
-                var incomeType = _incomeType; incomeType.Clean = value; _incomeType = incomeType;
-                var otherIncomeIndex = _otherIncomeIndex; otherIncomeIndex.Clean = value; _otherIncomeIndex = otherIncomeIndex;
-                var owner = _owner; owner.Clean = value; _owner = owner;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amount.Dirty = value;
+                _currentIndicator.Dirty = value;
+                _description.Dirty = value;
+                _id.Dirty = value;
+                _incomeType.Dirty = value;
+                _otherIncomeIndex.Dirty = value;
+                _owner.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Income()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

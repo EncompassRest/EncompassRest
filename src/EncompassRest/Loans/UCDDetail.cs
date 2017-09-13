@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UCDDetail : IClean
+    public sealed partial class UCDDetail : IDirty
     {
         private Value<string> _feeAccountType;
         public string FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
@@ -32,51 +32,46 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private Value<string> _section;
         public string Section { get { return _section; } set { _section = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _feeAccountType.Clean
-                    && _feeAmount.Clean
-                    && _feeDateFrom.Clean
-                    && _feeDateTo.Clean
-                    && _feeDesc.Clean
-                    && _feeIndex.Clean
-                    && _feePaidBy.Clean
-                    && _feePaidTo.Clean
-                    && _feePOC.Clean
-                    && _id.Clean
-                    && _lineNumber.Clean
-                    && _section.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _feeAccountType.Dirty
+                    || _feeAmount.Dirty
+                    || _feeDateFrom.Dirty
+                    || _feeDateTo.Dirty
+                    || _feeDesc.Dirty
+                    || _feeIndex.Dirty
+                    || _feePaidBy.Dirty
+                    || _feePaidTo.Dirty
+                    || _feePOC.Dirty
+                    || _id.Dirty
+                    || _lineNumber.Dirty
+                    || _section.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var feeAccountType = _feeAccountType; feeAccountType.Clean = value; _feeAccountType = feeAccountType;
-                var feeAmount = _feeAmount; feeAmount.Clean = value; _feeAmount = feeAmount;
-                var feeDateFrom = _feeDateFrom; feeDateFrom.Clean = value; _feeDateFrom = feeDateFrom;
-                var feeDateTo = _feeDateTo; feeDateTo.Clean = value; _feeDateTo = feeDateTo;
-                var feeDesc = _feeDesc; feeDesc.Clean = value; _feeDesc = feeDesc;
-                var feeIndex = _feeIndex; feeIndex.Clean = value; _feeIndex = feeIndex;
-                var feePaidBy = _feePaidBy; feePaidBy.Clean = value; _feePaidBy = feePaidBy;
-                var feePaidTo = _feePaidTo; feePaidTo.Clean = value; _feePaidTo = feePaidTo;
-                var feePOC = _feePOC; feePOC.Clean = value; _feePOC = feePOC;
-                var id = _id; id.Clean = value; _id = id;
-                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
-                var section = _section; section.Clean = value; _section = section;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _feeAccountType.Dirty = value;
+                _feeAmount.Dirty = value;
+                _feeDateFrom.Dirty = value;
+                _feeDateTo.Dirty = value;
+                _feeDesc.Dirty = value;
+                _feeIndex.Dirty = value;
+                _feePaidBy.Dirty = value;
+                _feePaidTo.Dirty = value;
+                _feePOC.Dirty = value;
+                _id.Dirty = value;
+                _lineNumber.Dirty = value;
+                _section.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public UCDDetail()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

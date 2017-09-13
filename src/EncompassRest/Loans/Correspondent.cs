@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Correspondent : IClean
+    public sealed partial class Correspondent : IDirty
     {
         private Value<decimal?> _additionalLateFeeCharge;
         public decimal? AdditionalLateFeeCharge { get { return _additionalLateFeeCharge; } set { _additionalLateFeeCharge = value; } }
@@ -104,123 +104,118 @@ namespace EncompassRest.Loans
         public decimal? UnpaidPrincipalBalance { get { return _unpaidPrincipalBalance; } set { _unpaidPrincipalBalance = value; } }
         private Value<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalLateFeeCharge.Clean
-                    && _approvedToFundDate.Clean
-                    && _basePrice.Clean
-                    && _commitmentType.Clean
-                    && _conditionsReceivedDate.Clean
-                    && _correspondentStatus.Clean
-                    && _deliveryExpirationDate.Clean
-                    && _deliveryType.Clean
-                    && _fundedDate.Clean
-                    && _gracePeriodDays.Clean
-                    && _gracePeriodStartDate.Clean
-                    && _gracePeriodStartTrigger.Clean
-                    && _id.Clean
-                    && _initialSuspenseDate.Clean
-                    && _lateDaysBegin.Clean
-                    && _lateDaysEnd.Clean
-                    && _lateDaysEndTrigger.Clean
-                    && _lateFeeChargeType.Clean
-                    && _lateFeeFrequency.Clean
-                    && _lateFeeNotes.Clean
-                    && _lateFeePercentage.Clean
-                    && _lateFeeTotalPriceAdjustment.Clean
-                    && _latestConditionsDate.Clean
-                    && _lFS_CalculateAs.Clean
-                    && _lFS_DayCleared.Clean
-                    && _lFS_DayClearedOtherDate.Clean
-                    && _lFS_DayClearedOtherDateValue.Clean
-                    && _lFS_FeeHandledAs.Clean
-                    && _lFS_GracePeriodCalendar.Clean
-                    && _lFS_GracePeriodDays.Clean
-                    && _lFS_GracePeriodLaterOf.Clean
-                    && _lFS_GracePeriodStarts.Clean
-                    && _lFS_IncludeDay.Clean
-                    && _lFS_LateFeeBasedOn.Clean
-                    && _lFS_MaxLateDays.Clean
-                    && _lFS_OtherDate.Clean
-                    && _lFS_OtherDateValue.Clean
-                    && _lFS_StartOnWeekend.Clean
-                    && _noteDate.Clean
-                    && _originalPrincipalBalance.Clean
-                    && _ratesheet.Clean
-                    && _receivedDate.Clean
-                    && _rejectedDate.Clean
-                    && _submittedforPurchaseDate.Clean
-                    && _totalLateDays.Clean
-                    && _totalLateFee.Clean
-                    && _unpaidPrincipalBalance.Clean
-                    && _withdrawnDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalLateFeeCharge.Dirty
+                    || _approvedToFundDate.Dirty
+                    || _basePrice.Dirty
+                    || _commitmentType.Dirty
+                    || _conditionsReceivedDate.Dirty
+                    || _correspondentStatus.Dirty
+                    || _deliveryExpirationDate.Dirty
+                    || _deliveryType.Dirty
+                    || _fundedDate.Dirty
+                    || _gracePeriodDays.Dirty
+                    || _gracePeriodStartDate.Dirty
+                    || _gracePeriodStartTrigger.Dirty
+                    || _id.Dirty
+                    || _initialSuspenseDate.Dirty
+                    || _lateDaysBegin.Dirty
+                    || _lateDaysEnd.Dirty
+                    || _lateDaysEndTrigger.Dirty
+                    || _lateFeeChargeType.Dirty
+                    || _lateFeeFrequency.Dirty
+                    || _lateFeeNotes.Dirty
+                    || _lateFeePercentage.Dirty
+                    || _lateFeeTotalPriceAdjustment.Dirty
+                    || _latestConditionsDate.Dirty
+                    || _lFS_CalculateAs.Dirty
+                    || _lFS_DayCleared.Dirty
+                    || _lFS_DayClearedOtherDate.Dirty
+                    || _lFS_DayClearedOtherDateValue.Dirty
+                    || _lFS_FeeHandledAs.Dirty
+                    || _lFS_GracePeriodCalendar.Dirty
+                    || _lFS_GracePeriodDays.Dirty
+                    || _lFS_GracePeriodLaterOf.Dirty
+                    || _lFS_GracePeriodStarts.Dirty
+                    || _lFS_IncludeDay.Dirty
+                    || _lFS_LateFeeBasedOn.Dirty
+                    || _lFS_MaxLateDays.Dirty
+                    || _lFS_OtherDate.Dirty
+                    || _lFS_OtherDateValue.Dirty
+                    || _lFS_StartOnWeekend.Dirty
+                    || _noteDate.Dirty
+                    || _originalPrincipalBalance.Dirty
+                    || _ratesheet.Dirty
+                    || _receivedDate.Dirty
+                    || _rejectedDate.Dirty
+                    || _submittedforPurchaseDate.Dirty
+                    || _totalLateDays.Dirty
+                    || _totalLateFee.Dirty
+                    || _unpaidPrincipalBalance.Dirty
+                    || _withdrawnDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalLateFeeCharge = _additionalLateFeeCharge; additionalLateFeeCharge.Clean = value; _additionalLateFeeCharge = additionalLateFeeCharge;
-                var approvedToFundDate = _approvedToFundDate; approvedToFundDate.Clean = value; _approvedToFundDate = approvedToFundDate;
-                var basePrice = _basePrice; basePrice.Clean = value; _basePrice = basePrice;
-                var commitmentType = _commitmentType; commitmentType.Clean = value; _commitmentType = commitmentType;
-                var conditionsReceivedDate = _conditionsReceivedDate; conditionsReceivedDate.Clean = value; _conditionsReceivedDate = conditionsReceivedDate;
-                var correspondentStatus = _correspondentStatus; correspondentStatus.Clean = value; _correspondentStatus = correspondentStatus;
-                var deliveryExpirationDate = _deliveryExpirationDate; deliveryExpirationDate.Clean = value; _deliveryExpirationDate = deliveryExpirationDate;
-                var deliveryType = _deliveryType; deliveryType.Clean = value; _deliveryType = deliveryType;
-                var fundedDate = _fundedDate; fundedDate.Clean = value; _fundedDate = fundedDate;
-                var gracePeriodDays = _gracePeriodDays; gracePeriodDays.Clean = value; _gracePeriodDays = gracePeriodDays;
-                var gracePeriodStartDate = _gracePeriodStartDate; gracePeriodStartDate.Clean = value; _gracePeriodStartDate = gracePeriodStartDate;
-                var gracePeriodStartTrigger = _gracePeriodStartTrigger; gracePeriodStartTrigger.Clean = value; _gracePeriodStartTrigger = gracePeriodStartTrigger;
-                var id = _id; id.Clean = value; _id = id;
-                var initialSuspenseDate = _initialSuspenseDate; initialSuspenseDate.Clean = value; _initialSuspenseDate = initialSuspenseDate;
-                var lateDaysBegin = _lateDaysBegin; lateDaysBegin.Clean = value; _lateDaysBegin = lateDaysBegin;
-                var lateDaysEnd = _lateDaysEnd; lateDaysEnd.Clean = value; _lateDaysEnd = lateDaysEnd;
-                var lateDaysEndTrigger = _lateDaysEndTrigger; lateDaysEndTrigger.Clean = value; _lateDaysEndTrigger = lateDaysEndTrigger;
-                var lateFeeChargeType = _lateFeeChargeType; lateFeeChargeType.Clean = value; _lateFeeChargeType = lateFeeChargeType;
-                var lateFeeFrequency = _lateFeeFrequency; lateFeeFrequency.Clean = value; _lateFeeFrequency = lateFeeFrequency;
-                var lateFeeNotes = _lateFeeNotes; lateFeeNotes.Clean = value; _lateFeeNotes = lateFeeNotes;
-                var lateFeePercentage = _lateFeePercentage; lateFeePercentage.Clean = value; _lateFeePercentage = lateFeePercentage;
-                var lateFeeTotalPriceAdjustment = _lateFeeTotalPriceAdjustment; lateFeeTotalPriceAdjustment.Clean = value; _lateFeeTotalPriceAdjustment = lateFeeTotalPriceAdjustment;
-                var latestConditionsDate = _latestConditionsDate; latestConditionsDate.Clean = value; _latestConditionsDate = latestConditionsDate;
-                var lFS_CalculateAs = _lFS_CalculateAs; lFS_CalculateAs.Clean = value; _lFS_CalculateAs = lFS_CalculateAs;
-                var lFS_DayCleared = _lFS_DayCleared; lFS_DayCleared.Clean = value; _lFS_DayCleared = lFS_DayCleared;
-                var lFS_DayClearedOtherDate = _lFS_DayClearedOtherDate; lFS_DayClearedOtherDate.Clean = value; _lFS_DayClearedOtherDate = lFS_DayClearedOtherDate;
-                var lFS_DayClearedOtherDateValue = _lFS_DayClearedOtherDateValue; lFS_DayClearedOtherDateValue.Clean = value; _lFS_DayClearedOtherDateValue = lFS_DayClearedOtherDateValue;
-                var lFS_FeeHandledAs = _lFS_FeeHandledAs; lFS_FeeHandledAs.Clean = value; _lFS_FeeHandledAs = lFS_FeeHandledAs;
-                var lFS_GracePeriodCalendar = _lFS_GracePeriodCalendar; lFS_GracePeriodCalendar.Clean = value; _lFS_GracePeriodCalendar = lFS_GracePeriodCalendar;
-                var lFS_GracePeriodDays = _lFS_GracePeriodDays; lFS_GracePeriodDays.Clean = value; _lFS_GracePeriodDays = lFS_GracePeriodDays;
-                var lFS_GracePeriodLaterOf = _lFS_GracePeriodLaterOf; lFS_GracePeriodLaterOf.Clean = value; _lFS_GracePeriodLaterOf = lFS_GracePeriodLaterOf;
-                var lFS_GracePeriodStarts = _lFS_GracePeriodStarts; lFS_GracePeriodStarts.Clean = value; _lFS_GracePeriodStarts = lFS_GracePeriodStarts;
-                var lFS_IncludeDay = _lFS_IncludeDay; lFS_IncludeDay.Clean = value; _lFS_IncludeDay = lFS_IncludeDay;
-                var lFS_LateFeeBasedOn = _lFS_LateFeeBasedOn; lFS_LateFeeBasedOn.Clean = value; _lFS_LateFeeBasedOn = lFS_LateFeeBasedOn;
-                var lFS_MaxLateDays = _lFS_MaxLateDays; lFS_MaxLateDays.Clean = value; _lFS_MaxLateDays = lFS_MaxLateDays;
-                var lFS_OtherDate = _lFS_OtherDate; lFS_OtherDate.Clean = value; _lFS_OtherDate = lFS_OtherDate;
-                var lFS_OtherDateValue = _lFS_OtherDateValue; lFS_OtherDateValue.Clean = value; _lFS_OtherDateValue = lFS_OtherDateValue;
-                var lFS_StartOnWeekend = _lFS_StartOnWeekend; lFS_StartOnWeekend.Clean = value; _lFS_StartOnWeekend = lFS_StartOnWeekend;
-                var noteDate = _noteDate; noteDate.Clean = value; _noteDate = noteDate;
-                var originalPrincipalBalance = _originalPrincipalBalance; originalPrincipalBalance.Clean = value; _originalPrincipalBalance = originalPrincipalBalance;
-                var ratesheet = _ratesheet; ratesheet.Clean = value; _ratesheet = ratesheet;
-                var receivedDate = _receivedDate; receivedDate.Clean = value; _receivedDate = receivedDate;
-                var rejectedDate = _rejectedDate; rejectedDate.Clean = value; _rejectedDate = rejectedDate;
-                var submittedforPurchaseDate = _submittedforPurchaseDate; submittedforPurchaseDate.Clean = value; _submittedforPurchaseDate = submittedforPurchaseDate;
-                var totalLateDays = _totalLateDays; totalLateDays.Clean = value; _totalLateDays = totalLateDays;
-                var totalLateFee = _totalLateFee; totalLateFee.Clean = value; _totalLateFee = totalLateFee;
-                var unpaidPrincipalBalance = _unpaidPrincipalBalance; unpaidPrincipalBalance.Clean = value; _unpaidPrincipalBalance = unpaidPrincipalBalance;
-                var withdrawnDate = _withdrawnDate; withdrawnDate.Clean = value; _withdrawnDate = withdrawnDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalLateFeeCharge.Dirty = value;
+                _approvedToFundDate.Dirty = value;
+                _basePrice.Dirty = value;
+                _commitmentType.Dirty = value;
+                _conditionsReceivedDate.Dirty = value;
+                _correspondentStatus.Dirty = value;
+                _deliveryExpirationDate.Dirty = value;
+                _deliveryType.Dirty = value;
+                _fundedDate.Dirty = value;
+                _gracePeriodDays.Dirty = value;
+                _gracePeriodStartDate.Dirty = value;
+                _gracePeriodStartTrigger.Dirty = value;
+                _id.Dirty = value;
+                _initialSuspenseDate.Dirty = value;
+                _lateDaysBegin.Dirty = value;
+                _lateDaysEnd.Dirty = value;
+                _lateDaysEndTrigger.Dirty = value;
+                _lateFeeChargeType.Dirty = value;
+                _lateFeeFrequency.Dirty = value;
+                _lateFeeNotes.Dirty = value;
+                _lateFeePercentage.Dirty = value;
+                _lateFeeTotalPriceAdjustment.Dirty = value;
+                _latestConditionsDate.Dirty = value;
+                _lFS_CalculateAs.Dirty = value;
+                _lFS_DayCleared.Dirty = value;
+                _lFS_DayClearedOtherDate.Dirty = value;
+                _lFS_DayClearedOtherDateValue.Dirty = value;
+                _lFS_FeeHandledAs.Dirty = value;
+                _lFS_GracePeriodCalendar.Dirty = value;
+                _lFS_GracePeriodDays.Dirty = value;
+                _lFS_GracePeriodLaterOf.Dirty = value;
+                _lFS_GracePeriodStarts.Dirty = value;
+                _lFS_IncludeDay.Dirty = value;
+                _lFS_LateFeeBasedOn.Dirty = value;
+                _lFS_MaxLateDays.Dirty = value;
+                _lFS_OtherDate.Dirty = value;
+                _lFS_OtherDateValue.Dirty = value;
+                _lFS_StartOnWeekend.Dirty = value;
+                _noteDate.Dirty = value;
+                _originalPrincipalBalance.Dirty = value;
+                _ratesheet.Dirty = value;
+                _receivedDate.Dirty = value;
+                _rejectedDate.Dirty = value;
+                _submittedforPurchaseDate.Dirty = value;
+                _totalLateDays.Dirty = value;
+                _totalLateFee.Dirty = value;
+                _unpaidPrincipalBalance.Dirty = value;
+                _withdrawnDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Correspondent()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

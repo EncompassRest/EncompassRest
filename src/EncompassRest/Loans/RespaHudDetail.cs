@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RespaHudDetail : IClean
+    public sealed partial class RespaHudDetail : IDirty
     {
         private Value<string> _creditDebt;
         public string CreditDebt { get { return _creditDebt; } set { _creditDebt = value; } }
@@ -26,45 +26,40 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private Value<decimal?> _realValue;
         public decimal? RealValue { get { return _realValue; } set { _realValue = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _creditDebt.Clean
-                    && _fWBC.Clean
-                    && _hUD1LineItemFromDate.Clean
-                    && _hUD1LineItemToDate.Clean
-                    && _id.Clean
-                    && _lineItemAmount.Clean
-                    && _lineItemDescription.Clean
-                    && _lineNumber.Clean
-                    && _realValue.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _creditDebt.Dirty
+                    || _fWBC.Dirty
+                    || _hUD1LineItemFromDate.Dirty
+                    || _hUD1LineItemToDate.Dirty
+                    || _id.Dirty
+                    || _lineItemAmount.Dirty
+                    || _lineItemDescription.Dirty
+                    || _lineNumber.Dirty
+                    || _realValue.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var creditDebt = _creditDebt; creditDebt.Clean = value; _creditDebt = creditDebt;
-                var fWBC = _fWBC; fWBC.Clean = value; _fWBC = fWBC;
-                var hUD1LineItemFromDate = _hUD1LineItemFromDate; hUD1LineItemFromDate.Clean = value; _hUD1LineItemFromDate = hUD1LineItemFromDate;
-                var hUD1LineItemToDate = _hUD1LineItemToDate; hUD1LineItemToDate.Clean = value; _hUD1LineItemToDate = hUD1LineItemToDate;
-                var id = _id; id.Clean = value; _id = id;
-                var lineItemAmount = _lineItemAmount; lineItemAmount.Clean = value; _lineItemAmount = lineItemAmount;
-                var lineItemDescription = _lineItemDescription; lineItemDescription.Clean = value; _lineItemDescription = lineItemDescription;
-                var lineNumber = _lineNumber; lineNumber.Clean = value; _lineNumber = lineNumber;
-                var realValue = _realValue; realValue.Clean = value; _realValue = realValue;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _creditDebt.Dirty = value;
+                _fWBC.Dirty = value;
+                _hUD1LineItemFromDate.Dirty = value;
+                _hUD1LineItemToDate.Dirty = value;
+                _id.Dirty = value;
+                _lineItemAmount.Dirty = value;
+                _lineItemDescription.Dirty = value;
+                _lineNumber.Dirty = value;
+                _realValue.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public RespaHudDetail()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

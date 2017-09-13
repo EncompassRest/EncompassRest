@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StateDisclosure : IClean
+    public sealed partial class StateDisclosure : IDirty
     {
         private Value<bool?> _acceptedByBorrowerIndicator;
         public bool? AcceptedByBorrowerIndicator { get { return _acceptedByBorrowerIndicator; } set { _acceptedByBorrowerIndicator = value; } }
@@ -446,465 +446,460 @@ namespace EncompassRest.Loans
         public string YSPInterestRateImpactedStatus { get { return _ySPInterestRateImpactedStatus; } set { _ySPInterestRateImpactedStatus = value; } }
         private Value<string> _ySPPaidBy;
         public string YSPPaidBy { get { return _ySPPaidBy; } set { _ySPPaidBy = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _acceptedByBorrowerIndicator.Clean
-                    && _acceptedDate.Clean
-                    && _actingOtherDescription1.Clean
-                    && _actingOtherDescription2.Clean
-                    && _actingOthersIndicator.Clean
-                    && _advFeeAgmtInEfctNumDay.Clean
-                    && _advisoryCondition1.Clean
-                    && _advisoryCondition2.Clean
-                    && _advisoryCondition3.Clean
-                    && _advisoryCondition4.Clean
-                    && _amendedAcquisitionCost.Clean
-                    && _applicationDate.Clean
-                    && _appraisalContact.Clean
-                    && _appraisalDeposit.Clean
-                    && _areas.Clean
-                    && _asAttorneyIndicator.Clean
-                    && _asRealBrokerIndicator.Clean
-                    && _attorneyForTheBuyerIndicator.Clean
-                    && _attorneyForTheLenderIndicator.Clean
-                    && _attorneyForTheSellerIndicator.Clean
-                    && _aZCmplBlankSpcsDoc1BlankFldDesc1.Clean
-                    && _aZCmplBlankSpcsDoc1BlankFldDesc2.Clean
-                    && _aZCmplBlankSpcsDoc1BlankFldDesc3.Clean
-                    && _aZCmplBlankSpcsDoc1Nm.Clean
-                    && _aZCmplBlankSpcsDoc2Nm.Clean
-                    && _aZCmplBlankSpcsDoc3Nm.Clean
-                    && _basedOnOthersDescription.Clean
-                    && _basedOnOthersIndicator.Clean
-                    && _basedOnWholesaleOptionsIndicator.Clean
-                    && _borrowerElectsEstablishEscrowAmount.Clean
-                    && _borrowerElectsEstablishEscrowIndicator.Clean
-                    && _brokerageFeeAddition1.Clean
-                    && _brokerageFeeAddition2.Clean
-                    && _brokerageFeeAddition3.Clean
-                    && _brokerageFeeAmount1.Clean
-                    && _brokerageFeeAmount2.Clean
-                    && _brokerageFeeAmount3.Clean
-                    && _brokerageFeeDays.Clean
-                    && _brokerageFeePercent1.Clean
-                    && _brokerageFeePercent2.Clean
-                    && _brokerageFeePercent3.Clean
-                    && _brokerAuthorizedSigningRepName.Clean
-                    && _brokerAuthorizedSigningRepTitle.Clean
-                    && _brokerForTheSeller.Clean
-                    && _brokerLicense.Clean
-                    && _brokerName.Clean
-                    && _brokerPayAddition.Clean
-                    && _brokerPayAmount.Clean
-                    && _brokerPayIndicator.Clean
-                    && _brokerPayPercent.Clean
-                    && _cHARMBookletIndicator.Clean
-                    && _checkPayableTo.Clean
-                    && _commitmentAmount.Clean
-                    && _commitmentCondition1.Clean
-                    && _commitmentCondition2.Clean
-                    && _commitmentFee.Clean
-                    && _commitmentPercent.Clean
-                    && _compensationAddition.Clean
-                    && _compensationPercent.Clean
-                    && _creditDeposit.Clean
-                    && _creditIsUsedForReason.Clean
-                    && _creditReportContact.Clean
-                    && _daysBeforeClosing.Clean
-                    && _depositReceipt.Clean
-                    && _depositRefundableIndicator.Clean
-                    && _directContact.Clean
-                    && _directPayAmount.Clean
-                    && _directPayClosing.Clean
-                    && _directPayCommitment.Clean
-                    && _directPayIndicator.Clean
-                    && _directPayPercent.Clean
-                    && _disclosureDeliveredBy.Clean
-                    && _disclosureDeliveredByOtherMethod.Clean
-                    && _disclosureDeliveredDate.Clean
-                    && _estimatedChargeShownOnGFEIndicator.Clean
-                    && _expirationDate.Clean
-                    && _federallySubsidizedAmount.Clean
-                    && _federallySubsidizedAmountPercentage.Clean
-                    && _feeReceived1.Clean
-                    && _feeReceived2.Clean
-                    && _feeReceivedByLender.Clean
-                    && _feesReceiving.Clean
-                    && _floridaApplicationFee.Clean
-                    && _floridaOtherFee1.Clean
-                    && _floridaOtherFee2.Clean
-                    && _floridaOtherFeeTo1.Clean
-                    && _floridaOtherFeeTo2.Clean
-                    && _floridaOtherFeeTo3.Clean
-                    && _floridaOtherFeeTo4.Clean
-                    && _furtherFeesEarnedByMortgageBroker.Clean
-                    && _gFEFeeReceived1.Clean
-                    && _gFEFeeReceived2.Clean
-                    && _hUDBookletIndicator.Clean
-                    && _id.Clean
-                    && _independentContractorIndicator.Clean
-                    && _indexUsed.Clean
-                    && _informationAboutTheIndexCanBeFound.Clean
-                    && _inLicensedNo.Clean
-                    && _inLicensedType.Clean
-                    && _isEstimateIndicator.Clean
-                    && _ksUcccElectionIndicator.Clean
-                    && _kyHomeSolicationLoanIndicator.Clean
-                    && _leaseAgreementDate.Clean
-                    && _lenderDate.Clean
-                    && _lenderName.Clean
-                    && _lenderPaid.Clean
-                    && _lenderPayAmount.Clean
-                    && _lenderPayIndicator.Clean
-                    && _lenderPayMaxPoint.Clean
-                    && _lenderPayPercent.Clean
-                    && _lenderPayPoint.Clean
-                    && _lenderPayUnknownIndicator.Clean
-                    && _lenderStatus.Clean
-                    && _lessorName.Clean
-                    && _loanTermsFixedThroughDateofLoanClosingIndicator.Clean
-                    && _lockInFee.Clean
-                    && _methodDescription.Clean
-                    && _methodDetermine.Clean
-                    && _mortgageAgreementIndicator.Clean
-                    && _mtgBrokerLicense.Clean
-                    && _nameOfLicensee.Clean
-                    && _newMoneyAmount.Clean
-                    && _newYorkApplicationFee.Clean
-                    && _newYorkAppraisalFee.Clean
-                    && _newYorkCreditReportFee.Clean
-                    && _newYorkFees.Clean
-                    && _newYorkPrimaryLenders.Clean
-                    && _newYorkProcessingFee.Clean
-                    && _notRefundableAmount.Clean
-                    && _offerRetailPriceIndicator.Clean
-                    && _originalAcquisitionCost.Clean
-                    && _originationFeeChargedAmount.Clean
-                    && _originationFeeChargedIndicator.Clean
-                    && _originationFeeDecreasesRate.Clean
-                    && _originationFeeIncreasesRate.Clean
-                    && _originationFeeInterestRateImpactedStatus.Clean
-                    && _originationFeePaidBy.Clean
-                    && _paidByBorrower.Clean
-                    && _paidByLender.Clean
-                    && _paidByOther1.Clean
-                    && _paidByOther2.Clean
-                    && _paidByOtherDescription1.Clean
-                    && _paidByOtherDescription2.Clean
-                    && _previousMortgageAmountOne.Clean
-                    && _previousMortgageAmountTwo.Clean
-                    && _printCertificationOfCosts.Clean
-                    && _printInterestRateReductionRider.Clean
-                    && _printMDDeliveryIndicator.Clean
-                    && _providedBy.Clean
-                    && _questionContact.Clean
-                    && _questionContactPhone.Clean
-                    && _questionContactTollFree.Clean
-                    && _rateLockHonoredIndicator.Clean
-                    && _receivedBy.Clean
-                    && _refinancingFee.Clean
-                    && _refundableBy.Clean
-                    && _refundableIndicator.Clean
-                    && _refundableType.Clean
-                    && _refundCondition1.Clean
-                    && _refundCondition2.Clean
-                    && _refundCondition3.Clean
-                    && _refundCondition4.Clean
-                    && _refundCondition5.Clean
-                    && _refundCondition6.Clean
-                    && _regulatorAddress.Clean
-                    && _regulatorCity.Clean
-                    && _regulatorMailingAddress.Clean
-                    && _regulatorMailingCity.Clean
-                    && _regulatorMailingState.Clean
-                    && _regulatorMailingZipCode.Clean
-                    && _regulatorPhone.Clean
-                    && _regulatorState.Clean
-                    && _regulatorTollFreePhone.Clean
-                    && _regulatorWebAddress.Clean
-                    && _regulatorZipCode.Clean
-                    && _scheduleOfChargesEstimatedFinalIndicator.Clean
-                    && _scRegulatoryAgencyType.Clean
-                    && _selectDivisionFeesIndicator.Clean
-                    && _selectPrimaryLenderIndicator.Clean
-                    && _selectPrivateLenderIndicator.Clean
-                    && _servicingFeeChargedAmount.Clean
-                    && _servicingFeeChargedIndicator.Clean
-                    && _servicingFeePaidBy.Clean
-                    && _servicingFeePaidFrequence.Clean
-                    && _signedByBorrowerIndicator.Clean
-                    && _specificARMIndicator.Clean
-                    && _submitToLenderIndicator.Clean
-                    && _taxExemptAcquisitionCostCertificationAssessments.Clean
-                    && _taxExemptAcquisitionCostCertificationOther.Clean
-                    && _taxExemptAcquisitionCostCertificationOtherAmount.Clean
-                    && _taxExemptAcquisitionCostCertificationOwnersTitleInsurance.Clean
-                    && _taxExemptAcquisitionCostCertificationRealEstateCommission.Clean
-                    && _taxExemptAcquisitionCostCertificationRepairsImprovements.Clean
-                    && _taxExemptAcquisitionCostCertificationSurvey.Clean
-                    && _taxExemptAcquisitionCostCertificationTotalAdjustments.Clean
-                    && _termsChange.Clean
-                    && _texasApplicationFee.Clean
-                    && _texasAppraisalFee.Clean
-                    && _texasCreditReportFee.Clean
-                    && _texasOtherFee1.Clean
-                    && _texasOtherFee2.Clean
-                    && _texasOtherFeeContact1.Clean
-                    && _texasOtherFeeContact2.Clean
-                    && _texasProcessingFee.Clean
-                    && _thirdPartyFee.Clean
-                    && _totalFee.Clean
-                    && _transferFeeChargedAmount.Clean
-                    && _transferFeeChargedIndicator.Clean
-                    && _transferFeePaidBy.Clean
-                    && _txVeteransLandBoardIndicator.Clean
-                    && _typeOfProperty.Clean
-                    && _underwritingContact.Clean
-                    && _underwritingFee.Clean
-                    && _ySPChargedAmount.Clean
-                    && _ySPChargedIndicator.Clean
-                    && _ySPDecreasesRate.Clean
-                    && _ySPIncreasesRate.Clean
-                    && _ySPInterestRateImpactedStatus.Clean
-                    && _ySPPaidBy.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _acceptedByBorrowerIndicator.Dirty
+                    || _acceptedDate.Dirty
+                    || _actingOtherDescription1.Dirty
+                    || _actingOtherDescription2.Dirty
+                    || _actingOthersIndicator.Dirty
+                    || _advFeeAgmtInEfctNumDay.Dirty
+                    || _advisoryCondition1.Dirty
+                    || _advisoryCondition2.Dirty
+                    || _advisoryCondition3.Dirty
+                    || _advisoryCondition4.Dirty
+                    || _amendedAcquisitionCost.Dirty
+                    || _applicationDate.Dirty
+                    || _appraisalContact.Dirty
+                    || _appraisalDeposit.Dirty
+                    || _areas.Dirty
+                    || _asAttorneyIndicator.Dirty
+                    || _asRealBrokerIndicator.Dirty
+                    || _attorneyForTheBuyerIndicator.Dirty
+                    || _attorneyForTheLenderIndicator.Dirty
+                    || _attorneyForTheSellerIndicator.Dirty
+                    || _aZCmplBlankSpcsDoc1BlankFldDesc1.Dirty
+                    || _aZCmplBlankSpcsDoc1BlankFldDesc2.Dirty
+                    || _aZCmplBlankSpcsDoc1BlankFldDesc3.Dirty
+                    || _aZCmplBlankSpcsDoc1Nm.Dirty
+                    || _aZCmplBlankSpcsDoc2Nm.Dirty
+                    || _aZCmplBlankSpcsDoc3Nm.Dirty
+                    || _basedOnOthersDescription.Dirty
+                    || _basedOnOthersIndicator.Dirty
+                    || _basedOnWholesaleOptionsIndicator.Dirty
+                    || _borrowerElectsEstablishEscrowAmount.Dirty
+                    || _borrowerElectsEstablishEscrowIndicator.Dirty
+                    || _brokerageFeeAddition1.Dirty
+                    || _brokerageFeeAddition2.Dirty
+                    || _brokerageFeeAddition3.Dirty
+                    || _brokerageFeeAmount1.Dirty
+                    || _brokerageFeeAmount2.Dirty
+                    || _brokerageFeeAmount3.Dirty
+                    || _brokerageFeeDays.Dirty
+                    || _brokerageFeePercent1.Dirty
+                    || _brokerageFeePercent2.Dirty
+                    || _brokerageFeePercent3.Dirty
+                    || _brokerAuthorizedSigningRepName.Dirty
+                    || _brokerAuthorizedSigningRepTitle.Dirty
+                    || _brokerForTheSeller.Dirty
+                    || _brokerLicense.Dirty
+                    || _brokerName.Dirty
+                    || _brokerPayAddition.Dirty
+                    || _brokerPayAmount.Dirty
+                    || _brokerPayIndicator.Dirty
+                    || _brokerPayPercent.Dirty
+                    || _cHARMBookletIndicator.Dirty
+                    || _checkPayableTo.Dirty
+                    || _commitmentAmount.Dirty
+                    || _commitmentCondition1.Dirty
+                    || _commitmentCondition2.Dirty
+                    || _commitmentFee.Dirty
+                    || _commitmentPercent.Dirty
+                    || _compensationAddition.Dirty
+                    || _compensationPercent.Dirty
+                    || _creditDeposit.Dirty
+                    || _creditIsUsedForReason.Dirty
+                    || _creditReportContact.Dirty
+                    || _daysBeforeClosing.Dirty
+                    || _depositReceipt.Dirty
+                    || _depositRefundableIndicator.Dirty
+                    || _directContact.Dirty
+                    || _directPayAmount.Dirty
+                    || _directPayClosing.Dirty
+                    || _directPayCommitment.Dirty
+                    || _directPayIndicator.Dirty
+                    || _directPayPercent.Dirty
+                    || _disclosureDeliveredBy.Dirty
+                    || _disclosureDeliveredByOtherMethod.Dirty
+                    || _disclosureDeliveredDate.Dirty
+                    || _estimatedChargeShownOnGFEIndicator.Dirty
+                    || _expirationDate.Dirty
+                    || _federallySubsidizedAmount.Dirty
+                    || _federallySubsidizedAmountPercentage.Dirty
+                    || _feeReceived1.Dirty
+                    || _feeReceived2.Dirty
+                    || _feeReceivedByLender.Dirty
+                    || _feesReceiving.Dirty
+                    || _floridaApplicationFee.Dirty
+                    || _floridaOtherFee1.Dirty
+                    || _floridaOtherFee2.Dirty
+                    || _floridaOtherFeeTo1.Dirty
+                    || _floridaOtherFeeTo2.Dirty
+                    || _floridaOtherFeeTo3.Dirty
+                    || _floridaOtherFeeTo4.Dirty
+                    || _furtherFeesEarnedByMortgageBroker.Dirty
+                    || _gFEFeeReceived1.Dirty
+                    || _gFEFeeReceived2.Dirty
+                    || _hUDBookletIndicator.Dirty
+                    || _id.Dirty
+                    || _independentContractorIndicator.Dirty
+                    || _indexUsed.Dirty
+                    || _informationAboutTheIndexCanBeFound.Dirty
+                    || _inLicensedNo.Dirty
+                    || _inLicensedType.Dirty
+                    || _isEstimateIndicator.Dirty
+                    || _ksUcccElectionIndicator.Dirty
+                    || _kyHomeSolicationLoanIndicator.Dirty
+                    || _leaseAgreementDate.Dirty
+                    || _lenderDate.Dirty
+                    || _lenderName.Dirty
+                    || _lenderPaid.Dirty
+                    || _lenderPayAmount.Dirty
+                    || _lenderPayIndicator.Dirty
+                    || _lenderPayMaxPoint.Dirty
+                    || _lenderPayPercent.Dirty
+                    || _lenderPayPoint.Dirty
+                    || _lenderPayUnknownIndicator.Dirty
+                    || _lenderStatus.Dirty
+                    || _lessorName.Dirty
+                    || _loanTermsFixedThroughDateofLoanClosingIndicator.Dirty
+                    || _lockInFee.Dirty
+                    || _methodDescription.Dirty
+                    || _methodDetermine.Dirty
+                    || _mortgageAgreementIndicator.Dirty
+                    || _mtgBrokerLicense.Dirty
+                    || _nameOfLicensee.Dirty
+                    || _newMoneyAmount.Dirty
+                    || _newYorkApplicationFee.Dirty
+                    || _newYorkAppraisalFee.Dirty
+                    || _newYorkCreditReportFee.Dirty
+                    || _newYorkFees.Dirty
+                    || _newYorkPrimaryLenders.Dirty
+                    || _newYorkProcessingFee.Dirty
+                    || _notRefundableAmount.Dirty
+                    || _offerRetailPriceIndicator.Dirty
+                    || _originalAcquisitionCost.Dirty
+                    || _originationFeeChargedAmount.Dirty
+                    || _originationFeeChargedIndicator.Dirty
+                    || _originationFeeDecreasesRate.Dirty
+                    || _originationFeeIncreasesRate.Dirty
+                    || _originationFeeInterestRateImpactedStatus.Dirty
+                    || _originationFeePaidBy.Dirty
+                    || _paidByBorrower.Dirty
+                    || _paidByLender.Dirty
+                    || _paidByOther1.Dirty
+                    || _paidByOther2.Dirty
+                    || _paidByOtherDescription1.Dirty
+                    || _paidByOtherDescription2.Dirty
+                    || _previousMortgageAmountOne.Dirty
+                    || _previousMortgageAmountTwo.Dirty
+                    || _printCertificationOfCosts.Dirty
+                    || _printInterestRateReductionRider.Dirty
+                    || _printMDDeliveryIndicator.Dirty
+                    || _providedBy.Dirty
+                    || _questionContact.Dirty
+                    || _questionContactPhone.Dirty
+                    || _questionContactTollFree.Dirty
+                    || _rateLockHonoredIndicator.Dirty
+                    || _receivedBy.Dirty
+                    || _refinancingFee.Dirty
+                    || _refundableBy.Dirty
+                    || _refundableIndicator.Dirty
+                    || _refundableType.Dirty
+                    || _refundCondition1.Dirty
+                    || _refundCondition2.Dirty
+                    || _refundCondition3.Dirty
+                    || _refundCondition4.Dirty
+                    || _refundCondition5.Dirty
+                    || _refundCondition6.Dirty
+                    || _regulatorAddress.Dirty
+                    || _regulatorCity.Dirty
+                    || _regulatorMailingAddress.Dirty
+                    || _regulatorMailingCity.Dirty
+                    || _regulatorMailingState.Dirty
+                    || _regulatorMailingZipCode.Dirty
+                    || _regulatorPhone.Dirty
+                    || _regulatorState.Dirty
+                    || _regulatorTollFreePhone.Dirty
+                    || _regulatorWebAddress.Dirty
+                    || _regulatorZipCode.Dirty
+                    || _scheduleOfChargesEstimatedFinalIndicator.Dirty
+                    || _scRegulatoryAgencyType.Dirty
+                    || _selectDivisionFeesIndicator.Dirty
+                    || _selectPrimaryLenderIndicator.Dirty
+                    || _selectPrivateLenderIndicator.Dirty
+                    || _servicingFeeChargedAmount.Dirty
+                    || _servicingFeeChargedIndicator.Dirty
+                    || _servicingFeePaidBy.Dirty
+                    || _servicingFeePaidFrequence.Dirty
+                    || _signedByBorrowerIndicator.Dirty
+                    || _specificARMIndicator.Dirty
+                    || _submitToLenderIndicator.Dirty
+                    || _taxExemptAcquisitionCostCertificationAssessments.Dirty
+                    || _taxExemptAcquisitionCostCertificationOther.Dirty
+                    || _taxExemptAcquisitionCostCertificationOtherAmount.Dirty
+                    || _taxExemptAcquisitionCostCertificationOwnersTitleInsurance.Dirty
+                    || _taxExemptAcquisitionCostCertificationRealEstateCommission.Dirty
+                    || _taxExemptAcquisitionCostCertificationRepairsImprovements.Dirty
+                    || _taxExemptAcquisitionCostCertificationSurvey.Dirty
+                    || _taxExemptAcquisitionCostCertificationTotalAdjustments.Dirty
+                    || _termsChange.Dirty
+                    || _texasApplicationFee.Dirty
+                    || _texasAppraisalFee.Dirty
+                    || _texasCreditReportFee.Dirty
+                    || _texasOtherFee1.Dirty
+                    || _texasOtherFee2.Dirty
+                    || _texasOtherFeeContact1.Dirty
+                    || _texasOtherFeeContact2.Dirty
+                    || _texasProcessingFee.Dirty
+                    || _thirdPartyFee.Dirty
+                    || _totalFee.Dirty
+                    || _transferFeeChargedAmount.Dirty
+                    || _transferFeeChargedIndicator.Dirty
+                    || _transferFeePaidBy.Dirty
+                    || _txVeteransLandBoardIndicator.Dirty
+                    || _typeOfProperty.Dirty
+                    || _underwritingContact.Dirty
+                    || _underwritingFee.Dirty
+                    || _ySPChargedAmount.Dirty
+                    || _ySPChargedIndicator.Dirty
+                    || _ySPDecreasesRate.Dirty
+                    || _ySPIncreasesRate.Dirty
+                    || _ySPInterestRateImpactedStatus.Dirty
+                    || _ySPPaidBy.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var acceptedByBorrowerIndicator = _acceptedByBorrowerIndicator; acceptedByBorrowerIndicator.Clean = value; _acceptedByBorrowerIndicator = acceptedByBorrowerIndicator;
-                var acceptedDate = _acceptedDate; acceptedDate.Clean = value; _acceptedDate = acceptedDate;
-                var actingOtherDescription1 = _actingOtherDescription1; actingOtherDescription1.Clean = value; _actingOtherDescription1 = actingOtherDescription1;
-                var actingOtherDescription2 = _actingOtherDescription2; actingOtherDescription2.Clean = value; _actingOtherDescription2 = actingOtherDescription2;
-                var actingOthersIndicator = _actingOthersIndicator; actingOthersIndicator.Clean = value; _actingOthersIndicator = actingOthersIndicator;
-                var advFeeAgmtInEfctNumDay = _advFeeAgmtInEfctNumDay; advFeeAgmtInEfctNumDay.Clean = value; _advFeeAgmtInEfctNumDay = advFeeAgmtInEfctNumDay;
-                var advisoryCondition1 = _advisoryCondition1; advisoryCondition1.Clean = value; _advisoryCondition1 = advisoryCondition1;
-                var advisoryCondition2 = _advisoryCondition2; advisoryCondition2.Clean = value; _advisoryCondition2 = advisoryCondition2;
-                var advisoryCondition3 = _advisoryCondition3; advisoryCondition3.Clean = value; _advisoryCondition3 = advisoryCondition3;
-                var advisoryCondition4 = _advisoryCondition4; advisoryCondition4.Clean = value; _advisoryCondition4 = advisoryCondition4;
-                var amendedAcquisitionCost = _amendedAcquisitionCost; amendedAcquisitionCost.Clean = value; _amendedAcquisitionCost = amendedAcquisitionCost;
-                var applicationDate = _applicationDate; applicationDate.Clean = value; _applicationDate = applicationDate;
-                var appraisalContact = _appraisalContact; appraisalContact.Clean = value; _appraisalContact = appraisalContact;
-                var appraisalDeposit = _appraisalDeposit; appraisalDeposit.Clean = value; _appraisalDeposit = appraisalDeposit;
-                var areas = _areas; areas.Clean = value; _areas = areas;
-                var asAttorneyIndicator = _asAttorneyIndicator; asAttorneyIndicator.Clean = value; _asAttorneyIndicator = asAttorneyIndicator;
-                var asRealBrokerIndicator = _asRealBrokerIndicator; asRealBrokerIndicator.Clean = value; _asRealBrokerIndicator = asRealBrokerIndicator;
-                var attorneyForTheBuyerIndicator = _attorneyForTheBuyerIndicator; attorneyForTheBuyerIndicator.Clean = value; _attorneyForTheBuyerIndicator = attorneyForTheBuyerIndicator;
-                var attorneyForTheLenderIndicator = _attorneyForTheLenderIndicator; attorneyForTheLenderIndicator.Clean = value; _attorneyForTheLenderIndicator = attorneyForTheLenderIndicator;
-                var attorneyForTheSellerIndicator = _attorneyForTheSellerIndicator; attorneyForTheSellerIndicator.Clean = value; _attorneyForTheSellerIndicator = attorneyForTheSellerIndicator;
-                var aZCmplBlankSpcsDoc1BlankFldDesc1 = _aZCmplBlankSpcsDoc1BlankFldDesc1; aZCmplBlankSpcsDoc1BlankFldDesc1.Clean = value; _aZCmplBlankSpcsDoc1BlankFldDesc1 = aZCmplBlankSpcsDoc1BlankFldDesc1;
-                var aZCmplBlankSpcsDoc1BlankFldDesc2 = _aZCmplBlankSpcsDoc1BlankFldDesc2; aZCmplBlankSpcsDoc1BlankFldDesc2.Clean = value; _aZCmplBlankSpcsDoc1BlankFldDesc2 = aZCmplBlankSpcsDoc1BlankFldDesc2;
-                var aZCmplBlankSpcsDoc1BlankFldDesc3 = _aZCmplBlankSpcsDoc1BlankFldDesc3; aZCmplBlankSpcsDoc1BlankFldDesc3.Clean = value; _aZCmplBlankSpcsDoc1BlankFldDesc3 = aZCmplBlankSpcsDoc1BlankFldDesc3;
-                var aZCmplBlankSpcsDoc1Nm = _aZCmplBlankSpcsDoc1Nm; aZCmplBlankSpcsDoc1Nm.Clean = value; _aZCmplBlankSpcsDoc1Nm = aZCmplBlankSpcsDoc1Nm;
-                var aZCmplBlankSpcsDoc2Nm = _aZCmplBlankSpcsDoc2Nm; aZCmplBlankSpcsDoc2Nm.Clean = value; _aZCmplBlankSpcsDoc2Nm = aZCmplBlankSpcsDoc2Nm;
-                var aZCmplBlankSpcsDoc3Nm = _aZCmplBlankSpcsDoc3Nm; aZCmplBlankSpcsDoc3Nm.Clean = value; _aZCmplBlankSpcsDoc3Nm = aZCmplBlankSpcsDoc3Nm;
-                var basedOnOthersDescription = _basedOnOthersDescription; basedOnOthersDescription.Clean = value; _basedOnOthersDescription = basedOnOthersDescription;
-                var basedOnOthersIndicator = _basedOnOthersIndicator; basedOnOthersIndicator.Clean = value; _basedOnOthersIndicator = basedOnOthersIndicator;
-                var basedOnWholesaleOptionsIndicator = _basedOnWholesaleOptionsIndicator; basedOnWholesaleOptionsIndicator.Clean = value; _basedOnWholesaleOptionsIndicator = basedOnWholesaleOptionsIndicator;
-                var borrowerElectsEstablishEscrowAmount = _borrowerElectsEstablishEscrowAmount; borrowerElectsEstablishEscrowAmount.Clean = value; _borrowerElectsEstablishEscrowAmount = borrowerElectsEstablishEscrowAmount;
-                var borrowerElectsEstablishEscrowIndicator = _borrowerElectsEstablishEscrowIndicator; borrowerElectsEstablishEscrowIndicator.Clean = value; _borrowerElectsEstablishEscrowIndicator = borrowerElectsEstablishEscrowIndicator;
-                var brokerageFeeAddition1 = _brokerageFeeAddition1; brokerageFeeAddition1.Clean = value; _brokerageFeeAddition1 = brokerageFeeAddition1;
-                var brokerageFeeAddition2 = _brokerageFeeAddition2; brokerageFeeAddition2.Clean = value; _brokerageFeeAddition2 = brokerageFeeAddition2;
-                var brokerageFeeAddition3 = _brokerageFeeAddition3; brokerageFeeAddition3.Clean = value; _brokerageFeeAddition3 = brokerageFeeAddition3;
-                var brokerageFeeAmount1 = _brokerageFeeAmount1; brokerageFeeAmount1.Clean = value; _brokerageFeeAmount1 = brokerageFeeAmount1;
-                var brokerageFeeAmount2 = _brokerageFeeAmount2; brokerageFeeAmount2.Clean = value; _brokerageFeeAmount2 = brokerageFeeAmount2;
-                var brokerageFeeAmount3 = _brokerageFeeAmount3; brokerageFeeAmount3.Clean = value; _brokerageFeeAmount3 = brokerageFeeAmount3;
-                var brokerageFeeDays = _brokerageFeeDays; brokerageFeeDays.Clean = value; _brokerageFeeDays = brokerageFeeDays;
-                var brokerageFeePercent1 = _brokerageFeePercent1; brokerageFeePercent1.Clean = value; _brokerageFeePercent1 = brokerageFeePercent1;
-                var brokerageFeePercent2 = _brokerageFeePercent2; brokerageFeePercent2.Clean = value; _brokerageFeePercent2 = brokerageFeePercent2;
-                var brokerageFeePercent3 = _brokerageFeePercent3; brokerageFeePercent3.Clean = value; _brokerageFeePercent3 = brokerageFeePercent3;
-                var brokerAuthorizedSigningRepName = _brokerAuthorizedSigningRepName; brokerAuthorizedSigningRepName.Clean = value; _brokerAuthorizedSigningRepName = brokerAuthorizedSigningRepName;
-                var brokerAuthorizedSigningRepTitle = _brokerAuthorizedSigningRepTitle; brokerAuthorizedSigningRepTitle.Clean = value; _brokerAuthorizedSigningRepTitle = brokerAuthorizedSigningRepTitle;
-                var brokerForTheSeller = _brokerForTheSeller; brokerForTheSeller.Clean = value; _brokerForTheSeller = brokerForTheSeller;
-                var brokerLicense = _brokerLicense; brokerLicense.Clean = value; _brokerLicense = brokerLicense;
-                var brokerName = _brokerName; brokerName.Clean = value; _brokerName = brokerName;
-                var brokerPayAddition = _brokerPayAddition; brokerPayAddition.Clean = value; _brokerPayAddition = brokerPayAddition;
-                var brokerPayAmount = _brokerPayAmount; brokerPayAmount.Clean = value; _brokerPayAmount = brokerPayAmount;
-                var brokerPayIndicator = _brokerPayIndicator; brokerPayIndicator.Clean = value; _brokerPayIndicator = brokerPayIndicator;
-                var brokerPayPercent = _brokerPayPercent; brokerPayPercent.Clean = value; _brokerPayPercent = brokerPayPercent;
-                var cHARMBookletIndicator = _cHARMBookletIndicator; cHARMBookletIndicator.Clean = value; _cHARMBookletIndicator = cHARMBookletIndicator;
-                var checkPayableTo = _checkPayableTo; checkPayableTo.Clean = value; _checkPayableTo = checkPayableTo;
-                var commitmentAmount = _commitmentAmount; commitmentAmount.Clean = value; _commitmentAmount = commitmentAmount;
-                var commitmentCondition1 = _commitmentCondition1; commitmentCondition1.Clean = value; _commitmentCondition1 = commitmentCondition1;
-                var commitmentCondition2 = _commitmentCondition2; commitmentCondition2.Clean = value; _commitmentCondition2 = commitmentCondition2;
-                var commitmentFee = _commitmentFee; commitmentFee.Clean = value; _commitmentFee = commitmentFee;
-                var commitmentPercent = _commitmentPercent; commitmentPercent.Clean = value; _commitmentPercent = commitmentPercent;
-                var compensationAddition = _compensationAddition; compensationAddition.Clean = value; _compensationAddition = compensationAddition;
-                var compensationPercent = _compensationPercent; compensationPercent.Clean = value; _compensationPercent = compensationPercent;
-                var creditDeposit = _creditDeposit; creditDeposit.Clean = value; _creditDeposit = creditDeposit;
-                var creditIsUsedForReason = _creditIsUsedForReason; creditIsUsedForReason.Clean = value; _creditIsUsedForReason = creditIsUsedForReason;
-                var creditReportContact = _creditReportContact; creditReportContact.Clean = value; _creditReportContact = creditReportContact;
-                var daysBeforeClosing = _daysBeforeClosing; daysBeforeClosing.Clean = value; _daysBeforeClosing = daysBeforeClosing;
-                var depositReceipt = _depositReceipt; depositReceipt.Clean = value; _depositReceipt = depositReceipt;
-                var depositRefundableIndicator = _depositRefundableIndicator; depositRefundableIndicator.Clean = value; _depositRefundableIndicator = depositRefundableIndicator;
-                var directContact = _directContact; directContact.Clean = value; _directContact = directContact;
-                var directPayAmount = _directPayAmount; directPayAmount.Clean = value; _directPayAmount = directPayAmount;
-                var directPayClosing = _directPayClosing; directPayClosing.Clean = value; _directPayClosing = directPayClosing;
-                var directPayCommitment = _directPayCommitment; directPayCommitment.Clean = value; _directPayCommitment = directPayCommitment;
-                var directPayIndicator = _directPayIndicator; directPayIndicator.Clean = value; _directPayIndicator = directPayIndicator;
-                var directPayPercent = _directPayPercent; directPayPercent.Clean = value; _directPayPercent = directPayPercent;
-                var disclosureDeliveredBy = _disclosureDeliveredBy; disclosureDeliveredBy.Clean = value; _disclosureDeliveredBy = disclosureDeliveredBy;
-                var disclosureDeliveredByOtherMethod = _disclosureDeliveredByOtherMethod; disclosureDeliveredByOtherMethod.Clean = value; _disclosureDeliveredByOtherMethod = disclosureDeliveredByOtherMethod;
-                var disclosureDeliveredDate = _disclosureDeliveredDate; disclosureDeliveredDate.Clean = value; _disclosureDeliveredDate = disclosureDeliveredDate;
-                var estimatedChargeShownOnGFEIndicator = _estimatedChargeShownOnGFEIndicator; estimatedChargeShownOnGFEIndicator.Clean = value; _estimatedChargeShownOnGFEIndicator = estimatedChargeShownOnGFEIndicator;
-                var expirationDate = _expirationDate; expirationDate.Clean = value; _expirationDate = expirationDate;
-                var federallySubsidizedAmount = _federallySubsidizedAmount; federallySubsidizedAmount.Clean = value; _federallySubsidizedAmount = federallySubsidizedAmount;
-                var federallySubsidizedAmountPercentage = _federallySubsidizedAmountPercentage; federallySubsidizedAmountPercentage.Clean = value; _federallySubsidizedAmountPercentage = federallySubsidizedAmountPercentage;
-                var feeReceived1 = _feeReceived1; feeReceived1.Clean = value; _feeReceived1 = feeReceived1;
-                var feeReceived2 = _feeReceived2; feeReceived2.Clean = value; _feeReceived2 = feeReceived2;
-                var feeReceivedByLender = _feeReceivedByLender; feeReceivedByLender.Clean = value; _feeReceivedByLender = feeReceivedByLender;
-                var feesReceiving = _feesReceiving; feesReceiving.Clean = value; _feesReceiving = feesReceiving;
-                var floridaApplicationFee = _floridaApplicationFee; floridaApplicationFee.Clean = value; _floridaApplicationFee = floridaApplicationFee;
-                var floridaOtherFee1 = _floridaOtherFee1; floridaOtherFee1.Clean = value; _floridaOtherFee1 = floridaOtherFee1;
-                var floridaOtherFee2 = _floridaOtherFee2; floridaOtherFee2.Clean = value; _floridaOtherFee2 = floridaOtherFee2;
-                var floridaOtherFeeTo1 = _floridaOtherFeeTo1; floridaOtherFeeTo1.Clean = value; _floridaOtherFeeTo1 = floridaOtherFeeTo1;
-                var floridaOtherFeeTo2 = _floridaOtherFeeTo2; floridaOtherFeeTo2.Clean = value; _floridaOtherFeeTo2 = floridaOtherFeeTo2;
-                var floridaOtherFeeTo3 = _floridaOtherFeeTo3; floridaOtherFeeTo3.Clean = value; _floridaOtherFeeTo3 = floridaOtherFeeTo3;
-                var floridaOtherFeeTo4 = _floridaOtherFeeTo4; floridaOtherFeeTo4.Clean = value; _floridaOtherFeeTo4 = floridaOtherFeeTo4;
-                var furtherFeesEarnedByMortgageBroker = _furtherFeesEarnedByMortgageBroker; furtherFeesEarnedByMortgageBroker.Clean = value; _furtherFeesEarnedByMortgageBroker = furtherFeesEarnedByMortgageBroker;
-                var gFEFeeReceived1 = _gFEFeeReceived1; gFEFeeReceived1.Clean = value; _gFEFeeReceived1 = gFEFeeReceived1;
-                var gFEFeeReceived2 = _gFEFeeReceived2; gFEFeeReceived2.Clean = value; _gFEFeeReceived2 = gFEFeeReceived2;
-                var hUDBookletIndicator = _hUDBookletIndicator; hUDBookletIndicator.Clean = value; _hUDBookletIndicator = hUDBookletIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var independentContractorIndicator = _independentContractorIndicator; independentContractorIndicator.Clean = value; _independentContractorIndicator = independentContractorIndicator;
-                var indexUsed = _indexUsed; indexUsed.Clean = value; _indexUsed = indexUsed;
-                var informationAboutTheIndexCanBeFound = _informationAboutTheIndexCanBeFound; informationAboutTheIndexCanBeFound.Clean = value; _informationAboutTheIndexCanBeFound = informationAboutTheIndexCanBeFound;
-                var inLicensedNo = _inLicensedNo; inLicensedNo.Clean = value; _inLicensedNo = inLicensedNo;
-                var inLicensedType = _inLicensedType; inLicensedType.Clean = value; _inLicensedType = inLicensedType;
-                var isEstimateIndicator = _isEstimateIndicator; isEstimateIndicator.Clean = value; _isEstimateIndicator = isEstimateIndicator;
-                var ksUcccElectionIndicator = _ksUcccElectionIndicator; ksUcccElectionIndicator.Clean = value; _ksUcccElectionIndicator = ksUcccElectionIndicator;
-                var kyHomeSolicationLoanIndicator = _kyHomeSolicationLoanIndicator; kyHomeSolicationLoanIndicator.Clean = value; _kyHomeSolicationLoanIndicator = kyHomeSolicationLoanIndicator;
-                var leaseAgreementDate = _leaseAgreementDate; leaseAgreementDate.Clean = value; _leaseAgreementDate = leaseAgreementDate;
-                var lenderDate = _lenderDate; lenderDate.Clean = value; _lenderDate = lenderDate;
-                var lenderName = _lenderName; lenderName.Clean = value; _lenderName = lenderName;
-                var lenderPaid = _lenderPaid; lenderPaid.Clean = value; _lenderPaid = lenderPaid;
-                var lenderPayAmount = _lenderPayAmount; lenderPayAmount.Clean = value; _lenderPayAmount = lenderPayAmount;
-                var lenderPayIndicator = _lenderPayIndicator; lenderPayIndicator.Clean = value; _lenderPayIndicator = lenderPayIndicator;
-                var lenderPayMaxPoint = _lenderPayMaxPoint; lenderPayMaxPoint.Clean = value; _lenderPayMaxPoint = lenderPayMaxPoint;
-                var lenderPayPercent = _lenderPayPercent; lenderPayPercent.Clean = value; _lenderPayPercent = lenderPayPercent;
-                var lenderPayPoint = _lenderPayPoint; lenderPayPoint.Clean = value; _lenderPayPoint = lenderPayPoint;
-                var lenderPayUnknownIndicator = _lenderPayUnknownIndicator; lenderPayUnknownIndicator.Clean = value; _lenderPayUnknownIndicator = lenderPayUnknownIndicator;
-                var lenderStatus = _lenderStatus; lenderStatus.Clean = value; _lenderStatus = lenderStatus;
-                var lessorName = _lessorName; lessorName.Clean = value; _lessorName = lessorName;
-                var loanTermsFixedThroughDateofLoanClosingIndicator = _loanTermsFixedThroughDateofLoanClosingIndicator; loanTermsFixedThroughDateofLoanClosingIndicator.Clean = value; _loanTermsFixedThroughDateofLoanClosingIndicator = loanTermsFixedThroughDateofLoanClosingIndicator;
-                var lockInFee = _lockInFee; lockInFee.Clean = value; _lockInFee = lockInFee;
-                var methodDescription = _methodDescription; methodDescription.Clean = value; _methodDescription = methodDescription;
-                var methodDetermine = _methodDetermine; methodDetermine.Clean = value; _methodDetermine = methodDetermine;
-                var mortgageAgreementIndicator = _mortgageAgreementIndicator; mortgageAgreementIndicator.Clean = value; _mortgageAgreementIndicator = mortgageAgreementIndicator;
-                var mtgBrokerLicense = _mtgBrokerLicense; mtgBrokerLicense.Clean = value; _mtgBrokerLicense = mtgBrokerLicense;
-                var nameOfLicensee = _nameOfLicensee; nameOfLicensee.Clean = value; _nameOfLicensee = nameOfLicensee;
-                var newMoneyAmount = _newMoneyAmount; newMoneyAmount.Clean = value; _newMoneyAmount = newMoneyAmount;
-                var newYorkApplicationFee = _newYorkApplicationFee; newYorkApplicationFee.Clean = value; _newYorkApplicationFee = newYorkApplicationFee;
-                var newYorkAppraisalFee = _newYorkAppraisalFee; newYorkAppraisalFee.Clean = value; _newYorkAppraisalFee = newYorkAppraisalFee;
-                var newYorkCreditReportFee = _newYorkCreditReportFee; newYorkCreditReportFee.Clean = value; _newYorkCreditReportFee = newYorkCreditReportFee;
-                var newYorkFees = _newYorkFees; newYorkFees.Clean = value; _newYorkFees = newYorkFees;
-                var newYorkPrimaryLenders = _newYorkPrimaryLenders; newYorkPrimaryLenders.Clean = value; _newYorkPrimaryLenders = newYorkPrimaryLenders;
-                var newYorkProcessingFee = _newYorkProcessingFee; newYorkProcessingFee.Clean = value; _newYorkProcessingFee = newYorkProcessingFee;
-                var notRefundableAmount = _notRefundableAmount; notRefundableAmount.Clean = value; _notRefundableAmount = notRefundableAmount;
-                var offerRetailPriceIndicator = _offerRetailPriceIndicator; offerRetailPriceIndicator.Clean = value; _offerRetailPriceIndicator = offerRetailPriceIndicator;
-                var originalAcquisitionCost = _originalAcquisitionCost; originalAcquisitionCost.Clean = value; _originalAcquisitionCost = originalAcquisitionCost;
-                var originationFeeChargedAmount = _originationFeeChargedAmount; originationFeeChargedAmount.Clean = value; _originationFeeChargedAmount = originationFeeChargedAmount;
-                var originationFeeChargedIndicator = _originationFeeChargedIndicator; originationFeeChargedIndicator.Clean = value; _originationFeeChargedIndicator = originationFeeChargedIndicator;
-                var originationFeeDecreasesRate = _originationFeeDecreasesRate; originationFeeDecreasesRate.Clean = value; _originationFeeDecreasesRate = originationFeeDecreasesRate;
-                var originationFeeIncreasesRate = _originationFeeIncreasesRate; originationFeeIncreasesRate.Clean = value; _originationFeeIncreasesRate = originationFeeIncreasesRate;
-                var originationFeeInterestRateImpactedStatus = _originationFeeInterestRateImpactedStatus; originationFeeInterestRateImpactedStatus.Clean = value; _originationFeeInterestRateImpactedStatus = originationFeeInterestRateImpactedStatus;
-                var originationFeePaidBy = _originationFeePaidBy; originationFeePaidBy.Clean = value; _originationFeePaidBy = originationFeePaidBy;
-                var paidByBorrower = _paidByBorrower; paidByBorrower.Clean = value; _paidByBorrower = paidByBorrower;
-                var paidByLender = _paidByLender; paidByLender.Clean = value; _paidByLender = paidByLender;
-                var paidByOther1 = _paidByOther1; paidByOther1.Clean = value; _paidByOther1 = paidByOther1;
-                var paidByOther2 = _paidByOther2; paidByOther2.Clean = value; _paidByOther2 = paidByOther2;
-                var paidByOtherDescription1 = _paidByOtherDescription1; paidByOtherDescription1.Clean = value; _paidByOtherDescription1 = paidByOtherDescription1;
-                var paidByOtherDescription2 = _paidByOtherDescription2; paidByOtherDescription2.Clean = value; _paidByOtherDescription2 = paidByOtherDescription2;
-                var previousMortgageAmountOne = _previousMortgageAmountOne; previousMortgageAmountOne.Clean = value; _previousMortgageAmountOne = previousMortgageAmountOne;
-                var previousMortgageAmountTwo = _previousMortgageAmountTwo; previousMortgageAmountTwo.Clean = value; _previousMortgageAmountTwo = previousMortgageAmountTwo;
-                var printCertificationOfCosts = _printCertificationOfCosts; printCertificationOfCosts.Clean = value; _printCertificationOfCosts = printCertificationOfCosts;
-                var printInterestRateReductionRider = _printInterestRateReductionRider; printInterestRateReductionRider.Clean = value; _printInterestRateReductionRider = printInterestRateReductionRider;
-                var printMDDeliveryIndicator = _printMDDeliveryIndicator; printMDDeliveryIndicator.Clean = value; _printMDDeliveryIndicator = printMDDeliveryIndicator;
-                var providedBy = _providedBy; providedBy.Clean = value; _providedBy = providedBy;
-                var questionContact = _questionContact; questionContact.Clean = value; _questionContact = questionContact;
-                var questionContactPhone = _questionContactPhone; questionContactPhone.Clean = value; _questionContactPhone = questionContactPhone;
-                var questionContactTollFree = _questionContactTollFree; questionContactTollFree.Clean = value; _questionContactTollFree = questionContactTollFree;
-                var rateLockHonoredIndicator = _rateLockHonoredIndicator; rateLockHonoredIndicator.Clean = value; _rateLockHonoredIndicator = rateLockHonoredIndicator;
-                var receivedBy = _receivedBy; receivedBy.Clean = value; _receivedBy = receivedBy;
-                var refinancingFee = _refinancingFee; refinancingFee.Clean = value; _refinancingFee = refinancingFee;
-                var refundableBy = _refundableBy; refundableBy.Clean = value; _refundableBy = refundableBy;
-                var refundableIndicator = _refundableIndicator; refundableIndicator.Clean = value; _refundableIndicator = refundableIndicator;
-                var refundableType = _refundableType; refundableType.Clean = value; _refundableType = refundableType;
-                var refundCondition1 = _refundCondition1; refundCondition1.Clean = value; _refundCondition1 = refundCondition1;
-                var refundCondition2 = _refundCondition2; refundCondition2.Clean = value; _refundCondition2 = refundCondition2;
-                var refundCondition3 = _refundCondition3; refundCondition3.Clean = value; _refundCondition3 = refundCondition3;
-                var refundCondition4 = _refundCondition4; refundCondition4.Clean = value; _refundCondition4 = refundCondition4;
-                var refundCondition5 = _refundCondition5; refundCondition5.Clean = value; _refundCondition5 = refundCondition5;
-                var refundCondition6 = _refundCondition6; refundCondition6.Clean = value; _refundCondition6 = refundCondition6;
-                var regulatorAddress = _regulatorAddress; regulatorAddress.Clean = value; _regulatorAddress = regulatorAddress;
-                var regulatorCity = _regulatorCity; regulatorCity.Clean = value; _regulatorCity = regulatorCity;
-                var regulatorMailingAddress = _regulatorMailingAddress; regulatorMailingAddress.Clean = value; _regulatorMailingAddress = regulatorMailingAddress;
-                var regulatorMailingCity = _regulatorMailingCity; regulatorMailingCity.Clean = value; _regulatorMailingCity = regulatorMailingCity;
-                var regulatorMailingState = _regulatorMailingState; regulatorMailingState.Clean = value; _regulatorMailingState = regulatorMailingState;
-                var regulatorMailingZipCode = _regulatorMailingZipCode; regulatorMailingZipCode.Clean = value; _regulatorMailingZipCode = regulatorMailingZipCode;
-                var regulatorPhone = _regulatorPhone; regulatorPhone.Clean = value; _regulatorPhone = regulatorPhone;
-                var regulatorState = _regulatorState; regulatorState.Clean = value; _regulatorState = regulatorState;
-                var regulatorTollFreePhone = _regulatorTollFreePhone; regulatorTollFreePhone.Clean = value; _regulatorTollFreePhone = regulatorTollFreePhone;
-                var regulatorWebAddress = _regulatorWebAddress; regulatorWebAddress.Clean = value; _regulatorWebAddress = regulatorWebAddress;
-                var regulatorZipCode = _regulatorZipCode; regulatorZipCode.Clean = value; _regulatorZipCode = regulatorZipCode;
-                var scheduleOfChargesEstimatedFinalIndicator = _scheduleOfChargesEstimatedFinalIndicator; scheduleOfChargesEstimatedFinalIndicator.Clean = value; _scheduleOfChargesEstimatedFinalIndicator = scheduleOfChargesEstimatedFinalIndicator;
-                var scRegulatoryAgencyType = _scRegulatoryAgencyType; scRegulatoryAgencyType.Clean = value; _scRegulatoryAgencyType = scRegulatoryAgencyType;
-                var selectDivisionFeesIndicator = _selectDivisionFeesIndicator; selectDivisionFeesIndicator.Clean = value; _selectDivisionFeesIndicator = selectDivisionFeesIndicator;
-                var selectPrimaryLenderIndicator = _selectPrimaryLenderIndicator; selectPrimaryLenderIndicator.Clean = value; _selectPrimaryLenderIndicator = selectPrimaryLenderIndicator;
-                var selectPrivateLenderIndicator = _selectPrivateLenderIndicator; selectPrivateLenderIndicator.Clean = value; _selectPrivateLenderIndicator = selectPrivateLenderIndicator;
-                var servicingFeeChargedAmount = _servicingFeeChargedAmount; servicingFeeChargedAmount.Clean = value; _servicingFeeChargedAmount = servicingFeeChargedAmount;
-                var servicingFeeChargedIndicator = _servicingFeeChargedIndicator; servicingFeeChargedIndicator.Clean = value; _servicingFeeChargedIndicator = servicingFeeChargedIndicator;
-                var servicingFeePaidBy = _servicingFeePaidBy; servicingFeePaidBy.Clean = value; _servicingFeePaidBy = servicingFeePaidBy;
-                var servicingFeePaidFrequence = _servicingFeePaidFrequence; servicingFeePaidFrequence.Clean = value; _servicingFeePaidFrequence = servicingFeePaidFrequence;
-                var signedByBorrowerIndicator = _signedByBorrowerIndicator; signedByBorrowerIndicator.Clean = value; _signedByBorrowerIndicator = signedByBorrowerIndicator;
-                var specificARMIndicator = _specificARMIndicator; specificARMIndicator.Clean = value; _specificARMIndicator = specificARMIndicator;
-                var submitToLenderIndicator = _submitToLenderIndicator; submitToLenderIndicator.Clean = value; _submitToLenderIndicator = submitToLenderIndicator;
-                var taxExemptAcquisitionCostCertificationAssessments = _taxExemptAcquisitionCostCertificationAssessments; taxExemptAcquisitionCostCertificationAssessments.Clean = value; _taxExemptAcquisitionCostCertificationAssessments = taxExemptAcquisitionCostCertificationAssessments;
-                var taxExemptAcquisitionCostCertificationOther = _taxExemptAcquisitionCostCertificationOther; taxExemptAcquisitionCostCertificationOther.Clean = value; _taxExemptAcquisitionCostCertificationOther = taxExemptAcquisitionCostCertificationOther;
-                var taxExemptAcquisitionCostCertificationOtherAmount = _taxExemptAcquisitionCostCertificationOtherAmount; taxExemptAcquisitionCostCertificationOtherAmount.Clean = value; _taxExemptAcquisitionCostCertificationOtherAmount = taxExemptAcquisitionCostCertificationOtherAmount;
-                var taxExemptAcquisitionCostCertificationOwnersTitleInsurance = _taxExemptAcquisitionCostCertificationOwnersTitleInsurance; taxExemptAcquisitionCostCertificationOwnersTitleInsurance.Clean = value; _taxExemptAcquisitionCostCertificationOwnersTitleInsurance = taxExemptAcquisitionCostCertificationOwnersTitleInsurance;
-                var taxExemptAcquisitionCostCertificationRealEstateCommission = _taxExemptAcquisitionCostCertificationRealEstateCommission; taxExemptAcquisitionCostCertificationRealEstateCommission.Clean = value; _taxExemptAcquisitionCostCertificationRealEstateCommission = taxExemptAcquisitionCostCertificationRealEstateCommission;
-                var taxExemptAcquisitionCostCertificationRepairsImprovements = _taxExemptAcquisitionCostCertificationRepairsImprovements; taxExemptAcquisitionCostCertificationRepairsImprovements.Clean = value; _taxExemptAcquisitionCostCertificationRepairsImprovements = taxExemptAcquisitionCostCertificationRepairsImprovements;
-                var taxExemptAcquisitionCostCertificationSurvey = _taxExemptAcquisitionCostCertificationSurvey; taxExemptAcquisitionCostCertificationSurvey.Clean = value; _taxExemptAcquisitionCostCertificationSurvey = taxExemptAcquisitionCostCertificationSurvey;
-                var taxExemptAcquisitionCostCertificationTotalAdjustments = _taxExemptAcquisitionCostCertificationTotalAdjustments; taxExemptAcquisitionCostCertificationTotalAdjustments.Clean = value; _taxExemptAcquisitionCostCertificationTotalAdjustments = taxExemptAcquisitionCostCertificationTotalAdjustments;
-                var termsChange = _termsChange; termsChange.Clean = value; _termsChange = termsChange;
-                var texasApplicationFee = _texasApplicationFee; texasApplicationFee.Clean = value; _texasApplicationFee = texasApplicationFee;
-                var texasAppraisalFee = _texasAppraisalFee; texasAppraisalFee.Clean = value; _texasAppraisalFee = texasAppraisalFee;
-                var texasCreditReportFee = _texasCreditReportFee; texasCreditReportFee.Clean = value; _texasCreditReportFee = texasCreditReportFee;
-                var texasOtherFee1 = _texasOtherFee1; texasOtherFee1.Clean = value; _texasOtherFee1 = texasOtherFee1;
-                var texasOtherFee2 = _texasOtherFee2; texasOtherFee2.Clean = value; _texasOtherFee2 = texasOtherFee2;
-                var texasOtherFeeContact1 = _texasOtherFeeContact1; texasOtherFeeContact1.Clean = value; _texasOtherFeeContact1 = texasOtherFeeContact1;
-                var texasOtherFeeContact2 = _texasOtherFeeContact2; texasOtherFeeContact2.Clean = value; _texasOtherFeeContact2 = texasOtherFeeContact2;
-                var texasProcessingFee = _texasProcessingFee; texasProcessingFee.Clean = value; _texasProcessingFee = texasProcessingFee;
-                var thirdPartyFee = _thirdPartyFee; thirdPartyFee.Clean = value; _thirdPartyFee = thirdPartyFee;
-                var totalFee = _totalFee; totalFee.Clean = value; _totalFee = totalFee;
-                var transferFeeChargedAmount = _transferFeeChargedAmount; transferFeeChargedAmount.Clean = value; _transferFeeChargedAmount = transferFeeChargedAmount;
-                var transferFeeChargedIndicator = _transferFeeChargedIndicator; transferFeeChargedIndicator.Clean = value; _transferFeeChargedIndicator = transferFeeChargedIndicator;
-                var transferFeePaidBy = _transferFeePaidBy; transferFeePaidBy.Clean = value; _transferFeePaidBy = transferFeePaidBy;
-                var txVeteransLandBoardIndicator = _txVeteransLandBoardIndicator; txVeteransLandBoardIndicator.Clean = value; _txVeteransLandBoardIndicator = txVeteransLandBoardIndicator;
-                var typeOfProperty = _typeOfProperty; typeOfProperty.Clean = value; _typeOfProperty = typeOfProperty;
-                var underwritingContact = _underwritingContact; underwritingContact.Clean = value; _underwritingContact = underwritingContact;
-                var underwritingFee = _underwritingFee; underwritingFee.Clean = value; _underwritingFee = underwritingFee;
-                var ySPChargedAmount = _ySPChargedAmount; ySPChargedAmount.Clean = value; _ySPChargedAmount = ySPChargedAmount;
-                var ySPChargedIndicator = _ySPChargedIndicator; ySPChargedIndicator.Clean = value; _ySPChargedIndicator = ySPChargedIndicator;
-                var ySPDecreasesRate = _ySPDecreasesRate; ySPDecreasesRate.Clean = value; _ySPDecreasesRate = ySPDecreasesRate;
-                var ySPIncreasesRate = _ySPIncreasesRate; ySPIncreasesRate.Clean = value; _ySPIncreasesRate = ySPIncreasesRate;
-                var ySPInterestRateImpactedStatus = _ySPInterestRateImpactedStatus; ySPInterestRateImpactedStatus.Clean = value; _ySPInterestRateImpactedStatus = ySPInterestRateImpactedStatus;
-                var ySPPaidBy = _ySPPaidBy; ySPPaidBy.Clean = value; _ySPPaidBy = ySPPaidBy;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _acceptedByBorrowerIndicator.Dirty = value;
+                _acceptedDate.Dirty = value;
+                _actingOtherDescription1.Dirty = value;
+                _actingOtherDescription2.Dirty = value;
+                _actingOthersIndicator.Dirty = value;
+                _advFeeAgmtInEfctNumDay.Dirty = value;
+                _advisoryCondition1.Dirty = value;
+                _advisoryCondition2.Dirty = value;
+                _advisoryCondition3.Dirty = value;
+                _advisoryCondition4.Dirty = value;
+                _amendedAcquisitionCost.Dirty = value;
+                _applicationDate.Dirty = value;
+                _appraisalContact.Dirty = value;
+                _appraisalDeposit.Dirty = value;
+                _areas.Dirty = value;
+                _asAttorneyIndicator.Dirty = value;
+                _asRealBrokerIndicator.Dirty = value;
+                _attorneyForTheBuyerIndicator.Dirty = value;
+                _attorneyForTheLenderIndicator.Dirty = value;
+                _attorneyForTheSellerIndicator.Dirty = value;
+                _aZCmplBlankSpcsDoc1BlankFldDesc1.Dirty = value;
+                _aZCmplBlankSpcsDoc1BlankFldDesc2.Dirty = value;
+                _aZCmplBlankSpcsDoc1BlankFldDesc3.Dirty = value;
+                _aZCmplBlankSpcsDoc1Nm.Dirty = value;
+                _aZCmplBlankSpcsDoc2Nm.Dirty = value;
+                _aZCmplBlankSpcsDoc3Nm.Dirty = value;
+                _basedOnOthersDescription.Dirty = value;
+                _basedOnOthersIndicator.Dirty = value;
+                _basedOnWholesaleOptionsIndicator.Dirty = value;
+                _borrowerElectsEstablishEscrowAmount.Dirty = value;
+                _borrowerElectsEstablishEscrowIndicator.Dirty = value;
+                _brokerageFeeAddition1.Dirty = value;
+                _brokerageFeeAddition2.Dirty = value;
+                _brokerageFeeAddition3.Dirty = value;
+                _brokerageFeeAmount1.Dirty = value;
+                _brokerageFeeAmount2.Dirty = value;
+                _brokerageFeeAmount3.Dirty = value;
+                _brokerageFeeDays.Dirty = value;
+                _brokerageFeePercent1.Dirty = value;
+                _brokerageFeePercent2.Dirty = value;
+                _brokerageFeePercent3.Dirty = value;
+                _brokerAuthorizedSigningRepName.Dirty = value;
+                _brokerAuthorizedSigningRepTitle.Dirty = value;
+                _brokerForTheSeller.Dirty = value;
+                _brokerLicense.Dirty = value;
+                _brokerName.Dirty = value;
+                _brokerPayAddition.Dirty = value;
+                _brokerPayAmount.Dirty = value;
+                _brokerPayIndicator.Dirty = value;
+                _brokerPayPercent.Dirty = value;
+                _cHARMBookletIndicator.Dirty = value;
+                _checkPayableTo.Dirty = value;
+                _commitmentAmount.Dirty = value;
+                _commitmentCondition1.Dirty = value;
+                _commitmentCondition2.Dirty = value;
+                _commitmentFee.Dirty = value;
+                _commitmentPercent.Dirty = value;
+                _compensationAddition.Dirty = value;
+                _compensationPercent.Dirty = value;
+                _creditDeposit.Dirty = value;
+                _creditIsUsedForReason.Dirty = value;
+                _creditReportContact.Dirty = value;
+                _daysBeforeClosing.Dirty = value;
+                _depositReceipt.Dirty = value;
+                _depositRefundableIndicator.Dirty = value;
+                _directContact.Dirty = value;
+                _directPayAmount.Dirty = value;
+                _directPayClosing.Dirty = value;
+                _directPayCommitment.Dirty = value;
+                _directPayIndicator.Dirty = value;
+                _directPayPercent.Dirty = value;
+                _disclosureDeliveredBy.Dirty = value;
+                _disclosureDeliveredByOtherMethod.Dirty = value;
+                _disclosureDeliveredDate.Dirty = value;
+                _estimatedChargeShownOnGFEIndicator.Dirty = value;
+                _expirationDate.Dirty = value;
+                _federallySubsidizedAmount.Dirty = value;
+                _federallySubsidizedAmountPercentage.Dirty = value;
+                _feeReceived1.Dirty = value;
+                _feeReceived2.Dirty = value;
+                _feeReceivedByLender.Dirty = value;
+                _feesReceiving.Dirty = value;
+                _floridaApplicationFee.Dirty = value;
+                _floridaOtherFee1.Dirty = value;
+                _floridaOtherFee2.Dirty = value;
+                _floridaOtherFeeTo1.Dirty = value;
+                _floridaOtherFeeTo2.Dirty = value;
+                _floridaOtherFeeTo3.Dirty = value;
+                _floridaOtherFeeTo4.Dirty = value;
+                _furtherFeesEarnedByMortgageBroker.Dirty = value;
+                _gFEFeeReceived1.Dirty = value;
+                _gFEFeeReceived2.Dirty = value;
+                _hUDBookletIndicator.Dirty = value;
+                _id.Dirty = value;
+                _independentContractorIndicator.Dirty = value;
+                _indexUsed.Dirty = value;
+                _informationAboutTheIndexCanBeFound.Dirty = value;
+                _inLicensedNo.Dirty = value;
+                _inLicensedType.Dirty = value;
+                _isEstimateIndicator.Dirty = value;
+                _ksUcccElectionIndicator.Dirty = value;
+                _kyHomeSolicationLoanIndicator.Dirty = value;
+                _leaseAgreementDate.Dirty = value;
+                _lenderDate.Dirty = value;
+                _lenderName.Dirty = value;
+                _lenderPaid.Dirty = value;
+                _lenderPayAmount.Dirty = value;
+                _lenderPayIndicator.Dirty = value;
+                _lenderPayMaxPoint.Dirty = value;
+                _lenderPayPercent.Dirty = value;
+                _lenderPayPoint.Dirty = value;
+                _lenderPayUnknownIndicator.Dirty = value;
+                _lenderStatus.Dirty = value;
+                _lessorName.Dirty = value;
+                _loanTermsFixedThroughDateofLoanClosingIndicator.Dirty = value;
+                _lockInFee.Dirty = value;
+                _methodDescription.Dirty = value;
+                _methodDetermine.Dirty = value;
+                _mortgageAgreementIndicator.Dirty = value;
+                _mtgBrokerLicense.Dirty = value;
+                _nameOfLicensee.Dirty = value;
+                _newMoneyAmount.Dirty = value;
+                _newYorkApplicationFee.Dirty = value;
+                _newYorkAppraisalFee.Dirty = value;
+                _newYorkCreditReportFee.Dirty = value;
+                _newYorkFees.Dirty = value;
+                _newYorkPrimaryLenders.Dirty = value;
+                _newYorkProcessingFee.Dirty = value;
+                _notRefundableAmount.Dirty = value;
+                _offerRetailPriceIndicator.Dirty = value;
+                _originalAcquisitionCost.Dirty = value;
+                _originationFeeChargedAmount.Dirty = value;
+                _originationFeeChargedIndicator.Dirty = value;
+                _originationFeeDecreasesRate.Dirty = value;
+                _originationFeeIncreasesRate.Dirty = value;
+                _originationFeeInterestRateImpactedStatus.Dirty = value;
+                _originationFeePaidBy.Dirty = value;
+                _paidByBorrower.Dirty = value;
+                _paidByLender.Dirty = value;
+                _paidByOther1.Dirty = value;
+                _paidByOther2.Dirty = value;
+                _paidByOtherDescription1.Dirty = value;
+                _paidByOtherDescription2.Dirty = value;
+                _previousMortgageAmountOne.Dirty = value;
+                _previousMortgageAmountTwo.Dirty = value;
+                _printCertificationOfCosts.Dirty = value;
+                _printInterestRateReductionRider.Dirty = value;
+                _printMDDeliveryIndicator.Dirty = value;
+                _providedBy.Dirty = value;
+                _questionContact.Dirty = value;
+                _questionContactPhone.Dirty = value;
+                _questionContactTollFree.Dirty = value;
+                _rateLockHonoredIndicator.Dirty = value;
+                _receivedBy.Dirty = value;
+                _refinancingFee.Dirty = value;
+                _refundableBy.Dirty = value;
+                _refundableIndicator.Dirty = value;
+                _refundableType.Dirty = value;
+                _refundCondition1.Dirty = value;
+                _refundCondition2.Dirty = value;
+                _refundCondition3.Dirty = value;
+                _refundCondition4.Dirty = value;
+                _refundCondition5.Dirty = value;
+                _refundCondition6.Dirty = value;
+                _regulatorAddress.Dirty = value;
+                _regulatorCity.Dirty = value;
+                _regulatorMailingAddress.Dirty = value;
+                _regulatorMailingCity.Dirty = value;
+                _regulatorMailingState.Dirty = value;
+                _regulatorMailingZipCode.Dirty = value;
+                _regulatorPhone.Dirty = value;
+                _regulatorState.Dirty = value;
+                _regulatorTollFreePhone.Dirty = value;
+                _regulatorWebAddress.Dirty = value;
+                _regulatorZipCode.Dirty = value;
+                _scheduleOfChargesEstimatedFinalIndicator.Dirty = value;
+                _scRegulatoryAgencyType.Dirty = value;
+                _selectDivisionFeesIndicator.Dirty = value;
+                _selectPrimaryLenderIndicator.Dirty = value;
+                _selectPrivateLenderIndicator.Dirty = value;
+                _servicingFeeChargedAmount.Dirty = value;
+                _servicingFeeChargedIndicator.Dirty = value;
+                _servicingFeePaidBy.Dirty = value;
+                _servicingFeePaidFrequence.Dirty = value;
+                _signedByBorrowerIndicator.Dirty = value;
+                _specificARMIndicator.Dirty = value;
+                _submitToLenderIndicator.Dirty = value;
+                _taxExemptAcquisitionCostCertificationAssessments.Dirty = value;
+                _taxExemptAcquisitionCostCertificationOther.Dirty = value;
+                _taxExemptAcquisitionCostCertificationOtherAmount.Dirty = value;
+                _taxExemptAcquisitionCostCertificationOwnersTitleInsurance.Dirty = value;
+                _taxExemptAcquisitionCostCertificationRealEstateCommission.Dirty = value;
+                _taxExemptAcquisitionCostCertificationRepairsImprovements.Dirty = value;
+                _taxExemptAcquisitionCostCertificationSurvey.Dirty = value;
+                _taxExemptAcquisitionCostCertificationTotalAdjustments.Dirty = value;
+                _termsChange.Dirty = value;
+                _texasApplicationFee.Dirty = value;
+                _texasAppraisalFee.Dirty = value;
+                _texasCreditReportFee.Dirty = value;
+                _texasOtherFee1.Dirty = value;
+                _texasOtherFee2.Dirty = value;
+                _texasOtherFeeContact1.Dirty = value;
+                _texasOtherFeeContact2.Dirty = value;
+                _texasProcessingFee.Dirty = value;
+                _thirdPartyFee.Dirty = value;
+                _totalFee.Dirty = value;
+                _transferFeeChargedAmount.Dirty = value;
+                _transferFeeChargedIndicator.Dirty = value;
+                _transferFeePaidBy.Dirty = value;
+                _txVeteransLandBoardIndicator.Dirty = value;
+                _typeOfProperty.Dirty = value;
+                _underwritingContact.Dirty = value;
+                _underwritingFee.Dirty = value;
+                _ySPChargedAmount.Dirty = value;
+                _ySPChargedIndicator.Dirty = value;
+                _ySPDecreasesRate.Dirty = value;
+                _ySPIncreasesRate.Dirty = value;
+                _ySPInterestRateImpactedStatus.Dirty = value;
+                _ySPPaidBy.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public StateDisclosure()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

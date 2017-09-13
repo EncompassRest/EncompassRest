@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsItemize : IClean
+    public sealed partial class Hud1EsItemize : IDirty
     {
         private Value<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
@@ -22,41 +22,36 @@ namespace EncompassRest.Loans
         public int? Hud1EsItemizeIndex { get { return _hud1EsItemizeIndex; } set { _hud1EsItemizeIndex = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _date.Clean
-                    && _escrowPaymentBalance.Clean
-                    && _escrowPaymentDescription.Clean
-                    && _escrowPaymentFrom.Clean
-                    && _escrowPaymentTo.Clean
-                    && _hud1EsItemizeIndex.Clean
-                    && _id.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _date.Dirty
+                    || _escrowPaymentBalance.Dirty
+                    || _escrowPaymentDescription.Dirty
+                    || _escrowPaymentFrom.Dirty
+                    || _escrowPaymentTo.Dirty
+                    || _hud1EsItemizeIndex.Dirty
+                    || _id.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var date = _date; date.Clean = value; _date = date;
-                var escrowPaymentBalance = _escrowPaymentBalance; escrowPaymentBalance.Clean = value; _escrowPaymentBalance = escrowPaymentBalance;
-                var escrowPaymentDescription = _escrowPaymentDescription; escrowPaymentDescription.Clean = value; _escrowPaymentDescription = escrowPaymentDescription;
-                var escrowPaymentFrom = _escrowPaymentFrom; escrowPaymentFrom.Clean = value; _escrowPaymentFrom = escrowPaymentFrom;
-                var escrowPaymentTo = _escrowPaymentTo; escrowPaymentTo.Clean = value; _escrowPaymentTo = escrowPaymentTo;
-                var hud1EsItemizeIndex = _hud1EsItemizeIndex; hud1EsItemizeIndex.Clean = value; _hud1EsItemizeIndex = hud1EsItemizeIndex;
-                var id = _id; id.Clean = value; _id = id;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _date.Dirty = value;
+                _escrowPaymentBalance.Dirty = value;
+                _escrowPaymentDescription.Dirty = value;
+                _escrowPaymentFrom.Dirty = value;
+                _escrowPaymentTo.Dirty = value;
+                _hud1EsItemizeIndex.Dirty = value;
+                _id.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Hud1EsItemize()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DisclosureForm : IClean
+    public sealed partial class DisclosureForm : IDirty
     {
         private Value<string> _formName;
         public string FormName { get { return _formName; } set { _formName = value; } }
@@ -14,33 +14,28 @@ namespace EncompassRest.Loans
         public string FormType { get { return _formType; } set { _formType = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _formName.Clean
-                    && _formType.Clean
-                    && _id.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _formName.Dirty
+                    || _formType.Dirty
+                    || _id.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var formName = _formName; formName.Clean = value; _formName = formName;
-                var formType = _formType; formType.Clean = value; _formType = formType;
-                var id = _id; id.Clean = value; _id = id;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _formName.Dirty = value;
+                _formType.Dirty = value;
+                _id.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public DisclosureForm()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Contact : IClean
+    public sealed partial class Contact : IDirty
     {
         private Value<string> _aBA;
         public string ABA { get { return _aBA; } set { _aBA = value; } }
@@ -186,205 +186,200 @@ namespace EncompassRest.Loans
         public bool? TqlIsPublishingIndicator { get { return _tqlIsPublishingIndicator; } set { _tqlIsPublishingIndicator = value; } }
         private Value<string> _tqlName;
         public string TqlName { get { return _tqlName; } set { _tqlName = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aBA.Clean
-                    && _accountName.Clean
-                    && _address.Clean
-                    && _address2.Clean
-                    && _addToCdContactInfo.Clean
-                    && _appraisalMade.Clean
-                    && _bizLicenseAuthDate.Clean
-                    && _bizLicenseAuthName.Clean
-                    && _bizLicenseAuthStateCode.Clean
-                    && _bizLicenseAuthType.Clean
-                    && _bizLicenseNumber.Clean
-                    && _borrowerActingAsContractorIndicator.Clean
-                    && _brokerLenderType.Clean
-                    && _brokerLicenseExempt.Clean
-                    && _brokerLicenseType.Clean
-                    && _businessPhone.Clean
-                    && _categoryName.Clean
-                    && _cell.Clean
-                    && _checkConfirmedDate.Clean
-                    && _city.Clean
-                    && _clause.Clean
-                    && _comments.Clean
-                    && _companyId.Clean
-                    && _completionAffidavitPunchListTotal.Clean
-                    && _contactIndex.Clean
-                    && _contactName.Clean
-                    && _contactNMLSNo.Clean
-                    && _contactTitle.Clean
-                    && _contactType.Clean
-                    && _designeeAcceptedDate.Clean
-                    && _email.Clean
-                    && _employerLiabilityInsuranceMin.Clean
-                    && _fax.Clean
-                    && _fax2.Clean
-                    && _fhaLenderId.Clean
-                    && _generalLiabilityInsuranceMin.Clean
-                    && _id.Clean
-                    && _insuranceCertNumber.Clean
-                    && _insuranceCoverageAmount.Clean
-                    && _insuranceDeterminationDate.Clean
-                    && _insuranceDeterminationNumber.Clean
-                    && _insuranceFloodZone.Clean
-                    && _insuranceMap.Clean
-                    && _insuranceNoOfBedrooms.Clean
-                    && _insurancePremium.Clean
-                    && _insuranceProjectType.Clean
-                    && _insuranceRenewalDate.Clean
-                    && _investorGrade1.Clean
-                    && _investorGrade2.Clean
-                    && _investorGrade3.Clean
-                    && _investorLicense.Clean
-                    && _investorLicenseType.Clean
-                    && _investorName1.Clean
-                    && _investorName2.Clean
-                    && _investorName3.Clean
-                    && _investorScore1.Clean
-                    && _investorScore2.Clean
-                    && _investorScore3.Clean
-                    && _lenderType.Clean
-                    && _license.Clean
-                    && _licenseExempt.Clean
-                    && _licenseHomeState.Clean
-                    && _licenseType.Clean
-                    && _lineItemNumber.Clean
-                    && _loginId.Clean
-                    && _name.Clean
-                    && _nmlsLicense.Clean
-                    && _notNaturalPersonFlag.Clean
-                    && _organizationState.Clean
-                    && _organizationType.Clean
-                    && _personalLicenseAuthDate.Clean
-                    && _personalLicenseAuthName.Clean
-                    && _personalLicenseAuthStateCode.Clean
-                    && _personalLicenseAuthType.Clean
-                    && _personalLicenseNumber.Clean
-                    && _phone.Clean
-                    && _phone2.Clean
-                    && _postalCode.Clean
-                    && _recCity.Clean
-                    && _referenceNumber.Clean
-                    && _relationship.Clean
-                    && _settlementAgent.Clean
-                    && _state.Clean
-                    && _taxID.Clean
-                    && _tqlCommentHistory.Clean
-                    && _tQLConsentSelection.Clean
-                    && _tqlId.Clean
-                    && _tqlIsPublishingIndicator.Clean
-                    && _tqlName.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aBA.Dirty
+                    || _accountName.Dirty
+                    || _address.Dirty
+                    || _address2.Dirty
+                    || _addToCdContactInfo.Dirty
+                    || _appraisalMade.Dirty
+                    || _bizLicenseAuthDate.Dirty
+                    || _bizLicenseAuthName.Dirty
+                    || _bizLicenseAuthStateCode.Dirty
+                    || _bizLicenseAuthType.Dirty
+                    || _bizLicenseNumber.Dirty
+                    || _borrowerActingAsContractorIndicator.Dirty
+                    || _brokerLenderType.Dirty
+                    || _brokerLicenseExempt.Dirty
+                    || _brokerLicenseType.Dirty
+                    || _businessPhone.Dirty
+                    || _categoryName.Dirty
+                    || _cell.Dirty
+                    || _checkConfirmedDate.Dirty
+                    || _city.Dirty
+                    || _clause.Dirty
+                    || _comments.Dirty
+                    || _companyId.Dirty
+                    || _completionAffidavitPunchListTotal.Dirty
+                    || _contactIndex.Dirty
+                    || _contactName.Dirty
+                    || _contactNMLSNo.Dirty
+                    || _contactTitle.Dirty
+                    || _contactType.Dirty
+                    || _designeeAcceptedDate.Dirty
+                    || _email.Dirty
+                    || _employerLiabilityInsuranceMin.Dirty
+                    || _fax.Dirty
+                    || _fax2.Dirty
+                    || _fhaLenderId.Dirty
+                    || _generalLiabilityInsuranceMin.Dirty
+                    || _id.Dirty
+                    || _insuranceCertNumber.Dirty
+                    || _insuranceCoverageAmount.Dirty
+                    || _insuranceDeterminationDate.Dirty
+                    || _insuranceDeterminationNumber.Dirty
+                    || _insuranceFloodZone.Dirty
+                    || _insuranceMap.Dirty
+                    || _insuranceNoOfBedrooms.Dirty
+                    || _insurancePremium.Dirty
+                    || _insuranceProjectType.Dirty
+                    || _insuranceRenewalDate.Dirty
+                    || _investorGrade1.Dirty
+                    || _investorGrade2.Dirty
+                    || _investorGrade3.Dirty
+                    || _investorLicense.Dirty
+                    || _investorLicenseType.Dirty
+                    || _investorName1.Dirty
+                    || _investorName2.Dirty
+                    || _investorName3.Dirty
+                    || _investorScore1.Dirty
+                    || _investorScore2.Dirty
+                    || _investorScore3.Dirty
+                    || _lenderType.Dirty
+                    || _license.Dirty
+                    || _licenseExempt.Dirty
+                    || _licenseHomeState.Dirty
+                    || _licenseType.Dirty
+                    || _lineItemNumber.Dirty
+                    || _loginId.Dirty
+                    || _name.Dirty
+                    || _nmlsLicense.Dirty
+                    || _notNaturalPersonFlag.Dirty
+                    || _organizationState.Dirty
+                    || _organizationType.Dirty
+                    || _personalLicenseAuthDate.Dirty
+                    || _personalLicenseAuthName.Dirty
+                    || _personalLicenseAuthStateCode.Dirty
+                    || _personalLicenseAuthType.Dirty
+                    || _personalLicenseNumber.Dirty
+                    || _phone.Dirty
+                    || _phone2.Dirty
+                    || _postalCode.Dirty
+                    || _recCity.Dirty
+                    || _referenceNumber.Dirty
+                    || _relationship.Dirty
+                    || _settlementAgent.Dirty
+                    || _state.Dirty
+                    || _taxID.Dirty
+                    || _tqlCommentHistory.Dirty
+                    || _tQLConsentSelection.Dirty
+                    || _tqlId.Dirty
+                    || _tqlIsPublishingIndicator.Dirty
+                    || _tqlName.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aBA = _aBA; aBA.Clean = value; _aBA = aBA;
-                var accountName = _accountName; accountName.Clean = value; _accountName = accountName;
-                var address = _address; address.Clean = value; _address = address;
-                var address2 = _address2; address2.Clean = value; _address2 = address2;
-                var addToCdContactInfo = _addToCdContactInfo; addToCdContactInfo.Clean = value; _addToCdContactInfo = addToCdContactInfo;
-                var appraisalMade = _appraisalMade; appraisalMade.Clean = value; _appraisalMade = appraisalMade;
-                var bizLicenseAuthDate = _bizLicenseAuthDate; bizLicenseAuthDate.Clean = value; _bizLicenseAuthDate = bizLicenseAuthDate;
-                var bizLicenseAuthName = _bizLicenseAuthName; bizLicenseAuthName.Clean = value; _bizLicenseAuthName = bizLicenseAuthName;
-                var bizLicenseAuthStateCode = _bizLicenseAuthStateCode; bizLicenseAuthStateCode.Clean = value; _bizLicenseAuthStateCode = bizLicenseAuthStateCode;
-                var bizLicenseAuthType = _bizLicenseAuthType; bizLicenseAuthType.Clean = value; _bizLicenseAuthType = bizLicenseAuthType;
-                var bizLicenseNumber = _bizLicenseNumber; bizLicenseNumber.Clean = value; _bizLicenseNumber = bizLicenseNumber;
-                var borrowerActingAsContractorIndicator = _borrowerActingAsContractorIndicator; borrowerActingAsContractorIndicator.Clean = value; _borrowerActingAsContractorIndicator = borrowerActingAsContractorIndicator;
-                var brokerLenderType = _brokerLenderType; brokerLenderType.Clean = value; _brokerLenderType = brokerLenderType;
-                var brokerLicenseExempt = _brokerLicenseExempt; brokerLicenseExempt.Clean = value; _brokerLicenseExempt = brokerLicenseExempt;
-                var brokerLicenseType = _brokerLicenseType; brokerLicenseType.Clean = value; _brokerLicenseType = brokerLicenseType;
-                var businessPhone = _businessPhone; businessPhone.Clean = value; _businessPhone = businessPhone;
-                var categoryName = _categoryName; categoryName.Clean = value; _categoryName = categoryName;
-                var cell = _cell; cell.Clean = value; _cell = cell;
-                var checkConfirmedDate = _checkConfirmedDate; checkConfirmedDate.Clean = value; _checkConfirmedDate = checkConfirmedDate;
-                var city = _city; city.Clean = value; _city = city;
-                var clause = _clause; clause.Clean = value; _clause = clause;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var companyId = _companyId; companyId.Clean = value; _companyId = companyId;
-                var completionAffidavitPunchListTotal = _completionAffidavitPunchListTotal; completionAffidavitPunchListTotal.Clean = value; _completionAffidavitPunchListTotal = completionAffidavitPunchListTotal;
-                var contactIndex = _contactIndex; contactIndex.Clean = value; _contactIndex = contactIndex;
-                var contactName = _contactName; contactName.Clean = value; _contactName = contactName;
-                var contactNMLSNo = _contactNMLSNo; contactNMLSNo.Clean = value; _contactNMLSNo = contactNMLSNo;
-                var contactTitle = _contactTitle; contactTitle.Clean = value; _contactTitle = contactTitle;
-                var contactType = _contactType; contactType.Clean = value; _contactType = contactType;
-                var designeeAcceptedDate = _designeeAcceptedDate; designeeAcceptedDate.Clean = value; _designeeAcceptedDate = designeeAcceptedDate;
-                var email = _email; email.Clean = value; _email = email;
-                var employerLiabilityInsuranceMin = _employerLiabilityInsuranceMin; employerLiabilityInsuranceMin.Clean = value; _employerLiabilityInsuranceMin = employerLiabilityInsuranceMin;
-                var fax = _fax; fax.Clean = value; _fax = fax;
-                var fax2 = _fax2; fax2.Clean = value; _fax2 = fax2;
-                var fhaLenderId = _fhaLenderId; fhaLenderId.Clean = value; _fhaLenderId = fhaLenderId;
-                var generalLiabilityInsuranceMin = _generalLiabilityInsuranceMin; generalLiabilityInsuranceMin.Clean = value; _generalLiabilityInsuranceMin = generalLiabilityInsuranceMin;
-                var id = _id; id.Clean = value; _id = id;
-                var insuranceCertNumber = _insuranceCertNumber; insuranceCertNumber.Clean = value; _insuranceCertNumber = insuranceCertNumber;
-                var insuranceCoverageAmount = _insuranceCoverageAmount; insuranceCoverageAmount.Clean = value; _insuranceCoverageAmount = insuranceCoverageAmount;
-                var insuranceDeterminationDate = _insuranceDeterminationDate; insuranceDeterminationDate.Clean = value; _insuranceDeterminationDate = insuranceDeterminationDate;
-                var insuranceDeterminationNumber = _insuranceDeterminationNumber; insuranceDeterminationNumber.Clean = value; _insuranceDeterminationNumber = insuranceDeterminationNumber;
-                var insuranceFloodZone = _insuranceFloodZone; insuranceFloodZone.Clean = value; _insuranceFloodZone = insuranceFloodZone;
-                var insuranceMap = _insuranceMap; insuranceMap.Clean = value; _insuranceMap = insuranceMap;
-                var insuranceNoOfBedrooms = _insuranceNoOfBedrooms; insuranceNoOfBedrooms.Clean = value; _insuranceNoOfBedrooms = insuranceNoOfBedrooms;
-                var insurancePremium = _insurancePremium; insurancePremium.Clean = value; _insurancePremium = insurancePremium;
-                var insuranceProjectType = _insuranceProjectType; insuranceProjectType.Clean = value; _insuranceProjectType = insuranceProjectType;
-                var insuranceRenewalDate = _insuranceRenewalDate; insuranceRenewalDate.Clean = value; _insuranceRenewalDate = insuranceRenewalDate;
-                var investorGrade1 = _investorGrade1; investorGrade1.Clean = value; _investorGrade1 = investorGrade1;
-                var investorGrade2 = _investorGrade2; investorGrade2.Clean = value; _investorGrade2 = investorGrade2;
-                var investorGrade3 = _investorGrade3; investorGrade3.Clean = value; _investorGrade3 = investorGrade3;
-                var investorLicense = _investorLicense; investorLicense.Clean = value; _investorLicense = investorLicense;
-                var investorLicenseType = _investorLicenseType; investorLicenseType.Clean = value; _investorLicenseType = investorLicenseType;
-                var investorName1 = _investorName1; investorName1.Clean = value; _investorName1 = investorName1;
-                var investorName2 = _investorName2; investorName2.Clean = value; _investorName2 = investorName2;
-                var investorName3 = _investorName3; investorName3.Clean = value; _investorName3 = investorName3;
-                var investorScore1 = _investorScore1; investorScore1.Clean = value; _investorScore1 = investorScore1;
-                var investorScore2 = _investorScore2; investorScore2.Clean = value; _investorScore2 = investorScore2;
-                var investorScore3 = _investorScore3; investorScore3.Clean = value; _investorScore3 = investorScore3;
-                var lenderType = _lenderType; lenderType.Clean = value; _lenderType = lenderType;
-                var license = _license; license.Clean = value; _license = license;
-                var licenseExempt = _licenseExempt; licenseExempt.Clean = value; _licenseExempt = licenseExempt;
-                var licenseHomeState = _licenseHomeState; licenseHomeState.Clean = value; _licenseHomeState = licenseHomeState;
-                var licenseType = _licenseType; licenseType.Clean = value; _licenseType = licenseType;
-                var lineItemNumber = _lineItemNumber; lineItemNumber.Clean = value; _lineItemNumber = lineItemNumber;
-                var loginId = _loginId; loginId.Clean = value; _loginId = loginId;
-                var name = _name; name.Clean = value; _name = name;
-                var nmlsLicense = _nmlsLicense; nmlsLicense.Clean = value; _nmlsLicense = nmlsLicense;
-                var notNaturalPersonFlag = _notNaturalPersonFlag; notNaturalPersonFlag.Clean = value; _notNaturalPersonFlag = notNaturalPersonFlag;
-                var organizationState = _organizationState; organizationState.Clean = value; _organizationState = organizationState;
-                var organizationType = _organizationType; organizationType.Clean = value; _organizationType = organizationType;
-                var personalLicenseAuthDate = _personalLicenseAuthDate; personalLicenseAuthDate.Clean = value; _personalLicenseAuthDate = personalLicenseAuthDate;
-                var personalLicenseAuthName = _personalLicenseAuthName; personalLicenseAuthName.Clean = value; _personalLicenseAuthName = personalLicenseAuthName;
-                var personalLicenseAuthStateCode = _personalLicenseAuthStateCode; personalLicenseAuthStateCode.Clean = value; _personalLicenseAuthStateCode = personalLicenseAuthStateCode;
-                var personalLicenseAuthType = _personalLicenseAuthType; personalLicenseAuthType.Clean = value; _personalLicenseAuthType = personalLicenseAuthType;
-                var personalLicenseNumber = _personalLicenseNumber; personalLicenseNumber.Clean = value; _personalLicenseNumber = personalLicenseNumber;
-                var phone = _phone; phone.Clean = value; _phone = phone;
-                var phone2 = _phone2; phone2.Clean = value; _phone2 = phone2;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var recCity = _recCity; recCity.Clean = value; _recCity = recCity;
-                var referenceNumber = _referenceNumber; referenceNumber.Clean = value; _referenceNumber = referenceNumber;
-                var relationship = _relationship; relationship.Clean = value; _relationship = relationship;
-                var settlementAgent = _settlementAgent; settlementAgent.Clean = value; _settlementAgent = settlementAgent;
-                var state = _state; state.Clean = value; _state = state;
-                var taxID = _taxID; taxID.Clean = value; _taxID = taxID;
-                var tqlCommentHistory = _tqlCommentHistory; tqlCommentHistory.Clean = value; _tqlCommentHistory = tqlCommentHistory;
-                var tQLConsentSelection = _tQLConsentSelection; tQLConsentSelection.Clean = value; _tQLConsentSelection = tQLConsentSelection;
-                var tqlId = _tqlId; tqlId.Clean = value; _tqlId = tqlId;
-                var tqlIsPublishingIndicator = _tqlIsPublishingIndicator; tqlIsPublishingIndicator.Clean = value; _tqlIsPublishingIndicator = tqlIsPublishingIndicator;
-                var tqlName = _tqlName; tqlName.Clean = value; _tqlName = tqlName;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aBA.Dirty = value;
+                _accountName.Dirty = value;
+                _address.Dirty = value;
+                _address2.Dirty = value;
+                _addToCdContactInfo.Dirty = value;
+                _appraisalMade.Dirty = value;
+                _bizLicenseAuthDate.Dirty = value;
+                _bizLicenseAuthName.Dirty = value;
+                _bizLicenseAuthStateCode.Dirty = value;
+                _bizLicenseAuthType.Dirty = value;
+                _bizLicenseNumber.Dirty = value;
+                _borrowerActingAsContractorIndicator.Dirty = value;
+                _brokerLenderType.Dirty = value;
+                _brokerLicenseExempt.Dirty = value;
+                _brokerLicenseType.Dirty = value;
+                _businessPhone.Dirty = value;
+                _categoryName.Dirty = value;
+                _cell.Dirty = value;
+                _checkConfirmedDate.Dirty = value;
+                _city.Dirty = value;
+                _clause.Dirty = value;
+                _comments.Dirty = value;
+                _companyId.Dirty = value;
+                _completionAffidavitPunchListTotal.Dirty = value;
+                _contactIndex.Dirty = value;
+                _contactName.Dirty = value;
+                _contactNMLSNo.Dirty = value;
+                _contactTitle.Dirty = value;
+                _contactType.Dirty = value;
+                _designeeAcceptedDate.Dirty = value;
+                _email.Dirty = value;
+                _employerLiabilityInsuranceMin.Dirty = value;
+                _fax.Dirty = value;
+                _fax2.Dirty = value;
+                _fhaLenderId.Dirty = value;
+                _generalLiabilityInsuranceMin.Dirty = value;
+                _id.Dirty = value;
+                _insuranceCertNumber.Dirty = value;
+                _insuranceCoverageAmount.Dirty = value;
+                _insuranceDeterminationDate.Dirty = value;
+                _insuranceDeterminationNumber.Dirty = value;
+                _insuranceFloodZone.Dirty = value;
+                _insuranceMap.Dirty = value;
+                _insuranceNoOfBedrooms.Dirty = value;
+                _insurancePremium.Dirty = value;
+                _insuranceProjectType.Dirty = value;
+                _insuranceRenewalDate.Dirty = value;
+                _investorGrade1.Dirty = value;
+                _investorGrade2.Dirty = value;
+                _investorGrade3.Dirty = value;
+                _investorLicense.Dirty = value;
+                _investorLicenseType.Dirty = value;
+                _investorName1.Dirty = value;
+                _investorName2.Dirty = value;
+                _investorName3.Dirty = value;
+                _investorScore1.Dirty = value;
+                _investorScore2.Dirty = value;
+                _investorScore3.Dirty = value;
+                _lenderType.Dirty = value;
+                _license.Dirty = value;
+                _licenseExempt.Dirty = value;
+                _licenseHomeState.Dirty = value;
+                _licenseType.Dirty = value;
+                _lineItemNumber.Dirty = value;
+                _loginId.Dirty = value;
+                _name.Dirty = value;
+                _nmlsLicense.Dirty = value;
+                _notNaturalPersonFlag.Dirty = value;
+                _organizationState.Dirty = value;
+                _organizationType.Dirty = value;
+                _personalLicenseAuthDate.Dirty = value;
+                _personalLicenseAuthName.Dirty = value;
+                _personalLicenseAuthStateCode.Dirty = value;
+                _personalLicenseAuthType.Dirty = value;
+                _personalLicenseNumber.Dirty = value;
+                _phone.Dirty = value;
+                _phone2.Dirty = value;
+                _postalCode.Dirty = value;
+                _recCity.Dirty = value;
+                _referenceNumber.Dirty = value;
+                _relationship.Dirty = value;
+                _settlementAgent.Dirty = value;
+                _state.Dirty = value;
+                _taxID.Dirty = value;
+                _tqlCommentHistory.Dirty = value;
+                _tQLConsentSelection.Dirty = value;
+                _tqlId.Dirty = value;
+                _tqlIsPublishingIndicator.Dirty = value;
+                _tqlName.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Contact()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

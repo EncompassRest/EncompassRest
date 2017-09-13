@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UnderwriterSummary : IClean
+    public sealed partial class UnderwriterSummary : IDirty
     {
         private Value<string> _appraisal;
         public string Appraisal { get { return _appraisal; } set { _appraisal = value; } }
@@ -116,135 +116,130 @@ namespace EncompassRest.Loans
         public DateTime? SuspendedDate { get { return _suspendedDate; } set { _suspendedDate = value; } }
         private Value<string> _suspendedReasons;
         public string SuspendedReasons { get { return _suspendedReasons; } set { _suspendedReasons = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _appraisal.Clean
-                    && _appraisalCompletedDate.Clean
-                    && _appraisalExpiredDate.Clean
-                    && _appraisalOrderedDate.Clean
-                    && _appraisalType.Clean
-                    && _approvalExpiredDate.Clean
-                    && _approvedBy.Clean
-                    && _approvedDate.Clean
-                    && _ausNumber.Clean
-                    && _ausRunDate.Clean
-                    && _ausSource.Clean
-                    && _benefitRequiredIndicator.Clean
-                    && _clearToCloseDate.Clean
-                    && _concerns.Clean
-                    && _conditions.Clean
-                    && _credit.Clean
-                    && _creditApprovalDate.Clean
-                    && _deniedBy.Clean
-                    && _deniedDate.Clean
-                    && _differentApprovalExpiredDate.Clean
-                    && _differentApprovedBy.Clean
-                    && _differentApprovedDate.Clean
-                    && _exceptions.Clean
-                    && _exceptionSignOffBy.Clean
-                    && _exceptionSignOffDate.Clean
-                    && _id.Clean
-                    && _isAgencyManually.Clean
-                    && _isAgencyWaiver.Clean
-                    && _isAgencyWithAgreement.Clean
-                    && _maxRate.Clean
-                    && _miOrderedDate.Clean
-                    && _miReceivedDate.Clean
-                    && _modifiedLoanAmount.Clean
-                    && _modifiedLoanRate.Clean
-                    && _modifiedLoanTerm.Clean
-                    && _modifiedLtv.Clean
-                    && _modifiedMonthlyPayment.Clean
-                    && _originalAppraiser.Clean
-                    && _originalAppraisersValue.Clean
-                    && _resubmittedDate.Clean
-                    && _reviewAppraiser.Clean
-                    && _reviewCompletedDate.Clean
-                    && _reviewRequestedDate.Clean
-                    && _reviewType.Clean
-                    && _reviewValue.Clean
-                    && _sentToDate.Clean
-                    && _signOffBy.Clean
-                    && _signOffDate.Clean
-                    && _strengths.Clean
-                    && _submittedDate.Clean
-                    && _supervisoryAppraiserLicenseNumber.Clean
-                    && _suspendedBy.Clean
-                    && _suspendedDate.Clean
-                    && _suspendedReasons.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _appraisal.Dirty
+                    || _appraisalCompletedDate.Dirty
+                    || _appraisalExpiredDate.Dirty
+                    || _appraisalOrderedDate.Dirty
+                    || _appraisalType.Dirty
+                    || _approvalExpiredDate.Dirty
+                    || _approvedBy.Dirty
+                    || _approvedDate.Dirty
+                    || _ausNumber.Dirty
+                    || _ausRunDate.Dirty
+                    || _ausSource.Dirty
+                    || _benefitRequiredIndicator.Dirty
+                    || _clearToCloseDate.Dirty
+                    || _concerns.Dirty
+                    || _conditions.Dirty
+                    || _credit.Dirty
+                    || _creditApprovalDate.Dirty
+                    || _deniedBy.Dirty
+                    || _deniedDate.Dirty
+                    || _differentApprovalExpiredDate.Dirty
+                    || _differentApprovedBy.Dirty
+                    || _differentApprovedDate.Dirty
+                    || _exceptions.Dirty
+                    || _exceptionSignOffBy.Dirty
+                    || _exceptionSignOffDate.Dirty
+                    || _id.Dirty
+                    || _isAgencyManually.Dirty
+                    || _isAgencyWaiver.Dirty
+                    || _isAgencyWithAgreement.Dirty
+                    || _maxRate.Dirty
+                    || _miOrderedDate.Dirty
+                    || _miReceivedDate.Dirty
+                    || _modifiedLoanAmount.Dirty
+                    || _modifiedLoanRate.Dirty
+                    || _modifiedLoanTerm.Dirty
+                    || _modifiedLtv.Dirty
+                    || _modifiedMonthlyPayment.Dirty
+                    || _originalAppraiser.Dirty
+                    || _originalAppraisersValue.Dirty
+                    || _resubmittedDate.Dirty
+                    || _reviewAppraiser.Dirty
+                    || _reviewCompletedDate.Dirty
+                    || _reviewRequestedDate.Dirty
+                    || _reviewType.Dirty
+                    || _reviewValue.Dirty
+                    || _sentToDate.Dirty
+                    || _signOffBy.Dirty
+                    || _signOffDate.Dirty
+                    || _strengths.Dirty
+                    || _submittedDate.Dirty
+                    || _supervisoryAppraiserLicenseNumber.Dirty
+                    || _suspendedBy.Dirty
+                    || _suspendedDate.Dirty
+                    || _suspendedReasons.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var appraisal = _appraisal; appraisal.Clean = value; _appraisal = appraisal;
-                var appraisalCompletedDate = _appraisalCompletedDate; appraisalCompletedDate.Clean = value; _appraisalCompletedDate = appraisalCompletedDate;
-                var appraisalExpiredDate = _appraisalExpiredDate; appraisalExpiredDate.Clean = value; _appraisalExpiredDate = appraisalExpiredDate;
-                var appraisalOrderedDate = _appraisalOrderedDate; appraisalOrderedDate.Clean = value; _appraisalOrderedDate = appraisalOrderedDate;
-                var appraisalType = _appraisalType; appraisalType.Clean = value; _appraisalType = appraisalType;
-                var approvalExpiredDate = _approvalExpiredDate; approvalExpiredDate.Clean = value; _approvalExpiredDate = approvalExpiredDate;
-                var approvedBy = _approvedBy; approvedBy.Clean = value; _approvedBy = approvedBy;
-                var approvedDate = _approvedDate; approvedDate.Clean = value; _approvedDate = approvedDate;
-                var ausNumber = _ausNumber; ausNumber.Clean = value; _ausNumber = ausNumber;
-                var ausRunDate = _ausRunDate; ausRunDate.Clean = value; _ausRunDate = ausRunDate;
-                var ausSource = _ausSource; ausSource.Clean = value; _ausSource = ausSource;
-                var benefitRequiredIndicator = _benefitRequiredIndicator; benefitRequiredIndicator.Clean = value; _benefitRequiredIndicator = benefitRequiredIndicator;
-                var clearToCloseDate = _clearToCloseDate; clearToCloseDate.Clean = value; _clearToCloseDate = clearToCloseDate;
-                var concerns = _concerns; concerns.Clean = value; _concerns = concerns;
-                var conditions = _conditions; conditions.Clean = value; _conditions = conditions;
-                var credit = _credit; credit.Clean = value; _credit = credit;
-                var creditApprovalDate = _creditApprovalDate; creditApprovalDate.Clean = value; _creditApprovalDate = creditApprovalDate;
-                var deniedBy = _deniedBy; deniedBy.Clean = value; _deniedBy = deniedBy;
-                var deniedDate = _deniedDate; deniedDate.Clean = value; _deniedDate = deniedDate;
-                var differentApprovalExpiredDate = _differentApprovalExpiredDate; differentApprovalExpiredDate.Clean = value; _differentApprovalExpiredDate = differentApprovalExpiredDate;
-                var differentApprovedBy = _differentApprovedBy; differentApprovedBy.Clean = value; _differentApprovedBy = differentApprovedBy;
-                var differentApprovedDate = _differentApprovedDate; differentApprovedDate.Clean = value; _differentApprovedDate = differentApprovedDate;
-                var exceptions = _exceptions; exceptions.Clean = value; _exceptions = exceptions;
-                var exceptionSignOffBy = _exceptionSignOffBy; exceptionSignOffBy.Clean = value; _exceptionSignOffBy = exceptionSignOffBy;
-                var exceptionSignOffDate = _exceptionSignOffDate; exceptionSignOffDate.Clean = value; _exceptionSignOffDate = exceptionSignOffDate;
-                var id = _id; id.Clean = value; _id = id;
-                var isAgencyManually = _isAgencyManually; isAgencyManually.Clean = value; _isAgencyManually = isAgencyManually;
-                var isAgencyWaiver = _isAgencyWaiver; isAgencyWaiver.Clean = value; _isAgencyWaiver = isAgencyWaiver;
-                var isAgencyWithAgreement = _isAgencyWithAgreement; isAgencyWithAgreement.Clean = value; _isAgencyWithAgreement = isAgencyWithAgreement;
-                var maxRate = _maxRate; maxRate.Clean = value; _maxRate = maxRate;
-                var miOrderedDate = _miOrderedDate; miOrderedDate.Clean = value; _miOrderedDate = miOrderedDate;
-                var miReceivedDate = _miReceivedDate; miReceivedDate.Clean = value; _miReceivedDate = miReceivedDate;
-                var modifiedLoanAmount = _modifiedLoanAmount; modifiedLoanAmount.Clean = value; _modifiedLoanAmount = modifiedLoanAmount;
-                var modifiedLoanRate = _modifiedLoanRate; modifiedLoanRate.Clean = value; _modifiedLoanRate = modifiedLoanRate;
-                var modifiedLoanTerm = _modifiedLoanTerm; modifiedLoanTerm.Clean = value; _modifiedLoanTerm = modifiedLoanTerm;
-                var modifiedLtv = _modifiedLtv; modifiedLtv.Clean = value; _modifiedLtv = modifiedLtv;
-                var modifiedMonthlyPayment = _modifiedMonthlyPayment; modifiedMonthlyPayment.Clean = value; _modifiedMonthlyPayment = modifiedMonthlyPayment;
-                var originalAppraiser = _originalAppraiser; originalAppraiser.Clean = value; _originalAppraiser = originalAppraiser;
-                var originalAppraisersValue = _originalAppraisersValue; originalAppraisersValue.Clean = value; _originalAppraisersValue = originalAppraisersValue;
-                var resubmittedDate = _resubmittedDate; resubmittedDate.Clean = value; _resubmittedDate = resubmittedDate;
-                var reviewAppraiser = _reviewAppraiser; reviewAppraiser.Clean = value; _reviewAppraiser = reviewAppraiser;
-                var reviewCompletedDate = _reviewCompletedDate; reviewCompletedDate.Clean = value; _reviewCompletedDate = reviewCompletedDate;
-                var reviewRequestedDate = _reviewRequestedDate; reviewRequestedDate.Clean = value; _reviewRequestedDate = reviewRequestedDate;
-                var reviewType = _reviewType; reviewType.Clean = value; _reviewType = reviewType;
-                var reviewValue = _reviewValue; reviewValue.Clean = value; _reviewValue = reviewValue;
-                var sentToDate = _sentToDate; sentToDate.Clean = value; _sentToDate = sentToDate;
-                var signOffBy = _signOffBy; signOffBy.Clean = value; _signOffBy = signOffBy;
-                var signOffDate = _signOffDate; signOffDate.Clean = value; _signOffDate = signOffDate;
-                var strengths = _strengths; strengths.Clean = value; _strengths = strengths;
-                var submittedDate = _submittedDate; submittedDate.Clean = value; _submittedDate = submittedDate;
-                var supervisoryAppraiserLicenseNumber = _supervisoryAppraiserLicenseNumber; supervisoryAppraiserLicenseNumber.Clean = value; _supervisoryAppraiserLicenseNumber = supervisoryAppraiserLicenseNumber;
-                var suspendedBy = _suspendedBy; suspendedBy.Clean = value; _suspendedBy = suspendedBy;
-                var suspendedDate = _suspendedDate; suspendedDate.Clean = value; _suspendedDate = suspendedDate;
-                var suspendedReasons = _suspendedReasons; suspendedReasons.Clean = value; _suspendedReasons = suspendedReasons;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _appraisal.Dirty = value;
+                _appraisalCompletedDate.Dirty = value;
+                _appraisalExpiredDate.Dirty = value;
+                _appraisalOrderedDate.Dirty = value;
+                _appraisalType.Dirty = value;
+                _approvalExpiredDate.Dirty = value;
+                _approvedBy.Dirty = value;
+                _approvedDate.Dirty = value;
+                _ausNumber.Dirty = value;
+                _ausRunDate.Dirty = value;
+                _ausSource.Dirty = value;
+                _benefitRequiredIndicator.Dirty = value;
+                _clearToCloseDate.Dirty = value;
+                _concerns.Dirty = value;
+                _conditions.Dirty = value;
+                _credit.Dirty = value;
+                _creditApprovalDate.Dirty = value;
+                _deniedBy.Dirty = value;
+                _deniedDate.Dirty = value;
+                _differentApprovalExpiredDate.Dirty = value;
+                _differentApprovedBy.Dirty = value;
+                _differentApprovedDate.Dirty = value;
+                _exceptions.Dirty = value;
+                _exceptionSignOffBy.Dirty = value;
+                _exceptionSignOffDate.Dirty = value;
+                _id.Dirty = value;
+                _isAgencyManually.Dirty = value;
+                _isAgencyWaiver.Dirty = value;
+                _isAgencyWithAgreement.Dirty = value;
+                _maxRate.Dirty = value;
+                _miOrderedDate.Dirty = value;
+                _miReceivedDate.Dirty = value;
+                _modifiedLoanAmount.Dirty = value;
+                _modifiedLoanRate.Dirty = value;
+                _modifiedLoanTerm.Dirty = value;
+                _modifiedLtv.Dirty = value;
+                _modifiedMonthlyPayment.Dirty = value;
+                _originalAppraiser.Dirty = value;
+                _originalAppraisersValue.Dirty = value;
+                _resubmittedDate.Dirty = value;
+                _reviewAppraiser.Dirty = value;
+                _reviewCompletedDate.Dirty = value;
+                _reviewRequestedDate.Dirty = value;
+                _reviewType.Dirty = value;
+                _reviewValue.Dirty = value;
+                _sentToDate.Dirty = value;
+                _signOffBy.Dirty = value;
+                _signOffDate.Dirty = value;
+                _strengths.Dirty = value;
+                _submittedDate.Dirty = value;
+                _supervisoryAppraiserLicenseNumber.Dirty = value;
+                _suspendedBy.Dirty = value;
+                _suspendedDate.Dirty = value;
+                _suspendedReasons.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public UnderwriterSummary()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Tsum : IClean
+    public sealed partial class Tsum : IDirty
     {
         private Value<decimal?> _aboveOrBelowRatePercent;
         public decimal? AboveOrBelowRatePercent { get { return _aboveOrBelowRatePercent; } set { _aboveOrBelowRatePercent = value; } }
@@ -140,159 +140,154 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalance { get { return _unpaidBalance; } set { _unpaidBalance = value; } }
         private Value<decimal?> _verified;
         public decimal? Verified { get { return _verified; } set { _verified = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aboveOrBelowRatePercent.Clean
-                    && _adjustorCoverage.Clean
-                    && _ausRecommendation.Clean
-                    && _bedroomsUnit1.Clean
-                    && _bedroomsUnit2.Clean
-                    && _bedroomsUnit3.Clean
-                    && _bedroomsUnit4.Clean
-                    && _certificateNumber.Clean
-                    && _commitmentNumber.Clean
-                    && _communityLendingAfordableHousingInitiative.Clean
-                    && _contactTitle.Clean
-                    && _contractNumber.Clean
-                    && _cpmProjectId.Clean
-                    && _duCaseIdLpAusKey.Clean
-                    && _formNumber.Clean
-                    && _grossRentUnit1.Clean
-                    && _grossRentUnit2.Clean
-                    && _grossRentUnit3.Clean
-                    && _grossRentUnit4.Clean
-                    && _homeBuyersOwnershipEducationCertificateInFile.Clean
-                    && _id.Clean
-                    && _insurerCode.Clean
-                    && _interestedPartyContributions.Clean
-                    && _investorLoanNumber.Clean
-                    && _levelOfPropertyReviewType.Clean
-                    && _lpDocClass.Clean
-                    && _mortgageOriginator.Clean
-                    && _noteDate.Clean
-                    && _noteRateType.Clean
-                    && _numberOfBorrowers.Clean
-                    && _numberOfMonthsReserves.Clean
-                    && _originalAmountOfFirstMortgage.Clean
-                    && _otherTypeDescription.Clean
-                    && _percentageofCoverage.Clean
-                    && _projectName.Clean
-                    && _propertyFormType.Clean
-                    && _propertyType.Clean
-                    && _required.Clean
-                    && _riskAssessmentType.Clean
-                    && _sellerAddress.Clean
-                    && _sellerCity.Clean
-                    && _sellerContactName.Clean
-                    && _sellerName.Clean
-                    && _sellerNumber.Clean
-                    && _sellerPhone.Clean
-                    && _sellerPostalCode.Clean
-                    && _sellerState.Clean
-                    && _specialFeatureCode1.Clean
-                    && _specialFeatureCode2.Clean
-                    && _specialFeatureCode3.Clean
-                    && _specialFeatureCode4.Clean
-                    && _specialFeatureCode5.Clean
-                    && _specialFeatureCode6.Clean
-                    && _thirdPartyName1.Clean
-                    && _thirdPartyName2.Clean
-                    && _typeOfCommitment.Clean
-                    && _underwritingComment1.Clean
-                    && _underwritingComment2.Clean
-                    && _underwritingComment3.Clean
-                    && _underwritingComment4.Clean
-                    && _underwritingComment5.Clean
-                    && _underwritingComment6.Clean
-                    && _underwritingComment7.Clean
-                    && _underwritingComment8.Clean
-                    && _unpaidBalance.Clean
-                    && _verified.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aboveOrBelowRatePercent.Dirty
+                    || _adjustorCoverage.Dirty
+                    || _ausRecommendation.Dirty
+                    || _bedroomsUnit1.Dirty
+                    || _bedroomsUnit2.Dirty
+                    || _bedroomsUnit3.Dirty
+                    || _bedroomsUnit4.Dirty
+                    || _certificateNumber.Dirty
+                    || _commitmentNumber.Dirty
+                    || _communityLendingAfordableHousingInitiative.Dirty
+                    || _contactTitle.Dirty
+                    || _contractNumber.Dirty
+                    || _cpmProjectId.Dirty
+                    || _duCaseIdLpAusKey.Dirty
+                    || _formNumber.Dirty
+                    || _grossRentUnit1.Dirty
+                    || _grossRentUnit2.Dirty
+                    || _grossRentUnit3.Dirty
+                    || _grossRentUnit4.Dirty
+                    || _homeBuyersOwnershipEducationCertificateInFile.Dirty
+                    || _id.Dirty
+                    || _insurerCode.Dirty
+                    || _interestedPartyContributions.Dirty
+                    || _investorLoanNumber.Dirty
+                    || _levelOfPropertyReviewType.Dirty
+                    || _lpDocClass.Dirty
+                    || _mortgageOriginator.Dirty
+                    || _noteDate.Dirty
+                    || _noteRateType.Dirty
+                    || _numberOfBorrowers.Dirty
+                    || _numberOfMonthsReserves.Dirty
+                    || _originalAmountOfFirstMortgage.Dirty
+                    || _otherTypeDescription.Dirty
+                    || _percentageofCoverage.Dirty
+                    || _projectName.Dirty
+                    || _propertyFormType.Dirty
+                    || _propertyType.Dirty
+                    || _required.Dirty
+                    || _riskAssessmentType.Dirty
+                    || _sellerAddress.Dirty
+                    || _sellerCity.Dirty
+                    || _sellerContactName.Dirty
+                    || _sellerName.Dirty
+                    || _sellerNumber.Dirty
+                    || _sellerPhone.Dirty
+                    || _sellerPostalCode.Dirty
+                    || _sellerState.Dirty
+                    || _specialFeatureCode1.Dirty
+                    || _specialFeatureCode2.Dirty
+                    || _specialFeatureCode3.Dirty
+                    || _specialFeatureCode4.Dirty
+                    || _specialFeatureCode5.Dirty
+                    || _specialFeatureCode6.Dirty
+                    || _thirdPartyName1.Dirty
+                    || _thirdPartyName2.Dirty
+                    || _typeOfCommitment.Dirty
+                    || _underwritingComment1.Dirty
+                    || _underwritingComment2.Dirty
+                    || _underwritingComment3.Dirty
+                    || _underwritingComment4.Dirty
+                    || _underwritingComment5.Dirty
+                    || _underwritingComment6.Dirty
+                    || _underwritingComment7.Dirty
+                    || _underwritingComment8.Dirty
+                    || _unpaidBalance.Dirty
+                    || _verified.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aboveOrBelowRatePercent = _aboveOrBelowRatePercent; aboveOrBelowRatePercent.Clean = value; _aboveOrBelowRatePercent = aboveOrBelowRatePercent;
-                var adjustorCoverage = _adjustorCoverage; adjustorCoverage.Clean = value; _adjustorCoverage = adjustorCoverage;
-                var ausRecommendation = _ausRecommendation; ausRecommendation.Clean = value; _ausRecommendation = ausRecommendation;
-                var bedroomsUnit1 = _bedroomsUnit1; bedroomsUnit1.Clean = value; _bedroomsUnit1 = bedroomsUnit1;
-                var bedroomsUnit2 = _bedroomsUnit2; bedroomsUnit2.Clean = value; _bedroomsUnit2 = bedroomsUnit2;
-                var bedroomsUnit3 = _bedroomsUnit3; bedroomsUnit3.Clean = value; _bedroomsUnit3 = bedroomsUnit3;
-                var bedroomsUnit4 = _bedroomsUnit4; bedroomsUnit4.Clean = value; _bedroomsUnit4 = bedroomsUnit4;
-                var certificateNumber = _certificateNumber; certificateNumber.Clean = value; _certificateNumber = certificateNumber;
-                var commitmentNumber = _commitmentNumber; commitmentNumber.Clean = value; _commitmentNumber = commitmentNumber;
-                var communityLendingAfordableHousingInitiative = _communityLendingAfordableHousingInitiative; communityLendingAfordableHousingInitiative.Clean = value; _communityLendingAfordableHousingInitiative = communityLendingAfordableHousingInitiative;
-                var contactTitle = _contactTitle; contactTitle.Clean = value; _contactTitle = contactTitle;
-                var contractNumber = _contractNumber; contractNumber.Clean = value; _contractNumber = contractNumber;
-                var cpmProjectId = _cpmProjectId; cpmProjectId.Clean = value; _cpmProjectId = cpmProjectId;
-                var duCaseIdLpAusKey = _duCaseIdLpAusKey; duCaseIdLpAusKey.Clean = value; _duCaseIdLpAusKey = duCaseIdLpAusKey;
-                var formNumber = _formNumber; formNumber.Clean = value; _formNumber = formNumber;
-                var grossRentUnit1 = _grossRentUnit1; grossRentUnit1.Clean = value; _grossRentUnit1 = grossRentUnit1;
-                var grossRentUnit2 = _grossRentUnit2; grossRentUnit2.Clean = value; _grossRentUnit2 = grossRentUnit2;
-                var grossRentUnit3 = _grossRentUnit3; grossRentUnit3.Clean = value; _grossRentUnit3 = grossRentUnit3;
-                var grossRentUnit4 = _grossRentUnit4; grossRentUnit4.Clean = value; _grossRentUnit4 = grossRentUnit4;
-                var homeBuyersOwnershipEducationCertificateInFile = _homeBuyersOwnershipEducationCertificateInFile; homeBuyersOwnershipEducationCertificateInFile.Clean = value; _homeBuyersOwnershipEducationCertificateInFile = homeBuyersOwnershipEducationCertificateInFile;
-                var id = _id; id.Clean = value; _id = id;
-                var insurerCode = _insurerCode; insurerCode.Clean = value; _insurerCode = insurerCode;
-                var interestedPartyContributions = _interestedPartyContributions; interestedPartyContributions.Clean = value; _interestedPartyContributions = interestedPartyContributions;
-                var investorLoanNumber = _investorLoanNumber; investorLoanNumber.Clean = value; _investorLoanNumber = investorLoanNumber;
-                var levelOfPropertyReviewType = _levelOfPropertyReviewType; levelOfPropertyReviewType.Clean = value; _levelOfPropertyReviewType = levelOfPropertyReviewType;
-                var lpDocClass = _lpDocClass; lpDocClass.Clean = value; _lpDocClass = lpDocClass;
-                var mortgageOriginator = _mortgageOriginator; mortgageOriginator.Clean = value; _mortgageOriginator = mortgageOriginator;
-                var noteDate = _noteDate; noteDate.Clean = value; _noteDate = noteDate;
-                var noteRateType = _noteRateType; noteRateType.Clean = value; _noteRateType = noteRateType;
-                var numberOfBorrowers = _numberOfBorrowers; numberOfBorrowers.Clean = value; _numberOfBorrowers = numberOfBorrowers;
-                var numberOfMonthsReserves = _numberOfMonthsReserves; numberOfMonthsReserves.Clean = value; _numberOfMonthsReserves = numberOfMonthsReserves;
-                var originalAmountOfFirstMortgage = _originalAmountOfFirstMortgage; originalAmountOfFirstMortgage.Clean = value; _originalAmountOfFirstMortgage = originalAmountOfFirstMortgage;
-                var otherTypeDescription = _otherTypeDescription; otherTypeDescription.Clean = value; _otherTypeDescription = otherTypeDescription;
-                var percentageofCoverage = _percentageofCoverage; percentageofCoverage.Clean = value; _percentageofCoverage = percentageofCoverage;
-                var projectName = _projectName; projectName.Clean = value; _projectName = projectName;
-                var propertyFormType = _propertyFormType; propertyFormType.Clean = value; _propertyFormType = propertyFormType;
-                var propertyType = _propertyType; propertyType.Clean = value; _propertyType = propertyType;
-                var required = _required; required.Clean = value; _required = required;
-                var riskAssessmentType = _riskAssessmentType; riskAssessmentType.Clean = value; _riskAssessmentType = riskAssessmentType;
-                var sellerAddress = _sellerAddress; sellerAddress.Clean = value; _sellerAddress = sellerAddress;
-                var sellerCity = _sellerCity; sellerCity.Clean = value; _sellerCity = sellerCity;
-                var sellerContactName = _sellerContactName; sellerContactName.Clean = value; _sellerContactName = sellerContactName;
-                var sellerName = _sellerName; sellerName.Clean = value; _sellerName = sellerName;
-                var sellerNumber = _sellerNumber; sellerNumber.Clean = value; _sellerNumber = sellerNumber;
-                var sellerPhone = _sellerPhone; sellerPhone.Clean = value; _sellerPhone = sellerPhone;
-                var sellerPostalCode = _sellerPostalCode; sellerPostalCode.Clean = value; _sellerPostalCode = sellerPostalCode;
-                var sellerState = _sellerState; sellerState.Clean = value; _sellerState = sellerState;
-                var specialFeatureCode1 = _specialFeatureCode1; specialFeatureCode1.Clean = value; _specialFeatureCode1 = specialFeatureCode1;
-                var specialFeatureCode2 = _specialFeatureCode2; specialFeatureCode2.Clean = value; _specialFeatureCode2 = specialFeatureCode2;
-                var specialFeatureCode3 = _specialFeatureCode3; specialFeatureCode3.Clean = value; _specialFeatureCode3 = specialFeatureCode3;
-                var specialFeatureCode4 = _specialFeatureCode4; specialFeatureCode4.Clean = value; _specialFeatureCode4 = specialFeatureCode4;
-                var specialFeatureCode5 = _specialFeatureCode5; specialFeatureCode5.Clean = value; _specialFeatureCode5 = specialFeatureCode5;
-                var specialFeatureCode6 = _specialFeatureCode6; specialFeatureCode6.Clean = value; _specialFeatureCode6 = specialFeatureCode6;
-                var thirdPartyName1 = _thirdPartyName1; thirdPartyName1.Clean = value; _thirdPartyName1 = thirdPartyName1;
-                var thirdPartyName2 = _thirdPartyName2; thirdPartyName2.Clean = value; _thirdPartyName2 = thirdPartyName2;
-                var typeOfCommitment = _typeOfCommitment; typeOfCommitment.Clean = value; _typeOfCommitment = typeOfCommitment;
-                var underwritingComment1 = _underwritingComment1; underwritingComment1.Clean = value; _underwritingComment1 = underwritingComment1;
-                var underwritingComment2 = _underwritingComment2; underwritingComment2.Clean = value; _underwritingComment2 = underwritingComment2;
-                var underwritingComment3 = _underwritingComment3; underwritingComment3.Clean = value; _underwritingComment3 = underwritingComment3;
-                var underwritingComment4 = _underwritingComment4; underwritingComment4.Clean = value; _underwritingComment4 = underwritingComment4;
-                var underwritingComment5 = _underwritingComment5; underwritingComment5.Clean = value; _underwritingComment5 = underwritingComment5;
-                var underwritingComment6 = _underwritingComment6; underwritingComment6.Clean = value; _underwritingComment6 = underwritingComment6;
-                var underwritingComment7 = _underwritingComment7; underwritingComment7.Clean = value; _underwritingComment7 = underwritingComment7;
-                var underwritingComment8 = _underwritingComment8; underwritingComment8.Clean = value; _underwritingComment8 = underwritingComment8;
-                var unpaidBalance = _unpaidBalance; unpaidBalance.Clean = value; _unpaidBalance = unpaidBalance;
-                var verified = _verified; verified.Clean = value; _verified = verified;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aboveOrBelowRatePercent.Dirty = value;
+                _adjustorCoverage.Dirty = value;
+                _ausRecommendation.Dirty = value;
+                _bedroomsUnit1.Dirty = value;
+                _bedroomsUnit2.Dirty = value;
+                _bedroomsUnit3.Dirty = value;
+                _bedroomsUnit4.Dirty = value;
+                _certificateNumber.Dirty = value;
+                _commitmentNumber.Dirty = value;
+                _communityLendingAfordableHousingInitiative.Dirty = value;
+                _contactTitle.Dirty = value;
+                _contractNumber.Dirty = value;
+                _cpmProjectId.Dirty = value;
+                _duCaseIdLpAusKey.Dirty = value;
+                _formNumber.Dirty = value;
+                _grossRentUnit1.Dirty = value;
+                _grossRentUnit2.Dirty = value;
+                _grossRentUnit3.Dirty = value;
+                _grossRentUnit4.Dirty = value;
+                _homeBuyersOwnershipEducationCertificateInFile.Dirty = value;
+                _id.Dirty = value;
+                _insurerCode.Dirty = value;
+                _interestedPartyContributions.Dirty = value;
+                _investorLoanNumber.Dirty = value;
+                _levelOfPropertyReviewType.Dirty = value;
+                _lpDocClass.Dirty = value;
+                _mortgageOriginator.Dirty = value;
+                _noteDate.Dirty = value;
+                _noteRateType.Dirty = value;
+                _numberOfBorrowers.Dirty = value;
+                _numberOfMonthsReserves.Dirty = value;
+                _originalAmountOfFirstMortgage.Dirty = value;
+                _otherTypeDescription.Dirty = value;
+                _percentageofCoverage.Dirty = value;
+                _projectName.Dirty = value;
+                _propertyFormType.Dirty = value;
+                _propertyType.Dirty = value;
+                _required.Dirty = value;
+                _riskAssessmentType.Dirty = value;
+                _sellerAddress.Dirty = value;
+                _sellerCity.Dirty = value;
+                _sellerContactName.Dirty = value;
+                _sellerName.Dirty = value;
+                _sellerNumber.Dirty = value;
+                _sellerPhone.Dirty = value;
+                _sellerPostalCode.Dirty = value;
+                _sellerState.Dirty = value;
+                _specialFeatureCode1.Dirty = value;
+                _specialFeatureCode2.Dirty = value;
+                _specialFeatureCode3.Dirty = value;
+                _specialFeatureCode4.Dirty = value;
+                _specialFeatureCode5.Dirty = value;
+                _specialFeatureCode6.Dirty = value;
+                _thirdPartyName1.Dirty = value;
+                _thirdPartyName2.Dirty = value;
+                _typeOfCommitment.Dirty = value;
+                _underwritingComment1.Dirty = value;
+                _underwritingComment2.Dirty = value;
+                _underwritingComment3.Dirty = value;
+                _underwritingComment4.Dirty = value;
+                _underwritingComment5.Dirty = value;
+                _underwritingComment6.Dirty = value;
+                _underwritingComment7.Dirty = value;
+                _underwritingComment8.Dirty = value;
+                _unpaidBalance.Dirty = value;
+                _verified.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Tsum()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Buydown : IClean
+    public sealed partial class Buydown : IDirty
     {
         private Value<int?> _buydownIndex;
         public int? BuydownIndex { get { return _buydownIndex; } set { _buydownIndex = value; } }
@@ -28,47 +28,42 @@ namespace EncompassRest.Loans
         public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
         private Value<decimal?> _subsidyAmount;
         public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _buydownIndex.Clean
-                    && _buydownRatePercent.Clean
-                    && _changeFrequencyMonthsCount.Clean
-                    && _durationMonthsCount.Clean
-                    && _fundBalanceAmount.Clean
-                    && _fundTotalAmount.Clean
-                    && _id.Clean
-                    && _increaseRatePercent.Clean
-                    && _remainingMonthsCount.Clean
-                    && _subsidyAmount.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _buydownIndex.Dirty
+                    || _buydownRatePercent.Dirty
+                    || _changeFrequencyMonthsCount.Dirty
+                    || _durationMonthsCount.Dirty
+                    || _fundBalanceAmount.Dirty
+                    || _fundTotalAmount.Dirty
+                    || _id.Dirty
+                    || _increaseRatePercent.Dirty
+                    || _remainingMonthsCount.Dirty
+                    || _subsidyAmount.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var buydownIndex = _buydownIndex; buydownIndex.Clean = value; _buydownIndex = buydownIndex;
-                var buydownRatePercent = _buydownRatePercent; buydownRatePercent.Clean = value; _buydownRatePercent = buydownRatePercent;
-                var changeFrequencyMonthsCount = _changeFrequencyMonthsCount; changeFrequencyMonthsCount.Clean = value; _changeFrequencyMonthsCount = changeFrequencyMonthsCount;
-                var durationMonthsCount = _durationMonthsCount; durationMonthsCount.Clean = value; _durationMonthsCount = durationMonthsCount;
-                var fundBalanceAmount = _fundBalanceAmount; fundBalanceAmount.Clean = value; _fundBalanceAmount = fundBalanceAmount;
-                var fundTotalAmount = _fundTotalAmount; fundTotalAmount.Clean = value; _fundTotalAmount = fundTotalAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var increaseRatePercent = _increaseRatePercent; increaseRatePercent.Clean = value; _increaseRatePercent = increaseRatePercent;
-                var remainingMonthsCount = _remainingMonthsCount; remainingMonthsCount.Clean = value; _remainingMonthsCount = remainingMonthsCount;
-                var subsidyAmount = _subsidyAmount; subsidyAmount.Clean = value; _subsidyAmount = subsidyAmount;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _buydownIndex.Dirty = value;
+                _buydownRatePercent.Dirty = value;
+                _changeFrequencyMonthsCount.Dirty = value;
+                _durationMonthsCount.Dirty = value;
+                _fundBalanceAmount.Dirty = value;
+                _fundTotalAmount.Dirty = value;
+                _id.Dirty = value;
+                _increaseRatePercent.Dirty = value;
+                _remainingMonthsCount.Dirty = value;
+                _subsidyAmount.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Buydown()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

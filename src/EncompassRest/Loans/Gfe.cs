@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe : IClean
+    public sealed partial class Gfe : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -162,181 +162,176 @@ namespace EncompassRest.Loans
         public string YearlyOtherInsuranceDescription { get { return _yearlyOtherInsuranceDescription; } set { _yearlyOtherInsuranceDescription = value; } }
         private Value<decimal?> _yearlyTax;
         public decimal? YearlyTax { get { return _yearlyTax; } set { _yearlyTax = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _agregateAdjustment.Clean
-                    && _brokerCommission.Clean
-                    && _brokerLicense.Clean
-                    && _brokerName.Clean
-                    && _brokerRepresentative.Clean
-                    && _city.Clean
-                    && _compensationFromLenderAmount.Clean
-                    && _compensationFromLenderPercentage.Clean
-                    && _compensationFromLenderTotalAmount.Clean
-                    && _creditLifeOrDisabilityPremium.Clean
-                    && _creditToBorrowerAmount.Clean
-                    && _estimatedCashAtClosing.Clean
-                    && _estimatedCashToBorrower.Clean
-                    && _estimatedDueDate.Clean
-                    && _finalBalloonPayment.Clean
-                    && _firstChangePayment.Clean
-                    && _firstChangePercent.Clean
-                    && _fundingAmount.Clean
-                    && _gfeFees.Clean
-                    && _gfeLiens.Clean
-                    && _gfePayments.Clean
-                    && _gfePayoffs.Clean
-                    && _gfeProvidedByBrokerIndicator.Clean
-                    && _hasAdditionalCompensationIndicator.Clean
-                    && _hasLateChargesIndicator.Clean
-                    && _hasPrepaymentPenaltyIndicator.Clean
-                    && _id.Clean
-                    && _initialFixedOrArmType.Clean
-                    && _lenderOriginationFee.Clean
-                    && _loanFromBrokerControledFundsType.Clean
-                    && _lockField.Clean
-                    && _maxLifePayment.Clean
-                    && _maxPaymentAfterMonth.Clean
-                    && _monthlyPaymentAndEscrow.Clean
-                    && _mortgageBrokerComissionFee.Clean
-                    && _mortgageBrokerComissionFeePaidToName.Clean
-                    && _natureLien1Description.Clean
-                    && _natureLien1PayoffDescription.Clean
-                    && _natureLien2Description.Clean
-                    && _natureLien2PayoffDescription.Clean
-                    && _natureLien3Description.Clean
-                    && _natureLien3PayoffDescription.Clean
-                    && _paymentOfPrincipleIndicator.Clean
-                    && _paymentOfPrincipleType.Clean
-                    && _penaltyNotToExceedMonths.Clean
-                    && _pocPaid1.Clean
-                    && _pocPaid2.Clean
-                    && _pocPaid3.Clean
-                    && _postalCode.Clean
-                    && _prepaymentOtherDescription.Clean
-                    && _prepaymentOtherTypeIndicator.Clean
-                    && _prepaymentPenaltyAmount.Clean
-                    && _prepaymentPenaltyIndicator.Clean
-                    && _prepaymentPenaltyPeriod.Clean
-                    && _principalAmount.Clean
-                    && _purchasePayOff.Clean
-                    && _re882AdditionalCompensation.Clean
-                    && _receivedFromLenderAmount.Clean
-                    && _representativeLicense.Clean
-                    && _sourcesDeemedReliableIndicator.Clean
-                    && _state.Clean
-                    && _subtotalOfAllDeductions.Clean
-                    && _totalBrokerCompensationAmount.Clean
-                    && _totalClosingCostWithDiscount.Clean
-                    && _totalCostsExpenses.Clean
-                    && _totalMaximumCostsExpenses.Clean
-                    && _totalOfInitialFees.Clean
-                    && _totalPrepaidClosingCost.Clean
-                    && _totalSettlementCharges.Clean
-                    && _totalTaxAndInsurance.Clean
-                    && _yearlyFloodInsurance.Clean
-                    && _yearlyInsurance.Clean
-                    && _yearlyMortgageInsurance.Clean
-                    && _yearlyOtherInsurance.Clean
-                    && _yearlyOtherInsuranceDescription.Clean
-                    && _yearlyTax.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _agregateAdjustment.Dirty
+                    || _brokerCommission.Dirty
+                    || _brokerLicense.Dirty
+                    || _brokerName.Dirty
+                    || _brokerRepresentative.Dirty
+                    || _city.Dirty
+                    || _compensationFromLenderAmount.Dirty
+                    || _compensationFromLenderPercentage.Dirty
+                    || _compensationFromLenderTotalAmount.Dirty
+                    || _creditLifeOrDisabilityPremium.Dirty
+                    || _creditToBorrowerAmount.Dirty
+                    || _estimatedCashAtClosing.Dirty
+                    || _estimatedCashToBorrower.Dirty
+                    || _estimatedDueDate.Dirty
+                    || _finalBalloonPayment.Dirty
+                    || _firstChangePayment.Dirty
+                    || _firstChangePercent.Dirty
+                    || _fundingAmount.Dirty
+                    || _gfeFees.Dirty
+                    || _gfeLiens.Dirty
+                    || _gfePayments.Dirty
+                    || _gfePayoffs.Dirty
+                    || _gfeProvidedByBrokerIndicator.Dirty
+                    || _hasAdditionalCompensationIndicator.Dirty
+                    || _hasLateChargesIndicator.Dirty
+                    || _hasPrepaymentPenaltyIndicator.Dirty
+                    || _id.Dirty
+                    || _initialFixedOrArmType.Dirty
+                    || _lenderOriginationFee.Dirty
+                    || _loanFromBrokerControledFundsType.Dirty
+                    || _lockField.Dirty
+                    || _maxLifePayment.Dirty
+                    || _maxPaymentAfterMonth.Dirty
+                    || _monthlyPaymentAndEscrow.Dirty
+                    || _mortgageBrokerComissionFee.Dirty
+                    || _mortgageBrokerComissionFeePaidToName.Dirty
+                    || _natureLien1Description.Dirty
+                    || _natureLien1PayoffDescription.Dirty
+                    || _natureLien2Description.Dirty
+                    || _natureLien2PayoffDescription.Dirty
+                    || _natureLien3Description.Dirty
+                    || _natureLien3PayoffDescription.Dirty
+                    || _paymentOfPrincipleIndicator.Dirty
+                    || _paymentOfPrincipleType.Dirty
+                    || _penaltyNotToExceedMonths.Dirty
+                    || _pocPaid1.Dirty
+                    || _pocPaid2.Dirty
+                    || _pocPaid3.Dirty
+                    || _postalCode.Dirty
+                    || _prepaymentOtherDescription.Dirty
+                    || _prepaymentOtherTypeIndicator.Dirty
+                    || _prepaymentPenaltyAmount.Dirty
+                    || _prepaymentPenaltyIndicator.Dirty
+                    || _prepaymentPenaltyPeriod.Dirty
+                    || _principalAmount.Dirty
+                    || _purchasePayOff.Dirty
+                    || _re882AdditionalCompensation.Dirty
+                    || _receivedFromLenderAmount.Dirty
+                    || _representativeLicense.Dirty
+                    || _sourcesDeemedReliableIndicator.Dirty
+                    || _state.Dirty
+                    || _subtotalOfAllDeductions.Dirty
+                    || _totalBrokerCompensationAmount.Dirty
+                    || _totalClosingCostWithDiscount.Dirty
+                    || _totalCostsExpenses.Dirty
+                    || _totalMaximumCostsExpenses.Dirty
+                    || _totalOfInitialFees.Dirty
+                    || _totalPrepaidClosingCost.Dirty
+                    || _totalSettlementCharges.Dirty
+                    || _totalTaxAndInsurance.Dirty
+                    || _yearlyFloodInsurance.Dirty
+                    || _yearlyInsurance.Dirty
+                    || _yearlyMortgageInsurance.Dirty
+                    || _yearlyOtherInsurance.Dirty
+                    || _yearlyOtherInsuranceDescription.Dirty
+                    || _yearlyTax.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var agregateAdjustment = _agregateAdjustment; agregateAdjustment.Clean = value; _agregateAdjustment = agregateAdjustment;
-                var brokerCommission = _brokerCommission; brokerCommission.Clean = value; _brokerCommission = brokerCommission;
-                var brokerLicense = _brokerLicense; brokerLicense.Clean = value; _brokerLicense = brokerLicense;
-                var brokerName = _brokerName; brokerName.Clean = value; _brokerName = brokerName;
-                var brokerRepresentative = _brokerRepresentative; brokerRepresentative.Clean = value; _brokerRepresentative = brokerRepresentative;
-                var city = _city; city.Clean = value; _city = city;
-                var compensationFromLenderAmount = _compensationFromLenderAmount; compensationFromLenderAmount.Clean = value; _compensationFromLenderAmount = compensationFromLenderAmount;
-                var compensationFromLenderPercentage = _compensationFromLenderPercentage; compensationFromLenderPercentage.Clean = value; _compensationFromLenderPercentage = compensationFromLenderPercentage;
-                var compensationFromLenderTotalAmount = _compensationFromLenderTotalAmount; compensationFromLenderTotalAmount.Clean = value; _compensationFromLenderTotalAmount = compensationFromLenderTotalAmount;
-                var creditLifeOrDisabilityPremium = _creditLifeOrDisabilityPremium; creditLifeOrDisabilityPremium.Clean = value; _creditLifeOrDisabilityPremium = creditLifeOrDisabilityPremium;
-                var creditToBorrowerAmount = _creditToBorrowerAmount; creditToBorrowerAmount.Clean = value; _creditToBorrowerAmount = creditToBorrowerAmount;
-                var estimatedCashAtClosing = _estimatedCashAtClosing; estimatedCashAtClosing.Clean = value; _estimatedCashAtClosing = estimatedCashAtClosing;
-                var estimatedCashToBorrower = _estimatedCashToBorrower; estimatedCashToBorrower.Clean = value; _estimatedCashToBorrower = estimatedCashToBorrower;
-                var estimatedDueDate = _estimatedDueDate; estimatedDueDate.Clean = value; _estimatedDueDate = estimatedDueDate;
-                var finalBalloonPayment = _finalBalloonPayment; finalBalloonPayment.Clean = value; _finalBalloonPayment = finalBalloonPayment;
-                var firstChangePayment = _firstChangePayment; firstChangePayment.Clean = value; _firstChangePayment = firstChangePayment;
-                var firstChangePercent = _firstChangePercent; firstChangePercent.Clean = value; _firstChangePercent = firstChangePercent;
-                var fundingAmount = _fundingAmount; fundingAmount.Clean = value; _fundingAmount = fundingAmount;
-                var gfeFees = _gfeFees; gfeFees.Clean = value; _gfeFees = gfeFees;
-                var gfeLiens = _gfeLiens; gfeLiens.Clean = value; _gfeLiens = gfeLiens;
-                var gfePayments = _gfePayments; gfePayments.Clean = value; _gfePayments = gfePayments;
-                var gfePayoffs = _gfePayoffs; gfePayoffs.Clean = value; _gfePayoffs = gfePayoffs;
-                var gfeProvidedByBrokerIndicator = _gfeProvidedByBrokerIndicator; gfeProvidedByBrokerIndicator.Clean = value; _gfeProvidedByBrokerIndicator = gfeProvidedByBrokerIndicator;
-                var hasAdditionalCompensationIndicator = _hasAdditionalCompensationIndicator; hasAdditionalCompensationIndicator.Clean = value; _hasAdditionalCompensationIndicator = hasAdditionalCompensationIndicator;
-                var hasLateChargesIndicator = _hasLateChargesIndicator; hasLateChargesIndicator.Clean = value; _hasLateChargesIndicator = hasLateChargesIndicator;
-                var hasPrepaymentPenaltyIndicator = _hasPrepaymentPenaltyIndicator; hasPrepaymentPenaltyIndicator.Clean = value; _hasPrepaymentPenaltyIndicator = hasPrepaymentPenaltyIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var initialFixedOrArmType = _initialFixedOrArmType; initialFixedOrArmType.Clean = value; _initialFixedOrArmType = initialFixedOrArmType;
-                var lenderOriginationFee = _lenderOriginationFee; lenderOriginationFee.Clean = value; _lenderOriginationFee = lenderOriginationFee;
-                var loanFromBrokerControledFundsType = _loanFromBrokerControledFundsType; loanFromBrokerControledFundsType.Clean = value; _loanFromBrokerControledFundsType = loanFromBrokerControledFundsType;
-                var lockField = _lockField; lockField.Clean = value; _lockField = lockField;
-                var maxLifePayment = _maxLifePayment; maxLifePayment.Clean = value; _maxLifePayment = maxLifePayment;
-                var maxPaymentAfterMonth = _maxPaymentAfterMonth; maxPaymentAfterMonth.Clean = value; _maxPaymentAfterMonth = maxPaymentAfterMonth;
-                var monthlyPaymentAndEscrow = _monthlyPaymentAndEscrow; monthlyPaymentAndEscrow.Clean = value; _monthlyPaymentAndEscrow = monthlyPaymentAndEscrow;
-                var mortgageBrokerComissionFee = _mortgageBrokerComissionFee; mortgageBrokerComissionFee.Clean = value; _mortgageBrokerComissionFee = mortgageBrokerComissionFee;
-                var mortgageBrokerComissionFeePaidToName = _mortgageBrokerComissionFeePaidToName; mortgageBrokerComissionFeePaidToName.Clean = value; _mortgageBrokerComissionFeePaidToName = mortgageBrokerComissionFeePaidToName;
-                var natureLien1Description = _natureLien1Description; natureLien1Description.Clean = value; _natureLien1Description = natureLien1Description;
-                var natureLien1PayoffDescription = _natureLien1PayoffDescription; natureLien1PayoffDescription.Clean = value; _natureLien1PayoffDescription = natureLien1PayoffDescription;
-                var natureLien2Description = _natureLien2Description; natureLien2Description.Clean = value; _natureLien2Description = natureLien2Description;
-                var natureLien2PayoffDescription = _natureLien2PayoffDescription; natureLien2PayoffDescription.Clean = value; _natureLien2PayoffDescription = natureLien2PayoffDescription;
-                var natureLien3Description = _natureLien3Description; natureLien3Description.Clean = value; _natureLien3Description = natureLien3Description;
-                var natureLien3PayoffDescription = _natureLien3PayoffDescription; natureLien3PayoffDescription.Clean = value; _natureLien3PayoffDescription = natureLien3PayoffDescription;
-                var paymentOfPrincipleIndicator = _paymentOfPrincipleIndicator; paymentOfPrincipleIndicator.Clean = value; _paymentOfPrincipleIndicator = paymentOfPrincipleIndicator;
-                var paymentOfPrincipleType = _paymentOfPrincipleType; paymentOfPrincipleType.Clean = value; _paymentOfPrincipleType = paymentOfPrincipleType;
-                var penaltyNotToExceedMonths = _penaltyNotToExceedMonths; penaltyNotToExceedMonths.Clean = value; _penaltyNotToExceedMonths = penaltyNotToExceedMonths;
-                var pocPaid1 = _pocPaid1; pocPaid1.Clean = value; _pocPaid1 = pocPaid1;
-                var pocPaid2 = _pocPaid2; pocPaid2.Clean = value; _pocPaid2 = pocPaid2;
-                var pocPaid3 = _pocPaid3; pocPaid3.Clean = value; _pocPaid3 = pocPaid3;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var prepaymentOtherDescription = _prepaymentOtherDescription; prepaymentOtherDescription.Clean = value; _prepaymentOtherDescription = prepaymentOtherDescription;
-                var prepaymentOtherTypeIndicator = _prepaymentOtherTypeIndicator; prepaymentOtherTypeIndicator.Clean = value; _prepaymentOtherTypeIndicator = prepaymentOtherTypeIndicator;
-                var prepaymentPenaltyAmount = _prepaymentPenaltyAmount; prepaymentPenaltyAmount.Clean = value; _prepaymentPenaltyAmount = prepaymentPenaltyAmount;
-                var prepaymentPenaltyIndicator = _prepaymentPenaltyIndicator; prepaymentPenaltyIndicator.Clean = value; _prepaymentPenaltyIndicator = prepaymentPenaltyIndicator;
-                var prepaymentPenaltyPeriod = _prepaymentPenaltyPeriod; prepaymentPenaltyPeriod.Clean = value; _prepaymentPenaltyPeriod = prepaymentPenaltyPeriod;
-                var principalAmount = _principalAmount; principalAmount.Clean = value; _principalAmount = principalAmount;
-                var purchasePayOff = _purchasePayOff; purchasePayOff.Clean = value; _purchasePayOff = purchasePayOff;
-                var re882AdditionalCompensation = _re882AdditionalCompensation; re882AdditionalCompensation.Clean = value; _re882AdditionalCompensation = re882AdditionalCompensation;
-                var receivedFromLenderAmount = _receivedFromLenderAmount; receivedFromLenderAmount.Clean = value; _receivedFromLenderAmount = receivedFromLenderAmount;
-                var representativeLicense = _representativeLicense; representativeLicense.Clean = value; _representativeLicense = representativeLicense;
-                var sourcesDeemedReliableIndicator = _sourcesDeemedReliableIndicator; sourcesDeemedReliableIndicator.Clean = value; _sourcesDeemedReliableIndicator = sourcesDeemedReliableIndicator;
-                var state = _state; state.Clean = value; _state = state;
-                var subtotalOfAllDeductions = _subtotalOfAllDeductions; subtotalOfAllDeductions.Clean = value; _subtotalOfAllDeductions = subtotalOfAllDeductions;
-                var totalBrokerCompensationAmount = _totalBrokerCompensationAmount; totalBrokerCompensationAmount.Clean = value; _totalBrokerCompensationAmount = totalBrokerCompensationAmount;
-                var totalClosingCostWithDiscount = _totalClosingCostWithDiscount; totalClosingCostWithDiscount.Clean = value; _totalClosingCostWithDiscount = totalClosingCostWithDiscount;
-                var totalCostsExpenses = _totalCostsExpenses; totalCostsExpenses.Clean = value; _totalCostsExpenses = totalCostsExpenses;
-                var totalMaximumCostsExpenses = _totalMaximumCostsExpenses; totalMaximumCostsExpenses.Clean = value; _totalMaximumCostsExpenses = totalMaximumCostsExpenses;
-                var totalOfInitialFees = _totalOfInitialFees; totalOfInitialFees.Clean = value; _totalOfInitialFees = totalOfInitialFees;
-                var totalPrepaidClosingCost = _totalPrepaidClosingCost; totalPrepaidClosingCost.Clean = value; _totalPrepaidClosingCost = totalPrepaidClosingCost;
-                var totalSettlementCharges = _totalSettlementCharges; totalSettlementCharges.Clean = value; _totalSettlementCharges = totalSettlementCharges;
-                var totalTaxAndInsurance = _totalTaxAndInsurance; totalTaxAndInsurance.Clean = value; _totalTaxAndInsurance = totalTaxAndInsurance;
-                var yearlyFloodInsurance = _yearlyFloodInsurance; yearlyFloodInsurance.Clean = value; _yearlyFloodInsurance = yearlyFloodInsurance;
-                var yearlyInsurance = _yearlyInsurance; yearlyInsurance.Clean = value; _yearlyInsurance = yearlyInsurance;
-                var yearlyMortgageInsurance = _yearlyMortgageInsurance; yearlyMortgageInsurance.Clean = value; _yearlyMortgageInsurance = yearlyMortgageInsurance;
-                var yearlyOtherInsurance = _yearlyOtherInsurance; yearlyOtherInsurance.Clean = value; _yearlyOtherInsurance = yearlyOtherInsurance;
-                var yearlyOtherInsuranceDescription = _yearlyOtherInsuranceDescription; yearlyOtherInsuranceDescription.Clean = value; _yearlyOtherInsuranceDescription = yearlyOtherInsuranceDescription;
-                var yearlyTax = _yearlyTax; yearlyTax.Clean = value; _yearlyTax = yearlyTax;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _agregateAdjustment.Dirty = value;
+                _brokerCommission.Dirty = value;
+                _brokerLicense.Dirty = value;
+                _brokerName.Dirty = value;
+                _brokerRepresentative.Dirty = value;
+                _city.Dirty = value;
+                _compensationFromLenderAmount.Dirty = value;
+                _compensationFromLenderPercentage.Dirty = value;
+                _compensationFromLenderTotalAmount.Dirty = value;
+                _creditLifeOrDisabilityPremium.Dirty = value;
+                _creditToBorrowerAmount.Dirty = value;
+                _estimatedCashAtClosing.Dirty = value;
+                _estimatedCashToBorrower.Dirty = value;
+                _estimatedDueDate.Dirty = value;
+                _finalBalloonPayment.Dirty = value;
+                _firstChangePayment.Dirty = value;
+                _firstChangePercent.Dirty = value;
+                _fundingAmount.Dirty = value;
+                _gfeFees.Dirty = value;
+                _gfeLiens.Dirty = value;
+                _gfePayments.Dirty = value;
+                _gfePayoffs.Dirty = value;
+                _gfeProvidedByBrokerIndicator.Dirty = value;
+                _hasAdditionalCompensationIndicator.Dirty = value;
+                _hasLateChargesIndicator.Dirty = value;
+                _hasPrepaymentPenaltyIndicator.Dirty = value;
+                _id.Dirty = value;
+                _initialFixedOrArmType.Dirty = value;
+                _lenderOriginationFee.Dirty = value;
+                _loanFromBrokerControledFundsType.Dirty = value;
+                _lockField.Dirty = value;
+                _maxLifePayment.Dirty = value;
+                _maxPaymentAfterMonth.Dirty = value;
+                _monthlyPaymentAndEscrow.Dirty = value;
+                _mortgageBrokerComissionFee.Dirty = value;
+                _mortgageBrokerComissionFeePaidToName.Dirty = value;
+                _natureLien1Description.Dirty = value;
+                _natureLien1PayoffDescription.Dirty = value;
+                _natureLien2Description.Dirty = value;
+                _natureLien2PayoffDescription.Dirty = value;
+                _natureLien3Description.Dirty = value;
+                _natureLien3PayoffDescription.Dirty = value;
+                _paymentOfPrincipleIndicator.Dirty = value;
+                _paymentOfPrincipleType.Dirty = value;
+                _penaltyNotToExceedMonths.Dirty = value;
+                _pocPaid1.Dirty = value;
+                _pocPaid2.Dirty = value;
+                _pocPaid3.Dirty = value;
+                _postalCode.Dirty = value;
+                _prepaymentOtherDescription.Dirty = value;
+                _prepaymentOtherTypeIndicator.Dirty = value;
+                _prepaymentPenaltyAmount.Dirty = value;
+                _prepaymentPenaltyIndicator.Dirty = value;
+                _prepaymentPenaltyPeriod.Dirty = value;
+                _principalAmount.Dirty = value;
+                _purchasePayOff.Dirty = value;
+                _re882AdditionalCompensation.Dirty = value;
+                _receivedFromLenderAmount.Dirty = value;
+                _representativeLicense.Dirty = value;
+                _sourcesDeemedReliableIndicator.Dirty = value;
+                _state.Dirty = value;
+                _subtotalOfAllDeductions.Dirty = value;
+                _totalBrokerCompensationAmount.Dirty = value;
+                _totalClosingCostWithDiscount.Dirty = value;
+                _totalCostsExpenses.Dirty = value;
+                _totalMaximumCostsExpenses.Dirty = value;
+                _totalOfInitialFees.Dirty = value;
+                _totalPrepaidClosingCost.Dirty = value;
+                _totalSettlementCharges.Dirty = value;
+                _totalTaxAndInsurance.Dirty = value;
+                _yearlyFloodInsurance.Dirty = value;
+                _yearlyInsurance.Dirty = value;
+                _yearlyMortgageInsurance.Dirty = value;
+                _yearlyOtherInsurance.Dirty = value;
+                _yearlyOtherInsuranceDescription.Dirty = value;
+                _yearlyTax.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Gfe()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

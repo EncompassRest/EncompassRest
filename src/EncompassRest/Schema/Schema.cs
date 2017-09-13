@@ -11,7 +11,7 @@ namespace EncompassRest.Schema
 {
     public sealed class Schema
     {
-        private const string _apiPath = "encompass/v1/schema";
+        private const string s_apiPath = "encompass/v1/schema";
 
         public EncompassRestClient Client { get; }
 
@@ -53,7 +53,7 @@ namespace EncompassRest.Schema
             }
             queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan{queryParameters}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/loan{queryParameters}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -84,7 +84,7 @@ namespace EncompassRest.Schema
 
         private async Task<T> GetFieldSchemaInternalAsync<T>(string fieldId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/loan/{fieldId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/loan/{fieldId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

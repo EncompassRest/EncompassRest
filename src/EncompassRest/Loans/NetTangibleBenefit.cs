@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class NetTangibleBenefit : IClean
+    public sealed partial class NetTangibleBenefit : IDirty
     {
         private Value<bool?> _aprNotExceedIndicator;
         public bool? AprNotExceedIndicator { get { return _aprNotExceedIndicator; } set { _aprNotExceedIndicator = value; } }
@@ -144,163 +144,158 @@ namespace EncompassRest.Loans
         public bool? RefinancingLoanIsHomeEquityIndicator { get { return _refinancingLoanIsHomeEquityIndicator; } set { _refinancingLoanIsHomeEquityIndicator = value; } }
         private Value<bool?> _refinancingRespondBonaFide;
         public bool? RefinancingRespondBonaFide { get { return _refinancingRespondBonaFide; } set { _refinancingRespondBonaFide = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _aprNotExceedIndicator.Clean
-                    && _avoidingForeclosureIndicator.Clean
-                    && _beneficialChangedForBorrowerIndicator.Clean
-                    && _bonaFideFinancialEmergency.Clean
-                    && _borrowerCanRecoupCostofRefinancingIndicator.Clean
-                    && _borrowerCanRecoupIndicator.Clean
-                    && _borrowerMonthlyPaymentLowerThan20Indicator.Clean
-                    && _borrowerReceivedReasonable.Clean
-                    && _borrowerReceivesAmountExcessCostAndFeesIndicator.Clean
-                    && _changeLoanFromArmtoFixedIndicator.Clean
-                    && _changingLoanToFixedRateIndicator.Clean
-                    && _consolidatingOtherExistingLoansIntoNewLoanIndicator.Clean
-                    && _eliminatingBalloonPaymentIndicator.Clean
-                    && _eliminatingNegArmIndicator.Clean
-                    && _eliminatingPrivateMortgageInsuranceIndicator.Clean
-                    && _existingLoanAprPercent.Clean
-                    && _existingLoanBalloonIndicator.Clean
-                    && _existingLoanBorrowerReceivesCashOutAmount.Clean
-                    && _existingLoanBorrowerReceivesCashOutIndicator.Clean
-                    && _existingLoanBottomRatioPercent.Clean
-                    && _existingLoanDateLoanClosed.Clean
-                    && _existingLoanFullyIndexRatePercent.Clean
-                    && _existingLoanInterestRatePercent.Clean
-                    && _existingLoanIsGuaranteedIndicator.Clean
-                    && _existingLoanIsLoanRefinancedAsSpecial.Clean
-                    && _existingLoanIsNegativeAmortizationFeatureIndicator.Clean
-                    && _existingLoanIsPrepaymentPenalty.Clean
-                    && _existingLoanLoanAmortizationType.Clean
-                    && _existingLoanLoanAmount.Clean
-                    && _existingLoanLoanTerm.Clean
-                    && _existingLoanLtvPercent.Clean
-                    && _existingLoanMaximumRatePercent.Clean
-                    && _existingLoanMonthsRemaining.Clean
-                    && _existingLoanPaymentAmount.Clean
-                    && _existingLoanPaymentDifference.Clean
-                    && _existingLoanPaymentIncludeMiObligation.Clean
-                    && _existingLoanPaymentIncludeMortgageInsurance.Clean
-                    && _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean
-                    && _existingLoanPrepaymentPenaltyBasedOn.Clean
-                    && _existingLoanPrepaymentPenaltyPercentage.Clean
-                    && _existingLoanPrepaymentPenaltyTerm.Clean
-                    && _existingLoanProvidedByLicenseeType.Clean
-                    && _existingLoanPurposeType.Clean
-                    && _existingLoanRecoupCostsYears.Clean
-                    && _existingLoanSavingsAmount.Clean
-                    && _existingLoanTotalDebtPayoff.Clean
-                    && _existingLoanWeightedAverageInterestRatePercent.Clean
-                    && _homeLoanComplianceWith209.Clean
-                    && _id.Clean
-                    && _lenderDeterminedBorrowersInterest.Clean
-                    && _newLoanIsGuaranteedIndicator.Clean
-                    && _newLoanIsNegativeAmortizationFeatureIndicator.Clean
-                    && _newLoanIsSafeHarborQM.Clean
-                    && _newLoanIsSpecialMortgageOriginatedIndicator.Clean
-                    && _newLoanPaymentWithMiDifference.Clean
-                    && _newLoanPaymentWithObligationDifference.Clean
-                    && _newLoanPayOffConsolidateDebtIndicator.Clean
-                    && _newLoanWeightedAverageInterestRatePercent.Clean
-                    && _obtainingLowerIntMonthlyPaymentIndicator.Clean
-                    && _obtainingLowerIntRateIndicator.Clean
-                    && _obtainingShortAmortScheduleIndicator.Clean
-                    && _otherReason.Clean
-                    && _otherReasonDescription.Clean
-                    && _printBorrowerInitialLinesIndicator.Clean
-                    && _proceedsOfNewLoanWillBeUsedIndicator.Clean
-                    && _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean
-                    && _refinancingLoanIsHomeEquityIndicator.Clean
-                    && _refinancingRespondBonaFide.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _aprNotExceedIndicator.Dirty
+                    || _avoidingForeclosureIndicator.Dirty
+                    || _beneficialChangedForBorrowerIndicator.Dirty
+                    || _bonaFideFinancialEmergency.Dirty
+                    || _borrowerCanRecoupCostofRefinancingIndicator.Dirty
+                    || _borrowerCanRecoupIndicator.Dirty
+                    || _borrowerMonthlyPaymentLowerThan20Indicator.Dirty
+                    || _borrowerReceivedReasonable.Dirty
+                    || _borrowerReceivesAmountExcessCostAndFeesIndicator.Dirty
+                    || _changeLoanFromArmtoFixedIndicator.Dirty
+                    || _changingLoanToFixedRateIndicator.Dirty
+                    || _consolidatingOtherExistingLoansIntoNewLoanIndicator.Dirty
+                    || _eliminatingBalloonPaymentIndicator.Dirty
+                    || _eliminatingNegArmIndicator.Dirty
+                    || _eliminatingPrivateMortgageInsuranceIndicator.Dirty
+                    || _existingLoanAprPercent.Dirty
+                    || _existingLoanBalloonIndicator.Dirty
+                    || _existingLoanBorrowerReceivesCashOutAmount.Dirty
+                    || _existingLoanBorrowerReceivesCashOutIndicator.Dirty
+                    || _existingLoanBottomRatioPercent.Dirty
+                    || _existingLoanDateLoanClosed.Dirty
+                    || _existingLoanFullyIndexRatePercent.Dirty
+                    || _existingLoanInterestRatePercent.Dirty
+                    || _existingLoanIsGuaranteedIndicator.Dirty
+                    || _existingLoanIsLoanRefinancedAsSpecial.Dirty
+                    || _existingLoanIsNegativeAmortizationFeatureIndicator.Dirty
+                    || _existingLoanIsPrepaymentPenalty.Dirty
+                    || _existingLoanLoanAmortizationType.Dirty
+                    || _existingLoanLoanAmount.Dirty
+                    || _existingLoanLoanTerm.Dirty
+                    || _existingLoanLtvPercent.Dirty
+                    || _existingLoanMaximumRatePercent.Dirty
+                    || _existingLoanMonthsRemaining.Dirty
+                    || _existingLoanPaymentAmount.Dirty
+                    || _existingLoanPaymentDifference.Dirty
+                    || _existingLoanPaymentIncludeMiObligation.Dirty
+                    || _existingLoanPaymentIncludeMortgageInsurance.Dirty
+                    || _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Dirty
+                    || _existingLoanPrepaymentPenaltyBasedOn.Dirty
+                    || _existingLoanPrepaymentPenaltyPercentage.Dirty
+                    || _existingLoanPrepaymentPenaltyTerm.Dirty
+                    || _existingLoanProvidedByLicenseeType.Dirty
+                    || _existingLoanPurposeType.Dirty
+                    || _existingLoanRecoupCostsYears.Dirty
+                    || _existingLoanSavingsAmount.Dirty
+                    || _existingLoanTotalDebtPayoff.Dirty
+                    || _existingLoanWeightedAverageInterestRatePercent.Dirty
+                    || _homeLoanComplianceWith209.Dirty
+                    || _id.Dirty
+                    || _lenderDeterminedBorrowersInterest.Dirty
+                    || _newLoanIsGuaranteedIndicator.Dirty
+                    || _newLoanIsNegativeAmortizationFeatureIndicator.Dirty
+                    || _newLoanIsSafeHarborQM.Dirty
+                    || _newLoanIsSpecialMortgageOriginatedIndicator.Dirty
+                    || _newLoanPaymentWithMiDifference.Dirty
+                    || _newLoanPaymentWithObligationDifference.Dirty
+                    || _newLoanPayOffConsolidateDebtIndicator.Dirty
+                    || _newLoanWeightedAverageInterestRatePercent.Dirty
+                    || _obtainingLowerIntMonthlyPaymentIndicator.Dirty
+                    || _obtainingLowerIntRateIndicator.Dirty
+                    || _obtainingShortAmortScheduleIndicator.Dirty
+                    || _otherReason.Dirty
+                    || _otherReasonDescription.Dirty
+                    || _printBorrowerInitialLinesIndicator.Dirty
+                    || _proceedsOfNewLoanWillBeUsedIndicator.Dirty
+                    || _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty
+                    || _refinancingLoanIsHomeEquityIndicator.Dirty
+                    || _refinancingRespondBonaFide.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var aprNotExceedIndicator = _aprNotExceedIndicator; aprNotExceedIndicator.Clean = value; _aprNotExceedIndicator = aprNotExceedIndicator;
-                var avoidingForeclosureIndicator = _avoidingForeclosureIndicator; avoidingForeclosureIndicator.Clean = value; _avoidingForeclosureIndicator = avoidingForeclosureIndicator;
-                var beneficialChangedForBorrowerIndicator = _beneficialChangedForBorrowerIndicator; beneficialChangedForBorrowerIndicator.Clean = value; _beneficialChangedForBorrowerIndicator = beneficialChangedForBorrowerIndicator;
-                var bonaFideFinancialEmergency = _bonaFideFinancialEmergency; bonaFideFinancialEmergency.Clean = value; _bonaFideFinancialEmergency = bonaFideFinancialEmergency;
-                var borrowerCanRecoupCostofRefinancingIndicator = _borrowerCanRecoupCostofRefinancingIndicator; borrowerCanRecoupCostofRefinancingIndicator.Clean = value; _borrowerCanRecoupCostofRefinancingIndicator = borrowerCanRecoupCostofRefinancingIndicator;
-                var borrowerCanRecoupIndicator = _borrowerCanRecoupIndicator; borrowerCanRecoupIndicator.Clean = value; _borrowerCanRecoupIndicator = borrowerCanRecoupIndicator;
-                var borrowerMonthlyPaymentLowerThan20Indicator = _borrowerMonthlyPaymentLowerThan20Indicator; borrowerMonthlyPaymentLowerThan20Indicator.Clean = value; _borrowerMonthlyPaymentLowerThan20Indicator = borrowerMonthlyPaymentLowerThan20Indicator;
-                var borrowerReceivedReasonable = _borrowerReceivedReasonable; borrowerReceivedReasonable.Clean = value; _borrowerReceivedReasonable = borrowerReceivedReasonable;
-                var borrowerReceivesAmountExcessCostAndFeesIndicator = _borrowerReceivesAmountExcessCostAndFeesIndicator; borrowerReceivesAmountExcessCostAndFeesIndicator.Clean = value; _borrowerReceivesAmountExcessCostAndFeesIndicator = borrowerReceivesAmountExcessCostAndFeesIndicator;
-                var changeLoanFromArmtoFixedIndicator = _changeLoanFromArmtoFixedIndicator; changeLoanFromArmtoFixedIndicator.Clean = value; _changeLoanFromArmtoFixedIndicator = changeLoanFromArmtoFixedIndicator;
-                var changingLoanToFixedRateIndicator = _changingLoanToFixedRateIndicator; changingLoanToFixedRateIndicator.Clean = value; _changingLoanToFixedRateIndicator = changingLoanToFixedRateIndicator;
-                var consolidatingOtherExistingLoansIntoNewLoanIndicator = _consolidatingOtherExistingLoansIntoNewLoanIndicator; consolidatingOtherExistingLoansIntoNewLoanIndicator.Clean = value; _consolidatingOtherExistingLoansIntoNewLoanIndicator = consolidatingOtherExistingLoansIntoNewLoanIndicator;
-                var eliminatingBalloonPaymentIndicator = _eliminatingBalloonPaymentIndicator; eliminatingBalloonPaymentIndicator.Clean = value; _eliminatingBalloonPaymentIndicator = eliminatingBalloonPaymentIndicator;
-                var eliminatingNegArmIndicator = _eliminatingNegArmIndicator; eliminatingNegArmIndicator.Clean = value; _eliminatingNegArmIndicator = eliminatingNegArmIndicator;
-                var eliminatingPrivateMortgageInsuranceIndicator = _eliminatingPrivateMortgageInsuranceIndicator; eliminatingPrivateMortgageInsuranceIndicator.Clean = value; _eliminatingPrivateMortgageInsuranceIndicator = eliminatingPrivateMortgageInsuranceIndicator;
-                var existingLoanAprPercent = _existingLoanAprPercent; existingLoanAprPercent.Clean = value; _existingLoanAprPercent = existingLoanAprPercent;
-                var existingLoanBalloonIndicator = _existingLoanBalloonIndicator; existingLoanBalloonIndicator.Clean = value; _existingLoanBalloonIndicator = existingLoanBalloonIndicator;
-                var existingLoanBorrowerReceivesCashOutAmount = _existingLoanBorrowerReceivesCashOutAmount; existingLoanBorrowerReceivesCashOutAmount.Clean = value; _existingLoanBorrowerReceivesCashOutAmount = existingLoanBorrowerReceivesCashOutAmount;
-                var existingLoanBorrowerReceivesCashOutIndicator = _existingLoanBorrowerReceivesCashOutIndicator; existingLoanBorrowerReceivesCashOutIndicator.Clean = value; _existingLoanBorrowerReceivesCashOutIndicator = existingLoanBorrowerReceivesCashOutIndicator;
-                var existingLoanBottomRatioPercent = _existingLoanBottomRatioPercent; existingLoanBottomRatioPercent.Clean = value; _existingLoanBottomRatioPercent = existingLoanBottomRatioPercent;
-                var existingLoanDateLoanClosed = _existingLoanDateLoanClosed; existingLoanDateLoanClosed.Clean = value; _existingLoanDateLoanClosed = existingLoanDateLoanClosed;
-                var existingLoanFullyIndexRatePercent = _existingLoanFullyIndexRatePercent; existingLoanFullyIndexRatePercent.Clean = value; _existingLoanFullyIndexRatePercent = existingLoanFullyIndexRatePercent;
-                var existingLoanInterestRatePercent = _existingLoanInterestRatePercent; existingLoanInterestRatePercent.Clean = value; _existingLoanInterestRatePercent = existingLoanInterestRatePercent;
-                var existingLoanIsGuaranteedIndicator = _existingLoanIsGuaranteedIndicator; existingLoanIsGuaranteedIndicator.Clean = value; _existingLoanIsGuaranteedIndicator = existingLoanIsGuaranteedIndicator;
-                var existingLoanIsLoanRefinancedAsSpecial = _existingLoanIsLoanRefinancedAsSpecial; existingLoanIsLoanRefinancedAsSpecial.Clean = value; _existingLoanIsLoanRefinancedAsSpecial = existingLoanIsLoanRefinancedAsSpecial;
-                var existingLoanIsNegativeAmortizationFeatureIndicator = _existingLoanIsNegativeAmortizationFeatureIndicator; existingLoanIsNegativeAmortizationFeatureIndicator.Clean = value; _existingLoanIsNegativeAmortizationFeatureIndicator = existingLoanIsNegativeAmortizationFeatureIndicator;
-                var existingLoanIsPrepaymentPenalty = _existingLoanIsPrepaymentPenalty; existingLoanIsPrepaymentPenalty.Clean = value; _existingLoanIsPrepaymentPenalty = existingLoanIsPrepaymentPenalty;
-                var existingLoanLoanAmortizationType = _existingLoanLoanAmortizationType; existingLoanLoanAmortizationType.Clean = value; _existingLoanLoanAmortizationType = existingLoanLoanAmortizationType;
-                var existingLoanLoanAmount = _existingLoanLoanAmount; existingLoanLoanAmount.Clean = value; _existingLoanLoanAmount = existingLoanLoanAmount;
-                var existingLoanLoanTerm = _existingLoanLoanTerm; existingLoanLoanTerm.Clean = value; _existingLoanLoanTerm = existingLoanLoanTerm;
-                var existingLoanLtvPercent = _existingLoanLtvPercent; existingLoanLtvPercent.Clean = value; _existingLoanLtvPercent = existingLoanLtvPercent;
-                var existingLoanMaximumRatePercent = _existingLoanMaximumRatePercent; existingLoanMaximumRatePercent.Clean = value; _existingLoanMaximumRatePercent = existingLoanMaximumRatePercent;
-                var existingLoanMonthsRemaining = _existingLoanMonthsRemaining; existingLoanMonthsRemaining.Clean = value; _existingLoanMonthsRemaining = existingLoanMonthsRemaining;
-                var existingLoanPaymentAmount = _existingLoanPaymentAmount; existingLoanPaymentAmount.Clean = value; _existingLoanPaymentAmount = existingLoanPaymentAmount;
-                var existingLoanPaymentDifference = _existingLoanPaymentDifference; existingLoanPaymentDifference.Clean = value; _existingLoanPaymentDifference = existingLoanPaymentDifference;
-                var existingLoanPaymentIncludeMiObligation = _existingLoanPaymentIncludeMiObligation; existingLoanPaymentIncludeMiObligation.Clean = value; _existingLoanPaymentIncludeMiObligation = existingLoanPaymentIncludeMiObligation;
-                var existingLoanPaymentIncludeMortgageInsurance = _existingLoanPaymentIncludeMortgageInsurance; existingLoanPaymentIncludeMortgageInsurance.Clean = value; _existingLoanPaymentIncludeMortgageInsurance = existingLoanPaymentIncludeMortgageInsurance;
-                var existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Clean = value; _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
-                var existingLoanPrepaymentPenaltyBasedOn = _existingLoanPrepaymentPenaltyBasedOn; existingLoanPrepaymentPenaltyBasedOn.Clean = value; _existingLoanPrepaymentPenaltyBasedOn = existingLoanPrepaymentPenaltyBasedOn;
-                var existingLoanPrepaymentPenaltyPercentage = _existingLoanPrepaymentPenaltyPercentage; existingLoanPrepaymentPenaltyPercentage.Clean = value; _existingLoanPrepaymentPenaltyPercentage = existingLoanPrepaymentPenaltyPercentage;
-                var existingLoanPrepaymentPenaltyTerm = _existingLoanPrepaymentPenaltyTerm; existingLoanPrepaymentPenaltyTerm.Clean = value; _existingLoanPrepaymentPenaltyTerm = existingLoanPrepaymentPenaltyTerm;
-                var existingLoanProvidedByLicenseeType = _existingLoanProvidedByLicenseeType; existingLoanProvidedByLicenseeType.Clean = value; _existingLoanProvidedByLicenseeType = existingLoanProvidedByLicenseeType;
-                var existingLoanPurposeType = _existingLoanPurposeType; existingLoanPurposeType.Clean = value; _existingLoanPurposeType = existingLoanPurposeType;
-                var existingLoanRecoupCostsYears = _existingLoanRecoupCostsYears; existingLoanRecoupCostsYears.Clean = value; _existingLoanRecoupCostsYears = existingLoanRecoupCostsYears;
-                var existingLoanSavingsAmount = _existingLoanSavingsAmount; existingLoanSavingsAmount.Clean = value; _existingLoanSavingsAmount = existingLoanSavingsAmount;
-                var existingLoanTotalDebtPayoff = _existingLoanTotalDebtPayoff; existingLoanTotalDebtPayoff.Clean = value; _existingLoanTotalDebtPayoff = existingLoanTotalDebtPayoff;
-                var existingLoanWeightedAverageInterestRatePercent = _existingLoanWeightedAverageInterestRatePercent; existingLoanWeightedAverageInterestRatePercent.Clean = value; _existingLoanWeightedAverageInterestRatePercent = existingLoanWeightedAverageInterestRatePercent;
-                var homeLoanComplianceWith209 = _homeLoanComplianceWith209; homeLoanComplianceWith209.Clean = value; _homeLoanComplianceWith209 = homeLoanComplianceWith209;
-                var id = _id; id.Clean = value; _id = id;
-                var lenderDeterminedBorrowersInterest = _lenderDeterminedBorrowersInterest; lenderDeterminedBorrowersInterest.Clean = value; _lenderDeterminedBorrowersInterest = lenderDeterminedBorrowersInterest;
-                var newLoanIsGuaranteedIndicator = _newLoanIsGuaranteedIndicator; newLoanIsGuaranteedIndicator.Clean = value; _newLoanIsGuaranteedIndicator = newLoanIsGuaranteedIndicator;
-                var newLoanIsNegativeAmortizationFeatureIndicator = _newLoanIsNegativeAmortizationFeatureIndicator; newLoanIsNegativeAmortizationFeatureIndicator.Clean = value; _newLoanIsNegativeAmortizationFeatureIndicator = newLoanIsNegativeAmortizationFeatureIndicator;
-                var newLoanIsSafeHarborQM = _newLoanIsSafeHarborQM; newLoanIsSafeHarborQM.Clean = value; _newLoanIsSafeHarborQM = newLoanIsSafeHarborQM;
-                var newLoanIsSpecialMortgageOriginatedIndicator = _newLoanIsSpecialMortgageOriginatedIndicator; newLoanIsSpecialMortgageOriginatedIndicator.Clean = value; _newLoanIsSpecialMortgageOriginatedIndicator = newLoanIsSpecialMortgageOriginatedIndicator;
-                var newLoanPaymentWithMiDifference = _newLoanPaymentWithMiDifference; newLoanPaymentWithMiDifference.Clean = value; _newLoanPaymentWithMiDifference = newLoanPaymentWithMiDifference;
-                var newLoanPaymentWithObligationDifference = _newLoanPaymentWithObligationDifference; newLoanPaymentWithObligationDifference.Clean = value; _newLoanPaymentWithObligationDifference = newLoanPaymentWithObligationDifference;
-                var newLoanPayOffConsolidateDebtIndicator = _newLoanPayOffConsolidateDebtIndicator; newLoanPayOffConsolidateDebtIndicator.Clean = value; _newLoanPayOffConsolidateDebtIndicator = newLoanPayOffConsolidateDebtIndicator;
-                var newLoanWeightedAverageInterestRatePercent = _newLoanWeightedAverageInterestRatePercent; newLoanWeightedAverageInterestRatePercent.Clean = value; _newLoanWeightedAverageInterestRatePercent = newLoanWeightedAverageInterestRatePercent;
-                var obtainingLowerIntMonthlyPaymentIndicator = _obtainingLowerIntMonthlyPaymentIndicator; obtainingLowerIntMonthlyPaymentIndicator.Clean = value; _obtainingLowerIntMonthlyPaymentIndicator = obtainingLowerIntMonthlyPaymentIndicator;
-                var obtainingLowerIntRateIndicator = _obtainingLowerIntRateIndicator; obtainingLowerIntRateIndicator.Clean = value; _obtainingLowerIntRateIndicator = obtainingLowerIntRateIndicator;
-                var obtainingShortAmortScheduleIndicator = _obtainingShortAmortScheduleIndicator; obtainingShortAmortScheduleIndicator.Clean = value; _obtainingShortAmortScheduleIndicator = obtainingShortAmortScheduleIndicator;
-                var otherReason = _otherReason; otherReason.Clean = value; _otherReason = otherReason;
-                var otherReasonDescription = _otherReasonDescription; otherReasonDescription.Clean = value; _otherReasonDescription = otherReasonDescription;
-                var printBorrowerInitialLinesIndicator = _printBorrowerInitialLinesIndicator; printBorrowerInitialLinesIndicator.Clean = value; _printBorrowerInitialLinesIndicator = printBorrowerInitialLinesIndicator;
-                var proceedsOfNewLoanWillBeUsedIndicator = _proceedsOfNewLoanWillBeUsedIndicator; proceedsOfNewLoanWillBeUsedIndicator.Clean = value; _proceedsOfNewLoanWillBeUsedIndicator = proceedsOfNewLoanWillBeUsedIndicator;
-                var receivingCashOutFromNewLoanGreaterThanClosingCostIndicator = _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator; receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Clean = value; _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator = receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
-                var refinancingLoanIsHomeEquityIndicator = _refinancingLoanIsHomeEquityIndicator; refinancingLoanIsHomeEquityIndicator.Clean = value; _refinancingLoanIsHomeEquityIndicator = refinancingLoanIsHomeEquityIndicator;
-                var refinancingRespondBonaFide = _refinancingRespondBonaFide; refinancingRespondBonaFide.Clean = value; _refinancingRespondBonaFide = refinancingRespondBonaFide;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _aprNotExceedIndicator.Dirty = value;
+                _avoidingForeclosureIndicator.Dirty = value;
+                _beneficialChangedForBorrowerIndicator.Dirty = value;
+                _bonaFideFinancialEmergency.Dirty = value;
+                _borrowerCanRecoupCostofRefinancingIndicator.Dirty = value;
+                _borrowerCanRecoupIndicator.Dirty = value;
+                _borrowerMonthlyPaymentLowerThan20Indicator.Dirty = value;
+                _borrowerReceivedReasonable.Dirty = value;
+                _borrowerReceivesAmountExcessCostAndFeesIndicator.Dirty = value;
+                _changeLoanFromArmtoFixedIndicator.Dirty = value;
+                _changingLoanToFixedRateIndicator.Dirty = value;
+                _consolidatingOtherExistingLoansIntoNewLoanIndicator.Dirty = value;
+                _eliminatingBalloonPaymentIndicator.Dirty = value;
+                _eliminatingNegArmIndicator.Dirty = value;
+                _eliminatingPrivateMortgageInsuranceIndicator.Dirty = value;
+                _existingLoanAprPercent.Dirty = value;
+                _existingLoanBalloonIndicator.Dirty = value;
+                _existingLoanBorrowerReceivesCashOutAmount.Dirty = value;
+                _existingLoanBorrowerReceivesCashOutIndicator.Dirty = value;
+                _existingLoanBottomRatioPercent.Dirty = value;
+                _existingLoanDateLoanClosed.Dirty = value;
+                _existingLoanFullyIndexRatePercent.Dirty = value;
+                _existingLoanInterestRatePercent.Dirty = value;
+                _existingLoanIsGuaranteedIndicator.Dirty = value;
+                _existingLoanIsLoanRefinancedAsSpecial.Dirty = value;
+                _existingLoanIsNegativeAmortizationFeatureIndicator.Dirty = value;
+                _existingLoanIsPrepaymentPenalty.Dirty = value;
+                _existingLoanLoanAmortizationType.Dirty = value;
+                _existingLoanLoanAmount.Dirty = value;
+                _existingLoanLoanTerm.Dirty = value;
+                _existingLoanLtvPercent.Dirty = value;
+                _existingLoanMaximumRatePercent.Dirty = value;
+                _existingLoanMonthsRemaining.Dirty = value;
+                _existingLoanPaymentAmount.Dirty = value;
+                _existingLoanPaymentDifference.Dirty = value;
+                _existingLoanPaymentIncludeMiObligation.Dirty = value;
+                _existingLoanPaymentIncludeMortgageInsurance.Dirty = value;
+                _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan.Dirty = value;
+                _existingLoanPrepaymentPenaltyBasedOn.Dirty = value;
+                _existingLoanPrepaymentPenaltyPercentage.Dirty = value;
+                _existingLoanPrepaymentPenaltyTerm.Dirty = value;
+                _existingLoanProvidedByLicenseeType.Dirty = value;
+                _existingLoanPurposeType.Dirty = value;
+                _existingLoanRecoupCostsYears.Dirty = value;
+                _existingLoanSavingsAmount.Dirty = value;
+                _existingLoanTotalDebtPayoff.Dirty = value;
+                _existingLoanWeightedAverageInterestRatePercent.Dirty = value;
+                _homeLoanComplianceWith209.Dirty = value;
+                _id.Dirty = value;
+                _lenderDeterminedBorrowersInterest.Dirty = value;
+                _newLoanIsGuaranteedIndicator.Dirty = value;
+                _newLoanIsNegativeAmortizationFeatureIndicator.Dirty = value;
+                _newLoanIsSafeHarborQM.Dirty = value;
+                _newLoanIsSpecialMortgageOriginatedIndicator.Dirty = value;
+                _newLoanPaymentWithMiDifference.Dirty = value;
+                _newLoanPaymentWithObligationDifference.Dirty = value;
+                _newLoanPayOffConsolidateDebtIndicator.Dirty = value;
+                _newLoanWeightedAverageInterestRatePercent.Dirty = value;
+                _obtainingLowerIntMonthlyPaymentIndicator.Dirty = value;
+                _obtainingLowerIntRateIndicator.Dirty = value;
+                _obtainingShortAmortScheduleIndicator.Dirty = value;
+                _otherReason.Dirty = value;
+                _otherReasonDescription.Dirty = value;
+                _printBorrowerInitialLinesIndicator.Dirty = value;
+                _proceedsOfNewLoanWillBeUsedIndicator.Dirty = value;
+                _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty = value;
+                _refinancingLoanIsHomeEquityIndicator.Dirty = value;
+                _refinancingRespondBonaFide.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public NetTangibleBenefit()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

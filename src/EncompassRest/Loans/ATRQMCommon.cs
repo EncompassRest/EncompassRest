@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ATRQMCommon : IClean
+    public sealed partial class ATRQMCommon : IDirty
     {
         private Value<decimal?> _affiliatesFees;
         public decimal? AffiliatesFees { get { return _affiliatesFees; } set { _affiliatesFees = value; } }
@@ -420,439 +420,434 @@ namespace EncompassRest.Loans
         public bool? WithOriginalCreditor { get { return _withOriginalCreditor; } set { _withOriginalCreditor = value; } }
         private Value<DateTime?> _writtenApplicationDate;
         public DateTime? WrittenApplicationDate { get { return _writtenApplicationDate; } set { _writtenApplicationDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _affiliatesFees.Clean
-                    && _aPORMaxBonaFideDiscountPoint.Clean
-                    && _aRMRecastDate.Clean
-                    && _aRMRecastMonthlyPayment.Clean
-                    && _aTRLoanType.Clean
-                    && _aUSDataDiscrepencyResolutionComments.Clean
-                    && _aUSDataDiscrepencyResolutionDate.Clean
-                    && _aUSDataDiscrepencyResolvedBy.Clean
-                    && _bonaFideDiscountPoint.Clean
-                    && _bonaFideDiscountPointAmount.Clean
-                    && _brokerCompensationWhenRateSet.Clean
-                    && _collateralRepandWarrReliefEligibilityType.Clean
-                    && _compensationPTBFees.Clean
-                    && _creditInsPremiumFees.Clean
-                    && _creditorType.Clean
-                    && _creditorTypeDescription.Clean
-                    && _creditType.Clean
-                    && _currentQMFeeThresholdAmt.Clean
-                    && _currentQMFeeThresholdPercent.Clean
-                    && _dateOfLastMonthlyPayment.Clean
-                    && _discountPointAmount.Clean
-                    && _discountPointFees.Clean
-                    && _discountPointPercentage.Clean
-                    && _documentationGuidelineMessages4V.Clean
-                    && _documentationGuidelineMessages5C.Clean
-                    && _documentationGuidelineMessages8Y.Clean
-                    && _documentationGuidelineMessagesCN.Clean
-                    && _documentationGuidelineMessagesCP.Clean
-                    && _documentationGuidelineMessagesCV.Clean
-                    && _documentationGuidelineMessagesCY.Clean
-                    && _documentationGuidelineMessagesCZ.Clean
-                    && _documentationGuidelineMessagesDP.Clean
-                    && _documentationGuidelineMessagesDZ.Clean
-                    && _documentationGuidelineMessagesE5.Clean
-                    && _documentationGuidelineMessagesIM.Clean
-                    && _documentationGuidelineMessagesIQ.Clean
-                    && _documentationGuidelineMessagesJF.Clean
-                    && _documentationGuidelineMessagesQJ.Clean
-                    && _documentationGuidelineMessagesQN.Clean
-                    && _documentationGuidelineMessagesQQ.Clean
-                    && _documentationGuidelineMessagesQS.Clean
-                    && _documentationGuidelineMessagesU7.Clean
-                    && _documentationGuidelineMessagesX1.Clean
-                    && _documentationGuidelineMessagesX3.Clean
-                    && _documentationGuidelineMessagesX5.Clean
-                    && _documentationGuidelineMessagesX7.Clean
-                    && _documentationGuidelineMessagesXA.Clean
-                    && _documentationGuidelineMessagesXM.Clean
-                    && _documentationGuidelineMessagesXP.Clean
-                    && _documentationGuidelineMessagesXR.Clean
-                    && _documentationGuidelineMessagesXT.Clean
-                    && _documentationGuidelineMessagesY8.Clean
-                    && _documentationGuidelineMessagesYG.Clean
-                    && _documentationGuidelineMessagesYJ.Clean
-                    && _documentationGuidelineMessagesYY.Clean
-                    && _documentationGuidelineMessagesYZ.Clean
-                    && _eligibleNonStandardToStandard.Clean
-                    && _financeChargeFees.Clean
-                    && _firstChangeRecase.Clean
-                    && _firstPmtDateAfterRecast.Clean
-                    && _fullPaymentAfterInterestOnly.Clean
-                    && _fullyARMPaymentAfterNegAm.Clean
-                    && _fullyIndexRateHousingRatio.Clean
-                    && _fullyIndexRateMaxTotalPayment.Clean
-                    && _fullyIndexRateMonthlyPayment.Clean
-                    && _fullyIndexRateTotalDebtRatio.Clean
-                    && _generalATR_Status_Alimony.Clean
-                    && _generalATR_Status_Assets.Clean
-                    && _generalATR_Status_ChildSupport.Clean
-                    && _generalATR_Status_CoveredLoan.Clean
-                    && _generalATR_Status_CreditHistory.Clean
-                    && _generalATR_Status_DebtObligations.Clean
-                    && _generalATR_Status_DTI.Clean
-                    && _generalATR_Status_Employment.Clean
-                    && _generalATR_Status_Income.Clean
-                    && _generalATR_Status_MtgRelatedObligations.Clean
-                    && _generalATR_Status_Overall.Clean
-                    && _generalATR_Status_ResidualIncome.Clean
-                    && _generalATR_Status_SimultaneousLoan.Clean
-                    && _gSEAgencyQM_CalculatedThreshold.Clean
-                    && _gSEAgencyQM_Status_Alimony.Clean
-                    && _gSEAgencyQM_Status_Assets.Clean
-                    && _gSEAgencyQM_Status_BalloonPayment.Clean
-                    && _gSEAgencyQM_Status_ChildSupport.Clean
-                    && _gSEAgencyQM_Status_CoveredLoan.Clean
-                    && _gSEAgencyQM_Status_CreditHistory.Clean
-                    && _gSEAgencyQM_Status_DebtObligations.Clean
-                    && _gSEAgencyQM_Status_DTI.Clean
-                    && _gSEAgencyQM_Status_Employment.Clean
-                    && _gSEAgencyQM_Status_Income.Clean
-                    && _gSEAgencyQM_Status_InterestOnly.Clean
-                    && _gSEAgencyQM_Status_LoanTerm.Clean
-                    && _gSEAgencyQM_Status_MtgRelatedObligations.Clean
-                    && _gSEAgencyQM_Status_NegativeAmortization.Clean
-                    && _gSEAgencyQM_Status_Overall.Clean
-                    && _gSEAgencyQM_Status_PointsFeesLimit.Clean
-                    && _gSEAgencyQM_Status_PrepaymentPenalty.Clean
-                    && _gSEAgencyQM_Status_ResidualIncome.Clean
-                    && _gSEAgencyQM_Status_SafeHarborEligibility.Clean
-                    && _gSEAgencyQM_Status_SimultaneousLoan.Clean
-                    && _has30DayLatePayment.Clean
-                    && _id.Clean
-                    && _initialMaxTotalPayment.Clean
-                    && _initialRateHousingRatio.Clean
-                    && _initialRateMonthlyPayment.Clean
-                    && _initialRateTotalDebtRatio.Clean
-                    && _interestOnlyMonths.Clean
-                    && _interestOnlyRecastDate.Clean
-                    && _isConsumerLiklyDefault.Clean
-                    && _isEligibleForSafeHarbor.Clean
-                    && _isEvaluatedAlimonyObligations.Clean
-                    && _isEvaluatedChildSupportObligations.Clean
-                    && _isEvaluatedCreditHistory.Clean
-                    && _isEvaluatedCurrentEmploymentStatus.Clean
-                    && _isEvaluatedCurrentExpectedAssets.Clean
-                    && _isEvaluatedCurrentExpectedIncome.Clean
-                    && _isEvaluatedDebtObligations.Clean
-                    && _isEvaluatedDebtToIncomeRatio.Clean
-                    && _isEvaluatedMonthlyCoveredLoanPayment.Clean
-                    && _isEvaluatedMonthlyMortgageRelatedObligations.Clean
-                    && _isEvaluatedMonthlySimultaneousLoanPayment.Clean
-                    && _isEvaluatedResidualIncome.Clean
-                    && _isHigherPricedLoan.Clean
-                    && _loanProcessingInformationD4.Clean
-                    && _loanProcessingInformationGO.Clean
-                    && _loanProcessingInformationHA.Clean
-                    && _loanProcessingInformationLE.Clean
-                    && _loanProcessingInformationLF.Clean
-                    && _loanProcessingInformationMA.Clean
-                    && _loanProgram.Clean
-                    && _loanProgramDescription.Clean
-                    && _loanRateFixedin5Years.Clean
-                    && _lOBrokerCompensationAmount.Clean
-                    && _max5YrsHousingRatio.Clean
-                    && _max5YrsPrincipleAndInterest.Clean
-                    && _max5YrsTotalDebtRatio.Clean
-                    && _max5YrsTotalPayment.Clean
-                    && _maxPrepaymentPenaltyFees.Clean
-                    && _negAmRecastDate.Clean
-                    && _paymentDecreasedBy10Percent.Clean
-                    && _pointsFeesThresholdMet.Clean
-                    && _prepaymentPenaltyPayoffFees.Clean
-                    && _prepayPenaltyPercentage.Clean
-                    && _preventConsumersDefault.Clean
-                    && _principalBalanceIncreased.Clean
-                    && _principalHasDeferred.Clean
-                    && _qMLoanType.Clean
-                    && _rateReductionBasisPoints.Clean
-                    && _rateReductionDiscountPoints.Clean
-                    && _rateReductionMaxBonaFideDiscountPoint.Clean
-                    && _realEstateFees.Clean
-                    && _recastDifferencePayment.Clean
-                    && _regZTotalLoanAmount.Clean
-                    && _requiredServicesLenderSelectedAmt.Clean
-                    && _smallCreditorQM_CalculatedThreshold.Clean
-                    && _smallCreditorQM_Status_Alimony.Clean
-                    && _smallCreditorQM_Status_Assets.Clean
-                    && _smallCreditorQM_Status_BalloonPayment.Clean
-                    && _smallCreditorQM_Status_ChildSupport.Clean
-                    && _smallCreditorQM_Status_CoveredLoan.Clean
-                    && _smallCreditorQM_Status_DebtObligations.Clean
-                    && _smallCreditorQM_Status_DTI.Clean
-                    && _smallCreditorQM_Status_Income.Clean
-                    && _smallCreditorQM_Status_InterestOnly.Clean
-                    && _smallCreditorQM_Status_LoanTerm.Clean
-                    && _smallCreditorQM_Status_MtgRelatedObligations.Clean
-                    && _smallCreditorQM_Status_NegativeAmortization.Clean
-                    && _smallCreditorQM_Status_Overall.Clean
-                    && _smallCreditorQM_Status_PointsFeesLimit.Clean
-                    && _smallCreditorQM_Status_PrepaymentPenalty.Clean
-                    && _smallCreditorQM_Status_ResidualIncome.Clean
-                    && _smallCreditorQM_Status_SafeHarborEligibility.Clean
-                    && _standardQM_CalculatedThreshold.Clean
-                    && _standardQM_Status_Alimony.Clean
-                    && _standardQM_Status_Assets.Clean
-                    && _standardQM_Status_BalloonPayment.Clean
-                    && _standardQM_Status_ChildSupport.Clean
-                    && _standardQM_Status_CoveredLoan.Clean
-                    && _standardQM_Status_CreditHistory.Clean
-                    && _standardQM_Status_DebtObligations.Clean
-                    && _standardQM_Status_DTI.Clean
-                    && _standardQM_Status_Employment.Clean
-                    && _standardQM_Status_Income.Clean
-                    && _standardQM_Status_InterestOnly.Clean
-                    && _standardQM_Status_LoanTerm.Clean
-                    && _standardQM_Status_MtgRelatedObligations.Clean
-                    && _standardQM_Status_NegativeAmortization.Clean
-                    && _standardQM_Status_Overall.Clean
-                    && _standardQM_Status_PointsFeesLimit.Clean
-                    && _standardQM_Status_PrepaymentPenalty.Clean
-                    && _standardQM_Status_ResidualIncome.Clean
-                    && _standardQM_Status_SafeHarborEligibility.Clean
-                    && _standardQM_Status_SimultaneousLoan.Clean
-                    && _startingAdjustedRateMaxBonaFideDiscountPoint.Clean
-                    && _status_CreditHistory.Clean
-                    && _status_SimultaneousLoan.Clean
-                    && _thresholdExceedsQM.Clean
-                    && _titleServicesLenderTitleinsuranceFee.Clean
-                    && _totalCoMortgagorIncome.Clean
-                    && _totalIncome.Clean
-                    && _totalPointsFeesSec32Percent.Clean
-                    && _transactionExemptFromRegZ.Clean
-                    && _unitCount.Clean
-                    && _upfrontPMIFees.Clean
-                    && _withOriginalCreditor.Clean
-                    && _writtenApplicationDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _affiliatesFees.Dirty
+                    || _aPORMaxBonaFideDiscountPoint.Dirty
+                    || _aRMRecastDate.Dirty
+                    || _aRMRecastMonthlyPayment.Dirty
+                    || _aTRLoanType.Dirty
+                    || _aUSDataDiscrepencyResolutionComments.Dirty
+                    || _aUSDataDiscrepencyResolutionDate.Dirty
+                    || _aUSDataDiscrepencyResolvedBy.Dirty
+                    || _bonaFideDiscountPoint.Dirty
+                    || _bonaFideDiscountPointAmount.Dirty
+                    || _brokerCompensationWhenRateSet.Dirty
+                    || _collateralRepandWarrReliefEligibilityType.Dirty
+                    || _compensationPTBFees.Dirty
+                    || _creditInsPremiumFees.Dirty
+                    || _creditorType.Dirty
+                    || _creditorTypeDescription.Dirty
+                    || _creditType.Dirty
+                    || _currentQMFeeThresholdAmt.Dirty
+                    || _currentQMFeeThresholdPercent.Dirty
+                    || _dateOfLastMonthlyPayment.Dirty
+                    || _discountPointAmount.Dirty
+                    || _discountPointFees.Dirty
+                    || _discountPointPercentage.Dirty
+                    || _documentationGuidelineMessages4V.Dirty
+                    || _documentationGuidelineMessages5C.Dirty
+                    || _documentationGuidelineMessages8Y.Dirty
+                    || _documentationGuidelineMessagesCN.Dirty
+                    || _documentationGuidelineMessagesCP.Dirty
+                    || _documentationGuidelineMessagesCV.Dirty
+                    || _documentationGuidelineMessagesCY.Dirty
+                    || _documentationGuidelineMessagesCZ.Dirty
+                    || _documentationGuidelineMessagesDP.Dirty
+                    || _documentationGuidelineMessagesDZ.Dirty
+                    || _documentationGuidelineMessagesE5.Dirty
+                    || _documentationGuidelineMessagesIM.Dirty
+                    || _documentationGuidelineMessagesIQ.Dirty
+                    || _documentationGuidelineMessagesJF.Dirty
+                    || _documentationGuidelineMessagesQJ.Dirty
+                    || _documentationGuidelineMessagesQN.Dirty
+                    || _documentationGuidelineMessagesQQ.Dirty
+                    || _documentationGuidelineMessagesQS.Dirty
+                    || _documentationGuidelineMessagesU7.Dirty
+                    || _documentationGuidelineMessagesX1.Dirty
+                    || _documentationGuidelineMessagesX3.Dirty
+                    || _documentationGuidelineMessagesX5.Dirty
+                    || _documentationGuidelineMessagesX7.Dirty
+                    || _documentationGuidelineMessagesXA.Dirty
+                    || _documentationGuidelineMessagesXM.Dirty
+                    || _documentationGuidelineMessagesXP.Dirty
+                    || _documentationGuidelineMessagesXR.Dirty
+                    || _documentationGuidelineMessagesXT.Dirty
+                    || _documentationGuidelineMessagesY8.Dirty
+                    || _documentationGuidelineMessagesYG.Dirty
+                    || _documentationGuidelineMessagesYJ.Dirty
+                    || _documentationGuidelineMessagesYY.Dirty
+                    || _documentationGuidelineMessagesYZ.Dirty
+                    || _eligibleNonStandardToStandard.Dirty
+                    || _financeChargeFees.Dirty
+                    || _firstChangeRecase.Dirty
+                    || _firstPmtDateAfterRecast.Dirty
+                    || _fullPaymentAfterInterestOnly.Dirty
+                    || _fullyARMPaymentAfterNegAm.Dirty
+                    || _fullyIndexRateHousingRatio.Dirty
+                    || _fullyIndexRateMaxTotalPayment.Dirty
+                    || _fullyIndexRateMonthlyPayment.Dirty
+                    || _fullyIndexRateTotalDebtRatio.Dirty
+                    || _generalATR_Status_Alimony.Dirty
+                    || _generalATR_Status_Assets.Dirty
+                    || _generalATR_Status_ChildSupport.Dirty
+                    || _generalATR_Status_CoveredLoan.Dirty
+                    || _generalATR_Status_CreditHistory.Dirty
+                    || _generalATR_Status_DebtObligations.Dirty
+                    || _generalATR_Status_DTI.Dirty
+                    || _generalATR_Status_Employment.Dirty
+                    || _generalATR_Status_Income.Dirty
+                    || _generalATR_Status_MtgRelatedObligations.Dirty
+                    || _generalATR_Status_Overall.Dirty
+                    || _generalATR_Status_ResidualIncome.Dirty
+                    || _generalATR_Status_SimultaneousLoan.Dirty
+                    || _gSEAgencyQM_CalculatedThreshold.Dirty
+                    || _gSEAgencyQM_Status_Alimony.Dirty
+                    || _gSEAgencyQM_Status_Assets.Dirty
+                    || _gSEAgencyQM_Status_BalloonPayment.Dirty
+                    || _gSEAgencyQM_Status_ChildSupport.Dirty
+                    || _gSEAgencyQM_Status_CoveredLoan.Dirty
+                    || _gSEAgencyQM_Status_CreditHistory.Dirty
+                    || _gSEAgencyQM_Status_DebtObligations.Dirty
+                    || _gSEAgencyQM_Status_DTI.Dirty
+                    || _gSEAgencyQM_Status_Employment.Dirty
+                    || _gSEAgencyQM_Status_Income.Dirty
+                    || _gSEAgencyQM_Status_InterestOnly.Dirty
+                    || _gSEAgencyQM_Status_LoanTerm.Dirty
+                    || _gSEAgencyQM_Status_MtgRelatedObligations.Dirty
+                    || _gSEAgencyQM_Status_NegativeAmortization.Dirty
+                    || _gSEAgencyQM_Status_Overall.Dirty
+                    || _gSEAgencyQM_Status_PointsFeesLimit.Dirty
+                    || _gSEAgencyQM_Status_PrepaymentPenalty.Dirty
+                    || _gSEAgencyQM_Status_ResidualIncome.Dirty
+                    || _gSEAgencyQM_Status_SafeHarborEligibility.Dirty
+                    || _gSEAgencyQM_Status_SimultaneousLoan.Dirty
+                    || _has30DayLatePayment.Dirty
+                    || _id.Dirty
+                    || _initialMaxTotalPayment.Dirty
+                    || _initialRateHousingRatio.Dirty
+                    || _initialRateMonthlyPayment.Dirty
+                    || _initialRateTotalDebtRatio.Dirty
+                    || _interestOnlyMonths.Dirty
+                    || _interestOnlyRecastDate.Dirty
+                    || _isConsumerLiklyDefault.Dirty
+                    || _isEligibleForSafeHarbor.Dirty
+                    || _isEvaluatedAlimonyObligations.Dirty
+                    || _isEvaluatedChildSupportObligations.Dirty
+                    || _isEvaluatedCreditHistory.Dirty
+                    || _isEvaluatedCurrentEmploymentStatus.Dirty
+                    || _isEvaluatedCurrentExpectedAssets.Dirty
+                    || _isEvaluatedCurrentExpectedIncome.Dirty
+                    || _isEvaluatedDebtObligations.Dirty
+                    || _isEvaluatedDebtToIncomeRatio.Dirty
+                    || _isEvaluatedMonthlyCoveredLoanPayment.Dirty
+                    || _isEvaluatedMonthlyMortgageRelatedObligations.Dirty
+                    || _isEvaluatedMonthlySimultaneousLoanPayment.Dirty
+                    || _isEvaluatedResidualIncome.Dirty
+                    || _isHigherPricedLoan.Dirty
+                    || _loanProcessingInformationD4.Dirty
+                    || _loanProcessingInformationGO.Dirty
+                    || _loanProcessingInformationHA.Dirty
+                    || _loanProcessingInformationLE.Dirty
+                    || _loanProcessingInformationLF.Dirty
+                    || _loanProcessingInformationMA.Dirty
+                    || _loanProgram.Dirty
+                    || _loanProgramDescription.Dirty
+                    || _loanRateFixedin5Years.Dirty
+                    || _lOBrokerCompensationAmount.Dirty
+                    || _max5YrsHousingRatio.Dirty
+                    || _max5YrsPrincipleAndInterest.Dirty
+                    || _max5YrsTotalDebtRatio.Dirty
+                    || _max5YrsTotalPayment.Dirty
+                    || _maxPrepaymentPenaltyFees.Dirty
+                    || _negAmRecastDate.Dirty
+                    || _paymentDecreasedBy10Percent.Dirty
+                    || _pointsFeesThresholdMet.Dirty
+                    || _prepaymentPenaltyPayoffFees.Dirty
+                    || _prepayPenaltyPercentage.Dirty
+                    || _preventConsumersDefault.Dirty
+                    || _principalBalanceIncreased.Dirty
+                    || _principalHasDeferred.Dirty
+                    || _qMLoanType.Dirty
+                    || _rateReductionBasisPoints.Dirty
+                    || _rateReductionDiscountPoints.Dirty
+                    || _rateReductionMaxBonaFideDiscountPoint.Dirty
+                    || _realEstateFees.Dirty
+                    || _recastDifferencePayment.Dirty
+                    || _regZTotalLoanAmount.Dirty
+                    || _requiredServicesLenderSelectedAmt.Dirty
+                    || _smallCreditorQM_CalculatedThreshold.Dirty
+                    || _smallCreditorQM_Status_Alimony.Dirty
+                    || _smallCreditorQM_Status_Assets.Dirty
+                    || _smallCreditorQM_Status_BalloonPayment.Dirty
+                    || _smallCreditorQM_Status_ChildSupport.Dirty
+                    || _smallCreditorQM_Status_CoveredLoan.Dirty
+                    || _smallCreditorQM_Status_DebtObligations.Dirty
+                    || _smallCreditorQM_Status_DTI.Dirty
+                    || _smallCreditorQM_Status_Income.Dirty
+                    || _smallCreditorQM_Status_InterestOnly.Dirty
+                    || _smallCreditorQM_Status_LoanTerm.Dirty
+                    || _smallCreditorQM_Status_MtgRelatedObligations.Dirty
+                    || _smallCreditorQM_Status_NegativeAmortization.Dirty
+                    || _smallCreditorQM_Status_Overall.Dirty
+                    || _smallCreditorQM_Status_PointsFeesLimit.Dirty
+                    || _smallCreditorQM_Status_PrepaymentPenalty.Dirty
+                    || _smallCreditorQM_Status_ResidualIncome.Dirty
+                    || _smallCreditorQM_Status_SafeHarborEligibility.Dirty
+                    || _standardQM_CalculatedThreshold.Dirty
+                    || _standardQM_Status_Alimony.Dirty
+                    || _standardQM_Status_Assets.Dirty
+                    || _standardQM_Status_BalloonPayment.Dirty
+                    || _standardQM_Status_ChildSupport.Dirty
+                    || _standardQM_Status_CoveredLoan.Dirty
+                    || _standardQM_Status_CreditHistory.Dirty
+                    || _standardQM_Status_DebtObligations.Dirty
+                    || _standardQM_Status_DTI.Dirty
+                    || _standardQM_Status_Employment.Dirty
+                    || _standardQM_Status_Income.Dirty
+                    || _standardQM_Status_InterestOnly.Dirty
+                    || _standardQM_Status_LoanTerm.Dirty
+                    || _standardQM_Status_MtgRelatedObligations.Dirty
+                    || _standardQM_Status_NegativeAmortization.Dirty
+                    || _standardQM_Status_Overall.Dirty
+                    || _standardQM_Status_PointsFeesLimit.Dirty
+                    || _standardQM_Status_PrepaymentPenalty.Dirty
+                    || _standardQM_Status_ResidualIncome.Dirty
+                    || _standardQM_Status_SafeHarborEligibility.Dirty
+                    || _standardQM_Status_SimultaneousLoan.Dirty
+                    || _startingAdjustedRateMaxBonaFideDiscountPoint.Dirty
+                    || _status_CreditHistory.Dirty
+                    || _status_SimultaneousLoan.Dirty
+                    || _thresholdExceedsQM.Dirty
+                    || _titleServicesLenderTitleinsuranceFee.Dirty
+                    || _totalCoMortgagorIncome.Dirty
+                    || _totalIncome.Dirty
+                    || _totalPointsFeesSec32Percent.Dirty
+                    || _transactionExemptFromRegZ.Dirty
+                    || _unitCount.Dirty
+                    || _upfrontPMIFees.Dirty
+                    || _withOriginalCreditor.Dirty
+                    || _writtenApplicationDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var affiliatesFees = _affiliatesFees; affiliatesFees.Clean = value; _affiliatesFees = affiliatesFees;
-                var aPORMaxBonaFideDiscountPoint = _aPORMaxBonaFideDiscountPoint; aPORMaxBonaFideDiscountPoint.Clean = value; _aPORMaxBonaFideDiscountPoint = aPORMaxBonaFideDiscountPoint;
-                var aRMRecastDate = _aRMRecastDate; aRMRecastDate.Clean = value; _aRMRecastDate = aRMRecastDate;
-                var aRMRecastMonthlyPayment = _aRMRecastMonthlyPayment; aRMRecastMonthlyPayment.Clean = value; _aRMRecastMonthlyPayment = aRMRecastMonthlyPayment;
-                var aTRLoanType = _aTRLoanType; aTRLoanType.Clean = value; _aTRLoanType = aTRLoanType;
-                var aUSDataDiscrepencyResolutionComments = _aUSDataDiscrepencyResolutionComments; aUSDataDiscrepencyResolutionComments.Clean = value; _aUSDataDiscrepencyResolutionComments = aUSDataDiscrepencyResolutionComments;
-                var aUSDataDiscrepencyResolutionDate = _aUSDataDiscrepencyResolutionDate; aUSDataDiscrepencyResolutionDate.Clean = value; _aUSDataDiscrepencyResolutionDate = aUSDataDiscrepencyResolutionDate;
-                var aUSDataDiscrepencyResolvedBy = _aUSDataDiscrepencyResolvedBy; aUSDataDiscrepencyResolvedBy.Clean = value; _aUSDataDiscrepencyResolvedBy = aUSDataDiscrepencyResolvedBy;
-                var bonaFideDiscountPoint = _bonaFideDiscountPoint; bonaFideDiscountPoint.Clean = value; _bonaFideDiscountPoint = bonaFideDiscountPoint;
-                var bonaFideDiscountPointAmount = _bonaFideDiscountPointAmount; bonaFideDiscountPointAmount.Clean = value; _bonaFideDiscountPointAmount = bonaFideDiscountPointAmount;
-                var brokerCompensationWhenRateSet = _brokerCompensationWhenRateSet; brokerCompensationWhenRateSet.Clean = value; _brokerCompensationWhenRateSet = brokerCompensationWhenRateSet;
-                var collateralRepandWarrReliefEligibilityType = _collateralRepandWarrReliefEligibilityType; collateralRepandWarrReliefEligibilityType.Clean = value; _collateralRepandWarrReliefEligibilityType = collateralRepandWarrReliefEligibilityType;
-                var compensationPTBFees = _compensationPTBFees; compensationPTBFees.Clean = value; _compensationPTBFees = compensationPTBFees;
-                var creditInsPremiumFees = _creditInsPremiumFees; creditInsPremiumFees.Clean = value; _creditInsPremiumFees = creditInsPremiumFees;
-                var creditorType = _creditorType; creditorType.Clean = value; _creditorType = creditorType;
-                var creditorTypeDescription = _creditorTypeDescription; creditorTypeDescription.Clean = value; _creditorTypeDescription = creditorTypeDescription;
-                var creditType = _creditType; creditType.Clean = value; _creditType = creditType;
-                var currentQMFeeThresholdAmt = _currentQMFeeThresholdAmt; currentQMFeeThresholdAmt.Clean = value; _currentQMFeeThresholdAmt = currentQMFeeThresholdAmt;
-                var currentQMFeeThresholdPercent = _currentQMFeeThresholdPercent; currentQMFeeThresholdPercent.Clean = value; _currentQMFeeThresholdPercent = currentQMFeeThresholdPercent;
-                var dateOfLastMonthlyPayment = _dateOfLastMonthlyPayment; dateOfLastMonthlyPayment.Clean = value; _dateOfLastMonthlyPayment = dateOfLastMonthlyPayment;
-                var discountPointAmount = _discountPointAmount; discountPointAmount.Clean = value; _discountPointAmount = discountPointAmount;
-                var discountPointFees = _discountPointFees; discountPointFees.Clean = value; _discountPointFees = discountPointFees;
-                var discountPointPercentage = _discountPointPercentage; discountPointPercentage.Clean = value; _discountPointPercentage = discountPointPercentage;
-                var documentationGuidelineMessages4V = _documentationGuidelineMessages4V; documentationGuidelineMessages4V.Clean = value; _documentationGuidelineMessages4V = documentationGuidelineMessages4V;
-                var documentationGuidelineMessages5C = _documentationGuidelineMessages5C; documentationGuidelineMessages5C.Clean = value; _documentationGuidelineMessages5C = documentationGuidelineMessages5C;
-                var documentationGuidelineMessages8Y = _documentationGuidelineMessages8Y; documentationGuidelineMessages8Y.Clean = value; _documentationGuidelineMessages8Y = documentationGuidelineMessages8Y;
-                var documentationGuidelineMessagesCN = _documentationGuidelineMessagesCN; documentationGuidelineMessagesCN.Clean = value; _documentationGuidelineMessagesCN = documentationGuidelineMessagesCN;
-                var documentationGuidelineMessagesCP = _documentationGuidelineMessagesCP; documentationGuidelineMessagesCP.Clean = value; _documentationGuidelineMessagesCP = documentationGuidelineMessagesCP;
-                var documentationGuidelineMessagesCV = _documentationGuidelineMessagesCV; documentationGuidelineMessagesCV.Clean = value; _documentationGuidelineMessagesCV = documentationGuidelineMessagesCV;
-                var documentationGuidelineMessagesCY = _documentationGuidelineMessagesCY; documentationGuidelineMessagesCY.Clean = value; _documentationGuidelineMessagesCY = documentationGuidelineMessagesCY;
-                var documentationGuidelineMessagesCZ = _documentationGuidelineMessagesCZ; documentationGuidelineMessagesCZ.Clean = value; _documentationGuidelineMessagesCZ = documentationGuidelineMessagesCZ;
-                var documentationGuidelineMessagesDP = _documentationGuidelineMessagesDP; documentationGuidelineMessagesDP.Clean = value; _documentationGuidelineMessagesDP = documentationGuidelineMessagesDP;
-                var documentationGuidelineMessagesDZ = _documentationGuidelineMessagesDZ; documentationGuidelineMessagesDZ.Clean = value; _documentationGuidelineMessagesDZ = documentationGuidelineMessagesDZ;
-                var documentationGuidelineMessagesE5 = _documentationGuidelineMessagesE5; documentationGuidelineMessagesE5.Clean = value; _documentationGuidelineMessagesE5 = documentationGuidelineMessagesE5;
-                var documentationGuidelineMessagesIM = _documentationGuidelineMessagesIM; documentationGuidelineMessagesIM.Clean = value; _documentationGuidelineMessagesIM = documentationGuidelineMessagesIM;
-                var documentationGuidelineMessagesIQ = _documentationGuidelineMessagesIQ; documentationGuidelineMessagesIQ.Clean = value; _documentationGuidelineMessagesIQ = documentationGuidelineMessagesIQ;
-                var documentationGuidelineMessagesJF = _documentationGuidelineMessagesJF; documentationGuidelineMessagesJF.Clean = value; _documentationGuidelineMessagesJF = documentationGuidelineMessagesJF;
-                var documentationGuidelineMessagesQJ = _documentationGuidelineMessagesQJ; documentationGuidelineMessagesQJ.Clean = value; _documentationGuidelineMessagesQJ = documentationGuidelineMessagesQJ;
-                var documentationGuidelineMessagesQN = _documentationGuidelineMessagesQN; documentationGuidelineMessagesQN.Clean = value; _documentationGuidelineMessagesQN = documentationGuidelineMessagesQN;
-                var documentationGuidelineMessagesQQ = _documentationGuidelineMessagesQQ; documentationGuidelineMessagesQQ.Clean = value; _documentationGuidelineMessagesQQ = documentationGuidelineMessagesQQ;
-                var documentationGuidelineMessagesQS = _documentationGuidelineMessagesQS; documentationGuidelineMessagesQS.Clean = value; _documentationGuidelineMessagesQS = documentationGuidelineMessagesQS;
-                var documentationGuidelineMessagesU7 = _documentationGuidelineMessagesU7; documentationGuidelineMessagesU7.Clean = value; _documentationGuidelineMessagesU7 = documentationGuidelineMessagesU7;
-                var documentationGuidelineMessagesX1 = _documentationGuidelineMessagesX1; documentationGuidelineMessagesX1.Clean = value; _documentationGuidelineMessagesX1 = documentationGuidelineMessagesX1;
-                var documentationGuidelineMessagesX3 = _documentationGuidelineMessagesX3; documentationGuidelineMessagesX3.Clean = value; _documentationGuidelineMessagesX3 = documentationGuidelineMessagesX3;
-                var documentationGuidelineMessagesX5 = _documentationGuidelineMessagesX5; documentationGuidelineMessagesX5.Clean = value; _documentationGuidelineMessagesX5 = documentationGuidelineMessagesX5;
-                var documentationGuidelineMessagesX7 = _documentationGuidelineMessagesX7; documentationGuidelineMessagesX7.Clean = value; _documentationGuidelineMessagesX7 = documentationGuidelineMessagesX7;
-                var documentationGuidelineMessagesXA = _documentationGuidelineMessagesXA; documentationGuidelineMessagesXA.Clean = value; _documentationGuidelineMessagesXA = documentationGuidelineMessagesXA;
-                var documentationGuidelineMessagesXM = _documentationGuidelineMessagesXM; documentationGuidelineMessagesXM.Clean = value; _documentationGuidelineMessagesXM = documentationGuidelineMessagesXM;
-                var documentationGuidelineMessagesXP = _documentationGuidelineMessagesXP; documentationGuidelineMessagesXP.Clean = value; _documentationGuidelineMessagesXP = documentationGuidelineMessagesXP;
-                var documentationGuidelineMessagesXR = _documentationGuidelineMessagesXR; documentationGuidelineMessagesXR.Clean = value; _documentationGuidelineMessagesXR = documentationGuidelineMessagesXR;
-                var documentationGuidelineMessagesXT = _documentationGuidelineMessagesXT; documentationGuidelineMessagesXT.Clean = value; _documentationGuidelineMessagesXT = documentationGuidelineMessagesXT;
-                var documentationGuidelineMessagesY8 = _documentationGuidelineMessagesY8; documentationGuidelineMessagesY8.Clean = value; _documentationGuidelineMessagesY8 = documentationGuidelineMessagesY8;
-                var documentationGuidelineMessagesYG = _documentationGuidelineMessagesYG; documentationGuidelineMessagesYG.Clean = value; _documentationGuidelineMessagesYG = documentationGuidelineMessagesYG;
-                var documentationGuidelineMessagesYJ = _documentationGuidelineMessagesYJ; documentationGuidelineMessagesYJ.Clean = value; _documentationGuidelineMessagesYJ = documentationGuidelineMessagesYJ;
-                var documentationGuidelineMessagesYY = _documentationGuidelineMessagesYY; documentationGuidelineMessagesYY.Clean = value; _documentationGuidelineMessagesYY = documentationGuidelineMessagesYY;
-                var documentationGuidelineMessagesYZ = _documentationGuidelineMessagesYZ; documentationGuidelineMessagesYZ.Clean = value; _documentationGuidelineMessagesYZ = documentationGuidelineMessagesYZ;
-                var eligibleNonStandardToStandard = _eligibleNonStandardToStandard; eligibleNonStandardToStandard.Clean = value; _eligibleNonStandardToStandard = eligibleNonStandardToStandard;
-                var financeChargeFees = _financeChargeFees; financeChargeFees.Clean = value; _financeChargeFees = financeChargeFees;
-                var firstChangeRecase = _firstChangeRecase; firstChangeRecase.Clean = value; _firstChangeRecase = firstChangeRecase;
-                var firstPmtDateAfterRecast = _firstPmtDateAfterRecast; firstPmtDateAfterRecast.Clean = value; _firstPmtDateAfterRecast = firstPmtDateAfterRecast;
-                var fullPaymentAfterInterestOnly = _fullPaymentAfterInterestOnly; fullPaymentAfterInterestOnly.Clean = value; _fullPaymentAfterInterestOnly = fullPaymentAfterInterestOnly;
-                var fullyARMPaymentAfterNegAm = _fullyARMPaymentAfterNegAm; fullyARMPaymentAfterNegAm.Clean = value; _fullyARMPaymentAfterNegAm = fullyARMPaymentAfterNegAm;
-                var fullyIndexRateHousingRatio = _fullyIndexRateHousingRatio; fullyIndexRateHousingRatio.Clean = value; _fullyIndexRateHousingRatio = fullyIndexRateHousingRatio;
-                var fullyIndexRateMaxTotalPayment = _fullyIndexRateMaxTotalPayment; fullyIndexRateMaxTotalPayment.Clean = value; _fullyIndexRateMaxTotalPayment = fullyIndexRateMaxTotalPayment;
-                var fullyIndexRateMonthlyPayment = _fullyIndexRateMonthlyPayment; fullyIndexRateMonthlyPayment.Clean = value; _fullyIndexRateMonthlyPayment = fullyIndexRateMonthlyPayment;
-                var fullyIndexRateTotalDebtRatio = _fullyIndexRateTotalDebtRatio; fullyIndexRateTotalDebtRatio.Clean = value; _fullyIndexRateTotalDebtRatio = fullyIndexRateTotalDebtRatio;
-                var generalATR_Status_Alimony = _generalATR_Status_Alimony; generalATR_Status_Alimony.Clean = value; _generalATR_Status_Alimony = generalATR_Status_Alimony;
-                var generalATR_Status_Assets = _generalATR_Status_Assets; generalATR_Status_Assets.Clean = value; _generalATR_Status_Assets = generalATR_Status_Assets;
-                var generalATR_Status_ChildSupport = _generalATR_Status_ChildSupport; generalATR_Status_ChildSupport.Clean = value; _generalATR_Status_ChildSupport = generalATR_Status_ChildSupport;
-                var generalATR_Status_CoveredLoan = _generalATR_Status_CoveredLoan; generalATR_Status_CoveredLoan.Clean = value; _generalATR_Status_CoveredLoan = generalATR_Status_CoveredLoan;
-                var generalATR_Status_CreditHistory = _generalATR_Status_CreditHistory; generalATR_Status_CreditHistory.Clean = value; _generalATR_Status_CreditHistory = generalATR_Status_CreditHistory;
-                var generalATR_Status_DebtObligations = _generalATR_Status_DebtObligations; generalATR_Status_DebtObligations.Clean = value; _generalATR_Status_DebtObligations = generalATR_Status_DebtObligations;
-                var generalATR_Status_DTI = _generalATR_Status_DTI; generalATR_Status_DTI.Clean = value; _generalATR_Status_DTI = generalATR_Status_DTI;
-                var generalATR_Status_Employment = _generalATR_Status_Employment; generalATR_Status_Employment.Clean = value; _generalATR_Status_Employment = generalATR_Status_Employment;
-                var generalATR_Status_Income = _generalATR_Status_Income; generalATR_Status_Income.Clean = value; _generalATR_Status_Income = generalATR_Status_Income;
-                var generalATR_Status_MtgRelatedObligations = _generalATR_Status_MtgRelatedObligations; generalATR_Status_MtgRelatedObligations.Clean = value; _generalATR_Status_MtgRelatedObligations = generalATR_Status_MtgRelatedObligations;
-                var generalATR_Status_Overall = _generalATR_Status_Overall; generalATR_Status_Overall.Clean = value; _generalATR_Status_Overall = generalATR_Status_Overall;
-                var generalATR_Status_ResidualIncome = _generalATR_Status_ResidualIncome; generalATR_Status_ResidualIncome.Clean = value; _generalATR_Status_ResidualIncome = generalATR_Status_ResidualIncome;
-                var generalATR_Status_SimultaneousLoan = _generalATR_Status_SimultaneousLoan; generalATR_Status_SimultaneousLoan.Clean = value; _generalATR_Status_SimultaneousLoan = generalATR_Status_SimultaneousLoan;
-                var gSEAgencyQM_CalculatedThreshold = _gSEAgencyQM_CalculatedThreshold; gSEAgencyQM_CalculatedThreshold.Clean = value; _gSEAgencyQM_CalculatedThreshold = gSEAgencyQM_CalculatedThreshold;
-                var gSEAgencyQM_Status_Alimony = _gSEAgencyQM_Status_Alimony; gSEAgencyQM_Status_Alimony.Clean = value; _gSEAgencyQM_Status_Alimony = gSEAgencyQM_Status_Alimony;
-                var gSEAgencyQM_Status_Assets = _gSEAgencyQM_Status_Assets; gSEAgencyQM_Status_Assets.Clean = value; _gSEAgencyQM_Status_Assets = gSEAgencyQM_Status_Assets;
-                var gSEAgencyQM_Status_BalloonPayment = _gSEAgencyQM_Status_BalloonPayment; gSEAgencyQM_Status_BalloonPayment.Clean = value; _gSEAgencyQM_Status_BalloonPayment = gSEAgencyQM_Status_BalloonPayment;
-                var gSEAgencyQM_Status_ChildSupport = _gSEAgencyQM_Status_ChildSupport; gSEAgencyQM_Status_ChildSupport.Clean = value; _gSEAgencyQM_Status_ChildSupport = gSEAgencyQM_Status_ChildSupport;
-                var gSEAgencyQM_Status_CoveredLoan = _gSEAgencyQM_Status_CoveredLoan; gSEAgencyQM_Status_CoveredLoan.Clean = value; _gSEAgencyQM_Status_CoveredLoan = gSEAgencyQM_Status_CoveredLoan;
-                var gSEAgencyQM_Status_CreditHistory = _gSEAgencyQM_Status_CreditHistory; gSEAgencyQM_Status_CreditHistory.Clean = value; _gSEAgencyQM_Status_CreditHistory = gSEAgencyQM_Status_CreditHistory;
-                var gSEAgencyQM_Status_DebtObligations = _gSEAgencyQM_Status_DebtObligations; gSEAgencyQM_Status_DebtObligations.Clean = value; _gSEAgencyQM_Status_DebtObligations = gSEAgencyQM_Status_DebtObligations;
-                var gSEAgencyQM_Status_DTI = _gSEAgencyQM_Status_DTI; gSEAgencyQM_Status_DTI.Clean = value; _gSEAgencyQM_Status_DTI = gSEAgencyQM_Status_DTI;
-                var gSEAgencyQM_Status_Employment = _gSEAgencyQM_Status_Employment; gSEAgencyQM_Status_Employment.Clean = value; _gSEAgencyQM_Status_Employment = gSEAgencyQM_Status_Employment;
-                var gSEAgencyQM_Status_Income = _gSEAgencyQM_Status_Income; gSEAgencyQM_Status_Income.Clean = value; _gSEAgencyQM_Status_Income = gSEAgencyQM_Status_Income;
-                var gSEAgencyQM_Status_InterestOnly = _gSEAgencyQM_Status_InterestOnly; gSEAgencyQM_Status_InterestOnly.Clean = value; _gSEAgencyQM_Status_InterestOnly = gSEAgencyQM_Status_InterestOnly;
-                var gSEAgencyQM_Status_LoanTerm = _gSEAgencyQM_Status_LoanTerm; gSEAgencyQM_Status_LoanTerm.Clean = value; _gSEAgencyQM_Status_LoanTerm = gSEAgencyQM_Status_LoanTerm;
-                var gSEAgencyQM_Status_MtgRelatedObligations = _gSEAgencyQM_Status_MtgRelatedObligations; gSEAgencyQM_Status_MtgRelatedObligations.Clean = value; _gSEAgencyQM_Status_MtgRelatedObligations = gSEAgencyQM_Status_MtgRelatedObligations;
-                var gSEAgencyQM_Status_NegativeAmortization = _gSEAgencyQM_Status_NegativeAmortization; gSEAgencyQM_Status_NegativeAmortization.Clean = value; _gSEAgencyQM_Status_NegativeAmortization = gSEAgencyQM_Status_NegativeAmortization;
-                var gSEAgencyQM_Status_Overall = _gSEAgencyQM_Status_Overall; gSEAgencyQM_Status_Overall.Clean = value; _gSEAgencyQM_Status_Overall = gSEAgencyQM_Status_Overall;
-                var gSEAgencyQM_Status_PointsFeesLimit = _gSEAgencyQM_Status_PointsFeesLimit; gSEAgencyQM_Status_PointsFeesLimit.Clean = value; _gSEAgencyQM_Status_PointsFeesLimit = gSEAgencyQM_Status_PointsFeesLimit;
-                var gSEAgencyQM_Status_PrepaymentPenalty = _gSEAgencyQM_Status_PrepaymentPenalty; gSEAgencyQM_Status_PrepaymentPenalty.Clean = value; _gSEAgencyQM_Status_PrepaymentPenalty = gSEAgencyQM_Status_PrepaymentPenalty;
-                var gSEAgencyQM_Status_ResidualIncome = _gSEAgencyQM_Status_ResidualIncome; gSEAgencyQM_Status_ResidualIncome.Clean = value; _gSEAgencyQM_Status_ResidualIncome = gSEAgencyQM_Status_ResidualIncome;
-                var gSEAgencyQM_Status_SafeHarborEligibility = _gSEAgencyQM_Status_SafeHarborEligibility; gSEAgencyQM_Status_SafeHarborEligibility.Clean = value; _gSEAgencyQM_Status_SafeHarborEligibility = gSEAgencyQM_Status_SafeHarborEligibility;
-                var gSEAgencyQM_Status_SimultaneousLoan = _gSEAgencyQM_Status_SimultaneousLoan; gSEAgencyQM_Status_SimultaneousLoan.Clean = value; _gSEAgencyQM_Status_SimultaneousLoan = gSEAgencyQM_Status_SimultaneousLoan;
-                var has30DayLatePayment = _has30DayLatePayment; has30DayLatePayment.Clean = value; _has30DayLatePayment = has30DayLatePayment;
-                var id = _id; id.Clean = value; _id = id;
-                var initialMaxTotalPayment = _initialMaxTotalPayment; initialMaxTotalPayment.Clean = value; _initialMaxTotalPayment = initialMaxTotalPayment;
-                var initialRateHousingRatio = _initialRateHousingRatio; initialRateHousingRatio.Clean = value; _initialRateHousingRatio = initialRateHousingRatio;
-                var initialRateMonthlyPayment = _initialRateMonthlyPayment; initialRateMonthlyPayment.Clean = value; _initialRateMonthlyPayment = initialRateMonthlyPayment;
-                var initialRateTotalDebtRatio = _initialRateTotalDebtRatio; initialRateTotalDebtRatio.Clean = value; _initialRateTotalDebtRatio = initialRateTotalDebtRatio;
-                var interestOnlyMonths = _interestOnlyMonths; interestOnlyMonths.Clean = value; _interestOnlyMonths = interestOnlyMonths;
-                var interestOnlyRecastDate = _interestOnlyRecastDate; interestOnlyRecastDate.Clean = value; _interestOnlyRecastDate = interestOnlyRecastDate;
-                var isConsumerLiklyDefault = _isConsumerLiklyDefault; isConsumerLiklyDefault.Clean = value; _isConsumerLiklyDefault = isConsumerLiklyDefault;
-                var isEligibleForSafeHarbor = _isEligibleForSafeHarbor; isEligibleForSafeHarbor.Clean = value; _isEligibleForSafeHarbor = isEligibleForSafeHarbor;
-                var isEvaluatedAlimonyObligations = _isEvaluatedAlimonyObligations; isEvaluatedAlimonyObligations.Clean = value; _isEvaluatedAlimonyObligations = isEvaluatedAlimonyObligations;
-                var isEvaluatedChildSupportObligations = _isEvaluatedChildSupportObligations; isEvaluatedChildSupportObligations.Clean = value; _isEvaluatedChildSupportObligations = isEvaluatedChildSupportObligations;
-                var isEvaluatedCreditHistory = _isEvaluatedCreditHistory; isEvaluatedCreditHistory.Clean = value; _isEvaluatedCreditHistory = isEvaluatedCreditHistory;
-                var isEvaluatedCurrentEmploymentStatus = _isEvaluatedCurrentEmploymentStatus; isEvaluatedCurrentEmploymentStatus.Clean = value; _isEvaluatedCurrentEmploymentStatus = isEvaluatedCurrentEmploymentStatus;
-                var isEvaluatedCurrentExpectedAssets = _isEvaluatedCurrentExpectedAssets; isEvaluatedCurrentExpectedAssets.Clean = value; _isEvaluatedCurrentExpectedAssets = isEvaluatedCurrentExpectedAssets;
-                var isEvaluatedCurrentExpectedIncome = _isEvaluatedCurrentExpectedIncome; isEvaluatedCurrentExpectedIncome.Clean = value; _isEvaluatedCurrentExpectedIncome = isEvaluatedCurrentExpectedIncome;
-                var isEvaluatedDebtObligations = _isEvaluatedDebtObligations; isEvaluatedDebtObligations.Clean = value; _isEvaluatedDebtObligations = isEvaluatedDebtObligations;
-                var isEvaluatedDebtToIncomeRatio = _isEvaluatedDebtToIncomeRatio; isEvaluatedDebtToIncomeRatio.Clean = value; _isEvaluatedDebtToIncomeRatio = isEvaluatedDebtToIncomeRatio;
-                var isEvaluatedMonthlyCoveredLoanPayment = _isEvaluatedMonthlyCoveredLoanPayment; isEvaluatedMonthlyCoveredLoanPayment.Clean = value; _isEvaluatedMonthlyCoveredLoanPayment = isEvaluatedMonthlyCoveredLoanPayment;
-                var isEvaluatedMonthlyMortgageRelatedObligations = _isEvaluatedMonthlyMortgageRelatedObligations; isEvaluatedMonthlyMortgageRelatedObligations.Clean = value; _isEvaluatedMonthlyMortgageRelatedObligations = isEvaluatedMonthlyMortgageRelatedObligations;
-                var isEvaluatedMonthlySimultaneousLoanPayment = _isEvaluatedMonthlySimultaneousLoanPayment; isEvaluatedMonthlySimultaneousLoanPayment.Clean = value; _isEvaluatedMonthlySimultaneousLoanPayment = isEvaluatedMonthlySimultaneousLoanPayment;
-                var isEvaluatedResidualIncome = _isEvaluatedResidualIncome; isEvaluatedResidualIncome.Clean = value; _isEvaluatedResidualIncome = isEvaluatedResidualIncome;
-                var isHigherPricedLoan = _isHigherPricedLoan; isHigherPricedLoan.Clean = value; _isHigherPricedLoan = isHigherPricedLoan;
-                var loanProcessingInformationD4 = _loanProcessingInformationD4; loanProcessingInformationD4.Clean = value; _loanProcessingInformationD4 = loanProcessingInformationD4;
-                var loanProcessingInformationGO = _loanProcessingInformationGO; loanProcessingInformationGO.Clean = value; _loanProcessingInformationGO = loanProcessingInformationGO;
-                var loanProcessingInformationHA = _loanProcessingInformationHA; loanProcessingInformationHA.Clean = value; _loanProcessingInformationHA = loanProcessingInformationHA;
-                var loanProcessingInformationLE = _loanProcessingInformationLE; loanProcessingInformationLE.Clean = value; _loanProcessingInformationLE = loanProcessingInformationLE;
-                var loanProcessingInformationLF = _loanProcessingInformationLF; loanProcessingInformationLF.Clean = value; _loanProcessingInformationLF = loanProcessingInformationLF;
-                var loanProcessingInformationMA = _loanProcessingInformationMA; loanProcessingInformationMA.Clean = value; _loanProcessingInformationMA = loanProcessingInformationMA;
-                var loanProgram = _loanProgram; loanProgram.Clean = value; _loanProgram = loanProgram;
-                var loanProgramDescription = _loanProgramDescription; loanProgramDescription.Clean = value; _loanProgramDescription = loanProgramDescription;
-                var loanRateFixedin5Years = _loanRateFixedin5Years; loanRateFixedin5Years.Clean = value; _loanRateFixedin5Years = loanRateFixedin5Years;
-                var lOBrokerCompensationAmount = _lOBrokerCompensationAmount; lOBrokerCompensationAmount.Clean = value; _lOBrokerCompensationAmount = lOBrokerCompensationAmount;
-                var max5YrsHousingRatio = _max5YrsHousingRatio; max5YrsHousingRatio.Clean = value; _max5YrsHousingRatio = max5YrsHousingRatio;
-                var max5YrsPrincipleAndInterest = _max5YrsPrincipleAndInterest; max5YrsPrincipleAndInterest.Clean = value; _max5YrsPrincipleAndInterest = max5YrsPrincipleAndInterest;
-                var max5YrsTotalDebtRatio = _max5YrsTotalDebtRatio; max5YrsTotalDebtRatio.Clean = value; _max5YrsTotalDebtRatio = max5YrsTotalDebtRatio;
-                var max5YrsTotalPayment = _max5YrsTotalPayment; max5YrsTotalPayment.Clean = value; _max5YrsTotalPayment = max5YrsTotalPayment;
-                var maxPrepaymentPenaltyFees = _maxPrepaymentPenaltyFees; maxPrepaymentPenaltyFees.Clean = value; _maxPrepaymentPenaltyFees = maxPrepaymentPenaltyFees;
-                var negAmRecastDate = _negAmRecastDate; negAmRecastDate.Clean = value; _negAmRecastDate = negAmRecastDate;
-                var paymentDecreasedBy10Percent = _paymentDecreasedBy10Percent; paymentDecreasedBy10Percent.Clean = value; _paymentDecreasedBy10Percent = paymentDecreasedBy10Percent;
-                var pointsFeesThresholdMet = _pointsFeesThresholdMet; pointsFeesThresholdMet.Clean = value; _pointsFeesThresholdMet = pointsFeesThresholdMet;
-                var prepaymentPenaltyPayoffFees = _prepaymentPenaltyPayoffFees; prepaymentPenaltyPayoffFees.Clean = value; _prepaymentPenaltyPayoffFees = prepaymentPenaltyPayoffFees;
-                var prepayPenaltyPercentage = _prepayPenaltyPercentage; prepayPenaltyPercentage.Clean = value; _prepayPenaltyPercentage = prepayPenaltyPercentage;
-                var preventConsumersDefault = _preventConsumersDefault; preventConsumersDefault.Clean = value; _preventConsumersDefault = preventConsumersDefault;
-                var principalBalanceIncreased = _principalBalanceIncreased; principalBalanceIncreased.Clean = value; _principalBalanceIncreased = principalBalanceIncreased;
-                var principalHasDeferred = _principalHasDeferred; principalHasDeferred.Clean = value; _principalHasDeferred = principalHasDeferred;
-                var qMLoanType = _qMLoanType; qMLoanType.Clean = value; _qMLoanType = qMLoanType;
-                var rateReductionBasisPoints = _rateReductionBasisPoints; rateReductionBasisPoints.Clean = value; _rateReductionBasisPoints = rateReductionBasisPoints;
-                var rateReductionDiscountPoints = _rateReductionDiscountPoints; rateReductionDiscountPoints.Clean = value; _rateReductionDiscountPoints = rateReductionDiscountPoints;
-                var rateReductionMaxBonaFideDiscountPoint = _rateReductionMaxBonaFideDiscountPoint; rateReductionMaxBonaFideDiscountPoint.Clean = value; _rateReductionMaxBonaFideDiscountPoint = rateReductionMaxBonaFideDiscountPoint;
-                var realEstateFees = _realEstateFees; realEstateFees.Clean = value; _realEstateFees = realEstateFees;
-                var recastDifferencePayment = _recastDifferencePayment; recastDifferencePayment.Clean = value; _recastDifferencePayment = recastDifferencePayment;
-                var regZTotalLoanAmount = _regZTotalLoanAmount; regZTotalLoanAmount.Clean = value; _regZTotalLoanAmount = regZTotalLoanAmount;
-                var requiredServicesLenderSelectedAmt = _requiredServicesLenderSelectedAmt; requiredServicesLenderSelectedAmt.Clean = value; _requiredServicesLenderSelectedAmt = requiredServicesLenderSelectedAmt;
-                var smallCreditorQM_CalculatedThreshold = _smallCreditorQM_CalculatedThreshold; smallCreditorQM_CalculatedThreshold.Clean = value; _smallCreditorQM_CalculatedThreshold = smallCreditorQM_CalculatedThreshold;
-                var smallCreditorQM_Status_Alimony = _smallCreditorQM_Status_Alimony; smallCreditorQM_Status_Alimony.Clean = value; _smallCreditorQM_Status_Alimony = smallCreditorQM_Status_Alimony;
-                var smallCreditorQM_Status_Assets = _smallCreditorQM_Status_Assets; smallCreditorQM_Status_Assets.Clean = value; _smallCreditorQM_Status_Assets = smallCreditorQM_Status_Assets;
-                var smallCreditorQM_Status_BalloonPayment = _smallCreditorQM_Status_BalloonPayment; smallCreditorQM_Status_BalloonPayment.Clean = value; _smallCreditorQM_Status_BalloonPayment = smallCreditorQM_Status_BalloonPayment;
-                var smallCreditorQM_Status_ChildSupport = _smallCreditorQM_Status_ChildSupport; smallCreditorQM_Status_ChildSupport.Clean = value; _smallCreditorQM_Status_ChildSupport = smallCreditorQM_Status_ChildSupport;
-                var smallCreditorQM_Status_CoveredLoan = _smallCreditorQM_Status_CoveredLoan; smallCreditorQM_Status_CoveredLoan.Clean = value; _smallCreditorQM_Status_CoveredLoan = smallCreditorQM_Status_CoveredLoan;
-                var smallCreditorQM_Status_DebtObligations = _smallCreditorQM_Status_DebtObligations; smallCreditorQM_Status_DebtObligations.Clean = value; _smallCreditorQM_Status_DebtObligations = smallCreditorQM_Status_DebtObligations;
-                var smallCreditorQM_Status_DTI = _smallCreditorQM_Status_DTI; smallCreditorQM_Status_DTI.Clean = value; _smallCreditorQM_Status_DTI = smallCreditorQM_Status_DTI;
-                var smallCreditorQM_Status_Income = _smallCreditorQM_Status_Income; smallCreditorQM_Status_Income.Clean = value; _smallCreditorQM_Status_Income = smallCreditorQM_Status_Income;
-                var smallCreditorQM_Status_InterestOnly = _smallCreditorQM_Status_InterestOnly; smallCreditorQM_Status_InterestOnly.Clean = value; _smallCreditorQM_Status_InterestOnly = smallCreditorQM_Status_InterestOnly;
-                var smallCreditorQM_Status_LoanTerm = _smallCreditorQM_Status_LoanTerm; smallCreditorQM_Status_LoanTerm.Clean = value; _smallCreditorQM_Status_LoanTerm = smallCreditorQM_Status_LoanTerm;
-                var smallCreditorQM_Status_MtgRelatedObligations = _smallCreditorQM_Status_MtgRelatedObligations; smallCreditorQM_Status_MtgRelatedObligations.Clean = value; _smallCreditorQM_Status_MtgRelatedObligations = smallCreditorQM_Status_MtgRelatedObligations;
-                var smallCreditorQM_Status_NegativeAmortization = _smallCreditorQM_Status_NegativeAmortization; smallCreditorQM_Status_NegativeAmortization.Clean = value; _smallCreditorQM_Status_NegativeAmortization = smallCreditorQM_Status_NegativeAmortization;
-                var smallCreditorQM_Status_Overall = _smallCreditorQM_Status_Overall; smallCreditorQM_Status_Overall.Clean = value; _smallCreditorQM_Status_Overall = smallCreditorQM_Status_Overall;
-                var smallCreditorQM_Status_PointsFeesLimit = _smallCreditorQM_Status_PointsFeesLimit; smallCreditorQM_Status_PointsFeesLimit.Clean = value; _smallCreditorQM_Status_PointsFeesLimit = smallCreditorQM_Status_PointsFeesLimit;
-                var smallCreditorQM_Status_PrepaymentPenalty = _smallCreditorQM_Status_PrepaymentPenalty; smallCreditorQM_Status_PrepaymentPenalty.Clean = value; _smallCreditorQM_Status_PrepaymentPenalty = smallCreditorQM_Status_PrepaymentPenalty;
-                var smallCreditorQM_Status_ResidualIncome = _smallCreditorQM_Status_ResidualIncome; smallCreditorQM_Status_ResidualIncome.Clean = value; _smallCreditorQM_Status_ResidualIncome = smallCreditorQM_Status_ResidualIncome;
-                var smallCreditorQM_Status_SafeHarborEligibility = _smallCreditorQM_Status_SafeHarborEligibility; smallCreditorQM_Status_SafeHarborEligibility.Clean = value; _smallCreditorQM_Status_SafeHarborEligibility = smallCreditorQM_Status_SafeHarborEligibility;
-                var standardQM_CalculatedThreshold = _standardQM_CalculatedThreshold; standardQM_CalculatedThreshold.Clean = value; _standardQM_CalculatedThreshold = standardQM_CalculatedThreshold;
-                var standardQM_Status_Alimony = _standardQM_Status_Alimony; standardQM_Status_Alimony.Clean = value; _standardQM_Status_Alimony = standardQM_Status_Alimony;
-                var standardQM_Status_Assets = _standardQM_Status_Assets; standardQM_Status_Assets.Clean = value; _standardQM_Status_Assets = standardQM_Status_Assets;
-                var standardQM_Status_BalloonPayment = _standardQM_Status_BalloonPayment; standardQM_Status_BalloonPayment.Clean = value; _standardQM_Status_BalloonPayment = standardQM_Status_BalloonPayment;
-                var standardQM_Status_ChildSupport = _standardQM_Status_ChildSupport; standardQM_Status_ChildSupport.Clean = value; _standardQM_Status_ChildSupport = standardQM_Status_ChildSupport;
-                var standardQM_Status_CoveredLoan = _standardQM_Status_CoveredLoan; standardQM_Status_CoveredLoan.Clean = value; _standardQM_Status_CoveredLoan = standardQM_Status_CoveredLoan;
-                var standardQM_Status_CreditHistory = _standardQM_Status_CreditHistory; standardQM_Status_CreditHistory.Clean = value; _standardQM_Status_CreditHistory = standardQM_Status_CreditHistory;
-                var standardQM_Status_DebtObligations = _standardQM_Status_DebtObligations; standardQM_Status_DebtObligations.Clean = value; _standardQM_Status_DebtObligations = standardQM_Status_DebtObligations;
-                var standardQM_Status_DTI = _standardQM_Status_DTI; standardQM_Status_DTI.Clean = value; _standardQM_Status_DTI = standardQM_Status_DTI;
-                var standardQM_Status_Employment = _standardQM_Status_Employment; standardQM_Status_Employment.Clean = value; _standardQM_Status_Employment = standardQM_Status_Employment;
-                var standardQM_Status_Income = _standardQM_Status_Income; standardQM_Status_Income.Clean = value; _standardQM_Status_Income = standardQM_Status_Income;
-                var standardQM_Status_InterestOnly = _standardQM_Status_InterestOnly; standardQM_Status_InterestOnly.Clean = value; _standardQM_Status_InterestOnly = standardQM_Status_InterestOnly;
-                var standardQM_Status_LoanTerm = _standardQM_Status_LoanTerm; standardQM_Status_LoanTerm.Clean = value; _standardQM_Status_LoanTerm = standardQM_Status_LoanTerm;
-                var standardQM_Status_MtgRelatedObligations = _standardQM_Status_MtgRelatedObligations; standardQM_Status_MtgRelatedObligations.Clean = value; _standardQM_Status_MtgRelatedObligations = standardQM_Status_MtgRelatedObligations;
-                var standardQM_Status_NegativeAmortization = _standardQM_Status_NegativeAmortization; standardQM_Status_NegativeAmortization.Clean = value; _standardQM_Status_NegativeAmortization = standardQM_Status_NegativeAmortization;
-                var standardQM_Status_Overall = _standardQM_Status_Overall; standardQM_Status_Overall.Clean = value; _standardQM_Status_Overall = standardQM_Status_Overall;
-                var standardQM_Status_PointsFeesLimit = _standardQM_Status_PointsFeesLimit; standardQM_Status_PointsFeesLimit.Clean = value; _standardQM_Status_PointsFeesLimit = standardQM_Status_PointsFeesLimit;
-                var standardQM_Status_PrepaymentPenalty = _standardQM_Status_PrepaymentPenalty; standardQM_Status_PrepaymentPenalty.Clean = value; _standardQM_Status_PrepaymentPenalty = standardQM_Status_PrepaymentPenalty;
-                var standardQM_Status_ResidualIncome = _standardQM_Status_ResidualIncome; standardQM_Status_ResidualIncome.Clean = value; _standardQM_Status_ResidualIncome = standardQM_Status_ResidualIncome;
-                var standardQM_Status_SafeHarborEligibility = _standardQM_Status_SafeHarborEligibility; standardQM_Status_SafeHarborEligibility.Clean = value; _standardQM_Status_SafeHarborEligibility = standardQM_Status_SafeHarborEligibility;
-                var standardQM_Status_SimultaneousLoan = _standardQM_Status_SimultaneousLoan; standardQM_Status_SimultaneousLoan.Clean = value; _standardQM_Status_SimultaneousLoan = standardQM_Status_SimultaneousLoan;
-                var startingAdjustedRateMaxBonaFideDiscountPoint = _startingAdjustedRateMaxBonaFideDiscountPoint; startingAdjustedRateMaxBonaFideDiscountPoint.Clean = value; _startingAdjustedRateMaxBonaFideDiscountPoint = startingAdjustedRateMaxBonaFideDiscountPoint;
-                var status_CreditHistory = _status_CreditHistory; status_CreditHistory.Clean = value; _status_CreditHistory = status_CreditHistory;
-                var status_SimultaneousLoan = _status_SimultaneousLoan; status_SimultaneousLoan.Clean = value; _status_SimultaneousLoan = status_SimultaneousLoan;
-                var thresholdExceedsQM = _thresholdExceedsQM; thresholdExceedsQM.Clean = value; _thresholdExceedsQM = thresholdExceedsQM;
-                var titleServicesLenderTitleinsuranceFee = _titleServicesLenderTitleinsuranceFee; titleServicesLenderTitleinsuranceFee.Clean = value; _titleServicesLenderTitleinsuranceFee = titleServicesLenderTitleinsuranceFee;
-                var totalCoMortgagorIncome = _totalCoMortgagorIncome; totalCoMortgagorIncome.Clean = value; _totalCoMortgagorIncome = totalCoMortgagorIncome;
-                var totalIncome = _totalIncome; totalIncome.Clean = value; _totalIncome = totalIncome;
-                var totalPointsFeesSec32Percent = _totalPointsFeesSec32Percent; totalPointsFeesSec32Percent.Clean = value; _totalPointsFeesSec32Percent = totalPointsFeesSec32Percent;
-                var transactionExemptFromRegZ = _transactionExemptFromRegZ; transactionExemptFromRegZ.Clean = value; _transactionExemptFromRegZ = transactionExemptFromRegZ;
-                var unitCount = _unitCount; unitCount.Clean = value; _unitCount = unitCount;
-                var upfrontPMIFees = _upfrontPMIFees; upfrontPMIFees.Clean = value; _upfrontPMIFees = upfrontPMIFees;
-                var withOriginalCreditor = _withOriginalCreditor; withOriginalCreditor.Clean = value; _withOriginalCreditor = withOriginalCreditor;
-                var writtenApplicationDate = _writtenApplicationDate; writtenApplicationDate.Clean = value; _writtenApplicationDate = writtenApplicationDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _affiliatesFees.Dirty = value;
+                _aPORMaxBonaFideDiscountPoint.Dirty = value;
+                _aRMRecastDate.Dirty = value;
+                _aRMRecastMonthlyPayment.Dirty = value;
+                _aTRLoanType.Dirty = value;
+                _aUSDataDiscrepencyResolutionComments.Dirty = value;
+                _aUSDataDiscrepencyResolutionDate.Dirty = value;
+                _aUSDataDiscrepencyResolvedBy.Dirty = value;
+                _bonaFideDiscountPoint.Dirty = value;
+                _bonaFideDiscountPointAmount.Dirty = value;
+                _brokerCompensationWhenRateSet.Dirty = value;
+                _collateralRepandWarrReliefEligibilityType.Dirty = value;
+                _compensationPTBFees.Dirty = value;
+                _creditInsPremiumFees.Dirty = value;
+                _creditorType.Dirty = value;
+                _creditorTypeDescription.Dirty = value;
+                _creditType.Dirty = value;
+                _currentQMFeeThresholdAmt.Dirty = value;
+                _currentQMFeeThresholdPercent.Dirty = value;
+                _dateOfLastMonthlyPayment.Dirty = value;
+                _discountPointAmount.Dirty = value;
+                _discountPointFees.Dirty = value;
+                _discountPointPercentage.Dirty = value;
+                _documentationGuidelineMessages4V.Dirty = value;
+                _documentationGuidelineMessages5C.Dirty = value;
+                _documentationGuidelineMessages8Y.Dirty = value;
+                _documentationGuidelineMessagesCN.Dirty = value;
+                _documentationGuidelineMessagesCP.Dirty = value;
+                _documentationGuidelineMessagesCV.Dirty = value;
+                _documentationGuidelineMessagesCY.Dirty = value;
+                _documentationGuidelineMessagesCZ.Dirty = value;
+                _documentationGuidelineMessagesDP.Dirty = value;
+                _documentationGuidelineMessagesDZ.Dirty = value;
+                _documentationGuidelineMessagesE5.Dirty = value;
+                _documentationGuidelineMessagesIM.Dirty = value;
+                _documentationGuidelineMessagesIQ.Dirty = value;
+                _documentationGuidelineMessagesJF.Dirty = value;
+                _documentationGuidelineMessagesQJ.Dirty = value;
+                _documentationGuidelineMessagesQN.Dirty = value;
+                _documentationGuidelineMessagesQQ.Dirty = value;
+                _documentationGuidelineMessagesQS.Dirty = value;
+                _documentationGuidelineMessagesU7.Dirty = value;
+                _documentationGuidelineMessagesX1.Dirty = value;
+                _documentationGuidelineMessagesX3.Dirty = value;
+                _documentationGuidelineMessagesX5.Dirty = value;
+                _documentationGuidelineMessagesX7.Dirty = value;
+                _documentationGuidelineMessagesXA.Dirty = value;
+                _documentationGuidelineMessagesXM.Dirty = value;
+                _documentationGuidelineMessagesXP.Dirty = value;
+                _documentationGuidelineMessagesXR.Dirty = value;
+                _documentationGuidelineMessagesXT.Dirty = value;
+                _documentationGuidelineMessagesY8.Dirty = value;
+                _documentationGuidelineMessagesYG.Dirty = value;
+                _documentationGuidelineMessagesYJ.Dirty = value;
+                _documentationGuidelineMessagesYY.Dirty = value;
+                _documentationGuidelineMessagesYZ.Dirty = value;
+                _eligibleNonStandardToStandard.Dirty = value;
+                _financeChargeFees.Dirty = value;
+                _firstChangeRecase.Dirty = value;
+                _firstPmtDateAfterRecast.Dirty = value;
+                _fullPaymentAfterInterestOnly.Dirty = value;
+                _fullyARMPaymentAfterNegAm.Dirty = value;
+                _fullyIndexRateHousingRatio.Dirty = value;
+                _fullyIndexRateMaxTotalPayment.Dirty = value;
+                _fullyIndexRateMonthlyPayment.Dirty = value;
+                _fullyIndexRateTotalDebtRatio.Dirty = value;
+                _generalATR_Status_Alimony.Dirty = value;
+                _generalATR_Status_Assets.Dirty = value;
+                _generalATR_Status_ChildSupport.Dirty = value;
+                _generalATR_Status_CoveredLoan.Dirty = value;
+                _generalATR_Status_CreditHistory.Dirty = value;
+                _generalATR_Status_DebtObligations.Dirty = value;
+                _generalATR_Status_DTI.Dirty = value;
+                _generalATR_Status_Employment.Dirty = value;
+                _generalATR_Status_Income.Dirty = value;
+                _generalATR_Status_MtgRelatedObligations.Dirty = value;
+                _generalATR_Status_Overall.Dirty = value;
+                _generalATR_Status_ResidualIncome.Dirty = value;
+                _generalATR_Status_SimultaneousLoan.Dirty = value;
+                _gSEAgencyQM_CalculatedThreshold.Dirty = value;
+                _gSEAgencyQM_Status_Alimony.Dirty = value;
+                _gSEAgencyQM_Status_Assets.Dirty = value;
+                _gSEAgencyQM_Status_BalloonPayment.Dirty = value;
+                _gSEAgencyQM_Status_ChildSupport.Dirty = value;
+                _gSEAgencyQM_Status_CoveredLoan.Dirty = value;
+                _gSEAgencyQM_Status_CreditHistory.Dirty = value;
+                _gSEAgencyQM_Status_DebtObligations.Dirty = value;
+                _gSEAgencyQM_Status_DTI.Dirty = value;
+                _gSEAgencyQM_Status_Employment.Dirty = value;
+                _gSEAgencyQM_Status_Income.Dirty = value;
+                _gSEAgencyQM_Status_InterestOnly.Dirty = value;
+                _gSEAgencyQM_Status_LoanTerm.Dirty = value;
+                _gSEAgencyQM_Status_MtgRelatedObligations.Dirty = value;
+                _gSEAgencyQM_Status_NegativeAmortization.Dirty = value;
+                _gSEAgencyQM_Status_Overall.Dirty = value;
+                _gSEAgencyQM_Status_PointsFeesLimit.Dirty = value;
+                _gSEAgencyQM_Status_PrepaymentPenalty.Dirty = value;
+                _gSEAgencyQM_Status_ResidualIncome.Dirty = value;
+                _gSEAgencyQM_Status_SafeHarborEligibility.Dirty = value;
+                _gSEAgencyQM_Status_SimultaneousLoan.Dirty = value;
+                _has30DayLatePayment.Dirty = value;
+                _id.Dirty = value;
+                _initialMaxTotalPayment.Dirty = value;
+                _initialRateHousingRatio.Dirty = value;
+                _initialRateMonthlyPayment.Dirty = value;
+                _initialRateTotalDebtRatio.Dirty = value;
+                _interestOnlyMonths.Dirty = value;
+                _interestOnlyRecastDate.Dirty = value;
+                _isConsumerLiklyDefault.Dirty = value;
+                _isEligibleForSafeHarbor.Dirty = value;
+                _isEvaluatedAlimonyObligations.Dirty = value;
+                _isEvaluatedChildSupportObligations.Dirty = value;
+                _isEvaluatedCreditHistory.Dirty = value;
+                _isEvaluatedCurrentEmploymentStatus.Dirty = value;
+                _isEvaluatedCurrentExpectedAssets.Dirty = value;
+                _isEvaluatedCurrentExpectedIncome.Dirty = value;
+                _isEvaluatedDebtObligations.Dirty = value;
+                _isEvaluatedDebtToIncomeRatio.Dirty = value;
+                _isEvaluatedMonthlyCoveredLoanPayment.Dirty = value;
+                _isEvaluatedMonthlyMortgageRelatedObligations.Dirty = value;
+                _isEvaluatedMonthlySimultaneousLoanPayment.Dirty = value;
+                _isEvaluatedResidualIncome.Dirty = value;
+                _isHigherPricedLoan.Dirty = value;
+                _loanProcessingInformationD4.Dirty = value;
+                _loanProcessingInformationGO.Dirty = value;
+                _loanProcessingInformationHA.Dirty = value;
+                _loanProcessingInformationLE.Dirty = value;
+                _loanProcessingInformationLF.Dirty = value;
+                _loanProcessingInformationMA.Dirty = value;
+                _loanProgram.Dirty = value;
+                _loanProgramDescription.Dirty = value;
+                _loanRateFixedin5Years.Dirty = value;
+                _lOBrokerCompensationAmount.Dirty = value;
+                _max5YrsHousingRatio.Dirty = value;
+                _max5YrsPrincipleAndInterest.Dirty = value;
+                _max5YrsTotalDebtRatio.Dirty = value;
+                _max5YrsTotalPayment.Dirty = value;
+                _maxPrepaymentPenaltyFees.Dirty = value;
+                _negAmRecastDate.Dirty = value;
+                _paymentDecreasedBy10Percent.Dirty = value;
+                _pointsFeesThresholdMet.Dirty = value;
+                _prepaymentPenaltyPayoffFees.Dirty = value;
+                _prepayPenaltyPercentage.Dirty = value;
+                _preventConsumersDefault.Dirty = value;
+                _principalBalanceIncreased.Dirty = value;
+                _principalHasDeferred.Dirty = value;
+                _qMLoanType.Dirty = value;
+                _rateReductionBasisPoints.Dirty = value;
+                _rateReductionDiscountPoints.Dirty = value;
+                _rateReductionMaxBonaFideDiscountPoint.Dirty = value;
+                _realEstateFees.Dirty = value;
+                _recastDifferencePayment.Dirty = value;
+                _regZTotalLoanAmount.Dirty = value;
+                _requiredServicesLenderSelectedAmt.Dirty = value;
+                _smallCreditorQM_CalculatedThreshold.Dirty = value;
+                _smallCreditorQM_Status_Alimony.Dirty = value;
+                _smallCreditorQM_Status_Assets.Dirty = value;
+                _smallCreditorQM_Status_BalloonPayment.Dirty = value;
+                _smallCreditorQM_Status_ChildSupport.Dirty = value;
+                _smallCreditorQM_Status_CoveredLoan.Dirty = value;
+                _smallCreditorQM_Status_DebtObligations.Dirty = value;
+                _smallCreditorQM_Status_DTI.Dirty = value;
+                _smallCreditorQM_Status_Income.Dirty = value;
+                _smallCreditorQM_Status_InterestOnly.Dirty = value;
+                _smallCreditorQM_Status_LoanTerm.Dirty = value;
+                _smallCreditorQM_Status_MtgRelatedObligations.Dirty = value;
+                _smallCreditorQM_Status_NegativeAmortization.Dirty = value;
+                _smallCreditorQM_Status_Overall.Dirty = value;
+                _smallCreditorQM_Status_PointsFeesLimit.Dirty = value;
+                _smallCreditorQM_Status_PrepaymentPenalty.Dirty = value;
+                _smallCreditorQM_Status_ResidualIncome.Dirty = value;
+                _smallCreditorQM_Status_SafeHarborEligibility.Dirty = value;
+                _standardQM_CalculatedThreshold.Dirty = value;
+                _standardQM_Status_Alimony.Dirty = value;
+                _standardQM_Status_Assets.Dirty = value;
+                _standardQM_Status_BalloonPayment.Dirty = value;
+                _standardQM_Status_ChildSupport.Dirty = value;
+                _standardQM_Status_CoveredLoan.Dirty = value;
+                _standardQM_Status_CreditHistory.Dirty = value;
+                _standardQM_Status_DebtObligations.Dirty = value;
+                _standardQM_Status_DTI.Dirty = value;
+                _standardQM_Status_Employment.Dirty = value;
+                _standardQM_Status_Income.Dirty = value;
+                _standardQM_Status_InterestOnly.Dirty = value;
+                _standardQM_Status_LoanTerm.Dirty = value;
+                _standardQM_Status_MtgRelatedObligations.Dirty = value;
+                _standardQM_Status_NegativeAmortization.Dirty = value;
+                _standardQM_Status_Overall.Dirty = value;
+                _standardQM_Status_PointsFeesLimit.Dirty = value;
+                _standardQM_Status_PrepaymentPenalty.Dirty = value;
+                _standardQM_Status_ResidualIncome.Dirty = value;
+                _standardQM_Status_SafeHarborEligibility.Dirty = value;
+                _standardQM_Status_SimultaneousLoan.Dirty = value;
+                _startingAdjustedRateMaxBonaFideDiscountPoint.Dirty = value;
+                _status_CreditHistory.Dirty = value;
+                _status_SimultaneousLoan.Dirty = value;
+                _thresholdExceedsQM.Dirty = value;
+                _titleServicesLenderTitleinsuranceFee.Dirty = value;
+                _totalCoMortgagorIncome.Dirty = value;
+                _totalIncome.Dirty = value;
+                _totalPointsFeesSec32Percent.Dirty = value;
+                _transactionExemptFromRegZ.Dirty = value;
+                _unitCount.Dirty = value;
+                _upfrontPMIFees.Dirty = value;
+                _withOriginalCreditor.Dirty = value;
+                _writtenApplicationDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ATRQMCommon()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

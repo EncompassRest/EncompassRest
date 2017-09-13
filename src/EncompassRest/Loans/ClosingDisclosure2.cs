@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure2 : IClean
+    public sealed partial class ClosingDisclosure2 : IDirty
     {
         private Value<decimal?> _borrowerClosingCostAtClosing;
         public decimal? BorrowerClosingCostAtClosing { get { return _borrowerClosingCostAtClosing; } set { _borrowerClosingCostAtClosing = value; } }
@@ -58,77 +58,72 @@ namespace EncompassRest.Loans
         public decimal? TotalOtherCostAtClosing { get { return _totalOtherCostAtClosing; } set { _totalOtherCostAtClosing = value; } }
         private Value<decimal?> _totalOtherCostBeforeClosing;
         public decimal? TotalOtherCostBeforeClosing { get { return _totalOtherCostBeforeClosing; } set { _totalOtherCostBeforeClosing = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _borrowerClosingCostAtClosing.Clean
-                    && _borrowerClosingCostBeforeClosing.Clean
-                    && _closingCostLenderCredits.Clean
-                    && _closingCostPaidByOthers.Clean
-                    && _id.Clean
-                    && _initialEscrowSubTotal.Clean
-                    && _lastDisclosedLenderCredits.Clean
-                    && _lastDisclosedLoanCosts.Clean
-                    && _lastDisclosedOtherCosts.Clean
-                    && _lCAtClosing.Clean
-                    && _originationChargesSubTotal.Clean
-                    && _otherSubTotal.Clean
-                    && _prepaidsSubTotal.Clean
-                    && _sellerClosingCostAtClosing.Clean
-                    && _sellerClosingCostBeforeClosing.Clean
-                    && _servicesDidNotShopSubTotal.Clean
-                    && _servicesDidShopSubTotal.Clean
-                    && _taxesGovermentFeesSubTotal.Clean
-                    && _totalBorrowerPaidAtClosing.Clean
-                    && _totalBorrowerPaidBeforeClosing.Clean
-                    && _totalClosingCost.Clean
-                    && _totalLoanCost.Clean
-                    && _totalOtherCost.Clean
-                    && _totalOtherCostAtClosing.Clean
-                    && _totalOtherCostBeforeClosing.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _borrowerClosingCostAtClosing.Dirty
+                    || _borrowerClosingCostBeforeClosing.Dirty
+                    || _closingCostLenderCredits.Dirty
+                    || _closingCostPaidByOthers.Dirty
+                    || _id.Dirty
+                    || _initialEscrowSubTotal.Dirty
+                    || _lastDisclosedLenderCredits.Dirty
+                    || _lastDisclosedLoanCosts.Dirty
+                    || _lastDisclosedOtherCosts.Dirty
+                    || _lCAtClosing.Dirty
+                    || _originationChargesSubTotal.Dirty
+                    || _otherSubTotal.Dirty
+                    || _prepaidsSubTotal.Dirty
+                    || _sellerClosingCostAtClosing.Dirty
+                    || _sellerClosingCostBeforeClosing.Dirty
+                    || _servicesDidNotShopSubTotal.Dirty
+                    || _servicesDidShopSubTotal.Dirty
+                    || _taxesGovermentFeesSubTotal.Dirty
+                    || _totalBorrowerPaidAtClosing.Dirty
+                    || _totalBorrowerPaidBeforeClosing.Dirty
+                    || _totalClosingCost.Dirty
+                    || _totalLoanCost.Dirty
+                    || _totalOtherCost.Dirty
+                    || _totalOtherCostAtClosing.Dirty
+                    || _totalOtherCostBeforeClosing.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var borrowerClosingCostAtClosing = _borrowerClosingCostAtClosing; borrowerClosingCostAtClosing.Clean = value; _borrowerClosingCostAtClosing = borrowerClosingCostAtClosing;
-                var borrowerClosingCostBeforeClosing = _borrowerClosingCostBeforeClosing; borrowerClosingCostBeforeClosing.Clean = value; _borrowerClosingCostBeforeClosing = borrowerClosingCostBeforeClosing;
-                var closingCostLenderCredits = _closingCostLenderCredits; closingCostLenderCredits.Clean = value; _closingCostLenderCredits = closingCostLenderCredits;
-                var closingCostPaidByOthers = _closingCostPaidByOthers; closingCostPaidByOthers.Clean = value; _closingCostPaidByOthers = closingCostPaidByOthers;
-                var id = _id; id.Clean = value; _id = id;
-                var initialEscrowSubTotal = _initialEscrowSubTotal; initialEscrowSubTotal.Clean = value; _initialEscrowSubTotal = initialEscrowSubTotal;
-                var lastDisclosedLenderCredits = _lastDisclosedLenderCredits; lastDisclosedLenderCredits.Clean = value; _lastDisclosedLenderCredits = lastDisclosedLenderCredits;
-                var lastDisclosedLoanCosts = _lastDisclosedLoanCosts; lastDisclosedLoanCosts.Clean = value; _lastDisclosedLoanCosts = lastDisclosedLoanCosts;
-                var lastDisclosedOtherCosts = _lastDisclosedOtherCosts; lastDisclosedOtherCosts.Clean = value; _lastDisclosedOtherCosts = lastDisclosedOtherCosts;
-                var lCAtClosing = _lCAtClosing; lCAtClosing.Clean = value; _lCAtClosing = lCAtClosing;
-                var originationChargesSubTotal = _originationChargesSubTotal; originationChargesSubTotal.Clean = value; _originationChargesSubTotal = originationChargesSubTotal;
-                var otherSubTotal = _otherSubTotal; otherSubTotal.Clean = value; _otherSubTotal = otherSubTotal;
-                var prepaidsSubTotal = _prepaidsSubTotal; prepaidsSubTotal.Clean = value; _prepaidsSubTotal = prepaidsSubTotal;
-                var sellerClosingCostAtClosing = _sellerClosingCostAtClosing; sellerClosingCostAtClosing.Clean = value; _sellerClosingCostAtClosing = sellerClosingCostAtClosing;
-                var sellerClosingCostBeforeClosing = _sellerClosingCostBeforeClosing; sellerClosingCostBeforeClosing.Clean = value; _sellerClosingCostBeforeClosing = sellerClosingCostBeforeClosing;
-                var servicesDidNotShopSubTotal = _servicesDidNotShopSubTotal; servicesDidNotShopSubTotal.Clean = value; _servicesDidNotShopSubTotal = servicesDidNotShopSubTotal;
-                var servicesDidShopSubTotal = _servicesDidShopSubTotal; servicesDidShopSubTotal.Clean = value; _servicesDidShopSubTotal = servicesDidShopSubTotal;
-                var taxesGovermentFeesSubTotal = _taxesGovermentFeesSubTotal; taxesGovermentFeesSubTotal.Clean = value; _taxesGovermentFeesSubTotal = taxesGovermentFeesSubTotal;
-                var totalBorrowerPaidAtClosing = _totalBorrowerPaidAtClosing; totalBorrowerPaidAtClosing.Clean = value; _totalBorrowerPaidAtClosing = totalBorrowerPaidAtClosing;
-                var totalBorrowerPaidBeforeClosing = _totalBorrowerPaidBeforeClosing; totalBorrowerPaidBeforeClosing.Clean = value; _totalBorrowerPaidBeforeClosing = totalBorrowerPaidBeforeClosing;
-                var totalClosingCost = _totalClosingCost; totalClosingCost.Clean = value; _totalClosingCost = totalClosingCost;
-                var totalLoanCost = _totalLoanCost; totalLoanCost.Clean = value; _totalLoanCost = totalLoanCost;
-                var totalOtherCost = _totalOtherCost; totalOtherCost.Clean = value; _totalOtherCost = totalOtherCost;
-                var totalOtherCostAtClosing = _totalOtherCostAtClosing; totalOtherCostAtClosing.Clean = value; _totalOtherCostAtClosing = totalOtherCostAtClosing;
-                var totalOtherCostBeforeClosing = _totalOtherCostBeforeClosing; totalOtherCostBeforeClosing.Clean = value; _totalOtherCostBeforeClosing = totalOtherCostBeforeClosing;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _borrowerClosingCostAtClosing.Dirty = value;
+                _borrowerClosingCostBeforeClosing.Dirty = value;
+                _closingCostLenderCredits.Dirty = value;
+                _closingCostPaidByOthers.Dirty = value;
+                _id.Dirty = value;
+                _initialEscrowSubTotal.Dirty = value;
+                _lastDisclosedLenderCredits.Dirty = value;
+                _lastDisclosedLoanCosts.Dirty = value;
+                _lastDisclosedOtherCosts.Dirty = value;
+                _lCAtClosing.Dirty = value;
+                _originationChargesSubTotal.Dirty = value;
+                _otherSubTotal.Dirty = value;
+                _prepaidsSubTotal.Dirty = value;
+                _sellerClosingCostAtClosing.Dirty = value;
+                _sellerClosingCostBeforeClosing.Dirty = value;
+                _servicesDidNotShopSubTotal.Dirty = value;
+                _servicesDidShopSubTotal.Dirty = value;
+                _taxesGovermentFeesSubTotal.Dirty = value;
+                _totalBorrowerPaidAtClosing.Dirty = value;
+                _totalBorrowerPaidBeforeClosing.Dirty = value;
+                _totalClosingCost.Dirty = value;
+                _totalLoanCost.Dirty = value;
+                _totalOtherCost.Dirty = value;
+                _totalOtherCostAtClosing.Dirty = value;
+                _totalOtherCostBeforeClosing.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDisclosure2()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

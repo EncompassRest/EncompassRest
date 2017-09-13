@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TPO : IClean
+    public sealed partial class TPO : IDirty
     {
         private Value<bool?> _archived;
         public bool? Archived { get { return _archived; } set { _archived = value; } }
@@ -194,213 +194,208 @@ namespace EncompassRest.Loans
         public bool? WatchListFlag { get { return _watchListFlag; } set { _watchListFlag = value; } }
         private Value<string> _watchListReason;
         public string WatchListReason { get { return _watchListReason; } set { _watchListReason = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _archived.Clean
-                    && _branchAddress.Clean
-                    && _branchAEName.Clean
-                    && _branchAEUserName.Clean
-                    && _branchCity.Clean
-                    && _branchDBAName.Clean
-                    && _branchFax.Clean
-                    && _branchID.Clean
-                    && _branchLegalName.Clean
-                    && _branchManagerEmail.Clean
-                    && _branchManagerName.Clean
-                    && _branchName.Clean
-                    && _branchOrganizationID.Clean
-                    && _branchPhone.Clean
-                    && _branchRating.Clean
-                    && _branchState.Clean
-                    && _branchZip.Clean
-                    && _cFCAddress.Clean
-                    && _cFCBusinessFax.Clean
-                    && _cFCBusinessPhone.Clean
-                    && _cFCCellPhone.Clean
-                    && _cFCCity.Clean
-                    && _cFCEmail.Clean
-                    && _cFCName.Clean
-                    && _cFCNotes.Clean
-                    && _cFCRepAE.Clean
-                    && _cFCSRAEUserName.Clean
-                    && _cFCState.Clean
-                    && _cFCStatus.Clean
-                    && _cFCUserID.Clean
-                    && _cFCZip.Clean
-                    && _companyAddress.Clean
-                    && _companyAEName.Clean
-                    && _companyAEUserName.Clean
-                    && _companyCity.Clean
-                    && _companyDBAName.Clean
-                    && _companyFax.Clean
-                    && _companyID.Clean
-                    && _companyLegalName.Clean
-                    && _companyManagerEmail.Clean
-                    && _companyManagerName.Clean
-                    && _companyName.Clean
-                    && _companyOrganizationID.Clean
-                    && _companyPhone.Clean
-                    && _companyRating.Clean
-                    && _companyState.Clean
-                    && _companyZip.Clean
-                    && _documentsReadyDate.Clean
-                    && _feeReviewComments.Clean
-                    && _feeReviewStatus.Clean
-                    && _feeReviewStatusDate.Clean
-                    && _importSource.Clean
-                    && _initialApplicationDate.Clean
-                    && _initialSubmitDate.Clean
-                    && _lOAddress.Clean
-                    && _lOAEName.Clean
-                    && _lOAEUserName.Clean
-                    && _lOBusinessFax.Clean
-                    && _lOBusinessPhone.Clean
-                    && _lOCellPhone.Clean
-                    && _lOCity.Clean
-                    && _lOEmail.Clean
-                    && _lOID.Clean
-                    && _lOName.Clean
-                    && _lONotes.Clean
-                    && _lOState.Clean
-                    && _lOStatus.Clean
-                    && _lOZip.Clean
-                    && _lPAddress.Clean
-                    && _lPAEName.Clean
-                    && _lPAEUserName.Clean
-                    && _lPBusinessFax.Clean
-                    && _lPBusinessPhone.Clean
-                    && _lPCellPhone.Clean
-                    && _lPCity.Clean
-                    && _lPEmail.Clean
-                    && _lPID.Clean
-                    && _lPName.Clean
-                    && _lPNotes.Clean
-                    && _lPState.Clean
-                    && _lPStatus.Clean
-                    && _lPZip.Clean
-                    && _purchaseStipsReadyDate.Clean
-                    && _purchaseStipsReviewed.Clean
-                    && _readytoDiscloseDateUtc.Clean
-                    && _registerDate.Clean
-                    && _sITEID.Clean
-                    && _submitDate.Clean
-                    && _testAccountField.Clean
-                    && _underwriterReviewed.Clean
-                    && _underwritingDelegated.Clean
-                    && _watchListFlag.Clean
-                    && _watchListReason.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _archived.Dirty
+                    || _branchAddress.Dirty
+                    || _branchAEName.Dirty
+                    || _branchAEUserName.Dirty
+                    || _branchCity.Dirty
+                    || _branchDBAName.Dirty
+                    || _branchFax.Dirty
+                    || _branchID.Dirty
+                    || _branchLegalName.Dirty
+                    || _branchManagerEmail.Dirty
+                    || _branchManagerName.Dirty
+                    || _branchName.Dirty
+                    || _branchOrganizationID.Dirty
+                    || _branchPhone.Dirty
+                    || _branchRating.Dirty
+                    || _branchState.Dirty
+                    || _branchZip.Dirty
+                    || _cFCAddress.Dirty
+                    || _cFCBusinessFax.Dirty
+                    || _cFCBusinessPhone.Dirty
+                    || _cFCCellPhone.Dirty
+                    || _cFCCity.Dirty
+                    || _cFCEmail.Dirty
+                    || _cFCName.Dirty
+                    || _cFCNotes.Dirty
+                    || _cFCRepAE.Dirty
+                    || _cFCSRAEUserName.Dirty
+                    || _cFCState.Dirty
+                    || _cFCStatus.Dirty
+                    || _cFCUserID.Dirty
+                    || _cFCZip.Dirty
+                    || _companyAddress.Dirty
+                    || _companyAEName.Dirty
+                    || _companyAEUserName.Dirty
+                    || _companyCity.Dirty
+                    || _companyDBAName.Dirty
+                    || _companyFax.Dirty
+                    || _companyID.Dirty
+                    || _companyLegalName.Dirty
+                    || _companyManagerEmail.Dirty
+                    || _companyManagerName.Dirty
+                    || _companyName.Dirty
+                    || _companyOrganizationID.Dirty
+                    || _companyPhone.Dirty
+                    || _companyRating.Dirty
+                    || _companyState.Dirty
+                    || _companyZip.Dirty
+                    || _documentsReadyDate.Dirty
+                    || _feeReviewComments.Dirty
+                    || _feeReviewStatus.Dirty
+                    || _feeReviewStatusDate.Dirty
+                    || _importSource.Dirty
+                    || _initialApplicationDate.Dirty
+                    || _initialSubmitDate.Dirty
+                    || _lOAddress.Dirty
+                    || _lOAEName.Dirty
+                    || _lOAEUserName.Dirty
+                    || _lOBusinessFax.Dirty
+                    || _lOBusinessPhone.Dirty
+                    || _lOCellPhone.Dirty
+                    || _lOCity.Dirty
+                    || _lOEmail.Dirty
+                    || _lOID.Dirty
+                    || _lOName.Dirty
+                    || _lONotes.Dirty
+                    || _lOState.Dirty
+                    || _lOStatus.Dirty
+                    || _lOZip.Dirty
+                    || _lPAddress.Dirty
+                    || _lPAEName.Dirty
+                    || _lPAEUserName.Dirty
+                    || _lPBusinessFax.Dirty
+                    || _lPBusinessPhone.Dirty
+                    || _lPCellPhone.Dirty
+                    || _lPCity.Dirty
+                    || _lPEmail.Dirty
+                    || _lPID.Dirty
+                    || _lPName.Dirty
+                    || _lPNotes.Dirty
+                    || _lPState.Dirty
+                    || _lPStatus.Dirty
+                    || _lPZip.Dirty
+                    || _purchaseStipsReadyDate.Dirty
+                    || _purchaseStipsReviewed.Dirty
+                    || _readytoDiscloseDateUtc.Dirty
+                    || _registerDate.Dirty
+                    || _sITEID.Dirty
+                    || _submitDate.Dirty
+                    || _testAccountField.Dirty
+                    || _underwriterReviewed.Dirty
+                    || _underwritingDelegated.Dirty
+                    || _watchListFlag.Dirty
+                    || _watchListReason.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var archived = _archived; archived.Clean = value; _archived = archived;
-                var branchAddress = _branchAddress; branchAddress.Clean = value; _branchAddress = branchAddress;
-                var branchAEName = _branchAEName; branchAEName.Clean = value; _branchAEName = branchAEName;
-                var branchAEUserName = _branchAEUserName; branchAEUserName.Clean = value; _branchAEUserName = branchAEUserName;
-                var branchCity = _branchCity; branchCity.Clean = value; _branchCity = branchCity;
-                var branchDBAName = _branchDBAName; branchDBAName.Clean = value; _branchDBAName = branchDBAName;
-                var branchFax = _branchFax; branchFax.Clean = value; _branchFax = branchFax;
-                var branchID = _branchID; branchID.Clean = value; _branchID = branchID;
-                var branchLegalName = _branchLegalName; branchLegalName.Clean = value; _branchLegalName = branchLegalName;
-                var branchManagerEmail = _branchManagerEmail; branchManagerEmail.Clean = value; _branchManagerEmail = branchManagerEmail;
-                var branchManagerName = _branchManagerName; branchManagerName.Clean = value; _branchManagerName = branchManagerName;
-                var branchName = _branchName; branchName.Clean = value; _branchName = branchName;
-                var branchOrganizationID = _branchOrganizationID; branchOrganizationID.Clean = value; _branchOrganizationID = branchOrganizationID;
-                var branchPhone = _branchPhone; branchPhone.Clean = value; _branchPhone = branchPhone;
-                var branchRating = _branchRating; branchRating.Clean = value; _branchRating = branchRating;
-                var branchState = _branchState; branchState.Clean = value; _branchState = branchState;
-                var branchZip = _branchZip; branchZip.Clean = value; _branchZip = branchZip;
-                var cFCAddress = _cFCAddress; cFCAddress.Clean = value; _cFCAddress = cFCAddress;
-                var cFCBusinessFax = _cFCBusinessFax; cFCBusinessFax.Clean = value; _cFCBusinessFax = cFCBusinessFax;
-                var cFCBusinessPhone = _cFCBusinessPhone; cFCBusinessPhone.Clean = value; _cFCBusinessPhone = cFCBusinessPhone;
-                var cFCCellPhone = _cFCCellPhone; cFCCellPhone.Clean = value; _cFCCellPhone = cFCCellPhone;
-                var cFCCity = _cFCCity; cFCCity.Clean = value; _cFCCity = cFCCity;
-                var cFCEmail = _cFCEmail; cFCEmail.Clean = value; _cFCEmail = cFCEmail;
-                var cFCName = _cFCName; cFCName.Clean = value; _cFCName = cFCName;
-                var cFCNotes = _cFCNotes; cFCNotes.Clean = value; _cFCNotes = cFCNotes;
-                var cFCRepAE = _cFCRepAE; cFCRepAE.Clean = value; _cFCRepAE = cFCRepAE;
-                var cFCSRAEUserName = _cFCSRAEUserName; cFCSRAEUserName.Clean = value; _cFCSRAEUserName = cFCSRAEUserName;
-                var cFCState = _cFCState; cFCState.Clean = value; _cFCState = cFCState;
-                var cFCStatus = _cFCStatus; cFCStatus.Clean = value; _cFCStatus = cFCStatus;
-                var cFCUserID = _cFCUserID; cFCUserID.Clean = value; _cFCUserID = cFCUserID;
-                var cFCZip = _cFCZip; cFCZip.Clean = value; _cFCZip = cFCZip;
-                var companyAddress = _companyAddress; companyAddress.Clean = value; _companyAddress = companyAddress;
-                var companyAEName = _companyAEName; companyAEName.Clean = value; _companyAEName = companyAEName;
-                var companyAEUserName = _companyAEUserName; companyAEUserName.Clean = value; _companyAEUserName = companyAEUserName;
-                var companyCity = _companyCity; companyCity.Clean = value; _companyCity = companyCity;
-                var companyDBAName = _companyDBAName; companyDBAName.Clean = value; _companyDBAName = companyDBAName;
-                var companyFax = _companyFax; companyFax.Clean = value; _companyFax = companyFax;
-                var companyID = _companyID; companyID.Clean = value; _companyID = companyID;
-                var companyLegalName = _companyLegalName; companyLegalName.Clean = value; _companyLegalName = companyLegalName;
-                var companyManagerEmail = _companyManagerEmail; companyManagerEmail.Clean = value; _companyManagerEmail = companyManagerEmail;
-                var companyManagerName = _companyManagerName; companyManagerName.Clean = value; _companyManagerName = companyManagerName;
-                var companyName = _companyName; companyName.Clean = value; _companyName = companyName;
-                var companyOrganizationID = _companyOrganizationID; companyOrganizationID.Clean = value; _companyOrganizationID = companyOrganizationID;
-                var companyPhone = _companyPhone; companyPhone.Clean = value; _companyPhone = companyPhone;
-                var companyRating = _companyRating; companyRating.Clean = value; _companyRating = companyRating;
-                var companyState = _companyState; companyState.Clean = value; _companyState = companyState;
-                var companyZip = _companyZip; companyZip.Clean = value; _companyZip = companyZip;
-                var documentsReadyDate = _documentsReadyDate; documentsReadyDate.Clean = value; _documentsReadyDate = documentsReadyDate;
-                var feeReviewComments = _feeReviewComments; feeReviewComments.Clean = value; _feeReviewComments = feeReviewComments;
-                var feeReviewStatus = _feeReviewStatus; feeReviewStatus.Clean = value; _feeReviewStatus = feeReviewStatus;
-                var feeReviewStatusDate = _feeReviewStatusDate; feeReviewStatusDate.Clean = value; _feeReviewStatusDate = feeReviewStatusDate;
-                var importSource = _importSource; importSource.Clean = value; _importSource = importSource;
-                var initialApplicationDate = _initialApplicationDate; initialApplicationDate.Clean = value; _initialApplicationDate = initialApplicationDate;
-                var initialSubmitDate = _initialSubmitDate; initialSubmitDate.Clean = value; _initialSubmitDate = initialSubmitDate;
-                var lOAddress = _lOAddress; lOAddress.Clean = value; _lOAddress = lOAddress;
-                var lOAEName = _lOAEName; lOAEName.Clean = value; _lOAEName = lOAEName;
-                var lOAEUserName = _lOAEUserName; lOAEUserName.Clean = value; _lOAEUserName = lOAEUserName;
-                var lOBusinessFax = _lOBusinessFax; lOBusinessFax.Clean = value; _lOBusinessFax = lOBusinessFax;
-                var lOBusinessPhone = _lOBusinessPhone; lOBusinessPhone.Clean = value; _lOBusinessPhone = lOBusinessPhone;
-                var lOCellPhone = _lOCellPhone; lOCellPhone.Clean = value; _lOCellPhone = lOCellPhone;
-                var lOCity = _lOCity; lOCity.Clean = value; _lOCity = lOCity;
-                var lOEmail = _lOEmail; lOEmail.Clean = value; _lOEmail = lOEmail;
-                var lOID = _lOID; lOID.Clean = value; _lOID = lOID;
-                var lOName = _lOName; lOName.Clean = value; _lOName = lOName;
-                var lONotes = _lONotes; lONotes.Clean = value; _lONotes = lONotes;
-                var lOState = _lOState; lOState.Clean = value; _lOState = lOState;
-                var lOStatus = _lOStatus; lOStatus.Clean = value; _lOStatus = lOStatus;
-                var lOZip = _lOZip; lOZip.Clean = value; _lOZip = lOZip;
-                var lPAddress = _lPAddress; lPAddress.Clean = value; _lPAddress = lPAddress;
-                var lPAEName = _lPAEName; lPAEName.Clean = value; _lPAEName = lPAEName;
-                var lPAEUserName = _lPAEUserName; lPAEUserName.Clean = value; _lPAEUserName = lPAEUserName;
-                var lPBusinessFax = _lPBusinessFax; lPBusinessFax.Clean = value; _lPBusinessFax = lPBusinessFax;
-                var lPBusinessPhone = _lPBusinessPhone; lPBusinessPhone.Clean = value; _lPBusinessPhone = lPBusinessPhone;
-                var lPCellPhone = _lPCellPhone; lPCellPhone.Clean = value; _lPCellPhone = lPCellPhone;
-                var lPCity = _lPCity; lPCity.Clean = value; _lPCity = lPCity;
-                var lPEmail = _lPEmail; lPEmail.Clean = value; _lPEmail = lPEmail;
-                var lPID = _lPID; lPID.Clean = value; _lPID = lPID;
-                var lPName = _lPName; lPName.Clean = value; _lPName = lPName;
-                var lPNotes = _lPNotes; lPNotes.Clean = value; _lPNotes = lPNotes;
-                var lPState = _lPState; lPState.Clean = value; _lPState = lPState;
-                var lPStatus = _lPStatus; lPStatus.Clean = value; _lPStatus = lPStatus;
-                var lPZip = _lPZip; lPZip.Clean = value; _lPZip = lPZip;
-                var purchaseStipsReadyDate = _purchaseStipsReadyDate; purchaseStipsReadyDate.Clean = value; _purchaseStipsReadyDate = purchaseStipsReadyDate;
-                var purchaseStipsReviewed = _purchaseStipsReviewed; purchaseStipsReviewed.Clean = value; _purchaseStipsReviewed = purchaseStipsReviewed;
-                var readytoDiscloseDateUtc = _readytoDiscloseDateUtc; readytoDiscloseDateUtc.Clean = value; _readytoDiscloseDateUtc = readytoDiscloseDateUtc;
-                var registerDate = _registerDate; registerDate.Clean = value; _registerDate = registerDate;
-                var sITEID = _sITEID; sITEID.Clean = value; _sITEID = sITEID;
-                var submitDate = _submitDate; submitDate.Clean = value; _submitDate = submitDate;
-                var testAccountField = _testAccountField; testAccountField.Clean = value; _testAccountField = testAccountField;
-                var underwriterReviewed = _underwriterReviewed; underwriterReviewed.Clean = value; _underwriterReviewed = underwriterReviewed;
-                var underwritingDelegated = _underwritingDelegated; underwritingDelegated.Clean = value; _underwritingDelegated = underwritingDelegated;
-                var watchListFlag = _watchListFlag; watchListFlag.Clean = value; _watchListFlag = watchListFlag;
-                var watchListReason = _watchListReason; watchListReason.Clean = value; _watchListReason = watchListReason;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _archived.Dirty = value;
+                _branchAddress.Dirty = value;
+                _branchAEName.Dirty = value;
+                _branchAEUserName.Dirty = value;
+                _branchCity.Dirty = value;
+                _branchDBAName.Dirty = value;
+                _branchFax.Dirty = value;
+                _branchID.Dirty = value;
+                _branchLegalName.Dirty = value;
+                _branchManagerEmail.Dirty = value;
+                _branchManagerName.Dirty = value;
+                _branchName.Dirty = value;
+                _branchOrganizationID.Dirty = value;
+                _branchPhone.Dirty = value;
+                _branchRating.Dirty = value;
+                _branchState.Dirty = value;
+                _branchZip.Dirty = value;
+                _cFCAddress.Dirty = value;
+                _cFCBusinessFax.Dirty = value;
+                _cFCBusinessPhone.Dirty = value;
+                _cFCCellPhone.Dirty = value;
+                _cFCCity.Dirty = value;
+                _cFCEmail.Dirty = value;
+                _cFCName.Dirty = value;
+                _cFCNotes.Dirty = value;
+                _cFCRepAE.Dirty = value;
+                _cFCSRAEUserName.Dirty = value;
+                _cFCState.Dirty = value;
+                _cFCStatus.Dirty = value;
+                _cFCUserID.Dirty = value;
+                _cFCZip.Dirty = value;
+                _companyAddress.Dirty = value;
+                _companyAEName.Dirty = value;
+                _companyAEUserName.Dirty = value;
+                _companyCity.Dirty = value;
+                _companyDBAName.Dirty = value;
+                _companyFax.Dirty = value;
+                _companyID.Dirty = value;
+                _companyLegalName.Dirty = value;
+                _companyManagerEmail.Dirty = value;
+                _companyManagerName.Dirty = value;
+                _companyName.Dirty = value;
+                _companyOrganizationID.Dirty = value;
+                _companyPhone.Dirty = value;
+                _companyRating.Dirty = value;
+                _companyState.Dirty = value;
+                _companyZip.Dirty = value;
+                _documentsReadyDate.Dirty = value;
+                _feeReviewComments.Dirty = value;
+                _feeReviewStatus.Dirty = value;
+                _feeReviewStatusDate.Dirty = value;
+                _importSource.Dirty = value;
+                _initialApplicationDate.Dirty = value;
+                _initialSubmitDate.Dirty = value;
+                _lOAddress.Dirty = value;
+                _lOAEName.Dirty = value;
+                _lOAEUserName.Dirty = value;
+                _lOBusinessFax.Dirty = value;
+                _lOBusinessPhone.Dirty = value;
+                _lOCellPhone.Dirty = value;
+                _lOCity.Dirty = value;
+                _lOEmail.Dirty = value;
+                _lOID.Dirty = value;
+                _lOName.Dirty = value;
+                _lONotes.Dirty = value;
+                _lOState.Dirty = value;
+                _lOStatus.Dirty = value;
+                _lOZip.Dirty = value;
+                _lPAddress.Dirty = value;
+                _lPAEName.Dirty = value;
+                _lPAEUserName.Dirty = value;
+                _lPBusinessFax.Dirty = value;
+                _lPBusinessPhone.Dirty = value;
+                _lPCellPhone.Dirty = value;
+                _lPCity.Dirty = value;
+                _lPEmail.Dirty = value;
+                _lPID.Dirty = value;
+                _lPName.Dirty = value;
+                _lPNotes.Dirty = value;
+                _lPState.Dirty = value;
+                _lPStatus.Dirty = value;
+                _lPZip.Dirty = value;
+                _purchaseStipsReadyDate.Dirty = value;
+                _purchaseStipsReviewed.Dirty = value;
+                _readytoDiscloseDateUtc.Dirty = value;
+                _registerDate.Dirty = value;
+                _sITEID.Dirty = value;
+                _submitDate.Dirty = value;
+                _testAccountField.Dirty = value;
+                _underwriterReviewed.Dirty = value;
+                _underwritingDelegated.Dirty = value;
+                _watchListFlag.Dirty = value;
+                _watchListReason.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TPO()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

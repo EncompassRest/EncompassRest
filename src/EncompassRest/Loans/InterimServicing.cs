@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class InterimServicing : IClean
+    public sealed partial class InterimServicing : IDirty
     {
         private Value<decimal?> _beginningBalance;
         public decimal? BeginningBalance { get { return _beginningBalance; } set { _beginningBalance = value; } }
@@ -308,329 +308,324 @@ namespace EncompassRest.Loans
         public decimal? UnpaidMiscrFee { get { return _unpaidMiscrFee; } set { _unpaidMiscrFee = value; } }
         private Value<decimal?> _unpaidPrincipal;
         public decimal? UnpaidPrincipal { get { return _unpaidPrincipal; } set { _unpaidPrincipal = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _beginningBalance.Clean
-                    && _borrCellPhoneNumber.Clean
-                    && _borrHomeEmail.Clean
-                    && _borrHomePhoneNumber.Clean
-                    && _borrowerFirstName.Clean
-                    && _borrowerLastName.Clean
-                    && _borrWorkPhoneNumber.Clean
-                    && _calcTriggered.Clean
-                    && _cityInsurance.Clean
-                    && _comments.Clean
-                    && _currentPrincipalBalance.Clean
-                    && _escrowBalance.Clean
-                    && _escrowDisbursementTransactions.Clean
-                    && _escrowInterestTransactions.Clean
-                    && _floodInsurance.Clean
-                    && _id.Clean
-                    && _interimServicingTransactions.Clean
-                    && _lastPaymentAdditionalEscrow.Clean
-                    && _lastPaymentAdditionalPrincipal.Clean
-                    && _lastPaymentBuydownSubsidyAmount.Clean
-                    && _lastPaymentEscrowAmount.Clean
-                    && _lastPaymentEscrowCityPropertyTax.Clean
-                    && _lastPaymentEscrowFloodInsurance.Clean
-                    && _lastPaymentEscrowHazardInsurance.Clean
-                    && _lastPaymentEscrowMortgageInsurance.Clean
-                    && _lastPaymentEscrowOther1.Clean
-                    && _lastPaymentEscrowOther2.Clean
-                    && _lastPaymentEscrowOther3.Clean
-                    && _lastPaymentEscrowTax.Clean
-                    && _lastPaymentEscrowUSDAMonthlyPremium.Clean
-                    && _lastPaymentGuid.Clean
-                    && _lastPaymentInterest.Clean
-                    && _lastPaymentLateFee.Clean
-                    && _lastPaymentMiscFee.Clean
-                    && _lastPaymentNumber.Clean
-                    && _lastPaymentPrincipal.Clean
-                    && _lastPaymentPrincipalAndInterest.Clean
-                    && _lastPaymentReceivedDate.Clean
-                    && _lastPaymentStatementDate.Clean
-                    && _lastPaymentTotalAmountReceived.Clean
-                    && _lastStatementPrintedDate.Clean
-                    && _loanSnapshotXml.Clean
-                    && _mailingCity.Clean
-                    && _mailingPostalCode.Clean
-                    && _mailingState.Clean
-                    && _mailingStreetAddress.Clean
-                    && _mortgageAccount.Clean
-                    && _nextEscrowTotalFloodInsurance.Clean
-                    && _nextEscrowTotalFloodInsuranceDueDate.Clean
-                    && _nextEscrowTotalHazardInsurance.Clean
-                    && _nextEscrowTotalHazardInsuranceDueDate.Clean
-                    && _nextEscrowTotalMortgageInsurance.Clean
-                    && _nextEscrowTotalMortgageInsuranceDueDate.Clean
-                    && _nextEscrowTotalOtherTax1.Clean
-                    && _nextEscrowTotalOtherTax1DueDate.Clean
-                    && _nextEscrowTotalOtherTax2.Clean
-                    && _nextEscrowTotalOtherTax2DueDate.Clean
-                    && _nextEscrowTotalOtherTax3.Clean
-                    && _nextEscrowTotalOtherTax3DueDate.Clean
-                    && _nextEscrowTotalPropertyTax.Clean
-                    && _nextEscrowTotalPropertyTaxDueDate.Clean
-                    && _nextEscrowTotalTax.Clean
-                    && _nextEscrowTotalTaxDueDate.Clean
-                    && _nextEscrowTotalUsdaMonthlyPremium.Clean
-                    && _nextEscrowTotalUsdaMonthlyPremiumDueDate.Clean
-                    && _nextPaymentBuydownSubsidyAmount.Clean
-                    && _nextPaymentEscrowAmount.Clean
-                    && _nextPaymentEscrowCityPropertyTax.Clean
-                    && _nextPaymentEscrowFloodInsurance.Clean
-                    && _nextPaymentEscrowHazardInsurance.Clean
-                    && _nextPaymentEscrowMortgageInsurance.Clean
-                    && _nextPaymentEscrowOther1.Clean
-                    && _nextPaymentEscrowOther2.Clean
-                    && _nextPaymentEscrowOther3.Clean
-                    && _nextPaymentEscrowTax.Clean
-                    && _nextPaymentEscrowUSDAMonthlyPremium.Clean
-                    && _nextPaymentIndexCurrentValuePercent.Clean
-                    && _nextPaymentInterest.Clean
-                    && _nextPaymentLateFee.Clean
-                    && _nextPaymentLatePaymentDate.Clean
-                    && _nextPaymentMiscFee.Clean
-                    && _nextPaymentPastDueAmount.Clean
-                    && _nextPaymentPaymentDueDate.Clean
-                    && _nextPaymentPaymentIndexDate.Clean
-                    && _nextPaymentPrincipal.Clean
-                    && _nextPaymentPrincipalAndInterest.Clean
-                    && _nextPaymentRequestedInterestRatePercent.Clean
-                    && _nextPaymentStatementDueDate.Clean
-                    && _nextPaymentTotalAmountDue.Clean
-                    && _nextPaymentTotalAmountWithLateFee.Clean
-                    && _nextPaymentUnpaidLateFee.Clean
-                    && _numberOfDisbursement.Clean
-                    && _otherTransactions.Clean
-                    && _paymentDueDatePrinted.Clean
-                    && _paymentReversalTransactions.Clean
-                    && _paymentTransactions.Clean
-                    && _printedByUserId.Clean
-                    && _printedByUserName.Clean
-                    && _purchasedPrincipal.Clean
-                    && _scheduledPayments.Clean
-                    && _schedulePaymentTransactions.Clean
-                    && _servicerLoanNumber.Clean
-                    && _servicingStatus.Clean
-                    && _servicingTransferDate.Clean
-                    && _subServicer.Clean
-                    && _subServicerLoanNumber.Clean
-                    && _totalAdditionalEscrow.Clean
-                    && _totalAdditionalEscrowYearToDate.Clean
-                    && _totalAdditionalPrincipal.Clean
-                    && _totalAdditionalPrincipalYearToDate.Clean
-                    && _totalAmountDisbursed.Clean
-                    && _totalBuydownSubsidyAmount.Clean
-                    && _totalBuydownSubsidyAmountYearToDate.Clean
-                    && _totalEscrow.Clean
-                    && _totalEscrowYearToDate.Clean
-                    && _totalHazardInsurance.Clean
-                    && _totalInterest.Clean
-                    && _totalInterestYearToDate.Clean
-                    && _totalLateFee.Clean
-                    && _totalLateFeeYearToDate.Clean
-                    && _totalMiscFee.Clean
-                    && _totalMiscFeeYearToDate.Clean
-                    && _totalMortgageInsurance.Clean
-                    && _totalNumberOfLatePayment.Clean
-                    && _totalNumberOfPayment.Clean
-                    && _totalOtherTaxes.Clean
-                    && _totalPAndI.Clean
-                    && _totalPAndIYearToDate.Clean
-                    && _totalPaymentCollected.Clean
-                    && _totalPaymentCollectedYearToDate.Clean
-                    && _totalPrincipal.Clean
-                    && _totalPrincipalYearToDate.Clean
-                    && _totalTaxes.Clean
-                    && _totalUsdaMonthlyPremium.Clean
-                    && _unpaidBuydownSubsidyAmount.Clean
-                    && _unpaidEscrow.Clean
-                    && _unpaidEscrowCityPropertyTax.Clean
-                    && _unpaidEscrowFloodInsurance.Clean
-                    && _unpaidEscrowHazardInsurance.Clean
-                    && _unpaidEscrowMortgageInsurance.Clean
-                    && _unpaidEscrowOther1.Clean
-                    && _unpaidEscrowOther2.Clean
-                    && _unpaidEscrowOther3.Clean
-                    && _unpaidEscrowTax.Clean
-                    && _unpaidEscrowUSDAMonthlyPremium.Clean
-                    && _unpaidInterest.Clean
-                    && _unpaidLateFee.Clean
-                    && _unpaidMiscrFee.Clean
-                    && _unpaidPrincipal.Clean
-                    && LastScheduledPayment?.Clean != false
-                    && NextScheduledPayment?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _beginningBalance.Dirty
+                    || _borrCellPhoneNumber.Dirty
+                    || _borrHomeEmail.Dirty
+                    || _borrHomePhoneNumber.Dirty
+                    || _borrowerFirstName.Dirty
+                    || _borrowerLastName.Dirty
+                    || _borrWorkPhoneNumber.Dirty
+                    || _calcTriggered.Dirty
+                    || _cityInsurance.Dirty
+                    || _comments.Dirty
+                    || _currentPrincipalBalance.Dirty
+                    || _escrowBalance.Dirty
+                    || _escrowDisbursementTransactions.Dirty
+                    || _escrowInterestTransactions.Dirty
+                    || _floodInsurance.Dirty
+                    || _id.Dirty
+                    || _interimServicingTransactions.Dirty
+                    || _lastPaymentAdditionalEscrow.Dirty
+                    || _lastPaymentAdditionalPrincipal.Dirty
+                    || _lastPaymentBuydownSubsidyAmount.Dirty
+                    || _lastPaymentEscrowAmount.Dirty
+                    || _lastPaymentEscrowCityPropertyTax.Dirty
+                    || _lastPaymentEscrowFloodInsurance.Dirty
+                    || _lastPaymentEscrowHazardInsurance.Dirty
+                    || _lastPaymentEscrowMortgageInsurance.Dirty
+                    || _lastPaymentEscrowOther1.Dirty
+                    || _lastPaymentEscrowOther2.Dirty
+                    || _lastPaymentEscrowOther3.Dirty
+                    || _lastPaymentEscrowTax.Dirty
+                    || _lastPaymentEscrowUSDAMonthlyPremium.Dirty
+                    || _lastPaymentGuid.Dirty
+                    || _lastPaymentInterest.Dirty
+                    || _lastPaymentLateFee.Dirty
+                    || _lastPaymentMiscFee.Dirty
+                    || _lastPaymentNumber.Dirty
+                    || _lastPaymentPrincipal.Dirty
+                    || _lastPaymentPrincipalAndInterest.Dirty
+                    || _lastPaymentReceivedDate.Dirty
+                    || _lastPaymentStatementDate.Dirty
+                    || _lastPaymentTotalAmountReceived.Dirty
+                    || _lastStatementPrintedDate.Dirty
+                    || _loanSnapshotXml.Dirty
+                    || _mailingCity.Dirty
+                    || _mailingPostalCode.Dirty
+                    || _mailingState.Dirty
+                    || _mailingStreetAddress.Dirty
+                    || _mortgageAccount.Dirty
+                    || _nextEscrowTotalFloodInsurance.Dirty
+                    || _nextEscrowTotalFloodInsuranceDueDate.Dirty
+                    || _nextEscrowTotalHazardInsurance.Dirty
+                    || _nextEscrowTotalHazardInsuranceDueDate.Dirty
+                    || _nextEscrowTotalMortgageInsurance.Dirty
+                    || _nextEscrowTotalMortgageInsuranceDueDate.Dirty
+                    || _nextEscrowTotalOtherTax1.Dirty
+                    || _nextEscrowTotalOtherTax1DueDate.Dirty
+                    || _nextEscrowTotalOtherTax2.Dirty
+                    || _nextEscrowTotalOtherTax2DueDate.Dirty
+                    || _nextEscrowTotalOtherTax3.Dirty
+                    || _nextEscrowTotalOtherTax3DueDate.Dirty
+                    || _nextEscrowTotalPropertyTax.Dirty
+                    || _nextEscrowTotalPropertyTaxDueDate.Dirty
+                    || _nextEscrowTotalTax.Dirty
+                    || _nextEscrowTotalTaxDueDate.Dirty
+                    || _nextEscrowTotalUsdaMonthlyPremium.Dirty
+                    || _nextEscrowTotalUsdaMonthlyPremiumDueDate.Dirty
+                    || _nextPaymentBuydownSubsidyAmount.Dirty
+                    || _nextPaymentEscrowAmount.Dirty
+                    || _nextPaymentEscrowCityPropertyTax.Dirty
+                    || _nextPaymentEscrowFloodInsurance.Dirty
+                    || _nextPaymentEscrowHazardInsurance.Dirty
+                    || _nextPaymentEscrowMortgageInsurance.Dirty
+                    || _nextPaymentEscrowOther1.Dirty
+                    || _nextPaymentEscrowOther2.Dirty
+                    || _nextPaymentEscrowOther3.Dirty
+                    || _nextPaymentEscrowTax.Dirty
+                    || _nextPaymentEscrowUSDAMonthlyPremium.Dirty
+                    || _nextPaymentIndexCurrentValuePercent.Dirty
+                    || _nextPaymentInterest.Dirty
+                    || _nextPaymentLateFee.Dirty
+                    || _nextPaymentLatePaymentDate.Dirty
+                    || _nextPaymentMiscFee.Dirty
+                    || _nextPaymentPastDueAmount.Dirty
+                    || _nextPaymentPaymentDueDate.Dirty
+                    || _nextPaymentPaymentIndexDate.Dirty
+                    || _nextPaymentPrincipal.Dirty
+                    || _nextPaymentPrincipalAndInterest.Dirty
+                    || _nextPaymentRequestedInterestRatePercent.Dirty
+                    || _nextPaymentStatementDueDate.Dirty
+                    || _nextPaymentTotalAmountDue.Dirty
+                    || _nextPaymentTotalAmountWithLateFee.Dirty
+                    || _nextPaymentUnpaidLateFee.Dirty
+                    || _numberOfDisbursement.Dirty
+                    || _otherTransactions.Dirty
+                    || _paymentDueDatePrinted.Dirty
+                    || _paymentReversalTransactions.Dirty
+                    || _paymentTransactions.Dirty
+                    || _printedByUserId.Dirty
+                    || _printedByUserName.Dirty
+                    || _purchasedPrincipal.Dirty
+                    || _scheduledPayments.Dirty
+                    || _schedulePaymentTransactions.Dirty
+                    || _servicerLoanNumber.Dirty
+                    || _servicingStatus.Dirty
+                    || _servicingTransferDate.Dirty
+                    || _subServicer.Dirty
+                    || _subServicerLoanNumber.Dirty
+                    || _totalAdditionalEscrow.Dirty
+                    || _totalAdditionalEscrowYearToDate.Dirty
+                    || _totalAdditionalPrincipal.Dirty
+                    || _totalAdditionalPrincipalYearToDate.Dirty
+                    || _totalAmountDisbursed.Dirty
+                    || _totalBuydownSubsidyAmount.Dirty
+                    || _totalBuydownSubsidyAmountYearToDate.Dirty
+                    || _totalEscrow.Dirty
+                    || _totalEscrowYearToDate.Dirty
+                    || _totalHazardInsurance.Dirty
+                    || _totalInterest.Dirty
+                    || _totalInterestYearToDate.Dirty
+                    || _totalLateFee.Dirty
+                    || _totalLateFeeYearToDate.Dirty
+                    || _totalMiscFee.Dirty
+                    || _totalMiscFeeYearToDate.Dirty
+                    || _totalMortgageInsurance.Dirty
+                    || _totalNumberOfLatePayment.Dirty
+                    || _totalNumberOfPayment.Dirty
+                    || _totalOtherTaxes.Dirty
+                    || _totalPAndI.Dirty
+                    || _totalPAndIYearToDate.Dirty
+                    || _totalPaymentCollected.Dirty
+                    || _totalPaymentCollectedYearToDate.Dirty
+                    || _totalPrincipal.Dirty
+                    || _totalPrincipalYearToDate.Dirty
+                    || _totalTaxes.Dirty
+                    || _totalUsdaMonthlyPremium.Dirty
+                    || _unpaidBuydownSubsidyAmount.Dirty
+                    || _unpaidEscrow.Dirty
+                    || _unpaidEscrowCityPropertyTax.Dirty
+                    || _unpaidEscrowFloodInsurance.Dirty
+                    || _unpaidEscrowHazardInsurance.Dirty
+                    || _unpaidEscrowMortgageInsurance.Dirty
+                    || _unpaidEscrowOther1.Dirty
+                    || _unpaidEscrowOther2.Dirty
+                    || _unpaidEscrowOther3.Dirty
+                    || _unpaidEscrowTax.Dirty
+                    || _unpaidEscrowUSDAMonthlyPremium.Dirty
+                    || _unpaidInterest.Dirty
+                    || _unpaidLateFee.Dirty
+                    || _unpaidMiscrFee.Dirty
+                    || _unpaidPrincipal.Dirty
+                    || LastScheduledPayment?.Dirty == true
+                    || NextScheduledPayment?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var beginningBalance = _beginningBalance; beginningBalance.Clean = value; _beginningBalance = beginningBalance;
-                var borrCellPhoneNumber = _borrCellPhoneNumber; borrCellPhoneNumber.Clean = value; _borrCellPhoneNumber = borrCellPhoneNumber;
-                var borrHomeEmail = _borrHomeEmail; borrHomeEmail.Clean = value; _borrHomeEmail = borrHomeEmail;
-                var borrHomePhoneNumber = _borrHomePhoneNumber; borrHomePhoneNumber.Clean = value; _borrHomePhoneNumber = borrHomePhoneNumber;
-                var borrowerFirstName = _borrowerFirstName; borrowerFirstName.Clean = value; _borrowerFirstName = borrowerFirstName;
-                var borrowerLastName = _borrowerLastName; borrowerLastName.Clean = value; _borrowerLastName = borrowerLastName;
-                var borrWorkPhoneNumber = _borrWorkPhoneNumber; borrWorkPhoneNumber.Clean = value; _borrWorkPhoneNumber = borrWorkPhoneNumber;
-                var calcTriggered = _calcTriggered; calcTriggered.Clean = value; _calcTriggered = calcTriggered;
-                var cityInsurance = _cityInsurance; cityInsurance.Clean = value; _cityInsurance = cityInsurance;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var currentPrincipalBalance = _currentPrincipalBalance; currentPrincipalBalance.Clean = value; _currentPrincipalBalance = currentPrincipalBalance;
-                var escrowBalance = _escrowBalance; escrowBalance.Clean = value; _escrowBalance = escrowBalance;
-                var escrowDisbursementTransactions = _escrowDisbursementTransactions; escrowDisbursementTransactions.Clean = value; _escrowDisbursementTransactions = escrowDisbursementTransactions;
-                var escrowInterestTransactions = _escrowInterestTransactions; escrowInterestTransactions.Clean = value; _escrowInterestTransactions = escrowInterestTransactions;
-                var floodInsurance = _floodInsurance; floodInsurance.Clean = value; _floodInsurance = floodInsurance;
-                var id = _id; id.Clean = value; _id = id;
-                var interimServicingTransactions = _interimServicingTransactions; interimServicingTransactions.Clean = value; _interimServicingTransactions = interimServicingTransactions;
-                var lastPaymentAdditionalEscrow = _lastPaymentAdditionalEscrow; lastPaymentAdditionalEscrow.Clean = value; _lastPaymentAdditionalEscrow = lastPaymentAdditionalEscrow;
-                var lastPaymentAdditionalPrincipal = _lastPaymentAdditionalPrincipal; lastPaymentAdditionalPrincipal.Clean = value; _lastPaymentAdditionalPrincipal = lastPaymentAdditionalPrincipal;
-                var lastPaymentBuydownSubsidyAmount = _lastPaymentBuydownSubsidyAmount; lastPaymentBuydownSubsidyAmount.Clean = value; _lastPaymentBuydownSubsidyAmount = lastPaymentBuydownSubsidyAmount;
-                var lastPaymentEscrowAmount = _lastPaymentEscrowAmount; lastPaymentEscrowAmount.Clean = value; _lastPaymentEscrowAmount = lastPaymentEscrowAmount;
-                var lastPaymentEscrowCityPropertyTax = _lastPaymentEscrowCityPropertyTax; lastPaymentEscrowCityPropertyTax.Clean = value; _lastPaymentEscrowCityPropertyTax = lastPaymentEscrowCityPropertyTax;
-                var lastPaymentEscrowFloodInsurance = _lastPaymentEscrowFloodInsurance; lastPaymentEscrowFloodInsurance.Clean = value; _lastPaymentEscrowFloodInsurance = lastPaymentEscrowFloodInsurance;
-                var lastPaymentEscrowHazardInsurance = _lastPaymentEscrowHazardInsurance; lastPaymentEscrowHazardInsurance.Clean = value; _lastPaymentEscrowHazardInsurance = lastPaymentEscrowHazardInsurance;
-                var lastPaymentEscrowMortgageInsurance = _lastPaymentEscrowMortgageInsurance; lastPaymentEscrowMortgageInsurance.Clean = value; _lastPaymentEscrowMortgageInsurance = lastPaymentEscrowMortgageInsurance;
-                var lastPaymentEscrowOther1 = _lastPaymentEscrowOther1; lastPaymentEscrowOther1.Clean = value; _lastPaymentEscrowOther1 = lastPaymentEscrowOther1;
-                var lastPaymentEscrowOther2 = _lastPaymentEscrowOther2; lastPaymentEscrowOther2.Clean = value; _lastPaymentEscrowOther2 = lastPaymentEscrowOther2;
-                var lastPaymentEscrowOther3 = _lastPaymentEscrowOther3; lastPaymentEscrowOther3.Clean = value; _lastPaymentEscrowOther3 = lastPaymentEscrowOther3;
-                var lastPaymentEscrowTax = _lastPaymentEscrowTax; lastPaymentEscrowTax.Clean = value; _lastPaymentEscrowTax = lastPaymentEscrowTax;
-                var lastPaymentEscrowUSDAMonthlyPremium = _lastPaymentEscrowUSDAMonthlyPremium; lastPaymentEscrowUSDAMonthlyPremium.Clean = value; _lastPaymentEscrowUSDAMonthlyPremium = lastPaymentEscrowUSDAMonthlyPremium;
-                var lastPaymentGuid = _lastPaymentGuid; lastPaymentGuid.Clean = value; _lastPaymentGuid = lastPaymentGuid;
-                var lastPaymentInterest = _lastPaymentInterest; lastPaymentInterest.Clean = value; _lastPaymentInterest = lastPaymentInterest;
-                var lastPaymentLateFee = _lastPaymentLateFee; lastPaymentLateFee.Clean = value; _lastPaymentLateFee = lastPaymentLateFee;
-                var lastPaymentMiscFee = _lastPaymentMiscFee; lastPaymentMiscFee.Clean = value; _lastPaymentMiscFee = lastPaymentMiscFee;
-                var lastPaymentNumber = _lastPaymentNumber; lastPaymentNumber.Clean = value; _lastPaymentNumber = lastPaymentNumber;
-                var lastPaymentPrincipal = _lastPaymentPrincipal; lastPaymentPrincipal.Clean = value; _lastPaymentPrincipal = lastPaymentPrincipal;
-                var lastPaymentPrincipalAndInterest = _lastPaymentPrincipalAndInterest; lastPaymentPrincipalAndInterest.Clean = value; _lastPaymentPrincipalAndInterest = lastPaymentPrincipalAndInterest;
-                var lastPaymentReceivedDate = _lastPaymentReceivedDate; lastPaymentReceivedDate.Clean = value; _lastPaymentReceivedDate = lastPaymentReceivedDate;
-                var lastPaymentStatementDate = _lastPaymentStatementDate; lastPaymentStatementDate.Clean = value; _lastPaymentStatementDate = lastPaymentStatementDate;
-                var lastPaymentTotalAmountReceived = _lastPaymentTotalAmountReceived; lastPaymentTotalAmountReceived.Clean = value; _lastPaymentTotalAmountReceived = lastPaymentTotalAmountReceived;
-                var lastStatementPrintedDate = _lastStatementPrintedDate; lastStatementPrintedDate.Clean = value; _lastStatementPrintedDate = lastStatementPrintedDate;
-                var loanSnapshotXml = _loanSnapshotXml; loanSnapshotXml.Clean = value; _loanSnapshotXml = loanSnapshotXml;
-                var mailingCity = _mailingCity; mailingCity.Clean = value; _mailingCity = mailingCity;
-                var mailingPostalCode = _mailingPostalCode; mailingPostalCode.Clean = value; _mailingPostalCode = mailingPostalCode;
-                var mailingState = _mailingState; mailingState.Clean = value; _mailingState = mailingState;
-                var mailingStreetAddress = _mailingStreetAddress; mailingStreetAddress.Clean = value; _mailingStreetAddress = mailingStreetAddress;
-                var mortgageAccount = _mortgageAccount; mortgageAccount.Clean = value; _mortgageAccount = mortgageAccount;
-                var nextEscrowTotalFloodInsurance = _nextEscrowTotalFloodInsurance; nextEscrowTotalFloodInsurance.Clean = value; _nextEscrowTotalFloodInsurance = nextEscrowTotalFloodInsurance;
-                var nextEscrowTotalFloodInsuranceDueDate = _nextEscrowTotalFloodInsuranceDueDate; nextEscrowTotalFloodInsuranceDueDate.Clean = value; _nextEscrowTotalFloodInsuranceDueDate = nextEscrowTotalFloodInsuranceDueDate;
-                var nextEscrowTotalHazardInsurance = _nextEscrowTotalHazardInsurance; nextEscrowTotalHazardInsurance.Clean = value; _nextEscrowTotalHazardInsurance = nextEscrowTotalHazardInsurance;
-                var nextEscrowTotalHazardInsuranceDueDate = _nextEscrowTotalHazardInsuranceDueDate; nextEscrowTotalHazardInsuranceDueDate.Clean = value; _nextEscrowTotalHazardInsuranceDueDate = nextEscrowTotalHazardInsuranceDueDate;
-                var nextEscrowTotalMortgageInsurance = _nextEscrowTotalMortgageInsurance; nextEscrowTotalMortgageInsurance.Clean = value; _nextEscrowTotalMortgageInsurance = nextEscrowTotalMortgageInsurance;
-                var nextEscrowTotalMortgageInsuranceDueDate = _nextEscrowTotalMortgageInsuranceDueDate; nextEscrowTotalMortgageInsuranceDueDate.Clean = value; _nextEscrowTotalMortgageInsuranceDueDate = nextEscrowTotalMortgageInsuranceDueDate;
-                var nextEscrowTotalOtherTax1 = _nextEscrowTotalOtherTax1; nextEscrowTotalOtherTax1.Clean = value; _nextEscrowTotalOtherTax1 = nextEscrowTotalOtherTax1;
-                var nextEscrowTotalOtherTax1DueDate = _nextEscrowTotalOtherTax1DueDate; nextEscrowTotalOtherTax1DueDate.Clean = value; _nextEscrowTotalOtherTax1DueDate = nextEscrowTotalOtherTax1DueDate;
-                var nextEscrowTotalOtherTax2 = _nextEscrowTotalOtherTax2; nextEscrowTotalOtherTax2.Clean = value; _nextEscrowTotalOtherTax2 = nextEscrowTotalOtherTax2;
-                var nextEscrowTotalOtherTax2DueDate = _nextEscrowTotalOtherTax2DueDate; nextEscrowTotalOtherTax2DueDate.Clean = value; _nextEscrowTotalOtherTax2DueDate = nextEscrowTotalOtherTax2DueDate;
-                var nextEscrowTotalOtherTax3 = _nextEscrowTotalOtherTax3; nextEscrowTotalOtherTax3.Clean = value; _nextEscrowTotalOtherTax3 = nextEscrowTotalOtherTax3;
-                var nextEscrowTotalOtherTax3DueDate = _nextEscrowTotalOtherTax3DueDate; nextEscrowTotalOtherTax3DueDate.Clean = value; _nextEscrowTotalOtherTax3DueDate = nextEscrowTotalOtherTax3DueDate;
-                var nextEscrowTotalPropertyTax = _nextEscrowTotalPropertyTax; nextEscrowTotalPropertyTax.Clean = value; _nextEscrowTotalPropertyTax = nextEscrowTotalPropertyTax;
-                var nextEscrowTotalPropertyTaxDueDate = _nextEscrowTotalPropertyTaxDueDate; nextEscrowTotalPropertyTaxDueDate.Clean = value; _nextEscrowTotalPropertyTaxDueDate = nextEscrowTotalPropertyTaxDueDate;
-                var nextEscrowTotalTax = _nextEscrowTotalTax; nextEscrowTotalTax.Clean = value; _nextEscrowTotalTax = nextEscrowTotalTax;
-                var nextEscrowTotalTaxDueDate = _nextEscrowTotalTaxDueDate; nextEscrowTotalTaxDueDate.Clean = value; _nextEscrowTotalTaxDueDate = nextEscrowTotalTaxDueDate;
-                var nextEscrowTotalUsdaMonthlyPremium = _nextEscrowTotalUsdaMonthlyPremium; nextEscrowTotalUsdaMonthlyPremium.Clean = value; _nextEscrowTotalUsdaMonthlyPremium = nextEscrowTotalUsdaMonthlyPremium;
-                var nextEscrowTotalUsdaMonthlyPremiumDueDate = _nextEscrowTotalUsdaMonthlyPremiumDueDate; nextEscrowTotalUsdaMonthlyPremiumDueDate.Clean = value; _nextEscrowTotalUsdaMonthlyPremiumDueDate = nextEscrowTotalUsdaMonthlyPremiumDueDate;
-                var nextPaymentBuydownSubsidyAmount = _nextPaymentBuydownSubsidyAmount; nextPaymentBuydownSubsidyAmount.Clean = value; _nextPaymentBuydownSubsidyAmount = nextPaymentBuydownSubsidyAmount;
-                var nextPaymentEscrowAmount = _nextPaymentEscrowAmount; nextPaymentEscrowAmount.Clean = value; _nextPaymentEscrowAmount = nextPaymentEscrowAmount;
-                var nextPaymentEscrowCityPropertyTax = _nextPaymentEscrowCityPropertyTax; nextPaymentEscrowCityPropertyTax.Clean = value; _nextPaymentEscrowCityPropertyTax = nextPaymentEscrowCityPropertyTax;
-                var nextPaymentEscrowFloodInsurance = _nextPaymentEscrowFloodInsurance; nextPaymentEscrowFloodInsurance.Clean = value; _nextPaymentEscrowFloodInsurance = nextPaymentEscrowFloodInsurance;
-                var nextPaymentEscrowHazardInsurance = _nextPaymentEscrowHazardInsurance; nextPaymentEscrowHazardInsurance.Clean = value; _nextPaymentEscrowHazardInsurance = nextPaymentEscrowHazardInsurance;
-                var nextPaymentEscrowMortgageInsurance = _nextPaymentEscrowMortgageInsurance; nextPaymentEscrowMortgageInsurance.Clean = value; _nextPaymentEscrowMortgageInsurance = nextPaymentEscrowMortgageInsurance;
-                var nextPaymentEscrowOther1 = _nextPaymentEscrowOther1; nextPaymentEscrowOther1.Clean = value; _nextPaymentEscrowOther1 = nextPaymentEscrowOther1;
-                var nextPaymentEscrowOther2 = _nextPaymentEscrowOther2; nextPaymentEscrowOther2.Clean = value; _nextPaymentEscrowOther2 = nextPaymentEscrowOther2;
-                var nextPaymentEscrowOther3 = _nextPaymentEscrowOther3; nextPaymentEscrowOther3.Clean = value; _nextPaymentEscrowOther3 = nextPaymentEscrowOther3;
-                var nextPaymentEscrowTax = _nextPaymentEscrowTax; nextPaymentEscrowTax.Clean = value; _nextPaymentEscrowTax = nextPaymentEscrowTax;
-                var nextPaymentEscrowUSDAMonthlyPremium = _nextPaymentEscrowUSDAMonthlyPremium; nextPaymentEscrowUSDAMonthlyPremium.Clean = value; _nextPaymentEscrowUSDAMonthlyPremium = nextPaymentEscrowUSDAMonthlyPremium;
-                var nextPaymentIndexCurrentValuePercent = _nextPaymentIndexCurrentValuePercent; nextPaymentIndexCurrentValuePercent.Clean = value; _nextPaymentIndexCurrentValuePercent = nextPaymentIndexCurrentValuePercent;
-                var nextPaymentInterest = _nextPaymentInterest; nextPaymentInterest.Clean = value; _nextPaymentInterest = nextPaymentInterest;
-                var nextPaymentLateFee = _nextPaymentLateFee; nextPaymentLateFee.Clean = value; _nextPaymentLateFee = nextPaymentLateFee;
-                var nextPaymentLatePaymentDate = _nextPaymentLatePaymentDate; nextPaymentLatePaymentDate.Clean = value; _nextPaymentLatePaymentDate = nextPaymentLatePaymentDate;
-                var nextPaymentMiscFee = _nextPaymentMiscFee; nextPaymentMiscFee.Clean = value; _nextPaymentMiscFee = nextPaymentMiscFee;
-                var nextPaymentPastDueAmount = _nextPaymentPastDueAmount; nextPaymentPastDueAmount.Clean = value; _nextPaymentPastDueAmount = nextPaymentPastDueAmount;
-                var nextPaymentPaymentDueDate = _nextPaymentPaymentDueDate; nextPaymentPaymentDueDate.Clean = value; _nextPaymentPaymentDueDate = nextPaymentPaymentDueDate;
-                var nextPaymentPaymentIndexDate = _nextPaymentPaymentIndexDate; nextPaymentPaymentIndexDate.Clean = value; _nextPaymentPaymentIndexDate = nextPaymentPaymentIndexDate;
-                var nextPaymentPrincipal = _nextPaymentPrincipal; nextPaymentPrincipal.Clean = value; _nextPaymentPrincipal = nextPaymentPrincipal;
-                var nextPaymentPrincipalAndInterest = _nextPaymentPrincipalAndInterest; nextPaymentPrincipalAndInterest.Clean = value; _nextPaymentPrincipalAndInterest = nextPaymentPrincipalAndInterest;
-                var nextPaymentRequestedInterestRatePercent = _nextPaymentRequestedInterestRatePercent; nextPaymentRequestedInterestRatePercent.Clean = value; _nextPaymentRequestedInterestRatePercent = nextPaymentRequestedInterestRatePercent;
-                var nextPaymentStatementDueDate = _nextPaymentStatementDueDate; nextPaymentStatementDueDate.Clean = value; _nextPaymentStatementDueDate = nextPaymentStatementDueDate;
-                var nextPaymentTotalAmountDue = _nextPaymentTotalAmountDue; nextPaymentTotalAmountDue.Clean = value; _nextPaymentTotalAmountDue = nextPaymentTotalAmountDue;
-                var nextPaymentTotalAmountWithLateFee = _nextPaymentTotalAmountWithLateFee; nextPaymentTotalAmountWithLateFee.Clean = value; _nextPaymentTotalAmountWithLateFee = nextPaymentTotalAmountWithLateFee;
-                var nextPaymentUnpaidLateFee = _nextPaymentUnpaidLateFee; nextPaymentUnpaidLateFee.Clean = value; _nextPaymentUnpaidLateFee = nextPaymentUnpaidLateFee;
-                var numberOfDisbursement = _numberOfDisbursement; numberOfDisbursement.Clean = value; _numberOfDisbursement = numberOfDisbursement;
-                var otherTransactions = _otherTransactions; otherTransactions.Clean = value; _otherTransactions = otherTransactions;
-                var paymentDueDatePrinted = _paymentDueDatePrinted; paymentDueDatePrinted.Clean = value; _paymentDueDatePrinted = paymentDueDatePrinted;
-                var paymentReversalTransactions = _paymentReversalTransactions; paymentReversalTransactions.Clean = value; _paymentReversalTransactions = paymentReversalTransactions;
-                var paymentTransactions = _paymentTransactions; paymentTransactions.Clean = value; _paymentTransactions = paymentTransactions;
-                var printedByUserId = _printedByUserId; printedByUserId.Clean = value; _printedByUserId = printedByUserId;
-                var printedByUserName = _printedByUserName; printedByUserName.Clean = value; _printedByUserName = printedByUserName;
-                var purchasedPrincipal = _purchasedPrincipal; purchasedPrincipal.Clean = value; _purchasedPrincipal = purchasedPrincipal;
-                var scheduledPayments = _scheduledPayments; scheduledPayments.Clean = value; _scheduledPayments = scheduledPayments;
-                var schedulePaymentTransactions = _schedulePaymentTransactions; schedulePaymentTransactions.Clean = value; _schedulePaymentTransactions = schedulePaymentTransactions;
-                var servicerLoanNumber = _servicerLoanNumber; servicerLoanNumber.Clean = value; _servicerLoanNumber = servicerLoanNumber;
-                var servicingStatus = _servicingStatus; servicingStatus.Clean = value; _servicingStatus = servicingStatus;
-                var servicingTransferDate = _servicingTransferDate; servicingTransferDate.Clean = value; _servicingTransferDate = servicingTransferDate;
-                var subServicer = _subServicer; subServicer.Clean = value; _subServicer = subServicer;
-                var subServicerLoanNumber = _subServicerLoanNumber; subServicerLoanNumber.Clean = value; _subServicerLoanNumber = subServicerLoanNumber;
-                var totalAdditionalEscrow = _totalAdditionalEscrow; totalAdditionalEscrow.Clean = value; _totalAdditionalEscrow = totalAdditionalEscrow;
-                var totalAdditionalEscrowYearToDate = _totalAdditionalEscrowYearToDate; totalAdditionalEscrowYearToDate.Clean = value; _totalAdditionalEscrowYearToDate = totalAdditionalEscrowYearToDate;
-                var totalAdditionalPrincipal = _totalAdditionalPrincipal; totalAdditionalPrincipal.Clean = value; _totalAdditionalPrincipal = totalAdditionalPrincipal;
-                var totalAdditionalPrincipalYearToDate = _totalAdditionalPrincipalYearToDate; totalAdditionalPrincipalYearToDate.Clean = value; _totalAdditionalPrincipalYearToDate = totalAdditionalPrincipalYearToDate;
-                var totalAmountDisbursed = _totalAmountDisbursed; totalAmountDisbursed.Clean = value; _totalAmountDisbursed = totalAmountDisbursed;
-                var totalBuydownSubsidyAmount = _totalBuydownSubsidyAmount; totalBuydownSubsidyAmount.Clean = value; _totalBuydownSubsidyAmount = totalBuydownSubsidyAmount;
-                var totalBuydownSubsidyAmountYearToDate = _totalBuydownSubsidyAmountYearToDate; totalBuydownSubsidyAmountYearToDate.Clean = value; _totalBuydownSubsidyAmountYearToDate = totalBuydownSubsidyAmountYearToDate;
-                var totalEscrow = _totalEscrow; totalEscrow.Clean = value; _totalEscrow = totalEscrow;
-                var totalEscrowYearToDate = _totalEscrowYearToDate; totalEscrowYearToDate.Clean = value; _totalEscrowYearToDate = totalEscrowYearToDate;
-                var totalHazardInsurance = _totalHazardInsurance; totalHazardInsurance.Clean = value; _totalHazardInsurance = totalHazardInsurance;
-                var totalInterest = _totalInterest; totalInterest.Clean = value; _totalInterest = totalInterest;
-                var totalInterestYearToDate = _totalInterestYearToDate; totalInterestYearToDate.Clean = value; _totalInterestYearToDate = totalInterestYearToDate;
-                var totalLateFee = _totalLateFee; totalLateFee.Clean = value; _totalLateFee = totalLateFee;
-                var totalLateFeeYearToDate = _totalLateFeeYearToDate; totalLateFeeYearToDate.Clean = value; _totalLateFeeYearToDate = totalLateFeeYearToDate;
-                var totalMiscFee = _totalMiscFee; totalMiscFee.Clean = value; _totalMiscFee = totalMiscFee;
-                var totalMiscFeeYearToDate = _totalMiscFeeYearToDate; totalMiscFeeYearToDate.Clean = value; _totalMiscFeeYearToDate = totalMiscFeeYearToDate;
-                var totalMortgageInsurance = _totalMortgageInsurance; totalMortgageInsurance.Clean = value; _totalMortgageInsurance = totalMortgageInsurance;
-                var totalNumberOfLatePayment = _totalNumberOfLatePayment; totalNumberOfLatePayment.Clean = value; _totalNumberOfLatePayment = totalNumberOfLatePayment;
-                var totalNumberOfPayment = _totalNumberOfPayment; totalNumberOfPayment.Clean = value; _totalNumberOfPayment = totalNumberOfPayment;
-                var totalOtherTaxes = _totalOtherTaxes; totalOtherTaxes.Clean = value; _totalOtherTaxes = totalOtherTaxes;
-                var totalPAndI = _totalPAndI; totalPAndI.Clean = value; _totalPAndI = totalPAndI;
-                var totalPAndIYearToDate = _totalPAndIYearToDate; totalPAndIYearToDate.Clean = value; _totalPAndIYearToDate = totalPAndIYearToDate;
-                var totalPaymentCollected = _totalPaymentCollected; totalPaymentCollected.Clean = value; _totalPaymentCollected = totalPaymentCollected;
-                var totalPaymentCollectedYearToDate = _totalPaymentCollectedYearToDate; totalPaymentCollectedYearToDate.Clean = value; _totalPaymentCollectedYearToDate = totalPaymentCollectedYearToDate;
-                var totalPrincipal = _totalPrincipal; totalPrincipal.Clean = value; _totalPrincipal = totalPrincipal;
-                var totalPrincipalYearToDate = _totalPrincipalYearToDate; totalPrincipalYearToDate.Clean = value; _totalPrincipalYearToDate = totalPrincipalYearToDate;
-                var totalTaxes = _totalTaxes; totalTaxes.Clean = value; _totalTaxes = totalTaxes;
-                var totalUsdaMonthlyPremium = _totalUsdaMonthlyPremium; totalUsdaMonthlyPremium.Clean = value; _totalUsdaMonthlyPremium = totalUsdaMonthlyPremium;
-                var unpaidBuydownSubsidyAmount = _unpaidBuydownSubsidyAmount; unpaidBuydownSubsidyAmount.Clean = value; _unpaidBuydownSubsidyAmount = unpaidBuydownSubsidyAmount;
-                var unpaidEscrow = _unpaidEscrow; unpaidEscrow.Clean = value; _unpaidEscrow = unpaidEscrow;
-                var unpaidEscrowCityPropertyTax = _unpaidEscrowCityPropertyTax; unpaidEscrowCityPropertyTax.Clean = value; _unpaidEscrowCityPropertyTax = unpaidEscrowCityPropertyTax;
-                var unpaidEscrowFloodInsurance = _unpaidEscrowFloodInsurance; unpaidEscrowFloodInsurance.Clean = value; _unpaidEscrowFloodInsurance = unpaidEscrowFloodInsurance;
-                var unpaidEscrowHazardInsurance = _unpaidEscrowHazardInsurance; unpaidEscrowHazardInsurance.Clean = value; _unpaidEscrowHazardInsurance = unpaidEscrowHazardInsurance;
-                var unpaidEscrowMortgageInsurance = _unpaidEscrowMortgageInsurance; unpaidEscrowMortgageInsurance.Clean = value; _unpaidEscrowMortgageInsurance = unpaidEscrowMortgageInsurance;
-                var unpaidEscrowOther1 = _unpaidEscrowOther1; unpaidEscrowOther1.Clean = value; _unpaidEscrowOther1 = unpaidEscrowOther1;
-                var unpaidEscrowOther2 = _unpaidEscrowOther2; unpaidEscrowOther2.Clean = value; _unpaidEscrowOther2 = unpaidEscrowOther2;
-                var unpaidEscrowOther3 = _unpaidEscrowOther3; unpaidEscrowOther3.Clean = value; _unpaidEscrowOther3 = unpaidEscrowOther3;
-                var unpaidEscrowTax = _unpaidEscrowTax; unpaidEscrowTax.Clean = value; _unpaidEscrowTax = unpaidEscrowTax;
-                var unpaidEscrowUSDAMonthlyPremium = _unpaidEscrowUSDAMonthlyPremium; unpaidEscrowUSDAMonthlyPremium.Clean = value; _unpaidEscrowUSDAMonthlyPremium = unpaidEscrowUSDAMonthlyPremium;
-                var unpaidInterest = _unpaidInterest; unpaidInterest.Clean = value; _unpaidInterest = unpaidInterest;
-                var unpaidLateFee = _unpaidLateFee; unpaidLateFee.Clean = value; _unpaidLateFee = unpaidLateFee;
-                var unpaidMiscrFee = _unpaidMiscrFee; unpaidMiscrFee.Clean = value; _unpaidMiscrFee = unpaidMiscrFee;
-                var unpaidPrincipal = _unpaidPrincipal; unpaidPrincipal.Clean = value; _unpaidPrincipal = unpaidPrincipal;
-                if (LastScheduledPayment != null) LastScheduledPayment.Clean = value;
-                if (NextScheduledPayment != null) NextScheduledPayment.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _beginningBalance.Dirty = value;
+                _borrCellPhoneNumber.Dirty = value;
+                _borrHomeEmail.Dirty = value;
+                _borrHomePhoneNumber.Dirty = value;
+                _borrowerFirstName.Dirty = value;
+                _borrowerLastName.Dirty = value;
+                _borrWorkPhoneNumber.Dirty = value;
+                _calcTriggered.Dirty = value;
+                _cityInsurance.Dirty = value;
+                _comments.Dirty = value;
+                _currentPrincipalBalance.Dirty = value;
+                _escrowBalance.Dirty = value;
+                _escrowDisbursementTransactions.Dirty = value;
+                _escrowInterestTransactions.Dirty = value;
+                _floodInsurance.Dirty = value;
+                _id.Dirty = value;
+                _interimServicingTransactions.Dirty = value;
+                _lastPaymentAdditionalEscrow.Dirty = value;
+                _lastPaymentAdditionalPrincipal.Dirty = value;
+                _lastPaymentBuydownSubsidyAmount.Dirty = value;
+                _lastPaymentEscrowAmount.Dirty = value;
+                _lastPaymentEscrowCityPropertyTax.Dirty = value;
+                _lastPaymentEscrowFloodInsurance.Dirty = value;
+                _lastPaymentEscrowHazardInsurance.Dirty = value;
+                _lastPaymentEscrowMortgageInsurance.Dirty = value;
+                _lastPaymentEscrowOther1.Dirty = value;
+                _lastPaymentEscrowOther2.Dirty = value;
+                _lastPaymentEscrowOther3.Dirty = value;
+                _lastPaymentEscrowTax.Dirty = value;
+                _lastPaymentEscrowUSDAMonthlyPremium.Dirty = value;
+                _lastPaymentGuid.Dirty = value;
+                _lastPaymentInterest.Dirty = value;
+                _lastPaymentLateFee.Dirty = value;
+                _lastPaymentMiscFee.Dirty = value;
+                _lastPaymentNumber.Dirty = value;
+                _lastPaymentPrincipal.Dirty = value;
+                _lastPaymentPrincipalAndInterest.Dirty = value;
+                _lastPaymentReceivedDate.Dirty = value;
+                _lastPaymentStatementDate.Dirty = value;
+                _lastPaymentTotalAmountReceived.Dirty = value;
+                _lastStatementPrintedDate.Dirty = value;
+                _loanSnapshotXml.Dirty = value;
+                _mailingCity.Dirty = value;
+                _mailingPostalCode.Dirty = value;
+                _mailingState.Dirty = value;
+                _mailingStreetAddress.Dirty = value;
+                _mortgageAccount.Dirty = value;
+                _nextEscrowTotalFloodInsurance.Dirty = value;
+                _nextEscrowTotalFloodInsuranceDueDate.Dirty = value;
+                _nextEscrowTotalHazardInsurance.Dirty = value;
+                _nextEscrowTotalHazardInsuranceDueDate.Dirty = value;
+                _nextEscrowTotalMortgageInsurance.Dirty = value;
+                _nextEscrowTotalMortgageInsuranceDueDate.Dirty = value;
+                _nextEscrowTotalOtherTax1.Dirty = value;
+                _nextEscrowTotalOtherTax1DueDate.Dirty = value;
+                _nextEscrowTotalOtherTax2.Dirty = value;
+                _nextEscrowTotalOtherTax2DueDate.Dirty = value;
+                _nextEscrowTotalOtherTax3.Dirty = value;
+                _nextEscrowTotalOtherTax3DueDate.Dirty = value;
+                _nextEscrowTotalPropertyTax.Dirty = value;
+                _nextEscrowTotalPropertyTaxDueDate.Dirty = value;
+                _nextEscrowTotalTax.Dirty = value;
+                _nextEscrowTotalTaxDueDate.Dirty = value;
+                _nextEscrowTotalUsdaMonthlyPremium.Dirty = value;
+                _nextEscrowTotalUsdaMonthlyPremiumDueDate.Dirty = value;
+                _nextPaymentBuydownSubsidyAmount.Dirty = value;
+                _nextPaymentEscrowAmount.Dirty = value;
+                _nextPaymentEscrowCityPropertyTax.Dirty = value;
+                _nextPaymentEscrowFloodInsurance.Dirty = value;
+                _nextPaymentEscrowHazardInsurance.Dirty = value;
+                _nextPaymentEscrowMortgageInsurance.Dirty = value;
+                _nextPaymentEscrowOther1.Dirty = value;
+                _nextPaymentEscrowOther2.Dirty = value;
+                _nextPaymentEscrowOther3.Dirty = value;
+                _nextPaymentEscrowTax.Dirty = value;
+                _nextPaymentEscrowUSDAMonthlyPremium.Dirty = value;
+                _nextPaymentIndexCurrentValuePercent.Dirty = value;
+                _nextPaymentInterest.Dirty = value;
+                _nextPaymentLateFee.Dirty = value;
+                _nextPaymentLatePaymentDate.Dirty = value;
+                _nextPaymentMiscFee.Dirty = value;
+                _nextPaymentPastDueAmount.Dirty = value;
+                _nextPaymentPaymentDueDate.Dirty = value;
+                _nextPaymentPaymentIndexDate.Dirty = value;
+                _nextPaymentPrincipal.Dirty = value;
+                _nextPaymentPrincipalAndInterest.Dirty = value;
+                _nextPaymentRequestedInterestRatePercent.Dirty = value;
+                _nextPaymentStatementDueDate.Dirty = value;
+                _nextPaymentTotalAmountDue.Dirty = value;
+                _nextPaymentTotalAmountWithLateFee.Dirty = value;
+                _nextPaymentUnpaidLateFee.Dirty = value;
+                _numberOfDisbursement.Dirty = value;
+                _otherTransactions.Dirty = value;
+                _paymentDueDatePrinted.Dirty = value;
+                _paymentReversalTransactions.Dirty = value;
+                _paymentTransactions.Dirty = value;
+                _printedByUserId.Dirty = value;
+                _printedByUserName.Dirty = value;
+                _purchasedPrincipal.Dirty = value;
+                _scheduledPayments.Dirty = value;
+                _schedulePaymentTransactions.Dirty = value;
+                _servicerLoanNumber.Dirty = value;
+                _servicingStatus.Dirty = value;
+                _servicingTransferDate.Dirty = value;
+                _subServicer.Dirty = value;
+                _subServicerLoanNumber.Dirty = value;
+                _totalAdditionalEscrow.Dirty = value;
+                _totalAdditionalEscrowYearToDate.Dirty = value;
+                _totalAdditionalPrincipal.Dirty = value;
+                _totalAdditionalPrincipalYearToDate.Dirty = value;
+                _totalAmountDisbursed.Dirty = value;
+                _totalBuydownSubsidyAmount.Dirty = value;
+                _totalBuydownSubsidyAmountYearToDate.Dirty = value;
+                _totalEscrow.Dirty = value;
+                _totalEscrowYearToDate.Dirty = value;
+                _totalHazardInsurance.Dirty = value;
+                _totalInterest.Dirty = value;
+                _totalInterestYearToDate.Dirty = value;
+                _totalLateFee.Dirty = value;
+                _totalLateFeeYearToDate.Dirty = value;
+                _totalMiscFee.Dirty = value;
+                _totalMiscFeeYearToDate.Dirty = value;
+                _totalMortgageInsurance.Dirty = value;
+                _totalNumberOfLatePayment.Dirty = value;
+                _totalNumberOfPayment.Dirty = value;
+                _totalOtherTaxes.Dirty = value;
+                _totalPAndI.Dirty = value;
+                _totalPAndIYearToDate.Dirty = value;
+                _totalPaymentCollected.Dirty = value;
+                _totalPaymentCollectedYearToDate.Dirty = value;
+                _totalPrincipal.Dirty = value;
+                _totalPrincipalYearToDate.Dirty = value;
+                _totalTaxes.Dirty = value;
+                _totalUsdaMonthlyPremium.Dirty = value;
+                _unpaidBuydownSubsidyAmount.Dirty = value;
+                _unpaidEscrow.Dirty = value;
+                _unpaidEscrowCityPropertyTax.Dirty = value;
+                _unpaidEscrowFloodInsurance.Dirty = value;
+                _unpaidEscrowHazardInsurance.Dirty = value;
+                _unpaidEscrowMortgageInsurance.Dirty = value;
+                _unpaidEscrowOther1.Dirty = value;
+                _unpaidEscrowOther2.Dirty = value;
+                _unpaidEscrowOther3.Dirty = value;
+                _unpaidEscrowTax.Dirty = value;
+                _unpaidEscrowUSDAMonthlyPremium.Dirty = value;
+                _unpaidInterest.Dirty = value;
+                _unpaidLateFee.Dirty = value;
+                _unpaidMiscrFee.Dirty = value;
+                _unpaidPrincipal.Dirty = value;
+                if (LastScheduledPayment != null) LastScheduledPayment.Dirty = value;
+                if (NextScheduledPayment != null) NextScheduledPayment.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public InterimServicing()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

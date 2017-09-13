@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AdditionalRequests : IClean
+    public sealed partial class AdditionalRequests : IDirty
     {
         private Value<string> _appraisalContactCellPhone;
         public string AppraisalContactCellPhone { get { return _appraisalContactCellPhone; } set { _appraisalContactCellPhone = value; } }
@@ -84,103 +84,98 @@ namespace EncompassRest.Loans
         public string TitleTypeOfProperty { get { return _titleTypeOfProperty; } set { _titleTypeOfProperty = value; } }
         private Value<bool?> _titleWarrantyDeed;
         public bool? TitleWarrantyDeed { get { return _titleWarrantyDeed; } set { _titleWarrantyDeed = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _appraisalContactCellPhone.Clean
-                    && _appraisalContactEmail.Clean
-                    && _appraisalContactForEntry.Clean
-                    && _appraisalContactHomePhone.Clean
-                    && _appraisalContactName.Clean
-                    && _appraisalContactWorkPhone.Clean
-                    && _appraisalDateOrdered.Clean
-                    && _appraisalDescription1.Clean
-                    && _appraisalDescription2.Clean
-                    && _appraisalDescription3.Clean
-                    && _appraisalKeyPickUp.Clean
-                    && _appraisalLockBox.Clean
-                    && _appraisalVacant.Clean
-                    && _floodDescription1.Clean
-                    && _floodDescription2.Clean
-                    && _floodDescription3.Clean
-                    && _floodInsuranceEscrowed.Clean
-                    && _floodReplacementValue.Clean
-                    && _hazardDescription1.Clean
-                    && _hazardDescription2.Clean
-                    && _hazardDescription3.Clean
-                    && _hazardInsuranceEscrowed.Clean
-                    && _hazardReplacementValue.Clean
-                    && _id.Clean
-                    && _maximumDeductibleFloodAmount.Clean
-                    && _maximumDeductibleFloodPercentage.Clean
-                    && _maximumDeductibleHazardAmount.Clean
-                    && _maximumDeductibleHazardPercentage.Clean
-                    && _titleContract.Clean
-                    && _titleDescription1.Clean
-                    && _titleDescription2.Clean
-                    && _titleDescription3.Clean
-                    && _titleInsRequirements.Clean
-                    && _titleMailAway.Clean
-                    && _titlePriorTitlePolicy.Clean
-                    && _titleSurvey.Clean
-                    && _titleTypeOfProperty.Clean
-                    && _titleWarrantyDeed.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _appraisalContactCellPhone.Dirty
+                    || _appraisalContactEmail.Dirty
+                    || _appraisalContactForEntry.Dirty
+                    || _appraisalContactHomePhone.Dirty
+                    || _appraisalContactName.Dirty
+                    || _appraisalContactWorkPhone.Dirty
+                    || _appraisalDateOrdered.Dirty
+                    || _appraisalDescription1.Dirty
+                    || _appraisalDescription2.Dirty
+                    || _appraisalDescription3.Dirty
+                    || _appraisalKeyPickUp.Dirty
+                    || _appraisalLockBox.Dirty
+                    || _appraisalVacant.Dirty
+                    || _floodDescription1.Dirty
+                    || _floodDescription2.Dirty
+                    || _floodDescription3.Dirty
+                    || _floodInsuranceEscrowed.Dirty
+                    || _floodReplacementValue.Dirty
+                    || _hazardDescription1.Dirty
+                    || _hazardDescription2.Dirty
+                    || _hazardDescription3.Dirty
+                    || _hazardInsuranceEscrowed.Dirty
+                    || _hazardReplacementValue.Dirty
+                    || _id.Dirty
+                    || _maximumDeductibleFloodAmount.Dirty
+                    || _maximumDeductibleFloodPercentage.Dirty
+                    || _maximumDeductibleHazardAmount.Dirty
+                    || _maximumDeductibleHazardPercentage.Dirty
+                    || _titleContract.Dirty
+                    || _titleDescription1.Dirty
+                    || _titleDescription2.Dirty
+                    || _titleDescription3.Dirty
+                    || _titleInsRequirements.Dirty
+                    || _titleMailAway.Dirty
+                    || _titlePriorTitlePolicy.Dirty
+                    || _titleSurvey.Dirty
+                    || _titleTypeOfProperty.Dirty
+                    || _titleWarrantyDeed.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var appraisalContactCellPhone = _appraisalContactCellPhone; appraisalContactCellPhone.Clean = value; _appraisalContactCellPhone = appraisalContactCellPhone;
-                var appraisalContactEmail = _appraisalContactEmail; appraisalContactEmail.Clean = value; _appraisalContactEmail = appraisalContactEmail;
-                var appraisalContactForEntry = _appraisalContactForEntry; appraisalContactForEntry.Clean = value; _appraisalContactForEntry = appraisalContactForEntry;
-                var appraisalContactHomePhone = _appraisalContactHomePhone; appraisalContactHomePhone.Clean = value; _appraisalContactHomePhone = appraisalContactHomePhone;
-                var appraisalContactName = _appraisalContactName; appraisalContactName.Clean = value; _appraisalContactName = appraisalContactName;
-                var appraisalContactWorkPhone = _appraisalContactWorkPhone; appraisalContactWorkPhone.Clean = value; _appraisalContactWorkPhone = appraisalContactWorkPhone;
-                var appraisalDateOrdered = _appraisalDateOrdered; appraisalDateOrdered.Clean = value; _appraisalDateOrdered = appraisalDateOrdered;
-                var appraisalDescription1 = _appraisalDescription1; appraisalDescription1.Clean = value; _appraisalDescription1 = appraisalDescription1;
-                var appraisalDescription2 = _appraisalDescription2; appraisalDescription2.Clean = value; _appraisalDescription2 = appraisalDescription2;
-                var appraisalDescription3 = _appraisalDescription3; appraisalDescription3.Clean = value; _appraisalDescription3 = appraisalDescription3;
-                var appraisalKeyPickUp = _appraisalKeyPickUp; appraisalKeyPickUp.Clean = value; _appraisalKeyPickUp = appraisalKeyPickUp;
-                var appraisalLockBox = _appraisalLockBox; appraisalLockBox.Clean = value; _appraisalLockBox = appraisalLockBox;
-                var appraisalVacant = _appraisalVacant; appraisalVacant.Clean = value; _appraisalVacant = appraisalVacant;
-                var floodDescription1 = _floodDescription1; floodDescription1.Clean = value; _floodDescription1 = floodDescription1;
-                var floodDescription2 = _floodDescription2; floodDescription2.Clean = value; _floodDescription2 = floodDescription2;
-                var floodDescription3 = _floodDescription3; floodDescription3.Clean = value; _floodDescription3 = floodDescription3;
-                var floodInsuranceEscrowed = _floodInsuranceEscrowed; floodInsuranceEscrowed.Clean = value; _floodInsuranceEscrowed = floodInsuranceEscrowed;
-                var floodReplacementValue = _floodReplacementValue; floodReplacementValue.Clean = value; _floodReplacementValue = floodReplacementValue;
-                var hazardDescription1 = _hazardDescription1; hazardDescription1.Clean = value; _hazardDescription1 = hazardDescription1;
-                var hazardDescription2 = _hazardDescription2; hazardDescription2.Clean = value; _hazardDescription2 = hazardDescription2;
-                var hazardDescription3 = _hazardDescription3; hazardDescription3.Clean = value; _hazardDescription3 = hazardDescription3;
-                var hazardInsuranceEscrowed = _hazardInsuranceEscrowed; hazardInsuranceEscrowed.Clean = value; _hazardInsuranceEscrowed = hazardInsuranceEscrowed;
-                var hazardReplacementValue = _hazardReplacementValue; hazardReplacementValue.Clean = value; _hazardReplacementValue = hazardReplacementValue;
-                var id = _id; id.Clean = value; _id = id;
-                var maximumDeductibleFloodAmount = _maximumDeductibleFloodAmount; maximumDeductibleFloodAmount.Clean = value; _maximumDeductibleFloodAmount = maximumDeductibleFloodAmount;
-                var maximumDeductibleFloodPercentage = _maximumDeductibleFloodPercentage; maximumDeductibleFloodPercentage.Clean = value; _maximumDeductibleFloodPercentage = maximumDeductibleFloodPercentage;
-                var maximumDeductibleHazardAmount = _maximumDeductibleHazardAmount; maximumDeductibleHazardAmount.Clean = value; _maximumDeductibleHazardAmount = maximumDeductibleHazardAmount;
-                var maximumDeductibleHazardPercentage = _maximumDeductibleHazardPercentage; maximumDeductibleHazardPercentage.Clean = value; _maximumDeductibleHazardPercentage = maximumDeductibleHazardPercentage;
-                var titleContract = _titleContract; titleContract.Clean = value; _titleContract = titleContract;
-                var titleDescription1 = _titleDescription1; titleDescription1.Clean = value; _titleDescription1 = titleDescription1;
-                var titleDescription2 = _titleDescription2; titleDescription2.Clean = value; _titleDescription2 = titleDescription2;
-                var titleDescription3 = _titleDescription3; titleDescription3.Clean = value; _titleDescription3 = titleDescription3;
-                var titleInsRequirements = _titleInsRequirements; titleInsRequirements.Clean = value; _titleInsRequirements = titleInsRequirements;
-                var titleMailAway = _titleMailAway; titleMailAway.Clean = value; _titleMailAway = titleMailAway;
-                var titlePriorTitlePolicy = _titlePriorTitlePolicy; titlePriorTitlePolicy.Clean = value; _titlePriorTitlePolicy = titlePriorTitlePolicy;
-                var titleSurvey = _titleSurvey; titleSurvey.Clean = value; _titleSurvey = titleSurvey;
-                var titleTypeOfProperty = _titleTypeOfProperty; titleTypeOfProperty.Clean = value; _titleTypeOfProperty = titleTypeOfProperty;
-                var titleWarrantyDeed = _titleWarrantyDeed; titleWarrantyDeed.Clean = value; _titleWarrantyDeed = titleWarrantyDeed;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _appraisalContactCellPhone.Dirty = value;
+                _appraisalContactEmail.Dirty = value;
+                _appraisalContactForEntry.Dirty = value;
+                _appraisalContactHomePhone.Dirty = value;
+                _appraisalContactName.Dirty = value;
+                _appraisalContactWorkPhone.Dirty = value;
+                _appraisalDateOrdered.Dirty = value;
+                _appraisalDescription1.Dirty = value;
+                _appraisalDescription2.Dirty = value;
+                _appraisalDescription3.Dirty = value;
+                _appraisalKeyPickUp.Dirty = value;
+                _appraisalLockBox.Dirty = value;
+                _appraisalVacant.Dirty = value;
+                _floodDescription1.Dirty = value;
+                _floodDescription2.Dirty = value;
+                _floodDescription3.Dirty = value;
+                _floodInsuranceEscrowed.Dirty = value;
+                _floodReplacementValue.Dirty = value;
+                _hazardDescription1.Dirty = value;
+                _hazardDescription2.Dirty = value;
+                _hazardDescription3.Dirty = value;
+                _hazardInsuranceEscrowed.Dirty = value;
+                _hazardReplacementValue.Dirty = value;
+                _id.Dirty = value;
+                _maximumDeductibleFloodAmount.Dirty = value;
+                _maximumDeductibleFloodPercentage.Dirty = value;
+                _maximumDeductibleHazardAmount.Dirty = value;
+                _maximumDeductibleHazardPercentage.Dirty = value;
+                _titleContract.Dirty = value;
+                _titleDescription1.Dirty = value;
+                _titleDescription2.Dirty = value;
+                _titleDescription3.Dirty = value;
+                _titleInsRequirements.Dirty = value;
+                _titleMailAway.Dirty = value;
+                _titlePriorTitlePolicy.Dirty = value;
+                _titleSurvey.Dirty = value;
+                _titleTypeOfProperty.Dirty = value;
+                _titleWarrantyDeed.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public AdditionalRequests()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

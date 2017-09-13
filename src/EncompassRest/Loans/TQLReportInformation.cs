@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLReportInformation : IClean
+    public sealed partial class TQLReportInformation : IDirty
     {
         private Value<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
@@ -60,79 +60,74 @@ namespace EncompassRest.Loans
         public string TranscriptType { get { return _transcriptType; } set { _transcriptType = value; } }
         private Value<string> _userID;
         public string UserID { get { return _userID; } set { _userID = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _altId.Clean
-                    && _borrowerID1.Clean
-                    && _borrowerID2.Clean
-                    && _borrowerID3.Clean
-                    && _borrowerID4.Clean
-                    && _completedDate.Clean
-                    && _id.Clean
-                    && _investor.Clean
-                    && _orderDate.Clean
-                    && _orderNumber.Clean
-                    && _orderStatus.Clean
-                    && _percentVariance1.Clean
-                    && _percentVariance2.Clean
-                    && _percentVariance3.Clean
-                    && _percentVariance4.Clean
-                    && _productsOrdered.Clean
-                    && _reportYear1.Clean
-                    && _reportYear2.Clean
-                    && _reportYear3.Clean
-                    && _reportYear4.Clean
-                    && _totalIncome1.Clean
-                    && _totalIncome2.Clean
-                    && _totalIncome3.Clean
-                    && _totalIncome4.Clean
-                    && _transcriptType.Clean
-                    && _userID.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _altId.Dirty
+                    || _borrowerID1.Dirty
+                    || _borrowerID2.Dirty
+                    || _borrowerID3.Dirty
+                    || _borrowerID4.Dirty
+                    || _completedDate.Dirty
+                    || _id.Dirty
+                    || _investor.Dirty
+                    || _orderDate.Dirty
+                    || _orderNumber.Dirty
+                    || _orderStatus.Dirty
+                    || _percentVariance1.Dirty
+                    || _percentVariance2.Dirty
+                    || _percentVariance3.Dirty
+                    || _percentVariance4.Dirty
+                    || _productsOrdered.Dirty
+                    || _reportYear1.Dirty
+                    || _reportYear2.Dirty
+                    || _reportYear3.Dirty
+                    || _reportYear4.Dirty
+                    || _totalIncome1.Dirty
+                    || _totalIncome2.Dirty
+                    || _totalIncome3.Dirty
+                    || _totalIncome4.Dirty
+                    || _transcriptType.Dirty
+                    || _userID.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var altId = _altId; altId.Clean = value; _altId = altId;
-                var borrowerID1 = _borrowerID1; borrowerID1.Clean = value; _borrowerID1 = borrowerID1;
-                var borrowerID2 = _borrowerID2; borrowerID2.Clean = value; _borrowerID2 = borrowerID2;
-                var borrowerID3 = _borrowerID3; borrowerID3.Clean = value; _borrowerID3 = borrowerID3;
-                var borrowerID4 = _borrowerID4; borrowerID4.Clean = value; _borrowerID4 = borrowerID4;
-                var completedDate = _completedDate; completedDate.Clean = value; _completedDate = completedDate;
-                var id = _id; id.Clean = value; _id = id;
-                var investor = _investor; investor.Clean = value; _investor = investor;
-                var orderDate = _orderDate; orderDate.Clean = value; _orderDate = orderDate;
-                var orderNumber = _orderNumber; orderNumber.Clean = value; _orderNumber = orderNumber;
-                var orderStatus = _orderStatus; orderStatus.Clean = value; _orderStatus = orderStatus;
-                var percentVariance1 = _percentVariance1; percentVariance1.Clean = value; _percentVariance1 = percentVariance1;
-                var percentVariance2 = _percentVariance2; percentVariance2.Clean = value; _percentVariance2 = percentVariance2;
-                var percentVariance3 = _percentVariance3; percentVariance3.Clean = value; _percentVariance3 = percentVariance3;
-                var percentVariance4 = _percentVariance4; percentVariance4.Clean = value; _percentVariance4 = percentVariance4;
-                var productsOrdered = _productsOrdered; productsOrdered.Clean = value; _productsOrdered = productsOrdered;
-                var reportYear1 = _reportYear1; reportYear1.Clean = value; _reportYear1 = reportYear1;
-                var reportYear2 = _reportYear2; reportYear2.Clean = value; _reportYear2 = reportYear2;
-                var reportYear3 = _reportYear3; reportYear3.Clean = value; _reportYear3 = reportYear3;
-                var reportYear4 = _reportYear4; reportYear4.Clean = value; _reportYear4 = reportYear4;
-                var totalIncome1 = _totalIncome1; totalIncome1.Clean = value; _totalIncome1 = totalIncome1;
-                var totalIncome2 = _totalIncome2; totalIncome2.Clean = value; _totalIncome2 = totalIncome2;
-                var totalIncome3 = _totalIncome3; totalIncome3.Clean = value; _totalIncome3 = totalIncome3;
-                var totalIncome4 = _totalIncome4; totalIncome4.Clean = value; _totalIncome4 = totalIncome4;
-                var transcriptType = _transcriptType; transcriptType.Clean = value; _transcriptType = transcriptType;
-                var userID = _userID; userID.Clean = value; _userID = userID;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _altId.Dirty = value;
+                _borrowerID1.Dirty = value;
+                _borrowerID2.Dirty = value;
+                _borrowerID3.Dirty = value;
+                _borrowerID4.Dirty = value;
+                _completedDate.Dirty = value;
+                _id.Dirty = value;
+                _investor.Dirty = value;
+                _orderDate.Dirty = value;
+                _orderNumber.Dirty = value;
+                _orderStatus.Dirty = value;
+                _percentVariance1.Dirty = value;
+                _percentVariance2.Dirty = value;
+                _percentVariance3.Dirty = value;
+                _percentVariance4.Dirty = value;
+                _productsOrdered.Dirty = value;
+                _reportYear1.Dirty = value;
+                _reportYear2.Dirty = value;
+                _reportYear3.Dirty = value;
+                _reportYear4.Dirty = value;
+                _totalIncome1.Dirty = value;
+                _totalIncome2.Dirty = value;
+                _totalIncome3.Dirty = value;
+                _totalIncome4.Dirty = value;
+                _transcriptType.Dirty = value;
+                _userID.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TQLReportInformation()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

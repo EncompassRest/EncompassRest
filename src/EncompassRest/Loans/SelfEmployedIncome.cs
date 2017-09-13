@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SelfEmployedIncome : IClean
+    public sealed partial class SelfEmployedIncome : IDirty
     {
         private Value<bool?> _boolFieldValue;
         public bool? BoolFieldValue { get { return _boolFieldValue; } set { _boolFieldValue = value; } }
@@ -24,43 +24,38 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<decimal?> _secondYearAmount;
         public decimal? SecondYearAmount { get { return _secondYearAmount; } set { _secondYearAmount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _boolFieldValue.Clean
-                    && _businessName.Clean
-                    && _fieldName.Clean
-                    && _fieldValue.Clean
-                    && _firstYearAmount.Clean
-                    && _formType.Clean
-                    && _id.Clean
-                    && _secondYearAmount.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _boolFieldValue.Dirty
+                    || _businessName.Dirty
+                    || _fieldName.Dirty
+                    || _fieldValue.Dirty
+                    || _firstYearAmount.Dirty
+                    || _formType.Dirty
+                    || _id.Dirty
+                    || _secondYearAmount.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var boolFieldValue = _boolFieldValue; boolFieldValue.Clean = value; _boolFieldValue = boolFieldValue;
-                var businessName = _businessName; businessName.Clean = value; _businessName = businessName;
-                var fieldName = _fieldName; fieldName.Clean = value; _fieldName = fieldName;
-                var fieldValue = _fieldValue; fieldValue.Clean = value; _fieldValue = fieldValue;
-                var firstYearAmount = _firstYearAmount; firstYearAmount.Clean = value; _firstYearAmount = firstYearAmount;
-                var formType = _formType; formType.Clean = value; _formType = formType;
-                var id = _id; id.Clean = value; _id = id;
-                var secondYearAmount = _secondYearAmount; secondYearAmount.Clean = value; _secondYearAmount = secondYearAmount;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _boolFieldValue.Dirty = value;
+                _businessName.Dirty = value;
+                _fieldName.Dirty = value;
+                _fieldValue.Dirty = value;
+                _firstYearAmount.Dirty = value;
+                _formType.Dirty = value;
+                _id.Dirty = value;
+                _secondYearAmount.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public SelfEmployedIncome()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

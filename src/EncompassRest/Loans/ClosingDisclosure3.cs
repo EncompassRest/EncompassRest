@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure3 : IClean
+    public sealed partial class ClosingDisclosure3 : IDirty
     {
         private Value<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
         public decimal? ActualLECD3TotalClosingCostJFromLatestRec { get { return _actualLECD3TotalClosingCostJFromLatestRec; } set { _actualLECD3TotalClosingCostJFromLatestRec = value; } }
@@ -320,339 +320,334 @@ namespace EncompassRest.Loans
         public decimal? UCDLSubTotal { get { return _uCDLSubTotal; } set { _uCDLSubTotal = value; } }
         private Value<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
         public decimal? UCDTotalAdjustmentsAndOtherCredits { get { return _uCDTotalAdjustmentsAndOtherCredits; } set { _uCDTotalAdjustmentsAndOtherCredits = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actualLECD3TotalClosingCostJFromLatestRec.Clean
-                    && _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Clean
-                    && _actualLELoanAmountFromLatestRec.Clean
-                    && _actualLenderCredits.Clean
-                    && _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec.Clean
-                    && _actualSTDLEClosingCostFinancedFromLatestRec.Clean
-                    && _actualSTDLEDepositFromLatestRec.Clean
-                    && _actualSTDLEDownPaymentFromLatestRec.Clean
-                    && _actualSTDLEFundForBorrowerFromLatestRec.Clean
-                    && _actualSTDLESellerCredits.Clean
-                    && _actualSTDLESellerCreditsFromLatestRec.Clean
-                    && _actualSTDLETotalClosingCostJ.Clean
-                    && _actualSTDLETotalClosingCostJFromLatestRec.Clean
-                    && _adjustments06_1.Clean
-                    && _adjustments06_2.Clean
-                    && _adjustments07_1.Clean
-                    && _adjustments07_2.Clean
-                    && _adjustments10_1.Clean
-                    && _adjustments10_2.Clean
-                    && _adjustments11_1.Clean
-                    && _adjustments11_2.Clean
-                    && _adjustments15_1.Clean
-                    && _adjustments15_2.Clean
-                    && _adjustments8_1.Clean
-                    && _adjustments8_2.Clean
-                    && _adjustments9_1.Clean
-                    && _adjustments9_2.Clean
-                    && _adjustmentsforItemsPaidbySellerinAdvance16_1.Clean
-                    && _adjustmentsforItemsPaidbySellerinAdvance16_2.Clean
-                    && _aLTCashToCloseDidChangeCol.Clean
-                    && _aLTCashToCloseRemark.Clean
-                    && _aLTClosingCostBeforeClosingDidChangeCol.Clean
-                    && _aLTLegalLimit.Clean
-                    && _aLTLoanAmountDidChangeCol.Clean
-                    && _aLTLoanAmountIncDecRemark.Clean
-                    && _aLTTotalClosingCostDidChangeCol.Clean
-                    && _aLTTotalClosingCostRemark.Clean
-                    && _aLTTotalPayoffsDidChangeCol.Clean
-                    && _cash.Clean
-                    && _cashToClose.Clean
-                    && _cD3CashToClose.Clean
-                    && _cD3CashToCloseFromToBorrower.Clean
-                    && _cD3ClosingCostsPaidBeforeClosing.Clean
-                    && _cD3TotalClosingCost_J.Clean
-                    && _cD3TotalPayoffsAndPayments_K.Clean
-                    && _closingCostsPaidAtClosing.Clean
-                    && _closingCostsPaidatClosing_J.Clean
-                    && _duefromSelleratClosing11_1.Clean
-                    && _duefromSelleratClosing11_2.Clean
-                    && _duefromSelleratClosing12_1.Clean
-                    && _duefromSelleratClosing12_2.Clean
-                    && _duefromSelleratClosing13_1.Clean
-                    && _duefromSelleratClosing13_2.Clean
-                    && _dueToSellerAtClosing6_1.Clean
-                    && _dueToSellerAtClosing6_2.Clean
-                    && _dueToSellerAtClosing7_1.Clean
-                    && _dueToSellerAtClosing7_2.Clean
-                    && _dueToSellerAtClosing8_1.Clean
-                    && _dueToSellerAtClosing8_2.Clean
-                    && _excludeBorrowerClosingCosts.Clean
-                    && _finalCashToClose.Clean
-                    && _fromToBorrower.Clean
-                    && _fromToSeller.Clean
-                    && _id.Clean
-                    && _lECD3CashToClose.Clean
-                    && _lECD3CashToCloseFromToBorrower.Clean
-                    && _lECD3ClosingCostsPaidBeforeClosing.Clean
-                    && _lECD3TotalClosingCost_J.Clean
-                    && _lECD3TotalPayoffsAndPayments_K.Clean
-                    && _lELoanAmount.Clean
-                    && _liabilityAmount1.Clean
-                    && _liabilityAmount10.Clean
-                    && _liabilityAmount11.Clean
-                    && _liabilityAmount12.Clean
-                    && _liabilityAmount13.Clean
-                    && _liabilityAmount14.Clean
-                    && _liabilityAmount15.Clean
-                    && _liabilityAmount2.Clean
-                    && _liabilityAmount3.Clean
-                    && _liabilityAmount4.Clean
-                    && _liabilityAmount5.Clean
-                    && _liabilityAmount6.Clean
-                    && _liabilityAmount7.Clean
-                    && _liabilityAmount8.Clean
-                    && _liabilityAmount9.Clean
-                    && _liabilityTo1.Clean
-                    && _liabilityTo10.Clean
-                    && _liabilityTo11.Clean
-                    && _liabilityTo12.Clean
-                    && _liabilityTo13.Clean
-                    && _liabilityTo14.Clean
-                    && _liabilityTo15.Clean
-                    && _liabilityTo2.Clean
-                    && _liabilityTo3.Clean
-                    && _liabilityTo4.Clean
-                    && _liabilityTo5.Clean
-                    && _liabilityTo6.Clean
-                    && _liabilityTo7.Clean
-                    && _liabilityTo8.Clean
-                    && _liabilityTo9.Clean
-                    && _liabilityTotal.Clean
-                    && _loanAmount.Clean
-                    && _nonUCDTotalAdjustmentsAndOtherCredits.Clean
-                    && _omitFromPrintSellersTransaction.Clean
-                    && _otherCredits6_1.Clean
-                    && _otherCredits6_2.Clean
-                    && _otherCredits7_1.Clean
-                    && _otherCredits7_2.Clean
-                    && _priorToleranceCureAmount.Clean
-                    && _sTDAdjustmentAndOtherCreditsRemark.Clean
-                    && _sTDAdjustmentsDidChangeCol.Clean
-                    && _sTDClosingCostFinancedDidChangeCol.Clean
-                    && _sTDDepositDidChangeCol.Clean
-                    && _sTDDepositIncDecRemark.Clean
-                    && _sTDDownPaymentDidChangeCol.Clean
-                    && _sTDDownPaymentIncDecRemark.Clean
-                    && _sTDDownPaymentSectionRemark.Clean
-                    && _sTDFinalAdjustmentAndOtherCredits.Clean
-                    && _sTDFinalCashToClose.Clean
-                    && _sTDFinalCD3ClosingCostsPaidBeforeClosing.Clean
-                    && _sTDFinalClosingCostFinanced.Clean
-                    && _sTDFinalDeposit.Clean
-                    && _sTDFinalDownPayment.Clean
-                    && _sTDFinalFundForBorrower.Clean
-                    && _sTDFinalSellerCredits.Clean
-                    && _sTDFinalTotalClosingCostJ.Clean
-                    && _sTDFundsForBorrowerDidChangeCol.Clean
-                    && _sTDFundsForBorrowerIncDecRemark.Clean
-                    && _sTDLEAdjustmentAndOtherCredits.Clean
-                    && _sTDLECashToClose.Clean
-                    && _sTDLECD3ClosingCostsPaidBeforeClosing.Clean
-                    && _sTDLEClosingCostFinanced.Clean
-                    && _sTDLEDeposit.Clean
-                    && _sTDLEDownPayment.Clean
-                    && _sTDLEFundForBorrower.Clean
-                    && _sTDLegalLimit.Clean
-                    && _sTDLESellerCredits.Clean
-                    && _sTDLETotalClosingCostJ.Clean
-                    && _sTDSellerCreditsDidChangeCol.Clean
-                    && _sTDSellerCreditsIncDecRemark.Clean
-                    && _sTDTotalClosingCostBeforeClosingDidChangeCol.Clean
-                    && _sTDTotalClosingCostDidChangeCol.Clean
-                    && _sTDTotalClosingCostRemark.Clean
-                    && _totalAdjustmentsAndOtherCredits.Clean
-                    && _totalDuefromBorrowerAtClosing.Clean
-                    && _totalDuefromSelleratClosing_N.Clean
-                    && _totalDuetoSelleratClosing_M.Clean
-                    && _totalFromK.Clean
-                    && _totalFromL.Clean
-                    && _totalFromM.Clean
-                    && _totalFromN.Clean
-                    && _totalPaidAlreadybyoronBehalfofBoroweratClosing.Clean
-                    && _uCDDetails.Clean
-                    && _uCDKSubTotal.Clean
-                    && _uCDLSubTotal.Clean
-                    && _uCDTotalAdjustmentsAndOtherCredits.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actualLECD3TotalClosingCostJFromLatestRec.Dirty
+                    || _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty
+                    || _actualLELoanAmountFromLatestRec.Dirty
+                    || _actualLenderCredits.Dirty
+                    || _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec.Dirty
+                    || _actualSTDLEClosingCostFinancedFromLatestRec.Dirty
+                    || _actualSTDLEDepositFromLatestRec.Dirty
+                    || _actualSTDLEDownPaymentFromLatestRec.Dirty
+                    || _actualSTDLEFundForBorrowerFromLatestRec.Dirty
+                    || _actualSTDLESellerCredits.Dirty
+                    || _actualSTDLESellerCreditsFromLatestRec.Dirty
+                    || _actualSTDLETotalClosingCostJ.Dirty
+                    || _actualSTDLETotalClosingCostJFromLatestRec.Dirty
+                    || _adjustments06_1.Dirty
+                    || _adjustments06_2.Dirty
+                    || _adjustments07_1.Dirty
+                    || _adjustments07_2.Dirty
+                    || _adjustments10_1.Dirty
+                    || _adjustments10_2.Dirty
+                    || _adjustments11_1.Dirty
+                    || _adjustments11_2.Dirty
+                    || _adjustments15_1.Dirty
+                    || _adjustments15_2.Dirty
+                    || _adjustments8_1.Dirty
+                    || _adjustments8_2.Dirty
+                    || _adjustments9_1.Dirty
+                    || _adjustments9_2.Dirty
+                    || _adjustmentsforItemsPaidbySellerinAdvance16_1.Dirty
+                    || _adjustmentsforItemsPaidbySellerinAdvance16_2.Dirty
+                    || _aLTCashToCloseDidChangeCol.Dirty
+                    || _aLTCashToCloseRemark.Dirty
+                    || _aLTClosingCostBeforeClosingDidChangeCol.Dirty
+                    || _aLTLegalLimit.Dirty
+                    || _aLTLoanAmountDidChangeCol.Dirty
+                    || _aLTLoanAmountIncDecRemark.Dirty
+                    || _aLTTotalClosingCostDidChangeCol.Dirty
+                    || _aLTTotalClosingCostRemark.Dirty
+                    || _aLTTotalPayoffsDidChangeCol.Dirty
+                    || _cash.Dirty
+                    || _cashToClose.Dirty
+                    || _cD3CashToClose.Dirty
+                    || _cD3CashToCloseFromToBorrower.Dirty
+                    || _cD3ClosingCostsPaidBeforeClosing.Dirty
+                    || _cD3TotalClosingCost_J.Dirty
+                    || _cD3TotalPayoffsAndPayments_K.Dirty
+                    || _closingCostsPaidAtClosing.Dirty
+                    || _closingCostsPaidatClosing_J.Dirty
+                    || _duefromSelleratClosing11_1.Dirty
+                    || _duefromSelleratClosing11_2.Dirty
+                    || _duefromSelleratClosing12_1.Dirty
+                    || _duefromSelleratClosing12_2.Dirty
+                    || _duefromSelleratClosing13_1.Dirty
+                    || _duefromSelleratClosing13_2.Dirty
+                    || _dueToSellerAtClosing6_1.Dirty
+                    || _dueToSellerAtClosing6_2.Dirty
+                    || _dueToSellerAtClosing7_1.Dirty
+                    || _dueToSellerAtClosing7_2.Dirty
+                    || _dueToSellerAtClosing8_1.Dirty
+                    || _dueToSellerAtClosing8_2.Dirty
+                    || _excludeBorrowerClosingCosts.Dirty
+                    || _finalCashToClose.Dirty
+                    || _fromToBorrower.Dirty
+                    || _fromToSeller.Dirty
+                    || _id.Dirty
+                    || _lECD3CashToClose.Dirty
+                    || _lECD3CashToCloseFromToBorrower.Dirty
+                    || _lECD3ClosingCostsPaidBeforeClosing.Dirty
+                    || _lECD3TotalClosingCost_J.Dirty
+                    || _lECD3TotalPayoffsAndPayments_K.Dirty
+                    || _lELoanAmount.Dirty
+                    || _liabilityAmount1.Dirty
+                    || _liabilityAmount10.Dirty
+                    || _liabilityAmount11.Dirty
+                    || _liabilityAmount12.Dirty
+                    || _liabilityAmount13.Dirty
+                    || _liabilityAmount14.Dirty
+                    || _liabilityAmount15.Dirty
+                    || _liabilityAmount2.Dirty
+                    || _liabilityAmount3.Dirty
+                    || _liabilityAmount4.Dirty
+                    || _liabilityAmount5.Dirty
+                    || _liabilityAmount6.Dirty
+                    || _liabilityAmount7.Dirty
+                    || _liabilityAmount8.Dirty
+                    || _liabilityAmount9.Dirty
+                    || _liabilityTo1.Dirty
+                    || _liabilityTo10.Dirty
+                    || _liabilityTo11.Dirty
+                    || _liabilityTo12.Dirty
+                    || _liabilityTo13.Dirty
+                    || _liabilityTo14.Dirty
+                    || _liabilityTo15.Dirty
+                    || _liabilityTo2.Dirty
+                    || _liabilityTo3.Dirty
+                    || _liabilityTo4.Dirty
+                    || _liabilityTo5.Dirty
+                    || _liabilityTo6.Dirty
+                    || _liabilityTo7.Dirty
+                    || _liabilityTo8.Dirty
+                    || _liabilityTo9.Dirty
+                    || _liabilityTotal.Dirty
+                    || _loanAmount.Dirty
+                    || _nonUCDTotalAdjustmentsAndOtherCredits.Dirty
+                    || _omitFromPrintSellersTransaction.Dirty
+                    || _otherCredits6_1.Dirty
+                    || _otherCredits6_2.Dirty
+                    || _otherCredits7_1.Dirty
+                    || _otherCredits7_2.Dirty
+                    || _priorToleranceCureAmount.Dirty
+                    || _sTDAdjustmentAndOtherCreditsRemark.Dirty
+                    || _sTDAdjustmentsDidChangeCol.Dirty
+                    || _sTDClosingCostFinancedDidChangeCol.Dirty
+                    || _sTDDepositDidChangeCol.Dirty
+                    || _sTDDepositIncDecRemark.Dirty
+                    || _sTDDownPaymentDidChangeCol.Dirty
+                    || _sTDDownPaymentIncDecRemark.Dirty
+                    || _sTDDownPaymentSectionRemark.Dirty
+                    || _sTDFinalAdjustmentAndOtherCredits.Dirty
+                    || _sTDFinalCashToClose.Dirty
+                    || _sTDFinalCD3ClosingCostsPaidBeforeClosing.Dirty
+                    || _sTDFinalClosingCostFinanced.Dirty
+                    || _sTDFinalDeposit.Dirty
+                    || _sTDFinalDownPayment.Dirty
+                    || _sTDFinalFundForBorrower.Dirty
+                    || _sTDFinalSellerCredits.Dirty
+                    || _sTDFinalTotalClosingCostJ.Dirty
+                    || _sTDFundsForBorrowerDidChangeCol.Dirty
+                    || _sTDFundsForBorrowerIncDecRemark.Dirty
+                    || _sTDLEAdjustmentAndOtherCredits.Dirty
+                    || _sTDLECashToClose.Dirty
+                    || _sTDLECD3ClosingCostsPaidBeforeClosing.Dirty
+                    || _sTDLEClosingCostFinanced.Dirty
+                    || _sTDLEDeposit.Dirty
+                    || _sTDLEDownPayment.Dirty
+                    || _sTDLEFundForBorrower.Dirty
+                    || _sTDLegalLimit.Dirty
+                    || _sTDLESellerCredits.Dirty
+                    || _sTDLETotalClosingCostJ.Dirty
+                    || _sTDSellerCreditsDidChangeCol.Dirty
+                    || _sTDSellerCreditsIncDecRemark.Dirty
+                    || _sTDTotalClosingCostBeforeClosingDidChangeCol.Dirty
+                    || _sTDTotalClosingCostDidChangeCol.Dirty
+                    || _sTDTotalClosingCostRemark.Dirty
+                    || _totalAdjustmentsAndOtherCredits.Dirty
+                    || _totalDuefromBorrowerAtClosing.Dirty
+                    || _totalDuefromSelleratClosing_N.Dirty
+                    || _totalDuetoSelleratClosing_M.Dirty
+                    || _totalFromK.Dirty
+                    || _totalFromL.Dirty
+                    || _totalFromM.Dirty
+                    || _totalFromN.Dirty
+                    || _totalPaidAlreadybyoronBehalfofBoroweratClosing.Dirty
+                    || _uCDDetails.Dirty
+                    || _uCDKSubTotal.Dirty
+                    || _uCDLSubTotal.Dirty
+                    || _uCDTotalAdjustmentsAndOtherCredits.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actualLECD3TotalClosingCostJFromLatestRec = _actualLECD3TotalClosingCostJFromLatestRec; actualLECD3TotalClosingCostJFromLatestRec.Clean = value; _actualLECD3TotalClosingCostJFromLatestRec = actualLECD3TotalClosingCostJFromLatestRec;
-                var actualLECD3TotalPayoffsAndPaymentsKFromLatestRec = _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec; actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Clean = value; _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec = actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
-                var actualLELoanAmountFromLatestRec = _actualLELoanAmountFromLatestRec; actualLELoanAmountFromLatestRec.Clean = value; _actualLELoanAmountFromLatestRec = actualLELoanAmountFromLatestRec;
-                var actualLenderCredits = _actualLenderCredits; actualLenderCredits.Clean = value; _actualLenderCredits = actualLenderCredits;
-                var actualSTDLEAdjustmentAndOtherCreditsFromLatestRec = _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec; actualSTDLEAdjustmentAndOtherCreditsFromLatestRec.Clean = value; _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec = actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
-                var actualSTDLEClosingCostFinancedFromLatestRec = _actualSTDLEClosingCostFinancedFromLatestRec; actualSTDLEClosingCostFinancedFromLatestRec.Clean = value; _actualSTDLEClosingCostFinancedFromLatestRec = actualSTDLEClosingCostFinancedFromLatestRec;
-                var actualSTDLEDepositFromLatestRec = _actualSTDLEDepositFromLatestRec; actualSTDLEDepositFromLatestRec.Clean = value; _actualSTDLEDepositFromLatestRec = actualSTDLEDepositFromLatestRec;
-                var actualSTDLEDownPaymentFromLatestRec = _actualSTDLEDownPaymentFromLatestRec; actualSTDLEDownPaymentFromLatestRec.Clean = value; _actualSTDLEDownPaymentFromLatestRec = actualSTDLEDownPaymentFromLatestRec;
-                var actualSTDLEFundForBorrowerFromLatestRec = _actualSTDLEFundForBorrowerFromLatestRec; actualSTDLEFundForBorrowerFromLatestRec.Clean = value; _actualSTDLEFundForBorrowerFromLatestRec = actualSTDLEFundForBorrowerFromLatestRec;
-                var actualSTDLESellerCredits = _actualSTDLESellerCredits; actualSTDLESellerCredits.Clean = value; _actualSTDLESellerCredits = actualSTDLESellerCredits;
-                var actualSTDLESellerCreditsFromLatestRec = _actualSTDLESellerCreditsFromLatestRec; actualSTDLESellerCreditsFromLatestRec.Clean = value; _actualSTDLESellerCreditsFromLatestRec = actualSTDLESellerCreditsFromLatestRec;
-                var actualSTDLETotalClosingCostJ = _actualSTDLETotalClosingCostJ; actualSTDLETotalClosingCostJ.Clean = value; _actualSTDLETotalClosingCostJ = actualSTDLETotalClosingCostJ;
-                var actualSTDLETotalClosingCostJFromLatestRec = _actualSTDLETotalClosingCostJFromLatestRec; actualSTDLETotalClosingCostJFromLatestRec.Clean = value; _actualSTDLETotalClosingCostJFromLatestRec = actualSTDLETotalClosingCostJFromLatestRec;
-                var adjustments06_1 = _adjustments06_1; adjustments06_1.Clean = value; _adjustments06_1 = adjustments06_1;
-                var adjustments06_2 = _adjustments06_2; adjustments06_2.Clean = value; _adjustments06_2 = adjustments06_2;
-                var adjustments07_1 = _adjustments07_1; adjustments07_1.Clean = value; _adjustments07_1 = adjustments07_1;
-                var adjustments07_2 = _adjustments07_2; adjustments07_2.Clean = value; _adjustments07_2 = adjustments07_2;
-                var adjustments10_1 = _adjustments10_1; adjustments10_1.Clean = value; _adjustments10_1 = adjustments10_1;
-                var adjustments10_2 = _adjustments10_2; adjustments10_2.Clean = value; _adjustments10_2 = adjustments10_2;
-                var adjustments11_1 = _adjustments11_1; adjustments11_1.Clean = value; _adjustments11_1 = adjustments11_1;
-                var adjustments11_2 = _adjustments11_2; adjustments11_2.Clean = value; _adjustments11_2 = adjustments11_2;
-                var adjustments15_1 = _adjustments15_1; adjustments15_1.Clean = value; _adjustments15_1 = adjustments15_1;
-                var adjustments15_2 = _adjustments15_2; adjustments15_2.Clean = value; _adjustments15_2 = adjustments15_2;
-                var adjustments8_1 = _adjustments8_1; adjustments8_1.Clean = value; _adjustments8_1 = adjustments8_1;
-                var adjustments8_2 = _adjustments8_2; adjustments8_2.Clean = value; _adjustments8_2 = adjustments8_2;
-                var adjustments9_1 = _adjustments9_1; adjustments9_1.Clean = value; _adjustments9_1 = adjustments9_1;
-                var adjustments9_2 = _adjustments9_2; adjustments9_2.Clean = value; _adjustments9_2 = adjustments9_2;
-                var adjustmentsforItemsPaidbySellerinAdvance16_1 = _adjustmentsforItemsPaidbySellerinAdvance16_1; adjustmentsforItemsPaidbySellerinAdvance16_1.Clean = value; _adjustmentsforItemsPaidbySellerinAdvance16_1 = adjustmentsforItemsPaidbySellerinAdvance16_1;
-                var adjustmentsforItemsPaidbySellerinAdvance16_2 = _adjustmentsforItemsPaidbySellerinAdvance16_2; adjustmentsforItemsPaidbySellerinAdvance16_2.Clean = value; _adjustmentsforItemsPaidbySellerinAdvance16_2 = adjustmentsforItemsPaidbySellerinAdvance16_2;
-                var aLTCashToCloseDidChangeCol = _aLTCashToCloseDidChangeCol; aLTCashToCloseDidChangeCol.Clean = value; _aLTCashToCloseDidChangeCol = aLTCashToCloseDidChangeCol;
-                var aLTCashToCloseRemark = _aLTCashToCloseRemark; aLTCashToCloseRemark.Clean = value; _aLTCashToCloseRemark = aLTCashToCloseRemark;
-                var aLTClosingCostBeforeClosingDidChangeCol = _aLTClosingCostBeforeClosingDidChangeCol; aLTClosingCostBeforeClosingDidChangeCol.Clean = value; _aLTClosingCostBeforeClosingDidChangeCol = aLTClosingCostBeforeClosingDidChangeCol;
-                var aLTLegalLimit = _aLTLegalLimit; aLTLegalLimit.Clean = value; _aLTLegalLimit = aLTLegalLimit;
-                var aLTLoanAmountDidChangeCol = _aLTLoanAmountDidChangeCol; aLTLoanAmountDidChangeCol.Clean = value; _aLTLoanAmountDidChangeCol = aLTLoanAmountDidChangeCol;
-                var aLTLoanAmountIncDecRemark = _aLTLoanAmountIncDecRemark; aLTLoanAmountIncDecRemark.Clean = value; _aLTLoanAmountIncDecRemark = aLTLoanAmountIncDecRemark;
-                var aLTTotalClosingCostDidChangeCol = _aLTTotalClosingCostDidChangeCol; aLTTotalClosingCostDidChangeCol.Clean = value; _aLTTotalClosingCostDidChangeCol = aLTTotalClosingCostDidChangeCol;
-                var aLTTotalClosingCostRemark = _aLTTotalClosingCostRemark; aLTTotalClosingCostRemark.Clean = value; _aLTTotalClosingCostRemark = aLTTotalClosingCostRemark;
-                var aLTTotalPayoffsDidChangeCol = _aLTTotalPayoffsDidChangeCol; aLTTotalPayoffsDidChangeCol.Clean = value; _aLTTotalPayoffsDidChangeCol = aLTTotalPayoffsDidChangeCol;
-                var cash = _cash; cash.Clean = value; _cash = cash;
-                var cashToClose = _cashToClose; cashToClose.Clean = value; _cashToClose = cashToClose;
-                var cD3CashToClose = _cD3CashToClose; cD3CashToClose.Clean = value; _cD3CashToClose = cD3CashToClose;
-                var cD3CashToCloseFromToBorrower = _cD3CashToCloseFromToBorrower; cD3CashToCloseFromToBorrower.Clean = value; _cD3CashToCloseFromToBorrower = cD3CashToCloseFromToBorrower;
-                var cD3ClosingCostsPaidBeforeClosing = _cD3ClosingCostsPaidBeforeClosing; cD3ClosingCostsPaidBeforeClosing.Clean = value; _cD3ClosingCostsPaidBeforeClosing = cD3ClosingCostsPaidBeforeClosing;
-                var cD3TotalClosingCost_J = _cD3TotalClosingCost_J; cD3TotalClosingCost_J.Clean = value; _cD3TotalClosingCost_J = cD3TotalClosingCost_J;
-                var cD3TotalPayoffsAndPayments_K = _cD3TotalPayoffsAndPayments_K; cD3TotalPayoffsAndPayments_K.Clean = value; _cD3TotalPayoffsAndPayments_K = cD3TotalPayoffsAndPayments_K;
-                var closingCostsPaidAtClosing = _closingCostsPaidAtClosing; closingCostsPaidAtClosing.Clean = value; _closingCostsPaidAtClosing = closingCostsPaidAtClosing;
-                var closingCostsPaidatClosing_J = _closingCostsPaidatClosing_J; closingCostsPaidatClosing_J.Clean = value; _closingCostsPaidatClosing_J = closingCostsPaidatClosing_J;
-                var duefromSelleratClosing11_1 = _duefromSelleratClosing11_1; duefromSelleratClosing11_1.Clean = value; _duefromSelleratClosing11_1 = duefromSelleratClosing11_1;
-                var duefromSelleratClosing11_2 = _duefromSelleratClosing11_2; duefromSelleratClosing11_2.Clean = value; _duefromSelleratClosing11_2 = duefromSelleratClosing11_2;
-                var duefromSelleratClosing12_1 = _duefromSelleratClosing12_1; duefromSelleratClosing12_1.Clean = value; _duefromSelleratClosing12_1 = duefromSelleratClosing12_1;
-                var duefromSelleratClosing12_2 = _duefromSelleratClosing12_2; duefromSelleratClosing12_2.Clean = value; _duefromSelleratClosing12_2 = duefromSelleratClosing12_2;
-                var duefromSelleratClosing13_1 = _duefromSelleratClosing13_1; duefromSelleratClosing13_1.Clean = value; _duefromSelleratClosing13_1 = duefromSelleratClosing13_1;
-                var duefromSelleratClosing13_2 = _duefromSelleratClosing13_2; duefromSelleratClosing13_2.Clean = value; _duefromSelleratClosing13_2 = duefromSelleratClosing13_2;
-                var dueToSellerAtClosing6_1 = _dueToSellerAtClosing6_1; dueToSellerAtClosing6_1.Clean = value; _dueToSellerAtClosing6_1 = dueToSellerAtClosing6_1;
-                var dueToSellerAtClosing6_2 = _dueToSellerAtClosing6_2; dueToSellerAtClosing6_2.Clean = value; _dueToSellerAtClosing6_2 = dueToSellerAtClosing6_2;
-                var dueToSellerAtClosing7_1 = _dueToSellerAtClosing7_1; dueToSellerAtClosing7_1.Clean = value; _dueToSellerAtClosing7_1 = dueToSellerAtClosing7_1;
-                var dueToSellerAtClosing7_2 = _dueToSellerAtClosing7_2; dueToSellerAtClosing7_2.Clean = value; _dueToSellerAtClosing7_2 = dueToSellerAtClosing7_2;
-                var dueToSellerAtClosing8_1 = _dueToSellerAtClosing8_1; dueToSellerAtClosing8_1.Clean = value; _dueToSellerAtClosing8_1 = dueToSellerAtClosing8_1;
-                var dueToSellerAtClosing8_2 = _dueToSellerAtClosing8_2; dueToSellerAtClosing8_2.Clean = value; _dueToSellerAtClosing8_2 = dueToSellerAtClosing8_2;
-                var excludeBorrowerClosingCosts = _excludeBorrowerClosingCosts; excludeBorrowerClosingCosts.Clean = value; _excludeBorrowerClosingCosts = excludeBorrowerClosingCosts;
-                var finalCashToClose = _finalCashToClose; finalCashToClose.Clean = value; _finalCashToClose = finalCashToClose;
-                var fromToBorrower = _fromToBorrower; fromToBorrower.Clean = value; _fromToBorrower = fromToBorrower;
-                var fromToSeller = _fromToSeller; fromToSeller.Clean = value; _fromToSeller = fromToSeller;
-                var id = _id; id.Clean = value; _id = id;
-                var lECD3CashToClose = _lECD3CashToClose; lECD3CashToClose.Clean = value; _lECD3CashToClose = lECD3CashToClose;
-                var lECD3CashToCloseFromToBorrower = _lECD3CashToCloseFromToBorrower; lECD3CashToCloseFromToBorrower.Clean = value; _lECD3CashToCloseFromToBorrower = lECD3CashToCloseFromToBorrower;
-                var lECD3ClosingCostsPaidBeforeClosing = _lECD3ClosingCostsPaidBeforeClosing; lECD3ClosingCostsPaidBeforeClosing.Clean = value; _lECD3ClosingCostsPaidBeforeClosing = lECD3ClosingCostsPaidBeforeClosing;
-                var lECD3TotalClosingCost_J = _lECD3TotalClosingCost_J; lECD3TotalClosingCost_J.Clean = value; _lECD3TotalClosingCost_J = lECD3TotalClosingCost_J;
-                var lECD3TotalPayoffsAndPayments_K = _lECD3TotalPayoffsAndPayments_K; lECD3TotalPayoffsAndPayments_K.Clean = value; _lECD3TotalPayoffsAndPayments_K = lECD3TotalPayoffsAndPayments_K;
-                var lELoanAmount = _lELoanAmount; lELoanAmount.Clean = value; _lELoanAmount = lELoanAmount;
-                var liabilityAmount1 = _liabilityAmount1; liabilityAmount1.Clean = value; _liabilityAmount1 = liabilityAmount1;
-                var liabilityAmount10 = _liabilityAmount10; liabilityAmount10.Clean = value; _liabilityAmount10 = liabilityAmount10;
-                var liabilityAmount11 = _liabilityAmount11; liabilityAmount11.Clean = value; _liabilityAmount11 = liabilityAmount11;
-                var liabilityAmount12 = _liabilityAmount12; liabilityAmount12.Clean = value; _liabilityAmount12 = liabilityAmount12;
-                var liabilityAmount13 = _liabilityAmount13; liabilityAmount13.Clean = value; _liabilityAmount13 = liabilityAmount13;
-                var liabilityAmount14 = _liabilityAmount14; liabilityAmount14.Clean = value; _liabilityAmount14 = liabilityAmount14;
-                var liabilityAmount15 = _liabilityAmount15; liabilityAmount15.Clean = value; _liabilityAmount15 = liabilityAmount15;
-                var liabilityAmount2 = _liabilityAmount2; liabilityAmount2.Clean = value; _liabilityAmount2 = liabilityAmount2;
-                var liabilityAmount3 = _liabilityAmount3; liabilityAmount3.Clean = value; _liabilityAmount3 = liabilityAmount3;
-                var liabilityAmount4 = _liabilityAmount4; liabilityAmount4.Clean = value; _liabilityAmount4 = liabilityAmount4;
-                var liabilityAmount5 = _liabilityAmount5; liabilityAmount5.Clean = value; _liabilityAmount5 = liabilityAmount5;
-                var liabilityAmount6 = _liabilityAmount6; liabilityAmount6.Clean = value; _liabilityAmount6 = liabilityAmount6;
-                var liabilityAmount7 = _liabilityAmount7; liabilityAmount7.Clean = value; _liabilityAmount7 = liabilityAmount7;
-                var liabilityAmount8 = _liabilityAmount8; liabilityAmount8.Clean = value; _liabilityAmount8 = liabilityAmount8;
-                var liabilityAmount9 = _liabilityAmount9; liabilityAmount9.Clean = value; _liabilityAmount9 = liabilityAmount9;
-                var liabilityTo1 = _liabilityTo1; liabilityTo1.Clean = value; _liabilityTo1 = liabilityTo1;
-                var liabilityTo10 = _liabilityTo10; liabilityTo10.Clean = value; _liabilityTo10 = liabilityTo10;
-                var liabilityTo11 = _liabilityTo11; liabilityTo11.Clean = value; _liabilityTo11 = liabilityTo11;
-                var liabilityTo12 = _liabilityTo12; liabilityTo12.Clean = value; _liabilityTo12 = liabilityTo12;
-                var liabilityTo13 = _liabilityTo13; liabilityTo13.Clean = value; _liabilityTo13 = liabilityTo13;
-                var liabilityTo14 = _liabilityTo14; liabilityTo14.Clean = value; _liabilityTo14 = liabilityTo14;
-                var liabilityTo15 = _liabilityTo15; liabilityTo15.Clean = value; _liabilityTo15 = liabilityTo15;
-                var liabilityTo2 = _liabilityTo2; liabilityTo2.Clean = value; _liabilityTo2 = liabilityTo2;
-                var liabilityTo3 = _liabilityTo3; liabilityTo3.Clean = value; _liabilityTo3 = liabilityTo3;
-                var liabilityTo4 = _liabilityTo4; liabilityTo4.Clean = value; _liabilityTo4 = liabilityTo4;
-                var liabilityTo5 = _liabilityTo5; liabilityTo5.Clean = value; _liabilityTo5 = liabilityTo5;
-                var liabilityTo6 = _liabilityTo6; liabilityTo6.Clean = value; _liabilityTo6 = liabilityTo6;
-                var liabilityTo7 = _liabilityTo7; liabilityTo7.Clean = value; _liabilityTo7 = liabilityTo7;
-                var liabilityTo8 = _liabilityTo8; liabilityTo8.Clean = value; _liabilityTo8 = liabilityTo8;
-                var liabilityTo9 = _liabilityTo9; liabilityTo9.Clean = value; _liabilityTo9 = liabilityTo9;
-                var liabilityTotal = _liabilityTotal; liabilityTotal.Clean = value; _liabilityTotal = liabilityTotal;
-                var loanAmount = _loanAmount; loanAmount.Clean = value; _loanAmount = loanAmount;
-                var nonUCDTotalAdjustmentsAndOtherCredits = _nonUCDTotalAdjustmentsAndOtherCredits; nonUCDTotalAdjustmentsAndOtherCredits.Clean = value; _nonUCDTotalAdjustmentsAndOtherCredits = nonUCDTotalAdjustmentsAndOtherCredits;
-                var omitFromPrintSellersTransaction = _omitFromPrintSellersTransaction; omitFromPrintSellersTransaction.Clean = value; _omitFromPrintSellersTransaction = omitFromPrintSellersTransaction;
-                var otherCredits6_1 = _otherCredits6_1; otherCredits6_1.Clean = value; _otherCredits6_1 = otherCredits6_1;
-                var otherCredits6_2 = _otherCredits6_2; otherCredits6_2.Clean = value; _otherCredits6_2 = otherCredits6_2;
-                var otherCredits7_1 = _otherCredits7_1; otherCredits7_1.Clean = value; _otherCredits7_1 = otherCredits7_1;
-                var otherCredits7_2 = _otherCredits7_2; otherCredits7_2.Clean = value; _otherCredits7_2 = otherCredits7_2;
-                var priorToleranceCureAmount = _priorToleranceCureAmount; priorToleranceCureAmount.Clean = value; _priorToleranceCureAmount = priorToleranceCureAmount;
-                var sTDAdjustmentAndOtherCreditsRemark = _sTDAdjustmentAndOtherCreditsRemark; sTDAdjustmentAndOtherCreditsRemark.Clean = value; _sTDAdjustmentAndOtherCreditsRemark = sTDAdjustmentAndOtherCreditsRemark;
-                var sTDAdjustmentsDidChangeCol = _sTDAdjustmentsDidChangeCol; sTDAdjustmentsDidChangeCol.Clean = value; _sTDAdjustmentsDidChangeCol = sTDAdjustmentsDidChangeCol;
-                var sTDClosingCostFinancedDidChangeCol = _sTDClosingCostFinancedDidChangeCol; sTDClosingCostFinancedDidChangeCol.Clean = value; _sTDClosingCostFinancedDidChangeCol = sTDClosingCostFinancedDidChangeCol;
-                var sTDDepositDidChangeCol = _sTDDepositDidChangeCol; sTDDepositDidChangeCol.Clean = value; _sTDDepositDidChangeCol = sTDDepositDidChangeCol;
-                var sTDDepositIncDecRemark = _sTDDepositIncDecRemark; sTDDepositIncDecRemark.Clean = value; _sTDDepositIncDecRemark = sTDDepositIncDecRemark;
-                var sTDDownPaymentDidChangeCol = _sTDDownPaymentDidChangeCol; sTDDownPaymentDidChangeCol.Clean = value; _sTDDownPaymentDidChangeCol = sTDDownPaymentDidChangeCol;
-                var sTDDownPaymentIncDecRemark = _sTDDownPaymentIncDecRemark; sTDDownPaymentIncDecRemark.Clean = value; _sTDDownPaymentIncDecRemark = sTDDownPaymentIncDecRemark;
-                var sTDDownPaymentSectionRemark = _sTDDownPaymentSectionRemark; sTDDownPaymentSectionRemark.Clean = value; _sTDDownPaymentSectionRemark = sTDDownPaymentSectionRemark;
-                var sTDFinalAdjustmentAndOtherCredits = _sTDFinalAdjustmentAndOtherCredits; sTDFinalAdjustmentAndOtherCredits.Clean = value; _sTDFinalAdjustmentAndOtherCredits = sTDFinalAdjustmentAndOtherCredits;
-                var sTDFinalCashToClose = _sTDFinalCashToClose; sTDFinalCashToClose.Clean = value; _sTDFinalCashToClose = sTDFinalCashToClose;
-                var sTDFinalCD3ClosingCostsPaidBeforeClosing = _sTDFinalCD3ClosingCostsPaidBeforeClosing; sTDFinalCD3ClosingCostsPaidBeforeClosing.Clean = value; _sTDFinalCD3ClosingCostsPaidBeforeClosing = sTDFinalCD3ClosingCostsPaidBeforeClosing;
-                var sTDFinalClosingCostFinanced = _sTDFinalClosingCostFinanced; sTDFinalClosingCostFinanced.Clean = value; _sTDFinalClosingCostFinanced = sTDFinalClosingCostFinanced;
-                var sTDFinalDeposit = _sTDFinalDeposit; sTDFinalDeposit.Clean = value; _sTDFinalDeposit = sTDFinalDeposit;
-                var sTDFinalDownPayment = _sTDFinalDownPayment; sTDFinalDownPayment.Clean = value; _sTDFinalDownPayment = sTDFinalDownPayment;
-                var sTDFinalFundForBorrower = _sTDFinalFundForBorrower; sTDFinalFundForBorrower.Clean = value; _sTDFinalFundForBorrower = sTDFinalFundForBorrower;
-                var sTDFinalSellerCredits = _sTDFinalSellerCredits; sTDFinalSellerCredits.Clean = value; _sTDFinalSellerCredits = sTDFinalSellerCredits;
-                var sTDFinalTotalClosingCostJ = _sTDFinalTotalClosingCostJ; sTDFinalTotalClosingCostJ.Clean = value; _sTDFinalTotalClosingCostJ = sTDFinalTotalClosingCostJ;
-                var sTDFundsForBorrowerDidChangeCol = _sTDFundsForBorrowerDidChangeCol; sTDFundsForBorrowerDidChangeCol.Clean = value; _sTDFundsForBorrowerDidChangeCol = sTDFundsForBorrowerDidChangeCol;
-                var sTDFundsForBorrowerIncDecRemark = _sTDFundsForBorrowerIncDecRemark; sTDFundsForBorrowerIncDecRemark.Clean = value; _sTDFundsForBorrowerIncDecRemark = sTDFundsForBorrowerIncDecRemark;
-                var sTDLEAdjustmentAndOtherCredits = _sTDLEAdjustmentAndOtherCredits; sTDLEAdjustmentAndOtherCredits.Clean = value; _sTDLEAdjustmentAndOtherCredits = sTDLEAdjustmentAndOtherCredits;
-                var sTDLECashToClose = _sTDLECashToClose; sTDLECashToClose.Clean = value; _sTDLECashToClose = sTDLECashToClose;
-                var sTDLECD3ClosingCostsPaidBeforeClosing = _sTDLECD3ClosingCostsPaidBeforeClosing; sTDLECD3ClosingCostsPaidBeforeClosing.Clean = value; _sTDLECD3ClosingCostsPaidBeforeClosing = sTDLECD3ClosingCostsPaidBeforeClosing;
-                var sTDLEClosingCostFinanced = _sTDLEClosingCostFinanced; sTDLEClosingCostFinanced.Clean = value; _sTDLEClosingCostFinanced = sTDLEClosingCostFinanced;
-                var sTDLEDeposit = _sTDLEDeposit; sTDLEDeposit.Clean = value; _sTDLEDeposit = sTDLEDeposit;
-                var sTDLEDownPayment = _sTDLEDownPayment; sTDLEDownPayment.Clean = value; _sTDLEDownPayment = sTDLEDownPayment;
-                var sTDLEFundForBorrower = _sTDLEFundForBorrower; sTDLEFundForBorrower.Clean = value; _sTDLEFundForBorrower = sTDLEFundForBorrower;
-                var sTDLegalLimit = _sTDLegalLimit; sTDLegalLimit.Clean = value; _sTDLegalLimit = sTDLegalLimit;
-                var sTDLESellerCredits = _sTDLESellerCredits; sTDLESellerCredits.Clean = value; _sTDLESellerCredits = sTDLESellerCredits;
-                var sTDLETotalClosingCostJ = _sTDLETotalClosingCostJ; sTDLETotalClosingCostJ.Clean = value; _sTDLETotalClosingCostJ = sTDLETotalClosingCostJ;
-                var sTDSellerCreditsDidChangeCol = _sTDSellerCreditsDidChangeCol; sTDSellerCreditsDidChangeCol.Clean = value; _sTDSellerCreditsDidChangeCol = sTDSellerCreditsDidChangeCol;
-                var sTDSellerCreditsIncDecRemark = _sTDSellerCreditsIncDecRemark; sTDSellerCreditsIncDecRemark.Clean = value; _sTDSellerCreditsIncDecRemark = sTDSellerCreditsIncDecRemark;
-                var sTDTotalClosingCostBeforeClosingDidChangeCol = _sTDTotalClosingCostBeforeClosingDidChangeCol; sTDTotalClosingCostBeforeClosingDidChangeCol.Clean = value; _sTDTotalClosingCostBeforeClosingDidChangeCol = sTDTotalClosingCostBeforeClosingDidChangeCol;
-                var sTDTotalClosingCostDidChangeCol = _sTDTotalClosingCostDidChangeCol; sTDTotalClosingCostDidChangeCol.Clean = value; _sTDTotalClosingCostDidChangeCol = sTDTotalClosingCostDidChangeCol;
-                var sTDTotalClosingCostRemark = _sTDTotalClosingCostRemark; sTDTotalClosingCostRemark.Clean = value; _sTDTotalClosingCostRemark = sTDTotalClosingCostRemark;
-                var totalAdjustmentsAndOtherCredits = _totalAdjustmentsAndOtherCredits; totalAdjustmentsAndOtherCredits.Clean = value; _totalAdjustmentsAndOtherCredits = totalAdjustmentsAndOtherCredits;
-                var totalDuefromBorrowerAtClosing = _totalDuefromBorrowerAtClosing; totalDuefromBorrowerAtClosing.Clean = value; _totalDuefromBorrowerAtClosing = totalDuefromBorrowerAtClosing;
-                var totalDuefromSelleratClosing_N = _totalDuefromSelleratClosing_N; totalDuefromSelleratClosing_N.Clean = value; _totalDuefromSelleratClosing_N = totalDuefromSelleratClosing_N;
-                var totalDuetoSelleratClosing_M = _totalDuetoSelleratClosing_M; totalDuetoSelleratClosing_M.Clean = value; _totalDuetoSelleratClosing_M = totalDuetoSelleratClosing_M;
-                var totalFromK = _totalFromK; totalFromK.Clean = value; _totalFromK = totalFromK;
-                var totalFromL = _totalFromL; totalFromL.Clean = value; _totalFromL = totalFromL;
-                var totalFromM = _totalFromM; totalFromM.Clean = value; _totalFromM = totalFromM;
-                var totalFromN = _totalFromN; totalFromN.Clean = value; _totalFromN = totalFromN;
-                var totalPaidAlreadybyoronBehalfofBoroweratClosing = _totalPaidAlreadybyoronBehalfofBoroweratClosing; totalPaidAlreadybyoronBehalfofBoroweratClosing.Clean = value; _totalPaidAlreadybyoronBehalfofBoroweratClosing = totalPaidAlreadybyoronBehalfofBoroweratClosing;
-                var uCDDetails = _uCDDetails; uCDDetails.Clean = value; _uCDDetails = uCDDetails;
-                var uCDKSubTotal = _uCDKSubTotal; uCDKSubTotal.Clean = value; _uCDKSubTotal = uCDKSubTotal;
-                var uCDLSubTotal = _uCDLSubTotal; uCDLSubTotal.Clean = value; _uCDLSubTotal = uCDLSubTotal;
-                var uCDTotalAdjustmentsAndOtherCredits = _uCDTotalAdjustmentsAndOtherCredits; uCDTotalAdjustmentsAndOtherCredits.Clean = value; _uCDTotalAdjustmentsAndOtherCredits = uCDTotalAdjustmentsAndOtherCredits;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actualLECD3TotalClosingCostJFromLatestRec.Dirty = value;
+                _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty = value;
+                _actualLELoanAmountFromLatestRec.Dirty = value;
+                _actualLenderCredits.Dirty = value;
+                _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec.Dirty = value;
+                _actualSTDLEClosingCostFinancedFromLatestRec.Dirty = value;
+                _actualSTDLEDepositFromLatestRec.Dirty = value;
+                _actualSTDLEDownPaymentFromLatestRec.Dirty = value;
+                _actualSTDLEFundForBorrowerFromLatestRec.Dirty = value;
+                _actualSTDLESellerCredits.Dirty = value;
+                _actualSTDLESellerCreditsFromLatestRec.Dirty = value;
+                _actualSTDLETotalClosingCostJ.Dirty = value;
+                _actualSTDLETotalClosingCostJFromLatestRec.Dirty = value;
+                _adjustments06_1.Dirty = value;
+                _adjustments06_2.Dirty = value;
+                _adjustments07_1.Dirty = value;
+                _adjustments07_2.Dirty = value;
+                _adjustments10_1.Dirty = value;
+                _adjustments10_2.Dirty = value;
+                _adjustments11_1.Dirty = value;
+                _adjustments11_2.Dirty = value;
+                _adjustments15_1.Dirty = value;
+                _adjustments15_2.Dirty = value;
+                _adjustments8_1.Dirty = value;
+                _adjustments8_2.Dirty = value;
+                _adjustments9_1.Dirty = value;
+                _adjustments9_2.Dirty = value;
+                _adjustmentsforItemsPaidbySellerinAdvance16_1.Dirty = value;
+                _adjustmentsforItemsPaidbySellerinAdvance16_2.Dirty = value;
+                _aLTCashToCloseDidChangeCol.Dirty = value;
+                _aLTCashToCloseRemark.Dirty = value;
+                _aLTClosingCostBeforeClosingDidChangeCol.Dirty = value;
+                _aLTLegalLimit.Dirty = value;
+                _aLTLoanAmountDidChangeCol.Dirty = value;
+                _aLTLoanAmountIncDecRemark.Dirty = value;
+                _aLTTotalClosingCostDidChangeCol.Dirty = value;
+                _aLTTotalClosingCostRemark.Dirty = value;
+                _aLTTotalPayoffsDidChangeCol.Dirty = value;
+                _cash.Dirty = value;
+                _cashToClose.Dirty = value;
+                _cD3CashToClose.Dirty = value;
+                _cD3CashToCloseFromToBorrower.Dirty = value;
+                _cD3ClosingCostsPaidBeforeClosing.Dirty = value;
+                _cD3TotalClosingCost_J.Dirty = value;
+                _cD3TotalPayoffsAndPayments_K.Dirty = value;
+                _closingCostsPaidAtClosing.Dirty = value;
+                _closingCostsPaidatClosing_J.Dirty = value;
+                _duefromSelleratClosing11_1.Dirty = value;
+                _duefromSelleratClosing11_2.Dirty = value;
+                _duefromSelleratClosing12_1.Dirty = value;
+                _duefromSelleratClosing12_2.Dirty = value;
+                _duefromSelleratClosing13_1.Dirty = value;
+                _duefromSelleratClosing13_2.Dirty = value;
+                _dueToSellerAtClosing6_1.Dirty = value;
+                _dueToSellerAtClosing6_2.Dirty = value;
+                _dueToSellerAtClosing7_1.Dirty = value;
+                _dueToSellerAtClosing7_2.Dirty = value;
+                _dueToSellerAtClosing8_1.Dirty = value;
+                _dueToSellerAtClosing8_2.Dirty = value;
+                _excludeBorrowerClosingCosts.Dirty = value;
+                _finalCashToClose.Dirty = value;
+                _fromToBorrower.Dirty = value;
+                _fromToSeller.Dirty = value;
+                _id.Dirty = value;
+                _lECD3CashToClose.Dirty = value;
+                _lECD3CashToCloseFromToBorrower.Dirty = value;
+                _lECD3ClosingCostsPaidBeforeClosing.Dirty = value;
+                _lECD3TotalClosingCost_J.Dirty = value;
+                _lECD3TotalPayoffsAndPayments_K.Dirty = value;
+                _lELoanAmount.Dirty = value;
+                _liabilityAmount1.Dirty = value;
+                _liabilityAmount10.Dirty = value;
+                _liabilityAmount11.Dirty = value;
+                _liabilityAmount12.Dirty = value;
+                _liabilityAmount13.Dirty = value;
+                _liabilityAmount14.Dirty = value;
+                _liabilityAmount15.Dirty = value;
+                _liabilityAmount2.Dirty = value;
+                _liabilityAmount3.Dirty = value;
+                _liabilityAmount4.Dirty = value;
+                _liabilityAmount5.Dirty = value;
+                _liabilityAmount6.Dirty = value;
+                _liabilityAmount7.Dirty = value;
+                _liabilityAmount8.Dirty = value;
+                _liabilityAmount9.Dirty = value;
+                _liabilityTo1.Dirty = value;
+                _liabilityTo10.Dirty = value;
+                _liabilityTo11.Dirty = value;
+                _liabilityTo12.Dirty = value;
+                _liabilityTo13.Dirty = value;
+                _liabilityTo14.Dirty = value;
+                _liabilityTo15.Dirty = value;
+                _liabilityTo2.Dirty = value;
+                _liabilityTo3.Dirty = value;
+                _liabilityTo4.Dirty = value;
+                _liabilityTo5.Dirty = value;
+                _liabilityTo6.Dirty = value;
+                _liabilityTo7.Dirty = value;
+                _liabilityTo8.Dirty = value;
+                _liabilityTo9.Dirty = value;
+                _liabilityTotal.Dirty = value;
+                _loanAmount.Dirty = value;
+                _nonUCDTotalAdjustmentsAndOtherCredits.Dirty = value;
+                _omitFromPrintSellersTransaction.Dirty = value;
+                _otherCredits6_1.Dirty = value;
+                _otherCredits6_2.Dirty = value;
+                _otherCredits7_1.Dirty = value;
+                _otherCredits7_2.Dirty = value;
+                _priorToleranceCureAmount.Dirty = value;
+                _sTDAdjustmentAndOtherCreditsRemark.Dirty = value;
+                _sTDAdjustmentsDidChangeCol.Dirty = value;
+                _sTDClosingCostFinancedDidChangeCol.Dirty = value;
+                _sTDDepositDidChangeCol.Dirty = value;
+                _sTDDepositIncDecRemark.Dirty = value;
+                _sTDDownPaymentDidChangeCol.Dirty = value;
+                _sTDDownPaymentIncDecRemark.Dirty = value;
+                _sTDDownPaymentSectionRemark.Dirty = value;
+                _sTDFinalAdjustmentAndOtherCredits.Dirty = value;
+                _sTDFinalCashToClose.Dirty = value;
+                _sTDFinalCD3ClosingCostsPaidBeforeClosing.Dirty = value;
+                _sTDFinalClosingCostFinanced.Dirty = value;
+                _sTDFinalDeposit.Dirty = value;
+                _sTDFinalDownPayment.Dirty = value;
+                _sTDFinalFundForBorrower.Dirty = value;
+                _sTDFinalSellerCredits.Dirty = value;
+                _sTDFinalTotalClosingCostJ.Dirty = value;
+                _sTDFundsForBorrowerDidChangeCol.Dirty = value;
+                _sTDFundsForBorrowerIncDecRemark.Dirty = value;
+                _sTDLEAdjustmentAndOtherCredits.Dirty = value;
+                _sTDLECashToClose.Dirty = value;
+                _sTDLECD3ClosingCostsPaidBeforeClosing.Dirty = value;
+                _sTDLEClosingCostFinanced.Dirty = value;
+                _sTDLEDeposit.Dirty = value;
+                _sTDLEDownPayment.Dirty = value;
+                _sTDLEFundForBorrower.Dirty = value;
+                _sTDLegalLimit.Dirty = value;
+                _sTDLESellerCredits.Dirty = value;
+                _sTDLETotalClosingCostJ.Dirty = value;
+                _sTDSellerCreditsDidChangeCol.Dirty = value;
+                _sTDSellerCreditsIncDecRemark.Dirty = value;
+                _sTDTotalClosingCostBeforeClosingDidChangeCol.Dirty = value;
+                _sTDTotalClosingCostDidChangeCol.Dirty = value;
+                _sTDTotalClosingCostRemark.Dirty = value;
+                _totalAdjustmentsAndOtherCredits.Dirty = value;
+                _totalDuefromBorrowerAtClosing.Dirty = value;
+                _totalDuefromSelleratClosing_N.Dirty = value;
+                _totalDuetoSelleratClosing_M.Dirty = value;
+                _totalFromK.Dirty = value;
+                _totalFromL.Dirty = value;
+                _totalFromM.Dirty = value;
+                _totalFromN.Dirty = value;
+                _totalPaidAlreadybyoronBehalfofBoroweratClosing.Dirty = value;
+                _uCDDetails.Dirty = value;
+                _uCDKSubTotal.Dirty = value;
+                _uCDLSubTotal.Dirty = value;
+                _uCDTotalAdjustmentsAndOtherCredits.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDisclosure3()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

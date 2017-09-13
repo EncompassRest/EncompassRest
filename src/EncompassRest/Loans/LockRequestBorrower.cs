@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockRequestBorrower : IClean
+    public sealed partial class LockRequestBorrower : IDirty
     {
         private Value<string> _equifaxScore;
         public string EquifaxScore { get { return _equifaxScore; } set { _equifaxScore = value; } }
@@ -26,45 +26,40 @@ namespace EncompassRest.Loans
         public string SSN { get { return _sSN; } set { _sSN = value; } }
         private Value<string> _transUnionScore;
         public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _equifaxScore.Clean
-                    && _experianScore.Clean
-                    && _firstName.Clean
-                    && _id.Clean
-                    && _isEmpty.Clean
-                    && _lastName.Clean
-                    && _lrbIndex.Clean
-                    && _sSN.Clean
-                    && _transUnionScore.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _equifaxScore.Dirty
+                    || _experianScore.Dirty
+                    || _firstName.Dirty
+                    || _id.Dirty
+                    || _isEmpty.Dirty
+                    || _lastName.Dirty
+                    || _lrbIndex.Dirty
+                    || _sSN.Dirty
+                    || _transUnionScore.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var equifaxScore = _equifaxScore; equifaxScore.Clean = value; _equifaxScore = equifaxScore;
-                var experianScore = _experianScore; experianScore.Clean = value; _experianScore = experianScore;
-                var firstName = _firstName; firstName.Clean = value; _firstName = firstName;
-                var id = _id; id.Clean = value; _id = id;
-                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
-                var lastName = _lastName; lastName.Clean = value; _lastName = lastName;
-                var lrbIndex = _lrbIndex; lrbIndex.Clean = value; _lrbIndex = lrbIndex;
-                var sSN = _sSN; sSN.Clean = value; _sSN = sSN;
-                var transUnionScore = _transUnionScore; transUnionScore.Clean = value; _transUnionScore = transUnionScore;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _equifaxScore.Dirty = value;
+                _experianScore.Dirty = value;
+                _firstName.Dirty = value;
+                _id.Dirty = value;
+                _isEmpty.Dirty = value;
+                _lastName.Dirty = value;
+                _lrbIndex.Dirty = value;
+                _sSN.Dirty = value;
+                _transUnionScore.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LockRequestBorrower()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

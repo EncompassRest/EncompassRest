@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UnderwritingConditionLog : IClean
+    public sealed partial class UnderwritingConditionLog : IDirty
     {
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
@@ -120,139 +120,134 @@ namespace EncompassRest.Loans
         public bool? Waived { get { return _waived; } set { _waived = value; } }
         private Value<string> _waivedBy;
         public string WaivedBy { get { return _waivedBy; } set { _waivedBy = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _addedBy.Clean
-                    && _alerts.Clean
-                    && _alertsXml.Clean
-                    && _allowToClearIndicator.Clean
-                    && _category.Clean
-                    && _cleared.Clean
-                    && _clearedBy.Clean
-                    && _commentList.Clean
-                    && _commentListXml.Clean
-                    && _comments.Clean
-                    && _dateAddedUtc.Clean
-                    && _dateClearedUtc.Clean
-                    && _dateExpected.Clean
-                    && _dateExpiredUtc.Clean
-                    && _dateFulfilledUtc.Clean
-                    && _dateReceived.Clean
-                    && _dateReceivedUtc.Clean
-                    && _dateRejectedUtc.Clean
-                    && _dateRequestedUtc.Clean
-                    && _dateRerequestedUtc.Clean
-                    && _dateReviewedUtc.Clean
-                    && _dateUtc.Clean
-                    && _dateWaivedUtc.Clean
-                    && _description.Clean
-                    && _details.Clean
-                    && _expected.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _forRoleId.Clean
-                    && _fulfilled.Clean
-                    && _fulfilledBy.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isExternalIndicator.Clean
-                    && _isInternalIndicator.Clean
-                    && _isPastDue.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _pairId.Clean
-                    && _priorTo.Clean
-                    && _received.Clean
-                    && _receivedBy.Clean
-                    && _rejected.Clean
-                    && _rejectedBy.Clean
-                    && _requested.Clean
-                    && _requestedBy.Clean
-                    && _rerequested.Clean
-                    && _rerequestedBy.Clean
-                    && _reviewed.Clean
-                    && _reviewedBy.Clean
-                    && _source.Clean
-                    && _status.Clean
-                    && _statusDescription.Clean
-                    && _systemId.Clean
-                    && _title.Clean
-                    && _waived.Clean
-                    && _waivedBy.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _addedBy.Dirty
+                    || _alerts.Dirty
+                    || _alertsXml.Dirty
+                    || _allowToClearIndicator.Dirty
+                    || _category.Dirty
+                    || _cleared.Dirty
+                    || _clearedBy.Dirty
+                    || _commentList.Dirty
+                    || _commentListXml.Dirty
+                    || _comments.Dirty
+                    || _dateAddedUtc.Dirty
+                    || _dateClearedUtc.Dirty
+                    || _dateExpected.Dirty
+                    || _dateExpiredUtc.Dirty
+                    || _dateFulfilledUtc.Dirty
+                    || _dateReceived.Dirty
+                    || _dateReceivedUtc.Dirty
+                    || _dateRejectedUtc.Dirty
+                    || _dateRequestedUtc.Dirty
+                    || _dateRerequestedUtc.Dirty
+                    || _dateReviewedUtc.Dirty
+                    || _dateUtc.Dirty
+                    || _dateWaivedUtc.Dirty
+                    || _description.Dirty
+                    || _details.Dirty
+                    || _expected.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _forRoleId.Dirty
+                    || _fulfilled.Dirty
+                    || _fulfilledBy.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isExternalIndicator.Dirty
+                    || _isInternalIndicator.Dirty
+                    || _isPastDue.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _pairId.Dirty
+                    || _priorTo.Dirty
+                    || _received.Dirty
+                    || _receivedBy.Dirty
+                    || _rejected.Dirty
+                    || _rejectedBy.Dirty
+                    || _requested.Dirty
+                    || _requestedBy.Dirty
+                    || _rerequested.Dirty
+                    || _rerequestedBy.Dirty
+                    || _reviewed.Dirty
+                    || _reviewedBy.Dirty
+                    || _source.Dirty
+                    || _status.Dirty
+                    || _statusDescription.Dirty
+                    || _systemId.Dirty
+                    || _title.Dirty
+                    || _waived.Dirty
+                    || _waivedBy.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var addedBy = _addedBy; addedBy.Clean = value; _addedBy = addedBy;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
-                var allowToClearIndicator = _allowToClearIndicator; allowToClearIndicator.Clean = value; _allowToClearIndicator = allowToClearIndicator;
-                var category = _category; category.Clean = value; _category = category;
-                var cleared = _cleared; cleared.Clean = value; _cleared = cleared;
-                var clearedBy = _clearedBy; clearedBy.Clean = value; _clearedBy = clearedBy;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateAddedUtc = _dateAddedUtc; dateAddedUtc.Clean = value; _dateAddedUtc = dateAddedUtc;
-                var dateClearedUtc = _dateClearedUtc; dateClearedUtc.Clean = value; _dateClearedUtc = dateClearedUtc;
-                var dateExpected = _dateExpected; dateExpected.Clean = value; _dateExpected = dateExpected;
-                var dateExpiredUtc = _dateExpiredUtc; dateExpiredUtc.Clean = value; _dateExpiredUtc = dateExpiredUtc;
-                var dateFulfilledUtc = _dateFulfilledUtc; dateFulfilledUtc.Clean = value; _dateFulfilledUtc = dateFulfilledUtc;
-                var dateReceived = _dateReceived; dateReceived.Clean = value; _dateReceived = dateReceived;
-                var dateReceivedUtc = _dateReceivedUtc; dateReceivedUtc.Clean = value; _dateReceivedUtc = dateReceivedUtc;
-                var dateRejectedUtc = _dateRejectedUtc; dateRejectedUtc.Clean = value; _dateRejectedUtc = dateRejectedUtc;
-                var dateRequestedUtc = _dateRequestedUtc; dateRequestedUtc.Clean = value; _dateRequestedUtc = dateRequestedUtc;
-                var dateRerequestedUtc = _dateRerequestedUtc; dateRerequestedUtc.Clean = value; _dateRerequestedUtc = dateRerequestedUtc;
-                var dateReviewedUtc = _dateReviewedUtc; dateReviewedUtc.Clean = value; _dateReviewedUtc = dateReviewedUtc;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var dateWaivedUtc = _dateWaivedUtc; dateWaivedUtc.Clean = value; _dateWaivedUtc = dateWaivedUtc;
-                var description = _description; description.Clean = value; _description = description;
-                var details = _details; details.Clean = value; _details = details;
-                var expected = _expected; expected.Clean = value; _expected = expected;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var forRoleId = _forRoleId; forRoleId.Clean = value; _forRoleId = forRoleId;
-                var fulfilled = _fulfilled; fulfilled.Clean = value; _fulfilled = fulfilled;
-                var fulfilledBy = _fulfilledBy; fulfilledBy.Clean = value; _fulfilledBy = fulfilledBy;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isExternalIndicator = _isExternalIndicator; isExternalIndicator.Clean = value; _isExternalIndicator = isExternalIndicator;
-                var isInternalIndicator = _isInternalIndicator; isInternalIndicator.Clean = value; _isInternalIndicator = isInternalIndicator;
-                var isPastDue = _isPastDue; isPastDue.Clean = value; _isPastDue = isPastDue;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var pairId = _pairId; pairId.Clean = value; _pairId = pairId;
-                var priorTo = _priorTo; priorTo.Clean = value; _priorTo = priorTo;
-                var received = _received; received.Clean = value; _received = received;
-                var receivedBy = _receivedBy; receivedBy.Clean = value; _receivedBy = receivedBy;
-                var rejected = _rejected; rejected.Clean = value; _rejected = rejected;
-                var rejectedBy = _rejectedBy; rejectedBy.Clean = value; _rejectedBy = rejectedBy;
-                var requested = _requested; requested.Clean = value; _requested = requested;
-                var requestedBy = _requestedBy; requestedBy.Clean = value; _requestedBy = requestedBy;
-                var rerequested = _rerequested; rerequested.Clean = value; _rerequested = rerequested;
-                var rerequestedBy = _rerequestedBy; rerequestedBy.Clean = value; _rerequestedBy = rerequestedBy;
-                var reviewed = _reviewed; reviewed.Clean = value; _reviewed = reviewed;
-                var reviewedBy = _reviewedBy; reviewedBy.Clean = value; _reviewedBy = reviewedBy;
-                var source = _source; source.Clean = value; _source = source;
-                var status = _status; status.Clean = value; _status = status;
-                var statusDescription = _statusDescription; statusDescription.Clean = value; _statusDescription = statusDescription;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var title = _title; title.Clean = value; _title = title;
-                var waived = _waived; waived.Clean = value; _waived = waived;
-                var waivedBy = _waivedBy; waivedBy.Clean = value; _waivedBy = waivedBy;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _addedBy.Dirty = value;
+                _alerts.Dirty = value;
+                _alertsXml.Dirty = value;
+                _allowToClearIndicator.Dirty = value;
+                _category.Dirty = value;
+                _cleared.Dirty = value;
+                _clearedBy.Dirty = value;
+                _commentList.Dirty = value;
+                _commentListXml.Dirty = value;
+                _comments.Dirty = value;
+                _dateAddedUtc.Dirty = value;
+                _dateClearedUtc.Dirty = value;
+                _dateExpected.Dirty = value;
+                _dateExpiredUtc.Dirty = value;
+                _dateFulfilledUtc.Dirty = value;
+                _dateReceived.Dirty = value;
+                _dateReceivedUtc.Dirty = value;
+                _dateRejectedUtc.Dirty = value;
+                _dateRequestedUtc.Dirty = value;
+                _dateRerequestedUtc.Dirty = value;
+                _dateReviewedUtc.Dirty = value;
+                _dateUtc.Dirty = value;
+                _dateWaivedUtc.Dirty = value;
+                _description.Dirty = value;
+                _details.Dirty = value;
+                _expected.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _forRoleId.Dirty = value;
+                _fulfilled.Dirty = value;
+                _fulfilledBy.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isExternalIndicator.Dirty = value;
+                _isInternalIndicator.Dirty = value;
+                _isPastDue.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _pairId.Dirty = value;
+                _priorTo.Dirty = value;
+                _received.Dirty = value;
+                _receivedBy.Dirty = value;
+                _rejected.Dirty = value;
+                _rejectedBy.Dirty = value;
+                _requested.Dirty = value;
+                _requestedBy.Dirty = value;
+                _rerequested.Dirty = value;
+                _rerequestedBy.Dirty = value;
+                _reviewed.Dirty = value;
+                _reviewedBy.Dirty = value;
+                _source.Dirty = value;
+                _status.Dirty = value;
+                _statusDescription.Dirty = value;
+                _systemId.Dirty = value;
+                _title.Dirty = value;
+                _waived.Dirty = value;
+                _waivedBy.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public UnderwritingConditionLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

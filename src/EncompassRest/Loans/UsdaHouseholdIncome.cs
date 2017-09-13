@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UsdaHouseholdIncome : IClean
+    public sealed partial class UsdaHouseholdIncome : IDirty
     {
         private Value<int?> _age;
         public int? Age { get { return _age; } set { _age = value; } }
@@ -32,51 +32,46 @@ namespace EncompassRest.Loans
         public string SourceofWageIncomeEmployerName { get { return _sourceofWageIncomeEmployerName; } set { _sourceofWageIncomeEmployerName = value; } }
         private Value<int?> _usdaHouseholdIncomeIndex;
         public int? UsdaHouseholdIncomeIndex { get { return _usdaHouseholdIncomeIndex; } set { _usdaHouseholdIncomeIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _age.Clean
-                    && _analysisDocumenting.Clean
-                    && _annualNonWageIncome.Clean
-                    && _annualWageIncome.Clean
-                    && _disabledIndicator.Clean
-                    && _fullTimeStudentIndicator.Clean
-                    && _id.Clean
-                    && _name.Clean
-                    && _recordOwnerType.Clean
-                    && _sourceofNonWageIncomeDescription.Clean
-                    && _sourceofWageIncomeEmployerName.Clean
-                    && _usdaHouseholdIncomeIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _age.Dirty
+                    || _analysisDocumenting.Dirty
+                    || _annualNonWageIncome.Dirty
+                    || _annualWageIncome.Dirty
+                    || _disabledIndicator.Dirty
+                    || _fullTimeStudentIndicator.Dirty
+                    || _id.Dirty
+                    || _name.Dirty
+                    || _recordOwnerType.Dirty
+                    || _sourceofNonWageIncomeDescription.Dirty
+                    || _sourceofWageIncomeEmployerName.Dirty
+                    || _usdaHouseholdIncomeIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var age = _age; age.Clean = value; _age = age;
-                var analysisDocumenting = _analysisDocumenting; analysisDocumenting.Clean = value; _analysisDocumenting = analysisDocumenting;
-                var annualNonWageIncome = _annualNonWageIncome; annualNonWageIncome.Clean = value; _annualNonWageIncome = annualNonWageIncome;
-                var annualWageIncome = _annualWageIncome; annualWageIncome.Clean = value; _annualWageIncome = annualWageIncome;
-                var disabledIndicator = _disabledIndicator; disabledIndicator.Clean = value; _disabledIndicator = disabledIndicator;
-                var fullTimeStudentIndicator = _fullTimeStudentIndicator; fullTimeStudentIndicator.Clean = value; _fullTimeStudentIndicator = fullTimeStudentIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var name = _name; name.Clean = value; _name = name;
-                var recordOwnerType = _recordOwnerType; recordOwnerType.Clean = value; _recordOwnerType = recordOwnerType;
-                var sourceofNonWageIncomeDescription = _sourceofNonWageIncomeDescription; sourceofNonWageIncomeDescription.Clean = value; _sourceofNonWageIncomeDescription = sourceofNonWageIncomeDescription;
-                var sourceofWageIncomeEmployerName = _sourceofWageIncomeEmployerName; sourceofWageIncomeEmployerName.Clean = value; _sourceofWageIncomeEmployerName = sourceofWageIncomeEmployerName;
-                var usdaHouseholdIncomeIndex = _usdaHouseholdIncomeIndex; usdaHouseholdIncomeIndex.Clean = value; _usdaHouseholdIncomeIndex = usdaHouseholdIncomeIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _age.Dirty = value;
+                _analysisDocumenting.Dirty = value;
+                _annualNonWageIncome.Dirty = value;
+                _annualWageIncome.Dirty = value;
+                _disabledIndicator.Dirty = value;
+                _fullTimeStudentIndicator.Dirty = value;
+                _id.Dirty = value;
+                _name.Dirty = value;
+                _recordOwnerType.Dirty = value;
+                _sourceofNonWageIncomeDescription.Dirty = value;
+                _sourceofWageIncomeEmployerName.Dirty = value;
+                _usdaHouseholdIncomeIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public UsdaHouseholdIncome()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

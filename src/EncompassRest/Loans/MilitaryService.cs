@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilitaryService : IClean
+    public sealed partial class MilitaryService : IDirty
     {
         private Value<string> _branch;
         public string Branch { get { return _branch; } set { _branch = value; } }
@@ -26,45 +26,40 @@ namespace EncompassRest.Loans
         public string SSN { get { return _sSN; } set { _sSN = value; } }
         private Value<DateTime?> _startDate;
         public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _branch.Clean
-                    && _endDate.Clean
-                    && _id.Clean
-                    && _militaryServiceIndex.Clean
-                    && _name.Clean
-                    && _officerOrEnlisted.Clean
-                    && _serviceNumber.Clean
-                    && _sSN.Clean
-                    && _startDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _branch.Dirty
+                    || _endDate.Dirty
+                    || _id.Dirty
+                    || _militaryServiceIndex.Dirty
+                    || _name.Dirty
+                    || _officerOrEnlisted.Dirty
+                    || _serviceNumber.Dirty
+                    || _sSN.Dirty
+                    || _startDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var branch = _branch; branch.Clean = value; _branch = branch;
-                var endDate = _endDate; endDate.Clean = value; _endDate = endDate;
-                var id = _id; id.Clean = value; _id = id;
-                var militaryServiceIndex = _militaryServiceIndex; militaryServiceIndex.Clean = value; _militaryServiceIndex = militaryServiceIndex;
-                var name = _name; name.Clean = value; _name = name;
-                var officerOrEnlisted = _officerOrEnlisted; officerOrEnlisted.Clean = value; _officerOrEnlisted = officerOrEnlisted;
-                var serviceNumber = _serviceNumber; serviceNumber.Clean = value; _serviceNumber = serviceNumber;
-                var sSN = _sSN; sSN.Clean = value; _sSN = sSN;
-                var startDate = _startDate; startDate.Clean = value; _startDate = startDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _branch.Dirty = value;
+                _endDate.Dirty = value;
+                _id.Dirty = value;
+                _militaryServiceIndex.Dirty = value;
+                _name.Dirty = value;
+                _officerOrEnlisted.Dirty = value;
+                _serviceNumber.Dirty = value;
+                _sSN.Dirty = value;
+                _startDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public MilitaryService()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SecondaryFinancingProvider : IClean
+    public sealed partial class SecondaryFinancingProvider : IDirty
     {
         private Value<decimal?> _financingAmount;
         public decimal? FinancingAmount { get { return _financingAmount; } set { _financingAmount = value; } }
@@ -28,47 +28,42 @@ namespace EncompassRest.Loans
         public bool? SourceFromOtherIndicator { get { return _sourceFromOtherIndicator; } set { _sourceFromOtherIndicator = value; } }
         private Value<string> _sourceOtherDetail;
         public string SourceOtherDetail { get { return _sourceOtherDetail; } set { _sourceOtherDetail = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _financingAmount.Clean
-                    && _id.Clean
-                    && _secondaryFinancingProviderType.Clean
-                    && _sellerFundedDapIndicator.Clean
-                    && _source.Clean
-                    && _sourceFromFamilyIndicator.Clean
-                    && _sourceFromGovernmentIndicator.Clean
-                    && _sourceFromNPIndicator.Clean
-                    && _sourceFromOtherIndicator.Clean
-                    && _sourceOtherDetail.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _financingAmount.Dirty
+                    || _id.Dirty
+                    || _secondaryFinancingProviderType.Dirty
+                    || _sellerFundedDapIndicator.Dirty
+                    || _source.Dirty
+                    || _sourceFromFamilyIndicator.Dirty
+                    || _sourceFromGovernmentIndicator.Dirty
+                    || _sourceFromNPIndicator.Dirty
+                    || _sourceFromOtherIndicator.Dirty
+                    || _sourceOtherDetail.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var financingAmount = _financingAmount; financingAmount.Clean = value; _financingAmount = financingAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var secondaryFinancingProviderType = _secondaryFinancingProviderType; secondaryFinancingProviderType.Clean = value; _secondaryFinancingProviderType = secondaryFinancingProviderType;
-                var sellerFundedDapIndicator = _sellerFundedDapIndicator; sellerFundedDapIndicator.Clean = value; _sellerFundedDapIndicator = sellerFundedDapIndicator;
-                var source = _source; source.Clean = value; _source = source;
-                var sourceFromFamilyIndicator = _sourceFromFamilyIndicator; sourceFromFamilyIndicator.Clean = value; _sourceFromFamilyIndicator = sourceFromFamilyIndicator;
-                var sourceFromGovernmentIndicator = _sourceFromGovernmentIndicator; sourceFromGovernmentIndicator.Clean = value; _sourceFromGovernmentIndicator = sourceFromGovernmentIndicator;
-                var sourceFromNPIndicator = _sourceFromNPIndicator; sourceFromNPIndicator.Clean = value; _sourceFromNPIndicator = sourceFromNPIndicator;
-                var sourceFromOtherIndicator = _sourceFromOtherIndicator; sourceFromOtherIndicator.Clean = value; _sourceFromOtherIndicator = sourceFromOtherIndicator;
-                var sourceOtherDetail = _sourceOtherDetail; sourceOtherDetail.Clean = value; _sourceOtherDetail = sourceOtherDetail;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _financingAmount.Dirty = value;
+                _id.Dirty = value;
+                _secondaryFinancingProviderType.Dirty = value;
+                _sellerFundedDapIndicator.Dirty = value;
+                _source.Dirty = value;
+                _sourceFromFamilyIndicator.Dirty = value;
+                _sourceFromGovernmentIndicator.Dirty = value;
+                _sourceFromNPIndicator.Dirty = value;
+                _sourceFromOtherIndicator.Dirty = value;
+                _sourceOtherDetail.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public SecondaryFinancingProvider()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

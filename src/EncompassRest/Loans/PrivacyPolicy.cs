@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrivacyPolicy : IClean
+    public sealed partial class PrivacyPolicy : IDirty
     {
         private Value<string> _additionalRightsDescription;
         public string AdditionalRightsDescription { get { return _additionalRightsDescription; } set { _additionalRightsDescription = value; } }
@@ -102,121 +102,116 @@ namespace EncompassRest.Loans
         public string WebsiteToLimit { get { return _websiteToLimit; } set { _websiteToLimit = value; } }
         private Value<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalRightsDescription.Clean
-                    && _affiliateType.Clean
-                    && _affiliateTypeExample1.Clean
-                    && _affiliateTypeExample2.Clean
-                    && _affiliateTypeExample3.Clean
-                    && _alsoCollectFrom.Clean
-                    && _daysToUse.Clean
-                    && _howToShare.Clean
-                    && _id.Clean
-                    && _informationShare1.Clean
-                    && _informationShare2.Clean
-                    && _informationShare3.Clean
-                    && _informationShare4.Clean
-                    && _informationShare5.Clean
-                    && _informationShare6.Clean
-                    && _informationShare7.Clean
-                    && _informationTypesWeCollect1.Clean
-                    && _informationTypesWeCollect2.Clean
-                    && _informationTypesWeCollect3.Clean
-                    && _informationTypesWeCollect4.Clean
-                    && _informationTypesWeCollect5.Clean
-                    && _jointMarketType.Clean
-                    && _jointMarketTypeExample1.Clean
-                    && _limitSharing1.Clean
-                    && _limitSharing2.Clean
-                    && _limitSharing3.Clean
-                    && _limitSharing4.Clean
-                    && _limitSharing5.Clean
-                    && _limitSharing6.Clean
-                    && _limitSharing7.Clean
-                    && _month.Clean
-                    && _nonaffiliateType.Clean
-                    && _nonaffiliateTypeExample1.Clean
-                    && _notesForProtectPrivacy.Clean
-                    && _otherInformation.Clean
-                    && _phoneForQuestion.Clean
-                    && _phoneToLimit.Clean
-                    && _printSelection.Clean
-                    && _shareInfoWithJointMarketing.Clean
-                    && _timesToCollect1.Clean
-                    && _timesToCollect2.Clean
-                    && _timesToCollect3.Clean
-                    && _timesToCollect4.Clean
-                    && _timesToCollect5.Clean
-                    && _websiteForQuestion.Clean
-                    && _websiteToLimit.Clean
-                    && _year.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalRightsDescription.Dirty
+                    || _affiliateType.Dirty
+                    || _affiliateTypeExample1.Dirty
+                    || _affiliateTypeExample2.Dirty
+                    || _affiliateTypeExample3.Dirty
+                    || _alsoCollectFrom.Dirty
+                    || _daysToUse.Dirty
+                    || _howToShare.Dirty
+                    || _id.Dirty
+                    || _informationShare1.Dirty
+                    || _informationShare2.Dirty
+                    || _informationShare3.Dirty
+                    || _informationShare4.Dirty
+                    || _informationShare5.Dirty
+                    || _informationShare6.Dirty
+                    || _informationShare7.Dirty
+                    || _informationTypesWeCollect1.Dirty
+                    || _informationTypesWeCollect2.Dirty
+                    || _informationTypesWeCollect3.Dirty
+                    || _informationTypesWeCollect4.Dirty
+                    || _informationTypesWeCollect5.Dirty
+                    || _jointMarketType.Dirty
+                    || _jointMarketTypeExample1.Dirty
+                    || _limitSharing1.Dirty
+                    || _limitSharing2.Dirty
+                    || _limitSharing3.Dirty
+                    || _limitSharing4.Dirty
+                    || _limitSharing5.Dirty
+                    || _limitSharing6.Dirty
+                    || _limitSharing7.Dirty
+                    || _month.Dirty
+                    || _nonaffiliateType.Dirty
+                    || _nonaffiliateTypeExample1.Dirty
+                    || _notesForProtectPrivacy.Dirty
+                    || _otherInformation.Dirty
+                    || _phoneForQuestion.Dirty
+                    || _phoneToLimit.Dirty
+                    || _printSelection.Dirty
+                    || _shareInfoWithJointMarketing.Dirty
+                    || _timesToCollect1.Dirty
+                    || _timesToCollect2.Dirty
+                    || _timesToCollect3.Dirty
+                    || _timesToCollect4.Dirty
+                    || _timesToCollect5.Dirty
+                    || _websiteForQuestion.Dirty
+                    || _websiteToLimit.Dirty
+                    || _year.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalRightsDescription = _additionalRightsDescription; additionalRightsDescription.Clean = value; _additionalRightsDescription = additionalRightsDescription;
-                var affiliateType = _affiliateType; affiliateType.Clean = value; _affiliateType = affiliateType;
-                var affiliateTypeExample1 = _affiliateTypeExample1; affiliateTypeExample1.Clean = value; _affiliateTypeExample1 = affiliateTypeExample1;
-                var affiliateTypeExample2 = _affiliateTypeExample2; affiliateTypeExample2.Clean = value; _affiliateTypeExample2 = affiliateTypeExample2;
-                var affiliateTypeExample3 = _affiliateTypeExample3; affiliateTypeExample3.Clean = value; _affiliateTypeExample3 = affiliateTypeExample3;
-                var alsoCollectFrom = _alsoCollectFrom; alsoCollectFrom.Clean = value; _alsoCollectFrom = alsoCollectFrom;
-                var daysToUse = _daysToUse; daysToUse.Clean = value; _daysToUse = daysToUse;
-                var howToShare = _howToShare; howToShare.Clean = value; _howToShare = howToShare;
-                var id = _id; id.Clean = value; _id = id;
-                var informationShare1 = _informationShare1; informationShare1.Clean = value; _informationShare1 = informationShare1;
-                var informationShare2 = _informationShare2; informationShare2.Clean = value; _informationShare2 = informationShare2;
-                var informationShare3 = _informationShare3; informationShare3.Clean = value; _informationShare3 = informationShare3;
-                var informationShare4 = _informationShare4; informationShare4.Clean = value; _informationShare4 = informationShare4;
-                var informationShare5 = _informationShare5; informationShare5.Clean = value; _informationShare5 = informationShare5;
-                var informationShare6 = _informationShare6; informationShare6.Clean = value; _informationShare6 = informationShare6;
-                var informationShare7 = _informationShare7; informationShare7.Clean = value; _informationShare7 = informationShare7;
-                var informationTypesWeCollect1 = _informationTypesWeCollect1; informationTypesWeCollect1.Clean = value; _informationTypesWeCollect1 = informationTypesWeCollect1;
-                var informationTypesWeCollect2 = _informationTypesWeCollect2; informationTypesWeCollect2.Clean = value; _informationTypesWeCollect2 = informationTypesWeCollect2;
-                var informationTypesWeCollect3 = _informationTypesWeCollect3; informationTypesWeCollect3.Clean = value; _informationTypesWeCollect3 = informationTypesWeCollect3;
-                var informationTypesWeCollect4 = _informationTypesWeCollect4; informationTypesWeCollect4.Clean = value; _informationTypesWeCollect4 = informationTypesWeCollect4;
-                var informationTypesWeCollect5 = _informationTypesWeCollect5; informationTypesWeCollect5.Clean = value; _informationTypesWeCollect5 = informationTypesWeCollect5;
-                var jointMarketType = _jointMarketType; jointMarketType.Clean = value; _jointMarketType = jointMarketType;
-                var jointMarketTypeExample1 = _jointMarketTypeExample1; jointMarketTypeExample1.Clean = value; _jointMarketTypeExample1 = jointMarketTypeExample1;
-                var limitSharing1 = _limitSharing1; limitSharing1.Clean = value; _limitSharing1 = limitSharing1;
-                var limitSharing2 = _limitSharing2; limitSharing2.Clean = value; _limitSharing2 = limitSharing2;
-                var limitSharing3 = _limitSharing3; limitSharing3.Clean = value; _limitSharing3 = limitSharing3;
-                var limitSharing4 = _limitSharing4; limitSharing4.Clean = value; _limitSharing4 = limitSharing4;
-                var limitSharing5 = _limitSharing5; limitSharing5.Clean = value; _limitSharing5 = limitSharing5;
-                var limitSharing6 = _limitSharing6; limitSharing6.Clean = value; _limitSharing6 = limitSharing6;
-                var limitSharing7 = _limitSharing7; limitSharing7.Clean = value; _limitSharing7 = limitSharing7;
-                var month = _month; month.Clean = value; _month = month;
-                var nonaffiliateType = _nonaffiliateType; nonaffiliateType.Clean = value; _nonaffiliateType = nonaffiliateType;
-                var nonaffiliateTypeExample1 = _nonaffiliateTypeExample1; nonaffiliateTypeExample1.Clean = value; _nonaffiliateTypeExample1 = nonaffiliateTypeExample1;
-                var notesForProtectPrivacy = _notesForProtectPrivacy; notesForProtectPrivacy.Clean = value; _notesForProtectPrivacy = notesForProtectPrivacy;
-                var otherInformation = _otherInformation; otherInformation.Clean = value; _otherInformation = otherInformation;
-                var phoneForQuestion = _phoneForQuestion; phoneForQuestion.Clean = value; _phoneForQuestion = phoneForQuestion;
-                var phoneToLimit = _phoneToLimit; phoneToLimit.Clean = value; _phoneToLimit = phoneToLimit;
-                var printSelection = _printSelection; printSelection.Clean = value; _printSelection = printSelection;
-                var shareInfoWithJointMarketing = _shareInfoWithJointMarketing; shareInfoWithJointMarketing.Clean = value; _shareInfoWithJointMarketing = shareInfoWithJointMarketing;
-                var timesToCollect1 = _timesToCollect1; timesToCollect1.Clean = value; _timesToCollect1 = timesToCollect1;
-                var timesToCollect2 = _timesToCollect2; timesToCollect2.Clean = value; _timesToCollect2 = timesToCollect2;
-                var timesToCollect3 = _timesToCollect3; timesToCollect3.Clean = value; _timesToCollect3 = timesToCollect3;
-                var timesToCollect4 = _timesToCollect4; timesToCollect4.Clean = value; _timesToCollect4 = timesToCollect4;
-                var timesToCollect5 = _timesToCollect5; timesToCollect5.Clean = value; _timesToCollect5 = timesToCollect5;
-                var websiteForQuestion = _websiteForQuestion; websiteForQuestion.Clean = value; _websiteForQuestion = websiteForQuestion;
-                var websiteToLimit = _websiteToLimit; websiteToLimit.Clean = value; _websiteToLimit = websiteToLimit;
-                var year = _year; year.Clean = value; _year = year;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalRightsDescription.Dirty = value;
+                _affiliateType.Dirty = value;
+                _affiliateTypeExample1.Dirty = value;
+                _affiliateTypeExample2.Dirty = value;
+                _affiliateTypeExample3.Dirty = value;
+                _alsoCollectFrom.Dirty = value;
+                _daysToUse.Dirty = value;
+                _howToShare.Dirty = value;
+                _id.Dirty = value;
+                _informationShare1.Dirty = value;
+                _informationShare2.Dirty = value;
+                _informationShare3.Dirty = value;
+                _informationShare4.Dirty = value;
+                _informationShare5.Dirty = value;
+                _informationShare6.Dirty = value;
+                _informationShare7.Dirty = value;
+                _informationTypesWeCollect1.Dirty = value;
+                _informationTypesWeCollect2.Dirty = value;
+                _informationTypesWeCollect3.Dirty = value;
+                _informationTypesWeCollect4.Dirty = value;
+                _informationTypesWeCollect5.Dirty = value;
+                _jointMarketType.Dirty = value;
+                _jointMarketTypeExample1.Dirty = value;
+                _limitSharing1.Dirty = value;
+                _limitSharing2.Dirty = value;
+                _limitSharing3.Dirty = value;
+                _limitSharing4.Dirty = value;
+                _limitSharing5.Dirty = value;
+                _limitSharing6.Dirty = value;
+                _limitSharing7.Dirty = value;
+                _month.Dirty = value;
+                _nonaffiliateType.Dirty = value;
+                _nonaffiliateTypeExample1.Dirty = value;
+                _notesForProtectPrivacy.Dirty = value;
+                _otherInformation.Dirty = value;
+                _phoneForQuestion.Dirty = value;
+                _phoneToLimit.Dirty = value;
+                _printSelection.Dirty = value;
+                _shareInfoWithJointMarketing.Dirty = value;
+                _timesToCollect1.Dirty = value;
+                _timesToCollect2.Dirty = value;
+                _timesToCollect3.Dirty = value;
+                _timesToCollect4.Dirty = value;
+                _timesToCollect5.Dirty = value;
+                _websiteForQuestion.Dirty = value;
+                _websiteToLimit.Dirty = value;
+                _year.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PrivacyPolicy()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FreddieMac : IClean
+    public sealed partial class FreddieMac : IDirty
     {
         private Value<string> _affordableProduct;
         public string AffordableProduct { get { return _affordableProduct; } set { _affordableProduct = value; } }
@@ -166,185 +166,180 @@ namespace EncompassRest.Loans
         public bool? TransferLoanToConduitIndicator { get { return _transferLoanToConduitIndicator; } set { _transferLoanToConduitIndicator = value; } }
         private Value<string> _yearsOfCoverage;
         public string YearsOfCoverage { get { return _yearsOfCoverage; } set { _yearsOfCoverage = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _affordableProduct.Clean
-                    && _alimonyAsIncomeReduction.Clean
-                    && _allMonthlyPayments.Clean
-                    && _allowsNegativeAmortizationIndicator.Clean
-                    && _amountOfFinancedMI.Clean
-                    && _aPNCity.Clean
-                    && _armsLengthTransactionIndicator.Clean
-                    && _borrowerQualifiesAsVeteranIndicator.Clean
-                    && _brokerOriginated.Clean
-                    && _buydownContributor.Clean
-                    && _condoClass.Clean
-                    && _convertibleFeeAmount.Clean
-                    && _convertibleFeePercent.Clean
-                    && _convertibleMaxRateAdjPercent.Clean
-                    && _convertibleMinRateAdjPercent.Clean
-                    && _county.Clean
-                    && _creditReportCompany.Clean
-                    && _financingConcessions.Clean
-                    && _freddieFiel11.Clean
-                    && _freddieFiel12.Clean
-                    && _freddieFiel13.Clean
-                    && _freddieFiel14.Clean
-                    && _freddieFiel15.Clean
-                    && _freddieField3.Clean
-                    && _freddieField7.Clean
-                    && _hELOCActualBalance.Clean
-                    && _hELOCCreditLimit.Clean
-                    && _id.Clean
-                    && _lenderAltPhone.Clean
-                    && _lenderRegistration.Clean
-                    && _loanProspectorID.Clean
-                    && _loanToConduitCode.Clean
-                    && _longLegalDescription.Clean
-                    && _lossCoverage.Clean
-                    && _lPKeyNumber.Clean
-                    && _mIRefundOption.Clean
-                    && _mortgageInsuranceCompany.Clean
-                    && _netPurchasePrice.Clean
-                    && _newConstructionType.Clean
-                    && _noAppraisalMAF.Clean
-                    && _nonOccupantNonHousingDebt.Clean
-                    && _nonOccupantPresentHE.Clean
-                    && _orderCreditEvaluationIndicator.Clean
-                    && _orderMergedCreditReportIndicator.Clean
-                    && _orderMortgageInsurance.Clean
-                    && _orderRiskGradeEvaluationIndicator.Clean
-                    && _originalIntRate.Clean
-                    && _originateID.Clean
-                    && _paymentFrequency.Clean
-                    && _paymentOption.Clean
-                    && _personIncomeForSelfEmployment1.Clean
-                    && _personIncomeForSelfEmployment2.Clean
-                    && _personPercentOfBusinessOwned1.Clean
-                    && _personPercentOfBusinessOwned2.Clean
-                    && _premiumSource.Clean
-                    && _presentHousingExpense.Clean
-                    && _processingPoint.Clean
-                    && _propertyType.Clean
-                    && _purposeOfLoan.Clean
-                    && _renewalOption.Clean
-                    && _renewalType.Clean
-                    && _requiredDocumentType.Clean
-                    && _reserves.Clean
-                    && _retailLoanIndicator.Clean
-                    && _riskClass.Clean
-                    && _riskGradeEvaluationType.Clean
-                    && _salesConcessions.Clean
-                    && _secondaryFinancingType.Clean
-                    && _secondTrustRefiIndicator.Clean
-                    && _simulatedPITI.Clean
-                    && _sizeOfHousehold.Clean
-                    && _specialInstruction1.Clean
-                    && _specialInstruction2.Clean
-                    && _specialInstruction3.Clean
-                    && _specialInstruction4.Clean
-                    && _specialInstruction5.Clean
-                    && _state.Clean
-                    && _transferLoanToConduitIndicator.Clean
-                    && _yearsOfCoverage.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _affordableProduct.Dirty
+                    || _alimonyAsIncomeReduction.Dirty
+                    || _allMonthlyPayments.Dirty
+                    || _allowsNegativeAmortizationIndicator.Dirty
+                    || _amountOfFinancedMI.Dirty
+                    || _aPNCity.Dirty
+                    || _armsLengthTransactionIndicator.Dirty
+                    || _borrowerQualifiesAsVeteranIndicator.Dirty
+                    || _brokerOriginated.Dirty
+                    || _buydownContributor.Dirty
+                    || _condoClass.Dirty
+                    || _convertibleFeeAmount.Dirty
+                    || _convertibleFeePercent.Dirty
+                    || _convertibleMaxRateAdjPercent.Dirty
+                    || _convertibleMinRateAdjPercent.Dirty
+                    || _county.Dirty
+                    || _creditReportCompany.Dirty
+                    || _financingConcessions.Dirty
+                    || _freddieFiel11.Dirty
+                    || _freddieFiel12.Dirty
+                    || _freddieFiel13.Dirty
+                    || _freddieFiel14.Dirty
+                    || _freddieFiel15.Dirty
+                    || _freddieField3.Dirty
+                    || _freddieField7.Dirty
+                    || _hELOCActualBalance.Dirty
+                    || _hELOCCreditLimit.Dirty
+                    || _id.Dirty
+                    || _lenderAltPhone.Dirty
+                    || _lenderRegistration.Dirty
+                    || _loanProspectorID.Dirty
+                    || _loanToConduitCode.Dirty
+                    || _longLegalDescription.Dirty
+                    || _lossCoverage.Dirty
+                    || _lPKeyNumber.Dirty
+                    || _mIRefundOption.Dirty
+                    || _mortgageInsuranceCompany.Dirty
+                    || _netPurchasePrice.Dirty
+                    || _newConstructionType.Dirty
+                    || _noAppraisalMAF.Dirty
+                    || _nonOccupantNonHousingDebt.Dirty
+                    || _nonOccupantPresentHE.Dirty
+                    || _orderCreditEvaluationIndicator.Dirty
+                    || _orderMergedCreditReportIndicator.Dirty
+                    || _orderMortgageInsurance.Dirty
+                    || _orderRiskGradeEvaluationIndicator.Dirty
+                    || _originalIntRate.Dirty
+                    || _originateID.Dirty
+                    || _paymentFrequency.Dirty
+                    || _paymentOption.Dirty
+                    || _personIncomeForSelfEmployment1.Dirty
+                    || _personIncomeForSelfEmployment2.Dirty
+                    || _personPercentOfBusinessOwned1.Dirty
+                    || _personPercentOfBusinessOwned2.Dirty
+                    || _premiumSource.Dirty
+                    || _presentHousingExpense.Dirty
+                    || _processingPoint.Dirty
+                    || _propertyType.Dirty
+                    || _purposeOfLoan.Dirty
+                    || _renewalOption.Dirty
+                    || _renewalType.Dirty
+                    || _requiredDocumentType.Dirty
+                    || _reserves.Dirty
+                    || _retailLoanIndicator.Dirty
+                    || _riskClass.Dirty
+                    || _riskGradeEvaluationType.Dirty
+                    || _salesConcessions.Dirty
+                    || _secondaryFinancingType.Dirty
+                    || _secondTrustRefiIndicator.Dirty
+                    || _simulatedPITI.Dirty
+                    || _sizeOfHousehold.Dirty
+                    || _specialInstruction1.Dirty
+                    || _specialInstruction2.Dirty
+                    || _specialInstruction3.Dirty
+                    || _specialInstruction4.Dirty
+                    || _specialInstruction5.Dirty
+                    || _state.Dirty
+                    || _transferLoanToConduitIndicator.Dirty
+                    || _yearsOfCoverage.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var affordableProduct = _affordableProduct; affordableProduct.Clean = value; _affordableProduct = affordableProduct;
-                var alimonyAsIncomeReduction = _alimonyAsIncomeReduction; alimonyAsIncomeReduction.Clean = value; _alimonyAsIncomeReduction = alimonyAsIncomeReduction;
-                var allMonthlyPayments = _allMonthlyPayments; allMonthlyPayments.Clean = value; _allMonthlyPayments = allMonthlyPayments;
-                var allowsNegativeAmortizationIndicator = _allowsNegativeAmortizationIndicator; allowsNegativeAmortizationIndicator.Clean = value; _allowsNegativeAmortizationIndicator = allowsNegativeAmortizationIndicator;
-                var amountOfFinancedMI = _amountOfFinancedMI; amountOfFinancedMI.Clean = value; _amountOfFinancedMI = amountOfFinancedMI;
-                var aPNCity = _aPNCity; aPNCity.Clean = value; _aPNCity = aPNCity;
-                var armsLengthTransactionIndicator = _armsLengthTransactionIndicator; armsLengthTransactionIndicator.Clean = value; _armsLengthTransactionIndicator = armsLengthTransactionIndicator;
-                var borrowerQualifiesAsVeteranIndicator = _borrowerQualifiesAsVeteranIndicator; borrowerQualifiesAsVeteranIndicator.Clean = value; _borrowerQualifiesAsVeteranIndicator = borrowerQualifiesAsVeteranIndicator;
-                var brokerOriginated = _brokerOriginated; brokerOriginated.Clean = value; _brokerOriginated = brokerOriginated;
-                var buydownContributor = _buydownContributor; buydownContributor.Clean = value; _buydownContributor = buydownContributor;
-                var condoClass = _condoClass; condoClass.Clean = value; _condoClass = condoClass;
-                var convertibleFeeAmount = _convertibleFeeAmount; convertibleFeeAmount.Clean = value; _convertibleFeeAmount = convertibleFeeAmount;
-                var convertibleFeePercent = _convertibleFeePercent; convertibleFeePercent.Clean = value; _convertibleFeePercent = convertibleFeePercent;
-                var convertibleMaxRateAdjPercent = _convertibleMaxRateAdjPercent; convertibleMaxRateAdjPercent.Clean = value; _convertibleMaxRateAdjPercent = convertibleMaxRateAdjPercent;
-                var convertibleMinRateAdjPercent = _convertibleMinRateAdjPercent; convertibleMinRateAdjPercent.Clean = value; _convertibleMinRateAdjPercent = convertibleMinRateAdjPercent;
-                var county = _county; county.Clean = value; _county = county;
-                var creditReportCompany = _creditReportCompany; creditReportCompany.Clean = value; _creditReportCompany = creditReportCompany;
-                var financingConcessions = _financingConcessions; financingConcessions.Clean = value; _financingConcessions = financingConcessions;
-                var freddieFiel11 = _freddieFiel11; freddieFiel11.Clean = value; _freddieFiel11 = freddieFiel11;
-                var freddieFiel12 = _freddieFiel12; freddieFiel12.Clean = value; _freddieFiel12 = freddieFiel12;
-                var freddieFiel13 = _freddieFiel13; freddieFiel13.Clean = value; _freddieFiel13 = freddieFiel13;
-                var freddieFiel14 = _freddieFiel14; freddieFiel14.Clean = value; _freddieFiel14 = freddieFiel14;
-                var freddieFiel15 = _freddieFiel15; freddieFiel15.Clean = value; _freddieFiel15 = freddieFiel15;
-                var freddieField3 = _freddieField3; freddieField3.Clean = value; _freddieField3 = freddieField3;
-                var freddieField7 = _freddieField7; freddieField7.Clean = value; _freddieField7 = freddieField7;
-                var hELOCActualBalance = _hELOCActualBalance; hELOCActualBalance.Clean = value; _hELOCActualBalance = hELOCActualBalance;
-                var hELOCCreditLimit = _hELOCCreditLimit; hELOCCreditLimit.Clean = value; _hELOCCreditLimit = hELOCCreditLimit;
-                var id = _id; id.Clean = value; _id = id;
-                var lenderAltPhone = _lenderAltPhone; lenderAltPhone.Clean = value; _lenderAltPhone = lenderAltPhone;
-                var lenderRegistration = _lenderRegistration; lenderRegistration.Clean = value; _lenderRegistration = lenderRegistration;
-                var loanProspectorID = _loanProspectorID; loanProspectorID.Clean = value; _loanProspectorID = loanProspectorID;
-                var loanToConduitCode = _loanToConduitCode; loanToConduitCode.Clean = value; _loanToConduitCode = loanToConduitCode;
-                var longLegalDescription = _longLegalDescription; longLegalDescription.Clean = value; _longLegalDescription = longLegalDescription;
-                var lossCoverage = _lossCoverage; lossCoverage.Clean = value; _lossCoverage = lossCoverage;
-                var lPKeyNumber = _lPKeyNumber; lPKeyNumber.Clean = value; _lPKeyNumber = lPKeyNumber;
-                var mIRefundOption = _mIRefundOption; mIRefundOption.Clean = value; _mIRefundOption = mIRefundOption;
-                var mortgageInsuranceCompany = _mortgageInsuranceCompany; mortgageInsuranceCompany.Clean = value; _mortgageInsuranceCompany = mortgageInsuranceCompany;
-                var netPurchasePrice = _netPurchasePrice; netPurchasePrice.Clean = value; _netPurchasePrice = netPurchasePrice;
-                var newConstructionType = _newConstructionType; newConstructionType.Clean = value; _newConstructionType = newConstructionType;
-                var noAppraisalMAF = _noAppraisalMAF; noAppraisalMAF.Clean = value; _noAppraisalMAF = noAppraisalMAF;
-                var nonOccupantNonHousingDebt = _nonOccupantNonHousingDebt; nonOccupantNonHousingDebt.Clean = value; _nonOccupantNonHousingDebt = nonOccupantNonHousingDebt;
-                var nonOccupantPresentHE = _nonOccupantPresentHE; nonOccupantPresentHE.Clean = value; _nonOccupantPresentHE = nonOccupantPresentHE;
-                var orderCreditEvaluationIndicator = _orderCreditEvaluationIndicator; orderCreditEvaluationIndicator.Clean = value; _orderCreditEvaluationIndicator = orderCreditEvaluationIndicator;
-                var orderMergedCreditReportIndicator = _orderMergedCreditReportIndicator; orderMergedCreditReportIndicator.Clean = value; _orderMergedCreditReportIndicator = orderMergedCreditReportIndicator;
-                var orderMortgageInsurance = _orderMortgageInsurance; orderMortgageInsurance.Clean = value; _orderMortgageInsurance = orderMortgageInsurance;
-                var orderRiskGradeEvaluationIndicator = _orderRiskGradeEvaluationIndicator; orderRiskGradeEvaluationIndicator.Clean = value; _orderRiskGradeEvaluationIndicator = orderRiskGradeEvaluationIndicator;
-                var originalIntRate = _originalIntRate; originalIntRate.Clean = value; _originalIntRate = originalIntRate;
-                var originateID = _originateID; originateID.Clean = value; _originateID = originateID;
-                var paymentFrequency = _paymentFrequency; paymentFrequency.Clean = value; _paymentFrequency = paymentFrequency;
-                var paymentOption = _paymentOption; paymentOption.Clean = value; _paymentOption = paymentOption;
-                var personIncomeForSelfEmployment1 = _personIncomeForSelfEmployment1; personIncomeForSelfEmployment1.Clean = value; _personIncomeForSelfEmployment1 = personIncomeForSelfEmployment1;
-                var personIncomeForSelfEmployment2 = _personIncomeForSelfEmployment2; personIncomeForSelfEmployment2.Clean = value; _personIncomeForSelfEmployment2 = personIncomeForSelfEmployment2;
-                var personPercentOfBusinessOwned1 = _personPercentOfBusinessOwned1; personPercentOfBusinessOwned1.Clean = value; _personPercentOfBusinessOwned1 = personPercentOfBusinessOwned1;
-                var personPercentOfBusinessOwned2 = _personPercentOfBusinessOwned2; personPercentOfBusinessOwned2.Clean = value; _personPercentOfBusinessOwned2 = personPercentOfBusinessOwned2;
-                var premiumSource = _premiumSource; premiumSource.Clean = value; _premiumSource = premiumSource;
-                var presentHousingExpense = _presentHousingExpense; presentHousingExpense.Clean = value; _presentHousingExpense = presentHousingExpense;
-                var processingPoint = _processingPoint; processingPoint.Clean = value; _processingPoint = processingPoint;
-                var propertyType = _propertyType; propertyType.Clean = value; _propertyType = propertyType;
-                var purposeOfLoan = _purposeOfLoan; purposeOfLoan.Clean = value; _purposeOfLoan = purposeOfLoan;
-                var renewalOption = _renewalOption; renewalOption.Clean = value; _renewalOption = renewalOption;
-                var renewalType = _renewalType; renewalType.Clean = value; _renewalType = renewalType;
-                var requiredDocumentType = _requiredDocumentType; requiredDocumentType.Clean = value; _requiredDocumentType = requiredDocumentType;
-                var reserves = _reserves; reserves.Clean = value; _reserves = reserves;
-                var retailLoanIndicator = _retailLoanIndicator; retailLoanIndicator.Clean = value; _retailLoanIndicator = retailLoanIndicator;
-                var riskClass = _riskClass; riskClass.Clean = value; _riskClass = riskClass;
-                var riskGradeEvaluationType = _riskGradeEvaluationType; riskGradeEvaluationType.Clean = value; _riskGradeEvaluationType = riskGradeEvaluationType;
-                var salesConcessions = _salesConcessions; salesConcessions.Clean = value; _salesConcessions = salesConcessions;
-                var secondaryFinancingType = _secondaryFinancingType; secondaryFinancingType.Clean = value; _secondaryFinancingType = secondaryFinancingType;
-                var secondTrustRefiIndicator = _secondTrustRefiIndicator; secondTrustRefiIndicator.Clean = value; _secondTrustRefiIndicator = secondTrustRefiIndicator;
-                var simulatedPITI = _simulatedPITI; simulatedPITI.Clean = value; _simulatedPITI = simulatedPITI;
-                var sizeOfHousehold = _sizeOfHousehold; sizeOfHousehold.Clean = value; _sizeOfHousehold = sizeOfHousehold;
-                var specialInstruction1 = _specialInstruction1; specialInstruction1.Clean = value; _specialInstruction1 = specialInstruction1;
-                var specialInstruction2 = _specialInstruction2; specialInstruction2.Clean = value; _specialInstruction2 = specialInstruction2;
-                var specialInstruction3 = _specialInstruction3; specialInstruction3.Clean = value; _specialInstruction3 = specialInstruction3;
-                var specialInstruction4 = _specialInstruction4; specialInstruction4.Clean = value; _specialInstruction4 = specialInstruction4;
-                var specialInstruction5 = _specialInstruction5; specialInstruction5.Clean = value; _specialInstruction5 = specialInstruction5;
-                var state = _state; state.Clean = value; _state = state;
-                var transferLoanToConduitIndicator = _transferLoanToConduitIndicator; transferLoanToConduitIndicator.Clean = value; _transferLoanToConduitIndicator = transferLoanToConduitIndicator;
-                var yearsOfCoverage = _yearsOfCoverage; yearsOfCoverage.Clean = value; _yearsOfCoverage = yearsOfCoverage;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _affordableProduct.Dirty = value;
+                _alimonyAsIncomeReduction.Dirty = value;
+                _allMonthlyPayments.Dirty = value;
+                _allowsNegativeAmortizationIndicator.Dirty = value;
+                _amountOfFinancedMI.Dirty = value;
+                _aPNCity.Dirty = value;
+                _armsLengthTransactionIndicator.Dirty = value;
+                _borrowerQualifiesAsVeteranIndicator.Dirty = value;
+                _brokerOriginated.Dirty = value;
+                _buydownContributor.Dirty = value;
+                _condoClass.Dirty = value;
+                _convertibleFeeAmount.Dirty = value;
+                _convertibleFeePercent.Dirty = value;
+                _convertibleMaxRateAdjPercent.Dirty = value;
+                _convertibleMinRateAdjPercent.Dirty = value;
+                _county.Dirty = value;
+                _creditReportCompany.Dirty = value;
+                _financingConcessions.Dirty = value;
+                _freddieFiel11.Dirty = value;
+                _freddieFiel12.Dirty = value;
+                _freddieFiel13.Dirty = value;
+                _freddieFiel14.Dirty = value;
+                _freddieFiel15.Dirty = value;
+                _freddieField3.Dirty = value;
+                _freddieField7.Dirty = value;
+                _hELOCActualBalance.Dirty = value;
+                _hELOCCreditLimit.Dirty = value;
+                _id.Dirty = value;
+                _lenderAltPhone.Dirty = value;
+                _lenderRegistration.Dirty = value;
+                _loanProspectorID.Dirty = value;
+                _loanToConduitCode.Dirty = value;
+                _longLegalDescription.Dirty = value;
+                _lossCoverage.Dirty = value;
+                _lPKeyNumber.Dirty = value;
+                _mIRefundOption.Dirty = value;
+                _mortgageInsuranceCompany.Dirty = value;
+                _netPurchasePrice.Dirty = value;
+                _newConstructionType.Dirty = value;
+                _noAppraisalMAF.Dirty = value;
+                _nonOccupantNonHousingDebt.Dirty = value;
+                _nonOccupantPresentHE.Dirty = value;
+                _orderCreditEvaluationIndicator.Dirty = value;
+                _orderMergedCreditReportIndicator.Dirty = value;
+                _orderMortgageInsurance.Dirty = value;
+                _orderRiskGradeEvaluationIndicator.Dirty = value;
+                _originalIntRate.Dirty = value;
+                _originateID.Dirty = value;
+                _paymentFrequency.Dirty = value;
+                _paymentOption.Dirty = value;
+                _personIncomeForSelfEmployment1.Dirty = value;
+                _personIncomeForSelfEmployment2.Dirty = value;
+                _personPercentOfBusinessOwned1.Dirty = value;
+                _personPercentOfBusinessOwned2.Dirty = value;
+                _premiumSource.Dirty = value;
+                _presentHousingExpense.Dirty = value;
+                _processingPoint.Dirty = value;
+                _propertyType.Dirty = value;
+                _purposeOfLoan.Dirty = value;
+                _renewalOption.Dirty = value;
+                _renewalType.Dirty = value;
+                _requiredDocumentType.Dirty = value;
+                _reserves.Dirty = value;
+                _retailLoanIndicator.Dirty = value;
+                _riskClass.Dirty = value;
+                _riskGradeEvaluationType.Dirty = value;
+                _salesConcessions.Dirty = value;
+                _secondaryFinancingType.Dirty = value;
+                _secondTrustRefiIndicator.Dirty = value;
+                _simulatedPITI.Dirty = value;
+                _sizeOfHousehold.Dirty = value;
+                _specialInstruction1.Dirty = value;
+                _specialInstruction2.Dirty = value;
+                _specialInstruction3.Dirty = value;
+                _specialInstruction4.Dirty = value;
+                _specialInstruction5.Dirty = value;
+                _state.Dirty = value;
+                _transferLoanToConduitIndicator.Dirty = value;
+                _yearsOfCoverage.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FreddieMac()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ProfitManagement : IClean
+    public sealed partial class ProfitManagement : IDirty
     {
         private Value<decimal?> _commissionableGrossProfit;
         public decimal? CommissionableGrossProfit { get { return _commissionableGrossProfit; } set { _commissionableGrossProfit = value; } }
@@ -34,53 +34,48 @@ namespace EncompassRest.Loans
         public decimal? NetProfit { get { return _netProfit; } set { _netProfit = value; } }
         private Value<List<ProfitManagementItem>> _profitManagementItems;
         public List<ProfitManagementItem> ProfitManagementItems { get { return _profitManagementItems; } set { _profitManagementItems = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _commissionableGrossProfit.Clean
-                    && _expenseAmount1.Clean
-                    && _expenseAmount2.Clean
-                    && _expenseAmount3.Clean
-                    && _expenseAmount4.Clean
-                    && _expenseDescription1.Clean
-                    && _expenseDescription2.Clean
-                    && _expenseDescription3.Clean
-                    && _expenseDescription4.Clean
-                    && _grossCheckAmount.Clean
-                    && _id.Clean
-                    && _netProfit.Clean
-                    && _profitManagementItems.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _commissionableGrossProfit.Dirty
+                    || _expenseAmount1.Dirty
+                    || _expenseAmount2.Dirty
+                    || _expenseAmount3.Dirty
+                    || _expenseAmount4.Dirty
+                    || _expenseDescription1.Dirty
+                    || _expenseDescription2.Dirty
+                    || _expenseDescription3.Dirty
+                    || _expenseDescription4.Dirty
+                    || _grossCheckAmount.Dirty
+                    || _id.Dirty
+                    || _netProfit.Dirty
+                    || _profitManagementItems.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var commissionableGrossProfit = _commissionableGrossProfit; commissionableGrossProfit.Clean = value; _commissionableGrossProfit = commissionableGrossProfit;
-                var expenseAmount1 = _expenseAmount1; expenseAmount1.Clean = value; _expenseAmount1 = expenseAmount1;
-                var expenseAmount2 = _expenseAmount2; expenseAmount2.Clean = value; _expenseAmount2 = expenseAmount2;
-                var expenseAmount3 = _expenseAmount3; expenseAmount3.Clean = value; _expenseAmount3 = expenseAmount3;
-                var expenseAmount4 = _expenseAmount4; expenseAmount4.Clean = value; _expenseAmount4 = expenseAmount4;
-                var expenseDescription1 = _expenseDescription1; expenseDescription1.Clean = value; _expenseDescription1 = expenseDescription1;
-                var expenseDescription2 = _expenseDescription2; expenseDescription2.Clean = value; _expenseDescription2 = expenseDescription2;
-                var expenseDescription3 = _expenseDescription3; expenseDescription3.Clean = value; _expenseDescription3 = expenseDescription3;
-                var expenseDescription4 = _expenseDescription4; expenseDescription4.Clean = value; _expenseDescription4 = expenseDescription4;
-                var grossCheckAmount = _grossCheckAmount; grossCheckAmount.Clean = value; _grossCheckAmount = grossCheckAmount;
-                var id = _id; id.Clean = value; _id = id;
-                var netProfit = _netProfit; netProfit.Clean = value; _netProfit = netProfit;
-                var profitManagementItems = _profitManagementItems; profitManagementItems.Clean = value; _profitManagementItems = profitManagementItems;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _commissionableGrossProfit.Dirty = value;
+                _expenseAmount1.Dirty = value;
+                _expenseAmount2.Dirty = value;
+                _expenseAmount3.Dirty = value;
+                _expenseAmount4.Dirty = value;
+                _expenseDescription1.Dirty = value;
+                _expenseDescription2.Dirty = value;
+                _expenseDescription3.Dirty = value;
+                _expenseDescription4.Dirty = value;
+                _grossCheckAmount.Dirty = value;
+                _id.Dirty = value;
+                _netProfit.Dirty = value;
+                _profitManagementItems.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ProfitManagement()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

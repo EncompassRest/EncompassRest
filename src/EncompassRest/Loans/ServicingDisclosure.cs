@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ServicingDisclosure : IClean
+    public sealed partial class ServicingDisclosure : IDirty
     {
         private Value<decimal?> _disclosurePercent1;
         public decimal? DisclosurePercent1 { get { return _disclosurePercent1; } set { _disclosurePercent1 = value; } }
@@ -48,67 +48,62 @@ namespace EncompassRest.Loans
         public bool? WeMayAssignIndicator { get { return _weMayAssignIndicator; } set { _weMayAssignIndicator = value; } }
         private Value<bool?> _zeroTo25Indicator;
         public bool? ZeroTo25Indicator { get { return _zeroTo25Indicator; } set { _zeroTo25Indicator = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _disclosurePercent1.Clean
-                    && _disclosurePercent2.Clean
-                    && _disclosurePercent3.Clean
-                    && _disclosureYear1.Clean
-                    && _disclosureYear2.Clean
-                    && _disclosureYear3.Clean
-                    && _fiftyOneTo75Indicator.Clean
-                    && _id.Clean
-                    && _seventySixTo100Indicator.Clean
-                    && _thisEstimateType.Clean
-                    && _thisInformationType.Clean
-                    && _thisIsOurRecordOfTransferingIndicator.Clean
-                    && _twentySixTo50Indicator.Clean
-                    && _weAreAbleType.Clean
-                    && _weDoNotSellMortgageLoansIndicator.Clean
-                    && _weDoNotServiceMortgageLoansIndicator.Clean
-                    && _weHaveNotServicedMortgLoansIn3YrsIndicator.Clean
-                    && _weHavePreviouslyAssignedIndicator.Clean
-                    && _weMayAssignIndicator.Clean
-                    && _zeroTo25Indicator.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _disclosurePercent1.Dirty
+                    || _disclosurePercent2.Dirty
+                    || _disclosurePercent3.Dirty
+                    || _disclosureYear1.Dirty
+                    || _disclosureYear2.Dirty
+                    || _disclosureYear3.Dirty
+                    || _fiftyOneTo75Indicator.Dirty
+                    || _id.Dirty
+                    || _seventySixTo100Indicator.Dirty
+                    || _thisEstimateType.Dirty
+                    || _thisInformationType.Dirty
+                    || _thisIsOurRecordOfTransferingIndicator.Dirty
+                    || _twentySixTo50Indicator.Dirty
+                    || _weAreAbleType.Dirty
+                    || _weDoNotSellMortgageLoansIndicator.Dirty
+                    || _weDoNotServiceMortgageLoansIndicator.Dirty
+                    || _weHaveNotServicedMortgLoansIn3YrsIndicator.Dirty
+                    || _weHavePreviouslyAssignedIndicator.Dirty
+                    || _weMayAssignIndicator.Dirty
+                    || _zeroTo25Indicator.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var disclosurePercent1 = _disclosurePercent1; disclosurePercent1.Clean = value; _disclosurePercent1 = disclosurePercent1;
-                var disclosurePercent2 = _disclosurePercent2; disclosurePercent2.Clean = value; _disclosurePercent2 = disclosurePercent2;
-                var disclosurePercent3 = _disclosurePercent3; disclosurePercent3.Clean = value; _disclosurePercent3 = disclosurePercent3;
-                var disclosureYear1 = _disclosureYear1; disclosureYear1.Clean = value; _disclosureYear1 = disclosureYear1;
-                var disclosureYear2 = _disclosureYear2; disclosureYear2.Clean = value; _disclosureYear2 = disclosureYear2;
-                var disclosureYear3 = _disclosureYear3; disclosureYear3.Clean = value; _disclosureYear3 = disclosureYear3;
-                var fiftyOneTo75Indicator = _fiftyOneTo75Indicator; fiftyOneTo75Indicator.Clean = value; _fiftyOneTo75Indicator = fiftyOneTo75Indicator;
-                var id = _id; id.Clean = value; _id = id;
-                var seventySixTo100Indicator = _seventySixTo100Indicator; seventySixTo100Indicator.Clean = value; _seventySixTo100Indicator = seventySixTo100Indicator;
-                var thisEstimateType = _thisEstimateType; thisEstimateType.Clean = value; _thisEstimateType = thisEstimateType;
-                var thisInformationType = _thisInformationType; thisInformationType.Clean = value; _thisInformationType = thisInformationType;
-                var thisIsOurRecordOfTransferingIndicator = _thisIsOurRecordOfTransferingIndicator; thisIsOurRecordOfTransferingIndicator.Clean = value; _thisIsOurRecordOfTransferingIndicator = thisIsOurRecordOfTransferingIndicator;
-                var twentySixTo50Indicator = _twentySixTo50Indicator; twentySixTo50Indicator.Clean = value; _twentySixTo50Indicator = twentySixTo50Indicator;
-                var weAreAbleType = _weAreAbleType; weAreAbleType.Clean = value; _weAreAbleType = weAreAbleType;
-                var weDoNotSellMortgageLoansIndicator = _weDoNotSellMortgageLoansIndicator; weDoNotSellMortgageLoansIndicator.Clean = value; _weDoNotSellMortgageLoansIndicator = weDoNotSellMortgageLoansIndicator;
-                var weDoNotServiceMortgageLoansIndicator = _weDoNotServiceMortgageLoansIndicator; weDoNotServiceMortgageLoansIndicator.Clean = value; _weDoNotServiceMortgageLoansIndicator = weDoNotServiceMortgageLoansIndicator;
-                var weHaveNotServicedMortgLoansIn3YrsIndicator = _weHaveNotServicedMortgLoansIn3YrsIndicator; weHaveNotServicedMortgLoansIn3YrsIndicator.Clean = value; _weHaveNotServicedMortgLoansIn3YrsIndicator = weHaveNotServicedMortgLoansIn3YrsIndicator;
-                var weHavePreviouslyAssignedIndicator = _weHavePreviouslyAssignedIndicator; weHavePreviouslyAssignedIndicator.Clean = value; _weHavePreviouslyAssignedIndicator = weHavePreviouslyAssignedIndicator;
-                var weMayAssignIndicator = _weMayAssignIndicator; weMayAssignIndicator.Clean = value; _weMayAssignIndicator = weMayAssignIndicator;
-                var zeroTo25Indicator = _zeroTo25Indicator; zeroTo25Indicator.Clean = value; _zeroTo25Indicator = zeroTo25Indicator;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _disclosurePercent1.Dirty = value;
+                _disclosurePercent2.Dirty = value;
+                _disclosurePercent3.Dirty = value;
+                _disclosureYear1.Dirty = value;
+                _disclosureYear2.Dirty = value;
+                _disclosureYear3.Dirty = value;
+                _fiftyOneTo75Indicator.Dirty = value;
+                _id.Dirty = value;
+                _seventySixTo100Indicator.Dirty = value;
+                _thisEstimateType.Dirty = value;
+                _thisInformationType.Dirty = value;
+                _thisIsOurRecordOfTransferingIndicator.Dirty = value;
+                _twentySixTo50Indicator.Dirty = value;
+                _weAreAbleType.Dirty = value;
+                _weDoNotSellMortgageLoansIndicator.Dirty = value;
+                _weDoNotServiceMortgageLoansIndicator.Dirty = value;
+                _weHaveNotServicedMortgLoansIn3YrsIndicator.Dirty = value;
+                _weHavePreviouslyAssignedIndicator.Dirty = value;
+                _weMayAssignIndicator.Dirty = value;
+                _zeroTo25Indicator.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ServicingDisclosure()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

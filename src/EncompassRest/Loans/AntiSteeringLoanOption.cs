@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AntiSteeringLoanOption : IClean
+    public sealed partial class AntiSteeringLoanOption : IDirty
     {
         private Value<int?> _antiSteeringLoanOptionIndex;
         public int? AntiSteeringLoanOptionIndex { get { return _antiSteeringLoanOptionIndex; } set { _antiSteeringLoanOptionIndex = value; } }
@@ -112,131 +112,126 @@ namespace EncompassRest.Loans
         public string UserDefinedFee5Description { get { return _userDefinedFee5Description; } set { _userDefinedFee5Description = value; } }
         private Value<decimal?> _userDefinedFee5SellerPaidAmount;
         public decimal? UserDefinedFee5SellerPaidAmount { get { return _userDefinedFee5SellerPaidAmount; } set { _userDefinedFee5SellerPaidAmount = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _antiSteeringLoanOptionIndex.Clean
-                    && _brokerCompensationFeeAmount.Clean
-                    && _brokerCompensationFeeBorPaidAmount.Clean
-                    && _brokerCompensationFeePercentage.Clean
-                    && _brokerFeeAmount.Clean
-                    && _brokerFeeBorPaidAmount.Clean
-                    && _brokerFeePercentage.Clean
-                    && _brokerFeeSellerPaidAmount.Clean
-                    && _creditorName.Clean
-                    && _discountAdditionalAmount.Clean
-                    && _discountAmount.Clean
-                    && _discountFeeBorPaidAmount.Clean
-                    && _discountFeeSellerPaidAmount.Clean
-                    && _discountPercentage.Clean
-                    && _discountPoints.Clean
-                    && _fixedRatePeriod.Clean
-                    && _haveDemandFeature.Clean
-                    && _havePrepaymentPenalty.Clean
-                    && _id.Clean
-                    && _inspectionFeeBorPaidAmount.Clean
-                    && _inspectionFeeSellerPaidAmount.Clean
-                    && _interestRate.Clean
-                    && _isBalloonPaymentIn7Years.Clean
-                    && _isInterestOnlyLoan.Clean
-                    && _isNegativeAmortization.Clean
-                    && _loanTerm.Clean
-                    && _loanType.Clean
-                    && _originationFeeBorPaidAmount.Clean
-                    && _originationFeePercentage.Clean
-                    && _originationFeeSellerPaidAmount.Clean
-                    && _originationPointsFees.Clean
-                    && _originationPointsPercetange.Clean
-                    && _processingFeeBorPaidAmount.Clean
-                    && _processingFeeSellerPaidAmount.Clean
-                    && _totalOriginationDiscountAmount.Clean
-                    && _underwritingFeeBorPaidAmount.Clean
-                    && _underwritingFeeSellerPaidAmount.Clean
-                    && _userDefinedFee1BorPaidAmount.Clean
-                    && _userDefinedFee1Description.Clean
-                    && _userDefinedFee1SellerPaidAmount.Clean
-                    && _userDefinedFee2BorPaidAmount.Clean
-                    && _userDefinedFee2Description.Clean
-                    && _userDefinedFee2SellerPaidAmount.Clean
-                    && _userDefinedFee3BorPaidAmount.Clean
-                    && _userDefinedFee3Description.Clean
-                    && _userDefinedFee3SellerPaidAmount.Clean
-                    && _userDefinedFee4BorPaidAmount.Clean
-                    && _userDefinedFee4Description.Clean
-                    && _userDefinedFee4SellerPaidAmount.Clean
-                    && _userDefinedFee5BorPaidAmount.Clean
-                    && _userDefinedFee5Description.Clean
-                    && _userDefinedFee5SellerPaidAmount.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _antiSteeringLoanOptionIndex.Dirty
+                    || _brokerCompensationFeeAmount.Dirty
+                    || _brokerCompensationFeeBorPaidAmount.Dirty
+                    || _brokerCompensationFeePercentage.Dirty
+                    || _brokerFeeAmount.Dirty
+                    || _brokerFeeBorPaidAmount.Dirty
+                    || _brokerFeePercentage.Dirty
+                    || _brokerFeeSellerPaidAmount.Dirty
+                    || _creditorName.Dirty
+                    || _discountAdditionalAmount.Dirty
+                    || _discountAmount.Dirty
+                    || _discountFeeBorPaidAmount.Dirty
+                    || _discountFeeSellerPaidAmount.Dirty
+                    || _discountPercentage.Dirty
+                    || _discountPoints.Dirty
+                    || _fixedRatePeriod.Dirty
+                    || _haveDemandFeature.Dirty
+                    || _havePrepaymentPenalty.Dirty
+                    || _id.Dirty
+                    || _inspectionFeeBorPaidAmount.Dirty
+                    || _inspectionFeeSellerPaidAmount.Dirty
+                    || _interestRate.Dirty
+                    || _isBalloonPaymentIn7Years.Dirty
+                    || _isInterestOnlyLoan.Dirty
+                    || _isNegativeAmortization.Dirty
+                    || _loanTerm.Dirty
+                    || _loanType.Dirty
+                    || _originationFeeBorPaidAmount.Dirty
+                    || _originationFeePercentage.Dirty
+                    || _originationFeeSellerPaidAmount.Dirty
+                    || _originationPointsFees.Dirty
+                    || _originationPointsPercetange.Dirty
+                    || _processingFeeBorPaidAmount.Dirty
+                    || _processingFeeSellerPaidAmount.Dirty
+                    || _totalOriginationDiscountAmount.Dirty
+                    || _underwritingFeeBorPaidAmount.Dirty
+                    || _underwritingFeeSellerPaidAmount.Dirty
+                    || _userDefinedFee1BorPaidAmount.Dirty
+                    || _userDefinedFee1Description.Dirty
+                    || _userDefinedFee1SellerPaidAmount.Dirty
+                    || _userDefinedFee2BorPaidAmount.Dirty
+                    || _userDefinedFee2Description.Dirty
+                    || _userDefinedFee2SellerPaidAmount.Dirty
+                    || _userDefinedFee3BorPaidAmount.Dirty
+                    || _userDefinedFee3Description.Dirty
+                    || _userDefinedFee3SellerPaidAmount.Dirty
+                    || _userDefinedFee4BorPaidAmount.Dirty
+                    || _userDefinedFee4Description.Dirty
+                    || _userDefinedFee4SellerPaidAmount.Dirty
+                    || _userDefinedFee5BorPaidAmount.Dirty
+                    || _userDefinedFee5Description.Dirty
+                    || _userDefinedFee5SellerPaidAmount.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var antiSteeringLoanOptionIndex = _antiSteeringLoanOptionIndex; antiSteeringLoanOptionIndex.Clean = value; _antiSteeringLoanOptionIndex = antiSteeringLoanOptionIndex;
-                var brokerCompensationFeeAmount = _brokerCompensationFeeAmount; brokerCompensationFeeAmount.Clean = value; _brokerCompensationFeeAmount = brokerCompensationFeeAmount;
-                var brokerCompensationFeeBorPaidAmount = _brokerCompensationFeeBorPaidAmount; brokerCompensationFeeBorPaidAmount.Clean = value; _brokerCompensationFeeBorPaidAmount = brokerCompensationFeeBorPaidAmount;
-                var brokerCompensationFeePercentage = _brokerCompensationFeePercentage; brokerCompensationFeePercentage.Clean = value; _brokerCompensationFeePercentage = brokerCompensationFeePercentage;
-                var brokerFeeAmount = _brokerFeeAmount; brokerFeeAmount.Clean = value; _brokerFeeAmount = brokerFeeAmount;
-                var brokerFeeBorPaidAmount = _brokerFeeBorPaidAmount; brokerFeeBorPaidAmount.Clean = value; _brokerFeeBorPaidAmount = brokerFeeBorPaidAmount;
-                var brokerFeePercentage = _brokerFeePercentage; brokerFeePercentage.Clean = value; _brokerFeePercentage = brokerFeePercentage;
-                var brokerFeeSellerPaidAmount = _brokerFeeSellerPaidAmount; brokerFeeSellerPaidAmount.Clean = value; _brokerFeeSellerPaidAmount = brokerFeeSellerPaidAmount;
-                var creditorName = _creditorName; creditorName.Clean = value; _creditorName = creditorName;
-                var discountAdditionalAmount = _discountAdditionalAmount; discountAdditionalAmount.Clean = value; _discountAdditionalAmount = discountAdditionalAmount;
-                var discountAmount = _discountAmount; discountAmount.Clean = value; _discountAmount = discountAmount;
-                var discountFeeBorPaidAmount = _discountFeeBorPaidAmount; discountFeeBorPaidAmount.Clean = value; _discountFeeBorPaidAmount = discountFeeBorPaidAmount;
-                var discountFeeSellerPaidAmount = _discountFeeSellerPaidAmount; discountFeeSellerPaidAmount.Clean = value; _discountFeeSellerPaidAmount = discountFeeSellerPaidAmount;
-                var discountPercentage = _discountPercentage; discountPercentage.Clean = value; _discountPercentage = discountPercentage;
-                var discountPoints = _discountPoints; discountPoints.Clean = value; _discountPoints = discountPoints;
-                var fixedRatePeriod = _fixedRatePeriod; fixedRatePeriod.Clean = value; _fixedRatePeriod = fixedRatePeriod;
-                var haveDemandFeature = _haveDemandFeature; haveDemandFeature.Clean = value; _haveDemandFeature = haveDemandFeature;
-                var havePrepaymentPenalty = _havePrepaymentPenalty; havePrepaymentPenalty.Clean = value; _havePrepaymentPenalty = havePrepaymentPenalty;
-                var id = _id; id.Clean = value; _id = id;
-                var inspectionFeeBorPaidAmount = _inspectionFeeBorPaidAmount; inspectionFeeBorPaidAmount.Clean = value; _inspectionFeeBorPaidAmount = inspectionFeeBorPaidAmount;
-                var inspectionFeeSellerPaidAmount = _inspectionFeeSellerPaidAmount; inspectionFeeSellerPaidAmount.Clean = value; _inspectionFeeSellerPaidAmount = inspectionFeeSellerPaidAmount;
-                var interestRate = _interestRate; interestRate.Clean = value; _interestRate = interestRate;
-                var isBalloonPaymentIn7Years = _isBalloonPaymentIn7Years; isBalloonPaymentIn7Years.Clean = value; _isBalloonPaymentIn7Years = isBalloonPaymentIn7Years;
-                var isInterestOnlyLoan = _isInterestOnlyLoan; isInterestOnlyLoan.Clean = value; _isInterestOnlyLoan = isInterestOnlyLoan;
-                var isNegativeAmortization = _isNegativeAmortization; isNegativeAmortization.Clean = value; _isNegativeAmortization = isNegativeAmortization;
-                var loanTerm = _loanTerm; loanTerm.Clean = value; _loanTerm = loanTerm;
-                var loanType = _loanType; loanType.Clean = value; _loanType = loanType;
-                var originationFeeBorPaidAmount = _originationFeeBorPaidAmount; originationFeeBorPaidAmount.Clean = value; _originationFeeBorPaidAmount = originationFeeBorPaidAmount;
-                var originationFeePercentage = _originationFeePercentage; originationFeePercentage.Clean = value; _originationFeePercentage = originationFeePercentage;
-                var originationFeeSellerPaidAmount = _originationFeeSellerPaidAmount; originationFeeSellerPaidAmount.Clean = value; _originationFeeSellerPaidAmount = originationFeeSellerPaidAmount;
-                var originationPointsFees = _originationPointsFees; originationPointsFees.Clean = value; _originationPointsFees = originationPointsFees;
-                var originationPointsPercetange = _originationPointsPercetange; originationPointsPercetange.Clean = value; _originationPointsPercetange = originationPointsPercetange;
-                var processingFeeBorPaidAmount = _processingFeeBorPaidAmount; processingFeeBorPaidAmount.Clean = value; _processingFeeBorPaidAmount = processingFeeBorPaidAmount;
-                var processingFeeSellerPaidAmount = _processingFeeSellerPaidAmount; processingFeeSellerPaidAmount.Clean = value; _processingFeeSellerPaidAmount = processingFeeSellerPaidAmount;
-                var totalOriginationDiscountAmount = _totalOriginationDiscountAmount; totalOriginationDiscountAmount.Clean = value; _totalOriginationDiscountAmount = totalOriginationDiscountAmount;
-                var underwritingFeeBorPaidAmount = _underwritingFeeBorPaidAmount; underwritingFeeBorPaidAmount.Clean = value; _underwritingFeeBorPaidAmount = underwritingFeeBorPaidAmount;
-                var underwritingFeeSellerPaidAmount = _underwritingFeeSellerPaidAmount; underwritingFeeSellerPaidAmount.Clean = value; _underwritingFeeSellerPaidAmount = underwritingFeeSellerPaidAmount;
-                var userDefinedFee1BorPaidAmount = _userDefinedFee1BorPaidAmount; userDefinedFee1BorPaidAmount.Clean = value; _userDefinedFee1BorPaidAmount = userDefinedFee1BorPaidAmount;
-                var userDefinedFee1Description = _userDefinedFee1Description; userDefinedFee1Description.Clean = value; _userDefinedFee1Description = userDefinedFee1Description;
-                var userDefinedFee1SellerPaidAmount = _userDefinedFee1SellerPaidAmount; userDefinedFee1SellerPaidAmount.Clean = value; _userDefinedFee1SellerPaidAmount = userDefinedFee1SellerPaidAmount;
-                var userDefinedFee2BorPaidAmount = _userDefinedFee2BorPaidAmount; userDefinedFee2BorPaidAmount.Clean = value; _userDefinedFee2BorPaidAmount = userDefinedFee2BorPaidAmount;
-                var userDefinedFee2Description = _userDefinedFee2Description; userDefinedFee2Description.Clean = value; _userDefinedFee2Description = userDefinedFee2Description;
-                var userDefinedFee2SellerPaidAmount = _userDefinedFee2SellerPaidAmount; userDefinedFee2SellerPaidAmount.Clean = value; _userDefinedFee2SellerPaidAmount = userDefinedFee2SellerPaidAmount;
-                var userDefinedFee3BorPaidAmount = _userDefinedFee3BorPaidAmount; userDefinedFee3BorPaidAmount.Clean = value; _userDefinedFee3BorPaidAmount = userDefinedFee3BorPaidAmount;
-                var userDefinedFee3Description = _userDefinedFee3Description; userDefinedFee3Description.Clean = value; _userDefinedFee3Description = userDefinedFee3Description;
-                var userDefinedFee3SellerPaidAmount = _userDefinedFee3SellerPaidAmount; userDefinedFee3SellerPaidAmount.Clean = value; _userDefinedFee3SellerPaidAmount = userDefinedFee3SellerPaidAmount;
-                var userDefinedFee4BorPaidAmount = _userDefinedFee4BorPaidAmount; userDefinedFee4BorPaidAmount.Clean = value; _userDefinedFee4BorPaidAmount = userDefinedFee4BorPaidAmount;
-                var userDefinedFee4Description = _userDefinedFee4Description; userDefinedFee4Description.Clean = value; _userDefinedFee4Description = userDefinedFee4Description;
-                var userDefinedFee4SellerPaidAmount = _userDefinedFee4SellerPaidAmount; userDefinedFee4SellerPaidAmount.Clean = value; _userDefinedFee4SellerPaidAmount = userDefinedFee4SellerPaidAmount;
-                var userDefinedFee5BorPaidAmount = _userDefinedFee5BorPaidAmount; userDefinedFee5BorPaidAmount.Clean = value; _userDefinedFee5BorPaidAmount = userDefinedFee5BorPaidAmount;
-                var userDefinedFee5Description = _userDefinedFee5Description; userDefinedFee5Description.Clean = value; _userDefinedFee5Description = userDefinedFee5Description;
-                var userDefinedFee5SellerPaidAmount = _userDefinedFee5SellerPaidAmount; userDefinedFee5SellerPaidAmount.Clean = value; _userDefinedFee5SellerPaidAmount = userDefinedFee5SellerPaidAmount;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _antiSteeringLoanOptionIndex.Dirty = value;
+                _brokerCompensationFeeAmount.Dirty = value;
+                _brokerCompensationFeeBorPaidAmount.Dirty = value;
+                _brokerCompensationFeePercentage.Dirty = value;
+                _brokerFeeAmount.Dirty = value;
+                _brokerFeeBorPaidAmount.Dirty = value;
+                _brokerFeePercentage.Dirty = value;
+                _brokerFeeSellerPaidAmount.Dirty = value;
+                _creditorName.Dirty = value;
+                _discountAdditionalAmount.Dirty = value;
+                _discountAmount.Dirty = value;
+                _discountFeeBorPaidAmount.Dirty = value;
+                _discountFeeSellerPaidAmount.Dirty = value;
+                _discountPercentage.Dirty = value;
+                _discountPoints.Dirty = value;
+                _fixedRatePeriod.Dirty = value;
+                _haveDemandFeature.Dirty = value;
+                _havePrepaymentPenalty.Dirty = value;
+                _id.Dirty = value;
+                _inspectionFeeBorPaidAmount.Dirty = value;
+                _inspectionFeeSellerPaidAmount.Dirty = value;
+                _interestRate.Dirty = value;
+                _isBalloonPaymentIn7Years.Dirty = value;
+                _isInterestOnlyLoan.Dirty = value;
+                _isNegativeAmortization.Dirty = value;
+                _loanTerm.Dirty = value;
+                _loanType.Dirty = value;
+                _originationFeeBorPaidAmount.Dirty = value;
+                _originationFeePercentage.Dirty = value;
+                _originationFeeSellerPaidAmount.Dirty = value;
+                _originationPointsFees.Dirty = value;
+                _originationPointsPercetange.Dirty = value;
+                _processingFeeBorPaidAmount.Dirty = value;
+                _processingFeeSellerPaidAmount.Dirty = value;
+                _totalOriginationDiscountAmount.Dirty = value;
+                _underwritingFeeBorPaidAmount.Dirty = value;
+                _underwritingFeeSellerPaidAmount.Dirty = value;
+                _userDefinedFee1BorPaidAmount.Dirty = value;
+                _userDefinedFee1Description.Dirty = value;
+                _userDefinedFee1SellerPaidAmount.Dirty = value;
+                _userDefinedFee2BorPaidAmount.Dirty = value;
+                _userDefinedFee2Description.Dirty = value;
+                _userDefinedFee2SellerPaidAmount.Dirty = value;
+                _userDefinedFee3BorPaidAmount.Dirty = value;
+                _userDefinedFee3Description.Dirty = value;
+                _userDefinedFee3SellerPaidAmount.Dirty = value;
+                _userDefinedFee4BorPaidAmount.Dirty = value;
+                _userDefinedFee4Description.Dirty = value;
+                _userDefinedFee4SellerPaidAmount.Dirty = value;
+                _userDefinedFee5BorPaidAmount.Dirty = value;
+                _userDefinedFee5Description.Dirty = value;
+                _userDefinedFee5SellerPaidAmount.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public AntiSteeringLoanOption()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

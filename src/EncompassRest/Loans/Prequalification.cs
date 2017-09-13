@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Prequalification : IClean
+    public sealed partial class Prequalification : IDirty
     {
         private Value<decimal?> _afterTaxOwnMoSavings;
         public decimal? AfterTaxOwnMoSavings { get { return _afterTaxOwnMoSavings; } set { _afterTaxOwnMoSavings = value; } }
@@ -130,149 +130,144 @@ namespace EncompassRest.Loans
         public string WithinLimits9 { get { return _withinLimits9; } set { _withinLimits9 = value; } }
         private Value<int?> _yearsForComparison;
         public int? YearsForComparison { get { return _yearsForComparison; } set { _yearsForComparison = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _afterTaxOwnMoSavings.Clean
-                    && _afterTaxRentMoSavings.Clean
-                    && _annualHomeMaintenance.Clean
-                    && _avgMoPmtSavings.Clean
-                    && _beforeTaxOwnMoPmt.Clean
-                    && _beforeTaxRentMoPmt.Clean
-                    && _cashOutBalance.Clean
-                    && _combinedGain.Clean
-                    && _costIncreasePerYear.Clean
-                    && _downPaymentAmount.Clean
-                    && _favorableOption.Clean
-                    && _homeSellingPriceAfterYears.Clean
-                    && _id.Clean
-                    && _investmentGain.Clean
-                    && _maxLoanLimit.Clean
-                    && _maxPropValue.Clean
-                    && _minusDownPmtAndClosingCosts.Clean
-                    && _minusLoanBalance.Clean
-                    && _monthlyBenefit.Clean
-                    && _monthlyHomeAppreciation.Clean
-                    && _monthlyHomeEquity.Clean
-                    && _monthlyIncomeTax.Clean
-                    && _monthlyInvestmentInterest.Clean
-                    && _monthlySavings.Clean
-                    && _numberOfMonths.Clean
-                    && _percentAnnualHomeMaint.Clean
-                    && _percentOfHomeAppreciation.Clean
-                    && _percentOfIncomeTax.Clean
-                    && _percentOfInvestmentInterest.Clean
-                    && _prequalificationScenarios.Clean
-                    && _qualificationStatus.Clean
-                    && _rentalCost.Clean
-                    && _rentersInsurance.Clean
-                    && _totalBenefit.Clean
-                    && _totalCashFlow.Clean
-                    && _totalGain.Clean
-                    && _totalHomeAppreciation.Clean
-                    && _totalHomeEquity.Clean
-                    && _totalHousingExpense.Clean
-                    && _totalIncomeTax.Clean
-                    && _totalInvestmentInterest.Clean
-                    && _totalLiabilityPayment.Clean
-                    && _totalLiabilityUnpaid.Clean
-                    && _totalLoanSavings.Clean
-                    && _totalOtherExpenses.Clean
-                    && _totalOwnPmtOverYears.Clean
-                    && _totalOwnTaxSavings.Clean
-                    && _totalPaidOffBalance.Clean
-                    && _totalPaidOffMonthly.Clean
-                    && _totalPmtSavings.Clean
-                    && _totalRentPmtOverYears.Clean
-                    && _withinLimits1.Clean
-                    && _withinLimits2.Clean
-                    && _withinLimits3.Clean
-                    && _withinLimits4.Clean
-                    && _withinLimits5.Clean
-                    && _withinLimits6.Clean
-                    && _withinLimits7.Clean
-                    && _withinLimits8.Clean
-                    && _withinLimits9.Clean
-                    && _yearsForComparison.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _afterTaxOwnMoSavings.Dirty
+                    || _afterTaxRentMoSavings.Dirty
+                    || _annualHomeMaintenance.Dirty
+                    || _avgMoPmtSavings.Dirty
+                    || _beforeTaxOwnMoPmt.Dirty
+                    || _beforeTaxRentMoPmt.Dirty
+                    || _cashOutBalance.Dirty
+                    || _combinedGain.Dirty
+                    || _costIncreasePerYear.Dirty
+                    || _downPaymentAmount.Dirty
+                    || _favorableOption.Dirty
+                    || _homeSellingPriceAfterYears.Dirty
+                    || _id.Dirty
+                    || _investmentGain.Dirty
+                    || _maxLoanLimit.Dirty
+                    || _maxPropValue.Dirty
+                    || _minusDownPmtAndClosingCosts.Dirty
+                    || _minusLoanBalance.Dirty
+                    || _monthlyBenefit.Dirty
+                    || _monthlyHomeAppreciation.Dirty
+                    || _monthlyHomeEquity.Dirty
+                    || _monthlyIncomeTax.Dirty
+                    || _monthlyInvestmentInterest.Dirty
+                    || _monthlySavings.Dirty
+                    || _numberOfMonths.Dirty
+                    || _percentAnnualHomeMaint.Dirty
+                    || _percentOfHomeAppreciation.Dirty
+                    || _percentOfIncomeTax.Dirty
+                    || _percentOfInvestmentInterest.Dirty
+                    || _prequalificationScenarios.Dirty
+                    || _qualificationStatus.Dirty
+                    || _rentalCost.Dirty
+                    || _rentersInsurance.Dirty
+                    || _totalBenefit.Dirty
+                    || _totalCashFlow.Dirty
+                    || _totalGain.Dirty
+                    || _totalHomeAppreciation.Dirty
+                    || _totalHomeEquity.Dirty
+                    || _totalHousingExpense.Dirty
+                    || _totalIncomeTax.Dirty
+                    || _totalInvestmentInterest.Dirty
+                    || _totalLiabilityPayment.Dirty
+                    || _totalLiabilityUnpaid.Dirty
+                    || _totalLoanSavings.Dirty
+                    || _totalOtherExpenses.Dirty
+                    || _totalOwnPmtOverYears.Dirty
+                    || _totalOwnTaxSavings.Dirty
+                    || _totalPaidOffBalance.Dirty
+                    || _totalPaidOffMonthly.Dirty
+                    || _totalPmtSavings.Dirty
+                    || _totalRentPmtOverYears.Dirty
+                    || _withinLimits1.Dirty
+                    || _withinLimits2.Dirty
+                    || _withinLimits3.Dirty
+                    || _withinLimits4.Dirty
+                    || _withinLimits5.Dirty
+                    || _withinLimits6.Dirty
+                    || _withinLimits7.Dirty
+                    || _withinLimits8.Dirty
+                    || _withinLimits9.Dirty
+                    || _yearsForComparison.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var afterTaxOwnMoSavings = _afterTaxOwnMoSavings; afterTaxOwnMoSavings.Clean = value; _afterTaxOwnMoSavings = afterTaxOwnMoSavings;
-                var afterTaxRentMoSavings = _afterTaxRentMoSavings; afterTaxRentMoSavings.Clean = value; _afterTaxRentMoSavings = afterTaxRentMoSavings;
-                var annualHomeMaintenance = _annualHomeMaintenance; annualHomeMaintenance.Clean = value; _annualHomeMaintenance = annualHomeMaintenance;
-                var avgMoPmtSavings = _avgMoPmtSavings; avgMoPmtSavings.Clean = value; _avgMoPmtSavings = avgMoPmtSavings;
-                var beforeTaxOwnMoPmt = _beforeTaxOwnMoPmt; beforeTaxOwnMoPmt.Clean = value; _beforeTaxOwnMoPmt = beforeTaxOwnMoPmt;
-                var beforeTaxRentMoPmt = _beforeTaxRentMoPmt; beforeTaxRentMoPmt.Clean = value; _beforeTaxRentMoPmt = beforeTaxRentMoPmt;
-                var cashOutBalance = _cashOutBalance; cashOutBalance.Clean = value; _cashOutBalance = cashOutBalance;
-                var combinedGain = _combinedGain; combinedGain.Clean = value; _combinedGain = combinedGain;
-                var costIncreasePerYear = _costIncreasePerYear; costIncreasePerYear.Clean = value; _costIncreasePerYear = costIncreasePerYear;
-                var downPaymentAmount = _downPaymentAmount; downPaymentAmount.Clean = value; _downPaymentAmount = downPaymentAmount;
-                var favorableOption = _favorableOption; favorableOption.Clean = value; _favorableOption = favorableOption;
-                var homeSellingPriceAfterYears = _homeSellingPriceAfterYears; homeSellingPriceAfterYears.Clean = value; _homeSellingPriceAfterYears = homeSellingPriceAfterYears;
-                var id = _id; id.Clean = value; _id = id;
-                var investmentGain = _investmentGain; investmentGain.Clean = value; _investmentGain = investmentGain;
-                var maxLoanLimit = _maxLoanLimit; maxLoanLimit.Clean = value; _maxLoanLimit = maxLoanLimit;
-                var maxPropValue = _maxPropValue; maxPropValue.Clean = value; _maxPropValue = maxPropValue;
-                var minusDownPmtAndClosingCosts = _minusDownPmtAndClosingCosts; minusDownPmtAndClosingCosts.Clean = value; _minusDownPmtAndClosingCosts = minusDownPmtAndClosingCosts;
-                var minusLoanBalance = _minusLoanBalance; minusLoanBalance.Clean = value; _minusLoanBalance = minusLoanBalance;
-                var monthlyBenefit = _monthlyBenefit; monthlyBenefit.Clean = value; _monthlyBenefit = monthlyBenefit;
-                var monthlyHomeAppreciation = _monthlyHomeAppreciation; monthlyHomeAppreciation.Clean = value; _monthlyHomeAppreciation = monthlyHomeAppreciation;
-                var monthlyHomeEquity = _monthlyHomeEquity; monthlyHomeEquity.Clean = value; _monthlyHomeEquity = monthlyHomeEquity;
-                var monthlyIncomeTax = _monthlyIncomeTax; monthlyIncomeTax.Clean = value; _monthlyIncomeTax = monthlyIncomeTax;
-                var monthlyInvestmentInterest = _monthlyInvestmentInterest; monthlyInvestmentInterest.Clean = value; _monthlyInvestmentInterest = monthlyInvestmentInterest;
-                var monthlySavings = _monthlySavings; monthlySavings.Clean = value; _monthlySavings = monthlySavings;
-                var numberOfMonths = _numberOfMonths; numberOfMonths.Clean = value; _numberOfMonths = numberOfMonths;
-                var percentAnnualHomeMaint = _percentAnnualHomeMaint; percentAnnualHomeMaint.Clean = value; _percentAnnualHomeMaint = percentAnnualHomeMaint;
-                var percentOfHomeAppreciation = _percentOfHomeAppreciation; percentOfHomeAppreciation.Clean = value; _percentOfHomeAppreciation = percentOfHomeAppreciation;
-                var percentOfIncomeTax = _percentOfIncomeTax; percentOfIncomeTax.Clean = value; _percentOfIncomeTax = percentOfIncomeTax;
-                var percentOfInvestmentInterest = _percentOfInvestmentInterest; percentOfInvestmentInterest.Clean = value; _percentOfInvestmentInterest = percentOfInvestmentInterest;
-                var prequalificationScenarios = _prequalificationScenarios; prequalificationScenarios.Clean = value; _prequalificationScenarios = prequalificationScenarios;
-                var qualificationStatus = _qualificationStatus; qualificationStatus.Clean = value; _qualificationStatus = qualificationStatus;
-                var rentalCost = _rentalCost; rentalCost.Clean = value; _rentalCost = rentalCost;
-                var rentersInsurance = _rentersInsurance; rentersInsurance.Clean = value; _rentersInsurance = rentersInsurance;
-                var totalBenefit = _totalBenefit; totalBenefit.Clean = value; _totalBenefit = totalBenefit;
-                var totalCashFlow = _totalCashFlow; totalCashFlow.Clean = value; _totalCashFlow = totalCashFlow;
-                var totalGain = _totalGain; totalGain.Clean = value; _totalGain = totalGain;
-                var totalHomeAppreciation = _totalHomeAppreciation; totalHomeAppreciation.Clean = value; _totalHomeAppreciation = totalHomeAppreciation;
-                var totalHomeEquity = _totalHomeEquity; totalHomeEquity.Clean = value; _totalHomeEquity = totalHomeEquity;
-                var totalHousingExpense = _totalHousingExpense; totalHousingExpense.Clean = value; _totalHousingExpense = totalHousingExpense;
-                var totalIncomeTax = _totalIncomeTax; totalIncomeTax.Clean = value; _totalIncomeTax = totalIncomeTax;
-                var totalInvestmentInterest = _totalInvestmentInterest; totalInvestmentInterest.Clean = value; _totalInvestmentInterest = totalInvestmentInterest;
-                var totalLiabilityPayment = _totalLiabilityPayment; totalLiabilityPayment.Clean = value; _totalLiabilityPayment = totalLiabilityPayment;
-                var totalLiabilityUnpaid = _totalLiabilityUnpaid; totalLiabilityUnpaid.Clean = value; _totalLiabilityUnpaid = totalLiabilityUnpaid;
-                var totalLoanSavings = _totalLoanSavings; totalLoanSavings.Clean = value; _totalLoanSavings = totalLoanSavings;
-                var totalOtherExpenses = _totalOtherExpenses; totalOtherExpenses.Clean = value; _totalOtherExpenses = totalOtherExpenses;
-                var totalOwnPmtOverYears = _totalOwnPmtOverYears; totalOwnPmtOverYears.Clean = value; _totalOwnPmtOverYears = totalOwnPmtOverYears;
-                var totalOwnTaxSavings = _totalOwnTaxSavings; totalOwnTaxSavings.Clean = value; _totalOwnTaxSavings = totalOwnTaxSavings;
-                var totalPaidOffBalance = _totalPaidOffBalance; totalPaidOffBalance.Clean = value; _totalPaidOffBalance = totalPaidOffBalance;
-                var totalPaidOffMonthly = _totalPaidOffMonthly; totalPaidOffMonthly.Clean = value; _totalPaidOffMonthly = totalPaidOffMonthly;
-                var totalPmtSavings = _totalPmtSavings; totalPmtSavings.Clean = value; _totalPmtSavings = totalPmtSavings;
-                var totalRentPmtOverYears = _totalRentPmtOverYears; totalRentPmtOverYears.Clean = value; _totalRentPmtOverYears = totalRentPmtOverYears;
-                var withinLimits1 = _withinLimits1; withinLimits1.Clean = value; _withinLimits1 = withinLimits1;
-                var withinLimits2 = _withinLimits2; withinLimits2.Clean = value; _withinLimits2 = withinLimits2;
-                var withinLimits3 = _withinLimits3; withinLimits3.Clean = value; _withinLimits3 = withinLimits3;
-                var withinLimits4 = _withinLimits4; withinLimits4.Clean = value; _withinLimits4 = withinLimits4;
-                var withinLimits5 = _withinLimits5; withinLimits5.Clean = value; _withinLimits5 = withinLimits5;
-                var withinLimits6 = _withinLimits6; withinLimits6.Clean = value; _withinLimits6 = withinLimits6;
-                var withinLimits7 = _withinLimits7; withinLimits7.Clean = value; _withinLimits7 = withinLimits7;
-                var withinLimits8 = _withinLimits8; withinLimits8.Clean = value; _withinLimits8 = withinLimits8;
-                var withinLimits9 = _withinLimits9; withinLimits9.Clean = value; _withinLimits9 = withinLimits9;
-                var yearsForComparison = _yearsForComparison; yearsForComparison.Clean = value; _yearsForComparison = yearsForComparison;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _afterTaxOwnMoSavings.Dirty = value;
+                _afterTaxRentMoSavings.Dirty = value;
+                _annualHomeMaintenance.Dirty = value;
+                _avgMoPmtSavings.Dirty = value;
+                _beforeTaxOwnMoPmt.Dirty = value;
+                _beforeTaxRentMoPmt.Dirty = value;
+                _cashOutBalance.Dirty = value;
+                _combinedGain.Dirty = value;
+                _costIncreasePerYear.Dirty = value;
+                _downPaymentAmount.Dirty = value;
+                _favorableOption.Dirty = value;
+                _homeSellingPriceAfterYears.Dirty = value;
+                _id.Dirty = value;
+                _investmentGain.Dirty = value;
+                _maxLoanLimit.Dirty = value;
+                _maxPropValue.Dirty = value;
+                _minusDownPmtAndClosingCosts.Dirty = value;
+                _minusLoanBalance.Dirty = value;
+                _monthlyBenefit.Dirty = value;
+                _monthlyHomeAppreciation.Dirty = value;
+                _monthlyHomeEquity.Dirty = value;
+                _monthlyIncomeTax.Dirty = value;
+                _monthlyInvestmentInterest.Dirty = value;
+                _monthlySavings.Dirty = value;
+                _numberOfMonths.Dirty = value;
+                _percentAnnualHomeMaint.Dirty = value;
+                _percentOfHomeAppreciation.Dirty = value;
+                _percentOfIncomeTax.Dirty = value;
+                _percentOfInvestmentInterest.Dirty = value;
+                _prequalificationScenarios.Dirty = value;
+                _qualificationStatus.Dirty = value;
+                _rentalCost.Dirty = value;
+                _rentersInsurance.Dirty = value;
+                _totalBenefit.Dirty = value;
+                _totalCashFlow.Dirty = value;
+                _totalGain.Dirty = value;
+                _totalHomeAppreciation.Dirty = value;
+                _totalHomeEquity.Dirty = value;
+                _totalHousingExpense.Dirty = value;
+                _totalIncomeTax.Dirty = value;
+                _totalInvestmentInterest.Dirty = value;
+                _totalLiabilityPayment.Dirty = value;
+                _totalLiabilityUnpaid.Dirty = value;
+                _totalLoanSavings.Dirty = value;
+                _totalOtherExpenses.Dirty = value;
+                _totalOwnPmtOverYears.Dirty = value;
+                _totalOwnTaxSavings.Dirty = value;
+                _totalPaidOffBalance.Dirty = value;
+                _totalPaidOffMonthly.Dirty = value;
+                _totalPmtSavings.Dirty = value;
+                _totalRentPmtOverYears.Dirty = value;
+                _withinLimits1.Dirty = value;
+                _withinLimits2.Dirty = value;
+                _withinLimits3.Dirty = value;
+                _withinLimits4.Dirty = value;
+                _withinLimits5.Dirty = value;
+                _withinLimits6.Dirty = value;
+                _withinLimits7.Dirty = value;
+                _withinLimits8.Dirty = value;
+                _withinLimits9.Dirty = value;
+                _yearsForComparison.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Prequalification()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

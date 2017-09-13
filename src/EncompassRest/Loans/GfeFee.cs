@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfeFee : IClean
+    public sealed partial class GfeFee : IDirty
     {
         private Value<string> _amountDescription;
         public string AmountDescription { get { return _amountDescription; } set { _amountDescription = value; } }
@@ -24,43 +24,38 @@ namespace EncompassRest.Loans
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
         private Value<string> _rate;
         public string Rate { get { return _rate; } set { _rate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _amountDescription.Clean
-                    && _brokerAmount.Clean
-                    && _description.Clean
-                    && _gfeFeeIndex.Clean
-                    && _gfeFeeType.Clean
-                    && _id.Clean
-                    && _otherAmount.Clean
-                    && _rate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _amountDescription.Dirty
+                    || _brokerAmount.Dirty
+                    || _description.Dirty
+                    || _gfeFeeIndex.Dirty
+                    || _gfeFeeType.Dirty
+                    || _id.Dirty
+                    || _otherAmount.Dirty
+                    || _rate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var amountDescription = _amountDescription; amountDescription.Clean = value; _amountDescription = amountDescription;
-                var brokerAmount = _brokerAmount; brokerAmount.Clean = value; _brokerAmount = brokerAmount;
-                var description = _description; description.Clean = value; _description = description;
-                var gfeFeeIndex = _gfeFeeIndex; gfeFeeIndex.Clean = value; _gfeFeeIndex = gfeFeeIndex;
-                var gfeFeeType = _gfeFeeType; gfeFeeType.Clean = value; _gfeFeeType = gfeFeeType;
-                var id = _id; id.Clean = value; _id = id;
-                var otherAmount = _otherAmount; otherAmount.Clean = value; _otherAmount = otherAmount;
-                var rate = _rate; rate.Clean = value; _rate = rate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _amountDescription.Dirty = value;
+                _brokerAmount.Dirty = value;
+                _description.Dirty = value;
+                _gfeFeeIndex.Dirty = value;
+                _gfeFeeType.Dirty = value;
+                _id.Dirty = value;
+                _otherAmount.Dirty = value;
+                _rate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public GfeFee()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

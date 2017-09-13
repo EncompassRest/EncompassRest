@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EnergyEfficientMortgage : IClean
+    public sealed partial class EnergyEfficientMortgage : IDirty
     {
         private Value<decimal?> _appraisedValue;
         public decimal? AppraisedValue { get { return _appraisedValue; } set { _appraisedValue = value; } }
@@ -70,89 +70,84 @@ namespace EncompassRest.Loans
         public decimal? UfmipBasedOn { get { return _ufmipBasedOn; } set { _ufmipBasedOn = value; } }
         private Value<decimal?> _ufmipFactor;
         public decimal? UfmipFactor { get { return _ufmipFactor; } set { _ufmipFactor = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _appraisedValue.Clean
-                    && _auditCost.Clean
-                    && _backRatio.Clean
-                    && _baseLoanAmtFromTsum.Clean
-                    && _costEffectiveEnergyPackage.Clean
-                    && _eeCostMaximumAmount.Clean
-                    && _eeImprovementsInstalledCost.Clean
-                    && _energyCost.Clean
-                    && _energySavings.Clean
-                    && _hoa.Clean
-                    && _id.Clean
-                    && _improvementCostExceed2000.Clean
-                    && _inspectionCost.Clean
-                    && _lesserC1ORC2.Clean
-                    && _monthlyHousingPayment.Clean
-                    && _monthlyMI.Clean
-                    && _mortgageAmountUsedForQualifyingRate.Clean
-                    && _mortgageAmountUsedForQualifyingRateD1.Clean
-                    && _newOrExisting.Clean
-                    && _originalSalesPriceIfLess12Months.Clean
-                    && _otherHousingPayment.Clean
-                    && _solarNotIncluded.Clean
-                    && _solarSystemCostAllowance.Clean
-                    && _totalActualAmount.Clean
-                    && _totalAllowedAmount.Clean
-                    && _totalBaseEemLoanAmount.Clean
-                    && _totalCombinedLoanAmount.Clean
-                    && _totalMonthlyHousingPayment.Clean
-                    && _totalMonthlyObligations.Clean
-                    && _ufmipBasedOn.Clean
-                    && _ufmipFactor.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _appraisedValue.Dirty
+                    || _auditCost.Dirty
+                    || _backRatio.Dirty
+                    || _baseLoanAmtFromTsum.Dirty
+                    || _costEffectiveEnergyPackage.Dirty
+                    || _eeCostMaximumAmount.Dirty
+                    || _eeImprovementsInstalledCost.Dirty
+                    || _energyCost.Dirty
+                    || _energySavings.Dirty
+                    || _hoa.Dirty
+                    || _id.Dirty
+                    || _improvementCostExceed2000.Dirty
+                    || _inspectionCost.Dirty
+                    || _lesserC1ORC2.Dirty
+                    || _monthlyHousingPayment.Dirty
+                    || _monthlyMI.Dirty
+                    || _mortgageAmountUsedForQualifyingRate.Dirty
+                    || _mortgageAmountUsedForQualifyingRateD1.Dirty
+                    || _newOrExisting.Dirty
+                    || _originalSalesPriceIfLess12Months.Dirty
+                    || _otherHousingPayment.Dirty
+                    || _solarNotIncluded.Dirty
+                    || _solarSystemCostAllowance.Dirty
+                    || _totalActualAmount.Dirty
+                    || _totalAllowedAmount.Dirty
+                    || _totalBaseEemLoanAmount.Dirty
+                    || _totalCombinedLoanAmount.Dirty
+                    || _totalMonthlyHousingPayment.Dirty
+                    || _totalMonthlyObligations.Dirty
+                    || _ufmipBasedOn.Dirty
+                    || _ufmipFactor.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var appraisedValue = _appraisedValue; appraisedValue.Clean = value; _appraisedValue = appraisedValue;
-                var auditCost = _auditCost; auditCost.Clean = value; _auditCost = auditCost;
-                var backRatio = _backRatio; backRatio.Clean = value; _backRatio = backRatio;
-                var baseLoanAmtFromTsum = _baseLoanAmtFromTsum; baseLoanAmtFromTsum.Clean = value; _baseLoanAmtFromTsum = baseLoanAmtFromTsum;
-                var costEffectiveEnergyPackage = _costEffectiveEnergyPackage; costEffectiveEnergyPackage.Clean = value; _costEffectiveEnergyPackage = costEffectiveEnergyPackage;
-                var eeCostMaximumAmount = _eeCostMaximumAmount; eeCostMaximumAmount.Clean = value; _eeCostMaximumAmount = eeCostMaximumAmount;
-                var eeImprovementsInstalledCost = _eeImprovementsInstalledCost; eeImprovementsInstalledCost.Clean = value; _eeImprovementsInstalledCost = eeImprovementsInstalledCost;
-                var energyCost = _energyCost; energyCost.Clean = value; _energyCost = energyCost;
-                var energySavings = _energySavings; energySavings.Clean = value; _energySavings = energySavings;
-                var hoa = _hoa; hoa.Clean = value; _hoa = hoa;
-                var id = _id; id.Clean = value; _id = id;
-                var improvementCostExceed2000 = _improvementCostExceed2000; improvementCostExceed2000.Clean = value; _improvementCostExceed2000 = improvementCostExceed2000;
-                var inspectionCost = _inspectionCost; inspectionCost.Clean = value; _inspectionCost = inspectionCost;
-                var lesserC1ORC2 = _lesserC1ORC2; lesserC1ORC2.Clean = value; _lesserC1ORC2 = lesserC1ORC2;
-                var monthlyHousingPayment = _monthlyHousingPayment; monthlyHousingPayment.Clean = value; _monthlyHousingPayment = monthlyHousingPayment;
-                var monthlyMI = _monthlyMI; monthlyMI.Clean = value; _monthlyMI = monthlyMI;
-                var mortgageAmountUsedForQualifyingRate = _mortgageAmountUsedForQualifyingRate; mortgageAmountUsedForQualifyingRate.Clean = value; _mortgageAmountUsedForQualifyingRate = mortgageAmountUsedForQualifyingRate;
-                var mortgageAmountUsedForQualifyingRateD1 = _mortgageAmountUsedForQualifyingRateD1; mortgageAmountUsedForQualifyingRateD1.Clean = value; _mortgageAmountUsedForQualifyingRateD1 = mortgageAmountUsedForQualifyingRateD1;
-                var newOrExisting = _newOrExisting; newOrExisting.Clean = value; _newOrExisting = newOrExisting;
-                var originalSalesPriceIfLess12Months = _originalSalesPriceIfLess12Months; originalSalesPriceIfLess12Months.Clean = value; _originalSalesPriceIfLess12Months = originalSalesPriceIfLess12Months;
-                var otherHousingPayment = _otherHousingPayment; otherHousingPayment.Clean = value; _otherHousingPayment = otherHousingPayment;
-                var solarNotIncluded = _solarNotIncluded; solarNotIncluded.Clean = value; _solarNotIncluded = solarNotIncluded;
-                var solarSystemCostAllowance = _solarSystemCostAllowance; solarSystemCostAllowance.Clean = value; _solarSystemCostAllowance = solarSystemCostAllowance;
-                var totalActualAmount = _totalActualAmount; totalActualAmount.Clean = value; _totalActualAmount = totalActualAmount;
-                var totalAllowedAmount = _totalAllowedAmount; totalAllowedAmount.Clean = value; _totalAllowedAmount = totalAllowedAmount;
-                var totalBaseEemLoanAmount = _totalBaseEemLoanAmount; totalBaseEemLoanAmount.Clean = value; _totalBaseEemLoanAmount = totalBaseEemLoanAmount;
-                var totalCombinedLoanAmount = _totalCombinedLoanAmount; totalCombinedLoanAmount.Clean = value; _totalCombinedLoanAmount = totalCombinedLoanAmount;
-                var totalMonthlyHousingPayment = _totalMonthlyHousingPayment; totalMonthlyHousingPayment.Clean = value; _totalMonthlyHousingPayment = totalMonthlyHousingPayment;
-                var totalMonthlyObligations = _totalMonthlyObligations; totalMonthlyObligations.Clean = value; _totalMonthlyObligations = totalMonthlyObligations;
-                var ufmipBasedOn = _ufmipBasedOn; ufmipBasedOn.Clean = value; _ufmipBasedOn = ufmipBasedOn;
-                var ufmipFactor = _ufmipFactor; ufmipFactor.Clean = value; _ufmipFactor = ufmipFactor;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _appraisedValue.Dirty = value;
+                _auditCost.Dirty = value;
+                _backRatio.Dirty = value;
+                _baseLoanAmtFromTsum.Dirty = value;
+                _costEffectiveEnergyPackage.Dirty = value;
+                _eeCostMaximumAmount.Dirty = value;
+                _eeImprovementsInstalledCost.Dirty = value;
+                _energyCost.Dirty = value;
+                _energySavings.Dirty = value;
+                _hoa.Dirty = value;
+                _id.Dirty = value;
+                _improvementCostExceed2000.Dirty = value;
+                _inspectionCost.Dirty = value;
+                _lesserC1ORC2.Dirty = value;
+                _monthlyHousingPayment.Dirty = value;
+                _monthlyMI.Dirty = value;
+                _mortgageAmountUsedForQualifyingRate.Dirty = value;
+                _mortgageAmountUsedForQualifyingRateD1.Dirty = value;
+                _newOrExisting.Dirty = value;
+                _originalSalesPriceIfLess12Months.Dirty = value;
+                _otherHousingPayment.Dirty = value;
+                _solarNotIncluded.Dirty = value;
+                _solarSystemCostAllowance.Dirty = value;
+                _totalActualAmount.Dirty = value;
+                _totalAllowedAmount.Dirty = value;
+                _totalBaseEemLoanAmount.Dirty = value;
+                _totalCombinedLoanAmount.Dirty = value;
+                _totalMonthlyHousingPayment.Dirty = value;
+                _totalMonthlyObligations.Dirty = value;
+                _ufmipBasedOn.Dirty = value;
+                _ufmipFactor.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public EnergyEfficientMortgage()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

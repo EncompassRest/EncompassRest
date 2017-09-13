@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TrustAccountItem : IClean
+    public sealed partial class TrustAccountItem : IDirty
     {
         private Value<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
@@ -26,45 +26,40 @@ namespace EncompassRest.Loans
         public string ReceiptCheckNo { get { return _receiptCheckNo; } set { _receiptCheckNo = value; } }
         private Value<int?> _trustAccountItemIndex;
         public int? TrustAccountItemIndex { get { return _trustAccountItemIndex; } set { _trustAccountItemIndex = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _date.Clean
-                    && _description.Clean
-                    && _id.Clean
-                    && _notes.Clean
-                    && _paymentAmount.Clean
-                    && _paymentCheckNo.Clean
-                    && _receiptAmount.Clean
-                    && _receiptCheckNo.Clean
-                    && _trustAccountItemIndex.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _date.Dirty
+                    || _description.Dirty
+                    || _id.Dirty
+                    || _notes.Dirty
+                    || _paymentAmount.Dirty
+                    || _paymentCheckNo.Dirty
+                    || _receiptAmount.Dirty
+                    || _receiptCheckNo.Dirty
+                    || _trustAccountItemIndex.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var date = _date; date.Clean = value; _date = date;
-                var description = _description; description.Clean = value; _description = description;
-                var id = _id; id.Clean = value; _id = id;
-                var notes = _notes; notes.Clean = value; _notes = notes;
-                var paymentAmount = _paymentAmount; paymentAmount.Clean = value; _paymentAmount = paymentAmount;
-                var paymentCheckNo = _paymentCheckNo; paymentCheckNo.Clean = value; _paymentCheckNo = paymentCheckNo;
-                var receiptAmount = _receiptAmount; receiptAmount.Clean = value; _receiptAmount = receiptAmount;
-                var receiptCheckNo = _receiptCheckNo; receiptCheckNo.Clean = value; _receiptCheckNo = receiptCheckNo;
-                var trustAccountItemIndex = _trustAccountItemIndex; trustAccountItemIndex.Clean = value; _trustAccountItemIndex = trustAccountItemIndex;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _date.Dirty = value;
+                _description.Dirty = value;
+                _id.Dirty = value;
+                _notes.Dirty = value;
+                _paymentAmount.Dirty = value;
+                _paymentCheckNo.Dirty = value;
+                _receiptAmount.Dirty = value;
+                _receiptCheckNo.Dirty = value;
+                _trustAccountItemIndex.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TrustAccountItem()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

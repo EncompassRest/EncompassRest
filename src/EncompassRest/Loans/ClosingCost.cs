@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingCost : IClean
+    public sealed partial class ClosingCost : IDirty
     {
         private Value<decimal?> _adjustmentFactor;
         public decimal? AdjustmentFactor { get { return _adjustmentFactor; } set { _adjustmentFactor = value; } }
@@ -128,159 +128,154 @@ namespace EncompassRest.Loans
         public decimal? TotalForSellerPaid5 { get { return _totalForSellerPaid5; } set { _totalForSellerPaid5 = value; } }
         private Value<decimal?> _totalForSellerPaid6;
         public decimal? TotalForSellerPaid6 { get { return _totalForSellerPaid6; } set { _totalForSellerPaid6 = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _adjustmentFactor.Clean
-                    && _aggregateAdjustmentFwbc.Clean
-                    && _borrowerPaidDiscountPointsTotalAmount.Clean
-                    && _brokerCommissionBasedPrice.Clean
-                    && _brokerCommissionBasedUnitPercentage.Clean
-                    && _brokerCommissionBasedUnitPrice.Clean
-                    && _closingCostProgram.Clean
-                    && _closingCostScenarioXml.Clean
-                    && _disclosedSalesPrice.Clean
-                    && _escrowCompanyName.Clean
-                    && _escrowTableDesc1.Clean
-                    && _escrowTableDesc2.Clean
-                    && _escrowTableDesc3.Clean
-                    && _escrowTableDesc4.Clean
-                    && _escrowTableDesc5.Clean
-                    && _escrowTableFee.Clean
-                    && _escrowTableFee1.Clean
-                    && _escrowTableFee2.Clean
-                    && _escrowTableFee3.Clean
-                    && _escrowTableFee4.Clean
-                    && _escrowTableFee5.Clean
-                    && _escrowTableName.Clean
-                    && _feeVariances.Clean
-                    && _id.Clean
-                    && _impoundHazInsRate.Clean
-                    && _impoundMortgInsPremRate.Clean
-                    && _impoundMortgInsPremYearlyBasis.Clean
-                    && _impoundTaxesRate.Clean
-                    && _impoundType1.Clean
-                    && _impoundType2.Clean
-                    && _impoundType3.Clean
-                    && _impoundType4.Clean
-                    && _proposedMonthlyHazardInsurance.Clean
-                    && _proposedMonthlyMortgageInsurance.Clean
-                    && _section1000BorrowerPaidTotalAmount.Clean
-                    && _section1000SellerPaidTotalAmount.Clean
-                    && _settlementClosingFeeNewHudBorPaidAmount.Clean
-                    && _settlementClosingFeeNewHudSelPaidAmount.Clean
-                    && _titleCompanyName.Clean
-                    && _titleExaminationNewHudSelPaidAmount.Clean
-                    && _titleTable2010Name.Clean
-                    && _titleTableName.Clean
-                    && _totalForBorPaid1.Clean
-                    && _totalForBorPaid2.Clean
-                    && _totalForBorPaid3.Clean
-                    && _totalForBorPaid4.Clean
-                    && _totalForBorPaid5.Clean
-                    && _totalForBorPaid6.Clean
-                    && _totalForSellerPaid1.Clean
-                    && _totalForSellerPaid2.Clean
-                    && _totalForSellerPaid3.Clean
-                    && _totalForSellerPaid4.Clean
-                    && _totalForSellerPaid5.Clean
-                    && _totalForSellerPaid6.Clean
-                    && ClosingDisclosure1?.Clean != false
-                    && ClosingDisclosure2?.Clean != false
-                    && ClosingDisclosure3?.Clean != false
-                    && ClosingDisclosure4?.Clean != false
-                    && ClosingDisclosure5?.Clean != false
-                    && FeeVarianceOther?.Clean != false
-                    && Gfe2010?.Clean != false
-                    && Gfe2010Page?.Clean != false
-                    && Gfe2010Section?.Clean != false
-                    && LoanEstimate1?.Clean != false
-                    && LoanEstimate2?.Clean != false
-                    && LoanEstimate3?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _adjustmentFactor.Dirty
+                    || _aggregateAdjustmentFwbc.Dirty
+                    || _borrowerPaidDiscountPointsTotalAmount.Dirty
+                    || _brokerCommissionBasedPrice.Dirty
+                    || _brokerCommissionBasedUnitPercentage.Dirty
+                    || _brokerCommissionBasedUnitPrice.Dirty
+                    || _closingCostProgram.Dirty
+                    || _closingCostScenarioXml.Dirty
+                    || _disclosedSalesPrice.Dirty
+                    || _escrowCompanyName.Dirty
+                    || _escrowTableDesc1.Dirty
+                    || _escrowTableDesc2.Dirty
+                    || _escrowTableDesc3.Dirty
+                    || _escrowTableDesc4.Dirty
+                    || _escrowTableDesc5.Dirty
+                    || _escrowTableFee.Dirty
+                    || _escrowTableFee1.Dirty
+                    || _escrowTableFee2.Dirty
+                    || _escrowTableFee3.Dirty
+                    || _escrowTableFee4.Dirty
+                    || _escrowTableFee5.Dirty
+                    || _escrowTableName.Dirty
+                    || _feeVariances.Dirty
+                    || _id.Dirty
+                    || _impoundHazInsRate.Dirty
+                    || _impoundMortgInsPremRate.Dirty
+                    || _impoundMortgInsPremYearlyBasis.Dirty
+                    || _impoundTaxesRate.Dirty
+                    || _impoundType1.Dirty
+                    || _impoundType2.Dirty
+                    || _impoundType3.Dirty
+                    || _impoundType4.Dirty
+                    || _proposedMonthlyHazardInsurance.Dirty
+                    || _proposedMonthlyMortgageInsurance.Dirty
+                    || _section1000BorrowerPaidTotalAmount.Dirty
+                    || _section1000SellerPaidTotalAmount.Dirty
+                    || _settlementClosingFeeNewHudBorPaidAmount.Dirty
+                    || _settlementClosingFeeNewHudSelPaidAmount.Dirty
+                    || _titleCompanyName.Dirty
+                    || _titleExaminationNewHudSelPaidAmount.Dirty
+                    || _titleTable2010Name.Dirty
+                    || _titleTableName.Dirty
+                    || _totalForBorPaid1.Dirty
+                    || _totalForBorPaid2.Dirty
+                    || _totalForBorPaid3.Dirty
+                    || _totalForBorPaid4.Dirty
+                    || _totalForBorPaid5.Dirty
+                    || _totalForBorPaid6.Dirty
+                    || _totalForSellerPaid1.Dirty
+                    || _totalForSellerPaid2.Dirty
+                    || _totalForSellerPaid3.Dirty
+                    || _totalForSellerPaid4.Dirty
+                    || _totalForSellerPaid5.Dirty
+                    || _totalForSellerPaid6.Dirty
+                    || ClosingDisclosure1?.Dirty == true
+                    || ClosingDisclosure2?.Dirty == true
+                    || ClosingDisclosure3?.Dirty == true
+                    || ClosingDisclosure4?.Dirty == true
+                    || ClosingDisclosure5?.Dirty == true
+                    || FeeVarianceOther?.Dirty == true
+                    || Gfe2010?.Dirty == true
+                    || Gfe2010Page?.Dirty == true
+                    || Gfe2010Section?.Dirty == true
+                    || LoanEstimate1?.Dirty == true
+                    || LoanEstimate2?.Dirty == true
+                    || LoanEstimate3?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var adjustmentFactor = _adjustmentFactor; adjustmentFactor.Clean = value; _adjustmentFactor = adjustmentFactor;
-                var aggregateAdjustmentFwbc = _aggregateAdjustmentFwbc; aggregateAdjustmentFwbc.Clean = value; _aggregateAdjustmentFwbc = aggregateAdjustmentFwbc;
-                var borrowerPaidDiscountPointsTotalAmount = _borrowerPaidDiscountPointsTotalAmount; borrowerPaidDiscountPointsTotalAmount.Clean = value; _borrowerPaidDiscountPointsTotalAmount = borrowerPaidDiscountPointsTotalAmount;
-                var brokerCommissionBasedPrice = _brokerCommissionBasedPrice; brokerCommissionBasedPrice.Clean = value; _brokerCommissionBasedPrice = brokerCommissionBasedPrice;
-                var brokerCommissionBasedUnitPercentage = _brokerCommissionBasedUnitPercentage; brokerCommissionBasedUnitPercentage.Clean = value; _brokerCommissionBasedUnitPercentage = brokerCommissionBasedUnitPercentage;
-                var brokerCommissionBasedUnitPrice = _brokerCommissionBasedUnitPrice; brokerCommissionBasedUnitPrice.Clean = value; _brokerCommissionBasedUnitPrice = brokerCommissionBasedUnitPrice;
-                var closingCostProgram = _closingCostProgram; closingCostProgram.Clean = value; _closingCostProgram = closingCostProgram;
-                var closingCostScenarioXml = _closingCostScenarioXml; closingCostScenarioXml.Clean = value; _closingCostScenarioXml = closingCostScenarioXml;
-                var disclosedSalesPrice = _disclosedSalesPrice; disclosedSalesPrice.Clean = value; _disclosedSalesPrice = disclosedSalesPrice;
-                var escrowCompanyName = _escrowCompanyName; escrowCompanyName.Clean = value; _escrowCompanyName = escrowCompanyName;
-                var escrowTableDesc1 = _escrowTableDesc1; escrowTableDesc1.Clean = value; _escrowTableDesc1 = escrowTableDesc1;
-                var escrowTableDesc2 = _escrowTableDesc2; escrowTableDesc2.Clean = value; _escrowTableDesc2 = escrowTableDesc2;
-                var escrowTableDesc3 = _escrowTableDesc3; escrowTableDesc3.Clean = value; _escrowTableDesc3 = escrowTableDesc3;
-                var escrowTableDesc4 = _escrowTableDesc4; escrowTableDesc4.Clean = value; _escrowTableDesc4 = escrowTableDesc4;
-                var escrowTableDesc5 = _escrowTableDesc5; escrowTableDesc5.Clean = value; _escrowTableDesc5 = escrowTableDesc5;
-                var escrowTableFee = _escrowTableFee; escrowTableFee.Clean = value; _escrowTableFee = escrowTableFee;
-                var escrowTableFee1 = _escrowTableFee1; escrowTableFee1.Clean = value; _escrowTableFee1 = escrowTableFee1;
-                var escrowTableFee2 = _escrowTableFee2; escrowTableFee2.Clean = value; _escrowTableFee2 = escrowTableFee2;
-                var escrowTableFee3 = _escrowTableFee3; escrowTableFee3.Clean = value; _escrowTableFee3 = escrowTableFee3;
-                var escrowTableFee4 = _escrowTableFee4; escrowTableFee4.Clean = value; _escrowTableFee4 = escrowTableFee4;
-                var escrowTableFee5 = _escrowTableFee5; escrowTableFee5.Clean = value; _escrowTableFee5 = escrowTableFee5;
-                var escrowTableName = _escrowTableName; escrowTableName.Clean = value; _escrowTableName = escrowTableName;
-                var feeVariances = _feeVariances; feeVariances.Clean = value; _feeVariances = feeVariances;
-                var id = _id; id.Clean = value; _id = id;
-                var impoundHazInsRate = _impoundHazInsRate; impoundHazInsRate.Clean = value; _impoundHazInsRate = impoundHazInsRate;
-                var impoundMortgInsPremRate = _impoundMortgInsPremRate; impoundMortgInsPremRate.Clean = value; _impoundMortgInsPremRate = impoundMortgInsPremRate;
-                var impoundMortgInsPremYearlyBasis = _impoundMortgInsPremYearlyBasis; impoundMortgInsPremYearlyBasis.Clean = value; _impoundMortgInsPremYearlyBasis = impoundMortgInsPremYearlyBasis;
-                var impoundTaxesRate = _impoundTaxesRate; impoundTaxesRate.Clean = value; _impoundTaxesRate = impoundTaxesRate;
-                var impoundType1 = _impoundType1; impoundType1.Clean = value; _impoundType1 = impoundType1;
-                var impoundType2 = _impoundType2; impoundType2.Clean = value; _impoundType2 = impoundType2;
-                var impoundType3 = _impoundType3; impoundType3.Clean = value; _impoundType3 = impoundType3;
-                var impoundType4 = _impoundType4; impoundType4.Clean = value; _impoundType4 = impoundType4;
-                var proposedMonthlyHazardInsurance = _proposedMonthlyHazardInsurance; proposedMonthlyHazardInsurance.Clean = value; _proposedMonthlyHazardInsurance = proposedMonthlyHazardInsurance;
-                var proposedMonthlyMortgageInsurance = _proposedMonthlyMortgageInsurance; proposedMonthlyMortgageInsurance.Clean = value; _proposedMonthlyMortgageInsurance = proposedMonthlyMortgageInsurance;
-                var section1000BorrowerPaidTotalAmount = _section1000BorrowerPaidTotalAmount; section1000BorrowerPaidTotalAmount.Clean = value; _section1000BorrowerPaidTotalAmount = section1000BorrowerPaidTotalAmount;
-                var section1000SellerPaidTotalAmount = _section1000SellerPaidTotalAmount; section1000SellerPaidTotalAmount.Clean = value; _section1000SellerPaidTotalAmount = section1000SellerPaidTotalAmount;
-                var settlementClosingFeeNewHudBorPaidAmount = _settlementClosingFeeNewHudBorPaidAmount; settlementClosingFeeNewHudBorPaidAmount.Clean = value; _settlementClosingFeeNewHudBorPaidAmount = settlementClosingFeeNewHudBorPaidAmount;
-                var settlementClosingFeeNewHudSelPaidAmount = _settlementClosingFeeNewHudSelPaidAmount; settlementClosingFeeNewHudSelPaidAmount.Clean = value; _settlementClosingFeeNewHudSelPaidAmount = settlementClosingFeeNewHudSelPaidAmount;
-                var titleCompanyName = _titleCompanyName; titleCompanyName.Clean = value; _titleCompanyName = titleCompanyName;
-                var titleExaminationNewHudSelPaidAmount = _titleExaminationNewHudSelPaidAmount; titleExaminationNewHudSelPaidAmount.Clean = value; _titleExaminationNewHudSelPaidAmount = titleExaminationNewHudSelPaidAmount;
-                var titleTable2010Name = _titleTable2010Name; titleTable2010Name.Clean = value; _titleTable2010Name = titleTable2010Name;
-                var titleTableName = _titleTableName; titleTableName.Clean = value; _titleTableName = titleTableName;
-                var totalForBorPaid1 = _totalForBorPaid1; totalForBorPaid1.Clean = value; _totalForBorPaid1 = totalForBorPaid1;
-                var totalForBorPaid2 = _totalForBorPaid2; totalForBorPaid2.Clean = value; _totalForBorPaid2 = totalForBorPaid2;
-                var totalForBorPaid3 = _totalForBorPaid3; totalForBorPaid3.Clean = value; _totalForBorPaid3 = totalForBorPaid3;
-                var totalForBorPaid4 = _totalForBorPaid4; totalForBorPaid4.Clean = value; _totalForBorPaid4 = totalForBorPaid4;
-                var totalForBorPaid5 = _totalForBorPaid5; totalForBorPaid5.Clean = value; _totalForBorPaid5 = totalForBorPaid5;
-                var totalForBorPaid6 = _totalForBorPaid6; totalForBorPaid6.Clean = value; _totalForBorPaid6 = totalForBorPaid6;
-                var totalForSellerPaid1 = _totalForSellerPaid1; totalForSellerPaid1.Clean = value; _totalForSellerPaid1 = totalForSellerPaid1;
-                var totalForSellerPaid2 = _totalForSellerPaid2; totalForSellerPaid2.Clean = value; _totalForSellerPaid2 = totalForSellerPaid2;
-                var totalForSellerPaid3 = _totalForSellerPaid3; totalForSellerPaid3.Clean = value; _totalForSellerPaid3 = totalForSellerPaid3;
-                var totalForSellerPaid4 = _totalForSellerPaid4; totalForSellerPaid4.Clean = value; _totalForSellerPaid4 = totalForSellerPaid4;
-                var totalForSellerPaid5 = _totalForSellerPaid5; totalForSellerPaid5.Clean = value; _totalForSellerPaid5 = totalForSellerPaid5;
-                var totalForSellerPaid6 = _totalForSellerPaid6; totalForSellerPaid6.Clean = value; _totalForSellerPaid6 = totalForSellerPaid6;
-                if (ClosingDisclosure1 != null) ClosingDisclosure1.Clean = value;
-                if (ClosingDisclosure2 != null) ClosingDisclosure2.Clean = value;
-                if (ClosingDisclosure3 != null) ClosingDisclosure3.Clean = value;
-                if (ClosingDisclosure4 != null) ClosingDisclosure4.Clean = value;
-                if (ClosingDisclosure5 != null) ClosingDisclosure5.Clean = value;
-                if (FeeVarianceOther != null) FeeVarianceOther.Clean = value;
-                if (Gfe2010 != null) Gfe2010.Clean = value;
-                if (Gfe2010Page != null) Gfe2010Page.Clean = value;
-                if (Gfe2010Section != null) Gfe2010Section.Clean = value;
-                if (LoanEstimate1 != null) LoanEstimate1.Clean = value;
-                if (LoanEstimate2 != null) LoanEstimate2.Clean = value;
-                if (LoanEstimate3 != null) LoanEstimate3.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _adjustmentFactor.Dirty = value;
+                _aggregateAdjustmentFwbc.Dirty = value;
+                _borrowerPaidDiscountPointsTotalAmount.Dirty = value;
+                _brokerCommissionBasedPrice.Dirty = value;
+                _brokerCommissionBasedUnitPercentage.Dirty = value;
+                _brokerCommissionBasedUnitPrice.Dirty = value;
+                _closingCostProgram.Dirty = value;
+                _closingCostScenarioXml.Dirty = value;
+                _disclosedSalesPrice.Dirty = value;
+                _escrowCompanyName.Dirty = value;
+                _escrowTableDesc1.Dirty = value;
+                _escrowTableDesc2.Dirty = value;
+                _escrowTableDesc3.Dirty = value;
+                _escrowTableDesc4.Dirty = value;
+                _escrowTableDesc5.Dirty = value;
+                _escrowTableFee.Dirty = value;
+                _escrowTableFee1.Dirty = value;
+                _escrowTableFee2.Dirty = value;
+                _escrowTableFee3.Dirty = value;
+                _escrowTableFee4.Dirty = value;
+                _escrowTableFee5.Dirty = value;
+                _escrowTableName.Dirty = value;
+                _feeVariances.Dirty = value;
+                _id.Dirty = value;
+                _impoundHazInsRate.Dirty = value;
+                _impoundMortgInsPremRate.Dirty = value;
+                _impoundMortgInsPremYearlyBasis.Dirty = value;
+                _impoundTaxesRate.Dirty = value;
+                _impoundType1.Dirty = value;
+                _impoundType2.Dirty = value;
+                _impoundType3.Dirty = value;
+                _impoundType4.Dirty = value;
+                _proposedMonthlyHazardInsurance.Dirty = value;
+                _proposedMonthlyMortgageInsurance.Dirty = value;
+                _section1000BorrowerPaidTotalAmount.Dirty = value;
+                _section1000SellerPaidTotalAmount.Dirty = value;
+                _settlementClosingFeeNewHudBorPaidAmount.Dirty = value;
+                _settlementClosingFeeNewHudSelPaidAmount.Dirty = value;
+                _titleCompanyName.Dirty = value;
+                _titleExaminationNewHudSelPaidAmount.Dirty = value;
+                _titleTable2010Name.Dirty = value;
+                _titleTableName.Dirty = value;
+                _totalForBorPaid1.Dirty = value;
+                _totalForBorPaid2.Dirty = value;
+                _totalForBorPaid3.Dirty = value;
+                _totalForBorPaid4.Dirty = value;
+                _totalForBorPaid5.Dirty = value;
+                _totalForBorPaid6.Dirty = value;
+                _totalForSellerPaid1.Dirty = value;
+                _totalForSellerPaid2.Dirty = value;
+                _totalForSellerPaid3.Dirty = value;
+                _totalForSellerPaid4.Dirty = value;
+                _totalForSellerPaid5.Dirty = value;
+                _totalForSellerPaid6.Dirty = value;
+                if (ClosingDisclosure1 != null) ClosingDisclosure1.Dirty = value;
+                if (ClosingDisclosure2 != null) ClosingDisclosure2.Dirty = value;
+                if (ClosingDisclosure3 != null) ClosingDisclosure3.Dirty = value;
+                if (ClosingDisclosure4 != null) ClosingDisclosure4.Dirty = value;
+                if (ClosingDisclosure5 != null) ClosingDisclosure5.Dirty = value;
+                if (FeeVarianceOther != null) FeeVarianceOther.Dirty = value;
+                if (Gfe2010 != null) Gfe2010.Dirty = value;
+                if (Gfe2010Page != null) Gfe2010Page.Dirty = value;
+                if (Gfe2010Section != null) Gfe2010Section.Dirty = value;
+                if (LoanEstimate1 != null) LoanEstimate1.Dirty = value;
+                if (LoanEstimate2 != null) LoanEstimate2.Dirty = value;
+                if (LoanEstimate3 != null) LoanEstimate3.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingCost()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

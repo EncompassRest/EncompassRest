@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockRequestLog : IClean
+    public sealed partial class LockRequestLog : IDirty
     {
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
@@ -76,95 +76,90 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _timeRequested;
         public string TimeRequested { get { return _timeRequested; } set { _timeRequested = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alerts.Clean
-                    && _alertsXml.Clean
-                    && _buySideExpirationDate.Clean
-                    && _buySideNewLockExtensionDate.Clean
-                    && _buySideNumDayExtended.Clean
-                    && _buySideNumDayLocked.Clean
-                    && _commentList.Clean
-                    && _commentListXml.Clean
-                    && _comments.Clean
-                    && _dateUtc.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _guid.Clean
-                    && _hideLogIndicator.Clean
-                    && _id.Clean
-                    && _investorCommitment.Clean
-                    && _isFakeRequestIndicator.Clean
-                    && _isLockCancellationIndicator.Clean
-                    && _isLockExtensionIndicator.Clean
-                    && _isReLockIndicator.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _numDayLocked.Clean
-                    && _parentLockGuid.Clean
-                    && _requestedBy.Clean
-                    && _requestedName.Clean
-                    && _requestedStatus.Clean
-                    && _sellSideDeliveredBy.Clean
-                    && _sellSideDeliveryDate.Clean
-                    && _sellSideExpirationDate.Clean
-                    && _sellSideNewLockExtensionDate.Clean
-                    && _sellSideNumDayExtended.Clean
-                    && _snapshotXml.Clean
-                    && _systemId.Clean
-                    && _timeRequested.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alerts.Dirty
+                    || _alertsXml.Dirty
+                    || _buySideExpirationDate.Dirty
+                    || _buySideNewLockExtensionDate.Dirty
+                    || _buySideNumDayExtended.Dirty
+                    || _buySideNumDayLocked.Dirty
+                    || _commentList.Dirty
+                    || _commentListXml.Dirty
+                    || _comments.Dirty
+                    || _dateUtc.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _guid.Dirty
+                    || _hideLogIndicator.Dirty
+                    || _id.Dirty
+                    || _investorCommitment.Dirty
+                    || _isFakeRequestIndicator.Dirty
+                    || _isLockCancellationIndicator.Dirty
+                    || _isLockExtensionIndicator.Dirty
+                    || _isReLockIndicator.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _numDayLocked.Dirty
+                    || _parentLockGuid.Dirty
+                    || _requestedBy.Dirty
+                    || _requestedName.Dirty
+                    || _requestedStatus.Dirty
+                    || _sellSideDeliveredBy.Dirty
+                    || _sellSideDeliveryDate.Dirty
+                    || _sellSideExpirationDate.Dirty
+                    || _sellSideNewLockExtensionDate.Dirty
+                    || _sellSideNumDayExtended.Dirty
+                    || _snapshotXml.Dirty
+                    || _systemId.Dirty
+                    || _timeRequested.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var alertsXml = _alertsXml; alertsXml.Clean = value; _alertsXml = alertsXml;
-                var buySideExpirationDate = _buySideExpirationDate; buySideExpirationDate.Clean = value; _buySideExpirationDate = buySideExpirationDate;
-                var buySideNewLockExtensionDate = _buySideNewLockExtensionDate; buySideNewLockExtensionDate.Clean = value; _buySideNewLockExtensionDate = buySideNewLockExtensionDate;
-                var buySideNumDayExtended = _buySideNumDayExtended; buySideNumDayExtended.Clean = value; _buySideNumDayExtended = buySideNumDayExtended;
-                var buySideNumDayLocked = _buySideNumDayLocked; buySideNumDayLocked.Clean = value; _buySideNumDayLocked = buySideNumDayLocked;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var commentListXml = _commentListXml; commentListXml.Clean = value; _commentListXml = commentListXml;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var hideLogIndicator = _hideLogIndicator; hideLogIndicator.Clean = value; _hideLogIndicator = hideLogIndicator;
-                var id = _id; id.Clean = value; _id = id;
-                var investorCommitment = _investorCommitment; investorCommitment.Clean = value; _investorCommitment = investorCommitment;
-                var isFakeRequestIndicator = _isFakeRequestIndicator; isFakeRequestIndicator.Clean = value; _isFakeRequestIndicator = isFakeRequestIndicator;
-                var isLockCancellationIndicator = _isLockCancellationIndicator; isLockCancellationIndicator.Clean = value; _isLockCancellationIndicator = isLockCancellationIndicator;
-                var isLockExtensionIndicator = _isLockExtensionIndicator; isLockExtensionIndicator.Clean = value; _isLockExtensionIndicator = isLockExtensionIndicator;
-                var isReLockIndicator = _isReLockIndicator; isReLockIndicator.Clean = value; _isReLockIndicator = isReLockIndicator;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var numDayLocked = _numDayLocked; numDayLocked.Clean = value; _numDayLocked = numDayLocked;
-                var parentLockGuid = _parentLockGuid; parentLockGuid.Clean = value; _parentLockGuid = parentLockGuid;
-                var requestedBy = _requestedBy; requestedBy.Clean = value; _requestedBy = requestedBy;
-                var requestedName = _requestedName; requestedName.Clean = value; _requestedName = requestedName;
-                var requestedStatus = _requestedStatus; requestedStatus.Clean = value; _requestedStatus = requestedStatus;
-                var sellSideDeliveredBy = _sellSideDeliveredBy; sellSideDeliveredBy.Clean = value; _sellSideDeliveredBy = sellSideDeliveredBy;
-                var sellSideDeliveryDate = _sellSideDeliveryDate; sellSideDeliveryDate.Clean = value; _sellSideDeliveryDate = sellSideDeliveryDate;
-                var sellSideExpirationDate = _sellSideExpirationDate; sellSideExpirationDate.Clean = value; _sellSideExpirationDate = sellSideExpirationDate;
-                var sellSideNewLockExtensionDate = _sellSideNewLockExtensionDate; sellSideNewLockExtensionDate.Clean = value; _sellSideNewLockExtensionDate = sellSideNewLockExtensionDate;
-                var sellSideNumDayExtended = _sellSideNumDayExtended; sellSideNumDayExtended.Clean = value; _sellSideNumDayExtended = sellSideNumDayExtended;
-                var snapshotXml = _snapshotXml; snapshotXml.Clean = value; _snapshotXml = snapshotXml;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var timeRequested = _timeRequested; timeRequested.Clean = value; _timeRequested = timeRequested;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alerts.Dirty = value;
+                _alertsXml.Dirty = value;
+                _buySideExpirationDate.Dirty = value;
+                _buySideNewLockExtensionDate.Dirty = value;
+                _buySideNumDayExtended.Dirty = value;
+                _buySideNumDayLocked.Dirty = value;
+                _commentList.Dirty = value;
+                _commentListXml.Dirty = value;
+                _comments.Dirty = value;
+                _dateUtc.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _guid.Dirty = value;
+                _hideLogIndicator.Dirty = value;
+                _id.Dirty = value;
+                _investorCommitment.Dirty = value;
+                _isFakeRequestIndicator.Dirty = value;
+                _isLockCancellationIndicator.Dirty = value;
+                _isLockExtensionIndicator.Dirty = value;
+                _isReLockIndicator.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _numDayLocked.Dirty = value;
+                _parentLockGuid.Dirty = value;
+                _requestedBy.Dirty = value;
+                _requestedName.Dirty = value;
+                _requestedStatus.Dirty = value;
+                _sellSideDeliveredBy.Dirty = value;
+                _sellSideDeliveryDate.Dirty = value;
+                _sellSideExpirationDate.Dirty = value;
+                _sellSideNewLockExtensionDate.Dirty = value;
+                _sellSideNumDayExtended.Dirty = value;
+                _snapshotXml.Dirty = value;
+                _systemId.Dirty = value;
+                _timeRequested.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LockRequestLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

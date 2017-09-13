@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FhaVaLoan : IClean
+    public sealed partial class FhaVaLoan : IDirty
     {
         private Value<string> _addendumType;
         public string AddendumType { get { return _addendumType; } set { _addendumType = value; } }
@@ -283,303 +283,298 @@ namespace EncompassRest.Loans
         public DateTime? ValidateAddressDate { get { return _validateAddressDate; } set { _validateAddressDate = value; } }
         private Value<string> _valuation;
         public string Valuation { get { return _valuation; } set { _valuation = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _addendumType.Clean
-                    && _additionalCondition1.Clean
-                    && _additionalCondition2.Clean
-                    && _additionalCondition3.Clean
-                    && _additionalCondition4.Clean
-                    && _additionalCondition5.Clean
-                    && _additionalCondition6.Clean
-                    && _additionalCondition7.Clean
-                    && _additionalCondition8.Clean
-                    && _additionalCondition9.Clean
-                    && _addressValidatedBy.Clean
-                    && _addressValidationMessage.Clean
-                    && _allConditionsSatisfied.Clean
-                    && _appraisalLoggedDate.Clean
-                    && _appraisalLookupBy.Clean
-                    && _beenInformed.Clean
-                    && _borrowerCertificationAddress.Clean
-                    && _borrowerCertificationCity.Clean
-                    && _borrowerCertificationPostalCode.Clean
-                    && _borrowerCertificationState.Clean
-                    && _cAIVRSObtainedBy.Clean
-                    && _caseBinderShippedBy.Clean
-                    && _caseBinderShippedDate.Clean
-                    && _closingDate.Clean
-                    && _condoPudID.Clean
-                    && _condoPudLookupBy.Clean
-                    && _condoPudLookupDate.Clean
-                    && _dateApprovalExpires.Clean
-                    && _dateMortgageApproved.Clean
-                    && _detailForOther.Clean
-                    && _discountPoints.Clean
-                    && _dulyAgentAddress.Clean
-                    && _dulyAgentCity.Clean
-                    && _dulyAgentFunction1.Clean
-                    && _dulyAgentFunction2.Clean
-                    && _dulyAgentName.Clean
-                    && _dulyAgentState.Clean
-                    && _dwellingCoveredBy.Clean
-                    && _eligibilityAssessment.Clean
-                    && _energyEfficientMortgageAmount.Clean
-                    && _energyEfficientMortgageItems.Clean
-                    && _everHadVAHomeLoan.Clean
-                    && _excessContributionAmount.Clean
-                    && _existingDebtAmount.Clean
-                    && _fHACaseOrderedBy.Clean
-                    && _fHAManagementCounselType.Clean
-                    && _fHAMaxLoanAmount.Clean
-                    && _foreclosedProperty.Clean
-                    && _freddieMacCounselType.Clean
-                    && _fundingFeePaidInCash.Clean
-                    && _giftFundsAmount.Clean
-                    && _haveReceivedLeadPaintPoisoningInfo.Clean
-                    && _hUD1003AddendumApproved.Clean
-                    && _id.Clean
-                    && _lastRefiDate.Clean
-                    && _lDPGSASearchDate.Clean
-                    && _lDPGSASearchedBy.Clean
-                    && _lenderAddress.Clean
-                    && _lenderCity.Clean
-                    && _lenderName.Clean
-                    && _lenderNMLS.Clean
-                    && _lenderPostalCode.Clean
-                    && _lenderRepresentativeName.Clean
-                    && _lenderRepresentativePhone.Clean
-                    && _lenderRepresentativeTitle.Clean
-                    && _lenderState.Clean
-                    && _lenderTaxID.Clean
-                    && _loanScoreID.Clean
-                    && _mIAppliedBy.Clean
-                    && _mIAppliedDate.Clean
-                    && _mICRetrivedDate.Clean
-                    && _minimumDownPayment.Clean
-                    && _mIP1stDueDate.Clean
-                    && _mIP1stToInvestor.Clean
-                    && _mIPRemittedDate.Clean
-                    && _mIRejectedDate.Clean
-                    && _modifiedInterestRate.Clean
-                    && _modifiedLoanAmount.Clean
-                    && _modifiedMonthlyPayment.Clean
-                    && _modifiedMonthlyPremium.Clean
-                    && _modifiedProposedMaturityMonth.Clean
-                    && _modifiedProposedMaturityYear.Clean
-                    && _modifiedTermAnnualPremium.Clean
-                    && _modifiedUpfrontPremium.Clean
-                    && _mortgageeRepresentative.Clean
-                    && _mortgageFinancialInterest.Clean
-                    && _nonRealtyAndOtherItems.Clean
-                    && _obtainCAIVRSDate.Clean
-                    && _occupancy.Clean
-                    && _oldAgencyCaseIdentifier.Clean
-                    && _originalMortgageAmount.Clean
-                    && _otherLiabilitiesMonthlyPayment.Clean
-                    && _otherLiabilitiesUnpaidBalance.Clean
-                    && _otherMonthlyShelterExpense.Clean
-                    && _otherTitleDescription.Clean
-                    && _ownMoreThanFourDwellings.Clean
-                    && _ownOrSoldOtherRealEstate.Clean
-                    && _paidAmount.Clean
-                    && _premiumMonths.Clean
-                    && _prepaidExpenses.Clean
-                    && _previousPurchaseDate.Clean
-                    && _priorEndorsementDate.Clean
-                    && _proposedMaturityMonths.Clean
-                    && _proposedMaturityYears.Clean
-                    && _purposeOfLoan.Clean
-                    && _refiAuthorizationBy.Clean
-                    && _refiAuthorizationDate.Clean
-                    && _salesPrice.Clean
-                    && _secondMortgageAmount.Clean
-                    && _sellerPaidClosingCost.Clean
-                    && _servingTransferedDate.Clean
-                    && _specialAssessments.Clean
-                    && _sponsorAgentAddress.Clean
-                    && _sponsorAgentCity.Clean
-                    && _sponsorAgentName.Clean
-                    && _sponsorAgentNMLS.Clean
-                    && _sponsorAgentPostalCode.Clean
-                    && _sponsorAgentState.Clean
-                    && _sponsorAgentTaxID.Clean
-                    && _sponsoredOriginationsName.Clean
-                    && _sponsoredOriginationsNMLS.Clean
-                    && _sponsoredOriginationsTaxID.Clean
-                    && _sponsorID.Clean
-                    && _titleVestedIn.Clean
-                    && _toBeSold.Clean
-                    && _totalClosingCost.Clean
-                    && _totalScorecardBy.Clean
-                    && _totalScorecardDate.Clean
-                    && _uFMIPRemittanceDueDate.Clean
-                    && _uFMIPRemittedAmount.Clean
-                    && _uFMIPRemittedBy.Clean
-                    && _uFMIPRemittedDate.Clean
-                    && _uFMIPVerificationCode.Clean
-                    && _useDefaultLenderInfo.Clean
-                    && _utilityIncluded.Clean
-                    && _validateAddressDate.Clean
-                    && _valuation.Clean
-                    && Eem?.Clean != false;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _addendumType.Dirty
+                    || _additionalCondition1.Dirty
+                    || _additionalCondition2.Dirty
+                    || _additionalCondition3.Dirty
+                    || _additionalCondition4.Dirty
+                    || _additionalCondition5.Dirty
+                    || _additionalCondition6.Dirty
+                    || _additionalCondition7.Dirty
+                    || _additionalCondition8.Dirty
+                    || _additionalCondition9.Dirty
+                    || _addressValidatedBy.Dirty
+                    || _addressValidationMessage.Dirty
+                    || _allConditionsSatisfied.Dirty
+                    || _appraisalLoggedDate.Dirty
+                    || _appraisalLookupBy.Dirty
+                    || _beenInformed.Dirty
+                    || _borrowerCertificationAddress.Dirty
+                    || _borrowerCertificationCity.Dirty
+                    || _borrowerCertificationPostalCode.Dirty
+                    || _borrowerCertificationState.Dirty
+                    || _cAIVRSObtainedBy.Dirty
+                    || _caseBinderShippedBy.Dirty
+                    || _caseBinderShippedDate.Dirty
+                    || _closingDate.Dirty
+                    || _condoPudID.Dirty
+                    || _condoPudLookupBy.Dirty
+                    || _condoPudLookupDate.Dirty
+                    || _dateApprovalExpires.Dirty
+                    || _dateMortgageApproved.Dirty
+                    || _detailForOther.Dirty
+                    || _discountPoints.Dirty
+                    || _dulyAgentAddress.Dirty
+                    || _dulyAgentCity.Dirty
+                    || _dulyAgentFunction1.Dirty
+                    || _dulyAgentFunction2.Dirty
+                    || _dulyAgentName.Dirty
+                    || _dulyAgentState.Dirty
+                    || _dwellingCoveredBy.Dirty
+                    || _eligibilityAssessment.Dirty
+                    || _energyEfficientMortgageAmount.Dirty
+                    || _energyEfficientMortgageItems.Dirty
+                    || _everHadVAHomeLoan.Dirty
+                    || _excessContributionAmount.Dirty
+                    || _existingDebtAmount.Dirty
+                    || _fHACaseOrderedBy.Dirty
+                    || _fHAManagementCounselType.Dirty
+                    || _fHAMaxLoanAmount.Dirty
+                    || _foreclosedProperty.Dirty
+                    || _freddieMacCounselType.Dirty
+                    || _fundingFeePaidInCash.Dirty
+                    || _giftFundsAmount.Dirty
+                    || _haveReceivedLeadPaintPoisoningInfo.Dirty
+                    || _hUD1003AddendumApproved.Dirty
+                    || _id.Dirty
+                    || _lastRefiDate.Dirty
+                    || _lDPGSASearchDate.Dirty
+                    || _lDPGSASearchedBy.Dirty
+                    || _lenderAddress.Dirty
+                    || _lenderCity.Dirty
+                    || _lenderName.Dirty
+                    || _lenderNMLS.Dirty
+                    || _lenderPostalCode.Dirty
+                    || _lenderRepresentativeName.Dirty
+                    || _lenderRepresentativePhone.Dirty
+                    || _lenderRepresentativeTitle.Dirty
+                    || _lenderState.Dirty
+                    || _lenderTaxID.Dirty
+                    || _loanScoreID.Dirty
+                    || _mIAppliedBy.Dirty
+                    || _mIAppliedDate.Dirty
+                    || _mICRetrivedDate.Dirty
+                    || _minimumDownPayment.Dirty
+                    || _mIP1stDueDate.Dirty
+                    || _mIP1stToInvestor.Dirty
+                    || _mIPRemittedDate.Dirty
+                    || _mIRejectedDate.Dirty
+                    || _modifiedInterestRate.Dirty
+                    || _modifiedLoanAmount.Dirty
+                    || _modifiedMonthlyPayment.Dirty
+                    || _modifiedMonthlyPremium.Dirty
+                    || _modifiedProposedMaturityMonth.Dirty
+                    || _modifiedProposedMaturityYear.Dirty
+                    || _modifiedTermAnnualPremium.Dirty
+                    || _modifiedUpfrontPremium.Dirty
+                    || _mortgageeRepresentative.Dirty
+                    || _mortgageFinancialInterest.Dirty
+                    || _nonRealtyAndOtherItems.Dirty
+                    || _obtainCAIVRSDate.Dirty
+                    || _occupancy.Dirty
+                    || _oldAgencyCaseIdentifier.Dirty
+                    || _originalMortgageAmount.Dirty
+                    || _otherLiabilitiesMonthlyPayment.Dirty
+                    || _otherLiabilitiesUnpaidBalance.Dirty
+                    || _otherMonthlyShelterExpense.Dirty
+                    || _otherTitleDescription.Dirty
+                    || _ownMoreThanFourDwellings.Dirty
+                    || _ownOrSoldOtherRealEstate.Dirty
+                    || _paidAmount.Dirty
+                    || _premiumMonths.Dirty
+                    || _prepaidExpenses.Dirty
+                    || _previousPurchaseDate.Dirty
+                    || _priorEndorsementDate.Dirty
+                    || _proposedMaturityMonths.Dirty
+                    || _proposedMaturityYears.Dirty
+                    || _purposeOfLoan.Dirty
+                    || _refiAuthorizationBy.Dirty
+                    || _refiAuthorizationDate.Dirty
+                    || _salesPrice.Dirty
+                    || _secondMortgageAmount.Dirty
+                    || _sellerPaidClosingCost.Dirty
+                    || _servingTransferedDate.Dirty
+                    || _specialAssessments.Dirty
+                    || _sponsorAgentAddress.Dirty
+                    || _sponsorAgentCity.Dirty
+                    || _sponsorAgentName.Dirty
+                    || _sponsorAgentNMLS.Dirty
+                    || _sponsorAgentPostalCode.Dirty
+                    || _sponsorAgentState.Dirty
+                    || _sponsorAgentTaxID.Dirty
+                    || _sponsoredOriginationsName.Dirty
+                    || _sponsoredOriginationsNMLS.Dirty
+                    || _sponsoredOriginationsTaxID.Dirty
+                    || _sponsorID.Dirty
+                    || _titleVestedIn.Dirty
+                    || _toBeSold.Dirty
+                    || _totalClosingCost.Dirty
+                    || _totalScorecardBy.Dirty
+                    || _totalScorecardDate.Dirty
+                    || _uFMIPRemittanceDueDate.Dirty
+                    || _uFMIPRemittedAmount.Dirty
+                    || _uFMIPRemittedBy.Dirty
+                    || _uFMIPRemittedDate.Dirty
+                    || _uFMIPVerificationCode.Dirty
+                    || _useDefaultLenderInfo.Dirty
+                    || _utilityIncluded.Dirty
+                    || _validateAddressDate.Dirty
+                    || _valuation.Dirty
+                    || Eem?.Dirty == true;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var addendumType = _addendumType; addendumType.Clean = value; _addendumType = addendumType;
-                var additionalCondition1 = _additionalCondition1; additionalCondition1.Clean = value; _additionalCondition1 = additionalCondition1;
-                var additionalCondition2 = _additionalCondition2; additionalCondition2.Clean = value; _additionalCondition2 = additionalCondition2;
-                var additionalCondition3 = _additionalCondition3; additionalCondition3.Clean = value; _additionalCondition3 = additionalCondition3;
-                var additionalCondition4 = _additionalCondition4; additionalCondition4.Clean = value; _additionalCondition4 = additionalCondition4;
-                var additionalCondition5 = _additionalCondition5; additionalCondition5.Clean = value; _additionalCondition5 = additionalCondition5;
-                var additionalCondition6 = _additionalCondition6; additionalCondition6.Clean = value; _additionalCondition6 = additionalCondition6;
-                var additionalCondition7 = _additionalCondition7; additionalCondition7.Clean = value; _additionalCondition7 = additionalCondition7;
-                var additionalCondition8 = _additionalCondition8; additionalCondition8.Clean = value; _additionalCondition8 = additionalCondition8;
-                var additionalCondition9 = _additionalCondition9; additionalCondition9.Clean = value; _additionalCondition9 = additionalCondition9;
-                var addressValidatedBy = _addressValidatedBy; addressValidatedBy.Clean = value; _addressValidatedBy = addressValidatedBy;
-                var addressValidationMessage = _addressValidationMessage; addressValidationMessage.Clean = value; _addressValidationMessage = addressValidationMessage;
-                var allConditionsSatisfied = _allConditionsSatisfied; allConditionsSatisfied.Clean = value; _allConditionsSatisfied = allConditionsSatisfied;
-                var appraisalLoggedDate = _appraisalLoggedDate; appraisalLoggedDate.Clean = value; _appraisalLoggedDate = appraisalLoggedDate;
-                var appraisalLookupBy = _appraisalLookupBy; appraisalLookupBy.Clean = value; _appraisalLookupBy = appraisalLookupBy;
-                var beenInformed = _beenInformed; beenInformed.Clean = value; _beenInformed = beenInformed;
-                var borrowerCertificationAddress = _borrowerCertificationAddress; borrowerCertificationAddress.Clean = value; _borrowerCertificationAddress = borrowerCertificationAddress;
-                var borrowerCertificationCity = _borrowerCertificationCity; borrowerCertificationCity.Clean = value; _borrowerCertificationCity = borrowerCertificationCity;
-                var borrowerCertificationPostalCode = _borrowerCertificationPostalCode; borrowerCertificationPostalCode.Clean = value; _borrowerCertificationPostalCode = borrowerCertificationPostalCode;
-                var borrowerCertificationState = _borrowerCertificationState; borrowerCertificationState.Clean = value; _borrowerCertificationState = borrowerCertificationState;
-                var cAIVRSObtainedBy = _cAIVRSObtainedBy; cAIVRSObtainedBy.Clean = value; _cAIVRSObtainedBy = cAIVRSObtainedBy;
-                var caseBinderShippedBy = _caseBinderShippedBy; caseBinderShippedBy.Clean = value; _caseBinderShippedBy = caseBinderShippedBy;
-                var caseBinderShippedDate = _caseBinderShippedDate; caseBinderShippedDate.Clean = value; _caseBinderShippedDate = caseBinderShippedDate;
-                var closingDate = _closingDate; closingDate.Clean = value; _closingDate = closingDate;
-                var condoPudID = _condoPudID; condoPudID.Clean = value; _condoPudID = condoPudID;
-                var condoPudLookupBy = _condoPudLookupBy; condoPudLookupBy.Clean = value; _condoPudLookupBy = condoPudLookupBy;
-                var condoPudLookupDate = _condoPudLookupDate; condoPudLookupDate.Clean = value; _condoPudLookupDate = condoPudLookupDate;
-                var dateApprovalExpires = _dateApprovalExpires; dateApprovalExpires.Clean = value; _dateApprovalExpires = dateApprovalExpires;
-                var dateMortgageApproved = _dateMortgageApproved; dateMortgageApproved.Clean = value; _dateMortgageApproved = dateMortgageApproved;
-                var detailForOther = _detailForOther; detailForOther.Clean = value; _detailForOther = detailForOther;
-                var discountPoints = _discountPoints; discountPoints.Clean = value; _discountPoints = discountPoints;
-                var dulyAgentAddress = _dulyAgentAddress; dulyAgentAddress.Clean = value; _dulyAgentAddress = dulyAgentAddress;
-                var dulyAgentCity = _dulyAgentCity; dulyAgentCity.Clean = value; _dulyAgentCity = dulyAgentCity;
-                var dulyAgentFunction1 = _dulyAgentFunction1; dulyAgentFunction1.Clean = value; _dulyAgentFunction1 = dulyAgentFunction1;
-                var dulyAgentFunction2 = _dulyAgentFunction2; dulyAgentFunction2.Clean = value; _dulyAgentFunction2 = dulyAgentFunction2;
-                var dulyAgentName = _dulyAgentName; dulyAgentName.Clean = value; _dulyAgentName = dulyAgentName;
-                var dulyAgentState = _dulyAgentState; dulyAgentState.Clean = value; _dulyAgentState = dulyAgentState;
-                var dwellingCoveredBy = _dwellingCoveredBy; dwellingCoveredBy.Clean = value; _dwellingCoveredBy = dwellingCoveredBy;
-                var eligibilityAssessment = _eligibilityAssessment; eligibilityAssessment.Clean = value; _eligibilityAssessment = eligibilityAssessment;
-                var energyEfficientMortgageAmount = _energyEfficientMortgageAmount; energyEfficientMortgageAmount.Clean = value; _energyEfficientMortgageAmount = energyEfficientMortgageAmount;
-                var energyEfficientMortgageItems = _energyEfficientMortgageItems; energyEfficientMortgageItems.Clean = value; _energyEfficientMortgageItems = energyEfficientMortgageItems;
-                var everHadVAHomeLoan = _everHadVAHomeLoan; everHadVAHomeLoan.Clean = value; _everHadVAHomeLoan = everHadVAHomeLoan;
-                var excessContributionAmount = _excessContributionAmount; excessContributionAmount.Clean = value; _excessContributionAmount = excessContributionAmount;
-                var existingDebtAmount = _existingDebtAmount; existingDebtAmount.Clean = value; _existingDebtAmount = existingDebtAmount;
-                var fHACaseOrderedBy = _fHACaseOrderedBy; fHACaseOrderedBy.Clean = value; _fHACaseOrderedBy = fHACaseOrderedBy;
-                var fHAManagementCounselType = _fHAManagementCounselType; fHAManagementCounselType.Clean = value; _fHAManagementCounselType = fHAManagementCounselType;
-                var fHAMaxLoanAmount = _fHAMaxLoanAmount; fHAMaxLoanAmount.Clean = value; _fHAMaxLoanAmount = fHAMaxLoanAmount;
-                var foreclosedProperty = _foreclosedProperty; foreclosedProperty.Clean = value; _foreclosedProperty = foreclosedProperty;
-                var freddieMacCounselType = _freddieMacCounselType; freddieMacCounselType.Clean = value; _freddieMacCounselType = freddieMacCounselType;
-                var fundingFeePaidInCash = _fundingFeePaidInCash; fundingFeePaidInCash.Clean = value; _fundingFeePaidInCash = fundingFeePaidInCash;
-                var giftFundsAmount = _giftFundsAmount; giftFundsAmount.Clean = value; _giftFundsAmount = giftFundsAmount;
-                var haveReceivedLeadPaintPoisoningInfo = _haveReceivedLeadPaintPoisoningInfo; haveReceivedLeadPaintPoisoningInfo.Clean = value; _haveReceivedLeadPaintPoisoningInfo = haveReceivedLeadPaintPoisoningInfo;
-                var hUD1003AddendumApproved = _hUD1003AddendumApproved; hUD1003AddendumApproved.Clean = value; _hUD1003AddendumApproved = hUD1003AddendumApproved;
-                var id = _id; id.Clean = value; _id = id;
-                var lastRefiDate = _lastRefiDate; lastRefiDate.Clean = value; _lastRefiDate = lastRefiDate;
-                var lDPGSASearchDate = _lDPGSASearchDate; lDPGSASearchDate.Clean = value; _lDPGSASearchDate = lDPGSASearchDate;
-                var lDPGSASearchedBy = _lDPGSASearchedBy; lDPGSASearchedBy.Clean = value; _lDPGSASearchedBy = lDPGSASearchedBy;
-                var lenderAddress = _lenderAddress; lenderAddress.Clean = value; _lenderAddress = lenderAddress;
-                var lenderCity = _lenderCity; lenderCity.Clean = value; _lenderCity = lenderCity;
-                var lenderName = _lenderName; lenderName.Clean = value; _lenderName = lenderName;
-                var lenderNMLS = _lenderNMLS; lenderNMLS.Clean = value; _lenderNMLS = lenderNMLS;
-                var lenderPostalCode = _lenderPostalCode; lenderPostalCode.Clean = value; _lenderPostalCode = lenderPostalCode;
-                var lenderRepresentativeName = _lenderRepresentativeName; lenderRepresentativeName.Clean = value; _lenderRepresentativeName = lenderRepresentativeName;
-                var lenderRepresentativePhone = _lenderRepresentativePhone; lenderRepresentativePhone.Clean = value; _lenderRepresentativePhone = lenderRepresentativePhone;
-                var lenderRepresentativeTitle = _lenderRepresentativeTitle; lenderRepresentativeTitle.Clean = value; _lenderRepresentativeTitle = lenderRepresentativeTitle;
-                var lenderState = _lenderState; lenderState.Clean = value; _lenderState = lenderState;
-                var lenderTaxID = _lenderTaxID; lenderTaxID.Clean = value; _lenderTaxID = lenderTaxID;
-                var loanScoreID = _loanScoreID; loanScoreID.Clean = value; _loanScoreID = loanScoreID;
-                var mIAppliedBy = _mIAppliedBy; mIAppliedBy.Clean = value; _mIAppliedBy = mIAppliedBy;
-                var mIAppliedDate = _mIAppliedDate; mIAppliedDate.Clean = value; _mIAppliedDate = mIAppliedDate;
-                var mICRetrivedDate = _mICRetrivedDate; mICRetrivedDate.Clean = value; _mICRetrivedDate = mICRetrivedDate;
-                var minimumDownPayment = _minimumDownPayment; minimumDownPayment.Clean = value; _minimumDownPayment = minimumDownPayment;
-                var mIP1stDueDate = _mIP1stDueDate; mIP1stDueDate.Clean = value; _mIP1stDueDate = mIP1stDueDate;
-                var mIP1stToInvestor = _mIP1stToInvestor; mIP1stToInvestor.Clean = value; _mIP1stToInvestor = mIP1stToInvestor;
-                var mIPRemittedDate = _mIPRemittedDate; mIPRemittedDate.Clean = value; _mIPRemittedDate = mIPRemittedDate;
-                var mIRejectedDate = _mIRejectedDate; mIRejectedDate.Clean = value; _mIRejectedDate = mIRejectedDate;
-                var modifiedInterestRate = _modifiedInterestRate; modifiedInterestRate.Clean = value; _modifiedInterestRate = modifiedInterestRate;
-                var modifiedLoanAmount = _modifiedLoanAmount; modifiedLoanAmount.Clean = value; _modifiedLoanAmount = modifiedLoanAmount;
-                var modifiedMonthlyPayment = _modifiedMonthlyPayment; modifiedMonthlyPayment.Clean = value; _modifiedMonthlyPayment = modifiedMonthlyPayment;
-                var modifiedMonthlyPremium = _modifiedMonthlyPremium; modifiedMonthlyPremium.Clean = value; _modifiedMonthlyPremium = modifiedMonthlyPremium;
-                var modifiedProposedMaturityMonth = _modifiedProposedMaturityMonth; modifiedProposedMaturityMonth.Clean = value; _modifiedProposedMaturityMonth = modifiedProposedMaturityMonth;
-                var modifiedProposedMaturityYear = _modifiedProposedMaturityYear; modifiedProposedMaturityYear.Clean = value; _modifiedProposedMaturityYear = modifiedProposedMaturityYear;
-                var modifiedTermAnnualPremium = _modifiedTermAnnualPremium; modifiedTermAnnualPremium.Clean = value; _modifiedTermAnnualPremium = modifiedTermAnnualPremium;
-                var modifiedUpfrontPremium = _modifiedUpfrontPremium; modifiedUpfrontPremium.Clean = value; _modifiedUpfrontPremium = modifiedUpfrontPremium;
-                var mortgageeRepresentative = _mortgageeRepresentative; mortgageeRepresentative.Clean = value; _mortgageeRepresentative = mortgageeRepresentative;
-                var mortgageFinancialInterest = _mortgageFinancialInterest; mortgageFinancialInterest.Clean = value; _mortgageFinancialInterest = mortgageFinancialInterest;
-                var nonRealtyAndOtherItems = _nonRealtyAndOtherItems; nonRealtyAndOtherItems.Clean = value; _nonRealtyAndOtherItems = nonRealtyAndOtherItems;
-                var obtainCAIVRSDate = _obtainCAIVRSDate; obtainCAIVRSDate.Clean = value; _obtainCAIVRSDate = obtainCAIVRSDate;
-                var occupancy = _occupancy; occupancy.Clean = value; _occupancy = occupancy;
-                var oldAgencyCaseIdentifier = _oldAgencyCaseIdentifier; oldAgencyCaseIdentifier.Clean = value; _oldAgencyCaseIdentifier = oldAgencyCaseIdentifier;
-                var originalMortgageAmount = _originalMortgageAmount; originalMortgageAmount.Clean = value; _originalMortgageAmount = originalMortgageAmount;
-                var otherLiabilitiesMonthlyPayment = _otherLiabilitiesMonthlyPayment; otherLiabilitiesMonthlyPayment.Clean = value; _otherLiabilitiesMonthlyPayment = otherLiabilitiesMonthlyPayment;
-                var otherLiabilitiesUnpaidBalance = _otherLiabilitiesUnpaidBalance; otherLiabilitiesUnpaidBalance.Clean = value; _otherLiabilitiesUnpaidBalance = otherLiabilitiesUnpaidBalance;
-                var otherMonthlyShelterExpense = _otherMonthlyShelterExpense; otherMonthlyShelterExpense.Clean = value; _otherMonthlyShelterExpense = otherMonthlyShelterExpense;
-                var otherTitleDescription = _otherTitleDescription; otherTitleDescription.Clean = value; _otherTitleDescription = otherTitleDescription;
-                var ownMoreThanFourDwellings = _ownMoreThanFourDwellings; ownMoreThanFourDwellings.Clean = value; _ownMoreThanFourDwellings = ownMoreThanFourDwellings;
-                var ownOrSoldOtherRealEstate = _ownOrSoldOtherRealEstate; ownOrSoldOtherRealEstate.Clean = value; _ownOrSoldOtherRealEstate = ownOrSoldOtherRealEstate;
-                var paidAmount = _paidAmount; paidAmount.Clean = value; _paidAmount = paidAmount;
-                var premiumMonths = _premiumMonths; premiumMonths.Clean = value; _premiumMonths = premiumMonths;
-                var prepaidExpenses = _prepaidExpenses; prepaidExpenses.Clean = value; _prepaidExpenses = prepaidExpenses;
-                var previousPurchaseDate = _previousPurchaseDate; previousPurchaseDate.Clean = value; _previousPurchaseDate = previousPurchaseDate;
-                var priorEndorsementDate = _priorEndorsementDate; priorEndorsementDate.Clean = value; _priorEndorsementDate = priorEndorsementDate;
-                var proposedMaturityMonths = _proposedMaturityMonths; proposedMaturityMonths.Clean = value; _proposedMaturityMonths = proposedMaturityMonths;
-                var proposedMaturityYears = _proposedMaturityYears; proposedMaturityYears.Clean = value; _proposedMaturityYears = proposedMaturityYears;
-                var purposeOfLoan = _purposeOfLoan; purposeOfLoan.Clean = value; _purposeOfLoan = purposeOfLoan;
-                var refiAuthorizationBy = _refiAuthorizationBy; refiAuthorizationBy.Clean = value; _refiAuthorizationBy = refiAuthorizationBy;
-                var refiAuthorizationDate = _refiAuthorizationDate; refiAuthorizationDate.Clean = value; _refiAuthorizationDate = refiAuthorizationDate;
-                var salesPrice = _salesPrice; salesPrice.Clean = value; _salesPrice = salesPrice;
-                var secondMortgageAmount = _secondMortgageAmount; secondMortgageAmount.Clean = value; _secondMortgageAmount = secondMortgageAmount;
-                var sellerPaidClosingCost = _sellerPaidClosingCost; sellerPaidClosingCost.Clean = value; _sellerPaidClosingCost = sellerPaidClosingCost;
-                var servingTransferedDate = _servingTransferedDate; servingTransferedDate.Clean = value; _servingTransferedDate = servingTransferedDate;
-                var specialAssessments = _specialAssessments; specialAssessments.Clean = value; _specialAssessments = specialAssessments;
-                var sponsorAgentAddress = _sponsorAgentAddress; sponsorAgentAddress.Clean = value; _sponsorAgentAddress = sponsorAgentAddress;
-                var sponsorAgentCity = _sponsorAgentCity; sponsorAgentCity.Clean = value; _sponsorAgentCity = sponsorAgentCity;
-                var sponsorAgentName = _sponsorAgentName; sponsorAgentName.Clean = value; _sponsorAgentName = sponsorAgentName;
-                var sponsorAgentNMLS = _sponsorAgentNMLS; sponsorAgentNMLS.Clean = value; _sponsorAgentNMLS = sponsorAgentNMLS;
-                var sponsorAgentPostalCode = _sponsorAgentPostalCode; sponsorAgentPostalCode.Clean = value; _sponsorAgentPostalCode = sponsorAgentPostalCode;
-                var sponsorAgentState = _sponsorAgentState; sponsorAgentState.Clean = value; _sponsorAgentState = sponsorAgentState;
-                var sponsorAgentTaxID = _sponsorAgentTaxID; sponsorAgentTaxID.Clean = value; _sponsorAgentTaxID = sponsorAgentTaxID;
-                var sponsoredOriginationsName = _sponsoredOriginationsName; sponsoredOriginationsName.Clean = value; _sponsoredOriginationsName = sponsoredOriginationsName;
-                var sponsoredOriginationsNMLS = _sponsoredOriginationsNMLS; sponsoredOriginationsNMLS.Clean = value; _sponsoredOriginationsNMLS = sponsoredOriginationsNMLS;
-                var sponsoredOriginationsTaxID = _sponsoredOriginationsTaxID; sponsoredOriginationsTaxID.Clean = value; _sponsoredOriginationsTaxID = sponsoredOriginationsTaxID;
-                var sponsorID = _sponsorID; sponsorID.Clean = value; _sponsorID = sponsorID;
-                var titleVestedIn = _titleVestedIn; titleVestedIn.Clean = value; _titleVestedIn = titleVestedIn;
-                var toBeSold = _toBeSold; toBeSold.Clean = value; _toBeSold = toBeSold;
-                var totalClosingCost = _totalClosingCost; totalClosingCost.Clean = value; _totalClosingCost = totalClosingCost;
-                var totalScorecardBy = _totalScorecardBy; totalScorecardBy.Clean = value; _totalScorecardBy = totalScorecardBy;
-                var totalScorecardDate = _totalScorecardDate; totalScorecardDate.Clean = value; _totalScorecardDate = totalScorecardDate;
-                var uFMIPRemittanceDueDate = _uFMIPRemittanceDueDate; uFMIPRemittanceDueDate.Clean = value; _uFMIPRemittanceDueDate = uFMIPRemittanceDueDate;
-                var uFMIPRemittedAmount = _uFMIPRemittedAmount; uFMIPRemittedAmount.Clean = value; _uFMIPRemittedAmount = uFMIPRemittedAmount;
-                var uFMIPRemittedBy = _uFMIPRemittedBy; uFMIPRemittedBy.Clean = value; _uFMIPRemittedBy = uFMIPRemittedBy;
-                var uFMIPRemittedDate = _uFMIPRemittedDate; uFMIPRemittedDate.Clean = value; _uFMIPRemittedDate = uFMIPRemittedDate;
-                var uFMIPVerificationCode = _uFMIPVerificationCode; uFMIPVerificationCode.Clean = value; _uFMIPVerificationCode = uFMIPVerificationCode;
-                var useDefaultLenderInfo = _useDefaultLenderInfo; useDefaultLenderInfo.Clean = value; _useDefaultLenderInfo = useDefaultLenderInfo;
-                var utilityIncluded = _utilityIncluded; utilityIncluded.Clean = value; _utilityIncluded = utilityIncluded;
-                var validateAddressDate = _validateAddressDate; validateAddressDate.Clean = value; _validateAddressDate = validateAddressDate;
-                var valuation = _valuation; valuation.Clean = value; _valuation = valuation;
-                if (Eem != null) Eem.Clean = value;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _addendumType.Dirty = value;
+                _additionalCondition1.Dirty = value;
+                _additionalCondition2.Dirty = value;
+                _additionalCondition3.Dirty = value;
+                _additionalCondition4.Dirty = value;
+                _additionalCondition5.Dirty = value;
+                _additionalCondition6.Dirty = value;
+                _additionalCondition7.Dirty = value;
+                _additionalCondition8.Dirty = value;
+                _additionalCondition9.Dirty = value;
+                _addressValidatedBy.Dirty = value;
+                _addressValidationMessage.Dirty = value;
+                _allConditionsSatisfied.Dirty = value;
+                _appraisalLoggedDate.Dirty = value;
+                _appraisalLookupBy.Dirty = value;
+                _beenInformed.Dirty = value;
+                _borrowerCertificationAddress.Dirty = value;
+                _borrowerCertificationCity.Dirty = value;
+                _borrowerCertificationPostalCode.Dirty = value;
+                _borrowerCertificationState.Dirty = value;
+                _cAIVRSObtainedBy.Dirty = value;
+                _caseBinderShippedBy.Dirty = value;
+                _caseBinderShippedDate.Dirty = value;
+                _closingDate.Dirty = value;
+                _condoPudID.Dirty = value;
+                _condoPudLookupBy.Dirty = value;
+                _condoPudLookupDate.Dirty = value;
+                _dateApprovalExpires.Dirty = value;
+                _dateMortgageApproved.Dirty = value;
+                _detailForOther.Dirty = value;
+                _discountPoints.Dirty = value;
+                _dulyAgentAddress.Dirty = value;
+                _dulyAgentCity.Dirty = value;
+                _dulyAgentFunction1.Dirty = value;
+                _dulyAgentFunction2.Dirty = value;
+                _dulyAgentName.Dirty = value;
+                _dulyAgentState.Dirty = value;
+                _dwellingCoveredBy.Dirty = value;
+                _eligibilityAssessment.Dirty = value;
+                _energyEfficientMortgageAmount.Dirty = value;
+                _energyEfficientMortgageItems.Dirty = value;
+                _everHadVAHomeLoan.Dirty = value;
+                _excessContributionAmount.Dirty = value;
+                _existingDebtAmount.Dirty = value;
+                _fHACaseOrderedBy.Dirty = value;
+                _fHAManagementCounselType.Dirty = value;
+                _fHAMaxLoanAmount.Dirty = value;
+                _foreclosedProperty.Dirty = value;
+                _freddieMacCounselType.Dirty = value;
+                _fundingFeePaidInCash.Dirty = value;
+                _giftFundsAmount.Dirty = value;
+                _haveReceivedLeadPaintPoisoningInfo.Dirty = value;
+                _hUD1003AddendumApproved.Dirty = value;
+                _id.Dirty = value;
+                _lastRefiDate.Dirty = value;
+                _lDPGSASearchDate.Dirty = value;
+                _lDPGSASearchedBy.Dirty = value;
+                _lenderAddress.Dirty = value;
+                _lenderCity.Dirty = value;
+                _lenderName.Dirty = value;
+                _lenderNMLS.Dirty = value;
+                _lenderPostalCode.Dirty = value;
+                _lenderRepresentativeName.Dirty = value;
+                _lenderRepresentativePhone.Dirty = value;
+                _lenderRepresentativeTitle.Dirty = value;
+                _lenderState.Dirty = value;
+                _lenderTaxID.Dirty = value;
+                _loanScoreID.Dirty = value;
+                _mIAppliedBy.Dirty = value;
+                _mIAppliedDate.Dirty = value;
+                _mICRetrivedDate.Dirty = value;
+                _minimumDownPayment.Dirty = value;
+                _mIP1stDueDate.Dirty = value;
+                _mIP1stToInvestor.Dirty = value;
+                _mIPRemittedDate.Dirty = value;
+                _mIRejectedDate.Dirty = value;
+                _modifiedInterestRate.Dirty = value;
+                _modifiedLoanAmount.Dirty = value;
+                _modifiedMonthlyPayment.Dirty = value;
+                _modifiedMonthlyPremium.Dirty = value;
+                _modifiedProposedMaturityMonth.Dirty = value;
+                _modifiedProposedMaturityYear.Dirty = value;
+                _modifiedTermAnnualPremium.Dirty = value;
+                _modifiedUpfrontPremium.Dirty = value;
+                _mortgageeRepresentative.Dirty = value;
+                _mortgageFinancialInterest.Dirty = value;
+                _nonRealtyAndOtherItems.Dirty = value;
+                _obtainCAIVRSDate.Dirty = value;
+                _occupancy.Dirty = value;
+                _oldAgencyCaseIdentifier.Dirty = value;
+                _originalMortgageAmount.Dirty = value;
+                _otherLiabilitiesMonthlyPayment.Dirty = value;
+                _otherLiabilitiesUnpaidBalance.Dirty = value;
+                _otherMonthlyShelterExpense.Dirty = value;
+                _otherTitleDescription.Dirty = value;
+                _ownMoreThanFourDwellings.Dirty = value;
+                _ownOrSoldOtherRealEstate.Dirty = value;
+                _paidAmount.Dirty = value;
+                _premiumMonths.Dirty = value;
+                _prepaidExpenses.Dirty = value;
+                _previousPurchaseDate.Dirty = value;
+                _priorEndorsementDate.Dirty = value;
+                _proposedMaturityMonths.Dirty = value;
+                _proposedMaturityYears.Dirty = value;
+                _purposeOfLoan.Dirty = value;
+                _refiAuthorizationBy.Dirty = value;
+                _refiAuthorizationDate.Dirty = value;
+                _salesPrice.Dirty = value;
+                _secondMortgageAmount.Dirty = value;
+                _sellerPaidClosingCost.Dirty = value;
+                _servingTransferedDate.Dirty = value;
+                _specialAssessments.Dirty = value;
+                _sponsorAgentAddress.Dirty = value;
+                _sponsorAgentCity.Dirty = value;
+                _sponsorAgentName.Dirty = value;
+                _sponsorAgentNMLS.Dirty = value;
+                _sponsorAgentPostalCode.Dirty = value;
+                _sponsorAgentState.Dirty = value;
+                _sponsorAgentTaxID.Dirty = value;
+                _sponsoredOriginationsName.Dirty = value;
+                _sponsoredOriginationsNMLS.Dirty = value;
+                _sponsoredOriginationsTaxID.Dirty = value;
+                _sponsorID.Dirty = value;
+                _titleVestedIn.Dirty = value;
+                _toBeSold.Dirty = value;
+                _totalClosingCost.Dirty = value;
+                _totalScorecardBy.Dirty = value;
+                _totalScorecardDate.Dirty = value;
+                _uFMIPRemittanceDueDate.Dirty = value;
+                _uFMIPRemittedAmount.Dirty = value;
+                _uFMIPRemittedBy.Dirty = value;
+                _uFMIPRemittedDate.Dirty = value;
+                _uFMIPVerificationCode.Dirty = value;
+                _useDefaultLenderInfo.Dirty = value;
+                _utilityIncluded.Dirty = value;
+                _validateAddressDate.Dirty = value;
+                _valuation.Dirty = value;
+                if (Eem != null) Eem.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FhaVaLoan()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

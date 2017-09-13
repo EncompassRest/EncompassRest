@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RateLock : IClean
+    public sealed partial class RateLock : IDirty
     {
         private Value<decimal?> _actualSellAmount;
         public decimal? ActualSellAmount { get { return _actualSellAmount; } set { _actualSellAmount = value; } }
@@ -1012,1031 +1012,1026 @@ namespace EncompassRest.Loans
         public string Type { get { return _type; } set { _type = value; } }
         private Value<bool?> _usePoint;
         public bool? UsePoint { get { return _usePoint; } set { _usePoint = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actualSellAmount.Clean
-                    && _actualSellPrice.Clean
-                    && _actualSellSideSRP.Clean
-                    && _actualSRPAmount.Clean
-                    && _amountDue.Clean
-                    && _amountDueTo.Clean
-                    && _amountPaid.Clean
-                    && _amountPaidTo.Clean
-                    && _amountReceived.Clean
-                    && _balloonLoanMaturityTermMonths.Clean
-                    && _baseLoanAmount.Clean
-                    && _borrowerRequestedLoanAmount.Clean
-                    && _branchApprovalDate.Clean
-                    && _branchApprovedby.Clean
-                    && _branchPrice.Clean
-                    && _buySideAdjustments.Clean
-                    && _buySideComments.Clean
-                    && _buySideCommitmentDate.Clean
-                    && _buySideCommitmentNumber.Clean
-                    && _buySideCommitmentType.Clean
-                    && _buySideCurrentRateSetDate.Clean
-                    && _buySideDaystoExtend.Clean
-                    && _buySideDeliveryExpirationDate.Clean
-                    && _buySideDeliveryType.Clean
-                    && _buySideExpirationDate.Clean
-                    && _buySideExtendedLockExpires.Clean
-                    && _buySideLockDate.Clean
-                    && _buySideLockExpires.Clean
-                    && _buySideLockExtendPriceAdjustment.Clean
-                    && _buySideMarginNetBuyRate.Clean
-                    && _buySideMarginRate.Clean
-                    && _buySideMarginTotalAdjustment.Clean
-                    && _buySideMasterCommitmentNumber.Clean
-                    && _buySideNumberOfDays.Clean
-                    && _buySideOnrpEligible.Clean
-                    && _buySideOnrpLockDate.Clean
-                    && _buySideOnrpLockTime.Clean
-                    && _buySideOrgID.Clean
-                    && _buySideOriginalLockExpires.Clean
-                    && _buySidePriceNetBuyPrice.Clean
-                    && _buySidePriceRate.Clean
-                    && _buySidePriceTotalAdjustment.Clean
-                    && _buySideRate.Clean
-                    && _buySideRateNetBuyRate.Clean
-                    && _buySideRateSheetID.Clean
-                    && _buySideRateTotalAdjustment.Clean
-                    && _buySideRequestedBy.Clean
-                    && _buySideSRPPaidOut.Clean
-                    && _buySideStartingAdjPoint.Clean
-                    && _buySideStartingAdjPrice.Clean
-                    && _buySideStartingAdjRate.Clean
-                    && _buySideTPOID.Clean
-                    && _buySideTPOName.Clean
-                    && _buySideTradeGuid.Clean
-                    && _buySideTradeNumber.Clean
-                    && _buySideUnDiscountedRate.Clean
-                    && _cancellationRequestPending.Clean
-                    && _combinedLTV.Clean
-                    && _comments.Clean
-                    && _commitment.Clean
-                    && _commitmentType.Clean
-                    && _compGainLossPercentage.Clean
-                    && _compGainLossPrice.Clean
-                    && _compGainLossTotalBuyPrice.Clean
-                    && _compGainLossTotalCompPrice.Clean
-                    && _compInvestorAddress.Clean
-                    && _compInvestorCity.Clean
-                    && _compInvestorCommitment.Clean
-                    && _compInvestorContact.Clean
-                    && _compInvestorEmail.Clean
-                    && _compInvestorLockType.Clean
-                    && _compInvestorName.Clean
-                    && _compInvestorPhone.Clean
-                    && _compInvestorPostalCode.Clean
-                    && _compInvestorProgramCode.Clean
-                    && _compInvestorState.Clean
-                    && _compInvestorTemplateName.Clean
-                    && _compInvestorWebsite.Clean
-                    && _compSideAdjustments.Clean
-                    && _compSideComments.Clean
-                    && _compSideComparisonedBy.Clean
-                    && _compSideCurrentRateSetDate.Clean
-                    && _compSideDaystoExtend.Clean
-                    && _compSideDiscountYSP.Clean
-                    && _compSideExtendedLockExpires.Clean
-                    && _compSideInvestorStatus.Clean
-                    && _compSideInvestorStatusDate.Clean
-                    && _compSideInvestorTradeNumber.Clean
-                    && _compSideLoanProgram.Clean
-                    && _compSideLockDate.Clean
-                    && _compSideLockExpires.Clean
-                    && _compSideLockExtendPriceAdjustment.Clean
-                    && _compSideMarginNetCompRate.Clean
-                    && _compSideMarginRate.Clean
-                    && _compSideMarginTotalAdjustment.Clean
-                    && _compSideMasterContractNumber.Clean
-                    && _compSideNetCompPrice.Clean
-                    && _compSideNetCompRate.Clean
-                    && _compSideNumberOfDays.Clean
-                    && _compSideOriginalLockExpires.Clean
-                    && _compSidePriceRate.Clean
-                    && _compSidePriceTotalAdjustment.Clean
-                    && _compSideRate.Clean
-                    && _compSideRateSheetID.Clean
-                    && _compSideRateTotalAdjustment.Clean
-                    && _compSideRequestedBy.Clean
-                    && _compSideServicingType.Clean
-                    && _compSideSRPPaidOut.Clean
-                    && _compSideTradeGuid.Clean
-                    && _compSideTradeNumber.Clean
-                    && _confirmedBy.Clean
-                    && _confirmedDate.Clean
-                    && _corporateApprovalDate.Clean
-                    && _corporateApprovedby.Clean
-                    && _corporatePrice.Clean
-                    && _correspondentAdditionalEscrowAdditionalEscrow.Clean
-                    && _correspondentAdditionalEscrowAmount1007.Clean
-                    && _correspondentAdditionalEscrowAmount1008.Clean
-                    && _correspondentAdditionalEscrowAmount1009.Clean
-                    && _correspondentAdditionalEscrowCityPropertyTax.Clean
-                    && _correspondentAdditionalEscrowDescription1007.Clean
-                    && _correspondentAdditionalEscrowDescription1008.Clean
-                    && _correspondentAdditionalEscrowDescription1009.Clean
-                    && _correspondentAdditionalEscrowFloodInsurance.Clean
-                    && _correspondentAdditionalEscrowHomeInsurance.Clean
-                    && _correspondentAdditionalEscrowMIMIP.Clean
-                    && _correspondentAdditionalEscrowNumOfPayments.Clean
-                    && _correspondentAdditionalEscrowOption1Amount.Clean
-                    && _correspondentAdditionalEscrowOption1Desc.Clean
-                    && _correspondentAdditionalEscrowOption2Amount.Clean
-                    && _correspondentAdditionalEscrowOption2Desc.Clean
-                    && _correspondentAdditionalEscrowPropertyTax.Clean
-                    && _correspondentAdditionalEscrowSumOfPayments.Clean
-                    && _correspondentAdditionalEscrowUSDAAnnualFee.Clean
-                    && _correspondentAdditionalLineAmount1.Clean
-                    && _correspondentAdditionalLineAmount10.Clean
-                    && _correspondentAdditionalLineAmount11.Clean
-                    && _correspondentAdditionalLineAmount12.Clean
-                    && _correspondentAdditionalLineAmount13.Clean
-                    && _correspondentAdditionalLineAmount2.Clean
-                    && _correspondentAdditionalLineAmount3.Clean
-                    && _correspondentAdditionalLineAmount4.Clean
-                    && _correspondentAdditionalLineAmount5.Clean
-                    && _correspondentAdditionalLineAmount6.Clean
-                    && _correspondentAdditionalLineAmount7.Clean
-                    && _correspondentAdditionalLineAmount8.Clean
-                    && _correspondentAdditionalLineAmount9.Clean
-                    && _correspondentAdditionalLineDescription1.Clean
-                    && _correspondentAdditionalLineDescription10.Clean
-                    && _correspondentAdditionalLineDescription11.Clean
-                    && _correspondentAdditionalLineDescription12.Clean
-                    && _correspondentAdditionalLineDescription2.Clean
-                    && _correspondentAdditionalLineDescription3.Clean
-                    && _correspondentAdditionalLineDescription4.Clean
-                    && _correspondentAdditionalLineDescription5.Clean
-                    && _correspondentAdditionalLineDescription6.Clean
-                    && _correspondentAdditionalLineDescription7.Clean
-                    && _correspondentAdditionalLineDescription8.Clean
-                    && _correspondentAdditionalLineDescription9.Clean
-                    && _correspondentAdditionalLineTotalAmount.Clean
-                    && _correspondentAdjusterAmount1.Clean
-                    && _correspondentAdjusterAmount2.Clean
-                    && _correspondentAdjusterAmount3.Clean
-                    && _correspondentAdjusterDescription1.Clean
-                    && _correspondentAdjusterDescription2.Clean
-                    && _correspondentAdjusterDescription3.Clean
-                    && _correspondentConfirmedBy.Clean
-                    && _correspondentConfirmedDate.Clean
-                    && _correspondentCurrentImpounds.Clean
-                    && _correspondentCurrentPrincipal.Clean
-                    && _correspondentDate.Clean
-                    && _correspondentEscrowDisbursementsAmount1007.Clean
-                    && _correspondentEscrowDisbursementsAmount1008.Clean
-                    && _correspondentEscrowDisbursementsAmount1009.Clean
-                    && _correspondentEscrowDisbursementsCityPropertyTax.Clean
-                    && _correspondentEscrowDisbursementsDescription1007.Clean
-                    && _correspondentEscrowDisbursementsDescription1008.Clean
-                    && _correspondentEscrowDisbursementsDescription1009.Clean
-                    && _correspondentEscrowDisbursementsEscrowsToBePaidBySeller.Clean
-                    && _correspondentEscrowDisbursementsEsrowFundedByInvestor.Clean
-                    && _correspondentEscrowDisbursementsFloodInsurance.Clean
-                    && _correspondentEscrowDisbursementsHomeInsurance.Clean
-                    && _correspondentEscrowDisbursementsMortgageInsurance.Clean
-                    && _correspondentEscrowDisbursementsOption1Amount.Clean
-                    && _correspondentEscrowDisbursementsOption1Desc.Clean
-                    && _correspondentEscrowDisbursementsOption2Amount.Clean
-                    && _correspondentEscrowDisbursementsOption2Desc.Clean
-                    && _correspondentEscrowDisbursementsPropertyTax.Clean
-                    && _correspondentEscrowDisbursementsUSDAAnnualFee.Clean
-                    && _correspondentFinalBuyAmount.Clean
-                    && _correspondentFinalBuyPrice.Clean
-                    && _correspondentFinalCDAggAdjAmount.Clean
-                    && _correspondentFinalCDAmount1007.Clean
-                    && _correspondentFinalCDAmount1008.Clean
-                    && _correspondentFinalCDAmount1009.Clean
-                    && _correspondentFinalCDCityPropertyTax.Clean
-                    && _correspondentFinalCDDescription1007.Clean
-                    && _correspondentFinalCDDescription1008.Clean
-                    && _correspondentFinalCDDescription1009.Clean
-                    && _correspondentFinalCDFloodInsurance.Clean
-                    && _correspondentFinalCDHomeInsurance.Clean
-                    && _correspondentFinalCDMortgageInsurance.Clean
-                    && _correspondentFinalCDOption1Amount.Clean
-                    && _correspondentFinalCDOption1Desc.Clean
-                    && _correspondentFinalCDOption2Amount.Clean
-                    && _correspondentFinalCDOption2Desc.Clean
-                    && _correspondentFinalCDPropertyTax.Clean
-                    && _correspondentFinalCDReservesCollectedAtClosing.Clean
-                    && _correspondentFinalCDUSDAAnnualFee.Clean
-                    && _correspondentFirstPaymentDate.Clean
-                    && _correspondentImpounds.Clean
-                    && _correspondentInterest.Clean
-                    && _correspondentInterestDays.Clean
-                    && _correspondentLateFeeAmount.Clean
-                    && _correspondentLateFeePriceAdjustment.Clean
-                    && _correspondentPaidToDate.Clean
-                    && _correspondentPaymentHistoryAnticipatedPurchaseDate.Clean
-                    && _correspondentPaymentHistoryCalculatedPurchasedPrincipal.Clean
-                    && _correspondentPaymentHistoryFirstBorrowerPaymentDueDate.Clean
-                    && _correspondentPaymentHistoryFirstInvestorPaymentDate.Clean
-                    && _correspondentPaymentHistoryNoteDate.Clean
-                    && _correspondentPaymentHistoryPricipalReduction.Clean
-                    && _correspondentPurchasedPrincipal.Clean
-                    && _correspondentReconcilationComments.Clean
-                    && _correspondentRemainingBuydownAmount.Clean
-                    && _correspondentSRPAmount.Clean
-                    && _correspondentTotalBuyAmount.Clean
-                    && _correspondentTotalFees.Clean
-                    && _correspondentWarehouseBankABANum.Clean
-                    && _correspondentWarehouseBankAcctName.Clean
-                    && _correspondentWarehouseBankAcctNum.Clean
-                    && _correspondentWarehouseBankAddress.Clean
-                    && _correspondentWarehouseBankAddress1.Clean
-                    && _correspondentWarehouseBankBaileeExpirationDate.Clean
-                    && _correspondentWarehouseBankBaileeLetterReceivedIndicator.Clean
-                    && _correspondentWarehouseBankBaileeLetterReqIndicator.Clean
-                    && _correspondentWarehouseBankCity.Clean
-                    && _correspondentWarehouseBankContactEmail.Clean
-                    && _correspondentWarehouseBankContactFax.Clean
-                    && _correspondentWarehouseBankContactName.Clean
-                    && _correspondentWarehouseBankContactPhone.Clean
-                    && _correspondentWarehouseBankDescription.Clean
-                    && _correspondentWarehouseBankFurtherCreditAcctName.Clean
-                    && _correspondentWarehouseBankFurtherCreditAcctNum.Clean
-                    && _correspondentWarehouseBankId.Clean
-                    && _correspondentWarehouseBankName.Clean
-                    && _correspondentWarehouseBankNotes.Clean
-                    && _correspondentWarehouseBankSelfFunderIndicator.Clean
-                    && _correspondentWarehouseBankState.Clean
-                    && _correspondentWarehouseBankTriPartyContractIndicator.Clean
-                    && _correspondentWarehouseBankUseDefaultContactIndicator.Clean
-                    && _correspondentWarehouseBankWireConfirmationNumber.Clean
-                    && _correspondentWarehouseBankWireInstructionsReceivedIndicator.Clean
-                    && _correspondentWarehouseBankZip.Clean
-                    && _creditScoreToUse.Clean
-                    && _cumulatedDaystoExtend.Clean
-                    && _currentAdjustments.Clean
-                    && _currentComments.Clean
-                    && _currentLockDate.Clean
-                    && _currentLockExpires.Clean
-                    && _currentMarginRate.Clean
-                    && _currentMarginRateRequested.Clean
-                    && _currentMarginTotalAdjustment.Clean
-                    && _currentNumberOfDays.Clean
-                    && _currentPriceRate.Clean
-                    && _currentPriceRateRequested.Clean
-                    && _currentPriceTotalAdjustment.Clean
-                    && _currentRate.Clean
-                    && _currentRateRequested.Clean
-                    && _currentRateSetDate.Clean
-                    && _currentRateSheetID.Clean
-                    && _currentRateTotalAdjustment.Clean
-                    && _date.Clean
-                    && _dateFirstPaymentToInvestor.Clean
-                    && _dateLockedWithInvestor.Clean
-                    && _dateSold.Clean
-                    && _dateWarehoused.Clean
-                    && _daysToExtend.Clean
-                    && _deliveryType.Clean
-                    && _diffAmountReceived.Clean
-                    && _diffImpounds.Clean
-                    && _diffInterest.Clean
-                    && _diffPremium.Clean
-                    && _diffPrinciple.Clean
-                    && _diffRemainingBuydownFunds.Clean
-                    && _diffSellAmount.Clean
-                    && _diffSellPrice.Clean
-                    && _diffSellSideSRP.Clean
-                    && _diffSRP.Clean
-                    && _diffSRPAmount.Clean
-                    && _employmentBorrowerSelfEmployedIndicator1.Clean
-                    && _employmentBorrowerSelfEmployedIndicator10.Clean
-                    && _employmentBorrowerSelfEmployedIndicator11.Clean
-                    && _employmentBorrowerSelfEmployedIndicator12.Clean
-                    && _employmentBorrowerSelfEmployedIndicator2.Clean
-                    && _employmentBorrowerSelfEmployedIndicator3.Clean
-                    && _employmentBorrowerSelfEmployedIndicator4.Clean
-                    && _employmentBorrowerSelfEmployedIndicator5.Clean
-                    && _employmentBorrowerSelfEmployedIndicator6.Clean
-                    && _employmentBorrowerSelfEmployedIndicator7.Clean
-                    && _employmentBorrowerSelfEmployedIndicator8.Clean
-                    && _employmentBorrowerSelfEmployedIndicator9.Clean
-                    && _expectedAmountReceived.Clean
-                    && _expectedImpounds.Clean
-                    && _expectedInterest.Clean
-                    && _expectedPremium.Clean
-                    && _expectedPrinciple.Clean
-                    && _expectedRemainingBuydownFunds.Clean
-                    && _expectedSRP.Clean
-                    && _extensionRequestPending.Clean
-                    && _extensionSequenceNumber.Clean
-                    && _extraPayments.Clean
-                    && _fHAUpfrontMIPremiumPercent.Clean
-                    && _financedNumberOfUnits.Clean
-                    && _firstPaymenTo.Clean
-                    && _firstSubordinateAmount.Clean
-                    && _firstTimeHomebuyersIndicator.Clean
-                    && _fNMProductPlanIdentifier.Clean
-                    && _fundingAmount.Clean
-                    && _gainLossPercentage.Clean
-                    && _gainLossPrice.Clean
-                    && _gainLossTotalBuyPrice.Clean
-                    && _gPMRate.Clean
-                    && _gPMYears.Clean
-                    && _gSEPropertyType.Clean
-                    && _hedging.Clean
-                    && _hELOCActualBalance.Clean
-                    && _id.Clean
-                    && _impounds.Clean
-                    && _impoundType.Clean
-                    && _impoundWavied.Clean
-                    && _interest.Clean
-                    && _investorAddress.Clean
-                    && _investorCity.Clean
-                    && _investorCommitment.Clean
-                    && _investorContact.Clean
-                    && _investorDeliveryDate.Clean
-                    && _investorEmail.Clean
-                    && _investorLoanNumber.Clean
-                    && _investorLockType.Clean
-                    && _investorMERSNumber.Clean
-                    && _investorName.Clean
-                    && _investorPhone.Clean
-                    && _investorPostalCode.Clean
-                    && _investorProgramCode.Clean
-                    && _investorState.Clean
-                    && _investorTargetDeliveryDate.Clean
-                    && _investorTemplateName.Clean
-                    && _investorWebsite.Clean
-                    && _isCancelled.Clean
-                    && _isDeliveryType.Clean
-                    && _lenderPaidMortgageInsuranceIndicator.Clean
-                    && _lienPriorityType.Clean
-                    && _loanAmortizationTermMonths.Clean
-                    && _loanAmortizationType.Clean
-                    && _loanDocumentationType.Clean
-                    && _loanFor203K.Clean
-                    && _loanProgram.Clean
-                    && _loanProgramFile.Clean
-                    && _loanScheduledClosingDate.Clean
-                    && _lockField.Clean
-                    && _lockRequestAdjustments.Clean
-                    && _lockRequestBorrowers.Clean
-                    && _lockRequestLoanPurposeType.Clean
-                    && _lTV.Clean
-                    && _minFICO.Clean
-                    && _minFICO2.Clean
-                    && _mIPPaidInCash.Clean
-                    && _mortgageType.Clean
-                    && _netSellAmount.Clean
-                    && _netSellPrice.Clean
-                    && _nextPaymentDate.Clean
-                    && _noClosingCostOption.Clean
-                    && _oNRPLock.Clean
-                    && _otherAmortizationTypeDescription.Clean
-                    && _otherSubordinateAmount.Clean
-                    && _penaltyTerm.Clean
-                    && _perDiemInterestRoundingType.Clean
-                    && _planCode.Clean
-                    && _premium.Clean
-                    && _prepayPenalty.Clean
-                    && _priceAdjustment.Clean
-                    && _priceAdjustments.Clean
-                    && _pricingHistoryData.Clean
-                    && _pricingUpdated.Clean
-                    && _principle.Clean
-                    && _profitMarginAdjustedBuyPrice.Clean
-                    && _propertyAppraisedValueAmount.Clean
-                    && _propertyEstimatedValueAmount.Clean
-                    && _propertyUsageType.Clean
-                    && _purchaseAdviceNumberOfDays.Clean
-                    && _purchaseAdvicePayouts.Clean
-                    && _purchasePriceAmount.Clean
-                    && _rateRequestStatus.Clean
-                    && _rateStatus.Clean
-                    && _reasonforBranchApproval.Clean
-                    && _reasonforCorporateApproval.Clean
-                    && _reconciledDiff.Clean
-                    && _reLockRequestPending.Clean
-                    && _remainingBuydownFunds.Clean
-                    && _requestComments.Clean
-                    && _requestCurrentRateSetDate.Clean
-                    && _requestDaystoExtend.Clean
-                    && _requestExtendedLockExpires.Clean
-                    && _requestFullfilledDateTime.Clean
-                    && _requestImpoundType.Clean
-                    && _requestImpoundWavied.Clean
-                    && _requestLockCancellationComment.Clean
-                    && _requestLockCancellationDate.Clean
-                    && _requestLockDate.Clean
-                    && _requestLockExpires.Clean
-                    && _requestLockExtendComment.Clean
-                    && _requestLockExtendPriceAdjustment.Clean
-                    && _requestLockType.Clean
-                    && _requestMarginRate.Clean
-                    && _requestMarginRateRequested.Clean
-                    && _requestMarginSRPPaidOut.Clean
-                    && _requestMarginTotalAdjustment.Clean
-                    && _requestNumberOfDays.Clean
-                    && _requestOnrpEligible.Clean
-                    && _requestOnrpLockDate.Clean
-                    && _requestOnrpLockTime.Clean
-                    && _requestOriginalLockExpires.Clean
-                    && _requestPenaltyTerm.Clean
-                    && _requestPending.Clean
-                    && _requestPrepayPenalty.Clean
-                    && _requestPriceRate.Clean
-                    && _requestPriceRateRequested.Clean
-                    && _requestPriceTotalAdjustment.Clean
-                    && _requestRate.Clean
-                    && _requestRateRequested.Clean
-                    && _requestRateSheetID.Clean
-                    && _requestRateTotalAdjustment.Clean
-                    && _requestStartingAdjPoint.Clean
-                    && _requestStartingAdjRate.Clean
-                    && _requestType.Clean
-                    && _requestUnDiscountedRate.Clean
-                    && _roundToNearest50.Clean
-                    && _secondSubordinateAmount.Clean
-                    && _sellerPaidMIPremium.Clean
-                    && _sellSideAdjustments.Clean
-                    && _sellSideComments.Clean
-                    && _sellSideCommitmentContractNumber.Clean
-                    && _sellSideCommitmentDate.Clean
-                    && _sellSideCurrentRateSetDate.Clean
-                    && _sellSideDaystoExtend.Clean
-                    && _sellSideDiscountYSP.Clean
-                    && _sellSideExtendedLockExpires.Clean
-                    && _sellSideGuaranteeFee.Clean
-                    && _sellSideGuarantyBaseFee.Clean
-                    && _sellSideInvestorStatus.Clean
-                    && _sellSideInvestorStatusDate.Clean
-                    && _sellSideInvestorTradeNumber.Clean
-                    && _sellSideLoanProgram.Clean
-                    && _sellSideLockDate.Clean
-                    && _sellSideLockExpires.Clean
-                    && _sellSideLockExtendPriceAdjustment.Clean
-                    && _sellSideMarginNetSellRate.Clean
-                    && _sellSideMarginRate.Clean
-                    && _sellSideMarginTotalAdjustment.Clean
-                    && _sellSideMasterContractNumber.Clean
-                    && _sellSideMSRValue.Clean
-                    && _sellSideNetSellPrice.Clean
-                    && _sellSideNetSellRate.Clean
-                    && _sellSideNumberOfDays.Clean
-                    && _sellSideOriginalLockExpires.Clean
-                    && _sellSidePoolID.Clean
-                    && _sellSidePoolNumber.Clean
-                    && _sellSidePriceRate.Clean
-                    && _sellSidePriceTotalAdjustment.Clean
-                    && _sellSideProductName.Clean
-                    && _sellSideRate.Clean
-                    && _sellSideRateSheetID.Clean
-                    && _sellSideRateTotalAdjustment.Clean
-                    && _sellSideRequestedBy.Clean
-                    && _sellSideServicer.Clean
-                    && _sellSideServicingFee.Clean
-                    && _sellSideServicingType.Clean
-                    && _sellSideSRP.Clean
-                    && _sellSideSRPPaidOut.Clean
-                    && _sellSideTradeGuid.Clean
-                    && _sellSideTradeMgmtPrevConfirmedLockGuid.Clean
-                    && _sellSideTradeNumber.Clean
-                    && _servicingReleaseIndicator.Clean
-                    && _sRP.Clean
-                    && _sRPAmount.Clean
-                    && _sRPPaidOut.Clean
-                    && _subjectPropertyCity.Clean
-                    && _subjectPropertyCondotelIndicator.Clean
-                    && _subjectPropertyCounty.Clean
-                    && _subjectPropertyNonWarrantableProjectIndicator.Clean
-                    && _subjectPropertyPostalCode.Clean
-                    && _subjectPropertyState.Clean
-                    && _subjectPropertyStreetAddress.Clean
-                    && _timeLockedWithInvestor.Clean
-                    && _totalBuyPrice.Clean
-                    && _totalForLesserOfSumAsIs.Clean
-                    && _totalPrice.Clean
-                    && _totalSubordinateFinancing.Clean
-                    && _twelveMonthMortgageRentalHistoryIndicator.Clean
-                    && _type.Clean
-                    && _usePoint.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actualSellAmount.Dirty
+                    || _actualSellPrice.Dirty
+                    || _actualSellSideSRP.Dirty
+                    || _actualSRPAmount.Dirty
+                    || _amountDue.Dirty
+                    || _amountDueTo.Dirty
+                    || _amountPaid.Dirty
+                    || _amountPaidTo.Dirty
+                    || _amountReceived.Dirty
+                    || _balloonLoanMaturityTermMonths.Dirty
+                    || _baseLoanAmount.Dirty
+                    || _borrowerRequestedLoanAmount.Dirty
+                    || _branchApprovalDate.Dirty
+                    || _branchApprovedby.Dirty
+                    || _branchPrice.Dirty
+                    || _buySideAdjustments.Dirty
+                    || _buySideComments.Dirty
+                    || _buySideCommitmentDate.Dirty
+                    || _buySideCommitmentNumber.Dirty
+                    || _buySideCommitmentType.Dirty
+                    || _buySideCurrentRateSetDate.Dirty
+                    || _buySideDaystoExtend.Dirty
+                    || _buySideDeliveryExpirationDate.Dirty
+                    || _buySideDeliveryType.Dirty
+                    || _buySideExpirationDate.Dirty
+                    || _buySideExtendedLockExpires.Dirty
+                    || _buySideLockDate.Dirty
+                    || _buySideLockExpires.Dirty
+                    || _buySideLockExtendPriceAdjustment.Dirty
+                    || _buySideMarginNetBuyRate.Dirty
+                    || _buySideMarginRate.Dirty
+                    || _buySideMarginTotalAdjustment.Dirty
+                    || _buySideMasterCommitmentNumber.Dirty
+                    || _buySideNumberOfDays.Dirty
+                    || _buySideOnrpEligible.Dirty
+                    || _buySideOnrpLockDate.Dirty
+                    || _buySideOnrpLockTime.Dirty
+                    || _buySideOrgID.Dirty
+                    || _buySideOriginalLockExpires.Dirty
+                    || _buySidePriceNetBuyPrice.Dirty
+                    || _buySidePriceRate.Dirty
+                    || _buySidePriceTotalAdjustment.Dirty
+                    || _buySideRate.Dirty
+                    || _buySideRateNetBuyRate.Dirty
+                    || _buySideRateSheetID.Dirty
+                    || _buySideRateTotalAdjustment.Dirty
+                    || _buySideRequestedBy.Dirty
+                    || _buySideSRPPaidOut.Dirty
+                    || _buySideStartingAdjPoint.Dirty
+                    || _buySideStartingAdjPrice.Dirty
+                    || _buySideStartingAdjRate.Dirty
+                    || _buySideTPOID.Dirty
+                    || _buySideTPOName.Dirty
+                    || _buySideTradeGuid.Dirty
+                    || _buySideTradeNumber.Dirty
+                    || _buySideUnDiscountedRate.Dirty
+                    || _cancellationRequestPending.Dirty
+                    || _combinedLTV.Dirty
+                    || _comments.Dirty
+                    || _commitment.Dirty
+                    || _commitmentType.Dirty
+                    || _compGainLossPercentage.Dirty
+                    || _compGainLossPrice.Dirty
+                    || _compGainLossTotalBuyPrice.Dirty
+                    || _compGainLossTotalCompPrice.Dirty
+                    || _compInvestorAddress.Dirty
+                    || _compInvestorCity.Dirty
+                    || _compInvestorCommitment.Dirty
+                    || _compInvestorContact.Dirty
+                    || _compInvestorEmail.Dirty
+                    || _compInvestorLockType.Dirty
+                    || _compInvestorName.Dirty
+                    || _compInvestorPhone.Dirty
+                    || _compInvestorPostalCode.Dirty
+                    || _compInvestorProgramCode.Dirty
+                    || _compInvestorState.Dirty
+                    || _compInvestorTemplateName.Dirty
+                    || _compInvestorWebsite.Dirty
+                    || _compSideAdjustments.Dirty
+                    || _compSideComments.Dirty
+                    || _compSideComparisonedBy.Dirty
+                    || _compSideCurrentRateSetDate.Dirty
+                    || _compSideDaystoExtend.Dirty
+                    || _compSideDiscountYSP.Dirty
+                    || _compSideExtendedLockExpires.Dirty
+                    || _compSideInvestorStatus.Dirty
+                    || _compSideInvestorStatusDate.Dirty
+                    || _compSideInvestorTradeNumber.Dirty
+                    || _compSideLoanProgram.Dirty
+                    || _compSideLockDate.Dirty
+                    || _compSideLockExpires.Dirty
+                    || _compSideLockExtendPriceAdjustment.Dirty
+                    || _compSideMarginNetCompRate.Dirty
+                    || _compSideMarginRate.Dirty
+                    || _compSideMarginTotalAdjustment.Dirty
+                    || _compSideMasterContractNumber.Dirty
+                    || _compSideNetCompPrice.Dirty
+                    || _compSideNetCompRate.Dirty
+                    || _compSideNumberOfDays.Dirty
+                    || _compSideOriginalLockExpires.Dirty
+                    || _compSidePriceRate.Dirty
+                    || _compSidePriceTotalAdjustment.Dirty
+                    || _compSideRate.Dirty
+                    || _compSideRateSheetID.Dirty
+                    || _compSideRateTotalAdjustment.Dirty
+                    || _compSideRequestedBy.Dirty
+                    || _compSideServicingType.Dirty
+                    || _compSideSRPPaidOut.Dirty
+                    || _compSideTradeGuid.Dirty
+                    || _compSideTradeNumber.Dirty
+                    || _confirmedBy.Dirty
+                    || _confirmedDate.Dirty
+                    || _corporateApprovalDate.Dirty
+                    || _corporateApprovedby.Dirty
+                    || _corporatePrice.Dirty
+                    || _correspondentAdditionalEscrowAdditionalEscrow.Dirty
+                    || _correspondentAdditionalEscrowAmount1007.Dirty
+                    || _correspondentAdditionalEscrowAmount1008.Dirty
+                    || _correspondentAdditionalEscrowAmount1009.Dirty
+                    || _correspondentAdditionalEscrowCityPropertyTax.Dirty
+                    || _correspondentAdditionalEscrowDescription1007.Dirty
+                    || _correspondentAdditionalEscrowDescription1008.Dirty
+                    || _correspondentAdditionalEscrowDescription1009.Dirty
+                    || _correspondentAdditionalEscrowFloodInsurance.Dirty
+                    || _correspondentAdditionalEscrowHomeInsurance.Dirty
+                    || _correspondentAdditionalEscrowMIMIP.Dirty
+                    || _correspondentAdditionalEscrowNumOfPayments.Dirty
+                    || _correspondentAdditionalEscrowOption1Amount.Dirty
+                    || _correspondentAdditionalEscrowOption1Desc.Dirty
+                    || _correspondentAdditionalEscrowOption2Amount.Dirty
+                    || _correspondentAdditionalEscrowOption2Desc.Dirty
+                    || _correspondentAdditionalEscrowPropertyTax.Dirty
+                    || _correspondentAdditionalEscrowSumOfPayments.Dirty
+                    || _correspondentAdditionalEscrowUSDAAnnualFee.Dirty
+                    || _correspondentAdditionalLineAmount1.Dirty
+                    || _correspondentAdditionalLineAmount10.Dirty
+                    || _correspondentAdditionalLineAmount11.Dirty
+                    || _correspondentAdditionalLineAmount12.Dirty
+                    || _correspondentAdditionalLineAmount13.Dirty
+                    || _correspondentAdditionalLineAmount2.Dirty
+                    || _correspondentAdditionalLineAmount3.Dirty
+                    || _correspondentAdditionalLineAmount4.Dirty
+                    || _correspondentAdditionalLineAmount5.Dirty
+                    || _correspondentAdditionalLineAmount6.Dirty
+                    || _correspondentAdditionalLineAmount7.Dirty
+                    || _correspondentAdditionalLineAmount8.Dirty
+                    || _correspondentAdditionalLineAmount9.Dirty
+                    || _correspondentAdditionalLineDescription1.Dirty
+                    || _correspondentAdditionalLineDescription10.Dirty
+                    || _correspondentAdditionalLineDescription11.Dirty
+                    || _correspondentAdditionalLineDescription12.Dirty
+                    || _correspondentAdditionalLineDescription2.Dirty
+                    || _correspondentAdditionalLineDescription3.Dirty
+                    || _correspondentAdditionalLineDescription4.Dirty
+                    || _correspondentAdditionalLineDescription5.Dirty
+                    || _correspondentAdditionalLineDescription6.Dirty
+                    || _correspondentAdditionalLineDescription7.Dirty
+                    || _correspondentAdditionalLineDescription8.Dirty
+                    || _correspondentAdditionalLineDescription9.Dirty
+                    || _correspondentAdditionalLineTotalAmount.Dirty
+                    || _correspondentAdjusterAmount1.Dirty
+                    || _correspondentAdjusterAmount2.Dirty
+                    || _correspondentAdjusterAmount3.Dirty
+                    || _correspondentAdjusterDescription1.Dirty
+                    || _correspondentAdjusterDescription2.Dirty
+                    || _correspondentAdjusterDescription3.Dirty
+                    || _correspondentConfirmedBy.Dirty
+                    || _correspondentConfirmedDate.Dirty
+                    || _correspondentCurrentImpounds.Dirty
+                    || _correspondentCurrentPrincipal.Dirty
+                    || _correspondentDate.Dirty
+                    || _correspondentEscrowDisbursementsAmount1007.Dirty
+                    || _correspondentEscrowDisbursementsAmount1008.Dirty
+                    || _correspondentEscrowDisbursementsAmount1009.Dirty
+                    || _correspondentEscrowDisbursementsCityPropertyTax.Dirty
+                    || _correspondentEscrowDisbursementsDescription1007.Dirty
+                    || _correspondentEscrowDisbursementsDescription1008.Dirty
+                    || _correspondentEscrowDisbursementsDescription1009.Dirty
+                    || _correspondentEscrowDisbursementsEscrowsToBePaidBySeller.Dirty
+                    || _correspondentEscrowDisbursementsEsrowFundedByInvestor.Dirty
+                    || _correspondentEscrowDisbursementsFloodInsurance.Dirty
+                    || _correspondentEscrowDisbursementsHomeInsurance.Dirty
+                    || _correspondentEscrowDisbursementsMortgageInsurance.Dirty
+                    || _correspondentEscrowDisbursementsOption1Amount.Dirty
+                    || _correspondentEscrowDisbursementsOption1Desc.Dirty
+                    || _correspondentEscrowDisbursementsOption2Amount.Dirty
+                    || _correspondentEscrowDisbursementsOption2Desc.Dirty
+                    || _correspondentEscrowDisbursementsPropertyTax.Dirty
+                    || _correspondentEscrowDisbursementsUSDAAnnualFee.Dirty
+                    || _correspondentFinalBuyAmount.Dirty
+                    || _correspondentFinalBuyPrice.Dirty
+                    || _correspondentFinalCDAggAdjAmount.Dirty
+                    || _correspondentFinalCDAmount1007.Dirty
+                    || _correspondentFinalCDAmount1008.Dirty
+                    || _correspondentFinalCDAmount1009.Dirty
+                    || _correspondentFinalCDCityPropertyTax.Dirty
+                    || _correspondentFinalCDDescription1007.Dirty
+                    || _correspondentFinalCDDescription1008.Dirty
+                    || _correspondentFinalCDDescription1009.Dirty
+                    || _correspondentFinalCDFloodInsurance.Dirty
+                    || _correspondentFinalCDHomeInsurance.Dirty
+                    || _correspondentFinalCDMortgageInsurance.Dirty
+                    || _correspondentFinalCDOption1Amount.Dirty
+                    || _correspondentFinalCDOption1Desc.Dirty
+                    || _correspondentFinalCDOption2Amount.Dirty
+                    || _correspondentFinalCDOption2Desc.Dirty
+                    || _correspondentFinalCDPropertyTax.Dirty
+                    || _correspondentFinalCDReservesCollectedAtClosing.Dirty
+                    || _correspondentFinalCDUSDAAnnualFee.Dirty
+                    || _correspondentFirstPaymentDate.Dirty
+                    || _correspondentImpounds.Dirty
+                    || _correspondentInterest.Dirty
+                    || _correspondentInterestDays.Dirty
+                    || _correspondentLateFeeAmount.Dirty
+                    || _correspondentLateFeePriceAdjustment.Dirty
+                    || _correspondentPaidToDate.Dirty
+                    || _correspondentPaymentHistoryAnticipatedPurchaseDate.Dirty
+                    || _correspondentPaymentHistoryCalculatedPurchasedPrincipal.Dirty
+                    || _correspondentPaymentHistoryFirstBorrowerPaymentDueDate.Dirty
+                    || _correspondentPaymentHistoryFirstInvestorPaymentDate.Dirty
+                    || _correspondentPaymentHistoryNoteDate.Dirty
+                    || _correspondentPaymentHistoryPricipalReduction.Dirty
+                    || _correspondentPurchasedPrincipal.Dirty
+                    || _correspondentReconcilationComments.Dirty
+                    || _correspondentRemainingBuydownAmount.Dirty
+                    || _correspondentSRPAmount.Dirty
+                    || _correspondentTotalBuyAmount.Dirty
+                    || _correspondentTotalFees.Dirty
+                    || _correspondentWarehouseBankABANum.Dirty
+                    || _correspondentWarehouseBankAcctName.Dirty
+                    || _correspondentWarehouseBankAcctNum.Dirty
+                    || _correspondentWarehouseBankAddress.Dirty
+                    || _correspondentWarehouseBankAddress1.Dirty
+                    || _correspondentWarehouseBankBaileeExpirationDate.Dirty
+                    || _correspondentWarehouseBankBaileeLetterReceivedIndicator.Dirty
+                    || _correspondentWarehouseBankBaileeLetterReqIndicator.Dirty
+                    || _correspondentWarehouseBankCity.Dirty
+                    || _correspondentWarehouseBankContactEmail.Dirty
+                    || _correspondentWarehouseBankContactFax.Dirty
+                    || _correspondentWarehouseBankContactName.Dirty
+                    || _correspondentWarehouseBankContactPhone.Dirty
+                    || _correspondentWarehouseBankDescription.Dirty
+                    || _correspondentWarehouseBankFurtherCreditAcctName.Dirty
+                    || _correspondentWarehouseBankFurtherCreditAcctNum.Dirty
+                    || _correspondentWarehouseBankId.Dirty
+                    || _correspondentWarehouseBankName.Dirty
+                    || _correspondentWarehouseBankNotes.Dirty
+                    || _correspondentWarehouseBankSelfFunderIndicator.Dirty
+                    || _correspondentWarehouseBankState.Dirty
+                    || _correspondentWarehouseBankTriPartyContractIndicator.Dirty
+                    || _correspondentWarehouseBankUseDefaultContactIndicator.Dirty
+                    || _correspondentWarehouseBankWireConfirmationNumber.Dirty
+                    || _correspondentWarehouseBankWireInstructionsReceivedIndicator.Dirty
+                    || _correspondentWarehouseBankZip.Dirty
+                    || _creditScoreToUse.Dirty
+                    || _cumulatedDaystoExtend.Dirty
+                    || _currentAdjustments.Dirty
+                    || _currentComments.Dirty
+                    || _currentLockDate.Dirty
+                    || _currentLockExpires.Dirty
+                    || _currentMarginRate.Dirty
+                    || _currentMarginRateRequested.Dirty
+                    || _currentMarginTotalAdjustment.Dirty
+                    || _currentNumberOfDays.Dirty
+                    || _currentPriceRate.Dirty
+                    || _currentPriceRateRequested.Dirty
+                    || _currentPriceTotalAdjustment.Dirty
+                    || _currentRate.Dirty
+                    || _currentRateRequested.Dirty
+                    || _currentRateSetDate.Dirty
+                    || _currentRateSheetID.Dirty
+                    || _currentRateTotalAdjustment.Dirty
+                    || _date.Dirty
+                    || _dateFirstPaymentToInvestor.Dirty
+                    || _dateLockedWithInvestor.Dirty
+                    || _dateSold.Dirty
+                    || _dateWarehoused.Dirty
+                    || _daysToExtend.Dirty
+                    || _deliveryType.Dirty
+                    || _diffAmountReceived.Dirty
+                    || _diffImpounds.Dirty
+                    || _diffInterest.Dirty
+                    || _diffPremium.Dirty
+                    || _diffPrinciple.Dirty
+                    || _diffRemainingBuydownFunds.Dirty
+                    || _diffSellAmount.Dirty
+                    || _diffSellPrice.Dirty
+                    || _diffSellSideSRP.Dirty
+                    || _diffSRP.Dirty
+                    || _diffSRPAmount.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator1.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator10.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator11.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator12.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator2.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator3.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator4.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator5.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator6.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator7.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator8.Dirty
+                    || _employmentBorrowerSelfEmployedIndicator9.Dirty
+                    || _expectedAmountReceived.Dirty
+                    || _expectedImpounds.Dirty
+                    || _expectedInterest.Dirty
+                    || _expectedPremium.Dirty
+                    || _expectedPrinciple.Dirty
+                    || _expectedRemainingBuydownFunds.Dirty
+                    || _expectedSRP.Dirty
+                    || _extensionRequestPending.Dirty
+                    || _extensionSequenceNumber.Dirty
+                    || _extraPayments.Dirty
+                    || _fHAUpfrontMIPremiumPercent.Dirty
+                    || _financedNumberOfUnits.Dirty
+                    || _firstPaymenTo.Dirty
+                    || _firstSubordinateAmount.Dirty
+                    || _firstTimeHomebuyersIndicator.Dirty
+                    || _fNMProductPlanIdentifier.Dirty
+                    || _fundingAmount.Dirty
+                    || _gainLossPercentage.Dirty
+                    || _gainLossPrice.Dirty
+                    || _gainLossTotalBuyPrice.Dirty
+                    || _gPMRate.Dirty
+                    || _gPMYears.Dirty
+                    || _gSEPropertyType.Dirty
+                    || _hedging.Dirty
+                    || _hELOCActualBalance.Dirty
+                    || _id.Dirty
+                    || _impounds.Dirty
+                    || _impoundType.Dirty
+                    || _impoundWavied.Dirty
+                    || _interest.Dirty
+                    || _investorAddress.Dirty
+                    || _investorCity.Dirty
+                    || _investorCommitment.Dirty
+                    || _investorContact.Dirty
+                    || _investorDeliveryDate.Dirty
+                    || _investorEmail.Dirty
+                    || _investorLoanNumber.Dirty
+                    || _investorLockType.Dirty
+                    || _investorMERSNumber.Dirty
+                    || _investorName.Dirty
+                    || _investorPhone.Dirty
+                    || _investorPostalCode.Dirty
+                    || _investorProgramCode.Dirty
+                    || _investorState.Dirty
+                    || _investorTargetDeliveryDate.Dirty
+                    || _investorTemplateName.Dirty
+                    || _investorWebsite.Dirty
+                    || _isCancelled.Dirty
+                    || _isDeliveryType.Dirty
+                    || _lenderPaidMortgageInsuranceIndicator.Dirty
+                    || _lienPriorityType.Dirty
+                    || _loanAmortizationTermMonths.Dirty
+                    || _loanAmortizationType.Dirty
+                    || _loanDocumentationType.Dirty
+                    || _loanFor203K.Dirty
+                    || _loanProgram.Dirty
+                    || _loanProgramFile.Dirty
+                    || _loanScheduledClosingDate.Dirty
+                    || _lockField.Dirty
+                    || _lockRequestAdjustments.Dirty
+                    || _lockRequestBorrowers.Dirty
+                    || _lockRequestLoanPurposeType.Dirty
+                    || _lTV.Dirty
+                    || _minFICO.Dirty
+                    || _minFICO2.Dirty
+                    || _mIPPaidInCash.Dirty
+                    || _mortgageType.Dirty
+                    || _netSellAmount.Dirty
+                    || _netSellPrice.Dirty
+                    || _nextPaymentDate.Dirty
+                    || _noClosingCostOption.Dirty
+                    || _oNRPLock.Dirty
+                    || _otherAmortizationTypeDescription.Dirty
+                    || _otherSubordinateAmount.Dirty
+                    || _penaltyTerm.Dirty
+                    || _perDiemInterestRoundingType.Dirty
+                    || _planCode.Dirty
+                    || _premium.Dirty
+                    || _prepayPenalty.Dirty
+                    || _priceAdjustment.Dirty
+                    || _priceAdjustments.Dirty
+                    || _pricingHistoryData.Dirty
+                    || _pricingUpdated.Dirty
+                    || _principle.Dirty
+                    || _profitMarginAdjustedBuyPrice.Dirty
+                    || _propertyAppraisedValueAmount.Dirty
+                    || _propertyEstimatedValueAmount.Dirty
+                    || _propertyUsageType.Dirty
+                    || _purchaseAdviceNumberOfDays.Dirty
+                    || _purchaseAdvicePayouts.Dirty
+                    || _purchasePriceAmount.Dirty
+                    || _rateRequestStatus.Dirty
+                    || _rateStatus.Dirty
+                    || _reasonforBranchApproval.Dirty
+                    || _reasonforCorporateApproval.Dirty
+                    || _reconciledDiff.Dirty
+                    || _reLockRequestPending.Dirty
+                    || _remainingBuydownFunds.Dirty
+                    || _requestComments.Dirty
+                    || _requestCurrentRateSetDate.Dirty
+                    || _requestDaystoExtend.Dirty
+                    || _requestExtendedLockExpires.Dirty
+                    || _requestFullfilledDateTime.Dirty
+                    || _requestImpoundType.Dirty
+                    || _requestImpoundWavied.Dirty
+                    || _requestLockCancellationComment.Dirty
+                    || _requestLockCancellationDate.Dirty
+                    || _requestLockDate.Dirty
+                    || _requestLockExpires.Dirty
+                    || _requestLockExtendComment.Dirty
+                    || _requestLockExtendPriceAdjustment.Dirty
+                    || _requestLockType.Dirty
+                    || _requestMarginRate.Dirty
+                    || _requestMarginRateRequested.Dirty
+                    || _requestMarginSRPPaidOut.Dirty
+                    || _requestMarginTotalAdjustment.Dirty
+                    || _requestNumberOfDays.Dirty
+                    || _requestOnrpEligible.Dirty
+                    || _requestOnrpLockDate.Dirty
+                    || _requestOnrpLockTime.Dirty
+                    || _requestOriginalLockExpires.Dirty
+                    || _requestPenaltyTerm.Dirty
+                    || _requestPending.Dirty
+                    || _requestPrepayPenalty.Dirty
+                    || _requestPriceRate.Dirty
+                    || _requestPriceRateRequested.Dirty
+                    || _requestPriceTotalAdjustment.Dirty
+                    || _requestRate.Dirty
+                    || _requestRateRequested.Dirty
+                    || _requestRateSheetID.Dirty
+                    || _requestRateTotalAdjustment.Dirty
+                    || _requestStartingAdjPoint.Dirty
+                    || _requestStartingAdjRate.Dirty
+                    || _requestType.Dirty
+                    || _requestUnDiscountedRate.Dirty
+                    || _roundToNearest50.Dirty
+                    || _secondSubordinateAmount.Dirty
+                    || _sellerPaidMIPremium.Dirty
+                    || _sellSideAdjustments.Dirty
+                    || _sellSideComments.Dirty
+                    || _sellSideCommitmentContractNumber.Dirty
+                    || _sellSideCommitmentDate.Dirty
+                    || _sellSideCurrentRateSetDate.Dirty
+                    || _sellSideDaystoExtend.Dirty
+                    || _sellSideDiscountYSP.Dirty
+                    || _sellSideExtendedLockExpires.Dirty
+                    || _sellSideGuaranteeFee.Dirty
+                    || _sellSideGuarantyBaseFee.Dirty
+                    || _sellSideInvestorStatus.Dirty
+                    || _sellSideInvestorStatusDate.Dirty
+                    || _sellSideInvestorTradeNumber.Dirty
+                    || _sellSideLoanProgram.Dirty
+                    || _sellSideLockDate.Dirty
+                    || _sellSideLockExpires.Dirty
+                    || _sellSideLockExtendPriceAdjustment.Dirty
+                    || _sellSideMarginNetSellRate.Dirty
+                    || _sellSideMarginRate.Dirty
+                    || _sellSideMarginTotalAdjustment.Dirty
+                    || _sellSideMasterContractNumber.Dirty
+                    || _sellSideMSRValue.Dirty
+                    || _sellSideNetSellPrice.Dirty
+                    || _sellSideNetSellRate.Dirty
+                    || _sellSideNumberOfDays.Dirty
+                    || _sellSideOriginalLockExpires.Dirty
+                    || _sellSidePoolID.Dirty
+                    || _sellSidePoolNumber.Dirty
+                    || _sellSidePriceRate.Dirty
+                    || _sellSidePriceTotalAdjustment.Dirty
+                    || _sellSideProductName.Dirty
+                    || _sellSideRate.Dirty
+                    || _sellSideRateSheetID.Dirty
+                    || _sellSideRateTotalAdjustment.Dirty
+                    || _sellSideRequestedBy.Dirty
+                    || _sellSideServicer.Dirty
+                    || _sellSideServicingFee.Dirty
+                    || _sellSideServicingType.Dirty
+                    || _sellSideSRP.Dirty
+                    || _sellSideSRPPaidOut.Dirty
+                    || _sellSideTradeGuid.Dirty
+                    || _sellSideTradeMgmtPrevConfirmedLockGuid.Dirty
+                    || _sellSideTradeNumber.Dirty
+                    || _servicingReleaseIndicator.Dirty
+                    || _sRP.Dirty
+                    || _sRPAmount.Dirty
+                    || _sRPPaidOut.Dirty
+                    || _subjectPropertyCity.Dirty
+                    || _subjectPropertyCondotelIndicator.Dirty
+                    || _subjectPropertyCounty.Dirty
+                    || _subjectPropertyNonWarrantableProjectIndicator.Dirty
+                    || _subjectPropertyPostalCode.Dirty
+                    || _subjectPropertyState.Dirty
+                    || _subjectPropertyStreetAddress.Dirty
+                    || _timeLockedWithInvestor.Dirty
+                    || _totalBuyPrice.Dirty
+                    || _totalForLesserOfSumAsIs.Dirty
+                    || _totalPrice.Dirty
+                    || _totalSubordinateFinancing.Dirty
+                    || _twelveMonthMortgageRentalHistoryIndicator.Dirty
+                    || _type.Dirty
+                    || _usePoint.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actualSellAmount = _actualSellAmount; actualSellAmount.Clean = value; _actualSellAmount = actualSellAmount;
-                var actualSellPrice = _actualSellPrice; actualSellPrice.Clean = value; _actualSellPrice = actualSellPrice;
-                var actualSellSideSRP = _actualSellSideSRP; actualSellSideSRP.Clean = value; _actualSellSideSRP = actualSellSideSRP;
-                var actualSRPAmount = _actualSRPAmount; actualSRPAmount.Clean = value; _actualSRPAmount = actualSRPAmount;
-                var amountDue = _amountDue; amountDue.Clean = value; _amountDue = amountDue;
-                var amountDueTo = _amountDueTo; amountDueTo.Clean = value; _amountDueTo = amountDueTo;
-                var amountPaid = _amountPaid; amountPaid.Clean = value; _amountPaid = amountPaid;
-                var amountPaidTo = _amountPaidTo; amountPaidTo.Clean = value; _amountPaidTo = amountPaidTo;
-                var amountReceived = _amountReceived; amountReceived.Clean = value; _amountReceived = amountReceived;
-                var balloonLoanMaturityTermMonths = _balloonLoanMaturityTermMonths; balloonLoanMaturityTermMonths.Clean = value; _balloonLoanMaturityTermMonths = balloonLoanMaturityTermMonths;
-                var baseLoanAmount = _baseLoanAmount; baseLoanAmount.Clean = value; _baseLoanAmount = baseLoanAmount;
-                var borrowerRequestedLoanAmount = _borrowerRequestedLoanAmount; borrowerRequestedLoanAmount.Clean = value; _borrowerRequestedLoanAmount = borrowerRequestedLoanAmount;
-                var branchApprovalDate = _branchApprovalDate; branchApprovalDate.Clean = value; _branchApprovalDate = branchApprovalDate;
-                var branchApprovedby = _branchApprovedby; branchApprovedby.Clean = value; _branchApprovedby = branchApprovedby;
-                var branchPrice = _branchPrice; branchPrice.Clean = value; _branchPrice = branchPrice;
-                var buySideAdjustments = _buySideAdjustments; buySideAdjustments.Clean = value; _buySideAdjustments = buySideAdjustments;
-                var buySideComments = _buySideComments; buySideComments.Clean = value; _buySideComments = buySideComments;
-                var buySideCommitmentDate = _buySideCommitmentDate; buySideCommitmentDate.Clean = value; _buySideCommitmentDate = buySideCommitmentDate;
-                var buySideCommitmentNumber = _buySideCommitmentNumber; buySideCommitmentNumber.Clean = value; _buySideCommitmentNumber = buySideCommitmentNumber;
-                var buySideCommitmentType = _buySideCommitmentType; buySideCommitmentType.Clean = value; _buySideCommitmentType = buySideCommitmentType;
-                var buySideCurrentRateSetDate = _buySideCurrentRateSetDate; buySideCurrentRateSetDate.Clean = value; _buySideCurrentRateSetDate = buySideCurrentRateSetDate;
-                var buySideDaystoExtend = _buySideDaystoExtend; buySideDaystoExtend.Clean = value; _buySideDaystoExtend = buySideDaystoExtend;
-                var buySideDeliveryExpirationDate = _buySideDeliveryExpirationDate; buySideDeliveryExpirationDate.Clean = value; _buySideDeliveryExpirationDate = buySideDeliveryExpirationDate;
-                var buySideDeliveryType = _buySideDeliveryType; buySideDeliveryType.Clean = value; _buySideDeliveryType = buySideDeliveryType;
-                var buySideExpirationDate = _buySideExpirationDate; buySideExpirationDate.Clean = value; _buySideExpirationDate = buySideExpirationDate;
-                var buySideExtendedLockExpires = _buySideExtendedLockExpires; buySideExtendedLockExpires.Clean = value; _buySideExtendedLockExpires = buySideExtendedLockExpires;
-                var buySideLockDate = _buySideLockDate; buySideLockDate.Clean = value; _buySideLockDate = buySideLockDate;
-                var buySideLockExpires = _buySideLockExpires; buySideLockExpires.Clean = value; _buySideLockExpires = buySideLockExpires;
-                var buySideLockExtendPriceAdjustment = _buySideLockExtendPriceAdjustment; buySideLockExtendPriceAdjustment.Clean = value; _buySideLockExtendPriceAdjustment = buySideLockExtendPriceAdjustment;
-                var buySideMarginNetBuyRate = _buySideMarginNetBuyRate; buySideMarginNetBuyRate.Clean = value; _buySideMarginNetBuyRate = buySideMarginNetBuyRate;
-                var buySideMarginRate = _buySideMarginRate; buySideMarginRate.Clean = value; _buySideMarginRate = buySideMarginRate;
-                var buySideMarginTotalAdjustment = _buySideMarginTotalAdjustment; buySideMarginTotalAdjustment.Clean = value; _buySideMarginTotalAdjustment = buySideMarginTotalAdjustment;
-                var buySideMasterCommitmentNumber = _buySideMasterCommitmentNumber; buySideMasterCommitmentNumber.Clean = value; _buySideMasterCommitmentNumber = buySideMasterCommitmentNumber;
-                var buySideNumberOfDays = _buySideNumberOfDays; buySideNumberOfDays.Clean = value; _buySideNumberOfDays = buySideNumberOfDays;
-                var buySideOnrpEligible = _buySideOnrpEligible; buySideOnrpEligible.Clean = value; _buySideOnrpEligible = buySideOnrpEligible;
-                var buySideOnrpLockDate = _buySideOnrpLockDate; buySideOnrpLockDate.Clean = value; _buySideOnrpLockDate = buySideOnrpLockDate;
-                var buySideOnrpLockTime = _buySideOnrpLockTime; buySideOnrpLockTime.Clean = value; _buySideOnrpLockTime = buySideOnrpLockTime;
-                var buySideOrgID = _buySideOrgID; buySideOrgID.Clean = value; _buySideOrgID = buySideOrgID;
-                var buySideOriginalLockExpires = _buySideOriginalLockExpires; buySideOriginalLockExpires.Clean = value; _buySideOriginalLockExpires = buySideOriginalLockExpires;
-                var buySidePriceNetBuyPrice = _buySidePriceNetBuyPrice; buySidePriceNetBuyPrice.Clean = value; _buySidePriceNetBuyPrice = buySidePriceNetBuyPrice;
-                var buySidePriceRate = _buySidePriceRate; buySidePriceRate.Clean = value; _buySidePriceRate = buySidePriceRate;
-                var buySidePriceTotalAdjustment = _buySidePriceTotalAdjustment; buySidePriceTotalAdjustment.Clean = value; _buySidePriceTotalAdjustment = buySidePriceTotalAdjustment;
-                var buySideRate = _buySideRate; buySideRate.Clean = value; _buySideRate = buySideRate;
-                var buySideRateNetBuyRate = _buySideRateNetBuyRate; buySideRateNetBuyRate.Clean = value; _buySideRateNetBuyRate = buySideRateNetBuyRate;
-                var buySideRateSheetID = _buySideRateSheetID; buySideRateSheetID.Clean = value; _buySideRateSheetID = buySideRateSheetID;
-                var buySideRateTotalAdjustment = _buySideRateTotalAdjustment; buySideRateTotalAdjustment.Clean = value; _buySideRateTotalAdjustment = buySideRateTotalAdjustment;
-                var buySideRequestedBy = _buySideRequestedBy; buySideRequestedBy.Clean = value; _buySideRequestedBy = buySideRequestedBy;
-                var buySideSRPPaidOut = _buySideSRPPaidOut; buySideSRPPaidOut.Clean = value; _buySideSRPPaidOut = buySideSRPPaidOut;
-                var buySideStartingAdjPoint = _buySideStartingAdjPoint; buySideStartingAdjPoint.Clean = value; _buySideStartingAdjPoint = buySideStartingAdjPoint;
-                var buySideStartingAdjPrice = _buySideStartingAdjPrice; buySideStartingAdjPrice.Clean = value; _buySideStartingAdjPrice = buySideStartingAdjPrice;
-                var buySideStartingAdjRate = _buySideStartingAdjRate; buySideStartingAdjRate.Clean = value; _buySideStartingAdjRate = buySideStartingAdjRate;
-                var buySideTPOID = _buySideTPOID; buySideTPOID.Clean = value; _buySideTPOID = buySideTPOID;
-                var buySideTPOName = _buySideTPOName; buySideTPOName.Clean = value; _buySideTPOName = buySideTPOName;
-                var buySideTradeGuid = _buySideTradeGuid; buySideTradeGuid.Clean = value; _buySideTradeGuid = buySideTradeGuid;
-                var buySideTradeNumber = _buySideTradeNumber; buySideTradeNumber.Clean = value; _buySideTradeNumber = buySideTradeNumber;
-                var buySideUnDiscountedRate = _buySideUnDiscountedRate; buySideUnDiscountedRate.Clean = value; _buySideUnDiscountedRate = buySideUnDiscountedRate;
-                var cancellationRequestPending = _cancellationRequestPending; cancellationRequestPending.Clean = value; _cancellationRequestPending = cancellationRequestPending;
-                var combinedLTV = _combinedLTV; combinedLTV.Clean = value; _combinedLTV = combinedLTV;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var commitment = _commitment; commitment.Clean = value; _commitment = commitment;
-                var commitmentType = _commitmentType; commitmentType.Clean = value; _commitmentType = commitmentType;
-                var compGainLossPercentage = _compGainLossPercentage; compGainLossPercentage.Clean = value; _compGainLossPercentage = compGainLossPercentage;
-                var compGainLossPrice = _compGainLossPrice; compGainLossPrice.Clean = value; _compGainLossPrice = compGainLossPrice;
-                var compGainLossTotalBuyPrice = _compGainLossTotalBuyPrice; compGainLossTotalBuyPrice.Clean = value; _compGainLossTotalBuyPrice = compGainLossTotalBuyPrice;
-                var compGainLossTotalCompPrice = _compGainLossTotalCompPrice; compGainLossTotalCompPrice.Clean = value; _compGainLossTotalCompPrice = compGainLossTotalCompPrice;
-                var compInvestorAddress = _compInvestorAddress; compInvestorAddress.Clean = value; _compInvestorAddress = compInvestorAddress;
-                var compInvestorCity = _compInvestorCity; compInvestorCity.Clean = value; _compInvestorCity = compInvestorCity;
-                var compInvestorCommitment = _compInvestorCommitment; compInvestorCommitment.Clean = value; _compInvestorCommitment = compInvestorCommitment;
-                var compInvestorContact = _compInvestorContact; compInvestorContact.Clean = value; _compInvestorContact = compInvestorContact;
-                var compInvestorEmail = _compInvestorEmail; compInvestorEmail.Clean = value; _compInvestorEmail = compInvestorEmail;
-                var compInvestorLockType = _compInvestorLockType; compInvestorLockType.Clean = value; _compInvestorLockType = compInvestorLockType;
-                var compInvestorName = _compInvestorName; compInvestorName.Clean = value; _compInvestorName = compInvestorName;
-                var compInvestorPhone = _compInvestorPhone; compInvestorPhone.Clean = value; _compInvestorPhone = compInvestorPhone;
-                var compInvestorPostalCode = _compInvestorPostalCode; compInvestorPostalCode.Clean = value; _compInvestorPostalCode = compInvestorPostalCode;
-                var compInvestorProgramCode = _compInvestorProgramCode; compInvestorProgramCode.Clean = value; _compInvestorProgramCode = compInvestorProgramCode;
-                var compInvestorState = _compInvestorState; compInvestorState.Clean = value; _compInvestorState = compInvestorState;
-                var compInvestorTemplateName = _compInvestorTemplateName; compInvestorTemplateName.Clean = value; _compInvestorTemplateName = compInvestorTemplateName;
-                var compInvestorWebsite = _compInvestorWebsite; compInvestorWebsite.Clean = value; _compInvestorWebsite = compInvestorWebsite;
-                var compSideAdjustments = _compSideAdjustments; compSideAdjustments.Clean = value; _compSideAdjustments = compSideAdjustments;
-                var compSideComments = _compSideComments; compSideComments.Clean = value; _compSideComments = compSideComments;
-                var compSideComparisonedBy = _compSideComparisonedBy; compSideComparisonedBy.Clean = value; _compSideComparisonedBy = compSideComparisonedBy;
-                var compSideCurrentRateSetDate = _compSideCurrentRateSetDate; compSideCurrentRateSetDate.Clean = value; _compSideCurrentRateSetDate = compSideCurrentRateSetDate;
-                var compSideDaystoExtend = _compSideDaystoExtend; compSideDaystoExtend.Clean = value; _compSideDaystoExtend = compSideDaystoExtend;
-                var compSideDiscountYSP = _compSideDiscountYSP; compSideDiscountYSP.Clean = value; _compSideDiscountYSP = compSideDiscountYSP;
-                var compSideExtendedLockExpires = _compSideExtendedLockExpires; compSideExtendedLockExpires.Clean = value; _compSideExtendedLockExpires = compSideExtendedLockExpires;
-                var compSideInvestorStatus = _compSideInvestorStatus; compSideInvestorStatus.Clean = value; _compSideInvestorStatus = compSideInvestorStatus;
-                var compSideInvestorStatusDate = _compSideInvestorStatusDate; compSideInvestorStatusDate.Clean = value; _compSideInvestorStatusDate = compSideInvestorStatusDate;
-                var compSideInvestorTradeNumber = _compSideInvestorTradeNumber; compSideInvestorTradeNumber.Clean = value; _compSideInvestorTradeNumber = compSideInvestorTradeNumber;
-                var compSideLoanProgram = _compSideLoanProgram; compSideLoanProgram.Clean = value; _compSideLoanProgram = compSideLoanProgram;
-                var compSideLockDate = _compSideLockDate; compSideLockDate.Clean = value; _compSideLockDate = compSideLockDate;
-                var compSideLockExpires = _compSideLockExpires; compSideLockExpires.Clean = value; _compSideLockExpires = compSideLockExpires;
-                var compSideLockExtendPriceAdjustment = _compSideLockExtendPriceAdjustment; compSideLockExtendPriceAdjustment.Clean = value; _compSideLockExtendPriceAdjustment = compSideLockExtendPriceAdjustment;
-                var compSideMarginNetCompRate = _compSideMarginNetCompRate; compSideMarginNetCompRate.Clean = value; _compSideMarginNetCompRate = compSideMarginNetCompRate;
-                var compSideMarginRate = _compSideMarginRate; compSideMarginRate.Clean = value; _compSideMarginRate = compSideMarginRate;
-                var compSideMarginTotalAdjustment = _compSideMarginTotalAdjustment; compSideMarginTotalAdjustment.Clean = value; _compSideMarginTotalAdjustment = compSideMarginTotalAdjustment;
-                var compSideMasterContractNumber = _compSideMasterContractNumber; compSideMasterContractNumber.Clean = value; _compSideMasterContractNumber = compSideMasterContractNumber;
-                var compSideNetCompPrice = _compSideNetCompPrice; compSideNetCompPrice.Clean = value; _compSideNetCompPrice = compSideNetCompPrice;
-                var compSideNetCompRate = _compSideNetCompRate; compSideNetCompRate.Clean = value; _compSideNetCompRate = compSideNetCompRate;
-                var compSideNumberOfDays = _compSideNumberOfDays; compSideNumberOfDays.Clean = value; _compSideNumberOfDays = compSideNumberOfDays;
-                var compSideOriginalLockExpires = _compSideOriginalLockExpires; compSideOriginalLockExpires.Clean = value; _compSideOriginalLockExpires = compSideOriginalLockExpires;
-                var compSidePriceRate = _compSidePriceRate; compSidePriceRate.Clean = value; _compSidePriceRate = compSidePriceRate;
-                var compSidePriceTotalAdjustment = _compSidePriceTotalAdjustment; compSidePriceTotalAdjustment.Clean = value; _compSidePriceTotalAdjustment = compSidePriceTotalAdjustment;
-                var compSideRate = _compSideRate; compSideRate.Clean = value; _compSideRate = compSideRate;
-                var compSideRateSheetID = _compSideRateSheetID; compSideRateSheetID.Clean = value; _compSideRateSheetID = compSideRateSheetID;
-                var compSideRateTotalAdjustment = _compSideRateTotalAdjustment; compSideRateTotalAdjustment.Clean = value; _compSideRateTotalAdjustment = compSideRateTotalAdjustment;
-                var compSideRequestedBy = _compSideRequestedBy; compSideRequestedBy.Clean = value; _compSideRequestedBy = compSideRequestedBy;
-                var compSideServicingType = _compSideServicingType; compSideServicingType.Clean = value; _compSideServicingType = compSideServicingType;
-                var compSideSRPPaidOut = _compSideSRPPaidOut; compSideSRPPaidOut.Clean = value; _compSideSRPPaidOut = compSideSRPPaidOut;
-                var compSideTradeGuid = _compSideTradeGuid; compSideTradeGuid.Clean = value; _compSideTradeGuid = compSideTradeGuid;
-                var compSideTradeNumber = _compSideTradeNumber; compSideTradeNumber.Clean = value; _compSideTradeNumber = compSideTradeNumber;
-                var confirmedBy = _confirmedBy; confirmedBy.Clean = value; _confirmedBy = confirmedBy;
-                var confirmedDate = _confirmedDate; confirmedDate.Clean = value; _confirmedDate = confirmedDate;
-                var corporateApprovalDate = _corporateApprovalDate; corporateApprovalDate.Clean = value; _corporateApprovalDate = corporateApprovalDate;
-                var corporateApprovedby = _corporateApprovedby; corporateApprovedby.Clean = value; _corporateApprovedby = corporateApprovedby;
-                var corporatePrice = _corporatePrice; corporatePrice.Clean = value; _corporatePrice = corporatePrice;
-                var correspondentAdditionalEscrowAdditionalEscrow = _correspondentAdditionalEscrowAdditionalEscrow; correspondentAdditionalEscrowAdditionalEscrow.Clean = value; _correspondentAdditionalEscrowAdditionalEscrow = correspondentAdditionalEscrowAdditionalEscrow;
-                var correspondentAdditionalEscrowAmount1007 = _correspondentAdditionalEscrowAmount1007; correspondentAdditionalEscrowAmount1007.Clean = value; _correspondentAdditionalEscrowAmount1007 = correspondentAdditionalEscrowAmount1007;
-                var correspondentAdditionalEscrowAmount1008 = _correspondentAdditionalEscrowAmount1008; correspondentAdditionalEscrowAmount1008.Clean = value; _correspondentAdditionalEscrowAmount1008 = correspondentAdditionalEscrowAmount1008;
-                var correspondentAdditionalEscrowAmount1009 = _correspondentAdditionalEscrowAmount1009; correspondentAdditionalEscrowAmount1009.Clean = value; _correspondentAdditionalEscrowAmount1009 = correspondentAdditionalEscrowAmount1009;
-                var correspondentAdditionalEscrowCityPropertyTax = _correspondentAdditionalEscrowCityPropertyTax; correspondentAdditionalEscrowCityPropertyTax.Clean = value; _correspondentAdditionalEscrowCityPropertyTax = correspondentAdditionalEscrowCityPropertyTax;
-                var correspondentAdditionalEscrowDescription1007 = _correspondentAdditionalEscrowDescription1007; correspondentAdditionalEscrowDescription1007.Clean = value; _correspondentAdditionalEscrowDescription1007 = correspondentAdditionalEscrowDescription1007;
-                var correspondentAdditionalEscrowDescription1008 = _correspondentAdditionalEscrowDescription1008; correspondentAdditionalEscrowDescription1008.Clean = value; _correspondentAdditionalEscrowDescription1008 = correspondentAdditionalEscrowDescription1008;
-                var correspondentAdditionalEscrowDescription1009 = _correspondentAdditionalEscrowDescription1009; correspondentAdditionalEscrowDescription1009.Clean = value; _correspondentAdditionalEscrowDescription1009 = correspondentAdditionalEscrowDescription1009;
-                var correspondentAdditionalEscrowFloodInsurance = _correspondentAdditionalEscrowFloodInsurance; correspondentAdditionalEscrowFloodInsurance.Clean = value; _correspondentAdditionalEscrowFloodInsurance = correspondentAdditionalEscrowFloodInsurance;
-                var correspondentAdditionalEscrowHomeInsurance = _correspondentAdditionalEscrowHomeInsurance; correspondentAdditionalEscrowHomeInsurance.Clean = value; _correspondentAdditionalEscrowHomeInsurance = correspondentAdditionalEscrowHomeInsurance;
-                var correspondentAdditionalEscrowMIMIP = _correspondentAdditionalEscrowMIMIP; correspondentAdditionalEscrowMIMIP.Clean = value; _correspondentAdditionalEscrowMIMIP = correspondentAdditionalEscrowMIMIP;
-                var correspondentAdditionalEscrowNumOfPayments = _correspondentAdditionalEscrowNumOfPayments; correspondentAdditionalEscrowNumOfPayments.Clean = value; _correspondentAdditionalEscrowNumOfPayments = correspondentAdditionalEscrowNumOfPayments;
-                var correspondentAdditionalEscrowOption1Amount = _correspondentAdditionalEscrowOption1Amount; correspondentAdditionalEscrowOption1Amount.Clean = value; _correspondentAdditionalEscrowOption1Amount = correspondentAdditionalEscrowOption1Amount;
-                var correspondentAdditionalEscrowOption1Desc = _correspondentAdditionalEscrowOption1Desc; correspondentAdditionalEscrowOption1Desc.Clean = value; _correspondentAdditionalEscrowOption1Desc = correspondentAdditionalEscrowOption1Desc;
-                var correspondentAdditionalEscrowOption2Amount = _correspondentAdditionalEscrowOption2Amount; correspondentAdditionalEscrowOption2Amount.Clean = value; _correspondentAdditionalEscrowOption2Amount = correspondentAdditionalEscrowOption2Amount;
-                var correspondentAdditionalEscrowOption2Desc = _correspondentAdditionalEscrowOption2Desc; correspondentAdditionalEscrowOption2Desc.Clean = value; _correspondentAdditionalEscrowOption2Desc = correspondentAdditionalEscrowOption2Desc;
-                var correspondentAdditionalEscrowPropertyTax = _correspondentAdditionalEscrowPropertyTax; correspondentAdditionalEscrowPropertyTax.Clean = value; _correspondentAdditionalEscrowPropertyTax = correspondentAdditionalEscrowPropertyTax;
-                var correspondentAdditionalEscrowSumOfPayments = _correspondentAdditionalEscrowSumOfPayments; correspondentAdditionalEscrowSumOfPayments.Clean = value; _correspondentAdditionalEscrowSumOfPayments = correspondentAdditionalEscrowSumOfPayments;
-                var correspondentAdditionalEscrowUSDAAnnualFee = _correspondentAdditionalEscrowUSDAAnnualFee; correspondentAdditionalEscrowUSDAAnnualFee.Clean = value; _correspondentAdditionalEscrowUSDAAnnualFee = correspondentAdditionalEscrowUSDAAnnualFee;
-                var correspondentAdditionalLineAmount1 = _correspondentAdditionalLineAmount1; correspondentAdditionalLineAmount1.Clean = value; _correspondentAdditionalLineAmount1 = correspondentAdditionalLineAmount1;
-                var correspondentAdditionalLineAmount10 = _correspondentAdditionalLineAmount10; correspondentAdditionalLineAmount10.Clean = value; _correspondentAdditionalLineAmount10 = correspondentAdditionalLineAmount10;
-                var correspondentAdditionalLineAmount11 = _correspondentAdditionalLineAmount11; correspondentAdditionalLineAmount11.Clean = value; _correspondentAdditionalLineAmount11 = correspondentAdditionalLineAmount11;
-                var correspondentAdditionalLineAmount12 = _correspondentAdditionalLineAmount12; correspondentAdditionalLineAmount12.Clean = value; _correspondentAdditionalLineAmount12 = correspondentAdditionalLineAmount12;
-                var correspondentAdditionalLineAmount13 = _correspondentAdditionalLineAmount13; correspondentAdditionalLineAmount13.Clean = value; _correspondentAdditionalLineAmount13 = correspondentAdditionalLineAmount13;
-                var correspondentAdditionalLineAmount2 = _correspondentAdditionalLineAmount2; correspondentAdditionalLineAmount2.Clean = value; _correspondentAdditionalLineAmount2 = correspondentAdditionalLineAmount2;
-                var correspondentAdditionalLineAmount3 = _correspondentAdditionalLineAmount3; correspondentAdditionalLineAmount3.Clean = value; _correspondentAdditionalLineAmount3 = correspondentAdditionalLineAmount3;
-                var correspondentAdditionalLineAmount4 = _correspondentAdditionalLineAmount4; correspondentAdditionalLineAmount4.Clean = value; _correspondentAdditionalLineAmount4 = correspondentAdditionalLineAmount4;
-                var correspondentAdditionalLineAmount5 = _correspondentAdditionalLineAmount5; correspondentAdditionalLineAmount5.Clean = value; _correspondentAdditionalLineAmount5 = correspondentAdditionalLineAmount5;
-                var correspondentAdditionalLineAmount6 = _correspondentAdditionalLineAmount6; correspondentAdditionalLineAmount6.Clean = value; _correspondentAdditionalLineAmount6 = correspondentAdditionalLineAmount6;
-                var correspondentAdditionalLineAmount7 = _correspondentAdditionalLineAmount7; correspondentAdditionalLineAmount7.Clean = value; _correspondentAdditionalLineAmount7 = correspondentAdditionalLineAmount7;
-                var correspondentAdditionalLineAmount8 = _correspondentAdditionalLineAmount8; correspondentAdditionalLineAmount8.Clean = value; _correspondentAdditionalLineAmount8 = correspondentAdditionalLineAmount8;
-                var correspondentAdditionalLineAmount9 = _correspondentAdditionalLineAmount9; correspondentAdditionalLineAmount9.Clean = value; _correspondentAdditionalLineAmount9 = correspondentAdditionalLineAmount9;
-                var correspondentAdditionalLineDescription1 = _correspondentAdditionalLineDescription1; correspondentAdditionalLineDescription1.Clean = value; _correspondentAdditionalLineDescription1 = correspondentAdditionalLineDescription1;
-                var correspondentAdditionalLineDescription10 = _correspondentAdditionalLineDescription10; correspondentAdditionalLineDescription10.Clean = value; _correspondentAdditionalLineDescription10 = correspondentAdditionalLineDescription10;
-                var correspondentAdditionalLineDescription11 = _correspondentAdditionalLineDescription11; correspondentAdditionalLineDescription11.Clean = value; _correspondentAdditionalLineDescription11 = correspondentAdditionalLineDescription11;
-                var correspondentAdditionalLineDescription12 = _correspondentAdditionalLineDescription12; correspondentAdditionalLineDescription12.Clean = value; _correspondentAdditionalLineDescription12 = correspondentAdditionalLineDescription12;
-                var correspondentAdditionalLineDescription2 = _correspondentAdditionalLineDescription2; correspondentAdditionalLineDescription2.Clean = value; _correspondentAdditionalLineDescription2 = correspondentAdditionalLineDescription2;
-                var correspondentAdditionalLineDescription3 = _correspondentAdditionalLineDescription3; correspondentAdditionalLineDescription3.Clean = value; _correspondentAdditionalLineDescription3 = correspondentAdditionalLineDescription3;
-                var correspondentAdditionalLineDescription4 = _correspondentAdditionalLineDescription4; correspondentAdditionalLineDescription4.Clean = value; _correspondentAdditionalLineDescription4 = correspondentAdditionalLineDescription4;
-                var correspondentAdditionalLineDescription5 = _correspondentAdditionalLineDescription5; correspondentAdditionalLineDescription5.Clean = value; _correspondentAdditionalLineDescription5 = correspondentAdditionalLineDescription5;
-                var correspondentAdditionalLineDescription6 = _correspondentAdditionalLineDescription6; correspondentAdditionalLineDescription6.Clean = value; _correspondentAdditionalLineDescription6 = correspondentAdditionalLineDescription6;
-                var correspondentAdditionalLineDescription7 = _correspondentAdditionalLineDescription7; correspondentAdditionalLineDescription7.Clean = value; _correspondentAdditionalLineDescription7 = correspondentAdditionalLineDescription7;
-                var correspondentAdditionalLineDescription8 = _correspondentAdditionalLineDescription8; correspondentAdditionalLineDescription8.Clean = value; _correspondentAdditionalLineDescription8 = correspondentAdditionalLineDescription8;
-                var correspondentAdditionalLineDescription9 = _correspondentAdditionalLineDescription9; correspondentAdditionalLineDescription9.Clean = value; _correspondentAdditionalLineDescription9 = correspondentAdditionalLineDescription9;
-                var correspondentAdditionalLineTotalAmount = _correspondentAdditionalLineTotalAmount; correspondentAdditionalLineTotalAmount.Clean = value; _correspondentAdditionalLineTotalAmount = correspondentAdditionalLineTotalAmount;
-                var correspondentAdjusterAmount1 = _correspondentAdjusterAmount1; correspondentAdjusterAmount1.Clean = value; _correspondentAdjusterAmount1 = correspondentAdjusterAmount1;
-                var correspondentAdjusterAmount2 = _correspondentAdjusterAmount2; correspondentAdjusterAmount2.Clean = value; _correspondentAdjusterAmount2 = correspondentAdjusterAmount2;
-                var correspondentAdjusterAmount3 = _correspondentAdjusterAmount3; correspondentAdjusterAmount3.Clean = value; _correspondentAdjusterAmount3 = correspondentAdjusterAmount3;
-                var correspondentAdjusterDescription1 = _correspondentAdjusterDescription1; correspondentAdjusterDescription1.Clean = value; _correspondentAdjusterDescription1 = correspondentAdjusterDescription1;
-                var correspondentAdjusterDescription2 = _correspondentAdjusterDescription2; correspondentAdjusterDescription2.Clean = value; _correspondentAdjusterDescription2 = correspondentAdjusterDescription2;
-                var correspondentAdjusterDescription3 = _correspondentAdjusterDescription3; correspondentAdjusterDescription3.Clean = value; _correspondentAdjusterDescription3 = correspondentAdjusterDescription3;
-                var correspondentConfirmedBy = _correspondentConfirmedBy; correspondentConfirmedBy.Clean = value; _correspondentConfirmedBy = correspondentConfirmedBy;
-                var correspondentConfirmedDate = _correspondentConfirmedDate; correspondentConfirmedDate.Clean = value; _correspondentConfirmedDate = correspondentConfirmedDate;
-                var correspondentCurrentImpounds = _correspondentCurrentImpounds; correspondentCurrentImpounds.Clean = value; _correspondentCurrentImpounds = correspondentCurrentImpounds;
-                var correspondentCurrentPrincipal = _correspondentCurrentPrincipal; correspondentCurrentPrincipal.Clean = value; _correspondentCurrentPrincipal = correspondentCurrentPrincipal;
-                var correspondentDate = _correspondentDate; correspondentDate.Clean = value; _correspondentDate = correspondentDate;
-                var correspondentEscrowDisbursementsAmount1007 = _correspondentEscrowDisbursementsAmount1007; correspondentEscrowDisbursementsAmount1007.Clean = value; _correspondentEscrowDisbursementsAmount1007 = correspondentEscrowDisbursementsAmount1007;
-                var correspondentEscrowDisbursementsAmount1008 = _correspondentEscrowDisbursementsAmount1008; correspondentEscrowDisbursementsAmount1008.Clean = value; _correspondentEscrowDisbursementsAmount1008 = correspondentEscrowDisbursementsAmount1008;
-                var correspondentEscrowDisbursementsAmount1009 = _correspondentEscrowDisbursementsAmount1009; correspondentEscrowDisbursementsAmount1009.Clean = value; _correspondentEscrowDisbursementsAmount1009 = correspondentEscrowDisbursementsAmount1009;
-                var correspondentEscrowDisbursementsCityPropertyTax = _correspondentEscrowDisbursementsCityPropertyTax; correspondentEscrowDisbursementsCityPropertyTax.Clean = value; _correspondentEscrowDisbursementsCityPropertyTax = correspondentEscrowDisbursementsCityPropertyTax;
-                var correspondentEscrowDisbursementsDescription1007 = _correspondentEscrowDisbursementsDescription1007; correspondentEscrowDisbursementsDescription1007.Clean = value; _correspondentEscrowDisbursementsDescription1007 = correspondentEscrowDisbursementsDescription1007;
-                var correspondentEscrowDisbursementsDescription1008 = _correspondentEscrowDisbursementsDescription1008; correspondentEscrowDisbursementsDescription1008.Clean = value; _correspondentEscrowDisbursementsDescription1008 = correspondentEscrowDisbursementsDescription1008;
-                var correspondentEscrowDisbursementsDescription1009 = _correspondentEscrowDisbursementsDescription1009; correspondentEscrowDisbursementsDescription1009.Clean = value; _correspondentEscrowDisbursementsDescription1009 = correspondentEscrowDisbursementsDescription1009;
-                var correspondentEscrowDisbursementsEscrowsToBePaidBySeller = _correspondentEscrowDisbursementsEscrowsToBePaidBySeller; correspondentEscrowDisbursementsEscrowsToBePaidBySeller.Clean = value; _correspondentEscrowDisbursementsEscrowsToBePaidBySeller = correspondentEscrowDisbursementsEscrowsToBePaidBySeller;
-                var correspondentEscrowDisbursementsEsrowFundedByInvestor = _correspondentEscrowDisbursementsEsrowFundedByInvestor; correspondentEscrowDisbursementsEsrowFundedByInvestor.Clean = value; _correspondentEscrowDisbursementsEsrowFundedByInvestor = correspondentEscrowDisbursementsEsrowFundedByInvestor;
-                var correspondentEscrowDisbursementsFloodInsurance = _correspondentEscrowDisbursementsFloodInsurance; correspondentEscrowDisbursementsFloodInsurance.Clean = value; _correspondentEscrowDisbursementsFloodInsurance = correspondentEscrowDisbursementsFloodInsurance;
-                var correspondentEscrowDisbursementsHomeInsurance = _correspondentEscrowDisbursementsHomeInsurance; correspondentEscrowDisbursementsHomeInsurance.Clean = value; _correspondentEscrowDisbursementsHomeInsurance = correspondentEscrowDisbursementsHomeInsurance;
-                var correspondentEscrowDisbursementsMortgageInsurance = _correspondentEscrowDisbursementsMortgageInsurance; correspondentEscrowDisbursementsMortgageInsurance.Clean = value; _correspondentEscrowDisbursementsMortgageInsurance = correspondentEscrowDisbursementsMortgageInsurance;
-                var correspondentEscrowDisbursementsOption1Amount = _correspondentEscrowDisbursementsOption1Amount; correspondentEscrowDisbursementsOption1Amount.Clean = value; _correspondentEscrowDisbursementsOption1Amount = correspondentEscrowDisbursementsOption1Amount;
-                var correspondentEscrowDisbursementsOption1Desc = _correspondentEscrowDisbursementsOption1Desc; correspondentEscrowDisbursementsOption1Desc.Clean = value; _correspondentEscrowDisbursementsOption1Desc = correspondentEscrowDisbursementsOption1Desc;
-                var correspondentEscrowDisbursementsOption2Amount = _correspondentEscrowDisbursementsOption2Amount; correspondentEscrowDisbursementsOption2Amount.Clean = value; _correspondentEscrowDisbursementsOption2Amount = correspondentEscrowDisbursementsOption2Amount;
-                var correspondentEscrowDisbursementsOption2Desc = _correspondentEscrowDisbursementsOption2Desc; correspondentEscrowDisbursementsOption2Desc.Clean = value; _correspondentEscrowDisbursementsOption2Desc = correspondentEscrowDisbursementsOption2Desc;
-                var correspondentEscrowDisbursementsPropertyTax = _correspondentEscrowDisbursementsPropertyTax; correspondentEscrowDisbursementsPropertyTax.Clean = value; _correspondentEscrowDisbursementsPropertyTax = correspondentEscrowDisbursementsPropertyTax;
-                var correspondentEscrowDisbursementsUSDAAnnualFee = _correspondentEscrowDisbursementsUSDAAnnualFee; correspondentEscrowDisbursementsUSDAAnnualFee.Clean = value; _correspondentEscrowDisbursementsUSDAAnnualFee = correspondentEscrowDisbursementsUSDAAnnualFee;
-                var correspondentFinalBuyAmount = _correspondentFinalBuyAmount; correspondentFinalBuyAmount.Clean = value; _correspondentFinalBuyAmount = correspondentFinalBuyAmount;
-                var correspondentFinalBuyPrice = _correspondentFinalBuyPrice; correspondentFinalBuyPrice.Clean = value; _correspondentFinalBuyPrice = correspondentFinalBuyPrice;
-                var correspondentFinalCDAggAdjAmount = _correspondentFinalCDAggAdjAmount; correspondentFinalCDAggAdjAmount.Clean = value; _correspondentFinalCDAggAdjAmount = correspondentFinalCDAggAdjAmount;
-                var correspondentFinalCDAmount1007 = _correspondentFinalCDAmount1007; correspondentFinalCDAmount1007.Clean = value; _correspondentFinalCDAmount1007 = correspondentFinalCDAmount1007;
-                var correspondentFinalCDAmount1008 = _correspondentFinalCDAmount1008; correspondentFinalCDAmount1008.Clean = value; _correspondentFinalCDAmount1008 = correspondentFinalCDAmount1008;
-                var correspondentFinalCDAmount1009 = _correspondentFinalCDAmount1009; correspondentFinalCDAmount1009.Clean = value; _correspondentFinalCDAmount1009 = correspondentFinalCDAmount1009;
-                var correspondentFinalCDCityPropertyTax = _correspondentFinalCDCityPropertyTax; correspondentFinalCDCityPropertyTax.Clean = value; _correspondentFinalCDCityPropertyTax = correspondentFinalCDCityPropertyTax;
-                var correspondentFinalCDDescription1007 = _correspondentFinalCDDescription1007; correspondentFinalCDDescription1007.Clean = value; _correspondentFinalCDDescription1007 = correspondentFinalCDDescription1007;
-                var correspondentFinalCDDescription1008 = _correspondentFinalCDDescription1008; correspondentFinalCDDescription1008.Clean = value; _correspondentFinalCDDescription1008 = correspondentFinalCDDescription1008;
-                var correspondentFinalCDDescription1009 = _correspondentFinalCDDescription1009; correspondentFinalCDDescription1009.Clean = value; _correspondentFinalCDDescription1009 = correspondentFinalCDDescription1009;
-                var correspondentFinalCDFloodInsurance = _correspondentFinalCDFloodInsurance; correspondentFinalCDFloodInsurance.Clean = value; _correspondentFinalCDFloodInsurance = correspondentFinalCDFloodInsurance;
-                var correspondentFinalCDHomeInsurance = _correspondentFinalCDHomeInsurance; correspondentFinalCDHomeInsurance.Clean = value; _correspondentFinalCDHomeInsurance = correspondentFinalCDHomeInsurance;
-                var correspondentFinalCDMortgageInsurance = _correspondentFinalCDMortgageInsurance; correspondentFinalCDMortgageInsurance.Clean = value; _correspondentFinalCDMortgageInsurance = correspondentFinalCDMortgageInsurance;
-                var correspondentFinalCDOption1Amount = _correspondentFinalCDOption1Amount; correspondentFinalCDOption1Amount.Clean = value; _correspondentFinalCDOption1Amount = correspondentFinalCDOption1Amount;
-                var correspondentFinalCDOption1Desc = _correspondentFinalCDOption1Desc; correspondentFinalCDOption1Desc.Clean = value; _correspondentFinalCDOption1Desc = correspondentFinalCDOption1Desc;
-                var correspondentFinalCDOption2Amount = _correspondentFinalCDOption2Amount; correspondentFinalCDOption2Amount.Clean = value; _correspondentFinalCDOption2Amount = correspondentFinalCDOption2Amount;
-                var correspondentFinalCDOption2Desc = _correspondentFinalCDOption2Desc; correspondentFinalCDOption2Desc.Clean = value; _correspondentFinalCDOption2Desc = correspondentFinalCDOption2Desc;
-                var correspondentFinalCDPropertyTax = _correspondentFinalCDPropertyTax; correspondentFinalCDPropertyTax.Clean = value; _correspondentFinalCDPropertyTax = correspondentFinalCDPropertyTax;
-                var correspondentFinalCDReservesCollectedAtClosing = _correspondentFinalCDReservesCollectedAtClosing; correspondentFinalCDReservesCollectedAtClosing.Clean = value; _correspondentFinalCDReservesCollectedAtClosing = correspondentFinalCDReservesCollectedAtClosing;
-                var correspondentFinalCDUSDAAnnualFee = _correspondentFinalCDUSDAAnnualFee; correspondentFinalCDUSDAAnnualFee.Clean = value; _correspondentFinalCDUSDAAnnualFee = correspondentFinalCDUSDAAnnualFee;
-                var correspondentFirstPaymentDate = _correspondentFirstPaymentDate; correspondentFirstPaymentDate.Clean = value; _correspondentFirstPaymentDate = correspondentFirstPaymentDate;
-                var correspondentImpounds = _correspondentImpounds; correspondentImpounds.Clean = value; _correspondentImpounds = correspondentImpounds;
-                var correspondentInterest = _correspondentInterest; correspondentInterest.Clean = value; _correspondentInterest = correspondentInterest;
-                var correspondentInterestDays = _correspondentInterestDays; correspondentInterestDays.Clean = value; _correspondentInterestDays = correspondentInterestDays;
-                var correspondentLateFeeAmount = _correspondentLateFeeAmount; correspondentLateFeeAmount.Clean = value; _correspondentLateFeeAmount = correspondentLateFeeAmount;
-                var correspondentLateFeePriceAdjustment = _correspondentLateFeePriceAdjustment; correspondentLateFeePriceAdjustment.Clean = value; _correspondentLateFeePriceAdjustment = correspondentLateFeePriceAdjustment;
-                var correspondentPaidToDate = _correspondentPaidToDate; correspondentPaidToDate.Clean = value; _correspondentPaidToDate = correspondentPaidToDate;
-                var correspondentPaymentHistoryAnticipatedPurchaseDate = _correspondentPaymentHistoryAnticipatedPurchaseDate; correspondentPaymentHistoryAnticipatedPurchaseDate.Clean = value; _correspondentPaymentHistoryAnticipatedPurchaseDate = correspondentPaymentHistoryAnticipatedPurchaseDate;
-                var correspondentPaymentHistoryCalculatedPurchasedPrincipal = _correspondentPaymentHistoryCalculatedPurchasedPrincipal; correspondentPaymentHistoryCalculatedPurchasedPrincipal.Clean = value; _correspondentPaymentHistoryCalculatedPurchasedPrincipal = correspondentPaymentHistoryCalculatedPurchasedPrincipal;
-                var correspondentPaymentHistoryFirstBorrowerPaymentDueDate = _correspondentPaymentHistoryFirstBorrowerPaymentDueDate; correspondentPaymentHistoryFirstBorrowerPaymentDueDate.Clean = value; _correspondentPaymentHistoryFirstBorrowerPaymentDueDate = correspondentPaymentHistoryFirstBorrowerPaymentDueDate;
-                var correspondentPaymentHistoryFirstInvestorPaymentDate = _correspondentPaymentHistoryFirstInvestorPaymentDate; correspondentPaymentHistoryFirstInvestorPaymentDate.Clean = value; _correspondentPaymentHistoryFirstInvestorPaymentDate = correspondentPaymentHistoryFirstInvestorPaymentDate;
-                var correspondentPaymentHistoryNoteDate = _correspondentPaymentHistoryNoteDate; correspondentPaymentHistoryNoteDate.Clean = value; _correspondentPaymentHistoryNoteDate = correspondentPaymentHistoryNoteDate;
-                var correspondentPaymentHistoryPricipalReduction = _correspondentPaymentHistoryPricipalReduction; correspondentPaymentHistoryPricipalReduction.Clean = value; _correspondentPaymentHistoryPricipalReduction = correspondentPaymentHistoryPricipalReduction;
-                var correspondentPurchasedPrincipal = _correspondentPurchasedPrincipal; correspondentPurchasedPrincipal.Clean = value; _correspondentPurchasedPrincipal = correspondentPurchasedPrincipal;
-                var correspondentReconcilationComments = _correspondentReconcilationComments; correspondentReconcilationComments.Clean = value; _correspondentReconcilationComments = correspondentReconcilationComments;
-                var correspondentRemainingBuydownAmount = _correspondentRemainingBuydownAmount; correspondentRemainingBuydownAmount.Clean = value; _correspondentRemainingBuydownAmount = correspondentRemainingBuydownAmount;
-                var correspondentSRPAmount = _correspondentSRPAmount; correspondentSRPAmount.Clean = value; _correspondentSRPAmount = correspondentSRPAmount;
-                var correspondentTotalBuyAmount = _correspondentTotalBuyAmount; correspondentTotalBuyAmount.Clean = value; _correspondentTotalBuyAmount = correspondentTotalBuyAmount;
-                var correspondentTotalFees = _correspondentTotalFees; correspondentTotalFees.Clean = value; _correspondentTotalFees = correspondentTotalFees;
-                var correspondentWarehouseBankABANum = _correspondentWarehouseBankABANum; correspondentWarehouseBankABANum.Clean = value; _correspondentWarehouseBankABANum = correspondentWarehouseBankABANum;
-                var correspondentWarehouseBankAcctName = _correspondentWarehouseBankAcctName; correspondentWarehouseBankAcctName.Clean = value; _correspondentWarehouseBankAcctName = correspondentWarehouseBankAcctName;
-                var correspondentWarehouseBankAcctNum = _correspondentWarehouseBankAcctNum; correspondentWarehouseBankAcctNum.Clean = value; _correspondentWarehouseBankAcctNum = correspondentWarehouseBankAcctNum;
-                var correspondentWarehouseBankAddress = _correspondentWarehouseBankAddress; correspondentWarehouseBankAddress.Clean = value; _correspondentWarehouseBankAddress = correspondentWarehouseBankAddress;
-                var correspondentWarehouseBankAddress1 = _correspondentWarehouseBankAddress1; correspondentWarehouseBankAddress1.Clean = value; _correspondentWarehouseBankAddress1 = correspondentWarehouseBankAddress1;
-                var correspondentWarehouseBankBaileeExpirationDate = _correspondentWarehouseBankBaileeExpirationDate; correspondentWarehouseBankBaileeExpirationDate.Clean = value; _correspondentWarehouseBankBaileeExpirationDate = correspondentWarehouseBankBaileeExpirationDate;
-                var correspondentWarehouseBankBaileeLetterReceivedIndicator = _correspondentWarehouseBankBaileeLetterReceivedIndicator; correspondentWarehouseBankBaileeLetterReceivedIndicator.Clean = value; _correspondentWarehouseBankBaileeLetterReceivedIndicator = correspondentWarehouseBankBaileeLetterReceivedIndicator;
-                var correspondentWarehouseBankBaileeLetterReqIndicator = _correspondentWarehouseBankBaileeLetterReqIndicator; correspondentWarehouseBankBaileeLetterReqIndicator.Clean = value; _correspondentWarehouseBankBaileeLetterReqIndicator = correspondentWarehouseBankBaileeLetterReqIndicator;
-                var correspondentWarehouseBankCity = _correspondentWarehouseBankCity; correspondentWarehouseBankCity.Clean = value; _correspondentWarehouseBankCity = correspondentWarehouseBankCity;
-                var correspondentWarehouseBankContactEmail = _correspondentWarehouseBankContactEmail; correspondentWarehouseBankContactEmail.Clean = value; _correspondentWarehouseBankContactEmail = correspondentWarehouseBankContactEmail;
-                var correspondentWarehouseBankContactFax = _correspondentWarehouseBankContactFax; correspondentWarehouseBankContactFax.Clean = value; _correspondentWarehouseBankContactFax = correspondentWarehouseBankContactFax;
-                var correspondentWarehouseBankContactName = _correspondentWarehouseBankContactName; correspondentWarehouseBankContactName.Clean = value; _correspondentWarehouseBankContactName = correspondentWarehouseBankContactName;
-                var correspondentWarehouseBankContactPhone = _correspondentWarehouseBankContactPhone; correspondentWarehouseBankContactPhone.Clean = value; _correspondentWarehouseBankContactPhone = correspondentWarehouseBankContactPhone;
-                var correspondentWarehouseBankDescription = _correspondentWarehouseBankDescription; correspondentWarehouseBankDescription.Clean = value; _correspondentWarehouseBankDescription = correspondentWarehouseBankDescription;
-                var correspondentWarehouseBankFurtherCreditAcctName = _correspondentWarehouseBankFurtherCreditAcctName; correspondentWarehouseBankFurtherCreditAcctName.Clean = value; _correspondentWarehouseBankFurtherCreditAcctName = correspondentWarehouseBankFurtherCreditAcctName;
-                var correspondentWarehouseBankFurtherCreditAcctNum = _correspondentWarehouseBankFurtherCreditAcctNum; correspondentWarehouseBankFurtherCreditAcctNum.Clean = value; _correspondentWarehouseBankFurtherCreditAcctNum = correspondentWarehouseBankFurtherCreditAcctNum;
-                var correspondentWarehouseBankId = _correspondentWarehouseBankId; correspondentWarehouseBankId.Clean = value; _correspondentWarehouseBankId = correspondentWarehouseBankId;
-                var correspondentWarehouseBankName = _correspondentWarehouseBankName; correspondentWarehouseBankName.Clean = value; _correspondentWarehouseBankName = correspondentWarehouseBankName;
-                var correspondentWarehouseBankNotes = _correspondentWarehouseBankNotes; correspondentWarehouseBankNotes.Clean = value; _correspondentWarehouseBankNotes = correspondentWarehouseBankNotes;
-                var correspondentWarehouseBankSelfFunderIndicator = _correspondentWarehouseBankSelfFunderIndicator; correspondentWarehouseBankSelfFunderIndicator.Clean = value; _correspondentWarehouseBankSelfFunderIndicator = correspondentWarehouseBankSelfFunderIndicator;
-                var correspondentWarehouseBankState = _correspondentWarehouseBankState; correspondentWarehouseBankState.Clean = value; _correspondentWarehouseBankState = correspondentWarehouseBankState;
-                var correspondentWarehouseBankTriPartyContractIndicator = _correspondentWarehouseBankTriPartyContractIndicator; correspondentWarehouseBankTriPartyContractIndicator.Clean = value; _correspondentWarehouseBankTriPartyContractIndicator = correspondentWarehouseBankTriPartyContractIndicator;
-                var correspondentWarehouseBankUseDefaultContactIndicator = _correspondentWarehouseBankUseDefaultContactIndicator; correspondentWarehouseBankUseDefaultContactIndicator.Clean = value; _correspondentWarehouseBankUseDefaultContactIndicator = correspondentWarehouseBankUseDefaultContactIndicator;
-                var correspondentWarehouseBankWireConfirmationNumber = _correspondentWarehouseBankWireConfirmationNumber; correspondentWarehouseBankWireConfirmationNumber.Clean = value; _correspondentWarehouseBankWireConfirmationNumber = correspondentWarehouseBankWireConfirmationNumber;
-                var correspondentWarehouseBankWireInstructionsReceivedIndicator = _correspondentWarehouseBankWireInstructionsReceivedIndicator; correspondentWarehouseBankWireInstructionsReceivedIndicator.Clean = value; _correspondentWarehouseBankWireInstructionsReceivedIndicator = correspondentWarehouseBankWireInstructionsReceivedIndicator;
-                var correspondentWarehouseBankZip = _correspondentWarehouseBankZip; correspondentWarehouseBankZip.Clean = value; _correspondentWarehouseBankZip = correspondentWarehouseBankZip;
-                var creditScoreToUse = _creditScoreToUse; creditScoreToUse.Clean = value; _creditScoreToUse = creditScoreToUse;
-                var cumulatedDaystoExtend = _cumulatedDaystoExtend; cumulatedDaystoExtend.Clean = value; _cumulatedDaystoExtend = cumulatedDaystoExtend;
-                var currentAdjustments = _currentAdjustments; currentAdjustments.Clean = value; _currentAdjustments = currentAdjustments;
-                var currentComments = _currentComments; currentComments.Clean = value; _currentComments = currentComments;
-                var currentLockDate = _currentLockDate; currentLockDate.Clean = value; _currentLockDate = currentLockDate;
-                var currentLockExpires = _currentLockExpires; currentLockExpires.Clean = value; _currentLockExpires = currentLockExpires;
-                var currentMarginRate = _currentMarginRate; currentMarginRate.Clean = value; _currentMarginRate = currentMarginRate;
-                var currentMarginRateRequested = _currentMarginRateRequested; currentMarginRateRequested.Clean = value; _currentMarginRateRequested = currentMarginRateRequested;
-                var currentMarginTotalAdjustment = _currentMarginTotalAdjustment; currentMarginTotalAdjustment.Clean = value; _currentMarginTotalAdjustment = currentMarginTotalAdjustment;
-                var currentNumberOfDays = _currentNumberOfDays; currentNumberOfDays.Clean = value; _currentNumberOfDays = currentNumberOfDays;
-                var currentPriceRate = _currentPriceRate; currentPriceRate.Clean = value; _currentPriceRate = currentPriceRate;
-                var currentPriceRateRequested = _currentPriceRateRequested; currentPriceRateRequested.Clean = value; _currentPriceRateRequested = currentPriceRateRequested;
-                var currentPriceTotalAdjustment = _currentPriceTotalAdjustment; currentPriceTotalAdjustment.Clean = value; _currentPriceTotalAdjustment = currentPriceTotalAdjustment;
-                var currentRate = _currentRate; currentRate.Clean = value; _currentRate = currentRate;
-                var currentRateRequested = _currentRateRequested; currentRateRequested.Clean = value; _currentRateRequested = currentRateRequested;
-                var currentRateSetDate = _currentRateSetDate; currentRateSetDate.Clean = value; _currentRateSetDate = currentRateSetDate;
-                var currentRateSheetID = _currentRateSheetID; currentRateSheetID.Clean = value; _currentRateSheetID = currentRateSheetID;
-                var currentRateTotalAdjustment = _currentRateTotalAdjustment; currentRateTotalAdjustment.Clean = value; _currentRateTotalAdjustment = currentRateTotalAdjustment;
-                var date = _date; date.Clean = value; _date = date;
-                var dateFirstPaymentToInvestor = _dateFirstPaymentToInvestor; dateFirstPaymentToInvestor.Clean = value; _dateFirstPaymentToInvestor = dateFirstPaymentToInvestor;
-                var dateLockedWithInvestor = _dateLockedWithInvestor; dateLockedWithInvestor.Clean = value; _dateLockedWithInvestor = dateLockedWithInvestor;
-                var dateSold = _dateSold; dateSold.Clean = value; _dateSold = dateSold;
-                var dateWarehoused = _dateWarehoused; dateWarehoused.Clean = value; _dateWarehoused = dateWarehoused;
-                var daysToExtend = _daysToExtend; daysToExtend.Clean = value; _daysToExtend = daysToExtend;
-                var deliveryType = _deliveryType; deliveryType.Clean = value; _deliveryType = deliveryType;
-                var diffAmountReceived = _diffAmountReceived; diffAmountReceived.Clean = value; _diffAmountReceived = diffAmountReceived;
-                var diffImpounds = _diffImpounds; diffImpounds.Clean = value; _diffImpounds = diffImpounds;
-                var diffInterest = _diffInterest; diffInterest.Clean = value; _diffInterest = diffInterest;
-                var diffPremium = _diffPremium; diffPremium.Clean = value; _diffPremium = diffPremium;
-                var diffPrinciple = _diffPrinciple; diffPrinciple.Clean = value; _diffPrinciple = diffPrinciple;
-                var diffRemainingBuydownFunds = _diffRemainingBuydownFunds; diffRemainingBuydownFunds.Clean = value; _diffRemainingBuydownFunds = diffRemainingBuydownFunds;
-                var diffSellAmount = _diffSellAmount; diffSellAmount.Clean = value; _diffSellAmount = diffSellAmount;
-                var diffSellPrice = _diffSellPrice; diffSellPrice.Clean = value; _diffSellPrice = diffSellPrice;
-                var diffSellSideSRP = _diffSellSideSRP; diffSellSideSRP.Clean = value; _diffSellSideSRP = diffSellSideSRP;
-                var diffSRP = _diffSRP; diffSRP.Clean = value; _diffSRP = diffSRP;
-                var diffSRPAmount = _diffSRPAmount; diffSRPAmount.Clean = value; _diffSRPAmount = diffSRPAmount;
-                var employmentBorrowerSelfEmployedIndicator1 = _employmentBorrowerSelfEmployedIndicator1; employmentBorrowerSelfEmployedIndicator1.Clean = value; _employmentBorrowerSelfEmployedIndicator1 = employmentBorrowerSelfEmployedIndicator1;
-                var employmentBorrowerSelfEmployedIndicator10 = _employmentBorrowerSelfEmployedIndicator10; employmentBorrowerSelfEmployedIndicator10.Clean = value; _employmentBorrowerSelfEmployedIndicator10 = employmentBorrowerSelfEmployedIndicator10;
-                var employmentBorrowerSelfEmployedIndicator11 = _employmentBorrowerSelfEmployedIndicator11; employmentBorrowerSelfEmployedIndicator11.Clean = value; _employmentBorrowerSelfEmployedIndicator11 = employmentBorrowerSelfEmployedIndicator11;
-                var employmentBorrowerSelfEmployedIndicator12 = _employmentBorrowerSelfEmployedIndicator12; employmentBorrowerSelfEmployedIndicator12.Clean = value; _employmentBorrowerSelfEmployedIndicator12 = employmentBorrowerSelfEmployedIndicator12;
-                var employmentBorrowerSelfEmployedIndicator2 = _employmentBorrowerSelfEmployedIndicator2; employmentBorrowerSelfEmployedIndicator2.Clean = value; _employmentBorrowerSelfEmployedIndicator2 = employmentBorrowerSelfEmployedIndicator2;
-                var employmentBorrowerSelfEmployedIndicator3 = _employmentBorrowerSelfEmployedIndicator3; employmentBorrowerSelfEmployedIndicator3.Clean = value; _employmentBorrowerSelfEmployedIndicator3 = employmentBorrowerSelfEmployedIndicator3;
-                var employmentBorrowerSelfEmployedIndicator4 = _employmentBorrowerSelfEmployedIndicator4; employmentBorrowerSelfEmployedIndicator4.Clean = value; _employmentBorrowerSelfEmployedIndicator4 = employmentBorrowerSelfEmployedIndicator4;
-                var employmentBorrowerSelfEmployedIndicator5 = _employmentBorrowerSelfEmployedIndicator5; employmentBorrowerSelfEmployedIndicator5.Clean = value; _employmentBorrowerSelfEmployedIndicator5 = employmentBorrowerSelfEmployedIndicator5;
-                var employmentBorrowerSelfEmployedIndicator6 = _employmentBorrowerSelfEmployedIndicator6; employmentBorrowerSelfEmployedIndicator6.Clean = value; _employmentBorrowerSelfEmployedIndicator6 = employmentBorrowerSelfEmployedIndicator6;
-                var employmentBorrowerSelfEmployedIndicator7 = _employmentBorrowerSelfEmployedIndicator7; employmentBorrowerSelfEmployedIndicator7.Clean = value; _employmentBorrowerSelfEmployedIndicator7 = employmentBorrowerSelfEmployedIndicator7;
-                var employmentBorrowerSelfEmployedIndicator8 = _employmentBorrowerSelfEmployedIndicator8; employmentBorrowerSelfEmployedIndicator8.Clean = value; _employmentBorrowerSelfEmployedIndicator8 = employmentBorrowerSelfEmployedIndicator8;
-                var employmentBorrowerSelfEmployedIndicator9 = _employmentBorrowerSelfEmployedIndicator9; employmentBorrowerSelfEmployedIndicator9.Clean = value; _employmentBorrowerSelfEmployedIndicator9 = employmentBorrowerSelfEmployedIndicator9;
-                var expectedAmountReceived = _expectedAmountReceived; expectedAmountReceived.Clean = value; _expectedAmountReceived = expectedAmountReceived;
-                var expectedImpounds = _expectedImpounds; expectedImpounds.Clean = value; _expectedImpounds = expectedImpounds;
-                var expectedInterest = _expectedInterest; expectedInterest.Clean = value; _expectedInterest = expectedInterest;
-                var expectedPremium = _expectedPremium; expectedPremium.Clean = value; _expectedPremium = expectedPremium;
-                var expectedPrinciple = _expectedPrinciple; expectedPrinciple.Clean = value; _expectedPrinciple = expectedPrinciple;
-                var expectedRemainingBuydownFunds = _expectedRemainingBuydownFunds; expectedRemainingBuydownFunds.Clean = value; _expectedRemainingBuydownFunds = expectedRemainingBuydownFunds;
-                var expectedSRP = _expectedSRP; expectedSRP.Clean = value; _expectedSRP = expectedSRP;
-                var extensionRequestPending = _extensionRequestPending; extensionRequestPending.Clean = value; _extensionRequestPending = extensionRequestPending;
-                var extensionSequenceNumber = _extensionSequenceNumber; extensionSequenceNumber.Clean = value; _extensionSequenceNumber = extensionSequenceNumber;
-                var extraPayments = _extraPayments; extraPayments.Clean = value; _extraPayments = extraPayments;
-                var fHAUpfrontMIPremiumPercent = _fHAUpfrontMIPremiumPercent; fHAUpfrontMIPremiumPercent.Clean = value; _fHAUpfrontMIPremiumPercent = fHAUpfrontMIPremiumPercent;
-                var financedNumberOfUnits = _financedNumberOfUnits; financedNumberOfUnits.Clean = value; _financedNumberOfUnits = financedNumberOfUnits;
-                var firstPaymenTo = _firstPaymenTo; firstPaymenTo.Clean = value; _firstPaymenTo = firstPaymenTo;
-                var firstSubordinateAmount = _firstSubordinateAmount; firstSubordinateAmount.Clean = value; _firstSubordinateAmount = firstSubordinateAmount;
-                var firstTimeHomebuyersIndicator = _firstTimeHomebuyersIndicator; firstTimeHomebuyersIndicator.Clean = value; _firstTimeHomebuyersIndicator = firstTimeHomebuyersIndicator;
-                var fNMProductPlanIdentifier = _fNMProductPlanIdentifier; fNMProductPlanIdentifier.Clean = value; _fNMProductPlanIdentifier = fNMProductPlanIdentifier;
-                var fundingAmount = _fundingAmount; fundingAmount.Clean = value; _fundingAmount = fundingAmount;
-                var gainLossPercentage = _gainLossPercentage; gainLossPercentage.Clean = value; _gainLossPercentage = gainLossPercentage;
-                var gainLossPrice = _gainLossPrice; gainLossPrice.Clean = value; _gainLossPrice = gainLossPrice;
-                var gainLossTotalBuyPrice = _gainLossTotalBuyPrice; gainLossTotalBuyPrice.Clean = value; _gainLossTotalBuyPrice = gainLossTotalBuyPrice;
-                var gPMRate = _gPMRate; gPMRate.Clean = value; _gPMRate = gPMRate;
-                var gPMYears = _gPMYears; gPMYears.Clean = value; _gPMYears = gPMYears;
-                var gSEPropertyType = _gSEPropertyType; gSEPropertyType.Clean = value; _gSEPropertyType = gSEPropertyType;
-                var hedging = _hedging; hedging.Clean = value; _hedging = hedging;
-                var hELOCActualBalance = _hELOCActualBalance; hELOCActualBalance.Clean = value; _hELOCActualBalance = hELOCActualBalance;
-                var id = _id; id.Clean = value; _id = id;
-                var impounds = _impounds; impounds.Clean = value; _impounds = impounds;
-                var impoundType = _impoundType; impoundType.Clean = value; _impoundType = impoundType;
-                var impoundWavied = _impoundWavied; impoundWavied.Clean = value; _impoundWavied = impoundWavied;
-                var interest = _interest; interest.Clean = value; _interest = interest;
-                var investorAddress = _investorAddress; investorAddress.Clean = value; _investorAddress = investorAddress;
-                var investorCity = _investorCity; investorCity.Clean = value; _investorCity = investorCity;
-                var investorCommitment = _investorCommitment; investorCommitment.Clean = value; _investorCommitment = investorCommitment;
-                var investorContact = _investorContact; investorContact.Clean = value; _investorContact = investorContact;
-                var investorDeliveryDate = _investorDeliveryDate; investorDeliveryDate.Clean = value; _investorDeliveryDate = investorDeliveryDate;
-                var investorEmail = _investorEmail; investorEmail.Clean = value; _investorEmail = investorEmail;
-                var investorLoanNumber = _investorLoanNumber; investorLoanNumber.Clean = value; _investorLoanNumber = investorLoanNumber;
-                var investorLockType = _investorLockType; investorLockType.Clean = value; _investorLockType = investorLockType;
-                var investorMERSNumber = _investorMERSNumber; investorMERSNumber.Clean = value; _investorMERSNumber = investorMERSNumber;
-                var investorName = _investorName; investorName.Clean = value; _investorName = investorName;
-                var investorPhone = _investorPhone; investorPhone.Clean = value; _investorPhone = investorPhone;
-                var investorPostalCode = _investorPostalCode; investorPostalCode.Clean = value; _investorPostalCode = investorPostalCode;
-                var investorProgramCode = _investorProgramCode; investorProgramCode.Clean = value; _investorProgramCode = investorProgramCode;
-                var investorState = _investorState; investorState.Clean = value; _investorState = investorState;
-                var investorTargetDeliveryDate = _investorTargetDeliveryDate; investorTargetDeliveryDate.Clean = value; _investorTargetDeliveryDate = investorTargetDeliveryDate;
-                var investorTemplateName = _investorTemplateName; investorTemplateName.Clean = value; _investorTemplateName = investorTemplateName;
-                var investorWebsite = _investorWebsite; investorWebsite.Clean = value; _investorWebsite = investorWebsite;
-                var isCancelled = _isCancelled; isCancelled.Clean = value; _isCancelled = isCancelled;
-                var isDeliveryType = _isDeliveryType; isDeliveryType.Clean = value; _isDeliveryType = isDeliveryType;
-                var lenderPaidMortgageInsuranceIndicator = _lenderPaidMortgageInsuranceIndicator; lenderPaidMortgageInsuranceIndicator.Clean = value; _lenderPaidMortgageInsuranceIndicator = lenderPaidMortgageInsuranceIndicator;
-                var lienPriorityType = _lienPriorityType; lienPriorityType.Clean = value; _lienPriorityType = lienPriorityType;
-                var loanAmortizationTermMonths = _loanAmortizationTermMonths; loanAmortizationTermMonths.Clean = value; _loanAmortizationTermMonths = loanAmortizationTermMonths;
-                var loanAmortizationType = _loanAmortizationType; loanAmortizationType.Clean = value; _loanAmortizationType = loanAmortizationType;
-                var loanDocumentationType = _loanDocumentationType; loanDocumentationType.Clean = value; _loanDocumentationType = loanDocumentationType;
-                var loanFor203K = _loanFor203K; loanFor203K.Clean = value; _loanFor203K = loanFor203K;
-                var loanProgram = _loanProgram; loanProgram.Clean = value; _loanProgram = loanProgram;
-                var loanProgramFile = _loanProgramFile; loanProgramFile.Clean = value; _loanProgramFile = loanProgramFile;
-                var loanScheduledClosingDate = _loanScheduledClosingDate; loanScheduledClosingDate.Clean = value; _loanScheduledClosingDate = loanScheduledClosingDate;
-                var lockField = _lockField; lockField.Clean = value; _lockField = lockField;
-                var lockRequestAdjustments = _lockRequestAdjustments; lockRequestAdjustments.Clean = value; _lockRequestAdjustments = lockRequestAdjustments;
-                var lockRequestBorrowers = _lockRequestBorrowers; lockRequestBorrowers.Clean = value; _lockRequestBorrowers = lockRequestBorrowers;
-                var lockRequestLoanPurposeType = _lockRequestLoanPurposeType; lockRequestLoanPurposeType.Clean = value; _lockRequestLoanPurposeType = lockRequestLoanPurposeType;
-                var lTV = _lTV; lTV.Clean = value; _lTV = lTV;
-                var minFICO = _minFICO; minFICO.Clean = value; _minFICO = minFICO;
-                var minFICO2 = _minFICO2; minFICO2.Clean = value; _minFICO2 = minFICO2;
-                var mIPPaidInCash = _mIPPaidInCash; mIPPaidInCash.Clean = value; _mIPPaidInCash = mIPPaidInCash;
-                var mortgageType = _mortgageType; mortgageType.Clean = value; _mortgageType = mortgageType;
-                var netSellAmount = _netSellAmount; netSellAmount.Clean = value; _netSellAmount = netSellAmount;
-                var netSellPrice = _netSellPrice; netSellPrice.Clean = value; _netSellPrice = netSellPrice;
-                var nextPaymentDate = _nextPaymentDate; nextPaymentDate.Clean = value; _nextPaymentDate = nextPaymentDate;
-                var noClosingCostOption = _noClosingCostOption; noClosingCostOption.Clean = value; _noClosingCostOption = noClosingCostOption;
-                var oNRPLock = _oNRPLock; oNRPLock.Clean = value; _oNRPLock = oNRPLock;
-                var otherAmortizationTypeDescription = _otherAmortizationTypeDescription; otherAmortizationTypeDescription.Clean = value; _otherAmortizationTypeDescription = otherAmortizationTypeDescription;
-                var otherSubordinateAmount = _otherSubordinateAmount; otherSubordinateAmount.Clean = value; _otherSubordinateAmount = otherSubordinateAmount;
-                var penaltyTerm = _penaltyTerm; penaltyTerm.Clean = value; _penaltyTerm = penaltyTerm;
-                var perDiemInterestRoundingType = _perDiemInterestRoundingType; perDiemInterestRoundingType.Clean = value; _perDiemInterestRoundingType = perDiemInterestRoundingType;
-                var planCode = _planCode; planCode.Clean = value; _planCode = planCode;
-                var premium = _premium; premium.Clean = value; _premium = premium;
-                var prepayPenalty = _prepayPenalty; prepayPenalty.Clean = value; _prepayPenalty = prepayPenalty;
-                var priceAdjustment = _priceAdjustment; priceAdjustment.Clean = value; _priceAdjustment = priceAdjustment;
-                var priceAdjustments = _priceAdjustments; priceAdjustments.Clean = value; _priceAdjustments = priceAdjustments;
-                var pricingHistoryData = _pricingHistoryData; pricingHistoryData.Clean = value; _pricingHistoryData = pricingHistoryData;
-                var pricingUpdated = _pricingUpdated; pricingUpdated.Clean = value; _pricingUpdated = pricingUpdated;
-                var principle = _principle; principle.Clean = value; _principle = principle;
-                var profitMarginAdjustedBuyPrice = _profitMarginAdjustedBuyPrice; profitMarginAdjustedBuyPrice.Clean = value; _profitMarginAdjustedBuyPrice = profitMarginAdjustedBuyPrice;
-                var propertyAppraisedValueAmount = _propertyAppraisedValueAmount; propertyAppraisedValueAmount.Clean = value; _propertyAppraisedValueAmount = propertyAppraisedValueAmount;
-                var propertyEstimatedValueAmount = _propertyEstimatedValueAmount; propertyEstimatedValueAmount.Clean = value; _propertyEstimatedValueAmount = propertyEstimatedValueAmount;
-                var propertyUsageType = _propertyUsageType; propertyUsageType.Clean = value; _propertyUsageType = propertyUsageType;
-                var purchaseAdviceNumberOfDays = _purchaseAdviceNumberOfDays; purchaseAdviceNumberOfDays.Clean = value; _purchaseAdviceNumberOfDays = purchaseAdviceNumberOfDays;
-                var purchaseAdvicePayouts = _purchaseAdvicePayouts; purchaseAdvicePayouts.Clean = value; _purchaseAdvicePayouts = purchaseAdvicePayouts;
-                var purchasePriceAmount = _purchasePriceAmount; purchasePriceAmount.Clean = value; _purchasePriceAmount = purchasePriceAmount;
-                var rateRequestStatus = _rateRequestStatus; rateRequestStatus.Clean = value; _rateRequestStatus = rateRequestStatus;
-                var rateStatus = _rateStatus; rateStatus.Clean = value; _rateStatus = rateStatus;
-                var reasonforBranchApproval = _reasonforBranchApproval; reasonforBranchApproval.Clean = value; _reasonforBranchApproval = reasonforBranchApproval;
-                var reasonforCorporateApproval = _reasonforCorporateApproval; reasonforCorporateApproval.Clean = value; _reasonforCorporateApproval = reasonforCorporateApproval;
-                var reconciledDiff = _reconciledDiff; reconciledDiff.Clean = value; _reconciledDiff = reconciledDiff;
-                var reLockRequestPending = _reLockRequestPending; reLockRequestPending.Clean = value; _reLockRequestPending = reLockRequestPending;
-                var remainingBuydownFunds = _remainingBuydownFunds; remainingBuydownFunds.Clean = value; _remainingBuydownFunds = remainingBuydownFunds;
-                var requestComments = _requestComments; requestComments.Clean = value; _requestComments = requestComments;
-                var requestCurrentRateSetDate = _requestCurrentRateSetDate; requestCurrentRateSetDate.Clean = value; _requestCurrentRateSetDate = requestCurrentRateSetDate;
-                var requestDaystoExtend = _requestDaystoExtend; requestDaystoExtend.Clean = value; _requestDaystoExtend = requestDaystoExtend;
-                var requestExtendedLockExpires = _requestExtendedLockExpires; requestExtendedLockExpires.Clean = value; _requestExtendedLockExpires = requestExtendedLockExpires;
-                var requestFullfilledDateTime = _requestFullfilledDateTime; requestFullfilledDateTime.Clean = value; _requestFullfilledDateTime = requestFullfilledDateTime;
-                var requestImpoundType = _requestImpoundType; requestImpoundType.Clean = value; _requestImpoundType = requestImpoundType;
-                var requestImpoundWavied = _requestImpoundWavied; requestImpoundWavied.Clean = value; _requestImpoundWavied = requestImpoundWavied;
-                var requestLockCancellationComment = _requestLockCancellationComment; requestLockCancellationComment.Clean = value; _requestLockCancellationComment = requestLockCancellationComment;
-                var requestLockCancellationDate = _requestLockCancellationDate; requestLockCancellationDate.Clean = value; _requestLockCancellationDate = requestLockCancellationDate;
-                var requestLockDate = _requestLockDate; requestLockDate.Clean = value; _requestLockDate = requestLockDate;
-                var requestLockExpires = _requestLockExpires; requestLockExpires.Clean = value; _requestLockExpires = requestLockExpires;
-                var requestLockExtendComment = _requestLockExtendComment; requestLockExtendComment.Clean = value; _requestLockExtendComment = requestLockExtendComment;
-                var requestLockExtendPriceAdjustment = _requestLockExtendPriceAdjustment; requestLockExtendPriceAdjustment.Clean = value; _requestLockExtendPriceAdjustment = requestLockExtendPriceAdjustment;
-                var requestLockType = _requestLockType; requestLockType.Clean = value; _requestLockType = requestLockType;
-                var requestMarginRate = _requestMarginRate; requestMarginRate.Clean = value; _requestMarginRate = requestMarginRate;
-                var requestMarginRateRequested = _requestMarginRateRequested; requestMarginRateRequested.Clean = value; _requestMarginRateRequested = requestMarginRateRequested;
-                var requestMarginSRPPaidOut = _requestMarginSRPPaidOut; requestMarginSRPPaidOut.Clean = value; _requestMarginSRPPaidOut = requestMarginSRPPaidOut;
-                var requestMarginTotalAdjustment = _requestMarginTotalAdjustment; requestMarginTotalAdjustment.Clean = value; _requestMarginTotalAdjustment = requestMarginTotalAdjustment;
-                var requestNumberOfDays = _requestNumberOfDays; requestNumberOfDays.Clean = value; _requestNumberOfDays = requestNumberOfDays;
-                var requestOnrpEligible = _requestOnrpEligible; requestOnrpEligible.Clean = value; _requestOnrpEligible = requestOnrpEligible;
-                var requestOnrpLockDate = _requestOnrpLockDate; requestOnrpLockDate.Clean = value; _requestOnrpLockDate = requestOnrpLockDate;
-                var requestOnrpLockTime = _requestOnrpLockTime; requestOnrpLockTime.Clean = value; _requestOnrpLockTime = requestOnrpLockTime;
-                var requestOriginalLockExpires = _requestOriginalLockExpires; requestOriginalLockExpires.Clean = value; _requestOriginalLockExpires = requestOriginalLockExpires;
-                var requestPenaltyTerm = _requestPenaltyTerm; requestPenaltyTerm.Clean = value; _requestPenaltyTerm = requestPenaltyTerm;
-                var requestPending = _requestPending; requestPending.Clean = value; _requestPending = requestPending;
-                var requestPrepayPenalty = _requestPrepayPenalty; requestPrepayPenalty.Clean = value; _requestPrepayPenalty = requestPrepayPenalty;
-                var requestPriceRate = _requestPriceRate; requestPriceRate.Clean = value; _requestPriceRate = requestPriceRate;
-                var requestPriceRateRequested = _requestPriceRateRequested; requestPriceRateRequested.Clean = value; _requestPriceRateRequested = requestPriceRateRequested;
-                var requestPriceTotalAdjustment = _requestPriceTotalAdjustment; requestPriceTotalAdjustment.Clean = value; _requestPriceTotalAdjustment = requestPriceTotalAdjustment;
-                var requestRate = _requestRate; requestRate.Clean = value; _requestRate = requestRate;
-                var requestRateRequested = _requestRateRequested; requestRateRequested.Clean = value; _requestRateRequested = requestRateRequested;
-                var requestRateSheetID = _requestRateSheetID; requestRateSheetID.Clean = value; _requestRateSheetID = requestRateSheetID;
-                var requestRateTotalAdjustment = _requestRateTotalAdjustment; requestRateTotalAdjustment.Clean = value; _requestRateTotalAdjustment = requestRateTotalAdjustment;
-                var requestStartingAdjPoint = _requestStartingAdjPoint; requestStartingAdjPoint.Clean = value; _requestStartingAdjPoint = requestStartingAdjPoint;
-                var requestStartingAdjRate = _requestStartingAdjRate; requestStartingAdjRate.Clean = value; _requestStartingAdjRate = requestStartingAdjRate;
-                var requestType = _requestType; requestType.Clean = value; _requestType = requestType;
-                var requestUnDiscountedRate = _requestUnDiscountedRate; requestUnDiscountedRate.Clean = value; _requestUnDiscountedRate = requestUnDiscountedRate;
-                var roundToNearest50 = _roundToNearest50; roundToNearest50.Clean = value; _roundToNearest50 = roundToNearest50;
-                var secondSubordinateAmount = _secondSubordinateAmount; secondSubordinateAmount.Clean = value; _secondSubordinateAmount = secondSubordinateAmount;
-                var sellerPaidMIPremium = _sellerPaidMIPremium; sellerPaidMIPremium.Clean = value; _sellerPaidMIPremium = sellerPaidMIPremium;
-                var sellSideAdjustments = _sellSideAdjustments; sellSideAdjustments.Clean = value; _sellSideAdjustments = sellSideAdjustments;
-                var sellSideComments = _sellSideComments; sellSideComments.Clean = value; _sellSideComments = sellSideComments;
-                var sellSideCommitmentContractNumber = _sellSideCommitmentContractNumber; sellSideCommitmentContractNumber.Clean = value; _sellSideCommitmentContractNumber = sellSideCommitmentContractNumber;
-                var sellSideCommitmentDate = _sellSideCommitmentDate; sellSideCommitmentDate.Clean = value; _sellSideCommitmentDate = sellSideCommitmentDate;
-                var sellSideCurrentRateSetDate = _sellSideCurrentRateSetDate; sellSideCurrentRateSetDate.Clean = value; _sellSideCurrentRateSetDate = sellSideCurrentRateSetDate;
-                var sellSideDaystoExtend = _sellSideDaystoExtend; sellSideDaystoExtend.Clean = value; _sellSideDaystoExtend = sellSideDaystoExtend;
-                var sellSideDiscountYSP = _sellSideDiscountYSP; sellSideDiscountYSP.Clean = value; _sellSideDiscountYSP = sellSideDiscountYSP;
-                var sellSideExtendedLockExpires = _sellSideExtendedLockExpires; sellSideExtendedLockExpires.Clean = value; _sellSideExtendedLockExpires = sellSideExtendedLockExpires;
-                var sellSideGuaranteeFee = _sellSideGuaranteeFee; sellSideGuaranteeFee.Clean = value; _sellSideGuaranteeFee = sellSideGuaranteeFee;
-                var sellSideGuarantyBaseFee = _sellSideGuarantyBaseFee; sellSideGuarantyBaseFee.Clean = value; _sellSideGuarantyBaseFee = sellSideGuarantyBaseFee;
-                var sellSideInvestorStatus = _sellSideInvestorStatus; sellSideInvestorStatus.Clean = value; _sellSideInvestorStatus = sellSideInvestorStatus;
-                var sellSideInvestorStatusDate = _sellSideInvestorStatusDate; sellSideInvestorStatusDate.Clean = value; _sellSideInvestorStatusDate = sellSideInvestorStatusDate;
-                var sellSideInvestorTradeNumber = _sellSideInvestorTradeNumber; sellSideInvestorTradeNumber.Clean = value; _sellSideInvestorTradeNumber = sellSideInvestorTradeNumber;
-                var sellSideLoanProgram = _sellSideLoanProgram; sellSideLoanProgram.Clean = value; _sellSideLoanProgram = sellSideLoanProgram;
-                var sellSideLockDate = _sellSideLockDate; sellSideLockDate.Clean = value; _sellSideLockDate = sellSideLockDate;
-                var sellSideLockExpires = _sellSideLockExpires; sellSideLockExpires.Clean = value; _sellSideLockExpires = sellSideLockExpires;
-                var sellSideLockExtendPriceAdjustment = _sellSideLockExtendPriceAdjustment; sellSideLockExtendPriceAdjustment.Clean = value; _sellSideLockExtendPriceAdjustment = sellSideLockExtendPriceAdjustment;
-                var sellSideMarginNetSellRate = _sellSideMarginNetSellRate; sellSideMarginNetSellRate.Clean = value; _sellSideMarginNetSellRate = sellSideMarginNetSellRate;
-                var sellSideMarginRate = _sellSideMarginRate; sellSideMarginRate.Clean = value; _sellSideMarginRate = sellSideMarginRate;
-                var sellSideMarginTotalAdjustment = _sellSideMarginTotalAdjustment; sellSideMarginTotalAdjustment.Clean = value; _sellSideMarginTotalAdjustment = sellSideMarginTotalAdjustment;
-                var sellSideMasterContractNumber = _sellSideMasterContractNumber; sellSideMasterContractNumber.Clean = value; _sellSideMasterContractNumber = sellSideMasterContractNumber;
-                var sellSideMSRValue = _sellSideMSRValue; sellSideMSRValue.Clean = value; _sellSideMSRValue = sellSideMSRValue;
-                var sellSideNetSellPrice = _sellSideNetSellPrice; sellSideNetSellPrice.Clean = value; _sellSideNetSellPrice = sellSideNetSellPrice;
-                var sellSideNetSellRate = _sellSideNetSellRate; sellSideNetSellRate.Clean = value; _sellSideNetSellRate = sellSideNetSellRate;
-                var sellSideNumberOfDays = _sellSideNumberOfDays; sellSideNumberOfDays.Clean = value; _sellSideNumberOfDays = sellSideNumberOfDays;
-                var sellSideOriginalLockExpires = _sellSideOriginalLockExpires; sellSideOriginalLockExpires.Clean = value; _sellSideOriginalLockExpires = sellSideOriginalLockExpires;
-                var sellSidePoolID = _sellSidePoolID; sellSidePoolID.Clean = value; _sellSidePoolID = sellSidePoolID;
-                var sellSidePoolNumber = _sellSidePoolNumber; sellSidePoolNumber.Clean = value; _sellSidePoolNumber = sellSidePoolNumber;
-                var sellSidePriceRate = _sellSidePriceRate; sellSidePriceRate.Clean = value; _sellSidePriceRate = sellSidePriceRate;
-                var sellSidePriceTotalAdjustment = _sellSidePriceTotalAdjustment; sellSidePriceTotalAdjustment.Clean = value; _sellSidePriceTotalAdjustment = sellSidePriceTotalAdjustment;
-                var sellSideProductName = _sellSideProductName; sellSideProductName.Clean = value; _sellSideProductName = sellSideProductName;
-                var sellSideRate = _sellSideRate; sellSideRate.Clean = value; _sellSideRate = sellSideRate;
-                var sellSideRateSheetID = _sellSideRateSheetID; sellSideRateSheetID.Clean = value; _sellSideRateSheetID = sellSideRateSheetID;
-                var sellSideRateTotalAdjustment = _sellSideRateTotalAdjustment; sellSideRateTotalAdjustment.Clean = value; _sellSideRateTotalAdjustment = sellSideRateTotalAdjustment;
-                var sellSideRequestedBy = _sellSideRequestedBy; sellSideRequestedBy.Clean = value; _sellSideRequestedBy = sellSideRequestedBy;
-                var sellSideServicer = _sellSideServicer; sellSideServicer.Clean = value; _sellSideServicer = sellSideServicer;
-                var sellSideServicingFee = _sellSideServicingFee; sellSideServicingFee.Clean = value; _sellSideServicingFee = sellSideServicingFee;
-                var sellSideServicingType = _sellSideServicingType; sellSideServicingType.Clean = value; _sellSideServicingType = sellSideServicingType;
-                var sellSideSRP = _sellSideSRP; sellSideSRP.Clean = value; _sellSideSRP = sellSideSRP;
-                var sellSideSRPPaidOut = _sellSideSRPPaidOut; sellSideSRPPaidOut.Clean = value; _sellSideSRPPaidOut = sellSideSRPPaidOut;
-                var sellSideTradeGuid = _sellSideTradeGuid; sellSideTradeGuid.Clean = value; _sellSideTradeGuid = sellSideTradeGuid;
-                var sellSideTradeMgmtPrevConfirmedLockGuid = _sellSideTradeMgmtPrevConfirmedLockGuid; sellSideTradeMgmtPrevConfirmedLockGuid.Clean = value; _sellSideTradeMgmtPrevConfirmedLockGuid = sellSideTradeMgmtPrevConfirmedLockGuid;
-                var sellSideTradeNumber = _sellSideTradeNumber; sellSideTradeNumber.Clean = value; _sellSideTradeNumber = sellSideTradeNumber;
-                var servicingReleaseIndicator = _servicingReleaseIndicator; servicingReleaseIndicator.Clean = value; _servicingReleaseIndicator = servicingReleaseIndicator;
-                var sRP = _sRP; sRP.Clean = value; _sRP = sRP;
-                var sRPAmount = _sRPAmount; sRPAmount.Clean = value; _sRPAmount = sRPAmount;
-                var sRPPaidOut = _sRPPaidOut; sRPPaidOut.Clean = value; _sRPPaidOut = sRPPaidOut;
-                var subjectPropertyCity = _subjectPropertyCity; subjectPropertyCity.Clean = value; _subjectPropertyCity = subjectPropertyCity;
-                var subjectPropertyCondotelIndicator = _subjectPropertyCondotelIndicator; subjectPropertyCondotelIndicator.Clean = value; _subjectPropertyCondotelIndicator = subjectPropertyCondotelIndicator;
-                var subjectPropertyCounty = _subjectPropertyCounty; subjectPropertyCounty.Clean = value; _subjectPropertyCounty = subjectPropertyCounty;
-                var subjectPropertyNonWarrantableProjectIndicator = _subjectPropertyNonWarrantableProjectIndicator; subjectPropertyNonWarrantableProjectIndicator.Clean = value; _subjectPropertyNonWarrantableProjectIndicator = subjectPropertyNonWarrantableProjectIndicator;
-                var subjectPropertyPostalCode = _subjectPropertyPostalCode; subjectPropertyPostalCode.Clean = value; _subjectPropertyPostalCode = subjectPropertyPostalCode;
-                var subjectPropertyState = _subjectPropertyState; subjectPropertyState.Clean = value; _subjectPropertyState = subjectPropertyState;
-                var subjectPropertyStreetAddress = _subjectPropertyStreetAddress; subjectPropertyStreetAddress.Clean = value; _subjectPropertyStreetAddress = subjectPropertyStreetAddress;
-                var timeLockedWithInvestor = _timeLockedWithInvestor; timeLockedWithInvestor.Clean = value; _timeLockedWithInvestor = timeLockedWithInvestor;
-                var totalBuyPrice = _totalBuyPrice; totalBuyPrice.Clean = value; _totalBuyPrice = totalBuyPrice;
-                var totalForLesserOfSumAsIs = _totalForLesserOfSumAsIs; totalForLesserOfSumAsIs.Clean = value; _totalForLesserOfSumAsIs = totalForLesserOfSumAsIs;
-                var totalPrice = _totalPrice; totalPrice.Clean = value; _totalPrice = totalPrice;
-                var totalSubordinateFinancing = _totalSubordinateFinancing; totalSubordinateFinancing.Clean = value; _totalSubordinateFinancing = totalSubordinateFinancing;
-                var twelveMonthMortgageRentalHistoryIndicator = _twelveMonthMortgageRentalHistoryIndicator; twelveMonthMortgageRentalHistoryIndicator.Clean = value; _twelveMonthMortgageRentalHistoryIndicator = twelveMonthMortgageRentalHistoryIndicator;
-                var type = _type; type.Clean = value; _type = type;
-                var usePoint = _usePoint; usePoint.Clean = value; _usePoint = usePoint;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actualSellAmount.Dirty = value;
+                _actualSellPrice.Dirty = value;
+                _actualSellSideSRP.Dirty = value;
+                _actualSRPAmount.Dirty = value;
+                _amountDue.Dirty = value;
+                _amountDueTo.Dirty = value;
+                _amountPaid.Dirty = value;
+                _amountPaidTo.Dirty = value;
+                _amountReceived.Dirty = value;
+                _balloonLoanMaturityTermMonths.Dirty = value;
+                _baseLoanAmount.Dirty = value;
+                _borrowerRequestedLoanAmount.Dirty = value;
+                _branchApprovalDate.Dirty = value;
+                _branchApprovedby.Dirty = value;
+                _branchPrice.Dirty = value;
+                _buySideAdjustments.Dirty = value;
+                _buySideComments.Dirty = value;
+                _buySideCommitmentDate.Dirty = value;
+                _buySideCommitmentNumber.Dirty = value;
+                _buySideCommitmentType.Dirty = value;
+                _buySideCurrentRateSetDate.Dirty = value;
+                _buySideDaystoExtend.Dirty = value;
+                _buySideDeliveryExpirationDate.Dirty = value;
+                _buySideDeliveryType.Dirty = value;
+                _buySideExpirationDate.Dirty = value;
+                _buySideExtendedLockExpires.Dirty = value;
+                _buySideLockDate.Dirty = value;
+                _buySideLockExpires.Dirty = value;
+                _buySideLockExtendPriceAdjustment.Dirty = value;
+                _buySideMarginNetBuyRate.Dirty = value;
+                _buySideMarginRate.Dirty = value;
+                _buySideMarginTotalAdjustment.Dirty = value;
+                _buySideMasterCommitmentNumber.Dirty = value;
+                _buySideNumberOfDays.Dirty = value;
+                _buySideOnrpEligible.Dirty = value;
+                _buySideOnrpLockDate.Dirty = value;
+                _buySideOnrpLockTime.Dirty = value;
+                _buySideOrgID.Dirty = value;
+                _buySideOriginalLockExpires.Dirty = value;
+                _buySidePriceNetBuyPrice.Dirty = value;
+                _buySidePriceRate.Dirty = value;
+                _buySidePriceTotalAdjustment.Dirty = value;
+                _buySideRate.Dirty = value;
+                _buySideRateNetBuyRate.Dirty = value;
+                _buySideRateSheetID.Dirty = value;
+                _buySideRateTotalAdjustment.Dirty = value;
+                _buySideRequestedBy.Dirty = value;
+                _buySideSRPPaidOut.Dirty = value;
+                _buySideStartingAdjPoint.Dirty = value;
+                _buySideStartingAdjPrice.Dirty = value;
+                _buySideStartingAdjRate.Dirty = value;
+                _buySideTPOID.Dirty = value;
+                _buySideTPOName.Dirty = value;
+                _buySideTradeGuid.Dirty = value;
+                _buySideTradeNumber.Dirty = value;
+                _buySideUnDiscountedRate.Dirty = value;
+                _cancellationRequestPending.Dirty = value;
+                _combinedLTV.Dirty = value;
+                _comments.Dirty = value;
+                _commitment.Dirty = value;
+                _commitmentType.Dirty = value;
+                _compGainLossPercentage.Dirty = value;
+                _compGainLossPrice.Dirty = value;
+                _compGainLossTotalBuyPrice.Dirty = value;
+                _compGainLossTotalCompPrice.Dirty = value;
+                _compInvestorAddress.Dirty = value;
+                _compInvestorCity.Dirty = value;
+                _compInvestorCommitment.Dirty = value;
+                _compInvestorContact.Dirty = value;
+                _compInvestorEmail.Dirty = value;
+                _compInvestorLockType.Dirty = value;
+                _compInvestorName.Dirty = value;
+                _compInvestorPhone.Dirty = value;
+                _compInvestorPostalCode.Dirty = value;
+                _compInvestorProgramCode.Dirty = value;
+                _compInvestorState.Dirty = value;
+                _compInvestorTemplateName.Dirty = value;
+                _compInvestorWebsite.Dirty = value;
+                _compSideAdjustments.Dirty = value;
+                _compSideComments.Dirty = value;
+                _compSideComparisonedBy.Dirty = value;
+                _compSideCurrentRateSetDate.Dirty = value;
+                _compSideDaystoExtend.Dirty = value;
+                _compSideDiscountYSP.Dirty = value;
+                _compSideExtendedLockExpires.Dirty = value;
+                _compSideInvestorStatus.Dirty = value;
+                _compSideInvestorStatusDate.Dirty = value;
+                _compSideInvestorTradeNumber.Dirty = value;
+                _compSideLoanProgram.Dirty = value;
+                _compSideLockDate.Dirty = value;
+                _compSideLockExpires.Dirty = value;
+                _compSideLockExtendPriceAdjustment.Dirty = value;
+                _compSideMarginNetCompRate.Dirty = value;
+                _compSideMarginRate.Dirty = value;
+                _compSideMarginTotalAdjustment.Dirty = value;
+                _compSideMasterContractNumber.Dirty = value;
+                _compSideNetCompPrice.Dirty = value;
+                _compSideNetCompRate.Dirty = value;
+                _compSideNumberOfDays.Dirty = value;
+                _compSideOriginalLockExpires.Dirty = value;
+                _compSidePriceRate.Dirty = value;
+                _compSidePriceTotalAdjustment.Dirty = value;
+                _compSideRate.Dirty = value;
+                _compSideRateSheetID.Dirty = value;
+                _compSideRateTotalAdjustment.Dirty = value;
+                _compSideRequestedBy.Dirty = value;
+                _compSideServicingType.Dirty = value;
+                _compSideSRPPaidOut.Dirty = value;
+                _compSideTradeGuid.Dirty = value;
+                _compSideTradeNumber.Dirty = value;
+                _confirmedBy.Dirty = value;
+                _confirmedDate.Dirty = value;
+                _corporateApprovalDate.Dirty = value;
+                _corporateApprovedby.Dirty = value;
+                _corporatePrice.Dirty = value;
+                _correspondentAdditionalEscrowAdditionalEscrow.Dirty = value;
+                _correspondentAdditionalEscrowAmount1007.Dirty = value;
+                _correspondentAdditionalEscrowAmount1008.Dirty = value;
+                _correspondentAdditionalEscrowAmount1009.Dirty = value;
+                _correspondentAdditionalEscrowCityPropertyTax.Dirty = value;
+                _correspondentAdditionalEscrowDescription1007.Dirty = value;
+                _correspondentAdditionalEscrowDescription1008.Dirty = value;
+                _correspondentAdditionalEscrowDescription1009.Dirty = value;
+                _correspondentAdditionalEscrowFloodInsurance.Dirty = value;
+                _correspondentAdditionalEscrowHomeInsurance.Dirty = value;
+                _correspondentAdditionalEscrowMIMIP.Dirty = value;
+                _correspondentAdditionalEscrowNumOfPayments.Dirty = value;
+                _correspondentAdditionalEscrowOption1Amount.Dirty = value;
+                _correspondentAdditionalEscrowOption1Desc.Dirty = value;
+                _correspondentAdditionalEscrowOption2Amount.Dirty = value;
+                _correspondentAdditionalEscrowOption2Desc.Dirty = value;
+                _correspondentAdditionalEscrowPropertyTax.Dirty = value;
+                _correspondentAdditionalEscrowSumOfPayments.Dirty = value;
+                _correspondentAdditionalEscrowUSDAAnnualFee.Dirty = value;
+                _correspondentAdditionalLineAmount1.Dirty = value;
+                _correspondentAdditionalLineAmount10.Dirty = value;
+                _correspondentAdditionalLineAmount11.Dirty = value;
+                _correspondentAdditionalLineAmount12.Dirty = value;
+                _correspondentAdditionalLineAmount13.Dirty = value;
+                _correspondentAdditionalLineAmount2.Dirty = value;
+                _correspondentAdditionalLineAmount3.Dirty = value;
+                _correspondentAdditionalLineAmount4.Dirty = value;
+                _correspondentAdditionalLineAmount5.Dirty = value;
+                _correspondentAdditionalLineAmount6.Dirty = value;
+                _correspondentAdditionalLineAmount7.Dirty = value;
+                _correspondentAdditionalLineAmount8.Dirty = value;
+                _correspondentAdditionalLineAmount9.Dirty = value;
+                _correspondentAdditionalLineDescription1.Dirty = value;
+                _correspondentAdditionalLineDescription10.Dirty = value;
+                _correspondentAdditionalLineDescription11.Dirty = value;
+                _correspondentAdditionalLineDescription12.Dirty = value;
+                _correspondentAdditionalLineDescription2.Dirty = value;
+                _correspondentAdditionalLineDescription3.Dirty = value;
+                _correspondentAdditionalLineDescription4.Dirty = value;
+                _correspondentAdditionalLineDescription5.Dirty = value;
+                _correspondentAdditionalLineDescription6.Dirty = value;
+                _correspondentAdditionalLineDescription7.Dirty = value;
+                _correspondentAdditionalLineDescription8.Dirty = value;
+                _correspondentAdditionalLineDescription9.Dirty = value;
+                _correspondentAdditionalLineTotalAmount.Dirty = value;
+                _correspondentAdjusterAmount1.Dirty = value;
+                _correspondentAdjusterAmount2.Dirty = value;
+                _correspondentAdjusterAmount3.Dirty = value;
+                _correspondentAdjusterDescription1.Dirty = value;
+                _correspondentAdjusterDescription2.Dirty = value;
+                _correspondentAdjusterDescription3.Dirty = value;
+                _correspondentConfirmedBy.Dirty = value;
+                _correspondentConfirmedDate.Dirty = value;
+                _correspondentCurrentImpounds.Dirty = value;
+                _correspondentCurrentPrincipal.Dirty = value;
+                _correspondentDate.Dirty = value;
+                _correspondentEscrowDisbursementsAmount1007.Dirty = value;
+                _correspondentEscrowDisbursementsAmount1008.Dirty = value;
+                _correspondentEscrowDisbursementsAmount1009.Dirty = value;
+                _correspondentEscrowDisbursementsCityPropertyTax.Dirty = value;
+                _correspondentEscrowDisbursementsDescription1007.Dirty = value;
+                _correspondentEscrowDisbursementsDescription1008.Dirty = value;
+                _correspondentEscrowDisbursementsDescription1009.Dirty = value;
+                _correspondentEscrowDisbursementsEscrowsToBePaidBySeller.Dirty = value;
+                _correspondentEscrowDisbursementsEsrowFundedByInvestor.Dirty = value;
+                _correspondentEscrowDisbursementsFloodInsurance.Dirty = value;
+                _correspondentEscrowDisbursementsHomeInsurance.Dirty = value;
+                _correspondentEscrowDisbursementsMortgageInsurance.Dirty = value;
+                _correspondentEscrowDisbursementsOption1Amount.Dirty = value;
+                _correspondentEscrowDisbursementsOption1Desc.Dirty = value;
+                _correspondentEscrowDisbursementsOption2Amount.Dirty = value;
+                _correspondentEscrowDisbursementsOption2Desc.Dirty = value;
+                _correspondentEscrowDisbursementsPropertyTax.Dirty = value;
+                _correspondentEscrowDisbursementsUSDAAnnualFee.Dirty = value;
+                _correspondentFinalBuyAmount.Dirty = value;
+                _correspondentFinalBuyPrice.Dirty = value;
+                _correspondentFinalCDAggAdjAmount.Dirty = value;
+                _correspondentFinalCDAmount1007.Dirty = value;
+                _correspondentFinalCDAmount1008.Dirty = value;
+                _correspondentFinalCDAmount1009.Dirty = value;
+                _correspondentFinalCDCityPropertyTax.Dirty = value;
+                _correspondentFinalCDDescription1007.Dirty = value;
+                _correspondentFinalCDDescription1008.Dirty = value;
+                _correspondentFinalCDDescription1009.Dirty = value;
+                _correspondentFinalCDFloodInsurance.Dirty = value;
+                _correspondentFinalCDHomeInsurance.Dirty = value;
+                _correspondentFinalCDMortgageInsurance.Dirty = value;
+                _correspondentFinalCDOption1Amount.Dirty = value;
+                _correspondentFinalCDOption1Desc.Dirty = value;
+                _correspondentFinalCDOption2Amount.Dirty = value;
+                _correspondentFinalCDOption2Desc.Dirty = value;
+                _correspondentFinalCDPropertyTax.Dirty = value;
+                _correspondentFinalCDReservesCollectedAtClosing.Dirty = value;
+                _correspondentFinalCDUSDAAnnualFee.Dirty = value;
+                _correspondentFirstPaymentDate.Dirty = value;
+                _correspondentImpounds.Dirty = value;
+                _correspondentInterest.Dirty = value;
+                _correspondentInterestDays.Dirty = value;
+                _correspondentLateFeeAmount.Dirty = value;
+                _correspondentLateFeePriceAdjustment.Dirty = value;
+                _correspondentPaidToDate.Dirty = value;
+                _correspondentPaymentHistoryAnticipatedPurchaseDate.Dirty = value;
+                _correspondentPaymentHistoryCalculatedPurchasedPrincipal.Dirty = value;
+                _correspondentPaymentHistoryFirstBorrowerPaymentDueDate.Dirty = value;
+                _correspondentPaymentHistoryFirstInvestorPaymentDate.Dirty = value;
+                _correspondentPaymentHistoryNoteDate.Dirty = value;
+                _correspondentPaymentHistoryPricipalReduction.Dirty = value;
+                _correspondentPurchasedPrincipal.Dirty = value;
+                _correspondentReconcilationComments.Dirty = value;
+                _correspondentRemainingBuydownAmount.Dirty = value;
+                _correspondentSRPAmount.Dirty = value;
+                _correspondentTotalBuyAmount.Dirty = value;
+                _correspondentTotalFees.Dirty = value;
+                _correspondentWarehouseBankABANum.Dirty = value;
+                _correspondentWarehouseBankAcctName.Dirty = value;
+                _correspondentWarehouseBankAcctNum.Dirty = value;
+                _correspondentWarehouseBankAddress.Dirty = value;
+                _correspondentWarehouseBankAddress1.Dirty = value;
+                _correspondentWarehouseBankBaileeExpirationDate.Dirty = value;
+                _correspondentWarehouseBankBaileeLetterReceivedIndicator.Dirty = value;
+                _correspondentWarehouseBankBaileeLetterReqIndicator.Dirty = value;
+                _correspondentWarehouseBankCity.Dirty = value;
+                _correspondentWarehouseBankContactEmail.Dirty = value;
+                _correspondentWarehouseBankContactFax.Dirty = value;
+                _correspondentWarehouseBankContactName.Dirty = value;
+                _correspondentWarehouseBankContactPhone.Dirty = value;
+                _correspondentWarehouseBankDescription.Dirty = value;
+                _correspondentWarehouseBankFurtherCreditAcctName.Dirty = value;
+                _correspondentWarehouseBankFurtherCreditAcctNum.Dirty = value;
+                _correspondentWarehouseBankId.Dirty = value;
+                _correspondentWarehouseBankName.Dirty = value;
+                _correspondentWarehouseBankNotes.Dirty = value;
+                _correspondentWarehouseBankSelfFunderIndicator.Dirty = value;
+                _correspondentWarehouseBankState.Dirty = value;
+                _correspondentWarehouseBankTriPartyContractIndicator.Dirty = value;
+                _correspondentWarehouseBankUseDefaultContactIndicator.Dirty = value;
+                _correspondentWarehouseBankWireConfirmationNumber.Dirty = value;
+                _correspondentWarehouseBankWireInstructionsReceivedIndicator.Dirty = value;
+                _correspondentWarehouseBankZip.Dirty = value;
+                _creditScoreToUse.Dirty = value;
+                _cumulatedDaystoExtend.Dirty = value;
+                _currentAdjustments.Dirty = value;
+                _currentComments.Dirty = value;
+                _currentLockDate.Dirty = value;
+                _currentLockExpires.Dirty = value;
+                _currentMarginRate.Dirty = value;
+                _currentMarginRateRequested.Dirty = value;
+                _currentMarginTotalAdjustment.Dirty = value;
+                _currentNumberOfDays.Dirty = value;
+                _currentPriceRate.Dirty = value;
+                _currentPriceRateRequested.Dirty = value;
+                _currentPriceTotalAdjustment.Dirty = value;
+                _currentRate.Dirty = value;
+                _currentRateRequested.Dirty = value;
+                _currentRateSetDate.Dirty = value;
+                _currentRateSheetID.Dirty = value;
+                _currentRateTotalAdjustment.Dirty = value;
+                _date.Dirty = value;
+                _dateFirstPaymentToInvestor.Dirty = value;
+                _dateLockedWithInvestor.Dirty = value;
+                _dateSold.Dirty = value;
+                _dateWarehoused.Dirty = value;
+                _daysToExtend.Dirty = value;
+                _deliveryType.Dirty = value;
+                _diffAmountReceived.Dirty = value;
+                _diffImpounds.Dirty = value;
+                _diffInterest.Dirty = value;
+                _diffPremium.Dirty = value;
+                _diffPrinciple.Dirty = value;
+                _diffRemainingBuydownFunds.Dirty = value;
+                _diffSellAmount.Dirty = value;
+                _diffSellPrice.Dirty = value;
+                _diffSellSideSRP.Dirty = value;
+                _diffSRP.Dirty = value;
+                _diffSRPAmount.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator1.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator10.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator11.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator12.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator2.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator3.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator4.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator5.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator6.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator7.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator8.Dirty = value;
+                _employmentBorrowerSelfEmployedIndicator9.Dirty = value;
+                _expectedAmountReceived.Dirty = value;
+                _expectedImpounds.Dirty = value;
+                _expectedInterest.Dirty = value;
+                _expectedPremium.Dirty = value;
+                _expectedPrinciple.Dirty = value;
+                _expectedRemainingBuydownFunds.Dirty = value;
+                _expectedSRP.Dirty = value;
+                _extensionRequestPending.Dirty = value;
+                _extensionSequenceNumber.Dirty = value;
+                _extraPayments.Dirty = value;
+                _fHAUpfrontMIPremiumPercent.Dirty = value;
+                _financedNumberOfUnits.Dirty = value;
+                _firstPaymenTo.Dirty = value;
+                _firstSubordinateAmount.Dirty = value;
+                _firstTimeHomebuyersIndicator.Dirty = value;
+                _fNMProductPlanIdentifier.Dirty = value;
+                _fundingAmount.Dirty = value;
+                _gainLossPercentage.Dirty = value;
+                _gainLossPrice.Dirty = value;
+                _gainLossTotalBuyPrice.Dirty = value;
+                _gPMRate.Dirty = value;
+                _gPMYears.Dirty = value;
+                _gSEPropertyType.Dirty = value;
+                _hedging.Dirty = value;
+                _hELOCActualBalance.Dirty = value;
+                _id.Dirty = value;
+                _impounds.Dirty = value;
+                _impoundType.Dirty = value;
+                _impoundWavied.Dirty = value;
+                _interest.Dirty = value;
+                _investorAddress.Dirty = value;
+                _investorCity.Dirty = value;
+                _investorCommitment.Dirty = value;
+                _investorContact.Dirty = value;
+                _investorDeliveryDate.Dirty = value;
+                _investorEmail.Dirty = value;
+                _investorLoanNumber.Dirty = value;
+                _investorLockType.Dirty = value;
+                _investorMERSNumber.Dirty = value;
+                _investorName.Dirty = value;
+                _investorPhone.Dirty = value;
+                _investorPostalCode.Dirty = value;
+                _investorProgramCode.Dirty = value;
+                _investorState.Dirty = value;
+                _investorTargetDeliveryDate.Dirty = value;
+                _investorTemplateName.Dirty = value;
+                _investorWebsite.Dirty = value;
+                _isCancelled.Dirty = value;
+                _isDeliveryType.Dirty = value;
+                _lenderPaidMortgageInsuranceIndicator.Dirty = value;
+                _lienPriorityType.Dirty = value;
+                _loanAmortizationTermMonths.Dirty = value;
+                _loanAmortizationType.Dirty = value;
+                _loanDocumentationType.Dirty = value;
+                _loanFor203K.Dirty = value;
+                _loanProgram.Dirty = value;
+                _loanProgramFile.Dirty = value;
+                _loanScheduledClosingDate.Dirty = value;
+                _lockField.Dirty = value;
+                _lockRequestAdjustments.Dirty = value;
+                _lockRequestBorrowers.Dirty = value;
+                _lockRequestLoanPurposeType.Dirty = value;
+                _lTV.Dirty = value;
+                _minFICO.Dirty = value;
+                _minFICO2.Dirty = value;
+                _mIPPaidInCash.Dirty = value;
+                _mortgageType.Dirty = value;
+                _netSellAmount.Dirty = value;
+                _netSellPrice.Dirty = value;
+                _nextPaymentDate.Dirty = value;
+                _noClosingCostOption.Dirty = value;
+                _oNRPLock.Dirty = value;
+                _otherAmortizationTypeDescription.Dirty = value;
+                _otherSubordinateAmount.Dirty = value;
+                _penaltyTerm.Dirty = value;
+                _perDiemInterestRoundingType.Dirty = value;
+                _planCode.Dirty = value;
+                _premium.Dirty = value;
+                _prepayPenalty.Dirty = value;
+                _priceAdjustment.Dirty = value;
+                _priceAdjustments.Dirty = value;
+                _pricingHistoryData.Dirty = value;
+                _pricingUpdated.Dirty = value;
+                _principle.Dirty = value;
+                _profitMarginAdjustedBuyPrice.Dirty = value;
+                _propertyAppraisedValueAmount.Dirty = value;
+                _propertyEstimatedValueAmount.Dirty = value;
+                _propertyUsageType.Dirty = value;
+                _purchaseAdviceNumberOfDays.Dirty = value;
+                _purchaseAdvicePayouts.Dirty = value;
+                _purchasePriceAmount.Dirty = value;
+                _rateRequestStatus.Dirty = value;
+                _rateStatus.Dirty = value;
+                _reasonforBranchApproval.Dirty = value;
+                _reasonforCorporateApproval.Dirty = value;
+                _reconciledDiff.Dirty = value;
+                _reLockRequestPending.Dirty = value;
+                _remainingBuydownFunds.Dirty = value;
+                _requestComments.Dirty = value;
+                _requestCurrentRateSetDate.Dirty = value;
+                _requestDaystoExtend.Dirty = value;
+                _requestExtendedLockExpires.Dirty = value;
+                _requestFullfilledDateTime.Dirty = value;
+                _requestImpoundType.Dirty = value;
+                _requestImpoundWavied.Dirty = value;
+                _requestLockCancellationComment.Dirty = value;
+                _requestLockCancellationDate.Dirty = value;
+                _requestLockDate.Dirty = value;
+                _requestLockExpires.Dirty = value;
+                _requestLockExtendComment.Dirty = value;
+                _requestLockExtendPriceAdjustment.Dirty = value;
+                _requestLockType.Dirty = value;
+                _requestMarginRate.Dirty = value;
+                _requestMarginRateRequested.Dirty = value;
+                _requestMarginSRPPaidOut.Dirty = value;
+                _requestMarginTotalAdjustment.Dirty = value;
+                _requestNumberOfDays.Dirty = value;
+                _requestOnrpEligible.Dirty = value;
+                _requestOnrpLockDate.Dirty = value;
+                _requestOnrpLockTime.Dirty = value;
+                _requestOriginalLockExpires.Dirty = value;
+                _requestPenaltyTerm.Dirty = value;
+                _requestPending.Dirty = value;
+                _requestPrepayPenalty.Dirty = value;
+                _requestPriceRate.Dirty = value;
+                _requestPriceRateRequested.Dirty = value;
+                _requestPriceTotalAdjustment.Dirty = value;
+                _requestRate.Dirty = value;
+                _requestRateRequested.Dirty = value;
+                _requestRateSheetID.Dirty = value;
+                _requestRateTotalAdjustment.Dirty = value;
+                _requestStartingAdjPoint.Dirty = value;
+                _requestStartingAdjRate.Dirty = value;
+                _requestType.Dirty = value;
+                _requestUnDiscountedRate.Dirty = value;
+                _roundToNearest50.Dirty = value;
+                _secondSubordinateAmount.Dirty = value;
+                _sellerPaidMIPremium.Dirty = value;
+                _sellSideAdjustments.Dirty = value;
+                _sellSideComments.Dirty = value;
+                _sellSideCommitmentContractNumber.Dirty = value;
+                _sellSideCommitmentDate.Dirty = value;
+                _sellSideCurrentRateSetDate.Dirty = value;
+                _sellSideDaystoExtend.Dirty = value;
+                _sellSideDiscountYSP.Dirty = value;
+                _sellSideExtendedLockExpires.Dirty = value;
+                _sellSideGuaranteeFee.Dirty = value;
+                _sellSideGuarantyBaseFee.Dirty = value;
+                _sellSideInvestorStatus.Dirty = value;
+                _sellSideInvestorStatusDate.Dirty = value;
+                _sellSideInvestorTradeNumber.Dirty = value;
+                _sellSideLoanProgram.Dirty = value;
+                _sellSideLockDate.Dirty = value;
+                _sellSideLockExpires.Dirty = value;
+                _sellSideLockExtendPriceAdjustment.Dirty = value;
+                _sellSideMarginNetSellRate.Dirty = value;
+                _sellSideMarginRate.Dirty = value;
+                _sellSideMarginTotalAdjustment.Dirty = value;
+                _sellSideMasterContractNumber.Dirty = value;
+                _sellSideMSRValue.Dirty = value;
+                _sellSideNetSellPrice.Dirty = value;
+                _sellSideNetSellRate.Dirty = value;
+                _sellSideNumberOfDays.Dirty = value;
+                _sellSideOriginalLockExpires.Dirty = value;
+                _sellSidePoolID.Dirty = value;
+                _sellSidePoolNumber.Dirty = value;
+                _sellSidePriceRate.Dirty = value;
+                _sellSidePriceTotalAdjustment.Dirty = value;
+                _sellSideProductName.Dirty = value;
+                _sellSideRate.Dirty = value;
+                _sellSideRateSheetID.Dirty = value;
+                _sellSideRateTotalAdjustment.Dirty = value;
+                _sellSideRequestedBy.Dirty = value;
+                _sellSideServicer.Dirty = value;
+                _sellSideServicingFee.Dirty = value;
+                _sellSideServicingType.Dirty = value;
+                _sellSideSRP.Dirty = value;
+                _sellSideSRPPaidOut.Dirty = value;
+                _sellSideTradeGuid.Dirty = value;
+                _sellSideTradeMgmtPrevConfirmedLockGuid.Dirty = value;
+                _sellSideTradeNumber.Dirty = value;
+                _servicingReleaseIndicator.Dirty = value;
+                _sRP.Dirty = value;
+                _sRPAmount.Dirty = value;
+                _sRPPaidOut.Dirty = value;
+                _subjectPropertyCity.Dirty = value;
+                _subjectPropertyCondotelIndicator.Dirty = value;
+                _subjectPropertyCounty.Dirty = value;
+                _subjectPropertyNonWarrantableProjectIndicator.Dirty = value;
+                _subjectPropertyPostalCode.Dirty = value;
+                _subjectPropertyState.Dirty = value;
+                _subjectPropertyStreetAddress.Dirty = value;
+                _timeLockedWithInvestor.Dirty = value;
+                _totalBuyPrice.Dirty = value;
+                _totalForLesserOfSumAsIs.Dirty = value;
+                _totalPrice.Dirty = value;
+                _totalSubordinateFinancing.Dirty = value;
+                _twelveMonthMortgageRentalHistoryIndicator.Dirty = value;
+                _type.Dirty = value;
+                _usePoint.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public RateLock()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

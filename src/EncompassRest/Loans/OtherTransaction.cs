@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class OtherTransaction : IClean
+    public sealed partial class OtherTransaction : IDirty
     {
         private Value<string> _accountNumber;
         public string AccountNumber { get { return _accountNumber; } set { _accountNumber = value; } }
@@ -42,61 +42,56 @@ namespace EncompassRest.Loans
         public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
         private Value<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _accountNumber.Clean
-                    && _comments.Clean
-                    && _createdById.Clean
-                    && _createdByName.Clean
-                    && _createdDateTimeUtc.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _institutionName.Clean
-                    && _institutionRouting.Clean
-                    && _modifiedById.Clean
-                    && _modifiedByName.Clean
-                    && _modifiedDateTimeUtc.Clean
-                    && _reference.Clean
-                    && _servicingPaymentMethod.Clean
-                    && _servicingTransactionType.Clean
-                    && _transactionAmount.Clean
-                    && _transactionDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _accountNumber.Dirty
+                    || _comments.Dirty
+                    || _createdById.Dirty
+                    || _createdByName.Dirty
+                    || _createdDateTimeUtc.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _institutionName.Dirty
+                    || _institutionRouting.Dirty
+                    || _modifiedById.Dirty
+                    || _modifiedByName.Dirty
+                    || _modifiedDateTimeUtc.Dirty
+                    || _reference.Dirty
+                    || _servicingPaymentMethod.Dirty
+                    || _servicingTransactionType.Dirty
+                    || _transactionAmount.Dirty
+                    || _transactionDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var accountNumber = _accountNumber; accountNumber.Clean = value; _accountNumber = accountNumber;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var createdById = _createdById; createdById.Clean = value; _createdById = createdById;
-                var createdByName = _createdByName; createdByName.Clean = value; _createdByName = createdByName;
-                var createdDateTimeUtc = _createdDateTimeUtc; createdDateTimeUtc.Clean = value; _createdDateTimeUtc = createdDateTimeUtc;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var institutionName = _institutionName; institutionName.Clean = value; _institutionName = institutionName;
-                var institutionRouting = _institutionRouting; institutionRouting.Clean = value; _institutionRouting = institutionRouting;
-                var modifiedById = _modifiedById; modifiedById.Clean = value; _modifiedById = modifiedById;
-                var modifiedByName = _modifiedByName; modifiedByName.Clean = value; _modifiedByName = modifiedByName;
-                var modifiedDateTimeUtc = _modifiedDateTimeUtc; modifiedDateTimeUtc.Clean = value; _modifiedDateTimeUtc = modifiedDateTimeUtc;
-                var reference = _reference; reference.Clean = value; _reference = reference;
-                var servicingPaymentMethod = _servicingPaymentMethod; servicingPaymentMethod.Clean = value; _servicingPaymentMethod = servicingPaymentMethod;
-                var servicingTransactionType = _servicingTransactionType; servicingTransactionType.Clean = value; _servicingTransactionType = servicingTransactionType;
-                var transactionAmount = _transactionAmount; transactionAmount.Clean = value; _transactionAmount = transactionAmount;
-                var transactionDate = _transactionDate; transactionDate.Clean = value; _transactionDate = transactionDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _accountNumber.Dirty = value;
+                _comments.Dirty = value;
+                _createdById.Dirty = value;
+                _createdByName.Dirty = value;
+                _createdDateTimeUtc.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _institutionName.Dirty = value;
+                _institutionRouting.Dirty = value;
+                _modifiedById.Dirty = value;
+                _modifiedByName.Dirty = value;
+                _modifiedDateTimeUtc.Dirty = value;
+                _reference.Dirty = value;
+                _servicingPaymentMethod.Dirty = value;
+                _servicingTransactionType.Dirty = value;
+                _transactionAmount.Dirty = value;
+                _transactionDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public OtherTransaction()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

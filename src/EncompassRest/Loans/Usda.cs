@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Usda : IClean
+    public sealed partial class Usda : IDirty
     {
         private Value<decimal?> _additionalIncomeFromPrimaryEmployment;
         public decimal? AdditionalIncomeFromPrimaryEmployment { get { return _additionalIncomeFromPrimaryEmployment; } set { _additionalIncomeFromPrimaryEmployment = value; } }
@@ -286,305 +286,300 @@ namespace EncompassRest.Loans
         public List<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { return _usdaHouseholdIncomes; } set { _usdaHouseholdIncomes = value; } }
         private Value<string> _verificationCode;
         public string VerificationCode { get { return _verificationCode; } set { _verificationCode = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _additionalIncomeFromPrimaryEmployment.Clean
-                    && _additionalMemberBaseIncome.Clean
-                    && _adjustedAnnualIncome.Clean
-                    && _adjustedIncomeCalculationDescription1.Clean
-                    && _adjustedIncomeCalculationDescription2.Clean
-                    && _adjustedIncomeCalculationDescription3.Clean
-                    && _advanceAmountToDate.Clean
-                    && _amountLoanlineCredit.Clean
-                    && _annualChildCareExpenses.Clean
-                    && _annualIncome.Clean
-                    && _annualIncomeCalculationDescription1.Clean
-                    && _annualIncomeCalculationDescription2.Clean
-                    && _annualIncomeCalculationDescription3.Clean
-                    && _annualIncomeCalculationDescription4.Clean
-                    && _annualIncomeCalculationDescription5.Clean
-                    && _annualReviewDate.Clean
-                    && _applicationNumber.Clean
-                    && _approvedLenderTaxId.Clean
-                    && _assetIncome.Clean
-                    && _balanceOwedOnLoan.Clean
-                    && _borrowerBaseIncome.Clean
-                    && _borrowerTotalStableIncome.Clean
-                    && _borrowerTypeCode.Clean
-                    && _buydownInterestAssistanceRate.Clean
-                    && _caseNumberBorrowerId.Clean
-                    && _caseNumberCo.Clean
-                    && _caseNumberSt.Clean
-                    && _certificationEffectiveDate.Clean
-                    && _certificationExpirationDate.Clean
-                    && _certifiedLoanIndicator.Clean
-                    && _childCareProviderAddress.Clean
-                    && _childCareProviderCity.Clean
-                    && _childCareProviderPhone.Clean
-                    && _childCareProviderProviderName.Clean
-                    && _childCareProviderState.Clean
-                    && _childCareProviderZip.Clean
-                    && _childCostPerMonth.Clean
-                    && _childCostPerWeek.Clean
-                    && _coborrowerBaseIncome.Clean
-                    && _coborrowerStableBaseIncome.Clean
-                    && _coborrowerStableBaseIncomeDesc.Clean
-                    && _coborrowerStableOtherIncome.Clean
-                    && _coborrowerStableOtherIncomeDesc.Clean
-                    && _coBorrowerTotalStableIncome.Clean
-                    && _dateConfirmedObligationProcessed.Clean
-                    && _dateLoanNoteGuaranteeIssued.Clean
-                    && _dateLoanNoteGuaranteeRequestReceived.Clean
-                    && _dateObligationInGls.Clean
-                    && _dateVerifiedInUnifi.Clean
-                    && _dependentDeduction.Clean
-                    && _disabilityDeduction.Clean
-                    && _elderlyHouseholdDeduction.Clean
-                    && _feeRate.Clean
-                    && _financedLoanClosingCostDescription.Clean
-                    && _guaranteeFeeCollected.Clean
-                    && _guaranteeFeeOnCommitment.Clean
-                    && _guaranteeFeePurposeCodeType.Clean
-                    && _guaranteePeriodBeginsDate.Clean
-                    && _guaranteePeriodEndsDate.Clean
-                    && _guaranteeType.Clean
-                    && _householdSize.Clean
-                    && _id.Clean
-                    && _interestAssistanceCodeType.Clean
-                    && _interestRateBasedonFannieIndicator.Clean
-                    && _interestRateCodeType.Clean
-                    && _interestRateFloatToLoanClosingIndicator.Clean
-                    && _lackAdequateHeatIndicator.Clean
-                    && _lenderAuthorizedRepCompany.Clean
-                    && _lenderAuthorizedRepName.Clean
-                    && _lenderAuthorizedRepTitle.Clean
-                    && _lenderIdNo.Clean
-                    && _lenderNoteRateOnGuaranteedPortion.Clean
-                    && _lenderNoteRateOnNonGuaranteedPortion.Clean
-                    && _lenderStatusCodeType.Clean
-                    && _lenderTypeCode.Clean
-                    && _loanType.Clean
-                    && _lockCompletePlumbingIndicator.Clean
-                    && _medicalExpenses.Clean
-                    && _moderateIncomeLimit.Clean
-                    && _monthlyRepaymentIncome.Clean
-                    && _numberofDependents.Clean
-                    && _numberofPeopleInHousehold.Clean
-                    && _obligationMatchesCommitmentLenderRequestIndicator.Clean
-                    && _officialWhoConfirmedGlsUpdated.Clean
-                    && _otherIncome.Clean
-                    && _otherStableDependableMonthlyIncome.Clean
-                    && _overcrowdedIndicator.Clean
-                    && _percentofLoanGuaranteed.Clean
-                    && _periodOperatingLineCreditYearsType.Clean
-                    && _physicallyDeterioratedIndicator.Clean
-                    && _preparedByName.Clean
-                    && _preparedByTitle.Clean
-                    && _presentLandloardAddress.Clean
-                    && _presentLandloardCity.Clean
-                    && _presentLandloardName.Clean
-                    && _presentLandloardPhone.Clean
-                    && _presentLandloardState.Clean
-                    && _presentLandloardZip.Clean
-                    && _previousLandloardAddress.Clean
-                    && _previousLandloardCity.Clean
-                    && _previousLandloardName.Clean
-                    && _previousLandloardPhone.Clean
-                    && _previousLandloardState.Clean
-                    && _previousLandloardZip.Clean
-                    && _purchaseOrRefinancedAmount.Clean
-                    && _purchaseOrRefinanceDescription.Clean
-                    && _rdsfhRefinancedLoanIndicatorType.Clean
-                    && _refinanceLoanIndicator.Clean
-                    && _repairOtherAmount.Clean
-                    && _repairOtherDescription.Clean
-                    && _reservationAmountRequested.Clean
-                    && _reserved.Clean
-                    && _servicingOfficeName.Clean
-                    && _sfhglpIndicator.Clean
-                    && _sourceOfFundsType.Clean
-                    && _stableDependableMonthlyIncome.Clean
-                    && _stableOtherIncomeDesc.Clean
-                    && _submittingLenderAddress.Clean
-                    && _submittingLenderCity.Clean
-                    && _submittingLenderContactFax.Clean
-                    && _submittingLenderContactName.Clean
-                    && _submittingLenderContactPhone.Clean
-                    && _submittingLenderName.Clean
-                    && _submittingLenderState.Clean
-                    && _submittingLenderTaxId.Clean
-                    && _submittingLenderZip.Clean
-                    && _termOfBuydown.Clean
-                    && _thirdPartyOriginator.Clean
-                    && _title.Clean
-                    && _totalBorrowerStableBaseIncome.Clean
-                    && _totalBorrowerStableOtherIncome.Clean
-                    && _totalHouseholdDeduction.Clean
-                    && _totalRequestAmount.Clean
-                    && _tpoTaxId.Clean
-                    && _underwritingDecisionBy.Clean
-                    && _underwritingDecisionDate.Clean
-                    && _underwritingDecisionType.Clean
-                    && _usdaHouseholdIncomes.Clean
-                    && _verificationCode.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _additionalIncomeFromPrimaryEmployment.Dirty
+                    || _additionalMemberBaseIncome.Dirty
+                    || _adjustedAnnualIncome.Dirty
+                    || _adjustedIncomeCalculationDescription1.Dirty
+                    || _adjustedIncomeCalculationDescription2.Dirty
+                    || _adjustedIncomeCalculationDescription3.Dirty
+                    || _advanceAmountToDate.Dirty
+                    || _amountLoanlineCredit.Dirty
+                    || _annualChildCareExpenses.Dirty
+                    || _annualIncome.Dirty
+                    || _annualIncomeCalculationDescription1.Dirty
+                    || _annualIncomeCalculationDescription2.Dirty
+                    || _annualIncomeCalculationDescription3.Dirty
+                    || _annualIncomeCalculationDescription4.Dirty
+                    || _annualIncomeCalculationDescription5.Dirty
+                    || _annualReviewDate.Dirty
+                    || _applicationNumber.Dirty
+                    || _approvedLenderTaxId.Dirty
+                    || _assetIncome.Dirty
+                    || _balanceOwedOnLoan.Dirty
+                    || _borrowerBaseIncome.Dirty
+                    || _borrowerTotalStableIncome.Dirty
+                    || _borrowerTypeCode.Dirty
+                    || _buydownInterestAssistanceRate.Dirty
+                    || _caseNumberBorrowerId.Dirty
+                    || _caseNumberCo.Dirty
+                    || _caseNumberSt.Dirty
+                    || _certificationEffectiveDate.Dirty
+                    || _certificationExpirationDate.Dirty
+                    || _certifiedLoanIndicator.Dirty
+                    || _childCareProviderAddress.Dirty
+                    || _childCareProviderCity.Dirty
+                    || _childCareProviderPhone.Dirty
+                    || _childCareProviderProviderName.Dirty
+                    || _childCareProviderState.Dirty
+                    || _childCareProviderZip.Dirty
+                    || _childCostPerMonth.Dirty
+                    || _childCostPerWeek.Dirty
+                    || _coborrowerBaseIncome.Dirty
+                    || _coborrowerStableBaseIncome.Dirty
+                    || _coborrowerStableBaseIncomeDesc.Dirty
+                    || _coborrowerStableOtherIncome.Dirty
+                    || _coborrowerStableOtherIncomeDesc.Dirty
+                    || _coBorrowerTotalStableIncome.Dirty
+                    || _dateConfirmedObligationProcessed.Dirty
+                    || _dateLoanNoteGuaranteeIssued.Dirty
+                    || _dateLoanNoteGuaranteeRequestReceived.Dirty
+                    || _dateObligationInGls.Dirty
+                    || _dateVerifiedInUnifi.Dirty
+                    || _dependentDeduction.Dirty
+                    || _disabilityDeduction.Dirty
+                    || _elderlyHouseholdDeduction.Dirty
+                    || _feeRate.Dirty
+                    || _financedLoanClosingCostDescription.Dirty
+                    || _guaranteeFeeCollected.Dirty
+                    || _guaranteeFeeOnCommitment.Dirty
+                    || _guaranteeFeePurposeCodeType.Dirty
+                    || _guaranteePeriodBeginsDate.Dirty
+                    || _guaranteePeriodEndsDate.Dirty
+                    || _guaranteeType.Dirty
+                    || _householdSize.Dirty
+                    || _id.Dirty
+                    || _interestAssistanceCodeType.Dirty
+                    || _interestRateBasedonFannieIndicator.Dirty
+                    || _interestRateCodeType.Dirty
+                    || _interestRateFloatToLoanClosingIndicator.Dirty
+                    || _lackAdequateHeatIndicator.Dirty
+                    || _lenderAuthorizedRepCompany.Dirty
+                    || _lenderAuthorizedRepName.Dirty
+                    || _lenderAuthorizedRepTitle.Dirty
+                    || _lenderIdNo.Dirty
+                    || _lenderNoteRateOnGuaranteedPortion.Dirty
+                    || _lenderNoteRateOnNonGuaranteedPortion.Dirty
+                    || _lenderStatusCodeType.Dirty
+                    || _lenderTypeCode.Dirty
+                    || _loanType.Dirty
+                    || _lockCompletePlumbingIndicator.Dirty
+                    || _medicalExpenses.Dirty
+                    || _moderateIncomeLimit.Dirty
+                    || _monthlyRepaymentIncome.Dirty
+                    || _numberofDependents.Dirty
+                    || _numberofPeopleInHousehold.Dirty
+                    || _obligationMatchesCommitmentLenderRequestIndicator.Dirty
+                    || _officialWhoConfirmedGlsUpdated.Dirty
+                    || _otherIncome.Dirty
+                    || _otherStableDependableMonthlyIncome.Dirty
+                    || _overcrowdedIndicator.Dirty
+                    || _percentofLoanGuaranteed.Dirty
+                    || _periodOperatingLineCreditYearsType.Dirty
+                    || _physicallyDeterioratedIndicator.Dirty
+                    || _preparedByName.Dirty
+                    || _preparedByTitle.Dirty
+                    || _presentLandloardAddress.Dirty
+                    || _presentLandloardCity.Dirty
+                    || _presentLandloardName.Dirty
+                    || _presentLandloardPhone.Dirty
+                    || _presentLandloardState.Dirty
+                    || _presentLandloardZip.Dirty
+                    || _previousLandloardAddress.Dirty
+                    || _previousLandloardCity.Dirty
+                    || _previousLandloardName.Dirty
+                    || _previousLandloardPhone.Dirty
+                    || _previousLandloardState.Dirty
+                    || _previousLandloardZip.Dirty
+                    || _purchaseOrRefinancedAmount.Dirty
+                    || _purchaseOrRefinanceDescription.Dirty
+                    || _rdsfhRefinancedLoanIndicatorType.Dirty
+                    || _refinanceLoanIndicator.Dirty
+                    || _repairOtherAmount.Dirty
+                    || _repairOtherDescription.Dirty
+                    || _reservationAmountRequested.Dirty
+                    || _reserved.Dirty
+                    || _servicingOfficeName.Dirty
+                    || _sfhglpIndicator.Dirty
+                    || _sourceOfFundsType.Dirty
+                    || _stableDependableMonthlyIncome.Dirty
+                    || _stableOtherIncomeDesc.Dirty
+                    || _submittingLenderAddress.Dirty
+                    || _submittingLenderCity.Dirty
+                    || _submittingLenderContactFax.Dirty
+                    || _submittingLenderContactName.Dirty
+                    || _submittingLenderContactPhone.Dirty
+                    || _submittingLenderName.Dirty
+                    || _submittingLenderState.Dirty
+                    || _submittingLenderTaxId.Dirty
+                    || _submittingLenderZip.Dirty
+                    || _termOfBuydown.Dirty
+                    || _thirdPartyOriginator.Dirty
+                    || _title.Dirty
+                    || _totalBorrowerStableBaseIncome.Dirty
+                    || _totalBorrowerStableOtherIncome.Dirty
+                    || _totalHouseholdDeduction.Dirty
+                    || _totalRequestAmount.Dirty
+                    || _tpoTaxId.Dirty
+                    || _underwritingDecisionBy.Dirty
+                    || _underwritingDecisionDate.Dirty
+                    || _underwritingDecisionType.Dirty
+                    || _usdaHouseholdIncomes.Dirty
+                    || _verificationCode.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var additionalIncomeFromPrimaryEmployment = _additionalIncomeFromPrimaryEmployment; additionalIncomeFromPrimaryEmployment.Clean = value; _additionalIncomeFromPrimaryEmployment = additionalIncomeFromPrimaryEmployment;
-                var additionalMemberBaseIncome = _additionalMemberBaseIncome; additionalMemberBaseIncome.Clean = value; _additionalMemberBaseIncome = additionalMemberBaseIncome;
-                var adjustedAnnualIncome = _adjustedAnnualIncome; adjustedAnnualIncome.Clean = value; _adjustedAnnualIncome = adjustedAnnualIncome;
-                var adjustedIncomeCalculationDescription1 = _adjustedIncomeCalculationDescription1; adjustedIncomeCalculationDescription1.Clean = value; _adjustedIncomeCalculationDescription1 = adjustedIncomeCalculationDescription1;
-                var adjustedIncomeCalculationDescription2 = _adjustedIncomeCalculationDescription2; adjustedIncomeCalculationDescription2.Clean = value; _adjustedIncomeCalculationDescription2 = adjustedIncomeCalculationDescription2;
-                var adjustedIncomeCalculationDescription3 = _adjustedIncomeCalculationDescription3; adjustedIncomeCalculationDescription3.Clean = value; _adjustedIncomeCalculationDescription3 = adjustedIncomeCalculationDescription3;
-                var advanceAmountToDate = _advanceAmountToDate; advanceAmountToDate.Clean = value; _advanceAmountToDate = advanceAmountToDate;
-                var amountLoanlineCredit = _amountLoanlineCredit; amountLoanlineCredit.Clean = value; _amountLoanlineCredit = amountLoanlineCredit;
-                var annualChildCareExpenses = _annualChildCareExpenses; annualChildCareExpenses.Clean = value; _annualChildCareExpenses = annualChildCareExpenses;
-                var annualIncome = _annualIncome; annualIncome.Clean = value; _annualIncome = annualIncome;
-                var annualIncomeCalculationDescription1 = _annualIncomeCalculationDescription1; annualIncomeCalculationDescription1.Clean = value; _annualIncomeCalculationDescription1 = annualIncomeCalculationDescription1;
-                var annualIncomeCalculationDescription2 = _annualIncomeCalculationDescription2; annualIncomeCalculationDescription2.Clean = value; _annualIncomeCalculationDescription2 = annualIncomeCalculationDescription2;
-                var annualIncomeCalculationDescription3 = _annualIncomeCalculationDescription3; annualIncomeCalculationDescription3.Clean = value; _annualIncomeCalculationDescription3 = annualIncomeCalculationDescription3;
-                var annualIncomeCalculationDescription4 = _annualIncomeCalculationDescription4; annualIncomeCalculationDescription4.Clean = value; _annualIncomeCalculationDescription4 = annualIncomeCalculationDescription4;
-                var annualIncomeCalculationDescription5 = _annualIncomeCalculationDescription5; annualIncomeCalculationDescription5.Clean = value; _annualIncomeCalculationDescription5 = annualIncomeCalculationDescription5;
-                var annualReviewDate = _annualReviewDate; annualReviewDate.Clean = value; _annualReviewDate = annualReviewDate;
-                var applicationNumber = _applicationNumber; applicationNumber.Clean = value; _applicationNumber = applicationNumber;
-                var approvedLenderTaxId = _approvedLenderTaxId; approvedLenderTaxId.Clean = value; _approvedLenderTaxId = approvedLenderTaxId;
-                var assetIncome = _assetIncome; assetIncome.Clean = value; _assetIncome = assetIncome;
-                var balanceOwedOnLoan = _balanceOwedOnLoan; balanceOwedOnLoan.Clean = value; _balanceOwedOnLoan = balanceOwedOnLoan;
-                var borrowerBaseIncome = _borrowerBaseIncome; borrowerBaseIncome.Clean = value; _borrowerBaseIncome = borrowerBaseIncome;
-                var borrowerTotalStableIncome = _borrowerTotalStableIncome; borrowerTotalStableIncome.Clean = value; _borrowerTotalStableIncome = borrowerTotalStableIncome;
-                var borrowerTypeCode = _borrowerTypeCode; borrowerTypeCode.Clean = value; _borrowerTypeCode = borrowerTypeCode;
-                var buydownInterestAssistanceRate = _buydownInterestAssistanceRate; buydownInterestAssistanceRate.Clean = value; _buydownInterestAssistanceRate = buydownInterestAssistanceRate;
-                var caseNumberBorrowerId = _caseNumberBorrowerId; caseNumberBorrowerId.Clean = value; _caseNumberBorrowerId = caseNumberBorrowerId;
-                var caseNumberCo = _caseNumberCo; caseNumberCo.Clean = value; _caseNumberCo = caseNumberCo;
-                var caseNumberSt = _caseNumberSt; caseNumberSt.Clean = value; _caseNumberSt = caseNumberSt;
-                var certificationEffectiveDate = _certificationEffectiveDate; certificationEffectiveDate.Clean = value; _certificationEffectiveDate = certificationEffectiveDate;
-                var certificationExpirationDate = _certificationExpirationDate; certificationExpirationDate.Clean = value; _certificationExpirationDate = certificationExpirationDate;
-                var certifiedLoanIndicator = _certifiedLoanIndicator; certifiedLoanIndicator.Clean = value; _certifiedLoanIndicator = certifiedLoanIndicator;
-                var childCareProviderAddress = _childCareProviderAddress; childCareProviderAddress.Clean = value; _childCareProviderAddress = childCareProviderAddress;
-                var childCareProviderCity = _childCareProviderCity; childCareProviderCity.Clean = value; _childCareProviderCity = childCareProviderCity;
-                var childCareProviderPhone = _childCareProviderPhone; childCareProviderPhone.Clean = value; _childCareProviderPhone = childCareProviderPhone;
-                var childCareProviderProviderName = _childCareProviderProviderName; childCareProviderProviderName.Clean = value; _childCareProviderProviderName = childCareProviderProviderName;
-                var childCareProviderState = _childCareProviderState; childCareProviderState.Clean = value; _childCareProviderState = childCareProviderState;
-                var childCareProviderZip = _childCareProviderZip; childCareProviderZip.Clean = value; _childCareProviderZip = childCareProviderZip;
-                var childCostPerMonth = _childCostPerMonth; childCostPerMonth.Clean = value; _childCostPerMonth = childCostPerMonth;
-                var childCostPerWeek = _childCostPerWeek; childCostPerWeek.Clean = value; _childCostPerWeek = childCostPerWeek;
-                var coborrowerBaseIncome = _coborrowerBaseIncome; coborrowerBaseIncome.Clean = value; _coborrowerBaseIncome = coborrowerBaseIncome;
-                var coborrowerStableBaseIncome = _coborrowerStableBaseIncome; coborrowerStableBaseIncome.Clean = value; _coborrowerStableBaseIncome = coborrowerStableBaseIncome;
-                var coborrowerStableBaseIncomeDesc = _coborrowerStableBaseIncomeDesc; coborrowerStableBaseIncomeDesc.Clean = value; _coborrowerStableBaseIncomeDesc = coborrowerStableBaseIncomeDesc;
-                var coborrowerStableOtherIncome = _coborrowerStableOtherIncome; coborrowerStableOtherIncome.Clean = value; _coborrowerStableOtherIncome = coborrowerStableOtherIncome;
-                var coborrowerStableOtherIncomeDesc = _coborrowerStableOtherIncomeDesc; coborrowerStableOtherIncomeDesc.Clean = value; _coborrowerStableOtherIncomeDesc = coborrowerStableOtherIncomeDesc;
-                var coBorrowerTotalStableIncome = _coBorrowerTotalStableIncome; coBorrowerTotalStableIncome.Clean = value; _coBorrowerTotalStableIncome = coBorrowerTotalStableIncome;
-                var dateConfirmedObligationProcessed = _dateConfirmedObligationProcessed; dateConfirmedObligationProcessed.Clean = value; _dateConfirmedObligationProcessed = dateConfirmedObligationProcessed;
-                var dateLoanNoteGuaranteeIssued = _dateLoanNoteGuaranteeIssued; dateLoanNoteGuaranteeIssued.Clean = value; _dateLoanNoteGuaranteeIssued = dateLoanNoteGuaranteeIssued;
-                var dateLoanNoteGuaranteeRequestReceived = _dateLoanNoteGuaranteeRequestReceived; dateLoanNoteGuaranteeRequestReceived.Clean = value; _dateLoanNoteGuaranteeRequestReceived = dateLoanNoteGuaranteeRequestReceived;
-                var dateObligationInGls = _dateObligationInGls; dateObligationInGls.Clean = value; _dateObligationInGls = dateObligationInGls;
-                var dateVerifiedInUnifi = _dateVerifiedInUnifi; dateVerifiedInUnifi.Clean = value; _dateVerifiedInUnifi = dateVerifiedInUnifi;
-                var dependentDeduction = _dependentDeduction; dependentDeduction.Clean = value; _dependentDeduction = dependentDeduction;
-                var disabilityDeduction = _disabilityDeduction; disabilityDeduction.Clean = value; _disabilityDeduction = disabilityDeduction;
-                var elderlyHouseholdDeduction = _elderlyHouseholdDeduction; elderlyHouseholdDeduction.Clean = value; _elderlyHouseholdDeduction = elderlyHouseholdDeduction;
-                var feeRate = _feeRate; feeRate.Clean = value; _feeRate = feeRate;
-                var financedLoanClosingCostDescription = _financedLoanClosingCostDescription; financedLoanClosingCostDescription.Clean = value; _financedLoanClosingCostDescription = financedLoanClosingCostDescription;
-                var guaranteeFeeCollected = _guaranteeFeeCollected; guaranteeFeeCollected.Clean = value; _guaranteeFeeCollected = guaranteeFeeCollected;
-                var guaranteeFeeOnCommitment = _guaranteeFeeOnCommitment; guaranteeFeeOnCommitment.Clean = value; _guaranteeFeeOnCommitment = guaranteeFeeOnCommitment;
-                var guaranteeFeePurposeCodeType = _guaranteeFeePurposeCodeType; guaranteeFeePurposeCodeType.Clean = value; _guaranteeFeePurposeCodeType = guaranteeFeePurposeCodeType;
-                var guaranteePeriodBeginsDate = _guaranteePeriodBeginsDate; guaranteePeriodBeginsDate.Clean = value; _guaranteePeriodBeginsDate = guaranteePeriodBeginsDate;
-                var guaranteePeriodEndsDate = _guaranteePeriodEndsDate; guaranteePeriodEndsDate.Clean = value; _guaranteePeriodEndsDate = guaranteePeriodEndsDate;
-                var guaranteeType = _guaranteeType; guaranteeType.Clean = value; _guaranteeType = guaranteeType;
-                var householdSize = _householdSize; householdSize.Clean = value; _householdSize = householdSize;
-                var id = _id; id.Clean = value; _id = id;
-                var interestAssistanceCodeType = _interestAssistanceCodeType; interestAssistanceCodeType.Clean = value; _interestAssistanceCodeType = interestAssistanceCodeType;
-                var interestRateBasedonFannieIndicator = _interestRateBasedonFannieIndicator; interestRateBasedonFannieIndicator.Clean = value; _interestRateBasedonFannieIndicator = interestRateBasedonFannieIndicator;
-                var interestRateCodeType = _interestRateCodeType; interestRateCodeType.Clean = value; _interestRateCodeType = interestRateCodeType;
-                var interestRateFloatToLoanClosingIndicator = _interestRateFloatToLoanClosingIndicator; interestRateFloatToLoanClosingIndicator.Clean = value; _interestRateFloatToLoanClosingIndicator = interestRateFloatToLoanClosingIndicator;
-                var lackAdequateHeatIndicator = _lackAdequateHeatIndicator; lackAdequateHeatIndicator.Clean = value; _lackAdequateHeatIndicator = lackAdequateHeatIndicator;
-                var lenderAuthorizedRepCompany = _lenderAuthorizedRepCompany; lenderAuthorizedRepCompany.Clean = value; _lenderAuthorizedRepCompany = lenderAuthorizedRepCompany;
-                var lenderAuthorizedRepName = _lenderAuthorizedRepName; lenderAuthorizedRepName.Clean = value; _lenderAuthorizedRepName = lenderAuthorizedRepName;
-                var lenderAuthorizedRepTitle = _lenderAuthorizedRepTitle; lenderAuthorizedRepTitle.Clean = value; _lenderAuthorizedRepTitle = lenderAuthorizedRepTitle;
-                var lenderIdNo = _lenderIdNo; lenderIdNo.Clean = value; _lenderIdNo = lenderIdNo;
-                var lenderNoteRateOnGuaranteedPortion = _lenderNoteRateOnGuaranteedPortion; lenderNoteRateOnGuaranteedPortion.Clean = value; _lenderNoteRateOnGuaranteedPortion = lenderNoteRateOnGuaranteedPortion;
-                var lenderNoteRateOnNonGuaranteedPortion = _lenderNoteRateOnNonGuaranteedPortion; lenderNoteRateOnNonGuaranteedPortion.Clean = value; _lenderNoteRateOnNonGuaranteedPortion = lenderNoteRateOnNonGuaranteedPortion;
-                var lenderStatusCodeType = _lenderStatusCodeType; lenderStatusCodeType.Clean = value; _lenderStatusCodeType = lenderStatusCodeType;
-                var lenderTypeCode = _lenderTypeCode; lenderTypeCode.Clean = value; _lenderTypeCode = lenderTypeCode;
-                var loanType = _loanType; loanType.Clean = value; _loanType = loanType;
-                var lockCompletePlumbingIndicator = _lockCompletePlumbingIndicator; lockCompletePlumbingIndicator.Clean = value; _lockCompletePlumbingIndicator = lockCompletePlumbingIndicator;
-                var medicalExpenses = _medicalExpenses; medicalExpenses.Clean = value; _medicalExpenses = medicalExpenses;
-                var moderateIncomeLimit = _moderateIncomeLimit; moderateIncomeLimit.Clean = value; _moderateIncomeLimit = moderateIncomeLimit;
-                var monthlyRepaymentIncome = _monthlyRepaymentIncome; monthlyRepaymentIncome.Clean = value; _monthlyRepaymentIncome = monthlyRepaymentIncome;
-                var numberofDependents = _numberofDependents; numberofDependents.Clean = value; _numberofDependents = numberofDependents;
-                var numberofPeopleInHousehold = _numberofPeopleInHousehold; numberofPeopleInHousehold.Clean = value; _numberofPeopleInHousehold = numberofPeopleInHousehold;
-                var obligationMatchesCommitmentLenderRequestIndicator = _obligationMatchesCommitmentLenderRequestIndicator; obligationMatchesCommitmentLenderRequestIndicator.Clean = value; _obligationMatchesCommitmentLenderRequestIndicator = obligationMatchesCommitmentLenderRequestIndicator;
-                var officialWhoConfirmedGlsUpdated = _officialWhoConfirmedGlsUpdated; officialWhoConfirmedGlsUpdated.Clean = value; _officialWhoConfirmedGlsUpdated = officialWhoConfirmedGlsUpdated;
-                var otherIncome = _otherIncome; otherIncome.Clean = value; _otherIncome = otherIncome;
-                var otherStableDependableMonthlyIncome = _otherStableDependableMonthlyIncome; otherStableDependableMonthlyIncome.Clean = value; _otherStableDependableMonthlyIncome = otherStableDependableMonthlyIncome;
-                var overcrowdedIndicator = _overcrowdedIndicator; overcrowdedIndicator.Clean = value; _overcrowdedIndicator = overcrowdedIndicator;
-                var percentofLoanGuaranteed = _percentofLoanGuaranteed; percentofLoanGuaranteed.Clean = value; _percentofLoanGuaranteed = percentofLoanGuaranteed;
-                var periodOperatingLineCreditYearsType = _periodOperatingLineCreditYearsType; periodOperatingLineCreditYearsType.Clean = value; _periodOperatingLineCreditYearsType = periodOperatingLineCreditYearsType;
-                var physicallyDeterioratedIndicator = _physicallyDeterioratedIndicator; physicallyDeterioratedIndicator.Clean = value; _physicallyDeterioratedIndicator = physicallyDeterioratedIndicator;
-                var preparedByName = _preparedByName; preparedByName.Clean = value; _preparedByName = preparedByName;
-                var preparedByTitle = _preparedByTitle; preparedByTitle.Clean = value; _preparedByTitle = preparedByTitle;
-                var presentLandloardAddress = _presentLandloardAddress; presentLandloardAddress.Clean = value; _presentLandloardAddress = presentLandloardAddress;
-                var presentLandloardCity = _presentLandloardCity; presentLandloardCity.Clean = value; _presentLandloardCity = presentLandloardCity;
-                var presentLandloardName = _presentLandloardName; presentLandloardName.Clean = value; _presentLandloardName = presentLandloardName;
-                var presentLandloardPhone = _presentLandloardPhone; presentLandloardPhone.Clean = value; _presentLandloardPhone = presentLandloardPhone;
-                var presentLandloardState = _presentLandloardState; presentLandloardState.Clean = value; _presentLandloardState = presentLandloardState;
-                var presentLandloardZip = _presentLandloardZip; presentLandloardZip.Clean = value; _presentLandloardZip = presentLandloardZip;
-                var previousLandloardAddress = _previousLandloardAddress; previousLandloardAddress.Clean = value; _previousLandloardAddress = previousLandloardAddress;
-                var previousLandloardCity = _previousLandloardCity; previousLandloardCity.Clean = value; _previousLandloardCity = previousLandloardCity;
-                var previousLandloardName = _previousLandloardName; previousLandloardName.Clean = value; _previousLandloardName = previousLandloardName;
-                var previousLandloardPhone = _previousLandloardPhone; previousLandloardPhone.Clean = value; _previousLandloardPhone = previousLandloardPhone;
-                var previousLandloardState = _previousLandloardState; previousLandloardState.Clean = value; _previousLandloardState = previousLandloardState;
-                var previousLandloardZip = _previousLandloardZip; previousLandloardZip.Clean = value; _previousLandloardZip = previousLandloardZip;
-                var purchaseOrRefinancedAmount = _purchaseOrRefinancedAmount; purchaseOrRefinancedAmount.Clean = value; _purchaseOrRefinancedAmount = purchaseOrRefinancedAmount;
-                var purchaseOrRefinanceDescription = _purchaseOrRefinanceDescription; purchaseOrRefinanceDescription.Clean = value; _purchaseOrRefinanceDescription = purchaseOrRefinanceDescription;
-                var rdsfhRefinancedLoanIndicatorType = _rdsfhRefinancedLoanIndicatorType; rdsfhRefinancedLoanIndicatorType.Clean = value; _rdsfhRefinancedLoanIndicatorType = rdsfhRefinancedLoanIndicatorType;
-                var refinanceLoanIndicator = _refinanceLoanIndicator; refinanceLoanIndicator.Clean = value; _refinanceLoanIndicator = refinanceLoanIndicator;
-                var repairOtherAmount = _repairOtherAmount; repairOtherAmount.Clean = value; _repairOtherAmount = repairOtherAmount;
-                var repairOtherDescription = _repairOtherDescription; repairOtherDescription.Clean = value; _repairOtherDescription = repairOtherDescription;
-                var reservationAmountRequested = _reservationAmountRequested; reservationAmountRequested.Clean = value; _reservationAmountRequested = reservationAmountRequested;
-                var reserved = _reserved; reserved.Clean = value; _reserved = reserved;
-                var servicingOfficeName = _servicingOfficeName; servicingOfficeName.Clean = value; _servicingOfficeName = servicingOfficeName;
-                var sfhglpIndicator = _sfhglpIndicator; sfhglpIndicator.Clean = value; _sfhglpIndicator = sfhglpIndicator;
-                var sourceOfFundsType = _sourceOfFundsType; sourceOfFundsType.Clean = value; _sourceOfFundsType = sourceOfFundsType;
-                var stableDependableMonthlyIncome = _stableDependableMonthlyIncome; stableDependableMonthlyIncome.Clean = value; _stableDependableMonthlyIncome = stableDependableMonthlyIncome;
-                var stableOtherIncomeDesc = _stableOtherIncomeDesc; stableOtherIncomeDesc.Clean = value; _stableOtherIncomeDesc = stableOtherIncomeDesc;
-                var submittingLenderAddress = _submittingLenderAddress; submittingLenderAddress.Clean = value; _submittingLenderAddress = submittingLenderAddress;
-                var submittingLenderCity = _submittingLenderCity; submittingLenderCity.Clean = value; _submittingLenderCity = submittingLenderCity;
-                var submittingLenderContactFax = _submittingLenderContactFax; submittingLenderContactFax.Clean = value; _submittingLenderContactFax = submittingLenderContactFax;
-                var submittingLenderContactName = _submittingLenderContactName; submittingLenderContactName.Clean = value; _submittingLenderContactName = submittingLenderContactName;
-                var submittingLenderContactPhone = _submittingLenderContactPhone; submittingLenderContactPhone.Clean = value; _submittingLenderContactPhone = submittingLenderContactPhone;
-                var submittingLenderName = _submittingLenderName; submittingLenderName.Clean = value; _submittingLenderName = submittingLenderName;
-                var submittingLenderState = _submittingLenderState; submittingLenderState.Clean = value; _submittingLenderState = submittingLenderState;
-                var submittingLenderTaxId = _submittingLenderTaxId; submittingLenderTaxId.Clean = value; _submittingLenderTaxId = submittingLenderTaxId;
-                var submittingLenderZip = _submittingLenderZip; submittingLenderZip.Clean = value; _submittingLenderZip = submittingLenderZip;
-                var termOfBuydown = _termOfBuydown; termOfBuydown.Clean = value; _termOfBuydown = termOfBuydown;
-                var thirdPartyOriginator = _thirdPartyOriginator; thirdPartyOriginator.Clean = value; _thirdPartyOriginator = thirdPartyOriginator;
-                var title = _title; title.Clean = value; _title = title;
-                var totalBorrowerStableBaseIncome = _totalBorrowerStableBaseIncome; totalBorrowerStableBaseIncome.Clean = value; _totalBorrowerStableBaseIncome = totalBorrowerStableBaseIncome;
-                var totalBorrowerStableOtherIncome = _totalBorrowerStableOtherIncome; totalBorrowerStableOtherIncome.Clean = value; _totalBorrowerStableOtherIncome = totalBorrowerStableOtherIncome;
-                var totalHouseholdDeduction = _totalHouseholdDeduction; totalHouseholdDeduction.Clean = value; _totalHouseholdDeduction = totalHouseholdDeduction;
-                var totalRequestAmount = _totalRequestAmount; totalRequestAmount.Clean = value; _totalRequestAmount = totalRequestAmount;
-                var tpoTaxId = _tpoTaxId; tpoTaxId.Clean = value; _tpoTaxId = tpoTaxId;
-                var underwritingDecisionBy = _underwritingDecisionBy; underwritingDecisionBy.Clean = value; _underwritingDecisionBy = underwritingDecisionBy;
-                var underwritingDecisionDate = _underwritingDecisionDate; underwritingDecisionDate.Clean = value; _underwritingDecisionDate = underwritingDecisionDate;
-                var underwritingDecisionType = _underwritingDecisionType; underwritingDecisionType.Clean = value; _underwritingDecisionType = underwritingDecisionType;
-                var usdaHouseholdIncomes = _usdaHouseholdIncomes; usdaHouseholdIncomes.Clean = value; _usdaHouseholdIncomes = usdaHouseholdIncomes;
-                var verificationCode = _verificationCode; verificationCode.Clean = value; _verificationCode = verificationCode;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _additionalIncomeFromPrimaryEmployment.Dirty = value;
+                _additionalMemberBaseIncome.Dirty = value;
+                _adjustedAnnualIncome.Dirty = value;
+                _adjustedIncomeCalculationDescription1.Dirty = value;
+                _adjustedIncomeCalculationDescription2.Dirty = value;
+                _adjustedIncomeCalculationDescription3.Dirty = value;
+                _advanceAmountToDate.Dirty = value;
+                _amountLoanlineCredit.Dirty = value;
+                _annualChildCareExpenses.Dirty = value;
+                _annualIncome.Dirty = value;
+                _annualIncomeCalculationDescription1.Dirty = value;
+                _annualIncomeCalculationDescription2.Dirty = value;
+                _annualIncomeCalculationDescription3.Dirty = value;
+                _annualIncomeCalculationDescription4.Dirty = value;
+                _annualIncomeCalculationDescription5.Dirty = value;
+                _annualReviewDate.Dirty = value;
+                _applicationNumber.Dirty = value;
+                _approvedLenderTaxId.Dirty = value;
+                _assetIncome.Dirty = value;
+                _balanceOwedOnLoan.Dirty = value;
+                _borrowerBaseIncome.Dirty = value;
+                _borrowerTotalStableIncome.Dirty = value;
+                _borrowerTypeCode.Dirty = value;
+                _buydownInterestAssistanceRate.Dirty = value;
+                _caseNumberBorrowerId.Dirty = value;
+                _caseNumberCo.Dirty = value;
+                _caseNumberSt.Dirty = value;
+                _certificationEffectiveDate.Dirty = value;
+                _certificationExpirationDate.Dirty = value;
+                _certifiedLoanIndicator.Dirty = value;
+                _childCareProviderAddress.Dirty = value;
+                _childCareProviderCity.Dirty = value;
+                _childCareProviderPhone.Dirty = value;
+                _childCareProviderProviderName.Dirty = value;
+                _childCareProviderState.Dirty = value;
+                _childCareProviderZip.Dirty = value;
+                _childCostPerMonth.Dirty = value;
+                _childCostPerWeek.Dirty = value;
+                _coborrowerBaseIncome.Dirty = value;
+                _coborrowerStableBaseIncome.Dirty = value;
+                _coborrowerStableBaseIncomeDesc.Dirty = value;
+                _coborrowerStableOtherIncome.Dirty = value;
+                _coborrowerStableOtherIncomeDesc.Dirty = value;
+                _coBorrowerTotalStableIncome.Dirty = value;
+                _dateConfirmedObligationProcessed.Dirty = value;
+                _dateLoanNoteGuaranteeIssued.Dirty = value;
+                _dateLoanNoteGuaranteeRequestReceived.Dirty = value;
+                _dateObligationInGls.Dirty = value;
+                _dateVerifiedInUnifi.Dirty = value;
+                _dependentDeduction.Dirty = value;
+                _disabilityDeduction.Dirty = value;
+                _elderlyHouseholdDeduction.Dirty = value;
+                _feeRate.Dirty = value;
+                _financedLoanClosingCostDescription.Dirty = value;
+                _guaranteeFeeCollected.Dirty = value;
+                _guaranteeFeeOnCommitment.Dirty = value;
+                _guaranteeFeePurposeCodeType.Dirty = value;
+                _guaranteePeriodBeginsDate.Dirty = value;
+                _guaranteePeriodEndsDate.Dirty = value;
+                _guaranteeType.Dirty = value;
+                _householdSize.Dirty = value;
+                _id.Dirty = value;
+                _interestAssistanceCodeType.Dirty = value;
+                _interestRateBasedonFannieIndicator.Dirty = value;
+                _interestRateCodeType.Dirty = value;
+                _interestRateFloatToLoanClosingIndicator.Dirty = value;
+                _lackAdequateHeatIndicator.Dirty = value;
+                _lenderAuthorizedRepCompany.Dirty = value;
+                _lenderAuthorizedRepName.Dirty = value;
+                _lenderAuthorizedRepTitle.Dirty = value;
+                _lenderIdNo.Dirty = value;
+                _lenderNoteRateOnGuaranteedPortion.Dirty = value;
+                _lenderNoteRateOnNonGuaranteedPortion.Dirty = value;
+                _lenderStatusCodeType.Dirty = value;
+                _lenderTypeCode.Dirty = value;
+                _loanType.Dirty = value;
+                _lockCompletePlumbingIndicator.Dirty = value;
+                _medicalExpenses.Dirty = value;
+                _moderateIncomeLimit.Dirty = value;
+                _monthlyRepaymentIncome.Dirty = value;
+                _numberofDependents.Dirty = value;
+                _numberofPeopleInHousehold.Dirty = value;
+                _obligationMatchesCommitmentLenderRequestIndicator.Dirty = value;
+                _officialWhoConfirmedGlsUpdated.Dirty = value;
+                _otherIncome.Dirty = value;
+                _otherStableDependableMonthlyIncome.Dirty = value;
+                _overcrowdedIndicator.Dirty = value;
+                _percentofLoanGuaranteed.Dirty = value;
+                _periodOperatingLineCreditYearsType.Dirty = value;
+                _physicallyDeterioratedIndicator.Dirty = value;
+                _preparedByName.Dirty = value;
+                _preparedByTitle.Dirty = value;
+                _presentLandloardAddress.Dirty = value;
+                _presentLandloardCity.Dirty = value;
+                _presentLandloardName.Dirty = value;
+                _presentLandloardPhone.Dirty = value;
+                _presentLandloardState.Dirty = value;
+                _presentLandloardZip.Dirty = value;
+                _previousLandloardAddress.Dirty = value;
+                _previousLandloardCity.Dirty = value;
+                _previousLandloardName.Dirty = value;
+                _previousLandloardPhone.Dirty = value;
+                _previousLandloardState.Dirty = value;
+                _previousLandloardZip.Dirty = value;
+                _purchaseOrRefinancedAmount.Dirty = value;
+                _purchaseOrRefinanceDescription.Dirty = value;
+                _rdsfhRefinancedLoanIndicatorType.Dirty = value;
+                _refinanceLoanIndicator.Dirty = value;
+                _repairOtherAmount.Dirty = value;
+                _repairOtherDescription.Dirty = value;
+                _reservationAmountRequested.Dirty = value;
+                _reserved.Dirty = value;
+                _servicingOfficeName.Dirty = value;
+                _sfhglpIndicator.Dirty = value;
+                _sourceOfFundsType.Dirty = value;
+                _stableDependableMonthlyIncome.Dirty = value;
+                _stableOtherIncomeDesc.Dirty = value;
+                _submittingLenderAddress.Dirty = value;
+                _submittingLenderCity.Dirty = value;
+                _submittingLenderContactFax.Dirty = value;
+                _submittingLenderContactName.Dirty = value;
+                _submittingLenderContactPhone.Dirty = value;
+                _submittingLenderName.Dirty = value;
+                _submittingLenderState.Dirty = value;
+                _submittingLenderTaxId.Dirty = value;
+                _submittingLenderZip.Dirty = value;
+                _termOfBuydown.Dirty = value;
+                _thirdPartyOriginator.Dirty = value;
+                _title.Dirty = value;
+                _totalBorrowerStableBaseIncome.Dirty = value;
+                _totalBorrowerStableOtherIncome.Dirty = value;
+                _totalHouseholdDeduction.Dirty = value;
+                _totalRequestAmount.Dirty = value;
+                _tpoTaxId.Dirty = value;
+                _underwritingDecisionBy.Dirty = value;
+                _underwritingDecisionDate.Dirty = value;
+                _underwritingDecisionType.Dirty = value;
+                _usdaHouseholdIncomes.Dirty = value;
+                _verificationCode.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Usda()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

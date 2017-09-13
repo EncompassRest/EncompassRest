@@ -42,7 +42,7 @@ namespace EncompassRest
         {
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false);
             var exceptions = new List<Exception>();
-            var badEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "ElliUCDFields" };
+            var badEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "ElliUCDFields", "NonVols" };
             foreach (var entity in supportedEntities)
             {
                 if (!badEntities.Contains(entity))
@@ -80,7 +80,7 @@ using Newtonsoft.Json;
 
 namespace {@namespace}
 {{
-    public sealed partial class {entityType} : IClean
+    public sealed partial class {entityType} : IDirty
     {{
 ");
 
@@ -107,43 +107,33 @@ namespace {@namespace}
 
             // Must ensure no circular cleaning
             sb.Append(
-$@"        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+$@"        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {{
             get
             {{
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = {string.Join($"{Environment.NewLine}                    && ", properties.Select(property => $"{property.FieldName}{(property.IsEntity ? "?.Clean != false" : ".Clean")}"))};
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity ? "?.Dirty == true" : ".Dirty")}"))};
+                _gettingDirty = 0;
+                return dirty;
             }}
             set
             {{
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
                 {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
                     {
                         var propertyName = property.FieldName;
                         if (property.IsEntity)
                         {
-                            return $"if ({propertyName} != null) {propertyName}.Clean = value;";
+                            return $"if ({propertyName} != null) {propertyName}.Dirty = value;";
                         }
-                        var variableName = propertyName.Substring(1);
-                        if (variableName == "value")
-                        {
-                            variableName = "v";
-                        }
-                        return $"var {variableName} = {propertyName}; {variableName}.Clean = value; {propertyName} = {variableName};";
+                        return $"{propertyName}.Dirty = value;";
                     }))}
-                _settingClean = 0;
+                _settingDirty = 0;
             }}
         }}
-        bool IClean.Clean {{ get {{ return Clean; }} set {{ Clean = value; }} }}
-        [JsonConstructor]
-        public {entityType}()
-        {{
-            Clean = true;
-        }}
+        bool IDirty.Dirty {{ get {{ return Dirty; }} set {{ Dirty = value; }} }}
     }}
 }}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))

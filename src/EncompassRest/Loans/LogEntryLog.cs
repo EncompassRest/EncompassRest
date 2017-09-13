@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogEntryLog : IClean
+    public sealed partial class LogEntryLog : IDirty
     {
         private Value<List<LogAlert>> _alerts;
         public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
@@ -32,51 +32,46 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _userId;
         public string UserId { get { return _userId; } set { _userId = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alerts.Clean
-                    && _commentList.Clean
-                    && _comments.Clean
-                    && _dateUtc.Clean
-                    && _description.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _systemId.Clean
-                    && _userId.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alerts.Dirty
+                    || _commentList.Dirty
+                    || _comments.Dirty
+                    || _dateUtc.Dirty
+                    || _description.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _systemId.Dirty
+                    || _userId.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var description = _description; description.Clean = value; _description = description;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var userId = _userId; userId.Clean = value; _userId = userId;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alerts.Dirty = value;
+                _commentList.Dirty = value;
+                _comments.Dirty = value;
+                _dateUtc.Dirty = value;
+                _description.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _systemId.Dirty = value;
+                _userId.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LogEntryLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

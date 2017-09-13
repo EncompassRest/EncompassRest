@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1Es : IClean
+    public sealed partial class Hud1Es : IDirty
     {
         private Value<decimal?> _annualCityTax;
         public decimal? AnnualCityTax { get { return _annualCityTax; } set { _annualCityTax = value; } }
@@ -180,199 +180,194 @@ namespace EncompassRest.Loans
         public decimal? YearlyMortgageInsurance { get { return _yearlyMortgageInsurance; } set { _yearlyMortgageInsurance = value; } }
         private Value<decimal?> _yearlyUsdaFee;
         public decimal? YearlyUsdaFee { get { return _yearlyUsdaFee; } set { _yearlyUsdaFee = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _annualCityTax.Clean
-                    && _annualFeeCushion.Clean
-                    && _annualFloodInsurance.Clean
-                    && _annualHazardInsurance.Clean
-                    && _annualMortgageInsurance.Clean
-                    && _annualTax.Clean
-                    && _annualUserEscrow1.Clean
-                    && _annualUserEscrow2.Clean
-                    && _annualUserEscrow3.Clean
-                    && _biweeklyCityPropertyTaxes.Clean
-                    && _biweeklyCountyTaxes.Clean
-                    && _biweeklyFloodInsurance.Clean
-                    && _biweeklyHazardInsurance.Clean
-                    && _biweeklyMortgageInsurance.Clean
-                    && _biweeklyPITI.Clean
-                    && _biweeklyTotalBiweeklyPayment.Clean
-                    && _biweeklyTotalBiweeklyPaymentToEscrow.Clean
-                    && _biweeklyUSDAFee.Clean
-                    && _biweeklyUserDefinedEscrowFee1.Clean
-                    && _biweeklyUserDefinedEscrowFee2.Clean
-                    && _biweeklyUserDefinedEscrowFee3.Clean
-                    && _cityPropertyTaxAddress.Clean
-                    && _cityPropertyTaxAmountLastPay.Clean
-                    && _cityPropertyTaxAmountNextDue.Clean
-                    && _cityPropertyTaxCity.Clean
-                    && _cityPropertyTaxContactName.Clean
-                    && _cityPropertyTaxDatePaid.Clean
-                    && _cityPropertyTaxDelinquentDate.Clean
-                    && _cityPropertyTaxEmail.Clean
-                    && _cityPropertyTaxFax.Clean
-                    && _cityPropertyTaxName.Clean
-                    && _cityPropertyTaxNextDueDate.Clean
-                    && _cityPropertyTaxPaymentSchedule.Clean
-                    && _cityPropertyTaxPhone.Clean
-                    && _cityPropertyTaxPostalCode.Clean
-                    && _cityPropertyTaxState.Clean
-                    && _endingBalance.Clean
-                    && _escrowFirstPaymentDate.Clean
-                    && _escrowFirstPaymentDateType.Clean
-                    && _escrowPayment.Clean
-                    && _escrowPaymentYearly.Clean
-                    && _floodInsDisbCushion.Clean
-                    && _hazInsDisbCushion.Clean
-                    && _hud1EsDates.Clean
-                    && _hud1EsDueDates.Clean
-                    && _hud1EsItemizes.Clean
-                    && _hud1EsItemizesTotalLines.Clean
-                    && _hud1EsItemizesUseItemizeEscrowIndicator.Clean
-                    && _hud1EsPayTos.Clean
-                    && _hud1EsSetups.Clean
-                    && _id.Clean
-                    && _mtgInsCushionTerminationIndicator.Clean
-                    && _mtgInsDisbCushion.Clean
-                    && _nonEscrowCostsYearly.Clean
-                    && _realEstateTaxAddress.Clean
-                    && _realEstateTaxAmountLastPay.Clean
-                    && _realEstateTaxAmountNextDue.Clean
-                    && _realEstateTaxCity.Clean
-                    && _realEstateTaxContactName.Clean
-                    && _realEstateTaxDatePaid.Clean
-                    && _realEstateTaxDelinquentDate.Clean
-                    && _realEstateTaxEmail.Clean
-                    && _realEstateTaxFax.Clean
-                    && _realEstateTaxName.Clean
-                    && _realEstateTaxNextDueDate.Clean
-                    && _realEstateTaxPaymentSchedule.Clean
-                    && _realEstateTaxPhone.Clean
-                    && _realEstateTaxPostalCode.Clean
-                    && _realEstateTaxState.Clean
-                    && _schoolTaxesCushion.Clean
-                    && _servicerAddress.Clean
-                    && _servicerCity.Clean
-                    && _servicerContactName.Clean
-                    && _servicerPhone.Clean
-                    && _servicerPostalCode.Clean
-                    && _servicerState.Clean
-                    && _singleLineAnalysis.Clean
-                    && _startingBalance.Clean
-                    && _taxDisbCushion.Clean
-                    && _totalEscrowReserves.Clean
-                    && _usdaAnnualFee.Clean
-                    && _userDefinedCushion1.Clean
-                    && _userDefinedCushion2.Clean
-                    && _userDefinedCushion3.Clean
-                    && _yearlyMortgageInsurance.Clean
-                    && _yearlyUsdaFee.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _annualCityTax.Dirty
+                    || _annualFeeCushion.Dirty
+                    || _annualFloodInsurance.Dirty
+                    || _annualHazardInsurance.Dirty
+                    || _annualMortgageInsurance.Dirty
+                    || _annualTax.Dirty
+                    || _annualUserEscrow1.Dirty
+                    || _annualUserEscrow2.Dirty
+                    || _annualUserEscrow3.Dirty
+                    || _biweeklyCityPropertyTaxes.Dirty
+                    || _biweeklyCountyTaxes.Dirty
+                    || _biweeklyFloodInsurance.Dirty
+                    || _biweeklyHazardInsurance.Dirty
+                    || _biweeklyMortgageInsurance.Dirty
+                    || _biweeklyPITI.Dirty
+                    || _biweeklyTotalBiweeklyPayment.Dirty
+                    || _biweeklyTotalBiweeklyPaymentToEscrow.Dirty
+                    || _biweeklyUSDAFee.Dirty
+                    || _biweeklyUserDefinedEscrowFee1.Dirty
+                    || _biweeklyUserDefinedEscrowFee2.Dirty
+                    || _biweeklyUserDefinedEscrowFee3.Dirty
+                    || _cityPropertyTaxAddress.Dirty
+                    || _cityPropertyTaxAmountLastPay.Dirty
+                    || _cityPropertyTaxAmountNextDue.Dirty
+                    || _cityPropertyTaxCity.Dirty
+                    || _cityPropertyTaxContactName.Dirty
+                    || _cityPropertyTaxDatePaid.Dirty
+                    || _cityPropertyTaxDelinquentDate.Dirty
+                    || _cityPropertyTaxEmail.Dirty
+                    || _cityPropertyTaxFax.Dirty
+                    || _cityPropertyTaxName.Dirty
+                    || _cityPropertyTaxNextDueDate.Dirty
+                    || _cityPropertyTaxPaymentSchedule.Dirty
+                    || _cityPropertyTaxPhone.Dirty
+                    || _cityPropertyTaxPostalCode.Dirty
+                    || _cityPropertyTaxState.Dirty
+                    || _endingBalance.Dirty
+                    || _escrowFirstPaymentDate.Dirty
+                    || _escrowFirstPaymentDateType.Dirty
+                    || _escrowPayment.Dirty
+                    || _escrowPaymentYearly.Dirty
+                    || _floodInsDisbCushion.Dirty
+                    || _hazInsDisbCushion.Dirty
+                    || _hud1EsDates.Dirty
+                    || _hud1EsDueDates.Dirty
+                    || _hud1EsItemizes.Dirty
+                    || _hud1EsItemizesTotalLines.Dirty
+                    || _hud1EsItemizesUseItemizeEscrowIndicator.Dirty
+                    || _hud1EsPayTos.Dirty
+                    || _hud1EsSetups.Dirty
+                    || _id.Dirty
+                    || _mtgInsCushionTerminationIndicator.Dirty
+                    || _mtgInsDisbCushion.Dirty
+                    || _nonEscrowCostsYearly.Dirty
+                    || _realEstateTaxAddress.Dirty
+                    || _realEstateTaxAmountLastPay.Dirty
+                    || _realEstateTaxAmountNextDue.Dirty
+                    || _realEstateTaxCity.Dirty
+                    || _realEstateTaxContactName.Dirty
+                    || _realEstateTaxDatePaid.Dirty
+                    || _realEstateTaxDelinquentDate.Dirty
+                    || _realEstateTaxEmail.Dirty
+                    || _realEstateTaxFax.Dirty
+                    || _realEstateTaxName.Dirty
+                    || _realEstateTaxNextDueDate.Dirty
+                    || _realEstateTaxPaymentSchedule.Dirty
+                    || _realEstateTaxPhone.Dirty
+                    || _realEstateTaxPostalCode.Dirty
+                    || _realEstateTaxState.Dirty
+                    || _schoolTaxesCushion.Dirty
+                    || _servicerAddress.Dirty
+                    || _servicerCity.Dirty
+                    || _servicerContactName.Dirty
+                    || _servicerPhone.Dirty
+                    || _servicerPostalCode.Dirty
+                    || _servicerState.Dirty
+                    || _singleLineAnalysis.Dirty
+                    || _startingBalance.Dirty
+                    || _taxDisbCushion.Dirty
+                    || _totalEscrowReserves.Dirty
+                    || _usdaAnnualFee.Dirty
+                    || _userDefinedCushion1.Dirty
+                    || _userDefinedCushion2.Dirty
+                    || _userDefinedCushion3.Dirty
+                    || _yearlyMortgageInsurance.Dirty
+                    || _yearlyUsdaFee.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var annualCityTax = _annualCityTax; annualCityTax.Clean = value; _annualCityTax = annualCityTax;
-                var annualFeeCushion = _annualFeeCushion; annualFeeCushion.Clean = value; _annualFeeCushion = annualFeeCushion;
-                var annualFloodInsurance = _annualFloodInsurance; annualFloodInsurance.Clean = value; _annualFloodInsurance = annualFloodInsurance;
-                var annualHazardInsurance = _annualHazardInsurance; annualHazardInsurance.Clean = value; _annualHazardInsurance = annualHazardInsurance;
-                var annualMortgageInsurance = _annualMortgageInsurance; annualMortgageInsurance.Clean = value; _annualMortgageInsurance = annualMortgageInsurance;
-                var annualTax = _annualTax; annualTax.Clean = value; _annualTax = annualTax;
-                var annualUserEscrow1 = _annualUserEscrow1; annualUserEscrow1.Clean = value; _annualUserEscrow1 = annualUserEscrow1;
-                var annualUserEscrow2 = _annualUserEscrow2; annualUserEscrow2.Clean = value; _annualUserEscrow2 = annualUserEscrow2;
-                var annualUserEscrow3 = _annualUserEscrow3; annualUserEscrow3.Clean = value; _annualUserEscrow3 = annualUserEscrow3;
-                var biweeklyCityPropertyTaxes = _biweeklyCityPropertyTaxes; biweeklyCityPropertyTaxes.Clean = value; _biweeklyCityPropertyTaxes = biweeklyCityPropertyTaxes;
-                var biweeklyCountyTaxes = _biweeklyCountyTaxes; biweeklyCountyTaxes.Clean = value; _biweeklyCountyTaxes = biweeklyCountyTaxes;
-                var biweeklyFloodInsurance = _biweeklyFloodInsurance; biweeklyFloodInsurance.Clean = value; _biweeklyFloodInsurance = biweeklyFloodInsurance;
-                var biweeklyHazardInsurance = _biweeklyHazardInsurance; biweeklyHazardInsurance.Clean = value; _biweeklyHazardInsurance = biweeklyHazardInsurance;
-                var biweeklyMortgageInsurance = _biweeklyMortgageInsurance; biweeklyMortgageInsurance.Clean = value; _biweeklyMortgageInsurance = biweeklyMortgageInsurance;
-                var biweeklyPITI = _biweeklyPITI; biweeklyPITI.Clean = value; _biweeklyPITI = biweeklyPITI;
-                var biweeklyTotalBiweeklyPayment = _biweeklyTotalBiweeklyPayment; biweeklyTotalBiweeklyPayment.Clean = value; _biweeklyTotalBiweeklyPayment = biweeklyTotalBiweeklyPayment;
-                var biweeklyTotalBiweeklyPaymentToEscrow = _biweeklyTotalBiweeklyPaymentToEscrow; biweeklyTotalBiweeklyPaymentToEscrow.Clean = value; _biweeklyTotalBiweeklyPaymentToEscrow = biweeklyTotalBiweeklyPaymentToEscrow;
-                var biweeklyUSDAFee = _biweeklyUSDAFee; biweeklyUSDAFee.Clean = value; _biweeklyUSDAFee = biweeklyUSDAFee;
-                var biweeklyUserDefinedEscrowFee1 = _biweeklyUserDefinedEscrowFee1; biweeklyUserDefinedEscrowFee1.Clean = value; _biweeklyUserDefinedEscrowFee1 = biweeklyUserDefinedEscrowFee1;
-                var biweeklyUserDefinedEscrowFee2 = _biweeklyUserDefinedEscrowFee2; biweeklyUserDefinedEscrowFee2.Clean = value; _biweeklyUserDefinedEscrowFee2 = biweeklyUserDefinedEscrowFee2;
-                var biweeklyUserDefinedEscrowFee3 = _biweeklyUserDefinedEscrowFee3; biweeklyUserDefinedEscrowFee3.Clean = value; _biweeklyUserDefinedEscrowFee3 = biweeklyUserDefinedEscrowFee3;
-                var cityPropertyTaxAddress = _cityPropertyTaxAddress; cityPropertyTaxAddress.Clean = value; _cityPropertyTaxAddress = cityPropertyTaxAddress;
-                var cityPropertyTaxAmountLastPay = _cityPropertyTaxAmountLastPay; cityPropertyTaxAmountLastPay.Clean = value; _cityPropertyTaxAmountLastPay = cityPropertyTaxAmountLastPay;
-                var cityPropertyTaxAmountNextDue = _cityPropertyTaxAmountNextDue; cityPropertyTaxAmountNextDue.Clean = value; _cityPropertyTaxAmountNextDue = cityPropertyTaxAmountNextDue;
-                var cityPropertyTaxCity = _cityPropertyTaxCity; cityPropertyTaxCity.Clean = value; _cityPropertyTaxCity = cityPropertyTaxCity;
-                var cityPropertyTaxContactName = _cityPropertyTaxContactName; cityPropertyTaxContactName.Clean = value; _cityPropertyTaxContactName = cityPropertyTaxContactName;
-                var cityPropertyTaxDatePaid = _cityPropertyTaxDatePaid; cityPropertyTaxDatePaid.Clean = value; _cityPropertyTaxDatePaid = cityPropertyTaxDatePaid;
-                var cityPropertyTaxDelinquentDate = _cityPropertyTaxDelinquentDate; cityPropertyTaxDelinquentDate.Clean = value; _cityPropertyTaxDelinquentDate = cityPropertyTaxDelinquentDate;
-                var cityPropertyTaxEmail = _cityPropertyTaxEmail; cityPropertyTaxEmail.Clean = value; _cityPropertyTaxEmail = cityPropertyTaxEmail;
-                var cityPropertyTaxFax = _cityPropertyTaxFax; cityPropertyTaxFax.Clean = value; _cityPropertyTaxFax = cityPropertyTaxFax;
-                var cityPropertyTaxName = _cityPropertyTaxName; cityPropertyTaxName.Clean = value; _cityPropertyTaxName = cityPropertyTaxName;
-                var cityPropertyTaxNextDueDate = _cityPropertyTaxNextDueDate; cityPropertyTaxNextDueDate.Clean = value; _cityPropertyTaxNextDueDate = cityPropertyTaxNextDueDate;
-                var cityPropertyTaxPaymentSchedule = _cityPropertyTaxPaymentSchedule; cityPropertyTaxPaymentSchedule.Clean = value; _cityPropertyTaxPaymentSchedule = cityPropertyTaxPaymentSchedule;
-                var cityPropertyTaxPhone = _cityPropertyTaxPhone; cityPropertyTaxPhone.Clean = value; _cityPropertyTaxPhone = cityPropertyTaxPhone;
-                var cityPropertyTaxPostalCode = _cityPropertyTaxPostalCode; cityPropertyTaxPostalCode.Clean = value; _cityPropertyTaxPostalCode = cityPropertyTaxPostalCode;
-                var cityPropertyTaxState = _cityPropertyTaxState; cityPropertyTaxState.Clean = value; _cityPropertyTaxState = cityPropertyTaxState;
-                var endingBalance = _endingBalance; endingBalance.Clean = value; _endingBalance = endingBalance;
-                var escrowFirstPaymentDate = _escrowFirstPaymentDate; escrowFirstPaymentDate.Clean = value; _escrowFirstPaymentDate = escrowFirstPaymentDate;
-                var escrowFirstPaymentDateType = _escrowFirstPaymentDateType; escrowFirstPaymentDateType.Clean = value; _escrowFirstPaymentDateType = escrowFirstPaymentDateType;
-                var escrowPayment = _escrowPayment; escrowPayment.Clean = value; _escrowPayment = escrowPayment;
-                var escrowPaymentYearly = _escrowPaymentYearly; escrowPaymentYearly.Clean = value; _escrowPaymentYearly = escrowPaymentYearly;
-                var floodInsDisbCushion = _floodInsDisbCushion; floodInsDisbCushion.Clean = value; _floodInsDisbCushion = floodInsDisbCushion;
-                var hazInsDisbCushion = _hazInsDisbCushion; hazInsDisbCushion.Clean = value; _hazInsDisbCushion = hazInsDisbCushion;
-                var hud1EsDates = _hud1EsDates; hud1EsDates.Clean = value; _hud1EsDates = hud1EsDates;
-                var hud1EsDueDates = _hud1EsDueDates; hud1EsDueDates.Clean = value; _hud1EsDueDates = hud1EsDueDates;
-                var hud1EsItemizes = _hud1EsItemizes; hud1EsItemizes.Clean = value; _hud1EsItemizes = hud1EsItemizes;
-                var hud1EsItemizesTotalLines = _hud1EsItemizesTotalLines; hud1EsItemizesTotalLines.Clean = value; _hud1EsItemizesTotalLines = hud1EsItemizesTotalLines;
-                var hud1EsItemizesUseItemizeEscrowIndicator = _hud1EsItemizesUseItemizeEscrowIndicator; hud1EsItemizesUseItemizeEscrowIndicator.Clean = value; _hud1EsItemizesUseItemizeEscrowIndicator = hud1EsItemizesUseItemizeEscrowIndicator;
-                var hud1EsPayTos = _hud1EsPayTos; hud1EsPayTos.Clean = value; _hud1EsPayTos = hud1EsPayTos;
-                var hud1EsSetups = _hud1EsSetups; hud1EsSetups.Clean = value; _hud1EsSetups = hud1EsSetups;
-                var id = _id; id.Clean = value; _id = id;
-                var mtgInsCushionTerminationIndicator = _mtgInsCushionTerminationIndicator; mtgInsCushionTerminationIndicator.Clean = value; _mtgInsCushionTerminationIndicator = mtgInsCushionTerminationIndicator;
-                var mtgInsDisbCushion = _mtgInsDisbCushion; mtgInsDisbCushion.Clean = value; _mtgInsDisbCushion = mtgInsDisbCushion;
-                var nonEscrowCostsYearly = _nonEscrowCostsYearly; nonEscrowCostsYearly.Clean = value; _nonEscrowCostsYearly = nonEscrowCostsYearly;
-                var realEstateTaxAddress = _realEstateTaxAddress; realEstateTaxAddress.Clean = value; _realEstateTaxAddress = realEstateTaxAddress;
-                var realEstateTaxAmountLastPay = _realEstateTaxAmountLastPay; realEstateTaxAmountLastPay.Clean = value; _realEstateTaxAmountLastPay = realEstateTaxAmountLastPay;
-                var realEstateTaxAmountNextDue = _realEstateTaxAmountNextDue; realEstateTaxAmountNextDue.Clean = value; _realEstateTaxAmountNextDue = realEstateTaxAmountNextDue;
-                var realEstateTaxCity = _realEstateTaxCity; realEstateTaxCity.Clean = value; _realEstateTaxCity = realEstateTaxCity;
-                var realEstateTaxContactName = _realEstateTaxContactName; realEstateTaxContactName.Clean = value; _realEstateTaxContactName = realEstateTaxContactName;
-                var realEstateTaxDatePaid = _realEstateTaxDatePaid; realEstateTaxDatePaid.Clean = value; _realEstateTaxDatePaid = realEstateTaxDatePaid;
-                var realEstateTaxDelinquentDate = _realEstateTaxDelinquentDate; realEstateTaxDelinquentDate.Clean = value; _realEstateTaxDelinquentDate = realEstateTaxDelinquentDate;
-                var realEstateTaxEmail = _realEstateTaxEmail; realEstateTaxEmail.Clean = value; _realEstateTaxEmail = realEstateTaxEmail;
-                var realEstateTaxFax = _realEstateTaxFax; realEstateTaxFax.Clean = value; _realEstateTaxFax = realEstateTaxFax;
-                var realEstateTaxName = _realEstateTaxName; realEstateTaxName.Clean = value; _realEstateTaxName = realEstateTaxName;
-                var realEstateTaxNextDueDate = _realEstateTaxNextDueDate; realEstateTaxNextDueDate.Clean = value; _realEstateTaxNextDueDate = realEstateTaxNextDueDate;
-                var realEstateTaxPaymentSchedule = _realEstateTaxPaymentSchedule; realEstateTaxPaymentSchedule.Clean = value; _realEstateTaxPaymentSchedule = realEstateTaxPaymentSchedule;
-                var realEstateTaxPhone = _realEstateTaxPhone; realEstateTaxPhone.Clean = value; _realEstateTaxPhone = realEstateTaxPhone;
-                var realEstateTaxPostalCode = _realEstateTaxPostalCode; realEstateTaxPostalCode.Clean = value; _realEstateTaxPostalCode = realEstateTaxPostalCode;
-                var realEstateTaxState = _realEstateTaxState; realEstateTaxState.Clean = value; _realEstateTaxState = realEstateTaxState;
-                var schoolTaxesCushion = _schoolTaxesCushion; schoolTaxesCushion.Clean = value; _schoolTaxesCushion = schoolTaxesCushion;
-                var servicerAddress = _servicerAddress; servicerAddress.Clean = value; _servicerAddress = servicerAddress;
-                var servicerCity = _servicerCity; servicerCity.Clean = value; _servicerCity = servicerCity;
-                var servicerContactName = _servicerContactName; servicerContactName.Clean = value; _servicerContactName = servicerContactName;
-                var servicerPhone = _servicerPhone; servicerPhone.Clean = value; _servicerPhone = servicerPhone;
-                var servicerPostalCode = _servicerPostalCode; servicerPostalCode.Clean = value; _servicerPostalCode = servicerPostalCode;
-                var servicerState = _servicerState; servicerState.Clean = value; _servicerState = servicerState;
-                var singleLineAnalysis = _singleLineAnalysis; singleLineAnalysis.Clean = value; _singleLineAnalysis = singleLineAnalysis;
-                var startingBalance = _startingBalance; startingBalance.Clean = value; _startingBalance = startingBalance;
-                var taxDisbCushion = _taxDisbCushion; taxDisbCushion.Clean = value; _taxDisbCushion = taxDisbCushion;
-                var totalEscrowReserves = _totalEscrowReserves; totalEscrowReserves.Clean = value; _totalEscrowReserves = totalEscrowReserves;
-                var usdaAnnualFee = _usdaAnnualFee; usdaAnnualFee.Clean = value; _usdaAnnualFee = usdaAnnualFee;
-                var userDefinedCushion1 = _userDefinedCushion1; userDefinedCushion1.Clean = value; _userDefinedCushion1 = userDefinedCushion1;
-                var userDefinedCushion2 = _userDefinedCushion2; userDefinedCushion2.Clean = value; _userDefinedCushion2 = userDefinedCushion2;
-                var userDefinedCushion3 = _userDefinedCushion3; userDefinedCushion3.Clean = value; _userDefinedCushion3 = userDefinedCushion3;
-                var yearlyMortgageInsurance = _yearlyMortgageInsurance; yearlyMortgageInsurance.Clean = value; _yearlyMortgageInsurance = yearlyMortgageInsurance;
-                var yearlyUsdaFee = _yearlyUsdaFee; yearlyUsdaFee.Clean = value; _yearlyUsdaFee = yearlyUsdaFee;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _annualCityTax.Dirty = value;
+                _annualFeeCushion.Dirty = value;
+                _annualFloodInsurance.Dirty = value;
+                _annualHazardInsurance.Dirty = value;
+                _annualMortgageInsurance.Dirty = value;
+                _annualTax.Dirty = value;
+                _annualUserEscrow1.Dirty = value;
+                _annualUserEscrow2.Dirty = value;
+                _annualUserEscrow3.Dirty = value;
+                _biweeklyCityPropertyTaxes.Dirty = value;
+                _biweeklyCountyTaxes.Dirty = value;
+                _biweeklyFloodInsurance.Dirty = value;
+                _biweeklyHazardInsurance.Dirty = value;
+                _biweeklyMortgageInsurance.Dirty = value;
+                _biweeklyPITI.Dirty = value;
+                _biweeklyTotalBiweeklyPayment.Dirty = value;
+                _biweeklyTotalBiweeklyPaymentToEscrow.Dirty = value;
+                _biweeklyUSDAFee.Dirty = value;
+                _biweeklyUserDefinedEscrowFee1.Dirty = value;
+                _biweeklyUserDefinedEscrowFee2.Dirty = value;
+                _biweeklyUserDefinedEscrowFee3.Dirty = value;
+                _cityPropertyTaxAddress.Dirty = value;
+                _cityPropertyTaxAmountLastPay.Dirty = value;
+                _cityPropertyTaxAmountNextDue.Dirty = value;
+                _cityPropertyTaxCity.Dirty = value;
+                _cityPropertyTaxContactName.Dirty = value;
+                _cityPropertyTaxDatePaid.Dirty = value;
+                _cityPropertyTaxDelinquentDate.Dirty = value;
+                _cityPropertyTaxEmail.Dirty = value;
+                _cityPropertyTaxFax.Dirty = value;
+                _cityPropertyTaxName.Dirty = value;
+                _cityPropertyTaxNextDueDate.Dirty = value;
+                _cityPropertyTaxPaymentSchedule.Dirty = value;
+                _cityPropertyTaxPhone.Dirty = value;
+                _cityPropertyTaxPostalCode.Dirty = value;
+                _cityPropertyTaxState.Dirty = value;
+                _endingBalance.Dirty = value;
+                _escrowFirstPaymentDate.Dirty = value;
+                _escrowFirstPaymentDateType.Dirty = value;
+                _escrowPayment.Dirty = value;
+                _escrowPaymentYearly.Dirty = value;
+                _floodInsDisbCushion.Dirty = value;
+                _hazInsDisbCushion.Dirty = value;
+                _hud1EsDates.Dirty = value;
+                _hud1EsDueDates.Dirty = value;
+                _hud1EsItemizes.Dirty = value;
+                _hud1EsItemizesTotalLines.Dirty = value;
+                _hud1EsItemizesUseItemizeEscrowIndicator.Dirty = value;
+                _hud1EsPayTos.Dirty = value;
+                _hud1EsSetups.Dirty = value;
+                _id.Dirty = value;
+                _mtgInsCushionTerminationIndicator.Dirty = value;
+                _mtgInsDisbCushion.Dirty = value;
+                _nonEscrowCostsYearly.Dirty = value;
+                _realEstateTaxAddress.Dirty = value;
+                _realEstateTaxAmountLastPay.Dirty = value;
+                _realEstateTaxAmountNextDue.Dirty = value;
+                _realEstateTaxCity.Dirty = value;
+                _realEstateTaxContactName.Dirty = value;
+                _realEstateTaxDatePaid.Dirty = value;
+                _realEstateTaxDelinquentDate.Dirty = value;
+                _realEstateTaxEmail.Dirty = value;
+                _realEstateTaxFax.Dirty = value;
+                _realEstateTaxName.Dirty = value;
+                _realEstateTaxNextDueDate.Dirty = value;
+                _realEstateTaxPaymentSchedule.Dirty = value;
+                _realEstateTaxPhone.Dirty = value;
+                _realEstateTaxPostalCode.Dirty = value;
+                _realEstateTaxState.Dirty = value;
+                _schoolTaxesCushion.Dirty = value;
+                _servicerAddress.Dirty = value;
+                _servicerCity.Dirty = value;
+                _servicerContactName.Dirty = value;
+                _servicerPhone.Dirty = value;
+                _servicerPostalCode.Dirty = value;
+                _servicerState.Dirty = value;
+                _singleLineAnalysis.Dirty = value;
+                _startingBalance.Dirty = value;
+                _taxDisbCushion.Dirty = value;
+                _totalEscrowReserves.Dirty = value;
+                _usdaAnnualFee.Dirty = value;
+                _userDefinedCushion1.Dirty = value;
+                _userDefinedCushion2.Dirty = value;
+                _userDefinedCushion3.Dirty = value;
+                _yearlyMortgageInsurance.Dirty = value;
+                _yearlyUsdaFee.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Hud1Es()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

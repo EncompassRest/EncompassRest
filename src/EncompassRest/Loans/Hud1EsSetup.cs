@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsSetup : IClean
+    public sealed partial class Hud1EsSetup : IDirty
     {
         private Value<bool?> _annualFeePrepaid;
         public bool? AnnualFeePrepaid { get { return _annualFeePrepaid; } set { _annualFeePrepaid = value; } }
@@ -50,69 +50,64 @@ namespace EncompassRest.Loans
         public bool? UserDefinedPrepaid2 { get { return _userDefinedPrepaid2; } set { _userDefinedPrepaid2 = value; } }
         private Value<bool?> _userDefinedPrepaid3;
         public bool? UserDefinedPrepaid3 { get { return _userDefinedPrepaid3; } set { _userDefinedPrepaid3 = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _annualFeePrepaid.Clean
-                    && _annualFees.Clean
-                    && _date.Clean
-                    && _floodInsDisb.Clean
-                    && _floodInsPrepaid.Clean
-                    && _hazInsDisb.Clean
-                    && _hazInsPrepaid.Clean
-                    && _hud1EsSetupIndex.Clean
-                    && _id.Clean
-                    && _mtgInsDisb.Clean
-                    && _mtgInsPrepaid.Clean
-                    && _schoolTaxes.Clean
-                    && _schoolTaxesPrepaid.Clean
-                    && _taxDisb.Clean
-                    && _taxPrepaid.Clean
-                    && _userDefined1.Clean
-                    && _userDefined2.Clean
-                    && _userDefined3.Clean
-                    && _userDefinedPrepaid1.Clean
-                    && _userDefinedPrepaid2.Clean
-                    && _userDefinedPrepaid3.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _annualFeePrepaid.Dirty
+                    || _annualFees.Dirty
+                    || _date.Dirty
+                    || _floodInsDisb.Dirty
+                    || _floodInsPrepaid.Dirty
+                    || _hazInsDisb.Dirty
+                    || _hazInsPrepaid.Dirty
+                    || _hud1EsSetupIndex.Dirty
+                    || _id.Dirty
+                    || _mtgInsDisb.Dirty
+                    || _mtgInsPrepaid.Dirty
+                    || _schoolTaxes.Dirty
+                    || _schoolTaxesPrepaid.Dirty
+                    || _taxDisb.Dirty
+                    || _taxPrepaid.Dirty
+                    || _userDefined1.Dirty
+                    || _userDefined2.Dirty
+                    || _userDefined3.Dirty
+                    || _userDefinedPrepaid1.Dirty
+                    || _userDefinedPrepaid2.Dirty
+                    || _userDefinedPrepaid3.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var annualFeePrepaid = _annualFeePrepaid; annualFeePrepaid.Clean = value; _annualFeePrepaid = annualFeePrepaid;
-                var annualFees = _annualFees; annualFees.Clean = value; _annualFees = annualFees;
-                var date = _date; date.Clean = value; _date = date;
-                var floodInsDisb = _floodInsDisb; floodInsDisb.Clean = value; _floodInsDisb = floodInsDisb;
-                var floodInsPrepaid = _floodInsPrepaid; floodInsPrepaid.Clean = value; _floodInsPrepaid = floodInsPrepaid;
-                var hazInsDisb = _hazInsDisb; hazInsDisb.Clean = value; _hazInsDisb = hazInsDisb;
-                var hazInsPrepaid = _hazInsPrepaid; hazInsPrepaid.Clean = value; _hazInsPrepaid = hazInsPrepaid;
-                var hud1EsSetupIndex = _hud1EsSetupIndex; hud1EsSetupIndex.Clean = value; _hud1EsSetupIndex = hud1EsSetupIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var mtgInsDisb = _mtgInsDisb; mtgInsDisb.Clean = value; _mtgInsDisb = mtgInsDisb;
-                var mtgInsPrepaid = _mtgInsPrepaid; mtgInsPrepaid.Clean = value; _mtgInsPrepaid = mtgInsPrepaid;
-                var schoolTaxes = _schoolTaxes; schoolTaxes.Clean = value; _schoolTaxes = schoolTaxes;
-                var schoolTaxesPrepaid = _schoolTaxesPrepaid; schoolTaxesPrepaid.Clean = value; _schoolTaxesPrepaid = schoolTaxesPrepaid;
-                var taxDisb = _taxDisb; taxDisb.Clean = value; _taxDisb = taxDisb;
-                var taxPrepaid = _taxPrepaid; taxPrepaid.Clean = value; _taxPrepaid = taxPrepaid;
-                var userDefined1 = _userDefined1; userDefined1.Clean = value; _userDefined1 = userDefined1;
-                var userDefined2 = _userDefined2; userDefined2.Clean = value; _userDefined2 = userDefined2;
-                var userDefined3 = _userDefined3; userDefined3.Clean = value; _userDefined3 = userDefined3;
-                var userDefinedPrepaid1 = _userDefinedPrepaid1; userDefinedPrepaid1.Clean = value; _userDefinedPrepaid1 = userDefinedPrepaid1;
-                var userDefinedPrepaid2 = _userDefinedPrepaid2; userDefinedPrepaid2.Clean = value; _userDefinedPrepaid2 = userDefinedPrepaid2;
-                var userDefinedPrepaid3 = _userDefinedPrepaid3; userDefinedPrepaid3.Clean = value; _userDefinedPrepaid3 = userDefinedPrepaid3;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _annualFeePrepaid.Dirty = value;
+                _annualFees.Dirty = value;
+                _date.Dirty = value;
+                _floodInsDisb.Dirty = value;
+                _floodInsPrepaid.Dirty = value;
+                _hazInsDisb.Dirty = value;
+                _hazInsPrepaid.Dirty = value;
+                _hud1EsSetupIndex.Dirty = value;
+                _id.Dirty = value;
+                _mtgInsDisb.Dirty = value;
+                _mtgInsPrepaid.Dirty = value;
+                _schoolTaxes.Dirty = value;
+                _schoolTaxesPrepaid.Dirty = value;
+                _taxDisb.Dirty = value;
+                _taxPrepaid.Dirty = value;
+                _userDefined1.Dirty = value;
+                _userDefined2.Dirty = value;
+                _userDefined3.Dirty = value;
+                _userDefinedPrepaid1.Dirty = value;
+                _userDefinedPrepaid2.Dirty = value;
+                _userDefinedPrepaid3.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public Hud1EsSetup()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

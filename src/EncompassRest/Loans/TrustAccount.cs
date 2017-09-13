@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TrustAccount : IClean
+    public sealed partial class TrustAccount : IDirty
     {
         private Value<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
@@ -18,37 +18,32 @@ namespace EncompassRest.Loans
         public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
         private Value<List<TrustAccountItem>> _trustAccountItems;
         public List<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems; } set { _trustAccountItems = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _balance.Clean
-                    && _id.Clean
-                    && _total1.Clean
-                    && _total2.Clean
-                    && _trustAccountItems.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _balance.Dirty
+                    || _id.Dirty
+                    || _total1.Dirty
+                    || _total2.Dirty
+                    || _trustAccountItems.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var balance = _balance; balance.Clean = value; _balance = balance;
-                var id = _id; id.Clean = value; _id = id;
-                var total1 = _total1; total1.Clean = value; _total1 = total1;
-                var total2 = _total2; total2.Clean = value; _total2 = total2;
-                var trustAccountItems = _trustAccountItems; trustAccountItems.Clean = value; _trustAccountItems = trustAccountItems;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _balance.Dirty = value;
+                _id.Dirty = value;
+                _total1.Dirty = value;
+                _total2.Dirty = value;
+                _trustAccountItems.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public TrustAccount()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
 {
     public sealed class Loans
     {
-        private const string _apiPath = "encompass/v1/loans";
+        private const string s_apiPath = "encompass/v1/loans";
 
         #region Public Properties
         public EncompassRestClient Client { get; }
@@ -61,7 +61,7 @@ namespace EncompassRest.Loans
             {
                 var loan = new Loan(Client, loanId);
                 await response.Content.PopulateAsync(loan).ConfigureAwait(false);
-                loan.Clean = true;
+                loan.Dirty = false;
                 return loan;
             });
         }
@@ -95,7 +95,7 @@ namespace EncompassRest.Loans
                 queryParameters.Add("entities", string.Join(",", entities));
             }
 
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/{loanId}{queryParameters}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/{loanId}{queryParameters}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -116,7 +116,7 @@ namespace EncompassRest.Loans
 
         private async Task<T> GetSupportedEntitiesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_apiPath}/supportedEntities").ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/supportedEntities").ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -143,7 +143,7 @@ namespace EncompassRest.Loans
                 {
                     await response.Content.PopulateAsync(loan).ConfigureAwait(false);
                 }
-                loan.Clean = true;
+                loan.Dirty = false;
                 return loanId;
             });
         }
@@ -159,7 +159,7 @@ namespace EncompassRest.Loans
 
         private async Task<string> CreateLoanInternalAsync(HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -184,7 +184,7 @@ namespace EncompassRest.Loans
                 {
                     await response.Content.PopulateAsync(loan).ConfigureAwait(false);
                 }
-                loan.Clean = true;
+                loan.Dirty = false;
             });
         }
 
@@ -200,7 +200,7 @@ namespace EncompassRest.Loans
 
         private async Task UpdateLoanInternalAsync(string loanId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{_apiPath}/{loanId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{loanId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -225,7 +225,7 @@ namespace EncompassRest.Loans
 
         private async Task DeleteLoanInternalAsync(string loanId, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.DeleteAsync($"{_apiPath}/{loanId}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/{loanId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class GfePayment : IClean
+    public sealed partial class GfePayment : IDirty
     {
         private Value<decimal?> _fixedRate;
         public decimal? FixedRate { get { return _fixedRate; } set { _fixedRate = value; } }
@@ -48,67 +48,62 @@ namespace EncompassRest.Loans
         public decimal? ReducedLoanBalance { get { return _reducedLoanBalance; } set { _reducedLoanBalance = value; } }
         private Value<string> _reducedStatus;
         public string ReducedStatus { get { return _reducedStatus; } set { _reducedStatus = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _fixedRate.Clean
-                    && _gfePaymentIndex.Clean
-                    && _id.Clean
-                    && _indexRate.Clean
-                    && _isBalanceReduced.Clean
-                    && _loanTypeExplanation.Clean
-                    && _marginRate.Clean
-                    && _maximumDifference.Clean
-                    && _maximumRate.Clean
-                    && _minimumDifference.Clean
-                    && _minimumMonthlyPayment.Clean
-                    && _monthlyPaymentYear1.Clean
-                    && _monthlyPaymentYear6.Clean
-                    && _monthlyPaymentYear6Change.Clean
-                    && _monthlyPaymentYear6MaxChange.Clean
-                    && _notOfferedIndicator.Clean
-                    && _owedAfter5Years.Clean
-                    && _rateInMonth2.Clean
-                    && _reducedLoanBalance.Clean
-                    && _reducedStatus.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _fixedRate.Dirty
+                    || _gfePaymentIndex.Dirty
+                    || _id.Dirty
+                    || _indexRate.Dirty
+                    || _isBalanceReduced.Dirty
+                    || _loanTypeExplanation.Dirty
+                    || _marginRate.Dirty
+                    || _maximumDifference.Dirty
+                    || _maximumRate.Dirty
+                    || _minimumDifference.Dirty
+                    || _minimumMonthlyPayment.Dirty
+                    || _monthlyPaymentYear1.Dirty
+                    || _monthlyPaymentYear6.Dirty
+                    || _monthlyPaymentYear6Change.Dirty
+                    || _monthlyPaymentYear6MaxChange.Dirty
+                    || _notOfferedIndicator.Dirty
+                    || _owedAfter5Years.Dirty
+                    || _rateInMonth2.Dirty
+                    || _reducedLoanBalance.Dirty
+                    || _reducedStatus.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var fixedRate = _fixedRate; fixedRate.Clean = value; _fixedRate = fixedRate;
-                var gfePaymentIndex = _gfePaymentIndex; gfePaymentIndex.Clean = value; _gfePaymentIndex = gfePaymentIndex;
-                var id = _id; id.Clean = value; _id = id;
-                var indexRate = _indexRate; indexRate.Clean = value; _indexRate = indexRate;
-                var isBalanceReduced = _isBalanceReduced; isBalanceReduced.Clean = value; _isBalanceReduced = isBalanceReduced;
-                var loanTypeExplanation = _loanTypeExplanation; loanTypeExplanation.Clean = value; _loanTypeExplanation = loanTypeExplanation;
-                var marginRate = _marginRate; marginRate.Clean = value; _marginRate = marginRate;
-                var maximumDifference = _maximumDifference; maximumDifference.Clean = value; _maximumDifference = maximumDifference;
-                var maximumRate = _maximumRate; maximumRate.Clean = value; _maximumRate = maximumRate;
-                var minimumDifference = _minimumDifference; minimumDifference.Clean = value; _minimumDifference = minimumDifference;
-                var minimumMonthlyPayment = _minimumMonthlyPayment; minimumMonthlyPayment.Clean = value; _minimumMonthlyPayment = minimumMonthlyPayment;
-                var monthlyPaymentYear1 = _monthlyPaymentYear1; monthlyPaymentYear1.Clean = value; _monthlyPaymentYear1 = monthlyPaymentYear1;
-                var monthlyPaymentYear6 = _monthlyPaymentYear6; monthlyPaymentYear6.Clean = value; _monthlyPaymentYear6 = monthlyPaymentYear6;
-                var monthlyPaymentYear6Change = _monthlyPaymentYear6Change; monthlyPaymentYear6Change.Clean = value; _monthlyPaymentYear6Change = monthlyPaymentYear6Change;
-                var monthlyPaymentYear6MaxChange = _monthlyPaymentYear6MaxChange; monthlyPaymentYear6MaxChange.Clean = value; _monthlyPaymentYear6MaxChange = monthlyPaymentYear6MaxChange;
-                var notOfferedIndicator = _notOfferedIndicator; notOfferedIndicator.Clean = value; _notOfferedIndicator = notOfferedIndicator;
-                var owedAfter5Years = _owedAfter5Years; owedAfter5Years.Clean = value; _owedAfter5Years = owedAfter5Years;
-                var rateInMonth2 = _rateInMonth2; rateInMonth2.Clean = value; _rateInMonth2 = rateInMonth2;
-                var reducedLoanBalance = _reducedLoanBalance; reducedLoanBalance.Clean = value; _reducedLoanBalance = reducedLoanBalance;
-                var reducedStatus = _reducedStatus; reducedStatus.Clean = value; _reducedStatus = reducedStatus;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _fixedRate.Dirty = value;
+                _gfePaymentIndex.Dirty = value;
+                _id.Dirty = value;
+                _indexRate.Dirty = value;
+                _isBalanceReduced.Dirty = value;
+                _loanTypeExplanation.Dirty = value;
+                _marginRate.Dirty = value;
+                _maximumDifference.Dirty = value;
+                _maximumRate.Dirty = value;
+                _minimumDifference.Dirty = value;
+                _minimumMonthlyPayment.Dirty = value;
+                _monthlyPaymentYear1.Dirty = value;
+                _monthlyPaymentYear6.Dirty = value;
+                _monthlyPaymentYear6Change.Dirty = value;
+                _monthlyPaymentYear6MaxChange.Dirty = value;
+                _notOfferedIndicator.Dirty = value;
+                _owedAfter5Years.Dirty = value;
+                _rateInMonth2.Dirty = value;
+                _reducedLoanBalance.Dirty = value;
+                _reducedStatus.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public GfePayment()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

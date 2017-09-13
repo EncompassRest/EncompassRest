@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StatusOnlineEvent : IClean
+    public sealed partial class StatusOnlineEvent : IDirty
     {
         private Value<string> _dateText;
         public string DateText { get { return _dateText; } set { _dateText = value; } }
@@ -14,33 +14,28 @@ namespace EncompassRest.Loans
         public string Description { get { return _description; } set { _description = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _dateText.Clean
-                    && _description.Clean
-                    && _id.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _dateText.Dirty
+                    || _description.Dirty
+                    || _id.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var dateText = _dateText; dateText.Clean = value; _dateText = dateText;
-                var description = _description; description.Clean = value; _description = description;
-                var id = _id; id.Clean = value; _id = id;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _dateText.Dirty = value;
+                _description.Dirty = value;
+                _id.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public StatusOnlineEvent()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

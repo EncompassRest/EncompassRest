@@ -1,13 +1,46 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 
 namespace EncompassRest.Loans.Attachments
 {
     public sealed class PageImage : Image
     {
-        public string NativeKey { get; set; }
-        public int? Rotation { get; set; }
-        public long? FileSize { get; set; }
+        private Value<string> _nativeKey;
+        public string NativeKey { get { return _nativeKey; } set { _nativeKey = value; } }
+        private Value<int?> _rotation;
+        public int? Rotation { get { return _rotation; } set { _rotation = value; } }
+        private Value<long?> _fileSize;
+        public long? FileSize { get { return _fileSize; } set { _fileSize = value; } }
         public PageThumbnail Thumbnail { get; set; }
-        public List<PageAnnotation> Annotations { get; set; }
+        private Value<List<PageAnnotation>> _annotations;
+        public List<PageAnnotation> Annotations { get { return _annotations; } set { _annotations = value; } }
+        private int _gettingDirty;
+        private int _settingDirty;
+        internal override bool Dirty
+        {
+            get
+            {
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = base.Dirty
+                    || _nativeKey.Dirty
+                    || _rotation.Dirty
+                    || _fileSize.Dirty
+                    || Thumbnail.Dirty
+                    || _annotations.Dirty;
+                _gettingDirty = 0;
+                return dirty;
+            }
+            set
+            {
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                base.Dirty = value;
+                _nativeKey.Dirty = value;
+                _rotation.Dirty = value;
+                _fileSize.Dirty = value;
+                Thumbnail.Dirty = value;
+                _annotations.Dirty = value;
+                _settingDirty = 0;
+            }
+        }
     }
 }

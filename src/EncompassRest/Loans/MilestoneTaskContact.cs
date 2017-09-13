@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTaskContact : IClean
+    public sealed partial class MilestoneTaskContact : IDirty
     {
         private Value<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
@@ -30,49 +30,44 @@ namespace EncompassRest.Loans
         public string State { get { return _state; } set { _state = value; } }
         private Value<string> _zip;
         public string Zip { get { return _zip; } set { _zip = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _address.Clean
-                    && _city.Clean
-                    && _contactId.Clean
-                    && _email.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _name.Clean
-                    && _phone.Clean
-                    && _role.Clean
-                    && _state.Clean
-                    && _zip.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _address.Dirty
+                    || _city.Dirty
+                    || _contactId.Dirty
+                    || _email.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _name.Dirty
+                    || _phone.Dirty
+                    || _role.Dirty
+                    || _state.Dirty
+                    || _zip.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var address = _address; address.Clean = value; _address = address;
-                var city = _city; city.Clean = value; _city = city;
-                var contactId = _contactId; contactId.Clean = value; _contactId = contactId;
-                var email = _email; email.Clean = value; _email = email;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var name = _name; name.Clean = value; _name = name;
-                var phone = _phone; phone.Clean = value; _phone = phone;
-                var role = _role; role.Clean = value; _role = role;
-                var state = _state; state.Clean = value; _state = state;
-                var zip = _zip; zip.Clean = value; _zip = zip;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _address.Dirty = value;
+                _city.Dirty = value;
+                _contactId.Dirty = value;
+                _email.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _name.Dirty = value;
+                _phone.Dirty = value;
+                _role.Dirty = value;
+                _state.Dirty = value;
+                _zip.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public MilestoneTaskContact()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

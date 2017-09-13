@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CommitmentTerms : IClean
+    public sealed partial class CommitmentTerms : IDirty
     {
         private Value<DateTime?> _actionDate;
         public DateTime? ActionDate { get { return _actionDate; } set { _actionDate = value; } }
@@ -64,83 +64,78 @@ namespace EncompassRest.Loans
         public string SubdivisionRequirements { get { return _subdivisionRequirements; } set { _subdivisionRequirements = value; } }
         private Value<decimal?> _totalMonthlyExpense;
         public decimal? TotalMonthlyExpense { get { return _totalMonthlyExpense; } set { _totalMonthlyExpense = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _actionDate.Clean
-                    && _additionalConditions.Clean
-                    && _additionalItems1.Clean
-                    && _additionalItems2.Clean
-                    && _additionalItems3.Clean
-                    && _appraisalDone.Clean
-                    && _assuranceOfCompletion.Clean
-                    && _commitmentDate.Clean
-                    && _commitmentExpired.Clean
-                    && _commitmentIssued.Clean
-                    && _conditionalCommitmentUnderActg.Clean
-                    && _eligibleForHighLtv.Clean
-                    && _estimatedRemainingYears.Clean
-                    && _id.Clean
-                    && _improvedLivingAreas.Clean
-                    && _manufacturedHousing.Clean
-                    && _maxInsurableMortgage.Clean
-                    && _mortgageeAddress.Clean
-                    && _mortgageeCity.Clean
-                    && _mortgageeName.Clean
-                    && _mortgageePostalCode.Clean
-                    && _mortgageeState.Clean
-                    && _otherMonthlyExpenseDescription.Clean
-                    && _reportDate.Clean
-                    && _requirementsNumber.Clean
-                    && _subdivisionDescription.Clean
-                    && _subdivisionRequirements.Clean
-                    && _totalMonthlyExpense.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actionDate.Dirty
+                    || _additionalConditions.Dirty
+                    || _additionalItems1.Dirty
+                    || _additionalItems2.Dirty
+                    || _additionalItems3.Dirty
+                    || _appraisalDone.Dirty
+                    || _assuranceOfCompletion.Dirty
+                    || _commitmentDate.Dirty
+                    || _commitmentExpired.Dirty
+                    || _commitmentIssued.Dirty
+                    || _conditionalCommitmentUnderActg.Dirty
+                    || _eligibleForHighLtv.Dirty
+                    || _estimatedRemainingYears.Dirty
+                    || _id.Dirty
+                    || _improvedLivingAreas.Dirty
+                    || _manufacturedHousing.Dirty
+                    || _maxInsurableMortgage.Dirty
+                    || _mortgageeAddress.Dirty
+                    || _mortgageeCity.Dirty
+                    || _mortgageeName.Dirty
+                    || _mortgageePostalCode.Dirty
+                    || _mortgageeState.Dirty
+                    || _otherMonthlyExpenseDescription.Dirty
+                    || _reportDate.Dirty
+                    || _requirementsNumber.Dirty
+                    || _subdivisionDescription.Dirty
+                    || _subdivisionRequirements.Dirty
+                    || _totalMonthlyExpense.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var actionDate = _actionDate; actionDate.Clean = value; _actionDate = actionDate;
-                var additionalConditions = _additionalConditions; additionalConditions.Clean = value; _additionalConditions = additionalConditions;
-                var additionalItems1 = _additionalItems1; additionalItems1.Clean = value; _additionalItems1 = additionalItems1;
-                var additionalItems2 = _additionalItems2; additionalItems2.Clean = value; _additionalItems2 = additionalItems2;
-                var additionalItems3 = _additionalItems3; additionalItems3.Clean = value; _additionalItems3 = additionalItems3;
-                var appraisalDone = _appraisalDone; appraisalDone.Clean = value; _appraisalDone = appraisalDone;
-                var assuranceOfCompletion = _assuranceOfCompletion; assuranceOfCompletion.Clean = value; _assuranceOfCompletion = assuranceOfCompletion;
-                var commitmentDate = _commitmentDate; commitmentDate.Clean = value; _commitmentDate = commitmentDate;
-                var commitmentExpired = _commitmentExpired; commitmentExpired.Clean = value; _commitmentExpired = commitmentExpired;
-                var commitmentIssued = _commitmentIssued; commitmentIssued.Clean = value; _commitmentIssued = commitmentIssued;
-                var conditionalCommitmentUnderActg = _conditionalCommitmentUnderActg; conditionalCommitmentUnderActg.Clean = value; _conditionalCommitmentUnderActg = conditionalCommitmentUnderActg;
-                var eligibleForHighLtv = _eligibleForHighLtv; eligibleForHighLtv.Clean = value; _eligibleForHighLtv = eligibleForHighLtv;
-                var estimatedRemainingYears = _estimatedRemainingYears; estimatedRemainingYears.Clean = value; _estimatedRemainingYears = estimatedRemainingYears;
-                var id = _id; id.Clean = value; _id = id;
-                var improvedLivingAreas = _improvedLivingAreas; improvedLivingAreas.Clean = value; _improvedLivingAreas = improvedLivingAreas;
-                var manufacturedHousing = _manufacturedHousing; manufacturedHousing.Clean = value; _manufacturedHousing = manufacturedHousing;
-                var maxInsurableMortgage = _maxInsurableMortgage; maxInsurableMortgage.Clean = value; _maxInsurableMortgage = maxInsurableMortgage;
-                var mortgageeAddress = _mortgageeAddress; mortgageeAddress.Clean = value; _mortgageeAddress = mortgageeAddress;
-                var mortgageeCity = _mortgageeCity; mortgageeCity.Clean = value; _mortgageeCity = mortgageeCity;
-                var mortgageeName = _mortgageeName; mortgageeName.Clean = value; _mortgageeName = mortgageeName;
-                var mortgageePostalCode = _mortgageePostalCode; mortgageePostalCode.Clean = value; _mortgageePostalCode = mortgageePostalCode;
-                var mortgageeState = _mortgageeState; mortgageeState.Clean = value; _mortgageeState = mortgageeState;
-                var otherMonthlyExpenseDescription = _otherMonthlyExpenseDescription; otherMonthlyExpenseDescription.Clean = value; _otherMonthlyExpenseDescription = otherMonthlyExpenseDescription;
-                var reportDate = _reportDate; reportDate.Clean = value; _reportDate = reportDate;
-                var requirementsNumber = _requirementsNumber; requirementsNumber.Clean = value; _requirementsNumber = requirementsNumber;
-                var subdivisionDescription = _subdivisionDescription; subdivisionDescription.Clean = value; _subdivisionDescription = subdivisionDescription;
-                var subdivisionRequirements = _subdivisionRequirements; subdivisionRequirements.Clean = value; _subdivisionRequirements = subdivisionRequirements;
-                var totalMonthlyExpense = _totalMonthlyExpense; totalMonthlyExpense.Clean = value; _totalMonthlyExpense = totalMonthlyExpense;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actionDate.Dirty = value;
+                _additionalConditions.Dirty = value;
+                _additionalItems1.Dirty = value;
+                _additionalItems2.Dirty = value;
+                _additionalItems3.Dirty = value;
+                _appraisalDone.Dirty = value;
+                _assuranceOfCompletion.Dirty = value;
+                _commitmentDate.Dirty = value;
+                _commitmentExpired.Dirty = value;
+                _commitmentIssued.Dirty = value;
+                _conditionalCommitmentUnderActg.Dirty = value;
+                _eligibleForHighLtv.Dirty = value;
+                _estimatedRemainingYears.Dirty = value;
+                _id.Dirty = value;
+                _improvedLivingAreas.Dirty = value;
+                _manufacturedHousing.Dirty = value;
+                _maxInsurableMortgage.Dirty = value;
+                _mortgageeAddress.Dirty = value;
+                _mortgageeCity.Dirty = value;
+                _mortgageeName.Dirty = value;
+                _mortgageePostalCode.Dirty = value;
+                _mortgageeState.Dirty = value;
+                _otherMonthlyExpenseDescription.Dirty = value;
+                _reportDate.Dirty = value;
+                _requirementsNumber.Dirty = value;
+                _subdivisionDescription.Dirty = value;
+                _subdivisionRequirements.Dirty = value;
+                _totalMonthlyExpense.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public CommitmentTerms()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

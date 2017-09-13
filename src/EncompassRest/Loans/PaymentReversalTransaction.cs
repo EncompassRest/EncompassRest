@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PaymentReversalTransaction : IClean
+    public sealed partial class PaymentReversalTransaction : IDirty
     {
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
@@ -38,57 +38,52 @@ namespace EncompassRest.Loans
         public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
         private Value<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _comments.Clean
-                    && _createdById.Clean
-                    && _createdByName.Clean
-                    && _createdDateTimeUtc.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _modifiedById.Clean
-                    && _modifiedByName.Clean
-                    && _modifiedDateTimeUtc.Clean
-                    && _paymentId.Clean
-                    && _reversalType.Clean
-                    && _servicingPaymentMethod.Clean
-                    && _servicingTransactionType.Clean
-                    && _transactionAmount.Clean
-                    && _transactionDate.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _comments.Dirty
+                    || _createdById.Dirty
+                    || _createdByName.Dirty
+                    || _createdDateTimeUtc.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _modifiedById.Dirty
+                    || _modifiedByName.Dirty
+                    || _modifiedDateTimeUtc.Dirty
+                    || _paymentId.Dirty
+                    || _reversalType.Dirty
+                    || _servicingPaymentMethod.Dirty
+                    || _servicingTransactionType.Dirty
+                    || _transactionAmount.Dirty
+                    || _transactionDate.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var createdById = _createdById; createdById.Clean = value; _createdById = createdById;
-                var createdByName = _createdByName; createdByName.Clean = value; _createdByName = createdByName;
-                var createdDateTimeUtc = _createdDateTimeUtc; createdDateTimeUtc.Clean = value; _createdDateTimeUtc = createdDateTimeUtc;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var modifiedById = _modifiedById; modifiedById.Clean = value; _modifiedById = modifiedById;
-                var modifiedByName = _modifiedByName; modifiedByName.Clean = value; _modifiedByName = modifiedByName;
-                var modifiedDateTimeUtc = _modifiedDateTimeUtc; modifiedDateTimeUtc.Clean = value; _modifiedDateTimeUtc = modifiedDateTimeUtc;
-                var paymentId = _paymentId; paymentId.Clean = value; _paymentId = paymentId;
-                var reversalType = _reversalType; reversalType.Clean = value; _reversalType = reversalType;
-                var servicingPaymentMethod = _servicingPaymentMethod; servicingPaymentMethod.Clean = value; _servicingPaymentMethod = servicingPaymentMethod;
-                var servicingTransactionType = _servicingTransactionType; servicingTransactionType.Clean = value; _servicingTransactionType = servicingTransactionType;
-                var transactionAmount = _transactionAmount; transactionAmount.Clean = value; _transactionAmount = transactionAmount;
-                var transactionDate = _transactionDate; transactionDate.Clean = value; _transactionDate = transactionDate;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _comments.Dirty = value;
+                _createdById.Dirty = value;
+                _createdByName.Dirty = value;
+                _createdDateTimeUtc.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _modifiedById.Dirty = value;
+                _modifiedByName.Dirty = value;
+                _modifiedDateTimeUtc.Dirty = value;
+                _paymentId.Dirty = value;
+                _reversalType.Dirty = value;
+                _servicingPaymentMethod.Dirty = value;
+                _servicingTransactionType.Dirty = value;
+                _transactionAmount.Dirty = value;
+                _transactionDate.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public PaymentReversalTransaction()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

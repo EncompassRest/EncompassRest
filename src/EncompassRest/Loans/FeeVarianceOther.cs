@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FeeVarianceOther : IClean
+    public sealed partial class FeeVarianceOther : IDirty
     {
         private Value<decimal?> _appliedCureAmount;
         public decimal? AppliedCureAmount { get { return _appliedCureAmount; } set { _appliedCureAmount = value; } }
@@ -90,109 +90,104 @@ namespace EncompassRest.Loans
         public string SafeHarborGuid { get { return _safeHarborGuid; } set { _safeHarborGuid = value; } }
         private Value<string> _sSPLGuid;
         public string SSPLGuid { get { return _sSPLGuid; } set { _sSPLGuid = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _appliedCureAmount.Clean
-                    && _cannotDecreaseCDBaselineGuid.Clean
-                    && _cannotDecreaseLEBaselineGuid.Clean
-                    && _cannotIncrease10CDBaselineGuid.Clean
-                    && _cannotIncrease10LEBaselineGuid.Clean
-                    && _cannotIncreaseCDBaselineGuid.Clean
-                    && _cannotIncreaseLEBaselineGuid.Clean
-                    && _cDInitialGuid.Clean
-                    && _cDInitialReceivedDateGuid.Clean
-                    && _cDLatestGuid.Clean
-                    && _cDPostConGuid.Clean
-                    && _cDRecentAppliedCure.Clean
-                    && _cDRevisedReceivedDateGuid.Clean
-                    && _chargesCannotIncrease10CD1.Clean
-                    && _chargesCannotIncrease10InitialLE1.Clean
-                    && _chargesCannotIncrease10LE1.Clean
-                    && _chargesThatCanChangeCD1.Clean
-                    && _chargesThatCanChangeInitialLE1.Clean
-                    && _chargesThatCanChangeLE1.Clean
-                    && _chargesThatCannotDecreaseCD1.Clean
-                    && _chargesThatCannotDecreaseInitialLE1.Clean
-                    && _chargesThatCannotDecreaseLE1.Clean
-                    && _chargesThatCannotIncreaseCD1.Clean
-                    && _chargesThatCannotIncreaseInitialLE1.Clean
-                    && _chargesThatCannotIncreaseLE1.Clean
-                    && _disclosureLogGUIDForECD.Clean
-                    && _disclosureLogGUIDReceivedForECD.Clean
-                    && _goodFaithAmountInitialLE1.Clean
-                    && _id.Clean
-                    && _lEBaselineUsedCannotDecrease.Clean
-                    && _lEBaselineUsedCannotIncrease.Clean
-                    && _lEBaselineUsedCannotIncrease10.Clean
-                    && _lEInitialDTGuid.Clean
-                    && _lEInitialGuid.Clean
-                    && _lEInitialReceivedDateGuid.Clean
-                    && _lELatestGuid.Clean
-                    && _lERevisedReceivedDateGuid.Clean
-                    && _lERevisedSentDateGuid.Clean
-                    && _requiredCureAmount.Clean
-                    && _safeHarborGuid.Clean
-                    && _sSPLGuid.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _appliedCureAmount.Dirty
+                    || _cannotDecreaseCDBaselineGuid.Dirty
+                    || _cannotDecreaseLEBaselineGuid.Dirty
+                    || _cannotIncrease10CDBaselineGuid.Dirty
+                    || _cannotIncrease10LEBaselineGuid.Dirty
+                    || _cannotIncreaseCDBaselineGuid.Dirty
+                    || _cannotIncreaseLEBaselineGuid.Dirty
+                    || _cDInitialGuid.Dirty
+                    || _cDInitialReceivedDateGuid.Dirty
+                    || _cDLatestGuid.Dirty
+                    || _cDPostConGuid.Dirty
+                    || _cDRecentAppliedCure.Dirty
+                    || _cDRevisedReceivedDateGuid.Dirty
+                    || _chargesCannotIncrease10CD1.Dirty
+                    || _chargesCannotIncrease10InitialLE1.Dirty
+                    || _chargesCannotIncrease10LE1.Dirty
+                    || _chargesThatCanChangeCD1.Dirty
+                    || _chargesThatCanChangeInitialLE1.Dirty
+                    || _chargesThatCanChangeLE1.Dirty
+                    || _chargesThatCannotDecreaseCD1.Dirty
+                    || _chargesThatCannotDecreaseInitialLE1.Dirty
+                    || _chargesThatCannotDecreaseLE1.Dirty
+                    || _chargesThatCannotIncreaseCD1.Dirty
+                    || _chargesThatCannotIncreaseInitialLE1.Dirty
+                    || _chargesThatCannotIncreaseLE1.Dirty
+                    || _disclosureLogGUIDForECD.Dirty
+                    || _disclosureLogGUIDReceivedForECD.Dirty
+                    || _goodFaithAmountInitialLE1.Dirty
+                    || _id.Dirty
+                    || _lEBaselineUsedCannotDecrease.Dirty
+                    || _lEBaselineUsedCannotIncrease.Dirty
+                    || _lEBaselineUsedCannotIncrease10.Dirty
+                    || _lEInitialDTGuid.Dirty
+                    || _lEInitialGuid.Dirty
+                    || _lEInitialReceivedDateGuid.Dirty
+                    || _lELatestGuid.Dirty
+                    || _lERevisedReceivedDateGuid.Dirty
+                    || _lERevisedSentDateGuid.Dirty
+                    || _requiredCureAmount.Dirty
+                    || _safeHarborGuid.Dirty
+                    || _sSPLGuid.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var appliedCureAmount = _appliedCureAmount; appliedCureAmount.Clean = value; _appliedCureAmount = appliedCureAmount;
-                var cannotDecreaseCDBaselineGuid = _cannotDecreaseCDBaselineGuid; cannotDecreaseCDBaselineGuid.Clean = value; _cannotDecreaseCDBaselineGuid = cannotDecreaseCDBaselineGuid;
-                var cannotDecreaseLEBaselineGuid = _cannotDecreaseLEBaselineGuid; cannotDecreaseLEBaselineGuid.Clean = value; _cannotDecreaseLEBaselineGuid = cannotDecreaseLEBaselineGuid;
-                var cannotIncrease10CDBaselineGuid = _cannotIncrease10CDBaselineGuid; cannotIncrease10CDBaselineGuid.Clean = value; _cannotIncrease10CDBaselineGuid = cannotIncrease10CDBaselineGuid;
-                var cannotIncrease10LEBaselineGuid = _cannotIncrease10LEBaselineGuid; cannotIncrease10LEBaselineGuid.Clean = value; _cannotIncrease10LEBaselineGuid = cannotIncrease10LEBaselineGuid;
-                var cannotIncreaseCDBaselineGuid = _cannotIncreaseCDBaselineGuid; cannotIncreaseCDBaselineGuid.Clean = value; _cannotIncreaseCDBaselineGuid = cannotIncreaseCDBaselineGuid;
-                var cannotIncreaseLEBaselineGuid = _cannotIncreaseLEBaselineGuid; cannotIncreaseLEBaselineGuid.Clean = value; _cannotIncreaseLEBaselineGuid = cannotIncreaseLEBaselineGuid;
-                var cDInitialGuid = _cDInitialGuid; cDInitialGuid.Clean = value; _cDInitialGuid = cDInitialGuid;
-                var cDInitialReceivedDateGuid = _cDInitialReceivedDateGuid; cDInitialReceivedDateGuid.Clean = value; _cDInitialReceivedDateGuid = cDInitialReceivedDateGuid;
-                var cDLatestGuid = _cDLatestGuid; cDLatestGuid.Clean = value; _cDLatestGuid = cDLatestGuid;
-                var cDPostConGuid = _cDPostConGuid; cDPostConGuid.Clean = value; _cDPostConGuid = cDPostConGuid;
-                var cDRecentAppliedCure = _cDRecentAppliedCure; cDRecentAppliedCure.Clean = value; _cDRecentAppliedCure = cDRecentAppliedCure;
-                var cDRevisedReceivedDateGuid = _cDRevisedReceivedDateGuid; cDRevisedReceivedDateGuid.Clean = value; _cDRevisedReceivedDateGuid = cDRevisedReceivedDateGuid;
-                var chargesCannotIncrease10CD1 = _chargesCannotIncrease10CD1; chargesCannotIncrease10CD1.Clean = value; _chargesCannotIncrease10CD1 = chargesCannotIncrease10CD1;
-                var chargesCannotIncrease10InitialLE1 = _chargesCannotIncrease10InitialLE1; chargesCannotIncrease10InitialLE1.Clean = value; _chargesCannotIncrease10InitialLE1 = chargesCannotIncrease10InitialLE1;
-                var chargesCannotIncrease10LE1 = _chargesCannotIncrease10LE1; chargesCannotIncrease10LE1.Clean = value; _chargesCannotIncrease10LE1 = chargesCannotIncrease10LE1;
-                var chargesThatCanChangeCD1 = _chargesThatCanChangeCD1; chargesThatCanChangeCD1.Clean = value; _chargesThatCanChangeCD1 = chargesThatCanChangeCD1;
-                var chargesThatCanChangeInitialLE1 = _chargesThatCanChangeInitialLE1; chargesThatCanChangeInitialLE1.Clean = value; _chargesThatCanChangeInitialLE1 = chargesThatCanChangeInitialLE1;
-                var chargesThatCanChangeLE1 = _chargesThatCanChangeLE1; chargesThatCanChangeLE1.Clean = value; _chargesThatCanChangeLE1 = chargesThatCanChangeLE1;
-                var chargesThatCannotDecreaseCD1 = _chargesThatCannotDecreaseCD1; chargesThatCannotDecreaseCD1.Clean = value; _chargesThatCannotDecreaseCD1 = chargesThatCannotDecreaseCD1;
-                var chargesThatCannotDecreaseInitialLE1 = _chargesThatCannotDecreaseInitialLE1; chargesThatCannotDecreaseInitialLE1.Clean = value; _chargesThatCannotDecreaseInitialLE1 = chargesThatCannotDecreaseInitialLE1;
-                var chargesThatCannotDecreaseLE1 = _chargesThatCannotDecreaseLE1; chargesThatCannotDecreaseLE1.Clean = value; _chargesThatCannotDecreaseLE1 = chargesThatCannotDecreaseLE1;
-                var chargesThatCannotIncreaseCD1 = _chargesThatCannotIncreaseCD1; chargesThatCannotIncreaseCD1.Clean = value; _chargesThatCannotIncreaseCD1 = chargesThatCannotIncreaseCD1;
-                var chargesThatCannotIncreaseInitialLE1 = _chargesThatCannotIncreaseInitialLE1; chargesThatCannotIncreaseInitialLE1.Clean = value; _chargesThatCannotIncreaseInitialLE1 = chargesThatCannotIncreaseInitialLE1;
-                var chargesThatCannotIncreaseLE1 = _chargesThatCannotIncreaseLE1; chargesThatCannotIncreaseLE1.Clean = value; _chargesThatCannotIncreaseLE1 = chargesThatCannotIncreaseLE1;
-                var disclosureLogGUIDForECD = _disclosureLogGUIDForECD; disclosureLogGUIDForECD.Clean = value; _disclosureLogGUIDForECD = disclosureLogGUIDForECD;
-                var disclosureLogGUIDReceivedForECD = _disclosureLogGUIDReceivedForECD; disclosureLogGUIDReceivedForECD.Clean = value; _disclosureLogGUIDReceivedForECD = disclosureLogGUIDReceivedForECD;
-                var goodFaithAmountInitialLE1 = _goodFaithAmountInitialLE1; goodFaithAmountInitialLE1.Clean = value; _goodFaithAmountInitialLE1 = goodFaithAmountInitialLE1;
-                var id = _id; id.Clean = value; _id = id;
-                var lEBaselineUsedCannotDecrease = _lEBaselineUsedCannotDecrease; lEBaselineUsedCannotDecrease.Clean = value; _lEBaselineUsedCannotDecrease = lEBaselineUsedCannotDecrease;
-                var lEBaselineUsedCannotIncrease = _lEBaselineUsedCannotIncrease; lEBaselineUsedCannotIncrease.Clean = value; _lEBaselineUsedCannotIncrease = lEBaselineUsedCannotIncrease;
-                var lEBaselineUsedCannotIncrease10 = _lEBaselineUsedCannotIncrease10; lEBaselineUsedCannotIncrease10.Clean = value; _lEBaselineUsedCannotIncrease10 = lEBaselineUsedCannotIncrease10;
-                var lEInitialDTGuid = _lEInitialDTGuid; lEInitialDTGuid.Clean = value; _lEInitialDTGuid = lEInitialDTGuid;
-                var lEInitialGuid = _lEInitialGuid; lEInitialGuid.Clean = value; _lEInitialGuid = lEInitialGuid;
-                var lEInitialReceivedDateGuid = _lEInitialReceivedDateGuid; lEInitialReceivedDateGuid.Clean = value; _lEInitialReceivedDateGuid = lEInitialReceivedDateGuid;
-                var lELatestGuid = _lELatestGuid; lELatestGuid.Clean = value; _lELatestGuid = lELatestGuid;
-                var lERevisedReceivedDateGuid = _lERevisedReceivedDateGuid; lERevisedReceivedDateGuid.Clean = value; _lERevisedReceivedDateGuid = lERevisedReceivedDateGuid;
-                var lERevisedSentDateGuid = _lERevisedSentDateGuid; lERevisedSentDateGuid.Clean = value; _lERevisedSentDateGuid = lERevisedSentDateGuid;
-                var requiredCureAmount = _requiredCureAmount; requiredCureAmount.Clean = value; _requiredCureAmount = requiredCureAmount;
-                var safeHarborGuid = _safeHarborGuid; safeHarborGuid.Clean = value; _safeHarborGuid = safeHarborGuid;
-                var sSPLGuid = _sSPLGuid; sSPLGuid.Clean = value; _sSPLGuid = sSPLGuid;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _appliedCureAmount.Dirty = value;
+                _cannotDecreaseCDBaselineGuid.Dirty = value;
+                _cannotDecreaseLEBaselineGuid.Dirty = value;
+                _cannotIncrease10CDBaselineGuid.Dirty = value;
+                _cannotIncrease10LEBaselineGuid.Dirty = value;
+                _cannotIncreaseCDBaselineGuid.Dirty = value;
+                _cannotIncreaseLEBaselineGuid.Dirty = value;
+                _cDInitialGuid.Dirty = value;
+                _cDInitialReceivedDateGuid.Dirty = value;
+                _cDLatestGuid.Dirty = value;
+                _cDPostConGuid.Dirty = value;
+                _cDRecentAppliedCure.Dirty = value;
+                _cDRevisedReceivedDateGuid.Dirty = value;
+                _chargesCannotIncrease10CD1.Dirty = value;
+                _chargesCannotIncrease10InitialLE1.Dirty = value;
+                _chargesCannotIncrease10LE1.Dirty = value;
+                _chargesThatCanChangeCD1.Dirty = value;
+                _chargesThatCanChangeInitialLE1.Dirty = value;
+                _chargesThatCanChangeLE1.Dirty = value;
+                _chargesThatCannotDecreaseCD1.Dirty = value;
+                _chargesThatCannotDecreaseInitialLE1.Dirty = value;
+                _chargesThatCannotDecreaseLE1.Dirty = value;
+                _chargesThatCannotIncreaseCD1.Dirty = value;
+                _chargesThatCannotIncreaseInitialLE1.Dirty = value;
+                _chargesThatCannotIncreaseLE1.Dirty = value;
+                _disclosureLogGUIDForECD.Dirty = value;
+                _disclosureLogGUIDReceivedForECD.Dirty = value;
+                _goodFaithAmountInitialLE1.Dirty = value;
+                _id.Dirty = value;
+                _lEBaselineUsedCannotDecrease.Dirty = value;
+                _lEBaselineUsedCannotIncrease.Dirty = value;
+                _lEBaselineUsedCannotIncrease10.Dirty = value;
+                _lEInitialDTGuid.Dirty = value;
+                _lEInitialGuid.Dirty = value;
+                _lEInitialReceivedDateGuid.Dirty = value;
+                _lELatestGuid.Dirty = value;
+                _lERevisedReceivedDateGuid.Dirty = value;
+                _lERevisedSentDateGuid.Dirty = value;
+                _requiredCureAmount.Dirty = value;
+                _safeHarborGuid.Dirty = value;
+                _sSPLGuid.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FeeVarianceOther()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

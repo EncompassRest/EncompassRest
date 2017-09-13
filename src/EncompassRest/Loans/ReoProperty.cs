@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ReoProperty : IClean
+    public sealed partial class ReoProperty : IDirty
     {
         private Value<DateTime?> _acquiredDate;
         public DateTime? AcquiredDate { get { return _acquiredDate; } set { _acquiredDate = value; } }
@@ -70,89 +70,84 @@ namespace EncompassRest.Loans
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
         private Value<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _acquiredDate.Clean
-                    && _city.Clean
-                    && _dispositionStatusType.Clean
-                    && _entityDeleted.Clean
-                    && _gsePropertyType.Clean
-                    && _id.Clean
-                    && _isEmpty.Clean
-                    && _lienInstallmentAmount.Clean
-                    && _lienUpbAmount.Clean
-                    && _maintenanceExpenseAmount.Clean
-                    && _marketValueAmount.Clean
-                    && _noLinkToDocTrackIndicator.Clean
-                    && _participationPercentage.Clean
-                    && _percentageofRental.Clean
-                    && _postalCode.Clean
-                    && _printAttachIndicator.Clean
-                    && _printUserNameIndicator.Clean
-                    && _propertyUsageType.Clean
-                    && _purchasePrice.Clean
-                    && _rentalIncomeGrossAmount.Clean
-                    && _rentalIncomeNetAmount.Clean
-                    && _reoComments.Clean
-                    && _reoId.Clean
-                    && _reoPropertyIndex.Clean
-                    && _requestDate.Clean
-                    && _state.Clean
-                    && _streetAddress.Clean
-                    && _subjectIndicator.Clean
-                    && _title.Clean
-                    && _titleFax.Clean
-                    && _titlePhone.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _acquiredDate.Dirty
+                    || _city.Dirty
+                    || _dispositionStatusType.Dirty
+                    || _entityDeleted.Dirty
+                    || _gsePropertyType.Dirty
+                    || _id.Dirty
+                    || _isEmpty.Dirty
+                    || _lienInstallmentAmount.Dirty
+                    || _lienUpbAmount.Dirty
+                    || _maintenanceExpenseAmount.Dirty
+                    || _marketValueAmount.Dirty
+                    || _noLinkToDocTrackIndicator.Dirty
+                    || _participationPercentage.Dirty
+                    || _percentageofRental.Dirty
+                    || _postalCode.Dirty
+                    || _printAttachIndicator.Dirty
+                    || _printUserNameIndicator.Dirty
+                    || _propertyUsageType.Dirty
+                    || _purchasePrice.Dirty
+                    || _rentalIncomeGrossAmount.Dirty
+                    || _rentalIncomeNetAmount.Dirty
+                    || _reoComments.Dirty
+                    || _reoId.Dirty
+                    || _reoPropertyIndex.Dirty
+                    || _requestDate.Dirty
+                    || _state.Dirty
+                    || _streetAddress.Dirty
+                    || _subjectIndicator.Dirty
+                    || _title.Dirty
+                    || _titleFax.Dirty
+                    || _titlePhone.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var acquiredDate = _acquiredDate; acquiredDate.Clean = value; _acquiredDate = acquiredDate;
-                var city = _city; city.Clean = value; _city = city;
-                var dispositionStatusType = _dispositionStatusType; dispositionStatusType.Clean = value; _dispositionStatusType = dispositionStatusType;
-                var entityDeleted = _entityDeleted; entityDeleted.Clean = value; _entityDeleted = entityDeleted;
-                var gsePropertyType = _gsePropertyType; gsePropertyType.Clean = value; _gsePropertyType = gsePropertyType;
-                var id = _id; id.Clean = value; _id = id;
-                var isEmpty = _isEmpty; isEmpty.Clean = value; _isEmpty = isEmpty;
-                var lienInstallmentAmount = _lienInstallmentAmount; lienInstallmentAmount.Clean = value; _lienInstallmentAmount = lienInstallmentAmount;
-                var lienUpbAmount = _lienUpbAmount; lienUpbAmount.Clean = value; _lienUpbAmount = lienUpbAmount;
-                var maintenanceExpenseAmount = _maintenanceExpenseAmount; maintenanceExpenseAmount.Clean = value; _maintenanceExpenseAmount = maintenanceExpenseAmount;
-                var marketValueAmount = _marketValueAmount; marketValueAmount.Clean = value; _marketValueAmount = marketValueAmount;
-                var noLinkToDocTrackIndicator = _noLinkToDocTrackIndicator; noLinkToDocTrackIndicator.Clean = value; _noLinkToDocTrackIndicator = noLinkToDocTrackIndicator;
-                var participationPercentage = _participationPercentage; participationPercentage.Clean = value; _participationPercentage = participationPercentage;
-                var percentageofRental = _percentageofRental; percentageofRental.Clean = value; _percentageofRental = percentageofRental;
-                var postalCode = _postalCode; postalCode.Clean = value; _postalCode = postalCode;
-                var printAttachIndicator = _printAttachIndicator; printAttachIndicator.Clean = value; _printAttachIndicator = printAttachIndicator;
-                var printUserNameIndicator = _printUserNameIndicator; printUserNameIndicator.Clean = value; _printUserNameIndicator = printUserNameIndicator;
-                var propertyUsageType = _propertyUsageType; propertyUsageType.Clean = value; _propertyUsageType = propertyUsageType;
-                var purchasePrice = _purchasePrice; purchasePrice.Clean = value; _purchasePrice = purchasePrice;
-                var rentalIncomeGrossAmount = _rentalIncomeGrossAmount; rentalIncomeGrossAmount.Clean = value; _rentalIncomeGrossAmount = rentalIncomeGrossAmount;
-                var rentalIncomeNetAmount = _rentalIncomeNetAmount; rentalIncomeNetAmount.Clean = value; _rentalIncomeNetAmount = rentalIncomeNetAmount;
-                var reoComments = _reoComments; reoComments.Clean = value; _reoComments = reoComments;
-                var reoId = _reoId; reoId.Clean = value; _reoId = reoId;
-                var reoPropertyIndex = _reoPropertyIndex; reoPropertyIndex.Clean = value; _reoPropertyIndex = reoPropertyIndex;
-                var requestDate = _requestDate; requestDate.Clean = value; _requestDate = requestDate;
-                var state = _state; state.Clean = value; _state = state;
-                var streetAddress = _streetAddress; streetAddress.Clean = value; _streetAddress = streetAddress;
-                var subjectIndicator = _subjectIndicator; subjectIndicator.Clean = value; _subjectIndicator = subjectIndicator;
-                var title = _title; title.Clean = value; _title = title;
-                var titleFax = _titleFax; titleFax.Clean = value; _titleFax = titleFax;
-                var titlePhone = _titlePhone; titlePhone.Clean = value; _titlePhone = titlePhone;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _acquiredDate.Dirty = value;
+                _city.Dirty = value;
+                _dispositionStatusType.Dirty = value;
+                _entityDeleted.Dirty = value;
+                _gsePropertyType.Dirty = value;
+                _id.Dirty = value;
+                _isEmpty.Dirty = value;
+                _lienInstallmentAmount.Dirty = value;
+                _lienUpbAmount.Dirty = value;
+                _maintenanceExpenseAmount.Dirty = value;
+                _marketValueAmount.Dirty = value;
+                _noLinkToDocTrackIndicator.Dirty = value;
+                _participationPercentage.Dirty = value;
+                _percentageofRental.Dirty = value;
+                _postalCode.Dirty = value;
+                _printAttachIndicator.Dirty = value;
+                _printUserNameIndicator.Dirty = value;
+                _propertyUsageType.Dirty = value;
+                _purchasePrice.Dirty = value;
+                _rentalIncomeGrossAmount.Dirty = value;
+                _rentalIncomeNetAmount.Dirty = value;
+                _reoComments.Dirty = value;
+                _reoId.Dirty = value;
+                _reoPropertyIndex.Dirty = value;
+                _requestDate.Dirty = value;
+                _state.Dirty = value;
+                _streetAddress.Dirty = value;
+                _subjectIndicator.Dirty = value;
+                _title.Dirty = value;
+                _titleFax.Dirty = value;
+                _titlePhone.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ReoProperty()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

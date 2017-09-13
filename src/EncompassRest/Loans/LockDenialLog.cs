@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockDenialLog : IClean
+    public sealed partial class LockDenialLog : IDirty
     {
         private Value<bool?> _alertIndicator;
         public bool? AlertIndicator { get { return _alertIndicator; } set { _alertIndicator = value; } }
@@ -38,57 +38,52 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private Value<string> _timeDenied;
         public string TimeDenied { get { return _timeDenied; } set { _timeDenied = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _alertIndicator.Clean
-                    && _alerts.Clean
-                    && _commentList.Clean
-                    && _comments.Clean
-                    && _dateUtc.Clean
-                    && _deniedBy.Clean
-                    && _deniedById.Clean
-                    && _fileAttachmentsMigrated.Clean
-                    && _guid.Clean
-                    && _id.Clean
-                    && _isSystemSpecificIndicator.Clean
-                    && _logRecordIndex.Clean
-                    && _requestGuid.Clean
-                    && _systemId.Clean
-                    && _timeDenied.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _alertIndicator.Dirty
+                    || _alerts.Dirty
+                    || _commentList.Dirty
+                    || _comments.Dirty
+                    || _dateUtc.Dirty
+                    || _deniedBy.Dirty
+                    || _deniedById.Dirty
+                    || _fileAttachmentsMigrated.Dirty
+                    || _guid.Dirty
+                    || _id.Dirty
+                    || _isSystemSpecificIndicator.Dirty
+                    || _logRecordIndex.Dirty
+                    || _requestGuid.Dirty
+                    || _systemId.Dirty
+                    || _timeDenied.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var alertIndicator = _alertIndicator; alertIndicator.Clean = value; _alertIndicator = alertIndicator;
-                var alerts = _alerts; alerts.Clean = value; _alerts = alerts;
-                var commentList = _commentList; commentList.Clean = value; _commentList = commentList;
-                var comments = _comments; comments.Clean = value; _comments = comments;
-                var dateUtc = _dateUtc; dateUtc.Clean = value; _dateUtc = dateUtc;
-                var deniedBy = _deniedBy; deniedBy.Clean = value; _deniedBy = deniedBy;
-                var deniedById = _deniedById; deniedById.Clean = value; _deniedById = deniedById;
-                var fileAttachmentsMigrated = _fileAttachmentsMigrated; fileAttachmentsMigrated.Clean = value; _fileAttachmentsMigrated = fileAttachmentsMigrated;
-                var guid = _guid; guid.Clean = value; _guid = guid;
-                var id = _id; id.Clean = value; _id = id;
-                var isSystemSpecificIndicator = _isSystemSpecificIndicator; isSystemSpecificIndicator.Clean = value; _isSystemSpecificIndicator = isSystemSpecificIndicator;
-                var logRecordIndex = _logRecordIndex; logRecordIndex.Clean = value; _logRecordIndex = logRecordIndex;
-                var requestGuid = _requestGuid; requestGuid.Clean = value; _requestGuid = requestGuid;
-                var systemId = _systemId; systemId.Clean = value; _systemId = systemId;
-                var timeDenied = _timeDenied; timeDenied.Clean = value; _timeDenied = timeDenied;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _alertIndicator.Dirty = value;
+                _alerts.Dirty = value;
+                _commentList.Dirty = value;
+                _comments.Dirty = value;
+                _dateUtc.Dirty = value;
+                _deniedBy.Dirty = value;
+                _deniedById.Dirty = value;
+                _fileAttachmentsMigrated.Dirty = value;
+                _guid.Dirty = value;
+                _id.Dirty = value;
+                _isSystemSpecificIndicator.Dirty = value;
+                _logRecordIndex.Dirty = value;
+                _requestGuid.Dirty = value;
+                _systemId.Dirty = value;
+                _timeDenied.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LockDenialLog()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

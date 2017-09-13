@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AdditionalStateDisclosure : IClean
+    public sealed partial class AdditionalStateDisclosure : IDirty
     {
         private Value<string> _disclosureName;
         public string DisclosureName { get { return _disclosureName; } set { _disclosureName = value; } }
@@ -16,35 +16,30 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<string> _stateCode;
         public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _disclosureName.Clean
-                    && _disclosureValue.Clean
-                    && _id.Clean
-                    && _stateCode.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _disclosureName.Dirty
+                    || _disclosureValue.Dirty
+                    || _id.Dirty
+                    || _stateCode.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var disclosureName = _disclosureName; disclosureName.Clean = value; _disclosureName = disclosureName;
-                var disclosureValue = _disclosureValue; disclosureValue.Clean = value; _disclosureValue = disclosureValue;
-                var id = _id; id.Clean = value; _id = id;
-                var stateCode = _stateCode; stateCode.Clean = value; _stateCode = stateCode;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _disclosureName.Dirty = value;
+                _disclosureValue.Dirty = value;
+                _id.Dirty = value;
+                _stateCode.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public AdditionalStateDisclosure()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

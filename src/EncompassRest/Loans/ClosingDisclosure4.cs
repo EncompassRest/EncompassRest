@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure4 : IClean
+    public sealed partial class ClosingDisclosure4 : IDirty
     {
         private Value<string> _demandFeature;
         public string DemandFeature { get { return _demandFeature; } set { _demandFeature = value; } }
@@ -76,95 +76,90 @@ namespace EncompassRest.Loans
         public string SubsequentChanges { get { return _subsequentChanges; } set { _subsequentChanges = value; } }
         private Value<decimal?> _totalDisbursed1YearConsummation;
         public decimal? TotalDisbursed1YearConsummation { get { return _totalDisbursed1YearConsummation; } set { _totalDisbursed1YearConsummation = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _demandFeature.Clean
-                    && _escrowIndicator.Clean
-                    && _estimatedPropertyCosts.Clean
-                    && _firstChangeAmt.Clean
-                    && _firstChangeMaxAmt.Clean
-                    && _firstChangeMinAmt.Clean
-                    && _firstChangePayment.Clean
-                    && _hOADuesIsEscrow.Clean
-                    && _id.Clean
-                    && _ignoreARMAdj.Clean
-                    && _initialEscrowPayment.Clean
-                    && _interestOnlyPaymentMonths.Clean
-                    && _interestOnlyPayments.Clean
-                    && _interestRateAdjustments.Clean
-                    && _lender.Clean
-                    && _maximumPaymentAmt.Clean
-                    && _maxPayment.Clean
-                    && _maxPaymentAmt.Clean
-                    && _monthlyEscrowPayment.Clean
-                    && _negativeAmortization.Clean
-                    && _nonEscrowedPropertyCosts1YearConsummation.Clean
-                    && _other1.Clean
-                    && _other2.Clean
-                    && _other3.Clean
-                    && _partialPayment.Clean
-                    && _partialPaymentHoldUntilComplete.Clean
-                    && _partialPaymentNone.Clean
-                    && _seasonalPaymentFromYr.Clean
-                    && _seasonalPayments.Clean
-                    && _stepPayment.Clean
-                    && _stepPayments.Clean
-                    && _stepRateFirstChange.Clean
-                    && _subsequentChanges.Clean
-                    && _totalDisbursed1YearConsummation.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _demandFeature.Dirty
+                    || _escrowIndicator.Dirty
+                    || _estimatedPropertyCosts.Dirty
+                    || _firstChangeAmt.Dirty
+                    || _firstChangeMaxAmt.Dirty
+                    || _firstChangeMinAmt.Dirty
+                    || _firstChangePayment.Dirty
+                    || _hOADuesIsEscrow.Dirty
+                    || _id.Dirty
+                    || _ignoreARMAdj.Dirty
+                    || _initialEscrowPayment.Dirty
+                    || _interestOnlyPaymentMonths.Dirty
+                    || _interestOnlyPayments.Dirty
+                    || _interestRateAdjustments.Dirty
+                    || _lender.Dirty
+                    || _maximumPaymentAmt.Dirty
+                    || _maxPayment.Dirty
+                    || _maxPaymentAmt.Dirty
+                    || _monthlyEscrowPayment.Dirty
+                    || _negativeAmortization.Dirty
+                    || _nonEscrowedPropertyCosts1YearConsummation.Dirty
+                    || _other1.Dirty
+                    || _other2.Dirty
+                    || _other3.Dirty
+                    || _partialPayment.Dirty
+                    || _partialPaymentHoldUntilComplete.Dirty
+                    || _partialPaymentNone.Dirty
+                    || _seasonalPaymentFromYr.Dirty
+                    || _seasonalPayments.Dirty
+                    || _stepPayment.Dirty
+                    || _stepPayments.Dirty
+                    || _stepRateFirstChange.Dirty
+                    || _subsequentChanges.Dirty
+                    || _totalDisbursed1YearConsummation.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var demandFeature = _demandFeature; demandFeature.Clean = value; _demandFeature = demandFeature;
-                var escrowIndicator = _escrowIndicator; escrowIndicator.Clean = value; _escrowIndicator = escrowIndicator;
-                var estimatedPropertyCosts = _estimatedPropertyCosts; estimatedPropertyCosts.Clean = value; _estimatedPropertyCosts = estimatedPropertyCosts;
-                var firstChangeAmt = _firstChangeAmt; firstChangeAmt.Clean = value; _firstChangeAmt = firstChangeAmt;
-                var firstChangeMaxAmt = _firstChangeMaxAmt; firstChangeMaxAmt.Clean = value; _firstChangeMaxAmt = firstChangeMaxAmt;
-                var firstChangeMinAmt = _firstChangeMinAmt; firstChangeMinAmt.Clean = value; _firstChangeMinAmt = firstChangeMinAmt;
-                var firstChangePayment = _firstChangePayment; firstChangePayment.Clean = value; _firstChangePayment = firstChangePayment;
-                var hOADuesIsEscrow = _hOADuesIsEscrow; hOADuesIsEscrow.Clean = value; _hOADuesIsEscrow = hOADuesIsEscrow;
-                var id = _id; id.Clean = value; _id = id;
-                var ignoreARMAdj = _ignoreARMAdj; ignoreARMAdj.Clean = value; _ignoreARMAdj = ignoreARMAdj;
-                var initialEscrowPayment = _initialEscrowPayment; initialEscrowPayment.Clean = value; _initialEscrowPayment = initialEscrowPayment;
-                var interestOnlyPaymentMonths = _interestOnlyPaymentMonths; interestOnlyPaymentMonths.Clean = value; _interestOnlyPaymentMonths = interestOnlyPaymentMonths;
-                var interestOnlyPayments = _interestOnlyPayments; interestOnlyPayments.Clean = value; _interestOnlyPayments = interestOnlyPayments;
-                var interestRateAdjustments = _interestRateAdjustments; interestRateAdjustments.Clean = value; _interestRateAdjustments = interestRateAdjustments;
-                var lender = _lender; lender.Clean = value; _lender = lender;
-                var maximumPaymentAmt = _maximumPaymentAmt; maximumPaymentAmt.Clean = value; _maximumPaymentAmt = maximumPaymentAmt;
-                var maxPayment = _maxPayment; maxPayment.Clean = value; _maxPayment = maxPayment;
-                var maxPaymentAmt = _maxPaymentAmt; maxPaymentAmt.Clean = value; _maxPaymentAmt = maxPaymentAmt;
-                var monthlyEscrowPayment = _monthlyEscrowPayment; monthlyEscrowPayment.Clean = value; _monthlyEscrowPayment = monthlyEscrowPayment;
-                var negativeAmortization = _negativeAmortization; negativeAmortization.Clean = value; _negativeAmortization = negativeAmortization;
-                var nonEscrowedPropertyCosts1YearConsummation = _nonEscrowedPropertyCosts1YearConsummation; nonEscrowedPropertyCosts1YearConsummation.Clean = value; _nonEscrowedPropertyCosts1YearConsummation = nonEscrowedPropertyCosts1YearConsummation;
-                var other1 = _other1; other1.Clean = value; _other1 = other1;
-                var other2 = _other2; other2.Clean = value; _other2 = other2;
-                var other3 = _other3; other3.Clean = value; _other3 = other3;
-                var partialPayment = _partialPayment; partialPayment.Clean = value; _partialPayment = partialPayment;
-                var partialPaymentHoldUntilComplete = _partialPaymentHoldUntilComplete; partialPaymentHoldUntilComplete.Clean = value; _partialPaymentHoldUntilComplete = partialPaymentHoldUntilComplete;
-                var partialPaymentNone = _partialPaymentNone; partialPaymentNone.Clean = value; _partialPaymentNone = partialPaymentNone;
-                var seasonalPaymentFromYr = _seasonalPaymentFromYr; seasonalPaymentFromYr.Clean = value; _seasonalPaymentFromYr = seasonalPaymentFromYr;
-                var seasonalPayments = _seasonalPayments; seasonalPayments.Clean = value; _seasonalPayments = seasonalPayments;
-                var stepPayment = _stepPayment; stepPayment.Clean = value; _stepPayment = stepPayment;
-                var stepPayments = _stepPayments; stepPayments.Clean = value; _stepPayments = stepPayments;
-                var stepRateFirstChange = _stepRateFirstChange; stepRateFirstChange.Clean = value; _stepRateFirstChange = stepRateFirstChange;
-                var subsequentChanges = _subsequentChanges; subsequentChanges.Clean = value; _subsequentChanges = subsequentChanges;
-                var totalDisbursed1YearConsummation = _totalDisbursed1YearConsummation; totalDisbursed1YearConsummation.Clean = value; _totalDisbursed1YearConsummation = totalDisbursed1YearConsummation;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _demandFeature.Dirty = value;
+                _escrowIndicator.Dirty = value;
+                _estimatedPropertyCosts.Dirty = value;
+                _firstChangeAmt.Dirty = value;
+                _firstChangeMaxAmt.Dirty = value;
+                _firstChangeMinAmt.Dirty = value;
+                _firstChangePayment.Dirty = value;
+                _hOADuesIsEscrow.Dirty = value;
+                _id.Dirty = value;
+                _ignoreARMAdj.Dirty = value;
+                _initialEscrowPayment.Dirty = value;
+                _interestOnlyPaymentMonths.Dirty = value;
+                _interestOnlyPayments.Dirty = value;
+                _interestRateAdjustments.Dirty = value;
+                _lender.Dirty = value;
+                _maximumPaymentAmt.Dirty = value;
+                _maxPayment.Dirty = value;
+                _maxPaymentAmt.Dirty = value;
+                _monthlyEscrowPayment.Dirty = value;
+                _negativeAmortization.Dirty = value;
+                _nonEscrowedPropertyCosts1YearConsummation.Dirty = value;
+                _other1.Dirty = value;
+                _other2.Dirty = value;
+                _other3.Dirty = value;
+                _partialPayment.Dirty = value;
+                _partialPaymentHoldUntilComplete.Dirty = value;
+                _partialPaymentNone.Dirty = value;
+                _seasonalPaymentFromYr.Dirty = value;
+                _seasonalPayments.Dirty = value;
+                _stepPayment.Dirty = value;
+                _stepPayments.Dirty = value;
+                _stepRateFirstChange.Dirty = value;
+                _subsequentChanges.Dirty = value;
+                _totalDisbursed1YearConsummation.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public ClosingDisclosure4()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

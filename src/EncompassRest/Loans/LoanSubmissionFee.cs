@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanSubmissionFee : IClean
+    public sealed partial class LoanSubmissionFee : IDirty
     {
         private Value<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
@@ -20,39 +20,34 @@ namespace EncompassRest.Loans
         public string LoanSubmissionFeeType { get { return _loanSubmissionFeeType; } set { _loanSubmissionFeeType = value; } }
         private Value<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _description.Clean
-                    && _dueBroker.Clean
-                    && _dueLender.Clean
-                    && _id.Clean
-                    && _loanSubmissionFeeType.Clean
-                    && _total.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _description.Dirty
+                    || _dueBroker.Dirty
+                    || _dueLender.Dirty
+                    || _id.Dirty
+                    || _loanSubmissionFeeType.Dirty
+                    || _total.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var description = _description; description.Clean = value; _description = description;
-                var dueBroker = _dueBroker; dueBroker.Clean = value; _dueBroker = dueBroker;
-                var dueLender = _dueLender; dueLender.Clean = value; _dueLender = dueLender;
-                var id = _id; id.Clean = value; _id = id;
-                var loanSubmissionFeeType = _loanSubmissionFeeType; loanSubmissionFeeType.Clean = value; _loanSubmissionFeeType = loanSubmissionFeeType;
-                var total = _total; total.Clean = value; _total = total;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _description.Dirty = value;
+                _dueBroker.Dirty = value;
+                _dueLender.Dirty = value;
+                _id.Dirty = value;
+                _loanSubmissionFeeType.Dirty = value;
+                _total.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public LoanSubmissionFee()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

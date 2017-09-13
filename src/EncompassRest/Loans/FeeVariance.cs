@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FeeVariance : IClean
+    public sealed partial class FeeVariance : IDirty
     {
         private Value<decimal?> _cD;
         public decimal? CD { get { return _cD; } set { _cD = value; } }
@@ -26,45 +26,40 @@ namespace EncompassRest.Loans
         public decimal? LE { get { return _lE; } set { _lE = value; } }
         private Value<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
-        private int _gettingClean;
-        private int _settingClean; 
-        internal bool Clean
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingClean, 1, 0) != 0) return true;
-                var clean = _cD.Clean
-                    && _description.Clean
-                    && _feeVarianceChargeIndex.Clean
-                    && _feeVarianceFeeType.Clean
-                    && _id.Clean
-                    && _initialLE.Clean
-                    && _itemization.Clean
-                    && _lE.Clean
-                    && _line.Clean;
-                _gettingClean = 0;
-                return clean;
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _cD.Dirty
+                    || _description.Dirty
+                    || _feeVarianceChargeIndex.Dirty
+                    || _feeVarianceFeeType.Dirty
+                    || _id.Dirty
+                    || _initialLE.Dirty
+                    || _itemization.Dirty
+                    || _lE.Dirty
+                    || _line.Dirty;
+                _gettingDirty = 0;
+                return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingClean, 1, 0) != 0) return;
-                var cD = _cD; cD.Clean = value; _cD = cD;
-                var description = _description; description.Clean = value; _description = description;
-                var feeVarianceChargeIndex = _feeVarianceChargeIndex; feeVarianceChargeIndex.Clean = value; _feeVarianceChargeIndex = feeVarianceChargeIndex;
-                var feeVarianceFeeType = _feeVarianceFeeType; feeVarianceFeeType.Clean = value; _feeVarianceFeeType = feeVarianceFeeType;
-                var id = _id; id.Clean = value; _id = id;
-                var initialLE = _initialLE; initialLE.Clean = value; _initialLE = initialLE;
-                var itemization = _itemization; itemization.Clean = value; _itemization = itemization;
-                var lE = _lE; lE.Clean = value; _lE = lE;
-                var line = _line; line.Clean = value; _line = line;
-                _settingClean = 0;
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _cD.Dirty = value;
+                _description.Dirty = value;
+                _feeVarianceChargeIndex.Dirty = value;
+                _feeVarianceFeeType.Dirty = value;
+                _id.Dirty = value;
+                _initialLE.Dirty = value;
+                _itemization.Dirty = value;
+                _lE.Dirty = value;
+                _line.Dirty = value;
+                _settingDirty = 0;
             }
         }
-        bool IClean.Clean { get { return Clean; } set { Clean = value; } }
-        [JsonConstructor]
-        public FeeVariance()
-        {
-            Clean = true;
-        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }
