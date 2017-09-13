@@ -143,8 +143,8 @@ namespace EncompassRest.Loans
         public decimal? DownPaymentPercent { get { return _downPaymentPercent; } set { _downPaymentPercent = value; } }
         private Value<List<EdmLog>> _edmLogs;
         public List<EdmLog> EdmLogs { get { return _edmLogs; } set { _edmLogs = value; } }
-        private Value<string> _elliUCDFields;
-        public string ElliUCDFields { get { return _elliUCDFields; } set { _elliUCDFields = value; } }
+        //private Value<string> _elliUCDFields;
+        //public string ElliUCDFields { get { return _elliUCDFields; } set { _elliUCDFields = value; } }
         private Value<List<EmailTriggerLog>> _emailTriggerLogs;
         public List<EmailTriggerLog> EmailTriggerLogs { get { return _emailTriggerLogs; } set { _emailTriggerLogs = value; } }
         public EmDocument EmDocument { get; set; }
@@ -631,8 +631,8 @@ namespace EncompassRest.Loans
         public VaLoanData VaLoanData { get; set; }
         private Value<List<VerificationLog>> _verificationLogs;
         public List<VerificationLog> VerificationLogs { get { return _verificationLogs; } set { _verificationLogs = value; } }
-        private Value<string> _virtualFields;
-        public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
+        //private Value<string> _virtualFields;
+        //public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
         private Value<string> _websiteId;
         public string WebsiteId { get { return _websiteId; } set { _websiteId = value; } }
         private int _gettingDirty;
@@ -704,7 +704,7 @@ namespace EncompassRest.Loans
                     || _downloadLogs.Dirty
                     || _downPaymentPercent.Dirty
                     || _edmLogs.Dirty
-                    || _elliUCDFields.Dirty
+                    //|| _elliUCDFields.Dirty
                     || _emailTriggerLogs.Dirty
                     || _emXmlVersionId.Dirty
                     || _encompassId.Dirty
@@ -929,7 +929,7 @@ namespace EncompassRest.Loans
                     || _useNewHudIndicator.Dirty
                     || _vAEntitlementAmount.Dirty
                     || _verificationLogs.Dirty
-                    || _virtualFields.Dirty
+                    //|| _virtualFields.Dirty
                     || _websiteId.Dirty
                     || AdditionalRequests?.Dirty == true
                     || ATRQMCommon?.Dirty == true
@@ -1048,7 +1048,7 @@ namespace EncompassRest.Loans
                 _downloadLogs.Dirty = value;
                 _downPaymentPercent.Dirty = value;
                 _edmLogs.Dirty = value;
-                _elliUCDFields.Dirty = value;
+                //_elliUCDFields.Dirty = value;
                 _emailTriggerLogs.Dirty = value;
                 _emXmlVersionId.Dirty = value;
                 _encompassId.Dirty = value;
@@ -1273,7 +1273,7 @@ namespace EncompassRest.Loans
                 _useNewHudIndicator.Dirty = value;
                 _vAEntitlementAmount.Dirty = value;
                 _verificationLogs.Dirty = value;
-                _virtualFields.Dirty = value;
+                //_virtualFields.Dirty = value;
                 _websiteId.Dirty = value;
                 if (AdditionalRequests != null) AdditionalRequests.Dirty = value;
                 if (ATRQMCommon != null) ATRQMCommon.Dirty = value;
