@@ -160,7 +160,6 @@ namespace EncompassRest.Loans.Documents
 
         public Task UpdateDocumentAsync(LoanDocument document, bool populate) => UpdateDocumentAsync(document, populate, CancellationToken.None);
 
-
         public Task UpdateDocumentAsync(LoanDocument document, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(document, nameof(document));

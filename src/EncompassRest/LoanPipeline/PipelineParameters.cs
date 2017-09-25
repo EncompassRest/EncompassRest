@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class ViewPipelineParameters
+    public sealed class PipelineParameters
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Filter Filter { get; }
@@ -21,7 +21,7 @@ namespace EncompassRest.LoanPipeline
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<FieldSort> SortOrder { get; }
 
-        public ViewPipelineParameters(Filter filter, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
+        public PipelineParameters(Filter filter, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
         {
             Preconditions.NotNull(filter, nameof(filter));
 
@@ -30,7 +30,7 @@ namespace EncompassRest.LoanPipeline
             SortOrder = sortOrder != null ? new ReadOnlyCollection<FieldSort>(sortOrder.ToList()) : null;
         }
 
-        public ViewPipelineParameters(IEnumerable<string> loanGuids, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
+        public PipelineParameters(IEnumerable<string> loanGuids, IEnumerable<string> fields = null, IEnumerable<FieldSort> sortOrder = null)
         {
             Preconditions.NotNullOrEmpty(loanGuids, nameof(loanGuids));
 
