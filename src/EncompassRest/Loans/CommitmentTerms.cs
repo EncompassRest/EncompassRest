@@ -1,0 +1,141 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading;
+using Newtonsoft.Json;
+
+namespace EncompassRest.Loans
+{
+    public sealed partial class CommitmentTerms : IDirty
+    {
+        private Value<DateTime?> _actionDate;
+        public DateTime? ActionDate { get { return _actionDate; } set { _actionDate = value; } }
+        private Value<string> _additionalConditions;
+        public string AdditionalConditions { get { return _additionalConditions; } set { _additionalConditions = value; } }
+        private Value<string> _additionalItems1;
+        public string AdditionalItems1 { get { return _additionalItems1; } set { _additionalItems1 = value; } }
+        private Value<string> _additionalItems2;
+        public string AdditionalItems2 { get { return _additionalItems2; } set { _additionalItems2 = value; } }
+        private Value<string> _additionalItems3;
+        public string AdditionalItems3 { get { return _additionalItems3; } set { _additionalItems3 = value; } }
+        private Value<bool?> _appraisalDone;
+        public bool? AppraisalDone { get { return _appraisalDone; } set { _appraisalDone = value; } }
+        private Value<decimal?> _assuranceOfCompletion;
+        public decimal? AssuranceOfCompletion { get { return _assuranceOfCompletion; } set { _assuranceOfCompletion = value; } }
+        private Value<DateTime?> _commitmentDate;
+        public DateTime? CommitmentDate { get { return _commitmentDate; } set { _commitmentDate = value; } }
+        private Value<DateTime?> _commitmentExpired;
+        public DateTime? CommitmentExpired { get { return _commitmentExpired; } set { _commitmentExpired = value; } }
+        private Value<DateTime?> _commitmentIssued;
+        public DateTime? CommitmentIssued { get { return _commitmentIssued; } set { _commitmentIssued = value; } }
+        private Value<bool?> _conditionalCommitmentUnderActg;
+        public bool? ConditionalCommitmentUnderActg { get { return _conditionalCommitmentUnderActg; } set { _conditionalCommitmentUnderActg = value; } }
+        private Value<bool?> _eligibleForHighLtv;
+        public bool? EligibleForHighLtv { get { return _eligibleForHighLtv; } set { _eligibleForHighLtv = value; } }
+        private Value<int?> _estimatedRemainingYears;
+        public int? EstimatedRemainingYears { get { return _estimatedRemainingYears; } set { _estimatedRemainingYears = value; } }
+        private Value<string> _id;
+        public string Id { get { return _id; } set { _id = value; } }
+        private Value<string> _improvedLivingAreas;
+        public string ImprovedLivingAreas { get { return _improvedLivingAreas; } set { _improvedLivingAreas = value; } }
+        private Value<bool?> _manufacturedHousing;
+        public bool? ManufacturedHousing { get { return _manufacturedHousing; } set { _manufacturedHousing = value; } }
+        private Value<decimal?> _maxInsurableMortgage;
+        public decimal? MaxInsurableMortgage { get { return _maxInsurableMortgage; } set { _maxInsurableMortgage = value; } }
+        private Value<string> _mortgageeAddress;
+        public string MortgageeAddress { get { return _mortgageeAddress; } set { _mortgageeAddress = value; } }
+        private Value<string> _mortgageeCity;
+        public string MortgageeCity { get { return _mortgageeCity; } set { _mortgageeCity = value; } }
+        private Value<string> _mortgageeName;
+        public string MortgageeName { get { return _mortgageeName; } set { _mortgageeName = value; } }
+        private Value<string> _mortgageePostalCode;
+        public string MortgageePostalCode { get { return _mortgageePostalCode; } set { _mortgageePostalCode = value; } }
+        private Value<string> _mortgageeState;
+        public string MortgageeState { get { return _mortgageeState; } set { _mortgageeState = value; } }
+        private Value<string> _otherMonthlyExpenseDescription;
+        public string OtherMonthlyExpenseDescription { get { return _otherMonthlyExpenseDescription; } set { _otherMonthlyExpenseDescription = value; } }
+        private Value<DateTime?> _reportDate;
+        public DateTime? ReportDate { get { return _reportDate; } set { _reportDate = value; } }
+        private Value<string> _requirementsNumber;
+        public string RequirementsNumber { get { return _requirementsNumber; } set { _requirementsNumber = value; } }
+        private Value<string> _subdivisionDescription;
+        public string SubdivisionDescription { get { return _subdivisionDescription; } set { _subdivisionDescription = value; } }
+        private Value<string> _subdivisionRequirements;
+        public string SubdivisionRequirements { get { return _subdivisionRequirements; } set { _subdivisionRequirements = value; } }
+        private Value<decimal?> _totalMonthlyExpense;
+        public decimal? TotalMonthlyExpense { get { return _totalMonthlyExpense; } set { _totalMonthlyExpense = value; } }
+        private int _gettingDirty;
+        private int _settingDirty; 
+        internal bool Dirty
+        {
+            get
+            {
+                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                var dirty = _actionDate.Dirty
+                    || _additionalConditions.Dirty
+                    || _additionalItems1.Dirty
+                    || _additionalItems2.Dirty
+                    || _additionalItems3.Dirty
+                    || _appraisalDone.Dirty
+                    || _assuranceOfCompletion.Dirty
+                    || _commitmentDate.Dirty
+                    || _commitmentExpired.Dirty
+                    || _commitmentIssued.Dirty
+                    || _conditionalCommitmentUnderActg.Dirty
+                    || _eligibleForHighLtv.Dirty
+                    || _estimatedRemainingYears.Dirty
+                    || _id.Dirty
+                    || _improvedLivingAreas.Dirty
+                    || _manufacturedHousing.Dirty
+                    || _maxInsurableMortgage.Dirty
+                    || _mortgageeAddress.Dirty
+                    || _mortgageeCity.Dirty
+                    || _mortgageeName.Dirty
+                    || _mortgageePostalCode.Dirty
+                    || _mortgageeState.Dirty
+                    || _otherMonthlyExpenseDescription.Dirty
+                    || _reportDate.Dirty
+                    || _requirementsNumber.Dirty
+                    || _subdivisionDescription.Dirty
+                    || _subdivisionRequirements.Dirty
+                    || _totalMonthlyExpense.Dirty;
+                _gettingDirty = 0;
+                return dirty;
+            }
+            set
+            {
+                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _actionDate.Dirty = value;
+                _additionalConditions.Dirty = value;
+                _additionalItems1.Dirty = value;
+                _additionalItems2.Dirty = value;
+                _additionalItems3.Dirty = value;
+                _appraisalDone.Dirty = value;
+                _assuranceOfCompletion.Dirty = value;
+                _commitmentDate.Dirty = value;
+                _commitmentExpired.Dirty = value;
+                _commitmentIssued.Dirty = value;
+                _conditionalCommitmentUnderActg.Dirty = value;
+                _eligibleForHighLtv.Dirty = value;
+                _estimatedRemainingYears.Dirty = value;
+                _id.Dirty = value;
+                _improvedLivingAreas.Dirty = value;
+                _manufacturedHousing.Dirty = value;
+                _maxInsurableMortgage.Dirty = value;
+                _mortgageeAddress.Dirty = value;
+                _mortgageeCity.Dirty = value;
+                _mortgageeName.Dirty = value;
+                _mortgageePostalCode.Dirty = value;
+                _mortgageeState.Dirty = value;
+                _otherMonthlyExpenseDescription.Dirty = value;
+                _reportDate.Dirty = value;
+                _requirementsNumber.Dirty = value;
+                _subdivisionDescription.Dirty = value;
+                _subdivisionRequirements.Dirty = value;
+                _totalMonthlyExpense.Dirty = value;
+                _settingDirty = 0;
+            }
+        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+    }
+}

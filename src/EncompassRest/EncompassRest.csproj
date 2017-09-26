@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.1;net45</TargetFrameworks>
+    <Version>0.1.0</Version>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/hfcjweinstock/EncompassRest</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/hfcjweinstock/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageTags>encompass rest api client</PackageTags>
+    <Description>Encompass API Client Library for .NET</Description>
+    <Summary>Encompass API Client Library for .NET</Summary>
+    <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Enums.NET" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
+    <AssemblyTitle>EncompassRest</AssemblyTitle>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <LangVersion>6</LangVersion>
+  </PropertyGroup>
+</Project>
