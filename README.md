@@ -1,5 +1,5 @@
 # EncompassRest
-Encompass API Client Library for .NET
+Encompass API .NET Client Library
 
 A MAJOR Redesign has been pushed out. The old source code is still available in the legacy branch. More documentation and a NuGet package forthcoming.
 
