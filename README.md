@@ -1,7 +1,7 @@
 # EncompassRest
 Encompass API Client Library for .NET
 
-MAJOR Redesign being pushed out. More documentation and a NuGet package forthcoming.
+A MAJOR Redesign has been pushed out. The old source code is still available in the legacy branch. More documentation and a NuGet package forthcoming.
 
 To get started create a client object within an async method
 ```c#
