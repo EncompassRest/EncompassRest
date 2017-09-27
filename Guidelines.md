@@ -17,7 +17,7 @@
 ### Formatting
 * Always use 4 spaces for indentation.
 * Never include 2 consecutive blank lines.
-* Always separate argument list parameters with just a comma and space.
+* Always separate single line argument or parameter list items with just a comma and space.
 
 ### Naming
 * Iterface names should begin with I and follow pascal casing after that.
