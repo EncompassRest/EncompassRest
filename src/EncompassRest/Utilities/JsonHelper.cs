@@ -163,7 +163,15 @@ namespace EncompassRest.Utilities
                 var typeData = TypeData.Get(objectType);
                 if (typeData.IsEnum || typeData.NonNullableValueTypeData?.IsEnum == true)
                 {
-                    return s_enumConverter;
+                    var enumOutputAttribute = typeData.TypeInfo.GetCustomAttribute<EnumOutputAttribute>();
+                    if (enumOutputAttribute != null)
+                    {
+                        return new EnumJsonConverter(enumOutputAttribute.EnumOutput);
+                    }
+                    else
+                    {
+                        return s_enumConverter;
+                    }
                 }
                 if (typeData.TypeInfo.IsGenericType && !typeData.TypeInfo.IsGenericTypeDefinition)
                 {
