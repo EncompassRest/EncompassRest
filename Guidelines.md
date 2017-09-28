@@ -2,6 +2,8 @@
 ## .NET API
 * Namespace naming should follow the Encompass API Paths.
 * Method names should follow the naming in Encompass Developer Connect.
+* Only publically expose types and methods that clients need access to.
+* Default classes as sealed.
 * Exposed Encompass API's should support both .NET object and raw json methods.
 * Consider making the API similar to the SDK when applicable.
 * Consider thread-safety.
