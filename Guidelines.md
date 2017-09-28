@@ -1,4 +1,11 @@
 # EncompassRest .NET Library Guidelines
+## .NET API
+* Namespace naming should follow the Encompass API Paths.
+* Method names should follow the naming in Encompass Developer Connect.
+* Exposed Encompass API's should support both .NET object and raw json methods.
+* Consider making the API similar to the SDK when applicable.
+* Consider thread-safety.
+
 ## Source Code Style
 ### General
 * Never qualify member access with `this.` except when necessary.
@@ -12,7 +19,7 @@
 * Always use using statements when possible to reduce specifying full type names.
 * Code should be async throughout, no uses of blocking code such as `Task.Wait` as they can cause deadlocks in consumer code.
 * All uses of the `await` keyword should have a trailing `.ConfigureAwait(false)` applied to the `Task` for better performance.
-* Only apply the `async` keyword to methods when necessary. If you're just returning a `Task` of the same type as the return type from another method then the `async` keyword is unnecessary.
+* Only apply the `async` keyword to methods when necessary. If you're just return awaiting a `Task` of the same type as the return type from another method then the `async` keyword is unnecessary.
 
 ### Formatting
 * Always use 4 spaces for indentation.
