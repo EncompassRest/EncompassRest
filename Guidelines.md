@@ -1,8 +1,6 @@
 # EncompassRest .NET Library Guidelines
 ## .NET API
 ### General
-* Namespace naming should follow the Encompass API Paths.
-* Method names should follow the naming in Encompass Developer Connect.
 * Only publically expose types and methods that clients need access to.
 * Default classes as sealed.
 * Exposed Encompass API's should support both .NET object and raw json methods.
@@ -11,6 +9,8 @@
 * Never create public fields.
 
 ### Naming
+* Namespace naming should follow the Encompass API Paths.
+* Method names should follow the naming in Encompass Developer Connect.
 * Iterface names should begin with I and follow pascal casing after that.
 * Type and non-field member names should follow pascal casing.
 * Any `Task` returning methods' names should end with `Async`.
