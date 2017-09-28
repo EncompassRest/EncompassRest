@@ -37,3 +37,7 @@
 * Always use 4 spaces for indentation.
 * Never include 2 consecutive blank lines.
 * Always separate single line argument or parameter list items with just a comma and space.
+
+## Code Change Pull Requests
+* Every code change pull request needs to have at least one review by a core member prior to being merged.
+* Every code change pull request should include unit tests to ensure they work properly.
