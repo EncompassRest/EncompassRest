@@ -12,3 +12,5 @@ using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("ap
 ```
 
 Compatible with .NET Framework 4.5+ and .NET Standard 1.1+.
+
+If you're interested in contributing please look over the [Guidelines Doc](Guidelines.md).
