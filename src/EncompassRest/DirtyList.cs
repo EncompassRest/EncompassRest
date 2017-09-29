@@ -72,7 +72,7 @@ namespace EncompassRest
         public void CopyTo(T[] array, int arrayIndex)
         {
             Preconditions.NotNull(array, nameof(array));
-            Preconditions.LessThan(arrayIndex, nameof(arrayIndex), array.Length);
+            Preconditions.LessThan(arrayIndex, nameof(arrayIndex), array.Length, $"{nameof(array)}.Length");
             Preconditions.GreaterThanOrEquals(array.Length - arrayIndex, $"{nameof(array)}.Length - {nameof(arrayIndex)}", Count, nameof(Count));
             
             for (var i = 0; i < _list.Count; ++i)
