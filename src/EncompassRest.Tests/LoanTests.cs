@@ -42,7 +42,8 @@ namespace EncompassRest.Tests
             var loan = new Loan();
             var customField = new CustomField { FieldName = "CUST91FV", StringValue = "Initial Value" };
             loan.CustomFields.Add(customField);
-            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""Initial Value""}]}", loan.ToJson());
+            loan.CustomFields.Add(new CustomField { FieldName = "CUST92FV", NumericValue = 10.0M });
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""Initial Value""},{""fieldName"":""CUST92FV"",""numericValue"":10.0}]}", loan.ToJson());
             loan.Dirty = false;
             Assert.AreEqual("{}", loan.ToJson());
             customField.StringValue = "New Value";
