@@ -8,21 +8,21 @@ namespace EncompassRest.Loans
 {
     public sealed partial class GfeFee : IDirty
     {
-        private Value<string> _amountDescription;
+        private DirtyValue<string> _amountDescription;
         public string AmountDescription { get { return _amountDescription; } set { _amountDescription = value; } }
-        private Value<decimal?> _brokerAmount;
+        private DirtyValue<decimal?> _brokerAmount;
         public decimal? BrokerAmount { get { return _brokerAmount; } set { _brokerAmount = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<int?> _gfeFeeIndex;
+        private DirtyValue<int?> _gfeFeeIndex;
         public int? GfeFeeIndex { get { return _gfeFeeIndex; } set { _gfeFeeIndex = value; } }
-        private Value<string> _gfeFeeType;
+        private DirtyValue<string> _gfeFeeType;
         public string GfeFeeType { get { return _gfeFeeType; } set { _gfeFeeType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _otherAmount;
+        private DirtyValue<decimal?> _otherAmount;
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
-        private Value<string> _rate;
+        private DirtyValue<string> _rate;
         public string Rate { get { return _rate; } set { _rate = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

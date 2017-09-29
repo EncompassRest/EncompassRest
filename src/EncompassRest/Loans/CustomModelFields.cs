@@ -8,15 +8,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class CustomModelFields : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _provideAmortizationScenario;
+        private DirtyValue<bool?> _provideAmortizationScenario;
         public bool? ProvideAmortizationScenario { get { return _provideAmortizationScenario; } set { _provideAmortizationScenario = value; } }
-        private Value<bool?> _provideBestCaseScenario;
+        private DirtyValue<bool?> _provideBestCaseScenario;
         public bool? ProvideBestCaseScenario { get { return _provideBestCaseScenario; } set { _provideBestCaseScenario = value; } }
-        private Value<bool?> _provideFHAScenario;
+        private DirtyValue<bool?> _provideFHAScenario;
         public bool? ProvideFHAScenario { get { return _provideFHAScenario; } set { _provideFHAScenario = value; } }
-        private Value<bool?> _provideWorstCaseScenario;
+        private DirtyValue<bool?> _provideWorstCaseScenario;
         public bool? ProvideWorstCaseScenario { get { return _provideWorstCaseScenario; } set { _provideWorstCaseScenario = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

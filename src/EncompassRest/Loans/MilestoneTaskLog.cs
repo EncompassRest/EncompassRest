@@ -8,69 +8,69 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilestoneTaskLog : IDirty
     {
-        private Value<DateTime?> _addDate;
+        private DirtyValue<DateTime?> _addDate;
         public DateTime? AddDate { get { return _addDate; } set { _addDate = value; } }
-        private Value<string> _addedBy;
+        private DirtyValue<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        private Value<string> _addedByUserId;
+        private DirtyValue<string> _addedByUserId;
         public string AddedByUserId { get { return _addedByUserId; } set { _addedByUserId = value; } }
         private DirtyList<LogAlert> _alerts;
         public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
-        private Value<string> _alertsXml;
+        private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
-        private Value<string> _commentListXml;
+        private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<bool?> _completed;
+        private DirtyValue<bool?> _completed;
         public bool? Completed { get { return _completed; } set { _completed = value; } }
-        private Value<string> _completedBy;
+        private DirtyValue<string> _completedBy;
         public string CompletedBy { get { return _completedBy; } set { _completedBy = value; } }
-        private Value<string> _completedByUserId;
+        private DirtyValue<string> _completedByUserId;
         public string CompletedByUserId { get { return _completedByUserId; } set { _completedByUserId = value; } }
-        private Value<DateTime?> _completedDateUtc;
+        private DirtyValue<DateTime?> _completedDateUtc;
         public DateTime? CompletedDateUtc { get { return _completedDateUtc; } set { _completedDateUtc = value; } }
-        private Value<int?> _contactCount;
+        private DirtyValue<int?> _contactCount;
         public int? ContactCount { get { return _contactCount; } set { _contactCount = value; } }
         private DirtyList<MilestoneTaskContact> _contacts;
         public IList<MilestoneTaskContact> Contacts { get { var v = _contacts; return v ?? Interlocked.CompareExchange(ref _contacts, (v = new DirtyList<MilestoneTaskContact>()), null) ?? v; } set { _contacts = new DirtyList<MilestoneTaskContact>(value); } }
-        private Value<string> _contactsXml;
+        private DirtyValue<string> _contactsXml;
         public string ContactsXml { get { return _contactsXml; } set { _contactsXml = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<int?> _daysToComplete;
+        private DirtyValue<int?> _daysToComplete;
         public int? DaysToComplete { get { return _daysToComplete; } set { _daysToComplete = value; } }
-        private Value<int?> _daysToCompleteFromSetting;
+        private DirtyValue<int?> _daysToCompleteFromSetting;
         public int? DaysToCompleteFromSetting { get { return _daysToCompleteFromSetting; } set { _daysToCompleteFromSetting = value; } }
-        private Value<DateTime?> _expectedDate;
+        private DirtyValue<DateTime?> _expectedDate;
         public DateTime? ExpectedDate { get { return _expectedDate; } set { _expectedDate = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isRequiredIndicator;
+        private DirtyValue<bool?> _isRequiredIndicator;
         public bool? IsRequiredIndicator { get { return _isRequiredIndicator; } set { _isRequiredIndicator = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<DateTime?> _milestoneTaskLogDateUtc;
+        private DirtyValue<DateTime?> _milestoneTaskLogDateUtc;
         public DateTime? MilestoneTaskLogDateUtc { get { return _milestoneTaskLogDateUtc; } set { _milestoneTaskLogDateUtc = value; } }
-        private Value<string> _priority;
+        private DirtyValue<string> _priority;
         public string Priority { get { return _priority; } set { _priority = value; } }
-        private Value<string> _stage;
+        private DirtyValue<string> _stage;
         public string Stage { get { return _stage; } set { _stage = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private Value<string> _taskDescription;
+        private DirtyValue<string> _taskDescription;
         public string TaskDescription { get { return _taskDescription; } set { _taskDescription = value; } }
-        private Value<string> _taskGuid;
+        private DirtyValue<string> _taskGuid;
         public string TaskGuid { get { return _taskGuid; } set { _taskGuid = value; } }
-        private Value<string> _taskName;
+        private DirtyValue<string> _taskName;
         public string TaskName { get { return _taskName; } set { _taskName = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

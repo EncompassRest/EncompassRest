@@ -8,15 +8,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PurchaseAdvicePayout : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<decimal?> _diffAmount;
+        private DirtyValue<decimal?> _diffAmount;
         public decimal? DiffAmount { get { return _diffAmount; } set { _diffAmount = value; } }
-        private Value<decimal?> _expectedAmount;
+        private DirtyValue<decimal?> _expectedAmount;
         public decimal? ExpectedAmount { get { return _expectedAmount; } set { _expectedAmount = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

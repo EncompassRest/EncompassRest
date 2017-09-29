@@ -8,17 +8,17 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PriceAdjustment : IDirty
     {
-        private Value<string> _adjustmentType;
+        private DirtyValue<string> _adjustmentType;
         public string AdjustmentType { get { return _adjustmentType; } set { _adjustmentType = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _priceAdjustmentType;
+        private DirtyValue<string> _priceAdjustmentType;
         public string PriceAdjustmentType { get { return _priceAdjustmentType; } set { _priceAdjustmentType = value; } }
-        private Value<decimal?> _rate;
+        private DirtyValue<decimal?> _rate;
         public decimal? Rate { get { return _rate; } set { _rate = value; } }
-        private Value<string> _rateLockAdjustmentType;
+        private DirtyValue<string> _rateLockAdjustmentType;
         public string RateLockAdjustmentType { get { return _rateLockAdjustmentType; } set { _rateLockAdjustmentType = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

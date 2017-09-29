@@ -12,35 +12,35 @@ namespace EncompassRest.Loans
         public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<bool?> _currentIndicator;
+        private DirtyValue<bool?> _currentIndicator;
         public bool? CurrentIndicator { get { return _currentIndicator; } set { _currentIndicator = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<DateTime?> _expiredDate;
+        private DirtyValue<DateTime?> _expiredDate;
         public DateTime? ExpiredDate { get { return _expiredDate; } set { _expiredDate = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _investorName;
+        private DirtyValue<string> _investorName;
         public string InvestorName { get { return _investorName; } set { _investorName = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<string> _reference;
+        private DirtyValue<string> _reference;
         public string Reference { get { return _reference; } set { _reference = value; } }
-        private Value<string> _registeredById;
+        private DirtyValue<string> _registeredById;
         public string RegisteredById { get { return _registeredById; } set { _registeredById = value; } }
-        private Value<string> _registeredByName;
+        private DirtyValue<string> _registeredByName;
         public string RegisteredByName { get { return _registeredByName; } set { _registeredByName = value; } }
-        private Value<DateTime?> _registeredDate;
+        private DirtyValue<DateTime?> _registeredDate;
         public DateTime? RegisteredDate { get { return _registeredDate; } set { _registeredDate = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

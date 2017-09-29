@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PrepaymentPenalty : IDirty
     {
-        private Value<string> _fullPrepaymentPenaltyOptionType;
+        private DirtyValue<string> _fullPrepaymentPenaltyOptionType;
         public string FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _prepaymentPenaltyPercent;
+        private DirtyValue<decimal?> _prepaymentPenaltyPercent;
         public decimal? PrepaymentPenaltyPercent { get { return _prepaymentPenaltyPercent; } set { _prepaymentPenaltyPercent = value; } }
-        private Value<int?> _termMonthsCount;
+        private DirtyValue<int?> _termMonthsCount;
         public int? TermMonthsCount { get { return _termMonthsCount; } set { _termMonthsCount = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

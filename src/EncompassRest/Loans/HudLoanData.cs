@@ -8,321 +8,321 @@ namespace EncompassRest.Loans
 {
     public sealed partial class HudLoanData : IDirty
     {
-        private Value<decimal?> _actualCashInvRequired;
+        private DirtyValue<decimal?> _actualCashInvRequired;
         public decimal? ActualCashInvRequired { get { return _actualCashInvRequired; } set { _actualCashInvRequired = value; } }
-        private Value<decimal?> _adjustedMaxMtgAmount;
+        private DirtyValue<decimal?> _adjustedMaxMtgAmount;
         public decimal? AdjustedMaxMtgAmount { get { return _adjustedMaxMtgAmount; } set { _adjustedMaxMtgAmount = value; } }
-        private Value<decimal?> _afterImprovedValue;
+        private DirtyValue<decimal?> _afterImprovedValue;
         public decimal? AfterImprovedValue { get { return _afterImprovedValue; } set { _afterImprovedValue = value; } }
-        private Value<decimal?> _afterImprovedValueAfter20Percent;
+        private DirtyValue<decimal?> _afterImprovedValueAfter20Percent;
         public decimal? AfterImprovedValueAfter20Percent { get { return _afterImprovedValueAfter20Percent; } set { _afterImprovedValueAfter20Percent = value; } }
-        private Value<decimal?> _allowableEnergyImprovements;
+        private DirtyValue<decimal?> _allowableEnergyImprovements;
         public decimal? AllowableEnergyImprovements { get { return _allowableEnergyImprovements; } set { _allowableEnergyImprovements = value; } }
-        private Value<decimal?> _appropriateLTVFactor;
+        private DirtyValue<decimal?> _appropriateLTVFactor;
         public decimal? AppropriateLTVFactor { get { return _appropriateLTVFactor; } set { _appropriateLTVFactor = value; } }
-        private Value<decimal?> _architecturalEngineeringFee;
+        private DirtyValue<decimal?> _architecturalEngineeringFee;
         public decimal? ArchitecturalEngineeringFee { get { return _architecturalEngineeringFee; } set { _architecturalEngineeringFee = value; } }
-        private Value<decimal?> _asIsValue;
+        private DirtyValue<decimal?> _asIsValue;
         public decimal? AsIsValue { get { return _asIsValue; } set { _asIsValue = value; } }
-        private Value<decimal?> _baseMortgageAmountFrom3COr3D;
+        private DirtyValue<decimal?> _baseMortgageAmountFrom3COr3D;
         public decimal? BaseMortgageAmountFrom3COr3D { get { return _baseMortgageAmountFrom3COr3D; } set { _baseMortgageAmountFrom3COr3D = value; } }
-        private Value<string> _borrowerAcknowledgement;
+        private DirtyValue<string> _borrowerAcknowledgement;
         public string BorrowerAcknowledgement { get { return _borrowerAcknowledgement; } set { _borrowerAcknowledgement = value; } }
-        private Value<decimal?> _borrowerEstimatedProfit1;
+        private DirtyValue<decimal?> _borrowerEstimatedProfit1;
         public decimal? BorrowerEstimatedProfit1 { get { return _borrowerEstimatedProfit1; } set { _borrowerEstimatedProfit1 = value; } }
-        private Value<decimal?> _borrowerEstimatedProfit2;
+        private DirtyValue<decimal?> _borrowerEstimatedProfit2;
         public decimal? BorrowerEstimatedProfit2 { get { return _borrowerEstimatedProfit2; } set { _borrowerEstimatedProfit2 = value; } }
-        private Value<decimal?> _borrowerPaidClosingCosts;
+        private DirtyValue<decimal?> _borrowerPaidClosingCosts;
         public decimal? BorrowerPaidClosingCosts { get { return _borrowerPaidClosingCosts; } set { _borrowerPaidClosingCosts = value; } }
-        private Value<decimal?> _borrowerRequiredInvestment;
+        private DirtyValue<decimal?> _borrowerRequiredInvestment;
         public decimal? BorrowerRequiredInvestment { get { return _borrowerRequiredInvestment; } set { _borrowerRequiredInvestment = value; } }
-        private Value<decimal?> _borrowersOwnFundsforContingencyReserves;
+        private DirtyValue<decimal?> _borrowersOwnFundsforContingencyReserves;
         public decimal? BorrowersOwnFundsforContingencyReserves { get { return _borrowersOwnFundsforContingencyReserves; } set { _borrowersOwnFundsforContingencyReserves = value; } }
-        private Value<bool?> _buildingOnOwnLand;
+        private DirtyValue<bool?> _buildingOnOwnLand;
         public bool? BuildingOnOwnLand { get { return _buildingOnOwnLand; } set { _buildingOnOwnLand = value; } }
-        private Value<DateTime?> _caseAssignedDate;
+        private DirtyValue<DateTime?> _caseAssignedDate;
         public DateTime? CaseAssignedDate { get { return _caseAssignedDate; } set { _caseAssignedDate = value; } }
-        private Value<decimal?> _caseLTV;
+        private DirtyValue<decimal?> _caseLTV;
         public decimal? CaseLTV { get { return _caseLTV; } set { _caseLTV = value; } }
-        private Value<decimal?> _childSupportBalance;
+        private DirtyValue<decimal?> _childSupportBalance;
         public decimal? ChildSupportBalance { get { return _childSupportBalance; } set { _childSupportBalance = value; } }
-        private Value<string> _cHUMSForAppraisal;
+        private DirtyValue<string> _cHUMSForAppraisal;
         public string CHUMSForAppraisal { get { return _cHUMSForAppraisal; } set { _cHUMSForAppraisal = value; } }
-        private Value<decimal?> _commitmentMaximumMortgageAmount;
+        private DirtyValue<decimal?> _commitmentMaximumMortgageAmount;
         public decimal? CommitmentMaximumMortgageAmount { get { return _commitmentMaximumMortgageAmount; } set { _commitmentMaximumMortgageAmount = value; } }
-        private Value<string> _commitmentStage;
+        private DirtyValue<string> _commitmentStage;
         public string CommitmentStage { get { return _commitmentStage; } set { _commitmentStage = value; } }
-        private Value<decimal?> _constructionRepairsRehabilitationCosts;
+        private DirtyValue<decimal?> _constructionRepairsRehabilitationCosts;
         public decimal? ConstructionRepairsRehabilitationCosts { get { return _constructionRepairsRehabilitationCosts; } set { _constructionRepairsRehabilitationCosts = value; } }
-        private Value<decimal?> _contingencyReserveCostsAmount;
+        private DirtyValue<decimal?> _contingencyReserveCostsAmount;
         public decimal? ContingencyReserveCostsAmount { get { return _contingencyReserveCostsAmount; } set { _contingencyReserveCostsAmount = value; } }
-        private Value<decimal?> _contingencyReserveCostsPercent;
+        private DirtyValue<decimal?> _contingencyReserveCostsPercent;
         public decimal? ContingencyReserveCostsPercent { get { return _contingencyReserveCostsPercent; } set { _contingencyReserveCostsPercent = value; } }
-        private Value<decimal?> _contractSalesPrice;
+        private DirtyValue<decimal?> _contractSalesPrice;
         public decimal? ContractSalesPrice { get { return _contractSalesPrice; } set { _contractSalesPrice = value; } }
-        private Value<string> _criteriaForAppropriateLTVFactor;
+        private DirtyValue<string> _criteriaForAppropriateLTVFactor;
         public string CriteriaForAppropriateLTVFactor { get { return _criteriaForAppropriateLTVFactor; } set { _criteriaForAppropriateLTVFactor = value; } }
-        private Value<string> _dealerContractorAddress;
+        private DirtyValue<string> _dealerContractorAddress;
         public string DealerContractorAddress { get { return _dealerContractorAddress; } set { _dealerContractorAddress = value; } }
-        private Value<string> _dealerContractorCity;
+        private DirtyValue<string> _dealerContractorCity;
         public string DealerContractorCity { get { return _dealerContractorCity; } set { _dealerContractorCity = value; } }
-        private Value<string> _dealerContractorName;
+        private DirtyValue<string> _dealerContractorName;
         public string DealerContractorName { get { return _dealerContractorName; } set { _dealerContractorName = value; } }
-        private Value<string> _dealerContractorPostalCode;
+        private DirtyValue<string> _dealerContractorPostalCode;
         public string DealerContractorPostalCode { get { return _dealerContractorPostalCode; } set { _dealerContractorPostalCode = value; } }
-        private Value<string> _dealerContractorState;
+        private DirtyValue<string> _dealerContractorState;
         public string DealerContractorState { get { return _dealerContractorState; } set { _dealerContractorState = value; } }
-        private Value<decimal?> _discountPointsAmount;
+        private DirtyValue<decimal?> _discountPointsAmount;
         public decimal? DiscountPointsAmount { get { return _discountPointsAmount; } set { _discountPointsAmount = value; } }
-        private Value<decimal?> _discountPointsPercent;
+        private DirtyValue<decimal?> _discountPointsPercent;
         public decimal? DiscountPointsPercent { get { return _discountPointsPercent; } set { _discountPointsPercent = value; } }
-        private Value<bool?> _eEMIndicator;
+        private DirtyValue<bool?> _eEMIndicator;
         public bool? EEMIndicator { get { return _eEMIndicator; } set { _eEMIndicator = value; } }
-        private Value<decimal?> _energyEfficientMortgageAmount;
+        private DirtyValue<decimal?> _energyEfficientMortgageAmount;
         public decimal? EnergyEfficientMortgageAmount { get { return _energyEfficientMortgageAmount; } set { _energyEfficientMortgageAmount = value; } }
-        private Value<string> _escrowCommitment;
+        private DirtyValue<string> _escrowCommitment;
         public string EscrowCommitment { get { return _escrowCommitment; } set { _escrowCommitment = value; } }
-        private Value<decimal?> _escrowShortages;
+        private DirtyValue<decimal?> _escrowShortages;
         public decimal? EscrowShortages { get { return _escrowShortages; } set { _escrowShortages = value; } }
-        private Value<decimal?> _existing203KDebtTotal;
+        private DirtyValue<decimal?> _existing203KDebtTotal;
         public decimal? Existing203KDebtTotal { get { return _existing203KDebtTotal; } set { _existing203KDebtTotal = value; } }
-        private Value<bool?> _existingDebt;
+        private DirtyValue<bool?> _existingDebt;
         public bool? ExistingDebt { get { return _existingDebt; } set { _existingDebt = value; } }
-        private Value<decimal?> _existingDebtPlusRehabCosts;
+        private DirtyValue<decimal?> _existingDebtPlusRehabCosts;
         public decimal? ExistingDebtPlusRehabCosts { get { return _existingDebtPlusRehabCosts; } set { _existingDebtPlusRehabCosts = value; } }
-        private Value<decimal?> _existingDebtPlusRehabCostsPlusNewLoanFees;
+        private DirtyValue<decimal?> _existingDebtPlusRehabCostsPlusNewLoanFees;
         public decimal? ExistingDebtPlusRehabCostsPlusNewLoanFees { get { return _existingDebtPlusRehabCostsPlusNewLoanFees; } set { _existingDebtPlusRehabCostsPlusNewLoanFees = value; } }
-        private Value<decimal?> _feasibilityStudyWhenNecessary;
+        private DirtyValue<decimal?> _feasibilityStudyWhenNecessary;
         public decimal? FeasibilityStudyWhenNecessary { get { return _feasibilityStudyWhenNecessary; } set { _feasibilityStudyWhenNecessary = value; } }
-        private Value<decimal?> _feesAssociatedWithNewLoan;
+        private DirtyValue<decimal?> _feesAssociatedWithNewLoan;
         public decimal? FeesAssociatedWithNewLoan { get { return _feesAssociatedWithNewLoan; } set { _feesAssociatedWithNewLoan = value; } }
-        private Value<decimal?> _fHA203kB10SubTotal;
+        private DirtyValue<decimal?> _fHA203kB10SubTotal;
         public decimal? FHA203kB10SubTotal { get { return _fHA203kB10SubTotal; } set { _fHA203kB10SubTotal = value; } }
-        private Value<string> _fHA203kRemarks;
+        private DirtyValue<string> _fHA203kRemarks;
         public string FHA203kRemarks { get { return _fHA203kRemarks; } set { _fHA203kRemarks = value; } }
-        private Value<string> _fHAStreamlineType;
+        private DirtyValue<string> _fHAStreamlineType;
         public string FHAStreamlineType { get { return _fHAStreamlineType; } set { _fHAStreamlineType = value; } }
-        private Value<decimal?> _finalBaseMortgageAmount;
+        private DirtyValue<decimal?> _finalBaseMortgageAmount;
         public decimal? FinalBaseMortgageAmount { get { return _finalBaseMortgageAmount; } set { _finalBaseMortgageAmount = value; } }
-        private Value<decimal?> _financeableMortgageFeesIfCharged;
+        private DirtyValue<decimal?> _financeableMortgageFeesIfCharged;
         public decimal? FinanceableMortgageFeesIfCharged { get { return _financeableMortgageFeesIfCharged; } set { _financeableMortgageFeesIfCharged = value; } }
-        private Value<bool?> _haveOtherPendingApplicationForFHA;
+        private DirtyValue<bool?> _haveOtherPendingApplicationForFHA;
         public bool? HaveOtherPendingApplicationForFHA { get { return _haveOtherPendingApplicationForFHA; } set { _haveOtherPendingApplicationForFHA = value; } }
-        private Value<bool?> _hUDOwned;
+        private DirtyValue<bool?> _hUDOwned;
         public bool? HUDOwned { get { return _hUDOwned; } set { _hUDOwned = value; } }
-        private Value<bool?> _hUDREOIndicator;
+        private DirtyValue<bool?> _hUDREOIndicator;
         public bool? HUDREOIndicator { get { return _hUDREOIndicator; } set { _hUDREOIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _independentConsultantFee;
+        private DirtyValue<decimal?> _independentConsultantFee;
         public decimal? IndependentConsultantFee { get { return _independentConsultantFee; } set { _independentConsultantFee = value; } }
-        private Value<decimal?> _initialBaseMortgageAmountPlusEEMImprovementAmount;
+        private DirtyValue<decimal?> _initialBaseMortgageAmountPlusEEMImprovementAmount;
         public decimal? InitialBaseMortgageAmountPlusEEMImprovementAmount { get { return _initialBaseMortgageAmountPlusEEMImprovementAmount; } set { _initialBaseMortgageAmountPlusEEMImprovementAmount = value; } }
-        private Value<decimal?> _initialDrawAtClosingArchitecturalorEngineeringFees;
+        private DirtyValue<decimal?> _initialDrawAtClosingArchitecturalorEngineeringFees;
         public decimal? InitialDrawAtClosingArchitecturalorEngineeringFees { get { return _initialDrawAtClosingArchitecturalorEngineeringFees; } set { _initialDrawAtClosingArchitecturalorEngineeringFees = value; } }
-        private Value<decimal?> _initialDrawAtClosingConsultantFees;
+        private DirtyValue<decimal?> _initialDrawAtClosingConsultantFees;
         public decimal? InitialDrawAtClosingConsultantFees { get { return _initialDrawAtClosingConsultantFees; } set { _initialDrawAtClosingConsultantFees = value; } }
-        private Value<decimal?> _initialDrawAtClosingPermitFees;
+        private DirtyValue<decimal?> _initialDrawAtClosingPermitFees;
         public decimal? InitialDrawAtClosingPermitFees { get { return _initialDrawAtClosingPermitFees; } set { _initialDrawAtClosingPermitFees = value; } }
-        private Value<decimal?> _initialDrawAtClosingTotal;
+        private DirtyValue<decimal?> _initialDrawAtClosingTotal;
         public decimal? InitialDrawAtClosingTotal { get { return _initialDrawAtClosingTotal; } set { _initialDrawAtClosingTotal = value; } }
-        private Value<decimal?> _inspectionFeeAmount;
+        private DirtyValue<decimal?> _inspectionFeeAmount;
         public decimal? InspectionFeeAmount { get { return _inspectionFeeAmount; } set { _inspectionFeeAmount = value; } }
-        private Value<decimal?> _inspectionFeesDuringRehabilitation;
+        private DirtyValue<decimal?> _inspectionFeesDuringRehabilitation;
         public decimal? InspectionFeesDuringRehabilitation { get { return _inspectionFeesDuringRehabilitation; } set { _inspectionFeesDuringRehabilitation = value; } }
-        private Value<int?> _inspectionFeeTimes;
+        private DirtyValue<int?> _inspectionFeeTimes;
         public int? InspectionFeeTimes { get { return _inspectionFeeTimes; } set { _inspectionFeeTimes = value; } }
-        private Value<decimal?> _interestDueonExistingMortgage;
+        private DirtyValue<decimal?> _interestDueonExistingMortgage;
         public decimal? InterestDueonExistingMortgage { get { return _interestDueonExistingMortgage; } set { _interestDueonExistingMortgage = value; } }
-        private Value<decimal?> _lateCharges;
+        private DirtyValue<decimal?> _lateCharges;
         public decimal? LateCharges { get { return _lateCharges; } set { _lateCharges = value; } }
-        private Value<bool?> _lDPGSAForBorrower;
+        private DirtyValue<bool?> _lDPGSAForBorrower;
         public bool? LDPGSAForBorrower { get { return _lDPGSAForBorrower; } set { _lDPGSAForBorrower = value; } }
-        private Value<bool?> _lDPGSAForCoBorrower;
+        private DirtyValue<bool?> _lDPGSAForCoBorrower;
         public bool? LDPGSAForCoBorrower { get { return _lDPGSAForCoBorrower; } set { _lDPGSAForCoBorrower = value; } }
-        private Value<bool?> _leasedFromSomeoneElse;
+        private DirtyValue<bool?> _leasedFromSomeoneElse;
         public bool? LeasedFromSomeoneElse { get { return _leasedFromSomeoneElse; } set { _leasedFromSomeoneElse = value; } }
-        private Value<DateTime?> _leaseExpiradionDate;
+        private DirtyValue<DateTime?> _leaseExpiradionDate;
         public DateTime? LeaseExpiradionDate { get { return _leaseExpiradionDate; } set { _leaseExpiradionDate = value; } }
-        private Value<decimal?> _leaseMonthlyPayment;
+        private DirtyValue<decimal?> _leaseMonthlyPayment;
         public decimal? LeaseMonthlyPayment { get { return _leaseMonthlyPayment; } set { _leaseMonthlyPayment = value; } }
-        private Value<decimal?> _lessAllowableDownpayment;
+        private DirtyValue<decimal?> _lessAllowableDownpayment;
         public decimal? LessAllowableDownpayment { get { return _lessAllowableDownpayment; } set { _lessAllowableDownpayment = value; } }
-        private Value<decimal?> _lesserOf3AOr3B;
+        private DirtyValue<decimal?> _lesserOf3AOr3B;
         public decimal? LesserOf3AOr3B { get { return _lesserOf3AOr3B; } set { _lesserOf3AOr3B = value; } }
-        private Value<decimal?> _lesserOf3AOr3BMultiply3F;
+        private DirtyValue<decimal?> _lesserOf3AOr3BMultiply3F;
         public decimal? LesserOf3AOr3BMultiply3F { get { return _lesserOf3AOr3BMultiply3F; } set { _lesserOf3AOr3BMultiply3F = value; } }
-        private Value<decimal?> _lesserOfMaximumFinanceableSolarOrWindEnergyAmount;
+        private DirtyValue<decimal?> _lesserOfMaximumFinanceableSolarOrWindEnergyAmount;
         public decimal? LesserOfMaximumFinanceableSolarOrWindEnergyAmount { get { return _lesserOfMaximumFinanceableSolarOrWindEnergyAmount; } set { _lesserOfMaximumFinanceableSolarOrWindEnergyAmount = value; } }
-        private Value<decimal?> _lesserOfSalesPrice;
+        private DirtyValue<decimal?> _lesserOfSalesPrice;
         public decimal? LesserOfSalesPrice { get { return _lesserOfSalesPrice; } set { _lesserOfSalesPrice = value; } }
-        private Value<decimal?> _lesserOfSumAmount;
+        private DirtyValue<decimal?> _lesserOfSumAmount;
         public decimal? LesserOfSumAmount { get { return _lesserOfSumAmount; } set { _lesserOfSumAmount = value; } }
-        private Value<decimal?> _lesserOfSumAsIs;
+        private DirtyValue<decimal?> _lesserOfSumAsIs;
         public decimal? LesserOfSumAsIs { get { return _lesserOfSumAsIs; } set { _lesserOfSumAsIs = value; } }
-        private Value<decimal?> _lesserOfSumPercent;
+        private DirtyValue<decimal?> _lesserOfSumPercent;
         public decimal? LesserOfSumPercent { get { return _lesserOfSumPercent; } set { _lesserOfSumPercent = value; } }
-        private Value<decimal?> _lessLeadBasedPaintCredit;
+        private DirtyValue<decimal?> _lessLeadBasedPaintCredit;
         public decimal? LessLeadBasedPaintCredit { get { return _lessLeadBasedPaintCredit; } set { _lessLeadBasedPaintCredit = value; } }
-        private Value<bool?> _limitedProgram;
+        private DirtyValue<bool?> _limitedProgram;
         public bool? LimitedProgram { get { return _limitedProgram; } set { _limitedProgram = value; } }
-        private Value<bool?> _loanFor203KIndicator;
+        private DirtyValue<bool?> _loanFor203KIndicator;
         public bool? LoanFor203KIndicator { get { return _loanFor203KIndicator; } set { _loanFor203KIndicator = value; } }
-        private Value<string> _loanPurpose;
+        private DirtyValue<string> _loanPurpose;
         public string LoanPurpose { get { return _loanPurpose; } set { _loanPurpose = value; } }
-        private Value<decimal?> _materialCostsOrderedPrepaidByBorrowerContractor;
+        private DirtyValue<decimal?> _materialCostsOrderedPrepaidByBorrowerContractor;
         public decimal? MaterialCostsOrderedPrepaidByBorrowerContractor { get { return _materialCostsOrderedPrepaidByBorrowerContractor; } set { _materialCostsOrderedPrepaidByBorrowerContractor = value; } }
-        private Value<decimal?> _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent;
+        private DirtyValue<decimal?> _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent;
         public decimal? MaterialCostsOrderedPrepaidByBorrowerContractorAfter50Percent { get { return _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent; } set { _materialCostsOrderedPrepaidByBorrowerContractorAfter50Percent = value; } }
-        private Value<decimal?> _maximumMortgageWithUFMIP;
+        private DirtyValue<decimal?> _maximumMortgageWithUFMIP;
         public decimal? MaximumMortgageWithUFMIP { get { return _maximumMortgageWithUFMIP; } set { _maximumMortgageWithUFMIP = value; } }
-        private Value<decimal?> _mIPDueOnExistingMortgage;
+        private DirtyValue<decimal?> _mIPDueOnExistingMortgage;
         public decimal? MIPDueOnExistingMortgage { get { return _mIPDueOnExistingMortgage; } set { _mIPDueOnExistingMortgage = value; } }
-        private Value<decimal?> _mIPLTV;
+        private DirtyValue<decimal?> _mIPLTV;
         public decimal? MIPLTV { get { return _mIPLTV; } set { _mIPLTV = value; } }
-        private Value<bool?> _mtgOrDeedOfTrusOnProperty;
+        private DirtyValue<bool?> _mtgOrDeedOfTrusOnProperty;
         public bool? MtgOrDeedOfTrusOnProperty { get { return _mtgOrDeedOfTrusOnProperty; } set { _mtgOrDeedOfTrusOnProperty = value; } }
-        private Value<decimal?> _mtgPaymentEscrowedAmount;
+        private DirtyValue<decimal?> _mtgPaymentEscrowedAmount;
         public decimal? MtgPaymentEscrowedAmount { get { return _mtgPaymentEscrowedAmount; } set { _mtgPaymentEscrowedAmount = value; } }
-        private Value<int?> _mtgPaymentEscrowedTimes;
+        private DirtyValue<int?> _mtgPaymentEscrowedTimes;
         public int? MtgPaymentEscrowedTimes { get { return _mtgPaymentEscrowedTimes; } set { _mtgPaymentEscrowedTimes = value; } }
-        private Value<decimal?> _nationwideMortgageLimit;
+        private DirtyValue<decimal?> _nationwideMortgageLimit;
         public decimal? NationwideMortgageLimit { get { return _nationwideMortgageLimit; } set { _nationwideMortgageLimit = value; } }
-        private Value<decimal?> _nationwideMortgageLimitAfter120Percent;
+        private DirtyValue<decimal?> _nationwideMortgageLimitAfter120Percent;
         public decimal? NationwideMortgageLimitAfter120Percent { get { return _nationwideMortgageLimitAfter120Percent; } set { _nationwideMortgageLimitAfter120Percent = value; } }
-        private Value<bool?> _newResidential;
+        private DirtyValue<bool?> _newResidential;
         public bool? NewResidential { get { return _newResidential; } set { _newResidential = value; } }
-        private Value<string> _nonresidentialTypeOfUse;
+        private DirtyValue<string> _nonresidentialTypeOfUse;
         public string NonresidentialTypeOfUse { get { return _nonresidentialTypeOfUse; } set { _nonresidentialTypeOfUse = value; } }
-        private Value<int?> _numberOfHistoricUnits;
+        private DirtyValue<int?> _numberOfHistoricUnits;
         public int? NumberOfHistoricUnits { get { return _numberOfHistoricUnits; } set { _numberOfHistoricUnits = value; } }
-        private Value<int?> _numberOfMultifamilyUnits;
+        private DirtyValue<int?> _numberOfMultifamilyUnits;
         public int? NumberOfMultifamilyUnits { get { return _numberOfMultifamilyUnits; } set { _numberOfMultifamilyUnits = value; } }
-        private Value<string> _otherDescription;
+        private DirtyValue<string> _otherDescription;
         public string OtherDescription { get { return _otherDescription; } set { _otherDescription = value; } }
-        private Value<bool?> _ownedByBorrower;
+        private DirtyValue<bool?> _ownedByBorrower;
         public bool? OwnedByBorrower { get { return _ownedByBorrower; } set { _ownedByBorrower = value; } }
-        private Value<decimal?> _percentAfterImprovedValue;
+        private DirtyValue<decimal?> _percentAfterImprovedValue;
         public decimal? PercentAfterImprovedValue { get { return _percentAfterImprovedValue; } set { _percentAfterImprovedValue = value; } }
-        private Value<decimal?> _permitsAndOtherFee;
+        private DirtyValue<decimal?> _permitsAndOtherFee;
         public decimal? PermitsAndOtherFee { get { return _permitsAndOtherFee; } set { _permitsAndOtherFee = value; } }
-        private Value<decimal?> _planReviewerFeeAddition;
+        private DirtyValue<decimal?> _planReviewerFeeAddition;
         public decimal? PlanReviewerFeeAddition { get { return _planReviewerFeeAddition; } set { _planReviewerFeeAddition = value; } }
-        private Value<decimal?> _planReviewerFeeAmount;
+        private DirtyValue<decimal?> _planReviewerFeeAmount;
         public decimal? PlanReviewerFeeAmount { get { return _planReviewerFeeAmount; } set { _planReviewerFeeAmount = value; } }
-        private Value<int?> _planReviewerFeeMiles;
+        private DirtyValue<int?> _planReviewerFeeMiles;
         public int? PlanReviewerFeeMiles { get { return _planReviewerFeeMiles; } set { _planReviewerFeeMiles = value; } }
-        private Value<decimal?> _prepaymentPenalties;
+        private DirtyValue<decimal?> _prepaymentPenalties;
         public decimal? PrepaymentPenalties { get { return _prepaymentPenalties; } set { _prepaymentPenalties = value; } }
-        private Value<string> _propertyOwnerAddress;
+        private DirtyValue<string> _propertyOwnerAddress;
         public string PropertyOwnerAddress { get { return _propertyOwnerAddress; } set { _propertyOwnerAddress = value; } }
-        private Value<string> _propertyOwnerCity;
+        private DirtyValue<string> _propertyOwnerCity;
         public string PropertyOwnerCity { get { return _propertyOwnerCity; } set { _propertyOwnerCity = value; } }
-        private Value<string> _propertyOwnerName;
+        private DirtyValue<string> _propertyOwnerName;
         public string PropertyOwnerName { get { return _propertyOwnerName; } set { _propertyOwnerName = value; } }
-        private Value<string> _propertyOwnerPostalCode;
+        private DirtyValue<string> _propertyOwnerPostalCode;
         public string PropertyOwnerPostalCode { get { return _propertyOwnerPostalCode; } set { _propertyOwnerPostalCode = value; } }
-        private Value<string> _propertyOwnerState;
+        private DirtyValue<string> _propertyOwnerState;
         public string PropertyOwnerState { get { return _propertyOwnerState; } set { _propertyOwnerState = value; } }
-        private Value<string> _propertyToBeImproved;
+        private DirtyValue<string> _propertyToBeImproved;
         public string PropertyToBeImproved { get { return _propertyToBeImproved; } set { _propertyToBeImproved = value; } }
-        private Value<string> _propertyType;
+        private DirtyValue<string> _propertyType;
         public string PropertyType { get { return _propertyType; } set { _propertyType = value; } }
-        private Value<DateTime?> _purchaseDate;
+        private DirtyValue<DateTime?> _purchaseDate;
         public DateTime? PurchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; } }
-        private Value<bool?> _purchasedOnContract;
+        private DirtyValue<bool?> _purchasedOnContract;
         public bool? PurchasedOnContract { get { return _purchasedOnContract; } set { _purchasedOnContract = value; } }
-        private Value<decimal?> _purchaseMaximumMortgageAmount;
+        private DirtyValue<decimal?> _purchaseMaximumMortgageAmount;
         public decimal? PurchaseMaximumMortgageAmount { get { return _purchaseMaximumMortgageAmount; } set { _purchaseMaximumMortgageAmount = value; } }
-        private Value<decimal?> _purchaseMaximumMortgagePercent;
+        private DirtyValue<decimal?> _purchaseMaximumMortgagePercent;
         public decimal? PurchaseMaximumMortgagePercent { get { return _purchaseMaximumMortgagePercent; } set { _purchaseMaximumMortgagePercent = value; } }
-        private Value<decimal?> _purchasePriceLessInducementToPurchase;
+        private DirtyValue<decimal?> _purchasePriceLessInducementToPurchase;
         public decimal? PurchasePriceLessInducementToPurchase { get { return _purchasePriceLessInducementToPurchase; } set { _purchasePriceLessInducementToPurchase = value; } }
-        private Value<decimal?> _refinanceMaximumMortgageAmount;
+        private DirtyValue<decimal?> _refinanceMaximumMortgageAmount;
         public decimal? RefinanceMaximumMortgageAmount { get { return _refinanceMaximumMortgageAmount; } set { _refinanceMaximumMortgageAmount = value; } }
-        private Value<bool?> _refinancingATitleILoan;
+        private DirtyValue<bool?> _refinancingATitleILoan;
         public bool? RefinancingATitleILoan { get { return _refinancingATitleILoan; } set { _refinancingATitleILoan = value; } }
-        private Value<decimal?> _rehabilitationEscrowAccount;
+        private DirtyValue<decimal?> _rehabilitationEscrowAccount;
         public decimal? RehabilitationEscrowAccount { get { return _rehabilitationEscrowAccount; } set { _rehabilitationEscrowAccount = value; } }
-        private Value<decimal?> _rehabilitationEscrowAmountBalanceForFutureDraws;
+        private DirtyValue<decimal?> _rehabilitationEscrowAmountBalanceForFutureDraws;
         public decimal? RehabilitationEscrowAmountBalanceForFutureDraws { get { return _rehabilitationEscrowAmountBalanceForFutureDraws; } set { _rehabilitationEscrowAmountBalanceForFutureDraws = value; } }
-        private Value<decimal?> _rentalCashFlowBalance;
+        private DirtyValue<decimal?> _rentalCashFlowBalance;
         public decimal? RentalCashFlowBalance { get { return _rentalCashFlowBalance; } set { _rentalCashFlowBalance = value; } }
-        private Value<string> _residencyType;
+        private DirtyValue<string> _residencyType;
         public string ResidencyType { get { return _residencyType; } set { _residencyType = value; } }
-        private Value<string> _riskClass;
+        private DirtyValue<string> _riskClass;
         public string RiskClass { get { return _riskClass; } set { _riskClass = value; } }
-        private Value<bool?> _scoredByTotal;
+        private DirtyValue<bool?> _scoredByTotal;
         public bool? ScoredByTotal { get { return _scoredByTotal; } set { _scoredByTotal = value; } }
         private DirtyList<SecondaryFinancingProvider> _secondaryFinancingProviders;
         public IList<SecondaryFinancingProvider> SecondaryFinancingProviders { get { var v = _secondaryFinancingProviders; return v ?? Interlocked.CompareExchange(ref _secondaryFinancingProviders, (v = new DirtyList<SecondaryFinancingProvider>()), null) ?? v; } set { _secondaryFinancingProviders = new DirtyList<SecondaryFinancingProvider>(value); } }
-        private Value<decimal?> _sellerContributionRate;
+        private DirtyValue<decimal?> _sellerContributionRate;
         public decimal? SellerContributionRate { get { return _sellerContributionRate; } set { _sellerContributionRate = value; } }
-        private Value<bool?> _simpleRefinance;
+        private DirtyValue<bool?> _simpleRefinance;
         public bool? SimpleRefinance { get { return _simpleRefinance; } set { _simpleRefinance = value; } }
-        private Value<decimal?> _statutoryInvestment;
+        private DirtyValue<decimal?> _statutoryInvestment;
         public decimal? StatutoryInvestment { get { return _statutoryInvestment; } set { _statutoryInvestment = value; } }
-        private Value<decimal?> _step2EPlusStep1E;
+        private DirtyValue<decimal?> _step2EPlusStep1E;
         public decimal? Step2EPlusStep1E { get { return _step2EPlusStep1E; } set { _step2EPlusStep1E = value; } }
-        private Value<bool?> _streamlined;
+        private DirtyValue<bool?> _streamlined;
         public bool? Streamlined { get { return _streamlined; } set { _streamlined = value; } }
-        private Value<decimal?> _subTotalForEscrowAccount;
+        private DirtyValue<decimal?> _subTotalForEscrowAccount;
         public decimal? SubTotalForEscrowAccount { get { return _subTotalForEscrowAccount; } set { _subTotalForEscrowAccount = value; } }
-        private Value<decimal?> _subTotalForReleaseAtClosing;
+        private DirtyValue<decimal?> _subTotalForReleaseAtClosing;
         public decimal? SubTotalForReleaseAtClosing { get { return _subTotalForReleaseAtClosing; } set { _subTotalForReleaseAtClosing = value; } }
-        private Value<decimal?> _sumForInvestor;
+        private DirtyValue<decimal?> _sumForInvestor;
         public decimal? SumForInvestor { get { return _sumForInvestor; } set { _sumForInvestor = value; } }
-        private Value<decimal?> _sumForOwnerOccupied;
+        private DirtyValue<decimal?> _sumForOwnerOccupied;
         public decimal? SumForOwnerOccupied { get { return _sumForOwnerOccupied; } set { _sumForOwnerOccupied = value; } }
-        private Value<decimal?> _sumOfExistingDebt;
+        private DirtyValue<decimal?> _sumOfExistingDebt;
         public decimal? SumOfExistingDebt { get { return _sumOfExistingDebt; } set { _sumOfExistingDebt = value; } }
-        private Value<decimal?> _suplementalOriginationFee;
+        private DirtyValue<decimal?> _suplementalOriginationFee;
         public decimal? SuplementalOriginationFee { get { return _suplementalOriginationFee; } set { _suplementalOriginationFee = value; } }
-        private Value<decimal?> _title1LoanBalance;
+        private DirtyValue<decimal?> _title1LoanBalance;
         public decimal? Title1LoanBalance { get { return _title1LoanBalance; } set { _title1LoanBalance = value; } }
-        private Value<string> _title1LoanNumber;
+        private DirtyValue<string> _title1LoanNumber;
         public string Title1LoanNumber { get { return _title1LoanNumber; } set { _title1LoanNumber = value; } }
-        private Value<string> _title1LoanWithWhom;
+        private DirtyValue<string> _title1LoanWithWhom;
         public string Title1LoanWithWhom { get { return _title1LoanWithWhom; } set { _title1LoanWithWhom = value; } }
-        private Value<decimal?> _titleUpdateFeeAmount;
+        private DirtyValue<decimal?> _titleUpdateFeeAmount;
         public decimal? TitleUpdateFeeAmount { get { return _titleUpdateFeeAmount; } set { _titleUpdateFeeAmount = value; } }
-        private Value<decimal?> _titleUpdateFees;
+        private DirtyValue<decimal?> _titleUpdateFees;
         public decimal? TitleUpdateFees { get { return _titleUpdateFees; } set { _titleUpdateFees = value; } }
-        private Value<int?> _titleUpdateFeeTimes;
+        private DirtyValue<int?> _titleUpdateFeeTimes;
         public int? TitleUpdateFeeTimes { get { return _titleUpdateFeeTimes; } set { _titleUpdateFeeTimes = value; } }
-        private Value<decimal?> _totalCostsOfRepairsInA6;
+        private DirtyValue<decimal?> _totalCostsOfRepairsInA6;
         public decimal? TotalCostsOfRepairsInA6 { get { return _totalCostsOfRepairsInA6; } set { _totalCostsOfRepairsInA6 = value; } }
-        private Value<decimal?> _totalEscrowCommitment;
+        private DirtyValue<decimal?> _totalEscrowCommitment;
         public decimal? TotalEscrowCommitment { get { return _totalEscrowCommitment; } set { _totalEscrowCommitment = value; } }
-        private Value<decimal?> _totalEscrowedFunds;
+        private DirtyValue<decimal?> _totalEscrowedFunds;
         public decimal? TotalEscrowedFunds { get { return _totalEscrowedFunds; } set { _totalEscrowedFunds = value; } }
-        private Value<decimal?> _totalFixedUnpaidBalance;
+        private DirtyValue<decimal?> _totalFixedUnpaidBalance;
         public decimal? TotalFixedUnpaidBalance { get { return _totalFixedUnpaidBalance; } set { _totalFixedUnpaidBalance = value; } }
-        private Value<decimal?> _totalForBorrowerEstimatedProfit;
+        private DirtyValue<decimal?> _totalForBorrowerEstimatedProfit;
         public decimal? TotalForBorrowerEstimatedProfit { get { return _totalForBorrowerEstimatedProfit; } set { _totalForBorrowerEstimatedProfit = value; } }
-        private Value<decimal?> _totalForInspectionAndTitleFee;
+        private DirtyValue<decimal?> _totalForInspectionAndTitleFee;
         public decimal? TotalForInspectionAndTitleFee { get { return _totalForInspectionAndTitleFee; } set { _totalForInspectionAndTitleFee = value; } }
-        private Value<decimal?> _totalForLesserOfSumAsIs;
+        private DirtyValue<decimal?> _totalForLesserOfSumAsIs;
         public decimal? TotalForLesserOfSumAsIs { get { return _totalForLesserOfSumAsIs; } set { _totalForLesserOfSumAsIs = value; } }
-        private Value<decimal?> _totalForMtgPaymentEscrowed;
+        private DirtyValue<decimal?> _totalForMtgPaymentEscrowed;
         public decimal? TotalForMtgPaymentEscrowed { get { return _totalForMtgPaymentEscrowed; } set { _totalForMtgPaymentEscrowed = value; } }
-        private Value<decimal?> _totalForPlanReviewerFee;
+        private DirtyValue<decimal?> _totalForPlanReviewerFee;
         public decimal? TotalForPlanReviewerFee { get { return _totalForPlanReviewerFee; } set { _totalForPlanReviewerFee = value; } }
-        private Value<decimal?> _totalForRehabilitationCost;
+        private DirtyValue<decimal?> _totalForRehabilitationCost;
         public decimal? TotalForRehabilitationCost { get { return _totalForRehabilitationCost; } set { _totalForRehabilitationCost = value; } }
-        private Value<decimal?> _totalRehabilitationCosts;
+        private DirtyValue<decimal?> _totalRehabilitationCosts;
         public decimal? TotalRehabilitationCosts { get { return _totalRehabilitationCosts; } set { _totalRehabilitationCosts = value; } }
-        private Value<decimal?> _totalRehabilitationCostsFeesReserves;
+        private DirtyValue<decimal?> _totalRehabilitationCostsFeesReserves;
         public decimal? TotalRehabilitationCostsFeesReserves { get { return _totalRehabilitationCostsFeesReserves; } set { _totalRehabilitationCostsFeesReserves = value; } }
-        private Value<decimal?> _unpaidPrincipalBalanceFirstLien;
+        private DirtyValue<decimal?> _unpaidPrincipalBalanceFirstLien;
         public decimal? UnpaidPrincipalBalanceFirstLien { get { return _unpaidPrincipalBalanceFirstLien; } set { _unpaidPrincipalBalanceFirstLien = value; } }
-        private Value<decimal?> _unpaidPrincipalBalanceOfAnyJuniorLiens;
+        private DirtyValue<decimal?> _unpaidPrincipalBalanceOfAnyJuniorLiens;
         public decimal? UnpaidPrincipalBalanceOfAnyJuniorLiens { get { return _unpaidPrincipalBalanceOfAnyJuniorLiens; } set { _unpaidPrincipalBalanceOfAnyJuniorLiens = value; } }
-        private Value<decimal?> _unpaidPrincipalBalanceOfPurchaseJuniorLiens;
+        private DirtyValue<decimal?> _unpaidPrincipalBalanceOfPurchaseJuniorLiens;
         public decimal? UnpaidPrincipalBalanceOfPurchaseJuniorLiens { get { return _unpaidPrincipalBalanceOfPurchaseJuniorLiens; } set { _unpaidPrincipalBalanceOfPurchaseJuniorLiens = value; } }
-        private Value<decimal?> _valueEstablished;
+        private DirtyValue<decimal?> _valueEstablished;
         public decimal? ValueEstablished { get { return _valueEstablished; } set { _valueEstablished = value; } }
-        private Value<decimal?> _windEnergySystemActualCost;
+        private DirtyValue<decimal?> _windEnergySystemActualCost;
         public decimal? WindEnergySystemActualCost { get { return _windEnergySystemActualCost; } set { _windEnergySystemActualCost = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

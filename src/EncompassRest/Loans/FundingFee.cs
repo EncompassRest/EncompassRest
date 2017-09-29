@@ -8,27 +8,27 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FundingFee : IDirty
     {
-        private Value<bool?> _balanceChecked;
+        private DirtyValue<bool?> _balanceChecked;
         public bool? BalanceChecked { get { return _balanceChecked; } set { _balanceChecked = value; } }
-        private Value<string> _cdLineId;
+        private DirtyValue<string> _cdLineId;
         public string CdLineId { get { return _cdLineId; } set { _cdLineId = value; } }
-        private Value<string> _feeDescription;
+        private DirtyValue<string> _feeDescription;
         public string FeeDescription { get { return _feeDescription; } set { _feeDescription = value; } }
-        private Value<string> _feeDescription2015;
+        private DirtyValue<string> _feeDescription2015;
         public string FeeDescription2015 { get { return _feeDescription2015; } set { _feeDescription2015 = value; } }
-        private Value<string> _lineId;
+        private DirtyValue<string> _lineId;
         public string LineId { get { return _lineId; } set { _lineId = value; } }
-        private Value<int?> _lineNumber;
+        private DirtyValue<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private Value<string> _paidBy;
+        private DirtyValue<string> _paidBy;
         public string PaidBy { get { return _paidBy; } set { _paidBy = value; } }
-        private Value<string> _paidTo;
+        private DirtyValue<string> _paidTo;
         public string PaidTo { get { return _paidTo; } set { _paidTo = value; } }
-        private Value<string> _payee;
+        private DirtyValue<string> _payee;
         public string Payee { get { return _payee; } set { _payee = value; } }
-        private Value<string> _pocPaidBy;
+        private DirtyValue<string> _pocPaidBy;
         public string PocPaidBy { get { return _pocPaidBy; } set { _pocPaidBy = value; } }
-        private Value<string> _ptcPaidBy;
+        private DirtyValue<string> _ptcPaidBy;
         public string PtcPaidBy { get { return _ptcPaidBy; } set { _ptcPaidBy = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

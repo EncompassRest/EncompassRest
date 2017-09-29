@@ -10,41 +10,41 @@ namespace EncompassRest.Loans
     {
         private DirtyList<LogAlert> _alerts;
         public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
-        private Value<string> _barcodePage;
+        private DirtyValue<string> _barcodePage;
         public string BarcodePage { get { return _barcodePage; } set { _barcodePage = value; } }
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<string> _dateReceived;
+        private DirtyValue<string> _dateReceived;
         public string DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<string> _documentId;
+        private DirtyValue<string> _documentId;
         public string DocumentId { get { return _documentId; } set { _documentId = value; } }
-        private Value<string> _downloadId;
+        private DirtyValue<string> _downloadId;
         public string DownloadId { get { return _downloadId; } set { _downloadId = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<string> _fileSource;
+        private DirtyValue<string> _fileSource;
         public string FileSource { get { return _fileSource; } set { _fileSource = value; } }
-        private Value<string> _fileType;
+        private DirtyValue<string> _fileType;
         public string FileType { get { return _fileType; } set { _fileType = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<string> _receivedBy;
+        private DirtyValue<string> _receivedBy;
         public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
-        private Value<string> _sender;
+        private DirtyValue<string> _sender;
         public string Sender { get { return _sender; } set { _sender = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,87 +8,87 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FeeVarianceOther : IDirty
     {
-        private Value<decimal?> _appliedCureAmount;
+        private DirtyValue<decimal?> _appliedCureAmount;
         public decimal? AppliedCureAmount { get { return _appliedCureAmount; } set { _appliedCureAmount = value; } }
-        private Value<string> _cannotDecreaseCDBaselineGuid;
+        private DirtyValue<string> _cannotDecreaseCDBaselineGuid;
         public string CannotDecreaseCDBaselineGuid { get { return _cannotDecreaseCDBaselineGuid; } set { _cannotDecreaseCDBaselineGuid = value; } }
-        private Value<string> _cannotDecreaseLEBaselineGuid;
+        private DirtyValue<string> _cannotDecreaseLEBaselineGuid;
         public string CannotDecreaseLEBaselineGuid { get { return _cannotDecreaseLEBaselineGuid; } set { _cannotDecreaseLEBaselineGuid = value; } }
-        private Value<string> _cannotIncrease10CDBaselineGuid;
+        private DirtyValue<string> _cannotIncrease10CDBaselineGuid;
         public string CannotIncrease10CDBaselineGuid { get { return _cannotIncrease10CDBaselineGuid; } set { _cannotIncrease10CDBaselineGuid = value; } }
-        private Value<string> _cannotIncrease10LEBaselineGuid;
+        private DirtyValue<string> _cannotIncrease10LEBaselineGuid;
         public string CannotIncrease10LEBaselineGuid { get { return _cannotIncrease10LEBaselineGuid; } set { _cannotIncrease10LEBaselineGuid = value; } }
-        private Value<string> _cannotIncreaseCDBaselineGuid;
+        private DirtyValue<string> _cannotIncreaseCDBaselineGuid;
         public string CannotIncreaseCDBaselineGuid { get { return _cannotIncreaseCDBaselineGuid; } set { _cannotIncreaseCDBaselineGuid = value; } }
-        private Value<string> _cannotIncreaseLEBaselineGuid;
+        private DirtyValue<string> _cannotIncreaseLEBaselineGuid;
         public string CannotIncreaseLEBaselineGuid { get { return _cannotIncreaseLEBaselineGuid; } set { _cannotIncreaseLEBaselineGuid = value; } }
-        private Value<string> _cDInitialGuid;
+        private DirtyValue<string> _cDInitialGuid;
         public string CDInitialGuid { get { return _cDInitialGuid; } set { _cDInitialGuid = value; } }
-        private Value<string> _cDInitialReceivedDateGuid;
+        private DirtyValue<string> _cDInitialReceivedDateGuid;
         public string CDInitialReceivedDateGuid { get { return _cDInitialReceivedDateGuid; } set { _cDInitialReceivedDateGuid = value; } }
-        private Value<string> _cDLatestGuid;
+        private DirtyValue<string> _cDLatestGuid;
         public string CDLatestGuid { get { return _cDLatestGuid; } set { _cDLatestGuid = value; } }
-        private Value<string> _cDPostConGuid;
+        private DirtyValue<string> _cDPostConGuid;
         public string CDPostConGuid { get { return _cDPostConGuid; } set { _cDPostConGuid = value; } }
-        private Value<string> _cDRecentAppliedCure;
+        private DirtyValue<string> _cDRecentAppliedCure;
         public string CDRecentAppliedCure { get { return _cDRecentAppliedCure; } set { _cDRecentAppliedCure = value; } }
-        private Value<string> _cDRevisedReceivedDateGuid;
+        private DirtyValue<string> _cDRevisedReceivedDateGuid;
         public string CDRevisedReceivedDateGuid { get { return _cDRevisedReceivedDateGuid; } set { _cDRevisedReceivedDateGuid = value; } }
-        private Value<DateTime?> _chargesCannotIncrease10CD1;
+        private DirtyValue<DateTime?> _chargesCannotIncrease10CD1;
         public DateTime? ChargesCannotIncrease10CD1 { get { return _chargesCannotIncrease10CD1; } set { _chargesCannotIncrease10CD1 = value; } }
-        private Value<DateTime?> _chargesCannotIncrease10InitialLE1;
+        private DirtyValue<DateTime?> _chargesCannotIncrease10InitialLE1;
         public DateTime? ChargesCannotIncrease10InitialLE1 { get { return _chargesCannotIncrease10InitialLE1; } set { _chargesCannotIncrease10InitialLE1 = value; } }
-        private Value<DateTime?> _chargesCannotIncrease10LE1;
+        private DirtyValue<DateTime?> _chargesCannotIncrease10LE1;
         public DateTime? ChargesCannotIncrease10LE1 { get { return _chargesCannotIncrease10LE1; } set { _chargesCannotIncrease10LE1 = value; } }
-        private Value<DateTime?> _chargesThatCanChangeCD1;
+        private DirtyValue<DateTime?> _chargesThatCanChangeCD1;
         public DateTime? ChargesThatCanChangeCD1 { get { return _chargesThatCanChangeCD1; } set { _chargesThatCanChangeCD1 = value; } }
-        private Value<DateTime?> _chargesThatCanChangeInitialLE1;
+        private DirtyValue<DateTime?> _chargesThatCanChangeInitialLE1;
         public DateTime? ChargesThatCanChangeInitialLE1 { get { return _chargesThatCanChangeInitialLE1; } set { _chargesThatCanChangeInitialLE1 = value; } }
-        private Value<DateTime?> _chargesThatCanChangeLE1;
+        private DirtyValue<DateTime?> _chargesThatCanChangeLE1;
         public DateTime? ChargesThatCanChangeLE1 { get { return _chargesThatCanChangeLE1; } set { _chargesThatCanChangeLE1 = value; } }
-        private Value<DateTime?> _chargesThatCannotDecreaseCD1;
+        private DirtyValue<DateTime?> _chargesThatCannotDecreaseCD1;
         public DateTime? ChargesThatCannotDecreaseCD1 { get { return _chargesThatCannotDecreaseCD1; } set { _chargesThatCannotDecreaseCD1 = value; } }
-        private Value<DateTime?> _chargesThatCannotDecreaseInitialLE1;
+        private DirtyValue<DateTime?> _chargesThatCannotDecreaseInitialLE1;
         public DateTime? ChargesThatCannotDecreaseInitialLE1 { get { return _chargesThatCannotDecreaseInitialLE1; } set { _chargesThatCannotDecreaseInitialLE1 = value; } }
-        private Value<DateTime?> _chargesThatCannotDecreaseLE1;
+        private DirtyValue<DateTime?> _chargesThatCannotDecreaseLE1;
         public DateTime? ChargesThatCannotDecreaseLE1 { get { return _chargesThatCannotDecreaseLE1; } set { _chargesThatCannotDecreaseLE1 = value; } }
-        private Value<DateTime?> _chargesThatCannotIncreaseCD1;
+        private DirtyValue<DateTime?> _chargesThatCannotIncreaseCD1;
         public DateTime? ChargesThatCannotIncreaseCD1 { get { return _chargesThatCannotIncreaseCD1; } set { _chargesThatCannotIncreaseCD1 = value; } }
-        private Value<DateTime?> _chargesThatCannotIncreaseInitialLE1;
+        private DirtyValue<DateTime?> _chargesThatCannotIncreaseInitialLE1;
         public DateTime? ChargesThatCannotIncreaseInitialLE1 { get { return _chargesThatCannotIncreaseInitialLE1; } set { _chargesThatCannotIncreaseInitialLE1 = value; } }
-        private Value<DateTime?> _chargesThatCannotIncreaseLE1;
+        private DirtyValue<DateTime?> _chargesThatCannotIncreaseLE1;
         public DateTime? ChargesThatCannotIncreaseLE1 { get { return _chargesThatCannotIncreaseLE1; } set { _chargesThatCannotIncreaseLE1 = value; } }
-        private Value<string> _disclosureLogGUIDForECD;
+        private DirtyValue<string> _disclosureLogGUIDForECD;
         public string DisclosureLogGUIDForECD { get { return _disclosureLogGUIDForECD; } set { _disclosureLogGUIDForECD = value; } }
-        private Value<string> _disclosureLogGUIDReceivedForECD;
+        private DirtyValue<string> _disclosureLogGUIDReceivedForECD;
         public string DisclosureLogGUIDReceivedForECD { get { return _disclosureLogGUIDReceivedForECD; } set { _disclosureLogGUIDReceivedForECD = value; } }
-        private Value<DateTime?> _goodFaithAmountInitialLE1;
+        private DirtyValue<DateTime?> _goodFaithAmountInitialLE1;
         public DateTime? GoodFaithAmountInitialLE1 { get { return _goodFaithAmountInitialLE1; } set { _goodFaithAmountInitialLE1 = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _lEBaselineUsedCannotDecrease;
+        private DirtyValue<bool?> _lEBaselineUsedCannotDecrease;
         public bool? LEBaselineUsedCannotDecrease { get { return _lEBaselineUsedCannotDecrease; } set { _lEBaselineUsedCannotDecrease = value; } }
-        private Value<bool?> _lEBaselineUsedCannotIncrease;
+        private DirtyValue<bool?> _lEBaselineUsedCannotIncrease;
         public bool? LEBaselineUsedCannotIncrease { get { return _lEBaselineUsedCannotIncrease; } set { _lEBaselineUsedCannotIncrease = value; } }
-        private Value<bool?> _lEBaselineUsedCannotIncrease10;
+        private DirtyValue<bool?> _lEBaselineUsedCannotIncrease10;
         public bool? LEBaselineUsedCannotIncrease10 { get { return _lEBaselineUsedCannotIncrease10; } set { _lEBaselineUsedCannotIncrease10 = value; } }
-        private Value<string> _lEInitialDTGuid;
+        private DirtyValue<string> _lEInitialDTGuid;
         public string LEInitialDTGuid { get { return _lEInitialDTGuid; } set { _lEInitialDTGuid = value; } }
-        private Value<string> _lEInitialGuid;
+        private DirtyValue<string> _lEInitialGuid;
         public string LEInitialGuid { get { return _lEInitialGuid; } set { _lEInitialGuid = value; } }
-        private Value<string> _lEInitialReceivedDateGuid;
+        private DirtyValue<string> _lEInitialReceivedDateGuid;
         public string LEInitialReceivedDateGuid { get { return _lEInitialReceivedDateGuid; } set { _lEInitialReceivedDateGuid = value; } }
-        private Value<string> _lELatestGuid;
+        private DirtyValue<string> _lELatestGuid;
         public string LELatestGuid { get { return _lELatestGuid; } set { _lELatestGuid = value; } }
-        private Value<string> _lERevisedReceivedDateGuid;
+        private DirtyValue<string> _lERevisedReceivedDateGuid;
         public string LERevisedReceivedDateGuid { get { return _lERevisedReceivedDateGuid; } set { _lERevisedReceivedDateGuid = value; } }
-        private Value<string> _lERevisedSentDateGuid;
+        private DirtyValue<string> _lERevisedSentDateGuid;
         public string LERevisedSentDateGuid { get { return _lERevisedSentDateGuid; } set { _lERevisedSentDateGuid = value; } }
-        private Value<decimal?> _requiredCureAmount;
+        private DirtyValue<decimal?> _requiredCureAmount;
         public decimal? RequiredCureAmount { get { return _requiredCureAmount; } set { _requiredCureAmount = value; } }
-        private Value<string> _safeHarborGuid;
+        private DirtyValue<string> _safeHarborGuid;
         public string SafeHarborGuid { get { return _safeHarborGuid; } set { _safeHarborGuid = value; } }
-        private Value<string> _sSPLGuid;
+        private DirtyValue<string> _sSPLGuid;
         public string SSPLGuid { get { return _sSPLGuid; } set { _sSPLGuid = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

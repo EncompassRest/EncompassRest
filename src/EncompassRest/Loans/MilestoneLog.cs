@@ -12,37 +12,37 @@ namespace EncompassRest.Loans
         public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<int?> _days;
+        private DirtyValue<int?> _days;
         public int? Days { get { return _days; } set { _days = value; } }
-        private Value<bool?> _doneIndicator;
+        private DirtyValue<bool?> _doneIndicator;
         public bool? DoneIndicator { get { return _doneIndicator; } set { _doneIndicator = value; } }
-        private Value<int?> _duration;
+        private DirtyValue<int?> _duration;
         public int? Duration { get { return _duration; } set { _duration = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
         private LoanAssociate _loanAssociate;
         public LoanAssociate LoanAssociate { get { var v = _loanAssociate; return v ?? Interlocked.CompareExchange(ref _loanAssociate, (v = new LoanAssociate()), null) ?? v; } set { _loanAssociate = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<string> _milestoneIdString;
+        private DirtyValue<string> _milestoneIdString;
         public string MilestoneIdString { get { return _milestoneIdString; } set { _milestoneIdString = value; } }
-        private Value<bool?> _reviewedIndicator;
+        private DirtyValue<bool?> _reviewedIndicator;
         public bool? ReviewedIndicator { get { return _reviewedIndicator; } set { _reviewedIndicator = value; } }
-        private Value<string> _roleRequired;
+        private DirtyValue<string> _roleRequired;
         public string RoleRequired { get { return _roleRequired; } set { _roleRequired = value; } }
-        private Value<string> _stage;
+        private DirtyValue<string> _stage;
         public string Stage { get { return _stage; } set { _stage = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

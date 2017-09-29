@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TrustAccount : IDirty
     {
-        private Value<decimal?> _balance;
+        private DirtyValue<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _total1;
+        private DirtyValue<decimal?> _total1;
         public decimal? Total1 { get { return _total1; } set { _total1 = value; } }
-        private Value<decimal?> _total2;
+        private DirtyValue<decimal?> _total2;
         public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
         private DirtyList<TrustAccountItem> _trustAccountItems;
         public IList<TrustAccountItem> TrustAccountItems { get { var v = _trustAccountItems; return v ?? Interlocked.CompareExchange(ref _trustAccountItems, (v = new DirtyList<TrustAccountItem>()), null) ?? v; } set { _trustAccountItems = new DirtyList<TrustAccountItem>(value); } }

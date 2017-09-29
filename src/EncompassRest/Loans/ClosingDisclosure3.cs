@@ -8,317 +8,317 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ClosingDisclosure3 : IDirty
     {
-        private Value<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
+        private DirtyValue<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
         public decimal? ActualLECD3TotalClosingCostJFromLatestRec { get { return _actualLECD3TotalClosingCostJFromLatestRec; } set { _actualLECD3TotalClosingCostJFromLatestRec = value; } }
-        private Value<decimal?> _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
+        private DirtyValue<decimal?> _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec;
         public decimal? ActualLECD3TotalPayoffsAndPaymentsKFromLatestRec { get { return _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec; } set { _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec = value; } }
-        private Value<decimal?> _actualLELoanAmountFromLatestRec;
+        private DirtyValue<decimal?> _actualLELoanAmountFromLatestRec;
         public decimal? ActualLELoanAmountFromLatestRec { get { return _actualLELoanAmountFromLatestRec; } set { _actualLELoanAmountFromLatestRec = value; } }
-        private Value<decimal?> _actualLenderCredits;
+        private DirtyValue<decimal?> _actualLenderCredits;
         public decimal? ActualLenderCredits { get { return _actualLenderCredits; } set { _actualLenderCredits = value; } }
-        private Value<decimal?> _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec;
         public decimal? ActualSTDLEAdjustmentAndOtherCreditsFromLatestRec { get { return _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec; } set { _actualSTDLEAdjustmentAndOtherCreditsFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLEClosingCostFinancedFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLEClosingCostFinancedFromLatestRec;
         public decimal? ActualSTDLEClosingCostFinancedFromLatestRec { get { return _actualSTDLEClosingCostFinancedFromLatestRec; } set { _actualSTDLEClosingCostFinancedFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLEDepositFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLEDepositFromLatestRec;
         public decimal? ActualSTDLEDepositFromLatestRec { get { return _actualSTDLEDepositFromLatestRec; } set { _actualSTDLEDepositFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLEDownPaymentFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLEDownPaymentFromLatestRec;
         public decimal? ActualSTDLEDownPaymentFromLatestRec { get { return _actualSTDLEDownPaymentFromLatestRec; } set { _actualSTDLEDownPaymentFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLEFundForBorrowerFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLEFundForBorrowerFromLatestRec;
         public decimal? ActualSTDLEFundForBorrowerFromLatestRec { get { return _actualSTDLEFundForBorrowerFromLatestRec; } set { _actualSTDLEFundForBorrowerFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLESellerCredits;
+        private DirtyValue<decimal?> _actualSTDLESellerCredits;
         public decimal? ActualSTDLESellerCredits { get { return _actualSTDLESellerCredits; } set { _actualSTDLESellerCredits = value; } }
-        private Value<decimal?> _actualSTDLESellerCreditsFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLESellerCreditsFromLatestRec;
         public decimal? ActualSTDLESellerCreditsFromLatestRec { get { return _actualSTDLESellerCreditsFromLatestRec; } set { _actualSTDLESellerCreditsFromLatestRec = value; } }
-        private Value<decimal?> _actualSTDLETotalClosingCostJ;
+        private DirtyValue<decimal?> _actualSTDLETotalClosingCostJ;
         public decimal? ActualSTDLETotalClosingCostJ { get { return _actualSTDLETotalClosingCostJ; } set { _actualSTDLETotalClosingCostJ = value; } }
-        private Value<decimal?> _actualSTDLETotalClosingCostJFromLatestRec;
+        private DirtyValue<decimal?> _actualSTDLETotalClosingCostJFromLatestRec;
         public decimal? ActualSTDLETotalClosingCostJFromLatestRec { get { return _actualSTDLETotalClosingCostJFromLatestRec; } set { _actualSTDLETotalClosingCostJFromLatestRec = value; } }
-        private Value<string> _adjustments06_1;
+        private DirtyValue<string> _adjustments06_1;
         public string Adjustments06_1 { get { return _adjustments06_1; } set { _adjustments06_1 = value; } }
-        private Value<decimal?> _adjustments06_2;
+        private DirtyValue<decimal?> _adjustments06_2;
         public decimal? Adjustments06_2 { get { return _adjustments06_2; } set { _adjustments06_2 = value; } }
-        private Value<string> _adjustments07_1;
+        private DirtyValue<string> _adjustments07_1;
         public string Adjustments07_1 { get { return _adjustments07_1; } set { _adjustments07_1 = value; } }
-        private Value<decimal?> _adjustments07_2;
+        private DirtyValue<decimal?> _adjustments07_2;
         public decimal? Adjustments07_2 { get { return _adjustments07_2; } set { _adjustments07_2 = value; } }
-        private Value<string> _adjustments10_1;
+        private DirtyValue<string> _adjustments10_1;
         public string Adjustments10_1 { get { return _adjustments10_1; } set { _adjustments10_1 = value; } }
-        private Value<decimal?> _adjustments10_2;
+        private DirtyValue<decimal?> _adjustments10_2;
         public decimal? Adjustments10_2 { get { return _adjustments10_2; } set { _adjustments10_2 = value; } }
-        private Value<string> _adjustments11_1;
+        private DirtyValue<string> _adjustments11_1;
         public string Adjustments11_1 { get { return _adjustments11_1; } set { _adjustments11_1 = value; } }
-        private Value<decimal?> _adjustments11_2;
+        private DirtyValue<decimal?> _adjustments11_2;
         public decimal? Adjustments11_2 { get { return _adjustments11_2; } set { _adjustments11_2 = value; } }
-        private Value<string> _adjustments15_1;
+        private DirtyValue<string> _adjustments15_1;
         public string Adjustments15_1 { get { return _adjustments15_1; } set { _adjustments15_1 = value; } }
-        private Value<decimal?> _adjustments15_2;
+        private DirtyValue<decimal?> _adjustments15_2;
         public decimal? Adjustments15_2 { get { return _adjustments15_2; } set { _adjustments15_2 = value; } }
-        private Value<string> _adjustments8_1;
+        private DirtyValue<string> _adjustments8_1;
         public string Adjustments8_1 { get { return _adjustments8_1; } set { _adjustments8_1 = value; } }
-        private Value<decimal?> _adjustments8_2;
+        private DirtyValue<decimal?> _adjustments8_2;
         public decimal? Adjustments8_2 { get { return _adjustments8_2; } set { _adjustments8_2 = value; } }
-        private Value<string> _adjustments9_1;
+        private DirtyValue<string> _adjustments9_1;
         public string Adjustments9_1 { get { return _adjustments9_1; } set { _adjustments9_1 = value; } }
-        private Value<decimal?> _adjustments9_2;
+        private DirtyValue<decimal?> _adjustments9_2;
         public decimal? Adjustments9_2 { get { return _adjustments9_2; } set { _adjustments9_2 = value; } }
-        private Value<string> _adjustmentsforItemsPaidbySellerinAdvance16_1;
+        private DirtyValue<string> _adjustmentsforItemsPaidbySellerinAdvance16_1;
         public string AdjustmentsforItemsPaidbySellerinAdvance16_1 { get { return _adjustmentsforItemsPaidbySellerinAdvance16_1; } set { _adjustmentsforItemsPaidbySellerinAdvance16_1 = value; } }
-        private Value<decimal?> _adjustmentsforItemsPaidbySellerinAdvance16_2;
+        private DirtyValue<decimal?> _adjustmentsforItemsPaidbySellerinAdvance16_2;
         public decimal? AdjustmentsforItemsPaidbySellerinAdvance16_2 { get { return _adjustmentsforItemsPaidbySellerinAdvance16_2; } set { _adjustmentsforItemsPaidbySellerinAdvance16_2 = value; } }
-        private Value<string> _aLTCashToCloseDidChangeCol;
+        private DirtyValue<string> _aLTCashToCloseDidChangeCol;
         public string ALTCashToCloseDidChangeCol { get { return _aLTCashToCloseDidChangeCol; } set { _aLTCashToCloseDidChangeCol = value; } }
-        private Value<decimal?> _aLTCashToCloseRemark;
+        private DirtyValue<decimal?> _aLTCashToCloseRemark;
         public decimal? ALTCashToCloseRemark { get { return _aLTCashToCloseRemark; } set { _aLTCashToCloseRemark = value; } }
-        private Value<string> _aLTClosingCostBeforeClosingDidChangeCol;
+        private DirtyValue<string> _aLTClosingCostBeforeClosingDidChangeCol;
         public string ALTClosingCostBeforeClosingDidChangeCol { get { return _aLTClosingCostBeforeClosingDidChangeCol; } set { _aLTClosingCostBeforeClosingDidChangeCol = value; } }
-        private Value<decimal?> _aLTLegalLimit;
+        private DirtyValue<decimal?> _aLTLegalLimit;
         public decimal? ALTLegalLimit { get { return _aLTLegalLimit; } set { _aLTLegalLimit = value; } }
-        private Value<string> _aLTLoanAmountDidChangeCol;
+        private DirtyValue<string> _aLTLoanAmountDidChangeCol;
         public string ALTLoanAmountDidChangeCol { get { return _aLTLoanAmountDidChangeCol; } set { _aLTLoanAmountDidChangeCol = value; } }
-        private Value<string> _aLTLoanAmountIncDecRemark;
+        private DirtyValue<string> _aLTLoanAmountIncDecRemark;
         public string ALTLoanAmountIncDecRemark { get { return _aLTLoanAmountIncDecRemark; } set { _aLTLoanAmountIncDecRemark = value; } }
-        private Value<string> _aLTTotalClosingCostDidChangeCol;
+        private DirtyValue<string> _aLTTotalClosingCostDidChangeCol;
         public string ALTTotalClosingCostDidChangeCol { get { return _aLTTotalClosingCostDidChangeCol; } set { _aLTTotalClosingCostDidChangeCol = value; } }
-        private Value<string> _aLTTotalClosingCostRemark;
+        private DirtyValue<string> _aLTTotalClosingCostRemark;
         public string ALTTotalClosingCostRemark { get { return _aLTTotalClosingCostRemark; } set { _aLTTotalClosingCostRemark = value; } }
-        private Value<string> _aLTTotalPayoffsDidChangeCol;
+        private DirtyValue<string> _aLTTotalPayoffsDidChangeCol;
         public string ALTTotalPayoffsDidChangeCol { get { return _aLTTotalPayoffsDidChangeCol; } set { _aLTTotalPayoffsDidChangeCol = value; } }
-        private Value<decimal?> _cash;
+        private DirtyValue<decimal?> _cash;
         public decimal? Cash { get { return _cash; } set { _cash = value; } }
-        private Value<decimal?> _cashToClose;
+        private DirtyValue<decimal?> _cashToClose;
         public decimal? CashToClose { get { return _cashToClose; } set { _cashToClose = value; } }
-        private Value<decimal?> _cD3CashToClose;
+        private DirtyValue<decimal?> _cD3CashToClose;
         public decimal? CD3CashToClose { get { return _cD3CashToClose; } set { _cD3CashToClose = value; } }
-        private Value<string> _cD3CashToCloseFromToBorrower;
+        private DirtyValue<string> _cD3CashToCloseFromToBorrower;
         public string CD3CashToCloseFromToBorrower { get { return _cD3CashToCloseFromToBorrower; } set { _cD3CashToCloseFromToBorrower = value; } }
-        private Value<decimal?> _cD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?> _cD3ClosingCostsPaidBeforeClosing;
         public decimal? CD3ClosingCostsPaidBeforeClosing { get { return _cD3ClosingCostsPaidBeforeClosing; } set { _cD3ClosingCostsPaidBeforeClosing = value; } }
-        private Value<decimal?> _cD3TotalClosingCost_J;
+        private DirtyValue<decimal?> _cD3TotalClosingCost_J;
         public decimal? CD3TotalClosingCost_J { get { return _cD3TotalClosingCost_J; } set { _cD3TotalClosingCost_J = value; } }
-        private Value<decimal?> _cD3TotalPayoffsAndPayments_K;
+        private DirtyValue<decimal?> _cD3TotalPayoffsAndPayments_K;
         public decimal? CD3TotalPayoffsAndPayments_K { get { return _cD3TotalPayoffsAndPayments_K; } set { _cD3TotalPayoffsAndPayments_K = value; } }
-        private Value<decimal?> _closingCostsPaidAtClosing;
+        private DirtyValue<decimal?> _closingCostsPaidAtClosing;
         public decimal? ClosingCostsPaidAtClosing { get { return _closingCostsPaidAtClosing; } set { _closingCostsPaidAtClosing = value; } }
-        private Value<decimal?> _closingCostsPaidatClosing_J;
+        private DirtyValue<decimal?> _closingCostsPaidatClosing_J;
         public decimal? ClosingCostsPaidatClosing_J { get { return _closingCostsPaidatClosing_J; } set { _closingCostsPaidatClosing_J = value; } }
-        private Value<string> _duefromSelleratClosing11_1;
+        private DirtyValue<string> _duefromSelleratClosing11_1;
         public string DuefromSelleratClosing11_1 { get { return _duefromSelleratClosing11_1; } set { _duefromSelleratClosing11_1 = value; } }
-        private Value<decimal?> _duefromSelleratClosing11_2;
+        private DirtyValue<decimal?> _duefromSelleratClosing11_2;
         public decimal? DuefromSelleratClosing11_2 { get { return _duefromSelleratClosing11_2; } set { _duefromSelleratClosing11_2 = value; } }
-        private Value<string> _duefromSelleratClosing12_1;
+        private DirtyValue<string> _duefromSelleratClosing12_1;
         public string DuefromSelleratClosing12_1 { get { return _duefromSelleratClosing12_1; } set { _duefromSelleratClosing12_1 = value; } }
-        private Value<decimal?> _duefromSelleratClosing12_2;
+        private DirtyValue<decimal?> _duefromSelleratClosing12_2;
         public decimal? DuefromSelleratClosing12_2 { get { return _duefromSelleratClosing12_2; } set { _duefromSelleratClosing12_2 = value; } }
-        private Value<string> _duefromSelleratClosing13_1;
+        private DirtyValue<string> _duefromSelleratClosing13_1;
         public string DuefromSelleratClosing13_1 { get { return _duefromSelleratClosing13_1; } set { _duefromSelleratClosing13_1 = value; } }
-        private Value<decimal?> _duefromSelleratClosing13_2;
+        private DirtyValue<decimal?> _duefromSelleratClosing13_2;
         public decimal? DuefromSelleratClosing13_2 { get { return _duefromSelleratClosing13_2; } set { _duefromSelleratClosing13_2 = value; } }
-        private Value<string> _dueToSellerAtClosing6_1;
+        private DirtyValue<string> _dueToSellerAtClosing6_1;
         public string DueToSellerAtClosing6_1 { get { return _dueToSellerAtClosing6_1; } set { _dueToSellerAtClosing6_1 = value; } }
-        private Value<decimal?> _dueToSellerAtClosing6_2;
+        private DirtyValue<decimal?> _dueToSellerAtClosing6_2;
         public decimal? DueToSellerAtClosing6_2 { get { return _dueToSellerAtClosing6_2; } set { _dueToSellerAtClosing6_2 = value; } }
-        private Value<string> _dueToSellerAtClosing7_1;
+        private DirtyValue<string> _dueToSellerAtClosing7_1;
         public string DueToSellerAtClosing7_1 { get { return _dueToSellerAtClosing7_1; } set { _dueToSellerAtClosing7_1 = value; } }
-        private Value<decimal?> _dueToSellerAtClosing7_2;
+        private DirtyValue<decimal?> _dueToSellerAtClosing7_2;
         public decimal? DueToSellerAtClosing7_2 { get { return _dueToSellerAtClosing7_2; } set { _dueToSellerAtClosing7_2 = value; } }
-        private Value<string> _dueToSellerAtClosing8_1;
+        private DirtyValue<string> _dueToSellerAtClosing8_1;
         public string DueToSellerAtClosing8_1 { get { return _dueToSellerAtClosing8_1; } set { _dueToSellerAtClosing8_1 = value; } }
-        private Value<decimal?> _dueToSellerAtClosing8_2;
+        private DirtyValue<decimal?> _dueToSellerAtClosing8_2;
         public decimal? DueToSellerAtClosing8_2 { get { return _dueToSellerAtClosing8_2; } set { _dueToSellerAtClosing8_2 = value; } }
-        private Value<bool?> _excludeBorrowerClosingCosts;
+        private DirtyValue<bool?> _excludeBorrowerClosingCosts;
         public bool? ExcludeBorrowerClosingCosts { get { return _excludeBorrowerClosingCosts; } set { _excludeBorrowerClosingCosts = value; } }
-        private Value<decimal?> _finalCashToClose;
+        private DirtyValue<decimal?> _finalCashToClose;
         public decimal? FinalCashToClose { get { return _finalCashToClose; } set { _finalCashToClose = value; } }
-        private Value<string> _fromToBorrower;
+        private DirtyValue<string> _fromToBorrower;
         public string FromToBorrower { get { return _fromToBorrower; } set { _fromToBorrower = value; } }
-        private Value<string> _fromToSeller;
+        private DirtyValue<string> _fromToSeller;
         public string FromToSeller { get { return _fromToSeller; } set { _fromToSeller = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _lECD3CashToClose;
+        private DirtyValue<decimal?> _lECD3CashToClose;
         public decimal? LECD3CashToClose { get { return _lECD3CashToClose; } set { _lECD3CashToClose = value; } }
-        private Value<string> _lECD3CashToCloseFromToBorrower;
+        private DirtyValue<string> _lECD3CashToCloseFromToBorrower;
         public string LECD3CashToCloseFromToBorrower { get { return _lECD3CashToCloseFromToBorrower; } set { _lECD3CashToCloseFromToBorrower = value; } }
-        private Value<decimal?> _lECD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?> _lECD3ClosingCostsPaidBeforeClosing;
         public decimal? LECD3ClosingCostsPaidBeforeClosing { get { return _lECD3ClosingCostsPaidBeforeClosing; } set { _lECD3ClosingCostsPaidBeforeClosing = value; } }
-        private Value<decimal?> _lECD3TotalClosingCost_J;
+        private DirtyValue<decimal?> _lECD3TotalClosingCost_J;
         public decimal? LECD3TotalClosingCost_J { get { return _lECD3TotalClosingCost_J; } set { _lECD3TotalClosingCost_J = value; } }
-        private Value<decimal?> _lECD3TotalPayoffsAndPayments_K;
+        private DirtyValue<decimal?> _lECD3TotalPayoffsAndPayments_K;
         public decimal? LECD3TotalPayoffsAndPayments_K { get { return _lECD3TotalPayoffsAndPayments_K; } set { _lECD3TotalPayoffsAndPayments_K = value; } }
-        private Value<decimal?> _lELoanAmount;
+        private DirtyValue<decimal?> _lELoanAmount;
         public decimal? LELoanAmount { get { return _lELoanAmount; } set { _lELoanAmount = value; } }
-        private Value<decimal?> _liabilityAmount1;
+        private DirtyValue<decimal?> _liabilityAmount1;
         public decimal? LiabilityAmount1 { get { return _liabilityAmount1; } set { _liabilityAmount1 = value; } }
-        private Value<decimal?> _liabilityAmount10;
+        private DirtyValue<decimal?> _liabilityAmount10;
         public decimal? LiabilityAmount10 { get { return _liabilityAmount10; } set { _liabilityAmount10 = value; } }
-        private Value<decimal?> _liabilityAmount11;
+        private DirtyValue<decimal?> _liabilityAmount11;
         public decimal? LiabilityAmount11 { get { return _liabilityAmount11; } set { _liabilityAmount11 = value; } }
-        private Value<decimal?> _liabilityAmount12;
+        private DirtyValue<decimal?> _liabilityAmount12;
         public decimal? LiabilityAmount12 { get { return _liabilityAmount12; } set { _liabilityAmount12 = value; } }
-        private Value<decimal?> _liabilityAmount13;
+        private DirtyValue<decimal?> _liabilityAmount13;
         public decimal? LiabilityAmount13 { get { return _liabilityAmount13; } set { _liabilityAmount13 = value; } }
-        private Value<decimal?> _liabilityAmount14;
+        private DirtyValue<decimal?> _liabilityAmount14;
         public decimal? LiabilityAmount14 { get { return _liabilityAmount14; } set { _liabilityAmount14 = value; } }
-        private Value<decimal?> _liabilityAmount15;
+        private DirtyValue<decimal?> _liabilityAmount15;
         public decimal? LiabilityAmount15 { get { return _liabilityAmount15; } set { _liabilityAmount15 = value; } }
-        private Value<decimal?> _liabilityAmount2;
+        private DirtyValue<decimal?> _liabilityAmount2;
         public decimal? LiabilityAmount2 { get { return _liabilityAmount2; } set { _liabilityAmount2 = value; } }
-        private Value<decimal?> _liabilityAmount3;
+        private DirtyValue<decimal?> _liabilityAmount3;
         public decimal? LiabilityAmount3 { get { return _liabilityAmount3; } set { _liabilityAmount3 = value; } }
-        private Value<decimal?> _liabilityAmount4;
+        private DirtyValue<decimal?> _liabilityAmount4;
         public decimal? LiabilityAmount4 { get { return _liabilityAmount4; } set { _liabilityAmount4 = value; } }
-        private Value<decimal?> _liabilityAmount5;
+        private DirtyValue<decimal?> _liabilityAmount5;
         public decimal? LiabilityAmount5 { get { return _liabilityAmount5; } set { _liabilityAmount5 = value; } }
-        private Value<decimal?> _liabilityAmount6;
+        private DirtyValue<decimal?> _liabilityAmount6;
         public decimal? LiabilityAmount6 { get { return _liabilityAmount6; } set { _liabilityAmount6 = value; } }
-        private Value<decimal?> _liabilityAmount7;
+        private DirtyValue<decimal?> _liabilityAmount7;
         public decimal? LiabilityAmount7 { get { return _liabilityAmount7; } set { _liabilityAmount7 = value; } }
-        private Value<decimal?> _liabilityAmount8;
+        private DirtyValue<decimal?> _liabilityAmount8;
         public decimal? LiabilityAmount8 { get { return _liabilityAmount8; } set { _liabilityAmount8 = value; } }
-        private Value<decimal?> _liabilityAmount9;
+        private DirtyValue<decimal?> _liabilityAmount9;
         public decimal? LiabilityAmount9 { get { return _liabilityAmount9; } set { _liabilityAmount9 = value; } }
-        private Value<string> _liabilityTo1;
+        private DirtyValue<string> _liabilityTo1;
         public string LiabilityTo1 { get { return _liabilityTo1; } set { _liabilityTo1 = value; } }
-        private Value<string> _liabilityTo10;
+        private DirtyValue<string> _liabilityTo10;
         public string LiabilityTo10 { get { return _liabilityTo10; } set { _liabilityTo10 = value; } }
-        private Value<string> _liabilityTo11;
+        private DirtyValue<string> _liabilityTo11;
         public string LiabilityTo11 { get { return _liabilityTo11; } set { _liabilityTo11 = value; } }
-        private Value<string> _liabilityTo12;
+        private DirtyValue<string> _liabilityTo12;
         public string LiabilityTo12 { get { return _liabilityTo12; } set { _liabilityTo12 = value; } }
-        private Value<string> _liabilityTo13;
+        private DirtyValue<string> _liabilityTo13;
         public string LiabilityTo13 { get { return _liabilityTo13; } set { _liabilityTo13 = value; } }
-        private Value<string> _liabilityTo14;
+        private DirtyValue<string> _liabilityTo14;
         public string LiabilityTo14 { get { return _liabilityTo14; } set { _liabilityTo14 = value; } }
-        private Value<string> _liabilityTo15;
+        private DirtyValue<string> _liabilityTo15;
         public string LiabilityTo15 { get { return _liabilityTo15; } set { _liabilityTo15 = value; } }
-        private Value<string> _liabilityTo2;
+        private DirtyValue<string> _liabilityTo2;
         public string LiabilityTo2 { get { return _liabilityTo2; } set { _liabilityTo2 = value; } }
-        private Value<string> _liabilityTo3;
+        private DirtyValue<string> _liabilityTo3;
         public string LiabilityTo3 { get { return _liabilityTo3; } set { _liabilityTo3 = value; } }
-        private Value<string> _liabilityTo4;
+        private DirtyValue<string> _liabilityTo4;
         public string LiabilityTo4 { get { return _liabilityTo4; } set { _liabilityTo4 = value; } }
-        private Value<string> _liabilityTo5;
+        private DirtyValue<string> _liabilityTo5;
         public string LiabilityTo5 { get { return _liabilityTo5; } set { _liabilityTo5 = value; } }
-        private Value<string> _liabilityTo6;
+        private DirtyValue<string> _liabilityTo6;
         public string LiabilityTo6 { get { return _liabilityTo6; } set { _liabilityTo6 = value; } }
-        private Value<string> _liabilityTo7;
+        private DirtyValue<string> _liabilityTo7;
         public string LiabilityTo7 { get { return _liabilityTo7; } set { _liabilityTo7 = value; } }
-        private Value<string> _liabilityTo8;
+        private DirtyValue<string> _liabilityTo8;
         public string LiabilityTo8 { get { return _liabilityTo8; } set { _liabilityTo8 = value; } }
-        private Value<string> _liabilityTo9;
+        private DirtyValue<string> _liabilityTo9;
         public string LiabilityTo9 { get { return _liabilityTo9; } set { _liabilityTo9 = value; } }
-        private Value<decimal?> _liabilityTotal;
+        private DirtyValue<decimal?> _liabilityTotal;
         public decimal? LiabilityTotal { get { return _liabilityTotal; } set { _liabilityTotal = value; } }
-        private Value<decimal?> _loanAmount;
+        private DirtyValue<decimal?> _loanAmount;
         public decimal? LoanAmount { get { return _loanAmount; } set { _loanAmount = value; } }
-        private Value<decimal?> _nonUCDTotalAdjustmentsAndOtherCredits;
+        private DirtyValue<decimal?> _nonUCDTotalAdjustmentsAndOtherCredits;
         public decimal? NonUCDTotalAdjustmentsAndOtherCredits { get { return _nonUCDTotalAdjustmentsAndOtherCredits; } set { _nonUCDTotalAdjustmentsAndOtherCredits = value; } }
-        private Value<bool?> _omitFromPrintSellersTransaction;
+        private DirtyValue<bool?> _omitFromPrintSellersTransaction;
         public bool? OmitFromPrintSellersTransaction { get { return _omitFromPrintSellersTransaction; } set { _omitFromPrintSellersTransaction = value; } }
-        private Value<string> _otherCredits6_1;
+        private DirtyValue<string> _otherCredits6_1;
         public string OtherCredits6_1 { get { return _otherCredits6_1; } set { _otherCredits6_1 = value; } }
-        private Value<decimal?> _otherCredits6_2;
+        private DirtyValue<decimal?> _otherCredits6_2;
         public decimal? OtherCredits6_2 { get { return _otherCredits6_2; } set { _otherCredits6_2 = value; } }
-        private Value<string> _otherCredits7_1;
+        private DirtyValue<string> _otherCredits7_1;
         public string OtherCredits7_1 { get { return _otherCredits7_1; } set { _otherCredits7_1 = value; } }
-        private Value<decimal?> _otherCredits7_2;
+        private DirtyValue<decimal?> _otherCredits7_2;
         public decimal? OtherCredits7_2 { get { return _otherCredits7_2; } set { _otherCredits7_2 = value; } }
-        private Value<decimal?> _priorToleranceCureAmount;
+        private DirtyValue<decimal?> _priorToleranceCureAmount;
         public decimal? PriorToleranceCureAmount { get { return _priorToleranceCureAmount; } set { _priorToleranceCureAmount = value; } }
-        private Value<string> _sTDAdjustmentAndOtherCreditsRemark;
+        private DirtyValue<string> _sTDAdjustmentAndOtherCreditsRemark;
         public string STDAdjustmentAndOtherCreditsRemark { get { return _sTDAdjustmentAndOtherCreditsRemark; } set { _sTDAdjustmentAndOtherCreditsRemark = value; } }
-        private Value<string> _sTDAdjustmentsDidChangeCol;
+        private DirtyValue<string> _sTDAdjustmentsDidChangeCol;
         public string STDAdjustmentsDidChangeCol { get { return _sTDAdjustmentsDidChangeCol; } set { _sTDAdjustmentsDidChangeCol = value; } }
-        private Value<string> _sTDClosingCostFinancedDidChangeCol;
+        private DirtyValue<string> _sTDClosingCostFinancedDidChangeCol;
         public string STDClosingCostFinancedDidChangeCol { get { return _sTDClosingCostFinancedDidChangeCol; } set { _sTDClosingCostFinancedDidChangeCol = value; } }
-        private Value<string> _sTDDepositDidChangeCol;
+        private DirtyValue<string> _sTDDepositDidChangeCol;
         public string STDDepositDidChangeCol { get { return _sTDDepositDidChangeCol; } set { _sTDDepositDidChangeCol = value; } }
-        private Value<string> _sTDDepositIncDecRemark;
+        private DirtyValue<string> _sTDDepositIncDecRemark;
         public string STDDepositIncDecRemark { get { return _sTDDepositIncDecRemark; } set { _sTDDepositIncDecRemark = value; } }
-        private Value<string> _sTDDownPaymentDidChangeCol;
+        private DirtyValue<string> _sTDDownPaymentDidChangeCol;
         public string STDDownPaymentDidChangeCol { get { return _sTDDownPaymentDidChangeCol; } set { _sTDDownPaymentDidChangeCol = value; } }
-        private Value<string> _sTDDownPaymentIncDecRemark;
+        private DirtyValue<string> _sTDDownPaymentIncDecRemark;
         public string STDDownPaymentIncDecRemark { get { return _sTDDownPaymentIncDecRemark; } set { _sTDDownPaymentIncDecRemark = value; } }
-        private Value<string> _sTDDownPaymentSectionRemark;
+        private DirtyValue<string> _sTDDownPaymentSectionRemark;
         public string STDDownPaymentSectionRemark { get { return _sTDDownPaymentSectionRemark; } set { _sTDDownPaymentSectionRemark = value; } }
-        private Value<decimal?> _sTDFinalAdjustmentAndOtherCredits;
+        private DirtyValue<decimal?> _sTDFinalAdjustmentAndOtherCredits;
         public decimal? STDFinalAdjustmentAndOtherCredits { get { return _sTDFinalAdjustmentAndOtherCredits; } set { _sTDFinalAdjustmentAndOtherCredits = value; } }
-        private Value<decimal?> _sTDFinalCashToClose;
+        private DirtyValue<decimal?> _sTDFinalCashToClose;
         public decimal? STDFinalCashToClose { get { return _sTDFinalCashToClose; } set { _sTDFinalCashToClose = value; } }
-        private Value<decimal?> _sTDFinalCD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?> _sTDFinalCD3ClosingCostsPaidBeforeClosing;
         public decimal? STDFinalCD3ClosingCostsPaidBeforeClosing { get { return _sTDFinalCD3ClosingCostsPaidBeforeClosing; } set { _sTDFinalCD3ClosingCostsPaidBeforeClosing = value; } }
-        private Value<decimal?> _sTDFinalClosingCostFinanced;
+        private DirtyValue<decimal?> _sTDFinalClosingCostFinanced;
         public decimal? STDFinalClosingCostFinanced { get { return _sTDFinalClosingCostFinanced; } set { _sTDFinalClosingCostFinanced = value; } }
-        private Value<decimal?> _sTDFinalDeposit;
+        private DirtyValue<decimal?> _sTDFinalDeposit;
         public decimal? STDFinalDeposit { get { return _sTDFinalDeposit; } set { _sTDFinalDeposit = value; } }
-        private Value<decimal?> _sTDFinalDownPayment;
+        private DirtyValue<decimal?> _sTDFinalDownPayment;
         public decimal? STDFinalDownPayment { get { return _sTDFinalDownPayment; } set { _sTDFinalDownPayment = value; } }
-        private Value<decimal?> _sTDFinalFundForBorrower;
+        private DirtyValue<decimal?> _sTDFinalFundForBorrower;
         public decimal? STDFinalFundForBorrower { get { return _sTDFinalFundForBorrower; } set { _sTDFinalFundForBorrower = value; } }
-        private Value<decimal?> _sTDFinalSellerCredits;
+        private DirtyValue<decimal?> _sTDFinalSellerCredits;
         public decimal? STDFinalSellerCredits { get { return _sTDFinalSellerCredits; } set { _sTDFinalSellerCredits = value; } }
-        private Value<decimal?> _sTDFinalTotalClosingCostJ;
+        private DirtyValue<decimal?> _sTDFinalTotalClosingCostJ;
         public decimal? STDFinalTotalClosingCostJ { get { return _sTDFinalTotalClosingCostJ; } set { _sTDFinalTotalClosingCostJ = value; } }
-        private Value<string> _sTDFundsForBorrowerDidChangeCol;
+        private DirtyValue<string> _sTDFundsForBorrowerDidChangeCol;
         public string STDFundsForBorrowerDidChangeCol { get { return _sTDFundsForBorrowerDidChangeCol; } set { _sTDFundsForBorrowerDidChangeCol = value; } }
-        private Value<string> _sTDFundsForBorrowerIncDecRemark;
+        private DirtyValue<string> _sTDFundsForBorrowerIncDecRemark;
         public string STDFundsForBorrowerIncDecRemark { get { return _sTDFundsForBorrowerIncDecRemark; } set { _sTDFundsForBorrowerIncDecRemark = value; } }
-        private Value<decimal?> _sTDLEAdjustmentAndOtherCredits;
+        private DirtyValue<decimal?> _sTDLEAdjustmentAndOtherCredits;
         public decimal? STDLEAdjustmentAndOtherCredits { get { return _sTDLEAdjustmentAndOtherCredits; } set { _sTDLEAdjustmentAndOtherCredits = value; } }
-        private Value<decimal?> _sTDLECashToClose;
+        private DirtyValue<decimal?> _sTDLECashToClose;
         public decimal? STDLECashToClose { get { return _sTDLECashToClose; } set { _sTDLECashToClose = value; } }
-        private Value<decimal?> _sTDLECD3ClosingCostsPaidBeforeClosing;
+        private DirtyValue<decimal?> _sTDLECD3ClosingCostsPaidBeforeClosing;
         public decimal? STDLECD3ClosingCostsPaidBeforeClosing { get { return _sTDLECD3ClosingCostsPaidBeforeClosing; } set { _sTDLECD3ClosingCostsPaidBeforeClosing = value; } }
-        private Value<decimal?> _sTDLEClosingCostFinanced;
+        private DirtyValue<decimal?> _sTDLEClosingCostFinanced;
         public decimal? STDLEClosingCostFinanced { get { return _sTDLEClosingCostFinanced; } set { _sTDLEClosingCostFinanced = value; } }
-        private Value<decimal?> _sTDLEDeposit;
+        private DirtyValue<decimal?> _sTDLEDeposit;
         public decimal? STDLEDeposit { get { return _sTDLEDeposit; } set { _sTDLEDeposit = value; } }
-        private Value<decimal?> _sTDLEDownPayment;
+        private DirtyValue<decimal?> _sTDLEDownPayment;
         public decimal? STDLEDownPayment { get { return _sTDLEDownPayment; } set { _sTDLEDownPayment = value; } }
-        private Value<decimal?> _sTDLEFundForBorrower;
+        private DirtyValue<decimal?> _sTDLEFundForBorrower;
         public decimal? STDLEFundForBorrower { get { return _sTDLEFundForBorrower; } set { _sTDLEFundForBorrower = value; } }
-        private Value<decimal?> _sTDLegalLimit;
+        private DirtyValue<decimal?> _sTDLegalLimit;
         public decimal? STDLegalLimit { get { return _sTDLegalLimit; } set { _sTDLegalLimit = value; } }
-        private Value<decimal?> _sTDLESellerCredits;
+        private DirtyValue<decimal?> _sTDLESellerCredits;
         public decimal? STDLESellerCredits { get { return _sTDLESellerCredits; } set { _sTDLESellerCredits = value; } }
-        private Value<decimal?> _sTDLETotalClosingCostJ;
+        private DirtyValue<decimal?> _sTDLETotalClosingCostJ;
         public decimal? STDLETotalClosingCostJ { get { return _sTDLETotalClosingCostJ; } set { _sTDLETotalClosingCostJ = value; } }
-        private Value<string> _sTDSellerCreditsDidChangeCol;
+        private DirtyValue<string> _sTDSellerCreditsDidChangeCol;
         public string STDSellerCreditsDidChangeCol { get { return _sTDSellerCreditsDidChangeCol; } set { _sTDSellerCreditsDidChangeCol = value; } }
-        private Value<string> _sTDSellerCreditsIncDecRemark;
+        private DirtyValue<string> _sTDSellerCreditsIncDecRemark;
         public string STDSellerCreditsIncDecRemark { get { return _sTDSellerCreditsIncDecRemark; } set { _sTDSellerCreditsIncDecRemark = value; } }
-        private Value<string> _sTDTotalClosingCostBeforeClosingDidChangeCol;
+        private DirtyValue<string> _sTDTotalClosingCostBeforeClosingDidChangeCol;
         public string STDTotalClosingCostBeforeClosingDidChangeCol { get { return _sTDTotalClosingCostBeforeClosingDidChangeCol; } set { _sTDTotalClosingCostBeforeClosingDidChangeCol = value; } }
-        private Value<string> _sTDTotalClosingCostDidChangeCol;
+        private DirtyValue<string> _sTDTotalClosingCostDidChangeCol;
         public string STDTotalClosingCostDidChangeCol { get { return _sTDTotalClosingCostDidChangeCol; } set { _sTDTotalClosingCostDidChangeCol = value; } }
-        private Value<string> _sTDTotalClosingCostRemark;
+        private DirtyValue<string> _sTDTotalClosingCostRemark;
         public string STDTotalClosingCostRemark { get { return _sTDTotalClosingCostRemark; } set { _sTDTotalClosingCostRemark = value; } }
-        private Value<decimal?> _totalAdjustmentsAndOtherCredits;
+        private DirtyValue<decimal?> _totalAdjustmentsAndOtherCredits;
         public decimal? TotalAdjustmentsAndOtherCredits { get { return _totalAdjustmentsAndOtherCredits; } set { _totalAdjustmentsAndOtherCredits = value; } }
-        private Value<decimal?> _totalDuefromBorrowerAtClosing;
+        private DirtyValue<decimal?> _totalDuefromBorrowerAtClosing;
         public decimal? TotalDuefromBorrowerAtClosing { get { return _totalDuefromBorrowerAtClosing; } set { _totalDuefromBorrowerAtClosing = value; } }
-        private Value<decimal?> _totalDuefromSelleratClosing_N;
+        private DirtyValue<decimal?> _totalDuefromSelleratClosing_N;
         public decimal? TotalDuefromSelleratClosing_N { get { return _totalDuefromSelleratClosing_N; } set { _totalDuefromSelleratClosing_N = value; } }
-        private Value<decimal?> _totalDuetoSelleratClosing_M;
+        private DirtyValue<decimal?> _totalDuetoSelleratClosing_M;
         public decimal? TotalDuetoSelleratClosing_M { get { return _totalDuetoSelleratClosing_M; } set { _totalDuetoSelleratClosing_M = value; } }
-        private Value<decimal?> _totalFromK;
+        private DirtyValue<decimal?> _totalFromK;
         public decimal? TotalFromK { get { return _totalFromK; } set { _totalFromK = value; } }
-        private Value<decimal?> _totalFromL;
+        private DirtyValue<decimal?> _totalFromL;
         public decimal? TotalFromL { get { return _totalFromL; } set { _totalFromL = value; } }
-        private Value<decimal?> _totalFromM;
+        private DirtyValue<decimal?> _totalFromM;
         public decimal? TotalFromM { get { return _totalFromM; } set { _totalFromM = value; } }
-        private Value<decimal?> _totalFromN;
+        private DirtyValue<decimal?> _totalFromN;
         public decimal? TotalFromN { get { return _totalFromN; } set { _totalFromN = value; } }
-        private Value<decimal?> _totalPaidAlreadybyoronBehalfofBoroweratClosing;
+        private DirtyValue<decimal?> _totalPaidAlreadybyoronBehalfofBoroweratClosing;
         public decimal? TotalPaidAlreadybyoronBehalfofBoroweratClosing { get { return _totalPaidAlreadybyoronBehalfofBoroweratClosing; } set { _totalPaidAlreadybyoronBehalfofBoroweratClosing = value; } }
         private DirtyList<UCDDetail> _uCDDetails;
         public IList<UCDDetail> UCDDetails { get { var v = _uCDDetails; return v ?? Interlocked.CompareExchange(ref _uCDDetails, (v = new DirtyList<UCDDetail>()), null) ?? v; } set { _uCDDetails = new DirtyList<UCDDetail>(value); } }
-        private Value<decimal?> _uCDKSubTotal;
+        private DirtyValue<decimal?> _uCDKSubTotal;
         public decimal? UCDKSubTotal { get { return _uCDKSubTotal; } set { _uCDKSubTotal = value; } }
-        private Value<decimal?> _uCDLSubTotal;
+        private DirtyValue<decimal?> _uCDLSubTotal;
         public decimal? UCDLSubTotal { get { return _uCDLSubTotal; } set { _uCDLSubTotal = value; } }
-        private Value<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
+        private DirtyValue<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
         public decimal? UCDTotalAdjustmentsAndOtherCredits { get { return _uCDTotalAdjustmentsAndOtherCredits; } set { _uCDTotalAdjustmentsAndOtherCredits = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

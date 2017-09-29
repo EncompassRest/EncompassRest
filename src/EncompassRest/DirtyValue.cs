@@ -7,11 +7,11 @@ namespace EncompassRest
     /// Value wrapper to use for dirty checking.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal struct Value<T> : IDirty
+    internal struct DirtyValue<T> : IDirty
     {
-        public static implicit operator T(Value<T> value) => value._value;
+        public static implicit operator T(DirtyValue<T> value) => value._value;
 
-        public static implicit operator Value<T>(T value) => new Value<T>(value);
+        public static implicit operator DirtyValue<T>(T value) => new DirtyValue<T>(value);
 
         private static readonly bool s_tImplementsIDirty = TypeData<T>.Data.TypeInfo.ImplementedInterfaces.Any(implInterface => implInterface == TypeData<IDirty>.Type);
 
@@ -37,7 +37,7 @@ namespace EncompassRest
             }
         }
 
-        public Value(T value)
+        public DirtyValue(T value)
         {
             _value = value;
             _dirty = true;

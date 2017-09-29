@@ -8,9 +8,9 @@ namespace EncompassRest.Loans
 {
     public sealed partial class EdmDocument : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

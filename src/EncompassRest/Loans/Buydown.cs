@@ -8,25 +8,25 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Buydown : IDirty
     {
-        private Value<int?> _buydownIndex;
+        private DirtyValue<int?> _buydownIndex;
         public int? BuydownIndex { get { return _buydownIndex; } set { _buydownIndex = value; } }
-        private Value<decimal?> _buydownRatePercent;
+        private DirtyValue<decimal?> _buydownRatePercent;
         public decimal? BuydownRatePercent { get { return _buydownRatePercent; } set { _buydownRatePercent = value; } }
-        private Value<int?> _changeFrequencyMonthsCount;
+        private DirtyValue<int?> _changeFrequencyMonthsCount;
         public int? ChangeFrequencyMonthsCount { get { return _changeFrequencyMonthsCount; } set { _changeFrequencyMonthsCount = value; } }
-        private Value<int?> _durationMonthsCount;
+        private DirtyValue<int?> _durationMonthsCount;
         public int? DurationMonthsCount { get { return _durationMonthsCount; } set { _durationMonthsCount = value; } }
-        private Value<decimal?> _fundBalanceAmount;
+        private DirtyValue<decimal?> _fundBalanceAmount;
         public decimal? FundBalanceAmount { get { return _fundBalanceAmount; } set { _fundBalanceAmount = value; } }
-        private Value<decimal?> _fundTotalAmount;
+        private DirtyValue<decimal?> _fundTotalAmount;
         public decimal? FundTotalAmount { get { return _fundTotalAmount; } set { _fundTotalAmount = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _increaseRatePercent;
+        private DirtyValue<decimal?> _increaseRatePercent;
         public decimal? IncreaseRatePercent { get { return _increaseRatePercent; } set { _increaseRatePercent = value; } }
-        private Value<int?> _remainingMonthsCount;
+        private DirtyValue<int?> _remainingMonthsCount;
         public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
-        private Value<decimal?> _subsidyAmount;
+        private DirtyValue<decimal?> _subsidyAmount;
         public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

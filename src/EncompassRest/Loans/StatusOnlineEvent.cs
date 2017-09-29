@@ -8,11 +8,11 @@ namespace EncompassRest.Loans
 {
     public sealed partial class StatusOnlineEvent : IDirty
     {
-        private Value<string> _dateText;
+        private DirtyValue<string> _dateText;
         public string DateText { get { return _dateText; } set { _dateText = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

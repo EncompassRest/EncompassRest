@@ -4,17 +4,17 @@ namespace EncompassRest.Loans.Attachments
 {
     public abstract class Image : IDirty
     {
-        private Value<string> _imageKey;
+        private DirtyValue<string> _imageKey;
         public string ImageKey { get { return _imageKey; } set { _imageKey = value; } }
-        private Value<string> _zipKey;
+        private DirtyValue<string> _zipKey;
         public string ZipKey { get { return _zipKey; } set { _zipKey = value; } }
-        private Value<int?> _width;
+        private DirtyValue<int?> _width;
         public int? Width { get { return _width; } set { _width = value; } }
-        private Value<int?> _height;
+        private DirtyValue<int?> _height;
         public int? Height { get { return _height; } set { _height = value; } }
-        private Value<float?> _horizontalResolution;
+        private DirtyValue<float?> _horizontalResolution;
         public float? HorizontalResolution { get { return _horizontalResolution; } set { _horizontalResolution = value; } }
-        private Value<float?> _verticalResolution;
+        private DirtyValue<float?> _verticalResolution;
         public float? VeriticalResolution { get { return _verticalResolution; } set { _verticalResolution = value; } }
         private int _gettingDirty;
         private int _settingDirty;

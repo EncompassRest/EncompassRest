@@ -96,7 +96,7 @@ namespace {@namespace}
                     propertyType = $"DirtyList<{propertyType}>";
                 }
                 var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"Value<{propertyType}>")} {fieldName};");
+                sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                 properties.Add((propertyName, fieldName, isEntity, isCollection));
 
                 sb.AppendLine($"        public {(isCollection ? $"IList<{itemType}>" : propertyType)} {propertyName} {{ get {{ {(isEntity || isCollection ? $"var v = {fieldName}; return v ?? Interlocked.CompareExchange(ref {fieldName}, (v = new {propertyType}()), null) ?? v" : $"return {fieldName}")}; }} set {{ {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }} }}");

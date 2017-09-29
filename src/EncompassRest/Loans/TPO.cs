@@ -8,191 +8,191 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TPO : IDirty
     {
-        private Value<bool?> _archived;
+        private DirtyValue<bool?> _archived;
         public bool? Archived { get { return _archived; } set { _archived = value; } }
-        private Value<string> _branchAddress;
+        private DirtyValue<string> _branchAddress;
         public string BranchAddress { get { return _branchAddress; } set { _branchAddress = value; } }
-        private Value<string> _branchAEName;
+        private DirtyValue<string> _branchAEName;
         public string BranchAEName { get { return _branchAEName; } set { _branchAEName = value; } }
-        private Value<string> _branchAEUserName;
+        private DirtyValue<string> _branchAEUserName;
         public string BranchAEUserName { get { return _branchAEUserName; } set { _branchAEUserName = value; } }
-        private Value<string> _branchCity;
+        private DirtyValue<string> _branchCity;
         public string BranchCity { get { return _branchCity; } set { _branchCity = value; } }
-        private Value<string> _branchDBAName;
+        private DirtyValue<string> _branchDBAName;
         public string BranchDBAName { get { return _branchDBAName; } set { _branchDBAName = value; } }
-        private Value<string> _branchFax;
+        private DirtyValue<string> _branchFax;
         public string BranchFax { get { return _branchFax; } set { _branchFax = value; } }
-        private Value<string> _branchID;
+        private DirtyValue<string> _branchID;
         public string BranchID { get { return _branchID; } set { _branchID = value; } }
-        private Value<string> _branchLegalName;
+        private DirtyValue<string> _branchLegalName;
         public string BranchLegalName { get { return _branchLegalName; } set { _branchLegalName = value; } }
-        private Value<string> _branchManagerEmail;
+        private DirtyValue<string> _branchManagerEmail;
         public string BranchManagerEmail { get { return _branchManagerEmail; } set { _branchManagerEmail = value; } }
-        private Value<string> _branchManagerName;
+        private DirtyValue<string> _branchManagerName;
         public string BranchManagerName { get { return _branchManagerName; } set { _branchManagerName = value; } }
-        private Value<string> _branchName;
+        private DirtyValue<string> _branchName;
         public string BranchName { get { return _branchName; } set { _branchName = value; } }
-        private Value<string> _branchOrganizationID;
+        private DirtyValue<string> _branchOrganizationID;
         public string BranchOrganizationID { get { return _branchOrganizationID; } set { _branchOrganizationID = value; } }
-        private Value<string> _branchPhone;
+        private DirtyValue<string> _branchPhone;
         public string BranchPhone { get { return _branchPhone; } set { _branchPhone = value; } }
-        private Value<string> _branchRating;
+        private DirtyValue<string> _branchRating;
         public string BranchRating { get { return _branchRating; } set { _branchRating = value; } }
-        private Value<string> _branchState;
+        private DirtyValue<string> _branchState;
         public string BranchState { get { return _branchState; } set { _branchState = value; } }
-        private Value<string> _branchZip;
+        private DirtyValue<string> _branchZip;
         public string BranchZip { get { return _branchZip; } set { _branchZip = value; } }
-        private Value<string> _cFCAddress;
+        private DirtyValue<string> _cFCAddress;
         public string CFCAddress { get { return _cFCAddress; } set { _cFCAddress = value; } }
-        private Value<string> _cFCBusinessFax;
+        private DirtyValue<string> _cFCBusinessFax;
         public string CFCBusinessFax { get { return _cFCBusinessFax; } set { _cFCBusinessFax = value; } }
-        private Value<string> _cFCBusinessPhone;
+        private DirtyValue<string> _cFCBusinessPhone;
         public string CFCBusinessPhone { get { return _cFCBusinessPhone; } set { _cFCBusinessPhone = value; } }
-        private Value<string> _cFCCellPhone;
+        private DirtyValue<string> _cFCCellPhone;
         public string CFCCellPhone { get { return _cFCCellPhone; } set { _cFCCellPhone = value; } }
-        private Value<string> _cFCCity;
+        private DirtyValue<string> _cFCCity;
         public string CFCCity { get { return _cFCCity; } set { _cFCCity = value; } }
-        private Value<string> _cFCEmail;
+        private DirtyValue<string> _cFCEmail;
         public string CFCEmail { get { return _cFCEmail; } set { _cFCEmail = value; } }
-        private Value<string> _cFCName;
+        private DirtyValue<string> _cFCName;
         public string CFCName { get { return _cFCName; } set { _cFCName = value; } }
-        private Value<string> _cFCNotes;
+        private DirtyValue<string> _cFCNotes;
         public string CFCNotes { get { return _cFCNotes; } set { _cFCNotes = value; } }
-        private Value<string> _cFCRepAE;
+        private DirtyValue<string> _cFCRepAE;
         public string CFCRepAE { get { return _cFCRepAE; } set { _cFCRepAE = value; } }
-        private Value<string> _cFCSRAEUserName;
+        private DirtyValue<string> _cFCSRAEUserName;
         public string CFCSRAEUserName { get { return _cFCSRAEUserName; } set { _cFCSRAEUserName = value; } }
-        private Value<string> _cFCState;
+        private DirtyValue<string> _cFCState;
         public string CFCState { get { return _cFCState; } set { _cFCState = value; } }
-        private Value<string> _cFCStatus;
+        private DirtyValue<string> _cFCStatus;
         public string CFCStatus { get { return _cFCStatus; } set { _cFCStatus = value; } }
-        private Value<string> _cFCUserID;
+        private DirtyValue<string> _cFCUserID;
         public string CFCUserID { get { return _cFCUserID; } set { _cFCUserID = value; } }
-        private Value<string> _cFCZip;
+        private DirtyValue<string> _cFCZip;
         public string CFCZip { get { return _cFCZip; } set { _cFCZip = value; } }
-        private Value<string> _companyAddress;
+        private DirtyValue<string> _companyAddress;
         public string CompanyAddress { get { return _companyAddress; } set { _companyAddress = value; } }
-        private Value<string> _companyAEName;
+        private DirtyValue<string> _companyAEName;
         public string CompanyAEName { get { return _companyAEName; } set { _companyAEName = value; } }
-        private Value<string> _companyAEUserName;
+        private DirtyValue<string> _companyAEUserName;
         public string CompanyAEUserName { get { return _companyAEUserName; } set { _companyAEUserName = value; } }
-        private Value<string> _companyCity;
+        private DirtyValue<string> _companyCity;
         public string CompanyCity { get { return _companyCity; } set { _companyCity = value; } }
-        private Value<string> _companyDBAName;
+        private DirtyValue<string> _companyDBAName;
         public string CompanyDBAName { get { return _companyDBAName; } set { _companyDBAName = value; } }
-        private Value<string> _companyFax;
+        private DirtyValue<string> _companyFax;
         public string CompanyFax { get { return _companyFax; } set { _companyFax = value; } }
-        private Value<string> _companyID;
+        private DirtyValue<string> _companyID;
         public string CompanyID { get { return _companyID; } set { _companyID = value; } }
-        private Value<string> _companyLegalName;
+        private DirtyValue<string> _companyLegalName;
         public string CompanyLegalName { get { return _companyLegalName; } set { _companyLegalName = value; } }
-        private Value<string> _companyManagerEmail;
+        private DirtyValue<string> _companyManagerEmail;
         public string CompanyManagerEmail { get { return _companyManagerEmail; } set { _companyManagerEmail = value; } }
-        private Value<string> _companyManagerName;
+        private DirtyValue<string> _companyManagerName;
         public string CompanyManagerName { get { return _companyManagerName; } set { _companyManagerName = value; } }
-        private Value<string> _companyName;
+        private DirtyValue<string> _companyName;
         public string CompanyName { get { return _companyName; } set { _companyName = value; } }
-        private Value<string> _companyOrganizationID;
+        private DirtyValue<string> _companyOrganizationID;
         public string CompanyOrganizationID { get { return _companyOrganizationID; } set { _companyOrganizationID = value; } }
-        private Value<string> _companyPhone;
+        private DirtyValue<string> _companyPhone;
         public string CompanyPhone { get { return _companyPhone; } set { _companyPhone = value; } }
-        private Value<string> _companyRating;
+        private DirtyValue<string> _companyRating;
         public string CompanyRating { get { return _companyRating; } set { _companyRating = value; } }
-        private Value<string> _companyState;
+        private DirtyValue<string> _companyState;
         public string CompanyState { get { return _companyState; } set { _companyState = value; } }
-        private Value<string> _companyZip;
+        private DirtyValue<string> _companyZip;
         public string CompanyZip { get { return _companyZip; } set { _companyZip = value; } }
-        private Value<DateTime?> _documentsReadyDate;
+        private DirtyValue<DateTime?> _documentsReadyDate;
         public DateTime? DocumentsReadyDate { get { return _documentsReadyDate; } set { _documentsReadyDate = value; } }
-        private Value<string> _feeReviewComments;
+        private DirtyValue<string> _feeReviewComments;
         public string FeeReviewComments { get { return _feeReviewComments; } set { _feeReviewComments = value; } }
-        private Value<string> _feeReviewStatus;
+        private DirtyValue<string> _feeReviewStatus;
         public string FeeReviewStatus { get { return _feeReviewStatus; } set { _feeReviewStatus = value; } }
-        private Value<DateTime?> _feeReviewStatusDate;
+        private DirtyValue<DateTime?> _feeReviewStatusDate;
         public DateTime? FeeReviewStatusDate { get { return _feeReviewStatusDate; } set { _feeReviewStatusDate = value; } }
-        private Value<string> _importSource;
+        private DirtyValue<string> _importSource;
         public string ImportSource { get { return _importSource; } set { _importSource = value; } }
-        private Value<DateTime?> _initialApplicationDate;
+        private DirtyValue<DateTime?> _initialApplicationDate;
         public DateTime? InitialApplicationDate { get { return _initialApplicationDate; } set { _initialApplicationDate = value; } }
-        private Value<DateTime?> _initialSubmitDate;
+        private DirtyValue<DateTime?> _initialSubmitDate;
         public DateTime? InitialSubmitDate { get { return _initialSubmitDate; } set { _initialSubmitDate = value; } }
-        private Value<string> _lOAddress;
+        private DirtyValue<string> _lOAddress;
         public string LOAddress { get { return _lOAddress; } set { _lOAddress = value; } }
-        private Value<string> _lOAEName;
+        private DirtyValue<string> _lOAEName;
         public string LOAEName { get { return _lOAEName; } set { _lOAEName = value; } }
-        private Value<string> _lOAEUserName;
+        private DirtyValue<string> _lOAEUserName;
         public string LOAEUserName { get { return _lOAEUserName; } set { _lOAEUserName = value; } }
-        private Value<string> _lOBusinessFax;
+        private DirtyValue<string> _lOBusinessFax;
         public string LOBusinessFax { get { return _lOBusinessFax; } set { _lOBusinessFax = value; } }
-        private Value<string> _lOBusinessPhone;
+        private DirtyValue<string> _lOBusinessPhone;
         public string LOBusinessPhone { get { return _lOBusinessPhone; } set { _lOBusinessPhone = value; } }
-        private Value<string> _lOCellPhone;
+        private DirtyValue<string> _lOCellPhone;
         public string LOCellPhone { get { return _lOCellPhone; } set { _lOCellPhone = value; } }
-        private Value<string> _lOCity;
+        private DirtyValue<string> _lOCity;
         public string LOCity { get { return _lOCity; } set { _lOCity = value; } }
-        private Value<string> _lOEmail;
+        private DirtyValue<string> _lOEmail;
         public string LOEmail { get { return _lOEmail; } set { _lOEmail = value; } }
-        private Value<string> _lOID;
+        private DirtyValue<string> _lOID;
         public string LOID { get { return _lOID; } set { _lOID = value; } }
-        private Value<string> _lOName;
+        private DirtyValue<string> _lOName;
         public string LOName { get { return _lOName; } set { _lOName = value; } }
-        private Value<string> _lONotes;
+        private DirtyValue<string> _lONotes;
         public string LONotes { get { return _lONotes; } set { _lONotes = value; } }
-        private Value<string> _lOState;
+        private DirtyValue<string> _lOState;
         public string LOState { get { return _lOState; } set { _lOState = value; } }
-        private Value<string> _lOStatus;
+        private DirtyValue<string> _lOStatus;
         public string LOStatus { get { return _lOStatus; } set { _lOStatus = value; } }
-        private Value<string> _lOZip;
+        private DirtyValue<string> _lOZip;
         public string LOZip { get { return _lOZip; } set { _lOZip = value; } }
-        private Value<string> _lPAddress;
+        private DirtyValue<string> _lPAddress;
         public string LPAddress { get { return _lPAddress; } set { _lPAddress = value; } }
-        private Value<string> _lPAEName;
+        private DirtyValue<string> _lPAEName;
         public string LPAEName { get { return _lPAEName; } set { _lPAEName = value; } }
-        private Value<string> _lPAEUserName;
+        private DirtyValue<string> _lPAEUserName;
         public string LPAEUserName { get { return _lPAEUserName; } set { _lPAEUserName = value; } }
-        private Value<string> _lPBusinessFax;
+        private DirtyValue<string> _lPBusinessFax;
         public string LPBusinessFax { get { return _lPBusinessFax; } set { _lPBusinessFax = value; } }
-        private Value<string> _lPBusinessPhone;
+        private DirtyValue<string> _lPBusinessPhone;
         public string LPBusinessPhone { get { return _lPBusinessPhone; } set { _lPBusinessPhone = value; } }
-        private Value<string> _lPCellPhone;
+        private DirtyValue<string> _lPCellPhone;
         public string LPCellPhone { get { return _lPCellPhone; } set { _lPCellPhone = value; } }
-        private Value<string> _lPCity;
+        private DirtyValue<string> _lPCity;
         public string LPCity { get { return _lPCity; } set { _lPCity = value; } }
-        private Value<string> _lPEmail;
+        private DirtyValue<string> _lPEmail;
         public string LPEmail { get { return _lPEmail; } set { _lPEmail = value; } }
-        private Value<string> _lPID;
+        private DirtyValue<string> _lPID;
         public string LPID { get { return _lPID; } set { _lPID = value; } }
-        private Value<string> _lPName;
+        private DirtyValue<string> _lPName;
         public string LPName { get { return _lPName; } set { _lPName = value; } }
-        private Value<string> _lPNotes;
+        private DirtyValue<string> _lPNotes;
         public string LPNotes { get { return _lPNotes; } set { _lPNotes = value; } }
-        private Value<string> _lPState;
+        private DirtyValue<string> _lPState;
         public string LPState { get { return _lPState; } set { _lPState = value; } }
-        private Value<string> _lPStatus;
+        private DirtyValue<string> _lPStatus;
         public string LPStatus { get { return _lPStatus; } set { _lPStatus = value; } }
-        private Value<string> _lPZip;
+        private DirtyValue<string> _lPZip;
         public string LPZip { get { return _lPZip; } set { _lPZip = value; } }
-        private Value<DateTime?> _purchaseStipsReadyDate;
+        private DirtyValue<DateTime?> _purchaseStipsReadyDate;
         public DateTime? PurchaseStipsReadyDate { get { return _purchaseStipsReadyDate; } set { _purchaseStipsReadyDate = value; } }
-        private Value<bool?> _purchaseStipsReviewed;
+        private DirtyValue<bool?> _purchaseStipsReviewed;
         public bool? PurchaseStipsReviewed { get { return _purchaseStipsReviewed; } set { _purchaseStipsReviewed = value; } }
-        private Value<DateTime?> _readytoDiscloseDateUtc;
+        private DirtyValue<DateTime?> _readytoDiscloseDateUtc;
         public DateTime? ReadytoDiscloseDateUtc { get { return _readytoDiscloseDateUtc; } set { _readytoDiscloseDateUtc = value; } }
-        private Value<DateTime?> _registerDate;
+        private DirtyValue<DateTime?> _registerDate;
         public DateTime? RegisterDate { get { return _registerDate; } set { _registerDate = value; } }
-        private Value<string> _sITEID;
+        private DirtyValue<string> _sITEID;
         public string SITEID { get { return _sITEID; } set { _sITEID = value; } }
-        private Value<DateTime?> _submitDate;
+        private DirtyValue<DateTime?> _submitDate;
         public DateTime? SubmitDate { get { return _submitDate; } set { _submitDate = value; } }
-        private Value<bool?> _testAccountField;
+        private DirtyValue<bool?> _testAccountField;
         public bool? TestAccountField { get { return _testAccountField; } set { _testAccountField = value; } }
-        private Value<bool?> _underwriterReviewed;
+        private DirtyValue<bool?> _underwriterReviewed;
         public bool? UnderwriterReviewed { get { return _underwriterReviewed; } set { _underwriterReviewed = value; } }
-        private Value<bool?> _underwritingDelegated;
+        private DirtyValue<bool?> _underwritingDelegated;
         public bool? UnderwritingDelegated { get { return _underwritingDelegated; } set { _underwritingDelegated = value; } }
-        private Value<bool?> _watchListFlag;
+        private DirtyValue<bool?> _watchListFlag;
         public bool? WatchListFlag { get { return _watchListFlag; } set { _watchListFlag = value; } }
-        private Value<string> _watchListReason;
+        private DirtyValue<string> _watchListReason;
         public string WatchListReason { get { return _watchListReason; } set { _watchListReason = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

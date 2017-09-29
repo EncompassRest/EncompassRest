@@ -8,491 +8,491 @@ namespace EncompassRest.Loans
 {
     public sealed partial class RegulationZ : IDirty
     {
-        private Value<string> _acknowledgedDay;
+        private DirtyValue<string> _acknowledgedDay;
         public string AcknowledgedDay { get { return _acknowledgedDay; } set { _acknowledgedDay = value; } }
-        private Value<string> _acknowledgedMonth;
+        private DirtyValue<string> _acknowledgedMonth;
         public string AcknowledgedMonth { get { return _acknowledgedMonth; } set { _acknowledgedMonth = value; } }
-        private Value<string> _acknowledgedYear;
+        private DirtyValue<string> _acknowledgedYear;
         public string AcknowledgedYear { get { return _acknowledgedYear; } set { _acknowledgedYear = value; } }
-        private Value<bool?> _acquisition;
+        private DirtyValue<bool?> _acquisition;
         public bool? Acquisition { get { return _acquisition; } set { _acquisition = value; } }
-        private Value<string> _additionalArmInformation;
+        private DirtyValue<string> _additionalArmInformation;
         public string AdditionalArmInformation { get { return _additionalArmInformation; } set { _additionalArmInformation = value; } }
-        private Value<bool?> _allDateAndNumericalDisclosuresIndicator;
+        private DirtyValue<bool?> _allDateAndNumericalDisclosuresIndicator;
         public bool? AllDateAndNumericalDisclosuresIndicator { get { return _allDateAndNumericalDisclosuresIndicator; } set { _allDateAndNumericalDisclosuresIndicator = value; } }
-        private Value<decimal?> _amountFinanced;
+        private DirtyValue<decimal?> _amountFinanced;
         public decimal? AmountFinanced { get { return _amountFinanced; } set { _amountFinanced = value; } }
-        private Value<decimal?> _aprPercent;
+        private DirtyValue<decimal?> _aprPercent;
         public decimal? AprPercent { get { return _aprPercent; } set { _aprPercent = value; } }
-        private Value<string> _armDisclosureDescription;
+        private DirtyValue<string> _armDisclosureDescription;
         public string ArmDisclosureDescription { get { return _armDisclosureDescription; } set { _armDisclosureDescription = value; } }
-        private Value<string> _assumptionOnYourProperty;
+        private DirtyValue<string> _assumptionOnYourProperty;
         public string AssumptionOnYourProperty { get { return _assumptionOnYourProperty; } set { _assumptionOnYourProperty = value; } }
-        private Value<DateTime?> _borrowerIntendToContinueDate;
+        private DirtyValue<DateTime?> _borrowerIntendToContinueDate;
         public DateTime? BorrowerIntendToContinueDate { get { return _borrowerIntendToContinueDate; } set { _borrowerIntendToContinueDate = value; } }
-        private Value<bool?> _borrowerIntendToContinueIndicator;
+        private DirtyValue<bool?> _borrowerIntendToContinueIndicator;
         public bool? BorrowerIntendToContinueIndicator { get { return _borrowerIntendToContinueIndicator; } set { _borrowerIntendToContinueIndicator = value; } }
-        private Value<string> _borrowerMiTerminationDate;
+        private DirtyValue<string> _borrowerMiTerminationDate;
         public string BorrowerMiTerminationDate { get { return _borrowerMiTerminationDate; } set { _borrowerMiTerminationDate = value; } }
-        private Value<string> _calculateBasedOnRemainingBalance;
+        private DirtyValue<string> _calculateBasedOnRemainingBalance;
         public string CalculateBasedOnRemainingBalance { get { return _calculateBasedOnRemainingBalance; } set { _calculateBasedOnRemainingBalance = value; } }
-        private Value<bool?> _chargesAddedToPaymentsIndicator;
+        private DirtyValue<bool?> _chargesAddedToPaymentsIndicator;
         public bool? ChargesAddedToPaymentsIndicator { get { return _chargesAddedToPaymentsIndicator; } set { _chargesAddedToPaymentsIndicator = value; } }
-        private Value<bool?> _chargesAtLoanClosingIndicator;
+        private DirtyValue<bool?> _chargesAtLoanClosingIndicator;
         public bool? ChargesAtLoanClosingIndicator { get { return _chargesAtLoanClosingIndicator; } set { _chargesAtLoanClosingIndicator = value; } }
-        private Value<string> _circumstanceChangeReason;
+        private DirtyValue<string> _circumstanceChangeReason;
         public string CircumstanceChangeReason { get { return _circumstanceChangeReason; } set { _circumstanceChangeReason = value; } }
-        private Value<DateTime?> _circumstanceChangeReceivedDate;
+        private DirtyValue<DateTime?> _circumstanceChangeReceivedDate;
         public DateTime? CircumstanceChangeReceivedDate { get { return _circumstanceChangeReceivedDate; } set { _circumstanceChangeReceivedDate = value; } }
-        private Value<DateTime?> _closingDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _closingDisclosureReceivedDate;
         public DateTime? ClosingDisclosureReceivedDate { get { return _closingDisclosureReceivedDate; } set { _closingDisclosureReceivedDate = value; } }
-        private Value<DateTime?> _closingDisclosureSentDate;
+        private DirtyValue<DateTime?> _closingDisclosureSentDate;
         public DateTime? ClosingDisclosureSentDate { get { return _closingDisclosureSentDate; } set { _closingDisclosureSentDate = value; } }
-        private Value<string> _constructionFirstIntChangeAdjType;
+        private DirtyValue<string> _constructionFirstIntChangeAdjType;
         public string ConstructionFirstIntChangeAdjType { get { return _constructionFirstIntChangeAdjType; } set { _constructionFirstIntChangeAdjType = value; } }
-        private Value<string> _constructionLoanDescription;
+        private DirtyValue<string> _constructionLoanDescription;
         public string ConstructionLoanDescription { get { return _constructionLoanDescription; } set { _constructionLoanDescription = value; } }
-        private Value<string> _constructionLoanMethod;
+        private DirtyValue<string> _constructionLoanMethod;
         public string ConstructionLoanMethod { get { return _constructionLoanMethod; } set { _constructionLoanMethod = value; } }
-        private Value<int?> _constructionPeriodMonths;
+        private DirtyValue<int?> _constructionPeriodMonths;
         public int? ConstructionPeriodMonths { get { return _constructionPeriodMonths; } set { _constructionPeriodMonths = value; } }
-        private Value<decimal?> _constructionRatePercent;
+        private DirtyValue<decimal?> _constructionRatePercent;
         public decimal? ConstructionRatePercent { get { return _constructionRatePercent; } set { _constructionRatePercent = value; } }
-        private Value<bool?> _constructionRefinanceIndicator;
+        private DirtyValue<bool?> _constructionRefinanceIndicator;
         public bool? ConstructionRefinanceIndicator { get { return _constructionRefinanceIndicator; } set { _constructionRefinanceIndicator = value; } }
-        private Value<decimal?> _creditDisability;
+        private DirtyValue<decimal?> _creditDisability;
         public decimal? CreditDisability { get { return _creditDisability; } set { _creditDisability = value; } }
-        private Value<bool?> _creditDisabilityIndicator;
+        private DirtyValue<bool?> _creditDisabilityIndicator;
         public bool? CreditDisabilityIndicator { get { return _creditDisabilityIndicator; } set { _creditDisabilityIndicator = value; } }
-        private Value<decimal?> _creditLife;
+        private DirtyValue<decimal?> _creditLife;
         public decimal? CreditLife { get { return _creditLife; } set { _creditLife = value; } }
-        private Value<decimal?> _creditLifeAndCreditDisability;
+        private DirtyValue<decimal?> _creditLifeAndCreditDisability;
         public decimal? CreditLifeAndCreditDisability { get { return _creditLifeAndCreditDisability; } set { _creditLifeAndCreditDisability = value; } }
-        private Value<bool?> _creditLifeInsuranceIndicator;
+        private DirtyValue<bool?> _creditLifeInsuranceIndicator;
         public bool? CreditLifeInsuranceIndicator { get { return _creditLifeInsuranceIndicator; } set { _creditLifeInsuranceIndicator = value; } }
-        private Value<bool?> _customizePaymentScheduleIndicator;
+        private DirtyValue<bool?> _customizePaymentScheduleIndicator;
         public bool? CustomizePaymentScheduleIndicator { get { return _customizePaymentScheduleIndicator; } set { _customizePaymentScheduleIndicator = value; } }
-        private Value<bool?> _demandFeatureIndicator;
+        private DirtyValue<bool?> _demandFeatureIndicator;
         public bool? DemandFeatureIndicator { get { return _demandFeatureIndicator; } set { _demandFeatureIndicator = value; } }
-        private Value<decimal?> _disclosedAprPercent;
+        private DirtyValue<decimal?> _disclosedAprPercent;
         public decimal? DisclosedAprPercent { get { return _disclosedAprPercent; } set { _disclosedAprPercent = value; } }
-        private Value<bool?> _disclosedByBrokerIndicator;
+        private DirtyValue<bool?> _disclosedByBrokerIndicator;
         public bool? DisclosedByBrokerIndicator { get { return _disclosedByBrokerIndicator; } set { _disclosedByBrokerIndicator = value; } }
-        private Value<string> _disclosedComments;
+        private DirtyValue<string> _disclosedComments;
         public string DisclosedComments { get { return _disclosedComments; } set { _disclosedComments = value; } }
-        private Value<decimal?> _disclosedDailyInterestCharge;
+        private DirtyValue<decimal?> _disclosedDailyInterestCharge;
         public decimal? DisclosedDailyInterestCharge { get { return _disclosedDailyInterestCharge; } set { _disclosedDailyInterestCharge = value; } }
-        private Value<decimal?> _disclosedFinanceCharge;
+        private DirtyValue<decimal?> _disclosedFinanceCharge;
         public decimal? DisclosedFinanceCharge { get { return _disclosedFinanceCharge; } set { _disclosedFinanceCharge = value; } }
-        private Value<bool?> _disclosedPrepayment;
+        private DirtyValue<bool?> _disclosedPrepayment;
         public bool? DisclosedPrepayment { get { return _disclosedPrepayment; } set { _disclosedPrepayment = value; } }
-        private Value<string> _disclosedProduct;
+        private DirtyValue<string> _disclosedProduct;
         public string DisclosedProduct { get { return _disclosedProduct; } set { _disclosedProduct = value; } }
-        private Value<string> _disclosureMethod;
+        private DirtyValue<string> _disclosureMethod;
         public string DisclosureMethod { get { return _disclosureMethod; } set { _disclosureMethod = value; } }
-        private Value<string> _disclosureType;
+        private DirtyValue<string> _disclosureType;
         public string DisclosureType { get { return _disclosureType; } set { _disclosureType = value; } }
-        private Value<int?> _discountPeriod;
+        private DirtyValue<int?> _discountPeriod;
         public int? DiscountPeriod { get { return _discountPeriod; } set { _discountPeriod = value; } }
-        private Value<decimal?> _discountRatePercent;
+        private DirtyValue<decimal?> _discountRatePercent;
         public decimal? DiscountRatePercent { get { return _discountRatePercent; } set { _discountRatePercent = value; } }
-        private Value<string> _discountType;
+        private DirtyValue<string> _discountType;
         public string DiscountType { get { return _discountType; } set { _discountType = value; } }
-        private Value<DateTime?> _dueDate;
+        private DirtyValue<DateTime?> _dueDate;
         public DateTime? DueDate { get { return _dueDate; } set { _dueDate = value; } }
-        private Value<DateTime?> _earliestClosingDate;
+        private DirtyValue<DateTime?> _earliestClosingDate;
         public DateTime? EarliestClosingDate { get { return _earliestClosingDate; } set { _earliestClosingDate = value; } }
-        private Value<DateTime?> _earliestFeeCollectionDate;
+        private DirtyValue<DateTime?> _earliestFeeCollectionDate;
         public DateTime? EarliestFeeCollectionDate { get { return _earliestFeeCollectionDate; } set { _earliestFeeCollectionDate = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted1;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted1;
         public DateTime? eSignConsentBorrowerDateAccepted1 { get { return _eSignConsentBorrowerDateAccepted1; } set { _eSignConsentBorrowerDateAccepted1 = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted2;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted2;
         public DateTime? eSignConsentBorrowerDateAccepted2 { get { return _eSignConsentBorrowerDateAccepted2; } set { _eSignConsentBorrowerDateAccepted2 = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted3;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted3;
         public DateTime? eSignConsentBorrowerDateAccepted3 { get { return _eSignConsentBorrowerDateAccepted3; } set { _eSignConsentBorrowerDateAccepted3 = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted4;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted4;
         public DateTime? eSignConsentBorrowerDateAccepted4 { get { return _eSignConsentBorrowerDateAccepted4; } set { _eSignConsentBorrowerDateAccepted4 = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted5;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted5;
         public DateTime? eSignConsentBorrowerDateAccepted5 { get { return _eSignConsentBorrowerDateAccepted5; } set { _eSignConsentBorrowerDateAccepted5 = value; } }
-        private Value<DateTime?> _eSignConsentBorrowerDateAccepted6;
+        private DirtyValue<DateTime?> _eSignConsentBorrowerDateAccepted6;
         public DateTime? eSignConsentBorrowerDateAccepted6 { get { return _eSignConsentBorrowerDateAccepted6; } set { _eSignConsentBorrowerDateAccepted6 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress1;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress1;
         public string eSignConsentBorrowerIPAddress1 { get { return _eSignConsentBorrowerIPAddress1; } set { _eSignConsentBorrowerIPAddress1 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress2;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress2;
         public string eSignConsentBorrowerIPAddress2 { get { return _eSignConsentBorrowerIPAddress2; } set { _eSignConsentBorrowerIPAddress2 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress3;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress3;
         public string eSignConsentBorrowerIPAddress3 { get { return _eSignConsentBorrowerIPAddress3; } set { _eSignConsentBorrowerIPAddress3 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress4;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress4;
         public string eSignConsentBorrowerIPAddress4 { get { return _eSignConsentBorrowerIPAddress4; } set { _eSignConsentBorrowerIPAddress4 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress5;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress5;
         public string eSignConsentBorrowerIPAddress5 { get { return _eSignConsentBorrowerIPAddress5; } set { _eSignConsentBorrowerIPAddress5 = value; } }
-        private Value<string> _eSignConsentBorrowerIPAddress6;
+        private DirtyValue<string> _eSignConsentBorrowerIPAddress6;
         public string eSignConsentBorrowerIPAddress6 { get { return _eSignConsentBorrowerIPAddress6; } set { _eSignConsentBorrowerIPAddress6 = value; } }
-        private Value<string> _eSignConsentBorrowerSource1;
+        private DirtyValue<string> _eSignConsentBorrowerSource1;
         public string eSignConsentBorrowerSource1 { get { return _eSignConsentBorrowerSource1; } set { _eSignConsentBorrowerSource1 = value; } }
-        private Value<string> _eSignConsentBorrowerSource2;
+        private DirtyValue<string> _eSignConsentBorrowerSource2;
         public string eSignConsentBorrowerSource2 { get { return _eSignConsentBorrowerSource2; } set { _eSignConsentBorrowerSource2 = value; } }
-        private Value<string> _eSignConsentBorrowerSource3;
+        private DirtyValue<string> _eSignConsentBorrowerSource3;
         public string eSignConsentBorrowerSource3 { get { return _eSignConsentBorrowerSource3; } set { _eSignConsentBorrowerSource3 = value; } }
-        private Value<string> _eSignConsentBorrowerSource4;
+        private DirtyValue<string> _eSignConsentBorrowerSource4;
         public string eSignConsentBorrowerSource4 { get { return _eSignConsentBorrowerSource4; } set { _eSignConsentBorrowerSource4 = value; } }
-        private Value<string> _eSignConsentBorrowerSource5;
+        private DirtyValue<string> _eSignConsentBorrowerSource5;
         public string eSignConsentBorrowerSource5 { get { return _eSignConsentBorrowerSource5; } set { _eSignConsentBorrowerSource5 = value; } }
-        private Value<string> _eSignConsentBorrowerSource6;
+        private DirtyValue<string> _eSignConsentBorrowerSource6;
         public string eSignConsentBorrowerSource6 { get { return _eSignConsentBorrowerSource6; } set { _eSignConsentBorrowerSource6 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus1;
+        private DirtyValue<string> _eSignConsentBorrowerStatus1;
         public string eSignConsentBorrowerStatus1 { get { return _eSignConsentBorrowerStatus1; } set { _eSignConsentBorrowerStatus1 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus2;
+        private DirtyValue<string> _eSignConsentBorrowerStatus2;
         public string eSignConsentBorrowerStatus2 { get { return _eSignConsentBorrowerStatus2; } set { _eSignConsentBorrowerStatus2 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus3;
+        private DirtyValue<string> _eSignConsentBorrowerStatus3;
         public string eSignConsentBorrowerStatus3 { get { return _eSignConsentBorrowerStatus3; } set { _eSignConsentBorrowerStatus3 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus4;
+        private DirtyValue<string> _eSignConsentBorrowerStatus4;
         public string eSignConsentBorrowerStatus4 { get { return _eSignConsentBorrowerStatus4; } set { _eSignConsentBorrowerStatus4 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus5;
+        private DirtyValue<string> _eSignConsentBorrowerStatus5;
         public string eSignConsentBorrowerStatus5 { get { return _eSignConsentBorrowerStatus5; } set { _eSignConsentBorrowerStatus5 = value; } }
-        private Value<string> _eSignConsentBorrowerStatus6;
+        private DirtyValue<string> _eSignConsentBorrowerStatus6;
         public string eSignConsentBorrowerStatus6 { get { return _eSignConsentBorrowerStatus6; } set { _eSignConsentBorrowerStatus6 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted1;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted1;
         public DateTime? eSignConsentCoBorrowerDateAccepted1 { get { return _eSignConsentCoBorrowerDateAccepted1; } set { _eSignConsentCoBorrowerDateAccepted1 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted2;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted2;
         public DateTime? eSignConsentCoBorrowerDateAccepted2 { get { return _eSignConsentCoBorrowerDateAccepted2; } set { _eSignConsentCoBorrowerDateAccepted2 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted3;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted3;
         public DateTime? eSignConsentCoBorrowerDateAccepted3 { get { return _eSignConsentCoBorrowerDateAccepted3; } set { _eSignConsentCoBorrowerDateAccepted3 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted4;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted4;
         public DateTime? eSignConsentCoBorrowerDateAccepted4 { get { return _eSignConsentCoBorrowerDateAccepted4; } set { _eSignConsentCoBorrowerDateAccepted4 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted5;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted5;
         public DateTime? eSignConsentCoBorrowerDateAccepted5 { get { return _eSignConsentCoBorrowerDateAccepted5; } set { _eSignConsentCoBorrowerDateAccepted5 = value; } }
-        private Value<DateTime?> _eSignConsentCoBorrowerDateAccepted6;
+        private DirtyValue<DateTime?> _eSignConsentCoBorrowerDateAccepted6;
         public DateTime? eSignConsentCoBorrowerDateAccepted6 { get { return _eSignConsentCoBorrowerDateAccepted6; } set { _eSignConsentCoBorrowerDateAccepted6 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress1;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress1;
         public string eSignConsentCoBorrowerIPAddress1 { get { return _eSignConsentCoBorrowerIPAddress1; } set { _eSignConsentCoBorrowerIPAddress1 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress2;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress2;
         public string eSignConsentCoBorrowerIPAddress2 { get { return _eSignConsentCoBorrowerIPAddress2; } set { _eSignConsentCoBorrowerIPAddress2 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress3;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress3;
         public string eSignConsentCoBorrowerIPAddress3 { get { return _eSignConsentCoBorrowerIPAddress3; } set { _eSignConsentCoBorrowerIPAddress3 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress4;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress4;
         public string eSignConsentCoBorrowerIPAddress4 { get { return _eSignConsentCoBorrowerIPAddress4; } set { _eSignConsentCoBorrowerIPAddress4 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress5;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress5;
         public string eSignConsentCoBorrowerIPAddress5 { get { return _eSignConsentCoBorrowerIPAddress5; } set { _eSignConsentCoBorrowerIPAddress5 = value; } }
-        private Value<string> _eSignConsentCoBorrowerIPAddress6;
+        private DirtyValue<string> _eSignConsentCoBorrowerIPAddress6;
         public string eSignConsentCoBorrowerIPAddress6 { get { return _eSignConsentCoBorrowerIPAddress6; } set { _eSignConsentCoBorrowerIPAddress6 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource1;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource1;
         public string eSignConsentCoBorrowerSource1 { get { return _eSignConsentCoBorrowerSource1; } set { _eSignConsentCoBorrowerSource1 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource2;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource2;
         public string eSignConsentCoBorrowerSource2 { get { return _eSignConsentCoBorrowerSource2; } set { _eSignConsentCoBorrowerSource2 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource3;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource3;
         public string eSignConsentCoBorrowerSource3 { get { return _eSignConsentCoBorrowerSource3; } set { _eSignConsentCoBorrowerSource3 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource4;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource4;
         public string eSignConsentCoBorrowerSource4 { get { return _eSignConsentCoBorrowerSource4; } set { _eSignConsentCoBorrowerSource4 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource5;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource5;
         public string eSignConsentCoBorrowerSource5 { get { return _eSignConsentCoBorrowerSource5; } set { _eSignConsentCoBorrowerSource5 = value; } }
-        private Value<string> _eSignConsentCoBorrowerSource6;
+        private DirtyValue<string> _eSignConsentCoBorrowerSource6;
         public string eSignConsentCoBorrowerSource6 { get { return _eSignConsentCoBorrowerSource6; } set { _eSignConsentCoBorrowerSource6 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus1;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus1;
         public string eSignConsentCoBorrowerStatus1 { get { return _eSignConsentCoBorrowerStatus1; } set { _eSignConsentCoBorrowerStatus1 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus2;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus2;
         public string eSignConsentCoBorrowerStatus2 { get { return _eSignConsentCoBorrowerStatus2; } set { _eSignConsentCoBorrowerStatus2 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus3;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus3;
         public string eSignConsentCoBorrowerStatus3 { get { return _eSignConsentCoBorrowerStatus3; } set { _eSignConsentCoBorrowerStatus3 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus4;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus4;
         public string eSignConsentCoBorrowerStatus4 { get { return _eSignConsentCoBorrowerStatus4; } set { _eSignConsentCoBorrowerStatus4 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus5;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus5;
         public string eSignConsentCoBorrowerStatus5 { get { return _eSignConsentCoBorrowerStatus5; } set { _eSignConsentCoBorrowerStatus5 = value; } }
-        private Value<string> _eSignConsentCoBorrowerStatus6;
+        private DirtyValue<string> _eSignConsentCoBorrowerStatus6;
         public string eSignConsentCoBorrowerStatus6 { get { return _eSignConsentCoBorrowerStatus6; } set { _eSignConsentCoBorrowerStatus6 = value; } }
-        private Value<DateTime?> _eSignConsentDate;
+        private DirtyValue<DateTime?> _eSignConsentDate;
         public DateTime? eSignConsentDate { get { return _eSignConsentDate; } set { _eSignConsentDate = value; } }
-        private Value<decimal?> _extraPaymentForEarlyPayOff;
+        private DirtyValue<decimal?> _extraPaymentForEarlyPayOff;
         public decimal? ExtraPaymentForEarlyPayOff { get { return _extraPaymentForEarlyPayOff; } set { _extraPaymentForEarlyPayOff = value; } }
-        private Value<DateTime?> _feeCollectedDate;
+        private DirtyValue<DateTime?> _feeCollectedDate;
         public DateTime? FeeCollectedDate { get { return _feeCollectedDate; } set { _feeCollectedDate = value; } }
-        private Value<decimal?> _filingFees;
+        private DirtyValue<decimal?> _filingFees;
         public decimal? FilingFees { get { return _filingFees; } set { _filingFees = value; } }
-        private Value<DateTime?> _finalPaymentDate;
+        private DirtyValue<DateTime?> _finalPaymentDate;
         public DateTime? FinalPaymentDate { get { return _finalPaymentDate; } set { _finalPaymentDate = value; } }
-        private Value<decimal?> _financeCharge;
+        private DirtyValue<decimal?> _financeCharge;
         public decimal? FinanceCharge { get { return _financeCharge; } set { _financeCharge = value; } }
-        private Value<decimal?> _financedAllGuaranteeFeeAmount;
+        private DirtyValue<decimal?> _financedAllGuaranteeFeeAmount;
         public decimal? FinancedAllGuaranteeFeeAmount { get { return _financedAllGuaranteeFeeAmount; } set { _financedAllGuaranteeFeeAmount = value; } }
-        private Value<decimal?> _financedAllGuaranteeFeePercent;
+        private DirtyValue<decimal?> _financedAllGuaranteeFeePercent;
         public decimal? FinancedAllGuaranteeFeePercent { get { return _financedAllGuaranteeFeePercent; } set { _financedAllGuaranteeFeePercent = value; } }
-        private Value<decimal?> _financedAllTotalLoanAmount;
+        private DirtyValue<decimal?> _financedAllTotalLoanAmount;
         public decimal? FinancedAllTotalLoanAmount { get { return _financedAllTotalLoanAmount; } set { _financedAllTotalLoanAmount = value; } }
-        private Value<decimal?> _financedPortionGuaranteeFeeAmount;
+        private DirtyValue<decimal?> _financedPortionGuaranteeFeeAmount;
         public decimal? FinancedPortionGuaranteeFeeAmount { get { return _financedPortionGuaranteeFeeAmount; } set { _financedPortionGuaranteeFeeAmount = value; } }
-        private Value<decimal?> _financedPortionGuaranteeFeePercent;
+        private DirtyValue<decimal?> _financedPortionGuaranteeFeePercent;
         public decimal? FinancedPortionGuaranteeFeePercent { get { return _financedPortionGuaranteeFeePercent; } set { _financedPortionGuaranteeFeePercent = value; } }
-        private Value<decimal?> _financedPortionTotalLoanAmount;
+        private DirtyValue<decimal?> _financedPortionTotalLoanAmount;
         public decimal? FinancedPortionTotalLoanAmount { get { return _financedPortionTotalLoanAmount; } set { _financedPortionTotalLoanAmount = value; } }
-        private Value<string> _financingType;
+        private DirtyValue<string> _financingType;
         public string FinancingType { get { return _financingType; } set { _financingType = value; } }
-        private Value<DateTime?> _firstAmortizationPaymentDate;
+        private DirtyValue<DateTime?> _firstAmortizationPaymentDate;
         public DateTime? FirstAmortizationPaymentDate { get { return _firstAmortizationPaymentDate; } set { _firstAmortizationPaymentDate = value; } }
-        private Value<bool?> _floodInsuranceIndicator;
+        private DirtyValue<bool?> _floodInsuranceIndicator;
         public bool? FloodInsuranceIndicator { get { return _floodInsuranceIndicator; } set { _floodInsuranceIndicator = value; } }
-        private Value<DateTime?> _gfeApplicationDate;
+        private DirtyValue<DateTime?> _gfeApplicationDate;
         public DateTime? GfeApplicationDate { get { return _gfeApplicationDate; } set { _gfeApplicationDate = value; } }
-        private Value<bool?> _gfeChangedCircumstanceIndicator;
+        private DirtyValue<bool?> _gfeChangedCircumstanceIndicator;
         public bool? GfeChangedCircumstanceIndicator { get { return _gfeChangedCircumstanceIndicator; } set { _gfeChangedCircumstanceIndicator = value; } }
-        private Value<string> _gfeChangedCircumstanceItem;
+        private DirtyValue<string> _gfeChangedCircumstanceItem;
         public string GfeChangedCircumstanceItem { get { return _gfeChangedCircumstanceItem; } set { _gfeChangedCircumstanceItem = value; } }
-        private Value<string> _gFEChangedCirsumstanceItemCode;
+        private DirtyValue<string> _gFEChangedCirsumstanceItemCode;
         public string GFEChangedCirsumstanceItemCode { get { return _gFEChangedCirsumstanceItemCode; } set { _gFEChangedCirsumstanceItemCode = value; } }
-        private Value<DateTime?> _gfeDate;
+        private DirtyValue<DateTime?> _gfeDate;
         public DateTime? GfeDate { get { return _gfeDate; } set { _gfeDate = value; } }
-        private Value<DateTime?> _gfeExpirationDate;
+        private DirtyValue<DateTime?> _gfeExpirationDate;
         public DateTime? GfeExpirationDate { get { return _gfeExpirationDate; } set { _gfeExpirationDate = value; } }
-        private Value<string> _gfeExpirationPeriod;
+        private DirtyValue<string> _gfeExpirationPeriod;
         public string GfeExpirationPeriod { get { return _gfeExpirationPeriod; } set { _gfeExpirationPeriod = value; } }
-        private Value<bool?> _gfeRateLockRedisclosureRequiredIndicator;
+        private DirtyValue<bool?> _gfeRateLockRedisclosureRequiredIndicator;
         public bool? GfeRateLockRedisclosureRequiredIndicator { get { return _gfeRateLockRedisclosureRequiredIndicator; } set { _gfeRateLockRedisclosureRequiredIndicator = value; } }
-        private Value<DateTime?> _gfeRedisclosureProvidedDate;
+        private DirtyValue<DateTime?> _gfeRedisclosureProvidedDate;
         public DateTime? GfeRedisclosureProvidedDate { get { return _gfeRedisclosureProvidedDate; } set { _gfeRedisclosureProvidedDate = value; } }
-        private Value<DateTime?> _gfeRedisclosureReceivedDate;
+        private DirtyValue<DateTime?> _gfeRedisclosureReceivedDate;
         public DateTime? GfeRedisclosureReceivedDate { get { return _gfeRedisclosureReceivedDate; } set { _gfeRedisclosureReceivedDate = value; } }
-        private Value<DateTime?> _highCostDisclosure;
+        private DirtyValue<DateTime?> _highCostDisclosure;
         public DateTime? HighCostDisclosure { get { return _highCostDisclosure; } set { _highCostDisclosure = value; } }
-        private Value<DateTime?> _homeCounselingProvidedDate;
+        private DirtyValue<DateTime?> _homeCounselingProvidedDate;
         public DateTime? HomeCounselingProvidedDate { get { return _homeCounselingProvidedDate; } set { _homeCounselingProvidedDate = value; } }
-        private Value<bool?> _hud1ToleranceViolatedIndicator;
+        private DirtyValue<bool?> _hud1ToleranceViolatedIndicator;
         public bool? Hud1ToleranceViolatedIndicator { get { return _hud1ToleranceViolatedIndicator; } set { _hud1ToleranceViolatedIndicator = value; } }
-        private Value<string> _hudToleranceResolutionComments;
+        private DirtyValue<string> _hudToleranceResolutionComments;
         public string HudToleranceResolutionComments { get { return _hudToleranceResolutionComments; } set { _hudToleranceResolutionComments = value; } }
-        private Value<DateTime?> _hudToleranceResolutionDate;
+        private DirtyValue<DateTime?> _hudToleranceResolutionDate;
         public DateTime? HudToleranceResolutionDate { get { return _hudToleranceResolutionDate; } set { _hudToleranceResolutionDate = value; } }
-        private Value<string> _hudToleranceResolvedBy;
+        private DirtyValue<string> _hudToleranceResolvedBy;
         public string HudToleranceResolvedBy { get { return _hudToleranceResolvedBy; } set { _hudToleranceResolvedBy = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _ifYouPurchaseIndicator;
+        private DirtyValue<bool?> _ifYouPurchaseIndicator;
         public bool? IfYouPurchaseIndicator { get { return _ifYouPurchaseIndicator; } set { _ifYouPurchaseIndicator = value; } }
-        private Value<string> _ifYouPurchaseType;
+        private DirtyValue<string> _ifYouPurchaseType;
         public string IfYouPurchaseType { get { return _ifYouPurchaseType; } set { _ifYouPurchaseType = value; } }
-        private Value<bool?> _includeMiIndicator;
+        private DirtyValue<bool?> _includeMiIndicator;
         public bool? IncludeMiIndicator { get { return _includeMiIndicator; } set { _includeMiIndicator = value; } }
-        private Value<bool?> _includePmiIndicator;
+        private DirtyValue<bool?> _includePmiIndicator;
         public bool? IncludePmiIndicator { get { return _includePmiIndicator; } set { _includePmiIndicator = value; } }
-        private Value<bool?> _includeTaxesInsuranceIndicator;
+        private DirtyValue<bool?> _includeTaxesInsuranceIndicator;
         public bool? IncludeTaxesInsuranceIndicator { get { return _includeTaxesInsuranceIndicator; } set { _includeTaxesInsuranceIndicator = value; } }
-        private Value<DateTime?> _initialAVMProvidedDate;
+        private DirtyValue<DateTime?> _initialAVMProvidedDate;
         public DateTime? InitialAVMProvidedDate { get { return _initialAVMProvidedDate; } set { _initialAVMProvidedDate = value; } }
-        private Value<DateTime?> _initialDisclosureDueDate;
+        private DirtyValue<DateTime?> _initialDisclosureDueDate;
         public DateTime? InitialDisclosureDueDate { get { return _initialDisclosureDueDate; } set { _initialDisclosureDueDate = value; } }
-        private Value<DateTime?> _initialDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialDisclosureProvidedDate;
         public DateTime? InitialDisclosureProvidedDate { get { return _initialDisclosureProvidedDate; } set { _initialDisclosureProvidedDate = value; } }
-        private Value<DateTime?> _initialGfeAffiliatedBusinessProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeAffiliatedBusinessProvidedDate;
         public DateTime? InitialGfeAffiliatedBusinessProvidedDate { get { return _initialGfeAffiliatedBusinessProvidedDate; } set { _initialGfeAffiliatedBusinessProvidedDate = value; } }
-        private Value<DateTime?> _initialGFEAppraisalProvidedDate;
+        private DirtyValue<DateTime?> _initialGFEAppraisalProvidedDate;
         public DateTime? InitialGFEAppraisalProvidedDate { get { return _initialGFEAppraisalProvidedDate; } set { _initialGFEAppraisalProvidedDate = value; } }
-        private Value<DateTime?> _initialGfeCharmBookletProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeCharmBookletProvidedDate;
         public DateTime? InitialGfeCharmBookletProvidedDate { get { return _initialGfeCharmBookletProvidedDate; } set { _initialGfeCharmBookletProvidedDate = value; } }
-        private Value<DateTime?> _initialGfeDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeDisclosureProvidedDate;
         public DateTime? InitialGfeDisclosureProvidedDate { get { return _initialGfeDisclosureProvidedDate; } set { _initialGfeDisclosureProvidedDate = value; } }
-        private Value<DateTime?> _initialGfeDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _initialGfeDisclosureReceivedDate;
         public DateTime? InitialGfeDisclosureReceivedDate { get { return _initialGfeDisclosureReceivedDate; } set { _initialGfeDisclosureReceivedDate = value; } }
-        private Value<DateTime?> _initialGfeHelocBrochureProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeHelocBrochureProvidedDate;
         public DateTime? InitialGfeHelocBrochureProvidedDate { get { return _initialGfeHelocBrochureProvidedDate; } set { _initialGfeHelocBrochureProvidedDate = value; } }
-        private Value<DateTime?> _initialGfeHudSpecialBookletProvidedDate;
+        private DirtyValue<DateTime?> _initialGfeHudSpecialBookletProvidedDate;
         public DateTime? InitialGfeHudSpecialBookletProvidedDate { get { return _initialGfeHudSpecialBookletProvidedDate; } set { _initialGfeHudSpecialBookletProvidedDate = value; } }
-        private Value<DateTime?> _initialSubsequentAppraisalProvidedDate;
+        private DirtyValue<DateTime?> _initialSubsequentAppraisalProvidedDate;
         public DateTime? InitialSubsequentAppraisalProvidedDate { get { return _initialSubsequentAppraisalProvidedDate; } set { _initialSubsequentAppraisalProvidedDate = value; } }
-        private Value<DateTime?> _initialTilDisclosureProvidedDate;
+        private DirtyValue<DateTime?> _initialTilDisclosureProvidedDate;
         public DateTime? InitialTilDisclosureProvidedDate { get { return _initialTilDisclosureProvidedDate; } set { _initialTilDisclosureProvidedDate = value; } }
-        private Value<DateTime?> _initialTilDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _initialTilDisclosureReceivedDate;
         public DateTime? InitialTilDisclosureReceivedDate { get { return _initialTilDisclosureReceivedDate; } set { _initialTilDisclosureReceivedDate = value; } }
-        private Value<string> _insuranceRequiredDescription;
+        private DirtyValue<string> _insuranceRequiredDescription;
         public string InsuranceRequiredDescription { get { return _insuranceRequiredDescription; } set { _insuranceRequiredDescription = value; } }
-        private Value<string> _interestInNameOf;
+        private DirtyValue<string> _interestInNameOf;
         public string InterestInNameOf { get { return _interestInNameOf; } set { _interestInNameOf = value; } }
-        private Value<bool?> _interestOnly;
+        private DirtyValue<bool?> _interestOnly;
         public bool? InterestOnly { get { return _interestOnly; } set { _interestOnly = value; } }
-        private Value<bool?> _interestOnlyIndicator;
+        private DirtyValue<bool?> _interestOnlyIndicator;
         public bool? InterestOnlyIndicator { get { return _interestOnlyIndicator; } set { _interestOnlyIndicator = value; } }
-        private Value<int?> _interestOnlyMonths;
+        private DirtyValue<int?> _interestOnlyMonths;
         public int? InterestOnlyMonths { get { return _interestOnlyMonths; } set { _interestOnlyMonths = value; } }
-        private Value<string> _interestRateType;
+        private DirtyValue<string> _interestRateType;
         public string InterestRateType { get { return _interestRateType; } set { _interestRateType = value; } }
-        private Value<decimal?> _interestReserveAmount;
+        private DirtyValue<decimal?> _interestReserveAmount;
         public decimal? InterestReserveAmount { get { return _interestReserveAmount; } set { _interestReserveAmount = value; } }
-        private Value<string> _lastDisclosedBy;
+        private DirtyValue<string> _lastDisclosedBy;
         public string LastDisclosedBy { get { return _lastDisclosedBy; } set { _lastDisclosedBy = value; } }
-        private Value<DateTime?> _lastDisclosedDate;
+        private DirtyValue<DateTime?> _lastDisclosedDate;
         public DateTime? LastDisclosedDate { get { return _lastDisclosedDate; } set { _lastDisclosedDate = value; } }
-        private Value<DateTime?> _lastDisclosedGfeReceivedDate;
+        private DirtyValue<DateTime?> _lastDisclosedGfeReceivedDate;
         public DateTime? LastDisclosedGfeReceivedDate { get { return _lastDisclosedGfeReceivedDate; } set { _lastDisclosedGfeReceivedDate = value; } }
-        private Value<decimal?> _lateChargeBasis;
+        private DirtyValue<decimal?> _lateChargeBasis;
         public decimal? LateChargeBasis { get { return _lateChargeBasis; } set { _lateChargeBasis = value; } }
-        private Value<string> _lateChargeComments;
+        private DirtyValue<string> _lateChargeComments;
         public string LateChargeComments { get { return _lateChargeComments; } set { _lateChargeComments = value; } }
-        private Value<int?> _lateChargeDays;
+        private DirtyValue<int?> _lateChargeDays;
         public int? LateChargeDays { get { return _lateChargeDays; } set { _lateChargeDays = value; } }
-        private Value<decimal?> _lateChargePercent;
+        private DirtyValue<decimal?> _lateChargePercent;
         public decimal? LateChargePercent { get { return _lateChargePercent; } set { _lateChargePercent = value; } }
-        private Value<string> _lateChargeType;
+        private DirtyValue<string> _lateChargeType;
         public string LateChargeType { get { return _lateChargeType; } set { _lateChargeType = value; } }
-        private Value<decimal?> _lateFee;
+        private DirtyValue<decimal?> _lateFee;
         public decimal? LateFee { get { return _lateFee; } set { _lateFee = value; } }
-        private Value<string> _lEIntentToProceedComment;
+        private DirtyValue<string> _lEIntentToProceedComment;
         public string LEIntentToProceedComment { get { return _lEIntentToProceedComment; } set { _lEIntentToProceedComment = value; } }
-        private Value<bool?> _lenderPaidMortgageInsuranceIndicator;
+        private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
         public bool? LenderPaidMortgageInsuranceIndicator { get { return _lenderPaidMortgageInsuranceIndicator; } set { _lenderPaidMortgageInsuranceIndicator = value; } }
-        private Value<decimal?> _lendersInspectionFee;
+        private DirtyValue<decimal?> _lendersInspectionFee;
         public decimal? LendersInspectionFee { get { return _lendersInspectionFee; } set { _lendersInspectionFee = value; } }
-        private Value<string> _lEReceivedBy;
+        private DirtyValue<string> _lEReceivedBy;
         public string LEReceivedBy { get { return _lEReceivedBy; } set { _lEReceivedBy = value; } }
-        private Value<string> _lEReceivedMethod;
+        private DirtyValue<string> _lEReceivedMethod;
         public string LEReceivedMethod { get { return _lEReceivedMethod; } set { _lEReceivedMethod = value; } }
-        private Value<string> _lEReceivedMethodOther;
+        private DirtyValue<string> _lEReceivedMethodOther;
         public string LEReceivedMethodOther { get { return _lEReceivedMethodOther; } set { _lEReceivedMethodOther = value; } }
-        private Value<DateTime?> _lESentOnDate;
+        private DirtyValue<DateTime?> _lESentOnDate;
         public DateTime? LESentOnDate { get { return _lESentOnDate; } set { _lESentOnDate = value; } }
-        private Value<decimal?> _marginPlusIndexPercent;
+        private DirtyValue<decimal?> _marginPlusIndexPercent;
         public decimal? MarginPlusIndexPercent { get { return _marginPlusIndexPercent; } set { _marginPlusIndexPercent = value; } }
-        private Value<decimal?> _maximumLateCharge;
+        private DirtyValue<decimal?> _maximumLateCharge;
         public decimal? MaximumLateCharge { get { return _maximumLateCharge; } set { _maximumLateCharge = value; } }
-        private Value<decimal?> _maximumPayment;
+        private DirtyValue<decimal?> _maximumPayment;
         public decimal? MaximumPayment { get { return _maximumPayment; } set { _maximumPayment = value; } }
-        private Value<bool?> _meansAnEstimateIndicator;
+        private DirtyValue<bool?> _meansAnEstimateIndicator;
         public bool? MeansAnEstimateIndicator { get { return _meansAnEstimateIndicator; } set { _meansAnEstimateIndicator = value; } }
-        private Value<decimal?> _miAdjustmentFactorLevel2;
+        private DirtyValue<decimal?> _miAdjustmentFactorLevel2;
         public decimal? MiAdjustmentFactorLevel2 { get { return _miAdjustmentFactorLevel2; } set { _miAdjustmentFactorLevel2 = value; } }
-        private Value<bool?> _miDecliningRenewalsIndicator;
+        private DirtyValue<bool?> _miDecliningRenewalsIndicator;
         public bool? MiDecliningRenewalsIndicator { get { return _miDecliningRenewalsIndicator; } set { _miDecliningRenewalsIndicator = value; } }
-        private Value<string> _midpointCancellation;
+        private DirtyValue<string> _midpointCancellation;
         public string MidpointCancellation { get { return _midpointCancellation; } set { _midpointCancellation = value; } }
-        private Value<decimal?> _miMonthlyPaymentLevel1;
+        private DirtyValue<decimal?> _miMonthlyPaymentLevel1;
         public decimal? MiMonthlyPaymentLevel1 { get { return _miMonthlyPaymentLevel1; } set { _miMonthlyPaymentLevel1 = value; } }
-        private Value<decimal?> _miMonthlyPaymentLevel2;
+        private DirtyValue<decimal?> _miMonthlyPaymentLevel2;
         public decimal? MiMonthlyPaymentLevel2 { get { return _miMonthlyPaymentLevel2; } set { _miMonthlyPaymentLevel2 = value; } }
-        private Value<int?> _miMonthsOfAdjustmentLevel1;
+        private DirtyValue<int?> _miMonthsOfAdjustmentLevel1;
         public int? MiMonthsOfAdjustmentLevel1 { get { return _miMonthsOfAdjustmentLevel1; } set { _miMonthsOfAdjustmentLevel1 = value; } }
-        private Value<int?> _miMonthsOfAdjustmentLevel2;
+        private DirtyValue<int?> _miMonthsOfAdjustmentLevel2;
         public int? MiMonthsOfAdjustmentLevel2 { get { return _miMonthsOfAdjustmentLevel2; } set { _miMonthsOfAdjustmentLevel2 = value; } }
-        private Value<decimal?> _minimumLateCharge;
+        private DirtyValue<decimal?> _minimumLateCharge;
         public decimal? MinimumLateCharge { get { return _minimumLateCharge; } set { _minimumLateCharge = value; } }
-        private Value<decimal?> _minimumPayment;
+        private DirtyValue<decimal?> _minimumPayment;
         public decimal? MinimumPayment { get { return _minimumPayment; } set { _minimumPayment = value; } }
-        private Value<bool?> _mIPFactorLocked;
+        private DirtyValue<bool?> _mIPFactorLocked;
         public bool? MIPFactorLocked { get { return _mIPFactorLocked; } set { _mIPFactorLocked = value; } }
-        private Value<decimal?> _mIPrepaidAmount;
+        private DirtyValue<decimal?> _mIPrepaidAmount;
         public decimal? MIPrepaidAmount { get { return _mIPrepaidAmount; } set { _mIPrepaidAmount = value; } }
-        private Value<bool?> _miPrepaidIndicator;
+        private DirtyValue<bool?> _miPrepaidIndicator;
         public bool? MiPrepaidIndicator { get { return _miPrepaidIndicator; } set { _miPrepaidIndicator = value; } }
-        private Value<string> _miScheduledTerminationDate;
+        private DirtyValue<string> _miScheduledTerminationDate;
         public string MiScheduledTerminationDate { get { return _miScheduledTerminationDate; } set { _miScheduledTerminationDate = value; } }
-        private Value<bool?> _mmiIndicator;
+        private DirtyValue<bool?> _mmiIndicator;
         public bool? MmiIndicator { get { return _mmiIndicator; } set { _mmiIndicator = value; } }
-        private Value<decimal?> _monthlyTerm;
+        private DirtyValue<decimal?> _monthlyTerm;
         public decimal? MonthlyTerm { get { return _monthlyTerm; } set { _monthlyTerm = value; } }
-        private Value<int?> _monthsOfMiPrepaid;
+        private DirtyValue<int?> _monthsOfMiPrepaid;
         public int? MonthsOfMiPrepaid { get { return _monthsOfMiPrepaid; } set { _monthsOfMiPrepaid = value; } }
-        private Value<decimal?> _mortgageInsuranceCancelPercent;
+        private DirtyValue<decimal?> _mortgageInsuranceCancelPercent;
         public decimal? MortgageInsuranceCancelPercent { get { return _mortgageInsuranceCancelPercent; } set { _mortgageInsuranceCancelPercent = value; } }
-        private Value<string> _namePreparedBy;
+        private DirtyValue<string> _namePreparedBy;
         public string NamePreparedBy { get { return _namePreparedBy; } set { _namePreparedBy = value; } }
-        private Value<string> _newConstructionIndicator;
+        private DirtyValue<string> _newConstructionIndicator;
         public string NewConstructionIndicator { get { return _newConstructionIndicator; } set { _newConstructionIndicator = value; } }
-        private Value<int?> _numberOfPayments;
+        private DirtyValue<int?> _numberOfPayments;
         public int? NumberOfPayments { get { return _numberOfPayments; } set { _numberOfPayments = value; } }
-        private Value<DateTime?> _occupancyCertDate;
+        private DirtyValue<DateTime?> _occupancyCertDate;
         public DateTime? OccupancyCertDate { get { return _occupancyCertDate; } set { _occupancyCertDate = value; } }
-        private Value<DateTime?> _originalContractDate;
+        private DirtyValue<DateTime?> _originalContractDate;
         public DateTime? OriginalContractDate { get { return _originalContractDate; } set { _originalContractDate = value; } }
-        private Value<decimal?> _outstandingBalance;
+        private DirtyValue<decimal?> _outstandingBalance;
         public decimal? OutstandingBalance { get { return _outstandingBalance; } set { _outstandingBalance = value; } }
-        private Value<string> _paymentFrequencyType;
+        private DirtyValue<string> _paymentFrequencyType;
         public string PaymentFrequencyType { get { return _paymentFrequencyType; } set { _paymentFrequencyType = value; } }
-        private Value<decimal?> _paymentIncreasePercent;
+        private DirtyValue<decimal?> _paymentIncreasePercent;
         public decimal? PaymentIncreasePercent { get { return _paymentIncreasePercent; } set { _paymentIncreasePercent = value; } }
-        private Value<string> _phonePreparedBy;
+        private DirtyValue<string> _phonePreparedBy;
         public string PhonePreparedBy { get { return _phonePreparedBy; } set { _phonePreparedBy = value; } }
-        private Value<bool?> _pmiIndicator;
+        private DirtyValue<bool?> _pmiIndicator;
         public bool? PmiIndicator { get { return _pmiIndicator; } set { _pmiIndicator = value; } }
-        private Value<DateTime?> _pmiMidpointCancelationDate;
+        private DirtyValue<DateTime?> _pmiMidpointCancelationDate;
         public DateTime? PmiMidpointCancelationDate { get { return _pmiMidpointCancelationDate; } set { _pmiMidpointCancelationDate = value; } }
-        private Value<DateTime?> _postConsummationDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _postConsummationDisclosureReceivedDate;
         public DateTime? PostConsummationDisclosureReceivedDate { get { return _postConsummationDisclosureReceivedDate; } set { _postConsummationDisclosureReceivedDate = value; } }
-        private Value<DateTime?> _postConsummationDisclosureSentDate;
+        private DirtyValue<DateTime?> _postConsummationDisclosureSentDate;
         public DateTime? PostConsummationDisclosureSentDate { get { return _postConsummationDisclosureSentDate; } set { _postConsummationDisclosureSentDate = value; } }
-        private Value<decimal?> _prepaidFinanceCharge;
+        private DirtyValue<decimal?> _prepaidFinanceCharge;
         public decimal? PrepaidFinanceCharge { get { return _prepaidFinanceCharge; } set { _prepaidFinanceCharge = value; } }
-        private Value<bool?> _propertyInsuranceIndicator;
+        private DirtyValue<bool?> _propertyInsuranceIndicator;
         public bool? PropertyInsuranceIndicator { get { return _propertyInsuranceIndicator; } set { _propertyInsuranceIndicator = value; } }
-        private Value<DateTime?> _rateLockGfeDueDate;
+        private DirtyValue<DateTime?> _rateLockGfeDueDate;
         public DateTime? RateLockGfeDueDate { get { return _rateLockGfeDueDate; } set { _rateLockGfeDueDate = value; } }
-        private Value<decimal?> _ratePercent;
+        private DirtyValue<decimal?> _ratePercent;
         public decimal? RatePercent { get { return _ratePercent; } set { _ratePercent = value; } }
-        private Value<int?> _recastPaidMonths;
+        private DirtyValue<int?> _recastPaidMonths;
         public int? RecastPaidMonths { get { return _recastPaidMonths; } set { _recastPaidMonths = value; } }
-        private Value<int?> _recastStopMonths;
+        private DirtyValue<int?> _recastStopMonths;
         public int? RecastStopMonths { get { return _recastStopMonths; } set { _recastStopMonths = value; } }
-        private Value<bool?> _refundPaymentIndicator;
+        private DirtyValue<bool?> _refundPaymentIndicator;
         public bool? RefundPaymentIndicator { get { return _refundPaymentIndicator; } set { _refundPaymentIndicator = value; } }
-        private Value<bool?> _refundUnearnedMipIndicator;
+        private DirtyValue<bool?> _refundUnearnedMipIndicator;
         public bool? RefundUnearnedMipIndicator { get { return _refundUnearnedMipIndicator; } set { _refundUnearnedMipIndicator = value; } }
         private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
         public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get { var v = _regulationZInterestRatePeriods; return v ?? Interlocked.CompareExchange(ref _regulationZInterestRatePeriods, (v = new DirtyList<RegulationZInterestRatePeriod>()), null) ?? v; } set { _regulationZInterestRatePeriods = new DirtyList<RegulationZInterestRatePeriod>(value); } }
         private DirtyList<RegulationZPayment> _regulationZPayments;
         public IList<RegulationZPayment> RegulationZPayments { get { var v = _regulationZPayments; return v ?? Interlocked.CompareExchange(ref _regulationZPayments, (v = new DirtyList<RegulationZPayment>()), null) ?? v; } set { _regulationZPayments = new DirtyList<RegulationZPayment>(value); } }
-        private Value<string> _regzTableType;
+        private DirtyValue<string> _regzTableType;
         public string RegzTableType { get { return _regzTableType; } set { _regzTableType = value; } }
-        private Value<bool?> _requiredDepositIndicator;
+        private DirtyValue<bool?> _requiredDepositIndicator;
         public bool? RequiredDepositIndicator { get { return _requiredDepositIndicator; } set { _requiredDepositIndicator = value; } }
-        private Value<DateTime?> _revisedClosingDisclosureReceivedDate;
+        private DirtyValue<DateTime?> _revisedClosingDisclosureReceivedDate;
         public DateTime? RevisedClosingDisclosureReceivedDate { get { return _revisedClosingDisclosureReceivedDate; } set { _revisedClosingDisclosureReceivedDate = value; } }
-        private Value<DateTime?> _revisedClosingDisclosureSentDate;
+        private DirtyValue<DateTime?> _revisedClosingDisclosureSentDate;
         public DateTime? RevisedClosingDisclosureSentDate { get { return _revisedClosingDisclosureSentDate; } set { _revisedClosingDisclosureSentDate = value; } }
-        private Value<DateTime?> _revisedGfeDueDate;
+        private DirtyValue<DateTime?> _revisedGfeDueDate;
         public DateTime? RevisedGfeDueDate { get { return _revisedGfeDueDate; } set { _revisedGfeDueDate = value; } }
-        private Value<decimal?> _roundedMarginPlusIndexPercent;
+        private DirtyValue<decimal?> _roundedMarginPlusIndexPercent;
         public decimal? RoundedMarginPlusIndexPercent { get { return _roundedMarginPlusIndexPercent; } set { _roundedMarginPlusIndexPercent = value; } }
-        private Value<DateTime?> _safeHarborSentDate;
+        private DirtyValue<DateTime?> _safeHarborSentDate;
         public DateTime? SafeHarborSentDate { get { return _safeHarborSentDate; } set { _safeHarborSentDate = value; } }
-        private Value<decimal?> _samplePayments;
+        private DirtyValue<decimal?> _samplePayments;
         public decimal? SamplePayments { get { return _samplePayments; } set { _samplePayments = value; } }
-        private Value<string> _securityType;
+        private DirtyValue<string> _securityType;
         public string SecurityType { get { return _securityType; } set { _securityType = value; } }
-        private Value<DateTime?> _sSPLSentDate;
+        private DirtyValue<DateTime?> _sSPLSentDate;
         public DateTime? SSPLSentDate { get { return _sSPLSentDate; } set { _sSPLSentDate = value; } }
-        private Value<DateTime?> _tilDate;
+        private DirtyValue<DateTime?> _tilDate;
         public DateTime? TilDate { get { return _tilDate; } set { _tilDate = value; } }
-        private Value<string> _tilDisclosedComments;
+        private DirtyValue<string> _tilDisclosedComments;
         public string TilDisclosedComments { get { return _tilDisclosedComments; } set { _tilDisclosedComments = value; } }
-        private Value<string> _tilDisclosureMethod;
+        private DirtyValue<string> _tilDisclosureMethod;
         public string TilDisclosureMethod { get { return _tilDisclosureMethod; } set { _tilDisclosureMethod = value; } }
-        private Value<DateTime?> _tilLastDisclosedBorrowerReceivedDate;
+        private DirtyValue<DateTime?> _tilLastDisclosedBorrowerReceivedDate;
         public DateTime? TilLastDisclosedBorrowerReceivedDate { get { return _tilLastDisclosedBorrowerReceivedDate; } set { _tilLastDisclosedBorrowerReceivedDate = value; } }
-        private Value<string> _tilLastDisclosedBy;
+        private DirtyValue<string> _tilLastDisclosedBy;
         public string TilLastDisclosedBy { get { return _tilLastDisclosedBy; } set { _tilLastDisclosedBy = value; } }
-        private Value<DateTime?> _tilLastDisclosedDate;
+        private DirtyValue<DateTime?> _tilLastDisclosedDate;
         public DateTime? TilLastDisclosedDate { get { return _tilLastDisclosedDate; } set { _tilLastDisclosedDate = value; } }
-        private Value<DateTime?> _tilRedisclosureProvidedDate;
+        private DirtyValue<DateTime?> _tilRedisclosureProvidedDate;
         public DateTime? TilRedisclosureProvidedDate { get { return _tilRedisclosureProvidedDate; } set { _tilRedisclosureProvidedDate = value; } }
-        private Value<DateTime?> _tilRedisclosureReceivedDate;
+        private DirtyValue<DateTime?> _tilRedisclosureReceivedDate;
         public DateTime? TilRedisclosureReceivedDate { get { return _tilRedisclosureReceivedDate; } set { _tilRedisclosureReceivedDate = value; } }
-        private Value<decimal?> _totalBrokerFees;
+        private DirtyValue<decimal?> _totalBrokerFees;
         public decimal? TotalBrokerFees { get { return _totalBrokerFees; } set { _totalBrokerFees = value; } }
-        private Value<decimal?> _totalLatePayment;
+        private DirtyValue<decimal?> _totalLatePayment;
         public decimal? TotalLatePayment { get { return _totalLatePayment; } set { _totalLatePayment = value; } }
-        private Value<decimal?> _totalLenderFees;
+        private DirtyValue<decimal?> _totalLenderFees;
         public decimal? TotalLenderFees { get { return _totalLenderFees; } set { _totalLenderFees = value; } }
-        private Value<decimal?> _totalOfPayments;
+        private DirtyValue<decimal?> _totalOfPayments;
         public decimal? TotalOfPayments { get { return _totalOfPayments; } set { _totalOfPayments = value; } }
-        private Value<decimal?> _totalOfPrincipalAndInterest;
+        private DirtyValue<decimal?> _totalOfPrincipalAndInterest;
         public decimal? TotalOfPrincipalAndInterest { get { return _totalOfPrincipalAndInterest; } set { _totalOfPrincipalAndInterest = value; } }
-        private Value<bool?> _useCustomLenderProfile;
+        private DirtyValue<bool?> _useCustomLenderProfile;
         public bool? UseCustomLenderProfile { get { return _useCustomLenderProfile; } set { _useCustomLenderProfile = value; } }
-        private Value<string> _useDaysInYears;
+        private DirtyValue<string> _useDaysInYears;
         public string UseDaysInYears { get { return _useDaysInYears; } set { _useDaysInYears = value; } }
-        private Value<bool?> _usePitiForRatioIndicator;
+        private DirtyValue<bool?> _usePitiForRatioIndicator;
         public bool? UsePitiForRatioIndicator { get { return _usePitiForRatioIndicator; } set { _usePitiForRatioIndicator = value; } }
-        private Value<bool?> _variableRateFeatureIndicator;
+        private DirtyValue<bool?> _variableRateFeatureIndicator;
         public bool? VariableRateFeatureIndicator { get { return _variableRateFeatureIndicator; } set { _variableRateFeatureIndicator = value; } }
-        private Value<decimal?> _yearlyTerm;
+        private DirtyValue<decimal?> _yearlyTerm;
         public decimal? YearlyTerm { get { return _yearlyTerm; } set { _yearlyTerm = value; } }
-        private Value<string> _yearOfMaximumPayment;
+        private DirtyValue<string> _yearOfMaximumPayment;
         public string YearOfMaximumPayment { get { return _yearOfMaximumPayment; } set { _yearOfMaximumPayment = value; } }
-        private Value<int?> _years;
+        private DirtyValue<int?> _years;
         public int? Years { get { return _years; } set { _years = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

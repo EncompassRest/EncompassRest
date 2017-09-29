@@ -8,9 +8,9 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PrintForm : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

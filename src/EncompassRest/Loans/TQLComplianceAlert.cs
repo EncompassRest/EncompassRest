@@ -8,15 +8,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLComplianceAlert : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _lastComplianceOrderAlertCategories;
+        private DirtyValue<string> _lastComplianceOrderAlertCategories;
         public string LastComplianceOrderAlertCategories { get { return _lastComplianceOrderAlertCategories; } set { _lastComplianceOrderAlertCategories = value; } }
-        private Value<string> _lastComplianceOrderAlertMessage;
+        private DirtyValue<string> _lastComplianceOrderAlertMessage;
         public string LastComplianceOrderAlertMessage { get { return _lastComplianceOrderAlertMessage; } set { _lastComplianceOrderAlertMessage = value; } }
-        private Value<string> _lastComplianceOrderDescriptionOfAlerts;
+        private DirtyValue<string> _lastComplianceOrderDescriptionOfAlerts;
         public string LastComplianceOrderDescriptionOfAlerts { get { return _lastComplianceOrderDescriptionOfAlerts; } set { _lastComplianceOrderDescriptionOfAlerts = value; } }
-        private Value<int?> _tQLComplianceAlertIndex;
+        private DirtyValue<int?> _tQLComplianceAlertIndex;
         public int? TQLComplianceAlertIndex { get { return _tQLComplianceAlertIndex; } set { _tQLComplianceAlertIndex = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,183 +8,183 @@ namespace EncompassRest.Loans
 {
     public sealed partial class EmDocumentInvestor : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _invAsgnCty;
+        private DirtyValue<string> _invAsgnCty;
         public string InvAsgnCty { get { return _invAsgnCty; } set { _invAsgnCty = value; } }
-        private Value<string> _invAsgnJrsdctn;
+        private DirtyValue<string> _invAsgnJrsdctn;
         public string InvAsgnJrsdctn { get { return _invAsgnJrsdctn; } set { _invAsgnJrsdctn = value; } }
-        private Value<string> _invAsgnNm;
+        private DirtyValue<string> _invAsgnNm;
         public string InvAsgnNm { get { return _invAsgnNm; } set { _invAsgnNm = value; } }
-        private Value<string> _invAsgnOrgTyp;
+        private DirtyValue<string> _invAsgnOrgTyp;
         public string InvAsgnOrgTyp { get { return _invAsgnOrgTyp; } set { _invAsgnOrgTyp = value; } }
-        private Value<string> _invAsgnStCd;
+        private DirtyValue<string> _invAsgnStCd;
         public string InvAsgnStCd { get { return _invAsgnStCd; } set { _invAsgnStCd = value; } }
-        private Value<string> _invAsgnStreetAddr1;
+        private DirtyValue<string> _invAsgnStreetAddr1;
         public string InvAsgnStreetAddr1 { get { return _invAsgnStreetAddr1; } set { _invAsgnStreetAddr1 = value; } }
-        private Value<string> _invAsgnStreetAddr2;
+        private DirtyValue<string> _invAsgnStreetAddr2;
         public string InvAsgnStreetAddr2 { get { return _invAsgnStreetAddr2; } set { _invAsgnStreetAddr2 = value; } }
-        private Value<string> _invAsgnZip;
+        private DirtyValue<string> _invAsgnZip;
         public string InvAsgnZip { get { return _invAsgnZip; } set { _invAsgnZip = value; } }
-        private Value<string> _invCty;
+        private DirtyValue<string> _invCty;
         public string InvCty { get { return _invCty; } set { _invCty = value; } }
-        private Value<string> _invFaxNum;
+        private DirtyValue<string> _invFaxNum;
         public string InvFaxNum { get { return _invFaxNum; } set { _invFaxNum = value; } }
-        private Value<string> _invJrsdctn;
+        private DirtyValue<string> _invJrsdctn;
         public string InvJrsdctn { get { return _invJrsdctn; } set { _invJrsdctn = value; } }
-        private Value<string> _invLossPayeeAdtlTxt;
+        private DirtyValue<string> _invLossPayeeAdtlTxt;
         public string InvLossPayeeAdtlTxt { get { return _invLossPayeeAdtlTxt; } set { _invLossPayeeAdtlTxt = value; } }
-        private Value<string> _invLossPayeeCntctEmail;
+        private DirtyValue<string> _invLossPayeeCntctEmail;
         public string InvLossPayeeCntctEmail { get { return _invLossPayeeCntctEmail; } set { _invLossPayeeCntctEmail = value; } }
-        private Value<string> _invLossPayeeCntctFax;
+        private DirtyValue<string> _invLossPayeeCntctFax;
         public string InvLossPayeeCntctFax { get { return _invLossPayeeCntctFax; } set { _invLossPayeeCntctFax = value; } }
-        private Value<string> _invLossPayeeCntctNm;
+        private DirtyValue<string> _invLossPayeeCntctNm;
         public string InvLossPayeeCntctNm { get { return _invLossPayeeCntctNm; } set { _invLossPayeeCntctNm = value; } }
-        private Value<string> _invLossPayeeCntctPhone;
+        private DirtyValue<string> _invLossPayeeCntctPhone;
         public string InvLossPayeeCntctPhone { get { return _invLossPayeeCntctPhone; } set { _invLossPayeeCntctPhone = value; } }
-        private Value<string> _invLossPayeeCty;
+        private DirtyValue<string> _invLossPayeeCty;
         public string InvLossPayeeCty { get { return _invLossPayeeCty; } set { _invLossPayeeCty = value; } }
-        private Value<string> _invLossPayeeJrsdctn;
+        private DirtyValue<string> _invLossPayeeJrsdctn;
         public string InvLossPayeeJrsdctn { get { return _invLossPayeeJrsdctn; } set { _invLossPayeeJrsdctn = value; } }
-        private Value<string> _invLossPayeeNm;
+        private DirtyValue<string> _invLossPayeeNm;
         public string InvLossPayeeNm { get { return _invLossPayeeNm; } set { _invLossPayeeNm = value; } }
-        private Value<string> _invLossPayeeOrgTyp;
+        private DirtyValue<string> _invLossPayeeOrgTyp;
         public string InvLossPayeeOrgTyp { get { return _invLossPayeeOrgTyp; } set { _invLossPayeeOrgTyp = value; } }
-        private Value<string> _invLossPayeeScsrClausTxtDesc;
+        private DirtyValue<string> _invLossPayeeScsrClausTxtDesc;
         public string InvLossPayeeScsrClausTxtDesc { get { return _invLossPayeeScsrClausTxtDesc; } set { _invLossPayeeScsrClausTxtDesc = value; } }
-        private Value<string> _invLossPayeeStCd;
+        private DirtyValue<string> _invLossPayeeStCd;
         public string InvLossPayeeStCd { get { return _invLossPayeeStCd; } set { _invLossPayeeStCd = value; } }
-        private Value<string> _invLossPayeeStreetAddr1;
+        private DirtyValue<string> _invLossPayeeStreetAddr1;
         public string InvLossPayeeStreetAddr1 { get { return _invLossPayeeStreetAddr1; } set { _invLossPayeeStreetAddr1 = value; } }
-        private Value<string> _invLossPayeeStreetAddr2;
+        private DirtyValue<string> _invLossPayeeStreetAddr2;
         public string InvLossPayeeStreetAddr2 { get { return _invLossPayeeStreetAddr2; } set { _invLossPayeeStreetAddr2 = value; } }
-        private Value<string> _invLossPayeeZip;
+        private DirtyValue<string> _invLossPayeeZip;
         public string InvLossPayeeZip { get { return _invLossPayeeZip; } set { _invLossPayeeZip = value; } }
-        private Value<string> _invNm;
+        private DirtyValue<string> _invNm;
         public string InvNm { get { return _invNm; } set { _invNm = value; } }
-        private Value<string> _invOrgTyp;
+        private DirtyValue<string> _invOrgTyp;
         public string InvOrgTyp { get { return _invOrgTyp; } set { _invOrgTyp = value; } }
-        private Value<string> _invPhoneNum;
+        private DirtyValue<string> _invPhoneNum;
         public string InvPhoneNum { get { return _invPhoneNum; } set { _invPhoneNum = value; } }
-        private Value<string> _invPmtCpn2PayToAdtlTxt;
+        private DirtyValue<string> _invPmtCpn2PayToAdtlTxt;
         public string InvPmtCpn2PayToAdtlTxt { get { return _invPmtCpn2PayToAdtlTxt; } set { _invPmtCpn2PayToAdtlTxt = value; } }
-        private Value<string> _invPmtCpn2PayToAdtlTxt2;
+        private DirtyValue<string> _invPmtCpn2PayToAdtlTxt2;
         public string InvPmtCpn2PayToAdtlTxt2 { get { return _invPmtCpn2PayToAdtlTxt2; } set { _invPmtCpn2PayToAdtlTxt2 = value; } }
-        private Value<string> _invPmtCpn2PayToCty;
+        private DirtyValue<string> _invPmtCpn2PayToCty;
         public string InvPmtCpn2PayToCty { get { return _invPmtCpn2PayToCty; } set { _invPmtCpn2PayToCty = value; } }
-        private Value<string> _invPmtCpn2PayToNm;
+        private DirtyValue<string> _invPmtCpn2PayToNm;
         public string InvPmtCpn2PayToNm { get { return _invPmtCpn2PayToNm; } set { _invPmtCpn2PayToNm = value; } }
-        private Value<string> _invPmtCpn2PayToStCd;
+        private DirtyValue<string> _invPmtCpn2PayToStCd;
         public string InvPmtCpn2PayToStCd { get { return _invPmtCpn2PayToStCd; } set { _invPmtCpn2PayToStCd = value; } }
-        private Value<string> _invPmtCpn2PayToStreetAddr1;
+        private DirtyValue<string> _invPmtCpn2PayToStreetAddr1;
         public string InvPmtCpn2PayToStreetAddr1 { get { return _invPmtCpn2PayToStreetAddr1; } set { _invPmtCpn2PayToStreetAddr1 = value; } }
-        private Value<string> _invPmtCpn2PayToStreetAddr2;
+        private DirtyValue<string> _invPmtCpn2PayToStreetAddr2;
         public string InvPmtCpn2PayToStreetAddr2 { get { return _invPmtCpn2PayToStreetAddr2; } set { _invPmtCpn2PayToStreetAddr2 = value; } }
-        private Value<string> _invPmtCpn2PayToZip;
+        private DirtyValue<string> _invPmtCpn2PayToZip;
         public string InvPmtCpn2PayToZip { get { return _invPmtCpn2PayToZip; } set { _invPmtCpn2PayToZip = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToAdtlTxt;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToAdtlTxt;
         public string InvPmtCpnLoanTrsfToAdtlTxt { get { return _invPmtCpnLoanTrsfToAdtlTxt; } set { _invPmtCpnLoanTrsfToAdtlTxt = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToCty;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToCty;
         public string InvPmtCpnLoanTrsfToCty { get { return _invPmtCpnLoanTrsfToCty; } set { _invPmtCpnLoanTrsfToCty = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToNm;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToNm;
         public string InvPmtCpnLoanTrsfToNm { get { return _invPmtCpnLoanTrsfToNm; } set { _invPmtCpnLoanTrsfToNm = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToStCd;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToStCd;
         public string InvPmtCpnLoanTrsfToStCd { get { return _invPmtCpnLoanTrsfToStCd; } set { _invPmtCpnLoanTrsfToStCd = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToStreetAddr1;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToStreetAddr1;
         public string InvPmtCpnLoanTrsfToStreetAddr1 { get { return _invPmtCpnLoanTrsfToStreetAddr1; } set { _invPmtCpnLoanTrsfToStreetAddr1 = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToStreetAddr2;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToStreetAddr2;
         public string InvPmtCpnLoanTrsfToStreetAddr2 { get { return _invPmtCpnLoanTrsfToStreetAddr2; } set { _invPmtCpnLoanTrsfToStreetAddr2 = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcAdtlTxt;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcAdtlTxt;
         public string InvPmtCpnLoanTrsfToSvcAdtlTxt { get { return _invPmtCpnLoanTrsfToSvcAdtlTxt; } set { _invPmtCpnLoanTrsfToSvcAdtlTxt = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcCty;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcCty;
         public string InvPmtCpnLoanTrsfToSvcCty { get { return _invPmtCpnLoanTrsfToSvcCty; } set { _invPmtCpnLoanTrsfToSvcCty = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcNm;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcNm;
         public string InvPmtCpnLoanTrsfToSvcNm { get { return _invPmtCpnLoanTrsfToSvcNm; } set { _invPmtCpnLoanTrsfToSvcNm = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcStCd;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcStCd;
         public string InvPmtCpnLoanTrsfToSvcStCd { get { return _invPmtCpnLoanTrsfToSvcStCd; } set { _invPmtCpnLoanTrsfToSvcStCd = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcStreetAddr1;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcStreetAddr1;
         public string InvPmtCpnLoanTrsfToSvcStreetAddr1 { get { return _invPmtCpnLoanTrsfToSvcStreetAddr1; } set { _invPmtCpnLoanTrsfToSvcStreetAddr1 = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcStreetAddr2;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcStreetAddr2;
         public string InvPmtCpnLoanTrsfToSvcStreetAddr2 { get { return _invPmtCpnLoanTrsfToSvcStreetAddr2; } set { _invPmtCpnLoanTrsfToSvcStreetAddr2 = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToSvcZip;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToSvcZip;
         public string InvPmtCpnLoanTrsfToSvcZip { get { return _invPmtCpnLoanTrsfToSvcZip; } set { _invPmtCpnLoanTrsfToSvcZip = value; } }
-        private Value<string> _invPmtCpnLoanTrsfToZip;
+        private DirtyValue<string> _invPmtCpnLoanTrsfToZip;
         public string InvPmtCpnLoanTrsfToZip { get { return _invPmtCpnLoanTrsfToZip; } set { _invPmtCpnLoanTrsfToZip = value; } }
-        private Value<string> _invPmtCpnPayToAdtlTxt;
+        private DirtyValue<string> _invPmtCpnPayToAdtlTxt;
         public string InvPmtCpnPayToAdtlTxt { get { return _invPmtCpnPayToAdtlTxt; } set { _invPmtCpnPayToAdtlTxt = value; } }
-        private Value<string> _invPmtCpnPayToAdtlTxt2;
+        private DirtyValue<string> _invPmtCpnPayToAdtlTxt2;
         public string InvPmtCpnPayToAdtlTxt2 { get { return _invPmtCpnPayToAdtlTxt2; } set { _invPmtCpnPayToAdtlTxt2 = value; } }
-        private Value<string> _invPmtCpnPayToCty;
+        private DirtyValue<string> _invPmtCpnPayToCty;
         public string InvPmtCpnPayToCty { get { return _invPmtCpnPayToCty; } set { _invPmtCpnPayToCty = value; } }
-        private Value<string> _invPmtCpnPayToNm;
+        private DirtyValue<string> _invPmtCpnPayToNm;
         public string InvPmtCpnPayToNm { get { return _invPmtCpnPayToNm; } set { _invPmtCpnPayToNm = value; } }
-        private Value<string> _invPmtCpnPayToStCd;
+        private DirtyValue<string> _invPmtCpnPayToStCd;
         public string InvPmtCpnPayToStCd { get { return _invPmtCpnPayToStCd; } set { _invPmtCpnPayToStCd = value; } }
-        private Value<string> _invPmtCpnPayToStreetAddr1;
+        private DirtyValue<string> _invPmtCpnPayToStreetAddr1;
         public string InvPmtCpnPayToStreetAddr1 { get { return _invPmtCpnPayToStreetAddr1; } set { _invPmtCpnPayToStreetAddr1 = value; } }
-        private Value<string> _invPmtCpnPayToStreetAddr2;
+        private DirtyValue<string> _invPmtCpnPayToStreetAddr2;
         public string InvPmtCpnPayToStreetAddr2 { get { return _invPmtCpnPayToStreetAddr2; } set { _invPmtCpnPayToStreetAddr2 = value; } }
-        private Value<string> _invPmtCpnPayToZip;
+        private DirtyValue<string> _invPmtCpnPayToZip;
         public string InvPmtCpnPayToZip { get { return _invPmtCpnPayToZip; } set { _invPmtCpnPayToZip = value; } }
-        private Value<string> _invStCd;
+        private DirtyValue<string> _invStCd;
         public string InvStCd { get { return _invStCd; } set { _invStCd = value; } }
-        private Value<string> _invStreetAddr1;
+        private DirtyValue<string> _invStreetAddr1;
         public string InvStreetAddr1 { get { return _invStreetAddr1; } set { _invStreetAddr1 = value; } }
-        private Value<string> _invStreetAddr2;
+        private DirtyValue<string> _invStreetAddr2;
         public string InvStreetAddr2 { get { return _invStreetAddr2; } set { _invStreetAddr2 = value; } }
-        private Value<string> _invSvcrAdtlTxt;
+        private DirtyValue<string> _invSvcrAdtlTxt;
         public string InvSvcrAdtlTxt { get { return _invSvcrAdtlTxt; } set { _invSvcrAdtlTxt = value; } }
-        private Value<string> _invSvcrCntctNm;
+        private DirtyValue<string> _invSvcrCntctNm;
         public string InvSvcrCntctNm { get { return _invSvcrCntctNm; } set { _invSvcrCntctNm = value; } }
-        private Value<string> _invSvcrCntctPhoneNum;
+        private DirtyValue<string> _invSvcrCntctPhoneNum;
         public string InvSvcrCntctPhoneNum { get { return _invSvcrCntctPhoneNum; } set { _invSvcrCntctPhoneNum = value; } }
-        private Value<string> _invSvcrCntctTollFreePhoneNum;
+        private DirtyValue<string> _invSvcrCntctTollFreePhoneNum;
         public string InvSvcrCntctTollFreePhoneNum { get { return _invSvcrCntctTollFreePhoneNum; } set { _invSvcrCntctTollFreePhoneNum = value; } }
-        private Value<string> _invSvcrCty;
+        private DirtyValue<string> _invSvcrCty;
         public string InvSvcrCty { get { return _invSvcrCty; } set { _invSvcrCty = value; } }
-        private Value<string> _invSvcrDayOp;
+        private DirtyValue<string> _invSvcrDayOp;
         public string InvSvcrDayOp { get { return _invSvcrDayOp; } set { _invSvcrDayOp = value; } }
-        private Value<string> _invSvcrDayOpAddl;
+        private DirtyValue<string> _invSvcrDayOpAddl;
         public string InvSvcrDayOpAddl { get { return _invSvcrDayOpAddl; } set { _invSvcrDayOpAddl = value; } }
-        private Value<string> _invSvcrHrsOp;
+        private DirtyValue<string> _invSvcrHrsOp;
         public string InvSvcrHrsOp { get { return _invSvcrHrsOp; } set { _invSvcrHrsOp = value; } }
-        private Value<string> _invSvcrHrsOpAddl;
+        private DirtyValue<string> _invSvcrHrsOpAddl;
         public string InvSvcrHrsOpAddl { get { return _invSvcrHrsOpAddl; } set { _invSvcrHrsOpAddl = value; } }
-        private Value<string> _invSvcrJrsdctn;
+        private DirtyValue<string> _invSvcrJrsdctn;
         public string InvSvcrJrsdctn { get { return _invSvcrJrsdctn; } set { _invSvcrJrsdctn = value; } }
-        private Value<string> _invSvcrNm;
+        private DirtyValue<string> _invSvcrNm;
         public string InvSvcrNm { get { return _invSvcrNm; } set { _invSvcrNm = value; } }
-        private Value<string> _invSvcrOrgTyp;
+        private DirtyValue<string> _invSvcrOrgTyp;
         public string InvSvcrOrgTyp { get { return _invSvcrOrgTyp; } set { _invSvcrOrgTyp = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToAdtlTxt;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToAdtlTxt;
         public string InvSvcrQlfdWrtnRqstMailToAdtlTxt { get { return _invSvcrQlfdWrtnRqstMailToAdtlTxt; } set { _invSvcrQlfdWrtnRqstMailToAdtlTxt = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToCty;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToCty;
         public string InvSvcrQlfdWrtnRqstMailToCty { get { return _invSvcrQlfdWrtnRqstMailToCty; } set { _invSvcrQlfdWrtnRqstMailToCty = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToNm;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToNm;
         public string InvSvcrQlfdWrtnRqstMailToNm { get { return _invSvcrQlfdWrtnRqstMailToNm; } set { _invSvcrQlfdWrtnRqstMailToNm = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToStCd;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToStCd;
         public string InvSvcrQlfdWrtnRqstMailToStCd { get { return _invSvcrQlfdWrtnRqstMailToStCd; } set { _invSvcrQlfdWrtnRqstMailToStCd = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToStreetAddr1;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToStreetAddr1;
         public string InvSvcrQlfdWrtnRqstMailToStreetAddr1 { get { return _invSvcrQlfdWrtnRqstMailToStreetAddr1; } set { _invSvcrQlfdWrtnRqstMailToStreetAddr1 = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToStreetAddr2;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToStreetAddr2;
         public string InvSvcrQlfdWrtnRqstMailToStreetAddr2 { get { return _invSvcrQlfdWrtnRqstMailToStreetAddr2; } set { _invSvcrQlfdWrtnRqstMailToStreetAddr2 = value; } }
-        private Value<string> _invSvcrQlfdWrtnRqstMailToZip;
+        private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToZip;
         public string InvSvcrQlfdWrtnRqstMailToZip { get { return _invSvcrQlfdWrtnRqstMailToZip; } set { _invSvcrQlfdWrtnRqstMailToZip = value; } }
-        private Value<string> _invSvcrStCd;
+        private DirtyValue<string> _invSvcrStCd;
         public string InvSvcrStCd { get { return _invSvcrStCd; } set { _invSvcrStCd = value; } }
-        private Value<string> _invSvcrStreetAddr1;
+        private DirtyValue<string> _invSvcrStreetAddr1;
         public string InvSvcrStreetAddr1 { get { return _invSvcrStreetAddr1; } set { _invSvcrStreetAddr1 = value; } }
-        private Value<string> _invSvcrStreetAddr2;
+        private DirtyValue<string> _invSvcrStreetAddr2;
         public string InvSvcrStreetAddr2 { get { return _invSvcrStreetAddr2; } set { _invSvcrStreetAddr2 = value; } }
-        private Value<string> _invSvcrZip;
+        private DirtyValue<string> _invSvcrZip;
         public string InvSvcrZip { get { return _invSvcrZip; } set { _invSvcrZip = value; } }
-        private Value<string> _invTaxIDNum;
+        private DirtyValue<string> _invTaxIDNum;
         public string InvTaxIDNum { get { return _invTaxIDNum; } set { _invTaxIDNum = value; } }
-        private Value<string> _invTollFreePhoneNum;
+        private DirtyValue<string> _invTollFreePhoneNum;
         public string InvTollFreePhoneNum { get { return _invTollFreePhoneNum; } set { _invTollFreePhoneNum = value; } }
-        private Value<string> _invUrl;
+        private DirtyValue<string> _invUrl;
         public string InvUrl { get { return _invUrl; } set { _invUrl = value; } }
-        private Value<string> _invZip;
+        private DirtyValue<string> _invZip;
         public string InvZip { get { return _invZip; } set { _invZip = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,27 +8,27 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PreviousVaLoan : IDirty
     {
-        private Value<DateTime?> _dateOfLoan;
+        private DirtyValue<DateTime?> _dateOfLoan;
         public DateTime? DateOfLoan { get { return _dateOfLoan; } set { _dateOfLoan = value; } }
-        private Value<DateTime?> _dateSold;
+        private DirtyValue<DateTime?> _dateSold;
         public DateTime? DateSold { get { return _dateSold; } set { _dateSold = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _loanType;
+        private DirtyValue<string> _loanType;
         public string LoanType { get { return _loanType; } set { _loanType = value; } }
-        private Value<int?> _previousVaLoanIndex;
+        private DirtyValue<int?> _previousVaLoanIndex;
         public int? PreviousVaLoanIndex { get { return _previousVaLoanIndex; } set { _previousVaLoanIndex = value; } }
-        private Value<string> _propertyAddress;
+        private DirtyValue<string> _propertyAddress;
         public string PropertyAddress { get { return _propertyAddress; } set { _propertyAddress = value; } }
-        private Value<string> _propertyCity;
+        private DirtyValue<string> _propertyCity;
         public string PropertyCity { get { return _propertyCity; } set { _propertyCity = value; } }
-        private Value<bool?> _propertyOwned;
+        private DirtyValue<bool?> _propertyOwned;
         public bool? PropertyOwned { get { return _propertyOwned; } set { _propertyOwned = value; } }
-        private Value<string> _propertyPostalCode;
+        private DirtyValue<string> _propertyPostalCode;
         public string PropertyPostalCode { get { return _propertyPostalCode; } set { _propertyPostalCode = value; } }
-        private Value<string> _propertyState;
+        private DirtyValue<string> _propertyState;
         public string PropertyState { get { return _propertyState; } set { _propertyState = value; } }
-        private Value<string> _vALoanNumber;
+        private DirtyValue<string> _vALoanNumber;
         public string VALoanNumber { get { return _vALoanNumber; } set { _vALoanNumber = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

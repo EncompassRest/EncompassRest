@@ -8,23 +8,23 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FeeVariance : IDirty
     {
-        private Value<decimal?> _cD;
+        private DirtyValue<decimal?> _cD;
         public decimal? CD { get { return _cD; } set { _cD = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<int?> _feeVarianceChargeIndex;
+        private DirtyValue<int?> _feeVarianceChargeIndex;
         public int? FeeVarianceChargeIndex { get { return _feeVarianceChargeIndex; } set { _feeVarianceChargeIndex = value; } }
-        private Value<string> _feeVarianceFeeType;
+        private DirtyValue<string> _feeVarianceFeeType;
         public string FeeVarianceFeeType { get { return _feeVarianceFeeType; } set { _feeVarianceFeeType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _initialLE;
+        private DirtyValue<decimal?> _initialLE;
         public decimal? InitialLE { get { return _initialLE; } set { _initialLE = value; } }
-        private Value<decimal?> _itemization;
+        private DirtyValue<decimal?> _itemization;
         public decimal? Itemization { get { return _itemization; } set { _itemization = value; } }
-        private Value<decimal?> _lE;
+        private DirtyValue<decimal?> _lE;
         public decimal? LE { get { return _lE; } set { _lE = value; } }
-        private Value<string> _line;
+        private DirtyValue<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

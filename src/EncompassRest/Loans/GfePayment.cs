@@ -8,45 +8,45 @@ namespace EncompassRest.Loans
 {
     public sealed partial class GfePayment : IDirty
     {
-        private Value<decimal?> _fixedRate;
+        private DirtyValue<decimal?> _fixedRate;
         public decimal? FixedRate { get { return _fixedRate; } set { _fixedRate = value; } }
-        private Value<int?> _gfePaymentIndex;
+        private DirtyValue<int?> _gfePaymentIndex;
         public int? GfePaymentIndex { get { return _gfePaymentIndex; } set { _gfePaymentIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _indexRate;
+        private DirtyValue<decimal?> _indexRate;
         public decimal? IndexRate { get { return _indexRate; } set { _indexRate = value; } }
-        private Value<string> _isBalanceReduced;
+        private DirtyValue<string> _isBalanceReduced;
         public string IsBalanceReduced { get { return _isBalanceReduced; } set { _isBalanceReduced = value; } }
-        private Value<string> _loanTypeExplanation;
+        private DirtyValue<string> _loanTypeExplanation;
         public string LoanTypeExplanation { get { return _loanTypeExplanation; } set { _loanTypeExplanation = value; } }
-        private Value<decimal?> _marginRate;
+        private DirtyValue<decimal?> _marginRate;
         public decimal? MarginRate { get { return _marginRate; } set { _marginRate = value; } }
-        private Value<decimal?> _maximumDifference;
+        private DirtyValue<decimal?> _maximumDifference;
         public decimal? MaximumDifference { get { return _maximumDifference; } set { _maximumDifference = value; } }
-        private Value<decimal?> _maximumRate;
+        private DirtyValue<decimal?> _maximumRate;
         public decimal? MaximumRate { get { return _maximumRate; } set { _maximumRate = value; } }
-        private Value<decimal?> _minimumDifference;
+        private DirtyValue<decimal?> _minimumDifference;
         public decimal? MinimumDifference { get { return _minimumDifference; } set { _minimumDifference = value; } }
-        private Value<decimal?> _minimumMonthlyPayment;
+        private DirtyValue<decimal?> _minimumMonthlyPayment;
         public decimal? MinimumMonthlyPayment { get { return _minimumMonthlyPayment; } set { _minimumMonthlyPayment = value; } }
-        private Value<decimal?> _monthlyPaymentYear1;
+        private DirtyValue<decimal?> _monthlyPaymentYear1;
         public decimal? MonthlyPaymentYear1 { get { return _monthlyPaymentYear1; } set { _monthlyPaymentYear1 = value; } }
-        private Value<decimal?> _monthlyPaymentYear6;
+        private DirtyValue<decimal?> _monthlyPaymentYear6;
         public decimal? MonthlyPaymentYear6 { get { return _monthlyPaymentYear6; } set { _monthlyPaymentYear6 = value; } }
-        private Value<decimal?> _monthlyPaymentYear6Change;
+        private DirtyValue<decimal?> _monthlyPaymentYear6Change;
         public decimal? MonthlyPaymentYear6Change { get { return _monthlyPaymentYear6Change; } set { _monthlyPaymentYear6Change = value; } }
-        private Value<decimal?> _monthlyPaymentYear6MaxChange;
+        private DirtyValue<decimal?> _monthlyPaymentYear6MaxChange;
         public decimal? MonthlyPaymentYear6MaxChange { get { return _monthlyPaymentYear6MaxChange; } set { _monthlyPaymentYear6MaxChange = value; } }
-        private Value<bool?> _notOfferedIndicator;
+        private DirtyValue<bool?> _notOfferedIndicator;
         public bool? NotOfferedIndicator { get { return _notOfferedIndicator; } set { _notOfferedIndicator = value; } }
-        private Value<decimal?> _owedAfter5Years;
+        private DirtyValue<decimal?> _owedAfter5Years;
         public decimal? OwedAfter5Years { get { return _owedAfter5Years; } set { _owedAfter5Years = value; } }
-        private Value<decimal?> _rateInMonth2;
+        private DirtyValue<decimal?> _rateInMonth2;
         public decimal? RateInMonth2 { get { return _rateInMonth2; } set { _rateInMonth2 = value; } }
-        private Value<decimal?> _reducedLoanBalance;
+        private DirtyValue<decimal?> _reducedLoanBalance;
         public decimal? ReducedLoanBalance { get { return _reducedLoanBalance; } set { _reducedLoanBalance = value; } }
-        private Value<string> _reducedStatus;
+        private DirtyValue<string> _reducedStatus;
         public string ReducedStatus { get { return _reducedStatus; } set { _reducedStatus = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -10,71 +10,71 @@ namespace EncompassRest.Loans
     {
         private DirtyList<LogAlert> _alerts;
         public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
-        private Value<string> _alertsXml;
+        private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
-        private Value<DateTime?> _buySideExpirationDate;
+        private DirtyValue<DateTime?> _buySideExpirationDate;
         public DateTime? BuySideExpirationDate { get { return _buySideExpirationDate; } set { _buySideExpirationDate = value; } }
-        private Value<DateTime?> _buySideNewLockExtensionDate;
+        private DirtyValue<DateTime?> _buySideNewLockExtensionDate;
         public DateTime? BuySideNewLockExtensionDate { get { return _buySideNewLockExtensionDate; } set { _buySideNewLockExtensionDate = value; } }
-        private Value<int?> _buySideNumDayExtended;
+        private DirtyValue<int?> _buySideNumDayExtended;
         public int? BuySideNumDayExtended { get { return _buySideNumDayExtended; } set { _buySideNumDayExtended = value; } }
-        private Value<int?> _buySideNumDayLocked;
+        private DirtyValue<int?> _buySideNumDayLocked;
         public int? BuySideNumDayLocked { get { return _buySideNumDayLocked; } set { _buySideNumDayLocked = value; } }
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
-        private Value<string> _commentListXml;
+        private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<bool?> _hideLogIndicator;
+        private DirtyValue<bool?> _hideLogIndicator;
         public bool? HideLogIndicator { get { return _hideLogIndicator; } set { _hideLogIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _investorCommitment;
+        private DirtyValue<string> _investorCommitment;
         public string InvestorCommitment { get { return _investorCommitment; } set { _investorCommitment = value; } }
-        private Value<bool?> _isFakeRequestIndicator;
+        private DirtyValue<bool?> _isFakeRequestIndicator;
         public bool? IsFakeRequestIndicator { get { return _isFakeRequestIndicator; } set { _isFakeRequestIndicator = value; } }
-        private Value<bool?> _isLockCancellationIndicator;
+        private DirtyValue<bool?> _isLockCancellationIndicator;
         public bool? IsLockCancellationIndicator { get { return _isLockCancellationIndicator; } set { _isLockCancellationIndicator = value; } }
-        private Value<bool?> _isLockExtensionIndicator;
+        private DirtyValue<bool?> _isLockExtensionIndicator;
         public bool? IsLockExtensionIndicator { get { return _isLockExtensionIndicator; } set { _isLockExtensionIndicator = value; } }
-        private Value<bool?> _isReLockIndicator;
+        private DirtyValue<bool?> _isReLockIndicator;
         public bool? IsReLockIndicator { get { return _isReLockIndicator; } set { _isReLockIndicator = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<int?> _numDayLocked;
+        private DirtyValue<int?> _numDayLocked;
         public int? NumDayLocked { get { return _numDayLocked; } set { _numDayLocked = value; } }
-        private Value<string> _parentLockGuid;
+        private DirtyValue<string> _parentLockGuid;
         public string ParentLockGuid { get { return _parentLockGuid; } set { _parentLockGuid = value; } }
-        private Value<string> _requestedBy;
+        private DirtyValue<string> _requestedBy;
         public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
-        private Value<string> _requestedName;
+        private DirtyValue<string> _requestedName;
         public string RequestedName { get { return _requestedName; } set { _requestedName = value; } }
-        private Value<string> _requestedStatus;
+        private DirtyValue<string> _requestedStatus;
         public string RequestedStatus { get { return _requestedStatus; } set { _requestedStatus = value; } }
-        private Value<string> _sellSideDeliveredBy;
+        private DirtyValue<string> _sellSideDeliveredBy;
         public string SellSideDeliveredBy { get { return _sellSideDeliveredBy; } set { _sellSideDeliveredBy = value; } }
-        private Value<DateTime?> _sellSideDeliveryDate;
+        private DirtyValue<DateTime?> _sellSideDeliveryDate;
         public DateTime? SellSideDeliveryDate { get { return _sellSideDeliveryDate; } set { _sellSideDeliveryDate = value; } }
-        private Value<DateTime?> _sellSideExpirationDate;
+        private DirtyValue<DateTime?> _sellSideExpirationDate;
         public DateTime? SellSideExpirationDate { get { return _sellSideExpirationDate; } set { _sellSideExpirationDate = value; } }
-        private Value<DateTime?> _sellSideNewLockExtensionDate;
+        private DirtyValue<DateTime?> _sellSideNewLockExtensionDate;
         public DateTime? SellSideNewLockExtensionDate { get { return _sellSideNewLockExtensionDate; } set { _sellSideNewLockExtensionDate = value; } }
-        private Value<int?> _sellSideNumDayExtended;
+        private DirtyValue<int?> _sellSideNumDayExtended;
         public int? SellSideNumDayExtended { get { return _sellSideNumDayExtended; } set { _sellSideNumDayExtended = value; } }
-        private Value<string> _snapshotXml;
+        private DirtyValue<string> _snapshotXml;
         public string SnapshotXml { get { return _snapshotXml; } set { _snapshotXml = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private Value<string> _timeRequested;
+        private DirtyValue<string> _timeRequested;
         public string TimeRequested { get { return _timeRequested; } set { _timeRequested = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

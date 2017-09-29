@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// Collection to use for dirty checking.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
     internal sealed class DirtyList<T> : IList<T>, IDirty
     {
-        internal readonly List<Value<T>> _list;
-        private bool _dirty;
+        internal readonly List<DirtyValue<T>> _list;
 
         public T this[int index]
         {
@@ -20,7 +24,6 @@ namespace EncompassRest
             }
             set
             {
-                _dirty = true;
                 _list[index] = value;
             }
         }
@@ -29,23 +32,10 @@ namespace EncompassRest
         {
             get
             {
-                var dirty = _dirty;
-                if (!dirty)
-                {
-                    foreach (var item in _list)
-                    {
-                        if (item.Dirty)
-                        {
-                            dirty = true;
-                            break;
-                        }
-                    }
-                }
-                return dirty;
+                return _list.Any(item => item.Dirty);
             }
             set
             {
-                _dirty = value;
                 for (var i = 0; i < _list.Count; ++i)
                 {
                     var item = _list[i];
@@ -61,7 +51,7 @@ namespace EncompassRest
 
         public DirtyList()
         {
-            _list = new List<Value<T>>();
+            _list = new List<DirtyValue<T>>();
         }
 
         public DirtyList(IEnumerable<T> list)
@@ -73,17 +63,9 @@ namespace EncompassRest
             }
         }
 
-        public void Add(T item)
-        {
-            _dirty = true;
-            _list.Add(item);
-        }
+        public void Add(T item) => _list.Add(item);
 
-        public void Clear()
-        {
-            _dirty = true;
-            _list.Clear();
-        }
+        public void Clear() => _list.Clear();
 
         public bool Contains(T item) => IndexOf(item) >= 0;
 
@@ -122,7 +104,6 @@ namespace EncompassRest
 
         public void Insert(int index, T item)
         {
-            _dirty = true;
             _list.Insert(index, item);
         }
 
@@ -137,11 +118,7 @@ namespace EncompassRest
             return false;
         }
 
-        public void RemoveAt(int index)
-        {
-            _dirty = true;
-            _list.RemoveAt(index);
-        }
+        public void RemoveAt(int index) => _list.RemoveAt(index);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

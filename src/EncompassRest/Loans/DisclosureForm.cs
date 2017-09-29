@@ -8,11 +8,11 @@ namespace EncompassRest.Loans
 {
     public sealed partial class DisclosureForm : IDirty
     {
-        private Value<string> _formName;
+        private DirtyValue<string> _formName;
         public string FormName { get { return _formName; } set { _formName = value; } }
-        private Value<string> _formType;
+        private DirtyValue<string> _formType;
         public string FormType { get { return _formType; } set { _formType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

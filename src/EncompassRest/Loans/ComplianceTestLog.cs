@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ComplianceTestLog : IDirty
     {
-        private Value<string> _details;
+        private DirtyValue<string> _details;
         public string Details { get { return _details; } set { _details = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _result;
+        private DirtyValue<string> _result;
         public string Result { get { return _result; } set { _result = value; } }
-        private Value<bool?> _showAlert;
+        private DirtyValue<bool?> _showAlert;
         public bool? ShowAlert { get { return _showAlert; } set { _showAlert = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

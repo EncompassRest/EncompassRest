@@ -8,73 +8,73 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ClosingDisclosure4 : IDirty
     {
-        private Value<string> _demandFeature;
+        private DirtyValue<string> _demandFeature;
         public string DemandFeature { get { return _demandFeature; } set { _demandFeature = value; } }
-        private Value<bool?> _escrowIndicator;
+        private DirtyValue<bool?> _escrowIndicator;
         public bool? EscrowIndicator { get { return _escrowIndicator; } set { _escrowIndicator = value; } }
-        private Value<decimal?> _estimatedPropertyCosts;
+        private DirtyValue<decimal?> _estimatedPropertyCosts;
         public decimal? EstimatedPropertyCosts { get { return _estimatedPropertyCosts; } set { _estimatedPropertyCosts = value; } }
-        private Value<string> _firstChangeAmt;
+        private DirtyValue<string> _firstChangeAmt;
         public string FirstChangeAmt { get { return _firstChangeAmt; } set { _firstChangeAmt = value; } }
-        private Value<decimal?> _firstChangeMaxAmt;
+        private DirtyValue<decimal?> _firstChangeMaxAmt;
         public decimal? FirstChangeMaxAmt { get { return _firstChangeMaxAmt; } set { _firstChangeMaxAmt = value; } }
-        private Value<decimal?> _firstChangeMinAmt;
+        private DirtyValue<decimal?> _firstChangeMinAmt;
         public decimal? FirstChangeMinAmt { get { return _firstChangeMinAmt; } set { _firstChangeMinAmt = value; } }
-        private Value<string> _firstChangePayment;
+        private DirtyValue<string> _firstChangePayment;
         public string FirstChangePayment { get { return _firstChangePayment; } set { _firstChangePayment = value; } }
-        private Value<bool?> _hOADuesIsEscrow;
+        private DirtyValue<bool?> _hOADuesIsEscrow;
         public bool? HOADuesIsEscrow { get { return _hOADuesIsEscrow; } set { _hOADuesIsEscrow = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _ignoreARMAdj;
+        private DirtyValue<bool?> _ignoreARMAdj;
         public bool? IgnoreARMAdj { get { return _ignoreARMAdj; } set { _ignoreARMAdj = value; } }
-        private Value<decimal?> _initialEscrowPayment;
+        private DirtyValue<decimal?> _initialEscrowPayment;
         public decimal? InitialEscrowPayment { get { return _initialEscrowPayment; } set { _initialEscrowPayment = value; } }
-        private Value<int?> _interestOnlyPaymentMonths;
+        private DirtyValue<int?> _interestOnlyPaymentMonths;
         public int? InterestOnlyPaymentMonths { get { return _interestOnlyPaymentMonths; } set { _interestOnlyPaymentMonths = value; } }
-        private Value<bool?> _interestOnlyPayments;
+        private DirtyValue<bool?> _interestOnlyPayments;
         public bool? InterestOnlyPayments { get { return _interestOnlyPayments; } set { _interestOnlyPayments = value; } }
-        private Value<int?> _interestRateAdjustments;
+        private DirtyValue<int?> _interestRateAdjustments;
         public int? InterestRateAdjustments { get { return _interestRateAdjustments; } set { _interestRateAdjustments = value; } }
-        private Value<bool?> _lender;
+        private DirtyValue<bool?> _lender;
         public bool? Lender { get { return _lender; } set { _lender = value; } }
-        private Value<string> _maximumPaymentAmt;
+        private DirtyValue<string> _maximumPaymentAmt;
         public string MaximumPaymentAmt { get { return _maximumPaymentAmt; } set { _maximumPaymentAmt = value; } }
-        private Value<string> _maxPayment;
+        private DirtyValue<string> _maxPayment;
         public string MaxPayment { get { return _maxPayment; } set { _maxPayment = value; } }
-        private Value<decimal?> _maxPaymentAmt;
+        private DirtyValue<decimal?> _maxPaymentAmt;
         public decimal? MaxPaymentAmt { get { return _maxPaymentAmt; } set { _maxPaymentAmt = value; } }
-        private Value<decimal?> _monthlyEscrowPayment;
+        private DirtyValue<decimal?> _monthlyEscrowPayment;
         public decimal? MonthlyEscrowPayment { get { return _monthlyEscrowPayment; } set { _monthlyEscrowPayment = value; } }
-        private Value<string> _negativeAmortization;
+        private DirtyValue<string> _negativeAmortization;
         public string NegativeAmortization { get { return _negativeAmortization; } set { _negativeAmortization = value; } }
-        private Value<decimal?> _nonEscrowedPropertyCosts1YearConsummation;
+        private DirtyValue<decimal?> _nonEscrowedPropertyCosts1YearConsummation;
         public decimal? NonEscrowedPropertyCosts1YearConsummation { get { return _nonEscrowedPropertyCosts1YearConsummation; } set { _nonEscrowedPropertyCosts1YearConsummation = value; } }
-        private Value<bool?> _other1;
+        private DirtyValue<bool?> _other1;
         public bool? Other1 { get { return _other1; } set { _other1 = value; } }
-        private Value<bool?> _other2;
+        private DirtyValue<bool?> _other2;
         public bool? Other2 { get { return _other2; } set { _other2 = value; } }
-        private Value<bool?> _other3;
+        private DirtyValue<bool?> _other3;
         public bool? Other3 { get { return _other3; } set { _other3 = value; } }
-        private Value<string> _partialPayment;
+        private DirtyValue<string> _partialPayment;
         public string PartialPayment { get { return _partialPayment; } set { _partialPayment = value; } }
-        private Value<string> _partialPaymentHoldUntilComplete;
+        private DirtyValue<string> _partialPaymentHoldUntilComplete;
         public string PartialPaymentHoldUntilComplete { get { return _partialPaymentHoldUntilComplete; } set { _partialPaymentHoldUntilComplete = value; } }
-        private Value<string> _partialPaymentNone;
+        private DirtyValue<string> _partialPaymentNone;
         public string PartialPaymentNone { get { return _partialPaymentNone; } set { _partialPaymentNone = value; } }
-        private Value<string> _seasonalPaymentFromYr;
+        private DirtyValue<string> _seasonalPaymentFromYr;
         public string SeasonalPaymentFromYr { get { return _seasonalPaymentFromYr; } set { _seasonalPaymentFromYr = value; } }
-        private Value<bool?> _seasonalPayments;
+        private DirtyValue<bool?> _seasonalPayments;
         public bool? SeasonalPayments { get { return _seasonalPayments; } set { _seasonalPayments = value; } }
-        private Value<int?> _stepPayment;
+        private DirtyValue<int?> _stepPayment;
         public int? StepPayment { get { return _stepPayment; } set { _stepPayment = value; } }
-        private Value<bool?> _stepPayments;
+        private DirtyValue<bool?> _stepPayments;
         public bool? StepPayments { get { return _stepPayments; } set { _stepPayments = value; } }
-        private Value<decimal?> _stepRateFirstChange;
+        private DirtyValue<decimal?> _stepRateFirstChange;
         public decimal? StepRateFirstChange { get { return _stepRateFirstChange; } set { _stepRateFirstChange = value; } }
-        private Value<string> _subsequentChanges;
+        private DirtyValue<string> _subsequentChanges;
         public string SubsequentChanges { get { return _subsequentChanges; } set { _subsequentChanges = value; } }
-        private Value<decimal?> _totalDisbursed1YearConsummation;
+        private DirtyValue<decimal?> _totalDisbursed1YearConsummation;
         public decimal? TotalDisbursed1YearConsummation { get { return _totalDisbursed1YearConsummation; } set { _totalDisbursed1YearConsummation = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

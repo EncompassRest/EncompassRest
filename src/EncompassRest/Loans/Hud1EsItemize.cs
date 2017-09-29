@@ -8,19 +8,19 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Hud1EsItemize : IDirty
     {
-        private Value<string> _date;
+        private DirtyValue<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
-        private Value<decimal?> _escrowPaymentBalance;
+        private DirtyValue<decimal?> _escrowPaymentBalance;
         public decimal? EscrowPaymentBalance { get { return _escrowPaymentBalance; } set { _escrowPaymentBalance = value; } }
-        private Value<string> _escrowPaymentDescription;
+        private DirtyValue<string> _escrowPaymentDescription;
         public string EscrowPaymentDescription { get { return _escrowPaymentDescription; } set { _escrowPaymentDescription = value; } }
-        private Value<decimal?> _escrowPaymentFrom;
+        private DirtyValue<decimal?> _escrowPaymentFrom;
         public decimal? EscrowPaymentFrom { get { return _escrowPaymentFrom; } set { _escrowPaymentFrom = value; } }
-        private Value<decimal?> _escrowPaymentTo;
+        private DirtyValue<decimal?> _escrowPaymentTo;
         public decimal? EscrowPaymentTo { get { return _escrowPaymentTo; } set { _escrowPaymentTo = value; } }
-        private Value<int?> _hud1EsItemizeIndex;
+        private DirtyValue<int?> _hud1EsItemizeIndex;
         public int? Hud1EsItemizeIndex { get { return _hud1EsItemizeIndex; } set { _hud1EsItemizeIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

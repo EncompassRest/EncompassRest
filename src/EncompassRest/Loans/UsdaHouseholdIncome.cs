@@ -8,29 +8,29 @@ namespace EncompassRest.Loans
 {
     public sealed partial class UsdaHouseholdIncome : IDirty
     {
-        private Value<int?> _age;
+        private DirtyValue<int?> _age;
         public int? Age { get { return _age; } set { _age = value; } }
-        private Value<string> _analysisDocumenting;
+        private DirtyValue<string> _analysisDocumenting;
         public string AnalysisDocumenting { get { return _analysisDocumenting; } set { _analysisDocumenting = value; } }
-        private Value<decimal?> _annualNonWageIncome;
+        private DirtyValue<decimal?> _annualNonWageIncome;
         public decimal? AnnualNonWageIncome { get { return _annualNonWageIncome; } set { _annualNonWageIncome = value; } }
-        private Value<decimal?> _annualWageIncome;
+        private DirtyValue<decimal?> _annualWageIncome;
         public decimal? AnnualWageIncome { get { return _annualWageIncome; } set { _annualWageIncome = value; } }
-        private Value<bool?> _disabledIndicator;
+        private DirtyValue<bool?> _disabledIndicator;
         public bool? DisabledIndicator { get { return _disabledIndicator; } set { _disabledIndicator = value; } }
-        private Value<bool?> _fullTimeStudentIndicator;
+        private DirtyValue<bool?> _fullTimeStudentIndicator;
         public bool? FullTimeStudentIndicator { get { return _fullTimeStudentIndicator; } set { _fullTimeStudentIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _recordOwnerType;
+        private DirtyValue<string> _recordOwnerType;
         public string RecordOwnerType { get { return _recordOwnerType; } set { _recordOwnerType = value; } }
-        private Value<string> _sourceofNonWageIncomeDescription;
+        private DirtyValue<string> _sourceofNonWageIncomeDescription;
         public string SourceofNonWageIncomeDescription { get { return _sourceofNonWageIncomeDescription; } set { _sourceofNonWageIncomeDescription = value; } }
-        private Value<string> _sourceofWageIncomeEmployerName;
+        private DirtyValue<string> _sourceofWageIncomeEmployerName;
         public string SourceofWageIncomeEmployerName { get { return _sourceofWageIncomeEmployerName; } set { _sourceofWageIncomeEmployerName = value; } }
-        private Value<int?> _usdaHouseholdIncomeIndex;
+        private DirtyValue<int?> _usdaHouseholdIncomeIndex;
         public int? UsdaHouseholdIncomeIndex { get { return _usdaHouseholdIncomeIndex; } set { _usdaHouseholdIncomeIndex = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

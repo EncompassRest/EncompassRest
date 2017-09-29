@@ -8,47 +8,47 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Funding : IDirty
     {
-        private Value<DateTime?> _collateralSentDate;
+        private DirtyValue<DateTime?> _collateralSentDate;
         public DateTime? CollateralSentDate { get { return _collateralSentDate; } set { _collateralSentDate = value; } }
-        private Value<string> _funderName;
+        private DirtyValue<string> _funderName;
         public string FunderName { get { return _funderName; } set { _funderName = value; } }
-        private Value<string> _funderUrl;
+        private DirtyValue<string> _funderUrl;
         public string FunderUrl { get { return _funderUrl; } set { _funderUrl = value; } }
-        private Value<string> _fundingClearedBy;
+        private DirtyValue<string> _fundingClearedBy;
         public string FundingClearedBy { get { return _fundingClearedBy; } set { _fundingClearedBy = value; } }
-        private Value<DateTime?> _fundingCloseDate;
+        private DirtyValue<DateTime?> _fundingCloseDate;
         public DateTime? FundingCloseDate { get { return _fundingCloseDate; } set { _fundingCloseDate = value; } }
-        private Value<string> _fundingFees;
+        private DirtyValue<string> _fundingFees;
         public string FundingFees { get { return _fundingFees; } set { _fundingFees = value; } }
-        private Value<DateTime?> _fundingOrderDate;
+        private DirtyValue<DateTime?> _fundingOrderDate;
         public DateTime? FundingOrderDate { get { return _fundingOrderDate; } set { _fundingOrderDate = value; } }
-        private Value<string> _fundingType;
+        private DirtyValue<string> _fundingType;
         public string FundingType { get { return _fundingType; } set { _fundingType = value; } }
-        private Value<DateTime?> _fundsReleasedDate;
+        private DirtyValue<DateTime?> _fundsReleasedDate;
         public DateTime? FundsReleasedDate { get { return _fundsReleasedDate; } set { _fundsReleasedDate = value; } }
-        private Value<string> _fundsReleaseNumber;
+        private DirtyValue<string> _fundsReleaseNumber;
         public string FundsReleaseNumber { get { return _fundsReleaseNumber; } set { _fundsReleaseNumber = value; } }
-        private Value<DateTime?> _fundsSentDate;
+        private DirtyValue<DateTime?> _fundsSentDate;
         public DateTime? FundsSentDate { get { return _fundsSentDate; } set { _fundsSentDate = value; } }
-        private Value<string> _fundsWireTo;
+        private DirtyValue<string> _fundsWireTo;
         public string FundsWireTo { get { return _fundsWireTo; } set { _fundsWireTo = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<DateTime?> _sentToFunderDate;
+        private DirtyValue<DateTime?> _sentToFunderDate;
         public DateTime? SentToFunderDate { get { return _sentToFunderDate; } set { _sentToFunderDate = value; } }
-        private Value<string> _wiredToAbaNumber;
+        private DirtyValue<string> _wiredToAbaNumber;
         public string WiredToAbaNumber { get { return _wiredToAbaNumber; } set { _wiredToAbaNumber = value; } }
-        private Value<string> _wiredToAccountNumber;
+        private DirtyValue<string> _wiredToAccountNumber;
         public string WiredToAccountNumber { get { return _wiredToAccountNumber; } set { _wiredToAccountNumber = value; } }
-        private Value<string> _wiredToForCreditTo;
+        private DirtyValue<string> _wiredToForCreditTo;
         public string WiredToForCreditTo { get { return _wiredToForCreditTo; } set { _wiredToForCreditTo = value; } }
-        private Value<string> _wiredToForCreditTo1;
+        private DirtyValue<string> _wiredToForCreditTo1;
         public string WiredToForCreditTo1 { get { return _wiredToForCreditTo1; } set { _wiredToForCreditTo1 = value; } }
-        private Value<string> _wiredToForCreditTo2;
+        private DirtyValue<string> _wiredToForCreditTo2;
         public string WiredToForCreditTo2 { get { return _wiredToForCreditTo2; } set { _wiredToForCreditTo2 = value; } }
-        private Value<string> _wiredToForFurtherCreditTo1;
+        private DirtyValue<string> _wiredToForFurtherCreditTo1;
         public string WiredToForFurtherCreditTo1 { get { return _wiredToForFurtherCreditTo1; } set { _wiredToForFurtherCreditTo1 = value; } }
-        private Value<string> _wiredToForFurtherCreditTo2;
+        private DirtyValue<string> _wiredToForFurtherCreditTo2;
         public string WiredToForFurtherCreditTo2 { get { return _wiredToForFurtherCreditTo2; } set { _wiredToForFurtherCreditTo2 = value; } }
         private int _gettingDirty;
         private int _settingDirty; 
