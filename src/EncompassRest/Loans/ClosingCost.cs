@@ -24,11 +24,16 @@ namespace EncompassRest.Loans
         public string ClosingCostProgram { get { return _closingCostProgram; } set { _closingCostProgram = value; } }
         private Value<string> _closingCostScenarioXml;
         public string ClosingCostScenarioXml { get { return _closingCostScenarioXml; } set { _closingCostScenarioXml = value; } }
-        public ClosingDisclosure1 ClosingDisclosure1 { get; set; }
-        public ClosingDisclosure2 ClosingDisclosure2 { get; set; }
-        public ClosingDisclosure3 ClosingDisclosure3 { get; set; }
-        public ClosingDisclosure4 ClosingDisclosure4 { get; set; }
-        public ClosingDisclosure5 ClosingDisclosure5 { get; set; }
+        private ClosingDisclosure1 _closingDisclosure1;
+        public ClosingDisclosure1 ClosingDisclosure1 { get { var v = _closingDisclosure1; return v ?? Interlocked.CompareExchange(ref _closingDisclosure1, (v = new ClosingDisclosure1()), null) ?? v; } set { _closingDisclosure1 = value; } }
+        private ClosingDisclosure2 _closingDisclosure2;
+        public ClosingDisclosure2 ClosingDisclosure2 { get { var v = _closingDisclosure2; return v ?? Interlocked.CompareExchange(ref _closingDisclosure2, (v = new ClosingDisclosure2()), null) ?? v; } set { _closingDisclosure2 = value; } }
+        private ClosingDisclosure3 _closingDisclosure3;
+        public ClosingDisclosure3 ClosingDisclosure3 { get { var v = _closingDisclosure3; return v ?? Interlocked.CompareExchange(ref _closingDisclosure3, (v = new ClosingDisclosure3()), null) ?? v; } set { _closingDisclosure3 = value; } }
+        private ClosingDisclosure4 _closingDisclosure4;
+        public ClosingDisclosure4 ClosingDisclosure4 { get { var v = _closingDisclosure4; return v ?? Interlocked.CompareExchange(ref _closingDisclosure4, (v = new ClosingDisclosure4()), null) ?? v; } set { _closingDisclosure4 = value; } }
+        private ClosingDisclosure5 _closingDisclosure5;
+        public ClosingDisclosure5 ClosingDisclosure5 { get { var v = _closingDisclosure5; return v ?? Interlocked.CompareExchange(ref _closingDisclosure5, (v = new ClosingDisclosure5()), null) ?? v; } set { _closingDisclosure5 = value; } }
         private Value<decimal?> _disclosedSalesPrice;
         public decimal? DisclosedSalesPrice { get { return _disclosedSalesPrice; } set { _disclosedSalesPrice = value; } }
         private Value<string> _escrowCompanyName;
@@ -57,12 +62,16 @@ namespace EncompassRest.Loans
         public decimal? EscrowTableFee5 { get { return _escrowTableFee5; } set { _escrowTableFee5 = value; } }
         private Value<string> _escrowTableName;
         public string EscrowTableName { get { return _escrowTableName; } set { _escrowTableName = value; } }
-        public FeeVarianceOther FeeVarianceOther { get; set; }
-        private Value<List<FeeVariance>> _feeVariances;
-        public List<FeeVariance> FeeVariances { get { return _feeVariances; } set { _feeVariances = value; } }
-        public Gfe2010 Gfe2010 { get; set; }
-        public Gfe2010Page Gfe2010Page { get; set; }
-        public Gfe2010Section Gfe2010Section { get; set; }
+        private FeeVarianceOther _feeVarianceOther;
+        public FeeVarianceOther FeeVarianceOther { get { var v = _feeVarianceOther; return v ?? Interlocked.CompareExchange(ref _feeVarianceOther, (v = new FeeVarianceOther()), null) ?? v; } set { _feeVarianceOther = value; } }
+        private DirtyList<FeeVariance> _feeVariances;
+        public IList<FeeVariance> FeeVariances { get { var v = _feeVariances; return v ?? Interlocked.CompareExchange(ref _feeVariances, (v = new DirtyList<FeeVariance>()), null) ?? v; } set { _feeVariances = new DirtyList<FeeVariance>(value); } }
+        private Gfe2010 _gfe2010;
+        public Gfe2010 Gfe2010 { get { var v = _gfe2010; return v ?? Interlocked.CompareExchange(ref _gfe2010, (v = new Gfe2010()), null) ?? v; } set { _gfe2010 = value; } }
+        private Gfe2010Page _gfe2010Page;
+        public Gfe2010Page Gfe2010Page { get { var v = _gfe2010Page; return v ?? Interlocked.CompareExchange(ref _gfe2010Page, (v = new Gfe2010Page()), null) ?? v; } set { _gfe2010Page = value; } }
+        private Gfe2010Section _gfe2010Section;
+        public Gfe2010Section Gfe2010Section { get { var v = _gfe2010Section; return v ?? Interlocked.CompareExchange(ref _gfe2010Section, (v = new Gfe2010Section()), null) ?? v; } set { _gfe2010Section = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private Value<decimal?> _impoundHazInsRate;
@@ -81,9 +90,12 @@ namespace EncompassRest.Loans
         public string ImpoundType3 { get { return _impoundType3; } set { _impoundType3 = value; } }
         private Value<string> _impoundType4;
         public string ImpoundType4 { get { return _impoundType4; } set { _impoundType4 = value; } }
-        public LoanEstimate1 LoanEstimate1 { get; set; }
-        public LoanEstimate2 LoanEstimate2 { get; set; }
-        public LoanEstimate3 LoanEstimate3 { get; set; }
+        private LoanEstimate1 _loanEstimate1;
+        public LoanEstimate1 LoanEstimate1 { get { var v = _loanEstimate1; return v ?? Interlocked.CompareExchange(ref _loanEstimate1, (v = new LoanEstimate1()), null) ?? v; } set { _loanEstimate1 = value; } }
+        private LoanEstimate2 _loanEstimate2;
+        public LoanEstimate2 LoanEstimate2 { get { var v = _loanEstimate2; return v ?? Interlocked.CompareExchange(ref _loanEstimate2, (v = new LoanEstimate2()), null) ?? v; } set { _loanEstimate2 = value; } }
+        private LoanEstimate3 _loanEstimate3;
+        public LoanEstimate3 LoanEstimate3 { get { var v = _loanEstimate3; return v ?? Interlocked.CompareExchange(ref _loanEstimate3, (v = new LoanEstimate3()), null) ?? v; } set { _loanEstimate3 = value; } }
         private Value<decimal?> _proposedMonthlyHazardInsurance;
         public decimal? ProposedMonthlyHazardInsurance { get { return _proposedMonthlyHazardInsurance; } set { _proposedMonthlyHazardInsurance = value; } }
         private Value<decimal?> _proposedMonthlyMortgageInsurance;
@@ -157,7 +169,6 @@ namespace EncompassRest.Loans
                     || _escrowTableFee4.Dirty
                     || _escrowTableFee5.Dirty
                     || _escrowTableName.Dirty
-                    || _feeVariances.Dirty
                     || _id.Dirty
                     || _impoundHazInsRate.Dirty
                     || _impoundMortgInsPremRate.Dirty
@@ -189,18 +200,19 @@ namespace EncompassRest.Loans
                     || _totalForSellerPaid4.Dirty
                     || _totalForSellerPaid5.Dirty
                     || _totalForSellerPaid6.Dirty
-                    || ClosingDisclosure1?.Dirty == true
-                    || ClosingDisclosure2?.Dirty == true
-                    || ClosingDisclosure3?.Dirty == true
-                    || ClosingDisclosure4?.Dirty == true
-                    || ClosingDisclosure5?.Dirty == true
-                    || FeeVarianceOther?.Dirty == true
-                    || Gfe2010?.Dirty == true
-                    || Gfe2010Page?.Dirty == true
-                    || Gfe2010Section?.Dirty == true
-                    || LoanEstimate1?.Dirty == true
-                    || LoanEstimate2?.Dirty == true
-                    || LoanEstimate3?.Dirty == true;
+                    || _closingDisclosure1?.Dirty == true
+                    || _closingDisclosure2?.Dirty == true
+                    || _closingDisclosure3?.Dirty == true
+                    || _closingDisclosure4?.Dirty == true
+                    || _closingDisclosure5?.Dirty == true
+                    || _feeVarianceOther?.Dirty == true
+                    || _feeVariances?.Dirty == true
+                    || _gfe2010?.Dirty == true
+                    || _gfe2010Page?.Dirty == true
+                    || _gfe2010Section?.Dirty == true
+                    || _loanEstimate1?.Dirty == true
+                    || _loanEstimate2?.Dirty == true
+                    || _loanEstimate3?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -229,7 +241,6 @@ namespace EncompassRest.Loans
                 _escrowTableFee4.Dirty = value;
                 _escrowTableFee5.Dirty = value;
                 _escrowTableName.Dirty = value;
-                _feeVariances.Dirty = value;
                 _id.Dirty = value;
                 _impoundHazInsRate.Dirty = value;
                 _impoundMortgInsPremRate.Dirty = value;
@@ -261,18 +272,19 @@ namespace EncompassRest.Loans
                 _totalForSellerPaid4.Dirty = value;
                 _totalForSellerPaid5.Dirty = value;
                 _totalForSellerPaid6.Dirty = value;
-                if (ClosingDisclosure1 != null) ClosingDisclosure1.Dirty = value;
-                if (ClosingDisclosure2 != null) ClosingDisclosure2.Dirty = value;
-                if (ClosingDisclosure3 != null) ClosingDisclosure3.Dirty = value;
-                if (ClosingDisclosure4 != null) ClosingDisclosure4.Dirty = value;
-                if (ClosingDisclosure5 != null) ClosingDisclosure5.Dirty = value;
-                if (FeeVarianceOther != null) FeeVarianceOther.Dirty = value;
-                if (Gfe2010 != null) Gfe2010.Dirty = value;
-                if (Gfe2010Page != null) Gfe2010Page.Dirty = value;
-                if (Gfe2010Section != null) Gfe2010Section.Dirty = value;
-                if (LoanEstimate1 != null) LoanEstimate1.Dirty = value;
-                if (LoanEstimate2 != null) LoanEstimate2.Dirty = value;
-                if (LoanEstimate3 != null) LoanEstimate3.Dirty = value;
+                if (_closingDisclosure1 != null) _closingDisclosure1.Dirty = value;
+                if (_closingDisclosure2 != null) _closingDisclosure2.Dirty = value;
+                if (_closingDisclosure3 != null) _closingDisclosure3.Dirty = value;
+                if (_closingDisclosure4 != null) _closingDisclosure4.Dirty = value;
+                if (_closingDisclosure5 != null) _closingDisclosure5.Dirty = value;
+                if (_feeVarianceOther != null) _feeVarianceOther.Dirty = value;
+                if (_feeVariances != null) _feeVariances.Dirty = value;
+                if (_gfe2010 != null) _gfe2010.Dirty = value;
+                if (_gfe2010Page != null) _gfe2010Page.Dirty = value;
+                if (_gfe2010Section != null) _gfe2010Section.Dirty = value;
+                if (_loanEstimate1 != null) _loanEstimate1.Dirty = value;
+                if (_loanEstimate2 != null) _loanEstimate2.Dirty = value;
+                if (_loanEstimate3 != null) _loanEstimate3.Dirty = value;
                 _settingDirty = 0;
             }
         }

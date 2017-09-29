@@ -258,10 +258,10 @@ namespace EncompassRest.Loans
         public decimal? NewYorkAppraisalFee { get { return _newYorkAppraisalFee; } set { _newYorkAppraisalFee = value; } }
         private Value<decimal?> _newYorkCreditReportFee;
         public decimal? NewYorkCreditReportFee { get { return _newYorkCreditReportFee; } set { _newYorkCreditReportFee = value; } }
-        private Value<List<NewYorkFee>> _newYorkFees;
-        public List<NewYorkFee> NewYorkFees { get { return _newYorkFees; } set { _newYorkFees = value; } }
-        private Value<List<NewYorkPrimaryLender>> _newYorkPrimaryLenders;
-        public List<NewYorkPrimaryLender> NewYorkPrimaryLenders { get { return _newYorkPrimaryLenders; } set { _newYorkPrimaryLenders = value; } }
+        private DirtyList<NewYorkFee> _newYorkFees;
+        public IList<NewYorkFee> NewYorkFees { get { var v = _newYorkFees; return v ?? Interlocked.CompareExchange(ref _newYorkFees, (v = new DirtyList<NewYorkFee>()), null) ?? v; } set { _newYorkFees = new DirtyList<NewYorkFee>(value); } }
+        private DirtyList<NewYorkPrimaryLender> _newYorkPrimaryLenders;
+        public IList<NewYorkPrimaryLender> NewYorkPrimaryLenders { get { var v = _newYorkPrimaryLenders; return v ?? Interlocked.CompareExchange(ref _newYorkPrimaryLenders, (v = new DirtyList<NewYorkPrimaryLender>()), null) ?? v; } set { _newYorkPrimaryLenders = new DirtyList<NewYorkPrimaryLender>(value); } }
         private Value<decimal?> _newYorkProcessingFee;
         public decimal? NewYorkProcessingFee { get { return _newYorkProcessingFee; } set { _newYorkProcessingFee = value; } }
         private Value<decimal?> _notRefundableAmount;
@@ -578,8 +578,6 @@ namespace EncompassRest.Loans
                     || _newYorkApplicationFee.Dirty
                     || _newYorkAppraisalFee.Dirty
                     || _newYorkCreditReportFee.Dirty
-                    || _newYorkFees.Dirty
-                    || _newYorkPrimaryLenders.Dirty
                     || _newYorkProcessingFee.Dirty
                     || _notRefundableAmount.Dirty
                     || _offerRetailPriceIndicator.Dirty
@@ -671,7 +669,9 @@ namespace EncompassRest.Loans
                     || _ySPDecreasesRate.Dirty
                     || _ySPIncreasesRate.Dirty
                     || _ySPInterestRateImpactedStatus.Dirty
-                    || _ySPPaidBy.Dirty;
+                    || _ySPPaidBy.Dirty
+                    || _newYorkFees?.Dirty == true
+                    || _newYorkPrimaryLenders?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -803,8 +803,6 @@ namespace EncompassRest.Loans
                 _newYorkApplicationFee.Dirty = value;
                 _newYorkAppraisalFee.Dirty = value;
                 _newYorkCreditReportFee.Dirty = value;
-                _newYorkFees.Dirty = value;
-                _newYorkPrimaryLenders.Dirty = value;
                 _newYorkProcessingFee.Dirty = value;
                 _notRefundableAmount.Dirty = value;
                 _offerRetailPriceIndicator.Dirty = value;
@@ -897,6 +895,8 @@ namespace EncompassRest.Loans
                 _ySPIncreasesRate.Dirty = value;
                 _ySPInterestRateImpactedStatus.Dirty = value;
                 _ySPPaidBy.Dirty = value;
+                if (_newYorkFees != null) _newYorkFees.Dirty = value;
+                if (_newYorkPrimaryLenders != null) _newYorkPrimaryLenders.Dirty = value;
                 _settingDirty = 0;
             }
         }

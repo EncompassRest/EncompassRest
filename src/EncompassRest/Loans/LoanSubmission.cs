@@ -30,8 +30,8 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<bool?> _isSecondaryRegistration;
         public bool? IsSecondaryRegistration { get { return _isSecondaryRegistration; } set { _isSecondaryRegistration = value; } }
-        private Value<List<LoanSubmissionFee>> _loanSubmissionFees;
-        public List<LoanSubmissionFee> LoanSubmissionFees { get { return _loanSubmissionFees; } set { _loanSubmissionFees = value; } }
+        private DirtyList<LoanSubmissionFee> _loanSubmissionFees;
+        public IList<LoanSubmissionFee> LoanSubmissionFees { get { var v = _loanSubmissionFees; return v ?? Interlocked.CompareExchange(ref _loanSubmissionFees, (v = new DirtyList<LoanSubmissionFee>()), null) ?? v; } set { _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); } }
         private Value<DateTime?> _lockDate;
         public DateTime? LockDate { get { return _lockDate; } set { _lockDate = value; } }
         private Value<DateTime?> _lockDateTimestampUtc;
@@ -84,7 +84,6 @@ namespace EncompassRest.Loans
                     || _hazardIndicator.Dirty
                     || _id.Dirty
                     || _isSecondaryRegistration.Dirty
-                    || _loanSubmissionFees.Dirty
                     || _lockDate.Dirty
                     || _lockDateTimestampUtc.Dirty
                     || _lockExpiresDate.Dirty
@@ -101,7 +100,8 @@ namespace EncompassRest.Loans
                     || _totalDiscountPointCharged.Dirty
                     || _totalForDueBroker.Dirty
                     || _totalForDueLender.Dirty
-                    || _totalForPrimaryResidence.Dirty;
+                    || _totalForPrimaryResidence.Dirty
+                    || _loanSubmissionFees?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -119,7 +119,6 @@ namespace EncompassRest.Loans
                 _hazardIndicator.Dirty = value;
                 _id.Dirty = value;
                 _isSecondaryRegistration.Dirty = value;
-                _loanSubmissionFees.Dirty = value;
                 _lockDate.Dirty = value;
                 _lockDateTimestampUtc.Dirty = value;
                 _lockExpiresDate.Dirty = value;
@@ -137,6 +136,7 @@ namespace EncompassRest.Loans
                 _totalForDueBroker.Dirty = value;
                 _totalForDueLender.Dirty = value;
                 _totalForPrimaryResidence.Dirty = value;
+                if (_loanSubmissionFees != null) _loanSubmissionFees.Dirty = value;
                 _settingDirty = 0;
             }
         }

@@ -66,8 +66,8 @@ namespace EncompassRest.Loans
         public decimal? PercentOfIncomeTax { get { return _percentOfIncomeTax; } set { _percentOfIncomeTax = value; } }
         private Value<decimal?> _percentOfInvestmentInterest;
         public decimal? PercentOfInvestmentInterest { get { return _percentOfInvestmentInterest; } set { _percentOfInvestmentInterest = value; } }
-        private Value<List<PrequalificationScenario>> _prequalificationScenarios;
-        public List<PrequalificationScenario> PrequalificationScenarios { get { return _prequalificationScenarios; } set { _prequalificationScenarios = value; } }
+        private DirtyList<PrequalificationScenario> _prequalificationScenarios;
+        public IList<PrequalificationScenario> PrequalificationScenarios { get { var v = _prequalificationScenarios; return v ?? Interlocked.CompareExchange(ref _prequalificationScenarios, (v = new DirtyList<PrequalificationScenario>()), null) ?? v; } set { _prequalificationScenarios = new DirtyList<PrequalificationScenario>(value); } }
         private Value<string> _qualificationStatus;
         public string QualificationStatus { get { return _qualificationStatus; } set { _qualificationStatus = value; } }
         private Value<decimal?> _rentalCost;
@@ -166,7 +166,6 @@ namespace EncompassRest.Loans
                     || _percentOfHomeAppreciation.Dirty
                     || _percentOfIncomeTax.Dirty
                     || _percentOfInvestmentInterest.Dirty
-                    || _prequalificationScenarios.Dirty
                     || _qualificationStatus.Dirty
                     || _rentalCost.Dirty
                     || _rentersInsurance.Dirty
@@ -197,7 +196,8 @@ namespace EncompassRest.Loans
                     || _withinLimits7.Dirty
                     || _withinLimits8.Dirty
                     || _withinLimits9.Dirty
-                    || _yearsForComparison.Dirty;
+                    || _yearsForComparison.Dirty
+                    || _prequalificationScenarios?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -233,7 +233,6 @@ namespace EncompassRest.Loans
                 _percentOfHomeAppreciation.Dirty = value;
                 _percentOfIncomeTax.Dirty = value;
                 _percentOfInvestmentInterest.Dirty = value;
-                _prequalificationScenarios.Dirty = value;
                 _qualificationStatus.Dirty = value;
                 _rentalCost.Dirty = value;
                 _rentersInsurance.Dirty = value;
@@ -265,6 +264,7 @@ namespace EncompassRest.Loans
                 _withinLimits8.Dirty = value;
                 _withinLimits9.Dirty = value;
                 _yearsForComparison.Dirty = value;
+                if (_prequalificationScenarios != null) _prequalificationScenarios.Dirty = value;
                 _settingDirty = 0;
             }
         }

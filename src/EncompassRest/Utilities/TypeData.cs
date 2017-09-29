@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace EncompassRest.Utilities
 {
-    internal class TypeData
+    internal sealed class TypeData
     {
         private static ConcurrentDictionary<Type, TypeData> s_typeDatas = new ConcurrentDictionary<Type, TypeData>();
 
@@ -36,5 +36,14 @@ namespace EncompassRest.Utilities
         {
             Type = type;
         }
+    }
+
+    internal static class TypeData<T>
+    {
+        public static TypeData Data { get; } = TypeData.Get(typeof(T));
+
+        public static Type Type => Data.Type;
+
+        public static TypeInfo TypeInfo => Data.TypeInfo;
     }
 }

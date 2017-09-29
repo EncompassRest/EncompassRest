@@ -8,10 +8,10 @@ namespace EncompassRest.Loans
 {
     public sealed partial class DataTracLog : IDirty
     {
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private Value<string> _creator;
@@ -41,9 +41,7 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
-                var dirty = _alerts.Dirty
-                    || _commentList.Dirty
-                    || _comments.Dirty
+                var dirty = _comments.Dirty
                     || _creator.Dirty
                     || _dateUtc.Dirty
                     || _fileAttachmentsMigrated.Dirty
@@ -53,15 +51,15 @@ namespace EncompassRest.Loans
                     || _isSystemSpecificIndicator.Dirty
                     || _logRecordIndex.Dirty
                     || _message.Dirty
-                    || _systemId.Dirty;
+                    || _systemId.Dirty
+                    || _alerts?.Dirty == true
+                    || _commentList?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
-                _alerts.Dirty = value;
-                _commentList.Dirty = value;
                 _comments.Dirty = value;
                 _creator.Dirty = value;
                 _dateUtc.Dirty = value;
@@ -73,6 +71,8 @@ namespace EncompassRest.Loans
                 _logRecordIndex.Dirty = value;
                 _message.Dirty = value;
                 _systemId.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
                 _settingDirty = 0;
             }
         }

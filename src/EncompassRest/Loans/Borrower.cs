@@ -20,7 +20,8 @@ namespace EncompassRest.Loans
         public string AltId { get { return _altId; } set { _altId = value; } }
         private Value<string> _applicantType;
         public string ApplicantType { get { return _applicantType; } set { _applicantType = value; } }
-        public Application Application { get; set; }
+        private Application _application;
+        public Application Application { get { var v = _application; return v ?? Interlocked.CompareExchange(ref _application, (v = new Application()), null) ?? v; } set { _application = value; } }
         private Value<string> _applicationTakenMethodType;
         public string ApplicationTakenMethodType { get { return _applicationTakenMethodType; } set { _applicationTakenMethodType = value; } }
         private Value<string> _assetRepAndWarrantyMessage;
@@ -235,6 +236,24 @@ namespace EncompassRest.Loans
         public string HmdaCreditScoringModel { get { return _hmdaCreditScoringModel; } set { _hmdaCreditScoringModel = value; } }
         private Value<bool?> _hmdaCubanIndicator;
         public bool? HmdaCubanIndicator { get { return _hmdaCubanIndicator; } set { _hmdaCubanIndicator = value; } }
+        private Value<bool?> _hmdaEthnicityDoNotWishIndicator;
+        public bool? HmdaEthnicityDoNotWishIndicator { get { return _hmdaEthnicityDoNotWishIndicator; } set { _hmdaEthnicityDoNotWishIndicator = value; } }
+        private Value<bool?> _hmdaEthnicityHispanicLatinoIndicator;
+        public bool? HmdaEthnicityHispanicLatinoIndicator { get { return _hmdaEthnicityHispanicLatinoIndicator; } set { _hmdaEthnicityHispanicLatinoIndicator = value; } }
+        private Value<bool?> _hmdaEthnicityNotApplicableIndicator;
+        public bool? HmdaEthnicityNotApplicableIndicator { get { return _hmdaEthnicityNotApplicableIndicator; } set { _hmdaEthnicityNotApplicableIndicator = value; } }
+        private Value<bool?> _hmdaEthnicityNotHispanicLatinoIndicator;
+        public bool? HmdaEthnicityNotHispanicLatinoIndicator { get { return _hmdaEthnicityNotHispanicLatinoIndicator; } set { _hmdaEthnicityNotHispanicLatinoIndicator = value; } }
+        private Value<string> _hmdaEthnicityReportedField1;
+        public string HmdaEthnicityReportedField1 { get { return _hmdaEthnicityReportedField1; } set { _hmdaEthnicityReportedField1 = value; } }
+        private Value<string> _hmdaEthnicityReportedField2;
+        public string HmdaEthnicityReportedField2 { get { return _hmdaEthnicityReportedField2; } set { _hmdaEthnicityReportedField2 = value; } }
+        private Value<string> _hmdaEthnicityReportedField3;
+        public string HmdaEthnicityReportedField3 { get { return _hmdaEthnicityReportedField3; } set { _hmdaEthnicityReportedField3 = value; } }
+        private Value<string> _hmdaEthnicityReportedField4;
+        public string HmdaEthnicityReportedField4 { get { return _hmdaEthnicityReportedField4; } set { _hmdaEthnicityReportedField4 = value; } }
+        private Value<string> _hmdaEthnicityReportedField5;
+        public string HmdaEthnicityReportedField5 { get { return _hmdaEthnicityReportedField5; } set { _hmdaEthnicityReportedField5 = value; } }
         private Value<string> _hmdaEthnicityType;
         public string HmdaEthnicityType { get { return _hmdaEthnicityType; } set { _hmdaEthnicityType = value; } }
         private Value<bool?> _hmdaFilipinoIndicator;
@@ -281,6 +300,16 @@ namespace EncompassRest.Loans
         public bool? HmdaPacificIslanderOtherIndicator { get { return _hmdaPacificIslanderOtherIndicator; } set { _hmdaPacificIslanderOtherIndicator = value; } }
         private Value<bool?> _hmdaPuertoRicanIndicator;
         public bool? HmdaPuertoRicanIndicator { get { return _hmdaPuertoRicanIndicator; } set { _hmdaPuertoRicanIndicator = value; } }
+        private Value<string> _hmdaRaceReportedField1;
+        public string HmdaRaceReportedField1 { get { return _hmdaRaceReportedField1; } set { _hmdaRaceReportedField1 = value; } }
+        private Value<string> _hmdaRaceReportedField2;
+        public string HmdaRaceReportedField2 { get { return _hmdaRaceReportedField2; } set { _hmdaRaceReportedField2 = value; } }
+        private Value<string> _hmdaRaceReportedField3;
+        public string HmdaRaceReportedField3 { get { return _hmdaRaceReportedField3; } set { _hmdaRaceReportedField3 = value; } }
+        private Value<string> _hmdaRaceReportedField4;
+        public string HmdaRaceReportedField4 { get { return _hmdaRaceReportedField4; } set { _hmdaRaceReportedField4 = value; } }
+        private Value<string> _hmdaRaceReportedField5;
+        public string HmdaRaceReportedField5 { get { return _hmdaRaceReportedField5; } set { _hmdaRaceReportedField5 = value; } }
         private Value<bool?> _hmdaRefusalIndicator;
         public bool? HmdaRefusalIndicator { get { return _hmdaRefusalIndicator; } set { _hmdaRefusalIndicator = value; } }
         private Value<bool?> _hmdaSamoanIndicator;
@@ -733,6 +762,15 @@ namespace EncompassRest.Loans
                     || _hmdaCreditScoreForDecisionMaking.Dirty
                     || _hmdaCreditScoringModel.Dirty
                     || _hmdaCubanIndicator.Dirty
+                    || _hmdaEthnicityDoNotWishIndicator.Dirty
+                    || _hmdaEthnicityHispanicLatinoIndicator.Dirty
+                    || _hmdaEthnicityNotApplicableIndicator.Dirty
+                    || _hmdaEthnicityNotHispanicLatinoIndicator.Dirty
+                    || _hmdaEthnicityReportedField1.Dirty
+                    || _hmdaEthnicityReportedField2.Dirty
+                    || _hmdaEthnicityReportedField3.Dirty
+                    || _hmdaEthnicityReportedField4.Dirty
+                    || _hmdaEthnicityReportedField5.Dirty
                     || _hmdaEthnicityType.Dirty
                     || _hmdaFilipinoIndicator.Dirty
                     || _hmdaGenderType.Dirty
@@ -756,6 +794,11 @@ namespace EncompassRest.Loans
                     || _hmdaPacificIslanderIndicator.Dirty
                     || _hmdaPacificIslanderOtherIndicator.Dirty
                     || _hmdaPuertoRicanIndicator.Dirty
+                    || _hmdaRaceReportedField1.Dirty
+                    || _hmdaRaceReportedField2.Dirty
+                    || _hmdaRaceReportedField3.Dirty
+                    || _hmdaRaceReportedField4.Dirty
+                    || _hmdaRaceReportedField5.Dirty
                     || _hmdaRefusalIndicator.Dirty
                     || _hmdaSamoanIndicator.Dirty
                     || _hmdaVietnameseIndicator.Dirty
@@ -922,7 +965,7 @@ namespace EncompassRest.Loans
                     || _veteranIndicator.Dirty
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
-                    || Application?.Dirty == true;
+                    || _application?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -1042,6 +1085,15 @@ namespace EncompassRest.Loans
                 _hmdaCreditScoreForDecisionMaking.Dirty = value;
                 _hmdaCreditScoringModel.Dirty = value;
                 _hmdaCubanIndicator.Dirty = value;
+                _hmdaEthnicityDoNotWishIndicator.Dirty = value;
+                _hmdaEthnicityHispanicLatinoIndicator.Dirty = value;
+                _hmdaEthnicityNotApplicableIndicator.Dirty = value;
+                _hmdaEthnicityNotHispanicLatinoIndicator.Dirty = value;
+                _hmdaEthnicityReportedField1.Dirty = value;
+                _hmdaEthnicityReportedField2.Dirty = value;
+                _hmdaEthnicityReportedField3.Dirty = value;
+                _hmdaEthnicityReportedField4.Dirty = value;
+                _hmdaEthnicityReportedField5.Dirty = value;
                 _hmdaEthnicityType.Dirty = value;
                 _hmdaFilipinoIndicator.Dirty = value;
                 _hmdaGenderType.Dirty = value;
@@ -1065,6 +1117,11 @@ namespace EncompassRest.Loans
                 _hmdaPacificIslanderIndicator.Dirty = value;
                 _hmdaPacificIslanderOtherIndicator.Dirty = value;
                 _hmdaPuertoRicanIndicator.Dirty = value;
+                _hmdaRaceReportedField1.Dirty = value;
+                _hmdaRaceReportedField2.Dirty = value;
+                _hmdaRaceReportedField3.Dirty = value;
+                _hmdaRaceReportedField4.Dirty = value;
+                _hmdaRaceReportedField5.Dirty = value;
                 _hmdaRefusalIndicator.Dirty = value;
                 _hmdaSamoanIndicator.Dirty = value;
                 _hmdaVietnameseIndicator.Dirty = value;
@@ -1231,7 +1288,7 @@ namespace EncompassRest.Loans
                 _veteranIndicator.Dirty = value;
                 _workEmailAddress.Dirty = value;
                 _yearsofCreditOnFile.Dirty = value;
-                if (Application != null) Application.Dirty = value;
+                if (_application != null) _application.Dirty = value;
                 _settingDirty = 0;
             }
         }

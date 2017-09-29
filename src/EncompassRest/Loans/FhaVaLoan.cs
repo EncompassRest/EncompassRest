@@ -84,13 +84,14 @@ namespace EncompassRest.Loans
         public string DulyAgentState { get { return _dulyAgentState; } set { _dulyAgentState = value; } }
         private Value<bool?> _dwellingCoveredBy;
         public bool? DwellingCoveredBy { get { return _dwellingCoveredBy; } set { _dwellingCoveredBy = value; } }
-        public EnergyEfficientMortgage Eem { get; set; }
+        private EnergyEfficientMortgage _eem;
+        public EnergyEfficientMortgage Eem { get { var v = _eem; return v ?? Interlocked.CompareExchange(ref _eem, (v = new EnergyEfficientMortgage()), null) ?? v; } set { _eem = value; } }
         private Value<string> _eligibilityAssessment;
         public string EligibilityAssessment { get { return _eligibilityAssessment; } set { _eligibilityAssessment = value; } }
         private Value<decimal?> _energyEfficientMortgageAmount;
         public decimal? EnergyEfficientMortgageAmount { get { return _energyEfficientMortgageAmount; } set { _energyEfficientMortgageAmount = value; } }
-        private Value<List<EnergyEfficientMortgageItem>> _energyEfficientMortgageItems;
-        public List<EnergyEfficientMortgageItem> EnergyEfficientMortgageItems { get { return _energyEfficientMortgageItems; } set { _energyEfficientMortgageItems = value; } }
+        private DirtyList<EnergyEfficientMortgageItem> _energyEfficientMortgageItems;
+        public IList<EnergyEfficientMortgageItem> EnergyEfficientMortgageItems { get { var v = _energyEfficientMortgageItems; return v ?? Interlocked.CompareExchange(ref _energyEfficientMortgageItems, (v = new DirtyList<EnergyEfficientMortgageItem>()), null) ?? v; } set { _energyEfficientMortgageItems = new DirtyList<EnergyEfficientMortgageItem>(value); } }
         private Value<bool?> _everHadVAHomeLoan;
         public bool? EverHadVAHomeLoan { get { return _everHadVAHomeLoan; } set { _everHadVAHomeLoan = value; } }
         private Value<decimal?> _excessContributionAmount;
@@ -330,7 +331,6 @@ namespace EncompassRest.Loans
                     || _dwellingCoveredBy.Dirty
                     || _eligibilityAssessment.Dirty
                     || _energyEfficientMortgageAmount.Dirty
-                    || _energyEfficientMortgageItems.Dirty
                     || _everHadVAHomeLoan.Dirty
                     || _excessContributionAmount.Dirty
                     || _existingDebtAmount.Dirty
@@ -427,7 +427,8 @@ namespace EncompassRest.Loans
                     || _utilityIncluded.Dirty
                     || _validateAddressDate.Dirty
                     || _valuation.Dirty
-                    || Eem?.Dirty == true;
+                    || _eem?.Dirty == true
+                    || _energyEfficientMortgageItems?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -474,7 +475,6 @@ namespace EncompassRest.Loans
                 _dwellingCoveredBy.Dirty = value;
                 _eligibilityAssessment.Dirty = value;
                 _energyEfficientMortgageAmount.Dirty = value;
-                _energyEfficientMortgageItems.Dirty = value;
                 _everHadVAHomeLoan.Dirty = value;
                 _excessContributionAmount.Dirty = value;
                 _existingDebtAmount.Dirty = value;
@@ -571,7 +571,8 @@ namespace EncompassRest.Loans
                 _utilityIncluded.Dirty = value;
                 _validateAddressDate.Dirty = value;
                 _valuation.Dirty = value;
-                if (Eem != null) Eem.Dirty = value;
+                if (_eem != null) _eem.Dirty = value;
+                if (_energyEfficientMortgageItems != null) _energyEfficientMortgageItems.Dirty = value;
                 _settingDirty = 0;
             }
         }

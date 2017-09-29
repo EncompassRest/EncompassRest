@@ -94,20 +94,20 @@ namespace EncompassRest.Loans
         public int? FloodInsDisbCushion { get { return _floodInsDisbCushion; } set { _floodInsDisbCushion = value; } }
         private Value<int?> _hazInsDisbCushion;
         public int? HazInsDisbCushion { get { return _hazInsDisbCushion; } set { _hazInsDisbCushion = value; } }
-        private Value<List<Hud1EsDate>> _hud1EsDates;
-        public List<Hud1EsDate> Hud1EsDates { get { return _hud1EsDates; } set { _hud1EsDates = value; } }
-        private Value<List<Hud1EsDueDate>> _hud1EsDueDates;
-        public List<Hud1EsDueDate> Hud1EsDueDates { get { return _hud1EsDueDates; } set { _hud1EsDueDates = value; } }
-        private Value<List<Hud1EsItemize>> _hud1EsItemizes;
-        public List<Hud1EsItemize> Hud1EsItemizes { get { return _hud1EsItemizes; } set { _hud1EsItemizes = value; } }
+        private DirtyList<Hud1EsDate> _hud1EsDates;
+        public IList<Hud1EsDate> Hud1EsDates { get { var v = _hud1EsDates; return v ?? Interlocked.CompareExchange(ref _hud1EsDates, (v = new DirtyList<Hud1EsDate>()), null) ?? v; } set { _hud1EsDates = new DirtyList<Hud1EsDate>(value); } }
+        private DirtyList<Hud1EsDueDate> _hud1EsDueDates;
+        public IList<Hud1EsDueDate> Hud1EsDueDates { get { var v = _hud1EsDueDates; return v ?? Interlocked.CompareExchange(ref _hud1EsDueDates, (v = new DirtyList<Hud1EsDueDate>()), null) ?? v; } set { _hud1EsDueDates = new DirtyList<Hud1EsDueDate>(value); } }
+        private DirtyList<Hud1EsItemize> _hud1EsItemizes;
+        public IList<Hud1EsItemize> Hud1EsItemizes { get { var v = _hud1EsItemizes; return v ?? Interlocked.CompareExchange(ref _hud1EsItemizes, (v = new DirtyList<Hud1EsItemize>()), null) ?? v; } set { _hud1EsItemizes = new DirtyList<Hud1EsItemize>(value); } }
         private Value<int?> _hud1EsItemizesTotalLines;
         public int? Hud1EsItemizesTotalLines { get { return _hud1EsItemizesTotalLines; } set { _hud1EsItemizesTotalLines = value; } }
         private Value<bool?> _hud1EsItemizesUseItemizeEscrowIndicator;
         public bool? Hud1EsItemizesUseItemizeEscrowIndicator { get { return _hud1EsItemizesUseItemizeEscrowIndicator; } set { _hud1EsItemizesUseItemizeEscrowIndicator = value; } }
-        private Value<List<Hud1EsPayTo>> _hud1EsPayTos;
-        public List<Hud1EsPayTo> Hud1EsPayTos { get { return _hud1EsPayTos; } set { _hud1EsPayTos = value; } }
-        private Value<List<Hud1EsSetup>> _hud1EsSetups;
-        public List<Hud1EsSetup> Hud1EsSetups { get { return _hud1EsSetups; } set { _hud1EsSetups = value; } }
+        private DirtyList<Hud1EsPayTo> _hud1EsPayTos;
+        public IList<Hud1EsPayTo> Hud1EsPayTos { get { var v = _hud1EsPayTos; return v ?? Interlocked.CompareExchange(ref _hud1EsPayTos, (v = new DirtyList<Hud1EsPayTo>()), null) ?? v; } set { _hud1EsPayTos = new DirtyList<Hud1EsPayTo>(value); } }
+        private DirtyList<Hud1EsSetup> _hud1EsSetups;
+        public IList<Hud1EsSetup> Hud1EsSetups { get { var v = _hud1EsSetups; return v ?? Interlocked.CompareExchange(ref _hud1EsSetups, (v = new DirtyList<Hud1EsSetup>()), null) ?? v; } set { _hud1EsSetups = new DirtyList<Hud1EsSetup>(value); } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private Value<bool?> _mtgInsCushionTerminationIndicator;
@@ -230,13 +230,8 @@ namespace EncompassRest.Loans
                     || _escrowPaymentYearly.Dirty
                     || _floodInsDisbCushion.Dirty
                     || _hazInsDisbCushion.Dirty
-                    || _hud1EsDates.Dirty
-                    || _hud1EsDueDates.Dirty
-                    || _hud1EsItemizes.Dirty
                     || _hud1EsItemizesTotalLines.Dirty
                     || _hud1EsItemizesUseItemizeEscrowIndicator.Dirty
-                    || _hud1EsPayTos.Dirty
-                    || _hud1EsSetups.Dirty
                     || _id.Dirty
                     || _mtgInsCushionTerminationIndicator.Dirty
                     || _mtgInsDisbCushion.Dirty
@@ -272,7 +267,12 @@ namespace EncompassRest.Loans
                     || _userDefinedCushion2.Dirty
                     || _userDefinedCushion3.Dirty
                     || _yearlyMortgageInsurance.Dirty
-                    || _yearlyUsdaFee.Dirty;
+                    || _yearlyUsdaFee.Dirty
+                    || _hud1EsDates?.Dirty == true
+                    || _hud1EsDueDates?.Dirty == true
+                    || _hud1EsItemizes?.Dirty == true
+                    || _hud1EsPayTos?.Dirty == true
+                    || _hud1EsSetups?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -322,13 +322,8 @@ namespace EncompassRest.Loans
                 _escrowPaymentYearly.Dirty = value;
                 _floodInsDisbCushion.Dirty = value;
                 _hazInsDisbCushion.Dirty = value;
-                _hud1EsDates.Dirty = value;
-                _hud1EsDueDates.Dirty = value;
-                _hud1EsItemizes.Dirty = value;
                 _hud1EsItemizesTotalLines.Dirty = value;
                 _hud1EsItemizesUseItemizeEscrowIndicator.Dirty = value;
-                _hud1EsPayTos.Dirty = value;
-                _hud1EsSetups.Dirty = value;
                 _id.Dirty = value;
                 _mtgInsCushionTerminationIndicator.Dirty = value;
                 _mtgInsDisbCushion.Dirty = value;
@@ -365,6 +360,11 @@ namespace EncompassRest.Loans
                 _userDefinedCushion3.Dirty = value;
                 _yearlyMortgageInsurance.Dirty = value;
                 _yearlyUsdaFee.Dirty = value;
+                if (_hud1EsDates != null) _hud1EsDates.Dirty = value;
+                if (_hud1EsDueDates != null) _hud1EsDueDates.Dirty = value;
+                if (_hud1EsItemizes != null) _hud1EsItemizes.Dirty = value;
+                if (_hud1EsPayTos != null) _hud1EsPayTos.Dirty = value;
+                if (_hud1EsSetups != null) _hud1EsSetups.Dirty = value;
                 _settingDirty = 0;
             }
         }

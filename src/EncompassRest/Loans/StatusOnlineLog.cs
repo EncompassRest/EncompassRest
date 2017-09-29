@@ -8,18 +8,18 @@ namespace EncompassRest.Loans
 {
     public sealed partial class StatusOnlineLog : IDirty
     {
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private Value<string> _creator;
         public string Creator { get { return _creator; } set { _creator = value; } }
         private Value<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<List<StatusOnlineEvent>> _events;
-        public List<StatusOnlineEvent> Events { get { return _events; } set { _events = value; } }
+        private DirtyList<StatusOnlineEvent> _events;
+        public IList<StatusOnlineEvent> Events { get { var v = _events; return v ?? Interlocked.CompareExchange(ref _events, (v = new DirtyList<StatusOnlineEvent>()), null) ?? v; } set { _events = new DirtyList<StatusOnlineEvent>(value); } }
         private Value<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         private Value<string> _guid;
@@ -39,36 +39,36 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
-                var dirty = _alerts.Dirty
-                    || _commentList.Dirty
-                    || _comments.Dirty
+                var dirty = _comments.Dirty
                     || _creator.Dirty
                     || _dateUtc.Dirty
-                    || _events.Dirty
                     || _fileAttachmentsMigrated.Dirty
                     || _guid.Dirty
                     || _id.Dirty
                     || _isSystemSpecificIndicator.Dirty
                     || _logRecordIndex.Dirty
-                    || _systemId.Dirty;
+                    || _systemId.Dirty
+                    || _alerts?.Dirty == true
+                    || _commentList?.Dirty == true
+                    || _events?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
             set
             {
                 if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
-                _alerts.Dirty = value;
-                _commentList.Dirty = value;
                 _comments.Dirty = value;
                 _creator.Dirty = value;
                 _dateUtc.Dirty = value;
-                _events.Dirty = value;
                 _fileAttachmentsMigrated.Dirty = value;
                 _guid.Dirty = value;
                 _id.Dirty = value;
                 _isSystemSpecificIndicator.Dirty = value;
                 _logRecordIndex.Dirty = value;
                 _systemId.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
+                if (_events != null) _events.Dirty = value;
                 _settingDirty = 0;
             }
         }

@@ -282,8 +282,8 @@ namespace EncompassRest.Loans
         public DateTime? UnderwritingDecisionDate { get { return _underwritingDecisionDate; } set { _underwritingDecisionDate = value; } }
         private Value<string> _underwritingDecisionType;
         public string UnderwritingDecisionType { get { return _underwritingDecisionType; } set { _underwritingDecisionType = value; } }
-        private Value<List<UsdaHouseholdIncome>> _usdaHouseholdIncomes;
-        public List<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { return _usdaHouseholdIncomes; } set { _usdaHouseholdIncomes = value; } }
+        private DirtyList<UsdaHouseholdIncome> _usdaHouseholdIncomes;
+        public IList<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { var v = _usdaHouseholdIncomes; return v ?? Interlocked.CompareExchange(ref _usdaHouseholdIncomes, (v = new DirtyList<UsdaHouseholdIncome>()), null) ?? v; } set { _usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>(value); } }
         private Value<string> _verificationCode;
         public string VerificationCode { get { return _verificationCode; } set { _verificationCode = value; } }
         private int _gettingDirty;
@@ -430,8 +430,8 @@ namespace EncompassRest.Loans
                     || _underwritingDecisionBy.Dirty
                     || _underwritingDecisionDate.Dirty
                     || _underwritingDecisionType.Dirty
-                    || _usdaHouseholdIncomes.Dirty
-                    || _verificationCode.Dirty;
+                    || _verificationCode.Dirty
+                    || _usdaHouseholdIncomes?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -575,8 +575,8 @@ namespace EncompassRest.Loans
                 _underwritingDecisionBy.Dirty = value;
                 _underwritingDecisionDate.Dirty = value;
                 _underwritingDecisionType.Dirty = value;
-                _usdaHouseholdIncomes.Dirty = value;
                 _verificationCode.Dirty = value;
+                if (_usdaHouseholdIncomes != null) _usdaHouseholdIncomes.Dirty = value;
                 _settingDirty = 0;
             }
         }

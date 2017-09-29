@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -33,6 +34,22 @@ namespace EncompassRest.Tests
                 Tltv = null
             };
             Assert.AreEqual(@"{""tltv"":null}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_CustomFields_Serialization()
+        {
+            var loan = new Loan();
+            var customField = new CustomField { FieldName = "CUST91FV", StringValue = "Initial Value" };
+            loan.CustomFields = new List<CustomField>
+            {
+                customField
+            };
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""Initial Value""}]}", loan.ToJson());
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            customField.StringValue = "New Value";
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""New Value""}]}", loan.ToJson());
         }
 
         [TestMethod]

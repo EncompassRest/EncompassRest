@@ -36,8 +36,8 @@ namespace EncompassRest.Loans
         public string ShipmentMethod { get { return _shipmentMethod; } set { _shipmentMethod = value; } }
         private Value<string> _shipperName;
         public string ShipperName { get { return _shipperName; } set { _shipperName = value; } }
-        private Value<List<ShippingContact>> _shippingContacts;
-        public List<ShippingContact> ShippingContacts { get { return _shippingContacts; } set { _shippingContacts = value; } }
+        private DirtyList<ShippingContact> _shippingContacts;
+        public IList<ShippingContact> ShippingContacts { get { var v = _shippingContacts; return v ?? Interlocked.CompareExchange(ref _shippingContacts, (v = new DirtyList<ShippingContact>()), null) ?? v; } set { _shippingContacts = new DirtyList<ShippingContact>(value); } }
         private Value<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
         private int _gettingDirty;
@@ -61,8 +61,8 @@ namespace EncompassRest.Loans
                     || _recordingNumber.Dirty
                     || _shipmentMethod.Dirty
                     || _shipperName.Dirty
-                    || _shippingContacts.Dirty
-                    || _targetDeliveryDate.Dirty;
+                    || _targetDeliveryDate.Dirty
+                    || _shippingContacts?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -83,8 +83,8 @@ namespace EncompassRest.Loans
                 _recordingNumber.Dirty = value;
                 _shipmentMethod.Dirty = value;
                 _shipperName.Dirty = value;
-                _shippingContacts.Dirty = value;
                 _targetDeliveryDate.Dirty = value;
+                if (_shippingContacts != null) _shippingContacts.Dirty = value;
                 _settingDirty = 0;
             }
         }

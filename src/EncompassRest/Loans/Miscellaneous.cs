@@ -32,6 +32,14 @@ namespace EncompassRest.Loans
         public string ClosingTaxYear { get { return _closingTaxYear; } set { _closingTaxYear = value; } }
         private Value<decimal?> _closingTaxYearInterestReceived;
         public decimal? ClosingTaxYearInterestReceived { get { return _closingTaxYearInterestReceived; } set { _closingTaxYearInterestReceived = value; } }
+        private Value<string> _contactFax;
+        public string ContactFax { get { return _contactFax; } set { _contactFax = value; } }
+        private Value<string> _contactName;
+        public string ContactName { get { return _contactName; } set { _contactName = value; } }
+        private Value<string> _contactPhone;
+        public string ContactPhone { get { return _contactPhone; } set { _contactPhone = value; } }
+        private Value<string> _contactTitle;
+        public string ContactTitle { get { return _contactTitle; } set { _contactTitle = value; } }
         private Value<bool?> _copyFromSubjectProperty;
         public bool? CopyFromSubjectProperty { get { return _copyFromSubjectProperty; } set { _copyFromSubjectProperty = value; } }
         private Value<string> _dataTracLoanId;
@@ -213,6 +221,10 @@ namespace EncompassRest.Loans
                     || _closingCostProgramFile.Dirty
                     || _closingTaxYear.Dirty
                     || _closingTaxYearInterestReceived.Dirty
+                    || _contactFax.Dirty
+                    || _contactName.Dirty
+                    || _contactPhone.Dirty
+                    || _contactTitle.Dirty
                     || _copyFromSubjectProperty.Dirty
                     || _dataTracLoanId.Dirty
                     || _docSetFile.Dirty
@@ -312,6 +324,10 @@ namespace EncompassRest.Loans
                 _closingCostProgramFile.Dirty = value;
                 _closingTaxYear.Dirty = value;
                 _closingTaxYearInterestReceived.Dirty = value;
+                _contactFax.Dirty = value;
+                _contactName.Dirty = value;
+                _contactPhone.Dirty = value;
+                _contactTitle.Dirty = value;
                 _copyFromSubjectProperty.Dirty = value;
                 _dataTracLoanId.Dirty = value;
                 _docSetFile.Dirty = value;

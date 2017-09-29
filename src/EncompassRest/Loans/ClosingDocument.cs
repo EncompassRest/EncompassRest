@@ -22,16 +22,16 @@ namespace EncompassRest.Loans
         public decimal? AdditionalOriginalPincipalAmountSecured { get { return _additionalOriginalPincipalAmountSecured; } set { _additionalOriginalPincipalAmountSecured = value; } }
         private Value<string> _additionalSigVerbiageType;
         public string AdditionalSigVerbiageType { get { return _additionalSigVerbiageType; } set { _additionalSigVerbiageType = value; } }
-        private Value<List<AdditionalStateDisclosure>> _additionalStateDisclosures;
-        public List<AdditionalStateDisclosure> AdditionalStateDisclosures { get { return _additionalStateDisclosures; } set { _additionalStateDisclosures = value; } }
+        private DirtyList<AdditionalStateDisclosure> _additionalStateDisclosures;
+        public IList<AdditionalStateDisclosure> AdditionalStateDisclosures { get { var v = _additionalStateDisclosures; return v ?? Interlocked.CompareExchange(ref _additionalStateDisclosures, (v = new DirtyList<AdditionalStateDisclosure>()), null) ?? v; } set { _additionalStateDisclosures = new DirtyList<AdditionalStateDisclosure>(value); } }
         private Value<bool?> _affectedByInterest;
         public bool? AffectedByInterest { get { return _affectedByInterest; } set { _affectedByInterest = value; } }
         private Value<string> _alternateLender;
         public string AlternateLender { get { return _alternateLender; } set { _alternateLender = value; } }
         private Value<string> _altLenderId;
         public string AltLenderId { get { return _altLenderId; } set { _altLenderId = value; } }
-        private Value<List<AntiSteeringLoanOption>> _antiSteeringLoanOptions;
-        public List<AntiSteeringLoanOption> AntiSteeringLoanOptions { get { return _antiSteeringLoanOptions; } set { _antiSteeringLoanOptions = value; } }
+        private DirtyList<AntiSteeringLoanOption> _antiSteeringLoanOptions;
+        public IList<AntiSteeringLoanOption> AntiSteeringLoanOptions { get { var v = _antiSteeringLoanOptions; return v ?? Interlocked.CompareExchange(ref _antiSteeringLoanOptions, (v = new DirtyList<AntiSteeringLoanOption>()), null) ?? v; } set { _antiSteeringLoanOptions = new DirtyList<AntiSteeringLoanOption>(value); } }
         private Value<string> _areAbleToServiceIndicator;
         public string AreAbleToServiceIndicator { get { return _areAbleToServiceIndicator; } set { _areAbleToServiceIndicator = value; } }
         private Value<string> _associatedDocumentNumber;
@@ -92,14 +92,40 @@ namespace EncompassRest.Loans
         public string BrokerWithLenders { get { return _brokerWithLenders; } set { _brokerWithLenders = value; } }
         private Value<decimal?> _cashCheckFromBorrower;
         public decimal? CashCheckFromBorrower { get { return _cashCheckFromBorrower; } set { _cashCheckFromBorrower = value; } }
+        private Value<DateTime?> _cLClearCloseStatusReceivedByLenderDateTime;
+        public DateTime? CLClearCloseStatusReceivedByLenderDateTime { get { return _cLClearCloseStatusReceivedByLenderDateTime; } set { _cLClearCloseStatusReceivedByLenderDateTime = value; } }
+        private Value<DateTime?> _cLClosingEscrowOrderAcceptedDateTime;
+        public DateTime? CLClosingEscrowOrderAcceptedDateTime { get { return _cLClosingEscrowOrderAcceptedDateTime; } set { _cLClosingEscrowOrderAcceptedDateTime = value; } }
+        private Value<DateTime?> _cLClosingEscrowOrderSentDateTime;
+        public DateTime? CLClosingEscrowOrderSentDateTime { get { return _cLClosingEscrowOrderSentDateTime; } set { _cLClosingEscrowOrderSentDateTime = value; } }
+        private Value<DateTime?> _cLDraftClosingDisclosureReceivedByLenderDateTime;
+        public DateTime? CLDraftClosingDisclosureReceivedByLenderDateTime { get { return _cLDraftClosingDisclosureReceivedByLenderDateTime; } set { _cLDraftClosingDisclosureReceivedByLenderDateTime = value; } }
+        private Value<DateTime?> _cLFinalCDSentDateTime;
+        public DateTime? CLFinalCDSentDateTime { get { return _cLFinalCDSentDateTime; } set { _cLFinalCDSentDateTime = value; } }
+        private Value<DateTime?> _cLFinalTitlePolicyDateTime;
+        public DateTime? CLFinalTitlePolicyDateTime { get { return _cLFinalTitlePolicyDateTime; } set { _cLFinalTitlePolicyDateTime = value; } }
+        private Value<DateTime?> _cLLastFeeQuoteReceivedDateTime;
+        public DateTime? CLLastFeeQuoteReceivedDateTime { get { return _cLLastFeeQuoteReceivedDateTime; } set { _cLLastFeeQuoteReceivedDateTime = value; } }
+        private Value<DateTime?> _cLLastFeeQuoteRequestedDateTime;
+        public DateTime? CLLastFeeQuoteRequestedDateTime { get { return _cLLastFeeQuoteRequestedDateTime; } set { _cLLastFeeQuoteRequestedDateTime = value; } }
         private Value<string> _closingDocsLoanProgramType;
         public string ClosingDocsLoanProgramType { get { return _closingDocsLoanProgramType; } set { _closingDocsLoanProgramType = value; } }
-        private Value<List<ClosingEntity>> _closingEntities;
-        public List<ClosingEntity> ClosingEntities { get { return _closingEntities; } set { _closingEntities = value; } }
+        private DirtyList<ClosingEntity> _closingEntities;
+        public IList<ClosingEntity> ClosingEntities { get { var v = _closingEntities; return v ?? Interlocked.CompareExchange(ref _closingEntities, (v = new DirtyList<ClosingEntity>()), null) ?? v; } set { _closingEntities = new DirtyList<ClosingEntity>(value); } }
         private Value<string> _closingProvider;
         public string ClosingProvider { get { return _closingProvider; } set { _closingProvider = value; } }
         private Value<string> _closingState;
         public string ClosingState { get { return _closingState; } set { _closingState = value; } }
+        private Value<DateTime?> _cLPayoffsRequestedDateTime;
+        public DateTime? CLPayoffsRequestedDateTime { get { return _cLPayoffsRequestedDateTime; } set { _cLPayoffsRequestedDateTime = value; } }
+        private Value<DateTime?> _cLPrelimCommitmentReceivedByLenderDateTime;
+        public DateTime? CLPrelimCommitmentReceivedByLenderDateTime { get { return _cLPrelimCommitmentReceivedByLenderDateTime; } set { _cLPrelimCommitmentReceivedByLenderDateTime = value; } }
+        private Value<DateTime?> _cLProviderDisburseFundsDateTime;
+        public DateTime? CLProviderDisburseFundsDateTime { get { return _cLProviderDisburseFundsDateTime; } set { _cLProviderDisburseFundsDateTime = value; } }
+        private Value<DateTime?> _cLTitleOrderAcceptedDateTime;
+        public DateTime? CLTitleOrderAcceptedDateTime { get { return _cLTitleOrderAcceptedDateTime; } set { _cLTitleOrderAcceptedDateTime = value; } }
+        private Value<DateTime?> _cLTitleOrderSentDateTime;
+        public DateTime? CLTitleOrderSentDateTime { get { return _cLTitleOrderSentDateTime; } set { _cLTitleOrderSentDateTime = value; } }
         private Value<string> _complianceJurisdictionCounty;
         public string ComplianceJurisdictionCounty { get { return _complianceJurisdictionCounty; } set { _complianceJurisdictionCounty = value; } }
         private Value<DateTime?> _compliancePropertyIdentifiedDate;
@@ -318,8 +344,8 @@ namespace EncompassRest.Loans
         public string RenewalExtensionDescription { get { return _renewalExtensionDescription; } set { _renewalExtensionDescription = value; } }
         private Value<DateTime?> _rescissionDate;
         public DateTime? RescissionDate { get { return _rescissionDate; } set { _rescissionDate = value; } }
-        private Value<List<RespaHudDetail>> _respaHudDetails;
-        public List<RespaHudDetail> RespaHudDetails { get { return _respaHudDetails; } set { _respaHudDetails = value; } }
+        private DirtyList<RespaHudDetail> _respaHudDetails;
+        public IList<RespaHudDetail> RespaHudDetails { get { var v = _respaHudDetails; return v ?? Interlocked.CompareExchange(ref _respaHudDetails, (v = new DirtyList<RespaHudDetail>()), null) ?? v; } set { _respaHudDetails = new DirtyList<RespaHudDetail>(value); } }
         private Value<string> _rMLANamePreceding10Years;
         public string RMLANamePreceding10Years { get { return _rMLANamePreceding10Years; } set { _rMLANamePreceding10Years = value; } }
         private Value<string> _rmlLenderBrokerRepresents;
@@ -332,8 +358,8 @@ namespace EncompassRest.Loans
         public DateTime? SignatureDateFor1003 { get { return _signatureDateFor1003; } set { _signatureDateFor1003 = value; } }
         private Value<string> _specialFloodHazardAreaIndictor;
         public string SpecialFloodHazardAreaIndictor { get { return _specialFloodHazardAreaIndictor; } set { _specialFloodHazardAreaIndictor = value; } }
-        private Value<List<StateLicense>> _stateLicenses;
-        public List<StateLicense> StateLicenses { get { return _stateLicenses; } set { _stateLicenses = value; } }
+        private DirtyList<StateLicense> _stateLicenses;
+        public IList<StateLicense> StateLicenses { get { var v = _stateLicenses; return v ?? Interlocked.CompareExchange(ref _stateLicenses, (v = new DirtyList<StateLicense>()), null) ?? v; } set { _stateLicenses = new DirtyList<StateLicense>(value); } }
         private Value<string> _suretyCompanyName;
         public string SuretyCompanyName { get { return _suretyCompanyName; } set { _suretyCompanyName = value; } }
         private Value<bool?> _syncInterestDateDisbursementDate;
@@ -370,11 +396,9 @@ namespace EncompassRest.Loans
                     || _additionalLienHolderName.Dirty
                     || _additionalOriginalPincipalAmountSecured.Dirty
                     || _additionalSigVerbiageType.Dirty
-                    || _additionalStateDisclosures.Dirty
                     || _affectedByInterest.Dirty
                     || _alternateLender.Dirty
                     || _altLenderId.Dirty
-                    || _antiSteeringLoanOptions.Dirty
                     || _areAbleToServiceIndicator.Dirty
                     || _associatedDocumentNumber.Dirty
                     || _beneficiaries.Dirty
@@ -405,10 +429,22 @@ namespace EncompassRest.Loans
                     || _brokerTaxIdentificationNumberIdentifier.Dirty
                     || _brokerWithLenders.Dirty
                     || _cashCheckFromBorrower.Dirty
+                    || _cLClearCloseStatusReceivedByLenderDateTime.Dirty
+                    || _cLClosingEscrowOrderAcceptedDateTime.Dirty
+                    || _cLClosingEscrowOrderSentDateTime.Dirty
+                    || _cLDraftClosingDisclosureReceivedByLenderDateTime.Dirty
+                    || _cLFinalCDSentDateTime.Dirty
+                    || _cLFinalTitlePolicyDateTime.Dirty
+                    || _cLLastFeeQuoteReceivedDateTime.Dirty
+                    || _cLLastFeeQuoteRequestedDateTime.Dirty
                     || _closingDocsLoanProgramType.Dirty
-                    || _closingEntities.Dirty
                     || _closingProvider.Dirty
                     || _closingState.Dirty
+                    || _cLPayoffsRequestedDateTime.Dirty
+                    || _cLPrelimCommitmentReceivedByLenderDateTime.Dirty
+                    || _cLProviderDisburseFundsDateTime.Dirty
+                    || _cLTitleOrderAcceptedDateTime.Dirty
+                    || _cLTitleOrderSentDateTime.Dirty
                     || _complianceJurisdictionCounty.Dirty
                     || _compliancePropertyIdentifiedDate.Dirty
                     || _conditionDescription.Dirty
@@ -518,14 +554,12 @@ namespace EncompassRest.Loans
                     || _refinanceRightOfRescissionExemptFlag.Dirty
                     || _renewalExtensionDescription.Dirty
                     || _rescissionDate.Dirty
-                    || _respaHudDetails.Dirty
                     || _rMLANamePreceding10Years.Dirty
                     || _rmlLenderBrokerRepresents.Dirty
                     || _secondTransferYear.Dirty
                     || _secondTransferYearValue.Dirty
                     || _signatureDateFor1003.Dirty
                     || _specialFloodHazardAreaIndictor.Dirty
-                    || _stateLicenses.Dirty
                     || _suretyCompanyName.Dirty
                     || _syncInterestDateDisbursementDate.Dirty
                     || _termiteReportRequiredIndicator.Dirty
@@ -536,7 +570,12 @@ namespace EncompassRest.Loans
                     || _titleReportRequiredEndorsementsDescription.Dirty
                     || _totalDisbursed.Dirty
                     || _trust2Beneficiaries.Dirty
-                    || _weConductBusiness.Dirty;
+                    || _weConductBusiness.Dirty
+                    || _additionalStateDisclosures?.Dirty == true
+                    || _antiSteeringLoanOptions?.Dirty == true
+                    || _closingEntities?.Dirty == true
+                    || _respaHudDetails?.Dirty == true
+                    || _stateLicenses?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -550,11 +589,9 @@ namespace EncompassRest.Loans
                 _additionalLienHolderName.Dirty = value;
                 _additionalOriginalPincipalAmountSecured.Dirty = value;
                 _additionalSigVerbiageType.Dirty = value;
-                _additionalStateDisclosures.Dirty = value;
                 _affectedByInterest.Dirty = value;
                 _alternateLender.Dirty = value;
                 _altLenderId.Dirty = value;
-                _antiSteeringLoanOptions.Dirty = value;
                 _areAbleToServiceIndicator.Dirty = value;
                 _associatedDocumentNumber.Dirty = value;
                 _beneficiaries.Dirty = value;
@@ -585,10 +622,22 @@ namespace EncompassRest.Loans
                 _brokerTaxIdentificationNumberIdentifier.Dirty = value;
                 _brokerWithLenders.Dirty = value;
                 _cashCheckFromBorrower.Dirty = value;
+                _cLClearCloseStatusReceivedByLenderDateTime.Dirty = value;
+                _cLClosingEscrowOrderAcceptedDateTime.Dirty = value;
+                _cLClosingEscrowOrderSentDateTime.Dirty = value;
+                _cLDraftClosingDisclosureReceivedByLenderDateTime.Dirty = value;
+                _cLFinalCDSentDateTime.Dirty = value;
+                _cLFinalTitlePolicyDateTime.Dirty = value;
+                _cLLastFeeQuoteReceivedDateTime.Dirty = value;
+                _cLLastFeeQuoteRequestedDateTime.Dirty = value;
                 _closingDocsLoanProgramType.Dirty = value;
-                _closingEntities.Dirty = value;
                 _closingProvider.Dirty = value;
                 _closingState.Dirty = value;
+                _cLPayoffsRequestedDateTime.Dirty = value;
+                _cLPrelimCommitmentReceivedByLenderDateTime.Dirty = value;
+                _cLProviderDisburseFundsDateTime.Dirty = value;
+                _cLTitleOrderAcceptedDateTime.Dirty = value;
+                _cLTitleOrderSentDateTime.Dirty = value;
                 _complianceJurisdictionCounty.Dirty = value;
                 _compliancePropertyIdentifiedDate.Dirty = value;
                 _conditionDescription.Dirty = value;
@@ -698,14 +747,12 @@ namespace EncompassRest.Loans
                 _refinanceRightOfRescissionExemptFlag.Dirty = value;
                 _renewalExtensionDescription.Dirty = value;
                 _rescissionDate.Dirty = value;
-                _respaHudDetails.Dirty = value;
                 _rMLANamePreceding10Years.Dirty = value;
                 _rmlLenderBrokerRepresents.Dirty = value;
                 _secondTransferYear.Dirty = value;
                 _secondTransferYearValue.Dirty = value;
                 _signatureDateFor1003.Dirty = value;
                 _specialFloodHazardAreaIndictor.Dirty = value;
-                _stateLicenses.Dirty = value;
                 _suretyCompanyName.Dirty = value;
                 _syncInterestDateDisbursementDate.Dirty = value;
                 _termiteReportRequiredIndicator.Dirty = value;
@@ -717,6 +764,11 @@ namespace EncompassRest.Loans
                 _totalDisbursed.Dirty = value;
                 _trust2Beneficiaries.Dirty = value;
                 _weConductBusiness.Dirty = value;
+                if (_additionalStateDisclosures != null) _additionalStateDisclosures.Dirty = value;
+                if (_antiSteeringLoanOptions != null) _antiSteeringLoanOptions.Dirty = value;
+                if (_closingEntities != null) _closingEntities.Dirty = value;
+                if (_respaHudDetails != null) _respaHudDetails.Dirty = value;
+                if (_stateLicenses != null) _stateLicenses.Dirty = value;
                 _settingDirty = 0;
             }
         }

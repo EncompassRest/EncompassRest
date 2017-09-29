@@ -76,6 +76,12 @@ namespace EncompassRest.Loans
         public string FederalTaxpayerIdNumber { get { return _federalTaxpayerIdNumber; } set { _federalTaxpayerIdNumber = value; } }
         private Value<string> _financialInstitutionName;
         public string FinancialInstitutionName { get { return _financialInstitutionName; } set { _financialInstitutionName = value; } }
+        private Value<bool?> _hmdaCltvIndicator;
+        public bool? HmdaCltvIndicator { get { return _hmdaCltvIndicator; } set { _hmdaCltvIndicator = value; } }
+        private Value<bool?> _hmdaDtiIndicator;
+        public bool? HmdaDtiIndicator { get { return _hmdaDtiIndicator; } set { _hmdaDtiIndicator = value; } }
+        private Value<bool?> _hmdaIncomeIndicator;
+        public bool? HmdaIncomeIndicator { get { return _hmdaIncomeIndicator; } set { _hmdaIncomeIndicator = value; } }
         private Value<string> _hmdaPropertyAddress;
         public string HmdaPropertyAddress { get { return _hmdaPropertyAddress; } set { _hmdaPropertyAddress = value; } }
         private Value<string> _hmdaPropertyCity;
@@ -227,6 +233,9 @@ namespace EncompassRest.Loans
                     || _federalAgency.Dirty
                     || _federalTaxpayerIdNumber.Dirty
                     || _financialInstitutionName.Dirty
+                    || _hmdaCltvIndicator.Dirty
+                    || _hmdaDtiIndicator.Dirty
+                    || _hmdaIncomeIndicator.Dirty
                     || _hmdaPropertyAddress.Dirty
                     || _hmdaPropertyCity.Dirty
                     || _hmdaPropertyState.Dirty
@@ -322,6 +331,9 @@ namespace EncompassRest.Loans
                 _federalAgency.Dirty = value;
                 _federalTaxpayerIdNumber.Dirty = value;
                 _financialInstitutionName.Dirty = value;
+                _hmdaCltvIndicator.Dirty = value;
+                _hmdaDtiIndicator.Dirty = value;
+                _hmdaIncomeIndicator.Dirty = value;
                 _hmdaPropertyAddress.Dirty = value;
                 _hmdaPropertyCity.Dirty = value;
                 _hmdaPropertyState.Dirty = value;

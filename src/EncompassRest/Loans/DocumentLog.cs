@@ -14,14 +14,14 @@ namespace EncompassRest.Loans
         public DateTime? AccessedDateUtc { get { return _accessedDateUtc; } set { _accessedDateUtc = value; } }
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
         private Value<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private Value<string> _allowedRoleDelimitedList;
         public string AllowedRoleDelimitedList { get { return _allowedRoleDelimitedList; } set { _allowedRoleDelimitedList = value; } }
-        private Value<List<EntityReference>> _allowedRoles;
-        public List<EntityReference> AllowedRoles { get { return _allowedRoles; } set { _allowedRoles = value; } }
+        private DirtyList<EntityReference> _allowedRoles;
+        public IList<EntityReference> AllowedRoles { get { var v = _allowedRoles; return v ?? Interlocked.CompareExchange(ref _allowedRoles, (v = new DirtyList<EntityReference>()), null) ?? v; } set { _allowedRoles = new DirtyList<EntityReference>(value); } }
         private Value<string> _allowedRolesXml;
         public string AllowedRolesXml { get { return _allowedRolesXml; } set { _allowedRolesXml = value; } }
         private Value<DateTime?> _archiveDateUtc;
@@ -30,16 +30,16 @@ namespace EncompassRest.Loans
         public string ArchivedBy { get { return _archivedBy; } set { _archivedBy = value; } }
         private Value<bool?> _closingDocumentIndicator;
         public bool? ClosingDocumentIndicator { get { return _closingDocumentIndicator; } set { _closingDocumentIndicator = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
         private Value<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private Value<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private Value<string> _company;
         public string Company { get { return _company; } set { _company = value; } }
-        private Value<List<EntityReference>> _conditions;
-        public List<EntityReference> Conditions { get { return _conditions; } set { _conditions = value; } }
+        private DirtyList<EntityReference> _conditions;
+        public IList<EntityReference> Conditions { get { var v = _conditions; return v ?? Interlocked.CompareExchange(ref _conditions, (v = new DirtyList<EntityReference>()), null) ?? v; } set { _conditions = new DirtyList<EntityReference>(value); } }
         private Value<string> _conditionsXml;
         public string ConditionsXml { get { return _conditionsXml; } set { _conditionsXml = value; } }
         private Value<DateTime?> _dateAddedUtc;
@@ -70,8 +70,8 @@ namespace EncompassRest.Loans
         public bool? Expected { get { return _expected; } set { _expected = value; } }
         private Value<bool?> _expires;
         public bool? Expires { get { return _expires; } set { _expires = value; } }
-        private Value<List<FileAttachmentReference>> _fileAttachmentReferences;
-        public List<FileAttachmentReference> FileAttachmentReferences { get { return _fileAttachmentReferences; } set { _fileAttachmentReferences = value; } }
+        private DirtyList<FileAttachmentReference> _fileAttachmentReferences;
+        public IList<FileAttachmentReference> FileAttachmentReferences { get { var v = _fileAttachmentReferences; return v ?? Interlocked.CompareExchange(ref _fileAttachmentReferences, (v = new DirtyList<FileAttachmentReference>()), null) ?? v; } set { _fileAttachmentReferences = new DirtyList<FileAttachmentReference>(value); } }
         private Value<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         private Value<string> _fileAttachmentsXml;
@@ -156,19 +156,15 @@ namespace EncompassRest.Loans
                 var dirty = _accessedBy.Dirty
                     || _accessedDateUtc.Dirty
                     || _addedBy.Dirty
-                    || _alerts.Dirty
                     || _alertsXml.Dirty
                     || _allowedRoleDelimitedList.Dirty
-                    || _allowedRoles.Dirty
                     || _allowedRolesXml.Dirty
                     || _archiveDateUtc.Dirty
                     || _archivedBy.Dirty
                     || _closingDocumentIndicator.Dirty
-                    || _commentList.Dirty
                     || _commentListXml.Dirty
                     || _comments.Dirty
                     || _company.Dirty
-                    || _conditions.Dirty
                     || _conditionsXml.Dirty
                     || _dateAddedUtc.Dirty
                     || _dateExpected.Dirty
@@ -184,7 +180,6 @@ namespace EncompassRest.Loans
                     || _ePassSignature.Dirty
                     || _expected.Dirty
                     || _expires.Dirty
-                    || _fileAttachmentReferences.Dirty
                     || _fileAttachmentsMigrated.Dirty
                     || _fileAttachmentsXml.Dirty
                     || _guid.Dirty
@@ -221,7 +216,12 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _underwritingReady.Dirty
                     || _underwritingReadyBy.Dirty
-                    || _underwritingReadyDateUtc.Dirty;
+                    || _underwritingReadyDateUtc.Dirty
+                    || _alerts?.Dirty == true
+                    || _allowedRoles?.Dirty == true
+                    || _commentList?.Dirty == true
+                    || _conditions?.Dirty == true
+                    || _fileAttachmentReferences?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -231,19 +231,15 @@ namespace EncompassRest.Loans
                 _accessedBy.Dirty = value;
                 _accessedDateUtc.Dirty = value;
                 _addedBy.Dirty = value;
-                _alerts.Dirty = value;
                 _alertsXml.Dirty = value;
                 _allowedRoleDelimitedList.Dirty = value;
-                _allowedRoles.Dirty = value;
                 _allowedRolesXml.Dirty = value;
                 _archiveDateUtc.Dirty = value;
                 _archivedBy.Dirty = value;
                 _closingDocumentIndicator.Dirty = value;
-                _commentList.Dirty = value;
                 _commentListXml.Dirty = value;
                 _comments.Dirty = value;
                 _company.Dirty = value;
-                _conditions.Dirty = value;
                 _conditionsXml.Dirty = value;
                 _dateAddedUtc.Dirty = value;
                 _dateExpected.Dirty = value;
@@ -259,7 +255,6 @@ namespace EncompassRest.Loans
                 _ePassSignature.Dirty = value;
                 _expected.Dirty = value;
                 _expires.Dirty = value;
-                _fileAttachmentReferences.Dirty = value;
                 _fileAttachmentsMigrated.Dirty = value;
                 _fileAttachmentsXml.Dirty = value;
                 _guid.Dirty = value;
@@ -297,6 +292,11 @@ namespace EncompassRest.Loans
                 _underwritingReady.Dirty = value;
                 _underwritingReadyBy.Dirty = value;
                 _underwritingReadyDateUtc.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_allowedRoles != null) _allowedRoles.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
+                if (_conditions != null) _conditions.Dirty = value;
+                if (_fileAttachmentReferences != null) _fileAttachmentReferences.Dirty = value;
                 _settingDirty = 0;
             }
         }

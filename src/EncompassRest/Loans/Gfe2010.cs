@@ -168,10 +168,10 @@ namespace EncompassRest.Loans
         public string EscrowOtherDescription { get { return _escrowOtherDescription; } set { _escrowOtherDescription = value; } }
         private Value<decimal?> _financedFeesFromPrepaid;
         public decimal? FinancedFeesFromPrepaid { get { return _financedFeesFromPrepaid; } set { _financedFeesFromPrepaid = value; } }
-        private Value<List<Gfe2010Fee>> _gfe2010Fees;
-        public List<Gfe2010Fee> Gfe2010Fees { get { return _gfe2010Fees; } set { _gfe2010Fees = value; } }
-        private Value<List<Gfe2010WholePoc>> _gfe2010WholePocs;
-        public List<Gfe2010WholePoc> Gfe2010WholePocs { get { return _gfe2010WholePocs; } set { _gfe2010WholePocs = value; } }
+        private DirtyList<Gfe2010Fee> _gfe2010Fees;
+        public IList<Gfe2010Fee> Gfe2010Fees { get { var v = _gfe2010Fees; return v ?? Interlocked.CompareExchange(ref _gfe2010Fees, (v = new DirtyList<Gfe2010Fee>()), null) ?? v; } set { _gfe2010Fees = new DirtyList<Gfe2010Fee>(value); } }
+        private DirtyList<Gfe2010WholePoc> _gfe2010WholePocs;
+        public IList<Gfe2010WholePoc> Gfe2010WholePocs { get { var v = _gfe2010WholePocs; return v ?? Interlocked.CompareExchange(ref _gfe2010WholePocs, (v = new DirtyList<Gfe2010WholePoc>()), null) ?? v; } set { _gfe2010WholePocs = new DirtyList<Gfe2010WholePoc>(value); } }
         private Value<decimal?> _gfeGovernmentRecordingCharges;
         public decimal? GfeGovernmentRecordingCharges { get { return _gfeGovernmentRecordingCharges; } set { _gfeGovernmentRecordingCharges = value; } }
         private Value<decimal?> _hazardInsurance;
@@ -525,8 +525,6 @@ namespace EncompassRest.Loans
                     || _escrowChargeOtherIndicator.Dirty
                     || _escrowOtherDescription.Dirty
                     || _financedFeesFromPrepaid.Dirty
-                    || _gfe2010Fees.Dirty
-                    || _gfe2010WholePocs.Dirty
                     || _gfeGovernmentRecordingCharges.Dirty
                     || _hazardInsurance.Dirty
                     || _homeownerInsurance.Dirty
@@ -659,7 +657,9 @@ namespace EncompassRest.Loans
                     || _totalTransferTaxes.Dirty
                     || _transferTaxes.Dirty
                     || _underwritingFees.Dirty
-                    || _useLOCompTool.Dirty;
+                    || _useLOCompTool.Dirty
+                    || _gfe2010Fees?.Dirty == true
+                    || _gfe2010WholePocs?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -746,8 +746,6 @@ namespace EncompassRest.Loans
                 _escrowChargeOtherIndicator.Dirty = value;
                 _escrowOtherDescription.Dirty = value;
                 _financedFeesFromPrepaid.Dirty = value;
-                _gfe2010Fees.Dirty = value;
-                _gfe2010WholePocs.Dirty = value;
                 _gfeGovernmentRecordingCharges.Dirty = value;
                 _hazardInsurance.Dirty = value;
                 _homeownerInsurance.Dirty = value;
@@ -881,6 +879,8 @@ namespace EncompassRest.Loans
                 _transferTaxes.Dirty = value;
                 _underwritingFees.Dirty = value;
                 _useLOCompTool.Dirty = value;
+                if (_gfe2010Fees != null) _gfe2010Fees.Dirty = value;
+                if (_gfe2010WholePocs != null) _gfe2010WholePocs.Dirty = value;
                 _settingDirty = 0;
             }
         }

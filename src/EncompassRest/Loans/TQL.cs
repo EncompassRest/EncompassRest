@@ -118,12 +118,12 @@ namespace EncompassRest.Loans
         public string StonegateFloodBaselineReportRequired { get { return _stonegateFloodBaselineReportRequired; } set { _stonegateFloodBaselineReportRequired = value; } }
         private Value<string> _stonegateFraudBaselineReportRequired;
         public string StonegateFraudBaselineReportRequired { get { return _stonegateFraudBaselineReportRequired; } set { _stonegateFraudBaselineReportRequired = value; } }
-        private Value<List<TQLComplianceAlert>> _tQLComplianceAlerts;
-        public List<TQLComplianceAlert> TQLComplianceAlerts { get { return _tQLComplianceAlerts; } set { _tQLComplianceAlerts = value; } }
-        private Value<List<TQLDocument>> _tQLDocuments;
-        public List<TQLDocument> TQLDocuments { get { return _tQLDocuments; } set { _tQLDocuments = value; } }
-        private Value<List<TQLFraudAlert>> _tQLFraudAlerts;
-        public List<TQLFraudAlert> TQLFraudAlerts { get { return _tQLFraudAlerts; } set { _tQLFraudAlerts = value; } }
+        private DirtyList<TQLComplianceAlert> _tQLComplianceAlerts;
+        public IList<TQLComplianceAlert> TQLComplianceAlerts { get { var v = _tQLComplianceAlerts; return v ?? Interlocked.CompareExchange(ref _tQLComplianceAlerts, (v = new DirtyList<TQLComplianceAlert>()), null) ?? v; } set { _tQLComplianceAlerts = new DirtyList<TQLComplianceAlert>(value); } }
+        private DirtyList<TQLDocument> _tQLDocuments;
+        public IList<TQLDocument> TQLDocuments { get { var v = _tQLDocuments; return v ?? Interlocked.CompareExchange(ref _tQLDocuments, (v = new DirtyList<TQLDocument>()), null) ?? v; } set { _tQLDocuments = new DirtyList<TQLDocument>(value); } }
+        private DirtyList<TQLFraudAlert> _tQLFraudAlerts;
+        public IList<TQLFraudAlert> TQLFraudAlerts { get { var v = _tQLFraudAlerts; return v ?? Interlocked.CompareExchange(ref _tQLFraudAlerts, (v = new DirtyList<TQLFraudAlert>()), null) ?? v; } set { _tQLFraudAlerts = new DirtyList<TQLFraudAlert>(value); } }
         private Value<int?> _tQLFraudAlertsTotal;
         public int? TQLFraudAlertsTotal { get { return _tQLFraudAlertsTotal; } set { _tQLFraudAlertsTotal = value; } }
         private Value<int?> _tQLFraudAlertsTotalHigh;
@@ -208,9 +208,6 @@ namespace EncompassRest.Loans
                     || _stonegateComplianceBaselineReportRequired.Dirty
                     || _stonegateFloodBaselineReportRequired.Dirty
                     || _stonegateFraudBaselineReportRequired.Dirty
-                    || _tQLComplianceAlerts.Dirty
-                    || _tQLDocuments.Dirty
-                    || _tQLFraudAlerts.Dirty
                     || _tQLFraudAlertsTotal.Dirty
                     || _tQLFraudAlertsTotalHigh.Dirty
                     || _tQLFraudAlertsTotalHighUnaddressed.Dirty
@@ -221,7 +218,10 @@ namespace EncompassRest.Loans
                     || _wellsFargo4506TBaselineReportRequired.Dirty
                     || _wellsFargoComplianceBaselineReportRequired.Dirty
                     || _wellsFargoFloodBaselineReportRequired.Dirty
-                    || _wellsFargoFraudBaselineReportRequired.Dirty;
+                    || _wellsFargoFraudBaselineReportRequired.Dirty
+                    || _tQLComplianceAlerts?.Dirty == true
+                    || _tQLDocuments?.Dirty == true
+                    || _tQLFraudAlerts?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -283,9 +283,6 @@ namespace EncompassRest.Loans
                 _stonegateComplianceBaselineReportRequired.Dirty = value;
                 _stonegateFloodBaselineReportRequired.Dirty = value;
                 _stonegateFraudBaselineReportRequired.Dirty = value;
-                _tQLComplianceAlerts.Dirty = value;
-                _tQLDocuments.Dirty = value;
-                _tQLFraudAlerts.Dirty = value;
                 _tQLFraudAlertsTotal.Dirty = value;
                 _tQLFraudAlertsTotalHigh.Dirty = value;
                 _tQLFraudAlertsTotalHighUnaddressed.Dirty = value;
@@ -297,6 +294,9 @@ namespace EncompassRest.Loans
                 _wellsFargoComplianceBaselineReportRequired.Dirty = value;
                 _wellsFargoFloodBaselineReportRequired.Dirty = value;
                 _wellsFargoFraudBaselineReportRequired.Dirty = value;
+                if (_tQLComplianceAlerts != null) _tQLComplianceAlerts.Dirty = value;
+                if (_tQLDocuments != null) _tQLDocuments.Dirty = value;
+                if (_tQLFraudAlerts != null) _tQLFraudAlerts.Dirty = value;
                 _settingDirty = 0;
             }
         }

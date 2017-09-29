@@ -8,6 +8,14 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLFraudAlert : IDirty
     {
+        private Value<string> _driveFraudAlertCode;
+        public string DriveFraudAlertCode { get { return _driveFraudAlertCode; } set { _driveFraudAlertCode = value; } }
+        private Value<string> _driveFraudAlertStatus;
+        public string DriveFraudAlertStatus { get { return _driveFraudAlertStatus; } set { _driveFraudAlertStatus = value; } }
+        private Value<string> _fraudGuardFraudAlertCode;
+        public string FraudGuardFraudAlertCode { get { return _fraudGuardFraudAlertCode; } set { _fraudGuardFraudAlertCode = value; } }
+        private Value<string> _fraudGuardFraudAlertStatus;
+        public string FraudGuardFraudAlertStatus { get { return _fraudGuardFraudAlertStatus; } set { _fraudGuardFraudAlertStatus = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private Value<string> _lastFraudOrderAlertCategories;
@@ -27,7 +35,11 @@ namespace EncompassRest.Loans
             get
             {
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
-                var dirty = _id.Dirty
+                var dirty = _driveFraudAlertCode.Dirty
+                    || _driveFraudAlertStatus.Dirty
+                    || _fraudGuardFraudAlertCode.Dirty
+                    || _fraudGuardFraudAlertStatus.Dirty
+                    || _id.Dirty
                     || _lastFraudOrderAlertCategories.Dirty
                     || _lastFraudOrderAlertID.Dirty
                     || _lastFraudOrderAlertLevel.Dirty
@@ -39,6 +51,10 @@ namespace EncompassRest.Loans
             set
             {
                 if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                _driveFraudAlertCode.Dirty = value;
+                _driveFraudAlertStatus.Dirty = value;
+                _fraudGuardFraudAlertCode.Dirty = value;
+                _fraudGuardFraudAlertStatus.Dirty = value;
                 _id.Dirty = value;
                 _lastFraudOrderAlertCategories.Dirty = value;
                 _lastFraudOrderAlertID.Dirty = value;

@@ -210,8 +210,8 @@ namespace EncompassRest.Loans
         public string MCRVNumber { get { return _mCRVNumber; } set { _mCRVNumber = value; } }
         private Value<string> _militaryBranchOfService;
         public string MilitaryBranchOfService { get { return _militaryBranchOfService; } set { _militaryBranchOfService = value; } }
-        private Value<List<MilitaryService>> _militaryServices;
-        public List<MilitaryService> MilitaryServices { get { return _militaryServices; } set { _militaryServices = value; } }
+        private DirtyList<MilitaryService> _militaryServices;
+        public IList<MilitaryService> MilitaryServices { get { var v = _militaryServices; return v ?? Interlocked.CompareExchange(ref _militaryServices, (v = new DirtyList<MilitaryService>()), null) ?? v; } set { _militaryServices = new DirtyList<MilitaryService>(value); } }
         private Value<string> _mineralRightsReserved;
         public string MineralRightsReserved { get { return _mineralRightsReserved; } set { _mineralRightsReserved = value; } }
         private Value<string> _nameOfOccupant;
@@ -298,8 +298,8 @@ namespace EncompassRest.Loans
         public decimal? PreliminaryTotal { get { return _preliminaryTotal; } set { _preliminaryTotal = value; } }
         private Value<bool?> _previousVALoanIndicator;
         public bool? PreviousVALoanIndicator { get { return _previousVALoanIndicator; } set { _previousVALoanIndicator = value; } }
-        private Value<List<PreviousVaLoan>> _previousVaLoans;
-        public List<PreviousVaLoan> PreviousVaLoans { get { return _previousVaLoans; } set { _previousVaLoans = value; } }
+        private DirtyList<PreviousVaLoan> _previousVaLoans;
+        public IList<PreviousVaLoan> PreviousVaLoans { get { var v = _previousVaLoans; return v ?? Interlocked.CompareExchange(ref _previousVaLoans, (v = new DirtyList<PreviousVaLoan>()), null) ?? v; } set { _previousVaLoans = new DirtyList<PreviousVaLoan>(value); } }
         private Value<bool?> _priorApprovalProcedure;
         public bool? PriorApprovalProcedure { get { return _priorApprovalProcedure; } set { _priorApprovalProcedure = value; } }
         private Value<string> _priorLoanType;
@@ -612,7 +612,6 @@ namespace EncompassRest.Loans
                     || _manufacturedHome.Dirty
                     || _mCRVNumber.Dirty
                     || _militaryBranchOfService.Dirty
-                    || _militaryServices.Dirty
                     || _mineralRightsReserved.Dirty
                     || _nameOfOccupant.Dirty
                     || _nameOfOwner.Dirty
@@ -656,7 +655,6 @@ namespace EncompassRest.Loans
                     || _preliminaryFundingFeeAmount.Dirty
                     || _preliminaryTotal.Dirty
                     || _previousVALoanIndicator.Dirty
-                    || _previousVaLoans.Dirty
                     || _priorApprovalProcedure.Dirty
                     || _priorLoanType.Dirty
                     || _propertyDesignation.Dirty
@@ -758,7 +756,9 @@ namespace EncompassRest.Loans
                     || _warrantorPostalCode.Dirty
                     || _warrantorState.Dirty
                     || _warrantyProgramExpirationDate.Dirty
-                    || _wWCarpetIndicator.Dirty;
+                    || _wWCarpetIndicator.Dirty
+                    || _militaryServices?.Dirty == true
+                    || _previousVaLoans?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -866,7 +866,6 @@ namespace EncompassRest.Loans
                 _manufacturedHome.Dirty = value;
                 _mCRVNumber.Dirty = value;
                 _militaryBranchOfService.Dirty = value;
-                _militaryServices.Dirty = value;
                 _mineralRightsReserved.Dirty = value;
                 _nameOfOccupant.Dirty = value;
                 _nameOfOwner.Dirty = value;
@@ -910,7 +909,6 @@ namespace EncompassRest.Loans
                 _preliminaryFundingFeeAmount.Dirty = value;
                 _preliminaryTotal.Dirty = value;
                 _previousVALoanIndicator.Dirty = value;
-                _previousVaLoans.Dirty = value;
                 _priorApprovalProcedure.Dirty = value;
                 _priorLoanType.Dirty = value;
                 _propertyDesignation.Dirty = value;
@@ -1013,6 +1011,8 @@ namespace EncompassRest.Loans
                 _warrantorState.Dirty = value;
                 _warrantyProgramExpirationDate.Dirty = value;
                 _wWCarpetIndicator.Dirty = value;
+                if (_militaryServices != null) _militaryServices.Dirty = value;
+                if (_previousVaLoans != null) _previousVaLoans.Dirty = value;
                 _settingDirty = 0;
             }
         }

@@ -32,8 +32,8 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private Value<decimal?> _netProfit;
         public decimal? NetProfit { get { return _netProfit; } set { _netProfit = value; } }
-        private Value<List<ProfitManagementItem>> _profitManagementItems;
-        public List<ProfitManagementItem> ProfitManagementItems { get { return _profitManagementItems; } set { _profitManagementItems = value; } }
+        private DirtyList<ProfitManagementItem> _profitManagementItems;
+        public IList<ProfitManagementItem> ProfitManagementItems { get { var v = _profitManagementItems; return v ?? Interlocked.CompareExchange(ref _profitManagementItems, (v = new DirtyList<ProfitManagementItem>()), null) ?? v; } set { _profitManagementItems = new DirtyList<ProfitManagementItem>(value); } }
         private int _gettingDirty;
         private int _settingDirty; 
         internal bool Dirty
@@ -53,7 +53,7 @@ namespace EncompassRest.Loans
                     || _grossCheckAmount.Dirty
                     || _id.Dirty
                     || _netProfit.Dirty
-                    || _profitManagementItems.Dirty;
+                    || _profitManagementItems?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -72,7 +72,7 @@ namespace EncompassRest.Loans
                 _grossCheckAmount.Dirty = value;
                 _id.Dirty = value;
                 _netProfit.Dirty = value;
-                _profitManagementItems.Dirty = value;
+                if (_profitManagementItems != null) _profitManagementItems.Dirty = value;
                 _settingDirty = 0;
             }
         }

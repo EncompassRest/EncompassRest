@@ -20,23 +20,26 @@ namespace EncompassRest.Loans
         public int? ApplicationIndex { get { return _applicationIndex; } set { _applicationIndex = value; } }
         private Value<DateTime?> _applicationSignedDate;
         public DateTime? ApplicationSignedDate { get { return _applicationSignedDate; } set { _applicationSignedDate = value; } }
-        private Value<List<Asset>> _assets;
-        public List<Asset> Assets { get { return _assets; } set { _assets = value; } }
+        private DirtyList<Asset> _assets;
+        public IList<Asset> Assets { get { var v = _assets; return v ?? Interlocked.CompareExchange(ref _assets, (v = new DirtyList<Asset>()), null) ?? v; } set { _assets = new DirtyList<Asset>(value); } }
         private Value<decimal?> _assetsAvailableAmount;
         public decimal? AssetsAvailableAmount { get { return _assetsAvailableAmount; } set { _assetsAvailableAmount = value; } }
-        public ATRQMBorrower ATRQMBorrower { get; set; }
-        private Value<List<ATRQMBorrower>> _aTRQMBorrowers;
-        public List<ATRQMBorrower> ATRQMBorrowers { get { return _aTRQMBorrowers; } set { _aTRQMBorrowers = value; } }
-        private Value<List<AUSTrackingLog>> _aUSTrackingLogs;
-        public List<AUSTrackingLog> AUSTrackingLogs { get { return _aUSTrackingLogs; } set { _aUSTrackingLogs = value; } }
+        private ATRQMBorrower _aTRQMBorrower;
+        public ATRQMBorrower ATRQMBorrower { get { var v = _aTRQMBorrower; return v ?? Interlocked.CompareExchange(ref _aTRQMBorrower, (v = new ATRQMBorrower()), null) ?? v; } set { _aTRQMBorrower = value; } }
+        private DirtyList<ATRQMBorrower> _aTRQMBorrowers;
+        public IList<ATRQMBorrower> ATRQMBorrowers { get { var v = _aTRQMBorrowers; return v ?? Interlocked.CompareExchange(ref _aTRQMBorrowers, (v = new DirtyList<ATRQMBorrower>()), null) ?? v; } set { _aTRQMBorrowers = new DirtyList<ATRQMBorrower>(value); } }
+        private DirtyList<AUSTrackingLog> _aUSTrackingLogs;
+        public IList<AUSTrackingLog> AUSTrackingLogs { get { var v = _aUSTrackingLogs; return v ?? Interlocked.CompareExchange(ref _aUSTrackingLogs, (v = new DirtyList<AUSTrackingLog>()), null) ?? v; } set { _aUSTrackingLogs = new DirtyList<AUSTrackingLog>(value); } }
         private Value<decimal?> _balanceAvailableFamilySupportGuideline;
         public decimal? BalanceAvailableFamilySupportGuideline { get { return _balanceAvailableFamilySupportGuideline; } set { _balanceAvailableFamilySupportGuideline = value; } }
-        public Borrower Borrower { get; set; }
+        private Borrower _borrower;
+        public Borrower Borrower { get { var v = _borrower; return v ?? Interlocked.CompareExchange(ref _borrower, (v = new Borrower()), null) ?? v; } set { _borrower = value; } }
         private Value<decimal?> _bottomRatioPercent;
         public decimal? BottomRatioPercent { get { return _bottomRatioPercent; } set { _bottomRatioPercent = value; } }
         private Value<decimal?> _brwCoBrwTotalTaxDeductions;
         public decimal? BrwCoBrwTotalTaxDeductions { get { return _brwCoBrwTotalTaxDeductions; } set { _brwCoBrwTotalTaxDeductions = value; } }
-        public Borrower Coborrower { get; set; }
+        private Borrower _coborrower;
+        public Borrower Coborrower { get { var v = _coborrower; return v ?? Interlocked.CompareExchange(ref _coborrower, (v = new Borrower()), null) ?? v; } set { _coborrower = value; } }
         private Value<string> _creditAliasName1;
         public string CreditAliasName1 { get { return _creditAliasName1; } set { _creditAliasName1 = value; } }
         private Value<string> _creditAliasName2;
@@ -47,8 +50,8 @@ namespace EncompassRest.Loans
         public string CreditorName2 { get { return _creditorName2; } set { _creditorName2 = value; } }
         private Value<string> _creditReportReferenceIdentifier;
         public string CreditReportReferenceIdentifier { get { return _creditReportReferenceIdentifier; } set { _creditReportReferenceIdentifier = value; } }
-        private Value<List<Employment>> _employment;
-        public List<Employment> Employment { get { return _employment; } set { _employment = value; } }
+        private DirtyList<Employment> _employment;
+        public IList<Employment> Employment { get { var v = _employment; return v ?? Interlocked.CompareExchange(ref _employment, (v = new DirtyList<Employment>()), null) ?? v; } set { _employment = new DirtyList<Employment>(value); } }
         private Value<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
         private Value<string> _equifaxAddress;
@@ -197,16 +200,16 @@ namespace EncompassRest.Loans
         public decimal? HudRealEstatePresentBalance2 { get { return _hudRealEstatePresentBalance2; } set { _hudRealEstatePresentBalance2 = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<List<Income>> _income;
-        public List<Income> Income { get { return _income; } set { _income = value; } }
+        private DirtyList<Income> _income;
+        public IList<Income> Income { get { var v = _income; return v ?? Interlocked.CompareExchange(ref _income, (v = new DirtyList<Income>()), null) ?? v; } set { _income = new DirtyList<Income>(value); } }
         private Value<bool?> _incomeOfBorrowersSpouseUsedIndicator;
         public bool? IncomeOfBorrowersSpouseUsedIndicator { get { return _incomeOfBorrowersSpouseUsedIndicator; } set { _incomeOfBorrowersSpouseUsedIndicator = value; } }
         private Value<bool?> _incomeOtherThanBorrowerUsedIndicator;
         public bool? IncomeOtherThanBorrowerUsedIndicator { get { return _incomeOtherThanBorrowerUsedIndicator; } set { _incomeOtherThanBorrowerUsedIndicator = value; } }
         private Value<bool?> _jointAssetLiabilityReportingIndicator;
         public bool? JointAssetLiabilityReportingIndicator { get { return _jointAssetLiabilityReportingIndicator; } set { _jointAssetLiabilityReportingIndicator = value; } }
-        private Value<List<Liability>> _liabilities;
-        public List<Liability> Liabilities { get { return _liabilities; } set { _liabilities = value; } }
+        private DirtyList<Liability> _liabilities;
+        public IList<Liability> Liabilities { get { var v = _liabilities; return v ?? Interlocked.CompareExchange(ref _liabilities, (v = new DirtyList<Liability>()), null) ?? v; } set { _liabilities = new DirtyList<Liability>(value); } }
         private Value<decimal?> _liquidAssetsComortSet;
         public decimal? LiquidAssetsComortSet { get { return _liquidAssetsComortSet; } set { _liquidAssetsComortSet = value; } }
         private Value<decimal?> _mcawBorrowerOtherMonthlyIncomeAmount;
@@ -283,8 +286,8 @@ namespace EncompassRest.Loans
         public string RealEstateTaxAmount { get { return _realEstateTaxAmount; } set { _realEstateTaxAmount = value; } }
         private Value<decimal?> _rentAmount;
         public decimal? RentAmount { get { return _rentAmount; } set { _rentAmount = value; } }
-        private Value<List<ReoProperty>> _reoProperties;
-        public List<ReoProperty> ReoProperties { get { return _reoProperties; } set { _reoProperties = value; } }
+        private DirtyList<ReoProperty> _reoProperties;
+        public IList<ReoProperty> ReoProperties { get { var v = _reoProperties; return v ?? Interlocked.CompareExchange(ref _reoProperties, (v = new DirtyList<ReoProperty>()), null) ?? v; } set { _reoProperties = new DirtyList<ReoProperty>(value); } }
         private Value<decimal?> _reoTotalGrossRentalIncomeAmount;
         public decimal? ReoTotalGrossRentalIncomeAmount { get { return _reoTotalGrossRentalIncomeAmount; } set { _reoTotalGrossRentalIncomeAmount = value; } }
         private Value<decimal?> _reoTotalMaintenanceAmount;
@@ -297,10 +300,10 @@ namespace EncompassRest.Loans
         public decimal? ReoTotalMortgagesAndLiensAmount { get { return _reoTotalMortgagesAndLiensAmount; } set { _reoTotalMortgagesAndLiensAmount = value; } }
         private Value<int?> _reoTotalNetRentalIncomeAmount;
         public int? ReoTotalNetRentalIncomeAmount { get { return _reoTotalNetRentalIncomeAmount; } set { _reoTotalNetRentalIncomeAmount = value; } }
-        private Value<List<Residence>> _residences;
-        public List<Residence> Residences { get { return _residences; } set { _residences = value; } }
-        private Value<List<SelfEmployedIncome>> _selfEmployedIncomes;
-        public List<SelfEmployedIncome> SelfEmployedIncomes { get { return _selfEmployedIncomes; } set { _selfEmployedIncomes = value; } }
+        private DirtyList<Residence> _residences;
+        public IList<Residence> Residences { get { var v = _residences; return v ?? Interlocked.CompareExchange(ref _residences, (v = new DirtyList<Residence>()), null) ?? v; } set { _residences = new DirtyList<Residence>(value); } }
+        private DirtyList<SelfEmployedIncome> _selfEmployedIncomes;
+        public IList<SelfEmployedIncome> SelfEmployedIncomes { get { var v = _selfEmployedIncomes; return v ?? Interlocked.CompareExchange(ref _selfEmployedIncomes, (v = new DirtyList<SelfEmployedIncome>()), null) ?? v; } set { _selfEmployedIncomes = new DirtyList<SelfEmployedIncome>(value); } }
         private Value<string> _sofDBorrowerAddress;
         public string SofDBorrowerAddress { get { return _sofDBorrowerAddress; } set { _sofDBorrowerAddress = value; } }
         private Value<string> _sofDBorrowerAddressCity;
@@ -323,8 +326,8 @@ namespace EncompassRest.Loans
         public string SofDCoBorrowerAddressZipcode { get { return _sofDCoBorrowerAddressZipcode; } set { _sofDCoBorrowerAddressZipcode = value; } }
         private Value<bool?> _spouseIncomeConsider;
         public bool? SpouseIncomeConsider { get { return _spouseIncomeConsider; } set { _spouseIncomeConsider = value; } }
-        private Value<List<Tax4506>> _tax4506s;
-        public List<Tax4506> Tax4506s { get { return _tax4506s; } set { _tax4506s = value; } }
+        private DirtyList<Tax4506> _tax4506s;
+        public IList<Tax4506> Tax4506s { get { var v = _tax4506s; return v ?? Interlocked.CompareExchange(ref _tax4506s, (v = new DirtyList<Tax4506>()), null) ?? v; } set { _tax4506s = new DirtyList<Tax4506>(value); } }
         private Value<decimal?> _topRatioPercent;
         public decimal? TopRatioPercent { get { return _topRatioPercent; } set { _topRatioPercent = value; } }
         private Value<decimal?> _totalAssetsAmount;
@@ -369,8 +372,8 @@ namespace EncompassRest.Loans
         public decimal? TotalReoMarketValueAmount { get { return _totalReoMarketValueAmount; } set { _totalReoMarketValueAmount = value; } }
         private Value<decimal?> _totalUserDefinedIncome;
         public decimal? TotalUserDefinedIncome { get { return _totalUserDefinedIncome; } set { _totalUserDefinedIncome = value; } }
-        private Value<List<TQLReportInformation>> _tQLReports;
-        public List<TQLReportInformation> TQLReports { get { return _tQLReports; } set { _tQLReports = value; } }
+        private DirtyList<TQLReportInformation> _tQLReports;
+        public IList<TQLReportInformation> TQLReports { get { var v = _tQLReports; return v ?? Interlocked.CompareExchange(ref _tQLReports, (v = new DirtyList<TQLReportInformation>()), null) ?? v; } set { _tQLReports = new DirtyList<TQLReportInformation>(value); } }
         private Value<string> _transUnionAddress;
         public string TransUnionAddress { get { return _transUnionAddress; } set { _transUnionAddress = value; } }
         private Value<string> _transUnionCity;
@@ -416,10 +419,7 @@ namespace EncompassRest.Loans
                     || _applicationId.Dirty
                     || _applicationIndex.Dirty
                     || _applicationSignedDate.Dirty
-                    || _assets.Dirty
                     || _assetsAvailableAmount.Dirty
-                    || _aTRQMBorrowers.Dirty
-                    || _aUSTrackingLogs.Dirty
                     || _balanceAvailableFamilySupportGuideline.Dirty
                     || _bottomRatioPercent.Dirty
                     || _brwCoBrwTotalTaxDeductions.Dirty
@@ -428,7 +428,6 @@ namespace EncompassRest.Loans
                     || _creditorName1.Dirty
                     || _creditorName2.Dirty
                     || _creditReportReferenceIdentifier.Dirty
-                    || _employment.Dirty
                     || _entityDeleted.Dirty
                     || _equifaxAddress.Dirty
                     || _equifaxCity.Dirty
@@ -503,11 +502,9 @@ namespace EncompassRest.Loans
                     || _hudRealEstatePresentBalance1.Dirty
                     || _hudRealEstatePresentBalance2.Dirty
                     || _id.Dirty
-                    || _income.Dirty
                     || _incomeOfBorrowersSpouseUsedIndicator.Dirty
                     || _incomeOtherThanBorrowerUsedIndicator.Dirty
                     || _jointAssetLiabilityReportingIndicator.Dirty
-                    || _liabilities.Dirty
                     || _liquidAssetsComortSet.Dirty
                     || _mcawBorrowerOtherMonthlyIncomeAmount.Dirty
                     || _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty
@@ -546,15 +543,12 @@ namespace EncompassRest.Loans
                     || _proposedRealEstateTaxesAmount.Dirty
                     || _realEstateTaxAmount.Dirty
                     || _rentAmount.Dirty
-                    || _reoProperties.Dirty
                     || _reoTotalGrossRentalIncomeAmount.Dirty
                     || _reoTotalMaintenanceAmount.Dirty
                     || _reoTotalMarketValueAmount.Dirty
                     || _reoTotalMortgagePaymentsAmount.Dirty
                     || _reoTotalMortgagesAndLiensAmount.Dirty
                     || _reoTotalNetRentalIncomeAmount.Dirty
-                    || _residences.Dirty
-                    || _selfEmployedIncomes.Dirty
                     || _sofDBorrowerAddress.Dirty
                     || _sofDBorrowerAddressCity.Dirty
                     || _sofDBorrowerAddressState.Dirty
@@ -566,7 +560,6 @@ namespace EncompassRest.Loans
                     || _sofDCoBorrowerAddressType.Dirty
                     || _sofDCoBorrowerAddressZipcode.Dirty
                     || _spouseIncomeConsider.Dirty
-                    || _tax4506s.Dirty
                     || _topRatioPercent.Dirty
                     || _totalAssetsAmount.Dirty
                     || _totalBaseIncomeAmount.Dirty
@@ -589,7 +582,6 @@ namespace EncompassRest.Loans
                     || _totalPrimaryHousingExpenseAmount.Dirty
                     || _totalReoMarketValueAmount.Dirty
                     || _totalUserDefinedIncome.Dirty
-                    || _tQLReports.Dirty
                     || _transUnionAddress.Dirty
                     || _transUnionCity.Dirty
                     || _transUnionFax.Dirty
@@ -606,9 +598,20 @@ namespace EncompassRest.Loans
                     || _vACreditStandards.Dirty
                     || _vaSummarySpouseIncomeAmount.Dirty
                     || _vaSummaryTotalMonthlyGrossIncomeAmount.Dirty
-                    || ATRQMBorrower?.Dirty == true
-                    || Borrower?.Dirty == true
-                    || Coborrower?.Dirty == true;
+                    || _assets?.Dirty == true
+                    || _aTRQMBorrower?.Dirty == true
+                    || _aTRQMBorrowers?.Dirty == true
+                    || _aUSTrackingLogs?.Dirty == true
+                    || _borrower?.Dirty == true
+                    || _coborrower?.Dirty == true
+                    || _employment?.Dirty == true
+                    || _income?.Dirty == true
+                    || _liabilities?.Dirty == true
+                    || _reoProperties?.Dirty == true
+                    || _residences?.Dirty == true
+                    || _selfEmployedIncomes?.Dirty == true
+                    || _tax4506s?.Dirty == true
+                    || _tQLReports?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -621,10 +624,7 @@ namespace EncompassRest.Loans
                 _applicationId.Dirty = value;
                 _applicationIndex.Dirty = value;
                 _applicationSignedDate.Dirty = value;
-                _assets.Dirty = value;
                 _assetsAvailableAmount.Dirty = value;
-                _aTRQMBorrowers.Dirty = value;
-                _aUSTrackingLogs.Dirty = value;
                 _balanceAvailableFamilySupportGuideline.Dirty = value;
                 _bottomRatioPercent.Dirty = value;
                 _brwCoBrwTotalTaxDeductions.Dirty = value;
@@ -633,7 +633,6 @@ namespace EncompassRest.Loans
                 _creditorName1.Dirty = value;
                 _creditorName2.Dirty = value;
                 _creditReportReferenceIdentifier.Dirty = value;
-                _employment.Dirty = value;
                 _entityDeleted.Dirty = value;
                 _equifaxAddress.Dirty = value;
                 _equifaxCity.Dirty = value;
@@ -708,11 +707,9 @@ namespace EncompassRest.Loans
                 _hudRealEstatePresentBalance1.Dirty = value;
                 _hudRealEstatePresentBalance2.Dirty = value;
                 _id.Dirty = value;
-                _income.Dirty = value;
                 _incomeOfBorrowersSpouseUsedIndicator.Dirty = value;
                 _incomeOtherThanBorrowerUsedIndicator.Dirty = value;
                 _jointAssetLiabilityReportingIndicator.Dirty = value;
-                _liabilities.Dirty = value;
                 _liquidAssetsComortSet.Dirty = value;
                 _mcawBorrowerOtherMonthlyIncomeAmount.Dirty = value;
                 _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty = value;
@@ -751,15 +748,12 @@ namespace EncompassRest.Loans
                 _proposedRealEstateTaxesAmount.Dirty = value;
                 _realEstateTaxAmount.Dirty = value;
                 _rentAmount.Dirty = value;
-                _reoProperties.Dirty = value;
                 _reoTotalGrossRentalIncomeAmount.Dirty = value;
                 _reoTotalMaintenanceAmount.Dirty = value;
                 _reoTotalMarketValueAmount.Dirty = value;
                 _reoTotalMortgagePaymentsAmount.Dirty = value;
                 _reoTotalMortgagesAndLiensAmount.Dirty = value;
                 _reoTotalNetRentalIncomeAmount.Dirty = value;
-                _residences.Dirty = value;
-                _selfEmployedIncomes.Dirty = value;
                 _sofDBorrowerAddress.Dirty = value;
                 _sofDBorrowerAddressCity.Dirty = value;
                 _sofDBorrowerAddressState.Dirty = value;
@@ -771,7 +765,6 @@ namespace EncompassRest.Loans
                 _sofDCoBorrowerAddressType.Dirty = value;
                 _sofDCoBorrowerAddressZipcode.Dirty = value;
                 _spouseIncomeConsider.Dirty = value;
-                _tax4506s.Dirty = value;
                 _topRatioPercent.Dirty = value;
                 _totalAssetsAmount.Dirty = value;
                 _totalBaseIncomeAmount.Dirty = value;
@@ -794,7 +787,6 @@ namespace EncompassRest.Loans
                 _totalPrimaryHousingExpenseAmount.Dirty = value;
                 _totalReoMarketValueAmount.Dirty = value;
                 _totalUserDefinedIncome.Dirty = value;
-                _tQLReports.Dirty = value;
                 _transUnionAddress.Dirty = value;
                 _transUnionCity.Dirty = value;
                 _transUnionFax.Dirty = value;
@@ -811,9 +803,20 @@ namespace EncompassRest.Loans
                 _vACreditStandards.Dirty = value;
                 _vaSummarySpouseIncomeAmount.Dirty = value;
                 _vaSummaryTotalMonthlyGrossIncomeAmount.Dirty = value;
-                if (ATRQMBorrower != null) ATRQMBorrower.Dirty = value;
-                if (Borrower != null) Borrower.Dirty = value;
-                if (Coborrower != null) Coborrower.Dirty = value;
+                if (_assets != null) _assets.Dirty = value;
+                if (_aTRQMBorrower != null) _aTRQMBorrower.Dirty = value;
+                if (_aTRQMBorrowers != null) _aTRQMBorrowers.Dirty = value;
+                if (_aUSTrackingLogs != null) _aUSTrackingLogs.Dirty = value;
+                if (_borrower != null) _borrower.Dirty = value;
+                if (_coborrower != null) _coborrower.Dirty = value;
+                if (_employment != null) _employment.Dirty = value;
+                if (_income != null) _income.Dirty = value;
+                if (_liabilities != null) _liabilities.Dirty = value;
+                if (_reoProperties != null) _reoProperties.Dirty = value;
+                if (_residences != null) _residences.Dirty = value;
+                if (_selfEmployedIncomes != null) _selfEmployedIncomes.Dirty = value;
+                if (_tax4506s != null) _tax4506s.Dirty = value;
+                if (_tQLReports != null) _tQLReports.Dirty = value;
                 _settingDirty = 0;
             }
         }

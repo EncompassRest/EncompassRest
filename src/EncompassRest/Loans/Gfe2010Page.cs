@@ -18,10 +18,10 @@ namespace EncompassRest.Loans
         public decimal? CuredGfeTotalTolerance { get { return _curedGfeTotalTolerance; } set { _curedGfeTotalTolerance = value; } }
         private Value<DateTime?> _firstArmChangeDate;
         public DateTime? FirstArmChangeDate { get { return _firstArmChangeDate; } set { _firstArmChangeDate = value; } }
-        private Value<List<Gfe2010FwbcFwsc>> _gfe2010FwbcFwscs;
-        public List<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { return _gfe2010FwbcFwscs; } set { _gfe2010FwbcFwscs = value; } }
-        private Value<List<Gfe2010GfeCharge>> _gfe2010GfeCharges;
-        public List<Gfe2010GfeCharge> Gfe2010GfeCharges { get { return _gfe2010GfeCharges; } set { _gfe2010GfeCharges = value; } }
+        private DirtyList<Gfe2010FwbcFwsc> _gfe2010FwbcFwscs;
+        public IList<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { var v = _gfe2010FwbcFwscs; return v ?? Interlocked.CompareExchange(ref _gfe2010FwbcFwscs, (v = new DirtyList<Gfe2010FwbcFwsc>()), null) ?? v; } set { _gfe2010FwbcFwscs = new DirtyList<Gfe2010FwbcFwsc>(value); } }
+        private DirtyList<Gfe2010GfeCharge> _gfe2010GfeCharges;
+        public IList<Gfe2010GfeCharge> Gfe2010GfeCharges { get { var v = _gfe2010GfeCharges; return v ?? Interlocked.CompareExchange(ref _gfe2010GfeCharges, (v = new DirtyList<Gfe2010GfeCharge>()), null) ?? v; } set { _gfe2010GfeCharges = new DirtyList<Gfe2010GfeCharge>(value); } }
         private Value<string> _gfeRecordingCharges;
         public string GfeRecordingCharges { get { return _gfeRecordingCharges; } set { _gfeRecordingCharges = value; } }
         private Value<decimal?> _gfeTotalTolerance;
@@ -198,8 +198,6 @@ namespace EncompassRest.Loans
                     || _brokerCompensationFwsc.Dirty
                     || _curedGfeTotalTolerance.Dirty
                     || _firstArmChangeDate.Dirty
-                    || _gfe2010FwbcFwscs.Dirty
-                    || _gfe2010GfeCharges.Dirty
                     || _gfeRecordingCharges.Dirty
                     || _gfeTotalTolerance.Dirty
                     || _hasEscrowAccountIndicator.Dirty
@@ -281,7 +279,9 @@ namespace EncompassRest.Loans
                     || _monthlyAmountWithEscrow.Dirty
                     || _monthlyEscrowPayment.Dirty
                     || _prepaidInterest.Dirty
-                    || _totalToleranceIncreaseAmount.Dirty;
+                    || _totalToleranceIncreaseAmount.Dirty
+                    || _gfe2010FwbcFwscs?.Dirty == true
+                    || _gfe2010GfeCharges?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -293,8 +293,6 @@ namespace EncompassRest.Loans
                 _brokerCompensationFwsc.Dirty = value;
                 _curedGfeTotalTolerance.Dirty = value;
                 _firstArmChangeDate.Dirty = value;
-                _gfe2010FwbcFwscs.Dirty = value;
-                _gfe2010GfeCharges.Dirty = value;
                 _gfeRecordingCharges.Dirty = value;
                 _gfeTotalTolerance.Dirty = value;
                 _hasEscrowAccountIndicator.Dirty = value;
@@ -377,6 +375,8 @@ namespace EncompassRest.Loans
                 _monthlyEscrowPayment.Dirty = value;
                 _prepaidInterest.Dirty = value;
                 _totalToleranceIncreaseAmount.Dirty = value;
+                if (_gfe2010FwbcFwscs != null) _gfe2010FwbcFwscs.Dirty = value;
+                if (_gfe2010GfeCharges != null) _gfe2010GfeCharges.Dirty = value;
                 _settingDirty = 0;
             }
         }

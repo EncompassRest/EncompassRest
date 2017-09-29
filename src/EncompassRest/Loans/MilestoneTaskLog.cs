@@ -14,12 +14,12 @@ namespace EncompassRest.Loans
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
         private Value<string> _addedByUserId;
         public string AddedByUserId { get { return _addedByUserId; } set { _addedByUserId = value; } }
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
         private Value<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
         private Value<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private Value<string> _comments;
@@ -34,8 +34,8 @@ namespace EncompassRest.Loans
         public DateTime? CompletedDateUtc { get { return _completedDateUtc; } set { _completedDateUtc = value; } }
         private Value<int?> _contactCount;
         public int? ContactCount { get { return _contactCount; } set { _contactCount = value; } }
-        private Value<List<MilestoneTaskContact>> _contacts;
-        public List<MilestoneTaskContact> Contacts { get { return _contacts; } set { _contacts = value; } }
+        private DirtyList<MilestoneTaskContact> _contacts;
+        public IList<MilestoneTaskContact> Contacts { get { var v = _contacts; return v ?? Interlocked.CompareExchange(ref _contacts, (v = new DirtyList<MilestoneTaskContact>()), null) ?? v; } set { _contacts = new DirtyList<MilestoneTaskContact>(value); } }
         private Value<string> _contactsXml;
         public string ContactsXml { get { return _contactsXml; } set { _contactsXml = value; } }
         private Value<DateTime?> _dateUtc;
@@ -82,9 +82,7 @@ namespace EncompassRest.Loans
                 var dirty = _addDate.Dirty
                     || _addedBy.Dirty
                     || _addedByUserId.Dirty
-                    || _alerts.Dirty
                     || _alertsXml.Dirty
-                    || _commentList.Dirty
                     || _commentListXml.Dirty
                     || _comments.Dirty
                     || _completed.Dirty
@@ -92,7 +90,6 @@ namespace EncompassRest.Loans
                     || _completedByUserId.Dirty
                     || _completedDateUtc.Dirty
                     || _contactCount.Dirty
-                    || _contacts.Dirty
                     || _contactsXml.Dirty
                     || _dateUtc.Dirty
                     || _daysToComplete.Dirty
@@ -110,7 +107,10 @@ namespace EncompassRest.Loans
                     || _systemId.Dirty
                     || _taskDescription.Dirty
                     || _taskGuid.Dirty
-                    || _taskName.Dirty;
+                    || _taskName.Dirty
+                    || _alerts?.Dirty == true
+                    || _commentList?.Dirty == true
+                    || _contacts?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -120,9 +120,7 @@ namespace EncompassRest.Loans
                 _addDate.Dirty = value;
                 _addedBy.Dirty = value;
                 _addedByUserId.Dirty = value;
-                _alerts.Dirty = value;
                 _alertsXml.Dirty = value;
-                _commentList.Dirty = value;
                 _commentListXml.Dirty = value;
                 _comments.Dirty = value;
                 _completed.Dirty = value;
@@ -130,7 +128,6 @@ namespace EncompassRest.Loans
                 _completedByUserId.Dirty = value;
                 _completedDateUtc.Dirty = value;
                 _contactCount.Dirty = value;
-                _contacts.Dirty = value;
                 _contactsXml.Dirty = value;
                 _dateUtc.Dirty = value;
                 _daysToComplete.Dirty = value;
@@ -149,6 +146,9 @@ namespace EncompassRest.Loans
                 _taskDescription.Dirty = value;
                 _taskGuid.Dirty = value;
                 _taskName.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
+                if (_contacts != null) _contacts.Dirty = value;
                 _settingDirty = 0;
             }
         }

@@ -46,14 +46,14 @@ namespace EncompassRest.Loans
         public decimal? FirstChangePercent { get { return _firstChangePercent; } set { _firstChangePercent = value; } }
         private Value<decimal?> _fundingAmount;
         public decimal? FundingAmount { get { return _fundingAmount; } set { _fundingAmount = value; } }
-        private Value<List<GfeFee>> _gfeFees;
-        public List<GfeFee> GfeFees { get { return _gfeFees; } set { _gfeFees = value; } }
-        private Value<List<GfeLien>> _gfeLiens;
-        public List<GfeLien> GfeLiens { get { return _gfeLiens; } set { _gfeLiens = value; } }
-        private Value<List<GfePayment>> _gfePayments;
-        public List<GfePayment> GfePayments { get { return _gfePayments; } set { _gfePayments = value; } }
-        private Value<List<GfePayoff>> _gfePayoffs;
-        public List<GfePayoff> GfePayoffs { get { return _gfePayoffs; } set { _gfePayoffs = value; } }
+        private DirtyList<GfeFee> _gfeFees;
+        public IList<GfeFee> GfeFees { get { var v = _gfeFees; return v ?? Interlocked.CompareExchange(ref _gfeFees, (v = new DirtyList<GfeFee>()), null) ?? v; } set { _gfeFees = new DirtyList<GfeFee>(value); } }
+        private DirtyList<GfeLien> _gfeLiens;
+        public IList<GfeLien> GfeLiens { get { var v = _gfeLiens; return v ?? Interlocked.CompareExchange(ref _gfeLiens, (v = new DirtyList<GfeLien>()), null) ?? v; } set { _gfeLiens = new DirtyList<GfeLien>(value); } }
+        private DirtyList<GfePayment> _gfePayments;
+        public IList<GfePayment> GfePayments { get { var v = _gfePayments; return v ?? Interlocked.CompareExchange(ref _gfePayments, (v = new DirtyList<GfePayment>()), null) ?? v; } set { _gfePayments = new DirtyList<GfePayment>(value); } }
+        private DirtyList<GfePayoff> _gfePayoffs;
+        public IList<GfePayoff> GfePayoffs { get { var v = _gfePayoffs; return v ?? Interlocked.CompareExchange(ref _gfePayoffs, (v = new DirtyList<GfePayoff>()), null) ?? v; } set { _gfePayoffs = new DirtyList<GfePayoff>(value); } }
         private Value<bool?> _gfeProvidedByBrokerIndicator;
         public bool? GfeProvidedByBrokerIndicator { get { return _gfeProvidedByBrokerIndicator; } set { _gfeProvidedByBrokerIndicator = value; } }
         private Value<bool?> _hasAdditionalCompensationIndicator;
@@ -188,10 +188,6 @@ namespace EncompassRest.Loans
                     || _firstChangePayment.Dirty
                     || _firstChangePercent.Dirty
                     || _fundingAmount.Dirty
-                    || _gfeFees.Dirty
-                    || _gfeLiens.Dirty
-                    || _gfePayments.Dirty
-                    || _gfePayoffs.Dirty
                     || _gfeProvidedByBrokerIndicator.Dirty
                     || _hasAdditionalCompensationIndicator.Dirty
                     || _hasLateChargesIndicator.Dirty
@@ -245,7 +241,11 @@ namespace EncompassRest.Loans
                     || _yearlyMortgageInsurance.Dirty
                     || _yearlyOtherInsurance.Dirty
                     || _yearlyOtherInsuranceDescription.Dirty
-                    || _yearlyTax.Dirty;
+                    || _yearlyTax.Dirty
+                    || _gfeFees?.Dirty == true
+                    || _gfeLiens?.Dirty == true
+                    || _gfePayments?.Dirty == true
+                    || _gfePayoffs?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -271,10 +271,6 @@ namespace EncompassRest.Loans
                 _firstChangePayment.Dirty = value;
                 _firstChangePercent.Dirty = value;
                 _fundingAmount.Dirty = value;
-                _gfeFees.Dirty = value;
-                _gfeLiens.Dirty = value;
-                _gfePayments.Dirty = value;
-                _gfePayoffs.Dirty = value;
                 _gfeProvidedByBrokerIndicator.Dirty = value;
                 _hasAdditionalCompensationIndicator.Dirty = value;
                 _hasLateChargesIndicator.Dirty = value;
@@ -329,6 +325,10 @@ namespace EncompassRest.Loans
                 _yearlyOtherInsurance.Dirty = value;
                 _yearlyOtherInsuranceDescription.Dirty = value;
                 _yearlyTax.Dirty = value;
+                if (_gfeFees != null) _gfeFees.Dirty = value;
+                if (_gfeLiens != null) _gfeLiens.Dirty = value;
+                if (_gfePayments != null) _gfePayments.Dirty = value;
+                if (_gfePayoffs != null) _gfePayoffs.Dirty = value;
                 _settingDirty = 0;
             }
         }

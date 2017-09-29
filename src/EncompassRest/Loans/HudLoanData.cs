@@ -254,8 +254,8 @@ namespace EncompassRest.Loans
         public string RiskClass { get { return _riskClass; } set { _riskClass = value; } }
         private Value<bool?> _scoredByTotal;
         public bool? ScoredByTotal { get { return _scoredByTotal; } set { _scoredByTotal = value; } }
-        private Value<List<SecondaryFinancingProvider>> _secondaryFinancingProviders;
-        public List<SecondaryFinancingProvider> SecondaryFinancingProviders { get { return _secondaryFinancingProviders; } set { _secondaryFinancingProviders = value; } }
+        private DirtyList<SecondaryFinancingProvider> _secondaryFinancingProviders;
+        public IList<SecondaryFinancingProvider> SecondaryFinancingProviders { get { var v = _secondaryFinancingProviders; return v ?? Interlocked.CompareExchange(ref _secondaryFinancingProviders, (v = new DirtyList<SecondaryFinancingProvider>()), null) ?? v; } set { _secondaryFinancingProviders = new DirtyList<SecondaryFinancingProvider>(value); } }
         private Value<decimal?> _sellerContributionRate;
         public decimal? SellerContributionRate { get { return _sellerContributionRate; } set { _sellerContributionRate = value; } }
         private Value<bool?> _simpleRefinance;
@@ -454,7 +454,6 @@ namespace EncompassRest.Loans
                     || _residencyType.Dirty
                     || _riskClass.Dirty
                     || _scoredByTotal.Dirty
-                    || _secondaryFinancingProviders.Dirty
                     || _sellerContributionRate.Dirty
                     || _simpleRefinance.Dirty
                     || _statutoryInvestment.Dirty
@@ -488,7 +487,8 @@ namespace EncompassRest.Loans
                     || _unpaidPrincipalBalanceOfAnyJuniorLiens.Dirty
                     || _unpaidPrincipalBalanceOfPurchaseJuniorLiens.Dirty
                     || _valueEstablished.Dirty
-                    || _windEnergySystemActualCost.Dirty;
+                    || _windEnergySystemActualCost.Dirty
+                    || _secondaryFinancingProviders?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -618,7 +618,6 @@ namespace EncompassRest.Loans
                 _residencyType.Dirty = value;
                 _riskClass.Dirty = value;
                 _scoredByTotal.Dirty = value;
-                _secondaryFinancingProviders.Dirty = value;
                 _sellerContributionRate.Dirty = value;
                 _simpleRefinance.Dirty = value;
                 _statutoryInvestment.Dirty = value;
@@ -653,6 +652,7 @@ namespace EncompassRest.Loans
                 _unpaidPrincipalBalanceOfPurchaseJuniorLiens.Dirty = value;
                 _valueEstablished.Dirty = value;
                 _windEnergySystemActualCost.Dirty = value;
+                if (_secondaryFinancingProviders != null) _secondaryFinancingProviders.Dirty = value;
                 _settingDirty = 0;
             }
         }

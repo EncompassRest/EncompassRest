@@ -312,8 +312,8 @@ namespace EncompassRest.Loans
         public decimal? TotalFromN { get { return _totalFromN; } set { _totalFromN = value; } }
         private Value<decimal?> _totalPaidAlreadybyoronBehalfofBoroweratClosing;
         public decimal? TotalPaidAlreadybyoronBehalfofBoroweratClosing { get { return _totalPaidAlreadybyoronBehalfofBoroweratClosing; } set { _totalPaidAlreadybyoronBehalfofBoroweratClosing = value; } }
-        private Value<List<UCDDetail>> _uCDDetails;
-        public List<UCDDetail> UCDDetails { get { return _uCDDetails; } set { _uCDDetails = value; } }
+        private DirtyList<UCDDetail> _uCDDetails;
+        public IList<UCDDetail> UCDDetails { get { var v = _uCDDetails; return v ?? Interlocked.CompareExchange(ref _uCDDetails, (v = new DirtyList<UCDDetail>()), null) ?? v; } set { _uCDDetails = new DirtyList<UCDDetail>(value); } }
         private Value<decimal?> _uCDKSubTotal;
         public decimal? UCDKSubTotal { get { return _uCDKSubTotal; } set { _uCDKSubTotal = value; } }
         private Value<decimal?> _uCDLSubTotal;
@@ -479,10 +479,10 @@ namespace EncompassRest.Loans
                     || _totalFromM.Dirty
                     || _totalFromN.Dirty
                     || _totalPaidAlreadybyoronBehalfofBoroweratClosing.Dirty
-                    || _uCDDetails.Dirty
                     || _uCDKSubTotal.Dirty
                     || _uCDLSubTotal.Dirty
-                    || _uCDTotalAdjustmentsAndOtherCredits.Dirty;
+                    || _uCDTotalAdjustmentsAndOtherCredits.Dirty
+                    || _uCDDetails?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -641,10 +641,10 @@ namespace EncompassRest.Loans
                 _totalFromM.Dirty = value;
                 _totalFromN.Dirty = value;
                 _totalPaidAlreadybyoronBehalfofBoroweratClosing.Dirty = value;
-                _uCDDetails.Dirty = value;
                 _uCDKSubTotal.Dirty = value;
                 _uCDLSubTotal.Dirty = value;
                 _uCDTotalAdjustmentsAndOtherCredits.Dirty = value;
+                if (_uCDDetails != null) _uCDDetails.Dirty = value;
                 _settingDirty = 0;
             }
         }

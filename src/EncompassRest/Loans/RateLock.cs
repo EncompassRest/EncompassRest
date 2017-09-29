@@ -38,8 +38,8 @@ namespace EncompassRest.Loans
         public string BranchApprovedby { get { return _branchApprovedby; } set { _branchApprovedby = value; } }
         private Value<decimal?> _branchPrice;
         public decimal? BranchPrice { get { return _branchPrice; } set { _branchPrice = value; } }
-        private Value<List<PriceAdjustment>> _buySideAdjustments;
-        public List<PriceAdjustment> BuySideAdjustments { get { return _buySideAdjustments; } set { _buySideAdjustments = value; } }
+        private DirtyList<PriceAdjustment> _buySideAdjustments;
+        public IList<PriceAdjustment> BuySideAdjustments { get { var v = _buySideAdjustments; return v ?? Interlocked.CompareExchange(ref _buySideAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _buySideAdjustments = new DirtyList<PriceAdjustment>(value); } }
         private Value<string> _buySideComments;
         public string BuySideComments { get { return _buySideComments; } set { _buySideComments = value; } }
         private Value<DateTime?> _buySideCommitmentDate;
@@ -164,8 +164,8 @@ namespace EncompassRest.Loans
         public string CompInvestorTemplateName { get { return _compInvestorTemplateName; } set { _compInvestorTemplateName = value; } }
         private Value<string> _compInvestorWebsite;
         public string CompInvestorWebsite { get { return _compInvestorWebsite; } set { _compInvestorWebsite = value; } }
-        private Value<List<PriceAdjustment>> _compSideAdjustments;
-        public List<PriceAdjustment> CompSideAdjustments { get { return _compSideAdjustments; } set { _compSideAdjustments = value; } }
+        private DirtyList<PriceAdjustment> _compSideAdjustments;
+        public IList<PriceAdjustment> CompSideAdjustments { get { var v = _compSideAdjustments; return v ?? Interlocked.CompareExchange(ref _compSideAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _compSideAdjustments = new DirtyList<PriceAdjustment>(value); } }
         private Value<string> _compSideComments;
         public string CompSideComments { get { return _compSideComments; } set { _compSideComments = value; } }
         private Value<string> _compSideComparisonedBy;
@@ -520,8 +520,8 @@ namespace EncompassRest.Loans
         public string CreditScoreToUse { get { return _creditScoreToUse; } set { _creditScoreToUse = value; } }
         private Value<int?> _cumulatedDaystoExtend;
         public int? CumulatedDaystoExtend { get { return _cumulatedDaystoExtend; } set { _cumulatedDaystoExtend = value; } }
-        private Value<List<PriceAdjustment>> _currentAdjustments;
-        public List<PriceAdjustment> CurrentAdjustments { get { return _currentAdjustments; } set { _currentAdjustments = value; } }
+        private DirtyList<PriceAdjustment> _currentAdjustments;
+        public IList<PriceAdjustment> CurrentAdjustments { get { var v = _currentAdjustments; return v ?? Interlocked.CompareExchange(ref _currentAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _currentAdjustments = new DirtyList<PriceAdjustment>(value); } }
         private Value<string> _currentComments;
         public string CurrentComments { get { return _currentComments; } set { _currentComments = value; } }
         private Value<DateTime?> _currentLockDate;
@@ -630,8 +630,8 @@ namespace EncompassRest.Loans
         public string ExtensionRequestPending { get { return _extensionRequestPending; } set { _extensionRequestPending = value; } }
         private Value<int?> _extensionSequenceNumber;
         public int? ExtensionSequenceNumber { get { return _extensionSequenceNumber; } set { _extensionSequenceNumber = value; } }
-        private Value<List<ExtraPayment>> _extraPayments;
-        public List<ExtraPayment> ExtraPayments { get { return _extraPayments; } set { _extraPayments = value; } }
+        private DirtyList<ExtraPayment> _extraPayments;
+        public IList<ExtraPayment> ExtraPayments { get { var v = _extraPayments; return v ?? Interlocked.CompareExchange(ref _extraPayments, (v = new DirtyList<ExtraPayment>()), null) ?? v; } set { _extraPayments = new DirtyList<ExtraPayment>(value); } }
         private Value<decimal?> _fHAUpfrontMIPremiumPercent;
         public decimal? FHAUpfrontMIPremiumPercent { get { return _fHAUpfrontMIPremiumPercent; } set { _fHAUpfrontMIPremiumPercent = value; } }
         private Value<int?> _financedNumberOfUnits;
@@ -730,10 +730,10 @@ namespace EncompassRest.Loans
         public DateTime? LoanScheduledClosingDate { get { return _loanScheduledClosingDate; } set { _loanScheduledClosingDate = value; } }
         private Value<bool?> _lockField;
         public bool? LockField { get { return _lockField; } set { _lockField = value; } }
-        private Value<List<PriceAdjustment>> _lockRequestAdjustments;
-        public List<PriceAdjustment> LockRequestAdjustments { get { return _lockRequestAdjustments; } set { _lockRequestAdjustments = value; } }
-        private Value<List<LockRequestBorrower>> _lockRequestBorrowers;
-        public List<LockRequestBorrower> LockRequestBorrowers { get { return _lockRequestBorrowers; } set { _lockRequestBorrowers = value; } }
+        private DirtyList<PriceAdjustment> _lockRequestAdjustments;
+        public IList<PriceAdjustment> LockRequestAdjustments { get { var v = _lockRequestAdjustments; return v ?? Interlocked.CompareExchange(ref _lockRequestAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _lockRequestAdjustments = new DirtyList<PriceAdjustment>(value); } }
+        private DirtyList<LockRequestBorrower> _lockRequestBorrowers;
+        public IList<LockRequestBorrower> LockRequestBorrowers { get { var v = _lockRequestBorrowers; return v ?? Interlocked.CompareExchange(ref _lockRequestBorrowers, (v = new DirtyList<LockRequestBorrower>()), null) ?? v; } set { _lockRequestBorrowers = new DirtyList<LockRequestBorrower>(value); } }
         private Value<string> _lockRequestLoanPurposeType;
         public string LockRequestLoanPurposeType { get { return _lockRequestLoanPurposeType; } set { _lockRequestLoanPurposeType = value; } }
         private Value<decimal?> _lTV;
@@ -772,8 +772,8 @@ namespace EncompassRest.Loans
         public string PrepayPenalty { get { return _prepayPenalty; } set { _prepayPenalty = value; } }
         private Value<decimal?> _priceAdjustment;
         public decimal? PriceAdjustment { get { return _priceAdjustment; } set { _priceAdjustment = value; } }
-        private Value<List<PriceAdjustment>> _priceAdjustments;
-        public List<PriceAdjustment> PriceAdjustments { get { return _priceAdjustments; } set { _priceAdjustments = value; } }
+        private DirtyList<PriceAdjustment> _priceAdjustments;
+        public IList<PriceAdjustment> PriceAdjustments { get { var v = _priceAdjustments; return v ?? Interlocked.CompareExchange(ref _priceAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _priceAdjustments = new DirtyList<PriceAdjustment>(value); } }
         private Value<string> _pricingHistoryData;
         public string PricingHistoryData { get { return _pricingHistoryData; } set { _pricingHistoryData = value; } }
         private Value<string> _pricingUpdated;
@@ -790,8 +790,8 @@ namespace EncompassRest.Loans
         public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
         private Value<int?> _purchaseAdviceNumberOfDays;
         public int? PurchaseAdviceNumberOfDays { get { return _purchaseAdviceNumberOfDays; } set { _purchaseAdviceNumberOfDays = value; } }
-        private Value<List<PurchaseAdvicePayout>> _purchaseAdvicePayouts;
-        public List<PurchaseAdvicePayout> PurchaseAdvicePayouts { get { return _purchaseAdvicePayouts; } set { _purchaseAdvicePayouts = value; } }
+        private DirtyList<PurchaseAdvicePayout> _purchaseAdvicePayouts;
+        public IList<PurchaseAdvicePayout> PurchaseAdvicePayouts { get { var v = _purchaseAdvicePayouts; return v ?? Interlocked.CompareExchange(ref _purchaseAdvicePayouts, (v = new DirtyList<PurchaseAdvicePayout>()), null) ?? v; } set { _purchaseAdvicePayouts = new DirtyList<PurchaseAdvicePayout>(value); } }
         private Value<decimal?> _purchasePriceAmount;
         public decimal? PurchasePriceAmount { get { return _purchasePriceAmount; } set { _purchasePriceAmount = value; } }
         private Value<string> _rateRequestStatus;
@@ -820,8 +820,8 @@ namespace EncompassRest.Loans
         public string RequestFullfilledDateTime { get { return _requestFullfilledDateTime; } set { _requestFullfilledDateTime = value; } }
         private Value<string> _requestImpoundType;
         public string RequestImpoundType { get { return _requestImpoundType; } set { _requestImpoundType = value; } }
-        private Value<string> _requestImpoundWaived;
-        public string RequestImpoundWaived { get { return _requestImpoundWaived; } set { _requestImpoundWaived = value; } }
+        private Value<string> _requestImpoundWavied;
+        public string RequestImpoundWavied { get { return _requestImpoundWavied; } set { _requestImpoundWavied = value; } }
         private Value<string> _requestLockCancellationComment;
         public string RequestLockCancellationComment { get { return _requestLockCancellationComment; } set { _requestLockCancellationComment = value; } }
         private Value<DateTime?> _requestLockCancellationDate;
@@ -834,6 +834,8 @@ namespace EncompassRest.Loans
         public string RequestLockExtendComment { get { return _requestLockExtendComment; } set { _requestLockExtendComment = value; } }
         private Value<decimal?> _requestLockExtendPriceAdjustment;
         public decimal? RequestLockExtendPriceAdjustment { get { return _requestLockExtendPriceAdjustment; } set { _requestLockExtendPriceAdjustment = value; } }
+        private Value<string> _requestLockStatus;
+        public string RequestLockStatus { get { return _requestLockStatus; } set { _requestLockStatus = value; } }
         private Value<string> _requestLockType;
         public string RequestLockType { get { return _requestLockType; } set { _requestLockType = value; } }
         private Value<decimal?> _requestMarginRate;
@@ -888,8 +890,8 @@ namespace EncompassRest.Loans
         public decimal? SecondSubordinateAmount { get { return _secondSubordinateAmount; } set { _secondSubordinateAmount = value; } }
         private Value<decimal?> _sellerPaidMIPremium;
         public decimal? SellerPaidMIPremium { get { return _sellerPaidMIPremium; } set { _sellerPaidMIPremium = value; } }
-        private Value<List<PriceAdjustment>> _sellSideAdjustments;
-        public List<PriceAdjustment> SellSideAdjustments { get { return _sellSideAdjustments; } set { _sellSideAdjustments = value; } }
+        private DirtyList<PriceAdjustment> _sellSideAdjustments;
+        public IList<PriceAdjustment> SellSideAdjustments { get { var v = _sellSideAdjustments; return v ?? Interlocked.CompareExchange(ref _sellSideAdjustments, (v = new DirtyList<PriceAdjustment>()), null) ?? v; } set { _sellSideAdjustments = new DirtyList<PriceAdjustment>(value); } }
         private Value<string> _sellSideComments;
         public string SellSideComments { get { return _sellSideComments; } set { _sellSideComments = value; } }
         private Value<string> _sellSideCommitmentContractNumber;
@@ -1034,7 +1036,6 @@ namespace EncompassRest.Loans
                     || _branchApprovalDate.Dirty
                     || _branchApprovedby.Dirty
                     || _branchPrice.Dirty
-                    || _buySideAdjustments.Dirty
                     || _buySideComments.Dirty
                     || _buySideCommitmentDate.Dirty
                     || _buySideCommitmentNumber.Dirty
@@ -1097,7 +1098,6 @@ namespace EncompassRest.Loans
                     || _compInvestorState.Dirty
                     || _compInvestorTemplateName.Dirty
                     || _compInvestorWebsite.Dirty
-                    || _compSideAdjustments.Dirty
                     || _compSideComments.Dirty
                     || _compSideComparisonedBy.Dirty
                     || _compSideCurrentRateSetDate.Dirty
@@ -1275,7 +1275,6 @@ namespace EncompassRest.Loans
                     || _correspondentWarehouseBankZip.Dirty
                     || _creditScoreToUse.Dirty
                     || _cumulatedDaystoExtend.Dirty
-                    || _currentAdjustments.Dirty
                     || _currentComments.Dirty
                     || _currentLockDate.Dirty
                     || _currentLockExpires.Dirty
@@ -1330,7 +1329,6 @@ namespace EncompassRest.Loans
                     || _expectedSRP.Dirty
                     || _extensionRequestPending.Dirty
                     || _extensionSequenceNumber.Dirty
-                    || _extraPayments.Dirty
                     || _fHAUpfrontMIPremiumPercent.Dirty
                     || _financedNumberOfUnits.Dirty
                     || _firstPaymenTo.Dirty
@@ -1380,8 +1378,6 @@ namespace EncompassRest.Loans
                     || _loanProgramFile.Dirty
                     || _loanScheduledClosingDate.Dirty
                     || _lockField.Dirty
-                    || _lockRequestAdjustments.Dirty
-                    || _lockRequestBorrowers.Dirty
                     || _lockRequestLoanPurposeType.Dirty
                     || _lTV.Dirty
                     || _minFICO.Dirty
@@ -1401,7 +1397,6 @@ namespace EncompassRest.Loans
                     || _premium.Dirty
                     || _prepayPenalty.Dirty
                     || _priceAdjustment.Dirty
-                    || _priceAdjustments.Dirty
                     || _pricingHistoryData.Dirty
                     || _pricingUpdated.Dirty
                     || _principle.Dirty
@@ -1410,7 +1405,6 @@ namespace EncompassRest.Loans
                     || _propertyEstimatedValueAmount.Dirty
                     || _propertyUsageType.Dirty
                     || _purchaseAdviceNumberOfDays.Dirty
-                    || _purchaseAdvicePayouts.Dirty
                     || _purchasePriceAmount.Dirty
                     || _rateRequestStatus.Dirty
                     || _rateStatus.Dirty
@@ -1425,13 +1419,14 @@ namespace EncompassRest.Loans
                     || _requestExtendedLockExpires.Dirty
                     || _requestFullfilledDateTime.Dirty
                     || _requestImpoundType.Dirty
-                    || _requestImpoundWaived.Dirty
+                    || _requestImpoundWavied.Dirty
                     || _requestLockCancellationComment.Dirty
                     || _requestLockCancellationDate.Dirty
                     || _requestLockDate.Dirty
                     || _requestLockExpires.Dirty
                     || _requestLockExtendComment.Dirty
                     || _requestLockExtendPriceAdjustment.Dirty
+                    || _requestLockStatus.Dirty
                     || _requestLockType.Dirty
                     || _requestMarginRate.Dirty
                     || _requestMarginRateRequested.Dirty
@@ -1459,7 +1454,6 @@ namespace EncompassRest.Loans
                     || _roundToNearest50.Dirty
                     || _secondSubordinateAmount.Dirty
                     || _sellerPaidMIPremium.Dirty
-                    || _sellSideAdjustments.Dirty
                     || _sellSideComments.Dirty
                     || _sellSideCommitmentContractNumber.Dirty
                     || _sellSideCommitmentDate.Dirty
@@ -1520,7 +1514,16 @@ namespace EncompassRest.Loans
                     || _totalSubordinateFinancing.Dirty
                     || _twelveMonthMortgageRentalHistoryIndicator.Dirty
                     || _type.Dirty
-                    || _usePoint.Dirty;
+                    || _usePoint.Dirty
+                    || _buySideAdjustments?.Dirty == true
+                    || _compSideAdjustments?.Dirty == true
+                    || _currentAdjustments?.Dirty == true
+                    || _extraPayments?.Dirty == true
+                    || _lockRequestAdjustments?.Dirty == true
+                    || _lockRequestBorrowers?.Dirty == true
+                    || _priceAdjustments?.Dirty == true
+                    || _purchaseAdvicePayouts?.Dirty == true
+                    || _sellSideAdjustments?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -1542,7 +1545,6 @@ namespace EncompassRest.Loans
                 _branchApprovalDate.Dirty = value;
                 _branchApprovedby.Dirty = value;
                 _branchPrice.Dirty = value;
-                _buySideAdjustments.Dirty = value;
                 _buySideComments.Dirty = value;
                 _buySideCommitmentDate.Dirty = value;
                 _buySideCommitmentNumber.Dirty = value;
@@ -1605,7 +1607,6 @@ namespace EncompassRest.Loans
                 _compInvestorState.Dirty = value;
                 _compInvestorTemplateName.Dirty = value;
                 _compInvestorWebsite.Dirty = value;
-                _compSideAdjustments.Dirty = value;
                 _compSideComments.Dirty = value;
                 _compSideComparisonedBy.Dirty = value;
                 _compSideCurrentRateSetDate.Dirty = value;
@@ -1783,7 +1784,6 @@ namespace EncompassRest.Loans
                 _correspondentWarehouseBankZip.Dirty = value;
                 _creditScoreToUse.Dirty = value;
                 _cumulatedDaystoExtend.Dirty = value;
-                _currentAdjustments.Dirty = value;
                 _currentComments.Dirty = value;
                 _currentLockDate.Dirty = value;
                 _currentLockExpires.Dirty = value;
@@ -1838,7 +1838,6 @@ namespace EncompassRest.Loans
                 _expectedSRP.Dirty = value;
                 _extensionRequestPending.Dirty = value;
                 _extensionSequenceNumber.Dirty = value;
-                _extraPayments.Dirty = value;
                 _fHAUpfrontMIPremiumPercent.Dirty = value;
                 _financedNumberOfUnits.Dirty = value;
                 _firstPaymenTo.Dirty = value;
@@ -1888,8 +1887,6 @@ namespace EncompassRest.Loans
                 _loanProgramFile.Dirty = value;
                 _loanScheduledClosingDate.Dirty = value;
                 _lockField.Dirty = value;
-                _lockRequestAdjustments.Dirty = value;
-                _lockRequestBorrowers.Dirty = value;
                 _lockRequestLoanPurposeType.Dirty = value;
                 _lTV.Dirty = value;
                 _minFICO.Dirty = value;
@@ -1909,7 +1906,6 @@ namespace EncompassRest.Loans
                 _premium.Dirty = value;
                 _prepayPenalty.Dirty = value;
                 _priceAdjustment.Dirty = value;
-                _priceAdjustments.Dirty = value;
                 _pricingHistoryData.Dirty = value;
                 _pricingUpdated.Dirty = value;
                 _principle.Dirty = value;
@@ -1918,7 +1914,6 @@ namespace EncompassRest.Loans
                 _propertyEstimatedValueAmount.Dirty = value;
                 _propertyUsageType.Dirty = value;
                 _purchaseAdviceNumberOfDays.Dirty = value;
-                _purchaseAdvicePayouts.Dirty = value;
                 _purchasePriceAmount.Dirty = value;
                 _rateRequestStatus.Dirty = value;
                 _rateStatus.Dirty = value;
@@ -1933,13 +1928,14 @@ namespace EncompassRest.Loans
                 _requestExtendedLockExpires.Dirty = value;
                 _requestFullfilledDateTime.Dirty = value;
                 _requestImpoundType.Dirty = value;
-                _requestImpoundWaived.Dirty = value;
+                _requestImpoundWavied.Dirty = value;
                 _requestLockCancellationComment.Dirty = value;
                 _requestLockCancellationDate.Dirty = value;
                 _requestLockDate.Dirty = value;
                 _requestLockExpires.Dirty = value;
                 _requestLockExtendComment.Dirty = value;
                 _requestLockExtendPriceAdjustment.Dirty = value;
+                _requestLockStatus.Dirty = value;
                 _requestLockType.Dirty = value;
                 _requestMarginRate.Dirty = value;
                 _requestMarginRateRequested.Dirty = value;
@@ -1967,7 +1963,6 @@ namespace EncompassRest.Loans
                 _roundToNearest50.Dirty = value;
                 _secondSubordinateAmount.Dirty = value;
                 _sellerPaidMIPremium.Dirty = value;
-                _sellSideAdjustments.Dirty = value;
                 _sellSideComments.Dirty = value;
                 _sellSideCommitmentContractNumber.Dirty = value;
                 _sellSideCommitmentDate.Dirty = value;
@@ -2029,6 +2024,15 @@ namespace EncompassRest.Loans
                 _twelveMonthMortgageRentalHistoryIndicator.Dirty = value;
                 _type.Dirty = value;
                 _usePoint.Dirty = value;
+                if (_buySideAdjustments != null) _buySideAdjustments.Dirty = value;
+                if (_compSideAdjustments != null) _compSideAdjustments.Dirty = value;
+                if (_currentAdjustments != null) _currentAdjustments.Dirty = value;
+                if (_extraPayments != null) _extraPayments.Dirty = value;
+                if (_lockRequestAdjustments != null) _lockRequestAdjustments.Dirty = value;
+                if (_lockRequestBorrowers != null) _lockRequestBorrowers.Dirty = value;
+                if (_priceAdjustments != null) _priceAdjustments.Dirty = value;
+                if (_purchaseAdvicePayouts != null) _purchaseAdvicePayouts.Dirty = value;
+                if (_sellSideAdjustments != null) _sellSideAdjustments.Dirty = value;
                 _settingDirty = 0;
             }
         }

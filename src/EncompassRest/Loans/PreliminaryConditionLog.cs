@@ -10,14 +10,14 @@ namespace EncompassRest.Loans
     {
         private Value<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
         private Value<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private Value<string> _category;
         public string Category { get { return _category; } set { _category = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
         private Value<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private Value<string> _comments;
@@ -94,10 +94,8 @@ namespace EncompassRest.Loans
             {
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
                 var dirty = _addedBy.Dirty
-                    || _alerts.Dirty
                     || _alertsXml.Dirty
                     || _category.Dirty
-                    || _commentList.Dirty
                     || _commentListXml.Dirty
                     || _comments.Dirty
                     || _dateAddedUtc.Dirty
@@ -131,7 +129,9 @@ namespace EncompassRest.Loans
                     || _statusDescription.Dirty
                     || _systemId.Dirty
                     || _title.Dirty
-                    || _underwriterAccessIndicator.Dirty;
+                    || _underwriterAccessIndicator.Dirty
+                    || _alerts?.Dirty == true
+                    || _commentList?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -139,10 +139,8 @@ namespace EncompassRest.Loans
             {
                 if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
                 _addedBy.Dirty = value;
-                _alerts.Dirty = value;
                 _alertsXml.Dirty = value;
                 _category.Dirty = value;
-                _commentList.Dirty = value;
                 _commentListXml.Dirty = value;
                 _comments.Dirty = value;
                 _dateAddedUtc.Dirty = value;
@@ -177,6 +175,8 @@ namespace EncompassRest.Loans
                 _systemId.Dirty = value;
                 _title.Dirty = value;
                 _underwriterAccessIndicator.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
                 _settingDirty = 0;
             }
         }

@@ -430,10 +430,10 @@ namespace EncompassRest.Loans
         public bool? RefundPaymentIndicator { get { return _refundPaymentIndicator; } set { _refundPaymentIndicator = value; } }
         private Value<bool?> _refundUnearnedMipIndicator;
         public bool? RefundUnearnedMipIndicator { get { return _refundUnearnedMipIndicator; } set { _refundUnearnedMipIndicator = value; } }
-        private Value<List<RegulationZInterestRatePeriod>> _regulationZInterestRatePeriods;
-        public List<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get { return _regulationZInterestRatePeriods; } set { _regulationZInterestRatePeriods = value; } }
-        private Value<List<RegulationZPayment>> _regulationZPayments;
-        public List<RegulationZPayment> RegulationZPayments { get { return _regulationZPayments; } set { _regulationZPayments = value; } }
+        private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
+        public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get { var v = _regulationZInterestRatePeriods; return v ?? Interlocked.CompareExchange(ref _regulationZInterestRatePeriods, (v = new DirtyList<RegulationZInterestRatePeriod>()), null) ?? v; } set { _regulationZInterestRatePeriods = new DirtyList<RegulationZInterestRatePeriod>(value); } }
+        private DirtyList<RegulationZPayment> _regulationZPayments;
+        public IList<RegulationZPayment> RegulationZPayments { get { var v = _regulationZPayments; return v ?? Interlocked.CompareExchange(ref _regulationZPayments, (v = new DirtyList<RegulationZPayment>()), null) ?? v; } set { _regulationZPayments = new DirtyList<RegulationZPayment>(value); } }
         private Value<string> _regzTableType;
         public string RegzTableType { get { return _regzTableType; } set { _regzTableType = value; } }
         private Value<bool?> _requiredDepositIndicator;
@@ -712,8 +712,6 @@ namespace EncompassRest.Loans
                     || _recastStopMonths.Dirty
                     || _refundPaymentIndicator.Dirty
                     || _refundUnearnedMipIndicator.Dirty
-                    || _regulationZInterestRatePeriods.Dirty
-                    || _regulationZPayments.Dirty
                     || _regzTableType.Dirty
                     || _requiredDepositIndicator.Dirty
                     || _revisedClosingDisclosureReceivedDate.Dirty
@@ -743,7 +741,9 @@ namespace EncompassRest.Loans
                     || _variableRateFeatureIndicator.Dirty
                     || _yearlyTerm.Dirty
                     || _yearOfMaximumPayment.Dirty
-                    || _years.Dirty;
+                    || _years.Dirty
+                    || _regulationZInterestRatePeriods?.Dirty == true
+                    || _regulationZPayments?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -961,8 +961,6 @@ namespace EncompassRest.Loans
                 _recastStopMonths.Dirty = value;
                 _refundPaymentIndicator.Dirty = value;
                 _refundUnearnedMipIndicator.Dirty = value;
-                _regulationZInterestRatePeriods.Dirty = value;
-                _regulationZPayments.Dirty = value;
                 _regzTableType.Dirty = value;
                 _requiredDepositIndicator.Dirty = value;
                 _revisedClosingDisclosureReceivedDate.Dirty = value;
@@ -993,6 +991,8 @@ namespace EncompassRest.Loans
                 _yearlyTerm.Dirty = value;
                 _yearOfMaximumPayment.Dirty = value;
                 _years.Dirty = value;
+                if (_regulationZInterestRatePeriods != null) _regulationZInterestRatePeriods.Dirty = value;
+                if (_regulationZPayments != null) _regulationZPayments.Dirty = value;
                 _settingDirty = 0;
             }
         }

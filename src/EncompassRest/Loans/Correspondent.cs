@@ -14,6 +14,8 @@ namespace EncompassRest.Loans
         public DateTime? ApprovedToFundDate { get { return _approvedToFundDate; } set { _approvedToFundDate = value; } }
         private Value<decimal?> _basePrice;
         public decimal? BasePrice { get { return _basePrice; } set { _basePrice = value; } }
+        private Value<DateTime?> _cancelledDate;
+        public DateTime? CancelledDate { get { return _cancelledDate; } set { _cancelledDate = value; } }
         private Value<string> _commitmentType;
         public string CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
         private Value<DateTime?> _conditionsReceivedDate;
@@ -102,6 +104,8 @@ namespace EncompassRest.Loans
         public decimal? TotalLateFee { get { return _totalLateFee; } set { _totalLateFee = value; } }
         private Value<decimal?> _unpaidPrincipalBalance;
         public decimal? UnpaidPrincipalBalance { get { return _unpaidPrincipalBalance; } set { _unpaidPrincipalBalance = value; } }
+        private Value<DateTime?> _voidedDate;
+        public DateTime? VoidedDate { get { return _voidedDate; } set { _voidedDate = value; } }
         private Value<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
         private int _gettingDirty;
@@ -114,6 +118,7 @@ namespace EncompassRest.Loans
                 var dirty = _additionalLateFeeCharge.Dirty
                     || _approvedToFundDate.Dirty
                     || _basePrice.Dirty
+                    || _cancelledDate.Dirty
                     || _commitmentType.Dirty
                     || _conditionsReceivedDate.Dirty
                     || _correspondentStatus.Dirty
@@ -158,6 +163,7 @@ namespace EncompassRest.Loans
                     || _totalLateDays.Dirty
                     || _totalLateFee.Dirty
                     || _unpaidPrincipalBalance.Dirty
+                    || _voidedDate.Dirty
                     || _withdrawnDate.Dirty;
                 _gettingDirty = 0;
                 return dirty;
@@ -168,6 +174,7 @@ namespace EncompassRest.Loans
                 _additionalLateFeeCharge.Dirty = value;
                 _approvedToFundDate.Dirty = value;
                 _basePrice.Dirty = value;
+                _cancelledDate.Dirty = value;
                 _commitmentType.Dirty = value;
                 _conditionsReceivedDate.Dirty = value;
                 _correspondentStatus.Dirty = value;
@@ -212,6 +219,7 @@ namespace EncompassRest.Loans
                 _totalLateDays.Dirty = value;
                 _totalLateFee.Dirty = value;
                 _unpaidPrincipalBalance.Dirty = value;
+                _voidedDate.Dirty = value;
                 _withdrawnDate.Dirty = value;
                 _settingDirty = 0;
             }

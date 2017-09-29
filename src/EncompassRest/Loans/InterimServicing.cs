@@ -32,16 +32,16 @@ namespace EncompassRest.Loans
         public decimal? CurrentPrincipalBalance { get { return _currentPrincipalBalance; } set { _currentPrincipalBalance = value; } }
         private Value<decimal?> _escrowBalance;
         public decimal? EscrowBalance { get { return _escrowBalance; } set { _escrowBalance = value; } }
-        private Value<List<EscrowDisbursementTransaction>> _escrowDisbursementTransactions;
-        public List<EscrowDisbursementTransaction> EscrowDisbursementTransactions { get { return _escrowDisbursementTransactions; } set { _escrowDisbursementTransactions = value; } }
-        private Value<List<EscrowInterestTransaction>> _escrowInterestTransactions;
-        public List<EscrowInterestTransaction> EscrowInterestTransactions { get { return _escrowInterestTransactions; } set { _escrowInterestTransactions = value; } }
+        private DirtyList<EscrowDisbursementTransaction> _escrowDisbursementTransactions;
+        public IList<EscrowDisbursementTransaction> EscrowDisbursementTransactions { get { var v = _escrowDisbursementTransactions; return v ?? Interlocked.CompareExchange(ref _escrowDisbursementTransactions, (v = new DirtyList<EscrowDisbursementTransaction>()), null) ?? v; } set { _escrowDisbursementTransactions = new DirtyList<EscrowDisbursementTransaction>(value); } }
+        private DirtyList<EscrowInterestTransaction> _escrowInterestTransactions;
+        public IList<EscrowInterestTransaction> EscrowInterestTransactions { get { var v = _escrowInterestTransactions; return v ?? Interlocked.CompareExchange(ref _escrowInterestTransactions, (v = new DirtyList<EscrowInterestTransaction>()), null) ?? v; } set { _escrowInterestTransactions = new DirtyList<EscrowInterestTransaction>(value); } }
         private Value<decimal?> _floodInsurance;
         public decimal? FloodInsurance { get { return _floodInsurance; } set { _floodInsurance = value; } }
         private Value<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<List<InterimServicingTransaction>> _interimServicingTransactions;
-        public List<InterimServicingTransaction> InterimServicingTransactions { get { return _interimServicingTransactions; } set { _interimServicingTransactions = value; } }
+        private DirtyList<InterimServicingTransaction> _interimServicingTransactions;
+        public IList<InterimServicingTransaction> InterimServicingTransactions { get { var v = _interimServicingTransactions; return v ?? Interlocked.CompareExchange(ref _interimServicingTransactions, (v = new DirtyList<InterimServicingTransaction>()), null) ?? v; } set { _interimServicingTransactions = new DirtyList<InterimServicingTransaction>(value); } }
         private Value<decimal?> _lastPaymentAdditionalEscrow;
         public decimal? LastPaymentAdditionalEscrow { get { return _lastPaymentAdditionalEscrow; } set { _lastPaymentAdditionalEscrow = value; } }
         private Value<decimal?> _lastPaymentAdditionalPrincipal;
@@ -88,7 +88,8 @@ namespace EncompassRest.Loans
         public DateTime? LastPaymentStatementDate { get { return _lastPaymentStatementDate; } set { _lastPaymentStatementDate = value; } }
         private Value<decimal?> _lastPaymentTotalAmountReceived;
         public decimal? LastPaymentTotalAmountReceived { get { return _lastPaymentTotalAmountReceived; } set { _lastPaymentTotalAmountReceived = value; } }
-        public SchedulePaymentTransaction LastScheduledPayment { get; set; }
+        private SchedulePaymentTransaction _lastScheduledPayment;
+        public SchedulePaymentTransaction LastScheduledPayment { get { var v = _lastScheduledPayment; return v ?? Interlocked.CompareExchange(ref _lastScheduledPayment, (v = new SchedulePaymentTransaction()), null) ?? v; } set { _lastScheduledPayment = value; } }
         private Value<DateTime?> _lastStatementPrintedDate;
         public DateTime? LastStatementPrintedDate { get { return _lastStatementPrintedDate; } set { _lastStatementPrintedDate = value; } }
         private Value<string> _loanSnapshotXml;
@@ -191,27 +192,28 @@ namespace EncompassRest.Loans
         public decimal? NextPaymentTotalAmountWithLateFee { get { return _nextPaymentTotalAmountWithLateFee; } set { _nextPaymentTotalAmountWithLateFee = value; } }
         private Value<decimal?> _nextPaymentUnpaidLateFee;
         public decimal? NextPaymentUnpaidLateFee { get { return _nextPaymentUnpaidLateFee; } set { _nextPaymentUnpaidLateFee = value; } }
-        public SchedulePaymentTransaction NextScheduledPayment { get; set; }
+        private SchedulePaymentTransaction _nextScheduledPayment;
+        public SchedulePaymentTransaction NextScheduledPayment { get { var v = _nextScheduledPayment; return v ?? Interlocked.CompareExchange(ref _nextScheduledPayment, (v = new SchedulePaymentTransaction()), null) ?? v; } set { _nextScheduledPayment = value; } }
         private Value<int?> _numberOfDisbursement;
         public int? NumberOfDisbursement { get { return _numberOfDisbursement; } set { _numberOfDisbursement = value; } }
-        private Value<List<OtherTransaction>> _otherTransactions;
-        public List<OtherTransaction> OtherTransactions { get { return _otherTransactions; } set { _otherTransactions = value; } }
+        private DirtyList<OtherTransaction> _otherTransactions;
+        public IList<OtherTransaction> OtherTransactions { get { var v = _otherTransactions; return v ?? Interlocked.CompareExchange(ref _otherTransactions, (v = new DirtyList<OtherTransaction>()), null) ?? v; } set { _otherTransactions = new DirtyList<OtherTransaction>(value); } }
         private Value<DateTime?> _paymentDueDatePrinted;
         public DateTime? PaymentDueDatePrinted { get { return _paymentDueDatePrinted; } set { _paymentDueDatePrinted = value; } }
-        private Value<List<PaymentReversalTransaction>> _paymentReversalTransactions;
-        public List<PaymentReversalTransaction> PaymentReversalTransactions { get { return _paymentReversalTransactions; } set { _paymentReversalTransactions = value; } }
-        private Value<List<PaymentTransaction>> _paymentTransactions;
-        public List<PaymentTransaction> PaymentTransactions { get { return _paymentTransactions; } set { _paymentTransactions = value; } }
+        private DirtyList<PaymentReversalTransaction> _paymentReversalTransactions;
+        public IList<PaymentReversalTransaction> PaymentReversalTransactions { get { var v = _paymentReversalTransactions; return v ?? Interlocked.CompareExchange(ref _paymentReversalTransactions, (v = new DirtyList<PaymentReversalTransaction>()), null) ?? v; } set { _paymentReversalTransactions = new DirtyList<PaymentReversalTransaction>(value); } }
+        private DirtyList<PaymentTransaction> _paymentTransactions;
+        public IList<PaymentTransaction> PaymentTransactions { get { var v = _paymentTransactions; return v ?? Interlocked.CompareExchange(ref _paymentTransactions, (v = new DirtyList<PaymentTransaction>()), null) ?? v; } set { _paymentTransactions = new DirtyList<PaymentTransaction>(value); } }
         private Value<string> _printedByUserId;
         public string PrintedByUserId { get { return _printedByUserId; } set { _printedByUserId = value; } }
         private Value<string> _printedByUserName;
         public string PrintedByUserName { get { return _printedByUserName; } set { _printedByUserName = value; } }
         private Value<decimal?> _purchasedPrincipal;
         public decimal? PurchasedPrincipal { get { return _purchasedPrincipal; } set { _purchasedPrincipal = value; } }
-        private Value<List<SchedulePaymentTransaction>> _scheduledPayments;
-        public List<SchedulePaymentTransaction> ScheduledPayments { get { return _scheduledPayments; } set { _scheduledPayments = value; } }
-        private Value<List<SchedulePaymentTransaction>> _schedulePaymentTransactions;
-        public List<SchedulePaymentTransaction> SchedulePaymentTransactions { get { return _schedulePaymentTransactions; } set { _schedulePaymentTransactions = value; } }
+        private DirtyList<SchedulePaymentTransaction> _scheduledPayments;
+        public IList<SchedulePaymentTransaction> ScheduledPayments { get { var v = _scheduledPayments; return v ?? Interlocked.CompareExchange(ref _scheduledPayments, (v = new DirtyList<SchedulePaymentTransaction>()), null) ?? v; } set { _scheduledPayments = new DirtyList<SchedulePaymentTransaction>(value); } }
+        private DirtyList<SchedulePaymentTransaction> _schedulePaymentTransactions;
+        public IList<SchedulePaymentTransaction> SchedulePaymentTransactions { get { var v = _schedulePaymentTransactions; return v ?? Interlocked.CompareExchange(ref _schedulePaymentTransactions, (v = new DirtyList<SchedulePaymentTransaction>()), null) ?? v; } set { _schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>(value); } }
         private Value<string> _servicerLoanNumber;
         public string ServicerLoanNumber { get { return _servicerLoanNumber; } set { _servicerLoanNumber = value; } }
         private Value<string> _servicingStatus;
@@ -327,11 +329,8 @@ namespace EncompassRest.Loans
                     || _comments.Dirty
                     || _currentPrincipalBalance.Dirty
                     || _escrowBalance.Dirty
-                    || _escrowDisbursementTransactions.Dirty
-                    || _escrowInterestTransactions.Dirty
                     || _floodInsurance.Dirty
                     || _id.Dirty
-                    || _interimServicingTransactions.Dirty
                     || _lastPaymentAdditionalEscrow.Dirty
                     || _lastPaymentAdditionalPrincipal.Dirty
                     || _lastPaymentBuydownSubsidyAmount.Dirty
@@ -407,15 +406,10 @@ namespace EncompassRest.Loans
                     || _nextPaymentTotalAmountWithLateFee.Dirty
                     || _nextPaymentUnpaidLateFee.Dirty
                     || _numberOfDisbursement.Dirty
-                    || _otherTransactions.Dirty
                     || _paymentDueDatePrinted.Dirty
-                    || _paymentReversalTransactions.Dirty
-                    || _paymentTransactions.Dirty
                     || _printedByUserId.Dirty
                     || _printedByUserName.Dirty
                     || _purchasedPrincipal.Dirty
-                    || _scheduledPayments.Dirty
-                    || _schedulePaymentTransactions.Dirty
                     || _servicerLoanNumber.Dirty
                     || _servicingStatus.Dirty
                     || _servicingTransferDate.Dirty
@@ -464,8 +458,16 @@ namespace EncompassRest.Loans
                     || _unpaidLateFee.Dirty
                     || _unpaidMiscrFee.Dirty
                     || _unpaidPrincipal.Dirty
-                    || LastScheduledPayment?.Dirty == true
-                    || NextScheduledPayment?.Dirty == true;
+                    || _escrowDisbursementTransactions?.Dirty == true
+                    || _escrowInterestTransactions?.Dirty == true
+                    || _interimServicingTransactions?.Dirty == true
+                    || _lastScheduledPayment?.Dirty == true
+                    || _nextScheduledPayment?.Dirty == true
+                    || _otherTransactions?.Dirty == true
+                    || _paymentReversalTransactions?.Dirty == true
+                    || _paymentTransactions?.Dirty == true
+                    || _scheduledPayments?.Dirty == true
+                    || _schedulePaymentTransactions?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -484,11 +486,8 @@ namespace EncompassRest.Loans
                 _comments.Dirty = value;
                 _currentPrincipalBalance.Dirty = value;
                 _escrowBalance.Dirty = value;
-                _escrowDisbursementTransactions.Dirty = value;
-                _escrowInterestTransactions.Dirty = value;
                 _floodInsurance.Dirty = value;
                 _id.Dirty = value;
-                _interimServicingTransactions.Dirty = value;
                 _lastPaymentAdditionalEscrow.Dirty = value;
                 _lastPaymentAdditionalPrincipal.Dirty = value;
                 _lastPaymentBuydownSubsidyAmount.Dirty = value;
@@ -564,15 +563,10 @@ namespace EncompassRest.Loans
                 _nextPaymentTotalAmountWithLateFee.Dirty = value;
                 _nextPaymentUnpaidLateFee.Dirty = value;
                 _numberOfDisbursement.Dirty = value;
-                _otherTransactions.Dirty = value;
                 _paymentDueDatePrinted.Dirty = value;
-                _paymentReversalTransactions.Dirty = value;
-                _paymentTransactions.Dirty = value;
                 _printedByUserId.Dirty = value;
                 _printedByUserName.Dirty = value;
                 _purchasedPrincipal.Dirty = value;
-                _scheduledPayments.Dirty = value;
-                _schedulePaymentTransactions.Dirty = value;
                 _servicerLoanNumber.Dirty = value;
                 _servicingStatus.Dirty = value;
                 _servicingTransferDate.Dirty = value;
@@ -621,8 +615,16 @@ namespace EncompassRest.Loans
                 _unpaidLateFee.Dirty = value;
                 _unpaidMiscrFee.Dirty = value;
                 _unpaidPrincipal.Dirty = value;
-                if (LastScheduledPayment != null) LastScheduledPayment.Dirty = value;
-                if (NextScheduledPayment != null) NextScheduledPayment.Dirty = value;
+                if (_escrowDisbursementTransactions != null) _escrowDisbursementTransactions.Dirty = value;
+                if (_escrowInterestTransactions != null) _escrowInterestTransactions.Dirty = value;
+                if (_interimServicingTransactions != null) _interimServicingTransactions.Dirty = value;
+                if (_lastScheduledPayment != null) _lastScheduledPayment.Dirty = value;
+                if (_nextScheduledPayment != null) _nextScheduledPayment.Dirty = value;
+                if (_otherTransactions != null) _otherTransactions.Dirty = value;
+                if (_paymentReversalTransactions != null) _paymentReversalTransactions.Dirty = value;
+                if (_paymentTransactions != null) _paymentTransactions.Dirty = value;
+                if (_scheduledPayments != null) _scheduledPayments.Dirty = value;
+                if (_schedulePaymentTransactions != null) _schedulePaymentTransactions.Dirty = value;
                 _settingDirty = 0;
             }
         }

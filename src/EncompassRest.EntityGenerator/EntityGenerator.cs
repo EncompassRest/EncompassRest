@@ -34,6 +34,7 @@ namespace EncompassRest
 
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
+            Directory.CreateDirectory(destinationPath);
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false);
             var exceptions = new List<Exception>();
             var knownBadEntities = new HashSet<string> { "LOCompensation", "VirtualFields", "ElliUCDFields", "NonVols" };
@@ -82,26 +83,27 @@ namespace {@namespace}
     {{
 ");
 
-            var properties = new List<(string Name, string FieldName, bool IsEntity)>();
+            var properties = new List<(string Name, string FieldName, bool IsEntity, bool IsCollection)>();
 
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
-                var propertyType = GetPropertyType(propertySchema, out var isEntity);
-                var fieldName = propertyName;
-                if (!isEntity)
+                var propertyType = GetPropertyOrItemType(propertySchema, out var isEntity, out var isCollection);
+                var itemType = propertyType;
+                if (isCollection)
                 {
-                    fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                    sb.AppendLine($"        private Value<{propertyType}> {fieldName};");
+                    propertyType = $"DirtyList<{propertyType}>";
                 }
-                properties.Add((propertyName, fieldName, isEntity));
+                var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"Value<{propertyType}>")} {fieldName};");
+                properties.Add((propertyName, fieldName, isEntity, isCollection));
 
-                sb.AppendLine($"        public {propertyType} {propertyName} {(isEntity ? "{ get; set; }" : $"{{ get {{ return {fieldName}; }} set {{ {fieldName} = value; }} }}")}");
+                sb.AppendLine($"        public {(isCollection ? $"IList<{itemType}>" : propertyType)} {propertyName} {{ get {{ {(isEntity || isCollection ? $"var v = {fieldName}; return v ?? Interlocked.CompareExchange(ref {fieldName}, (v = new {propertyType}()), null) ?? v" : $"return {fieldName}")}; }} set {{ {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }} }}");
             }
 
             // Sorts non entity types first
-            properties = properties.OrderBy(property => property.IsEntity).ToList();
+            properties = properties.OrderBy(property => property.IsEntity || property.IsCollection).ToList();
 
             // Must ensure no circular cleaning
             sb.Append(
@@ -112,7 +114,7 @@ $@"        private int _gettingDirty;
             get
             {{
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
-                var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity ? "?.Dirty == true" : ".Dirty")}"))};
+                var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
                 _gettingDirty = 0;
                 return dirty;
             }}
@@ -122,7 +124,7 @@ $@"        private int _gettingDirty;
                 {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
                     {
                         var propertyName = property.FieldName;
-                        if (property.IsEntity)
+                        if (property.IsEntity || property.IsCollection)
                         {
                             return $"if ({propertyName} != null) {propertyName}.Dirty = value;";
                         }
@@ -140,9 +142,10 @@ $@"        private int _gettingDirty;
             }
         }
 
-        private static string GetPropertyType(PropertySchema propertySchema, out bool isEntity)
+        private static string GetPropertyOrItemType(PropertySchema propertySchema, out bool isEntity, out bool isCollection)
         {
             isEntity = false;
+            isCollection = false;
             var propertyType = propertySchema.Type;
             switch (propertyType)
             {
@@ -159,7 +162,8 @@ $@"        private int _gettingDirty;
                     return "DateTime?";
                 case "set":
                 case "list":
-                    return $"List<{propertySchema.ElementType}>";
+                    isCollection = true;
+                    return propertySchema.ElementType;
                 case "entity":
                     isEntity = true;
                     return propertySchema.EntityType;

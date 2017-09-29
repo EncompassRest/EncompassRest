@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using EncompassRest.Loans;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
@@ -140,18 +141,42 @@ namespace EncompassRest.Utilities
                     {
                         property.Converter = new EnumJsonConverter(enumOutputAttribute.EnumOutput);
                     }
-                    if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                    var toAssignShouldSerializeMethod = true;
+                    if (member.DeclaringType == TypeData<CustomField>.Type)
                     {
-                        property.ShouldSerialize = o => o != null && ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
-                    }
-                    else
-                    {
-                        var propertyName = propertyInfo.Name;
-                        var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
-                        if (backingField != null)
+                        if (propertyInfo.Name == "Id")
                         {
-                            property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
+                            property.ShouldSerialize = o => false;
+                            toAssignShouldSerializeMethod = false;
+                        }
+                        else if (propertyInfo.Name == "FieldName")
+                        {
+                            property.ShouldSerialize = o => true;
+                            toAssignShouldSerializeMethod = false;
+                        }
+                    }
+                    if (toAssignShouldSerializeMethod)
+                    {
+                        if (propertyInfo.Name == "Id")
+                        {
+                            property.ShouldSerialize = o => propertyInfo.GetValue(o) != null;
+                        }
+                        else
+                        {
+                            if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                            {
+                                property.ShouldSerialize = o => o != null && ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
+                            }
+                            else
+                            {
+                                var propertyName = propertyInfo.Name;
+                                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
+                                if (backingField != null)
+                                {
+                                    property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
+                                }
+                            }
                         }
                     }
                 }
