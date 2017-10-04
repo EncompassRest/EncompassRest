@@ -19,7 +19,7 @@ namespace EncompassRest
             {
                 Task.Run(async () =>
                 {
-                    using (var client = TestBaseClass.GetTestClient())
+                    using (var client = await TestBaseClass.GetTestClientAsync())
                     {
                         await GenerateClassFilesFromSchemaAsync(client, "Loans", "EncompassRest.Loans");
                     }
