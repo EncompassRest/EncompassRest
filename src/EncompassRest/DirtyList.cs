@@ -57,9 +57,12 @@ namespace EncompassRest
         public DirtyList(IEnumerable<T> list)
             : this()
         {
-            foreach (var item in list)
+            if (list != null)
             {
-                Add(item);
+                foreach (var item in list)
+                {
+                    Add(item);
+                }
             }
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace EncompassRest.Loans.Documents
 {
@@ -82,19 +81,20 @@ namespace EncompassRest.Loans.Documents
         public DateTime? DateReadyForUw { get { return _dateReadyForUw; } set { _dateReadyForUw = value; } }
         private DirtyValue<DateTime?> _dateReadyToShip;
         public DateTime? DateReadyToShip { get { return _dateReadyToShip; } set { _dateReadyToShip = value; } }
-        private DirtyValue<List<DocumentComment>> _comments;
-        public List<DocumentComment> Comments { get { return _comments; } set { _comments = value; } }
-        private DirtyValue<List<FileAttachmentReference>> _attachments;
-        public List<FileAttachmentReference> Attachments { get { return _attachments; } set { _attachments = value; } }
-        private DirtyValue<List<EntityReference>> _roles;
-        public List<EntityReference> Roles { get { return _roles; } set { _roles = value; } }
-        private int _gettingDirty;
-        private int _settingDirty;
+        private DirtyList<DocumentComment> _comments;
+        public IList<DocumentComment> Comments { get { return _comments ?? (_comments = new DirtyList<DocumentComment>()); } set { _comments = new DirtyList<DocumentComment>(value); } }
+        private DirtyList<FileAttachmentReference> _attachments;
+        public IList<FileAttachmentReference> Attachments { get { return _attachments ?? (_attachments = new DirtyList<FileAttachmentReference>()); } set { _attachments = new DirtyList<FileAttachmentReference>(value); } }
+        private DirtyList<EntityReference> _roles;
+        public IList<EntityReference> Roles { get { return _roles ?? (_roles = new DirtyList<EntityReference>()); } set { _roles = new DirtyList<EntityReference>(value); } }
+        private bool _gettingDirty;
+        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _documentId.Dirty
                     || _titleWithIndex.Dirty
                     || _applicationName.Dirty
@@ -133,15 +133,16 @@ namespace EncompassRest.Loans.Documents
                     || _dateReviewed.Dirty
                     || _dateReadyForUw.Dirty
                     || _dateReadyToShip.Dirty
-                    || _comments.Dirty
-                    || _attachments.Dirty
-                    || _roles.Dirty;
-                _gettingDirty = 0;
+                    || _comments?.Dirty == true
+                    || _attachments?.Dirty == true
+                    || _roles?.Dirty == true;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _documentId.Dirty = value;
                 _titleWithIndex.Dirty = value;
                 _applicationName.Dirty = value;
@@ -180,10 +181,10 @@ namespace EncompassRest.Loans.Documents
                 _dateReviewed.Dirty = value;
                 _dateReadyForUw.Dirty = value;
                 _dateReadyToShip.Dirty = value;
-                _comments.Dirty = value;
-                _attachments.Dirty = value;
-                _roles.Dirty = value;
-                _settingDirty = 0;
+                if (_comments != null) _comments.Dirty = value;
+                if (_attachments != null) _attachments.Dirty = value;
+                if (_roles != null) _roles.Dirty = value;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
