@@ -70,13 +70,14 @@ namespace EncompassRest.Loans
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
         private DirtyValue<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acquiredDate.Dirty
                     || _city.Dirty
                     || _dispositionStatusType.Dirty
@@ -108,12 +109,13 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _titleFax.Dirty
                     || _titlePhone.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acquiredDate.Dirty = value;
                 _city.Dirty = value;
                 _dispositionStatusType.Dirty = value;
@@ -145,7 +147,7 @@ namespace EncompassRest.Loans
                 _title.Dirty = value;
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

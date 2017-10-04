@@ -84,13 +84,14 @@ namespace EncompassRest.Loans
         public string TitleTypeOfProperty { get { return _titleTypeOfProperty; } set { _titleTypeOfProperty = value; } }
         private DirtyValue<bool?> _titleWarrantyDeed;
         public bool? TitleWarrantyDeed { get { return _titleWarrantyDeed; } set { _titleWarrantyDeed = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisalContactCellPhone.Dirty
                     || _appraisalContactEmail.Dirty
                     || _appraisalContactForEntry.Dirty
@@ -129,12 +130,13 @@ namespace EncompassRest.Loans
                     || _titleSurvey.Dirty
                     || _titleTypeOfProperty.Dirty
                     || _titleWarrantyDeed.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisalContactCellPhone.Dirty = value;
                 _appraisalContactEmail.Dirty = value;
                 _appraisalContactForEntry.Dirty = value;
@@ -173,7 +175,7 @@ namespace EncompassRest.Loans
                 _titleSurvey.Dirty = value;
                 _titleTypeOfProperty.Dirty = value;
                 _titleWarrantyDeed.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

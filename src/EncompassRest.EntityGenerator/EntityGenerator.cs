@@ -89,17 +89,17 @@ namespace {@namespace}
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
-                var propertyType = GetPropertyOrItemType(propertySchema, out var isEntity, out var isCollection);
-                var itemType = propertyType;
+                var propertyType = GetPropertyOrElementType(propertySchema, out var isEntity, out var isCollection);
+                var elementType = propertyType;
                 if (isCollection)
                 {
-                    propertyType = $"DirtyList<{propertyType}>";
+                    propertyType = $"DirtyList<{elementType}>";
                 }
                 var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                 sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                 properties.Add((propertyName, fieldName, isEntity, isCollection));
 
-                sb.AppendLine($"        public {(isCollection ? $"IList<{itemType}>" : propertyType)} {propertyName} {{ get {{ {(isEntity || isCollection ? $"var v = {fieldName}; return v ?? Interlocked.CompareExchange(ref {fieldName}, (v = new {propertyType}()), null) ?? v" : $"return {fieldName}")}; }} set {{ {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }} }}");
+                sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get {{ return {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; }} set {{ {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }} }}");
             }
 
             // Sorts non entity types first
@@ -107,20 +107,22 @@ namespace {@namespace}
 
             // Must ensure no circular cleaning
             sb.Append(
-$@"        private int _gettingDirty;
-        private int _settingDirty; 
+$@"        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {{
             get
             {{
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }}
             set
             {{
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
                     {
                         var propertyName = property.FieldName;
@@ -130,7 +132,7 @@ $@"        private int _gettingDirty;
                         }
                         return $"{propertyName}.Dirty = value;";
                     }))}
-                _settingDirty = 0;
+                _settingDirty = false;
             }}
         }}
         bool IDirty.Dirty {{ get {{ return Dirty; }} set {{ Dirty = value; }} }}
@@ -142,7 +144,7 @@ $@"        private int _gettingDirty;
             }
         }
 
-        private static string GetPropertyOrItemType(PropertySchema propertySchema, out bool isEntity, out bool isCollection)
+        private static string GetPropertyOrElementType(PropertySchema propertySchema, out bool isEntity, out bool isCollection)
         {
             isEntity = false;
             isCollection = false;

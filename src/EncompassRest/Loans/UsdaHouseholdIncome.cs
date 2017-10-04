@@ -32,13 +32,14 @@ namespace EncompassRest.Loans
         public string SourceofWageIncomeEmployerName { get { return _sourceofWageIncomeEmployerName; } set { _sourceofWageIncomeEmployerName = value; } }
         private DirtyValue<int?> _usdaHouseholdIncomeIndex;
         public int? UsdaHouseholdIncomeIndex { get { return _usdaHouseholdIncomeIndex; } set { _usdaHouseholdIncomeIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _age.Dirty
                     || _analysisDocumenting.Dirty
                     || _annualNonWageIncome.Dirty
@@ -51,12 +52,13 @@ namespace EncompassRest.Loans
                     || _sourceofNonWageIncomeDescription.Dirty
                     || _sourceofWageIncomeEmployerName.Dirty
                     || _usdaHouseholdIncomeIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _age.Dirty = value;
                 _analysisDocumenting.Dirty = value;
                 _annualNonWageIncome.Dirty = value;
@@ -69,7 +71,7 @@ namespace EncompassRest.Loans
                 _sourceofNonWageIncomeDescription.Dirty = value;
                 _sourceofWageIncomeEmployerName.Dirty = value;
                 _usdaHouseholdIncomeIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

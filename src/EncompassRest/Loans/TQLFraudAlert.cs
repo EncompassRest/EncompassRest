@@ -28,13 +28,14 @@ namespace EncompassRest.Loans
         public string LastFraudOrderDescriptionOfAlerts { get { return _lastFraudOrderDescriptionOfAlerts; } set { _lastFraudOrderDescriptionOfAlerts = value; } }
         private DirtyValue<int?> _tQLFraudAlertIndex;
         public int? TQLFraudAlertIndex { get { return _tQLFraudAlertIndex; } set { _tQLFraudAlertIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _driveFraudAlertCode.Dirty
                     || _driveFraudAlertStatus.Dirty
                     || _fraudGuardFraudAlertCode.Dirty
@@ -45,12 +46,13 @@ namespace EncompassRest.Loans
                     || _lastFraudOrderAlertLevel.Dirty
                     || _lastFraudOrderDescriptionOfAlerts.Dirty
                     || _tQLFraudAlertIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _driveFraudAlertCode.Dirty = value;
                 _driveFraudAlertStatus.Dirty = value;
                 _fraudGuardFraudAlertCode.Dirty = value;
@@ -61,7 +63,7 @@ namespace EncompassRest.Loans
                 _lastFraudOrderAlertLevel.Dirty = value;
                 _lastFraudOrderDescriptionOfAlerts.Dirty = value;
                 _tQLFraudAlertIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

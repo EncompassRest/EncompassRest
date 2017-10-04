@@ -9,17 +9,17 @@ namespace EncompassRest.Loans
     public sealed partial class Loan : IDirty
     {
         private AdditionalRequests _additionalRequests;
-        public AdditionalRequests AdditionalRequests { get { var v = _additionalRequests; return v ?? Interlocked.CompareExchange(ref _additionalRequests, (v = new AdditionalRequests()), null) ?? v; } set { _additionalRequests = value; } }
+        public AdditionalRequests AdditionalRequests { get { return _additionalRequests ?? (_additionalRequests = new AdditionalRequests()); } set { _additionalRequests = value; } }
         private DirtyValue<DateTime?> _adverseActionDate;
         public DateTime? AdverseActionDate { get { return _adverseActionDate; } set { _adverseActionDate = value; } }
         private DirtyList<AffiliatedBusinessArrangement> _affiliatedBusinessArrangements;
-        public IList<AffiliatedBusinessArrangement> AffiliatedBusinessArrangements { get { var v = _affiliatedBusinessArrangements; return v ?? Interlocked.CompareExchange(ref _affiliatedBusinessArrangements, (v = new DirtyList<AffiliatedBusinessArrangement>()), null) ?? v; } set { _affiliatedBusinessArrangements = new DirtyList<AffiliatedBusinessArrangement>(value); } }
+        public IList<AffiliatedBusinessArrangement> AffiliatedBusinessArrangements { get { return _affiliatedBusinessArrangements ?? (_affiliatedBusinessArrangements = new DirtyList<AffiliatedBusinessArrangement>()); } set { _affiliatedBusinessArrangements = new DirtyList<AffiliatedBusinessArrangement>(value); } }
         private DirtyValue<string> _agencyCaseIdentifier;
         public string AgencyCaseIdentifier { get { return _agencyCaseIdentifier; } set { _agencyCaseIdentifier = value; } }
         private DirtyValue<decimal?> _alterationsImprovementsOrRepairsAmount;
         public decimal? AlterationsImprovementsOrRepairsAmount { get { return _alterationsImprovementsOrRepairsAmount; } set { _alterationsImprovementsOrRepairsAmount = value; } }
         private DirtyList<Application> _applications;
-        public IList<Application> Applications { get { var v = _applications; return v ?? Interlocked.CompareExchange(ref _applications, (v = new DirtyList<Application>()), null) ?? v; } set { _applications = new DirtyList<Application>(value); } }
+        public IList<Application> Applications { get { return _applications ?? (_applications = new DirtyList<Application>()); } set { _applications = new DirtyList<Application>(value); } }
         private DirtyValue<string> _applicationTakenMethodType;
         public string ApplicationTakenMethodType { get { return _applicationTakenMethodType; } set { _applicationTakenMethodType = value; } }
         private DirtyValue<DateTime?> _aprDisclosureDate;
@@ -27,7 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _armTypeDescription;
         public string ArmTypeDescription { get { return _armTypeDescription; } set { _armTypeDescription = value; } }
         private ATRQMCommon _aTRQMCommon;
-        public ATRQMCommon ATRQMCommon { get { var v = _aTRQMCommon; return v ?? Interlocked.CompareExchange(ref _aTRQMCommon, (v = new ATRQMCommon()), null) ?? v; } set { _aTRQMCommon = value; } }
+        public ATRQMCommon ATRQMCommon { get { return _aTRQMCommon ?? (_aTRQMCommon = new ATRQMCommon()); } set { _aTRQMCommon = value; } }
         private DirtyValue<decimal?> _baseLoanAmount;
         public decimal? BaseLoanAmount { get { return _baseLoanAmount; } set { _baseLoanAmount = value; } }
         private DirtyValue<bool?> _belowMarketSubordinateFinancingIndicator;
@@ -63,7 +63,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _closingBillingDate;
         public DateTime? ClosingBillingDate { get { return _closingBillingDate; } set { _closingBillingDate = value; } }
         private ClosingCost _closingCost;
-        public ClosingCost ClosingCost { get { var v = _closingCost; return v ?? Interlocked.CompareExchange(ref _closingCost, (v = new ClosingCost()), null) ?? v; } set { _closingCost = value; } }
+        public ClosingCost ClosingCost { get { return _closingCost ?? (_closingCost = new ClosingCost()); } set { _closingCost = value; } }
         private DirtyValue<string> _closingCostProgram;
         public string ClosingCostProgram { get { return _closingCostProgram; } set { _closingCostProgram = value; } }
         private DirtyValue<decimal?> _closingCostsAndPrepaidsFromOtherLienAmount;
@@ -73,7 +73,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _closingDocsStackingOrder;
         public string ClosingDocsStackingOrder { get { return _closingDocsStackingOrder; } set { _closingDocsStackingOrder = value; } }
         private ClosingDocument _closingDocument;
-        public ClosingDocument ClosingDocument { get { var v = _closingDocument; return v ?? Interlocked.CompareExchange(ref _closingDocument, (v = new ClosingDocument()), null) ?? v; } set { _closingDocument = value; } }
+        public ClosingDocument ClosingDocument { get { return _closingDocument ?? (_closingDocument = new ClosingDocument()); } set { _closingDocument = value; } }
         private DirtyValue<int?> _collateralManagerScore;
         public int? CollateralManagerScore { get { return _collateralManagerScore; } set { _collateralManagerScore = value; } }
         private DirtyValue<decimal?> _combinedLtv;
@@ -81,35 +81,35 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _commitmentNumber;
         public string CommitmentNumber { get { return _commitmentNumber; } set { _commitmentNumber = value; } }
         private CommitmentTerms _commitmentTerms;
-        public CommitmentTerms CommitmentTerms { get { var v = _commitmentTerms; return v ?? Interlocked.CompareExchange(ref _commitmentTerms, (v = new CommitmentTerms()), null) ?? v; } set { _commitmentTerms = value; } }
+        public CommitmentTerms CommitmentTerms { get { return _commitmentTerms ?? (_commitmentTerms = new CommitmentTerms()); } set { _commitmentTerms = value; } }
         private DirtyList<ComplianceTestLog> _complianceTestLogs;
-        public IList<ComplianceTestLog> ComplianceTestLogs { get { var v = _complianceTestLogs; return v ?? Interlocked.CompareExchange(ref _complianceTestLogs, (v = new DirtyList<ComplianceTestLog>()), null) ?? v; } set { _complianceTestLogs = new DirtyList<ComplianceTestLog>(value); } }
+        public IList<ComplianceTestLog> ComplianceTestLogs { get { return _complianceTestLogs ?? (_complianceTestLogs = new DirtyList<ComplianceTestLog>()); } set { _complianceTestLogs = new DirtyList<ComplianceTestLog>(value); } }
         private DirtyValue<string> _conformingJumbo;
         public string ConformingJumbo { get { return _conformingJumbo; } set { _conformingJumbo = value; } }
         private ConstructionManagement _constructionManagement;
-        public ConstructionManagement ConstructionManagement { get { var v = _constructionManagement; return v ?? Interlocked.CompareExchange(ref _constructionManagement, (v = new ConstructionManagement()), null) ?? v; } set { _constructionManagement = value; } }
+        public ConstructionManagement ConstructionManagement { get { return _constructionManagement ?? (_constructionManagement = new ConstructionManagement()); } set { _constructionManagement = value; } }
         private DirtyValue<string> _consumerConnectSiteID;
         public string ConsumerConnectSiteID { get { return _consumerConnectSiteID; } set { _consumerConnectSiteID = value; } }
         private DirtyList<Contact> _contacts;
-        public IList<Contact> Contacts { get { var v = _contacts; return v ?? Interlocked.CompareExchange(ref _contacts, (v = new DirtyList<Contact>()), null) ?? v; } set { _contacts = new DirtyList<Contact>(value); } }
+        public IList<Contact> Contacts { get { return _contacts ?? (_contacts = new DirtyList<Contact>()); } set { _contacts = new DirtyList<Contact>(value); } }
         private DirtyValue<bool?> _contactUpdatedIndicator;
         public bool? ContactUpdatedIndicator { get { return _contactUpdatedIndicator; } set { _contactUpdatedIndicator = value; } }
         private DirtyValue<decimal?> _contractSellerCreditAmount;
         public decimal? ContractSellerCreditAmount { get { return _contractSellerCreditAmount; } set { _contractSellerCreditAmount = value; } }
         private DirtyList<ConversationLog> _conversationLogs;
-        public IList<ConversationLog> ConversationLogs { get { var v = _conversationLogs; return v ?? Interlocked.CompareExchange(ref _conversationLogs, (v = new DirtyList<ConversationLog>()), null) ?? v; } set { _conversationLogs = new DirtyList<ConversationLog>(value); } }
+        public IList<ConversationLog> ConversationLogs { get { return _conversationLogs ?? (_conversationLogs = new DirtyList<ConversationLog>()); } set { _conversationLogs = new DirtyList<ConversationLog>(value); } }
         private DirtyValue<bool?> _copyBrokerToLenderIndicator;
         public bool? CopyBrokerToLenderIndicator { get { return _copyBrokerToLenderIndicator; } set { _copyBrokerToLenderIndicator = value; } }
         private DirtyValue<string> _copyLoanNumLenderCaseNum;
         public string CopyLoanNumLenderCaseNum { get { return _copyLoanNumLenderCaseNum; } set { _copyLoanNumLenderCaseNum = value; } }
         private Correspondent _correspondent;
-        public Correspondent Correspondent { get { var v = _correspondent; return v ?? Interlocked.CompareExchange(ref _correspondent, (v = new Correspondent()), null) ?? v; } set { _correspondent = value; } }
+        public Correspondent Correspondent { get { return _correspondent ?? (_correspondent = new Correspondent()); } set { _correspondent = value; } }
         private DirtyValue<string> _creditScoreToUse;
         public string CreditScoreToUse { get { return _creditScoreToUse; } set { _creditScoreToUse = value; } }
         private DirtyList<CrmLog> _crmLogs;
-        public IList<CrmLog> CrmLogs { get { var v = _crmLogs; return v ?? Interlocked.CompareExchange(ref _crmLogs, (v = new DirtyList<CrmLog>()), null) ?? v; } set { _crmLogs = new DirtyList<CrmLog>(value); } }
+        public IList<CrmLog> CrmLogs { get { return _crmLogs ?? (_crmLogs = new DirtyList<CrmLog>()); } set { _crmLogs = new DirtyList<CrmLog>(value); } }
         private Application _currentApplication;
-        public Application CurrentApplication { get { var v = _currentApplication; return v ?? Interlocked.CompareExchange(ref _currentApplication, (v = new Application()), null) ?? v; } set { _currentApplication = value; } }
+        public Application CurrentApplication { get { return _currentApplication ?? (_currentApplication = new Application()); } set { _currentApplication = value; } }
         private DirtyValue<int?> _currentApplicationIndex;
         public int? CurrentApplicationIndex { get { return _currentApplicationIndex; } set { _currentApplicationIndex = value; } }
         private DirtyValue<bool?> _currentApplicationIsPrimary;
@@ -117,11 +117,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _currentFirstMortgageHolderType;
         public string CurrentFirstMortgageHolderType { get { return _currentFirstMortgageHolderType; } set { _currentFirstMortgageHolderType = value; } }
         private DirtyList<CustomField> _customFields;
-        public IList<CustomField> CustomFields { get { var v = _customFields; return v ?? Interlocked.CompareExchange(ref _customFields, (v = new DirtyList<CustomField>()), null) ?? v; } set { _customFields = new DirtyList<CustomField>(value); } }
+        public IList<CustomField> CustomFields { get { return _customFields ?? (_customFields = new DirtyList<CustomField>()); } set { _customFields = new DirtyList<CustomField>(value); } }
         private CustomModelFields _customModelFields;
-        public CustomModelFields CustomModelFields { get { var v = _customModelFields; return v ?? Interlocked.CompareExchange(ref _customModelFields, (v = new CustomModelFields()), null) ?? v; } set { _customModelFields = value; } }
+        public CustomModelFields CustomModelFields { get { return _customModelFields ?? (_customModelFields = new CustomModelFields()); } set { _customModelFields = value; } }
         private DirtyList<DataTracLog> _dataTracLogs;
-        public IList<DataTracLog> DataTracLogs { get { var v = _dataTracLogs; return v ?? Interlocked.CompareExchange(ref _dataTracLogs, (v = new DirtyList<DataTracLog>()), null) ?? v; } set { _dataTracLogs = new DirtyList<DataTracLog>(value); } }
+        public IList<DataTracLog> DataTracLogs { get { return _dataTracLogs ?? (_dataTracLogs = new DirtyList<DataTracLog>()); } set { _dataTracLogs = new DirtyList<DataTracLog>(value); } }
         private DirtyValue<bool?> _dBIndicator;
         public bool? DBIndicator { get { return _dBIndicator; } set { _dBIndicator = value; } }
         private DirtyValue<bool?> _deductOverwireAmountIndicator;
@@ -131,39 +131,39 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _disableKeyPricingAlert;
         public bool? DisableKeyPricingAlert { get { return _disableKeyPricingAlert; } set { _disableKeyPricingAlert = value; } }
         private DisclosureNotices _disclosureNotices;
-        public DisclosureNotices DisclosureNotices { get { var v = _disclosureNotices; return v ?? Interlocked.CompareExchange(ref _disclosureNotices, (v = new DisclosureNotices()), null) ?? v; } set { _disclosureNotices = value; } }
+        public DisclosureNotices DisclosureNotices { get { return _disclosureNotices ?? (_disclosureNotices = new DisclosureNotices()); } set { _disclosureNotices = value; } }
         private DirtyList<DisclosureTracking2015Log> _disclosureTracking2015Logs;
-        public IList<DisclosureTracking2015Log> DisclosureTracking2015Logs { get { var v = _disclosureTracking2015Logs; return v ?? Interlocked.CompareExchange(ref _disclosureTracking2015Logs, (v = new DirtyList<DisclosureTracking2015Log>()), null) ?? v; } set { _disclosureTracking2015Logs = new DirtyList<DisclosureTracking2015Log>(value); } }
+        public IList<DisclosureTracking2015Log> DisclosureTracking2015Logs { get { return _disclosureTracking2015Logs ?? (_disclosureTracking2015Logs = new DirtyList<DisclosureTracking2015Log>()); } set { _disclosureTracking2015Logs = new DirtyList<DisclosureTracking2015Log>(value); } }
         private DirtyList<DisclosureTrackingLog> _disclosureTrackingLogs;
-        public IList<DisclosureTrackingLog> DisclosureTrackingLogs { get { var v = _disclosureTrackingLogs; return v ?? Interlocked.CompareExchange(ref _disclosureTrackingLogs, (v = new DirtyList<DisclosureTrackingLog>()), null) ?? v; } set { _disclosureTrackingLogs = new DirtyList<DisclosureTrackingLog>(value); } }
+        public IList<DisclosureTrackingLog> DisclosureTrackingLogs { get { return _disclosureTrackingLogs ?? (_disclosureTrackingLogs = new DirtyList<DisclosureTrackingLog>()); } set { _disclosureTrackingLogs = new DirtyList<DisclosureTrackingLog>(value); } }
         private DirtyValue<decimal?> _discountPoint;
         public decimal? DiscountPoint { get { return _discountPoint; } set { _discountPoint = value; } }
         private DirtyValue<string> _docEngine;
         public string DocEngine { get { return _docEngine; } set { _docEngine = value; } }
         private DirtyList<DocumentLog> _documentLogs;
-        public IList<DocumentLog> DocumentLogs { get { var v = _documentLogs; return v ?? Interlocked.CompareExchange(ref _documentLogs, (v = new DirtyList<DocumentLog>()), null) ?? v; } set { _documentLogs = new DirtyList<DocumentLog>(value); } }
+        public IList<DocumentLog> DocumentLogs { get { return _documentLogs ?? (_documentLogs = new DirtyList<DocumentLog>()); } set { _documentLogs = new DirtyList<DocumentLog>(value); } }
         private DirtyValue<string> _doNotCheckEmail;
         public string DoNotCheckEmail { get { return _doNotCheckEmail; } set { _doNotCheckEmail = value; } }
         private DirtyValue<bool?> _doNotPrintCompensationFees;
         public bool? DoNotPrintCompensationFees { get { return _doNotPrintCompensationFees; } set { _doNotPrintCompensationFees = value; } }
         private DirtyList<DownloadLog> _downloadLogs;
-        public IList<DownloadLog> DownloadLogs { get { var v = _downloadLogs; return v ?? Interlocked.CompareExchange(ref _downloadLogs, (v = new DirtyList<DownloadLog>()), null) ?? v; } set { _downloadLogs = new DirtyList<DownloadLog>(value); } }
+        public IList<DownloadLog> DownloadLogs { get { return _downloadLogs ?? (_downloadLogs = new DirtyList<DownloadLog>()); } set { _downloadLogs = new DirtyList<DownloadLog>(value); } }
         private DownPayment _downPayment;
-        public DownPayment DownPayment { get { var v = _downPayment; return v ?? Interlocked.CompareExchange(ref _downPayment, (v = new DownPayment()), null) ?? v; } set { _downPayment = value; } }
+        public DownPayment DownPayment { get { return _downPayment ?? (_downPayment = new DownPayment()); } set { _downPayment = value; } }
         private DirtyValue<decimal?> _downPaymentPercent;
         public decimal? DownPaymentPercent { get { return _downPaymentPercent; } set { _downPaymentPercent = value; } }
         private DirtyList<EdmLog> _edmLogs;
-        public IList<EdmLog> EdmLogs { get { var v = _edmLogs; return v ?? Interlocked.CompareExchange(ref _edmLogs, (v = new DirtyList<EdmLog>()), null) ?? v; } set { _edmLogs = new DirtyList<EdmLog>(value); } }
+        public IList<EdmLog> EdmLogs { get { return _edmLogs ?? (_edmLogs = new DirtyList<EdmLog>()); } set { _edmLogs = new DirtyList<EdmLog>(value); } }
         //private ElliUCDDetail _elliUCDFields;
-        //public ElliUCDDetail ElliUCDFields { get { var v = _elliUCDFields; return v ?? Interlocked.CompareExchange(ref _elliUCDFields, (v = new ElliUCDDetail()), null) ?? v; } set { _elliUCDFields = value; } }
+        //public ElliUCDDetail ElliUCDFields { get { return _elliUCDFields ?? (_elliUCDFields = new ElliUCDDetail()); } set { _elliUCDFields = value; } }
         private DirtyList<EmailTriggerLog> _emailTriggerLogs;
-        public IList<EmailTriggerLog> EmailTriggerLogs { get { var v = _emailTriggerLogs; return v ?? Interlocked.CompareExchange(ref _emailTriggerLogs, (v = new DirtyList<EmailTriggerLog>()), null) ?? v; } set { _emailTriggerLogs = new DirtyList<EmailTriggerLog>(value); } }
+        public IList<EmailTriggerLog> EmailTriggerLogs { get { return _emailTriggerLogs ?? (_emailTriggerLogs = new DirtyList<EmailTriggerLog>()); } set { _emailTriggerLogs = new DirtyList<EmailTriggerLog>(value); } }
         private EmDocument _emDocument;
-        public EmDocument EmDocument { get { var v = _emDocument; return v ?? Interlocked.CompareExchange(ref _emDocument, (v = new EmDocument()), null) ?? v; } set { _emDocument = value; } }
+        public EmDocument EmDocument { get { return _emDocument ?? (_emDocument = new EmDocument()); } set { _emDocument = value; } }
         private EmDocumentInvestor _emDocumentInvestor;
-        public EmDocumentInvestor EmDocumentInvestor { get { var v = _emDocumentInvestor; return v ?? Interlocked.CompareExchange(ref _emDocumentInvestor, (v = new EmDocumentInvestor()), null) ?? v; } set { _emDocumentInvestor = value; } }
+        public EmDocumentInvestor EmDocumentInvestor { get { return _emDocumentInvestor ?? (_emDocumentInvestor = new EmDocumentInvestor()); } set { _emDocumentInvestor = value; } }
         private EmDocumentLender _emDocumentLender;
-        public EmDocumentLender EmDocumentLender { get { var v = _emDocumentLender; return v ?? Interlocked.CompareExchange(ref _emDocumentLender, (v = new EmDocumentLender()), null) ?? v; } set { _emDocumentLender = value; } }
+        public EmDocumentLender EmDocumentLender { get { return _emDocumentLender ?? (_emDocumentLender = new EmDocumentLender()); } set { _emDocumentLender = value; } }
         private DirtyValue<string> _emXmlVersionId;
         public string EmXmlVersionId { get { return _emXmlVersionId; } set { _emXmlVersionId = value; } }
         private DirtyValue<string> _encompassId;
@@ -181,17 +181,17 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _exportLoanNumber;
         public string ExportLoanNumber { get { return _exportLoanNumber; } set { _exportLoanNumber = value; } }
         private FannieMae _fannieMae;
-        public FannieMae FannieMae { get { var v = _fannieMae; return v ?? Interlocked.CompareExchange(ref _fannieMae, (v = new FannieMae()), null) ?? v; } set { _fannieMae = value; } }
+        public FannieMae FannieMae { get { return _fannieMae ?? (_fannieMae = new FannieMae()); } set { _fannieMae = value; } }
         private DirtyList<Fee> _fees;
-        public IList<Fee> Fees { get { var v = _fees; return v ?? Interlocked.CompareExchange(ref _fees, (v = new DirtyList<Fee>()), null) ?? v; } set { _fees = new DirtyList<Fee>(value); } }
+        public IList<Fee> Fees { get { return _fees ?? (_fees = new DirtyList<Fee>()); } set { _fees = new DirtyList<Fee>(value); } }
         private DirtyValue<decimal?> _fhaMiPremiumRefundAmount;
         public decimal? FhaMiPremiumRefundAmount { get { return _fhaMiPremiumRefundAmount; } set { _fhaMiPremiumRefundAmount = value; } }
         private FhaVaLoan _fhaVaLoan;
-        public FhaVaLoan FhaVaLoan { get { var v = _fhaVaLoan; return v ?? Interlocked.CompareExchange(ref _fhaVaLoan, (v = new FhaVaLoan()), null) ?? v; } set { _fhaVaLoan = value; } }
+        public FhaVaLoan FhaVaLoan { get { return _fhaVaLoan ?? (_fhaVaLoan = new FhaVaLoan()); } set { _fhaVaLoan = value; } }
         private DirtyValue<string> _fHAVALoanOriginatorIdentifier;
         public string FHAVALoanOriginatorIdentifier { get { return _fHAVALoanOriginatorIdentifier; } set { _fHAVALoanOriginatorIdentifier = value; } }
         private DirtyList<FieldLockData> _fieldLockData;
-        public IList<FieldLockData> FieldLockData { get { var v = _fieldLockData; return v ?? Interlocked.CompareExchange(ref _fieldLockData, (v = new DirtyList<FieldLockData>()), null) ?? v; } set { _fieldLockData = new DirtyList<FieldLockData>(value); } }
+        public IList<FieldLockData> FieldLockData { get { return _fieldLockData ?? (_fieldLockData = new DirtyList<FieldLockData>()); } set { _fieldLockData = new DirtyList<FieldLockData>(value); } }
         private DirtyValue<decimal?> _firstAdjustmentMinimum;
         public decimal? FirstAdjustmentMinimum { get { return _firstAdjustmentMinimum; } set { _firstAdjustmentMinimum = value; } }
         private DirtyValue<decimal?> _firstSubordinateLienAmount;
@@ -205,21 +205,21 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _fnmNeighborsMortgageEligibilityIndicator;
         public bool? FnmNeighborsMortgageEligibilityIndicator { get { return _fnmNeighborsMortgageEligibilityIndicator; } set { _fnmNeighborsMortgageEligibilityIndicator = value; } }
         private DirtyList<Form> _forms;
-        public IList<Form> Forms { get { var v = _forms; return v ?? Interlocked.CompareExchange(ref _forms, (v = new DirtyList<Form>()), null) ?? v; } set { _forms = new DirtyList<Form>(value); } }
+        public IList<Form> Forms { get { return _forms ?? (_forms = new DirtyList<Form>()); } set { _forms = new DirtyList<Form>(value); } }
         private DirtyValue<int?> _fraudScore;
         public int? FraudScore { get { return _fraudScore; } set { _fraudScore = value; } }
         private FreddieMac _freddieMac;
-        public FreddieMac FreddieMac { get { var v = _freddieMac; return v ?? Interlocked.CompareExchange(ref _freddieMac, (v = new FreddieMac()), null) ?? v; } set { _freddieMac = value; } }
+        public FreddieMac FreddieMac { get { return _freddieMac ?? (_freddieMac = new FreddieMac()); } set { _freddieMac = value; } }
         private Funding _funding;
-        public Funding Funding { get { var v = _funding; return v ?? Interlocked.CompareExchange(ref _funding, (v = new Funding()), null) ?? v; } set { _funding = value; } }
+        public Funding Funding { get { return _funding ?? (_funding = new Funding()); } set { _funding = value; } }
         private DirtyValue<string> _fundingDeductionList;
         public string FundingDeductionList { get { return _fundingDeductionList; } set { _fundingDeductionList = value; } }
         private DirtyValue<string> _fundingFeeList;
         public string FundingFeeList { get { return _fundingFeeList; } set { _fundingFeeList = value; } }
         private DirtyList<FundingFee> _fundingFees;
-        public IList<FundingFee> FundingFees { get { var v = _fundingFees; return v ?? Interlocked.CompareExchange(ref _fundingFees, (v = new DirtyList<FundingFee>()), null) ?? v; } set { _fundingFees = new DirtyList<FundingFee>(value); } }
+        public IList<FundingFee> FundingFees { get { return _fundingFees ?? (_fundingFees = new DirtyList<FundingFee>()); } set { _fundingFees = new DirtyList<FundingFee>(value); } }
         private Gfe _gfe;
-        public Gfe Gfe { get { var v = _gfe; return v ?? Interlocked.CompareExchange(ref _gfe, (v = new Gfe()), null) ?? v; } set { _gfe = value; } }
+        public Gfe Gfe { get { return _gfe ?? (_gfe = new Gfe()); } set { _gfe = value; } }
         private DirtyValue<string> _governmentLoanLenderIdentifier;
         public string GovernmentLoanLenderIdentifier { get { return _governmentLoanLenderIdentifier; } set { _governmentLoanLenderIdentifier = value; } }
         private DirtyValue<string> _governmentLoanSponsorIdentifier;
@@ -233,9 +233,9 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _helocTeaserRate;
         public decimal? HelocTeaserRate { get { return _helocTeaserRate; } set { _helocTeaserRate = value; } }
         private Hmda _hmda;
-        public Hmda Hmda { get { var v = _hmda; return v ?? Interlocked.CompareExchange(ref _hmda, (v = new Hmda()), null) ?? v; } set { _hmda = value; } }
+        public Hmda Hmda { get { return _hmda ?? (_hmda = new Hmda()); } set { _hmda = value; } }
         private DirtyList<HomeCounselingProvider> _homeCounselingProviders;
-        public IList<HomeCounselingProvider> HomeCounselingProviders { get { var v = _homeCounselingProviders; return v ?? Interlocked.CompareExchange(ref _homeCounselingProviders, (v = new DirtyList<HomeCounselingProvider>()), null) ?? v; } set { _homeCounselingProviders = new DirtyList<HomeCounselingProvider>(value); } }
+        public IList<HomeCounselingProvider> HomeCounselingProviders { get { return _homeCounselingProviders ?? (_homeCounselingProviders = new DirtyList<HomeCounselingProvider>()); } set { _homeCounselingProviders = new DirtyList<HomeCounselingProvider>(value); } }
         private DirtyValue<string> _homeCounselingProvidersDistance;
         public string HomeCounselingProvidersDistance { get { return _homeCounselingProvidersDistance; } set { _homeCounselingProvidersDistance = value; } }
         private DirtyValue<string> _homeCounselingProvidersLanguageNames;
@@ -245,15 +245,15 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _householdSizeCount;
         public int? HouseholdSizeCount { get { return _householdSizeCount; } set { _householdSizeCount = value; } }
         private DirtyList<HtmlEmailLog> _htmlEmailLogs;
-        public IList<HtmlEmailLog> HtmlEmailLogs { get { var v = _htmlEmailLogs; return v ?? Interlocked.CompareExchange(ref _htmlEmailLogs, (v = new DirtyList<HtmlEmailLog>()), null) ?? v; } set { _htmlEmailLogs = new DirtyList<HtmlEmailLog>(value); } }
+        public IList<HtmlEmailLog> HtmlEmailLogs { get { return _htmlEmailLogs ?? (_htmlEmailLogs = new DirtyList<HtmlEmailLog>()); } set { _htmlEmailLogs = new DirtyList<HtmlEmailLog>(value); } }
         private Hud1Es _hud1Es;
-        public Hud1Es Hud1Es { get { var v = _hud1Es; return v ?? Interlocked.CompareExchange(ref _hud1Es, (v = new Hud1Es()), null) ?? v; } set { _hud1Es = value; } }
+        public Hud1Es Hud1Es { get { return _hud1Es ?? (_hud1Es = new Hud1Es()); } set { _hud1Es = value; } }
         private DirtyValue<decimal?> _hudIncomeLimitAdjustmentFactor;
         public decimal? HudIncomeLimitAdjustmentFactor { get { return _hudIncomeLimitAdjustmentFactor; } set { _hudIncomeLimitAdjustmentFactor = value; } }
         private DirtyValue<decimal?> _hudLendingIncomeLimitAmount;
         public decimal? HudLendingIncomeLimitAmount { get { return _hudLendingIncomeLimitAmount; } set { _hudLendingIncomeLimitAmount = value; } }
         private HudLoanData _hudLoanData;
-        public HudLoanData HudLoanData { get { var v = _hudLoanData; return v ?? Interlocked.CompareExchange(ref _hudLoanData, (v = new HudLoanData()), null) ?? v; } set { _hudLoanData = value; } }
+        public HudLoanData HudLoanData { get { return _hudLoanData ?? (_hudLoanData = new HudLoanData()); } set { _hudLoanData = value; } }
         private DirtyValue<decimal?> _hudMedianIncomeAmount;
         public decimal? HudMedianIncomeAmount { get { return _hudMedianIncomeAmount; } set { _hudMedianIncomeAmount = value; } }
         private DirtyValue<string> _id;
@@ -265,7 +265,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _insuranceAuthorizationIndicator;
         public string InsuranceAuthorizationIndicator { get { return _insuranceAuthorizationIndicator; } set { _insuranceAuthorizationIndicator = value; } }
         private InterimServicing _interimServicing;
-        public InterimServicing InterimServicing { get { var v = _interimServicing; return v ?? Interlocked.CompareExchange(ref _interimServicing, (v = new InterimServicing()), null) ?? v; } set { _interimServicing = value; } }
+        public InterimServicing InterimServicing { get { return _interimServicing ?? (_interimServicing = new InterimServicing()); } set { _interimServicing = value; } }
         private DirtyValue<DateTime?> _interviewerApplicationSignedDate;
         public DateTime? InterviewerApplicationSignedDate { get { return _interviewerApplicationSignedDate; } set { _interviewerApplicationSignedDate = value; } }
         private DirtyValue<string> _interviewerEmail;
@@ -317,7 +317,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _linkId;
         public string LinkId { get { return _linkId; } set { _linkId = value; } }
         private DirtyList<LoanActionLog> _loanActionLogs;
-        public IList<LoanActionLog> LoanActionLogs { get { var v = _loanActionLogs; return v ?? Interlocked.CompareExchange(ref _loanActionLogs, (v = new DirtyList<LoanActionLog>()), null) ?? v; } set { _loanActionLogs = new DirtyList<LoanActionLog>(value); } }
+        public IList<LoanActionLog> LoanActionLogs { get { return _loanActionLogs ?? (_loanActionLogs = new DirtyList<LoanActionLog>()); } set { _loanActionLogs = new DirtyList<LoanActionLog>(value); } }
         private DirtyValue<int?> _loanAmortizationTermMonths;
         public int? LoanAmortizationTermMonths { get { return _loanAmortizationTermMonths; } set { _loanAmortizationTermMonths = value; } }
         private DirtyValue<string> _loanAmortizationType;
@@ -335,17 +335,17 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _loanNumber;
         public string LoanNumber { get { return _loanNumber; } set { _loanNumber = value; } }
         private LoanProductData _loanProductData;
-        public LoanProductData LoanProductData { get { var v = _loanProductData; return v ?? Interlocked.CompareExchange(ref _loanProductData, (v = new LoanProductData()), null) ?? v; } set { _loanProductData = value; } }
+        public LoanProductData LoanProductData { get { return _loanProductData ?? (_loanProductData = new LoanProductData()); } set { _loanProductData = value; } }
         private DirtyValue<string> _loanProgramName;
         public string LoanProgramName { get { return _loanProgramName; } set { _loanProgramName = value; } }
         private DirtyList<LoanProgram> _loanPrograms;
-        public IList<LoanProgram> LoanPrograms { get { var v = _loanPrograms; return v ?? Interlocked.CompareExchange(ref _loanPrograms, (v = new DirtyList<LoanProgram>()), null) ?? v; } set { _loanPrograms = new DirtyList<LoanProgram>(value); } }
+        public IList<LoanProgram> LoanPrograms { get { return _loanPrograms ?? (_loanPrograms = new DirtyList<LoanProgram>()); } set { _loanPrograms = new DirtyList<LoanProgram>(value); } }
         private DirtyValue<string> _loanPurposeOfRefinanceType;
         public string LoanPurposeOfRefinanceType { get { return _loanPurposeOfRefinanceType; } set { _loanPurposeOfRefinanceType = value; } }
         private DirtyValue<string> _loanSource;
         public string LoanSource { get { return _loanSource; } set { _loanSource = value; } }
         private LoanSubmission _loanSubmission;
-        public LoanSubmission LoanSubmission { get { var v = _loanSubmission; return v ?? Interlocked.CompareExchange(ref _loanSubmission, (v = new LoanSubmission()), null) ?? v; } set { _loanSubmission = value; } }
+        public LoanSubmission LoanSubmission { get { return _loanSubmission ?? (_loanSubmission = new LoanSubmission()); } set { _loanSubmission = value; } }
         private DirtyValue<decimal?> _loanTotalProposedMonthlyMaintenanceAmount;
         public decimal? LoanTotalProposedMonthlyMaintenanceAmount { get { return _loanTotalProposedMonthlyMaintenanceAmount; } set { _loanTotalProposedMonthlyMaintenanceAmount = value; } }
         private DirtyValue<decimal?> _loanTotalProposedMonthlyUtilitiesAmount;
@@ -361,15 +361,15 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _loanVersionId;
         public int? LoanVersionId { get { return _loanVersionId; } set { _loanVersionId = value; } }
         private DirtyList<LockConfirmLog> _lockConfirmLogs;
-        public IList<LockConfirmLog> LockConfirmLogs { get { var v = _lockConfirmLogs; return v ?? Interlocked.CompareExchange(ref _lockConfirmLogs, (v = new DirtyList<LockConfirmLog>()), null) ?? v; } set { _lockConfirmLogs = new DirtyList<LockConfirmLog>(value); } }
+        public IList<LockConfirmLog> LockConfirmLogs { get { return _lockConfirmLogs ?? (_lockConfirmLogs = new DirtyList<LockConfirmLog>()); } set { _lockConfirmLogs = new DirtyList<LockConfirmLog>(value); } }
         private DirtyList<LockDenialLog> _lockDenialLogs;
-        public IList<LockDenialLog> LockDenialLogs { get { var v = _lockDenialLogs; return v ?? Interlocked.CompareExchange(ref _lockDenialLogs, (v = new DirtyList<LockDenialLog>()), null) ?? v; } set { _lockDenialLogs = new DirtyList<LockDenialLog>(value); } }
+        public IList<LockDenialLog> LockDenialLogs { get { return _lockDenialLogs ?? (_lockDenialLogs = new DirtyList<LockDenialLog>()); } set { _lockDenialLogs = new DirtyList<LockDenialLog>(value); } }
         private DirtyList<LockRequestLog> _lockRequestLogs;
-        public IList<LockRequestLog> LockRequestLogs { get { var v = _lockRequestLogs; return v ?? Interlocked.CompareExchange(ref _lockRequestLogs, (v = new DirtyList<LockRequestLog>()), null) ?? v; } set { _lockRequestLogs = new DirtyList<LockRequestLog>(value); } }
+        public IList<LockRequestLog> LockRequestLogs { get { return _lockRequestLogs ?? (_lockRequestLogs = new DirtyList<LockRequestLog>()); } set { _lockRequestLogs = new DirtyList<LockRequestLog>(value); } }
         private ElliLOCompensation _lOCompensation;
-        public ElliLOCompensation LOCompensation { get { var v = _lOCompensation; return v ?? Interlocked.CompareExchange(ref _lOCompensation, (v = new ElliLOCompensation()), null) ?? v; } set { _lOCompensation = value; } }
+        public ElliLOCompensation LOCompensation { get { return _lOCompensation ?? (_lOCompensation = new ElliLOCompensation()); } set { _lOCompensation = value; } }
         private DirtyList<LogEntryLog> _logEntryLogs;
-        public IList<LogEntryLog> LogEntryLogs { get { var v = _logEntryLogs; return v ?? Interlocked.CompareExchange(ref _logEntryLogs, (v = new DirtyList<LogEntryLog>()), null) ?? v; } set { _logEntryLogs = new DirtyList<LogEntryLog>(value); } }
+        public IList<LogEntryLog> LogEntryLogs { get { return _logEntryLogs ?? (_logEntryLogs = new DirtyList<LogEntryLog>()); } set { _logEntryLogs = new DirtyList<LogEntryLog>(value); } }
         private DirtyValue<decimal?> _ltv;
         public decimal? Ltv { get { return _ltv; } set { _ltv = value; } }
         private DirtyValue<decimal?> _ltvPropertyValue;
@@ -383,7 +383,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _maxFrontRatio;
         public decimal? MaxFrontRatio { get { return _maxFrontRatio; } set { _maxFrontRatio = value; } }
         private Mcaw _mcaw;
-        public Mcaw Mcaw { get { var v = _mcaw; return v ?? Interlocked.CompareExchange(ref _mcaw, (v = new Mcaw()), null) ?? v; } set { _mcaw = value; } }
+        public Mcaw Mcaw { get { return _mcaw ?? (_mcaw = new Mcaw()); } set { _mcaw = value; } }
         private DirtyValue<string> _mersNumber;
         public string MersNumber { get { return _mersNumber; } set { _mersNumber = value; } }
         private DirtyValue<DateTime?> _mersNumberRegistrationDate;
@@ -413,13 +413,13 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _milestoneFileStartedDate;
         public DateTime? MilestoneFileStartedDate { get { return _milestoneFileStartedDate; } set { _milestoneFileStartedDate = value; } }
         private DirtyList<MilestoneFreeRoleLog> _milestoneFreeRoleLogs;
-        public IList<MilestoneFreeRoleLog> MilestoneFreeRoleLogs { get { var v = _milestoneFreeRoleLogs; return v ?? Interlocked.CompareExchange(ref _milestoneFreeRoleLogs, (v = new DirtyList<MilestoneFreeRoleLog>()), null) ?? v; } set { _milestoneFreeRoleLogs = new DirtyList<MilestoneFreeRoleLog>(value); } }
+        public IList<MilestoneFreeRoleLog> MilestoneFreeRoleLogs { get { return _milestoneFreeRoleLogs ?? (_milestoneFreeRoleLogs = new DirtyList<MilestoneFreeRoleLog>()); } set { _milestoneFreeRoleLogs = new DirtyList<MilestoneFreeRoleLog>(value); } }
         private DirtyValue<DateTime?> _milestoneFundedDate;
         public DateTime? MilestoneFundedDate { get { return _milestoneFundedDate; } set { _milestoneFundedDate = value; } }
         private DirtyValue<DateTime?> _milestoneFundedDueDate;
         public DateTime? MilestoneFundedDueDate { get { return _milestoneFundedDueDate; } set { _milestoneFundedDueDate = value; } }
         private DirtyList<MilestoneLog> _milestoneLogs;
-        public IList<MilestoneLog> MilestoneLogs { get { var v = _milestoneLogs; return v ?? Interlocked.CompareExchange(ref _milestoneLogs, (v = new DirtyList<MilestoneLog>()), null) ?? v; } set { _milestoneLogs = new DirtyList<MilestoneLog>(value); } }
+        public IList<MilestoneLog> MilestoneLogs { get { return _milestoneLogs ?? (_milestoneLogs = new DirtyList<MilestoneLog>()); } set { _milestoneLogs = new DirtyList<MilestoneLog>(value); } }
         private DirtyValue<DateTime?> _milestoneProcessedDate;
         public DateTime? MilestoneProcessedDate { get { return _milestoneProcessedDate; } set { _milestoneProcessedDate = value; } }
         private DirtyValue<string> _milestoneStage;
@@ -429,15 +429,15 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _milestoneSubmittedDueDate;
         public DateTime? MilestoneSubmittedDueDate { get { return _milestoneSubmittedDueDate; } set { _milestoneSubmittedDueDate = value; } }
         private DirtyList<MilestoneTaskLog> _milestoneTaskLogs;
-        public IList<MilestoneTaskLog> MilestoneTaskLogs { get { var v = _milestoneTaskLogs; return v ?? Interlocked.CompareExchange(ref _milestoneTaskLogs, (v = new DirtyList<MilestoneTaskLog>()), null) ?? v; } set { _milestoneTaskLogs = new DirtyList<MilestoneTaskLog>(value); } }
+        public IList<MilestoneTaskLog> MilestoneTaskLogs { get { return _milestoneTaskLogs ?? (_milestoneTaskLogs = new DirtyList<MilestoneTaskLog>()); } set { _milestoneTaskLogs = new DirtyList<MilestoneTaskLog>(value); } }
         private DirtyList<MilestoneTemplateLog> _milestoneTemplateLogs;
-        public IList<MilestoneTemplateLog> MilestoneTemplateLogs { get { var v = _milestoneTemplateLogs; return v ?? Interlocked.CompareExchange(ref _milestoneTemplateLogs, (v = new DirtyList<MilestoneTemplateLog>()), null) ?? v; } set { _milestoneTemplateLogs = new DirtyList<MilestoneTemplateLog>(value); } }
+        public IList<MilestoneTemplateLog> MilestoneTemplateLogs { get { return _milestoneTemplateLogs ?? (_milestoneTemplateLogs = new DirtyList<MilestoneTemplateLog>()); } set { _milestoneTemplateLogs = new DirtyList<MilestoneTemplateLog>(value); } }
         private DirtyValue<decimal?> _mipBorrowerPaidInCashAmount;
         public decimal? MipBorrowerPaidInCashAmount { get { return _mipBorrowerPaidInCashAmount; } set { _mipBorrowerPaidInCashAmount = value; } }
         private DirtyValue<decimal?> _mipPaidInCashAmount;
         public decimal? MipPaidInCashAmount { get { return _mipPaidInCashAmount; } set { _mipPaidInCashAmount = value; } }
         private Miscellaneous _miscellaneous;
-        public Miscellaneous Miscellaneous { get { var v = _miscellaneous; return v ?? Interlocked.CompareExchange(ref _miscellaneous, (v = new Miscellaneous()), null) ?? v; } set { _miscellaneous = value; } }
+        public Miscellaneous Miscellaneous { get { return _miscellaneous ?? (_miscellaneous = new Miscellaneous()); } set { _miscellaneous = value; } }
         private DirtyValue<decimal?> _monthlyPIPaymentAmountForLE1andCD1;
         public decimal? MonthlyPIPaymentAmountForLE1andCD1 { get { return _monthlyPIPaymentAmountForLE1andCD1; } set { _monthlyPIPaymentAmountForLE1andCD1 = value; } }
         private DirtyValue<decimal?> _mortgageInsurancePremiumFHARefundAmount;
@@ -449,7 +449,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _msaIdentifier;
         public string MsaIdentifier { get { return _msaIdentifier; } set { _msaIdentifier = value; } }
         private NetTangibleBenefit _netTangibleBenefit;
-        public NetTangibleBenefit NetTangibleBenefit { get { var v = _netTangibleBenefit; return v ?? Interlocked.CompareExchange(ref _netTangibleBenefit, (v = new NetTangibleBenefit()), null) ?? v; } set { _netTangibleBenefit = value; } }
+        public NetTangibleBenefit NetTangibleBenefit { get { return _netTangibleBenefit ?? (_netTangibleBenefit = new NetTangibleBenefit()); } set { _netTangibleBenefit = value; } }
         private DirtyValue<decimal?> _newFirstMortgageAmount;
         public decimal? NewFirstMortgageAmount { get { return _newFirstMortgageAmount; } set { _newFirstMortgageAmount = value; } }
         private DirtyValue<string> _nmlsLoanOriginatorId;
@@ -457,7 +457,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _noClosingCostOption;
         public bool? NoClosingCostOption { get { return _noClosingCostOption; } set { _noClosingCostOption = value; } }
         //private DirtyList<NonVol> _nonVols;
-        //public IList<NonVol> NonVols { get { var v = _nonVols; return v ?? Interlocked.CompareExchange(ref _nonVols, (v = new DirtyList<NonVol>()), null) ?? v; } set { _nonVols = new DirtyList<NonVol>(value); } }
+        //public IList<NonVol> NonVols { get { return _nonVols ?? (_nonVols = new DirtyList<NonVol>()); } set { _nonVols = new DirtyList<NonVol>(value); } }
         private DirtyValue<bool?> _notRequiredForPurchaseSaleOrRefinance;
         public bool? NotRequiredForPurchaseSaleOrRefinance { get { return _notRequiredForPurchaseSaleOrRefinance; } set { _notRequiredForPurchaseSaleOrRefinance = value; } }
         private DirtyValue<bool?> _notRequiredForSettlementOfYourLoan;
@@ -497,23 +497,23 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _pmiIndicator;
         public bool? PmiIndicator { get { return _pmiIndicator; } set { _pmiIndicator = value; } }
         private DirtyList<PostClosingConditionLog> _postClosingConditionLogs;
-        public IList<PostClosingConditionLog> PostClosingConditionLogs { get { var v = _postClosingConditionLogs; return v ?? Interlocked.CompareExchange(ref _postClosingConditionLogs, (v = new DirtyList<PostClosingConditionLog>()), null) ?? v; } set { _postClosingConditionLogs = new DirtyList<PostClosingConditionLog>(value); } }
+        public IList<PostClosingConditionLog> PostClosingConditionLogs { get { return _postClosingConditionLogs ?? (_postClosingConditionLogs = new DirtyList<PostClosingConditionLog>()); } set { _postClosingConditionLogs = new DirtyList<PostClosingConditionLog>(value); } }
         private DirtyList<PreliminaryConditionLog> _preliminaryConditionLogs;
-        public IList<PreliminaryConditionLog> PreliminaryConditionLogs { get { var v = _preliminaryConditionLogs; return v ?? Interlocked.CompareExchange(ref _preliminaryConditionLogs, (v = new DirtyList<PreliminaryConditionLog>()), null) ?? v; } set { _preliminaryConditionLogs = new DirtyList<PreliminaryConditionLog>(value); } }
+        public IList<PreliminaryConditionLog> PreliminaryConditionLogs { get { return _preliminaryConditionLogs ?? (_preliminaryConditionLogs = new DirtyList<PreliminaryConditionLog>()); } set { _preliminaryConditionLogs = new DirtyList<PreliminaryConditionLog>(value); } }
         private Prequalification _prequalification;
-        public Prequalification Prequalification { get { var v = _prequalification; return v ?? Interlocked.CompareExchange(ref _prequalification, (v = new Prequalification()), null) ?? v; } set { _prequalification = value; } }
+        public Prequalification Prequalification { get { return _prequalification ?? (_prequalification = new Prequalification()); } set { _prequalification = value; } }
         private DirtyValue<decimal?> _principalAndInterestMonthlyPaymentAmount;
         public decimal? PrincipalAndInterestMonthlyPaymentAmount { get { return _principalAndInterestMonthlyPaymentAmount; } set { _principalAndInterestMonthlyPaymentAmount = value; } }
         private DirtyValue<string> _print2003Application;
         public string Print2003Application { get { return _print2003Application; } set { _print2003Application = value; } }
         private DirtyList<PrintLog> _printLogs;
-        public IList<PrintLog> PrintLogs { get { var v = _printLogs; return v ?? Interlocked.CompareExchange(ref _printLogs, (v = new DirtyList<PrintLog>()), null) ?? v; } set { _printLogs = new DirtyList<PrintLog>(value); } }
+        public IList<PrintLog> PrintLogs { get { return _printLogs ?? (_printLogs = new DirtyList<PrintLog>()); } set { _printLogs = new DirtyList<PrintLog>(value); } }
         private PrivacyPolicy _privacyPolicy;
-        public PrivacyPolicy PrivacyPolicy { get { var v = _privacyPolicy; return v ?? Interlocked.CompareExchange(ref _privacyPolicy, (v = new PrivacyPolicy()), null) ?? v; } set { _privacyPolicy = value; } }
+        public PrivacyPolicy PrivacyPolicy { get { return _privacyPolicy ?? (_privacyPolicy = new PrivacyPolicy()); } set { _privacyPolicy = value; } }
         private ProfitManagement _profitManagement;
-        public ProfitManagement ProfitManagement { get { var v = _profitManagement; return v ?? Interlocked.CompareExchange(ref _profitManagement, (v = new ProfitManagement()), null) ?? v; } set { _profitManagement = value; } }
+        public ProfitManagement ProfitManagement { get { return _profitManagement ?? (_profitManagement = new ProfitManagement()); } set { _profitManagement = value; } }
         private Property _property;
-        public Property Property { get { var v = _property; return v ?? Interlocked.CompareExchange(ref _property, (v = new Property()), null) ?? v; } set { _property = value; } }
+        public Property Property { get { return _property ?? (_property = new Property()); } set { _property = value; } }
         private DirtyValue<int?> _propertyAppraisedValueAmount;
         public int? PropertyAppraisedValueAmount { get { return _propertyAppraisedValueAmount; } set { _propertyAppraisedValueAmount = value; } }
         private DirtyValue<bool?> _propertyEnergyEfficientHomeIndicator;
@@ -539,11 +539,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _proposedRealEstateTaxesAmount;
         public string ProposedRealEstateTaxesAmount { get { return _proposedRealEstateTaxesAmount; } set { _proposedRealEstateTaxesAmount = value; } }
         private DirtyList<PurchaseCredit> _purchaseCredits;
-        public IList<PurchaseCredit> PurchaseCredits { get { var v = _purchaseCredits; return v ?? Interlocked.CompareExchange(ref _purchaseCredits, (v = new DirtyList<PurchaseCredit>()), null) ?? v; } set { _purchaseCredits = new DirtyList<PurchaseCredit>(value); } }
+        public IList<PurchaseCredit> PurchaseCredits { get { return _purchaseCredits ?? (_purchaseCredits = new DirtyList<PurchaseCredit>()); } set { _purchaseCredits = new DirtyList<PurchaseCredit>(value); } }
         private DirtyValue<decimal?> _purchasePriceAmount;
         public decimal? PurchasePriceAmount { get { return _purchasePriceAmount; } set { _purchasePriceAmount = value; } }
         private RateLock _rateLock;
-        public RateLock RateLock { get { var v = _rateLock; return v ?? Interlocked.CompareExchange(ref _rateLock, (v = new RateLock()), null) ?? v; } set { _rateLock = value; } }
+        public RateLock RateLock { get { return _rateLock ?? (_rateLock = new RateLock()); } set { _rateLock = value; } }
         private DirtyValue<string> _referralAddress;
         public string ReferralAddress { get { return _referralAddress; } set { _referralAddress = value; } }
         private DirtyValue<string> _referralCity;
@@ -559,11 +559,11 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _refinanceIncludingDebtsToBePaidOffAmount;
         public decimal? RefinanceIncludingDebtsToBePaidOffAmount { get { return _refinanceIncludingDebtsToBePaidOffAmount; } set { _refinanceIncludingDebtsToBePaidOffAmount = value; } }
         private DirtyList<RegistrationLog> _registrationLogs;
-        public IList<RegistrationLog> RegistrationLogs { get { var v = _registrationLogs; return v ?? Interlocked.CompareExchange(ref _registrationLogs, (v = new DirtyList<RegistrationLog>()), null) ?? v; } set { _registrationLogs = new DirtyList<RegistrationLog>(value); } }
+        public IList<RegistrationLog> RegistrationLogs { get { return _registrationLogs ?? (_registrationLogs = new DirtyList<RegistrationLog>()); } set { _registrationLogs = new DirtyList<RegistrationLog>(value); } }
         private RegulationZ _regulationZ;
-        public RegulationZ RegulationZ { get { var v = _regulationZ; return v ?? Interlocked.CompareExchange(ref _regulationZ, (v = new RegulationZ()), null) ?? v; } set { _regulationZ = value; } }
+        public RegulationZ RegulationZ { get { return _regulationZ ?? (_regulationZ = new RegulationZ()); } set { _regulationZ = value; } }
         private DirtyList<RemovedLogRecord> _removedLogRecords;
-        public IList<RemovedLogRecord> RemovedLogRecords { get { var v = _removedLogRecords; return v ?? Interlocked.CompareExchange(ref _removedLogRecords, (v = new DirtyList<RemovedLogRecord>()), null) ?? v; } set { _removedLogRecords = new DirtyList<RemovedLogRecord>(value); } }
+        public IList<RemovedLogRecord> RemovedLogRecords { get { return _removedLogRecords ?? (_removedLogRecords = new DirtyList<RemovedLogRecord>()); } set { _removedLogRecords = new DirtyList<RemovedLogRecord>(value); } }
         private DirtyValue<decimal?> _repurchaseCostAmount;
         public decimal? RepurchaseCostAmount { get { return _repurchaseCostAmount; } set { _repurchaseCostAmount = value; } }
         private DirtyValue<DateTime?> _repurchaseDate;
@@ -575,29 +575,29 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _secondSubordinateAmount;
         public decimal? SecondSubordinateAmount { get { return _secondSubordinateAmount; } set { _secondSubordinateAmount = value; } }
         private Section32 _section32;
-        public Section32 Section32 { get { var v = _section32; return v ?? Interlocked.CompareExchange(ref _section32, (v = new Section32()), null) ?? v; } set { _section32 = value; } }
+        public Section32 Section32 { get { return _section32 ?? (_section32 = new Section32()); } set { _section32 = value; } }
         private DirtyValue<string> _sectionOfActType;
         public string SectionOfActType { get { return _sectionOfActType; } set { _sectionOfActType = value; } }
         private SelectedHomeCounselingProvider _selectedHomeCounselingProvider;
-        public SelectedHomeCounselingProvider SelectedHomeCounselingProvider { get { var v = _selectedHomeCounselingProvider; return v ?? Interlocked.CompareExchange(ref _selectedHomeCounselingProvider, (v = new SelectedHomeCounselingProvider()), null) ?? v; } set { _selectedHomeCounselingProvider = value; } }
+        public SelectedHomeCounselingProvider SelectedHomeCounselingProvider { get { return _selectedHomeCounselingProvider ?? (_selectedHomeCounselingProvider = new SelectedHomeCounselingProvider()); } set { _selectedHomeCounselingProvider = value; } }
         private DirtyValue<decimal?> _sellerPaidClosingCostsAmount;
         public decimal? SellerPaidClosingCostsAmount { get { return _sellerPaidClosingCostsAmount; } set { _sellerPaidClosingCostsAmount = value; } }
         private DirtyValue<string> _serviceProviderAdditionalInfo;
         public string ServiceProviderAdditionalInfo { get { return _serviceProviderAdditionalInfo; } set { _serviceProviderAdditionalInfo = value; } }
         private DirtyList<ServiceProviderContact> _serviceProviderContacts;
-        public IList<ServiceProviderContact> ServiceProviderContacts { get { var v = _serviceProviderContacts; return v ?? Interlocked.CompareExchange(ref _serviceProviderContacts, (v = new DirtyList<ServiceProviderContact>()), null) ?? v; } set { _serviceProviderContacts = new DirtyList<ServiceProviderContact>(value); } }
+        public IList<ServiceProviderContact> ServiceProviderContacts { get { return _serviceProviderContacts ?? (_serviceProviderContacts = new DirtyList<ServiceProviderContact>()); } set { _serviceProviderContacts = new DirtyList<ServiceProviderContact>(value); } }
         private DirtyValue<DateTime?> _serviceProviderDateIssued;
         public DateTime? ServiceProviderDateIssued { get { return _serviceProviderDateIssued; } set { _serviceProviderDateIssued = value; } }
         private ServicingDisclosure _servicingDisclosure;
-        public ServicingDisclosure ServicingDisclosure { get { var v = _servicingDisclosure; return v ?? Interlocked.CompareExchange(ref _servicingDisclosure, (v = new ServicingDisclosure()), null) ?? v; } set { _servicingDisclosure = value; } }
+        public ServicingDisclosure ServicingDisclosure { get { return _servicingDisclosure ?? (_servicingDisclosure = new ServicingDisclosure()); } set { _servicingDisclosure = value; } }
         private DirtyValue<bool?> _setForSettlementServicesOfAnAttorney;
         public bool? SetForSettlementServicesOfAnAttorney { get { return _setForSettlementServicesOfAnAttorney; } set { _setForSettlementServicesOfAnAttorney = value; } }
         private DirtyValue<bool?> _setForTheSettlementServicesListed;
         public bool? SetForTheSettlementServicesListed { get { return _setForTheSettlementServicesListed; } set { _setForTheSettlementServicesListed = value; } }
         private DirtyList<SettlementServiceCharge> _settlementServiceCharges;
-        public IList<SettlementServiceCharge> SettlementServiceCharges { get { var v = _settlementServiceCharges; return v ?? Interlocked.CompareExchange(ref _settlementServiceCharges, (v = new DirtyList<SettlementServiceCharge>()), null) ?? v; } set { _settlementServiceCharges = new DirtyList<SettlementServiceCharge>(value); } }
+        public IList<SettlementServiceCharge> SettlementServiceCharges { get { return _settlementServiceCharges ?? (_settlementServiceCharges = new DirtyList<SettlementServiceCharge>()); } set { _settlementServiceCharges = new DirtyList<SettlementServiceCharge>(value); } }
         private Shipping _shipping;
-        public Shipping Shipping { get { var v = _shipping; return v ?? Interlocked.CompareExchange(ref _shipping, (v = new Shipping()), null) ?? v; } set { _shipping = value; } }
+        public Shipping Shipping { get { return _shipping ?? (_shipping = new Shipping()); } set { _shipping = value; } }
         private DirtyValue<bool?> _simpleRefinanceType;
         public bool? SimpleRefinanceType { get { return _simpleRefinanceType; } set { _simpleRefinanceType = value; } }
         private DirtyValue<decimal?> _startingAdjPrice;
@@ -605,11 +605,11 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _startingAdjRate;
         public decimal? StartingAdjRate { get { return _startingAdjRate; } set { _startingAdjRate = value; } }
         private StateDisclosure _stateDisclosure;
-        public StateDisclosure StateDisclosure { get { var v = _stateDisclosure; return v ?? Interlocked.CompareExchange(ref _stateDisclosure, (v = new StateDisclosure()), null) ?? v; } set { _stateDisclosure = value; } }
+        public StateDisclosure StateDisclosure { get { return _stateDisclosure ?? (_stateDisclosure = new StateDisclosure()); } set { _stateDisclosure = value; } }
         private StatementCreditDenial _statementCreditDenial;
-        public StatementCreditDenial StatementCreditDenial { get { var v = _statementCreditDenial; return v ?? Interlocked.CompareExchange(ref _statementCreditDenial, (v = new StatementCreditDenial()), null) ?? v; } set { _statementCreditDenial = value; } }
+        public StatementCreditDenial StatementCreditDenial { get { return _statementCreditDenial ?? (_statementCreditDenial = new StatementCreditDenial()); } set { _statementCreditDenial = value; } }
         private DirtyList<StatusOnlineLog> _statusOnlineLogs;
-        public IList<StatusOnlineLog> StatusOnlineLogs { get { var v = _statusOnlineLogs; return v ?? Interlocked.CompareExchange(ref _statusOnlineLogs, (v = new DirtyList<StatusOnlineLog>()), null) ?? v; } set { _statusOnlineLogs = new DirtyList<StatusOnlineLog>(value); } }
+        public IList<StatusOnlineLog> StatusOnlineLogs { get { return _statusOnlineLogs ?? (_statusOnlineLogs = new DirtyList<StatusOnlineLog>()); } set { _statusOnlineLogs = new DirtyList<StatusOnlineLog>(value); } }
         private DirtyValue<decimal?> _subjectPropertyGrossRentalIncomeAmount;
         public decimal? SubjectPropertyGrossRentalIncomeAmount { get { return _subjectPropertyGrossRentalIncomeAmount; } set { _subjectPropertyGrossRentalIncomeAmount = value; } }
         private DirtyValue<decimal?> _subjectPropertyOccupancyPercent;
@@ -643,21 +643,21 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalWireTransferAmount;
         public decimal? TotalWireTransferAmount { get { return _totalWireTransferAmount; } set { _totalWireTransferAmount = value; } }
         private TPO _tPO;
-        public TPO TPO { get { var v = _tPO; return v ?? Interlocked.CompareExchange(ref _tPO, (v = new TPO()), null) ?? v; } set { _tPO = value; } }
+        public TPO TPO { get { return _tPO ?? (_tPO = new TPO()); } set { _tPO = value; } }
         private TQL _tQL;
-        public TQL TQL { get { var v = _tQL; return v ?? Interlocked.CompareExchange(ref _tQL, (v = new TQL()), null) ?? v; } set { _tQL = value; } }
+        public TQL TQL { get { return _tQL ?? (_tQL = new TQL()); } set { _tQL = value; } }
         private TrustAccount _trustAccount;
-        public TrustAccount TrustAccount { get { var v = _trustAccount; return v ?? Interlocked.CompareExchange(ref _trustAccount, (v = new TrustAccount()), null) ?? v; } set { _trustAccount = value; } }
+        public TrustAccount TrustAccount { get { return _trustAccount ?? (_trustAccount = new TrustAccount()); } set { _trustAccount = value; } }
         private Tsum _tsum;
-        public Tsum Tsum { get { var v = _tsum; return v ?? Interlocked.CompareExchange(ref _tsum, (v = new Tsum()), null) ?? v; } set { _tsum = value; } }
+        public Tsum Tsum { get { return _tsum ?? (_tsum = new Tsum()); } set { _tsum = value; } }
         private DirtyValue<bool?> _twelveMonthMortgageRentalHistoryIndicator;
         public bool? TwelveMonthMortgageRentalHistoryIndicator { get { return _twelveMonthMortgageRentalHistoryIndicator; } set { _twelveMonthMortgageRentalHistoryIndicator = value; } }
         private Uldd _uldd;
-        public Uldd Uldd { get { var v = _uldd; return v ?? Interlocked.CompareExchange(ref _uldd, (v = new Uldd()), null) ?? v; } set { _uldd = value; } }
+        public Uldd Uldd { get { return _uldd ?? (_uldd = new Uldd()); } set { _uldd = value; } }
         private UnderwriterSummary _underwriterSummary;
-        public UnderwriterSummary UnderwriterSummary { get { var v = _underwriterSummary; return v ?? Interlocked.CompareExchange(ref _underwriterSummary, (v = new UnderwriterSummary()), null) ?? v; } set { _underwriterSummary = value; } }
+        public UnderwriterSummary UnderwriterSummary { get { return _underwriterSummary ?? (_underwriterSummary = new UnderwriterSummary()); } set { _underwriterSummary = value; } }
         private DirtyList<UnderwritingConditionLog> _underwritingConditionLogs;
-        public IList<UnderwritingConditionLog> UnderwritingConditionLogs { get { var v = _underwritingConditionLogs; return v ?? Interlocked.CompareExchange(ref _underwritingConditionLogs, (v = new DirtyList<UnderwritingConditionLog>()), null) ?? v; } set { _underwritingConditionLogs = new DirtyList<UnderwritingConditionLog>(value); } }
+        public IList<UnderwritingConditionLog> UnderwritingConditionLogs { get { return _underwritingConditionLogs ?? (_underwritingConditionLogs = new DirtyList<UnderwritingConditionLog>()); } set { _underwritingConditionLogs = new DirtyList<UnderwritingConditionLog>(value); } }
         private DirtyValue<bool?> _underwritingEscrowIndicator;
         public bool? UnderwritingEscrowIndicator { get { return _underwritingEscrowIndicator; } set { _underwritingEscrowIndicator = value; } }
         private DirtyValue<decimal?> _undiscountedRate;
@@ -669,7 +669,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _urlPage4Comments;
         public string UrlPage4Comments { get { return _urlPage4Comments; } set { _urlPage4Comments = value; } }
         private Usda _usda;
-        public Usda Usda { get { var v = _usda; return v ?? Interlocked.CompareExchange(ref _usda, (v = new Usda()), null) ?? v; } set { _usda = value; } }
+        public Usda Usda { get { return _usda ?? (_usda = new Usda()); } set { _usda = value; } }
         private DirtyValue<string> _usdaGovernmentLoanType;
         public string UsdaGovernmentLoanType { get { return _usdaGovernmentLoanType; } set { _usdaGovernmentLoanType = value; } }
         private DirtyValue<bool?> _use2018DiIndicator;
@@ -681,20 +681,21 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _vAEntitlementAmount;
         public decimal? VAEntitlementAmount { get { return _vAEntitlementAmount; } set { _vAEntitlementAmount = value; } }
         private VaLoanData _vaLoanData;
-        public VaLoanData VaLoanData { get { var v = _vaLoanData; return v ?? Interlocked.CompareExchange(ref _vaLoanData, (v = new VaLoanData()), null) ?? v; } set { _vaLoanData = value; } }
+        public VaLoanData VaLoanData { get { return _vaLoanData ?? (_vaLoanData = new VaLoanData()); } set { _vaLoanData = value; } }
         private DirtyList<VerificationLog> _verificationLogs;
-        public IList<VerificationLog> VerificationLogs { get { var v = _verificationLogs; return v ?? Interlocked.CompareExchange(ref _verificationLogs, (v = new DirtyList<VerificationLog>()), null) ?? v; } set { _verificationLogs = new DirtyList<VerificationLog>(value); } }
-        //private Value<string> _virtualFields;
+        public IList<VerificationLog> VerificationLogs { get { return _verificationLogs ?? (_verificationLogs = new DirtyList<VerificationLog>()); } set { _verificationLogs = new DirtyList<VerificationLog>(value); } }
+        //private DirtyValue<string> _virtualFields;
         //public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
         private DirtyValue<string> _websiteId;
         public string WebsiteId { get { return _websiteId; } set { _websiteId = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adverseActionDate.Dirty
                     || _agencyCaseIdentifier.Dirty
                     || _alterationsImprovementsOrRepairsAmount.Dirty
@@ -1035,12 +1036,13 @@ namespace EncompassRest.Loans
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
                     || _verificationLogs?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adverseActionDate.Dirty = value;
                 _agencyCaseIdentifier.Dirty = value;
                 _alterationsImprovementsOrRepairsAmount.Dirty = value;
@@ -1381,7 +1383,7 @@ namespace EncompassRest.Loans
                 if (_usda != null) _usda.Dirty = value;
                 if (_vaLoanData != null) _vaLoanData.Dirty = value;
                 if (_verificationLogs != null) _verificationLogs.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -27,7 +27,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _branchManagerNmlsId;
         public string BranchManagerNmlsId { get { return _branchManagerNmlsId; } set { _branchManagerNmlsId = value; } }
         private DirtyList<Buydown> _buydowns;
-        public IList<Buydown> Buydowns { get { var v = _buydowns; return v ?? Interlocked.CompareExchange(ref _buydowns, (v = new DirtyList<Buydown>()), null) ?? v; } set { _buydowns = new DirtyList<Buydown>(value); } }
+        public IList<Buydown> Buydowns { get { return _buydowns ?? (_buydowns = new DirtyList<Buydown>()); } set { _buydowns = new DirtyList<Buydown>(value); } }
         private DirtyValue<bool?> _convertibleIndicator;
         public bool? ConvertibleIndicator { get { return _convertibleIndicator; } set { _convertibleIndicator = value; } }
         private DirtyValue<string> _discounted;
@@ -63,7 +63,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _helocPeriodTemplateName;
         public string HelocPeriodTemplateName { get { return _helocPeriodTemplateName; } set { _helocPeriodTemplateName = value; } }
         private DirtyList<HelocRepaymentDrawPeriod> _helocRepaymentDrawPeriods;
-        public IList<HelocRepaymentDrawPeriod> HelocRepaymentDrawPeriods { get { var v = _helocRepaymentDrawPeriods; return v ?? Interlocked.CompareExchange(ref _helocRepaymentDrawPeriods, (v = new DirtyList<HelocRepaymentDrawPeriod>()), null) ?? v; } set { _helocRepaymentDrawPeriods = new DirtyList<HelocRepaymentDrawPeriod>(value); } }
+        public IList<HelocRepaymentDrawPeriod> HelocRepaymentDrawPeriods { get { return _helocRepaymentDrawPeriods ?? (_helocRepaymentDrawPeriods = new DirtyList<HelocRepaymentDrawPeriod>()); } set { _helocRepaymentDrawPeriods = new DirtyList<HelocRepaymentDrawPeriod>(value); } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _indexCurrentValuePercent;
@@ -147,7 +147,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _paymentFrequencyType;
         public string PaymentFrequencyType { get { return _paymentFrequencyType; } set { _paymentFrequencyType = value; } }
         private DirtyList<PrepaymentPenalty> _prepaymentPenalties;
-        public IList<PrepaymentPenalty> PrepaymentPenalties { get { var v = _prepaymentPenalties; return v ?? Interlocked.CompareExchange(ref _prepaymentPenalties, (v = new DirtyList<PrepaymentPenalty>()), null) ?? v; } set { _prepaymentPenalties = new DirtyList<PrepaymentPenalty>(value); } }
+        public IList<PrepaymentPenalty> PrepaymentPenalties { get { return _prepaymentPenalties ?? (_prepaymentPenalties = new DirtyList<PrepaymentPenalty>()); } set { _prepaymentPenalties = new DirtyList<PrepaymentPenalty>(value); } }
         private DirtyValue<string> _prepaymentPenaltyBasedOn;
         public string PrepaymentPenaltyBasedOn { get { return _prepaymentPenaltyBasedOn; } set { _prepaymentPenaltyBasedOn = value; } }
         private DirtyValue<bool?> _prepaymentPenaltyIndicator;
@@ -214,13 +214,14 @@ namespace EncompassRest.Loans
         public decimal? TransactionFees { get { return _transactionFees; } set { _transactionFees = value; } }
         private DirtyValue<decimal?> _wireFee;
         public decimal? WireFee { get { return _wireFee; } set { _wireFee = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _annualFeeNeededAmount.Dirty
                     || _applyLifeCapLowIndicator.Dirty
                     || _armDisclosureType.Dirty
@@ -324,12 +325,13 @@ namespace EncompassRest.Loans
                     || _buydowns?.Dirty == true
                     || _helocRepaymentDrawPeriods?.Dirty == true
                     || _prepaymentPenalties?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _annualFeeNeededAmount.Dirty = value;
                 _applyLifeCapLowIndicator.Dirty = value;
                 _armDisclosureType.Dirty = value;
@@ -433,7 +435,7 @@ namespace EncompassRest.Loans
                 if (_buydowns != null) _buydowns.Dirty = value;
                 if (_helocRepaymentDrawPeriods != null) _helocRepaymentDrawPeriods.Dirty = value;
                 if (_prepaymentPenalties != null) _prepaymentPenalties.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

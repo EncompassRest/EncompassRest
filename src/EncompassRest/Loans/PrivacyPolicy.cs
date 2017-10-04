@@ -102,13 +102,14 @@ namespace EncompassRest.Loans
         public string WebsiteToLimit { get { return _websiteToLimit; } set { _websiteToLimit = value; } }
         private DirtyValue<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalRightsDescription.Dirty
                     || _affiliateType.Dirty
                     || _affiliateTypeExample1.Dirty
@@ -156,12 +157,13 @@ namespace EncompassRest.Loans
                     || _websiteForQuestion.Dirty
                     || _websiteToLimit.Dirty
                     || _year.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalRightsDescription.Dirty = value;
                 _affiliateType.Dirty = value;
                 _affiliateTypeExample1.Dirty = value;
@@ -209,7 +211,7 @@ namespace EncompassRest.Loans
                 _websiteForQuestion.Dirty = value;
                 _websiteToLimit.Dirty = value;
                 _year.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

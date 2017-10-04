@@ -112,13 +112,14 @@ namespace EncompassRest.Loans
         public string UserDefinedFee5Description { get { return _userDefinedFee5Description; } set { _userDefinedFee5Description = value; } }
         private DirtyValue<decimal?> _userDefinedFee5SellerPaidAmount;
         public decimal? UserDefinedFee5SellerPaidAmount { get { return _userDefinedFee5SellerPaidAmount; } set { _userDefinedFee5SellerPaidAmount = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _antiSteeringLoanOptionIndex.Dirty
                     || _brokerCompensationFeeAmount.Dirty
                     || _brokerCompensationFeeBorPaidAmount.Dirty
@@ -171,12 +172,13 @@ namespace EncompassRest.Loans
                     || _userDefinedFee5BorPaidAmount.Dirty
                     || _userDefinedFee5Description.Dirty
                     || _userDefinedFee5SellerPaidAmount.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _antiSteeringLoanOptionIndex.Dirty = value;
                 _brokerCompensationFeeAmount.Dirty = value;
                 _brokerCompensationFeeBorPaidAmount.Dirty = value;
@@ -229,7 +231,7 @@ namespace EncompassRest.Loans
                 _userDefinedFee5BorPaidAmount.Dirty = value;
                 _userDefinedFee5Description.Dirty = value;
                 _userDefinedFee5SellerPaidAmount.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

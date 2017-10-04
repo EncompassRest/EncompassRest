@@ -254,13 +254,14 @@ namespace EncompassRest.Loans
         public string VariableRateFeature { get { return _variableRateFeature; } set { _variableRateFeature = value; } }
         private DirtyValue<decimal?> _yearlyTerm;
         public decimal? YearlyTerm { get { return _yearlyTerm; } set { _yearlyTerm = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acquisition.Dirty
                     || _additionalArmInformation.Dirty
                     || _allDateAndNumericalDisclosures.Dirty
@@ -384,12 +385,13 @@ namespace EncompassRest.Loans
                     || _usePitiForRatio.Dirty
                     || _variableRateFeature.Dirty
                     || _yearlyTerm.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acquisition.Dirty = value;
                 _additionalArmInformation.Dirty = value;
                 _allDateAndNumericalDisclosures.Dirty = value;
@@ -513,7 +515,7 @@ namespace EncompassRest.Loans
                 _usePitiForRatio.Dirty = value;
                 _variableRateFeature.Dirty = value;
                 _yearlyTerm.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -30,13 +30,14 @@ namespace EncompassRest.Loans
         public string PropertyState { get { return _propertyState; } set { _propertyState = value; } }
         private DirtyValue<string> _vALoanNumber;
         public string VALoanNumber { get { return _vALoanNumber; } set { _vALoanNumber = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _dateOfLoan.Dirty
                     || _dateSold.Dirty
                     || _id.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _propertyPostalCode.Dirty
                     || _propertyState.Dirty
                     || _vALoanNumber.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _dateOfLoan.Dirty = value;
                 _dateSold.Dirty = value;
                 _id.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _propertyPostalCode.Dirty = value;
                 _propertyState.Dirty = value;
                 _vALoanNumber.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -70,13 +70,14 @@ namespace EncompassRest.Loans
         public decimal? UfmipBasedOn { get { return _ufmipBasedOn; } set { _ufmipBasedOn = value; } }
         private DirtyValue<decimal?> _ufmipFactor;
         public decimal? UfmipFactor { get { return _ufmipFactor; } set { _ufmipFactor = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisedValue.Dirty
                     || _auditCost.Dirty
                     || _backRatio.Dirty
@@ -108,12 +109,13 @@ namespace EncompassRest.Loans
                     || _totalMonthlyObligations.Dirty
                     || _ufmipBasedOn.Dirty
                     || _ufmipFactor.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisedValue.Dirty = value;
                 _auditCost.Dirty = value;
                 _backRatio.Dirty = value;
@@ -145,7 +147,7 @@ namespace EncompassRest.Loans
                 _totalMonthlyObligations.Dirty = value;
                 _ufmipBasedOn.Dirty = value;
                 _ufmipFactor.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

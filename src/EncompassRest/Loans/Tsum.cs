@@ -140,13 +140,14 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalance { get { return _unpaidBalance; } set { _unpaidBalance = value; } }
         private DirtyValue<decimal?> _verified;
         public decimal? Verified { get { return _verified; } set { _verified = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aboveOrBelowRatePercent.Dirty
                     || _adjustorCoverage.Dirty
                     || _ausRecommendation.Dirty
@@ -213,12 +214,13 @@ namespace EncompassRest.Loans
                     || _underwritingComment8.Dirty
                     || _unpaidBalance.Dirty
                     || _verified.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aboveOrBelowRatePercent.Dirty = value;
                 _adjustorCoverage.Dirty = value;
                 _ausRecommendation.Dirty = value;
@@ -285,7 +287,7 @@ namespace EncompassRest.Loans
                 _underwritingComment8.Dirty = value;
                 _unpaidBalance.Dirty = value;
                 _verified.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

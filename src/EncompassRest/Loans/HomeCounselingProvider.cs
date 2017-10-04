@@ -50,13 +50,14 @@ namespace EncompassRest.Loans
         public string LanguagesSupported { get { return _languagesSupported; } set { _languagesSupported = value; } }
         private DirtyValue<bool?> _selectedIndicator;
         public bool? SelectedIndicator { get { return _selectedIndicator; } set { _selectedIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _agencyAddress.Dirty
                     || _agencyAddressCity.Dirty
                     || _agencyAddressPostalCode.Dirty
@@ -78,12 +79,13 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _languagesSupported.Dirty
                     || _selectedIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _agencyAddress.Dirty = value;
                 _agencyAddressCity.Dirty = value;
                 _agencyAddressPostalCode.Dirty = value;
@@ -105,7 +107,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _languagesSupported.Dirty = value;
                 _selectedIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

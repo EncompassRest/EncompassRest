@@ -255,7 +255,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _scoredByTotal;
         public bool? ScoredByTotal { get { return _scoredByTotal; } set { _scoredByTotal = value; } }
         private DirtyList<SecondaryFinancingProvider> _secondaryFinancingProviders;
-        public IList<SecondaryFinancingProvider> SecondaryFinancingProviders { get { var v = _secondaryFinancingProviders; return v ?? Interlocked.CompareExchange(ref _secondaryFinancingProviders, (v = new DirtyList<SecondaryFinancingProvider>()), null) ?? v; } set { _secondaryFinancingProviders = new DirtyList<SecondaryFinancingProvider>(value); } }
+        public IList<SecondaryFinancingProvider> SecondaryFinancingProviders { get { return _secondaryFinancingProviders ?? (_secondaryFinancingProviders = new DirtyList<SecondaryFinancingProvider>()); } set { _secondaryFinancingProviders = new DirtyList<SecondaryFinancingProvider>(value); } }
         private DirtyValue<decimal?> _sellerContributionRate;
         public decimal? SellerContributionRate { get { return _sellerContributionRate; } set { _sellerContributionRate = value; } }
         private DirtyValue<bool?> _simpleRefinance;
@@ -324,13 +324,14 @@ namespace EncompassRest.Loans
         public decimal? ValueEstablished { get { return _valueEstablished; } set { _valueEstablished = value; } }
         private DirtyValue<decimal?> _windEnergySystemActualCost;
         public decimal? WindEnergySystemActualCost { get { return _windEnergySystemActualCost; } set { _windEnergySystemActualCost = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _actualCashInvRequired.Dirty
                     || _adjustedMaxMtgAmount.Dirty
                     || _afterImprovedValue.Dirty
@@ -489,12 +490,13 @@ namespace EncompassRest.Loans
                     || _valueEstablished.Dirty
                     || _windEnergySystemActualCost.Dirty
                     || _secondaryFinancingProviders?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _actualCashInvRequired.Dirty = value;
                 _adjustedMaxMtgAmount.Dirty = value;
                 _afterImprovedValue.Dirty = value;
@@ -653,7 +655,7 @@ namespace EncompassRest.Loans
                 _valueEstablished.Dirty = value;
                 _windEnergySystemActualCost.Dirty = value;
                 if (_secondaryFinancingProviders != null) _secondaryFinancingProviders.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

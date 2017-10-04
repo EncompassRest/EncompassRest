@@ -448,13 +448,14 @@ namespace EncompassRest.Loans
         public string Trst2StreetAddr2 { get { return _trst2StreetAddr2; } set { _trst2StreetAddr2 = value; } }
         private DirtyValue<string> _trst2Zip;
         public string Trst2Zip { get { return _trst2Zip; } set { _trst2Zip = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _allngToNtPayToJrsdctn.Dirty
                     || _allngToNtPayToOrdNm.Dirty
                     || _allngToNtPayToOrgTyp.Dirty
@@ -675,12 +676,13 @@ namespace EncompassRest.Loans
                     || _trst2StreetAddr1.Dirty
                     || _trst2StreetAddr2.Dirty
                     || _trst2Zip.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _allngToNtPayToJrsdctn.Dirty = value;
                 _allngToNtPayToOrdNm.Dirty = value;
                 _allngToNtPayToOrgTyp.Dirty = value;
@@ -901,7 +903,7 @@ namespace EncompassRest.Loans
                 _trst2StreetAddr1.Dirty = value;
                 _trst2StreetAddr2.Dirty = value;
                 _trst2Zip.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

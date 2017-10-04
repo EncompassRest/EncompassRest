@@ -272,13 +272,14 @@ namespace EncompassRest.Loans
         public decimal? Section900HudGfeVaFundingFee { get { return _section900HudGfeVaFundingFee; } set { _section900HudGfeVaFundingFee = value; } }
         private DirtyValue<bool?> _useActualPaymentChange;
         public bool? UseActualPaymentChange { get { return _useActualPaymentChange; } set { _useActualPaymentChange = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _borrowerSelectIndicator903.Dirty
                     || _borrowerSelectIndicator904.Dirty
                     || _borrowerSelectIndicator906.Dirty
@@ -411,12 +412,13 @@ namespace EncompassRest.Loans
                     || _section900HomeownerInsurance.Dirty
                     || _section900HudGfeVaFundingFee.Dirty
                     || _useActualPaymentChange.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _borrowerSelectIndicator903.Dirty = value;
                 _borrowerSelectIndicator904.Dirty = value;
                 _borrowerSelectIndicator906.Dirty = value;
@@ -549,7 +551,7 @@ namespace EncompassRest.Loans
                 _section900HomeownerInsurance.Dirty = value;
                 _section900HudGfeVaFundingFee.Dirty = value;
                 _useActualPaymentChange.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

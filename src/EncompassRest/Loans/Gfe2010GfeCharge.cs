@@ -22,13 +22,14 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _chargeBelow10Indicator.Dirty
                     || _description.Dirty
                     || _gfe2010GfeChargeIndex.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _hudCharge.Dirty
                     || _id.Dirty
                     || _line.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _chargeBelow10Indicator.Dirty = value;
                 _description.Dirty = value;
                 _gfe2010GfeChargeIndex.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _hudCharge.Dirty = value;
                 _id.Dirty = value;
                 _line.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

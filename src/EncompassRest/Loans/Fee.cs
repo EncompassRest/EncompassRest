@@ -74,13 +74,14 @@ namespace EncompassRest.Loans
         public decimal? TruncatedAmountPerDay { get { return _truncatedAmountPerDay; } set { _truncatedAmountPerDay = value; } }
         private DirtyValue<bool?> _use4Decimals;
         public bool? Use4Decimals { get { return _use4Decimals; } set { _use4Decimals = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amount.Dirty
                     || _amountPerDay.Dirty
                     || _borPaidAmount.Dirty
@@ -114,12 +115,13 @@ namespace EncompassRest.Loans
                     || _sellerPaidAmount.Dirty
                     || _truncatedAmountPerDay.Dirty
                     || _use4Decimals.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amount.Dirty = value;
                 _amountPerDay.Dirty = value;
                 _borPaidAmount.Dirty = value;
@@ -153,7 +155,7 @@ namespace EncompassRest.Loans
                 _sellerPaidAmount.Dirty = value;
                 _truncatedAmountPerDay.Dirty = value;
                 _use4Decimals.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

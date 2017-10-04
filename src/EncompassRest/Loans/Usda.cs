@@ -283,16 +283,17 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _underwritingDecisionType;
         public string UnderwritingDecisionType { get { return _underwritingDecisionType; } set { _underwritingDecisionType = value; } }
         private DirtyList<UsdaHouseholdIncome> _usdaHouseholdIncomes;
-        public IList<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { var v = _usdaHouseholdIncomes; return v ?? Interlocked.CompareExchange(ref _usdaHouseholdIncomes, (v = new DirtyList<UsdaHouseholdIncome>()), null) ?? v; } set { _usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>(value); } }
+        public IList<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { return _usdaHouseholdIncomes ?? (_usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>()); } set { _usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>(value); } }
         private DirtyValue<string> _verificationCode;
         public string VerificationCode { get { return _verificationCode; } set { _verificationCode = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalIncomeFromPrimaryEmployment.Dirty
                     || _additionalMemberBaseIncome.Dirty
                     || _adjustedAnnualIncome.Dirty
@@ -432,12 +433,13 @@ namespace EncompassRest.Loans
                     || _underwritingDecisionType.Dirty
                     || _verificationCode.Dirty
                     || _usdaHouseholdIncomes?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalIncomeFromPrimaryEmployment.Dirty = value;
                 _additionalMemberBaseIncome.Dirty = value;
                 _adjustedAnnualIncome.Dirty = value;
@@ -577,7 +579,7 @@ namespace EncompassRest.Loans
                 _underwritingDecisionType.Dirty = value;
                 _verificationCode.Dirty = value;
                 if (_usdaHouseholdIncomes != null) _usdaHouseholdIncomes.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -48,13 +48,14 @@ namespace EncompassRest.Loans
         public bool? WeMayAssignIndicator { get { return _weMayAssignIndicator; } set { _weMayAssignIndicator = value; } }
         private DirtyValue<bool?> _zeroTo25Indicator;
         public bool? ZeroTo25Indicator { get { return _zeroTo25Indicator; } set { _zeroTo25Indicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _disclosurePercent1.Dirty
                     || _disclosurePercent2.Dirty
                     || _disclosurePercent3.Dirty
@@ -75,12 +76,13 @@ namespace EncompassRest.Loans
                     || _weHavePreviouslyAssignedIndicator.Dirty
                     || _weMayAssignIndicator.Dirty
                     || _zeroTo25Indicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _disclosurePercent1.Dirty = value;
                 _disclosurePercent2.Dirty = value;
                 _disclosurePercent3.Dirty = value;
@@ -101,7 +103,7 @@ namespace EncompassRest.Loans
                 _weHavePreviouslyAssignedIndicator.Dirty = value;
                 _weMayAssignIndicator.Dirty = value;
                 _zeroTo25Indicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

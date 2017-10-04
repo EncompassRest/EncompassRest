@@ -17,31 +17,33 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _total2;
         public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
         private DirtyList<TrustAccountItem> _trustAccountItems;
-        public IList<TrustAccountItem> TrustAccountItems { get { var v = _trustAccountItems; return v ?? Interlocked.CompareExchange(ref _trustAccountItems, (v = new DirtyList<TrustAccountItem>()), null) ?? v; } set { _trustAccountItems = new DirtyList<TrustAccountItem>(value); } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        public IList<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems ?? (_trustAccountItems = new DirtyList<TrustAccountItem>()); } set { _trustAccountItems = new DirtyList<TrustAccountItem>(value); } }
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _balance.Dirty
                     || _id.Dirty
                     || _total1.Dirty
                     || _total2.Dirty
                     || _trustAccountItems?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _balance.Dirty = value;
                 _id.Dirty = value;
                 _total1.Dirty = value;
                 _total2.Dirty = value;
                 if (_trustAccountItems != null) _trustAccountItems.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

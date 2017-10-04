@@ -18,30 +18,32 @@ namespace EncompassRest.Loans
         public string LastComplianceOrderDescriptionOfAlerts { get { return _lastComplianceOrderDescriptionOfAlerts; } set { _lastComplianceOrderDescriptionOfAlerts = value; } }
         private DirtyValue<int?> _tQLComplianceAlertIndex;
         public int? TQLComplianceAlertIndex { get { return _tQLComplianceAlertIndex; } set { _tQLComplianceAlertIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _id.Dirty
                     || _lastComplianceOrderAlertCategories.Dirty
                     || _lastComplianceOrderAlertMessage.Dirty
                     || _lastComplianceOrderDescriptionOfAlerts.Dirty
                     || _tQLComplianceAlertIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _id.Dirty = value;
                 _lastComplianceOrderAlertCategories.Dirty = value;
                 _lastComplianceOrderAlertMessage.Dirty = value;
                 _lastComplianceOrderDescriptionOfAlerts.Dirty = value;
                 _tQLComplianceAlertIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

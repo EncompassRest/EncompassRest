@@ -313,20 +313,21 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _totalPaidAlreadybyoronBehalfofBoroweratClosing;
         public decimal? TotalPaidAlreadybyoronBehalfofBoroweratClosing { get { return _totalPaidAlreadybyoronBehalfofBoroweratClosing; } set { _totalPaidAlreadybyoronBehalfofBoroweratClosing = value; } }
         private DirtyList<UCDDetail> _uCDDetails;
-        public IList<UCDDetail> UCDDetails { get { var v = _uCDDetails; return v ?? Interlocked.CompareExchange(ref _uCDDetails, (v = new DirtyList<UCDDetail>()), null) ?? v; } set { _uCDDetails = new DirtyList<UCDDetail>(value); } }
+        public IList<UCDDetail> UCDDetails { get { return _uCDDetails ?? (_uCDDetails = new DirtyList<UCDDetail>()); } set { _uCDDetails = new DirtyList<UCDDetail>(value); } }
         private DirtyValue<decimal?> _uCDKSubTotal;
         public decimal? UCDKSubTotal { get { return _uCDKSubTotal; } set { _uCDKSubTotal = value; } }
         private DirtyValue<decimal?> _uCDLSubTotal;
         public decimal? UCDLSubTotal { get { return _uCDLSubTotal; } set { _uCDLSubTotal = value; } }
         private DirtyValue<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
         public decimal? UCDTotalAdjustmentsAndOtherCredits { get { return _uCDTotalAdjustmentsAndOtherCredits; } set { _uCDTotalAdjustmentsAndOtherCredits = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _actualLECD3TotalClosingCostJFromLatestRec.Dirty
                     || _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty
                     || _actualLELoanAmountFromLatestRec.Dirty
@@ -483,12 +484,13 @@ namespace EncompassRest.Loans
                     || _uCDLSubTotal.Dirty
                     || _uCDTotalAdjustmentsAndOtherCredits.Dirty
                     || _uCDDetails?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _actualLECD3TotalClosingCostJFromLatestRec.Dirty = value;
                 _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty = value;
                 _actualLELoanAmountFromLatestRec.Dirty = value;
@@ -645,7 +647,7 @@ namespace EncompassRest.Loans
                 _uCDLSubTotal.Dirty = value;
                 _uCDTotalAdjustmentsAndOtherCredits.Dirty = value;
                 if (_uCDDetails != null) _uCDDetails.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

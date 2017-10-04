@@ -186,13 +186,14 @@ namespace EncompassRest.Loans
         public string InvUrl { get { return _invUrl; } set { _invUrl = value; } }
         private DirtyValue<string> _invZip;
         public string InvZip { get { return _invZip; } set { _invZip = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _id.Dirty
                     || _invAsgnCty.Dirty
                     || _invAsgnJrsdctn.Dirty
@@ -282,12 +283,13 @@ namespace EncompassRest.Loans
                     || _invTollFreePhoneNum.Dirty
                     || _invUrl.Dirty
                     || _invZip.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _id.Dirty = value;
                 _invAsgnCty.Dirty = value;
                 _invAsgnJrsdctn.Dirty = value;
@@ -377,7 +379,7 @@ namespace EncompassRest.Loans
                 _invTollFreePhoneNum.Dirty = value;
                 _invUrl.Dirty = value;
                 _invZip.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -26,13 +26,14 @@ namespace EncompassRest.Loans
         public string ReceiptCheckNo { get { return _receiptCheckNo; } set { _receiptCheckNo = value; } }
         private DirtyValue<int?> _trustAccountItemIndex;
         public int? TrustAccountItemIndex { get { return _trustAccountItemIndex; } set { _trustAccountItemIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _date.Dirty
                     || _description.Dirty
                     || _id.Dirty
@@ -42,12 +43,13 @@ namespace EncompassRest.Loans
                     || _receiptAmount.Dirty
                     || _receiptCheckNo.Dirty
                     || _trustAccountItemIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _date.Dirty = value;
                 _description.Dirty = value;
                 _id.Dirty = value;
@@ -57,7 +59,7 @@ namespace EncompassRest.Loans
                 _receiptAmount.Dirty = value;
                 _receiptCheckNo.Dirty = value;
                 _trustAccountItemIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

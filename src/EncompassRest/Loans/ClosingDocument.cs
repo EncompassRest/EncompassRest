@@ -23,7 +23,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _additionalSigVerbiageType;
         public string AdditionalSigVerbiageType { get { return _additionalSigVerbiageType; } set { _additionalSigVerbiageType = value; } }
         private DirtyList<AdditionalStateDisclosure> _additionalStateDisclosures;
-        public IList<AdditionalStateDisclosure> AdditionalStateDisclosures { get { var v = _additionalStateDisclosures; return v ?? Interlocked.CompareExchange(ref _additionalStateDisclosures, (v = new DirtyList<AdditionalStateDisclosure>()), null) ?? v; } set { _additionalStateDisclosures = new DirtyList<AdditionalStateDisclosure>(value); } }
+        public IList<AdditionalStateDisclosure> AdditionalStateDisclosures { get { return _additionalStateDisclosures ?? (_additionalStateDisclosures = new DirtyList<AdditionalStateDisclosure>()); } set { _additionalStateDisclosures = new DirtyList<AdditionalStateDisclosure>(value); } }
         private DirtyValue<bool?> _affectedByInterest;
         public bool? AffectedByInterest { get { return _affectedByInterest; } set { _affectedByInterest = value; } }
         private DirtyValue<string> _alternateLender;
@@ -31,7 +31,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _altLenderId;
         public string AltLenderId { get { return _altLenderId; } set { _altLenderId = value; } }
         private DirtyList<AntiSteeringLoanOption> _antiSteeringLoanOptions;
-        public IList<AntiSteeringLoanOption> AntiSteeringLoanOptions { get { var v = _antiSteeringLoanOptions; return v ?? Interlocked.CompareExchange(ref _antiSteeringLoanOptions, (v = new DirtyList<AntiSteeringLoanOption>()), null) ?? v; } set { _antiSteeringLoanOptions = new DirtyList<AntiSteeringLoanOption>(value); } }
+        public IList<AntiSteeringLoanOption> AntiSteeringLoanOptions { get { return _antiSteeringLoanOptions ?? (_antiSteeringLoanOptions = new DirtyList<AntiSteeringLoanOption>()); } set { _antiSteeringLoanOptions = new DirtyList<AntiSteeringLoanOption>(value); } }
         private DirtyValue<string> _areAbleToServiceIndicator;
         public string AreAbleToServiceIndicator { get { return _areAbleToServiceIndicator; } set { _areAbleToServiceIndicator = value; } }
         private DirtyValue<string> _associatedDocumentNumber;
@@ -111,7 +111,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _closingDocsLoanProgramType;
         public string ClosingDocsLoanProgramType { get { return _closingDocsLoanProgramType; } set { _closingDocsLoanProgramType = value; } }
         private DirtyList<ClosingEntity> _closingEntities;
-        public IList<ClosingEntity> ClosingEntities { get { var v = _closingEntities; return v ?? Interlocked.CompareExchange(ref _closingEntities, (v = new DirtyList<ClosingEntity>()), null) ?? v; } set { _closingEntities = new DirtyList<ClosingEntity>(value); } }
+        public IList<ClosingEntity> ClosingEntities { get { return _closingEntities ?? (_closingEntities = new DirtyList<ClosingEntity>()); } set { _closingEntities = new DirtyList<ClosingEntity>(value); } }
         private DirtyValue<string> _closingProvider;
         public string ClosingProvider { get { return _closingProvider; } set { _closingProvider = value; } }
         private DirtyValue<string> _closingState;
@@ -345,7 +345,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _rescissionDate;
         public DateTime? RescissionDate { get { return _rescissionDate; } set { _rescissionDate = value; } }
         private DirtyList<RespaHudDetail> _respaHudDetails;
-        public IList<RespaHudDetail> RespaHudDetails { get { var v = _respaHudDetails; return v ?? Interlocked.CompareExchange(ref _respaHudDetails, (v = new DirtyList<RespaHudDetail>()), null) ?? v; } set { _respaHudDetails = new DirtyList<RespaHudDetail>(value); } }
+        public IList<RespaHudDetail> RespaHudDetails { get { return _respaHudDetails ?? (_respaHudDetails = new DirtyList<RespaHudDetail>()); } set { _respaHudDetails = new DirtyList<RespaHudDetail>(value); } }
         private DirtyValue<string> _rMLANamePreceding10Years;
         public string RMLANamePreceding10Years { get { return _rMLANamePreceding10Years; } set { _rMLANamePreceding10Years = value; } }
         private DirtyValue<string> _rmlLenderBrokerRepresents;
@@ -359,7 +359,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _specialFloodHazardAreaIndictor;
         public string SpecialFloodHazardAreaIndictor { get { return _specialFloodHazardAreaIndictor; } set { _specialFloodHazardAreaIndictor = value; } }
         private DirtyList<StateLicense> _stateLicenses;
-        public IList<StateLicense> StateLicenses { get { var v = _stateLicenses; return v ?? Interlocked.CompareExchange(ref _stateLicenses, (v = new DirtyList<StateLicense>()), null) ?? v; } set { _stateLicenses = new DirtyList<StateLicense>(value); } }
+        public IList<StateLicense> StateLicenses { get { return _stateLicenses ?? (_stateLicenses = new DirtyList<StateLicense>()); } set { _stateLicenses = new DirtyList<StateLicense>(value); } }
         private DirtyValue<string> _suretyCompanyName;
         public string SuretyCompanyName { get { return _suretyCompanyName; } set { _suretyCompanyName = value; } }
         private DirtyValue<bool?> _syncInterestDateDisbursementDate;
@@ -382,13 +382,14 @@ namespace EncompassRest.Loans
         public string Trust2Beneficiaries { get { return _trust2Beneficiaries; } set { _trust2Beneficiaries = value; } }
         private DirtyValue<string> _weConductBusiness;
         public string WeConductBusiness { get { return _weConductBusiness; } set { _weConductBusiness = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalLienHolderAddress.Dirty
                     || _additionalLienHolderAddressCity.Dirty
                     || _additionalLienHolderAddressPostalCode.Dirty
@@ -576,12 +577,13 @@ namespace EncompassRest.Loans
                     || _closingEntities?.Dirty == true
                     || _respaHudDetails?.Dirty == true
                     || _stateLicenses?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalLienHolderAddress.Dirty = value;
                 _additionalLienHolderAddressCity.Dirty = value;
                 _additionalLienHolderAddressPostalCode.Dirty = value;
@@ -769,7 +771,7 @@ namespace EncompassRest.Loans
                 if (_closingEntities != null) _closingEntities.Dirty = value;
                 if (_respaHudDetails != null) _respaHudDetails.Dirty = value;
                 if (_stateLicenses != null) _stateLicenses.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

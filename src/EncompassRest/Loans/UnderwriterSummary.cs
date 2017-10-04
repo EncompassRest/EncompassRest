@@ -116,13 +116,14 @@ namespace EncompassRest.Loans
         public DateTime? SuspendedDate { get { return _suspendedDate; } set { _suspendedDate = value; } }
         private DirtyValue<string> _suspendedReasons;
         public string SuspendedReasons { get { return _suspendedReasons; } set { _suspendedReasons = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisal.Dirty
                     || _appraisalCompletedDate.Dirty
                     || _appraisalExpiredDate.Dirty
@@ -177,12 +178,13 @@ namespace EncompassRest.Loans
                     || _suspendedBy.Dirty
                     || _suspendedDate.Dirty
                     || _suspendedReasons.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisal.Dirty = value;
                 _appraisalCompletedDate.Dirty = value;
                 _appraisalExpiredDate.Dirty = value;
@@ -237,7 +239,7 @@ namespace EncompassRest.Loans
                 _suspendedBy.Dirty = value;
                 _suspendedDate.Dirty = value;
                 _suspendedReasons.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

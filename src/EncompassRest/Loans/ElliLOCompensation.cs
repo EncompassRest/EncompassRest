@@ -86,13 +86,14 @@ namespace EncompassRest.Loans
         public string TriggerField { get { return _triggerField; } set { _triggerField = value; } }
         private DirtyValue<string> _whoPaidCompensation;
         public string WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adjustedPlanAdditonalAmountForBroker.Dirty
                     || _adjustedPlanAdditonalAmountForOfficer.Dirty
                     || _adjustedPlanAmountForBroker.Dirty
@@ -132,12 +133,13 @@ namespace EncompassRest.Loans
                     || _roundingMethodForOfficer.Dirty
                     || _triggerField.Dirty
                     || _whoPaidCompensation.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adjustedPlanAdditonalAmountForBroker.Dirty = value;
                 _adjustedPlanAdditonalAmountForOfficer.Dirty = value;
                 _adjustedPlanAmountForBroker.Dirty = value;
@@ -177,7 +179,7 @@ namespace EncompassRest.Loans
                 _roundingMethodForOfficer.Dirty = value;
                 _triggerField.Dirty = value;
                 _whoPaidCompensation.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

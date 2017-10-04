@@ -192,13 +192,14 @@ namespace EncompassRest.Loans
         public string TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
         private DirtyValue<string> _universalLoanId;
         public string UniversalLoanId { get { return _universalLoanId; } set { _universalLoanId = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _actionTaken.Dirty
                     || _applicationDate.Dirty
                     || _aUS1.Dirty
@@ -291,12 +292,13 @@ namespace EncompassRest.Loans
                     || _totalPointsAndFees.Dirty
                     || _typeOfPurchaser.Dirty
                     || _universalLoanId.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _actionTaken.Dirty = value;
                 _applicationDate.Dirty = value;
                 _aUS1.Dirty = value;
@@ -389,7 +391,7 @@ namespace EncompassRest.Loans
                 _totalPointsAndFees.Dirty = value;
                 _typeOfPurchaser.Dirty = value;
                 _universalLoanId.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

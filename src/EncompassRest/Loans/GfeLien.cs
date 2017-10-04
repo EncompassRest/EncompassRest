@@ -20,32 +20,34 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _priority;
         public string Priority { get { return _priority; } set { _priority = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amountOwing.Dirty
                     || _gfeLienIndex.Dirty
                     || _gfeLienType.Dirty
                     || _holderName.Dirty
                     || _id.Dirty
                     || _priority.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amountOwing.Dirty = value;
                 _gfeLienIndex.Dirty = value;
                 _gfeLienType.Dirty = value;
                 _holderName.Dirty = value;
                 _id.Dirty = value;
                 _priority.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

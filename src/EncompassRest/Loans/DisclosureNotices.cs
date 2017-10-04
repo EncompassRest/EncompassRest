@@ -108,13 +108,14 @@ namespace EncompassRest.Loans
         public bool? ReleaseMortgageInformationIndicator { get { return _releaseMortgageInformationIndicator; } set { _releaseMortgageInformationIndicator = value; } }
         private DirtyValue<bool?> _rightToFinancialPrivacyActIndicator;
         public bool? RightToFinancialPrivacyActIndicator { get { return _rightToFinancialPrivacyActIndicator; } set { _rightToFinancialPrivacyActIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _antiCoercionStatementIndicator.Dirty
                     || _commitmentIssuedByAddress.Dirty
                     || _commitmentIssuedByCity.Dirty
@@ -165,12 +166,13 @@ namespace EncompassRest.Loans
                     || _releaseInformationInConnectionWithCreditReportIndicator.Dirty
                     || _releaseMortgageInformationIndicator.Dirty
                     || _rightToFinancialPrivacyActIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _antiCoercionStatementIndicator.Dirty = value;
                 _commitmentIssuedByAddress.Dirty = value;
                 _commitmentIssuedByCity.Dirty = value;
@@ -221,7 +223,7 @@ namespace EncompassRest.Loans
                 _releaseInformationInConnectionWithCreditReportIndicator.Dirty = value;
                 _releaseMortgageInformationIndicator.Dirty = value;
                 _rightToFinancialPrivacyActIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

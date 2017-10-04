@@ -76,13 +76,14 @@ namespace EncompassRest.Loans
         public decimal? Total { get { return _total; } set { _total = value; } }
         private DirtyValue<int?> _vodIndex;
         public int? VodIndex { get { return _vodIndex; } set { _vodIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _accountIdentifier.Dirty
                     || _altId.Dirty
                     || _assetIndex.Dirty
@@ -117,12 +118,13 @@ namespace EncompassRest.Loans
                     || _titlePhone.Dirty
                     || _total.Dirty
                     || _vodIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _accountIdentifier.Dirty = value;
                 _altId.Dirty = value;
                 _assetIndex.Dirty = value;
@@ -157,7 +159,7 @@ namespace EncompassRest.Loans
                 _titlePhone.Dirty = value;
                 _total.Dirty = value;
                 _vodIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

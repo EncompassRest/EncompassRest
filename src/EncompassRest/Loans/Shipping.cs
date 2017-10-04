@@ -37,16 +37,17 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _shipperName;
         public string ShipperName { get { return _shipperName; } set { _shipperName = value; } }
         private DirtyList<ShippingContact> _shippingContacts;
-        public IList<ShippingContact> ShippingContacts { get { var v = _shippingContacts; return v ?? Interlocked.CompareExchange(ref _shippingContacts, (v = new DirtyList<ShippingContact>()), null) ?? v; } set { _shippingContacts = new DirtyList<ShippingContact>(value); } }
+        public IList<ShippingContact> ShippingContacts { get { return _shippingContacts ?? (_shippingContacts = new DirtyList<ShippingContact>()); } set { _shippingContacts = new DirtyList<ShippingContact>(value); } }
         private DirtyValue<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _actualShipDate.Dirty
                     || _carrierName.Dirty
                     || _downPaymentAmount.Dirty
@@ -63,12 +64,13 @@ namespace EncompassRest.Loans
                     || _shipperName.Dirty
                     || _targetDeliveryDate.Dirty
                     || _shippingContacts?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _actualShipDate.Dirty = value;
                 _carrierName.Dirty = value;
                 _downPaymentAmount.Dirty = value;
@@ -85,7 +87,7 @@ namespace EncompassRest.Loans
                 _shipperName.Dirty = value;
                 _targetDeliveryDate.Dirty = value;
                 if (_shippingContacts != null) _shippingContacts.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

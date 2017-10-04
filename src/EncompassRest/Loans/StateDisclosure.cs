@@ -259,9 +259,9 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _newYorkCreditReportFee;
         public decimal? NewYorkCreditReportFee { get { return _newYorkCreditReportFee; } set { _newYorkCreditReportFee = value; } }
         private DirtyList<NewYorkFee> _newYorkFees;
-        public IList<NewYorkFee> NewYorkFees { get { var v = _newYorkFees; return v ?? Interlocked.CompareExchange(ref _newYorkFees, (v = new DirtyList<NewYorkFee>()), null) ?? v; } set { _newYorkFees = new DirtyList<NewYorkFee>(value); } }
+        public IList<NewYorkFee> NewYorkFees { get { return _newYorkFees ?? (_newYorkFees = new DirtyList<NewYorkFee>()); } set { _newYorkFees = new DirtyList<NewYorkFee>(value); } }
         private DirtyList<NewYorkPrimaryLender> _newYorkPrimaryLenders;
-        public IList<NewYorkPrimaryLender> NewYorkPrimaryLenders { get { var v = _newYorkPrimaryLenders; return v ?? Interlocked.CompareExchange(ref _newYorkPrimaryLenders, (v = new DirtyList<NewYorkPrimaryLender>()), null) ?? v; } set { _newYorkPrimaryLenders = new DirtyList<NewYorkPrimaryLender>(value); } }
+        public IList<NewYorkPrimaryLender> NewYorkPrimaryLenders { get { return _newYorkPrimaryLenders ?? (_newYorkPrimaryLenders = new DirtyList<NewYorkPrimaryLender>()); } set { _newYorkPrimaryLenders = new DirtyList<NewYorkPrimaryLender>(value); } }
         private DirtyValue<decimal?> _newYorkProcessingFee;
         public decimal? NewYorkProcessingFee { get { return _newYorkProcessingFee; } set { _newYorkProcessingFee = value; } }
         private DirtyValue<decimal?> _notRefundableAmount;
@@ -446,13 +446,14 @@ namespace EncompassRest.Loans
         public string YSPInterestRateImpactedStatus { get { return _ySPInterestRateImpactedStatus; } set { _ySPInterestRateImpactedStatus = value; } }
         private DirtyValue<string> _ySPPaidBy;
         public string YSPPaidBy { get { return _ySPPaidBy; } set { _ySPPaidBy = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acceptedByBorrowerIndicator.Dirty
                     || _acceptedDate.Dirty
                     || _actingOtherDescription1.Dirty
@@ -672,12 +673,13 @@ namespace EncompassRest.Loans
                     || _ySPPaidBy.Dirty
                     || _newYorkFees?.Dirty == true
                     || _newYorkPrimaryLenders?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acceptedByBorrowerIndicator.Dirty = value;
                 _acceptedDate.Dirty = value;
                 _actingOtherDescription1.Dirty = value;
@@ -897,7 +899,7 @@ namespace EncompassRest.Loans
                 _ySPPaidBy.Dirty = value;
                 if (_newYorkFees != null) _newYorkFees.Dirty = value;
                 if (_newYorkPrimaryLenders != null) _newYorkPrimaryLenders.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

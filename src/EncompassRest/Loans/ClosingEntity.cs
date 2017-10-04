@@ -80,13 +80,14 @@ namespace EncompassRest.Loans
         public string VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
         private DirtyValue<string> _vestingType;
         public string VestingType { get { return _vestingType; } set { _vestingType = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _alias.Dirty
                     || _assignee.Dirty
                     || _authorizedToSignIndicator.Dirty
@@ -123,12 +124,13 @@ namespace EncompassRest.Loans
                     || _vestingGuid.Dirty
                     || _vestingTrusteeOfType.Dirty
                     || _vestingType.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _alias.Dirty = value;
                 _assignee.Dirty = value;
                 _authorizedToSignIndicator.Dirty = value;
@@ -165,7 +167,7 @@ namespace EncompassRest.Loans
                 _vestingGuid.Dirty = value;
                 _vestingTrusteeOfType.Dirty = value;
                 _vestingType.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

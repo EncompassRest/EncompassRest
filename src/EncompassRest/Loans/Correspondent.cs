@@ -108,13 +108,14 @@ namespace EncompassRest.Loans
         public DateTime? VoidedDate { get { return _voidedDate; } set { _voidedDate = value; } }
         private DirtyValue<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalLateFeeCharge.Dirty
                     || _approvedToFundDate.Dirty
                     || _basePrice.Dirty
@@ -165,12 +166,13 @@ namespace EncompassRest.Loans
                     || _unpaidPrincipalBalance.Dirty
                     || _voidedDate.Dirty
                     || _withdrawnDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalLateFeeCharge.Dirty = value;
                 _approvedToFundDate.Dirty = value;
                 _basePrice.Dirty = value;
@@ -221,7 +223,7 @@ namespace EncompassRest.Loans
                 _unpaidPrincipalBalance.Dirty = value;
                 _voidedDate.Dirty = value;
                 _withdrawnDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -18,30 +18,32 @@ namespace EncompassRest.Loans
         public decimal? NumericValue { get { return _numericValue; } set { _numericValue = value; } }
         private DirtyValue<string> _stringValue;
         public string StringValue { get { return _stringValue; } set { _stringValue = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _dateValue.Dirty
                     || _fieldName.Dirty
                     || _id.Dirty
                     || _numericValue.Dirty
                     || _stringValue.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _dateValue.Dirty = value;
                 _fieldName.Dirty = value;
                 _id.Dirty = value;
                 _numericValue.Dirty = value;
                 _stringValue.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

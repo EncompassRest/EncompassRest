@@ -22,13 +22,14 @@ namespace EncompassRest.Loans
         public DateTime? PaymentDate { get { return _paymentDate; } set { _paymentDate = value; } }
         private DirtyValue<int?> _regulationZPaymentIndex;
         public int? RegulationZPaymentIndex { get { return _regulationZPaymentIndex; } set { _regulationZPaymentIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _balance.Dirty
                     || _id.Dirty
                     || _interestRatePercent.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _numberOfPayments.Dirty
                     || _paymentDate.Dirty
                     || _regulationZPaymentIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _balance.Dirty = value;
                 _id.Dirty = value;
                 _interestRatePercent.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _numberOfPayments.Dirty = value;
                 _paymentDate.Dirty = value;
                 _regulationZPaymentIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

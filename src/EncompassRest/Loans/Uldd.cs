@@ -606,13 +606,14 @@ namespace EncompassRest.Loans
         public int? Unit4TotalBedrooms { get { return _unit4TotalBedrooms; } set { _unit4TotalBedrooms = value; } }
         private DirtyValue<decimal?> _uPBAmount;
         public decimal? UPBAmount { get { return _uPBAmount; } set { _uPBAmount = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aCHABARoutingAndTransitIdentifier.Dirty
                     || _aCHABARoutingAndTransitNumber.Dirty
                     || _aCHBankAccountDescription.Dirty
@@ -912,12 +913,13 @@ namespace EncompassRest.Loans
                     || _unit4SubjectPropertyGrossRentalIncome.Dirty
                     || _unit4TotalBedrooms.Dirty
                     || _uPBAmount.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aCHABARoutingAndTransitIdentifier.Dirty = value;
                 _aCHABARoutingAndTransitNumber.Dirty = value;
                 _aCHBankAccountDescription.Dirty = value;
@@ -1217,7 +1219,7 @@ namespace EncompassRest.Loans
                 _unit4SubjectPropertyGrossRentalIncome.Dirty = value;
                 _unit4TotalBedrooms.Dirty = value;
                 _uPBAmount.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

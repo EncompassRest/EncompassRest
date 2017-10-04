@@ -40,13 +40,14 @@ namespace EncompassRest.Loans
         public string UCDPStatus { get { return _uCDPStatus; } set { _uCDPStatus = value; } }
         private DirtyValue<string> _uLDDECStatus;
         public string ULDDECStatus { get { return _uLDDECStatus; } set { _uLDDECStatus = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _cltv.Dirty
                     || _collateralUnderwriterScore.Dirty
                     || _community2ndRepaymentStructure.Dirty
@@ -63,12 +64,13 @@ namespace EncompassRest.Loans
                     || _uCDCollectionStatus.Dirty
                     || _uCDPStatus.Dirty
                     || _uLDDECStatus.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _cltv.Dirty = value;
                 _collateralUnderwriterScore.Dirty = value;
                 _community2ndRepaymentStructure.Dirty = value;
@@ -85,7 +87,7 @@ namespace EncompassRest.Loans
                 _uCDCollectionStatus.Dirty = value;
                 _uCDPStatus.Dirty = value;
                 _uLDDECStatus.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

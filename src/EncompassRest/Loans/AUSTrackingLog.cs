@@ -438,13 +438,14 @@ namespace EncompassRest.Loans
         public string Log_UnderwritingRiskAssessType { get { return _log_UnderwritingRiskAssessType; } set { _log_UnderwritingRiskAssessType = value; } }
         private DirtyValue<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get { return _log_WithUndisclosedDebt; } set { _log_WithUndisclosedDebt = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aUSTrackingLogIndex.Dirty
                     || _batchDocumentRefId.Dirty
                     || _id.Dirty
@@ -660,12 +661,13 @@ namespace EncompassRest.Loans
                     || _log_UnderwritingRiskAssessOther.Dirty
                     || _log_UnderwritingRiskAssessType.Dirty
                     || _log_WithUndisclosedDebt.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aUSTrackingLogIndex.Dirty = value;
                 _batchDocumentRefId.Dirty = value;
                 _id.Dirty = value;
@@ -881,7 +883,7 @@ namespace EncompassRest.Loans
                 _log_UnderwritingRiskAssessOther.Dirty = value;
                 _log_UnderwritingRiskAssessType.Dirty = value;
                 _log_WithUndisclosedDebt.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

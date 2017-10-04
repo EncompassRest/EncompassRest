@@ -9,9 +9,9 @@ namespace EncompassRest.Loans
     public sealed partial class EdmLog : IDirty
     {
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private DirtyValue<string> _creator;
@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
         private DirtyList<EdmDocument> _documents;
-        public IList<EdmDocument> Documents { get { var v = _documents; return v ?? Interlocked.CompareExchange(ref _documents, (v = new DirtyList<EdmDocument>()), null) ?? v; } set { _documents = new DirtyList<EdmDocument>(value); } }
+        public IList<EdmDocument> Documents { get { return _documents ?? (_documents = new DirtyList<EdmDocument>()); } set { _documents = new DirtyList<EdmDocument>(value); } }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         private DirtyValue<string> _guid;
@@ -36,13 +36,14 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private DirtyValue<string> _url;
         public string Url { get { return _url; } set { _url = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _comments.Dirty
                     || _creator.Dirty
                     || _dateUtc.Dirty
@@ -57,12 +58,13 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _documents?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _comments.Dirty = value;
                 _creator.Dirty = value;
                 _dateUtc.Dirty = value;
@@ -77,7 +79,7 @@ namespace EncompassRest.Loans
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_documents != null) _documents.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

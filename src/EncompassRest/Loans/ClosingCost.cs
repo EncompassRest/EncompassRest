@@ -25,15 +25,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _closingCostScenarioXml;
         public string ClosingCostScenarioXml { get { return _closingCostScenarioXml; } set { _closingCostScenarioXml = value; } }
         private ClosingDisclosure1 _closingDisclosure1;
-        public ClosingDisclosure1 ClosingDisclosure1 { get { var v = _closingDisclosure1; return v ?? Interlocked.CompareExchange(ref _closingDisclosure1, (v = new ClosingDisclosure1()), null) ?? v; } set { _closingDisclosure1 = value; } }
+        public ClosingDisclosure1 ClosingDisclosure1 { get { return _closingDisclosure1 ?? (_closingDisclosure1 = new ClosingDisclosure1()); } set { _closingDisclosure1 = value; } }
         private ClosingDisclosure2 _closingDisclosure2;
-        public ClosingDisclosure2 ClosingDisclosure2 { get { var v = _closingDisclosure2; return v ?? Interlocked.CompareExchange(ref _closingDisclosure2, (v = new ClosingDisclosure2()), null) ?? v; } set { _closingDisclosure2 = value; } }
+        public ClosingDisclosure2 ClosingDisclosure2 { get { return _closingDisclosure2 ?? (_closingDisclosure2 = new ClosingDisclosure2()); } set { _closingDisclosure2 = value; } }
         private ClosingDisclosure3 _closingDisclosure3;
-        public ClosingDisclosure3 ClosingDisclosure3 { get { var v = _closingDisclosure3; return v ?? Interlocked.CompareExchange(ref _closingDisclosure3, (v = new ClosingDisclosure3()), null) ?? v; } set { _closingDisclosure3 = value; } }
+        public ClosingDisclosure3 ClosingDisclosure3 { get { return _closingDisclosure3 ?? (_closingDisclosure3 = new ClosingDisclosure3()); } set { _closingDisclosure3 = value; } }
         private ClosingDisclosure4 _closingDisclosure4;
-        public ClosingDisclosure4 ClosingDisclosure4 { get { var v = _closingDisclosure4; return v ?? Interlocked.CompareExchange(ref _closingDisclosure4, (v = new ClosingDisclosure4()), null) ?? v; } set { _closingDisclosure4 = value; } }
+        public ClosingDisclosure4 ClosingDisclosure4 { get { return _closingDisclosure4 ?? (_closingDisclosure4 = new ClosingDisclosure4()); } set { _closingDisclosure4 = value; } }
         private ClosingDisclosure5 _closingDisclosure5;
-        public ClosingDisclosure5 ClosingDisclosure5 { get { var v = _closingDisclosure5; return v ?? Interlocked.CompareExchange(ref _closingDisclosure5, (v = new ClosingDisclosure5()), null) ?? v; } set { _closingDisclosure5 = value; } }
+        public ClosingDisclosure5 ClosingDisclosure5 { get { return _closingDisclosure5 ?? (_closingDisclosure5 = new ClosingDisclosure5()); } set { _closingDisclosure5 = value; } }
         private DirtyValue<decimal?> _disclosedSalesPrice;
         public decimal? DisclosedSalesPrice { get { return _disclosedSalesPrice; } set { _disclosedSalesPrice = value; } }
         private DirtyValue<string> _escrowCompanyName;
@@ -63,15 +63,15 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _escrowTableName;
         public string EscrowTableName { get { return _escrowTableName; } set { _escrowTableName = value; } }
         private FeeVarianceOther _feeVarianceOther;
-        public FeeVarianceOther FeeVarianceOther { get { var v = _feeVarianceOther; return v ?? Interlocked.CompareExchange(ref _feeVarianceOther, (v = new FeeVarianceOther()), null) ?? v; } set { _feeVarianceOther = value; } }
+        public FeeVarianceOther FeeVarianceOther { get { return _feeVarianceOther ?? (_feeVarianceOther = new FeeVarianceOther()); } set { _feeVarianceOther = value; } }
         private DirtyList<FeeVariance> _feeVariances;
-        public IList<FeeVariance> FeeVariances { get { var v = _feeVariances; return v ?? Interlocked.CompareExchange(ref _feeVariances, (v = new DirtyList<FeeVariance>()), null) ?? v; } set { _feeVariances = new DirtyList<FeeVariance>(value); } }
+        public IList<FeeVariance> FeeVariances { get { return _feeVariances ?? (_feeVariances = new DirtyList<FeeVariance>()); } set { _feeVariances = new DirtyList<FeeVariance>(value); } }
         private Gfe2010 _gfe2010;
-        public Gfe2010 Gfe2010 { get { var v = _gfe2010; return v ?? Interlocked.CompareExchange(ref _gfe2010, (v = new Gfe2010()), null) ?? v; } set { _gfe2010 = value; } }
+        public Gfe2010 Gfe2010 { get { return _gfe2010 ?? (_gfe2010 = new Gfe2010()); } set { _gfe2010 = value; } }
         private Gfe2010Page _gfe2010Page;
-        public Gfe2010Page Gfe2010Page { get { var v = _gfe2010Page; return v ?? Interlocked.CompareExchange(ref _gfe2010Page, (v = new Gfe2010Page()), null) ?? v; } set { _gfe2010Page = value; } }
+        public Gfe2010Page Gfe2010Page { get { return _gfe2010Page ?? (_gfe2010Page = new Gfe2010Page()); } set { _gfe2010Page = value; } }
         private Gfe2010Section _gfe2010Section;
-        public Gfe2010Section Gfe2010Section { get { var v = _gfe2010Section; return v ?? Interlocked.CompareExchange(ref _gfe2010Section, (v = new Gfe2010Section()), null) ?? v; } set { _gfe2010Section = value; } }
+        public Gfe2010Section Gfe2010Section { get { return _gfe2010Section ?? (_gfe2010Section = new Gfe2010Section()); } set { _gfe2010Section = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _impoundHazInsRate;
@@ -91,11 +91,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _impoundType4;
         public string ImpoundType4 { get { return _impoundType4; } set { _impoundType4 = value; } }
         private LoanEstimate1 _loanEstimate1;
-        public LoanEstimate1 LoanEstimate1 { get { var v = _loanEstimate1; return v ?? Interlocked.CompareExchange(ref _loanEstimate1, (v = new LoanEstimate1()), null) ?? v; } set { _loanEstimate1 = value; } }
+        public LoanEstimate1 LoanEstimate1 { get { return _loanEstimate1 ?? (_loanEstimate1 = new LoanEstimate1()); } set { _loanEstimate1 = value; } }
         private LoanEstimate2 _loanEstimate2;
-        public LoanEstimate2 LoanEstimate2 { get { var v = _loanEstimate2; return v ?? Interlocked.CompareExchange(ref _loanEstimate2, (v = new LoanEstimate2()), null) ?? v; } set { _loanEstimate2 = value; } }
+        public LoanEstimate2 LoanEstimate2 { get { return _loanEstimate2 ?? (_loanEstimate2 = new LoanEstimate2()); } set { _loanEstimate2 = value; } }
         private LoanEstimate3 _loanEstimate3;
-        public LoanEstimate3 LoanEstimate3 { get { var v = _loanEstimate3; return v ?? Interlocked.CompareExchange(ref _loanEstimate3, (v = new LoanEstimate3()), null) ?? v; } set { _loanEstimate3 = value; } }
+        public LoanEstimate3 LoanEstimate3 { get { return _loanEstimate3 ?? (_loanEstimate3 = new LoanEstimate3()); } set { _loanEstimate3 = value; } }
         private DirtyValue<decimal?> _proposedMonthlyHazardInsurance;
         public decimal? ProposedMonthlyHazardInsurance { get { return _proposedMonthlyHazardInsurance; } set { _proposedMonthlyHazardInsurance = value; } }
         private DirtyValue<decimal?> _proposedMonthlyMortgageInsurance;
@@ -140,13 +140,14 @@ namespace EncompassRest.Loans
         public decimal? TotalForSellerPaid5 { get { return _totalForSellerPaid5; } set { _totalForSellerPaid5 = value; } }
         private DirtyValue<decimal?> _totalForSellerPaid6;
         public decimal? TotalForSellerPaid6 { get { return _totalForSellerPaid6; } set { _totalForSellerPaid6 = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adjustmentFactor.Dirty
                     || _aggregateAdjustmentFwbc.Dirty
                     || _borrowerPaidDiscountPointsTotalAmount.Dirty
@@ -213,12 +214,13 @@ namespace EncompassRest.Loans
                     || _loanEstimate1?.Dirty == true
                     || _loanEstimate2?.Dirty == true
                     || _loanEstimate3?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adjustmentFactor.Dirty = value;
                 _aggregateAdjustmentFwbc.Dirty = value;
                 _borrowerPaidDiscountPointsTotalAmount.Dirty = value;
@@ -285,7 +287,7 @@ namespace EncompassRest.Loans
                 if (_loanEstimate1 != null) _loanEstimate1.Dirty = value;
                 if (_loanEstimate2 != null) _loanEstimate2.Dirty = value;
                 if (_loanEstimate3 != null) _loanEstimate3.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

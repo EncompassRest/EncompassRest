@@ -76,13 +76,14 @@ namespace EncompassRest.Loans
         public string SubsequentChanges { get { return _subsequentChanges; } set { _subsequentChanges = value; } }
         private DirtyValue<decimal?> _totalDisbursed1YearConsummation;
         public decimal? TotalDisbursed1YearConsummation { get { return _totalDisbursed1YearConsummation; } set { _totalDisbursed1YearConsummation = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _demandFeature.Dirty
                     || _escrowIndicator.Dirty
                     || _estimatedPropertyCosts.Dirty
@@ -117,12 +118,13 @@ namespace EncompassRest.Loans
                     || _stepRateFirstChange.Dirty
                     || _subsequentChanges.Dirty
                     || _totalDisbursed1YearConsummation.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _demandFeature.Dirty = value;
                 _escrowIndicator.Dirty = value;
                 _estimatedPropertyCosts.Dirty = value;
@@ -157,7 +159,7 @@ namespace EncompassRest.Loans
                 _stepRateFirstChange.Dirty = value;
                 _subsequentChanges.Dirty = value;
                 _totalDisbursed1YearConsummation.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

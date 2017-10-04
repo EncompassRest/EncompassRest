@@ -31,7 +31,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _isSecondaryRegistration;
         public bool? IsSecondaryRegistration { get { return _isSecondaryRegistration; } set { _isSecondaryRegistration = value; } }
         private DirtyList<LoanSubmissionFee> _loanSubmissionFees;
-        public IList<LoanSubmissionFee> LoanSubmissionFees { get { var v = _loanSubmissionFees; return v ?? Interlocked.CompareExchange(ref _loanSubmissionFees, (v = new DirtyList<LoanSubmissionFee>()), null) ?? v; } set { _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); } }
+        public IList<LoanSubmissionFee> LoanSubmissionFees { get { return _loanSubmissionFees ?? (_loanSubmissionFees = new DirtyList<LoanSubmissionFee>()); } set { _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); } }
         private DirtyValue<DateTime?> _lockDate;
         public DateTime? LockDate { get { return _lockDate; } set { _lockDate = value; } }
         private DirtyValue<DateTime?> _lockDateTimestampUtc;
@@ -66,13 +66,14 @@ namespace EncompassRest.Loans
         public decimal? TotalForDueLender { get { return _totalForDueLender; } set { _totalForDueLender = value; } }
         private DirtyValue<decimal?> _totalForPrimaryResidence;
         public decimal? TotalForPrimaryResidence { get { return _totalForPrimaryResidence; } set { _totalForPrimaryResidence = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amountAvailable.Dirty
                     || _amountRequiredToClose.Dirty
                     || _buydownDescription.Dirty
@@ -102,12 +103,13 @@ namespace EncompassRest.Loans
                     || _totalForDueLender.Dirty
                     || _totalForPrimaryResidence.Dirty
                     || _loanSubmissionFees?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amountAvailable.Dirty = value;
                 _amountRequiredToClose.Dirty = value;
                 _buydownDescription.Dirty = value;
@@ -137,7 +139,7 @@ namespace EncompassRest.Loans
                 _totalForDueLender.Dirty = value;
                 _totalForPrimaryResidence.Dirty = value;
                 if (_loanSubmissionFees != null) _loanSubmissionFees.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

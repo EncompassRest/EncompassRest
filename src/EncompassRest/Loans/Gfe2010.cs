@@ -169,9 +169,9 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _financedFeesFromPrepaid;
         public decimal? FinancedFeesFromPrepaid { get { return _financedFeesFromPrepaid; } set { _financedFeesFromPrepaid = value; } }
         private DirtyList<Gfe2010Fee> _gfe2010Fees;
-        public IList<Gfe2010Fee> Gfe2010Fees { get { var v = _gfe2010Fees; return v ?? Interlocked.CompareExchange(ref _gfe2010Fees, (v = new DirtyList<Gfe2010Fee>()), null) ?? v; } set { _gfe2010Fees = new DirtyList<Gfe2010Fee>(value); } }
+        public IList<Gfe2010Fee> Gfe2010Fees { get { return _gfe2010Fees ?? (_gfe2010Fees = new DirtyList<Gfe2010Fee>()); } set { _gfe2010Fees = new DirtyList<Gfe2010Fee>(value); } }
         private DirtyList<Gfe2010WholePoc> _gfe2010WholePocs;
-        public IList<Gfe2010WholePoc> Gfe2010WholePocs { get { var v = _gfe2010WholePocs; return v ?? Interlocked.CompareExchange(ref _gfe2010WholePocs, (v = new DirtyList<Gfe2010WholePoc>()), null) ?? v; } set { _gfe2010WholePocs = new DirtyList<Gfe2010WholePoc>(value); } }
+        public IList<Gfe2010WholePoc> Gfe2010WholePocs { get { return _gfe2010WholePocs ?? (_gfe2010WholePocs = new DirtyList<Gfe2010WholePoc>()); } set { _gfe2010WholePocs = new DirtyList<Gfe2010WholePoc>(value); } }
         private DirtyValue<decimal?> _gfeGovernmentRecordingCharges;
         public decimal? GfeGovernmentRecordingCharges { get { return _gfeGovernmentRecordingCharges; } set { _gfeGovernmentRecordingCharges = value; } }
         private DirtyValue<decimal?> _hazardInsurance;
@@ -438,13 +438,14 @@ namespace EncompassRest.Loans
         public decimal? UnderwritingFees { get { return _underwritingFees; } set { _underwritingFees = value; } }
         private DirtyValue<bool?> _useLOCompTool;
         public bool? UseLOCompTool { get { return _useLOCompTool; } set { _useLOCompTool = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adjustedOriginationCharges.Dirty
                     || _allOtherServiceAmount.Dirty
                     || _applicationFees.Dirty
@@ -660,12 +661,13 @@ namespace EncompassRest.Loans
                     || _useLOCompTool.Dirty
                     || _gfe2010Fees?.Dirty == true
                     || _gfe2010WholePocs?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adjustedOriginationCharges.Dirty = value;
                 _allOtherServiceAmount.Dirty = value;
                 _applicationFees.Dirty = value;
@@ -881,7 +883,7 @@ namespace EncompassRest.Loans
                 _useLOCompTool.Dirty = value;
                 if (_gfe2010Fees != null) _gfe2010Fees.Dirty = value;
                 if (_gfe2010WholePocs != null) _gfe2010WholePocs.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

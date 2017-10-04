@@ -122,13 +122,14 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalanceAmount { get { return _unpaidBalanceAmount; } set { _unpaidBalanceAmount = value; } }
         private DirtyValue<int?> _volIndex;
         public int? VolIndex { get { return _volIndex; } set { _volIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _accountIdentifier.Dirty
                     || _accountIndicator.Dirty
                     || _attention.Dirty
@@ -186,12 +187,13 @@ namespace EncompassRest.Loans
                     || _uCDPayoffType.Dirty
                     || _unpaidBalanceAmount.Dirty
                     || _volIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _accountIdentifier.Dirty = value;
                 _accountIndicator.Dirty = value;
                 _attention.Dirty = value;
@@ -249,7 +251,7 @@ namespace EncompassRest.Loans
                 _uCDPayoffType.Dirty = value;
                 _unpaidBalanceAmount.Dirty = value;
                 _volIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

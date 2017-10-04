@@ -24,13 +24,14 @@ namespace EncompassRest.Loans
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
         private DirtyValue<string> _rate;
         public string Rate { get { return _rate; } set { _rate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amountDescription.Dirty
                     || _brokerAmount.Dirty
                     || _description.Dirty
@@ -39,12 +40,13 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _otherAmount.Dirty
                     || _rate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amountDescription.Dirty = value;
                 _brokerAmount.Dirty = value;
                 _description.Dirty = value;
@@ -53,7 +55,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _otherAmount.Dirty = value;
                 _rate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

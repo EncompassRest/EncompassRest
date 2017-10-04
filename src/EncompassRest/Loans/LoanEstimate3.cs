@@ -60,13 +60,14 @@ namespace EncompassRest.Loans
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get { return _totalInterestPercentage; } set { _totalInterestPercentage = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisal.Dirty
                     || _assumption.Dirty
                     || _constructionLoan.Dirty
@@ -93,12 +94,13 @@ namespace EncompassRest.Loans
                     || _servicing.Dirty
                     || _signatureType.Dirty
                     || _totalInterestPercentage.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisal.Dirty = value;
                 _assumption.Dirty = value;
                 _constructionLoan.Dirty = value;
@@ -125,7 +127,7 @@ namespace EncompassRest.Loans
                 _servicing.Dirty = value;
                 _signatureType.Dirty = value;
                 _totalInterestPercentage.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

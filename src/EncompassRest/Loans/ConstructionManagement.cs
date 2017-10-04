@@ -148,13 +148,14 @@ namespace EncompassRest.Loans
         public DateTime? WaterTestDate { get { return _waterTestDate; } set { _waterTestDate = value; } }
         private DirtyValue<bool?> _waterTestIndicator;
         public bool? WaterTestIndicator { get { return _waterTestIndicator; } set { _waterTestIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalDisbursementsConditions.Dirty
                     || _architectsCertificateDate.Dirty
                     || _architectsCertificateIndicator.Dirty
@@ -225,12 +226,13 @@ namespace EncompassRest.Loans
                     || _utilityLettersIndicator.Dirty
                     || _waterTestDate.Dirty
                     || _waterTestIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalDisbursementsConditions.Dirty = value;
                 _architectsCertificateDate.Dirty = value;
                 _architectsCertificateIndicator.Dirty = value;
@@ -301,7 +303,7 @@ namespace EncompassRest.Loans
                 _utilityLettersIndicator.Dirty = value;
                 _waterTestDate.Dirty = value;
                 _waterTestIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

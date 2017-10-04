@@ -47,13 +47,13 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _fundingAmount;
         public decimal? FundingAmount { get { return _fundingAmount; } set { _fundingAmount = value; } }
         private DirtyList<GfeFee> _gfeFees;
-        public IList<GfeFee> GfeFees { get { var v = _gfeFees; return v ?? Interlocked.CompareExchange(ref _gfeFees, (v = new DirtyList<GfeFee>()), null) ?? v; } set { _gfeFees = new DirtyList<GfeFee>(value); } }
+        public IList<GfeFee> GfeFees { get { return _gfeFees ?? (_gfeFees = new DirtyList<GfeFee>()); } set { _gfeFees = new DirtyList<GfeFee>(value); } }
         private DirtyList<GfeLien> _gfeLiens;
-        public IList<GfeLien> GfeLiens { get { var v = _gfeLiens; return v ?? Interlocked.CompareExchange(ref _gfeLiens, (v = new DirtyList<GfeLien>()), null) ?? v; } set { _gfeLiens = new DirtyList<GfeLien>(value); } }
+        public IList<GfeLien> GfeLiens { get { return _gfeLiens ?? (_gfeLiens = new DirtyList<GfeLien>()); } set { _gfeLiens = new DirtyList<GfeLien>(value); } }
         private DirtyList<GfePayment> _gfePayments;
-        public IList<GfePayment> GfePayments { get { var v = _gfePayments; return v ?? Interlocked.CompareExchange(ref _gfePayments, (v = new DirtyList<GfePayment>()), null) ?? v; } set { _gfePayments = new DirtyList<GfePayment>(value); } }
+        public IList<GfePayment> GfePayments { get { return _gfePayments ?? (_gfePayments = new DirtyList<GfePayment>()); } set { _gfePayments = new DirtyList<GfePayment>(value); } }
         private DirtyList<GfePayoff> _gfePayoffs;
-        public IList<GfePayoff> GfePayoffs { get { var v = _gfePayoffs; return v ?? Interlocked.CompareExchange(ref _gfePayoffs, (v = new DirtyList<GfePayoff>()), null) ?? v; } set { _gfePayoffs = new DirtyList<GfePayoff>(value); } }
+        public IList<GfePayoff> GfePayoffs { get { return _gfePayoffs ?? (_gfePayoffs = new DirtyList<GfePayoff>()); } set { _gfePayoffs = new DirtyList<GfePayoff>(value); } }
         private DirtyValue<bool?> _gfeProvidedByBrokerIndicator;
         public bool? GfeProvidedByBrokerIndicator { get { return _gfeProvidedByBrokerIndicator; } set { _gfeProvidedByBrokerIndicator = value; } }
         private DirtyValue<bool?> _hasAdditionalCompensationIndicator;
@@ -162,13 +162,14 @@ namespace EncompassRest.Loans
         public string YearlyOtherInsuranceDescription { get { return _yearlyOtherInsuranceDescription; } set { _yearlyOtherInsuranceDescription = value; } }
         private DirtyValue<decimal?> _yearlyTax;
         public decimal? YearlyTax { get { return _yearlyTax; } set { _yearlyTax = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _address.Dirty
                     || _agregateAdjustment.Dirty
                     || _brokerCommission.Dirty
@@ -246,12 +247,13 @@ namespace EncompassRest.Loans
                     || _gfeLiens?.Dirty == true
                     || _gfePayments?.Dirty == true
                     || _gfePayoffs?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _address.Dirty = value;
                 _agregateAdjustment.Dirty = value;
                 _brokerCommission.Dirty = value;
@@ -329,7 +331,7 @@ namespace EncompassRest.Loans
                 if (_gfeLiens != null) _gfeLiens.Dirty = value;
                 if (_gfePayments != null) _gfePayments.Dirty = value;
                 if (_gfePayoffs != null) _gfePayoffs.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
