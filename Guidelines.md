@@ -35,8 +35,10 @@
 
 ### Formatting
 * Always use 4 spaces for indentation.
-* Never include 2 consecutive blank lines.
+* Never include 2 consecutive empty lines.
+* Never start or end a type or method's body with an empty line.
 * Always separate single line argument or parameter list items with just a comma and space.
+* Never start or end an argument or parameter list with a space. i.e. there should be no space between the parentheses and the list.
 
 ## Code Change Pull Requests
 * Every code change pull request needs to have at least one review by a core member prior to being merged.
