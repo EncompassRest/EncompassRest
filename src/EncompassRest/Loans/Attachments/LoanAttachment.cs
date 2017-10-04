@@ -8,29 +8,29 @@ namespace EncompassRest.Loans.Attachments
 {
     public sealed class LoanAttachment : IDirty
     {
-        private Value<string> _attachmentId;
+        private DirtyValue<string> _attachmentId;
         public string AttachmentId { get { return _attachmentId; } set { _attachmentId = value; } }
-        private Value<DateTime?> _dateCreated;
+        private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get { return _dateCreated; } set { _dateCreated = value; } }
-        private Value<string> _createdBy;
+        private DirtyValue<string> _createdBy;
         public string CreatedBy { get { return _createdBy; } set { _createdBy = value; } }
-        private Value<string> _createdByName;
+        private DirtyValue<string> _createdByName;
         public string CreatedByName { get { return _createdByName; } set { _createdByName = value; } }
-        private Value<AttachmentCreateReason?> _createReason;
+        private DirtyValue<AttachmentCreateReason?> _createReason;
         [EnumOutput(EnumOutput.Integer)]
         public AttachmentCreateReason? CreateReason { get { return _createReason; } set { _createReason = value; } }
-        private Value<AttachmentType?> _attachmentType;
+        private DirtyValue<AttachmentType?> _attachmentType;
         [EnumOutput(EnumOutput.Integer)]
         public AttachmentType? AttachmentType { get { return _attachmentType; } set { _attachmentType = value; } }
-        private Value<long?> _fileSize;
+        private DirtyValue<long?> _fileSize;
         public long? FileSize { get { return _fileSize; } set { _fileSize = value; } }
-        private Value<bool?> _isActive;
+        private DirtyValue<bool?> _isActive;
         public bool? IsActive { get { return _isActive; } set { _isActive = value; } }
-        private Value<List<PageImage>> _pages;
+        private DirtyValue<List<PageImage>> _pages;
         public List<PageImage> Pages { get { return _pages; } set { _pages = value; } }
-        private Value<int?> _rotation;
+        private DirtyValue<int?> _rotation;
         public int? Rotation { get { return _rotation; } set { _rotation = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get; set; }

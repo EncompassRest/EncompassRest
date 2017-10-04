@@ -8,15 +8,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Gfe2010WholePoc : IDirty
     {
-        private Value<int?> _gfe2010WholePocIndex;
+        private DirtyValue<int?> _gfe2010WholePocIndex;
         public int? Gfe2010WholePocIndex { get { return _gfe2010WholePocIndex; } set { _gfe2010WholePocIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<int?> _lineNumber;
+        private DirtyValue<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private Value<decimal?> _wholePoc;
+        private DirtyValue<decimal?> _wholePoc;
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
-        private Value<string> _wholePocPaidByType;
+        private DirtyValue<string> _wholePocPaidByType;
         public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

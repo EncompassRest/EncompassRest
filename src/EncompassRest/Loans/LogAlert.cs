@@ -8,18 +8,19 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LogAlert : IDirty
     {
-        private Value<DateTime?> _dueDate;
+        private DirtyValue<DateTime?> _dueDate;
         public DateTime? DueDate { get { return _dueDate; } set { _dueDate = value; } }
-        private Value<DateTime?> _followedUpDate;
+        private DirtyValue<DateTime?> _followedUpDate;
         public DateTime? FollowedUpDate { get { return _followedUpDate; } set { _followedUpDate = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        public LogRecord LogRecord { get; set; }
-        private Value<int?> _roleId;
+        private LogRecord _logRecord;
+        public LogRecord LogRecord { get { var v = _logRecord; return v ?? Interlocked.CompareExchange(ref _logRecord, (v = new LogRecord()), null) ?? v; } set { _logRecord = value; } }
+        private DirtyValue<int?> _roleId;
         public int? RoleId { get { return _roleId; } set { _roleId = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private Value<string> _userId;
+        private DirtyValue<string> _userId;
         public string UserId { get { return _userId; } set { _userId = value; } }
         private int _gettingDirty;
         private int _settingDirty; 
@@ -34,7 +35,7 @@ namespace EncompassRest.Loans
                     || _roleId.Dirty
                     || _systemId.Dirty
                     || _userId.Dirty
-                    || LogRecord?.Dirty == true;
+                    || _logRecord?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -47,7 +48,7 @@ namespace EncompassRest.Loans
                 _roleId.Dirty = value;
                 _systemId.Dirty = value;
                 _userId.Dirty = value;
-                if (LogRecord != null) LogRecord.Dirty = value;
+                if (_logRecord != null) _logRecord.Dirty = value;
                 _settingDirty = 0;
             }
         }

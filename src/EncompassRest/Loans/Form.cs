@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Form : IDirty
     {
-        private Value<int?> _formId;
+        private DirtyValue<int?> _formId;
         public int? FormId { get { return _formId; } set { _formId = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

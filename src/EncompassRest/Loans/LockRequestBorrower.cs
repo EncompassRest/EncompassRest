@@ -8,23 +8,23 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LockRequestBorrower : IDirty
     {
-        private Value<string> _equifaxScore;
+        private DirtyValue<string> _equifaxScore;
         public string EquifaxScore { get { return _equifaxScore; } set { _equifaxScore = value; } }
-        private Value<string> _experianScore;
+        private DirtyValue<string> _experianScore;
         public string ExperianScore { get { return _experianScore; } set { _experianScore = value; } }
-        private Value<string> _firstName;
+        private DirtyValue<string> _firstName;
         public string FirstName { get { return _firstName; } set { _firstName = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isEmpty;
+        private DirtyValue<bool?> _isEmpty;
         public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
-        private Value<string> _lastName;
+        private DirtyValue<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
-        private Value<int?> _lrbIndex;
+        private DirtyValue<int?> _lrbIndex;
         public int? LrbIndex { get { return _lrbIndex; } set { _lrbIndex = value; } }
-        private Value<string> _sSN;
+        private DirtyValue<string> _sSN;
         public string SSN { get { return _sSN; } set { _sSN = value; } }
-        private Value<string> _transUnionScore;
+        private DirtyValue<string> _transUnionScore;
         public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

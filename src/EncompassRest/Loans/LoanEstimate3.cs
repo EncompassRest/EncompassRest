@@ -8,57 +8,57 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanEstimate3 : IDirty
     {
-        private Value<string> _appraisal;
+        private DirtyValue<string> _appraisal;
         public string Appraisal { get { return _appraisal; } set { _appraisal = value; } }
-        private Value<string> _assumption;
+        private DirtyValue<string> _assumption;
         public string Assumption { get { return _assumption; } set { _assumption = value; } }
-        private Value<bool?> _constructionLoan;
+        private DirtyValue<bool?> _constructionLoan;
         public bool? ConstructionLoan { get { return _constructionLoan; } set { _constructionLoan = value; } }
-        private Value<bool?> _homeownerInsurance;
+        private DirtyValue<bool?> _homeownerInsurance;
         public bool? HomeownerInsurance { get { return _homeownerInsurance; } set { _homeownerInsurance = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<int?> _in5YearsPrincipalYouWillHavePaidOff;
+        private DirtyValue<int?> _in5YearsPrincipalYouWillHavePaidOff;
         public int? In5YearsPrincipalYouWillHavePaidOff { get { return _in5YearsPrincipalYouWillHavePaidOff; } set { _in5YearsPrincipalYouWillHavePaidOff = value; } }
-        private Value<int?> _in5YearsTotalYouWillHavePaid;
+        private DirtyValue<int?> _in5YearsTotalYouWillHavePaid;
         public int? In5YearsTotalYouWillHavePaid { get { return _in5YearsTotalYouWillHavePaid; } set { _in5YearsTotalYouWillHavePaid = value; } }
-        private Value<string> _lenderEmail;
+        private DirtyValue<string> _lenderEmail;
         public string LenderEmail { get { return _lenderEmail; } set { _lenderEmail = value; } }
-        private Value<string> _lenderLicenseID;
+        private DirtyValue<string> _lenderLicenseID;
         public string LenderLicenseID { get { return _lenderLicenseID; } set { _lenderLicenseID = value; } }
-        private Value<string> _lenderLicenseState;
+        private DirtyValue<string> _lenderLicenseState;
         public string LenderLicenseState { get { return _lenderLicenseState; } set { _lenderLicenseState = value; } }
-        private Value<string> _lenderLoanOfficer;
+        private DirtyValue<string> _lenderLoanOfficer;
         public string LenderLoanOfficer { get { return _lenderLoanOfficer; } set { _lenderLoanOfficer = value; } }
-        private Value<string> _lenderLoanOfficerLicenseState;
+        private DirtyValue<string> _lenderLoanOfficerLicenseState;
         public string LenderLoanOfficerLicenseState { get { return _lenderLoanOfficerLicenseState; } set { _lenderLoanOfficerLicenseState = value; } }
-        private Value<string> _lenderLoanOfficerNMLSId;
+        private DirtyValue<string> _lenderLoanOfficerNMLSId;
         public string LenderLoanOfficerNMLSId { get { return _lenderLoanOfficerNMLSId; } set { _lenderLoanOfficerNMLSId = value; } }
-        private Value<string> _lenderPhone;
+        private DirtyValue<string> _lenderPhone;
         public string LenderPhone { get { return _lenderPhone; } set { _lenderPhone = value; } }
-        private Value<string> _mortgageBrokerEmail;
+        private DirtyValue<string> _mortgageBrokerEmail;
         public string MortgageBrokerEmail { get { return _mortgageBrokerEmail; } set { _mortgageBrokerEmail = value; } }
-        private Value<string> _mortgageBrokerLicenseID;
+        private DirtyValue<string> _mortgageBrokerLicenseID;
         public string MortgageBrokerLicenseID { get { return _mortgageBrokerLicenseID; } set { _mortgageBrokerLicenseID = value; } }
-        private Value<string> _mortgageBrokerLicenseState;
+        private DirtyValue<string> _mortgageBrokerLicenseState;
         public string MortgageBrokerLicenseState { get { return _mortgageBrokerLicenseState; } set { _mortgageBrokerLicenseState = value; } }
-        private Value<string> _mortgageBrokerLoanOfficer;
+        private DirtyValue<string> _mortgageBrokerLoanOfficer;
         public string MortgageBrokerLoanOfficer { get { return _mortgageBrokerLoanOfficer; } set { _mortgageBrokerLoanOfficer = value; } }
-        private Value<string> _mortgageBrokerLoanOfficerLicenseID;
+        private DirtyValue<string> _mortgageBrokerLoanOfficerLicenseID;
         public string MortgageBrokerLoanOfficerLicenseID { get { return _mortgageBrokerLoanOfficerLicenseID; } set { _mortgageBrokerLoanOfficerLicenseID = value; } }
-        private Value<string> _mortgageBrokerLoanOfficerLicenseState;
+        private DirtyValue<string> _mortgageBrokerLoanOfficerLicenseState;
         public string MortgageBrokerLoanOfficerLicenseState { get { return _mortgageBrokerLoanOfficerLicenseState; } set { _mortgageBrokerLoanOfficerLicenseState = value; } }
-        private Value<string> _mortgageBrokerLoanOfficerNMLSId;
+        private DirtyValue<string> _mortgageBrokerLoanOfficerNMLSId;
         public string MortgageBrokerLoanOfficerNMLSId { get { return _mortgageBrokerLoanOfficerNMLSId; } set { _mortgageBrokerLoanOfficerNMLSId = value; } }
-        private Value<string> _mortgageBrokerPhone;
+        private DirtyValue<string> _mortgageBrokerPhone;
         public string MortgageBrokerPhone { get { return _mortgageBrokerPhone; } set { _mortgageBrokerPhone = value; } }
-        private Value<string> _mortgageLenderLoanOfficerLicenseID;
+        private DirtyValue<string> _mortgageLenderLoanOfficerLicenseID;
         public string MortgageLenderLoanOfficerLicenseID { get { return _mortgageLenderLoanOfficerLicenseID; } set { _mortgageLenderLoanOfficerLicenseID = value; } }
-        private Value<string> _servicing;
+        private DirtyValue<string> _servicing;
         public string Servicing { get { return _servicing; } set { _servicing = value; } }
-        private Value<string> _signatureType;
+        private DirtyValue<string> _signatureType;
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
-        private Value<decimal?> _totalInterestPercentage;
+        private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get { return _totalInterestPercentage; } set { _totalInterestPercentage = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

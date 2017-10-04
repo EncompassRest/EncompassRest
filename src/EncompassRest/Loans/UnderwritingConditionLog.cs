@@ -8,117 +8,117 @@ namespace EncompassRest.Loans
 {
     public sealed partial class UnderwritingConditionLog : IDirty
     {
-        private Value<string> _addedBy;
+        private DirtyValue<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        private Value<List<LogAlert>> _alerts;
-        public List<LogAlert> Alerts { get { return _alerts; } set { _alerts = value; } }
-        private Value<string> _alertsXml;
+        private DirtyList<LogAlert> _alerts;
+        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
-        private Value<bool?> _allowToClearIndicator;
+        private DirtyValue<bool?> _allowToClearIndicator;
         public bool? AllowToClearIndicator { get { return _allowToClearIndicator; } set { _allowToClearIndicator = value; } }
-        private Value<string> _category;
+        private DirtyValue<string> _category;
         public string Category { get { return _category; } set { _category = value; } }
-        private Value<bool?> _cleared;
+        private DirtyValue<bool?> _cleared;
         public bool? Cleared { get { return _cleared; } set { _cleared = value; } }
-        private Value<string> _clearedBy;
+        private DirtyValue<string> _clearedBy;
         public string ClearedBy { get { return _clearedBy; } set { _clearedBy = value; } }
-        private Value<List<LogComment>> _commentList;
-        public List<LogComment> CommentList { get { return _commentList; } set { _commentList = value; } }
-        private Value<string> _commentListXml;
+        private DirtyList<LogComment> _commentList;
+        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _dateAddedUtc;
+        private DirtyValue<DateTime?> _dateAddedUtc;
         public DateTime? DateAddedUtc { get { return _dateAddedUtc; } set { _dateAddedUtc = value; } }
-        private Value<DateTime?> _dateClearedUtc;
+        private DirtyValue<DateTime?> _dateClearedUtc;
         public DateTime? DateClearedUtc { get { return _dateClearedUtc; } set { _dateClearedUtc = value; } }
-        private Value<DateTime?> _dateExpected;
+        private DirtyValue<DateTime?> _dateExpected;
         public DateTime? DateExpected { get { return _dateExpected; } set { _dateExpected = value; } }
-        private Value<DateTime?> _dateExpiredUtc;
+        private DirtyValue<DateTime?> _dateExpiredUtc;
         public DateTime? DateExpiredUtc { get { return _dateExpiredUtc; } set { _dateExpiredUtc = value; } }
-        private Value<DateTime?> _dateFulfilledUtc;
+        private DirtyValue<DateTime?> _dateFulfilledUtc;
         public DateTime? DateFulfilledUtc { get { return _dateFulfilledUtc; } set { _dateFulfilledUtc = value; } }
-        private Value<DateTime?> _dateReceived;
+        private DirtyValue<DateTime?> _dateReceived;
         public DateTime? DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
-        private Value<DateTime?> _dateReceivedUtc;
+        private DirtyValue<DateTime?> _dateReceivedUtc;
         public DateTime? DateReceivedUtc { get { return _dateReceivedUtc; } set { _dateReceivedUtc = value; } }
-        private Value<DateTime?> _dateRejectedUtc;
+        private DirtyValue<DateTime?> _dateRejectedUtc;
         public DateTime? DateRejectedUtc { get { return _dateRejectedUtc; } set { _dateRejectedUtc = value; } }
-        private Value<DateTime?> _dateRequestedUtc;
+        private DirtyValue<DateTime?> _dateRequestedUtc;
         public DateTime? DateRequestedUtc { get { return _dateRequestedUtc; } set { _dateRequestedUtc = value; } }
-        private Value<DateTime?> _dateRerequestedUtc;
+        private DirtyValue<DateTime?> _dateRerequestedUtc;
         public DateTime? DateRerequestedUtc { get { return _dateRerequestedUtc; } set { _dateRerequestedUtc = value; } }
-        private Value<DateTime?> _dateReviewedUtc;
+        private DirtyValue<DateTime?> _dateReviewedUtc;
         public DateTime? DateReviewedUtc { get { return _dateReviewedUtc; } set { _dateReviewedUtc = value; } }
-        private Value<DateTime?> _dateUtc;
+        private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
-        private Value<DateTime?> _dateWaivedUtc;
+        private DirtyValue<DateTime?> _dateWaivedUtc;
         public DateTime? DateWaivedUtc { get { return _dateWaivedUtc; } set { _dateWaivedUtc = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _details;
+        private DirtyValue<string> _details;
         public string Details { get { return _details; } set { _details = value; } }
-        private Value<bool?> _expected;
+        private DirtyValue<bool?> _expected;
         public bool? Expected { get { return _expected; } set { _expected = value; } }
-        private Value<bool?> _fileAttachmentsMigrated;
+        private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
-        private Value<int?> _forRoleId;
+        private DirtyValue<int?> _forRoleId;
         public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
-        private Value<bool?> _fulfilled;
+        private DirtyValue<bool?> _fulfilled;
         public bool? Fulfilled { get { return _fulfilled; } set { _fulfilled = value; } }
-        private Value<string> _fulfilledBy;
+        private DirtyValue<string> _fulfilledBy;
         public string FulfilledBy { get { return _fulfilledBy; } set { _fulfilledBy = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isExternalIndicator;
+        private DirtyValue<bool?> _isExternalIndicator;
         public bool? IsExternalIndicator { get { return _isExternalIndicator; } set { _isExternalIndicator = value; } }
-        private Value<bool?> _isInternalIndicator;
+        private DirtyValue<bool?> _isInternalIndicator;
         public bool? IsInternalIndicator { get { return _isInternalIndicator; } set { _isInternalIndicator = value; } }
-        private Value<bool?> _isPastDue;
+        private DirtyValue<bool?> _isPastDue;
         public bool? IsPastDue { get { return _isPastDue; } set { _isPastDue = value; } }
-        private Value<bool?> _isSystemSpecificIndicator;
+        private DirtyValue<bool?> _isSystemSpecificIndicator;
         public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
-        private Value<int?> _logRecordIndex;
+        private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
-        private Value<string> _pairId;
+        private DirtyValue<string> _pairId;
         public string PairId { get { return _pairId; } set { _pairId = value; } }
-        private Value<string> _priorTo;
+        private DirtyValue<string> _priorTo;
         public string PriorTo { get { return _priorTo; } set { _priorTo = value; } }
-        private Value<bool?> _received;
+        private DirtyValue<bool?> _received;
         public bool? Received { get { return _received; } set { _received = value; } }
-        private Value<string> _receivedBy;
+        private DirtyValue<string> _receivedBy;
         public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
-        private Value<bool?> _rejected;
+        private DirtyValue<bool?> _rejected;
         public bool? Rejected { get { return _rejected; } set { _rejected = value; } }
-        private Value<string> _rejectedBy;
+        private DirtyValue<string> _rejectedBy;
         public string RejectedBy { get { return _rejectedBy; } set { _rejectedBy = value; } }
-        private Value<bool?> _requested;
+        private DirtyValue<bool?> _requested;
         public bool? Requested { get { return _requested; } set { _requested = value; } }
-        private Value<string> _requestedBy;
+        private DirtyValue<string> _requestedBy;
         public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
-        private Value<bool?> _rerequested;
+        private DirtyValue<bool?> _rerequested;
         public bool? Rerequested { get { return _rerequested; } set { _rerequested = value; } }
-        private Value<string> _rerequestedBy;
+        private DirtyValue<string> _rerequestedBy;
         public string RerequestedBy { get { return _rerequestedBy; } set { _rerequestedBy = value; } }
-        private Value<bool?> _reviewed;
+        private DirtyValue<bool?> _reviewed;
         public bool? Reviewed { get { return _reviewed; } set { _reviewed = value; } }
-        private Value<string> _reviewedBy;
+        private DirtyValue<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        private Value<string> _source;
+        private DirtyValue<string> _source;
         public string Source { get { return _source; } set { _source = value; } }
-        private Value<string> _status;
+        private DirtyValue<string> _status;
         public string Status { get { return _status; } set { _status = value; } }
-        private Value<string> _statusDescription;
+        private DirtyValue<string> _statusDescription;
         public string StatusDescription { get { return _statusDescription; } set { _statusDescription = value; } }
-        private Value<string> _systemId;
+        private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private Value<bool?> _waived;
+        private DirtyValue<bool?> _waived;
         public bool? Waived { get { return _waived; } set { _waived = value; } }
-        private Value<string> _waivedBy;
+        private DirtyValue<string> _waivedBy;
         public string WaivedBy { get { return _waivedBy; } set { _waivedBy = value; } }
         private int _gettingDirty;
         private int _settingDirty; 
@@ -128,13 +128,11 @@ namespace EncompassRest.Loans
             {
                 if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
                 var dirty = _addedBy.Dirty
-                    || _alerts.Dirty
                     || _alertsXml.Dirty
                     || _allowToClearIndicator.Dirty
                     || _category.Dirty
                     || _cleared.Dirty
                     || _clearedBy.Dirty
-                    || _commentList.Dirty
                     || _commentListXml.Dirty
                     || _comments.Dirty
                     || _dateAddedUtc.Dirty
@@ -182,7 +180,9 @@ namespace EncompassRest.Loans
                     || _systemId.Dirty
                     || _title.Dirty
                     || _waived.Dirty
-                    || _waivedBy.Dirty;
+                    || _waivedBy.Dirty
+                    || _alerts?.Dirty == true
+                    || _commentList?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -190,13 +190,11 @@ namespace EncompassRest.Loans
             {
                 if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
                 _addedBy.Dirty = value;
-                _alerts.Dirty = value;
                 _alertsXml.Dirty = value;
                 _allowToClearIndicator.Dirty = value;
                 _category.Dirty = value;
                 _cleared.Dirty = value;
                 _clearedBy.Dirty = value;
-                _commentList.Dirty = value;
                 _commentListXml.Dirty = value;
                 _comments.Dirty = value;
                 _dateAddedUtc.Dirty = value;
@@ -245,6 +243,8 @@ namespace EncompassRest.Loans
                 _title.Dirty = value;
                 _waived.Dirty = value;
                 _waivedBy.Dirty = value;
+                if (_alerts != null) _alerts.Dirty = value;
+                if (_commentList != null) _commentList.Dirty = value;
                 _settingDirty = 0;
             }
         }

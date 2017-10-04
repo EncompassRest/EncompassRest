@@ -8,27 +8,27 @@ namespace EncompassRest.Loans
 {
     public sealed partial class NewYorkFee : IDirty
     {
-        private Value<string> _address;
+        private DirtyValue<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<string> _city;
+        private DirtyValue<string> _city;
         public string City { get { return _city; } set { _city = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _date;
+        private DirtyValue<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        private Value<string> _feeType;
+        private DirtyValue<string> _feeType;
         public string FeeType { get { return _feeType; } set { _feeType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<int?> _newYorkFeeIndex;
+        private DirtyValue<int?> _newYorkFeeIndex;
         public int? NewYorkFeeIndex { get { return _newYorkFeeIndex; } set { _newYorkFeeIndex = value; } }
-        private Value<string> _postalCode;
+        private DirtyValue<string> _postalCode;
         public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
-        private Value<string> _state;
+        private DirtyValue<string> _state;
         public string State { get { return _state; } set { _state = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,19 +8,19 @@ namespace EncompassRest.Loans
 {
     public sealed partial class HelocRepaymentDrawPeriod : IDirty
     {
-        private Value<decimal?> _apr;
+        private DirtyValue<decimal?> _apr;
         public decimal? Apr { get { return _apr; } set { _apr = value; } }
-        private Value<bool?> _drawIndicator;
+        private DirtyValue<bool?> _drawIndicator;
         public bool? DrawIndicator { get { return _drawIndicator; } set { _drawIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _indexRatePercent;
+        private DirtyValue<decimal?> _indexRatePercent;
         public decimal? IndexRatePercent { get { return _indexRatePercent; } set { _indexRatePercent = value; } }
-        private Value<decimal?> _marginRatePercent;
+        private DirtyValue<decimal?> _marginRatePercent;
         public decimal? MarginRatePercent { get { return _marginRatePercent; } set { _marginRatePercent = value; } }
-        private Value<decimal?> _minimumMonthlyPaymentAmount;
+        private DirtyValue<decimal?> _minimumMonthlyPaymentAmount;
         public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
-        private Value<int?> _year;
+        private DirtyValue<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

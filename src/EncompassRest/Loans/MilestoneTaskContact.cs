@@ -8,27 +8,27 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilestoneTaskContact : IDirty
     {
-        private Value<string> _address;
+        private DirtyValue<string> _address;
         public string Address { get { return _address; } set { _address = value; } }
-        private Value<string> _city;
+        private DirtyValue<string> _city;
         public string City { get { return _city; } set { _city = value; } }
-        private Value<string> _contactId;
+        private DirtyValue<string> _contactId;
         public string ContactId { get { return _contactId; } set { _contactId = value; } }
-        private Value<string> _email;
+        private DirtyValue<string> _email;
         public string Email { get { return _email; } set { _email = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _phone;
+        private DirtyValue<string> _phone;
         public string Phone { get { return _phone; } set { _phone = value; } }
-        private Value<string> _role;
+        private DirtyValue<string> _role;
         public string Role { get { return _role; } set { _role = value; } }
-        private Value<string> _state;
+        private DirtyValue<string> _state;
         public string State { get { return _state; } set { _state = value; } }
-        private Value<string> _zip;
+        private DirtyValue<string> _zip;
         public string Zip { get { return _zip; } set { _zip = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

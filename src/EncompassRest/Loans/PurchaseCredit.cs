@@ -8,11 +8,11 @@ namespace EncompassRest.Loans
 {
     public sealed partial class PurchaseCredit : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _purchaseCreditType;
+        private DirtyValue<string> _purchaseCreditType;
         public string PurchaseCreditType { get { return _purchaseCreditType; } set { _purchaseCreditType = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

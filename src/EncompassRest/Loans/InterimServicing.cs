@@ -8,305 +8,307 @@ namespace EncompassRest.Loans
 {
     public sealed partial class InterimServicing : IDirty
     {
-        private Value<decimal?> _beginningBalance;
+        private DirtyValue<decimal?> _beginningBalance;
         public decimal? BeginningBalance { get { return _beginningBalance; } set { _beginningBalance = value; } }
-        private Value<string> _borrCellPhoneNumber;
+        private DirtyValue<string> _borrCellPhoneNumber;
         public string BorrCellPhoneNumber { get { return _borrCellPhoneNumber; } set { _borrCellPhoneNumber = value; } }
-        private Value<string> _borrHomeEmail;
+        private DirtyValue<string> _borrHomeEmail;
         public string BorrHomeEmail { get { return _borrHomeEmail; } set { _borrHomeEmail = value; } }
-        private Value<string> _borrHomePhoneNumber;
+        private DirtyValue<string> _borrHomePhoneNumber;
         public string BorrHomePhoneNumber { get { return _borrHomePhoneNumber; } set { _borrHomePhoneNumber = value; } }
-        private Value<string> _borrowerFirstName;
+        private DirtyValue<string> _borrowerFirstName;
         public string BorrowerFirstName { get { return _borrowerFirstName; } set { _borrowerFirstName = value; } }
-        private Value<string> _borrowerLastName;
+        private DirtyValue<string> _borrowerLastName;
         public string BorrowerLastName { get { return _borrowerLastName; } set { _borrowerLastName = value; } }
-        private Value<string> _borrWorkPhoneNumber;
+        private DirtyValue<string> _borrWorkPhoneNumber;
         public string BorrWorkPhoneNumber { get { return _borrWorkPhoneNumber; } set { _borrWorkPhoneNumber = value; } }
-        private Value<string> _calcTriggered;
+        private DirtyValue<string> _calcTriggered;
         public string CalcTriggered { get { return _calcTriggered; } set { _calcTriggered = value; } }
-        private Value<decimal?> _cityInsurance;
+        private DirtyValue<decimal?> _cityInsurance;
         public decimal? CityInsurance { get { return _cityInsurance; } set { _cityInsurance = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<decimal?> _currentPrincipalBalance;
+        private DirtyValue<decimal?> _currentPrincipalBalance;
         public decimal? CurrentPrincipalBalance { get { return _currentPrincipalBalance; } set { _currentPrincipalBalance = value; } }
-        private Value<decimal?> _escrowBalance;
+        private DirtyValue<decimal?> _escrowBalance;
         public decimal? EscrowBalance { get { return _escrowBalance; } set { _escrowBalance = value; } }
-        private Value<List<EscrowDisbursementTransaction>> _escrowDisbursementTransactions;
-        public List<EscrowDisbursementTransaction> EscrowDisbursementTransactions { get { return _escrowDisbursementTransactions; } set { _escrowDisbursementTransactions = value; } }
-        private Value<List<EscrowInterestTransaction>> _escrowInterestTransactions;
-        public List<EscrowInterestTransaction> EscrowInterestTransactions { get { return _escrowInterestTransactions; } set { _escrowInterestTransactions = value; } }
-        private Value<decimal?> _floodInsurance;
+        private DirtyList<EscrowDisbursementTransaction> _escrowDisbursementTransactions;
+        public IList<EscrowDisbursementTransaction> EscrowDisbursementTransactions { get { var v = _escrowDisbursementTransactions; return v ?? Interlocked.CompareExchange(ref _escrowDisbursementTransactions, (v = new DirtyList<EscrowDisbursementTransaction>()), null) ?? v; } set { _escrowDisbursementTransactions = new DirtyList<EscrowDisbursementTransaction>(value); } }
+        private DirtyList<EscrowInterestTransaction> _escrowInterestTransactions;
+        public IList<EscrowInterestTransaction> EscrowInterestTransactions { get { var v = _escrowInterestTransactions; return v ?? Interlocked.CompareExchange(ref _escrowInterestTransactions, (v = new DirtyList<EscrowInterestTransaction>()), null) ?? v; } set { _escrowInterestTransactions = new DirtyList<EscrowInterestTransaction>(value); } }
+        private DirtyValue<decimal?> _floodInsurance;
         public decimal? FloodInsurance { get { return _floodInsurance; } set { _floodInsurance = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<List<InterimServicingTransaction>> _interimServicingTransactions;
-        public List<InterimServicingTransaction> InterimServicingTransactions { get { return _interimServicingTransactions; } set { _interimServicingTransactions = value; } }
-        private Value<decimal?> _lastPaymentAdditionalEscrow;
+        private DirtyList<InterimServicingTransaction> _interimServicingTransactions;
+        public IList<InterimServicingTransaction> InterimServicingTransactions { get { var v = _interimServicingTransactions; return v ?? Interlocked.CompareExchange(ref _interimServicingTransactions, (v = new DirtyList<InterimServicingTransaction>()), null) ?? v; } set { _interimServicingTransactions = new DirtyList<InterimServicingTransaction>(value); } }
+        private DirtyValue<decimal?> _lastPaymentAdditionalEscrow;
         public decimal? LastPaymentAdditionalEscrow { get { return _lastPaymentAdditionalEscrow; } set { _lastPaymentAdditionalEscrow = value; } }
-        private Value<decimal?> _lastPaymentAdditionalPrincipal;
+        private DirtyValue<decimal?> _lastPaymentAdditionalPrincipal;
         public decimal? LastPaymentAdditionalPrincipal { get { return _lastPaymentAdditionalPrincipal; } set { _lastPaymentAdditionalPrincipal = value; } }
-        private Value<decimal?> _lastPaymentBuydownSubsidyAmount;
+        private DirtyValue<decimal?> _lastPaymentBuydownSubsidyAmount;
         public decimal? LastPaymentBuydownSubsidyAmount { get { return _lastPaymentBuydownSubsidyAmount; } set { _lastPaymentBuydownSubsidyAmount = value; } }
-        private Value<decimal?> _lastPaymentEscrowAmount;
+        private DirtyValue<decimal?> _lastPaymentEscrowAmount;
         public decimal? LastPaymentEscrowAmount { get { return _lastPaymentEscrowAmount; } set { _lastPaymentEscrowAmount = value; } }
-        private Value<decimal?> _lastPaymentEscrowCityPropertyTax;
+        private DirtyValue<decimal?> _lastPaymentEscrowCityPropertyTax;
         public decimal? LastPaymentEscrowCityPropertyTax { get { return _lastPaymentEscrowCityPropertyTax; } set { _lastPaymentEscrowCityPropertyTax = value; } }
-        private Value<decimal?> _lastPaymentEscrowFloodInsurance;
+        private DirtyValue<decimal?> _lastPaymentEscrowFloodInsurance;
         public decimal? LastPaymentEscrowFloodInsurance { get { return _lastPaymentEscrowFloodInsurance; } set { _lastPaymentEscrowFloodInsurance = value; } }
-        private Value<decimal?> _lastPaymentEscrowHazardInsurance;
+        private DirtyValue<decimal?> _lastPaymentEscrowHazardInsurance;
         public decimal? LastPaymentEscrowHazardInsurance { get { return _lastPaymentEscrowHazardInsurance; } set { _lastPaymentEscrowHazardInsurance = value; } }
-        private Value<decimal?> _lastPaymentEscrowMortgageInsurance;
+        private DirtyValue<decimal?> _lastPaymentEscrowMortgageInsurance;
         public decimal? LastPaymentEscrowMortgageInsurance { get { return _lastPaymentEscrowMortgageInsurance; } set { _lastPaymentEscrowMortgageInsurance = value; } }
-        private Value<decimal?> _lastPaymentEscrowOther1;
+        private DirtyValue<decimal?> _lastPaymentEscrowOther1;
         public decimal? LastPaymentEscrowOther1 { get { return _lastPaymentEscrowOther1; } set { _lastPaymentEscrowOther1 = value; } }
-        private Value<decimal?> _lastPaymentEscrowOther2;
+        private DirtyValue<decimal?> _lastPaymentEscrowOther2;
         public decimal? LastPaymentEscrowOther2 { get { return _lastPaymentEscrowOther2; } set { _lastPaymentEscrowOther2 = value; } }
-        private Value<decimal?> _lastPaymentEscrowOther3;
+        private DirtyValue<decimal?> _lastPaymentEscrowOther3;
         public decimal? LastPaymentEscrowOther3 { get { return _lastPaymentEscrowOther3; } set { _lastPaymentEscrowOther3 = value; } }
-        private Value<decimal?> _lastPaymentEscrowTax;
+        private DirtyValue<decimal?> _lastPaymentEscrowTax;
         public decimal? LastPaymentEscrowTax { get { return _lastPaymentEscrowTax; } set { _lastPaymentEscrowTax = value; } }
-        private Value<decimal?> _lastPaymentEscrowUSDAMonthlyPremium;
+        private DirtyValue<decimal?> _lastPaymentEscrowUSDAMonthlyPremium;
         public decimal? LastPaymentEscrowUSDAMonthlyPremium { get { return _lastPaymentEscrowUSDAMonthlyPremium; } set { _lastPaymentEscrowUSDAMonthlyPremium = value; } }
-        private Value<string> _lastPaymentGuid;
+        private DirtyValue<string> _lastPaymentGuid;
         public string LastPaymentGuid { get { return _lastPaymentGuid; } set { _lastPaymentGuid = value; } }
-        private Value<decimal?> _lastPaymentInterest;
+        private DirtyValue<decimal?> _lastPaymentInterest;
         public decimal? LastPaymentInterest { get { return _lastPaymentInterest; } set { _lastPaymentInterest = value; } }
-        private Value<decimal?> _lastPaymentLateFee;
+        private DirtyValue<decimal?> _lastPaymentLateFee;
         public decimal? LastPaymentLateFee { get { return _lastPaymentLateFee; } set { _lastPaymentLateFee = value; } }
-        private Value<decimal?> _lastPaymentMiscFee;
+        private DirtyValue<decimal?> _lastPaymentMiscFee;
         public decimal? LastPaymentMiscFee { get { return _lastPaymentMiscFee; } set { _lastPaymentMiscFee = value; } }
-        private Value<int?> _lastPaymentNumber;
+        private DirtyValue<int?> _lastPaymentNumber;
         public int? LastPaymentNumber { get { return _lastPaymentNumber; } set { _lastPaymentNumber = value; } }
-        private Value<decimal?> _lastPaymentPrincipal;
+        private DirtyValue<decimal?> _lastPaymentPrincipal;
         public decimal? LastPaymentPrincipal { get { return _lastPaymentPrincipal; } set { _lastPaymentPrincipal = value; } }
-        private Value<decimal?> _lastPaymentPrincipalAndInterest;
+        private DirtyValue<decimal?> _lastPaymentPrincipalAndInterest;
         public decimal? LastPaymentPrincipalAndInterest { get { return _lastPaymentPrincipalAndInterest; } set { _lastPaymentPrincipalAndInterest = value; } }
-        private Value<DateTime?> _lastPaymentReceivedDate;
+        private DirtyValue<DateTime?> _lastPaymentReceivedDate;
         public DateTime? LastPaymentReceivedDate { get { return _lastPaymentReceivedDate; } set { _lastPaymentReceivedDate = value; } }
-        private Value<DateTime?> _lastPaymentStatementDate;
+        private DirtyValue<DateTime?> _lastPaymentStatementDate;
         public DateTime? LastPaymentStatementDate { get { return _lastPaymentStatementDate; } set { _lastPaymentStatementDate = value; } }
-        private Value<decimal?> _lastPaymentTotalAmountReceived;
+        private DirtyValue<decimal?> _lastPaymentTotalAmountReceived;
         public decimal? LastPaymentTotalAmountReceived { get { return _lastPaymentTotalAmountReceived; } set { _lastPaymentTotalAmountReceived = value; } }
-        public SchedulePaymentTransaction LastScheduledPayment { get; set; }
-        private Value<DateTime?> _lastStatementPrintedDate;
+        private SchedulePaymentTransaction _lastScheduledPayment;
+        public SchedulePaymentTransaction LastScheduledPayment { get { var v = _lastScheduledPayment; return v ?? Interlocked.CompareExchange(ref _lastScheduledPayment, (v = new SchedulePaymentTransaction()), null) ?? v; } set { _lastScheduledPayment = value; } }
+        private DirtyValue<DateTime?> _lastStatementPrintedDate;
         public DateTime? LastStatementPrintedDate { get { return _lastStatementPrintedDate; } set { _lastStatementPrintedDate = value; } }
-        private Value<string> _loanSnapshotXml;
+        private DirtyValue<string> _loanSnapshotXml;
         public string LoanSnapshotXml { get { return _loanSnapshotXml; } set { _loanSnapshotXml = value; } }
-        private Value<string> _mailingCity;
+        private DirtyValue<string> _mailingCity;
         public string MailingCity { get { return _mailingCity; } set { _mailingCity = value; } }
-        private Value<string> _mailingPostalCode;
+        private DirtyValue<string> _mailingPostalCode;
         public string MailingPostalCode { get { return _mailingPostalCode; } set { _mailingPostalCode = value; } }
-        private Value<string> _mailingState;
+        private DirtyValue<string> _mailingState;
         public string MailingState { get { return _mailingState; } set { _mailingState = value; } }
-        private Value<string> _mailingStreetAddress;
+        private DirtyValue<string> _mailingStreetAddress;
         public string MailingStreetAddress { get { return _mailingStreetAddress; } set { _mailingStreetAddress = value; } }
-        private Value<string> _mortgageAccount;
+        private DirtyValue<string> _mortgageAccount;
         public string MortgageAccount { get { return _mortgageAccount; } set { _mortgageAccount = value; } }
-        private Value<decimal?> _nextEscrowTotalFloodInsurance;
+        private DirtyValue<decimal?> _nextEscrowTotalFloodInsurance;
         public decimal? NextEscrowTotalFloodInsurance { get { return _nextEscrowTotalFloodInsurance; } set { _nextEscrowTotalFloodInsurance = value; } }
-        private Value<DateTime?> _nextEscrowTotalFloodInsuranceDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalFloodInsuranceDueDate;
         public DateTime? NextEscrowTotalFloodInsuranceDueDate { get { return _nextEscrowTotalFloodInsuranceDueDate; } set { _nextEscrowTotalFloodInsuranceDueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalHazardInsurance;
+        private DirtyValue<decimal?> _nextEscrowTotalHazardInsurance;
         public decimal? NextEscrowTotalHazardInsurance { get { return _nextEscrowTotalHazardInsurance; } set { _nextEscrowTotalHazardInsurance = value; } }
-        private Value<DateTime?> _nextEscrowTotalHazardInsuranceDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalHazardInsuranceDueDate;
         public DateTime? NextEscrowTotalHazardInsuranceDueDate { get { return _nextEscrowTotalHazardInsuranceDueDate; } set { _nextEscrowTotalHazardInsuranceDueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalMortgageInsurance;
+        private DirtyValue<decimal?> _nextEscrowTotalMortgageInsurance;
         public decimal? NextEscrowTotalMortgageInsurance { get { return _nextEscrowTotalMortgageInsurance; } set { _nextEscrowTotalMortgageInsurance = value; } }
-        private Value<DateTime?> _nextEscrowTotalMortgageInsuranceDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalMortgageInsuranceDueDate;
         public DateTime? NextEscrowTotalMortgageInsuranceDueDate { get { return _nextEscrowTotalMortgageInsuranceDueDate; } set { _nextEscrowTotalMortgageInsuranceDueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalOtherTax1;
+        private DirtyValue<decimal?> _nextEscrowTotalOtherTax1;
         public decimal? NextEscrowTotalOtherTax1 { get { return _nextEscrowTotalOtherTax1; } set { _nextEscrowTotalOtherTax1 = value; } }
-        private Value<DateTime?> _nextEscrowTotalOtherTax1DueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax1DueDate;
         public DateTime? NextEscrowTotalOtherTax1DueDate { get { return _nextEscrowTotalOtherTax1DueDate; } set { _nextEscrowTotalOtherTax1DueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalOtherTax2;
+        private DirtyValue<decimal?> _nextEscrowTotalOtherTax2;
         public decimal? NextEscrowTotalOtherTax2 { get { return _nextEscrowTotalOtherTax2; } set { _nextEscrowTotalOtherTax2 = value; } }
-        private Value<DateTime?> _nextEscrowTotalOtherTax2DueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax2DueDate;
         public DateTime? NextEscrowTotalOtherTax2DueDate { get { return _nextEscrowTotalOtherTax2DueDate; } set { _nextEscrowTotalOtherTax2DueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalOtherTax3;
+        private DirtyValue<decimal?> _nextEscrowTotalOtherTax3;
         public decimal? NextEscrowTotalOtherTax3 { get { return _nextEscrowTotalOtherTax3; } set { _nextEscrowTotalOtherTax3 = value; } }
-        private Value<DateTime?> _nextEscrowTotalOtherTax3DueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalOtherTax3DueDate;
         public DateTime? NextEscrowTotalOtherTax3DueDate { get { return _nextEscrowTotalOtherTax3DueDate; } set { _nextEscrowTotalOtherTax3DueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalPropertyTax;
+        private DirtyValue<decimal?> _nextEscrowTotalPropertyTax;
         public decimal? NextEscrowTotalPropertyTax { get { return _nextEscrowTotalPropertyTax; } set { _nextEscrowTotalPropertyTax = value; } }
-        private Value<DateTime?> _nextEscrowTotalPropertyTaxDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalPropertyTaxDueDate;
         public DateTime? NextEscrowTotalPropertyTaxDueDate { get { return _nextEscrowTotalPropertyTaxDueDate; } set { _nextEscrowTotalPropertyTaxDueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalTax;
+        private DirtyValue<decimal?> _nextEscrowTotalTax;
         public decimal? NextEscrowTotalTax { get { return _nextEscrowTotalTax; } set { _nextEscrowTotalTax = value; } }
-        private Value<DateTime?> _nextEscrowTotalTaxDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalTaxDueDate;
         public DateTime? NextEscrowTotalTaxDueDate { get { return _nextEscrowTotalTaxDueDate; } set { _nextEscrowTotalTaxDueDate = value; } }
-        private Value<decimal?> _nextEscrowTotalUsdaMonthlyPremium;
+        private DirtyValue<decimal?> _nextEscrowTotalUsdaMonthlyPremium;
         public decimal? NextEscrowTotalUsdaMonthlyPremium { get { return _nextEscrowTotalUsdaMonthlyPremium; } set { _nextEscrowTotalUsdaMonthlyPremium = value; } }
-        private Value<DateTime?> _nextEscrowTotalUsdaMonthlyPremiumDueDate;
+        private DirtyValue<DateTime?> _nextEscrowTotalUsdaMonthlyPremiumDueDate;
         public DateTime? NextEscrowTotalUsdaMonthlyPremiumDueDate { get { return _nextEscrowTotalUsdaMonthlyPremiumDueDate; } set { _nextEscrowTotalUsdaMonthlyPremiumDueDate = value; } }
-        private Value<decimal?> _nextPaymentBuydownSubsidyAmount;
+        private DirtyValue<decimal?> _nextPaymentBuydownSubsidyAmount;
         public decimal? NextPaymentBuydownSubsidyAmount { get { return _nextPaymentBuydownSubsidyAmount; } set { _nextPaymentBuydownSubsidyAmount = value; } }
-        private Value<decimal?> _nextPaymentEscrowAmount;
+        private DirtyValue<decimal?> _nextPaymentEscrowAmount;
         public decimal? NextPaymentEscrowAmount { get { return _nextPaymentEscrowAmount; } set { _nextPaymentEscrowAmount = value; } }
-        private Value<decimal?> _nextPaymentEscrowCityPropertyTax;
+        private DirtyValue<decimal?> _nextPaymentEscrowCityPropertyTax;
         public decimal? NextPaymentEscrowCityPropertyTax { get { return _nextPaymentEscrowCityPropertyTax; } set { _nextPaymentEscrowCityPropertyTax = value; } }
-        private Value<decimal?> _nextPaymentEscrowFloodInsurance;
+        private DirtyValue<decimal?> _nextPaymentEscrowFloodInsurance;
         public decimal? NextPaymentEscrowFloodInsurance { get { return _nextPaymentEscrowFloodInsurance; } set { _nextPaymentEscrowFloodInsurance = value; } }
-        private Value<decimal?> _nextPaymentEscrowHazardInsurance;
+        private DirtyValue<decimal?> _nextPaymentEscrowHazardInsurance;
         public decimal? NextPaymentEscrowHazardInsurance { get { return _nextPaymentEscrowHazardInsurance; } set { _nextPaymentEscrowHazardInsurance = value; } }
-        private Value<decimal?> _nextPaymentEscrowMortgageInsurance;
+        private DirtyValue<decimal?> _nextPaymentEscrowMortgageInsurance;
         public decimal? NextPaymentEscrowMortgageInsurance { get { return _nextPaymentEscrowMortgageInsurance; } set { _nextPaymentEscrowMortgageInsurance = value; } }
-        private Value<decimal?> _nextPaymentEscrowOther1;
+        private DirtyValue<decimal?> _nextPaymentEscrowOther1;
         public decimal? NextPaymentEscrowOther1 { get { return _nextPaymentEscrowOther1; } set { _nextPaymentEscrowOther1 = value; } }
-        private Value<decimal?> _nextPaymentEscrowOther2;
+        private DirtyValue<decimal?> _nextPaymentEscrowOther2;
         public decimal? NextPaymentEscrowOther2 { get { return _nextPaymentEscrowOther2; } set { _nextPaymentEscrowOther2 = value; } }
-        private Value<decimal?> _nextPaymentEscrowOther3;
+        private DirtyValue<decimal?> _nextPaymentEscrowOther3;
         public decimal? NextPaymentEscrowOther3 { get { return _nextPaymentEscrowOther3; } set { _nextPaymentEscrowOther3 = value; } }
-        private Value<decimal?> _nextPaymentEscrowTax;
+        private DirtyValue<decimal?> _nextPaymentEscrowTax;
         public decimal? NextPaymentEscrowTax { get { return _nextPaymentEscrowTax; } set { _nextPaymentEscrowTax = value; } }
-        private Value<decimal?> _nextPaymentEscrowUSDAMonthlyPremium;
+        private DirtyValue<decimal?> _nextPaymentEscrowUSDAMonthlyPremium;
         public decimal? NextPaymentEscrowUSDAMonthlyPremium { get { return _nextPaymentEscrowUSDAMonthlyPremium; } set { _nextPaymentEscrowUSDAMonthlyPremium = value; } }
-        private Value<decimal?> _nextPaymentIndexCurrentValuePercent;
+        private DirtyValue<decimal?> _nextPaymentIndexCurrentValuePercent;
         public decimal? NextPaymentIndexCurrentValuePercent { get { return _nextPaymentIndexCurrentValuePercent; } set { _nextPaymentIndexCurrentValuePercent = value; } }
-        private Value<decimal?> _nextPaymentInterest;
+        private DirtyValue<decimal?> _nextPaymentInterest;
         public decimal? NextPaymentInterest { get { return _nextPaymentInterest; } set { _nextPaymentInterest = value; } }
-        private Value<decimal?> _nextPaymentLateFee;
+        private DirtyValue<decimal?> _nextPaymentLateFee;
         public decimal? NextPaymentLateFee { get { return _nextPaymentLateFee; } set { _nextPaymentLateFee = value; } }
-        private Value<DateTime?> _nextPaymentLatePaymentDate;
+        private DirtyValue<DateTime?> _nextPaymentLatePaymentDate;
         public DateTime? NextPaymentLatePaymentDate { get { return _nextPaymentLatePaymentDate; } set { _nextPaymentLatePaymentDate = value; } }
-        private Value<decimal?> _nextPaymentMiscFee;
+        private DirtyValue<decimal?> _nextPaymentMiscFee;
         public decimal? NextPaymentMiscFee { get { return _nextPaymentMiscFee; } set { _nextPaymentMiscFee = value; } }
-        private Value<decimal?> _nextPaymentPastDueAmount;
+        private DirtyValue<decimal?> _nextPaymentPastDueAmount;
         public decimal? NextPaymentPastDueAmount { get { return _nextPaymentPastDueAmount; } set { _nextPaymentPastDueAmount = value; } }
-        private Value<DateTime?> _nextPaymentPaymentDueDate;
+        private DirtyValue<DateTime?> _nextPaymentPaymentDueDate;
         public DateTime? NextPaymentPaymentDueDate { get { return _nextPaymentPaymentDueDate; } set { _nextPaymentPaymentDueDate = value; } }
-        private Value<DateTime?> _nextPaymentPaymentIndexDate;
+        private DirtyValue<DateTime?> _nextPaymentPaymentIndexDate;
         public DateTime? NextPaymentPaymentIndexDate { get { return _nextPaymentPaymentIndexDate; } set { _nextPaymentPaymentIndexDate = value; } }
-        private Value<decimal?> _nextPaymentPrincipal;
+        private DirtyValue<decimal?> _nextPaymentPrincipal;
         public decimal? NextPaymentPrincipal { get { return _nextPaymentPrincipal; } set { _nextPaymentPrincipal = value; } }
-        private Value<decimal?> _nextPaymentPrincipalAndInterest;
+        private DirtyValue<decimal?> _nextPaymentPrincipalAndInterest;
         public decimal? NextPaymentPrincipalAndInterest { get { return _nextPaymentPrincipalAndInterest; } set { _nextPaymentPrincipalAndInterest = value; } }
-        private Value<decimal?> _nextPaymentRequestedInterestRatePercent;
+        private DirtyValue<decimal?> _nextPaymentRequestedInterestRatePercent;
         public decimal? NextPaymentRequestedInterestRatePercent { get { return _nextPaymentRequestedInterestRatePercent; } set { _nextPaymentRequestedInterestRatePercent = value; } }
-        private Value<DateTime?> _nextPaymentStatementDueDate;
+        private DirtyValue<DateTime?> _nextPaymentStatementDueDate;
         public DateTime? NextPaymentStatementDueDate { get { return _nextPaymentStatementDueDate; } set { _nextPaymentStatementDueDate = value; } }
-        private Value<decimal?> _nextPaymentTotalAmountDue;
+        private DirtyValue<decimal?> _nextPaymentTotalAmountDue;
         public decimal? NextPaymentTotalAmountDue { get { return _nextPaymentTotalAmountDue; } set { _nextPaymentTotalAmountDue = value; } }
-        private Value<decimal?> _nextPaymentTotalAmountWithLateFee;
+        private DirtyValue<decimal?> _nextPaymentTotalAmountWithLateFee;
         public decimal? NextPaymentTotalAmountWithLateFee { get { return _nextPaymentTotalAmountWithLateFee; } set { _nextPaymentTotalAmountWithLateFee = value; } }
-        private Value<decimal?> _nextPaymentUnpaidLateFee;
+        private DirtyValue<decimal?> _nextPaymentUnpaidLateFee;
         public decimal? NextPaymentUnpaidLateFee { get { return _nextPaymentUnpaidLateFee; } set { _nextPaymentUnpaidLateFee = value; } }
-        public SchedulePaymentTransaction NextScheduledPayment { get; set; }
-        private Value<int?> _numberOfDisbursement;
+        private SchedulePaymentTransaction _nextScheduledPayment;
+        public SchedulePaymentTransaction NextScheduledPayment { get { var v = _nextScheduledPayment; return v ?? Interlocked.CompareExchange(ref _nextScheduledPayment, (v = new SchedulePaymentTransaction()), null) ?? v; } set { _nextScheduledPayment = value; } }
+        private DirtyValue<int?> _numberOfDisbursement;
         public int? NumberOfDisbursement { get { return _numberOfDisbursement; } set { _numberOfDisbursement = value; } }
-        private Value<List<OtherTransaction>> _otherTransactions;
-        public List<OtherTransaction> OtherTransactions { get { return _otherTransactions; } set { _otherTransactions = value; } }
-        private Value<DateTime?> _paymentDueDatePrinted;
+        private DirtyList<OtherTransaction> _otherTransactions;
+        public IList<OtherTransaction> OtherTransactions { get { var v = _otherTransactions; return v ?? Interlocked.CompareExchange(ref _otherTransactions, (v = new DirtyList<OtherTransaction>()), null) ?? v; } set { _otherTransactions = new DirtyList<OtherTransaction>(value); } }
+        private DirtyValue<DateTime?> _paymentDueDatePrinted;
         public DateTime? PaymentDueDatePrinted { get { return _paymentDueDatePrinted; } set { _paymentDueDatePrinted = value; } }
-        private Value<List<PaymentReversalTransaction>> _paymentReversalTransactions;
-        public List<PaymentReversalTransaction> PaymentReversalTransactions { get { return _paymentReversalTransactions; } set { _paymentReversalTransactions = value; } }
-        private Value<List<PaymentTransaction>> _paymentTransactions;
-        public List<PaymentTransaction> PaymentTransactions { get { return _paymentTransactions; } set { _paymentTransactions = value; } }
-        private Value<string> _printedByUserId;
+        private DirtyList<PaymentReversalTransaction> _paymentReversalTransactions;
+        public IList<PaymentReversalTransaction> PaymentReversalTransactions { get { var v = _paymentReversalTransactions; return v ?? Interlocked.CompareExchange(ref _paymentReversalTransactions, (v = new DirtyList<PaymentReversalTransaction>()), null) ?? v; } set { _paymentReversalTransactions = new DirtyList<PaymentReversalTransaction>(value); } }
+        private DirtyList<PaymentTransaction> _paymentTransactions;
+        public IList<PaymentTransaction> PaymentTransactions { get { var v = _paymentTransactions; return v ?? Interlocked.CompareExchange(ref _paymentTransactions, (v = new DirtyList<PaymentTransaction>()), null) ?? v; } set { _paymentTransactions = new DirtyList<PaymentTransaction>(value); } }
+        private DirtyValue<string> _printedByUserId;
         public string PrintedByUserId { get { return _printedByUserId; } set { _printedByUserId = value; } }
-        private Value<string> _printedByUserName;
+        private DirtyValue<string> _printedByUserName;
         public string PrintedByUserName { get { return _printedByUserName; } set { _printedByUserName = value; } }
-        private Value<decimal?> _purchasedPrincipal;
+        private DirtyValue<decimal?> _purchasedPrincipal;
         public decimal? PurchasedPrincipal { get { return _purchasedPrincipal; } set { _purchasedPrincipal = value; } }
-        private Value<List<SchedulePaymentTransaction>> _scheduledPayments;
-        public List<SchedulePaymentTransaction> ScheduledPayments { get { return _scheduledPayments; } set { _scheduledPayments = value; } }
-        private Value<List<SchedulePaymentTransaction>> _schedulePaymentTransactions;
-        public List<SchedulePaymentTransaction> SchedulePaymentTransactions { get { return _schedulePaymentTransactions; } set { _schedulePaymentTransactions = value; } }
-        private Value<string> _servicerLoanNumber;
+        private DirtyList<SchedulePaymentTransaction> _scheduledPayments;
+        public IList<SchedulePaymentTransaction> ScheduledPayments { get { var v = _scheduledPayments; return v ?? Interlocked.CompareExchange(ref _scheduledPayments, (v = new DirtyList<SchedulePaymentTransaction>()), null) ?? v; } set { _scheduledPayments = new DirtyList<SchedulePaymentTransaction>(value); } }
+        private DirtyList<SchedulePaymentTransaction> _schedulePaymentTransactions;
+        public IList<SchedulePaymentTransaction> SchedulePaymentTransactions { get { var v = _schedulePaymentTransactions; return v ?? Interlocked.CompareExchange(ref _schedulePaymentTransactions, (v = new DirtyList<SchedulePaymentTransaction>()), null) ?? v; } set { _schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>(value); } }
+        private DirtyValue<string> _servicerLoanNumber;
         public string ServicerLoanNumber { get { return _servicerLoanNumber; } set { _servicerLoanNumber = value; } }
-        private Value<string> _servicingStatus;
+        private DirtyValue<string> _servicingStatus;
         public string ServicingStatus { get { return _servicingStatus; } set { _servicingStatus = value; } }
-        private Value<DateTime?> _servicingTransferDate;
+        private DirtyValue<DateTime?> _servicingTransferDate;
         public DateTime? ServicingTransferDate { get { return _servicingTransferDate; } set { _servicingTransferDate = value; } }
-        private Value<string> _subServicer;
+        private DirtyValue<string> _subServicer;
         public string SubServicer { get { return _subServicer; } set { _subServicer = value; } }
-        private Value<string> _subServicerLoanNumber;
+        private DirtyValue<string> _subServicerLoanNumber;
         public string SubServicerLoanNumber { get { return _subServicerLoanNumber; } set { _subServicerLoanNumber = value; } }
-        private Value<decimal?> _totalAdditionalEscrow;
+        private DirtyValue<decimal?> _totalAdditionalEscrow;
         public decimal? TotalAdditionalEscrow { get { return _totalAdditionalEscrow; } set { _totalAdditionalEscrow = value; } }
-        private Value<decimal?> _totalAdditionalEscrowYearToDate;
+        private DirtyValue<decimal?> _totalAdditionalEscrowYearToDate;
         public decimal? TotalAdditionalEscrowYearToDate { get { return _totalAdditionalEscrowYearToDate; } set { _totalAdditionalEscrowYearToDate = value; } }
-        private Value<decimal?> _totalAdditionalPrincipal;
+        private DirtyValue<decimal?> _totalAdditionalPrincipal;
         public decimal? TotalAdditionalPrincipal { get { return _totalAdditionalPrincipal; } set { _totalAdditionalPrincipal = value; } }
-        private Value<decimal?> _totalAdditionalPrincipalYearToDate;
+        private DirtyValue<decimal?> _totalAdditionalPrincipalYearToDate;
         public decimal? TotalAdditionalPrincipalYearToDate { get { return _totalAdditionalPrincipalYearToDate; } set { _totalAdditionalPrincipalYearToDate = value; } }
-        private Value<decimal?> _totalAmountDisbursed;
+        private DirtyValue<decimal?> _totalAmountDisbursed;
         public decimal? TotalAmountDisbursed { get { return _totalAmountDisbursed; } set { _totalAmountDisbursed = value; } }
-        private Value<decimal?> _totalBuydownSubsidyAmount;
+        private DirtyValue<decimal?> _totalBuydownSubsidyAmount;
         public decimal? TotalBuydownSubsidyAmount { get { return _totalBuydownSubsidyAmount; } set { _totalBuydownSubsidyAmount = value; } }
-        private Value<decimal?> _totalBuydownSubsidyAmountYearToDate;
+        private DirtyValue<decimal?> _totalBuydownSubsidyAmountYearToDate;
         public decimal? TotalBuydownSubsidyAmountYearToDate { get { return _totalBuydownSubsidyAmountYearToDate; } set { _totalBuydownSubsidyAmountYearToDate = value; } }
-        private Value<decimal?> _totalEscrow;
+        private DirtyValue<decimal?> _totalEscrow;
         public decimal? TotalEscrow { get { return _totalEscrow; } set { _totalEscrow = value; } }
-        private Value<decimal?> _totalEscrowYearToDate;
+        private DirtyValue<decimal?> _totalEscrowYearToDate;
         public decimal? TotalEscrowYearToDate { get { return _totalEscrowYearToDate; } set { _totalEscrowYearToDate = value; } }
-        private Value<decimal?> _totalHazardInsurance;
+        private DirtyValue<decimal?> _totalHazardInsurance;
         public decimal? TotalHazardInsurance { get { return _totalHazardInsurance; } set { _totalHazardInsurance = value; } }
-        private Value<decimal?> _totalInterest;
+        private DirtyValue<decimal?> _totalInterest;
         public decimal? TotalInterest { get { return _totalInterest; } set { _totalInterest = value; } }
-        private Value<decimal?> _totalInterestYearToDate;
+        private DirtyValue<decimal?> _totalInterestYearToDate;
         public decimal? TotalInterestYearToDate { get { return _totalInterestYearToDate; } set { _totalInterestYearToDate = value; } }
-        private Value<decimal?> _totalLateFee;
+        private DirtyValue<decimal?> _totalLateFee;
         public decimal? TotalLateFee { get { return _totalLateFee; } set { _totalLateFee = value; } }
-        private Value<decimal?> _totalLateFeeYearToDate;
+        private DirtyValue<decimal?> _totalLateFeeYearToDate;
         public decimal? TotalLateFeeYearToDate { get { return _totalLateFeeYearToDate; } set { _totalLateFeeYearToDate = value; } }
-        private Value<decimal?> _totalMiscFee;
+        private DirtyValue<decimal?> _totalMiscFee;
         public decimal? TotalMiscFee { get { return _totalMiscFee; } set { _totalMiscFee = value; } }
-        private Value<decimal?> _totalMiscFeeYearToDate;
+        private DirtyValue<decimal?> _totalMiscFeeYearToDate;
         public decimal? TotalMiscFeeYearToDate { get { return _totalMiscFeeYearToDate; } set { _totalMiscFeeYearToDate = value; } }
-        private Value<decimal?> _totalMortgageInsurance;
+        private DirtyValue<decimal?> _totalMortgageInsurance;
         public decimal? TotalMortgageInsurance { get { return _totalMortgageInsurance; } set { _totalMortgageInsurance = value; } }
-        private Value<int?> _totalNumberOfLatePayment;
+        private DirtyValue<int?> _totalNumberOfLatePayment;
         public int? TotalNumberOfLatePayment { get { return _totalNumberOfLatePayment; } set { _totalNumberOfLatePayment = value; } }
-        private Value<int?> _totalNumberOfPayment;
+        private DirtyValue<int?> _totalNumberOfPayment;
         public int? TotalNumberOfPayment { get { return _totalNumberOfPayment; } set { _totalNumberOfPayment = value; } }
-        private Value<decimal?> _totalOtherTaxes;
+        private DirtyValue<decimal?> _totalOtherTaxes;
         public decimal? TotalOtherTaxes { get { return _totalOtherTaxes; } set { _totalOtherTaxes = value; } }
-        private Value<decimal?> _totalPAndI;
+        private DirtyValue<decimal?> _totalPAndI;
         public decimal? TotalPAndI { get { return _totalPAndI; } set { _totalPAndI = value; } }
-        private Value<decimal?> _totalPAndIYearToDate;
+        private DirtyValue<decimal?> _totalPAndIYearToDate;
         public decimal? TotalPAndIYearToDate { get { return _totalPAndIYearToDate; } set { _totalPAndIYearToDate = value; } }
-        private Value<decimal?> _totalPaymentCollected;
+        private DirtyValue<decimal?> _totalPaymentCollected;
         public decimal? TotalPaymentCollected { get { return _totalPaymentCollected; } set { _totalPaymentCollected = value; } }
-        private Value<decimal?> _totalPaymentCollectedYearToDate;
+        private DirtyValue<decimal?> _totalPaymentCollectedYearToDate;
         public decimal? TotalPaymentCollectedYearToDate { get { return _totalPaymentCollectedYearToDate; } set { _totalPaymentCollectedYearToDate = value; } }
-        private Value<decimal?> _totalPrincipal;
+        private DirtyValue<decimal?> _totalPrincipal;
         public decimal? TotalPrincipal { get { return _totalPrincipal; } set { _totalPrincipal = value; } }
-        private Value<decimal?> _totalPrincipalYearToDate;
+        private DirtyValue<decimal?> _totalPrincipalYearToDate;
         public decimal? TotalPrincipalYearToDate { get { return _totalPrincipalYearToDate; } set { _totalPrincipalYearToDate = value; } }
-        private Value<decimal?> _totalTaxes;
+        private DirtyValue<decimal?> _totalTaxes;
         public decimal? TotalTaxes { get { return _totalTaxes; } set { _totalTaxes = value; } }
-        private Value<decimal?> _totalUsdaMonthlyPremium;
+        private DirtyValue<decimal?> _totalUsdaMonthlyPremium;
         public decimal? TotalUsdaMonthlyPremium { get { return _totalUsdaMonthlyPremium; } set { _totalUsdaMonthlyPremium = value; } }
-        private Value<decimal?> _unpaidBuydownSubsidyAmount;
+        private DirtyValue<decimal?> _unpaidBuydownSubsidyAmount;
         public decimal? UnpaidBuydownSubsidyAmount { get { return _unpaidBuydownSubsidyAmount; } set { _unpaidBuydownSubsidyAmount = value; } }
-        private Value<decimal?> _unpaidEscrow;
+        private DirtyValue<decimal?> _unpaidEscrow;
         public decimal? UnpaidEscrow { get { return _unpaidEscrow; } set { _unpaidEscrow = value; } }
-        private Value<decimal?> _unpaidEscrowCityPropertyTax;
+        private DirtyValue<decimal?> _unpaidEscrowCityPropertyTax;
         public decimal? UnpaidEscrowCityPropertyTax { get { return _unpaidEscrowCityPropertyTax; } set { _unpaidEscrowCityPropertyTax = value; } }
-        private Value<decimal?> _unpaidEscrowFloodInsurance;
+        private DirtyValue<decimal?> _unpaidEscrowFloodInsurance;
         public decimal? UnpaidEscrowFloodInsurance { get { return _unpaidEscrowFloodInsurance; } set { _unpaidEscrowFloodInsurance = value; } }
-        private Value<decimal?> _unpaidEscrowHazardInsurance;
+        private DirtyValue<decimal?> _unpaidEscrowHazardInsurance;
         public decimal? UnpaidEscrowHazardInsurance { get { return _unpaidEscrowHazardInsurance; } set { _unpaidEscrowHazardInsurance = value; } }
-        private Value<decimal?> _unpaidEscrowMortgageInsurance;
+        private DirtyValue<decimal?> _unpaidEscrowMortgageInsurance;
         public decimal? UnpaidEscrowMortgageInsurance { get { return _unpaidEscrowMortgageInsurance; } set { _unpaidEscrowMortgageInsurance = value; } }
-        private Value<decimal?> _unpaidEscrowOther1;
+        private DirtyValue<decimal?> _unpaidEscrowOther1;
         public decimal? UnpaidEscrowOther1 { get { return _unpaidEscrowOther1; } set { _unpaidEscrowOther1 = value; } }
-        private Value<decimal?> _unpaidEscrowOther2;
+        private DirtyValue<decimal?> _unpaidEscrowOther2;
         public decimal? UnpaidEscrowOther2 { get { return _unpaidEscrowOther2; } set { _unpaidEscrowOther2 = value; } }
-        private Value<decimal?> _unpaidEscrowOther3;
+        private DirtyValue<decimal?> _unpaidEscrowOther3;
         public decimal? UnpaidEscrowOther3 { get { return _unpaidEscrowOther3; } set { _unpaidEscrowOther3 = value; } }
-        private Value<decimal?> _unpaidEscrowTax;
+        private DirtyValue<decimal?> _unpaidEscrowTax;
         public decimal? UnpaidEscrowTax { get { return _unpaidEscrowTax; } set { _unpaidEscrowTax = value; } }
-        private Value<decimal?> _unpaidEscrowUSDAMonthlyPremium;
+        private DirtyValue<decimal?> _unpaidEscrowUSDAMonthlyPremium;
         public decimal? UnpaidEscrowUSDAMonthlyPremium { get { return _unpaidEscrowUSDAMonthlyPremium; } set { _unpaidEscrowUSDAMonthlyPremium = value; } }
-        private Value<decimal?> _unpaidInterest;
+        private DirtyValue<decimal?> _unpaidInterest;
         public decimal? UnpaidInterest { get { return _unpaidInterest; } set { _unpaidInterest = value; } }
-        private Value<decimal?> _unpaidLateFee;
+        private DirtyValue<decimal?> _unpaidLateFee;
         public decimal? UnpaidLateFee { get { return _unpaidLateFee; } set { _unpaidLateFee = value; } }
-        private Value<decimal?> _unpaidMiscrFee;
+        private DirtyValue<decimal?> _unpaidMiscrFee;
         public decimal? UnpaidMiscrFee { get { return _unpaidMiscrFee; } set { _unpaidMiscrFee = value; } }
-        private Value<decimal?> _unpaidPrincipal;
+        private DirtyValue<decimal?> _unpaidPrincipal;
         public decimal? UnpaidPrincipal { get { return _unpaidPrincipal; } set { _unpaidPrincipal = value; } }
         private int _gettingDirty;
         private int _settingDirty; 
@@ -327,11 +329,8 @@ namespace EncompassRest.Loans
                     || _comments.Dirty
                     || _currentPrincipalBalance.Dirty
                     || _escrowBalance.Dirty
-                    || _escrowDisbursementTransactions.Dirty
-                    || _escrowInterestTransactions.Dirty
                     || _floodInsurance.Dirty
                     || _id.Dirty
-                    || _interimServicingTransactions.Dirty
                     || _lastPaymentAdditionalEscrow.Dirty
                     || _lastPaymentAdditionalPrincipal.Dirty
                     || _lastPaymentBuydownSubsidyAmount.Dirty
@@ -407,15 +406,10 @@ namespace EncompassRest.Loans
                     || _nextPaymentTotalAmountWithLateFee.Dirty
                     || _nextPaymentUnpaidLateFee.Dirty
                     || _numberOfDisbursement.Dirty
-                    || _otherTransactions.Dirty
                     || _paymentDueDatePrinted.Dirty
-                    || _paymentReversalTransactions.Dirty
-                    || _paymentTransactions.Dirty
                     || _printedByUserId.Dirty
                     || _printedByUserName.Dirty
                     || _purchasedPrincipal.Dirty
-                    || _scheduledPayments.Dirty
-                    || _schedulePaymentTransactions.Dirty
                     || _servicerLoanNumber.Dirty
                     || _servicingStatus.Dirty
                     || _servicingTransferDate.Dirty
@@ -464,8 +458,16 @@ namespace EncompassRest.Loans
                     || _unpaidLateFee.Dirty
                     || _unpaidMiscrFee.Dirty
                     || _unpaidPrincipal.Dirty
-                    || LastScheduledPayment?.Dirty == true
-                    || NextScheduledPayment?.Dirty == true;
+                    || _escrowDisbursementTransactions?.Dirty == true
+                    || _escrowInterestTransactions?.Dirty == true
+                    || _interimServicingTransactions?.Dirty == true
+                    || _lastScheduledPayment?.Dirty == true
+                    || _nextScheduledPayment?.Dirty == true
+                    || _otherTransactions?.Dirty == true
+                    || _paymentReversalTransactions?.Dirty == true
+                    || _paymentTransactions?.Dirty == true
+                    || _scheduledPayments?.Dirty == true
+                    || _schedulePaymentTransactions?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -484,11 +486,8 @@ namespace EncompassRest.Loans
                 _comments.Dirty = value;
                 _currentPrincipalBalance.Dirty = value;
                 _escrowBalance.Dirty = value;
-                _escrowDisbursementTransactions.Dirty = value;
-                _escrowInterestTransactions.Dirty = value;
                 _floodInsurance.Dirty = value;
                 _id.Dirty = value;
-                _interimServicingTransactions.Dirty = value;
                 _lastPaymentAdditionalEscrow.Dirty = value;
                 _lastPaymentAdditionalPrincipal.Dirty = value;
                 _lastPaymentBuydownSubsidyAmount.Dirty = value;
@@ -564,15 +563,10 @@ namespace EncompassRest.Loans
                 _nextPaymentTotalAmountWithLateFee.Dirty = value;
                 _nextPaymentUnpaidLateFee.Dirty = value;
                 _numberOfDisbursement.Dirty = value;
-                _otherTransactions.Dirty = value;
                 _paymentDueDatePrinted.Dirty = value;
-                _paymentReversalTransactions.Dirty = value;
-                _paymentTransactions.Dirty = value;
                 _printedByUserId.Dirty = value;
                 _printedByUserName.Dirty = value;
                 _purchasedPrincipal.Dirty = value;
-                _scheduledPayments.Dirty = value;
-                _schedulePaymentTransactions.Dirty = value;
                 _servicerLoanNumber.Dirty = value;
                 _servicingStatus.Dirty = value;
                 _servicingTransferDate.Dirty = value;
@@ -621,8 +615,16 @@ namespace EncompassRest.Loans
                 _unpaidLateFee.Dirty = value;
                 _unpaidMiscrFee.Dirty = value;
                 _unpaidPrincipal.Dirty = value;
-                if (LastScheduledPayment != null) LastScheduledPayment.Dirty = value;
-                if (NextScheduledPayment != null) NextScheduledPayment.Dirty = value;
+                if (_escrowDisbursementTransactions != null) _escrowDisbursementTransactions.Dirty = value;
+                if (_escrowInterestTransactions != null) _escrowInterestTransactions.Dirty = value;
+                if (_interimServicingTransactions != null) _interimServicingTransactions.Dirty = value;
+                if (_lastScheduledPayment != null) _lastScheduledPayment.Dirty = value;
+                if (_nextScheduledPayment != null) _nextScheduledPayment.Dirty = value;
+                if (_otherTransactions != null) _otherTransactions.Dirty = value;
+                if (_paymentReversalTransactions != null) _paymentReversalTransactions.Dirty = value;
+                if (_paymentTransactions != null) _paymentTransactions.Dirty = value;
+                if (_scheduledPayments != null) _scheduledPayments.Dirty = value;
+                if (_schedulePaymentTransactions != null) _schedulePaymentTransactions.Dirty = value;
                 _settingDirty = 0;
             }
         }

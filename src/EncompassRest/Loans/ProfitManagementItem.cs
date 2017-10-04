@@ -8,19 +8,19 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ProfitManagementItem : IDirty
     {
-        private Value<decimal?> _atPercent;
+        private DirtyValue<decimal?> _atPercent;
         public decimal? AtPercent { get { return _atPercent; } set { _atPercent = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _plusAmount;
+        private DirtyValue<decimal?> _plusAmount;
         public decimal? PlusAmount { get { return _plusAmount; } set { _plusAmount = value; } }
-        private Value<int?> _profitManagementItemIndex;
+        private DirtyValue<int?> _profitManagementItemIndex;
         public int? ProfitManagementItemIndex { get { return _profitManagementItemIndex; } set { _profitManagementItemIndex = value; } }
-        private Value<decimal?> _total;
+        private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private Value<string> _type;
+        private DirtyValue<string> _type;
         public string Type { get { return _type; } set { _type = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

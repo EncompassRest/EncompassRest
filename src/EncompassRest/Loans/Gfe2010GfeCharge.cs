@@ -8,19 +8,19 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Gfe2010GfeCharge : IDirty
     {
-        private Value<bool?> _chargeBelow10Indicator;
+        private DirtyValue<bool?> _chargeBelow10Indicator;
         public bool? ChargeBelow10Indicator { get { return _chargeBelow10Indicator; } set { _chargeBelow10Indicator = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<int?> _gfe2010GfeChargeIndex;
+        private DirtyValue<int?> _gfe2010GfeChargeIndex;
         public int? Gfe2010GfeChargeIndex { get { return _gfe2010GfeChargeIndex; } set { _gfe2010GfeChargeIndex = value; } }
-        private Value<decimal?> _gfeCharge;
+        private DirtyValue<decimal?> _gfeCharge;
         public decimal? GfeCharge { get { return _gfeCharge; } set { _gfeCharge = value; } }
-        private Value<decimal?> _hudCharge;
+        private DirtyValue<decimal?> _hudCharge;
         public decimal? HudCharge { get { return _hudCharge; } set { _hudCharge = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _line;
+        private DirtyValue<string> _line;
         public string Line { get { return _line; } set { _line = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

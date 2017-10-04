@@ -8,15 +8,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class CustomField : IDirty
     {
-        private Value<DateTime?> _dateValue;
+        private DirtyValue<DateTime?> _dateValue;
         public DateTime? DateValue { get { return _dateValue; } set { _dateValue = value; } }
-        private Value<string> _fieldName;
+        private DirtyValue<string> _fieldName;
         public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _numericValue;
+        private DirtyValue<decimal?> _numericValue;
         public decimal? NumericValue { get { return _numericValue; } set { _numericValue = value; } }
-        private Value<string> _stringValue;
+        private DirtyValue<string> _stringValue;
         public string StringValue { get { return _stringValue; } set { _stringValue = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

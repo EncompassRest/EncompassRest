@@ -8,435 +8,435 @@ namespace EncompassRest.Loans
 {
     public sealed partial class AUSTrackingLog : IDirty
     {
-        private Value<int?> _aUSTrackingLogIndex;
+        private DirtyValue<int?> _aUSTrackingLogIndex;
         public int? AUSTrackingLogIndex { get { return _aUSTrackingLogIndex; } set { _aUSTrackingLogIndex = value; } }
-        private Value<string> _batchDocumentRefId;
+        private DirtyValue<string> _batchDocumentRefId;
         public string BatchDocumentRefId { get { return _batchDocumentRefId; } set { _batchDocumentRefId = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isEmpty;
+        private DirtyValue<bool?> _isEmpty;
         public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
-        private Value<bool?> _isHistory;
+        private DirtyValue<bool?> _isHistory;
         public bool? IsHistory { get { return _isHistory; } set { _isHistory = value; } }
-        private Value<string> _log_AcceptPlusEligible;
+        private DirtyValue<string> _log_AcceptPlusEligible;
         public string Log_AcceptPlusEligible { get { return _log_AcceptPlusEligible; } set { _log_AcceptPlusEligible = value; } }
-        private Value<string> _log_AffordableProductType;
+        private DirtyValue<string> _log_AffordableProductType;
         public string Log_AffordableProductType { get { return _log_AffordableProductType; } set { _log_AffordableProductType = value; } }
-        private Value<decimal?> _log_AllOtherPayments;
+        private DirtyValue<decimal?> _log_AllOtherPayments;
         public decimal? Log_AllOtherPayments { get { return _log_AllOtherPayments; } set { _log_AllOtherPayments = value; } }
-        private Value<int?> _log_AmortizationMonths;
+        private DirtyValue<int?> _log_AmortizationMonths;
         public int? Log_AmortizationMonths { get { return _log_AmortizationMonths; } set { _log_AmortizationMonths = value; } }
-        private Value<string> _log_AmortizationType;
+        private DirtyValue<string> _log_AmortizationType;
         public string Log_AmortizationType { get { return _log_AmortizationType; } set { _log_AmortizationType = value; } }
-        private Value<decimal?> _log_AmtSubordinateFin;
+        private DirtyValue<decimal?> _log_AmtSubordinateFin;
         public decimal? Log_AmtSubordinateFin { get { return _log_AmtSubordinateFin; } set { _log_AmtSubordinateFin = value; } }
-        private Value<string> _log_AppraisalTypeMAF;
+        private DirtyValue<string> _log_AppraisalTypeMAF;
         public string Log_AppraisalTypeMAF { get { return _log_AppraisalTypeMAF; } set { _log_AppraisalTypeMAF = value; } }
-        private Value<int?> _log_AppraisedValue;
+        private DirtyValue<int?> _log_AppraisedValue;
         public int? Log_AppraisedValue { get { return _log_AppraisedValue; } set { _log_AppraisedValue = value; } }
-        private Value<decimal?> _log_ARMQualifyingRate;
+        private DirtyValue<decimal?> _log_ARMQualifyingRate;
         public decimal? Log_ARMQualifyingRate { get { return _log_ARMQualifyingRate; } set { _log_ARMQualifyingRate = value; } }
-        private Value<string> _log_AssessmentType;
+        private DirtyValue<string> _log_AssessmentType;
         public string Log_AssessmentType { get { return _log_AssessmentType; } set { _log_AssessmentType = value; } }
-        private Value<string> _log_AUSRecommendation;
+        private DirtyValue<string> _log_AUSRecommendation;
         public string Log_AUSRecommendation { get { return _log_AUSRecommendation; } set { _log_AUSRecommendation = value; } }
-        private Value<string> _log_AUSStatus;
+        private DirtyValue<string> _log_AUSStatus;
         public string Log_AUSStatus { get { return _log_AUSStatus; } set { _log_AUSStatus = value; } }
-        private Value<string> _log_AUSTrackingType;
+        private DirtyValue<string> _log_AUSTrackingType;
         public string Log_AUSTrackingType { get { return _log_AUSTrackingType; } set { _log_AUSTrackingType = value; } }
-        private Value<string> _log_AUSTransactionID;
+        private DirtyValue<string> _log_AUSTransactionID;
         public string Log_AUSTransactionID { get { return _log_AUSTransactionID; } set { _log_AUSTransactionID = value; } }
-        private Value<string> _log_AUSVersion;
+        private DirtyValue<string> _log_AUSVersion;
         public string Log_AUSVersion { get { return _log_AUSVersion; } set { _log_AUSVersion = value; } }
-        private Value<string> _log_Balloon;
+        private DirtyValue<string> _log_Balloon;
         public string Log_Balloon { get { return _log_Balloon; } set { _log_Balloon = value; } }
-        private Value<int?> _log_BalloonTerm;
+        private DirtyValue<int?> _log_BalloonTerm;
         public int? Log_BalloonTerm { get { return _log_BalloonTerm; } set { _log_BalloonTerm = value; } }
-        private Value<decimal?> _log_BorrowerAssetAmount;
+        private DirtyValue<decimal?> _log_BorrowerAssetAmount;
         public decimal? Log_BorrowerAssetAmount { get { return _log_BorrowerAssetAmount; } set { _log_BorrowerAssetAmount = value; } }
-        private Value<string> _log_BorrowerAssetName;
+        private DirtyValue<string> _log_BorrowerAssetName;
         public string Log_BorrowerAssetName { get { return _log_BorrowerAssetName; } set { _log_BorrowerAssetName = value; } }
-        private Value<string> _log_BorrowerAssetType;
+        private DirtyValue<string> _log_BorrowerAssetType;
         public string Log_BorrowerAssetType { get { return _log_BorrowerAssetType; } set { _log_BorrowerAssetType = value; } }
-        private Value<string> _log_BorrowerCreditScore1;
+        private DirtyValue<string> _log_BorrowerCreditScore1;
         public string Log_BorrowerCreditScore1 { get { return _log_BorrowerCreditScore1; } set { _log_BorrowerCreditScore1 = value; } }
-        private Value<string> _log_BorrowerCreditScore2;
+        private DirtyValue<string> _log_BorrowerCreditScore2;
         public string Log_BorrowerCreditScore2 { get { return _log_BorrowerCreditScore2; } set { _log_BorrowerCreditScore2 = value; } }
-        private Value<string> _log_BorrowerCreditScore3;
+        private DirtyValue<string> _log_BorrowerCreditScore3;
         public string Log_BorrowerCreditScore3 { get { return _log_BorrowerCreditScore3; } set { _log_BorrowerCreditScore3 = value; } }
-        private Value<string> _log_BorrowerEquifaxBEACON;
+        private DirtyValue<string> _log_BorrowerEquifaxBEACON;
         public string Log_BorrowerEquifaxBEACON { get { return _log_BorrowerEquifaxBEACON; } set { _log_BorrowerEquifaxBEACON = value; } }
-        private Value<string> _log_BorrowerExperianFICO;
+        private DirtyValue<string> _log_BorrowerExperianFICO;
         public string Log_BorrowerExperianFICO { get { return _log_BorrowerExperianFICO; } set { _log_BorrowerExperianFICO = value; } }
-        private Value<decimal?> _log_BorrowerIncomeAmount;
+        private DirtyValue<decimal?> _log_BorrowerIncomeAmount;
         public decimal? Log_BorrowerIncomeAmount { get { return _log_BorrowerIncomeAmount; } set { _log_BorrowerIncomeAmount = value; } }
-        private Value<string> _log_BorrowerIncomeName;
+        private DirtyValue<string> _log_BorrowerIncomeName;
         public string Log_BorrowerIncomeName { get { return _log_BorrowerIncomeName; } set { _log_BorrowerIncomeName = value; } }
-        private Value<string> _log_BorrowerIncomeType;
+        private DirtyValue<string> _log_BorrowerIncomeType;
         public string Log_BorrowerIncomeType { get { return _log_BorrowerIncomeType; } set { _log_BorrowerIncomeType = value; } }
-        private Value<string> _log_BorrowerInstitutionName;
+        private DirtyValue<string> _log_BorrowerInstitutionName;
         public string Log_BorrowerInstitutionName { get { return _log_BorrowerInstitutionName; } set { _log_BorrowerInstitutionName = value; } }
-        private Value<string> _log_BorrowerName;
+        private DirtyValue<string> _log_BorrowerName;
         public string Log_BorrowerName { get { return _log_BorrowerName; } set { _log_BorrowerName = value; } }
-        private Value<string> _log_BorrowerScoreName;
+        private DirtyValue<string> _log_BorrowerScoreName;
         public string Log_BorrowerScoreName { get { return _log_BorrowerScoreName; } set { _log_BorrowerScoreName = value; } }
-        private Value<string> _log_BorrowerTransUnionEmpirica;
+        private DirtyValue<string> _log_BorrowerTransUnionEmpirica;
         public string Log_BorrowerTransUnionEmpirica { get { return _log_BorrowerTransUnionEmpirica; } set { _log_BorrowerTransUnionEmpirica = value; } }
-        private Value<string> _log_BorrowerType1;
+        private DirtyValue<string> _log_BorrowerType1;
         public string Log_BorrowerType1 { get { return _log_BorrowerType1; } set { _log_BorrowerType1 = value; } }
-        private Value<string> _log_BorrowerType2;
+        private DirtyValue<string> _log_BorrowerType2;
         public string Log_BorrowerType2 { get { return _log_BorrowerType2; } set { _log_BorrowerType2 = value; } }
-        private Value<decimal?> _log_BoughtDownRate;
+        private DirtyValue<decimal?> _log_BoughtDownRate;
         public decimal? Log_BoughtDownRate { get { return _log_BoughtDownRate; } set { _log_BoughtDownRate = value; } }
-        private Value<string> _log_Buydown;
+        private DirtyValue<string> _log_Buydown;
         public string Log_Buydown { get { return _log_Buydown; } set { _log_Buydown = value; } }
-        private Value<decimal?> _log_CashBack;
+        private DirtyValue<decimal?> _log_CashBack;
         public decimal? Log_CashBack { get { return _log_CashBack; } set { _log_CashBack = value; } }
-        private Value<decimal?> _log_CashOutAmount;
+        private DirtyValue<decimal?> _log_CashOutAmount;
         public decimal? Log_CashOutAmount { get { return _log_CashOutAmount; } set { _log_CashOutAmount = value; } }
-        private Value<decimal?> _log_CLTV;
+        private DirtyValue<decimal?> _log_CLTV;
         public decimal? Log_CLTV { get { return _log_CLTV; } set { _log_CLTV = value; } }
-        private Value<decimal?> _log_CoBorrowerAssetAmount;
+        private DirtyValue<decimal?> _log_CoBorrowerAssetAmount;
         public decimal? Log_CoBorrowerAssetAmount { get { return _log_CoBorrowerAssetAmount; } set { _log_CoBorrowerAssetAmount = value; } }
-        private Value<string> _log_CoBorrowerAssetName;
+        private DirtyValue<string> _log_CoBorrowerAssetName;
         public string Log_CoBorrowerAssetName { get { return _log_CoBorrowerAssetName; } set { _log_CoBorrowerAssetName = value; } }
-        private Value<string> _log_CoBorrowerAssetType;
+        private DirtyValue<string> _log_CoBorrowerAssetType;
         public string Log_CoBorrowerAssetType { get { return _log_CoBorrowerAssetType; } set { _log_CoBorrowerAssetType = value; } }
-        private Value<string> _log_CoBorrowerCreditScore1;
+        private DirtyValue<string> _log_CoBorrowerCreditScore1;
         public string Log_CoBorrowerCreditScore1 { get { return _log_CoBorrowerCreditScore1; } set { _log_CoBorrowerCreditScore1 = value; } }
-        private Value<string> _log_CoBorrowerCreditScore2;
+        private DirtyValue<string> _log_CoBorrowerCreditScore2;
         public string Log_CoBorrowerCreditScore2 { get { return _log_CoBorrowerCreditScore2; } set { _log_CoBorrowerCreditScore2 = value; } }
-        private Value<string> _log_CoBorrowerCreditScore3;
+        private DirtyValue<string> _log_CoBorrowerCreditScore3;
         public string Log_CoBorrowerCreditScore3 { get { return _log_CoBorrowerCreditScore3; } set { _log_CoBorrowerCreditScore3 = value; } }
-        private Value<string> _log_CoBorrowerEquifaxBEACON;
+        private DirtyValue<string> _log_CoBorrowerEquifaxBEACON;
         public string Log_CoBorrowerEquifaxBEACON { get { return _log_CoBorrowerEquifaxBEACON; } set { _log_CoBorrowerEquifaxBEACON = value; } }
-        private Value<string> _log_CoBorrowerExperianFICO;
+        private DirtyValue<string> _log_CoBorrowerExperianFICO;
         public string Log_CoBorrowerExperianFICO { get { return _log_CoBorrowerExperianFICO; } set { _log_CoBorrowerExperianFICO = value; } }
-        private Value<decimal?> _log_CoBorrowerIncomeAmount;
+        private DirtyValue<decimal?> _log_CoBorrowerIncomeAmount;
         public decimal? Log_CoBorrowerIncomeAmount { get { return _log_CoBorrowerIncomeAmount; } set { _log_CoBorrowerIncomeAmount = value; } }
-        private Value<string> _log_CoBorrowerIncomeName;
+        private DirtyValue<string> _log_CoBorrowerIncomeName;
         public string Log_CoBorrowerIncomeName { get { return _log_CoBorrowerIncomeName; } set { _log_CoBorrowerIncomeName = value; } }
-        private Value<string> _log_CoBorrowerIncomeType;
+        private DirtyValue<string> _log_CoBorrowerIncomeType;
         public string Log_CoBorrowerIncomeType { get { return _log_CoBorrowerIncomeType; } set { _log_CoBorrowerIncomeType = value; } }
-        private Value<string> _log_CoBorrowerInstitutionName;
+        private DirtyValue<string> _log_CoBorrowerInstitutionName;
         public string Log_CoBorrowerInstitutionName { get { return _log_CoBorrowerInstitutionName; } set { _log_CoBorrowerInstitutionName = value; } }
-        private Value<string> _log_CoborrowerName;
+        private DirtyValue<string> _log_CoborrowerName;
         public string Log_CoborrowerName { get { return _log_CoborrowerName; } set { _log_CoborrowerName = value; } }
-        private Value<string> _log_CoBorrowerScoreName;
+        private DirtyValue<string> _log_CoBorrowerScoreName;
         public string Log_CoBorrowerScoreName { get { return _log_CoBorrowerScoreName; } set { _log_CoBorrowerScoreName = value; } }
-        private Value<string> _log_CoBorrowerTransUnionEmpirica;
+        private DirtyValue<string> _log_CoBorrowerTransUnionEmpirica;
         public string Log_CoBorrowerTransUnionEmpirica { get { return _log_CoBorrowerTransUnionEmpirica; } set { _log_CoBorrowerTransUnionEmpirica = value; } }
-        private Value<string> _log_Code1;
+        private DirtyValue<string> _log_Code1;
         public string Log_Code1 { get { return _log_Code1; } set { _log_Code1 = value; } }
-        private Value<string> _log_Code2;
+        private DirtyValue<string> _log_Code2;
         public string Log_Code2 { get { return _log_Code2; } set { _log_Code2 = value; } }
-        private Value<string> _log_CodeDescription1;
+        private DirtyValue<string> _log_CodeDescription1;
         public string Log_CodeDescription1 { get { return _log_CodeDescription1; } set { _log_CodeDescription1 = value; } }
-        private Value<string> _log_CodeDescription2;
+        private DirtyValue<string> _log_CodeDescription2;
         public string Log_CodeDescription2 { get { return _log_CodeDescription2; } set { _log_CodeDescription2 = value; } }
-        private Value<string> _log_CommunityLending;
+        private DirtyValue<string> _log_CommunityLending;
         public string Log_CommunityLending { get { return _log_CommunityLending; } set { _log_CommunityLending = value; } }
-        private Value<DateTime?> _log_CreatedOn;
+        private DirtyValue<DateTime?> _log_CreatedOn;
         public DateTime? Log_CreatedOn { get { return _log_CreatedOn; } set { _log_CreatedOn = value; } }
-        private Value<string> _log_CreditAgency1;
+        private DirtyValue<string> _log_CreditAgency1;
         public string Log_CreditAgency1 { get { return _log_CreditAgency1; } set { _log_CreditAgency1 = value; } }
-        private Value<string> _log_CreditAgency2;
+        private DirtyValue<string> _log_CreditAgency2;
         public string Log_CreditAgency2 { get { return _log_CreditAgency2; } set { _log_CreditAgency2 = value; } }
-        private Value<DateTime?> _log_CreditReportDate1;
+        private DirtyValue<DateTime?> _log_CreditReportDate1;
         public DateTime? Log_CreditReportDate1 { get { return _log_CreditReportDate1; } set { _log_CreditReportDate1 = value; } }
-        private Value<DateTime?> _log_CreditReportDate2;
+        private DirtyValue<DateTime?> _log_CreditReportDate2;
         public DateTime? Log_CreditReportDate2 { get { return _log_CreditReportDate2; } set { _log_CreditReportDate2 = value; } }
-        private Value<string> _log_CreditReportID1;
+        private DirtyValue<string> _log_CreditReportID1;
         public string Log_CreditReportID1 { get { return _log_CreditReportID1; } set { _log_CreditReportID1 = value; } }
-        private Value<string> _log_CreditReportID2;
+        private DirtyValue<string> _log_CreditReportID2;
         public string Log_CreditReportID2 { get { return _log_CreditReportID2; } set { _log_CreditReportID2 = value; } }
-        private Value<string> _log_CuredAmortizationType;
+        private DirtyValue<string> _log_CuredAmortizationType;
         public string Log_CuredAmortizationType { get { return _log_CuredAmortizationType; } set { _log_CuredAmortizationType = value; } }
-        private Value<int?> _log_CuredAppraisedValue;
+        private DirtyValue<int?> _log_CuredAppraisedValue;
         public int? Log_CuredAppraisedValue { get { return _log_CuredAppraisedValue; } set { _log_CuredAppraisedValue = value; } }
-        private Value<decimal?> _log_CuredCLTV;
+        private DirtyValue<decimal?> _log_CuredCLTV;
         public decimal? Log_CuredCLTV { get { return _log_CuredCLTV; } set { _log_CuredCLTV = value; } }
-        private Value<decimal?> _log_CuredHousingExpenseRatio;
+        private DirtyValue<decimal?> _log_CuredHousingExpenseRatio;
         public decimal? Log_CuredHousingExpenseRatio { get { return _log_CuredHousingExpenseRatio; } set { _log_CuredHousingExpenseRatio = value; } }
-        private Value<string> _log_CuredLoanPurpose;
+        private DirtyValue<string> _log_CuredLoanPurpose;
         public string Log_CuredLoanPurpose { get { return _log_CuredLoanPurpose; } set { _log_CuredLoanPurpose = value; } }
-        private Value<int?> _log_CuredLoanTerm;
+        private DirtyValue<int?> _log_CuredLoanTerm;
         public int? Log_CuredLoanTerm { get { return _log_CuredLoanTerm; } set { _log_CuredLoanTerm = value; } }
-        private Value<string> _log_CuredLoanType;
+        private DirtyValue<string> _log_CuredLoanType;
         public string Log_CuredLoanType { get { return _log_CuredLoanType; } set { _log_CuredLoanType = value; } }
-        private Value<decimal?> _log_CuredLTV;
+        private DirtyValue<decimal?> _log_CuredLTV;
         public decimal? Log_CuredLTV { get { return _log_CuredLTV; } set { _log_CuredLTV = value; } }
-        private Value<decimal?> _log_CuredNoteRate;
+        private DirtyValue<decimal?> _log_CuredNoteRate;
         public decimal? Log_CuredNoteRate { get { return _log_CuredNoteRate; } set { _log_CuredNoteRate = value; } }
-        private Value<decimal?> _log_CuredProposedTotalHousingPayment;
+        private DirtyValue<decimal?> _log_CuredProposedTotalHousingPayment;
         public decimal? Log_CuredProposedTotalHousingPayment { get { return _log_CuredProposedTotalHousingPayment; } set { _log_CuredProposedTotalHousingPayment = value; } }
-        private Value<string> _log_CuredRefinancePurpose;
+        private DirtyValue<string> _log_CuredRefinancePurpose;
         public string Log_CuredRefinancePurpose { get { return _log_CuredRefinancePurpose; } set { _log_CuredRefinancePurpose = value; } }
-        private Value<decimal?> _log_CuredTotalExpenseRatio;
+        private DirtyValue<decimal?> _log_CuredTotalExpenseRatio;
         public decimal? Log_CuredTotalExpenseRatio { get { return _log_CuredTotalExpenseRatio; } set { _log_CuredTotalExpenseRatio = value; } }
-        private Value<decimal?> _log_CuredTotalLoanAmount;
+        private DirtyValue<decimal?> _log_CuredTotalLoanAmount;
         public decimal? Log_CuredTotalLoanAmount { get { return _log_CuredTotalLoanAmount; } set { _log_CuredTotalLoanAmount = value; } }
-        private Value<decimal?> _log_CuredTotalMonthlyIncome;
+        private DirtyValue<decimal?> _log_CuredTotalMonthlyIncome;
         public decimal? Log_CuredTotalMonthlyIncome { get { return _log_CuredTotalMonthlyIncome; } set { _log_CuredTotalMonthlyIncome = value; } }
-        private Value<string> _log_DateTimeAssessed;
+        private DirtyValue<string> _log_DateTimeAssessed;
         public string Log_DateTimeAssessed { get { return _log_DateTimeAssessed; } set { _log_DateTimeAssessed = value; } }
-        private Value<string> _log_DateTimeRequested;
+        private DirtyValue<string> _log_DateTimeRequested;
         public string Log_DateTimeRequested { get { return _log_DateTimeRequested; } set { _log_DateTimeRequested = value; } }
-        private Value<decimal?> _log_DebtRatio;
+        private DirtyValue<decimal?> _log_DebtRatio;
         public decimal? Log_DebtRatio { get { return _log_DebtRatio; } set { _log_DebtRatio = value; } }
-        private Value<string> _log_DocumentationLevel;
+        private DirtyValue<string> _log_DocumentationLevel;
         public string Log_DocumentationLevel { get { return _log_DocumentationLevel; } set { _log_DocumentationLevel = value; } }
-        private Value<string> _log_DUCaseIDorLPAUSKey;
+        private DirtyValue<string> _log_DUCaseIDorLPAUSKey;
         public string Log_DUCaseIDorLPAUSKey { get { return _log_DUCaseIDorLPAUSKey; } set { _log_DUCaseIDorLPAUSKey = value; } }
-        private Value<string> _log_DUPropertyType;
+        private DirtyValue<string> _log_DUPropertyType;
         public string Log_DUPropertyType { get { return _log_DUPropertyType; } set { _log_DUPropertyType = value; } }
-        private Value<string> _log_eFolderGUID;
+        private DirtyValue<string> _log_eFolderGUID;
         public string Log_eFolderGUID { get { return _log_eFolderGUID; } set { _log_eFolderGUID = value; } }
-        private Value<decimal?> _log_ExcessAvailableAssetsNoVerified;
+        private DirtyValue<decimal?> _log_ExcessAvailableAssetsNoVerified;
         public decimal? Log_ExcessAvailableAssetsNoVerified { get { return _log_ExcessAvailableAssetsNoVerified; } set { _log_ExcessAvailableAssetsNoVerified = value; } }
-        private Value<decimal?> _log_FinancedMIAmount;
+        private DirtyValue<decimal?> _log_FinancedMIAmount;
         public decimal? Log_FinancedMIAmount { get { return _log_FinancedMIAmount; } set { _log_FinancedMIAmount = value; } }
-        private Value<decimal?> _log_FirstPandI;
+        private DirtyValue<decimal?> _log_FirstPandI;
         public decimal? Log_FirstPandI { get { return _log_FirstPandI; } set { _log_FirstPandI = value; } }
-        private Value<DateTime?> _log_FirstSubmissionDate;
+        private DirtyValue<DateTime?> _log_FirstSubmissionDate;
         public DateTime? Log_FirstSubmissionDate { get { return _log_FirstSubmissionDate; } set { _log_FirstSubmissionDate = value; } }
-        private Value<string> _log_FirstSubmissionTime;
+        private DirtyValue<string> _log_FirstSubmissionTime;
         public string Log_FirstSubmissionTime { get { return _log_FirstSubmissionTime; } set { _log_FirstSubmissionTime = value; } }
-        private Value<string> _log_FreddieDocClass;
+        private DirtyValue<string> _log_FreddieDocClass;
         public string Log_FreddieDocClass { get { return _log_FreddieDocClass; } set { _log_FreddieDocClass = value; } }
-        private Value<decimal?> _log_FundsRequiredClose;
+        private DirtyValue<decimal?> _log_FundsRequiredClose;
         public decimal? Log_FundsRequiredClose { get { return _log_FundsRequiredClose; } set { _log_FundsRequiredClose = value; } }
-        private Value<string> _log_GUID;
+        private DirtyValue<string> _log_GUID;
         public string Log_GUID { get { return _log_GUID; } set { _log_GUID = value; } }
-        private Value<decimal?> _log_HLCTV;
+        private DirtyValue<decimal?> _log_HLCTV;
         public decimal? Log_HLCTV { get { return _log_HLCTV; } set { _log_HLCTV = value; } }
-        private Value<decimal?> _log_HousingExpense;
+        private DirtyValue<decimal?> _log_HousingExpense;
         public decimal? Log_HousingExpense { get { return _log_HousingExpense; } set { _log_HousingExpense = value; } }
-        private Value<decimal?> _log_HousingExpenseRatio;
+        private DirtyValue<decimal?> _log_HousingExpenseRatio;
         public decimal? Log_HousingExpenseRatio { get { return _log_HousingExpenseRatio; } set { _log_HousingExpenseRatio = value; } }
-        private Value<decimal?> _log_HousingRatio;
+        private DirtyValue<decimal?> _log_HousingRatio;
         public decimal? Log_HousingRatio { get { return _log_HousingRatio; } set { _log_HousingRatio = value; } }
-        private Value<decimal?> _log_HTLTV;
+        private DirtyValue<decimal?> _log_HTLTV;
         public decimal? Log_HTLTV { get { return _log_HTLTV; } set { _log_HTLTV = value; } }
-        private Value<string> _log_IncludingLess10Mos;
+        private DirtyValue<string> _log_IncludingLess10Mos;
         public string Log_IncludingLess10Mos { get { return _log_IncludingLess10Mos; } set { _log_IncludingLess10Mos = value; } }
-        private Value<decimal?> _log_IncomeAssetBase;
+        private DirtyValue<decimal?> _log_IncomeAssetBase;
         public decimal? Log_IncomeAssetBase { get { return _log_IncomeAssetBase; } set { _log_IncomeAssetBase = value; } }
-        private Value<decimal?> _log_IncomeAssetBonus;
+        private DirtyValue<decimal?> _log_IncomeAssetBonus;
         public decimal? Log_IncomeAssetBonus { get { return _log_IncomeAssetBonus; } set { _log_IncomeAssetBonus = value; } }
-        private Value<decimal?> _log_IncomeAssetCommission;
+        private DirtyValue<decimal?> _log_IncomeAssetCommission;
         public decimal? Log_IncomeAssetCommission { get { return _log_IncomeAssetCommission; } set { _log_IncomeAssetCommission = value; } }
-        private Value<decimal?> _log_IncomeAssetOther;
+        private DirtyValue<decimal?> _log_IncomeAssetOther;
         public decimal? Log_IncomeAssetOther { get { return _log_IncomeAssetOther; } set { _log_IncomeAssetOther = value; } }
-        private Value<decimal?> _log_IncomeAssetOvertime;
+        private DirtyValue<decimal?> _log_IncomeAssetOvertime;
         public decimal? Log_IncomeAssetOvertime { get { return _log_IncomeAssetOvertime; } set { _log_IncomeAssetOvertime = value; } }
-        private Value<decimal?> _log_IncomeAssetPosCashFlow;
+        private DirtyValue<decimal?> _log_IncomeAssetPosCashFlow;
         public decimal? Log_IncomeAssetPosCashFlow { get { return _log_IncomeAssetPosCashFlow; } set { _log_IncomeAssetPosCashFlow = value; } }
-        private Value<decimal?> _log_IncomeAssetPositiveNetRental;
+        private DirtyValue<decimal?> _log_IncomeAssetPositiveNetRental;
         public decimal? Log_IncomeAssetPositiveNetRental { get { return _log_IncomeAssetPositiveNetRental; } set { _log_IncomeAssetPositiveNetRental = value; } }
-        private Value<string> _log_IndicatorScore;
+        private DirtyValue<string> _log_IndicatorScore;
         public string Log_IndicatorScore { get { return _log_IndicatorScore; } set { _log_IndicatorScore = value; } }
-        private Value<string> _log_IntendedUseofProperty;
+        private DirtyValue<string> _log_IntendedUseofProperty;
         public string Log_IntendedUseofProperty { get { return _log_IntendedUseofProperty; } set { _log_IntendedUseofProperty = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceConclusion1;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion1;
         public string Log_LCLAEvaluatedServiceConclusion1 { get { return _log_LCLAEvaluatedServiceConclusion1; } set { _log_LCLAEvaluatedServiceConclusion1 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceConclusion2;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion2;
         public string Log_LCLAEvaluatedServiceConclusion2 { get { return _log_LCLAEvaluatedServiceConclusion2; } set { _log_LCLAEvaluatedServiceConclusion2 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceConclusion3;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion3;
         public string Log_LCLAEvaluatedServiceConclusion3 { get { return _log_LCLAEvaluatedServiceConclusion3; } set { _log_LCLAEvaluatedServiceConclusion3 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceConclusion4;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion4;
         public string Log_LCLAEvaluatedServiceConclusion4 { get { return _log_LCLAEvaluatedServiceConclusion4; } set { _log_LCLAEvaluatedServiceConclusion4 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceType1;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceType1;
         public string Log_LCLAEvaluatedServiceType1 { get { return _log_LCLAEvaluatedServiceType1; } set { _log_LCLAEvaluatedServiceType1 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceType2;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceType2;
         public string Log_LCLAEvaluatedServiceType2 { get { return _log_LCLAEvaluatedServiceType2; } set { _log_LCLAEvaluatedServiceType2 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceType3;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceType3;
         public string Log_LCLAEvaluatedServiceType3 { get { return _log_LCLAEvaluatedServiceType3; } set { _log_LCLAEvaluatedServiceType3 = value; } }
-        private Value<string> _log_LCLAEvaluatedServiceType4;
+        private DirtyValue<string> _log_LCLAEvaluatedServiceType4;
         public string Log_LCLAEvaluatedServiceType4 { get { return _log_LCLAEvaluatedServiceType4; } set { _log_LCLAEvaluatedServiceType4 = value; } }
-        private Value<string> _log_LenderLoan;
+        private DirtyValue<string> _log_LenderLoan;
         public string Log_LenderLoan { get { return _log_LenderLoan; } set { _log_LenderLoan = value; } }
-        private Value<string> _log_LienType;
+        private DirtyValue<string> _log_LienType;
         public string Log_LienType { get { return _log_LienType; } set { _log_LienType = value; } }
-        private Value<decimal?> _log_LoanAmount;
+        private DirtyValue<decimal?> _log_LoanAmount;
         public decimal? Log_LoanAmount { get { return _log_LoanAmount; } set { _log_LoanAmount = value; } }
-        private Value<string> _log_LoanApplicationID;
+        private DirtyValue<string> _log_LoanApplicationID;
         public string Log_LoanApplicationID { get { return _log_LoanApplicationID; } set { _log_LoanApplicationID = value; } }
-        private Value<string> _log_LoanProcessingStage;
+        private DirtyValue<string> _log_LoanProcessingStage;
         public string Log_LoanProcessingStage { get { return _log_LoanProcessingStage; } set { _log_LoanProcessingStage = value; } }
-        private Value<string> _log_LoanProspectorID;
+        private DirtyValue<string> _log_LoanProspectorID;
         public string Log_LoanProspectorID { get { return _log_LoanProspectorID; } set { _log_LoanProspectorID = value; } }
-        private Value<string> _log_LoanPurpose;
+        private DirtyValue<string> _log_LoanPurpose;
         public string Log_LoanPurpose { get { return _log_LoanPurpose; } set { _log_LoanPurpose = value; } }
-        private Value<int?> _log_LoanTerm;
+        private DirtyValue<int?> _log_LoanTerm;
         public int? Log_LoanTerm { get { return _log_LoanTerm; } set { _log_LoanTerm = value; } }
-        private Value<string> _log_LoanType;
+        private DirtyValue<string> _log_LoanType;
         public string Log_LoanType { get { return _log_LoanType; } set { _log_LoanType = value; } }
-        private Value<DateTime?> _log_LPAssmtExpDate;
+        private DirtyValue<DateTime?> _log_LPAssmtExpDate;
         public DateTime? Log_LPAssmtExpDate { get { return _log_LPAssmtExpDate; } set { _log_LPAssmtExpDate = value; } }
-        private Value<string> _log_LPPropertyType;
+        private DirtyValue<string> _log_LPPropertyType;
         public string Log_LPPropertyType { get { return _log_LPPropertyType; } set { _log_LPPropertyType = value; } }
-        private Value<string> _log_LPVersion;
+        private DirtyValue<string> _log_LPVersion;
         public string Log_LPVersion { get { return _log_LPVersion; } set { _log_LPVersion = value; } }
-        private Value<string> _log_LQACollateralRepWarrantyServiceConclusion;
+        private DirtyValue<string> _log_LQACollateralRepWarrantyServiceConclusion;
         public string Log_LQACollateralRepWarrantyServiceConclusion { get { return _log_LQACollateralRepWarrantyServiceConclusion; } set { _log_LQACollateralRepWarrantyServiceConclusion = value; } }
-        private Value<string> _log_LQACreditRiskAssessmentConclusion;
+        private DirtyValue<string> _log_LQACreditRiskAssessmentConclusion;
         public string Log_LQACreditRiskAssessmentConclusion { get { return _log_LQACreditRiskAssessmentConclusion; } set { _log_LQACreditRiskAssessmentConclusion = value; } }
-        private Value<string> _log_LQADataCompareFieldConclusion;
+        private DirtyValue<string> _log_LQADataCompareFieldConclusion;
         public string Log_LQADataCompareFieldConclusion { get { return _log_LQADataCompareFieldConclusion; } set { _log_LQADataCompareFieldConclusion = value; } }
-        private Value<string> _log_LQADataCompareFieldName;
+        private DirtyValue<string> _log_LQADataCompareFieldName;
         public string Log_LQADataCompareFieldName { get { return _log_LQADataCompareFieldName; } set { _log_LQADataCompareFieldName = value; } }
-        private Value<string> _log_LQADataCompareResult;
+        private DirtyValue<string> _log_LQADataCompareResult;
         public string Log_LQADataCompareResult { get { return _log_LQADataCompareResult; } set { _log_LQADataCompareResult = value; } }
-        private Value<string> _log_LQALPKey;
+        private DirtyValue<string> _log_LQALPKey;
         public string Log_LQALPKey { get { return _log_LQALPKey; } set { _log_LQALPKey = value; } }
-        private Value<string> _log_LQAPurchaseEligibilityResult;
+        private DirtyValue<string> _log_LQAPurchaseEligibilityResult;
         public string Log_LQAPurchaseEligibilityResult { get { return _log_LQAPurchaseEligibilityResult; } set { _log_LQAPurchaseEligibilityResult = value; } }
-        private Value<string> _log_LQARiskAssessmentKey;
+        private DirtyValue<string> _log_LQARiskAssessmentKey;
         public string Log_LQARiskAssessmentKey { get { return _log_LQARiskAssessmentKey; } set { _log_LQARiskAssessmentKey = value; } }
-        private Value<DateTime?> _log_LQASubmissionDateTime;
+        private DirtyValue<DateTime?> _log_LQASubmissionDateTime;
         public DateTime? Log_LQASubmissionDateTime { get { return _log_LQASubmissionDateTime; } set { _log_LQASubmissionDateTime = value; } }
-        private Value<decimal?> _log_LTV;
+        private DirtyValue<decimal?> _log_LTV;
         public decimal? Log_LTV { get { return _log_LTV; } set { _log_LTV = value; } }
-        private Value<decimal?> _log_MaxMortgageLimit;
+        private DirtyValue<decimal?> _log_MaxMortgageLimit;
         public decimal? Log_MaxMortgageLimit { get { return _log_MaxMortgageLimit; } set { _log_MaxMortgageLimit = value; } }
-        private Value<string> _log_MIDecision;
+        private DirtyValue<string> _log_MIDecision;
         public string Log_MIDecision { get { return _log_MIDecision; } set { _log_MIDecision = value; } }
-        private Value<string> _log_MortgageType;
+        private DirtyValue<string> _log_MortgageType;
         public string Log_MortgageType { get { return _log_MortgageType; } set { _log_MortgageType = value; } }
-        private Value<string> _log_NegAmortizationType;
+        private DirtyValue<string> _log_NegAmortizationType;
         public string Log_NegAmortizationType { get { return _log_NegAmortizationType; } set { _log_NegAmortizationType = value; } }
-        private Value<decimal?> _log_NegativeNetRental;
+        private DirtyValue<decimal?> _log_NegativeNetRental;
         public decimal? Log_NegativeNetRental { get { return _log_NegativeNetRental; } set { _log_NegativeNetRental = value; } }
-        private Value<decimal?> _log_NetCashBack;
+        private DirtyValue<decimal?> _log_NetCashBack;
         public decimal? Log_NetCashBack { get { return _log_NetCashBack; } set { _log_NetCashBack = value; } }
-        private Value<string> _log_NewConstruction;
+        private DirtyValue<string> _log_NewConstruction;
         public string Log_NewConstruction { get { return _log_NewConstruction; } set { _log_NewConstruction = value; } }
-        private Value<decimal?> _log_NoteRate;
+        private DirtyValue<decimal?> _log_NoteRate;
         public decimal? Log_NoteRate { get { return _log_NoteRate; } set { _log_NoteRate = value; } }
-        private Value<string> _log_NOTPNumber;
+        private DirtyValue<string> _log_NOTPNumber;
         public string Log_NOTPNumber { get { return _log_NOTPNumber; } set { _log_NOTPNumber = value; } }
-        private Value<int?> _log_NoUnits;
+        private DirtyValue<int?> _log_NoUnits;
         public int? Log_NoUnits { get { return _log_NoUnits; } set { _log_NoUnits = value; } }
-        private Value<string> _log_NumberOfSubmissions;
+        private DirtyValue<string> _log_NumberOfSubmissions;
         public string Log_NumberOfSubmissions { get { return _log_NumberOfSubmissions; } set { _log_NumberOfSubmissions = value; } }
-        private Value<string> _log_OccupancyStatus;
+        private DirtyValue<string> _log_OccupancyStatus;
         public string Log_OccupancyStatus { get { return _log_OccupancyStatus; } set { _log_OccupancyStatus = value; } }
-        private Value<decimal?> _log_OccupantDebtRatio;
+        private DirtyValue<decimal?> _log_OccupantDebtRatio;
         public decimal? Log_OccupantDebtRatio { get { return _log_OccupantDebtRatio; } set { _log_OccupantDebtRatio = value; } }
-        private Value<decimal?> _log_OccupantHousingRatio;
+        private DirtyValue<decimal?> _log_OccupantHousingRatio;
         public decimal? Log_OccupantHousingRatio { get { return _log_OccupantHousingRatio; } set { _log_OccupantHousingRatio = value; } }
-        private Value<string> _log_OfferingIdentifier;
+        private DirtyValue<string> _log_OfferingIdentifier;
         public string Log_OfferingIdentifier { get { return _log_OfferingIdentifier; } set { _log_OfferingIdentifier = value; } }
-        private Value<string> _log_OriginatingCompany;
+        private DirtyValue<string> _log_OriginatingCompany;
         public string Log_OriginatingCompany { get { return _log_OriginatingCompany; } set { _log_OriginatingCompany = value; } }
-        private Value<decimal?> _log_OwnerExistingMtg;
+        private DirtyValue<decimal?> _log_OwnerExistingMtg;
         public decimal? Log_OwnerExistingMtg { get { return _log_OwnerExistingMtg; } set { _log_OwnerExistingMtg = value; } }
-        private Value<decimal?> _log_PandI;
+        private DirtyValue<decimal?> _log_PandI;
         public decimal? Log_PandI { get { return _log_PandI; } set { _log_PandI = value; } }
-        private Value<int?> _log_PaymentFrequency;
+        private DirtyValue<int?> _log_PaymentFrequency;
         public int? Log_PaymentFrequency { get { return _log_PaymentFrequency; } set { _log_PaymentFrequency = value; } }
-        private Value<string> _log_PresentAddress;
+        private DirtyValue<string> _log_PresentAddress;
         public string Log_PresentAddress { get { return _log_PresentAddress; } set { _log_PresentAddress = value; } }
-        private Value<string> _log_PresentAddressCity;
+        private DirtyValue<string> _log_PresentAddressCity;
         public string Log_PresentAddressCity { get { return _log_PresentAddressCity; } set { _log_PresentAddressCity = value; } }
-        private Value<string> _log_PresentAddressState;
+        private DirtyValue<string> _log_PresentAddressState;
         public string Log_PresentAddressState { get { return _log_PresentAddressState; } set { _log_PresentAddressState = value; } }
-        private Value<string> _log_PresentAddressZipCode;
+        private DirtyValue<string> _log_PresentAddressZipCode;
         public string Log_PresentAddressZipCode { get { return _log_PresentAddressZipCode; } set { _log_PresentAddressZipCode = value; } }
-        private Value<decimal?> _log_PresentHousingExpense;
+        private DirtyValue<decimal?> _log_PresentHousingExpense;
         public decimal? Log_PresentHousingExpense { get { return _log_PresentHousingExpense; } set { _log_PresentHousingExpense = value; } }
-        private Value<decimal?> _log_PresentPrincipalHousingPayment;
+        private DirtyValue<decimal?> _log_PresentPrincipalHousingPayment;
         public decimal? Log_PresentPrincipalHousingPayment { get { return _log_PresentPrincipalHousingPayment; } set { _log_PresentPrincipalHousingPayment = value; } }
-        private Value<string> _log_PropertyAddress;
+        private DirtyValue<string> _log_PropertyAddress;
         public string Log_PropertyAddress { get { return _log_PropertyAddress; } set { _log_PropertyAddress = value; } }
-        private Value<string> _log_PropertyCity;
+        private DirtyValue<string> _log_PropertyCity;
         public string Log_PropertyCity { get { return _log_PropertyCity; } set { _log_PropertyCity = value; } }
-        private Value<string> _log_PropertyState;
+        private DirtyValue<string> _log_PropertyState;
         public string Log_PropertyState { get { return _log_PropertyState; } set { _log_PropertyState = value; } }
-        private Value<string> _log_PropertyZipcode;
+        private DirtyValue<string> _log_PropertyZipcode;
         public string Log_PropertyZipcode { get { return _log_PropertyZipcode; } set { _log_PropertyZipcode = value; } }
-        private Value<decimal?> _log_ProposedHazardInsurance;
+        private DirtyValue<decimal?> _log_ProposedHazardInsurance;
         public decimal? Log_ProposedHazardInsurance { get { return _log_ProposedHazardInsurance; } set { _log_ProposedHazardInsurance = value; } }
-        private Value<decimal?> _log_ProposedHOAFees;
+        private DirtyValue<decimal?> _log_ProposedHOAFees;
         public decimal? Log_ProposedHOAFees { get { return _log_ProposedHOAFees; } set { _log_ProposedHOAFees = value; } }
-        private Value<decimal?> _log_ProposedHousingPITI;
+        private DirtyValue<decimal?> _log_ProposedHousingPITI;
         public decimal? Log_ProposedHousingPITI { get { return _log_ProposedHousingPITI; } set { _log_ProposedHousingPITI = value; } }
-        private Value<decimal?> _log_ProposedMortgageInsurance;
+        private DirtyValue<decimal?> _log_ProposedMortgageInsurance;
         public decimal? Log_ProposedMortgageInsurance { get { return _log_ProposedMortgageInsurance; } set { _log_ProposedMortgageInsurance = value; } }
-        private Value<decimal?> _log_ProposedOtherPayment;
+        private DirtyValue<decimal?> _log_ProposedOtherPayment;
         public decimal? Log_ProposedOtherPayment { get { return _log_ProposedOtherPayment; } set { _log_ProposedOtherPayment = value; } }
-        private Value<decimal?> _log_ProposedTaxes;
+        private DirtyValue<decimal?> _log_ProposedTaxes;
         public decimal? Log_ProposedTaxes { get { return _log_ProposedTaxes; } set { _log_ProposedTaxes = value; } }
-        private Value<decimal?> _log_ProposedTotalHousingPayment;
+        private DirtyValue<decimal?> _log_ProposedTotalHousingPayment;
         public decimal? Log_ProposedTotalHousingPayment { get { return _log_ProposedTotalHousingPayment; } set { _log_ProposedTotalHousingPayment = value; } }
-        private Value<decimal?> _log_ProposedTotalMonthlyDebt;
+        private DirtyValue<decimal?> _log_ProposedTotalMonthlyDebt;
         public decimal? Log_ProposedTotalMonthlyDebt { get { return _log_ProposedTotalMonthlyDebt; } set { _log_ProposedTotalMonthlyDebt = value; } }
-        private Value<string> _log_PurchaseEligibility;
+        private DirtyValue<string> _log_PurchaseEligibility;
         public string Log_PurchaseEligibility { get { return _log_PurchaseEligibility; } set { _log_PurchaseEligibility = value; } }
-        private Value<decimal?> _log_QualifyingRate;
+        private DirtyValue<decimal?> _log_QualifyingRate;
         public decimal? Log_QualifyingRate { get { return _log_QualifyingRate; } set { _log_QualifyingRate = value; } }
-        private Value<string> _log_RecordType;
+        private DirtyValue<string> _log_RecordType;
         public string Log_RecordType { get { return _log_RecordType; } set { _log_RecordType = value; } }
-        private Value<string> _log_RefinancePurpose;
+        private DirtyValue<string> _log_RefinancePurpose;
         public string Log_RefinancePurpose { get { return _log_RefinancePurpose; } set { _log_RefinancePurpose = value; } }
-        private Value<decimal?> _log_Reserves;
+        private DirtyValue<decimal?> _log_Reserves;
         public decimal? Log_Reserves { get { return _log_Reserves; } set { _log_Reserves = value; } }
-        private Value<decimal?> _log_ReservesRequiredVerified;
+        private DirtyValue<decimal?> _log_ReservesRequiredVerified;
         public decimal? Log_ReservesRequiredVerified { get { return _log_ReservesRequiredVerified; } set { _log_ReservesRequiredVerified = value; } }
-        private Value<string> _log_RiskClass;
+        private DirtyValue<string> _log_RiskClass;
         public string Log_RiskClass { get { return _log_RiskClass; } set { _log_RiskClass = value; } }
-        private Value<string> _log_SalesConcessions;
+        private DirtyValue<string> _log_SalesConcessions;
         public string Log_SalesConcessions { get { return _log_SalesConcessions; } set { _log_SalesConcessions = value; } }
-        private Value<decimal?> _log_SalesPrice;
+        private DirtyValue<decimal?> _log_SalesPrice;
         public decimal? Log_SalesPrice { get { return _log_SalesPrice; } set { _log_SalesPrice = value; } }
-        private Value<decimal?> _log_SecondPandI;
+        private DirtyValue<decimal?> _log_SecondPandI;
         public decimal? Log_SecondPandI { get { return _log_SecondPandI; } set { _log_SecondPandI = value; } }
-        private Value<string> _log_SelectedBorrower;
+        private DirtyValue<string> _log_SelectedBorrower;
         public string Log_SelectedBorrower { get { return _log_SelectedBorrower; } set { _log_SelectedBorrower = value; } }
-        private Value<string> _log_SelectedRepository;
+        private DirtyValue<string> _log_SelectedRepository;
         public string Log_SelectedRepository { get { return _log_SelectedRepository; } set { _log_SelectedRepository = value; } }
-        private Value<string> _log_SellerNumber;
+        private DirtyValue<string> _log_SellerNumber;
         public string Log_SellerNumber { get { return _log_SellerNumber; } set { _log_SellerNumber = value; } }
-        private Value<decimal?> _log_SubjNegCashFlow;
+        private DirtyValue<decimal?> _log_SubjNegCashFlow;
         public decimal? Log_SubjNegCashFlow { get { return _log_SubjNegCashFlow; } set { _log_SubjNegCashFlow = value; } }
-        private Value<DateTime?> _log_SubmissionDate;
+        private DirtyValue<DateTime?> _log_SubmissionDate;
         public DateTime? Log_SubmissionDate { get { return _log_SubmissionDate; } set { _log_SubmissionDate = value; } }
-        private Value<string> _log_SubmissionNumber;
+        private DirtyValue<string> _log_SubmissionNumber;
         public string Log_SubmissionNumber { get { return _log_SubmissionNumber; } set { _log_SubmissionNumber = value; } }
-        private Value<string> _log_SubmissionTime;
+        private DirtyValue<string> _log_SubmissionTime;
         public string Log_SubmissionTime { get { return _log_SubmissionTime; } set { _log_SubmissionTime = value; } }
-        private Value<string> _log_SubmittedBy;
+        private DirtyValue<string> _log_SubmittedBy;
         public string Log_SubmittedBy { get { return _log_SubmittedBy; } set { _log_SubmittedBy = value; } }
-        private Value<string> _log_SubmittingCompany;
+        private DirtyValue<string> _log_SubmittingCompany;
         public string Log_SubmittingCompany { get { return _log_SubmittingCompany; } set { _log_SubmittingCompany = value; } }
-        private Value<string> _log_TemporarySubsidyBuydown;
+        private DirtyValue<string> _log_TemporarySubsidyBuydown;
         public string Log_TemporarySubsidyBuydown { get { return _log_TemporarySubsidyBuydown; } set { _log_TemporarySubsidyBuydown = value; } }
-        private Value<decimal?> _log_TLTV;
+        private DirtyValue<decimal?> _log_TLTV;
         public decimal? Log_TLTV { get { return _log_TLTV; } set { _log_TLTV = value; } }
-        private Value<decimal?> _log_TotalAsset;
+        private DirtyValue<decimal?> _log_TotalAsset;
         public decimal? Log_TotalAsset { get { return _log_TotalAsset; } set { _log_TotalAsset = value; } }
-        private Value<decimal?> _log_TotalExpense;
+        private DirtyValue<decimal?> _log_TotalExpense;
         public decimal? Log_TotalExpense { get { return _log_TotalExpense; } set { _log_TotalExpense = value; } }
-        private Value<decimal?> _log_TotalExpensePmt;
+        private DirtyValue<decimal?> _log_TotalExpensePmt;
         public decimal? Log_TotalExpensePmt { get { return _log_TotalExpensePmt; } set { _log_TotalExpensePmt = value; } }
-        private Value<decimal?> _log_TotalExpenseRatio;
+        private DirtyValue<decimal?> _log_TotalExpenseRatio;
         public decimal? Log_TotalExpenseRatio { get { return _log_TotalExpenseRatio; } set { _log_TotalExpenseRatio = value; } }
-        private Value<decimal?> _log_TotalFundsVerified;
+        private DirtyValue<decimal?> _log_TotalFundsVerified;
         public decimal? Log_TotalFundsVerified { get { return _log_TotalFundsVerified; } set { _log_TotalFundsVerified = value; } }
-        private Value<decimal?> _log_TotalLoanAmount;
+        private DirtyValue<decimal?> _log_TotalLoanAmount;
         public decimal? Log_TotalLoanAmount { get { return _log_TotalLoanAmount; } set { _log_TotalLoanAmount = value; } }
-        private Value<decimal?> _log_TotalMonthlyIncome;
+        private DirtyValue<decimal?> _log_TotalMonthlyIncome;
         public decimal? Log_TotalMonthlyIncome { get { return _log_TotalMonthlyIncome; } set { _log_TotalMonthlyIncome = value; } }
-        private Value<string> _log_TPONumber;
+        private DirtyValue<string> _log_TPONumber;
         public string Log_TPONumber { get { return _log_TPONumber; } set { _log_TPONumber = value; } }
-        private Value<string> _log_TransactionID;
+        private DirtyValue<string> _log_TransactionID;
         public string Log_TransactionID { get { return _log_TransactionID; } set { _log_TransactionID = value; } }
-        private Value<string> _log_UnderwritingRiskAssessOther;
+        private DirtyValue<string> _log_UnderwritingRiskAssessOther;
         public string Log_UnderwritingRiskAssessOther { get { return _log_UnderwritingRiskAssessOther; } set { _log_UnderwritingRiskAssessOther = value; } }
-        private Value<string> _log_UnderwritingRiskAssessType;
+        private DirtyValue<string> _log_UnderwritingRiskAssessType;
         public string Log_UnderwritingRiskAssessType { get { return _log_UnderwritingRiskAssessType; } set { _log_UnderwritingRiskAssessType = value; } }
-        private Value<string> _log_WithUndisclosedDebt;
+        private DirtyValue<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get { return _log_WithUndisclosedDebt; } set { _log_WithUndisclosedDebt = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

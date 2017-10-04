@@ -8,45 +8,45 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ServicingDisclosure : IDirty
     {
-        private Value<decimal?> _disclosurePercent1;
+        private DirtyValue<decimal?> _disclosurePercent1;
         public decimal? DisclosurePercent1 { get { return _disclosurePercent1; } set { _disclosurePercent1 = value; } }
-        private Value<decimal?> _disclosurePercent2;
+        private DirtyValue<decimal?> _disclosurePercent2;
         public decimal? DisclosurePercent2 { get { return _disclosurePercent2; } set { _disclosurePercent2 = value; } }
-        private Value<decimal?> _disclosurePercent3;
+        private DirtyValue<decimal?> _disclosurePercent3;
         public decimal? DisclosurePercent3 { get { return _disclosurePercent3; } set { _disclosurePercent3 = value; } }
-        private Value<string> _disclosureYear1;
+        private DirtyValue<string> _disclosureYear1;
         public string DisclosureYear1 { get { return _disclosureYear1; } set { _disclosureYear1 = value; } }
-        private Value<string> _disclosureYear2;
+        private DirtyValue<string> _disclosureYear2;
         public string DisclosureYear2 { get { return _disclosureYear2; } set { _disclosureYear2 = value; } }
-        private Value<string> _disclosureYear3;
+        private DirtyValue<string> _disclosureYear3;
         public string DisclosureYear3 { get { return _disclosureYear3; } set { _disclosureYear3 = value; } }
-        private Value<bool?> _fiftyOneTo75Indicator;
+        private DirtyValue<bool?> _fiftyOneTo75Indicator;
         public bool? FiftyOneTo75Indicator { get { return _fiftyOneTo75Indicator; } set { _fiftyOneTo75Indicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _seventySixTo100Indicator;
+        private DirtyValue<bool?> _seventySixTo100Indicator;
         public bool? SeventySixTo100Indicator { get { return _seventySixTo100Indicator; } set { _seventySixTo100Indicator = value; } }
-        private Value<string> _thisEstimateType;
+        private DirtyValue<string> _thisEstimateType;
         public string ThisEstimateType { get { return _thisEstimateType; } set { _thisEstimateType = value; } }
-        private Value<string> _thisInformationType;
+        private DirtyValue<string> _thisInformationType;
         public string ThisInformationType { get { return _thisInformationType; } set { _thisInformationType = value; } }
-        private Value<bool?> _thisIsOurRecordOfTransferingIndicator;
+        private DirtyValue<bool?> _thisIsOurRecordOfTransferingIndicator;
         public bool? ThisIsOurRecordOfTransferingIndicator { get { return _thisIsOurRecordOfTransferingIndicator; } set { _thisIsOurRecordOfTransferingIndicator = value; } }
-        private Value<bool?> _twentySixTo50Indicator;
+        private DirtyValue<bool?> _twentySixTo50Indicator;
         public bool? TwentySixTo50Indicator { get { return _twentySixTo50Indicator; } set { _twentySixTo50Indicator = value; } }
-        private Value<string> _weAreAbleType;
+        private DirtyValue<string> _weAreAbleType;
         public string WeAreAbleType { get { return _weAreAbleType; } set { _weAreAbleType = value; } }
-        private Value<bool?> _weDoNotSellMortgageLoansIndicator;
+        private DirtyValue<bool?> _weDoNotSellMortgageLoansIndicator;
         public bool? WeDoNotSellMortgageLoansIndicator { get { return _weDoNotSellMortgageLoansIndicator; } set { _weDoNotSellMortgageLoansIndicator = value; } }
-        private Value<bool?> _weDoNotServiceMortgageLoansIndicator;
+        private DirtyValue<bool?> _weDoNotServiceMortgageLoansIndicator;
         public bool? WeDoNotServiceMortgageLoansIndicator { get { return _weDoNotServiceMortgageLoansIndicator; } set { _weDoNotServiceMortgageLoansIndicator = value; } }
-        private Value<bool?> _weHaveNotServicedMortgLoansIn3YrsIndicator;
+        private DirtyValue<bool?> _weHaveNotServicedMortgLoansIn3YrsIndicator;
         public bool? WeHaveNotServicedMortgLoansIn3YrsIndicator { get { return _weHaveNotServicedMortgLoansIn3YrsIndicator; } set { _weHaveNotServicedMortgLoansIn3YrsIndicator = value; } }
-        private Value<bool?> _weHavePreviouslyAssignedIndicator;
+        private DirtyValue<bool?> _weHavePreviouslyAssignedIndicator;
         public bool? WeHavePreviouslyAssignedIndicator { get { return _weHavePreviouslyAssignedIndicator; } set { _weHavePreviouslyAssignedIndicator = value; } }
-        private Value<bool?> _weMayAssignIndicator;
+        private DirtyValue<bool?> _weMayAssignIndicator;
         public bool? WeMayAssignIndicator { get { return _weMayAssignIndicator; } set { _weMayAssignIndicator = value; } }
-        private Value<bool?> _zeroTo25Indicator;
+        private DirtyValue<bool?> _zeroTo25Indicator;
         public bool? ZeroTo25Indicator { get { return _zeroTo25Indicator; } set { _zeroTo25Indicator = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,11 +8,11 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FieldLockData : IDirty
     {
-        private Value<bool?> _lockRemoved;
+        private DirtyValue<bool?> _lockRemoved;
         public bool? LockRemoved { get { return _lockRemoved; } set { _lockRemoved = value; } }
-        private Value<string> _modelPath;
+        private DirtyValue<string> _modelPath;
         public string ModelPath { get { return _modelPath; } set { _modelPath = value; } }
-        private Value<string> _value;
+        private DirtyValue<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

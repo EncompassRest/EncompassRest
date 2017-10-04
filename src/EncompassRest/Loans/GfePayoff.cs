@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class GfePayoff : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<int?> _gfePayoffIndex;
+        private DirtyValue<int?> _gfePayoffIndex;
         public int? GfePayoffIndex { get { return _gfePayoffIndex; } set { _gfePayoffIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

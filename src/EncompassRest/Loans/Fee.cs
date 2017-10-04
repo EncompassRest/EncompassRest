@@ -8,71 +8,71 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Fee : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<decimal?> _amountPerDay;
+        private DirtyValue<decimal?> _amountPerDay;
         public decimal? AmountPerDay { get { return _amountPerDay; } set { _amountPerDay = value; } }
-        private Value<decimal?> _borPaidAmount;
+        private DirtyValue<decimal?> _borPaidAmount;
         public decimal? BorPaidAmount { get { return _borPaidAmount; } set { _borPaidAmount = value; } }
-        private Value<DateTime?> _dateFrom;
+        private DirtyValue<DateTime?> _dateFrom;
         public DateTime? DateFrom { get { return _dateFrom; } set { _dateFrom = value; } }
-        private Value<DateTime?> _dateTo;
+        private DirtyValue<DateTime?> _dateTo;
         public DateTime? DateTo { get { return _dateTo; } set { _dateTo = value; } }
-        private Value<int?> _days;
+        private DirtyValue<int?> _days;
         public int? Days { get { return _days; } set { _days = value; } }
-        private Value<decimal?> _deedAmount;
+        private DirtyValue<decimal?> _deedAmount;
         public decimal? DeedAmount { get { return _deedAmount; } set { _deedAmount = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _feeType;
+        private DirtyValue<string> _feeType;
         public string FeeType { get { return _feeType; } set { _feeType = value; } }
-        private Value<bool?> _fHA;
+        private DirtyValue<bool?> _fHA;
         public bool? FHA { get { return _fHA; } set { _fHA = value; } }
-        private Value<string> _fWBC;
+        private DirtyValue<string> _fWBC;
         public string FWBC { get { return _fWBC; } set { _fWBC = value; } }
-        private Value<string> _fWSC;
+        private DirtyValue<string> _fWSC;
         public string FWSC { get { return _fWSC; } set { _fWSC = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _includeAboveNumber;
+        private DirtyValue<string> _includeAboveNumber;
         public string IncludeAboveNumber { get { return _includeAboveNumber; } set { _includeAboveNumber = value; } }
-        private Value<decimal?> _lenderCoverage;
+        private DirtyValue<decimal?> _lenderCoverage;
         public decimal? LenderCoverage { get { return _lenderCoverage; } set { _lenderCoverage = value; } }
-        private Value<decimal?> _monthlyPayment;
+        private DirtyValue<decimal?> _monthlyPayment;
         public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
-        private Value<decimal?> _mortgageAmount;
+        private DirtyValue<decimal?> _mortgageAmount;
         public decimal? MortgageAmount { get { return _mortgageAmount; } set { _mortgageAmount = value; } }
-        private Value<NA<decimal>?> _newHUDBorPaidAmount;
+        private DirtyValue<NA<decimal>?> _newHUDBorPaidAmount;
         public NA<decimal>? NewHUDBorPaidAmount { get { return _newHUDBorPaidAmount; } set { _newHUDBorPaidAmount = value; } }
-        private Value<int?> _numberOfMonths;
+        private DirtyValue<int?> _numberOfMonths;
         public int? NumberOfMonths { get { return _numberOfMonths; } set { _numberOfMonths = value; } }
-        private Value<decimal?> _ownerCoverage;
+        private DirtyValue<decimal?> _ownerCoverage;
         public decimal? OwnerCoverage { get { return _ownerCoverage; } set { _ownerCoverage = value; } }
-        private Value<string> _paidBy;
+        private DirtyValue<string> _paidBy;
         public string PaidBy { get { return _paidBy; } set { _paidBy = value; } }
-        private Value<decimal?> _paidInAdvance;
+        private DirtyValue<decimal?> _paidInAdvance;
         public decimal? PaidInAdvance { get { return _paidInAdvance; } set { _paidInAdvance = value; } }
-        private Value<decimal?> _paidToBroker;
+        private DirtyValue<decimal?> _paidToBroker;
         public decimal? PaidToBroker { get { return _paidToBroker; } set { _paidToBroker = value; } }
-        private Value<string> _paidToName;
+        private DirtyValue<string> _paidToName;
         public string PaidToName { get { return _paidToName; } set { _paidToName = value; } }
-        private Value<decimal?> _paidToOthers;
+        private DirtyValue<decimal?> _paidToOthers;
         public decimal? PaidToOthers { get { return _paidToOthers; } set { _paidToOthers = value; } }
-        private Value<decimal?> _percentage;
+        private DirtyValue<decimal?> _percentage;
         public decimal? Percentage { get { return _percentage; } set { _percentage = value; } }
-        private Value<bool?> _pFC;
+        private DirtyValue<bool?> _pFC;
         public bool? PFC { get { return _pFC; } set { _pFC = value; } }
-        private Value<bool?> _pOC;
+        private DirtyValue<bool?> _pOC;
         public bool? POC { get { return _pOC; } set { _pOC = value; } }
-        private Value<string> _pTB;
+        private DirtyValue<string> _pTB;
         public string PTB { get { return _pTB; } set { _pTB = value; } }
-        private Value<decimal?> _releasesAmount;
+        private DirtyValue<decimal?> _releasesAmount;
         public decimal? ReleasesAmount { get { return _releasesAmount; } set { _releasesAmount = value; } }
-        private Value<decimal?> _sellerPaidAmount;
+        private DirtyValue<decimal?> _sellerPaidAmount;
         public decimal? SellerPaidAmount { get { return _sellerPaidAmount; } set { _sellerPaidAmount = value; } }
-        private Value<decimal?> _truncatedAmountPerDay;
+        private DirtyValue<decimal?> _truncatedAmountPerDay;
         public decimal? TruncatedAmountPerDay { get { return _truncatedAmountPerDay; } set { _truncatedAmountPerDay = value; } }
-        private Value<bool?> _use4Decimals;
+        private DirtyValue<bool?> _use4Decimals;
         public bool? Use4Decimals { get { return _use4Decimals; } set { _use4Decimals = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,25 +8,25 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LogComment : IDirty
     {
-        private Value<string> _addedBy;
+        private DirtyValue<string> _addedBy;
         public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
-        private Value<string> _addedByName;
+        private DirtyValue<string> _addedByName;
         public string AddedByName { get { return _addedByName; } set { _addedByName = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _date;
+        private DirtyValue<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        private Value<int?> _forRoleId;
+        private DirtyValue<int?> _forRoleId;
         public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
-        private Value<string> _guid;
+        private DirtyValue<string> _guid;
         public string Guid { get { return _guid; } set { _guid = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isInternal;
+        private DirtyValue<bool?> _isInternal;
         public bool? IsInternal { get { return _isInternal; } set { _isInternal = value; } }
-        private Value<string> _reviewedBy;
+        private DirtyValue<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        private Value<DateTime?> _reviewedDate;
+        private DirtyValue<DateTime?> _reviewedDate;
         public DateTime? ReviewedDate { get { return _reviewedDate; } set { _reviewedDate = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

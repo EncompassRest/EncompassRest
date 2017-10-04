@@ -8,183 +8,183 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Gfe2010Page : IDirty
     {
-        private Value<int?> _balloonPaymentDueInYears;
+        private DirtyValue<int?> _balloonPaymentDueInYears;
         public int? BalloonPaymentDueInYears { get { return _balloonPaymentDueInYears; } set { _balloonPaymentDueInYears = value; } }
-        private Value<string> _brokerCompensationFwbc;
+        private DirtyValue<string> _brokerCompensationFwbc;
         public string BrokerCompensationFwbc { get { return _brokerCompensationFwbc; } set { _brokerCompensationFwbc = value; } }
-        private Value<string> _brokerCompensationFwsc;
+        private DirtyValue<string> _brokerCompensationFwsc;
         public string BrokerCompensationFwsc { get { return _brokerCompensationFwsc; } set { _brokerCompensationFwsc = value; } }
-        private Value<decimal?> _curedGfeTotalTolerance;
+        private DirtyValue<decimal?> _curedGfeTotalTolerance;
         public decimal? CuredGfeTotalTolerance { get { return _curedGfeTotalTolerance; } set { _curedGfeTotalTolerance = value; } }
-        private Value<DateTime?> _firstArmChangeDate;
+        private DirtyValue<DateTime?> _firstArmChangeDate;
         public DateTime? FirstArmChangeDate { get { return _firstArmChangeDate; } set { _firstArmChangeDate = value; } }
-        private Value<List<Gfe2010FwbcFwsc>> _gfe2010FwbcFwscs;
-        public List<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { return _gfe2010FwbcFwscs; } set { _gfe2010FwbcFwscs = value; } }
-        private Value<List<Gfe2010GfeCharge>> _gfe2010GfeCharges;
-        public List<Gfe2010GfeCharge> Gfe2010GfeCharges { get { return _gfe2010GfeCharges; } set { _gfe2010GfeCharges = value; } }
-        private Value<string> _gfeRecordingCharges;
+        private DirtyList<Gfe2010FwbcFwsc> _gfe2010FwbcFwscs;
+        public IList<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { var v = _gfe2010FwbcFwscs; return v ?? Interlocked.CompareExchange(ref _gfe2010FwbcFwscs, (v = new DirtyList<Gfe2010FwbcFwsc>()), null) ?? v; } set { _gfe2010FwbcFwscs = new DirtyList<Gfe2010FwbcFwsc>(value); } }
+        private DirtyList<Gfe2010GfeCharge> _gfe2010GfeCharges;
+        public IList<Gfe2010GfeCharge> Gfe2010GfeCharges { get { var v = _gfe2010GfeCharges; return v ?? Interlocked.CompareExchange(ref _gfe2010GfeCharges, (v = new DirtyList<Gfe2010GfeCharge>()), null) ?? v; } set { _gfe2010GfeCharges = new DirtyList<Gfe2010GfeCharge>(value); } }
+        private DirtyValue<string> _gfeRecordingCharges;
         public string GfeRecordingCharges { get { return _gfeRecordingCharges; } set { _gfeRecordingCharges = value; } }
-        private Value<decimal?> _gfeTotalTolerance;
+        private DirtyValue<decimal?> _gfeTotalTolerance;
         public decimal? GfeTotalTolerance { get { return _gfeTotalTolerance; } set { _gfeTotalTolerance = value; } }
-        private Value<bool?> _hasEscrowAccountIndicator;
+        private DirtyValue<bool?> _hasEscrowAccountIndicator;
         public bool? HasEscrowAccountIndicator { get { return _hasEscrowAccountIndicator; } set { _hasEscrowAccountIndicator = value; } }
-        private Value<bool?> _hasEscrowCityPropertyTaxesIndicator;
+        private DirtyValue<bool?> _hasEscrowCityPropertyTaxesIndicator;
         public bool? HasEscrowCityPropertyTaxesIndicator { get { return _hasEscrowCityPropertyTaxesIndicator; } set { _hasEscrowCityPropertyTaxesIndicator = value; } }
-        private Value<bool?> _hasEscrowFloodInsurancesIndicator;
+        private DirtyValue<bool?> _hasEscrowFloodInsurancesIndicator;
         public bool? HasEscrowFloodInsurancesIndicator { get { return _hasEscrowFloodInsurancesIndicator; } set { _hasEscrowFloodInsurancesIndicator = value; } }
-        private Value<bool?> _hasEscrowHomeownerInsurancesIndicator;
+        private DirtyValue<bool?> _hasEscrowHomeownerInsurancesIndicator;
         public bool? HasEscrowHomeownerInsurancesIndicator { get { return _hasEscrowHomeownerInsurancesIndicator; } set { _hasEscrowHomeownerInsurancesIndicator = value; } }
-        private Value<bool?> _hasEscrowPropertyTaxesIndicator;
+        private DirtyValue<bool?> _hasEscrowPropertyTaxesIndicator;
         public bool? HasEscrowPropertyTaxesIndicator { get { return _hasEscrowPropertyTaxesIndicator; } set { _hasEscrowPropertyTaxesIndicator = value; } }
-        private Value<bool?> _hasEscrowUserDefinedIndicator1;
+        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator1;
         public bool? HasEscrowUserDefinedIndicator1 { get { return _hasEscrowUserDefinedIndicator1; } set { _hasEscrowUserDefinedIndicator1 = value; } }
-        private Value<bool?> _hasEscrowUserDefinedIndicator2;
+        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator2;
         public bool? HasEscrowUserDefinedIndicator2 { get { return _hasEscrowUserDefinedIndicator2; } set { _hasEscrowUserDefinedIndicator2 = value; } }
-        private Value<bool?> _hasEscrowUserDefinedIndicator3;
+        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator3;
         public bool? HasEscrowUserDefinedIndicator3 { get { return _hasEscrowUserDefinedIndicator3; } set { _hasEscrowUserDefinedIndicator3 = value; } }
-        private Value<bool?> _hasEscrowUserDefinedIndicator4;
+        private DirtyValue<bool?> _hasEscrowUserDefinedIndicator4;
         public bool? HasEscrowUserDefinedIndicator4 { get { return _hasEscrowUserDefinedIndicator4; } set { _hasEscrowUserDefinedIndicator4 = value; } }
-        private Value<decimal?> _highestArmRate;
+        private DirtyValue<decimal?> _highestArmRate;
         public decimal? HighestArmRate { get { return _highestArmRate; } set { _highestArmRate = value; } }
-        private Value<decimal?> _hud1GovernmentRecordingCharge;
+        private DirtyValue<decimal?> _hud1GovernmentRecordingCharge;
         public decimal? Hud1GovernmentRecordingCharge { get { return _hud1GovernmentRecordingCharge; } set { _hud1GovernmentRecordingCharge = value; } }
-        private Value<decimal?> _hud1Pg1SellerPaidClosingCostsAmount;
+        private DirtyValue<decimal?> _hud1Pg1SellerPaidClosingCostsAmount;
         public decimal? Hud1Pg1SellerPaidClosingCostsAmount { get { return _hud1Pg1SellerPaidClosingCostsAmount; } set { _hud1Pg1SellerPaidClosingCostsAmount = value; } }
-        private Value<decimal?> _hud1Pg1TotalSettlementCharges;
+        private DirtyValue<decimal?> _hud1Pg1TotalSettlementCharges;
         public decimal? Hud1Pg1TotalSettlementCharges { get { return _hud1Pg1TotalSettlementCharges; } set { _hud1Pg1TotalSettlementCharges = value; } }
-        private Value<decimal?> _hud1Pg2SellerPaidClosingCostsAmount;
+        private DirtyValue<decimal?> _hud1Pg2SellerPaidClosingCostsAmount;
         public decimal? Hud1Pg2SellerPaidClosingCostsAmount { get { return _hud1Pg2SellerPaidClosingCostsAmount; } set { _hud1Pg2SellerPaidClosingCostsAmount = value; } }
-        private Value<decimal?> _hud1Pg2TotalSettlementCharges;
+        private DirtyValue<decimal?> _hud1Pg2TotalSettlementCharges;
         public decimal? Hud1Pg2TotalSettlementCharges { get { return _hud1Pg2TotalSettlementCharges; } set { _hud1Pg2TotalSettlementCharges = value; } }
-        private Value<decimal?> _hudTotalTolerance;
+        private DirtyValue<decimal?> _hudTotalTolerance;
         public decimal? HudTotalTolerance { get { return _hudTotalTolerance; } set { _hudTotalTolerance = value; } }
-        private Value<decimal?> _hudTotalToleranceIncreasePercent;
+        private DirtyValue<decimal?> _hudTotalToleranceIncreasePercent;
         public decimal? HudTotalToleranceIncreasePercent { get { return _hudTotalToleranceIncreasePercent; } set { _hudTotalToleranceIncreasePercent = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _line1101SellerPaidTotal;
+        private DirtyValue<decimal?> _line1101SellerPaidTotal;
         public decimal? Line1101SellerPaidTotal { get { return _line1101SellerPaidTotal; } set { _line1101SellerPaidTotal = value; } }
-        private Value<decimal?> _line1201SellerPaidTotal;
+        private DirtyValue<decimal?> _line1201SellerPaidTotal;
         public decimal? Line1201SellerPaidTotal { get { return _line1201SellerPaidTotal; } set { _line1201SellerPaidTotal = value; } }
-        private Value<decimal?> _line1301SellerPaidTotal;
+        private DirtyValue<decimal?> _line1301SellerPaidTotal;
         public decimal? Line1301SellerPaidTotal { get { return _line1301SellerPaidTotal; } set { _line1301SellerPaidTotal = value; } }
-        private Value<decimal?> _line801BorrowerPaidTotal;
+        private DirtyValue<decimal?> _line801BorrowerPaidTotal;
         public decimal? Line801BorrowerPaidTotal { get { return _line801BorrowerPaidTotal; } set { _line801BorrowerPaidTotal = value; } }
-        private Value<decimal?> _line801SellerPaidTotal;
+        private DirtyValue<decimal?> _line801SellerPaidTotal;
         public decimal? Line801SellerPaidTotal { get { return _line801SellerPaidTotal; } set { _line801SellerPaidTotal = value; } }
-        private Value<decimal?> _line802BorrowerPaidTotal;
+        private DirtyValue<decimal?> _line802BorrowerPaidTotal;
         public decimal? Line802BorrowerPaidTotal { get { return _line802BorrowerPaidTotal; } set { _line802BorrowerPaidTotal = value; } }
-        private Value<decimal?> _line803BorrowerPaidTotal;
+        private DirtyValue<decimal?> _line803BorrowerPaidTotal;
         public decimal? Line803BorrowerPaidTotal { get { return _line803BorrowerPaidTotal; } set { _line803BorrowerPaidTotal = value; } }
-        private Value<decimal?> _line803SellerPaidTotal;
+        private DirtyValue<decimal?> _line803SellerPaidTotal;
         public decimal? Line803SellerPaidTotal { get { return _line803SellerPaidTotal; } set { _line803SellerPaidTotal = value; } }
-        private Value<bool?> _line818FwbcIndicator;
+        private DirtyValue<bool?> _line818FwbcIndicator;
         public bool? Line818FwbcIndicator { get { return _line818FwbcIndicator; } set { _line818FwbcIndicator = value; } }
-        private Value<bool?> _line818FwscIndicator;
+        private DirtyValue<bool?> _line818FwscIndicator;
         public bool? Line818FwscIndicator { get { return _line818FwscIndicator; } set { _line818FwscIndicator = value; } }
-        private Value<bool?> _line819FwbcIndicator;
+        private DirtyValue<bool?> _line819FwbcIndicator;
         public bool? Line819FwbcIndicator { get { return _line819FwbcIndicator; } set { _line819FwbcIndicator = value; } }
-        private Value<bool?> _line819FwscIndicator;
+        private DirtyValue<bool?> _line819FwscIndicator;
         public bool? Line819FwscIndicator { get { return _line819FwscIndicator; } set { _line819FwscIndicator = value; } }
-        private Value<bool?> _line820FwbcIndicator;
+        private DirtyValue<bool?> _line820FwbcIndicator;
         public bool? Line820FwbcIndicator { get { return _line820FwbcIndicator; } set { _line820FwbcIndicator = value; } }
-        private Value<bool?> _line820FwscIndicator;
+        private DirtyValue<bool?> _line820FwscIndicator;
         public bool? Line820FwscIndicator { get { return _line820FwscIndicator; } set { _line820FwscIndicator = value; } }
-        private Value<bool?> _line821FwbcIndicator;
+        private DirtyValue<bool?> _line821FwbcIndicator;
         public bool? Line821FwbcIndicator { get { return _line821FwbcIndicator; } set { _line821FwbcIndicator = value; } }
-        private Value<bool?> _line821FwscIndicator;
+        private DirtyValue<bool?> _line821FwscIndicator;
         public bool? Line821FwscIndicator { get { return _line821FwscIndicator; } set { _line821FwscIndicator = value; } }
-        private Value<bool?> _line822FwbcIndicator;
+        private DirtyValue<bool?> _line822FwbcIndicator;
         public bool? Line822FwbcIndicator { get { return _line822FwbcIndicator; } set { _line822FwbcIndicator = value; } }
-        private Value<bool?> _line822FwscIndicator;
+        private DirtyValue<bool?> _line822FwscIndicator;
         public bool? Line822FwscIndicator { get { return _line822FwscIndicator; } set { _line822FwscIndicator = value; } }
-        private Value<bool?> _line823FwbcIndicator;
+        private DirtyValue<bool?> _line823FwbcIndicator;
         public bool? Line823FwbcIndicator { get { return _line823FwbcIndicator; } set { _line823FwbcIndicator = value; } }
-        private Value<bool?> _line823FwscIndicator;
+        private DirtyValue<bool?> _line823FwscIndicator;
         public bool? Line823FwscIndicator { get { return _line823FwscIndicator; } set { _line823FwscIndicator = value; } }
-        private Value<bool?> _line824FwbcIndicator;
+        private DirtyValue<bool?> _line824FwbcIndicator;
         public bool? Line824FwbcIndicator { get { return _line824FwbcIndicator; } set { _line824FwbcIndicator = value; } }
-        private Value<bool?> _line824FwscIndicator;
+        private DirtyValue<bool?> _line824FwscIndicator;
         public bool? Line824FwscIndicator { get { return _line824FwscIndicator; } set { _line824FwscIndicator = value; } }
-        private Value<bool?> _line825FwbcIndicator;
+        private DirtyValue<bool?> _line825FwbcIndicator;
         public bool? Line825FwbcIndicator { get { return _line825FwbcIndicator; } set { _line825FwbcIndicator = value; } }
-        private Value<bool?> _line825FwscIndicator;
+        private DirtyValue<bool?> _line825FwscIndicator;
         public bool? Line825FwscIndicator { get { return _line825FwscIndicator; } set { _line825FwscIndicator = value; } }
-        private Value<bool?> _line826FwbcIndicator;
+        private DirtyValue<bool?> _line826FwbcIndicator;
         public bool? Line826FwbcIndicator { get { return _line826FwbcIndicator; } set { _line826FwbcIndicator = value; } }
-        private Value<bool?> _line826FwscIndicator;
+        private DirtyValue<bool?> _line826FwscIndicator;
         public bool? Line826FwscIndicator { get { return _line826FwscIndicator; } set { _line826FwscIndicator = value; } }
-        private Value<bool?> _line827FwbcIndicator;
+        private DirtyValue<bool?> _line827FwbcIndicator;
         public bool? Line827FwbcIndicator { get { return _line827FwbcIndicator; } set { _line827FwbcIndicator = value; } }
-        private Value<bool?> _line827FwscIndicator;
+        private DirtyValue<bool?> _line827FwscIndicator;
         public bool? Line827FwscIndicator { get { return _line827FwscIndicator; } set { _line827FwscIndicator = value; } }
-        private Value<bool?> _line828FwbcIndicator;
+        private DirtyValue<bool?> _line828FwbcIndicator;
         public bool? Line828FwbcIndicator { get { return _line828FwbcIndicator; } set { _line828FwbcIndicator = value; } }
-        private Value<bool?> _line828FwscIndicator;
+        private DirtyValue<bool?> _line828FwscIndicator;
         public bool? Line828FwscIndicator { get { return _line828FwscIndicator; } set { _line828FwscIndicator = value; } }
-        private Value<bool?> _line829FwbcIndicator;
+        private DirtyValue<bool?> _line829FwbcIndicator;
         public bool? Line829FwbcIndicator { get { return _line829FwbcIndicator; } set { _line829FwbcIndicator = value; } }
-        private Value<bool?> _line829FwscIndicator;
+        private DirtyValue<bool?> _line829FwscIndicator;
         public bool? Line829FwscIndicator { get { return _line829FwscIndicator; } set { _line829FwscIndicator = value; } }
-        private Value<bool?> _line830FwbcIndicator;
+        private DirtyValue<bool?> _line830FwbcIndicator;
         public bool? Line830FwbcIndicator { get { return _line830FwbcIndicator; } set { _line830FwbcIndicator = value; } }
-        private Value<bool?> _line830FwscIndicator;
+        private DirtyValue<bool?> _line830FwscIndicator;
         public bool? Line830FwscIndicator { get { return _line830FwscIndicator; } set { _line830FwscIndicator = value; } }
-        private Value<bool?> _line831FwbcIndicator;
+        private DirtyValue<bool?> _line831FwbcIndicator;
         public bool? Line831FwbcIndicator { get { return _line831FwbcIndicator; } set { _line831FwbcIndicator = value; } }
-        private Value<bool?> _line831FwscIndicator;
+        private DirtyValue<bool?> _line831FwscIndicator;
         public bool? Line831FwscIndicator { get { return _line831FwscIndicator; } set { _line831FwscIndicator = value; } }
-        private Value<bool?> _line832FwbcIndicator;
+        private DirtyValue<bool?> _line832FwbcIndicator;
         public bool? Line832FwbcIndicator { get { return _line832FwbcIndicator; } set { _line832FwbcIndicator = value; } }
-        private Value<bool?> _line832FwscIndicator;
+        private DirtyValue<bool?> _line832FwscIndicator;
         public bool? Line832FwscIndicator { get { return _line832FwscIndicator; } set { _line832FwscIndicator = value; } }
-        private Value<bool?> _line833FwbcIndicator;
+        private DirtyValue<bool?> _line833FwbcIndicator;
         public bool? Line833FwbcIndicator { get { return _line833FwbcIndicator; } set { _line833FwbcIndicator = value; } }
-        private Value<bool?> _line833FwscIndicator;
+        private DirtyValue<bool?> _line833FwscIndicator;
         public bool? Line833FwscIndicator { get { return _line833FwscIndicator; } set { _line833FwscIndicator = value; } }
-        private Value<bool?> _lineLFwbcIndicator;
+        private DirtyValue<bool?> _lineLFwbcIndicator;
         public bool? LineLFwbcIndicator { get { return _lineLFwbcIndicator; } set { _lineLFwbcIndicator = value; } }
-        private Value<bool?> _lineLFwscIndicator;
+        private DirtyValue<bool?> _lineLFwscIndicator;
         public bool? LineLFwscIndicator { get { return _lineLFwscIndicator; } set { _lineLFwscIndicator = value; } }
-        private Value<bool?> _lineMFwbcIndicator;
+        private DirtyValue<bool?> _lineMFwbcIndicator;
         public bool? LineMFwbcIndicator { get { return _lineMFwbcIndicator; } set { _lineMFwbcIndicator = value; } }
-        private Value<bool?> _lineMFwscIndicator;
+        private DirtyValue<bool?> _lineMFwscIndicator;
         public bool? LineMFwscIndicator { get { return _lineMFwscIndicator; } set { _lineMFwscIndicator = value; } }
-        private Value<bool?> _lineNFwbcIndicator;
+        private DirtyValue<bool?> _lineNFwbcIndicator;
         public bool? LineNFwbcIndicator { get { return _lineNFwbcIndicator; } set { _lineNFwbcIndicator = value; } }
-        private Value<bool?> _lineNFwscIndicator;
+        private DirtyValue<bool?> _lineNFwscIndicator;
         public bool? LineNFwscIndicator { get { return _lineNFwscIndicator; } set { _lineNFwscIndicator = value; } }
-        private Value<bool?> _lineOFwbcIndicator;
+        private DirtyValue<bool?> _lineOFwbcIndicator;
         public bool? LineOFwbcIndicator { get { return _lineOFwbcIndicator; } set { _lineOFwbcIndicator = value; } }
-        private Value<bool?> _lineOFwscIndicator;
+        private DirtyValue<bool?> _lineOFwscIndicator;
         public bool? LineOFwscIndicator { get { return _lineOFwscIndicator; } set { _lineOFwscIndicator = value; } }
-        private Value<bool?> _linePFwbcIndicator;
+        private DirtyValue<bool?> _linePFwbcIndicator;
         public bool? LinePFwbcIndicator { get { return _linePFwbcIndicator; } set { _linePFwbcIndicator = value; } }
-        private Value<bool?> _linePFwscIndicator;
+        private DirtyValue<bool?> _linePFwscIndicator;
         public bool? LinePFwscIndicator { get { return _linePFwscIndicator; } set { _linePFwscIndicator = value; } }
-        private Value<bool?> _lineQFwbcIndicator;
+        private DirtyValue<bool?> _lineQFwbcIndicator;
         public bool? LineQFwbcIndicator { get { return _lineQFwbcIndicator; } set { _lineQFwbcIndicator = value; } }
-        private Value<bool?> _lineQFwscIndicator;
+        private DirtyValue<bool?> _lineQFwscIndicator;
         public bool? LineQFwscIndicator { get { return _lineQFwscIndicator; } set { _lineQFwscIndicator = value; } }
-        private Value<bool?> _lineRFwbcIndicator;
+        private DirtyValue<bool?> _lineRFwbcIndicator;
         public bool? LineRFwbcIndicator { get { return _lineRFwbcIndicator; } set { _lineRFwbcIndicator = value; } }
-        private Value<bool?> _lineRFwscIndicator;
+        private DirtyValue<bool?> _lineRFwscIndicator;
         public bool? LineRFwscIndicator { get { return _lineRFwscIndicator; } set { _lineRFwscIndicator = value; } }
-        private Value<decimal?> _lowestArmRate;
+        private DirtyValue<decimal?> _lowestArmRate;
         public decimal? LowestArmRate { get { return _lowestArmRate; } set { _lowestArmRate = value; } }
-        private Value<bool?> _monthlyAmountIncludeInterestIndicator;
+        private DirtyValue<bool?> _monthlyAmountIncludeInterestIndicator;
         public bool? MonthlyAmountIncludeInterestIndicator { get { return _monthlyAmountIncludeInterestIndicator; } set { _monthlyAmountIncludeInterestIndicator = value; } }
-        private Value<bool?> _monthlyAmountIncludeMiIndicator;
+        private DirtyValue<bool?> _monthlyAmountIncludeMiIndicator;
         public bool? MonthlyAmountIncludeMiIndicator { get { return _monthlyAmountIncludeMiIndicator; } set { _monthlyAmountIncludeMiIndicator = value; } }
-        private Value<bool?> _monthlyAmountIncludePrincipalIndicator;
+        private DirtyValue<bool?> _monthlyAmountIncludePrincipalIndicator;
         public bool? MonthlyAmountIncludePrincipalIndicator { get { return _monthlyAmountIncludePrincipalIndicator; } set { _monthlyAmountIncludePrincipalIndicator = value; } }
-        private Value<decimal?> _monthlyAmountWithEscrow;
+        private DirtyValue<decimal?> _monthlyAmountWithEscrow;
         public decimal? MonthlyAmountWithEscrow { get { return _monthlyAmountWithEscrow; } set { _monthlyAmountWithEscrow = value; } }
-        private Value<decimal?> _monthlyEscrowPayment;
+        private DirtyValue<decimal?> _monthlyEscrowPayment;
         public decimal? MonthlyEscrowPayment { get { return _monthlyEscrowPayment; } set { _monthlyEscrowPayment = value; } }
-        private Value<decimal?> _prepaidInterest;
+        private DirtyValue<decimal?> _prepaidInterest;
         public decimal? PrepaidInterest { get { return _prepaidInterest; } set { _prepaidInterest = value; } }
-        private Value<decimal?> _totalToleranceIncreaseAmount;
+        private DirtyValue<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get { return _totalToleranceIncreaseAmount; } set { _totalToleranceIncreaseAmount = value; } }
         private int _gettingDirty;
         private int _settingDirty; 
@@ -198,8 +198,6 @@ namespace EncompassRest.Loans
                     || _brokerCompensationFwsc.Dirty
                     || _curedGfeTotalTolerance.Dirty
                     || _firstArmChangeDate.Dirty
-                    || _gfe2010FwbcFwscs.Dirty
-                    || _gfe2010GfeCharges.Dirty
                     || _gfeRecordingCharges.Dirty
                     || _gfeTotalTolerance.Dirty
                     || _hasEscrowAccountIndicator.Dirty
@@ -281,7 +279,9 @@ namespace EncompassRest.Loans
                     || _monthlyAmountWithEscrow.Dirty
                     || _monthlyEscrowPayment.Dirty
                     || _prepaidInterest.Dirty
-                    || _totalToleranceIncreaseAmount.Dirty;
+                    || _totalToleranceIncreaseAmount.Dirty
+                    || _gfe2010FwbcFwscs?.Dirty == true
+                    || _gfe2010GfeCharges?.Dirty == true;
                 _gettingDirty = 0;
                 return dirty;
             }
@@ -293,8 +293,6 @@ namespace EncompassRest.Loans
                 _brokerCompensationFwsc.Dirty = value;
                 _curedGfeTotalTolerance.Dirty = value;
                 _firstArmChangeDate.Dirty = value;
-                _gfe2010FwbcFwscs.Dirty = value;
-                _gfe2010GfeCharges.Dirty = value;
                 _gfeRecordingCharges.Dirty = value;
                 _gfeTotalTolerance.Dirty = value;
                 _hasEscrowAccountIndicator.Dirty = value;
@@ -377,6 +375,8 @@ namespace EncompassRest.Loans
                 _monthlyEscrowPayment.Dirty = value;
                 _prepaidInterest.Dirty = value;
                 _totalToleranceIncreaseAmount.Dirty = value;
+                if (_gfe2010FwbcFwscs != null) _gfe2010FwbcFwscs.Dirty = value;
+                if (_gfe2010GfeCharges != null) _gfe2010GfeCharges.Dirty = value;
                 _settingDirty = 0;
             }
         }

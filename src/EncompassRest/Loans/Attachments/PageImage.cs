@@ -5,14 +5,14 @@ namespace EncompassRest.Loans.Attachments
 {
     public sealed class PageImage : Image
     {
-        private Value<string> _nativeKey;
+        private DirtyValue<string> _nativeKey;
         public string NativeKey { get { return _nativeKey; } set { _nativeKey = value; } }
-        private Value<int?> _rotation;
+        private DirtyValue<int?> _rotation;
         public int? Rotation { get { return _rotation; } set { _rotation = value; } }
-        private Value<long?> _fileSize;
+        private DirtyValue<long?> _fileSize;
         public long? FileSize { get { return _fileSize; } set { _fileSize = value; } }
         public PageThumbnail Thumbnail { get; set; }
-        private Value<List<PageAnnotation>> _annotations;
+        private DirtyValue<List<PageAnnotation>> _annotations;
         public List<PageAnnotation> Annotations { get { return _annotations; } set { _annotations = value; } }
         private int _gettingDirty;
         private int _settingDirty;

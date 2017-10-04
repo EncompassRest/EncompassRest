@@ -8,13 +8,13 @@ namespace EncompassRest.Loans
 {
     public sealed partial class AdditionalStateDisclosure : IDirty
     {
-        private Value<string> _disclosureName;
+        private DirtyValue<string> _disclosureName;
         public string DisclosureName { get { return _disclosureName; } set { _disclosureName = value; } }
-        private Value<string> _disclosureValue;
+        private DirtyValue<string> _disclosureValue;
         public string DisclosureValue { get { return _disclosureValue; } set { _disclosureValue = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _stateCode;
+        private DirtyValue<string> _stateCode;
         public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

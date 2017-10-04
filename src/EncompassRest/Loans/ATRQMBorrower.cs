@@ -8,467 +8,467 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ATRQMBorrower : IDirty
     {
-        private Value<int?> _aTRQMBorrowerIndex;
+        private DirtyValue<int?> _aTRQMBorrowerIndex;
         public int? ATRQMBorrowerIndex { get { return _aTRQMBorrowerIndex; } set { _aTRQMBorrowerIndex = value; } }
-        private Value<string> _aUSRecommendation;
+        private DirtyValue<string> _aUSRecommendation;
         public string AUSRecommendation { get { return _aUSRecommendation; } set { _aUSRecommendation = value; } }
-        private Value<string> _aUSVersion;
+        private DirtyValue<string> _aUSVersion;
         public string AUSVersion { get { return _aUSVersion; } set { _aUSVersion = value; } }
-        private Value<decimal?> _borBonusAverageOvertime;
+        private DirtyValue<decimal?> _borBonusAverageOvertime;
         public decimal? BorBonusAverageOvertime { get { return _borBonusAverageOvertime; } set { _borBonusAverageOvertime = value; } }
-        private Value<decimal?> _borBonusMostRecentAmount;
+        private DirtyValue<decimal?> _borBonusMostRecentAmount;
         public decimal? BorBonusMostRecentAmount { get { return _borBonusMostRecentAmount; } set { _borBonusMostRecentAmount = value; } }
-        private Value<int?> _borBonusMostRecentMonths;
+        private DirtyValue<int?> _borBonusMostRecentMonths;
         public int? BorBonusMostRecentMonths { get { return _borBonusMostRecentMonths; } set { _borBonusMostRecentMonths = value; } }
-        private Value<int?> _borBonusMostRecentYear;
+        private DirtyValue<int?> _borBonusMostRecentYear;
         public int? BorBonusMostRecentYear { get { return _borBonusMostRecentYear; } set { _borBonusMostRecentYear = value; } }
-        private Value<decimal?> _borBonusPreviousAmount1;
+        private DirtyValue<decimal?> _borBonusPreviousAmount1;
         public decimal? BorBonusPreviousAmount1 { get { return _borBonusPreviousAmount1; } set { _borBonusPreviousAmount1 = value; } }
-        private Value<decimal?> _borBonusPreviousAmount2;
+        private DirtyValue<decimal?> _borBonusPreviousAmount2;
         public decimal? BorBonusPreviousAmount2 { get { return _borBonusPreviousAmount2; } set { _borBonusPreviousAmount2 = value; } }
-        private Value<int?> _borBonusPreviousMonths1;
+        private DirtyValue<int?> _borBonusPreviousMonths1;
         public int? BorBonusPreviousMonths1 { get { return _borBonusPreviousMonths1; } set { _borBonusPreviousMonths1 = value; } }
-        private Value<int?> _borBonusPreviousMonths2;
+        private DirtyValue<int?> _borBonusPreviousMonths2;
         public int? BorBonusPreviousMonths2 { get { return _borBonusPreviousMonths2; } set { _borBonusPreviousMonths2 = value; } }
-        private Value<int?> _borBonusPreviousYear1;
+        private DirtyValue<int?> _borBonusPreviousYear1;
         public int? BorBonusPreviousYear1 { get { return _borBonusPreviousYear1; } set { _borBonusPreviousYear1 = value; } }
-        private Value<int?> _borBonusPreviousYear2;
+        private DirtyValue<int?> _borBonusPreviousYear2;
         public int? BorBonusPreviousYear2 { get { return _borBonusPreviousYear2; } set { _borBonusPreviousYear2 = value; } }
-        private Value<decimal?> _borCommissionAverageOvertime;
+        private DirtyValue<decimal?> _borCommissionAverageOvertime;
         public decimal? BorCommissionAverageOvertime { get { return _borCommissionAverageOvertime; } set { _borCommissionAverageOvertime = value; } }
-        private Value<decimal?> _borCommissionMostRecentAmount;
+        private DirtyValue<decimal?> _borCommissionMostRecentAmount;
         public decimal? BorCommissionMostRecentAmount { get { return _borCommissionMostRecentAmount; } set { _borCommissionMostRecentAmount = value; } }
-        private Value<int?> _borCommissionMostRecentMonths;
+        private DirtyValue<int?> _borCommissionMostRecentMonths;
         public int? BorCommissionMostRecentMonths { get { return _borCommissionMostRecentMonths; } set { _borCommissionMostRecentMonths = value; } }
-        private Value<int?> _borCommissionMostRecentYear;
+        private DirtyValue<int?> _borCommissionMostRecentYear;
         public int? BorCommissionMostRecentYear { get { return _borCommissionMostRecentYear; } set { _borCommissionMostRecentYear = value; } }
-        private Value<decimal?> _borCommissionPreviousAmount1;
+        private DirtyValue<decimal?> _borCommissionPreviousAmount1;
         public decimal? BorCommissionPreviousAmount1 { get { return _borCommissionPreviousAmount1; } set { _borCommissionPreviousAmount1 = value; } }
-        private Value<decimal?> _borCommissionPreviousAmount2;
+        private DirtyValue<decimal?> _borCommissionPreviousAmount2;
         public decimal? BorCommissionPreviousAmount2 { get { return _borCommissionPreviousAmount2; } set { _borCommissionPreviousAmount2 = value; } }
-        private Value<int?> _borCommissionPreviousMonths1;
+        private DirtyValue<int?> _borCommissionPreviousMonths1;
         public int? BorCommissionPreviousMonths1 { get { return _borCommissionPreviousMonths1; } set { _borCommissionPreviousMonths1 = value; } }
-        private Value<int?> _borCommissionPreviousMonths2;
+        private DirtyValue<int?> _borCommissionPreviousMonths2;
         public int? BorCommissionPreviousMonths2 { get { return _borCommissionPreviousMonths2; } set { _borCommissionPreviousMonths2 = value; } }
-        private Value<int?> _borCommissionPreviousYear1;
+        private DirtyValue<int?> _borCommissionPreviousYear1;
         public int? BorCommissionPreviousYear1 { get { return _borCommissionPreviousYear1; } set { _borCommissionPreviousYear1 = value; } }
-        private Value<int?> _borCommissionPreviousYear2;
+        private DirtyValue<int?> _borCommissionPreviousYear2;
         public int? BorCommissionPreviousYear2 { get { return _borCommissionPreviousYear2; } set { _borCommissionPreviousYear2 = value; } }
-        private Value<decimal?> _borContingentLiabilitiesLiabilityAmount1;
+        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount1;
         public decimal? BorContingentLiabilitiesLiabilityAmount1 { get { return _borContingentLiabilitiesLiabilityAmount1; } set { _borContingentLiabilitiesLiabilityAmount1 = value; } }
-        private Value<decimal?> _borContingentLiabilitiesLiabilityAmount2;
+        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount2;
         public decimal? BorContingentLiabilitiesLiabilityAmount2 { get { return _borContingentLiabilitiesLiabilityAmount2; } set { _borContingentLiabilitiesLiabilityAmount2 = value; } }
-        private Value<decimal?> _borContingentLiabilitiesLiabilityAmount3;
+        private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount3;
         public decimal? BorContingentLiabilitiesLiabilityAmount3 { get { return _borContingentLiabilitiesLiabilityAmount3; } set { _borContingentLiabilitiesLiabilityAmount3 = value; } }
-        private Value<string> _borContingentLiabilitiesLiabilityDescription1;
+        private DirtyValue<string> _borContingentLiabilitiesLiabilityDescription1;
         public string BorContingentLiabilitiesLiabilityDescription1 { get { return _borContingentLiabilitiesLiabilityDescription1; } set { _borContingentLiabilitiesLiabilityDescription1 = value; } }
-        private Value<string> _borContingentLiabilitiesLiabilityDescription2;
+        private DirtyValue<string> _borContingentLiabilitiesLiabilityDescription2;
         public string BorContingentLiabilitiesLiabilityDescription2 { get { return _borContingentLiabilitiesLiabilityDescription2; } set { _borContingentLiabilitiesLiabilityDescription2 = value; } }
-        private Value<string> _borContingentLiabilitiesLiabilityDescription3;
+        private DirtyValue<string> _borContingentLiabilitiesLiabilityDescription3;
         public string BorContingentLiabilitiesLiabilityDescription3 { get { return _borContingentLiabilitiesLiabilityDescription3; } set { _borContingentLiabilitiesLiabilityDescription3 = value; } }
-        private Value<decimal?> _borContingentLiabilitiesTotalLiabilityAmount;
+        private DirtyValue<decimal?> _borContingentLiabilitiesTotalLiabilityAmount;
         public decimal? BorContingentLiabilitiesTotalLiabilityAmount { get { return _borContingentLiabilitiesTotalLiabilityAmount; } set { _borContingentLiabilitiesTotalLiabilityAmount = value; } }
-        private Value<decimal?> _borCosignedObligationsCarLoanPayment;
+        private DirtyValue<decimal?> _borCosignedObligationsCarLoanPayment;
         public decimal? BorCosignedObligationsCarLoanPayment { get { return _borCosignedObligationsCarLoanPayment; } set { _borCosignedObligationsCarLoanPayment = value; } }
-        private Value<decimal?> _borCosignedObligationsMortgagePayment;
+        private DirtyValue<decimal?> _borCosignedObligationsMortgagePayment;
         public decimal? BorCosignedObligationsMortgagePayment { get { return _borCosignedObligationsMortgagePayment; } set { _borCosignedObligationsMortgagePayment = value; } }
-        private Value<decimal?> _borCosignedObligationsOtherPayment;
+        private DirtyValue<decimal?> _borCosignedObligationsOtherPayment;
         public decimal? BorCosignedObligationsOtherPayment { get { return _borCosignedObligationsOtherPayment; } set { _borCosignedObligationsOtherPayment = value; } }
-        private Value<string> _borCosignedObligationsOtherPaymentDescription;
+        private DirtyValue<string> _borCosignedObligationsOtherPaymentDescription;
         public string BorCosignedObligationsOtherPaymentDescription { get { return _borCosignedObligationsOtherPaymentDescription; } set { _borCosignedObligationsOtherPaymentDescription = value; } }
-        private Value<decimal?> _borCosignedObligationsStudentLoanPayment;
+        private DirtyValue<decimal?> _borCosignedObligationsStudentLoanPayment;
         public decimal? BorCosignedObligationsStudentLoanPayment { get { return _borCosignedObligationsStudentLoanPayment; } set { _borCosignedObligationsStudentLoanPayment = value; } }
-        private Value<decimal?> _borCosignedObligationsTotalCoMortgagorLiabilities;
+        private DirtyValue<decimal?> _borCosignedObligationsTotalCoMortgagorLiabilities;
         public decimal? BorCosignedObligationsTotalCoMortgagorLiabilities { get { return _borCosignedObligationsTotalCoMortgagorLiabilities; } set { _borCosignedObligationsTotalCoMortgagorLiabilities = value; } }
-        private Value<decimal?> _borDividendAverageDividend;
+        private DirtyValue<decimal?> _borDividendAverageDividend;
         public decimal? BorDividendAverageDividend { get { return _borDividendAverageDividend; } set { _borDividendAverageDividend = value; } }
-        private Value<decimal?> _borDividendPreviousAmount1;
+        private DirtyValue<decimal?> _borDividendPreviousAmount1;
         public decimal? BorDividendPreviousAmount1 { get { return _borDividendPreviousAmount1; } set { _borDividendPreviousAmount1 = value; } }
-        private Value<decimal?> _borDividendPreviousAmount2;
+        private DirtyValue<decimal?> _borDividendPreviousAmount2;
         public decimal? BorDividendPreviousAmount2 { get { return _borDividendPreviousAmount2; } set { _borDividendPreviousAmount2 = value; } }
-        private Value<int?> _borDividendPreviousMonths1;
+        private DirtyValue<int?> _borDividendPreviousMonths1;
         public int? BorDividendPreviousMonths1 { get { return _borDividendPreviousMonths1; } set { _borDividendPreviousMonths1 = value; } }
-        private Value<int?> _borDividendPreviousMonths2;
+        private DirtyValue<int?> _borDividendPreviousMonths2;
         public int? BorDividendPreviousMonths2 { get { return _borDividendPreviousMonths2; } set { _borDividendPreviousMonths2 = value; } }
-        private Value<int?> _borDividendPreviousYear1;
+        private DirtyValue<int?> _borDividendPreviousYear1;
         public int? BorDividendPreviousYear1 { get { return _borDividendPreviousYear1; } set { _borDividendPreviousYear1 = value; } }
-        private Value<int?> _borDividendPreviousYear2;
+        private DirtyValue<int?> _borDividendPreviousYear2;
         public int? BorDividendPreviousYear2 { get { return _borDividendPreviousYear2; } set { _borDividendPreviousYear2 = value; } }
-        private Value<decimal?> _borDividendRequiredForCashAmount;
+        private DirtyValue<decimal?> _borDividendRequiredForCashAmount;
         public decimal? BorDividendRequiredForCashAmount { get { return _borDividendRequiredForCashAmount; } set { _borDividendRequiredForCashAmount = value; } }
-        private Value<decimal?> _borInterestAverageDividend;
+        private DirtyValue<decimal?> _borInterestAverageDividend;
         public decimal? BorInterestAverageDividend { get { return _borInterestAverageDividend; } set { _borInterestAverageDividend = value; } }
-        private Value<decimal?> _borInterestPreviousAmount1;
+        private DirtyValue<decimal?> _borInterestPreviousAmount1;
         public decimal? BorInterestPreviousAmount1 { get { return _borInterestPreviousAmount1; } set { _borInterestPreviousAmount1 = value; } }
-        private Value<decimal?> _borInterestPreviousAmount2;
+        private DirtyValue<decimal?> _borInterestPreviousAmount2;
         public decimal? BorInterestPreviousAmount2 { get { return _borInterestPreviousAmount2; } set { _borInterestPreviousAmount2 = value; } }
-        private Value<int?> _borInterestPreviousMonths1;
+        private DirtyValue<int?> _borInterestPreviousMonths1;
         public int? BorInterestPreviousMonths1 { get { return _borInterestPreviousMonths1; } set { _borInterestPreviousMonths1 = value; } }
-        private Value<int?> _borInterestPreviousMonths2;
+        private DirtyValue<int?> _borInterestPreviousMonths2;
         public int? BorInterestPreviousMonths2 { get { return _borInterestPreviousMonths2; } set { _borInterestPreviousMonths2 = value; } }
-        private Value<int?> _borInterestPreviousYear1;
+        private DirtyValue<int?> _borInterestPreviousYear1;
         public int? BorInterestPreviousYear1 { get { return _borInterestPreviousYear1; } set { _borInterestPreviousYear1 = value; } }
-        private Value<int?> _borInterestPreviousYear2;
+        private DirtyValue<int?> _borInterestPreviousYear2;
         public int? BorInterestPreviousYear2 { get { return _borInterestPreviousYear2; } set { _borInterestPreviousYear2 = value; } }
-        private Value<decimal?> _borInterestRequiredForCashAmount;
+        private DirtyValue<decimal?> _borInterestRequiredForCashAmount;
         public decimal? BorInterestRequiredForCashAmount { get { return _borInterestRequiredForCashAmount; } set { _borInterestRequiredForCashAmount = value; } }
-        private Value<decimal?> _borMilitaryAllowanceClothingAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceClothingAllowance;
         public decimal? BorMilitaryAllowanceClothingAllowance { get { return _borMilitaryAllowanceClothingAllowance; } set { _borMilitaryAllowanceClothingAllowance = value; } }
-        private Value<decimal?> _borMilitaryAllowanceOtherAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceOtherAllowance;
         public decimal? BorMilitaryAllowanceOtherAllowance { get { return _borMilitaryAllowanceOtherAllowance; } set { _borMilitaryAllowanceOtherAllowance = value; } }
-        private Value<string> _borMilitaryAllowanceOtherAllowanceDescription;
+        private DirtyValue<string> _borMilitaryAllowanceOtherAllowanceDescription;
         public string BorMilitaryAllowanceOtherAllowanceDescription { get { return _borMilitaryAllowanceOtherAllowanceDescription; } set { _borMilitaryAllowanceOtherAllowanceDescription = value; } }
-        private Value<decimal?> _borMilitaryAllowanceQuartersAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceQuartersAllowance;
         public decimal? BorMilitaryAllowanceQuartersAllowance { get { return _borMilitaryAllowanceQuartersAllowance; } set { _borMilitaryAllowanceQuartersAllowance = value; } }
-        private Value<decimal?> _borMilitaryAllowanceRationsAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceRationsAllowance;
         public decimal? BorMilitaryAllowanceRationsAllowance { get { return _borMilitaryAllowanceRationsAllowance; } set { _borMilitaryAllowanceRationsAllowance = value; } }
-        private Value<decimal?> _borMilitaryAllowanceTotalAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceTotalAllowance;
         public decimal? BorMilitaryAllowanceTotalAllowance { get { return _borMilitaryAllowanceTotalAllowance; } set { _borMilitaryAllowanceTotalAllowance = value; } }
-        private Value<decimal?> _borMilitaryAllowanceVariableHousingAllowance;
+        private DirtyValue<decimal?> _borMilitaryAllowanceVariableHousingAllowance;
         public decimal? BorMilitaryAllowanceVariableHousingAllowance { get { return _borMilitaryAllowanceVariableHousingAllowance; } set { _borMilitaryAllowanceVariableHousingAllowance = value; } }
-        private Value<decimal?> _borMilitaryBasePay;
+        private DirtyValue<decimal?> _borMilitaryBasePay;
         public decimal? BorMilitaryBasePay { get { return _borMilitaryBasePay; } set { _borMilitaryBasePay = value; } }
-        private Value<decimal?> _borMilitaryCombatPay;
+        private DirtyValue<decimal?> _borMilitaryCombatPay;
         public decimal? BorMilitaryCombatPay { get { return _borMilitaryCombatPay; } set { _borMilitaryCombatPay = value; } }
-        private Value<decimal?> _borMilitaryFlightPay;
+        private DirtyValue<decimal?> _borMilitaryFlightPay;
         public decimal? BorMilitaryFlightPay { get { return _borMilitaryFlightPay; } set { _borMilitaryFlightPay = value; } }
-        private Value<decimal?> _borMilitaryHazardPay;
+        private DirtyValue<decimal?> _borMilitaryHazardPay;
         public decimal? BorMilitaryHazardPay { get { return _borMilitaryHazardPay; } set { _borMilitaryHazardPay = value; } }
-        private Value<decimal?> _borMilitaryOverseasPay;
+        private DirtyValue<decimal?> _borMilitaryOverseasPay;
         public decimal? BorMilitaryOverseasPay { get { return _borMilitaryOverseasPay; } set { _borMilitaryOverseasPay = value; } }
-        private Value<decimal?> _borMilitaryPropPay;
+        private DirtyValue<decimal?> _borMilitaryPropPay;
         public decimal? BorMilitaryPropPay { get { return _borMilitaryPropPay; } set { _borMilitaryPropPay = value; } }
-        private Value<decimal?> _borMilitaryTotalPay;
+        private DirtyValue<decimal?> _borMilitaryTotalPay;
         public decimal? BorMilitaryTotalPay { get { return _borMilitaryTotalPay; } set { _borMilitaryTotalPay = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeBaseIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeBaseIncome;
         public decimal? BorMonthlyEmplymentIncomeBaseIncome { get { return _borMonthlyEmplymentIncomeBaseIncome; } set { _borMonthlyEmplymentIncomeBaseIncome = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeBonuseIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeBonuseIncome;
         public decimal? BorMonthlyEmplymentIncomeBonuseIncome { get { return _borMonthlyEmplymentIncomeBonuseIncome; } set { _borMonthlyEmplymentIncomeBonuseIncome = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeCommissionIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeCommissionIncome;
         public decimal? BorMonthlyEmplymentIncomeCommissionIncome { get { return _borMonthlyEmplymentIncomeCommissionIncome; } set { _borMonthlyEmplymentIncomeCommissionIncome = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeDividendInterestIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeDividendInterestIncome;
         public decimal? BorMonthlyEmplymentIncomeDividendInterestIncome { get { return _borMonthlyEmplymentIncomeDividendInterestIncome; } set { _borMonthlyEmplymentIncomeDividendInterestIncome = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeOtherIncome1;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOtherIncome1;
         public decimal? BorMonthlyEmplymentIncomeOtherIncome1 { get { return _borMonthlyEmplymentIncomeOtherIncome1; } set { _borMonthlyEmplymentIncomeOtherIncome1 = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeOtherIncome2;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOtherIncome2;
         public decimal? BorMonthlyEmplymentIncomeOtherIncome2 { get { return _borMonthlyEmplymentIncomeOtherIncome2; } set { _borMonthlyEmplymentIncomeOtherIncome2 = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeOvertimeIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeOvertimeIncome;
         public decimal? BorMonthlyEmplymentIncomeOvertimeIncome { get { return _borMonthlyEmplymentIncomeOvertimeIncome; } set { _borMonthlyEmplymentIncomeOvertimeIncome = value; } }
-        private Value<decimal?> _borMonthlyEmplymentIncomeTotalEmploymentIncome;
+        private DirtyValue<decimal?> _borMonthlyEmplymentIncomeTotalEmploymentIncome;
         public decimal? BorMonthlyEmplymentIncomeTotalEmploymentIncome { get { return _borMonthlyEmplymentIncomeTotalEmploymentIncome; } set { _borMonthlyEmplymentIncomeTotalEmploymentIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeGovtAssitProgramIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeGovtAssitProgramIncome;
         public decimal? BorNonEmploymentIncomeGovtAssitProgramIncome { get { return _borNonEmploymentIncomeGovtAssitProgramIncome; } set { _borNonEmploymentIncomeGovtAssitProgramIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeHomeownSubsidyIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeHomeownSubsidyIncome;
         public decimal? BorNonEmploymentIncomeHomeownSubsidyIncome { get { return _borNonEmploymentIncomeHomeownSubsidyIncome; } set { _borNonEmploymentIncomeHomeownSubsidyIncome = value; } }
-        private Value<bool?> _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome;
+        private DirtyValue<bool?> _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome;
         public bool? BorNonEmploymentIncomeIsOffsetHomeownSubsidyIncome { get { return _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome; } set { _borNonEmploymentIncomeIsOffsetHomeownSubsidyIncome = value; } }
-        private Value<bool?> _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome;
+        private DirtyValue<bool?> _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome;
         public bool? BorNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome { get { return _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome; } set { _borNonEmploymentIncomeIsOffsetMtgCreditCertificateIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeMilitaryIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeMilitaryIncome;
         public decimal? BorNonEmploymentIncomeMilitaryIncome { get { return _borNonEmploymentIncomeMilitaryIncome; } set { _borNonEmploymentIncomeMilitaryIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeMtgCreditCertificateIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeMtgCreditCertificateIncome;
         public decimal? BorNonEmploymentIncomeMtgCreditCertificateIncome { get { return _borNonEmploymentIncomeMtgCreditCertificateIncome; } set { _borNonEmploymentIncomeMtgCreditCertificateIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeTotalNonEmploymentIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeTotalNonEmploymentIncome;
         public decimal? BorNonEmploymentIncomeTotalNonEmploymentIncome { get { return _borNonEmploymentIncomeTotalNonEmploymentIncome; } set { _borNonEmploymentIncomeTotalNonEmploymentIncome = value; } }
-        private Value<decimal?> _borNonEmploymentIncomeVABenefitIncome;
+        private DirtyValue<decimal?> _borNonEmploymentIncomeVABenefitIncome;
         public decimal? BorNonEmploymentIncomeVABenefitIncome { get { return _borNonEmploymentIncomeVABenefitIncome; } set { _borNonEmploymentIncomeVABenefitIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeChildSupportIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeChildSupportIncome;
         public decimal? BorNonTaxableIncomeChildSupportIncome { get { return _borNonTaxableIncomeChildSupportIncome; } set { _borNonTaxableIncomeChildSupportIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeDisabilityIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeDisabilityIncome;
         public decimal? BorNonTaxableIncomeDisabilityIncome { get { return _borNonTaxableIncomeDisabilityIncome; } set { _borNonTaxableIncomeDisabilityIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeFedGovtEmplRetirementIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeFedGovtEmplRetirementIncome;
         public decimal? BorNonTaxableIncomeFedGovtEmplRetirementIncome { get { return _borNonTaxableIncomeFedGovtEmplRetirementIncome; } set { _borNonTaxableIncomeFedGovtEmplRetirementIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeMilitaryAllowances;
+        private DirtyValue<decimal?> _borNonTaxableIncomeMilitaryAllowances;
         public decimal? BorNonTaxableIncomeMilitaryAllowances { get { return _borNonTaxableIncomeMilitaryAllowances; } set { _borNonTaxableIncomeMilitaryAllowances = value; } }
-        private Value<decimal?> _borNonTaxableIncomeOtherIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeOtherIncome;
         public decimal? BorNonTaxableIncomeOtherIncome { get { return _borNonTaxableIncomeOtherIncome; } set { _borNonTaxableIncomeOtherIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomePublicAssistPayments;
+        private DirtyValue<decimal?> _borNonTaxableIncomePublicAssistPayments;
         public decimal? BorNonTaxableIncomePublicAssistPayments { get { return _borNonTaxableIncomePublicAssistPayments; } set { _borNonTaxableIncomePublicAssistPayments = value; } }
-        private Value<decimal?> _borNonTaxableIncomeRailroadRetirementBenefits;
+        private DirtyValue<decimal?> _borNonTaxableIncomeRailroadRetirementBenefits;
         public decimal? BorNonTaxableIncomeRailroadRetirementBenefits { get { return _borNonTaxableIncomeRailroadRetirementBenefits; } set { _borNonTaxableIncomeRailroadRetirementBenefits = value; } }
-        private Value<decimal?> _borNonTaxableIncomeSocialSecurityIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeSocialSecurityIncome;
         public decimal? BorNonTaxableIncomeSocialSecurityIncome { get { return _borNonTaxableIncomeSocialSecurityIncome; } set { _borNonTaxableIncomeSocialSecurityIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeStateGovtEmplRetirementIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeStateGovtEmplRetirementIncome;
         public decimal? BorNonTaxableIncomeStateGovtEmplRetirementIncome { get { return _borNonTaxableIncomeStateGovtEmplRetirementIncome; } set { _borNonTaxableIncomeStateGovtEmplRetirementIncome = value; } }
-        private Value<decimal?> _borNonTaxableIncomeTotalNonTaxableIncome;
+        private DirtyValue<decimal?> _borNonTaxableIncomeTotalNonTaxableIncome;
         public decimal? BorNonTaxableIncomeTotalNonTaxableIncome { get { return _borNonTaxableIncomeTotalNonTaxableIncome; } set { _borNonTaxableIncomeTotalNonTaxableIncome = value; } }
-        private Value<decimal?> _borOtherNotesReceivableIncome;
+        private DirtyValue<decimal?> _borOtherNotesReceivableIncome;
         public decimal? BorOtherNotesReceivableIncome { get { return _borOtherNotesReceivableIncome; } set { _borOtherNotesReceivableIncome = value; } }
-        private Value<decimal?> _borOtherOtherIncome;
+        private DirtyValue<decimal?> _borOtherOtherIncome;
         public decimal? BorOtherOtherIncome { get { return _borOtherOtherIncome; } set { _borOtherOtherIncome = value; } }
-        private Value<decimal?> _borOtherParttimeIncome;
+        private DirtyValue<decimal?> _borOtherParttimeIncome;
         public decimal? BorOtherParttimeIncome { get { return _borOtherParttimeIncome; } set { _borOtherParttimeIncome = value; } }
-        private Value<decimal?> _borOtherRetirementIncome;
+        private DirtyValue<decimal?> _borOtherRetirementIncome;
         public decimal? BorOtherRetirementIncome { get { return _borOtherRetirementIncome; } set { _borOtherRetirementIncome = value; } }
-        private Value<decimal?> _borOtherSeasonalIncome;
+        private DirtyValue<decimal?> _borOtherSeasonalIncome;
         public decimal? BorOtherSeasonalIncome { get { return _borOtherSeasonalIncome; } set { _borOtherSeasonalIncome = value; } }
-        private Value<decimal?> _borOtherSocialSecurityIncome;
+        private DirtyValue<decimal?> _borOtherSocialSecurityIncome;
         public decimal? BorOtherSocialSecurityIncome { get { return _borOtherSocialSecurityIncome; } set { _borOtherSocialSecurityIncome = value; } }
-        private Value<decimal?> _borOtherTipIncome;
+        private DirtyValue<decimal?> _borOtherTipIncome;
         public decimal? BorOtherTipIncome { get { return _borOtherTipIncome; } set { _borOtherTipIncome = value; } }
-        private Value<decimal?> _borOtherTrustIncome;
+        private DirtyValue<decimal?> _borOtherTrustIncome;
         public decimal? BorOtherTrustIncome { get { return _borOtherTrustIncome; } set { _borOtherTrustIncome = value; } }
-        private Value<decimal?> _borOtherUnemploymentIncome;
+        private DirtyValue<decimal?> _borOtherUnemploymentIncome;
         public decimal? BorOtherUnemploymentIncome { get { return _borOtherUnemploymentIncome; } set { _borOtherUnemploymentIncome = value; } }
-        private Value<decimal?> _borOvertimeAverageOvertime;
+        private DirtyValue<decimal?> _borOvertimeAverageOvertime;
         public decimal? BorOvertimeAverageOvertime { get { return _borOvertimeAverageOvertime; } set { _borOvertimeAverageOvertime = value; } }
-        private Value<decimal?> _borOvertimeMostRecentAmount;
+        private DirtyValue<decimal?> _borOvertimeMostRecentAmount;
         public decimal? BorOvertimeMostRecentAmount { get { return _borOvertimeMostRecentAmount; } set { _borOvertimeMostRecentAmount = value; } }
-        private Value<int?> _borOvertimeMostRecentMonths;
+        private DirtyValue<int?> _borOvertimeMostRecentMonths;
         public int? BorOvertimeMostRecentMonths { get { return _borOvertimeMostRecentMonths; } set { _borOvertimeMostRecentMonths = value; } }
-        private Value<int?> _borOvertimeMostRecentYear;
+        private DirtyValue<int?> _borOvertimeMostRecentYear;
         public int? BorOvertimeMostRecentYear { get { return _borOvertimeMostRecentYear; } set { _borOvertimeMostRecentYear = value; } }
-        private Value<decimal?> _borOvertimePreviousAmount1;
+        private DirtyValue<decimal?> _borOvertimePreviousAmount1;
         public decimal? BorOvertimePreviousAmount1 { get { return _borOvertimePreviousAmount1; } set { _borOvertimePreviousAmount1 = value; } }
-        private Value<decimal?> _borOvertimePreviousAmount2;
+        private DirtyValue<decimal?> _borOvertimePreviousAmount2;
         public decimal? BorOvertimePreviousAmount2 { get { return _borOvertimePreviousAmount2; } set { _borOvertimePreviousAmount2 = value; } }
-        private Value<int?> _borOvertimePreviousMonths1;
+        private DirtyValue<int?> _borOvertimePreviousMonths1;
         public int? BorOvertimePreviousMonths1 { get { return _borOvertimePreviousMonths1; } set { _borOvertimePreviousMonths1 = value; } }
-        private Value<int?> _borOvertimePreviousMonths2;
+        private DirtyValue<int?> _borOvertimePreviousMonths2;
         public int? BorOvertimePreviousMonths2 { get { return _borOvertimePreviousMonths2; } set { _borOvertimePreviousMonths2 = value; } }
-        private Value<int?> _borOvertimePreviousYear1;
+        private DirtyValue<int?> _borOvertimePreviousYear1;
         public int? BorOvertimePreviousYear1 { get { return _borOvertimePreviousYear1; } set { _borOvertimePreviousYear1 = value; } }
-        private Value<int?> _borOvertimePreviousYear2;
+        private DirtyValue<int?> _borOvertimePreviousYear2;
         public int? BorOvertimePreviousYear2 { get { return _borOvertimePreviousYear2; } set { _borOvertimePreviousYear2 = value; } }
-        private Value<decimal?> _borProjectedIncomeProjectedBonuses;
+        private DirtyValue<decimal?> _borProjectedIncomeProjectedBonuses;
         public decimal? BorProjectedIncomeProjectedBonuses { get { return _borProjectedIncomeProjectedBonuses; } set { _borProjectedIncomeProjectedBonuses = value; } }
-        private Value<decimal?> _borProjectedIncomeProjectedCostLivingAdjustment;
+        private DirtyValue<decimal?> _borProjectedIncomeProjectedCostLivingAdjustment;
         public decimal? BorProjectedIncomeProjectedCostLivingAdjustment { get { return _borProjectedIncomeProjectedCostLivingAdjustment; } set { _borProjectedIncomeProjectedCostLivingAdjustment = value; } }
-        private Value<decimal?> _borProjectedIncomeProjectedNewJobIncome;
+        private DirtyValue<decimal?> _borProjectedIncomeProjectedNewJobIncome;
         public decimal? BorProjectedIncomeProjectedNewJobIncome { get { return _borProjectedIncomeProjectedNewJobIncome; } set { _borProjectedIncomeProjectedNewJobIncome = value; } }
-        private Value<decimal?> _borProjectedIncomeProjectedPerformanceRaises;
+        private DirtyValue<decimal?> _borProjectedIncomeProjectedPerformanceRaises;
         public decimal? BorProjectedIncomeProjectedPerformanceRaises { get { return _borProjectedIncomeProjectedPerformanceRaises; } set { _borProjectedIncomeProjectedPerformanceRaises = value; } }
-        private Value<decimal?> _borProjectedIncomeTotalProjectedIncome;
+        private DirtyValue<decimal?> _borProjectedIncomeTotalProjectedIncome;
         public decimal? BorProjectedIncomeTotalProjectedIncome { get { return _borProjectedIncomeTotalProjectedIncome; } set { _borProjectedIncomeTotalProjectedIncome = value; } }
-        private Value<decimal?> _cobBonusAverageOvertime;
+        private DirtyValue<decimal?> _cobBonusAverageOvertime;
         public decimal? CobBonusAverageOvertime { get { return _cobBonusAverageOvertime; } set { _cobBonusAverageOvertime = value; } }
-        private Value<decimal?> _cobBonusMostRecentAmount;
+        private DirtyValue<decimal?> _cobBonusMostRecentAmount;
         public decimal? CobBonusMostRecentAmount { get { return _cobBonusMostRecentAmount; } set { _cobBonusMostRecentAmount = value; } }
-        private Value<int?> _cobBonusMostRecentMonths;
+        private DirtyValue<int?> _cobBonusMostRecentMonths;
         public int? CobBonusMostRecentMonths { get { return _cobBonusMostRecentMonths; } set { _cobBonusMostRecentMonths = value; } }
-        private Value<int?> _cobBonusMostRecentYear;
+        private DirtyValue<int?> _cobBonusMostRecentYear;
         public int? CobBonusMostRecentYear { get { return _cobBonusMostRecentYear; } set { _cobBonusMostRecentYear = value; } }
-        private Value<decimal?> _cobBonusPreviousAmount1;
+        private DirtyValue<decimal?> _cobBonusPreviousAmount1;
         public decimal? CobBonusPreviousAmount1 { get { return _cobBonusPreviousAmount1; } set { _cobBonusPreviousAmount1 = value; } }
-        private Value<decimal?> _cobBonusPreviousAmount2;
+        private DirtyValue<decimal?> _cobBonusPreviousAmount2;
         public decimal? CobBonusPreviousAmount2 { get { return _cobBonusPreviousAmount2; } set { _cobBonusPreviousAmount2 = value; } }
-        private Value<int?> _cobBonusPreviousMonths1;
+        private DirtyValue<int?> _cobBonusPreviousMonths1;
         public int? CobBonusPreviousMonths1 { get { return _cobBonusPreviousMonths1; } set { _cobBonusPreviousMonths1 = value; } }
-        private Value<int?> _cobBonusPreviousMonths2;
+        private DirtyValue<int?> _cobBonusPreviousMonths2;
         public int? CobBonusPreviousMonths2 { get { return _cobBonusPreviousMonths2; } set { _cobBonusPreviousMonths2 = value; } }
-        private Value<int?> _cobBonusPreviousYear1;
+        private DirtyValue<int?> _cobBonusPreviousYear1;
         public int? CobBonusPreviousYear1 { get { return _cobBonusPreviousYear1; } set { _cobBonusPreviousYear1 = value; } }
-        private Value<int?> _cobBonusPreviousYear2;
+        private DirtyValue<int?> _cobBonusPreviousYear2;
         public int? CobBonusPreviousYear2 { get { return _cobBonusPreviousYear2; } set { _cobBonusPreviousYear2 = value; } }
-        private Value<decimal?> _cobCommissionAverageOvertime;
+        private DirtyValue<decimal?> _cobCommissionAverageOvertime;
         public decimal? CobCommissionAverageOvertime { get { return _cobCommissionAverageOvertime; } set { _cobCommissionAverageOvertime = value; } }
-        private Value<decimal?> _cobCommissionMostRecentAmount;
+        private DirtyValue<decimal?> _cobCommissionMostRecentAmount;
         public decimal? CobCommissionMostRecentAmount { get { return _cobCommissionMostRecentAmount; } set { _cobCommissionMostRecentAmount = value; } }
-        private Value<int?> _cobCommissionMostRecentMonths;
+        private DirtyValue<int?> _cobCommissionMostRecentMonths;
         public int? CobCommissionMostRecentMonths { get { return _cobCommissionMostRecentMonths; } set { _cobCommissionMostRecentMonths = value; } }
-        private Value<int?> _cobCommissionMostRecentYear;
+        private DirtyValue<int?> _cobCommissionMostRecentYear;
         public int? CobCommissionMostRecentYear { get { return _cobCommissionMostRecentYear; } set { _cobCommissionMostRecentYear = value; } }
-        private Value<decimal?> _cobCommissionPreviousAmount1;
+        private DirtyValue<decimal?> _cobCommissionPreviousAmount1;
         public decimal? CobCommissionPreviousAmount1 { get { return _cobCommissionPreviousAmount1; } set { _cobCommissionPreviousAmount1 = value; } }
-        private Value<decimal?> _cobCommissionPreviousAmount2;
+        private DirtyValue<decimal?> _cobCommissionPreviousAmount2;
         public decimal? CobCommissionPreviousAmount2 { get { return _cobCommissionPreviousAmount2; } set { _cobCommissionPreviousAmount2 = value; } }
-        private Value<int?> _cobCommissionPreviousMonths1;
+        private DirtyValue<int?> _cobCommissionPreviousMonths1;
         public int? CobCommissionPreviousMonths1 { get { return _cobCommissionPreviousMonths1; } set { _cobCommissionPreviousMonths1 = value; } }
-        private Value<int?> _cobCommissionPreviousMonths2;
+        private DirtyValue<int?> _cobCommissionPreviousMonths2;
         public int? CobCommissionPreviousMonths2 { get { return _cobCommissionPreviousMonths2; } set { _cobCommissionPreviousMonths2 = value; } }
-        private Value<int?> _cobCommissionPreviousYear1;
+        private DirtyValue<int?> _cobCommissionPreviousYear1;
         public int? CobCommissionPreviousYear1 { get { return _cobCommissionPreviousYear1; } set { _cobCommissionPreviousYear1 = value; } }
-        private Value<int?> _cobCommissionPreviousYear2;
+        private DirtyValue<int?> _cobCommissionPreviousYear2;
         public int? CobCommissionPreviousYear2 { get { return _cobCommissionPreviousYear2; } set { _cobCommissionPreviousYear2 = value; } }
-        private Value<decimal?> _cobDividendAverageDividend;
+        private DirtyValue<decimal?> _cobDividendAverageDividend;
         public decimal? CobDividendAverageDividend { get { return _cobDividendAverageDividend; } set { _cobDividendAverageDividend = value; } }
-        private Value<decimal?> _cobDividendPreviousAmount1;
+        private DirtyValue<decimal?> _cobDividendPreviousAmount1;
         public decimal? CobDividendPreviousAmount1 { get { return _cobDividendPreviousAmount1; } set { _cobDividendPreviousAmount1 = value; } }
-        private Value<decimal?> _cobDividendPreviousAmount2;
+        private DirtyValue<decimal?> _cobDividendPreviousAmount2;
         public decimal? CobDividendPreviousAmount2 { get { return _cobDividendPreviousAmount2; } set { _cobDividendPreviousAmount2 = value; } }
-        private Value<int?> _cobDividendPreviousMonths1;
+        private DirtyValue<int?> _cobDividendPreviousMonths1;
         public int? CobDividendPreviousMonths1 { get { return _cobDividendPreviousMonths1; } set { _cobDividendPreviousMonths1 = value; } }
-        private Value<int?> _cobDividendPreviousMonths2;
+        private DirtyValue<int?> _cobDividendPreviousMonths2;
         public int? CobDividendPreviousMonths2 { get { return _cobDividendPreviousMonths2; } set { _cobDividendPreviousMonths2 = value; } }
-        private Value<int?> _cobDividendPreviousYear1;
+        private DirtyValue<int?> _cobDividendPreviousYear1;
         public int? CobDividendPreviousYear1 { get { return _cobDividendPreviousYear1; } set { _cobDividendPreviousYear1 = value; } }
-        private Value<int?> _cobDividendPreviousYear2;
+        private DirtyValue<int?> _cobDividendPreviousYear2;
         public int? CobDividendPreviousYear2 { get { return _cobDividendPreviousYear2; } set { _cobDividendPreviousYear2 = value; } }
-        private Value<decimal?> _cobDividendRequiredForCashAmount;
+        private DirtyValue<decimal?> _cobDividendRequiredForCashAmount;
         public decimal? CobDividendRequiredForCashAmount { get { return _cobDividendRequiredForCashAmount; } set { _cobDividendRequiredForCashAmount = value; } }
-        private Value<decimal?> _cobInterestAverageDividend;
+        private DirtyValue<decimal?> _cobInterestAverageDividend;
         public decimal? CobInterestAverageDividend { get { return _cobInterestAverageDividend; } set { _cobInterestAverageDividend = value; } }
-        private Value<decimal?> _cobInterestPreviousAmount1;
+        private DirtyValue<decimal?> _cobInterestPreviousAmount1;
         public decimal? CobInterestPreviousAmount1 { get { return _cobInterestPreviousAmount1; } set { _cobInterestPreviousAmount1 = value; } }
-        private Value<decimal?> _cobInterestPreviousAmount2;
+        private DirtyValue<decimal?> _cobInterestPreviousAmount2;
         public decimal? CobInterestPreviousAmount2 { get { return _cobInterestPreviousAmount2; } set { _cobInterestPreviousAmount2 = value; } }
-        private Value<int?> _cobInterestPreviousMonths1;
+        private DirtyValue<int?> _cobInterestPreviousMonths1;
         public int? CobInterestPreviousMonths1 { get { return _cobInterestPreviousMonths1; } set { _cobInterestPreviousMonths1 = value; } }
-        private Value<int?> _cobInterestPreviousMonths2;
+        private DirtyValue<int?> _cobInterestPreviousMonths2;
         public int? CobInterestPreviousMonths2 { get { return _cobInterestPreviousMonths2; } set { _cobInterestPreviousMonths2 = value; } }
-        private Value<int?> _cobInterestPreviousYear1;
+        private DirtyValue<int?> _cobInterestPreviousYear1;
         public int? CobInterestPreviousYear1 { get { return _cobInterestPreviousYear1; } set { _cobInterestPreviousYear1 = value; } }
-        private Value<int?> _cobInterestPreviousYear2;
+        private DirtyValue<int?> _cobInterestPreviousYear2;
         public int? CobInterestPreviousYear2 { get { return _cobInterestPreviousYear2; } set { _cobInterestPreviousYear2 = value; } }
-        private Value<decimal?> _cobInterestRequiredForCashAmount;
+        private DirtyValue<decimal?> _cobInterestRequiredForCashAmount;
         public decimal? CobInterestRequiredForCashAmount { get { return _cobInterestRequiredForCashAmount; } set { _cobInterestRequiredForCashAmount = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceClothingAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceClothingAllowance;
         public decimal? CobMilitaryAllowanceClothingAllowance { get { return _cobMilitaryAllowanceClothingAllowance; } set { _cobMilitaryAllowanceClothingAllowance = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceOtherAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceOtherAllowance;
         public decimal? CobMilitaryAllowanceOtherAllowance { get { return _cobMilitaryAllowanceOtherAllowance; } set { _cobMilitaryAllowanceOtherAllowance = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceQuartersAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceQuartersAllowance;
         public decimal? CobMilitaryAllowanceQuartersAllowance { get { return _cobMilitaryAllowanceQuartersAllowance; } set { _cobMilitaryAllowanceQuartersAllowance = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceRationsAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceRationsAllowance;
         public decimal? CobMilitaryAllowanceRationsAllowance { get { return _cobMilitaryAllowanceRationsAllowance; } set { _cobMilitaryAllowanceRationsAllowance = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceTotalAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceTotalAllowance;
         public decimal? CobMilitaryAllowanceTotalAllowance { get { return _cobMilitaryAllowanceTotalAllowance; } set { _cobMilitaryAllowanceTotalAllowance = value; } }
-        private Value<decimal?> _cobMilitaryAllowanceVariableHousingAllowance;
+        private DirtyValue<decimal?> _cobMilitaryAllowanceVariableHousingAllowance;
         public decimal? CobMilitaryAllowanceVariableHousingAllowance { get { return _cobMilitaryAllowanceVariableHousingAllowance; } set { _cobMilitaryAllowanceVariableHousingAllowance = value; } }
-        private Value<decimal?> _cobMilitaryBasePay;
+        private DirtyValue<decimal?> _cobMilitaryBasePay;
         public decimal? CobMilitaryBasePay { get { return _cobMilitaryBasePay; } set { _cobMilitaryBasePay = value; } }
-        private Value<decimal?> _cobMilitaryCombatPay;
+        private DirtyValue<decimal?> _cobMilitaryCombatPay;
         public decimal? CobMilitaryCombatPay { get { return _cobMilitaryCombatPay; } set { _cobMilitaryCombatPay = value; } }
-        private Value<decimal?> _cobMilitaryFlightPay;
+        private DirtyValue<decimal?> _cobMilitaryFlightPay;
         public decimal? CobMilitaryFlightPay { get { return _cobMilitaryFlightPay; } set { _cobMilitaryFlightPay = value; } }
-        private Value<decimal?> _cobMilitaryHazardPay;
+        private DirtyValue<decimal?> _cobMilitaryHazardPay;
         public decimal? CobMilitaryHazardPay { get { return _cobMilitaryHazardPay; } set { _cobMilitaryHazardPay = value; } }
-        private Value<decimal?> _cobMilitaryOverseasPay;
+        private DirtyValue<decimal?> _cobMilitaryOverseasPay;
         public decimal? CobMilitaryOverseasPay { get { return _cobMilitaryOverseasPay; } set { _cobMilitaryOverseasPay = value; } }
-        private Value<decimal?> _cobMilitaryPropPay;
+        private DirtyValue<decimal?> _cobMilitaryPropPay;
         public decimal? CobMilitaryPropPay { get { return _cobMilitaryPropPay; } set { _cobMilitaryPropPay = value; } }
-        private Value<decimal?> _cobMilitaryTotalPay;
+        private DirtyValue<decimal?> _cobMilitaryTotalPay;
         public decimal? CobMilitaryTotalPay { get { return _cobMilitaryTotalPay; } set { _cobMilitaryTotalPay = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeBaseIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeBaseIncome;
         public decimal? CobMonthlyEmplymentIncomeBaseIncome { get { return _cobMonthlyEmplymentIncomeBaseIncome; } set { _cobMonthlyEmplymentIncomeBaseIncome = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeBonuseIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeBonuseIncome;
         public decimal? CobMonthlyEmplymentIncomeBonuseIncome { get { return _cobMonthlyEmplymentIncomeBonuseIncome; } set { _cobMonthlyEmplymentIncomeBonuseIncome = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeCommissionIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeCommissionIncome;
         public decimal? CobMonthlyEmplymentIncomeCommissionIncome { get { return _cobMonthlyEmplymentIncomeCommissionIncome; } set { _cobMonthlyEmplymentIncomeCommissionIncome = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeDividendInterestIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeDividendInterestIncome;
         public decimal? CobMonthlyEmplymentIncomeDividendInterestIncome { get { return _cobMonthlyEmplymentIncomeDividendInterestIncome; } set { _cobMonthlyEmplymentIncomeDividendInterestIncome = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeOtherIncome1;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOtherIncome1;
         public decimal? CobMonthlyEmplymentIncomeOtherIncome1 { get { return _cobMonthlyEmplymentIncomeOtherIncome1; } set { _cobMonthlyEmplymentIncomeOtherIncome1 = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeOtherIncome2;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOtherIncome2;
         public decimal? CobMonthlyEmplymentIncomeOtherIncome2 { get { return _cobMonthlyEmplymentIncomeOtherIncome2; } set { _cobMonthlyEmplymentIncomeOtherIncome2 = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeOvertimeIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeOvertimeIncome;
         public decimal? CobMonthlyEmplymentIncomeOvertimeIncome { get { return _cobMonthlyEmplymentIncomeOvertimeIncome; } set { _cobMonthlyEmplymentIncomeOvertimeIncome = value; } }
-        private Value<decimal?> _cobMonthlyEmplymentIncomeTotalEmploymentIncome;
+        private DirtyValue<decimal?> _cobMonthlyEmplymentIncomeTotalEmploymentIncome;
         public decimal? CobMonthlyEmplymentIncomeTotalEmploymentIncome { get { return _cobMonthlyEmplymentIncomeTotalEmploymentIncome; } set { _cobMonthlyEmplymentIncomeTotalEmploymentIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeGovtAssitProgramIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeGovtAssitProgramIncome;
         public decimal? CobNonEmploymentIncomeGovtAssitProgramIncome { get { return _cobNonEmploymentIncomeGovtAssitProgramIncome; } set { _cobNonEmploymentIncomeGovtAssitProgramIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeHomeownSubsidyIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeHomeownSubsidyIncome;
         public decimal? CobNonEmploymentIncomeHomeownSubsidyIncome { get { return _cobNonEmploymentIncomeHomeownSubsidyIncome; } set { _cobNonEmploymentIncomeHomeownSubsidyIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeMilitaryIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeMilitaryIncome;
         public decimal? CobNonEmploymentIncomeMilitaryIncome { get { return _cobNonEmploymentIncomeMilitaryIncome; } set { _cobNonEmploymentIncomeMilitaryIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeMtgCreditCertificateIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeMtgCreditCertificateIncome;
         public decimal? CobNonEmploymentIncomeMtgCreditCertificateIncome { get { return _cobNonEmploymentIncomeMtgCreditCertificateIncome; } set { _cobNonEmploymentIncomeMtgCreditCertificateIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeTotalNonEmploymentIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeTotalNonEmploymentIncome;
         public decimal? CobNonEmploymentIncomeTotalNonEmploymentIncome { get { return _cobNonEmploymentIncomeTotalNonEmploymentIncome; } set { _cobNonEmploymentIncomeTotalNonEmploymentIncome = value; } }
-        private Value<decimal?> _cobNonEmploymentIncomeVABenefitIncome;
+        private DirtyValue<decimal?> _cobNonEmploymentIncomeVABenefitIncome;
         public decimal? CobNonEmploymentIncomeVABenefitIncome { get { return _cobNonEmploymentIncomeVABenefitIncome; } set { _cobNonEmploymentIncomeVABenefitIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeChildSupportIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeChildSupportIncome;
         public decimal? CobNonTaxableIncomeChildSupportIncome { get { return _cobNonTaxableIncomeChildSupportIncome; } set { _cobNonTaxableIncomeChildSupportIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeDisabilityIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeDisabilityIncome;
         public decimal? CobNonTaxableIncomeDisabilityIncome { get { return _cobNonTaxableIncomeDisabilityIncome; } set { _cobNonTaxableIncomeDisabilityIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeFedGovtEmplRetirementIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeFedGovtEmplRetirementIncome;
         public decimal? CobNonTaxableIncomeFedGovtEmplRetirementIncome { get { return _cobNonTaxableIncomeFedGovtEmplRetirementIncome; } set { _cobNonTaxableIncomeFedGovtEmplRetirementIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeMilitaryAllowances;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeMilitaryAllowances;
         public decimal? CobNonTaxableIncomeMilitaryAllowances { get { return _cobNonTaxableIncomeMilitaryAllowances; } set { _cobNonTaxableIncomeMilitaryAllowances = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeOtherIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeOtherIncome;
         public decimal? CobNonTaxableIncomeOtherIncome { get { return _cobNonTaxableIncomeOtherIncome; } set { _cobNonTaxableIncomeOtherIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomePublicAssistPayments;
+        private DirtyValue<decimal?> _cobNonTaxableIncomePublicAssistPayments;
         public decimal? CobNonTaxableIncomePublicAssistPayments { get { return _cobNonTaxableIncomePublicAssistPayments; } set { _cobNonTaxableIncomePublicAssistPayments = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeRailroadRetirementBenefits;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeRailroadRetirementBenefits;
         public decimal? CobNonTaxableIncomeRailroadRetirementBenefits { get { return _cobNonTaxableIncomeRailroadRetirementBenefits; } set { _cobNonTaxableIncomeRailroadRetirementBenefits = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeSocialSecurityIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeSocialSecurityIncome;
         public decimal? CobNonTaxableIncomeSocialSecurityIncome { get { return _cobNonTaxableIncomeSocialSecurityIncome; } set { _cobNonTaxableIncomeSocialSecurityIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeStateGovtEmplRetirementIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeStateGovtEmplRetirementIncome;
         public decimal? CobNonTaxableIncomeStateGovtEmplRetirementIncome { get { return _cobNonTaxableIncomeStateGovtEmplRetirementIncome; } set { _cobNonTaxableIncomeStateGovtEmplRetirementIncome = value; } }
-        private Value<decimal?> _cobNonTaxableIncomeTotalNonTaxableIncome;
+        private DirtyValue<decimal?> _cobNonTaxableIncomeTotalNonTaxableIncome;
         public decimal? CobNonTaxableIncomeTotalNonTaxableIncome { get { return _cobNonTaxableIncomeTotalNonTaxableIncome; } set { _cobNonTaxableIncomeTotalNonTaxableIncome = value; } }
-        private Value<decimal?> _cobOtherNotesReceivableIncome;
+        private DirtyValue<decimal?> _cobOtherNotesReceivableIncome;
         public decimal? CobOtherNotesReceivableIncome { get { return _cobOtherNotesReceivableIncome; } set { _cobOtherNotesReceivableIncome = value; } }
-        private Value<decimal?> _cobOtherOtherIncome;
+        private DirtyValue<decimal?> _cobOtherOtherIncome;
         public decimal? CobOtherOtherIncome { get { return _cobOtherOtherIncome; } set { _cobOtherOtherIncome = value; } }
-        private Value<decimal?> _cobOtherParttimeIncome;
+        private DirtyValue<decimal?> _cobOtherParttimeIncome;
         public decimal? CobOtherParttimeIncome { get { return _cobOtherParttimeIncome; } set { _cobOtherParttimeIncome = value; } }
-        private Value<decimal?> _cobOtherRetirementIncome;
+        private DirtyValue<decimal?> _cobOtherRetirementIncome;
         public decimal? CobOtherRetirementIncome { get { return _cobOtherRetirementIncome; } set { _cobOtherRetirementIncome = value; } }
-        private Value<decimal?> _cobOtherSeasonalIncome;
+        private DirtyValue<decimal?> _cobOtherSeasonalIncome;
         public decimal? CobOtherSeasonalIncome { get { return _cobOtherSeasonalIncome; } set { _cobOtherSeasonalIncome = value; } }
-        private Value<decimal?> _cobOtherSocialSecurityIncome;
+        private DirtyValue<decimal?> _cobOtherSocialSecurityIncome;
         public decimal? CobOtherSocialSecurityIncome { get { return _cobOtherSocialSecurityIncome; } set { _cobOtherSocialSecurityIncome = value; } }
-        private Value<decimal?> _cobOtherTipIncome;
+        private DirtyValue<decimal?> _cobOtherTipIncome;
         public decimal? CobOtherTipIncome { get { return _cobOtherTipIncome; } set { _cobOtherTipIncome = value; } }
-        private Value<decimal?> _cobOtherTrustIncome;
+        private DirtyValue<decimal?> _cobOtherTrustIncome;
         public decimal? CobOtherTrustIncome { get { return _cobOtherTrustIncome; } set { _cobOtherTrustIncome = value; } }
-        private Value<decimal?> _cobOtherUnemploymentIncome;
+        private DirtyValue<decimal?> _cobOtherUnemploymentIncome;
         public decimal? CobOtherUnemploymentIncome { get { return _cobOtherUnemploymentIncome; } set { _cobOtherUnemploymentIncome = value; } }
-        private Value<decimal?> _cobOvertimeAverageOvertime;
+        private DirtyValue<decimal?> _cobOvertimeAverageOvertime;
         public decimal? CobOvertimeAverageOvertime { get { return _cobOvertimeAverageOvertime; } set { _cobOvertimeAverageOvertime = value; } }
-        private Value<decimal?> _cobOvertimeMostRecentAmount;
+        private DirtyValue<decimal?> _cobOvertimeMostRecentAmount;
         public decimal? CobOvertimeMostRecentAmount { get { return _cobOvertimeMostRecentAmount; } set { _cobOvertimeMostRecentAmount = value; } }
-        private Value<int?> _cobOvertimeMostRecentMonths;
+        private DirtyValue<int?> _cobOvertimeMostRecentMonths;
         public int? CobOvertimeMostRecentMonths { get { return _cobOvertimeMostRecentMonths; } set { _cobOvertimeMostRecentMonths = value; } }
-        private Value<int?> _cobOvertimeMostRecentYear;
+        private DirtyValue<int?> _cobOvertimeMostRecentYear;
         public int? CobOvertimeMostRecentYear { get { return _cobOvertimeMostRecentYear; } set { _cobOvertimeMostRecentYear = value; } }
-        private Value<decimal?> _cobOvertimePreviousAmount1;
+        private DirtyValue<decimal?> _cobOvertimePreviousAmount1;
         public decimal? CobOvertimePreviousAmount1 { get { return _cobOvertimePreviousAmount1; } set { _cobOvertimePreviousAmount1 = value; } }
-        private Value<decimal?> _cobOvertimePreviousAmount2;
+        private DirtyValue<decimal?> _cobOvertimePreviousAmount2;
         public decimal? CobOvertimePreviousAmount2 { get { return _cobOvertimePreviousAmount2; } set { _cobOvertimePreviousAmount2 = value; } }
-        private Value<int?> _cobOvertimePreviousMonths1;
+        private DirtyValue<int?> _cobOvertimePreviousMonths1;
         public int? CobOvertimePreviousMonths1 { get { return _cobOvertimePreviousMonths1; } set { _cobOvertimePreviousMonths1 = value; } }
-        private Value<int?> _cobOvertimePreviousMonths2;
+        private DirtyValue<int?> _cobOvertimePreviousMonths2;
         public int? CobOvertimePreviousMonths2 { get { return _cobOvertimePreviousMonths2; } set { _cobOvertimePreviousMonths2 = value; } }
-        private Value<int?> _cobOvertimePreviousYear1;
+        private DirtyValue<int?> _cobOvertimePreviousYear1;
         public int? CobOvertimePreviousYear1 { get { return _cobOvertimePreviousYear1; } set { _cobOvertimePreviousYear1 = value; } }
-        private Value<int?> _cobOvertimePreviousYear2;
+        private DirtyValue<int?> _cobOvertimePreviousYear2;
         public int? CobOvertimePreviousYear2 { get { return _cobOvertimePreviousYear2; } set { _cobOvertimePreviousYear2 = value; } }
-        private Value<decimal?> _cobProjectedIncomeProjectedBonuses;
+        private DirtyValue<decimal?> _cobProjectedIncomeProjectedBonuses;
         public decimal? CobProjectedIncomeProjectedBonuses { get { return _cobProjectedIncomeProjectedBonuses; } set { _cobProjectedIncomeProjectedBonuses = value; } }
-        private Value<decimal?> _cobProjectedIncomeProjectedCostLivingAdjustment;
+        private DirtyValue<decimal?> _cobProjectedIncomeProjectedCostLivingAdjustment;
         public decimal? CobProjectedIncomeProjectedCostLivingAdjustment { get { return _cobProjectedIncomeProjectedCostLivingAdjustment; } set { _cobProjectedIncomeProjectedCostLivingAdjustment = value; } }
-        private Value<decimal?> _cobProjectedIncomeProjectedNewJobIncome;
+        private DirtyValue<decimal?> _cobProjectedIncomeProjectedNewJobIncome;
         public decimal? CobProjectedIncomeProjectedNewJobIncome { get { return _cobProjectedIncomeProjectedNewJobIncome; } set { _cobProjectedIncomeProjectedNewJobIncome = value; } }
-        private Value<decimal?> _cobProjectedIncomeProjectedPerformanceRaises;
+        private DirtyValue<decimal?> _cobProjectedIncomeProjectedPerformanceRaises;
         public decimal? CobProjectedIncomeProjectedPerformanceRaises { get { return _cobProjectedIncomeProjectedPerformanceRaises; } set { _cobProjectedIncomeProjectedPerformanceRaises = value; } }
-        private Value<decimal?> _cobProjectedIncomeTotalProjectedIncome;
+        private DirtyValue<decimal?> _cobProjectedIncomeTotalProjectedIncome;
         public decimal? CobProjectedIncomeTotalProjectedIncome { get { return _cobProjectedIncomeTotalProjectedIncome; } set { _cobProjectedIncomeTotalProjectedIncome = value; } }
-        private Value<string> _dUCaseIDorLPAUSKey;
+        private DirtyValue<string> _dUCaseIDorLPAUSKey;
         public string DUCaseIDorLPAUSKey { get { return _dUCaseIDorLPAUSKey; } set { _dUCaseIDorLPAUSKey = value; } }
-        private Value<DateTime?> _firstSubmissionDate;
+        private DirtyValue<DateTime?> _firstSubmissionDate;
         public DateTime? FirstSubmissionDate { get { return _firstSubmissionDate; } set { _firstSubmissionDate = value; } }
-        private Value<string> _firstSubmissionTime;
+        private DirtyValue<string> _firstSubmissionTime;
         public string FirstSubmissionTime { get { return _firstSubmissionTime; } set { _firstSubmissionTime = value; } }
-        private Value<string> _freddieDocClass;
+        private DirtyValue<string> _freddieDocClass;
         public string FreddieDocClass { get { return _freddieDocClass; } set { _freddieDocClass = value; } }
-        private Value<decimal?> _housingRatio;
+        private DirtyValue<decimal?> _housingRatio;
         public decimal? HousingRatio { get { return _housingRatio; } set { _housingRatio = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isEmpty;
+        private DirtyValue<bool?> _isEmpty;
         public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
-        private Value<DateTime?> _submissionDate;
+        private DirtyValue<DateTime?> _submissionDate;
         public DateTime? SubmissionDate { get { return _submissionDate; } set { _submissionDate = value; } }
-        private Value<string> _submissionNumber;
+        private DirtyValue<string> _submissionNumber;
         public string SubmissionNumber { get { return _submissionNumber; } set { _submissionNumber = value; } }
-        private Value<string> _submissionTime;
+        private DirtyValue<string> _submissionTime;
         public string SubmissionTime { get { return _submissionTime; } set { _submissionTime = value; } }
-        private Value<string> _submittedBy;
+        private DirtyValue<string> _submittedBy;
         public string SubmittedBy { get { return _submittedBy; } set { _submittedBy = value; } }
-        private Value<decimal?> _totalExpenseRatio;
+        private DirtyValue<decimal?> _totalExpenseRatio;
         public decimal? TotalExpenseRatio { get { return _totalExpenseRatio; } set { _totalExpenseRatio = value; } }
-        private Value<decimal?> _totalHousingPayment;
+        private DirtyValue<decimal?> _totalHousingPayment;
         public decimal? TotalHousingPayment { get { return _totalHousingPayment; } set { _totalHousingPayment = value; } }
-        private Value<decimal?> _totalMonthlyAssets;
+        private DirtyValue<decimal?> _totalMonthlyAssets;
         public decimal? TotalMonthlyAssets { get { return _totalMonthlyAssets; } set { _totalMonthlyAssets = value; } }
-        private Value<decimal?> _totalMonthlyDebt;
+        private DirtyValue<decimal?> _totalMonthlyDebt;
         public decimal? TotalMonthlyDebt { get { return _totalMonthlyDebt; } set { _totalMonthlyDebt = value; } }
-        private Value<decimal?> _totalMonthlyIncome;
+        private DirtyValue<decimal?> _totalMonthlyIncome;
         public decimal? TotalMonthlyIncome { get { return _totalMonthlyIncome; } set { _totalMonthlyIncome = value; } }
-        private Value<string> _underwritingRiskAssessOther;
+        private DirtyValue<string> _underwritingRiskAssessOther;
         public string UnderwritingRiskAssessOther { get { return _underwritingRiskAssessOther; } set { _underwritingRiskAssessOther = value; } }
-        private Value<string> _underwritingRiskAssessType;
+        private DirtyValue<string> _underwritingRiskAssessType;
         public string UnderwritingRiskAssessType { get { return _underwritingRiskAssessType; } set { _underwritingRiskAssessType = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

@@ -8,29 +8,29 @@ namespace EncompassRest.Loans
 {
     public sealed partial class UCDDetail : IDirty
     {
-        private Value<string> _feeAccountType;
+        private DirtyValue<string> _feeAccountType;
         public string FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
-        private Value<decimal?> _feeAmount;
+        private DirtyValue<decimal?> _feeAmount;
         public decimal? FeeAmount { get { return _feeAmount; } set { _feeAmount = value; } }
-        private Value<DateTime?> _feeDateFrom;
+        private DirtyValue<DateTime?> _feeDateFrom;
         public DateTime? FeeDateFrom { get { return _feeDateFrom; } set { _feeDateFrom = value; } }
-        private Value<DateTime?> _feeDateTo;
+        private DirtyValue<DateTime?> _feeDateTo;
         public DateTime? FeeDateTo { get { return _feeDateTo; } set { _feeDateTo = value; } }
-        private Value<string> _feeDesc;
+        private DirtyValue<string> _feeDesc;
         public string FeeDesc { get { return _feeDesc; } set { _feeDesc = value; } }
-        private Value<int?> _feeIndex;
+        private DirtyValue<int?> _feeIndex;
         public int? FeeIndex { get { return _feeIndex; } set { _feeIndex = value; } }
-        private Value<string> _feePaidBy;
+        private DirtyValue<string> _feePaidBy;
         public string FeePaidBy { get { return _feePaidBy; } set { _feePaidBy = value; } }
-        private Value<string> _feePaidTo;
+        private DirtyValue<string> _feePaidTo;
         public string FeePaidTo { get { return _feePaidTo; } set { _feePaidTo = value; } }
-        private Value<bool?> _feePOC;
+        private DirtyValue<bool?> _feePOC;
         public bool? FeePOC { get { return _feePOC; } set { _feePOC = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<int?> _lineNumber;
+        private DirtyValue<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private Value<string> _section;
+        private DirtyValue<string> _section;
         public string Section { get { return _section; } set { _section = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

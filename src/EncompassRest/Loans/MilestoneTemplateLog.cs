@@ -8,17 +8,17 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilestoneTemplateLog : IDirty
     {
-        private Value<int?> _elliLogRecordId;
+        private DirtyValue<int?> _elliLogRecordId;
         public int? ElliLogRecordId { get { return _elliLogRecordId; } set { _elliLogRecordId = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isTemplateDatesLocked;
+        private DirtyValue<bool?> _isTemplateDatesLocked;
         public bool? IsTemplateDatesLocked { get { return _isTemplateDatesLocked; } set { _isTemplateDatesLocked = value; } }
-        private Value<bool?> _isTemplateLocked;
+        private DirtyValue<bool?> _isTemplateLocked;
         public bool? IsTemplateLocked { get { return _isTemplateLocked; } set { _isTemplateLocked = value; } }
-        private Value<string> _milestoneTemplateID;
+        private DirtyValue<string> _milestoneTemplateID;
         public string MilestoneTemplateID { get { return _milestoneTemplateID; } set { _milestoneTemplateID = value; } }
-        private Value<string> _milestoneTemplateName;
+        private DirtyValue<string> _milestoneTemplateName;
         public string MilestoneTemplateName { get { return _milestoneTemplateName; } set { _milestoneTemplateName = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

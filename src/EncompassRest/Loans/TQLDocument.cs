@@ -8,9 +8,9 @@ namespace EncompassRest.Loans
 {
     public sealed partial class TQLDocument : IDirty
     {
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<DateTime?> _tQLDocumentDeliveredDate;
+        private DirtyValue<DateTime?> _tQLDocumentDeliveredDate;
         public DateTime? TQLDocumentDeliveredDate { get { return _tQLDocumentDeliveredDate; } set { _tQLDocumentDeliveredDate = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

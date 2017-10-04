@@ -36,6 +36,20 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public void Loan_CustomFields_Serialization()
+        {
+            var loan = new Loan();
+            var customField = new CustomField { FieldName = "CUST91FV", StringValue = "Initial Value" };
+            loan.CustomFields.Add(customField);
+            loan.CustomFields.Add(new CustomField { FieldName = "CUST92FV", NumericValue = 10.0M });
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""Initial Value""},{""fieldName"":""CUST92FV"",""numericValue"":10.0}]}", loan.ToJson());
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            customField.StringValue = "New Value";
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CUST91FV"",""stringValue"":""New Value""}]}", loan.ToJson());
+        }
+
+        [TestMethod]
         public async Task Loan_CreateAndDelete()
         {
             using (var client = GetTestClient())

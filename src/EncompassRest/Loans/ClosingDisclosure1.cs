@@ -8,217 +8,217 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ClosingDisclosure1 : IDirty
     {
-        private Value<DateTime?> _cDDateIssued;
+        private DirtyValue<DateTime?> _cDDateIssued;
         public DateTime? CDDateIssued { get { return _cDDateIssued; } set { _cDDateIssued = value; } }
-        private Value<string> _changedCircumstance;
+        private DirtyValue<string> _changedCircumstance;
         public string ChangedCircumstance { get { return _changedCircumstance; } set { _changedCircumstance = value; } }
-        private Value<bool?> _changedCircumstanceFlag;
+        private DirtyValue<bool?> _changedCircumstanceFlag;
         public bool? ChangedCircumstanceFlag { get { return _changedCircumstanceFlag; } set { _changedCircumstanceFlag = value; } }
-        private Value<DateTime?> _changesReceivedDate;
+        private DirtyValue<DateTime?> _changesReceivedDate;
         public DateTime? ChangesReceivedDate { get { return _changesReceivedDate; } set { _changesReceivedDate = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<string> _disclosureBy;
+        private DirtyValue<string> _disclosureBy;
         public string DisclosureBy { get { return _disclosureBy; } set { _disclosureBy = value; } }
-        private Value<string> _disclosureComments;
+        private DirtyValue<string> _disclosureComments;
         public string DisclosureComments { get { return _disclosureComments; } set { _disclosureComments = value; } }
-        private Value<DateTime?> _disclosureLastSentDate;
+        private DirtyValue<DateTime?> _disclosureLastSentDate;
         public DateTime? DisclosureLastSentDate { get { return _disclosureLastSentDate; } set { _disclosureLastSentDate = value; } }
-        private Value<DateTime?> _disclosureReceivedDate;
+        private DirtyValue<DateTime?> _disclosureReceivedDate;
         public DateTime? DisclosureReceivedDate { get { return _disclosureReceivedDate; } set { _disclosureReceivedDate = value; } }
-        private Value<string> _disclosureSentMethod;
+        private DirtyValue<string> _disclosureSentMethod;
         public string DisclosureSentMethod { get { return _disclosureSentMethod; } set { _disclosureSentMethod = value; } }
-        private Value<string> _documentGUIDFinalExecutedCopyofAlternateCD;
+        private DirtyValue<string> _documentGUIDFinalExecutedCopyofAlternateCD;
         public string DocumentGUIDFinalExecutedCopyofAlternateCD { get { return _documentGUIDFinalExecutedCopyofAlternateCD; } set { _documentGUIDFinalExecutedCopyofAlternateCD = value; } }
-        private Value<string> _documentGUIDFinalExecutedCopyofSellerCD;
+        private DirtyValue<string> _documentGUIDFinalExecutedCopyofSellerCD;
         public string DocumentGUIDFinalExecutedCopyofSellerCD { get { return _documentGUIDFinalExecutedCopyofSellerCD; } set { _documentGUIDFinalExecutedCopyofSellerCD = value; } }
-        private Value<string> _documentGUIDFinalExecutedCopyofStandardCD;
+        private DirtyValue<string> _documentGUIDFinalExecutedCopyofStandardCD;
         public string DocumentGUIDFinalExecutedCopyofStandardCD { get { return _documentGUIDFinalExecutedCopyofStandardCD; } set { _documentGUIDFinalExecutedCopyofStandardCD = value; } }
-        private Value<decimal?> _estimatedTaxesInsuranceAssessments;
+        private DirtyValue<decimal?> _estimatedTaxesInsuranceAssessments;
         public decimal? EstimatedTaxesInsuranceAssessments { get { return _estimatedTaxesInsuranceAssessments; } set { _estimatedTaxesInsuranceAssessments = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _inEscrowHomeownerInsurance;
+        private DirtyValue<string> _inEscrowHomeownerInsurance;
         public string InEscrowHomeownerInsurance { get { return _inEscrowHomeownerInsurance; } set { _inEscrowHomeownerInsurance = value; } }
-        private Value<string> _inEscrowOther;
+        private DirtyValue<string> _inEscrowOther;
         public string InEscrowOther { get { return _inEscrowOther; } set { _inEscrowOther = value; } }
-        private Value<string> _inEscrowPropertyTaxes;
+        private DirtyValue<string> _inEscrowPropertyTaxes;
         public string InEscrowPropertyTaxes { get { return _inEscrowPropertyTaxes; } set { _inEscrowPropertyTaxes = value; } }
-        private Value<DateTime?> _initialCDReceivedDate;
+        private DirtyValue<DateTime?> _initialCDReceivedDate;
         public DateTime? InitialCDReceivedDate { get { return _initialCDReceivedDate; } set { _initialCDReceivedDate = value; } }
-        private Value<string> _mICReference;
+        private DirtyValue<string> _mICReference;
         public string MICReference { get { return _mICReference; } set { _mICReference = value; } }
-        private Value<bool?> _notNaturalPersonFlag;
+        private DirtyValue<bool?> _notNaturalPersonFlag;
         public bool? NotNaturalPersonFlag { get { return _notNaturalPersonFlag; } set { _notNaturalPersonFlag = value; } }
-        private Value<decimal?> _pPC1EstimatedEscrowAmount;
+        private DirtyValue<decimal?> _pPC1EstimatedEscrowAmount;
         public decimal? PPC1EstimatedEscrowAmount { get { return _pPC1EstimatedEscrowAmount; } set { _pPC1EstimatedEscrowAmount = value; } }
-        private Value<string> _pPC1EstimatedEscrowAmountUI;
+        private DirtyValue<string> _pPC1EstimatedEscrowAmountUI;
         public string PPC1EstimatedEscrowAmountUI { get { return _pPC1EstimatedEscrowAmountUI; } set { _pPC1EstimatedEscrowAmountUI = value; } }
-        private Value<bool?> _pPC1InterestOnly;
+        private DirtyValue<bool?> _pPC1InterestOnly;
         public bool? PPC1InterestOnly { get { return _pPC1InterestOnly; } set { _pPC1InterestOnly = value; } }
-        private Value<decimal?> _pPC1MaximumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC1MaximumMonthlyPayment;
         public decimal? PPC1MaximumMonthlyPayment { get { return _pPC1MaximumMonthlyPayment; } set { _pPC1MaximumMonthlyPayment = value; } }
-        private Value<string> _pPC1MaximumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC1MaximumMonthlyPaymentUI;
         public string PPC1MaximumMonthlyPaymentUI { get { return _pPC1MaximumMonthlyPaymentUI; } set { _pPC1MaximumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC1MaximumPIPayment;
+        private DirtyValue<decimal?> _pPC1MaximumPIPayment;
         public decimal? PPC1MaximumPIPayment { get { return _pPC1MaximumPIPayment; } set { _pPC1MaximumPIPayment = value; } }
-        private Value<string> _pPC1MaximumPIPaymentUI;
+        private DirtyValue<string> _pPC1MaximumPIPaymentUI;
         public string PPC1MaximumPIPaymentUI { get { return _pPC1MaximumPIPaymentUI; } set { _pPC1MaximumPIPaymentUI = value; } }
-        private Value<decimal?> _pPC1MIAmount;
+        private DirtyValue<decimal?> _pPC1MIAmount;
         public decimal? PPC1MIAmount { get { return _pPC1MIAmount; } set { _pPC1MIAmount = value; } }
-        private Value<string> _pPC1MIAmountUI;
+        private DirtyValue<string> _pPC1MIAmountUI;
         public string PPC1MIAmountUI { get { return _pPC1MIAmountUI; } set { _pPC1MIAmountUI = value; } }
-        private Value<decimal?> _pPC1MinimumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC1MinimumMonthlyPayment;
         public decimal? PPC1MinimumMonthlyPayment { get { return _pPC1MinimumMonthlyPayment; } set { _pPC1MinimumMonthlyPayment = value; } }
-        private Value<string> _pPC1MinimumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC1MinimumMonthlyPaymentUI;
         public string PPC1MinimumMonthlyPaymentUI { get { return _pPC1MinimumMonthlyPaymentUI; } set { _pPC1MinimumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC1MinimumPIPayment;
+        private DirtyValue<decimal?> _pPC1MinimumPIPayment;
         public decimal? PPC1MinimumPIPayment { get { return _pPC1MinimumPIPayment; } set { _pPC1MinimumPIPayment = value; } }
-        private Value<string> _pPC1MinimumPIPaymentUI;
+        private DirtyValue<string> _pPC1MinimumPIPaymentUI;
         public string PPC1MinimumPIPaymentUI { get { return _pPC1MinimumPIPaymentUI; } set { _pPC1MinimumPIPaymentUI = value; } }
-        private Value<int?> _pPC1Year;
+        private DirtyValue<int?> _pPC1Year;
         public int? PPC1Year { get { return _pPC1Year; } set { _pPC1Year = value; } }
-        private Value<decimal?> _pPC2EstimatedEscrowAmount;
+        private DirtyValue<decimal?> _pPC2EstimatedEscrowAmount;
         public decimal? PPC2EstimatedEscrowAmount { get { return _pPC2EstimatedEscrowAmount; } set { _pPC2EstimatedEscrowAmount = value; } }
-        private Value<string> _pPC2EstimatedEscrowAmountUI;
+        private DirtyValue<string> _pPC2EstimatedEscrowAmountUI;
         public string PPC2EstimatedEscrowAmountUI { get { return _pPC2EstimatedEscrowAmountUI; } set { _pPC2EstimatedEscrowAmountUI = value; } }
-        private Value<bool?> _pPC2InterestOnly;
+        private DirtyValue<bool?> _pPC2InterestOnly;
         public bool? PPC2InterestOnly { get { return _pPC2InterestOnly; } set { _pPC2InterestOnly = value; } }
-        private Value<decimal?> _pPC2MaximumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC2MaximumMonthlyPayment;
         public decimal? PPC2MaximumMonthlyPayment { get { return _pPC2MaximumMonthlyPayment; } set { _pPC2MaximumMonthlyPayment = value; } }
-        private Value<string> _pPC2MaximumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC2MaximumMonthlyPaymentUI;
         public string PPC2MaximumMonthlyPaymentUI { get { return _pPC2MaximumMonthlyPaymentUI; } set { _pPC2MaximumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC2MaximumPIPayment;
+        private DirtyValue<decimal?> _pPC2MaximumPIPayment;
         public decimal? PPC2MaximumPIPayment { get { return _pPC2MaximumPIPayment; } set { _pPC2MaximumPIPayment = value; } }
-        private Value<string> _pPC2MaximumPIPaymentUI;
+        private DirtyValue<string> _pPC2MaximumPIPaymentUI;
         public string PPC2MaximumPIPaymentUI { get { return _pPC2MaximumPIPaymentUI; } set { _pPC2MaximumPIPaymentUI = value; } }
-        private Value<decimal?> _pPC2MIAmount;
+        private DirtyValue<decimal?> _pPC2MIAmount;
         public decimal? PPC2MIAmount { get { return _pPC2MIAmount; } set { _pPC2MIAmount = value; } }
-        private Value<string> _pPC2MIAmountUI;
+        private DirtyValue<string> _pPC2MIAmountUI;
         public string PPC2MIAmountUI { get { return _pPC2MIAmountUI; } set { _pPC2MIAmountUI = value; } }
-        private Value<decimal?> _pPC2MinimumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC2MinimumMonthlyPayment;
         public decimal? PPC2MinimumMonthlyPayment { get { return _pPC2MinimumMonthlyPayment; } set { _pPC2MinimumMonthlyPayment = value; } }
-        private Value<string> _pPC2MinimumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC2MinimumMonthlyPaymentUI;
         public string PPC2MinimumMonthlyPaymentUI { get { return _pPC2MinimumMonthlyPaymentUI; } set { _pPC2MinimumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC2MinimumPIPayment;
+        private DirtyValue<decimal?> _pPC2MinimumPIPayment;
         public decimal? PPC2MinimumPIPayment { get { return _pPC2MinimumPIPayment; } set { _pPC2MinimumPIPayment = value; } }
-        private Value<string> _pPC2MinimumPIPaymentUI;
+        private DirtyValue<string> _pPC2MinimumPIPaymentUI;
         public string PPC2MinimumPIPaymentUI { get { return _pPC2MinimumPIPaymentUI; } set { _pPC2MinimumPIPaymentUI = value; } }
-        private Value<int?> _pPC2YearFrom;
+        private DirtyValue<int?> _pPC2YearFrom;
         public int? PPC2YearFrom { get { return _pPC2YearFrom; } set { _pPC2YearFrom = value; } }
-        private Value<int?> _pPC2YearTo;
+        private DirtyValue<int?> _pPC2YearTo;
         public int? PPC2YearTo { get { return _pPC2YearTo; } set { _pPC2YearTo = value; } }
-        private Value<decimal?> _pPC3EstimatedEscrowAmount;
+        private DirtyValue<decimal?> _pPC3EstimatedEscrowAmount;
         public decimal? PPC3EstimatedEscrowAmount { get { return _pPC3EstimatedEscrowAmount; } set { _pPC3EstimatedEscrowAmount = value; } }
-        private Value<string> _pPC3EstimatedEscrowAmountUI;
+        private DirtyValue<string> _pPC3EstimatedEscrowAmountUI;
         public string PPC3EstimatedEscrowAmountUI { get { return _pPC3EstimatedEscrowAmountUI; } set { _pPC3EstimatedEscrowAmountUI = value; } }
-        private Value<bool?> _pPC3InterestOnly;
+        private DirtyValue<bool?> _pPC3InterestOnly;
         public bool? PPC3InterestOnly { get { return _pPC3InterestOnly; } set { _pPC3InterestOnly = value; } }
-        private Value<decimal?> _pPC3MaximumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC3MaximumMonthlyPayment;
         public decimal? PPC3MaximumMonthlyPayment { get { return _pPC3MaximumMonthlyPayment; } set { _pPC3MaximumMonthlyPayment = value; } }
-        private Value<string> _pPC3MaximumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC3MaximumMonthlyPaymentUI;
         public string PPC3MaximumMonthlyPaymentUI { get { return _pPC3MaximumMonthlyPaymentUI; } set { _pPC3MaximumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC3MaximumPIPayment;
+        private DirtyValue<decimal?> _pPC3MaximumPIPayment;
         public decimal? PPC3MaximumPIPayment { get { return _pPC3MaximumPIPayment; } set { _pPC3MaximumPIPayment = value; } }
-        private Value<string> _pPC3MaximumPIPaymentUI;
+        private DirtyValue<string> _pPC3MaximumPIPaymentUI;
         public string PPC3MaximumPIPaymentUI { get { return _pPC3MaximumPIPaymentUI; } set { _pPC3MaximumPIPaymentUI = value; } }
-        private Value<decimal?> _pPC3MIAmount;
+        private DirtyValue<decimal?> _pPC3MIAmount;
         public decimal? PPC3MIAmount { get { return _pPC3MIAmount; } set { _pPC3MIAmount = value; } }
-        private Value<string> _pPC3MIAmountUI;
+        private DirtyValue<string> _pPC3MIAmountUI;
         public string PPC3MIAmountUI { get { return _pPC3MIAmountUI; } set { _pPC3MIAmountUI = value; } }
-        private Value<decimal?> _pPC3MinimumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC3MinimumMonthlyPayment;
         public decimal? PPC3MinimumMonthlyPayment { get { return _pPC3MinimumMonthlyPayment; } set { _pPC3MinimumMonthlyPayment = value; } }
-        private Value<string> _pPC3MinimumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC3MinimumMonthlyPaymentUI;
         public string PPC3MinimumMonthlyPaymentUI { get { return _pPC3MinimumMonthlyPaymentUI; } set { _pPC3MinimumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC3MinimumPIPayment;
+        private DirtyValue<decimal?> _pPC3MinimumPIPayment;
         public decimal? PPC3MinimumPIPayment { get { return _pPC3MinimumPIPayment; } set { _pPC3MinimumPIPayment = value; } }
-        private Value<string> _pPC3MinimumPIPaymentUI;
+        private DirtyValue<string> _pPC3MinimumPIPaymentUI;
         public string PPC3MinimumPIPaymentUI { get { return _pPC3MinimumPIPaymentUI; } set { _pPC3MinimumPIPaymentUI = value; } }
-        private Value<int?> _pPC3YearFrom;
+        private DirtyValue<int?> _pPC3YearFrom;
         public int? PPC3YearFrom { get { return _pPC3YearFrom; } set { _pPC3YearFrom = value; } }
-        private Value<int?> _pPC3YearTo;
+        private DirtyValue<int?> _pPC3YearTo;
         public int? PPC3YearTo { get { return _pPC3YearTo; } set { _pPC3YearTo = value; } }
-        private Value<decimal?> _pPC4EstimatedEscrowAmount;
+        private DirtyValue<decimal?> _pPC4EstimatedEscrowAmount;
         public decimal? PPC4EstimatedEscrowAmount { get { return _pPC4EstimatedEscrowAmount; } set { _pPC4EstimatedEscrowAmount = value; } }
-        private Value<string> _pPC4EstimatedEscrowAmountUI;
+        private DirtyValue<string> _pPC4EstimatedEscrowAmountUI;
         public string PPC4EstimatedEscrowAmountUI { get { return _pPC4EstimatedEscrowAmountUI; } set { _pPC4EstimatedEscrowAmountUI = value; } }
-        private Value<bool?> _pPC4InterestOnly;
+        private DirtyValue<bool?> _pPC4InterestOnly;
         public bool? PPC4InterestOnly { get { return _pPC4InterestOnly; } set { _pPC4InterestOnly = value; } }
-        private Value<decimal?> _pPC4MaximumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC4MaximumMonthlyPayment;
         public decimal? PPC4MaximumMonthlyPayment { get { return _pPC4MaximumMonthlyPayment; } set { _pPC4MaximumMonthlyPayment = value; } }
-        private Value<string> _pPC4MaximumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC4MaximumMonthlyPaymentUI;
         public string PPC4MaximumMonthlyPaymentUI { get { return _pPC4MaximumMonthlyPaymentUI; } set { _pPC4MaximumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC4MaximumPIPayment;
+        private DirtyValue<decimal?> _pPC4MaximumPIPayment;
         public decimal? PPC4MaximumPIPayment { get { return _pPC4MaximumPIPayment; } set { _pPC4MaximumPIPayment = value; } }
-        private Value<string> _pPC4MaximumPIPaymentUI;
+        private DirtyValue<string> _pPC4MaximumPIPaymentUI;
         public string PPC4MaximumPIPaymentUI { get { return _pPC4MaximumPIPaymentUI; } set { _pPC4MaximumPIPaymentUI = value; } }
-        private Value<decimal?> _pPC4MIAmount;
+        private DirtyValue<decimal?> _pPC4MIAmount;
         public decimal? PPC4MIAmount { get { return _pPC4MIAmount; } set { _pPC4MIAmount = value; } }
-        private Value<string> _pPC4MIAmountUI;
+        private DirtyValue<string> _pPC4MIAmountUI;
         public string PPC4MIAmountUI { get { return _pPC4MIAmountUI; } set { _pPC4MIAmountUI = value; } }
-        private Value<decimal?> _pPC4MinimumMonthlyPayment;
+        private DirtyValue<decimal?> _pPC4MinimumMonthlyPayment;
         public decimal? PPC4MinimumMonthlyPayment { get { return _pPC4MinimumMonthlyPayment; } set { _pPC4MinimumMonthlyPayment = value; } }
-        private Value<string> _pPC4MinimumMonthlyPaymentUI;
+        private DirtyValue<string> _pPC4MinimumMonthlyPaymentUI;
         public string PPC4MinimumMonthlyPaymentUI { get { return _pPC4MinimumMonthlyPaymentUI; } set { _pPC4MinimumMonthlyPaymentUI = value; } }
-        private Value<decimal?> _pPC4MinimumPIPayment;
+        private DirtyValue<decimal?> _pPC4MinimumPIPayment;
         public decimal? PPC4MinimumPIPayment { get { return _pPC4MinimumPIPayment; } set { _pPC4MinimumPIPayment = value; } }
-        private Value<string> _pPC4MinimumPIPaymentUI;
+        private DirtyValue<string> _pPC4MinimumPIPaymentUI;
         public string PPC4MinimumPIPaymentUI { get { return _pPC4MinimumPIPaymentUI; } set { _pPC4MinimumPIPaymentUI = value; } }
-        private Value<int?> _pPC4YearFrom;
+        private DirtyValue<int?> _pPC4YearFrom;
         public int? PPC4YearFrom { get { return _pPC4YearFrom; } set { _pPC4YearFrom = value; } }
-        private Value<int?> _pPC4YearTo;
+        private DirtyValue<int?> _pPC4YearTo;
         public int? PPC4YearTo { get { return _pPC4YearTo; } set { _pPC4YearTo = value; } }
-        private Value<bool?> _pPCEstimatedEscrowIndicator;
+        private DirtyValue<bool?> _pPCEstimatedEscrowIndicator;
         public bool? PPCEstimatedEscrowIndicator { get { return _pPCEstimatedEscrowIndicator; } set { _pPCEstimatedEscrowIndicator = value; } }
-        private Value<bool?> _pPCMortgageInsuranceIndicator;
+        private DirtyValue<bool?> _pPCMortgageInsuranceIndicator;
         public bool? PPCMortgageInsuranceIndicator { get { return _pPCMortgageInsuranceIndicator; } set { _pPCMortgageInsuranceIndicator = value; } }
-        private Value<bool?> _rangePaymentIndicatorC1;
+        private DirtyValue<bool?> _rangePaymentIndicatorC1;
         public bool? RangePaymentIndicatorC1 { get { return _rangePaymentIndicatorC1; } set { _rangePaymentIndicatorC1 = value; } }
-        private Value<bool?> _rangePaymentIndicatorC2;
+        private DirtyValue<bool?> _rangePaymentIndicatorC2;
         public bool? RangePaymentIndicatorC2 { get { return _rangePaymentIndicatorC2; } set { _rangePaymentIndicatorC2 = value; } }
-        private Value<bool?> _rangePaymentIndicatorC3;
+        private DirtyValue<bool?> _rangePaymentIndicatorC3;
         public bool? RangePaymentIndicatorC3 { get { return _rangePaymentIndicatorC3; } set { _rangePaymentIndicatorC3 = value; } }
-        private Value<bool?> _rangePaymentIndicatorC4;
+        private DirtyValue<bool?> _rangePaymentIndicatorC4;
         public bool? RangePaymentIndicatorC4 { get { return _rangePaymentIndicatorC4; } set { _rangePaymentIndicatorC4 = value; } }
-        private Value<bool?> _reasonAdvancedReview;
+        private DirtyValue<bool?> _reasonAdvancedReview;
         public bool? ReasonAdvancedReview { get { return _reasonAdvancedReview; } set { _reasonAdvancedReview = value; } }
-        private Value<bool?> _reasonChangedCircumstanceElg;
+        private DirtyValue<bool?> _reasonChangedCircumstanceElg;
         public bool? ReasonChangedCircumstanceElg { get { return _reasonChangedCircumstanceElg; } set { _reasonChangedCircumstanceElg = value; } }
-        private Value<string> _reasonChangedCircumstanceFlags;
+        private DirtyValue<string> _reasonChangedCircumstanceFlags;
         public string ReasonChangedCircumstanceFlags { get { return _reasonChangedCircumstanceFlags; } set { _reasonChangedCircumstanceFlags = value; } }
-        private Value<bool?> _reasonChangeInAPR;
+        private DirtyValue<bool?> _reasonChangeInAPR;
         public bool? ReasonChangeInAPR { get { return _reasonChangeInAPR; } set { _reasonChangeInAPR = value; } }
-        private Value<bool?> _reasonChangeInLoanProduct;
+        private DirtyValue<bool?> _reasonChangeInLoanProduct;
         public bool? ReasonChangeInLoanProduct { get { return _reasonChangeInLoanProduct; } set { _reasonChangeInLoanProduct = value; } }
-        private Value<bool?> _reasonChangeSettlementCharges;
+        private DirtyValue<bool?> _reasonChangeSettlementCharges;
         public bool? ReasonChangeSettlementCharges { get { return _reasonChangeSettlementCharges; } set { _reasonChangeSettlementCharges = value; } }
-        private Value<bool?> _reasonClericalErrorCorrection;
+        private DirtyValue<bool?> _reasonClericalErrorCorrection;
         public bool? ReasonClericalErrorCorrection { get { return _reasonClericalErrorCorrection; } set { _reasonClericalErrorCorrection = value; } }
-        private Value<bool?> _reasonInterestRatecharges;
+        private DirtyValue<bool?> _reasonInterestRatecharges;
         public bool? ReasonInterestRatecharges { get { return _reasonInterestRatecharges; } set { _reasonInterestRatecharges = value; } }
-        private Value<bool?> _reasonOther;
+        private DirtyValue<bool?> _reasonOther;
         public bool? ReasonOther { get { return _reasonOther; } set { _reasonOther = value; } }
-        private Value<string> _reasonOtherDescription;
+        private DirtyValue<string> _reasonOtherDescription;
         public string ReasonOtherDescription { get { return _reasonOtherDescription; } set { _reasonOtherDescription = value; } }
-        private Value<bool?> _reasonPrepaymentPenalty;
+        private DirtyValue<bool?> _reasonPrepaymentPenalty;
         public bool? ReasonPrepaymentPenalty { get { return _reasonPrepaymentPenalty; } set { _reasonPrepaymentPenalty = value; } }
-        private Value<bool?> _reasonRevisionsReqConsumer;
+        private DirtyValue<bool?> _reasonRevisionsReqConsumer;
         public bool? ReasonRevisionsReqConsumer { get { return _reasonRevisionsReqConsumer; } set { _reasonRevisionsReqConsumer = value; } }
-        private Value<bool?> _reasonToleranceCure;
+        private DirtyValue<bool?> _reasonToleranceCure;
         public bool? ReasonToleranceCure { get { return _reasonToleranceCure; } set { _reasonToleranceCure = value; } }
-        private Value<DateTime?> _revisedCDDueDate;
+        private DirtyValue<DateTime?> _revisedCDDueDate;
         public DateTime? RevisedCDDueDate { get { return _revisedCDDueDate; } set { _revisedCDDueDate = value; } }
-        private Value<DateTime?> _revisedCDReceivedDate;
+        private DirtyValue<DateTime?> _revisedCDReceivedDate;
         public DateTime? RevisedCDReceivedDate { get { return _revisedCDReceivedDate; } set { _revisedCDReceivedDate = value; } }
-        private Value<string> _sellerNames;
+        private DirtyValue<string> _sellerNames;
         public string SellerNames { get { return _sellerNames; } set { _sellerNames = value; } }
-        private Value<string> _signatureTypeFinalExecutedCopyofAlternateCD;
+        private DirtyValue<string> _signatureTypeFinalExecutedCopyofAlternateCD;
         public string SignatureTypeFinalExecutedCopyofAlternateCD { get { return _signatureTypeFinalExecutedCopyofAlternateCD; } set { _signatureTypeFinalExecutedCopyofAlternateCD = value; } }
-        private Value<string> _signatureTypeFinalExecutedCopyofSellerCD;
+        private DirtyValue<string> _signatureTypeFinalExecutedCopyofSellerCD;
         public string SignatureTypeFinalExecutedCopyofSellerCD { get { return _signatureTypeFinalExecutedCopyofSellerCD; } set { _signatureTypeFinalExecutedCopyofSellerCD = value; } }
-        private Value<string> _signatureTypeFinalExecutedCopyofStandardCD;
+        private DirtyValue<string> _signatureTypeFinalExecutedCopyofStandardCD;
         public string SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
-        private Value<decimal?> _totalCashToClose;
+        private DirtyValue<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
         private int _gettingDirty;
         private int _settingDirty; 

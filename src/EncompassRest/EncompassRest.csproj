@@ -31,6 +31,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7</LangVersion>
   </PropertyGroup>
 </Project>
