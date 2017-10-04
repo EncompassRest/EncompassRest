@@ -157,25 +157,18 @@ namespace EncompassRest.Utilities
                     }
                     if (toAssignShouldSerializeMethod)
                     {
-                        if (propertyInfo.Name == "Id")
+                        var propertyName = propertyInfo.Name;
+                        if (propertyName == "Id")
                         {
                             property.ShouldSerialize = o => propertyInfo.GetValue(o) != null;
                         }
                         else
                         {
-                            if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                            var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                            var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
+                            if (backingField != null)
                             {
-                                property.ShouldSerialize = o => o != null && ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
-                            }
-                            else
-                            {
-                                var propertyName = propertyInfo.Name;
-                                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
-                                if (backingField != null)
-                                {
-                                    property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
-                                }
+                                property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
                             }
                         }
                     }
