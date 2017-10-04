@@ -28,13 +28,14 @@ namespace EncompassRest.Loans
         public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
         private DirtyValue<decimal?> _subsidyAmount;
         public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _buydownIndex.Dirty
                     || _buydownRatePercent.Dirty
                     || _changeFrequencyMonthsCount.Dirty
@@ -45,12 +46,13 @@ namespace EncompassRest.Loans
                     || _increaseRatePercent.Dirty
                     || _remainingMonthsCount.Dirty
                     || _subsidyAmount.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _buydownIndex.Dirty = value;
                 _buydownRatePercent.Dirty = value;
                 _changeFrequencyMonthsCount.Dirty = value;
@@ -61,7 +63,7 @@ namespace EncompassRest.Loans
                 _increaseRatePercent.Dirty = value;
                 _remainingMonthsCount.Dirty = value;
                 _subsidyAmount.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

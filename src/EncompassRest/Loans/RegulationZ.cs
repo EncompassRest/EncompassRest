@@ -431,9 +431,9 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _refundUnearnedMipIndicator;
         public bool? RefundUnearnedMipIndicator { get { return _refundUnearnedMipIndicator; } set { _refundUnearnedMipIndicator = value; } }
         private DirtyList<RegulationZInterestRatePeriod> _regulationZInterestRatePeriods;
-        public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get { var v = _regulationZInterestRatePeriods; return v ?? Interlocked.CompareExchange(ref _regulationZInterestRatePeriods, (v = new DirtyList<RegulationZInterestRatePeriod>()), null) ?? v; } set { _regulationZInterestRatePeriods = new DirtyList<RegulationZInterestRatePeriod>(value); } }
+        public IList<RegulationZInterestRatePeriod> RegulationZInterestRatePeriods { get { return _regulationZInterestRatePeriods ?? (_regulationZInterestRatePeriods = new DirtyList<RegulationZInterestRatePeriod>()); } set { _regulationZInterestRatePeriods = new DirtyList<RegulationZInterestRatePeriod>(value); } }
         private DirtyList<RegulationZPayment> _regulationZPayments;
-        public IList<RegulationZPayment> RegulationZPayments { get { var v = _regulationZPayments; return v ?? Interlocked.CompareExchange(ref _regulationZPayments, (v = new DirtyList<RegulationZPayment>()), null) ?? v; } set { _regulationZPayments = new DirtyList<RegulationZPayment>(value); } }
+        public IList<RegulationZPayment> RegulationZPayments { get { return _regulationZPayments ?? (_regulationZPayments = new DirtyList<RegulationZPayment>()); } set { _regulationZPayments = new DirtyList<RegulationZPayment>(value); } }
         private DirtyValue<string> _regzTableType;
         public string RegzTableType { get { return _regzTableType; } set { _regzTableType = value; } }
         private DirtyValue<bool?> _requiredDepositIndicator;
@@ -494,13 +494,14 @@ namespace EncompassRest.Loans
         public string YearOfMaximumPayment { get { return _yearOfMaximumPayment; } set { _yearOfMaximumPayment = value; } }
         private DirtyValue<int?> _years;
         public int? Years { get { return _years; } set { _years = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acknowledgedDay.Dirty
                     || _acknowledgedMonth.Dirty
                     || _acknowledgedYear.Dirty
@@ -744,12 +745,13 @@ namespace EncompassRest.Loans
                     || _years.Dirty
                     || _regulationZInterestRatePeriods?.Dirty == true
                     || _regulationZPayments?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acknowledgedDay.Dirty = value;
                 _acknowledgedMonth.Dirty = value;
                 _acknowledgedYear.Dirty = value;
@@ -993,7 +995,7 @@ namespace EncompassRest.Loans
                 _years.Dirty = value;
                 if (_regulationZInterestRatePeriods != null) _regulationZInterestRatePeriods.Dirty = value;
                 if (_regulationZPayments != null) _regulationZPayments.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

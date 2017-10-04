@@ -120,13 +120,14 @@ namespace EncompassRest.Loans
         public string WV { get { return _wV; } set { _wV = value; } }
         private DirtyValue<string> _wY;
         public string WY { get { return _wY; } set { _wY = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aK.Dirty
                     || _aL.Dirty
                     || _aR.Dirty
@@ -183,12 +184,13 @@ namespace EncompassRest.Loans
                     || _wI.Dirty
                     || _wV.Dirty
                     || _wY.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aK.Dirty = value;
                 _aL.Dirty = value;
                 _aR.Dirty = value;
@@ -245,7 +247,7 @@ namespace EncompassRest.Loans
                 _wI.Dirty = value;
                 _wV.Dirty = value;
                 _wY.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

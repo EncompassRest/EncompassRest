@@ -136,13 +136,14 @@ namespace EncompassRest.Loans
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private DirtyValue<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _cDLiabilityAfterForeclosure.Dirty
                     || _id.Dirty
                     || _lenderAddress.Dirty
@@ -207,12 +208,13 @@ namespace EncompassRest.Loans
                     || _settlementAgentZip.Dirty
                     || _signatureType.Dirty
                     || _totalPayments.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _cDLiabilityAfterForeclosure.Dirty = value;
                 _id.Dirty = value;
                 _lenderAddress.Dirty = value;
@@ -277,7 +279,7 @@ namespace EncompassRest.Loans
                 _settlementAgentZip.Dirty = value;
                 _signatureType.Dirty = value;
                 _totalPayments.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

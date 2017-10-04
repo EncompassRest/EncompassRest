@@ -11,11 +11,11 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _alertIndicator;
         public bool? AlertIndicator { get { return _alertIndicator; } set { _alertIndicator = value; } }
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyValue<DateTime?> _buySideExpirationDate;
         public DateTime? BuySideExpirationDate { get { return _buySideExpirationDate; } set { _buySideExpirationDate = value; } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private DirtyValue<string> _confirmedBy;
@@ -46,13 +46,14 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private DirtyValue<string> _timeConfirmed;
         public string TimeConfirmed { get { return _timeConfirmed; } set { _timeConfirmed = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _alertIndicator.Dirty
                     || _buySideExpirationDate.Dirty
                     || _comments.Dirty
@@ -72,12 +73,13 @@ namespace EncompassRest.Loans
                     || _timeConfirmed.Dirty
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _alertIndicator.Dirty = value;
                 _buySideExpirationDate.Dirty = value;
                 _comments.Dirty = value;
@@ -97,7 +99,7 @@ namespace EncompassRest.Loans
                 _timeConfirmed.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     public sealed partial class LockRequestLog : IDirty
     {
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private DirtyValue<DateTime?> _buySideExpirationDate;
@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _buySideNumDayLocked;
         public int? BuySideNumDayLocked { get { return _buySideNumDayLocked; } set { _buySideNumDayLocked = value; } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private DirtyValue<string> _comments;
@@ -76,13 +76,14 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private DirtyValue<string> _timeRequested;
         public string TimeRequested { get { return _timeRequested; } set { _timeRequested = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _alertsXml.Dirty
                     || _buySideExpirationDate.Dirty
                     || _buySideNewLockExtensionDate.Dirty
@@ -117,12 +118,13 @@ namespace EncompassRest.Loans
                     || _timeRequested.Dirty
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _alertsXml.Dirty = value;
                 _buySideExpirationDate.Dirty = value;
                 _buySideNewLockExtensionDate.Dirty = value;
@@ -157,7 +159,7 @@ namespace EncompassRest.Loans
                 _timeRequested.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

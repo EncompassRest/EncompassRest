@@ -68,13 +68,14 @@ namespace EncompassRest.Loans
         public string ServiceDescription6 { get { return _serviceDescription6; } set { _serviceDescription6 = value; } }
         private DirtyValue<bool?> _settlementIndicator;
         public bool? SettlementIndicator { get { return _settlementIndicator; } set { _settlementIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _affiliatedBusinessArrangementIndex.Dirty
                     || _affiliateName.Dirty
                     || _chargeRangeChargesDescription1.Dirty
@@ -105,12 +106,13 @@ namespace EncompassRest.Loans
                     || _serviceDescription5.Dirty
                     || _serviceDescription6.Dirty
                     || _settlementIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _affiliatedBusinessArrangementIndex.Dirty = value;
                 _affiliateName.Dirty = value;
                 _chargeRangeChargesDescription1.Dirty = value;
@@ -141,7 +143,7 @@ namespace EncompassRest.Loans
                 _serviceDescription5.Dirty = value;
                 _serviceDescription6.Dirty = value;
                 _settlementIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

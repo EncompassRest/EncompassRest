@@ -90,13 +90,14 @@ namespace EncompassRest.Loans
         public string SafeHarborGuid { get { return _safeHarborGuid; } set { _safeHarborGuid = value; } }
         private DirtyValue<string> _sSPLGuid;
         public string SSPLGuid { get { return _sSPLGuid; } set { _sSPLGuid = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appliedCureAmount.Dirty
                     || _cannotDecreaseCDBaselineGuid.Dirty
                     || _cannotDecreaseLEBaselineGuid.Dirty
@@ -138,12 +139,13 @@ namespace EncompassRest.Loans
                     || _requiredCureAmount.Dirty
                     || _safeHarborGuid.Dirty
                     || _sSPLGuid.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appliedCureAmount.Dirty = value;
                 _cannotDecreaseCDBaselineGuid.Dirty = value;
                 _cannotDecreaseLEBaselineGuid.Dirty = value;
@@ -185,7 +187,7 @@ namespace EncompassRest.Loans
                 _requiredCureAmount.Dirty = value;
                 _safeHarborGuid.Dirty = value;
                 _sSPLGuid.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

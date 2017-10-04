@@ -15,11 +15,11 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _addedByUserId;
         public string AddedByUserId { get { return _addedByUserId; } set { _addedByUserId = value; } }
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private DirtyValue<string> _comments;
@@ -35,7 +35,7 @@ namespace EncompassRest.Loans
         private DirtyValue<int?> _contactCount;
         public int? ContactCount { get { return _contactCount; } set { _contactCount = value; } }
         private DirtyList<MilestoneTaskContact> _contacts;
-        public IList<MilestoneTaskContact> Contacts { get { var v = _contacts; return v ?? Interlocked.CompareExchange(ref _contacts, (v = new DirtyList<MilestoneTaskContact>()), null) ?? v; } set { _contacts = new DirtyList<MilestoneTaskContact>(value); } }
+        public IList<MilestoneTaskContact> Contacts { get { return _contacts ?? (_contacts = new DirtyList<MilestoneTaskContact>()); } set { _contacts = new DirtyList<MilestoneTaskContact>(value); } }
         private DirtyValue<string> _contactsXml;
         public string ContactsXml { get { return _contactsXml; } set { _contactsXml = value; } }
         private DirtyValue<DateTime?> _dateUtc;
@@ -72,13 +72,14 @@ namespace EncompassRest.Loans
         public string TaskGuid { get { return _taskGuid; } set { _taskGuid = value; } }
         private DirtyValue<string> _taskName;
         public string TaskName { get { return _taskName; } set { _taskName = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _addDate.Dirty
                     || _addedBy.Dirty
                     || _addedByUserId.Dirty
@@ -111,12 +112,13 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _contacts?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _addDate.Dirty = value;
                 _addedBy.Dirty = value;
                 _addedByUserId.Dirty = value;
@@ -149,7 +151,7 @@ namespace EncompassRest.Loans
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_contacts != null) _contacts.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

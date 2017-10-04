@@ -26,13 +26,14 @@ namespace EncompassRest.Loans
         public string SSN { get { return _sSN; } set { _sSN = value; } }
         private DirtyValue<string> _transUnionScore;
         public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _equifaxScore.Dirty
                     || _experianScore.Dirty
                     || _firstName.Dirty
@@ -42,12 +43,13 @@ namespace EncompassRest.Loans
                     || _lrbIndex.Dirty
                     || _sSN.Dirty
                     || _transUnionScore.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _equifaxScore.Dirty = value;
                 _experianScore.Dirty = value;
                 _firstName.Dirty = value;
@@ -57,7 +59,7 @@ namespace EncompassRest.Loans
                 _lrbIndex.Dirty = value;
                 _sSN.Dirty = value;
                 _transUnionScore.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

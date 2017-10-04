@@ -19,9 +19,9 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _firstArmChangeDate;
         public DateTime? FirstArmChangeDate { get { return _firstArmChangeDate; } set { _firstArmChangeDate = value; } }
         private DirtyList<Gfe2010FwbcFwsc> _gfe2010FwbcFwscs;
-        public IList<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { var v = _gfe2010FwbcFwscs; return v ?? Interlocked.CompareExchange(ref _gfe2010FwbcFwscs, (v = new DirtyList<Gfe2010FwbcFwsc>()), null) ?? v; } set { _gfe2010FwbcFwscs = new DirtyList<Gfe2010FwbcFwsc>(value); } }
+        public IList<Gfe2010FwbcFwsc> Gfe2010FwbcFwscs { get { return _gfe2010FwbcFwscs ?? (_gfe2010FwbcFwscs = new DirtyList<Gfe2010FwbcFwsc>()); } set { _gfe2010FwbcFwscs = new DirtyList<Gfe2010FwbcFwsc>(value); } }
         private DirtyList<Gfe2010GfeCharge> _gfe2010GfeCharges;
-        public IList<Gfe2010GfeCharge> Gfe2010GfeCharges { get { var v = _gfe2010GfeCharges; return v ?? Interlocked.CompareExchange(ref _gfe2010GfeCharges, (v = new DirtyList<Gfe2010GfeCharge>()), null) ?? v; } set { _gfe2010GfeCharges = new DirtyList<Gfe2010GfeCharge>(value); } }
+        public IList<Gfe2010GfeCharge> Gfe2010GfeCharges { get { return _gfe2010GfeCharges ?? (_gfe2010GfeCharges = new DirtyList<Gfe2010GfeCharge>()); } set { _gfe2010GfeCharges = new DirtyList<Gfe2010GfeCharge>(value); } }
         private DirtyValue<string> _gfeRecordingCharges;
         public string GfeRecordingCharges { get { return _gfeRecordingCharges; } set { _gfeRecordingCharges = value; } }
         private DirtyValue<decimal?> _gfeTotalTolerance;
@@ -186,13 +186,14 @@ namespace EncompassRest.Loans
         public decimal? PrepaidInterest { get { return _prepaidInterest; } set { _prepaidInterest = value; } }
         private DirtyValue<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get { return _totalToleranceIncreaseAmount; } set { _totalToleranceIncreaseAmount = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _balloonPaymentDueInYears.Dirty
                     || _brokerCompensationFwbc.Dirty
                     || _brokerCompensationFwsc.Dirty
@@ -282,12 +283,13 @@ namespace EncompassRest.Loans
                     || _totalToleranceIncreaseAmount.Dirty
                     || _gfe2010FwbcFwscs?.Dirty == true
                     || _gfe2010GfeCharges?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _balloonPaymentDueInYears.Dirty = value;
                 _brokerCompensationFwbc.Dirty = value;
                 _brokerCompensationFwsc.Dirty = value;
@@ -377,7 +379,7 @@ namespace EncompassRest.Loans
                 _totalToleranceIncreaseAmount.Dirty = value;
                 if (_gfe2010FwbcFwscs != null) _gfe2010FwbcFwscs.Dirty = value;
                 if (_gfe2010GfeCharges != null) _gfe2010GfeCharges.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

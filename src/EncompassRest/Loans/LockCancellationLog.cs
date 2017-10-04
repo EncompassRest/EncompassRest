@@ -38,13 +38,14 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private DirtyValue<string> _timeCancelled;
         public string TimeCancelled { get { return _timeCancelled; } set { _timeCancelled = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _alertIndicator.Dirty
                     || _alertsXml.Dirty
                     || _cancelledBy.Dirty
@@ -60,12 +61,13 @@ namespace EncompassRest.Loans
                     || _requestGuid.Dirty
                     || _systemId.Dirty
                     || _timeCancelled.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _alertIndicator.Dirty = value;
                 _alertsXml.Dirty = value;
                 _cancelledBy.Dirty = value;
@@ -81,7 +83,7 @@ namespace EncompassRest.Loans
                 _requestGuid.Dirty = value;
                 _systemId.Dirty = value;
                 _timeCancelled.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

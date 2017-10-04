@@ -28,13 +28,14 @@ namespace EncompassRest.Loans
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
         private DirtyValue<DateTime?> _reviewedDate;
         public DateTime? ReviewedDate { get { return _reviewedDate; } set { _reviewedDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _addedBy.Dirty
                     || _addedByName.Dirty
                     || _comments.Dirty
@@ -45,12 +46,13 @@ namespace EncompassRest.Loans
                     || _isInternal.Dirty
                     || _reviewedBy.Dirty
                     || _reviewedDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _addedBy.Dirty = value;
                 _addedByName.Dirty = value;
                 _comments.Dirty = value;
@@ -61,7 +63,7 @@ namespace EncompassRest.Loans
                 _isInternal.Dirty = value;
                 _reviewedBy.Dirty = value;
                 _reviewedDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

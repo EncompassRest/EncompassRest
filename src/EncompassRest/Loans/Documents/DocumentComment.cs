@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace EncompassRest.Loans.Documents
 {
@@ -21,13 +20,14 @@ namespace EncompassRest.Loans.Documents
         public DateTime? DateReviewed { get { return _dateReviewed; } set { _dateReviewed = value; } }
         private DirtyValue<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        private int _gettingDirty;
-        private int _settingDirty;
+        private bool _gettingDirty;
+        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _comments.Dirty
                     || _forRoleId.Dirty
                     || _commentId.Dirty
@@ -36,12 +36,13 @@ namespace EncompassRest.Loans.Documents
                     || _createdByName.Dirty
                     || _dateReviewed.Dirty
                     || _reviewedBy.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _comments.Dirty = value;
                 _forRoleId.Dirty = value;
                 _commentId.Dirty = value;
@@ -50,7 +51,7 @@ namespace EncompassRest.Loans.Documents
                 _createdByName.Dirty = value;
                 _dateReviewed.Dirty = value;
                 _reviewedBy.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

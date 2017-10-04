@@ -32,13 +32,14 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private DirtyValue<string> _section;
         public string Section { get { return _section; } set { _section = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _feeAccountType.Dirty
                     || _feeAmount.Dirty
                     || _feeDateFrom.Dirty
@@ -51,12 +52,13 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _lineNumber.Dirty
                     || _section.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _feeAccountType.Dirty = value;
                 _feeAmount.Dirty = value;
                 _feeDateFrom.Dirty = value;
@@ -69,7 +71,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
                 _section.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

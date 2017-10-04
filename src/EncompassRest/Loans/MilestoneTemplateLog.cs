@@ -20,32 +20,34 @@ namespace EncompassRest.Loans
         public string MilestoneTemplateID { get { return _milestoneTemplateID; } set { _milestoneTemplateID = value; } }
         private DirtyValue<string> _milestoneTemplateName;
         public string MilestoneTemplateName { get { return _milestoneTemplateName; } set { _milestoneTemplateName = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _elliLogRecordId.Dirty
                     || _id.Dirty
                     || _isTemplateDatesLocked.Dirty
                     || _isTemplateLocked.Dirty
                     || _milestoneTemplateID.Dirty
                     || _milestoneTemplateName.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _elliLogRecordId.Dirty = value;
                 _id.Dirty = value;
                 _isTemplateDatesLocked.Dirty = value;
                 _isTemplateLocked.Dirty = value;
                 _milestoneTemplateID.Dirty = value;
                 _milestoneTemplateName.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

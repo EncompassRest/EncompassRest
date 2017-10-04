@@ -30,13 +30,14 @@ namespace EncompassRest.Loans
         public string PocPaidBy { get { return _pocPaidBy; } set { _pocPaidBy = value; } }
         private DirtyValue<string> _ptcPaidBy;
         public string PtcPaidBy { get { return _ptcPaidBy; } set { _ptcPaidBy = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _balanceChecked.Dirty
                     || _cdLineId.Dirty
                     || _feeDescription.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _payee.Dirty
                     || _pocPaidBy.Dirty
                     || _ptcPaidBy.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _balanceChecked.Dirty = value;
                 _cdLineId.Dirty = value;
                 _feeDescription.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _payee.Dirty = value;
                 _pocPaidBy.Dirty = value;
                 _ptcPaidBy.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

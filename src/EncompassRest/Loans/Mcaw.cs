@@ -102,13 +102,14 @@ namespace EncompassRest.Loans
         public decimal? UnadjustedAcquisition { get { return _unadjustedAcquisition; } set { _unadjustedAcquisition = value; } }
         private DirtyValue<bool?> _use85PercentRuleIndicator;
         public bool? Use85PercentRuleIndicator { get { return _use85PercentRuleIndicator; } set { _use85PercentRuleIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adequacyOfAvailableAssetsType.Dirty
                     || _adequacyOfEffectiveIncomeType.Dirty
                     || _adjustedPurchasePrice.Dirty
@@ -156,12 +157,13 @@ namespace EncompassRest.Loans
                     || _totalSellerContribution.Dirty
                     || _unadjustedAcquisition.Dirty
                     || _use85PercentRuleIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adequacyOfAvailableAssetsType.Dirty = value;
                 _adequacyOfEffectiveIncomeType.Dirty = value;
                 _adjustedPurchasePrice.Dirty = value;
@@ -209,7 +211,7 @@ namespace EncompassRest.Loans
                 _totalSellerContribution.Dirty = value;
                 _unadjustedAcquisition.Dirty = value;
                 _use85PercentRuleIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -420,13 +420,14 @@ namespace EncompassRest.Loans
         public bool? WithOriginalCreditor { get { return _withOriginalCreditor; } set { _withOriginalCreditor = value; } }
         private DirtyValue<DateTime?> _writtenApplicationDate;
         public DateTime? WrittenApplicationDate { get { return _writtenApplicationDate; } set { _writtenApplicationDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _affiliatesFees.Dirty
                     || _aPORMaxBonaFideDiscountPoint.Dirty
                     || _aRMRecastDate.Dirty
@@ -633,12 +634,13 @@ namespace EncompassRest.Loans
                     || _upfrontPMIFees.Dirty
                     || _withOriginalCreditor.Dirty
                     || _writtenApplicationDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _affiliatesFees.Dirty = value;
                 _aPORMaxBonaFideDiscountPoint.Dirty = value;
                 _aRMRecastDate.Dirty = value;
@@ -845,7 +847,7 @@ namespace EncompassRest.Loans
                 _upfrontPMIFees.Dirty = value;
                 _withOriginalCreditor.Dirty = value;
                 _writtenApplicationDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

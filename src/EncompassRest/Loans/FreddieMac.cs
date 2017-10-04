@@ -166,13 +166,14 @@ namespace EncompassRest.Loans
         public bool? TransferLoanToConduitIndicator { get { return _transferLoanToConduitIndicator; } set { _transferLoanToConduitIndicator = value; } }
         private DirtyValue<string> _yearsOfCoverage;
         public string YearsOfCoverage { get { return _yearsOfCoverage; } set { _yearsOfCoverage = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _affordableProduct.Dirty
                     || _alimonyAsIncomeReduction.Dirty
                     || _allMonthlyPayments.Dirty
@@ -252,12 +253,13 @@ namespace EncompassRest.Loans
                     || _state.Dirty
                     || _transferLoanToConduitIndicator.Dirty
                     || _yearsOfCoverage.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _affordableProduct.Dirty = value;
                 _alimonyAsIncomeReduction.Dirty = value;
                 _allMonthlyPayments.Dirty = value;
@@ -337,7 +339,7 @@ namespace EncompassRest.Loans
                 _state.Dirty = value;
                 _transferLoanToConduitIndicator.Dirty = value;
                 _yearsOfCoverage.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -26,13 +26,14 @@ namespace EncompassRest.Loans
         public string SSN { get { return _sSN; } set { _sSN = value; } }
         private DirtyValue<DateTime?> _startDate;
         public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _branch.Dirty
                     || _endDate.Dirty
                     || _id.Dirty
@@ -42,12 +43,13 @@ namespace EncompassRest.Loans
                     || _serviceNumber.Dirty
                     || _sSN.Dirty
                     || _startDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _branch.Dirty = value;
                 _endDate.Dirty = value;
                 _id.Dirty = value;
@@ -57,7 +59,7 @@ namespace EncompassRest.Loans
                 _serviceNumber.Dirty = value;
                 _sSN.Dirty = value;
                 _startDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

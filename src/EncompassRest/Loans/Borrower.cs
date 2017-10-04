@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _applicantType;
         public string ApplicantType { get { return _applicantType; } set { _applicantType = value; } }
         private Application _application;
-        public Application Application { get { var v = _application; return v ?? Interlocked.CompareExchange(ref _application, (v = new Application()), null) ?? v; } set { _application = value; } }
+        public Application Application { get { return _application ?? (_application = new Application()); } set { _application = value; } }
         private DirtyValue<string> _applicationTakenMethodType;
         public string ApplicationTakenMethodType { get { return _applicationTakenMethodType; } set { _applicationTakenMethodType = value; } }
         private DirtyValue<string> _assetRepAndWarrantyMessage;
@@ -642,13 +642,14 @@ namespace EncompassRest.Loans
         public string WorkEmailAddress { get { return _workEmailAddress; } set { _workEmailAddress = value; } }
         private DirtyValue<int?> _yearsofCreditOnFile;
         public int? YearsofCreditOnFile { get { return _yearsofCreditOnFile; } set { _yearsofCreditOnFile = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acountChekAssetId.Dirty
                     || _ageAtApplicationYearsCount.Dirty
                     || _aliasName.Dirty
@@ -966,12 +967,13 @@ namespace EncompassRest.Loans
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
                     || _application?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acountChekAssetId.Dirty = value;
                 _ageAtApplicationYearsCount.Dirty = value;
                 _aliasName.Dirty = value;
@@ -1289,7 +1291,7 @@ namespace EncompassRest.Loans
                 _workEmailAddress.Dirty = value;
                 _yearsofCreditOnFile.Dirty = value;
                 if (_application != null) _application.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

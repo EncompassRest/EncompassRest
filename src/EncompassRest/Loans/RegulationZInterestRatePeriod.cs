@@ -30,13 +30,14 @@ namespace EncompassRest.Loans
         public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
         private DirtyValue<decimal?> _totalPayment;
         public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adjustmentDate.Dirty
                     || _adjustmentMonths.Dirty
                     || _id.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _regulationZInterestRatePeriodType.Dirty
                     || _taxInsuranceAmount.Dirty
                     || _totalPayment.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adjustmentDate.Dirty = value;
                 _adjustmentMonths.Dirty = value;
                 _id.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _regulationZInterestRatePeriodType.Dirty = value;
                 _taxInsuranceAmount.Dirty = value;
                 _totalPayment.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

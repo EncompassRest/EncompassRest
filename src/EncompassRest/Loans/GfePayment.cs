@@ -48,13 +48,14 @@ namespace EncompassRest.Loans
         public decimal? ReducedLoanBalance { get { return _reducedLoanBalance; } set { _reducedLoanBalance = value; } }
         private DirtyValue<string> _reducedStatus;
         public string ReducedStatus { get { return _reducedStatus; } set { _reducedStatus = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _fixedRate.Dirty
                     || _gfePaymentIndex.Dirty
                     || _id.Dirty
@@ -75,12 +76,13 @@ namespace EncompassRest.Loans
                     || _rateInMonth2.Dirty
                     || _reducedLoanBalance.Dirty
                     || _reducedStatus.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _fixedRate.Dirty = value;
                 _gfePaymentIndex.Dirty = value;
                 _id.Dirty = value;
@@ -101,7 +103,7 @@ namespace EncompassRest.Loans
                 _rateInMonth2.Dirty = value;
                 _reducedLoanBalance.Dirty = value;
                 _reducedStatus.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -18,30 +18,32 @@ namespace EncompassRest.Loans
         public bool? ProvideFHAScenario { get { return _provideFHAScenario; } set { _provideFHAScenario = value; } }
         private DirtyValue<bool?> _provideWorstCaseScenario;
         public bool? ProvideWorstCaseScenario { get { return _provideWorstCaseScenario; } set { _provideWorstCaseScenario = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _id.Dirty
                     || _provideAmortizationScenario.Dirty
                     || _provideBestCaseScenario.Dirty
                     || _provideFHAScenario.Dirty
                     || _provideWorstCaseScenario.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _id.Dirty = value;
                 _provideAmortizationScenario.Dirty = value;
                 _provideBestCaseScenario.Dirty = value;
                 _provideFHAScenario.Dirty = value;
                 _provideWorstCaseScenario.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

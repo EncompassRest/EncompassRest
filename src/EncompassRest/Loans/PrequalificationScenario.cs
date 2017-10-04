@@ -84,13 +84,14 @@ namespace EncompassRest.Loans
         public decimal? TotalPaidOffOthers { get { return _totalPaidOffOthers; } set { _totalPaidOffOthers = value; } }
         private DirtyValue<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisedValue.Dirty
                     || _apr.Dirty
                     || _cashToClose.Dirty
@@ -129,12 +130,13 @@ namespace EncompassRest.Loans
                     || _totalPaidOffMortgage.Dirty
                     || _totalPaidOffOthers.Dirty
                     || _totalPayments.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisedValue.Dirty = value;
                 _apr.Dirty = value;
                 _cashToClose.Dirty = value;
@@ -173,7 +175,7 @@ namespace EncompassRest.Loans
                 _totalPaidOffMortgage.Dirty = value;
                 _totalPaidOffOthers.Dirty = value;
                 _totalPayments.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

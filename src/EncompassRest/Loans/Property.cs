@@ -118,13 +118,14 @@ namespace EncompassRest.Loans
         public string TypeRecordingJurisdiction { get { return _typeRecordingJurisdiction; } set { _typeRecordingJurisdiction = value; } }
         private DirtyValue<string> _unincorporatedAreaName;
         public string UnincorporatedAreaName { get { return _unincorporatedAreaName; } set { _unincorporatedAreaName = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _assessorsParcelIdentifier.Dirty
                     || _blockIdentifier.Dirty
                     || _borrowerHomesteadIndicator.Dirty
@@ -180,12 +181,13 @@ namespace EncompassRest.Loans
                     || _totalConstructionValueAmount.Dirty
                     || _typeRecordingJurisdiction.Dirty
                     || _unincorporatedAreaName.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _assessorsParcelIdentifier.Dirty = value;
                 _blockIdentifier.Dirty = value;
                 _borrowerHomesteadIndicator.Dirty = value;
@@ -241,7 +243,7 @@ namespace EncompassRest.Loans
                 _totalConstructionValueAmount.Dirty = value;
                 _typeRecordingJurisdiction.Dirty = value;
                 _unincorporatedAreaName.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

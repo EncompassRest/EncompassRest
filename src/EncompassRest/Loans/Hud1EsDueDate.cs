@@ -30,13 +30,14 @@ namespace EncompassRest.Loans
         public DateTime? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
         private DirtyValue<DateTime?> _userDefined3;
         public DateTime? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _annualFee.Dirty
                     || _floodInsDisb.Dirty
                     || _hazInsDisb.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _userDefined1.Dirty
                     || _userDefined2.Dirty
                     || _userDefined3.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _annualFee.Dirty = value;
                 _floodInsDisb.Dirty = value;
                 _hazInsDisb.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _userDefined1.Dirty = value;
                 _userDefined2.Dirty = value;
                 _userDefined3.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

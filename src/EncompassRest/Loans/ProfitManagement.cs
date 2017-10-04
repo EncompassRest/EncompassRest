@@ -33,14 +33,15 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _netProfit;
         public decimal? NetProfit { get { return _netProfit; } set { _netProfit = value; } }
         private DirtyList<ProfitManagementItem> _profitManagementItems;
-        public IList<ProfitManagementItem> ProfitManagementItems { get { var v = _profitManagementItems; return v ?? Interlocked.CompareExchange(ref _profitManagementItems, (v = new DirtyList<ProfitManagementItem>()), null) ?? v; } set { _profitManagementItems = new DirtyList<ProfitManagementItem>(value); } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        public IList<ProfitManagementItem> ProfitManagementItems { get { return _profitManagementItems ?? (_profitManagementItems = new DirtyList<ProfitManagementItem>()); } set { _profitManagementItems = new DirtyList<ProfitManagementItem>(value); } }
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _commissionableGrossProfit.Dirty
                     || _expenseAmount1.Dirty
                     || _expenseAmount2.Dirty
@@ -54,12 +55,13 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _netProfit.Dirty
                     || _profitManagementItems?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _commissionableGrossProfit.Dirty = value;
                 _expenseAmount1.Dirty = value;
                 _expenseAmount2.Dirty = value;
@@ -73,7 +75,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _netProfit.Dirty = value;
                 if (_profitManagementItems != null) _profitManagementItems.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     public sealed partial class DisclosureTrackingLog : IDirty
     {
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyValue<string> _alertsXml;
         public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
         private DirtyValue<DateTime?> _applicationDate;
@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _coBorrowerName;
         public string CoBorrowerName { get { return _coBorrowerName; } set { _coBorrowerName = value; } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _commentListXml;
         public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
         private DirtyValue<string> _comments;
@@ -99,7 +99,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _financeCharge;
         public string FinanceCharge { get { return _financeCharge; } set { _financeCharge = value; } }
         private DirtyList<DisclosureForm> _forms;
-        public IList<DisclosureForm> Forms { get { var v = _forms; return v ?? Interlocked.CompareExchange(ref _forms, (v = new DirtyList<DisclosureForm>()), null) ?? v; } set { _forms = new DirtyList<DisclosureForm>(value); } }
+        public IList<DisclosureForm> Forms { get { return _forms ?? (_forms = new DirtyList<DisclosureForm>()); } set { _forms = new DirtyList<DisclosureForm>(value); } }
         private DirtyValue<string> _formsXml;
         public string FormsXml { get { return _formsXml; } set { _formsXml = value; } }
         private DirtyValue<string> _fulfillmentOrderedBy;
@@ -153,18 +153,19 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _receivedDate;
         public DateTime? ReceivedDate { get { return _receivedDate; } set { _receivedDate = value; } }
         private DirtyList<LogSnapshotField> _snapshotFields;
-        public IList<LogSnapshotField> SnapshotFields { get { var v = _snapshotFields; return v ?? Interlocked.CompareExchange(ref _snapshotFields, (v = new DirtyList<LogSnapshotField>()), null) ?? v; } set { _snapshotFields = new DirtyList<LogSnapshotField>(value); } }
+        public IList<LogSnapshotField> SnapshotFields { get { return _snapshotFields ?? (_snapshotFields = new DirtyList<LogSnapshotField>()); } set { _snapshotFields = new DirtyList<LogSnapshotField>(value); } }
         private DirtyValue<string> _snapshotXml;
         public string SnapshotXml { get { return _snapshotXml; } set { _snapshotXml = value; } }
         private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _alertsXml.Dirty
                     || _applicationDate.Dirty
                     || _borrowerName.Dirty
@@ -240,12 +241,13 @@ namespace EncompassRest.Loans
                     || _commentList?.Dirty == true
                     || _forms?.Dirty == true
                     || _snapshotFields?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _alertsXml.Dirty = value;
                 _applicationDate.Dirty = value;
                 _borrowerName.Dirty = value;
@@ -321,7 +323,7 @@ namespace EncompassRest.Loans
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_forms != null) _forms.Dirty = value;
                 if (_snapshotFields != null) _snapshotFields.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

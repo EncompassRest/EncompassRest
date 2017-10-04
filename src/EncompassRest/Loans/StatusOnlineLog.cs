@@ -9,9 +9,9 @@ namespace EncompassRest.Loans
     public sealed partial class StatusOnlineLog : IDirty
     {
         private DirtyList<LogAlert> _alerts;
-        public IList<LogAlert> Alerts { get { var v = _alerts; return v ?? Interlocked.CompareExchange(ref _alerts, (v = new DirtyList<LogAlert>()), null) ?? v; } set { _alerts = new DirtyList<LogAlert>(value); } }
+        public IList<LogAlert> Alerts { get { return _alerts ?? (_alerts = new DirtyList<LogAlert>()); } set { _alerts = new DirtyList<LogAlert>(value); } }
         private DirtyList<LogComment> _commentList;
-        public IList<LogComment> CommentList { get { var v = _commentList; return v ?? Interlocked.CompareExchange(ref _commentList, (v = new DirtyList<LogComment>()), null) ?? v; } set { _commentList = new DirtyList<LogComment>(value); } }
+        public IList<LogComment> CommentList { get { return _commentList ?? (_commentList = new DirtyList<LogComment>()); } set { _commentList = new DirtyList<LogComment>(value); } }
         private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private DirtyValue<string> _creator;
@@ -19,7 +19,7 @@ namespace EncompassRest.Loans
         private DirtyValue<DateTime?> _dateUtc;
         public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
         private DirtyList<StatusOnlineEvent> _events;
-        public IList<StatusOnlineEvent> Events { get { var v = _events; return v ?? Interlocked.CompareExchange(ref _events, (v = new DirtyList<StatusOnlineEvent>()), null) ?? v; } set { _events = new DirtyList<StatusOnlineEvent>(value); } }
+        public IList<StatusOnlineEvent> Events { get { return _events ?? (_events = new DirtyList<StatusOnlineEvent>()); } set { _events = new DirtyList<StatusOnlineEvent>(value); } }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
         private DirtyValue<string> _guid;
@@ -32,13 +32,14 @@ namespace EncompassRest.Loans
         public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
         private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _comments.Dirty
                     || _creator.Dirty
                     || _dateUtc.Dirty
@@ -51,12 +52,13 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _events?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _comments.Dirty = value;
                 _creator.Dirty = value;
                 _dateUtc.Dirty = value;
@@ -69,7 +71,7 @@ namespace EncompassRest.Loans
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_events != null) _events.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

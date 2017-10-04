@@ -220,13 +220,14 @@ namespace EncompassRest.Loans
         public string SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
         private DirtyValue<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _cDDateIssued.Dirty
                     || _changedCircumstance.Dirty
                     || _changedCircumstanceFlag.Dirty
@@ -333,12 +334,13 @@ namespace EncompassRest.Loans
                     || _signatureTypeFinalExecutedCopyofSellerCD.Dirty
                     || _signatureTypeFinalExecutedCopyofStandardCD.Dirty
                     || _totalCashToClose.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _cDDateIssued.Dirty = value;
                 _changedCircumstance.Dirty = value;
                 _changedCircumstanceFlag.Dirty = value;
@@ -445,7 +447,7 @@ namespace EncompassRest.Loans
                 _signatureTypeFinalExecutedCopyofSellerCD.Dirty = value;
                 _signatureTypeFinalExecutedCopyofStandardCD.Dirty = value;
                 _totalCashToClose.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

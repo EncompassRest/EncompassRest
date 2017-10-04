@@ -22,13 +22,14 @@ namespace EncompassRest.Loans
         public decimal? Total { get { return _total; } set { _total = value; } }
         private DirtyValue<string> _type;
         public string Type { get { return _type; } set { _type = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _atPercent.Dirty
                     || _description.Dirty
                     || _id.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _profitManagementItemIndex.Dirty
                     || _total.Dirty
                     || _type.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _atPercent.Dirty = value;
                 _description.Dirty = value;
                 _id.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _profitManagementItemIndex.Dirty = value;
                 _total.Dirty = value;
                 _type.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

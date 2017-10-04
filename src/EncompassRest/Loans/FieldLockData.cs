@@ -14,26 +14,28 @@ namespace EncompassRest.Loans
         public string ModelPath { get { return _modelPath; } set { _modelPath = value; } }
         private DirtyValue<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _lockRemoved.Dirty
                     || _modelPath.Dirty
                     || _value.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _lockRemoved.Dirty = value;
                 _modelPath.Dirty = value;
                 _value.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

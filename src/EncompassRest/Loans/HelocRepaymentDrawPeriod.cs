@@ -22,13 +22,14 @@ namespace EncompassRest.Loans
         public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
         private DirtyValue<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _apr.Dirty
                     || _drawIndicator.Dirty
                     || _id.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _marginRatePercent.Dirty
                     || _minimumMonthlyPaymentAmount.Dirty
                     || _year.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _apr.Dirty = value;
                 _drawIndicator.Dirty = value;
                 _id.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _marginRatePercent.Dirty = value;
                 _minimumMonthlyPaymentAmount.Dirty = value;
                 _year.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

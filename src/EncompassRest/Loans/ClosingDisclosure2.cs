@@ -58,13 +58,14 @@ namespace EncompassRest.Loans
         public decimal? TotalOtherCostAtClosing { get { return _totalOtherCostAtClosing; } set { _totalOtherCostAtClosing = value; } }
         private DirtyValue<decimal?> _totalOtherCostBeforeClosing;
         public decimal? TotalOtherCostBeforeClosing { get { return _totalOtherCostBeforeClosing; } set { _totalOtherCostBeforeClosing = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _borrowerClosingCostAtClosing.Dirty
                     || _borrowerClosingCostBeforeClosing.Dirty
                     || _closingCostLenderCredits.Dirty
@@ -90,12 +91,13 @@ namespace EncompassRest.Loans
                     || _totalOtherCost.Dirty
                     || _totalOtherCostAtClosing.Dirty
                     || _totalOtherCostBeforeClosing.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _borrowerClosingCostAtClosing.Dirty = value;
                 _borrowerClosingCostBeforeClosing.Dirty = value;
                 _closingCostLenderCredits.Dirty = value;
@@ -121,7 +123,7 @@ namespace EncompassRest.Loans
                 _totalOtherCost.Dirty = value;
                 _totalOtherCostAtClosing.Dirty = value;
                 _totalOtherCostBeforeClosing.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

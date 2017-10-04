@@ -50,13 +50,14 @@ namespace EncompassRest.Loans
         public string WiredToForFurtherCreditTo1 { get { return _wiredToForFurtherCreditTo1; } set { _wiredToForFurtherCreditTo1 = value; } }
         private DirtyValue<string> _wiredToForFurtherCreditTo2;
         public string WiredToForFurtherCreditTo2 { get { return _wiredToForFurtherCreditTo2; } set { _wiredToForFurtherCreditTo2 = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _collateralSentDate.Dirty
                     || _funderName.Dirty
                     || _funderUrl.Dirty
@@ -78,12 +79,13 @@ namespace EncompassRest.Loans
                     || _wiredToForCreditTo2.Dirty
                     || _wiredToForFurtherCreditTo1.Dirty
                     || _wiredToForFurtherCreditTo2.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _collateralSentDate.Dirty = value;
                 _funderName.Dirty = value;
                 _funderUrl.Dirty = value;
@@ -105,7 +107,7 @@ namespace EncompassRest.Loans
                 _wiredToForCreditTo2.Dirty = value;
                 _wiredToForFurtherCreditTo1.Dirty = value;
                 _wiredToForFurtherCreditTo2.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -50,13 +50,14 @@ namespace EncompassRest.Loans
         public bool? UserDefinedPrepaid2 { get { return _userDefinedPrepaid2; } set { _userDefinedPrepaid2 = value; } }
         private DirtyValue<bool?> _userDefinedPrepaid3;
         public bool? UserDefinedPrepaid3 { get { return _userDefinedPrepaid3; } set { _userDefinedPrepaid3 = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _annualFeePrepaid.Dirty
                     || _annualFees.Dirty
                     || _date.Dirty
@@ -78,12 +79,13 @@ namespace EncompassRest.Loans
                     || _userDefinedPrepaid1.Dirty
                     || _userDefinedPrepaid2.Dirty
                     || _userDefinedPrepaid3.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _annualFeePrepaid.Dirty = value;
                 _annualFees.Dirty = value;
                 _date.Dirty = value;
@@ -105,7 +107,7 @@ namespace EncompassRest.Loans
                 _userDefinedPrepaid1.Dirty = value;
                 _userDefinedPrepaid2.Dirty = value;
                 _userDefinedPrepaid3.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

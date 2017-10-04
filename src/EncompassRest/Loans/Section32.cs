@@ -280,13 +280,14 @@ namespace EncompassRest.Loans
         public bool? WireTransferFeeToBeFinancedIndicator { get { return _wireTransferFeeToBeFinancedIndicator; } set { _wireTransferFeeToBeFinancedIndicator = value; } }
         private DirtyValue<bool?> _wireTransferPortionOfFeeIndicator;
         public bool? WireTransferPortionOfFeeIndicator { get { return _wireTransferPortionOfFeeIndicator; } set { _wireTransferPortionOfFeeIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisalFeeToBeFinancedIndicator.Dirty
                     || _appraisalPortionOfFeeIndicator.Dirty
                     || _aprExceedsTsyForFirstMortgage.Dirty
@@ -423,12 +424,13 @@ namespace EncompassRest.Loans
                     || _userDefined823PortionOfFeeIndicator.Dirty
                     || _wireTransferFeeToBeFinancedIndicator.Dirty
                     || _wireTransferPortionOfFeeIndicator.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisalFeeToBeFinancedIndicator.Dirty = value;
                 _appraisalPortionOfFeeIndicator.Dirty = value;
                 _aprExceedsTsyForFirstMortgage.Dirty = value;
@@ -565,7 +567,7 @@ namespace EncompassRest.Loans
                 _userDefined823PortionOfFeeIndicator.Dirty = value;
                 _wireTransferFeeToBeFinancedIndicator.Dirty = value;
                 _wireTransferPortionOfFeeIndicator.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

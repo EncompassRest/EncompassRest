@@ -86,13 +86,14 @@ namespace EncompassRest.Loans
         public string State { get { return _state; } set { _state = value; } }
         private DirtyValue<string> _webUrl;
         public string WebUrl { get { return _webUrl; } set { _webUrl = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _address.Dirty
                     || _city.Dirty
                     || _contactName.Dirty
@@ -132,12 +133,13 @@ namespace EncompassRest.Loans
                     || _shopFor.Dirty
                     || _state.Dirty
                     || _webUrl.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _address.Dirty = value;
                 _city.Dirty = value;
                 _contactName.Dirty = value;
@@ -177,7 +179,7 @@ namespace EncompassRest.Loans
                 _shopFor.Dirty = value;
                 _state.Dirty = value;
                 _webUrl.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -26,21 +25,22 @@ namespace EncompassRest.Loans.Attachments
         public long? FileSize { get { return _fileSize; } set { _fileSize = value; } }
         private DirtyValue<bool?> _isActive;
         public bool? IsActive { get { return _isActive; } set { _isActive = value; } }
-        private DirtyValue<List<PageImage>> _pages;
-        public List<PageImage> Pages { get { return _pages; } set { _pages = value; } }
+        private DirtyList<PageImage> _pages;
+        public IList<PageImage> Pages { get { return _pages ?? (_pages = new DirtyList<PageImage>()); } set { _pages = new DirtyList<PageImage>(value); } }
         private DirtyValue<int?> _rotation;
         public int? Rotation { get { return _rotation; } set { _rotation = value; } }
         private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get; set; }
-        private int _gettingDirty;
-        private int _settingDirty;
+        private bool _gettingDirty;
+        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _attachmentId.Dirty
                     || _dateCreated.Dirty
                     || _createdBy.Dirty
@@ -49,15 +49,16 @@ namespace EncompassRest.Loans.Attachments
                     || _attachmentType.Dirty
                     || _fileSize.Dirty
                     || _isActive.Dirty
-                    || _pages.Dirty
+                    || _pages?.Dirty == true
                     || _rotation.Dirty
                     || _title.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _attachmentId.Dirty = value;
                 _dateCreated.Dirty = value;
                 _createdBy.Dirty = value;
@@ -66,10 +67,10 @@ namespace EncompassRest.Loans.Attachments
                 _attachmentType.Dirty = value;
                 _fileSize.Dirty = value;
                 _isActive.Dirty = value;
-                _pages.Dirty = value;
+                if (_pages != null) _pages.Dirty = value;
                 _rotation.Dirty = value;
                 _title.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

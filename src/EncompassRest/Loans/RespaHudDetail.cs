@@ -26,13 +26,14 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private DirtyValue<decimal?> _realValue;
         public decimal? RealValue { get { return _realValue; } set { _realValue = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _creditDebt.Dirty
                     || _fWBC.Dirty
                     || _hUD1LineItemFromDate.Dirty
@@ -42,12 +43,13 @@ namespace EncompassRest.Loans
                     || _lineItemDescription.Dirty
                     || _lineNumber.Dirty
                     || _realValue.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _creditDebt.Dirty = value;
                 _fWBC.Dirty = value;
                 _hUD1LineItemFromDate.Dirty = value;
@@ -57,7 +59,7 @@ namespace EncompassRest.Loans
                 _lineItemDescription.Dirty = value;
                 _lineNumber.Dirty = value;
                 _realValue.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -18,30 +18,32 @@ namespace EncompassRest.Loans
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
         private DirtyValue<string> _wholePocPaidByType;
         public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _gfe2010WholePocIndex.Dirty
                     || _id.Dirty
                     || _lineNumber.Dirty
                     || _wholePoc.Dirty
                     || _wholePocPaidByType.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _gfe2010WholePocIndex.Dirty = value;
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
                 _wholePoc.Dirty = value;
                 _wholePocPaidByType.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

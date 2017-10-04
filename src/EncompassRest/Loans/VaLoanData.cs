@@ -211,7 +211,7 @@ namespace EncompassRest.Loans
         private DirtyValue<string> _militaryBranchOfService;
         public string MilitaryBranchOfService { get { return _militaryBranchOfService; } set { _militaryBranchOfService = value; } }
         private DirtyList<MilitaryService> _militaryServices;
-        public IList<MilitaryService> MilitaryServices { get { var v = _militaryServices; return v ?? Interlocked.CompareExchange(ref _militaryServices, (v = new DirtyList<MilitaryService>()), null) ?? v; } set { _militaryServices = new DirtyList<MilitaryService>(value); } }
+        public IList<MilitaryService> MilitaryServices { get { return _militaryServices ?? (_militaryServices = new DirtyList<MilitaryService>()); } set { _militaryServices = new DirtyList<MilitaryService>(value); } }
         private DirtyValue<string> _mineralRightsReserved;
         public string MineralRightsReserved { get { return _mineralRightsReserved; } set { _mineralRightsReserved = value; } }
         private DirtyValue<string> _nameOfOccupant;
@@ -299,7 +299,7 @@ namespace EncompassRest.Loans
         private DirtyValue<bool?> _previousVALoanIndicator;
         public bool? PreviousVALoanIndicator { get { return _previousVALoanIndicator; } set { _previousVALoanIndicator = value; } }
         private DirtyList<PreviousVaLoan> _previousVaLoans;
-        public IList<PreviousVaLoan> PreviousVaLoans { get { var v = _previousVaLoans; return v ?? Interlocked.CompareExchange(ref _previousVaLoans, (v = new DirtyList<PreviousVaLoan>()), null) ?? v; } set { _previousVaLoans = new DirtyList<PreviousVaLoan>(value); } }
+        public IList<PreviousVaLoan> PreviousVaLoans { get { return _previousVaLoans ?? (_previousVaLoans = new DirtyList<PreviousVaLoan>()); } set { _previousVaLoans = new DirtyList<PreviousVaLoan>(value); } }
         private DirtyValue<bool?> _priorApprovalProcedure;
         public bool? PriorApprovalProcedure { get { return _priorApprovalProcedure; } set { _priorApprovalProcedure = value; } }
         private DirtyValue<string> _priorLoanType;
@@ -504,13 +504,14 @@ namespace EncompassRest.Loans
         public DateTime? WarrantyProgramExpirationDate { get { return _warrantyProgramExpirationDate; } set { _warrantyProgramExpirationDate = value; } }
         private DirtyValue<bool?> _wWCarpetIndicator;
         public bool? WWCarpetIndicator { get { return _wWCarpetIndicator; } set { _wWCarpetIndicator = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _acres.Dirty
                     || _additionalSecurityDescription.Dirty
                     || _administratorAddress.Dirty
@@ -759,12 +760,13 @@ namespace EncompassRest.Loans
                     || _wWCarpetIndicator.Dirty
                     || _militaryServices?.Dirty == true
                     || _previousVaLoans?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _acres.Dirty = value;
                 _additionalSecurityDescription.Dirty = value;
                 _administratorAddress.Dirty = value;
@@ -1013,7 +1015,7 @@ namespace EncompassRest.Loans
                 _wWCarpetIndicator.Dirty = value;
                 if (_militaryServices != null) _militaryServices.Dirty = value;
                 if (_previousVaLoans != null) _previousVaLoans.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

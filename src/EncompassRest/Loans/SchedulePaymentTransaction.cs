@@ -110,13 +110,14 @@ namespace EncompassRest.Loans
         public decimal? UnpaidLateFeeDue { get { return _unpaidLateFeeDue; } set { _unpaidLateFeeDue = value; } }
         private DirtyValue<decimal?> _uSDAMonthlyPremium;
         public decimal? USDAMonthlyPremium { get { return _uSDAMonthlyPremium; } set { _uSDAMonthlyPremium = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _additionalEscrow.Dirty
                     || _additionalPrincipal.Dirty
                     || _buydownSubsidyAmount.Dirty
@@ -168,12 +169,13 @@ namespace EncompassRest.Loans
                     || _transactionDate.Dirty
                     || _unpaidLateFeeDue.Dirty
                     || _uSDAMonthlyPremium.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _additionalEscrow.Dirty = value;
                 _additionalPrincipal.Dirty = value;
                 _buydownSubsidyAmount.Dirty = value;
@@ -225,7 +227,7 @@ namespace EncompassRest.Loans
                 _transactionDate.Dirty = value;
                 _unpaidLateFeeDue.Dirty = value;
                 _uSDAMonthlyPremium.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

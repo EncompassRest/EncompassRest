@@ -28,13 +28,14 @@ namespace EncompassRest.Loans
         public bool? SourceFromOtherIndicator { get { return _sourceFromOtherIndicator; } set { _sourceFromOtherIndicator = value; } }
         private DirtyValue<string> _sourceOtherDetail;
         public string SourceOtherDetail { get { return _sourceOtherDetail; } set { _sourceOtherDetail = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _financingAmount.Dirty
                     || _id.Dirty
                     || _secondaryFinancingProviderType.Dirty
@@ -45,12 +46,13 @@ namespace EncompassRest.Loans
                     || _sourceFromNPIndicator.Dirty
                     || _sourceFromOtherIndicator.Dirty
                     || _sourceOtherDetail.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _financingAmount.Dirty = value;
                 _id.Dirty = value;
                 _secondaryFinancingProviderType.Dirty = value;
@@ -61,7 +63,7 @@ namespace EncompassRest.Loans
                 _sourceFromNPIndicator.Dirty = value;
                 _sourceFromOtherIndicator.Dirty = value;
                 _sourceOtherDetail.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

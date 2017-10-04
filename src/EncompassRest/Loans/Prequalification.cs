@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
         private DirtyValue<decimal?> _percentOfInvestmentInterest;
         public decimal? PercentOfInvestmentInterest { get { return _percentOfInvestmentInterest; } set { _percentOfInvestmentInterest = value; } }
         private DirtyList<PrequalificationScenario> _prequalificationScenarios;
-        public IList<PrequalificationScenario> PrequalificationScenarios { get { var v = _prequalificationScenarios; return v ?? Interlocked.CompareExchange(ref _prequalificationScenarios, (v = new DirtyList<PrequalificationScenario>()), null) ?? v; } set { _prequalificationScenarios = new DirtyList<PrequalificationScenario>(value); } }
+        public IList<PrequalificationScenario> PrequalificationScenarios { get { return _prequalificationScenarios ?? (_prequalificationScenarios = new DirtyList<PrequalificationScenario>()); } set { _prequalificationScenarios = new DirtyList<PrequalificationScenario>(value); } }
         private DirtyValue<string> _qualificationStatus;
         public string QualificationStatus { get { return _qualificationStatus; } set { _qualificationStatus = value; } }
         private DirtyValue<decimal?> _rentalCost;
@@ -130,13 +130,14 @@ namespace EncompassRest.Loans
         public string WithinLimits9 { get { return _withinLimits9; } set { _withinLimits9 = value; } }
         private DirtyValue<int?> _yearsForComparison;
         public int? YearsForComparison { get { return _yearsForComparison; } set { _yearsForComparison = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _afterTaxOwnMoSavings.Dirty
                     || _afterTaxRentMoSavings.Dirty
                     || _annualHomeMaintenance.Dirty
@@ -198,12 +199,13 @@ namespace EncompassRest.Loans
                     || _withinLimits9.Dirty
                     || _yearsForComparison.Dirty
                     || _prequalificationScenarios?.Dirty == true;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _afterTaxOwnMoSavings.Dirty = value;
                 _afterTaxRentMoSavings.Dirty = value;
                 _annualHomeMaintenance.Dirty = value;
@@ -265,7 +267,7 @@ namespace EncompassRest.Loans
                 _withinLimits9.Dirty = value;
                 _yearsForComparison.Dirty = value;
                 if (_prequalificationScenarios != null) _prequalificationScenarios.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

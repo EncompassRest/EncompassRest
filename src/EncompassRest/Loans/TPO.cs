@@ -194,13 +194,14 @@ namespace EncompassRest.Loans
         public bool? WatchListFlag { get { return _watchListFlag; } set { _watchListFlag = value; } }
         private DirtyValue<string> _watchListReason;
         public string WatchListReason { get { return _watchListReason; } set { _watchListReason = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _archived.Dirty
                     || _branchAddress.Dirty
                     || _branchAEName.Dirty
@@ -294,12 +295,13 @@ namespace EncompassRest.Loans
                     || _underwritingDelegated.Dirty
                     || _watchListFlag.Dirty
                     || _watchListReason.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _archived.Dirty = value;
                 _branchAddress.Dirty = value;
                 _branchAEName.Dirty = value;
@@ -393,7 +395,7 @@ namespace EncompassRest.Loans
                 _underwritingDelegated.Dirty = value;
                 _watchListFlag.Dirty = value;
                 _watchListReason.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

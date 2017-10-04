@@ -470,13 +470,14 @@ namespace EncompassRest.Loans
         public string UnderwritingRiskAssessOther { get { return _underwritingRiskAssessOther; } set { _underwritingRiskAssessOther = value; } }
         private DirtyValue<string> _underwritingRiskAssessType;
         public string UnderwritingRiskAssessType { get { return _underwritingRiskAssessType; } set { _underwritingRiskAssessType = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aTRQMBorrowerIndex.Dirty
                     || _aUSRecommendation.Dirty
                     || _aUSVersion.Dirty
@@ -708,12 +709,13 @@ namespace EncompassRest.Loans
                     || _totalMonthlyIncome.Dirty
                     || _underwritingRiskAssessOther.Dirty
                     || _underwritingRiskAssessType.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aTRQMBorrowerIndex.Dirty = value;
                 _aUSRecommendation.Dirty = value;
                 _aUSVersion.Dirty = value;
@@ -945,7 +947,7 @@ namespace EncompassRest.Loans
                 _totalMonthlyIncome.Dirty = value;
                 _underwritingRiskAssessOther.Dirty = value;
                 _underwritingRiskAssessType.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -34,13 +34,14 @@ namespace EncompassRest.Loans
         public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
         private DirtyValue<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _comments.Dirty
                     || _createdById.Dirty
                     || _createdByName.Dirty
@@ -54,12 +55,13 @@ namespace EncompassRest.Loans
                     || _servicingTransactionType.Dirty
                     || _transactionAmount.Dirty
                     || _transactionDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _comments.Dirty = value;
                 _createdById.Dirty = value;
                 _createdByName.Dirty = value;
@@ -73,7 +75,7 @@ namespace EncompassRest.Loans
                 _servicingTransactionType.Dirty = value;
                 _transactionAmount.Dirty = value;
                 _transactionDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
