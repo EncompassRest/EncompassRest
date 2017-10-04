@@ -4,7 +4,8 @@
 * Only publically expose types and methods that clients need access to.
 * Default classes as sealed.
 * Exposed Encompass API's should support both .NET object and raw json methods.
-* Consider making the API similar to the SDK when applicable.
+* Exposed Encompass API's should support a `CancellationToken` in a method overload.
+* Consider making the .NET API similar to the SDK when applicable.
 * Consider thread-safety.
 * Never create public fields.
 
