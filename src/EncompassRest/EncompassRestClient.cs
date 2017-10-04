@@ -40,7 +40,7 @@ namespace EncompassRest
             Preconditions.NotNullOrEmpty(redirectUri, nameof(redirectUri));
             Preconditions.NotNullOrEmpty(authorizationCode, nameof(authorizationCode));
 
-            return CreateFromAuthorizationCodeInternalAsync(clientSecret, clientSecret, redirectUri, authorizationCode, cancellationToken);
+            return CreateFromAuthorizationCodeInternalAsync(clientId, clientSecret, redirectUri, authorizationCode, cancellationToken);
         }
 
         private static async Task<EncompassRestClient> CreateFromAuthorizationCodeInternalAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken)
