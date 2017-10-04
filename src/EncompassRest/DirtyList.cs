@@ -134,6 +134,6 @@ namespace EncompassRest
             throw new NotSupportedException();
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyList<T>)value)._list.Where(item => item.Dirty));
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyList<T>)value)._list.Where(item => item.Dirty).Select(item => (T)item));
     }
 }
