@@ -12,7 +12,7 @@
 ### Naming
 * Namespace naming should follow the Encompass API Paths.
 * Method names should follow the naming in Encompass Developer Connect.
-* Iterface names should begin with I and follow pascal casing after that.
+* Interface names should begin with I and follow pascal casing after that.
 * Type and non-field member names should follow pascal casing.
 * Any `Task` returning methods' names should end with `Async`.
 * Static field names should begin with s_ and follow camel casing after that.
@@ -29,8 +29,8 @@
 * Always prefer expression bodied members when reasonable.
 * Always prefer auto properties when possible.
 * Always use using directives when possible to reduce specifying full type names.
-* Always use using statements to automatically dispose of IDisposable objects.
-* Code should be async throughout, no uses of blocking code such as `Task.Wait` as they can cause deadlocks in consumer code.
+* Always use using statements to automatically dispose of `IDisposable` objects.
+* Code should be async throughout, no uses of blocking code such as `Task.Result` or `Task.Wait` as they can cause deadlocks in consumer code.
 * All uses of the `await` keyword should have a trailing `.ConfigureAwait(false)` applied to the `Task` for better performance.
 * Only apply the `async` keyword to methods when necessary. If you're just return awaiting a `Task` of the same type as the return type from another method then the `async` keyword is unnecessary.
 
