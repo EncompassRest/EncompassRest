@@ -31,8 +31,8 @@ namespace EncompassRest.Tests
                             credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
                         }
                     }
-                    client = await EncompassRestClient.CreateFromUserCredentialsAsync(credentials.ClientId, credentials.ClientSecret, credentials.InstanceId, credentials.UserId, credentials.Password, credentials.TokenExpirationHandling).ConfigureAwait(false);
-                    Console.WriteLine("Read test client credentials file.");
+                    client = await EncompassRestClient.CreateFromUserCredentialsAsync(credentials.ClientId, credentials.ClientSecret, credentials.InstanceId, credentials.UserId, credentials.Password, TokenExpirationHandling.RetrieveNewToken).ConfigureAwait(false);
+                    Console.WriteLine("Using test client credentials file");
                 }
                 else
                 {
@@ -41,7 +41,7 @@ namespace EncompassRest.Tests
                     accessToken.Type = "Type";
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
-                    httpClient.BaseAddress = new Uri("https://try.readme.io/https://api.elliemae.com/");
+                    httpClient.BaseAddress = new Uri("https://try.readme.io/" + httpClient.BaseAddress);
                     var defaultRequestHeaders = httpClient.DefaultRequestHeaders;
                     defaultRequestHeaders.Clear();
                     defaultRequestHeaders.Add("x-api-key", "9JsmcmHyzJuokoWeJJ8HGiRgS5GR8cSKVswz");
@@ -60,7 +60,6 @@ namespace EncompassRest.Tests
             public string InstanceId { get; set; }
             public string UserId { get; set; }
             public string Password { get; set; }
-            public TokenExpirationHandling TokenExpirationHandling { get; set; }
         }
     }
 }
