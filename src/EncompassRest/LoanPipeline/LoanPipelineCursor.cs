@@ -25,16 +25,11 @@ namespace EncompassRest.LoanPipeline
 
         public Task<LoanPipelineData> GetItemAsync(int index) => GetItemAsync(index, CancellationToken.None);
 
-        public Task<LoanPipelineData> GetItemAsync(int index, CancellationToken cancellationToken)
+        public async Task<LoanPipelineData> GetItemAsync(int index, CancellationToken cancellationToken)
         {
             Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
             Preconditions.LessThan(index, nameof(index), Count, nameof(Count));
 
-            return GetItemInternalAsync(index, cancellationToken);
-        }
-
-        private async Task<LoanPipelineData> GetItemInternalAsync(int index, CancellationToken cancellationToken)
-        {
             var data = await GetItemsInternalAsync(index, 1, cancellationToken).ConfigureAwait(false);
             return data[0];
         }
