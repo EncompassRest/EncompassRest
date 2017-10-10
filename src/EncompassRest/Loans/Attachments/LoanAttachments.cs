@@ -89,15 +89,10 @@ namespace EncompassRest.Loans.Attachments
         public Task<string> GetAttachmentUrlAsync(string attachmentId) => GetAttachmentUrlAsync(attachmentId, CancellationToken.None);
 
         //TODO: Add support for view query parameter, does this even make sense?
-        public Task<string> GetAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken)
+        public async Task<string> GetAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            return GetAttachmentUrlInternalAsync(attachmentId, cancellationToken);
-        }
-
-        private async Task<string> GetAttachmentUrlInternalAsync(string attachmentId, CancellationToken cancellationToken)
-        {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}/url", null, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
