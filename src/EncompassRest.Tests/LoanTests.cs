@@ -52,12 +52,10 @@ namespace EncompassRest.Tests
         [TestMethod]
         public async Task Loan_CreateAndDelete()
         {
-            using (var client = GetTestClient())
-            {
-                var loan = new Loan();
-                var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
-                await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false);
-            }
+            var client = await GetTestClientAsync();
+            var loan = new Loan();
+            var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
+            await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false);
         }
     }
 }
