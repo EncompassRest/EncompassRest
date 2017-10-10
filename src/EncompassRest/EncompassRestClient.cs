@@ -28,6 +28,8 @@ namespace EncompassRest
             return client;
         }
 
+        public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode) => CreateFromAuthorizationCodeAsync(clientId, clientSecret, redirectUri, authorizationCode, CancellationToken.None);
+
         public static async Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
