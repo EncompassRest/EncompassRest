@@ -10,7 +10,7 @@ A MAJOR Redesign has been pushed out. The old source code is still available in 
 4. [Use `EncompassRestClient` object](#use-encompassrestclient-object) to make API calls.
 
 ### Create an async method
-EncompassRest is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to write an `async` method. To avoid deadlocks with async code It is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
+EncompassRest is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to write an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
 
 #### Web apps:
 ```c#
