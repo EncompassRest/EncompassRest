@@ -52,7 +52,13 @@ namespace EncompassRest.LoanPipeline
             do
             {
                 var retrievedCount = data?.Count ?? 0;
-                var retrievedData = await Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, Fields, start + retrievedCount, count - retrievedCount, cancellationToken, nameof(GetItemAsync), async response =>
+
+                var queryParameters = new QueryParameters(
+                    new QueryParameter("cursor", CursorId),
+                    new QueryParameter("start", (start + retrievedCount).ToString()),
+                    new QueryParameter("limit", (count - retrievedCount).ToString()));
+
+                var retrievedData = await Client.Pipeline.ViewPipelineInternalAsync(JsonStreamContent.Create(new { Fields }), queryParameters.ToString(), cancellationToken, nameof(GetItemsAsync), async response =>
                 {
                     var list = await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
                     if (list.Count == 0)
@@ -71,21 +77,6 @@ namespace EncompassRest.LoanPipeline
                 }
             } while (data.Count < count);
             return data;
-        }
-
-        public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, CancellationToken.None);
-
-        public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken)
-        {
-            Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
-            Preconditions.LessThan(start, nameof(start), Count, nameof(Count));
-            if (limit.HasValue)
-            {
-                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
-                Preconditions.LessThanOrEquals(start + limit.GetValueOrDefault(), $"{nameof(start)} + {nameof(limit)}", Count, nameof(Count));
-            }
-
-            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, Fields, start, limit, cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
         }
     }
 }

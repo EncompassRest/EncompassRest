@@ -46,7 +46,11 @@ namespace EncompassRest.LoanPipeline
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return ViewPipelineCursorInternalAsync(null, parameters, null, null, 1, cancellationToken, nameof(CreateCursorAsync), async response =>
+            var queryParameters = new QueryParameters(
+                new QueryParameter("limit", "1"),
+                new QueryParameter("cursorType", "randomAccess"));
+
+            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(CreateCursorAsync), async response =>
             {
                 var headers = response.Headers;
                 IEnumerable<string> counts;
@@ -76,41 +80,6 @@ namespace EncompassRest.LoanPipeline
             });
         }
 
-        internal async Task<T> ViewPipelineCursorInternalAsync<T>(string cursorId, PipelineParameters parameters, IEnumerable<string> fields, int? start, int? limit, CancellationToken cancellationToken, string methodName, Func<HttpResponseMessage, Task<T>> func)
-        {
-            var queryParameters = new QueryParameters();
-
-            if (start.HasValue)
-            {
-                queryParameters.Add("start", start.GetValueOrDefault().ToString());
-            }
-            if (limit.HasValue)
-            {
-                queryParameters.Add("limit", limit.ToString());
-            }
-            JsonStreamContent content;
-            if (string.IsNullOrEmpty(cursorId))
-            {
-                queryParameters.Add("cursorType", "randomAccess");
-                content = JsonStreamContent.Create(parameters);
-            }
-            else
-            {
-                queryParameters.Add("cursor", cursorId);
-                content = JsonStreamContent.Create(new { Fields = fields });
-            }
-
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await RestException.CreateAsync(methodName, response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
-            }
-        }
-
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters) => ViewPipelineAsync(parameters, null, CancellationToken.None);
 
         public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken) => ViewPipelineAsync(parameters, null, cancellationToken);
@@ -125,39 +94,30 @@ namespace EncompassRest.LoanPipeline
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
             }
 
-            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), limit, cancellationToken, response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
-        }
-
-        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, null, CancellationToken.None);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, null, cancellationToken);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit) => ViewPipelineRawAsync(parameters, limit, CancellationToken.None);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken)
-        {
-            Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
-            if (limit.HasValue)
-            {
-                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
-            }
-
-            return ViewPipelineInternalAsync(new JsonStringContent(parameters), limit, cancellationToken, response => response.Content.ReadAsStringAsync());
-        }
-
-        private async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, int? limit, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
             var queryParameters = new QueryParameters();
             if (limit.HasValue)
             {
                 queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
             }
 
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(ViewPipelineAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+        }
+
+        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, null, CancellationToken.None);
+
+        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, null, cancellationToken);
+
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString) => ViewPipelineRawAsync(parameters, queryString, CancellationToken.None);
+
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => ViewPipelineInternalAsync(new JsonStringContent(parameters), queryString, cancellationToken, nameof(ViewPipelineRawAsync), response => response.Content.ReadAsStringAsync());
+
+        internal async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, string queryString, CancellationToken cancellationToken, string methodName, Func<HttpResponseMessage, Task<T>> func)
+        {
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(ViewPipelineAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(methodName, response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
