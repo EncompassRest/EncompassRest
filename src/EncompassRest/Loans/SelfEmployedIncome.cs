@@ -8,29 +8,30 @@ namespace EncompassRest.Loans
 {
     public sealed partial class SelfEmployedIncome : IDirty
     {
-        private Value<bool?> _boolFieldValue;
+        private DirtyValue<bool?> _boolFieldValue;
         public bool? BoolFieldValue { get { return _boolFieldValue; } set { _boolFieldValue = value; } }
-        private Value<string> _businessName;
+        private DirtyValue<string> _businessName;
         public string BusinessName { get { return _businessName; } set { _businessName = value; } }
-        private Value<string> _fieldName;
+        private DirtyValue<string> _fieldName;
         public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
-        private Value<decimal?> _fieldValue;
+        private DirtyValue<decimal?> _fieldValue;
         public decimal? FieldValue { get { return _fieldValue; } set { _fieldValue = value; } }
-        private Value<decimal?> _firstYearAmount;
+        private DirtyValue<decimal?> _firstYearAmount;
         public decimal? FirstYearAmount { get { return _firstYearAmount; } set { _firstYearAmount = value; } }
-        private Value<string> _formType;
+        private DirtyValue<string> _formType;
         public string FormType { get { return _formType; } set { _formType = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _secondYearAmount;
+        private DirtyValue<decimal?> _secondYearAmount;
         public decimal? SecondYearAmount { get { return _secondYearAmount; } set { _secondYearAmount = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _boolFieldValue.Dirty
                     || _businessName.Dirty
                     || _fieldName.Dirty
@@ -39,12 +40,13 @@ namespace EncompassRest.Loans
                     || _formType.Dirty
                     || _id.Dirty
                     || _secondYearAmount.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _boolFieldValue.Dirty = value;
                 _businessName.Dirty = value;
                 _fieldName.Dirty = value;
@@ -53,7 +55,7 @@ namespace EncompassRest.Loans
                 _formType.Dirty = value;
                 _id.Dirty = value;
                 _secondYearAmount.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

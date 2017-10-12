@@ -8,36 +8,38 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LogSnapshotField : IDirty
     {
-        private Value<string> _fieldID;
+        private DirtyValue<string> _fieldID;
         public string FieldID { get { return _fieldID; } set { _fieldID = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _modalPath;
+        private DirtyValue<string> _modalPath;
         public string ModalPath { get { return _modalPath; } set { _modalPath = value; } }
-        private Value<string> _value;
+        private DirtyValue<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _fieldID.Dirty
                     || _id.Dirty
                     || _modalPath.Dirty
                     || _value.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _fieldID.Dirty = value;
                 _id.Dirty = value;
                 _modalPath.Dirty = value;
                 _value.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

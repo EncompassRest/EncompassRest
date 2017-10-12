@@ -8,27 +8,28 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Income : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<bool?> _currentIndicator;
+        private DirtyValue<bool?> _currentIndicator;
         public bool? CurrentIndicator { get { return _currentIndicator; } set { _currentIndicator = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _incomeType;
+        private DirtyValue<string> _incomeType;
         public string IncomeType { get { return _incomeType; } set { _incomeType = value; } }
-        private Value<int?> _otherIncomeIndex;
+        private DirtyValue<int?> _otherIncomeIndex;
         public int? OtherIncomeIndex { get { return _otherIncomeIndex; } set { _otherIncomeIndex = value; } }
-        private Value<string> _owner;
+        private DirtyValue<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amount.Dirty
                     || _currentIndicator.Dirty
                     || _description.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _incomeType.Dirty
                     || _otherIncomeIndex.Dirty
                     || _owner.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amount.Dirty = value;
                 _currentIndicator.Dirty = value;
                 _description.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _incomeType.Dirty = value;
                 _otherIncomeIndex.Dirty = value;
                 _owner.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

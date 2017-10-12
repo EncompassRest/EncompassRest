@@ -8,127 +8,128 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Liability : IDirty
     {
-        private Value<string> _accountIdentifier;
+        private DirtyValue<string> _accountIdentifier;
         public string AccountIdentifier { get { return _accountIdentifier; } set { _accountIdentifier = value; } }
-        private Value<bool?> _accountIndicator;
+        private DirtyValue<bool?> _accountIndicator;
         public bool? AccountIndicator { get { return _accountIndicator; } set { _accountIndicator = value; } }
-        private Value<string> _attention;
+        private DirtyValue<string> _attention;
         public string Attention { get { return _attention; } set { _attention = value; } }
-        private Value<DateTime?> _date;
+        private DirtyValue<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _descriptionOfPurpose;
+        private DirtyValue<string> _descriptionOfPurpose;
         public string DescriptionOfPurpose { get { return _descriptionOfPurpose; } set { _descriptionOfPurpose = value; } }
-        private Value<bool?> _entityDeleted;
+        private DirtyValue<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        private Value<bool?> _exclusionIndicator;
+        private DirtyValue<bool?> _exclusionIndicator;
         public bool? ExclusionIndicator { get { return _exclusionIndicator; } set { _exclusionIndicator = value; } }
-        private Value<string> _holderAddressCity;
+        private DirtyValue<string> _holderAddressCity;
         public string HolderAddressCity { get { return _holderAddressCity; } set { _holderAddressCity = value; } }
-        private Value<string> _holderAddressPostalCode;
+        private DirtyValue<string> _holderAddressPostalCode;
         public string HolderAddressPostalCode { get { return _holderAddressPostalCode; } set { _holderAddressPostalCode = value; } }
-        private Value<string> _holderAddressState;
+        private DirtyValue<string> _holderAddressState;
         public string HolderAddressState { get { return _holderAddressState; } set { _holderAddressState = value; } }
-        private Value<string> _holderAddressStreetLine1;
+        private DirtyValue<string> _holderAddressStreetLine1;
         public string HolderAddressStreetLine1 { get { return _holderAddressStreetLine1; } set { _holderAddressStreetLine1 = value; } }
-        private Value<string> _holderComments;
+        private DirtyValue<string> _holderComments;
         public string HolderComments { get { return _holderComments; } set { _holderComments = value; } }
-        private Value<string> _holderEmail;
+        private DirtyValue<string> _holderEmail;
         public string HolderEmail { get { return _holderEmail; } set { _holderEmail = value; } }
-        private Value<string> _holderFax;
+        private DirtyValue<string> _holderFax;
         public string HolderFax { get { return _holderFax; } set { _holderFax = value; } }
-        private Value<string> _holderName;
+        private DirtyValue<string> _holderName;
         public string HolderName { get { return _holderName; } set { _holderName = value; } }
-        private Value<string> _holderPhone;
+        private DirtyValue<string> _holderPhone;
         public string HolderPhone { get { return _holderPhone; } set { _holderPhone = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isDebtNotSecuredToSubjectPropertyIndicator;
+        private DirtyValue<bool?> _isDebtNotSecuredToSubjectPropertyIndicator;
         public bool? IsDebtNotSecuredToSubjectPropertyIndicator { get { return _isDebtNotSecuredToSubjectPropertyIndicator; } set { _isDebtNotSecuredToSubjectPropertyIndicator = value; } }
-        private Value<int?> _lates12Month120Day;
+        private DirtyValue<int?> _lates12Month120Day;
         public int? Lates12Month120Day { get { return _lates12Month120Day; } set { _lates12Month120Day = value; } }
-        private Value<int?> _lates12Month150Day;
+        private DirtyValue<int?> _lates12Month150Day;
         public int? Lates12Month150Day { get { return _lates12Month150Day; } set { _lates12Month150Day = value; } }
-        private Value<int?> _lates12Month30Day;
+        private DirtyValue<int?> _lates12Month30Day;
         public int? Lates12Month30Day { get { return _lates12Month30Day; } set { _lates12Month30Day = value; } }
-        private Value<int?> _lates12Month60Day;
+        private DirtyValue<int?> _lates12Month60Day;
         public int? Lates12Month60Day { get { return _lates12Month60Day; } set { _lates12Month60Day = value; } }
-        private Value<int?> _lates12Month90Day;
+        private DirtyValue<int?> _lates12Month90Day;
         public int? Lates12Month90Day { get { return _lates12Month90Day; } set { _lates12Month90Day = value; } }
-        private Value<int?> _lates24Month120Day;
+        private DirtyValue<int?> _lates24Month120Day;
         public int? Lates24Month120Day { get { return _lates24Month120Day; } set { _lates24Month120Day = value; } }
-        private Value<int?> _lates24Month150Day;
+        private DirtyValue<int?> _lates24Month150Day;
         public int? Lates24Month150Day { get { return _lates24Month150Day; } set { _lates24Month150Day = value; } }
-        private Value<int?> _lates24Month30Day;
+        private DirtyValue<int?> _lates24Month30Day;
         public int? Lates24Month30Day { get { return _lates24Month30Day; } set { _lates24Month30Day = value; } }
-        private Value<int?> _lates24Month60Day;
+        private DirtyValue<int?> _lates24Month60Day;
         public int? Lates24Month60Day { get { return _lates24Month60Day; } set { _lates24Month60Day = value; } }
-        private Value<int?> _lates24Month90Day;
+        private DirtyValue<int?> _lates24Month90Day;
         public int? Lates24Month90Day { get { return _lates24Month90Day; } set { _lates24Month90Day = value; } }
-        private Value<int?> _lates25Month120Day;
+        private DirtyValue<int?> _lates25Month120Day;
         public int? Lates25Month120Day { get { return _lates25Month120Day; } set { _lates25Month120Day = value; } }
-        private Value<int?> _lates25Month150Day;
+        private DirtyValue<int?> _lates25Month150Day;
         public int? Lates25Month150Day { get { return _lates25Month150Day; } set { _lates25Month150Day = value; } }
-        private Value<int?> _lates25Month30Day;
+        private DirtyValue<int?> _lates25Month30Day;
         public int? Lates25Month30Day { get { return _lates25Month30Day; } set { _lates25Month30Day = value; } }
-        private Value<int?> _lates25Month60Day;
+        private DirtyValue<int?> _lates25Month60Day;
         public int? Lates25Month60Day { get { return _lates25Month60Day; } set { _lates25Month60Day = value; } }
-        private Value<int?> _lates25Month90Day;
+        private DirtyValue<int?> _lates25Month90Day;
         public int? Lates25Month90Day { get { return _lates25Month90Day; } set { _lates25Month90Day = value; } }
-        private Value<int?> _liabilityIndex;
+        private DirtyValue<int?> _liabilityIndex;
         public int? LiabilityIndex { get { return _liabilityIndex; } set { _liabilityIndex = value; } }
-        private Value<string> _liabilityType;
+        private DirtyValue<string> _liabilityType;
         public string LiabilityType { get { return _liabilityType; } set { _liabilityType = value; } }
-        private Value<decimal?> _monthlyPaymentAmount;
+        private DirtyValue<decimal?> _monthlyPaymentAmount;
         public decimal? MonthlyPaymentAmount { get { return _monthlyPaymentAmount; } set { _monthlyPaymentAmount = value; } }
-        private Value<int?> _monthsToExclude;
+        private DirtyValue<int?> _monthsToExclude;
         public int? MonthsToExclude { get { return _monthsToExclude; } set { _monthsToExclude = value; } }
-        private Value<string> _nameInAccount;
+        private DirtyValue<string> _nameInAccount;
         public string NameInAccount { get { return _nameInAccount; } set { _nameInAccount = value; } }
-        private Value<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        private Value<string> _owner;
+        private DirtyValue<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        private Value<bool?> _payoffIncludedIndicator;
+        private DirtyValue<bool?> _payoffIncludedIndicator;
         public bool? PayoffIncludedIndicator { get { return _payoffIncludedIndicator; } set { _payoffIncludedIndicator = value; } }
-        private Value<bool?> _payoffStatusIndicator;
+        private DirtyValue<bool?> _payoffStatusIndicator;
         public bool? PayoffStatusIndicator { get { return _payoffStatusIndicator; } set { _payoffStatusIndicator = value; } }
-        private Value<decimal?> _prepaymentPenaltyAmount;
+        private DirtyValue<decimal?> _prepaymentPenaltyAmount;
         public decimal? PrepaymentPenaltyAmount { get { return _prepaymentPenaltyAmount; } set { _prepaymentPenaltyAmount = value; } }
-        private Value<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
-        private Value<bool?> _printUserNameIndicator;
+        private DirtyValue<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        private Value<int?> _remainingTermMonths;
+        private DirtyValue<int?> _remainingTermMonths;
         public int? RemainingTermMonths { get { return _remainingTermMonths; } set { _remainingTermMonths = value; } }
-        private Value<string> _reoId;
+        private DirtyValue<string> _reoId;
         public string ReoId { get { return _reoId; } set { _reoId = value; } }
-        private Value<string> _requestId;
+        private DirtyValue<string> _requestId;
         public string RequestId { get { return _requestId; } set { _requestId = value; } }
-        private Value<bool?> _subjectLoanResubordinationIndicator;
+        private DirtyValue<bool?> _subjectLoanResubordinationIndicator;
         public bool? SubjectLoanResubordinationIndicator { get { return _subjectLoanResubordinationIndicator; } set { _subjectLoanResubordinationIndicator = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private Value<string> _titleFax;
+        private DirtyValue<string> _titleFax;
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
-        private Value<string> _titlePhone;
+        private DirtyValue<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private Value<decimal?> _toBePaidOffAmount;
+        private DirtyValue<decimal?> _toBePaidOffAmount;
         public decimal? ToBePaidOffAmount { get { return _toBePaidOffAmount; } set { _toBePaidOffAmount = value; } }
-        private Value<string> _uCDPayoffType;
+        private DirtyValue<string> _uCDPayoffType;
         public string UCDPayoffType { get { return _uCDPayoffType; } set { _uCDPayoffType = value; } }
-        private Value<decimal?> _unpaidBalanceAmount;
+        private DirtyValue<decimal?> _unpaidBalanceAmount;
         public decimal? UnpaidBalanceAmount { get { return _unpaidBalanceAmount; } set { _unpaidBalanceAmount = value; } }
-        private Value<int?> _volIndex;
+        private DirtyValue<int?> _volIndex;
         public int? VolIndex { get { return _volIndex; } set { _volIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _accountIdentifier.Dirty
                     || _accountIndicator.Dirty
                     || _attention.Dirty
@@ -186,12 +187,13 @@ namespace EncompassRest.Loans
                     || _uCDPayoffType.Dirty
                     || _unpaidBalanceAmount.Dirty
                     || _volIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _accountIdentifier.Dirty = value;
                 _accountIndicator.Dirty = value;
                 _attention.Dirty = value;
@@ -249,7 +251,7 @@ namespace EncompassRest.Loans
                 _uCDPayoffType.Dirty = value;
                 _unpaidBalanceAmount.Dirty = value;
                 _volIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

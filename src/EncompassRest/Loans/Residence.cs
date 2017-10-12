@@ -8,79 +8,80 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Residence : IDirty
     {
-        private Value<string> _accountName;
+        private DirtyValue<string> _accountName;
         public string AccountName { get { return _accountName; } set { _accountName = value; } }
-        private Value<string> _addressCity;
+        private DirtyValue<string> _addressCity;
         public string AddressCity { get { return _addressCity; } set { _addressCity = value; } }
-        private Value<string> _addressPostalCode;
+        private DirtyValue<string> _addressPostalCode;
         public string AddressPostalCode { get { return _addressPostalCode; } set { _addressPostalCode = value; } }
-        private Value<string> _addressState;
+        private DirtyValue<string> _addressState;
         public string AddressState { get { return _addressState; } set { _addressState = value; } }
-        private Value<string> _addressStreetLine1;
+        private DirtyValue<string> _addressStreetLine1;
         public string AddressStreetLine1 { get { return _addressStreetLine1; } set { _addressStreetLine1 = value; } }
-        private Value<string> _altId;
+        private DirtyValue<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
-        private Value<string> _applicantType;
+        private DirtyValue<string> _applicantType;
         public string ApplicantType { get { return _applicantType; } set { _applicantType = value; } }
-        private Value<string> _county;
+        private DirtyValue<string> _county;
         public string County { get { return _county; } set { _county = value; } }
-        private Value<int?> _durationTermMonths;
+        private DirtyValue<int?> _durationTermMonths;
         public int? DurationTermMonths { get { return _durationTermMonths; } set { _durationTermMonths = value; } }
-        private Value<int?> _durationTermYears;
+        private DirtyValue<int?> _durationTermYears;
         public int? DurationTermYears { get { return _durationTermYears; } set { _durationTermYears = value; } }
-        private Value<bool?> _entityDeleted;
+        private DirtyValue<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _landlordAttention;
+        private DirtyValue<string> _landlordAttention;
         public string LandlordAttention { get { return _landlordAttention; } set { _landlordAttention = value; } }
-        private Value<string> _landlordCity;
+        private DirtyValue<string> _landlordCity;
         public string LandlordCity { get { return _landlordCity; } set { _landlordCity = value; } }
-        private Value<string> _landlordComments;
+        private DirtyValue<string> _landlordComments;
         public string LandlordComments { get { return _landlordComments; } set { _landlordComments = value; } }
-        private Value<string> _landlordEmail;
+        private DirtyValue<string> _landlordEmail;
         public string LandlordEmail { get { return _landlordEmail; } set { _landlordEmail = value; } }
-        private Value<string> _landlordFax;
+        private DirtyValue<string> _landlordFax;
         public string LandlordFax { get { return _landlordFax; } set { _landlordFax = value; } }
-        private Value<string> _landlordName;
+        private DirtyValue<string> _landlordName;
         public string LandlordName { get { return _landlordName; } set { _landlordName = value; } }
-        private Value<string> _landlordPhone;
+        private DirtyValue<string> _landlordPhone;
         public string LandlordPhone { get { return _landlordPhone; } set { _landlordPhone = value; } }
-        private Value<string> _landlordPostalCode;
+        private DirtyValue<string> _landlordPostalCode;
         public string LandlordPostalCode { get { return _landlordPostalCode; } set { _landlordPostalCode = value; } }
-        private Value<string> _landlordState;
+        private DirtyValue<string> _landlordState;
         public string LandlordState { get { return _landlordState; } set { _landlordState = value; } }
-        private Value<string> _landlordStreet;
+        private DirtyValue<string> _landlordStreet;
         public string LandlordStreet { get { return _landlordStreet; } set { _landlordStreet = value; } }
-        private Value<bool?> _mailingAddressIndicator;
+        private DirtyValue<bool?> _mailingAddressIndicator;
         public bool? MailingAddressIndicator { get { return _mailingAddressIndicator; } set { _mailingAddressIndicator = value; } }
-        private Value<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        private Value<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
-        private Value<bool?> _printUserNameIndicator;
+        private DirtyValue<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        private Value<int?> _rent;
+        private DirtyValue<int?> _rent;
         public int? Rent { get { return _rent; } set { _rent = value; } }
-        private Value<DateTime?> _requestDate;
+        private DirtyValue<DateTime?> _requestDate;
         public DateTime? RequestDate { get { return _requestDate; } set { _requestDate = value; } }
-        private Value<string> _residencyBasisType;
+        private DirtyValue<string> _residencyBasisType;
         public string ResidencyBasisType { get { return _residencyBasisType; } set { _residencyBasisType = value; } }
-        private Value<string> _residencyType;
+        private DirtyValue<string> _residencyType;
         public string ResidencyType { get { return _residencyType; } set { _residencyType = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private Value<string> _titleFax;
+        private DirtyValue<string> _titleFax;
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
-        private Value<string> _titlePhone;
+        private DirtyValue<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _accountName.Dirty
                     || _addressCity.Dirty
                     || _addressPostalCode.Dirty
@@ -114,12 +115,13 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _titleFax.Dirty
                     || _titlePhone.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _accountName.Dirty = value;
                 _addressCity.Dirty = value;
                 _addressPostalCode.Dirty = value;
@@ -153,7 +155,7 @@ namespace EncompassRest.Loans
                 _title.Dirty = value;
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

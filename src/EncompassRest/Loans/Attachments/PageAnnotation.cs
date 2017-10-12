@@ -1,33 +1,33 @@
 ﻿using System;
-using System.Threading;
 
 namespace EncompassRest.Loans.Attachments
 {
     public sealed class PageAnnotation : IDirty
     {
-        private Value<DateTime?> _dateCreated;
+        private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get { return _dateCreated; } set { _dateCreated = value; } }
-        private Value<string> _createdBy;
+        private DirtyValue<string> _createdBy;
         public string CreatedBy { get { return _createdBy; } set { _createdBy = value; } }
-        private Value<string> _text;
+        private DirtyValue<string> _text;
         public string Text { get { return _text; } set { _text = value; } }
-        private Value<int?> _left;
+        private DirtyValue<int?> _left;
         public int? Left { get { return _left; } set { _left = value; } }
-        private Value<int?> _top;
+        private DirtyValue<int?> _top;
         public int? Top { get { return _top; } set { _top = value; } }
-        private Value<int?> _width;
+        private DirtyValue<int?> _width;
         public int? Width { get { return _width; } set { _width = value; } }
-        private Value<int?> _height;
+        private DirtyValue<int?> _height;
         public int? Height { get { return _height; } set { _height = value; } }
-        private Value<AnnotationVisibilityType?> _visibilityType;
+        private DirtyValue<AnnotationVisibilityType?> _visibilityType;
         public AnnotationVisibilityType? VisibilityType { get { return _visibilityType; } set { _visibilityType = value; } }
-        private int _gettingDirty;
-        private int _settingDirty;
+        private bool _gettingDirty;
+        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _dateCreated.Dirty
                     || _createdBy.Dirty
                     || _text.Dirty
@@ -36,12 +36,13 @@ namespace EncompassRest.Loans.Attachments
                     || _width.Dirty
                     || _height.Dirty
                     || _visibilityType.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _dateCreated.Dirty = value;
                 _createdBy.Dirty = value;
                 _text.Dirty = value;
@@ -50,7 +51,7 @@ namespace EncompassRest.Loans.Attachments
                 _width.Dirty = value;
                 _height.Dirty = value;
                 _visibilityType.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

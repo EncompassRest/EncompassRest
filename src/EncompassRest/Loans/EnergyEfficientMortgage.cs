@@ -8,75 +8,76 @@ namespace EncompassRest.Loans
 {
     public sealed partial class EnergyEfficientMortgage : IDirty
     {
-        private Value<decimal?> _appraisedValue;
+        private DirtyValue<decimal?> _appraisedValue;
         public decimal? AppraisedValue { get { return _appraisedValue; } set { _appraisedValue = value; } }
-        private Value<decimal?> _auditCost;
+        private DirtyValue<decimal?> _auditCost;
         public decimal? AuditCost { get { return _auditCost; } set { _auditCost = value; } }
-        private Value<decimal?> _backRatio;
+        private DirtyValue<decimal?> _backRatio;
         public decimal? BackRatio { get { return _backRatio; } set { _backRatio = value; } }
-        private Value<decimal?> _baseLoanAmtFromTsum;
+        private DirtyValue<decimal?> _baseLoanAmtFromTsum;
         public decimal? BaseLoanAmtFromTsum { get { return _baseLoanAmtFromTsum; } set { _baseLoanAmtFromTsum = value; } }
-        private Value<decimal?> _costEffectiveEnergyPackage;
+        private DirtyValue<decimal?> _costEffectiveEnergyPackage;
         public decimal? CostEffectiveEnergyPackage { get { return _costEffectiveEnergyPackage; } set { _costEffectiveEnergyPackage = value; } }
-        private Value<decimal?> _eeCostMaximumAmount;
+        private DirtyValue<decimal?> _eeCostMaximumAmount;
         public decimal? EeCostMaximumAmount { get { return _eeCostMaximumAmount; } set { _eeCostMaximumAmount = value; } }
-        private Value<decimal?> _eeImprovementsInstalledCost;
+        private DirtyValue<decimal?> _eeImprovementsInstalledCost;
         public decimal? EeImprovementsInstalledCost { get { return _eeImprovementsInstalledCost; } set { _eeImprovementsInstalledCost = value; } }
-        private Value<decimal?> _energyCost;
+        private DirtyValue<decimal?> _energyCost;
         public decimal? EnergyCost { get { return _energyCost; } set { _energyCost = value; } }
-        private Value<decimal?> _energySavings;
+        private DirtyValue<decimal?> _energySavings;
         public decimal? EnergySavings { get { return _energySavings; } set { _energySavings = value; } }
-        private Value<decimal?> _hoa;
+        private DirtyValue<decimal?> _hoa;
         public decimal? Hoa { get { return _hoa; } set { _hoa = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _improvementCostExceed2000;
+        private DirtyValue<decimal?> _improvementCostExceed2000;
         public decimal? ImprovementCostExceed2000 { get { return _improvementCostExceed2000; } set { _improvementCostExceed2000 = value; } }
-        private Value<decimal?> _inspectionCost;
+        private DirtyValue<decimal?> _inspectionCost;
         public decimal? InspectionCost { get { return _inspectionCost; } set { _inspectionCost = value; } }
-        private Value<decimal?> _lesserC1ORC2;
+        private DirtyValue<decimal?> _lesserC1ORC2;
         public decimal? LesserC1ORC2 { get { return _lesserC1ORC2; } set { _lesserC1ORC2 = value; } }
-        private Value<decimal?> _monthlyHousingPayment;
+        private DirtyValue<decimal?> _monthlyHousingPayment;
         public decimal? MonthlyHousingPayment { get { return _monthlyHousingPayment; } set { _monthlyHousingPayment = value; } }
-        private Value<decimal?> _monthlyMI;
+        private DirtyValue<decimal?> _monthlyMI;
         public decimal? MonthlyMI { get { return _monthlyMI; } set { _monthlyMI = value; } }
-        private Value<decimal?> _mortgageAmountUsedForQualifyingRate;
+        private DirtyValue<decimal?> _mortgageAmountUsedForQualifyingRate;
         public decimal? MortgageAmountUsedForQualifyingRate { get { return _mortgageAmountUsedForQualifyingRate; } set { _mortgageAmountUsedForQualifyingRate = value; } }
-        private Value<decimal?> _mortgageAmountUsedForQualifyingRateD1;
+        private DirtyValue<decimal?> _mortgageAmountUsedForQualifyingRateD1;
         public decimal? MortgageAmountUsedForQualifyingRateD1 { get { return _mortgageAmountUsedForQualifyingRateD1; } set { _mortgageAmountUsedForQualifyingRateD1 = value; } }
-        private Value<bool?> _newOrExisting;
+        private DirtyValue<bool?> _newOrExisting;
         public bool? NewOrExisting { get { return _newOrExisting; } set { _newOrExisting = value; } }
-        private Value<decimal?> _originalSalesPriceIfLess12Months;
+        private DirtyValue<decimal?> _originalSalesPriceIfLess12Months;
         public decimal? OriginalSalesPriceIfLess12Months { get { return _originalSalesPriceIfLess12Months; } set { _originalSalesPriceIfLess12Months = value; } }
-        private Value<decimal?> _otherHousingPayment;
+        private DirtyValue<decimal?> _otherHousingPayment;
         public decimal? OtherHousingPayment { get { return _otherHousingPayment; } set { _otherHousingPayment = value; } }
-        private Value<decimal?> _solarNotIncluded;
+        private DirtyValue<decimal?> _solarNotIncluded;
         public decimal? SolarNotIncluded { get { return _solarNotIncluded; } set { _solarNotIncluded = value; } }
-        private Value<decimal?> _solarSystemCostAllowance;
+        private DirtyValue<decimal?> _solarSystemCostAllowance;
         public decimal? SolarSystemCostAllowance { get { return _solarSystemCostAllowance; } set { _solarSystemCostAllowance = value; } }
-        private Value<decimal?> _totalActualAmount;
+        private DirtyValue<decimal?> _totalActualAmount;
         public decimal? TotalActualAmount { get { return _totalActualAmount; } set { _totalActualAmount = value; } }
-        private Value<decimal?> _totalAllowedAmount;
+        private DirtyValue<decimal?> _totalAllowedAmount;
         public decimal? TotalAllowedAmount { get { return _totalAllowedAmount; } set { _totalAllowedAmount = value; } }
-        private Value<decimal?> _totalBaseEemLoanAmount;
+        private DirtyValue<decimal?> _totalBaseEemLoanAmount;
         public decimal? TotalBaseEemLoanAmount { get { return _totalBaseEemLoanAmount; } set { _totalBaseEemLoanAmount = value; } }
-        private Value<decimal?> _totalCombinedLoanAmount;
+        private DirtyValue<decimal?> _totalCombinedLoanAmount;
         public decimal? TotalCombinedLoanAmount { get { return _totalCombinedLoanAmount; } set { _totalCombinedLoanAmount = value; } }
-        private Value<decimal?> _totalMonthlyHousingPayment;
+        private DirtyValue<decimal?> _totalMonthlyHousingPayment;
         public decimal? TotalMonthlyHousingPayment { get { return _totalMonthlyHousingPayment; } set { _totalMonthlyHousingPayment = value; } }
-        private Value<decimal?> _totalMonthlyObligations;
+        private DirtyValue<decimal?> _totalMonthlyObligations;
         public decimal? TotalMonthlyObligations { get { return _totalMonthlyObligations; } set { _totalMonthlyObligations = value; } }
-        private Value<decimal?> _ufmipBasedOn;
+        private DirtyValue<decimal?> _ufmipBasedOn;
         public decimal? UfmipBasedOn { get { return _ufmipBasedOn; } set { _ufmipBasedOn = value; } }
-        private Value<decimal?> _ufmipFactor;
+        private DirtyValue<decimal?> _ufmipFactor;
         public decimal? UfmipFactor { get { return _ufmipFactor; } set { _ufmipFactor = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _appraisedValue.Dirty
                     || _auditCost.Dirty
                     || _backRatio.Dirty
@@ -108,12 +109,13 @@ namespace EncompassRest.Loans
                     || _totalMonthlyObligations.Dirty
                     || _ufmipBasedOn.Dirty
                     || _ufmipFactor.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _appraisedValue.Dirty = value;
                 _auditCost.Dirty = value;
                 _backRatio.Dirty = value;
@@ -145,7 +147,7 @@ namespace EncompassRest.Loans
                 _totalMonthlyObligations.Dirty = value;
                 _ufmipBasedOn.Dirty = value;
                 _ufmipFactor.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

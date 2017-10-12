@@ -8,31 +8,32 @@ namespace EncompassRest.Loans
 {
     public sealed partial class MilitaryService : IDirty
     {
-        private Value<string> _branch;
+        private DirtyValue<string> _branch;
         public string Branch { get { return _branch; } set { _branch = value; } }
-        private Value<DateTime?> _endDate;
+        private DirtyValue<DateTime?> _endDate;
         public DateTime? EndDate { get { return _endDate; } set { _endDate = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<int?> _militaryServiceIndex;
+        private DirtyValue<int?> _militaryServiceIndex;
         public int? MilitaryServiceIndex { get { return _militaryServiceIndex; } set { _militaryServiceIndex = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _officerOrEnlisted;
+        private DirtyValue<string> _officerOrEnlisted;
         public string OfficerOrEnlisted { get { return _officerOrEnlisted; } set { _officerOrEnlisted = value; } }
-        private Value<string> _serviceNumber;
+        private DirtyValue<string> _serviceNumber;
         public string ServiceNumber { get { return _serviceNumber; } set { _serviceNumber = value; } }
-        private Value<string> _sSN;
+        private DirtyValue<string> _sSN;
         public string SSN { get { return _sSN; } set { _sSN = value; } }
-        private Value<DateTime?> _startDate;
+        private DirtyValue<DateTime?> _startDate;
         public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _branch.Dirty
                     || _endDate.Dirty
                     || _id.Dirty
@@ -42,12 +43,13 @@ namespace EncompassRest.Loans
                     || _serviceNumber.Dirty
                     || _sSN.Dirty
                     || _startDate.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _branch.Dirty = value;
                 _endDate.Dirty = value;
                 _id.Dirty = value;
@@ -57,7 +59,7 @@ namespace EncompassRest.Loans
                 _serviceNumber.Dirty = value;
                 _sSN.Dirty = value;
                 _startDate.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

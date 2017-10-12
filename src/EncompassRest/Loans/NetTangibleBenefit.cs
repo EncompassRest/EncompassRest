@@ -8,149 +8,150 @@ namespace EncompassRest.Loans
 {
     public sealed partial class NetTangibleBenefit : IDirty
     {
-        private Value<bool?> _aprNotExceedIndicator;
+        private DirtyValue<bool?> _aprNotExceedIndicator;
         public bool? AprNotExceedIndicator { get { return _aprNotExceedIndicator; } set { _aprNotExceedIndicator = value; } }
-        private Value<bool?> _avoidingForeclosureIndicator;
+        private DirtyValue<bool?> _avoidingForeclosureIndicator;
         public bool? AvoidingForeclosureIndicator { get { return _avoidingForeclosureIndicator; } set { _avoidingForeclosureIndicator = value; } }
-        private Value<bool?> _beneficialChangedForBorrowerIndicator;
+        private DirtyValue<bool?> _beneficialChangedForBorrowerIndicator;
         public bool? BeneficialChangedForBorrowerIndicator { get { return _beneficialChangedForBorrowerIndicator; } set { _beneficialChangedForBorrowerIndicator = value; } }
-        private Value<string> _bonaFideFinancialEmergency;
+        private DirtyValue<string> _bonaFideFinancialEmergency;
         public string BonaFideFinancialEmergency { get { return _bonaFideFinancialEmergency; } set { _bonaFideFinancialEmergency = value; } }
-        private Value<bool?> _borrowerCanRecoupCostofRefinancingIndicator;
+        private DirtyValue<bool?> _borrowerCanRecoupCostofRefinancingIndicator;
         public bool? BorrowerCanRecoupCostofRefinancingIndicator { get { return _borrowerCanRecoupCostofRefinancingIndicator; } set { _borrowerCanRecoupCostofRefinancingIndicator = value; } }
-        private Value<bool?> _borrowerCanRecoupIndicator;
+        private DirtyValue<bool?> _borrowerCanRecoupIndicator;
         public bool? BorrowerCanRecoupIndicator { get { return _borrowerCanRecoupIndicator; } set { _borrowerCanRecoupIndicator = value; } }
-        private Value<bool?> _borrowerMonthlyPaymentLowerThan20Indicator;
+        private DirtyValue<bool?> _borrowerMonthlyPaymentLowerThan20Indicator;
         public bool? BorrowerMonthlyPaymentLowerThan20Indicator { get { return _borrowerMonthlyPaymentLowerThan20Indicator; } set { _borrowerMonthlyPaymentLowerThan20Indicator = value; } }
-        private Value<string> _borrowerReceivedReasonable;
+        private DirtyValue<string> _borrowerReceivedReasonable;
         public string BorrowerReceivedReasonable { get { return _borrowerReceivedReasonable; } set { _borrowerReceivedReasonable = value; } }
-        private Value<bool?> _borrowerReceivesAmountExcessCostAndFeesIndicator;
+        private DirtyValue<bool?> _borrowerReceivesAmountExcessCostAndFeesIndicator;
         public bool? BorrowerReceivesAmountExcessCostAndFeesIndicator { get { return _borrowerReceivesAmountExcessCostAndFeesIndicator; } set { _borrowerReceivesAmountExcessCostAndFeesIndicator = value; } }
-        private Value<bool?> _changeLoanFromArmtoFixedIndicator;
+        private DirtyValue<bool?> _changeLoanFromArmtoFixedIndicator;
         public bool? ChangeLoanFromArmtoFixedIndicator { get { return _changeLoanFromArmtoFixedIndicator; } set { _changeLoanFromArmtoFixedIndicator = value; } }
-        private Value<bool?> _changingLoanToFixedRateIndicator;
+        private DirtyValue<bool?> _changingLoanToFixedRateIndicator;
         public bool? ChangingLoanToFixedRateIndicator { get { return _changingLoanToFixedRateIndicator; } set { _changingLoanToFixedRateIndicator = value; } }
-        private Value<bool?> _consolidatingOtherExistingLoansIntoNewLoanIndicator;
+        private DirtyValue<bool?> _consolidatingOtherExistingLoansIntoNewLoanIndicator;
         public bool? ConsolidatingOtherExistingLoansIntoNewLoanIndicator { get { return _consolidatingOtherExistingLoansIntoNewLoanIndicator; } set { _consolidatingOtherExistingLoansIntoNewLoanIndicator = value; } }
-        private Value<bool?> _eliminatingBalloonPaymentIndicator;
+        private DirtyValue<bool?> _eliminatingBalloonPaymentIndicator;
         public bool? EliminatingBalloonPaymentIndicator { get { return _eliminatingBalloonPaymentIndicator; } set { _eliminatingBalloonPaymentIndicator = value; } }
-        private Value<bool?> _eliminatingNegArmIndicator;
+        private DirtyValue<bool?> _eliminatingNegArmIndicator;
         public bool? EliminatingNegArmIndicator { get { return _eliminatingNegArmIndicator; } set { _eliminatingNegArmIndicator = value; } }
-        private Value<bool?> _eliminatingPrivateMortgageInsuranceIndicator;
+        private DirtyValue<bool?> _eliminatingPrivateMortgageInsuranceIndicator;
         public bool? EliminatingPrivateMortgageInsuranceIndicator { get { return _eliminatingPrivateMortgageInsuranceIndicator; } set { _eliminatingPrivateMortgageInsuranceIndicator = value; } }
-        private Value<decimal?> _existingLoanAprPercent;
+        private DirtyValue<decimal?> _existingLoanAprPercent;
         public decimal? ExistingLoanAprPercent { get { return _existingLoanAprPercent; } set { _existingLoanAprPercent = value; } }
-        private Value<bool?> _existingLoanBalloonIndicator;
+        private DirtyValue<bool?> _existingLoanBalloonIndicator;
         public bool? ExistingLoanBalloonIndicator { get { return _existingLoanBalloonIndicator; } set { _existingLoanBalloonIndicator = value; } }
-        private Value<decimal?> _existingLoanBorrowerReceivesCashOutAmount;
+        private DirtyValue<decimal?> _existingLoanBorrowerReceivesCashOutAmount;
         public decimal? ExistingLoanBorrowerReceivesCashOutAmount { get { return _existingLoanBorrowerReceivesCashOutAmount; } set { _existingLoanBorrowerReceivesCashOutAmount = value; } }
-        private Value<bool?> _existingLoanBorrowerReceivesCashOutIndicator;
+        private DirtyValue<bool?> _existingLoanBorrowerReceivesCashOutIndicator;
         public bool? ExistingLoanBorrowerReceivesCashOutIndicator { get { return _existingLoanBorrowerReceivesCashOutIndicator; } set { _existingLoanBorrowerReceivesCashOutIndicator = value; } }
-        private Value<decimal?> _existingLoanBottomRatioPercent;
+        private DirtyValue<decimal?> _existingLoanBottomRatioPercent;
         public decimal? ExistingLoanBottomRatioPercent { get { return _existingLoanBottomRatioPercent; } set { _existingLoanBottomRatioPercent = value; } }
-        private Value<DateTime?> _existingLoanDateLoanClosed;
+        private DirtyValue<DateTime?> _existingLoanDateLoanClosed;
         public DateTime? ExistingLoanDateLoanClosed { get { return _existingLoanDateLoanClosed; } set { _existingLoanDateLoanClosed = value; } }
-        private Value<decimal?> _existingLoanFullyIndexRatePercent;
+        private DirtyValue<decimal?> _existingLoanFullyIndexRatePercent;
         public decimal? ExistingLoanFullyIndexRatePercent { get { return _existingLoanFullyIndexRatePercent; } set { _existingLoanFullyIndexRatePercent = value; } }
-        private Value<decimal?> _existingLoanInterestRatePercent;
+        private DirtyValue<decimal?> _existingLoanInterestRatePercent;
         public decimal? ExistingLoanInterestRatePercent { get { return _existingLoanInterestRatePercent; } set { _existingLoanInterestRatePercent = value; } }
-        private Value<bool?> _existingLoanIsGuaranteedIndicator;
+        private DirtyValue<bool?> _existingLoanIsGuaranteedIndicator;
         public bool? ExistingLoanIsGuaranteedIndicator { get { return _existingLoanIsGuaranteedIndicator; } set { _existingLoanIsGuaranteedIndicator = value; } }
-        private Value<bool?> _existingLoanIsLoanRefinancedAsSpecial;
+        private DirtyValue<bool?> _existingLoanIsLoanRefinancedAsSpecial;
         public bool? ExistingLoanIsLoanRefinancedAsSpecial { get { return _existingLoanIsLoanRefinancedAsSpecial; } set { _existingLoanIsLoanRefinancedAsSpecial = value; } }
-        private Value<bool?> _existingLoanIsNegativeAmortizationFeatureIndicator;
+        private DirtyValue<bool?> _existingLoanIsNegativeAmortizationFeatureIndicator;
         public bool? ExistingLoanIsNegativeAmortizationFeatureIndicator { get { return _existingLoanIsNegativeAmortizationFeatureIndicator; } set { _existingLoanIsNegativeAmortizationFeatureIndicator = value; } }
-        private Value<bool?> _existingLoanIsPrepaymentPenalty;
+        private DirtyValue<bool?> _existingLoanIsPrepaymentPenalty;
         public bool? ExistingLoanIsPrepaymentPenalty { get { return _existingLoanIsPrepaymentPenalty; } set { _existingLoanIsPrepaymentPenalty = value; } }
-        private Value<string> _existingLoanLoanAmortizationType;
+        private DirtyValue<string> _existingLoanLoanAmortizationType;
         public string ExistingLoanLoanAmortizationType { get { return _existingLoanLoanAmortizationType; } set { _existingLoanLoanAmortizationType = value; } }
-        private Value<decimal?> _existingLoanLoanAmount;
+        private DirtyValue<decimal?> _existingLoanLoanAmount;
         public decimal? ExistingLoanLoanAmount { get { return _existingLoanLoanAmount; } set { _existingLoanLoanAmount = value; } }
-        private Value<int?> _existingLoanLoanTerm;
+        private DirtyValue<int?> _existingLoanLoanTerm;
         public int? ExistingLoanLoanTerm { get { return _existingLoanLoanTerm; } set { _existingLoanLoanTerm = value; } }
-        private Value<decimal?> _existingLoanLtvPercent;
+        private DirtyValue<decimal?> _existingLoanLtvPercent;
         public decimal? ExistingLoanLtvPercent { get { return _existingLoanLtvPercent; } set { _existingLoanLtvPercent = value; } }
-        private Value<decimal?> _existingLoanMaximumRatePercent;
+        private DirtyValue<decimal?> _existingLoanMaximumRatePercent;
         public decimal? ExistingLoanMaximumRatePercent { get { return _existingLoanMaximumRatePercent; } set { _existingLoanMaximumRatePercent = value; } }
-        private Value<int?> _existingLoanMonthsRemaining;
+        private DirtyValue<int?> _existingLoanMonthsRemaining;
         public int? ExistingLoanMonthsRemaining { get { return _existingLoanMonthsRemaining; } set { _existingLoanMonthsRemaining = value; } }
-        private Value<decimal?> _existingLoanPaymentAmount;
+        private DirtyValue<decimal?> _existingLoanPaymentAmount;
         public decimal? ExistingLoanPaymentAmount { get { return _existingLoanPaymentAmount; } set { _existingLoanPaymentAmount = value; } }
-        private Value<decimal?> _existingLoanPaymentDifference;
+        private DirtyValue<decimal?> _existingLoanPaymentDifference;
         public decimal? ExistingLoanPaymentDifference { get { return _existingLoanPaymentDifference; } set { _existingLoanPaymentDifference = value; } }
-        private Value<decimal?> _existingLoanPaymentIncludeMiObligation;
+        private DirtyValue<decimal?> _existingLoanPaymentIncludeMiObligation;
         public decimal? ExistingLoanPaymentIncludeMiObligation { get { return _existingLoanPaymentIncludeMiObligation; } set { _existingLoanPaymentIncludeMiObligation = value; } }
-        private Value<decimal?> _existingLoanPaymentIncludeMortgageInsurance;
+        private DirtyValue<decimal?> _existingLoanPaymentIncludeMortgageInsurance;
         public decimal? ExistingLoanPaymentIncludeMortgageInsurance { get { return _existingLoanPaymentIncludeMortgageInsurance; } set { _existingLoanPaymentIncludeMortgageInsurance = value; } }
-        private Value<decimal?> _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
+        private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
         public decimal? ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan { get { return _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; } set { _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = value; } }
-        private Value<string> _existingLoanPrepaymentPenaltyBasedOn;
+        private DirtyValue<string> _existingLoanPrepaymentPenaltyBasedOn;
         public string ExistingLoanPrepaymentPenaltyBasedOn { get { return _existingLoanPrepaymentPenaltyBasedOn; } set { _existingLoanPrepaymentPenaltyBasedOn = value; } }
-        private Value<decimal?> _existingLoanPrepaymentPenaltyPercentage;
+        private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyPercentage;
         public decimal? ExistingLoanPrepaymentPenaltyPercentage { get { return _existingLoanPrepaymentPenaltyPercentage; } set { _existingLoanPrepaymentPenaltyPercentage = value; } }
-        private Value<int?> _existingLoanPrepaymentPenaltyTerm;
+        private DirtyValue<int?> _existingLoanPrepaymentPenaltyTerm;
         public int? ExistingLoanPrepaymentPenaltyTerm { get { return _existingLoanPrepaymentPenaltyTerm; } set { _existingLoanPrepaymentPenaltyTerm = value; } }
-        private Value<string> _existingLoanProvidedByLicenseeType;
+        private DirtyValue<string> _existingLoanProvidedByLicenseeType;
         public string ExistingLoanProvidedByLicenseeType { get { return _existingLoanProvidedByLicenseeType; } set { _existingLoanProvidedByLicenseeType = value; } }
-        private Value<string> _existingLoanPurposeType;
+        private DirtyValue<string> _existingLoanPurposeType;
         public string ExistingLoanPurposeType { get { return _existingLoanPurposeType; } set { _existingLoanPurposeType = value; } }
-        private Value<int?> _existingLoanRecoupCostsYears;
+        private DirtyValue<int?> _existingLoanRecoupCostsYears;
         public int? ExistingLoanRecoupCostsYears { get { return _existingLoanRecoupCostsYears; } set { _existingLoanRecoupCostsYears = value; } }
-        private Value<decimal?> _existingLoanSavingsAmount;
+        private DirtyValue<decimal?> _existingLoanSavingsAmount;
         public decimal? ExistingLoanSavingsAmount { get { return _existingLoanSavingsAmount; } set { _existingLoanSavingsAmount = value; } }
-        private Value<decimal?> _existingLoanTotalDebtPayoff;
+        private DirtyValue<decimal?> _existingLoanTotalDebtPayoff;
         public decimal? ExistingLoanTotalDebtPayoff { get { return _existingLoanTotalDebtPayoff; } set { _existingLoanTotalDebtPayoff = value; } }
-        private Value<decimal?> _existingLoanWeightedAverageInterestRatePercent;
+        private DirtyValue<decimal?> _existingLoanWeightedAverageInterestRatePercent;
         public decimal? ExistingLoanWeightedAverageInterestRatePercent { get { return _existingLoanWeightedAverageInterestRatePercent; } set { _existingLoanWeightedAverageInterestRatePercent = value; } }
-        private Value<bool?> _homeLoanComplianceWith209;
+        private DirtyValue<bool?> _homeLoanComplianceWith209;
         public bool? HomeLoanComplianceWith209 { get { return _homeLoanComplianceWith209; } set { _homeLoanComplianceWith209 = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _lenderDeterminedBorrowersInterest;
+        private DirtyValue<bool?> _lenderDeterminedBorrowersInterest;
         public bool? LenderDeterminedBorrowersInterest { get { return _lenderDeterminedBorrowersInterest; } set { _lenderDeterminedBorrowersInterest = value; } }
-        private Value<bool?> _newLoanIsGuaranteedIndicator;
+        private DirtyValue<bool?> _newLoanIsGuaranteedIndicator;
         public bool? NewLoanIsGuaranteedIndicator { get { return _newLoanIsGuaranteedIndicator; } set { _newLoanIsGuaranteedIndicator = value; } }
-        private Value<bool?> _newLoanIsNegativeAmortizationFeatureIndicator;
+        private DirtyValue<bool?> _newLoanIsNegativeAmortizationFeatureIndicator;
         public bool? NewLoanIsNegativeAmortizationFeatureIndicator { get { return _newLoanIsNegativeAmortizationFeatureIndicator; } set { _newLoanIsNegativeAmortizationFeatureIndicator = value; } }
-        private Value<bool?> _newLoanIsSafeHarborQM;
+        private DirtyValue<bool?> _newLoanIsSafeHarborQM;
         public bool? NewLoanIsSafeHarborQM { get { return _newLoanIsSafeHarborQM; } set { _newLoanIsSafeHarborQM = value; } }
-        private Value<bool?> _newLoanIsSpecialMortgageOriginatedIndicator;
+        private DirtyValue<bool?> _newLoanIsSpecialMortgageOriginatedIndicator;
         public bool? NewLoanIsSpecialMortgageOriginatedIndicator { get { return _newLoanIsSpecialMortgageOriginatedIndicator; } set { _newLoanIsSpecialMortgageOriginatedIndicator = value; } }
-        private Value<decimal?> _newLoanPaymentWithMiDifference;
+        private DirtyValue<decimal?> _newLoanPaymentWithMiDifference;
         public decimal? NewLoanPaymentWithMiDifference { get { return _newLoanPaymentWithMiDifference; } set { _newLoanPaymentWithMiDifference = value; } }
-        private Value<decimal?> _newLoanPaymentWithObligationDifference;
+        private DirtyValue<decimal?> _newLoanPaymentWithObligationDifference;
         public decimal? NewLoanPaymentWithObligationDifference { get { return _newLoanPaymentWithObligationDifference; } set { _newLoanPaymentWithObligationDifference = value; } }
-        private Value<bool?> _newLoanPayOffConsolidateDebtIndicator;
+        private DirtyValue<bool?> _newLoanPayOffConsolidateDebtIndicator;
         public bool? NewLoanPayOffConsolidateDebtIndicator { get { return _newLoanPayOffConsolidateDebtIndicator; } set { _newLoanPayOffConsolidateDebtIndicator = value; } }
-        private Value<decimal?> _newLoanWeightedAverageInterestRatePercent;
+        private DirtyValue<decimal?> _newLoanWeightedAverageInterestRatePercent;
         public decimal? NewLoanWeightedAverageInterestRatePercent { get { return _newLoanWeightedAverageInterestRatePercent; } set { _newLoanWeightedAverageInterestRatePercent = value; } }
-        private Value<bool?> _obtainingLowerIntMonthlyPaymentIndicator;
+        private DirtyValue<bool?> _obtainingLowerIntMonthlyPaymentIndicator;
         public bool? ObtainingLowerIntMonthlyPaymentIndicator { get { return _obtainingLowerIntMonthlyPaymentIndicator; } set { _obtainingLowerIntMonthlyPaymentIndicator = value; } }
-        private Value<bool?> _obtainingLowerIntRateIndicator;
+        private DirtyValue<bool?> _obtainingLowerIntRateIndicator;
         public bool? ObtainingLowerIntRateIndicator { get { return _obtainingLowerIntRateIndicator; } set { _obtainingLowerIntRateIndicator = value; } }
-        private Value<bool?> _obtainingShortAmortScheduleIndicator;
+        private DirtyValue<bool?> _obtainingShortAmortScheduleIndicator;
         public bool? ObtainingShortAmortScheduleIndicator { get { return _obtainingShortAmortScheduleIndicator; } set { _obtainingShortAmortScheduleIndicator = value; } }
-        private Value<bool?> _otherReason;
+        private DirtyValue<bool?> _otherReason;
         public bool? OtherReason { get { return _otherReason; } set { _otherReason = value; } }
-        private Value<string> _otherReasonDescription;
+        private DirtyValue<string> _otherReasonDescription;
         public string OtherReasonDescription { get { return _otherReasonDescription; } set { _otherReasonDescription = value; } }
-        private Value<bool?> _printBorrowerInitialLinesIndicator;
+        private DirtyValue<bool?> _printBorrowerInitialLinesIndicator;
         public bool? PrintBorrowerInitialLinesIndicator { get { return _printBorrowerInitialLinesIndicator; } set { _printBorrowerInitialLinesIndicator = value; } }
-        private Value<bool?> _proceedsOfNewLoanWillBeUsedIndicator;
+        private DirtyValue<bool?> _proceedsOfNewLoanWillBeUsedIndicator;
         public bool? ProceedsOfNewLoanWillBeUsedIndicator { get { return _proceedsOfNewLoanWillBeUsedIndicator; } set { _proceedsOfNewLoanWillBeUsedIndicator = value; } }
-        private Value<bool?> _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
+        private DirtyValue<bool?> _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator;
         public bool? ReceivingCashOutFromNewLoanGreaterThanClosingCostIndicator { get { return _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator; } set { _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator = value; } }
-        private Value<bool?> _refinancingLoanIsHomeEquityIndicator;
+        private DirtyValue<bool?> _refinancingLoanIsHomeEquityIndicator;
         public bool? RefinancingLoanIsHomeEquityIndicator { get { return _refinancingLoanIsHomeEquityIndicator; } set { _refinancingLoanIsHomeEquityIndicator = value; } }
-        private Value<bool?> _refinancingRespondBonaFide;
+        private DirtyValue<bool?> _refinancingRespondBonaFide;
         public bool? RefinancingRespondBonaFide { get { return _refinancingRespondBonaFide; } set { _refinancingRespondBonaFide = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aprNotExceedIndicator.Dirty
                     || _avoidingForeclosureIndicator.Dirty
                     || _beneficialChangedForBorrowerIndicator.Dirty
@@ -219,12 +220,13 @@ namespace EncompassRest.Loans
                     || _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty
                     || _refinancingLoanIsHomeEquityIndicator.Dirty
                     || _refinancingRespondBonaFide.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aprNotExceedIndicator.Dirty = value;
                 _avoidingForeclosureIndicator.Dirty = value;
                 _beneficialChangedForBorrowerIndicator.Dirty = value;
@@ -293,7 +295,7 @@ namespace EncompassRest.Loans
                 _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty = value;
                 _refinancingLoanIsHomeEquityIndicator.Dirty = value;
                 _refinancingRespondBonaFide.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

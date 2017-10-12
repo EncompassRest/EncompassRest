@@ -8,45 +8,46 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Shipping : IDirty
     {
-        private Value<DateTime?> _actualShipDate;
+        private DirtyValue<DateTime?> _actualShipDate;
         public DateTime? ActualShipDate { get { return _actualShipDate; } set { _actualShipDate = value; } }
-        private Value<string> _carrierName;
+        private DirtyValue<string> _carrierName;
         public string CarrierName { get { return _carrierName; } set { _carrierName = value; } }
-        private Value<decimal?> _downPaymentAmount;
+        private DirtyValue<decimal?> _downPaymentAmount;
         public decimal? DownPaymentAmount { get { return _downPaymentAmount; } set { _downPaymentAmount = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<DateTime?> _investorDeliveryDate;
+        private DirtyValue<DateTime?> _investorDeliveryDate;
         public DateTime? InvestorDeliveryDate { get { return _investorDeliveryDate; } set { _investorDeliveryDate = value; } }
-        private Value<string> _packageTrackingNumber;
+        private DirtyValue<string> _packageTrackingNumber;
         public string PackageTrackingNumber { get { return _packageTrackingNumber; } set { _packageTrackingNumber = value; } }
-        private Value<string> _physicalFileStorageComments;
+        private DirtyValue<string> _physicalFileStorageComments;
         public string PhysicalFileStorageComments { get { return _physicalFileStorageComments; } set { _physicalFileStorageComments = value; } }
-        private Value<string> _physicalFileStorageId;
+        private DirtyValue<string> _physicalFileStorageId;
         public string PhysicalFileStorageId { get { return _physicalFileStorageId; } set { _physicalFileStorageId = value; } }
-        private Value<string> _physicalFileStorageLocation;
+        private DirtyValue<string> _physicalFileStorageLocation;
         public string PhysicalFileStorageLocation { get { return _physicalFileStorageLocation; } set { _physicalFileStorageLocation = value; } }
-        private Value<string> _poolID;
+        private DirtyValue<string> _poolID;
         public string PoolID { get { return _poolID; } set { _poolID = value; } }
-        private Value<string> _poolNumber;
+        private DirtyValue<string> _poolNumber;
         public string PoolNumber { get { return _poolNumber; } set { _poolNumber = value; } }
-        private Value<string> _recordingNumber;
+        private DirtyValue<string> _recordingNumber;
         public string RecordingNumber { get { return _recordingNumber; } set { _recordingNumber = value; } }
-        private Value<string> _shipmentMethod;
+        private DirtyValue<string> _shipmentMethod;
         public string ShipmentMethod { get { return _shipmentMethod; } set { _shipmentMethod = value; } }
-        private Value<string> _shipperName;
+        private DirtyValue<string> _shipperName;
         public string ShipperName { get { return _shipperName; } set { _shipperName = value; } }
-        private Value<List<ShippingContact>> _shippingContacts;
-        public List<ShippingContact> ShippingContacts { get { return _shippingContacts; } set { _shippingContacts = value; } }
-        private Value<DateTime?> _targetDeliveryDate;
+        private DirtyList<ShippingContact> _shippingContacts;
+        public IList<ShippingContact> ShippingContacts { get { return _shippingContacts ?? (_shippingContacts = new DirtyList<ShippingContact>()); } set { _shippingContacts = new DirtyList<ShippingContact>(value); } }
+        private DirtyValue<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get { return _targetDeliveryDate; } set { _targetDeliveryDate = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _actualShipDate.Dirty
                     || _carrierName.Dirty
                     || _downPaymentAmount.Dirty
@@ -61,14 +62,15 @@ namespace EncompassRest.Loans
                     || _recordingNumber.Dirty
                     || _shipmentMethod.Dirty
                     || _shipperName.Dirty
-                    || _shippingContacts.Dirty
-                    || _targetDeliveryDate.Dirty;
-                _gettingDirty = 0;
+                    || _targetDeliveryDate.Dirty
+                    || _shippingContacts?.Dirty == true;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _actualShipDate.Dirty = value;
                 _carrierName.Dirty = value;
                 _downPaymentAmount.Dirty = value;
@@ -83,9 +85,9 @@ namespace EncompassRest.Loans
                 _recordingNumber.Dirty = value;
                 _shipmentMethod.Dirty = value;
                 _shipperName.Dirty = value;
-                _shippingContacts.Dirty = value;
                 _targetDeliveryDate.Dirty = value;
-                _settingDirty = 0;
+                if (_shippingContacts != null) _shippingContacts.Dirty = value;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

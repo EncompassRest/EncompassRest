@@ -8,81 +8,82 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Asset : IDirty
     {
-        private Value<string> _accountIdentifier;
+        private DirtyValue<string> _accountIdentifier;
         public string AccountIdentifier { get { return _accountIdentifier; } set { _accountIdentifier = value; } }
-        private Value<string> _altId;
+        private DirtyValue<string> _altId;
         public string AltId { get { return _altId; } set { _altId = value; } }
-        private Value<int?> _assetIndex;
+        private DirtyValue<int?> _assetIndex;
         public int? AssetIndex { get { return _assetIndex; } set { _assetIndex = value; } }
-        private Value<string> _assetType;
+        private DirtyValue<string> _assetType;
         public string AssetType { get { return _assetType; } set { _assetType = value; } }
-        private Value<string> _attention;
+        private DirtyValue<string> _attention;
         public string Attention { get { return _attention; } set { _attention = value; } }
-        private Value<string> _borrowerId;
+        private DirtyValue<string> _borrowerId;
         public string BorrowerId { get { return _borrowerId; } set { _borrowerId = value; } }
-        private Value<decimal?> _cashOrMarketValueAmount;
+        private DirtyValue<decimal?> _cashOrMarketValueAmount;
         public decimal? CashOrMarketValueAmount { get { return _cashOrMarketValueAmount; } set { _cashOrMarketValueAmount = value; } }
-        private Value<string> _depositoryAccountName;
+        private DirtyValue<string> _depositoryAccountName;
         public string DepositoryAccountName { get { return _depositoryAccountName; } set { _depositoryAccountName = value; } }
-        private Value<DateTime?> _depositoryRequestDate;
+        private DirtyValue<DateTime?> _depositoryRequestDate;
         public DateTime? DepositoryRequestDate { get { return _depositoryRequestDate; } set { _depositoryRequestDate = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<bool?> _entityDeleted;
+        private DirtyValue<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        private Value<string> _holderAddressCity;
+        private DirtyValue<string> _holderAddressCity;
         public string HolderAddressCity { get { return _holderAddressCity; } set { _holderAddressCity = value; } }
-        private Value<string> _holderAddressPostalCode;
+        private DirtyValue<string> _holderAddressPostalCode;
         public string HolderAddressPostalCode { get { return _holderAddressPostalCode; } set { _holderAddressPostalCode = value; } }
-        private Value<string> _holderAddressState;
+        private DirtyValue<string> _holderAddressState;
         public string HolderAddressState { get { return _holderAddressState; } set { _holderAddressState = value; } }
-        private Value<string> _holderAddressStreetLine1;
+        private DirtyValue<string> _holderAddressStreetLine1;
         public string HolderAddressStreetLine1 { get { return _holderAddressStreetLine1; } set { _holderAddressStreetLine1 = value; } }
-        private Value<string> _holderComments;
+        private DirtyValue<string> _holderComments;
         public string HolderComments { get { return _holderComments; } set { _holderComments = value; } }
-        private Value<string> _holderEmail;
+        private DirtyValue<string> _holderEmail;
         public string HolderEmail { get { return _holderEmail; } set { _holderEmail = value; } }
-        private Value<string> _holderFax;
+        private DirtyValue<string> _holderFax;
         public string HolderFax { get { return _holderFax; } set { _holderFax = value; } }
-        private Value<string> _holderName;
+        private DirtyValue<string> _holderName;
         public string HolderName { get { return _holderName; } set { _holderName = value; } }
-        private Value<string> _holderPhone;
+        private DirtyValue<string> _holderPhone;
         public string HolderPhone { get { return _holderPhone; } set { _holderPhone = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isEmpty;
+        private DirtyValue<bool?> _isEmpty;
         public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
-        private Value<bool?> _isVod;
+        private DirtyValue<bool?> _isVod;
         public bool? IsVod { get { return _isVod; } set { _isVod = value; } }
-        private Value<decimal?> _lifeInsuranceFaceValueAmount;
+        private DirtyValue<decimal?> _lifeInsuranceFaceValueAmount;
         public decimal? LifeInsuranceFaceValueAmount { get { return _lifeInsuranceFaceValueAmount; } set { _lifeInsuranceFaceValueAmount = value; } }
-        private Value<string> _nameInAccount;
+        private DirtyValue<string> _nameInAccount;
         public string NameInAccount { get { return _nameInAccount; } set { _nameInAccount = value; } }
-        private Value<bool?> _noLinkToDocTrackIndicator;
+        private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        private Value<string> _owner;
+        private DirtyValue<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
-        private Value<bool?> _printAttachmentIndicator;
+        private DirtyValue<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
-        private Value<bool?> _printUserNameIndicator;
+        private DirtyValue<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private Value<string> _titleFax;
+        private DirtyValue<string> _titleFax;
         public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
-        private Value<string> _titlePhone;
+        private DirtyValue<string> _titlePhone;
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
-        private Value<decimal?> _total;
+        private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private Value<int?> _vodIndex;
+        private DirtyValue<int?> _vodIndex;
         public int? VodIndex { get { return _vodIndex; } set { _vodIndex = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _accountIdentifier.Dirty
                     || _altId.Dirty
                     || _assetIndex.Dirty
@@ -117,12 +118,13 @@ namespace EncompassRest.Loans
                     || _titlePhone.Dirty
                     || _total.Dirty
                     || _vodIndex.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _accountIdentifier.Dirty = value;
                 _altId.Dirty = value;
                 _assetIndex.Dirty = value;
@@ -157,7 +159,7 @@ namespace EncompassRest.Loans
                 _titlePhone.Dirty = value;
                 _total.Dirty = value;
                 _vodIndex.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

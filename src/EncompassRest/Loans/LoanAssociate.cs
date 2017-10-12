@@ -8,35 +8,36 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanAssociate : IDirty
     {
-        private Value<string> _cellPhone;
+        private DirtyValue<string> _cellPhone;
         public string CellPhone { get { return _cellPhone; } set { _cellPhone = value; } }
-        private Value<string> _email;
+        private DirtyValue<string> _email;
         public string Email { get { return _email; } set { _email = value; } }
-        private Value<string> _fax;
+        private DirtyValue<string> _fax;
         public string Fax { get { return _fax; } set { _fax = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<string> _idString;
+        private DirtyValue<string> _idString;
         public string IdString { get { return _idString; } set { _idString = value; } }
-        private Value<string> _loanAssociateType;
+        private DirtyValue<string> _loanAssociateType;
         public string LoanAssociateType { get { return _loanAssociateType; } set { _loanAssociateType = value; } }
-        private Value<string> _name;
+        private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private Value<string> _phone;
+        private DirtyValue<string> _phone;
         public string Phone { get { return _phone; } set { _phone = value; } }
-        private Value<int?> _roleId;
+        private DirtyValue<int?> _roleId;
         public int? RoleId { get { return _roleId; } set { _roleId = value; } }
-        private Value<string> _roleName;
+        private DirtyValue<string> _roleName;
         public string RoleName { get { return _roleName; } set { _roleName = value; } }
-        private Value<string> _writeAccess;
+        private DirtyValue<string> _writeAccess;
         public string WriteAccess { get { return _writeAccess; } set { _writeAccess = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _cellPhone.Dirty
                     || _email.Dirty
                     || _fax.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _roleId.Dirty
                     || _roleName.Dirty
                     || _writeAccess.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _cellPhone.Dirty = value;
                 _email.Dirty = value;
                 _fax.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _roleId.Dirty = value;
                 _roleName.Dirty = value;
                 _writeAccess.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

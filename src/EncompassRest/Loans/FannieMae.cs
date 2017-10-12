@@ -8,45 +8,46 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FannieMae : IDirty
     {
-        private Value<decimal?> _cltv;
+        private DirtyValue<decimal?> _cltv;
         public decimal? Cltv { get { return _cltv; } set { _cltv = value; } }
-        private Value<string> _collateralUnderwriterScore;
+        private DirtyValue<string> _collateralUnderwriterScore;
         public string CollateralUnderwriterScore { get { return _collateralUnderwriterScore; } set { _collateralUnderwriterScore = value; } }
-        private Value<string> _community2ndRepaymentStructure;
+        private DirtyValue<string> _community2ndRepaymentStructure;
         public string Community2ndRepaymentStructure { get { return _community2ndRepaymentStructure; } set { _community2ndRepaymentStructure = value; } }
-        private Value<bool?> _communityLending;
+        private DirtyValue<bool?> _communityLending;
         public bool? CommunityLending { get { return _communityLending; } set { _communityLending = value; } }
-        private Value<string> _duVersion;
+        private DirtyValue<string> _duVersion;
         public string DuVersion { get { return _duVersion; } set { _duVersion = value; } }
-        private Value<string> _eCStatus1003;
+        private DirtyValue<string> _eCStatus1003;
         public string ECStatus1003 { get { return _eCStatus1003; } set { _eCStatus1003 = value; } }
-        private Value<decimal?> _hcltv;
+        private DirtyValue<decimal?> _hcltv;
         public decimal? Hcltv { get { return _hcltv; } set { _hcltv = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _interestedPartyContribution;
+        private DirtyValue<decimal?> _interestedPartyContribution;
         public decimal? InterestedPartyContribution { get { return _interestedPartyContribution; } set { _interestedPartyContribution = value; } }
-        private Value<decimal?> _ltv;
+        private DirtyValue<decimal?> _ltv;
         public decimal? Ltv { get { return _ltv; } set { _ltv = value; } }
-        private Value<string> _mornetPlusCaseFileId;
+        private DirtyValue<string> _mornetPlusCaseFileId;
         public string MornetPlusCaseFileId { get { return _mornetPlusCaseFileId; } set { _mornetPlusCaseFileId = value; } }
-        private Value<string> _propertyInspectionWaiverMessage;
+        private DirtyValue<string> _propertyInspectionWaiverMessage;
         public string PropertyInspectionWaiverMessage { get { return _propertyInspectionWaiverMessage; } set { _propertyInspectionWaiverMessage = value; } }
-        private Value<bool?> _startUpMortgage;
+        private DirtyValue<bool?> _startUpMortgage;
         public bool? StartUpMortgage { get { return _startUpMortgage; } set { _startUpMortgage = value; } }
-        private Value<string> _uCDCollectionStatus;
+        private DirtyValue<string> _uCDCollectionStatus;
         public string UCDCollectionStatus { get { return _uCDCollectionStatus; } set { _uCDCollectionStatus = value; } }
-        private Value<string> _uCDPStatus;
+        private DirtyValue<string> _uCDPStatus;
         public string UCDPStatus { get { return _uCDPStatus; } set { _uCDPStatus = value; } }
-        private Value<string> _uLDDECStatus;
+        private DirtyValue<string> _uLDDECStatus;
         public string ULDDECStatus { get { return _uLDDECStatus; } set { _uLDDECStatus = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _cltv.Dirty
                     || _collateralUnderwriterScore.Dirty
                     || _community2ndRepaymentStructure.Dirty
@@ -63,12 +64,13 @@ namespace EncompassRest.Loans
                     || _uCDCollectionStatus.Dirty
                     || _uCDPStatus.Dirty
                     || _uLDDECStatus.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _cltv.Dirty = value;
                 _collateralUnderwriterScore.Dirty = value;
                 _community2ndRepaymentStructure.Dirty = value;
@@ -85,7 +87,7 @@ namespace EncompassRest.Loans
                 _uCDCollectionStatus.Dirty = value;
                 _uCDPStatus.Dirty = value;
                 _uLDDECStatus.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

@@ -8,35 +8,36 @@ namespace EncompassRest.Loans
 {
     public sealed partial class RegulationZInterestRatePeriod : IDirty
     {
-        private Value<DateTime?> _adjustmentDate;
+        private DirtyValue<DateTime?> _adjustmentDate;
         public DateTime? AdjustmentDate { get { return _adjustmentDate; } set { _adjustmentDate = value; } }
-        private Value<int?> _adjustmentMonths;
+        private DirtyValue<int?> _adjustmentMonths;
         public int? AdjustmentMonths { get { return _adjustmentMonths; } set { _adjustmentMonths = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _interestPayment;
+        private DirtyValue<decimal?> _interestPayment;
         public decimal? InterestPayment { get { return _interestPayment; } set { _interestPayment = value; } }
-        private Value<decimal?> _interestPrincipalPayment;
+        private DirtyValue<decimal?> _interestPrincipalPayment;
         public decimal? InterestPrincipalPayment { get { return _interestPrincipalPayment; } set { _interestPrincipalPayment = value; } }
-        private Value<decimal?> _interestRatePercent;
+        private DirtyValue<decimal?> _interestRatePercent;
         public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
-        private Value<decimal?> _monthlyPayment;
+        private DirtyValue<decimal?> _monthlyPayment;
         public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
-        private Value<decimal?> _principalPayment;
+        private DirtyValue<decimal?> _principalPayment;
         public decimal? PrincipalPayment { get { return _principalPayment; } set { _principalPayment = value; } }
-        private Value<string> _regulationZInterestRatePeriodType;
+        private DirtyValue<string> _regulationZInterestRatePeriodType;
         public string RegulationZInterestRatePeriodType { get { return _regulationZInterestRatePeriodType; } set { _regulationZInterestRatePeriodType = value; } }
-        private Value<decimal?> _taxInsuranceAmount;
+        private DirtyValue<decimal?> _taxInsuranceAmount;
         public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
-        private Value<decimal?> _totalPayment;
+        private DirtyValue<decimal?> _totalPayment;
         public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _adjustmentDate.Dirty
                     || _adjustmentMonths.Dirty
                     || _id.Dirty
@@ -48,12 +49,13 @@ namespace EncompassRest.Loans
                     || _regulationZInterestRatePeriodType.Dirty
                     || _taxInsuranceAmount.Dirty
                     || _totalPayment.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _adjustmentDate.Dirty = value;
                 _adjustmentMonths.Dirty = value;
                 _id.Dirty = value;
@@ -65,7 +67,7 @@ namespace EncompassRest.Loans
                 _regulationZInterestRatePeriodType.Dirty = value;
                 _taxInsuranceAmount.Dirty = value;
                 _totalPayment.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

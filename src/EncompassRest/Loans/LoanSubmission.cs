@@ -8,71 +8,72 @@ namespace EncompassRest.Loans
 {
     public sealed partial class LoanSubmission : IDirty
     {
-        private Value<decimal?> _amountAvailable;
+        private DirtyValue<decimal?> _amountAvailable;
         public decimal? AmountAvailable { get { return _amountAvailable; } set { _amountAvailable = value; } }
-        private Value<decimal?> _amountRequiredToClose;
+        private DirtyValue<decimal?> _amountRequiredToClose;
         public decimal? AmountRequiredToClose { get { return _amountRequiredToClose; } set { _amountRequiredToClose = value; } }
-        private Value<string> _buydownDescription;
+        private DirtyValue<string> _buydownDescription;
         public string BuydownDescription { get { return _buydownDescription; } set { _buydownDescription = value; } }
-        private Value<string> _buydownMonthsPerAdjustment;
+        private DirtyValue<string> _buydownMonthsPerAdjustment;
         public string BuydownMonthsPerAdjustment { get { return _buydownMonthsPerAdjustment; } set { _buydownMonthsPerAdjustment = value; } }
-        private Value<string> _comments;
+        private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
-        private Value<DateTime?> _currentRateSetDate;
+        private DirtyValue<DateTime?> _currentRateSetDate;
         public DateTime? CurrentRateSetDate { get { return _currentRateSetDate; } set { _currentRateSetDate = value; } }
-        private Value<DateTime?> _dateLastPaymentReceived;
+        private DirtyValue<DateTime?> _dateLastPaymentReceived;
         public DateTime? DateLastPaymentReceived { get { return _dateLastPaymentReceived; } set { _dateLastPaymentReceived = value; } }
-        private Value<bool?> _floodIndicator;
+        private DirtyValue<bool?> _floodIndicator;
         public bool? FloodIndicator { get { return _floodIndicator; } set { _floodIndicator = value; } }
-        private Value<bool?> _hazardIndicator;
+        private DirtyValue<bool?> _hazardIndicator;
         public bool? HazardIndicator { get { return _hazardIndicator; } set { _hazardIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _isSecondaryRegistration;
+        private DirtyValue<bool?> _isSecondaryRegistration;
         public bool? IsSecondaryRegistration { get { return _isSecondaryRegistration; } set { _isSecondaryRegistration = value; } }
-        private Value<List<LoanSubmissionFee>> _loanSubmissionFees;
-        public List<LoanSubmissionFee> LoanSubmissionFees { get { return _loanSubmissionFees; } set { _loanSubmissionFees = value; } }
-        private Value<DateTime?> _lockDate;
+        private DirtyList<LoanSubmissionFee> _loanSubmissionFees;
+        public IList<LoanSubmissionFee> LoanSubmissionFees { get { return _loanSubmissionFees ?? (_loanSubmissionFees = new DirtyList<LoanSubmissionFee>()); } set { _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); } }
+        private DirtyValue<DateTime?> _lockDate;
         public DateTime? LockDate { get { return _lockDate; } set { _lockDate = value; } }
-        private Value<DateTime?> _lockDateTimestampUtc;
+        private DirtyValue<DateTime?> _lockDateTimestampUtc;
         public DateTime? LockDateTimestampUtc { get { return _lockDateTimestampUtc; } set { _lockDateTimestampUtc = value; } }
-        private Value<DateTime?> _lockExpiresDate;
+        private DirtyValue<DateTime?> _lockExpiresDate;
         public DateTime? LockExpiresDate { get { return _lockExpiresDate; } set { _lockExpiresDate = value; } }
-        private Value<bool?> _mmmPmiIndicator;
+        private DirtyValue<bool?> _mmmPmiIndicator;
         public bool? MmmPmiIndicator { get { return _mmmPmiIndicator; } set { _mmmPmiIndicator = value; } }
-        private Value<int?> _numberOfDays;
+        private DirtyValue<int?> _numberOfDays;
         public int? NumberOfDays { get { return _numberOfDays; } set { _numberOfDays = value; } }
-        private Value<string> _otherDescription;
+        private DirtyValue<string> _otherDescription;
         public string OtherDescription { get { return _otherDescription; } set { _otherDescription = value; } }
-        private Value<bool?> _otherIndicator;
+        private DirtyValue<bool?> _otherIndicator;
         public bool? OtherIndicator { get { return _otherIndicator; } set { _otherIndicator = value; } }
-        private Value<string> _programCode;
+        private DirtyValue<string> _programCode;
         public string ProgramCode { get { return _programCode; } set { _programCode = value; } }
-        private Value<string> _rateLock;
+        private DirtyValue<string> _rateLock;
         public string RateLock { get { return _rateLock; } set { _rateLock = value; } }
-        private Value<DateTime?> _rateLockDisclosureDate;
+        private DirtyValue<DateTime?> _rateLockDisclosureDate;
         public DateTime? RateLockDisclosureDate { get { return _rateLockDisclosureDate; } set { _rateLockDisclosureDate = value; } }
-        private Value<bool?> _reducedDocsIndicator;
+        private DirtyValue<bool?> _reducedDocsIndicator;
         public bool? ReducedDocsIndicator { get { return _reducedDocsIndicator; } set { _reducedDocsIndicator = value; } }
-        private Value<bool?> _taxesIndicator;
+        private DirtyValue<bool?> _taxesIndicator;
         public bool? TaxesIndicator { get { return _taxesIndicator; } set { _taxesIndicator = value; } }
-        private Value<decimal?> _total;
+        private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private Value<decimal?> _totalDiscountPointCharged;
+        private DirtyValue<decimal?> _totalDiscountPointCharged;
         public decimal? TotalDiscountPointCharged { get { return _totalDiscountPointCharged; } set { _totalDiscountPointCharged = value; } }
-        private Value<decimal?> _totalForDueBroker;
+        private DirtyValue<decimal?> _totalForDueBroker;
         public decimal? TotalForDueBroker { get { return _totalForDueBroker; } set { _totalForDueBroker = value; } }
-        private Value<decimal?> _totalForDueLender;
+        private DirtyValue<decimal?> _totalForDueLender;
         public decimal? TotalForDueLender { get { return _totalForDueLender; } set { _totalForDueLender = value; } }
-        private Value<decimal?> _totalForPrimaryResidence;
+        private DirtyValue<decimal?> _totalForPrimaryResidence;
         public decimal? TotalForPrimaryResidence { get { return _totalForPrimaryResidence; } set { _totalForPrimaryResidence = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amountAvailable.Dirty
                     || _amountRequiredToClose.Dirty
                     || _buydownDescription.Dirty
@@ -84,7 +85,6 @@ namespace EncompassRest.Loans
                     || _hazardIndicator.Dirty
                     || _id.Dirty
                     || _isSecondaryRegistration.Dirty
-                    || _loanSubmissionFees.Dirty
                     || _lockDate.Dirty
                     || _lockDateTimestampUtc.Dirty
                     || _lockExpiresDate.Dirty
@@ -101,13 +101,15 @@ namespace EncompassRest.Loans
                     || _totalDiscountPointCharged.Dirty
                     || _totalForDueBroker.Dirty
                     || _totalForDueLender.Dirty
-                    || _totalForPrimaryResidence.Dirty;
-                _gettingDirty = 0;
+                    || _totalForPrimaryResidence.Dirty
+                    || _loanSubmissionFees?.Dirty == true;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amountAvailable.Dirty = value;
                 _amountRequiredToClose.Dirty = value;
                 _buydownDescription.Dirty = value;
@@ -119,7 +121,6 @@ namespace EncompassRest.Loans
                 _hazardIndicator.Dirty = value;
                 _id.Dirty = value;
                 _isSecondaryRegistration.Dirty = value;
-                _loanSubmissionFees.Dirty = value;
                 _lockDate.Dirty = value;
                 _lockDateTimestampUtc.Dirty = value;
                 _lockExpiresDate.Dirty = value;
@@ -137,7 +138,8 @@ namespace EncompassRest.Loans
                 _totalForDueBroker.Dirty = value;
                 _totalForDueLender.Dirty = value;
                 _totalForPrimaryResidence.Dirty = value;
-                _settingDirty = 0;
+                if (_loanSubmissionFees != null) _loanSubmissionFees.Dirty = value;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

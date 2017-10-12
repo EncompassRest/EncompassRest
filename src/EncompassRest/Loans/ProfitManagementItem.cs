@@ -8,27 +8,28 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ProfitManagementItem : IDirty
     {
-        private Value<decimal?> _atPercent;
+        private DirtyValue<decimal?> _atPercent;
         public decimal? AtPercent { get { return _atPercent; } set { _atPercent = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _plusAmount;
+        private DirtyValue<decimal?> _plusAmount;
         public decimal? PlusAmount { get { return _plusAmount; } set { _plusAmount = value; } }
-        private Value<int?> _profitManagementItemIndex;
+        private DirtyValue<int?> _profitManagementItemIndex;
         public int? ProfitManagementItemIndex { get { return _profitManagementItemIndex; } set { _profitManagementItemIndex = value; } }
-        private Value<decimal?> _total;
+        private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private Value<string> _type;
+        private DirtyValue<string> _type;
         public string Type { get { return _type; } set { _type = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _atPercent.Dirty
                     || _description.Dirty
                     || _id.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _profitManagementItemIndex.Dirty
                     || _total.Dirty
                     || _type.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _atPercent.Dirty = value;
                 _description.Dirty = value;
                 _id.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _profitManagementItemIndex.Dirty = value;
                 _total.Dirty = value;
                 _type.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

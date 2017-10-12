@@ -8,185 +8,186 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Hud1Es : IDirty
     {
-        private Value<decimal?> _annualCityTax;
+        private DirtyValue<decimal?> _annualCityTax;
         public decimal? AnnualCityTax { get { return _annualCityTax; } set { _annualCityTax = value; } }
-        private Value<int?> _annualFeeCushion;
+        private DirtyValue<int?> _annualFeeCushion;
         public int? AnnualFeeCushion { get { return _annualFeeCushion; } set { _annualFeeCushion = value; } }
-        private Value<decimal?> _annualFloodInsurance;
+        private DirtyValue<decimal?> _annualFloodInsurance;
         public decimal? AnnualFloodInsurance { get { return _annualFloodInsurance; } set { _annualFloodInsurance = value; } }
-        private Value<decimal?> _annualHazardInsurance;
+        private DirtyValue<decimal?> _annualHazardInsurance;
         public decimal? AnnualHazardInsurance { get { return _annualHazardInsurance; } set { _annualHazardInsurance = value; } }
-        private Value<decimal?> _annualMortgageInsurance;
+        private DirtyValue<decimal?> _annualMortgageInsurance;
         public decimal? AnnualMortgageInsurance { get { return _annualMortgageInsurance; } set { _annualMortgageInsurance = value; } }
-        private Value<decimal?> _annualTax;
+        private DirtyValue<decimal?> _annualTax;
         public decimal? AnnualTax { get { return _annualTax; } set { _annualTax = value; } }
-        private Value<decimal?> _annualUserEscrow1;
+        private DirtyValue<decimal?> _annualUserEscrow1;
         public decimal? AnnualUserEscrow1 { get { return _annualUserEscrow1; } set { _annualUserEscrow1 = value; } }
-        private Value<decimal?> _annualUserEscrow2;
+        private DirtyValue<decimal?> _annualUserEscrow2;
         public decimal? AnnualUserEscrow2 { get { return _annualUserEscrow2; } set { _annualUserEscrow2 = value; } }
-        private Value<decimal?> _annualUserEscrow3;
+        private DirtyValue<decimal?> _annualUserEscrow3;
         public decimal? AnnualUserEscrow3 { get { return _annualUserEscrow3; } set { _annualUserEscrow3 = value; } }
-        private Value<decimal?> _biweeklyCityPropertyTaxes;
+        private DirtyValue<decimal?> _biweeklyCityPropertyTaxes;
         public decimal? BiweeklyCityPropertyTaxes { get { return _biweeklyCityPropertyTaxes; } set { _biweeklyCityPropertyTaxes = value; } }
-        private Value<decimal?> _biweeklyCountyTaxes;
+        private DirtyValue<decimal?> _biweeklyCountyTaxes;
         public decimal? BiweeklyCountyTaxes { get { return _biweeklyCountyTaxes; } set { _biweeklyCountyTaxes = value; } }
-        private Value<decimal?> _biweeklyFloodInsurance;
+        private DirtyValue<decimal?> _biweeklyFloodInsurance;
         public decimal? BiweeklyFloodInsurance { get { return _biweeklyFloodInsurance; } set { _biweeklyFloodInsurance = value; } }
-        private Value<decimal?> _biweeklyHazardInsurance;
+        private DirtyValue<decimal?> _biweeklyHazardInsurance;
         public decimal? BiweeklyHazardInsurance { get { return _biweeklyHazardInsurance; } set { _biweeklyHazardInsurance = value; } }
-        private Value<decimal?> _biweeklyMortgageInsurance;
+        private DirtyValue<decimal?> _biweeklyMortgageInsurance;
         public decimal? BiweeklyMortgageInsurance { get { return _biweeklyMortgageInsurance; } set { _biweeklyMortgageInsurance = value; } }
-        private Value<decimal?> _biweeklyPITI;
+        private DirtyValue<decimal?> _biweeklyPITI;
         public decimal? BiweeklyPITI { get { return _biweeklyPITI; } set { _biweeklyPITI = value; } }
-        private Value<decimal?> _biweeklyTotalBiweeklyPayment;
+        private DirtyValue<decimal?> _biweeklyTotalBiweeklyPayment;
         public decimal? BiweeklyTotalBiweeklyPayment { get { return _biweeklyTotalBiweeklyPayment; } set { _biweeklyTotalBiweeklyPayment = value; } }
-        private Value<decimal?> _biweeklyTotalBiweeklyPaymentToEscrow;
+        private DirtyValue<decimal?> _biweeklyTotalBiweeklyPaymentToEscrow;
         public decimal? BiweeklyTotalBiweeklyPaymentToEscrow { get { return _biweeklyTotalBiweeklyPaymentToEscrow; } set { _biweeklyTotalBiweeklyPaymentToEscrow = value; } }
-        private Value<decimal?> _biweeklyUSDAFee;
+        private DirtyValue<decimal?> _biweeklyUSDAFee;
         public decimal? BiweeklyUSDAFee { get { return _biweeklyUSDAFee; } set { _biweeklyUSDAFee = value; } }
-        private Value<decimal?> _biweeklyUserDefinedEscrowFee1;
+        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee1;
         public decimal? BiweeklyUserDefinedEscrowFee1 { get { return _biweeklyUserDefinedEscrowFee1; } set { _biweeklyUserDefinedEscrowFee1 = value; } }
-        private Value<decimal?> _biweeklyUserDefinedEscrowFee2;
+        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee2;
         public decimal? BiweeklyUserDefinedEscrowFee2 { get { return _biweeklyUserDefinedEscrowFee2; } set { _biweeklyUserDefinedEscrowFee2 = value; } }
-        private Value<decimal?> _biweeklyUserDefinedEscrowFee3;
+        private DirtyValue<decimal?> _biweeklyUserDefinedEscrowFee3;
         public decimal? BiweeklyUserDefinedEscrowFee3 { get { return _biweeklyUserDefinedEscrowFee3; } set { _biweeklyUserDefinedEscrowFee3 = value; } }
-        private Value<string> _cityPropertyTaxAddress;
+        private DirtyValue<string> _cityPropertyTaxAddress;
         public string CityPropertyTaxAddress { get { return _cityPropertyTaxAddress; } set { _cityPropertyTaxAddress = value; } }
-        private Value<decimal?> _cityPropertyTaxAmountLastPay;
+        private DirtyValue<decimal?> _cityPropertyTaxAmountLastPay;
         public decimal? CityPropertyTaxAmountLastPay { get { return _cityPropertyTaxAmountLastPay; } set { _cityPropertyTaxAmountLastPay = value; } }
-        private Value<decimal?> _cityPropertyTaxAmountNextDue;
+        private DirtyValue<decimal?> _cityPropertyTaxAmountNextDue;
         public decimal? CityPropertyTaxAmountNextDue { get { return _cityPropertyTaxAmountNextDue; } set { _cityPropertyTaxAmountNextDue = value; } }
-        private Value<string> _cityPropertyTaxCity;
+        private DirtyValue<string> _cityPropertyTaxCity;
         public string CityPropertyTaxCity { get { return _cityPropertyTaxCity; } set { _cityPropertyTaxCity = value; } }
-        private Value<string> _cityPropertyTaxContactName;
+        private DirtyValue<string> _cityPropertyTaxContactName;
         public string CityPropertyTaxContactName { get { return _cityPropertyTaxContactName; } set { _cityPropertyTaxContactName = value; } }
-        private Value<DateTime?> _cityPropertyTaxDatePaid;
+        private DirtyValue<DateTime?> _cityPropertyTaxDatePaid;
         public DateTime? CityPropertyTaxDatePaid { get { return _cityPropertyTaxDatePaid; } set { _cityPropertyTaxDatePaid = value; } }
-        private Value<DateTime?> _cityPropertyTaxDelinquentDate;
+        private DirtyValue<DateTime?> _cityPropertyTaxDelinquentDate;
         public DateTime? CityPropertyTaxDelinquentDate { get { return _cityPropertyTaxDelinquentDate; } set { _cityPropertyTaxDelinquentDate = value; } }
-        private Value<string> _cityPropertyTaxEmail;
+        private DirtyValue<string> _cityPropertyTaxEmail;
         public string CityPropertyTaxEmail { get { return _cityPropertyTaxEmail; } set { _cityPropertyTaxEmail = value; } }
-        private Value<string> _cityPropertyTaxFax;
+        private DirtyValue<string> _cityPropertyTaxFax;
         public string CityPropertyTaxFax { get { return _cityPropertyTaxFax; } set { _cityPropertyTaxFax = value; } }
-        private Value<string> _cityPropertyTaxName;
+        private DirtyValue<string> _cityPropertyTaxName;
         public string CityPropertyTaxName { get { return _cityPropertyTaxName; } set { _cityPropertyTaxName = value; } }
-        private Value<DateTime?> _cityPropertyTaxNextDueDate;
+        private DirtyValue<DateTime?> _cityPropertyTaxNextDueDate;
         public DateTime? CityPropertyTaxNextDueDate { get { return _cityPropertyTaxNextDueDate; } set { _cityPropertyTaxNextDueDate = value; } }
-        private Value<string> _cityPropertyTaxPaymentSchedule;
+        private DirtyValue<string> _cityPropertyTaxPaymentSchedule;
         public string CityPropertyTaxPaymentSchedule { get { return _cityPropertyTaxPaymentSchedule; } set { _cityPropertyTaxPaymentSchedule = value; } }
-        private Value<string> _cityPropertyTaxPhone;
+        private DirtyValue<string> _cityPropertyTaxPhone;
         public string CityPropertyTaxPhone { get { return _cityPropertyTaxPhone; } set { _cityPropertyTaxPhone = value; } }
-        private Value<string> _cityPropertyTaxPostalCode;
+        private DirtyValue<string> _cityPropertyTaxPostalCode;
         public string CityPropertyTaxPostalCode { get { return _cityPropertyTaxPostalCode; } set { _cityPropertyTaxPostalCode = value; } }
-        private Value<string> _cityPropertyTaxState;
+        private DirtyValue<string> _cityPropertyTaxState;
         public string CityPropertyTaxState { get { return _cityPropertyTaxState; } set { _cityPropertyTaxState = value; } }
-        private Value<decimal?> _endingBalance;
+        private DirtyValue<decimal?> _endingBalance;
         public decimal? EndingBalance { get { return _endingBalance; } set { _endingBalance = value; } }
-        private Value<DateTime?> _escrowFirstPaymentDate;
+        private DirtyValue<DateTime?> _escrowFirstPaymentDate;
         public DateTime? EscrowFirstPaymentDate { get { return _escrowFirstPaymentDate; } set { _escrowFirstPaymentDate = value; } }
-        private Value<string> _escrowFirstPaymentDateType;
+        private DirtyValue<string> _escrowFirstPaymentDateType;
         public string EscrowFirstPaymentDateType { get { return _escrowFirstPaymentDateType; } set { _escrowFirstPaymentDateType = value; } }
-        private Value<decimal?> _escrowPayment;
+        private DirtyValue<decimal?> _escrowPayment;
         public decimal? EscrowPayment { get { return _escrowPayment; } set { _escrowPayment = value; } }
-        private Value<decimal?> _escrowPaymentYearly;
+        private DirtyValue<decimal?> _escrowPaymentYearly;
         public decimal? EscrowPaymentYearly { get { return _escrowPaymentYearly; } set { _escrowPaymentYearly = value; } }
-        private Value<int?> _floodInsDisbCushion;
+        private DirtyValue<int?> _floodInsDisbCushion;
         public int? FloodInsDisbCushion { get { return _floodInsDisbCushion; } set { _floodInsDisbCushion = value; } }
-        private Value<int?> _hazInsDisbCushion;
+        private DirtyValue<int?> _hazInsDisbCushion;
         public int? HazInsDisbCushion { get { return _hazInsDisbCushion; } set { _hazInsDisbCushion = value; } }
-        private Value<List<Hud1EsDate>> _hud1EsDates;
-        public List<Hud1EsDate> Hud1EsDates { get { return _hud1EsDates; } set { _hud1EsDates = value; } }
-        private Value<List<Hud1EsDueDate>> _hud1EsDueDates;
-        public List<Hud1EsDueDate> Hud1EsDueDates { get { return _hud1EsDueDates; } set { _hud1EsDueDates = value; } }
-        private Value<List<Hud1EsItemize>> _hud1EsItemizes;
-        public List<Hud1EsItemize> Hud1EsItemizes { get { return _hud1EsItemizes; } set { _hud1EsItemizes = value; } }
-        private Value<int?> _hud1EsItemizesTotalLines;
+        private DirtyList<Hud1EsDate> _hud1EsDates;
+        public IList<Hud1EsDate> Hud1EsDates { get { return _hud1EsDates ?? (_hud1EsDates = new DirtyList<Hud1EsDate>()); } set { _hud1EsDates = new DirtyList<Hud1EsDate>(value); } }
+        private DirtyList<Hud1EsDueDate> _hud1EsDueDates;
+        public IList<Hud1EsDueDate> Hud1EsDueDates { get { return _hud1EsDueDates ?? (_hud1EsDueDates = new DirtyList<Hud1EsDueDate>()); } set { _hud1EsDueDates = new DirtyList<Hud1EsDueDate>(value); } }
+        private DirtyList<Hud1EsItemize> _hud1EsItemizes;
+        public IList<Hud1EsItemize> Hud1EsItemizes { get { return _hud1EsItemizes ?? (_hud1EsItemizes = new DirtyList<Hud1EsItemize>()); } set { _hud1EsItemizes = new DirtyList<Hud1EsItemize>(value); } }
+        private DirtyValue<int?> _hud1EsItemizesTotalLines;
         public int? Hud1EsItemizesTotalLines { get { return _hud1EsItemizesTotalLines; } set { _hud1EsItemizesTotalLines = value; } }
-        private Value<bool?> _hud1EsItemizesUseItemizeEscrowIndicator;
+        private DirtyValue<bool?> _hud1EsItemizesUseItemizeEscrowIndicator;
         public bool? Hud1EsItemizesUseItemizeEscrowIndicator { get { return _hud1EsItemizesUseItemizeEscrowIndicator; } set { _hud1EsItemizesUseItemizeEscrowIndicator = value; } }
-        private Value<List<Hud1EsPayTo>> _hud1EsPayTos;
-        public List<Hud1EsPayTo> Hud1EsPayTos { get { return _hud1EsPayTos; } set { _hud1EsPayTos = value; } }
-        private Value<List<Hud1EsSetup>> _hud1EsSetups;
-        public List<Hud1EsSetup> Hud1EsSetups { get { return _hud1EsSetups; } set { _hud1EsSetups = value; } }
-        private Value<string> _id;
+        private DirtyList<Hud1EsPayTo> _hud1EsPayTos;
+        public IList<Hud1EsPayTo> Hud1EsPayTos { get { return _hud1EsPayTos ?? (_hud1EsPayTos = new DirtyList<Hud1EsPayTo>()); } set { _hud1EsPayTos = new DirtyList<Hud1EsPayTo>(value); } }
+        private DirtyList<Hud1EsSetup> _hud1EsSetups;
+        public IList<Hud1EsSetup> Hud1EsSetups { get { return _hud1EsSetups ?? (_hud1EsSetups = new DirtyList<Hud1EsSetup>()); } set { _hud1EsSetups = new DirtyList<Hud1EsSetup>(value); } }
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<bool?> _mtgInsCushionTerminationIndicator;
+        private DirtyValue<bool?> _mtgInsCushionTerminationIndicator;
         public bool? MtgInsCushionTerminationIndicator { get { return _mtgInsCushionTerminationIndicator; } set { _mtgInsCushionTerminationIndicator = value; } }
-        private Value<int?> _mtgInsDisbCushion;
+        private DirtyValue<int?> _mtgInsDisbCushion;
         public int? MtgInsDisbCushion { get { return _mtgInsDisbCushion; } set { _mtgInsDisbCushion = value; } }
-        private Value<decimal?> _nonEscrowCostsYearly;
+        private DirtyValue<decimal?> _nonEscrowCostsYearly;
         public decimal? NonEscrowCostsYearly { get { return _nonEscrowCostsYearly; } set { _nonEscrowCostsYearly = value; } }
-        private Value<string> _realEstateTaxAddress;
+        private DirtyValue<string> _realEstateTaxAddress;
         public string RealEstateTaxAddress { get { return _realEstateTaxAddress; } set { _realEstateTaxAddress = value; } }
-        private Value<decimal?> _realEstateTaxAmountLastPay;
+        private DirtyValue<decimal?> _realEstateTaxAmountLastPay;
         public decimal? RealEstateTaxAmountLastPay { get { return _realEstateTaxAmountLastPay; } set { _realEstateTaxAmountLastPay = value; } }
-        private Value<decimal?> _realEstateTaxAmountNextDue;
+        private DirtyValue<decimal?> _realEstateTaxAmountNextDue;
         public decimal? RealEstateTaxAmountNextDue { get { return _realEstateTaxAmountNextDue; } set { _realEstateTaxAmountNextDue = value; } }
-        private Value<string> _realEstateTaxCity;
+        private DirtyValue<string> _realEstateTaxCity;
         public string RealEstateTaxCity { get { return _realEstateTaxCity; } set { _realEstateTaxCity = value; } }
-        private Value<string> _realEstateTaxContactName;
+        private DirtyValue<string> _realEstateTaxContactName;
         public string RealEstateTaxContactName { get { return _realEstateTaxContactName; } set { _realEstateTaxContactName = value; } }
-        private Value<DateTime?> _realEstateTaxDatePaid;
+        private DirtyValue<DateTime?> _realEstateTaxDatePaid;
         public DateTime? RealEstateTaxDatePaid { get { return _realEstateTaxDatePaid; } set { _realEstateTaxDatePaid = value; } }
-        private Value<DateTime?> _realEstateTaxDelinquentDate;
+        private DirtyValue<DateTime?> _realEstateTaxDelinquentDate;
         public DateTime? RealEstateTaxDelinquentDate { get { return _realEstateTaxDelinquentDate; } set { _realEstateTaxDelinquentDate = value; } }
-        private Value<string> _realEstateTaxEmail;
+        private DirtyValue<string> _realEstateTaxEmail;
         public string RealEstateTaxEmail { get { return _realEstateTaxEmail; } set { _realEstateTaxEmail = value; } }
-        private Value<string> _realEstateTaxFax;
+        private DirtyValue<string> _realEstateTaxFax;
         public string RealEstateTaxFax { get { return _realEstateTaxFax; } set { _realEstateTaxFax = value; } }
-        private Value<string> _realEstateTaxName;
+        private DirtyValue<string> _realEstateTaxName;
         public string RealEstateTaxName { get { return _realEstateTaxName; } set { _realEstateTaxName = value; } }
-        private Value<DateTime?> _realEstateTaxNextDueDate;
+        private DirtyValue<DateTime?> _realEstateTaxNextDueDate;
         public DateTime? RealEstateTaxNextDueDate { get { return _realEstateTaxNextDueDate; } set { _realEstateTaxNextDueDate = value; } }
-        private Value<string> _realEstateTaxPaymentSchedule;
+        private DirtyValue<string> _realEstateTaxPaymentSchedule;
         public string RealEstateTaxPaymentSchedule { get { return _realEstateTaxPaymentSchedule; } set { _realEstateTaxPaymentSchedule = value; } }
-        private Value<string> _realEstateTaxPhone;
+        private DirtyValue<string> _realEstateTaxPhone;
         public string RealEstateTaxPhone { get { return _realEstateTaxPhone; } set { _realEstateTaxPhone = value; } }
-        private Value<string> _realEstateTaxPostalCode;
+        private DirtyValue<string> _realEstateTaxPostalCode;
         public string RealEstateTaxPostalCode { get { return _realEstateTaxPostalCode; } set { _realEstateTaxPostalCode = value; } }
-        private Value<string> _realEstateTaxState;
+        private DirtyValue<string> _realEstateTaxState;
         public string RealEstateTaxState { get { return _realEstateTaxState; } set { _realEstateTaxState = value; } }
-        private Value<int?> _schoolTaxesCushion;
+        private DirtyValue<int?> _schoolTaxesCushion;
         public int? SchoolTaxesCushion { get { return _schoolTaxesCushion; } set { _schoolTaxesCushion = value; } }
-        private Value<string> _servicerAddress;
+        private DirtyValue<string> _servicerAddress;
         public string ServicerAddress { get { return _servicerAddress; } set { _servicerAddress = value; } }
-        private Value<string> _servicerCity;
+        private DirtyValue<string> _servicerCity;
         public string ServicerCity { get { return _servicerCity; } set { _servicerCity = value; } }
-        private Value<string> _servicerContactName;
+        private DirtyValue<string> _servicerContactName;
         public string ServicerContactName { get { return _servicerContactName; } set { _servicerContactName = value; } }
-        private Value<string> _servicerPhone;
+        private DirtyValue<string> _servicerPhone;
         public string ServicerPhone { get { return _servicerPhone; } set { _servicerPhone = value; } }
-        private Value<string> _servicerPostalCode;
+        private DirtyValue<string> _servicerPostalCode;
         public string ServicerPostalCode { get { return _servicerPostalCode; } set { _servicerPostalCode = value; } }
-        private Value<string> _servicerState;
+        private DirtyValue<string> _servicerState;
         public string ServicerState { get { return _servicerState; } set { _servicerState = value; } }
-        private Value<decimal?> _singleLineAnalysis;
+        private DirtyValue<decimal?> _singleLineAnalysis;
         public decimal? SingleLineAnalysis { get { return _singleLineAnalysis; } set { _singleLineAnalysis = value; } }
-        private Value<decimal?> _startingBalance;
+        private DirtyValue<decimal?> _startingBalance;
         public decimal? StartingBalance { get { return _startingBalance; } set { _startingBalance = value; } }
-        private Value<int?> _taxDisbCushion;
+        private DirtyValue<int?> _taxDisbCushion;
         public int? TaxDisbCushion { get { return _taxDisbCushion; } set { _taxDisbCushion = value; } }
-        private Value<decimal?> _totalEscrowReserves;
+        private DirtyValue<decimal?> _totalEscrowReserves;
         public decimal? TotalEscrowReserves { get { return _totalEscrowReserves; } set { _totalEscrowReserves = value; } }
-        private Value<decimal?> _usdaAnnualFee;
+        private DirtyValue<decimal?> _usdaAnnualFee;
         public decimal? UsdaAnnualFee { get { return _usdaAnnualFee; } set { _usdaAnnualFee = value; } }
-        private Value<int?> _userDefinedCushion1;
+        private DirtyValue<int?> _userDefinedCushion1;
         public int? UserDefinedCushion1 { get { return _userDefinedCushion1; } set { _userDefinedCushion1 = value; } }
-        private Value<int?> _userDefinedCushion2;
+        private DirtyValue<int?> _userDefinedCushion2;
         public int? UserDefinedCushion2 { get { return _userDefinedCushion2; } set { _userDefinedCushion2 = value; } }
-        private Value<int?> _userDefinedCushion3;
+        private DirtyValue<int?> _userDefinedCushion3;
         public int? UserDefinedCushion3 { get { return _userDefinedCushion3; } set { _userDefinedCushion3 = value; } }
-        private Value<decimal?> _yearlyMortgageInsurance;
+        private DirtyValue<decimal?> _yearlyMortgageInsurance;
         public decimal? YearlyMortgageInsurance { get { return _yearlyMortgageInsurance; } set { _yearlyMortgageInsurance = value; } }
-        private Value<decimal?> _yearlyUsdaFee;
+        private DirtyValue<decimal?> _yearlyUsdaFee;
         public decimal? YearlyUsdaFee { get { return _yearlyUsdaFee; } set { _yearlyUsdaFee = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _annualCityTax.Dirty
                     || _annualFeeCushion.Dirty
                     || _annualFloodInsurance.Dirty
@@ -230,13 +231,8 @@ namespace EncompassRest.Loans
                     || _escrowPaymentYearly.Dirty
                     || _floodInsDisbCushion.Dirty
                     || _hazInsDisbCushion.Dirty
-                    || _hud1EsDates.Dirty
-                    || _hud1EsDueDates.Dirty
-                    || _hud1EsItemizes.Dirty
                     || _hud1EsItemizesTotalLines.Dirty
                     || _hud1EsItemizesUseItemizeEscrowIndicator.Dirty
-                    || _hud1EsPayTos.Dirty
-                    || _hud1EsSetups.Dirty
                     || _id.Dirty
                     || _mtgInsCushionTerminationIndicator.Dirty
                     || _mtgInsDisbCushion.Dirty
@@ -272,13 +268,19 @@ namespace EncompassRest.Loans
                     || _userDefinedCushion2.Dirty
                     || _userDefinedCushion3.Dirty
                     || _yearlyMortgageInsurance.Dirty
-                    || _yearlyUsdaFee.Dirty;
-                _gettingDirty = 0;
+                    || _yearlyUsdaFee.Dirty
+                    || _hud1EsDates?.Dirty == true
+                    || _hud1EsDueDates?.Dirty == true
+                    || _hud1EsItemizes?.Dirty == true
+                    || _hud1EsPayTos?.Dirty == true
+                    || _hud1EsSetups?.Dirty == true;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _annualCityTax.Dirty = value;
                 _annualFeeCushion.Dirty = value;
                 _annualFloodInsurance.Dirty = value;
@@ -322,13 +324,8 @@ namespace EncompassRest.Loans
                 _escrowPaymentYearly.Dirty = value;
                 _floodInsDisbCushion.Dirty = value;
                 _hazInsDisbCushion.Dirty = value;
-                _hud1EsDates.Dirty = value;
-                _hud1EsDueDates.Dirty = value;
-                _hud1EsItemizes.Dirty = value;
                 _hud1EsItemizesTotalLines.Dirty = value;
                 _hud1EsItemizesUseItemizeEscrowIndicator.Dirty = value;
-                _hud1EsPayTos.Dirty = value;
-                _hud1EsSetups.Dirty = value;
                 _id.Dirty = value;
                 _mtgInsCushionTerminationIndicator.Dirty = value;
                 _mtgInsDisbCushion.Dirty = value;
@@ -365,7 +362,12 @@ namespace EncompassRest.Loans
                 _userDefinedCushion3.Dirty = value;
                 _yearlyMortgageInsurance.Dirty = value;
                 _yearlyUsdaFee.Dirty = value;
-                _settingDirty = 0;
+                if (_hud1EsDates != null) _hud1EsDates.Dirty = value;
+                if (_hud1EsDueDates != null) _hud1EsDueDates.Dirty = value;
+                if (_hud1EsItemizes != null) _hud1EsItemizes.Dirty = value;
+                if (_hud1EsPayTos != null) _hud1EsPayTos.Dirty = value;
+                if (_hud1EsSetups != null) _hud1EsSetups.Dirty = value;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

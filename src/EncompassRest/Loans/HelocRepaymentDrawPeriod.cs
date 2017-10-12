@@ -8,27 +8,28 @@ namespace EncompassRest.Loans
 {
     public sealed partial class HelocRepaymentDrawPeriod : IDirty
     {
-        private Value<decimal?> _apr;
+        private DirtyValue<decimal?> _apr;
         public decimal? Apr { get { return _apr; } set { _apr = value; } }
-        private Value<bool?> _drawIndicator;
+        private DirtyValue<bool?> _drawIndicator;
         public bool? DrawIndicator { get { return _drawIndicator; } set { _drawIndicator = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _indexRatePercent;
+        private DirtyValue<decimal?> _indexRatePercent;
         public decimal? IndexRatePercent { get { return _indexRatePercent; } set { _indexRatePercent = value; } }
-        private Value<decimal?> _marginRatePercent;
+        private DirtyValue<decimal?> _marginRatePercent;
         public decimal? MarginRatePercent { get { return _marginRatePercent; } set { _marginRatePercent = value; } }
-        private Value<decimal?> _minimumMonthlyPaymentAmount;
+        private DirtyValue<decimal?> _minimumMonthlyPaymentAmount;
         public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
-        private Value<int?> _year;
+        private DirtyValue<int?> _year;
         public int? Year { get { return _year; } set { _year = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _apr.Dirty
                     || _drawIndicator.Dirty
                     || _id.Dirty
@@ -36,12 +37,13 @@ namespace EncompassRest.Loans
                     || _marginRatePercent.Dirty
                     || _minimumMonthlyPaymentAmount.Dirty
                     || _year.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _apr.Dirty = value;
                 _drawIndicator.Dirty = value;
                 _id.Dirty = value;
@@ -49,7 +51,7 @@ namespace EncompassRest.Loans
                 _marginRatePercent.Dirty = value;
                 _minimumMonthlyPaymentAmount.Dirty = value;
                 _year.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

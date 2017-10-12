@@ -216,15 +216,10 @@ namespace EncompassRest.Loans
 
         public Task DeleteLoanAsync(string loanId) => DeleteLoanAsync(loanId, CancellationToken.None);
 
-        public Task DeleteLoanAsync(string loanId, CancellationToken cancellationToken)
+        public async Task DeleteLoanAsync(string loanId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            return DeleteLoanInternalAsync(loanId, cancellationToken);
-        }
-
-        private async Task DeleteLoanInternalAsync(string loanId, CancellationToken cancellationToken)
-        {
             using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/{loanId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)

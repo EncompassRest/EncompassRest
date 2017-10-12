@@ -8,40 +8,42 @@ namespace EncompassRest.Loans
 {
     public sealed partial class ExtraPayment : IDirty
     {
-        private Value<decimal?> _amount;
+        private DirtyValue<decimal?> _amount;
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
-        private Value<DateTime?> _date;
+        private DirtyValue<DateTime?> _date;
         public DateTime? Date { get { return _date; } set { _date = value; } }
-        private Value<int?> _extraPaymentIndex;
+        private DirtyValue<int?> _extraPaymentIndex;
         public int? ExtraPaymentIndex { get { return _extraPaymentIndex; } set { _extraPaymentIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<int?> _lineNumber;
+        private DirtyValue<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _amount.Dirty
                     || _date.Dirty
                     || _extraPaymentIndex.Dirty
                     || _id.Dirty
                     || _lineNumber.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _amount.Dirty = value;
                 _date.Dirty = value;
                 _extraPaymentIndex.Dirty = value;
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

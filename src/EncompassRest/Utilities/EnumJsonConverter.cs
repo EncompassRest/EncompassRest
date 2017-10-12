@@ -10,12 +10,40 @@ namespace EncompassRest.Utilities
     {
         Integer,
         Name,
-        CamelCaseName
+        CamelCaseName,
+        EnumMemberValue
+    }
+
+    internal static class EnumOutputExtensions
+    {
+        public static EnumFormat GetEnumFormat(this EnumOutput value)
+        {
+            switch (value)
+            {
+                case EnumOutput.Name:
+                    return EnumFormat.Name;
+                case EnumOutput.CamelCaseName:
+                    return EnumJsonConverter.CamelCaseNameFormat;
+                case EnumOutput.EnumMemberValue:
+                    return EnumFormat.EnumMemberValue;
+                default:
+                    return EnumFormat.DecimalValue;
+            }
+        }
     }
 
     internal sealed class EnumJsonConverter : JsonConverter
     {
-        private static readonly CamelCaseNamingStrategy s_camelCaseNamingStrategy = new CamelCaseNamingStrategy();
+        internal static readonly EnumFormat CamelCaseNameFormat;
+        private static readonly CamelCaseNamingStrategy s_camelCaseNamingStrategy;
+
+        static EnumJsonConverter()
+        {
+            s_camelCaseNamingStrategy = new CamelCaseNamingStrategy();
+            CamelCaseNameFormat = Enums.RegisterCustomEnumFormat(member => s_camelCaseNamingStrategy.GetPropertyName(member.Name, false));
+        }
+
+        private readonly EnumFormat[] _enumFormats;
 
         public EnumOutput EnumOutput { get; }
 
@@ -29,6 +57,7 @@ namespace EncompassRest.Utilities
             enumOutput.Validate(nameof(enumOutput));
 
             EnumOutput = enumOutput;
+            _enumFormats = new[] { enumOutput.GetEnumFormat() };
         }
 
         public override bool CanConvert(Type objectType)
@@ -50,7 +79,7 @@ namespace EncompassRest.Utilities
                         }
                         return null;
                     case JsonToken.String:
-                        return NonGenericEnums.Parse(objectType, (string)reader.Value, EnumOutput == EnumOutput.CamelCaseName);
+                        return NonGenericEnums.Parse(objectType, (string)reader.Value, _enumFormats);
                     case JsonToken.Integer:
                         return NonGenericEnums.ToObject(objectType, reader.Value);
                     default:
@@ -74,14 +103,10 @@ namespace EncompassRest.Utilities
                 var enumType = value.GetType();
                 if (EnumOutput != EnumOutput.Integer)
                 {
-                    var name = NonGenericEnums.GetName(enumType, value);
-                    if (name != null)
+                    var member = NonGenericEnums.GetMember(enumType, value);
+                    if (member != null)
                     {
-                        if (EnumOutput == EnumOutput.CamelCaseName)
-                        {
-                            name = s_camelCaseNamingStrategy.GetPropertyName(name, false);
-                        }
-                        writer.WriteValue(name);
+                        writer.WriteValue(member.AsString(_enumFormats));
                         return;
                     }
                 }

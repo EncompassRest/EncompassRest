@@ -1,100 +1,100 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 
 namespace EncompassRest.Loans.Documents
 {
     public sealed class LoanDocument : IDirty
     {
-        private Value<string> _documentId;
+        private DirtyValue<string> _documentId;
         public string DocumentId { get { return _documentId; } set { _documentId = value; } }
-        private Value<string> _titleWithIndex;
+        private DirtyValue<string> _titleWithIndex;
         public string TitleWithIndex { get { return _titleWithIndex; } set { _titleWithIndex = value; } }
-        private Value<string> _applicationName;
+        private DirtyValue<string> _applicationName;
         public string ApplicationName { get { return _applicationName; } set { _applicationName = value; } }
-        private Value<string> _milestoneId;
+        private DirtyValue<string> _milestoneId;
         public string MilestoneId { get { return _milestoneId; } set { _milestoneId = value; } }
-        private Value<bool?> _webCenterAllowed;
+        private DirtyValue<bool?> _webCenterAllowed;
         public bool? WebCenterAllowed { get { return _webCenterAllowed; } set { _webCenterAllowed = value; } }
-        private Value<bool?> _tpoAllowed;
+        private DirtyValue<bool?> _tpoAllowed;
         public bool? TpoAllowed { get { return _tpoAllowed; } set { _tpoAllowed = value; } }
-        private Value<bool?> _thirdPartyAllowed;
+        private DirtyValue<bool?> _thirdPartyAllowed;
         public bool? ThirdPartyAllowed { get { return _thirdPartyAllowed; } set { _thirdPartyAllowed = value; } }
-        private Value<bool?> _isRequested;
+        private DirtyValue<bool?> _isRequested;
         public bool? IsRequested { get { return _isRequested; } set { _isRequested = value; } }
-        private Value<string> _requestedBy;
+        private DirtyValue<string> _requestedBy;
         public string RequestedBy { get { return _requestedBy; } set { _requestedBy = value; } }
-        private Value<bool?> _isRerequested;
+        private DirtyValue<bool?> _isRerequested;
         public bool? IsRerequested { get { return _isRerequested; } set { _isRerequested = value; } }
-        private Value<DateTime?> _dateRerequested;
+        private DirtyValue<DateTime?> _dateRerequested;
         public DateTime? DateRerequested { get { return _dateRerequested; } set { _dateRerequested = value; } }
-        private Value<string> _rerequestedBy;
+        private DirtyValue<string> _rerequestedBy;
         public string RerequestedBy { get { return _rerequestedBy; } set { _rerequestedBy = value; } }
-        private Value<int?> _daysDue;
+        private DirtyValue<int?> _daysDue;
         public int? DaysDue { get { return _daysDue; } set { _daysDue = value; } }
-        private Value<bool?> _isReceived;
+        private DirtyValue<bool?> _isReceived;
         public bool? IsReceived { get { return _isReceived; } set { _isReceived = value; } }
-        private Value<string> _receivedBy;
+        private DirtyValue<string> _receivedBy;
         public string ReceivedBy { get { return _receivedBy; } set { _receivedBy = value; } }
-        private Value<int?> _daysTillExpire;
+        private DirtyValue<int?> _daysTillExpire;
         public int? DaysTillExpire { get { return _daysTillExpire; } set { _daysTillExpire = value; } }
-        private Value<bool?> _isReviewed;
+        private DirtyValue<bool?> _isReviewed;
         public bool? IsReviewed { get { return _isReviewed; } set { _isReviewed = value; } }
-        private Value<string> _reviewedBy;
+        private DirtyValue<string> _reviewedBy;
         public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
-        private Value<bool?> _isReadyForUw;
+        private DirtyValue<bool?> _isReadyForUw;
         public bool? IsReadyForUw { get { return _isReadyForUw; } set { _isReadyForUw = value; } }
-        private Value<string> _readyForUwBy;
+        private DirtyValue<string> _readyForUwBy;
         public string ReadyForUwBy { get { return _readyForUwBy; } set { _readyForUwBy = value; } }
-        private Value<bool?> _isReadyToShip;
+        private DirtyValue<bool?> _isReadyToShip;
         public bool? IsReadyToShip { get { return _isReadyToShip; } set { _isReadyToShip = value; } }
-        private Value<string> _readyToShipBy;
+        private DirtyValue<string> _readyToShipBy;
         public string ReadyToShipBy { get { return _readyToShipBy; } set { _readyToShipBy = value; } }
-        private Value<DateTime?> _dateExpires;
+        private DirtyValue<DateTime?> _dateExpires;
         public DateTime? DateExpires { get { return _dateExpires; } set { _dateExpires = value; } }
-        private Value<string> _createdBy;
+        private DirtyValue<string> _createdBy;
         public string CreatedBy { get { return _createdBy; } set { _createdBy = value; } }
-        private Value<DateTime?> _dateCreated;
+        private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get { return _dateCreated; } set { _dateCreated = value; } }
-        private Value<string> _title;
+        private DirtyValue<string> _title;
         public string Title { get { return _title; } set { _title = value; } }
-        private Value<string> _description;
+        private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private Value<string> _requestedFrom;
+        private DirtyValue<string> _requestedFrom;
         public string RequestedFrom { get { return _requestedFrom; } set { _requestedFrom = value; } }
-        private Value<string> _applicationId;
+        private DirtyValue<string> _applicationId;
         public string ApplicationId { get { return _applicationId; } set { _applicationId = value; } }
-        private Value<string> _emnSignature;
+        private DirtyValue<string> _emnSignature;
         public string EmnSignature { get { return _emnSignature; } set { _emnSignature = value; } }
-        private Value<DocumentStatus?> _status;
+        private DirtyValue<DocumentStatus?> _status;
         public DocumentStatus? Status { get { return _status; } set { _status = value; } }
-        private Value<DateTime?> _statusDate;
+        private DirtyValue<DateTime?> _statusDate;
         public DateTime? StatusDate { get { return _statusDate; } set { _statusDate = value; } }
-        private Value<DateTime?> _dateRequested;
+        private DirtyValue<DateTime?> _dateRequested;
         public DateTime? DateRequested { get { return _dateRequested; } set { _dateRequested = value; } }
-        private Value<DateTime?> _dateExpected;
+        private DirtyValue<DateTime?> _dateExpected;
         public DateTime? DateExpected { get { return _dateExpected; } set { _dateExpected = value; } }
-        private Value<DateTime?> _dateReceived;
+        private DirtyValue<DateTime?> _dateReceived;
         public DateTime? DateReceived { get { return _dateReceived; } set { _dateReceived = value; } }
-        private Value<DateTime?> _dateReviewed;
+        private DirtyValue<DateTime?> _dateReviewed;
         public DateTime? DateReviewed { get { return _dateReviewed; } set { _dateReviewed = value; } }
-        private Value<DateTime?> _dateReadyForUw;
+        private DirtyValue<DateTime?> _dateReadyForUw;
         public DateTime? DateReadyForUw { get { return _dateReadyForUw; } set { _dateReadyForUw = value; } }
-        private Value<DateTime?> _dateReadyToShip;
+        private DirtyValue<DateTime?> _dateReadyToShip;
         public DateTime? DateReadyToShip { get { return _dateReadyToShip; } set { _dateReadyToShip = value; } }
-        private Value<List<DocumentComment>> _comments;
-        public List<DocumentComment> Comments { get { return _comments; } set { _comments = value; } }
-        private Value<List<FileAttachmentReference>> _attachments;
-        public List<FileAttachmentReference> Attachments { get { return _attachments; } set { _attachments = value; } }
-        private Value<List<EntityReference>> _roles;
-        public List<EntityReference> Roles { get { return _roles; } set { _roles = value; } }
-        private int _gettingDirty;
-        private int _settingDirty;
+        private DirtyList<DocumentComment> _comments;
+        public IList<DocumentComment> Comments { get { return _comments ?? (_comments = new DirtyList<DocumentComment>()); } set { _comments = new DirtyList<DocumentComment>(value); } }
+        private DirtyList<FileAttachmentReference> _attachments;
+        public IList<FileAttachmentReference> Attachments { get { return _attachments ?? (_attachments = new DirtyList<FileAttachmentReference>()); } set { _attachments = new DirtyList<FileAttachmentReference>(value); } }
+        private DirtyList<EntityReference> _roles;
+        public IList<EntityReference> Roles { get { return _roles ?? (_roles = new DirtyList<EntityReference>()); } set { _roles = new DirtyList<EntityReference>(value); } }
+        private bool _gettingDirty;
+        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _documentId.Dirty
                     || _titleWithIndex.Dirty
                     || _applicationName.Dirty
@@ -133,15 +133,16 @@ namespace EncompassRest.Loans.Documents
                     || _dateReviewed.Dirty
                     || _dateReadyForUw.Dirty
                     || _dateReadyToShip.Dirty
-                    || _comments.Dirty
-                    || _attachments.Dirty
-                    || _roles.Dirty;
-                _gettingDirty = 0;
+                    || _comments?.Dirty == true
+                    || _attachments?.Dirty == true
+                    || _roles?.Dirty == true;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _documentId.Dirty = value;
                 _titleWithIndex.Dirty = value;
                 _applicationName.Dirty = value;
@@ -180,10 +181,10 @@ namespace EncompassRest.Loans.Documents
                 _dateReviewed.Dirty = value;
                 _dateReadyForUw.Dirty = value;
                 _dateReadyToShip.Dirty = value;
-                _comments.Dirty = value;
-                _attachments.Dirty = value;
-                _roles.Dirty = value;
-                _settingDirty = 0;
+                if (_comments != null) _comments.Dirty = value;
+                if (_attachments != null) _attachments.Dirty = value;
+                if (_roles != null) _roles.Dirty = value;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

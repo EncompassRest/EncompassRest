@@ -8,41 +8,42 @@ namespace EncompassRest.Loans
 {
     public sealed partial class Hud1EsDate : IDirty
     {
-        private Value<decimal?> _aggrMthDisb;
+        private DirtyValue<decimal?> _aggrMthDisb;
         public decimal? AggrMthDisb { get { return _aggrMthDisb; } set { _aggrMthDisb = value; } }
-        private Value<decimal?> _annualFee;
+        private DirtyValue<decimal?> _annualFee;
         public decimal? AnnualFee { get { return _annualFee; } set { _annualFee = value; } }
-        private Value<decimal?> _balance;
+        private DirtyValue<decimal?> _balance;
         public decimal? Balance { get { return _balance; } set { _balance = value; } }
-        private Value<string> _date;
+        private DirtyValue<string> _date;
         public string Date { get { return _date; } set { _date = value; } }
-        private Value<decimal?> _floodInsDisb;
+        private DirtyValue<decimal?> _floodInsDisb;
         public decimal? FloodInsDisb { get { return _floodInsDisb; } set { _floodInsDisb = value; } }
-        private Value<decimal?> _hazInsDisb;
+        private DirtyValue<decimal?> _hazInsDisb;
         public decimal? HazInsDisb { get { return _hazInsDisb; } set { _hazInsDisb = value; } }
-        private Value<int?> _hud1EsDateIndex;
+        private DirtyValue<int?> _hud1EsDateIndex;
         public int? Hud1EsDateIndex { get { return _hud1EsDateIndex; } set { _hud1EsDateIndex = value; } }
-        private Value<string> _id;
+        private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private Value<decimal?> _mtgInsDisb;
+        private DirtyValue<decimal?> _mtgInsDisb;
         public decimal? MtgInsDisb { get { return _mtgInsDisb; } set { _mtgInsDisb = value; } }
-        private Value<decimal?> _schoolTaxes;
+        private DirtyValue<decimal?> _schoolTaxes;
         public decimal? SchoolTaxes { get { return _schoolTaxes; } set { _schoolTaxes = value; } }
-        private Value<decimal?> _taxDisb;
+        private DirtyValue<decimal?> _taxDisb;
         public decimal? TaxDisb { get { return _taxDisb; } set { _taxDisb = value; } }
-        private Value<decimal?> _userDefined1;
+        private DirtyValue<decimal?> _userDefined1;
         public decimal? UserDefined1 { get { return _userDefined1; } set { _userDefined1 = value; } }
-        private Value<decimal?> _userDefined2;
+        private DirtyValue<decimal?> _userDefined2;
         public decimal? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
-        private Value<decimal?> _userDefined3;
+        private DirtyValue<decimal?> _userDefined3;
         public decimal? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
-        private int _gettingDirty;
-        private int _settingDirty; 
+        private bool _gettingDirty;
+        private bool _settingDirty; 
         internal bool Dirty
         {
             get
             {
-                if (Interlocked.CompareExchange(ref _gettingDirty, 1, 0) != 0) return false;
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
                 var dirty = _aggrMthDisb.Dirty
                     || _annualFee.Dirty
                     || _balance.Dirty
@@ -57,12 +58,13 @@ namespace EncompassRest.Loans
                     || _userDefined1.Dirty
                     || _userDefined2.Dirty
                     || _userDefined3.Dirty;
-                _gettingDirty = 0;
+                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (Interlocked.CompareExchange(ref _settingDirty, 1, 0) != 0) return;
+                if (_settingDirty) return;
+                _settingDirty = true;
                 _aggrMthDisb.Dirty = value;
                 _annualFee.Dirty = value;
                 _balance.Dirty = value;
@@ -77,7 +79,7 @@ namespace EncompassRest.Loans
                 _userDefined1.Dirty = value;
                 _userDefined2.Dirty = value;
                 _userDefined3.Dirty = value;
-                _settingDirty = 0;
+                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
