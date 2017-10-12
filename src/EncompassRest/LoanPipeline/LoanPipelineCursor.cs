@@ -27,9 +27,9 @@ namespace EncompassRest.LoanPipeline
 
         public Task<LoanPipelineData> GetItemAsync(int index, CancellationToken cancellationToken) => GetItemAsync(index, null, cancellationToken);
 
-        public Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields) => GetItemAsync(index, fields, CancellationToken.None);
-
         public Task<LoanPipelineData> GetItemAsync(int index, params string[] fields) => GetItemAsync(index, fields, CancellationToken.None);
+
+        public Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields) => GetItemAsync(index, fields, CancellationToken.None);
 
         public async Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields, CancellationToken cancellationToken)
         {
@@ -44,9 +44,9 @@ namespace EncompassRest.LoanPipeline
 
         public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsAsync(start, limit, null, cancellationToken);
 
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
-
         public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, params string[] fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
+
+        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
 
         public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
         {
@@ -64,9 +64,9 @@ namespace EncompassRest.LoanPipeline
 
         public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsRawAsync(start, limit, null, cancellationToken);
 
-        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
-
         public Task<string> GetItemsRawAsync(int start, int? limit, params string[] fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
+
+        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
 
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
         {
