@@ -54,12 +54,7 @@ namespace EncompassRest.LoanPipeline
         {
             var retrievedData = await Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields ?? Fields, start, count, cancellationToken, nameof(GetItemAsync), async response =>
             {
-                var list = await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
-                if (list.Count == 0)
-                {
-                    throw await RestException.CreateAsync("Failed to retrieve pipeline data", response).ConfigureAwait(false);
-                }
-                return list;
+                return await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
             }).ConfigureAwait(false);
                 
             return retrievedData;
