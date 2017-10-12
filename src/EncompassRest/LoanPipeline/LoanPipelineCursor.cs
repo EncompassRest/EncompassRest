@@ -62,7 +62,11 @@ namespace EncompassRest.LoanPipeline
 
         public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
 
+        public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsRawAsync(start, limit, null, cancellationToken);
+
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
+
+        public Task<string> GetItemsRawAsync(int start, int? limit, params string[] fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
 
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
         {
