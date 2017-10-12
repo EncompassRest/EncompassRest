@@ -37,6 +37,7 @@
 * Code should be async throughout, no uses of blocking code such as `Task.Result` or `Task.Wait` as they can cause deadlocks in consumer code.
 * All uses of the `await` keyword should have a trailing `.ConfigureAwait(false)` applied to the `Task` for better performance.
 * Only apply the `async` keyword to methods when necessary. If you're just return awaiting a `Task` of the same type as the return type from another method then the `async` keyword is unnecessary.
+* Always include a single blank line between type members except for fields.
 
 ### Formatting
 * Always use 4 spaces for indentation.
