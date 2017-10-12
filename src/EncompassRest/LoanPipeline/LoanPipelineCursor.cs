@@ -32,7 +32,7 @@ namespace EncompassRest.LoanPipeline
             Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
             Preconditions.LessThan(index, nameof(index), Count, nameof(Count));
 
-            var data = await GetItemsInternalAsync(index, 1, fields, cancellationToken).ConfigureAwait(false);
+            var data = await GetItemsAsync(index, 1, fields, cancellationToken).ConfigureAwait(false);
             return data[0];
         }
 
@@ -49,17 +49,13 @@ namespace EncompassRest.LoanPipeline
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
             }
 
-            return GetItemsInternalAsync(start, limit, fields, cancellationToken);
+            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, fields ?? Fields, start, limit, cancellationToken, nameof(GetItemAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
         }
-
-        private Task<List<LoanPipelineData>> GetItemsInternalAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken) =>
-            Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, fields ?? Fields, start, limit, cancellationToken, nameof(GetItemAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
-            
 
         public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
 
-        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields,CancellationToken cancellationToken)
+        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
             Preconditions.LessThan(start, nameof(start), Count, nameof(Count));
