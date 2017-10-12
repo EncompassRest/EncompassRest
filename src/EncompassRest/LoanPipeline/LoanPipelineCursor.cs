@@ -50,15 +50,9 @@ namespace EncompassRest.LoanPipeline
             return GetItemsInternalAsync(start, count, itemFields, cancellationToken);
         }
 
-        private async Task<List<LoanPipelineData>> GetItemsInternalAsync(int start, int count, IEnumerable<string> itemFields, CancellationToken cancellationToken)
-        {
-            var retrievedData = await Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields ?? Fields, start, count, cancellationToken, nameof(GetItemAsync), async response =>
-            {
-                return await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
-            }).ConfigureAwait(false);
-                
-            return retrievedData;
-        }
+        private Task<List<LoanPipelineData>> GetItemsInternalAsync(int start, int count, IEnumerable<string> itemFields, CancellationToken cancellationToken) =>
+            Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields ?? Fields, start, count, cancellationToken, nameof(GetItemAsync), response =>response.Content.ReadAsAsync<List<LoanPipelineData>>());
+            
 
         public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> itemFields) => GetItemsRawAsync(start, limit, itemFields, CancellationToken.None);
