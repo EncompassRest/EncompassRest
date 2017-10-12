@@ -26,18 +26,52 @@
         TradeAssignee = 21
     }
 
-    public sealed class BusinessContact : Contact
+    public sealed class BusinessContact : Contact,IDirty
     {
-        public BusinessContact() :base()
+        private DirtyValue<BusinessContactCategory> _categoryId;
+        public BusinessContactCategory CategoryId { get { return _categoryId; } set { _categoryId = value; } }
+        private DirtyValue<string> _companyName;
+        public string CompanyName { get { return _companyName; } set { _companyName = value; } }
+        private BusinessContactLicense _personalContactLicense;
+        public BusinessContactLicense PersonalContactLicense { get { return _personalContactLicense ?? new BusinessContactLicense(); } set { _personalContactLicense = value; } }
+        private BusinessContactLicense _businessContactLicesnse;
+        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicesnse ?? new BusinessContactLicense(); } set { _businessContactLicesnse = value; } }
+        private DirtyValue<bool?> _noSpam;
+        public bool? NoSpam { get { return _noSpam; } set { _noSpam = value; } }
+        private DirtyValue<string> _fees;
+        public string Fees { get { return Fees; } set { _fees = value; } }
+        private bool _gettingDirty;
+        private bool _settingDirty;
+        internal new bool Dirty
         {
-            PersonalContactLicense = new BusinessContactLicense();
-            BusinessContactLicense = new BusinessContactLicense();
+            get
+            {
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
+                var dirty = base.Dirty
+                    || _categoryId.Dirty
+                    || _companyName.Dirty
+                    || _personalContactLicense?.Dirty == true
+                    || _businessContactLicesnse?.Dirty == true
+                    || _noSpam.Dirty
+                    || _fees.Dirty;
+                _gettingDirty = false;
+                return dirty;
+            }
+            set
+            {
+                if (_settingDirty) return;
+                _settingDirty = true;
+                base.Dirty = value;
+                _categoryId.Dirty = value;
+                _companyName.Dirty = value;
+                if (_personalContactLicense!= null) _personalContactLicense.Dirty = value;
+                if (_businessContactLicesnse!= null) _businessContactLicesnse.Dirty = value;
+                _noSpam.Dirty = value;
+                _fees.Dirty = value;
+                _settingDirty = false;
+            }
         }
-        public BusinessContactCategory CategoryId { get; set; }
-        public string CompanyName { get; set; }
-        public BusinessContactLicense PersonalContactLicense { get; set; }
-        public BusinessContactLicense BusinessContactLicense { get; set; }
-        public bool? NoSpam { get; set; }
-        public string Fees { get; set; }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }

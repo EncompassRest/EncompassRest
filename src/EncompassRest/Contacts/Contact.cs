@@ -30,14 +30,10 @@ namespace EncompassRest.Contacts
         public string BusinessEmail { get { return _businessEmail; } set { _businessEmail = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private bool _gettingDirty;
-        private bool _settingDirty;
         internal bool Dirty
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
                 var dirty = _firstName.Dirty
                     || _lastName.Dirty
                     || _ownerId.Dirty
@@ -51,13 +47,10 @@ namespace EncompassRest.Contacts
                     || _personalEmail.Dirty
                     || _businessEmail.Dirty
                     || _id.Dirty;
-                _gettingDirty = false;
                 return dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _firstName.Dirty = value;
                 _lastName.Dirty = value;
                 _ownerId.Dirty = value;
@@ -71,7 +64,6 @@ namespace EncompassRest.Contacts
                 _personalEmail.Dirty = value;
                 _businessEmail.Dirty = value;
                 _id.Dirty = value;
-                _settingDirty = false;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

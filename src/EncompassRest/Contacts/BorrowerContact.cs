@@ -16,12 +16,12 @@
             {
                 if (_gettingDirty) return false;
                 _gettingDirty = true;
-                var Dirty = base.Dirty
+                var dirty = base.Dirty
                     || _employerName.Dirty
                     || _birthdate.Dirty
                     || _refferal.Dirty;
                 _gettingDirty = false;
-                return Dirty;
+                return dirty;
             }
             set
             {
