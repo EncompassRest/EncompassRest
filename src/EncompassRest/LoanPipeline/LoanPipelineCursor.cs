@@ -45,7 +45,6 @@ namespace EncompassRest.LoanPipeline
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
             Preconditions.LessThan(start, nameof(start), Count, nameof(Count));
             Preconditions.GreaterThan(count, nameof(count), 0);
-            //Preconditions.LessThanOrEquals(start, nameof(start) , Count, nameof(Count));
             
 
             return GetItemsInternalAsync(start, count, itemFields, cancellationToken);
@@ -53,7 +52,7 @@ namespace EncompassRest.LoanPipeline
 
         private async Task<List<LoanPipelineData>> GetItemsInternalAsync(int start, int count, IEnumerable<string> itemFields, CancellationToken cancellationToken)
         {
-            var retrievedData = await Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields == null?Fields:itemFields, start, count, cancellationToken, nameof(GetItemAsync), async response =>
+            var retrievedData = await Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields ?? Fields, start, count, cancellationToken, nameof(GetItemAsync), async response =>
             {
                 var list = await response.Content.ReadAsAsync<List<LoanPipelineData>>().ConfigureAwait(false);
                 if (list.Count == 0)
@@ -76,10 +75,9 @@ namespace EncompassRest.LoanPipeline
             if (limit.HasValue)
             {
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
-                //Preconditions.LessThanOrEquals(start + limit.GetValueOrDefault(), $"{nameof(start)} + {nameof(limit)}", Count, nameof(Count));
             }
 
-            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields==null?Fields:itemFields, start, limit, cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
+            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields ?? Fields, start, limit, cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
         }
     }
 }
