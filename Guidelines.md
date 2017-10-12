@@ -37,7 +37,6 @@
 * Code should be async throughout, no uses of blocking code such as `Task.Result` or `Task.Wait` as they can cause deadlocks in consumer code.
 * All uses of the `await` keyword should have a trailing `.ConfigureAwait(false)` applied to the `Task` for better performance.
 * Only apply the `async` keyword to methods when necessary. If you're just return awaiting a `Task` of the same type as the return type from another method then the `async` keyword is unnecessary.
-* Always include a single blank line between type members except for fields.
 
 ### Formatting
 * Always use 4 spaces for indentation.
@@ -45,6 +44,7 @@
 * Never start or end a type or method's body with an empty line.
 * Always separate single line argument or parameter list items with just a comma and space.
 * Never start or end an argument or parameter list with a space. i.e. there should be no space between the parentheses and the list.
+* Always include a single blank line between type members except for fields.
 
 ## Pull Requests
 * Every code change pull request needs to have at least one review by a core member prior to being merged.
