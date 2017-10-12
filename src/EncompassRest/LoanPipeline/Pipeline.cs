@@ -103,9 +103,27 @@ namespace EncompassRest.LoanPipeline
             return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(ViewPipelineAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, null, CancellationToken.None);
+        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, (string)null, CancellationToken.None);
 
-        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, null, cancellationToken);
+        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, (string)null, cancellationToken);
+
+        public Task<string> ViewPipelineRawAsync(string parameters, int? limit) => ViewPipelineRawAsync(parameters, limit, CancellationToken.None);
+
+        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken)
+        {
+            if (limit.HasValue)
+            {
+                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
+            }
+
+            var queryParameters = new QueryParameters();
+            if (limit.HasValue)
+            {
+                queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
+            }
+
+            return ViewPipelineRawAsync(parameters, queryParameters.ToString(), cancellationToken);
+        }
 
         public Task<string> ViewPipelineRawAsync(string parameters, string queryString) => ViewPipelineRawAsync(parameters, queryString, CancellationToken.None);
 
@@ -113,7 +131,7 @@ namespace EncompassRest.LoanPipeline
 
         internal async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, string queryString, CancellationToken cancellationToken, string methodName, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

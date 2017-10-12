@@ -143,7 +143,7 @@ namespace EncompassRest.Loans.Attachments
 
         private async Task<T> UpdateAttachmentInternalAsync<T>(string attachmentId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/attachments/{attachmentId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

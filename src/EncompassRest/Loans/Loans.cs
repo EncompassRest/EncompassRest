@@ -72,9 +72,28 @@ namespace EncompassRest.Loans
             });
         }
 
-        public Task<string> GetLoanRawAsync(string loanId) => GetLoanRawAsync(loanId, null, CancellationToken.None);
+        public Task<string> GetLoanRawAsync(string loanId) => GetLoanRawAsync(loanId, (string)null, CancellationToken.None);
 
-        public Task<string> GetLoanRawAsync(string loanId, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, null, cancellationToken);
+        public Task<string> GetLoanRawAsync(string loanId, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, (string)null, cancellationToken);
+
+        public Task<string> GetLoanRawAsync(string loanId, params LoanEntity[] entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
+
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
+
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<string> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
+
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<string> entities, CancellationToken cancellationToken)
+        {
+            var queryParameters = new QueryParameters();
+            if (entities?.Any() == true)
+            {
+                queryParameters.Add("entities", string.Join(",", entities));
+            }
+
+            return GetLoanRawAsync(loanId, queryParameters.ToString(), cancellationToken);
+        }
 
         public Task<string> GetLoanRawAsync(string loanId, string queryString) => GetLoanRawAsync(loanId, queryString, CancellationToken.None);
 
@@ -87,7 +106,7 @@ namespace EncompassRest.Loans
 
         private async Task<T> GetLoanInternalAsync<T>(string loanId, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
-            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/{loanId}{queryString}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/{loanId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -159,7 +178,7 @@ namespace EncompassRest.Loans
 
         private async Task<string> CreateLoanInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -205,7 +224,7 @@ namespace EncompassRest.Loans
 
         private async Task<string> UpdateLoanInternalAsync(string loanId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{loanId}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{loanId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
