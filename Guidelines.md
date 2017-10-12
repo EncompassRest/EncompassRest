@@ -1,6 +1,6 @@
 # EncompassRest .NET Library Guidelines
-* [.NET API](#net-api)		
-* [Source Code Style](#source-code-style)		
+* [.NET API](#net-api)
+* [Source Code Style](#source-code-style)
 * [Pull Requests](#pull-requests)
 
 ## .NET API
