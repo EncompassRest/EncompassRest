@@ -1,4 +1,8 @@
 # EncompassRest .NET Library Guidelines
+* [.NET API](#net-api)		
+* [Source Code Style](#source-code-style)		
+* [Pull Requests](#pull-requests)
+
 ## .NET API
 ### General
 * Only publically expose types and methods that clients need access to.
@@ -40,7 +44,8 @@
 * Never start or end a type or method's body with an empty line.
 * Always separate single line argument or parameter list items with just a comma and space.
 * Never start or end an argument or parameter list with a space. i.e. there should be no space between the parentheses and the list.
+* Always include a single blank line between type members except for fields.
 
-## Code Change Pull Requests
+## Pull Requests
 * Every code change pull request needs to have at least one review by a core member prior to being merged.
 * Every code change pull request should include unit tests to ensure they work properly.
