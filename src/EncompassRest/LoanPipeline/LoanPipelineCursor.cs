@@ -27,20 +27,20 @@ namespace EncompassRest.LoanPipeline
 
         public Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> itemFields) => GetItemAsync(index, itemFields, CancellationToken.None);
 
-        public async Task<LoanPipelineData> GetItemAsync(int index,IEnumerable<string> itemFields, CancellationToken cancellationToken)
+        public async Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> itemFields, CancellationToken cancellationToken)
         {
             Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
             Preconditions.LessThan(index, nameof(index), Count, nameof(Count));
 
-            var data = await GetItemsInternalAsync(index, 1,itemFields, cancellationToken).ConfigureAwait(false);
+            var data = await GetItemsInternalAsync(index, 1, itemFields, cancellationToken).ConfigureAwait(false);
             return data[0];
         }
 
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int count) => GetItemsAsync(start, count,null, CancellationToken.None);
+        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int count) => GetItemsAsync(start, count, null, CancellationToken.None);
 
         public Task<List<LoanPipelineData>> GetItemsAsync(int start, int count, IEnumerable<string> itemFields) => GetItemsAsync(start, count, itemFields, CancellationToken.None);
 
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int count,IEnumerable<string> itemFields, CancellationToken cancellationToken)
+        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int count, IEnumerable<string> itemFields, CancellationToken cancellationToken)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
             Preconditions.LessThan(start, nameof(start), Count, nameof(Count));
@@ -48,7 +48,7 @@ namespace EncompassRest.LoanPipeline
             //Preconditions.LessThanOrEquals(start, nameof(start) , Count, nameof(Count));
             
 
-            return GetItemsInternalAsync(start, count,itemFields, cancellationToken);
+            return GetItemsInternalAsync(start, count, itemFields, cancellationToken);
         }
 
         private async Task<List<LoanPipelineData>> GetItemsInternalAsync(int start, int count, IEnumerable<string> itemFields, CancellationToken cancellationToken)
@@ -66,8 +66,8 @@ namespace EncompassRest.LoanPipeline
             return retrievedData;
         }
 
-        public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null,CancellationToken.None);
-        public Task<string> GetItemsRawAsync(int start, int? limit,IEnumerable<string> itemFields) => GetItemsRawAsync(start, limit, itemFields, CancellationToken.None);
+        public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
+        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> itemFields) => GetItemsRawAsync(start, limit, itemFields, CancellationToken.None);
 
         public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> itemFields,CancellationToken cancellationToken)
         {
@@ -76,7 +76,7 @@ namespace EncompassRest.LoanPipeline
             if (limit.HasValue)
             {
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
-                Preconditions.LessThanOrEquals(start + limit.GetValueOrDefault(), $"{nameof(start)} + {nameof(limit)}", Count, nameof(Count));
+                //Preconditions.LessThanOrEquals(start + limit.GetValueOrDefault(), $"{nameof(start)} + {nameof(limit)}", Count, nameof(Count));
             }
 
             return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, itemFields==null?Fields:itemFields, start, limit, cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
