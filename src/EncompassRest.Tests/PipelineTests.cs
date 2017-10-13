@@ -27,8 +27,7 @@ namespace EncompassRest.Tests
             Assert.IsTrue(pipelineData.Count > 0);
             foreach (var item in pipelineData)
             {
-                Assert.IsFalse(string.IsNullOrEmpty(item.LoanGuid));
-                Assert.IsNull(item.Fields);
+                ValidateItem(item, null);
             }
         }
 
@@ -52,8 +51,7 @@ namespace EncompassRest.Tests
             for (var i = 0; i < Math.Min(cursor.Count, 50); ++i)
             {
                 var item = await cursor.GetItemAsync(i);
-                Assert.IsFalse(string.IsNullOrEmpty(item.LoanGuid));
-                Assert.IsNull(item.Fields);
+                ValidateItem(item, null);
             }
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemAsync(-1));
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemAsync(cursor.Count));
@@ -72,16 +70,34 @@ namespace EncompassRest.Tests
             var items = await cursor.GetItemsAsync(0, Math.Min(cursor.Count, 50));
             foreach (var item in items)
             {
-                Assert.IsFalse(string.IsNullOrEmpty(item.LoanGuid));
-                Assert.IsNotNull(item.Fields);
-                Assert.AreEqual(2, item.Fields.Count);
-                Assert.IsTrue(item.Fields.ContainsKey(fields[0]));
-                Assert.IsTrue(item.Fields.ContainsKey(fields[1]));
+                ValidateItem(item, fields);
             }
-            Assert.AreEqual(Math.Min(cursor.Count, 50), items.Count());
+            Assert.IsTrue(items.Count() <= 50);
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(-1, 1));
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(cursor.Count, 1));
-            await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(0, cursor.Count + 1));
+            items = await cursor.GetItemsAsync(cursor.Count - 1, 1);
+            ValidateItem(items[0], fields);
+            items = await cursor.GetItemsAsync(cursor.Count - 1, int.MaxValue); // Does not throw ArgumentOutOfRangeException
+            Assert.AreEqual(1, items.Count);
+            ValidateItem(items[0], fields);
+        }
+
+        private void ValidateItem(LoanPipelineData item, string[] fields)
+        {
+            Assert.IsFalse(string.IsNullOrEmpty(item.LoanGuid));
+            if (fields?.Length > 0)
+            {
+                Assert.IsNotNull(item.Fields);
+                Assert.AreEqual(fields.Length, item.Fields.Count);
+                foreach (var field in fields)
+                {
+                    Assert.IsTrue(item.Fields.ContainsKey(field));
+                }
+            }
+            else
+            {
+                Assert.IsNull(item.Fields);
+            }
         }
     }
 }

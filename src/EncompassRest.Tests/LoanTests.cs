@@ -2,6 +2,7 @@
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Tests
 {
@@ -55,7 +56,26 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var loan = new Loan();
             var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
-            await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false);
+            Assert.IsNotNull(loanId);
+            Assert.AreEqual(loanId, loan.EncompassId);
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+        }
+
+        [TestMethod]
+        public async Task Loan_CreateRawAndDelete()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanRawAsync("{}").ConfigureAwait(false);
+            Assert.IsNotNull(loanId);
+            Assert.IsFalse(loanId.StartsWith("{"));
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+
+            var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity").ConfigureAwait(false);
+            Assert.IsNotNull(json);
+            Assert.IsTrue(json.StartsWith("{"));
+            var loan = JToken.Parse(json);
+            loanId = loan["encompassId"].ToString();
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
         }
     }
 }

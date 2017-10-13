@@ -78,7 +78,12 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
-            return GetSubscriptionInternalAsync(subscriptionId, cancellationToken, response => response.Content.ReadAsAsync<WebhookSubscription>());
+            return GetSubscriptionInternalAsync(subscriptionId, cancellationToken, async response =>
+            {
+                var subscription = await response.Content.ReadAsAsync<WebhookSubscription>().ConfigureAwait(false);
+                subscription.Dirty = false;
+                return subscription;
+            });
         }
 
         public Task<string> GetSubscriptionRawAsync(string subscriptionId) => GetSubscriptionRawAsync(subscriptionId, CancellationToken.None);
@@ -109,17 +114,7 @@ namespace EncompassRest.Webhook
 
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsAsync(resources, events, CancellationToken.None);
 
-        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(resources, events, cancellationToken, response => response.Content.ReadAsAsync<List<WebhookSubscription>>());
-
-        public Task<string> GetSubscriptionsRawAsync() => GetSubscriptionsRawAsync(null, null, CancellationToken.None);
-
-        public Task<string> GetSubscriptionsRawAsync(CancellationToken cancellationToken) => GetSubscriptionsRawAsync(null, null, cancellationToken);
-
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
-
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(resources, events, cancellationToken, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> GetSubscriptionsInternalAsync<T>(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (resources?.Any() == true)
@@ -131,7 +126,45 @@ namespace EncompassRest.Webhook
                 queryParameters.Add("events", string.Join(",", events));
             }
 
-            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions{queryParameters}", cancellationToken).ConfigureAwait(false))
+            return GetSubscriptionsInternalAsync(queryParameters.ToString(), cancellationToken, async response =>
+            {
+                var subscriptions = await response.Content.ReadAsAsync<List<WebhookSubscription>>().ConfigureAwait(false);
+                foreach (var subscription in subscriptions)
+                {
+                    subscription.Dirty = false;
+                }
+                return subscriptions;
+            });
+        }
+
+        public Task<string> GetSubscriptionsRawAsync() => GetSubscriptionsRawAsync(null, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(CancellationToken cancellationToken) => GetSubscriptionsRawAsync(null, cancellationToken);
+
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
+        {
+            var queryParameters = new QueryParameters();
+            if (resources?.Any() == true)
+            {
+                queryParameters.Add("resource", string.Join(",", resources));
+            }
+            if (events?.Any() == true)
+            {
+                queryParameters.Add("events", string.Join(",", events));
+            }
+
+            return GetSubscriptionsRawAsync(queryParameters.ToString(), cancellationToken);
+        }
+
+        public Task<string> GetSubscriptionsRawAsync(string queryString) => GetSubscriptionsRawAsync(queryString, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(string queryString, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetSubscriptionsInternalAsync<T>(string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        {
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -148,7 +181,10 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNull(subscription, nameof(subscription));
 
-            return CreateSubscriptionInternalAsync(JsonStreamContent.Create(subscription), cancellationToken);
+            return CreateSubscriptionInternalAsync(JsonStreamContent.Create(subscription), cancellationToken, () =>
+            {
+                subscription.Dirty = false;
+            });
         }
 
         public Task<string> CreateSubscriptionRawAsync(string subscription) => CreateSubscriptionRawAsync(subscription, CancellationToken.None);
@@ -160,7 +196,7 @@ namespace EncompassRest.Webhook
             return CreateSubscriptionInternalAsync(new JsonStringContent(subscription), cancellationToken);
         }
 
-        private async Task<string> CreateSubscriptionInternalAsync(HttpContent content, CancellationToken cancellationToken)
+        private async Task<string> CreateSubscriptionInternalAsync(HttpContent content, CancellationToken cancellationToken, Action action = null)
         {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/subscriptions", content, cancellationToken).ConfigureAwait(false))
             {
@@ -169,6 +205,7 @@ namespace EncompassRest.Webhook
                     throw await RestException.CreateAsync(nameof(CreateSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
+                action?.Invoke();
                 return Path.GetFileName(response.Headers.Location.OriginalString);
             }
         }
@@ -180,7 +217,10 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NotNullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, JsonStreamContent.Create(subscription), cancellationToken);
+            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, JsonStreamContent.Create(subscription), cancellationToken, () =>
+            {
+                subscription.Dirty = false;
+            });
         }
 
         public Task UpdateSubscriptionRawAsync(string subscriptionId, string subscription) => UpdateSubscriptionRawAsync(subscriptionId, subscription, CancellationToken.None);
@@ -193,7 +233,7 @@ namespace EncompassRest.Webhook
             return UpdateSubscriptionInternalAsync(subscriptionId, new JsonStringContent(subscription), cancellationToken);
         }
 
-        private async Task UpdateSubscriptionInternalAsync(string subscriptionId, HttpContent content, CancellationToken cancellationToken)
+        private async Task UpdateSubscriptionInternalAsync(string subscriptionId, HttpContent content, CancellationToken cancellationToken, Action action = null)
         {
             using (var response = await Client.HttpClient.PutAsync($"{s_apiPath}/subscriptions/{subscriptionId}", content, cancellationToken).ConfigureAwait(false))
             {
@@ -201,6 +241,8 @@ namespace EncompassRest.Webhook
                 {
                     throw await RestException.CreateAsync(nameof(UpdateSubscriptionAsync), response).ConfigureAwait(false);
                 }
+
+                action?.Invoke();
             }
         }
 

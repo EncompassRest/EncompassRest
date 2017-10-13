@@ -57,9 +57,17 @@ namespace EncompassRest.LoanPipeline
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
             }
 
-            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, fields ?? Fields, start, limit, cancellationToken, nameof(GetItemAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
-        }
+            var queryParameters = new QueryParameters(
+                new QueryParameter("cursor", CursorId),
+                new QueryParameter("start", start.ToString()));
+            if (limit.HasValue)
+            {
+                queryParameters.Add("limit", limit.ToString());
+            }
+            var content = JsonStreamContent.Create(new { Fields = fields ?? Fields });
 
+            return Client.Pipeline.ViewPipelineInternalAsync(content, queryParameters.ToString(), cancellationToken, nameof(GetItemsAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+        }
         public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
 
         public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsRawAsync(start, limit, null, cancellationToken);
@@ -77,7 +85,16 @@ namespace EncompassRest.LoanPipeline
                 Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
             }
 
-            return Client.Pipeline.ViewPipelineCursorInternalAsync(CursorId, null, fields ?? Fields, start, limit, cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
+            var queryParameters = new QueryParameters(
+                new QueryParameter("cursor", CursorId),
+                new QueryParameter("start", start.ToString()));
+            if (limit.HasValue)
+            {
+                queryParameters.Add("limit", limit.ToString());
+            }
+            var content = JsonStreamContent.Create(new { Fields = fields ?? Fields });
+
+            return Client.Pipeline.ViewPipelineInternalAsync(content, queryParameters.ToString(), cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
         }
     }
 }
