@@ -50,11 +50,21 @@ namespace EncompassRest.Schema
 
         public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken) => GetLoanSchemaInternalAsync(includeFieldExtensions, entities, cancellationToken, response => response.Content.ReadAsAsync<LoanSchema>());
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken)
+        {
+            var queryParameters = new QueryParameters();
+            if (entities?.Any() == true)
+            {
+                queryParameters.Add("entities", string.Join(",", entities));
+            }
+            queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-        public Task<string> GetLoanSchemaRawAsync() => GetLoanSchemaRawAsync(false, (IEnumerable<string>)null, CancellationToken.None);
+            return GetLoanSchemaInternalAsync(queryParameters.ToString(), cancellationToken, response => response.Content.ReadAsAsync<LoanSchema>());
+        }
 
-        public Task<string> GetLoanSchemaRawAsync(CancellationToken cancellationToken) => GetLoanSchemaRawAsync(false, (IEnumerable<string>)null, cancellationToken);
+        public Task<string> GetLoanSchemaRawAsync() => GetLoanSchemaRawAsync((string)null, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(CancellationToken cancellationToken) => GetLoanSchemaRawAsync((string)null, cancellationToken);
 
         public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions) => GetLoanSchemaRawAsync(includeFieldExtensions, (IEnumerable<string>)null, CancellationToken.None);
 
@@ -82,9 +92,7 @@ namespace EncompassRest.Schema
 
         public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<string> entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken) => GetLoanSchemaInternalAsync(includeFieldExtensions, entities, cancellationToken, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> GetLoanSchemaInternalAsync<T>(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<string> entities, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
@@ -93,7 +101,16 @@ namespace EncompassRest.Schema
             }
             queryParameters.Add("includeFieldExtensions", includeFieldExtensions.ToString().ToLower());
 
-            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/loan{queryParameters}", cancellationToken).ConfigureAwait(false))
+            return GetLoanSchemaRawAsync(queryParameters.ToString(), cancellationToken);
+        }
+
+        public Task<string> GetLoanSchemaRawAsync(string queryString) => GetLoanSchemaRawAsync(queryString, CancellationToken.None);
+
+        public Task<string> GetLoanSchemaRawAsync(string queryString, CancellationToken cancellationToken) => GetLoanSchemaInternalAsync(queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetLoanSchemaInternalAsync<T>(string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        {
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/loan{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
