@@ -75,10 +75,11 @@ namespace EncompassRest.Tests
             Assert.IsTrue(items.Count() <= 50);
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(-1, 1));
             await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(cursor.Count, 1));
-            var lastItem = (await cursor.GetItemsAsync(cursor.Count - 1, 1))[0];
-            ValidateItem(lastItem, fields);
-            lastItem = (await cursor.GetItemsAsync(cursor.Count - 1, 2))[0]; // Does not throw ArgumentOutOfRangeException
-            ValidateItem(lastItem, fields);
+            items = await cursor.GetItemsAsync(cursor.Count - 1, 1);
+            ValidateItem(items[0], fields);
+            items = await cursor.GetItemsAsync(cursor.Count - 1, int.MaxValue); // Does not throw ArgumentOutOfRangeException
+            Assert.AreEqual(1, items.Count);
+            ValidateItem(items[0], fields);
         }
 
         private void ValidateItem(LoanPipelineData item, string[] fields)
