@@ -220,7 +220,7 @@ namespace EncompassRest.Loans.Documents
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
             return AssignDocumentAttachmentsInternalAsync(documentId, JsonStreamContent.Create(attachmentEntities), queryParameters.ToString(), cancellationToken);
         }
 
@@ -230,7 +230,7 @@ namespace EncompassRest.Loans.Documents
         {
             action.Validate(nameof(action));
 
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
             return AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, queryParameters.ToString(), cancellationToken);
         }
 
