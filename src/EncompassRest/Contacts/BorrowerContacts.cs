@@ -1,6 +1,7 @@
 ﻿using EncompassRest.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -31,7 +32,7 @@ namespace EncompassRest.Contacts
         public Task<string> GetBorrowerContactRawAsync(string contactId, CancellationToken cancellationToken) =>
             GetBorrowerContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
 
-        internal async Task<T> GetBorrowerContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetBorrowerContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
@@ -44,5 +45,34 @@ namespace EncompassRest.Contacts
                 return await func(response).ConfigureAwait(false);
             }
         }
+
+        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
+        {
+            Preconditions.NotNull(contact, nameof(contact));
+
+            return CreateBorrowerContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            {
+                if (populate)
+                {
+                    await response.Content.PopulateAsync(contact).ConfigureAwait(false);
+                }
+                contact.Dirty = false;
+                return Path.GetFileName(response.Headers.Location.OriginalString);
+            });
+        }
+        
+        private async Task<string> CreateBorrowerContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        {
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            {
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw await RestException.CreateAsync(nameof(CreateBorrowerContactAsync), response).ConfigureAwait(false);
+                }
+
+                return await func(response).ConfigureAwait(false);
+            }
+        }
+
     }
 }
