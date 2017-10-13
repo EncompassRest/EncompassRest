@@ -45,7 +45,8 @@ namespace EncompassRest.Contacts
                 return await func(response).ConfigureAwait(false);
             }
         }
-
+        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact) => CreateBorrowerContactAsync(contact, true, CancellationToken.None);
+        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact, bool populate) => CreateBorrowerContactAsync(contact, populate, CancellationToken.None);
         public Task<string> CreateBorrowerContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
