@@ -114,25 +114,7 @@ namespace EncompassRest.Webhook
 
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsAsync(resources, events, CancellationToken.None);
 
-        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(resources, events, cancellationToken, async response =>
-        {
-            var subscriptions = await response.Content.ReadAsAsync<List<WebhookSubscription>>().ConfigureAwait(false);
-            foreach (var subscription in subscriptions)
-            {
-                subscription.Dirty = false;
-            }
-            return subscriptions;
-        });
-
-        public Task<string> GetSubscriptionsRawAsync() => GetSubscriptionsRawAsync(null, null, CancellationToken.None);
-
-        public Task<string> GetSubscriptionsRawAsync(CancellationToken cancellationToken) => GetSubscriptionsRawAsync(null, null, cancellationToken);
-
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
-
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(resources, events, cancellationToken, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> GetSubscriptionsInternalAsync<T>(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (resources?.Any() == true)
@@ -144,7 +126,45 @@ namespace EncompassRest.Webhook
                 queryParameters.Add("events", string.Join(",", events));
             }
 
-            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions{queryParameters}", cancellationToken).ConfigureAwait(false))
+            return GetSubscriptionsInternalAsync(queryParameters.ToString(), cancellationToken, async response =>
+            {
+                var subscriptions = await response.Content.ReadAsAsync<List<WebhookSubscription>>().ConfigureAwait(false);
+                foreach (var subscription in subscriptions)
+                {
+                    subscription.Dirty = false;
+                }
+                return subscriptions;
+            });
+        }
+
+        public Task<string> GetSubscriptionsRawAsync() => GetSubscriptionsRawAsync(null, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(CancellationToken cancellationToken) => GetSubscriptionsRawAsync(null, cancellationToken);
+
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
+        {
+            var queryParameters = new QueryParameters();
+            if (resources?.Any() == true)
+            {
+                queryParameters.Add("resource", string.Join(",", resources));
+            }
+            if (events?.Any() == true)
+            {
+                queryParameters.Add("events", string.Join(",", events));
+            }
+
+            return GetSubscriptionsRawAsync(queryParameters.ToString(), cancellationToken);
+        }
+
+        public Task<string> GetSubscriptionsRawAsync(string queryString) => GetSubscriptionsRawAsync(queryString, CancellationToken.None);
+
+        public Task<string> GetSubscriptionsRawAsync(string queryString, CancellationToken cancellationToken) => GetSubscriptionsInternalAsync(queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetSubscriptionsInternalAsync<T>(string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        {
+            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/subscriptions{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {

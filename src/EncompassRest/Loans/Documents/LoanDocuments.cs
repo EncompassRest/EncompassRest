@@ -125,7 +125,7 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return CreateDocumentInternalAsync(JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, cancellationToken, async response =>
+            return CreateDocumentInternalAsync(JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -136,18 +136,26 @@ namespace EncompassRest.Loans.Documents
             });
         }
 
-        public Task<string> CreateDocumentRawAsync(string document) => CreateDocumentRawAsync(document, CancellationToken.None);
+        public Task<string> CreateDocumentRawAsync(string document) => CreateDocumentRawAsync(document, null, CancellationToken.None);
 
-        public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken)
+        public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken) => CreateDocumentRawAsync(document, null, cancellationToken);
+
+        public Task<string> CreateDocumentRawAsync(string document, string queryString) => CreateDocumentRawAsync(document, queryString, CancellationToken.None);
+
+        public Task<string> CreateDocumentRawAsync(string document, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return CreateDocumentInternalAsync(new JsonStringContent(document), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return CreateDocumentInternalAsync(new JsonStringContent(document), queryString, cancellationToken, async response =>
+            {
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
+            });
         }
 
-        private async Task<string> CreateDocumentInternalAsync(HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> CreateDocumentInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{LoanId}/documents{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{LoanId}/documents{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
@@ -164,39 +172,41 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNull(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")) : null, cancellationToken, async response =>
+            return UpdateDocumentInternalAsync(document.DocumentId, JsonStreamContent.Create(document), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
                     await response.Content.PopulateAsync(document).ConfigureAwait(false);
                 }
                 document.Dirty = false;
+                return string.Empty;
             });
         }
 
-        public Task UpdateDocumentRawAsync(string documentId, string document) => UpdateDocumentRawAsync(documentId, document, CancellationToken.None);
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document) => UpdateDocumentRawAsync(documentId, document, null, CancellationToken.None);
 
-        public Task UpdateDocumentRawAsync(string documentId, string document, CancellationToken cancellationToken)
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document, CancellationToken cancellationToken) => UpdateDocumentRawAsync(documentId, document, null, cancellationToken);
+
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString) => UpdateDocumentRawAsync(documentId, document, queryString, CancellationToken.None);
+
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return UpdateDocumentInternalAsync(documentId, new JsonStringContent(document), null, cancellationToken);
+            return UpdateDocumentInternalAsync(documentId, new JsonStringContent(document), queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task UpdateDocumentInternalAsync(string documentId, HttpContent content, QueryParameters queryParameters, CancellationToken cancellationToken, Func<HttpResponseMessage, Task> func = null)
+        private async Task<string> UpdateDocumentInternalAsync(string documentId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
-            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/documents/{documentId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
                     throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
                 }
 
-                if (func != null)
-                {
-                    await func(response).ConfigureAwait(false);
-                }
+                return await func(response).ConfigureAwait(false);
             }
         }
 
@@ -210,24 +220,34 @@ namespace EncompassRest.Loans.Documents
             action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
-            return AssignDocumentAttachmentsInternalAsync(documentId, action, JsonStreamContent.Create(attachmentEntities), cancellationToken);
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
+            return AssignDocumentAttachmentsInternalAsync(documentId, JsonStreamContent.Create(attachmentEntities), queryParameters.ToString(), cancellationToken);
         }
 
-        public Task AssignDocumentAttachmentsRawAsync(string documentId, AssignmentAction action, string attachmentEntities) => AssignDocumentAttachmentsRawAsync(documentId, action, attachmentEntities, CancellationToken.None);
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, AssignmentAction action) => AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, action, CancellationToken.None);
 
-        public Task AssignDocumentAttachmentsRawAsync(string documentId, AssignmentAction action, string attachmentEntities, CancellationToken cancellationToken)
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, AssignmentAction action, CancellationToken cancellationToken)
+        {
+            action.Validate(nameof(action));
+
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
+            return AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, queryParameters.ToString(), cancellationToken);
+        }
+
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString) => AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, queryString, CancellationToken.None);
+
+        public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
-            action.Validate(nameof(action));
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
+            Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
 
-            return AssignDocumentAttachmentsInternalAsync(documentId, action, new JsonStringContent(attachmentEntities), cancellationToken);
+            return AssignDocumentAttachmentsInternalAsync(documentId, new JsonStringContent(attachmentEntities), queryString, cancellationToken);
         }
 
-        private async Task AssignDocumentAttachmentsInternalAsync(string documentId, AssignmentAction action, HttpContent content, CancellationToken cancellationToken)
+        private async Task AssignDocumentAttachmentsInternalAsync(string documentId, HttpContent content, string queryString, CancellationToken cancellationToken)
         {
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
-            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/documents/{documentId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
