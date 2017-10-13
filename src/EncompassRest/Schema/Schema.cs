@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Schema
 {
@@ -38,7 +39,7 @@ namespace EncompassRest.Schema
 
         public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities) => GetLoanSchemaAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+        public Task<LoanSchema> GetLoanSchemaAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaAsync(includeFieldExtensions, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
 
         public Task<LoanSchema> GetLoanSchemaAsync(params string[] entities) => GetLoanSchemaAsync(false, entities, CancellationToken.None);
 
@@ -70,7 +71,7 @@ namespace EncompassRest.Schema
 
         public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities) => GetLoanSchemaRawAsync(includeFieldExtensions, entities, CancellationToken.None);
 
-        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaRawAsync(includeFieldExtensions, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+        public Task<string> GetLoanSchemaRawAsync(bool includeFieldExtensions, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanSchemaRawAsync(includeFieldExtensions, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
 
         public Task<string> GetLoanSchemaRawAsync(params string[] entities) => GetLoanSchemaRawAsync(false, entities, CancellationToken.None);
 

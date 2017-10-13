@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Loans
 {
@@ -47,7 +48,7 @@ namespace EncompassRest.Loans
 
         public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
 
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanAsync(loanId, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanAsync(loanId, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
 
         public Task<Loan> GetLoanAsync(string loanId, params string[] entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
 
@@ -74,7 +75,7 @@ namespace EncompassRest.Loans
 
         public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
 
-        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, entities?.Select(entity => entity.ToJson().Unquote()), cancellationToken);
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
 
         public Task<string> GetLoanRawAsync(string loanId, params string[] entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
 

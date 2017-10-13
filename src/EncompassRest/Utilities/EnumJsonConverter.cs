@@ -35,12 +35,14 @@ namespace EncompassRest.Utilities
     internal sealed class EnumJsonConverter : JsonConverter
     {
         internal static readonly EnumFormat CamelCaseNameFormat;
+        internal static readonly EnumFormat[] CamelCaseNameFormatArray;
         private static readonly CamelCaseNamingStrategy s_camelCaseNamingStrategy;
 
         static EnumJsonConverter()
         {
             s_camelCaseNamingStrategy = new CamelCaseNamingStrategy();
             CamelCaseNameFormat = Enums.RegisterCustomEnumFormat(member => s_camelCaseNamingStrategy.GetPropertyName(member.Name, false));
+            CamelCaseNameFormatArray = new[] { CamelCaseNameFormat };
         }
 
         private readonly EnumFormat[] _enumFormats;

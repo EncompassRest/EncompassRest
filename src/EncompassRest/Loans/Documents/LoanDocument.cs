@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using EncompassRest.Utilities;
+using EnumsNET;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
@@ -65,8 +68,22 @@ namespace EncompassRest.Loans.Documents
         public string ApplicationId { get { return _applicationId; } set { _applicationId = value; } }
         private DirtyValue<string> _emnSignature;
         public string EmnSignature { get { return _emnSignature; } set { _emnSignature = value; } }
-        private DirtyValue<DocumentStatus?> _status;
-        public DocumentStatus? Status { get { return _status; } set { _status = value; } }
+        private DirtyValue<string> _statusString;
+        [JsonProperty("status")]
+        public string StatusString { get { return _statusString; } set { _statusString = value; } }
+        [JsonIgnore]
+        public DocumentStatus? Status
+        {
+            get
+            {
+                DocumentStatus status;
+                return Enums.TryParse(StatusString, out status, EnumJsonConverter.CamelCaseNameFormatArray) ? status : (DocumentStatus?)null;
+            }
+            set
+            {
+                StatusString = value?.AsString(EnumJsonConverter.CamelCaseNameFormat);
+            }
+        }
         private DirtyValue<DateTime?> _statusDate;
         public DateTime? StatusDate { get { return _statusDate; } set { _statusDate = value; } }
         private DirtyValue<DateTime?> _dateRequested;
@@ -125,7 +142,7 @@ namespace EncompassRest.Loans.Documents
                     || _requestedFrom.Dirty
                     || _applicationId.Dirty
                     || _emnSignature.Dirty
-                    || _status.Dirty
+                    || _statusString.Dirty
                     || _statusDate.Dirty
                     || _dateRequested.Dirty
                     || _dateExpected.Dirty
@@ -173,7 +190,7 @@ namespace EncompassRest.Loans.Documents
                 _requestedFrom.Dirty = value;
                 _applicationId.Dirty = value;
                 _emnSignature.Dirty = value;
-                _status.Dirty = value;
+                _statusString.Dirty = value;
                 _statusDate.Dirty = value;
                 _dateRequested.Dirty = value;
                 _dateExpected.Dirty = value;

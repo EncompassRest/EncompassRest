@@ -226,7 +226,7 @@ namespace EncompassRest.Loans.Documents
 
         private async Task AssignDocumentAttachmentsInternalAsync(string documentId, AssignmentAction action, HttpContent content, CancellationToken cancellationToken)
         {
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.ToJson().Unquote()));
+            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
             using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{LoanId}/documents/{documentId}{queryParameters}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)

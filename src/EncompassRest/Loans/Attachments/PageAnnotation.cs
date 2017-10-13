@@ -1,4 +1,5 @@
 ﻿using System;
+using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.Attachments
 {
@@ -19,6 +20,7 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<int?> _height;
         public int? Height { get { return _height; } set { _height = value; } }
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
+        [EnumOutput(EnumOutput.Integer)]
         public AnnotationVisibilityType? VisibilityType { get { return _visibilityType; } set { _visibilityType = value; } }
         private bool _gettingDirty;
         private bool _settingDirty;
