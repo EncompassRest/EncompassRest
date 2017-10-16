@@ -31,43 +31,17 @@ namespace EncompassRest.Contacts
 
     public sealed class BusinessContact : Contact,IDirty
     {
-        private static string s_apiPath = "encompass/v1/BusinessContacts";
-        [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        override internal string s_apiPath { get { return "encompass/v1/BusinessContacts"; } }
 
-        [JsonIgnore]
-        public ContactNotes Notes { get; private set; }
-
-        public BusinessContact(EncompassRestClient client, string contactId)
-        {
-            Preconditions.NotNull(client, nameof(client));
-            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
-
-            Id = contactId;
-            Initialize(client);
-        }
-
-        [JsonConstructor]
-        public BusinessContact()
-        {
-
-        }
-
-        internal void Initialize(EncompassRestClient client)
-        {
-            Client = client;
-            Notes = new ContactNotes(client, s_apiPath, Id);
-        }
-
-        private DirtyValue<BusinessContactCategory> _categoryId;
+        private DirtyValue<BusinessContactCategory?> _categoryId;
         [EnumOutput(EnumOutput.Integer)]
-        public BusinessContactCategory CategoryId { get { return _categoryId; } set { _categoryId = value; } }
+        public BusinessContactCategory? CategoryId { get { return _categoryId; } set { _categoryId = value; } }
         private DirtyValue<string> _companyName;
         public string CompanyName { get { return _companyName; } set { _companyName = value; } }
         private BusinessContactLicense _personalContactLicense;
-        public BusinessContactLicense PersonalContactLicense { get { return _personalContactLicense ?? new BusinessContactLicense(); } set { _personalContactLicense = value; } }
+        public BusinessContactLicense PersonalContactLicense { get { return _personalContactLicense ?? (_personalContactLicense = new BusinessContactLicense()); } set { _personalContactLicense = value; } }
         private BusinessContactLicense _businessContactLicesnse;
-        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicesnse ?? new BusinessContactLicense(); } set { _businessContactLicesnse = value; } }
+        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicesnse ?? (_businessContactLicesnse = new BusinessContactLicense()); } set { _businessContactLicesnse = value; } }
         private DirtyValue<bool?> _noSpam;
         public bool? NoSpam { get { return _noSpam; } set { _noSpam = value; } }
         private DirtyValue<string> _fees;

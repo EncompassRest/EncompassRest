@@ -1,4 +1,5 @@
 ﻿using EncompassRest.Utilities;
+using Newtonsoft.Json;
 using System;
 
 namespace EncompassRest.Contacts
@@ -11,17 +12,44 @@ namespace EncompassRest.Contacts
 
     public abstract class Contact : IDirty
     {
+        internal abstract string s_apiPath { get; }
+        [JsonIgnore]
+        public EncompassRestClient Client { get; private set; }
+
+        [JsonIgnore]
+        public ContactNotes Notes { get; private set; }
+
+        public Contact(EncompassRestClient client, string contactId)
+        {
+            Preconditions.NotNull(client, nameof(client));
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
+
+            Id = contactId;
+            Initialize(client);
+        }
+
+        [JsonConstructor]
+        public Contact()
+        {
+
+        }
+
+        internal void Initialize(EncompassRestClient client)
+        {
+            Client = client;
+            Notes = new ContactNotes(client, s_apiPath, Id);
+        }
         private DirtyValue<string> _firstName;
         public string FirstName { get { return _firstName; } set { _firstName = value; } }
         private DirtyValue<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         private DirtyValue<string> _ownerId;
         public string OwnerID { get { return _ownerId; } set { _ownerId = value; } }
-        private DirtyValue<ContactAccessLevel> _accessLevel;
+        private DirtyValue<ContactAccessLevel?> _accessLevel;
         [EnumOutput(EnumOutput.Integer)]
-        public ContactAccessLevel AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
+        public ContactAccessLevel? AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
         private ContactAddress _currentMailingAddress;
-        public ContactAddress CurrentMailingAddress { get { return _currentMailingAddress ?? new ContactAddress(); } set { _currentMailingAddress = value; } }
+        public ContactAddress CurrentMailingAddress { get { return _currentMailingAddress ?? (_currentMailingAddress = new ContactAddress()); } set { _currentMailingAddress = value; } }
         private DirtyValue<string> _jobTitle;
         public string JobTitle { get { return _jobTitle; } set { _jobTitle = value; } }
         private DirtyValue<string> _workPhone;

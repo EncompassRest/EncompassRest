@@ -24,36 +24,36 @@ namespace EncompassRest.Contacts
             _baseApiPath = baseApiPath;
         }
 
-        public Task<ContactNote> GetContactNoteAsync(string noteId, CancellationToken cancellationToken)
+        public Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return (GetContactNoteInternalAsync(noteId, cancellationToken, async resposne =>
+            return (GetNoteInternalAsync(noteId, cancellationToken, async resposne =>
             {
                 var contactNote = await resposne.Content.ReadAsAsync<ContactNote>().ConfigureAwait(false);
                 contactNote.Dirty = false;
                 return contactNote;
             }));
         }
-        public Task<string> GetContactNoteRawAsync(string noteId, CancellationToken cancellationToken)
+        public Task<string> GetNoteRawAsync(string noteId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return GetContactNoteInternalAsync(noteId, cancellationToken, response => response.Content.ReadAsStringAsync());
+            return GetNoteInternalAsync(noteId, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetContactNoteInternalAsync<T>(string noteId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetNoteInternalAsync<T>(string noteId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             using (var response = await Client.HttpClient.GetAsync($"{ _baseApiPath}/{ContactId}{s_apiPath}/{noteId}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetContactNoteAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(GetNoteAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
-        public Task<List<ContactNote>> GetContactNotesAsync(CancellationToken cancellationToken) => GetContactNotesInternalAsync(cancellationToken, async response =>
+        public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken) => GetNotesInternalAsync(cancellationToken, async response =>
         {
             var contactNotes = await response.Content.ReadAsAsync<List<ContactNote>>().ConfigureAwait(false);
             foreach (var note in contactNotes)
@@ -62,24 +62,24 @@ namespace EncompassRest.Contacts
             }
             return contactNotes;
         });
-        public Task<string> GetContactNotesRawAsync(CancellationToken cancellationToken) => GetContactNotesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
+        public Task<string> GetNotesRawAsync(CancellationToken cancellationToken) => GetNotesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
 
-        private async Task<T> GetContactNotesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetNotesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             using (var response = await Client.HttpClient.GetAsync($"{_baseApiPath}/{ContactId}{s_apiPath}", cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetContactNotesAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(GetNotesAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
-        public Task<string> CreateContactNoteAsync(ContactNote contactNote, bool populate, CancellationToken cancellationToken)
+        public Task<string> CreateNoteAsync(ContactNote contactNote, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contactNote, nameof(contactNote));
 
-            return CreateContactNoteInternalAsync(JsonStreamContent.Create(contactNote), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return CreateNoteInternalAsync(JsonStreamContent.Create(contactNote), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -89,34 +89,34 @@ namespace EncompassRest.Contacts
                 return Path.GetFileName(response.Headers.Location.OriginalString);
             });
         }
-        public Task<string> CreateContactNoteRawAsync(string contactNote, string queryString, CancellationToken cancellationToken)
+        public Task<string> CreateNoteRawAsync(string contactNote, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactNote, nameof(contactNote));
 
-            return CreateContactNoteInternalAsync(new JsonStringContent(contactNote), queryString, cancellationToken, async response =>
+            return CreateNoteInternalAsync(new JsonStringContent(contactNote), queryString, cancellationToken, async response =>
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });
         }
-        private async Task<string> CreateContactNoteInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> CreateNoteInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PostAsync($"{_baseApiPath}/{ContactId}{s_apiPath}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateContactNoteAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(CreateNoteAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task UpdateContactNoteAsync(ContactNote contactNote, bool populate, CancellationToken cancellationToken)
+        public Task UpdateNoteAsync(ContactNote contactNote, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contactNote, nameof(contactNote));
 
-            return UpdateContactNoteInternalAsync(contactNote.NoteId, JsonStreamContent.Create(contactNote), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return UpdateNoteInternalAsync(contactNote.NoteId, JsonStreamContent.Create(contactNote), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -126,27 +126,27 @@ namespace EncompassRest.Contacts
                 return string.Empty;
             });
         }
-        public Task<string> UpdateContactNoteRawAsync(string contactNoteId, string contactNote, string queryString, CancellationToken cancellationToken)
+        public Task<string> UpdateNoteRawAsync(string contactNoteId, string contactNote, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactNoteId, nameof(contactNoteId));
             Preconditions.NotNullOrEmpty(contactNote, nameof(contactNote));
 
-            return UpdateContactNoteInternalAsync(contactNoteId, new JsonStringContent(contactNote), queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
+            return UpdateNoteInternalAsync(contactNoteId, new JsonStringContent(contactNote), queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
-        private async Task<string> UpdateContactNoteInternalAsync(string contactNoteId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> UpdateNoteInternalAsync(string contactNoteId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PatchAsync($"{_baseApiPath}/{ContactId}{s_apiPath}/{contactNoteId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateContactNoteAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(UpdateNoteAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public async Task<bool> DeleteContactNoteAsync(string contactNoteId, CancellationToken cancellationToken)
+        public async Task<bool> DeleteNoteAsync(string contactNoteId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactNoteId, nameof(contactNoteId));
 
