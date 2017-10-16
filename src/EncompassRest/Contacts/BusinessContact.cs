@@ -1,4 +1,7 @@
-﻿namespace EncompassRest.Contacts
+﻿using EncompassRest.Utilities;
+using Newtonsoft.Json;
+
+namespace EncompassRest.Contacts
 {
     public enum BusinessContactCategory
     {
@@ -28,7 +31,36 @@
 
     public sealed class BusinessContact : Contact,IDirty
     {
+        private static string s_apiPath = "encompass/v1/BusinessContacts";
+        [JsonIgnore]
+        public EncompassRestClient Client { get; private set; }
+
+        [JsonIgnore]
+        public ContactNotes Notes { get; private set; }
+
+        public BusinessContact(EncompassRestClient client, string contactId)
+        {
+            Preconditions.NotNull(client, nameof(client));
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
+
+            Id = contactId;
+            Initialize(client);
+        }
+
+        [JsonConstructor]
+        public BusinessContact()
+        {
+
+        }
+
+        internal void Initialize(EncompassRestClient client)
+        {
+            Client = client;
+            Notes = new ContactNotes(client, s_apiPath, Id);
+        }
+
         private DirtyValue<BusinessContactCategory> _categoryId;
+        [EnumOutput(EnumOutput.Integer)]
         public BusinessContactCategory CategoryId { get { return _categoryId; } set { _categoryId = value; } }
         private DirtyValue<string> _companyName;
         public string CompanyName { get { return _companyName; } set { _companyName = value; } }

@@ -1,17 +1,25 @@
-﻿using System;
+﻿using EncompassRest.Utilities;
+using System;
 
 namespace EncompassRest.Contacts
 {
+    public enum ContactAccessLevel
+    {
+        Private = 0,
+        Public = 1
+    }
+
     public abstract class Contact : IDirty
     {
         private DirtyValue<string> _firstName;
-        public string FirstName { get { return _firstName} set { _firstName = value; } }
+        public string FirstName { get { return _firstName; } set { _firstName = value; } }
         private DirtyValue<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         private DirtyValue<string> _ownerId;
         public string OwnerID { get { return _ownerId; } set { _ownerId = value; } }
-        private DirtyValue<int?> _accessLevel;
-        public int? AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
+        private DirtyValue<ContactAccessLevel> _accessLevel;
+        [EnumOutput(EnumOutput.Integer)]
+        public ContactAccessLevel AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
         private ContactAddress _currentMailingAddress;
         public ContactAddress CurrentMailingAddress { get { return _currentMailingAddress ?? new ContactAddress(); } set { _currentMailingAddress = value; } }
         private DirtyValue<string> _jobTitle;

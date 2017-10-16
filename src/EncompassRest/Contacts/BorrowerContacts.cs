@@ -62,6 +62,9 @@ namespace EncompassRest.Contacts
             });
         }
 
+        public Task<string> CreateBorrowerContactRawAsync(string contact) => CreateBorrowerContactRawAsync(contact, "", CancellationToken.None);
+        public Task<string> CreateBorrowerContactRawAsync(string contact, CancellationToken cancellationToken) => CreateBorrowerContactRawAsync(contact, null, cancellationToken);
+        public Task<string> CreateBorrowerContactRawAsync(string contact, string queryString) => CreateBorrowerContactRawAsync(contact, queryString, CancellationToken.None);
         public Task<string> CreateBorrowerContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
@@ -72,7 +75,6 @@ namespace EncompassRest.Contacts
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });   
         }
-        
         private async Task<string> CreateBorrowerContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
@@ -85,7 +87,9 @@ namespace EncompassRest.Contacts
                 return await func(response).ConfigureAwait(false);
             }
         }
-
+        public Task UpdateBorrowerContactAsync(BorrowerContact contact) => UpdateBorrowerContactAsync(contact, false, CancellationToken.None);
+        public Task UpdateBorrowerContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => UpdateBorrowerContactAsync(contact, false, cancellationToken);
+        public Task UpdateBorrowerContactAsync(BorrowerContact contact, bool populate) => UpdateBorrowerContactAsync(contact, populate, CancellationToken.None);
         public Task UpdateBorrowerContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
@@ -99,8 +103,11 @@ namespace EncompassRest.Contacts
                  contact.Dirty = false;
                  return string.Empty;
              });
-        }
 
+        }
+        public Task UpdateBorrowerContactRawAsync(string contactId, string contact) => UpdateBorrowerContactRawAsync(contactId, contact, null, CancellationToken.None);
+        public Task UpdateBorrowerContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateBorrowerContactRawAsync(contactId, contact, null, cancellationToken);
+        public Task UpdateBorrowerContactRawAsync(string contactId, string contact, string queryString) => UpdateBorrowerContactRawAsync(contactId, contact, queryString, CancellationToken.None);
         public Task UpdateBorrowerContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -122,7 +129,7 @@ namespace EncompassRest.Contacts
             }
         }
 
-
+        public Task<bool> DeleteBorrowerContactAsync(string contactId) => DeleteBorrowerContactAsync(contactId, CancellationToken.None);
         public async Task<bool> DeleteBorrowerContactAsync(string contactId, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contactId, nameof(contactId));

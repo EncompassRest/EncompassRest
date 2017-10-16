@@ -5,12 +5,64 @@ using System.Text;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactNote
+    public sealed class ContactNote : IDirty
     {
-        public string NoteId { get; set; }
-        public string Subject { get; set; }
+        private DirtyValue<int?> _noteIdInt;
+        [JsonProperty("noteId")]
+        public int? NoteIdInt { get { return _noteIdInt; } set { _noteIdInt = value; } }
         [JsonIgnore]
-        public DateTime? Timestamp { get; set; }
-        public string Details { get; set; }
+        public string NoteId
+        {
+            get
+            {
+                return NoteIdInt?.ToString();
+            }
+            set
+            {
+                int noteId;
+                if (value == null || !int.TryParse(value, out noteId))
+                {
+                    NoteIdInt = null;
+                }
+                else
+                {
+                    NoteIdInt = noteId;
+                }
+            }
+        }
+        private DirtyValue<string> _subject;
+        public string Subject { get { return _subject; } set { _subject = value; } }
+        private DirtyValue<DateTime?> _timeStamp;
+        public DateTime? Timestamp { get { return _timeStamp; } set { _timeStamp = value; } }
+        private DirtyValue<string> _details;
+        public string Details { get { return _details; } set { _details = value; } }
+
+        private bool _gettingDirty;
+        private bool _settingDirty;
+        internal bool Dirty
+        {
+            get
+            {
+                if (_gettingDirty) return false;
+                _gettingDirty = true;
+                var dirty = _noteIdInt.Dirty
+                    || _subject.Dirty
+                    || _timeStamp.Dirty
+                    || _details.Dirty;
+                _gettingDirty = false;
+                return dirty;
+            }
+            set
+            {
+                if (_settingDirty) return;
+                _settingDirty = true;
+                _noteIdInt.Dirty = value;
+                _subject.Dirty = value;
+                _timeStamp.Dirty = value;
+                _details.Dirty = value;
+                _settingDirty = false;
+            }
+        }
+        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
     }
 }
