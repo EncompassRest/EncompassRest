@@ -15,7 +15,7 @@ namespace EncompassRest
 
         private static readonly bool s_tImplementsIDirty = TypeData<T>.Data.TypeInfo.ImplementedInterfaces.Any(implInterface => implInterface == TypeData<IDirty>.Type);
 
-        private readonly T _value;
+        internal readonly T _value;
         private bool _dirty;
 
         public bool Dirty

@@ -62,6 +62,15 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Loan_ExtensionData_Serialization()
+        {
+            var loan = new Loan();
+            Assert.AreEqual("{}", loan.ToJson());
+            loan.ExtensionData["newProperty"] = true;
+            Assert.AreEqual(@"{""newProperty"":true}", loan.ToJson());
+        }
+
+        [TestMethod]
         public async Task Loan_CreateRawAndDelete()
         {
             var client = await GetTestClientAsync();

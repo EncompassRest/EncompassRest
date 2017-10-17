@@ -14,7 +14,7 @@ namespace EncompassRest
     [JsonConverter(typeof(DirtyListConverter<>))]
     internal sealed class DirtyList<T> : IList<T>, IDirty
     {
-        internal readonly List<DirtyValue<T>> _list;
+        internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
 
         public T this[int index]
         {
@@ -51,7 +51,6 @@ namespace EncompassRest
 
         public DirtyList()
         {
-            _list = new List<DirtyValue<T>>();
         }
 
         public DirtyList(IEnumerable<T> list)
