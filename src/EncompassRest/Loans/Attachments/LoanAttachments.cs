@@ -110,6 +110,10 @@ namespace EncompassRest.Loans.Attachments
             public string MediaUrl { get; set; }
         }
 
+        public Task UpdateAttachmentAsync(LoanAttachment attachment) => UpdateAttachmentAsync(attachment, false, CancellationToken.None);
+
+        public Task UpdateAttachmentAsync(LoanAttachment attachment, CancellationToken cancellationToken) => UpdateAttachmentAsync(attachment, false, cancellationToken);
+
         public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate) => UpdateAttachmentAsync(attachment, populate, CancellationToken.None);
 
         public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate, CancellationToken cancellationToken)
