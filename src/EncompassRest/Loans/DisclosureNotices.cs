@@ -108,6 +108,11 @@ namespace EncompassRest.Loans
         public bool? ReleaseMortgageInformationIndicator { get { return _releaseMortgageInformationIndicator; } set { _releaseMortgageInformationIndicator = value; } }
         private DirtyValue<bool?> _rightToFinancialPrivacyActIndicator;
         public bool? RightToFinancialPrivacyActIndicator { get { return _rightToFinancialPrivacyActIndicator; } set { _rightToFinancialPrivacyActIndicator = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -165,7 +170,8 @@ namespace EncompassRest.Loans
                     || _releaseEmploymentInformationIndicator.Dirty
                     || _releaseInformationInConnectionWithCreditReportIndicator.Dirty
                     || _releaseMortgageInformationIndicator.Dirty
-                    || _rightToFinancialPrivacyActIndicator.Dirty;
+                    || _rightToFinancialPrivacyActIndicator.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -223,6 +229,7 @@ namespace EncompassRest.Loans
                 _releaseInformationInConnectionWithCreditReportIndicator.Dirty = value;
                 _releaseMortgageInformationIndicator.Dirty = value;
                 _rightToFinancialPrivacyActIndicator.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

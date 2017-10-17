@@ -146,6 +146,11 @@ namespace EncompassRest.Loans
         public string WellsFargoFloodBaselineReportRequired { get { return _wellsFargoFloodBaselineReportRequired; } set { _wellsFargoFloodBaselineReportRequired = value; } }
         private DirtyValue<string> _wellsFargoFraudBaselineReportRequired;
         public string WellsFargoFraudBaselineReportRequired { get { return _wellsFargoFraudBaselineReportRequired; } set { _wellsFargoFraudBaselineReportRequired = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -222,7 +227,8 @@ namespace EncompassRest.Loans
                     || _wellsFargoFraudBaselineReportRequired.Dirty
                     || _tQLComplianceAlerts?.Dirty == true
                     || _tQLDocuments?.Dirty == true
-                    || _tQLFraudAlerts?.Dirty == true;
+                    || _tQLFraudAlerts?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -299,6 +305,7 @@ namespace EncompassRest.Loans
                 if (_tQLComplianceAlerts != null) _tQLComplianceAlerts.Dirty = value;
                 if (_tQLDocuments != null) _tQLDocuments.Dirty = value;
                 if (_tQLFraudAlerts != null) _tQLFraudAlerts.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

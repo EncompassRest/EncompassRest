@@ -36,6 +36,11 @@ namespace EncompassRest.Loans
         public decimal? UserDefined2 { get { return _userDefined2; } set { _userDefined2 = value; } }
         private DirtyValue<decimal?> _userDefined3;
         public decimal? UserDefined3 { get { return _userDefined3; } set { _userDefined3 = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -57,7 +62,8 @@ namespace EncompassRest.Loans
                     || _taxDisb.Dirty
                     || _userDefined1.Dirty
                     || _userDefined2.Dirty
-                    || _userDefined3.Dirty;
+                    || _userDefined3.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -79,6 +85,7 @@ namespace EncompassRest.Loans
                 _userDefined1.Dirty = value;
                 _userDefined2.Dirty = value;
                 _userDefined3.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

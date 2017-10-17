@@ -74,6 +74,11 @@ namespace EncompassRest.Loans
         public decimal? TruncatedAmountPerDay { get { return _truncatedAmountPerDay; } set { _truncatedAmountPerDay = value; } }
         private DirtyValue<bool?> _use4Decimals;
         public bool? Use4Decimals { get { return _use4Decimals; } set { _use4Decimals = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -114,7 +119,8 @@ namespace EncompassRest.Loans
                     || _releasesAmount.Dirty
                     || _sellerPaidAmount.Dirty
                     || _truncatedAmountPerDay.Dirty
-                    || _use4Decimals.Dirty;
+                    || _use4Decimals.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -155,6 +161,7 @@ namespace EncompassRest.Loans
                 _sellerPaidAmount.Dirty = value;
                 _truncatedAmountPerDay.Dirty = value;
                 _use4Decimals.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

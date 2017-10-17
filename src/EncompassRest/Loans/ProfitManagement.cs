@@ -34,6 +34,11 @@ namespace EncompassRest.Loans
         public decimal? NetProfit { get { return _netProfit; } set { _netProfit = value; } }
         private DirtyList<ProfitManagementItem> _profitManagementItems;
         public IList<ProfitManagementItem> ProfitManagementItems { get { return _profitManagementItems ?? (_profitManagementItems = new DirtyList<ProfitManagementItem>()); } set { _profitManagementItems = new DirtyList<ProfitManagementItem>(value); } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -54,7 +59,8 @@ namespace EncompassRest.Loans
                     || _grossCheckAmount.Dirty
                     || _id.Dirty
                     || _netProfit.Dirty
-                    || _profitManagementItems?.Dirty == true;
+                    || _profitManagementItems?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -75,6 +81,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _netProfit.Dirty = value;
                 if (_profitManagementItems != null) _profitManagementItems.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -20,6 +20,11 @@ namespace EncompassRest.Loans
         public string LoanSubmissionFeeType { get { return _loanSubmissionFeeType; } set { _loanSubmissionFeeType = value; } }
         private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -33,7 +38,8 @@ namespace EncompassRest.Loans
                     || _dueLender.Dirty
                     || _id.Dirty
                     || _loanSubmissionFeeType.Dirty
-                    || _total.Dirty;
+                    || _total.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -47,6 +53,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _loanSubmissionFeeType.Dirty = value;
                 _total.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

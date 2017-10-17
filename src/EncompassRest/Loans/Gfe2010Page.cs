@@ -186,6 +186,11 @@ namespace EncompassRest.Loans
         public decimal? PrepaidInterest { get { return _prepaidInterest; } set { _prepaidInterest = value; } }
         private DirtyValue<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get { return _totalToleranceIncreaseAmount; } set { _totalToleranceIncreaseAmount = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -282,7 +287,8 @@ namespace EncompassRest.Loans
                     || _prepaidInterest.Dirty
                     || _totalToleranceIncreaseAmount.Dirty
                     || _gfe2010FwbcFwscs?.Dirty == true
-                    || _gfe2010GfeCharges?.Dirty == true;
+                    || _gfe2010GfeCharges?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -379,6 +385,7 @@ namespace EncompassRest.Loans
                 _totalToleranceIncreaseAmount.Dirty = value;
                 if (_gfe2010FwbcFwscs != null) _gfe2010FwbcFwscs.Dirty = value;
                 if (_gfe2010GfeCharges != null) _gfe2010GfeCharges.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

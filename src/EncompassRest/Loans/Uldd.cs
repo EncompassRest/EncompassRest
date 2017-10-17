@@ -606,6 +606,11 @@ namespace EncompassRest.Loans
         public int? Unit4TotalBedrooms { get { return _unit4TotalBedrooms; } set { _unit4TotalBedrooms = value; } }
         private DirtyValue<decimal?> _uPBAmount;
         public decimal? UPBAmount { get { return _uPBAmount; } set { _uPBAmount = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -912,7 +917,8 @@ namespace EncompassRest.Loans
                     || _unit3TotalBedrooms.Dirty
                     || _unit4SubjectPropertyGrossRentalIncome.Dirty
                     || _unit4TotalBedrooms.Dirty
-                    || _uPBAmount.Dirty;
+                    || _uPBAmount.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -1219,6 +1225,7 @@ namespace EncompassRest.Loans
                 _unit4SubjectPropertyGrossRentalIncome.Dirty = value;
                 _unit4TotalBedrooms.Dirty = value;
                 _uPBAmount.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

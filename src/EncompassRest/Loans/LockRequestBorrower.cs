@@ -26,6 +26,11 @@ namespace EncompassRest.Loans
         public string SSN { get { return _sSN; } set { _sSN = value; } }
         private DirtyValue<string> _transUnionScore;
         public string TransUnionScore { get { return _transUnionScore; } set { _transUnionScore = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -42,7 +47,8 @@ namespace EncompassRest.Loans
                     || _lastName.Dirty
                     || _lrbIndex.Dirty
                     || _sSN.Dirty
-                    || _transUnionScore.Dirty;
+                    || _transUnionScore.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -59,6 +65,7 @@ namespace EncompassRest.Loans
                 _lrbIndex.Dirty = value;
                 _sSN.Dirty = value;
                 _transUnionScore.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

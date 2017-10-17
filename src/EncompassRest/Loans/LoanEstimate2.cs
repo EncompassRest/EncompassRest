@@ -118,6 +118,11 @@ namespace EncompassRest.Loans
         public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get { return _useActualDownPaymentAndClosingCostsFinancedIndicator; } set { _useActualDownPaymentAndClosingCostsFinancedIndicator = value; } }
         private DirtyValue<bool?> _useAlternate;
         public bool? UseAlternate { get { return _useAlternate; } set { _useAlternate = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -180,7 +185,8 @@ namespace EncompassRest.Loans
                     || _unroundedTotalLoanCosts.Dirty
                     || _unroundedTotalOtherCosts.Dirty
                     || _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty
-                    || _useAlternate.Dirty;
+                    || _useAlternate.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -243,6 +249,7 @@ namespace EncompassRest.Loans
                 _unroundedTotalOtherCosts.Dirty = value;
                 _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty = value;
                 _useAlternate.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

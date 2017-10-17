@@ -80,6 +80,11 @@ namespace EncompassRest.Loans
         public string VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
         private DirtyValue<string> _vestingType;
         public string VestingType { get { return _vestingType; } set { _vestingType = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -123,7 +128,8 @@ namespace EncompassRest.Loans
                     || _vesting.Dirty
                     || _vestingGuid.Dirty
                     || _vestingTrusteeOfType.Dirty
-                    || _vestingType.Dirty;
+                    || _vestingType.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -167,6 +173,7 @@ namespace EncompassRest.Loans
                 _vestingGuid.Dirty = value;
                 _vestingTrusteeOfType.Dirty = value;
                 _vestingType.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

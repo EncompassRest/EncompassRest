@@ -60,6 +60,11 @@ namespace EncompassRest.Loans
         public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get { return _totalInterestPercentage; } set { _totalInterestPercentage = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -93,7 +98,8 @@ namespace EncompassRest.Loans
                     || _mortgageLenderLoanOfficerLicenseID.Dirty
                     || _servicing.Dirty
                     || _signatureType.Dirty
-                    || _totalInterestPercentage.Dirty;
+                    || _totalInterestPercentage.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -127,6 +133,7 @@ namespace EncompassRest.Loans
                 _servicing.Dirty = value;
                 _signatureType.Dirty = value;
                 _totalInterestPercentage.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

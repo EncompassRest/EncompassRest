@@ -86,6 +86,11 @@ namespace EncompassRest.Loans
         public string TriggerField { get { return _triggerField; } set { _triggerField = value; } }
         private DirtyValue<string> _whoPaidCompensation;
         public string WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -132,7 +137,8 @@ namespace EncompassRest.Loans
                     || _roundingMethod.Dirty
                     || _roundingMethodForOfficer.Dirty
                     || _triggerField.Dirty
-                    || _whoPaidCompensation.Dirty;
+                    || _whoPaidCompensation.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -179,6 +185,7 @@ namespace EncompassRest.Loans
                 _roundingMethodForOfficer.Dirty = value;
                 _triggerField.Dirty = value;
                 _whoPaidCompensation.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

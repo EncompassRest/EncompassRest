@@ -86,6 +86,11 @@ namespace EncompassRest.Loans
         public string State { get { return _state; } set { _state = value; } }
         private DirtyValue<string> _webUrl;
         public string WebUrl { get { return _webUrl; } set { _webUrl = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -132,7 +137,8 @@ namespace EncompassRest.Loans
                     || _serviceType.Dirty
                     || _shopFor.Dirty
                     || _state.Dirty
-                    || _webUrl.Dirty;
+                    || _webUrl.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -179,6 +185,7 @@ namespace EncompassRest.Loans
                 _shopFor.Dirty = value;
                 _state.Dirty = value;
                 _webUrl.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

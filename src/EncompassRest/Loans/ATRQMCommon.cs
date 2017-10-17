@@ -420,6 +420,11 @@ namespace EncompassRest.Loans
         public bool? WithOriginalCreditor { get { return _withOriginalCreditor; } set { _withOriginalCreditor = value; } }
         private DirtyValue<DateTime?> _writtenApplicationDate;
         public DateTime? WrittenApplicationDate { get { return _writtenApplicationDate; } set { _writtenApplicationDate = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -633,7 +638,8 @@ namespace EncompassRest.Loans
                     || _unitCount.Dirty
                     || _upfrontPMIFees.Dirty
                     || _withOriginalCreditor.Dirty
-                    || _writtenApplicationDate.Dirty;
+                    || _writtenApplicationDate.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -847,6 +853,7 @@ namespace EncompassRest.Loans
                 _upfrontPMIFees.Dirty = value;
                 _withOriginalCreditor.Dirty = value;
                 _writtenApplicationDate.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

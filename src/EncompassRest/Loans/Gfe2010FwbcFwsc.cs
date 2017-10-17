@@ -20,6 +20,11 @@ namespace EncompassRest.Loans
         public string LineLetter { get { return _lineLetter; } set { _lineLetter = value; } }
         private DirtyValue<int?> _lineNumber;
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -33,7 +38,8 @@ namespace EncompassRest.Loans
                     || _gfe2010FwbcFwscIndex.Dirty
                     || _id.Dirty
                     || _lineLetter.Dirty
-                    || _lineNumber.Dirty;
+                    || _lineNumber.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -47,6 +53,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _lineLetter.Dirty = value;
                 _lineNumber.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

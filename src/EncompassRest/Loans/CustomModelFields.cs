@@ -18,6 +18,11 @@ namespace EncompassRest.Loans
         public bool? ProvideFHAScenario { get { return _provideFHAScenario; } set { _provideFHAScenario = value; } }
         private DirtyValue<bool?> _provideWorstCaseScenario;
         public bool? ProvideWorstCaseScenario { get { return _provideWorstCaseScenario; } set { _provideWorstCaseScenario = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -30,7 +35,8 @@ namespace EncompassRest.Loans
                     || _provideAmortizationScenario.Dirty
                     || _provideBestCaseScenario.Dirty
                     || _provideFHAScenario.Dirty
-                    || _provideWorstCaseScenario.Dirty;
+                    || _provideWorstCaseScenario.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -43,6 +49,7 @@ namespace EncompassRest.Loans
                 _provideBestCaseScenario.Dirty = value;
                 _provideFHAScenario.Dirty = value;
                 _provideWorstCaseScenario.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

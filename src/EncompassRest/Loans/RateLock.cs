@@ -1014,6 +1014,11 @@ namespace EncompassRest.Loans
         public string Type { get { return _type; } set { _type = value; } }
         private DirtyValue<bool?> _usePoint;
         public bool? UsePoint { get { return _usePoint; } set { _usePoint = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -1524,7 +1529,8 @@ namespace EncompassRest.Loans
                     || _lockRequestBorrowers?.Dirty == true
                     || _priceAdjustments?.Dirty == true
                     || _purchaseAdvicePayouts?.Dirty == true
-                    || _sellSideAdjustments?.Dirty == true;
+                    || _sellSideAdjustments?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -2035,6 +2041,7 @@ namespace EncompassRest.Loans
                 if (_priceAdjustments != null) _priceAdjustments.Dirty = value;
                 if (_purchaseAdvicePayouts != null) _purchaseAdvicePayouts.Dirty = value;
                 if (_sellSideAdjustments != null) _sellSideAdjustments.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

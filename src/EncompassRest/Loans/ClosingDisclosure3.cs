@@ -320,6 +320,11 @@ namespace EncompassRest.Loans
         public decimal? UCDLSubTotal { get { return _uCDLSubTotal; } set { _uCDLSubTotal = value; } }
         private DirtyValue<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
         public decimal? UCDTotalAdjustmentsAndOtherCredits { get { return _uCDTotalAdjustmentsAndOtherCredits; } set { _uCDTotalAdjustmentsAndOtherCredits = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -483,7 +488,8 @@ namespace EncompassRest.Loans
                     || _uCDKSubTotal.Dirty
                     || _uCDLSubTotal.Dirty
                     || _uCDTotalAdjustmentsAndOtherCredits.Dirty
-                    || _uCDDetails?.Dirty == true;
+                    || _uCDDetails?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -647,6 +653,7 @@ namespace EncompassRest.Loans
                 _uCDLSubTotal.Dirty = value;
                 _uCDTotalAdjustmentsAndOtherCredits.Dirty = value;
                 if (_uCDDetails != null) _uCDDetails.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

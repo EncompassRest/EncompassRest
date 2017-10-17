@@ -166,6 +166,11 @@ namespace EncompassRest.Loans
         public bool? TransferLoanToConduitIndicator { get { return _transferLoanToConduitIndicator; } set { _transferLoanToConduitIndicator = value; } }
         private DirtyValue<string> _yearsOfCoverage;
         public string YearsOfCoverage { get { return _yearsOfCoverage; } set { _yearsOfCoverage = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -252,7 +257,8 @@ namespace EncompassRest.Loans
                     || _specialInstruction5.Dirty
                     || _state.Dirty
                     || _transferLoanToConduitIndicator.Dirty
-                    || _yearsOfCoverage.Dirty;
+                    || _yearsOfCoverage.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -339,6 +345,7 @@ namespace EncompassRest.Loans
                 _state.Dirty = value;
                 _transferLoanToConduitIndicator.Dirty = value;
                 _yearsOfCoverage.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

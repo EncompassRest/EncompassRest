@@ -1041,7 +1041,7 @@ namespace EncompassRest.Loans
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
                     || _verificationLogs?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

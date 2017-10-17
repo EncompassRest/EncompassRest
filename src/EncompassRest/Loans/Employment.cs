@@ -88,6 +88,11 @@ namespace EncompassRest.Loans
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
         private DirtyValue<DateTime?> _verificationRequestDate;
         public DateTime? VerificationRequestDate { get { return _verificationRequestDate; } set { _verificationRequestDate = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -135,7 +140,8 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _titleFax.Dirty
                     || _titlePhone.Dirty
-                    || _verificationRequestDate.Dirty;
+                    || _verificationRequestDate.Dirty
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -183,6 +189,7 @@ namespace EncompassRest.Loans
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
                 _verificationRequestDate.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

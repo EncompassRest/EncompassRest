@@ -36,6 +36,11 @@ namespace EncompassRest.Loans
         public int? RoleType { get { return _roleType; } set { _roleType = value; } }
         private DirtyValue<string> _systemId;
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -57,7 +62,8 @@ namespace EncompassRest.Loans
                     || _roleType.Dirty
                     || _systemId.Dirty
                     || _alerts?.Dirty == true
-                    || _commentList?.Dirty == true;
+                    || _commentList?.Dirty == true
+                  || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -79,6 +85,7 @@ namespace EncompassRest.Loans
                 _systemId.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }
