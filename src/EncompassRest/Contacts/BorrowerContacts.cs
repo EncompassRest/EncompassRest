@@ -132,7 +132,7 @@ namespace EncompassRest.Contacts
         public Task<bool> DeleteBorrowerContactAsync(string contactId) => DeleteBorrowerContactAsync(contactId, CancellationToken.None);
         public async Task<bool> DeleteBorrowerContactAsync(string contactId, CancellationToken cancellationToken)
         {
-            Preconditions.NotNull(contactId, nameof(contactId));
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
             using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/{contactId}", cancellationToken).ConfigureAwait(false))
             {
