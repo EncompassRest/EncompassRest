@@ -1,4 +1,7 @@
-﻿namespace EncompassRest.Loans.Attachments
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace EncompassRest.Loans.Attachments
 {
     public abstract class Image : IDirty
     {
@@ -14,6 +17,11 @@
         public float? HorizontalResolution { get { return _horizontalResolution; } set { _horizontalResolution = value; } }
         private DirtyValue<float?> _verticalResolution;
         public float? VeriticalResolution { get { return _verticalResolution; } set { _verticalResolution = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal virtual bool Dirty
@@ -27,7 +35,8 @@
                     || _width.Dirty
                     || _height.Dirty
                     || _horizontalResolution.Dirty
-                    || _verticalResolution.Dirty;
+                    || _verticalResolution.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -41,6 +50,7 @@
                 _height.Dirty = value;
                 _horizontalResolution.Dirty = value;
                 _verticalResolution.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

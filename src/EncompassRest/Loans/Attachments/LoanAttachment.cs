@@ -33,6 +33,11 @@ namespace EncompassRest.Loans.Attachments
         public string Title { get { return _title; } set { _title = value; } }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get; set; }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -51,7 +56,8 @@ namespace EncompassRest.Loans.Attachments
                     || _isActive.Dirty
                     || _pages?.Dirty == true
                     || _rotation.Dirty
-                    || _title.Dirty;
+                    || _title.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -70,6 +76,7 @@ namespace EncompassRest.Loans.Attachments
                 if (_pages != null) _pages.Dirty = value;
                 _rotation.Dirty = value;
                 _title.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }
