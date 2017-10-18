@@ -112,9 +112,9 @@ namespace EncompassRest.Contacts
 
         public Task<string> CreateNoteRawAsync(string note, CancellationToken cancellationToken) => CreateNoteRawAsync(note, null, cancellationToken);
 
-        public Task<string> CreateNoteRawAsync(string note, string queryString) => CreateNoteRawAsync(note, queryString, CancellationToken.None);
+        private Task<string> CreateNoteRawAsync(string note, string queryString) => CreateNoteRawAsync(note, queryString, CancellationToken.None);
 
-        public Task<string> CreateNoteRawAsync(string note, string queryString, CancellationToken cancellationToken)
+        private Task<string> CreateNoteRawAsync(string note, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
@@ -163,9 +163,9 @@ namespace EncompassRest.Contacts
 
         public Task<string> UpdateNoteRawAsync(string noteId, string note, CancellationToken cancellationToken) => UpdateNoteRawAsync(noteId, note, null, cancellationToken);
 
-        public Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString) => UpdateNoteRawAsync(noteId, note, queryString, CancellationToken.None);
+        private Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString) => UpdateNoteRawAsync(noteId, note, queryString, CancellationToken.None);
 
-        public Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString, CancellationToken cancellationToken)
+        private Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
             Preconditions.NotNullOrEmpty(note, nameof(note));
