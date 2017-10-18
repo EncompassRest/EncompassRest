@@ -12,8 +12,8 @@ namespace EncompassRest.Contacts
         public DateTime? LicenseIssueDate { get { return _licenseIssueDate; } set { _licenseIssueDate = value; } }
         private DirtyValue<string> _licenseNumber;
         public string LicenseNumber { get { return _licenseNumber; } set { _licenseNumber = value; } }
-        private DirtyValue<string> _licenseStatusCode;
-        public string LicenseStateCode { get { return _licenseStatusCode; } set { _licenseStatusCode = value; } }
+        private DirtyValue<string> _licenseStateCode;
+        public string LicenseStateCode { get { return _licenseStateCode; } set { _licenseStateCode = value; } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -26,7 +26,7 @@ namespace EncompassRest.Contacts
                     || _licenseAuthType.Dirty
                     || _licenseIssueDate.Dirty
                     || _licenseNumber.Dirty
-                    || _licenseStatusCode.Dirty;
+                    || _licenseStateCode.Dirty;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -38,7 +38,7 @@ namespace EncompassRest.Contacts
                 _licenseAuthType.Dirty = value;
                 _licenseIssueDate.Dirty = value;
                 _licenseNumber.Dirty = value;
-                _licenseStatusCode.Dirty = value;
+                _licenseStateCode.Dirty = value;
                 _settingDirty = false;
             }
         }

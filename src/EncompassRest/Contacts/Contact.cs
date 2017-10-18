@@ -12,7 +12,7 @@ namespace EncompassRest.Contacts
 
     public abstract class Contact : IDirty
     {
-        internal abstract string s_apiPath { get; }
+        internal abstract string ApiPath { get; }
         [JsonIgnore]
         public EncompassRestClient Client { get; private set; }
 
@@ -36,7 +36,7 @@ namespace EncompassRest.Contacts
         internal void Initialize(EncompassRestClient client)
         {
             Client = client;
-            Notes = new ContactNotes(client, s_apiPath, Id);
+            Notes = new ContactNotes(client, ApiPath, Id);
         }
         private DirtyValue<string> _firstName;
         public string FirstName { get { return _firstName; } set { _firstName = value; } }

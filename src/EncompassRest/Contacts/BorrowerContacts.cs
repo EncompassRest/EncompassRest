@@ -98,13 +98,13 @@ namespace EncompassRest.Contacts
             }
         }
 
-        public Task<string> UpdateContactAsync(BorrowerContact contact) => UpdateContactAsync(contact, false, CancellationToken.None);
+        public Task UpdateContactAsync(BorrowerContact contact) => UpdateContactAsync(contact, false, CancellationToken.None);
 
-        public Task<string> UpdateContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => UpdateContactAsync(contact, false, cancellationToken);
+        public Task UpdateContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => UpdateContactAsync(contact, false, cancellationToken);
 
-        private Task<string> UpdateContactAsync(BorrowerContact contact, bool populate) => UpdateContactAsync(contact, populate, CancellationToken.None);
+        private Task UpdateContactAsync(BorrowerContact contact, bool populate) => UpdateContactAsync(contact, populate, CancellationToken.None);
 
-        private Task<string> UpdateContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
+        private Task UpdateContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 

@@ -23,17 +23,17 @@ namespace EncompassRest.Contacts
             Client = client;
         }
 
-        public Task<BusinessContact> GetBusinessContactAsync(string contactId) => GetBusinessContactAsync(contactId, CancellationToken.None);
+        public Task<BusinessContact> GetContactAsync(string contactId) => GetContactAsync(contactId, CancellationToken.None);
 
-        public Task<BusinessContact> GetBusinessContactAsync(string contactId, CancellationToken cancellationToken) =>
-            GetBusinessContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BusinessContact>());
+        public Task<BusinessContact> GetContactAsync(string contactId, CancellationToken cancellationToken) =>
+            GetContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BusinessContact>());
 
-        public Task<string> GetBusinessContactRawAsync(string contactId) => GetBusinessContactRawAsync(contactId, CancellationToken.None);
+        public Task<string> GetContactRawAsync(string contactId) => GetContactRawAsync(contactId, CancellationToken.None);
 
-        public Task<string> GetBusinessContactRawAsync(string contactId, CancellationToken cancellationToken) =>
-            GetBusinessContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
+        public Task<string> GetContactRawAsync(string contactId, CancellationToken cancellationToken) =>
+            GetContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
 
-        private async Task<T> GetBusinessContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
@@ -41,23 +41,23 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetBusinessContactAsync)}/{contactId}", response).ConfigureAwait(false) : await RestException.CreateAsync($"{nameof(GetBusinessContactAsync)}", response).ConfigureAwait(false);
+                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetContactAsync)}/{contactId}", response).ConfigureAwait(false) : await RestException.CreateAsync($"{nameof(GetContactAsync)}", response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task<string> CreateBusinessContactAsync(BusinessContact contact) => CreateBusinessContactAsync(contact, true, CancellationToken.None);
+        public Task<string> CreateContactAsync(BusinessContact contact) => CreateContactAsync(contact, false, CancellationToken.None);
 
-        public Task<string> CreateBusinessContactAsync(BusinessContact contact, CancellationToken cancellationToken) => CreateBusinessContactAsync(contact, true, cancellationToken);
+        public Task<string> CreateContactAsync(BusinessContact contact, CancellationToken cancellationToken) => CreateContactAsync(contact, false, cancellationToken);
 
-        private Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate) => CreateBusinessContactAsync(contact, populate, CancellationToken.None);
+        private Task<string> CreateContactAsync(BusinessContact contact, bool populate) => CreateContactAsync(contact, populate, CancellationToken.None);
 
-        private Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
+        private Task<string> CreateContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
-            return CreateBusinessContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return CreateContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -68,47 +68,47 @@ namespace EncompassRest.Contacts
             });
         }
 
-        public Task<string> CreateBusinessContactRawAsync(string contact) => CreateBusinessContactRawAsync(contact, null, CancellationToken.None);
+        public Task<string> CreateContactRawAsync(string contact) => CreateContactRawAsync(contact, null, CancellationToken.None);
 
-        public Task<string> CreateBusinessContactRawAsync(string contact, CancellationToken cancellationToken) => CreateBusinessContactRawAsync(contact, null, cancellationToken);
+        public Task<string> CreateContactRawAsync(string contact, CancellationToken cancellationToken) => CreateContactRawAsync(contact, null, cancellationToken);
 
-        public Task<string> CreateBusinessContactRawAsync(string contact, string queryString) => CreateBusinessContactRawAsync(contact, queryString, CancellationToken.None);
+        public Task<string> CreateContactRawAsync(string contact, string queryString) => CreateContactRawAsync(contact, queryString, CancellationToken.None);
 
-        public Task<string> CreateBusinessContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
+        public Task<string> CreateContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
-            return CreateBusinessContactInternalAsync(new JsonStringContent(contact), queryString, cancellationToken, async response =>
+            return CreateContactInternalAsync(new JsonStringContent(contact), queryString, cancellationToken, async response =>
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });
         }
 
-        private async Task<string> CreateBusinessContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> CreateContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateBusinessContactAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(CreateContactAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task<string> UpdateBusinessContactAsync(BusinessContact contact) => UpdateBusinessContactAsync(contact, false, CancellationToken.None);
+        public Task UpdateContactAsync(BusinessContact contact) => UpdateContactAsync(contact, false, CancellationToken.None);
 
-        public Task<string> UpdateBusinessContactAsync(BusinessContact contact, CancellationToken cancellationToken) => UpdateBusinessContactAsync(contact, false, cancellationToken);
+        public Task UpdateContactAsync(BusinessContact contact, CancellationToken cancellationToken) => UpdateContactAsync(contact, false, cancellationToken);
 
-        private Task<string> UpdateBusinessContactAsync(BusinessContact contact, bool populate) => UpdateBusinessContactAsync(contact, populate, CancellationToken.None);
+        private Task UpdateContactAsync(BusinessContact contact, bool populate) => UpdateContactAsync(contact, populate, CancellationToken.None);
 
-        private Task<string> UpdateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
+        private Task UpdateContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
-            return UpdateBusinessContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return UpdateContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -119,36 +119,36 @@ namespace EncompassRest.Contacts
             });
         }
 
-        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact) => UpdateBusinessContactRawAsync(contactId, contact, null, CancellationToken.None);
+        public Task<string> UpdateContactRawAsync(string contactId, string contact) => UpdateContactRawAsync(contactId, contact, null, CancellationToken.None);
 
-        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateBusinessContactRawAsync(contactId, contact, null, cancellationToken);
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateContactRawAsync(contactId, contact, null, cancellationToken);
 
-        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, string queryString) => UpdateBusinessContactRawAsync(contactId, contact, queryString, CancellationToken.None);
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString) => UpdateContactRawAsync(contactId, contact, queryString, CancellationToken.None);
 
-        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
-            return UpdateBusinessContactInternalAsync(contactId, new JsonStringContent(contact), queryString, cancellationToken, response =>
+            return UpdateContactInternalAsync(contactId, new JsonStringContent(contact), queryString, cancellationToken, response =>
                 response.Content.ReadAsStringAsync());
         }
 
-        private async Task<string> UpdateBusinessContactInternalAsync(string contactId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+        private async Task<string> UpdateContactInternalAsync(string contactId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{contactId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateBusinessContactAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(UpdateContactAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task<bool> DeleteBusinessContactAsync(string contactId) => DeleteBusinessContactAsync(contactId, CancellationToken.None);
+        public Task<bool> DeleteContactAsync(string contactId) => DeleteContactAsync(contactId, CancellationToken.None);
 
-        public async Task<bool> DeleteBusinessContactAsync(string contactId, CancellationToken cancellationToken)
+        public async Task<bool> DeleteContactAsync(string contactId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
