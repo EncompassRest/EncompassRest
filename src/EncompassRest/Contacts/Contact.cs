@@ -4,12 +4,6 @@ using System;
 
 namespace EncompassRest.Contacts
 {
-    public enum ContactAccessLevel
-    {
-        Private = 0,
-        Public = 1
-    }
-
     public abstract class Contact : IDirty
     {
         internal abstract string ApiPath { get; }
