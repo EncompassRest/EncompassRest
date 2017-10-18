@@ -51,6 +51,27 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public void Loan_ExtensionData_Serialization()
+        {
+            var loan = new Loan();
+            Assert.AreEqual("{}", loan.ToJson());
+            loan.ExtensionData["boolProperty"] = true;
+            Assert.AreEqual(1, loan.ExtensionData.Count);
+            Assert.IsTrue(loan.ExtensionData.ContainsKey("boolProperty"));
+            Assert.AreEqual(true, (bool)loan.ExtensionData["boolProperty"]);
+            Assert.AreEqual(@"{""boolProperty"":true}", loan.ToJson());
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            loan.ExtensionData["decimalProperty"] = 10.5M;
+            Assert.AreEqual(2, loan.ExtensionData.Count);
+            Assert.IsTrue(loan.ExtensionData.ContainsKey("boolProperty"));
+            Assert.IsTrue(loan.ExtensionData.ContainsKey("decimalProperty"));
+            Assert.AreEqual(true, (bool)loan.ExtensionData["boolProperty"]);
+            Assert.AreEqual(10.5M, (decimal)loan.ExtensionData["decimalProperty"]);
+            Assert.AreEqual(@"{""decimalProperty"":10.5}", loan.ToJson());
+        }
+
+        [TestMethod]
         public async Task Loan_CreateAndDelete()
         {
             var client = await GetTestClientAsync();
@@ -59,15 +80,6 @@ namespace EncompassRest.Tests
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
-        }
-
-        [TestMethod]
-        public async Task Loan_ExtensionData_Serialization()
-        {
-            var loan = new Loan();
-            Assert.AreEqual("{}", loan.ToJson());
-            loan.ExtensionData["newProperty"] = true;
-            Assert.AreEqual(@"{""newProperty"":true}", loan.ToJson());
         }
 
         [TestMethod]
