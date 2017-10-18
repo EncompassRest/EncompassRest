@@ -30,6 +30,7 @@ namespace EncompassRest.Contacts
                 {
                     var contact = await response.Content.ReadAsAsync<BorrowerContact>().ConfigureAwait(false);
                     contact.Initialize(Client);
+                    contact.Dirty = false;
                     return contact;
                 });
 
