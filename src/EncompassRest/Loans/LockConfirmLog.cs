@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
                     || _timeConfirmed.Dirty
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

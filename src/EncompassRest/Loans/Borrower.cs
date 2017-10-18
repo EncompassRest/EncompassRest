@@ -972,7 +972,7 @@ namespace EncompassRest.Loans
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
                     || _application?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

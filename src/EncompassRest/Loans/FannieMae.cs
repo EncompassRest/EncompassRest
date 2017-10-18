@@ -69,7 +69,7 @@ namespace EncompassRest.Loans
                     || _uCDCollectionStatus.Dirty
                     || _uCDPStatus.Dirty
                     || _uLDDECStatus.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

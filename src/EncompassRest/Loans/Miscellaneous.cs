@@ -312,7 +312,7 @@ namespace EncompassRest.Loans
                     || _useGfeTax.Dirty
                     || _useRegZMi.Dirty
                     || _zip.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

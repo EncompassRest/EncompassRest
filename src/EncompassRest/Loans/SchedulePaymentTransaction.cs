@@ -174,7 +174,7 @@ namespace EncompassRest.Loans
                     || _transactionDate.Dirty
                     || _unpaidLateFeeDue.Dirty
                     || _uSDAMonthlyPremium.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

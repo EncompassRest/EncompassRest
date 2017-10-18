@@ -279,7 +279,7 @@ namespace EncompassRest.Loans
                     || _hud1EsItemizes?.Dirty == true
                     || _hud1EsPayTos?.Dirty == true
                     || _hud1EsSetups?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

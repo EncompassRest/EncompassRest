@@ -666,7 +666,7 @@ namespace EncompassRest.Loans
                     || _log_UnderwritingRiskAssessOther.Dirty
                     || _log_UnderwritingRiskAssessType.Dirty
                     || _log_WithUndisclosedDebt.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

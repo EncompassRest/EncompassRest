@@ -252,7 +252,7 @@ namespace EncompassRest.Loans
                     || _gfeLiens?.Dirty == true
                     || _gfePayments?.Dirty == true
                     || _gfePayoffs?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

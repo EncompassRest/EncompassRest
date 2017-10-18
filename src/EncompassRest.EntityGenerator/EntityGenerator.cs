@@ -121,7 +121,7 @@ $@"        private ExtensionDataObject _extensionDataInternal;
                 if (_gettingDirty) return false;
                 _gettingDirty = true;
                 var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))}
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }}

@@ -231,7 +231,7 @@ namespace EncompassRest.Loans
                     || _unacceptableProperty.Dirty
                     || _weDoNotGrantCredit.Dirty
                     || _withdrawnByApplicant.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

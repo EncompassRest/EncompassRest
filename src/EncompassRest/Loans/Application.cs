@@ -618,7 +618,7 @@ namespace EncompassRest.Loans
                     || _selfEmployedIncomes?.Dirty == true
                     || _tax4506s?.Dirty == true
                     || _tQLReports?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -489,7 +489,7 @@ namespace EncompassRest.Loans
                     || _uCDLSubTotal.Dirty
                     || _uCDTotalAdjustmentsAndOtherCredits.Dirty
                     || _uCDDetails?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

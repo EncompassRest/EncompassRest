@@ -162,7 +162,7 @@ namespace EncompassRest.Loans
                     || _totalSellerContribution.Dirty
                     || _unadjustedAcquisition.Dirty
                     || _use85PercentRuleIndicator.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -123,7 +123,7 @@ namespace EncompassRest.Loans
                     || _stepRateFirstChange.Dirty
                     || _subsequentChanges.Dirty
                     || _totalDisbursed1YearConsummation.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

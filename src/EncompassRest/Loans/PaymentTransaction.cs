@@ -174,7 +174,7 @@ namespace EncompassRest.Loans
                     || _totalAmountReceived.Dirty
                     || _transactionAmount.Dirty
                     || _transactionDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

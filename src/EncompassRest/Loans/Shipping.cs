@@ -69,7 +69,7 @@ namespace EncompassRest.Loans
                     || _shipperName.Dirty
                     || _targetDeliveryDate.Dirty
                     || _shippingContacts?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

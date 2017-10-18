@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
                     || _lastComplianceOrderAlertMessage.Dirty
                     || _lastComplianceOrderDescriptionOfAlerts.Dirty
                     || _tQLComplianceAlertIndex.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

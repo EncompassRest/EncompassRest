@@ -30,7 +30,7 @@ namespace EncompassRest.Loans
                 var dirty = _lockRemoved.Dirty
                     || _modelPath.Dirty
                     || _value.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

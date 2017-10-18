@@ -495,7 +495,7 @@ namespace EncompassRest.Loans
                     || _valueEstablished.Dirty
                     || _windEnergySystemActualCost.Dirty
                     || _secondaryFinancingProviders?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

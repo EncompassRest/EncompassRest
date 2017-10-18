@@ -42,7 +42,7 @@ namespace EncompassRest.Loans
                     || _marginRatePercent.Dirty
                     || _minimumMonthlyPaymentAmount.Dirty
                     || _year.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

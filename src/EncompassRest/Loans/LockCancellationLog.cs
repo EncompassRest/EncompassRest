@@ -66,7 +66,7 @@ namespace EncompassRest.Loans
                     || _requestGuid.Dirty
                     || _systemId.Dirty
                     || _timeCancelled.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

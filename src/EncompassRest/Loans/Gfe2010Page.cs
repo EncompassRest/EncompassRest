@@ -288,7 +288,7 @@ namespace EncompassRest.Loans
                     || _totalToleranceIncreaseAmount.Dirty
                     || _gfe2010FwbcFwscs?.Dirty == true
                     || _gfe2010GfeCharges?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

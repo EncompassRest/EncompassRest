@@ -84,7 +84,7 @@ namespace EncompassRest.Loans
                     || _userDefinedPrepaid1.Dirty
                     || _userDefinedPrepaid2.Dirty
                     || _userDefinedPrepaid3.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

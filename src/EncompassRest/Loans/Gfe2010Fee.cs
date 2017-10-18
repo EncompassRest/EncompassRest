@@ -198,7 +198,7 @@ namespace EncompassRest.Loans
                     || _undiscountedInsurance2015.Dirty
                     || _wholePoc.Dirty
                     || _wholePocPaidByType.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

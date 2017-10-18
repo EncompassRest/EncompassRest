@@ -171,7 +171,7 @@ namespace EncompassRest.Loans
                     || _unpaidPrincipalBalance.Dirty
                     || _voidedDate.Dirty
                     || _withdrawnDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

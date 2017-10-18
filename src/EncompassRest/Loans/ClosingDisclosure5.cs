@@ -213,7 +213,7 @@ namespace EncompassRest.Loans
                     || _settlementAgentZip.Dirty
                     || _signatureType.Dirty
                     || _totalPayments.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

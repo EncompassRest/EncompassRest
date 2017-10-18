@@ -51,7 +51,7 @@ namespace EncompassRest.Loans
                     || _isInternal.Dirty
                     || _reviewedBy.Dirty
                     || _reviewedDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -30,7 +30,7 @@ namespace EncompassRest.Loans
                 var dirty = _amount.Dirty
                     || _id.Dirty
                     || _purchaseCreditType.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

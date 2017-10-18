@@ -186,7 +186,7 @@ namespace EncompassRest.Loans
                     || _totalConstructionValueAmount.Dirty
                     || _typeRecordingJurisdiction.Dirty
                     || _unincorporatedAreaName.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

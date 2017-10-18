@@ -57,7 +57,7 @@ namespace EncompassRest.Loans
                     || _sourceofNonWageIncomeDescription.Dirty
                     || _sourceofWageIncomeEmployerName.Dirty
                     || _usdaHouseholdIncomeIndex.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

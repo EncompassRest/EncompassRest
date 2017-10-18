@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
                     || _receiptAmount.Dirty
                     || _receiptCheckNo.Dirty
                     || _trustAccountItemIndex.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

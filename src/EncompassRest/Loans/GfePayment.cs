@@ -81,7 +81,7 @@ namespace EncompassRest.Loans
                     || _rateInMonth2.Dirty
                     || _reducedLoanBalance.Dirty
                     || _reducedStatus.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

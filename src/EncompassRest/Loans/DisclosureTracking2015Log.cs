@@ -615,7 +615,7 @@ namespace EncompassRest.Loans
                     || _commentList?.Dirty == true
                     || _forms?.Dirty == true
                     || _snapshotFields?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

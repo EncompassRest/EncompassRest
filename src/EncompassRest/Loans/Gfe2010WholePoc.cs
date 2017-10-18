@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
                     || _lineNumber.Dirty
                     || _wholePoc.Dirty
                     || _wholePocPaidByType.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

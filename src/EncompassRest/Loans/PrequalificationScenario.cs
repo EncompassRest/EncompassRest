@@ -135,7 +135,7 @@ namespace EncompassRest.Loans
                     || _totalPaidOffMortgage.Dirty
                     || _totalPaidOffOthers.Dirty
                     || _totalPayments.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

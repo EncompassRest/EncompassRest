@@ -154,8 +154,8 @@ namespace EncompassRest.Loans
         public decimal? DownPaymentPercent { get { return _downPaymentPercent; } set { _downPaymentPercent = value; } }
         private DirtyList<EdmLog> _edmLogs;
         public IList<EdmLog> EdmLogs { get { return _edmLogs ?? (_edmLogs = new DirtyList<EdmLog>()); } set { _edmLogs = new DirtyList<EdmLog>(value); } }
-        //private ElliUCDDetail _elliUCDFields;
-        //public ElliUCDDetail ElliUCDFields { get { return _elliUCDFields ?? (_elliUCDFields = new ElliUCDDetail()); } set { _elliUCDFields = value; } }
+        private ElliUCDDetail _elliUCDFields;
+        public ElliUCDDetail ElliUCDFields { get { return _elliUCDFields ?? (_elliUCDFields = new ElliUCDDetail()); } set { _elliUCDFields = value; } }
         private DirtyList<EmailTriggerLog> _emailTriggerLogs;
         public IList<EmailTriggerLog> EmailTriggerLogs { get { return _emailTriggerLogs ?? (_emailTriggerLogs = new DirtyList<EmailTriggerLog>()); } set { _emailTriggerLogs = new DirtyList<EmailTriggerLog>(value); } }
         private EmDocument _emDocument;
@@ -456,8 +456,8 @@ namespace EncompassRest.Loans
         public string NmlsLoanOriginatorId { get { return _nmlsLoanOriginatorId; } set { _nmlsLoanOriginatorId = value; } }
         private DirtyValue<bool?> _noClosingCostOption;
         public bool? NoClosingCostOption { get { return _noClosingCostOption; } set { _noClosingCostOption = value; } }
-        //private DirtyList<NonVol> _nonVols;
-        //public IList<NonVol> NonVols { get { return _nonVols ?? (_nonVols = new DirtyList<NonVol>()); } set { _nonVols = new DirtyList<NonVol>(value); } }
+        private DirtyList<NonVol> _nonVols;
+        public IList<NonVol> NonVols { get { return _nonVols ?? (_nonVols = new DirtyList<NonVol>()); } set { _nonVols = new DirtyList<NonVol>(value); } }
         private DirtyValue<bool?> _notRequiredForPurchaseSaleOrRefinance;
         public bool? NotRequiredForPurchaseSaleOrRefinance { get { return _notRequiredForPurchaseSaleOrRefinance; } set { _notRequiredForPurchaseSaleOrRefinance = value; } }
         private DirtyValue<bool?> _notRequiredForSettlementOfYourLoan;
@@ -684,8 +684,8 @@ namespace EncompassRest.Loans
         public VaLoanData VaLoanData { get { return _vaLoanData ?? (_vaLoanData = new VaLoanData()); } set { _vaLoanData = value; } }
         private DirtyList<VerificationLog> _verificationLogs;
         public IList<VerificationLog> VerificationLogs { get { return _verificationLogs ?? (_verificationLogs = new DirtyList<VerificationLog>()); } set { _verificationLogs = new DirtyList<VerificationLog>(value); } }
-        //private DirtyValue<string> _virtualFields;
-        //public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
+        private DirtyValue<string> _virtualFields;
+        public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
         private DirtyValue<string> _websiteId;
         public string WebsiteId { get { return _websiteId; } set { _websiteId = value; } }
         private ExtensionDataObject _extensionDataInternal;
@@ -947,7 +947,7 @@ namespace EncompassRest.Loans
                     || _useNew2015FormsIndicator.Dirty
                     || _useNewHudIndicator.Dirty
                     || _vAEntitlementAmount.Dirty
-                    //|| _virtualFields.Dirty
+                    || _virtualFields.Dirty
                     || _websiteId.Dirty
                     || _additionalRequests?.Dirty == true
                     || _affiliatedBusinessArrangements?.Dirty == true
@@ -973,7 +973,7 @@ namespace EncompassRest.Loans
                     || _downloadLogs?.Dirty == true
                     || _downPayment?.Dirty == true
                     || _edmLogs?.Dirty == true
-                    //|| _elliUCDFields?.Dirty == true
+                    || _elliUCDFields?.Dirty == true
                     || _emailTriggerLogs?.Dirty == true
                     || _emDocument?.Dirty == true
                     || _emDocumentInvestor?.Dirty == true
@@ -1009,7 +1009,7 @@ namespace EncompassRest.Loans
                     || _milestoneTemplateLogs?.Dirty == true
                     || _miscellaneous?.Dirty == true
                     || _netTangibleBenefit?.Dirty == true
-                    //|| _nonVols?.Dirty == true
+                    || _nonVols?.Dirty == true
                     || _postClosingConditionLogs?.Dirty == true
                     || _preliminaryConditionLogs?.Dirty == true
                     || _prequalification?.Dirty == true
@@ -1041,7 +1041,7 @@ namespace EncompassRest.Loans
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
                     || _verificationLogs?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -1295,7 +1295,7 @@ namespace EncompassRest.Loans
                 _useNew2015FormsIndicator.Dirty = value;
                 _useNewHudIndicator.Dirty = value;
                 _vAEntitlementAmount.Dirty = value;
-                //_virtualFields.Dirty = value;
+                _virtualFields.Dirty = value;
                 _websiteId.Dirty = value;
                 if (_additionalRequests != null) _additionalRequests.Dirty = value;
                 if (_affiliatedBusinessArrangements != null) _affiliatedBusinessArrangements.Dirty = value;
@@ -1321,7 +1321,7 @@ namespace EncompassRest.Loans
                 if (_downloadLogs != null) _downloadLogs.Dirty = value;
                 if (_downPayment != null) _downPayment.Dirty = value;
                 if (_edmLogs != null) _edmLogs.Dirty = value;
-                //if (_elliUCDFields != null) _elliUCDFields.Dirty = value;
+                if (_elliUCDFields != null) _elliUCDFields.Dirty = value;
                 if (_emailTriggerLogs != null) _emailTriggerLogs.Dirty = value;
                 if (_emDocument != null) _emDocument.Dirty = value;
                 if (_emDocumentInvestor != null) _emDocumentInvestor.Dirty = value;
@@ -1357,7 +1357,7 @@ namespace EncompassRest.Loans
                 if (_milestoneTemplateLogs != null) _milestoneTemplateLogs.Dirty = value;
                 if (_miscellaneous != null) _miscellaneous.Dirty = value;
                 if (_netTangibleBenefit != null) _netTangibleBenefit.Dirty = value;
-                //if (_nonVols != null) _nonVols.Dirty = value;
+                if (_nonVols != null) _nonVols.Dirty = value;
                 if (_postClosingConditionLogs != null) _postClosingConditionLogs.Dirty = value;
                 if (_preliminaryConditionLogs != null) _preliminaryConditionLogs.Dirty = value;
                 if (_prequalification != null) _prequalification.Dirty = value;

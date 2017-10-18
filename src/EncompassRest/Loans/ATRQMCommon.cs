@@ -639,7 +639,7 @@ namespace EncompassRest.Loans
                     || _upfrontPMIFees.Dirty
                     || _withOriginalCreditor.Dirty
                     || _writtenApplicationDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

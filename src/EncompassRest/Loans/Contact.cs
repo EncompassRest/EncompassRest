@@ -288,7 +288,7 @@ namespace EncompassRest.Loans
                     || _tqlId.Dirty
                     || _tqlIsPublishingIndicator.Dirty
                     || _tqlName.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

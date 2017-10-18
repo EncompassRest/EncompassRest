@@ -99,7 +99,7 @@ namespace EncompassRest.Loans
                     || _totalIncome4.Dirty
                     || _transcriptType.Dirty
                     || _userID.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

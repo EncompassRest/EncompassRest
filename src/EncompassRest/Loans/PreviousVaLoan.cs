@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
                     || _propertyPostalCode.Dirty
                     || _propertyState.Dirty
                     || _vALoanNumber.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

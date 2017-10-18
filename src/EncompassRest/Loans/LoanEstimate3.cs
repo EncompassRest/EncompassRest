@@ -99,7 +99,7 @@ namespace EncompassRest.Loans
                     || _servicing.Dirty
                     || _signatureType.Dirty
                     || _totalInterestPercentage.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

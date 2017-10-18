@@ -45,7 +45,7 @@ namespace EncompassRest.Loans
                     || _formType.Dirty
                     || _id.Dirty
                     || _secondYearAmount.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

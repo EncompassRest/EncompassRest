@@ -84,7 +84,7 @@ namespace EncompassRest.Loans
                     || _wiredToForCreditTo2.Dirty
                     || _wiredToForFurtherCreditTo1.Dirty
                     || _wiredToForFurtherCreditTo2.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

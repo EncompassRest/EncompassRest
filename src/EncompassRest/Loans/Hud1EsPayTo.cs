@@ -93,7 +93,7 @@ namespace EncompassRest.Loans
                     || _premium.Dirty
                     || _renewalDate.Dirty
                     || _state.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

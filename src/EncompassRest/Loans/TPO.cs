@@ -300,7 +300,7 @@ namespace EncompassRest.Loans
                     || _underwritingDelegated.Dirty
                     || _watchListFlag.Dirty
                     || _watchListReason.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

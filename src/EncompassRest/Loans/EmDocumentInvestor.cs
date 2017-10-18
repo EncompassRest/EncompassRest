@@ -288,7 +288,7 @@ namespace EncompassRest.Loans
                     || _invTollFreePhoneNum.Dirty
                     || _invUrl.Dirty
                     || _invZip.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

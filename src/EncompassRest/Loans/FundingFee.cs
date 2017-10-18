@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
                     || _payee.Dirty
                     || _pocPaidBy.Dirty
                     || _ptcPaidBy.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

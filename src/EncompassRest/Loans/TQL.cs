@@ -228,7 +228,7 @@ namespace EncompassRest.Loans
                     || _tQLComplianceAlerts?.Dirty == true
                     || _tQLDocuments?.Dirty == true
                     || _tQLFraudAlerts?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

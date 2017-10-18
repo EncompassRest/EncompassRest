@@ -171,7 +171,7 @@ namespace EncompassRest.Loans
                     || _releaseInformationInConnectionWithCreditReportIndicator.Dirty
                     || _releaseMortgageInformationIndicator.Dirty
                     || _rightToFinancialPrivacyActIndicator.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

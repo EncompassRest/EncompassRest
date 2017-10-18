@@ -681,7 +681,7 @@ namespace EncompassRest.Loans
                     || _trst2StreetAddr1.Dirty
                     || _trst2StreetAddr2.Dirty
                     || _trst2Zip.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

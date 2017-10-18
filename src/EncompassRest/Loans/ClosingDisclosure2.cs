@@ -96,7 +96,7 @@ namespace EncompassRest.Loans
                     || _totalOtherCost.Dirty
                     || _totalOtherCostAtClosing.Dirty
                     || _totalOtherCostBeforeClosing.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -435,7 +435,7 @@ namespace EncompassRest.Loans
                     || _valuation.Dirty
                     || _eem?.Dirty == true
                     || _energyEfficientMortgageItems?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

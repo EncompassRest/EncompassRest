@@ -474,7 +474,7 @@ namespace EncompassRest.Loans
                     || _paymentTransactions?.Dirty == true
                     || _scheduledPayments?.Dirty == true
                     || _schedulePaymentTransactions?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

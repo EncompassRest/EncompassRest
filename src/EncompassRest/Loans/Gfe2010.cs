@@ -666,7 +666,7 @@ namespace EncompassRest.Loans
                     || _useLOCompTool.Dirty
                     || _gfe2010Fees?.Dirty == true
                     || _gfe2010WholePocs?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

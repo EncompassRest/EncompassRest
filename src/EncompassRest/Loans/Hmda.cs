@@ -297,7 +297,7 @@ namespace EncompassRest.Loans
                     || _totalPointsAndFees.Dirty
                     || _typeOfPurchaser.Dirty
                     || _universalLoanId.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

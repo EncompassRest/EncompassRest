@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
                     || _lrbIndex.Dirty
                     || _sSN.Dirty
                     || _transUnionScore.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -120,7 +120,7 @@ namespace EncompassRest.Loans
                     || _sellerPaidAmount.Dirty
                     || _truncatedAmountPerDay.Dirty
                     || _use4Decimals.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -339,7 +339,7 @@ namespace EncompassRest.Loans
                     || _signatureTypeFinalExecutedCopyofSellerCD.Dirty
                     || _signatureTypeFinalExecutedCopyofStandardCD.Dirty
                     || _totalCashToClose.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

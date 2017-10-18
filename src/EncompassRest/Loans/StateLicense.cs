@@ -189,7 +189,7 @@ namespace EncompassRest.Loans
                     || _wI.Dirty
                     || _wV.Dirty
                     || _wY.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

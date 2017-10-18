@@ -384,7 +384,7 @@ namespace EncompassRest.Loans
                     || _reasonSettlementCharges.Dirty
                     || _totalEstimatedCashClose.Dirty
                     || _yearsToRecast.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

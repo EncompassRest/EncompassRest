@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
                     || _roleId.Dirty
                     || _roleName.Dirty
                     || _writeAccess.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

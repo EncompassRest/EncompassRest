@@ -1530,7 +1530,7 @@ namespace EncompassRest.Loans
                     || _priceAdjustments?.Dirty == true
                     || _purchaseAdvicePayouts?.Dirty == true
                     || _sellSideAdjustments?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

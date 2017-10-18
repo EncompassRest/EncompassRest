@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
                     || _total1.Dirty
                     || _total2.Dirty
                     || _trustAccountItems?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

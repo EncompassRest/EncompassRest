@@ -678,7 +678,7 @@ namespace EncompassRest.Loans
                     || _ySPPaidBy.Dirty
                     || _newYorkFees?.Dirty == true
                     || _newYorkPrimaryLenders?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

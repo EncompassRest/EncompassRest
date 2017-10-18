@@ -258,7 +258,7 @@ namespace EncompassRest.Loans
                     || _state.Dirty
                     || _transferLoanToConduitIndicator.Dirty
                     || _yearsOfCoverage.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

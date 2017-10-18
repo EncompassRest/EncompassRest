@@ -390,7 +390,7 @@ namespace EncompassRest.Loans
                     || _usePitiForRatio.Dirty
                     || _variableRateFeature.Dirty
                     || _yearlyTerm.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -54,7 +54,7 @@ namespace EncompassRest.Loans
                     || _regulationZInterestRatePeriodType.Dirty
                     || _taxInsuranceAmount.Dirty
                     || _totalPayment.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -42,7 +42,7 @@ namespace EncompassRest.Loans
                     || _numberOfPayments.Dirty
                     || _paymentDate.Dirty
                     || _regulationZPaymentIndex.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

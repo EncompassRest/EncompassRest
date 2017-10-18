@@ -111,7 +111,7 @@ namespace EncompassRest.Loans
                     || _serviceDescription5.Dirty
                     || _serviceDescription6.Dirty
                     || _settlementIndicator.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

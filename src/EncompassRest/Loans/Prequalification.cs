@@ -204,7 +204,7 @@ namespace EncompassRest.Loans
                     || _withinLimits9.Dirty
                     || _yearsForComparison.Dirty
                     || _prequalificationScenarios?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

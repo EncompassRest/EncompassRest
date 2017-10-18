@@ -750,7 +750,7 @@ namespace EncompassRest.Loans
                     || _years.Dirty
                     || _regulationZInterestRatePeriods?.Dirty == true
                     || _regulationZPayments?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

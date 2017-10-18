@@ -186,7 +186,7 @@ namespace EncompassRest.Loans
                     || _unroundedTotalOtherCosts.Dirty
                     || _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty
                     || _useAlternate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

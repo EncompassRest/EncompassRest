@@ -225,7 +225,7 @@ namespace EncompassRest.Loans
                     || _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty
                     || _refinancingLoanIsHomeEquityIndicator.Dirty
                     || _refinancingRespondBonaFide.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

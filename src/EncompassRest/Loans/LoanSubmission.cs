@@ -108,7 +108,7 @@ namespace EncompassRest.Loans
                     || _totalForDueLender.Dirty
                     || _totalForPrimaryResidence.Dirty
                     || _loanSubmissionFees?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

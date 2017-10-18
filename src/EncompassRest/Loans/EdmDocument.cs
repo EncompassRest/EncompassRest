@@ -27,7 +27,7 @@ namespace EncompassRest.Loans
                 _gettingDirty = true;
                 var dirty = _id.Dirty
                     || _title.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -177,7 +177,7 @@ namespace EncompassRest.Loans
                     || _userDefinedFee5BorPaidAmount.Dirty
                     || _userDefinedFee5Description.Dirty
                     || _userDefinedFee5SellerPaidAmount.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

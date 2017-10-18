@@ -114,7 +114,7 @@ namespace EncompassRest.Loans
                     || _totalMonthlyObligations.Dirty
                     || _ufmipBasedOn.Dirty
                     || _ufmipFactor.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

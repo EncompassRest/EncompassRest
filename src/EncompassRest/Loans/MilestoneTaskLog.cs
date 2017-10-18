@@ -117,7 +117,7 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _contacts?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

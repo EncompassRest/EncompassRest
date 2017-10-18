@@ -429,7 +429,7 @@ namespace EncompassRest.Loans
                     || _userDefined823PortionOfFeeIndicator.Dirty
                     || _wireTransferFeeToBeFinancedIndicator.Dirty
                     || _wireTransferPortionOfFeeIndicator.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

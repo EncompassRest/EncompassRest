@@ -243,7 +243,7 @@ namespace EncompassRest.Loans
                     || _lndUrl.Dirty
                     || _lndVaIdNum.Dirty
                     || _lndZip.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -72,7 +72,7 @@ namespace EncompassRest.Loans
                     || _servicingTransactionType.Dirty
                     || _transactionAmount.Dirty
                     || _transactionDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

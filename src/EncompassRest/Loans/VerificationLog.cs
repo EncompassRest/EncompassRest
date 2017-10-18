@@ -231,7 +231,7 @@ namespace EncompassRest.Loans
                     || _allowedRoles?.Dirty == true
                     || _commentList?.Dirty == true
                     || _conditions?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

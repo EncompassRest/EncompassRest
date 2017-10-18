@@ -60,7 +60,7 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _netProfit.Dirty
                     || _profitManagementItems?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

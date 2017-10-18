@@ -141,7 +141,7 @@ namespace EncompassRest.Loans
                     || _titleFax.Dirty
                     || _titlePhone.Dirty
                     || _verificationRequestDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

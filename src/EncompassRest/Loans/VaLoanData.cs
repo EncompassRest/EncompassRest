@@ -765,7 +765,7 @@ namespace EncompassRest.Loans
                     || _wWCarpetIndicator.Dirty
                     || _militaryServices?.Dirty == true
                     || _previousVaLoans?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

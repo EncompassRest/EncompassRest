@@ -714,7 +714,7 @@ namespace EncompassRest.Loans
                     || _totalMonthlyIncome.Dirty
                     || _underwritingRiskAssessOther.Dirty
                     || _underwritingRiskAssessType.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

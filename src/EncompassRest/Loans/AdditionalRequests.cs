@@ -135,7 +135,7 @@ namespace EncompassRest.Loans
                     || _titleSurvey.Dirty
                     || _titleTypeOfProperty.Dirty
                     || _titleWarrantyDeed.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -63,7 +63,7 @@ namespace EncompassRest.Loans
                     || _userDefined1.Dirty
                     || _userDefined2.Dirty
                     || _userDefined3.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

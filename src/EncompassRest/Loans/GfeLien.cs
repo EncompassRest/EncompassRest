@@ -39,7 +39,7 @@ namespace EncompassRest.Loans
                     || _holderName.Dirty
                     || _id.Dirty
                     || _priority.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

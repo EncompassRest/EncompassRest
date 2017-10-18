@@ -582,7 +582,7 @@ namespace EncompassRest.Loans
                     || _closingEntities?.Dirty == true
                     || _respaHudDetails?.Dirty == true
                     || _stateLicenses?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

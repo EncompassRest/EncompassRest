@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
                     || _serviceNumber.Dirty
                     || _sSN.Dirty
                     || _startDate.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -417,7 +417,7 @@ namespace EncompassRest.Loans
                     || _section900HomeownerInsurance.Dirty
                     || _section900HudGfeVaFundingFee.Dirty
                     || _useActualPaymentChange.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -138,7 +138,7 @@ namespace EncompassRest.Loans
                     || _roundingMethodForOfficer.Dirty
                     || _triggerField.Dirty
                     || _whoPaidCompensation.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

@@ -123,7 +123,7 @@ namespace EncompassRest.Loans
                     || _titlePhone.Dirty
                     || _total.Dirty
                     || _vodIndex.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

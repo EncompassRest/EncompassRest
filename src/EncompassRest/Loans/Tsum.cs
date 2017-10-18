@@ -219,7 +219,7 @@ namespace EncompassRest.Loans
                     || _underwritingComment8.Dirty
                     || _unpaidBalance.Dirty
                     || _verified.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

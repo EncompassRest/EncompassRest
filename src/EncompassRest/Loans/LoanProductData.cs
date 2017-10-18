@@ -330,7 +330,7 @@ namespace EncompassRest.Loans
                     || _buydowns?.Dirty == true
                     || _helocRepaymentDrawPeriods?.Dirty == true
                     || _prepaymentPenalties?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

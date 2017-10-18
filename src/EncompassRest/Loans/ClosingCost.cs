@@ -219,7 +219,7 @@ namespace EncompassRest.Loans
                     || _loanEstimate1?.Dirty == true
                     || _loanEstimate2?.Dirty == true
                     || _loanEstimate3?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

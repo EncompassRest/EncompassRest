@@ -438,7 +438,7 @@ namespace EncompassRest.Loans
                     || _underwritingDecisionType.Dirty
                     || _verificationCode.Dirty
                     || _usdaHouseholdIncomes?.Dirty == true
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }

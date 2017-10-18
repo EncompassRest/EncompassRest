@@ -42,7 +42,7 @@ namespace EncompassRest.Loans
                     || _escrowPaymentTo.Dirty
                     || _hud1EsItemizeIndex.Dirty
                     || _id.Dirty
-                  || _extensionDataInternal?.Dirty == true;
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
