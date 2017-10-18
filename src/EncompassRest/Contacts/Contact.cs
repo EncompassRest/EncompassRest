@@ -43,6 +43,8 @@ namespace EncompassRest.Contacts
         public ContactAccessLevel? AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
         private ContactAddress _currentMailingAddress;
         public ContactAddress CurrentMailingAddress { get { return _currentMailingAddress ?? (_currentMailingAddress = new ContactAddress()); } set { _currentMailingAddress = value; } }
+        private DirtyValue<string> _businessWebUrl;
+        public string BusinessWebUrl { get { return _businessWebUrl; } set { _businessWebUrl = value; } }
         private DirtyValue<string> _jobTitle;
         public string JobTitle { get { return _jobTitle; } set { _jobTitle = value; } }
         private DirtyValue<string> _workPhone;
@@ -57,6 +59,8 @@ namespace EncompassRest.Contacts
         public string PersonalEmail { get { return _personalEmail; } set { _personalEmail = value; } }
         private DirtyValue<string> _businessEmail;
         public string BusinessEmail { get { return _businessEmail; } set { _businessEmail = value; } }
+        private DirtyValue<string> _salutation;
+        public string Salutation { get { return _salutation; } set { _salutation = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         internal bool Dirty
@@ -68,6 +72,7 @@ namespace EncompassRest.Contacts
                     || _ownerId.Dirty
                     || _accessLevel.Dirty
                     || _currentMailingAddress?.Dirty == true
+                    || _businessWebUrl.Dirty
                     || _jobTitle.Dirty
                     || _workPhone.Dirty
                     || _homePhone.Dirty
@@ -75,6 +80,7 @@ namespace EncompassRest.Contacts
                     || _faxNumber.Dirty
                     || _personalEmail.Dirty
                     || _businessEmail.Dirty
+                    || _salutation.Dirty
                     || _id.Dirty;
                 return dirty;
             }
@@ -85,6 +91,7 @@ namespace EncompassRest.Contacts
                 _ownerId.Dirty = value;
                 _accessLevel.Dirty = value;
                 if (_currentMailingAddress != null) _currentMailingAddress.Dirty = value;
+                _businessWebUrl.Dirty = value;
                 _jobTitle.Dirty = value;
                 _workPhone.Dirty = value;
                 _homePhone.Dirty = value;
@@ -92,6 +99,7 @@ namespace EncompassRest.Contacts
                 _faxNumber.Dirty = value;
                 _personalEmail.Dirty = value;
                 _businessEmail.Dirty = value;
+                _salutation.Dirty = value;
                 _id.Dirty = value;
             }
         }
