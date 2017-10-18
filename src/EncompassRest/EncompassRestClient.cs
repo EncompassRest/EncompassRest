@@ -65,6 +65,8 @@ namespace EncompassRest
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
+        private Contacts.BorrowerContacts _borrowerContacts;
+        private Contacts.BusinessContacts _businessContacts;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -128,6 +130,8 @@ namespace EncompassRest
                 return _batchUpdate ?? Interlocked.CompareExchange(ref _batchUpdate, (batchUpdate = new BatchUpdate(this)), null) ?? batchUpdate;
             }
         }
+
+        public BorrowerContacts
 
         internal HttpClient HttpClient
         {
