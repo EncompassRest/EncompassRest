@@ -118,6 +118,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(contact, nameof(contact));
             Preconditions.NotNull(contact.Id, nameof(contact.Id));
 
+            contact.Initialize(Client);
             return UpdateContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
              {
                  if (populate)
