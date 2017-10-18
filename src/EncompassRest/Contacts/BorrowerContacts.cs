@@ -12,27 +12,28 @@ namespace EncompassRest.Contacts
 {
     public sealed class BorrowerContacts
     {
-        private static string s_apiPath = "encompass/v1/BorrowerContacts";
+        private const string s_apiPath = "encompass/v1/BorrowerContacts";
 
         #region Public Properties
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; }
         #endregion
-
 
         internal BorrowerContacts(EncompassRestClient client)
         {
             Client = client;
         }
 
-        public Task<BorrowerContact> GetBorrowerContactAsync(string contactId) => GetBorrowerContactAsync(contactId, CancellationToken.None);
-        public Task<BorrowerContact> GetBorrowerContactAsync(string contactId, CancellationToken cancellationToken) => 
-            GetBorrowerContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BorrowerContact>());
+        public Task<BorrowerContact> GetContactAsync(string contactId) => GetContactAsync(contactId, CancellationToken.None);
 
-        public Task<string> GetBorrowerContactRawAsync(string contactId) => GetBorrowerContactRawAsync(contactId, CancellationToken.None);
-        public Task<string> GetBorrowerContactRawAsync(string contactId, CancellationToken cancellationToken) =>
-            GetBorrowerContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
+        public Task<BorrowerContact> GetContactAsync(string contactId, CancellationToken cancellationToken) => 
+            GetContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BorrowerContact>());
 
-        private async Task<T> GetBorrowerContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        public Task<string> GetContactRawAsync(string contactId) => GetContactRawAsync(contactId, CancellationToken.None);
+
+        public Task<string> GetContactRawAsync(string contactId, CancellationToken cancellationToken) =>
+            GetContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
+
+        private async Task<T> GetContactInternalAsync<T>(string contactId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
@@ -40,18 +41,23 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetBorrowerContactAsync)}/{contactId}", response).ConfigureAwait(false) : await RestException.CreateAsync($"{nameof(GetBorrowerContactAsync)}", response).ConfigureAwait(false);
+                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetContactAsync)}/{contactId}", response).ConfigureAwait(false) : await RestException.CreateAsync($"{nameof(GetContactAsync)}", response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
-        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact) => CreateBorrowerContactAsync(contact, true, CancellationToken.None);
-        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact, bool populate) => CreateBorrowerContactAsync(contact, populate, CancellationToken.None);
-        public Task<string> CreateBorrowerContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
+
+        public Task<string> CreateContactAsync(BorrowerContact contact) => CreateContactAsync(contact, false, CancellationToken.None);
+
+        public Task<string> CreateContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => CreateContactAsync(contact, false, cancellationToken);
+
+        private Task<string> CreateContactAsync(BorrowerContact contact, bool populate) => CreateContactAsync(contact, populate, CancellationToken.None);
+
+        private Task<string> CreateContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
-            return CreateBorrowerContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return CreateContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -62,39 +68,47 @@ namespace EncompassRest.Contacts
             });
         }
 
-        public Task<string> CreateBorrowerContactRawAsync(string contact) => CreateBorrowerContactRawAsync(contact, "", CancellationToken.None);
-        public Task<string> CreateBorrowerContactRawAsync(string contact, CancellationToken cancellationToken) => CreateBorrowerContactRawAsync(contact, null, cancellationToken);
-        public Task<string> CreateBorrowerContactRawAsync(string contact, string queryString) => CreateBorrowerContactRawAsync(contact, queryString, CancellationToken.None);
-        public Task<string> CreateBorrowerContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
+        public Task<string> CreateContactRawAsync(string contact) => CreateContactRawAsync(contact, null, CancellationToken.None);
+
+        public Task<string> CreateContactRawAsync(string contact, CancellationToken cancellationToken) => CreateContactRawAsync(contact, null, cancellationToken);
+
+        public Task<string> CreateContactRawAsync(string contact, string queryString) => CreateContactRawAsync(contact, queryString, CancellationToken.None);
+
+        public Task<string> CreateContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
-            return CreateBorrowerContactInternalAsync(new JsonStringContent(contact), queryString, cancellationToken, async response =>
+            return CreateContactInternalAsync(new JsonStringContent(contact), queryString, cancellationToken, async response =>
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });   
         }
-        private async Task<string> CreateBorrowerContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
+
+        private async Task<string> CreateContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateBorrowerContactAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(CreateContactAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
             }
         }
-        public Task UpdateBorrowerContactAsync(BorrowerContact contact) => UpdateBorrowerContactAsync(contact, false, CancellationToken.None);
-        public Task UpdateBorrowerContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => UpdateBorrowerContactAsync(contact, false, cancellationToken);
-        public Task UpdateBorrowerContactAsync(BorrowerContact contact, bool populate) => UpdateBorrowerContactAsync(contact, populate, CancellationToken.None);
-        public Task UpdateBorrowerContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
+
+        public Task<string> UpdateContactAsync(BorrowerContact contact) => UpdateContactAsync(contact, false, CancellationToken.None);
+
+        public Task<string> UpdateContactAsync(BorrowerContact contact, CancellationToken cancellationToken) => UpdateContactAsync(contact, false, cancellationToken);
+
+        private Task<string> UpdateContactAsync(BorrowerContact contact, bool populate) => UpdateContactAsync(contact, populate, CancellationToken.None);
+
+        private Task<string> UpdateContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
-            return UpdateBorrowerContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return UpdateContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
              {
                  if (populate)
                  {
@@ -103,34 +117,38 @@ namespace EncompassRest.Contacts
                  contact.Dirty = false;
                  return string.Empty;
              });
-
         }
-        public Task UpdateBorrowerContactRawAsync(string contactId, string contact) => UpdateBorrowerContactRawAsync(contactId, contact, null, CancellationToken.None);
-        public Task UpdateBorrowerContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateBorrowerContactRawAsync(contactId, contact, null, cancellationToken);
-        public Task UpdateBorrowerContactRawAsync(string contactId, string contact, string queryString) => UpdateBorrowerContactRawAsync(contactId, contact, queryString, CancellationToken.None);
-        public Task UpdateBorrowerContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
+
+        public Task<string> UpdateContactRawAsync(string contactId, string contact) => UpdateContactRawAsync(contactId, contact, null, CancellationToken.None);
+
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateContactRawAsync(contactId, contact, null, cancellationToken);
+
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString) => UpdateContactRawAsync(contactId, contact, queryString, CancellationToken.None);
+
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
-            return UpdateBorrowerContactInternalAsync(contactId, new JsonStringContent(contact), queryString, cancellationToken, response =>
+            return UpdateContactInternalAsync(contactId, new JsonStringContent(contact), queryString, cancellationToken, response =>
                 response.Content.ReadAsStringAsync());
         }
 
-        private async Task<string> UpdateBorrowerContactInternalAsync(string contactId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage,Task<string>> func)
+        private async Task<string> UpdateContactInternalAsync(string contactId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage,Task<string>> func)
         {
             using (var response = await Client.HttpClient.PatchAsync($"{s_apiPath}/{contactId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateBorrowerContactAsync), response).ConfigureAwait(false);
+                    throw await RestException.CreateAsync(nameof(UpdateContactAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
         }
 
-        public Task<bool> DeleteBorrowerContactAsync(string contactId) => DeleteBorrowerContactAsync(contactId, CancellationToken.None);
-        public async Task<bool> DeleteBorrowerContactAsync(string contactId, CancellationToken cancellationToken)
+        public Task<bool> DeleteContactAsync(string contactId) => DeleteContactAsync(contactId, CancellationToken.None);
+
+        public async Task<bool> DeleteContactAsync(string contactId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
@@ -139,7 +157,5 @@ namespace EncompassRest.Contacts
                 return response.IsSuccessStatusCode;
             }
         }
-
-
     }
 }

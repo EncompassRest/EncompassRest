@@ -1,4 +1,6 @@
-﻿namespace EncompassRest.Contacts
+﻿using System;
+
+namespace EncompassRest.Contacts
 {
     public sealed class BusinessContactLicense : IDirty
     {
@@ -6,8 +8,8 @@
         public string LicenseAuthName { get { return _licenseAuthName; } set { _licenseAuthName = value; } }
         private DirtyValue<string> _licenseAuthType;
         public string LicenseAuthType { get { return _licenseAuthType; } set { _licenseAuthType = value; } }
-        private DirtyValue<string> _licenseIssueDate;
-        public string LicenseIssueDate { get { return _licenseIssueDate; } set { _licenseIssueDate = value; } }
+        private DirtyValue<DateTime?> _licenseIssueDate;
+        public DateTime? LicenseIssueDate { get { return _licenseIssueDate; } set { _licenseIssueDate = value; } }
         private DirtyValue<string> _licenseNumber;
         public string LicenseNumber { get { return _licenseNumber; } set { _licenseNumber = value; } }
         private DirtyValue<string> _licenseStatusCode;

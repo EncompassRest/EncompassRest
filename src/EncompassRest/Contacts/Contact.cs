@@ -31,7 +31,6 @@ namespace EncompassRest.Contacts
         [JsonConstructor]
         public Contact()
         {
-
         }
 
         internal void Initialize(EncompassRestClient client)

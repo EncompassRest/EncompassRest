@@ -32,8 +32,8 @@ namespace EncompassRest.Contacts
         }
         private DirtyValue<string> _subject;
         public string Subject { get { return _subject; } set { _subject = value; } }
-        private DirtyValue<DateTime?> _timeStamp;
-        public DateTime? Timestamp { get { return _timeStamp; } set { _timeStamp = value; } }
+        private DirtyValue<DateTime?> _timestamp;
+        public DateTime? Timestamp { get { return _timestamp; } set { _timestamp = value; } }
         private DirtyValue<string> _details;
         public string Details { get { return _details; } set { _details = value; } }
 
@@ -47,7 +47,7 @@ namespace EncompassRest.Contacts
                 _gettingDirty = true;
                 var dirty = _noteIdInt.Dirty
                     || _subject.Dirty
-                    || _timeStamp.Dirty
+                    || _timestamp.Dirty
                     || _details.Dirty;
                 _gettingDirty = false;
                 return dirty;
@@ -58,7 +58,7 @@ namespace EncompassRest.Contacts
                 _settingDirty = true;
                 _noteIdInt.Dirty = value;
                 _subject.Dirty = value;
-                _timeStamp.Dirty = value;
+                _timestamp.Dirty = value;
                 _details.Dirty = value;
                 _settingDirty = false;
             }

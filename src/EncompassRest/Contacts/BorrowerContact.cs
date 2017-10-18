@@ -4,16 +4,16 @@ using System;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class BorrowerContact : Contact,IDirty
+    public sealed class BorrowerContact : Contact, IDirty
     {
-        override internal string s_apiPath { get { return "encompass/v1/BusinessContacts"; } }
+        internal override string s_apiPath { get { return "encompass/v1/BusinessContacts"; } }
 
         private DirtyValue<string> _employerName;
         public string EmployerName { get { return _employerName; } set { _employerName = value; } }
         private DirtyValue<DateTime?> _birthdate;
         public DateTime? Birthdate { get { return _birthdate; } set { _birthdate = value; } }
-        private DirtyValue<string> _refferal;
-        public string Referral { get { return _refferal; } set { _refferal = value; } }
+        private DirtyValue<string> _referral;
+        public string Referral { get { return _referral; } set { _referral = value; } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal new bool Dirty
@@ -25,7 +25,7 @@ namespace EncompassRest.Contacts
                 var dirty = base.Dirty
                     || _employerName.Dirty
                     || _birthdate.Dirty
-                    || _refferal.Dirty;
+                    || _referral.Dirty;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -36,7 +36,7 @@ namespace EncompassRest.Contacts
                 base.Dirty = value;
                 _employerName.Dirty = value;
                 _birthdate.Dirty = value;
-                _refferal.Dirty = value;
+                _referral.Dirty = value;
                 _settingDirty = false;
             }
         }

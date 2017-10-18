@@ -12,12 +12,11 @@ namespace EncompassRest.Contacts
 {
     public sealed class BusinessContacts
     {
-        private static string s_apiPath = "encompass/v1/BusinessContacts";
+        private const string s_apiPath = "encompass/v1/BusinessContacts";
 
         #region Public Properties
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; }
         #endregion
-
 
         internal BusinessContacts(EncompassRestClient client)
         {
@@ -25,10 +24,12 @@ namespace EncompassRest.Contacts
         }
 
         public Task<BusinessContact> GetBusinessContactAsync(string contactId) => GetBusinessContactAsync(contactId, CancellationToken.None);
+
         public Task<BusinessContact> GetBusinessContactAsync(string contactId, CancellationToken cancellationToken) =>
             GetBusinessContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BusinessContact>());
 
         public Task<string> GetBusinessContactRawAsync(string contactId) => GetBusinessContactRawAsync(contactId, CancellationToken.None);
+
         public Task<string> GetBusinessContactRawAsync(string contactId, CancellationToken cancellationToken) =>
             GetBusinessContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsStringAsync());
 
@@ -45,9 +46,14 @@ namespace EncompassRest.Contacts
                 return await func(response).ConfigureAwait(false);
             }
         }
+
         public Task<string> CreateBusinessContactAsync(BusinessContact contact) => CreateBusinessContactAsync(contact, true, CancellationToken.None);
-        public Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate) => CreateBusinessContactAsync(contact, populate, CancellationToken.None);
-        public Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
+
+        public Task<string> CreateBusinessContactAsync(BusinessContact contact, CancellationToken cancellationToken) => CreateBusinessContactAsync(contact, true, cancellationToken);
+
+        private Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate) => CreateBusinessContactAsync(contact, populate, CancellationToken.None);
+
+        private Task<string> CreateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
@@ -62,9 +68,12 @@ namespace EncompassRest.Contacts
             });
         }
 
-        public Task<string> CreateBusinessContactRawAsync(string contact) => CreateBusinessContactRawAsync(contact, "", CancellationToken.None);
+        public Task<string> CreateBusinessContactRawAsync(string contact) => CreateBusinessContactRawAsync(contact, null, CancellationToken.None);
+
         public Task<string> CreateBusinessContactRawAsync(string contact, CancellationToken cancellationToken) => CreateBusinessContactRawAsync(contact, null, cancellationToken);
+
         public Task<string> CreateBusinessContactRawAsync(string contact, string queryString) => CreateBusinessContactRawAsync(contact, queryString, CancellationToken.None);
+
         public Task<string> CreateBusinessContactRawAsync(string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
@@ -75,6 +84,7 @@ namespace EncompassRest.Contacts
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });
         }
+
         private async Task<string> CreateBusinessContactInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
         {
             using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}/{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
@@ -87,10 +97,14 @@ namespace EncompassRest.Contacts
                 return await func(response).ConfigureAwait(false);
             }
         }
-        public Task UpdateBusinessContactAsync(BusinessContact contact) => UpdateBusinessContactAsync(contact, false, CancellationToken.None);
-        public Task UpdateBusinessContactAsync(BusinessContact contact, CancellationToken cancellationToken) => UpdateBusinessContactAsync(contact, false, cancellationToken);
-        public Task UpdateBusinessContactAsync(BusinessContact contact, bool populate) => UpdateBusinessContactAsync(contact, populate, CancellationToken.None);
-        public Task UpdateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
+
+        public Task<string> UpdateBusinessContactAsync(BusinessContact contact) => UpdateBusinessContactAsync(contact, false, CancellationToken.None);
+
+        public Task<string> UpdateBusinessContactAsync(BusinessContact contact, CancellationToken cancellationToken) => UpdateBusinessContactAsync(contact, false, cancellationToken);
+
+        private Task<string> UpdateBusinessContactAsync(BusinessContact contact, bool populate) => UpdateBusinessContactAsync(contact, populate, CancellationToken.None);
+
+        private Task<string> UpdateBusinessContactAsync(BusinessContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
 
@@ -103,12 +117,15 @@ namespace EncompassRest.Contacts
                 contact.Dirty = false;
                 return string.Empty;
             });
-
         }
-        public Task UpdateBusinessContactRawAsync(string contactId, string contact) => UpdateBusinessContactRawAsync(contactId, contact, null, CancellationToken.None);
-        public Task UpdateBusinessContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateBusinessContactRawAsync(contactId, contact, null, cancellationToken);
-        public Task UpdateBusinessContactRawAsync(string contactId, string contact, string queryString) => UpdateBusinessContactRawAsync(contactId, contact, queryString, CancellationToken.None);
-        public Task UpdateBusinessContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
+
+        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact) => UpdateBusinessContactRawAsync(contactId, contact, null, CancellationToken.None);
+
+        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, CancellationToken cancellationToken) => UpdateBusinessContactRawAsync(contactId, contact, null, cancellationToken);
+
+        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, string queryString) => UpdateBusinessContactRawAsync(contactId, contact, queryString, CancellationToken.None);
+
+        public Task<string> UpdateBusinessContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
@@ -130,6 +147,7 @@ namespace EncompassRest.Contacts
         }
 
         public Task<bool> DeleteBusinessContactAsync(string contactId) => DeleteBusinessContactAsync(contactId, CancellationToken.None);
+
         public async Task<bool> DeleteBusinessContactAsync(string contactId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -139,7 +157,5 @@ namespace EncompassRest.Contacts
                 return response.IsSuccessStatusCode;
             }
         }
-
-
     }
 }
