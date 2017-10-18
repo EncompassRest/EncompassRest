@@ -25,8 +25,13 @@ namespace EncompassRest.Contacts
 
         public Task<BorrowerContact> GetContactAsync(string contactId) => GetContactAsync(contactId, CancellationToken.None);
 
-        public Task<BorrowerContact> GetContactAsync(string contactId, CancellationToken cancellationToken) => 
-            GetContactInternalAsync(contactId, cancellationToken, response => response.Content.ReadAsAsync<BorrowerContact>());
+        public Task<BorrowerContact> GetContactAsync(string contactId, CancellationToken cancellationToken) =>
+                GetContactInternalAsync(contactId, cancellationToken, async response =>
+                {
+                    var contact = await response.Content.ReadAsAsync<BorrowerContact>().ConfigureAwait(false);
+                    contact.Initialize(Client);
+                    return contact;
+                });
 
         public Task<string> GetContactRawAsync(string contactId) => GetContactRawAsync(contactId, CancellationToken.None);
 
@@ -59,6 +64,9 @@ namespace EncompassRest.Contacts
 
             return CreateContactInternalAsync(JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
+                var contactId = Path.GetFileName(response.Headers.Location.OriginalString);
+                contact.Id = contactId;
+                contact.Initialize(Client);
                 if (populate)
                 {
                     await response.Content.PopulateAsync(contact).ConfigureAwait(false);
@@ -107,6 +115,7 @@ namespace EncompassRest.Contacts
         private Task UpdateContactAsync(BorrowerContact contact, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(contact, nameof(contact));
+            Preconditions.NotNull(contact.Id, nameof(contact.Id));
 
             return UpdateContactInternalAsync(contact.Id, JsonStreamContent.Create(contact), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
              {

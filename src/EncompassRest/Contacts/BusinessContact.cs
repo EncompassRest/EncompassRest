@@ -14,8 +14,8 @@ namespace EncompassRest.Contacts
         public string CompanyName { get { return _companyName; } set { _companyName = value; } }
         private BusinessContactLicense _personalContactLicense;
         public BusinessContactLicense PersonalContactLicense { get { return _personalContactLicense ?? (_personalContactLicense = new BusinessContactLicense()); } set { _personalContactLicense = value; } }
-        private BusinessContactLicense _businessContactLicesnse;
-        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicesnse ?? (_businessContactLicesnse = new BusinessContactLicense()); } set { _businessContactLicesnse = value; } }
+        private BusinessContactLicense _businessContactLicense;
+        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicense ?? (_businessContactLicense = new BusinessContactLicense()); } set { _businessContactLicense = value; } }
         private DirtyValue<bool?> _noSpam;
         public bool? NoSpam { get { return _noSpam; } set { _noSpam = value; } }
         private DirtyValue<int?> _fees;
@@ -32,7 +32,7 @@ namespace EncompassRest.Contacts
                     || _categoryId.Dirty
                     || _companyName.Dirty
                     || _personalContactLicense?.Dirty == true
-                    || _businessContactLicesnse?.Dirty == true
+                    || _businessContactLicense?.Dirty == true
                     || _noSpam.Dirty
                     || _fees.Dirty;
                 _gettingDirty = false;
@@ -46,7 +46,7 @@ namespace EncompassRest.Contacts
                 _categoryId.Dirty = value;
                 _companyName.Dirty = value;
                 if (_personalContactLicense!= null) _personalContactLicense.Dirty = value;
-                if (_businessContactLicesnse!= null) _businessContactLicesnse.Dirty = value;
+                if (_businessContactLicense!= null) _businessContactLicense.Dirty = value;
                 _noSpam.Dirty = value;
                 _fees.Dirty = value;
                 _settingDirty = false;

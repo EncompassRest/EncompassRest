@@ -99,6 +99,7 @@ namespace EncompassRest.Contacts
 
             return CreateNoteInternalAsync(JsonStreamContent.Create(note), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
             {
+                var noteId = Path.GetFileName(response.Headers.Location.OriginalString);
                 if (populate)
                 {
                     await response.Content.PopulateAsync(note).ConfigureAwait(false);

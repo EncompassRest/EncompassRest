@@ -66,8 +66,8 @@ namespace EncompassRest
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
-        private Contacts.BorrowerContacts _borrowerContacts;
-        private Contacts.BusinessContacts _businessContacts;
+        private BorrowerContacts _borrowerContacts;
+        private BusinessContacts _businessContacts;
 
         #region Properties
         public AccessToken AccessToken { get; }
