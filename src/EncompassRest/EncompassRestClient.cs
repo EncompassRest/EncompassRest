@@ -8,6 +8,7 @@ using EncompassRest.LoanBatch;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
+using EncompassRest.Contacts;
 
 namespace EncompassRest
 {
@@ -131,21 +132,21 @@ namespace EncompassRest
             }
         }
 
-        public Contacts.BorrowerContacts BorrowerContacts
+        public BorrowerContacts BorrowerContacts
         {
             get
             {
-                Contacts.BorrowerContacts borrowerContacts;
-                return _borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new Contacts.BorrowerContacts(this)), null) ?? borrowerContacts;
+                BorrowerContacts borrowerContacts;
+                return _borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
             }
         }
 
-        public Contacts.BusinessContacts BusinessContacts
+        public BusinessContacts BusinessContacts
         {
             get
             {
-                Contacts.BusinessContacts businessContacts;
-                return _businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new Contacts.BusinessContacts(this)), null) ?? businessContacts;
+                BusinessContacts businessContacts;
+                return _businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
             }
         }
 
