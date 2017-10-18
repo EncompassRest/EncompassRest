@@ -19,7 +19,7 @@ namespace EncompassRest.Contacts
         #endregion
 
 
-        public BusinessContacts(EncompassRestClient client)
+        internal BusinessContacts(EncompassRestClient client)
         {
             Client = client;
         }

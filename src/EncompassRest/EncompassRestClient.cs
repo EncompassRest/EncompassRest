@@ -131,7 +131,23 @@ namespace EncompassRest
             }
         }
 
-        public BorrowerContacts
+        public Contacts.BorrowerContacts BorrowerContacts
+        {
+            get
+            {
+                Contacts.BorrowerContacts borrowerContacts;
+                return _borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new Contacts.BorrowerContacts(this)), null) ?? borrowerContacts;
+            }
+        }
+
+        public Contacts.BusinessContacts BusinessContacts
+        {
+            get
+            {
+                Contacts.BusinessContacts businessContacts;
+                return _businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new Contacts.BusinessContacts(this)), null) ?? businessContacts;
+            }
+        }
 
         internal HttpClient HttpClient
         {

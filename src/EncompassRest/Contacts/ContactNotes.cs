@@ -17,7 +17,7 @@ namespace EncompassRest.Contacts
 
         public string ContactId { get; }
         
-        public ContactNotes(EncompassRestClient client, string baseApiPath, string contactId)
+        internal ContactNotes(EncompassRestClient client, string baseApiPath, string contactId)
         {
             Client = client;
             ContactId = contactId;

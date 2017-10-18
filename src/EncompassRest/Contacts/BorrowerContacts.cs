@@ -19,7 +19,7 @@ namespace EncompassRest.Contacts
         #endregion
 
 
-        public BorrowerContacts(EncompassRestClient client)
+        internal BorrowerContacts(EncompassRestClient client)
         {
             Client = client;
         }
