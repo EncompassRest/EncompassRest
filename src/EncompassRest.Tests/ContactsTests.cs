@@ -20,7 +20,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BusinessContact_Serialization()
         {
-            var businessContact = new BorrowerContact { AccessLevel = ContactAccessLevel.Private };
+            var businessContact = new BusinessContact { AccessLevel = ContactAccessLevel.Private };
             Assert.AreEqual(@"{""accessLevel"":0}", businessContact.ToJson());
             businessContact.Dirty = false;
             Assert.AreEqual("{}", businessContact.ToJson());
