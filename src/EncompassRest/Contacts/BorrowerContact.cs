@@ -6,7 +6,7 @@ namespace EncompassRest.Contacts
 {
     public sealed class BorrowerContact : Contact, IDirty
     {
-        internal override string ApiPath { get { return "encompass/v1/BorrowerContacts"; } }
+        internal override string ApiPath { get { return "encompass/v1/borrowerContacts"; } }
 
         private DirtyValue<string> _employerName;
         public string EmployerName { get { return _employerName; } set { _employerName = value; } }

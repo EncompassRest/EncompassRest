@@ -32,6 +32,7 @@ namespace EncompassRest.Contacts
             return GetNoteInternalAsync(noteId, cancellationToken, async response =>
             {
                 var note = await response.Content.ReadAsAsync<ContactNote>().ConfigureAwait(false);
+                note.NoteId = noteId; //TODO: Remove this when EM corrects bug
                 note.Dirty = false;
                 return note;
             });
@@ -66,6 +67,7 @@ namespace EncompassRest.Contacts
             foreach (var note in notes)
             {
                 note.Dirty = false;
+                
             }
             return notes;
         });

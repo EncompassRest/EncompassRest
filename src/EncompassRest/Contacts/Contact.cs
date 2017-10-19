@@ -37,7 +37,7 @@ namespace EncompassRest.Contacts
         private DirtyValue<string> _lastName;
         public string LastName { get { return _lastName; } set { _lastName = value; } }
         private DirtyValue<string> _ownerId;
-        public string OwnerID { get { return _ownerId; } set { _ownerId = value; } }
+        public string OwnerId { get { return _ownerId; } set { _ownerId = value; } }
         private DirtyValue<ContactAccessLevel?> _accessLevel;
         [EnumOutput(EnumOutput.Integer)]
         public ContactAccessLevel? AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }

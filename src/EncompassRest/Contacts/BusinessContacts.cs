@@ -10,7 +10,7 @@ namespace EncompassRest.Contacts
 {
     public sealed class BusinessContacts
     {
-        private const string s_apiPath = "encompass/v1/BusinessContacts";
+        private const string s_apiPath = "encompass/v1/businessContacts";
 
         #region Public Properties
         public EncompassRestClient Client { get; }

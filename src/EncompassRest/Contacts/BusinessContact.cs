@@ -5,7 +5,7 @@ namespace EncompassRest.Contacts
 {
     public sealed class BusinessContact : Contact, IDirty
     {
-        internal override string ApiPath { get { return "encompass/v1/BusinessContacts"; } }
+        internal override string ApiPath { get { return "encompass/v1/businessContacts"; } }
 
         private DirtyValue<BusinessContactCategory?> _categoryId;
         [EnumOutput(EnumOutput.Integer)]
