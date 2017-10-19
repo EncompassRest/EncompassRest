@@ -8,6 +8,7 @@ using EncompassRest.LoanBatch;
 using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
+using EncompassRest.Contacts;
 
 namespace EncompassRest
 {
@@ -65,6 +66,8 @@ namespace EncompassRest
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
         private BatchUpdate _batchUpdate;
+        private BorrowerContacts _borrowerContacts;
+        private BusinessContacts _businessContacts;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -126,6 +129,24 @@ namespace EncompassRest
             {
                 BatchUpdate batchUpdate;
                 return _batchUpdate ?? Interlocked.CompareExchange(ref _batchUpdate, (batchUpdate = new BatchUpdate(this)), null) ?? batchUpdate;
+            }
+        }
+
+        public BorrowerContacts BorrowerContacts
+        {
+            get
+            {
+                BorrowerContacts borrowerContacts;
+                return _borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
+            }
+        }
+
+        public BusinessContacts BusinessContacts
+        {
+            get
+            {
+                BusinessContacts businessContacts;
+                return _businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
             }
         }
 
