@@ -67,7 +67,6 @@ namespace EncompassRest.Contacts
             foreach (var note in notes)
             {
                 note.Dirty = false;
-                
             }
             return notes;
         });

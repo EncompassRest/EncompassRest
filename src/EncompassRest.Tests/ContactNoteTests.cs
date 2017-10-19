@@ -23,16 +23,19 @@ namespace EncompassRest.Tests
         {
             //create borrower contact to test notes
             var client = await GetTestClientAsync();
-            var borrowerContact = new BorrowerContact();
-            borrowerContact.FirstName = "test";
-            borrowerContact.PersonalEmail = "me@me.com";
+            var borrowerContact = new BorrowerContact
+            {
+                FirstName = "test",
+                PersonalEmail = "me@me.com"
+            };
             var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact);
-            borrowerContact.Initialize(client);
 
             //test notes
-            var note = new ContactNote();
-            note.Subject = "test";
-            note.Details = "testing data";
+            var note = new ContactNote
+            {
+                Subject = "test",
+                Details = "testing data"
+            };
             var noteId = await borrowerContact.Notes.CreateNoteAsync(note);
             Assert.IsNotNull(noteId);
 
