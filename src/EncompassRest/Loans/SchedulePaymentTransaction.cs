@@ -110,6 +110,11 @@ namespace EncompassRest.Loans
         public decimal? UnpaidLateFeeDue { get { return _unpaidLateFeeDue; } set { _unpaidLateFeeDue = value; } }
         private DirtyValue<decimal?> _uSDAMonthlyPremium;
         public decimal? USDAMonthlyPremium { get { return _uSDAMonthlyPremium; } set { _uSDAMonthlyPremium = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -168,7 +173,8 @@ namespace EncompassRest.Loans
                     || _transactionAmount.Dirty
                     || _transactionDate.Dirty
                     || _unpaidLateFeeDue.Dirty
-                    || _uSDAMonthlyPremium.Dirty;
+                    || _uSDAMonthlyPremium.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -227,6 +233,7 @@ namespace EncompassRest.Loans
                 _transactionDate.Dirty = value;
                 _unpaidLateFeeDue.Dirty = value;
                 _uSDAMonthlyPremium.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

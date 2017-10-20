@@ -286,6 +286,11 @@ namespace EncompassRest.Loans
         public IList<UsdaHouseholdIncome> UsdaHouseholdIncomes { get { return _usdaHouseholdIncomes ?? (_usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>()); } set { _usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>(value); } }
         private DirtyValue<string> _verificationCode;
         public string VerificationCode { get { return _verificationCode; } set { _verificationCode = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -432,7 +437,8 @@ namespace EncompassRest.Loans
                     || _underwritingDecisionDate.Dirty
                     || _underwritingDecisionType.Dirty
                     || _verificationCode.Dirty
-                    || _usdaHouseholdIncomes?.Dirty == true;
+                    || _usdaHouseholdIncomes?.Dirty == true
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -579,6 +585,7 @@ namespace EncompassRest.Loans
                 _underwritingDecisionType.Dirty = value;
                 _verificationCode.Dirty = value;
                 if (_usdaHouseholdIncomes != null) _usdaHouseholdIncomes.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -20,6 +20,11 @@ namespace EncompassRest.Webhook
         public string InstanceId { get { return _instanceId; } set { _instanceId = value; } }
         private DirtyList<string> _events;
         public IList<string> Events { get { return _events ?? (_events = new DirtyList<string>()); } set { _events = new DirtyList<string>(value); } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -33,7 +38,8 @@ namespace EncompassRest.Webhook
                     || _resource.Dirty
                     || _clientId.Dirty
                     || _instanceId.Dirty
-                    || _events?.Dirty == true;
+                    || _events?.Dirty == true
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -47,6 +53,7 @@ namespace EncompassRest.Webhook
                 _clientId.Dirty = value;
                 _instanceId.Dirty = value;
                 if (_events != null) _events.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

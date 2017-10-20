@@ -272,6 +272,11 @@ namespace EncompassRest.Loans
         public decimal? Section900HudGfeVaFundingFee { get { return _section900HudGfeVaFundingFee; } set { _section900HudGfeVaFundingFee = value; } }
         private DirtyValue<bool?> _useActualPaymentChange;
         public bool? UseActualPaymentChange { get { return _useActualPaymentChange; } set { _useActualPaymentChange = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -411,7 +416,8 @@ namespace EncompassRest.Loans
                     || _section800TotalTransferTaxes.Dirty
                     || _section900HomeownerInsurance.Dirty
                     || _section900HudGfeVaFundingFee.Dirty
-                    || _useActualPaymentChange.Dirty;
+                    || _useActualPaymentChange.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -551,6 +557,7 @@ namespace EncompassRest.Loans
                 _section900HomeownerInsurance.Dirty = value;
                 _section900HudGfeVaFundingFee.Dirty = value;
                 _useActualPaymentChange.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

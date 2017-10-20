@@ -30,6 +30,11 @@ namespace EncompassRest.Loans
         public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
         private DirtyValue<string> _state;
         public string State { get { return _state; } set { _state = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -48,7 +53,8 @@ namespace EncompassRest.Loans
                     || _name.Dirty
                     || _newYorkFeeIndex.Dirty
                     || _postalCode.Dirty
-                    || _state.Dirty;
+                    || _state.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -67,6 +73,7 @@ namespace EncompassRest.Loans
                 _newYorkFeeIndex.Dirty = value;
                 _postalCode.Dirty = value;
                 _state.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

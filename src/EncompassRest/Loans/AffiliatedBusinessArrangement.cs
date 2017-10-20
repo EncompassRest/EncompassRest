@@ -68,6 +68,11 @@ namespace EncompassRest.Loans
         public string ServiceDescription6 { get { return _serviceDescription6; } set { _serviceDescription6 = value; } }
         private DirtyValue<bool?> _settlementIndicator;
         public bool? SettlementIndicator { get { return _settlementIndicator; } set { _settlementIndicator = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -105,7 +110,8 @@ namespace EncompassRest.Loans
                     || _serviceDescription4.Dirty
                     || _serviceDescription5.Dirty
                     || _serviceDescription6.Dirty
-                    || _settlementIndicator.Dirty;
+                    || _settlementIndicator.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -143,6 +149,7 @@ namespace EncompassRest.Loans
                 _serviceDescription5.Dirty = value;
                 _serviceDescription6.Dirty = value;
                 _settlementIndicator.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

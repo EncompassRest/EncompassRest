@@ -162,6 +162,11 @@ namespace EncompassRest.Loans
         public string YearlyOtherInsuranceDescription { get { return _yearlyOtherInsuranceDescription; } set { _yearlyOtherInsuranceDescription = value; } }
         private DirtyValue<decimal?> _yearlyTax;
         public decimal? YearlyTax { get { return _yearlyTax; } set { _yearlyTax = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -246,7 +251,8 @@ namespace EncompassRest.Loans
                     || _gfeFees?.Dirty == true
                     || _gfeLiens?.Dirty == true
                     || _gfePayments?.Dirty == true
-                    || _gfePayoffs?.Dirty == true;
+                    || _gfePayoffs?.Dirty == true
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -331,6 +337,7 @@ namespace EncompassRest.Loans
                 if (_gfeLiens != null) _gfeLiens.Dirty = value;
                 if (_gfePayments != null) _gfePayments.Dirty = value;
                 if (_gfePayoffs != null) _gfePayoffs.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

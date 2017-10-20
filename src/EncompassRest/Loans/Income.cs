@@ -22,6 +22,11 @@ namespace EncompassRest.Loans
         public int? OtherIncomeIndex { get { return _otherIncomeIndex; } set { _otherIncomeIndex = value; } }
         private DirtyValue<string> _owner;
         public string Owner { get { return _owner; } set { _owner = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -36,7 +41,8 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _incomeType.Dirty
                     || _otherIncomeIndex.Dirty
-                    || _owner.Dirty;
+                    || _owner.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -51,6 +57,7 @@ namespace EncompassRest.Loans
                 _incomeType.Dirty = value;
                 _otherIncomeIndex.Dirty = value;
                 _owner.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

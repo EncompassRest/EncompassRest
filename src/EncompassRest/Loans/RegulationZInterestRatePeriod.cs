@@ -30,6 +30,11 @@ namespace EncompassRest.Loans
         public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
         private DirtyValue<decimal?> _totalPayment;
         public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -48,7 +53,8 @@ namespace EncompassRest.Loans
                     || _principalPayment.Dirty
                     || _regulationZInterestRatePeriodType.Dirty
                     || _taxInsuranceAmount.Dirty
-                    || _totalPayment.Dirty;
+                    || _totalPayment.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -67,6 +73,7 @@ namespace EncompassRest.Loans
                 _regulationZInterestRatePeriodType.Dirty = value;
                 _taxInsuranceAmount.Dirty = value;
                 _totalPayment.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

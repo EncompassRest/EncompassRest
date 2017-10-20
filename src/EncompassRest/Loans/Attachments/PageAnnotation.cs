@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
@@ -22,6 +24,11 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
         [EnumOutput(EnumOutput.Integer)]
         public AnnotationVisibilityType? VisibilityType { get { return _visibilityType; } set { _visibilityType = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -37,7 +44,8 @@ namespace EncompassRest.Loans.Attachments
                     || _top.Dirty
                     || _width.Dirty
                     || _height.Dirty
-                    || _visibilityType.Dirty;
+                    || _visibilityType.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -53,6 +61,7 @@ namespace EncompassRest.Loans.Attachments
                 _width.Dirty = value;
                 _height.Dirty = value;
                 _visibilityType.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

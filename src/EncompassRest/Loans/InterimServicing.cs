@@ -310,6 +310,11 @@ namespace EncompassRest.Loans
         public decimal? UnpaidMiscrFee { get { return _unpaidMiscrFee; } set { _unpaidMiscrFee = value; } }
         private DirtyValue<decimal?> _unpaidPrincipal;
         public decimal? UnpaidPrincipal { get { return _unpaidPrincipal; } set { _unpaidPrincipal = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -468,7 +473,8 @@ namespace EncompassRest.Loans
                     || _paymentReversalTransactions?.Dirty == true
                     || _paymentTransactions?.Dirty == true
                     || _scheduledPayments?.Dirty == true
-                    || _schedulePaymentTransactions?.Dirty == true;
+                    || _schedulePaymentTransactions?.Dirty == true
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -627,6 +633,7 @@ namespace EncompassRest.Loans
                 if (_paymentTransactions != null) _paymentTransactions.Dirty = value;
                 if (_scheduledPayments != null) _scheduledPayments.Dirty = value;
                 if (_schedulePaymentTransactions != null) _schedulePaymentTransactions.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

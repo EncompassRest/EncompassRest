@@ -688,6 +688,11 @@ namespace EncompassRest.Loans
         //public string VirtualFields { get { return _virtualFields; } set { _virtualFields = value; } }
         private DirtyValue<string> _websiteId;
         public string WebsiteId { get { return _websiteId; } set { _websiteId = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -1035,7 +1040,8 @@ namespace EncompassRest.Loans
                     || _underwritingConditionLogs?.Dirty == true
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
-                    || _verificationLogs?.Dirty == true;
+                    || _verificationLogs?.Dirty == true
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -1383,6 +1389,7 @@ namespace EncompassRest.Loans
                 if (_usda != null) _usda.Dirty = value;
                 if (_vaLoanData != null) _vaLoanData.Dirty = value;
                 if (_verificationLogs != null) _verificationLogs.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

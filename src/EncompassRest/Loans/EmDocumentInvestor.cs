@@ -186,6 +186,11 @@ namespace EncompassRest.Loans
         public string InvUrl { get { return _invUrl; } set { _invUrl = value; } }
         private DirtyValue<string> _invZip;
         public string InvZip { get { return _invZip; } set { _invZip = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -282,7 +287,8 @@ namespace EncompassRest.Loans
                     || _invTaxIDNum.Dirty
                     || _invTollFreePhoneNum.Dirty
                     || _invUrl.Dirty
-                    || _invZip.Dirty;
+                    || _invZip.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -379,6 +385,7 @@ namespace EncompassRest.Loans
                 _invTollFreePhoneNum.Dirty = value;
                 _invUrl.Dirty = value;
                 _invZip.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

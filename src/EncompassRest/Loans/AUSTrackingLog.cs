@@ -438,6 +438,11 @@ namespace EncompassRest.Loans
         public string Log_UnderwritingRiskAssessType { get { return _log_UnderwritingRiskAssessType; } set { _log_UnderwritingRiskAssessType = value; } }
         private DirtyValue<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get { return _log_WithUndisclosedDebt; } set { _log_WithUndisclosedDebt = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -660,7 +665,8 @@ namespace EncompassRest.Loans
                     || _log_TransactionID.Dirty
                     || _log_UnderwritingRiskAssessOther.Dirty
                     || _log_UnderwritingRiskAssessType.Dirty
-                    || _log_WithUndisclosedDebt.Dirty;
+                    || _log_WithUndisclosedDebt.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -883,6 +889,7 @@ namespace EncompassRest.Loans
                 _log_UnderwritingRiskAssessOther.Dirty = value;
                 _log_UnderwritingRiskAssessType.Dirty = value;
                 _log_WithUndisclosedDebt.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

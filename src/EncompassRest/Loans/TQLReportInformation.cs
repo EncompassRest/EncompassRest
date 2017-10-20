@@ -60,6 +60,11 @@ namespace EncompassRest.Loans
         public string TranscriptType { get { return _transcriptType; } set { _transcriptType = value; } }
         private DirtyValue<string> _userID;
         public string UserID { get { return _userID; } set { _userID = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -93,7 +98,8 @@ namespace EncompassRest.Loans
                     || _totalIncome3.Dirty
                     || _totalIncome4.Dirty
                     || _transcriptType.Dirty
-                    || _userID.Dirty;
+                    || _userID.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -127,6 +133,7 @@ namespace EncompassRest.Loans
                 _totalIncome4.Dirty = value;
                 _transcriptType.Dirty = value;
                 _userID.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -76,6 +76,11 @@ namespace EncompassRest.Loans
         public string SubsequentChanges { get { return _subsequentChanges; } set { _subsequentChanges = value; } }
         private DirtyValue<decimal?> _totalDisbursed1YearConsummation;
         public decimal? TotalDisbursed1YearConsummation { get { return _totalDisbursed1YearConsummation; } set { _totalDisbursed1YearConsummation = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -117,7 +122,8 @@ namespace EncompassRest.Loans
                     || _stepPayments.Dirty
                     || _stepRateFirstChange.Dirty
                     || _subsequentChanges.Dirty
-                    || _totalDisbursed1YearConsummation.Dirty;
+                    || _totalDisbursed1YearConsummation.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -159,6 +165,7 @@ namespace EncompassRest.Loans
                 _stepRateFirstChange.Dirty = value;
                 _subsequentChanges.Dirty = value;
                 _totalDisbursed1YearConsummation.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
@@ -14,6 +16,11 @@ namespace EncompassRest.Contacts
         public string LicenseNumber { get { return _licenseNumber; } set { _licenseNumber = value; } }
         private DirtyValue<string> _licenseStateCode;
         public string LicenseStateCode { get { return _licenseStateCode; } set { _licenseStateCode = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -26,7 +33,8 @@ namespace EncompassRest.Contacts
                     || _licenseAuthType.Dirty
                     || _licenseIssueDate.Dirty
                     || _licenseNumber.Dirty
-                    || _licenseStateCode.Dirty;
+                    || _licenseStateCode.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -39,6 +47,7 @@ namespace EncompassRest.Contacts
                 _licenseIssueDate.Dirty = value;
                 _licenseNumber.Dirty = value;
                 _licenseStateCode.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -24,6 +24,11 @@ namespace EncompassRest.Loans
         public decimal? OtherAmount { get { return _otherAmount; } set { _otherAmount = value; } }
         private DirtyValue<string> _rate;
         public string Rate { get { return _rate; } set { _rate = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -39,7 +44,8 @@ namespace EncompassRest.Loans
                     || _gfeFeeType.Dirty
                     || _id.Dirty
                     || _otherAmount.Dirty
-                    || _rate.Dirty;
+                    || _rate.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -55,6 +61,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _otherAmount.Dirty = value;
                 _rate.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
                 _settingDirty = false;
             }
         }
