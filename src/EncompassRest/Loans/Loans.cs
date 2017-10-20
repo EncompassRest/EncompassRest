@@ -139,6 +139,10 @@ namespace EncompassRest.Loans
             }
         }
 
+        public Task<string> CreateLoanAsync(Loan loan) => CreateLoanAsync(loan, false, CancellationToken.None);
+
+        public Task<string> CreateLoanAsync(Loan loan, CancellationToken cancellationToken) => CreateLoanAsync(loan, false, cancellationToken);
+
         public Task<string> CreateLoanAsync(Loan loan, bool populate) => CreateLoanAsync(loan, populate, CancellationToken.None);
 
         public Task<string> CreateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken)
@@ -189,6 +193,10 @@ namespace EncompassRest.Loans
                 return await func(response).ConfigureAwait(false);
             }
         }
+
+        public Task UpdateLoanAsync(Loan loan) => UpdateLoanAsync(loan, false, CancellationToken.None);
+
+        public Task UpdateLoanAsync(Loan loan, CancellationToken cancellationToken) => UpdateLoanAsync(loan, false, cancellationToken);
 
         public Task UpdateLoanAsync(Loan loan, bool populate) => UpdateLoanAsync(loan, populate, CancellationToken.None);
 
