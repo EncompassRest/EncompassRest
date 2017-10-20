@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// Wrapper type around DirtyDictionary but only exposes dirty items for serialization purposes
+    /// </summary>
     internal sealed class ExtensionDataObject : IDictionary<string, object>, IDirty
     {
         internal readonly DirtyDictionary<string, object> _dictionary = new DirtyDictionary<string, object>();

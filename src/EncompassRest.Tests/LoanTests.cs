@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -55,20 +57,36 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             Assert.AreEqual("{}", loan.ToJson());
-            loan.ExtensionData["boolProperty"] = true;
+            const string boolPropertyName = "boolProperty";
+            loan.ExtensionData[boolPropertyName] = true;
             Assert.AreEqual(1, loan.ExtensionData.Count);
-            Assert.IsTrue(loan.ExtensionData.ContainsKey("boolProperty"));
-            Assert.AreEqual(true, (bool)loan.ExtensionData["boolProperty"]);
-            Assert.AreEqual(@"{""boolProperty"":true}", loan.ToJson());
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(boolPropertyName));
+            Assert.AreEqual(true, (bool)loan.ExtensionData[boolPropertyName]);
+            Assert.AreEqual($@"{{""{boolPropertyName}"":true}}", loan.ToJson());
             loan.Dirty = false;
             Assert.AreEqual("{}", loan.ToJson());
-            loan.ExtensionData["decimalProperty"] = 10.5M;
+            const string decimalPropertyName = "decimalProperty";
+            loan.ExtensionData[decimalPropertyName] = 10.5M;
             Assert.AreEqual(2, loan.ExtensionData.Count);
-            Assert.IsTrue(loan.ExtensionData.ContainsKey("boolProperty"));
-            Assert.IsTrue(loan.ExtensionData.ContainsKey("decimalProperty"));
-            Assert.AreEqual(true, (bool)loan.ExtensionData["boolProperty"]);
-            Assert.AreEqual(10.5M, (decimal)loan.ExtensionData["decimalProperty"]);
-            Assert.AreEqual(@"{""decimalProperty"":10.5}", loan.ToJson());
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(boolPropertyName));
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(decimalPropertyName));
+            Assert.AreEqual(true, (bool)loan.ExtensionData[boolPropertyName]);
+            Assert.AreEqual(10.5M, (decimal)loan.ExtensionData[decimalPropertyName]);
+            Assert.AreEqual($@"{{""{decimalPropertyName}"":10.5}}", loan.ToJson());
+            const string stringPropertyName = "stringProperty";
+            const string stringPropertyValue = "Hello";
+            loan.ExtensionData[stringPropertyName] = stringPropertyValue;
+            Assert.AreEqual(3, loan.ExtensionData.Count);
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(boolPropertyName));
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(decimalPropertyName));
+            Assert.IsTrue(loan.ExtensionData.ContainsKey(stringPropertyName));
+            Assert.AreEqual(true, (bool)loan.ExtensionData[boolPropertyName]);
+            Assert.AreEqual(10.5M, (decimal)loan.ExtensionData[decimalPropertyName]);
+            Assert.AreEqual(stringPropertyValue, (string)loan.ExtensionData[stringPropertyName]);
+            CollectionAssert.AreEqual(new[] { boolPropertyName, decimalPropertyName, stringPropertyName }, loan.ExtensionData.Keys.ToList());
+            CollectionAssert.AreEqual(new object[] { true, 10.5M, stringPropertyValue }, loan.ExtensionData.Values.ToList());
+            CollectionAssert.AreEqual(new[] { new KeyValuePair<string, object>(boolPropertyName, true), new KeyValuePair<string, object>(decimalPropertyName, 10.5M), new KeyValuePair<string, object>(stringPropertyName, stringPropertyValue) }, loan.ExtensionData.ToList());
+            Assert.AreEqual($@"{{""{decimalPropertyName}"":10.5,""{stringPropertyName}"":""{stringPropertyValue}""}}", loan.ToJson());
         }
 
         [TestMethod]

@@ -15,7 +15,7 @@ namespace EncompassRest
 
         public ICollection<TKey> Keys => _dictionary.Keys;
 
-        public ICollection<TValue> Values => _dictionary.Values.Cast<TValue>().ToList();
+        public ICollection<TValue> Values => _dictionary.Values.Select(value => value._value).ToList();
 
         public int Count => _dictionary.Count;
 
@@ -97,11 +97,11 @@ namespace EncompassRest
         {
             DirtyValue<TValue> dirtyValue;
             var success = _dictionary.TryGetValue(key, out dirtyValue);
-            value = success ? (TValue)dirtyValue : default(TValue);
+            value = success ? dirtyValue._value : default(TValue);
             return success;
         }
 
-        IEnumerator IEnumerable.GetEnumerator() => ((IDictionary<TKey, TValue>)_dictionary).GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         internal IEnumerable<KeyValuePair<TKey, TValue>> GetDirtyItems() => _dictionary.Where(pair => pair.Value.Dirty).Select(pair => new KeyValuePair<TKey, TValue>(pair.Key, pair.Value));
     }

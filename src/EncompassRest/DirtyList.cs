@@ -54,7 +54,6 @@ namespace EncompassRest
         }
 
         public DirtyList(IEnumerable<T> list)
-            : this()
         {
             if (list != null)
             {
