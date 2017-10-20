@@ -1,6 +1,7 @@
 ﻿using EncompassRest.Utilities;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
@@ -63,6 +64,11 @@ namespace EncompassRest.Contacts
         public string Salutation { get { return _salutation; } set { _salutation = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
+        private ExtensionDataObject _extensionDataInternal;
+        [JsonExtensionData]
+        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
+        [JsonIgnore]
+        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
         internal bool Dirty
         {
             get
@@ -81,7 +87,8 @@ namespace EncompassRest.Contacts
                     || _personalEmail.Dirty
                     || _businessEmail.Dirty
                     || _salutation.Dirty
-                    || _id.Dirty;
+                    || _id.Dirty
+                    || _extensionDataInternal?.Dirty == true;
                 return dirty;
             }
             set
@@ -101,6 +108,7 @@ namespace EncompassRest.Contacts
                 _businessEmail.Dirty = value;
                 _salutation.Dirty = value;
                 _id.Dirty = value;
+                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
