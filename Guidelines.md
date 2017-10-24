@@ -17,6 +17,7 @@
 * Namespace naming should follow the Encompass API Paths.
 * Method names should follow the naming in Encompass Developer Connect.
 * Interface names should begin with I and follow pascal casing after that.
+* Generic type names should begin with T and follow pascal casing after that.
 * Type and non-field member names should follow pascal casing.
 * Any `Task` returning methods' names should end with `Async`.
 * Static field names should begin with s_ and follow camel casing after that.
