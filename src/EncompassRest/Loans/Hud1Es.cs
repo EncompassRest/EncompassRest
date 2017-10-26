@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -84,8 +85,8 @@ namespace EncompassRest.Loans
         public decimal? EndingBalance { get { return _endingBalance; } set { _endingBalance = value; } }
         private DirtyValue<DateTime?> _escrowFirstPaymentDate;
         public DateTime? EscrowFirstPaymentDate { get { return _escrowFirstPaymentDate; } set { _escrowFirstPaymentDate = value; } }
-        private DirtyValue<string> _escrowFirstPaymentDateType;
-        public string EscrowFirstPaymentDateType { get { return _escrowFirstPaymentDateType; } set { _escrowFirstPaymentDateType = value; } }
+        private StringEnumValue<EscrowFirstPaymentDateType> _escrowFirstPaymentDateType;
+        public StringEnumValue<EscrowFirstPaymentDateType> EscrowFirstPaymentDateType { get { return _escrowFirstPaymentDateType; } set { _escrowFirstPaymentDateType = value; } }
         private DirtyValue<decimal?> _escrowPayment;
         public decimal? EscrowPayment { get { return _escrowPayment; } set { _escrowPayment = value; } }
         private DirtyValue<decimal?> _escrowPaymentYearly;

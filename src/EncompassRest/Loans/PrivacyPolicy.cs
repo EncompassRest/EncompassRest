@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -10,68 +11,68 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<string> _additionalRightsDescription;
         public string AdditionalRightsDescription { get { return _additionalRightsDescription; } set { _additionalRightsDescription = value; } }
-        private DirtyValue<string> _affiliateType;
-        public string AffiliateType { get { return _affiliateType; } set { _affiliateType = value; } }
+        private StringEnumValue<AffiliateType> _affiliateType;
+        public StringEnumValue<AffiliateType> AffiliateType { get { return _affiliateType; } set { _affiliateType = value; } }
         private DirtyValue<string> _affiliateTypeExample1;
         public string AffiliateTypeExample1 { get { return _affiliateTypeExample1; } set { _affiliateTypeExample1 = value; } }
         private DirtyValue<string> _affiliateTypeExample2;
         public string AffiliateTypeExample2 { get { return _affiliateTypeExample2; } set { _affiliateTypeExample2 = value; } }
         private DirtyValue<string> _affiliateTypeExample3;
         public string AffiliateTypeExample3 { get { return _affiliateTypeExample3; } set { _affiliateTypeExample3 = value; } }
-        private DirtyValue<string> _alsoCollectFrom;
-        public string AlsoCollectFrom { get { return _alsoCollectFrom; } set { _alsoCollectFrom = value; } }
+        private StringEnumValue<AlsoCollectFrom> _alsoCollectFrom;
+        public StringEnumValue<AlsoCollectFrom> AlsoCollectFrom { get { return _alsoCollectFrom; } set { _alsoCollectFrom = value; } }
         private DirtyValue<int?> _daysToUse;
         public int? DaysToUse { get { return _daysToUse; } set { _daysToUse = value; } }
-        private DirtyValue<string> _howToShare;
-        public string HowToShare { get { return _howToShare; } set { _howToShare = value; } }
+        private StringEnumValue<HowToShare> _howToShare;
+        public StringEnumValue<HowToShare> HowToShare { get { return _howToShare; } set { _howToShare = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private DirtyValue<string> _informationShare1;
-        public string InformationShare1 { get { return _informationShare1; } set { _informationShare1 = value; } }
-        private DirtyValue<string> _informationShare2;
-        public string InformationShare2 { get { return _informationShare2; } set { _informationShare2 = value; } }
-        private DirtyValue<string> _informationShare3;
-        public string InformationShare3 { get { return _informationShare3; } set { _informationShare3 = value; } }
-        private DirtyValue<string> _informationShare4;
-        public string InformationShare4 { get { return _informationShare4; } set { _informationShare4 = value; } }
-        private DirtyValue<string> _informationShare5;
-        public string InformationShare5 { get { return _informationShare5; } set { _informationShare5 = value; } }
-        private DirtyValue<string> _informationShare6;
-        public string InformationShare6 { get { return _informationShare6; } set { _informationShare6 = value; } }
-        private DirtyValue<string> _informationShare7;
-        public string InformationShare7 { get { return _informationShare7; } set { _informationShare7 = value; } }
-        private DirtyValue<string> _informationTypesWeCollect1;
-        public string InformationTypesWeCollect1 { get { return _informationTypesWeCollect1; } set { _informationTypesWeCollect1 = value; } }
-        private DirtyValue<string> _informationTypesWeCollect2;
-        public string InformationTypesWeCollect2 { get { return _informationTypesWeCollect2; } set { _informationTypesWeCollect2 = value; } }
-        private DirtyValue<string> _informationTypesWeCollect3;
-        public string InformationTypesWeCollect3 { get { return _informationTypesWeCollect3; } set { _informationTypesWeCollect3 = value; } }
-        private DirtyValue<string> _informationTypesWeCollect4;
-        public string InformationTypesWeCollect4 { get { return _informationTypesWeCollect4; } set { _informationTypesWeCollect4 = value; } }
-        private DirtyValue<string> _informationTypesWeCollect5;
-        public string InformationTypesWeCollect5 { get { return _informationTypesWeCollect5; } set { _informationTypesWeCollect5 = value; } }
-        private DirtyValue<string> _jointMarketType;
-        public string JointMarketType { get { return _jointMarketType; } set { _jointMarketType = value; } }
+        private StringEnumValue<YesOrNo> _informationShare1;
+        public StringEnumValue<YesOrNo> InformationShare1 { get { return _informationShare1; } set { _informationShare1 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare2;
+        public StringEnumValue<YesOrNo> InformationShare2 { get { return _informationShare2; } set { _informationShare2 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare3;
+        public StringEnumValue<YesOrNo> InformationShare3 { get { return _informationShare3; } set { _informationShare3 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare4;
+        public StringEnumValue<YesOrNo> InformationShare4 { get { return _informationShare4; } set { _informationShare4 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare5;
+        public StringEnumValue<YesOrNo> InformationShare5 { get { return _informationShare5; } set { _informationShare5 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare6;
+        public StringEnumValue<YesOrNo> InformationShare6 { get { return _informationShare6; } set { _informationShare6 = value; } }
+        private StringEnumValue<YesOrNo> _informationShare7;
+        public StringEnumValue<YesOrNo> InformationShare7 { get { return _informationShare7; } set { _informationShare7 = value; } }
+        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect1;
+        public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect1 { get { return _informationTypesWeCollect1; } set { _informationTypesWeCollect1 = value; } }
+        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect2;
+        public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect2 { get { return _informationTypesWeCollect2; } set { _informationTypesWeCollect2 = value; } }
+        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect3;
+        public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect3 { get { return _informationTypesWeCollect3; } set { _informationTypesWeCollect3 = value; } }
+        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect4;
+        public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect4 { get { return _informationTypesWeCollect4; } set { _informationTypesWeCollect4 = value; } }
+        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect5;
+        public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect5 { get { return _informationTypesWeCollect5; } set { _informationTypesWeCollect5 = value; } }
+        private StringEnumValue<JointMarketType> _jointMarketType;
+        public StringEnumValue<JointMarketType> JointMarketType { get { return _jointMarketType; } set { _jointMarketType = value; } }
         private DirtyValue<string> _jointMarketTypeExample1;
         public string JointMarketTypeExample1 { get { return _jointMarketTypeExample1; } set { _jointMarketTypeExample1 = value; } }
-        private DirtyValue<string> _limitSharing1;
-        public string LimitSharing1 { get { return _limitSharing1; } set { _limitSharing1 = value; } }
-        private DirtyValue<string> _limitSharing2;
-        public string LimitSharing2 { get { return _limitSharing2; } set { _limitSharing2 = value; } }
-        private DirtyValue<string> _limitSharing3;
-        public string LimitSharing3 { get { return _limitSharing3; } set { _limitSharing3 = value; } }
-        private DirtyValue<string> _limitSharing4;
-        public string LimitSharing4 { get { return _limitSharing4; } set { _limitSharing4 = value; } }
-        private DirtyValue<string> _limitSharing5;
-        public string LimitSharing5 { get { return _limitSharing5; } set { _limitSharing5 = value; } }
-        private DirtyValue<string> _limitSharing6;
-        public string LimitSharing6 { get { return _limitSharing6; } set { _limitSharing6 = value; } }
-        private DirtyValue<string> _limitSharing7;
-        public string LimitSharing7 { get { return _limitSharing7; } set { _limitSharing7 = value; } }
-        private DirtyValue<string> _month;
-        public string Month { get { return _month; } set { _month = value; } }
-        private DirtyValue<string> _nonaffiliateType;
-        public string NonaffiliateType { get { return _nonaffiliateType; } set { _nonaffiliateType = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing1;
+        public StringEnumValue<LimitSharing> LimitSharing1 { get { return _limitSharing1; } set { _limitSharing1 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing2;
+        public StringEnumValue<LimitSharing> LimitSharing2 { get { return _limitSharing2; } set { _limitSharing2 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing3;
+        public StringEnumValue<LimitSharing> LimitSharing3 { get { return _limitSharing3; } set { _limitSharing3 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing4;
+        public StringEnumValue<LimitSharing> LimitSharing4 { get { return _limitSharing4; } set { _limitSharing4 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing5;
+        public StringEnumValue<LimitSharing> LimitSharing5 { get { return _limitSharing5; } set { _limitSharing5 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing6;
+        public StringEnumValue<LimitSharing> LimitSharing6 { get { return _limitSharing6; } set { _limitSharing6 = value; } }
+        private StringEnumValue<LimitSharing> _limitSharing7;
+        public StringEnumValue<LimitSharing> LimitSharing7 { get { return _limitSharing7; } set { _limitSharing7 = value; } }
+        private StringEnumValue<Month> _month;
+        public StringEnumValue<Month> Month { get { return _month; } set { _month = value; } }
+        private StringEnumValue<NonaffiliateType> _nonaffiliateType;
+        public StringEnumValue<NonaffiliateType> NonaffiliateType { get { return _nonaffiliateType; } set { _nonaffiliateType = value; } }
         private DirtyValue<string> _nonaffiliateTypeExample1;
         public string NonaffiliateTypeExample1 { get { return _nonaffiliateTypeExample1; } set { _nonaffiliateTypeExample1 = value; } }
         private DirtyValue<string> _notesForProtectPrivacy;
@@ -82,20 +83,20 @@ namespace EncompassRest.Loans
         public string PhoneForQuestion { get { return _phoneForQuestion; } set { _phoneForQuestion = value; } }
         private DirtyValue<string> _phoneToLimit;
         public string PhoneToLimit { get { return _phoneToLimit; } set { _phoneToLimit = value; } }
-        private DirtyValue<string> _printSelection;
-        public string PrintSelection { get { return _printSelection; } set { _printSelection = value; } }
-        private DirtyValue<string> _shareInfoWithJointMarketing;
-        public string ShareInfoWithJointMarketing { get { return _shareInfoWithJointMarketing; } set { _shareInfoWithJointMarketing = value; } }
-        private DirtyValue<string> _timesToCollect1;
-        public string TimesToCollect1 { get { return _timesToCollect1; } set { _timesToCollect1 = value; } }
-        private DirtyValue<string> _timesToCollect2;
-        public string TimesToCollect2 { get { return _timesToCollect2; } set { _timesToCollect2 = value; } }
-        private DirtyValue<string> _timesToCollect3;
-        public string TimesToCollect3 { get { return _timesToCollect3; } set { _timesToCollect3 = value; } }
-        private DirtyValue<string> _timesToCollect4;
-        public string TimesToCollect4 { get { return _timesToCollect4; } set { _timesToCollect4 = value; } }
-        private DirtyValue<string> _timesToCollect5;
-        public string TimesToCollect5 { get { return _timesToCollect5; } set { _timesToCollect5 = value; } }
+        private StringEnumValue<PrintSelection> _printSelection;
+        public StringEnumValue<PrintSelection> PrintSelection { get { return _printSelection; } set { _printSelection = value; } }
+        private StringEnumValue<ShareInfoWithJointMarketing> _shareInfoWithJointMarketing;
+        public StringEnumValue<ShareInfoWithJointMarketing> ShareInfoWithJointMarketing { get { return _shareInfoWithJointMarketing; } set { _shareInfoWithJointMarketing = value; } }
+        private StringEnumValue<TimesToCollect> _timesToCollect1;
+        public StringEnumValue<TimesToCollect> TimesToCollect1 { get { return _timesToCollect1; } set { _timesToCollect1 = value; } }
+        private StringEnumValue<TimesToCollect> _timesToCollect2;
+        public StringEnumValue<TimesToCollect> TimesToCollect2 { get { return _timesToCollect2; } set { _timesToCollect2 = value; } }
+        private StringEnumValue<TimesToCollect> _timesToCollect3;
+        public StringEnumValue<TimesToCollect> TimesToCollect3 { get { return _timesToCollect3; } set { _timesToCollect3 = value; } }
+        private StringEnumValue<TimesToCollect> _timesToCollect4;
+        public StringEnumValue<TimesToCollect> TimesToCollect4 { get { return _timesToCollect4; } set { _timesToCollect4 = value; } }
+        private StringEnumValue<TimesToCollect> _timesToCollect5;
+        public StringEnumValue<TimesToCollect> TimesToCollect5 { get { return _timesToCollect5; } set { _timesToCollect5 = value; } }
         private DirtyValue<string> _websiteForQuestion;
         public string WebsiteForQuestion { get { return _websiteForQuestion; } set { _websiteForQuestion = value; } }
         private DirtyValue<string> _websiteToLimit;

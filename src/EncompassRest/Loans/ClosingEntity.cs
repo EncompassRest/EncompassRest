@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -18,8 +19,8 @@ namespace EncompassRest.Loans
         public string BorrowerPair { get { return _borrowerPair; } set { _borrowerPair = value; } }
         private DirtyValue<string> _city;
         public string City { get { return _city; } set { _city = value; } }
-        private DirtyValue<string> _closingEntityType;
-        public string ClosingEntityType { get { return _closingEntityType; } set { _closingEntityType = value; } }
+        private StringEnumValue<ClosingEntityType> _closingEntityType;
+        public StringEnumValue<ClosingEntityType> ClosingEntityType { get { return _closingEntityType; } set { _closingEntityType = value; } }
         private DirtyValue<string> _comments;
         public string Comments { get { return _comments; } set { _comments = value; } }
         private DirtyValue<string> _county;
@@ -30,10 +31,10 @@ namespace EncompassRest.Loans
         public string Fax { get { return _fax; } set { _fax = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private DirtyValue<string> _occupancyIntent;
-        public string OccupancyIntent { get { return _occupancyIntent; } set { _occupancyIntent = value; } }
-        private DirtyValue<string> _occupancyStatus;
-        public string OccupancyStatus { get { return _occupancyStatus; } set { _occupancyStatus = value; } }
+        private StringEnumValue<OccupancyIntent> _occupancyIntent;
+        public StringEnumValue<OccupancyIntent> OccupancyIntent { get { return _occupancyIntent; } set { _occupancyIntent = value; } }
+        private StringEnumValue<PropertyUsageType> _occupancyStatus;
+        public StringEnumValue<PropertyUsageType> OccupancyStatus { get { return _occupancyStatus; } set { _occupancyStatus = value; } }
         private DirtyValue<string> _organizationType;
         public string OrganizationType { get { return _organizationType; } set { _organizationType = value; } }
         private DirtyValue<string> _organizedUnderTheLawsOfJurisdictionName;
@@ -76,10 +77,10 @@ namespace EncompassRest.Loans
         public string Vesting { get { return _vesting; } set { _vesting = value; } }
         private DirtyValue<string> _vestingGuid;
         public string VestingGuid { get { return _vestingGuid; } set { _vestingGuid = value; } }
-        private DirtyValue<string> _vestingTrusteeOfType;
-        public string VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
-        private DirtyValue<string> _vestingType;
-        public string VestingType { get { return _vestingType; } set { _vestingType = value; } }
+        private StringEnumValue<VestingTrusteeOfType> _vestingTrusteeOfType;
+        public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
+        private StringEnumValue<BorrowerType> _vestingType;
+        public StringEnumValue<BorrowerType> VestingType { get { return _vestingType; } set { _vestingType = value; } }
         private ExtensionDataObject _extensionDataInternal;
         [JsonExtensionData]
         private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }

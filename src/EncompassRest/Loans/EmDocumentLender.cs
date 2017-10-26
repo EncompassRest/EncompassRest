@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -18,8 +19,8 @@ namespace EncompassRest.Loans
         public string LndBrchJrsdctn { get { return _lndBrchJrsdctn; } set { _lndBrchJrsdctn = value; } }
         private DirtyValue<string> _lndBrchNm;
         public string LndBrchNm { get { return _lndBrchNm; } set { _lndBrchNm = value; } }
-        private DirtyValue<string> _lndBrchOrgTyp;
-        public string LndBrchOrgTyp { get { return _lndBrchOrgTyp; } set { _lndBrchOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _lndBrchOrgTyp;
+        public StringEnumValue<OrgTyp> LndBrchOrgTyp { get { return _lndBrchOrgTyp; } set { _lndBrchOrgTyp = value; } }
         private DirtyValue<string> _lndBrchPhone;
         public string LndBrchPhone { get { return _lndBrchPhone; } set { _lndBrchPhone = value; } }
         private DirtyValue<string> _lndBrchStCd;
@@ -62,10 +63,10 @@ namespace EncompassRest.Loans
         public string LndLossPayeeJrsdctn { get { return _lndLossPayeeJrsdctn; } set { _lndLossPayeeJrsdctn = value; } }
         private DirtyValue<string> _lndLossPayeeNm;
         public string LndLossPayeeNm { get { return _lndLossPayeeNm; } set { _lndLossPayeeNm = value; } }
-        private DirtyValue<string> _lndLossPayeeOrgTyp;
-        public string LndLossPayeeOrgTyp { get { return _lndLossPayeeOrgTyp; } set { _lndLossPayeeOrgTyp = value; } }
-        private DirtyValue<string> _lndLossPayeeScsrsClausTxtDesc;
-        public string LndLossPayeeScsrsClausTxtDesc { get { return _lndLossPayeeScsrsClausTxtDesc; } set { _lndLossPayeeScsrsClausTxtDesc = value; } }
+        private StringEnumValue<OrgTyp> _lndLossPayeeOrgTyp;
+        public StringEnumValue<OrgTyp> LndLossPayeeOrgTyp { get { return _lndLossPayeeOrgTyp; } set { _lndLossPayeeOrgTyp = value; } }
+        private StringEnumValue<ScsrsClaus> _lndLossPayeeScsrsClausTxtDesc;
+        public StringEnumValue<ScsrsClaus> LndLossPayeeScsrsClausTxtDesc { get { return _lndLossPayeeScsrsClausTxtDesc; } set { _lndLossPayeeScsrsClausTxtDesc = value; } }
         private DirtyValue<string> _lndLossPayeeStCd;
         public string LndLossPayeeStCd { get { return _lndLossPayeeStCd; } set { _lndLossPayeeStCd = value; } }
         private DirtyValue<string> _lndLossPayeeStreetAddr1;
@@ -104,8 +105,8 @@ namespace EncompassRest.Loans
         public string LndNtryTtlOrRank { get { return _lndNtryTtlOrRank; } set { _lndNtryTtlOrRank = value; } }
         private DirtyValue<string> _lndNtryZip;
         public string LndNtryZip { get { return _lndNtryZip; } set { _lndNtryZip = value; } }
-        private DirtyValue<string> _lndOrgTyp;
-        public string LndOrgTyp { get { return _lndOrgTyp; } set { _lndOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _lndOrgTyp;
+        public StringEnumValue<OrgTyp> LndOrgTyp { get { return _lndOrgTyp; } set { _lndOrgTyp = value; } }
         private DirtyValue<string> _lndPhoneNum;
         public string LndPhoneNum { get { return _lndPhoneNum; } set { _lndPhoneNum = value; } }
         private DirtyValue<string> _lndStCd;
@@ -136,8 +137,8 @@ namespace EncompassRest.Loans
         public string LndSvcrJrsdctn { get { return _lndSvcrJrsdctn; } set { _lndSvcrJrsdctn = value; } }
         private DirtyValue<string> _lndSvcrNm;
         public string LndSvcrNm { get { return _lndSvcrNm; } set { _lndSvcrNm = value; } }
-        private DirtyValue<string> _lndSvcrOrgTyp;
-        public string LndSvcrOrgTyp { get { return _lndSvcrOrgTyp; } set { _lndSvcrOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _lndSvcrOrgTyp;
+        public StringEnumValue<OrgTyp> LndSvcrOrgTyp { get { return _lndSvcrOrgTyp; } set { _lndSvcrOrgTyp = value; } }
         private DirtyValue<string> _lndSvcrStCd;
         public string LndSvcrStCd { get { return _lndSvcrStCd; } set { _lndSvcrStCd = value; } }
         private DirtyValue<string> _lndSvcrStreetAddr1;

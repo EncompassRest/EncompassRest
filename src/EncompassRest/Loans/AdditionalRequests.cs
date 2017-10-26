@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -12,8 +13,8 @@ namespace EncompassRest.Loans
         public string AppraisalContactCellPhone { get { return _appraisalContactCellPhone; } set { _appraisalContactCellPhone = value; } }
         private DirtyValue<string> _appraisalContactEmail;
         public string AppraisalContactEmail { get { return _appraisalContactEmail; } set { _appraisalContactEmail = value; } }
-        private DirtyValue<string> _appraisalContactForEntry;
-        public string AppraisalContactForEntry { get { return _appraisalContactForEntry; } set { _appraisalContactForEntry = value; } }
+        private StringEnumValue<AppraisalContactForEntry> _appraisalContactForEntry;
+        public StringEnumValue<AppraisalContactForEntry> AppraisalContactForEntry { get { return _appraisalContactForEntry; } set { _appraisalContactForEntry = value; } }
         private DirtyValue<string> _appraisalContactHomePhone;
         public string AppraisalContactHomePhone { get { return _appraisalContactHomePhone; } set { _appraisalContactHomePhone = value; } }
         private DirtyValue<string> _appraisalContactName;

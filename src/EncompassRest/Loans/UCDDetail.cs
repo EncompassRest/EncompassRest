@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
     public sealed partial class UCDDetail : IDirty
     {
-        private DirtyValue<string> _feeAccountType;
-        public string FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
+        private StringEnumValue<UCDPayoffType> _feeAccountType;
+        public StringEnumValue<UCDPayoffType> FeeAccountType { get { return _feeAccountType; } set { _feeAccountType = value; } }
         private DirtyValue<decimal?> _feeAmount;
         public decimal? FeeAmount { get { return _feeAmount; } set { _feeAmount = value; } }
         private DirtyValue<DateTime?> _feeDateFrom;
@@ -20,8 +21,8 @@ namespace EncompassRest.Loans
         public string FeeDesc { get { return _feeDesc; } set { _feeDesc = value; } }
         private DirtyValue<int?> _feeIndex;
         public int? FeeIndex { get { return _feeIndex; } set { _feeIndex = value; } }
-        private DirtyValue<string> _feePaidBy;
-        public string FeePaidBy { get { return _feePaidBy; } set { _feePaidBy = value; } }
+        private StringEnumValue<FeePaidBy> _feePaidBy;
+        public StringEnumValue<FeePaidBy> FeePaidBy { get { return _feePaidBy; } set { _feePaidBy = value; } }
         private DirtyValue<string> _feePaidTo;
         public string FeePaidTo { get { return _feePaidTo; } set { _feePaidTo = value; } }
         private DirtyValue<bool?> _feePOC;

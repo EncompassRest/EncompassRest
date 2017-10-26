@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -18,16 +19,16 @@ namespace EncompassRest.Loans
         public string Address2 { get { return _address2; } set { _address2 = value; } }
         private DirtyValue<bool?> _addToCdContactInfo;
         public bool? AddToCdContactInfo { get { return _addToCdContactInfo; } set { _addToCdContactInfo = value; } }
-        private DirtyValue<string> _appraisalMade;
-        public string AppraisalMade { get { return _appraisalMade; } set { _appraisalMade = value; } }
+        private StringEnumValue<AppraisalMade> _appraisalMade;
+        public StringEnumValue<AppraisalMade> AppraisalMade { get { return _appraisalMade; } set { _appraisalMade = value; } }
         private DirtyValue<DateTime?> _bizLicenseAuthDate;
         public DateTime? BizLicenseAuthDate { get { return _bizLicenseAuthDate; } set { _bizLicenseAuthDate = value; } }
         private DirtyValue<string> _bizLicenseAuthName;
         public string BizLicenseAuthName { get { return _bizLicenseAuthName; } set { _bizLicenseAuthName = value; } }
         private DirtyValue<string> _bizLicenseAuthStateCode;
         public string BizLicenseAuthStateCode { get { return _bizLicenseAuthStateCode; } set { _bizLicenseAuthStateCode = value; } }
-        private DirtyValue<string> _bizLicenseAuthType;
-        public string BizLicenseAuthType { get { return _bizLicenseAuthType; } set { _bizLicenseAuthType = value; } }
+        private StringEnumValue<LicenseAuthType> _bizLicenseAuthType;
+        public StringEnumValue<LicenseAuthType> BizLicenseAuthType { get { return _bizLicenseAuthType; } set { _bizLicenseAuthType = value; } }
         private DirtyValue<string> _bizLicenseNumber;
         public string BizLicenseNumber { get { return _bizLicenseNumber; } set { _bizLicenseNumber = value; } }
         private DirtyValue<bool?> _borrowerActingAsContractorIndicator;
@@ -64,8 +65,8 @@ namespace EncompassRest.Loans
         public string ContactNMLSNo { get { return _contactNMLSNo; } set { _contactNMLSNo = value; } }
         private DirtyValue<string> _contactTitle;
         public string ContactTitle { get { return _contactTitle; } set { _contactTitle = value; } }
-        private DirtyValue<string> _contactType;
-        public string ContactType { get { return _contactType; } set { _contactType = value; } }
+        private StringEnumValue<ContactType> _contactType;
+        public StringEnumValue<ContactType> ContactType { get { return _contactType; } set { _contactType = value; } }
         private DirtyValue<DateTime?> _designeeAcceptedDate;
         public DateTime? DesigneeAcceptedDate { get { return _designeeAcceptedDate; } set { _designeeAcceptedDate = value; } }
         private DirtyValue<string> _email;
@@ -98,8 +99,8 @@ namespace EncompassRest.Loans
         public int? InsuranceNoOfBedrooms { get { return _insuranceNoOfBedrooms; } set { _insuranceNoOfBedrooms = value; } }
         private DirtyValue<decimal?> _insurancePremium;
         public decimal? InsurancePremium { get { return _insurancePremium; } set { _insurancePremium = value; } }
-        private DirtyValue<string> _insuranceProjectType;
-        public string InsuranceProjectType { get { return _insuranceProjectType; } set { _insuranceProjectType = value; } }
+        private StringEnumValue<ProjectType> _insuranceProjectType;
+        public StringEnumValue<ProjectType> InsuranceProjectType { get { return _insuranceProjectType; } set { _insuranceProjectType = value; } }
         private DirtyValue<DateTime?> _insuranceRenewalDate;
         public DateTime? InsuranceRenewalDate { get { return _insuranceRenewalDate; } set { _insuranceRenewalDate = value; } }
         private DirtyValue<string> _investorGrade1;
@@ -154,8 +155,8 @@ namespace EncompassRest.Loans
         public string PersonalLicenseAuthName { get { return _personalLicenseAuthName; } set { _personalLicenseAuthName = value; } }
         private DirtyValue<string> _personalLicenseAuthStateCode;
         public string PersonalLicenseAuthStateCode { get { return _personalLicenseAuthStateCode; } set { _personalLicenseAuthStateCode = value; } }
-        private DirtyValue<string> _personalLicenseAuthType;
-        public string PersonalLicenseAuthType { get { return _personalLicenseAuthType; } set { _personalLicenseAuthType = value; } }
+        private StringEnumValue<LicenseAuthType> _personalLicenseAuthType;
+        public StringEnumValue<LicenseAuthType> PersonalLicenseAuthType { get { return _personalLicenseAuthType; } set { _personalLicenseAuthType = value; } }
         private DirtyValue<string> _personalLicenseNumber;
         public string PersonalLicenseNumber { get { return _personalLicenseNumber; } set { _personalLicenseNumber = value; } }
         private DirtyValue<string> _phone;

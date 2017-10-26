@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
     public sealed partial class ClosingDisclosure5 : IDirty
     {
-        private DirtyValue<string> _cDLiabilityAfterForeclosure;
-        public string CDLiabilityAfterForeclosure { get { return _cDLiabilityAfterForeclosure; } set { _cDLiabilityAfterForeclosure = value; } }
+        private StringEnumValue<CDLiabilityAfterForeclosure> _cDLiabilityAfterForeclosure;
+        public StringEnumValue<CDLiabilityAfterForeclosure> CDLiabilityAfterForeclosure { get { return _cDLiabilityAfterForeclosure; } set { _cDLiabilityAfterForeclosure = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _lenderAddress;
@@ -132,8 +133,8 @@ namespace EncompassRest.Loans
         public string SettlementAgentSTLicenseID { get { return _settlementAgentSTLicenseID; } set { _settlementAgentSTLicenseID = value; } }
         private DirtyValue<string> _settlementAgentZip;
         public string SettlementAgentZip { get { return _settlementAgentZip; } set { _settlementAgentZip = value; } }
-        private DirtyValue<string> _signatureType;
-        public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
+        private StringEnumValue<SignatureType> _signatureType;
+        public StringEnumValue<SignatureType> SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private DirtyValue<decimal?> _totalPayments;
         public decimal? TotalPayments { get { return _totalPayments; } set { _totalPayments = value; } }
         private ExtensionDataObject _extensionDataInternal;

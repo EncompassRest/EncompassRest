@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -28,8 +29,8 @@ namespace EncompassRest.Loans
         public DateTime? CommitmentLetterDate { get { return _commitmentLetterDate; } set { _commitmentLetterDate = value; } }
         private DirtyValue<DateTime?> _constCompletionDate;
         public DateTime? ConstCompletionDate { get { return _constCompletionDate; } set { _constCompletionDate = value; } }
-        private DirtyValue<string> _constOnlyAmortizationType;
-        public string ConstOnlyAmortizationType { get { return _constOnlyAmortizationType; } set { _constOnlyAmortizationType = value; } }
+        private StringEnumValue<ConstOnlyAmortizationType> _constOnlyAmortizationType;
+        public StringEnumValue<ConstOnlyAmortizationType> ConstOnlyAmortizationType { get { return _constOnlyAmortizationType; } set { _constOnlyAmortizationType = value; } }
         private DirtyValue<bool?> _constructionContractIndicator;
         public bool? ConstructionContractIndicator { get { return _constructionContractIndicator; } set { _constructionContractIndicator = value; } }
         private DirtyValue<DateTime?> _constructionContractIssuedDate;
@@ -74,8 +75,8 @@ namespace EncompassRest.Loans
         public string OtherDescription { get { return _otherDescription; } set { _otherDescription = value; } }
         private DirtyValue<bool?> _otherIndicator;
         public bool? OtherIndicator { get { return _otherIndicator; } set { _otherIndicator = value; } }
-        private DirtyValue<string> _partialPrepaymentsElection;
-        public string PartialPrepaymentsElection { get { return _partialPrepaymentsElection; } set { _partialPrepaymentsElection = value; } }
+        private StringEnumValue<PartialPrepaymentsElection> _partialPrepaymentsElection;
+        public StringEnumValue<PartialPrepaymentsElection> PartialPrepaymentsElection { get { return _partialPrepaymentsElection; } set { _partialPrepaymentsElection = value; } }
         private DirtyValue<DateTime?> _paymentAndPerformanceBondsDate;
         public DateTime? PaymentAndPerformanceBondsDate { get { return _paymentAndPerformanceBondsDate; } set { _paymentAndPerformanceBondsDate = value; } }
         private DirtyValue<bool?> _paymentAndPerformanceBondsIndicator;
