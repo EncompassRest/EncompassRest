@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class PageImage : Image
     {
         private DirtyValue<string> _nativeKey;

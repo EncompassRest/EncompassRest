@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class UsdaHouseholdIncome : IDirty
     {
         private DirtyValue<int?> _age;

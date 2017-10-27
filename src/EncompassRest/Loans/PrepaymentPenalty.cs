@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class PrepaymentPenalty : IDirty
     {
         private DirtyValue<string> _fullPrepaymentPenaltyOptionType;

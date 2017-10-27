@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LogRecord : IDirty
     {
         private DirtyList<LogComment> _commentList;

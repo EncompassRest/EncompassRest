@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class ContactNote : IDirty
     {
         private DirtyValue<int?> _noteIdInt;

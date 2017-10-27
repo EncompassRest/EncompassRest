@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Webhook
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class WebhookSubscription : IDirty
     {
         [JsonRequired]

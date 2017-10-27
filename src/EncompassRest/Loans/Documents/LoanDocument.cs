@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class LoanDocument : IDirty
     {
         private DirtyValue<string> _documentId;

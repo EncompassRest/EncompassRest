@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class Gfe2010GfeCharge : IDirty
     {
         private DirtyValue<bool?> _chargeBelow10Indicator;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class Contact : IDirty
     {
         internal abstract string ApiPath { get; }

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class HelocRepaymentDrawPeriod : IDirty
     {
         private DirtyValue<decimal?> _apr;

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class BusinessContact : Contact, IDirty
     {
         internal override string ApiPath { get { return "encompass/v1/businessContacts"; } }

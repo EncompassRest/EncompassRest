@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class DocumentComment : IDirty
     {
         private DirtyValue<string> _comments;

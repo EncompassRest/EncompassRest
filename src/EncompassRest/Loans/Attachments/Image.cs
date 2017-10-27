@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class Image : IDirty
     {
         private DirtyValue<string> _imageKey;

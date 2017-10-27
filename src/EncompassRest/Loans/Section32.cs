@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class Section32 : IDirty
     {
         private DirtyValue<bool?> _appraisalFeeToBeFinancedIndicator;

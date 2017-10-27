@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class LoanAttachment : IDirty
     {
         private DirtyValue<string> _attachmentId;

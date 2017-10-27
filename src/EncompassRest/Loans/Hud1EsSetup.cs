@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class Hud1EsSetup : IDirty
     {
         private DirtyValue<bool?> _annualFeePrepaid;

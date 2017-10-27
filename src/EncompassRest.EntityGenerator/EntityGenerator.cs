@@ -79,6 +79,7 @@ using Newtonsoft.Json;
 
 namespace {@namespace}
 {{
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class {entityType} : IDirty
     {{
 ");

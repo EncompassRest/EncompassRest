@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class BusinessContactLicense : IDirty
     {
         private DirtyValue<string> _licenseAuthName;

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class PrequalificationScenario : IDirty
     {
         private DirtyValue<int?> _appraisedValue;

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Tests
@@ -11,6 +12,20 @@ namespace EncompassRest.Tests
     [TestClass]
     public class LoanTests : TestBaseClass
     {
+        [TestMethod]
+        public async Task Loan_PublicSerialization()
+        {
+            var loan = new Loan();
+            var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
+            Assert.AreEqual("{}", JsonConvert.SerializeObject(loan, serializerSettings));
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            Assert.IsNotNull(loanId);
+            Assert.AreEqual(loanId, loan.EncompassId);
+            var json = JsonConvert.SerializeObject(loan, serializerSettings);
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
         [TestMethod]
         public void Loan_Empty_Serialization()
         {

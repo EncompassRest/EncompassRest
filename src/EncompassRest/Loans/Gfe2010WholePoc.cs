@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class Gfe2010WholePoc : IDirty
     {
         private DirtyValue<int?> _gfe2010WholePocIndex;
