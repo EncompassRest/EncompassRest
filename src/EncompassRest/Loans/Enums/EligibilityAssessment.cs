@@ -4,7 +4,7 @@ namespace EncompassRest.Loans.Enums
 {
     public enum EligibilityAssessment
     {
-        Eligible = 0,
-        Ineligible = 1
+        Ineligible = 0,
+        Eligible = 1
     }
 }
