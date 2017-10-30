@@ -8,6 +8,6 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "HUD/VA approved")]
         HUDVAApproved = 1,
         [EnumMember(Value = "99 Years")]
-        n99Years = 99,
+        n99Years = 99
     }
 }
