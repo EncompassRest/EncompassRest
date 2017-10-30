@@ -4,10 +4,10 @@ namespace EncompassRest.Loans.Enums
 {
     public enum LeaseholdType
     {
-        [EnumMember(Value = "99 Years")]
-        n99Years = 0,
-        Renewable = 1,
+        Renewable = 0,
         [EnumMember(Value = "HUD/VA approved")]
-        HUDVAApproved = 2
+        HUDVAApproved = 1,
+        [EnumMember(Value = "99 Years")]
+        n99Years = 99,
     }
 }

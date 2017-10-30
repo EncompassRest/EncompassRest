@@ -4,9 +4,9 @@ namespace EncompassRest.Loans.Enums
 {
     public enum TrueOrFalse
     {
-        [EnumMember(Value = "true")]
-        True = 0,
         [EnumMember(Value = "false")]
-        False = 1
+        False = 0,
+        [EnumMember(Value = "true")]
+        True = 1
     }
 }

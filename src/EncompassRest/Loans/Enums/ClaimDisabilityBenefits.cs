@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum ClaimDisabilityBenefits
     {
-        Have = 0,
         [EnumMember(Value = "Have Not")]
-        HaveNot = 1
+        HaveNot = 0,
+        Have = 1
     }
 }

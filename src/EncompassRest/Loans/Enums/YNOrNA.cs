@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum YNOrNA
     {
-        Y = 0,
-        N = 1,
+        N = 0,
+        Y = 1,
         [EnumMember(Value = "N/A")]
         NA = 2
     }

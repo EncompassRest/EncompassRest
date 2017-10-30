@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Schema;
 using EncompassRest.Tests;
+using EnumsNET;
+using EnumsNET.NonGeneric;
 
 namespace EncompassRest
 {
@@ -366,7 +368,6 @@ $@"        private ExtensionDataObject _extensionDataInternal;
         private static async Task GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, IEnumerable<string> options)
         {
             var sb = new StringBuilder();
-            var enumMemberNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             sb.AppendLine(
 $@"using System.Runtime.Serialization;
 
@@ -375,10 +376,41 @@ namespace {@namespace}
     public enum {enumName}
     {{");
 
-            var i = 0;
-            foreach (var option in options)
+            var enumMemberNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.{enumName}");
+            var existingEnumValues = new HashSet<int>();
+            var optionsSet = new HashSet<string>(options);
+            var first = true;
+            if (existingEnumType != null)
             {
-                if (i > 0)
+                foreach (var member in NonGenericEnums.GetMembers(existingEnumType))
+                {
+                    if (!first)
+                    {
+                        sb.AppendLine(",");
+                    }
+                    var enumMemberValue = member.AsString(EnumFormat.EnumMemberValue);
+                    if (enumMemberValue != null)
+                    {
+                        sb.AppendLine($@"        [EnumMember(Value = ""{enumMemberValue.Replace("\"", "\\\"")}"")]");
+                    }
+                    var name = member.Name;
+                    enumMemberNames.Add(name);
+                    optionsSet.Remove(enumMemberValue ?? name);
+                    var intValue = member.ToInt32();
+                    existingEnumValues.Add(intValue);
+                    sb.Append($"        {name} = {intValue}");
+                    first = false;
+                }
+            }
+            var i = 0;
+            foreach (var option in optionsSet)
+            {
+                while (existingEnumValues.Contains(i))
+                {
+                    ++i;
+                }
+                if (!first)
                 {
                     sb.AppendLine(",");
                 }
@@ -416,6 +448,7 @@ namespace {@namespace}
                         sb.AppendLine($@"        [EnumMember(Value = ""{option.Replace("\"", "\\\"")}"")]");
                     }
                     sb.Append($"        {name} = {i}");
+                    first = false;
                     ++i;
                 }
                 else if (i > 0)

@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum DoesOrDoesNot
     {
-        Does = 0,
         [EnumMember(Value = "Does not")]
-        DoesNot = 1
+        DoesNot = 0,
+        Does = 1
     }
 }

@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum TimelyPaymentRewards
     {
-        Y = 0,
-        N = 1,
+        N = 0,
+        Y = 1,
         [EnumMember(Value = "Y_Level1")]
         YLevel1 = 2,
         [EnumMember(Value = "Y_Level2")]

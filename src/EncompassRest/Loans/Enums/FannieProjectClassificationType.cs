@@ -4,19 +4,19 @@ namespace EncompassRest.Loans.Enums
 {
     public enum FannieProjectClassificationType
     {
-        E = 0,
-        F = 1,
-        G = 2,
-        P = 3,
-        Q = 4,
-        R = 5,
-        S = 6,
-        T = 7,
-        U = 8,
-        V = 9,
         [EnumMember(Value = "1")]
-        n1 = 10,
+        n1 = 1,
         [EnumMember(Value = "2")]
-        n2 = 11
+        n2 = 2,
+        E = 100,
+        F = 101,
+        G = 102,
+        P = 103,
+        Q = 104,
+        R = 105,
+        S = 106,
+        T = 107,
+        U = 108,
+        V = 109
     }
 }

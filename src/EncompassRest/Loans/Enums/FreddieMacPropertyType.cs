@@ -4,17 +4,17 @@ namespace EncompassRest.Loans.Enums
 {
     public enum FreddieMacPropertyType
     {
-        C = 0,
-        B = 1,
-        D = 2,
-        T = 3,
-        P = 4,
-        S = 5,
         [EnumMember(Value = "2")]
-        n2 = 6,
-        M = 7,
-        A = 8,
-        F = 9,
-        G = 10
+        n2 = 2,
+        C = 100,
+        B = 101,
+        D = 102,
+        T = 103,
+        P = 104,
+        S = 105,
+        M = 106,
+        A = 107,
+        F = 108,
+        G = 109
     }
 }

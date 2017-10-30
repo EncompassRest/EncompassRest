@@ -13,8 +13,8 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "03")]
         n03 = 3,
         [EnumMember(Value = "06")]
-        n06 = 4,
+        n06 = 6,
         [EnumMember(Value = "15")]
-        n15 = 5
+        n15 = 15
     }
 }

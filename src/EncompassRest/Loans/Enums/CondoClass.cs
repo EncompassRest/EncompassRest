@@ -5,12 +5,12 @@ namespace EncompassRest.Loans.Enums
     public enum CondoClass
     {
         [EnumMember(Value = "1")]
-        n1 = 0,
+        n1 = 1,
         [EnumMember(Value = "2")]
-        n2 = 1,
+        n2 = 2,
         [EnumMember(Value = "3")]
-        n3 = 2,
+        n3 = 3,
         [EnumMember(Value = "4")]
-        n4 = 3
+        n4 = 4
     }
 }

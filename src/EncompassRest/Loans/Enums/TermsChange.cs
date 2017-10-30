@@ -4,7 +4,7 @@ namespace EncompassRest.Loans.Enums
 {
     public enum TermsChange
     {
-        Are = 0,
-        AreNot = 1
+        AreNot = 0,
+        Are = 1
     }
 }

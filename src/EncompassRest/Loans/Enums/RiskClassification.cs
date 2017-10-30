@@ -5,8 +5,8 @@ namespace EncompassRest.Loans.Enums
     public enum RiskClassification
     {
         [EnumMember(Value = "1")]
-        n1 = 0,
+        n1 = 1,
         [EnumMember(Value = "2")]
-        n2 = 1
+        n2 = 2
     }
 }

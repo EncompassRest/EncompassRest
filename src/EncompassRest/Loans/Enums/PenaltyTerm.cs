@@ -5,10 +5,10 @@ namespace EncompassRest.Loans.Enums
     public enum PenaltyTerm
     {
         [EnumMember(Value = "1 Year")]
-        n1Year = 0,
+        n1Year = 1,
         [EnumMember(Value = "2 Years")]
-        n2Years = 1,
+        n2Years = 2,
         [EnumMember(Value = "3 Years")]
-        n3Years = 2
+        n3Years = 3
     }
 }

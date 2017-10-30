@@ -5,28 +5,28 @@ namespace EncompassRest.Loans.Enums
     public enum Month
     {
         [EnumMember(Value = "1")]
-        n1 = 0,
+        n1 = 1,
         [EnumMember(Value = "2")]
-        n2 = 1,
+        n2 = 2,
         [EnumMember(Value = "3")]
-        n3 = 2,
+        n3 = 3,
         [EnumMember(Value = "4")]
-        n4 = 3,
+        n4 = 4,
         [EnumMember(Value = "5")]
-        n5 = 4,
+        n5 = 5,
         [EnumMember(Value = "6")]
-        n6 = 5,
+        n6 = 6,
         [EnumMember(Value = "7")]
-        n7 = 6,
+        n7 = 7,
         [EnumMember(Value = "8")]
-        n8 = 7,
+        n8 = 8,
         [EnumMember(Value = "9")]
-        n9 = 8,
+        n9 = 9,
         [EnumMember(Value = "10")]
-        n10 = 9,
+        n10 = 10,
         [EnumMember(Value = "11")]
-        n11 = 10,
+        n11 = 11,
         [EnumMember(Value = "12")]
-        n12 = 11
+        n12 = 12
     }
 }

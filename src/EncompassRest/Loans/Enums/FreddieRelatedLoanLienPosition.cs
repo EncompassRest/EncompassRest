@@ -5,10 +5,10 @@ namespace EncompassRest.Loans.Enums
     public enum FreddieRelatedLoanLienPosition
     {
         [EnumMember(Value = "Second Lien")]
-        SecondLien = 0,
+        SecondLien = 2,
         [EnumMember(Value = "Third Lien")]
-        ThirdLien = 1,
+        ThirdLien = 3,
         [EnumMember(Value = "Fourth Lien")]
-        FourthLien = 2
+        FourthLien = 4
     }
 }

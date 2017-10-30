@@ -6,10 +6,10 @@ namespace EncompassRest.Loans.Enums
     {
         None = 0,
         [EnumMember(Value = "7")]
-        n7 = 1,
+        n7 = 7,
         [EnumMember(Value = "11")]
-        n11 = 2,
+        n11 = 11,
         [EnumMember(Value = "13")]
-        n13 = 3
+        n13 = 13
     }
 }

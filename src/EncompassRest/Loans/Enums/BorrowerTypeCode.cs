@@ -5,30 +5,30 @@ namespace EncompassRest.Loans.Enums
     public enum BorrowerTypeCode
     {
         [EnumMember(Value = "1. Individual")]
-        n1Individual = 0,
+        n1Individual = 1,
         [EnumMember(Value = "2. Corporation")]
-        n2Corporation = 1,
+        n2Corporation = 2,
         [EnumMember(Value = "3. Proprietorship")]
-        n3Proprietorship = 2,
+        n3Proprietorship = 3,
         [EnumMember(Value = "4. Cooperative")]
-        n4Cooperative = 3,
+        n4Cooperative = 4,
         [EnumMember(Value = "5. Public Body")]
-        n5PublicBody = 4,
+        n5PublicBody = 5,
         [EnumMember(Value = "6. Partnership")]
-        n6Partnership = 5,
+        n6Partnership = 6,
         [EnumMember(Value = "7. Other")]
-        n7Other = 6,
+        n7Other = 7,
         [EnumMember(Value = "8. Indian Tribe")]
-        n8IndianTribe = 7,
+        n8IndianTribe = 8,
         [EnumMember(Value = "9. Trust")]
-        n9Trust = 8,
+        n9Trust = 9,
         [EnumMember(Value = "10. Limited Partnership")]
-        n10LimitedPartnership = 9,
+        n10LimitedPartnership = 10,
         [EnumMember(Value = "11. Association of Farmers")]
-        n11AssociationOfFarmers = 10,
+        n11AssociationOfFarmers = 11,
         [EnumMember(Value = "12. Organization of Farm Workers")]
-        n12OrganizationOfFarmWorkers = 11,
+        n12OrganizationOfFarmWorkers = 12,
         [EnumMember(Value = "13. Joint Operation")]
-        n13JointOperation = 12
+        n13JointOperation = 13
     }
 }

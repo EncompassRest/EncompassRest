@@ -5,10 +5,10 @@ namespace EncompassRest.Loans.Enums
     public enum PerDiemInterestRoundingType
     {
         [EnumMember(Value = "2 Decimals")]
-        n2Decimals = 0,
+        n2Decimals = 2,
         [EnumMember(Value = "4 Decimals")]
-        n4Decimals = 1,
+        n4Decimals = 4,
         [EnumMember(Value = "No Rounding")]
-        NoRounding = 2
+        NoRounding = 100
     }
 }

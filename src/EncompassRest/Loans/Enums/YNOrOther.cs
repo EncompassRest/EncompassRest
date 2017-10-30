@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum YNOrOther
     {
-        Y = 0,
-        N = 1,
+        N = 0,
+        Y = 1,
         Other = 2
     }
 }

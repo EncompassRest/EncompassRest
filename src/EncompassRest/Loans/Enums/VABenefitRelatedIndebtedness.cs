@@ -4,8 +4,8 @@ namespace EncompassRest.Loans.Enums
 {
     public enum VABenefitRelatedIndebtedness
     {
-        Do = 0,
         [EnumMember(Value = "Do Not")]
-        DoNot = 1
+        DoNot = 0,
+        Do = 1
     }
 }

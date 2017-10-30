@@ -5,16 +5,16 @@ namespace EncompassRest.Loans.Enums
     public enum CreditReportCompany
     {
         [EnumMember(Value = "1")]
-        n1 = 0,
+        n1 = 1,
         [EnumMember(Value = "4")]
-        n4 = 1,
+        n4 = 4,
         [EnumMember(Value = "5")]
-        n5 = 2,
+        n5 = 5,
         [EnumMember(Value = "6")]
-        n6 = 3,
+        n6 = 6,
         [EnumMember(Value = "8")]
-        n8 = 4,
-        A = 5,
-        B = 6
+        n8 = 8,
+        A = 100,
+        B = 101
     }
 }

@@ -5,10 +5,10 @@ namespace EncompassRest.Loans.Enums
     public enum BrokerWithLenders
     {
         [EnumMember(Value = "Only One")]
-        OnlyOne = 0,
+        OnlyOne = 1,
         [EnumMember(Value = "3 or Fewer")]
-        n3OrFewer = 1,
+        n3OrFewer = 3,
         [EnumMember(Value = "More Than 3")]
-        MoreThan3 = 2
+        MoreThan3 = 4
     }
 }

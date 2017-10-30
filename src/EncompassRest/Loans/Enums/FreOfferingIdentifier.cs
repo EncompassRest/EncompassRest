@@ -5,30 +5,30 @@ namespace EncompassRest.Loans.Enums
     public enum FreOfferingIdentifier
     {
         [EnumMember(Value = "210")]
-        n210 = 0,
+        n210 = 210,
         [EnumMember(Value = "220")]
-        n220 = 1,
+        n220 = 220,
         [EnumMember(Value = "230")]
-        n230 = 2,
+        n230 = 230,
         [EnumMember(Value = "231")]
-        n231 = 3,
+        n231 = 231,
         [EnumMember(Value = "232")]
-        n232 = 4,
+        n232 = 232,
         [EnumMember(Value = "233")]
-        n233 = 5,
+        n233 = 233,
         [EnumMember(Value = "240")]
-        n240 = 6,
+        n240 = 240,
         [EnumMember(Value = "241")]
-        n241 = 7,
+        n241 = 241,
         [EnumMember(Value = "242")]
-        n242 = 8,
+        n242 = 242,
         [EnumMember(Value = "243")]
-        n243 = 9,
+        n243 = 243,
         [EnumMember(Value = "250")]
-        n250 = 10,
+        n250 = 250,
         [EnumMember(Value = "251")]
-        n251 = 11,
+        n251 = 251,
         [EnumMember(Value = "310")]
-        n310 = 12
+        n310 = 310
     }
 }
