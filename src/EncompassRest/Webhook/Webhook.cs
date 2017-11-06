@@ -181,7 +181,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNull(subscription, nameof(subscription));
 
-            return CreateSubscriptionInternalAsync(JsonStreamContent.Create(subscription), cancellationToken, () =>
+            return CreateSubscriptionInternalAsync(new JsonStringContent(subscription.ToJson())/*JsonStreamContent.Create(subscription)*/, cancellationToken, () =>
             {
                 subscription.Dirty = false;
             });
@@ -217,7 +217,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NotNullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, JsonStreamContent.Create(subscription), cancellationToken, () =>
+            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, new JsonStringContent(subscription.ToJson())/*JsonStreamContent.Create(subscription)*/, cancellationToken, () =>
             {
                 subscription.Dirty = false;
             });
@@ -246,18 +246,15 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public Task DeleteSubscriptionAsync(string subscriptionId) => DeleteSubscriptionAsync(subscriptionId, CancellationToken.None);
+        public Task<bool> DeleteSubscriptionAsync(string subscriptionId) => DeleteSubscriptionAsync(subscriptionId, CancellationToken.None);
 
-        public async Task DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken)
+        public async Task<bool> DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
             {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await RestException.CreateAsync(nameof(DeleteSubscriptionAsync), response).ConfigureAwait(false);
-                }
+                return response.IsSuccessStatusCode;
             }
         }
     }

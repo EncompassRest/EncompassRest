@@ -25,7 +25,7 @@ namespace EncompassRest.Utilities
 
         public JsonStreamContent(object value, Type type)
         {
-            Headers.ContentType = new MediaTypeHeaderValue("application/json") { CharSet = Encoding.UTF8.WebName };
+            Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
             Value = value;
             Type = type;
