@@ -181,7 +181,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNull(subscription, nameof(subscription));
 
-            return CreateSubscriptionInternalAsync(new JsonStringContent(subscription.ToJson())/*JsonStreamContent.Create(subscription)*/, cancellationToken, () =>
+            return CreateSubscriptionInternalAsync(JsonStreamContent.Create(subscription), cancellationToken, () =>
             {
                 subscription.Dirty = false;
             });
@@ -217,7 +217,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NotNullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, new JsonStringContent(subscription.ToJson())/*JsonStreamContent.Create(subscription)*/, cancellationToken, () =>
+            return UpdateSubscriptionInternalAsync(subscription.SubscriptionId, JsonStreamContent.Create(subscription), cancellationToken, () =>
             {
                 subscription.Dirty = false;
             });

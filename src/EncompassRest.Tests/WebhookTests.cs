@@ -29,7 +29,7 @@ namespace EncompassRest.Tests
             var subscription = new WebhookSubscription("https://abc123mortgage.com");
             var subscriptionId = await client.Webhook.CreateSubscriptionAsync(subscription);
             Assert.IsFalse(string.IsNullOrEmpty(subscriptionId));
-            await client.Webhook.DeleteSubscriptionAsync(subscriptionId);
+            Assert.IsTrue(await client.Webhook.DeleteSubscriptionAsync(subscriptionId));
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var subscriptionId = await client.Webhook.CreateSubscriptionRawAsync(@"{""endpoint"":""https://xyz987bank.com""}");
             Assert.IsFalse(string.IsNullOrEmpty(subscriptionId));
-            await client.Webhook.DeleteSubscriptionAsync(subscriptionId);
+            Assert.IsTrue(await client.Webhook.DeleteSubscriptionAsync(subscriptionId));
         }
     }
 }
