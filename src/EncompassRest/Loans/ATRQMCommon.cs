@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -16,8 +17,8 @@ namespace EncompassRest.Loans
         public DateTime? ARMRecastDate { get { return _aRMRecastDate; } set { _aRMRecastDate = value; } }
         private DirtyValue<decimal?> _aRMRecastMonthlyPayment;
         public decimal? ARMRecastMonthlyPayment { get { return _aRMRecastMonthlyPayment; } set { _aRMRecastMonthlyPayment = value; } }
-        private DirtyValue<string> _aTRLoanType;
-        public string ATRLoanType { get { return _aTRLoanType; } set { _aTRLoanType = value; } }
+        private StringEnumValue<ATRLoanType> _aTRLoanType;
+        public StringEnumValue<ATRLoanType> ATRLoanType { get { return _aTRLoanType; } set { _aTRLoanType = value; } }
         private DirtyValue<string> _aUSDataDiscrepencyResolutionComments;
         public string AUSDataDiscrepencyResolutionComments { get { return _aUSDataDiscrepencyResolutionComments; } set { _aUSDataDiscrepencyResolutionComments = value; } }
         private DirtyValue<DateTime?> _aUSDataDiscrepencyResolutionDate;
@@ -30,16 +31,16 @@ namespace EncompassRest.Loans
         public decimal? BonaFideDiscountPointAmount { get { return _bonaFideDiscountPointAmount; } set { _bonaFideDiscountPointAmount = value; } }
         private DirtyValue<bool?> _brokerCompensationWhenRateSet;
         public bool? BrokerCompensationWhenRateSet { get { return _brokerCompensationWhenRateSet; } set { _brokerCompensationWhenRateSet = value; } }
-        private DirtyValue<string> _collateralRepandWarrReliefEligibilityType;
-        public string CollateralRepandWarrReliefEligibilityType { get { return _collateralRepandWarrReliefEligibilityType; } set { _collateralRepandWarrReliefEligibilityType = value; } }
+        private StringEnumValue<CollateralRepandWarrReliefEligibilityType> _collateralRepandWarrReliefEligibilityType;
+        public StringEnumValue<CollateralRepandWarrReliefEligibilityType> CollateralRepandWarrReliefEligibilityType { get { return _collateralRepandWarrReliefEligibilityType; } set { _collateralRepandWarrReliefEligibilityType = value; } }
         private DirtyValue<decimal?> _compensationPTBFees;
         public decimal? CompensationPTBFees { get { return _compensationPTBFees; } set { _compensationPTBFees = value; } }
         private DirtyValue<decimal?> _creditInsPremiumFees;
         public decimal? CreditInsPremiumFees { get { return _creditInsPremiumFees; } set { _creditInsPremiumFees = value; } }
         private DirtyValue<bool?> _creditorType;
         public bool? CreditorType { get { return _creditorType; } set { _creditorType = value; } }
-        private DirtyValue<string> _creditorTypeDescription;
-        public string CreditorTypeDescription { get { return _creditorTypeDescription; } set { _creditorTypeDescription = value; } }
+        private StringEnumValue<CreditorTypeDescription> _creditorTypeDescription;
+        public StringEnumValue<CreditorTypeDescription> CreditorTypeDescription { get { return _creditorTypeDescription; } set { _creditorTypeDescription = value; } }
         private DirtyValue<bool?> _creditType;
         public bool? CreditType { get { return _creditType; } set { _creditType = value; } }
         private DirtyValue<decimal?> _currentQMFeeThresholdAmt;
@@ -120,8 +121,8 @@ namespace EncompassRest.Loans
         public string DocumentationGuidelineMessagesYY { get { return _documentationGuidelineMessagesYY; } set { _documentationGuidelineMessagesYY = value; } }
         private DirtyValue<string> _documentationGuidelineMessagesYZ;
         public string DocumentationGuidelineMessagesYZ { get { return _documentationGuidelineMessagesYZ; } set { _documentationGuidelineMessagesYZ = value; } }
-        private DirtyValue<string> _eligibleNonStandardToStandard;
-        public string EligibleNonStandardToStandard { get { return _eligibleNonStandardToStandard; } set { _eligibleNonStandardToStandard = value; } }
+        private StringEnumValue<EligibleNonStandardToStandard> _eligibleNonStandardToStandard;
+        public StringEnumValue<EligibleNonStandardToStandard> EligibleNonStandardToStandard { get { return _eligibleNonStandardToStandard; } set { _eligibleNonStandardToStandard = value; } }
         private DirtyValue<decimal?> _financeChargeFees;
         public decimal? FinanceChargeFees { get { return _financeChargeFees; } set { _financeChargeFees = value; } }
         private DirtyValue<int?> _firstChangeRecase;
@@ -140,74 +141,74 @@ namespace EncompassRest.Loans
         public decimal? FullyIndexRateMonthlyPayment { get { return _fullyIndexRateMonthlyPayment; } set { _fullyIndexRateMonthlyPayment = value; } }
         private DirtyValue<decimal?> _fullyIndexRateTotalDebtRatio;
         public decimal? FullyIndexRateTotalDebtRatio { get { return _fullyIndexRateTotalDebtRatio; } set { _fullyIndexRateTotalDebtRatio = value; } }
-        private DirtyValue<string> _generalATR_Status_Alimony;
-        public string GeneralATR_Status_Alimony { get { return _generalATR_Status_Alimony; } set { _generalATR_Status_Alimony = value; } }
-        private DirtyValue<string> _generalATR_Status_Assets;
-        public string GeneralATR_Status_Assets { get { return _generalATR_Status_Assets; } set { _generalATR_Status_Assets = value; } }
-        private DirtyValue<string> _generalATR_Status_ChildSupport;
-        public string GeneralATR_Status_ChildSupport { get { return _generalATR_Status_ChildSupport; } set { _generalATR_Status_ChildSupport = value; } }
-        private DirtyValue<string> _generalATR_Status_CoveredLoan;
-        public string GeneralATR_Status_CoveredLoan { get { return _generalATR_Status_CoveredLoan; } set { _generalATR_Status_CoveredLoan = value; } }
-        private DirtyValue<string> _generalATR_Status_CreditHistory;
-        public string GeneralATR_Status_CreditHistory { get { return _generalATR_Status_CreditHistory; } set { _generalATR_Status_CreditHistory = value; } }
-        private DirtyValue<string> _generalATR_Status_DebtObligations;
-        public string GeneralATR_Status_DebtObligations { get { return _generalATR_Status_DebtObligations; } set { _generalATR_Status_DebtObligations = value; } }
-        private DirtyValue<string> _generalATR_Status_DTI;
-        public string GeneralATR_Status_DTI { get { return _generalATR_Status_DTI; } set { _generalATR_Status_DTI = value; } }
-        private DirtyValue<string> _generalATR_Status_Employment;
-        public string GeneralATR_Status_Employment { get { return _generalATR_Status_Employment; } set { _generalATR_Status_Employment = value; } }
-        private DirtyValue<string> _generalATR_Status_Income;
-        public string GeneralATR_Status_Income { get { return _generalATR_Status_Income; } set { _generalATR_Status_Income = value; } }
-        private DirtyValue<string> _generalATR_Status_MtgRelatedObligations;
-        public string GeneralATR_Status_MtgRelatedObligations { get { return _generalATR_Status_MtgRelatedObligations; } set { _generalATR_Status_MtgRelatedObligations = value; } }
-        private DirtyValue<string> _generalATR_Status_Overall;
-        public string GeneralATR_Status_Overall { get { return _generalATR_Status_Overall; } set { _generalATR_Status_Overall = value; } }
-        private DirtyValue<string> _generalATR_Status_ResidualIncome;
-        public string GeneralATR_Status_ResidualIncome { get { return _generalATR_Status_ResidualIncome; } set { _generalATR_Status_ResidualIncome = value; } }
-        private DirtyValue<string> _generalATR_Status_SimultaneousLoan;
-        public string GeneralATR_Status_SimultaneousLoan { get { return _generalATR_Status_SimultaneousLoan; } set { _generalATR_Status_SimultaneousLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_Alimony;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_Alimony { get { return _generalATR_Status_Alimony; } set { _generalATR_Status_Alimony = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_Assets;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_Assets { get { return _generalATR_Status_Assets; } set { _generalATR_Status_Assets = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_ChildSupport;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_ChildSupport { get { return _generalATR_Status_ChildSupport; } set { _generalATR_Status_ChildSupport = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_CoveredLoan;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_CoveredLoan { get { return _generalATR_Status_CoveredLoan; } set { _generalATR_Status_CoveredLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_CreditHistory;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_CreditHistory { get { return _generalATR_Status_CreditHistory; } set { _generalATR_Status_CreditHistory = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_DebtObligations;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_DebtObligations { get { return _generalATR_Status_DebtObligations; } set { _generalATR_Status_DebtObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_DTI;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_DTI { get { return _generalATR_Status_DTI; } set { _generalATR_Status_DTI = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_Employment;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_Employment { get { return _generalATR_Status_Employment; } set { _generalATR_Status_Employment = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_Income;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_Income { get { return _generalATR_Status_Income; } set { _generalATR_Status_Income = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_MtgRelatedObligations;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_MtgRelatedObligations { get { return _generalATR_Status_MtgRelatedObligations; } set { _generalATR_Status_MtgRelatedObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_Overall;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_Overall { get { return _generalATR_Status_Overall; } set { _generalATR_Status_Overall = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_ResidualIncome;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_ResidualIncome { get { return _generalATR_Status_ResidualIncome; } set { _generalATR_Status_ResidualIncome = value; } }
+        private StringEnumValue<ATRQMStatus> _generalATR_Status_SimultaneousLoan;
+        public StringEnumValue<ATRQMStatus> GeneralATR_Status_SimultaneousLoan { get { return _generalATR_Status_SimultaneousLoan; } set { _generalATR_Status_SimultaneousLoan = value; } }
         private DirtyValue<decimal?> _gSEAgencyQM_CalculatedThreshold;
         public decimal? GSEAgencyQM_CalculatedThreshold { get { return _gSEAgencyQM_CalculatedThreshold; } set { _gSEAgencyQM_CalculatedThreshold = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_Alimony;
-        public string GSEAgencyQM_Status_Alimony { get { return _gSEAgencyQM_Status_Alimony; } set { _gSEAgencyQM_Status_Alimony = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_Assets;
-        public string GSEAgencyQM_Status_Assets { get { return _gSEAgencyQM_Status_Assets; } set { _gSEAgencyQM_Status_Assets = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_BalloonPayment;
-        public string GSEAgencyQM_Status_BalloonPayment { get { return _gSEAgencyQM_Status_BalloonPayment; } set { _gSEAgencyQM_Status_BalloonPayment = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_ChildSupport;
-        public string GSEAgencyQM_Status_ChildSupport { get { return _gSEAgencyQM_Status_ChildSupport; } set { _gSEAgencyQM_Status_ChildSupport = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_CoveredLoan;
-        public string GSEAgencyQM_Status_CoveredLoan { get { return _gSEAgencyQM_Status_CoveredLoan; } set { _gSEAgencyQM_Status_CoveredLoan = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_CreditHistory;
-        public string GSEAgencyQM_Status_CreditHistory { get { return _gSEAgencyQM_Status_CreditHistory; } set { _gSEAgencyQM_Status_CreditHistory = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_DebtObligations;
-        public string GSEAgencyQM_Status_DebtObligations { get { return _gSEAgencyQM_Status_DebtObligations; } set { _gSEAgencyQM_Status_DebtObligations = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_DTI;
-        public string GSEAgencyQM_Status_DTI { get { return _gSEAgencyQM_Status_DTI; } set { _gSEAgencyQM_Status_DTI = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_Employment;
-        public string GSEAgencyQM_Status_Employment { get { return _gSEAgencyQM_Status_Employment; } set { _gSEAgencyQM_Status_Employment = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_Income;
-        public string GSEAgencyQM_Status_Income { get { return _gSEAgencyQM_Status_Income; } set { _gSEAgencyQM_Status_Income = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_InterestOnly;
-        public string GSEAgencyQM_Status_InterestOnly { get { return _gSEAgencyQM_Status_InterestOnly; } set { _gSEAgencyQM_Status_InterestOnly = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_LoanTerm;
-        public string GSEAgencyQM_Status_LoanTerm { get { return _gSEAgencyQM_Status_LoanTerm; } set { _gSEAgencyQM_Status_LoanTerm = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_MtgRelatedObligations;
-        public string GSEAgencyQM_Status_MtgRelatedObligations { get { return _gSEAgencyQM_Status_MtgRelatedObligations; } set { _gSEAgencyQM_Status_MtgRelatedObligations = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_NegativeAmortization;
-        public string GSEAgencyQM_Status_NegativeAmortization { get { return _gSEAgencyQM_Status_NegativeAmortization; } set { _gSEAgencyQM_Status_NegativeAmortization = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_Overall;
-        public string GSEAgencyQM_Status_Overall { get { return _gSEAgencyQM_Status_Overall; } set { _gSEAgencyQM_Status_Overall = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_PointsFeesLimit;
-        public string GSEAgencyQM_Status_PointsFeesLimit { get { return _gSEAgencyQM_Status_PointsFeesLimit; } set { _gSEAgencyQM_Status_PointsFeesLimit = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_PrepaymentPenalty;
-        public string GSEAgencyQM_Status_PrepaymentPenalty { get { return _gSEAgencyQM_Status_PrepaymentPenalty; } set { _gSEAgencyQM_Status_PrepaymentPenalty = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_ResidualIncome;
-        public string GSEAgencyQM_Status_ResidualIncome { get { return _gSEAgencyQM_Status_ResidualIncome; } set { _gSEAgencyQM_Status_ResidualIncome = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_SafeHarborEligibility;
-        public string GSEAgencyQM_Status_SafeHarborEligibility { get { return _gSEAgencyQM_Status_SafeHarborEligibility; } set { _gSEAgencyQM_Status_SafeHarborEligibility = value; } }
-        private DirtyValue<string> _gSEAgencyQM_Status_SimultaneousLoan;
-        public string GSEAgencyQM_Status_SimultaneousLoan { get { return _gSEAgencyQM_Status_SimultaneousLoan; } set { _gSEAgencyQM_Status_SimultaneousLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Alimony;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Alimony { get { return _gSEAgencyQM_Status_Alimony; } set { _gSEAgencyQM_Status_Alimony = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Assets;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Assets { get { return _gSEAgencyQM_Status_Assets; } set { _gSEAgencyQM_Status_Assets = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_BalloonPayment;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_BalloonPayment { get { return _gSEAgencyQM_Status_BalloonPayment; } set { _gSEAgencyQM_Status_BalloonPayment = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_ChildSupport;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_ChildSupport { get { return _gSEAgencyQM_Status_ChildSupport; } set { _gSEAgencyQM_Status_ChildSupport = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_CoveredLoan;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_CoveredLoan { get { return _gSEAgencyQM_Status_CoveredLoan; } set { _gSEAgencyQM_Status_CoveredLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_CreditHistory;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_CreditHistory { get { return _gSEAgencyQM_Status_CreditHistory; } set { _gSEAgencyQM_Status_CreditHistory = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_DebtObligations;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_DebtObligations { get { return _gSEAgencyQM_Status_DebtObligations; } set { _gSEAgencyQM_Status_DebtObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_DTI;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_DTI { get { return _gSEAgencyQM_Status_DTI; } set { _gSEAgencyQM_Status_DTI = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Employment;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Employment { get { return _gSEAgencyQM_Status_Employment; } set { _gSEAgencyQM_Status_Employment = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Income;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Income { get { return _gSEAgencyQM_Status_Income; } set { _gSEAgencyQM_Status_Income = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_InterestOnly;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_InterestOnly { get { return _gSEAgencyQM_Status_InterestOnly; } set { _gSEAgencyQM_Status_InterestOnly = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_LoanTerm;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_LoanTerm { get { return _gSEAgencyQM_Status_LoanTerm; } set { _gSEAgencyQM_Status_LoanTerm = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_MtgRelatedObligations;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_MtgRelatedObligations { get { return _gSEAgencyQM_Status_MtgRelatedObligations; } set { _gSEAgencyQM_Status_MtgRelatedObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_NegativeAmortization;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_NegativeAmortization { get { return _gSEAgencyQM_Status_NegativeAmortization; } set { _gSEAgencyQM_Status_NegativeAmortization = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Overall;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Overall { get { return _gSEAgencyQM_Status_Overall; } set { _gSEAgencyQM_Status_Overall = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_PointsFeesLimit;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_PointsFeesLimit { get { return _gSEAgencyQM_Status_PointsFeesLimit; } set { _gSEAgencyQM_Status_PointsFeesLimit = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_PrepaymentPenalty;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_PrepaymentPenalty { get { return _gSEAgencyQM_Status_PrepaymentPenalty; } set { _gSEAgencyQM_Status_PrepaymentPenalty = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_ResidualIncome;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_ResidualIncome { get { return _gSEAgencyQM_Status_ResidualIncome; } set { _gSEAgencyQM_Status_ResidualIncome = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_SafeHarborEligibility;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_SafeHarborEligibility { get { return _gSEAgencyQM_Status_SafeHarborEligibility; } set { _gSEAgencyQM_Status_SafeHarborEligibility = value; } }
+        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_SimultaneousLoan;
+        public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_SimultaneousLoan { get { return _gSEAgencyQM_Status_SimultaneousLoan; } set { _gSEAgencyQM_Status_SimultaneousLoan = value; } }
         private DirtyValue<bool?> _has30DayLatePayment;
         public bool? Has30DayLatePayment { get { return _has30DayLatePayment; } set { _has30DayLatePayment = value; } }
         private DirtyValue<string> _id;
@@ -226,8 +227,8 @@ namespace EncompassRest.Loans
         public DateTime? InterestOnlyRecastDate { get { return _interestOnlyRecastDate; } set { _interestOnlyRecastDate = value; } }
         private DirtyValue<bool?> _isConsumerLiklyDefault;
         public bool? IsConsumerLiklyDefault { get { return _isConsumerLiklyDefault; } set { _isConsumerLiklyDefault = value; } }
-        private DirtyValue<string> _isEligibleForSafeHarbor;
-        public string IsEligibleForSafeHarbor { get { return _isEligibleForSafeHarbor; } set { _isEligibleForSafeHarbor = value; } }
+        private StringEnumValue<YesNoOrNA> _isEligibleForSafeHarbor;
+        public StringEnumValue<YesNoOrNA> IsEligibleForSafeHarbor { get { return _isEligibleForSafeHarbor; } set { _isEligibleForSafeHarbor = value; } }
         private DirtyValue<bool?> _isEvaluatedAlimonyObligations;
         public bool? IsEvaluatedAlimonyObligations { get { return _isEvaluatedAlimonyObligations; } set { _isEvaluatedAlimonyObligations = value; } }
         private DirtyValue<bool?> _isEvaluatedChildSupportObligations;
@@ -252,8 +253,8 @@ namespace EncompassRest.Loans
         public bool? IsEvaluatedMonthlySimultaneousLoanPayment { get { return _isEvaluatedMonthlySimultaneousLoanPayment; } set { _isEvaluatedMonthlySimultaneousLoanPayment = value; } }
         private DirtyValue<bool?> _isEvaluatedResidualIncome;
         public bool? IsEvaluatedResidualIncome { get { return _isEvaluatedResidualIncome; } set { _isEvaluatedResidualIncome = value; } }
-        private DirtyValue<string> _isHigherPricedLoan;
-        public string IsHigherPricedLoan { get { return _isHigherPricedLoan; } set { _isHigherPricedLoan = value; } }
+        private StringEnumValue<IsOrIsNot> _isHigherPricedLoan;
+        public StringEnumValue<IsOrIsNot> IsHigherPricedLoan { get { return _isHigherPricedLoan; } set { _isHigherPricedLoan = value; } }
         private DirtyValue<string> _loanProcessingInformationD4;
         public string LoanProcessingInformationD4 { get { return _loanProcessingInformationD4; } set { _loanProcessingInformationD4 = value; } }
         private DirtyValue<string> _loanProcessingInformationGO;
@@ -268,8 +269,8 @@ namespace EncompassRest.Loans
         public string LoanProcessingInformationMA { get { return _loanProcessingInformationMA; } set { _loanProcessingInformationMA = value; } }
         private DirtyValue<bool?> _loanProgram;
         public bool? LoanProgram { get { return _loanProgram; } set { _loanProgram = value; } }
-        private DirtyValue<string> _loanProgramDescription;
-        public string LoanProgramDescription { get { return _loanProgramDescription; } set { _loanProgramDescription = value; } }
+        private StringEnumValue<LoanProgramDescription> _loanProgramDescription;
+        public StringEnumValue<LoanProgramDescription> LoanProgramDescription { get { return _loanProgramDescription; } set { _loanProgramDescription = value; } }
         private DirtyValue<bool?> _loanRateFixedin5Years;
         public bool? LoanRateFixedin5Years { get { return _loanRateFixedin5Years; } set { _loanRateFixedin5Years = value; } }
         private DirtyValue<decimal?> _lOBrokerCompensationAmount;
@@ -300,8 +301,8 @@ namespace EncompassRest.Loans
         public bool? PrincipalBalanceIncreased { get { return _principalBalanceIncreased; } set { _principalBalanceIncreased = value; } }
         private DirtyValue<bool?> _principalHasDeferred;
         public bool? PrincipalHasDeferred { get { return _principalHasDeferred; } set { _principalHasDeferred = value; } }
-        private DirtyValue<string> _qMLoanType;
-        public string QMLoanType { get { return _qMLoanType; } set { _qMLoanType = value; } }
+        private StringEnumValue<QMLoanType> _qMLoanType;
+        public StringEnumValue<QMLoanType> QMLoanType { get { return _qMLoanType; } set { _qMLoanType = value; } }
         private DirtyValue<decimal?> _rateReductionBasisPoints;
         public decimal? RateReductionBasisPoints { get { return _rateReductionBasisPoints; } set { _rateReductionBasisPoints = value; } }
         private DirtyValue<decimal?> _rateReductionDiscountPoints;
@@ -318,90 +319,90 @@ namespace EncompassRest.Loans
         public decimal? RequiredServicesLenderSelectedAmt { get { return _requiredServicesLenderSelectedAmt; } set { _requiredServicesLenderSelectedAmt = value; } }
         private DirtyValue<decimal?> _smallCreditorQM_CalculatedThreshold;
         public decimal? SmallCreditorQM_CalculatedThreshold { get { return _smallCreditorQM_CalculatedThreshold; } set { _smallCreditorQM_CalculatedThreshold = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_Alimony;
-        public string SmallCreditorQM_Status_Alimony { get { return _smallCreditorQM_Status_Alimony; } set { _smallCreditorQM_Status_Alimony = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_Assets;
-        public string SmallCreditorQM_Status_Assets { get { return _smallCreditorQM_Status_Assets; } set { _smallCreditorQM_Status_Assets = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_BalloonPayment;
-        public string SmallCreditorQM_Status_BalloonPayment { get { return _smallCreditorQM_Status_BalloonPayment; } set { _smallCreditorQM_Status_BalloonPayment = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_ChildSupport;
-        public string SmallCreditorQM_Status_ChildSupport { get { return _smallCreditorQM_Status_ChildSupport; } set { _smallCreditorQM_Status_ChildSupport = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_CoveredLoan;
-        public string SmallCreditorQM_Status_CoveredLoan { get { return _smallCreditorQM_Status_CoveredLoan; } set { _smallCreditorQM_Status_CoveredLoan = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_DebtObligations;
-        public string SmallCreditorQM_Status_DebtObligations { get { return _smallCreditorQM_Status_DebtObligations; } set { _smallCreditorQM_Status_DebtObligations = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_DTI;
-        public string SmallCreditorQM_Status_DTI { get { return _smallCreditorQM_Status_DTI; } set { _smallCreditorQM_Status_DTI = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_Income;
-        public string SmallCreditorQM_Status_Income { get { return _smallCreditorQM_Status_Income; } set { _smallCreditorQM_Status_Income = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_InterestOnly;
-        public string SmallCreditorQM_Status_InterestOnly { get { return _smallCreditorQM_Status_InterestOnly; } set { _smallCreditorQM_Status_InterestOnly = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_LoanTerm;
-        public string SmallCreditorQM_Status_LoanTerm { get { return _smallCreditorQM_Status_LoanTerm; } set { _smallCreditorQM_Status_LoanTerm = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_MtgRelatedObligations;
-        public string SmallCreditorQM_Status_MtgRelatedObligations { get { return _smallCreditorQM_Status_MtgRelatedObligations; } set { _smallCreditorQM_Status_MtgRelatedObligations = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_NegativeAmortization;
-        public string SmallCreditorQM_Status_NegativeAmortization { get { return _smallCreditorQM_Status_NegativeAmortization; } set { _smallCreditorQM_Status_NegativeAmortization = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_Overall;
-        public string SmallCreditorQM_Status_Overall { get { return _smallCreditorQM_Status_Overall; } set { _smallCreditorQM_Status_Overall = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_PointsFeesLimit;
-        public string SmallCreditorQM_Status_PointsFeesLimit { get { return _smallCreditorQM_Status_PointsFeesLimit; } set { _smallCreditorQM_Status_PointsFeesLimit = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_PrepaymentPenalty;
-        public string SmallCreditorQM_Status_PrepaymentPenalty { get { return _smallCreditorQM_Status_PrepaymentPenalty; } set { _smallCreditorQM_Status_PrepaymentPenalty = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_ResidualIncome;
-        public string SmallCreditorQM_Status_ResidualIncome { get { return _smallCreditorQM_Status_ResidualIncome; } set { _smallCreditorQM_Status_ResidualIncome = value; } }
-        private DirtyValue<string> _smallCreditorQM_Status_SafeHarborEligibility;
-        public string SmallCreditorQM_Status_SafeHarborEligibility { get { return _smallCreditorQM_Status_SafeHarborEligibility; } set { _smallCreditorQM_Status_SafeHarborEligibility = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Alimony;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Alimony { get { return _smallCreditorQM_Status_Alimony; } set { _smallCreditorQM_Status_Alimony = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Assets;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Assets { get { return _smallCreditorQM_Status_Assets; } set { _smallCreditorQM_Status_Assets = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_BalloonPayment;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_BalloonPayment { get { return _smallCreditorQM_Status_BalloonPayment; } set { _smallCreditorQM_Status_BalloonPayment = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_ChildSupport;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_ChildSupport { get { return _smallCreditorQM_Status_ChildSupport; } set { _smallCreditorQM_Status_ChildSupport = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_CoveredLoan;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_CoveredLoan { get { return _smallCreditorQM_Status_CoveredLoan; } set { _smallCreditorQM_Status_CoveredLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_DebtObligations;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_DebtObligations { get { return _smallCreditorQM_Status_DebtObligations; } set { _smallCreditorQM_Status_DebtObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_DTI;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_DTI { get { return _smallCreditorQM_Status_DTI; } set { _smallCreditorQM_Status_DTI = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Income;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Income { get { return _smallCreditorQM_Status_Income; } set { _smallCreditorQM_Status_Income = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_InterestOnly;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_InterestOnly { get { return _smallCreditorQM_Status_InterestOnly; } set { _smallCreditorQM_Status_InterestOnly = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_LoanTerm;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_LoanTerm { get { return _smallCreditorQM_Status_LoanTerm; } set { _smallCreditorQM_Status_LoanTerm = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_MtgRelatedObligations;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_MtgRelatedObligations { get { return _smallCreditorQM_Status_MtgRelatedObligations; } set { _smallCreditorQM_Status_MtgRelatedObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_NegativeAmortization;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_NegativeAmortization { get { return _smallCreditorQM_Status_NegativeAmortization; } set { _smallCreditorQM_Status_NegativeAmortization = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Overall;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Overall { get { return _smallCreditorQM_Status_Overall; } set { _smallCreditorQM_Status_Overall = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_PointsFeesLimit;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_PointsFeesLimit { get { return _smallCreditorQM_Status_PointsFeesLimit; } set { _smallCreditorQM_Status_PointsFeesLimit = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_PrepaymentPenalty;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_PrepaymentPenalty { get { return _smallCreditorQM_Status_PrepaymentPenalty; } set { _smallCreditorQM_Status_PrepaymentPenalty = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_ResidualIncome;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_ResidualIncome { get { return _smallCreditorQM_Status_ResidualIncome; } set { _smallCreditorQM_Status_ResidualIncome = value; } }
+        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_SafeHarborEligibility;
+        public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_SafeHarborEligibility { get { return _smallCreditorQM_Status_SafeHarborEligibility; } set { _smallCreditorQM_Status_SafeHarborEligibility = value; } }
         private DirtyValue<decimal?> _standardQM_CalculatedThreshold;
         public decimal? StandardQM_CalculatedThreshold { get { return _standardQM_CalculatedThreshold; } set { _standardQM_CalculatedThreshold = value; } }
-        private DirtyValue<string> _standardQM_Status_Alimony;
-        public string StandardQM_Status_Alimony { get { return _standardQM_Status_Alimony; } set { _standardQM_Status_Alimony = value; } }
-        private DirtyValue<string> _standardQM_Status_Assets;
-        public string StandardQM_Status_Assets { get { return _standardQM_Status_Assets; } set { _standardQM_Status_Assets = value; } }
-        private DirtyValue<string> _standardQM_Status_BalloonPayment;
-        public string StandardQM_Status_BalloonPayment { get { return _standardQM_Status_BalloonPayment; } set { _standardQM_Status_BalloonPayment = value; } }
-        private DirtyValue<string> _standardQM_Status_ChildSupport;
-        public string StandardQM_Status_ChildSupport { get { return _standardQM_Status_ChildSupport; } set { _standardQM_Status_ChildSupport = value; } }
-        private DirtyValue<string> _standardQM_Status_CoveredLoan;
-        public string StandardQM_Status_CoveredLoan { get { return _standardQM_Status_CoveredLoan; } set { _standardQM_Status_CoveredLoan = value; } }
-        private DirtyValue<string> _standardQM_Status_CreditHistory;
-        public string StandardQM_Status_CreditHistory { get { return _standardQM_Status_CreditHistory; } set { _standardQM_Status_CreditHistory = value; } }
-        private DirtyValue<string> _standardQM_Status_DebtObligations;
-        public string StandardQM_Status_DebtObligations { get { return _standardQM_Status_DebtObligations; } set { _standardQM_Status_DebtObligations = value; } }
-        private DirtyValue<string> _standardQM_Status_DTI;
-        public string StandardQM_Status_DTI { get { return _standardQM_Status_DTI; } set { _standardQM_Status_DTI = value; } }
-        private DirtyValue<string> _standardQM_Status_Employment;
-        public string StandardQM_Status_Employment { get { return _standardQM_Status_Employment; } set { _standardQM_Status_Employment = value; } }
-        private DirtyValue<string> _standardQM_Status_Income;
-        public string StandardQM_Status_Income { get { return _standardQM_Status_Income; } set { _standardQM_Status_Income = value; } }
-        private DirtyValue<string> _standardQM_Status_InterestOnly;
-        public string StandardQM_Status_InterestOnly { get { return _standardQM_Status_InterestOnly; } set { _standardQM_Status_InterestOnly = value; } }
-        private DirtyValue<string> _standardQM_Status_LoanTerm;
-        public string StandardQM_Status_LoanTerm { get { return _standardQM_Status_LoanTerm; } set { _standardQM_Status_LoanTerm = value; } }
-        private DirtyValue<string> _standardQM_Status_MtgRelatedObligations;
-        public string StandardQM_Status_MtgRelatedObligations { get { return _standardQM_Status_MtgRelatedObligations; } set { _standardQM_Status_MtgRelatedObligations = value; } }
-        private DirtyValue<string> _standardQM_Status_NegativeAmortization;
-        public string StandardQM_Status_NegativeAmortization { get { return _standardQM_Status_NegativeAmortization; } set { _standardQM_Status_NegativeAmortization = value; } }
-        private DirtyValue<string> _standardQM_Status_Overall;
-        public string StandardQM_Status_Overall { get { return _standardQM_Status_Overall; } set { _standardQM_Status_Overall = value; } }
-        private DirtyValue<string> _standardQM_Status_PointsFeesLimit;
-        public string StandardQM_Status_PointsFeesLimit { get { return _standardQM_Status_PointsFeesLimit; } set { _standardQM_Status_PointsFeesLimit = value; } }
-        private DirtyValue<string> _standardQM_Status_PrepaymentPenalty;
-        public string StandardQM_Status_PrepaymentPenalty { get { return _standardQM_Status_PrepaymentPenalty; } set { _standardQM_Status_PrepaymentPenalty = value; } }
-        private DirtyValue<string> _standardQM_Status_ResidualIncome;
-        public string StandardQM_Status_ResidualIncome { get { return _standardQM_Status_ResidualIncome; } set { _standardQM_Status_ResidualIncome = value; } }
-        private DirtyValue<string> _standardQM_Status_SafeHarborEligibility;
-        public string StandardQM_Status_SafeHarborEligibility { get { return _standardQM_Status_SafeHarborEligibility; } set { _standardQM_Status_SafeHarborEligibility = value; } }
-        private DirtyValue<string> _standardQM_Status_SimultaneousLoan;
-        public string StandardQM_Status_SimultaneousLoan { get { return _standardQM_Status_SimultaneousLoan; } set { _standardQM_Status_SimultaneousLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_Alimony;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_Alimony { get { return _standardQM_Status_Alimony; } set { _standardQM_Status_Alimony = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_Assets;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_Assets { get { return _standardQM_Status_Assets; } set { _standardQM_Status_Assets = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_BalloonPayment;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_BalloonPayment { get { return _standardQM_Status_BalloonPayment; } set { _standardQM_Status_BalloonPayment = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_ChildSupport;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_ChildSupport { get { return _standardQM_Status_ChildSupport; } set { _standardQM_Status_ChildSupport = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_CoveredLoan;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_CoveredLoan { get { return _standardQM_Status_CoveredLoan; } set { _standardQM_Status_CoveredLoan = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_CreditHistory;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_CreditHistory { get { return _standardQM_Status_CreditHistory; } set { _standardQM_Status_CreditHistory = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_DebtObligations;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_DebtObligations { get { return _standardQM_Status_DebtObligations; } set { _standardQM_Status_DebtObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_DTI;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_DTI { get { return _standardQM_Status_DTI; } set { _standardQM_Status_DTI = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_Employment;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_Employment { get { return _standardQM_Status_Employment; } set { _standardQM_Status_Employment = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_Income;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_Income { get { return _standardQM_Status_Income; } set { _standardQM_Status_Income = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_InterestOnly;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_InterestOnly { get { return _standardQM_Status_InterestOnly; } set { _standardQM_Status_InterestOnly = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_LoanTerm;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_LoanTerm { get { return _standardQM_Status_LoanTerm; } set { _standardQM_Status_LoanTerm = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_MtgRelatedObligations;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_MtgRelatedObligations { get { return _standardQM_Status_MtgRelatedObligations; } set { _standardQM_Status_MtgRelatedObligations = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_NegativeAmortization;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_NegativeAmortization { get { return _standardQM_Status_NegativeAmortization; } set { _standardQM_Status_NegativeAmortization = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_Overall;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_Overall { get { return _standardQM_Status_Overall; } set { _standardQM_Status_Overall = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_PointsFeesLimit;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_PointsFeesLimit { get { return _standardQM_Status_PointsFeesLimit; } set { _standardQM_Status_PointsFeesLimit = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_PrepaymentPenalty;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_PrepaymentPenalty { get { return _standardQM_Status_PrepaymentPenalty; } set { _standardQM_Status_PrepaymentPenalty = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_ResidualIncome;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_ResidualIncome { get { return _standardQM_Status_ResidualIncome; } set { _standardQM_Status_ResidualIncome = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_SafeHarborEligibility;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_SafeHarborEligibility { get { return _standardQM_Status_SafeHarborEligibility; } set { _standardQM_Status_SafeHarborEligibility = value; } }
+        private StringEnumValue<ATRQMStatus> _standardQM_Status_SimultaneousLoan;
+        public StringEnumValue<ATRQMStatus> StandardQM_Status_SimultaneousLoan { get { return _standardQM_Status_SimultaneousLoan; } set { _standardQM_Status_SimultaneousLoan = value; } }
         private DirtyValue<decimal?> _startingAdjustedRateMaxBonaFideDiscountPoint;
         public decimal? StartingAdjustedRateMaxBonaFideDiscountPoint { get { return _startingAdjustedRateMaxBonaFideDiscountPoint; } set { _startingAdjustedRateMaxBonaFideDiscountPoint = value; } }
-        private DirtyValue<string> _status_CreditHistory;
-        public string Status_CreditHistory { get { return _status_CreditHistory; } set { _status_CreditHistory = value; } }
-        private DirtyValue<string> _status_SimultaneousLoan;
-        public string Status_SimultaneousLoan { get { return _status_SimultaneousLoan; } set { _status_SimultaneousLoan = value; } }
-        private DirtyValue<string> _thresholdExceedsQM;
-        public string ThresholdExceedsQM { get { return _thresholdExceedsQM; } set { _thresholdExceedsQM = value; } }
+        private StringEnumValue<ATRQMStatus> _status_CreditHistory;
+        public StringEnumValue<ATRQMStatus> Status_CreditHistory { get { return _status_CreditHistory; } set { _status_CreditHistory = value; } }
+        private StringEnumValue<ATRQMStatus> _status_SimultaneousLoan;
+        public StringEnumValue<ATRQMStatus> Status_SimultaneousLoan { get { return _status_SimultaneousLoan; } set { _status_SimultaneousLoan = value; } }
+        private StringEnumValue<DoesOrDoesNot2> _thresholdExceedsQM;
+        public StringEnumValue<DoesOrDoesNot2> ThresholdExceedsQM { get { return _thresholdExceedsQM; } set { _thresholdExceedsQM = value; } }
         private DirtyValue<decimal?> _titleServicesLenderTitleinsuranceFee;
         public decimal? TitleServicesLenderTitleinsuranceFee { get { return _titleServicesLenderTitleinsuranceFee; } set { _titleServicesLenderTitleinsuranceFee = value; } }
         private DirtyValue<decimal?> _totalCoMortgagorIncome;

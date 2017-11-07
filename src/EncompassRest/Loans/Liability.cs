@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -78,8 +79,8 @@ namespace EncompassRest.Loans
         public int? Lates25Month90Day { get { return _lates25Month90Day; } set { _lates25Month90Day = value; } }
         private DirtyValue<int?> _liabilityIndex;
         public int? LiabilityIndex { get { return _liabilityIndex; } set { _liabilityIndex = value; } }
-        private DirtyValue<string> _liabilityType;
-        public string LiabilityType { get { return _liabilityType; } set { _liabilityType = value; } }
+        private StringEnumValue<LiabilityType> _liabilityType;
+        public StringEnumValue<LiabilityType> LiabilityType { get { return _liabilityType; } set { _liabilityType = value; } }
         private DirtyValue<decimal?> _monthlyPaymentAmount;
         public decimal? MonthlyPaymentAmount { get { return _monthlyPaymentAmount; } set { _monthlyPaymentAmount = value; } }
         private DirtyValue<int?> _monthsToExclude;
@@ -88,8 +89,8 @@ namespace EncompassRest.Loans
         public string NameInAccount { get { return _nameInAccount; } set { _nameInAccount = value; } }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        private DirtyValue<string> _owner;
-        public string Owner { get { return _owner; } set { _owner = value; } }
+        private StringEnumValue<Owner> _owner;
+        public StringEnumValue<Owner> Owner { get { return _owner; } set { _owner = value; } }
         private DirtyValue<bool?> _payoffIncludedIndicator;
         public bool? PayoffIncludedIndicator { get { return _payoffIncludedIndicator; } set { _payoffIncludedIndicator = value; } }
         private DirtyValue<bool?> _payoffStatusIndicator;
@@ -116,8 +117,8 @@ namespace EncompassRest.Loans
         public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
         private DirtyValue<decimal?> _toBePaidOffAmount;
         public decimal? ToBePaidOffAmount { get { return _toBePaidOffAmount; } set { _toBePaidOffAmount = value; } }
-        private DirtyValue<string> _uCDPayoffType;
-        public string UCDPayoffType { get { return _uCDPayoffType; } set { _uCDPayoffType = value; } }
+        private StringEnumValue<UCDPayoffType> _uCDPayoffType;
+        public StringEnumValue<UCDPayoffType> UCDPayoffType { get { return _uCDPayoffType; } set { _uCDPayoffType = value; } }
         private DirtyValue<decimal?> _unpaidBalanceAmount;
         public decimal? UnpaidBalanceAmount { get { return _unpaidBalanceAmount; } set { _unpaidBalanceAmount = value; } }
         private DirtyValue<int?> _volIndex;

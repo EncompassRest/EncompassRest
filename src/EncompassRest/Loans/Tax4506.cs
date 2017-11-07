@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -44,14 +45,14 @@ namespace EncompassRest.Loans
         public bool? NotifiedIrsIdentityTheftIndicator { get { return _notifiedIrsIdentityTheftIndicator; } set { _notifiedIrsIdentityTheftIndicator = value; } }
         private DirtyValue<int?> _numberOfPeriods;
         public int? NumberOfPeriods { get { return _numberOfPeriods; } set { _numberOfPeriods = value; } }
-        private DirtyValue<string> _person;
-        public string Person { get { return _person; } set { _person = value; } }
+        private StringEnumValue<Person> _person;
+        public StringEnumValue<Person> Person { get { return _person; } set { _person = value; } }
         private DirtyValue<bool?> _recordOfAccount;
         public bool? RecordOfAccount { get { return _recordOfAccount; } set { _recordOfAccount = value; } }
         private DirtyValue<string> _requestorPhoneNumber;
         public string RequestorPhoneNumber { get { return _requestorPhoneNumber; } set { _requestorPhoneNumber = value; } }
-        private DirtyValue<string> _requestorTitle;
-        public string RequestorTitle { get { return _requestorTitle; } set { _requestorTitle = value; } }
+        private StringEnumValue<RequestorTitle> _requestorTitle;
+        public StringEnumValue<RequestorTitle> RequestorTitle { get { return _requestorTitle; } set { _requestorTitle = value; } }
         private DirtyValue<DateTime?> _requestYear1;
         public DateTime? RequestYear1 { get { return _requestYear1; } set { _requestYear1 = value; } }
         private DirtyValue<DateTime?> _requestYear2;

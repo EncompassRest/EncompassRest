@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -12,10 +13,10 @@ namespace EncompassRest.Loans
         public decimal? AnnualFeeNeededAmount { get { return _annualFeeNeededAmount; } set { _annualFeeNeededAmount = value; } }
         private DirtyValue<bool?> _applyLifeCapLowIndicator;
         public bool? ApplyLifeCapLowIndicator { get { return _applyLifeCapLowIndicator; } set { _applyLifeCapLowIndicator = value; } }
-        private DirtyValue<string> _armDisclosureType;
-        public string ArmDisclosureType { get { return _armDisclosureType; } set { _armDisclosureType = value; } }
-        private DirtyValue<string> _armIndexType;
-        public string ArmIndexType { get { return _armIndexType; } set { _armIndexType = value; } }
+        private StringEnumValue<IndexMargin> _armDisclosureType;
+        public StringEnumValue<IndexMargin> ArmDisclosureType { get { return _armDisclosureType; } set { _armDisclosureType = value; } }
+        private StringEnumValue<ArmIndexType> _armIndexType;
+        public StringEnumValue<ArmIndexType> ArmIndexType { get { return _armIndexType; } set { _armIndexType = value; } }
         private DirtyValue<bool?> _balloonIndicator;
         public bool? BalloonIndicator { get { return _balloonIndicator; } set { _balloonIndicator = value; } }
         private DirtyValue<int?> _balloonLoanMaturityTermMonthsCount;
@@ -30,8 +31,8 @@ namespace EncompassRest.Loans
         public IList<Buydown> Buydowns { get { return _buydowns ?? (_buydowns = new DirtyList<Buydown>()); } set { _buydowns = new DirtyList<Buydown>(value); } }
         private DirtyValue<bool?> _convertibleIndicator;
         public bool? ConvertibleIndicator { get { return _convertibleIndicator; } set { _convertibleIndicator = value; } }
-        private DirtyValue<string> _discounted;
-        public string Discounted { get { return _discounted; } set { _discounted = value; } }
+        private StringEnumValue<IsOrIsNot> _discounted;
+        public StringEnumValue<IsOrIsNot> Discounted { get { return _discounted; } set { _discounted = value; } }
         private DirtyValue<decimal?> _discountedRate;
         public decimal? DiscountedRate { get { return _discountedRate; } set { _discountedRate = value; } }
         private DirtyValue<int?> _drawPeriodMonthsCount;
@@ -40,24 +41,24 @@ namespace EncompassRest.Loans
         public bool? EscrowWaiverIndicator { get { return _escrowWaiverIndicator; } set { _escrowWaiverIndicator = value; } }
         private DirtyValue<bool?> _excludeLoanFromNMLSReportIndicator;
         public bool? ExcludeLoanFromNMLSReportIndicator { get { return _excludeLoanFromNMLSReportIndicator; } set { _excludeLoanFromNMLSReportIndicator = value; } }
-        private DirtyValue<string> _floorBasis;
-        public string FloorBasis { get { return _floorBasis; } set { _floorBasis = value; } }
+        private StringEnumValue<FloorBasis> _floorBasis;
+        public StringEnumValue<FloorBasis> FloorBasis { get { return _floorBasis; } set { _floorBasis = value; } }
         private DirtyValue<decimal?> _floorPercent;
         public decimal? FloorPercent { get { return _floorPercent; } set { _floorPercent = value; } }
-        private DirtyValue<string> _floorVerbiage;
-        public string FloorVerbiage { get { return _floorVerbiage; } set { _floorVerbiage = value; } }
+        private StringEnumValue<FloorVerbiage> _floorVerbiage;
+        public StringEnumValue<FloorVerbiage> FloorVerbiage { get { return _floorVerbiage; } set { _floorVerbiage = value; } }
         private DirtyValue<string> _fnmProductPlanIdentifier;
         public string FnmProductPlanIdentifier { get { return _fnmProductPlanIdentifier; } set { _fnmProductPlanIdentifier = value; } }
-        private DirtyValue<string> _freddieMacArmIndexType;
-        public string FreddieMacArmIndexType { get { return _freddieMacArmIndexType; } set { _freddieMacArmIndexType = value; } }
-        private DirtyValue<string> _freOfferingIdentifier;
-        public string FreOfferingIdentifier { get { return _freOfferingIdentifier; } set { _freOfferingIdentifier = value; } }
-        private DirtyValue<string> _fullPrepaymentPenaltyOptionType;
-        public string FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
-        private DirtyValue<string> _gseProjectClassificationType;
-        public string GseProjectClassificationType { get { return _gseProjectClassificationType; } set { _gseProjectClassificationType = value; } }
-        private DirtyValue<string> _gsePropertyType;
-        public string GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
+        private StringEnumValue<FreddieMacArmIndexType> _freddieMacArmIndexType;
+        public StringEnumValue<FreddieMacArmIndexType> FreddieMacArmIndexType { get { return _freddieMacArmIndexType; } set { _freddieMacArmIndexType = value; } }
+        private StringEnumValue<FreOfferingIdentifier> _freOfferingIdentifier;
+        public StringEnumValue<FreOfferingIdentifier> FreOfferingIdentifier { get { return _freOfferingIdentifier; } set { _freOfferingIdentifier = value; } }
+        private StringEnumValue<FullPrepaymentPenaltyOptionType> _fullPrepaymentPenaltyOptionType;
+        public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get { return _fullPrepaymentPenaltyOptionType; } set { _fullPrepaymentPenaltyOptionType = value; } }
+        private StringEnumValue<ProjectType> _gseProjectClassificationType;
+        public StringEnumValue<ProjectType> GseProjectClassificationType { get { return _gseProjectClassificationType; } set { _gseProjectClassificationType = value; } }
+        private StringEnumValue<PropertyType> _gsePropertyType;
+        public StringEnumValue<PropertyType> GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
         private DirtyValue<int?> _hardPrepaymentPenaltyMonths;
         public int? HardPrepaymentPenaltyMonths { get { return _hardPrepaymentPenaltyMonths; } set { _hardPrepaymentPenaltyMonths = value; } }
         private DirtyValue<string> _helocPeriodTemplateName;
@@ -68,8 +69,8 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _indexCurrentValuePercent;
         public decimal? IndexCurrentValuePercent { get { return _indexCurrentValuePercent; } set { _indexCurrentValuePercent = value; } }
-        private DirtyValue<string> _indexLookbackPeriod;
-        public string IndexLookbackPeriod { get { return _indexLookbackPeriod; } set { _indexLookbackPeriod = value; } }
+        private StringEnumValue<IndexLookbackPeriod> _indexLookbackPeriod;
+        public StringEnumValue<IndexLookbackPeriod> IndexLookbackPeriod { get { return _indexLookbackPeriod; } set { _indexLookbackPeriod = value; } }
         private DirtyValue<decimal?> _indexMarginPercent;
         public decimal? IndexMarginPercent { get { return _indexMarginPercent; } set { _indexMarginPercent = value; } }
         private DirtyValue<decimal?> _initialAdvanceAmount;
@@ -78,12 +79,12 @@ namespace EncompassRest.Loans
         public decimal? InitialApplicationAmount { get { return _initialApplicationAmount; } set { _initialApplicationAmount = value; } }
         private DirtyValue<bool?> _inquiryOrPreQualificationIndicator;
         public bool? InquiryOrPreQualificationIndicator { get { return _inquiryOrPreQualificationIndicator; } set { _inquiryOrPreQualificationIndicator = value; } }
-        private DirtyValue<string> _lienPriorityType;
-        public string LienPriorityType { get { return _lienPriorityType; } set { _lienPriorityType = value; } }
-        private DirtyValue<string> _loanDocumentationType;
-        public string LoanDocumentationType { get { return _loanDocumentationType; } set { _loanDocumentationType = value; } }
-        private DirtyValue<string> _loanRepaymentType;
-        public string LoanRepaymentType { get { return _loanRepaymentType; } set { _loanRepaymentType = value; } }
+        private StringEnumValue<LienType> _lienPriorityType;
+        public StringEnumValue<LienType> LienPriorityType { get { return _lienPriorityType; } set { _lienPriorityType = value; } }
+        private StringEnumValue<LoanDocumentationType> _loanDocumentationType;
+        public StringEnumValue<LoanDocumentationType> LoanDocumentationType { get { return _loanDocumentationType; } set { _loanDocumentationType = value; } }
+        private StringEnumValue<LoanRepaymentType> _loanRepaymentType;
+        public StringEnumValue<LoanRepaymentType> LoanRepaymentType { get { return _loanRepaymentType; } set { _loanRepaymentType = value; } }
         private DirtyValue<DateTime?> _loanScheduledClosingDate;
         public DateTime? LoanScheduledClosingDate { get { return _loanScheduledClosingDate; } set { _loanScheduledClosingDate = value; } }
         private DirtyValue<decimal?> _maximumMonthlyPayment;
@@ -116,22 +117,22 @@ namespace EncompassRest.Loans
         public decimal? NegativeAmortizationLimitPercent { get { return _negativeAmortizationLimitPercent; } set { _negativeAmortizationLimitPercent = value; } }
         private DirtyValue<decimal?> _netInitialAndFinal;
         public decimal? NetInitialAndFinal { get { return _netInitialAndFinal; } set { _netInitialAndFinal = value; } }
-        private DirtyValue<string> _nmlsDocumentationType;
-        public string NmlsDocumentationType { get { return _nmlsDocumentationType; } set { _nmlsDocumentationType = value; } }
-        private DirtyValue<string> _nmlsFirstMortgageType;
-        public string NmlsFirstMortgageType { get { return _nmlsFirstMortgageType; } set { _nmlsFirstMortgageType = value; } }
-        private DirtyValue<string> _nmlsLoanType;
-        public string NmlsLoanType { get { return _nmlsLoanType; } set { _nmlsLoanType = value; } }
+        private StringEnumValue<NmlsDocumentationType> _nmlsDocumentationType;
+        public StringEnumValue<NmlsDocumentationType> NmlsDocumentationType { get { return _nmlsDocumentationType; } set { _nmlsDocumentationType = value; } }
+        private StringEnumValue<NmlsFirstMortgageType> _nmlsFirstMortgageType;
+        public StringEnumValue<NmlsFirstMortgageType> NmlsFirstMortgageType { get { return _nmlsFirstMortgageType; } set { _nmlsFirstMortgageType = value; } }
+        private StringEnumValue<NmlsLoanType> _nmlsLoanType;
+        public StringEnumValue<NmlsLoanType> NmlsLoanType { get { return _nmlsLoanType; } set { _nmlsLoanType = value; } }
         private DirtyValue<bool?> _nmlsOptionARMIndicator;
         public bool? NmlsOptionARMIndicator { get { return _nmlsOptionARMIndicator; } set { _nmlsOptionARMIndicator = value; } }
         private DirtyValue<bool?> _nmlsPiggyBackOrFundedHELOCIndicator;
         public bool? NmlsPiggyBackOrFundedHELOCIndicator { get { return _nmlsPiggyBackOrFundedHELOCIndicator; } set { _nmlsPiggyBackOrFundedHELOCIndicator = value; } }
-        private DirtyValue<string> _nmlsProductionSoldToType;
-        public string NmlsProductionSoldToType { get { return _nmlsProductionSoldToType; } set { _nmlsProductionSoldToType = value; } }
-        private DirtyValue<string> _nmlsRefinancePurposeType;
-        public string NmlsRefinancePurposeType { get { return _nmlsRefinancePurposeType; } set { _nmlsRefinancePurposeType = value; } }
-        private DirtyValue<string> _nmlsReverseMortgageType;
-        public string NmlsReverseMortgageType { get { return _nmlsReverseMortgageType; } set { _nmlsReverseMortgageType = value; } }
+        private StringEnumValue<NmlsProductionSoldToType> _nmlsProductionSoldToType;
+        public StringEnumValue<NmlsProductionSoldToType> NmlsProductionSoldToType { get { return _nmlsProductionSoldToType; } set { _nmlsProductionSoldToType = value; } }
+        private StringEnumValue<NmlsRefinancePurposeType> _nmlsRefinancePurposeType;
+        public StringEnumValue<NmlsRefinancePurposeType> NmlsRefinancePurposeType { get { return _nmlsRefinancePurposeType; } set { _nmlsRefinancePurposeType = value; } }
+        private StringEnumValue<NmlsReverseMortgageType> _nmlsReverseMortgageType;
+        public StringEnumValue<NmlsReverseMortgageType> NmlsReverseMortgageType { get { return _nmlsReverseMortgageType; } set { _nmlsReverseMortgageType = value; } }
         private DirtyValue<bool?> _oralRequestForExtensionOfCreditIndicator;
         public bool? OralRequestForExtensionOfCreditIndicator { get { return _oralRequestForExtensionOfCreditIndicator; } set { _oralRequestForExtensionOfCreditIndicator = value; } }
         private DirtyValue<decimal?> _overLimitCharge;
@@ -144,20 +145,20 @@ namespace EncompassRest.Loans
         public int? PaymentAdjustmentDurationMonthsCount { get { return _paymentAdjustmentDurationMonthsCount; } set { _paymentAdjustmentDurationMonthsCount = value; } }
         private DirtyValue<decimal?> _paymentAdjustmentPeriodicCapPercent;
         public decimal? PaymentAdjustmentPeriodicCapPercent { get { return _paymentAdjustmentPeriodicCapPercent; } set { _paymentAdjustmentPeriodicCapPercent = value; } }
-        private DirtyValue<string> _paymentFrequencyType;
-        public string PaymentFrequencyType { get { return _paymentFrequencyType; } set { _paymentFrequencyType = value; } }
+        private StringEnumValue<PaymentFrequencyType> _paymentFrequencyType;
+        public StringEnumValue<PaymentFrequencyType> PaymentFrequencyType { get { return _paymentFrequencyType; } set { _paymentFrequencyType = value; } }
         private DirtyList<PrepaymentPenalty> _prepaymentPenalties;
         public IList<PrepaymentPenalty> PrepaymentPenalties { get { return _prepaymentPenalties ?? (_prepaymentPenalties = new DirtyList<PrepaymentPenalty>()); } set { _prepaymentPenalties = new DirtyList<PrepaymentPenalty>(value); } }
-        private DirtyValue<string> _prepaymentPenaltyBasedOn;
-        public string PrepaymentPenaltyBasedOn { get { return _prepaymentPenaltyBasedOn; } set { _prepaymentPenaltyBasedOn = value; } }
+        private StringEnumValue<PrepaymentPenaltyBasedOn> _prepaymentPenaltyBasedOn;
+        public StringEnumValue<PrepaymentPenaltyBasedOn> PrepaymentPenaltyBasedOn { get { return _prepaymentPenaltyBasedOn; } set { _prepaymentPenaltyBasedOn = value; } }
         private DirtyValue<bool?> _prepaymentPenaltyIndicator;
         public bool? PrepaymentPenaltyIndicator { get { return _prepaymentPenaltyIndicator; } set { _prepaymentPenaltyIndicator = value; } }
         private DirtyValue<decimal?> _prepaymentPenaltyPercent;
         public decimal? PrepaymentPenaltyPercent { get { return _prepaymentPenaltyPercent; } set { _prepaymentPenaltyPercent = value; } }
         private DirtyValue<int?> _prepaymentPenaltyTermMonthsCount;
         public int? PrepaymentPenaltyTermMonthsCount { get { return _prepaymentPenaltyTermMonthsCount; } set { _prepaymentPenaltyTermMonthsCount = value; } }
-        private DirtyValue<string> _prepaymentPenaltyVerbiage;
-        public string PrepaymentPenaltyVerbiage { get { return _prepaymentPenaltyVerbiage; } set { _prepaymentPenaltyVerbiage = value; } }
+        private StringEnumValue<PrepaymentPenaltyVerbiage> _prepaymentPenaltyVerbiage;
+        public StringEnumValue<PrepaymentPenaltyVerbiage> PrepaymentPenaltyVerbiage { get { return _prepaymentPenaltyVerbiage; } set { _prepaymentPenaltyVerbiage = value; } }
         private DirtyValue<string> _productName;
         public string ProductName { get { return _productName; } set { _productName = value; } }
         private DirtyValue<decimal?> _qualifyingRatePercent;
@@ -186,8 +187,8 @@ namespace EncompassRest.Loans
         public decimal? ReturnedCheckMinCharge { get { return _returnedCheckMinCharge; } set { _returnedCheckMinCharge = value; } }
         private DirtyValue<decimal?> _roundPercent;
         public decimal? RoundPercent { get { return _roundPercent; } set { _roundPercent = value; } }
-        private DirtyValue<string> _roundType;
-        public string RoundType { get { return _roundType; } set { _roundType = value; } }
+        private StringEnumValue<RoundType> _roundType;
+        public StringEnumValue<RoundType> RoundType { get { return _roundType; } set { _roundType = value; } }
         private DirtyValue<DateTime?> _scheduledFirstPaymentAdjustmentDate;
         public DateTime? ScheduledFirstPaymentAdjustmentDate { get { return _scheduledFirstPaymentAdjustmentDate; } set { _scheduledFirstPaymentAdjustmentDate = value; } }
         private DirtyValue<DateTime?> _scheduledFirstPaymentDate;
@@ -206,8 +207,8 @@ namespace EncompassRest.Loans
         public decimal? ThirdPartyFeeToAmount { get { return _thirdPartyFeeToAmount; } set { _thirdPartyFeeToAmount = value; } }
         private DirtyValue<decimal?> _timelyPaymentRateReductionPercent;
         public decimal? TimelyPaymentRateReductionPercent { get { return _timelyPaymentRateReductionPercent; } set { _timelyPaymentRateReductionPercent = value; } }
-        private DirtyValue<string> _timelyPaymentRewards;
-        public string TimelyPaymentRewards { get { return _timelyPaymentRewards; } set { _timelyPaymentRewards = value; } }
+        private StringEnumValue<TimelyPaymentRewards> _timelyPaymentRewards;
+        public StringEnumValue<TimelyPaymentRewards> TimelyPaymentRewards { get { return _timelyPaymentRewards; } set { _timelyPaymentRewards = value; } }
         private DirtyValue<decimal?> _totalSubsidyAmount;
         public decimal? TotalSubsidyAmount { get { return _totalSubsidyAmount; } set { _totalSubsidyAmount = value; } }
         private DirtyValue<decimal?> _transactionFees;

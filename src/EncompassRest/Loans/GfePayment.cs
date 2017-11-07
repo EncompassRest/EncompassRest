@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -16,8 +17,8 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _indexRate;
         public decimal? IndexRate { get { return _indexRate; } set { _indexRate = value; } }
-        private DirtyValue<string> _isBalanceReduced;
-        public string IsBalanceReduced { get { return _isBalanceReduced; } set { _isBalanceReduced = value; } }
+        private StringEnumValue<YesOrNo> _isBalanceReduced;
+        public StringEnumValue<YesOrNo> IsBalanceReduced { get { return _isBalanceReduced; } set { _isBalanceReduced = value; } }
         private DirtyValue<string> _loanTypeExplanation;
         public string LoanTypeExplanation { get { return _loanTypeExplanation; } set { _loanTypeExplanation = value; } }
         private DirtyValue<decimal?> _marginRate;
@@ -46,8 +47,8 @@ namespace EncompassRest.Loans
         public decimal? RateInMonth2 { get { return _rateInMonth2; } set { _rateInMonth2 = value; } }
         private DirtyValue<decimal?> _reducedLoanBalance;
         public decimal? ReducedLoanBalance { get { return _reducedLoanBalance; } set { _reducedLoanBalance = value; } }
-        private DirtyValue<string> _reducedStatus;
-        public string ReducedStatus { get { return _reducedStatus; } set { _reducedStatus = value; } }
+        private StringEnumValue<ReducedStatus> _reducedStatus;
+        public StringEnumValue<ReducedStatus> ReducedStatus { get { return _reducedStatus; } set { _reducedStatus = value; } }
         private ExtensionDataObject _extensionDataInternal;
         [JsonExtensionData]
         private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }

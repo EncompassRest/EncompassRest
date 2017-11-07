@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -18,8 +19,8 @@ namespace EncompassRest.Loans
         public decimal? FieldValue { get { return _fieldValue; } set { _fieldValue = value; } }
         private DirtyValue<decimal?> _firstYearAmount;
         public decimal? FirstYearAmount { get { return _firstYearAmount; } set { _firstYearAmount = value; } }
-        private DirtyValue<string> _formType;
-        public string FormType { get { return _formType; } set { _formType = value; } }
+        private StringEnumValue<FormType> _formType;
+        public StringEnumValue<FormType> FormType { get { return _formType; } set { _formType = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _secondYearAmount;

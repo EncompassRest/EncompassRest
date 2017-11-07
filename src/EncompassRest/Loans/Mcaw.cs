@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
     public sealed partial class Mcaw : IDirty
     {
-        private DirtyValue<string> _adequacyOfAvailableAssetsType;
-        public string AdequacyOfAvailableAssetsType { get { return _adequacyOfAvailableAssetsType; } set { _adequacyOfAvailableAssetsType = value; } }
-        private DirtyValue<string> _adequacyOfEffectiveIncomeType;
-        public string AdequacyOfEffectiveIncomeType { get { return _adequacyOfEffectiveIncomeType; } set { _adequacyOfEffectiveIncomeType = value; } }
+        private StringEnumValue<AcceptOrReject> _adequacyOfAvailableAssetsType;
+        public StringEnumValue<AcceptOrReject> AdequacyOfAvailableAssetsType { get { return _adequacyOfAvailableAssetsType; } set { _adequacyOfAvailableAssetsType = value; } }
+        private StringEnumValue<AcceptOrReject> _adequacyOfEffectiveIncomeType;
+        public StringEnumValue<AcceptOrReject> AdequacyOfEffectiveIncomeType { get { return _adequacyOfEffectiveIncomeType; } set { _adequacyOfEffectiveIncomeType = value; } }
         private DirtyValue<decimal?> _adjustedPurchasePrice;
         public decimal? AdjustedPurchasePrice { get { return _adjustedPurchasePrice; } set { _adjustedPurchasePrice = value; } }
         private DirtyValue<decimal?> _appraisedValue1;
@@ -24,20 +25,20 @@ namespace EncompassRest.Loans
         public decimal? CalculatedMortgageAmount { get { return _calculatedMortgageAmount; } set { _calculatedMortgageAmount = value; } }
         private DirtyValue<decimal?> _cashReserves;
         public decimal? CashReserves { get { return _cashReserves; } set { _cashReserves = value; } }
-        private DirtyValue<string> _constructionType;
-        public string ConstructionType { get { return _constructionType; } set { _constructionType = value; } }
+        private StringEnumValue<ConstructionType> _constructionType;
+        public StringEnumValue<ConstructionType> ConstructionType { get { return _constructionType; } set { _constructionType = value; } }
         private DirtyValue<decimal?> _contractSalesPrice;
         public decimal? ContractSalesPrice { get { return _contractSalesPrice; } set { _contractSalesPrice = value; } }
-        private DirtyValue<string> _creditCharacteristicsType;
-        public string CreditCharacteristicsType { get { return _creditCharacteristicsType; } set { _creditCharacteristicsType = value; } }
+        private StringEnumValue<AcceptOrReject> _creditCharacteristicsType;
+        public StringEnumValue<AcceptOrReject> CreditCharacteristicsType { get { return _creditCharacteristicsType; } set { _creditCharacteristicsType = value; } }
         private DirtyValue<decimal?> _equityToExSpouse;
         public decimal? EquityToExSpouse { get { return _equityToExSpouse; } set { _equityToExSpouse = value; } }
         private DirtyValue<decimal?> _fhaMaxLoanAmount;
         public decimal? FhaMaxLoanAmount { get { return _fhaMaxLoanAmount; } set { _fhaMaxLoanAmount = value; } }
         private DirtyValue<string> _fhaUnderwriterChumsId;
         public string FhaUnderwriterChumsId { get { return _fhaUnderwriterChumsId; } set { _fhaUnderwriterChumsId = value; } }
-        private DirtyValue<string> _giftFundsSource;
-        public string GiftFundsSource { get { return _giftFundsSource; } set { _giftFundsSource = value; } }
+        private StringEnumValue<GiftFundsSource> _giftFundsSource;
+        public StringEnumValue<GiftFundsSource> GiftFundsSource { get { return _giftFundsSource; } set { _giftFundsSource = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<decimal?> _lesserSalesPrice;
@@ -56,14 +57,14 @@ namespace EncompassRest.Loans
         public decimal? MortgageBasisPurchase { get { return _mortgageBasisPurchase; } set { _mortgageBasisPurchase = value; } }
         private DirtyValue<decimal?> _mortgageBasisRefinance;
         public decimal? MortgageBasisRefinance { get { return _mortgageBasisRefinance; } set { _mortgageBasisRefinance = value; } }
-        private DirtyValue<string> _paidType1;
-        public string PaidType1 { get { return _paidType1; } set { _paidType1 = value; } }
-        private DirtyValue<string> _paidType2;
-        public string PaidType2 { get { return _paidType2; } set { _paidType2 = value; } }
+        private StringEnumValue<PaidType> _paidType1;
+        public StringEnumValue<PaidType> PaidType1 { get { return _paidType1; } set { _paidType1 = value; } }
+        private StringEnumValue<PaidType> _paidType2;
+        public StringEnumValue<PaidType> PaidType2 { get { return _paidType2; } set { _paidType2 = value; } }
         private DirtyValue<decimal?> _principalBalance;
         public decimal? PrincipalBalance { get { return _principalBalance; } set { _principalBalance = value; } }
-        private DirtyValue<string> _refinanceType;
-        public string RefinanceType { get { return _refinanceType; } set { _refinanceType = value; } }
+        private StringEnumValue<RefinanceType> _refinanceType;
+        public StringEnumValue<RefinanceType> RefinanceType { get { return _refinanceType; } set { _refinanceType = value; } }
         private DirtyValue<string> _remarks;
         public string Remarks { get { return _remarks; } set { _remarks = value; } }
         private DirtyValue<decimal?> _repairsAndImprovements;
@@ -86,8 +87,8 @@ namespace EncompassRest.Loans
         public string SecondMortgageSource { get { return _secondMortgageSource; } set { _secondMortgageSource = value; } }
         private DirtyValue<decimal?> _sixPercentOfLineA1;
         public decimal? SixPercentOfLineA1 { get { return _sixPercentOfLineA1; } set { _sixPercentOfLineA1 = value; } }
-        private DirtyValue<string> _stabilityOfEffectiveIncomeType;
-        public string StabilityOfEffectiveIncomeType { get { return _stabilityOfEffectiveIncomeType; } set { _stabilityOfEffectiveIncomeType = value; } }
+        private StringEnumValue<AcceptOrReject> _stabilityOfEffectiveIncomeType;
+        public StringEnumValue<AcceptOrReject> StabilityOfEffectiveIncomeType { get { return _stabilityOfEffectiveIncomeType; } set { _stabilityOfEffectiveIncomeType = value; } }
         private DirtyValue<decimal?> _statutoryInvestment;
         public decimal? StatutoryInvestment { get { return _statutoryInvestment; } set { _statutoryInvestment = value; } }
         private DirtyValue<decimal?> _toBePaidAmount;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -24,8 +25,8 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private DirtyValue<string> _recordOwnerType;
-        public string RecordOwnerType { get { return _recordOwnerType; } set { _recordOwnerType = value; } }
+        private StringEnumValue<RecordOwnerType> _recordOwnerType;
+        public StringEnumValue<RecordOwnerType> RecordOwnerType { get { return _recordOwnerType; } set { _recordOwnerType = value; } }
         private DirtyValue<string> _sourceofNonWageIncomeDescription;
         public string SourceofNonWageIncomeDescription { get { return _sourceofNonWageIncomeDescription; } set { _sourceofNonWageIncomeDescription = value; } }
         private DirtyValue<string> _sourceofWageIncomeEmployerName;

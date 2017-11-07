@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -12,8 +13,8 @@ namespace EncompassRest.Loans
         public decimal? Amount { get { return _amount; } set { _amount = value; } }
         private DirtyValue<bool?> _currentIndicator;
         public bool? CurrentIndicator { get { return _currentIndicator; } set { _currentIndicator = value; } }
-        private DirtyValue<string> _description;
-        public string Description { get { return _description; } set { _description = value; } }
+        private StringEnumValue<Description> _description;
+        public StringEnumValue<Description> Description { get { return _description; } set { _description = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _incomeType;

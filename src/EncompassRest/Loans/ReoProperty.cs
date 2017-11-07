@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -12,12 +13,12 @@ namespace EncompassRest.Loans
         public DateTime? AcquiredDate { get { return _acquiredDate; } set { _acquiredDate = value; } }
         private DirtyValue<string> _city;
         public string City { get { return _city; } set { _city = value; } }
-        private DirtyValue<string> _dispositionStatusType;
-        public string DispositionStatusType { get { return _dispositionStatusType; } set { _dispositionStatusType = value; } }
+        private StringEnumValue<DispositionStatusType> _dispositionStatusType;
+        public StringEnumValue<DispositionStatusType> DispositionStatusType { get { return _dispositionStatusType; } set { _dispositionStatusType = value; } }
         private DirtyValue<bool?> _entityDeleted;
         public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
-        private DirtyValue<string> _gsePropertyType;
-        public string GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
+        private StringEnumValue<GsePropertyType> _gsePropertyType;
+        public StringEnumValue<GsePropertyType> GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<bool?> _isEmpty;
@@ -42,8 +43,8 @@ namespace EncompassRest.Loans
         public bool? PrintAttachIndicator { get { return _printAttachIndicator; } set { _printAttachIndicator = value; } }
         private DirtyValue<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
-        private DirtyValue<string> _propertyUsageType;
-        public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
+        private StringEnumValue<PropertyUsageType> _propertyUsageType;
+        public StringEnumValue<PropertyUsageType> PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
         private DirtyValue<int?> _purchasePrice;
         public int? PurchasePrice { get { return _purchasePrice; } set { _purchasePrice = value; } }
         private DirtyValue<decimal?> _rentalIncomeGrossAmount;

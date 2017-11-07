@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -212,12 +213,12 @@ namespace EncompassRest.Loans
         public DateTime? RevisedCDReceivedDate { get { return _revisedCDReceivedDate; } set { _revisedCDReceivedDate = value; } }
         private DirtyValue<string> _sellerNames;
         public string SellerNames { get { return _sellerNames; } set { _sellerNames = value; } }
-        private DirtyValue<string> _signatureTypeFinalExecutedCopyofAlternateCD;
-        public string SignatureTypeFinalExecutedCopyofAlternateCD { get { return _signatureTypeFinalExecutedCopyofAlternateCD; } set { _signatureTypeFinalExecutedCopyofAlternateCD = value; } }
-        private DirtyValue<string> _signatureTypeFinalExecutedCopyofSellerCD;
-        public string SignatureTypeFinalExecutedCopyofSellerCD { get { return _signatureTypeFinalExecutedCopyofSellerCD; } set { _signatureTypeFinalExecutedCopyofSellerCD = value; } }
-        private DirtyValue<string> _signatureTypeFinalExecutedCopyofStandardCD;
-        public string SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
+        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofAlternateCD;
+        public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofAlternateCD { get { return _signatureTypeFinalExecutedCopyofAlternateCD; } set { _signatureTypeFinalExecutedCopyofAlternateCD = value; } }
+        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofSellerCD;
+        public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofSellerCD { get { return _signatureTypeFinalExecutedCopyofSellerCD; } set { _signatureTypeFinalExecutedCopyofSellerCD = value; } }
+        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofStandardCD;
+        public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofStandardCD { get { return _signatureTypeFinalExecutedCopyofStandardCD; } set { _signatureTypeFinalExecutedCopyofStandardCD = value; } }
         private DirtyValue<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get { return _totalCashToClose; } set { _totalCashToClose = value; } }
         private ExtensionDataObject _extensionDataInternal;

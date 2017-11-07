@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -136,8 +137,8 @@ namespace EncompassRest.Loans
         public decimal? CreditAmount { get { return _creditAmount; } set { _creditAmount = value; } }
         private DirtyValue<decimal?> _creditAmountForPrint;
         public decimal? CreditAmountForPrint { get { return _creditAmountForPrint; } set { _creditAmountForPrint = value; } }
-        private DirtyValue<string> _creditChargeType;
-        public string CreditChargeType { get { return _creditChargeType; } set { _creditChargeType = value; } }
+        private StringEnumValue<CreditChargeType> _creditChargeType;
+        public StringEnumValue<CreditChargeType> CreditChargeType { get { return _creditChargeType; } set { _creditChargeType = value; } }
         private DirtyValue<decimal?> _creditOrChange;
         public decimal? CreditOrChange { get { return _creditOrChange; } set { _creditOrChange = value; } }
         private DirtyValue<decimal?> _curedAdjustedOriginationCharges;
@@ -182,8 +183,8 @@ namespace EncompassRest.Loans
         public decimal? HudGuaranteeFee { get { return _hudGuaranteeFee; } set { _hudGuaranteeFee = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private DirtyValue<string> _includeOriginationPointsCreditType;
-        public string IncludeOriginationPointsCreditType { get { return _includeOriginationPointsCreditType; } set { _includeOriginationPointsCreditType = value; } }
+        private StringEnumValue<IncludeOriginationPointsCreditType> _includeOriginationPointsCreditType;
+        public StringEnumValue<IncludeOriginationPointsCreditType> IncludeOriginationPointsCreditType { get { return _includeOriginationPointsCreditType; } set { _includeOriginationPointsCreditType = value; } }
         private DirtyValue<decimal?> _initialLoanAmount;
         public decimal? InitialLoanAmount { get { return _initialLoanAmount; } set { _initialLoanAmount = value; } }
         private DirtyValue<decimal?> _initialMonthlyAmount;

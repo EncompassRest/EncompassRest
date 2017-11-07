@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -78,8 +79,8 @@ namespace EncompassRest.Loans
         public string ServiceProvided { get { return _serviceProvided; } set { _serviceProvided = value; } }
         private DirtyValue<string> _serviceProviderId;
         public string ServiceProviderId { get { return _serviceProviderId; } set { _serviceProviderId = value; } }
-        private DirtyValue<string> _serviceType;
-        public string ServiceType { get { return _serviceType; } set { _serviceType = value; } }
+        private StringEnumValue<ServiceType> _serviceType;
+        public StringEnumValue<ServiceType> ServiceType { get { return _serviceType; } set { _serviceType = value; } }
         private DirtyValue<bool?> _shopFor;
         public bool? ShopFor { get { return _shopFor; } set { _shopFor = value; } }
         private DirtyValue<string> _state;

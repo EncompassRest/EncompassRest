@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -16,8 +17,8 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private DirtyValue<decimal?> _wholePoc;
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
-        private DirtyValue<string> _wholePocPaidByType;
-        public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
+        private StringEnumValue<WholePocPaidByType> _wholePocPaidByType;
+        public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
         private ExtensionDataObject _extensionDataInternal;
         [JsonExtensionData]
         private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }

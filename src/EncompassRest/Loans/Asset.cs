@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -14,8 +15,8 @@ namespace EncompassRest.Loans
         public string AltId { get { return _altId; } set { _altId = value; } }
         private DirtyValue<int?> _assetIndex;
         public int? AssetIndex { get { return _assetIndex; } set { _assetIndex = value; } }
-        private DirtyValue<string> _assetType;
-        public string AssetType { get { return _assetType; } set { _assetType = value; } }
+        private StringEnumValue<AssetType> _assetType;
+        public StringEnumValue<AssetType> AssetType { get { return _assetType; } set { _assetType = value; } }
         private DirtyValue<string> _attention;
         public string Attention { get { return _attention; } set { _attention = value; } }
         private DirtyValue<string> _borrowerId;
@@ -60,8 +61,8 @@ namespace EncompassRest.Loans
         public string NameInAccount { get { return _nameInAccount; } set { _nameInAccount = value; } }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
-        private DirtyValue<string> _owner;
-        public string Owner { get { return _owner; } set { _owner = value; } }
+        private StringEnumValue<Owner> _owner;
+        public StringEnumValue<Owner> Owner { get { return _owner; } set { _owner = value; } }
         private DirtyValue<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get { return _printAttachmentIndicator; } set { _printAttachmentIndicator = value; } }
         private DirtyValue<bool?> _printUserNameIndicator;

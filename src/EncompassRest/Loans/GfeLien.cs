@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -12,8 +13,8 @@ namespace EncompassRest.Loans
         public decimal? AmountOwing { get { return _amountOwing; } set { _amountOwing = value; } }
         private DirtyValue<int?> _gfeLienIndex;
         public int? GfeLienIndex { get { return _gfeLienIndex; } set { _gfeLienIndex = value; } }
-        private DirtyValue<string> _gfeLienType;
-        public string GfeLienType { get { return _gfeLienType; } set { _gfeLienType = value; } }
+        private StringEnumValue<GfeLienType> _gfeLienType;
+        public StringEnumValue<GfeLienType> GfeLienType { get { return _gfeLienType; } set { _gfeLienType = value; } }
         private DirtyValue<string> _holderName;
         public string HolderName { get { return _holderName; } set { _holderName = value; } }
         private DirtyValue<string> _id;

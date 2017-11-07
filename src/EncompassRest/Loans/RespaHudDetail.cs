@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
     public sealed partial class RespaHudDetail : IDirty
     {
-        private DirtyValue<string> _creditDebt;
-        public string CreditDebt { get { return _creditDebt; } set { _creditDebt = value; } }
+        private StringEnumValue<CreditDebt> _creditDebt;
+        public StringEnumValue<CreditDebt> CreditDebt { get { return _creditDebt; } set { _creditDebt = value; } }
         private DirtyValue<string> _fWBC;
         public string FWBC { get { return _fWBC; } set { _fWBC = value; } }
         private DirtyValue<DateTime?> _hUD1LineItemFromDate;
