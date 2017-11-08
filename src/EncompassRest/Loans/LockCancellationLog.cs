@@ -39,11 +39,8 @@ namespace EncompassRest.Loans
         public string SystemId { get { return _systemId; } set { _systemId = value; } }
         private DirtyValue<string> _timeCancelled;
         public string TimeCancelled { get { return _timeCancelled; } set { _timeCancelled = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -67,7 +64,7 @@ namespace EncompassRest.Loans
                     || _requestGuid.Dirty
                     || _systemId.Dirty
                     || _timeCancelled.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -90,7 +87,7 @@ namespace EncompassRest.Loans
                 _requestGuid.Dirty = value;
                 _systemId.Dirty = value;
                 _timeCancelled.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

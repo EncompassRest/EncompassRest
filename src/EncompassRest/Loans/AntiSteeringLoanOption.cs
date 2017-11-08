@@ -113,11 +113,8 @@ namespace EncompassRest.Loans
         public string UserDefinedFee5Description { get { return _userDefinedFee5Description; } set { _userDefinedFee5Description = value; } }
         private DirtyValue<decimal?> _userDefinedFee5SellerPaidAmount;
         public decimal? UserDefinedFee5SellerPaidAmount { get { return _userDefinedFee5SellerPaidAmount; } set { _userDefinedFee5SellerPaidAmount = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -178,7 +175,7 @@ namespace EncompassRest.Loans
                     || _userDefinedFee5BorPaidAmount.Dirty
                     || _userDefinedFee5Description.Dirty
                     || _userDefinedFee5SellerPaidAmount.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -238,7 +235,7 @@ namespace EncompassRest.Loans
                 _userDefinedFee5BorPaidAmount.Dirty = value;
                 _userDefinedFee5Description.Dirty = value;
                 _userDefinedFee5SellerPaidAmount.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

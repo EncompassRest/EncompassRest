@@ -19,11 +19,8 @@ namespace EncompassRest.Loans
         public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
         private DirtyList<TrustAccountItem> _trustAccountItems;
         public IList<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems ?? (_trustAccountItems = new DirtyList<TrustAccountItem>()); } set { _trustAccountItems = new DirtyList<TrustAccountItem>(value); } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -37,7 +34,7 @@ namespace EncompassRest.Loans
                     || _total1.Dirty
                     || _total2.Dirty
                     || _trustAccountItems?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -50,7 +47,7 @@ namespace EncompassRest.Loans
                 _total1.Dirty = value;
                 _total2.Dirty = value;
                 if (_trustAccountItems != null) _trustAccountItems.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

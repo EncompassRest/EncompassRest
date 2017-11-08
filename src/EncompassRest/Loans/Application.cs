@@ -407,11 +407,8 @@ namespace EncompassRest.Loans
         public decimal? VaSummarySpouseIncomeAmount { get { return _vaSummarySpouseIncomeAmount; } set { _vaSummarySpouseIncomeAmount = value; } }
         private DirtyValue<decimal?> _vaSummaryTotalMonthlyGrossIncomeAmount;
         public decimal? VaSummaryTotalMonthlyGrossIncomeAmount { get { return _vaSummaryTotalMonthlyGrossIncomeAmount; } set { _vaSummaryTotalMonthlyGrossIncomeAmount = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -619,7 +616,7 @@ namespace EncompassRest.Loans
                     || _selfEmployedIncomes?.Dirty == true
                     || _tax4506s?.Dirty == true
                     || _tQLReports?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -826,7 +823,7 @@ namespace EncompassRest.Loans
                 if (_selfEmployedIncomes != null) _selfEmployedIncomes.Dirty = value;
                 if (_tax4506s != null) _tax4506s.Dirty = value;
                 if (_tQLReports != null) _tQLReports.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

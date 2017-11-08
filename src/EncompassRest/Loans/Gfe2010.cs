@@ -439,11 +439,8 @@ namespace EncompassRest.Loans
         public decimal? UnderwritingFees { get { return _underwritingFees; } set { _underwritingFees = value; } }
         private DirtyValue<bool?> _useLOCompTool;
         public bool? UseLOCompTool { get { return _useLOCompTool; } set { _useLOCompTool = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -667,7 +664,7 @@ namespace EncompassRest.Loans
                     || _useLOCompTool.Dirty
                     || _gfe2010Fees?.Dirty == true
                     || _gfe2010WholePocs?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -890,7 +887,7 @@ namespace EncompassRest.Loans
                 _useLOCompTool.Dirty = value;
                 if (_gfe2010Fees != null) _gfe2010Fees.Dirty = value;
                 if (_gfe2010WholePocs != null) _gfe2010WholePocs.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

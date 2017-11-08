@@ -73,11 +73,8 @@ namespace EncompassRest.Loans
         public string TaskGuid { get { return _taskGuid; } set { _taskGuid = value; } }
         private DirtyValue<string> _taskName;
         public string TaskName { get { return _taskName; } set { _taskName = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -118,7 +115,7 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _contacts?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -158,7 +155,7 @@ namespace EncompassRest.Loans
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_contacts != null) _contacts.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

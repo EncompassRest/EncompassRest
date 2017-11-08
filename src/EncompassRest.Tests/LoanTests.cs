@@ -18,6 +18,16 @@ namespace EncompassRest.Tests
             var loan = new Loan();
             var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
             Assert.AreEqual("{}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ExtensionData.Add("dog", true);
+            Assert.AreEqual(@"{""dog"":true}", loan.ToJson());
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
             var client = await GetTestClientAsync();
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);

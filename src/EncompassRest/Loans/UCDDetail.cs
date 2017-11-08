@@ -33,11 +33,8 @@ namespace EncompassRest.Loans
         public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
         private DirtyValue<string> _section;
         public string Section { get { return _section; } set { _section = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -58,7 +55,7 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _lineNumber.Dirty
                     || _section.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -78,7 +75,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
                 _section.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -85,11 +85,8 @@ namespace EncompassRest.Loans
         public string TitleTypeOfProperty { get { return _titleTypeOfProperty; } set { _titleTypeOfProperty = value; } }
         private DirtyValue<bool?> _titleWarrantyDeed;
         public bool? TitleWarrantyDeed { get { return _titleWarrantyDeed; } set { _titleWarrantyDeed = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -136,7 +133,7 @@ namespace EncompassRest.Loans
                     || _titleSurvey.Dirty
                     || _titleTypeOfProperty.Dirty
                     || _titleWarrantyDeed.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -182,7 +179,7 @@ namespace EncompassRest.Loans
                 _titleSurvey.Dirty = value;
                 _titleTypeOfProperty.Dirty = value;
                 _titleWarrantyDeed.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

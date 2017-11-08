@@ -171,6 +171,38 @@ namespace EncompassRest.Utilities
                 NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
             }
 
+            protected override JsonObjectContract CreateObjectContract(Type objectType)
+            {
+                var contract = base.CreateObjectContract(objectType);
+                var extensionDataProperty = contract.Properties.GetClosestMatchProperty("ExtensionData");
+                if (extensionDataProperty != null)
+                {
+                    extensionDataProperty.ShouldSerialize = o => false;
+                    extensionDataProperty.ShouldDeserialize = o => false;
+                    var extensionDataPropertyInfo = GetProperty(objectType, "ExtensionData");
+                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)extensionDataPropertyInfo.GetValue(o))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataSetter = (o, k, v) => ((DirtyDictionary<string, object>)extensionDataPropertyInfo.GetValue(o))[k] = v;
+                }
+                return contract;
+            }
+
+            private static PropertyInfo GetProperty(Type type, string propertyName)
+            {
+                var typeInfo = type.GetTypeInfo();
+                var property = typeInfo.GetDeclaredProperty(propertyName);
+                if (property == null)
+                {
+                    var baseType = typeInfo.BaseType;
+                    if (baseType != null)
+                    {
+                        return GetProperty(baseType, propertyName);
+                    }
+                }
+                return property;
+            }
+
+            protected virtual IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary;
+
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
             {
                 var property = base.CreateProperty(member, memberSerialization);
@@ -238,6 +270,8 @@ namespace EncompassRest.Utilities
 
         private sealed class PrivateContractResolver : CustomContractResolver
         {
+            protected override IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary?.GetDirtyItems();
+
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
                 var toAssignShouldSerializeMethod = true;
