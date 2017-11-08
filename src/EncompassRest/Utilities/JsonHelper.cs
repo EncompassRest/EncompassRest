@@ -201,6 +201,35 @@ namespace EncompassRest.Utilities
                 return property;
             }
 
+            protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
+            {
+                var valueProvider = base.CreateMemberValueProvider(member);
+                var propertyInfo = member as PropertyInfo;
+                if (propertyInfo != null)
+                {
+                    var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
+                    {
+                        valueProvider = new StringEnumValueProvider(valueProvider);
+                    }
+                }
+                return valueProvider;
+            }
+
+            private class StringEnumValueProvider : IValueProvider
+            {
+                private readonly IValueProvider _valueProvider;
+
+                public StringEnumValueProvider(IValueProvider valueProvider)
+                {
+                    _valueProvider = valueProvider;
+                }
+
+                public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
+
+                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value);
+            }
+
             protected virtual IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary;
 
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)

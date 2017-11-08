@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -34,6 +35,18 @@ namespace EncompassRest.Tests
             Assert.AreEqual(loanId, loan.EncompassId);
             var json = JsonConvert.SerializeObject(loan, serializerSettings);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
+        [TestMethod]
+        public void Loan_PublicDeserialization()
+        {
+            var loan = JsonConvert.DeserializeObject<Loan>(@"{""tltv"":85.00}");
+            Assert.AreEqual(85.00M, loan.Tltv.Value);
+            loan = JsonConvert.DeserializeObject<Loan>(@"{""dog"":true}");
+            Assert.AreEqual(1, loan.ExtensionData.Count);
+            Assert.AreEqual(true, loan.ExtensionData["dog"]);
+            loan = JsonConvert.DeserializeObject<Loan>(@"{""applicationTakenMethodType"":""Telephone""}");
+            Assert.AreEqual(ApplicationTakenMethodType.Telephone, loan.ApplicationTakenMethodType.EnumValue.Value);
         }
 
         [TestMethod]
