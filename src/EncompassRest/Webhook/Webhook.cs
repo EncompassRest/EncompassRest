@@ -246,18 +246,15 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public Task DeleteSubscriptionAsync(string subscriptionId) => DeleteSubscriptionAsync(subscriptionId, CancellationToken.None);
+        public Task<bool> DeleteSubscriptionAsync(string subscriptionId) => DeleteSubscriptionAsync(subscriptionId, CancellationToken.None);
 
-        public async Task DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken)
+        public async Task<bool> DeleteSubscriptionAsync(string subscriptionId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
             using (var response = await Client.HttpClient.DeleteAsync($"{s_apiPath}/subscriptions/{subscriptionId}", cancellationToken).ConfigureAwait(false))
             {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await RestException.CreateAsync(nameof(DeleteSubscriptionAsync), response).ConfigureAwait(false);
-                }
+                return response.IsSuccessStatusCode;
             }
         }
     }
