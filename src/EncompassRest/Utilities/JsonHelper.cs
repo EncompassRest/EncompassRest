@@ -180,8 +180,9 @@ namespace EncompassRest.Utilities
                     extensionDataProperty.ShouldSerialize = o => false;
                     extensionDataProperty.ShouldDeserialize = o => false;
                     var extensionDataPropertyInfo = GetProperty(objectType, "ExtensionData");
-                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)extensionDataPropertyInfo.GetValue(o))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
-                    contract.ExtensionDataSetter = (o, k, v) => ((DirtyDictionary<string, object>)extensionDataPropertyInfo.GetValue(o))[k] = v;
+                    var extensionDataValueProvider = GetValueProvider(extensionDataPropertyInfo);
+                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataSetter = (o, k, v) => ((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))[k] = v;
                 }
                 return contract;
             }
@@ -200,6 +201,13 @@ namespace EncompassRest.Utilities
                 }
                 return property;
             }
+
+            protected IValueProvider GetValueProvider(MemberInfo member) =>
+#if NET45
+                DynamicCodeGeneration ? new DynamicValueProvider(member) : (IValueProvider)new ReflectionValueProvider(member);
+#else
+                new ReflectionValueProvider(member);
+#endif
 
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
@@ -238,7 +246,7 @@ namespace EncompassRest.Utilities
                 var propertyInfo = member as PropertyInfo;
                 if (propertyInfo != null)
                 {
-                    var enumOutputAttribute = propertyInfo.GetCustomAttribute<EnumOutputAttribute>(false);
+                    var enumOutputAttribute = (EnumOutputAttribute)property.AttributeProvider.GetAttributes(typeof(EnumOutputAttribute), (false)).FirstOrDefault();
                     if (enumOutputAttribute != null)
                     {
                         property.Converter = new EnumJsonConverter(enumOutputAttribute.EnumOutput);
@@ -292,7 +300,8 @@ namespace EncompassRest.Utilities
                 var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
                 if (backingField != null)
                 {
-                    property.ShouldSerialize = o => backingField.GetValue(o) != null;
+                    var backingFieldValueProvider = GetValueProvider(backingField);
+                    property.ShouldSerialize = o => backingFieldValueProvider.GetValue(o) != null;
                 }
             }
         }
@@ -322,7 +331,7 @@ namespace EncompassRest.Utilities
                 {
                     if (propertyName == "Id")
                     {
-                        property.ShouldSerialize = o => propertyInfo.GetValue(o) != null;
+                        property.ShouldSerialize = o => property.ValueProvider.GetValue(o) != null;
                     }
                     else
                     {
@@ -330,11 +339,12 @@ namespace EncompassRest.Utilities
                         var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
                         if (backingField != null)
                         {
-                            property.ShouldSerialize = o => ((IDirty)backingField.GetValue(o))?.Dirty == true;
+                            var backingFieldValueProvider = GetValueProvider(backingField);
+                            property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
                         }
                         else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
                         {
-                            property.ShouldSerialize = o => ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
+                            property.ShouldSerialize = o => ((IDirty)property.ValueProvider.GetValue(o))?.Dirty == true;
                         }
                     }
                 }
