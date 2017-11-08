@@ -4,6 +4,7 @@ using System;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class BorrowerContact : Contact, IDirty
     {
         internal override string ApiPath { get { return "encompass/v1/borrowerContacts"; } }

@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest
 {
+    [JsonConverter(typeof(DirtyDictionaryConverter<,>))]
     internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDirty
     {
         internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary = new Dictionary<TKey, DirtyValue<TValue>>();

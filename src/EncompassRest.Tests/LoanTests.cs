@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Tests
@@ -11,6 +13,42 @@ namespace EncompassRest.Tests
     [TestClass]
     public class LoanTests : TestBaseClass
     {
+        [TestMethod]
+        public async Task Loan_PublicSerialization()
+        {
+            var loan = new Loan();
+            var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
+            Assert.AreEqual("{}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ExtensionData.Add("dog", true);
+            Assert.AreEqual(@"{""dog"":true}", loan.ToJson());
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            Assert.IsNotNull(loanId);
+            Assert.AreEqual(loanId, loan.EncompassId);
+            var json = JsonConvert.SerializeObject(loan, serializerSettings);
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
+        [TestMethod]
+        public void Loan_PublicDeserialization()
+        {
+            var loan = JsonConvert.DeserializeObject<Loan>(@"{""tltv"":85.00}");
+            Assert.AreEqual(85.00M, loan.Tltv.Value);
+            loan = JsonConvert.DeserializeObject<Loan>(@"{""dog"":true}");
+            Assert.AreEqual(1, loan.ExtensionData.Count);
+            Assert.AreEqual(true, loan.ExtensionData["dog"]);
+            loan = JsonConvert.DeserializeObject<Loan>(@"{""applicationTakenMethodType"":""Telephone""}");
+            Assert.AreEqual(ApplicationTakenMethodType.Telephone, loan.ApplicationTakenMethodType.EnumValue.Value);
+        }
+
         [TestMethod]
         public void Loan_Empty_Serialization()
         {

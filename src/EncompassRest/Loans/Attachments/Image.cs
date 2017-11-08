@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class Image : IDirty
     {
         private DirtyValue<string> _imageKey;
@@ -17,11 +18,8 @@ namespace EncompassRest.Loans.Attachments
         public float? HorizontalResolution { get { return _horizontalResolution; } set { _horizontalResolution = value; } }
         private DirtyValue<float?> _verticalResolution;
         public float? VeriticalResolution { get { return _verticalResolution; } set { _verticalResolution = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal virtual bool Dirty
@@ -36,7 +34,7 @@ namespace EncompassRest.Loans.Attachments
                     || _height.Dirty
                     || _horizontalResolution.Dirty
                     || _verticalResolution.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -50,7 +48,7 @@ namespace EncompassRest.Loans.Attachments
                 _height.Dirty = value;
                 _horizontalResolution.Dirty = value;
                 _verticalResolution.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

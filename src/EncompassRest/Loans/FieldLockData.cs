@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class FieldLockData : IDirty
     {
         private DirtyValue<bool?> _lockRemoved;
@@ -15,11 +16,8 @@ namespace EncompassRest.Loans
         public string ModelPath { get { return _modelPath; } set { _modelPath = value; } }
         private DirtyValue<string> _value;
         public string Value { get { return _value; } set { _value = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -31,7 +29,7 @@ namespace EncompassRest.Loans
                 var dirty = _lockRemoved.Dirty
                     || _modelPath.Dirty
                     || _value.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -42,7 +40,7 @@ namespace EncompassRest.Loans
                 _lockRemoved.Dirty = value;
                 _modelPath.Dirty = value;
                 _value.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

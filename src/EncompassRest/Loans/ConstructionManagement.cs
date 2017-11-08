@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ConstructionManagement : IDirty
     {
         private DirtyValue<string> _additionalDisbursementsConditions;
@@ -149,11 +150,8 @@ namespace EncompassRest.Loans
         public DateTime? WaterTestDate { get { return _waterTestDate; } set { _waterTestDate = value; } }
         private DirtyValue<bool?> _waterTestIndicator;
         public bool? WaterTestIndicator { get { return _waterTestIndicator; } set { _waterTestIndicator = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -232,7 +230,7 @@ namespace EncompassRest.Loans
                     || _utilityLettersIndicator.Dirty
                     || _waterTestDate.Dirty
                     || _waterTestIndicator.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -310,7 +308,7 @@ namespace EncompassRest.Loans
                 _utilityLettersIndicator.Dirty = value;
                 _waterTestDate.Dirty = value;
                 _waterTestIndicator.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class Contact : IDirty
     {
         internal abstract string ApiPath { get; }
@@ -64,11 +65,8 @@ namespace EncompassRest.Contacts
         public string Salutation { get { return _salutation; } set { _salutation = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         internal bool Dirty
         {
             get
@@ -88,7 +86,7 @@ namespace EncompassRest.Contacts
                     || _businessEmail.Dirty
                     || _salutation.Dirty
                     || _id.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 return dirty;
             }
             set
@@ -108,7 +106,7 @@ namespace EncompassRest.Contacts
                 _businessEmail.Dirty = value;
                 _salutation.Dirty = value;
                 _id.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
             }
         }
         bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }

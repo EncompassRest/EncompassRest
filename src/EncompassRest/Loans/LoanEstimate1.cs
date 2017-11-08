@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanEstimate1 : IDirty
     {
         private StringEnumValue<TermType> _adjustsTermType;
@@ -251,11 +252,8 @@ namespace EncompassRest.Loans
         public decimal? TotalEstimatedCashClose { get { return _totalEstimatedCashClose; } set { _totalEstimatedCashClose = value; } }
         private DirtyValue<int?> _yearsToRecast;
         public int? YearsToRecast { get { return _yearsToRecast; } set { _yearsToRecast = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -385,7 +383,7 @@ namespace EncompassRest.Loans
                     || _reasonSettlementCharges.Dirty
                     || _totalEstimatedCashClose.Dirty
                     || _yearsToRecast.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -514,7 +512,7 @@ namespace EncompassRest.Loans
                 _reasonSettlementCharges.Dirty = value;
                 _totalEstimatedCashClose.Dirty = value;
                 _yearsToRecast.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

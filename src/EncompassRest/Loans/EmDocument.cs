@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class EmDocument : IDirty
     {
         private DirtyValue<string> _allngToNtPayToJrsdctn;
@@ -449,11 +450,8 @@ namespace EncompassRest.Loans
         public string Trst2StreetAddr2 { get { return _trst2StreetAddr2; } set { _trst2StreetAddr2 = value; } }
         private DirtyValue<string> _trst2Zip;
         public string Trst2Zip { get { return _trst2Zip; } set { _trst2Zip = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -682,7 +680,7 @@ namespace EncompassRest.Loans
                     || _trst2StreetAddr1.Dirty
                     || _trst2StreetAddr2.Dirty
                     || _trst2Zip.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -910,7 +908,7 @@ namespace EncompassRest.Loans
                 _trst2StreetAddr1.Dirty = value;
                 _trst2StreetAddr2.Dirty = value;
                 _trst2Zip.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

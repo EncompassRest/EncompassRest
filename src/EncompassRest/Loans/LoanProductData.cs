@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanProductData : IDirty
     {
         private DirtyValue<decimal?> _annualFeeNeededAmount;
@@ -215,11 +216,8 @@ namespace EncompassRest.Loans
         public decimal? TransactionFees { get { return _transactionFees; } set { _transactionFees = value; } }
         private DirtyValue<decimal?> _wireFee;
         public decimal? WireFee { get { return _wireFee; } set { _wireFee = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -331,7 +329,7 @@ namespace EncompassRest.Loans
                     || _buydowns?.Dirty == true
                     || _helocRepaymentDrawPeriods?.Dirty == true
                     || _prepaymentPenalties?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -442,7 +440,7 @@ namespace EncompassRest.Loans
                 if (_buydowns != null) _buydowns.Dirty = value;
                 if (_helocRepaymentDrawPeriods != null) _helocRepaymentDrawPeriods.Dirty = value;
                 if (_prepaymentPenalties != null) _prepaymentPenalties.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

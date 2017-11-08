@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ProfitManagementItem : IDirty
     {
         private DirtyValue<decimal?> _atPercent;
@@ -23,11 +24,8 @@ namespace EncompassRest.Loans
         public decimal? Total { get { return _total; } set { _total = value; } }
         private StringEnumValue<ProfitManagementItemType> _type;
         public StringEnumValue<ProfitManagementItemType> Type { get { return _type; } set { _type = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -43,7 +41,7 @@ namespace EncompassRest.Loans
                     || _profitManagementItemIndex.Dirty
                     || _total.Dirty
                     || _type.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -58,7 +56,7 @@ namespace EncompassRest.Loans
                 _profitManagementItemIndex.Dirty = value;
                 _total.Dirty = value;
                 _type.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

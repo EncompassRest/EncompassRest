@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class Tsum : IDirty
     {
         private DirtyValue<decimal?> _aboveOrBelowRatePercent;
@@ -141,11 +142,8 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalance { get { return _unpaidBalance; } set { _unpaidBalance = value; } }
         private DirtyValue<decimal?> _verified;
         public decimal? Verified { get { return _verified; } set { _verified = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -220,7 +218,7 @@ namespace EncompassRest.Loans
                     || _underwritingComment8.Dirty
                     || _unpaidBalance.Dirty
                     || _verified.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -294,7 +292,7 @@ namespace EncompassRest.Loans
                 _underwritingComment8.Dirty = value;
                 _unpaidBalance.Dirty = value;
                 _verified.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

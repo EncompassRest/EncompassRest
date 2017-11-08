@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class PageAnnotation : IDirty
     {
         private DirtyValue<DateTime?> _dateCreated;
@@ -24,11 +25,8 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
         [EnumOutput(EnumOutput.Integer)]
         public AnnotationVisibilityType? VisibilityType { get { return _visibilityType; } set { _visibilityType = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -45,7 +43,7 @@ namespace EncompassRest.Loans.Attachments
                     || _width.Dirty
                     || _height.Dirty
                     || _visibilityType.Dirty
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -61,7 +59,7 @@ namespace EncompassRest.Loans.Attachments
                 _width.Dirty = value;
                 _height.Dirty = value;
                 _visibilityType.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

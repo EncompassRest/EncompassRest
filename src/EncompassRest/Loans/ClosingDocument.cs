@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ClosingDocument : IDirty
     {
         private DirtyValue<string> _additionalLienHolderAddress;
@@ -383,11 +384,8 @@ namespace EncompassRest.Loans
         public string Trust2Beneficiaries { get { return _trust2Beneficiaries; } set { _trust2Beneficiaries = value; } }
         private StringEnumValue<WeConductBusiness> _weConductBusiness;
         public StringEnumValue<WeConductBusiness> WeConductBusiness { get { return _weConductBusiness; } set { _weConductBusiness = value; } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -583,7 +581,7 @@ namespace EncompassRest.Loans
                     || _closingEntities?.Dirty == true
                     || _respaHudDetails?.Dirty == true
                     || _stateLicenses?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -778,7 +776,7 @@ namespace EncompassRest.Loans
                 if (_closingEntities != null) _closingEntities.Dirty = value;
                 if (_respaHudDetails != null) _respaHudDetails.Dirty = value;
                 if (_stateLicenses != null) _stateLicenses.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
+    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class LoanDocument : IDirty
     {
         private DirtyValue<string> _documentId;
@@ -88,11 +89,8 @@ namespace EncompassRest.Loans.Documents
         public IList<FileAttachmentReference> Attachments { get { return _attachments ?? (_attachments = new DirtyList<FileAttachmentReference>()); } set { _attachments = new DirtyList<FileAttachmentReference>(value); } }
         private DirtyList<EntityReference> _roles;
         public IList<EntityReference> Roles { get { return _roles ?? (_roles = new DirtyList<EntityReference>()); } set { _roles = new DirtyList<EntityReference>(value); } }
-        private ExtensionDataObject _extensionDataInternal;
-        [JsonExtensionData]
-        private ExtensionDataObject ExtensionDataInternal { get { return _extensionDataInternal ?? (_extensionDataInternal = new ExtensionDataObject()); } set { _extensionDataInternal = value; } }
-        [JsonIgnore]
-        public IDictionary<string, object> ExtensionData { get { return ExtensionDataInternal.InternalDictionary; } set { _extensionDataInternal = new ExtensionDataObject(value); } }
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -142,7 +140,7 @@ namespace EncompassRest.Loans.Documents
                     || _comments?.Dirty == true
                     || _attachments?.Dirty == true
                     || _roles?.Dirty == true
-                    || _extensionDataInternal?.Dirty == true;
+                    || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -191,7 +189,7 @@ namespace EncompassRest.Loans.Documents
                 if (_comments != null) _comments.Dirty = value;
                 if (_attachments != null) _attachments.Dirty = value;
                 if (_roles != null) _roles.Dirty = value;
-                if (_extensionDataInternal != null) _extensionDataInternal.Dirty = value;
+                if (_extensionData != null) _extensionData.Dirty = value;
                 _settingDirty = false;
             }
         }
