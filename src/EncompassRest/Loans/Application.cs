@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -259,14 +260,14 @@ namespace EncompassRest.Loans
         public decimal? OtherItemsDeducted { get { return _otherItemsDeducted; } set { _otherItemsDeducted = value; } }
         private DirtyValue<decimal?> _otherMortgagePrincipalAndInterestAmount;
         public decimal? OtherMortgagePrincipalAndInterestAmount { get { return _otherMortgagePrincipalAndInterestAmount; } set { _otherMortgagePrincipalAndInterestAmount = value; } }
-        private DirtyValue<string> _pastCreditRecord;
-        public string PastCreditRecord { get { return _pastCreditRecord; } set { _pastCreditRecord = value; } }
+        private StringEnumValue<PastCreditRecord> _pastCreditRecord;
+        public StringEnumValue<PastCreditRecord> PastCreditRecord { get { return _pastCreditRecord; } set { _pastCreditRecord = value; } }
         private DirtyValue<decimal?> _presentHousingExpComortSet;
         public decimal? PresentHousingExpComortSet { get { return _presentHousingExpComortSet; } set { _presentHousingExpComortSet = value; } }
         private DirtyValue<decimal?> _primaryResidenceComortSet;
         public decimal? PrimaryResidenceComortSet { get { return _primaryResidenceComortSet; } set { _primaryResidenceComortSet = value; } }
-        private DirtyValue<string> _propertyUsageType;
-        public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
+        private StringEnumValue<PropertyUsageType> _propertyUsageType;
+        public StringEnumValue<PropertyUsageType> PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
         private DirtyValue<string> _proposedDuesAmount;
         public string ProposedDuesAmount { get { return _proposedDuesAmount; } set { _proposedDuesAmount = value; } }
         private DirtyValue<decimal?> _proposedFirstMortgageAmount;
@@ -311,8 +312,8 @@ namespace EncompassRest.Loans
         public string SofDBorrowerAddressCity { get { return _sofDBorrowerAddressCity; } set { _sofDBorrowerAddressCity = value; } }
         private DirtyValue<string> _sofDBorrowerAddressState;
         public string SofDBorrowerAddressState { get { return _sofDBorrowerAddressState; } set { _sofDBorrowerAddressState = value; } }
-        private DirtyValue<string> _sofDBorrowerAddressType;
-        public string SofDBorrowerAddressType { get { return _sofDBorrowerAddressType; } set { _sofDBorrowerAddressType = value; } }
+        private StringEnumValue<SofDBorrowerAddressType> _sofDBorrowerAddressType;
+        public StringEnumValue<SofDBorrowerAddressType> SofDBorrowerAddressType { get { return _sofDBorrowerAddressType; } set { _sofDBorrowerAddressType = value; } }
         private DirtyValue<string> _sofDBorrowerAddressZipcode;
         public string SofDBorrowerAddressZipcode { get { return _sofDBorrowerAddressZipcode; } set { _sofDBorrowerAddressZipcode = value; } }
         private DirtyValue<string> _sofDCoBorrowerAddress;
@@ -321,8 +322,8 @@ namespace EncompassRest.Loans
         public string SofDCoBorrowerAddressCity { get { return _sofDCoBorrowerAddressCity; } set { _sofDCoBorrowerAddressCity = value; } }
         private DirtyValue<string> _sofDCoBorrowerAddressState;
         public string SofDCoBorrowerAddressState { get { return _sofDCoBorrowerAddressState; } set { _sofDCoBorrowerAddressState = value; } }
-        private DirtyValue<string> _sofDCoBorrowerAddressType;
-        public string SofDCoBorrowerAddressType { get { return _sofDCoBorrowerAddressType; } set { _sofDCoBorrowerAddressType = value; } }
+        private StringEnumValue<SofDBorrowerAddressType> _sofDCoBorrowerAddressType;
+        public StringEnumValue<SofDBorrowerAddressType> SofDCoBorrowerAddressType { get { return _sofDCoBorrowerAddressType; } set { _sofDCoBorrowerAddressType = value; } }
         private DirtyValue<string> _sofDCoBorrowerAddressZipcode;
         public string SofDCoBorrowerAddressZipcode { get { return _sofDCoBorrowerAddressZipcode; } set { _sofDCoBorrowerAddressZipcode = value; } }
         private DirtyValue<bool?> _spouseIncomeConsider;
@@ -401,8 +402,8 @@ namespace EncompassRest.Loans
         public decimal? UserDefinedIncome { get { return _userDefinedIncome; } set { _userDefinedIncome = value; } }
         private DirtyValue<string> _userDefinedIncomeDescription;
         public string UserDefinedIncomeDescription { get { return _userDefinedIncomeDescription; } set { _userDefinedIncomeDescription = value; } }
-        private DirtyValue<string> _vACreditStandards;
-        public string VACreditStandards { get { return _vACreditStandards; } set { _vACreditStandards = value; } }
+        private StringEnumValue<YOrN> _vACreditStandards;
+        public StringEnumValue<YOrN> VACreditStandards { get { return _vACreditStandards; } set { _vACreditStandards = value; } }
         private DirtyValue<decimal?> _vaSummarySpouseIncomeAmount;
         public decimal? VaSummarySpouseIncomeAmount { get { return _vaSummarySpouseIncomeAmount; } set { _vaSummarySpouseIncomeAmount = value; } }
         private DirtyValue<decimal?> _vaSummaryTotalMonthlyGrossIncomeAmount;

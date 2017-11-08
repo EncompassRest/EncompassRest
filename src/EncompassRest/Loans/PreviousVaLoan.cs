@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -15,8 +16,8 @@ namespace EncompassRest.Loans
         public DateTime? DateSold { get { return _dateSold; } set { _dateSold = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private DirtyValue<string> _loanType;
-        public string LoanType { get { return _loanType; } set { _loanType = value; } }
+        private StringEnumValue<PreviousVaLoanLoanType> _loanType;
+        public StringEnumValue<PreviousVaLoanLoanType> LoanType { get { return _loanType; } set { _loanType = value; } }
         private DirtyValue<int?> _previousVaLoanIndex;
         public int? PreviousVaLoanIndex { get { return _previousVaLoanIndex; } set { _previousVaLoanIndex = value; } }
         private DirtyValue<string> _propertyAddress;

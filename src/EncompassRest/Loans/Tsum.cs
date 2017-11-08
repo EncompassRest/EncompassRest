@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -47,8 +48,8 @@ namespace EncompassRest.Loans
         public int? GrossRentUnit3 { get { return _grossRentUnit3; } set { _grossRentUnit3 = value; } }
         private DirtyValue<int?> _grossRentUnit4;
         public int? GrossRentUnit4 { get { return _grossRentUnit4; } set { _grossRentUnit4 = value; } }
-        private DirtyValue<string> _homeBuyersOwnershipEducationCertificateInFile;
-        public string HomeBuyersOwnershipEducationCertificateInFile { get { return _homeBuyersOwnershipEducationCertificateInFile; } set { _homeBuyersOwnershipEducationCertificateInFile = value; } }
+        private StringEnumValue<HomeBuyersOwnershipEducationCertificateInFile> _homeBuyersOwnershipEducationCertificateInFile;
+        public StringEnumValue<HomeBuyersOwnershipEducationCertificateInFile> HomeBuyersOwnershipEducationCertificateInFile { get { return _homeBuyersOwnershipEducationCertificateInFile; } set { _homeBuyersOwnershipEducationCertificateInFile = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<string> _insurerCode;
@@ -57,36 +58,36 @@ namespace EncompassRest.Loans
         public decimal? InterestedPartyContributions { get { return _interestedPartyContributions; } set { _interestedPartyContributions = value; } }
         private DirtyValue<string> _investorLoanNumber;
         public string InvestorLoanNumber { get { return _investorLoanNumber; } set { _investorLoanNumber = value; } }
-        private DirtyValue<string> _levelOfPropertyReviewType;
-        public string LevelOfPropertyReviewType { get { return _levelOfPropertyReviewType; } set { _levelOfPropertyReviewType = value; } }
+        private StringEnumValue<LevelOfPropertyReviewType> _levelOfPropertyReviewType;
+        public StringEnumValue<LevelOfPropertyReviewType> LevelOfPropertyReviewType { get { return _levelOfPropertyReviewType; } set { _levelOfPropertyReviewType = value; } }
         private DirtyValue<string> _lpDocClass;
         public string LpDocClass { get { return _lpDocClass; } set { _lpDocClass = value; } }
-        private DirtyValue<string> _mortgageOriginator;
-        public string MortgageOriginator { get { return _mortgageOriginator; } set { _mortgageOriginator = value; } }
+        private StringEnumValue<TsumMortgageOriginator> _mortgageOriginator;
+        public StringEnumValue<TsumMortgageOriginator> MortgageOriginator { get { return _mortgageOriginator; } set { _mortgageOriginator = value; } }
         private DirtyValue<DateTime?> _noteDate;
         public DateTime? NoteDate { get { return _noteDate; } set { _noteDate = value; } }
-        private DirtyValue<string> _noteRateType;
-        public string NoteRateType { get { return _noteRateType; } set { _noteRateType = value; } }
+        private StringEnumValue<NoteRateType> _noteRateType;
+        public StringEnumValue<NoteRateType> NoteRateType { get { return _noteRateType; } set { _noteRateType = value; } }
         private DirtyValue<int?> _numberOfBorrowers;
         public int? NumberOfBorrowers { get { return _numberOfBorrowers; } set { _numberOfBorrowers = value; } }
         private DirtyValue<int?> _numberOfMonthsReserves;
         public int? NumberOfMonthsReserves { get { return _numberOfMonthsReserves; } set { _numberOfMonthsReserves = value; } }
         private DirtyValue<decimal?> _originalAmountOfFirstMortgage;
         public decimal? OriginalAmountOfFirstMortgage { get { return _originalAmountOfFirstMortgage; } set { _originalAmountOfFirstMortgage = value; } }
-        private DirtyValue<string> _otherTypeDescription;
-        public string OtherTypeDescription { get { return _otherTypeDescription; } set { _otherTypeDescription = value; } }
+        private StringEnumValue<OtherTypeDescription> _otherTypeDescription;
+        public StringEnumValue<OtherTypeDescription> OtherTypeDescription { get { return _otherTypeDescription; } set { _otherTypeDescription = value; } }
         private DirtyValue<string> _percentageofCoverage;
         public string PercentageofCoverage { get { return _percentageofCoverage; } set { _percentageofCoverage = value; } }
         private DirtyValue<string> _projectName;
         public string ProjectName { get { return _projectName; } set { _projectName = value; } }
-        private DirtyValue<string> _propertyFormType;
-        public string PropertyFormType { get { return _propertyFormType; } set { _propertyFormType = value; } }
-        private DirtyValue<string> _propertyType;
-        public string PropertyType { get { return _propertyType; } set { _propertyType = value; } }
+        private StringEnumValue<PropertyFormType> _propertyFormType;
+        public StringEnumValue<PropertyFormType> PropertyFormType { get { return _propertyFormType; } set { _propertyFormType = value; } }
+        private StringEnumValue<OtherPropertyType> _propertyType;
+        public StringEnumValue<OtherPropertyType> PropertyType { get { return _propertyType; } set { _propertyType = value; } }
         private DirtyValue<decimal?> _required;
         public decimal? Required { get { return _required; } set { _required = value; } }
-        private DirtyValue<string> _riskAssessmentType;
-        public string RiskAssessmentType { get { return _riskAssessmentType; } set { _riskAssessmentType = value; } }
+        private StringEnumValue<RiskAssessmentType> _riskAssessmentType;
+        public StringEnumValue<RiskAssessmentType> RiskAssessmentType { get { return _riskAssessmentType; } set { _riskAssessmentType = value; } }
         private DirtyValue<string> _sellerAddress;
         public string SellerAddress { get { return _sellerAddress; } set { _sellerAddress = value; } }
         private DirtyValue<string> _sellerCity;

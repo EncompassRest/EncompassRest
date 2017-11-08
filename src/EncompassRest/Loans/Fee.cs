@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -25,8 +26,8 @@ namespace EncompassRest.Loans
         public decimal? DeedAmount { get { return _deedAmount; } set { _deedAmount = value; } }
         private DirtyValue<string> _description;
         public string Description { get { return _description; } set { _description = value; } }
-        private DirtyValue<string> _feeType;
-        public string FeeType { get { return _feeType; } set { _feeType = value; } }
+        private StringEnumValue<FeeFeeType> _feeType;
+        public StringEnumValue<FeeFeeType> FeeType { get { return _feeType; } set { _feeType = value; } }
         private DirtyValue<bool?> _fHA;
         public bool? FHA { get { return _fHA; } set { _fHA = value; } }
         private DirtyValue<string> _fWBC;
@@ -49,8 +50,8 @@ namespace EncompassRest.Loans
         public int? NumberOfMonths { get { return _numberOfMonths; } set { _numberOfMonths = value; } }
         private DirtyValue<decimal?> _ownerCoverage;
         public decimal? OwnerCoverage { get { return _ownerCoverage; } set { _ownerCoverage = value; } }
-        private DirtyValue<string> _paidBy;
-        public string PaidBy { get { return _paidBy; } set { _paidBy = value; } }
+        private StringEnumValue<PaidBy> _paidBy;
+        public StringEnumValue<PaidBy> PaidBy { get { return _paidBy; } set { _paidBy = value; } }
         private DirtyValue<decimal?> _paidInAdvance;
         public decimal? PaidInAdvance { get { return _paidInAdvance; } set { _paidInAdvance = value; } }
         private DirtyValue<decimal?> _paidToBroker;
@@ -65,8 +66,8 @@ namespace EncompassRest.Loans
         public bool? PFC { get { return _pFC; } set { _pFC = value; } }
         private DirtyValue<bool?> _pOC;
         public bool? POC { get { return _pOC; } set { _pOC = value; } }
-        private DirtyValue<string> _pTB;
-        public string PTB { get { return _pTB; } set { _pTB = value; } }
+        private StringEnumValue<PTB> _pTB;
+        public StringEnumValue<PTB> PTB { get { return _pTB; } set { _pTB = value; } }
         private DirtyValue<decimal?> _releasesAmount;
         public decimal? ReleasesAmount { get { return _releasesAmount; } set { _releasesAmount = value; } }
         private DirtyValue<decimal?> _sellerPaidAmount;

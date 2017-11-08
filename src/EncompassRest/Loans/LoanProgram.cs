@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -9,8 +10,8 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanProgram : IDirty
     {
-        private DirtyValue<string> _acquisition;
-        public string Acquisition { get { return _acquisition; } set { _acquisition = value; } }
+        private StringEnumValue<YOrN> _acquisition;
+        public StringEnumValue<YOrN> Acquisition { get { return _acquisition; } set { _acquisition = value; } }
         private DirtyValue<string> _additionalArmInformation;
         public string AdditionalArmInformation { get { return _additionalArmInformation; } set { _additionalArmInformation = value; } }
         private DirtyValue<string> _allDateAndNumericalDisclosures;
@@ -127,8 +128,8 @@ namespace EncompassRest.Loans
         public string LoanFeaturesPaymentFrequencyType { get { return _loanFeaturesPaymentFrequencyType; } set { _loanFeaturesPaymentFrequencyType = value; } }
         private DirtyValue<string> _loanProgramName;
         public string LoanProgramName { get { return _loanProgramName; } set { _loanProgramName = value; } }
-        private DirtyValue<string> _lockField;
-        public string LockField { get { return _lockField; } set { _lockField = value; } }
+        private StringEnumValue<YOrN> _lockField;
+        public StringEnumValue<YOrN> LockField { get { return _lockField; } set { _lockField = value; } }
         private DirtyValue<decimal?> _maxBackRatio;
         public decimal? MaxBackRatio { get { return _maxBackRatio; } set { _maxBackRatio = value; } }
         private DirtyValue<decimal?> _maxCltv;
@@ -159,8 +160,8 @@ namespace EncompassRest.Loans
         public decimal? MinimumPaymentPercent { get { return _minimumPaymentPercent; } set { _minimumPaymentPercent = value; } }
         private DirtyValue<decimal?> _mipPaidInCash;
         public decimal? MipPaidInCash { get { return _mipPaidInCash; } set { _mipPaidInCash = value; } }
-        private DirtyValue<string> _mmi;
-        public string Mmi { get { return _mmi; } set { _mmi = value; } }
+        private StringEnumValue<YOrN> _mmi;
+        public StringEnumValue<YOrN> Mmi { get { return _mmi; } set { _mmi = value; } }
         private DirtyValue<decimal?> _mortgageInsuranceAdjustmentFactor1;
         public decimal? MortgageInsuranceAdjustmentFactor1 { get { return _mortgageInsuranceAdjustmentFactor1; } set { _mortgageInsuranceAdjustmentFactor1 = value; } }
         private DirtyValue<decimal?> _mortgageInsuranceAdjustmentFactor2;
@@ -193,8 +194,8 @@ namespace EncompassRest.Loans
         public decimal? PercentageOfRental { get { return _percentageOfRental; } set { _percentageOfRental = value; } }
         private DirtyValue<string> _perDiemCalculationMethodType;
         public string PerDiemCalculationMethodType { get { return _perDiemCalculationMethodType; } set { _perDiemCalculationMethodType = value; } }
-        private DirtyValue<string> _pmi;
-        public string Pmi { get { return _pmi; } set { _pmi = value; } }
+        private StringEnumValue<YOrN> _pmi;
+        public StringEnumValue<YOrN> Pmi { get { return _pmi; } set { _pmi = value; } }
         private DirtyValue<string> _prepaymentPenaltyIndicator;
         public string PrepaymentPenaltyIndicator { get { return _prepaymentPenaltyIndicator; } set { _prepaymentPenaltyIndicator = value; } }
         private DirtyValue<string> _programCode;
@@ -249,8 +250,8 @@ namespace EncompassRest.Loans
         public string Type { get { return _type; } set { _type = value; } }
         private DirtyValue<string> _useDaysInYears;
         public string UseDaysInYears { get { return _useDaysInYears; } set { _useDaysInYears = value; } }
-        private DirtyValue<string> _usePitiForRatio;
-        public string UsePitiForRatio { get { return _usePitiForRatio; } set { _usePitiForRatio = value; } }
+        private StringEnumValue<YOrN> _usePitiForRatio;
+        public StringEnumValue<YOrN> UsePitiForRatio { get { return _usePitiForRatio; } set { _usePitiForRatio = value; } }
         private DirtyValue<string> _variableRateFeature;
         public string VariableRateFeature { get { return _variableRateFeature; } set { _variableRateFeature = value; } }
         private DirtyValue<decimal?> _yearlyTerm;

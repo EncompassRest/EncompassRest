@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -83,12 +84,12 @@ namespace EncompassRest.Loans
         public string ImpoundMortgInsPremYearlyBasis { get { return _impoundMortgInsPremYearlyBasis; } set { _impoundMortgInsPremYearlyBasis = value; } }
         private DirtyValue<decimal?> _impoundTaxesRate;
         public decimal? ImpoundTaxesRate { get { return _impoundTaxesRate; } set { _impoundTaxesRate = value; } }
-        private DirtyValue<string> _impoundType1;
-        public string ImpoundType1 { get { return _impoundType1; } set { _impoundType1 = value; } }
+        private StringEnumValue<ClosingCostImpoundType> _impoundType1;
+        public StringEnumValue<ClosingCostImpoundType> ImpoundType1 { get { return _impoundType1; } set { _impoundType1 = value; } }
         private DirtyValue<string> _impoundType2;
         public string ImpoundType2 { get { return _impoundType2; } set { _impoundType2 = value; } }
-        private DirtyValue<string> _impoundType3;
-        public string ImpoundType3 { get { return _impoundType3; } set { _impoundType3 = value; } }
+        private StringEnumValue<ImpoundType3> _impoundType3;
+        public StringEnumValue<ImpoundType3> ImpoundType3 { get { return _impoundType3; } set { _impoundType3 = value; } }
         private DirtyValue<string> _impoundType4;
         public string ImpoundType4 { get { return _impoundType4; } set { _impoundType4 = value; } }
         private LoanEstimate1 _loanEstimate1;

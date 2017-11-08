@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -41,8 +42,8 @@ namespace EncompassRest.Loans
         public bool? DocPrepFeeToBeFinancedIndicator { get { return _docPrepFeeToBeFinancedIndicator; } set { _docPrepFeeToBeFinancedIndicator = value; } }
         private DirtyValue<bool?> _docPrepPortionOfFeeIndicator;
         public bool? DocPrepPortionOfFeeIndicator { get { return _docPrepPortionOfFeeIndicator; } set { _docPrepPortionOfFeeIndicator = value; } }
-        private DirtyValue<string> _exceed2PercentPrepayPenalty;
-        public string Exceed2PercentPrepayPenalty { get { return _exceed2PercentPrepayPenalty; } set { _exceed2PercentPrepayPenalty = value; } }
+        private StringEnumValue<DoesOrDoesNot2> _exceed2PercentPrepayPenalty;
+        public StringEnumValue<DoesOrDoesNot2> Exceed2PercentPrepayPenalty { get { return _exceed2PercentPrepayPenalty; } set { _exceed2PercentPrepayPenalty = value; } }
         private DirtyValue<decimal?> _hoepaAPR;
         public decimal? HoepaAPR { get { return _hoepaAPR; } set { _hoepaAPR = value; } }
         private DirtyValue<decimal?> _hoepaFee;
@@ -91,8 +92,8 @@ namespace EncompassRest.Loans
         public bool? NotaryPortionOfFeeIndicator { get { return _notaryPortionOfFeeIndicator; } set { _notaryPortionOfFeeIndicator = value; } }
         private DirtyValue<bool?> _otherHighCostIndicator;
         public bool? OtherHighCostIndicator { get { return _otherHighCostIndicator; } set { _otherHighCostIndicator = value; } }
-        private DirtyValue<string> _penaltyChargeMoreThan36Months;
-        public string PenaltyChargeMoreThan36Months { get { return _penaltyChargeMoreThan36Months; } set { _penaltyChargeMoreThan36Months = value; } }
+        private StringEnumValue<PenaltyChargeMoreThan36Months> _penaltyChargeMoreThan36Months;
+        public StringEnumValue<PenaltyChargeMoreThan36Months> PenaltyChargeMoreThan36Months { get { return _penaltyChargeMoreThan36Months; } set { _penaltyChargeMoreThan36Months = value; } }
         private DirtyValue<bool?> _pestInspectionFeeToBeFinancedIndicator;
         public bool? PestInspectionFeeToBeFinancedIndicator { get { return _pestInspectionFeeToBeFinancedIndicator; } set { _pestInspectionFeeToBeFinancedIndicator = value; } }
         private DirtyValue<bool?> _pestInspectionPortionOfFeeIndicator;
@@ -117,8 +118,8 @@ namespace EncompassRest.Loans
         public bool? Section32Indicator { get { return _section32Indicator; } set { _section32Indicator = value; } }
         private DirtyValue<decimal?> _section35AveragePrimeRate;
         public decimal? Section35AveragePrimeRate { get { return _section35AveragePrimeRate; } set { _section35AveragePrimeRate = value; } }
-        private DirtyValue<string> _section35IsSecondAppraisalRequired;
-        public string Section35IsSecondAppraisalRequired { get { return _section35IsSecondAppraisalRequired; } set { _section35IsSecondAppraisalRequired = value; } }
+        private StringEnumValue<DoesOrDoesNot> _section35IsSecondAppraisalRequired;
+        public StringEnumValue<DoesOrDoesNot> Section35IsSecondAppraisalRequired { get { return _section35IsSecondAppraisalRequired; } set { _section35IsSecondAppraisalRequired = value; } }
         private DirtyValue<DateTime?> _section35PriorAcquisitionDate;
         public DateTime? Section35PriorAcquisitionDate { get { return _section35PriorAcquisitionDate; } set { _section35PriorAcquisitionDate = value; } }
         private DirtyValue<decimal?> _section35PriorAcquisitionPrice;

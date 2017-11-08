@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -217,8 +218,8 @@ namespace EncompassRest.Loans
         public IList<SchedulePaymentTransaction> SchedulePaymentTransactions { get { return _schedulePaymentTransactions ?? (_schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>()); } set { _schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>(value); } }
         private DirtyValue<string> _servicerLoanNumber;
         public string ServicerLoanNumber { get { return _servicerLoanNumber; } set { _servicerLoanNumber = value; } }
-        private DirtyValue<string> _servicingStatus;
-        public string ServicingStatus { get { return _servicingStatus; } set { _servicingStatus = value; } }
+        private StringEnumValue<ServicingStatus> _servicingStatus;
+        public StringEnumValue<ServicingStatus> ServicingStatus { get { return _servicingStatus; } set { _servicingStatus = value; } }
         private DirtyValue<DateTime?> _servicingTransferDate;
         public DateTime? ServicingTransferDate { get { return _servicingTransferDate; } set { _servicingTransferDate = value; } }
         private DirtyValue<string> _subServicer;

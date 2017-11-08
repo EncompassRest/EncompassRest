@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -25,8 +26,8 @@ namespace EncompassRest.Loans
         public string CommitmentIssuedByPostalCode { get { return _commitmentIssuedByPostalCode; } set { _commitmentIssuedByPostalCode = value; } }
         private DirtyValue<string> _commitmentIssuedByState;
         public string CommitmentIssuedByState { get { return _commitmentIssuedByState; } set { _commitmentIssuedByState = value; } }
-        private DirtyValue<string> _consumerHandbookOnAdjustableRateMortgages;
-        public string ConsumerHandbookOnAdjustableRateMortgages { get { return _consumerHandbookOnAdjustableRateMortgages; } set { _consumerHandbookOnAdjustableRateMortgages = value; } }
+        private StringEnumValue<YOrN> _consumerHandbookOnAdjustableRateMortgages;
+        public StringEnumValue<YOrN> ConsumerHandbookOnAdjustableRateMortgages { get { return _consumerHandbookOnAdjustableRateMortgages; } set { _consumerHandbookOnAdjustableRateMortgages = value; } }
         private DirtyValue<string> _daysToReceiveWrittenRequest;
         public string DaysToReceiveWrittenRequest { get { return _daysToReceiveWrittenRequest; } set { _daysToReceiveWrittenRequest = value; } }
         private DirtyValue<int?> _daysToReturnToLender;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -41,8 +42,8 @@ namespace EncompassRest.Loans
         public decimal? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
         private DirtyValue<int?> _fixedRatePeriod;
         public int? FixedRatePeriod { get { return _fixedRatePeriod; } set { _fixedRatePeriod = value; } }
-        private DirtyValue<string> _haveDemandFeature;
-        public string HaveDemandFeature { get { return _haveDemandFeature; } set { _haveDemandFeature = value; } }
+        private StringEnumValue<YesOrNo> _haveDemandFeature;
+        public StringEnumValue<YesOrNo> HaveDemandFeature { get { return _haveDemandFeature; } set { _haveDemandFeature = value; } }
         private DirtyValue<bool?> _havePrepaymentPenalty;
         public bool? HavePrepaymentPenalty { get { return _havePrepaymentPenalty; } set { _havePrepaymentPenalty = value; } }
         private DirtyValue<string> _id;
@@ -53,16 +54,16 @@ namespace EncompassRest.Loans
         public decimal? InspectionFeeSellerPaidAmount { get { return _inspectionFeeSellerPaidAmount; } set { _inspectionFeeSellerPaidAmount = value; } }
         private DirtyValue<decimal?> _interestRate;
         public decimal? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
-        private DirtyValue<string> _isBalloonPaymentIn7Years;
-        public string IsBalloonPaymentIn7Years { get { return _isBalloonPaymentIn7Years; } set { _isBalloonPaymentIn7Years = value; } }
-        private DirtyValue<string> _isInterestOnlyLoan;
-        public string IsInterestOnlyLoan { get { return _isInterestOnlyLoan; } set { _isInterestOnlyLoan = value; } }
+        private StringEnumValue<YesOrNo> _isBalloonPaymentIn7Years;
+        public StringEnumValue<YesOrNo> IsBalloonPaymentIn7Years { get { return _isBalloonPaymentIn7Years; } set { _isBalloonPaymentIn7Years = value; } }
+        private StringEnumValue<YesOrNo> _isInterestOnlyLoan;
+        public StringEnumValue<YesOrNo> IsInterestOnlyLoan { get { return _isInterestOnlyLoan; } set { _isInterestOnlyLoan = value; } }
         private DirtyValue<bool?> _isNegativeAmortization;
         public bool? IsNegativeAmortization { get { return _isNegativeAmortization; } set { _isNegativeAmortization = value; } }
         private DirtyValue<int?> _loanTerm;
         public int? LoanTerm { get { return _loanTerm; } set { _loanTerm = value; } }
-        private DirtyValue<string> _loanType;
-        public string LoanType { get { return _loanType; } set { _loanType = value; } }
+        private StringEnumValue<AmortizationType> _loanType;
+        public StringEnumValue<AmortizationType> LoanType { get { return _loanType; } set { _loanType = value; } }
         private DirtyValue<decimal?> _originationFeeBorPaidAmount;
         public decimal? OriginationFeeBorPaidAmount { get { return _originationFeeBorPaidAmount; } set { _originationFeeBorPaidAmount = value; } }
         private DirtyValue<decimal?> _originationFeePercentage;

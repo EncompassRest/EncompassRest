@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -29,8 +30,8 @@ namespace EncompassRest.Loans
         public string Email { get { return _email; } set { _email = value; } }
         private DirtyValue<string> _fax;
         public string Fax { get { return _fax; } set { _fax = value; } }
-        private DirtyValue<string> _feeType;
-        public string FeeType { get { return _feeType; } set { _feeType = value; } }
+        private StringEnumValue<Hud1EsPayToFeeType> _feeType;
+        public StringEnumValue<Hud1EsPayToFeeType> FeeType { get { return _feeType; } set { _feeType = value; } }
         private DirtyValue<int?> _hud1EsPayToIndex;
         public int? Hud1EsPayToIndex { get { return _hud1EsPayToIndex; } set { _hud1EsPayToIndex = value; } }
         private DirtyValue<string> _id;

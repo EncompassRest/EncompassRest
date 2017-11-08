@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -13,8 +14,8 @@ namespace EncompassRest.Loans
         public decimal? Cltv { get { return _cltv; } set { _cltv = value; } }
         private DirtyValue<string> _collateralUnderwriterScore;
         public string CollateralUnderwriterScore { get { return _collateralUnderwriterScore; } set { _collateralUnderwriterScore = value; } }
-        private DirtyValue<string> _community2ndRepaymentStructure;
-        public string Community2ndRepaymentStructure { get { return _community2ndRepaymentStructure; } set { _community2ndRepaymentStructure = value; } }
+        private StringEnumValue<Community2ndRepaymentStructure> _community2ndRepaymentStructure;
+        public StringEnumValue<Community2ndRepaymentStructure> Community2ndRepaymentStructure { get { return _community2ndRepaymentStructure; } set { _community2ndRepaymentStructure = value; } }
         private DirtyValue<bool?> _communityLending;
         public bool? CommunityLending { get { return _communityLending; } set { _communityLending = value; } }
         private DirtyValue<string> _duVersion;

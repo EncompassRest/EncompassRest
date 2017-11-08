@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -47,10 +48,10 @@ namespace EncompassRest.Loans
         public bool? FinancedIndicator { get { return _financedIndicator; } set { _financedIndicator = value; } }
         private DirtyValue<int?> _gfe2010FeeIndex;
         public int? Gfe2010FeeIndex { get { return _gfe2010FeeIndex; } set { _gfe2010FeeIndex = value; } }
-        private DirtyValue<string> _gfe2010FeeParentType;
-        public string Gfe2010FeeParentType { get { return _gfe2010FeeParentType; } set { _gfe2010FeeParentType = value; } }
-        private DirtyValue<string> _gfe2010FeeType;
-        public string Gfe2010FeeType { get { return _gfe2010FeeType; } set { _gfe2010FeeType = value; } }
+        private StringEnumValue<Gfe2010FeeParentType> _gfe2010FeeParentType;
+        public StringEnumValue<Gfe2010FeeParentType> Gfe2010FeeParentType { get { return _gfe2010FeeParentType; } set { _gfe2010FeeParentType = value; } }
+        private StringEnumValue<Gfe2010FeeType> _gfe2010FeeType;
+        public StringEnumValue<Gfe2010FeeType> Gfe2010FeeType { get { return _gfe2010FeeType; } set { _gfe2010FeeType = value; } }
         private DirtyValue<decimal?> _gfeAmount;
         public decimal? GfeAmount { get { return _gfeAmount; } set { _gfeAmount = value; } }
         private DirtyValue<string> _id;
@@ -79,16 +80,16 @@ namespace EncompassRest.Loans
         public decimal? OtherPAC2015 { get { return _otherPAC2015; } set { _otherPAC2015 = value; } }
         private DirtyValue<decimal?> _otherPOC2015;
         public decimal? OtherPOC2015 { get { return _otherPOC2015; } set { _otherPOC2015 = value; } }
-        private DirtyValue<string> _paidByType;
-        public string PaidByType { get { return _paidByType; } set { _paidByType = value; } }
+        private StringEnumValue<PaidBy> _paidByType;
+        public StringEnumValue<PaidBy> PaidByType { get { return _paidByType; } set { _paidByType = value; } }
         private DirtyValue<string> _paidToName;
         public string PaidToName { get { return _paidToName; } set { _paidToName = value; } }
         private DirtyValue<bool?> _pocPtcIndicator;
         public bool? PocPtcIndicator { get { return _pocPtcIndicator; } set { _pocPtcIndicator = value; } }
         private DirtyValue<bool?> _propertyIndicator2015;
         public bool? PropertyIndicator2015 { get { return _propertyIndicator2015; } set { _propertyIndicator2015 = value; } }
-        private DirtyValue<string> _ptbType;
-        public string PtbType { get { return _ptbType; } set { _ptbType = value; } }
+        private StringEnumValue<PTB> _ptbType;
+        public StringEnumValue<PTB> PtbType { get { return _ptbType; } set { _ptbType = value; } }
         private DirtyValue<decimal?> _rate;
         public decimal? Rate { get { return _rate; } set { _rate = value; } }
         private DirtyValue<decimal?> _retainedAmount2015;
@@ -125,8 +126,8 @@ namespace EncompassRest.Loans
         public decimal? UndiscountedInsurance2015 { get { return _undiscountedInsurance2015; } set { _undiscountedInsurance2015 = value; } }
         private DirtyValue<decimal?> _wholePoc;
         public decimal? WholePoc { get { return _wholePoc; } set { _wholePoc = value; } }
-        private DirtyValue<string> _wholePocPaidByType;
-        public string WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
+        private StringEnumValue<WholePocPaidByType> _wholePocPaidByType;
+        public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get { return _wholePocPaidByType; } set { _wholePocPaidByType = value; } }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;

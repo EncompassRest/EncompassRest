@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -27,8 +28,8 @@ namespace EncompassRest.Loans
         public decimal? AsIsValue { get { return _asIsValue; } set { _asIsValue = value; } }
         private DirtyValue<decimal?> _baseMortgageAmountFrom3COr3D;
         public decimal? BaseMortgageAmountFrom3COr3D { get { return _baseMortgageAmountFrom3COr3D; } set { _baseMortgageAmountFrom3COr3D = value; } }
-        private DirtyValue<string> _borrowerAcknowledgement;
-        public string BorrowerAcknowledgement { get { return _borrowerAcknowledgement; } set { _borrowerAcknowledgement = value; } }
+        private StringEnumValue<BorrowerAcknowledgement> _borrowerAcknowledgement;
+        public StringEnumValue<BorrowerAcknowledgement> BorrowerAcknowledgement { get { return _borrowerAcknowledgement; } set { _borrowerAcknowledgement = value; } }
         private DirtyValue<decimal?> _borrowerEstimatedProfit1;
         public decimal? BorrowerEstimatedProfit1 { get { return _borrowerEstimatedProfit1; } set { _borrowerEstimatedProfit1 = value; } }
         private DirtyValue<decimal?> _borrowerEstimatedProfit2;
@@ -61,8 +62,8 @@ namespace EncompassRest.Loans
         public decimal? ContingencyReserveCostsPercent { get { return _contingencyReserveCostsPercent; } set { _contingencyReserveCostsPercent = value; } }
         private DirtyValue<decimal?> _contractSalesPrice;
         public decimal? ContractSalesPrice { get { return _contractSalesPrice; } set { _contractSalesPrice = value; } }
-        private DirtyValue<string> _criteriaForAppropriateLTVFactor;
-        public string CriteriaForAppropriateLTVFactor { get { return _criteriaForAppropriateLTVFactor; } set { _criteriaForAppropriateLTVFactor = value; } }
+        private StringEnumValue<CriteriaForAppropriateLTVFactor> _criteriaForAppropriateLTVFactor;
+        public StringEnumValue<CriteriaForAppropriateLTVFactor> CriteriaForAppropriateLTVFactor { get { return _criteriaForAppropriateLTVFactor; } set { _criteriaForAppropriateLTVFactor = value; } }
         private DirtyValue<string> _dealerContractorAddress;
         public string DealerContractorAddress { get { return _dealerContractorAddress; } set { _dealerContractorAddress = value; } }
         private DirtyValue<string> _dealerContractorCity;
@@ -101,8 +102,8 @@ namespace EncompassRest.Loans
         public decimal? FHA203kB10SubTotal { get { return _fHA203kB10SubTotal; } set { _fHA203kB10SubTotal = value; } }
         private DirtyValue<string> _fHA203kRemarks;
         public string FHA203kRemarks { get { return _fHA203kRemarks; } set { _fHA203kRemarks = value; } }
-        private DirtyValue<string> _fHAStreamlineType;
-        public string FHAStreamlineType { get { return _fHAStreamlineType; } set { _fHAStreamlineType = value; } }
+        private StringEnumValue<FHAStreamlineType> _fHAStreamlineType;
+        public StringEnumValue<FHAStreamlineType> FHAStreamlineType { get { return _fHAStreamlineType; } set { _fHAStreamlineType = value; } }
         private DirtyValue<decimal?> _finalBaseMortgageAmount;
         public decimal? FinalBaseMortgageAmount { get { return _finalBaseMortgageAmount; } set { _finalBaseMortgageAmount = value; } }
         private DirtyValue<decimal?> _financeableMortgageFeesIfCharged;
@@ -225,10 +226,10 @@ namespace EncompassRest.Loans
         public string PropertyOwnerPostalCode { get { return _propertyOwnerPostalCode; } set { _propertyOwnerPostalCode = value; } }
         private DirtyValue<string> _propertyOwnerState;
         public string PropertyOwnerState { get { return _propertyOwnerState; } set { _propertyOwnerState = value; } }
-        private DirtyValue<string> _propertyToBeImproved;
-        public string PropertyToBeImproved { get { return _propertyToBeImproved; } set { _propertyToBeImproved = value; } }
-        private DirtyValue<string> _propertyType;
-        public string PropertyType { get { return _propertyType; } set { _propertyType = value; } }
+        private StringEnumValue<PropertyToBeImproved> _propertyToBeImproved;
+        public StringEnumValue<PropertyToBeImproved> PropertyToBeImproved { get { return _propertyToBeImproved; } set { _propertyToBeImproved = value; } }
+        private StringEnumValue<HudLoanDataPropertyType> _propertyType;
+        public StringEnumValue<HudLoanDataPropertyType> PropertyType { get { return _propertyType; } set { _propertyType = value; } }
         private DirtyValue<DateTime?> _purchaseDate;
         public DateTime? PurchaseDate { get { return _purchaseDate; } set { _purchaseDate = value; } }
         private DirtyValue<bool?> _purchasedOnContract;
@@ -249,10 +250,10 @@ namespace EncompassRest.Loans
         public decimal? RehabilitationEscrowAmountBalanceForFutureDraws { get { return _rehabilitationEscrowAmountBalanceForFutureDraws; } set { _rehabilitationEscrowAmountBalanceForFutureDraws = value; } }
         private DirtyValue<decimal?> _rentalCashFlowBalance;
         public decimal? RentalCashFlowBalance { get { return _rentalCashFlowBalance; } set { _rentalCashFlowBalance = value; } }
-        private DirtyValue<string> _residencyType;
-        public string ResidencyType { get { return _residencyType; } set { _residencyType = value; } }
-        private DirtyValue<string> _riskClass;
-        public string RiskClass { get { return _riskClass; } set { _riskClass = value; } }
+        private StringEnumValue<ResidencyType> _residencyType;
+        public StringEnumValue<ResidencyType> ResidencyType { get { return _residencyType; } set { _residencyType = value; } }
+        private StringEnumValue<HudLoanDataRiskClass> _riskClass;
+        public StringEnumValue<HudLoanDataRiskClass> RiskClass { get { return _riskClass; } set { _riskClass = value; } }
         private DirtyValue<bool?> _scoredByTotal;
         public bool? ScoredByTotal { get { return _scoredByTotal; } set { _scoredByTotal = value; } }
         private DirtyList<SecondaryFinancingProvider> _secondaryFinancingProviders;

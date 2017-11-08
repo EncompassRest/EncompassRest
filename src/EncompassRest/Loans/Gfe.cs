@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -65,12 +66,12 @@ namespace EncompassRest.Loans
         public bool? HasPrepaymentPenaltyIndicator { get { return _hasPrepaymentPenaltyIndicator; } set { _hasPrepaymentPenaltyIndicator = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
-        private DirtyValue<string> _initialFixedOrArmType;
-        public string InitialFixedOrArmType { get { return _initialFixedOrArmType; } set { _initialFixedOrArmType = value; } }
+        private StringEnumValue<InitialFixedOrArmType> _initialFixedOrArmType;
+        public StringEnumValue<InitialFixedOrArmType> InitialFixedOrArmType { get { return _initialFixedOrArmType; } set { _initialFixedOrArmType = value; } }
         private DirtyValue<decimal?> _lenderOriginationFee;
         public decimal? LenderOriginationFee { get { return _lenderOriginationFee; } set { _lenderOriginationFee = value; } }
-        private DirtyValue<string> _loanFromBrokerControledFundsType;
-        public string LoanFromBrokerControledFundsType { get { return _loanFromBrokerControledFundsType; } set { _loanFromBrokerControledFundsType = value; } }
+        private StringEnumValue<LoanFromBrokerControledFundsType> _loanFromBrokerControledFundsType;
+        public StringEnumValue<LoanFromBrokerControledFundsType> LoanFromBrokerControledFundsType { get { return _loanFromBrokerControledFundsType; } set { _loanFromBrokerControledFundsType = value; } }
         private DirtyValue<bool?> _lockField;
         public bool? LockField { get { return _lockField; } set { _lockField = value; } }
         private DirtyValue<decimal?> _maxLifePayment;
@@ -97,8 +98,8 @@ namespace EncompassRest.Loans
         public string NatureLien3PayoffDescription { get { return _natureLien3PayoffDescription; } set { _natureLien3PayoffDescription = value; } }
         private DirtyValue<bool?> _paymentOfPrincipleIndicator;
         public bool? PaymentOfPrincipleIndicator { get { return _paymentOfPrincipleIndicator; } set { _paymentOfPrincipleIndicator = value; } }
-        private DirtyValue<string> _paymentOfPrincipleType;
-        public string PaymentOfPrincipleType { get { return _paymentOfPrincipleType; } set { _paymentOfPrincipleType = value; } }
+        private StringEnumValue<PaymentOfPrincipleType> _paymentOfPrincipleType;
+        public StringEnumValue<PaymentOfPrincipleType> PaymentOfPrincipleType { get { return _paymentOfPrincipleType; } set { _paymentOfPrincipleType = value; } }
         private DirtyValue<int?> _penaltyNotToExceedMonths;
         public int? PenaltyNotToExceedMonths { get { return _penaltyNotToExceedMonths; } set { _penaltyNotToExceedMonths = value; } }
         private DirtyValue<string> _pocPaid1;

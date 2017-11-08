@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -251,10 +252,10 @@ namespace EncompassRest.Loans
         public decimal? Section800BorrowerPaidInitialDiscountPointAmount { get { return _section800BorrowerPaidInitialDiscountPointAmount; } set { _section800BorrowerPaidInitialDiscountPointAmount = value; } }
         private DirtyValue<decimal?> _section800ChargeAmount;
         public decimal? Section800ChargeAmount { get { return _section800ChargeAmount; } set { _section800ChargeAmount = value; } }
-        private DirtyValue<string> _section800CreditChargeType;
-        public string Section800CreditChargeType { get { return _section800CreditChargeType; } set { _section800CreditChargeType = value; } }
-        private DirtyValue<string> _section800IncludeOriginationPointsCreditType;
-        public string Section800IncludeOriginationPointsCreditType { get { return _section800IncludeOriginationPointsCreditType; } set { _section800IncludeOriginationPointsCreditType = value; } }
+        private StringEnumValue<CreditChargeType> _section800CreditChargeType;
+        public StringEnumValue<CreditChargeType> Section800CreditChargeType { get { return _section800CreditChargeType; } set { _section800CreditChargeType = value; } }
+        private StringEnumValue<IncludeOriginationPointsCreditType> _section800IncludeOriginationPointsCreditType;
+        public StringEnumValue<IncludeOriginationPointsCreditType> Section800IncludeOriginationPointsCreditType { get { return _section800IncludeOriginationPointsCreditType; } set { _section800IncludeOriginationPointsCreditType = value; } }
         private DirtyValue<decimal?> _section800InitialDiscountPoint;
         public decimal? Section800InitialDiscountPoint { get { return _section800InitialDiscountPoint; } set { _section800InitialDiscountPoint = value; } }
         private DirtyValue<decimal?> _section800InitialDiscountPointAdditionalAmount;

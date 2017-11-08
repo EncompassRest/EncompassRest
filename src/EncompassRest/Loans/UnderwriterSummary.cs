@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -17,8 +18,8 @@ namespace EncompassRest.Loans
         public DateTime? AppraisalExpiredDate { get { return _appraisalExpiredDate; } set { _appraisalExpiredDate = value; } }
         private DirtyValue<DateTime?> _appraisalOrderedDate;
         public DateTime? AppraisalOrderedDate { get { return _appraisalOrderedDate; } set { _appraisalOrderedDate = value; } }
-        private DirtyValue<string> _appraisalType;
-        public string AppraisalType { get { return _appraisalType; } set { _appraisalType = value; } }
+        private StringEnumValue<UnderwriterSummaryAppraisalType> _appraisalType;
+        public StringEnumValue<UnderwriterSummaryAppraisalType> AppraisalType { get { return _appraisalType; } set { _appraisalType = value; } }
         private DirtyValue<DateTime?> _approvalExpiredDate;
         public DateTime? ApprovalExpiredDate { get { return _approvalExpiredDate; } set { _approvalExpiredDate = value; } }
         private DirtyValue<string> _approvedBy;
@@ -95,8 +96,8 @@ namespace EncompassRest.Loans
         public DateTime? ReviewCompletedDate { get { return _reviewCompletedDate; } set { _reviewCompletedDate = value; } }
         private DirtyValue<DateTime?> _reviewRequestedDate;
         public DateTime? ReviewRequestedDate { get { return _reviewRequestedDate; } set { _reviewRequestedDate = value; } }
-        private DirtyValue<string> _reviewType;
-        public string ReviewType { get { return _reviewType; } set { _reviewType = value; } }
+        private StringEnumValue<ReviewType> _reviewType;
+        public StringEnumValue<ReviewType> ReviewType { get { return _reviewType; } set { _reviewType = value; } }
         private DirtyValue<decimal?> _reviewValue;
         public decimal? ReviewValue { get { return _reviewValue; } set { _reviewValue = value; } }
         private DirtyValue<DateTime?> _sentToDate;

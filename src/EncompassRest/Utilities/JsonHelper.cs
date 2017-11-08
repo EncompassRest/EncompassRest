@@ -301,7 +301,11 @@ namespace EncompassRest.Utilities
                         var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
                         if (backingField != null)
                         {
-                            property.ShouldSerialize = o => o != null && ((IDirty)backingField.GetValue(o))?.Dirty == true;
+                            property.ShouldSerialize = o => ((IDirty)backingField.GetValue(o))?.Dirty == true;
+                        }
+                        else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                        {
+                            property.ShouldSerialize = o => ((IDirty)propertyInfo.GetValue(o))?.Dirty == true;
                         }
                     }
                 }

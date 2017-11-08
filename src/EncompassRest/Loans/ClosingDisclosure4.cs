@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -9,8 +10,8 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ClosingDisclosure4 : IDirty
     {
-        private DirtyValue<string> _demandFeature;
-        public string DemandFeature { get { return _demandFeature; } set { _demandFeature = value; } }
+        private StringEnumValue<DemandFeature> _demandFeature;
+        public StringEnumValue<DemandFeature> DemandFeature { get { return _demandFeature; } set { _demandFeature = value; } }
         private DirtyValue<bool?> _escrowIndicator;
         public bool? EscrowIndicator { get { return _escrowIndicator; } set { _escrowIndicator = value; } }
         private DirtyValue<decimal?> _estimatedPropertyCosts;
@@ -47,8 +48,8 @@ namespace EncompassRest.Loans
         public decimal? MaxPaymentAmt { get { return _maxPaymentAmt; } set { _maxPaymentAmt = value; } }
         private DirtyValue<decimal?> _monthlyEscrowPayment;
         public decimal? MonthlyEscrowPayment { get { return _monthlyEscrowPayment; } set { _monthlyEscrowPayment = value; } }
-        private DirtyValue<string> _negativeAmortization;
-        public string NegativeAmortization { get { return _negativeAmortization; } set { _negativeAmortization = value; } }
+        private StringEnumValue<NegativeAmortization> _negativeAmortization;
+        public StringEnumValue<NegativeAmortization> NegativeAmortization { get { return _negativeAmortization; } set { _negativeAmortization = value; } }
         private DirtyValue<decimal?> _nonEscrowedPropertyCosts1YearConsummation;
         public decimal? NonEscrowedPropertyCosts1YearConsummation { get { return _nonEscrowedPropertyCosts1YearConsummation; } set { _nonEscrowedPropertyCosts1YearConsummation = value; } }
         private DirtyValue<bool?> _other1;

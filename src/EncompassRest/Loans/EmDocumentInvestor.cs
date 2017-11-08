@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -17,8 +18,8 @@ namespace EncompassRest.Loans
         public string InvAsgnJrsdctn { get { return _invAsgnJrsdctn; } set { _invAsgnJrsdctn = value; } }
         private DirtyValue<string> _invAsgnNm;
         public string InvAsgnNm { get { return _invAsgnNm; } set { _invAsgnNm = value; } }
-        private DirtyValue<string> _invAsgnOrgTyp;
-        public string InvAsgnOrgTyp { get { return _invAsgnOrgTyp; } set { _invAsgnOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _invAsgnOrgTyp;
+        public StringEnumValue<OrgTyp> InvAsgnOrgTyp { get { return _invAsgnOrgTyp; } set { _invAsgnOrgTyp = value; } }
         private DirtyValue<string> _invAsgnStCd;
         public string InvAsgnStCd { get { return _invAsgnStCd; } set { _invAsgnStCd = value; } }
         private DirtyValue<string> _invAsgnStreetAddr1;
@@ -49,8 +50,8 @@ namespace EncompassRest.Loans
         public string InvLossPayeeJrsdctn { get { return _invLossPayeeJrsdctn; } set { _invLossPayeeJrsdctn = value; } }
         private DirtyValue<string> _invLossPayeeNm;
         public string InvLossPayeeNm { get { return _invLossPayeeNm; } set { _invLossPayeeNm = value; } }
-        private DirtyValue<string> _invLossPayeeOrgTyp;
-        public string InvLossPayeeOrgTyp { get { return _invLossPayeeOrgTyp; } set { _invLossPayeeOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _invLossPayeeOrgTyp;
+        public StringEnumValue<OrgTyp> InvLossPayeeOrgTyp { get { return _invLossPayeeOrgTyp; } set { _invLossPayeeOrgTyp = value; } }
         private DirtyValue<string> _invLossPayeeScsrClausTxtDesc;
         public string InvLossPayeeScsrClausTxtDesc { get { return _invLossPayeeScsrClausTxtDesc; } set { _invLossPayeeScsrClausTxtDesc = value; } }
         private DirtyValue<string> _invLossPayeeStCd;
@@ -63,8 +64,8 @@ namespace EncompassRest.Loans
         public string InvLossPayeeZip { get { return _invLossPayeeZip; } set { _invLossPayeeZip = value; } }
         private DirtyValue<string> _invNm;
         public string InvNm { get { return _invNm; } set { _invNm = value; } }
-        private DirtyValue<string> _invOrgTyp;
-        public string InvOrgTyp { get { return _invOrgTyp; } set { _invOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _invOrgTyp;
+        public StringEnumValue<OrgTyp> InvOrgTyp { get { return _invOrgTyp; } set { _invOrgTyp = value; } }
         private DirtyValue<string> _invPhoneNum;
         public string InvPhoneNum { get { return _invPhoneNum; } set { _invPhoneNum = value; } }
         private DirtyValue<string> _invPmtCpn2PayToAdtlTxt;
@@ -155,8 +156,8 @@ namespace EncompassRest.Loans
         public string InvSvcrJrsdctn { get { return _invSvcrJrsdctn; } set { _invSvcrJrsdctn = value; } }
         private DirtyValue<string> _invSvcrNm;
         public string InvSvcrNm { get { return _invSvcrNm; } set { _invSvcrNm = value; } }
-        private DirtyValue<string> _invSvcrOrgTyp;
-        public string InvSvcrOrgTyp { get { return _invSvcrOrgTyp; } set { _invSvcrOrgTyp = value; } }
+        private StringEnumValue<OrgTyp> _invSvcrOrgTyp;
+        public StringEnumValue<OrgTyp> InvSvcrOrgTyp { get { return _invSvcrOrgTyp; } set { _invSvcrOrgTyp = value; } }
         private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToAdtlTxt;
         public string InvSvcrQlfdWrtnRqstMailToAdtlTxt { get { return _invSvcrQlfdWrtnRqstMailToAdtlTxt; } set { _invSvcrQlfdWrtnRqstMailToAdtlTxt = value; } }
         private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToCty;

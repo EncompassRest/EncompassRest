@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -15,8 +16,8 @@ namespace EncompassRest.Loans
         public string BlockIdentifier { get { return _blockIdentifier; } set { _blockIdentifier = value; } }
         private DirtyValue<bool?> _borrowerHomesteadIndicator;
         public bool? BorrowerHomesteadIndicator { get { return _borrowerHomesteadIndicator; } set { _borrowerHomesteadIndicator = value; } }
-        private DirtyValue<string> _buildingStatusType;
-        public string BuildingStatusType { get { return _buildingStatusType; } set { _buildingStatusType = value; } }
+        private StringEnumValue<BuildingStatusType> _buildingStatusType;
+        public StringEnumValue<BuildingStatusType> BuildingStatusType { get { return _buildingStatusType; } set { _buildingStatusType = value; } }
         private DirtyValue<string> _city;
         public string City { get { return _city; } set { _city = value; } }
         private DirtyValue<bool?> _condotelIndicator;
@@ -31,10 +32,10 @@ namespace EncompassRest.Loans
         public string FloodCertificationIdentifier { get { return _floodCertificationIdentifier; } set { _floodCertificationIdentifier = value; } }
         private DirtyValue<decimal?> _freCashOutAmount;
         public decimal? FreCashOutAmount { get { return _freCashOutAmount; } set { _freCashOutAmount = value; } }
-        private DirtyValue<string> _gseRefinancePurposeType;
-        public string GseRefinancePurposeType { get { return _gseRefinancePurposeType; } set { _gseRefinancePurposeType = value; } }
-        private DirtyValue<string> _gseTitleMannerHeldDescription;
-        public string GseTitleMannerHeldDescription { get { return _gseTitleMannerHeldDescription; } set { _gseTitleMannerHeldDescription = value; } }
+        private StringEnumValue<RefinancePurpose> _gseRefinancePurposeType;
+        public StringEnumValue<RefinancePurpose> GseRefinancePurposeType { get { return _gseRefinancePurposeType; } set { _gseRefinancePurposeType = value; } }
+        private StringEnumValue<GseTitleMannerHeldDescription> _gseTitleMannerHeldDescription;
+        public StringEnumValue<GseTitleMannerHeldDescription> GseTitleMannerHeldDescription { get { return _gseTitleMannerHeldDescription; } set { _gseTitleMannerHeldDescription = value; } }
         private DirtyValue<string> _id;
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<bool?> _isConstructionPhaseDisclosedSeparately;
@@ -49,8 +50,8 @@ namespace EncompassRest.Loans
         public bool? LinkedIsConstructionPhaseDisclosedSeparately { get { return _linkedIsConstructionPhaseDisclosedSeparately; } set { _linkedIsConstructionPhaseDisclosedSeparately = value; } }
         private DirtyValue<string> _linkedLoanPurposeType;
         public string LinkedLoanPurposeType { get { return _linkedLoanPurposeType; } set { _linkedLoanPurposeType = value; } }
-        private DirtyValue<string> _loanPurposeType;
-        public string LoanPurposeType { get { return _loanPurposeType; } set { _loanPurposeType = value; } }
+        private StringEnumValue<LoanPurposeType> _loanPurposeType;
+        public StringEnumValue<LoanPurposeType> LoanPurposeType { get { return _loanPurposeType; } set { _loanPurposeType = value; } }
         private DirtyValue<decimal?> _lotAcres;
         public decimal? LotAcres { get { return _lotAcres; } set { _lotAcres = value; } }
         private DirtyValue<string> _lotIdentifier;
@@ -83,14 +84,14 @@ namespace EncompassRest.Loans
         public DateTime? PropertyLeaseholdExpirationDate { get { return _propertyLeaseholdExpirationDate; } set { _propertyLeaseholdExpirationDate = value; } }
         private DirtyValue<decimal?> _propertyOriginalCostAmount;
         public decimal? PropertyOriginalCostAmount { get { return _propertyOriginalCostAmount; } set { _propertyOriginalCostAmount = value; } }
-        private DirtyValue<string> _propertyRightsType;
-        public string PropertyRightsType { get { return _propertyRightsType; } set { _propertyRightsType = value; } }
+        private StringEnumValue<PropertyRightsType> _propertyRightsType;
+        public StringEnumValue<PropertyRightsType> PropertyRightsType { get { return _propertyRightsType; } set { _propertyRightsType = value; } }
         private DirtyValue<string> _propertyUsageType;
         public string PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
         private DirtyValue<decimal?> _refinanceImprovementCostsAmount;
         public decimal? RefinanceImprovementCostsAmount { get { return _refinanceImprovementCostsAmount; } set { _refinanceImprovementCostsAmount = value; } }
-        private DirtyValue<string> _refinanceImprovementsType;
-        public string RefinanceImprovementsType { get { return _refinanceImprovementsType; } set { _refinanceImprovementsType = value; } }
+        private StringEnumValue<RefinanceImprovementsType> _refinanceImprovementsType;
+        public StringEnumValue<RefinanceImprovementsType> RefinanceImprovementsType { get { return _refinanceImprovementsType; } set { _refinanceImprovementsType = value; } }
         private DirtyValue<string> _refinancePropertyAcquiredYear;
         public string RefinancePropertyAcquiredYear { get { return _refinancePropertyAcquiredYear; } set { _refinancePropertyAcquiredYear = value; } }
         private DirtyValue<decimal?> _refinancePropertyExistingLienAmount;

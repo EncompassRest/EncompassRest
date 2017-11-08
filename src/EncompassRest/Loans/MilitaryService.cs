@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -19,8 +20,8 @@ namespace EncompassRest.Loans
         public int? MilitaryServiceIndex { get { return _militaryServiceIndex; } set { _militaryServiceIndex = value; } }
         private DirtyValue<string> _name;
         public string Name { get { return _name; } set { _name = value; } }
-        private DirtyValue<string> _officerOrEnlisted;
-        public string OfficerOrEnlisted { get { return _officerOrEnlisted; } set { _officerOrEnlisted = value; } }
+        private StringEnumValue<OfficerOrEnlisted> _officerOrEnlisted;
+        public StringEnumValue<OfficerOrEnlisted> OfficerOrEnlisted { get { return _officerOrEnlisted; } set { _officerOrEnlisted = value; } }
         private DirtyValue<string> _serviceNumber;
         public string ServiceNumber { get { return _serviceNumber; } set { _serviceNumber = value; } }
         private DirtyValue<string> _sSN;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -27,16 +28,16 @@ namespace EncompassRest.Loans
         public string Id { get { return _id; } set { _id = value; } }
         private DirtyValue<bool?> _seventySixTo100Indicator;
         public bool? SeventySixTo100Indicator { get { return _seventySixTo100Indicator; } set { _seventySixTo100Indicator = value; } }
-        private DirtyValue<string> _thisEstimateType;
-        public string ThisEstimateType { get { return _thisEstimateType; } set { _thisEstimateType = value; } }
-        private DirtyValue<string> _thisInformationType;
-        public string ThisInformationType { get { return _thisInformationType; } set { _thisInformationType = value; } }
+        private StringEnumValue<DoesOrDoesNot2> _thisEstimateType;
+        public StringEnumValue<DoesOrDoesNot2> ThisEstimateType { get { return _thisEstimateType; } set { _thisEstimateType = value; } }
+        private StringEnumValue<DoesOrDoesNot2> _thisInformationType;
+        public StringEnumValue<DoesOrDoesNot2> ThisInformationType { get { return _thisInformationType; } set { _thisInformationType = value; } }
         private DirtyValue<bool?> _thisIsOurRecordOfTransferingIndicator;
         public bool? ThisIsOurRecordOfTransferingIndicator { get { return _thisIsOurRecordOfTransferingIndicator; } set { _thisIsOurRecordOfTransferingIndicator = value; } }
         private DirtyValue<bool?> _twentySixTo50Indicator;
         public bool? TwentySixTo50Indicator { get { return _twentySixTo50Indicator; } set { _twentySixTo50Indicator = value; } }
-        private DirtyValue<string> _weAreAbleType;
-        public string WeAreAbleType { get { return _weAreAbleType; } set { _weAreAbleType = value; } }
+        private StringEnumValue<WeAreAbleType> _weAreAbleType;
+        public StringEnumValue<WeAreAbleType> WeAreAbleType { get { return _weAreAbleType; } set { _weAreAbleType = value; } }
         private DirtyValue<bool?> _weDoNotSellMortgageLoansIndicator;
         public bool? WeDoNotSellMortgageLoansIndicator { get { return _weDoNotSellMortgageLoansIndicator; } set { _weDoNotSellMortgageLoansIndicator = value; } }
         private DirtyValue<bool?> _weDoNotServiceMortgageLoansIndicator;

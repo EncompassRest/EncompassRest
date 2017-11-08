@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -9,10 +10,10 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanEstimate3 : IDirty
     {
-        private DirtyValue<string> _appraisal;
-        public string Appraisal { get { return _appraisal; } set { _appraisal = value; } }
-        private DirtyValue<string> _assumption;
-        public string Assumption { get { return _assumption; } set { _assumption = value; } }
+        private StringEnumValue<Appraisal> _appraisal;
+        public StringEnumValue<Appraisal> Appraisal { get { return _appraisal; } set { _appraisal = value; } }
+        private StringEnumValue<Assumption> _assumption;
+        public StringEnumValue<Assumption> Assumption { get { return _assumption; } set { _assumption = value; } }
         private DirtyValue<bool?> _constructionLoan;
         public bool? ConstructionLoan { get { return _constructionLoan; } set { _constructionLoan = value; } }
         private DirtyValue<bool?> _homeownerInsurance;
@@ -55,10 +56,10 @@ namespace EncompassRest.Loans
         public string MortgageBrokerPhone { get { return _mortgageBrokerPhone; } set { _mortgageBrokerPhone = value; } }
         private DirtyValue<string> _mortgageLenderLoanOfficerLicenseID;
         public string MortgageLenderLoanOfficerLicenseID { get { return _mortgageLenderLoanOfficerLicenseID; } set { _mortgageLenderLoanOfficerLicenseID = value; } }
-        private DirtyValue<string> _servicing;
-        public string Servicing { get { return _servicing; } set { _servicing = value; } }
-        private DirtyValue<string> _signatureType;
-        public string SignatureType { get { return _signatureType; } set { _signatureType = value; } }
+        private StringEnumValue<Servicing> _servicing;
+        public StringEnumValue<Servicing> Servicing { get { return _servicing; } set { _servicing = value; } }
+        private StringEnumValue<SignatureType> _signatureType;
+        public StringEnumValue<SignatureType> SignatureType { get { return _signatureType; } set { _signatureType = value; } }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get { return _totalInterestPercentage; } set { _totalInterestPercentage = value; } }
         private DirtyDictionary<string, object> _extensionData;

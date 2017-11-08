@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -193,8 +194,8 @@ namespace EncompassRest.Loans
         public bool? UnderwritingDelegated { get { return _underwritingDelegated; } set { _underwritingDelegated = value; } }
         private DirtyValue<bool?> _watchListFlag;
         public bool? WatchListFlag { get { return _watchListFlag; } set { _watchListFlag = value; } }
-        private DirtyValue<string> _watchListReason;
-        public string WatchListReason { get { return _watchListReason; } set { _watchListReason = value; } }
+        private StringEnumValue<WatchListReason> _watchListReason;
+        public StringEnumValue<WatchListReason> WatchListReason { get { return _watchListReason; } set { _watchListReason = value; } }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;

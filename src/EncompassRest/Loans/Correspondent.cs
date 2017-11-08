@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -17,12 +18,12 @@ namespace EncompassRest.Loans
         public decimal? BasePrice { get { return _basePrice; } set { _basePrice = value; } }
         private DirtyValue<DateTime?> _cancelledDate;
         public DateTime? CancelledDate { get { return _cancelledDate; } set { _cancelledDate = value; } }
-        private DirtyValue<string> _commitmentType;
-        public string CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
+        private StringEnumValue<CommitmentType> _commitmentType;
+        public StringEnumValue<CommitmentType> CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
         private DirtyValue<DateTime?> _conditionsReceivedDate;
         public DateTime? ConditionsReceivedDate { get { return _conditionsReceivedDate; } set { _conditionsReceivedDate = value; } }
-        private DirtyValue<string> _correspondentStatus;
-        public string CorrespondentStatus { get { return _correspondentStatus; } set { _correspondentStatus = value; } }
+        private StringEnumValue<CorrespondentStatus> _correspondentStatus;
+        public StringEnumValue<CorrespondentStatus> CorrespondentStatus { get { return _correspondentStatus; } set { _correspondentStatus = value; } }
         private DirtyValue<DateTime?> _deliveryExpirationDate;
         public DateTime? DeliveryExpirationDate { get { return _deliveryExpirationDate; } set { _deliveryExpirationDate = value; } }
         private DirtyValue<string> _deliveryType;
@@ -45,8 +46,8 @@ namespace EncompassRest.Loans
         public DateTime? LateDaysEnd { get { return _lateDaysEnd; } set { _lateDaysEnd = value; } }
         private DirtyValue<string> _lateDaysEndTrigger;
         public string LateDaysEndTrigger { get { return _lateDaysEndTrigger; } set { _lateDaysEndTrigger = value; } }
-        private DirtyValue<string> _lateFeeChargeType;
-        public string LateFeeChargeType { get { return _lateFeeChargeType; } set { _lateFeeChargeType = value; } }
+        private StringEnumValue<LateFeeChargeType> _lateFeeChargeType;
+        public StringEnumValue<LateFeeChargeType> LateFeeChargeType { get { return _lateFeeChargeType; } set { _lateFeeChargeType = value; } }
         private DirtyValue<string> _lateFeeFrequency;
         public string LateFeeFrequency { get { return _lateFeeFrequency; } set { _lateFeeFrequency = value; } }
         private DirtyValue<string> _lateFeeNotes;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -21,8 +22,8 @@ namespace EncompassRest.Loans
         public int? ProfitManagementItemIndex { get { return _profitManagementItemIndex; } set { _profitManagementItemIndex = value; } }
         private DirtyValue<decimal?> _total;
         public decimal? Total { get { return _total; } set { _total = value; } }
-        private DirtyValue<string> _type;
-        public string Type { get { return _type; } set { _type = value; } }
+        private StringEnumValue<ProfitManagementItemType> _type;
+        public StringEnumValue<ProfitManagementItemType> Type { get { return _type; } set { _type = value; } }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;

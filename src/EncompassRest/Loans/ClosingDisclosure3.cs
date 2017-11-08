@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -77,12 +78,12 @@ namespace EncompassRest.Loans
         public decimal? ALTLegalLimit { get { return _aLTLegalLimit; } set { _aLTLegalLimit = value; } }
         private DirtyValue<string> _aLTLoanAmountDidChangeCol;
         public string ALTLoanAmountDidChangeCol { get { return _aLTLoanAmountDidChangeCol; } set { _aLTLoanAmountDidChangeCol = value; } }
-        private DirtyValue<string> _aLTLoanAmountIncDecRemark;
-        public string ALTLoanAmountIncDecRemark { get { return _aLTLoanAmountIncDecRemark; } set { _aLTLoanAmountIncDecRemark = value; } }
+        private StringEnumValue<IncreasedOrDecreased> _aLTLoanAmountIncDecRemark;
+        public StringEnumValue<IncreasedOrDecreased> ALTLoanAmountIncDecRemark { get { return _aLTLoanAmountIncDecRemark; } set { _aLTLoanAmountIncDecRemark = value; } }
         private DirtyValue<string> _aLTTotalClosingCostDidChangeCol;
         public string ALTTotalClosingCostDidChangeCol { get { return _aLTTotalClosingCostDidChangeCol; } set { _aLTTotalClosingCostDidChangeCol = value; } }
-        private DirtyValue<string> _aLTTotalClosingCostRemark;
-        public string ALTTotalClosingCostRemark { get { return _aLTTotalClosingCostRemark; } set { _aLTTotalClosingCostRemark = value; } }
+        private StringEnumValue<TotalClosingCostRemark> _aLTTotalClosingCostRemark;
+        public StringEnumValue<TotalClosingCostRemark> ALTTotalClosingCostRemark { get { return _aLTTotalClosingCostRemark; } set { _aLTTotalClosingCostRemark = value; } }
         private DirtyValue<string> _aLTTotalPayoffsDidChangeCol;
         public string ALTTotalPayoffsDidChangeCol { get { return _aLTTotalPayoffsDidChangeCol; } set { _aLTTotalPayoffsDidChangeCol = value; } }
         private DirtyValue<decimal?> _cash;
@@ -227,22 +228,22 @@ namespace EncompassRest.Loans
         public decimal? OtherCredits7_2 { get { return _otherCredits7_2; } set { _otherCredits7_2 = value; } }
         private DirtyValue<decimal?> _priorToleranceCureAmount;
         public decimal? PriorToleranceCureAmount { get { return _priorToleranceCureAmount; } set { _priorToleranceCureAmount = value; } }
-        private DirtyValue<string> _sTDAdjustmentAndOtherCreditsRemark;
-        public string STDAdjustmentAndOtherCreditsRemark { get { return _sTDAdjustmentAndOtherCreditsRemark; } set { _sTDAdjustmentAndOtherCreditsRemark = value; } }
+        private StringEnumValue<STDAdjustmentAndOtherCreditsRemark> _sTDAdjustmentAndOtherCreditsRemark;
+        public StringEnumValue<STDAdjustmentAndOtherCreditsRemark> STDAdjustmentAndOtherCreditsRemark { get { return _sTDAdjustmentAndOtherCreditsRemark; } set { _sTDAdjustmentAndOtherCreditsRemark = value; } }
         private DirtyValue<string> _sTDAdjustmentsDidChangeCol;
         public string STDAdjustmentsDidChangeCol { get { return _sTDAdjustmentsDidChangeCol; } set { _sTDAdjustmentsDidChangeCol = value; } }
         private DirtyValue<string> _sTDClosingCostFinancedDidChangeCol;
         public string STDClosingCostFinancedDidChangeCol { get { return _sTDClosingCostFinancedDidChangeCol; } set { _sTDClosingCostFinancedDidChangeCol = value; } }
         private DirtyValue<string> _sTDDepositDidChangeCol;
         public string STDDepositDidChangeCol { get { return _sTDDepositDidChangeCol; } set { _sTDDepositDidChangeCol = value; } }
-        private DirtyValue<string> _sTDDepositIncDecRemark;
-        public string STDDepositIncDecRemark { get { return _sTDDepositIncDecRemark; } set { _sTDDepositIncDecRemark = value; } }
+        private StringEnumValue<IncreasedOrDecreased> _sTDDepositIncDecRemark;
+        public StringEnumValue<IncreasedOrDecreased> STDDepositIncDecRemark { get { return _sTDDepositIncDecRemark; } set { _sTDDepositIncDecRemark = value; } }
         private DirtyValue<string> _sTDDownPaymentDidChangeCol;
         public string STDDownPaymentDidChangeCol { get { return _sTDDownPaymentDidChangeCol; } set { _sTDDownPaymentDidChangeCol = value; } }
-        private DirtyValue<string> _sTDDownPaymentIncDecRemark;
-        public string STDDownPaymentIncDecRemark { get { return _sTDDownPaymentIncDecRemark; } set { _sTDDownPaymentIncDecRemark = value; } }
-        private DirtyValue<string> _sTDDownPaymentSectionRemark;
-        public string STDDownPaymentSectionRemark { get { return _sTDDownPaymentSectionRemark; } set { _sTDDownPaymentSectionRemark = value; } }
+        private StringEnumValue<IncreasedOrDecreased> _sTDDownPaymentIncDecRemark;
+        public StringEnumValue<IncreasedOrDecreased> STDDownPaymentIncDecRemark { get { return _sTDDownPaymentIncDecRemark; } set { _sTDDownPaymentIncDecRemark = value; } }
+        private StringEnumValue<STDDownPaymentSectionRemark> _sTDDownPaymentSectionRemark;
+        public StringEnumValue<STDDownPaymentSectionRemark> STDDownPaymentSectionRemark { get { return _sTDDownPaymentSectionRemark; } set { _sTDDownPaymentSectionRemark = value; } }
         private DirtyValue<decimal?> _sTDFinalAdjustmentAndOtherCredits;
         public decimal? STDFinalAdjustmentAndOtherCredits { get { return _sTDFinalAdjustmentAndOtherCredits; } set { _sTDFinalAdjustmentAndOtherCredits = value; } }
         private DirtyValue<decimal?> _sTDFinalCashToClose;
@@ -263,8 +264,8 @@ namespace EncompassRest.Loans
         public decimal? STDFinalTotalClosingCostJ { get { return _sTDFinalTotalClosingCostJ; } set { _sTDFinalTotalClosingCostJ = value; } }
         private DirtyValue<string> _sTDFundsForBorrowerDidChangeCol;
         public string STDFundsForBorrowerDidChangeCol { get { return _sTDFundsForBorrowerDidChangeCol; } set { _sTDFundsForBorrowerDidChangeCol = value; } }
-        private DirtyValue<string> _sTDFundsForBorrowerIncDecRemark;
-        public string STDFundsForBorrowerIncDecRemark { get { return _sTDFundsForBorrowerIncDecRemark; } set { _sTDFundsForBorrowerIncDecRemark = value; } }
+        private StringEnumValue<IncreasedOrDecreased> _sTDFundsForBorrowerIncDecRemark;
+        public StringEnumValue<IncreasedOrDecreased> STDFundsForBorrowerIncDecRemark { get { return _sTDFundsForBorrowerIncDecRemark; } set { _sTDFundsForBorrowerIncDecRemark = value; } }
         private DirtyValue<decimal?> _sTDLEAdjustmentAndOtherCredits;
         public decimal? STDLEAdjustmentAndOtherCredits { get { return _sTDLEAdjustmentAndOtherCredits; } set { _sTDLEAdjustmentAndOtherCredits = value; } }
         private DirtyValue<decimal?> _sTDLECashToClose;
@@ -287,14 +288,14 @@ namespace EncompassRest.Loans
         public decimal? STDLETotalClosingCostJ { get { return _sTDLETotalClosingCostJ; } set { _sTDLETotalClosingCostJ = value; } }
         private DirtyValue<string> _sTDSellerCreditsDidChangeCol;
         public string STDSellerCreditsDidChangeCol { get { return _sTDSellerCreditsDidChangeCol; } set { _sTDSellerCreditsDidChangeCol = value; } }
-        private DirtyValue<string> _sTDSellerCreditsIncDecRemark;
-        public string STDSellerCreditsIncDecRemark { get { return _sTDSellerCreditsIncDecRemark; } set { _sTDSellerCreditsIncDecRemark = value; } }
+        private StringEnumValue<IncreasedOrDecreased> _sTDSellerCreditsIncDecRemark;
+        public StringEnumValue<IncreasedOrDecreased> STDSellerCreditsIncDecRemark { get { return _sTDSellerCreditsIncDecRemark; } set { _sTDSellerCreditsIncDecRemark = value; } }
         private DirtyValue<string> _sTDTotalClosingCostBeforeClosingDidChangeCol;
         public string STDTotalClosingCostBeforeClosingDidChangeCol { get { return _sTDTotalClosingCostBeforeClosingDidChangeCol; } set { _sTDTotalClosingCostBeforeClosingDidChangeCol = value; } }
         private DirtyValue<string> _sTDTotalClosingCostDidChangeCol;
         public string STDTotalClosingCostDidChangeCol { get { return _sTDTotalClosingCostDidChangeCol; } set { _sTDTotalClosingCostDidChangeCol = value; } }
-        private DirtyValue<string> _sTDTotalClosingCostRemark;
-        public string STDTotalClosingCostRemark { get { return _sTDTotalClosingCostRemark; } set { _sTDTotalClosingCostRemark = value; } }
+        private StringEnumValue<TotalClosingCostRemark> _sTDTotalClosingCostRemark;
+        public StringEnumValue<TotalClosingCostRemark> STDTotalClosingCostRemark { get { return _sTDTotalClosingCostRemark; } set { _sTDTotalClosingCostRemark = value; } }
         private DirtyValue<decimal?> _totalAdjustmentsAndOtherCredits;
         public decimal? TotalAdjustmentsAndOtherCredits { get { return _totalAdjustmentsAndOtherCredits; } set { _totalAdjustmentsAndOtherCredits = value; } }
         private DirtyValue<decimal?> _totalDuefromBorrowerAtClosing;

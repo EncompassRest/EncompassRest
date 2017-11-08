@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
+using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
@@ -57,10 +58,10 @@ namespace EncompassRest.Loans
         public DateTime? LastAppliedDate { get { return _lastAppliedDate; } set { _lastAppliedDate = value; } }
         private DirtyValue<string> _lastAppliedDateTime;
         public string LastAppliedDateTime { get { return _lastAppliedDateTime; } set { _lastAppliedDateTime = value; } }
-        private DirtyValue<string> _loanAmountType;
-        public string LoanAmountType { get { return _loanAmountType; } set { _loanAmountType = value; } }
-        private DirtyValue<string> _loanAmountTypeForOfficer;
-        public string LoanAmountTypeForOfficer { get { return _loanAmountTypeForOfficer; } set { _loanAmountTypeForOfficer = value; } }
+        private StringEnumValue<LoanAmountType> _loanAmountType;
+        public StringEnumValue<LoanAmountType> LoanAmountType { get { return _loanAmountType; } set { _loanAmountType = value; } }
+        private StringEnumValue<LoanAmountType> _loanAmountTypeForOfficer;
+        public StringEnumValue<LoanAmountType> LoanAmountTypeForOfficer { get { return _loanAmountTypeForOfficer; } set { _loanAmountTypeForOfficer = value; } }
         private DirtyValue<string> _loanOriginatorID;
         public string LoanOriginatorID { get { return _loanOriginatorID; } set { _loanOriginatorID = value; } }
         private DirtyValue<string> _loanOriginatorIDForOfficer;
@@ -79,14 +80,14 @@ namespace EncompassRest.Loans
         public string PlanName { get { return _planName; } set { _planName = value; } }
         private DirtyValue<string> _planNameForOfficer;
         public string PlanNameForOfficer { get { return _planNameForOfficer; } set { _planNameForOfficer = value; } }
-        private DirtyValue<string> _roundingMethod;
-        public string RoundingMethod { get { return _roundingMethod; } set { _roundingMethod = value; } }
-        private DirtyValue<string> _roundingMethodForOfficer;
-        public string RoundingMethodForOfficer { get { return _roundingMethodForOfficer; } set { _roundingMethodForOfficer = value; } }
+        private StringEnumValue<RoundingMethod> _roundingMethod;
+        public StringEnumValue<RoundingMethod> RoundingMethod { get { return _roundingMethod; } set { _roundingMethod = value; } }
+        private StringEnumValue<RoundingMethod> _roundingMethodForOfficer;
+        public StringEnumValue<RoundingMethod> RoundingMethodForOfficer { get { return _roundingMethodForOfficer; } set { _roundingMethodForOfficer = value; } }
         private DirtyValue<string> _triggerField;
         public string TriggerField { get { return _triggerField; } set { _triggerField = value; } }
-        private DirtyValue<string> _whoPaidCompensation;
-        public string WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
+        private StringEnumValue<WhoPaidCompensation> _whoPaidCompensation;
+        public StringEnumValue<WhoPaidCompensation> WhoPaidCompensation { get { return _whoPaidCompensation; } set { _whoPaidCompensation = value; } }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
         private bool _gettingDirty;
