@@ -5,9 +5,12 @@ namespace EncompassRest.Utilities
 {
     internal sealed class JsonStringContent : StringContent
     {
+        public string Json { get; }
+
         public JsonStringContent(string json)
             : base(json)
         {
+            Json = json;
             Headers.ContentType = new MediaTypeHeaderValue("application/json");
         }
     }

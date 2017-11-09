@@ -33,7 +33,7 @@ namespace EncompassRest.LoanPipeline
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -57,13 +57,13 @@ namespace EncompassRest.LoanPipeline
                 const string countHeaderName = "x-total-count";
                 if (!headers.TryGetValues(countHeaderName, out counts))
                 {
-                    throw await RestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {countHeaderName} header", response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {countHeaderName} header", response).ConfigureAwait(false);
                 }
                 var countString = counts.First();
                 int count;
                 if (!int.TryParse(countString, out count) || count < 0)
                 {
-                    throw await RestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
                 }
                 if (count == 0)
                 {
@@ -73,7 +73,7 @@ namespace EncompassRest.LoanPipeline
                 const string cursorIdHeaderName = "x-cursor";
                 if (!headers.TryGetValues(cursorIdHeaderName, out cursorIds))
                 {
-                    throw await RestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {cursorIdHeaderName} header", response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {cursorIdHeaderName} header", response).ConfigureAwait(false);
                 }
                 var cursorId = cursorIds.First();
                 return new LoanPipelineCursor(Client, cursorId, count, parameters.Fields);
@@ -135,7 +135,7 @@ namespace EncompassRest.LoanPipeline
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(methodName, response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(methodName, response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);

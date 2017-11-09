@@ -102,7 +102,7 @@ namespace EncompassRest.Token
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(SetTokenAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(SetTokenAsync), response).ConfigureAwait(false);
                 }
 
                 var tokenResponse = await response.Content.ReadAsAsync<TokenResponse>().ConfigureAwait(false);

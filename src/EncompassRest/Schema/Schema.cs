@@ -115,7 +115,7 @@ namespace EncompassRest.Schema
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetLoanSchemaAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetLoanSchemaAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -146,7 +146,7 @@ namespace EncompassRest.Schema
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetFieldSchemaAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetFieldSchemaAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);

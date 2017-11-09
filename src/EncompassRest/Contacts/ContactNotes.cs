@@ -53,7 +53,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetNoteAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetNoteAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
@@ -81,7 +81,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetNotesAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetNotesAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
@@ -133,7 +133,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateNoteAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(CreateNoteAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -181,7 +181,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateNoteAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateNoteAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);

@@ -52,7 +52,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetDocumentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -81,7 +81,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentsAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetDocumentsAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -112,7 +112,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetDocumentAttachmentsAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetDocumentAttachmentsAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -163,7 +163,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateDocumentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(CreateDocumentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -211,7 +211,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -259,7 +259,7 @@ namespace EncompassRest.Loans.Documents
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateDocumentAsync), response).ConfigureAwait(false);
                 }
             }
         }

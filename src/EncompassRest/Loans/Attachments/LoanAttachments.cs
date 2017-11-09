@@ -50,7 +50,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -79,7 +79,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetAttachmentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -97,7 +97,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetAttachmentUrlAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetAttachmentUrlAsync), response).ConfigureAwait(false);
                 }
 
                 var attachmentUrl = await response.Content.ReadAsAsync<AttachmentUrl>().ConfigureAwait(false);
@@ -151,7 +151,7 @@ namespace EncompassRest.Loans.Attachments
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateAttachmentAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateAttachmentAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);

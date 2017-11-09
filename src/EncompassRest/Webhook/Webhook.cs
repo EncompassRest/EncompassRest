@@ -34,7 +34,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetResourcesAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetResourcesAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -65,7 +65,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetResourcesAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetResourcesAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -101,7 +101,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -168,7 +168,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetSubscriptionsAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetSubscriptionsAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -202,7 +202,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateSubscriptionAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(CreateSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
                 action?.Invoke();
@@ -239,7 +239,7 @@ namespace EncompassRest.Webhook
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateSubscriptionAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateSubscriptionAsync), response).ConfigureAwait(false);
                 }
 
                 action?.Invoke();

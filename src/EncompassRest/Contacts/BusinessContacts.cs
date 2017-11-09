@@ -45,7 +45,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetContactAsync)}/{contactId}", response).ConfigureAwait(false) : await RestException.CreateAsync($"{nameof(GetContactAsync)}", response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync($"{nameof(GetContactAsync)}/{contactId}", response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
@@ -98,7 +98,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateContactAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(CreateContactAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -149,7 +149,7 @@ namespace EncompassRest.Contacts
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateContactAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateContactAsync), response).ConfigureAwait(false);
                 }
                 return await func(response).ConfigureAwait(false);
             }
