@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
@@ -153,6 +155,25 @@ namespace EncompassRest.Tests
             var loan = JToken.Parse(json);
             loanId = loan["encompassId"].ToString();
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
+        }
+
+        [TestMethod]
+        public async Task Loan_BadUpdateException()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanRawAsync("{}");
+            Assert.IsNotNull(loanId);
+            var ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanRawAsync(loanId, "{invalidJson}"));
+            Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
+            Assert.AreEqual("{invalidJson}", ex.RequestContent);
+            var loan = new Loan(client, Guid.NewGuid().ToString("D"))
+            {
+                Tltv = 85.00M
+            };
+            ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
+            Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
+            Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
+            Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
     }
 }
