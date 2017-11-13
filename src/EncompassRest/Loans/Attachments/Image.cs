@@ -7,19 +7,19 @@ namespace EncompassRest.Loans.Attachments
     public abstract class Image : IDirty
     {
         private DirtyValue<string> _imageKey;
-        public string ImageKey { get { return _imageKey; } set { _imageKey = value; } }
+        public string ImageKey { get => _imageKey; set => _imageKey = value; }
         private DirtyValue<string> _zipKey;
-        public string ZipKey { get { return _zipKey; } set { _zipKey = value; } }
+        public string ZipKey { get => _zipKey; set => _zipKey = value; }
         private DirtyValue<int?> _width;
-        public int? Width { get { return _width; } set { _width = value; } }
+        public int? Width { get => _width; set => _width = value; }
         private DirtyValue<int?> _height;
-        public int? Height { get { return _height; } set { _height = value; } }
+        public int? Height { get => _height; set => _height = value; }
         private DirtyValue<float?> _horizontalResolution;
-        public float? HorizontalResolution { get { return _horizontalResolution; } set { _horizontalResolution = value; } }
+        public float? HorizontalResolution { get => _horizontalResolution; set => _horizontalResolution = value; }
         private DirtyValue<float?> _verticalResolution;
-        public float? VeriticalResolution { get { return _verticalResolution; } set { _verticalResolution = value; } }
+        public float? VeriticalResolution { get => _verticalResolution; set => _verticalResolution = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal virtual bool Dirty
@@ -52,6 +52,6 @@ namespace EncompassRest.Loans.Attachments
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

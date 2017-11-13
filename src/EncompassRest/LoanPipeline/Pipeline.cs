@@ -53,15 +53,13 @@ namespace EncompassRest.LoanPipeline
             return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(CreateCursorAsync), async response =>
             {
                 var headers = response.Headers;
-                IEnumerable<string> counts;
                 const string countHeaderName = "x-total-count";
-                if (!headers.TryGetValues(countHeaderName, out counts))
+                if (!headers.TryGetValues(countHeaderName, out var counts))
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {countHeaderName} header", response).ConfigureAwait(false);
                 }
                 var countString = counts.First();
-                int count;
-                if (!int.TryParse(countString, out count) || count < 0)
+                if (!int.TryParse(countString, out var count) || count < 0)
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
                 }
@@ -69,9 +67,8 @@ namespace EncompassRest.LoanPipeline
                 {
                     return null;
                 }
-                IEnumerable<string> cursorIds;
                 const string cursorIdHeaderName = "x-cursor";
-                if (!headers.TryGetValues(cursorIdHeaderName, out cursorIds))
+                if (!headers.TryGetValues(cursorIdHeaderName, out var cursorIds))
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {cursorIdHeaderName} header", response).ConfigureAwait(false);
                 }

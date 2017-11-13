@@ -9,24 +9,24 @@ namespace EncompassRest.Loans.Attachments
     public sealed class PageAnnotation : IDirty
     {
         private DirtyValue<DateTime?> _dateCreated;
-        public DateTime? DateCreated { get { return _dateCreated; } set { _dateCreated = value; } }
+        public DateTime? DateCreated { get => _dateCreated; set => _dateCreated = value; }
         private DirtyValue<string> _createdBy;
-        public string CreatedBy { get { return _createdBy; } set { _createdBy = value; } }
+        public string CreatedBy { get => _createdBy; set => _createdBy = value; }
         private DirtyValue<string> _text;
-        public string Text { get { return _text; } set { _text = value; } }
+        public string Text { get => _text; set => _text = value; }
         private DirtyValue<int?> _left;
-        public int? Left { get { return _left; } set { _left = value; } }
+        public int? Left { get => _left; set => _left = value; }
         private DirtyValue<int?> _top;
-        public int? Top { get { return _top; } set { _top = value; } }
+        public int? Top { get => _top; set => _top = value; }
         private DirtyValue<int?> _width;
-        public int? Width { get { return _width; } set { _width = value; } }
+        public int? Width { get => _width; set => _width = value; }
         private DirtyValue<int?> _height;
-        public int? Height { get { return _height; } set { _height = value; } }
+        public int? Height { get => _height; set => _height = value; }
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
         [EnumOutput(EnumOutput.Integer)]
-        public AnnotationVisibilityType? VisibilityType { get { return _visibilityType; } set { _visibilityType = value; } }
+        public AnnotationVisibilityType? VisibilityType { get => _visibilityType; set => _visibilityType = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -63,6 +63,6 @@ namespace EncompassRest.Loans.Attachments
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

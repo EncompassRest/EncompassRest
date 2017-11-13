@@ -183,8 +183,7 @@ namespace EncompassRest
                     {
                         var loanSchema = await client.Schema.GetLoanSchemaAsync(true, entity).ConfigureAwait(false);
 
-                        EntitySchema entitySchema;
-                        if (loanSchema.EntityTypes.TryGetValue(entity, out entitySchema))
+                        if (loanSchema.EntityTypes.TryGetValue(entity, out var entitySchema))
                         {
                             await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, entity, entitySchema).ConfigureAwait(false);
                             if (missingSchemaEntities.Contains(entity))
@@ -196,7 +195,7 @@ namespace EncompassRest
                         {
                             Console.WriteLine($"Failed to retrieve entity of type {entity}");
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {

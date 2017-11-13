@@ -18,22 +18,13 @@ namespace EncompassRest
 
         public T this[int index]
         {
-            get
-            {
-                return _list[index];
-            }
-            set
-            {
-                _list[index] = value;
-            }
+            get => _list[index];
+            set => _list[index] = value;
         }
 
         public bool Dirty
         {
-            get
-            {
-                return _list.Any(item => item.Dirty);
-            }
+            get => _list.Any(item => item.Dirty);
             set
             {
                 for (var i = 0; i < _list.Count; ++i)
@@ -103,10 +94,7 @@ namespace EncompassRest
             return -1;
         }
 
-        public void Insert(int index, T item)
-        {
-            _list.Insert(index, item);
-        }
+        public void Insert(int index, T item) => _list.Insert(index, item);
 
         public bool Remove(T item)
         {
@@ -130,10 +118,7 @@ namespace EncompassRest
 
         public override bool CanRead => false;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
-        }
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyList<T>)value)._list.Where(item => item.Dirty).Select(item => (T)item));
     }

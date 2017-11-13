@@ -8,23 +8,23 @@ namespace EncompassRest.Loans.Documents
     public sealed class DocumentComment : IDirty
     {
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<int?> _forRoleId;
-        public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
+        public int? ForRoleId { get => _forRoleId; set => _forRoleId = value; }
         private DirtyValue<Guid?> _commentId;
-        public Guid? CommentId { get { return _commentId; } set { _commentId = value; } }
+        public Guid? CommentId { get => _commentId; set => _commentId = value; }
         private DirtyValue<DateTime?> _dateCreated;
-        public DateTime? DateCreated { get { return _dateCreated; } set { _dateCreated = value; } }
+        public DateTime? DateCreated { get => _dateCreated; set => _dateCreated = value; }
         private DirtyValue<string> _createdBy;
-        public string CreatedBy { get { return _createdBy; } set { _createdBy = value; } }
+        public string CreatedBy { get => _createdBy; set => _createdBy = value; }
         private DirtyValue<string> _createdByName;
-        public string CreatedByName { get { return _createdByName; } set { _createdByName = value; } }
+        public string CreatedByName { get => _createdByName; set => _createdByName = value; }
         private DirtyValue<DateTime?> _dateReviewed;
-        public DateTime? DateReviewed { get { return _dateReviewed; } set { _dateReviewed = value; } }
+        public DateTime? DateReviewed { get => _dateReviewed; set => _dateReviewed = value; }
         private DirtyValue<string> _reviewedBy;
-        public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
+        public string ReviewedBy { get => _reviewedBy; set => _reviewedBy = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -61,6 +61,6 @@ namespace EncompassRest.Loans.Documents
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

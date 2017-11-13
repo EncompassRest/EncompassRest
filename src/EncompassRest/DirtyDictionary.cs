@@ -12,7 +12,7 @@ namespace EncompassRest
     {
         internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary = new Dictionary<TKey, DirtyValue<TValue>>();
 
-        public TValue this[TKey key] { get { return _dictionary[key]; } set { _dictionary[key] = value; } }
+        public TValue this[TKey key] { get => _dictionary[key]; set => _dictionary[key] = value; }
 
         public ICollection<TKey> Keys => _dictionary.Keys;
 
@@ -24,10 +24,7 @@ namespace EncompassRest
 
         public bool Dirty
         {
-            get
-            {
-                return _dictionary.Any(pair => pair.Value.Dirty);
-            }
+            get => _dictionary.Any(pair => pair.Value.Dirty);
             set
             {
                 foreach (var pair in _dictionary.ToList())
@@ -60,11 +57,7 @@ namespace EncompassRest
 
         public void Clear() => _dictionary.Clear();
 
-        public bool Contains(KeyValuePair<TKey, TValue> item)
-        {
-            DirtyValue<TValue> value;
-            return _dictionary.TryGetValue(item.Key, out value) && EqualityComparer<TValue>.Default.Equals(item.Value, value);
-        }
+        public bool Contains(KeyValuePair<TKey, TValue> item) => _dictionary.TryGetValue(item.Key, out var value) && EqualityComparer<TValue>.Default.Equals(item.Value, value);
 
         public bool ContainsKey(TKey key) => _dictionary.ContainsKey(key);
 
@@ -96,8 +89,7 @@ namespace EncompassRest
 
         public bool TryGetValue(TKey key, out TValue value)
         {
-            DirtyValue<TValue> dirtyValue;
-            var success = _dictionary.TryGetValue(key, out dirtyValue);
+            var success = _dictionary.TryGetValue(key, out var dirtyValue);
             value = success ? dirtyValue._value : default(TValue);
             return success;
         }
@@ -113,10 +105,7 @@ namespace EncompassRest
 
         public override bool CanRead => false;
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
-        }
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyDictionary<TKey, TValue>)value).GetDirtyItems());
     }

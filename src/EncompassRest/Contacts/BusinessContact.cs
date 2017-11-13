@@ -6,21 +6,21 @@ namespace EncompassRest.Contacts
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class BusinessContact : Contact, IDirty
     {
-        internal override string ApiPath { get { return "encompass/v1/businessContacts"; } }
+        internal override string ApiPath => "encompass/v1/businessContacts";
 
         private DirtyValue<BusinessContactCategory?> _categoryId;
         [EnumOutput(EnumOutput.Integer)]
-        public BusinessContactCategory? CategoryId { get { return _categoryId; } set { _categoryId = value; } }
+        public BusinessContactCategory? CategoryId { get => _categoryId; set => _categoryId = value; }
         private DirtyValue<string> _companyName;
-        public string CompanyName { get { return _companyName; } set { _companyName = value; } }
+        public string CompanyName { get => _companyName; set => _companyName = value; }
         private BusinessContactLicense _personalContactLicense;
-        public BusinessContactLicense PersonalContactLicense { get { return _personalContactLicense ?? (_personalContactLicense = new BusinessContactLicense()); } set { _personalContactLicense = value; } }
+        public BusinessContactLicense PersonalContactLicense { get => _personalContactLicense ?? (_personalContactLicense = new BusinessContactLicense()); set => _personalContactLicense = value; }
         private BusinessContactLicense _businessContactLicense;
-        public BusinessContactLicense BusinessContactLicense { get { return _businessContactLicense ?? (_businessContactLicense = new BusinessContactLicense()); } set { _businessContactLicense = value; } }
+        public BusinessContactLicense BusinessContactLicense { get => _businessContactLicense ?? (_businessContactLicense = new BusinessContactLicense()); set => _businessContactLicense = value; }
         private DirtyValue<bool?> _noSpam;
-        public bool? NoSpam { get { return _noSpam; } set { _noSpam = value; } }
+        public bool? NoSpam { get => _noSpam; set => _noSpam = value; }
         private DirtyValue<int?> _fees;
-        public int? Fees { get { return Fees; } set { _fees = value; } }
+        public int? Fees { get => Fees; set => _fees = value; }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal new bool Dirty
@@ -53,6 +53,6 @@ namespace EncompassRest.Contacts
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

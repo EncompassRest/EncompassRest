@@ -22,14 +22,7 @@ namespace EncompassRest
 
         public string Value { get; }
 
-        public TEnum? EnumValue
-        {
-            get
-            {
-                TEnum value;
-                return !string.IsNullOrEmpty(Value) && UnsafeEnums.TryParse(Value, out value, s_enumFormats) ? value : (TEnum?)null;
-            }
-        }
+        public TEnum? EnumValue => !string.IsNullOrEmpty(Value) && UnsafeEnums.TryParse(Value, out TEnum value, s_enumFormats) ? value : (TEnum?)null;
 
         internal bool Dirty { get; set; }
 
@@ -60,7 +53,7 @@ namespace EncompassRest
 
         public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> && ((StringEnumValue<TEnum>)obj).Value == Value;
 
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 
     internal sealed class StringEnumValueConverter<TEnum> : JsonConverter

@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
@@ -9,18 +9,14 @@ namespace EncompassRest.Contacts
     {
         private DirtyValue<int?> _noteIdInt;
         [JsonProperty("noteId")]
-        public int? NoteIdInt { get { return _noteIdInt; } set { _noteIdInt = value; } }
+        public int? NoteIdInt { get => _noteIdInt; set => _noteIdInt = value; }
         [JsonIgnore]
         public string NoteId
         {
-            get
-            {
-                return NoteIdInt?.ToString();
-            }
+            get => NoteIdInt?.ToString();
             set
             {
-                int noteId;
-                if (value == null || !int.TryParse(value, out noteId))
+                if (value == null || !int.TryParse(value, out var noteId))
                 {
                     NoteIdInt = null;
                 }
@@ -31,13 +27,13 @@ namespace EncompassRest.Contacts
             }
         }
         private DirtyValue<string> _subject;
-        public string Subject { get { return _subject; } set { _subject = value; } }
+        public string Subject { get => _subject; set => _subject = value; }
         private DirtyValue<DateTime?> _timestamp;
-        public DateTime? Timestamp { get { return _timestamp; } set { _timestamp = value; } }
+        public DateTime? Timestamp { get => _timestamp; set => _timestamp = value; }
         private DirtyValue<string> _details;
-        public string Details { get { return _details; } set { _details = value; } }
+        public string Details { get => _details; set => _details = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -66,6 +62,6 @@ namespace EncompassRest.Contacts
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }
