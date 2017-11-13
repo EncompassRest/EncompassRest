@@ -1,4 +1,6 @@
-﻿namespace EncompassRest.Utilities
+﻿using EnumsNET;
+
+namespace EncompassRest.Utilities
 {
     internal enum EnumOutput
     {
