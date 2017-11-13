@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,21 +9,21 @@ namespace EncompassRest.Loans
     public sealed partial class Hud1EsItemize : IDirty
     {
         private DirtyValue<string> _date;
-        public string Date { get { return _date; } set { _date = value; } }
+        public string Date { get => _date; set => _date = value; }
         private DirtyValue<decimal?> _escrowPaymentBalance;
-        public decimal? EscrowPaymentBalance { get { return _escrowPaymentBalance; } set { _escrowPaymentBalance = value; } }
+        public decimal? EscrowPaymentBalance { get => _escrowPaymentBalance; set => _escrowPaymentBalance = value; }
         private DirtyValue<string> _escrowPaymentDescription;
-        public string EscrowPaymentDescription { get { return _escrowPaymentDescription; } set { _escrowPaymentDescription = value; } }
+        public string EscrowPaymentDescription { get => _escrowPaymentDescription; set => _escrowPaymentDescription = value; }
         private DirtyValue<decimal?> _escrowPaymentFrom;
-        public decimal? EscrowPaymentFrom { get { return _escrowPaymentFrom; } set { _escrowPaymentFrom = value; } }
+        public decimal? EscrowPaymentFrom { get => _escrowPaymentFrom; set => _escrowPaymentFrom = value; }
         private DirtyValue<decimal?> _escrowPaymentTo;
-        public decimal? EscrowPaymentTo { get { return _escrowPaymentTo; } set { _escrowPaymentTo = value; } }
+        public decimal? EscrowPaymentTo { get => _escrowPaymentTo; set => _escrowPaymentTo = value; }
         private DirtyValue<int?> _hud1EsItemizeIndex;
-        public int? Hud1EsItemizeIndex { get { return _hud1EsItemizeIndex; } set { _hud1EsItemizeIndex = value; } }
+        public int? Hud1EsItemizeIndex { get => _hud1EsItemizeIndex; set => _hud1EsItemizeIndex = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -60,6 +58,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,7 +1,6 @@
-﻿using EncompassRest.Utilities;
+﻿using System.Collections.Generic;
+using EncompassRest.Utilities;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 
 namespace EncompassRest.Contacts
 {
@@ -35,38 +34,38 @@ namespace EncompassRest.Contacts
             Notes = new ContactNotes(client, ApiPath, Id);
         }
         private DirtyValue<string> _firstName;
-        public string FirstName { get { return _firstName; } set { _firstName = value; } }
+        public string FirstName { get => _firstName; set => _firstName = value; }
         private DirtyValue<string> _lastName;
-        public string LastName { get { return _lastName; } set { _lastName = value; } }
+        public string LastName { get => _lastName; set => _lastName = value; }
         private DirtyValue<string> _ownerId;
-        public string OwnerId { get { return _ownerId; } set { _ownerId = value; } }
+        public string OwnerId { get => _ownerId; set => _ownerId = value; }
         private DirtyValue<ContactAccessLevel?> _accessLevel;
         [EnumOutput(EnumOutput.Integer)]
-        public ContactAccessLevel? AccessLevel { get { return _accessLevel; } set { _accessLevel = value; } }
+        public ContactAccessLevel? AccessLevel { get => _accessLevel; set => _accessLevel = value; }
         private ContactAddress _currentMailingAddress;
-        public ContactAddress CurrentMailingAddress { get { return _currentMailingAddress ?? (_currentMailingAddress = new ContactAddress()); } set { _currentMailingAddress = value; } }
+        public ContactAddress CurrentMailingAddress { get => _currentMailingAddress ?? (_currentMailingAddress = new ContactAddress()); set => _currentMailingAddress = value; }
         private DirtyValue<string> _businessWebUrl;
-        public string BusinessWebUrl { get { return _businessWebUrl; } set { _businessWebUrl = value; } }
+        public string BusinessWebUrl { get => _businessWebUrl; set => _businessWebUrl = value; }
         private DirtyValue<string> _jobTitle;
-        public string JobTitle { get { return _jobTitle; } set { _jobTitle = value; } }
+        public string JobTitle { get => _jobTitle; set => _jobTitle = value; }
         private DirtyValue<string> _workPhone;
-        public string WorkPhone { get { return _workPhone; } set { _workPhone = value; } }
+        public string WorkPhone { get => _workPhone; set => _workPhone = value; }
         private DirtyValue<string> _homePhone;
-        public string HomePhone { get { return _homePhone; } set { _homePhone = value; } }
+        public string HomePhone { get => _homePhone; set => _homePhone = value; }
         private DirtyValue<string> _mobilePhone;
-        public string MobilePhone { get { return _mobilePhone; } set { _mobilePhone = value; } }
+        public string MobilePhone { get => _mobilePhone; set => _mobilePhone = value; }
         private DirtyValue<string> _faxNumber;
-        public string FaxNumber { get { return _faxNumber; } set { _faxNumber = value; } }
+        public string FaxNumber { get => _faxNumber; set => _faxNumber = value; }
         private DirtyValue<string> _personalEmail;
-        public string PersonalEmail { get { return _personalEmail; } set { _personalEmail = value; } }
+        public string PersonalEmail { get => _personalEmail; set => _personalEmail = value; }
         private DirtyValue<string> _businessEmail;
-        public string BusinessEmail { get { return _businessEmail; } set { _businessEmail = value; } }
+        public string BusinessEmail { get => _businessEmail; set => _businessEmail = value; }
         private DirtyValue<string> _salutation;
-        public string Salutation { get { return _salutation; } set { _salutation = value; } }
+        public string Salutation { get => _salutation; set => _salutation = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         internal bool Dirty
         {
             get
@@ -109,6 +108,6 @@ namespace EncompassRest.Contacts
                 if (_extensionData != null) _extensionData.Dirty = value;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

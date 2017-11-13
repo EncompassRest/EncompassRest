@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,29 +9,29 @@ namespace EncompassRest.Loans
     public sealed partial class LoanAssociate : IDirty
     {
         private DirtyValue<string> _cellPhone;
-        public string CellPhone { get { return _cellPhone; } set { _cellPhone = value; } }
+        public string CellPhone { get => _cellPhone; set => _cellPhone = value; }
         private DirtyValue<string> _email;
-        public string Email { get { return _email; } set { _email = value; } }
+        public string Email { get => _email; set => _email = value; }
         private DirtyValue<string> _fax;
-        public string Fax { get { return _fax; } set { _fax = value; } }
+        public string Fax { get => _fax; set => _fax = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _idString;
-        public string IdString { get { return _idString; } set { _idString = value; } }
+        public string IdString { get => _idString; set => _idString = value; }
         private DirtyValue<string> _loanAssociateType;
-        public string LoanAssociateType { get { return _loanAssociateType; } set { _loanAssociateType = value; } }
+        public string LoanAssociateType { get => _loanAssociateType; set => _loanAssociateType = value; }
         private DirtyValue<string> _name;
-        public string Name { get { return _name; } set { _name = value; } }
+        public string Name { get => _name; set => _name = value; }
         private DirtyValue<string> _phone;
-        public string Phone { get { return _phone; } set { _phone = value; } }
+        public string Phone { get => _phone; set => _phone = value; }
         private DirtyValue<int?> _roleId;
-        public int? RoleId { get { return _roleId; } set { _roleId = value; } }
+        public int? RoleId { get => _roleId; set => _roleId = value; }
         private DirtyValue<string> _roleName;
-        public string RoleName { get { return _roleName; } set { _roleName = value; } }
+        public string RoleName { get => _roleName; set => _roleName = value; }
         private DirtyValue<string> _writeAccess;
-        public string WriteAccess { get { return _writeAccess; } set { _writeAccess = value; } }
+        public string WriteAccess { get => _writeAccess; set => _writeAccess = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -76,6 +74,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

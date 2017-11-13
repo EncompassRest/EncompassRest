@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,55 +9,55 @@ namespace EncompassRest.Loans
     public sealed partial class SelectedHomeCounselingProvider : IDirty
     {
         private DirtyValue<bool?> _affiliatedWithLenderIndicator;
-        public bool? AffiliatedWithLenderIndicator { get { return _affiliatedWithLenderIndicator; } set { _affiliatedWithLenderIndicator = value; } }
+        public bool? AffiliatedWithLenderIndicator { get => _affiliatedWithLenderIndicator; set => _affiliatedWithLenderIndicator = value; }
         private DirtyValue<string> _agencyAddress;
-        public string AgencyAddress { get { return _agencyAddress; } set { _agencyAddress = value; } }
+        public string AgencyAddress { get => _agencyAddress; set => _agencyAddress = value; }
         private DirtyValue<string> _agencyAddressCity;
-        public string AgencyAddressCity { get { return _agencyAddressCity; } set { _agencyAddressCity = value; } }
+        public string AgencyAddressCity { get => _agencyAddressCity; set => _agencyAddressCity = value; }
         private DirtyValue<string> _agencyAddressPostalCode;
-        public string AgencyAddressPostalCode { get { return _agencyAddressPostalCode; } set { _agencyAddressPostalCode = value; } }
+        public string AgencyAddressPostalCode { get => _agencyAddressPostalCode; set => _agencyAddressPostalCode = value; }
         private DirtyValue<string> _agencyAddressState;
-        public string AgencyAddressState { get { return _agencyAddressState; } set { _agencyAddressState = value; } }
+        public string AgencyAddressState { get => _agencyAddressState; set => _agencyAddressState = value; }
         private DirtyValue<string> _agencyAffiliationDescription;
-        public string AgencyAffiliationDescription { get { return _agencyAffiliationDescription; } set { _agencyAffiliationDescription = value; } }
+        public string AgencyAffiliationDescription { get => _agencyAffiliationDescription; set => _agencyAffiliationDescription = value; }
         private DirtyValue<string> _agencyEmail;
-        public string AgencyEmail { get { return _agencyEmail; } set { _agencyEmail = value; } }
+        public string AgencyEmail { get => _agencyEmail; set => _agencyEmail = value; }
         private DirtyValue<string> _agencyFax;
-        public string AgencyFax { get { return _agencyFax; } set { _agencyFax = value; } }
+        public string AgencyFax { get => _agencyFax; set => _agencyFax = value; }
         private DirtyValue<string> _agencyName;
-        public string AgencyName { get { return _agencyName; } set { _agencyName = value; } }
+        public string AgencyName { get => _agencyName; set => _agencyName = value; }
         private DirtyValue<string> _agencyPhoneDirect;
-        public string AgencyPhoneDirect { get { return _agencyPhoneDirect; } set { _agencyPhoneDirect = value; } }
+        public string AgencyPhoneDirect { get => _agencyPhoneDirect; set => _agencyPhoneDirect = value; }
         private DirtyValue<string> _agencyPhoneTollFree;
-        public string AgencyPhoneTollFree { get { return _agencyPhoneTollFree; } set { _agencyPhoneTollFree = value; } }
+        public string AgencyPhoneTollFree { get => _agencyPhoneTollFree; set => _agencyPhoneTollFree = value; }
         private DirtyValue<string> _agencyWebAddress;
-        public string AgencyWebAddress { get { return _agencyWebAddress; } set { _agencyWebAddress = value; } }
+        public string AgencyWebAddress { get => _agencyWebAddress; set => _agencyWebAddress = value; }
         private DirtyValue<bool?> _brrowerSelectCounselorIndicator;
-        public bool? BrrowerSelectCounselorIndicator { get { return _brrowerSelectCounselorIndicator; } set { _brrowerSelectCounselorIndicator = value; } }
+        public bool? BrrowerSelectCounselorIndicator { get => _brrowerSelectCounselorIndicator; set => _brrowerSelectCounselorIndicator = value; }
         private DirtyValue<bool?> _certificationIssuedIndicator;
-        public bool? CertificationIssuedIndicator { get { return _certificationIssuedIndicator; } set { _certificationIssuedIndicator = value; } }
+        public bool? CertificationIssuedIndicator { get => _certificationIssuedIndicator; set => _certificationIssuedIndicator = value; }
         private DirtyValue<string> _counselingServicesProvided;
-        public string CounselingServicesProvided { get { return _counselingServicesProvided; } set { _counselingServicesProvided = value; } }
+        public string CounselingServicesProvided { get => _counselingServicesProvided; set => _counselingServicesProvided = value; }
         private DirtyValue<decimal?> _distanceMiles;
-        public decimal? DistanceMiles { get { return _distanceMiles; } set { _distanceMiles = value; } }
+        public decimal? DistanceMiles { get => _distanceMiles; set => _distanceMiles = value; }
         private DirtyValue<string> _explanation;
-        public string Explanation { get { return _explanation; } set { _explanation = value; } }
+        public string Explanation { get => _explanation; set => _explanation = value; }
         private DirtyValue<DateTime?> _homeCounselingCompletionDate;
-        public DateTime? HomeCounselingCompletionDate { get { return _homeCounselingCompletionDate; } set { _homeCounselingCompletionDate = value; } }
+        public DateTime? HomeCounselingCompletionDate { get => _homeCounselingCompletionDate; set => _homeCounselingCompletionDate = value; }
         private DirtyValue<DateTime?> _homeCounselingDisclosureDate;
-        public DateTime? HomeCounselingDisclosureDate { get { return _homeCounselingDisclosureDate; } set { _homeCounselingDisclosureDate = value; } }
+        public DateTime? HomeCounselingDisclosureDate { get => _homeCounselingDisclosureDate; set => _homeCounselingDisclosureDate = value; }
         private DirtyValue<DateTime?> _homeCounselingGeneratedDate;
-        public DateTime? HomeCounselingGeneratedDate { get { return _homeCounselingGeneratedDate; } set { _homeCounselingGeneratedDate = value; } }
+        public DateTime? HomeCounselingGeneratedDate { get => _homeCounselingGeneratedDate; set => _homeCounselingGeneratedDate = value; }
         private DirtyValue<bool?> _homeCounselingRequiredIndicator;
-        public bool? HomeCounselingRequiredIndicator { get { return _homeCounselingRequiredIndicator; } set { _homeCounselingRequiredIndicator = value; } }
+        public bool? HomeCounselingRequiredIndicator { get => _homeCounselingRequiredIndicator; set => _homeCounselingRequiredIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _languagesSupported;
-        public string LanguagesSupported { get { return _languagesSupported; } set { _languagesSupported = value; } }
+        public string LanguagesSupported { get => _languagesSupported; set => _languagesSupported = value; }
         private DirtyValue<string> _selectedGUID;
-        public string SelectedGUID { get { return _selectedGUID; } set { _selectedGUID = value; } }
+        public string SelectedGUID { get => _selectedGUID; set => _selectedGUID = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -128,6 +126,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

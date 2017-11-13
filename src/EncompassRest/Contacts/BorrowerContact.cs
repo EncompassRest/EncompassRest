@@ -1,20 +1,19 @@
-﻿using EncompassRest.Utilities;
+﻿using System;
 using Newtonsoft.Json;
-using System;
 
 namespace EncompassRest.Contacts
 {
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class BorrowerContact : Contact, IDirty
     {
-        internal override string ApiPath { get { return "encompass/v1/borrowerContacts"; } }
+        internal override string ApiPath => "encompass/v1/borrowerContacts";
 
         private DirtyValue<string> _employerName;
-        public string EmployerName { get { return _employerName; } set { _employerName = value; } }
+        public string EmployerName { get => _employerName; set => _employerName = value; }
         private DirtyValue<DateTime?> _birthdate;
-        public DateTime? Birthdate { get { return _birthdate; } set { _birthdate = value; } }
+        public DateTime? Birthdate { get => _birthdate; set => _birthdate = value; }
         private DirtyValue<string> _referral;
-        public string Referral { get { return _referral; } set { _referral = value; } }
+        public string Referral { get => _referral; set => _referral = value; }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal new bool Dirty
@@ -41,6 +40,6 @@ namespace EncompassRest.Contacts
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

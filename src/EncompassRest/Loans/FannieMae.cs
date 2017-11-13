@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,39 +9,39 @@ namespace EncompassRest.Loans
     public sealed partial class FannieMae : IDirty
     {
         private DirtyValue<decimal?> _cltv;
-        public decimal? Cltv { get { return _cltv; } set { _cltv = value; } }
+        public decimal? Cltv { get => _cltv; set => _cltv = value; }
         private DirtyValue<string> _collateralUnderwriterScore;
-        public string CollateralUnderwriterScore { get { return _collateralUnderwriterScore; } set { _collateralUnderwriterScore = value; } }
+        public string CollateralUnderwriterScore { get => _collateralUnderwriterScore; set => _collateralUnderwriterScore = value; }
         private StringEnumValue<Community2ndRepaymentStructure> _community2ndRepaymentStructure;
-        public StringEnumValue<Community2ndRepaymentStructure> Community2ndRepaymentStructure { get { return _community2ndRepaymentStructure; } set { _community2ndRepaymentStructure = value; } }
+        public StringEnumValue<Community2ndRepaymentStructure> Community2ndRepaymentStructure { get => _community2ndRepaymentStructure; set => _community2ndRepaymentStructure = value; }
         private DirtyValue<bool?> _communityLending;
-        public bool? CommunityLending { get { return _communityLending; } set { _communityLending = value; } }
+        public bool? CommunityLending { get => _communityLending; set => _communityLending = value; }
         private DirtyValue<string> _duVersion;
-        public string DuVersion { get { return _duVersion; } set { _duVersion = value; } }
+        public string DuVersion { get => _duVersion; set => _duVersion = value; }
         private DirtyValue<string> _eCStatus1003;
-        public string ECStatus1003 { get { return _eCStatus1003; } set { _eCStatus1003 = value; } }
+        public string ECStatus1003 { get => _eCStatus1003; set => _eCStatus1003 = value; }
         private DirtyValue<decimal?> _hcltv;
-        public decimal? Hcltv { get { return _hcltv; } set { _hcltv = value; } }
+        public decimal? Hcltv { get => _hcltv; set => _hcltv = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _interestedPartyContribution;
-        public decimal? InterestedPartyContribution { get { return _interestedPartyContribution; } set { _interestedPartyContribution = value; } }
+        public decimal? InterestedPartyContribution { get => _interestedPartyContribution; set => _interestedPartyContribution = value; }
         private DirtyValue<decimal?> _ltv;
-        public decimal? Ltv { get { return _ltv; } set { _ltv = value; } }
+        public decimal? Ltv { get => _ltv; set => _ltv = value; }
         private DirtyValue<string> _mornetPlusCaseFileId;
-        public string MornetPlusCaseFileId { get { return _mornetPlusCaseFileId; } set { _mornetPlusCaseFileId = value; } }
+        public string MornetPlusCaseFileId { get => _mornetPlusCaseFileId; set => _mornetPlusCaseFileId = value; }
         private DirtyValue<string> _propertyInspectionWaiverMessage;
-        public string PropertyInspectionWaiverMessage { get { return _propertyInspectionWaiverMessage; } set { _propertyInspectionWaiverMessage = value; } }
+        public string PropertyInspectionWaiverMessage { get => _propertyInspectionWaiverMessage; set => _propertyInspectionWaiverMessage = value; }
         private DirtyValue<bool?> _startUpMortgage;
-        public bool? StartUpMortgage { get { return _startUpMortgage; } set { _startUpMortgage = value; } }
+        public bool? StartUpMortgage { get => _startUpMortgage; set => _startUpMortgage = value; }
         private DirtyValue<string> _uCDCollectionStatus;
-        public string UCDCollectionStatus { get { return _uCDCollectionStatus; } set { _uCDCollectionStatus = value; } }
+        public string UCDCollectionStatus { get => _uCDCollectionStatus; set => _uCDCollectionStatus = value; }
         private DirtyValue<string> _uCDPStatus;
-        public string UCDPStatus { get { return _uCDPStatus; } set { _uCDPStatus = value; } }
+        public string UCDPStatus { get => _uCDPStatus; set => _uCDPStatus = value; }
         private DirtyValue<string> _uLDDECStatus;
-        public string ULDDECStatus { get { return _uLDDECStatus; } set { _uLDDECStatus = value; } }
+        public string ULDDECStatus { get => _uLDDECStatus; set => _uLDDECStatus = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -96,6 +94,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

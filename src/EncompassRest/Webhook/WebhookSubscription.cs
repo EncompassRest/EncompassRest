@@ -10,19 +10,19 @@ namespace EncompassRest.Webhook
         [JsonRequired]
         public string Endpoint { get; }
         private DirtyValue<string> _objectUrn;
-        public string ObjectUrn { get { return _objectUrn; } set { _objectUrn = value; } }
+        public string ObjectUrn { get => _objectUrn; set => _objectUrn = value; }
         private DirtyValue<string> _subscriptionId;
-        public string SubscriptionId { get { return _subscriptionId; } set { _subscriptionId = value; } }
+        public string SubscriptionId { get => _subscriptionId; set => _subscriptionId = value; }
         private DirtyValue<string> _resource;
-        public string Resource { get { return _resource; } set { _resource = value; } }
+        public string Resource { get => _resource; set => _resource = value; }
         private DirtyValue<string> _clientId;
-        public string ClientId { get { return _clientId; } set { _clientId = value; } }
+        public string ClientId { get => _clientId; set => _clientId = value; }
         private DirtyValue<string> _instanceId;
-        public string InstanceId { get { return _instanceId; } set { _instanceId = value; } }
+        public string InstanceId { get => _instanceId; set => _instanceId = value; }
         private DirtyList<string> _events;
-        public IList<string> Events { get { return _events ?? (_events = new DirtyList<string>()); } set { _events = new DirtyList<string>(value); } }
+        public IList<string> Events { get => _events ?? (_events = new DirtyList<string>()); set => _events = new DirtyList<string>(value); }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -55,7 +55,7 @@ namespace EncompassRest.Webhook
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
 
         public WebhookSubscription(string endpoint)
         {

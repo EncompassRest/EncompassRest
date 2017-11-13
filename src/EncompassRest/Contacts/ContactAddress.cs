@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
@@ -8,17 +7,17 @@ namespace EncompassRest.Contacts
     public sealed class ContactAddress : IDirty
     {
         private DirtyValue<string> _street1;
-        public string Street1 { get { return _street1; } set { _street1 = value; } }
+        public string Street1 { get => _street1; set => _street1 = value; }
         private DirtyValue<string> _street2;
-        public string Street2 { get { return _street2; } set { _street2 = value; } }
+        public string Street2 { get => _street2; set => _street2 = value; }
         private DirtyValue<string> _city;
-        public string City { get { return _city; } set { _city = value; } }
+        public string City { get => _city; set => _city = value; }
         private DirtyValue<string> _state;
-        public string State { get { return _state; } set { _state = value; } }
+        public string State { get => _state; set => _state = value; }
         private DirtyValue<string> _zip;
-        public string Zip { get { return _zip; } set { _zip = value; } }
+        public string Zip { get => _zip; set => _zip = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -49,6 +48,6 @@ namespace EncompassRest.Contacts
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

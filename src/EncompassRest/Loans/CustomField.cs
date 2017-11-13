@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,17 +9,17 @@ namespace EncompassRest.Loans
     public sealed partial class CustomField : IDirty
     {
         private DirtyValue<DateTime?> _dateValue;
-        public DateTime? DateValue { get { return _dateValue; } set { _dateValue = value; } }
+        public DateTime? DateValue { get => _dateValue; set => _dateValue = value; }
         private DirtyValue<string> _fieldName;
-        public string FieldName { get { return _fieldName; } set { _fieldName = value; } }
+        public string FieldName { get => _fieldName; set => _fieldName = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _numericValue;
-        public decimal? NumericValue { get { return _numericValue; } set { _numericValue = value; } }
+        public decimal? NumericValue { get => _numericValue; set => _numericValue = value; }
         private DirtyValue<string> _stringValue;
-        public string StringValue { get { return _stringValue; } set { _stringValue = value; } }
+        public string StringValue { get => _stringValue; set => _stringValue = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -52,6 +50,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

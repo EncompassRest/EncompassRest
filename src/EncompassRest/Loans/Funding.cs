@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,49 +9,49 @@ namespace EncompassRest.Loans
     public sealed partial class Funding : IDirty
     {
         private DirtyValue<DateTime?> _collateralSentDate;
-        public DateTime? CollateralSentDate { get { return _collateralSentDate; } set { _collateralSentDate = value; } }
+        public DateTime? CollateralSentDate { get => _collateralSentDate; set => _collateralSentDate = value; }
         private DirtyValue<string> _funderName;
-        public string FunderName { get { return _funderName; } set { _funderName = value; } }
+        public string FunderName { get => _funderName; set => _funderName = value; }
         private DirtyValue<string> _funderUrl;
-        public string FunderUrl { get { return _funderUrl; } set { _funderUrl = value; } }
+        public string FunderUrl { get => _funderUrl; set => _funderUrl = value; }
         private DirtyValue<string> _fundingClearedBy;
-        public string FundingClearedBy { get { return _fundingClearedBy; } set { _fundingClearedBy = value; } }
+        public string FundingClearedBy { get => _fundingClearedBy; set => _fundingClearedBy = value; }
         private DirtyValue<DateTime?> _fundingCloseDate;
-        public DateTime? FundingCloseDate { get { return _fundingCloseDate; } set { _fundingCloseDate = value; } }
+        public DateTime? FundingCloseDate { get => _fundingCloseDate; set => _fundingCloseDate = value; }
         private DirtyValue<string> _fundingFees;
-        public string FundingFees { get { return _fundingFees; } set { _fundingFees = value; } }
+        public string FundingFees { get => _fundingFees; set => _fundingFees = value; }
         private DirtyValue<DateTime?> _fundingOrderDate;
-        public DateTime? FundingOrderDate { get { return _fundingOrderDate; } set { _fundingOrderDate = value; } }
+        public DateTime? FundingOrderDate { get => _fundingOrderDate; set => _fundingOrderDate = value; }
         private DirtyValue<string> _fundingType;
-        public string FundingType { get { return _fundingType; } set { _fundingType = value; } }
+        public string FundingType { get => _fundingType; set => _fundingType = value; }
         private DirtyValue<DateTime?> _fundsReleasedDate;
-        public DateTime? FundsReleasedDate { get { return _fundsReleasedDate; } set { _fundsReleasedDate = value; } }
+        public DateTime? FundsReleasedDate { get => _fundsReleasedDate; set => _fundsReleasedDate = value; }
         private DirtyValue<string> _fundsReleaseNumber;
-        public string FundsReleaseNumber { get { return _fundsReleaseNumber; } set { _fundsReleaseNumber = value; } }
+        public string FundsReleaseNumber { get => _fundsReleaseNumber; set => _fundsReleaseNumber = value; }
         private DirtyValue<DateTime?> _fundsSentDate;
-        public DateTime? FundsSentDate { get { return _fundsSentDate; } set { _fundsSentDate = value; } }
+        public DateTime? FundsSentDate { get => _fundsSentDate; set => _fundsSentDate = value; }
         private DirtyValue<string> _fundsWireTo;
-        public string FundsWireTo { get { return _fundsWireTo; } set { _fundsWireTo = value; } }
+        public string FundsWireTo { get => _fundsWireTo; set => _fundsWireTo = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<DateTime?> _sentToFunderDate;
-        public DateTime? SentToFunderDate { get { return _sentToFunderDate; } set { _sentToFunderDate = value; } }
+        public DateTime? SentToFunderDate { get => _sentToFunderDate; set => _sentToFunderDate = value; }
         private DirtyValue<string> _wiredToAbaNumber;
-        public string WiredToAbaNumber { get { return _wiredToAbaNumber; } set { _wiredToAbaNumber = value; } }
+        public string WiredToAbaNumber { get => _wiredToAbaNumber; set => _wiredToAbaNumber = value; }
         private DirtyValue<string> _wiredToAccountNumber;
-        public string WiredToAccountNumber { get { return _wiredToAccountNumber; } set { _wiredToAccountNumber = value; } }
+        public string WiredToAccountNumber { get => _wiredToAccountNumber; set => _wiredToAccountNumber = value; }
         private DirtyValue<string> _wiredToForCreditTo;
-        public string WiredToForCreditTo { get { return _wiredToForCreditTo; } set { _wiredToForCreditTo = value; } }
+        public string WiredToForCreditTo { get => _wiredToForCreditTo; set => _wiredToForCreditTo = value; }
         private DirtyValue<string> _wiredToForCreditTo1;
-        public string WiredToForCreditTo1 { get { return _wiredToForCreditTo1; } set { _wiredToForCreditTo1 = value; } }
+        public string WiredToForCreditTo1 { get => _wiredToForCreditTo1; set => _wiredToForCreditTo1 = value; }
         private DirtyValue<string> _wiredToForCreditTo2;
-        public string WiredToForCreditTo2 { get { return _wiredToForCreditTo2; } set { _wiredToForCreditTo2 = value; } }
+        public string WiredToForCreditTo2 { get => _wiredToForCreditTo2; set => _wiredToForCreditTo2 = value; }
         private DirtyValue<string> _wiredToForFurtherCreditTo1;
-        public string WiredToForFurtherCreditTo1 { get { return _wiredToForFurtherCreditTo1; } set { _wiredToForFurtherCreditTo1 = value; } }
+        public string WiredToForFurtherCreditTo1 { get => _wiredToForFurtherCreditTo1; set => _wiredToForFurtherCreditTo1 = value; }
         private DirtyValue<string> _wiredToForFurtherCreditTo2;
-        public string WiredToForFurtherCreditTo2 { get { return _wiredToForFurtherCreditTo2; } set { _wiredToForFurtherCreditTo2 = value; } }
+        public string WiredToForFurtherCreditTo2 { get => _wiredToForFurtherCreditTo2; set => _wiredToForFurtherCreditTo2 = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -116,6 +114,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

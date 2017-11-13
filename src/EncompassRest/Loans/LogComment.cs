@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,27 +9,27 @@ namespace EncompassRest.Loans
     public sealed partial class LogComment : IDirty
     {
         private DirtyValue<string> _addedBy;
-        public string AddedBy { get { return _addedBy; } set { _addedBy = value; } }
+        public string AddedBy { get => _addedBy; set => _addedBy = value; }
         private DirtyValue<string> _addedByName;
-        public string AddedByName { get { return _addedByName; } set { _addedByName = value; } }
+        public string AddedByName { get => _addedByName; set => _addedByName = value; }
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<DateTime?> _date;
-        public DateTime? Date { get { return _date; } set { _date = value; } }
+        public DateTime? Date { get => _date; set => _date = value; }
         private DirtyValue<int?> _forRoleId;
-        public int? ForRoleId { get { return _forRoleId; } set { _forRoleId = value; } }
+        public int? ForRoleId { get => _forRoleId; set => _forRoleId = value; }
         private DirtyValue<string> _guid;
-        public string Guid { get { return _guid; } set { _guid = value; } }
+        public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isInternal;
-        public bool? IsInternal { get { return _isInternal; } set { _isInternal = value; } }
+        public bool? IsInternal { get => _isInternal; set => _isInternal = value; }
         private DirtyValue<string> _reviewedBy;
-        public string ReviewedBy { get { return _reviewedBy; } set { _reviewedBy = value; } }
+        public string ReviewedBy { get => _reviewedBy; set => _reviewedBy = value; }
         private DirtyValue<DateTime?> _reviewedDate;
-        public DateTime? ReviewedDate { get { return _reviewedDate; } set { _reviewedDate = value; } }
+        public DateTime? ReviewedDate { get => _reviewedDate; set => _reviewedDate = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -72,6 +70,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

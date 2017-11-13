@@ -64,7 +64,7 @@ namespace EncompassRest.Utilities
             ContractResolver = new PrivateContractResolver()
         });
 
-        public static T FromJson<T>(string json) => (T)FromJson(json, typeof(T));
+        public static T FromJson<T>(string json) => (T)FromJson(json, TypeData<T>.Type);
 
         public static object FromJson(string json) => FromJson(json, null);
 
@@ -76,7 +76,7 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static T FromJson<T>(TextReader reader) => (T)FromJson(reader, typeof(T));
+        public static T FromJson<T>(TextReader reader) => (T)FromJson(reader, TypeData<T>.Type);
 
         public static object FromJson(TextReader reader) => FromJson(reader, null);
 
@@ -92,7 +92,7 @@ namespace EncompassRest.Utilities
 
         public static void PopulateFromJson(TextReader reader, object target) => s_serializer.Populate(reader, target);
 
-        public static string ToJson<T>(this T value) => ToJson(value, typeof(T));
+        public static string ToJson<T>(this T value) => ToJson(value, TypeData<T>.Type);
 
         public static string ToJson(object value) => ToJson(value, (Type)null);
 
@@ -105,40 +105,11 @@ namespace EncompassRest.Utilities
             }
         }
 
-        public static void ToJson<T>(T value, TextWriter writer) => ToJson(value, typeof(T), writer);
+        public static void ToJson<T>(T value, TextWriter writer) => ToJson(value, TypeData<T>.Type, writer);
 
         public static void ToJson(object value, TextWriter writer) => ToJson(value, null, writer);
 
         public static void ToJson(object value, Type type, TextWriter writer) => s_serializer.Serialize(writer, value, type);
-
-        public static List<JToken> FindTokens(this JToken containerToken, string name)
-        {
-            var matches = new List<JToken>();
-            FindTokens(containerToken, name, matches);
-            return matches;
-        }
-
-        private static void FindTokens(JToken containerToken, string name, List<JToken> matches)
-        {
-            if (containerToken.Type == JTokenType.Object)
-            {
-                foreach (var child in containerToken.Children<JProperty>())
-                {
-                    if (child.Name == name)
-                    {
-                        matches.Add(child.Value);
-                    }
-                    FindTokens(child.Value, name, matches);
-                }
-            }
-            else if (containerToken.Type == JTokenType.Array)
-            {
-                foreach (var child in containerToken.Children())
-                {
-                    FindTokens(child, name, matches);
-                }
-            }
-        }
 
         public static async Task<T> ReadAsAsync<T>(this HttpContent content)
         {
@@ -246,7 +217,7 @@ namespace EncompassRest.Utilities
                 var propertyInfo = member as PropertyInfo;
                 if (propertyInfo != null)
                 {
-                    var enumOutputAttribute = (EnumOutputAttribute)property.AttributeProvider.GetAttributes(typeof(EnumOutputAttribute), (false)).FirstOrDefault();
+                    var enumOutputAttribute = (EnumOutputAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumOutputAttribute>.Type, (false)).FirstOrDefault();
                     if (enumOutputAttribute != null)
                     {
                         property.Converter = new EnumJsonConverter(enumOutputAttribute.EnumOutput);
@@ -336,13 +307,13 @@ namespace EncompassRest.Utilities
                     else
                     {
                         var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)));
+                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type));
                         if (backingField != null)
                         {
                             var backingFieldValueProvider = GetValueProvider(backingField);
                             property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
                         }
-                        else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(typeof(IDirty)))
+                        else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type))
                         {
                             property.ShouldSerialize = o => ((IDirty)property.ValueProvider.GetValue(o))?.Dirty == true;
                         }

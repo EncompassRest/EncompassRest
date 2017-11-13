@@ -76,10 +76,7 @@ namespace EncompassRest
 
         public TimeSpan Timeout
         {
-            get
-            {
-                return HttpClient.Timeout;
-            }
+            get => HttpClient.Timeout;
             set
             {
                 HttpClient.Timeout = value;
@@ -91,8 +88,8 @@ namespace EncompassRest
         {
             get
             {
-                Loans.Loans loans;
-                return _loans ?? Interlocked.CompareExchange(ref _loans, (loans = new Loans.Loans(this)), null) ?? loans;
+                var loans = _loans;
+                return loans ?? Interlocked.CompareExchange(ref _loans, (loans = new Loans.Loans(this)), null) ?? loans;
             }
         }
 
@@ -100,8 +97,8 @@ namespace EncompassRest
         {
             get
             {
-                Schema.Schema schema;
-                return _schema ?? Interlocked.CompareExchange(ref _schema, (schema = new Schema.Schema(this)), null) ?? schema;
+                var schema = _schema;
+                return schema ?? Interlocked.CompareExchange(ref _schema, (schema = new Schema.Schema(this)), null) ?? schema;
             }
         }
 
@@ -109,8 +106,8 @@ namespace EncompassRest
         {
             get
             {
-                Webhook.Webhook webhook;
-                return _webhook ?? Interlocked.CompareExchange(ref _webhook, (webhook = new Webhook.Webhook(this)), null) ?? webhook;
+                var webhook = _webhook;
+                return webhook ?? Interlocked.CompareExchange(ref _webhook, (webhook = new Webhook.Webhook(this)), null) ?? webhook;
             }
         }
 
@@ -118,8 +115,8 @@ namespace EncompassRest
         {
             get
             {
-                Pipeline pipeline;
-                return _pipeline ?? Interlocked.CompareExchange(ref _pipeline, (pipeline = new Pipeline(this)), null) ?? pipeline;
+                var pipeline = _pipeline;
+                return pipeline ?? Interlocked.CompareExchange(ref _pipeline, (pipeline = new Pipeline(this)), null) ?? pipeline;
             }
         }
 
@@ -127,8 +124,8 @@ namespace EncompassRest
         {
             get
             {
-                BatchUpdate batchUpdate;
-                return _batchUpdate ?? Interlocked.CompareExchange(ref _batchUpdate, (batchUpdate = new BatchUpdate(this)), null) ?? batchUpdate;
+                var batchUpdate = _batchUpdate;
+                return batchUpdate ?? Interlocked.CompareExchange(ref _batchUpdate, (batchUpdate = new BatchUpdate(this)), null) ?? batchUpdate;
             }
         }
 
@@ -136,8 +133,8 @@ namespace EncompassRest
         {
             get
             {
-                BorrowerContacts borrowerContacts;
-                return _borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
+                var borrowerContacts = _borrowerContacts;
+                return borrowerContacts ?? Interlocked.CompareExchange(ref _borrowerContacts, (borrowerContacts = new BorrowerContacts(this)), null) ?? borrowerContacts;
             }
         }
 
@@ -145,8 +142,8 @@ namespace EncompassRest
         {
             get
             {
-                BusinessContacts businessContacts;
-                return _businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
+                var businessContacts = _businessContacts;
+                return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
             }
         }
 

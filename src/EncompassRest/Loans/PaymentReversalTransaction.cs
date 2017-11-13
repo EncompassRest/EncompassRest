@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,37 +9,37 @@ namespace EncompassRest.Loans
     public sealed partial class PaymentReversalTransaction : IDirty
     {
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<string> _createdById;
-        public string CreatedById { get { return _createdById; } set { _createdById = value; } }
+        public string CreatedById { get => _createdById; set => _createdById = value; }
         private DirtyValue<string> _createdByName;
-        public string CreatedByName { get { return _createdByName; } set { _createdByName = value; } }
+        public string CreatedByName { get => _createdByName; set => _createdByName = value; }
         private DirtyValue<DateTime?> _createdDateTimeUtc;
-        public DateTime? CreatedDateTimeUtc { get { return _createdDateTimeUtc; } set { _createdDateTimeUtc = value; } }
+        public DateTime? CreatedDateTimeUtc { get => _createdDateTimeUtc; set => _createdDateTimeUtc = value; }
         private DirtyValue<string> _guid;
-        public string Guid { get { return _guid; } set { _guid = value; } }
+        public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _modifiedById;
-        public string ModifiedById { get { return _modifiedById; } set { _modifiedById = value; } }
+        public string ModifiedById { get => _modifiedById; set => _modifiedById = value; }
         private DirtyValue<string> _modifiedByName;
-        public string ModifiedByName { get { return _modifiedByName; } set { _modifiedByName = value; } }
+        public string ModifiedByName { get => _modifiedByName; set => _modifiedByName = value; }
         private DirtyValue<DateTime?> _modifiedDateTimeUtc;
-        public DateTime? ModifiedDateTimeUtc { get { return _modifiedDateTimeUtc; } set { _modifiedDateTimeUtc = value; } }
+        public DateTime? ModifiedDateTimeUtc { get => _modifiedDateTimeUtc; set => _modifiedDateTimeUtc = value; }
         private DirtyValue<string> _paymentId;
-        public string PaymentId { get { return _paymentId; } set { _paymentId = value; } }
+        public string PaymentId { get => _paymentId; set => _paymentId = value; }
         private DirtyValue<string> _reversalType;
-        public string ReversalType { get { return _reversalType; } set { _reversalType = value; } }
+        public string ReversalType { get => _reversalType; set => _reversalType = value; }
         private DirtyValue<string> _servicingPaymentMethod;
-        public string ServicingPaymentMethod { get { return _servicingPaymentMethod; } set { _servicingPaymentMethod = value; } }
+        public string ServicingPaymentMethod { get => _servicingPaymentMethod; set => _servicingPaymentMethod = value; }
         private DirtyValue<string> _servicingTransactionType;
-        public string ServicingTransactionType { get { return _servicingTransactionType; } set { _servicingTransactionType = value; } }
+        public string ServicingTransactionType { get => _servicingTransactionType; set => _servicingTransactionType = value; }
         private DirtyValue<decimal?> _transactionAmount;
-        public decimal? TransactionAmount { get { return _transactionAmount; } set { _transactionAmount = value; } }
+        public decimal? TransactionAmount { get => _transactionAmount; set => _transactionAmount = value; }
         private DirtyValue<DateTime?> _transactionDate;
-        public DateTime? TransactionDate { get { return _transactionDate; } set { _transactionDate = value; } }
+        public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -92,6 +90,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

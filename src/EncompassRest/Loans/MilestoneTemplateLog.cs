@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,19 +9,19 @@ namespace EncompassRest.Loans
     public sealed partial class MilestoneTemplateLog : IDirty
     {
         private DirtyValue<int?> _elliLogRecordId;
-        public int? ElliLogRecordId { get { return _elliLogRecordId; } set { _elliLogRecordId = value; } }
+        public int? ElliLogRecordId { get => _elliLogRecordId; set => _elliLogRecordId = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isTemplateDatesLocked;
-        public bool? IsTemplateDatesLocked { get { return _isTemplateDatesLocked; } set { _isTemplateDatesLocked = value; } }
+        public bool? IsTemplateDatesLocked { get => _isTemplateDatesLocked; set => _isTemplateDatesLocked = value; }
         private DirtyValue<bool?> _isTemplateLocked;
-        public bool? IsTemplateLocked { get { return _isTemplateLocked; } set { _isTemplateLocked = value; } }
+        public bool? IsTemplateLocked { get => _isTemplateLocked; set => _isTemplateLocked = value; }
         private DirtyValue<string> _milestoneTemplateID;
-        public string MilestoneTemplateID { get { return _milestoneTemplateID; } set { _milestoneTemplateID = value; } }
+        public string MilestoneTemplateID { get => _milestoneTemplateID; set => _milestoneTemplateID = value; }
         private DirtyValue<string> _milestoneTemplateName;
-        public string MilestoneTemplateName { get { return _milestoneTemplateName; } set { _milestoneTemplateName = value; } }
+        public string MilestoneTemplateName { get => _milestoneTemplateName; set => _milestoneTemplateName = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -56,6 +54,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

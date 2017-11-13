@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,37 +9,37 @@ namespace EncompassRest.Loans
     public sealed partial class LockCancellationLog : IDirty
     {
         private DirtyValue<bool?> _alertIndicator;
-        public bool? AlertIndicator { get { return _alertIndicator; } set { _alertIndicator = value; } }
+        public bool? AlertIndicator { get => _alertIndicator; set => _alertIndicator = value; }
         private DirtyValue<string> _alertsXml;
-        public string AlertsXml { get { return _alertsXml; } set { _alertsXml = value; } }
+        public string AlertsXml { get => _alertsXml; set => _alertsXml = value; }
         private DirtyValue<string> _cancelledBy;
-        public string CancelledBy { get { return _cancelledBy; } set { _cancelledBy = value; } }
+        public string CancelledBy { get => _cancelledBy; set => _cancelledBy = value; }
         private DirtyValue<string> _cancelledById;
-        public string CancelledById { get { return _cancelledById; } set { _cancelledById = value; } }
+        public string CancelledById { get => _cancelledById; set => _cancelledById = value; }
         private DirtyValue<string> _commentListXml;
-        public string CommentListXml { get { return _commentListXml; } set { _commentListXml = value; } }
+        public string CommentListXml { get => _commentListXml; set => _commentListXml = value; }
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<DateTime?> _dateUtc;
-        public DateTime? DateUtc { get { return _dateUtc; } set { _dateUtc = value; } }
+        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
-        public bool? FileAttachmentsMigrated { get { return _fileAttachmentsMigrated; } set { _fileAttachmentsMigrated = value; } }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
         private DirtyValue<string> _guid;
-        public string Guid { get { return _guid; } set { _guid = value; } }
+        public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
-        public bool? IsSystemSpecificIndicator { get { return _isSystemSpecificIndicator; } set { _isSystemSpecificIndicator = value; } }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
         private DirtyValue<int?> _logRecordIndex;
-        public int? LogRecordIndex { get { return _logRecordIndex; } set { _logRecordIndex = value; } }
+        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
         private DirtyValue<string> _requestGuid;
-        public string RequestGuid { get { return _requestGuid; } set { _requestGuid = value; } }
+        public string RequestGuid { get => _requestGuid; set => _requestGuid = value; }
         private DirtyValue<string> _systemId;
-        public string SystemId { get { return _systemId; } set { _systemId = value; } }
+        public string SystemId { get => _systemId; set => _systemId = value; }
         private DirtyValue<string> _timeCancelled;
-        public string TimeCancelled { get { return _timeCancelled; } set { _timeCancelled = value; } }
+        public string TimeCancelled { get => _timeCancelled; set => _timeCancelled = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -92,6 +90,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

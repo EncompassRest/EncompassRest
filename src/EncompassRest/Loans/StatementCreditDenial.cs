@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,147 +9,147 @@ namespace EncompassRest.Loans
     public sealed partial class StatementCreditDenial : IDirty
     {
         private DirtyValue<bool?> _additionalStatement;
-        public bool? AdditionalStatement { get { return _additionalStatement; } set { _additionalStatement = value; } }
+        public bool? AdditionalStatement { get => _additionalStatement; set => _additionalStatement = value; }
         private DirtyValue<bool?> _bankruptcy;
-        public bool? Bankruptcy { get { return _bankruptcy; } set { _bankruptcy = value; } }
+        public bool? Bankruptcy { get => _bankruptcy; set => _bankruptcy = value; }
         private DirtyValue<bool?> _collateralNotSufficient;
-        public bool? CollateralNotSufficient { get { return _collateralNotSufficient; } set { _collateralNotSufficient = value; } }
+        public bool? CollateralNotSufficient { get => _collateralNotSufficient; set => _collateralNotSufficient = value; }
         private DirtyValue<bool?> _creditApplicationIncomplete;
-        public bool? CreditApplicationIncomplete { get { return _creditApplicationIncomplete; } set { _creditApplicationIncomplete = value; } }
+        public bool? CreditApplicationIncomplete { get => _creditApplicationIncomplete; set => _creditApplicationIncomplete = value; }
         private DirtyValue<bool?> _creditReportObtainedFromConsumerReportingAgency;
-        public bool? CreditReportObtainedFromConsumerReportingAgency { get { return _creditReportObtainedFromConsumerReportingAgency; } set { _creditReportObtainedFromConsumerReportingAgency = value; } }
+        public bool? CreditReportObtainedFromConsumerReportingAgency { get => _creditReportObtainedFromConsumerReportingAgency; set => _creditReportObtainedFromConsumerReportingAgency = value; }
         private DirtyValue<bool?> _delinquentCreditObligations;
-        public bool? DelinquentCreditObligations { get { return _delinquentCreditObligations; } set { _delinquentCreditObligations = value; } }
+        public bool? DelinquentCreditObligations { get => _delinquentCreditObligations; set => _delinquentCreditObligations = value; }
         private DirtyValue<DateTime?> _denialDate;
-        public DateTime? DenialDate { get { return _denialDate; } set { _denialDate = value; } }
+        public DateTime? DenialDate { get => _denialDate; set => _denialDate = value; }
         private DirtyValue<string> _denialDescription;
-        public string DenialDescription { get { return _denialDescription; } set { _denialDescription = value; } }
+        public string DenialDescription { get => _denialDescription; set => _denialDescription = value; }
         private DirtyValue<DateTime?> _denialMailedOn;
-        public DateTime? DenialMailedOn { get { return _denialMailedOn; } set { _denialMailedOn = value; } }
+        public DateTime? DenialMailedOn { get => _denialMailedOn; set => _denialMailedOn = value; }
         private DirtyValue<bool?> _denialOther1;
-        public bool? DenialOther1 { get { return _denialOther1; } set { _denialOther1 = value; } }
+        public bool? DenialOther1 { get => _denialOther1; set => _denialOther1 = value; }
         private DirtyValue<bool?> _denialOther2;
-        public bool? DenialOther2 { get { return _denialOther2; } set { _denialOther2 = value; } }
+        public bool? DenialOther2 { get => _denialOther2; set => _denialOther2 = value; }
         private DirtyValue<string> _denialOtherDesc1;
-        public string DenialOtherDesc1 { get { return _denialOtherDesc1; } set { _denialOtherDesc1 = value; } }
+        public string DenialOtherDesc1 { get => _denialOtherDesc1; set => _denialOtherDesc1 = value; }
         private DirtyValue<string> _denialOtherDesc2;
-        public string DenialOtherDesc2 { get { return _denialOtherDesc2; } set { _denialOtherDesc2 = value; } }
+        public string DenialOtherDesc2 { get => _denialOtherDesc2; set => _denialOtherDesc2 = value; }
         private DirtyValue<string> _deniedBy;
-        public string DeniedBy { get { return _deniedBy; } set { _deniedBy = value; } }
+        public string DeniedBy { get => _deniedBy; set => _deniedBy = value; }
         private DirtyValue<bool?> _deniedByFhlmc;
-        public bool? DeniedByFhlmc { get { return _deniedByFhlmc; } set { _deniedByFhlmc = value; } }
+        public bool? DeniedByFhlmc { get => _deniedByFhlmc; set => _deniedByFhlmc = value; }
         private DirtyValue<bool?> _deniedByFnma;
-        public bool? DeniedByFnma { get { return _deniedByFnma; } set { _deniedByFnma = value; } }
+        public bool? DeniedByFnma { get => _deniedByFnma; set => _deniedByFnma = value; }
         private DirtyValue<bool?> _deniedByHud;
-        public bool? DeniedByHud { get { return _deniedByHud; } set { _deniedByHud = value; } }
+        public bool? DeniedByHud { get => _deniedByHud; set => _deniedByHud = value; }
         private DirtyValue<bool?> _deniedByOther;
-        public bool? DeniedByOther { get { return _deniedByOther; } set { _deniedByOther = value; } }
+        public bool? DeniedByOther { get => _deniedByOther; set => _deniedByOther = value; }
         private DirtyValue<bool?> _deniedByVa;
-        public bool? DeniedByVa { get { return _deniedByVa; } set { _deniedByVa = value; } }
+        public bool? DeniedByVa { get => _deniedByVa; set => _deniedByVa = value; }
         private DirtyValue<string> _descriptionofAccount1;
-        public string DescriptionofAccount1 { get { return _descriptionofAccount1; } set { _descriptionofAccount1 = value; } }
+        public string DescriptionofAccount1 { get => _descriptionofAccount1; set => _descriptionofAccount1 = value; }
         private DirtyValue<string> _descriptionofAccount2;
-        public string DescriptionofAccount2 { get { return _descriptionofAccount2; } set { _descriptionofAccount2 = value; } }
+        public string DescriptionofAccount2 { get => _descriptionofAccount2; set => _descriptionofAccount2 = value; }
         private DirtyValue<string> _descriptionofAccount3;
-        public string DescriptionofAccount3 { get { return _descriptionofAccount3; } set { _descriptionofAccount3 = value; } }
+        public string DescriptionofAccount3 { get => _descriptionofAccount3; set => _descriptionofAccount3 = value; }
         private DirtyValue<string> _descriptionofActionTaken1;
-        public string DescriptionofActionTaken1 { get { return _descriptionofActionTaken1; } set { _descriptionofActionTaken1 = value; } }
+        public string DescriptionofActionTaken1 { get => _descriptionofActionTaken1; set => _descriptionofActionTaken1 = value; }
         private DirtyValue<string> _descriptionofActionTaken2;
-        public string DescriptionofActionTaken2 { get { return _descriptionofActionTaken2; } set { _descriptionofActionTaken2 = value; } }
+        public string DescriptionofActionTaken2 { get => _descriptionofActionTaken2; set => _descriptionofActionTaken2 = value; }
         private DirtyValue<string> _ecoaAddress;
-        public string EcoaAddress { get { return _ecoaAddress; } set { _ecoaAddress = value; } }
+        public string EcoaAddress { get => _ecoaAddress; set => _ecoaAddress = value; }
         private DirtyValue<string> _ecoaAddress2;
-        public string EcoaAddress2 { get { return _ecoaAddress2; } set { _ecoaAddress2 = value; } }
+        public string EcoaAddress2 { get => _ecoaAddress2; set => _ecoaAddress2 = value; }
         private DirtyValue<string> _ecoaCity;
-        public string EcoaCity { get { return _ecoaCity; } set { _ecoaCity = value; } }
+        public string EcoaCity { get => _ecoaCity; set => _ecoaCity = value; }
         private DirtyValue<string> _ecoaName;
-        public string EcoaName { get { return _ecoaName; } set { _ecoaName = value; } }
+        public string EcoaName { get => _ecoaName; set => _ecoaName = value; }
         private DirtyValue<string> _ecoaPhone;
-        public string EcoaPhone { get { return _ecoaPhone; } set { _ecoaPhone = value; } }
+        public string EcoaPhone { get => _ecoaPhone; set => _ecoaPhone = value; }
         private DirtyValue<string> _ecoaPostalCode;
-        public string EcoaPostalCode { get { return _ecoaPostalCode; } set { _ecoaPostalCode = value; } }
+        public string EcoaPostalCode { get => _ecoaPostalCode; set => _ecoaPostalCode = value; }
         private DirtyValue<string> _ecoaState;
-        public string EcoaState { get { return _ecoaState; } set { _ecoaState = value; } }
+        public string EcoaState { get => _ecoaState; set => _ecoaState = value; }
         private DirtyValue<bool?> _excessiveObligations;
-        public bool? ExcessiveObligations { get { return _excessiveObligations; } set { _excessiveObligations = value; } }
+        public bool? ExcessiveObligations { get => _excessiveObligations; set => _excessiveObligations = value; }
         private DirtyValue<bool?> _garnishment;
-        public bool? Garnishment { get { return _garnishment; } set { _garnishment = value; } }
+        public bool? Garnishment { get => _garnishment; set => _garnishment = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _inadequateCollateral;
-        public bool? InadequateCollateral { get { return _inadequateCollateral; } set { _inadequateCollateral = value; } }
+        public bool? InadequateCollateral { get => _inadequateCollateral; set => _inadequateCollateral = value; }
         private DirtyValue<bool?> _informationFromAConsumerReportingAgency;
-        public bool? InformationFromAConsumerReportingAgency { get { return _informationFromAConsumerReportingAgency; } set { _informationFromAConsumerReportingAgency = value; } }
+        public bool? InformationFromAConsumerReportingAgency { get => _informationFromAConsumerReportingAgency; set => _informationFromAConsumerReportingAgency = value; }
         private DirtyValue<bool?> _informationObtainedFromOutsideSource;
-        public bool? InformationObtainedFromOutsideSource { get { return _informationObtainedFromOutsideSource; } set { _informationObtainedFromOutsideSource = value; } }
+        public bool? InformationObtainedFromOutsideSource { get => _informationObtainedFromOutsideSource; set => _informationObtainedFromOutsideSource = value; }
         private DirtyValue<bool?> _informationObtainedInReportFromCra;
-        public bool? InformationObtainedInReportFromCra { get { return _informationObtainedInReportFromCra; } set { _informationObtainedInReportFromCra = value; } }
+        public bool? InformationObtainedInReportFromCra { get => _informationObtainedInReportFromCra; set => _informationObtainedInReportFromCra = value; }
         private DirtyValue<bool?> _insufficientCreditFile;
-        public bool? InsufficientCreditFile { get { return _insufficientCreditFile; } set { _insufficientCreditFile = value; } }
+        public bool? InsufficientCreditFile { get => _insufficientCreditFile; set => _insufficientCreditFile = value; }
         private DirtyValue<bool?> _insufficientCreditReference;
-        public bool? InsufficientCreditReference { get { return _insufficientCreditReference; } set { _insufficientCreditReference = value; } }
+        public bool? InsufficientCreditReference { get => _insufficientCreditReference; set => _insufficientCreditReference = value; }
         private DirtyValue<bool?> _insufficientData;
-        public bool? InsufficientData { get { return _insufficientData; } set { _insufficientData = value; } }
+        public bool? InsufficientData { get => _insufficientData; set => _insufficientData = value; }
         private DirtyValue<bool?> _insufficientFundsToCloseLoan;
-        public bool? InsufficientFundsToCloseLoan { get { return _insufficientFundsToCloseLoan; } set { _insufficientFundsToCloseLoan = value; } }
+        public bool? InsufficientFundsToCloseLoan { get => _insufficientFundsToCloseLoan; set => _insufficientFundsToCloseLoan = value; }
         private DirtyValue<bool?> _insufficientIncomeForTotalObligations;
-        public bool? InsufficientIncomeForTotalObligations { get { return _insufficientIncomeForTotalObligations; } set { _insufficientIncomeForTotalObligations = value; } }
+        public bool? InsufficientIncomeForTotalObligations { get => _insufficientIncomeForTotalObligations; set => _insufficientIncomeForTotalObligations = value; }
         private DirtyValue<bool?> _insufficientStabilityOfIncome;
-        public bool? InsufficientStabilityOfIncome { get { return _insufficientStabilityOfIncome; } set { _insufficientStabilityOfIncome = value; } }
+        public bool? InsufficientStabilityOfIncome { get => _insufficientStabilityOfIncome; set => _insufficientStabilityOfIncome = value; }
         private DirtyValue<bool?> _lackOfCashReserves;
-        public bool? LackOfCashReserves { get { return _lackOfCashReserves; } set { _lackOfCashReserves = value; } }
+        public bool? LackOfCashReserves { get => _lackOfCashReserves; set => _lackOfCashReserves = value; }
         private DirtyValue<string> _lenderInvestorAddress;
-        public string LenderInvestorAddress { get { return _lenderInvestorAddress; } set { _lenderInvestorAddress = value; } }
+        public string LenderInvestorAddress { get => _lenderInvestorAddress; set => _lenderInvestorAddress = value; }
         private DirtyValue<string> _lenderInvestorCity;
-        public string LenderInvestorCity { get { return _lenderInvestorCity; } set { _lenderInvestorCity = value; } }
+        public string LenderInvestorCity { get => _lenderInvestorCity; set => _lenderInvestorCity = value; }
         private DirtyValue<string> _lenderInvestorName;
-        public string LenderInvestorName { get { return _lenderInvestorName; } set { _lenderInvestorName = value; } }
+        public string LenderInvestorName { get => _lenderInvestorName; set => _lenderInvestorName = value; }
         private DirtyValue<string> _lenderInvestorPhone;
-        public string LenderInvestorPhone { get { return _lenderInvestorPhone; } set { _lenderInvestorPhone = value; } }
+        public string LenderInvestorPhone { get => _lenderInvestorPhone; set => _lenderInvestorPhone = value; }
         private DirtyValue<string> _lenderInvestorPostalCode;
-        public string LenderInvestorPostalCode { get { return _lenderInvestorPostalCode; } set { _lenderInvestorPostalCode = value; } }
+        public string LenderInvestorPostalCode { get => _lenderInvestorPostalCode; set => _lenderInvestorPostalCode = value; }
         private DirtyValue<string> _lenderInvestorState;
-        public string LenderInvestorState { get { return _lenderInvestorState; } set { _lenderInvestorState = value; } }
+        public string LenderInvestorState { get => _lenderInvestorState; set => _lenderInvestorState = value; }
         private DirtyValue<bool?> _lengthOfEmployment;
-        public bool? LengthOfEmployment { get { return _lengthOfEmployment; } set { _lengthOfEmployment = value; } }
+        public bool? LengthOfEmployment { get => _lengthOfEmployment; set => _lengthOfEmployment = value; }
         private DirtyValue<bool?> _noCreditFile;
-        public bool? NoCreditFile { get { return _noCreditFile; } set { _noCreditFile = value; } }
+        public bool? NoCreditFile { get => _noCreditFile; set => _noCreditFile = value; }
         private DirtyValue<bool?> _numberRecentInquiriesCredit;
-        public bool? NumberRecentInquiriesCredit { get { return _numberRecentInquiriesCredit; } set { _numberRecentInquiriesCredit = value; } }
+        public bool? NumberRecentInquiriesCredit { get => _numberRecentInquiriesCredit; set => _numberRecentInquiriesCredit = value; }
         private DirtyValue<string> _otherDescription;
-        public string OtherDescription { get { return _otherDescription; } set { _otherDescription = value; } }
+        public string OtherDescription { get => _otherDescription; set => _otherDescription = value; }
         private DirtyValue<bool?> _poorCreditPerformance;
-        public bool? PoorCreditPerformance { get { return _poorCreditPerformance; } set { _poorCreditPerformance = value; } }
+        public bool? PoorCreditPerformance { get => _poorCreditPerformance; set => _poorCreditPerformance = value; }
         private DirtyValue<bool?> _temporaryOrIrregularEmployment;
-        public bool? TemporaryOrIrregularEmployment { get { return _temporaryOrIrregularEmployment; } set { _temporaryOrIrregularEmployment = value; } }
+        public bool? TemporaryOrIrregularEmployment { get => _temporaryOrIrregularEmployment; set => _temporaryOrIrregularEmployment = value; }
         private DirtyValue<bool?> _temporaryResidence;
-        public bool? TemporaryResidence { get { return _temporaryResidence; } set { _temporaryResidence = value; } }
+        public bool? TemporaryResidence { get => _temporaryResidence; set => _temporaryResidence = value; }
         private DirtyValue<bool?> _toShortPeriodOfResidence;
-        public bool? ToShortPeriodOfResidence { get { return _toShortPeriodOfResidence; } set { _toShortPeriodOfResidence = value; } }
+        public bool? ToShortPeriodOfResidence { get => _toShortPeriodOfResidence; set => _toShortPeriodOfResidence = value; }
         private DirtyValue<bool?> _unableToVerifyCreditReferences;
-        public bool? UnableToVerifyCreditReferences { get { return _unableToVerifyCreditReferences; } set { _unableToVerifyCreditReferences = value; } }
+        public bool? UnableToVerifyCreditReferences { get => _unableToVerifyCreditReferences; set => _unableToVerifyCreditReferences = value; }
         private DirtyValue<bool?> _unableToVerifyEmployment;
-        public bool? UnableToVerifyEmployment { get { return _unableToVerifyEmployment; } set { _unableToVerifyEmployment = value; } }
+        public bool? UnableToVerifyEmployment { get => _unableToVerifyEmployment; set => _unableToVerifyEmployment = value; }
         private DirtyValue<bool?> _unableToVerifyIncome;
-        public bool? UnableToVerifyIncome { get { return _unableToVerifyIncome; } set { _unableToVerifyIncome = value; } }
+        public bool? UnableToVerifyIncome { get => _unableToVerifyIncome; set => _unableToVerifyIncome = value; }
         private DirtyValue<bool?> _unableToVerifyResidence;
-        public bool? UnableToVerifyResidence { get { return _unableToVerifyResidence; } set { _unableToVerifyResidence = value; } }
+        public bool? UnableToVerifyResidence { get => _unableToVerifyResidence; set => _unableToVerifyResidence = value; }
         private DirtyValue<bool?> _unacceptableAppraisal;
-        public bool? UnacceptableAppraisal { get { return _unacceptableAppraisal; } set { _unacceptableAppraisal = value; } }
+        public bool? UnacceptableAppraisal { get => _unacceptableAppraisal; set => _unacceptableAppraisal = value; }
         private DirtyValue<bool?> _unacceptableCreditReferencesProvided;
-        public bool? UnacceptableCreditReferencesProvided { get { return _unacceptableCreditReferencesProvided; } set { _unacceptableCreditReferencesProvided = value; } }
+        public bool? UnacceptableCreditReferencesProvided { get => _unacceptableCreditReferencesProvided; set => _unacceptableCreditReferencesProvided = value; }
         private DirtyValue<bool?> _unacceptableLeaseholdEstate;
-        public bool? UnacceptableLeaseholdEstate { get { return _unacceptableLeaseholdEstate; } set { _unacceptableLeaseholdEstate = value; } }
+        public bool? UnacceptableLeaseholdEstate { get => _unacceptableLeaseholdEstate; set => _unacceptableLeaseholdEstate = value; }
         private DirtyValue<bool?> _unacceptablePaymentRecordOnPreviousMtg;
-        public bool? UnacceptablePaymentRecordOnPreviousMtg { get { return _unacceptablePaymentRecordOnPreviousMtg; } set { _unacceptablePaymentRecordOnPreviousMtg = value; } }
+        public bool? UnacceptablePaymentRecordOnPreviousMtg { get => _unacceptablePaymentRecordOnPreviousMtg; set => _unacceptablePaymentRecordOnPreviousMtg = value; }
         private DirtyValue<bool?> _unacceptableProperty;
-        public bool? UnacceptableProperty { get { return _unacceptableProperty; } set { _unacceptableProperty = value; } }
+        public bool? UnacceptableProperty { get => _unacceptableProperty; set => _unacceptableProperty = value; }
         private DirtyValue<bool?> _weDoNotGrantCredit;
-        public bool? WeDoNotGrantCredit { get { return _weDoNotGrantCredit; } set { _weDoNotGrantCredit = value; } }
+        public bool? WeDoNotGrantCredit { get => _weDoNotGrantCredit; set => _weDoNotGrantCredit = value; }
         private DirtyValue<bool?> _withdrawnByApplicant;
-        public bool? WithdrawnByApplicant { get { return _withdrawnByApplicant; } set { _withdrawnByApplicant = value; } }
+        public bool? WithdrawnByApplicant { get => _withdrawnByApplicant; set => _withdrawnByApplicant = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -312,6 +310,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

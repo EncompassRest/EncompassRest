@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,65 +9,65 @@ namespace EncompassRest.Loans
     public sealed partial class LoanSubmission : IDirty
     {
         private DirtyValue<decimal?> _amountAvailable;
-        public decimal? AmountAvailable { get { return _amountAvailable; } set { _amountAvailable = value; } }
+        public decimal? AmountAvailable { get => _amountAvailable; set => _amountAvailable = value; }
         private DirtyValue<decimal?> _amountRequiredToClose;
-        public decimal? AmountRequiredToClose { get { return _amountRequiredToClose; } set { _amountRequiredToClose = value; } }
+        public decimal? AmountRequiredToClose { get => _amountRequiredToClose; set => _amountRequiredToClose = value; }
         private DirtyValue<string> _buydownDescription;
-        public string BuydownDescription { get { return _buydownDescription; } set { _buydownDescription = value; } }
+        public string BuydownDescription { get => _buydownDescription; set => _buydownDescription = value; }
         private DirtyValue<string> _buydownMonthsPerAdjustment;
-        public string BuydownMonthsPerAdjustment { get { return _buydownMonthsPerAdjustment; } set { _buydownMonthsPerAdjustment = value; } }
+        public string BuydownMonthsPerAdjustment { get => _buydownMonthsPerAdjustment; set => _buydownMonthsPerAdjustment = value; }
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<DateTime?> _currentRateSetDate;
-        public DateTime? CurrentRateSetDate { get { return _currentRateSetDate; } set { _currentRateSetDate = value; } }
+        public DateTime? CurrentRateSetDate { get => _currentRateSetDate; set => _currentRateSetDate = value; }
         private DirtyValue<DateTime?> _dateLastPaymentReceived;
-        public DateTime? DateLastPaymentReceived { get { return _dateLastPaymentReceived; } set { _dateLastPaymentReceived = value; } }
+        public DateTime? DateLastPaymentReceived { get => _dateLastPaymentReceived; set => _dateLastPaymentReceived = value; }
         private DirtyValue<bool?> _floodIndicator;
-        public bool? FloodIndicator { get { return _floodIndicator; } set { _floodIndicator = value; } }
+        public bool? FloodIndicator { get => _floodIndicator; set => _floodIndicator = value; }
         private DirtyValue<bool?> _hazardIndicator;
-        public bool? HazardIndicator { get { return _hazardIndicator; } set { _hazardIndicator = value; } }
+        public bool? HazardIndicator { get => _hazardIndicator; set => _hazardIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isSecondaryRegistration;
-        public bool? IsSecondaryRegistration { get { return _isSecondaryRegistration; } set { _isSecondaryRegistration = value; } }
+        public bool? IsSecondaryRegistration { get => _isSecondaryRegistration; set => _isSecondaryRegistration = value; }
         private DirtyList<LoanSubmissionFee> _loanSubmissionFees;
-        public IList<LoanSubmissionFee> LoanSubmissionFees { get { return _loanSubmissionFees ?? (_loanSubmissionFees = new DirtyList<LoanSubmissionFee>()); } set { _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); } }
+        public IList<LoanSubmissionFee> LoanSubmissionFees { get => _loanSubmissionFees ?? (_loanSubmissionFees = new DirtyList<LoanSubmissionFee>()); set => _loanSubmissionFees = new DirtyList<LoanSubmissionFee>(value); }
         private DirtyValue<DateTime?> _lockDate;
-        public DateTime? LockDate { get { return _lockDate; } set { _lockDate = value; } }
+        public DateTime? LockDate { get => _lockDate; set => _lockDate = value; }
         private DirtyValue<DateTime?> _lockDateTimestampUtc;
-        public DateTime? LockDateTimestampUtc { get { return _lockDateTimestampUtc; } set { _lockDateTimestampUtc = value; } }
+        public DateTime? LockDateTimestampUtc { get => _lockDateTimestampUtc; set => _lockDateTimestampUtc = value; }
         private DirtyValue<DateTime?> _lockExpiresDate;
-        public DateTime? LockExpiresDate { get { return _lockExpiresDate; } set { _lockExpiresDate = value; } }
+        public DateTime? LockExpiresDate { get => _lockExpiresDate; set => _lockExpiresDate = value; }
         private DirtyValue<bool?> _mmmPmiIndicator;
-        public bool? MmmPmiIndicator { get { return _mmmPmiIndicator; } set { _mmmPmiIndicator = value; } }
+        public bool? MmmPmiIndicator { get => _mmmPmiIndicator; set => _mmmPmiIndicator = value; }
         private DirtyValue<int?> _numberOfDays;
-        public int? NumberOfDays { get { return _numberOfDays; } set { _numberOfDays = value; } }
+        public int? NumberOfDays { get => _numberOfDays; set => _numberOfDays = value; }
         private DirtyValue<string> _otherDescription;
-        public string OtherDescription { get { return _otherDescription; } set { _otherDescription = value; } }
+        public string OtherDescription { get => _otherDescription; set => _otherDescription = value; }
         private DirtyValue<bool?> _otherIndicator;
-        public bool? OtherIndicator { get { return _otherIndicator; } set { _otherIndicator = value; } }
+        public bool? OtherIndicator { get => _otherIndicator; set => _otherIndicator = value; }
         private DirtyValue<string> _programCode;
-        public string ProgramCode { get { return _programCode; } set { _programCode = value; } }
+        public string ProgramCode { get => _programCode; set => _programCode = value; }
         private DirtyValue<string> _rateLock;
-        public string RateLock { get { return _rateLock; } set { _rateLock = value; } }
+        public string RateLock { get => _rateLock; set => _rateLock = value; }
         private DirtyValue<DateTime?> _rateLockDisclosureDate;
-        public DateTime? RateLockDisclosureDate { get { return _rateLockDisclosureDate; } set { _rateLockDisclosureDate = value; } }
+        public DateTime? RateLockDisclosureDate { get => _rateLockDisclosureDate; set => _rateLockDisclosureDate = value; }
         private DirtyValue<bool?> _reducedDocsIndicator;
-        public bool? ReducedDocsIndicator { get { return _reducedDocsIndicator; } set { _reducedDocsIndicator = value; } }
+        public bool? ReducedDocsIndicator { get => _reducedDocsIndicator; set => _reducedDocsIndicator = value; }
         private DirtyValue<bool?> _taxesIndicator;
-        public bool? TaxesIndicator { get { return _taxesIndicator; } set { _taxesIndicator = value; } }
+        public bool? TaxesIndicator { get => _taxesIndicator; set => _taxesIndicator = value; }
         private DirtyValue<decimal?> _total;
-        public decimal? Total { get { return _total; } set { _total = value; } }
+        public decimal? Total { get => _total; set => _total = value; }
         private DirtyValue<decimal?> _totalDiscountPointCharged;
-        public decimal? TotalDiscountPointCharged { get { return _totalDiscountPointCharged; } set { _totalDiscountPointCharged = value; } }
+        public decimal? TotalDiscountPointCharged { get => _totalDiscountPointCharged; set => _totalDiscountPointCharged = value; }
         private DirtyValue<decimal?> _totalForDueBroker;
-        public decimal? TotalForDueBroker { get { return _totalForDueBroker; } set { _totalForDueBroker = value; } }
+        public decimal? TotalForDueBroker { get => _totalForDueBroker; set => _totalForDueBroker = value; }
         private DirtyValue<decimal?> _totalForDueLender;
-        public decimal? TotalForDueLender { get { return _totalForDueLender; } set { _totalForDueLender = value; } }
+        public decimal? TotalForDueLender { get => _totalForDueLender; set => _totalForDueLender = value; }
         private DirtyValue<decimal?> _totalForPrimaryResidence;
-        public decimal? TotalForPrimaryResidence { get { return _totalForPrimaryResidence; } set { _totalForPrimaryResidence = value; } }
+        public decimal? TotalForPrimaryResidence { get => _totalForPrimaryResidence; set => _totalForPrimaryResidence = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -148,6 +146,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

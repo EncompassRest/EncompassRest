@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,279 +9,279 @@ namespace EncompassRest.Loans
     public sealed partial class Section32 : IDirty
     {
         private DirtyValue<bool?> _appraisalFeeToBeFinancedIndicator;
-        public bool? AppraisalFeeToBeFinancedIndicator { get { return _appraisalFeeToBeFinancedIndicator; } set { _appraisalFeeToBeFinancedIndicator = value; } }
+        public bool? AppraisalFeeToBeFinancedIndicator { get => _appraisalFeeToBeFinancedIndicator; set => _appraisalFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _appraisalPortionOfFeeIndicator;
-        public bool? AppraisalPortionOfFeeIndicator { get { return _appraisalPortionOfFeeIndicator; } set { _appraisalPortionOfFeeIndicator = value; } }
+        public bool? AppraisalPortionOfFeeIndicator { get => _appraisalPortionOfFeeIndicator; set => _appraisalPortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _aprExceedsTsyForFirstMortgage;
-        public decimal? AprExceedsTsyForFirstMortgage { get { return _aprExceedsTsyForFirstMortgage; } set { _aprExceedsTsyForFirstMortgage = value; } }
+        public decimal? AprExceedsTsyForFirstMortgage { get => _aprExceedsTsyForFirstMortgage; set => _aprExceedsTsyForFirstMortgage = value; }
         private DirtyValue<decimal?> _aprExceedsTsyForSubordinateMortgage;
-        public decimal? AprExceedsTsyForSubordinateMortgage { get { return _aprExceedsTsyForSubordinateMortgage; } set { _aprExceedsTsyForSubordinateMortgage = value; } }
+        public decimal? AprExceedsTsyForSubordinateMortgage { get => _aprExceedsTsyForSubordinateMortgage; set => _aprExceedsTsyForSubordinateMortgage = value; }
         private DirtyValue<bool?> _assumptionFeeToBeFinancedIndicator;
-        public bool? AssumptionFeeToBeFinancedIndicator { get { return _assumptionFeeToBeFinancedIndicator; } set { _assumptionFeeToBeFinancedIndicator = value; } }
+        public bool? AssumptionFeeToBeFinancedIndicator { get => _assumptionFeeToBeFinancedIndicator; set => _assumptionFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _assumptionPortionOfFeeIndicator;
-        public bool? AssumptionPortionOfFeeIndicator { get { return _assumptionPortionOfFeeIndicator; } set { _assumptionPortionOfFeeIndicator = value; } }
+        public bool? AssumptionPortionOfFeeIndicator { get => _assumptionPortionOfFeeIndicator; set => _assumptionPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _attorneyFeeToBeFinancedIndicator;
-        public bool? AttorneyFeeToBeFinancedIndicator { get { return _attorneyFeeToBeFinancedIndicator; } set { _attorneyFeeToBeFinancedIndicator = value; } }
+        public bool? AttorneyFeeToBeFinancedIndicator { get => _attorneyFeeToBeFinancedIndicator; set => _attorneyFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _attorneyPortionOfFeeIndicator;
-        public bool? AttorneyPortionOfFeeIndicator { get { return _attorneyPortionOfFeeIndicator; } set { _attorneyPortionOfFeeIndicator = value; } }
+        public bool? AttorneyPortionOfFeeIndicator { get => _attorneyPortionOfFeeIndicator; set => _attorneyPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _cityCountyTaxStampsFeeToBeFinancedIndicator;
-        public bool? CityCountyTaxStampsFeeToBeFinancedIndicator { get { return _cityCountyTaxStampsFeeToBeFinancedIndicator; } set { _cityCountyTaxStampsFeeToBeFinancedIndicator = value; } }
+        public bool? CityCountyTaxStampsFeeToBeFinancedIndicator { get => _cityCountyTaxStampsFeeToBeFinancedIndicator; set => _cityCountyTaxStampsFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _cityCountyTaxStampsPortionOfFeeIndicator;
-        public bool? CityCountyTaxStampsPortionOfFeeIndicator { get { return _cityCountyTaxStampsPortionOfFeeIndicator; } set { _cityCountyTaxStampsPortionOfFeeIndicator = value; } }
+        public bool? CityCountyTaxStampsPortionOfFeeIndicator { get => _cityCountyTaxStampsPortionOfFeeIndicator; set => _cityCountyTaxStampsPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _closingFeeToBeFinancedIndicator;
-        public bool? ClosingFeeToBeFinancedIndicator { get { return _closingFeeToBeFinancedIndicator; } set { _closingFeeToBeFinancedIndicator = value; } }
+        public bool? ClosingFeeToBeFinancedIndicator { get => _closingFeeToBeFinancedIndicator; set => _closingFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _closingPortionOfFeeIndicator;
-        public bool? ClosingPortionOfFeeIndicator { get { return _closingPortionOfFeeIndicator; } set { _closingPortionOfFeeIndicator = value; } }
+        public bool? ClosingPortionOfFeeIndicator { get => _closingPortionOfFeeIndicator; set => _closingPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _creditReportFeeToBeFinancedIndicator;
-        public bool? CreditReportFeeToBeFinancedIndicator { get { return _creditReportFeeToBeFinancedIndicator; } set { _creditReportFeeToBeFinancedIndicator = value; } }
+        public bool? CreditReportFeeToBeFinancedIndicator { get => _creditReportFeeToBeFinancedIndicator; set => _creditReportFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _creditReportPortionOfFeeIndicator;
-        public bool? CreditReportPortionOfFeeIndicator { get { return _creditReportPortionOfFeeIndicator; } set { _creditReportPortionOfFeeIndicator = value; } }
+        public bool? CreditReportPortionOfFeeIndicator { get => _creditReportPortionOfFeeIndicator; set => _creditReportPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _docPrepFeeToBeFinancedIndicator;
-        public bool? DocPrepFeeToBeFinancedIndicator { get { return _docPrepFeeToBeFinancedIndicator; } set { _docPrepFeeToBeFinancedIndicator = value; } }
+        public bool? DocPrepFeeToBeFinancedIndicator { get => _docPrepFeeToBeFinancedIndicator; set => _docPrepFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _docPrepPortionOfFeeIndicator;
-        public bool? DocPrepPortionOfFeeIndicator { get { return _docPrepPortionOfFeeIndicator; } set { _docPrepPortionOfFeeIndicator = value; } }
+        public bool? DocPrepPortionOfFeeIndicator { get => _docPrepPortionOfFeeIndicator; set => _docPrepPortionOfFeeIndicator = value; }
         private StringEnumValue<DoesOrDoesNot2> _exceed2PercentPrepayPenalty;
-        public StringEnumValue<DoesOrDoesNot2> Exceed2PercentPrepayPenalty { get { return _exceed2PercentPrepayPenalty; } set { _exceed2PercentPrepayPenalty = value; } }
+        public StringEnumValue<DoesOrDoesNot2> Exceed2PercentPrepayPenalty { get => _exceed2PercentPrepayPenalty; set => _exceed2PercentPrepayPenalty = value; }
         private DirtyValue<decimal?> _hoepaAPR;
-        public decimal? HoepaAPR { get { return _hoepaAPR; } set { _hoepaAPR = value; } }
+        public decimal? HoepaAPR { get => _hoepaAPR; set => _hoepaAPR = value; }
         private DirtyValue<decimal?> _hoepaFee;
-        public decimal? HoepaFee { get { return _hoepaFee; } set { _hoepaFee = value; } }
+        public decimal? HoepaFee { get => _hoepaFee; set => _hoepaFee = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _jurisdications;
-        public string Jurisdications { get { return _jurisdications; } set { _jurisdications = value; } }
+        public string Jurisdications { get => _jurisdications; set => _jurisdications = value; }
         private DirtyValue<bool?> _lendersInspectionFeeToBeFinancedIndicator;
-        public bool? LendersInspectionFeeToBeFinancedIndicator { get { return _lendersInspectionFeeToBeFinancedIndicator; } set { _lendersInspectionFeeToBeFinancedIndicator = value; } }
+        public bool? LendersInspectionFeeToBeFinancedIndicator { get => _lendersInspectionFeeToBeFinancedIndicator; set => _lendersInspectionFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _lendersInspectionPortionOfFeeIndicator;
-        public bool? LendersInspectionPortionOfFeeIndicator { get { return _lendersInspectionPortionOfFeeIndicator; } set { _lendersInspectionPortionOfFeeIndicator = value; } }
+        public bool? LendersInspectionPortionOfFeeIndicator { get => _lendersInspectionPortionOfFeeIndicator; set => _lendersInspectionPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _loanDiscountFeeToBeFinancedIndicator;
-        public bool? LoanDiscountFeeToBeFinancedIndicator { get { return _loanDiscountFeeToBeFinancedIndicator; } set { _loanDiscountFeeToBeFinancedIndicator = value; } }
+        public bool? LoanDiscountFeeToBeFinancedIndicator { get => _loanDiscountFeeToBeFinancedIndicator; set => _loanDiscountFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _loanDiscountPortionOfFeeIndicator;
-        public bool? LoanDiscountPortionOfFeeIndicator { get { return _loanDiscountPortionOfFeeIndicator; } set { _loanDiscountPortionOfFeeIndicator = value; } }
+        public bool? LoanDiscountPortionOfFeeIndicator { get => _loanDiscountPortionOfFeeIndicator; set => _loanDiscountPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _loanOriginationFeeToBeFinancedIndicator;
-        public bool? LoanOriginationFeeToBeFinancedIndicator { get { return _loanOriginationFeeToBeFinancedIndicator; } set { _loanOriginationFeeToBeFinancedIndicator = value; } }
+        public bool? LoanOriginationFeeToBeFinancedIndicator { get => _loanOriginationFeeToBeFinancedIndicator; set => _loanOriginationFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _loanOriginationPortionOfFeeIndicator;
-        public bool? LoanOriginationPortionOfFeeIndicator { get { return _loanOriginationPortionOfFeeIndicator; } set { _loanOriginationPortionOfFeeIndicator = value; } }
+        public bool? LoanOriginationPortionOfFeeIndicator { get => _loanOriginationPortionOfFeeIndicator; set => _loanOriginationPortionOfFeeIndicator = value; }
         private DirtyValue<string> _loanQualifyAsHighCostMortgage;
-        public string LoanQualifyAsHighCostMortgage { get { return _loanQualifyAsHighCostMortgage; } set { _loanQualifyAsHighCostMortgage = value; } }
+        public string LoanQualifyAsHighCostMortgage { get => _loanQualifyAsHighCostMortgage; set => _loanQualifyAsHighCostMortgage = value; }
         private DirtyValue<decimal?> _maximumPercentageOfLoan;
-        public decimal? MaximumPercentageOfLoan { get { return _maximumPercentageOfLoan; } set { _maximumPercentageOfLoan = value; } }
+        public decimal? MaximumPercentageOfLoan { get => _maximumPercentageOfLoan; set => _maximumPercentageOfLoan = value; }
         private DirtyValue<decimal?> _maximumPointsAndFees;
-        public decimal? MaximumPointsAndFees { get { return _maximumPointsAndFees; } set { _maximumPointsAndFees = value; } }
+        public decimal? MaximumPointsAndFees { get => _maximumPointsAndFees; set => _maximumPointsAndFees = value; }
         private DirtyValue<bool?> _mortgageBrokerFeeToBeFinancedIndicator;
-        public bool? MortgageBrokerFeeToBeFinancedIndicator { get { return _mortgageBrokerFeeToBeFinancedIndicator; } set { _mortgageBrokerFeeToBeFinancedIndicator = value; } }
+        public bool? MortgageBrokerFeeToBeFinancedIndicator { get => _mortgageBrokerFeeToBeFinancedIndicator; set => _mortgageBrokerFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _mortgageBrokerPortionOfFeeIndicator;
-        public bool? MortgageBrokerPortionOfFeeIndicator { get { return _mortgageBrokerPortionOfFeeIndicator; } set { _mortgageBrokerPortionOfFeeIndicator = value; } }
+        public bool? MortgageBrokerPortionOfFeeIndicator { get => _mortgageBrokerPortionOfFeeIndicator; set => _mortgageBrokerPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _mortgageInspectionFeeToBeFinancedIndicator;
-        public bool? MortgageInspectionFeeToBeFinancedIndicator { get { return _mortgageInspectionFeeToBeFinancedIndicator; } set { _mortgageInspectionFeeToBeFinancedIndicator = value; } }
+        public bool? MortgageInspectionFeeToBeFinancedIndicator { get => _mortgageInspectionFeeToBeFinancedIndicator; set => _mortgageInspectionFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _mortgageInspectionPortionOfFeeIndicator;
-        public bool? MortgageInspectionPortionOfFeeIndicator { get { return _mortgageInspectionPortionOfFeeIndicator; } set { _mortgageInspectionPortionOfFeeIndicator = value; } }
+        public bool? MortgageInspectionPortionOfFeeIndicator { get => _mortgageInspectionPortionOfFeeIndicator; set => _mortgageInspectionPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _mortgageInsuranceFeeToBeFinancedIndicator;
-        public bool? MortgageInsuranceFeeToBeFinancedIndicator { get { return _mortgageInsuranceFeeToBeFinancedIndicator; } set { _mortgageInsuranceFeeToBeFinancedIndicator = value; } }
+        public bool? MortgageInsuranceFeeToBeFinancedIndicator { get => _mortgageInsuranceFeeToBeFinancedIndicator; set => _mortgageInsuranceFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _mortgageInsurancePortionOfFeeIndicator;
-        public bool? MortgageInsurancePortionOfFeeIndicator { get { return _mortgageInsurancePortionOfFeeIndicator; } set { _mortgageInsurancePortionOfFeeIndicator = value; } }
+        public bool? MortgageInsurancePortionOfFeeIndicator { get => _mortgageInsurancePortionOfFeeIndicator; set => _mortgageInsurancePortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _mortgageInsurancePremiumFeeToBeFinancedIndicator;
-        public bool? MortgageInsurancePremiumFeeToBeFinancedIndicator { get { return _mortgageInsurancePremiumFeeToBeFinancedIndicator; } set { _mortgageInsurancePremiumFeeToBeFinancedIndicator = value; } }
+        public bool? MortgageInsurancePremiumFeeToBeFinancedIndicator { get => _mortgageInsurancePremiumFeeToBeFinancedIndicator; set => _mortgageInsurancePremiumFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _mortgageInsurancePremiumPortionOfFeeIndicator;
-        public bool? MortgageInsurancePremiumPortionOfFeeIndicator { get { return _mortgageInsurancePremiumPortionOfFeeIndicator; } set { _mortgageInsurancePremiumPortionOfFeeIndicator = value; } }
+        public bool? MortgageInsurancePremiumPortionOfFeeIndicator { get => _mortgageInsurancePremiumPortionOfFeeIndicator; set => _mortgageInsurancePremiumPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _notaryFeeToBeFinancedIndicator;
-        public bool? NotaryFeeToBeFinancedIndicator { get { return _notaryFeeToBeFinancedIndicator; } set { _notaryFeeToBeFinancedIndicator = value; } }
+        public bool? NotaryFeeToBeFinancedIndicator { get => _notaryFeeToBeFinancedIndicator; set => _notaryFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _notaryPortionOfFeeIndicator;
-        public bool? NotaryPortionOfFeeIndicator { get { return _notaryPortionOfFeeIndicator; } set { _notaryPortionOfFeeIndicator = value; } }
+        public bool? NotaryPortionOfFeeIndicator { get => _notaryPortionOfFeeIndicator; set => _notaryPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _otherHighCostIndicator;
-        public bool? OtherHighCostIndicator { get { return _otherHighCostIndicator; } set { _otherHighCostIndicator = value; } }
+        public bool? OtherHighCostIndicator { get => _otherHighCostIndicator; set => _otherHighCostIndicator = value; }
         private StringEnumValue<PenaltyChargeMoreThan36Months> _penaltyChargeMoreThan36Months;
-        public StringEnumValue<PenaltyChargeMoreThan36Months> PenaltyChargeMoreThan36Months { get { return _penaltyChargeMoreThan36Months; } set { _penaltyChargeMoreThan36Months = value; } }
+        public StringEnumValue<PenaltyChargeMoreThan36Months> PenaltyChargeMoreThan36Months { get => _penaltyChargeMoreThan36Months; set => _penaltyChargeMoreThan36Months = value; }
         private DirtyValue<bool?> _pestInspectionFeeToBeFinancedIndicator;
-        public bool? PestInspectionFeeToBeFinancedIndicator { get { return _pestInspectionFeeToBeFinancedIndicator; } set { _pestInspectionFeeToBeFinancedIndicator = value; } }
+        public bool? PestInspectionFeeToBeFinancedIndicator { get => _pestInspectionFeeToBeFinancedIndicator; set => _pestInspectionFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _pestInspectionPortionOfFeeIndicator;
-        public bool? PestInspectionPortionOfFeeIndicator { get { return _pestInspectionPortionOfFeeIndicator; } set { _pestInspectionPortionOfFeeIndicator = value; } }
+        public bool? PestInspectionPortionOfFeeIndicator { get => _pestInspectionPortionOfFeeIndicator; set => _pestInspectionPortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _prepayPenaltyPercentofAmtPrepaid;
-        public decimal? PrepayPenaltyPercentofAmtPrepaid { get { return _prepayPenaltyPercentofAmtPrepaid; } set { _prepayPenaltyPercentofAmtPrepaid = value; } }
+        public decimal? PrepayPenaltyPercentofAmtPrepaid { get => _prepayPenaltyPercentofAmtPrepaid; set => _prepayPenaltyPercentofAmtPrepaid = value; }
         private DirtyValue<bool?> _processingFeeToBeFinancedIndicator;
-        public bool? ProcessingFeeToBeFinancedIndicator { get { return _processingFeeToBeFinancedIndicator; } set { _processingFeeToBeFinancedIndicator = value; } }
+        public bool? ProcessingFeeToBeFinancedIndicator { get => _processingFeeToBeFinancedIndicator; set => _processingFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _processingPortionOfFeeIndicator;
-        public bool? ProcessingPortionOfFeeIndicator { get { return _processingPortionOfFeeIndicator; } set { _processingPortionOfFeeIndicator = value; } }
+        public bool? ProcessingPortionOfFeeIndicator { get => _processingPortionOfFeeIndicator; set => _processingPortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _rateSetIndex;
-        public decimal? RateSetIndex { get { return _rateSetIndex; } set { _rateSetIndex = value; } }
+        public decimal? RateSetIndex { get => _rateSetIndex; set => _rateSetIndex = value; }
         private DirtyValue<bool?> _recordingFeeToBeFinancedIndicator;
-        public bool? RecordingFeeToBeFinancedIndicator { get { return _recordingFeeToBeFinancedIndicator; } set { _recordingFeeToBeFinancedIndicator = value; } }
+        public bool? RecordingFeeToBeFinancedIndicator { get => _recordingFeeToBeFinancedIndicator; set => _recordingFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _recordingPortionOfFeeIndicator;
-        public bool? RecordingPortionOfFeeIndicator { get { return _recordingPortionOfFeeIndicator; } set { _recordingPortionOfFeeIndicator = value; } }
+        public bool? RecordingPortionOfFeeIndicator { get => _recordingPortionOfFeeIndicator; set => _recordingPortionOfFeeIndicator = value; }
         private DirtyValue<string> _resultOfPointAndFees;
-        public string ResultOfPointAndFees { get { return _resultOfPointAndFees; } set { _resultOfPointAndFees = value; } }
+        public string ResultOfPointAndFees { get => _resultOfPointAndFees; set => _resultOfPointAndFees = value; }
         private DirtyValue<string> _resultOfSecurityYieldTest;
-        public string ResultOfSecurityYieldTest { get { return _resultOfSecurityYieldTest; } set { _resultOfSecurityYieldTest = value; } }
+        public string ResultOfSecurityYieldTest { get => _resultOfSecurityYieldTest; set => _resultOfSecurityYieldTest = value; }
         private DirtyValue<bool?> _section32Indicator;
-        public bool? Section32Indicator { get { return _section32Indicator; } set { _section32Indicator = value; } }
+        public bool? Section32Indicator { get => _section32Indicator; set => _section32Indicator = value; }
         private DirtyValue<decimal?> _section35AveragePrimeRate;
-        public decimal? Section35AveragePrimeRate { get { return _section35AveragePrimeRate; } set { _section35AveragePrimeRate = value; } }
+        public decimal? Section35AveragePrimeRate { get => _section35AveragePrimeRate; set => _section35AveragePrimeRate = value; }
         private StringEnumValue<DoesOrDoesNot> _section35IsSecondAppraisalRequired;
-        public StringEnumValue<DoesOrDoesNot> Section35IsSecondAppraisalRequired { get { return _section35IsSecondAppraisalRequired; } set { _section35IsSecondAppraisalRequired = value; } }
+        public StringEnumValue<DoesOrDoesNot> Section35IsSecondAppraisalRequired { get => _section35IsSecondAppraisalRequired; set => _section35IsSecondAppraisalRequired = value; }
         private DirtyValue<DateTime?> _section35PriorAcquisitionDate;
-        public DateTime? Section35PriorAcquisitionDate { get { return _section35PriorAcquisitionDate; } set { _section35PriorAcquisitionDate = value; } }
+        public DateTime? Section35PriorAcquisitionDate { get => _section35PriorAcquisitionDate; set => _section35PriorAcquisitionDate = value; }
         private DirtyValue<decimal?> _section35PriorAcquisitionPrice;
-        public decimal? Section35PriorAcquisitionPrice { get { return _section35PriorAcquisitionPrice; } set { _section35PriorAcquisitionPrice = value; } }
+        public decimal? Section35PriorAcquisitionPrice { get => _section35PriorAcquisitionPrice; set => _section35PriorAcquisitionPrice = value; }
         private DirtyValue<string> _section35PriorAcquisitionSource;
-        public string Section35PriorAcquisitionSource { get { return _section35PriorAcquisitionSource; } set { _section35PriorAcquisitionSource = value; } }
+        public string Section35PriorAcquisitionSource { get => _section35PriorAcquisitionSource; set => _section35PriorAcquisitionSource = value; }
         private DirtyValue<string> _section35ResultOfSecurityYieldTest;
-        public string Section35ResultOfSecurityYieldTest { get { return _section35ResultOfSecurityYieldTest; } set { _section35ResultOfSecurityYieldTest = value; } }
+        public string Section35ResultOfSecurityYieldTest { get => _section35ResultOfSecurityYieldTest; set => _section35ResultOfSecurityYieldTest = value; }
         private DirtyValue<DateTime?> _section35SalesContractDate;
-        public DateTime? Section35SalesContractDate { get { return _section35SalesContractDate; } set { _section35SalesContractDate = value; } }
+        public DateTime? Section35SalesContractDate { get => _section35SalesContractDate; set => _section35SalesContractDate = value; }
         private DirtyValue<bool?> _stateTaxStampsFeeToBeFinancedIndicator;
-        public bool? StateTaxStampsFeeToBeFinancedIndicator { get { return _stateTaxStampsFeeToBeFinancedIndicator; } set { _stateTaxStampsFeeToBeFinancedIndicator = value; } }
+        public bool? StateTaxStampsFeeToBeFinancedIndicator { get => _stateTaxStampsFeeToBeFinancedIndicator; set => _stateTaxStampsFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _stateTaxStampsPortionOfFeeIndicator;
-        public bool? StateTaxStampsPortionOfFeeIndicator { get { return _stateTaxStampsPortionOfFeeIndicator; } set { _stateTaxStampsPortionOfFeeIndicator = value; } }
+        public bool? StateTaxStampsPortionOfFeeIndicator { get => _stateTaxStampsPortionOfFeeIndicator; set => _stateTaxStampsPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _surveyFeeToBeFinancedIndicator;
-        public bool? SurveyFeeToBeFinancedIndicator { get { return _surveyFeeToBeFinancedIndicator; } set { _surveyFeeToBeFinancedIndicator = value; } }
+        public bool? SurveyFeeToBeFinancedIndicator { get => _surveyFeeToBeFinancedIndicator; set => _surveyFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _surveyPortionOfFeeIndicator;
-        public bool? SurveyPortionOfFeeIndicator { get { return _surveyPortionOfFeeIndicator; } set { _surveyPortionOfFeeIndicator = value; } }
+        public bool? SurveyPortionOfFeeIndicator { get => _surveyPortionOfFeeIndicator; set => _surveyPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _taxServiceFeeToBeFinancedIndicator;
-        public bool? TaxServiceFeeToBeFinancedIndicator { get { return _taxServiceFeeToBeFinancedIndicator; } set { _taxServiceFeeToBeFinancedIndicator = value; } }
+        public bool? TaxServiceFeeToBeFinancedIndicator { get => _taxServiceFeeToBeFinancedIndicator; set => _taxServiceFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _taxServicePortionOfFeeIndicator;
-        public bool? TaxServicePortionOfFeeIndicator { get { return _taxServicePortionOfFeeIndicator; } set { _taxServicePortionOfFeeIndicator = value; } }
+        public bool? TaxServicePortionOfFeeIndicator { get => _taxServicePortionOfFeeIndicator; set => _taxServicePortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _titleBinderFeeToBeFinancedIndicator;
-        public bool? TitleBinderFeeToBeFinancedIndicator { get { return _titleBinderFeeToBeFinancedIndicator; } set { _titleBinderFeeToBeFinancedIndicator = value; } }
+        public bool? TitleBinderFeeToBeFinancedIndicator { get => _titleBinderFeeToBeFinancedIndicator; set => _titleBinderFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _titleBinderPortionOfFeeIndicator;
-        public bool? TitleBinderPortionOfFeeIndicator { get { return _titleBinderPortionOfFeeIndicator; } set { _titleBinderPortionOfFeeIndicator = value; } }
+        public bool? TitleBinderPortionOfFeeIndicator { get => _titleBinderPortionOfFeeIndicator; set => _titleBinderPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _titleExaminationFeeToBeFinancedIndicator;
-        public bool? TitleExaminationFeeToBeFinancedIndicator { get { return _titleExaminationFeeToBeFinancedIndicator; } set { _titleExaminationFeeToBeFinancedIndicator = value; } }
+        public bool? TitleExaminationFeeToBeFinancedIndicator { get => _titleExaminationFeeToBeFinancedIndicator; set => _titleExaminationFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _titleExaminationPortionOfFeeIndicator;
-        public bool? TitleExaminationPortionOfFeeIndicator { get { return _titleExaminationPortionOfFeeIndicator; } set { _titleExaminationPortionOfFeeIndicator = value; } }
+        public bool? TitleExaminationPortionOfFeeIndicator { get => _titleExaminationPortionOfFeeIndicator; set => _titleExaminationPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _titleInsuranceFeeToBeFinancedIndicator;
-        public bool? TitleInsuranceFeeToBeFinancedIndicator { get { return _titleInsuranceFeeToBeFinancedIndicator; } set { _titleInsuranceFeeToBeFinancedIndicator = value; } }
+        public bool? TitleInsuranceFeeToBeFinancedIndicator { get => _titleInsuranceFeeToBeFinancedIndicator; set => _titleInsuranceFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _titleInsurancePortionOfFeeIndicator;
-        public bool? TitleInsurancePortionOfFeeIndicator { get { return _titleInsurancePortionOfFeeIndicator; } set { _titleInsurancePortionOfFeeIndicator = value; } }
+        public bool? TitleInsurancePortionOfFeeIndicator { get => _titleInsurancePortionOfFeeIndicator; set => _titleInsurancePortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _titleSearchFeeToBeFinancedIndicator;
-        public bool? TitleSearchFeeToBeFinancedIndicator { get { return _titleSearchFeeToBeFinancedIndicator; } set { _titleSearchFeeToBeFinancedIndicator = value; } }
+        public bool? TitleSearchFeeToBeFinancedIndicator { get => _titleSearchFeeToBeFinancedIndicator; set => _titleSearchFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _titleSearchPortionOfFeeIndicator;
-        public bool? TitleSearchPortionOfFeeIndicator { get { return _titleSearchPortionOfFeeIndicator; } set { _titleSearchPortionOfFeeIndicator = value; } }
+        public bool? TitleSearchPortionOfFeeIndicator { get => _titleSearchPortionOfFeeIndicator; set => _titleSearchPortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _totalPointsAndFees;
-        public decimal? TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
+        public decimal? TotalPointsAndFees { get => _totalPointsAndFees; set => _totalPointsAndFees = value; }
         private DirtyValue<decimal?> _treasurySecurityYield;
-        public decimal? TreasurySecurityYield { get { return _treasurySecurityYield; } set { _treasurySecurityYield = value; } }
+        public decimal? TreasurySecurityYield { get => _treasurySecurityYield; set => _treasurySecurityYield = value; }
         private DirtyValue<bool?> _underwritingFeeToBeFinancedIndicator;
-        public bool? UnderwritingFeeToBeFinancedIndicator { get { return _underwritingFeeToBeFinancedIndicator; } set { _underwritingFeeToBeFinancedIndicator = value; } }
+        public bool? UnderwritingFeeToBeFinancedIndicator { get => _underwritingFeeToBeFinancedIndicator; set => _underwritingFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _underwritingPortionOfFeeIndicator;
-        public bool? UnderwritingPortionOfFeeIndicator { get { return _underwritingPortionOfFeeIndicator; } set { _underwritingPortionOfFeeIndicator = value; } }
+        public bool? UnderwritingPortionOfFeeIndicator { get => _underwritingPortionOfFeeIndicator; set => _underwritingPortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _userDefined1109BorPaidAmount;
-        public decimal? UserDefined1109BorPaidAmount { get { return _userDefined1109BorPaidAmount; } set { _userDefined1109BorPaidAmount = value; } }
+        public decimal? UserDefined1109BorPaidAmount { get => _userDefined1109BorPaidAmount; set => _userDefined1109BorPaidAmount = value; }
         private DirtyValue<bool?> _userDefined1109FeeToBeFinancedIndicator;
-        public bool? UserDefined1109FeeToBeFinancedIndicator { get { return _userDefined1109FeeToBeFinancedIndicator; } set { _userDefined1109FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1109FeeToBeFinancedIndicator { get => _userDefined1109FeeToBeFinancedIndicator; set => _userDefined1109FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1109PortionOfFeeIndicator;
-        public bool? UserDefined1109PortionOfFeeIndicator { get { return _userDefined1109PortionOfFeeIndicator; } set { _userDefined1109PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1109PortionOfFeeIndicator { get => _userDefined1109PortionOfFeeIndicator; set => _userDefined1109PortionOfFeeIndicator = value; }
         private DirtyValue<decimal?> _userDefined1110BorPaidAmount;
-        public decimal? UserDefined1110BorPaidAmount { get { return _userDefined1110BorPaidAmount; } set { _userDefined1110BorPaidAmount = value; } }
+        public decimal? UserDefined1110BorPaidAmount { get => _userDefined1110BorPaidAmount; set => _userDefined1110BorPaidAmount = value; }
         private DirtyValue<bool?> _userDefined1110FeeToBeFinancedIndicator;
-        public bool? UserDefined1110FeeToBeFinancedIndicator { get { return _userDefined1110FeeToBeFinancedIndicator; } set { _userDefined1110FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1110FeeToBeFinancedIndicator { get => _userDefined1110FeeToBeFinancedIndicator; set => _userDefined1110FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1110PortionOfFeeIndicator;
-        public bool? UserDefined1110PortionOfFeeIndicator { get { return _userDefined1110PortionOfFeeIndicator; } set { _userDefined1110PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1110PortionOfFeeIndicator { get => _userDefined1110PortionOfFeeIndicator; set => _userDefined1110PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1111FeeToBeFinancedIndicator;
-        public bool? UserDefined1111FeeToBeFinancedIndicator { get { return _userDefined1111FeeToBeFinancedIndicator; } set { _userDefined1111FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1111FeeToBeFinancedIndicator { get => _userDefined1111FeeToBeFinancedIndicator; set => _userDefined1111FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1111PortionOfFeeIndicator;
-        public bool? UserDefined1111PortionOfFeeIndicator { get { return _userDefined1111PortionOfFeeIndicator; } set { _userDefined1111PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1111PortionOfFeeIndicator { get => _userDefined1111PortionOfFeeIndicator; set => _userDefined1111PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1112FeeToBeFinancedIndicator;
-        public bool? UserDefined1112FeeToBeFinancedIndicator { get { return _userDefined1112FeeToBeFinancedIndicator; } set { _userDefined1112FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1112FeeToBeFinancedIndicator { get => _userDefined1112FeeToBeFinancedIndicator; set => _userDefined1112FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1112PortionOfFeeIndicator;
-        public bool? UserDefined1112PortionOfFeeIndicator { get { return _userDefined1112PortionOfFeeIndicator; } set { _userDefined1112PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1112PortionOfFeeIndicator { get => _userDefined1112PortionOfFeeIndicator; set => _userDefined1112PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1113FeeToBeFinancedIndicator;
-        public bool? UserDefined1113FeeToBeFinancedIndicator { get { return _userDefined1113FeeToBeFinancedIndicator; } set { _userDefined1113FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1113FeeToBeFinancedIndicator { get => _userDefined1113FeeToBeFinancedIndicator; set => _userDefined1113FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1113PortionOfFeeIndicator;
-        public bool? UserDefined1113PortionOfFeeIndicator { get { return _userDefined1113PortionOfFeeIndicator; } set { _userDefined1113PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1113PortionOfFeeIndicator { get => _userDefined1113PortionOfFeeIndicator; set => _userDefined1113PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1114FeeToBeFinancedIndicator;
-        public bool? UserDefined1114FeeToBeFinancedIndicator { get { return _userDefined1114FeeToBeFinancedIndicator; } set { _userDefined1114FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1114FeeToBeFinancedIndicator { get => _userDefined1114FeeToBeFinancedIndicator; set => _userDefined1114FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1114PortionOfFeeIndicator;
-        public bool? UserDefined1114PortionOfFeeIndicator { get { return _userDefined1114PortionOfFeeIndicator; } set { _userDefined1114PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1114PortionOfFeeIndicator { get => _userDefined1114PortionOfFeeIndicator; set => _userDefined1114PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1204FeeToBeFinancedIndicator;
-        public bool? UserDefined1204FeeToBeFinancedIndicator { get { return _userDefined1204FeeToBeFinancedIndicator; } set { _userDefined1204FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1204FeeToBeFinancedIndicator { get => _userDefined1204FeeToBeFinancedIndicator; set => _userDefined1204FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1204PortionOfFeeIndicator;
-        public bool? UserDefined1204PortionOfFeeIndicator { get { return _userDefined1204PortionOfFeeIndicator; } set { _userDefined1204PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1204PortionOfFeeIndicator { get => _userDefined1204PortionOfFeeIndicator; set => _userDefined1204PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1205FeeToBeFinancedIndicator;
-        public bool? UserDefined1205FeeToBeFinancedIndicator { get { return _userDefined1205FeeToBeFinancedIndicator; } set { _userDefined1205FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1205FeeToBeFinancedIndicator { get => _userDefined1205FeeToBeFinancedIndicator; set => _userDefined1205FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1205PortionOfFeeIndicator;
-        public bool? UserDefined1205PortionOfFeeIndicator { get { return _userDefined1205PortionOfFeeIndicator; } set { _userDefined1205PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1205PortionOfFeeIndicator { get => _userDefined1205PortionOfFeeIndicator; set => _userDefined1205PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1206FeeToBeFinancedIndicator;
-        public bool? UserDefined1206FeeToBeFinancedIndicator { get { return _userDefined1206FeeToBeFinancedIndicator; } set { _userDefined1206FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1206FeeToBeFinancedIndicator { get => _userDefined1206FeeToBeFinancedIndicator; set => _userDefined1206FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1206PortionOfFeeIndicator;
-        public bool? UserDefined1206PortionOfFeeIndicator { get { return _userDefined1206PortionOfFeeIndicator; } set { _userDefined1206PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1206PortionOfFeeIndicator { get => _userDefined1206PortionOfFeeIndicator; set => _userDefined1206PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1303FeeToBeFinancedIndicator;
-        public bool? UserDefined1303FeeToBeFinancedIndicator { get { return _userDefined1303FeeToBeFinancedIndicator; } set { _userDefined1303FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1303FeeToBeFinancedIndicator { get => _userDefined1303FeeToBeFinancedIndicator; set => _userDefined1303FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1303PortionOfFeeIndicator;
-        public bool? UserDefined1303PortionOfFeeIndicator { get { return _userDefined1303PortionOfFeeIndicator; } set { _userDefined1303PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1303PortionOfFeeIndicator { get => _userDefined1303PortionOfFeeIndicator; set => _userDefined1303PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1304FeeToBeFinancedIndicator;
-        public bool? UserDefined1304FeeToBeFinancedIndicator { get { return _userDefined1304FeeToBeFinancedIndicator; } set { _userDefined1304FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1304FeeToBeFinancedIndicator { get => _userDefined1304FeeToBeFinancedIndicator; set => _userDefined1304FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1304PortionOfFeeIndicator;
-        public bool? UserDefined1304PortionOfFeeIndicator { get { return _userDefined1304PortionOfFeeIndicator; } set { _userDefined1304PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1304PortionOfFeeIndicator { get => _userDefined1304PortionOfFeeIndicator; set => _userDefined1304PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1305FeeToBeFinancedIndicator;
-        public bool? UserDefined1305FeeToBeFinancedIndicator { get { return _userDefined1305FeeToBeFinancedIndicator; } set { _userDefined1305FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1305FeeToBeFinancedIndicator { get => _userDefined1305FeeToBeFinancedIndicator; set => _userDefined1305FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1305PortionOfFeeIndicator;
-        public bool? UserDefined1305PortionOfFeeIndicator { get { return _userDefined1305PortionOfFeeIndicator; } set { _userDefined1305PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1305PortionOfFeeIndicator { get => _userDefined1305PortionOfFeeIndicator; set => _userDefined1305PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1306FeeToBeFinancedIndicator;
-        public bool? UserDefined1306FeeToBeFinancedIndicator { get { return _userDefined1306FeeToBeFinancedIndicator; } set { _userDefined1306FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1306FeeToBeFinancedIndicator { get => _userDefined1306FeeToBeFinancedIndicator; set => _userDefined1306FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1306PortionOfFeeIndicator;
-        public bool? UserDefined1306PortionOfFeeIndicator { get { return _userDefined1306PortionOfFeeIndicator; } set { _userDefined1306PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1306PortionOfFeeIndicator { get => _userDefined1306PortionOfFeeIndicator; set => _userDefined1306PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1307FeeToBeFinancedIndicator;
-        public bool? UserDefined1307FeeToBeFinancedIndicator { get { return _userDefined1307FeeToBeFinancedIndicator; } set { _userDefined1307FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1307FeeToBeFinancedIndicator { get => _userDefined1307FeeToBeFinancedIndicator; set => _userDefined1307FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1307PortionOfFeeIndicator;
-        public bool? UserDefined1307PortionOfFeeIndicator { get { return _userDefined1307PortionOfFeeIndicator; } set { _userDefined1307PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1307PortionOfFeeIndicator { get => _userDefined1307PortionOfFeeIndicator; set => _userDefined1307PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1308FeeToBeFinancedIndicator;
-        public bool? UserDefined1308FeeToBeFinancedIndicator { get { return _userDefined1308FeeToBeFinancedIndicator; } set { _userDefined1308FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1308FeeToBeFinancedIndicator { get => _userDefined1308FeeToBeFinancedIndicator; set => _userDefined1308FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1308PortionOfFeeIndicator;
-        public bool? UserDefined1308PortionOfFeeIndicator { get { return _userDefined1308PortionOfFeeIndicator; } set { _userDefined1308PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1308PortionOfFeeIndicator { get => _userDefined1308PortionOfFeeIndicator; set => _userDefined1308PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined1309FeeToBeFinancedIndicator;
-        public bool? UserDefined1309FeeToBeFinancedIndicator { get { return _userDefined1309FeeToBeFinancedIndicator; } set { _userDefined1309FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined1309FeeToBeFinancedIndicator { get => _userDefined1309FeeToBeFinancedIndicator; set => _userDefined1309FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined1309PortionOfFeeIndicator;
-        public bool? UserDefined1309PortionOfFeeIndicator { get { return _userDefined1309PortionOfFeeIndicator; } set { _userDefined1309PortionOfFeeIndicator = value; } }
+        public bool? UserDefined1309PortionOfFeeIndicator { get => _userDefined1309PortionOfFeeIndicator; set => _userDefined1309PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined813FeeToBeFinancedIndicator;
-        public bool? UserDefined813FeeToBeFinancedIndicator { get { return _userDefined813FeeToBeFinancedIndicator; } set { _userDefined813FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined813FeeToBeFinancedIndicator { get => _userDefined813FeeToBeFinancedIndicator; set => _userDefined813FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined813PortionOfFeeIndicator;
-        public bool? UserDefined813PortionOfFeeIndicator { get { return _userDefined813PortionOfFeeIndicator; } set { _userDefined813PortionOfFeeIndicator = value; } }
+        public bool? UserDefined813PortionOfFeeIndicator { get => _userDefined813PortionOfFeeIndicator; set => _userDefined813PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined814FeeToBeFinancedIndicator;
-        public bool? UserDefined814FeeToBeFinancedIndicator { get { return _userDefined814FeeToBeFinancedIndicator; } set { _userDefined814FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined814FeeToBeFinancedIndicator { get => _userDefined814FeeToBeFinancedIndicator; set => _userDefined814FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined814PortionOfFeeIndicator;
-        public bool? UserDefined814PortionOfFeeIndicator { get { return _userDefined814PortionOfFeeIndicator; } set { _userDefined814PortionOfFeeIndicator = value; } }
+        public bool? UserDefined814PortionOfFeeIndicator { get => _userDefined814PortionOfFeeIndicator; set => _userDefined814PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined815FeeToBeFinancedIndicator;
-        public bool? UserDefined815FeeToBeFinancedIndicator { get { return _userDefined815FeeToBeFinancedIndicator; } set { _userDefined815FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined815FeeToBeFinancedIndicator { get => _userDefined815FeeToBeFinancedIndicator; set => _userDefined815FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined815PortionOfFeeIndicator;
-        public bool? UserDefined815PortionOfFeeIndicator { get { return _userDefined815PortionOfFeeIndicator; } set { _userDefined815PortionOfFeeIndicator = value; } }
+        public bool? UserDefined815PortionOfFeeIndicator { get => _userDefined815PortionOfFeeIndicator; set => _userDefined815PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined816FeeToBeFinancedIndicator;
-        public bool? UserDefined816FeeToBeFinancedIndicator { get { return _userDefined816FeeToBeFinancedIndicator; } set { _userDefined816FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined816FeeToBeFinancedIndicator { get => _userDefined816FeeToBeFinancedIndicator; set => _userDefined816FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined816PortionOfFeeIndicator;
-        public bool? UserDefined816PortionOfFeeIndicator { get { return _userDefined816PortionOfFeeIndicator; } set { _userDefined816PortionOfFeeIndicator = value; } }
+        public bool? UserDefined816PortionOfFeeIndicator { get => _userDefined816PortionOfFeeIndicator; set => _userDefined816PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined817FeeToBeFinancedIndicator;
-        public bool? UserDefined817FeeToBeFinancedIndicator { get { return _userDefined817FeeToBeFinancedIndicator; } set { _userDefined817FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined817FeeToBeFinancedIndicator { get => _userDefined817FeeToBeFinancedIndicator; set => _userDefined817FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined817PortionOfFeeIndicator;
-        public bool? UserDefined817PortionOfFeeIndicator { get { return _userDefined817PortionOfFeeIndicator; } set { _userDefined817PortionOfFeeIndicator = value; } }
+        public bool? UserDefined817PortionOfFeeIndicator { get => _userDefined817PortionOfFeeIndicator; set => _userDefined817PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined818FeeToBeFinancedIndicator;
-        public bool? UserDefined818FeeToBeFinancedIndicator { get { return _userDefined818FeeToBeFinancedIndicator; } set { _userDefined818FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined818FeeToBeFinancedIndicator { get => _userDefined818FeeToBeFinancedIndicator; set => _userDefined818FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined818PortionOfFeeIndicator;
-        public bool? UserDefined818PortionOfFeeIndicator { get { return _userDefined818PortionOfFeeIndicator; } set { _userDefined818PortionOfFeeIndicator = value; } }
+        public bool? UserDefined818PortionOfFeeIndicator { get => _userDefined818PortionOfFeeIndicator; set => _userDefined818PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined819FeeToBeFinancedIndicator;
-        public bool? UserDefined819FeeToBeFinancedIndicator { get { return _userDefined819FeeToBeFinancedIndicator; } set { _userDefined819FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined819FeeToBeFinancedIndicator { get => _userDefined819FeeToBeFinancedIndicator; set => _userDefined819FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined819PortionOfFeeIndicator;
-        public bool? UserDefined819PortionOfFeeIndicator { get { return _userDefined819PortionOfFeeIndicator; } set { _userDefined819PortionOfFeeIndicator = value; } }
+        public bool? UserDefined819PortionOfFeeIndicator { get => _userDefined819PortionOfFeeIndicator; set => _userDefined819PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined820FeeToBeFinancedIndicator;
-        public bool? UserDefined820FeeToBeFinancedIndicator { get { return _userDefined820FeeToBeFinancedIndicator; } set { _userDefined820FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined820FeeToBeFinancedIndicator { get => _userDefined820FeeToBeFinancedIndicator; set => _userDefined820FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined820PortionOfFeeIndicator;
-        public bool? UserDefined820PortionOfFeeIndicator { get { return _userDefined820PortionOfFeeIndicator; } set { _userDefined820PortionOfFeeIndicator = value; } }
+        public bool? UserDefined820PortionOfFeeIndicator { get => _userDefined820PortionOfFeeIndicator; set => _userDefined820PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined821FeeToBeFinancedIndicator;
-        public bool? UserDefined821FeeToBeFinancedIndicator { get { return _userDefined821FeeToBeFinancedIndicator; } set { _userDefined821FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined821FeeToBeFinancedIndicator { get => _userDefined821FeeToBeFinancedIndicator; set => _userDefined821FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined821PortionOfFeeIndicator;
-        public bool? UserDefined821PortionOfFeeIndicator { get { return _userDefined821PortionOfFeeIndicator; } set { _userDefined821PortionOfFeeIndicator = value; } }
+        public bool? UserDefined821PortionOfFeeIndicator { get => _userDefined821PortionOfFeeIndicator; set => _userDefined821PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined822FeeToBeFinancedIndicator;
-        public bool? UserDefined822FeeToBeFinancedIndicator { get { return _userDefined822FeeToBeFinancedIndicator; } set { _userDefined822FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined822FeeToBeFinancedIndicator { get => _userDefined822FeeToBeFinancedIndicator; set => _userDefined822FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined822PortionOfFeeIndicator;
-        public bool? UserDefined822PortionOfFeeIndicator { get { return _userDefined822PortionOfFeeIndicator; } set { _userDefined822PortionOfFeeIndicator = value; } }
+        public bool? UserDefined822PortionOfFeeIndicator { get => _userDefined822PortionOfFeeIndicator; set => _userDefined822PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _userDefined823FeeToBeFinancedIndicator;
-        public bool? UserDefined823FeeToBeFinancedIndicator { get { return _userDefined823FeeToBeFinancedIndicator; } set { _userDefined823FeeToBeFinancedIndicator = value; } }
+        public bool? UserDefined823FeeToBeFinancedIndicator { get => _userDefined823FeeToBeFinancedIndicator; set => _userDefined823FeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _userDefined823PortionOfFeeIndicator;
-        public bool? UserDefined823PortionOfFeeIndicator { get { return _userDefined823PortionOfFeeIndicator; } set { _userDefined823PortionOfFeeIndicator = value; } }
+        public bool? UserDefined823PortionOfFeeIndicator { get => _userDefined823PortionOfFeeIndicator; set => _userDefined823PortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _wireTransferFeeToBeFinancedIndicator;
-        public bool? WireTransferFeeToBeFinancedIndicator { get { return _wireTransferFeeToBeFinancedIndicator; } set { _wireTransferFeeToBeFinancedIndicator = value; } }
+        public bool? WireTransferFeeToBeFinancedIndicator { get => _wireTransferFeeToBeFinancedIndicator; set => _wireTransferFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _wireTransferPortionOfFeeIndicator;
-        public bool? WireTransferPortionOfFeeIndicator { get { return _wireTransferPortionOfFeeIndicator; } set { _wireTransferPortionOfFeeIndicator = value; } }
+        public bool? WireTransferPortionOfFeeIndicator { get => _wireTransferPortionOfFeeIndicator; set => _wireTransferPortionOfFeeIndicator = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -576,6 +574,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

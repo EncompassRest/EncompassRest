@@ -21,9 +21,6 @@ namespace EncompassRest.Schema
             }
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotSupportedException();
-        }
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => throw new NotSupportedException();
     }
 }

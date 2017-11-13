@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,29 +9,29 @@ namespace EncompassRest.Loans
     public sealed partial class PreviousVaLoan : IDirty
     {
         private DirtyValue<DateTime?> _dateOfLoan;
-        public DateTime? DateOfLoan { get { return _dateOfLoan; } set { _dateOfLoan = value; } }
+        public DateTime? DateOfLoan { get => _dateOfLoan; set => _dateOfLoan = value; }
         private DirtyValue<DateTime?> _dateSold;
-        public DateTime? DateSold { get { return _dateSold; } set { _dateSold = value; } }
+        public DateTime? DateSold { get => _dateSold; set => _dateSold = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private StringEnumValue<PreviousVaLoanLoanType> _loanType;
-        public StringEnumValue<PreviousVaLoanLoanType> LoanType { get { return _loanType; } set { _loanType = value; } }
+        public StringEnumValue<PreviousVaLoanLoanType> LoanType { get => _loanType; set => _loanType = value; }
         private DirtyValue<int?> _previousVaLoanIndex;
-        public int? PreviousVaLoanIndex { get { return _previousVaLoanIndex; } set { _previousVaLoanIndex = value; } }
+        public int? PreviousVaLoanIndex { get => _previousVaLoanIndex; set => _previousVaLoanIndex = value; }
         private DirtyValue<string> _propertyAddress;
-        public string PropertyAddress { get { return _propertyAddress; } set { _propertyAddress = value; } }
+        public string PropertyAddress { get => _propertyAddress; set => _propertyAddress = value; }
         private DirtyValue<string> _propertyCity;
-        public string PropertyCity { get { return _propertyCity; } set { _propertyCity = value; } }
+        public string PropertyCity { get => _propertyCity; set => _propertyCity = value; }
         private DirtyValue<bool?> _propertyOwned;
-        public bool? PropertyOwned { get { return _propertyOwned; } set { _propertyOwned = value; } }
+        public bool? PropertyOwned { get => _propertyOwned; set => _propertyOwned = value; }
         private DirtyValue<string> _propertyPostalCode;
-        public string PropertyPostalCode { get { return _propertyPostalCode; } set { _propertyPostalCode = value; } }
+        public string PropertyPostalCode { get => _propertyPostalCode; set => _propertyPostalCode = value; }
         private DirtyValue<string> _propertyState;
-        public string PropertyState { get { return _propertyState; } set { _propertyState = value; } }
+        public string PropertyState { get => _propertyState; set => _propertyState = value; }
         private DirtyValue<string> _vALoanNumber;
-        public string VALoanNumber { get { return _vALoanNumber; } set { _vALoanNumber = value; } }
+        public string VALoanNumber { get => _vALoanNumber; set => _vALoanNumber = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -76,6 +74,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

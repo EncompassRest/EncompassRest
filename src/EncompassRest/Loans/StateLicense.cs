@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,119 +9,119 @@ namespace EncompassRest.Loans
     public sealed partial class StateLicense : IDirty
     {
         private DirtyValue<string> _aK;
-        public string AK { get { return _aK; } set { _aK = value; } }
+        public string AK { get => _aK; set => _aK = value; }
         private DirtyValue<string> _aL;
-        public string AL { get { return _aL; } set { _aL = value; } }
+        public string AL { get => _aL; set => _aL = value; }
         private DirtyValue<string> _aR;
-        public string AR { get { return _aR; } set { _aR = value; } }
+        public string AR { get => _aR; set => _aR = value; }
         private DirtyValue<string> _aZ;
-        public string AZ { get { return _aZ; } set { _aZ = value; } }
+        public string AZ { get => _aZ; set => _aZ = value; }
         private DirtyValue<string> _cA;
-        public string CA { get { return _cA; } set { _cA = value; } }
+        public string CA { get => _cA; set => _cA = value; }
         private DirtyValue<string> _cO;
-        public string CO { get { return _cO; } set { _cO = value; } }
+        public string CO { get => _cO; set => _cO = value; }
         private DirtyValue<string> _cT;
-        public string CT { get { return _cT; } set { _cT = value; } }
+        public string CT { get => _cT; set => _cT = value; }
         private DirtyValue<string> _dC;
-        public string DC { get { return _dC; } set { _dC = value; } }
+        public string DC { get => _dC; set => _dC = value; }
         private DirtyValue<string> _dE;
-        public string DE { get { return _dE; } set { _dE = value; } }
+        public string DE { get => _dE; set => _dE = value; }
         private DirtyValue<string> _fL;
-        public string FL { get { return _fL; } set { _fL = value; } }
+        public string FL { get => _fL; set => _fL = value; }
         private DirtyValue<string> _gA;
-        public string GA { get { return _gA; } set { _gA = value; } }
+        public string GA { get => _gA; set => _gA = value; }
         private DirtyValue<string> _gU;
-        public string GU { get { return _gU; } set { _gU = value; } }
+        public string GU { get => _gU; set => _gU = value; }
         private DirtyValue<string> _hI;
-        public string HI { get { return _hI; } set { _hI = value; } }
+        public string HI { get => _hI; set => _hI = value; }
         private DirtyValue<string> _iA;
-        public string IA { get { return _iA; } set { _iA = value; } }
+        public string IA { get => _iA; set => _iA = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _idaho;
-        public string Idaho { get { return _idaho; } set { _idaho = value; } }
+        public string Idaho { get => _idaho; set => _idaho = value; }
         private DirtyValue<string> _iL;
-        public string IL { get { return _iL; } set { _iL = value; } }
+        public string IL { get => _iL; set => _iL = value; }
         private DirtyValue<string> _iN;
-        public string IN { get { return _iN; } set { _iN = value; } }
+        public string IN { get => _iN; set => _iN = value; }
         private DirtyValue<string> _kS;
-        public string KS { get { return _kS; } set { _kS = value; } }
+        public string KS { get => _kS; set => _kS = value; }
         private DirtyValue<string> _kY;
-        public string KY { get { return _kY; } set { _kY = value; } }
+        public string KY { get => _kY; set => _kY = value; }
         private DirtyValue<string> _lA;
-        public string LA { get { return _lA; } set { _lA = value; } }
+        public string LA { get => _lA; set => _lA = value; }
         private DirtyValue<string> _mA;
-        public string MA { get { return _mA; } set { _mA = value; } }
+        public string MA { get => _mA; set => _mA = value; }
         private DirtyValue<string> _mD;
-        public string MD { get { return _mD; } set { _mD = value; } }
+        public string MD { get => _mD; set => _mD = value; }
         private DirtyValue<string> _mE;
-        public string ME { get { return _mE; } set { _mE = value; } }
+        public string ME { get => _mE; set => _mE = value; }
         private DirtyValue<string> _mI;
-        public string MI { get { return _mI; } set { _mI = value; } }
+        public string MI { get => _mI; set => _mI = value; }
         private DirtyValue<string> _mN;
-        public string MN { get { return _mN; } set { _mN = value; } }
+        public string MN { get => _mN; set => _mN = value; }
         private DirtyValue<string> _mO;
-        public string MO { get { return _mO; } set { _mO = value; } }
+        public string MO { get => _mO; set => _mO = value; }
         private DirtyValue<string> _mS;
-        public string MS { get { return _mS; } set { _mS = value; } }
+        public string MS { get => _mS; set => _mS = value; }
         private DirtyValue<string> _mT;
-        public string MT { get { return _mT; } set { _mT = value; } }
+        public string MT { get => _mT; set => _mT = value; }
         private DirtyValue<string> _nC;
-        public string NC { get { return _nC; } set { _nC = value; } }
+        public string NC { get => _nC; set => _nC = value; }
         private DirtyValue<string> _nD;
-        public string ND { get { return _nD; } set { _nD = value; } }
+        public string ND { get => _nD; set => _nD = value; }
         private DirtyValue<string> _nE;
-        public string NE { get { return _nE; } set { _nE = value; } }
+        public string NE { get => _nE; set => _nE = value; }
         private DirtyValue<string> _nH;
-        public string NH { get { return _nH; } set { _nH = value; } }
+        public string NH { get => _nH; set => _nH = value; }
         private DirtyValue<string> _nJ;
-        public string NJ { get { return _nJ; } set { _nJ = value; } }
+        public string NJ { get => _nJ; set => _nJ = value; }
         private DirtyValue<string> _nM;
-        public string NM { get { return _nM; } set { _nM = value; } }
+        public string NM { get => _nM; set => _nM = value; }
         private DirtyValue<string> _nV;
-        public string NV { get { return _nV; } set { _nV = value; } }
+        public string NV { get => _nV; set => _nV = value; }
         private DirtyValue<string> _nY;
-        public string NY { get { return _nY; } set { _nY = value; } }
+        public string NY { get => _nY; set => _nY = value; }
         private DirtyValue<string> _oH;
-        public string OH { get { return _oH; } set { _oH = value; } }
+        public string OH { get => _oH; set => _oH = value; }
         private DirtyValue<string> _oK;
-        public string OK { get { return _oK; } set { _oK = value; } }
+        public string OK { get => _oK; set => _oK = value; }
         private DirtyValue<string> _oR;
-        public string OR { get { return _oR; } set { _oR = value; } }
+        public string OR { get => _oR; set => _oR = value; }
         private DirtyValue<string> _pA;
-        public string PA { get { return _pA; } set { _pA = value; } }
+        public string PA { get => _pA; set => _pA = value; }
         private DirtyValue<string> _pR;
-        public string PR { get { return _pR; } set { _pR = value; } }
+        public string PR { get => _pR; set => _pR = value; }
         private DirtyValue<string> _rI;
-        public string RI { get { return _rI; } set { _rI = value; } }
+        public string RI { get => _rI; set => _rI = value; }
         private DirtyValue<string> _sC;
-        public string SC { get { return _sC; } set { _sC = value; } }
+        public string SC { get => _sC; set => _sC = value; }
         private DirtyValue<string> _sD;
-        public string SD { get { return _sD; } set { _sD = value; } }
+        public string SD { get => _sD; set => _sD = value; }
         private StringEnumValue<StateLicenseType> _stateLicenseType;
-        public StringEnumValue<StateLicenseType> StateLicenseType { get { return _stateLicenseType; } set { _stateLicenseType = value; } }
+        public StringEnumValue<StateLicenseType> StateLicenseType { get => _stateLicenseType; set => _stateLicenseType = value; }
         private DirtyValue<string> _tN;
-        public string TN { get { return _tN; } set { _tN = value; } }
+        public string TN { get => _tN; set => _tN = value; }
         private DirtyValue<string> _tX;
-        public string TX { get { return _tX; } set { _tX = value; } }
+        public string TX { get => _tX; set => _tX = value; }
         private DirtyValue<string> _uT;
-        public string UT { get { return _uT; } set { _uT = value; } }
+        public string UT { get => _uT; set => _uT = value; }
         private DirtyValue<string> _vA;
-        public string VA { get { return _vA; } set { _vA = value; } }
+        public string VA { get => _vA; set => _vA = value; }
         private DirtyValue<string> _vI;
-        public string VI { get { return _vI; } set { _vI = value; } }
+        public string VI { get => _vI; set => _vI = value; }
         private DirtyValue<string> _vT;
-        public string VT { get { return _vT; } set { _vT = value; } }
+        public string VT { get => _vT; set => _vT = value; }
         private DirtyValue<string> _wA;
-        public string WA { get { return _wA; } set { _wA = value; } }
+        public string WA { get => _wA; set => _wA = value; }
         private DirtyValue<string> _wI;
-        public string WI { get { return _wI; } set { _wI = value; } }
+        public string WI { get => _wI; set => _wI = value; }
         private DirtyValue<string> _wV;
-        public string WV { get { return _wV; } set { _wV = value; } }
+        public string WV { get => _wV; set => _wV = value; }
         private DirtyValue<string> _wY;
-        public string WY { get { return _wY; } set { _wY = value; } }
+        public string WY { get => _wY; set => _wY = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -256,6 +254,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

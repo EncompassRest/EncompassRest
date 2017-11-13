@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,63 +9,63 @@ namespace EncompassRest.Loans
     public sealed partial class CommitmentTerms : IDirty
     {
         private DirtyValue<DateTime?> _actionDate;
-        public DateTime? ActionDate { get { return _actionDate; } set { _actionDate = value; } }
+        public DateTime? ActionDate { get => _actionDate; set => _actionDate = value; }
         private DirtyValue<string> _additionalConditions;
-        public string AdditionalConditions { get { return _additionalConditions; } set { _additionalConditions = value; } }
+        public string AdditionalConditions { get => _additionalConditions; set => _additionalConditions = value; }
         private DirtyValue<string> _additionalItems1;
-        public string AdditionalItems1 { get { return _additionalItems1; } set { _additionalItems1 = value; } }
+        public string AdditionalItems1 { get => _additionalItems1; set => _additionalItems1 = value; }
         private DirtyValue<string> _additionalItems2;
-        public string AdditionalItems2 { get { return _additionalItems2; } set { _additionalItems2 = value; } }
+        public string AdditionalItems2 { get => _additionalItems2; set => _additionalItems2 = value; }
         private DirtyValue<string> _additionalItems3;
-        public string AdditionalItems3 { get { return _additionalItems3; } set { _additionalItems3 = value; } }
+        public string AdditionalItems3 { get => _additionalItems3; set => _additionalItems3 = value; }
         private DirtyValue<bool?> _appraisalDone;
-        public bool? AppraisalDone { get { return _appraisalDone; } set { _appraisalDone = value; } }
+        public bool? AppraisalDone { get => _appraisalDone; set => _appraisalDone = value; }
         private DirtyValue<decimal?> _assuranceOfCompletion;
-        public decimal? AssuranceOfCompletion { get { return _assuranceOfCompletion; } set { _assuranceOfCompletion = value; } }
+        public decimal? AssuranceOfCompletion { get => _assuranceOfCompletion; set => _assuranceOfCompletion = value; }
         private DirtyValue<DateTime?> _commitmentDate;
-        public DateTime? CommitmentDate { get { return _commitmentDate; } set { _commitmentDate = value; } }
+        public DateTime? CommitmentDate { get => _commitmentDate; set => _commitmentDate = value; }
         private DirtyValue<DateTime?> _commitmentExpired;
-        public DateTime? CommitmentExpired { get { return _commitmentExpired; } set { _commitmentExpired = value; } }
+        public DateTime? CommitmentExpired { get => _commitmentExpired; set => _commitmentExpired = value; }
         private DirtyValue<DateTime?> _commitmentIssued;
-        public DateTime? CommitmentIssued { get { return _commitmentIssued; } set { _commitmentIssued = value; } }
+        public DateTime? CommitmentIssued { get => _commitmentIssued; set => _commitmentIssued = value; }
         private DirtyValue<bool?> _conditionalCommitmentUnderActg;
-        public bool? ConditionalCommitmentUnderActg { get { return _conditionalCommitmentUnderActg; } set { _conditionalCommitmentUnderActg = value; } }
+        public bool? ConditionalCommitmentUnderActg { get => _conditionalCommitmentUnderActg; set => _conditionalCommitmentUnderActg = value; }
         private DirtyValue<bool?> _eligibleForHighLtv;
-        public bool? EligibleForHighLtv { get { return _eligibleForHighLtv; } set { _eligibleForHighLtv = value; } }
+        public bool? EligibleForHighLtv { get => _eligibleForHighLtv; set => _eligibleForHighLtv = value; }
         private DirtyValue<int?> _estimatedRemainingYears;
-        public int? EstimatedRemainingYears { get { return _estimatedRemainingYears; } set { _estimatedRemainingYears = value; } }
+        public int? EstimatedRemainingYears { get => _estimatedRemainingYears; set => _estimatedRemainingYears = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _improvedLivingAreas;
-        public string ImprovedLivingAreas { get { return _improvedLivingAreas; } set { _improvedLivingAreas = value; } }
+        public string ImprovedLivingAreas { get => _improvedLivingAreas; set => _improvedLivingAreas = value; }
         private DirtyValue<bool?> _manufacturedHousing;
-        public bool? ManufacturedHousing { get { return _manufacturedHousing; } set { _manufacturedHousing = value; } }
+        public bool? ManufacturedHousing { get => _manufacturedHousing; set => _manufacturedHousing = value; }
         private DirtyValue<decimal?> _maxInsurableMortgage;
-        public decimal? MaxInsurableMortgage { get { return _maxInsurableMortgage; } set { _maxInsurableMortgage = value; } }
+        public decimal? MaxInsurableMortgage { get => _maxInsurableMortgage; set => _maxInsurableMortgage = value; }
         private DirtyValue<string> _mortgageeAddress;
-        public string MortgageeAddress { get { return _mortgageeAddress; } set { _mortgageeAddress = value; } }
+        public string MortgageeAddress { get => _mortgageeAddress; set => _mortgageeAddress = value; }
         private DirtyValue<string> _mortgageeCity;
-        public string MortgageeCity { get { return _mortgageeCity; } set { _mortgageeCity = value; } }
+        public string MortgageeCity { get => _mortgageeCity; set => _mortgageeCity = value; }
         private DirtyValue<string> _mortgageeName;
-        public string MortgageeName { get { return _mortgageeName; } set { _mortgageeName = value; } }
+        public string MortgageeName { get => _mortgageeName; set => _mortgageeName = value; }
         private DirtyValue<string> _mortgageePostalCode;
-        public string MortgageePostalCode { get { return _mortgageePostalCode; } set { _mortgageePostalCode = value; } }
+        public string MortgageePostalCode { get => _mortgageePostalCode; set => _mortgageePostalCode = value; }
         private DirtyValue<string> _mortgageeState;
-        public string MortgageeState { get { return _mortgageeState; } set { _mortgageeState = value; } }
+        public string MortgageeState { get => _mortgageeState; set => _mortgageeState = value; }
         private DirtyValue<string> _otherMonthlyExpenseDescription;
-        public string OtherMonthlyExpenseDescription { get { return _otherMonthlyExpenseDescription; } set { _otherMonthlyExpenseDescription = value; } }
+        public string OtherMonthlyExpenseDescription { get => _otherMonthlyExpenseDescription; set => _otherMonthlyExpenseDescription = value; }
         private DirtyValue<DateTime?> _reportDate;
-        public DateTime? ReportDate { get { return _reportDate; } set { _reportDate = value; } }
+        public DateTime? ReportDate { get => _reportDate; set => _reportDate = value; }
         private DirtyValue<string> _requirementsNumber;
-        public string RequirementsNumber { get { return _requirementsNumber; } set { _requirementsNumber = value; } }
+        public string RequirementsNumber { get => _requirementsNumber; set => _requirementsNumber = value; }
         private DirtyValue<string> _subdivisionDescription;
-        public string SubdivisionDescription { get { return _subdivisionDescription; } set { _subdivisionDescription = value; } }
+        public string SubdivisionDescription { get => _subdivisionDescription; set => _subdivisionDescription = value; }
         private DirtyValue<string> _subdivisionRequirements;
-        public string SubdivisionRequirements { get { return _subdivisionRequirements; } set { _subdivisionRequirements = value; } }
+        public string SubdivisionRequirements { get => _subdivisionRequirements; set => _subdivisionRequirements = value; }
         private DirtyValue<decimal?> _totalMonthlyExpense;
-        public decimal? TotalMonthlyExpense { get { return _totalMonthlyExpense; } set { _totalMonthlyExpense = value; } }
+        public decimal? TotalMonthlyExpense { get => _totalMonthlyExpense; set => _totalMonthlyExpense = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -144,6 +142,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

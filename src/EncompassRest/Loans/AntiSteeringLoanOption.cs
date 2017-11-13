@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,111 +9,111 @@ namespace EncompassRest.Loans
     public sealed partial class AntiSteeringLoanOption : IDirty
     {
         private DirtyValue<int?> _antiSteeringLoanOptionIndex;
-        public int? AntiSteeringLoanOptionIndex { get { return _antiSteeringLoanOptionIndex; } set { _antiSteeringLoanOptionIndex = value; } }
+        public int? AntiSteeringLoanOptionIndex { get => _antiSteeringLoanOptionIndex; set => _antiSteeringLoanOptionIndex = value; }
         private DirtyValue<decimal?> _brokerCompensationFeeAmount;
-        public decimal? BrokerCompensationFeeAmount { get { return _brokerCompensationFeeAmount; } set { _brokerCompensationFeeAmount = value; } }
+        public decimal? BrokerCompensationFeeAmount { get => _brokerCompensationFeeAmount; set => _brokerCompensationFeeAmount = value; }
         private DirtyValue<decimal?> _brokerCompensationFeeBorPaidAmount;
-        public decimal? BrokerCompensationFeeBorPaidAmount { get { return _brokerCompensationFeeBorPaidAmount; } set { _brokerCompensationFeeBorPaidAmount = value; } }
+        public decimal? BrokerCompensationFeeBorPaidAmount { get => _brokerCompensationFeeBorPaidAmount; set => _brokerCompensationFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _brokerCompensationFeePercentage;
-        public decimal? BrokerCompensationFeePercentage { get { return _brokerCompensationFeePercentage; } set { _brokerCompensationFeePercentage = value; } }
+        public decimal? BrokerCompensationFeePercentage { get => _brokerCompensationFeePercentage; set => _brokerCompensationFeePercentage = value; }
         private DirtyValue<decimal?> _brokerFeeAmount;
-        public decimal? BrokerFeeAmount { get { return _brokerFeeAmount; } set { _brokerFeeAmount = value; } }
+        public decimal? BrokerFeeAmount { get => _brokerFeeAmount; set => _brokerFeeAmount = value; }
         private DirtyValue<decimal?> _brokerFeeBorPaidAmount;
-        public decimal? BrokerFeeBorPaidAmount { get { return _brokerFeeBorPaidAmount; } set { _brokerFeeBorPaidAmount = value; } }
+        public decimal? BrokerFeeBorPaidAmount { get => _brokerFeeBorPaidAmount; set => _brokerFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _brokerFeePercentage;
-        public decimal? BrokerFeePercentage { get { return _brokerFeePercentage; } set { _brokerFeePercentage = value; } }
+        public decimal? BrokerFeePercentage { get => _brokerFeePercentage; set => _brokerFeePercentage = value; }
         private DirtyValue<decimal?> _brokerFeeSellerPaidAmount;
-        public decimal? BrokerFeeSellerPaidAmount { get { return _brokerFeeSellerPaidAmount; } set { _brokerFeeSellerPaidAmount = value; } }
+        public decimal? BrokerFeeSellerPaidAmount { get => _brokerFeeSellerPaidAmount; set => _brokerFeeSellerPaidAmount = value; }
         private DirtyValue<string> _creditorName;
-        public string CreditorName { get { return _creditorName; } set { _creditorName = value; } }
+        public string CreditorName { get => _creditorName; set => _creditorName = value; }
         private DirtyValue<decimal?> _discountAdditionalAmount;
-        public decimal? DiscountAdditionalAmount { get { return _discountAdditionalAmount; } set { _discountAdditionalAmount = value; } }
+        public decimal? DiscountAdditionalAmount { get => _discountAdditionalAmount; set => _discountAdditionalAmount = value; }
         private DirtyValue<decimal?> _discountAmount;
-        public decimal? DiscountAmount { get { return _discountAmount; } set { _discountAmount = value; } }
+        public decimal? DiscountAmount { get => _discountAmount; set => _discountAmount = value; }
         private DirtyValue<decimal?> _discountFeeBorPaidAmount;
-        public decimal? DiscountFeeBorPaidAmount { get { return _discountFeeBorPaidAmount; } set { _discountFeeBorPaidAmount = value; } }
+        public decimal? DiscountFeeBorPaidAmount { get => _discountFeeBorPaidAmount; set => _discountFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _discountFeeSellerPaidAmount;
-        public decimal? DiscountFeeSellerPaidAmount { get { return _discountFeeSellerPaidAmount; } set { _discountFeeSellerPaidAmount = value; } }
+        public decimal? DiscountFeeSellerPaidAmount { get => _discountFeeSellerPaidAmount; set => _discountFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _discountPercentage;
-        public decimal? DiscountPercentage { get { return _discountPercentage; } set { _discountPercentage = value; } }
+        public decimal? DiscountPercentage { get => _discountPercentage; set => _discountPercentage = value; }
         private DirtyValue<decimal?> _discountPoints;
-        public decimal? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
+        public decimal? DiscountPoints { get => _discountPoints; set => _discountPoints = value; }
         private DirtyValue<int?> _fixedRatePeriod;
-        public int? FixedRatePeriod { get { return _fixedRatePeriod; } set { _fixedRatePeriod = value; } }
+        public int? FixedRatePeriod { get => _fixedRatePeriod; set => _fixedRatePeriod = value; }
         private StringEnumValue<YesOrNo> _haveDemandFeature;
-        public StringEnumValue<YesOrNo> HaveDemandFeature { get { return _haveDemandFeature; } set { _haveDemandFeature = value; } }
+        public StringEnumValue<YesOrNo> HaveDemandFeature { get => _haveDemandFeature; set => _haveDemandFeature = value; }
         private DirtyValue<bool?> _havePrepaymentPenalty;
-        public bool? HavePrepaymentPenalty { get { return _havePrepaymentPenalty; } set { _havePrepaymentPenalty = value; } }
+        public bool? HavePrepaymentPenalty { get => _havePrepaymentPenalty; set => _havePrepaymentPenalty = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _inspectionFeeBorPaidAmount;
-        public decimal? InspectionFeeBorPaidAmount { get { return _inspectionFeeBorPaidAmount; } set { _inspectionFeeBorPaidAmount = value; } }
+        public decimal? InspectionFeeBorPaidAmount { get => _inspectionFeeBorPaidAmount; set => _inspectionFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _inspectionFeeSellerPaidAmount;
-        public decimal? InspectionFeeSellerPaidAmount { get { return _inspectionFeeSellerPaidAmount; } set { _inspectionFeeSellerPaidAmount = value; } }
+        public decimal? InspectionFeeSellerPaidAmount { get => _inspectionFeeSellerPaidAmount; set => _inspectionFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _interestRate;
-        public decimal? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
+        public decimal? InterestRate { get => _interestRate; set => _interestRate = value; }
         private StringEnumValue<YesOrNo> _isBalloonPaymentIn7Years;
-        public StringEnumValue<YesOrNo> IsBalloonPaymentIn7Years { get { return _isBalloonPaymentIn7Years; } set { _isBalloonPaymentIn7Years = value; } }
+        public StringEnumValue<YesOrNo> IsBalloonPaymentIn7Years { get => _isBalloonPaymentIn7Years; set => _isBalloonPaymentIn7Years = value; }
         private StringEnumValue<YesOrNo> _isInterestOnlyLoan;
-        public StringEnumValue<YesOrNo> IsInterestOnlyLoan { get { return _isInterestOnlyLoan; } set { _isInterestOnlyLoan = value; } }
+        public StringEnumValue<YesOrNo> IsInterestOnlyLoan { get => _isInterestOnlyLoan; set => _isInterestOnlyLoan = value; }
         private DirtyValue<bool?> _isNegativeAmortization;
-        public bool? IsNegativeAmortization { get { return _isNegativeAmortization; } set { _isNegativeAmortization = value; } }
+        public bool? IsNegativeAmortization { get => _isNegativeAmortization; set => _isNegativeAmortization = value; }
         private DirtyValue<int?> _loanTerm;
-        public int? LoanTerm { get { return _loanTerm; } set { _loanTerm = value; } }
+        public int? LoanTerm { get => _loanTerm; set => _loanTerm = value; }
         private StringEnumValue<AmortizationType> _loanType;
-        public StringEnumValue<AmortizationType> LoanType { get { return _loanType; } set { _loanType = value; } }
+        public StringEnumValue<AmortizationType> LoanType { get => _loanType; set => _loanType = value; }
         private DirtyValue<decimal?> _originationFeeBorPaidAmount;
-        public decimal? OriginationFeeBorPaidAmount { get { return _originationFeeBorPaidAmount; } set { _originationFeeBorPaidAmount = value; } }
+        public decimal? OriginationFeeBorPaidAmount { get => _originationFeeBorPaidAmount; set => _originationFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _originationFeePercentage;
-        public decimal? OriginationFeePercentage { get { return _originationFeePercentage; } set { _originationFeePercentage = value; } }
+        public decimal? OriginationFeePercentage { get => _originationFeePercentage; set => _originationFeePercentage = value; }
         private DirtyValue<decimal?> _originationFeeSellerPaidAmount;
-        public decimal? OriginationFeeSellerPaidAmount { get { return _originationFeeSellerPaidAmount; } set { _originationFeeSellerPaidAmount = value; } }
+        public decimal? OriginationFeeSellerPaidAmount { get => _originationFeeSellerPaidAmount; set => _originationFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _originationPointsFees;
-        public decimal? OriginationPointsFees { get { return _originationPointsFees; } set { _originationPointsFees = value; } }
+        public decimal? OriginationPointsFees { get => _originationPointsFees; set => _originationPointsFees = value; }
         private DirtyValue<decimal?> _originationPointsPercetange;
-        public decimal? OriginationPointsPercetange { get { return _originationPointsPercetange; } set { _originationPointsPercetange = value; } }
+        public decimal? OriginationPointsPercetange { get => _originationPointsPercetange; set => _originationPointsPercetange = value; }
         private DirtyValue<decimal?> _processingFeeBorPaidAmount;
-        public decimal? ProcessingFeeBorPaidAmount { get { return _processingFeeBorPaidAmount; } set { _processingFeeBorPaidAmount = value; } }
+        public decimal? ProcessingFeeBorPaidAmount { get => _processingFeeBorPaidAmount; set => _processingFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _processingFeeSellerPaidAmount;
-        public decimal? ProcessingFeeSellerPaidAmount { get { return _processingFeeSellerPaidAmount; } set { _processingFeeSellerPaidAmount = value; } }
+        public decimal? ProcessingFeeSellerPaidAmount { get => _processingFeeSellerPaidAmount; set => _processingFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _totalOriginationDiscountAmount;
-        public decimal? TotalOriginationDiscountAmount { get { return _totalOriginationDiscountAmount; } set { _totalOriginationDiscountAmount = value; } }
+        public decimal? TotalOriginationDiscountAmount { get => _totalOriginationDiscountAmount; set => _totalOriginationDiscountAmount = value; }
         private DirtyValue<decimal?> _underwritingFeeBorPaidAmount;
-        public decimal? UnderwritingFeeBorPaidAmount { get { return _underwritingFeeBorPaidAmount; } set { _underwritingFeeBorPaidAmount = value; } }
+        public decimal? UnderwritingFeeBorPaidAmount { get => _underwritingFeeBorPaidAmount; set => _underwritingFeeBorPaidAmount = value; }
         private DirtyValue<decimal?> _underwritingFeeSellerPaidAmount;
-        public decimal? UnderwritingFeeSellerPaidAmount { get { return _underwritingFeeSellerPaidAmount; } set { _underwritingFeeSellerPaidAmount = value; } }
+        public decimal? UnderwritingFeeSellerPaidAmount { get => _underwritingFeeSellerPaidAmount; set => _underwritingFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _userDefinedFee1BorPaidAmount;
-        public decimal? UserDefinedFee1BorPaidAmount { get { return _userDefinedFee1BorPaidAmount; } set { _userDefinedFee1BorPaidAmount = value; } }
+        public decimal? UserDefinedFee1BorPaidAmount { get => _userDefinedFee1BorPaidAmount; set => _userDefinedFee1BorPaidAmount = value; }
         private DirtyValue<string> _userDefinedFee1Description;
-        public string UserDefinedFee1Description { get { return _userDefinedFee1Description; } set { _userDefinedFee1Description = value; } }
+        public string UserDefinedFee1Description { get => _userDefinedFee1Description; set => _userDefinedFee1Description = value; }
         private DirtyValue<decimal?> _userDefinedFee1SellerPaidAmount;
-        public decimal? UserDefinedFee1SellerPaidAmount { get { return _userDefinedFee1SellerPaidAmount; } set { _userDefinedFee1SellerPaidAmount = value; } }
+        public decimal? UserDefinedFee1SellerPaidAmount { get => _userDefinedFee1SellerPaidAmount; set => _userDefinedFee1SellerPaidAmount = value; }
         private DirtyValue<decimal?> _userDefinedFee2BorPaidAmount;
-        public decimal? UserDefinedFee2BorPaidAmount { get { return _userDefinedFee2BorPaidAmount; } set { _userDefinedFee2BorPaidAmount = value; } }
+        public decimal? UserDefinedFee2BorPaidAmount { get => _userDefinedFee2BorPaidAmount; set => _userDefinedFee2BorPaidAmount = value; }
         private DirtyValue<string> _userDefinedFee2Description;
-        public string UserDefinedFee2Description { get { return _userDefinedFee2Description; } set { _userDefinedFee2Description = value; } }
+        public string UserDefinedFee2Description { get => _userDefinedFee2Description; set => _userDefinedFee2Description = value; }
         private DirtyValue<decimal?> _userDefinedFee2SellerPaidAmount;
-        public decimal? UserDefinedFee2SellerPaidAmount { get { return _userDefinedFee2SellerPaidAmount; } set { _userDefinedFee2SellerPaidAmount = value; } }
+        public decimal? UserDefinedFee2SellerPaidAmount { get => _userDefinedFee2SellerPaidAmount; set => _userDefinedFee2SellerPaidAmount = value; }
         private DirtyValue<decimal?> _userDefinedFee3BorPaidAmount;
-        public decimal? UserDefinedFee3BorPaidAmount { get { return _userDefinedFee3BorPaidAmount; } set { _userDefinedFee3BorPaidAmount = value; } }
+        public decimal? UserDefinedFee3BorPaidAmount { get => _userDefinedFee3BorPaidAmount; set => _userDefinedFee3BorPaidAmount = value; }
         private DirtyValue<string> _userDefinedFee3Description;
-        public string UserDefinedFee3Description { get { return _userDefinedFee3Description; } set { _userDefinedFee3Description = value; } }
+        public string UserDefinedFee3Description { get => _userDefinedFee3Description; set => _userDefinedFee3Description = value; }
         private DirtyValue<decimal?> _userDefinedFee3SellerPaidAmount;
-        public decimal? UserDefinedFee3SellerPaidAmount { get { return _userDefinedFee3SellerPaidAmount; } set { _userDefinedFee3SellerPaidAmount = value; } }
+        public decimal? UserDefinedFee3SellerPaidAmount { get => _userDefinedFee3SellerPaidAmount; set => _userDefinedFee3SellerPaidAmount = value; }
         private DirtyValue<decimal?> _userDefinedFee4BorPaidAmount;
-        public decimal? UserDefinedFee4BorPaidAmount { get { return _userDefinedFee4BorPaidAmount; } set { _userDefinedFee4BorPaidAmount = value; } }
+        public decimal? UserDefinedFee4BorPaidAmount { get => _userDefinedFee4BorPaidAmount; set => _userDefinedFee4BorPaidAmount = value; }
         private DirtyValue<string> _userDefinedFee4Description;
-        public string UserDefinedFee4Description { get { return _userDefinedFee4Description; } set { _userDefinedFee4Description = value; } }
+        public string UserDefinedFee4Description { get => _userDefinedFee4Description; set => _userDefinedFee4Description = value; }
         private DirtyValue<decimal?> _userDefinedFee4SellerPaidAmount;
-        public decimal? UserDefinedFee4SellerPaidAmount { get { return _userDefinedFee4SellerPaidAmount; } set { _userDefinedFee4SellerPaidAmount = value; } }
+        public decimal? UserDefinedFee4SellerPaidAmount { get => _userDefinedFee4SellerPaidAmount; set => _userDefinedFee4SellerPaidAmount = value; }
         private DirtyValue<decimal?> _userDefinedFee5BorPaidAmount;
-        public decimal? UserDefinedFee5BorPaidAmount { get { return _userDefinedFee5BorPaidAmount; } set { _userDefinedFee5BorPaidAmount = value; } }
+        public decimal? UserDefinedFee5BorPaidAmount { get => _userDefinedFee5BorPaidAmount; set => _userDefinedFee5BorPaidAmount = value; }
         private DirtyValue<string> _userDefinedFee5Description;
-        public string UserDefinedFee5Description { get { return _userDefinedFee5Description; } set { _userDefinedFee5Description = value; } }
+        public string UserDefinedFee5Description { get => _userDefinedFee5Description; set => _userDefinedFee5Description = value; }
         private DirtyValue<decimal?> _userDefinedFee5SellerPaidAmount;
-        public decimal? UserDefinedFee5SellerPaidAmount { get { return _userDefinedFee5SellerPaidAmount; } set { _userDefinedFee5SellerPaidAmount = value; } }
+        public decimal? UserDefinedFee5SellerPaidAmount { get => _userDefinedFee5SellerPaidAmount; set => _userDefinedFee5SellerPaidAmount = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -240,6 +238,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

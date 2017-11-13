@@ -8,17 +8,17 @@ namespace EncompassRest.Contacts
     public sealed class BusinessContactLicense : IDirty
     {
         private DirtyValue<string> _licenseAuthName;
-        public string LicenseAuthName { get { return _licenseAuthName; } set { _licenseAuthName = value; } }
+        public string LicenseAuthName { get => _licenseAuthName; set => _licenseAuthName = value; }
         private DirtyValue<string> _licenseAuthType;
-        public string LicenseAuthType { get { return _licenseAuthType; } set { _licenseAuthType = value; } }
+        public string LicenseAuthType { get => _licenseAuthType; set => _licenseAuthType = value; }
         private DirtyValue<DateTime?> _licenseIssueDate;
-        public DateTime? LicenseIssueDate { get { return _licenseIssueDate; } set { _licenseIssueDate = value; } }
+        public DateTime? LicenseIssueDate { get => _licenseIssueDate; set => _licenseIssueDate = value; }
         private DirtyValue<string> _licenseNumber;
-        public string LicenseNumber { get { return _licenseNumber; } set { _licenseNumber = value; } }
+        public string LicenseNumber { get => _licenseNumber; set => _licenseNumber = value; }
         private DirtyValue<string> _licenseStateCode;
-        public string LicenseStateCode { get { return _licenseStateCode; } set { _licenseStateCode = value; } }
+        public string LicenseStateCode { get => _licenseStateCode; set => _licenseStateCode = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty;
         internal bool Dirty
@@ -49,6 +49,6 @@ namespace EncompassRest.Contacts
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

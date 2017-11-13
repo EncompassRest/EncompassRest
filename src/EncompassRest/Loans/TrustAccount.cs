@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,17 +9,17 @@ namespace EncompassRest.Loans
     public sealed partial class TrustAccount : IDirty
     {
         private DirtyValue<decimal?> _balance;
-        public decimal? Balance { get { return _balance; } set { _balance = value; } }
+        public decimal? Balance { get => _balance; set => _balance = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _total1;
-        public decimal? Total1 { get { return _total1; } set { _total1 = value; } }
+        public decimal? Total1 { get => _total1; set => _total1 = value; }
         private DirtyValue<decimal?> _total2;
-        public decimal? Total2 { get { return _total2; } set { _total2 = value; } }
+        public decimal? Total2 { get => _total2; set => _total2 = value; }
         private DirtyList<TrustAccountItem> _trustAccountItems;
-        public IList<TrustAccountItem> TrustAccountItems { get { return _trustAccountItems ?? (_trustAccountItems = new DirtyList<TrustAccountItem>()); } set { _trustAccountItems = new DirtyList<TrustAccountItem>(value); } }
+        public IList<TrustAccountItem> TrustAccountItems { get => _trustAccountItems ?? (_trustAccountItems = new DirtyList<TrustAccountItem>()); set => _trustAccountItems = new DirtyList<TrustAccountItem>(value); }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -52,6 +50,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }
