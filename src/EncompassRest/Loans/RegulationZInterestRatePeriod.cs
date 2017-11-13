@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,29 +9,29 @@ namespace EncompassRest.Loans
     public sealed partial class RegulationZInterestRatePeriod : IDirty
     {
         private DirtyValue<DateTime?> _adjustmentDate;
-        public DateTime? AdjustmentDate { get { return _adjustmentDate; } set { _adjustmentDate = value; } }
+        public DateTime? AdjustmentDate { get => _adjustmentDate; set => _adjustmentDate = value; }
         private DirtyValue<int?> _adjustmentMonths;
-        public int? AdjustmentMonths { get { return _adjustmentMonths; } set { _adjustmentMonths = value; } }
+        public int? AdjustmentMonths { get => _adjustmentMonths; set => _adjustmentMonths = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _interestPayment;
-        public decimal? InterestPayment { get { return _interestPayment; } set { _interestPayment = value; } }
+        public decimal? InterestPayment { get => _interestPayment; set => _interestPayment = value; }
         private DirtyValue<decimal?> _interestPrincipalPayment;
-        public decimal? InterestPrincipalPayment { get { return _interestPrincipalPayment; } set { _interestPrincipalPayment = value; } }
+        public decimal? InterestPrincipalPayment { get => _interestPrincipalPayment; set => _interestPrincipalPayment = value; }
         private DirtyValue<decimal?> _interestRatePercent;
-        public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
+        public decimal? InterestRatePercent { get => _interestRatePercent; set => _interestRatePercent = value; }
         private DirtyValue<decimal?> _monthlyPayment;
-        public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
+        public decimal? MonthlyPayment { get => _monthlyPayment; set => _monthlyPayment = value; }
         private DirtyValue<decimal?> _principalPayment;
-        public decimal? PrincipalPayment { get { return _principalPayment; } set { _principalPayment = value; } }
+        public decimal? PrincipalPayment { get => _principalPayment; set => _principalPayment = value; }
         private DirtyValue<string> _regulationZInterestRatePeriodType;
-        public string RegulationZInterestRatePeriodType { get { return _regulationZInterestRatePeriodType; } set { _regulationZInterestRatePeriodType = value; } }
+        public string RegulationZInterestRatePeriodType { get => _regulationZInterestRatePeriodType; set => _regulationZInterestRatePeriodType = value; }
         private DirtyValue<decimal?> _taxInsuranceAmount;
-        public decimal? TaxInsuranceAmount { get { return _taxInsuranceAmount; } set { _taxInsuranceAmount = value; } }
+        public decimal? TaxInsuranceAmount { get => _taxInsuranceAmount; set => _taxInsuranceAmount = value; }
         private DirtyValue<decimal?> _totalPayment;
-        public decimal? TotalPayment { get { return _totalPayment; } set { _totalPayment = value; } }
+        public decimal? TotalPayment { get => _totalPayment; set => _totalPayment = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -76,6 +74,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

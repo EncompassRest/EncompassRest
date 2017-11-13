@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,27 +9,27 @@ namespace EncompassRest.Loans
     public sealed partial class Buydown : IDirty
     {
         private DirtyValue<int?> _buydownIndex;
-        public int? BuydownIndex { get { return _buydownIndex; } set { _buydownIndex = value; } }
+        public int? BuydownIndex { get => _buydownIndex; set => _buydownIndex = value; }
         private DirtyValue<decimal?> _buydownRatePercent;
-        public decimal? BuydownRatePercent { get { return _buydownRatePercent; } set { _buydownRatePercent = value; } }
+        public decimal? BuydownRatePercent { get => _buydownRatePercent; set => _buydownRatePercent = value; }
         private DirtyValue<int?> _changeFrequencyMonthsCount;
-        public int? ChangeFrequencyMonthsCount { get { return _changeFrequencyMonthsCount; } set { _changeFrequencyMonthsCount = value; } }
+        public int? ChangeFrequencyMonthsCount { get => _changeFrequencyMonthsCount; set => _changeFrequencyMonthsCount = value; }
         private DirtyValue<int?> _durationMonthsCount;
-        public int? DurationMonthsCount { get { return _durationMonthsCount; } set { _durationMonthsCount = value; } }
+        public int? DurationMonthsCount { get => _durationMonthsCount; set => _durationMonthsCount = value; }
         private DirtyValue<decimal?> _fundBalanceAmount;
-        public decimal? FundBalanceAmount { get { return _fundBalanceAmount; } set { _fundBalanceAmount = value; } }
+        public decimal? FundBalanceAmount { get => _fundBalanceAmount; set => _fundBalanceAmount = value; }
         private DirtyValue<decimal?> _fundTotalAmount;
-        public decimal? FundTotalAmount { get { return _fundTotalAmount; } set { _fundTotalAmount = value; } }
+        public decimal? FundTotalAmount { get => _fundTotalAmount; set => _fundTotalAmount = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _increaseRatePercent;
-        public decimal? IncreaseRatePercent { get { return _increaseRatePercent; } set { _increaseRatePercent = value; } }
+        public decimal? IncreaseRatePercent { get => _increaseRatePercent; set => _increaseRatePercent = value; }
         private DirtyValue<int?> _remainingMonthsCount;
-        public int? RemainingMonthsCount { get { return _remainingMonthsCount; } set { _remainingMonthsCount = value; } }
+        public int? RemainingMonthsCount { get => _remainingMonthsCount; set => _remainingMonthsCount = value; }
         private DirtyValue<decimal?> _subsidyAmount;
-        public decimal? SubsidyAmount { get { return _subsidyAmount; } set { _subsidyAmount = value; } }
+        public decimal? SubsidyAmount { get => _subsidyAmount; set => _subsidyAmount = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -72,6 +70,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

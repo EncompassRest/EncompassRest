@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,115 +9,115 @@ namespace EncompassRest.Loans
     public sealed partial class UnderwriterSummary : IDirty
     {
         private DirtyValue<string> _appraisal;
-        public string Appraisal { get { return _appraisal; } set { _appraisal = value; } }
+        public string Appraisal { get => _appraisal; set => _appraisal = value; }
         private DirtyValue<DateTime?> _appraisalCompletedDate;
-        public DateTime? AppraisalCompletedDate { get { return _appraisalCompletedDate; } set { _appraisalCompletedDate = value; } }
+        public DateTime? AppraisalCompletedDate { get => _appraisalCompletedDate; set => _appraisalCompletedDate = value; }
         private DirtyValue<DateTime?> _appraisalExpiredDate;
-        public DateTime? AppraisalExpiredDate { get { return _appraisalExpiredDate; } set { _appraisalExpiredDate = value; } }
+        public DateTime? AppraisalExpiredDate { get => _appraisalExpiredDate; set => _appraisalExpiredDate = value; }
         private DirtyValue<DateTime?> _appraisalOrderedDate;
-        public DateTime? AppraisalOrderedDate { get { return _appraisalOrderedDate; } set { _appraisalOrderedDate = value; } }
+        public DateTime? AppraisalOrderedDate { get => _appraisalOrderedDate; set => _appraisalOrderedDate = value; }
         private StringEnumValue<UnderwriterSummaryAppraisalType> _appraisalType;
-        public StringEnumValue<UnderwriterSummaryAppraisalType> AppraisalType { get { return _appraisalType; } set { _appraisalType = value; } }
+        public StringEnumValue<UnderwriterSummaryAppraisalType> AppraisalType { get => _appraisalType; set => _appraisalType = value; }
         private DirtyValue<DateTime?> _approvalExpiredDate;
-        public DateTime? ApprovalExpiredDate { get { return _approvalExpiredDate; } set { _approvalExpiredDate = value; } }
+        public DateTime? ApprovalExpiredDate { get => _approvalExpiredDate; set => _approvalExpiredDate = value; }
         private DirtyValue<string> _approvedBy;
-        public string ApprovedBy { get { return _approvedBy; } set { _approvedBy = value; } }
+        public string ApprovedBy { get => _approvedBy; set => _approvedBy = value; }
         private DirtyValue<DateTime?> _approvedDate;
-        public DateTime? ApprovedDate { get { return _approvedDate; } set { _approvedDate = value; } }
+        public DateTime? ApprovedDate { get => _approvedDate; set => _approvedDate = value; }
         private DirtyValue<string> _ausNumber;
-        public string AusNumber { get { return _ausNumber; } set { _ausNumber = value; } }
+        public string AusNumber { get => _ausNumber; set => _ausNumber = value; }
         private DirtyValue<DateTime?> _ausRunDate;
-        public DateTime? AusRunDate { get { return _ausRunDate; } set { _ausRunDate = value; } }
+        public DateTime? AusRunDate { get => _ausRunDate; set => _ausRunDate = value; }
         private DirtyValue<string> _ausSource;
-        public string AusSource { get { return _ausSource; } set { _ausSource = value; } }
+        public string AusSource { get => _ausSource; set => _ausSource = value; }
         private DirtyValue<bool?> _benefitRequiredIndicator;
-        public bool? BenefitRequiredIndicator { get { return _benefitRequiredIndicator; } set { _benefitRequiredIndicator = value; } }
+        public bool? BenefitRequiredIndicator { get => _benefitRequiredIndicator; set => _benefitRequiredIndicator = value; }
         private DirtyValue<DateTime?> _clearToCloseDate;
-        public DateTime? ClearToCloseDate { get { return _clearToCloseDate; } set { _clearToCloseDate = value; } }
+        public DateTime? ClearToCloseDate { get => _clearToCloseDate; set => _clearToCloseDate = value; }
         private DirtyValue<string> _concerns;
-        public string Concerns { get { return _concerns; } set { _concerns = value; } }
+        public string Concerns { get => _concerns; set => _concerns = value; }
         private DirtyValue<string> _conditions;
-        public string Conditions { get { return _conditions; } set { _conditions = value; } }
+        public string Conditions { get => _conditions; set => _conditions = value; }
         private DirtyValue<string> _credit;
-        public string Credit { get { return _credit; } set { _credit = value; } }
+        public string Credit { get => _credit; set => _credit = value; }
         private DirtyValue<DateTime?> _creditApprovalDate;
-        public DateTime? CreditApprovalDate { get { return _creditApprovalDate; } set { _creditApprovalDate = value; } }
+        public DateTime? CreditApprovalDate { get => _creditApprovalDate; set => _creditApprovalDate = value; }
         private DirtyValue<string> _deniedBy;
-        public string DeniedBy { get { return _deniedBy; } set { _deniedBy = value; } }
+        public string DeniedBy { get => _deniedBy; set => _deniedBy = value; }
         private DirtyValue<DateTime?> _deniedDate;
-        public DateTime? DeniedDate { get { return _deniedDate; } set { _deniedDate = value; } }
+        public DateTime? DeniedDate { get => _deniedDate; set => _deniedDate = value; }
         private DirtyValue<DateTime?> _differentApprovalExpiredDate;
-        public DateTime? DifferentApprovalExpiredDate { get { return _differentApprovalExpiredDate; } set { _differentApprovalExpiredDate = value; } }
+        public DateTime? DifferentApprovalExpiredDate { get => _differentApprovalExpiredDate; set => _differentApprovalExpiredDate = value; }
         private DirtyValue<string> _differentApprovedBy;
-        public string DifferentApprovedBy { get { return _differentApprovedBy; } set { _differentApprovedBy = value; } }
+        public string DifferentApprovedBy { get => _differentApprovedBy; set => _differentApprovedBy = value; }
         private DirtyValue<DateTime?> _differentApprovedDate;
-        public DateTime? DifferentApprovedDate { get { return _differentApprovedDate; } set { _differentApprovedDate = value; } }
+        public DateTime? DifferentApprovedDate { get => _differentApprovedDate; set => _differentApprovedDate = value; }
         private DirtyValue<string> _exceptions;
-        public string Exceptions { get { return _exceptions; } set { _exceptions = value; } }
+        public string Exceptions { get => _exceptions; set => _exceptions = value; }
         private DirtyValue<string> _exceptionSignOffBy;
-        public string ExceptionSignOffBy { get { return _exceptionSignOffBy; } set { _exceptionSignOffBy = value; } }
+        public string ExceptionSignOffBy { get => _exceptionSignOffBy; set => _exceptionSignOffBy = value; }
         private DirtyValue<DateTime?> _exceptionSignOffDate;
-        public DateTime? ExceptionSignOffDate { get { return _exceptionSignOffDate; } set { _exceptionSignOffDate = value; } }
+        public DateTime? ExceptionSignOffDate { get => _exceptionSignOffDate; set => _exceptionSignOffDate = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isAgencyManually;
-        public bool? IsAgencyManually { get { return _isAgencyManually; } set { _isAgencyManually = value; } }
+        public bool? IsAgencyManually { get => _isAgencyManually; set => _isAgencyManually = value; }
         private DirtyValue<bool?> _isAgencyWaiver;
-        public bool? IsAgencyWaiver { get { return _isAgencyWaiver; } set { _isAgencyWaiver = value; } }
+        public bool? IsAgencyWaiver { get => _isAgencyWaiver; set => _isAgencyWaiver = value; }
         private DirtyValue<bool?> _isAgencyWithAgreement;
-        public bool? IsAgencyWithAgreement { get { return _isAgencyWithAgreement; } set { _isAgencyWithAgreement = value; } }
+        public bool? IsAgencyWithAgreement { get => _isAgencyWithAgreement; set => _isAgencyWithAgreement = value; }
         private DirtyValue<decimal?> _maxRate;
-        public decimal? MaxRate { get { return _maxRate; } set { _maxRate = value; } }
+        public decimal? MaxRate { get => _maxRate; set => _maxRate = value; }
         private DirtyValue<DateTime?> _miOrderedDate;
-        public DateTime? MiOrderedDate { get { return _miOrderedDate; } set { _miOrderedDate = value; } }
+        public DateTime? MiOrderedDate { get => _miOrderedDate; set => _miOrderedDate = value; }
         private DirtyValue<DateTime?> _miReceivedDate;
-        public DateTime? MiReceivedDate { get { return _miReceivedDate; } set { _miReceivedDate = value; } }
+        public DateTime? MiReceivedDate { get => _miReceivedDate; set => _miReceivedDate = value; }
         private DirtyValue<decimal?> _modifiedLoanAmount;
-        public decimal? ModifiedLoanAmount { get { return _modifiedLoanAmount; } set { _modifiedLoanAmount = value; } }
+        public decimal? ModifiedLoanAmount { get => _modifiedLoanAmount; set => _modifiedLoanAmount = value; }
         private DirtyValue<decimal?> _modifiedLoanRate;
-        public decimal? ModifiedLoanRate { get { return _modifiedLoanRate; } set { _modifiedLoanRate = value; } }
+        public decimal? ModifiedLoanRate { get => _modifiedLoanRate; set => _modifiedLoanRate = value; }
         private DirtyValue<int?> _modifiedLoanTerm;
-        public int? ModifiedLoanTerm { get { return _modifiedLoanTerm; } set { _modifiedLoanTerm = value; } }
+        public int? ModifiedLoanTerm { get => _modifiedLoanTerm; set => _modifiedLoanTerm = value; }
         private DirtyValue<decimal?> _modifiedLtv;
-        public decimal? ModifiedLtv { get { return _modifiedLtv; } set { _modifiedLtv = value; } }
+        public decimal? ModifiedLtv { get => _modifiedLtv; set => _modifiedLtv = value; }
         private DirtyValue<decimal?> _modifiedMonthlyPayment;
-        public decimal? ModifiedMonthlyPayment { get { return _modifiedMonthlyPayment; } set { _modifiedMonthlyPayment = value; } }
+        public decimal? ModifiedMonthlyPayment { get => _modifiedMonthlyPayment; set => _modifiedMonthlyPayment = value; }
         private DirtyValue<string> _originalAppraiser;
-        public string OriginalAppraiser { get { return _originalAppraiser; } set { _originalAppraiser = value; } }
+        public string OriginalAppraiser { get => _originalAppraiser; set => _originalAppraiser = value; }
         private DirtyValue<decimal?> _originalAppraisersValue;
-        public decimal? OriginalAppraisersValue { get { return _originalAppraisersValue; } set { _originalAppraisersValue = value; } }
+        public decimal? OriginalAppraisersValue { get => _originalAppraisersValue; set => _originalAppraisersValue = value; }
         private DirtyValue<DateTime?> _resubmittedDate;
-        public DateTime? ResubmittedDate { get { return _resubmittedDate; } set { _resubmittedDate = value; } }
+        public DateTime? ResubmittedDate { get => _resubmittedDate; set => _resubmittedDate = value; }
         private DirtyValue<string> _reviewAppraiser;
-        public string ReviewAppraiser { get { return _reviewAppraiser; } set { _reviewAppraiser = value; } }
+        public string ReviewAppraiser { get => _reviewAppraiser; set => _reviewAppraiser = value; }
         private DirtyValue<DateTime?> _reviewCompletedDate;
-        public DateTime? ReviewCompletedDate { get { return _reviewCompletedDate; } set { _reviewCompletedDate = value; } }
+        public DateTime? ReviewCompletedDate { get => _reviewCompletedDate; set => _reviewCompletedDate = value; }
         private DirtyValue<DateTime?> _reviewRequestedDate;
-        public DateTime? ReviewRequestedDate { get { return _reviewRequestedDate; } set { _reviewRequestedDate = value; } }
+        public DateTime? ReviewRequestedDate { get => _reviewRequestedDate; set => _reviewRequestedDate = value; }
         private StringEnumValue<ReviewType> _reviewType;
-        public StringEnumValue<ReviewType> ReviewType { get { return _reviewType; } set { _reviewType = value; } }
+        public StringEnumValue<ReviewType> ReviewType { get => _reviewType; set => _reviewType = value; }
         private DirtyValue<decimal?> _reviewValue;
-        public decimal? ReviewValue { get { return _reviewValue; } set { _reviewValue = value; } }
+        public decimal? ReviewValue { get => _reviewValue; set => _reviewValue = value; }
         private DirtyValue<DateTime?> _sentToDate;
-        public DateTime? SentToDate { get { return _sentToDate; } set { _sentToDate = value; } }
+        public DateTime? SentToDate { get => _sentToDate; set => _sentToDate = value; }
         private DirtyValue<string> _signOffBy;
-        public string SignOffBy { get { return _signOffBy; } set { _signOffBy = value; } }
+        public string SignOffBy { get => _signOffBy; set => _signOffBy = value; }
         private DirtyValue<DateTime?> _signOffDate;
-        public DateTime? SignOffDate { get { return _signOffDate; } set { _signOffDate = value; } }
+        public DateTime? SignOffDate { get => _signOffDate; set => _signOffDate = value; }
         private DirtyValue<string> _strengths;
-        public string Strengths { get { return _strengths; } set { _strengths = value; } }
+        public string Strengths { get => _strengths; set => _strengths = value; }
         private DirtyValue<DateTime?> _submittedDate;
-        public DateTime? SubmittedDate { get { return _submittedDate; } set { _submittedDate = value; } }
+        public DateTime? SubmittedDate { get => _submittedDate; set => _submittedDate = value; }
         private DirtyValue<string> _supervisoryAppraiserLicenseNumber;
-        public string SupervisoryAppraiserLicenseNumber { get { return _supervisoryAppraiserLicenseNumber; } set { _supervisoryAppraiserLicenseNumber = value; } }
+        public string SupervisoryAppraiserLicenseNumber { get => _supervisoryAppraiserLicenseNumber; set => _supervisoryAppraiserLicenseNumber = value; }
         private DirtyValue<string> _suspendedBy;
-        public string SuspendedBy { get { return _suspendedBy; } set { _suspendedBy = value; } }
+        public string SuspendedBy { get => _suspendedBy; set => _suspendedBy = value; }
         private DirtyValue<DateTime?> _suspendedDate;
-        public DateTime? SuspendedDate { get { return _suspendedDate; } set { _suspendedDate = value; } }
+        public DateTime? SuspendedDate { get => _suspendedDate; set => _suspendedDate = value; }
         private DirtyValue<string> _suspendedReasons;
-        public string SuspendedReasons { get { return _suspendedReasons; } set { _suspendedReasons = value; } }
+        public string SuspendedReasons { get => _suspendedReasons; set => _suspendedReasons = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -248,6 +246,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

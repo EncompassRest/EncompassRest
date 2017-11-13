@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,25 +9,25 @@ namespace EncompassRest.Loans
     public sealed partial class TrustAccountItem : IDirty
     {
         private DirtyValue<DateTime?> _date;
-        public DateTime? Date { get { return _date; } set { _date = value; } }
+        public DateTime? Date { get => _date; set => _date = value; }
         private DirtyValue<string> _description;
-        public string Description { get { return _description; } set { _description = value; } }
+        public string Description { get => _description; set => _description = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _notes;
-        public string Notes { get { return _notes; } set { _notes = value; } }
+        public string Notes { get => _notes; set => _notes = value; }
         private DirtyValue<decimal?> _paymentAmount;
-        public decimal? PaymentAmount { get { return _paymentAmount; } set { _paymentAmount = value; } }
+        public decimal? PaymentAmount { get => _paymentAmount; set => _paymentAmount = value; }
         private DirtyValue<string> _paymentCheckNo;
-        public string PaymentCheckNo { get { return _paymentCheckNo; } set { _paymentCheckNo = value; } }
+        public string PaymentCheckNo { get => _paymentCheckNo; set => _paymentCheckNo = value; }
         private DirtyValue<decimal?> _receiptAmount;
-        public decimal? ReceiptAmount { get { return _receiptAmount; } set { _receiptAmount = value; } }
+        public decimal? ReceiptAmount { get => _receiptAmount; set => _receiptAmount = value; }
         private DirtyValue<string> _receiptCheckNo;
-        public string ReceiptCheckNo { get { return _receiptCheckNo; } set { _receiptCheckNo = value; } }
+        public string ReceiptCheckNo { get => _receiptCheckNo; set => _receiptCheckNo = value; }
         private DirtyValue<int?> _trustAccountItemIndex;
-        public int? TrustAccountItemIndex { get { return _trustAccountItemIndex; } set { _trustAccountItemIndex = value; } }
+        public int? TrustAccountItemIndex { get => _trustAccountItemIndex; set => _trustAccountItemIndex = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -68,6 +66,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

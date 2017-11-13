@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,69 +9,69 @@ namespace EncompassRest.Loans
     public sealed partial class ReoProperty : IDirty
     {
         private DirtyValue<DateTime?> _acquiredDate;
-        public DateTime? AcquiredDate { get { return _acquiredDate; } set { _acquiredDate = value; } }
+        public DateTime? AcquiredDate { get => _acquiredDate; set => _acquiredDate = value; }
         private DirtyValue<string> _city;
-        public string City { get { return _city; } set { _city = value; } }
+        public string City { get => _city; set => _city = value; }
         private StringEnumValue<DispositionStatusType> _dispositionStatusType;
-        public StringEnumValue<DispositionStatusType> DispositionStatusType { get { return _dispositionStatusType; } set { _dispositionStatusType = value; } }
+        public StringEnumValue<DispositionStatusType> DispositionStatusType { get => _dispositionStatusType; set => _dispositionStatusType = value; }
         private DirtyValue<bool?> _entityDeleted;
-        public bool? EntityDeleted { get { return _entityDeleted; } set { _entityDeleted = value; } }
+        public bool? EntityDeleted { get => _entityDeleted; set => _entityDeleted = value; }
         private StringEnumValue<GsePropertyType> _gsePropertyType;
-        public StringEnumValue<GsePropertyType> GsePropertyType { get { return _gsePropertyType; } set { _gsePropertyType = value; } }
+        public StringEnumValue<GsePropertyType> GsePropertyType { get => _gsePropertyType; set => _gsePropertyType = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _isEmpty;
-        public bool? IsEmpty { get { return _isEmpty; } set { _isEmpty = value; } }
+        public bool? IsEmpty { get => _isEmpty; set => _isEmpty = value; }
         private DirtyValue<decimal?> _lienInstallmentAmount;
-        public decimal? LienInstallmentAmount { get { return _lienInstallmentAmount; } set { _lienInstallmentAmount = value; } }
+        public decimal? LienInstallmentAmount { get => _lienInstallmentAmount; set => _lienInstallmentAmount = value; }
         private DirtyValue<decimal?> _lienUpbAmount;
-        public decimal? LienUpbAmount { get { return _lienUpbAmount; } set { _lienUpbAmount = value; } }
+        public decimal? LienUpbAmount { get => _lienUpbAmount; set => _lienUpbAmount = value; }
         private DirtyValue<string> _maintenanceExpenseAmount;
-        public string MaintenanceExpenseAmount { get { return _maintenanceExpenseAmount; } set { _maintenanceExpenseAmount = value; } }
+        public string MaintenanceExpenseAmount { get => _maintenanceExpenseAmount; set => _maintenanceExpenseAmount = value; }
         private DirtyValue<decimal?> _marketValueAmount;
-        public decimal? MarketValueAmount { get { return _marketValueAmount; } set { _marketValueAmount = value; } }
+        public decimal? MarketValueAmount { get => _marketValueAmount; set => _marketValueAmount = value; }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
-        public bool? NoLinkToDocTrackIndicator { get { return _noLinkToDocTrackIndicator; } set { _noLinkToDocTrackIndicator = value; } }
+        public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => _noLinkToDocTrackIndicator = value; }
         private DirtyValue<decimal?> _participationPercentage;
-        public decimal? ParticipationPercentage { get { return _participationPercentage; } set { _participationPercentage = value; } }
+        public decimal? ParticipationPercentage { get => _participationPercentage; set => _participationPercentage = value; }
         private DirtyValue<decimal?> _percentageofRental;
-        public decimal? PercentageofRental { get { return _percentageofRental; } set { _percentageofRental = value; } }
+        public decimal? PercentageofRental { get => _percentageofRental; set => _percentageofRental = value; }
         private DirtyValue<string> _postalCode;
-        public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
+        public string PostalCode { get => _postalCode; set => _postalCode = value; }
         private DirtyValue<bool?> _printAttachIndicator;
-        public bool? PrintAttachIndicator { get { return _printAttachIndicator; } set { _printAttachIndicator = value; } }
+        public bool? PrintAttachIndicator { get => _printAttachIndicator; set => _printAttachIndicator = value; }
         private DirtyValue<bool?> _printUserNameIndicator;
-        public bool? PrintUserNameIndicator { get { return _printUserNameIndicator; } set { _printUserNameIndicator = value; } }
+        public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => _printUserNameIndicator = value; }
         private StringEnumValue<PropertyUsageType> _propertyUsageType;
-        public StringEnumValue<PropertyUsageType> PropertyUsageType { get { return _propertyUsageType; } set { _propertyUsageType = value; } }
+        public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => _propertyUsageType = value; }
         private DirtyValue<int?> _purchasePrice;
-        public int? PurchasePrice { get { return _purchasePrice; } set { _purchasePrice = value; } }
+        public int? PurchasePrice { get => _purchasePrice; set => _purchasePrice = value; }
         private DirtyValue<decimal?> _rentalIncomeGrossAmount;
-        public decimal? RentalIncomeGrossAmount { get { return _rentalIncomeGrossAmount; } set { _rentalIncomeGrossAmount = value; } }
+        public decimal? RentalIncomeGrossAmount { get => _rentalIncomeGrossAmount; set => _rentalIncomeGrossAmount = value; }
         private DirtyValue<decimal?> _rentalIncomeNetAmount;
-        public decimal? RentalIncomeNetAmount { get { return _rentalIncomeNetAmount; } set { _rentalIncomeNetAmount = value; } }
+        public decimal? RentalIncomeNetAmount { get => _rentalIncomeNetAmount; set => _rentalIncomeNetAmount = value; }
         private DirtyValue<string> _reoComments;
-        public string ReoComments { get { return _reoComments; } set { _reoComments = value; } }
+        public string ReoComments { get => _reoComments; set => _reoComments = value; }
         private DirtyValue<string> _reoId;
-        public string ReoId { get { return _reoId; } set { _reoId = value; } }
+        public string ReoId { get => _reoId; set => _reoId = value; }
         private DirtyValue<int?> _reoPropertyIndex;
-        public int? ReoPropertyIndex { get { return _reoPropertyIndex; } set { _reoPropertyIndex = value; } }
+        public int? ReoPropertyIndex { get => _reoPropertyIndex; set => _reoPropertyIndex = value; }
         private DirtyValue<DateTime?> _requestDate;
-        public DateTime? RequestDate { get { return _requestDate; } set { _requestDate = value; } }
+        public DateTime? RequestDate { get => _requestDate; set => _requestDate = value; }
         private DirtyValue<string> _state;
-        public string State { get { return _state; } set { _state = value; } }
+        public string State { get => _state; set => _state = value; }
         private DirtyValue<string> _streetAddress;
-        public string StreetAddress { get { return _streetAddress; } set { _streetAddress = value; } }
+        public string StreetAddress { get => _streetAddress; set => _streetAddress = value; }
         private DirtyValue<bool?> _subjectIndicator;
-        public bool? SubjectIndicator { get { return _subjectIndicator; } set { _subjectIndicator = value; } }
+        public bool? SubjectIndicator { get => _subjectIndicator; set => _subjectIndicator = value; }
         private DirtyValue<string> _title;
-        public string Title { get { return _title; } set { _title = value; } }
+        public string Title { get => _title; set => _title = value; }
         private DirtyValue<string> _titleFax;
-        public string TitleFax { get { return _titleFax; } set { _titleFax = value; } }
+        public string TitleFax { get => _titleFax; set => _titleFax = value; }
         private DirtyValue<string> _titlePhone;
-        public string TitlePhone { get { return _titlePhone; } set { _titlePhone = value; } }
+        public string TitlePhone { get => _titlePhone; set => _titlePhone = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -156,6 +154,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

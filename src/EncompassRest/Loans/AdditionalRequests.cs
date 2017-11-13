@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,83 +9,83 @@ namespace EncompassRest.Loans
     public sealed partial class AdditionalRequests : IDirty
     {
         private DirtyValue<string> _appraisalContactCellPhone;
-        public string AppraisalContactCellPhone { get { return _appraisalContactCellPhone; } set { _appraisalContactCellPhone = value; } }
+        public string AppraisalContactCellPhone { get => _appraisalContactCellPhone; set => _appraisalContactCellPhone = value; }
         private DirtyValue<string> _appraisalContactEmail;
-        public string AppraisalContactEmail { get { return _appraisalContactEmail; } set { _appraisalContactEmail = value; } }
+        public string AppraisalContactEmail { get => _appraisalContactEmail; set => _appraisalContactEmail = value; }
         private StringEnumValue<AppraisalContactForEntry> _appraisalContactForEntry;
-        public StringEnumValue<AppraisalContactForEntry> AppraisalContactForEntry { get { return _appraisalContactForEntry; } set { _appraisalContactForEntry = value; } }
+        public StringEnumValue<AppraisalContactForEntry> AppraisalContactForEntry { get => _appraisalContactForEntry; set => _appraisalContactForEntry = value; }
         private DirtyValue<string> _appraisalContactHomePhone;
-        public string AppraisalContactHomePhone { get { return _appraisalContactHomePhone; } set { _appraisalContactHomePhone = value; } }
+        public string AppraisalContactHomePhone { get => _appraisalContactHomePhone; set => _appraisalContactHomePhone = value; }
         private DirtyValue<string> _appraisalContactName;
-        public string AppraisalContactName { get { return _appraisalContactName; } set { _appraisalContactName = value; } }
+        public string AppraisalContactName { get => _appraisalContactName; set => _appraisalContactName = value; }
         private DirtyValue<string> _appraisalContactWorkPhone;
-        public string AppraisalContactWorkPhone { get { return _appraisalContactWorkPhone; } set { _appraisalContactWorkPhone = value; } }
+        public string AppraisalContactWorkPhone { get => _appraisalContactWorkPhone; set => _appraisalContactWorkPhone = value; }
         private DirtyValue<DateTime?> _appraisalDateOrdered;
-        public DateTime? AppraisalDateOrdered { get { return _appraisalDateOrdered; } set { _appraisalDateOrdered = value; } }
+        public DateTime? AppraisalDateOrdered { get => _appraisalDateOrdered; set => _appraisalDateOrdered = value; }
         private DirtyValue<string> _appraisalDescription1;
-        public string AppraisalDescription1 { get { return _appraisalDescription1; } set { _appraisalDescription1 = value; } }
+        public string AppraisalDescription1 { get => _appraisalDescription1; set => _appraisalDescription1 = value; }
         private DirtyValue<string> _appraisalDescription2;
-        public string AppraisalDescription2 { get { return _appraisalDescription2; } set { _appraisalDescription2 = value; } }
+        public string AppraisalDescription2 { get => _appraisalDescription2; set => _appraisalDescription2 = value; }
         private DirtyValue<string> _appraisalDescription3;
-        public string AppraisalDescription3 { get { return _appraisalDescription3; } set { _appraisalDescription3 = value; } }
+        public string AppraisalDescription3 { get => _appraisalDescription3; set => _appraisalDescription3 = value; }
         private DirtyValue<bool?> _appraisalKeyPickUp;
-        public bool? AppraisalKeyPickUp { get { return _appraisalKeyPickUp; } set { _appraisalKeyPickUp = value; } }
+        public bool? AppraisalKeyPickUp { get => _appraisalKeyPickUp; set => _appraisalKeyPickUp = value; }
         private DirtyValue<bool?> _appraisalLockBox;
-        public bool? AppraisalLockBox { get { return _appraisalLockBox; } set { _appraisalLockBox = value; } }
+        public bool? AppraisalLockBox { get => _appraisalLockBox; set => _appraisalLockBox = value; }
         private DirtyValue<bool?> _appraisalVacant;
-        public bool? AppraisalVacant { get { return _appraisalVacant; } set { _appraisalVacant = value; } }
+        public bool? AppraisalVacant { get => _appraisalVacant; set => _appraisalVacant = value; }
         private DirtyValue<string> _floodDescription1;
-        public string FloodDescription1 { get { return _floodDescription1; } set { _floodDescription1 = value; } }
+        public string FloodDescription1 { get => _floodDescription1; set => _floodDescription1 = value; }
         private DirtyValue<string> _floodDescription2;
-        public string FloodDescription2 { get { return _floodDescription2; } set { _floodDescription2 = value; } }
+        public string FloodDescription2 { get => _floodDescription2; set => _floodDescription2 = value; }
         private DirtyValue<string> _floodDescription3;
-        public string FloodDescription3 { get { return _floodDescription3; } set { _floodDescription3 = value; } }
+        public string FloodDescription3 { get => _floodDescription3; set => _floodDescription3 = value; }
         private DirtyValue<bool?> _floodInsuranceEscrowed;
-        public bool? FloodInsuranceEscrowed { get { return _floodInsuranceEscrowed; } set { _floodInsuranceEscrowed = value; } }
+        public bool? FloodInsuranceEscrowed { get => _floodInsuranceEscrowed; set => _floodInsuranceEscrowed = value; }
         private DirtyValue<string> _floodReplacementValue;
-        public string FloodReplacementValue { get { return _floodReplacementValue; } set { _floodReplacementValue = value; } }
+        public string FloodReplacementValue { get => _floodReplacementValue; set => _floodReplacementValue = value; }
         private DirtyValue<string> _hazardDescription1;
-        public string HazardDescription1 { get { return _hazardDescription1; } set { _hazardDescription1 = value; } }
+        public string HazardDescription1 { get => _hazardDescription1; set => _hazardDescription1 = value; }
         private DirtyValue<string> _hazardDescription2;
-        public string HazardDescription2 { get { return _hazardDescription2; } set { _hazardDescription2 = value; } }
+        public string HazardDescription2 { get => _hazardDescription2; set => _hazardDescription2 = value; }
         private DirtyValue<string> _hazardDescription3;
-        public string HazardDescription3 { get { return _hazardDescription3; } set { _hazardDescription3 = value; } }
+        public string HazardDescription3 { get => _hazardDescription3; set => _hazardDescription3 = value; }
         private DirtyValue<bool?> _hazardInsuranceEscrowed;
-        public bool? HazardInsuranceEscrowed { get { return _hazardInsuranceEscrowed; } set { _hazardInsuranceEscrowed = value; } }
+        public bool? HazardInsuranceEscrowed { get => _hazardInsuranceEscrowed; set => _hazardInsuranceEscrowed = value; }
         private DirtyValue<string> _hazardReplacementValue;
-        public string HazardReplacementValue { get { return _hazardReplacementValue; } set { _hazardReplacementValue = value; } }
+        public string HazardReplacementValue { get => _hazardReplacementValue; set => _hazardReplacementValue = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _maximumDeductibleFloodAmount;
-        public decimal? MaximumDeductibleFloodAmount { get { return _maximumDeductibleFloodAmount; } set { _maximumDeductibleFloodAmount = value; } }
+        public decimal? MaximumDeductibleFloodAmount { get => _maximumDeductibleFloodAmount; set => _maximumDeductibleFloodAmount = value; }
         private DirtyValue<decimal?> _maximumDeductibleFloodPercentage;
-        public decimal? MaximumDeductibleFloodPercentage { get { return _maximumDeductibleFloodPercentage; } set { _maximumDeductibleFloodPercentage = value; } }
+        public decimal? MaximumDeductibleFloodPercentage { get => _maximumDeductibleFloodPercentage; set => _maximumDeductibleFloodPercentage = value; }
         private DirtyValue<decimal?> _maximumDeductibleHazardAmount;
-        public decimal? MaximumDeductibleHazardAmount { get { return _maximumDeductibleHazardAmount; } set { _maximumDeductibleHazardAmount = value; } }
+        public decimal? MaximumDeductibleHazardAmount { get => _maximumDeductibleHazardAmount; set => _maximumDeductibleHazardAmount = value; }
         private DirtyValue<decimal?> _maximumDeductibleHazardPercentage;
-        public decimal? MaximumDeductibleHazardPercentage { get { return _maximumDeductibleHazardPercentage; } set { _maximumDeductibleHazardPercentage = value; } }
+        public decimal? MaximumDeductibleHazardPercentage { get => _maximumDeductibleHazardPercentage; set => _maximumDeductibleHazardPercentage = value; }
         private DirtyValue<bool?> _titleContract;
-        public bool? TitleContract { get { return _titleContract; } set { _titleContract = value; } }
+        public bool? TitleContract { get => _titleContract; set => _titleContract = value; }
         private DirtyValue<string> _titleDescription1;
-        public string TitleDescription1 { get { return _titleDescription1; } set { _titleDescription1 = value; } }
+        public string TitleDescription1 { get => _titleDescription1; set => _titleDescription1 = value; }
         private DirtyValue<string> _titleDescription2;
-        public string TitleDescription2 { get { return _titleDescription2; } set { _titleDescription2 = value; } }
+        public string TitleDescription2 { get => _titleDescription2; set => _titleDescription2 = value; }
         private DirtyValue<string> _titleDescription3;
-        public string TitleDescription3 { get { return _titleDescription3; } set { _titleDescription3 = value; } }
+        public string TitleDescription3 { get => _titleDescription3; set => _titleDescription3 = value; }
         private DirtyValue<bool?> _titleInsRequirements;
-        public bool? TitleInsRequirements { get { return _titleInsRequirements; } set { _titleInsRequirements = value; } }
+        public bool? TitleInsRequirements { get => _titleInsRequirements; set => _titleInsRequirements = value; }
         private DirtyValue<bool?> _titleMailAway;
-        public bool? TitleMailAway { get { return _titleMailAway; } set { _titleMailAway = value; } }
+        public bool? TitleMailAway { get => _titleMailAway; set => _titleMailAway = value; }
         private DirtyValue<bool?> _titlePriorTitlePolicy;
-        public bool? TitlePriorTitlePolicy { get { return _titlePriorTitlePolicy; } set { _titlePriorTitlePolicy = value; } }
+        public bool? TitlePriorTitlePolicy { get => _titlePriorTitlePolicy; set => _titlePriorTitlePolicy = value; }
         private DirtyValue<bool?> _titleSurvey;
-        public bool? TitleSurvey { get { return _titleSurvey; } set { _titleSurvey = value; } }
+        public bool? TitleSurvey { get => _titleSurvey; set => _titleSurvey = value; }
         private DirtyValue<string> _titleTypeOfProperty;
-        public string TitleTypeOfProperty { get { return _titleTypeOfProperty; } set { _titleTypeOfProperty = value; } }
+        public string TitleTypeOfProperty { get => _titleTypeOfProperty; set => _titleTypeOfProperty = value; }
         private DirtyValue<bool?> _titleWarrantyDeed;
-        public bool? TitleWarrantyDeed { get { return _titleWarrantyDeed; } set { _titleWarrantyDeed = value; } }
+        public bool? TitleWarrantyDeed { get => _titleWarrantyDeed; set => _titleWarrantyDeed = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -184,6 +182,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

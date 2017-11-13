@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,15 +9,15 @@ namespace EncompassRest.Loans
     public sealed partial class LogSnapshotField : IDirty
     {
         private DirtyValue<string> _fieldID;
-        public string FieldID { get { return _fieldID; } set { _fieldID = value; } }
+        public string FieldID { get => _fieldID; set => _fieldID = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _modalPath;
-        public string ModalPath { get { return _modalPath; } set { _modalPath = value; } }
+        public string ModalPath { get => _modalPath; set => _modalPath = value; }
         private DirtyValue<string> _value;
-        public string Value { get { return _value; } set { _value = value; } }
+        public string Value { get => _value; set => _value = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -48,6 +46,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

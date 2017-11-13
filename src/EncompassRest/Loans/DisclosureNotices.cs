@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,107 +9,107 @@ namespace EncompassRest.Loans
     public sealed partial class DisclosureNotices : IDirty
     {
         private DirtyValue<bool?> _antiCoercionStatementIndicator;
-        public bool? AntiCoercionStatementIndicator { get { return _antiCoercionStatementIndicator; } set { _antiCoercionStatementIndicator = value; } }
+        public bool? AntiCoercionStatementIndicator { get => _antiCoercionStatementIndicator; set => _antiCoercionStatementIndicator = value; }
         private DirtyValue<string> _commitmentIssuedByAddress;
-        public string CommitmentIssuedByAddress { get { return _commitmentIssuedByAddress; } set { _commitmentIssuedByAddress = value; } }
+        public string CommitmentIssuedByAddress { get => _commitmentIssuedByAddress; set => _commitmentIssuedByAddress = value; }
         private DirtyValue<string> _commitmentIssuedByCity;
-        public string CommitmentIssuedByCity { get { return _commitmentIssuedByCity; } set { _commitmentIssuedByCity = value; } }
+        public string CommitmentIssuedByCity { get => _commitmentIssuedByCity; set => _commitmentIssuedByCity = value; }
         private DirtyValue<string> _commitmentIssuedByContactName;
-        public string CommitmentIssuedByContactName { get { return _commitmentIssuedByContactName; } set { _commitmentIssuedByContactName = value; } }
+        public string CommitmentIssuedByContactName { get => _commitmentIssuedByContactName; set => _commitmentIssuedByContactName = value; }
         private DirtyValue<string> _commitmentIssuedByName;
-        public string CommitmentIssuedByName { get { return _commitmentIssuedByName; } set { _commitmentIssuedByName = value; } }
+        public string CommitmentIssuedByName { get => _commitmentIssuedByName; set => _commitmentIssuedByName = value; }
         private DirtyValue<string> _commitmentIssuedByPhone;
-        public string CommitmentIssuedByPhone { get { return _commitmentIssuedByPhone; } set { _commitmentIssuedByPhone = value; } }
+        public string CommitmentIssuedByPhone { get => _commitmentIssuedByPhone; set => _commitmentIssuedByPhone = value; }
         private DirtyValue<string> _commitmentIssuedByPostalCode;
-        public string CommitmentIssuedByPostalCode { get { return _commitmentIssuedByPostalCode; } set { _commitmentIssuedByPostalCode = value; } }
+        public string CommitmentIssuedByPostalCode { get => _commitmentIssuedByPostalCode; set => _commitmentIssuedByPostalCode = value; }
         private DirtyValue<string> _commitmentIssuedByState;
-        public string CommitmentIssuedByState { get { return _commitmentIssuedByState; } set { _commitmentIssuedByState = value; } }
+        public string CommitmentIssuedByState { get => _commitmentIssuedByState; set => _commitmentIssuedByState = value; }
         private StringEnumValue<YOrN> _consumerHandbookOnAdjustableRateMortgages;
-        public StringEnumValue<YOrN> ConsumerHandbookOnAdjustableRateMortgages { get { return _consumerHandbookOnAdjustableRateMortgages; } set { _consumerHandbookOnAdjustableRateMortgages = value; } }
+        public StringEnumValue<YOrN> ConsumerHandbookOnAdjustableRateMortgages { get => _consumerHandbookOnAdjustableRateMortgages; set => _consumerHandbookOnAdjustableRateMortgages = value; }
         private DirtyValue<string> _daysToReceiveWrittenRequest;
-        public string DaysToReceiveWrittenRequest { get { return _daysToReceiveWrittenRequest; } set { _daysToReceiveWrittenRequest = value; } }
+        public string DaysToReceiveWrittenRequest { get => _daysToReceiveWrittenRequest; set => _daysToReceiveWrittenRequest = value; }
         private DirtyValue<int?> _daysToReturnToLender;
-        public int? DaysToReturnToLender { get { return _daysToReturnToLender; } set { _daysToReturnToLender = value; } }
+        public int? DaysToReturnToLender { get => _daysToReturnToLender; set => _daysToReturnToLender = value; }
         private DirtyValue<string> _discloseNonPublicPersonalInformation;
-        public string DiscloseNonPublicPersonalInformation { get { return _discloseNonPublicPersonalInformation; } set { _discloseNonPublicPersonalInformation = value; } }
+        public string DiscloseNonPublicPersonalInformation { get => _discloseNonPublicPersonalInformation; set => _discloseNonPublicPersonalInformation = value; }
         private DirtyValue<string> _ecoaAddress;
-        public string EcoaAddress { get { return _ecoaAddress; } set { _ecoaAddress = value; } }
+        public string EcoaAddress { get => _ecoaAddress; set => _ecoaAddress = value; }
         private DirtyValue<string> _ecoaAddress2;
-        public string EcoaAddress2 { get { return _ecoaAddress2; } set { _ecoaAddress2 = value; } }
+        public string EcoaAddress2 { get => _ecoaAddress2; set => _ecoaAddress2 = value; }
         private DirtyValue<string> _ecoaCity;
-        public string EcoaCity { get { return _ecoaCity; } set { _ecoaCity = value; } }
+        public string EcoaCity { get => _ecoaCity; set => _ecoaCity = value; }
         private DirtyValue<string> _ecoaName;
-        public string EcoaName { get { return _ecoaName; } set { _ecoaName = value; } }
+        public string EcoaName { get => _ecoaName; set => _ecoaName = value; }
         private DirtyValue<string> _ecoaPhone;
-        public string EcoaPhone { get { return _ecoaPhone; } set { _ecoaPhone = value; } }
+        public string EcoaPhone { get => _ecoaPhone; set => _ecoaPhone = value; }
         private DirtyValue<string> _ecoaPostalCode;
-        public string EcoaPostalCode { get { return _ecoaPostalCode; } set { _ecoaPostalCode = value; } }
+        public string EcoaPostalCode { get => _ecoaPostalCode; set => _ecoaPostalCode = value; }
         private DirtyValue<string> _ecoaState;
-        public string EcoaState { get { return _ecoaState; } set { _ecoaState = value; } }
+        public string EcoaState { get => _ecoaState; set => _ecoaState = value; }
         private DirtyValue<string> _fairLendingNoticeDescription1;
-        public string FairLendingNoticeDescription1 { get { return _fairLendingNoticeDescription1; } set { _fairLendingNoticeDescription1 = value; } }
+        public string FairLendingNoticeDescription1 { get => _fairLendingNoticeDescription1; set => _fairLendingNoticeDescription1 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription2;
-        public string FairLendingNoticeDescription2 { get { return _fairLendingNoticeDescription2; } set { _fairLendingNoticeDescription2 = value; } }
+        public string FairLendingNoticeDescription2 { get => _fairLendingNoticeDescription2; set => _fairLendingNoticeDescription2 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription3;
-        public string FairLendingNoticeDescription3 { get { return _fairLendingNoticeDescription3; } set { _fairLendingNoticeDescription3 = value; } }
+        public string FairLendingNoticeDescription3 { get => _fairLendingNoticeDescription3; set => _fairLendingNoticeDescription3 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription4;
-        public string FairLendingNoticeDescription4 { get { return _fairLendingNoticeDescription4; } set { _fairLendingNoticeDescription4 = value; } }
+        public string FairLendingNoticeDescription4 { get => _fairLendingNoticeDescription4; set => _fairLendingNoticeDescription4 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription5;
-        public string FairLendingNoticeDescription5 { get { return _fairLendingNoticeDescription5; } set { _fairLendingNoticeDescription5 = value; } }
+        public string FairLendingNoticeDescription5 { get => _fairLendingNoticeDescription5; set => _fairLendingNoticeDescription5 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription6;
-        public string FairLendingNoticeDescription6 { get { return _fairLendingNoticeDescription6; } set { _fairLendingNoticeDescription6 = value; } }
+        public string FairLendingNoticeDescription6 { get => _fairLendingNoticeDescription6; set => _fairLendingNoticeDescription6 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription7;
-        public string FairLendingNoticeDescription7 { get { return _fairLendingNoticeDescription7; } set { _fairLendingNoticeDescription7 = value; } }
+        public string FairLendingNoticeDescription7 { get => _fairLendingNoticeDescription7; set => _fairLendingNoticeDescription7 = value; }
         private DirtyValue<string> _fairLendingNoticeDescription8;
-        public string FairLendingNoticeDescription8 { get { return _fairLendingNoticeDescription8; } set { _fairLendingNoticeDescription8 = value; } }
+        public string FairLendingNoticeDescription8 { get => _fairLendingNoticeDescription8; set => _fairLendingNoticeDescription8 = value; }
         private DirtyValue<string> _femaCommunityName;
-        public string FemaCommunityName { get { return _femaCommunityName; } set { _femaCommunityName = value; } }
+        public string FemaCommunityName { get => _femaCommunityName; set => _femaCommunityName = value; }
         private DirtyValue<bool?> _floodInsuranceNotificationIndicator;
-        public bool? FloodInsuranceNotificationIndicator { get { return _floodInsuranceNotificationIndicator; } set { _floodInsuranceNotificationIndicator = value; } }
+        public bool? FloodInsuranceNotificationIndicator { get => _floodInsuranceNotificationIndicator; set => _floodInsuranceNotificationIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _informationDisclosureAuthorizationIndicator;
-        public bool? InformationDisclosureAuthorizationIndicator { get { return _informationDisclosureAuthorizationIndicator; } set { _informationDisclosureAuthorizationIndicator = value; } }
+        public bool? InformationDisclosureAuthorizationIndicator { get => _informationDisclosureAuthorizationIndicator; set => _informationDisclosureAuthorizationIndicator = value; }
         private DirtyValue<string> _licensedMortgageBrokerUnder;
-        public string LicensedMortgageBrokerUnder { get { return _licensedMortgageBrokerUnder; } set { _licensedMortgageBrokerUnder = value; } }
+        public string LicensedMortgageBrokerUnder { get => _licensedMortgageBrokerUnder; set => _licensedMortgageBrokerUnder = value; }
         private DirtyValue<bool?> _locatedInNfipIndicator;
-        public bool? LocatedInNfipIndicator { get { return _locatedInNfipIndicator; } set { _locatedInNfipIndicator = value; } }
+        public bool? LocatedInNfipIndicator { get => _locatedInNfipIndicator; set => _locatedInNfipIndicator = value; }
         private DirtyValue<string> _lossPayeeClause;
-        public string LossPayeeClause { get { return _lossPayeeClause; } set { _lossPayeeClause = value; } }
+        public string LossPayeeClause { get => _lossPayeeClause; set => _lossPayeeClause = value; }
         private DirtyValue<string> _mapPanelNumber;
-        public string MapPanelNumber { get { return _mapPanelNumber; } set { _mapPanelNumber = value; } }
+        public string MapPanelNumber { get => _mapPanelNumber; set => _mapPanelNumber = value; }
         private DirtyValue<string> _nFIPCommunityNumber;
-        public string NFIPCommunityNumber { get { return _nFIPCommunityNumber; } set { _nFIPCommunityNumber = value; } }
+        public string NFIPCommunityNumber { get => _nFIPCommunityNumber; set => _nFIPCommunityNumber = value; }
         private DirtyValue<DateTime?> _nFIPMapEffectiveRevisedDate;
-        public DateTime? NFIPMapEffectiveRevisedDate { get { return _nFIPMapEffectiveRevisedDate; } set { _nFIPMapEffectiveRevisedDate = value; } }
+        public DateTime? NFIPMapEffectiveRevisedDate { get => _nFIPMapEffectiveRevisedDate; set => _nFIPMapEffectiveRevisedDate = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription1;
-        public string NonFinancialCompaniesDescription1 { get { return _nonFinancialCompaniesDescription1; } set { _nonFinancialCompaniesDescription1 = value; } }
+        public string NonFinancialCompaniesDescription1 { get => _nonFinancialCompaniesDescription1; set => _nonFinancialCompaniesDescription1 = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription2;
-        public string NonFinancialCompaniesDescription2 { get { return _nonFinancialCompaniesDescription2; } set { _nonFinancialCompaniesDescription2 = value; } }
+        public string NonFinancialCompaniesDescription2 { get => _nonFinancialCompaniesDescription2; set => _nonFinancialCompaniesDescription2 = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription3;
-        public string NonFinancialCompaniesDescription3 { get { return _nonFinancialCompaniesDescription3; } set { _nonFinancialCompaniesDescription3 = value; } }
+        public string NonFinancialCompaniesDescription3 { get => _nonFinancialCompaniesDescription3; set => _nonFinancialCompaniesDescription3 = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription4;
-        public string NonFinancialCompaniesDescription4 { get { return _nonFinancialCompaniesDescription4; } set { _nonFinancialCompaniesDescription4 = value; } }
+        public string NonFinancialCompaniesDescription4 { get => _nonFinancialCompaniesDescription4; set => _nonFinancialCompaniesDescription4 = value; }
         private DirtyValue<bool?> _notLocatedInNfipIndicator;
-        public bool? NotLocatedInNfipIndicator { get { return _notLocatedInNfipIndicator; } set { _notLocatedInNfipIndicator = value; } }
+        public bool? NotLocatedInNfipIndicator { get => _notLocatedInNfipIndicator; set => _notLocatedInNfipIndicator = value; }
         private DirtyValue<bool?> _occupancyStatementIndicator;
-        public bool? OccupancyStatementIndicator { get { return _occupancyStatementIndicator; } set { _occupancyStatementIndicator = value; } }
+        public bool? OccupancyStatementIndicator { get => _occupancyStatementIndicator; set => _occupancyStatementIndicator = value; }
         private DirtyValue<string> _optOut;
-        public string OptOut { get { return _optOut; } set { _optOut = value; } }
+        public string OptOut { get => _optOut; set => _optOut = value; }
         private DirtyValue<string> _optOutPhone;
-        public string OptOutPhone { get { return _optOutPhone; } set { _optOutPhone = value; } }
+        public string OptOutPhone { get => _optOutPhone; set => _optOutPhone = value; }
         private DirtyValue<bool?> _releaseBankingInformationIndicator;
-        public bool? ReleaseBankingInformationIndicator { get { return _releaseBankingInformationIndicator; } set { _releaseBankingInformationIndicator = value; } }
+        public bool? ReleaseBankingInformationIndicator { get => _releaseBankingInformationIndicator; set => _releaseBankingInformationIndicator = value; }
         private DirtyValue<bool?> _releaseEmploymentInformationIndicator;
-        public bool? ReleaseEmploymentInformationIndicator { get { return _releaseEmploymentInformationIndicator; } set { _releaseEmploymentInformationIndicator = value; } }
+        public bool? ReleaseEmploymentInformationIndicator { get => _releaseEmploymentInformationIndicator; set => _releaseEmploymentInformationIndicator = value; }
         private DirtyValue<bool?> _releaseInformationInConnectionWithCreditReportIndicator;
-        public bool? ReleaseInformationInConnectionWithCreditReportIndicator { get { return _releaseInformationInConnectionWithCreditReportIndicator; } set { _releaseInformationInConnectionWithCreditReportIndicator = value; } }
+        public bool? ReleaseInformationInConnectionWithCreditReportIndicator { get => _releaseInformationInConnectionWithCreditReportIndicator; set => _releaseInformationInConnectionWithCreditReportIndicator = value; }
         private DirtyValue<bool?> _releaseMortgageInformationIndicator;
-        public bool? ReleaseMortgageInformationIndicator { get { return _releaseMortgageInformationIndicator; } set { _releaseMortgageInformationIndicator = value; } }
+        public bool? ReleaseMortgageInformationIndicator { get => _releaseMortgageInformationIndicator; set => _releaseMortgageInformationIndicator = value; }
         private DirtyValue<bool?> _rightToFinancialPrivacyActIndicator;
-        public bool? RightToFinancialPrivacyActIndicator { get { return _rightToFinancialPrivacyActIndicator; } set { _rightToFinancialPrivacyActIndicator = value; } }
+        public bool? RightToFinancialPrivacyActIndicator { get => _rightToFinancialPrivacyActIndicator; set => _rightToFinancialPrivacyActIndicator = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -232,6 +230,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,79 +9,79 @@ namespace EncompassRest.Loans
     public sealed partial class ClosingEntity : IDirty
     {
         private DirtyValue<string> _alias;
-        public string Alias { get { return _alias; } set { _alias = value; } }
+        public string Alias { get => _alias; set => _alias = value; }
         private DirtyValue<string> _assignee;
-        public string Assignee { get { return _assignee; } set { _assignee = value; } }
+        public string Assignee { get => _assignee; set => _assignee = value; }
         private DirtyValue<bool?> _authorizedToSignIndicator;
-        public bool? AuthorizedToSignIndicator { get { return _authorizedToSignIndicator; } set { _authorizedToSignIndicator = value; } }
+        public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => _authorizedToSignIndicator = value; }
         private DirtyValue<string> _borrowerPair;
-        public string BorrowerPair { get { return _borrowerPair; } set { _borrowerPair = value; } }
+        public string BorrowerPair { get => _borrowerPair; set => _borrowerPair = value; }
         private DirtyValue<string> _city;
-        public string City { get { return _city; } set { _city = value; } }
+        public string City { get => _city; set => _city = value; }
         private StringEnumValue<ClosingEntityType> _closingEntityType;
-        public StringEnumValue<ClosingEntityType> ClosingEntityType { get { return _closingEntityType; } set { _closingEntityType = value; } }
+        public StringEnumValue<ClosingEntityType> ClosingEntityType { get => _closingEntityType; set => _closingEntityType = value; }
         private DirtyValue<string> _comments;
-        public string Comments { get { return _comments; } set { _comments = value; } }
+        public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<string> _county;
-        public string County { get { return _county; } set { _county = value; } }
+        public string County { get => _county; set => _county = value; }
         private DirtyValue<DateTime?> _dateOfBirth;
-        public DateTime? DateOfBirth { get { return _dateOfBirth; } set { _dateOfBirth = value; } }
+        public DateTime? DateOfBirth { get => _dateOfBirth; set => _dateOfBirth = value; }
         private DirtyValue<string> _fax;
-        public string Fax { get { return _fax; } set { _fax = value; } }
+        public string Fax { get => _fax; set => _fax = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private StringEnumValue<OccupancyIntent> _occupancyIntent;
-        public StringEnumValue<OccupancyIntent> OccupancyIntent { get { return _occupancyIntent; } set { _occupancyIntent = value; } }
+        public StringEnumValue<OccupancyIntent> OccupancyIntent { get => _occupancyIntent; set => _occupancyIntent = value; }
         private StringEnumValue<PropertyUsageType> _occupancyStatus;
-        public StringEnumValue<PropertyUsageType> OccupancyStatus { get { return _occupancyStatus; } set { _occupancyStatus = value; } }
+        public StringEnumValue<PropertyUsageType> OccupancyStatus { get => _occupancyStatus; set => _occupancyStatus = value; }
         private DirtyValue<string> _organizationType;
-        public string OrganizationType { get { return _organizationType; } set { _organizationType = value; } }
+        public string OrganizationType { get => _organizationType; set => _organizationType = value; }
         private DirtyValue<string> _organizedUnderTheLawsOfJurisdictionName;
-        public string OrganizedUnderTheLawsOfJurisdictionName { get { return _organizedUnderTheLawsOfJurisdictionName; } set { _organizedUnderTheLawsOfJurisdictionName = value; } }
+        public string OrganizedUnderTheLawsOfJurisdictionName { get => _organizedUnderTheLawsOfJurisdictionName; set => _organizedUnderTheLawsOfJurisdictionName = value; }
         private DirtyValue<string> _phone;
-        public string Phone { get { return _phone; } set { _phone = value; } }
+        public string Phone { get => _phone; set => _phone = value; }
         private DirtyValue<string> _phone1;
-        public string Phone1 { get { return _phone1; } set { _phone1 = value; } }
+        public string Phone1 { get => _phone1; set => _phone1 = value; }
         private DirtyValue<string> _phone2;
-        public string Phone2 { get { return _phone2; } set { _phone2 = value; } }
+        public string Phone2 { get => _phone2; set => _phone2 = value; }
         private DirtyValue<string> _poaSignatureText;
-        public string PoaSignatureText { get { return _poaSignatureText; } set { _poaSignatureText = value; } }
+        public string PoaSignatureText { get => _poaSignatureText; set => _poaSignatureText = value; }
         private DirtyValue<string> _postalCode;
-        public string PostalCode { get { return _postalCode; } set { _postalCode = value; } }
+        public string PostalCode { get => _postalCode; set => _postalCode = value; }
         private DirtyValue<string> _powerOfAttorney;
-        public string PowerOfAttorney { get { return _powerOfAttorney; } set { _powerOfAttorney = value; } }
+        public string PowerOfAttorney { get => _powerOfAttorney; set => _powerOfAttorney = value; }
         private DirtyValue<DateTime?> _recordableDocumentTrustDate;
-        public DateTime? RecordableDocumentTrustDate { get { return _recordableDocumentTrustDate; } set { _recordableDocumentTrustDate = value; } }
+        public DateTime? RecordableDocumentTrustDate { get => _recordableDocumentTrustDate; set => _recordableDocumentTrustDate = value; }
         private DirtyValue<string> _recordCity;
-        public string RecordCity { get { return _recordCity; } set { _recordCity = value; } }
+        public string RecordCity { get => _recordCity; set => _recordCity = value; }
         private DirtyValue<string> _ssn;
-        public string Ssn { get { return _ssn; } set { _ssn = value; } }
+        public string Ssn { get => _ssn; set => _ssn = value; }
         private DirtyValue<string> _state;
-        public string State { get { return _state; } set { _state = value; } }
+        public string State { get => _state; set => _state = value; }
         private DirtyValue<string> _streetAddress;
-        public string StreetAddress { get { return _streetAddress; } set { _streetAddress = value; } }
+        public string StreetAddress { get => _streetAddress; set => _streetAddress = value; }
         private DirtyValue<string> _taxIdentificationNumberIdentifier;
-        public string TaxIdentificationNumberIdentifier { get { return _taxIdentificationNumberIdentifier; } set { _taxIdentificationNumberIdentifier = value; } }
+        public string TaxIdentificationNumberIdentifier { get => _taxIdentificationNumberIdentifier; set => _taxIdentificationNumberIdentifier = value; }
         private DirtyValue<string> _trustOfficerName1;
-        public string TrustOfficerName1 { get { return _trustOfficerName1; } set { _trustOfficerName1 = value; } }
+        public string TrustOfficerName1 { get => _trustOfficerName1; set => _trustOfficerName1 = value; }
         private DirtyValue<string> _trustOfficerName2;
-        public string TrustOfficerName2 { get { return _trustOfficerName2; } set { _trustOfficerName2 = value; } }
+        public string TrustOfficerName2 { get => _trustOfficerName2; set => _trustOfficerName2 = value; }
         private DirtyValue<string> _trustOfficerTitle1;
-        public string TrustOfficerTitle1 { get { return _trustOfficerTitle1; } set { _trustOfficerTitle1 = value; } }
+        public string TrustOfficerTitle1 { get => _trustOfficerTitle1; set => _trustOfficerTitle1 = value; }
         private DirtyValue<string> _trustOfficerTitle2;
-        public string TrustOfficerTitle2 { get { return _trustOfficerTitle2; } set { _trustOfficerTitle2 = value; } }
+        public string TrustOfficerTitle2 { get => _trustOfficerTitle2; set => _trustOfficerTitle2 = value; }
         private DirtyValue<string> _unparsedName;
-        public string UnparsedName { get { return _unparsedName; } set { _unparsedName = value; } }
+        public string UnparsedName { get => _unparsedName; set => _unparsedName = value; }
         private DirtyValue<string> _vesting;
-        public string Vesting { get { return _vesting; } set { _vesting = value; } }
+        public string Vesting { get => _vesting; set => _vesting = value; }
         private DirtyValue<string> _vestingGuid;
-        public string VestingGuid { get { return _vestingGuid; } set { _vestingGuid = value; } }
+        public string VestingGuid { get => _vestingGuid; set => _vestingGuid = value; }
         private StringEnumValue<VestingTrusteeOfType> _vestingTrusteeOfType;
-        public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get { return _vestingTrusteeOfType; } set { _vestingTrusteeOfType = value; } }
+        public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => _vestingTrusteeOfType = value; }
         private StringEnumValue<BorrowerType> _vestingType;
-        public StringEnumValue<BorrowerType> VestingType { get { return _vestingType; } set { _vestingType = value; } }
+        public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => _vestingType = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -176,6 +174,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

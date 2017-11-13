@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,19 +9,19 @@ namespace EncompassRest.Loans
     public sealed partial class Gfe2010FwbcFwsc : IDirty
     {
         private DirtyValue<string> _fwbc;
-        public string Fwbc { get { return _fwbc; } set { _fwbc = value; } }
+        public string Fwbc { get => _fwbc; set => _fwbc = value; }
         private DirtyValue<string> _fwsc;
-        public string Fwsc { get { return _fwsc; } set { _fwsc = value; } }
+        public string Fwsc { get => _fwsc; set => _fwsc = value; }
         private DirtyValue<int?> _gfe2010FwbcFwscIndex;
-        public int? Gfe2010FwbcFwscIndex { get { return _gfe2010FwbcFwscIndex; } set { _gfe2010FwbcFwscIndex = value; } }
+        public int? Gfe2010FwbcFwscIndex { get => _gfe2010FwbcFwscIndex; set => _gfe2010FwbcFwscIndex = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _lineLetter;
-        public string LineLetter { get { return _lineLetter; } set { _lineLetter = value; } }
+        public string LineLetter { get => _lineLetter; set => _lineLetter = value; }
         private DirtyValue<int?> _lineNumber;
-        public int? LineNumber { get { return _lineNumber; } set { _lineNumber = value; } }
+        public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -56,6 +54,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,127 +9,127 @@ namespace EncompassRest.Loans
     public sealed partial class Tax4506 : IDirty
     {
         private DirtyValue<bool?> _accountTranscript;
-        public bool? AccountTranscript { get { return _accountTranscript; } set { _accountTranscript = value; } }
+        public bool? AccountTranscript { get => _accountTranscript; set => _accountTranscript = value; }
         private DirtyValue<string> _address;
-        public string Address { get { return _address; } set { _address = value; } }
+        public string Address { get => _address; set => _address = value; }
         private DirtyValue<string> _city;
-        public string City { get { return _city; } set { _city = value; } }
+        public string City { get => _city; set => _city = value; }
         private DirtyValue<decimal?> _costForEachPeriod;
-        public decimal? CostForEachPeriod { get { return _costForEachPeriod; } set { _costForEachPeriod = value; } }
+        public decimal? CostForEachPeriod { get => _costForEachPeriod; set => _costForEachPeriod = value; }
         private DirtyValue<string> _currentFirst;
-        public string CurrentFirst { get { return _currentFirst; } set { _currentFirst = value; } }
+        public string CurrentFirst { get => _currentFirst; set => _currentFirst = value; }
         private DirtyValue<string> _currentLast;
-        public string CurrentLast { get { return _currentLast; } set { _currentLast = value; } }
+        public string CurrentLast { get => _currentLast; set => _currentLast = value; }
         private DirtyValue<string> _first;
-        public string First { get { return _first; } set { _first = value; } }
+        public string First { get => _first; set => _first = value; }
         private DirtyValue<bool?> _formsSeriesTranscript;
-        public bool? FormsSeriesTranscript { get { return _formsSeriesTranscript; } set { _formsSeriesTranscript = value; } }
+        public bool? FormsSeriesTranscript { get => _formsSeriesTranscript; set => _formsSeriesTranscript = value; }
         private DirtyValue<string> _historyId;
-        public string HistoryId { get { return _historyId; } set { _historyId = value; } }
+        public string HistoryId { get => _historyId; set => _historyId = value; }
         private DirtyValue<bool?> _historyIndicator;
-        public bool? HistoryIndicator { get { return _historyIndicator; } set { _historyIndicator = value; } }
+        public bool? HistoryIndicator { get => _historyIndicator; set => _historyIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _ifTaxRecordNotFound;
-        public bool? IfTaxRecordNotFound { get { return _ifTaxRecordNotFound; } set { _ifTaxRecordNotFound = value; } }
+        public bool? IfTaxRecordNotFound { get => _ifTaxRecordNotFound; set => _ifTaxRecordNotFound = value; }
         private DirtyValue<string> _last;
-        public string Last { get { return _last; } set { _last = value; } }
+        public string Last { get => _last; set => _last = value; }
         private DirtyValue<DateTime?> _lastUpdatedDate;
-        public DateTime? LastUpdatedDate { get { return _lastUpdatedDate; } set { _lastUpdatedDate = value; } }
+        public DateTime? LastUpdatedDate { get => _lastUpdatedDate; set => _lastUpdatedDate = value; }
         private DirtyValue<int?> _lastUpdatedHistory;
-        public int? LastUpdatedHistory { get { return _lastUpdatedHistory; } set { _lastUpdatedHistory = value; } }
+        public int? LastUpdatedHistory { get => _lastUpdatedHistory; set => _lastUpdatedHistory = value; }
         private DirtyValue<string> _lastUpdatedTime;
-        public string LastUpdatedTime { get { return _lastUpdatedTime; } set { _lastUpdatedTime = value; } }
+        public string LastUpdatedTime { get => _lastUpdatedTime; set => _lastUpdatedTime = value; }
         private DirtyValue<bool?> _notifiedIrsIdentityTheftIndicator;
-        public bool? NotifiedIrsIdentityTheftIndicator { get { return _notifiedIrsIdentityTheftIndicator; } set { _notifiedIrsIdentityTheftIndicator = value; } }
+        public bool? NotifiedIrsIdentityTheftIndicator { get => _notifiedIrsIdentityTheftIndicator; set => _notifiedIrsIdentityTheftIndicator = value; }
         private DirtyValue<int?> _numberOfPeriods;
-        public int? NumberOfPeriods { get { return _numberOfPeriods; } set { _numberOfPeriods = value; } }
+        public int? NumberOfPeriods { get => _numberOfPeriods; set => _numberOfPeriods = value; }
         private StringEnumValue<Person> _person;
-        public StringEnumValue<Person> Person { get { return _person; } set { _person = value; } }
+        public StringEnumValue<Person> Person { get => _person; set => _person = value; }
         private DirtyValue<bool?> _recordOfAccount;
-        public bool? RecordOfAccount { get { return _recordOfAccount; } set { _recordOfAccount = value; } }
+        public bool? RecordOfAccount { get => _recordOfAccount; set => _recordOfAccount = value; }
         private DirtyValue<string> _requestorPhoneNumber;
-        public string RequestorPhoneNumber { get { return _requestorPhoneNumber; } set { _requestorPhoneNumber = value; } }
+        public string RequestorPhoneNumber { get => _requestorPhoneNumber; set => _requestorPhoneNumber = value; }
         private StringEnumValue<RequestorTitle> _requestorTitle;
-        public StringEnumValue<RequestorTitle> RequestorTitle { get { return _requestorTitle; } set { _requestorTitle = value; } }
+        public StringEnumValue<RequestorTitle> RequestorTitle { get => _requestorTitle; set => _requestorTitle = value; }
         private DirtyValue<DateTime?> _requestYear1;
-        public DateTime? RequestYear1 { get { return _requestYear1; } set { _requestYear1 = value; } }
+        public DateTime? RequestYear1 { get => _requestYear1; set => _requestYear1 = value; }
         private DirtyValue<DateTime?> _requestYear2;
-        public DateTime? RequestYear2 { get { return _requestYear2; } set { _requestYear2 = value; } }
+        public DateTime? RequestYear2 { get => _requestYear2; set => _requestYear2 = value; }
         private DirtyValue<DateTime?> _requestYear3;
-        public DateTime? RequestYear3 { get { return _requestYear3; } set { _requestYear3 = value; } }
+        public DateTime? RequestYear3 { get => _requestYear3; set => _requestYear3 = value; }
         private DirtyValue<DateTime?> _requestYear4;
-        public DateTime? RequestYear4 { get { return _requestYear4; } set { _requestYear4 = value; } }
+        public DateTime? RequestYear4 { get => _requestYear4; set => _requestYear4 = value; }
         private DirtyValue<DateTime?> _requestYear5;
-        public DateTime? RequestYear5 { get { return _requestYear5; } set { _requestYear5 = value; } }
+        public DateTime? RequestYear5 { get => _requestYear5; set => _requestYear5 = value; }
         private DirtyValue<DateTime?> _requestYear6;
-        public DateTime? RequestYear6 { get { return _requestYear6; } set { _requestYear6 = value; } }
+        public DateTime? RequestYear6 { get => _requestYear6; set => _requestYear6 = value; }
         private DirtyValue<DateTime?> _requestYear7;
-        public DateTime? RequestYear7 { get { return _requestYear7; } set { _requestYear7 = value; } }
+        public DateTime? RequestYear7 { get => _requestYear7; set => _requestYear7 = value; }
         private DirtyValue<DateTime?> _requestYear8;
-        public DateTime? RequestYear8 { get { return _requestYear8; } set { _requestYear8 = value; } }
+        public DateTime? RequestYear8 { get => _requestYear8; set => _requestYear8 = value; }
         private DirtyValue<string> _returnAddress;
-        public string ReturnAddress { get { return _returnAddress; } set { _returnAddress = value; } }
+        public string ReturnAddress { get => _returnAddress; set => _returnAddress = value; }
         private DirtyValue<string> _returnCity;
-        public string ReturnCity { get { return _returnCity; } set { _returnCity = value; } }
+        public string ReturnCity { get => _returnCity; set => _returnCity = value; }
         private DirtyValue<string> _returnState;
-        public string ReturnState { get { return _returnState; } set { _returnState = value; } }
+        public string ReturnState { get => _returnState; set => _returnState = value; }
         private DirtyValue<bool?> _returnTranscript;
-        public bool? ReturnTranscript { get { return _returnTranscript; } set { _returnTranscript = value; } }
+        public bool? ReturnTranscript { get => _returnTranscript; set => _returnTranscript = value; }
         private DirtyValue<string> _returnZip;
-        public string ReturnZip { get { return _returnZip; } set { _returnZip = value; } }
+        public string ReturnZip { get => _returnZip; set => _returnZip = value; }
         private DirtyValue<string> _selectedRecordNumber;
-        public string SelectedRecordNumber { get { return _selectedRecordNumber; } set { _selectedRecordNumber = value; } }
+        public string SelectedRecordNumber { get => _selectedRecordNumber; set => _selectedRecordNumber = value; }
         private DirtyValue<string> _sendAddress;
-        public string SendAddress { get { return _sendAddress; } set { _sendAddress = value; } }
+        public string SendAddress { get => _sendAddress; set => _sendAddress = value; }
         private DirtyValue<string> _sendCity;
-        public string SendCity { get { return _sendCity; } set { _sendCity = value; } }
+        public string SendCity { get => _sendCity; set => _sendCity = value; }
         private DirtyValue<string> _sendFirst;
-        public string SendFirst { get { return _sendFirst; } set { _sendFirst = value; } }
+        public string SendFirst { get => _sendFirst; set => _sendFirst = value; }
         private DirtyValue<string> _sendLast;
-        public string SendLast { get { return _sendLast; } set { _sendLast = value; } }
+        public string SendLast { get => _sendLast; set => _sendLast = value; }
         private DirtyValue<string> _sendPhone;
-        public string SendPhone { get { return _sendPhone; } set { _sendPhone = value; } }
+        public string SendPhone { get => _sendPhone; set => _sendPhone = value; }
         private DirtyValue<string> _sendState;
-        public string SendState { get { return _sendState; } set { _sendState = value; } }
+        public string SendState { get => _sendState; set => _sendState = value; }
         private DirtyValue<string> _sendZip;
-        public string SendZip { get { return _sendZip; } set { _sendZip = value; } }
+        public string SendZip { get => _sendZip; set => _sendZip = value; }
         private DirtyValue<bool?> _signatoryAttestation;
-        public bool? SignatoryAttestation { get { return _signatoryAttestation; } set { _signatoryAttestation = value; } }
+        public bool? SignatoryAttestation { get => _signatoryAttestation; set => _signatoryAttestation = value; }
         private DirtyValue<bool?> _signatoryAttestationT;
-        public bool? SignatoryAttestationT { get { return _signatoryAttestationT; } set { _signatoryAttestationT = value; } }
+        public bool? SignatoryAttestationT { get => _signatoryAttestationT; set => _signatoryAttestationT = value; }
         private DirtyValue<string> _spouseFirst;
-        public string SpouseFirst { get { return _spouseFirst; } set { _spouseFirst = value; } }
+        public string SpouseFirst { get => _spouseFirst; set => _spouseFirst = value; }
         private DirtyValue<string> _spouseLast;
-        public string SpouseLast { get { return _spouseLast; } set { _spouseLast = value; } }
+        public string SpouseLast { get => _spouseLast; set => _spouseLast = value; }
         private DirtyValue<string> _spouseSSN;
-        public string SpouseSSN { get { return _spouseSSN; } set { _spouseSSN = value; } }
+        public string SpouseSSN { get => _spouseSSN; set => _spouseSSN = value; }
         private DirtyValue<bool?> _spouseUseEIN;
-        public bool? SpouseUseEIN { get { return _spouseUseEIN; } set { _spouseUseEIN = value; } }
+        public bool? SpouseUseEIN { get => _spouseUseEIN; set => _spouseUseEIN = value; }
         private DirtyValue<string> _sSN;
-        public string SSN { get { return _sSN; } set { _sSN = value; } }
+        public string SSN { get => _sSN; set => _sSN = value; }
         private DirtyValue<string> _state;
-        public string State { get { return _state; } set { _state = value; } }
+        public string State { get => _state; set => _state = value; }
         private DirtyValue<int?> _tax4506Index;
-        public int? Tax4506Index { get { return _tax4506Index; } set { _tax4506Index = value; } }
+        public int? Tax4506Index { get => _tax4506Index; set => _tax4506Index = value; }
         private DirtyValue<bool?> _tax4506TIndicator;
-        public bool? Tax4506TIndicator { get { return _tax4506TIndicator; } set { _tax4506TIndicator = value; } }
+        public bool? Tax4506TIndicator { get => _tax4506TIndicator; set => _tax4506TIndicator = value; }
         private DirtyValue<string> _taxFormNumber;
-        public string TaxFormNumber { get { return _taxFormNumber; } set { _taxFormNumber = value; } }
+        public string TaxFormNumber { get => _taxFormNumber; set => _taxFormNumber = value; }
         private DirtyValue<bool?> _theseCopiesMustBeCertified;
-        public bool? TheseCopiesMustBeCertified { get { return _theseCopiesMustBeCertified; } set { _theseCopiesMustBeCertified = value; } }
+        public bool? TheseCopiesMustBeCertified { get => _theseCopiesMustBeCertified; set => _theseCopiesMustBeCertified = value; }
         private DirtyValue<decimal?> _totalCost;
-        public decimal? TotalCost { get { return _totalCost; } set { _totalCost = value; } }
+        public decimal? TotalCost { get => _totalCost; set => _totalCost = value; }
         private DirtyValue<bool?> _useEIN;
-        public bool? UseEIN { get { return _useEIN; } set { _useEIN = value; } }
+        public bool? UseEIN { get => _useEIN; set => _useEIN = value; }
         private DirtyValue<bool?> _useWellsFargoRules;
-        public bool? UseWellsFargoRules { get { return _useWellsFargoRules; } set { _useWellsFargoRules = value; } }
+        public bool? UseWellsFargoRules { get => _useWellsFargoRules; set => _useWellsFargoRules = value; }
         private DirtyValue<bool?> _verificationOfNonfiling;
-        public bool? VerificationOfNonfiling { get { return _verificationOfNonfiling; } set { _verificationOfNonfiling = value; } }
+        public bool? VerificationOfNonfiling { get => _verificationOfNonfiling; set => _verificationOfNonfiling = value; }
         private DirtyValue<string> _zip;
-        public string Zip { get { return _zip; } set { _zip = value; } }
+        public string Zip { get => _zip; set => _zip = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -272,6 +270,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

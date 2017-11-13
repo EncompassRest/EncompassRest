@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,191 +9,191 @@ namespace EncompassRest.Loans
     public sealed partial class Hmda : IDirty
     {
         private StringEnumValue<ActionTaken> _actionTaken;
-        public StringEnumValue<ActionTaken> ActionTaken { get { return _actionTaken; } set { _actionTaken = value; } }
+        public StringEnumValue<ActionTaken> ActionTaken { get => _actionTaken; set => _actionTaken = value; }
         private DirtyValue<string> _applicationDate;
-        public string ApplicationDate { get { return _applicationDate; } set { _applicationDate = value; } }
+        public string ApplicationDate { get => _applicationDate; set => _applicationDate = value; }
         private StringEnumValue<AUS> _aUS1;
-        public StringEnumValue<AUS> AUS1 { get { return _aUS1; } set { _aUS1 = value; } }
+        public StringEnumValue<AUS> AUS1 { get => _aUS1; set => _aUS1 = value; }
         private StringEnumValue<AUS> _aUS2;
-        public StringEnumValue<AUS> AUS2 { get { return _aUS2; } set { _aUS2 = value; } }
+        public StringEnumValue<AUS> AUS2 { get => _aUS2; set => _aUS2 = value; }
         private StringEnumValue<AUS> _aUS3;
-        public StringEnumValue<AUS> AUS3 { get { return _aUS3; } set { _aUS3 = value; } }
+        public StringEnumValue<AUS> AUS3 { get => _aUS3; set => _aUS3 = value; }
         private StringEnumValue<AUS> _aUS4;
-        public StringEnumValue<AUS> AUS4 { get { return _aUS4; } set { _aUS4 = value; } }
+        public StringEnumValue<AUS> AUS4 { get => _aUS4; set => _aUS4 = value; }
         private StringEnumValue<AUS> _aUS5;
-        public StringEnumValue<AUS> AUS5 { get { return _aUS5; } set { _aUS5 = value; } }
+        public StringEnumValue<AUS> AUS5 { get => _aUS5; set => _aUS5 = value; }
         private StringEnumValue<AUSRecommendation> _aUSRecommendation1;
-        public StringEnumValue<AUSRecommendation> AUSRecommendation1 { get { return _aUSRecommendation1; } set { _aUSRecommendation1 = value; } }
+        public StringEnumValue<AUSRecommendation> AUSRecommendation1 { get => _aUSRecommendation1; set => _aUSRecommendation1 = value; }
         private StringEnumValue<AUSRecommendation> _aUSRecommendation2;
-        public StringEnumValue<AUSRecommendation> AUSRecommendation2 { get { return _aUSRecommendation2; } set { _aUSRecommendation2 = value; } }
+        public StringEnumValue<AUSRecommendation> AUSRecommendation2 { get => _aUSRecommendation2; set => _aUSRecommendation2 = value; }
         private StringEnumValue<AUSRecommendation> _aUSRecommendation3;
-        public StringEnumValue<AUSRecommendation> AUSRecommendation3 { get { return _aUSRecommendation3; } set { _aUSRecommendation3 = value; } }
+        public StringEnumValue<AUSRecommendation> AUSRecommendation3 { get => _aUSRecommendation3; set => _aUSRecommendation3 = value; }
         private StringEnumValue<AUSRecommendation> _aUSRecommendation4;
-        public StringEnumValue<AUSRecommendation> AUSRecommendation4 { get { return _aUSRecommendation4; } set { _aUSRecommendation4 = value; } }
+        public StringEnumValue<AUSRecommendation> AUSRecommendation4 { get => _aUSRecommendation4; set => _aUSRecommendation4 = value; }
         private StringEnumValue<AUSRecommendation> _aUSRecommendation5;
-        public StringEnumValue<AUSRecommendation> AUSRecommendation5 { get { return _aUSRecommendation5; } set { _aUSRecommendation5 = value; } }
+        public StringEnumValue<AUSRecommendation> AUSRecommendation5 { get => _aUSRecommendation5; set => _aUSRecommendation5 = value; }
         private StringEnumValue<BusinessOrCommercialPurpose> _businessOrCommercialPurpose;
-        public StringEnumValue<BusinessOrCommercialPurpose> BusinessOrCommercialPurpose { get { return _businessOrCommercialPurpose; } set { _businessOrCommercialPurpose = value; } }
+        public StringEnumValue<BusinessOrCommercialPurpose> BusinessOrCommercialPurpose { get => _businessOrCommercialPurpose; set => _businessOrCommercialPurpose = value; }
         private DirtyValue<string> _censusTrack;
-        public string CensusTrack { get { return _censusTrack; } set { _censusTrack = value; } }
+        public string CensusTrack { get => _censusTrack; set => _censusTrack = value; }
         private DirtyValue<NA<decimal>?> _cLTV;
-        public NA<decimal>? CLTV { get { return _cLTV; } set { _cLTV = value; } }
+        public NA<decimal>? CLTV { get => _cLTV; set => _cLTV = value; }
         private DirtyValue<string> _contactEmailAddress;
-        public string ContactEmailAddress { get { return _contactEmailAddress; } set { _contactEmailAddress = value; } }
+        public string ContactEmailAddress { get => _contactEmailAddress; set => _contactEmailAddress = value; }
         private DirtyValue<string> _contactFaxNumber;
-        public string ContactFaxNumber { get { return _contactFaxNumber; } set { _contactFaxNumber = value; } }
+        public string ContactFaxNumber { get => _contactFaxNumber; set => _contactFaxNumber = value; }
         private DirtyValue<string> _contactName;
-        public string ContactName { get { return _contactName; } set { _contactName = value; } }
+        public string ContactName { get => _contactName; set => _contactName = value; }
         private DirtyValue<string> _contactOfficeCity;
-        public string ContactOfficeCity { get { return _contactOfficeCity; } set { _contactOfficeCity = value; } }
+        public string ContactOfficeCity { get => _contactOfficeCity; set => _contactOfficeCity = value; }
         private DirtyValue<string> _contactOfficeState;
-        public string ContactOfficeState { get { return _contactOfficeState; } set { _contactOfficeState = value; } }
+        public string ContactOfficeState { get => _contactOfficeState; set => _contactOfficeState = value; }
         private DirtyValue<string> _contactOfficeStreetAddress;
-        public string ContactOfficeStreetAddress { get { return _contactOfficeStreetAddress; } set { _contactOfficeStreetAddress = value; } }
+        public string ContactOfficeStreetAddress { get => _contactOfficeStreetAddress; set => _contactOfficeStreetAddress = value; }
         private DirtyValue<string> _contactOfficeZIPCode;
-        public string ContactOfficeZIPCode { get { return _contactOfficeZIPCode; } set { _contactOfficeZIPCode = value; } }
+        public string ContactOfficeZIPCode { get => _contactOfficeZIPCode; set => _contactOfficeZIPCode = value; }
         private DirtyValue<string> _contactPhoneNumber;
-        public string ContactPhoneNumber { get { return _contactPhoneNumber; } set { _contactPhoneNumber = value; } }
+        public string ContactPhoneNumber { get => _contactPhoneNumber; set => _contactPhoneNumber = value; }
         private DirtyValue<string> _countyCode;
-        public string CountyCode { get { return _countyCode; } set { _countyCode = value; } }
+        public string CountyCode { get => _countyCode; set => _countyCode = value; }
         private DirtyValue<NA<decimal>?> _debtToIncomeRatio;
-        public NA<decimal>? DebtToIncomeRatio { get { return _debtToIncomeRatio; } set { _debtToIncomeRatio = value; } }
+        public NA<decimal>? DebtToIncomeRatio { get => _debtToIncomeRatio; set => _debtToIncomeRatio = value; }
         private StringEnumValue<DenialReason> _denialReason1;
-        public StringEnumValue<DenialReason> DenialReason1 { get { return _denialReason1; } set { _denialReason1 = value; } }
+        public StringEnumValue<DenialReason> DenialReason1 { get => _denialReason1; set => _denialReason1 = value; }
         private StringEnumValue<DenialReason> _denialReason2;
-        public StringEnumValue<DenialReason> DenialReason2 { get { return _denialReason2; } set { _denialReason2 = value; } }
+        public StringEnumValue<DenialReason> DenialReason2 { get => _denialReason2; set => _denialReason2 = value; }
         private StringEnumValue<DenialReason> _denialReason3;
-        public StringEnumValue<DenialReason> DenialReason3 { get { return _denialReason3; } set { _denialReason3 = value; } }
+        public StringEnumValue<DenialReason> DenialReason3 { get => _denialReason3; set => _denialReason3 = value; }
         private StringEnumValue<DenialReason> _denialReason4;
-        public StringEnumValue<DenialReason> DenialReason4 { get { return _denialReason4; } set { _denialReason4 = value; } }
+        public StringEnumValue<DenialReason> DenialReason4 { get => _denialReason4; set => _denialReason4 = value; }
         private DirtyValue<NA<decimal>?> _discountPoints;
-        public NA<decimal>? DiscountPoints { get { return _discountPoints; } set { _discountPoints = value; } }
+        public NA<decimal>? DiscountPoints { get => _discountPoints; set => _discountPoints = value; }
         private DirtyValue<bool?> _excludeLoanFromHMDAReportIndicator;
-        public bool? ExcludeLoanFromHMDAReportIndicator { get { return _excludeLoanFromHMDAReportIndicator; } set { _excludeLoanFromHMDAReportIndicator = value; } }
+        public bool? ExcludeLoanFromHMDAReportIndicator { get => _excludeLoanFromHMDAReportIndicator; set => _excludeLoanFromHMDAReportIndicator = value; }
         private StringEnumValue<FederalAgency> _federalAgency;
-        public StringEnumValue<FederalAgency> FederalAgency { get { return _federalAgency; } set { _federalAgency = value; } }
+        public StringEnumValue<FederalAgency> FederalAgency { get => _federalAgency; set => _federalAgency = value; }
         private DirtyValue<string> _federalTaxpayerIdNumber;
-        public string FederalTaxpayerIdNumber { get { return _federalTaxpayerIdNumber; } set { _federalTaxpayerIdNumber = value; } }
+        public string FederalTaxpayerIdNumber { get => _federalTaxpayerIdNumber; set => _federalTaxpayerIdNumber = value; }
         private DirtyValue<string> _financialInstitutionName;
-        public string FinancialInstitutionName { get { return _financialInstitutionName; } set { _financialInstitutionName = value; } }
+        public string FinancialInstitutionName { get => _financialInstitutionName; set => _financialInstitutionName = value; }
         private DirtyValue<bool?> _hmdaCltvIndicator;
-        public bool? HmdaCltvIndicator { get { return _hmdaCltvIndicator; } set { _hmdaCltvIndicator = value; } }
+        public bool? HmdaCltvIndicator { get => _hmdaCltvIndicator; set => _hmdaCltvIndicator = value; }
         private DirtyValue<bool?> _hmdaDtiIndicator;
-        public bool? HmdaDtiIndicator { get { return _hmdaDtiIndicator; } set { _hmdaDtiIndicator = value; } }
+        public bool? HmdaDtiIndicator { get => _hmdaDtiIndicator; set => _hmdaDtiIndicator = value; }
         private DirtyValue<bool?> _hmdaIncomeIndicator;
-        public bool? HmdaIncomeIndicator { get { return _hmdaIncomeIndicator; } set { _hmdaIncomeIndicator = value; } }
+        public bool? HmdaIncomeIndicator { get => _hmdaIncomeIndicator; set => _hmdaIncomeIndicator = value; }
         private DirtyValue<string> _hmdaPropertyAddress;
-        public string HmdaPropertyAddress { get { return _hmdaPropertyAddress; } set { _hmdaPropertyAddress = value; } }
+        public string HmdaPropertyAddress { get => _hmdaPropertyAddress; set => _hmdaPropertyAddress = value; }
         private DirtyValue<string> _hmdaPropertyCity;
-        public string HmdaPropertyCity { get { return _hmdaPropertyCity; } set { _hmdaPropertyCity = value; } }
+        public string HmdaPropertyCity { get => _hmdaPropertyCity; set => _hmdaPropertyCity = value; }
         private DirtyValue<string> _hmdaPropertyState;
-        public string HmdaPropertyState { get { return _hmdaPropertyState; } set { _hmdaPropertyState = value; } }
+        public string HmdaPropertyState { get => _hmdaPropertyState; set => _hmdaPropertyState = value; }
         private DirtyValue<string> _hmdaPropertyZipCode;
-        public string HmdaPropertyZipCode { get { return _hmdaPropertyZipCode; } set { _hmdaPropertyZipCode = value; } }
+        public string HmdaPropertyZipCode { get => _hmdaPropertyZipCode; set => _hmdaPropertyZipCode = value; }
         private DirtyValue<bool?> _hmdaSyncAddressIndicator;
-        public bool? HmdaSyncAddressIndicator { get { return _hmdaSyncAddressIndicator; } set { _hmdaSyncAddressIndicator = value; } }
+        public bool? HmdaSyncAddressIndicator { get => _hmdaSyncAddressIndicator; set => _hmdaSyncAddressIndicator = value; }
         private StringEnumValue<HOEPAStatus> _hOEPAStatus;
-        public StringEnumValue<HOEPAStatus> HOEPAStatus { get { return _hOEPAStatus; } set { _hOEPAStatus = value; } }
+        public StringEnumValue<HOEPAStatus> HOEPAStatus { get => _hOEPAStatus; set => _hOEPAStatus = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<NA<decimal>?> _income;
-        public NA<decimal>? Income { get { return _income; } set { _income = value; } }
+        public NA<decimal>? Income { get => _income; set => _income = value; }
         private StringEnumValue<InitiallyPayableToYourInstitution> _initiallyPayableToYourInstitution;
-        public StringEnumValue<InitiallyPayableToYourInstitution> InitiallyPayableToYourInstitution { get { return _initiallyPayableToYourInstitution; } set { _initiallyPayableToYourInstitution = value; } }
+        public StringEnumValue<InitiallyPayableToYourInstitution> InitiallyPayableToYourInstitution { get => _initiallyPayableToYourInstitution; set => _initiallyPayableToYourInstitution = value; }
         private DirtyValue<NA<decimal>?> _interestRate;
-        public NA<decimal>? InterestRate { get { return _interestRate; } set { _interestRate = value; } }
+        public NA<decimal>? InterestRate { get => _interestRate; set => _interestRate = value; }
         private DirtyValue<string> _introRatePeriod;
-        public string IntroRatePeriod { get { return _introRatePeriod; } set { _introRatePeriod = value; } }
+        public string IntroRatePeriod { get => _introRatePeriod; set => _introRatePeriod = value; }
         private DirtyValue<string> _legalEntityIdentifier;
-        public string LegalEntityIdentifier { get { return _legalEntityIdentifier; } set { _legalEntityIdentifier = value; } }
+        public string LegalEntityIdentifier { get => _legalEntityIdentifier; set => _legalEntityIdentifier = value; }
         private DirtyValue<NA<decimal>?> _lenderCredits;
-        public NA<decimal>? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
+        public NA<decimal>? LenderCredits { get => _lenderCredits; set => _lenderCredits = value; }
         private StringEnumValue<LienStatus> _lienStatus;
-        public StringEnumValue<LienStatus> LienStatus { get { return _lienStatus; } set { _lienStatus = value; } }
+        public StringEnumValue<LienStatus> LienStatus { get => _lienStatus; set => _lienStatus = value; }
         private DirtyValue<decimal?> _loanAmount;
-        public decimal? LoanAmount { get { return _loanAmount; } set { _loanAmount = value; } }
+        public decimal? LoanAmount { get => _loanAmount; set => _loanAmount = value; }
         private StringEnumValue<HmdaLoanPurpose> _loanPurpose;
-        public StringEnumValue<HmdaLoanPurpose> LoanPurpose { get { return _loanPurpose; } set { _loanPurpose = value; } }
+        public StringEnumValue<HmdaLoanPurpose> LoanPurpose { get => _loanPurpose; set => _loanPurpose = value; }
         private DirtyValue<string> _loanTerm;
-        public string LoanTerm { get { return _loanTerm; } set { _loanTerm = value; } }
+        public string LoanTerm { get => _loanTerm; set => _loanTerm = value; }
         private StringEnumValue<HmdaLoanType> _loanType;
-        public StringEnumValue<HmdaLoanType> LoanType { get { return _loanType; } set { _loanType = value; } }
+        public StringEnumValue<HmdaLoanType> LoanType { get => _loanType; set => _loanType = value; }
         private StringEnumValue<ManufacturedHomeLandPropertyInterest> _manufacturedHomeLandPropertyInterest;
-        public StringEnumValue<ManufacturedHomeLandPropertyInterest> ManufacturedHomeLandPropertyInterest { get { return _manufacturedHomeLandPropertyInterest; } set { _manufacturedHomeLandPropertyInterest = value; } }
+        public StringEnumValue<ManufacturedHomeLandPropertyInterest> ManufacturedHomeLandPropertyInterest { get => _manufacturedHomeLandPropertyInterest; set => _manufacturedHomeLandPropertyInterest = value; }
         private StringEnumValue<ManufacturedSecuredProperyType> _manufacturedSecuredProperyType;
-        public StringEnumValue<ManufacturedSecuredProperyType> ManufacturedSecuredProperyType { get { return _manufacturedSecuredProperyType; } set { _manufacturedSecuredProperyType = value; } }
+        public StringEnumValue<ManufacturedSecuredProperyType> ManufacturedSecuredProperyType { get => _manufacturedSecuredProperyType; set => _manufacturedSecuredProperyType = value; }
         private DirtyValue<string> _mSANumber;
-        public string MSANumber { get { return _mSANumber; } set { _mSANumber = value; } }
+        public string MSANumber { get => _mSANumber; set => _mSANumber = value; }
         private DirtyValue<string> _multifamilyNoUnits;
-        public string MultifamilyNoUnits { get { return _multifamilyNoUnits; } set { _multifamilyNoUnits = value; } }
+        public string MultifamilyNoUnits { get => _multifamilyNoUnits; set => _multifamilyNoUnits = value; }
         private DirtyValue<string> _nMLSLoanOriginatorID;
-        public string NMLSLoanOriginatorID { get { return _nMLSLoanOriginatorID; } set { _nMLSLoanOriginatorID = value; } }
+        public string NMLSLoanOriginatorID { get => _nMLSLoanOriginatorID; set => _nMLSLoanOriginatorID = value; }
         private StringEnumValue<OpenEndLineOfCredit> _openEndLineOfCredit;
-        public StringEnumValue<OpenEndLineOfCredit> OpenEndLineOfCredit { get { return _openEndLineOfCredit; } set { _openEndLineOfCredit = value; } }
+        public StringEnumValue<OpenEndLineOfCredit> OpenEndLineOfCredit { get => _openEndLineOfCredit; set => _openEndLineOfCredit = value; }
         private DirtyValue<string> _originationCharges;
-        public string OriginationCharges { get { return _originationCharges; } set { _originationCharges = value; } }
+        public string OriginationCharges { get => _originationCharges; set => _originationCharges = value; }
         private DirtyValue<string> _otherAUS;
-        public string OtherAUS { get { return _otherAUS; } set { _otherAUS = value; } }
+        public string OtherAUS { get => _otherAUS; set => _otherAUS = value; }
         private DirtyValue<string> _otherAUSRecommendations;
-        public string OtherAUSRecommendations { get { return _otherAUSRecommendations; } set { _otherAUSRecommendations = value; } }
+        public string OtherAUSRecommendations { get => _otherAUSRecommendations; set => _otherAUSRecommendations = value; }
         private DirtyValue<string> _otherDenialReason;
-        public string OtherDenialReason { get { return _otherDenialReason; } set { _otherDenialReason = value; } }
+        public string OtherDenialReason { get => _otherDenialReason; set => _otherDenialReason = value; }
         private StringEnumValue<OtherNonAmortization> _otherNonAmortization;
-        public StringEnumValue<OtherNonAmortization> OtherNonAmortization { get { return _otherNonAmortization; } set { _otherNonAmortization = value; } }
+        public StringEnumValue<OtherNonAmortization> OtherNonAmortization { get => _otherNonAmortization; set => _otherNonAmortization = value; }
         private DirtyValue<string> _parentAddress;
-        public string ParentAddress { get { return _parentAddress; } set { _parentAddress = value; } }
+        public string ParentAddress { get => _parentAddress; set => _parentAddress = value; }
         private DirtyValue<string> _parentCity;
-        public string ParentCity { get { return _parentCity; } set { _parentCity = value; } }
+        public string ParentCity { get => _parentCity; set => _parentCity = value; }
         private DirtyValue<string> _parentName;
-        public string ParentName { get { return _parentName; } set { _parentName = value; } }
+        public string ParentName { get => _parentName; set => _parentName = value; }
         private DirtyValue<string> _parentState;
-        public string ParentState { get { return _parentState; } set { _parentState = value; } }
+        public string ParentState { get => _parentState; set => _parentState = value; }
         private DirtyValue<string> _parentZip;
-        public string ParentZip { get { return _parentZip; } set { _parentZip = value; } }
+        public string ParentZip { get => _parentZip; set => _parentZip = value; }
         private StringEnumValue<Preapprovals> _preapprovals;
-        public StringEnumValue<Preapprovals> Preapprovals { get { return _preapprovals; } set { _preapprovals = value; } }
+        public StringEnumValue<Preapprovals> Preapprovals { get => _preapprovals; set => _preapprovals = value; }
         private DirtyValue<string> _prepaymentPenaltyPeriod;
-        public string PrepaymentPenaltyPeriod { get { return _prepaymentPenaltyPeriod; } set { _prepaymentPenaltyPeriod = value; } }
+        public string PrepaymentPenaltyPeriod { get => _prepaymentPenaltyPeriod; set => _prepaymentPenaltyPeriod = value; }
         private StringEnumValue<HmdaPropertyType> _propertyType;
-        public StringEnumValue<HmdaPropertyType> PropertyType { get { return _propertyType; } set { _propertyType = value; } }
+        public StringEnumValue<HmdaPropertyType> PropertyType { get => _propertyType; set => _propertyType = value; }
         private DirtyValue<NA<decimal>?> _propertyValue;
-        public NA<decimal>? PropertyValue { get { return _propertyValue; } set { _propertyValue = value; } }
+        public NA<decimal>? PropertyValue { get => _propertyValue; set => _propertyValue = value; }
         private StringEnumValue<QMStatus> _qMStatus;
-        public StringEnumValue<QMStatus> QMStatus { get { return _qMStatus; } set { _qMStatus = value; } }
+        public StringEnumValue<QMStatus> QMStatus { get => _qMStatus; set => _qMStatus = value; }
         private DirtyValue<NA<decimal>?> _rateSpread;
-        public NA<decimal>? RateSpread { get { return _rateSpread; } set { _rateSpread = value; } }
+        public NA<decimal>? RateSpread { get => _rateSpread; set => _rateSpread = value; }
         private DirtyValue<int?> _reportingYear;
-        public int? ReportingYear { get { return _reportingYear; } set { _reportingYear = value; } }
+        public int? ReportingYear { get => _reportingYear; set => _reportingYear = value; }
         private DirtyValue<bool?> _reportPurposeOfLoanIndicator;
-        public bool? ReportPurposeOfLoanIndicator { get { return _reportPurposeOfLoanIndicator; } set { _reportPurposeOfLoanIndicator = value; } }
+        public bool? ReportPurposeOfLoanIndicator { get => _reportPurposeOfLoanIndicator; set => _reportPurposeOfLoanIndicator = value; }
         private DirtyValue<string> _repurchasedActionDate;
-        public string RepurchasedActionDate { get { return _repurchasedActionDate; } set { _repurchasedActionDate = value; } }
+        public string RepurchasedActionDate { get => _repurchasedActionDate; set => _repurchasedActionDate = value; }
         private StringEnumValue<ActionTaken> _repurchasedActionTaken;
-        public StringEnumValue<ActionTaken> RepurchasedActionTaken { get { return _repurchasedActionTaken; } set { _repurchasedActionTaken = value; } }
+        public StringEnumValue<ActionTaken> RepurchasedActionTaken { get => _repurchasedActionTaken; set => _repurchasedActionTaken = value; }
         private DirtyValue<decimal?> _repurchasedLoanAmount;
-        public decimal? RepurchasedLoanAmount { get { return _repurchasedLoanAmount; } set { _repurchasedLoanAmount = value; } }
+        public decimal? RepurchasedLoanAmount { get => _repurchasedLoanAmount; set => _repurchasedLoanAmount = value; }
         private DirtyValue<int?> _repurchasedReportingYear;
-        public int? RepurchasedReportingYear { get { return _repurchasedReportingYear; } set { _repurchasedReportingYear = value; } }
+        public int? RepurchasedReportingYear { get => _repurchasedReportingYear; set => _repurchasedReportingYear = value; }
         private StringEnumValue<TypeOfPurchaser> _repurchasedTypeOfPurchaser;
-        public StringEnumValue<TypeOfPurchaser> RepurchasedTypeOfPurchaser { get { return _repurchasedTypeOfPurchaser; } set { _repurchasedTypeOfPurchaser = value; } }
+        public StringEnumValue<TypeOfPurchaser> RepurchasedTypeOfPurchaser { get => _repurchasedTypeOfPurchaser; set => _repurchasedTypeOfPurchaser = value; }
         private DirtyValue<string> _respondentID;
-        public string RespondentID { get { return _respondentID; } set { _respondentID = value; } }
+        public string RespondentID { get => _respondentID; set => _respondentID = value; }
         private StringEnumValue<ReverseMortgage> _reverseMortgage;
-        public StringEnumValue<ReverseMortgage> ReverseMortgage { get { return _reverseMortgage; } set { _reverseMortgage = value; } }
+        public StringEnumValue<ReverseMortgage> ReverseMortgage { get => _reverseMortgage; set => _reverseMortgage = value; }
         private DirtyValue<string> _stateCode;
-        public string StateCode { get { return _stateCode; } set { _stateCode = value; } }
+        public string StateCode { get => _stateCode; set => _stateCode = value; }
         private StringEnumValue<SubmissionOfApplication> _submissionOfApplication;
-        public StringEnumValue<SubmissionOfApplication> SubmissionOfApplication { get { return _submissionOfApplication; } set { _submissionOfApplication = value; } }
+        public StringEnumValue<SubmissionOfApplication> SubmissionOfApplication { get => _submissionOfApplication; set => _submissionOfApplication = value; }
         private DirtyValue<string> _totalLoanCosts;
-        public string TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
+        public string TotalLoanCosts { get => _totalLoanCosts; set => _totalLoanCosts = value; }
         private DirtyValue<string> _totalPointsAndFees;
-        public string TotalPointsAndFees { get { return _totalPointsAndFees; } set { _totalPointsAndFees = value; } }
+        public string TotalPointsAndFees { get => _totalPointsAndFees; set => _totalPointsAndFees = value; }
         private StringEnumValue<TypeOfPurchaser> _typeOfPurchaser;
-        public StringEnumValue<TypeOfPurchaser> TypeOfPurchaser { get { return _typeOfPurchaser; } set { _typeOfPurchaser = value; } }
+        public StringEnumValue<TypeOfPurchaser> TypeOfPurchaser { get => _typeOfPurchaser; set => _typeOfPurchaser = value; }
         private DirtyValue<string> _universalLoanId;
-        public string UniversalLoanId { get { return _universalLoanId; } set { _universalLoanId = value; } }
+        public string UniversalLoanId { get => _universalLoanId; set => _universalLoanId = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -400,6 +398,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

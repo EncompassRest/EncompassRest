@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,25 +9,25 @@ namespace EncompassRest.Loans
     public sealed partial class MilitaryService : IDirty
     {
         private DirtyValue<string> _branch;
-        public string Branch { get { return _branch; } set { _branch = value; } }
+        public string Branch { get => _branch; set => _branch = value; }
         private DirtyValue<DateTime?> _endDate;
-        public DateTime? EndDate { get { return _endDate; } set { _endDate = value; } }
+        public DateTime? EndDate { get => _endDate; set => _endDate = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<int?> _militaryServiceIndex;
-        public int? MilitaryServiceIndex { get { return _militaryServiceIndex; } set { _militaryServiceIndex = value; } }
+        public int? MilitaryServiceIndex { get => _militaryServiceIndex; set => _militaryServiceIndex = value; }
         private DirtyValue<string> _name;
-        public string Name { get { return _name; } set { _name = value; } }
+        public string Name { get => _name; set => _name = value; }
         private StringEnumValue<OfficerOrEnlisted> _officerOrEnlisted;
-        public StringEnumValue<OfficerOrEnlisted> OfficerOrEnlisted { get { return _officerOrEnlisted; } set { _officerOrEnlisted = value; } }
+        public StringEnumValue<OfficerOrEnlisted> OfficerOrEnlisted { get => _officerOrEnlisted; set => _officerOrEnlisted = value; }
         private DirtyValue<string> _serviceNumber;
-        public string ServiceNumber { get { return _serviceNumber; } set { _serviceNumber = value; } }
+        public string ServiceNumber { get => _serviceNumber; set => _serviceNumber = value; }
         private DirtyValue<string> _sSN;
-        public string SSN { get { return _sSN; } set { _sSN = value; } }
+        public string SSN { get => _sSN; set => _sSN = value; }
         private DirtyValue<DateTime?> _startDate;
-        public DateTime? StartDate { get { return _startDate; } set { _startDate = value; } }
+        public DateTime? StartDate { get => _startDate; set => _startDate = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -68,6 +66,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

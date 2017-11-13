@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,145 +9,145 @@ namespace EncompassRest.Loans
     public sealed partial class TQL : IDirty
     {
         private DirtyValue<string> _citibank4506TBaselineReportRequired;
-        public string Citibank4506TBaselineReportRequired { get { return _citibank4506TBaselineReportRequired; } set { _citibank4506TBaselineReportRequired = value; } }
+        public string Citibank4506TBaselineReportRequired { get => _citibank4506TBaselineReportRequired; set => _citibank4506TBaselineReportRequired = value; }
         private DirtyValue<string> _citibankCCVPBaselineReportRequired;
-        public string CitibankCCVPBaselineReportRequired { get { return _citibankCCVPBaselineReportRequired; } set { _citibankCCVPBaselineReportRequired = value; } }
+        public string CitibankCCVPBaselineReportRequired { get => _citibankCCVPBaselineReportRequired; set => _citibankCCVPBaselineReportRequired = value; }
         private DirtyValue<string> _citibankComplianceBaselineReportRequired;
-        public string CitibankComplianceBaselineReportRequired { get { return _citibankComplianceBaselineReportRequired; } set { _citibankComplianceBaselineReportRequired = value; } }
+        public string CitibankComplianceBaselineReportRequired { get => _citibankComplianceBaselineReportRequired; set => _citibankComplianceBaselineReportRequired = value; }
         private DirtyValue<string> _citibankFloodBaselineReportRequired;
-        public string CitibankFloodBaselineReportRequired { get { return _citibankFloodBaselineReportRequired; } set { _citibankFloodBaselineReportRequired = value; } }
+        public string CitibankFloodBaselineReportRequired { get => _citibankFloodBaselineReportRequired; set => _citibankFloodBaselineReportRequired = value; }
         private DirtyValue<string> _citibankFraudBaselineReportRequired;
-        public string CitibankFraudBaselineReportRequired { get { return _citibankFraudBaselineReportRequired; } set { _citibankFraudBaselineReportRequired = value; } }
+        public string CitibankFraudBaselineReportRequired { get => _citibankFraudBaselineReportRequired; set => _citibankFraudBaselineReportRequired = value; }
         private DirtyValue<string> _currentInvestorPublishingStatus;
-        public string CurrentInvestorPublishingStatus { get { return _currentInvestorPublishingStatus; } set { _currentInvestorPublishingStatus = value; } }
+        public string CurrentInvestorPublishingStatus { get => _currentInvestorPublishingStatus; set => _currentInvestorPublishingStatus = value; }
         private DirtyValue<int?> _driveAppVerifyScore;
-        public int? DriveAppVerifyScore { get { return _driveAppVerifyScore; } set { _driveAppVerifyScore = value; } }
+        public int? DriveAppVerifyScore { get => _driveAppVerifyScore; set => _driveAppVerifyScore = value; }
         private DirtyValue<int?> _driveIDVerifyScore;
-        public int? DriveIDVerifyScore { get { return _driveIDVerifyScore; } set { _driveIDVerifyScore = value; } }
+        public int? DriveIDVerifyScore { get => _driveIDVerifyScore; set => _driveIDVerifyScore = value; }
         private DirtyValue<int?> _drivePropertyVerifyScore;
-        public int? DrivePropertyVerifyScore { get { return _drivePropertyVerifyScore; } set { _drivePropertyVerifyScore = value; } }
+        public int? DrivePropertyVerifyScore { get => _drivePropertyVerifyScore; set => _drivePropertyVerifyScore = value; }
         private DirtyValue<int?> _driveScore;
-        public int? DriveScore { get { return _driveScore; } set { _driveScore = value; } }
+        public int? DriveScore { get => _driveScore; set => _driveScore = value; }
         private DirtyValue<string> _driveStatus;
-        public string DriveStatus { get { return _driveStatus; } set { _driveStatus = value; } }
+        public string DriveStatus { get => _driveStatus; set => _driveStatus = value; }
         private DirtyValue<string> _homeward4506TBaselineReportRequired;
-        public string Homeward4506TBaselineReportRequired { get { return _homeward4506TBaselineReportRequired; } set { _homeward4506TBaselineReportRequired = value; } }
+        public string Homeward4506TBaselineReportRequired { get => _homeward4506TBaselineReportRequired; set => _homeward4506TBaselineReportRequired = value; }
         private DirtyValue<string> _homewardComplianceBaselineReportRequired;
-        public string HomewardComplianceBaselineReportRequired { get { return _homewardComplianceBaselineReportRequired; } set { _homewardComplianceBaselineReportRequired = value; } }
+        public string HomewardComplianceBaselineReportRequired { get => _homewardComplianceBaselineReportRequired; set => _homewardComplianceBaselineReportRequired = value; }
         private DirtyValue<string> _homewardFloodBaselineReportRequired;
-        public string HomewardFloodBaselineReportRequired { get { return _homewardFloodBaselineReportRequired; } set { _homewardFloodBaselineReportRequired = value; } }
+        public string HomewardFloodBaselineReportRequired { get => _homewardFloodBaselineReportRequired; set => _homewardFloodBaselineReportRequired = value; }
         private DirtyValue<string> _homewardFraudBaselineReportRequired;
-        public string HomewardFraudBaselineReportRequired { get { return _homewardFraudBaselineReportRequired; } set { _homewardFraudBaselineReportRequired = value; } }
+        public string HomewardFraudBaselineReportRequired { get => _homewardFraudBaselineReportRequired; set => _homewardFraudBaselineReportRequired = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<DateTime?> _lastCCVPCompletedDate;
-        public DateTime? LastCCVPCompletedDate { get { return _lastCCVPCompletedDate; } set { _lastCCVPCompletedDate = value; } }
+        public DateTime? LastCCVPCompletedDate { get => _lastCCVPCompletedDate; set => _lastCCVPCompletedDate = value; }
         private DirtyValue<string> _lastCCVPConfidenceScore;
-        public string LastCCVPConfidenceScore { get { return _lastCCVPConfidenceScore; } set { _lastCCVPConfidenceScore = value; } }
+        public string LastCCVPConfidenceScore { get => _lastCCVPConfidenceScore; set => _lastCCVPConfidenceScore = value; }
         private DirtyValue<string> _lastCCVPEstimatedValue;
-        public string LastCCVPEstimatedValue { get { return _lastCCVPEstimatedValue; } set { _lastCCVPEstimatedValue = value; } }
+        public string LastCCVPEstimatedValue { get => _lastCCVPEstimatedValue; set => _lastCCVPEstimatedValue = value; }
         private DirtyValue<string> _lastCCVPForecastDeviationScore;
-        public string LastCCVPForecastDeviationScore { get { return _lastCCVPForecastDeviationScore; } set { _lastCCVPForecastDeviationScore = value; } }
+        public string LastCCVPForecastDeviationScore { get => _lastCCVPForecastDeviationScore; set => _lastCCVPForecastDeviationScore = value; }
         private DirtyValue<string> _lastCCVPReportHistoryProResult;
-        public string LastCCVPReportHistoryProResult { get { return _lastCCVPReportHistoryProResult; } set { _lastCCVPReportHistoryProResult = value; } }
+        public string LastCCVPReportHistoryProResult { get => _lastCCVPReportHistoryProResult; set => _lastCCVPReportHistoryProResult = value; }
         private DirtyValue<string> _lastCCVPReportID;
-        public string LastCCVPReportID { get { return _lastCCVPReportID; } set { _lastCCVPReportID = value; } }
+        public string LastCCVPReportID { get => _lastCCVPReportID; set => _lastCCVPReportID = value; }
         private DirtyValue<string> _lastCCVPReportOrdered;
-        public string LastCCVPReportOrdered { get { return _lastCCVPReportOrdered; } set { _lastCCVPReportOrdered = value; } }
+        public string LastCCVPReportOrdered { get => _lastCCVPReportOrdered; set => _lastCCVPReportOrdered = value; }
         private DirtyValue<string> _lastCCVPReportPassResult;
-        public string LastCCVPReportPassResult { get { return _lastCCVPReportPassResult; } set { _lastCCVPReportPassResult = value; } }
+        public string LastCCVPReportPassResult { get => _lastCCVPReportPassResult; set => _lastCCVPReportPassResult = value; }
         private DirtyValue<string> _lastCCVPResultsReportReturned;
-        public string LastCCVPResultsReportReturned { get { return _lastCCVPResultsReportReturned; } set { _lastCCVPResultsReportReturned = value; } }
+        public string LastCCVPResultsReportReturned { get => _lastCCVPResultsReportReturned; set => _lastCCVPResultsReportReturned = value; }
         private DirtyValue<DateTime?> _lastComplianceCompletedDate;
-        public DateTime? LastComplianceCompletedDate { get { return _lastComplianceCompletedDate; } set { _lastComplianceCompletedDate = value; } }
+        public DateTime? LastComplianceCompletedDate { get => _lastComplianceCompletedDate; set => _lastComplianceCompletedDate = value; }
         private DirtyValue<int?> _lastComplianceNumberOfAlertMessages;
-        public int? LastComplianceNumberOfAlertMessages { get { return _lastComplianceNumberOfAlertMessages; } set { _lastComplianceNumberOfAlertMessages = value; } }
+        public int? LastComplianceNumberOfAlertMessages { get => _lastComplianceNumberOfAlertMessages; set => _lastComplianceNumberOfAlertMessages = value; }
         private DirtyValue<int?> _lastComplianceNumberOfErrorMessages;
-        public int? LastComplianceNumberOfErrorMessages { get { return _lastComplianceNumberOfErrorMessages; } set { _lastComplianceNumberOfErrorMessages = value; } }
+        public int? LastComplianceNumberOfErrorMessages { get => _lastComplianceNumberOfErrorMessages; set => _lastComplianceNumberOfErrorMessages = value; }
         private DirtyValue<int?> _lastComplianceNumberOfFailMessages;
-        public int? LastComplianceNumberOfFailMessages { get { return _lastComplianceNumberOfFailMessages; } set { _lastComplianceNumberOfFailMessages = value; } }
+        public int? LastComplianceNumberOfFailMessages { get => _lastComplianceNumberOfFailMessages; set => _lastComplianceNumberOfFailMessages = value; }
         private DirtyValue<int?> _lastComplianceNumberOfPassMessages;
-        public int? LastComplianceNumberOfPassMessages { get { return _lastComplianceNumberOfPassMessages; } set { _lastComplianceNumberOfPassMessages = value; } }
+        public int? LastComplianceNumberOfPassMessages { get => _lastComplianceNumberOfPassMessages; set => _lastComplianceNumberOfPassMessages = value; }
         private DirtyValue<int?> _lastComplianceNumberOfWarningMessages;
-        public int? LastComplianceNumberOfWarningMessages { get { return _lastComplianceNumberOfWarningMessages; } set { _lastComplianceNumberOfWarningMessages = value; } }
+        public int? LastComplianceNumberOfWarningMessages { get => _lastComplianceNumberOfWarningMessages; set => _lastComplianceNumberOfWarningMessages = value; }
         private DirtyValue<string> _lastComplianceOrderType;
-        public string LastComplianceOrderType { get { return _lastComplianceOrderType; } set { _lastComplianceOrderType = value; } }
+        public string LastComplianceOrderType { get => _lastComplianceOrderType; set => _lastComplianceOrderType = value; }
         private DirtyValue<string> _lastComplianceProductNameReportOrdered;
-        public string LastComplianceProductNameReportOrdered { get { return _lastComplianceProductNameReportOrdered; } set { _lastComplianceProductNameReportOrdered = value; } }
+        public string LastComplianceProductNameReportOrdered { get => _lastComplianceProductNameReportOrdered; set => _lastComplianceProductNameReportOrdered = value; }
         private DirtyValue<string> _lastComplianceReportID;
-        public string LastComplianceReportID { get { return _lastComplianceReportID; } set { _lastComplianceReportID = value; } }
+        public string LastComplianceReportID { get => _lastComplianceReportID; set => _lastComplianceReportID = value; }
         private DirtyValue<int?> _lastFraudOrderAlerts;
-        public int? LastFraudOrderAlerts { get { return _lastFraudOrderAlerts; } set { _lastFraudOrderAlerts = value; } }
+        public int? LastFraudOrderAlerts { get => _lastFraudOrderAlerts; set => _lastFraudOrderAlerts = value; }
         private DirtyValue<DateTime?> _lastFraudOrderCompletedDate;
-        public DateTime? LastFraudOrderCompletedDate { get { return _lastFraudOrderCompletedDate; } set { _lastFraudOrderCompletedDate = value; } }
+        public DateTime? LastFraudOrderCompletedDate { get => _lastFraudOrderCompletedDate; set => _lastFraudOrderCompletedDate = value; }
         private DirtyValue<string> _lastFraudOrderProduct;
-        public string LastFraudOrderProduct { get { return _lastFraudOrderProduct; } set { _lastFraudOrderProduct = value; } }
+        public string LastFraudOrderProduct { get => _lastFraudOrderProduct; set => _lastFraudOrderProduct = value; }
         private DirtyValue<string> _lastFraudReportID;
-        public string LastFraudReportID { get { return _lastFraudReportID; } set { _lastFraudReportID = value; } }
+        public string LastFraudReportID { get => _lastFraudReportID; set => _lastFraudReportID = value; }
         private DirtyValue<string> _lastInvestorPublishingInvestor;
-        public string LastInvestorPublishingInvestor { get { return _lastInvestorPublishingInvestor; } set { _lastInvestorPublishingInvestor = value; } }
+        public string LastInvestorPublishingInvestor { get => _lastInvestorPublishingInvestor; set => _lastInvestorPublishingInvestor = value; }
         private DirtyValue<DateTime?> _lastInvestorPublishingStatusChangeDate;
-        public DateTime? LastInvestorPublishingStatusChangeDate { get { return _lastInvestorPublishingStatusChangeDate; } set { _lastInvestorPublishingStatusChangeDate = value; } }
+        public DateTime? LastInvestorPublishingStatusChangeDate { get => _lastInvestorPublishingStatusChangeDate; set => _lastInvestorPublishingStatusChangeDate = value; }
         private DirtyValue<string> _lastInvestorPublishingUserWhoChangeStatus;
-        public string LastInvestorPublishingUserWhoChangeStatus { get { return _lastInvestorPublishingUserWhoChangeStatus; } set { _lastInvestorPublishingUserWhoChangeStatus = value; } }
+        public string LastInvestorPublishingUserWhoChangeStatus { get => _lastInvestorPublishingUserWhoChangeStatus; set => _lastInvestorPublishingUserWhoChangeStatus = value; }
         private DirtyValue<string> _lastUserIDWhoOrderedCCVP;
-        public string LastUserIDWhoOrderedCCVP { get { return _lastUserIDWhoOrderedCCVP; } set { _lastUserIDWhoOrderedCCVP = value; } }
+        public string LastUserIDWhoOrderedCCVP { get => _lastUserIDWhoOrderedCCVP; set => _lastUserIDWhoOrderedCCVP = value; }
         private DirtyValue<string> _lastUserIDWhoOrderedCompliance;
-        public string LastUserIDWhoOrderedCompliance { get { return _lastUserIDWhoOrderedCompliance; } set { _lastUserIDWhoOrderedCompliance = value; } }
+        public string LastUserIDWhoOrderedCompliance { get => _lastUserIDWhoOrderedCompliance; set => _lastUserIDWhoOrderedCompliance = value; }
         private DirtyValue<string> _lastUserIDWhoOrderedFraudOrder;
-        public string LastUserIDWhoOrderedFraudOrder { get { return _lastUserIDWhoOrderedFraudOrder; } set { _lastUserIDWhoOrderedFraudOrder = value; } }
+        public string LastUserIDWhoOrderedFraudOrder { get => _lastUserIDWhoOrderedFraudOrder; set => _lastUserIDWhoOrderedFraudOrder = value; }
         private DirtyValue<bool?> _mIVendorsArchAutoOrderIndicator;
-        public bool? MIVendorsArchAutoOrderIndicator { get { return _mIVendorsArchAutoOrderIndicator; } set { _mIVendorsArchAutoOrderIndicator = value; } }
+        public bool? MIVendorsArchAutoOrderIndicator { get => _mIVendorsArchAutoOrderIndicator; set => _mIVendorsArchAutoOrderIndicator = value; }
         private DirtyValue<bool?> _mIVendorsMgicAutoOrderIndicator;
-        public bool? MIVendorsMgicAutoOrderIndicator { get { return _mIVendorsMgicAutoOrderIndicator; } set { _mIVendorsMgicAutoOrderIndicator = value; } }
+        public bool? MIVendorsMgicAutoOrderIndicator { get => _mIVendorsMgicAutoOrderIndicator; set => _mIVendorsMgicAutoOrderIndicator = value; }
         private DirtyValue<bool?> _mIVendorsRadianAutoOrderIndicator;
-        public bool? MIVendorsRadianAutoOrderIndicator { get { return _mIVendorsRadianAutoOrderIndicator; } set { _mIVendorsRadianAutoOrderIndicator = value; } }
+        public bool? MIVendorsRadianAutoOrderIndicator { get => _mIVendorsRadianAutoOrderIndicator; set => _mIVendorsRadianAutoOrderIndicator = value; }
         private DirtyValue<string> _pHH4506TBaselineReportRequired;
-        public string PHH4506TBaselineReportRequired { get { return _pHH4506TBaselineReportRequired; } set { _pHH4506TBaselineReportRequired = value; } }
+        public string PHH4506TBaselineReportRequired { get => _pHH4506TBaselineReportRequired; set => _pHH4506TBaselineReportRequired = value; }
         private DirtyValue<string> _pHHComplianceBaselineReportRequired;
-        public string PHHComplianceBaselineReportRequired { get { return _pHHComplianceBaselineReportRequired; } set { _pHHComplianceBaselineReportRequired = value; } }
+        public string PHHComplianceBaselineReportRequired { get => _pHHComplianceBaselineReportRequired; set => _pHHComplianceBaselineReportRequired = value; }
         private DirtyValue<string> _pHHFloodBaselineReportRequired;
-        public string PHHFloodBaselineReportRequired { get { return _pHHFloodBaselineReportRequired; } set { _pHHFloodBaselineReportRequired = value; } }
+        public string PHHFloodBaselineReportRequired { get => _pHHFloodBaselineReportRequired; set => _pHHFloodBaselineReportRequired = value; }
         private DirtyValue<string> _pHHFraudBaselineReportRequired;
-        public string PHHFraudBaselineReportRequired { get { return _pHHFraudBaselineReportRequired; } set { _pHHFraudBaselineReportRequired = value; } }
+        public string PHHFraudBaselineReportRequired { get => _pHHFraudBaselineReportRequired; set => _pHHFraudBaselineReportRequired = value; }
         private DirtyValue<string> _stonegate4506TBaselineReport;
-        public string Stonegate4506TBaselineReport { get { return _stonegate4506TBaselineReport; } set { _stonegate4506TBaselineReport = value; } }
+        public string Stonegate4506TBaselineReport { get => _stonegate4506TBaselineReport; set => _stonegate4506TBaselineReport = value; }
         private DirtyValue<string> _stonegateComplianceBaselineReportRequired;
-        public string StonegateComplianceBaselineReportRequired { get { return _stonegateComplianceBaselineReportRequired; } set { _stonegateComplianceBaselineReportRequired = value; } }
+        public string StonegateComplianceBaselineReportRequired { get => _stonegateComplianceBaselineReportRequired; set => _stonegateComplianceBaselineReportRequired = value; }
         private DirtyValue<string> _stonegateFloodBaselineReportRequired;
-        public string StonegateFloodBaselineReportRequired { get { return _stonegateFloodBaselineReportRequired; } set { _stonegateFloodBaselineReportRequired = value; } }
+        public string StonegateFloodBaselineReportRequired { get => _stonegateFloodBaselineReportRequired; set => _stonegateFloodBaselineReportRequired = value; }
         private DirtyValue<string> _stonegateFraudBaselineReportRequired;
-        public string StonegateFraudBaselineReportRequired { get { return _stonegateFraudBaselineReportRequired; } set { _stonegateFraudBaselineReportRequired = value; } }
+        public string StonegateFraudBaselineReportRequired { get => _stonegateFraudBaselineReportRequired; set => _stonegateFraudBaselineReportRequired = value; }
         private DirtyList<TQLComplianceAlert> _tQLComplianceAlerts;
-        public IList<TQLComplianceAlert> TQLComplianceAlerts { get { return _tQLComplianceAlerts ?? (_tQLComplianceAlerts = new DirtyList<TQLComplianceAlert>()); } set { _tQLComplianceAlerts = new DirtyList<TQLComplianceAlert>(value); } }
+        public IList<TQLComplianceAlert> TQLComplianceAlerts { get => _tQLComplianceAlerts ?? (_tQLComplianceAlerts = new DirtyList<TQLComplianceAlert>()); set => _tQLComplianceAlerts = new DirtyList<TQLComplianceAlert>(value); }
         private DirtyList<TQLDocument> _tQLDocuments;
-        public IList<TQLDocument> TQLDocuments { get { return _tQLDocuments ?? (_tQLDocuments = new DirtyList<TQLDocument>()); } set { _tQLDocuments = new DirtyList<TQLDocument>(value); } }
+        public IList<TQLDocument> TQLDocuments { get => _tQLDocuments ?? (_tQLDocuments = new DirtyList<TQLDocument>()); set => _tQLDocuments = new DirtyList<TQLDocument>(value); }
         private DirtyList<TQLFraudAlert> _tQLFraudAlerts;
-        public IList<TQLFraudAlert> TQLFraudAlerts { get { return _tQLFraudAlerts ?? (_tQLFraudAlerts = new DirtyList<TQLFraudAlert>()); } set { _tQLFraudAlerts = new DirtyList<TQLFraudAlert>(value); } }
+        public IList<TQLFraudAlert> TQLFraudAlerts { get => _tQLFraudAlerts ?? (_tQLFraudAlerts = new DirtyList<TQLFraudAlert>()); set => _tQLFraudAlerts = new DirtyList<TQLFraudAlert>(value); }
         private DirtyValue<int?> _tQLFraudAlertsTotal;
-        public int? TQLFraudAlertsTotal { get { return _tQLFraudAlertsTotal; } set { _tQLFraudAlertsTotal = value; } }
+        public int? TQLFraudAlertsTotal { get => _tQLFraudAlertsTotal; set => _tQLFraudAlertsTotal = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalHigh;
-        public int? TQLFraudAlertsTotalHigh { get { return _tQLFraudAlertsTotalHigh; } set { _tQLFraudAlertsTotalHigh = value; } }
+        public int? TQLFraudAlertsTotalHigh { get => _tQLFraudAlertsTotalHigh; set => _tQLFraudAlertsTotalHigh = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalHighUnaddressed;
-        public int? TQLFraudAlertsTotalHighUnaddressed { get { return _tQLFraudAlertsTotalHighUnaddressed; } set { _tQLFraudAlertsTotalHighUnaddressed = value; } }
+        public int? TQLFraudAlertsTotalHighUnaddressed { get => _tQLFraudAlertsTotalHighUnaddressed; set => _tQLFraudAlertsTotalHighUnaddressed = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalLow;
-        public int? TQLFraudAlertsTotalLow { get { return _tQLFraudAlertsTotalLow; } set { _tQLFraudAlertsTotalLow = value; } }
+        public int? TQLFraudAlertsTotalLow { get => _tQLFraudAlertsTotalLow; set => _tQLFraudAlertsTotalLow = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalLowUnaddressed;
-        public int? TQLFraudAlertsTotalLowUnaddressed { get { return _tQLFraudAlertsTotalLowUnaddressed; } set { _tQLFraudAlertsTotalLowUnaddressed = value; } }
+        public int? TQLFraudAlertsTotalLowUnaddressed { get => _tQLFraudAlertsTotalLowUnaddressed; set => _tQLFraudAlertsTotalLowUnaddressed = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalMedium;
-        public int? TQLFraudAlertsTotalMedium { get { return _tQLFraudAlertsTotalMedium; } set { _tQLFraudAlertsTotalMedium = value; } }
+        public int? TQLFraudAlertsTotalMedium { get => _tQLFraudAlertsTotalMedium; set => _tQLFraudAlertsTotalMedium = value; }
         private DirtyValue<int?> _tQLFraudAlertsTotalMediumUnaddressed;
-        public int? TQLFraudAlertsTotalMediumUnaddressed { get { return _tQLFraudAlertsTotalMediumUnaddressed; } set { _tQLFraudAlertsTotalMediumUnaddressed = value; } }
+        public int? TQLFraudAlertsTotalMediumUnaddressed { get => _tQLFraudAlertsTotalMediumUnaddressed; set => _tQLFraudAlertsTotalMediumUnaddressed = value; }
         private DirtyValue<string> _wellsFargo4506TBaselineReportRequired;
-        public string WellsFargo4506TBaselineReportRequired { get { return _wellsFargo4506TBaselineReportRequired; } set { _wellsFargo4506TBaselineReportRequired = value; } }
+        public string WellsFargo4506TBaselineReportRequired { get => _wellsFargo4506TBaselineReportRequired; set => _wellsFargo4506TBaselineReportRequired = value; }
         private DirtyValue<string> _wellsFargoComplianceBaselineReportRequired;
-        public string WellsFargoComplianceBaselineReportRequired { get { return _wellsFargoComplianceBaselineReportRequired; } set { _wellsFargoComplianceBaselineReportRequired = value; } }
+        public string WellsFargoComplianceBaselineReportRequired { get => _wellsFargoComplianceBaselineReportRequired; set => _wellsFargoComplianceBaselineReportRequired = value; }
         private DirtyValue<string> _wellsFargoFloodBaselineReportRequired;
-        public string WellsFargoFloodBaselineReportRequired { get { return _wellsFargoFloodBaselineReportRequired; } set { _wellsFargoFloodBaselineReportRequired = value; } }
+        public string WellsFargoFloodBaselineReportRequired { get => _wellsFargoFloodBaselineReportRequired; set => _wellsFargoFloodBaselineReportRequired = value; }
         private DirtyValue<string> _wellsFargoFraudBaselineReportRequired;
-        public string WellsFargoFraudBaselineReportRequired { get { return _wellsFargoFraudBaselineReportRequired; } set { _wellsFargoFraudBaselineReportRequired = value; } }
+        public string WellsFargoFraudBaselineReportRequired { get => _wellsFargoFraudBaselineReportRequired; set => _wellsFargoFraudBaselineReportRequired = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -308,6 +306,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

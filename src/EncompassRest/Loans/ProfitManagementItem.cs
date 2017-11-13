@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,21 +9,21 @@ namespace EncompassRest.Loans
     public sealed partial class ProfitManagementItem : IDirty
     {
         private DirtyValue<decimal?> _atPercent;
-        public decimal? AtPercent { get { return _atPercent; } set { _atPercent = value; } }
+        public decimal? AtPercent { get => _atPercent; set => _atPercent = value; }
         private DirtyValue<string> _description;
-        public string Description { get { return _description; } set { _description = value; } }
+        public string Description { get => _description; set => _description = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _plusAmount;
-        public decimal? PlusAmount { get { return _plusAmount; } set { _plusAmount = value; } }
+        public decimal? PlusAmount { get => _plusAmount; set => _plusAmount = value; }
         private DirtyValue<int?> _profitManagementItemIndex;
-        public int? ProfitManagementItemIndex { get { return _profitManagementItemIndex; } set { _profitManagementItemIndex = value; } }
+        public int? ProfitManagementItemIndex { get => _profitManagementItemIndex; set => _profitManagementItemIndex = value; }
         private DirtyValue<decimal?> _total;
-        public decimal? Total { get { return _total; } set { _total = value; } }
+        public decimal? Total { get => _total; set => _total = value; }
         private StringEnumValue<ProfitManagementItemType> _type;
-        public StringEnumValue<ProfitManagementItemType> Type { get { return _type; } set { _type = value; } }
+        public StringEnumValue<ProfitManagementItemType> Type { get => _type; set => _type = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -60,6 +58,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

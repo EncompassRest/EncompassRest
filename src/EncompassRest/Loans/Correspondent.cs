@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,107 +9,107 @@ namespace EncompassRest.Loans
     public sealed partial class Correspondent : IDirty
     {
         private DirtyValue<decimal?> _additionalLateFeeCharge;
-        public decimal? AdditionalLateFeeCharge { get { return _additionalLateFeeCharge; } set { _additionalLateFeeCharge = value; } }
+        public decimal? AdditionalLateFeeCharge { get => _additionalLateFeeCharge; set => _additionalLateFeeCharge = value; }
         private DirtyValue<DateTime?> _approvedToFundDate;
-        public DateTime? ApprovedToFundDate { get { return _approvedToFundDate; } set { _approvedToFundDate = value; } }
+        public DateTime? ApprovedToFundDate { get => _approvedToFundDate; set => _approvedToFundDate = value; }
         private DirtyValue<decimal?> _basePrice;
-        public decimal? BasePrice { get { return _basePrice; } set { _basePrice = value; } }
+        public decimal? BasePrice { get => _basePrice; set => _basePrice = value; }
         private DirtyValue<DateTime?> _cancelledDate;
-        public DateTime? CancelledDate { get { return _cancelledDate; } set { _cancelledDate = value; } }
+        public DateTime? CancelledDate { get => _cancelledDate; set => _cancelledDate = value; }
         private StringEnumValue<CommitmentType> _commitmentType;
-        public StringEnumValue<CommitmentType> CommitmentType { get { return _commitmentType; } set { _commitmentType = value; } }
+        public StringEnumValue<CommitmentType> CommitmentType { get => _commitmentType; set => _commitmentType = value; }
         private DirtyValue<DateTime?> _conditionsReceivedDate;
-        public DateTime? ConditionsReceivedDate { get { return _conditionsReceivedDate; } set { _conditionsReceivedDate = value; } }
+        public DateTime? ConditionsReceivedDate { get => _conditionsReceivedDate; set => _conditionsReceivedDate = value; }
         private StringEnumValue<CorrespondentStatus> _correspondentStatus;
-        public StringEnumValue<CorrespondentStatus> CorrespondentStatus { get { return _correspondentStatus; } set { _correspondentStatus = value; } }
+        public StringEnumValue<CorrespondentStatus> CorrespondentStatus { get => _correspondentStatus; set => _correspondentStatus = value; }
         private DirtyValue<DateTime?> _deliveryExpirationDate;
-        public DateTime? DeliveryExpirationDate { get { return _deliveryExpirationDate; } set { _deliveryExpirationDate = value; } }
+        public DateTime? DeliveryExpirationDate { get => _deliveryExpirationDate; set => _deliveryExpirationDate = value; }
         private DirtyValue<string> _deliveryType;
-        public string DeliveryType { get { return _deliveryType; } set { _deliveryType = value; } }
+        public string DeliveryType { get => _deliveryType; set => _deliveryType = value; }
         private DirtyValue<DateTime?> _fundedDate;
-        public DateTime? FundedDate { get { return _fundedDate; } set { _fundedDate = value; } }
+        public DateTime? FundedDate { get => _fundedDate; set => _fundedDate = value; }
         private DirtyValue<int?> _gracePeriodDays;
-        public int? GracePeriodDays { get { return _gracePeriodDays; } set { _gracePeriodDays = value; } }
+        public int? GracePeriodDays { get => _gracePeriodDays; set => _gracePeriodDays = value; }
         private DirtyValue<DateTime?> _gracePeriodStartDate;
-        public DateTime? GracePeriodStartDate { get { return _gracePeriodStartDate; } set { _gracePeriodStartDate = value; } }
+        public DateTime? GracePeriodStartDate { get => _gracePeriodStartDate; set => _gracePeriodStartDate = value; }
         private DirtyValue<string> _gracePeriodStartTrigger;
-        public string GracePeriodStartTrigger { get { return _gracePeriodStartTrigger; } set { _gracePeriodStartTrigger = value; } }
+        public string GracePeriodStartTrigger { get => _gracePeriodStartTrigger; set => _gracePeriodStartTrigger = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<DateTime?> _initialSuspenseDate;
-        public DateTime? InitialSuspenseDate { get { return _initialSuspenseDate; } set { _initialSuspenseDate = value; } }
+        public DateTime? InitialSuspenseDate { get => _initialSuspenseDate; set => _initialSuspenseDate = value; }
         private DirtyValue<DateTime?> _lateDaysBegin;
-        public DateTime? LateDaysBegin { get { return _lateDaysBegin; } set { _lateDaysBegin = value; } }
+        public DateTime? LateDaysBegin { get => _lateDaysBegin; set => _lateDaysBegin = value; }
         private DirtyValue<DateTime?> _lateDaysEnd;
-        public DateTime? LateDaysEnd { get { return _lateDaysEnd; } set { _lateDaysEnd = value; } }
+        public DateTime? LateDaysEnd { get => _lateDaysEnd; set => _lateDaysEnd = value; }
         private DirtyValue<string> _lateDaysEndTrigger;
-        public string LateDaysEndTrigger { get { return _lateDaysEndTrigger; } set { _lateDaysEndTrigger = value; } }
+        public string LateDaysEndTrigger { get => _lateDaysEndTrigger; set => _lateDaysEndTrigger = value; }
         private StringEnumValue<LateFeeChargeType> _lateFeeChargeType;
-        public StringEnumValue<LateFeeChargeType> LateFeeChargeType { get { return _lateFeeChargeType; } set { _lateFeeChargeType = value; } }
+        public StringEnumValue<LateFeeChargeType> LateFeeChargeType { get => _lateFeeChargeType; set => _lateFeeChargeType = value; }
         private DirtyValue<string> _lateFeeFrequency;
-        public string LateFeeFrequency { get { return _lateFeeFrequency; } set { _lateFeeFrequency = value; } }
+        public string LateFeeFrequency { get => _lateFeeFrequency; set => _lateFeeFrequency = value; }
         private DirtyValue<string> _lateFeeNotes;
-        public string LateFeeNotes { get { return _lateFeeNotes; } set { _lateFeeNotes = value; } }
+        public string LateFeeNotes { get => _lateFeeNotes; set => _lateFeeNotes = value; }
         private DirtyValue<decimal?> _lateFeePercentage;
-        public decimal? LateFeePercentage { get { return _lateFeePercentage; } set { _lateFeePercentage = value; } }
+        public decimal? LateFeePercentage { get => _lateFeePercentage; set => _lateFeePercentage = value; }
         private DirtyValue<decimal?> _lateFeeTotalPriceAdjustment;
-        public decimal? LateFeeTotalPriceAdjustment { get { return _lateFeeTotalPriceAdjustment; } set { _lateFeeTotalPriceAdjustment = value; } }
+        public decimal? LateFeeTotalPriceAdjustment { get => _lateFeeTotalPriceAdjustment; set => _lateFeeTotalPriceAdjustment = value; }
         private DirtyValue<DateTime?> _latestConditionsDate;
-        public DateTime? LatestConditionsDate { get { return _latestConditionsDate; } set { _latestConditionsDate = value; } }
+        public DateTime? LatestConditionsDate { get => _latestConditionsDate; set => _latestConditionsDate = value; }
         private DirtyValue<int?> _lFS_CalculateAs;
-        public int? LFS_CalculateAs { get { return _lFS_CalculateAs; } set { _lFS_CalculateAs = value; } }
+        public int? LFS_CalculateAs { get => _lFS_CalculateAs; set => _lFS_CalculateAs = value; }
         private DirtyValue<int?> _lFS_DayCleared;
-        public int? LFS_DayCleared { get { return _lFS_DayCleared; } set { _lFS_DayCleared = value; } }
+        public int? LFS_DayCleared { get => _lFS_DayCleared; set => _lFS_DayCleared = value; }
         private DirtyValue<string> _lFS_DayClearedOtherDate;
-        public string LFS_DayClearedOtherDate { get { return _lFS_DayClearedOtherDate; } set { _lFS_DayClearedOtherDate = value; } }
+        public string LFS_DayClearedOtherDate { get => _lFS_DayClearedOtherDate; set => _lFS_DayClearedOtherDate = value; }
         private DirtyValue<string> _lFS_DayClearedOtherDateValue;
-        public string LFS_DayClearedOtherDateValue { get { return _lFS_DayClearedOtherDateValue; } set { _lFS_DayClearedOtherDateValue = value; } }
+        public string LFS_DayClearedOtherDateValue { get => _lFS_DayClearedOtherDateValue; set => _lFS_DayClearedOtherDateValue = value; }
         private DirtyValue<int?> _lFS_FeeHandledAs;
-        public int? LFS_FeeHandledAs { get { return _lFS_FeeHandledAs; } set { _lFS_FeeHandledAs = value; } }
+        public int? LFS_FeeHandledAs { get => _lFS_FeeHandledAs; set => _lFS_FeeHandledAs = value; }
         private DirtyValue<int?> _lFS_GracePeriodCalendar;
-        public int? LFS_GracePeriodCalendar { get { return _lFS_GracePeriodCalendar; } set { _lFS_GracePeriodCalendar = value; } }
+        public int? LFS_GracePeriodCalendar { get => _lFS_GracePeriodCalendar; set => _lFS_GracePeriodCalendar = value; }
         private DirtyValue<int?> _lFS_GracePeriodDays;
-        public int? LFS_GracePeriodDays { get { return _lFS_GracePeriodDays; } set { _lFS_GracePeriodDays = value; } }
+        public int? LFS_GracePeriodDays { get => _lFS_GracePeriodDays; set => _lFS_GracePeriodDays = value; }
         private DirtyValue<int?> _lFS_GracePeriodLaterOf;
-        public int? LFS_GracePeriodLaterOf { get { return _lFS_GracePeriodLaterOf; } set { _lFS_GracePeriodLaterOf = value; } }
+        public int? LFS_GracePeriodLaterOf { get => _lFS_GracePeriodLaterOf; set => _lFS_GracePeriodLaterOf = value; }
         private DirtyValue<int?> _lFS_GracePeriodStarts;
-        public int? LFS_GracePeriodStarts { get { return _lFS_GracePeriodStarts; } set { _lFS_GracePeriodStarts = value; } }
+        public int? LFS_GracePeriodStarts { get => _lFS_GracePeriodStarts; set => _lFS_GracePeriodStarts = value; }
         private DirtyValue<int?> _lFS_IncludeDay;
-        public int? LFS_IncludeDay { get { return _lFS_IncludeDay; } set { _lFS_IncludeDay = value; } }
+        public int? LFS_IncludeDay { get => _lFS_IncludeDay; set => _lFS_IncludeDay = value; }
         private DirtyValue<int?> _lFS_LateFeeBasedOn;
-        public int? LFS_LateFeeBasedOn { get { return _lFS_LateFeeBasedOn; } set { _lFS_LateFeeBasedOn = value; } }
+        public int? LFS_LateFeeBasedOn { get => _lFS_LateFeeBasedOn; set => _lFS_LateFeeBasedOn = value; }
         private DirtyValue<int?> _lFS_MaxLateDays;
-        public int? LFS_MaxLateDays { get { return _lFS_MaxLateDays; } set { _lFS_MaxLateDays = value; } }
+        public int? LFS_MaxLateDays { get => _lFS_MaxLateDays; set => _lFS_MaxLateDays = value; }
         private DirtyValue<string> _lFS_OtherDate;
-        public string LFS_OtherDate { get { return _lFS_OtherDate; } set { _lFS_OtherDate = value; } }
+        public string LFS_OtherDate { get => _lFS_OtherDate; set => _lFS_OtherDate = value; }
         private DirtyValue<string> _lFS_OtherDateValue;
-        public string LFS_OtherDateValue { get { return _lFS_OtherDateValue; } set { _lFS_OtherDateValue = value; } }
+        public string LFS_OtherDateValue { get => _lFS_OtherDateValue; set => _lFS_OtherDateValue = value; }
         private DirtyValue<int?> _lFS_StartOnWeekend;
-        public int? LFS_StartOnWeekend { get { return _lFS_StartOnWeekend; } set { _lFS_StartOnWeekend = value; } }
+        public int? LFS_StartOnWeekend { get => _lFS_StartOnWeekend; set => _lFS_StartOnWeekend = value; }
         private DirtyValue<DateTime?> _noteDate;
-        public DateTime? NoteDate { get { return _noteDate; } set { _noteDate = value; } }
+        public DateTime? NoteDate { get => _noteDate; set => _noteDate = value; }
         private DirtyValue<decimal?> _originalPrincipalBalance;
-        public decimal? OriginalPrincipalBalance { get { return _originalPrincipalBalance; } set { _originalPrincipalBalance = value; } }
+        public decimal? OriginalPrincipalBalance { get => _originalPrincipalBalance; set => _originalPrincipalBalance = value; }
         private DirtyValue<string> _ratesheet;
-        public string Ratesheet { get { return _ratesheet; } set { _ratesheet = value; } }
+        public string Ratesheet { get => _ratesheet; set => _ratesheet = value; }
         private DirtyValue<DateTime?> _receivedDate;
-        public DateTime? ReceivedDate { get { return _receivedDate; } set { _receivedDate = value; } }
+        public DateTime? ReceivedDate { get => _receivedDate; set => _receivedDate = value; }
         private DirtyValue<DateTime?> _rejectedDate;
-        public DateTime? RejectedDate { get { return _rejectedDate; } set { _rejectedDate = value; } }
+        public DateTime? RejectedDate { get => _rejectedDate; set => _rejectedDate = value; }
         private DirtyValue<DateTime?> _submittedforPurchaseDate;
-        public DateTime? SubmittedforPurchaseDate { get { return _submittedforPurchaseDate; } set { _submittedforPurchaseDate = value; } }
+        public DateTime? SubmittedforPurchaseDate { get => _submittedforPurchaseDate; set => _submittedforPurchaseDate = value; }
         private DirtyValue<int?> _totalLateDays;
-        public int? TotalLateDays { get { return _totalLateDays; } set { _totalLateDays = value; } }
+        public int? TotalLateDays { get => _totalLateDays; set => _totalLateDays = value; }
         private DirtyValue<decimal?> _totalLateFee;
-        public decimal? TotalLateFee { get { return _totalLateFee; } set { _totalLateFee = value; } }
+        public decimal? TotalLateFee { get => _totalLateFee; set => _totalLateFee = value; }
         private DirtyValue<decimal?> _unpaidPrincipalBalance;
-        public decimal? UnpaidPrincipalBalance { get { return _unpaidPrincipalBalance; } set { _unpaidPrincipalBalance = value; } }
+        public decimal? UnpaidPrincipalBalance { get => _unpaidPrincipalBalance; set => _unpaidPrincipalBalance = value; }
         private DirtyValue<DateTime?> _voidedDate;
-        public DateTime? VoidedDate { get { return _voidedDate; } set { _voidedDate = value; } }
+        public DateTime? VoidedDate { get => _voidedDate; set => _voidedDate = value; }
         private DirtyValue<DateTime?> _withdrawnDate;
-        public DateTime? WithdrawnDate { get { return _withdrawnDate; } set { _withdrawnDate = value; } }
+        public DateTime? WithdrawnDate { get => _withdrawnDate; set => _withdrawnDate = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -232,6 +230,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

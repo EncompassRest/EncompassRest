@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,31 +9,31 @@ namespace EncompassRest.Loans
     public sealed partial class UsdaHouseholdIncome : IDirty
     {
         private DirtyValue<int?> _age;
-        public int? Age { get { return _age; } set { _age = value; } }
+        public int? Age { get => _age; set => _age = value; }
         private DirtyValue<string> _analysisDocumenting;
-        public string AnalysisDocumenting { get { return _analysisDocumenting; } set { _analysisDocumenting = value; } }
+        public string AnalysisDocumenting { get => _analysisDocumenting; set => _analysisDocumenting = value; }
         private DirtyValue<decimal?> _annualNonWageIncome;
-        public decimal? AnnualNonWageIncome { get { return _annualNonWageIncome; } set { _annualNonWageIncome = value; } }
+        public decimal? AnnualNonWageIncome { get => _annualNonWageIncome; set => _annualNonWageIncome = value; }
         private DirtyValue<decimal?> _annualWageIncome;
-        public decimal? AnnualWageIncome { get { return _annualWageIncome; } set { _annualWageIncome = value; } }
+        public decimal? AnnualWageIncome { get => _annualWageIncome; set => _annualWageIncome = value; }
         private DirtyValue<bool?> _disabledIndicator;
-        public bool? DisabledIndicator { get { return _disabledIndicator; } set { _disabledIndicator = value; } }
+        public bool? DisabledIndicator { get => _disabledIndicator; set => _disabledIndicator = value; }
         private DirtyValue<bool?> _fullTimeStudentIndicator;
-        public bool? FullTimeStudentIndicator { get { return _fullTimeStudentIndicator; } set { _fullTimeStudentIndicator = value; } }
+        public bool? FullTimeStudentIndicator { get => _fullTimeStudentIndicator; set => _fullTimeStudentIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _name;
-        public string Name { get { return _name; } set { _name = value; } }
+        public string Name { get => _name; set => _name = value; }
         private StringEnumValue<RecordOwnerType> _recordOwnerType;
-        public StringEnumValue<RecordOwnerType> RecordOwnerType { get { return _recordOwnerType; } set { _recordOwnerType = value; } }
+        public StringEnumValue<RecordOwnerType> RecordOwnerType { get => _recordOwnerType; set => _recordOwnerType = value; }
         private DirtyValue<string> _sourceofNonWageIncomeDescription;
-        public string SourceofNonWageIncomeDescription { get { return _sourceofNonWageIncomeDescription; } set { _sourceofNonWageIncomeDescription = value; } }
+        public string SourceofNonWageIncomeDescription { get => _sourceofNonWageIncomeDescription; set => _sourceofNonWageIncomeDescription = value; }
         private DirtyValue<string> _sourceofWageIncomeEmployerName;
-        public string SourceofWageIncomeEmployerName { get { return _sourceofWageIncomeEmployerName; } set { _sourceofWageIncomeEmployerName = value; } }
+        public string SourceofWageIncomeEmployerName { get => _sourceofWageIncomeEmployerName; set => _sourceofWageIncomeEmployerName = value; }
         private DirtyValue<int?> _usdaHouseholdIncomeIndex;
-        public int? UsdaHouseholdIncomeIndex { get { return _usdaHouseholdIncomeIndex; } set { _usdaHouseholdIncomeIndex = value; } }
+        public int? UsdaHouseholdIncomeIndex { get => _usdaHouseholdIncomeIndex; set => _usdaHouseholdIncomeIndex = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -80,6 +78,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

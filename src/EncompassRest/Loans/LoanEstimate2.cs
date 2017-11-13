@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,117 +9,117 @@ namespace EncompassRest.Loans
     public sealed partial class LoanEstimate2 : IDirty
     {
         private DirtyValue<decimal?> _actualLenderCredits;
-        public decimal? ActualLenderCredits { get { return _actualLenderCredits; } set { _actualLenderCredits = value; } }
+        public decimal? ActualLenderCredits { get => _actualLenderCredits; set => _actualLenderCredits = value; }
         private DirtyValue<decimal?> _actualSTDLESellerCredits;
-        public decimal? ActualSTDLESellerCredits { get { return _actualSTDLESellerCredits; } set { _actualSTDLESellerCredits = value; } }
+        public decimal? ActualSTDLESellerCredits { get => _actualSTDLESellerCredits; set => _actualSTDLESellerCredits = value; }
         private DirtyValue<decimal?> _actualSTDLETotalClosingCostJ;
-        public decimal? ActualSTDLETotalClosingCostJ { get { return _actualSTDLETotalClosingCostJ; } set { _actualSTDLETotalClosingCostJ = value; } }
+        public decimal? ActualSTDLETotalClosingCostJ { get => _actualSTDLETotalClosingCostJ; set => _actualSTDLETotalClosingCostJ = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCredits;
-        public decimal? AdjustmentsOtherCredits { get { return _adjustmentsOtherCredits; } set { _adjustmentsOtherCredits = value; } }
+        public decimal? AdjustmentsOtherCredits { get => _adjustmentsOtherCredits; set => _adjustmentsOtherCredits = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt1;
-        public decimal? AdjustmentsOtherCreditsAmt1 { get { return _adjustmentsOtherCreditsAmt1; } set { _adjustmentsOtherCreditsAmt1 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt1 { get => _adjustmentsOtherCreditsAmt1; set => _adjustmentsOtherCreditsAmt1 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt10;
-        public decimal? AdjustmentsOtherCreditsAmt10 { get { return _adjustmentsOtherCreditsAmt10; } set { _adjustmentsOtherCreditsAmt10 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt10 { get => _adjustmentsOtherCreditsAmt10; set => _adjustmentsOtherCreditsAmt10 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt2;
-        public decimal? AdjustmentsOtherCreditsAmt2 { get { return _adjustmentsOtherCreditsAmt2; } set { _adjustmentsOtherCreditsAmt2 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt2 { get => _adjustmentsOtherCreditsAmt2; set => _adjustmentsOtherCreditsAmt2 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt3;
-        public decimal? AdjustmentsOtherCreditsAmt3 { get { return _adjustmentsOtherCreditsAmt3; } set { _adjustmentsOtherCreditsAmt3 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt3 { get => _adjustmentsOtherCreditsAmt3; set => _adjustmentsOtherCreditsAmt3 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt4;
-        public decimal? AdjustmentsOtherCreditsAmt4 { get { return _adjustmentsOtherCreditsAmt4; } set { _adjustmentsOtherCreditsAmt4 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt4 { get => _adjustmentsOtherCreditsAmt4; set => _adjustmentsOtherCreditsAmt4 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt5;
-        public decimal? AdjustmentsOtherCreditsAmt5 { get { return _adjustmentsOtherCreditsAmt5; } set { _adjustmentsOtherCreditsAmt5 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt5 { get => _adjustmentsOtherCreditsAmt5; set => _adjustmentsOtherCreditsAmt5 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt6;
-        public decimal? AdjustmentsOtherCreditsAmt6 { get { return _adjustmentsOtherCreditsAmt6; } set { _adjustmentsOtherCreditsAmt6 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt6 { get => _adjustmentsOtherCreditsAmt6; set => _adjustmentsOtherCreditsAmt6 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt7;
-        public decimal? AdjustmentsOtherCreditsAmt7 { get { return _adjustmentsOtherCreditsAmt7; } set { _adjustmentsOtherCreditsAmt7 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt7 { get => _adjustmentsOtherCreditsAmt7; set => _adjustmentsOtherCreditsAmt7 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt8;
-        public decimal? AdjustmentsOtherCreditsAmt8 { get { return _adjustmentsOtherCreditsAmt8; } set { _adjustmentsOtherCreditsAmt8 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt8 { get => _adjustmentsOtherCreditsAmt8; set => _adjustmentsOtherCreditsAmt8 = value; }
         private DirtyValue<decimal?> _adjustmentsOtherCreditsAmt9;
-        public decimal? AdjustmentsOtherCreditsAmt9 { get { return _adjustmentsOtherCreditsAmt9; } set { _adjustmentsOtherCreditsAmt9 = value; } }
+        public decimal? AdjustmentsOtherCreditsAmt9 { get => _adjustmentsOtherCreditsAmt9; set => _adjustmentsOtherCreditsAmt9 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc1;
-        public string AdjustmentsOtherCreditsDesc1 { get { return _adjustmentsOtherCreditsDesc1; } set { _adjustmentsOtherCreditsDesc1 = value; } }
+        public string AdjustmentsOtherCreditsDesc1 { get => _adjustmentsOtherCreditsDesc1; set => _adjustmentsOtherCreditsDesc1 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc10;
-        public string AdjustmentsOtherCreditsDesc10 { get { return _adjustmentsOtherCreditsDesc10; } set { _adjustmentsOtherCreditsDesc10 = value; } }
+        public string AdjustmentsOtherCreditsDesc10 { get => _adjustmentsOtherCreditsDesc10; set => _adjustmentsOtherCreditsDesc10 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc2;
-        public string AdjustmentsOtherCreditsDesc2 { get { return _adjustmentsOtherCreditsDesc2; } set { _adjustmentsOtherCreditsDesc2 = value; } }
+        public string AdjustmentsOtherCreditsDesc2 { get => _adjustmentsOtherCreditsDesc2; set => _adjustmentsOtherCreditsDesc2 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc3;
-        public string AdjustmentsOtherCreditsDesc3 { get { return _adjustmentsOtherCreditsDesc3; } set { _adjustmentsOtherCreditsDesc3 = value; } }
+        public string AdjustmentsOtherCreditsDesc3 { get => _adjustmentsOtherCreditsDesc3; set => _adjustmentsOtherCreditsDesc3 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc4;
-        public string AdjustmentsOtherCreditsDesc4 { get { return _adjustmentsOtherCreditsDesc4; } set { _adjustmentsOtherCreditsDesc4 = value; } }
+        public string AdjustmentsOtherCreditsDesc4 { get => _adjustmentsOtherCreditsDesc4; set => _adjustmentsOtherCreditsDesc4 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc5;
-        public string AdjustmentsOtherCreditsDesc5 { get { return _adjustmentsOtherCreditsDesc5; } set { _adjustmentsOtherCreditsDesc5 = value; } }
+        public string AdjustmentsOtherCreditsDesc5 { get => _adjustmentsOtherCreditsDesc5; set => _adjustmentsOtherCreditsDesc5 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc6;
-        public string AdjustmentsOtherCreditsDesc6 { get { return _adjustmentsOtherCreditsDesc6; } set { _adjustmentsOtherCreditsDesc6 = value; } }
+        public string AdjustmentsOtherCreditsDesc6 { get => _adjustmentsOtherCreditsDesc6; set => _adjustmentsOtherCreditsDesc6 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc7;
-        public string AdjustmentsOtherCreditsDesc7 { get { return _adjustmentsOtherCreditsDesc7; } set { _adjustmentsOtherCreditsDesc7 = value; } }
+        public string AdjustmentsOtherCreditsDesc7 { get => _adjustmentsOtherCreditsDesc7; set => _adjustmentsOtherCreditsDesc7 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc8;
-        public string AdjustmentsOtherCreditsDesc8 { get { return _adjustmentsOtherCreditsDesc8; } set { _adjustmentsOtherCreditsDesc8 = value; } }
+        public string AdjustmentsOtherCreditsDesc8 { get => _adjustmentsOtherCreditsDesc8; set => _adjustmentsOtherCreditsDesc8 = value; }
         private DirtyValue<string> _adjustmentsOtherCreditsDesc9;
-        public string AdjustmentsOtherCreditsDesc9 { get { return _adjustmentsOtherCreditsDesc9; } set { _adjustmentsOtherCreditsDesc9 = value; } }
+        public string AdjustmentsOtherCreditsDesc9 { get => _adjustmentsOtherCreditsDesc9; set => _adjustmentsOtherCreditsDesc9 = value; }
         private DirtyValue<decimal?> _closingCostsFinanced;
-        public decimal? ClosingCostsFinanced { get { return _closingCostsFinanced; } set { _closingCostsFinanced = value; } }
+        public decimal? ClosingCostsFinanced { get => _closingCostsFinanced; set => _closingCostsFinanced = value; }
         private DirtyValue<decimal?> _downPayment;
-        public decimal? DownPayment { get { return _downPayment; } set { _downPayment = value; } }
+        public decimal? DownPayment { get => _downPayment; set => _downPayment = value; }
         private DirtyValue<decimal?> _estimatedCashToCloseAV;
-        public decimal? EstimatedCashToCloseAV { get { return _estimatedCashToCloseAV; } set { _estimatedCashToCloseAV = value; } }
+        public decimal? EstimatedCashToCloseAV { get => _estimatedCashToCloseAV; set => _estimatedCashToCloseAV = value; }
         private DirtyValue<decimal?> _estimatedCashToCloseSV;
-        public decimal? EstimatedCashToCloseSV { get { return _estimatedCashToCloseSV; } set { _estimatedCashToCloseSV = value; } }
+        public decimal? EstimatedCashToCloseSV { get => _estimatedCashToCloseSV; set => _estimatedCashToCloseSV = value; }
         private DirtyValue<int?> _estimatedTotalPayoffsAndPaymentsAmount;
-        public int? EstimatedTotalPayoffsAndPaymentsAmount { get { return _estimatedTotalPayoffsAndPaymentsAmount; } set { _estimatedTotalPayoffsAndPaymentsAmount = value; } }
+        public int? EstimatedTotalPayoffsAndPaymentsAmount { get => _estimatedTotalPayoffsAndPaymentsAmount; set => _estimatedTotalPayoffsAndPaymentsAmount = value; }
         private DirtyValue<int?> _firstChangeFrequencyMonth;
-        public int? firstChangeFrequencyMonth { get { return _firstChangeFrequencyMonth; } set { _firstChangeFrequencyMonth = value; } }
+        public int? firstChangeFrequencyMonth { get => _firstChangeFrequencyMonth; set => _firstChangeFrequencyMonth = value; }
         private DirtyValue<string> _firstChangeMonthSuffix;
-        public string firstChangeMonthSuffix { get { return _firstChangeMonthSuffix; } set { _firstChangeMonthSuffix = value; } }
+        public string firstChangeMonthSuffix { get => _firstChangeMonthSuffix; set => _firstChangeMonthSuffix = value; }
         private DirtyValue<string> _fromOrToBorrower;
-        public string FromOrToBorrower { get { return _fromOrToBorrower; } set { _fromOrToBorrower = value; } }
+        public string FromOrToBorrower { get => _fromOrToBorrower; set => _fromOrToBorrower = value; }
         private DirtyValue<decimal?> _fundsForBorrower;
-        public decimal? FundsForBorrower { get { return _fundsForBorrower; } set { _fundsForBorrower = value; } }
+        public decimal? FundsForBorrower { get => _fundsForBorrower; set => _fundsForBorrower = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private StringEnumValue<IndexMargin> _indexMargin;
-        public StringEnumValue<IndexMargin> IndexMargin { get { return _indexMargin; } set { _indexMargin = value; } }
+        public StringEnumValue<IndexMargin> IndexMargin { get => _indexMargin; set => _indexMargin = value; }
         private DirtyValue<int?> _initialEscrowPaymentClosingSubTotal;
-        public int? InitialEscrowPaymentClosingSubTotal { get { return _initialEscrowPaymentClosingSubTotal; } set { _initialEscrowPaymentClosingSubTotal = value; } }
+        public int? InitialEscrowPaymentClosingSubTotal { get => _initialEscrowPaymentClosingSubTotal; set => _initialEscrowPaymentClosingSubTotal = value; }
         private DirtyValue<bool?> _itemizeServiceSectionCType;
-        public bool? ItemizeServiceSectionCType { get { return _itemizeServiceSectionCType; } set { _itemizeServiceSectionCType = value; } }
+        public bool? ItemizeServiceSectionCType { get => _itemizeServiceSectionCType; set => _itemizeServiceSectionCType = value; }
         private DirtyValue<int?> _lenderCredits;
-        public int? LenderCredits { get { return _lenderCredits; } set { _lenderCredits = value; } }
+        public int? LenderCredits { get => _lenderCredits; set => _lenderCredits = value; }
         private DirtyValue<int?> _originationChargesSubTotal;
-        public int? OriginationChargesSubTotal { get { return _originationChargesSubTotal; } set { _originationChargesSubTotal = value; } }
+        public int? OriginationChargesSubTotal { get => _originationChargesSubTotal; set => _originationChargesSubTotal = value; }
         private DirtyValue<int?> _otherSubTotal;
-        public int? OtherSubTotal { get { return _otherSubTotal; } set { _otherSubTotal = value; } }
+        public int? OtherSubTotal { get => _otherSubTotal; set => _otherSubTotal = value; }
         private DirtyValue<int?> _prepaidsSubTotal;
-        public int? PrepaidsSubTotal { get { return _prepaidsSubTotal; } set { _prepaidsSubTotal = value; } }
+        public int? PrepaidsSubTotal { get => _prepaidsSubTotal; set => _prepaidsSubTotal = value; }
         private DirtyValue<int?> _sellerCreditAmount;
-        public int? SellerCreditAmount { get { return _sellerCreditAmount; } set { _sellerCreditAmount = value; } }
+        public int? SellerCreditAmount { get => _sellerCreditAmount; set => _sellerCreditAmount = value; }
         private DirtyValue<int?> _servicesYouNotShopSubTotal;
-        public int? ServicesYouNotShopSubTotal { get { return _servicesYouNotShopSubTotal; } set { _servicesYouNotShopSubTotal = value; } }
+        public int? ServicesYouNotShopSubTotal { get => _servicesYouNotShopSubTotal; set => _servicesYouNotShopSubTotal = value; }
         private DirtyValue<int?> _servicesYouShopSubTotal;
-        public int? ServicesYouShopSubTotal { get { return _servicesYouShopSubTotal; } set { _servicesYouShopSubTotal = value; } }
+        public int? ServicesYouShopSubTotal { get => _servicesYouShopSubTotal; set => _servicesYouShopSubTotal = value; }
         private DirtyValue<string> _subseqChangeMonthSuffix;
-        public string subseqChangeMonthSuffix { get { return _subseqChangeMonthSuffix; } set { _subseqChangeMonthSuffix = value; } }
+        public string subseqChangeMonthSuffix { get => _subseqChangeMonthSuffix; set => _subseqChangeMonthSuffix = value; }
         private DirtyValue<int?> _taxesGovFeesSubTotal;
-        public int? TaxesGovFeesSubTotal { get { return _taxesGovFeesSubTotal; } set { _taxesGovFeesSubTotal = value; } }
+        public int? TaxesGovFeesSubTotal { get => _taxesGovFeesSubTotal; set => _taxesGovFeesSubTotal = value; }
         private DirtyValue<decimal?> _thirdPartyPaymentsNotOtherwiseDisclosed;
-        public decimal? ThirdPartyPaymentsNotOtherwiseDisclosed { get { return _thirdPartyPaymentsNotOtherwiseDisclosed; } set { _thirdPartyPaymentsNotOtherwiseDisclosed = value; } }
+        public decimal? ThirdPartyPaymentsNotOtherwiseDisclosed { get => _thirdPartyPaymentsNotOtherwiseDisclosed; set => _thirdPartyPaymentsNotOtherwiseDisclosed = value; }
         private DirtyValue<int?> _totalClosingCosts;
-        public int? TotalClosingCosts { get { return _totalClosingCosts; } set { _totalClosingCosts = value; } }
+        public int? TotalClosingCosts { get => _totalClosingCosts; set => _totalClosingCosts = value; }
         private DirtyValue<int?> _totalLoanAndOtherCosts;
-        public int? TotalLoanAndOtherCosts { get { return _totalLoanAndOtherCosts; } set { _totalLoanAndOtherCosts = value; } }
+        public int? TotalLoanAndOtherCosts { get => _totalLoanAndOtherCosts; set => _totalLoanAndOtherCosts = value; }
         private DirtyValue<int?> _totalLoanCosts;
-        public int? TotalLoanCosts { get { return _totalLoanCosts; } set { _totalLoanCosts = value; } }
+        public int? TotalLoanCosts { get => _totalLoanCosts; set => _totalLoanCosts = value; }
         private DirtyValue<int?> _totalOtherCosts;
-        public int? TotalOtherCosts { get { return _totalOtherCosts; } set { _totalOtherCosts = value; } }
+        public int? TotalOtherCosts { get => _totalOtherCosts; set => _totalOtherCosts = value; }
         private DirtyValue<decimal?> _unroundedTotalLoanCosts;
-        public decimal? UnroundedTotalLoanCosts { get { return _unroundedTotalLoanCosts; } set { _unroundedTotalLoanCosts = value; } }
+        public decimal? UnroundedTotalLoanCosts { get => _unroundedTotalLoanCosts; set => _unroundedTotalLoanCosts = value; }
         private DirtyValue<decimal?> _unroundedTotalOtherCosts;
-        public decimal? UnroundedTotalOtherCosts { get { return _unroundedTotalOtherCosts; } set { _unroundedTotalOtherCosts = value; } }
+        public decimal? UnroundedTotalOtherCosts { get => _unroundedTotalOtherCosts; set => _unroundedTotalOtherCosts = value; }
         private DirtyValue<bool?> _useActualDownPaymentAndClosingCostsFinancedIndicator;
-        public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get { return _useActualDownPaymentAndClosingCostsFinancedIndicator; } set { _useActualDownPaymentAndClosingCostsFinancedIndicator = value; } }
+        public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get => _useActualDownPaymentAndClosingCostsFinancedIndicator; set => _useActualDownPaymentAndClosingCostsFinancedIndicator = value; }
         private DirtyValue<bool?> _useAlternate;
-        public bool? UseAlternate { get { return _useAlternate; } set { _useAlternate = value; } }
+        public bool? UseAlternate { get => _useAlternate; set => _useAlternate = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -252,6 +250,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

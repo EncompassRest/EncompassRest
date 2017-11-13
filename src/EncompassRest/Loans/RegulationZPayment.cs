@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,21 +9,21 @@ namespace EncompassRest.Loans
     public sealed partial class RegulationZPayment : IDirty
     {
         private DirtyValue<decimal?> _balance;
-        public decimal? Balance { get { return _balance; } set { _balance = value; } }
+        public decimal? Balance { get => _balance; set => _balance = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _interestRatePercent;
-        public decimal? InterestRatePercent { get { return _interestRatePercent; } set { _interestRatePercent = value; } }
+        public decimal? InterestRatePercent { get => _interestRatePercent; set => _interestRatePercent = value; }
         private DirtyValue<decimal?> _monthlyPayment;
-        public decimal? MonthlyPayment { get { return _monthlyPayment; } set { _monthlyPayment = value; } }
+        public decimal? MonthlyPayment { get => _monthlyPayment; set => _monthlyPayment = value; }
         private DirtyValue<int?> _numberOfPayments;
-        public int? NumberOfPayments { get { return _numberOfPayments; } set { _numberOfPayments = value; } }
+        public int? NumberOfPayments { get => _numberOfPayments; set => _numberOfPayments = value; }
         private DirtyValue<DateTime?> _paymentDate;
-        public DateTime? PaymentDate { get { return _paymentDate; } set { _paymentDate = value; } }
+        public DateTime? PaymentDate { get => _paymentDate; set => _paymentDate = value; }
         private DirtyValue<int?> _regulationZPaymentIndex;
-        public int? RegulationZPaymentIndex { get { return _regulationZPaymentIndex; } set { _regulationZPaymentIndex = value; } }
+        public int? RegulationZPaymentIndex { get => _regulationZPaymentIndex; set => _regulationZPaymentIndex = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -60,6 +58,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

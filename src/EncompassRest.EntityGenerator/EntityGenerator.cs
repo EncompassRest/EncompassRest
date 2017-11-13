@@ -251,8 +251,6 @@ namespace EncompassRest
             sb.Append(
 $@"using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using {@namespace}.Enums;
 using Newtonsoft.Json;
 
@@ -313,7 +311,7 @@ namespace {@namespace}
                     sb.AppendLine($"        private {(isEntity || isCollection || hasOptions ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isCollection));
 
-                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get {{ return {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; }} set {{ {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }} }}");
+                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set => {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }}");
                 }
             }
 
@@ -323,7 +321,7 @@ namespace {@namespace}
             // Must ensure no circular cleaning
             sb.Append(
 $@"        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData {{ get {{ return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); }} set {{ _extensionData = new DirtyDictionary<string, object>(value); }} }}
+        public IDictionary<string, object> ExtensionData {{ get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }}
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -354,7 +352,7 @@ $@"        private DirtyDictionary<string, object> _extensionData;
                 _settingDirty = false;
             }}
         }}
-        bool IDirty.Dirty {{ get {{ return Dirty; }} set {{ Dirty = value; }} }}
+        bool IDirty.Dirty {{ get => Dirty; set => Dirty = value; }}
     }}
 }}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))

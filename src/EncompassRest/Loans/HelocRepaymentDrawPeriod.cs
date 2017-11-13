@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 
@@ -11,21 +9,21 @@ namespace EncompassRest.Loans
     public sealed partial class HelocRepaymentDrawPeriod : IDirty
     {
         private DirtyValue<decimal?> _apr;
-        public decimal? Apr { get { return _apr; } set { _apr = value; } }
+        public decimal? Apr { get => _apr; set => _apr = value; }
         private DirtyValue<bool?> _drawIndicator;
-        public bool? DrawIndicator { get { return _drawIndicator; } set { _drawIndicator = value; } }
+        public bool? DrawIndicator { get => _drawIndicator; set => _drawIndicator = value; }
         private DirtyValue<string> _id;
-        public string Id { get { return _id; } set { _id = value; } }
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _indexRatePercent;
-        public decimal? IndexRatePercent { get { return _indexRatePercent; } set { _indexRatePercent = value; } }
+        public decimal? IndexRatePercent { get => _indexRatePercent; set => _indexRatePercent = value; }
         private DirtyValue<decimal?> _marginRatePercent;
-        public decimal? MarginRatePercent { get { return _marginRatePercent; } set { _marginRatePercent = value; } }
+        public decimal? MarginRatePercent { get => _marginRatePercent; set => _marginRatePercent = value; }
         private DirtyValue<decimal?> _minimumMonthlyPaymentAmount;
-        public decimal? MinimumMonthlyPaymentAmount { get { return _minimumMonthlyPaymentAmount; } set { _minimumMonthlyPaymentAmount = value; } }
+        public decimal? MinimumMonthlyPaymentAmount { get => _minimumMonthlyPaymentAmount; set => _minimumMonthlyPaymentAmount = value; }
         private DirtyValue<int?> _year;
-        public int? Year { get { return _year; } set { _year = value; } }
+        public int? Year { get => _year; set => _year = value; }
         private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get { return _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); } set { _extensionData = new DirtyDictionary<string, object>(value); } }
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;
         private bool _settingDirty; 
         internal bool Dirty
@@ -60,6 +58,6 @@ namespace EncompassRest.Loans
                 _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get { return Dirty; } set { Dirty = value; } }
+        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }
