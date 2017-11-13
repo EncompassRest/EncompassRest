@@ -111,7 +111,7 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.NotFound ? await NotFoundException.CreateAsync($"{nameof(GetLoanAsync)}/{loanId}", response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(GetLoanAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync($"{nameof(GetLoanAsync)}/{loanId}", response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -132,7 +132,7 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetSupportedEntitiesAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetSupportedEntitiesAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -187,7 +187,7 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(CreateLoanAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(CreateLoanAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -237,7 +237,7 @@ namespace EncompassRest.Loans
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw response.StatusCode == HttpStatusCode.Conflict ? await LoanLockedException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false) : await RestException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateLoanAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);

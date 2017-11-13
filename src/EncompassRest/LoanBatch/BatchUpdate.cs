@@ -42,7 +42,7 @@ namespace EncompassRest.LoanBatch
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(GetStatusAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(GetStatusAsync), response).ConfigureAwait(false);
                 }
 
                 return await func(response).ConfigureAwait(false);
@@ -73,7 +73,7 @@ namespace EncompassRest.LoanBatch
             {
                 if (!response.IsSuccessStatusCode)
                 {
-                    throw await RestException.CreateAsync(nameof(UpdateLoansAsync), response).ConfigureAwait(false);
+                    throw await EncompassRestException.CreateAsync(nameof(UpdateLoansAsync), response).ConfigureAwait(false);
                 }
 
                 return Path.GetFileName(response.Headers.Location.OriginalString);
