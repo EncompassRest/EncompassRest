@@ -41,25 +41,25 @@ namespace EncompassRest.Webhook
             }
         }
 
-        public Task<List<string>> GetResourceEventsAsync(string resourceName) => GetResourceEventsAsync(resourceName, CancellationToken.None);
+        public Task<List<string>> GetResourceEventsAsync(StringEnumValue<WebhookResourceType> resourceName) => GetResourceEventsAsync(resourceName, CancellationToken.None);
 
-        public Task<List<string>> GetResourceEventsAsync(string resourceName, CancellationToken cancellationToken)
+        public Task<List<string>> GetResourceEventsAsync(StringEnumValue<WebhookResourceType> resourceName, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
 
             return GetResourceEventsInternalAsync(resourceName, cancellationToken, response => response.Content.ReadAsAsync<List<string>>());
         }
 
-        public Task<string> GetResourceEventsRawAsync(string resourceName) => GetResourceEventsRawAsync(resourceName, CancellationToken.None);
+        public Task<string> GetResourceEventsRawAsync(StringEnumValue<WebhookResourceType> resourceName) => GetResourceEventsRawAsync(resourceName, CancellationToken.None);
 
-        public Task<string> GetResourceEventsRawAsync(string resourceName, CancellationToken cancellationToken)
+        public Task<string> GetResourceEventsRawAsync(StringEnumValue<WebhookResourceType> resourceName, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(resourceName, nameof(resourceName));
 
             return GetResourceEventsInternalAsync(resourceName, cancellationToken, response => response.Content.ReadAsStringAsync());
         }
 
-        private async Task<T> GetResourceEventsInternalAsync<T>(string resourceName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> GetResourceEventsInternalAsync<T>(StringEnumValue<WebhookResourceType> resourceName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
         {
             using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/resources/{resourceName}/events", cancellationToken).ConfigureAwait(false))
             {
@@ -112,9 +112,9 @@ namespace EncompassRest.Webhook
 
         public Task<List<WebhookSubscription>> GetSubscriptionsAsync(CancellationToken cancellationToken) => GetSubscriptionsAsync(null, null, cancellationToken);
 
-        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsAsync(resources, events, CancellationToken.None);
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<StringEnumValue<WebhookResourceType>> resources, IEnumerable<StringEnumValue<WebhookEvent>> events) => GetSubscriptionsAsync(resources, events, CancellationToken.None);
 
-        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
+        public Task<List<WebhookSubscription>> GetSubscriptionsAsync(IEnumerable<StringEnumValue<WebhookResourceType>> resources, IEnumerable<StringEnumValue<WebhookEvent>> events, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (resources?.Any() == true)
@@ -141,9 +141,9 @@ namespace EncompassRest.Webhook
 
         public Task<string> GetSubscriptionsRawAsync(CancellationToken cancellationToken) => GetSubscriptionsRawAsync(null, cancellationToken);
 
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<StringEnumValue<WebhookResourceType>> resources, IEnumerable<StringEnumValue<WebhookEvent>> events) => GetSubscriptionsRawAsync(resources, events, CancellationToken.None);
 
-        public Task<string> GetSubscriptionsRawAsync(IEnumerable<string> resources, IEnumerable<string> events, CancellationToken cancellationToken)
+        public Task<string> GetSubscriptionsRawAsync(IEnumerable<StringEnumValue<WebhookResourceType>> resources, IEnumerable<StringEnumValue<WebhookEvent>> events, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (resources?.Any() == true)

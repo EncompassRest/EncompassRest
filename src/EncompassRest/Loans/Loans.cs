@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
-using EnumsNET;
 
 namespace EncompassRest.Loans
 {
@@ -39,21 +38,15 @@ namespace EncompassRest.Loans
             return new LoanAttachments(Client, loanId);
         }
 
-        public Task<Loan> GetLoanAsync(string loanId) => GetLoanAsync(loanId, (IEnumerable<string>)null, CancellationToken.None);
+        public Task<Loan> GetLoanAsync(string loanId) => GetLoanAsync(loanId, null, CancellationToken.None);
 
-        public Task<Loan> GetLoanAsync(string loanId, CancellationToken cancellationToken) => GetLoanAsync(loanId, (IEnumerable<string>)null, cancellationToken);
+        public Task<Loan> GetLoanAsync(string loanId, CancellationToken cancellationToken) => GetLoanAsync(loanId, null, cancellationToken);
 
-        public Task<Loan> GetLoanAsync(string loanId, params LoanEntity[] entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
+        public Task<Loan> GetLoanAsync(string loanId, params StringEnumValue<LoanEntity>[] entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
 
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
+        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<StringEnumValue<LoanEntity>> entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
 
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanAsync(loanId, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
-
-        public Task<Loan> GetLoanAsync(string loanId, params string[] entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
-
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<string> entities) => GetLoanAsync(loanId, entities, CancellationToken.None);
-
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<string> entities, CancellationToken cancellationToken)
+        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<StringEnumValue<LoanEntity>> entities, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
@@ -76,15 +69,11 @@ namespace EncompassRest.Loans
 
         public Task<string> GetLoanRawAsync(string loanId, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, (string)null, cancellationToken);
 
-        public Task<string> GetLoanRawAsync(string loanId, params LoanEntity[] entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
+        public Task<string> GetLoanRawAsync(string loanId, params StringEnumValue<LoanEntity>[] entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
 
-        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<StringEnumValue<LoanEntity>> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
 
-        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken) => GetLoanRawAsync(loanId, entities?.Select(entity => entity.AsString(EnumJsonConverter.CamelCaseNameFormat)), cancellationToken);
-
-        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<string> entities) => GetLoanRawAsync(loanId, entities, CancellationToken.None);
-
-        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<string> entities, CancellationToken cancellationToken)
+        public Task<string> GetLoanRawAsync(string loanId, IEnumerable<StringEnumValue<LoanEntity>> entities, CancellationToken cancellationToken)
         {
             var queryParameters = new QueryParameters();
             if (entities?.Any() == true)
