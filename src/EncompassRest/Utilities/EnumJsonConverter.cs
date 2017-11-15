@@ -86,7 +86,7 @@ namespace EncompassRest.Utilities
                         return;
                     }
                 }
-                writer.WriteRawValue(NonGenericEnums.AsString(enumType, value, EnumsNET.EnumFormat.DecimalValue));
+                writer.WriteRawValue(NonGenericEnums.AsString(enumType, value, EnumFormat.DecimalValue));
             }
         }
     }
