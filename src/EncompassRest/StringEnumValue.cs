@@ -10,7 +10,7 @@ namespace EncompassRest
     public struct StringEnumValue<TEnum>
         where TEnum : struct
     {
-        private static readonly EnumsNET.EnumFormat[] s_enumFormats = new[] { EnumsNET.EnumFormat.EnumMemberValue, EnumsNET.EnumFormat.Name };
+        private static readonly EnumFormat[] s_enumFormats = new[] { EnumFormat.EnumMemberValue, EnumFormat.Name };
 
         public static implicit operator StringEnumValue<TEnum>(string value) => new StringEnumValue<TEnum>(value);
 
@@ -35,7 +35,7 @@ namespace EncompassRest
             {
                 var nonNullableValue = value.GetValueOrDefault();
                 UnsafeEnums.Validate(nonNullableValue, nameof(value));
-                Value = UnsafeEnums.AsString(nonNullableValue, EnumsNET.EnumFormat.EnumMemberValue, EnumsNET.EnumFormat.Name);
+                Value = UnsafeEnums.AsString(nonNullableValue, EnumFormat.EnumMemberValue, EnumFormat.Name);
             }
             else
             {
