@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         public string LndBrchJrsdctn { get => _lndBrchJrsdctn; set => _lndBrchJrsdctn = value; }
         private DirtyValue<string> _lndBrchNm;
         public string LndBrchNm { get => _lndBrchNm; set => _lndBrchNm = value; }
-        private StringEnumValue<OrgTyp> _lndBrchOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _lndBrchOrgTyp;
         public StringEnumValue<OrgTyp> LndBrchOrgTyp { get => _lndBrchOrgTyp; set => _lndBrchOrgTyp = value; }
         private DirtyValue<string> _lndBrchPhone;
         public string LndBrchPhone { get => _lndBrchPhone; set => _lndBrchPhone = value; }
@@ -62,9 +62,9 @@ namespace EncompassRest.Loans
         public string LndLossPayeeJrsdctn { get => _lndLossPayeeJrsdctn; set => _lndLossPayeeJrsdctn = value; }
         private DirtyValue<string> _lndLossPayeeNm;
         public string LndLossPayeeNm { get => _lndLossPayeeNm; set => _lndLossPayeeNm = value; }
-        private StringEnumValue<OrgTyp> _lndLossPayeeOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _lndLossPayeeOrgTyp;
         public StringEnumValue<OrgTyp> LndLossPayeeOrgTyp { get => _lndLossPayeeOrgTyp; set => _lndLossPayeeOrgTyp = value; }
-        private StringEnumValue<ScsrsClaus> _lndLossPayeeScsrsClausTxtDesc;
+        private DirtyValue<StringEnumValue<ScsrsClaus>> _lndLossPayeeScsrsClausTxtDesc;
         public StringEnumValue<ScsrsClaus> LndLossPayeeScsrsClausTxtDesc { get => _lndLossPayeeScsrsClausTxtDesc; set => _lndLossPayeeScsrsClausTxtDesc = value; }
         private DirtyValue<string> _lndLossPayeeStCd;
         public string LndLossPayeeStCd { get => _lndLossPayeeStCd; set => _lndLossPayeeStCd = value; }
@@ -104,7 +104,7 @@ namespace EncompassRest.Loans
         public string LndNtryTtlOrRank { get => _lndNtryTtlOrRank; set => _lndNtryTtlOrRank = value; }
         private DirtyValue<string> _lndNtryZip;
         public string LndNtryZip { get => _lndNtryZip; set => _lndNtryZip = value; }
-        private StringEnumValue<OrgTyp> _lndOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _lndOrgTyp;
         public StringEnumValue<OrgTyp> LndOrgTyp { get => _lndOrgTyp; set => _lndOrgTyp = value; }
         private DirtyValue<string> _lndPhoneNum;
         public string LndPhoneNum { get => _lndPhoneNum; set => _lndPhoneNum = value; }
@@ -136,7 +136,7 @@ namespace EncompassRest.Loans
         public string LndSvcrJrsdctn { get => _lndSvcrJrsdctn; set => _lndSvcrJrsdctn = value; }
         private DirtyValue<string> _lndSvcrNm;
         public string LndSvcrNm { get => _lndSvcrNm; set => _lndSvcrNm = value; }
-        private StringEnumValue<OrgTyp> _lndSvcrOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _lndSvcrOrgTyp;
         public StringEnumValue<OrgTyp> LndSvcrOrgTyp { get => _lndSvcrOrgTyp; set => _lndSvcrOrgTyp = value; }
         private DirtyValue<string> _lndSvcrStCd;
         public string LndSvcrStCd { get => _lndSvcrStCd; set => _lndSvcrStCd = value; }

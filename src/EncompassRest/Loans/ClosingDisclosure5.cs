@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ClosingDisclosure5 : IDirty
     {
-        private StringEnumValue<CDLiabilityAfterForeclosure> _cDLiabilityAfterForeclosure;
+        private DirtyValue<StringEnumValue<CDLiabilityAfterForeclosure>> _cDLiabilityAfterForeclosure;
         public StringEnumValue<CDLiabilityAfterForeclosure> CDLiabilityAfterForeclosure { get => _cDLiabilityAfterForeclosure; set => _cDLiabilityAfterForeclosure = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -132,7 +132,7 @@ namespace EncompassRest.Loans
         public string SettlementAgentSTLicenseID { get => _settlementAgentSTLicenseID; set => _settlementAgentSTLicenseID = value; }
         private DirtyValue<string> _settlementAgentZip;
         public string SettlementAgentZip { get => _settlementAgentZip; set => _settlementAgentZip = value; }
-        private StringEnumValue<SignatureType> _signatureType;
+        private DirtyValue<StringEnumValue<SignatureType>> _signatureType;
         public StringEnumValue<SignatureType> SignatureType { get => _signatureType; set => _signatureType = value; }
         private DirtyValue<decimal?> _totalPayments;
         public decimal? TotalPayments { get => _totalPayments; set => _totalPayments = value; }

@@ -4,6 +4,6 @@ namespace EncompassRest.LoanPipeline
 {
     public sealed class CanonicalNames
     {
-        public List<PipelineLoanReportFieldDef> PipelineLoanReportFieldDefs { get; set; }
+        public List<PipelineFieldDefinition> PipelineLoanReportFieldDefs { get; set; }
     }
 }

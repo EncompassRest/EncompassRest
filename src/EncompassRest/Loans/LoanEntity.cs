@@ -12,7 +12,6 @@
         ATRQMBorrower = 8,
         ATRQMCommon = 9,
         Borrower = 10,
-        CoBorrower = 11,
         Buydown = 12,
         ClosingCost = 13,
         ClosingDisclosure1 = 14,
@@ -99,7 +98,6 @@
         LockDenialLog = 95,
         LockRequestBorrower = 96,
         LockRequestLog = 97,
-        LOCompensation = 98,
         LogAlert = 99,
         LogComment = 100,
         LogEntryLog = 101,
@@ -181,6 +179,9 @@
         RemovedLogRecord = 177,
         PrincipalDisbursementTransaction = 178,
         VirtualFields = 179,
-        CustomModelField = 180
+        CustomModelFields = 180,
+        NonVol = 181,
+        ElliUCDDetail = 182,
+        ExtraPayment = 183
     }
 }

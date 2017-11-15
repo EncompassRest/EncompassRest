@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         public int? ProfitManagementItemIndex { get => _profitManagementItemIndex; set => _profitManagementItemIndex = value; }
         private DirtyValue<decimal?> _total;
         public decimal? Total { get => _total; set => _total = value; }
-        private StringEnumValue<ProfitManagementItemType> _type;
+        private DirtyValue<StringEnumValue<ProfitManagementItemType>> _type;
         public StringEnumValue<ProfitManagementItemType> Type { get => _type; set => _type = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

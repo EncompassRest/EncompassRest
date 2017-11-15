@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public decimal? Amount { get => _amount; set => _amount = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<PurchaseCreditType> _purchaseCreditType;
+        private DirtyValue<StringEnumValue<PurchaseCreditType>> _purchaseCreditType;
         public StringEnumValue<PurchaseCreditType> PurchaseCreditType { get => _purchaseCreditType; set => _purchaseCreditType = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

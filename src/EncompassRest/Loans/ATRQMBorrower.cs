@@ -60,11 +60,11 @@ namespace EncompassRest.Loans
         public decimal? BorContingentLiabilitiesLiabilityAmount2 { get => _borContingentLiabilitiesLiabilityAmount2; set => _borContingentLiabilitiesLiabilityAmount2 = value; }
         private DirtyValue<decimal?> _borContingentLiabilitiesLiabilityAmount3;
         public decimal? BorContingentLiabilitiesLiabilityAmount3 { get => _borContingentLiabilitiesLiabilityAmount3; set => _borContingentLiabilitiesLiabilityAmount3 = value; }
-        private StringEnumValue<BorContingentLiabilitiesLiabilityDescription> _borContingentLiabilitiesLiabilityDescription1;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription1;
         public StringEnumValue<BorContingentLiabilitiesLiabilityDescription> BorContingentLiabilitiesLiabilityDescription1 { get => _borContingentLiabilitiesLiabilityDescription1; set => _borContingentLiabilitiesLiabilityDescription1 = value; }
-        private StringEnumValue<BorContingentLiabilitiesLiabilityDescription> _borContingentLiabilitiesLiabilityDescription2;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription2;
         public StringEnumValue<BorContingentLiabilitiesLiabilityDescription> BorContingentLiabilitiesLiabilityDescription2 { get => _borContingentLiabilitiesLiabilityDescription2; set => _borContingentLiabilitiesLiabilityDescription2 = value; }
-        private StringEnumValue<BorContingentLiabilitiesLiabilityDescription> _borContingentLiabilitiesLiabilityDescription3;
+        private DirtyValue<StringEnumValue<BorContingentLiabilitiesLiabilityDescription>> _borContingentLiabilitiesLiabilityDescription3;
         public StringEnumValue<BorContingentLiabilitiesLiabilityDescription> BorContingentLiabilitiesLiabilityDescription3 { get => _borContingentLiabilitiesLiabilityDescription3; set => _borContingentLiabilitiesLiabilityDescription3 = value; }
         private DirtyValue<decimal?> _borContingentLiabilitiesTotalLiabilityAmount;
         public decimal? BorContingentLiabilitiesTotalLiabilityAmount { get => _borContingentLiabilitiesTotalLiabilityAmount; set => _borContingentLiabilitiesTotalLiabilityAmount = value; }

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanEstimate1 : IDirty
     {
-        private StringEnumValue<TermType> _adjustsTermType;
+        private DirtyValue<StringEnumValue<TermType>> _adjustsTermType;
         public StringEnumValue<TermType> AdjustsTermType { get => _adjustsTermType; set => _adjustsTermType = value; }
         private DirtyValue<string> _changedCircumstanceComments;
         public string ChangedCircumstanceComments { get => _changedCircumstanceComments; set => _changedCircumstanceComments = value; }
@@ -52,41 +52,41 @@ namespace EncompassRest.Loans
         public string InterestRateAdjustsEveryYears { get => _interestRateAdjustsEveryYears; set => _interestRateAdjustsEveryYears = value; }
         private DirtyValue<int?> _interestRateAdjustsInYear;
         public int? InterestRateAdjustsInYear { get => _interestRateAdjustsInYear; set => _interestRateAdjustsInYear = value; }
-        private StringEnumValue<MonthOrYear> _interestRateAdjustsStartingInType;
+        private DirtyValue<StringEnumValue<MonthOrYear>> _interestRateAdjustsStartingInType;
         public StringEnumValue<MonthOrYear> InterestRateAdjustsStartingInType { get => _interestRateAdjustsStartingInType; set => _interestRateAdjustsStartingInType = value; }
         private DirtyValue<int?> _interestRateAfterAdjustment;
         public int? InterestRateAfterAdjustment { get => _interestRateAfterAdjustment; set => _interestRateAfterAdjustment = value; }
-        private StringEnumValue<CanGoOrGoes> _interestRateCanGoGoes;
+        private DirtyValue<StringEnumValue<CanGoOrGoes>> _interestRateCanGoGoes;
         public StringEnumValue<CanGoOrGoes> InterestRateCanGoGoes { get => _interestRateCanGoGoes; set => _interestRateCanGoGoes = value; }
         private DirtyValue<DateTime?> _lEDateIssued;
         public DateTime? LEDateIssued { get => _lEDateIssued; set => _lEDateIssued = value; }
-        private StringEnumValue<CanGoOrGoes> _loanAmountCanGoGoes;
+        private DirtyValue<StringEnumValue<CanGoOrGoes>> _loanAmountCanGoGoes;
         public StringEnumValue<CanGoOrGoes> LoanAmountCanGoGoes { get => _loanAmountCanGoGoes; set => _loanAmountCanGoGoes = value; }
-        private StringEnumValue<CanIncreaseOrIncreases> _loanAmountCanIncreaseOrIncreases;
+        private DirtyValue<StringEnumValue<CanIncreaseOrIncreases>> _loanAmountCanIncreaseOrIncreases;
         public StringEnumValue<CanIncreaseOrIncreases> LoanAmountCanIncreaseOrIncreases { get => _loanAmountCanIncreaseOrIncreases; set => _loanAmountCanIncreaseOrIncreases = value; }
         private DirtyValue<string> _loanProduct;
         public string LoanProduct { get => _loanProduct; set => _loanProduct = value; }
-        private StringEnumValue<LoanEstimate1LoanPurpose> _loanPurpose;
+        private DirtyValue<StringEnumValue<LoanEstimate1LoanPurpose>> _loanPurpose;
         public StringEnumValue<LoanEstimate1LoanPurpose> LoanPurpose { get => _loanPurpose; set => _loanPurpose = value; }
         private DirtyValue<int?> _loanTermMonths;
         public int? LoanTermMonths { get => _loanTermMonths; set => _loanTermMonths = value; }
         private DirtyValue<int?> _loanTermYears;
         public int? LoanTermYears { get => _loanTermYears; set => _loanTermYears = value; }
-        private StringEnumValue<MonthOrYear> _monthlyPIAdjustedInDateType;
+        private DirtyValue<StringEnumValue<MonthOrYear>> _monthlyPIAdjustedInDateType;
         public StringEnumValue<MonthOrYear> MonthlyPIAdjustedInDateType { get => _monthlyPIAdjustedInDateType; set => _monthlyPIAdjustedInDateType = value; }
         private DirtyValue<string> _monthlyPIAdjustsEveryYears;
         public string MonthlyPIAdjustsEveryYears { get => _monthlyPIAdjustsEveryYears; set => _monthlyPIAdjustsEveryYears = value; }
         private DirtyValue<int?> _monthlyPIAdjustsInYear;
         public int? MonthlyPIAdjustsInYear { get => _monthlyPIAdjustsInYear; set => _monthlyPIAdjustsInYear = value; }
-        private StringEnumValue<MonthOrYear> _monthlyPIAdjustsStartingInType;
+        private DirtyValue<StringEnumValue<MonthOrYear>> _monthlyPIAdjustsStartingInType;
         public StringEnumValue<MonthOrYear> MonthlyPIAdjustsStartingInType { get => _monthlyPIAdjustsStartingInType; set => _monthlyPIAdjustsStartingInType = value; }
-        private StringEnumValue<TermType> _monthlyPIAdjustsTermType;
+        private DirtyValue<StringEnumValue<TermType>> _monthlyPIAdjustsTermType;
         public StringEnumValue<TermType> MonthlyPIAdjustsTermType { get => _monthlyPIAdjustsTermType; set => _monthlyPIAdjustsTermType = value; }
         private DirtyValue<int?> _monthlyPIAfterAdjustment;
         public int? MonthlyPIAfterAdjustment { get => _monthlyPIAfterAdjustment; set => _monthlyPIAfterAdjustment = value; }
-        private StringEnumValue<CanGoOrGoes> _monthlyPICanGoGoes;
+        private DirtyValue<StringEnumValue<CanGoOrGoes>> _monthlyPICanGoGoes;
         public StringEnumValue<CanGoOrGoes> MonthlyPICanGoGoes { get => _monthlyPICanGoGoes; set => _monthlyPICanGoGoes = value; }
-        private StringEnumValue<MonthOrYear> _monthlyPIInterestOnlyDateType;
+        private DirtyValue<StringEnumValue<MonthOrYear>> _monthlyPIInterestOnlyDateType;
         public StringEnumValue<MonthOrYear> MonthlyPIInterestOnlyDateType { get => _monthlyPIInterestOnlyDateType; set => _monthlyPIInterestOnlyDateType = value; }
         private DirtyValue<int?> _monthlyPIInterestOnlyUntilYear;
         public int? MonthlyPIInterestOnlyUntilYear { get => _monthlyPIInterestOnlyUntilYear; set => _monthlyPIInterestOnlyUntilYear = value; }
@@ -212,7 +212,7 @@ namespace EncompassRest.Loans
         public bool? PPEstimatedEscrowIndicator { get => _pPEstimatedEscrowIndicator; set => _pPEstimatedEscrowIndicator = value; }
         private DirtyValue<int?> _prepaymentPenaltyPayOffDuringYear;
         public int? PrepaymentPenaltyPayOffDuringYear { get => _prepaymentPenaltyPayOffDuringYear; set => _prepaymentPenaltyPayOffDuringYear = value; }
-        private StringEnumValue<TermType> _prepaymentPenaltyPayOffInDateType;
+        private DirtyValue<StringEnumValue<TermType>> _prepaymentPenaltyPayOffInDateType;
         public StringEnumValue<TermType> PrepaymentPenaltyPayOffInDateType { get => _prepaymentPenaltyPayOffInDateType; set => _prepaymentPenaltyPayOffInDateType = value; }
         private DirtyValue<string> _prepaymentPenaltyPayOffInFirstYear;
         public string PrepaymentPenaltyPayOffInFirstYear { get => _prepaymentPenaltyPayOffInFirstYear; set => _prepaymentPenaltyPayOffInFirstYear = value; }

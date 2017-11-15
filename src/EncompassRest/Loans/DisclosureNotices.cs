@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         public string CommitmentIssuedByPostalCode { get => _commitmentIssuedByPostalCode; set => _commitmentIssuedByPostalCode = value; }
         private DirtyValue<string> _commitmentIssuedByState;
         public string CommitmentIssuedByState { get => _commitmentIssuedByState; set => _commitmentIssuedByState = value; }
-        private StringEnumValue<YOrN> _consumerHandbookOnAdjustableRateMortgages;
+        private DirtyValue<StringEnumValue<YOrN>> _consumerHandbookOnAdjustableRateMortgages;
         public StringEnumValue<YOrN> ConsumerHandbookOnAdjustableRateMortgages { get => _consumerHandbookOnAdjustableRateMortgages; set => _consumerHandbookOnAdjustableRateMortgages = value; }
         private DirtyValue<string> _daysToReceiveWrittenRequest;
         public string DaysToReceiveWrittenRequest { get => _daysToReceiveWrittenRequest; set => _daysToReceiveWrittenRequest = value; }

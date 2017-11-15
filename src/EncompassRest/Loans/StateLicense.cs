@@ -98,7 +98,7 @@ namespace EncompassRest.Loans
         public string SC { get => _sC; set => _sC = value; }
         private DirtyValue<string> _sD;
         public string SD { get => _sD; set => _sD = value; }
-        private StringEnumValue<StateLicenseType> _stateLicenseType;
+        private DirtyValue<StringEnumValue<StateLicenseType>> _stateLicenseType;
         public StringEnumValue<StateLicenseType> StateLicenseType { get => _stateLicenseType; set => _stateLicenseType = value; }
         private DirtyValue<string> _tN;
         public string TN { get => _tN; set => _tN = value; }

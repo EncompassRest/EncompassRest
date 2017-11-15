@@ -1,14 +1,15 @@
 ﻿using System.Runtime.Serialization;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Filters
 {
-    [EnumOutput(EnumOutput.EnumMemberValue)]
+    [EnumFormat(EnumFormat.EnumMemberValue)]
     public enum SortOrder
     {
         [EnumMember(Value = "asc")]
-        Ascending,
+        Ascending = 0,
         [EnumMember(Value = "desc")]
-        Descending
+        Descending = 1
     }
 }

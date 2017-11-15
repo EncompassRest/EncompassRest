@@ -136,7 +136,7 @@ namespace EncompassRest.Loans
         public decimal? CreditAmount { get => _creditAmount; set => _creditAmount = value; }
         private DirtyValue<decimal?> _creditAmountForPrint;
         public decimal? CreditAmountForPrint { get => _creditAmountForPrint; set => _creditAmountForPrint = value; }
-        private StringEnumValue<CreditChargeType> _creditChargeType;
+        private DirtyValue<StringEnumValue<CreditChargeType>> _creditChargeType;
         public StringEnumValue<CreditChargeType> CreditChargeType { get => _creditChargeType; set => _creditChargeType = value; }
         private DirtyValue<decimal?> _creditOrChange;
         public decimal? CreditOrChange { get => _creditOrChange; set => _creditOrChange = value; }
@@ -182,7 +182,7 @@ namespace EncompassRest.Loans
         public decimal? HudGuaranteeFee { get => _hudGuaranteeFee; set => _hudGuaranteeFee = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<IncludeOriginationPointsCreditType> _includeOriginationPointsCreditType;
+        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>> _includeOriginationPointsCreditType;
         public StringEnumValue<IncludeOriginationPointsCreditType> IncludeOriginationPointsCreditType { get => _includeOriginationPointsCreditType; set => _includeOriginationPointsCreditType = value; }
         private DirtyValue<decimal?> _initialLoanAmount;
         public decimal? InitialLoanAmount { get => _initialLoanAmount; set => _initialLoanAmount = value; }

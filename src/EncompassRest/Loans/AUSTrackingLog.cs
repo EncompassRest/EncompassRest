@@ -26,7 +26,7 @@ namespace EncompassRest.Loans
         public decimal? Log_AllOtherPayments { get => _log_AllOtherPayments; set => _log_AllOtherPayments = value; }
         private DirtyValue<int?> _log_AmortizationMonths;
         public int? Log_AmortizationMonths { get => _log_AmortizationMonths; set => _log_AmortizationMonths = value; }
-        private StringEnumValue<AmortizationType> _log_AmortizationType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _log_AmortizationType;
         public StringEnumValue<AmortizationType> Log_AmortizationType { get => _log_AmortizationType; set => _log_AmortizationType = value; }
         private DirtyValue<decimal?> _log_AmtSubordinateFin;
         public decimal? Log_AmtSubordinateFin { get => _log_AmtSubordinateFin; set => _log_AmtSubordinateFin = value; }
@@ -42,7 +42,7 @@ namespace EncompassRest.Loans
         public string Log_AUSRecommendation { get => _log_AUSRecommendation; set => _log_AUSRecommendation = value; }
         private DirtyValue<string> _log_AUSStatus;
         public string Log_AUSStatus { get => _log_AUSStatus; set => _log_AUSStatus = value; }
-        private StringEnumValue<Log_AUSTrackingType> _log_AUSTrackingType;
+        private DirtyValue<StringEnumValue<Log_AUSTrackingType>> _log_AUSTrackingType;
         public StringEnumValue<Log_AUSTrackingType> Log_AUSTrackingType { get => _log_AUSTrackingType; set => _log_AUSTrackingType = value; }
         private DirtyValue<string> _log_AUSTransactionID;
         public string Log_AUSTransactionID { get => _log_AUSTransactionID; set => _log_AUSTransactionID = value; }
@@ -150,7 +150,7 @@ namespace EncompassRest.Loans
         public string Log_CreditReportID1 { get => _log_CreditReportID1; set => _log_CreditReportID1 = value; }
         private DirtyValue<string> _log_CreditReportID2;
         public string Log_CreditReportID2 { get => _log_CreditReportID2; set => _log_CreditReportID2 = value; }
-        private StringEnumValue<AmortizationType> _log_CuredAmortizationType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _log_CuredAmortizationType;
         public StringEnumValue<AmortizationType> Log_CuredAmortizationType { get => _log_CuredAmortizationType; set => _log_CuredAmortizationType = value; }
         private DirtyValue<int?> _log_CuredAppraisedValue;
         public int? Log_CuredAppraisedValue { get => _log_CuredAppraisedValue; set => _log_CuredAppraisedValue = value; }
@@ -158,11 +158,11 @@ namespace EncompassRest.Loans
         public decimal? Log_CuredCLTV { get => _log_CuredCLTV; set => _log_CuredCLTV = value; }
         private DirtyValue<decimal?> _log_CuredHousingExpenseRatio;
         public decimal? Log_CuredHousingExpenseRatio { get => _log_CuredHousingExpenseRatio; set => _log_CuredHousingExpenseRatio = value; }
-        private StringEnumValue<LoanPurposeType> _log_CuredLoanPurpose;
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _log_CuredLoanPurpose;
         public StringEnumValue<LoanPurposeType> Log_CuredLoanPurpose { get => _log_CuredLoanPurpose; set => _log_CuredLoanPurpose = value; }
         private DirtyValue<int?> _log_CuredLoanTerm;
         public int? Log_CuredLoanTerm { get => _log_CuredLoanTerm; set => _log_CuredLoanTerm = value; }
-        private StringEnumValue<LoanType> _log_CuredLoanType;
+        private DirtyValue<StringEnumValue<LoanType>> _log_CuredLoanType;
         public StringEnumValue<LoanType> Log_CuredLoanType { get => _log_CuredLoanType; set => _log_CuredLoanType = value; }
         private DirtyValue<decimal?> _log_CuredLTV;
         public decimal? Log_CuredLTV { get => _log_CuredLTV; set => _log_CuredLTV = value; }
@@ -170,7 +170,7 @@ namespace EncompassRest.Loans
         public decimal? Log_CuredNoteRate { get => _log_CuredNoteRate; set => _log_CuredNoteRate = value; }
         private DirtyValue<decimal?> _log_CuredProposedTotalHousingPayment;
         public decimal? Log_CuredProposedTotalHousingPayment { get => _log_CuredProposedTotalHousingPayment; set => _log_CuredProposedTotalHousingPayment = value; }
-        private StringEnumValue<RefinancePurpose> _log_CuredRefinancePurpose;
+        private DirtyValue<StringEnumValue<RefinancePurpose>> _log_CuredRefinancePurpose;
         public StringEnumValue<RefinancePurpose> Log_CuredRefinancePurpose { get => _log_CuredRefinancePurpose; set => _log_CuredRefinancePurpose = value; }
         private DirtyValue<decimal?> _log_CuredTotalExpenseRatio;
         public decimal? Log_CuredTotalExpenseRatio { get => _log_CuredTotalExpenseRatio; set => _log_CuredTotalExpenseRatio = value; }
@@ -188,7 +188,7 @@ namespace EncompassRest.Loans
         public string Log_DocumentationLevel { get => _log_DocumentationLevel; set => _log_DocumentationLevel = value; }
         private DirtyValue<string> _log_DUCaseIDorLPAUSKey;
         public string Log_DUCaseIDorLPAUSKey { get => _log_DUCaseIDorLPAUSKey; set => _log_DUCaseIDorLPAUSKey = value; }
-        private StringEnumValue<PropertyType> _log_DUPropertyType;
+        private DirtyValue<StringEnumValue<PropertyType>> _log_DUPropertyType;
         public StringEnumValue<PropertyType> Log_DUPropertyType { get => _log_DUPropertyType; set => _log_DUPropertyType = value; }
         private DirtyValue<string> _log_eFolderGUID;
         public string Log_eFolderGUID { get => _log_eFolderGUID; set => _log_eFolderGUID = value; }
@@ -246,17 +246,17 @@ namespace EncompassRest.Loans
         public string Log_LCLAEvaluatedServiceConclusion3 { get => _log_LCLAEvaluatedServiceConclusion3; set => _log_LCLAEvaluatedServiceConclusion3 = value; }
         private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion4;
         public string Log_LCLAEvaluatedServiceConclusion4 { get => _log_LCLAEvaluatedServiceConclusion4; set => _log_LCLAEvaluatedServiceConclusion4 = value; }
-        private StringEnumValue<Log_LCLAEvaluatedServiceType1> _log_LCLAEvaluatedServiceType1;
+        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType1>> _log_LCLAEvaluatedServiceType1;
         public StringEnumValue<Log_LCLAEvaluatedServiceType1> Log_LCLAEvaluatedServiceType1 { get => _log_LCLAEvaluatedServiceType1; set => _log_LCLAEvaluatedServiceType1 = value; }
-        private StringEnumValue<Log_LCLAEvaluatedServiceType2> _log_LCLAEvaluatedServiceType2;
+        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType2>> _log_LCLAEvaluatedServiceType2;
         public StringEnumValue<Log_LCLAEvaluatedServiceType2> Log_LCLAEvaluatedServiceType2 { get => _log_LCLAEvaluatedServiceType2; set => _log_LCLAEvaluatedServiceType2 = value; }
-        private StringEnumValue<Log_LCLAEvaluatedServiceType3> _log_LCLAEvaluatedServiceType3;
+        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType3>> _log_LCLAEvaluatedServiceType3;
         public StringEnumValue<Log_LCLAEvaluatedServiceType3> Log_LCLAEvaluatedServiceType3 { get => _log_LCLAEvaluatedServiceType3; set => _log_LCLAEvaluatedServiceType3 = value; }
         private DirtyValue<string> _log_LCLAEvaluatedServiceType4;
         public string Log_LCLAEvaluatedServiceType4 { get => _log_LCLAEvaluatedServiceType4; set => _log_LCLAEvaluatedServiceType4 = value; }
         private DirtyValue<string> _log_LenderLoan;
         public string Log_LenderLoan { get => _log_LenderLoan; set => _log_LenderLoan = value; }
-        private StringEnumValue<LienType> _log_LienType;
+        private DirtyValue<StringEnumValue<LienType>> _log_LienType;
         public StringEnumValue<LienType> Log_LienType { get => _log_LienType; set => _log_LienType = value; }
         private DirtyValue<decimal?> _log_LoanAmount;
         public decimal? Log_LoanAmount { get => _log_LoanAmount; set => _log_LoanAmount = value; }
@@ -266,15 +266,15 @@ namespace EncompassRest.Loans
         public string Log_LoanProcessingStage { get => _log_LoanProcessingStage; set => _log_LoanProcessingStage = value; }
         private DirtyValue<string> _log_LoanProspectorID;
         public string Log_LoanProspectorID { get => _log_LoanProspectorID; set => _log_LoanProspectorID = value; }
-        private StringEnumValue<LoanPurposeType> _log_LoanPurpose;
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _log_LoanPurpose;
         public StringEnumValue<LoanPurposeType> Log_LoanPurpose { get => _log_LoanPurpose; set => _log_LoanPurpose = value; }
         private DirtyValue<int?> _log_LoanTerm;
         public int? Log_LoanTerm { get => _log_LoanTerm; set => _log_LoanTerm = value; }
-        private StringEnumValue<LoanType> _log_LoanType;
+        private DirtyValue<StringEnumValue<LoanType>> _log_LoanType;
         public StringEnumValue<LoanType> Log_LoanType { get => _log_LoanType; set => _log_LoanType = value; }
         private DirtyValue<DateTime?> _log_LPAssmtExpDate;
         public DateTime? Log_LPAssmtExpDate { get => _log_LPAssmtExpDate; set => _log_LPAssmtExpDate = value; }
-        private StringEnumValue<OtherPropertyType> _log_LPPropertyType;
+        private DirtyValue<StringEnumValue<OtherPropertyType>> _log_LPPropertyType;
         public StringEnumValue<OtherPropertyType> Log_LPPropertyType { get => _log_LPPropertyType; set => _log_LPPropertyType = value; }
         private DirtyValue<string> _log_LPVersion;
         public string Log_LPVersion { get => _log_LPVersion; set => _log_LPVersion = value; }
@@ -378,7 +378,7 @@ namespace EncompassRest.Loans
         public decimal? Log_QualifyingRate { get => _log_QualifyingRate; set => _log_QualifyingRate = value; }
         private DirtyValue<string> _log_RecordType;
         public string Log_RecordType { get => _log_RecordType; set => _log_RecordType = value; }
-        private StringEnumValue<RefinancePurpose> _log_RefinancePurpose;
+        private DirtyValue<StringEnumValue<RefinancePurpose>> _log_RefinancePurpose;
         public StringEnumValue<RefinancePurpose> Log_RefinancePurpose { get => _log_RefinancePurpose; set => _log_RefinancePurpose = value; }
         private DirtyValue<decimal?> _log_Reserves;
         public decimal? Log_Reserves { get => _log_Reserves; set => _log_Reserves = value; }
@@ -434,7 +434,7 @@ namespace EncompassRest.Loans
         public string Log_TransactionID { get => _log_TransactionID; set => _log_TransactionID = value; }
         private DirtyValue<string> _log_UnderwritingRiskAssessOther;
         public string Log_UnderwritingRiskAssessOther { get => _log_UnderwritingRiskAssessOther; set => _log_UnderwritingRiskAssessOther = value; }
-        private StringEnumValue<RiskAssessmentType> _log_UnderwritingRiskAssessType;
+        private DirtyValue<StringEnumValue<RiskAssessmentType>> _log_UnderwritingRiskAssessType;
         public StringEnumValue<RiskAssessmentType> Log_UnderwritingRiskAssessType { get => _log_UnderwritingRiskAssessType; set => _log_UnderwritingRiskAssessType = value; }
         private DirtyValue<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get => _log_WithUndisclosedDebt; set => _log_WithUndisclosedDebt = value; }

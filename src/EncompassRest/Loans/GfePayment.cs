@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _indexRate;
         public decimal? IndexRate { get => _indexRate; set => _indexRate = value; }
-        private StringEnumValue<YesOrNo> _isBalanceReduced;
+        private DirtyValue<StringEnumValue<YesOrNo>> _isBalanceReduced;
         public StringEnumValue<YesOrNo> IsBalanceReduced { get => _isBalanceReduced; set => _isBalanceReduced = value; }
         private DirtyValue<string> _loanTypeExplanation;
         public string LoanTypeExplanation { get => _loanTypeExplanation; set => _loanTypeExplanation = value; }
@@ -46,7 +46,7 @@ namespace EncompassRest.Loans
         public decimal? RateInMonth2 { get => _rateInMonth2; set => _rateInMonth2 = value; }
         private DirtyValue<decimal?> _reducedLoanBalance;
         public decimal? ReducedLoanBalance { get => _reducedLoanBalance; set => _reducedLoanBalance = value; }
-        private StringEnumValue<ReducedStatus> _reducedStatus;
+        private DirtyValue<StringEnumValue<ReducedStatus>> _reducedStatus;
         public StringEnumValue<ReducedStatus> ReducedStatus { get => _reducedStatus; set => _reducedStatus = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

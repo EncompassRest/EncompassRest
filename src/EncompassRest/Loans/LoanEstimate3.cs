@@ -8,9 +8,9 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanEstimate3 : IDirty
     {
-        private StringEnumValue<Appraisal> _appraisal;
+        private DirtyValue<StringEnumValue<Appraisal>> _appraisal;
         public StringEnumValue<Appraisal> Appraisal { get => _appraisal; set => _appraisal = value; }
-        private StringEnumValue<Assumption> _assumption;
+        private DirtyValue<StringEnumValue<Assumption>> _assumption;
         public StringEnumValue<Assumption> Assumption { get => _assumption; set => _assumption = value; }
         private DirtyValue<bool?> _constructionLoan;
         public bool? ConstructionLoan { get => _constructionLoan; set => _constructionLoan = value; }
@@ -54,9 +54,9 @@ namespace EncompassRest.Loans
         public string MortgageBrokerPhone { get => _mortgageBrokerPhone; set => _mortgageBrokerPhone = value; }
         private DirtyValue<string> _mortgageLenderLoanOfficerLicenseID;
         public string MortgageLenderLoanOfficerLicenseID { get => _mortgageLenderLoanOfficerLicenseID; set => _mortgageLenderLoanOfficerLicenseID = value; }
-        private StringEnumValue<Servicing> _servicing;
+        private DirtyValue<StringEnumValue<Servicing>> _servicing;
         public StringEnumValue<Servicing> Servicing { get => _servicing; set => _servicing = value; }
-        private StringEnumValue<SignatureType> _signatureType;
+        private DirtyValue<StringEnumValue<SignatureType>> _signatureType;
         public StringEnumValue<SignatureType> SignatureType { get => _signatureType; set => _signatureType = value; }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get => _totalInterestPercentage; set => _totalInterestPercentage = value; }

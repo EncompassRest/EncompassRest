@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _name;
         public string Name { get => _name; set => _name = value; }
-        private StringEnumValue<RecordOwnerType> _recordOwnerType;
+        private DirtyValue<StringEnumValue<RecordOwnerType>> _recordOwnerType;
         public StringEnumValue<RecordOwnerType> RecordOwnerType { get => _recordOwnerType; set => _recordOwnerType = value; }
         private DirtyValue<string> _sourceofNonWageIncomeDescription;
         public string SourceofNonWageIncomeDescription { get => _sourceofNonWageIncomeDescription; set => _sourceofNonWageIncomeDescription = value; }

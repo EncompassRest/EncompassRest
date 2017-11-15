@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EncompassRest.Utilities;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
@@ -17,10 +18,10 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<string> _createdByName;
         public string CreatedByName { get => _createdByName; set => _createdByName = value; }
         private DirtyValue<AttachmentCreateReason?> _createReason;
-        [EnumOutput(EnumOutput.Integer)]
+        [EnumFormat(EnumFormat.DecimalValue)]
         public AttachmentCreateReason? CreateReason { get => _createReason; set => _createReason = value; }
         private DirtyValue<AttachmentType?> _attachmentType;
-        [EnumOutput(EnumOutput.Integer)]
+        [EnumFormat(EnumFormat.DecimalValue)]
         public AttachmentType? AttachmentType { get => _attachmentType; set => _attachmentType = value; }
         private DirtyValue<long?> _fileSize;
         public long? FileSize { get => _fileSize; set => _fileSize = value; }

@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<string> _additionalRightsDescription;
         public string AdditionalRightsDescription { get => _additionalRightsDescription; set => _additionalRightsDescription = value; }
-        private StringEnumValue<AffiliateType> _affiliateType;
+        private DirtyValue<StringEnumValue<AffiliateType>> _affiliateType;
         public StringEnumValue<AffiliateType> AffiliateType { get => _affiliateType; set => _affiliateType = value; }
         private DirtyValue<string> _affiliateTypeExample1;
         public string AffiliateTypeExample1 { get => _affiliateTypeExample1; set => _affiliateTypeExample1 = value; }
@@ -18,59 +18,59 @@ namespace EncompassRest.Loans
         public string AffiliateTypeExample2 { get => _affiliateTypeExample2; set => _affiliateTypeExample2 = value; }
         private DirtyValue<string> _affiliateTypeExample3;
         public string AffiliateTypeExample3 { get => _affiliateTypeExample3; set => _affiliateTypeExample3 = value; }
-        private StringEnumValue<AlsoCollectFrom> _alsoCollectFrom;
+        private DirtyValue<StringEnumValue<AlsoCollectFrom>> _alsoCollectFrom;
         public StringEnumValue<AlsoCollectFrom> AlsoCollectFrom { get => _alsoCollectFrom; set => _alsoCollectFrom = value; }
         private DirtyValue<int?> _daysToUse;
         public int? DaysToUse { get => _daysToUse; set => _daysToUse = value; }
-        private StringEnumValue<HowToShare> _howToShare;
+        private DirtyValue<StringEnumValue<HowToShare>> _howToShare;
         public StringEnumValue<HowToShare> HowToShare { get => _howToShare; set => _howToShare = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<YesOrNo> _informationShare1;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare1;
         public StringEnumValue<YesOrNo> InformationShare1 { get => _informationShare1; set => _informationShare1 = value; }
-        private StringEnumValue<YesOrNo> _informationShare2;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare2;
         public StringEnumValue<YesOrNo> InformationShare2 { get => _informationShare2; set => _informationShare2 = value; }
-        private StringEnumValue<YesOrNo> _informationShare3;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare3;
         public StringEnumValue<YesOrNo> InformationShare3 { get => _informationShare3; set => _informationShare3 = value; }
-        private StringEnumValue<YesOrNo> _informationShare4;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare4;
         public StringEnumValue<YesOrNo> InformationShare4 { get => _informationShare4; set => _informationShare4 = value; }
-        private StringEnumValue<YesOrNo> _informationShare5;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare5;
         public StringEnumValue<YesOrNo> InformationShare5 { get => _informationShare5; set => _informationShare5 = value; }
-        private StringEnumValue<YesOrNo> _informationShare6;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare6;
         public StringEnumValue<YesOrNo> InformationShare6 { get => _informationShare6; set => _informationShare6 = value; }
-        private StringEnumValue<YesOrNo> _informationShare7;
+        private DirtyValue<StringEnumValue<YesOrNo>> _informationShare7;
         public StringEnumValue<YesOrNo> InformationShare7 { get => _informationShare7; set => _informationShare7 = value; }
-        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect1;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect1;
         public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect1 { get => _informationTypesWeCollect1; set => _informationTypesWeCollect1 = value; }
-        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect2;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect2;
         public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect2 { get => _informationTypesWeCollect2; set => _informationTypesWeCollect2 = value; }
-        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect3;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect3;
         public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect3 { get => _informationTypesWeCollect3; set => _informationTypesWeCollect3 = value; }
-        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect4;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect4;
         public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect4 { get => _informationTypesWeCollect4; set => _informationTypesWeCollect4 = value; }
-        private StringEnumValue<InformationTypesWeCollect> _informationTypesWeCollect5;
+        private DirtyValue<StringEnumValue<InformationTypesWeCollect>> _informationTypesWeCollect5;
         public StringEnumValue<InformationTypesWeCollect> InformationTypesWeCollect5 { get => _informationTypesWeCollect5; set => _informationTypesWeCollect5 = value; }
-        private StringEnumValue<JointMarketType> _jointMarketType;
+        private DirtyValue<StringEnumValue<JointMarketType>> _jointMarketType;
         public StringEnumValue<JointMarketType> JointMarketType { get => _jointMarketType; set => _jointMarketType = value; }
         private DirtyValue<string> _jointMarketTypeExample1;
         public string JointMarketTypeExample1 { get => _jointMarketTypeExample1; set => _jointMarketTypeExample1 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing1;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing1;
         public StringEnumValue<LimitSharing> LimitSharing1 { get => _limitSharing1; set => _limitSharing1 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing2;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing2;
         public StringEnumValue<LimitSharing> LimitSharing2 { get => _limitSharing2; set => _limitSharing2 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing3;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing3;
         public StringEnumValue<LimitSharing> LimitSharing3 { get => _limitSharing3; set => _limitSharing3 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing4;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing4;
         public StringEnumValue<LimitSharing> LimitSharing4 { get => _limitSharing4; set => _limitSharing4 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing5;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing5;
         public StringEnumValue<LimitSharing> LimitSharing5 { get => _limitSharing5; set => _limitSharing5 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing6;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing6;
         public StringEnumValue<LimitSharing> LimitSharing6 { get => _limitSharing6; set => _limitSharing6 = value; }
-        private StringEnumValue<LimitSharing> _limitSharing7;
+        private DirtyValue<StringEnumValue<LimitSharing>> _limitSharing7;
         public StringEnumValue<LimitSharing> LimitSharing7 { get => _limitSharing7; set => _limitSharing7 = value; }
-        private StringEnumValue<Month> _month;
+        private DirtyValue<StringEnumValue<Month>> _month;
         public StringEnumValue<Month> Month { get => _month; set => _month = value; }
-        private StringEnumValue<NonaffiliateType> _nonaffiliateType;
+        private DirtyValue<StringEnumValue<NonaffiliateType>> _nonaffiliateType;
         public StringEnumValue<NonaffiliateType> NonaffiliateType { get => _nonaffiliateType; set => _nonaffiliateType = value; }
         private DirtyValue<string> _nonaffiliateTypeExample1;
         public string NonaffiliateTypeExample1 { get => _nonaffiliateTypeExample1; set => _nonaffiliateTypeExample1 = value; }
@@ -82,19 +82,19 @@ namespace EncompassRest.Loans
         public string PhoneForQuestion { get => _phoneForQuestion; set => _phoneForQuestion = value; }
         private DirtyValue<string> _phoneToLimit;
         public string PhoneToLimit { get => _phoneToLimit; set => _phoneToLimit = value; }
-        private StringEnumValue<PrintSelection> _printSelection;
+        private DirtyValue<StringEnumValue<PrintSelection>> _printSelection;
         public StringEnumValue<PrintSelection> PrintSelection { get => _printSelection; set => _printSelection = value; }
-        private StringEnumValue<ShareInfoWithJointMarketing> _shareInfoWithJointMarketing;
+        private DirtyValue<StringEnumValue<ShareInfoWithJointMarketing>> _shareInfoWithJointMarketing;
         public StringEnumValue<ShareInfoWithJointMarketing> ShareInfoWithJointMarketing { get => _shareInfoWithJointMarketing; set => _shareInfoWithJointMarketing = value; }
-        private StringEnumValue<TimesToCollect> _timesToCollect1;
+        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect1;
         public StringEnumValue<TimesToCollect> TimesToCollect1 { get => _timesToCollect1; set => _timesToCollect1 = value; }
-        private StringEnumValue<TimesToCollect> _timesToCollect2;
+        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect2;
         public StringEnumValue<TimesToCollect> TimesToCollect2 { get => _timesToCollect2; set => _timesToCollect2 = value; }
-        private StringEnumValue<TimesToCollect> _timesToCollect3;
+        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect3;
         public StringEnumValue<TimesToCollect> TimesToCollect3 { get => _timesToCollect3; set => _timesToCollect3 = value; }
-        private StringEnumValue<TimesToCollect> _timesToCollect4;
+        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect4;
         public StringEnumValue<TimesToCollect> TimesToCollect4 { get => _timesToCollect4; set => _timesToCollect4 = value; }
-        private StringEnumValue<TimesToCollect> _timesToCollect5;
+        private DirtyValue<StringEnumValue<TimesToCollect>> _timesToCollect5;
         public StringEnumValue<TimesToCollect> TimesToCollect5 { get => _timesToCollect5; set => _timesToCollect5 = value; }
         private DirtyValue<string> _websiteForQuestion;
         public string WebsiteForQuestion { get => _websiteForQuestion; set => _websiteForQuestion = value; }

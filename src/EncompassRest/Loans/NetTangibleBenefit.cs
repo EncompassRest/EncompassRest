@@ -62,7 +62,7 @@ namespace EncompassRest.Loans
         public bool? ExistingLoanIsNegativeAmortizationFeatureIndicator { get => _existingLoanIsNegativeAmortizationFeatureIndicator; set => _existingLoanIsNegativeAmortizationFeatureIndicator = value; }
         private DirtyValue<bool?> _existingLoanIsPrepaymentPenalty;
         public bool? ExistingLoanIsPrepaymentPenalty { get => _existingLoanIsPrepaymentPenalty; set => _existingLoanIsPrepaymentPenalty = value; }
-        private StringEnumValue<AmortizationType> _existingLoanLoanAmortizationType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _existingLoanLoanAmortizationType;
         public StringEnumValue<AmortizationType> ExistingLoanLoanAmortizationType { get => _existingLoanLoanAmortizationType; set => _existingLoanLoanAmortizationType = value; }
         private DirtyValue<decimal?> _existingLoanLoanAmount;
         public decimal? ExistingLoanLoanAmount { get => _existingLoanLoanAmount; set => _existingLoanLoanAmount = value; }
@@ -84,15 +84,15 @@ namespace EncompassRest.Loans
         public decimal? ExistingLoanPaymentIncludeMortgageInsurance { get => _existingLoanPaymentIncludeMortgageInsurance; set => _existingLoanPaymentIncludeMortgageInsurance = value; }
         private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan;
         public decimal? ExistingLoanPrepaymentPenaltyAmountIncludedInNewLoan { get => _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan; set => _existingLoanPrepaymentPenaltyAmountIncludedInNewLoan = value; }
-        private StringEnumValue<PrepaymentPenaltyBasedOn> _existingLoanPrepaymentPenaltyBasedOn;
+        private DirtyValue<StringEnumValue<PrepaymentPenaltyBasedOn>> _existingLoanPrepaymentPenaltyBasedOn;
         public StringEnumValue<PrepaymentPenaltyBasedOn> ExistingLoanPrepaymentPenaltyBasedOn { get => _existingLoanPrepaymentPenaltyBasedOn; set => _existingLoanPrepaymentPenaltyBasedOn = value; }
         private DirtyValue<decimal?> _existingLoanPrepaymentPenaltyPercentage;
         public decimal? ExistingLoanPrepaymentPenaltyPercentage { get => _existingLoanPrepaymentPenaltyPercentage; set => _existingLoanPrepaymentPenaltyPercentage = value; }
         private DirtyValue<int?> _existingLoanPrepaymentPenaltyTerm;
         public int? ExistingLoanPrepaymentPenaltyTerm { get => _existingLoanPrepaymentPenaltyTerm; set => _existingLoanPrepaymentPenaltyTerm = value; }
-        private StringEnumValue<ExistingLoanProvidedByLicenseeType> _existingLoanProvidedByLicenseeType;
+        private DirtyValue<StringEnumValue<ExistingLoanProvidedByLicenseeType>> _existingLoanProvidedByLicenseeType;
         public StringEnumValue<ExistingLoanProvidedByLicenseeType> ExistingLoanProvidedByLicenseeType { get => _existingLoanProvidedByLicenseeType; set => _existingLoanProvidedByLicenseeType = value; }
-        private StringEnumValue<LoanPurposeType> _existingLoanPurposeType;
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _existingLoanPurposeType;
         public StringEnumValue<LoanPurposeType> ExistingLoanPurposeType { get => _existingLoanPurposeType; set => _existingLoanPurposeType = value; }
         private DirtyValue<int?> _existingLoanRecoupCostsYears;
         public int? ExistingLoanRecoupCostsYears { get => _existingLoanRecoupCostsYears; set => _existingLoanRecoupCostsYears = value; }

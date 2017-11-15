@@ -40,7 +40,7 @@ namespace EncompassRest.Loans
         public bool? DocPrepFeeToBeFinancedIndicator { get => _docPrepFeeToBeFinancedIndicator; set => _docPrepFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _docPrepPortionOfFeeIndicator;
         public bool? DocPrepPortionOfFeeIndicator { get => _docPrepPortionOfFeeIndicator; set => _docPrepPortionOfFeeIndicator = value; }
-        private StringEnumValue<DoesOrDoesNot2> _exceed2PercentPrepayPenalty;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _exceed2PercentPrepayPenalty;
         public StringEnumValue<DoesOrDoesNot2> Exceed2PercentPrepayPenalty { get => _exceed2PercentPrepayPenalty; set => _exceed2PercentPrepayPenalty = value; }
         private DirtyValue<decimal?> _hoepaAPR;
         public decimal? HoepaAPR { get => _hoepaAPR; set => _hoepaAPR = value; }
@@ -90,7 +90,7 @@ namespace EncompassRest.Loans
         public bool? NotaryPortionOfFeeIndicator { get => _notaryPortionOfFeeIndicator; set => _notaryPortionOfFeeIndicator = value; }
         private DirtyValue<bool?> _otherHighCostIndicator;
         public bool? OtherHighCostIndicator { get => _otherHighCostIndicator; set => _otherHighCostIndicator = value; }
-        private StringEnumValue<PenaltyChargeMoreThan36Months> _penaltyChargeMoreThan36Months;
+        private DirtyValue<StringEnumValue<PenaltyChargeMoreThan36Months>> _penaltyChargeMoreThan36Months;
         public StringEnumValue<PenaltyChargeMoreThan36Months> PenaltyChargeMoreThan36Months { get => _penaltyChargeMoreThan36Months; set => _penaltyChargeMoreThan36Months = value; }
         private DirtyValue<bool?> _pestInspectionFeeToBeFinancedIndicator;
         public bool? PestInspectionFeeToBeFinancedIndicator { get => _pestInspectionFeeToBeFinancedIndicator; set => _pestInspectionFeeToBeFinancedIndicator = value; }
@@ -116,7 +116,7 @@ namespace EncompassRest.Loans
         public bool? Section32Indicator { get => _section32Indicator; set => _section32Indicator = value; }
         private DirtyValue<decimal?> _section35AveragePrimeRate;
         public decimal? Section35AveragePrimeRate { get => _section35AveragePrimeRate; set => _section35AveragePrimeRate = value; }
-        private StringEnumValue<DoesOrDoesNot> _section35IsSecondAppraisalRequired;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot>> _section35IsSecondAppraisalRequired;
         public StringEnumValue<DoesOrDoesNot> Section35IsSecondAppraisalRequired { get => _section35IsSecondAppraisalRequired; set => _section35IsSecondAppraisalRequired = value; }
         private DirtyValue<DateTime?> _section35PriorAcquisitionDate;
         public DateTime? Section35PriorAcquisitionDate { get => _section35PriorAcquisitionDate; set => _section35PriorAcquisitionDate = value; }

@@ -7,10 +7,10 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     [JsonConverter(typeof(StringEnumValueConverter<>))]
-    public struct StringEnumValue<TEnum> : IDirty
+    public struct StringEnumValue<TEnum>
         where TEnum : struct
     {
-        private static readonly EnumFormat[] s_enumFormats = new[] { EnumFormat.EnumMemberValue, EnumFormat.Name };
+        private static readonly EnumsNET.EnumFormat[] s_enumFormats = new[] { EnumsNET.EnumFormat.EnumMemberValue, EnumsNET.EnumFormat.Name };
 
         public static implicit operator StringEnumValue<TEnum>(string value) => new StringEnumValue<TEnum>(value);
 
@@ -24,12 +24,9 @@ namespace EncompassRest
 
         public TEnum? EnumValue => !string.IsNullOrEmpty(Value) && UnsafeEnums.TryParse(Value, out TEnum value, s_enumFormats) ? value : (TEnum?)null;
 
-        internal bool Dirty { get; set; }
-
         public StringEnumValue(string value)
         {
             Value = value;
-            Dirty = true;
         }
 
         public StringEnumValue(TEnum? value)
@@ -38,13 +35,12 @@ namespace EncompassRest
             {
                 var nonNullableValue = value.GetValueOrDefault();
                 UnsafeEnums.Validate(nonNullableValue, nameof(value));
-                Value = UnsafeEnums.AsString(nonNullableValue, EnumFormat.EnumMemberValue, EnumFormat.Name);
+                Value = UnsafeEnums.AsString(nonNullableValue, EnumsNET.EnumFormat.EnumMemberValue, EnumsNET.EnumFormat.Name);
             }
             else
             {
                 Value = null;
             }
-            Dirty = true;
         }
 
         public override string ToString() => Value;
@@ -52,8 +48,6 @@ namespace EncompassRest
         public override int GetHashCode() => Value?.GetHashCode() ?? 0;
 
         public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> && ((StringEnumValue<TEnum>)obj).Value == Value;
-
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 
     internal sealed class StringEnumValueConverter<TEnum> : JsonConverter

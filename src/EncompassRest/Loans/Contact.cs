@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         public string Address2 { get => _address2; set => _address2 = value; }
         private DirtyValue<bool?> _addToCdContactInfo;
         public bool? AddToCdContactInfo { get => _addToCdContactInfo; set => _addToCdContactInfo = value; }
-        private StringEnumValue<AppraisalMade> _appraisalMade;
+        private DirtyValue<StringEnumValue<AppraisalMade>> _appraisalMade;
         public StringEnumValue<AppraisalMade> AppraisalMade { get => _appraisalMade; set => _appraisalMade = value; }
         private DirtyValue<DateTime?> _bizLicenseAuthDate;
         public DateTime? BizLicenseAuthDate { get => _bizLicenseAuthDate; set => _bizLicenseAuthDate = value; }
@@ -26,7 +26,7 @@ namespace EncompassRest.Loans
         public string BizLicenseAuthName { get => _bizLicenseAuthName; set => _bizLicenseAuthName = value; }
         private DirtyValue<string> _bizLicenseAuthStateCode;
         public string BizLicenseAuthStateCode { get => _bizLicenseAuthStateCode; set => _bizLicenseAuthStateCode = value; }
-        private StringEnumValue<LicenseAuthType> _bizLicenseAuthType;
+        private DirtyValue<StringEnumValue<LicenseAuthType>> _bizLicenseAuthType;
         public StringEnumValue<LicenseAuthType> BizLicenseAuthType { get => _bizLicenseAuthType; set => _bizLicenseAuthType = value; }
         private DirtyValue<string> _bizLicenseNumber;
         public string BizLicenseNumber { get => _bizLicenseNumber; set => _bizLicenseNumber = value; }
@@ -64,7 +64,7 @@ namespace EncompassRest.Loans
         public string ContactNMLSNo { get => _contactNMLSNo; set => _contactNMLSNo = value; }
         private DirtyValue<string> _contactTitle;
         public string ContactTitle { get => _contactTitle; set => _contactTitle = value; }
-        private StringEnumValue<ContactType> _contactType;
+        private DirtyValue<StringEnumValue<ContactType>> _contactType;
         public StringEnumValue<ContactType> ContactType { get => _contactType; set => _contactType = value; }
         private DirtyValue<DateTime?> _designeeAcceptedDate;
         public DateTime? DesigneeAcceptedDate { get => _designeeAcceptedDate; set => _designeeAcceptedDate = value; }
@@ -98,7 +98,7 @@ namespace EncompassRest.Loans
         public int? InsuranceNoOfBedrooms { get => _insuranceNoOfBedrooms; set => _insuranceNoOfBedrooms = value; }
         private DirtyValue<decimal?> _insurancePremium;
         public decimal? InsurancePremium { get => _insurancePremium; set => _insurancePremium = value; }
-        private StringEnumValue<ProjectType> _insuranceProjectType;
+        private DirtyValue<StringEnumValue<ProjectType>> _insuranceProjectType;
         public StringEnumValue<ProjectType> InsuranceProjectType { get => _insuranceProjectType; set => _insuranceProjectType = value; }
         private DirtyValue<DateTime?> _insuranceRenewalDate;
         public DateTime? InsuranceRenewalDate { get => _insuranceRenewalDate; set => _insuranceRenewalDate = value; }
@@ -154,7 +154,7 @@ namespace EncompassRest.Loans
         public string PersonalLicenseAuthName { get => _personalLicenseAuthName; set => _personalLicenseAuthName = value; }
         private DirtyValue<string> _personalLicenseAuthStateCode;
         public string PersonalLicenseAuthStateCode { get => _personalLicenseAuthStateCode; set => _personalLicenseAuthStateCode = value; }
-        private StringEnumValue<LicenseAuthType> _personalLicenseAuthType;
+        private DirtyValue<StringEnumValue<LicenseAuthType>> _personalLicenseAuthType;
         public StringEnumValue<LicenseAuthType> PersonalLicenseAuthType { get => _personalLicenseAuthType; set => _personalLicenseAuthType = value; }
         private DirtyValue<string> _personalLicenseNumber;
         public string PersonalLicenseNumber { get => _personalLicenseNumber; set => _personalLicenseNumber = value; }

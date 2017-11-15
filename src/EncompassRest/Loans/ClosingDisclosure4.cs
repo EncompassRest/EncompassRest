@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class ClosingDisclosure4 : IDirty
     {
-        private StringEnumValue<DemandFeature> _demandFeature;
+        private DirtyValue<StringEnumValue<DemandFeature>> _demandFeature;
         public StringEnumValue<DemandFeature> DemandFeature { get => _demandFeature; set => _demandFeature = value; }
         private DirtyValue<bool?> _escrowIndicator;
         public bool? EscrowIndicator { get => _escrowIndicator; set => _escrowIndicator = value; }
@@ -46,7 +46,7 @@ namespace EncompassRest.Loans
         public decimal? MaxPaymentAmt { get => _maxPaymentAmt; set => _maxPaymentAmt = value; }
         private DirtyValue<decimal?> _monthlyEscrowPayment;
         public decimal? MonthlyEscrowPayment { get => _monthlyEscrowPayment; set => _monthlyEscrowPayment = value; }
-        private StringEnumValue<NegativeAmortization> _negativeAmortization;
+        private DirtyValue<StringEnumValue<NegativeAmortization>> _negativeAmortization;
         public StringEnumValue<NegativeAmortization> NegativeAmortization { get => _negativeAmortization; set => _negativeAmortization = value; }
         private DirtyValue<decimal?> _nonEscrowedPropertyCosts1YearConsummation;
         public decimal? NonEscrowedPropertyCosts1YearConsummation { get => _nonEscrowedPropertyCosts1YearConsummation; set => _nonEscrowedPropertyCosts1YearConsummation = value; }

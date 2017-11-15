@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class FhaVaLoan : IDirty
     {
-        private StringEnumValue<AddendumType> _addendumType;
+        private DirtyValue<StringEnumValue<AddendumType>> _addendumType;
         public StringEnumValue<AddendumType> AddendumType { get => _addendumType; set => _addendumType = value; }
         private DirtyValue<bool?> _additionalCondition1;
         public bool? AdditionalCondition1 { get => _additionalCondition1; set => _additionalCondition1 = value; }
@@ -38,7 +38,7 @@ namespace EncompassRest.Loans
         public DateTime? AppraisalLoggedDate { get => _appraisalLoggedDate; set => _appraisalLoggedDate = value; }
         private DirtyValue<string> _appraisalLookupBy;
         public string AppraisalLookupBy { get => _appraisalLookupBy; set => _appraisalLookupBy = value; }
-        private StringEnumValue<BeenInformed> _beenInformed;
+        private DirtyValue<StringEnumValue<BeenInformed>> _beenInformed;
         public StringEnumValue<BeenInformed> BeenInformed { get => _beenInformed; set => _beenInformed = value; }
         private DirtyValue<string> _borrowerCertificationAddress;
         public string BorrowerCertificationAddress { get => _borrowerCertificationAddress; set => _borrowerCertificationAddress = value; }
@@ -86,7 +86,7 @@ namespace EncompassRest.Loans
         public bool? DwellingCoveredBy { get => _dwellingCoveredBy; set => _dwellingCoveredBy = value; }
         private EnergyEfficientMortgage _eem;
         public EnergyEfficientMortgage Eem { get => _eem ?? (_eem = new EnergyEfficientMortgage()); set => _eem = value; }
-        private StringEnumValue<EligibilityAssessment> _eligibilityAssessment;
+        private DirtyValue<StringEnumValue<EligibilityAssessment>> _eligibilityAssessment;
         public StringEnumValue<EligibilityAssessment> EligibilityAssessment { get => _eligibilityAssessment; set => _eligibilityAssessment = value; }
         private DirtyValue<decimal?> _energyEfficientMortgageAmount;
         public decimal? EnergyEfficientMortgageAmount { get => _energyEfficientMortgageAmount; set => _energyEfficientMortgageAmount = value; }
@@ -100,13 +100,13 @@ namespace EncompassRest.Loans
         public decimal? ExistingDebtAmount { get => _existingDebtAmount; set => _existingDebtAmount = value; }
         private DirtyValue<string> _fHACaseOrderedBy;
         public string FHACaseOrderedBy { get => _fHACaseOrderedBy; set => _fHACaseOrderedBy = value; }
-        private StringEnumValue<FHAManagementCounselType> _fHAManagementCounselType;
+        private DirtyValue<StringEnumValue<FHAManagementCounselType>> _fHAManagementCounselType;
         public StringEnumValue<FHAManagementCounselType> FHAManagementCounselType { get => _fHAManagementCounselType; set => _fHAManagementCounselType = value; }
         private DirtyValue<decimal?> _fHAMaxLoanAmount;
         public decimal? FHAMaxLoanAmount { get => _fHAMaxLoanAmount; set => _fHAMaxLoanAmount = value; }
         private DirtyValue<bool?> _foreclosedProperty;
         public bool? ForeclosedProperty { get => _foreclosedProperty; set => _foreclosedProperty = value; }
-        private StringEnumValue<FreddieMacCounselType> _freddieMacCounselType;
+        private DirtyValue<StringEnumValue<FreddieMacCounselType>> _freddieMacCounselType;
         public StringEnumValue<FreddieMacCounselType> FreddieMacCounselType { get => _freddieMacCounselType; set => _freddieMacCounselType = value; }
         private DirtyValue<decimal?> _fundingFeePaidInCash;
         public decimal? FundingFeePaidInCash { get => _fundingFeePaidInCash; set => _fundingFeePaidInCash = value; }
@@ -114,7 +114,7 @@ namespace EncompassRest.Loans
         public decimal? GiftFundsAmount { get => _giftFundsAmount; set => _giftFundsAmount = value; }
         private DirtyValue<bool?> _haveReceivedLeadPaintPoisoningInfo;
         public bool? HaveReceivedLeadPaintPoisoningInfo { get => _haveReceivedLeadPaintPoisoningInfo; set => _haveReceivedLeadPaintPoisoningInfo = value; }
-        private StringEnumValue<HUD1003AddendumApproved> _hUD1003AddendumApproved;
+        private DirtyValue<StringEnumValue<HUD1003AddendumApproved>> _hUD1003AddendumApproved;
         public StringEnumValue<HUD1003AddendumApproved> HUD1003AddendumApproved { get => _hUD1003AddendumApproved; set => _hUD1003AddendumApproved = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -180,13 +180,13 @@ namespace EncompassRest.Loans
         public decimal? ModifiedUpfrontPremium { get => _modifiedUpfrontPremium; set => _modifiedUpfrontPremium = value; }
         private DirtyValue<string> _mortgageeRepresentative;
         public string MortgageeRepresentative { get => _mortgageeRepresentative; set => _mortgageeRepresentative = value; }
-        private StringEnumValue<DoesOrDoesNot> _mortgageFinancialInterest;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot>> _mortgageFinancialInterest;
         public StringEnumValue<DoesOrDoesNot> MortgageFinancialInterest { get => _mortgageFinancialInterest; set => _mortgageFinancialInterest = value; }
         private DirtyValue<decimal?> _nonRealtyAndOtherItems;
         public decimal? NonRealtyAndOtherItems { get => _nonRealtyAndOtherItems; set => _nonRealtyAndOtherItems = value; }
         private DirtyValue<DateTime?> _obtainCAIVRSDate;
         public DateTime? ObtainCAIVRSDate { get => _obtainCAIVRSDate; set => _obtainCAIVRSDate = value; }
-        private StringEnumValue<Occupancy> _occupancy;
+        private DirtyValue<StringEnumValue<Occupancy>> _occupancy;
         public StringEnumValue<Occupancy> Occupancy { get => _occupancy; set => _occupancy = value; }
         private DirtyValue<string> _oldAgencyCaseIdentifier;
         public string OldAgencyCaseIdentifier { get => _oldAgencyCaseIdentifier; set => _oldAgencyCaseIdentifier = value; }
@@ -218,7 +218,7 @@ namespace EncompassRest.Loans
         public int? ProposedMaturityMonths { get => _proposedMaturityMonths; set => _proposedMaturityMonths = value; }
         private DirtyValue<int?> _proposedMaturityYears;
         public int? ProposedMaturityYears { get => _proposedMaturityYears; set => _proposedMaturityYears = value; }
-        private StringEnumValue<FhaVaLoanPurposeOfLoan> _purposeOfLoan;
+        private DirtyValue<StringEnumValue<FhaVaLoanPurposeOfLoan>> _purposeOfLoan;
         public StringEnumValue<FhaVaLoanPurposeOfLoan> PurposeOfLoan { get => _purposeOfLoan; set => _purposeOfLoan = value; }
         private DirtyValue<string> _refiAuthorizationBy;
         public string RefiAuthorizationBy { get => _refiAuthorizationBy; set => _refiAuthorizationBy = value; }
@@ -256,7 +256,7 @@ namespace EncompassRest.Loans
         public string SponsoredOriginationsTaxID { get => _sponsoredOriginationsTaxID; set => _sponsoredOriginationsTaxID = value; }
         private DirtyValue<string> _sponsorID;
         public string SponsorID { get => _sponsorID; set => _sponsorID = value; }
-        private StringEnumValue<TitleVestedIn> _titleVestedIn;
+        private DirtyValue<StringEnumValue<TitleVestedIn>> _titleVestedIn;
         public StringEnumValue<TitleVestedIn> TitleVestedIn { get => _titleVestedIn; set => _titleVestedIn = value; }
         private DirtyValue<bool?> _toBeSold;
         public bool? ToBeSold { get => _toBeSold; set => _toBeSold = value; }
@@ -282,7 +282,7 @@ namespace EncompassRest.Loans
         public bool? UtilityIncluded { get => _utilityIncluded; set => _utilityIncluded = value; }
         private DirtyValue<DateTime?> _validateAddressDate;
         public DateTime? ValidateAddressDate { get => _validateAddressDate; set => _validateAddressDate = value; }
-        private StringEnumValue<Valuation> _valuation;
+        private DirtyValue<StringEnumValue<Valuation>> _valuation;
         public StringEnumValue<Valuation> Valuation { get => _valuation; set => _valuation = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

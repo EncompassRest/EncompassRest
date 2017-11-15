@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using EncompassRest.Utilities;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
@@ -40,7 +41,7 @@ namespace EncompassRest.Contacts
         private DirtyValue<string> _ownerId;
         public string OwnerId { get => _ownerId; set => _ownerId = value; }
         private DirtyValue<ContactAccessLevel?> _accessLevel;
-        [EnumOutput(EnumOutput.Integer)]
+        [EnumFormat(EnumFormat.DecimalValue)]
         public ContactAccessLevel? AccessLevel { get => _accessLevel; set => _accessLevel = value; }
         private ContactAddress _currentMailingAddress;
         public ContactAddress CurrentMailingAddress { get => _currentMailingAddress ?? (_currentMailingAddress = new ContactAddress()); set => _currentMailingAddress = value; }

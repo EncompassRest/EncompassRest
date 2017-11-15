@@ -46,7 +46,7 @@ namespace EncompassRest.Loans
         public int? GrossRentUnit3 { get => _grossRentUnit3; set => _grossRentUnit3 = value; }
         private DirtyValue<int?> _grossRentUnit4;
         public int? GrossRentUnit4 { get => _grossRentUnit4; set => _grossRentUnit4 = value; }
-        private StringEnumValue<HomeBuyersOwnershipEducationCertificateInFile> _homeBuyersOwnershipEducationCertificateInFile;
+        private DirtyValue<StringEnumValue<HomeBuyersOwnershipEducationCertificateInFile>> _homeBuyersOwnershipEducationCertificateInFile;
         public StringEnumValue<HomeBuyersOwnershipEducationCertificateInFile> HomeBuyersOwnershipEducationCertificateInFile { get => _homeBuyersOwnershipEducationCertificateInFile; set => _homeBuyersOwnershipEducationCertificateInFile = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -56,15 +56,15 @@ namespace EncompassRest.Loans
         public decimal? InterestedPartyContributions { get => _interestedPartyContributions; set => _interestedPartyContributions = value; }
         private DirtyValue<string> _investorLoanNumber;
         public string InvestorLoanNumber { get => _investorLoanNumber; set => _investorLoanNumber = value; }
-        private StringEnumValue<LevelOfPropertyReviewType> _levelOfPropertyReviewType;
+        private DirtyValue<StringEnumValue<LevelOfPropertyReviewType>> _levelOfPropertyReviewType;
         public StringEnumValue<LevelOfPropertyReviewType> LevelOfPropertyReviewType { get => _levelOfPropertyReviewType; set => _levelOfPropertyReviewType = value; }
         private DirtyValue<string> _lpDocClass;
         public string LpDocClass { get => _lpDocClass; set => _lpDocClass = value; }
-        private StringEnumValue<TsumMortgageOriginator> _mortgageOriginator;
+        private DirtyValue<StringEnumValue<TsumMortgageOriginator>> _mortgageOriginator;
         public StringEnumValue<TsumMortgageOriginator> MortgageOriginator { get => _mortgageOriginator; set => _mortgageOriginator = value; }
         private DirtyValue<DateTime?> _noteDate;
         public DateTime? NoteDate { get => _noteDate; set => _noteDate = value; }
-        private StringEnumValue<NoteRateType> _noteRateType;
+        private DirtyValue<StringEnumValue<NoteRateType>> _noteRateType;
         public StringEnumValue<NoteRateType> NoteRateType { get => _noteRateType; set => _noteRateType = value; }
         private DirtyValue<int?> _numberOfBorrowers;
         public int? NumberOfBorrowers { get => _numberOfBorrowers; set => _numberOfBorrowers = value; }
@@ -72,19 +72,19 @@ namespace EncompassRest.Loans
         public int? NumberOfMonthsReserves { get => _numberOfMonthsReserves; set => _numberOfMonthsReserves = value; }
         private DirtyValue<decimal?> _originalAmountOfFirstMortgage;
         public decimal? OriginalAmountOfFirstMortgage { get => _originalAmountOfFirstMortgage; set => _originalAmountOfFirstMortgage = value; }
-        private StringEnumValue<OtherTypeDescription> _otherTypeDescription;
+        private DirtyValue<StringEnumValue<OtherTypeDescription>> _otherTypeDescription;
         public StringEnumValue<OtherTypeDescription> OtherTypeDescription { get => _otherTypeDescription; set => _otherTypeDescription = value; }
         private DirtyValue<string> _percentageofCoverage;
         public string PercentageofCoverage { get => _percentageofCoverage; set => _percentageofCoverage = value; }
         private DirtyValue<string> _projectName;
         public string ProjectName { get => _projectName; set => _projectName = value; }
-        private StringEnumValue<PropertyFormType> _propertyFormType;
+        private DirtyValue<StringEnumValue<PropertyFormType>> _propertyFormType;
         public StringEnumValue<PropertyFormType> PropertyFormType { get => _propertyFormType; set => _propertyFormType = value; }
-        private StringEnumValue<OtherPropertyType> _propertyType;
+        private DirtyValue<StringEnumValue<OtherPropertyType>> _propertyType;
         public StringEnumValue<OtherPropertyType> PropertyType { get => _propertyType; set => _propertyType = value; }
         private DirtyValue<decimal?> _required;
         public decimal? Required { get => _required; set => _required = value; }
-        private StringEnumValue<RiskAssessmentType> _riskAssessmentType;
+        private DirtyValue<StringEnumValue<RiskAssessmentType>> _riskAssessmentType;
         public StringEnumValue<RiskAssessmentType> RiskAssessmentType { get => _riskAssessmentType; set => _riskAssessmentType = value; }
         private DirtyValue<string> _sellerAddress;
         public string SellerAddress { get => _sellerAddress; set => _sellerAddress = value; }

@@ -250,9 +250,9 @@ namespace EncompassRest.Loans
         public decimal? Section800BorrowerPaidInitialDiscountPointAmount { get => _section800BorrowerPaidInitialDiscountPointAmount; set => _section800BorrowerPaidInitialDiscountPointAmount = value; }
         private DirtyValue<decimal?> _section800ChargeAmount;
         public decimal? Section800ChargeAmount { get => _section800ChargeAmount; set => _section800ChargeAmount = value; }
-        private StringEnumValue<CreditChargeType> _section800CreditChargeType;
+        private DirtyValue<StringEnumValue<CreditChargeType>> _section800CreditChargeType;
         public StringEnumValue<CreditChargeType> Section800CreditChargeType { get => _section800CreditChargeType; set => _section800CreditChargeType = value; }
-        private StringEnumValue<IncludeOriginationPointsCreditType> _section800IncludeOriginationPointsCreditType;
+        private DirtyValue<StringEnumValue<IncludeOriginationPointsCreditType>> _section800IncludeOriginationPointsCreditType;
         public StringEnumValue<IncludeOriginationPointsCreditType> Section800IncludeOriginationPointsCreditType { get => _section800IncludeOriginationPointsCreditType; set => _section800IncludeOriginationPointsCreditType = value; }
         private DirtyValue<decimal?> _section800InitialDiscountPoint;
         public decimal? Section800InitialDiscountPoint { get => _section800InitialDiscountPoint; set => _section800InitialDiscountPoint = value; }

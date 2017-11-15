@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         public string BlockIdentifier { get => _blockIdentifier; set => _blockIdentifier = value; }
         private DirtyValue<bool?> _borrowerHomesteadIndicator;
         public bool? BorrowerHomesteadIndicator { get => _borrowerHomesteadIndicator; set => _borrowerHomesteadIndicator = value; }
-        private StringEnumValue<BuildingStatusType> _buildingStatusType;
+        private DirtyValue<StringEnumValue<BuildingStatusType>> _buildingStatusType;
         public StringEnumValue<BuildingStatusType> BuildingStatusType { get => _buildingStatusType; set => _buildingStatusType = value; }
         private DirtyValue<string> _city;
         public string City { get => _city; set => _city = value; }
@@ -30,9 +30,9 @@ namespace EncompassRest.Loans
         public string FloodCertificationIdentifier { get => _floodCertificationIdentifier; set => _floodCertificationIdentifier = value; }
         private DirtyValue<decimal?> _freCashOutAmount;
         public decimal? FreCashOutAmount { get => _freCashOutAmount; set => _freCashOutAmount = value; }
-        private StringEnumValue<RefinancePurpose> _gseRefinancePurposeType;
+        private DirtyValue<StringEnumValue<RefinancePurpose>> _gseRefinancePurposeType;
         public StringEnumValue<RefinancePurpose> GseRefinancePurposeType { get => _gseRefinancePurposeType; set => _gseRefinancePurposeType = value; }
-        private StringEnumValue<GseTitleMannerHeldDescription> _gseTitleMannerHeldDescription;
+        private DirtyValue<StringEnumValue<GseTitleMannerHeldDescription>> _gseTitleMannerHeldDescription;
         public StringEnumValue<GseTitleMannerHeldDescription> GseTitleMannerHeldDescription { get => _gseTitleMannerHeldDescription; set => _gseTitleMannerHeldDescription = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
         public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => _linkedIsConstructionPhaseDisclosedSeparately; set => _linkedIsConstructionPhaseDisclosedSeparately = value; }
         private DirtyValue<string> _linkedLoanPurposeType;
         public string LinkedLoanPurposeType { get => _linkedLoanPurposeType; set => _linkedLoanPurposeType = value; }
-        private StringEnumValue<LoanPurposeType> _loanPurposeType;
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _loanPurposeType;
         public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => _loanPurposeType = value; }
         private DirtyValue<decimal?> _lotAcres;
         public decimal? LotAcres { get => _lotAcres; set => _lotAcres = value; }
@@ -82,13 +82,13 @@ namespace EncompassRest.Loans
         public DateTime? PropertyLeaseholdExpirationDate { get => _propertyLeaseholdExpirationDate; set => _propertyLeaseholdExpirationDate = value; }
         private DirtyValue<decimal?> _propertyOriginalCostAmount;
         public decimal? PropertyOriginalCostAmount { get => _propertyOriginalCostAmount; set => _propertyOriginalCostAmount = value; }
-        private StringEnumValue<PropertyRightsType> _propertyRightsType;
+        private DirtyValue<StringEnumValue<PropertyRightsType>> _propertyRightsType;
         public StringEnumValue<PropertyRightsType> PropertyRightsType { get => _propertyRightsType; set => _propertyRightsType = value; }
         private DirtyValue<string> _propertyUsageType;
         public string PropertyUsageType { get => _propertyUsageType; set => _propertyUsageType = value; }
         private DirtyValue<decimal?> _refinanceImprovementCostsAmount;
         public decimal? RefinanceImprovementCostsAmount { get => _refinanceImprovementCostsAmount; set => _refinanceImprovementCostsAmount = value; }
-        private StringEnumValue<RefinanceImprovementsType> _refinanceImprovementsType;
+        private DirtyValue<StringEnumValue<RefinanceImprovementsType>> _refinanceImprovementsType;
         public StringEnumValue<RefinanceImprovementsType> RefinanceImprovementsType { get => _refinanceImprovementsType; set => _refinanceImprovementsType = value; }
         private DirtyValue<string> _refinancePropertyAcquiredYear;
         public string RefinancePropertyAcquiredYear { get => _refinancePropertyAcquiredYear; set => _refinancePropertyAcquiredYear = value; }

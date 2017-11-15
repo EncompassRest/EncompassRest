@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public string Description { get => _description; set => _description = value; }
         private DirtyValue<int?> _gfeFeeIndex;
         public int? GfeFeeIndex { get => _gfeFeeIndex; set => _gfeFeeIndex = value; }
-        private StringEnumValue<GfeFeeType> _gfeFeeType;
+        private DirtyValue<StringEnumValue<GfeFeeType>> _gfeFeeType;
         public StringEnumValue<GfeFeeType> GfeFeeType { get => _gfeFeeType; set => _gfeFeeType = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

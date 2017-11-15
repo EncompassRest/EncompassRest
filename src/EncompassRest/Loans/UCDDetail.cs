@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class UCDDetail : IDirty
     {
-        private StringEnumValue<UCDPayoffType> _feeAccountType;
+        private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
         public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => _feeAccountType = value; }
         private DirtyValue<decimal?> _feeAmount;
         public decimal? FeeAmount { get => _feeAmount; set => _feeAmount = value; }
@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         public string FeeDesc { get => _feeDesc; set => _feeDesc = value; }
         private DirtyValue<int?> _feeIndex;
         public int? FeeIndex { get => _feeIndex; set => _feeIndex = value; }
-        private StringEnumValue<FeePaidBy> _feePaidBy;
+        private DirtyValue<StringEnumValue<FeePaidBy>> _feePaidBy;
         public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
         private DirtyValue<string> _feePaidTo;
         public string FeePaidTo { get => _feePaidTo; set => _feePaidTo = value; }

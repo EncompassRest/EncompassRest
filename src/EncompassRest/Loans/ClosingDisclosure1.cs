@@ -212,11 +212,11 @@ namespace EncompassRest.Loans
         public DateTime? RevisedCDReceivedDate { get => _revisedCDReceivedDate; set => _revisedCDReceivedDate = value; }
         private DirtyValue<string> _sellerNames;
         public string SellerNames { get => _sellerNames; set => _sellerNames = value; }
-        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofAlternateCD;
+        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofAlternateCD;
         public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofAlternateCD { get => _signatureTypeFinalExecutedCopyofAlternateCD; set => _signatureTypeFinalExecutedCopyofAlternateCD = value; }
-        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofSellerCD;
+        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofSellerCD;
         public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofSellerCD { get => _signatureTypeFinalExecutedCopyofSellerCD; set => _signatureTypeFinalExecutedCopyofSellerCD = value; }
-        private StringEnumValue<FinalSignatureType> _signatureTypeFinalExecutedCopyofStandardCD;
+        private DirtyValue<StringEnumValue<FinalSignatureType>> _signatureTypeFinalExecutedCopyofStandardCD;
         public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofStandardCD { get => _signatureTypeFinalExecutedCopyofStandardCD; set => _signatureTypeFinalExecutedCopyofStandardCD = value; }
         private DirtyValue<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get => _totalCashToClose; set => _totalCashToClose = value; }

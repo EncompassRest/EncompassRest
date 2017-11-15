@@ -16,11 +16,11 @@ namespace EncompassRest.Loans
         public decimal? BasePrice { get => _basePrice; set => _basePrice = value; }
         private DirtyValue<DateTime?> _cancelledDate;
         public DateTime? CancelledDate { get => _cancelledDate; set => _cancelledDate = value; }
-        private StringEnumValue<CommitmentType> _commitmentType;
+        private DirtyValue<StringEnumValue<CommitmentType>> _commitmentType;
         public StringEnumValue<CommitmentType> CommitmentType { get => _commitmentType; set => _commitmentType = value; }
         private DirtyValue<DateTime?> _conditionsReceivedDate;
         public DateTime? ConditionsReceivedDate { get => _conditionsReceivedDate; set => _conditionsReceivedDate = value; }
-        private StringEnumValue<CorrespondentStatus> _correspondentStatus;
+        private DirtyValue<StringEnumValue<CorrespondentStatus>> _correspondentStatus;
         public StringEnumValue<CorrespondentStatus> CorrespondentStatus { get => _correspondentStatus; set => _correspondentStatus = value; }
         private DirtyValue<DateTime?> _deliveryExpirationDate;
         public DateTime? DeliveryExpirationDate { get => _deliveryExpirationDate; set => _deliveryExpirationDate = value; }
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         public DateTime? LateDaysEnd { get => _lateDaysEnd; set => _lateDaysEnd = value; }
         private DirtyValue<string> _lateDaysEndTrigger;
         public string LateDaysEndTrigger { get => _lateDaysEndTrigger; set => _lateDaysEndTrigger = value; }
-        private StringEnumValue<LateFeeChargeType> _lateFeeChargeType;
+        private DirtyValue<StringEnumValue<LateFeeChargeType>> _lateFeeChargeType;
         public StringEnumValue<LateFeeChargeType> LateFeeChargeType { get => _lateFeeChargeType; set => _lateFeeChargeType = value; }
         private DirtyValue<string> _lateFeeFrequency;
         public string LateFeeFrequency { get => _lateFeeFrequency; set => _lateFeeFrequency = value; }

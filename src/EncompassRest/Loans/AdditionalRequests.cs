@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public string AppraisalContactCellPhone { get => _appraisalContactCellPhone; set => _appraisalContactCellPhone = value; }
         private DirtyValue<string> _appraisalContactEmail;
         public string AppraisalContactEmail { get => _appraisalContactEmail; set => _appraisalContactEmail = value; }
-        private StringEnumValue<AppraisalContactForEntry> _appraisalContactForEntry;
+        private DirtyValue<StringEnumValue<AppraisalContactForEntry>> _appraisalContactForEntry;
         public StringEnumValue<AppraisalContactForEntry> AppraisalContactForEntry { get => _appraisalContactForEntry; set => _appraisalContactForEntry = value; }
         private DirtyValue<string> _appraisalContactHomePhone;
         public string AppraisalContactHomePhone { get => _appraisalContactHomePhone; set => _appraisalContactHomePhone = value; }

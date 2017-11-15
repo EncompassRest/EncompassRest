@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
     {
         private DirtyValue<decimal?> _amount;
         public decimal? Amount { get => _amount; set => _amount = value; }
-        private StringEnumValue<DownPaymentType> _downPaymentType;
+        private DirtyValue<StringEnumValue<DownPaymentType>> _downPaymentType;
         public StringEnumValue<DownPaymentType> DownPaymentType { get => _downPaymentType; set => _downPaymentType = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

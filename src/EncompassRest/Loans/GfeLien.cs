@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public decimal? AmountOwing { get => _amountOwing; set => _amountOwing = value; }
         private DirtyValue<int?> _gfeLienIndex;
         public int? GfeLienIndex { get => _gfeLienIndex; set => _gfeLienIndex = value; }
-        private StringEnumValue<GfeLienType> _gfeLienType;
+        private DirtyValue<StringEnumValue<GfeLienType>> _gfeLienType;
         public StringEnumValue<GfeLienType> GfeLienType { get => _gfeLienType; set => _gfeLienType = value; }
         private DirtyValue<string> _holderName;
         public string HolderName { get => _holderName; set => _holderName = value; }

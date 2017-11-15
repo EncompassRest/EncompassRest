@@ -12,11 +12,11 @@ namespace EncompassRest.Loans
         public DateTime? AcquiredDate { get => _acquiredDate; set => _acquiredDate = value; }
         private DirtyValue<string> _city;
         public string City { get => _city; set => _city = value; }
-        private StringEnumValue<DispositionStatusType> _dispositionStatusType;
+        private DirtyValue<StringEnumValue<DispositionStatusType>> _dispositionStatusType;
         public StringEnumValue<DispositionStatusType> DispositionStatusType { get => _dispositionStatusType; set => _dispositionStatusType = value; }
         private DirtyValue<bool?> _entityDeleted;
         public bool? EntityDeleted { get => _entityDeleted; set => _entityDeleted = value; }
-        private StringEnumValue<GsePropertyType> _gsePropertyType;
+        private DirtyValue<StringEnumValue<GsePropertyType>> _gsePropertyType;
         public StringEnumValue<GsePropertyType> GsePropertyType { get => _gsePropertyType; set => _gsePropertyType = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -42,7 +42,7 @@ namespace EncompassRest.Loans
         public bool? PrintAttachIndicator { get => _printAttachIndicator; set => _printAttachIndicator = value; }
         private DirtyValue<bool?> _printUserNameIndicator;
         public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => _printUserNameIndicator = value; }
-        private StringEnumValue<PropertyUsageType> _propertyUsageType;
+        private DirtyValue<StringEnumValue<PropertyUsageType>> _propertyUsageType;
         public StringEnumValue<PropertyUsageType> PropertyUsageType { get => _propertyUsageType; set => _propertyUsageType = value; }
         private DirtyValue<int?> _purchasePrice;
         public int? PurchasePrice { get => _purchasePrice; set => _purchasePrice = value; }

@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         public string BorrowerPair { get => _borrowerPair; set => _borrowerPair = value; }
         private DirtyValue<string> _city;
         public string City { get => _city; set => _city = value; }
-        private StringEnumValue<ClosingEntityType> _closingEntityType;
+        private DirtyValue<StringEnumValue<ClosingEntityType>> _closingEntityType;
         public StringEnumValue<ClosingEntityType> ClosingEntityType { get => _closingEntityType; set => _closingEntityType = value; }
         private DirtyValue<string> _comments;
         public string Comments { get => _comments; set => _comments = value; }
@@ -30,9 +30,9 @@ namespace EncompassRest.Loans
         public string Fax { get => _fax; set => _fax = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<OccupancyIntent> _occupancyIntent;
+        private DirtyValue<StringEnumValue<OccupancyIntent>> _occupancyIntent;
         public StringEnumValue<OccupancyIntent> OccupancyIntent { get => _occupancyIntent; set => _occupancyIntent = value; }
-        private StringEnumValue<PropertyUsageType> _occupancyStatus;
+        private DirtyValue<StringEnumValue<PropertyUsageType>> _occupancyStatus;
         public StringEnumValue<PropertyUsageType> OccupancyStatus { get => _occupancyStatus; set => _occupancyStatus = value; }
         private DirtyValue<string> _organizationType;
         public string OrganizationType { get => _organizationType; set => _organizationType = value; }
@@ -76,9 +76,9 @@ namespace EncompassRest.Loans
         public string Vesting { get => _vesting; set => _vesting = value; }
         private DirtyValue<string> _vestingGuid;
         public string VestingGuid { get => _vestingGuid; set => _vestingGuid = value; }
-        private StringEnumValue<VestingTrusteeOfType> _vestingTrusteeOfType;
+        private DirtyValue<StringEnumValue<VestingTrusteeOfType>> _vestingTrusteeOfType;
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => _vestingTrusteeOfType = value; }
-        private StringEnumValue<BorrowerType> _vestingType;
+        private DirtyValue<StringEnumValue<BorrowerType>> _vestingType;
         public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => _vestingType = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

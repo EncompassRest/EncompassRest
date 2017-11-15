@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using EncompassRest.Schema;
 using Newtonsoft.Json;
 
-namespace EncompassRest.LoanPipeline
+namespace EncompassRest.Schema
 {
     public sealed class FieldOptions
     {

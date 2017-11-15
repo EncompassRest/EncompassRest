@@ -13,14 +13,14 @@ namespace EncompassRest.Webhook
         public string ObjectUrn { get => _objectUrn; set => _objectUrn = value; }
         private DirtyValue<string> _subscriptionId;
         public string SubscriptionId { get => _subscriptionId; set => _subscriptionId = value; }
-        private DirtyValue<string> _resource;
-        public string Resource { get => _resource; set => _resource = value; }
+        private DirtyValue<StringEnumValue<WebhookResourceType>> _resource;
+        public StringEnumValue<WebhookResourceType> Resource { get => _resource; set => _resource = value; }
         private DirtyValue<string> _clientId;
         public string ClientId { get => _clientId; set => _clientId = value; }
         private DirtyValue<string> _instanceId;
         public string InstanceId { get => _instanceId; set => _instanceId = value; }
-        private DirtyList<string> _events;
-        public IList<string> Events { get => _events ?? (_events = new DirtyList<string>()); set => _events = new DirtyList<string>(value); }
+        private DirtyList<StringEnumValue<WebhookEvent>> _events;
+        public IList<StringEnumValue<WebhookEvent>> Events { get => _events ?? (_events = new DirtyList<StringEnumValue<WebhookEvent>>()); set => _events = new DirtyList<StringEnumValue<WebhookEvent>>(value); }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
         private bool _gettingDirty;

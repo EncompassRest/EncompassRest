@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         public string ServiceProvided { get => _serviceProvided; set => _serviceProvided = value; }
         private DirtyValue<string> _serviceProviderId;
         public string ServiceProviderId { get => _serviceProviderId; set => _serviceProviderId = value; }
-        private StringEnumValue<ServiceType> _serviceType;
+        private DirtyValue<StringEnumValue<ServiceType>> _serviceType;
         public StringEnumValue<ServiceType> ServiceType { get => _serviceType; set => _serviceType = value; }
         private DirtyValue<bool?> _shopFor;
         public bool? ShopFor { get => _shopFor; set => _shopFor = value; }

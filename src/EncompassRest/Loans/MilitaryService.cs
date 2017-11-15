@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         public int? MilitaryServiceIndex { get => _militaryServiceIndex; set => _militaryServiceIndex = value; }
         private DirtyValue<string> _name;
         public string Name { get => _name; set => _name = value; }
-        private StringEnumValue<OfficerOrEnlisted> _officerOrEnlisted;
+        private DirtyValue<StringEnumValue<OfficerOrEnlisted>> _officerOrEnlisted;
         public StringEnumValue<OfficerOrEnlisted> OfficerOrEnlisted { get => _officerOrEnlisted; set => _officerOrEnlisted = value; }
         private DirtyValue<string> _serviceNumber;
         public string ServiceNumber { get => _serviceNumber; set => _serviceNumber = value; }

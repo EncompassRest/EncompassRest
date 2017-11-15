@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public string AllngToNtPayToJrsdctn { get => _allngToNtPayToJrsdctn; set => _allngToNtPayToJrsdctn = value; }
         private DirtyValue<string> _allngToNtPayToOrdNm;
         public string AllngToNtPayToOrdNm { get => _allngToNtPayToOrdNm; set => _allngToNtPayToOrdNm = value; }
-        private StringEnumValue<OrgTyp> _allngToNtPayToOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _allngToNtPayToOrgTyp;
         public StringEnumValue<OrgTyp> AllngToNtPayToOrgTyp { get => _allngToNtPayToOrgTyp; set => _allngToNtPayToOrgTyp = value; }
         private DirtyValue<string> _allngToNtPayToScsrsClaus;
         public string AllngToNtPayToScsrsClaus { get => _allngToNtPayToScsrsClaus; set => _allngToNtPayToScsrsClaus = value; }
@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         public string AllngToNtSignedByTtl2 { get => _allngToNtSignedByTtl2; set => _allngToNtSignedByTtl2 = value; }
         private DirtyValue<string> _allngToNtSignedByTtl3;
         public string AllngToNtSignedByTtl3 { get => _allngToNtSignedByTtl3; set => _allngToNtSignedByTtl3 = value; }
-        private StringEnumValue<SignedByTyp> _allngToNtSignedByTyp;
+        private DirtyValue<StringEnumValue<SignedByTyp>> _allngToNtSignedByTyp;
         public StringEnumValue<SignedByTyp> AllngToNtSignedByTyp { get => _allngToNtSignedByTyp; set => _allngToNtSignedByTyp = value; }
         private DirtyValue<string> _allngToNtWithoutRcrse;
         public string AllngToNtWithoutRcrse { get => _allngToNtWithoutRcrse; set => _allngToNtWithoutRcrse = value; }
@@ -44,7 +44,7 @@ namespace EncompassRest.Loans
         public string BenJrsdctn { get => _benJrsdctn; set => _benJrsdctn = value; }
         private DirtyValue<string> _benNm;
         public string BenNm { get => _benNm; set => _benNm = value; }
-        private StringEnumValue<OrgTyp> _benOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _benOrgTyp;
         public StringEnumValue<OrgTyp> BenOrgTyp { get => _benOrgTyp; set => _benOrgTyp = value; }
         private DirtyValue<string> _benStCd;
         public string BenStCd { get => _benStCd; set => _benStCd = value; }
@@ -58,7 +58,7 @@ namespace EncompassRest.Loans
         public string ClosInstrLndCntcInfoCity { get => _closInstrLndCntcInfoCity; set => _closInstrLndCntcInfoCity = value; }
         private DirtyValue<string> _closInstrLndCntcInfoCoNm;
         public string ClosInstrLndCntcInfoCoNm { get => _closInstrLndCntcInfoCoNm; set => _closInstrLndCntcInfoCoNm = value; }
-        private StringEnumValue<ClosInstrLndCntcInfoSamePtyTypDesc> _closInstrLndCntcInfoSamePtyTypDesc;
+        private DirtyValue<StringEnumValue<ClosInstrLndCntcInfoSamePtyTypDesc>> _closInstrLndCntcInfoSamePtyTypDesc;
         public StringEnumValue<ClosInstrLndCntcInfoSamePtyTypDesc> ClosInstrLndCntcInfoSamePtyTypDesc { get => _closInstrLndCntcInfoSamePtyTypDesc; set => _closInstrLndCntcInfoSamePtyTypDesc = value; }
         private DirtyValue<string> _closInstrLndCntcInfoStCd;
         public string ClosInstrLndCntcInfoStCd { get => _closInstrLndCntcInfoStCd; set => _closInstrLndCntcInfoStCd = value; }
@@ -72,7 +72,7 @@ namespace EncompassRest.Loans
         public bool? ClosInstrPrtInvLossPayee { get => _closInstrPrtInvLossPayee; set => _closInstrPrtInvLossPayee = value; }
         private DirtyValue<bool?> _closInstrStlmtAgtUseLndHud1;
         public bool? ClosInstrStlmtAgtUseLndHud1 { get => _closInstrStlmtAgtUseLndHud1; set => _closInstrStlmtAgtUseLndHud1 = value; }
-        private StringEnumValue<ClosInstrTtlPlcyTyp> _closInstrTtlPlcyTyp;
+        private DirtyValue<StringEnumValue<ClosInstrTtlPlcyTyp>> _closInstrTtlPlcyTyp;
         public StringEnumValue<ClosInstrTtlPlcyTyp> ClosInstrTtlPlcyTyp { get => _closInstrTtlPlcyTyp; set => _closInstrTtlPlcyTyp = value; }
         private DirtyValue<string> _emxmlVersionId;
         public string EmxmlVersionId { get => _emxmlVersionId; set => _emxmlVersionId = value; }
@@ -82,7 +82,7 @@ namespace EncompassRest.Loans
         public string ExeClosDocDlvrdToMiscTxtDesc { get => _exeClosDocDlvrdToMiscTxtDesc; set => _exeClosDocDlvrdToMiscTxtDesc = value; }
         private DirtyValue<string> _exeClosDocDlvrdToNm;
         public string ExeClosDocDlvrdToNm { get => _exeClosDocDlvrdToNm; set => _exeClosDocDlvrdToNm = value; }
-        private StringEnumValue<ExeClosDocDlvrdToSamePtyTypDesc> _exeClosDocDlvrdToSamePtyTypDesc;
+        private DirtyValue<StringEnumValue<ExeClosDocDlvrdToSamePtyTypDesc>> _exeClosDocDlvrdToSamePtyTypDesc;
         public StringEnumValue<ExeClosDocDlvrdToSamePtyTypDesc> ExeClosDocDlvrdToSamePtyTypDesc { get => _exeClosDocDlvrdToSamePtyTypDesc; set => _exeClosDocDlvrdToSamePtyTypDesc = value; }
         private DirtyValue<string> _exeClosDocDlvrdToStCd;
         public string ExeClosDocDlvrdToStCd { get => _exeClosDocDlvrdToStCd; set => _exeClosDocDlvrdToStCd = value; }
@@ -92,11 +92,11 @@ namespace EncompassRest.Loans
         public string ExeClosDocDlvrdToStreetAddr2 { get => _exeClosDocDlvrdToStreetAddr2; set => _exeClosDocDlvrdToStreetAddr2 = value; }
         private DirtyValue<string> _exeClosDocDlvrdToZip;
         public string ExeClosDocDlvrdToZip { get => _exeClosDocDlvrdToZip; set => _exeClosDocDlvrdToZip = value; }
-        private StringEnumValue<ExeClosDocExprDt> _exeClosDocExprDt;
+        private DirtyValue<StringEnumValue<ExeClosDocExprDt>> _exeClosDocExprDt;
         public StringEnumValue<ExeClosDocExprDt> ExeClosDocExprDt { get => _exeClosDocExprDt; set => _exeClosDocExprDt = value; }
-        private StringEnumValue<ExeClosDocToBeRtrnd> _exeClosDocToBeRtrnd;
+        private DirtyValue<StringEnumValue<ExeClosDocToBeRtrnd>> _exeClosDocToBeRtrnd;
         public StringEnumValue<ExeClosDocToBeRtrnd> ExeClosDocToBeRtrnd { get => _exeClosDocToBeRtrnd; set => _exeClosDocToBeRtrnd = value; }
-        private StringEnumValue<ExeClosDocToBeRtrndHrs> _exeClosDocToBeRtrndHrs;
+        private DirtyValue<StringEnumValue<ExeClosDocToBeRtrndHrs>> _exeClosDocToBeRtrndHrs;
         public StringEnumValue<ExeClosDocToBeRtrndHrs> ExeClosDocToBeRtrndHrs { get => _exeClosDocToBeRtrndHrs; set => _exeClosDocToBeRtrndHrs = value; }
         private DirtyValue<string> _fnlTtlePcyRecDocsSentToAddlLine1;
         public string FnlTtlePcyRecDocsSentToAddlLine1 { get => _fnlTtlePcyRecDocsSentToAddlLine1; set => _fnlTtlePcyRecDocsSentToAddlLine1 = value; }
@@ -106,7 +106,7 @@ namespace EncompassRest.Loans
         public string FnlTtlePcyRecDocsSentToCty { get => _fnlTtlePcyRecDocsSentToCty; set => _fnlTtlePcyRecDocsSentToCty = value; }
         private DirtyValue<string> _fnlTtlePcyRecDocsSentToNm;
         public string FnlTtlePcyRecDocsSentToNm { get => _fnlTtlePcyRecDocsSentToNm; set => _fnlTtlePcyRecDocsSentToNm = value; }
-        private StringEnumValue<RecSamePtyTypeDesc> _fnlTtlePcyRecDocsSentToSamePtyTypDesc;
+        private DirtyValue<StringEnumValue<RecSamePtyTypeDesc>> _fnlTtlePcyRecDocsSentToSamePtyTypDesc;
         public StringEnumValue<RecSamePtyTypeDesc> FnlTtlePcyRecDocsSentToSamePtyTypDesc { get => _fnlTtlePcyRecDocsSentToSamePtyTypDesc; set => _fnlTtlePcyRecDocsSentToSamePtyTypDesc = value; }
         private DirtyValue<string> _fnlTtlePcyRecDocsSentToStcd;
         public string FnlTtlePcyRecDocsSentToStcd { get => _fnlTtlePcyRecDocsSentToStcd; set => _fnlTtlePcyRecDocsSentToStcd = value; }
@@ -148,7 +148,7 @@ namespace EncompassRest.Loans
         public string MersJrsdctn { get => _mersJrsdctn; set => _mersJrsdctn = value; }
         private DirtyValue<string> _mersName;
         public string MersName { get => _mersName; set => _mersName = value; }
-        private StringEnumValue<OrgTyp> _mersOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _mersOrgTyp;
         public StringEnumValue<OrgTyp> MersOrgTyp { get => _mersOrgTyp; set => _mersOrgTyp = value; }
         private DirtyValue<string> _mersPhoneNum;
         public string MersPhoneNum { get => _mersPhoneNum; set => _mersPhoneNum = value; }
@@ -164,7 +164,7 @@ namespace EncompassRest.Loans
         public string NtEndrsmtPayToJrsdctn { get => _ntEndrsmtPayToJrsdctn; set => _ntEndrsmtPayToJrsdctn = value; }
         private DirtyValue<string> _ntEndrsmtPayToOrdNm;
         public string NtEndrsmtPayToOrdNm { get => _ntEndrsmtPayToOrdNm; set => _ntEndrsmtPayToOrdNm = value; }
-        private StringEnumValue<OrgTyp> _ntEndrsmtPayToOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _ntEndrsmtPayToOrgTyp;
         public StringEnumValue<OrgTyp> NtEndrsmtPayToOrgTyp { get => _ntEndrsmtPayToOrgTyp; set => _ntEndrsmtPayToOrgTyp = value; }
         private DirtyValue<string> _ntEndrsmtPayToScsrsClaus;
         public string NtEndrsmtPayToScsrsClaus { get => _ntEndrsmtPayToScsrsClaus; set => _ntEndrsmtPayToScsrsClaus = value; }
@@ -184,7 +184,7 @@ namespace EncompassRest.Loans
         public string NtEndrsmtSignedByTtl2 { get => _ntEndrsmtSignedByTtl2; set => _ntEndrsmtSignedByTtl2 = value; }
         private DirtyValue<string> _ntEndrsmtSignedByTtl3;
         public string NtEndrsmtSignedByTtl3 { get => _ntEndrsmtSignedByTtl3; set => _ntEndrsmtSignedByTtl3 = value; }
-        private StringEnumValue<SignedByTyp> _ntEndrsmtSignedByTyp;
+        private DirtyValue<StringEnumValue<SignedByTyp>> _ntEndrsmtSignedByTyp;
         public StringEnumValue<SignedByTyp> NtEndrsmtSignedByTyp { get => _ntEndrsmtSignedByTyp; set => _ntEndrsmtSignedByTyp = value; }
         private DirtyValue<string> _ntEndrsmtWithoutRcrse;
         public string NtEndrsmtWithoutRcrse { get => _ntEndrsmtWithoutRcrse; set => _ntEndrsmtWithoutRcrse = value; }
@@ -198,11 +198,11 @@ namespace EncompassRest.Loans
         public string NtEndsmtThrdPtyJrsdctn { get => _ntEndsmtThrdPtyJrsdctn; set => _ntEndsmtThrdPtyJrsdctn = value; }
         private DirtyValue<string> _ntEndsmtThrdPtyName;
         public string NtEndsmtThrdPtyName { get => _ntEndsmtThrdPtyName; set => _ntEndsmtThrdPtyName = value; }
-        private StringEnumValue<OrgTyp> _ntEndsmtThrdPtyOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _ntEndsmtThrdPtyOrgTyp;
         public StringEnumValue<OrgTyp> NtEndsmtThrdPtyOrgTyp { get => _ntEndsmtThrdPtyOrgTyp; set => _ntEndsmtThrdPtyOrgTyp = value; }
         private DirtyValue<string> _ntEndsmtThrdPtyPhone;
         public string NtEndsmtThrdPtyPhone { get => _ntEndsmtThrdPtyPhone; set => _ntEndsmtThrdPtyPhone = value; }
-        private StringEnumValue<ScsrsClaus> _ntEndsmtThrdPtyScsrClaus;
+        private DirtyValue<StringEnumValue<ScsrsClaus>> _ntEndsmtThrdPtyScsrClaus;
         public StringEnumValue<ScsrsClaus> NtEndsmtThrdPtyScsrClaus { get => _ntEndsmtThrdPtyScsrClaus; set => _ntEndsmtThrdPtyScsrClaus = value; }
         private DirtyValue<string> _ntEndsmtThrdPtyStCd;
         public string NtEndsmtThrdPtyStCd { get => _ntEndsmtThrdPtyStCd; set => _ntEndsmtThrdPtyStCd = value; }
@@ -216,7 +216,7 @@ namespace EncompassRest.Loans
         public string NtPayToJrsdctn { get => _ntPayToJrsdctn; set => _ntPayToJrsdctn = value; }
         private DirtyValue<string> _ntPayToNm;
         public string NtPayToNm { get => _ntPayToNm; set => _ntPayToNm = value; }
-        private StringEnumValue<OrgTyp> _ntPayToOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _ntPayToOrgTyp;
         public StringEnumValue<OrgTyp> NtPayToOrgTyp { get => _ntPayToOrgTyp; set => _ntPayToOrgTyp = value; }
         private DirtyValue<string> _ntPayToStCd;
         public string NtPayToStCd { get => _ntPayToStCd; set => _ntPayToStCd = value; }
@@ -258,13 +258,13 @@ namespace EncompassRest.Loans
         public string PmtCpnPayToStreetAddr2 { get => _pmtCpnPayToStreetAddr2; set => _pmtCpnPayToStreetAddr2 = value; }
         private DirtyValue<string> _pmtCpnPayToZip;
         public string PmtCpnPayToZip { get => _pmtCpnPayToZip; set => _pmtCpnPayToZip = value; }
-        private StringEnumValue<PrtAdtlDateHud1> _prtAdtlDateHud1;
+        private DirtyValue<StringEnumValue<PrtAdtlDateHud1>> _prtAdtlDateHud1;
         public StringEnumValue<PrtAdtlDateHud1> PrtAdtlDateHud1 { get => _prtAdtlDateHud1; set => _prtAdtlDateHud1 = value; }
         private DirtyValue<bool?> _prtAllngToNtBool;
         public bool? PrtAllngToNtBool { get => _prtAllngToNtBool; set => _prtAllngToNtBool = value; }
         private DirtyValue<bool?> _prtCorpMsgAsgnBool;
         public bool? PrtCorpMsgAsgnBool { get => _prtCorpMsgAsgnBool; set => _prtCorpMsgAsgnBool = value; }
-        private StringEnumValue<PrtDocDtSctyIstrmtNtryAprncDt> _prtDocDtSctyIstrmtNtryAprncDt;
+        private DirtyValue<StringEnumValue<PrtDocDtSctyIstrmtNtryAprncDt>> _prtDocDtSctyIstrmtNtryAprncDt;
         public StringEnumValue<PrtDocDtSctyIstrmtNtryAprncDt> PrtDocDtSctyIstrmtNtryAprncDt { get => _prtDocDtSctyIstrmtNtryAprncDt; set => _prtDocDtSctyIstrmtNtryAprncDt = value; }
         private DirtyValue<bool?> _prtIndxTilBool;
         public bool? PrtIndxTilBool { get => _prtIndxTilBool; set => _prtIndxTilBool = value; }
@@ -304,7 +304,7 @@ namespace EncompassRest.Loans
         public string RecRtrnLblTxtDesc { get => _recRtrnLblTxtDesc; set => _recRtrnLblTxtDesc = value; }
         private DirtyValue<string> _recRtrnNm;
         public string RecRtrnNm { get => _recRtrnNm; set => _recRtrnNm = value; }
-        private StringEnumValue<RecSamePtyTypeDesc> _recRtrnNmSamePtyTypDesc;
+        private DirtyValue<StringEnumValue<RecSamePtyTypeDesc>> _recRtrnNmSamePtyTypDesc;
         public StringEnumValue<RecSamePtyTypeDesc> RecRtrnNmSamePtyTypDesc { get => _recRtrnNmSamePtyTypDesc; set => _recRtrnNmSamePtyTypDesc = value; }
         private DirtyValue<string> _recRtrnPhoneNum;
         public string RecRtrnPhoneNum { get => _recRtrnPhoneNum; set => _recRtrnPhoneNum = value; }
@@ -338,7 +338,7 @@ namespace EncompassRest.Loans
         public string RtToCancelNtfcStreetAddr2 { get => _rtToCancelNtfcStreetAddr2; set => _rtToCancelNtfcStreetAddr2 = value; }
         private DirtyValue<string> _rtToCancelNtfcZip;
         public string RtToCancelNtfcZip { get => _rtToCancelNtfcZip; set => _rtToCancelNtfcZip = value; }
-        private StringEnumValue<RtToCancelTransDtTyp> _rtToCancelTransDtTyp;
+        private DirtyValue<StringEnumValue<RtToCancelTransDtTyp>> _rtToCancelTransDtTyp;
         public StringEnumValue<RtToCancelTransDtTyp> RtToCancelTransDtTyp { get => _rtToCancelTransDtTyp; set => _rtToCancelTransDtTyp = value; }
         private DirtyValue<string> _sctyIstrmtDCTrstFeePct;
         public string SctyIstrmtDCTrstFeePct { get => _sctyIstrmtDCTrstFeePct; set => _sctyIstrmtDCTrstFeePct = value; }
@@ -378,7 +378,7 @@ namespace EncompassRest.Loans
         public string SctyIstrmtPrepByIndvTtl { get => _sctyIstrmtPrepByIndvTtl; set => _sctyIstrmtPrepByIndvTtl = value; }
         private DirtyValue<string> _sctyIstrmtPrepByPhone;
         public string SctyIstrmtPrepByPhone { get => _sctyIstrmtPrepByPhone; set => _sctyIstrmtPrepByPhone = value; }
-        private StringEnumValue<SctyIstrmtPrepBySamePtyTypDesc> _sctyIstrmtPrepBySamePtyTypDesc;
+        private DirtyValue<StringEnumValue<SctyIstrmtPrepBySamePtyTypDesc>> _sctyIstrmtPrepBySamePtyTypDesc;
         public StringEnumValue<SctyIstrmtPrepBySamePtyTypDesc> SctyIstrmtPrepBySamePtyTypDesc { get => _sctyIstrmtPrepBySamePtyTypDesc; set => _sctyIstrmtPrepBySamePtyTypDesc = value; }
         private DirtyValue<string> _sctyIstrmtPrepByStCd;
         public string SctyIstrmtPrepByStCd { get => _sctyIstrmtPrepByStCd; set => _sctyIstrmtPrepByStCd = value; }
@@ -406,13 +406,13 @@ namespace EncompassRest.Loans
         public string Trst1Jrsdctn { get => _trst1Jrsdctn; set => _trst1Jrsdctn = value; }
         private DirtyValue<string> _trst1Nm;
         public string Trst1Nm { get => _trst1Nm; set => _trst1Nm = value; }
-        private StringEnumValue<OrgTyp> _trst1OrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _trst1OrgTyp;
         public StringEnumValue<OrgTyp> Trst1OrgTyp { get => _trst1OrgTyp; set => _trst1OrgTyp = value; }
         private DirtyValue<string> _trst1Phone;
         public string Trst1Phone { get => _trst1Phone; set => _trst1Phone = value; }
         private DirtyValue<string> _trst1RsdtTxtDesc;
         public string Trst1RsdtTxtDesc { get => _trst1RsdtTxtDesc; set => _trst1RsdtTxtDesc = value; }
-        private StringEnumValue<TrstSamePtyTypDesc> _trst1SamePtyTypDesc;
+        private DirtyValue<StringEnumValue<TrstSamePtyTypDesc>> _trst1SamePtyTypDesc;
         public StringEnumValue<TrstSamePtyTypDesc> Trst1SamePtyTypDesc { get => _trst1SamePtyTypDesc; set => _trst1SamePtyTypDesc = value; }
         private DirtyValue<string> _trst1StCd;
         public string Trst1StCd { get => _trst1StCd; set => _trst1StCd = value; }
@@ -432,13 +432,13 @@ namespace EncompassRest.Loans
         public string Trst2Jrsdctn { get => _trst2Jrsdctn; set => _trst2Jrsdctn = value; }
         private DirtyValue<string> _trst2Nm;
         public string Trst2Nm { get => _trst2Nm; set => _trst2Nm = value; }
-        private StringEnumValue<OrgTyp> _trst2OrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _trst2OrgTyp;
         public StringEnumValue<OrgTyp> Trst2OrgTyp { get => _trst2OrgTyp; set => _trst2OrgTyp = value; }
         private DirtyValue<string> _trst2Phone;
         public string Trst2Phone { get => _trst2Phone; set => _trst2Phone = value; }
         private DirtyValue<string> _trst2RsdtTxtDesc;
         public string Trst2RsdtTxtDesc { get => _trst2RsdtTxtDesc; set => _trst2RsdtTxtDesc = value; }
-        private StringEnumValue<TrstSamePtyTypDesc> _trst2SamePtyTypDesc;
+        private DirtyValue<StringEnumValue<TrstSamePtyTypDesc>> _trst2SamePtyTypDesc;
         public StringEnumValue<TrstSamePtyTypDesc> Trst2SamePtyTypDesc { get => _trst2SamePtyTypDesc; set => _trst2SamePtyTypDesc = value; }
         private DirtyValue<string> _trst2StCd;
         public string Trst2StCd { get => _trst2StCd; set => _trst2StCd = value; }

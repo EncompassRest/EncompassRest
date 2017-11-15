@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public DateTime? AppraisalExpiredDate { get => _appraisalExpiredDate; set => _appraisalExpiredDate = value; }
         private DirtyValue<DateTime?> _appraisalOrderedDate;
         public DateTime? AppraisalOrderedDate { get => _appraisalOrderedDate; set => _appraisalOrderedDate = value; }
-        private StringEnumValue<UnderwriterSummaryAppraisalType> _appraisalType;
+        private DirtyValue<StringEnumValue<UnderwriterSummaryAppraisalType>> _appraisalType;
         public StringEnumValue<UnderwriterSummaryAppraisalType> AppraisalType { get => _appraisalType; set => _appraisalType = value; }
         private DirtyValue<DateTime?> _approvalExpiredDate;
         public DateTime? ApprovalExpiredDate { get => _approvalExpiredDate; set => _approvalExpiredDate = value; }
@@ -94,7 +94,7 @@ namespace EncompassRest.Loans
         public DateTime? ReviewCompletedDate { get => _reviewCompletedDate; set => _reviewCompletedDate = value; }
         private DirtyValue<DateTime?> _reviewRequestedDate;
         public DateTime? ReviewRequestedDate { get => _reviewRequestedDate; set => _reviewRequestedDate = value; }
-        private StringEnumValue<ReviewType> _reviewType;
+        private DirtyValue<StringEnumValue<ReviewType>> _reviewType;
         public StringEnumValue<ReviewType> ReviewType { get => _reviewType; set => _reviewType = value; }
         private DirtyValue<decimal?> _reviewValue;
         public decimal? ReviewValue { get => _reviewValue; set => _reviewValue = value; }

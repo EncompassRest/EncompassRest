@@ -1,4 +1,5 @@
 ﻿using EncompassRest.Utilities;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
@@ -9,7 +10,7 @@ namespace EncompassRest.Contacts
         internal override string ApiPath => "encompass/v1/businessContacts";
 
         private DirtyValue<BusinessContactCategory?> _categoryId;
-        [EnumOutput(EnumOutput.Integer)]
+        [EnumFormat(EnumFormat.DecimalValue)]
         public BusinessContactCategory? CategoryId { get => _categoryId; set => _categoryId = value; }
         private DirtyValue<string> _companyName;
         public string CompanyName { get => _companyName; set => _companyName = value; }

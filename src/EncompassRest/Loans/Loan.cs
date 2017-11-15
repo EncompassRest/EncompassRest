@@ -20,7 +20,7 @@ namespace EncompassRest.Loans
         public decimal? AlterationsImprovementsOrRepairsAmount { get => _alterationsImprovementsOrRepairsAmount; set => _alterationsImprovementsOrRepairsAmount = value; }
         private DirtyList<Application> _applications;
         public IList<Application> Applications { get => _applications ?? (_applications = new DirtyList<Application>()); set => _applications = new DirtyList<Application>(value); }
-        private StringEnumValue<ApplicationTakenMethodType> _applicationTakenMethodType;
+        private DirtyValue<StringEnumValue<ApplicationTakenMethodType>> _applicationTakenMethodType;
         public StringEnumValue<ApplicationTakenMethodType> ApplicationTakenMethodType { get => _applicationTakenMethodType; set => _applicationTakenMethodType = value; }
         private DirtyValue<DateTime?> _aprDisclosureDate;
         public DateTime? AprDisclosureDate { get => _aprDisclosureDate; set => _aprDisclosureDate = value; }
@@ -58,7 +58,7 @@ namespace EncompassRest.Loans
         public decimal? BuydownRatePercent { get => _buydownRatePercent; set => _buydownRatePercent = value; }
         private DirtyValue<decimal?> _cashFromToBorrowerAmount;
         public decimal? CashFromToBorrowerAmount { get => _cashFromToBorrowerAmount; set => _cashFromToBorrowerAmount = value; }
-        private StringEnumValue<Channel> _channel;
+        private DirtyValue<StringEnumValue<Channel>> _channel;
         public StringEnumValue<Channel> Channel { get => _channel; set => _channel = value; }
         private DirtyValue<DateTime?> _closingBillingDate;
         public DateTime? ClosingBillingDate { get => _closingBillingDate; set => _closingBillingDate = value; }
@@ -84,7 +84,7 @@ namespace EncompassRest.Loans
         public CommitmentTerms CommitmentTerms { get => _commitmentTerms ?? (_commitmentTerms = new CommitmentTerms()); set => _commitmentTerms = value; }
         private DirtyList<ComplianceTestLog> _complianceTestLogs;
         public IList<ComplianceTestLog> ComplianceTestLogs { get => _complianceTestLogs ?? (_complianceTestLogs = new DirtyList<ComplianceTestLog>()); set => _complianceTestLogs = new DirtyList<ComplianceTestLog>(value); }
-        private StringEnumValue<ConformingJumbo> _conformingJumbo;
+        private DirtyValue<StringEnumValue<ConformingJumbo>> _conformingJumbo;
         public StringEnumValue<ConformingJumbo> ConformingJumbo { get => _conformingJumbo; set => _conformingJumbo = value; }
         private ConstructionManagement _constructionManagement;
         public ConstructionManagement ConstructionManagement { get => _constructionManagement ?? (_constructionManagement = new ConstructionManagement()); set => _constructionManagement = value; }
@@ -100,7 +100,7 @@ namespace EncompassRest.Loans
         public IList<ConversationLog> ConversationLogs { get => _conversationLogs ?? (_conversationLogs = new DirtyList<ConversationLog>()); set => _conversationLogs = new DirtyList<ConversationLog>(value); }
         private DirtyValue<bool?> _copyBrokerToLenderIndicator;
         public bool? CopyBrokerToLenderIndicator { get => _copyBrokerToLenderIndicator; set => _copyBrokerToLenderIndicator = value; }
-        private StringEnumValue<YOrN> _copyLoanNumLenderCaseNum;
+        private DirtyValue<StringEnumValue<YOrN>> _copyLoanNumLenderCaseNum;
         public StringEnumValue<YOrN> CopyLoanNumLenderCaseNum { get => _copyLoanNumLenderCaseNum; set => _copyLoanNumLenderCaseNum = value; }
         private Correspondent _correspondent;
         public Correspondent Correspondent { get => _correspondent ?? (_correspondent = new Correspondent()); set => _correspondent = value; }
@@ -114,7 +114,7 @@ namespace EncompassRest.Loans
         public int? CurrentApplicationIndex { get => _currentApplicationIndex; set => _currentApplicationIndex = value; }
         private DirtyValue<bool?> _currentApplicationIsPrimary;
         public bool? CurrentApplicationIsPrimary { get => _currentApplicationIsPrimary; set => _currentApplicationIsPrimary = value; }
-        private StringEnumValue<CurrentFirstMortgageHolderType> _currentFirstMortgageHolderType;
+        private DirtyValue<StringEnumValue<CurrentFirstMortgageHolderType>> _currentFirstMortgageHolderType;
         public StringEnumValue<CurrentFirstMortgageHolderType> CurrentFirstMortgageHolderType { get => _currentFirstMortgageHolderType; set => _currentFirstMortgageHolderType = value; }
         private DirtyList<CustomField> _customFields;
         public IList<CustomField> CustomFields { get => _customFields ?? (_customFields = new DirtyList<CustomField>()); set => _customFields = new DirtyList<CustomField>(value); }
@@ -138,7 +138,7 @@ namespace EncompassRest.Loans
         public IList<DisclosureTrackingLog> DisclosureTrackingLogs { get => _disclosureTrackingLogs ?? (_disclosureTrackingLogs = new DirtyList<DisclosureTrackingLog>()); set => _disclosureTrackingLogs = new DirtyList<DisclosureTrackingLog>(value); }
         private DirtyValue<decimal?> _discountPoint;
         public decimal? DiscountPoint { get => _discountPoint; set => _discountPoint = value; }
-        private StringEnumValue<DocEngine> _docEngine;
+        private DirtyValue<StringEnumValue<DocEngine>> _docEngine;
         public StringEnumValue<DocEngine> DocEngine { get => _docEngine; set => _docEngine = value; }
         private DirtyList<DocumentLog> _documentLogs;
         public IList<DocumentLog> DocumentLogs { get => _documentLogs ?? (_documentLogs = new DirtyList<DocumentLog>()); set => _documentLogs = new DirtyList<DocumentLog>(value); }
@@ -176,7 +176,7 @@ namespace EncompassRest.Loans
         public decimal? EstimatedConstructionInterest { get => _estimatedConstructionInterest; set => _estimatedConstructionInterest = value; }
         private DirtyValue<decimal?> _estimatedPrepaidItemsAmount;
         public decimal? EstimatedPrepaidItemsAmount { get => _estimatedPrepaidItemsAmount; set => _estimatedPrepaidItemsAmount = value; }
-        private StringEnumValue<ExportLoanNumber> _exportLoanNumber;
+        private DirtyValue<StringEnumValue<ExportLoanNumber>> _exportLoanNumber;
         public StringEnumValue<ExportLoanNumber> ExportLoanNumber { get => _exportLoanNumber; set => _exportLoanNumber = value; }
         private FannieMae _fannieMae;
         public FannieMae FannieMae { get => _fannieMae ?? (_fannieMae = new FannieMae()); set => _fannieMae = value; }
@@ -196,7 +196,7 @@ namespace EncompassRest.Loans
         public decimal? FirstSubordinateLienAmount { get => _firstSubordinateLienAmount; set => _firstSubordinateLienAmount = value; }
         private DirtyValue<bool?> _firstTimeHomebuyersIndicator;
         public bool? FirstTimeHomebuyersIndicator { get => _firstTimeHomebuyersIndicator; set => _firstTimeHomebuyersIndicator = value; }
-        private StringEnumValue<FnmCommunityLendingProductName> _fnmCommunityLendingProductName;
+        private DirtyValue<StringEnumValue<FnmCommunityLendingProductName>> _fnmCommunityLendingProductName;
         public StringEnumValue<FnmCommunityLendingProductName> FnmCommunityLendingProductName { get => _fnmCommunityLendingProductName; set => _fnmCommunityLendingProductName = value; }
         private DirtyValue<bool?> _fnmCommunitySecondsIndicator;
         public bool? FnmCommunitySecondsIndicator { get => _fnmCommunitySecondsIndicator; set => _fnmCommunitySecondsIndicator = value; }
@@ -292,7 +292,7 @@ namespace EncompassRest.Loans
         public string LeadSource { get => _leadSource; set => _leadSource = value; }
         private DirtyValue<string> _lenderCaseIdentifier;
         public string LenderCaseIdentifier { get => _lenderCaseIdentifier; set => _lenderCaseIdentifier = value; }
-        private StringEnumValue<LenderChannel> _lenderChannel;
+        private DirtyValue<StringEnumValue<LenderChannel>> _lenderChannel;
         public StringEnumValue<LenderChannel> LenderChannel { get => _lenderChannel; set => _lenderChannel = value; }
         private DirtyValue<decimal?> _lenderCreditsInFunding;
         public decimal? LenderCreditsInFunding { get => _lenderCreditsInFunding; set => _lenderCreditsInFunding = value; }
@@ -318,7 +318,7 @@ namespace EncompassRest.Loans
         public IList<LoanActionLog> LoanActionLogs { get => _loanActionLogs ?? (_loanActionLogs = new DirtyList<LoanActionLog>()); set => _loanActionLogs = new DirtyList<LoanActionLog>(value); }
         private DirtyValue<int?> _loanAmortizationTermMonths;
         public int? LoanAmortizationTermMonths { get => _loanAmortizationTermMonths; set => _loanAmortizationTermMonths = value; }
-        private StringEnumValue<AmortizationType> _loanAmortizationType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _loanAmortizationType;
         public StringEnumValue<AmortizationType> LoanAmortizationType { get => _loanAmortizationType; set => _loanAmortizationType = value; }
         private DirtyValue<string> _loanCreatedDate;
         public string LoanCreatedDate { get => _loanCreatedDate; set => _loanCreatedDate = value; }
@@ -328,7 +328,7 @@ namespace EncompassRest.Loans
         public string LoanIdNumber { get => _loanIdNumber; set => _loanIdNumber = value; }
         private DirtyValue<bool?> _loanImportStatusIndicator;
         public bool? LoanImportStatusIndicator { get => _loanImportStatusIndicator; set => _loanImportStatusIndicator = value; }
-        private StringEnumValue<LoanLinkSyncType> _loanLinkSyncType;
+        private DirtyValue<StringEnumValue<LoanLinkSyncType>> _loanLinkSyncType;
         public StringEnumValue<LoanLinkSyncType> LoanLinkSyncType { get => _loanLinkSyncType; set => _loanLinkSyncType = value; }
         private DirtyValue<string> _loanNumber;
         public string LoanNumber { get => _loanNumber; set => _loanNumber = value; }
@@ -338,7 +338,7 @@ namespace EncompassRest.Loans
         public string LoanProgramName { get => _loanProgramName; set => _loanProgramName = value; }
         private DirtyList<LoanProgram> _loanPrograms;
         public IList<LoanProgram> LoanPrograms { get => _loanPrograms ?? (_loanPrograms = new DirtyList<LoanProgram>()); set => _loanPrograms = new DirtyList<LoanProgram>(value); }
-        private StringEnumValue<LoanPurposeOfRefinanceType> _loanPurposeOfRefinanceType;
+        private DirtyValue<StringEnumValue<LoanPurposeOfRefinanceType>> _loanPurposeOfRefinanceType;
         public StringEnumValue<LoanPurposeOfRefinanceType> LoanPurposeOfRefinanceType { get => _loanPurposeOfRefinanceType; set => _loanPurposeOfRefinanceType = value; }
         private DirtyValue<string> _loanSource;
         public string LoanSource { get => _loanSource; set => _loanSource = value; }
@@ -400,7 +400,7 @@ namespace EncompassRest.Loans
         public DateTime? MilestoneCompletedDueDate { get => _milestoneCompletedDueDate; set => _milestoneCompletedDueDate = value; }
         private DirtyValue<DateTime?> _milestoneCurrentDateUtc;
         public DateTime? MilestoneCurrentDateUtc { get => _milestoneCurrentDateUtc; set => _milestoneCurrentDateUtc = value; }
-        private StringEnumValue<MilestoneCurrentName> _milestoneCurrentName;
+        private DirtyValue<StringEnumValue<MilestoneCurrentName>> _milestoneCurrentName;
         public StringEnumValue<MilestoneCurrentName> MilestoneCurrentName { get => _milestoneCurrentName; set => _milestoneCurrentName = value; }
         private DirtyValue<DateTime?> _milestoneDocSignedDate;
         public DateTime? MilestoneDocSignedDate { get => _milestoneDocSignedDate; set => _milestoneDocSignedDate = value; }
@@ -442,7 +442,7 @@ namespace EncompassRest.Loans
         public decimal? MortgageInsurancePremiumFHARefundAmount { get => _mortgageInsurancePremiumFHARefundAmount; set => _mortgageInsurancePremiumFHARefundAmount = value; }
         private DirtyValue<decimal?> _mortgageInsurancePremiumUpfrontFactorPercent;
         public decimal? MortgageInsurancePremiumUpfrontFactorPercent { get => _mortgageInsurancePremiumUpfrontFactorPercent; set => _mortgageInsurancePremiumUpfrontFactorPercent = value; }
-        private StringEnumValue<LoanType> _mortgageType;
+        private DirtyValue<StringEnumValue<LoanType>> _mortgageType;
         public StringEnumValue<LoanType> MortgageType { get => _mortgageType; set => _mortgageType = value; }
         private DirtyValue<string> _msaIdentifier;
         public string MsaIdentifier { get => _msaIdentifier; set => _msaIdentifier = value; }
@@ -454,15 +454,17 @@ namespace EncompassRest.Loans
         public string NmlsLoanOriginatorId { get => _nmlsLoanOriginatorId; set => _nmlsLoanOriginatorId = value; }
         private DirtyValue<bool?> _noClosingCostOption;
         public bool? NoClosingCostOption { get => _noClosingCostOption; set => _noClosingCostOption = value; }
+        private DirtyList<NonVol> _nonVols;
+        public IList<NonVol> NonVols { get => _nonVols ?? (_nonVols = new DirtyList<NonVol>()); set => _nonVols = new DirtyList<NonVol>(value); }
         private DirtyValue<bool?> _notRequiredForPurchaseSaleOrRefinance;
         public bool? NotRequiredForPurchaseSaleOrRefinance { get => _notRequiredForPurchaseSaleOrRefinance; set => _notRequiredForPurchaseSaleOrRefinance = value; }
         private DirtyValue<bool?> _notRequiredForSettlementOfYourLoan;
         public bool? NotRequiredForSettlementOfYourLoan { get => _notRequiredForSettlementOfYourLoan; set => _notRequiredForSettlementOfYourLoan = value; }
-        private StringEnumValue<OccupancyType> _occupancyType;
+        private DirtyValue<StringEnumValue<OccupancyType>> _occupancyType;
         public StringEnumValue<OccupancyType> OccupancyType { get => _occupancyType; set => _occupancyType = value; }
         private DirtyValue<string> _openingDocsInvestorCode;
         public string OpeningDocsInvestorCode { get => _openingDocsInvestorCode; set => _openingDocsInvestorCode = value; }
-        private StringEnumValue<DocsLoanProgramType> _openingDocsLoanProgramType;
+        private DirtyValue<StringEnumValue<DocsLoanProgramType>> _openingDocsLoanProgramType;
         public StringEnumValue<DocsLoanProgramType> OpeningDocsLoanProgramType { get => _openingDocsLoanProgramType; set => _openingDocsLoanProgramType = value; }
         private DirtyValue<string> _openingDocsPlanDescription;
         public string OpeningDocsPlanDescription { get => _openingDocsPlanDescription; set => _openingDocsPlanDescription = value; }
@@ -500,7 +502,7 @@ namespace EncompassRest.Loans
         public Prequalification Prequalification { get => _prequalification ?? (_prequalification = new Prequalification()); set => _prequalification = value; }
         private DirtyValue<decimal?> _principalAndInterestMonthlyPaymentAmount;
         public decimal? PrincipalAndInterestMonthlyPaymentAmount { get => _principalAndInterestMonthlyPaymentAmount; set => _principalAndInterestMonthlyPaymentAmount = value; }
-        private StringEnumValue<Print2003Application> _print2003Application;
+        private DirtyValue<StringEnumValue<Print2003Application>> _print2003Application;
         public StringEnumValue<Print2003Application> Print2003Application { get => _print2003Application; set => _print2003Application = value; }
         private DirtyList<PrintLog> _printLogs;
         public IList<PrintLog> PrintLogs { get => _printLogs ?? (_printLogs = new DirtyList<PrintLog>()); set => _printLogs = new DirtyList<PrintLog>(value); }
@@ -572,7 +574,7 @@ namespace EncompassRest.Loans
         public decimal? SecondSubordinateAmount { get => _secondSubordinateAmount; set => _secondSubordinateAmount = value; }
         private Section32 _section32;
         public Section32 Section32 { get => _section32 ?? (_section32 = new Section32()); set => _section32 = value; }
-        private StringEnumValue<SectionOfActType> _sectionOfActType;
+        private DirtyValue<StringEnumValue<SectionOfActType>> _sectionOfActType;
         public StringEnumValue<SectionOfActType> SectionOfActType { get => _sectionOfActType; set => _sectionOfActType = value; }
         private SelectedHomeCounselingProvider _selectedHomeCounselingProvider;
         public SelectedHomeCounselingProvider SelectedHomeCounselingProvider { get => _selectedHomeCounselingProvider ?? (_selectedHomeCounselingProvider = new SelectedHomeCounselingProvider()); set => _selectedHomeCounselingProvider = value; }
@@ -666,11 +668,11 @@ namespace EncompassRest.Loans
         public string UrlPage4Comments { get => _urlPage4Comments; set => _urlPage4Comments = value; }
         private Usda _usda;
         public Usda Usda { get => _usda ?? (_usda = new Usda()); set => _usda = value; }
-        private StringEnumValue<UsdaGovernmentLoanType> _usdaGovernmentLoanType;
+        private DirtyValue<StringEnumValue<UsdaGovernmentLoanType>> _usdaGovernmentLoanType;
         public StringEnumValue<UsdaGovernmentLoanType> UsdaGovernmentLoanType { get => _usdaGovernmentLoanType; set => _usdaGovernmentLoanType = value; }
         private DirtyValue<bool?> _use2018DiIndicator;
         public bool? Use2018DiIndicator { get => _use2018DiIndicator; set => _use2018DiIndicator = value; }
-        private StringEnumValue<UseNew2015FormsIndicator> _useNew2015FormsIndicator;
+        private DirtyValue<StringEnumValue<UseNew2015FormsIndicator>> _useNew2015FormsIndicator;
         public StringEnumValue<UseNew2015FormsIndicator> UseNew2015FormsIndicator { get => _useNew2015FormsIndicator; set => _useNew2015FormsIndicator = value; }
         private DirtyValue<bool?> _useNewHudIndicator;
         public bool? UseNewHudIndicator { get => _useNewHudIndicator; set => _useNewHudIndicator = value; }
@@ -998,6 +1000,7 @@ namespace EncompassRest.Loans
                     || _milestoneTemplateLogs?.Dirty == true
                     || _miscellaneous?.Dirty == true
                     || _netTangibleBenefit?.Dirty == true
+                    || _nonVols?.Dirty == true
                     || _postClosingConditionLogs?.Dirty == true
                     || _preliminaryConditionLogs?.Dirty == true
                     || _prequalification?.Dirty == true
@@ -1343,6 +1346,7 @@ namespace EncompassRest.Loans
                 if (_milestoneTemplateLogs != null) _milestoneTemplateLogs.Dirty = value;
                 if (_miscellaneous != null) _miscellaneous.Dirty = value;
                 if (_netTangibleBenefit != null) _netTangibleBenefit.Dirty = value;
+                if (_nonVols != null) _nonVols.Dirty = value;
                 if (_postClosingConditionLogs != null) _postClosingConditionLogs.Dirty = value;
                 if (_preliminaryConditionLogs != null) _preliminaryConditionLogs.Dirty = value;
                 if (_prequalification != null) _prequalification.Dirty = value;

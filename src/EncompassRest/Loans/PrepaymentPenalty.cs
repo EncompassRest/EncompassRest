@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class PrepaymentPenalty : IDirty
     {
-        private StringEnumValue<FullPrepaymentPenaltyOptionType> _fullPrepaymentPenaltyOptionType;
+        private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>> _fullPrepaymentPenaltyOptionType;
         public StringEnumValue<FullPrepaymentPenaltyOptionType> FullPrepaymentPenaltyOptionType { get => _fullPrepaymentPenaltyOptionType; set => _fullPrepaymentPenaltyOptionType = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

@@ -84,7 +84,7 @@ namespace EncompassRest.Loans
         public decimal? EndingBalance { get => _endingBalance; set => _endingBalance = value; }
         private DirtyValue<DateTime?> _escrowFirstPaymentDate;
         public DateTime? EscrowFirstPaymentDate { get => _escrowFirstPaymentDate; set => _escrowFirstPaymentDate = value; }
-        private StringEnumValue<EscrowFirstPaymentDateType> _escrowFirstPaymentDateType;
+        private DirtyValue<StringEnumValue<EscrowFirstPaymentDateType>> _escrowFirstPaymentDateType;
         public StringEnumValue<EscrowFirstPaymentDateType> EscrowFirstPaymentDateType { get => _escrowFirstPaymentDateType; set => _escrowFirstPaymentDateType = value; }
         private DirtyValue<decimal?> _escrowPayment;
         public decimal? EscrowPayment { get => _escrowPayment; set => _escrowPayment = value; }

@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         public string Email { get => _email; set => _email = value; }
         private DirtyValue<string> _fax;
         public string Fax { get => _fax; set => _fax = value; }
-        private StringEnumValue<Hud1EsPayToFeeType> _feeType;
+        private DirtyValue<StringEnumValue<Hud1EsPayToFeeType>> _feeType;
         public StringEnumValue<Hud1EsPayToFeeType> FeeType { get => _feeType; set => _feeType = value; }
         private DirtyValue<int?> _hud1EsPayToIndex;
         public int? Hud1EsPayToIndex { get => _hud1EsPayToIndex; set => _hud1EsPayToIndex = value; }

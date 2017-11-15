@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using EncompassRest.Schema;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class PipelineLoanReportFieldDef
+    public sealed class PipelineFieldDefinition
     {
         public int BorrowerPair { get; set; }
         public bool IsLoanDataField { get; set; }
-        public string Category { get; set; }
+        public StringEnumValue<PipelineFieldDefinitionCategory> Category { get; set; }
         public string FieldID { get; set; }
         public FieldDefinition FieldDefinition { get; set; }
         public int DataSource { get; set; }

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class RespaHudDetail : IDirty
     {
-        private StringEnumValue<CreditDebt> _creditDebt;
+        private DirtyValue<StringEnumValue<CreditDebt>> _creditDebt;
         public StringEnumValue<CreditDebt> CreditDebt { get => _creditDebt; set => _creditDebt = value; }
         private DirtyValue<string> _fWBC;
         public string FWBC { get => _fWBC; set => _fWBC = value; }

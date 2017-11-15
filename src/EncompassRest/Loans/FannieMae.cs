@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public decimal? Cltv { get => _cltv; set => _cltv = value; }
         private DirtyValue<string> _collateralUnderwriterScore;
         public string CollateralUnderwriterScore { get => _collateralUnderwriterScore; set => _collateralUnderwriterScore = value; }
-        private StringEnumValue<Community2ndRepaymentStructure> _community2ndRepaymentStructure;
+        private DirtyValue<StringEnumValue<Community2ndRepaymentStructure>> _community2ndRepaymentStructure;
         public StringEnumValue<Community2ndRepaymentStructure> Community2ndRepaymentStructure { get => _community2ndRepaymentStructure; set => _community2ndRepaymentStructure = value; }
         private DirtyValue<bool?> _communityLending;
         public bool? CommunityLending { get => _communityLending; set => _communityLending = value; }

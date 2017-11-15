@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         public DateTime? DateSold { get => _dateSold; set => _dateSold = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<PreviousVaLoanLoanType> _loanType;
+        private DirtyValue<StringEnumValue<PreviousVaLoanLoanType>> _loanType;
         public StringEnumValue<PreviousVaLoanLoanType> LoanType { get => _loanType; set => _loanType = value; }
         private DirtyValue<int?> _previousVaLoanIndex;
         public int? PreviousVaLoanIndex { get => _previousVaLoanIndex; set => _previousVaLoanIndex = value; }

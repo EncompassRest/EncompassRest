@@ -21,19 +21,19 @@ namespace EncompassRest.Utilities
 
         private readonly EnumFormat[] _enumFormats;
 
-        public EnumOutput EnumOutput { get; }
+        public EnumFormat EnumFormat { get; }
 
         public EnumJsonConverter()
-            : this(EnumOutput.Name)
+            : this(EnumFormat.Name)
         {
         }
 
-        public EnumJsonConverter(EnumOutput enumOutput)
+        public EnumJsonConverter(EnumFormat enumFormat)
         {
-            enumOutput.Validate(nameof(enumOutput));
+            enumFormat.Validate(nameof(enumFormat));
 
-            EnumOutput = enumOutput;
-            _enumFormats = new[] { enumOutput.GetEnumFormat() };
+            EnumFormat = enumFormat;
+            _enumFormats = new[] { enumFormat };
         }
 
         public override bool CanConvert(Type objectType)
@@ -77,7 +77,7 @@ namespace EncompassRest.Utilities
             else
             {
                 var enumType = value.GetType();
-                if (EnumOutput != EnumOutput.Integer)
+                if (EnumFormat != EnumFormat.DecimalValue)
                 {
                     var member = NonGenericEnums.GetMember(enumType, value);
                     if (member != null)
@@ -86,7 +86,7 @@ namespace EncompassRest.Utilities
                         return;
                     }
                 }
-                writer.WriteRawValue(NonGenericEnums.AsString(enumType, value, EnumFormat.DecimalValue));
+                writer.WriteRawValue(NonGenericEnums.AsString(enumType, value, EnumsNET.EnumFormat.DecimalValue));
             }
         }
     }

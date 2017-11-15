@@ -82,11 +82,11 @@ namespace EncompassRest.Loans
         public string ImpoundMortgInsPremYearlyBasis { get => _impoundMortgInsPremYearlyBasis; set => _impoundMortgInsPremYearlyBasis = value; }
         private DirtyValue<decimal?> _impoundTaxesRate;
         public decimal? ImpoundTaxesRate { get => _impoundTaxesRate; set => _impoundTaxesRate = value; }
-        private StringEnumValue<ClosingCostImpoundType> _impoundType1;
+        private DirtyValue<StringEnumValue<ClosingCostImpoundType>> _impoundType1;
         public StringEnumValue<ClosingCostImpoundType> ImpoundType1 { get => _impoundType1; set => _impoundType1 = value; }
         private DirtyValue<string> _impoundType2;
         public string ImpoundType2 { get => _impoundType2; set => _impoundType2 = value; }
-        private StringEnumValue<ImpoundType3> _impoundType3;
+        private DirtyValue<StringEnumValue<ImpoundType3>> _impoundType3;
         public StringEnumValue<ImpoundType3> ImpoundType3 { get => _impoundType3; set => _impoundType3 = value; }
         private DirtyValue<string> _impoundType4;
         public string ImpoundType4 { get => _impoundType4; set => _impoundType4 = value; }

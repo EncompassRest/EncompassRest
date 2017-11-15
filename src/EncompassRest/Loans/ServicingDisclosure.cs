@@ -26,15 +26,15 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _seventySixTo100Indicator;
         public bool? SeventySixTo100Indicator { get => _seventySixTo100Indicator; set => _seventySixTo100Indicator = value; }
-        private StringEnumValue<DoesOrDoesNot2> _thisEstimateType;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thisEstimateType;
         public StringEnumValue<DoesOrDoesNot2> ThisEstimateType { get => _thisEstimateType; set => _thisEstimateType = value; }
-        private StringEnumValue<DoesOrDoesNot2> _thisInformationType;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thisInformationType;
         public StringEnumValue<DoesOrDoesNot2> ThisInformationType { get => _thisInformationType; set => _thisInformationType = value; }
         private DirtyValue<bool?> _thisIsOurRecordOfTransferingIndicator;
         public bool? ThisIsOurRecordOfTransferingIndicator { get => _thisIsOurRecordOfTransferingIndicator; set => _thisIsOurRecordOfTransferingIndicator = value; }
         private DirtyValue<bool?> _twentySixTo50Indicator;
         public bool? TwentySixTo50Indicator { get => _twentySixTo50Indicator; set => _twentySixTo50Indicator = value; }
-        private StringEnumValue<WeAreAbleType> _weAreAbleType;
+        private DirtyValue<StringEnumValue<WeAreAbleType>> _weAreAbleType;
         public StringEnumValue<WeAreAbleType> WeAreAbleType { get => _weAreAbleType; set => _weAreAbleType = value; }
         private DirtyValue<bool?> _weDoNotSellMortgageLoansIndicator;
         public bool? WeDoNotSellMortgageLoansIndicator { get => _weDoNotSellMortgageLoansIndicator; set => _weDoNotSellMortgageLoansIndicator = value; }

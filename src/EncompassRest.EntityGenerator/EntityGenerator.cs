@@ -143,7 +143,7 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.NonVols", "Loan.VirtualFields" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields" };
 
         public static void Main(string[] args)
         {
@@ -169,9 +169,12 @@ namespace EncompassRest
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
             Directory.CreateDirectory(destinationPath);
-            var supportedEntities = new HashSet<string>(await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false));
+            var supportedEntities = new HashSet<string>(await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false))
+            {
+                "NonVol"
+            };
             var exceptions = new List<Exception>();
-            var missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols" };
+            var missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentOrderLog" };
             foreach (var entity in supportedEntities)
             {
                 Exception exception;
@@ -307,7 +310,7 @@ namespace {@namespace}
                         propertyType = $"DirtyList<{elementType}>";
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                    sb.AppendLine($"        private {(isEntity || isCollection || hasOptions ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isCollection));
 
                     sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set => {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }}");
@@ -467,24 +470,24 @@ namespace {@namespace}
             isEntity = false;
             isCollection = false;
             var propertyType = propertySchema.Type;
-            switch (propertyType)
+            switch (propertyType.EnumValue)
             {
-                case "string":
-                case "uuid":
+                case PropertySchemaType.String:
+                case PropertySchemaType.Uuid:
                     return "string";
-                case "decimal":
-                case "NA<decimal>":
-                case "bool":
-                case "int":
+                case PropertySchemaType.Decimal:
+                case PropertySchemaType.NADecimal:
+                case PropertySchemaType.Bool:
+                case PropertySchemaType.Int:
                     return $"{propertyType}?";
-                case "date":
-                case "datetime":
+                case PropertySchemaType.Date:
+                case PropertySchemaType.DateTime:
                     return "DateTime?";
-                case "set":
-                case "list":
+                case PropertySchemaType.Set:
+                case PropertySchemaType.List:
                     isCollection = true;
                     return propertySchema.ElementType;
-                case "entity":
+                case PropertySchemaType.Entity:
                     isEntity = true;
                     return propertySchema.EntityType;
                 default:
