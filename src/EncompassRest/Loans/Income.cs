@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         public decimal? Amount { get => _amount; set => _amount = value; }
         private DirtyValue<bool?> _currentIndicator;
         public bool? CurrentIndicator { get => _currentIndicator; set => _currentIndicator = value; }
-        private StringEnumValue<Description> _description;
+        private DirtyValue<StringEnumValue<Description>> _description;
         public StringEnumValue<Description> Description { get => _description; set => _description = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

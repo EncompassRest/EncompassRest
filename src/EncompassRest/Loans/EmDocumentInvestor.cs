@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public string InvAsgnJrsdctn { get => _invAsgnJrsdctn; set => _invAsgnJrsdctn = value; }
         private DirtyValue<string> _invAsgnNm;
         public string InvAsgnNm { get => _invAsgnNm; set => _invAsgnNm = value; }
-        private StringEnumValue<OrgTyp> _invAsgnOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _invAsgnOrgTyp;
         public StringEnumValue<OrgTyp> InvAsgnOrgTyp { get => _invAsgnOrgTyp; set => _invAsgnOrgTyp = value; }
         private DirtyValue<string> _invAsgnStCd;
         public string InvAsgnStCd { get => _invAsgnStCd; set => _invAsgnStCd = value; }
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
         public string InvLossPayeeJrsdctn { get => _invLossPayeeJrsdctn; set => _invLossPayeeJrsdctn = value; }
         private DirtyValue<string> _invLossPayeeNm;
         public string InvLossPayeeNm { get => _invLossPayeeNm; set => _invLossPayeeNm = value; }
-        private StringEnumValue<OrgTyp> _invLossPayeeOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _invLossPayeeOrgTyp;
         public StringEnumValue<OrgTyp> InvLossPayeeOrgTyp { get => _invLossPayeeOrgTyp; set => _invLossPayeeOrgTyp = value; }
         private DirtyValue<string> _invLossPayeeScsrClausTxtDesc;
         public string InvLossPayeeScsrClausTxtDesc { get => _invLossPayeeScsrClausTxtDesc; set => _invLossPayeeScsrClausTxtDesc = value; }
@@ -62,7 +62,7 @@ namespace EncompassRest.Loans
         public string InvLossPayeeZip { get => _invLossPayeeZip; set => _invLossPayeeZip = value; }
         private DirtyValue<string> _invNm;
         public string InvNm { get => _invNm; set => _invNm = value; }
-        private StringEnumValue<OrgTyp> _invOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _invOrgTyp;
         public StringEnumValue<OrgTyp> InvOrgTyp { get => _invOrgTyp; set => _invOrgTyp = value; }
         private DirtyValue<string> _invPhoneNum;
         public string InvPhoneNum { get => _invPhoneNum; set => _invPhoneNum = value; }
@@ -154,7 +154,7 @@ namespace EncompassRest.Loans
         public string InvSvcrJrsdctn { get => _invSvcrJrsdctn; set => _invSvcrJrsdctn = value; }
         private DirtyValue<string> _invSvcrNm;
         public string InvSvcrNm { get => _invSvcrNm; set => _invSvcrNm = value; }
-        private StringEnumValue<OrgTyp> _invSvcrOrgTyp;
+        private DirtyValue<StringEnumValue<OrgTyp>> _invSvcrOrgTyp;
         public StringEnumValue<OrgTyp> InvSvcrOrgTyp { get => _invSvcrOrgTyp; set => _invSvcrOrgTyp = value; }
         private DirtyValue<string> _invSvcrQlfdWrtnRqstMailToAdtlTxt;
         public string InvSvcrQlfdWrtnRqstMailToAdtlTxt { get => _invSvcrQlfdWrtnRqstMailToAdtlTxt; set => _invSvcrQlfdWrtnRqstMailToAdtlTxt = value; }

@@ -67,7 +67,7 @@ namespace EncompassRest.Loans.Documents
         public string ApplicationId { get => _applicationId; set => _applicationId = value; }
         private DirtyValue<string> _emnSignature;
         public string EmnSignature { get => _emnSignature; set => _emnSignature = value; }
-        private StringEnumValue<DocumentStatus> _status;
+        private DirtyValue<StringEnumValue<DocumentStatus>> _status;
         public StringEnumValue<DocumentStatus> Status { get => _status; set => _status = value; }
         private DirtyValue<DateTime?> _statusDate;
         public DateTime? StatusDate { get => _statusDate; set => _statusDate = value; }

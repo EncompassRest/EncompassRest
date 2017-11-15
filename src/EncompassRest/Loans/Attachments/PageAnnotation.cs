@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using EncompassRest.Utilities;
+using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
@@ -23,7 +24,7 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<int?> _height;
         public int? Height { get => _height; set => _height = value; }
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
-        [EnumOutput(EnumOutput.Integer)]
+        [EnumFormat(EnumFormat.DecimalValue)]
         public AnnotationVisibilityType? VisibilityType { get => _visibilityType; set => _visibilityType = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

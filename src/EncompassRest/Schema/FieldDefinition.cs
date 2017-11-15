@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
-using EncompassRest.Schema;
-using Newtonsoft.Json;
+﻿using EncompassRest.Utilities;
+using EnumsNET;
 
-namespace EncompassRest.LoanPipeline
+namespace EncompassRest.Schema
 {
     public class FieldDefinition
     {
         public string Description { get; set; }
         public string FieldID { get; set; }
-        public int Format { get; set; }
+        [EnumFormat(EnumFormat.DecimalValue)]
+        public LoanFieldFormat Format { get; set; }
         public ParentFieldDefinition ParentField { get; set; }
         public string InstanceSpecifier { get; set; }
         public bool IsInstance { get; set; }

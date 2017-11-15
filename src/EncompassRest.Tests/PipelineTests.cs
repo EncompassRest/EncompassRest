@@ -1,9 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Filters;
 using EncompassRest.LoanPipeline;
+using EncompassRest.Schema;
 using EncompassRest.Utilities;
+using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -11,6 +14,24 @@ namespace EncompassRest.Tests
     [TestClass]
     public class PipelineTests : TestBaseClass
     {
+        [TestMethod]
+        public async Task Pipeline_GetCanonicalNames()
+        {
+            var client = await GetTestClientAsync();
+            var canonicalNames = await client.Pipeline.GetCanonicalNamesAsync();
+
+            var categories = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.Category.Value));
+            categories.Remove(null);
+            var existingCategories = new HashSet<string>(Enums.GetMembers<PipelineFieldDefinitionCategory>().Select((EnumMember<PipelineFieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var newCategories = categories.Except(existingCategories).ToList();
+            Assert.AreEqual(0, newCategories.Count);
+
+            var fieldFormats = new HashSet<LoanFieldFormat>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.FieldDefinition.Format));
+            var existingFieldFormats = new HashSet<LoanFieldFormat>(Enums.GetValues<LoanFieldFormat>());
+            var newFieldFormats = fieldFormats.Except(existingFieldFormats).ToList();
+            Assert.AreEqual(0, newFieldFormats.Count);
+        }
+
         [TestMethod]
         public void ViewPipelineParameters_Serialization()
         {

@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
         private DirtyValue<decimal?> _wholePoc;
         public decimal? WholePoc { get => _wholePoc; set => _wholePoc = value; }
-        private StringEnumValue<WholePocPaidByType> _wholePocPaidByType;
+        private DirtyValue<StringEnumValue<WholePocPaidByType>> _wholePocPaidByType;
         public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get => _wholePocPaidByType; set => _wholePocPaidByType = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

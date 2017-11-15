@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
         public decimal? DeedAmount { get => _deedAmount; set => _deedAmount = value; }
         private DirtyValue<string> _description;
         public string Description { get => _description; set => _description = value; }
-        private StringEnumValue<FeeFeeType> _feeType;
+        private DirtyValue<StringEnumValue<FeeFeeType>> _feeType;
         public StringEnumValue<FeeFeeType> FeeType { get => _feeType; set => _feeType = value; }
         private DirtyValue<bool?> _fHA;
         public bool? FHA { get => _fHA; set => _fHA = value; }
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
         public int? NumberOfMonths { get => _numberOfMonths; set => _numberOfMonths = value; }
         private DirtyValue<decimal?> _ownerCoverage;
         public decimal? OwnerCoverage { get => _ownerCoverage; set => _ownerCoverage = value; }
-        private StringEnumValue<PaidBy> _paidBy;
+        private DirtyValue<StringEnumValue<PaidBy>> _paidBy;
         public StringEnumValue<PaidBy> PaidBy { get => _paidBy; set => _paidBy = value; }
         private DirtyValue<decimal?> _paidInAdvance;
         public decimal? PaidInAdvance { get => _paidInAdvance; set => _paidInAdvance = value; }
@@ -64,7 +64,7 @@ namespace EncompassRest.Loans
         public bool? PFC { get => _pFC; set => _pFC = value; }
         private DirtyValue<bool?> _pOC;
         public bool? POC { get => _pOC; set => _pOC = value; }
-        private StringEnumValue<PTB> _pTB;
+        private DirtyValue<StringEnumValue<PTB>> _pTB;
         public StringEnumValue<PTB> PTB { get => _pTB; set => _pTB = value; }
         private DirtyValue<decimal?> _releasesAmount;
         public decimal? ReleasesAmount { get => _releasesAmount; set => _releasesAmount = value; }

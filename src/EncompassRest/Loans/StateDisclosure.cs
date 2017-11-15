@@ -36,7 +36,7 @@ namespace EncompassRest.Loans
         public string AppraisalContact { get => _appraisalContact; set => _appraisalContact = value; }
         private DirtyValue<decimal?> _appraisalDeposit;
         public decimal? AppraisalDeposit { get => _appraisalDeposit; set => _appraisalDeposit = value; }
-        private StringEnumValue<Areas> _areas;
+        private DirtyValue<StringEnumValue<Areas>> _areas;
         public StringEnumValue<Areas> Areas { get => _areas; set => _areas = value; }
         private DirtyValue<bool?> _asAttorneyIndicator;
         public bool? AsAttorneyIndicator { get => _asAttorneyIndicator; set => _asAttorneyIndicator = value; }
@@ -94,7 +94,7 @@ namespace EncompassRest.Loans
         public string BrokerAuthorizedSigningRepName { get => _brokerAuthorizedSigningRepName; set => _brokerAuthorizedSigningRepName = value; }
         private DirtyValue<string> _brokerAuthorizedSigningRepTitle;
         public string BrokerAuthorizedSigningRepTitle { get => _brokerAuthorizedSigningRepTitle; set => _brokerAuthorizedSigningRepTitle = value; }
-        private StringEnumValue<BrokerForTheSeller> _brokerForTheSeller;
+        private DirtyValue<StringEnumValue<BrokerForTheSeller>> _brokerForTheSeller;
         public StringEnumValue<BrokerForTheSeller> BrokerForTheSeller { get => _brokerForTheSeller; set => _brokerForTheSeller = value; }
         private DirtyValue<string> _brokerLicense;
         public string BrokerLicense { get => _brokerLicense; set => _brokerLicense = value; }
@@ -150,7 +150,7 @@ namespace EncompassRest.Loans
         public bool? DirectPayIndicator { get => _directPayIndicator; set => _directPayIndicator = value; }
         private DirtyValue<decimal?> _directPayPercent;
         public decimal? DirectPayPercent { get => _directPayPercent; set => _directPayPercent = value; }
-        private StringEnumValue<DisclosureDeliveredBy> _disclosureDeliveredBy;
+        private DirtyValue<StringEnumValue<DisclosureDeliveredBy>> _disclosureDeliveredBy;
         public StringEnumValue<DisclosureDeliveredBy> DisclosureDeliveredBy { get => _disclosureDeliveredBy; set => _disclosureDeliveredBy = value; }
         private DirtyValue<string> _disclosureDeliveredByOtherMethod;
         public string DisclosureDeliveredByOtherMethod { get => _disclosureDeliveredByOtherMethod; set => _disclosureDeliveredByOtherMethod = value; }
@@ -168,7 +168,7 @@ namespace EncompassRest.Loans
         public decimal? FeeReceived1 { get => _feeReceived1; set => _feeReceived1 = value; }
         private DirtyValue<decimal?> _feeReceived2;
         public decimal? FeeReceived2 { get => _feeReceived2; set => _feeReceived2 = value; }
-        private StringEnumValue<RefundableType> _feeReceivedByLender;
+        private DirtyValue<StringEnumValue<RefundableType>> _feeReceivedByLender;
         public StringEnumValue<RefundableType> FeeReceivedByLender { get => _feeReceivedByLender; set => _feeReceivedByLender = value; }
         private DirtyValue<decimal?> _feesReceiving;
         public decimal? FeesReceiving { get => _feesReceiving; set => _feesReceiving = value; }
@@ -204,7 +204,7 @@ namespace EncompassRest.Loans
         public string InformationAboutTheIndexCanBeFound { get => _informationAboutTheIndexCanBeFound; set => _informationAboutTheIndexCanBeFound = value; }
         private DirtyValue<string> _inLicensedNo;
         public string InLicensedNo { get => _inLicensedNo; set => _inLicensedNo = value; }
-        private StringEnumValue<InLicensedType> _inLicensedType;
+        private DirtyValue<StringEnumValue<InLicensedType>> _inLicensedType;
         public StringEnumValue<InLicensedType> InLicensedType { get => _inLicensedType; set => _inLicensedType = value; }
         private DirtyValue<bool?> _isEstimateIndicator;
         public bool? IsEstimateIndicator { get => _isEstimateIndicator; set => _isEstimateIndicator = value; }
@@ -242,7 +242,7 @@ namespace EncompassRest.Loans
         public decimal? LockInFee { get => _lockInFee; set => _lockInFee = value; }
         private DirtyValue<string> _methodDescription;
         public string MethodDescription { get => _methodDescription; set => _methodDescription = value; }
-        private StringEnumValue<MethodDetermine> _methodDetermine;
+        private DirtyValue<StringEnumValue<MethodDetermine>> _methodDetermine;
         public StringEnumValue<MethodDetermine> MethodDetermine { get => _methodDetermine; set => _methodDetermine = value; }
         private DirtyValue<bool?> _mortgageAgreementIndicator;
         public bool? MortgageAgreementIndicator { get => _mortgageAgreementIndicator; set => _mortgageAgreementIndicator = value; }
@@ -278,9 +278,9 @@ namespace EncompassRest.Loans
         public decimal? OriginationFeeDecreasesRate { get => _originationFeeDecreasesRate; set => _originationFeeDecreasesRate = value; }
         private DirtyValue<decimal?> _originationFeeIncreasesRate;
         public decimal? OriginationFeeIncreasesRate { get => _originationFeeIncreasesRate; set => _originationFeeIncreasesRate = value; }
-        private StringEnumValue<InterestRateImpactedStatus> _originationFeeInterestRateImpactedStatus;
+        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>> _originationFeeInterestRateImpactedStatus;
         public StringEnumValue<InterestRateImpactedStatus> OriginationFeeInterestRateImpactedStatus { get => _originationFeeInterestRateImpactedStatus; set => _originationFeeInterestRateImpactedStatus = value; }
-        private StringEnumValue<FeePaidBy> _originationFeePaidBy;
+        private DirtyValue<StringEnumValue<FeePaidBy>> _originationFeePaidBy;
         public StringEnumValue<FeePaidBy> OriginationFeePaidBy { get => _originationFeePaidBy; set => _originationFeePaidBy = value; }
         private DirtyValue<decimal?> _paidByBorrower;
         public decimal? PaidByBorrower { get => _paidByBorrower; set => _paidByBorrower = value; }
@@ -304,7 +304,7 @@ namespace EncompassRest.Loans
         public bool? PrintInterestRateReductionRider { get => _printInterestRateReductionRider; set => _printInterestRateReductionRider = value; }
         private DirtyValue<bool?> _printMDDeliveryIndicator;
         public bool? PrintMDDeliveryIndicator { get => _printMDDeliveryIndicator; set => _printMDDeliveryIndicator = value; }
-        private StringEnumValue<ProvidedBy> _providedBy;
+        private DirtyValue<StringEnumValue<ProvidedBy>> _providedBy;
         public StringEnumValue<ProvidedBy> ProvidedBy { get => _providedBy; set => _providedBy = value; }
         private DirtyValue<string> _questionContact;
         public string QuestionContact { get => _questionContact; set => _questionContact = value; }
@@ -322,7 +322,7 @@ namespace EncompassRest.Loans
         public string RefundableBy { get => _refundableBy; set => _refundableBy = value; }
         private DirtyValue<bool?> _refundableIndicator;
         public bool? RefundableIndicator { get => _refundableIndicator; set => _refundableIndicator = value; }
-        private StringEnumValue<RefundableType> _refundableType;
+        private DirtyValue<StringEnumValue<RefundableType>> _refundableType;
         public StringEnumValue<RefundableType> RefundableType { get => _refundableType; set => _refundableType = value; }
         private DirtyValue<string> _refundCondition1;
         public string RefundCondition1 { get => _refundCondition1; set => _refundCondition1 = value; }
@@ -358,9 +358,9 @@ namespace EncompassRest.Loans
         public string RegulatorWebAddress { get => _regulatorWebAddress; set => _regulatorWebAddress = value; }
         private DirtyValue<string> _regulatorZipCode;
         public string RegulatorZipCode { get => _regulatorZipCode; set => _regulatorZipCode = value; }
-        private StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator> _scheduleOfChargesEstimatedFinalIndicator;
+        private DirtyValue<StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator>> _scheduleOfChargesEstimatedFinalIndicator;
         public StringEnumValue<ScheduleOfChargesEstimatedFinalIndicator> ScheduleOfChargesEstimatedFinalIndicator { get => _scheduleOfChargesEstimatedFinalIndicator; set => _scheduleOfChargesEstimatedFinalIndicator = value; }
-        private StringEnumValue<ScRegulatoryAgencyType> _scRegulatoryAgencyType;
+        private DirtyValue<StringEnumValue<ScRegulatoryAgencyType>> _scRegulatoryAgencyType;
         public StringEnumValue<ScRegulatoryAgencyType> ScRegulatoryAgencyType { get => _scRegulatoryAgencyType; set => _scRegulatoryAgencyType = value; }
         private DirtyValue<bool?> _selectDivisionFeesIndicator;
         public bool? SelectDivisionFeesIndicator { get => _selectDivisionFeesIndicator; set => _selectDivisionFeesIndicator = value; }
@@ -372,9 +372,9 @@ namespace EncompassRest.Loans
         public decimal? ServicingFeeChargedAmount { get => _servicingFeeChargedAmount; set => _servicingFeeChargedAmount = value; }
         private DirtyValue<bool?> _servicingFeeChargedIndicator;
         public bool? ServicingFeeChargedIndicator { get => _servicingFeeChargedIndicator; set => _servicingFeeChargedIndicator = value; }
-        private StringEnumValue<FeePaidBy> _servicingFeePaidBy;
+        private DirtyValue<StringEnumValue<FeePaidBy>> _servicingFeePaidBy;
         public StringEnumValue<FeePaidBy> ServicingFeePaidBy { get => _servicingFeePaidBy; set => _servicingFeePaidBy = value; }
-        private StringEnumValue<ServicingFeePaidFrequence> _servicingFeePaidFrequence;
+        private DirtyValue<StringEnumValue<ServicingFeePaidFrequence>> _servicingFeePaidFrequence;
         public StringEnumValue<ServicingFeePaidFrequence> ServicingFeePaidFrequence { get => _servicingFeePaidFrequence; set => _servicingFeePaidFrequence = value; }
         private DirtyValue<bool?> _signedByBorrowerIndicator;
         public bool? SignedByBorrowerIndicator { get => _signedByBorrowerIndicator; set => _signedByBorrowerIndicator = value; }
@@ -398,7 +398,7 @@ namespace EncompassRest.Loans
         public decimal? TaxExemptAcquisitionCostCertificationSurvey { get => _taxExemptAcquisitionCostCertificationSurvey; set => _taxExemptAcquisitionCostCertificationSurvey = value; }
         private DirtyValue<decimal?> _taxExemptAcquisitionCostCertificationTotalAdjustments;
         public decimal? TaxExemptAcquisitionCostCertificationTotalAdjustments { get => _taxExemptAcquisitionCostCertificationTotalAdjustments; set => _taxExemptAcquisitionCostCertificationTotalAdjustments = value; }
-        private StringEnumValue<TermsChange> _termsChange;
+        private DirtyValue<StringEnumValue<TermsChange>> _termsChange;
         public StringEnumValue<TermsChange> TermsChange { get => _termsChange; set => _termsChange = value; }
         private DirtyValue<decimal?> _texasApplicationFee;
         public decimal? TexasApplicationFee { get => _texasApplicationFee; set => _texasApplicationFee = value; }
@@ -424,11 +424,11 @@ namespace EncompassRest.Loans
         public decimal? TransferFeeChargedAmount { get => _transferFeeChargedAmount; set => _transferFeeChargedAmount = value; }
         private DirtyValue<bool?> _transferFeeChargedIndicator;
         public bool? TransferFeeChargedIndicator { get => _transferFeeChargedIndicator; set => _transferFeeChargedIndicator = value; }
-        private StringEnumValue<FeePaidBy> _transferFeePaidBy;
+        private DirtyValue<StringEnumValue<FeePaidBy>> _transferFeePaidBy;
         public StringEnumValue<FeePaidBy> TransferFeePaidBy { get => _transferFeePaidBy; set => _transferFeePaidBy = value; }
         private DirtyValue<bool?> _txVeteransLandBoardIndicator;
         public bool? TxVeteransLandBoardIndicator { get => _txVeteransLandBoardIndicator; set => _txVeteransLandBoardIndicator = value; }
-        private StringEnumValue<TypeOfProperty> _typeOfProperty;
+        private DirtyValue<StringEnumValue<TypeOfProperty>> _typeOfProperty;
         public StringEnumValue<TypeOfProperty> TypeOfProperty { get => _typeOfProperty; set => _typeOfProperty = value; }
         private DirtyValue<string> _underwritingContact;
         public string UnderwritingContact { get => _underwritingContact; set => _underwritingContact = value; }
@@ -442,9 +442,9 @@ namespace EncompassRest.Loans
         public decimal? YSPDecreasesRate { get => _ySPDecreasesRate; set => _ySPDecreasesRate = value; }
         private DirtyValue<decimal?> _ySPIncreasesRate;
         public decimal? YSPIncreasesRate { get => _ySPIncreasesRate; set => _ySPIncreasesRate = value; }
-        private StringEnumValue<InterestRateImpactedStatus> _ySPInterestRateImpactedStatus;
+        private DirtyValue<StringEnumValue<InterestRateImpactedStatus>> _ySPInterestRateImpactedStatus;
         public StringEnumValue<InterestRateImpactedStatus> YSPInterestRateImpactedStatus { get => _ySPInterestRateImpactedStatus; set => _ySPInterestRateImpactedStatus = value; }
-        private StringEnumValue<FeePaidBy> _ySPPaidBy;
+        private DirtyValue<StringEnumValue<FeePaidBy>> _ySPPaidBy;
         public StringEnumValue<FeePaidBy> YSPPaidBy { get => _ySPPaidBy; set => _ySPPaidBy = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

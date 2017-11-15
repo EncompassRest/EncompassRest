@@ -2,9 +2,9 @@
 {
     public enum StringFieldMatchType
     {
-        Exact,
-        CaseInsensitive,
-        StartsWith,
-        Contains
+        Exact = 0,
+        CaseInsensitive = 1,
+        StartsWith = 2,
+        Contains = 3
     }
 }

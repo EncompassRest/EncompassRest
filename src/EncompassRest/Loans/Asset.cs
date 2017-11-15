@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         public string AltId { get => _altId; set => _altId = value; }
         private DirtyValue<int?> _assetIndex;
         public int? AssetIndex { get => _assetIndex; set => _assetIndex = value; }
-        private StringEnumValue<AssetType> _assetType;
+        private DirtyValue<StringEnumValue<AssetType>> _assetType;
         public StringEnumValue<AssetType> AssetType { get => _assetType; set => _assetType = value; }
         private DirtyValue<string> _attention;
         public string Attention { get => _attention; set => _attention = value; }
@@ -60,7 +60,7 @@ namespace EncompassRest.Loans
         public string NameInAccount { get => _nameInAccount; set => _nameInAccount = value; }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => _noLinkToDocTrackIndicator = value; }
-        private StringEnumValue<Owner> _owner;
+        private DirtyValue<StringEnumValue<Owner>> _owner;
         public StringEnumValue<Owner> Owner { get => _owner; set => _owner = value; }
         private DirtyValue<bool?> _printAttachmentIndicator;
         public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => _printAttachmentIndicator = value; }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
+using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,6 +16,17 @@ namespace EncompassRest.Tests
     [TestClass]
     public class LoanTests : TestBaseClass
     {
+        [TestMethod]
+        public async Task Loan_GetSupportedEntities()
+        {
+            var client = await GetTestClientAsync();
+            var entities = new HashSet<string>(await client.Loans.GetSupportedEntitiesAsync());
+            entities.ExceptWith(new[] { "CoBorrower", "LOCompensation", "ElliUCDFields", "DocumentOrderLog", "NonVols" });
+            var existingEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select((EnumMember<LoanEntity> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var newEntities = entities.Except(existingEntities).ToList();
+            Assert.AreEqual(0, newEntities.Count);
+        }
+
         [TestMethod]
         public async Task Loan_PublicSerialization()
         {

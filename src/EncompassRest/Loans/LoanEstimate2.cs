@@ -76,7 +76,7 @@ namespace EncompassRest.Loans
         public decimal? FundsForBorrower { get => _fundsForBorrower; set => _fundsForBorrower = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<IndexMargin> _indexMargin;
+        private DirtyValue<StringEnumValue<IndexMargin>> _indexMargin;
         public StringEnumValue<IndexMargin> IndexMargin { get => _indexMargin; set => _indexMargin = value; }
         private DirtyValue<int?> _initialEscrowPaymentClosingSubTotal;
         public int? InitialEscrowPaymentClosingSubTotal { get => _initialEscrowPaymentClosingSubTotal; set => _initialEscrowPaymentClosingSubTotal = value; }

@@ -56,9 +56,9 @@ namespace EncompassRest.Loans
         public DateTime? LastAppliedDate { get => _lastAppliedDate; set => _lastAppliedDate = value; }
         private DirtyValue<string> _lastAppliedDateTime;
         public string LastAppliedDateTime { get => _lastAppliedDateTime; set => _lastAppliedDateTime = value; }
-        private StringEnumValue<LoanAmountType> _loanAmountType;
+        private DirtyValue<StringEnumValue<LoanAmountType>> _loanAmountType;
         public StringEnumValue<LoanAmountType> LoanAmountType { get => _loanAmountType; set => _loanAmountType = value; }
-        private StringEnumValue<LoanAmountType> _loanAmountTypeForOfficer;
+        private DirtyValue<StringEnumValue<LoanAmountType>> _loanAmountTypeForOfficer;
         public StringEnumValue<LoanAmountType> LoanAmountTypeForOfficer { get => _loanAmountTypeForOfficer; set => _loanAmountTypeForOfficer = value; }
         private DirtyValue<string> _loanOriginatorID;
         public string LoanOriginatorID { get => _loanOriginatorID; set => _loanOriginatorID = value; }
@@ -78,13 +78,13 @@ namespace EncompassRest.Loans
         public string PlanName { get => _planName; set => _planName = value; }
         private DirtyValue<string> _planNameForOfficer;
         public string PlanNameForOfficer { get => _planNameForOfficer; set => _planNameForOfficer = value; }
-        private StringEnumValue<RoundingMethod> _roundingMethod;
+        private DirtyValue<StringEnumValue<RoundingMethod>> _roundingMethod;
         public StringEnumValue<RoundingMethod> RoundingMethod { get => _roundingMethod; set => _roundingMethod = value; }
-        private StringEnumValue<RoundingMethod> _roundingMethodForOfficer;
+        private DirtyValue<StringEnumValue<RoundingMethod>> _roundingMethodForOfficer;
         public StringEnumValue<RoundingMethod> RoundingMethodForOfficer { get => _roundingMethodForOfficer; set => _roundingMethodForOfficer = value; }
         private DirtyValue<string> _triggerField;
         public string TriggerField { get => _triggerField; set => _triggerField = value; }
-        private StringEnumValue<WhoPaidCompensation> _whoPaidCompensation;
+        private DirtyValue<StringEnumValue<WhoPaidCompensation>> _whoPaidCompensation;
         public StringEnumValue<WhoPaidCompensation> WhoPaidCompensation { get => _whoPaidCompensation; set => _whoPaidCompensation = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         public int? AgeOfProperty { get => _ageOfProperty; set => _ageOfProperty = value; }
         private DirtyValue<decimal?> _amountSpentOnEnergyImprovements;
         public decimal? AmountSpentOnEnergyImprovements { get => _amountSpentOnEnergyImprovements; set => _amountSpentOnEnergyImprovements = value; }
-        private StringEnumValue<AmountTypeWithheld> _amountTypeWithheld;
+        private DirtyValue<StringEnumValue<AmountTypeWithheld>> _amountTypeWithheld;
         public StringEnumValue<AmountTypeWithheld> AmountTypeWithheld { get => _amountTypeWithheld; set => _amountTypeWithheld = value; }
         private DirtyValue<decimal?> _amountWithheld;
         public decimal? AmountWithheld { get => _amountWithheld; set => _amountWithheld = value; }
@@ -62,7 +62,7 @@ namespace EncompassRest.Loans
         public string ApplicantLastNameWithSuffix { get => _applicantLastNameWithSuffix; set => _applicantLastNameWithSuffix = value; }
         private DirtyValue<string> _applicantTaxIdentificationIdentifier;
         public string ApplicantTaxIdentificationIdentifier { get => _applicantTaxIdentificationIdentifier; set => _applicantTaxIdentificationIdentifier = value; }
-        private StringEnumValue<VaLoanDataAppraisalType> _appraisalType;
+        private DirtyValue<StringEnumValue<VaLoanDataAppraisalType>> _appraisalType;
         public StringEnumValue<VaLoanDataAppraisalType> AppraisalType { get => _appraisalType; set => _appraisalType = value; }
         private DirtyValue<bool?> _automaticProcedure;
         public bool? AutomaticProcedure { get => _automaticProcedure; set => _automaticProcedure = value; }
@@ -72,19 +72,19 @@ namespace EncompassRest.Loans
         public string AvailableForInspectionDateAndTime { get => _availableForInspectionDateAndTime; set => _availableForInspectionDateAndTime = value; }
         private DirtyValue<decimal?> _borrowerPaidDiscountPointsTotalAmount;
         public decimal? BorrowerPaidDiscountPointsTotalAmount { get => _borrowerPaidDiscountPointsTotalAmount; set => _borrowerPaidDiscountPointsTotalAmount = value; }
-        private StringEnumValue<BuildingType> _buildingType;
+        private DirtyValue<StringEnumValue<BuildingType>> _buildingType;
         public StringEnumValue<BuildingType> BuildingType { get => _buildingType; set => _buildingType = value; }
         private DirtyValue<bool?> _buyerPurchasingLotSeparately;
         public bool? BuyerPurchasingLotSeparately { get => _buyerPurchasingLotSeparately; set => _buyerPurchasingLotSeparately = value; }
         private DirtyValue<decimal?> _cashPaymentFromVeteran;
         public decimal? CashPaymentFromVeteran { get => _cashPaymentFromVeteran; set => _cashPaymentFromVeteran = value; }
-        private StringEnumValue<ClaimDisabilityBenefits> _claimDisabilityBenefits;
+        private DirtyValue<StringEnumValue<ClaimDisabilityBenefits>> _claimDisabilityBenefits;
         public StringEnumValue<ClaimDisabilityBenefits> ClaimDisabilityBenefits { get => _claimDisabilityBenefits; set => _claimDisabilityBenefits = value; }
         private DirtyValue<bool?> _clothesWasherIndicator;
         public bool? ClothesWasherIndicator { get => _clothesWasherIndicator; set => _clothesWasherIndicator = value; }
         private DirtyValue<DateTime?> _constructionCompletedDate;
         public DateTime? ConstructionCompletedDate { get => _constructionCompletedDate; set => _constructionCompletedDate = value; }
-        private StringEnumValue<ConstructionPlan> _constructionPlan;
+        private DirtyValue<StringEnumValue<ConstructionPlan>> _constructionPlan;
         public StringEnumValue<ConstructionPlan> ConstructionPlan { get => _constructionPlan; set => _constructionPlan = value; }
         private DirtyValue<bool?> _constructionWarrantyIncluded;
         public bool? ConstructionWarrantyIncluded { get => _constructionWarrantyIncluded; set => _constructionWarrantyIncluded = value; }
@@ -136,11 +136,11 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _initialTotal;
         public decimal? InitialTotal { get => _initialTotal; set => _initialTotal = value; }
-        private StringEnumValue<InspectionWillBeMadeBy> _inspectionWillBeMadeBy;
+        private DirtyValue<StringEnumValue<InspectionWillBeMadeBy>> _inspectionWillBeMadeBy;
         public StringEnumValue<InspectionWillBeMadeBy> InspectionWillBeMadeBy { get => _inspectionWillBeMadeBy; set => _inspectionWillBeMadeBy = value; }
         private DirtyValue<bool?> _insulation;
         public bool? Insulation { get => _insulation; set => _insulation = value; }
-        private StringEnumValue<InsuranceType> _insuranceType;
+        private DirtyValue<StringEnumValue<InsuranceType>> _insuranceType;
         public StringEnumValue<InsuranceType> InsuranceType { get => _insuranceType; set => _insuranceType = value; }
         private DirtyValue<int?> _irregularLotSizeInSquareFeet;
         public int? IrregularLotSizeInSquareFeet { get => _irregularLotSizeInSquareFeet; set => _irregularLotSizeInSquareFeet = value; }
@@ -150,7 +150,7 @@ namespace EncompassRest.Loans
         public string KeysAtAddress { get => _keysAtAddress; set => _keysAtAddress = value; }
         private DirtyValue<decimal?> _landPurchasePrice;
         public decimal? LandPurchasePrice { get => _landPurchasePrice; set => _landPurchasePrice = value; }
-        private StringEnumValue<LeaseholdType> _leaseholdType;
+        private DirtyValue<StringEnumValue<LeaseholdType>> _leaseholdType;
         public StringEnumValue<LeaseholdType> LeaseholdType { get => _leaseholdType; set => _leaseholdType = value; }
         private DirtyValue<string> _lenderSAR;
         public string LenderSAR { get => _lenderSAR; set => _lenderSAR = value; }
@@ -172,9 +172,9 @@ namespace EncompassRest.Loans
         public string LoanAnalysisRemarks8 { get => _loanAnalysisRemarks8; set => _loanAnalysisRemarks8 = value; }
         private DirtyValue<string> _loanAnalysisRemarks9;
         public string LoanAnalysisRemarks9 { get => _loanAnalysisRemarks9; set => _loanAnalysisRemarks9 = value; }
-        private StringEnumValue<LoanCode> _loanCode;
+        private DirtyValue<StringEnumValue<LoanCode>> _loanCode;
         public StringEnumValue<LoanCode> LoanCode { get => _loanCode; set => _loanCode = value; }
-        private StringEnumValue<LoanProcedure> _loanProcedure;
+        private DirtyValue<StringEnumValue<LoanProcedure>> _loanProcedure;
         public StringEnumValue<LoanProcedure> LoanProcedure { get => _loanProcedure; set => _loanProcedure = value; }
         private DirtyValue<bool?> _loanProcessedUnderAU;
         public bool? LoanProcessedUnderAU { get => _loanProcessedUnderAU; set => _loanProcessedUnderAU = value; }
@@ -204,11 +204,11 @@ namespace EncompassRest.Loans
         public string MailingPostalCode { get => _mailingPostalCode; set => _mailingPostalCode = value; }
         private DirtyValue<string> _mailingState;
         public string MailingState { get => _mailingState; set => _mailingState = value; }
-        private StringEnumValue<ManufacturedHome> _manufacturedHome;
+        private DirtyValue<StringEnumValue<ManufacturedHome>> _manufacturedHome;
         public StringEnumValue<ManufacturedHome> ManufacturedHome { get => _manufacturedHome; set => _manufacturedHome = value; }
         private DirtyValue<string> _mCRVNumber;
         public string MCRVNumber { get => _mCRVNumber; set => _mCRVNumber = value; }
-        private StringEnumValue<MilitaryBranchOfService> _militaryBranchOfService;
+        private DirtyValue<StringEnumValue<MilitaryBranchOfService>> _militaryBranchOfService;
         public StringEnumValue<MilitaryBranchOfService> MilitaryBranchOfService { get => _militaryBranchOfService; set => _militaryBranchOfService = value; }
         private DirtyList<MilitaryService> _militaryServices;
         public IList<MilitaryService> MilitaryServices { get => _militaryServices ?? (_militaryServices = new DirtyList<MilitaryService>()); set => _militaryServices = new DirtyList<MilitaryService>(value); }
@@ -302,9 +302,9 @@ namespace EncompassRest.Loans
         public IList<PreviousVaLoan> PreviousVaLoans { get => _previousVaLoans ?? (_previousVaLoans = new DirtyList<PreviousVaLoan>()); set => _previousVaLoans = new DirtyList<PreviousVaLoan>(value); }
         private DirtyValue<bool?> _priorApprovalProcedure;
         public bool? PriorApprovalProcedure { get => _priorApprovalProcedure; set => _priorApprovalProcedure = value; }
-        private StringEnumValue<PriorLoanType> _priorLoanType;
+        private DirtyValue<StringEnumValue<PriorLoanType>> _priorLoanType;
         public StringEnumValue<PriorLoanType> PriorLoanType { get => _priorLoanType; set => _priorLoanType = value; }
-        private StringEnumValue<PropertyDesignation> _propertyDesignation;
+        private DirtyValue<StringEnumValue<PropertyDesignation>> _propertyDesignation;
         public StringEnumValue<PropertyDesignation> PropertyDesignation { get => _propertyDesignation; set => _propertyDesignation = value; }
         private DirtyValue<int?> _propertyGrossLivingArea;
         public int? PropertyGrossLivingArea { get => _propertyGrossLivingArea; set => _propertyGrossLivingArea = value; }
@@ -316,11 +316,11 @@ namespace EncompassRest.Loans
         public string PropertyLegalDescription3 { get => _propertyLegalDescription3; set => _propertyLegalDescription3 = value; }
         private DirtyValue<string> _propertyLegalDescription4;
         public string PropertyLegalDescription4 { get => _propertyLegalDescription4; set => _propertyLegalDescription4 = value; }
-        private StringEnumValue<PropertyOccupancyType> _propertyOccupancyType;
+        private DirtyValue<StringEnumValue<PropertyOccupancyType>> _propertyOccupancyType;
         public StringEnumValue<PropertyOccupancyType> PropertyOccupancyType { get => _propertyOccupancyType; set => _propertyOccupancyType = value; }
         private DirtyValue<bool?> _proposedSaleContractAttached;
         public bool? ProposedSaleContractAttached { get => _proposedSaleContractAttached; set => _proposedSaleContractAttached = value; }
-        private StringEnumValue<VaLoanDataPurposeOfLoan> _purposeOfLoan;
+        private DirtyValue<StringEnumValue<VaLoanDataPurposeOfLoan>> _purposeOfLoan;
         public StringEnumValue<VaLoanDataPurposeOfLoan> PurposeOfLoan { get => _purposeOfLoan; set => _purposeOfLoan = value; }
         private DirtyValue<bool?> _rangeOvenIndicator;
         public bool? RangeOvenIndicator { get => _rangeOvenIndicator; set => _rangeOvenIndicator = value; }
@@ -332,7 +332,7 @@ namespace EncompassRest.Loans
         public string Rent { get => _rent; set => _rent = value; }
         private DirtyValue<bool?> _replacementOfSystem;
         public bool? ReplacementOfSystem { get => _replacementOfSystem; set => _replacementOfSystem = value; }
-        private StringEnumValue<RiskClassification> _riskClasification;
+        private DirtyValue<StringEnumValue<RiskClassification>> _riskClasification;
         public StringEnumValue<RiskClassification> RiskClasification { get => _riskClasification; set => _riskClasification = value; }
         private DirtyValue<string> _serviceNumber;
         public string ServiceNumber { get => _serviceNumber; set => _serviceNumber = value; }
@@ -344,11 +344,11 @@ namespace EncompassRest.Loans
         public string SpecialAssessmentComments2 { get => _specialAssessmentComments2; set => _specialAssessmentComments2 = value; }
         private DirtyValue<string> _specialAssessmentComments3;
         public string SpecialAssessmentComments3 { get => _specialAssessmentComments3; set => _specialAssessmentComments3 = value; }
-        private StringEnumValue<StreetAccess> _streetAccess;
+        private DirtyValue<StringEnumValue<StreetAccess>> _streetAccess;
         public StringEnumValue<StreetAccess> StreetAccess { get => _streetAccess; set => _streetAccess = value; }
-        private StringEnumValue<StreetMaintenance> _streetMaintenance;
+        private DirtyValue<StringEnumValue<StreetMaintenance>> _streetMaintenance;
         public StringEnumValue<StreetMaintenance> StreetMaintenance { get => _streetMaintenance; set => _streetMaintenance = value; }
-        private StringEnumValue<SystemUsed> _systemUsed;
+        private DirtyValue<StringEnumValue<SystemUsed>> _systemUsed;
         public StringEnumValue<SystemUsed> SystemUsed { get => _systemUsed; set => _systemUsed = value; }
         private DirtyValue<string> _title;
         public string Title { get => _title; set => _title = value; }
@@ -378,29 +378,29 @@ namespace EncompassRest.Loans
         public int? TotalRooms { get => _totalRooms; set => _totalRooms = value; }
         private DirtyValue<decimal?> _totalUnpaidSpecialAssessments;
         public decimal? TotalUnpaidSpecialAssessments { get => _totalUnpaidSpecialAssessments; set => _totalUnpaidSpecialAssessments = value; }
-        private StringEnumValue<TypeOfHybridARM> _typeOfHybridARM;
+        private DirtyValue<StringEnumValue<TypeOfHybridARM>> _typeOfHybridARM;
         public StringEnumValue<TypeOfHybridARM> TypeOfHybridARM { get => _typeOfHybridARM; set => _typeOfHybridARM = value; }
-        private StringEnumValue<TypeOfMortgage> _typeOfMortgage;
+        private DirtyValue<StringEnumValue<TypeOfMortgage>> _typeOfMortgage;
         public StringEnumValue<TypeOfMortgage> TypeOfMortgage { get => _typeOfMortgage; set => _typeOfMortgage = value; }
-        private StringEnumValue<TypeOfOwnsership> _typeOfOwnsership;
+        private DirtyValue<StringEnumValue<TypeOfOwnsership>> _typeOfOwnsership;
         public StringEnumValue<TypeOfOwnsership> TypeOfOwnsership { get => _typeOfOwnsership; set => _typeOfOwnsership = value; }
-        private StringEnumValue<TypeOfStructure> _typeOfStructure;
+        private DirtyValue<StringEnumValue<TypeOfStructure>> _typeOfStructure;
         public StringEnumValue<TypeOfStructure> TypeOfStructure { get => _typeOfStructure; set => _typeOfStructure = value; }
-        private StringEnumValue<TypeOfVeteran> _typeOfVeteran;
+        private DirtyValue<StringEnumValue<TypeOfVeteran>> _typeOfVeteran;
         public StringEnumValue<TypeOfVeteran> TypeOfVeteran { get => _typeOfVeteran; set => _typeOfVeteran = value; }
         private DirtyValue<bool?> _unsecuredLoanType;
         public bool? UnsecuredLoanType { get => _unsecuredLoanType; set => _unsecuredLoanType = value; }
-        private StringEnumValue<UtilitiesDescription> _utilitiesElectricDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesElectricDescription;
         public StringEnumValue<UtilitiesDescription> UtilitiesElectricDescription { get => _utilitiesElectricDescription; set => _utilitiesElectricDescription = value; }
-        private StringEnumValue<UtilitiesDescription> _utilitiesGasDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesGasDescription;
         public StringEnumValue<UtilitiesDescription> UtilitiesGasDescription { get => _utilitiesGasDescription; set => _utilitiesGasDescription = value; }
-        private StringEnumValue<UtilitiesDescription> _utilitiesSewerDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesSewerDescription;
         public StringEnumValue<UtilitiesDescription> UtilitiesSewerDescription { get => _utilitiesSewerDescription; set => _utilitiesSewerDescription = value; }
-        private StringEnumValue<UtilitiesDescription> _utilitiesWaterDescription;
+        private DirtyValue<StringEnumValue<UtilitiesDescription>> _utilitiesWaterDescription;
         public StringEnumValue<UtilitiesDescription> UtilitiesWaterDescription { get => _utilitiesWaterDescription; set => _utilitiesWaterDescription = value; }
         private DirtyValue<DateTime?> _vAAppraisalSentDate;
         public DateTime? VAAppraisalSentDate { get => _vAAppraisalSentDate; set => _vAAppraisalSentDate = value; }
-        private StringEnumValue<VABenefitRelatedIndebtedness> _vABenefitRelatedIndebtedness;
+        private DirtyValue<StringEnumValue<VABenefitRelatedIndebtedness>> _vABenefitRelatedIndebtedness;
         public StringEnumValue<VABenefitRelatedIndebtedness> VABenefitRelatedIndebtedness { get => _vABenefitRelatedIndebtedness; set => _vABenefitRelatedIndebtedness = value; }
         private DirtyValue<string> _vABuilderDescription;
         public string VABuilderDescription { get => _vABuilderDescription; set => _vABuilderDescription = value; }
@@ -416,7 +416,7 @@ namespace EncompassRest.Loans
         public bool? VAIsDelinquent30Days { get => _vAIsDelinquent30Days; set => _vAIsDelinquent30Days = value; }
         private DirtyValue<bool?> _vALatePaymentIn6Months;
         public bool? VALatePaymentIn6Months { get => _vALatePaymentIn6Months; set => _vALatePaymentIn6Months = value; }
-        private StringEnumValue<VaLoanSummaryApplicantType> _vaLoanSummaryApplicantType;
+        private DirtyValue<StringEnumValue<VaLoanSummaryApplicantType>> _vaLoanSummaryApplicantType;
         public StringEnumValue<VaLoanSummaryApplicantType> VaLoanSummaryApplicantType { get => _vaLoanSummaryApplicantType; set => _vaLoanSummaryApplicantType = value; }
         private DirtyValue<DateTime?> _vANOVDateReceived;
         public DateTime? VANOVDateReceived { get => _vANOVDateReceived; set => _vANOVDateReceived = value; }
@@ -424,13 +424,13 @@ namespace EncompassRest.Loans
         public DateTime? VANOVDateReviewed { get => _vANOVDateReviewed; set => _vANOVDateReviewed = value; }
         private DirtyValue<DateTime?> _vANOVIssuedDate;
         public DateTime? VANOVIssuedDate { get => _vANOVIssuedDate; set => _vANOVIssuedDate = value; }
-        private StringEnumValue<AmortizationType> _vAOriginalAmortizationType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _vAOriginalAmortizationType;
         public StringEnumValue<AmortizationType> VAOriginalAmortizationType { get => _vAOriginalAmortizationType; set => _vAOriginalAmortizationType = value; }
         private DirtyValue<decimal?> _vAOriginalMonthlyPayment;
         public decimal? VAOriginalMonthlyPayment { get => _vAOriginalMonthlyPayment; set => _vAOriginalMonthlyPayment = value; }
         private DirtyValue<string> _vAQualification2ndTierEntitlement;
         public string VAQualification2ndTierEntitlement { get => _vAQualification2ndTierEntitlement; set => _vAQualification2ndTierEntitlement = value; }
-        private StringEnumValue<VAQualificationCountryRegion> _vAQualificationCountryRegion;
+        private DirtyValue<StringEnumValue<VAQualificationCountryRegion>> _vAQualificationCountryRegion;
         public StringEnumValue<VAQualificationCountryRegion> VAQualificationCountryRegion { get => _vAQualificationCountryRegion; set => _vAQualificationCountryRegion = value; }
         private DirtyValue<decimal?> _vAQualificationCountyLimits;
         public decimal? VAQualificationCountyLimits { get => _vAQualificationCountyLimits; set => _vAQualificationCountyLimits = value; }
@@ -486,7 +486,7 @@ namespace EncompassRest.Loans
         public bool? VentFanIndicator { get => _ventFanIndicator; set => _ventFanIndicator = value; }
         private DirtyValue<bool?> _veteranDischargedIndicator;
         public bool? VeteranDischargedIndicator { get => _veteranDischargedIndicator; set => _veteranDischargedIndicator = value; }
-        private StringEnumValue<VeteranServiceType> _veteranServiceType;
+        private DirtyValue<StringEnumValue<VeteranServiceType>> _veteranServiceType;
         public StringEnumValue<VeteranServiceType> VeteranServiceType { get => _veteranServiceType; set => _veteranServiceType = value; }
         private DirtyValue<string> _warrantorAddress;
         public string WarrantorAddress { get => _warrantorAddress; set => _warrantorAddress = value; }

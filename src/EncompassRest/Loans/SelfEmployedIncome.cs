@@ -18,7 +18,7 @@ namespace EncompassRest.Loans
         public decimal? FieldValue { get => _fieldValue; set => _fieldValue = value; }
         private DirtyValue<decimal?> _firstYearAmount;
         public decimal? FirstYearAmount { get => _firstYearAmount; set => _firstYearAmount = value; }
-        private StringEnumValue<FormType> _formType;
+        private DirtyValue<StringEnumValue<FormType>> _formType;
         public StringEnumValue<FormType> FormType { get => _formType; set => _formType = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

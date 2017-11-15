@@ -64,11 +64,11 @@ namespace EncompassRest.Loans
         public bool? HasPrepaymentPenaltyIndicator { get => _hasPrepaymentPenaltyIndicator; set => _hasPrepaymentPenaltyIndicator = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<InitialFixedOrArmType> _initialFixedOrArmType;
+        private DirtyValue<StringEnumValue<InitialFixedOrArmType>> _initialFixedOrArmType;
         public StringEnumValue<InitialFixedOrArmType> InitialFixedOrArmType { get => _initialFixedOrArmType; set => _initialFixedOrArmType = value; }
         private DirtyValue<decimal?> _lenderOriginationFee;
         public decimal? LenderOriginationFee { get => _lenderOriginationFee; set => _lenderOriginationFee = value; }
-        private StringEnumValue<LoanFromBrokerControledFundsType> _loanFromBrokerControledFundsType;
+        private DirtyValue<StringEnumValue<LoanFromBrokerControledFundsType>> _loanFromBrokerControledFundsType;
         public StringEnumValue<LoanFromBrokerControledFundsType> LoanFromBrokerControledFundsType { get => _loanFromBrokerControledFundsType; set => _loanFromBrokerControledFundsType = value; }
         private DirtyValue<bool?> _lockField;
         public bool? LockField { get => _lockField; set => _lockField = value; }
@@ -96,7 +96,7 @@ namespace EncompassRest.Loans
         public string NatureLien3PayoffDescription { get => _natureLien3PayoffDescription; set => _natureLien3PayoffDescription = value; }
         private DirtyValue<bool?> _paymentOfPrincipleIndicator;
         public bool? PaymentOfPrincipleIndicator { get => _paymentOfPrincipleIndicator; set => _paymentOfPrincipleIndicator = value; }
-        private StringEnumValue<PaymentOfPrincipleType> _paymentOfPrincipleType;
+        private DirtyValue<StringEnumValue<PaymentOfPrincipleType>> _paymentOfPrincipleType;
         public StringEnumValue<PaymentOfPrincipleType> PaymentOfPrincipleType { get => _paymentOfPrincipleType; set => _paymentOfPrincipleType = value; }
         private DirtyValue<int?> _penaltyNotToExceedMonths;
         public int? PenaltyNotToExceedMonths { get => _penaltyNotToExceedMonths; set => _penaltyNotToExceedMonths = value; }

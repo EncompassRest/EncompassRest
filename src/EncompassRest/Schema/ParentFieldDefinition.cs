@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.LoanPipeline
+﻿namespace EncompassRest.Schema
 {
     public sealed class ParentFieldDefinition : FieldDefinition
     {

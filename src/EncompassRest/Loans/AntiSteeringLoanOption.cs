@@ -40,7 +40,7 @@ namespace EncompassRest.Loans
         public decimal? DiscountPoints { get => _discountPoints; set => _discountPoints = value; }
         private DirtyValue<int?> _fixedRatePeriod;
         public int? FixedRatePeriod { get => _fixedRatePeriod; set => _fixedRatePeriod = value; }
-        private StringEnumValue<YesOrNo> _haveDemandFeature;
+        private DirtyValue<StringEnumValue<YesOrNo>> _haveDemandFeature;
         public StringEnumValue<YesOrNo> HaveDemandFeature { get => _haveDemandFeature; set => _haveDemandFeature = value; }
         private DirtyValue<bool?> _havePrepaymentPenalty;
         public bool? HavePrepaymentPenalty { get => _havePrepaymentPenalty; set => _havePrepaymentPenalty = value; }
@@ -52,15 +52,15 @@ namespace EncompassRest.Loans
         public decimal? InspectionFeeSellerPaidAmount { get => _inspectionFeeSellerPaidAmount; set => _inspectionFeeSellerPaidAmount = value; }
         private DirtyValue<decimal?> _interestRate;
         public decimal? InterestRate { get => _interestRate; set => _interestRate = value; }
-        private StringEnumValue<YesOrNo> _isBalloonPaymentIn7Years;
+        private DirtyValue<StringEnumValue<YesOrNo>> _isBalloonPaymentIn7Years;
         public StringEnumValue<YesOrNo> IsBalloonPaymentIn7Years { get => _isBalloonPaymentIn7Years; set => _isBalloonPaymentIn7Years = value; }
-        private StringEnumValue<YesOrNo> _isInterestOnlyLoan;
+        private DirtyValue<StringEnumValue<YesOrNo>> _isInterestOnlyLoan;
         public StringEnumValue<YesOrNo> IsInterestOnlyLoan { get => _isInterestOnlyLoan; set => _isInterestOnlyLoan = value; }
         private DirtyValue<bool?> _isNegativeAmortization;
         public bool? IsNegativeAmortization { get => _isNegativeAmortization; set => _isNegativeAmortization = value; }
         private DirtyValue<int?> _loanTerm;
         public int? LoanTerm { get => _loanTerm; set => _loanTerm = value; }
-        private StringEnumValue<AmortizationType> _loanType;
+        private DirtyValue<StringEnumValue<AmortizationType>> _loanType;
         public StringEnumValue<AmortizationType> LoanType { get => _loanType; set => _loanType = value; }
         private DirtyValue<decimal?> _originationFeeBorPaidAmount;
         public decimal? OriginationFeeBorPaidAmount { get => _originationFeeBorPaidAmount; set => _originationFeeBorPaidAmount = value; }

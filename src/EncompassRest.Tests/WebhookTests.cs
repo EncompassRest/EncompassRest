@@ -16,7 +16,7 @@ namespace EncompassRest.Tests
             subscription.Dirty = false;
             Assert.AreEqual(@"{""endpoint"":""https://google.com""}", subscription.ToJson());
             subscription.ClientId = "1234567890";
-            subscription.Events = new[] { "add", "update", "remove" };
+            subscription.Events = new StringEnumValue<WebhookEvent>[] { "add", "update", "remove" };
             Assert.AreEqual(@"{""endpoint"":""https://google.com"",""clientId"":""1234567890"",""events"":[""add"",""update"",""remove""]}", subscription.ToJson());
             subscription.Dirty = false;
             Assert.AreEqual(@"{""endpoint"":""https://google.com""}", subscription.ToJson());

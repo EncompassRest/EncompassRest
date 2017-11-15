@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public DateTime? ARMRecastDate { get => _aRMRecastDate; set => _aRMRecastDate = value; }
         private DirtyValue<decimal?> _aRMRecastMonthlyPayment;
         public decimal? ARMRecastMonthlyPayment { get => _aRMRecastMonthlyPayment; set => _aRMRecastMonthlyPayment = value; }
-        private StringEnumValue<ATRLoanType> _aTRLoanType;
+        private DirtyValue<StringEnumValue<ATRLoanType>> _aTRLoanType;
         public StringEnumValue<ATRLoanType> ATRLoanType { get => _aTRLoanType; set => _aTRLoanType = value; }
         private DirtyValue<string> _aUSDataDiscrepencyResolutionComments;
         public string AUSDataDiscrepencyResolutionComments { get => _aUSDataDiscrepencyResolutionComments; set => _aUSDataDiscrepencyResolutionComments = value; }
@@ -30,7 +30,7 @@ namespace EncompassRest.Loans
         public decimal? BonaFideDiscountPointAmount { get => _bonaFideDiscountPointAmount; set => _bonaFideDiscountPointAmount = value; }
         private DirtyValue<bool?> _brokerCompensationWhenRateSet;
         public bool? BrokerCompensationWhenRateSet { get => _brokerCompensationWhenRateSet; set => _brokerCompensationWhenRateSet = value; }
-        private StringEnumValue<CollateralRepandWarrReliefEligibilityType> _collateralRepandWarrReliefEligibilityType;
+        private DirtyValue<StringEnumValue<CollateralRepandWarrReliefEligibilityType>> _collateralRepandWarrReliefEligibilityType;
         public StringEnumValue<CollateralRepandWarrReliefEligibilityType> CollateralRepandWarrReliefEligibilityType { get => _collateralRepandWarrReliefEligibilityType; set => _collateralRepandWarrReliefEligibilityType = value; }
         private DirtyValue<decimal?> _compensationPTBFees;
         public decimal? CompensationPTBFees { get => _compensationPTBFees; set => _compensationPTBFees = value; }
@@ -38,7 +38,7 @@ namespace EncompassRest.Loans
         public decimal? CreditInsPremiumFees { get => _creditInsPremiumFees; set => _creditInsPremiumFees = value; }
         private DirtyValue<bool?> _creditorType;
         public bool? CreditorType { get => _creditorType; set => _creditorType = value; }
-        private StringEnumValue<CreditorTypeDescription> _creditorTypeDescription;
+        private DirtyValue<StringEnumValue<CreditorTypeDescription>> _creditorTypeDescription;
         public StringEnumValue<CreditorTypeDescription> CreditorTypeDescription { get => _creditorTypeDescription; set => _creditorTypeDescription = value; }
         private DirtyValue<bool?> _creditType;
         public bool? CreditType { get => _creditType; set => _creditType = value; }
@@ -120,7 +120,7 @@ namespace EncompassRest.Loans
         public string DocumentationGuidelineMessagesYY { get => _documentationGuidelineMessagesYY; set => _documentationGuidelineMessagesYY = value; }
         private DirtyValue<string> _documentationGuidelineMessagesYZ;
         public string DocumentationGuidelineMessagesYZ { get => _documentationGuidelineMessagesYZ; set => _documentationGuidelineMessagesYZ = value; }
-        private StringEnumValue<EligibleNonStandardToStandard> _eligibleNonStandardToStandard;
+        private DirtyValue<StringEnumValue<EligibleNonStandardToStandard>> _eligibleNonStandardToStandard;
         public StringEnumValue<EligibleNonStandardToStandard> EligibleNonStandardToStandard { get => _eligibleNonStandardToStandard; set => _eligibleNonStandardToStandard = value; }
         private DirtyValue<decimal?> _financeChargeFees;
         public decimal? FinanceChargeFees { get => _financeChargeFees; set => _financeChargeFees = value; }
@@ -140,73 +140,73 @@ namespace EncompassRest.Loans
         public decimal? FullyIndexRateMonthlyPayment { get => _fullyIndexRateMonthlyPayment; set => _fullyIndexRateMonthlyPayment = value; }
         private DirtyValue<decimal?> _fullyIndexRateTotalDebtRatio;
         public decimal? FullyIndexRateTotalDebtRatio { get => _fullyIndexRateTotalDebtRatio; set => _fullyIndexRateTotalDebtRatio = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_Alimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_Alimony;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_Alimony { get => _generalATR_Status_Alimony; set => _generalATR_Status_Alimony = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_Assets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_Assets;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_Assets { get => _generalATR_Status_Assets; set => _generalATR_Status_Assets = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_ChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_ChildSupport;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_ChildSupport { get => _generalATR_Status_ChildSupport; set => _generalATR_Status_ChildSupport = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_CoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_CoveredLoan;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_CoveredLoan { get => _generalATR_Status_CoveredLoan; set => _generalATR_Status_CoveredLoan = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_CreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_CreditHistory;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_CreditHistory { get => _generalATR_Status_CreditHistory; set => _generalATR_Status_CreditHistory = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_DebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_DebtObligations;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_DebtObligations { get => _generalATR_Status_DebtObligations; set => _generalATR_Status_DebtObligations = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_DTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_DTI;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_DTI { get => _generalATR_Status_DTI; set => _generalATR_Status_DTI = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_Employment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_Employment;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_Employment { get => _generalATR_Status_Employment; set => _generalATR_Status_Employment = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_Income;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_Income;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_Income { get => _generalATR_Status_Income; set => _generalATR_Status_Income = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_MtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_MtgRelatedObligations;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_MtgRelatedObligations { get => _generalATR_Status_MtgRelatedObligations; set => _generalATR_Status_MtgRelatedObligations = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_Overall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_Overall;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_Overall { get => _generalATR_Status_Overall; set => _generalATR_Status_Overall = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_ResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_ResidualIncome;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_ResidualIncome { get => _generalATR_Status_ResidualIncome; set => _generalATR_Status_ResidualIncome = value; }
-        private StringEnumValue<ATRQMStatus> _generalATR_Status_SimultaneousLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _generalATR_Status_SimultaneousLoan;
         public StringEnumValue<ATRQMStatus> GeneralATR_Status_SimultaneousLoan { get => _generalATR_Status_SimultaneousLoan; set => _generalATR_Status_SimultaneousLoan = value; }
         private DirtyValue<decimal?> _gSEAgencyQM_CalculatedThreshold;
         public decimal? GSEAgencyQM_CalculatedThreshold { get => _gSEAgencyQM_CalculatedThreshold; set => _gSEAgencyQM_CalculatedThreshold = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Alimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_Alimony;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Alimony { get => _gSEAgencyQM_Status_Alimony; set => _gSEAgencyQM_Status_Alimony = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Assets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_Assets;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Assets { get => _gSEAgencyQM_Status_Assets; set => _gSEAgencyQM_Status_Assets = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_BalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_BalloonPayment;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_BalloonPayment { get => _gSEAgencyQM_Status_BalloonPayment; set => _gSEAgencyQM_Status_BalloonPayment = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_ChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_ChildSupport;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_ChildSupport { get => _gSEAgencyQM_Status_ChildSupport; set => _gSEAgencyQM_Status_ChildSupport = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_CoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_CoveredLoan;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_CoveredLoan { get => _gSEAgencyQM_Status_CoveredLoan; set => _gSEAgencyQM_Status_CoveredLoan = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_CreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_CreditHistory;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_CreditHistory { get => _gSEAgencyQM_Status_CreditHistory; set => _gSEAgencyQM_Status_CreditHistory = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_DebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_DebtObligations;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_DebtObligations { get => _gSEAgencyQM_Status_DebtObligations; set => _gSEAgencyQM_Status_DebtObligations = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_DTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_DTI;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_DTI { get => _gSEAgencyQM_Status_DTI; set => _gSEAgencyQM_Status_DTI = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Employment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_Employment;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Employment { get => _gSEAgencyQM_Status_Employment; set => _gSEAgencyQM_Status_Employment = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Income;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_Income;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Income { get => _gSEAgencyQM_Status_Income; set => _gSEAgencyQM_Status_Income = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_InterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_InterestOnly;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_InterestOnly { get => _gSEAgencyQM_Status_InterestOnly; set => _gSEAgencyQM_Status_InterestOnly = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_LoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_LoanTerm;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_LoanTerm { get => _gSEAgencyQM_Status_LoanTerm; set => _gSEAgencyQM_Status_LoanTerm = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_MtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_MtgRelatedObligations;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_MtgRelatedObligations { get => _gSEAgencyQM_Status_MtgRelatedObligations; set => _gSEAgencyQM_Status_MtgRelatedObligations = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_NegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_NegativeAmortization;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_NegativeAmortization { get => _gSEAgencyQM_Status_NegativeAmortization; set => _gSEAgencyQM_Status_NegativeAmortization = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_Overall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_Overall;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_Overall { get => _gSEAgencyQM_Status_Overall; set => _gSEAgencyQM_Status_Overall = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_PointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_PointsFeesLimit;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_PointsFeesLimit { get => _gSEAgencyQM_Status_PointsFeesLimit; set => _gSEAgencyQM_Status_PointsFeesLimit = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_PrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_PrepaymentPenalty;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_PrepaymentPenalty { get => _gSEAgencyQM_Status_PrepaymentPenalty; set => _gSEAgencyQM_Status_PrepaymentPenalty = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_ResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_ResidualIncome;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_ResidualIncome { get => _gSEAgencyQM_Status_ResidualIncome; set => _gSEAgencyQM_Status_ResidualIncome = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_SafeHarborEligibility;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_SafeHarborEligibility;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_SafeHarborEligibility { get => _gSEAgencyQM_Status_SafeHarborEligibility; set => _gSEAgencyQM_Status_SafeHarborEligibility = value; }
-        private StringEnumValue<ATRQMStatus> _gSEAgencyQM_Status_SimultaneousLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _gSEAgencyQM_Status_SimultaneousLoan;
         public StringEnumValue<ATRQMStatus> GSEAgencyQM_Status_SimultaneousLoan { get => _gSEAgencyQM_Status_SimultaneousLoan; set => _gSEAgencyQM_Status_SimultaneousLoan = value; }
         private DirtyValue<bool?> _has30DayLatePayment;
         public bool? Has30DayLatePayment { get => _has30DayLatePayment; set => _has30DayLatePayment = value; }
@@ -226,7 +226,7 @@ namespace EncompassRest.Loans
         public DateTime? InterestOnlyRecastDate { get => _interestOnlyRecastDate; set => _interestOnlyRecastDate = value; }
         private DirtyValue<bool?> _isConsumerLiklyDefault;
         public bool? IsConsumerLiklyDefault { get => _isConsumerLiklyDefault; set => _isConsumerLiklyDefault = value; }
-        private StringEnumValue<YesNoOrNA> _isEligibleForSafeHarbor;
+        private DirtyValue<StringEnumValue<YesNoOrNA>> _isEligibleForSafeHarbor;
         public StringEnumValue<YesNoOrNA> IsEligibleForSafeHarbor { get => _isEligibleForSafeHarbor; set => _isEligibleForSafeHarbor = value; }
         private DirtyValue<bool?> _isEvaluatedAlimonyObligations;
         public bool? IsEvaluatedAlimonyObligations { get => _isEvaluatedAlimonyObligations; set => _isEvaluatedAlimonyObligations = value; }
@@ -252,7 +252,7 @@ namespace EncompassRest.Loans
         public bool? IsEvaluatedMonthlySimultaneousLoanPayment { get => _isEvaluatedMonthlySimultaneousLoanPayment; set => _isEvaluatedMonthlySimultaneousLoanPayment = value; }
         private DirtyValue<bool?> _isEvaluatedResidualIncome;
         public bool? IsEvaluatedResidualIncome { get => _isEvaluatedResidualIncome; set => _isEvaluatedResidualIncome = value; }
-        private StringEnumValue<IsOrIsNot> _isHigherPricedLoan;
+        private DirtyValue<StringEnumValue<IsOrIsNot>> _isHigherPricedLoan;
         public StringEnumValue<IsOrIsNot> IsHigherPricedLoan { get => _isHigherPricedLoan; set => _isHigherPricedLoan = value; }
         private DirtyValue<string> _loanProcessingInformationD4;
         public string LoanProcessingInformationD4 { get => _loanProcessingInformationD4; set => _loanProcessingInformationD4 = value; }
@@ -268,7 +268,7 @@ namespace EncompassRest.Loans
         public string LoanProcessingInformationMA { get => _loanProcessingInformationMA; set => _loanProcessingInformationMA = value; }
         private DirtyValue<bool?> _loanProgram;
         public bool? LoanProgram { get => _loanProgram; set => _loanProgram = value; }
-        private StringEnumValue<LoanProgramDescription> _loanProgramDescription;
+        private DirtyValue<StringEnumValue<LoanProgramDescription>> _loanProgramDescription;
         public StringEnumValue<LoanProgramDescription> LoanProgramDescription { get => _loanProgramDescription; set => _loanProgramDescription = value; }
         private DirtyValue<bool?> _loanRateFixedin5Years;
         public bool? LoanRateFixedin5Years { get => _loanRateFixedin5Years; set => _loanRateFixedin5Years = value; }
@@ -300,7 +300,7 @@ namespace EncompassRest.Loans
         public bool? PrincipalBalanceIncreased { get => _principalBalanceIncreased; set => _principalBalanceIncreased = value; }
         private DirtyValue<bool?> _principalHasDeferred;
         public bool? PrincipalHasDeferred { get => _principalHasDeferred; set => _principalHasDeferred = value; }
-        private StringEnumValue<QMLoanType> _qMLoanType;
+        private DirtyValue<StringEnumValue<QMLoanType>> _qMLoanType;
         public StringEnumValue<QMLoanType> QMLoanType { get => _qMLoanType; set => _qMLoanType = value; }
         private DirtyValue<decimal?> _rateReductionBasisPoints;
         public decimal? RateReductionBasisPoints { get => _rateReductionBasisPoints; set => _rateReductionBasisPoints = value; }
@@ -318,89 +318,89 @@ namespace EncompassRest.Loans
         public decimal? RequiredServicesLenderSelectedAmt { get => _requiredServicesLenderSelectedAmt; set => _requiredServicesLenderSelectedAmt = value; }
         private DirtyValue<decimal?> _smallCreditorQM_CalculatedThreshold;
         public decimal? SmallCreditorQM_CalculatedThreshold { get => _smallCreditorQM_CalculatedThreshold; set => _smallCreditorQM_CalculatedThreshold = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Alimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_Alimony;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Alimony { get => _smallCreditorQM_Status_Alimony; set => _smallCreditorQM_Status_Alimony = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Assets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_Assets;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Assets { get => _smallCreditorQM_Status_Assets; set => _smallCreditorQM_Status_Assets = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_BalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_BalloonPayment;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_BalloonPayment { get => _smallCreditorQM_Status_BalloonPayment; set => _smallCreditorQM_Status_BalloonPayment = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_ChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_ChildSupport;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_ChildSupport { get => _smallCreditorQM_Status_ChildSupport; set => _smallCreditorQM_Status_ChildSupport = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_CoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_CoveredLoan;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_CoveredLoan { get => _smallCreditorQM_Status_CoveredLoan; set => _smallCreditorQM_Status_CoveredLoan = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_DebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_DebtObligations;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_DebtObligations { get => _smallCreditorQM_Status_DebtObligations; set => _smallCreditorQM_Status_DebtObligations = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_DTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_DTI;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_DTI { get => _smallCreditorQM_Status_DTI; set => _smallCreditorQM_Status_DTI = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Income;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_Income;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Income { get => _smallCreditorQM_Status_Income; set => _smallCreditorQM_Status_Income = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_InterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_InterestOnly;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_InterestOnly { get => _smallCreditorQM_Status_InterestOnly; set => _smallCreditorQM_Status_InterestOnly = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_LoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_LoanTerm;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_LoanTerm { get => _smallCreditorQM_Status_LoanTerm; set => _smallCreditorQM_Status_LoanTerm = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_MtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_MtgRelatedObligations;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_MtgRelatedObligations { get => _smallCreditorQM_Status_MtgRelatedObligations; set => _smallCreditorQM_Status_MtgRelatedObligations = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_NegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_NegativeAmortization;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_NegativeAmortization { get => _smallCreditorQM_Status_NegativeAmortization; set => _smallCreditorQM_Status_NegativeAmortization = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_Overall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_Overall;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_Overall { get => _smallCreditorQM_Status_Overall; set => _smallCreditorQM_Status_Overall = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_PointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_PointsFeesLimit;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_PointsFeesLimit { get => _smallCreditorQM_Status_PointsFeesLimit; set => _smallCreditorQM_Status_PointsFeesLimit = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_PrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_PrepaymentPenalty;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_PrepaymentPenalty { get => _smallCreditorQM_Status_PrepaymentPenalty; set => _smallCreditorQM_Status_PrepaymentPenalty = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_ResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_ResidualIncome;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_ResidualIncome { get => _smallCreditorQM_Status_ResidualIncome; set => _smallCreditorQM_Status_ResidualIncome = value; }
-        private StringEnumValue<ATRQMStatus> _smallCreditorQM_Status_SafeHarborEligibility;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _smallCreditorQM_Status_SafeHarborEligibility;
         public StringEnumValue<ATRQMStatus> SmallCreditorQM_Status_SafeHarborEligibility { get => _smallCreditorQM_Status_SafeHarborEligibility; set => _smallCreditorQM_Status_SafeHarborEligibility = value; }
         private DirtyValue<decimal?> _standardQM_CalculatedThreshold;
         public decimal? StandardQM_CalculatedThreshold { get => _standardQM_CalculatedThreshold; set => _standardQM_CalculatedThreshold = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_Alimony;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_Alimony;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_Alimony { get => _standardQM_Status_Alimony; set => _standardQM_Status_Alimony = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_Assets;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_Assets;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_Assets { get => _standardQM_Status_Assets; set => _standardQM_Status_Assets = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_BalloonPayment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_BalloonPayment;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_BalloonPayment { get => _standardQM_Status_BalloonPayment; set => _standardQM_Status_BalloonPayment = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_ChildSupport;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_ChildSupport;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_ChildSupport { get => _standardQM_Status_ChildSupport; set => _standardQM_Status_ChildSupport = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_CoveredLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_CoveredLoan;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_CoveredLoan { get => _standardQM_Status_CoveredLoan; set => _standardQM_Status_CoveredLoan = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_CreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_CreditHistory;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_CreditHistory { get => _standardQM_Status_CreditHistory; set => _standardQM_Status_CreditHistory = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_DebtObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_DebtObligations;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_DebtObligations { get => _standardQM_Status_DebtObligations; set => _standardQM_Status_DebtObligations = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_DTI;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_DTI;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_DTI { get => _standardQM_Status_DTI; set => _standardQM_Status_DTI = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_Employment;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_Employment;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_Employment { get => _standardQM_Status_Employment; set => _standardQM_Status_Employment = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_Income;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_Income;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_Income { get => _standardQM_Status_Income; set => _standardQM_Status_Income = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_InterestOnly;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_InterestOnly;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_InterestOnly { get => _standardQM_Status_InterestOnly; set => _standardQM_Status_InterestOnly = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_LoanTerm;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_LoanTerm;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_LoanTerm { get => _standardQM_Status_LoanTerm; set => _standardQM_Status_LoanTerm = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_MtgRelatedObligations;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_MtgRelatedObligations;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_MtgRelatedObligations { get => _standardQM_Status_MtgRelatedObligations; set => _standardQM_Status_MtgRelatedObligations = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_NegativeAmortization;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_NegativeAmortization;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_NegativeAmortization { get => _standardQM_Status_NegativeAmortization; set => _standardQM_Status_NegativeAmortization = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_Overall;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_Overall;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_Overall { get => _standardQM_Status_Overall; set => _standardQM_Status_Overall = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_PointsFeesLimit;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_PointsFeesLimit;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_PointsFeesLimit { get => _standardQM_Status_PointsFeesLimit; set => _standardQM_Status_PointsFeesLimit = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_PrepaymentPenalty;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_PrepaymentPenalty;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_PrepaymentPenalty { get => _standardQM_Status_PrepaymentPenalty; set => _standardQM_Status_PrepaymentPenalty = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_ResidualIncome;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_ResidualIncome;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_ResidualIncome { get => _standardQM_Status_ResidualIncome; set => _standardQM_Status_ResidualIncome = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_SafeHarborEligibility;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_SafeHarborEligibility;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_SafeHarborEligibility { get => _standardQM_Status_SafeHarborEligibility; set => _standardQM_Status_SafeHarborEligibility = value; }
-        private StringEnumValue<ATRQMStatus> _standardQM_Status_SimultaneousLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _standardQM_Status_SimultaneousLoan;
         public StringEnumValue<ATRQMStatus> StandardQM_Status_SimultaneousLoan { get => _standardQM_Status_SimultaneousLoan; set => _standardQM_Status_SimultaneousLoan = value; }
         private DirtyValue<decimal?> _startingAdjustedRateMaxBonaFideDiscountPoint;
         public decimal? StartingAdjustedRateMaxBonaFideDiscountPoint { get => _startingAdjustedRateMaxBonaFideDiscountPoint; set => _startingAdjustedRateMaxBonaFideDiscountPoint = value; }
-        private StringEnumValue<ATRQMStatus> _status_CreditHistory;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _status_CreditHistory;
         public StringEnumValue<ATRQMStatus> Status_CreditHistory { get => _status_CreditHistory; set => _status_CreditHistory = value; }
-        private StringEnumValue<ATRQMStatus> _status_SimultaneousLoan;
+        private DirtyValue<StringEnumValue<ATRQMStatus>> _status_SimultaneousLoan;
         public StringEnumValue<ATRQMStatus> Status_SimultaneousLoan { get => _status_SimultaneousLoan; set => _status_SimultaneousLoan = value; }
-        private StringEnumValue<DoesOrDoesNot2> _thresholdExceedsQM;
+        private DirtyValue<StringEnumValue<DoesOrDoesNot2>> _thresholdExceedsQM;
         public StringEnumValue<DoesOrDoesNot2> ThresholdExceedsQM { get => _thresholdExceedsQM; set => _thresholdExceedsQM = value; }
         private DirtyValue<decimal?> _titleServicesLenderTitleinsuranceFee;
         public decimal? TitleServicesLenderTitleinsuranceFee { get => _titleServicesLenderTitleinsuranceFee; set => _titleServicesLenderTitleinsuranceFee = value; }

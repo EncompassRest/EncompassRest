@@ -44,13 +44,13 @@ namespace EncompassRest.Loans
         public bool? NotifiedIrsIdentityTheftIndicator { get => _notifiedIrsIdentityTheftIndicator; set => _notifiedIrsIdentityTheftIndicator = value; }
         private DirtyValue<int?> _numberOfPeriods;
         public int? NumberOfPeriods { get => _numberOfPeriods; set => _numberOfPeriods = value; }
-        private StringEnumValue<Person> _person;
+        private DirtyValue<StringEnumValue<Person>> _person;
         public StringEnumValue<Person> Person { get => _person; set => _person = value; }
         private DirtyValue<bool?> _recordOfAccount;
         public bool? RecordOfAccount { get => _recordOfAccount; set => _recordOfAccount = value; }
         private DirtyValue<string> _requestorPhoneNumber;
         public string RequestorPhoneNumber { get => _requestorPhoneNumber; set => _requestorPhoneNumber = value; }
-        private StringEnumValue<RequestorTitle> _requestorTitle;
+        private DirtyValue<StringEnumValue<RequestorTitle>> _requestorTitle;
         public StringEnumValue<RequestorTitle> RequestorTitle { get => _requestorTitle; set => _requestorTitle = value; }
         private DirtyValue<DateTime?> _requestYear1;
         public DateTime? RequestYear1 { get => _requestYear1; set => _requestYear1 = value; }

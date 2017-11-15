@@ -2,7 +2,7 @@
 {
     public enum AssignmentAction
     {
-        Add,
-        Remove
+        Add = 0,
+        Remove = 1
     }
 }

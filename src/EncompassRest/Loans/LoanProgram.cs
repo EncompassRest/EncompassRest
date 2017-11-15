@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed partial class LoanProgram : IDirty
     {
-        private StringEnumValue<YOrN> _acquisition;
+        private DirtyValue<StringEnumValue<YOrN>> _acquisition;
         public StringEnumValue<YOrN> Acquisition { get => _acquisition; set => _acquisition = value; }
         private DirtyValue<string> _additionalArmInformation;
         public string AdditionalArmInformation { get => _additionalArmInformation; set => _additionalArmInformation = value; }
@@ -126,7 +126,7 @@ namespace EncompassRest.Loans
         public string LoanFeaturesPaymentFrequencyType { get => _loanFeaturesPaymentFrequencyType; set => _loanFeaturesPaymentFrequencyType = value; }
         private DirtyValue<string> _loanProgramName;
         public string LoanProgramName { get => _loanProgramName; set => _loanProgramName = value; }
-        private StringEnumValue<YOrN> _lockField;
+        private DirtyValue<StringEnumValue<YOrN>> _lockField;
         public StringEnumValue<YOrN> LockField { get => _lockField; set => _lockField = value; }
         private DirtyValue<decimal?> _maxBackRatio;
         public decimal? MaxBackRatio { get => _maxBackRatio; set => _maxBackRatio = value; }
@@ -158,7 +158,7 @@ namespace EncompassRest.Loans
         public decimal? MinimumPaymentPercent { get => _minimumPaymentPercent; set => _minimumPaymentPercent = value; }
         private DirtyValue<decimal?> _mipPaidInCash;
         public decimal? MipPaidInCash { get => _mipPaidInCash; set => _mipPaidInCash = value; }
-        private StringEnumValue<YOrN> _mmi;
+        private DirtyValue<StringEnumValue<YOrN>> _mmi;
         public StringEnumValue<YOrN> Mmi { get => _mmi; set => _mmi = value; }
         private DirtyValue<decimal?> _mortgageInsuranceAdjustmentFactor1;
         public decimal? MortgageInsuranceAdjustmentFactor1 { get => _mortgageInsuranceAdjustmentFactor1; set => _mortgageInsuranceAdjustmentFactor1 = value; }
@@ -192,7 +192,7 @@ namespace EncompassRest.Loans
         public decimal? PercentageOfRental { get => _percentageOfRental; set => _percentageOfRental = value; }
         private DirtyValue<string> _perDiemCalculationMethodType;
         public string PerDiemCalculationMethodType { get => _perDiemCalculationMethodType; set => _perDiemCalculationMethodType = value; }
-        private StringEnumValue<YOrN> _pmi;
+        private DirtyValue<StringEnumValue<YOrN>> _pmi;
         public StringEnumValue<YOrN> Pmi { get => _pmi; set => _pmi = value; }
         private DirtyValue<string> _prepaymentPenaltyIndicator;
         public string PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => _prepaymentPenaltyIndicator = value; }
@@ -248,7 +248,7 @@ namespace EncompassRest.Loans
         public string Type { get => _type; set => _type = value; }
         private DirtyValue<string> _useDaysInYears;
         public string UseDaysInYears { get => _useDaysInYears; set => _useDaysInYears = value; }
-        private StringEnumValue<YOrN> _usePitiForRatio;
+        private DirtyValue<StringEnumValue<YOrN>> _usePitiForRatio;
         public StringEnumValue<YOrN> UsePitiForRatio { get => _usePitiForRatio; set => _usePitiForRatio = value; }
         private DirtyValue<string> _variableRateFeature;
         public string VariableRateFeature { get => _variableRateFeature; set => _variableRateFeature = value; }

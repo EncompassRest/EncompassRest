@@ -192,7 +192,7 @@ namespace EncompassRest.Loans
         public bool? UnderwritingDelegated { get => _underwritingDelegated; set => _underwritingDelegated = value; }
         private DirtyValue<bool?> _watchListFlag;
         public bool? WatchListFlag { get => _watchListFlag; set => _watchListFlag = value; }
-        private StringEnumValue<WatchListReason> _watchListReason;
+        private DirtyValue<StringEnumValue<WatchListReason>> _watchListReason;
         public StringEnumValue<WatchListReason> WatchListReason { get => _watchListReason; set => _watchListReason = value; }
         private DirtyDictionary<string, object> _extensionData;
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }

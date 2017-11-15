@@ -216,7 +216,7 @@ namespace EncompassRest.Loans
         public IList<SchedulePaymentTransaction> SchedulePaymentTransactions { get => _schedulePaymentTransactions ?? (_schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>()); set => _schedulePaymentTransactions = new DirtyList<SchedulePaymentTransaction>(value); }
         private DirtyValue<string> _servicerLoanNumber;
         public string ServicerLoanNumber { get => _servicerLoanNumber; set => _servicerLoanNumber = value; }
-        private StringEnumValue<ServicingStatus> _servicingStatus;
+        private DirtyValue<StringEnumValue<ServicingStatus>> _servicingStatus;
         public StringEnumValue<ServicingStatus> ServicingStatus { get => _servicingStatus; set => _servicingStatus = value; }
         private DirtyValue<DateTime?> _servicingTransferDate;
         public DateTime? ServicingTransferDate { get => _servicingTransferDate; set => _servicingTransferDate = value; }

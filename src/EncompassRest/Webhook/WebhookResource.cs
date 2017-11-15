@@ -6,10 +6,10 @@ namespace EncompassRest.Webhook
     {
         public string Description { get; set; }
 
-        public List<string> Events { get; set; }
+        public List<StringEnumValue<WebhookEvent>> Events { get; set; }
 
         public string Name { get; set; }
 
-        public string Status { get; set; }
+        public StringEnumValue<WebhookResourceStatus> Status { get; set; }
     }
 }

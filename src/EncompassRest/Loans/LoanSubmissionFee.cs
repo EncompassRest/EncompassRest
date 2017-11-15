@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
         public decimal? DueLender { get => _dueLender; set => _dueLender = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private StringEnumValue<LoanSubmissionFeeType> _loanSubmissionFeeType;
+        private DirtyValue<StringEnumValue<LoanSubmissionFeeType>> _loanSubmissionFeeType;
         public StringEnumValue<LoanSubmissionFeeType> LoanSubmissionFeeType { get => _loanSubmissionFeeType; set => _loanSubmissionFeeType = value; }
         private DirtyValue<decimal?> _total;
         public decimal? Total { get => _total; set => _total = value; }

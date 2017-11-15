@@ -76,11 +76,11 @@ namespace EncompassRest.Loans
         public decimal? ALTLegalLimit { get => _aLTLegalLimit; set => _aLTLegalLimit = value; }
         private DirtyValue<string> _aLTLoanAmountDidChangeCol;
         public string ALTLoanAmountDidChangeCol { get => _aLTLoanAmountDidChangeCol; set => _aLTLoanAmountDidChangeCol = value; }
-        private StringEnumValue<IncreasedOrDecreased> _aLTLoanAmountIncDecRemark;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _aLTLoanAmountIncDecRemark;
         public StringEnumValue<IncreasedOrDecreased> ALTLoanAmountIncDecRemark { get => _aLTLoanAmountIncDecRemark; set => _aLTLoanAmountIncDecRemark = value; }
         private DirtyValue<string> _aLTTotalClosingCostDidChangeCol;
         public string ALTTotalClosingCostDidChangeCol { get => _aLTTotalClosingCostDidChangeCol; set => _aLTTotalClosingCostDidChangeCol = value; }
-        private StringEnumValue<TotalClosingCostRemark> _aLTTotalClosingCostRemark;
+        private DirtyValue<StringEnumValue<TotalClosingCostRemark>> _aLTTotalClosingCostRemark;
         public StringEnumValue<TotalClosingCostRemark> ALTTotalClosingCostRemark { get => _aLTTotalClosingCostRemark; set => _aLTTotalClosingCostRemark = value; }
         private DirtyValue<string> _aLTTotalPayoffsDidChangeCol;
         public string ALTTotalPayoffsDidChangeCol { get => _aLTTotalPayoffsDidChangeCol; set => _aLTTotalPayoffsDidChangeCol = value; }
@@ -226,7 +226,7 @@ namespace EncompassRest.Loans
         public decimal? OtherCredits7_2 { get => _otherCredits7_2; set => _otherCredits7_2 = value; }
         private DirtyValue<decimal?> _priorToleranceCureAmount;
         public decimal? PriorToleranceCureAmount { get => _priorToleranceCureAmount; set => _priorToleranceCureAmount = value; }
-        private StringEnumValue<STDAdjustmentAndOtherCreditsRemark> _sTDAdjustmentAndOtherCreditsRemark;
+        private DirtyValue<StringEnumValue<STDAdjustmentAndOtherCreditsRemark>> _sTDAdjustmentAndOtherCreditsRemark;
         public StringEnumValue<STDAdjustmentAndOtherCreditsRemark> STDAdjustmentAndOtherCreditsRemark { get => _sTDAdjustmentAndOtherCreditsRemark; set => _sTDAdjustmentAndOtherCreditsRemark = value; }
         private DirtyValue<string> _sTDAdjustmentsDidChangeCol;
         public string STDAdjustmentsDidChangeCol { get => _sTDAdjustmentsDidChangeCol; set => _sTDAdjustmentsDidChangeCol = value; }
@@ -234,13 +234,13 @@ namespace EncompassRest.Loans
         public string STDClosingCostFinancedDidChangeCol { get => _sTDClosingCostFinancedDidChangeCol; set => _sTDClosingCostFinancedDidChangeCol = value; }
         private DirtyValue<string> _sTDDepositDidChangeCol;
         public string STDDepositDidChangeCol { get => _sTDDepositDidChangeCol; set => _sTDDepositDidChangeCol = value; }
-        private StringEnumValue<IncreasedOrDecreased> _sTDDepositIncDecRemark;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDDepositIncDecRemark;
         public StringEnumValue<IncreasedOrDecreased> STDDepositIncDecRemark { get => _sTDDepositIncDecRemark; set => _sTDDepositIncDecRemark = value; }
         private DirtyValue<string> _sTDDownPaymentDidChangeCol;
         public string STDDownPaymentDidChangeCol { get => _sTDDownPaymentDidChangeCol; set => _sTDDownPaymentDidChangeCol = value; }
-        private StringEnumValue<IncreasedOrDecreased> _sTDDownPaymentIncDecRemark;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDDownPaymentIncDecRemark;
         public StringEnumValue<IncreasedOrDecreased> STDDownPaymentIncDecRemark { get => _sTDDownPaymentIncDecRemark; set => _sTDDownPaymentIncDecRemark = value; }
-        private StringEnumValue<STDDownPaymentSectionRemark> _sTDDownPaymentSectionRemark;
+        private DirtyValue<StringEnumValue<STDDownPaymentSectionRemark>> _sTDDownPaymentSectionRemark;
         public StringEnumValue<STDDownPaymentSectionRemark> STDDownPaymentSectionRemark { get => _sTDDownPaymentSectionRemark; set => _sTDDownPaymentSectionRemark = value; }
         private DirtyValue<decimal?> _sTDFinalAdjustmentAndOtherCredits;
         public decimal? STDFinalAdjustmentAndOtherCredits { get => _sTDFinalAdjustmentAndOtherCredits; set => _sTDFinalAdjustmentAndOtherCredits = value; }
@@ -262,7 +262,7 @@ namespace EncompassRest.Loans
         public decimal? STDFinalTotalClosingCostJ { get => _sTDFinalTotalClosingCostJ; set => _sTDFinalTotalClosingCostJ = value; }
         private DirtyValue<string> _sTDFundsForBorrowerDidChangeCol;
         public string STDFundsForBorrowerDidChangeCol { get => _sTDFundsForBorrowerDidChangeCol; set => _sTDFundsForBorrowerDidChangeCol = value; }
-        private StringEnumValue<IncreasedOrDecreased> _sTDFundsForBorrowerIncDecRemark;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDFundsForBorrowerIncDecRemark;
         public StringEnumValue<IncreasedOrDecreased> STDFundsForBorrowerIncDecRemark { get => _sTDFundsForBorrowerIncDecRemark; set => _sTDFundsForBorrowerIncDecRemark = value; }
         private DirtyValue<decimal?> _sTDLEAdjustmentAndOtherCredits;
         public decimal? STDLEAdjustmentAndOtherCredits { get => _sTDLEAdjustmentAndOtherCredits; set => _sTDLEAdjustmentAndOtherCredits = value; }
@@ -286,13 +286,13 @@ namespace EncompassRest.Loans
         public decimal? STDLETotalClosingCostJ { get => _sTDLETotalClosingCostJ; set => _sTDLETotalClosingCostJ = value; }
         private DirtyValue<string> _sTDSellerCreditsDidChangeCol;
         public string STDSellerCreditsDidChangeCol { get => _sTDSellerCreditsDidChangeCol; set => _sTDSellerCreditsDidChangeCol = value; }
-        private StringEnumValue<IncreasedOrDecreased> _sTDSellerCreditsIncDecRemark;
+        private DirtyValue<StringEnumValue<IncreasedOrDecreased>> _sTDSellerCreditsIncDecRemark;
         public StringEnumValue<IncreasedOrDecreased> STDSellerCreditsIncDecRemark { get => _sTDSellerCreditsIncDecRemark; set => _sTDSellerCreditsIncDecRemark = value; }
         private DirtyValue<string> _sTDTotalClosingCostBeforeClosingDidChangeCol;
         public string STDTotalClosingCostBeforeClosingDidChangeCol { get => _sTDTotalClosingCostBeforeClosingDidChangeCol; set => _sTDTotalClosingCostBeforeClosingDidChangeCol = value; }
         private DirtyValue<string> _sTDTotalClosingCostDidChangeCol;
         public string STDTotalClosingCostDidChangeCol { get => _sTDTotalClosingCostDidChangeCol; set => _sTDTotalClosingCostDidChangeCol = value; }
-        private StringEnumValue<TotalClosingCostRemark> _sTDTotalClosingCostRemark;
+        private DirtyValue<StringEnumValue<TotalClosingCostRemark>> _sTDTotalClosingCostRemark;
         public StringEnumValue<TotalClosingCostRemark> STDTotalClosingCostRemark { get => _sTDTotalClosingCostRemark; set => _sTDTotalClosingCostRemark = value; }
         private DirtyValue<decimal?> _totalAdjustmentsAndOtherCredits;
         public decimal? TotalAdjustmentsAndOtherCredits { get => _totalAdjustmentsAndOtherCredits; set => _totalAdjustmentsAndOtherCredits = value; }

@@ -28,7 +28,7 @@ namespace EncompassRest.Loans
         public DateTime? CommitmentLetterDate { get => _commitmentLetterDate; set => _commitmentLetterDate = value; }
         private DirtyValue<DateTime?> _constCompletionDate;
         public DateTime? ConstCompletionDate { get => _constCompletionDate; set => _constCompletionDate = value; }
-        private StringEnumValue<ConstOnlyAmortizationType> _constOnlyAmortizationType;
+        private DirtyValue<StringEnumValue<ConstOnlyAmortizationType>> _constOnlyAmortizationType;
         public StringEnumValue<ConstOnlyAmortizationType> ConstOnlyAmortizationType { get => _constOnlyAmortizationType; set => _constOnlyAmortizationType = value; }
         private DirtyValue<bool?> _constructionContractIndicator;
         public bool? ConstructionContractIndicator { get => _constructionContractIndicator; set => _constructionContractIndicator = value; }
@@ -74,7 +74,7 @@ namespace EncompassRest.Loans
         public string OtherDescription { get => _otherDescription; set => _otherDescription = value; }
         private DirtyValue<bool?> _otherIndicator;
         public bool? OtherIndicator { get => _otherIndicator; set => _otherIndicator = value; }
-        private StringEnumValue<PartialPrepaymentsElection> _partialPrepaymentsElection;
+        private DirtyValue<StringEnumValue<PartialPrepaymentsElection>> _partialPrepaymentsElection;
         public StringEnumValue<PartialPrepaymentsElection> PartialPrepaymentsElection { get => _partialPrepaymentsElection; set => _partialPrepaymentsElection = value; }
         private DirtyValue<DateTime?> _paymentAndPerformanceBondsDate;
         public DateTime? PaymentAndPerformanceBondsDate { get => _paymentAndPerformanceBondsDate; set => _paymentAndPerformanceBondsDate = value; }

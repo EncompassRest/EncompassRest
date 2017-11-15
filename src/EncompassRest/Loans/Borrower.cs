@@ -22,7 +22,7 @@ namespace EncompassRest.Loans
         public string ApplicantType { get => _applicantType; set => _applicantType = value; }
         private Application _application;
         public Application Application { get => _application ?? (_application = new Application()); set => _application = value; }
-        private StringEnumValue<ApplicationTakenMethodType> _applicationTakenMethodType;
+        private DirtyValue<StringEnumValue<ApplicationTakenMethodType>> _applicationTakenMethodType;
         public StringEnumValue<ApplicationTakenMethodType> ApplicationTakenMethodType { get => _applicationTakenMethodType; set => _applicationTakenMethodType = value; }
         private DirtyValue<string> _assetRepAndWarrantyMessage;
         public string AssetRepAndWarrantyMessage { get => _assetRepAndWarrantyMessage; set => _assetRepAndWarrantyMessage = value; }
@@ -34,7 +34,7 @@ namespace EncompassRest.Loans
         public bool? AuthorizedToSignIndicator { get => _authorizedToSignIndicator; set => _authorizedToSignIndicator = value; }
         private DirtyValue<string> _bankAccountNumber;
         public string BankAccountNumber { get => _bankAccountNumber; set => _bankAccountNumber = value; }
-        private StringEnumValue<BankAccountType> _bankAccountType;
+        private DirtyValue<StringEnumValue<BankAccountType>> _bankAccountType;
         public StringEnumValue<BankAccountType> BankAccountType { get => _bankAccountType; set => _bankAccountType = value; }
         private DirtyValue<string> _bankContactAddress;
         public string BankContactAddress { get => _bankContactAddress; set => _bankContactAddress = value; }
@@ -48,7 +48,7 @@ namespace EncompassRest.Loans
         public string BankContactState { get => _bankContactState; set => _bankContactState = value; }
         private DirtyValue<bool?> _bankruptcyIndicator;
         public bool? BankruptcyIndicator { get => _bankruptcyIndicator; set => _bankruptcyIndicator = value; }
-        private StringEnumValue<BankruptcyForeclosureStatus> _bankruptcyStatus;
+        private DirtyValue<StringEnumValue<BankruptcyForeclosureStatus>> _bankruptcyStatus;
         public StringEnumValue<BankruptcyForeclosureStatus> BankruptcyStatus { get => _bankruptcyStatus; set => _bankruptcyStatus = value; }
         private DirtyValue<decimal?> _baseMonthlyIncomeAmount;
         public decimal? BaseMonthlyIncomeAmount { get => _baseMonthlyIncomeAmount; set => _baseMonthlyIncomeAmount = value; }
@@ -60,9 +60,9 @@ namespace EncompassRest.Loans
         public DateTime? BorrowerConsentRequestDate { get => _borrowerConsentRequestDate; set => _borrowerConsentRequestDate = value; }
         private DirtyValue<int?> _borrowerIndex;
         public int? BorrowerIndex { get => _borrowerIndex; set => _borrowerIndex = value; }
-        private StringEnumValue<BorrowerType> _borrowerType;
+        private DirtyValue<StringEnumValue<BorrowerType>> _borrowerType;
         public StringEnumValue<BorrowerType> BorrowerType { get => _borrowerType; set => _borrowerType = value; }
-        private StringEnumValue<BorrowerType> _borrowerTypeInSummary;
+        private DirtyValue<StringEnumValue<BorrowerType>> _borrowerTypeInSummary;
         public StringEnumValue<BorrowerType> BorrowerTypeInSummary { get => _borrowerTypeInSummary; set => _borrowerTypeInSummary = value; }
         private DirtyValue<string> _caivrsIdentifier;
         public string CaivrsIdentifier { get => _caivrsIdentifier; set => _caivrsIdentifier = value; }
@@ -88,7 +88,7 @@ namespace EncompassRest.Loans
         public bool? CreditCounseling { get => _creditCounseling; set => _creditCounseling = value; }
         private DirtyValue<DateTime?> _creditReceivedDate;
         public DateTime? CreditReceivedDate { get => _creditReceivedDate; set => _creditReceivedDate = value; }
-        private StringEnumValue<CreditReportAuthorizationMethod> _creditReportAuthorizationMethod;
+        private DirtyValue<StringEnumValue<CreditReportAuthorizationMethod>> _creditReportAuthorizationMethod;
         public StringEnumValue<CreditReportAuthorizationMethod> CreditReportAuthorizationMethod { get => _creditReportAuthorizationMethod; set => _creditReportAuthorizationMethod = value; }
         private DirtyValue<bool?> _creditScoreIndicator;
         public bool? CreditScoreIndicator { get => _creditScoreIndicator; set => _creditScoreIndicator = value; }
@@ -198,7 +198,7 @@ namespace EncompassRest.Loans
         public bool? FirstTimeHomeBuyer { get => _firstTimeHomeBuyer; set => _firstTimeHomeBuyer = value; }
         private DirtyValue<DateTime?> _foreclosureSatisfied;
         public DateTime? ForeclosureSatisfied { get => _foreclosureSatisfied; set => _foreclosureSatisfied = value; }
-        private StringEnumValue<BankruptcyForeclosureStatus> _foreclosureStatus;
+        private DirtyValue<StringEnumValue<BankruptcyForeclosureStatus>> _foreclosureStatus;
         public StringEnumValue<BankruptcyForeclosureStatus> ForeclosureStatus { get => _foreclosureStatus; set => _foreclosureStatus = value; }
         private DirtyValue<string> _freddieMacPerson1;
         public string FreddieMacPerson1 { get => _freddieMacPerson1; set => _freddieMacPerson1 = value; }
@@ -212,11 +212,11 @@ namespace EncompassRest.Loans
         public decimal? HighestCreditLimit { get => _highestCreditLimit; set => _highestCreditLimit = value; }
         private DirtyValue<string> _hmda2003OtherRaceNationalOriginDescription;
         public string Hmda2003OtherRaceNationalOriginDescription { get => _hmda2003OtherRaceNationalOriginDescription; set => _hmda2003OtherRaceNationalOriginDescription = value; }
-        private StringEnumValue<Hmda2003RaceNationalOriginType> _hmda2003RaceNationalOriginType;
+        private DirtyValue<StringEnumValue<Hmda2003RaceNationalOriginType>> _hmda2003RaceNationalOriginType;
         public StringEnumValue<Hmda2003RaceNationalOriginType> Hmda2003RaceNationalOriginType { get => _hmda2003RaceNationalOriginType; set => _hmda2003RaceNationalOriginType = value; }
         private DirtyValue<bool?> _hmdaAfricanAmericanIndicator;
         public bool? HmdaAfricanAmericanIndicator { get => _hmdaAfricanAmericanIndicator; set => _hmdaAfricanAmericanIndicator = value; }
-        private StringEnumValue<HmdaAge> _hmdaAge;
+        private DirtyValue<StringEnumValue<HmdaAge>> _hmdaAge;
         public StringEnumValue<HmdaAge> HmdaAge { get => _hmdaAge; set => _hmdaAge = value; }
         private DirtyValue<bool?> _hmdaAmericanIndianIndicator;
         public bool? HmdaAmericanIndianIndicator { get => _hmdaAmericanIndianIndicator; set => _hmdaAmericanIndianIndicator = value; }
@@ -230,9 +230,9 @@ namespace EncompassRest.Loans
         public bool? HmdaAsianOtherRaceIndicator { get => _hmdaAsianOtherRaceIndicator; set => _hmdaAsianOtherRaceIndicator = value; }
         private DirtyValue<bool?> _hmdaChineseIndicator;
         public bool? HmdaChineseIndicator { get => _hmdaChineseIndicator; set => _hmdaChineseIndicator = value; }
-        private StringEnumValue<HmdaCreditScoreForDecisionMaking> _hmdaCreditScoreForDecisionMaking;
+        private DirtyValue<StringEnumValue<HmdaCreditScoreForDecisionMaking>> _hmdaCreditScoreForDecisionMaking;
         public StringEnumValue<HmdaCreditScoreForDecisionMaking> HmdaCreditScoreForDecisionMaking { get => _hmdaCreditScoreForDecisionMaking; set => _hmdaCreditScoreForDecisionMaking = value; }
-        private StringEnumValue<HmdaCreditScoringModel> _hmdaCreditScoringModel;
+        private DirtyValue<StringEnumValue<HmdaCreditScoringModel>> _hmdaCreditScoringModel;
         public StringEnumValue<HmdaCreditScoringModel> HmdaCreditScoringModel { get => _hmdaCreditScoringModel; set => _hmdaCreditScoringModel = value; }
         private DirtyValue<bool?> _hmdaCubanIndicator;
         public bool? HmdaCubanIndicator { get => _hmdaCubanIndicator; set => _hmdaCubanIndicator = value; }
@@ -254,11 +254,11 @@ namespace EncompassRest.Loans
         public string HmdaEthnicityReportedField4 { get => _hmdaEthnicityReportedField4; set => _hmdaEthnicityReportedField4 = value; }
         private DirtyValue<string> _hmdaEthnicityReportedField5;
         public string HmdaEthnicityReportedField5 { get => _hmdaEthnicityReportedField5; set => _hmdaEthnicityReportedField5 = value; }
-        private StringEnumValue<HmdaEthnicityType> _hmdaEthnicityType;
+        private DirtyValue<StringEnumValue<HmdaEthnicityType>> _hmdaEthnicityType;
         public StringEnumValue<HmdaEthnicityType> HmdaEthnicityType { get => _hmdaEthnicityType; set => _hmdaEthnicityType = value; }
         private DirtyValue<bool?> _hmdaFilipinoIndicator;
         public bool? HmdaFilipinoIndicator { get => _hmdaFilipinoIndicator; set => _hmdaFilipinoIndicator = value; }
-        private StringEnumValue<HmdaGenderType> _hmdaGenderType;
+        private DirtyValue<StringEnumValue<HmdaGenderType>> _hmdaGenderType;
         public StringEnumValue<HmdaGenderType> HmdaGenderType { get => _hmdaGenderType; set => _hmdaGenderType = value; }
         private DirtyValue<bool?> _hmdaGendertypeDoNotWishIndicator;
         public bool? HmdaGendertypeDoNotWishIndicator { get => _hmdaGendertypeDoNotWishIndicator; set => _hmdaGendertypeDoNotWishIndicator = value; }
@@ -340,15 +340,15 @@ namespace EncompassRest.Loans
         public bool? IsBorrower { get => _isBorrower; set => _isBorrower = value; }
         private DirtyValue<bool?> _isCommissionAvailable;
         public bool? IsCommissionAvailable { get => _isCommissionAvailable; set => _isCommissionAvailable = value; }
-        private StringEnumValue<YNOrNA> _isEthnicityBasedOnVisual;
+        private DirtyValue<StringEnumValue<YNOrNA>> _isEthnicityBasedOnVisual;
         public StringEnumValue<YNOrNA> IsEthnicityBasedOnVisual { get => _isEthnicityBasedOnVisual; set => _isEthnicityBasedOnVisual = value; }
         private DirtyValue<bool?> _isOvertimeAvailable;
         public bool? IsOvertimeAvailable { get => _isOvertimeAvailable; set => _isOvertimeAvailable = value; }
-        private StringEnumValue<YNOrNA> _isRaceBasedOnVisual;
+        private DirtyValue<StringEnumValue<YNOrNA>> _isRaceBasedOnVisual;
         public StringEnumValue<YNOrNA> IsRaceBasedOnVisual { get => _isRaceBasedOnVisual; set => _isRaceBasedOnVisual = value; }
         private DirtyValue<bool?> _isSelfEmployed;
         public bool? IsSelfEmployed { get => _isSelfEmployed; set => _isSelfEmployed = value; }
-        private StringEnumValue<YNOrNA> _isSexBasedOnVisual;
+        private DirtyValue<StringEnumValue<YNOrNA>> _isSexBasedOnVisual;
         public StringEnumValue<YNOrNA> IsSexBasedOnVisual { get => _isSexBasedOnVisual; set => _isSexBasedOnVisual = value; }
         private DirtyValue<bool?> _isSocialSecurityAvailable;
         public bool? IsSocialSecurityAvailable { get => _isSocialSecurityAvailable; set => _isSocialSecurityAvailable = value; }
@@ -362,7 +362,7 @@ namespace EncompassRest.Loans
         public string LpdGsa { get => _lpdGsa; set => _lpdGsa = value; }
         private DirtyValue<bool?> _mailingAddressSameAsPresentIndicator;
         public bool? MailingAddressSameAsPresentIndicator { get => _mailingAddressSameAsPresentIndicator; set => _mailingAddressSameAsPresentIndicator = value; }
-        private StringEnumValue<MaritalStatusType> _maritalStatusType;
+        private DirtyValue<StringEnumValue<MaritalStatusType>> _maritalStatusType;
         public StringEnumValue<MaritalStatusType> MaritalStatusType { get => _maritalStatusType; set => _maritalStatusType = value; }
         private DirtyValue<int?> _middleCreditScore;
         public int? MiddleCreditScore { get => _middleCreditScore; set => _middleCreditScore = value; }
@@ -404,7 +404,7 @@ namespace EncompassRest.Loans
         public int? NumberofTradelines { get => _numberofTradelines; set => _numberofTradelines = value; }
         private DirtyValue<bool?> _obtainLoanFromRHSIndicator;
         public bool? ObtainLoanFromRHSIndicator { get => _obtainLoanFromRHSIndicator; set => _obtainLoanFromRHSIndicator = value; }
-        private StringEnumValue<OpenBankruptcy> _openBankruptcy2;
+        private DirtyValue<StringEnumValue<OpenBankruptcy>> _openBankruptcy2;
         public StringEnumValue<OpenBankruptcy> OpenBankruptcy2 { get => _openBankruptcy2; set => _openBankruptcy2 = value; }
         private DirtyValue<decimal?> _otherMonthlyIncomeAmount;
         public decimal? OtherMonthlyIncomeAmount { get => _otherMonthlyIncomeAmount; set => _otherMonthlyIncomeAmount = value; }
@@ -438,7 +438,7 @@ namespace EncompassRest.Loans
         public bool? PIWAccepted { get => _pIWAccepted; set => _pIWAccepted = value; }
         private DirtyValue<string> _pIWMessage;
         public string PIWMessage { get => _pIWMessage; set => _pIWMessage = value; }
-        private StringEnumValue<OccupancyIntent> _poaOccupancyIntent;
+        private DirtyValue<StringEnumValue<OccupancyIntent>> _poaOccupancyIntent;
         public StringEnumValue<OccupancyIntent> PoaOccupancyIntent { get => _poaOccupancyIntent; set => _poaOccupancyIntent = value; }
         private DirtyValue<string> _poaSignatureText;
         public string PoaSignatureText { get => _poaSignatureText; set => _poaSignatureText = value; }
@@ -454,9 +454,9 @@ namespace EncompassRest.Loans
         public DateTime? PriorBankruptcy2 { get => _priorBankruptcy2; set => _priorBankruptcy2 = value; }
         private DirtyValue<bool?> _priorForeclosure;
         public bool? PriorForeclosure { get => _priorForeclosure; set => _priorForeclosure = value; }
-        private StringEnumValue<PriorPropertyTitleType> _priorPropertyTitleType;
+        private DirtyValue<StringEnumValue<PriorPropertyTitleType>> _priorPropertyTitleType;
         public StringEnumValue<PriorPropertyTitleType> PriorPropertyTitleType { get => _priorPropertyTitleType; set => _priorPropertyTitleType = value; }
-        private StringEnumValue<PriorPropertyUsageType> _priorPropertyUsageType;
+        private DirtyValue<StringEnumValue<PriorPropertyUsageType>> _priorPropertyUsageType;
         public StringEnumValue<PriorPropertyUsageType> PriorPropertyUsageType { get => _priorPropertyUsageType; set => _priorPropertyUsageType = value; }
         private DirtyValue<bool?> _propertyForeclosedPastSevenYearsIndicator;
         public bool? PropertyForeclosedPastSevenYearsIndicator { get => _propertyForeclosedPastSevenYearsIndicator; set => _propertyForeclosedPastSevenYearsIndicator = value; }
@@ -634,7 +634,7 @@ namespace EncompassRest.Loans
         public string Vendor8 { get => _vendor8; set => _vendor8 = value; }
         private DirtyValue<string> _vendor9;
         public string Vendor9 { get => _vendor9; set => _vendor9 = value; }
-        private StringEnumValue<VestingTrusteeOfType> _vestingTrusteeOfType;
+        private DirtyValue<StringEnumValue<VestingTrusteeOfType>> _vestingTrusteeOfType;
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => _vestingTrusteeOfType = value; }
         private DirtyValue<bool?> _veteranIndicator;
         public bool? VeteranIndicator { get => _veteranIndicator; set => _veteranIndicator = value; }

@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         public int? Lates25Month90Day { get => _lates25Month90Day; set => _lates25Month90Day = value; }
         private DirtyValue<int?> _liabilityIndex;
         public int? LiabilityIndex { get => _liabilityIndex; set => _liabilityIndex = value; }
-        private StringEnumValue<LiabilityType> _liabilityType;
+        private DirtyValue<StringEnumValue<LiabilityType>> _liabilityType;
         public StringEnumValue<LiabilityType> LiabilityType { get => _liabilityType; set => _liabilityType = value; }
         private DirtyValue<decimal?> _monthlyPaymentAmount;
         public decimal? MonthlyPaymentAmount { get => _monthlyPaymentAmount; set => _monthlyPaymentAmount = value; }
@@ -88,7 +88,7 @@ namespace EncompassRest.Loans
         public string NameInAccount { get => _nameInAccount; set => _nameInAccount = value; }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => _noLinkToDocTrackIndicator = value; }
-        private StringEnumValue<Owner> _owner;
+        private DirtyValue<StringEnumValue<Owner>> _owner;
         public StringEnumValue<Owner> Owner { get => _owner; set => _owner = value; }
         private DirtyValue<bool?> _payoffIncludedIndicator;
         public bool? PayoffIncludedIndicator { get => _payoffIncludedIndicator; set => _payoffIncludedIndicator = value; }
@@ -116,7 +116,7 @@ namespace EncompassRest.Loans
         public string TitlePhone { get => _titlePhone; set => _titlePhone = value; }
         private DirtyValue<decimal?> _toBePaidOffAmount;
         public decimal? ToBePaidOffAmount { get => _toBePaidOffAmount; set => _toBePaidOffAmount = value; }
-        private StringEnumValue<UCDPayoffType> _uCDPayoffType;
+        private DirtyValue<StringEnumValue<UCDPayoffType>> _uCDPayoffType;
         public StringEnumValue<UCDPayoffType> UCDPayoffType { get => _uCDPayoffType; set => _uCDPayoffType = value; }
         private DirtyValue<decimal?> _unpaidBalanceAmount;
         public decimal? UnpaidBalanceAmount { get => _unpaidBalanceAmount; set => _unpaidBalanceAmount = value; }

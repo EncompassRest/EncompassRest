@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
+using EnumsNET;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
@@ -135,7 +136,7 @@ namespace EncompassRest.Utilities
 
         private abstract class CustomContractResolver : DefaultContractResolver
         {
-            protected static readonly JsonConverter DefaultEnumConverter = new EnumJsonConverter(EnumOutput.CamelCaseName);
+            protected static readonly JsonConverter DefaultEnumConverter = new EnumJsonConverter(EnumJsonConverter.CamelCaseNameFormat);
 
             public CustomContractResolver()
             {
@@ -217,10 +218,10 @@ namespace EncompassRest.Utilities
                 var propertyInfo = member as PropertyInfo;
                 if (propertyInfo != null)
                 {
-                    var enumOutputAttribute = (EnumOutputAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumOutputAttribute>.Type, (false)).FirstOrDefault();
-                    if (enumOutputAttribute != null)
+                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, (false)).FirstOrDefault();
+                    if (enumFormatAttribute != null)
                     {
-                        property.Converter = new EnumJsonConverter(enumOutputAttribute.EnumOutput);
+                        property.Converter = new EnumJsonConverter(enumFormatAttribute.EnumFormat);
                     }
                     PopulateShouldSerializeMethod(property, propertyInfo);
                 }
@@ -235,10 +236,10 @@ namespace EncompassRest.Utilities
                 var typeInfo = typeData.TypeInfo;
                 if (typeData.IsEnum || typeData.NonNullableValueTypeData?.IsEnum == true)
                 {
-                    var enumOutputAttribute = typeInfo.GetCustomAttribute<EnumOutputAttribute>();
-                    if (enumOutputAttribute != null)
+                    var enumFormatAttribute = typeInfo.GetCustomAttribute<EnumFormatAttribute>();
+                    if (enumFormatAttribute != null)
                     {
-                        return new EnumJsonConverter(enumOutputAttribute.EnumOutput);
+                        return new EnumJsonConverter(enumFormatAttribute.EnumFormat);
                     }
                     else
                     {
