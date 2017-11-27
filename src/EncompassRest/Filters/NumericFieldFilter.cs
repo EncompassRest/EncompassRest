@@ -12,7 +12,7 @@ namespace EncompassRest.Filters
         [JsonRequired]
         public decimal Value { get; }
 
-        public NumericFieldFilter(CanonicalField canonicalField, OrdinalFieldMatchType matchType, decimal value)
+        public NumericFieldFilter(LoanCanonicalField canonicalField, OrdinalFieldMatchType matchType, decimal value)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), matchType, value)
         {
         }

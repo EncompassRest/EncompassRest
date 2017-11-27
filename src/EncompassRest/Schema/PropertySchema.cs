@@ -20,5 +20,13 @@ namespace EncompassRest.Schema
         public StringEnumValue<LoanEntity> ElementType { get; set; }
         public string FieldId { get; set; }
         public bool? FixedLength { get; set; }
+        public List<string> KeyProperties { get; set; }
+        public Dictionary<string, Instance> Instances { get; set; }
+        public Dictionary<string, InstancePattern> InstancePatterns { get; set; }
+        public Dictionary<string, List<string>> FieldInstances { get; set; }
+        public Dictionary<string, List<string>> FieldPatterns { get; set; }
+
+        private DirtyDictionary<string, object> _extensionData;
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

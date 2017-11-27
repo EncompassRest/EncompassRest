@@ -1,6 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Collections.Generic;
 
 namespace EncompassRest.Token
 {
@@ -12,8 +13,8 @@ namespace EncompassRest.Token
         [JsonProperty("exp")]
         private int _expiration
         {
-            get => (int)((Expiration - s_unixEpoch).TotalSeconds);
-            set => Expiration = s_unixEpoch.AddSeconds(value);
+            get => (int)((ExpirationUtc - s_unixEpoch).TotalSeconds);
+            set => ExpirationUtc = s_unixEpoch.AddSeconds(value);
         }
 
         public bool Active { get; set; }
@@ -28,7 +29,7 @@ namespace EncompassRest.Token
         public string TokenType { get; set; }
 
         [JsonIgnore, JsonProperty(Required = Required.Default)]
-        public DateTime Expiration { get; set; }
+        public DateTime ExpirationUtc { get; set; }
 
         [JsonProperty("sub")]
         public string Subject { get; set; }
@@ -47,5 +48,9 @@ namespace EncompassRest.Token
         public string EncompassClientId { get; set; }
 
         public string RealmName { get; set; }
+
+        private DirtyDictionary<string, object> _extensionData;
+        [JsonProperty(Required = Required.Default)]
+        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

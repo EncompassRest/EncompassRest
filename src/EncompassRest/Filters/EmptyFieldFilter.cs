@@ -4,7 +4,7 @@ namespace EncompassRest.Filters
 {
     public sealed class EmptyFieldFilter : FieldFilter
     {
-        public EmptyFieldFilter(CanonicalField canonicalField)
+        public EmptyFieldFilter(LoanCanonicalField canonicalField)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())
         {
         }

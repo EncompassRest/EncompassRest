@@ -30,17 +30,20 @@ namespace EncompassRest.Tests
         public async Task BorrowerContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
-            var borrowerContact = new BorrowerContact();
-            var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
+            if (client.AccessToken.Token != "Token")
+            {
+                var borrowerContact = new BorrowerContact();
+                var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
 
-            Assert.IsNotNull(contactId);
-            Assert.AreEqual(contactId, borrowerContact.Id);
+                Assert.IsNotNull(contactId);
+                Assert.AreEqual(contactId, borrowerContact.Id);
 
-            var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
-            Assert.IsNotNull(retrievedContact);
-            Assert.AreEqual(contactId, retrievedContact.Id);
+                var retrievedContact = await client.BorrowerContacts.GetContactAsync(contactId);
+                Assert.IsNotNull(retrievedContact);
+                Assert.AreEqual(contactId, retrievedContact.Id);
 
-            Assert.IsTrue(await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+                Assert.IsTrue(await client.BorrowerContacts.DeleteContactAsync(contactId).ConfigureAwait(false));
+            }
         }
 
         [TestMethod]

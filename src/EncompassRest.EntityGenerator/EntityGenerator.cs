@@ -8,6 +8,7 @@ using EncompassRest.Schema;
 using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
+using EncompassRest.Loans;
 
 namespace EncompassRest
 {
@@ -184,7 +185,7 @@ namespace EncompassRest
                     exception = null;
                     try
                     {
-                        var loanSchema = await client.Schema.GetLoanSchemaAsync(true, entity).ConfigureAwait(false);
+                        var loanSchema = await client.Schema.GetLoanSchemaAsync(true, new[] { entity }).ConfigureAwait(false);
 
                         if (loanSchema.EntityTypes.TryGetValue(entity, out var entitySchema))
                         {

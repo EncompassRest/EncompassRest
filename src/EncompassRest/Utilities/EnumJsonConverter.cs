@@ -9,18 +9,14 @@ namespace EncompassRest.Utilities
     internal sealed class EnumJsonConverter : JsonConverter
     {
         internal static readonly EnumFormat CamelCaseNameFormat;
-        internal static readonly EnumFormat[] CamelCaseNameFormatArray;
         private static readonly CamelCaseNamingStrategy s_camelCaseNamingStrategy;
 
         static EnumJsonConverter()
         {
             s_camelCaseNamingStrategy = new CamelCaseNamingStrategy();
             CamelCaseNameFormat = Enums.RegisterCustomEnumFormat(member => s_camelCaseNamingStrategy.GetPropertyName(member.Name, false));
-            CamelCaseNameFormatArray = new[] { CamelCaseNameFormat };
         }
-
-        private readonly EnumFormat[] _enumFormats;
-
+        
         public EnumFormat EnumFormat { get; }
 
         public EnumJsonConverter()
@@ -33,7 +29,6 @@ namespace EncompassRest.Utilities
             enumFormat.Validate(nameof(enumFormat));
 
             EnumFormat = enumFormat;
-            _enumFormats = new[] { enumFormat };
         }
 
         public override bool CanConvert(Type objectType)
@@ -55,7 +50,7 @@ namespace EncompassRest.Utilities
                         }
                         return null;
                     case JsonToken.String:
-                        return NonGenericEnums.Parse(objectType, (string)reader.Value, _enumFormats);
+                        return NonGenericEnums.Parse(objectType, (string)reader.Value, EnumFormat);
                     case JsonToken.Integer:
                         return NonGenericEnums.ToObject(objectType, reader.Value);
                     default:
@@ -82,7 +77,7 @@ namespace EncompassRest.Utilities
                     var member = NonGenericEnums.GetMember(enumType, value);
                     if (member != null)
                     {
-                        writer.WriteValue(member.AsString(_enumFormats));
+                        writer.WriteValue(member.AsString(EnumFormat));
                         return;
                     }
                 }
