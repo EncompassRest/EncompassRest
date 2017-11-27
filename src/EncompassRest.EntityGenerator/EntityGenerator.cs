@@ -8,7 +8,6 @@ using EncompassRest.Schema;
 using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
-using EncompassRest.Loans;
 
 namespace EncompassRest
 {
