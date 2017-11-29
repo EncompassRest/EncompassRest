@@ -1,5 +1,5 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace EncompassRest.Contacts
 {
@@ -29,6 +29,24 @@ namespace EncompassRest.Contacts
                 _birthdate.Dirty = value;
                 _referral.Dirty = value;
             }
+        }
+
+        /// <summary>
+        /// BorrowerContact creation constructor
+        /// </summary>
+        [JsonConstructor]
+        public BorrowerContact()
+        {
+        }
+
+        /// <summary>
+        /// BusinessContact update constructor
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="contactId"></param>
+        public BorrowerContact(EncompassRestClient client, string contactId)
+            : base(client, contactId)
+        {
         }
     }
 }

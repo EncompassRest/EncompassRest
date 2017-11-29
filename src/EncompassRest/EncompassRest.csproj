@@ -11,6 +11,7 @@
     <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

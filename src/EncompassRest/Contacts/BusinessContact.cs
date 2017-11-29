@@ -44,5 +44,23 @@ namespace EncompassRest.Contacts
                 _fees.Dirty = value;
             }
         }
+
+        /// <summary>
+        /// BusinessContact creation constructor
+        /// </summary>
+        [JsonConstructor]
+        public BusinessContact()
+        {
+        }
+
+        /// <summary>
+        /// BusinessContact update constructor
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="contactId"></param>
+        public BusinessContact(EncompassRestClient client, string contactId)
+            : base(client, contactId)
+        {
+        }
     }
 }

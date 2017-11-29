@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace EncompassRest.Contacts
+﻿namespace EncompassRest.Contacts
 {
     public sealed class ContactAddress : ExtensibleObject
     {

@@ -13,7 +13,7 @@ namespace EncompassRest.Contacts
         [JsonIgnore]
         public ContactNotes Notes { get; private set; }
 
-        public Contact(EncompassRestClient client, string contactId)
+        internal Contact(EncompassRestClient client, string contactId)
         {
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
@@ -21,9 +21,8 @@ namespace EncompassRest.Contacts
             Id = contactId;
             Initialize(client);
         }
-
-        [JsonConstructor]
-        public Contact()
+        
+        internal Contact()
         {
         }
 
@@ -32,6 +31,7 @@ namespace EncompassRest.Contacts
             Client = client;
             Notes = new ContactNotes(client, ApiPath, Id);
         }
+
         private DirtyValue<string> _firstName;
         public string FirstName { get => _firstName; set => _firstName = value; }
         private DirtyValue<string> _lastName;
