@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Loan : IDirty
+    public sealed partial class Loan : ExtensibleObject
     {
         private AdditionalRequests _additionalRequests;
         public AdditionalRequests AdditionalRequests { get => _additionalRequests ?? (_additionalRequests = new AdditionalRequests()); set => _additionalRequests = value; }
@@ -684,17 +682,11 @@ namespace EncompassRest.Loans
         public IList<VerificationLog> VerificationLogs { get => _verificationLogs ?? (_verificationLogs = new DirtyList<VerificationLog>()); set => _verificationLogs = new DirtyList<VerificationLog>(value); }
         private DirtyValue<string> _websiteId;
         public string WebsiteId { get => _websiteId; set => _websiteId = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adverseActionDate.Dirty
+                return _adverseActionDate.Dirty
                     || _agencyCaseIdentifier.Dirty
                     || _alterationsImprovementsOrRepairsAmount.Dirty
                     || _applicationTakenMethodType.Dirty
@@ -1031,15 +1023,10 @@ namespace EncompassRest.Loans
                     || _underwritingConditionLogs?.Dirty == true
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
-                    || _verificationLogs?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _verificationLogs?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adverseActionDate.Dirty = value;
                 _agencyCaseIdentifier.Dirty = value;
                 _alterationsImprovementsOrRepairsAmount.Dirty = value;
@@ -1378,10 +1365,7 @@ namespace EncompassRest.Loans
                 if (_usda != null) _usda.Dirty = value;
                 if (_vaLoanData != null) _vaLoanData.Dirty = value;
                 if (_verificationLogs != null) _verificationLogs.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

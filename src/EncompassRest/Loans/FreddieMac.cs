@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FreddieMac : IDirty
+    public sealed partial class FreddieMac : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<AffordableProduct>> _affordableProduct;
         public StringEnumValue<AffordableProduct> AffordableProduct { get => _affordableProduct; set => _affordableProduct = value; }
@@ -166,17 +164,11 @@ namespace EncompassRest.Loans
         public bool? TransferLoanToConduitIndicator { get => _transferLoanToConduitIndicator; set => _transferLoanToConduitIndicator = value; }
         private DirtyValue<StringEnumValue<YearsOfCoverage>> _yearsOfCoverage;
         public StringEnumValue<YearsOfCoverage> YearsOfCoverage { get => _yearsOfCoverage; set => _yearsOfCoverage = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _affordableProduct.Dirty
+                return _affordableProduct.Dirty
                     || _alimonyAsIncomeReduction.Dirty
                     || _allMonthlyPayments.Dirty
                     || _allowsNegativeAmortizationIndicator.Dirty
@@ -254,15 +246,10 @@ namespace EncompassRest.Loans
                     || _specialInstruction5.Dirty
                     || _state.Dirty
                     || _transferLoanToConduitIndicator.Dirty
-                    || _yearsOfCoverage.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _yearsOfCoverage.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _affordableProduct.Dirty = value;
                 _alimonyAsIncomeReduction.Dirty = value;
                 _allMonthlyPayments.Dirty = value;
@@ -342,10 +329,7 @@ namespace EncompassRest.Loans
                 _state.Dirty = value;
                 _transferLoanToConduitIndicator.Dirty = value;
                 _yearsOfCoverage.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

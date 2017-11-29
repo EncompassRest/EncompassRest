@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class AffiliatedBusinessArrangement : IDirty
+    public sealed partial class AffiliatedBusinessArrangement : ExtensibleObject
     {
         private DirtyValue<int?> _affiliatedBusinessArrangementIndex;
         public int? AffiliatedBusinessArrangementIndex { get => _affiliatedBusinessArrangementIndex; set => _affiliatedBusinessArrangementIndex = value; }
@@ -68,17 +66,11 @@ namespace EncompassRest.Loans
         public string ServiceDescription6 { get => _serviceDescription6; set => _serviceDescription6 = value; }
         private DirtyValue<bool?> _settlementIndicator;
         public bool? SettlementIndicator { get => _settlementIndicator; set => _settlementIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _affiliatedBusinessArrangementIndex.Dirty
+                return _affiliatedBusinessArrangementIndex.Dirty
                     || _affiliateName.Dirty
                     || _chargeRangeChargesDescription1.Dirty
                     || _chargeRangeChargesDescription2.Dirty
@@ -107,15 +99,10 @@ namespace EncompassRest.Loans
                     || _serviceDescription4.Dirty
                     || _serviceDescription5.Dirty
                     || _serviceDescription6.Dirty
-                    || _settlementIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _settlementIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _affiliatedBusinessArrangementIndex.Dirty = value;
                 _affiliateName.Dirty = value;
                 _chargeRangeChargesDescription1.Dirty = value;
@@ -146,10 +133,7 @@ namespace EncompassRest.Loans
                 _serviceDescription5.Dirty = value;
                 _serviceDescription6.Dirty = value;
                 _settlementIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

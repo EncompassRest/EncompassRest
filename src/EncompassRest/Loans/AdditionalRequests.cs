@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class AdditionalRequests : IDirty
+    public sealed partial class AdditionalRequests : ExtensibleObject
     {
         private DirtyValue<string> _appraisalContactCellPhone;
         public string AppraisalContactCellPhone { get => _appraisalContactCellPhone; set => _appraisalContactCellPhone = value; }
@@ -84,17 +82,11 @@ namespace EncompassRest.Loans
         public string TitleTypeOfProperty { get => _titleTypeOfProperty; set => _titleTypeOfProperty = value; }
         private DirtyValue<bool?> _titleWarrantyDeed;
         public bool? TitleWarrantyDeed { get => _titleWarrantyDeed; set => _titleWarrantyDeed = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisalContactCellPhone.Dirty
+                return _appraisalContactCellPhone.Dirty
                     || _appraisalContactEmail.Dirty
                     || _appraisalContactForEntry.Dirty
                     || _appraisalContactHomePhone.Dirty
@@ -131,15 +123,10 @@ namespace EncompassRest.Loans
                     || _titlePriorTitlePolicy.Dirty
                     || _titleSurvey.Dirty
                     || _titleTypeOfProperty.Dirty
-                    || _titleWarrantyDeed.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _titleWarrantyDeed.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisalContactCellPhone.Dirty = value;
                 _appraisalContactEmail.Dirty = value;
                 _appraisalContactForEntry.Dirty = value;
@@ -178,10 +165,7 @@ namespace EncompassRest.Loans
                 _titleSurvey.Dirty = value;
                 _titleTypeOfProperty.Dirty = value;
                 _titleWarrantyDeed.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

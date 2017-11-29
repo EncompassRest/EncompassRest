@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Buydown : IDirty
+    public sealed partial class Buydown : ExtensibleObject
     {
         private DirtyValue<int?> _buydownIndex;
         public int? BuydownIndex { get => _buydownIndex; set => _buydownIndex = value; }
@@ -28,17 +26,11 @@ namespace EncompassRest.Loans
         public int? RemainingMonthsCount { get => _remainingMonthsCount; set => _remainingMonthsCount = value; }
         private DirtyValue<decimal?> _subsidyAmount;
         public decimal? SubsidyAmount { get => _subsidyAmount; set => _subsidyAmount = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _buydownIndex.Dirty
+                return _buydownIndex.Dirty
                     || _buydownRatePercent.Dirty
                     || _changeFrequencyMonthsCount.Dirty
                     || _durationMonthsCount.Dirty
@@ -47,15 +39,10 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _increaseRatePercent.Dirty
                     || _remainingMonthsCount.Dirty
-                    || _subsidyAmount.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _subsidyAmount.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _buydownIndex.Dirty = value;
                 _buydownRatePercent.Dirty = value;
                 _changeFrequencyMonthsCount.Dirty = value;
@@ -66,10 +53,7 @@ namespace EncompassRest.Loans
                 _increaseRatePercent.Dirty = value;
                 _remainingMonthsCount.Dirty = value;
                 _subsidyAmount.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

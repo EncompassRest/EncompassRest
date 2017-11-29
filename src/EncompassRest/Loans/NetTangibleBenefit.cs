@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class NetTangibleBenefit : IDirty
+    public sealed partial class NetTangibleBenefit : ExtensibleObject
     {
         private DirtyValue<bool?> _aprNotExceedIndicator;
         public bool? AprNotExceedIndicator { get => _aprNotExceedIndicator; set => _aprNotExceedIndicator = value; }
@@ -144,17 +142,11 @@ namespace EncompassRest.Loans
         public bool? RefinancingLoanIsHomeEquityIndicator { get => _refinancingLoanIsHomeEquityIndicator; set => _refinancingLoanIsHomeEquityIndicator = value; }
         private DirtyValue<bool?> _refinancingRespondBonaFide;
         public bool? RefinancingRespondBonaFide { get => _refinancingRespondBonaFide; set => _refinancingRespondBonaFide = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aprNotExceedIndicator.Dirty
+                return _aprNotExceedIndicator.Dirty
                     || _avoidingForeclosureIndicator.Dirty
                     || _beneficialChangedForBorrowerIndicator.Dirty
                     || _bonaFideFinancialEmergency.Dirty
@@ -221,15 +213,10 @@ namespace EncompassRest.Loans
                     || _proceedsOfNewLoanWillBeUsedIndicator.Dirty
                     || _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty
                     || _refinancingLoanIsHomeEquityIndicator.Dirty
-                    || _refinancingRespondBonaFide.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _refinancingRespondBonaFide.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aprNotExceedIndicator.Dirty = value;
                 _avoidingForeclosureIndicator.Dirty = value;
                 _beneficialChangedForBorrowerIndicator.Dirty = value;
@@ -298,10 +285,7 @@ namespace EncompassRest.Loans
                 _receivingCashOutFromNewLoanGreaterThanClosingCostIndicator.Dirty = value;
                 _refinancingLoanIsHomeEquityIndicator.Dirty = value;
                 _refinancingRespondBonaFide.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

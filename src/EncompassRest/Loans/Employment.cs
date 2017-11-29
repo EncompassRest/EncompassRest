@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Employment : IDirty
+    public sealed partial class Employment : ExtensibleObject
     {
         private DirtyValue<string> _addressCity;
         public string AddressCity { get => _addressCity; set => _addressCity = value; }
@@ -88,17 +86,11 @@ namespace EncompassRest.Loans
         public string TitlePhone { get => _titlePhone; set => _titlePhone = value; }
         private DirtyValue<DateTime?> _verificationRequestDate;
         public DateTime? VerificationRequestDate { get => _verificationRequestDate; set => _verificationRequestDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _addressCity.Dirty
+                return _addressCity.Dirty
                     || _addressPostalCode.Dirty
                     || _addressState.Dirty
                     || _addressStreetLine1.Dirty
@@ -137,15 +129,10 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _titleFax.Dirty
                     || _titlePhone.Dirty
-                    || _verificationRequestDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _verificationRequestDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _addressCity.Dirty = value;
                 _addressPostalCode.Dirty = value;
                 _addressState.Dirty = value;
@@ -186,10 +173,7 @@ namespace EncompassRest.Loans
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
                 _verificationRequestDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

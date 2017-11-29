@@ -5,12 +5,9 @@ using Newtonsoft.Json.Serialization;
 namespace EncompassRest.Schema
 {
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class LoanSchema
+    public sealed class LoanSchema : ExtensibleObject
     {
         public string SchemaVersion { get; set; }
         public Dictionary<string, EntitySchema> EntityTypes { get; set; }
-
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

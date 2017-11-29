@@ -169,7 +169,7 @@ namespace EncompassRest
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
             Directory.CreateDirectory(destinationPath);
-            var supportedEntities = new HashSet<string>(await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false))
+            var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value))
             {
                 "NonVol"
             };
@@ -254,12 +254,10 @@ namespace EncompassRest
 $@"using System;
 using System.Collections.Generic;
 using {@namespace}.Enums;
-using Newtonsoft.Json;
 
 namespace {@namespace}
 {{
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class {entityType} : IDirty
+    public sealed partial class {entityType} : ExtensibleObject
     {{
 ");
 
@@ -320,27 +318,15 @@ namespace {@namespace}
             // Sorts non entity types first
             properties = properties.OrderBy(property => property.IsEntity || property.IsCollection).ToList();
 
-            // Must ensure no circular cleaning
             sb.Append(
-$@"        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData {{ get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }}
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+$@"        internal override bool DirtyInternal
         {{
             get
             {{
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))}
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                return {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
             }}
             set
             {{
-                if (_settingDirty) return;
-                _settingDirty = true;
                 {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
                     {
                         var propertyName = property.FieldName;
@@ -350,11 +336,8 @@ $@"        private DirtyDictionary<string, object> _extensionData;
                         }
                         return $"{propertyName}.Dirty = value;";
                     }))}
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }}
         }}
-        bool IDirty.Dirty {{ get => Dirty; set => Dirty = value; }}
     }}
 }}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))

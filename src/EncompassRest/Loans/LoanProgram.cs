@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanProgram : IDirty
+    public sealed partial class LoanProgram : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<YOrN>> _acquisition;
         public StringEnumValue<YOrN> Acquisition { get => _acquisition; set => _acquisition = value; }
@@ -254,17 +252,11 @@ namespace EncompassRest.Loans
         public string VariableRateFeature { get => _variableRateFeature; set => _variableRateFeature = value; }
         private DirtyValue<decimal?> _yearlyTerm;
         public decimal? YearlyTerm { get => _yearlyTerm; set => _yearlyTerm = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _acquisition.Dirty
+                return _acquisition.Dirty
                     || _additionalArmInformation.Dirty
                     || _allDateAndNumericalDisclosures.Dirty
                     || _annualFeeNeeded.Dirty
@@ -386,15 +378,10 @@ namespace EncompassRest.Loans
                     || _useDaysInYears.Dirty
                     || _usePitiForRatio.Dirty
                     || _variableRateFeature.Dirty
-                    || _yearlyTerm.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _yearlyTerm.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _acquisition.Dirty = value;
                 _additionalArmInformation.Dirty = value;
                 _allDateAndNumericalDisclosures.Dirty = value;
@@ -518,10 +505,7 @@ namespace EncompassRest.Loans
                 _usePitiForRatio.Dirty = value;
                 _variableRateFeature.Dirty = value;
                 _yearlyTerm.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class EmDocument : IDirty
+    public sealed partial class EmDocument : ExtensibleObject
     {
         private DirtyValue<string> _allngToNtPayToJrsdctn;
         public string AllngToNtPayToJrsdctn { get => _allngToNtPayToJrsdctn; set => _allngToNtPayToJrsdctn = value; }
@@ -448,17 +446,11 @@ namespace EncompassRest.Loans
         public string Trst2StreetAddr2 { get => _trst2StreetAddr2; set => _trst2StreetAddr2 = value; }
         private DirtyValue<string> _trst2Zip;
         public string Trst2Zip { get => _trst2Zip; set => _trst2Zip = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _allngToNtPayToJrsdctn.Dirty
+                return _allngToNtPayToJrsdctn.Dirty
                     || _allngToNtPayToOrdNm.Dirty
                     || _allngToNtPayToOrgTyp.Dirty
                     || _allngToNtPayToScsrsClaus.Dirty
@@ -677,15 +669,10 @@ namespace EncompassRest.Loans
                     || _trst2StCd.Dirty
                     || _trst2StreetAddr1.Dirty
                     || _trst2StreetAddr2.Dirty
-                    || _trst2Zip.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _trst2Zip.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _allngToNtPayToJrsdctn.Dirty = value;
                 _allngToNtPayToOrdNm.Dirty = value;
                 _allngToNtPayToOrgTyp.Dirty = value;
@@ -906,10 +893,7 @@ namespace EncompassRest.Loans
                 _trst2StreetAddr1.Dirty = value;
                 _trst2StreetAddr2.Dirty = value;
                 _trst2Zip.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

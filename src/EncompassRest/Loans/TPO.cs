@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class TPO : IDirty
+    public sealed partial class TPO : ExtensibleObject
     {
         private DirtyValue<bool?> _archived;
         public bool? Archived { get => _archived; set => _archived = value; }
@@ -194,17 +192,11 @@ namespace EncompassRest.Loans
         public bool? WatchListFlag { get => _watchListFlag; set => _watchListFlag = value; }
         private DirtyValue<StringEnumValue<WatchListReason>> _watchListReason;
         public StringEnumValue<WatchListReason> WatchListReason { get => _watchListReason; set => _watchListReason = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _archived.Dirty
+                return _archived.Dirty
                     || _branchAddress.Dirty
                     || _branchAEName.Dirty
                     || _branchAEUserName.Dirty
@@ -296,15 +288,10 @@ namespace EncompassRest.Loans
                     || _underwriterReviewed.Dirty
                     || _underwritingDelegated.Dirty
                     || _watchListFlag.Dirty
-                    || _watchListReason.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _watchListReason.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _archived.Dirty = value;
                 _branchAddress.Dirty = value;
                 _branchAEName.Dirty = value;
@@ -398,10 +385,7 @@ namespace EncompassRest.Loans
                 _underwritingDelegated.Dirty = value;
                 _watchListFlag.Dirty = value;
                 _watchListReason.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

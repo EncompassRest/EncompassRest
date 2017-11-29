@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class UnderwritingConditionLog : IDirty
+    public sealed partial class UnderwritingConditionLog : ExtensibleObject
     {
         private DirtyValue<string> _addedBy;
         public string AddedBy { get => _addedBy; set => _addedBy = value; }
@@ -120,17 +118,11 @@ namespace EncompassRest.Loans
         public bool? Waived { get => _waived; set => _waived = value; }
         private DirtyValue<string> _waivedBy;
         public string WaivedBy { get => _waivedBy; set => _waivedBy = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _addedBy.Dirty
+                return _addedBy.Dirty
                     || _alertsXml.Dirty
                     || _allowToClearIndicator.Dirty
                     || _category.Dirty
@@ -185,15 +177,10 @@ namespace EncompassRest.Loans
                     || _waived.Dirty
                     || _waivedBy.Dirty
                     || _alerts?.Dirty == true
-                    || _commentList?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _commentList?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _addedBy.Dirty = value;
                 _alertsXml.Dirty = value;
                 _allowToClearIndicator.Dirty = value;
@@ -250,10 +237,7 @@ namespace EncompassRest.Loans
                 _waivedBy.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

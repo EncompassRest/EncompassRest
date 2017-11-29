@@ -4,8 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Documents
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed class LoanDocument : IDirty
+    public sealed class LoanDocument : ExtensibleObject
     {
         private DirtyValue<string> _documentId;
         public string DocumentId { get => _documentId; set => _documentId = value; }
@@ -89,17 +88,11 @@ namespace EncompassRest.Loans.Documents
         public IList<FileAttachmentReference> Attachments { get => _attachments ?? (_attachments = new DirtyList<FileAttachmentReference>()); set => _attachments = new DirtyList<FileAttachmentReference>(value); }
         private DirtyList<EntityReference> _roles;
         public IList<EntityReference> Roles { get => _roles ?? (_roles = new DirtyList<EntityReference>()); set => _roles = new DirtyList<EntityReference>(value); }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _documentId.Dirty
+                return _documentId.Dirty
                     || _titleWithIndex.Dirty
                     || _applicationName.Dirty
                     || _milestoneId.Dirty
@@ -139,15 +132,10 @@ namespace EncompassRest.Loans.Documents
                     || _dateReadyToShip.Dirty
                     || _comments?.Dirty == true
                     || _attachments?.Dirty == true
-                    || _roles?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _roles?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _documentId.Dirty = value;
                 _titleWithIndex.Dirty = value;
                 _applicationName.Dirty = value;
@@ -189,10 +177,7 @@ namespace EncompassRest.Loans.Documents
                 if (_comments != null) _comments.Dirty = value;
                 if (_attachments != null) _attachments.Dirty = value;
                 if (_roles != null) _roles.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

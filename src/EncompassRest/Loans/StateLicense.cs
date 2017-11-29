@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class StateLicense : IDirty
+    public sealed partial class StateLicense : ExtensibleObject
     {
         private DirtyValue<string> _aK;
         public string AK { get => _aK; set => _aK = value; }
@@ -120,17 +118,11 @@ namespace EncompassRest.Loans
         public string WV { get => _wV; set => _wV = value; }
         private DirtyValue<string> _wY;
         public string WY { get => _wY; set => _wY = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aK.Dirty
+                return _aK.Dirty
                     || _aL.Dirty
                     || _aR.Dirty
                     || _aZ.Dirty
@@ -185,15 +177,10 @@ namespace EncompassRest.Loans
                     || _wA.Dirty
                     || _wI.Dirty
                     || _wV.Dirty
-                    || _wY.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _wY.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aK.Dirty = value;
                 _aL.Dirty = value;
                 _aR.Dirty = value;
@@ -250,10 +237,7 @@ namespace EncompassRest.Loans
                 _wI.Dirty = value;
                 _wV.Dirty = value;
                 _wY.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingDocument : IDirty
+    public sealed partial class ClosingDocument : ExtensibleObject
     {
         private DirtyValue<string> _additionalLienHolderAddress;
         public string AdditionalLienHolderAddress { get => _additionalLienHolderAddress; set => _additionalLienHolderAddress = value; }
@@ -382,17 +380,11 @@ namespace EncompassRest.Loans
         public string Trust2Beneficiaries { get => _trust2Beneficiaries; set => _trust2Beneficiaries = value; }
         private DirtyValue<StringEnumValue<WeConductBusiness>> _weConductBusiness;
         public StringEnumValue<WeConductBusiness> WeConductBusiness { get => _weConductBusiness; set => _weConductBusiness = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalLienHolderAddress.Dirty
+                return _additionalLienHolderAddress.Dirty
                     || _additionalLienHolderAddressCity.Dirty
                     || _additionalLienHolderAddressPostalCode.Dirty
                     || _additionalLienHolderAddressState.Dirty
@@ -578,15 +570,10 @@ namespace EncompassRest.Loans
                     || _antiSteeringLoanOptions?.Dirty == true
                     || _closingEntities?.Dirty == true
                     || _respaHudDetails?.Dirty == true
-                    || _stateLicenses?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _stateLicenses?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalLienHolderAddress.Dirty = value;
                 _additionalLienHolderAddressCity.Dirty = value;
                 _additionalLienHolderAddressPostalCode.Dirty = value;
@@ -774,10 +761,7 @@ namespace EncompassRest.Loans
                 if (_closingEntities != null) _closingEntities.Dirty = value;
                 if (_respaHudDetails != null) _respaHudDetails.Dirty = value;
                 if (_stateLicenses != null) _stateLicenses.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

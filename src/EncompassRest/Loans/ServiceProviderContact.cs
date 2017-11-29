@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ServiceProviderContact : IDirty
+    public sealed partial class ServiceProviderContact : ExtensibleObject
     {
         private DirtyValue<string> _address;
         public string Address { get => _address; set => _address = value; }
@@ -86,17 +84,11 @@ namespace EncompassRest.Loans
         public string State { get => _state; set => _state = value; }
         private DirtyValue<string> _webUrl;
         public string WebUrl { get => _webUrl; set => _webUrl = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _address.Dirty
+                return _address.Dirty
                     || _city.Dirty
                     || _contactName.Dirty
                     || _cost.Dirty
@@ -134,15 +126,10 @@ namespace EncompassRest.Loans
                     || _serviceType.Dirty
                     || _shopFor.Dirty
                     || _state.Dirty
-                    || _webUrl.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _webUrl.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _address.Dirty = value;
                 _city.Dirty = value;
                 _contactName.Dirty = value;
@@ -182,10 +169,7 @@ namespace EncompassRest.Loans
                 _shopFor.Dirty = value;
                 _state.Dirty = value;
                 _webUrl.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

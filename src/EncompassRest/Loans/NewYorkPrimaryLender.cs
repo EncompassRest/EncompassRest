@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class NewYorkPrimaryLender : IDirty
+    public sealed partial class NewYorkPrimaryLender : ExtensibleObject
     {
         private DirtyValue<string> _address;
         public string Address { get => _address; set => _address = value; }
@@ -24,32 +22,21 @@ namespace EncompassRest.Loans
         public string PostalCode { get => _postalCode; set => _postalCode = value; }
         private DirtyValue<string> _state;
         public string State { get => _state; set => _state = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _address.Dirty
+                return _address.Dirty
                     || _city.Dirty
                     || _comments.Dirty
                     || _id.Dirty
                     || _name.Dirty
                     || _newYorkPrimaryLenderIndex.Dirty
                     || _postalCode.Dirty
-                    || _state.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _state.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _address.Dirty = value;
                 _city.Dirty = value;
                 _comments.Dirty = value;
@@ -58,10 +45,7 @@ namespace EncompassRest.Loans
                 _newYorkPrimaryLenderIndex.Dirty = value;
                 _postalCode.Dirty = value;
                 _state.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

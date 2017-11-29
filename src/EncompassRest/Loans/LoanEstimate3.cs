@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanEstimate3 : IDirty
+    public sealed partial class LoanEstimate3 : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<Appraisal>> _appraisal;
         public StringEnumValue<Appraisal> Appraisal { get => _appraisal; set => _appraisal = value; }
@@ -60,17 +58,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<SignatureType> SignatureType { get => _signatureType; set => _signatureType = value; }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get => _totalInterestPercentage; set => _totalInterestPercentage = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisal.Dirty
+                return _appraisal.Dirty
                     || _assumption.Dirty
                     || _constructionLoan.Dirty
                     || _homeownerInsurance.Dirty
@@ -95,15 +87,10 @@ namespace EncompassRest.Loans
                     || _mortgageLenderLoanOfficerLicenseID.Dirty
                     || _servicing.Dirty
                     || _signatureType.Dirty
-                    || _totalInterestPercentage.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalInterestPercentage.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisal.Dirty = value;
                 _assumption.Dirty = value;
                 _constructionLoan.Dirty = value;
@@ -130,10 +117,7 @@ namespace EncompassRest.Loans
                 _servicing.Dirty = value;
                 _signatureType.Dirty = value;
                 _totalInterestPercentage.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

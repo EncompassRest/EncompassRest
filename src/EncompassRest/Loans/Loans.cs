@@ -111,9 +111,9 @@ namespace EncompassRest.Loans
             }
         }
 
-        public Task<List<string>> GetSupportedEntitiesAsync() => GetSupportedEntitiesAsync(CancellationToken.None);
+        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync() => GetSupportedEntitiesAsync(CancellationToken.None);
 
-        public Task<List<string>> GetSupportedEntitiesAsync(CancellationToken cancellationToken) => GetSupportedEntitiesInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<List<string>>());
+        public Task<List<StringEnumValue<LoanEntity>>> GetSupportedEntitiesAsync(CancellationToken cancellationToken) => GetSupportedEntitiesInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<List<StringEnumValue<LoanEntity>>>());
 
         public Task<string> GetSupportedEntitiesRawAsync() => GetSupportedEntitiesRawAsync(CancellationToken.None);
 

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class RegulationZInterestRatePeriod : IDirty
+    public sealed partial class RegulationZInterestRatePeriod : ExtensibleObject
     {
         private DirtyValue<DateTime?> _adjustmentDate;
         public DateTime? AdjustmentDate { get => _adjustmentDate; set => _adjustmentDate = value; }
@@ -30,17 +28,11 @@ namespace EncompassRest.Loans
         public decimal? TaxInsuranceAmount { get => _taxInsuranceAmount; set => _taxInsuranceAmount = value; }
         private DirtyValue<decimal?> _totalPayment;
         public decimal? TotalPayment { get => _totalPayment; set => _totalPayment = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adjustmentDate.Dirty
+                return _adjustmentDate.Dirty
                     || _adjustmentMonths.Dirty
                     || _id.Dirty
                     || _interestPayment.Dirty
@@ -50,15 +42,10 @@ namespace EncompassRest.Loans
                     || _principalPayment.Dirty
                     || _regulationZInterestRatePeriodType.Dirty
                     || _taxInsuranceAmount.Dirty
-                    || _totalPayment.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalPayment.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adjustmentDate.Dirty = value;
                 _adjustmentMonths.Dirty = value;
                 _id.Dirty = value;
@@ -70,10 +57,7 @@ namespace EncompassRest.Loans
                 _regulationZInterestRatePeriodType.Dirty = value;
                 _taxInsuranceAmount.Dirty = value;
                 _totalPayment.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

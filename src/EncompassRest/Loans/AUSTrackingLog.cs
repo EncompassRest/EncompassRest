@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class AUSTrackingLog : IDirty
+    public sealed partial class AUSTrackingLog : ExtensibleObject
     {
         private DirtyValue<int?> _aUSTrackingLogIndex;
         public int? AUSTrackingLogIndex { get => _aUSTrackingLogIndex; set => _aUSTrackingLogIndex = value; }
@@ -438,17 +436,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<RiskAssessmentType> Log_UnderwritingRiskAssessType { get => _log_UnderwritingRiskAssessType; set => _log_UnderwritingRiskAssessType = value; }
         private DirtyValue<string> _log_WithUndisclosedDebt;
         public string Log_WithUndisclosedDebt { get => _log_WithUndisclosedDebt; set => _log_WithUndisclosedDebt = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aUSTrackingLogIndex.Dirty
+                return _aUSTrackingLogIndex.Dirty
                     || _batchDocumentRefId.Dirty
                     || _id.Dirty
                     || _isEmpty.Dirty
@@ -662,15 +654,10 @@ namespace EncompassRest.Loans
                     || _log_TransactionID.Dirty
                     || _log_UnderwritingRiskAssessOther.Dirty
                     || _log_UnderwritingRiskAssessType.Dirty
-                    || _log_WithUndisclosedDebt.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _log_WithUndisclosedDebt.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aUSTrackingLogIndex.Dirty = value;
                 _batchDocumentRefId.Dirty = value;
                 _id.Dirty = value;
@@ -886,10 +873,7 @@ namespace EncompassRest.Loans
                 _log_UnderwritingRiskAssessOther.Dirty = value;
                 _log_UnderwritingRiskAssessType.Dirty = value;
                 _log_WithUndisclosedDebt.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Hmda : IDirty
+    public sealed partial class Hmda : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<ActionTaken>> _actionTaken;
         public StringEnumValue<ActionTaken> ActionTaken { get => _actionTaken; set => _actionTaken = value; }
@@ -192,17 +190,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<TypeOfPurchaser> TypeOfPurchaser { get => _typeOfPurchaser; set => _typeOfPurchaser = value; }
         private DirtyValue<string> _universalLoanId;
         public string UniversalLoanId { get => _universalLoanId; set => _universalLoanId = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actionTaken.Dirty
+                return _actionTaken.Dirty
                     || _applicationDate.Dirty
                     || _aUS1.Dirty
                     || _aUS2.Dirty
@@ -293,15 +285,10 @@ namespace EncompassRest.Loans
                     || _totalLoanCosts.Dirty
                     || _totalPointsAndFees.Dirty
                     || _typeOfPurchaser.Dirty
-                    || _universalLoanId.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _universalLoanId.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actionTaken.Dirty = value;
                 _applicationDate.Dirty = value;
                 _aUS1.Dirty = value;
@@ -394,10 +381,7 @@ namespace EncompassRest.Loans
                 _totalPointsAndFees.Dirty = value;
                 _typeOfPurchaser.Dirty = value;
                 _universalLoanId.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

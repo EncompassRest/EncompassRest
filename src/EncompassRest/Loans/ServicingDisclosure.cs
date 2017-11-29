@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ServicingDisclosure : IDirty
+    public sealed partial class ServicingDisclosure : ExtensibleObject
     {
         private DirtyValue<decimal?> _disclosurePercent1;
         public decimal? DisclosurePercent1 { get => _disclosurePercent1; set => _disclosurePercent1 = value; }
@@ -48,17 +46,11 @@ namespace EncompassRest.Loans
         public bool? WeMayAssignIndicator { get => _weMayAssignIndicator; set => _weMayAssignIndicator = value; }
         private DirtyValue<bool?> _zeroTo25Indicator;
         public bool? ZeroTo25Indicator { get => _zeroTo25Indicator; set => _zeroTo25Indicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _disclosurePercent1.Dirty
+                return _disclosurePercent1.Dirty
                     || _disclosurePercent2.Dirty
                     || _disclosurePercent3.Dirty
                     || _disclosureYear1.Dirty
@@ -77,15 +69,10 @@ namespace EncompassRest.Loans
                     || _weHaveNotServicedMortgLoansIn3YrsIndicator.Dirty
                     || _weHavePreviouslyAssignedIndicator.Dirty
                     || _weMayAssignIndicator.Dirty
-                    || _zeroTo25Indicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _zeroTo25Indicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _disclosurePercent1.Dirty = value;
                 _disclosurePercent2.Dirty = value;
                 _disclosurePercent3.Dirty = value;
@@ -106,10 +93,7 @@ namespace EncompassRest.Loans
                 _weHavePreviouslyAssignedIndicator.Dirty = value;
                 _weMayAssignIndicator.Dirty = value;
                 _zeroTo25Indicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

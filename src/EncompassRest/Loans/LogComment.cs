@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LogComment : IDirty
+    public sealed partial class LogComment : ExtensibleObject
     {
         private DirtyValue<string> _addedBy;
         public string AddedBy { get => _addedBy; set => _addedBy = value; }
@@ -28,17 +26,11 @@ namespace EncompassRest.Loans
         public string ReviewedBy { get => _reviewedBy; set => _reviewedBy = value; }
         private DirtyValue<DateTime?> _reviewedDate;
         public DateTime? ReviewedDate { get => _reviewedDate; set => _reviewedDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _addedBy.Dirty
+                return _addedBy.Dirty
                     || _addedByName.Dirty
                     || _comments.Dirty
                     || _date.Dirty
@@ -47,15 +39,10 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _isInternal.Dirty
                     || _reviewedBy.Dirty
-                    || _reviewedDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _reviewedDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _addedBy.Dirty = value;
                 _addedByName.Dirty = value;
                 _comments.Dirty = value;
@@ -66,10 +53,7 @@ namespace EncompassRest.Loans
                 _isInternal.Dirty = value;
                 _reviewedBy.Dirty = value;
                 _reviewedDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingDisclosure4 : IDirty
+    public sealed partial class ClosingDisclosure4 : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<DemandFeature>> _demandFeature;
         public StringEnumValue<DemandFeature> DemandFeature { get => _demandFeature; set => _demandFeature = value; }
@@ -76,17 +74,11 @@ namespace EncompassRest.Loans
         public string SubsequentChanges { get => _subsequentChanges; set => _subsequentChanges = value; }
         private DirtyValue<decimal?> _totalDisbursed1YearConsummation;
         public decimal? TotalDisbursed1YearConsummation { get => _totalDisbursed1YearConsummation; set => _totalDisbursed1YearConsummation = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _demandFeature.Dirty
+                return _demandFeature.Dirty
                     || _escrowIndicator.Dirty
                     || _estimatedPropertyCosts.Dirty
                     || _firstChangeAmt.Dirty
@@ -119,15 +111,10 @@ namespace EncompassRest.Loans
                     || _stepPayments.Dirty
                     || _stepRateFirstChange.Dirty
                     || _subsequentChanges.Dirty
-                    || _totalDisbursed1YearConsummation.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalDisbursed1YearConsummation.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _demandFeature.Dirty = value;
                 _escrowIndicator.Dirty = value;
                 _estimatedPropertyCosts.Dirty = value;
@@ -162,10 +149,7 @@ namespace EncompassRest.Loans
                 _stepRateFirstChange.Dirty = value;
                 _subsequentChanges.Dirty = value;
                 _totalDisbursed1YearConsummation.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

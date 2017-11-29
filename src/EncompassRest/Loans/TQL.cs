@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class TQL : IDirty
+    public sealed partial class TQL : ExtensibleObject
     {
         private DirtyValue<string> _citibank4506TBaselineReportRequired;
         public string Citibank4506TBaselineReportRequired { get => _citibank4506TBaselineReportRequired; set => _citibank4506TBaselineReportRequired = value; }
@@ -146,17 +144,11 @@ namespace EncompassRest.Loans
         public string WellsFargoFloodBaselineReportRequired { get => _wellsFargoFloodBaselineReportRequired; set => _wellsFargoFloodBaselineReportRequired = value; }
         private DirtyValue<string> _wellsFargoFraudBaselineReportRequired;
         public string WellsFargoFraudBaselineReportRequired { get => _wellsFargoFraudBaselineReportRequired; set => _wellsFargoFraudBaselineReportRequired = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _citibank4506TBaselineReportRequired.Dirty
+                return _citibank4506TBaselineReportRequired.Dirty
                     || _citibankCCVPBaselineReportRequired.Dirty
                     || _citibankComplianceBaselineReportRequired.Dirty
                     || _citibankFloodBaselineReportRequired.Dirty
@@ -224,15 +216,10 @@ namespace EncompassRest.Loans
                     || _wellsFargoFraudBaselineReportRequired.Dirty
                     || _tQLComplianceAlerts?.Dirty == true
                     || _tQLDocuments?.Dirty == true
-                    || _tQLFraudAlerts?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _tQLFraudAlerts?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _citibank4506TBaselineReportRequired.Dirty = value;
                 _citibankCCVPBaselineReportRequired.Dirty = value;
                 _citibankComplianceBaselineReportRequired.Dirty = value;
@@ -302,10 +289,7 @@ namespace EncompassRest.Loans
                 if (_tQLComplianceAlerts != null) _tQLComplianceAlerts.Dirty = value;
                 if (_tQLDocuments != null) _tQLDocuments.Dirty = value;
                 if (_tQLFraudAlerts != null) _tQLFraudAlerts.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

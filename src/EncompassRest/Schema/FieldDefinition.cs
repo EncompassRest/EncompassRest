@@ -1,10 +1,9 @@
 ﻿using EncompassRest.Utilities;
 using EnumsNET;
-using System.Collections.Generic;
 
 namespace EncompassRest.Schema
 {
-    public class FieldDefinition
+    public class FieldDefinition : ExtensibleObject
     {
         public string Description { get; set; }
         public string FieldID { get; set; }
@@ -25,8 +24,5 @@ namespace EncompassRest.Schema
         public bool? RequiresBorrowerPredicate { get; set; }
         public bool? IsNumeric { get; set; }
         public bool? RequiresExclusiveLock { get; set; }
-
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class StateDisclosure : IDirty
+    public sealed partial class StateDisclosure : ExtensibleObject
     {
         private DirtyValue<bool?> _acceptedByBorrowerIndicator;
         public bool? AcceptedByBorrowerIndicator { get => _acceptedByBorrowerIndicator; set => _acceptedByBorrowerIndicator = value; }
@@ -446,17 +444,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<InterestRateImpactedStatus> YSPInterestRateImpactedStatus { get => _ySPInterestRateImpactedStatus; set => _ySPInterestRateImpactedStatus = value; }
         private DirtyValue<StringEnumValue<FeePaidBy>> _ySPPaidBy;
         public StringEnumValue<FeePaidBy> YSPPaidBy { get => _ySPPaidBy; set => _ySPPaidBy = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _acceptedByBorrowerIndicator.Dirty
+                return _acceptedByBorrowerIndicator.Dirty
                     || _acceptedDate.Dirty
                     || _actingOtherDescription1.Dirty
                     || _actingOtherDescription2.Dirty
@@ -674,15 +666,10 @@ namespace EncompassRest.Loans
                     || _ySPInterestRateImpactedStatus.Dirty
                     || _ySPPaidBy.Dirty
                     || _newYorkFees?.Dirty == true
-                    || _newYorkPrimaryLenders?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _newYorkPrimaryLenders?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _acceptedByBorrowerIndicator.Dirty = value;
                 _acceptedDate.Dirty = value;
                 _actingOtherDescription1.Dirty = value;
@@ -902,10 +889,7 @@ namespace EncompassRest.Loans
                 _ySPPaidBy.Dirty = value;
                 if (_newYorkFees != null) _newYorkFees.Dirty = value;
                 if (_newYorkPrimaryLenders != null) _newYorkPrimaryLenders.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

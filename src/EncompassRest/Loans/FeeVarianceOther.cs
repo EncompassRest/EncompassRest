@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FeeVarianceOther : IDirty
+    public sealed partial class FeeVarianceOther : ExtensibleObject
     {
         private DirtyValue<decimal?> _appliedCureAmount;
         public decimal? AppliedCureAmount { get => _appliedCureAmount; set => _appliedCureAmount = value; }
@@ -90,17 +88,11 @@ namespace EncompassRest.Loans
         public string SafeHarborGuid { get => _safeHarborGuid; set => _safeHarborGuid = value; }
         private DirtyValue<string> _sSPLGuid;
         public string SSPLGuid { get => _sSPLGuid; set => _sSPLGuid = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appliedCureAmount.Dirty
+                return _appliedCureAmount.Dirty
                     || _cannotDecreaseCDBaselineGuid.Dirty
                     || _cannotDecreaseLEBaselineGuid.Dirty
                     || _cannotIncrease10CDBaselineGuid.Dirty
@@ -140,15 +132,10 @@ namespace EncompassRest.Loans
                     || _lERevisedSentDateGuid.Dirty
                     || _requiredCureAmount.Dirty
                     || _safeHarborGuid.Dirty
-                    || _sSPLGuid.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _sSPLGuid.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appliedCureAmount.Dirty = value;
                 _cannotDecreaseCDBaselineGuid.Dirty = value;
                 _cannotDecreaseLEBaselineGuid.Dirty = value;
@@ -190,10 +177,7 @@ namespace EncompassRest.Loans
                 _requiredCureAmount.Dirty = value;
                 _safeHarborGuid.Dirty = value;
                 _sSPLGuid.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

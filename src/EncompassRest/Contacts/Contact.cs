@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-using EncompassRest.Utilities;
+﻿using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public abstract class Contact : IDirty
+    public abstract class Contact : ExtensibleObject
     {
         internal abstract string ApiPath { get; }
         [JsonIgnore]
@@ -65,13 +63,11 @@ namespace EncompassRest.Contacts
         public string Salutation { get => _salutation; set => _salutation = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                var dirty = _firstName.Dirty
+                return _firstName.Dirty
                     || _lastName.Dirty
                     || _ownerId.Dirty
                     || _accessLevel.Dirty
@@ -85,9 +81,7 @@ namespace EncompassRest.Contacts
                     || _personalEmail.Dirty
                     || _businessEmail.Dirty
                     || _salutation.Dirty
-                    || _id.Dirty
-                    || _extensionData?.Dirty == true;
-                return dirty;
+                    || _id.Dirty;
             }
             set
             {
@@ -106,9 +100,7 @@ namespace EncompassRest.Contacts
                 _businessEmail.Dirty = value;
                 _salutation.Dirty = value;
                 _id.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Prequalification : IDirty
+    public sealed partial class Prequalification : ExtensibleObject
     {
         private DirtyValue<decimal?> _afterTaxOwnMoSavings;
         public decimal? AfterTaxOwnMoSavings { get => _afterTaxOwnMoSavings; set => _afterTaxOwnMoSavings = value; }
@@ -130,17 +128,11 @@ namespace EncompassRest.Loans
         public string WithinLimits9 { get => _withinLimits9; set => _withinLimits9 = value; }
         private DirtyValue<int?> _yearsForComparison;
         public int? YearsForComparison { get => _yearsForComparison; set => _yearsForComparison = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _afterTaxOwnMoSavings.Dirty
+                return _afterTaxOwnMoSavings.Dirty
                     || _afterTaxRentMoSavings.Dirty
                     || _annualHomeMaintenance.Dirty
                     || _avgMoPmtSavings.Dirty
@@ -200,15 +192,10 @@ namespace EncompassRest.Loans
                     || _withinLimits8.Dirty
                     || _withinLimits9.Dirty
                     || _yearsForComparison.Dirty
-                    || _prequalificationScenarios?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _prequalificationScenarios?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _afterTaxOwnMoSavings.Dirty = value;
                 _afterTaxRentMoSavings.Dirty = value;
                 _annualHomeMaintenance.Dirty = value;
@@ -270,10 +257,7 @@ namespace EncompassRest.Loans
                 _withinLimits9.Dirty = value;
                 _yearsForComparison.Dirty = value;
                 if (_prequalificationScenarios != null) _prequalificationScenarios.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

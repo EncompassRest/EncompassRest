@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanEstimate2 : IDirty
+    public sealed partial class LoanEstimate2 : ExtensibleObject
     {
         private DirtyValue<decimal?> _actualLenderCredits;
         public decimal? ActualLenderCredits { get => _actualLenderCredits; set => _actualLenderCredits = value; }
@@ -118,17 +116,11 @@ namespace EncompassRest.Loans
         public bool? UseActualDownPaymentAndClosingCostsFinancedIndicator { get => _useActualDownPaymentAndClosingCostsFinancedIndicator; set => _useActualDownPaymentAndClosingCostsFinancedIndicator = value; }
         private DirtyValue<bool?> _useAlternate;
         public bool? UseAlternate { get => _useAlternate; set => _useAlternate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actualLenderCredits.Dirty
+                return _actualLenderCredits.Dirty
                     || _actualSTDLESellerCredits.Dirty
                     || _actualSTDLETotalClosingCostJ.Dirty
                     || _adjustmentsOtherCredits.Dirty
@@ -182,15 +174,10 @@ namespace EncompassRest.Loans
                     || _unroundedTotalLoanCosts.Dirty
                     || _unroundedTotalOtherCosts.Dirty
                     || _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty
-                    || _useAlternate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _useAlternate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actualLenderCredits.Dirty = value;
                 _actualSTDLESellerCredits.Dirty = value;
                 _actualSTDLETotalClosingCostJ.Dirty = value;
@@ -246,10 +233,7 @@ namespace EncompassRest.Loans
                 _unroundedTotalOtherCosts.Dirty = value;
                 _useActualDownPaymentAndClosingCostsFinancedIndicator.Dirty = value;
                 _useAlternate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Section32 : IDirty
+    public sealed partial class Section32 : ExtensibleObject
     {
         private DirtyValue<bool?> _appraisalFeeToBeFinancedIndicator;
         public bool? AppraisalFeeToBeFinancedIndicator { get => _appraisalFeeToBeFinancedIndicator; set => _appraisalFeeToBeFinancedIndicator = value; }
@@ -280,17 +278,11 @@ namespace EncompassRest.Loans
         public bool? WireTransferFeeToBeFinancedIndicator { get => _wireTransferFeeToBeFinancedIndicator; set => _wireTransferFeeToBeFinancedIndicator = value; }
         private DirtyValue<bool?> _wireTransferPortionOfFeeIndicator;
         public bool? WireTransferPortionOfFeeIndicator { get => _wireTransferPortionOfFeeIndicator; set => _wireTransferPortionOfFeeIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisalFeeToBeFinancedIndicator.Dirty
+                return _appraisalFeeToBeFinancedIndicator.Dirty
                     || _appraisalPortionOfFeeIndicator.Dirty
                     || _aprExceedsTsyForFirstMortgage.Dirty
                     || _aprExceedsTsyForSubordinateMortgage.Dirty
@@ -425,15 +417,10 @@ namespace EncompassRest.Loans
                     || _userDefined823FeeToBeFinancedIndicator.Dirty
                     || _userDefined823PortionOfFeeIndicator.Dirty
                     || _wireTransferFeeToBeFinancedIndicator.Dirty
-                    || _wireTransferPortionOfFeeIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _wireTransferPortionOfFeeIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisalFeeToBeFinancedIndicator.Dirty = value;
                 _appraisalPortionOfFeeIndicator.Dirty = value;
                 _aprExceedsTsyForFirstMortgage.Dirty = value;
@@ -570,10 +557,7 @@ namespace EncompassRest.Loans
                 _userDefined823PortionOfFeeIndicator.Dirty = value;
                 _wireTransferFeeToBeFinancedIndicator.Dirty = value;
                 _wireTransferPortionOfFeeIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

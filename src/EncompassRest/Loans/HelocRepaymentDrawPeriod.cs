@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class HelocRepaymentDrawPeriod : IDirty
+    public sealed partial class HelocRepaymentDrawPeriod : ExtensibleObject
     {
         private DirtyValue<decimal?> _apr;
         public decimal? Apr { get => _apr; set => _apr = value; }
@@ -22,31 +20,20 @@ namespace EncompassRest.Loans
         public decimal? MinimumMonthlyPaymentAmount { get => _minimumMonthlyPaymentAmount; set => _minimumMonthlyPaymentAmount = value; }
         private DirtyValue<int?> _year;
         public int? Year { get => _year; set => _year = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _apr.Dirty
+                return _apr.Dirty
                     || _drawIndicator.Dirty
                     || _id.Dirty
                     || _indexRatePercent.Dirty
                     || _marginRatePercent.Dirty
                     || _minimumMonthlyPaymentAmount.Dirty
-                    || _year.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _year.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _apr.Dirty = value;
                 _drawIndicator.Dirty = value;
                 _id.Dirty = value;
@@ -54,10 +41,7 @@ namespace EncompassRest.Loans
                 _marginRatePercent.Dirty = value;
                 _minimumMonthlyPaymentAmount.Dirty = value;
                 _year.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

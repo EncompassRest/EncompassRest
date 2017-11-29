@@ -3,7 +3,7 @@ using EncompassRest.Schema;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class PipelineFieldDefinition
+    public sealed class PipelineFieldDefinition : ExtensibleObject
     {
         public int BorrowerPair { get; set; }
         public bool IsLoanDataField { get; set; }
@@ -22,8 +22,5 @@ namespace EncompassRest.LoanPipeline
         public int? DisplayType { get; set; }
         public List<string> RelatedFields { get; set; }
         public bool? IsVolatile { get; set; }
-
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

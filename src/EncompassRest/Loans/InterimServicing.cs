@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class InterimServicing : IDirty
+    public sealed partial class InterimServicing : ExtensibleObject
     {
         private DirtyValue<decimal?> _beginningBalance;
         public decimal? BeginningBalance { get => _beginningBalance; set => _beginningBalance = value; }
@@ -310,17 +308,11 @@ namespace EncompassRest.Loans
         public decimal? UnpaidMiscrFee { get => _unpaidMiscrFee; set => _unpaidMiscrFee = value; }
         private DirtyValue<decimal?> _unpaidPrincipal;
         public decimal? UnpaidPrincipal { get => _unpaidPrincipal; set => _unpaidPrincipal = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _beginningBalance.Dirty
+                return _beginningBalance.Dirty
                     || _borrCellPhoneNumber.Dirty
                     || _borrHomeEmail.Dirty
                     || _borrHomePhoneNumber.Dirty
@@ -470,15 +462,10 @@ namespace EncompassRest.Loans
                     || _paymentReversalTransactions?.Dirty == true
                     || _paymentTransactions?.Dirty == true
                     || _scheduledPayments?.Dirty == true
-                    || _schedulePaymentTransactions?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _schedulePaymentTransactions?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _beginningBalance.Dirty = value;
                 _borrCellPhoneNumber.Dirty = value;
                 _borrHomeEmail.Dirty = value;
@@ -630,10 +617,7 @@ namespace EncompassRest.Loans
                 if (_paymentTransactions != null) _paymentTransactions.Dirty = value;
                 if (_scheduledPayments != null) _scheduledPayments.Dirty = value;
                 if (_schedulePaymentTransactions != null) _schedulePaymentTransactions.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

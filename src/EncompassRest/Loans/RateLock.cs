@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class RateLock : IDirty
+    public sealed partial class RateLock : ExtensibleObject
     {
         private DirtyValue<decimal?> _actualSellAmount;
         public decimal? ActualSellAmount { get => _actualSellAmount; set => _actualSellAmount = value; }
@@ -1014,17 +1012,11 @@ namespace EncompassRest.Loans
         public string Type { get => _type; set => _type = value; }
         private DirtyValue<bool?> _usePoint;
         public bool? UsePoint { get => _usePoint; set => _usePoint = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actualSellAmount.Dirty
+                return _actualSellAmount.Dirty
                     || _actualSellPrice.Dirty
                     || _actualSellSideSRP.Dirty
                     || _actualSRPAmount.Dirty
@@ -1526,15 +1518,10 @@ namespace EncompassRest.Loans
                     || _lockRequestBorrowers?.Dirty == true
                     || _priceAdjustments?.Dirty == true
                     || _purchaseAdvicePayouts?.Dirty == true
-                    || _sellSideAdjustments?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _sellSideAdjustments?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actualSellAmount.Dirty = value;
                 _actualSellPrice.Dirty = value;
                 _actualSellSideSRP.Dirty = value;
@@ -2038,10 +2025,7 @@ namespace EncompassRest.Loans
                 if (_priceAdjustments != null) _priceAdjustments.Dirty = value;
                 if (_purchaseAdvicePayouts != null) _purchaseAdvicePayouts.Dirty = value;
                 if (_sellSideAdjustments != null) _sellSideAdjustments.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

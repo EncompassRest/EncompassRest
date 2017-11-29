@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ATRQMCommon : IDirty
+    public sealed partial class ATRQMCommon : ExtensibleObject
     {
         private DirtyValue<decimal?> _affiliatesFees;
         public decimal? AffiliatesFees { get => _affiliatesFees; set => _affiliatesFees = value; }
@@ -420,17 +418,11 @@ namespace EncompassRest.Loans
         public bool? WithOriginalCreditor { get => _withOriginalCreditor; set => _withOriginalCreditor = value; }
         private DirtyValue<DateTime?> _writtenApplicationDate;
         public DateTime? WrittenApplicationDate { get => _writtenApplicationDate; set => _writtenApplicationDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _affiliatesFees.Dirty
+                return _affiliatesFees.Dirty
                     || _aPORMaxBonaFideDiscountPoint.Dirty
                     || _aRMRecastDate.Dirty
                     || _aRMRecastMonthlyPayment.Dirty
@@ -635,15 +627,10 @@ namespace EncompassRest.Loans
                     || _unitCount.Dirty
                     || _upfrontPMIFees.Dirty
                     || _withOriginalCreditor.Dirty
-                    || _writtenApplicationDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _writtenApplicationDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _affiliatesFees.Dirty = value;
                 _aPORMaxBonaFideDiscountPoint.Dirty = value;
                 _aRMRecastDate.Dirty = value;
@@ -850,10 +837,7 @@ namespace EncompassRest.Loans
                 _upfrontPMIFees.Dirty = value;
                 _withOriginalCreditor.Dirty = value;
                 _writtenApplicationDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

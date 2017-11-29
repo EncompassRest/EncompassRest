@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class VerificationLog : IDirty
+    public sealed partial class VerificationLog : ExtensibleObject
     {
         private DirtyValue<string> _accessedBy;
         public string AccessedBy { get => _accessedBy; set => _accessedBy = value; }
@@ -148,17 +146,11 @@ namespace EncompassRest.Loans
         public string UnderwritingReadyBy { get => _underwritingReadyBy; set => _underwritingReadyBy = value; }
         private DirtyValue<DateTime?> _underwritingReadyDateUtc;
         public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => _underwritingReadyDateUtc = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _accessedBy.Dirty
+                return _accessedBy.Dirty
                     || _accessedDateUtc.Dirty
                     || _addedBy.Dirty
                     || _alertsXml.Dirty
@@ -227,15 +219,10 @@ namespace EncompassRest.Loans
                     || _alerts?.Dirty == true
                     || _allowedRoles?.Dirty == true
                     || _commentList?.Dirty == true
-                    || _conditions?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _conditions?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _accessedBy.Dirty = value;
                 _accessedDateUtc.Dirty = value;
                 _addedBy.Dirty = value;
@@ -306,10 +293,7 @@ namespace EncompassRest.Loans
                 if (_allowedRoles != null) _allowedRoles.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_conditions != null) _conditions.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

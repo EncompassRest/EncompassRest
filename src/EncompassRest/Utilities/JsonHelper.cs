@@ -144,15 +144,10 @@ namespace EncompassRest.Utilities
             protected override JsonObjectContract CreateObjectContract(Type objectType)
             {
                 var contract = base.CreateObjectContract(objectType);
-                var extensionDataPropertyInfo = GetProperty(objectType, "ExtensionData");
-                if (extensionDataPropertyInfo != null)
+                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectType.GetTypeInfo()))
                 {
-                    var extensionDataValueProvider = CreateMemberValueProvider(extensionDataPropertyInfo);
-                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
-                    contract.ExtensionDataSetter = (o, k, v) => ((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))[k] = v;
-                    var extensionDataProperty = contract.Properties.First(p => p.UnderlyingName == "ExtensionData");
-                    extensionDataProperty.ShouldSerialize = o => false;
-                    extensionDataProperty.ShouldDeserialize = o => false;
+                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
                 }
                 return contract;
             }
@@ -197,7 +192,7 @@ namespace EncompassRest.Utilities
                 var typeInfo = typeData.TypeInfo;
                 if (typeData.IsEnum || typeData.NonNullableValueTypeData?.IsEnum == true)
                 {
-                    var enumFormatAttribute = typeInfo.GetCustomAttribute<EnumFormatAttribute>();
+                    var enumFormatAttribute = (typeData.NonNullableValueTypeData?.TypeInfo ?? typeInfo).GetCustomAttribute<EnumFormatAttribute>();
                     if (enumFormatAttribute != null)
                     {
                         return new EnumJsonConverter(enumFormatAttribute.EnumFormat);
@@ -207,7 +202,7 @@ namespace EncompassRest.Utilities
                         return DefaultEnumConverter;
                     }
                 }
-                var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>();
+                var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>(true);
                 if (jsonConverterAttribute != null)
                 {
                     var converterType = jsonConverterAttribute.ConverterType;

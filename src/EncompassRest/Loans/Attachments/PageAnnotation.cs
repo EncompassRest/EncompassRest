@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed class PageAnnotation : IDirty
+    
+    public sealed class PageAnnotation : ExtensibleObject
     {
         private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get => _dateCreated; set => _dateCreated = value; }
@@ -26,32 +25,21 @@ namespace EncompassRest.Loans.Attachments
         private DirtyValue<AnnotationVisibilityType?> _visibilityType;
         [EnumFormat(EnumFormat.DecimalValue)]
         public AnnotationVisibilityType? VisibilityType { get => _visibilityType; set => _visibilityType = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _dateCreated.Dirty
+                return _dateCreated.Dirty
                     || _createdBy.Dirty
                     || _text.Dirty
                     || _left.Dirty
                     || _top.Dirty
                     || _width.Dirty
                     || _height.Dirty
-                    || _visibilityType.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _visibilityType.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _dateCreated.Dirty = value;
                 _createdBy.Dirty = value;
                 _text.Dirty = value;
@@ -60,10 +48,7 @@ namespace EncompassRest.Loans.Attachments
                 _width.Dirty = value;
                 _height.Dirty = value;
                 _visibilityType.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

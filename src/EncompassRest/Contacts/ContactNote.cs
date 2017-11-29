@@ -4,8 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed class ContactNote : IDirty
+    public sealed class ContactNote : ExtensibleObject
     {
         private DirtyValue<int?> _noteIdInt;
         [JsonProperty("noteId")]
@@ -32,36 +31,22 @@ namespace EncompassRest.Contacts
         public DateTime? Timestamp { get => _timestamp; set => _timestamp = value; }
         private DirtyValue<string> _details;
         public string Details { get => _details; set => _details = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _noteIdInt.Dirty
+                return _noteIdInt.Dirty
                     || _subject.Dirty
                     || _timestamp.Dirty
-                    || _details.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _details.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _noteIdInt.Dirty = value;
                 _subject.Dirty = value;
                 _timestamp.Dirty = value;
                 _details.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

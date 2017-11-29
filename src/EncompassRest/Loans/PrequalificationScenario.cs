@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class PrequalificationScenario : IDirty
+    public sealed partial class PrequalificationScenario : ExtensibleObject
     {
         private DirtyValue<int?> _appraisedValue;
         public int? AppraisedValue { get => _appraisedValue; set => _appraisedValue = value; }
@@ -84,17 +82,11 @@ namespace EncompassRest.Loans
         public decimal? TotalPaidOffOthers { get => _totalPaidOffOthers; set => _totalPaidOffOthers = value; }
         private DirtyValue<decimal?> _totalPayments;
         public decimal? TotalPayments { get => _totalPayments; set => _totalPayments = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisedValue.Dirty
+                return _appraisedValue.Dirty
                     || _apr.Dirty
                     || _cashToClose.Dirty
                     || _closingCost.Dirty
@@ -131,15 +123,10 @@ namespace EncompassRest.Loans
                     || _totalOtherExpense.Dirty
                     || _totalPaidOffMortgage.Dirty
                     || _totalPaidOffOthers.Dirty
-                    || _totalPayments.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalPayments.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisedValue.Dirty = value;
                 _apr.Dirty = value;
                 _cashToClose.Dirty = value;
@@ -178,10 +165,7 @@ namespace EncompassRest.Loans
                 _totalPaidOffMortgage.Dirty = value;
                 _totalPaidOffOthers.Dirty = value;
                 _totalPayments.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

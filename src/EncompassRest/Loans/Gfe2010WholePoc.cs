@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Gfe2010WholePoc : IDirty
+    public sealed partial class Gfe2010WholePoc : ExtensibleObject
     {
         private DirtyValue<int?> _gfe2010WholePocIndex;
         public int? Gfe2010WholePocIndex { get => _gfe2010WholePocIndex; set => _gfe2010WholePocIndex = value; }
@@ -18,38 +16,24 @@ namespace EncompassRest.Loans
         public decimal? WholePoc { get => _wholePoc; set => _wholePoc = value; }
         private DirtyValue<StringEnumValue<WholePocPaidByType>> _wholePocPaidByType;
         public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get => _wholePocPaidByType; set => _wholePocPaidByType = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _gfe2010WholePocIndex.Dirty
+                return _gfe2010WholePocIndex.Dirty
                     || _id.Dirty
                     || _lineNumber.Dirty
                     || _wholePoc.Dirty
-                    || _wholePocPaidByType.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _wholePocPaidByType.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _gfe2010WholePocIndex.Dirty = value;
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
                 _wholePoc.Dirty = value;
                 _wholePocPaidByType.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

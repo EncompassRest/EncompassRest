@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Shipping : IDirty
+    public sealed partial class Shipping : ExtensibleObject
     {
         private DirtyValue<DateTime?> _actualShipDate;
         public DateTime? ActualShipDate { get => _actualShipDate; set => _actualShipDate = value; }
@@ -40,17 +38,11 @@ namespace EncompassRest.Loans
         public IList<ShippingContact> ShippingContacts { get => _shippingContacts ?? (_shippingContacts = new DirtyList<ShippingContact>()); set => _shippingContacts = new DirtyList<ShippingContact>(value); }
         private DirtyValue<DateTime?> _targetDeliveryDate;
         public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => _targetDeliveryDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actualShipDate.Dirty
+                return _actualShipDate.Dirty
                     || _carrierName.Dirty
                     || _downPaymentAmount.Dirty
                     || _id.Dirty
@@ -65,15 +57,10 @@ namespace EncompassRest.Loans
                     || _shipmentMethod.Dirty
                     || _shipperName.Dirty
                     || _targetDeliveryDate.Dirty
-                    || _shippingContacts?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _shippingContacts?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actualShipDate.Dirty = value;
                 _carrierName.Dirty = value;
                 _downPaymentAmount.Dirty = value;
@@ -90,10 +77,7 @@ namespace EncompassRest.Loans
                 _shipperName.Dirty = value;
                 _targetDeliveryDate.Dirty = value;
                 if (_shippingContacts != null) _shippingContacts.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

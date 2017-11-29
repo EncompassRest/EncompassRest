@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class PrivacyPolicy : IDirty
+    public sealed partial class PrivacyPolicy : ExtensibleObject
     {
         private DirtyValue<string> _additionalRightsDescription;
         public string AdditionalRightsDescription { get => _additionalRightsDescription; set => _additionalRightsDescription = value; }
@@ -102,17 +100,11 @@ namespace EncompassRest.Loans
         public string WebsiteToLimit { get => _websiteToLimit; set => _websiteToLimit = value; }
         private DirtyValue<int?> _year;
         public int? Year { get => _year; set => _year = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalRightsDescription.Dirty
+                return _additionalRightsDescription.Dirty
                     || _affiliateType.Dirty
                     || _affiliateTypeExample1.Dirty
                     || _affiliateTypeExample2.Dirty
@@ -158,15 +150,10 @@ namespace EncompassRest.Loans
                     || _timesToCollect5.Dirty
                     || _websiteForQuestion.Dirty
                     || _websiteToLimit.Dirty
-                    || _year.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _year.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalRightsDescription.Dirty = value;
                 _affiliateType.Dirty = value;
                 _affiliateTypeExample1.Dirty = value;
@@ -214,10 +201,7 @@ namespace EncompassRest.Loans
                 _websiteForQuestion.Dirty = value;
                 _websiteToLimit.Dirty = value;
                 _year.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

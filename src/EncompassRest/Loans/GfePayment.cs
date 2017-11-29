@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class GfePayment : IDirty
+    public sealed partial class GfePayment : ExtensibleObject
     {
         private DirtyValue<decimal?> _fixedRate;
         public decimal? FixedRate { get => _fixedRate; set => _fixedRate = value; }
@@ -48,17 +46,11 @@ namespace EncompassRest.Loans
         public decimal? ReducedLoanBalance { get => _reducedLoanBalance; set => _reducedLoanBalance = value; }
         private DirtyValue<StringEnumValue<ReducedStatus>> _reducedStatus;
         public StringEnumValue<ReducedStatus> ReducedStatus { get => _reducedStatus; set => _reducedStatus = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _fixedRate.Dirty
+                return _fixedRate.Dirty
                     || _gfePaymentIndex.Dirty
                     || _id.Dirty
                     || _indexRate.Dirty
@@ -77,15 +69,10 @@ namespace EncompassRest.Loans
                     || _owedAfter5Years.Dirty
                     || _rateInMonth2.Dirty
                     || _reducedLoanBalance.Dirty
-                    || _reducedStatus.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _reducedStatus.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _fixedRate.Dirty = value;
                 _gfePaymentIndex.Dirty = value;
                 _id.Dirty = value;
@@ -106,10 +93,7 @@ namespace EncompassRest.Loans
                 _rateInMonth2.Dirty = value;
                 _reducedLoanBalance.Dirty = value;
                 _reducedStatus.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

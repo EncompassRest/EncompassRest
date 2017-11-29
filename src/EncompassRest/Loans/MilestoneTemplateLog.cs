@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class MilestoneTemplateLog : IDirty
+    public sealed partial class MilestoneTemplateLog : ExtensibleObject
     {
         private DirtyValue<int?> _elliLogRecordId;
         public int? ElliLogRecordId { get => _elliLogRecordId; set => _elliLogRecordId = value; }
@@ -20,40 +18,26 @@ namespace EncompassRest.Loans
         public string MilestoneTemplateID { get => _milestoneTemplateID; set => _milestoneTemplateID = value; }
         private DirtyValue<string> _milestoneTemplateName;
         public string MilestoneTemplateName { get => _milestoneTemplateName; set => _milestoneTemplateName = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _elliLogRecordId.Dirty
+                return _elliLogRecordId.Dirty
                     || _id.Dirty
                     || _isTemplateDatesLocked.Dirty
                     || _isTemplateLocked.Dirty
                     || _milestoneTemplateID.Dirty
-                    || _milestoneTemplateName.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _milestoneTemplateName.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _elliLogRecordId.Dirty = value;
                 _id.Dirty = value;
                 _isTemplateDatesLocked.Dirty = value;
                 _isTemplateLocked.Dirty = value;
                 _milestoneTemplateID.Dirty = value;
                 _milestoneTemplateName.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

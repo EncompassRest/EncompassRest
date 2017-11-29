@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingDisclosure1 : IDirty
+    public sealed partial class ClosingDisclosure1 : ExtensibleObject
     {
         private DirtyValue<DateTime?> _cDDateIssued;
         public DateTime? CDDateIssued { get => _cDDateIssued; set => _cDDateIssued = value; }
@@ -220,17 +218,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<FinalSignatureType> SignatureTypeFinalExecutedCopyofStandardCD { get => _signatureTypeFinalExecutedCopyofStandardCD; set => _signatureTypeFinalExecutedCopyofStandardCD = value; }
         private DirtyValue<decimal?> _totalCashToClose;
         public decimal? TotalCashToClose { get => _totalCashToClose; set => _totalCashToClose = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _cDDateIssued.Dirty
+                return _cDDateIssued.Dirty
                     || _changedCircumstance.Dirty
                     || _changedCircumstanceFlag.Dirty
                     || _changesReceivedDate.Dirty
@@ -335,15 +327,10 @@ namespace EncompassRest.Loans
                     || _signatureTypeFinalExecutedCopyofAlternateCD.Dirty
                     || _signatureTypeFinalExecutedCopyofSellerCD.Dirty
                     || _signatureTypeFinalExecutedCopyofStandardCD.Dirty
-                    || _totalCashToClose.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalCashToClose.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _cDDateIssued.Dirty = value;
                 _changedCircumstance.Dirty = value;
                 _changedCircumstanceFlag.Dirty = value;
@@ -450,10 +437,7 @@ namespace EncompassRest.Loans
                 _signatureTypeFinalExecutedCopyofSellerCD.Dirty = value;
                 _signatureTypeFinalExecutedCopyofStandardCD.Dirty = value;
                 _totalCashToClose.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

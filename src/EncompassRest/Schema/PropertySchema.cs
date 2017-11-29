@@ -6,7 +6,7 @@ using Newtonsoft.Json.Serialization;
 namespace EncompassRest.Schema
 {
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
-    public sealed class PropertySchema
+    public sealed class PropertySchema : ExtensibleObject
     {
         public StringEnumValue<LoanFieldFormat> Format { get; set; }
         public bool? ReadOnly { get; set; }
@@ -25,8 +25,5 @@ namespace EncompassRest.Schema
         public Dictionary<string, InstancePattern> InstancePatterns { get; set; }
         public Dictionary<string, List<string>> FieldInstances { get; set; }
         public Dictionary<string, List<string>> FieldPatterns { get; set; }
-
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
     }
 }

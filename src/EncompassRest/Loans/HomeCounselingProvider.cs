@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class HomeCounselingProvider : IDirty
+    public sealed partial class HomeCounselingProvider : ExtensibleObject
     {
         private DirtyValue<string> _agencyAddress;
         public string AgencyAddress { get => _agencyAddress; set => _agencyAddress = value; }
@@ -50,17 +48,11 @@ namespace EncompassRest.Loans
         public string LanguagesSupported { get => _languagesSupported; set => _languagesSupported = value; }
         private DirtyValue<bool?> _selectedIndicator;
         public bool? SelectedIndicator { get => _selectedIndicator; set => _selectedIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _agencyAddress.Dirty
+                return _agencyAddress.Dirty
                     || _agencyAddressCity.Dirty
                     || _agencyAddressPostalCode.Dirty
                     || _agencyAddressState.Dirty
@@ -80,15 +72,10 @@ namespace EncompassRest.Loans
                     || _homeCounselingProviderIndex.Dirty
                     || _id.Dirty
                     || _languagesSupported.Dirty
-                    || _selectedIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _selectedIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _agencyAddress.Dirty = value;
                 _agencyAddressCity.Dirty = value;
                 _agencyAddressPostalCode.Dirty = value;
@@ -110,10 +97,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _languagesSupported.Dirty = value;
                 _selectedIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

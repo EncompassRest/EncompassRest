@@ -3,8 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed class BorrowerContact : Contact, IDirty
+    public sealed class BorrowerContact : Contact
     {
         internal override string ApiPath => "encompass/v1/borrowerContacts";
 
@@ -14,32 +13,22 @@ namespace EncompassRest.Contacts
         public DateTime? Birthdate { get => _birthdate; set => _birthdate = value; }
         private DirtyValue<string> _referral;
         public string Referral { get => _referral; set => _referral = value; }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal new bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = base.Dirty
+                return base.DirtyInternal
                     || _employerName.Dirty
                     || _birthdate.Dirty
                     || _referral.Dirty;
-                _gettingDirty = false;
-                return dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
-                base.Dirty = value;
+                base.DirtyInternal = value;
                 _employerName.Dirty = value;
                 _birthdate.Dirty = value;
                 _referral.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

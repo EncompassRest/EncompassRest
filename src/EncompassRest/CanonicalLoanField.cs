@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest
 {
-    public enum LoanCanonicalField
+    public enum CanonicalLoanField
     {
         ActionTakenDate = 0,
         ARMAdjustmentDate = 1,

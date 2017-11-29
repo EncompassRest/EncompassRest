@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class EmDocumentLender : IDirty
+    public sealed partial class EmDocumentLender : ExtensibleObject
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
@@ -156,17 +154,11 @@ namespace EncompassRest.Loans
         public string LndVaIdNum { get => _lndVaIdNum; set => _lndVaIdNum = value; }
         private DirtyValue<string> _lndZip;
         public string LndZip { get => _lndZip; set => _lndZip = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _id.Dirty
+                return _id.Dirty
                     || _lndBrchCty.Dirty
                     || _lndBrchFax.Dirty
                     || _lndBrchJrsdctn.Dirty
@@ -239,15 +231,10 @@ namespace EncompassRest.Loans
                     || _lndTollFreePhoneNum.Dirty
                     || _lndUrl.Dirty
                     || _lndVaIdNum.Dirty
-                    || _lndZip.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _lndZip.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _id.Dirty = value;
                 _lndBrchCty.Dirty = value;
                 _lndBrchFax.Dirty = value;
@@ -322,10 +309,7 @@ namespace EncompassRest.Loans
                 _lndUrl.Dirty = value;
                 _lndVaIdNum.Dirty = value;
                 _lndZip.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

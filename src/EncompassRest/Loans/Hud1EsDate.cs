@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Hud1EsDate : IDirty
+    public sealed partial class Hud1EsDate : ExtensibleObject
     {
         private DirtyValue<decimal?> _aggrMthDisb;
         public decimal? AggrMthDisb { get => _aggrMthDisb; set => _aggrMthDisb = value; }
@@ -36,17 +34,11 @@ namespace EncompassRest.Loans
         public decimal? UserDefined2 { get => _userDefined2; set => _userDefined2 = value; }
         private DirtyValue<decimal?> _userDefined3;
         public decimal? UserDefined3 { get => _userDefined3; set => _userDefined3 = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aggrMthDisb.Dirty
+                return _aggrMthDisb.Dirty
                     || _annualFee.Dirty
                     || _balance.Dirty
                     || _date.Dirty
@@ -59,15 +51,10 @@ namespace EncompassRest.Loans
                     || _taxDisb.Dirty
                     || _userDefined1.Dirty
                     || _userDefined2.Dirty
-                    || _userDefined3.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _userDefined3.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aggrMthDisb.Dirty = value;
                 _annualFee.Dirty = value;
                 _balance.Dirty = value;
@@ -82,10 +69,7 @@ namespace EncompassRest.Loans
                 _userDefined1.Dirty = value;
                 _userDefined2.Dirty = value;
                 _userDefined3.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

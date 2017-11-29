@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class UCDDetail : IDirty
+    public sealed partial class UCDDetail : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
         public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => _feeAccountType = value; }
@@ -32,17 +30,11 @@ namespace EncompassRest.Loans
         public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
         private DirtyValue<string> _section;
         public string Section { get => _section; set => _section = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _feeAccountType.Dirty
+                return _feeAccountType.Dirty
                     || _feeAmount.Dirty
                     || _feeDateFrom.Dirty
                     || _feeDateTo.Dirty
@@ -53,15 +45,10 @@ namespace EncompassRest.Loans
                     || _feePOC.Dirty
                     || _id.Dirty
                     || _lineNumber.Dirty
-                    || _section.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _section.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _feeAccountType.Dirty = value;
                 _feeAmount.Dirty = value;
                 _feeDateFrom.Dirty = value;
@@ -74,10 +61,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _lineNumber.Dirty = value;
                 _section.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

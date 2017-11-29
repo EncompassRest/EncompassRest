@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class RegulationZPayment : IDirty
+    public sealed partial class RegulationZPayment : ExtensibleObject
     {
         private DirtyValue<decimal?> _balance;
         public decimal? Balance { get => _balance; set => _balance = value; }
@@ -22,31 +20,20 @@ namespace EncompassRest.Loans
         public DateTime? PaymentDate { get => _paymentDate; set => _paymentDate = value; }
         private DirtyValue<int?> _regulationZPaymentIndex;
         public int? RegulationZPaymentIndex { get => _regulationZPaymentIndex; set => _regulationZPaymentIndex = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _balance.Dirty
+                return _balance.Dirty
                     || _id.Dirty
                     || _interestRatePercent.Dirty
                     || _monthlyPayment.Dirty
                     || _numberOfPayments.Dirty
                     || _paymentDate.Dirty
-                    || _regulationZPaymentIndex.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _regulationZPaymentIndex.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _balance.Dirty = value;
                 _id.Dirty = value;
                 _interestRatePercent.Dirty = value;
@@ -54,10 +41,7 @@ namespace EncompassRest.Loans
                 _numberOfPayments.Dirty = value;
                 _paymentDate.Dirty = value;
                 _regulationZPaymentIndex.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Tsum : IDirty
+    public sealed partial class Tsum : ExtensibleObject
     {
         private DirtyValue<decimal?> _aboveOrBelowRatePercent;
         public decimal? AboveOrBelowRatePercent { get => _aboveOrBelowRatePercent; set => _aboveOrBelowRatePercent = value; }
@@ -140,17 +138,11 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalance { get => _unpaidBalance; set => _unpaidBalance = value; }
         private DirtyValue<decimal?> _verified;
         public decimal? Verified { get => _verified; set => _verified = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aboveOrBelowRatePercent.Dirty
+                return _aboveOrBelowRatePercent.Dirty
                     || _adjustorCoverage.Dirty
                     || _ausRecommendation.Dirty
                     || _bedroomsUnit1.Dirty
@@ -215,15 +207,10 @@ namespace EncompassRest.Loans
                     || _underwritingComment7.Dirty
                     || _underwritingComment8.Dirty
                     || _unpaidBalance.Dirty
-                    || _verified.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _verified.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aboveOrBelowRatePercent.Dirty = value;
                 _adjustorCoverage.Dirty = value;
                 _ausRecommendation.Dirty = value;
@@ -290,10 +277,7 @@ namespace EncompassRest.Loans
                 _underwritingComment8.Dirty = value;
                 _unpaidBalance.Dirty = value;
                 _verified.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

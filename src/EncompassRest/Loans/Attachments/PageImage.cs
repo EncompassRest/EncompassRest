@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
     public sealed class PageImage : Image
     {
         private DirtyValue<string> _nativeKey;
@@ -15,34 +14,25 @@ namespace EncompassRest.Loans.Attachments
         public PageThumbnail Thumbnail { get; set; }
         private DirtyList<PageAnnotation> _annotations;
         public IList<PageAnnotation> Annotations { get => _annotations ?? (_annotations = new DirtyList<PageAnnotation>()); set => _annotations = new DirtyList<PageAnnotation>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal override bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = base.Dirty
+                return base.DirtyInternal
                     || _nativeKey.Dirty
                     || _rotation.Dirty
                     || _fileSize.Dirty
                     || Thumbnail?.Dirty == true
                     || _annotations?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
-                base.Dirty = value;
+                base.DirtyInternal = value;
                 _nativeKey.Dirty = value;
                 _rotation.Dirty = value;
                 _fileSize.Dirty = value;
                 if (Thumbnail != null) Thumbnail.Dirty = value;
                 if (_annotations != null) _annotations.Dirty = value;
-                _settingDirty = false;
             }
         }
     }

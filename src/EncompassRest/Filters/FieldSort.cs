@@ -12,7 +12,7 @@ namespace EncompassRest.Filters
         [JsonRequired]
         public SortOrder Order { get; }
 
-        public FieldSort(LoanCanonicalField canonicalField, SortOrder order)
+        public FieldSort(CanonicalLoanField canonicalField, SortOrder order)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), order)
         {
         }

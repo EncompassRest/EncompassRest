@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingCost : IDirty
+    public sealed partial class ClosingCost : ExtensibleObject
     {
         private DirtyValue<decimal?> _adjustmentFactor;
         public decimal? AdjustmentFactor { get => _adjustmentFactor; set => _adjustmentFactor = value; }
@@ -140,17 +138,11 @@ namespace EncompassRest.Loans
         public decimal? TotalForSellerPaid5 { get => _totalForSellerPaid5; set => _totalForSellerPaid5 = value; }
         private DirtyValue<decimal?> _totalForSellerPaid6;
         public decimal? TotalForSellerPaid6 { get => _totalForSellerPaid6; set => _totalForSellerPaid6 = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adjustmentFactor.Dirty
+                return _adjustmentFactor.Dirty
                     || _aggregateAdjustmentFwbc.Dirty
                     || _borrowerPaidDiscountPointsTotalAmount.Dirty
                     || _brokerCommissionBasedPrice.Dirty
@@ -215,15 +207,10 @@ namespace EncompassRest.Loans
                     || _gfe2010Section?.Dirty == true
                     || _loanEstimate1?.Dirty == true
                     || _loanEstimate2?.Dirty == true
-                    || _loanEstimate3?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _loanEstimate3?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adjustmentFactor.Dirty = value;
                 _aggregateAdjustmentFwbc.Dirty = value;
                 _borrowerPaidDiscountPointsTotalAmount.Dirty = value;
@@ -290,10 +277,7 @@ namespace EncompassRest.Loans
                 if (_loanEstimate1 != null) _loanEstimate1.Dirty = value;
                 if (_loanEstimate2 != null) _loanEstimate2.Dirty = value;
                 if (_loanEstimate3 != null) _loanEstimate3.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

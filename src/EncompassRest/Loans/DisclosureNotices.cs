@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class DisclosureNotices : IDirty
+    public sealed partial class DisclosureNotices : ExtensibleObject
     {
         private DirtyValue<bool?> _antiCoercionStatementIndicator;
         public bool? AntiCoercionStatementIndicator { get => _antiCoercionStatementIndicator; set => _antiCoercionStatementIndicator = value; }
@@ -108,17 +106,11 @@ namespace EncompassRest.Loans
         public bool? ReleaseMortgageInformationIndicator { get => _releaseMortgageInformationIndicator; set => _releaseMortgageInformationIndicator = value; }
         private DirtyValue<bool?> _rightToFinancialPrivacyActIndicator;
         public bool? RightToFinancialPrivacyActIndicator { get => _rightToFinancialPrivacyActIndicator; set => _rightToFinancialPrivacyActIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _antiCoercionStatementIndicator.Dirty
+                return _antiCoercionStatementIndicator.Dirty
                     || _commitmentIssuedByAddress.Dirty
                     || _commitmentIssuedByCity.Dirty
                     || _commitmentIssuedByContactName.Dirty
@@ -167,15 +159,10 @@ namespace EncompassRest.Loans
                     || _releaseEmploymentInformationIndicator.Dirty
                     || _releaseInformationInConnectionWithCreditReportIndicator.Dirty
                     || _releaseMortgageInformationIndicator.Dirty
-                    || _rightToFinancialPrivacyActIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _rightToFinancialPrivacyActIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _antiCoercionStatementIndicator.Dirty = value;
                 _commitmentIssuedByAddress.Dirty = value;
                 _commitmentIssuedByCity.Dirty = value;
@@ -226,10 +213,7 @@ namespace EncompassRest.Loans
                 _releaseInformationInConnectionWithCreditReportIndicator.Dirty = value;
                 _releaseMortgageInformationIndicator.Dirty = value;
                 _rightToFinancialPrivacyActIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

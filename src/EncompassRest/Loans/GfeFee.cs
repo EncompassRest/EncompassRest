@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class GfeFee : IDirty
+    public sealed partial class GfeFee : ExtensibleObject
     {
         private DirtyValue<string> _amountDescription;
         public string AmountDescription { get => _amountDescription; set => _amountDescription = value; }
@@ -24,32 +22,21 @@ namespace EncompassRest.Loans
         public decimal? OtherAmount { get => _otherAmount; set => _otherAmount = value; }
         private DirtyValue<string> _rate;
         public string Rate { get => _rate; set => _rate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _amountDescription.Dirty
+                return _amountDescription.Dirty
                     || _brokerAmount.Dirty
                     || _description.Dirty
                     || _gfeFeeIndex.Dirty
                     || _gfeFeeType.Dirty
                     || _id.Dirty
                     || _otherAmount.Dirty
-                    || _rate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _rate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _amountDescription.Dirty = value;
                 _brokerAmount.Dirty = value;
                 _description.Dirty = value;
@@ -58,10 +45,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _otherAmount.Dirty = value;
                 _rate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }
