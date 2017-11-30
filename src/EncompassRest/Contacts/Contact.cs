@@ -7,6 +7,7 @@ namespace EncompassRest.Contacts
     public abstract class Contact : ExtensibleObject
     {
         internal abstract string ApiPath { get; }
+
         [JsonIgnore]
         public EncompassRestClient Client { get; private set; }
 
@@ -29,7 +30,7 @@ namespace EncompassRest.Contacts
         internal void Initialize(EncompassRestClient client)
         {
             Client = client;
-            Notes = new ContactNotes(client, ApiPath, Id);
+            Notes = new ContactNotes(client, Id, ApiPath);
         }
 
         private DirtyValue<string> _firstName;

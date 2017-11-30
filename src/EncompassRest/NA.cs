@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
@@ -47,7 +48,7 @@ namespace EncompassRest
     
     internal sealed class NAConverter<T> : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => objectType == typeof(NA<T>);
+        public override bool CanConvert(Type objectType) => objectType == TypeData<NA<T>>.Type;
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -71,7 +72,7 @@ namespace EncompassRest
             }
             else
             {
-                serializer.Serialize(writer, na.GetValueOrDefault(), typeof(T));
+                serializer.Serialize(writer, na.GetValueOrDefault(), TypeData<T>.Type);
             }
         }
     }

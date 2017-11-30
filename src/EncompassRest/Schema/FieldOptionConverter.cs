@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json;
+using EncompassRest.Utilities;
 
 namespace EncompassRest.Schema
 {
@@ -7,7 +8,7 @@ namespace EncompassRest.Schema
     {
         public override bool CanWrite => false;
 
-        public override bool CanConvert(Type objectType) => objectType == typeof(FieldOption);
+        public override bool CanConvert(Type objectType) => objectType == TypeData<FieldOption>.Type;
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {

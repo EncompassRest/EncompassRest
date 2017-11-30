@@ -1,44 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class Pipeline
+    public sealed class Pipeline : ApiObject
     {
-        private const string s_apiPath = "encompass/v1/loanPipeline";
-
-        public EncompassRestClient Client { get; }
-
         internal Pipeline(EncompassRestClient client)
+            : base(client, "encompass/v1/loanPipeline")
         {
-            Client = client;
         }
 
         public Task<CanonicalNames> GetCanonicalNamesAsync() => GetCanonicalNamesAsync(CancellationToken.None);
 
-        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken) => GetCanonicalNamesInternalAsync(cancellationToken, response => response.Content.ReadAsAsync<CanonicalNames>());
+        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken) => GetAsync<CanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
         public Task<string> GetCanonicalNamesRawAsync() => GetCanonicalNamesRawAsync(CancellationToken.None);
 
-        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken) => GetCanonicalNamesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> GetCanonicalNamesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.GetAsync($"{s_apiPath}/fieldDefinitions", cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(GetCanonicalNamesAsync), response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
-            }
-        }
+        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
         public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters) => CreateCursorAsync(parameters, CancellationToken.None);
 
@@ -50,7 +31,7 @@ namespace EncompassRest.LoanPipeline
                 new QueryParameter("limit", "1"),
                 new QueryParameter("cursorType", "randomAccess"));
 
-            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(CreateCursorAsync), async response =>
+            return PostAsync(JsonStreamContent.Create(parameters), null, queryParameters.ToString(), nameof(CreateCursorAsync), null, cancellationToken, async response =>
             {
                 var headers = response.Headers;
                 const string countHeaderName = "x-total-count";
@@ -97,7 +78,7 @@ namespace EncompassRest.LoanPipeline
                 queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
             }
 
-            return ViewPipelineInternalAsync(JsonStreamContent.Create(parameters), queryParameters.ToString(), cancellationToken, nameof(ViewPipelineAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+            return PostAsync<List<LoanPipelineData>>(JsonStreamContent.Create(parameters), null, queryParameters.ToString(), nameof(ViewPipelineAsync), null, cancellationToken);
         }
 
         public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, (string)null, CancellationToken.None);
@@ -124,19 +105,6 @@ namespace EncompassRest.LoanPipeline
 
         public Task<string> ViewPipelineRawAsync(string parameters, string queryString) => ViewPipelineRawAsync(parameters, queryString, CancellationToken.None);
 
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => ViewPipelineInternalAsync(new JsonStringContent(parameters), queryString, cancellationToken, nameof(ViewPipelineRawAsync), response => response.Content.ReadAsStringAsync());
-
-        internal async Task<T> ViewPipelineInternalAsync<T>(HttpContent content, string queryString, CancellationToken cancellationToken, string methodName, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.PostAsync($"{s_apiPath}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(methodName, response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
-            }
-        }
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => PostRawAsync(new JsonStringContent(parameters), null, queryString, nameof(ViewPipelineRawAsync), null, cancellationToken);
     }
 }

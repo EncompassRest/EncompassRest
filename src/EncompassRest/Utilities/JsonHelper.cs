@@ -141,40 +141,12 @@ namespace EncompassRest.Utilities
                 NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
             }
 
-            protected override JsonObjectContract CreateObjectContract(Type objectType)
-            {
-                var contract = base.CreateObjectContract(objectType);
-                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectType.GetTypeInfo()))
-                {
-                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
-                    contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
-                }
-                return contract;
-            }
-
-            private static PropertyInfo GetProperty(Type type, string propertyName)
-            {
-                var typeInfo = type.GetTypeInfo();
-                var property = typeInfo.GetDeclaredProperty(propertyName);
-                if (property == null)
-                {
-                    var baseType = typeInfo.BaseType;
-                    if (baseType != null)
-                    {
-                        return GetProperty(baseType, propertyName);
-                    }
-                }
-                return property;
-            }
-
-            protected virtual IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary;
-
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
             {
                 var property = base.CreateProperty(member, memberSerialization);
                 if (member is PropertyInfo propertyInfo)
                 {
-                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, (false)).FirstOrDefault();
+                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, false).FirstOrDefault();
                     if (enumFormatAttribute != null)
                     {
                         property.Converter = new EnumJsonConverter(enumFormatAttribute.EnumFormat);
@@ -233,13 +205,15 @@ namespace EncompassRest.Utilities
                 }
             }
 
+            private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
+
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
                 var valueProvider = base.CreateMemberValueProvider(member);
                 if (member is PropertyInfo propertyInfo)
                 {
                     var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == s_openStringEnumValueType)
                     {
                         valueProvider = new StringEnumValueProvider(valueProvider);
                     }
@@ -265,7 +239,16 @@ namespace EncompassRest.Utilities
 
         private sealed class PrivateContractResolver : CustomContractResolver
         {
-            protected override IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary?.GetDirtyItems();
+            protected override JsonObjectContract CreateObjectContract(Type objectType)
+            {
+                var contract = base.CreateObjectContract(objectType);
+                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectType.GetTypeInfo()))
+                {
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
+                }
+                return contract;
+            }
 
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {

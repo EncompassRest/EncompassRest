@@ -1,11 +1,9 @@
 ﻿using System;
 using EncompassRest.Utilities;
 using EnumsNET;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
-    
     public sealed class PageAnnotation : ExtensibleObject
     {
         private DirtyValue<DateTime?> _dateCreated;

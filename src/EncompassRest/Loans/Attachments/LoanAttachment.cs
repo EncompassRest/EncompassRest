@@ -49,7 +49,8 @@ namespace EncompassRest.Loans.Attachments
                     || _isActive.Dirty
                     || _pages?.Dirty == true
                     || _rotation.Dirty
-                    || _title.Dirty;
+                    || _title.Dirty
+                    || _document?.Dirty == true;
             }
             set
             {
@@ -64,6 +65,7 @@ namespace EncompassRest.Loans.Attachments
                 if (_pages != null) _pages.Dirty = value;
                 _rotation.Dirty = value;
                 _title.Dirty = value;
+                if (_document != null) _document.Dirty = value;
             }
         }
     }
