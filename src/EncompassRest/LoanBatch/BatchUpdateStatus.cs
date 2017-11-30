@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanBatch
 {
-    public sealed class BatchUpdateStatus
+    public sealed class BatchUpdateStatus : ExtensibleObject
     {
         [JsonRequired]
         public string Status { get; set; }

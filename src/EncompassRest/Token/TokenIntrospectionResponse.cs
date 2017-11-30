@@ -4,16 +4,16 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Token
 {
-    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
-    public sealed class TokenIntrospectionResponse
+    [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
+    public sealed class TokenIntrospectionResponse : ExtensibleObject
     {
         private static readonly DateTime s_unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         [JsonProperty("exp")]
         private int _expiration
         {
-            get => (int)((Expiration - s_unixEpoch).TotalSeconds);
-            set => Expiration = s_unixEpoch.AddSeconds(value);
+            get => (int)((ExpirationUtc - s_unixEpoch).TotalSeconds);
+            set => ExpirationUtc = s_unixEpoch.AddSeconds(value);
         }
 
         public bool Active { get; set; }
@@ -27,8 +27,8 @@ namespace EncompassRest.Token
 
         public string TokenType { get; set; }
 
-        [JsonIgnore, JsonProperty(Required = Required.Default)]
-        public DateTime Expiration { get; set; }
+        [JsonIgnore]
+        public DateTime ExpirationUtc { get; set; }
 
         [JsonProperty("sub")]
         public string Subject { get; set; }

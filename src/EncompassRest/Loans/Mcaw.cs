@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Mcaw : IDirty
+    public sealed partial class Mcaw : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<AcceptOrReject>> _adequacyOfAvailableAssetsType;
         public StringEnumValue<AcceptOrReject> AdequacyOfAvailableAssetsType { get => _adequacyOfAvailableAssetsType; set => _adequacyOfAvailableAssetsType = value; }
@@ -102,17 +100,11 @@ namespace EncompassRest.Loans
         public decimal? UnadjustedAcquisition { get => _unadjustedAcquisition; set => _unadjustedAcquisition = value; }
         private DirtyValue<bool?> _use85PercentRuleIndicator;
         public bool? Use85PercentRuleIndicator { get => _use85PercentRuleIndicator; set => _use85PercentRuleIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adequacyOfAvailableAssetsType.Dirty
+                return _adequacyOfAvailableAssetsType.Dirty
                     || _adequacyOfEffectiveIncomeType.Dirty
                     || _adjustedPurchasePrice.Dirty
                     || _appraisedValue1.Dirty
@@ -158,15 +150,10 @@ namespace EncompassRest.Loans
                     || _totalRequirements.Dirty
                     || _totalSellerContribution.Dirty
                     || _unadjustedAcquisition.Dirty
-                    || _use85PercentRuleIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _use85PercentRuleIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adequacyOfAvailableAssetsType.Dirty = value;
                 _adequacyOfEffectiveIncomeType.Dirty = value;
                 _adjustedPurchasePrice.Dirty = value;
@@ -214,10 +201,7 @@ namespace EncompassRest.Loans
                 _totalSellerContribution.Dirty = value;
                 _unadjustedAcquisition.Dirty = value;
                 _use85PercentRuleIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

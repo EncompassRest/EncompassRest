@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LockConfirmLog : IDirty
+    public sealed partial class LockConfirmLog : ExtensibleObject
     {
         private DirtyValue<bool?> _alertIndicator;
         public bool? AlertIndicator { get => _alertIndicator; set => _alertIndicator = value; }
@@ -46,17 +44,11 @@ namespace EncompassRest.Loans
         public string SystemId { get => _systemId; set => _systemId = value; }
         private DirtyValue<string> _timeConfirmed;
         public string TimeConfirmed { get => _timeConfirmed; set => _timeConfirmed = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _alertIndicator.Dirty
+                return _alertIndicator.Dirty
                     || _buySideExpirationDate.Dirty
                     || _comments.Dirty
                     || _confirmedBy.Dirty
@@ -74,15 +66,10 @@ namespace EncompassRest.Loans
                     || _systemId.Dirty
                     || _timeConfirmed.Dirty
                     || _alerts?.Dirty == true
-                    || _commentList?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _commentList?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _alertIndicator.Dirty = value;
                 _buySideExpirationDate.Dirty = value;
                 _comments.Dirty = value;
@@ -102,10 +89,7 @@ namespace EncompassRest.Loans
                 _timeConfirmed.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

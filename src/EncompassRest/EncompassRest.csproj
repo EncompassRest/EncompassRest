@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
     <Version>0.1.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/hfcjweinstock/EncompassRest</PackageProjectUrl>
@@ -10,11 +10,12 @@
     <Summary>Encompass API Client Library for .NET</Summary>
     <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <NetStandardImplicitPackageVersion>1.6.0</NetStandardImplicitPackageVersion>
+    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Enums.NET" Version="2.2.0" />
+    <PackageReference Include="Enums.NET" Version="2.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
@@ -22,12 +23,16 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <AssemblyTitle>EncompassRest .NET Standard 2.0</AssemblyTitle>
+  </PropertyGroup>
+    
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
     <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
-    <AssemblyTitle>EncompassRest</AssemblyTitle>
+    <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
   </PropertyGroup>
 
   <PropertyGroup>

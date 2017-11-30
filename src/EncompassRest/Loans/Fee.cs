@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Fee : IDirty
+    public sealed partial class Fee : ExtensibleObject
     {
         private DirtyValue<decimal?> _amount;
         public decimal? Amount { get => _amount; set => _amount = value; }
@@ -74,17 +72,11 @@ namespace EncompassRest.Loans
         public decimal? TruncatedAmountPerDay { get => _truncatedAmountPerDay; set => _truncatedAmountPerDay = value; }
         private DirtyValue<bool?> _use4Decimals;
         public bool? Use4Decimals { get => _use4Decimals; set => _use4Decimals = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _amount.Dirty
+                return _amount.Dirty
                     || _amountPerDay.Dirty
                     || _borPaidAmount.Dirty
                     || _dateFrom.Dirty
@@ -116,15 +108,10 @@ namespace EncompassRest.Loans
                     || _releasesAmount.Dirty
                     || _sellerPaidAmount.Dirty
                     || _truncatedAmountPerDay.Dirty
-                    || _use4Decimals.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _use4Decimals.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _amount.Dirty = value;
                 _amountPerDay.Dirty = value;
                 _borPaidAmount.Dirty = value;
@@ -158,10 +145,7 @@ namespace EncompassRest.Loans
                 _sellerPaidAmount.Dirty = value;
                 _truncatedAmountPerDay.Dirty = value;
                 _use4Decimals.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

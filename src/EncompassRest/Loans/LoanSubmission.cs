@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanSubmission : IDirty
+    public sealed partial class LoanSubmission : ExtensibleObject
     {
         private DirtyValue<decimal?> _amountAvailable;
         public decimal? AmountAvailable { get => _amountAvailable; set => _amountAvailable = value; }
@@ -66,17 +64,11 @@ namespace EncompassRest.Loans
         public decimal? TotalForDueLender { get => _totalForDueLender; set => _totalForDueLender = value; }
         private DirtyValue<decimal?> _totalForPrimaryResidence;
         public decimal? TotalForPrimaryResidence { get => _totalForPrimaryResidence; set => _totalForPrimaryResidence = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _amountAvailable.Dirty
+                return _amountAvailable.Dirty
                     || _amountRequiredToClose.Dirty
                     || _buydownDescription.Dirty
                     || _buydownMonthsPerAdjustment.Dirty
@@ -104,15 +96,10 @@ namespace EncompassRest.Loans
                     || _totalForDueBroker.Dirty
                     || _totalForDueLender.Dirty
                     || _totalForPrimaryResidence.Dirty
-                    || _loanSubmissionFees?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _loanSubmissionFees?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _amountAvailable.Dirty = value;
                 _amountRequiredToClose.Dirty = value;
                 _buydownDescription.Dirty = value;
@@ -142,10 +129,7 @@ namespace EncompassRest.Loans
                 _totalForDueLender.Dirty = value;
                 _totalForPrimaryResidence.Dirty = value;
                 if (_loanSubmissionFees != null) _loanSubmissionFees.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

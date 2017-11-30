@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class HudLoanData : IDirty
+    public sealed partial class HudLoanData : ExtensibleObject
     {
         private DirtyValue<decimal?> _actualCashInvRequired;
         public decimal? ActualCashInvRequired { get => _actualCashInvRequired; set => _actualCashInvRequired = value; }
@@ -324,17 +322,11 @@ namespace EncompassRest.Loans
         public decimal? ValueEstablished { get => _valueEstablished; set => _valueEstablished = value; }
         private DirtyValue<decimal?> _windEnergySystemActualCost;
         public decimal? WindEnergySystemActualCost { get => _windEnergySystemActualCost; set => _windEnergySystemActualCost = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actualCashInvRequired.Dirty
+                return _actualCashInvRequired.Dirty
                     || _adjustedMaxMtgAmount.Dirty
                     || _afterImprovedValue.Dirty
                     || _afterImprovedValueAfter20Percent.Dirty
@@ -491,15 +483,10 @@ namespace EncompassRest.Loans
                     || _unpaidPrincipalBalanceOfPurchaseJuniorLiens.Dirty
                     || _valueEstablished.Dirty
                     || _windEnergySystemActualCost.Dirty
-                    || _secondaryFinancingProviders?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _secondaryFinancingProviders?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actualCashInvRequired.Dirty = value;
                 _adjustedMaxMtgAmount.Dirty = value;
                 _afterImprovedValue.Dirty = value;
@@ -658,10 +645,7 @@ namespace EncompassRest.Loans
                 _valueEstablished.Dirty = value;
                 _windEnergySystemActualCost.Dirty = value;
                 if (_secondaryFinancingProviders != null) _secondaryFinancingProviders.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

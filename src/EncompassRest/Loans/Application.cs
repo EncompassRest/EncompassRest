@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Application : IDirty
+    public sealed partial class Application : ExtensibleObject
     {
         private DirtyValue<string> _accountNumber1;
         public string AccountNumber1 { get => _accountNumber1; set => _accountNumber1 = value; }
@@ -406,17 +404,11 @@ namespace EncompassRest.Loans
         public decimal? VaSummarySpouseIncomeAmount { get => _vaSummarySpouseIncomeAmount; set => _vaSummarySpouseIncomeAmount = value; }
         private DirtyValue<decimal?> _vaSummaryTotalMonthlyGrossIncomeAmount;
         public decimal? VaSummaryTotalMonthlyGrossIncomeAmount { get => _vaSummaryTotalMonthlyGrossIncomeAmount; set => _vaSummaryTotalMonthlyGrossIncomeAmount = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _accountNumber1.Dirty
+                return _accountNumber1.Dirty
                     || _accountNumber2.Dirty
                     || _allOtherPaymentsAmount.Dirty
                     || _applicationId.Dirty
@@ -614,15 +606,10 @@ namespace EncompassRest.Loans
                     || _residences?.Dirty == true
                     || _selfEmployedIncomes?.Dirty == true
                     || _tax4506s?.Dirty == true
-                    || _tQLReports?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _tQLReports?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _accountNumber1.Dirty = value;
                 _accountNumber2.Dirty = value;
                 _allOtherPaymentsAmount.Dirty = value;
@@ -822,10 +809,7 @@ namespace EncompassRest.Loans
                 if (_selfEmployedIncomes != null) _selfEmployedIncomes.Dirty = value;
                 if (_tax4506s != null) _tax4506s.Dirty = value;
                 if (_tQLReports != null) _tQLReports.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Uldd : IDirty
+    public sealed partial class Uldd : ExtensibleObject
     {
         private DirtyValue<string> _aCHABARoutingAndTransitIdentifier;
         public string ACHABARoutingAndTransitIdentifier { get => _aCHABARoutingAndTransitIdentifier; set => _aCHABARoutingAndTransitIdentifier = value; }
@@ -606,17 +604,11 @@ namespace EncompassRest.Loans
         public int? Unit4TotalBedrooms { get => _unit4TotalBedrooms; set => _unit4TotalBedrooms = value; }
         private DirtyValue<decimal?> _uPBAmount;
         public decimal? UPBAmount { get => _uPBAmount; set => _uPBAmount = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aCHABARoutingAndTransitIdentifier.Dirty
+                return _aCHABARoutingAndTransitIdentifier.Dirty
                     || _aCHABARoutingAndTransitNumber.Dirty
                     || _aCHBankAccountDescription.Dirty
                     || _aCHBankAccountIdentifier.Dirty
@@ -914,15 +906,10 @@ namespace EncompassRest.Loans
                     || _unit3TotalBedrooms.Dirty
                     || _unit4SubjectPropertyGrossRentalIncome.Dirty
                     || _unit4TotalBedrooms.Dirty
-                    || _uPBAmount.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _uPBAmount.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aCHABARoutingAndTransitIdentifier.Dirty = value;
                 _aCHABARoutingAndTransitNumber.Dirty = value;
                 _aCHBankAccountDescription.Dirty = value;
@@ -1222,10 +1209,7 @@ namespace EncompassRest.Loans
                 _unit4SubjectPropertyGrossRentalIncome.Dirty = value;
                 _unit4TotalBedrooms.Dirty = value;
                 _uPBAmount.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

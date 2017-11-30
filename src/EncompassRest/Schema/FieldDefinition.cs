@@ -3,7 +3,7 @@ using EnumsNET;
 
 namespace EncompassRest.Schema
 {
-    public class FieldDefinition
+    public class FieldDefinition : ExtensibleObject
     {
         public string Description { get; set; }
         public string FieldID { get; set; }

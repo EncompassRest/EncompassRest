@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Schema
 {
-    public sealed class FieldOptions
+    public sealed class FieldOptions : ExtensibleObject
     {
         [JsonProperty(ItemConverterType = typeof(FieldOptionConverter))]
         public List<FieldOption> Options { get; set; }

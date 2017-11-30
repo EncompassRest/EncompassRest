@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class MilitaryService : IDirty
+    public sealed partial class MilitaryService : ExtensibleObject
     {
         private DirtyValue<string> _branch;
         public string Branch { get => _branch; set => _branch = value; }
@@ -26,17 +24,11 @@ namespace EncompassRest.Loans
         public string SSN { get => _sSN; set => _sSN = value; }
         private DirtyValue<DateTime?> _startDate;
         public DateTime? StartDate { get => _startDate; set => _startDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _branch.Dirty
+                return _branch.Dirty
                     || _endDate.Dirty
                     || _id.Dirty
                     || _militaryServiceIndex.Dirty
@@ -44,15 +36,10 @@ namespace EncompassRest.Loans
                     || _officerOrEnlisted.Dirty
                     || _serviceNumber.Dirty
                     || _sSN.Dirty
-                    || _startDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _startDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _branch.Dirty = value;
                 _endDate.Dirty = value;
                 _id.Dirty = value;
@@ -62,10 +49,7 @@ namespace EncompassRest.Loans
                 _serviceNumber.Dirty = value;
                 _sSN.Dirty = value;
                 _startDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingDisclosure2 : IDirty
+    public sealed partial class ClosingDisclosure2 : ExtensibleObject
     {
         private DirtyValue<decimal?> _borrowerClosingCostAtClosing;
         public decimal? BorrowerClosingCostAtClosing { get => _borrowerClosingCostAtClosing; set => _borrowerClosingCostAtClosing = value; }
@@ -58,17 +56,11 @@ namespace EncompassRest.Loans
         public decimal? TotalOtherCostAtClosing { get => _totalOtherCostAtClosing; set => _totalOtherCostAtClosing = value; }
         private DirtyValue<decimal?> _totalOtherCostBeforeClosing;
         public decimal? TotalOtherCostBeforeClosing { get => _totalOtherCostBeforeClosing; set => _totalOtherCostBeforeClosing = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _borrowerClosingCostAtClosing.Dirty
+                return _borrowerClosingCostAtClosing.Dirty
                     || _borrowerClosingCostBeforeClosing.Dirty
                     || _closingCostLenderCredits.Dirty
                     || _closingCostPaidByOthers.Dirty
@@ -92,15 +84,10 @@ namespace EncompassRest.Loans
                     || _totalLoanCost.Dirty
                     || _totalOtherCost.Dirty
                     || _totalOtherCostAtClosing.Dirty
-                    || _totalOtherCostBeforeClosing.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalOtherCostBeforeClosing.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _borrowerClosingCostAtClosing.Dirty = value;
                 _borrowerClosingCostBeforeClosing.Dirty = value;
                 _closingCostLenderCredits.Dirty = value;
@@ -126,10 +113,7 @@ namespace EncompassRest.Loans
                 _totalOtherCost.Dirty = value;
                 _totalOtherCostAtClosing.Dirty = value;
                 _totalOtherCostBeforeClosing.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

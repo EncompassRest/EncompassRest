@@ -3,7 +3,7 @@ using EncompassRest.Schema;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class PipelineFieldDefinition
+    public sealed class PipelineFieldDefinition : ExtensibleObject
     {
         public int BorrowerPair { get; set; }
         public bool IsLoanDataField { get; set; }

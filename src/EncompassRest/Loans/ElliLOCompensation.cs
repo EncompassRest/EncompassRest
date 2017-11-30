@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ElliLOCompensation : IDirty
+    public sealed partial class ElliLOCompensation : ExtensibleObject
     {
         private DirtyValue<decimal?> _adjustedPlanAdditonalAmountForBroker;
         public decimal? AdjustedPlanAdditonalAmountForBroker { get => _adjustedPlanAdditonalAmountForBroker; set => _adjustedPlanAdditonalAmountForBroker = value; }
@@ -86,17 +84,11 @@ namespace EncompassRest.Loans
         public string TriggerField { get => _triggerField; set => _triggerField = value; }
         private DirtyValue<StringEnumValue<WhoPaidCompensation>> _whoPaidCompensation;
         public StringEnumValue<WhoPaidCompensation> WhoPaidCompensation { get => _whoPaidCompensation; set => _whoPaidCompensation = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adjustedPlanAdditonalAmountForBroker.Dirty
+                return _adjustedPlanAdditonalAmountForBroker.Dirty
                     || _adjustedPlanAdditonalAmountForOfficer.Dirty
                     || _adjustedPlanAmountForBroker.Dirty
                     || _adjustedPlanAmountForOfficer.Dirty
@@ -134,15 +126,10 @@ namespace EncompassRest.Loans
                     || _roundingMethod.Dirty
                     || _roundingMethodForOfficer.Dirty
                     || _triggerField.Dirty
-                    || _whoPaidCompensation.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _whoPaidCompensation.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adjustedPlanAdditonalAmountForBroker.Dirty = value;
                 _adjustedPlanAdditonalAmountForOfficer.Dirty = value;
                 _adjustedPlanAmountForBroker.Dirty = value;
@@ -182,10 +169,7 @@ namespace EncompassRest.Loans
                 _roundingMethodForOfficer.Dirty = value;
                 _triggerField.Dirty = value;
                 _whoPaidCompensation.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

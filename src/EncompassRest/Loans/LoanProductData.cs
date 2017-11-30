@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanProductData : IDirty
+    public sealed partial class LoanProductData : ExtensibleObject
     {
         private DirtyValue<decimal?> _annualFeeNeededAmount;
         public decimal? AnnualFeeNeededAmount { get => _annualFeeNeededAmount; set => _annualFeeNeededAmount = value; }
@@ -214,17 +212,11 @@ namespace EncompassRest.Loans
         public decimal? TransactionFees { get => _transactionFees; set => _transactionFees = value; }
         private DirtyValue<decimal?> _wireFee;
         public decimal? WireFee { get => _wireFee; set => _wireFee = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _annualFeeNeededAmount.Dirty
+                return _annualFeeNeededAmount.Dirty
                     || _applyLifeCapLowIndicator.Dirty
                     || _armDisclosureType.Dirty
                     || _armIndexType.Dirty
@@ -326,15 +318,10 @@ namespace EncompassRest.Loans
                     || _wireFee.Dirty
                     || _buydowns?.Dirty == true
                     || _helocRepaymentDrawPeriods?.Dirty == true
-                    || _prepaymentPenalties?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _prepaymentPenalties?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _annualFeeNeededAmount.Dirty = value;
                 _applyLifeCapLowIndicator.Dirty = value;
                 _armDisclosureType.Dirty = value;
@@ -438,10 +425,7 @@ namespace EncompassRest.Loans
                 if (_buydowns != null) _buydowns.Dirty = value;
                 if (_helocRepaymentDrawPeriods != null) _helocRepaymentDrawPeriods.Dirty = value;
                 if (_prepaymentPenalties != null) _prepaymentPenalties.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

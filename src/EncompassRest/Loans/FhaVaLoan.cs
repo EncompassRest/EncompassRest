@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FhaVaLoan : IDirty
+    public sealed partial class FhaVaLoan : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<AddendumType>> _addendumType;
         public StringEnumValue<AddendumType> AddendumType { get => _addendumType; set => _addendumType = value; }
@@ -284,17 +282,11 @@ namespace EncompassRest.Loans
         public DateTime? ValidateAddressDate { get => _validateAddressDate; set => _validateAddressDate = value; }
         private DirtyValue<StringEnumValue<Valuation>> _valuation;
         public StringEnumValue<Valuation> Valuation { get => _valuation; set => _valuation = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _addendumType.Dirty
+                return _addendumType.Dirty
                     || _additionalCondition1.Dirty
                     || _additionalCondition2.Dirty
                     || _additionalCondition3.Dirty
@@ -431,15 +423,10 @@ namespace EncompassRest.Loans
                     || _validateAddressDate.Dirty
                     || _valuation.Dirty
                     || _eem?.Dirty == true
-                    || _energyEfficientMortgageItems?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _energyEfficientMortgageItems?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _addendumType.Dirty = value;
                 _additionalCondition1.Dirty = value;
                 _additionalCondition2.Dirty = value;
@@ -578,10 +565,7 @@ namespace EncompassRest.Loans
                 _valuation.Dirty = value;
                 if (_eem != null) _eem.Dirty = value;
                 if (_energyEfficientMortgageItems != null) _energyEfficientMortgageItems.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

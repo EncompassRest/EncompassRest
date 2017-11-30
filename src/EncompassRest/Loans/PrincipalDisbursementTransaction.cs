@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class PrincipalDisbursementTransaction : IDirty
+    public sealed partial class PrincipalDisbursementTransaction : ExtensibleObject
     {
         private DirtyValue<string> _comments;
         public string Comments { get => _comments; set => _comments = value; }
@@ -38,17 +36,11 @@ namespace EncompassRest.Loans
         public decimal? TransactionAmount { get => _transactionAmount; set => _transactionAmount = value; }
         private DirtyValue<DateTime?> _transactionDate;
         public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _comments.Dirty
+                return _comments.Dirty
                     || _createdById.Dirty
                     || _createdByName.Dirty
                     || _createdDateTimeUtc.Dirty
@@ -62,15 +54,10 @@ namespace EncompassRest.Loans
                     || _servicingPaymentMethod.Dirty
                     || _servicingTransactionType.Dirty
                     || _transactionAmount.Dirty
-                    || _transactionDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _transactionDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _comments.Dirty = value;
                 _createdById.Dirty = value;
                 _createdByName.Dirty = value;
@@ -86,10 +73,7 @@ namespace EncompassRest.Loans
                 _servicingTransactionType.Dirty = value;
                 _transactionAmount.Dirty = value;
                 _transactionDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

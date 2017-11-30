@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class EnergyEfficientMortgage : IDirty
+    public sealed partial class EnergyEfficientMortgage : ExtensibleObject
     {
         private DirtyValue<decimal?> _appraisedValue;
         public decimal? AppraisedValue { get => _appraisedValue; set => _appraisedValue = value; }
@@ -70,17 +68,11 @@ namespace EncompassRest.Loans
         public decimal? UfmipBasedOn { get => _ufmipBasedOn; set => _ufmipBasedOn = value; }
         private DirtyValue<decimal?> _ufmipFactor;
         public decimal? UfmipFactor { get => _ufmipFactor; set => _ufmipFactor = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisedValue.Dirty
+                return _appraisedValue.Dirty
                     || _auditCost.Dirty
                     || _backRatio.Dirty
                     || _baseLoanAmtFromTsum.Dirty
@@ -110,15 +102,10 @@ namespace EncompassRest.Loans
                     || _totalMonthlyHousingPayment.Dirty
                     || _totalMonthlyObligations.Dirty
                     || _ufmipBasedOn.Dirty
-                    || _ufmipFactor.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _ufmipFactor.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisedValue.Dirty = value;
                 _auditCost.Dirty = value;
                 _backRatio.Dirty = value;
@@ -150,10 +137,7 @@ namespace EncompassRest.Loans
                 _totalMonthlyObligations.Dirty = value;
                 _ufmipBasedOn.Dirty = value;
                 _ufmipFactor.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

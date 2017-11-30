@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class TQLReportInformation : IDirty
+    public sealed partial class TQLReportInformation : ExtensibleObject
     {
         private DirtyValue<string> _altId;
         public string AltId { get => _altId; set => _altId = value; }
@@ -60,17 +58,11 @@ namespace EncompassRest.Loans
         public string TranscriptType { get => _transcriptType; set => _transcriptType = value; }
         private DirtyValue<string> _userID;
         public string UserID { get => _userID; set => _userID = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _altId.Dirty
+                return _altId.Dirty
                     || _borrowerID1.Dirty
                     || _borrowerID2.Dirty
                     || _borrowerID3.Dirty
@@ -95,15 +87,10 @@ namespace EncompassRest.Loans
                     || _totalIncome3.Dirty
                     || _totalIncome4.Dirty
                     || _transcriptType.Dirty
-                    || _userID.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _userID.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _altId.Dirty = value;
                 _borrowerID1.Dirty = value;
                 _borrowerID2.Dirty = value;
@@ -130,10 +117,7 @@ namespace EncompassRest.Loans
                 _totalIncome4.Dirty = value;
                 _transcriptType.Dirty = value;
                 _userID.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

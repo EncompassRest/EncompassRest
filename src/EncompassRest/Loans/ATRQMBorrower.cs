@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ATRQMBorrower : IDirty
+    public sealed partial class ATRQMBorrower : ExtensibleObject
     {
         private DirtyValue<int?> _aTRQMBorrowerIndex;
         public int? ATRQMBorrowerIndex { get => _aTRQMBorrowerIndex; set => _aTRQMBorrowerIndex = value; }
@@ -470,17 +468,11 @@ namespace EncompassRest.Loans
         public string UnderwritingRiskAssessOther { get => _underwritingRiskAssessOther; set => _underwritingRiskAssessOther = value; }
         private DirtyValue<string> _underwritingRiskAssessType;
         public string UnderwritingRiskAssessType { get => _underwritingRiskAssessType; set => _underwritingRiskAssessType = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aTRQMBorrowerIndex.Dirty
+                return _aTRQMBorrowerIndex.Dirty
                     || _aUSRecommendation.Dirty
                     || _aUSVersion.Dirty
                     || _borBonusAverageOvertime.Dirty
@@ -710,15 +702,10 @@ namespace EncompassRest.Loans
                     || _totalMonthlyDebt.Dirty
                     || _totalMonthlyIncome.Dirty
                     || _underwritingRiskAssessOther.Dirty
-                    || _underwritingRiskAssessType.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _underwritingRiskAssessType.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aTRQMBorrowerIndex.Dirty = value;
                 _aUSRecommendation.Dirty = value;
                 _aUSVersion.Dirty = value;
@@ -950,10 +937,7 @@ namespace EncompassRest.Loans
                 _totalMonthlyIncome.Dirty = value;
                 _underwritingRiskAssessOther.Dirty = value;
                 _underwritingRiskAssessType.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

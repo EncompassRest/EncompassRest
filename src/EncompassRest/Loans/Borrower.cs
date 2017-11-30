@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Borrower : IDirty
+    public sealed partial class Borrower : ExtensibleObject
     {
         private DirtyValue<string> _acountChekAssetId;
         public string AcountChekAssetId { get => _acountChekAssetId; set => _acountChekAssetId = value; }
@@ -642,17 +640,11 @@ namespace EncompassRest.Loans
         public string WorkEmailAddress { get => _workEmailAddress; set => _workEmailAddress = value; }
         private DirtyValue<int?> _yearsofCreditOnFile;
         public int? YearsofCreditOnFile { get => _yearsofCreditOnFile; set => _yearsofCreditOnFile = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _acountChekAssetId.Dirty
+                return _acountChekAssetId.Dirty
                     || _ageAtApplicationYearsCount.Dirty
                     || _aliasName.Dirty
                     || _alimonyChildSupportObligationIndicator.Dirty
@@ -968,15 +960,10 @@ namespace EncompassRest.Loans
                     || _veteranIndicator.Dirty
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
-                    || _application?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _application?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _acountChekAssetId.Dirty = value;
                 _ageAtApplicationYearsCount.Dirty = value;
                 _aliasName.Dirty = value;
@@ -1294,10 +1281,7 @@ namespace EncompassRest.Loans
                 _workEmailAddress.Dirty = value;
                 _yearsofCreditOnFile.Dirty = value;
                 if (_application != null) _application.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

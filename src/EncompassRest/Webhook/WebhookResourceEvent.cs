@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Webhook
 {
-    public enum WebhookEvent
+    public enum WebhookResourceEvent
     {
         [EnumMember(Value = "create")]
         Create = 0,

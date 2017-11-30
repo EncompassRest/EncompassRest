@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FundingFee : IDirty
+    public sealed partial class FundingFee : ExtensibleObject
     {
         private DirtyValue<bool?> _balanceChecked;
         public bool? BalanceChecked { get => _balanceChecked; set => _balanceChecked = value; }
@@ -30,17 +28,11 @@ namespace EncompassRest.Loans
         public string PocPaidBy { get => _pocPaidBy; set => _pocPaidBy = value; }
         private DirtyValue<string> _ptcPaidBy;
         public string PtcPaidBy { get => _ptcPaidBy; set => _ptcPaidBy = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _balanceChecked.Dirty
+                return _balanceChecked.Dirty
                     || _cdLineId.Dirty
                     || _feeDescription.Dirty
                     || _feeDescription2015.Dirty
@@ -50,15 +42,10 @@ namespace EncompassRest.Loans
                     || _paidTo.Dirty
                     || _payee.Dirty
                     || _pocPaidBy.Dirty
-                    || _ptcPaidBy.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _ptcPaidBy.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _balanceChecked.Dirty = value;
                 _cdLineId.Dirty = value;
                 _feeDescription.Dirty = value;
@@ -70,10 +57,7 @@ namespace EncompassRest.Loans
                 _payee.Dirty = value;
                 _pocPaidBy.Dirty = value;
                 _ptcPaidBy.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

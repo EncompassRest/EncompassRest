@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingDisclosure3 : IDirty
+    public sealed partial class ClosingDisclosure3 : ExtensibleObject
     {
         private DirtyValue<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
         public decimal? ActualLECD3TotalClosingCostJFromLatestRec { get => _actualLECD3TotalClosingCostJFromLatestRec; set => _actualLECD3TotalClosingCostJFromLatestRec = value; }
@@ -320,17 +318,11 @@ namespace EncompassRest.Loans
         public decimal? UCDLSubTotal { get => _uCDLSubTotal; set => _uCDLSubTotal = value; }
         private DirtyValue<decimal?> _uCDTotalAdjustmentsAndOtherCredits;
         public decimal? UCDTotalAdjustmentsAndOtherCredits { get => _uCDTotalAdjustmentsAndOtherCredits; set => _uCDTotalAdjustmentsAndOtherCredits = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actualLECD3TotalClosingCostJFromLatestRec.Dirty
+                return _actualLECD3TotalClosingCostJFromLatestRec.Dirty
                     || _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty
                     || _actualLELoanAmountFromLatestRec.Dirty
                     || _actualLenderCredits.Dirty
@@ -485,15 +477,10 @@ namespace EncompassRest.Loans
                     || _uCDKSubTotal.Dirty
                     || _uCDLSubTotal.Dirty
                     || _uCDTotalAdjustmentsAndOtherCredits.Dirty
-                    || _uCDDetails?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _uCDDetails?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actualLECD3TotalClosingCostJFromLatestRec.Dirty = value;
                 _actualLECD3TotalPayoffsAndPaymentsKFromLatestRec.Dirty = value;
                 _actualLELoanAmountFromLatestRec.Dirty = value;
@@ -650,10 +637,7 @@ namespace EncompassRest.Loans
                 _uCDLSubTotal.Dirty = value;
                 _uCDTotalAdjustmentsAndOtherCredits.Dirty = value;
                 if (_uCDDetails != null) _uCDDetails.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

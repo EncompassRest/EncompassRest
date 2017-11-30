@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class LoanPipelineData
+    public sealed class LoanPipelineData : ExtensibleObject
     {
         private Dictionary<string, string> _fields;
 

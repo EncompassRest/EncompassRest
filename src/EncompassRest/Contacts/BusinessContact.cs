@@ -4,8 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed class BusinessContact : Contact, IDirty
+    public sealed class BusinessContact : Contact
     {
         internal override string ApiPath => "encompass/v1/businessContacts";
 
@@ -22,38 +21,46 @@ namespace EncompassRest.Contacts
         public bool? NoSpam { get => _noSpam; set => _noSpam = value; }
         private DirtyValue<int?> _fees;
         public int? Fees { get => Fees; set => _fees = value; }
-        private bool _gettingDirty;
-        private bool _settingDirty;
-        internal new bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = base.Dirty
+                return base.DirtyInternal
                     || _categoryId.Dirty
                     || _companyName.Dirty
                     || _personalContactLicense?.Dirty == true
                     || _businessContactLicense?.Dirty == true
                     || _noSpam.Dirty
                     || _fees.Dirty;
-                _gettingDirty = false;
-                return dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
-                base.Dirty = value;
+                base.DirtyInternal = value;
                 _categoryId.Dirty = value;
                 _companyName.Dirty = value;
                 if (_personalContactLicense!= null) _personalContactLicense.Dirty = value;
                 if (_businessContactLicense!= null) _businessContactLicense.Dirty = value;
                 _noSpam.Dirty = value;
                 _fees.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
+
+        /// <summary>
+        /// BusinessContact creation constructor
+        /// </summary>
+        [JsonConstructor]
+        public BusinessContact()
+        {
+        }
+
+        /// <summary>
+        /// BusinessContact update constructor
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="contactId"></param>
+        public BusinessContact(EncompassRestClient client, string contactId)
+            : base(client, contactId)
+        {
+        }
     }
 }

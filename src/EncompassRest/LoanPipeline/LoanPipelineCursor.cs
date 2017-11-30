@@ -66,7 +66,7 @@ namespace EncompassRest.LoanPipeline
             }
             var content = JsonStreamContent.Create(new { Fields = fields ?? Fields });
 
-            return Client.Pipeline.ViewPipelineInternalAsync(content, queryParameters.ToString(), cancellationToken, nameof(GetItemsAsync), response => response.Content.ReadAsAsync<List<LoanPipelineData>>());
+            return Client.Pipeline.PostAsync<List<LoanPipelineData>>(content, null, queryParameters.ToString(), nameof(GetItemsAsync), null, cancellationToken);
         }
         public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
 
@@ -94,7 +94,7 @@ namespace EncompassRest.LoanPipeline
             }
             var content = JsonStreamContent.Create(new { Fields = fields ?? Fields });
 
-            return Client.Pipeline.ViewPipelineInternalAsync(content, queryParameters.ToString(), cancellationToken, nameof(GetItemsRawAsync), response => response.Content.ReadAsStringAsync());
+            return Client.Pipeline.PostRawAsync(content, null, queryParameters.ToString(), nameof(GetItemsRawAsync), null, cancellationToken);
         }
     }
 }

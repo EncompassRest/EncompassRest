@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class AntiSteeringLoanOption : IDirty
+    public sealed partial class AntiSteeringLoanOption : ExtensibleObject
     {
         private DirtyValue<int?> _antiSteeringLoanOptionIndex;
         public int? AntiSteeringLoanOptionIndex { get => _antiSteeringLoanOptionIndex; set => _antiSteeringLoanOptionIndex = value; }
@@ -112,17 +110,11 @@ namespace EncompassRest.Loans
         public string UserDefinedFee5Description { get => _userDefinedFee5Description; set => _userDefinedFee5Description = value; }
         private DirtyValue<decimal?> _userDefinedFee5SellerPaidAmount;
         public decimal? UserDefinedFee5SellerPaidAmount { get => _userDefinedFee5SellerPaidAmount; set => _userDefinedFee5SellerPaidAmount = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _antiSteeringLoanOptionIndex.Dirty
+                return _antiSteeringLoanOptionIndex.Dirty
                     || _brokerCompensationFeeAmount.Dirty
                     || _brokerCompensationFeeBorPaidAmount.Dirty
                     || _brokerCompensationFeePercentage.Dirty
@@ -173,15 +165,10 @@ namespace EncompassRest.Loans
                     || _userDefinedFee4SellerPaidAmount.Dirty
                     || _userDefinedFee5BorPaidAmount.Dirty
                     || _userDefinedFee5Description.Dirty
-                    || _userDefinedFee5SellerPaidAmount.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _userDefinedFee5SellerPaidAmount.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _antiSteeringLoanOptionIndex.Dirty = value;
                 _brokerCompensationFeeAmount.Dirty = value;
                 _brokerCompensationFeeBorPaidAmount.Dirty = value;
@@ -234,10 +221,7 @@ namespace EncompassRest.Loans
                 _userDefinedFee5BorPaidAmount.Dirty = value;
                 _userDefinedFee5Description.Dirty = value;
                 _userDefinedFee5SellerPaidAmount.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

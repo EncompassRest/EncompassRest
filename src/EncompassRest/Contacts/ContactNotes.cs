@@ -1,26 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactNotes
+    public sealed class ContactNotes : ContactApiObject
     {
-        private const string s_apiPath = "/notes";
-        private string _baseApiPath;
-        public EncompassRestClient Client { get; }
-
-        public string ContactId { get; }
-        
-        internal ContactNotes(EncompassRestClient client, string baseApiPath, string contactId)
+        internal ContactNotes(EncompassRestClient client, string contactId, string baseApiPath)
+            : base(client, contactId, $"{baseApiPath}/{contactId}/notes")
         {
-            Client = client;
-            ContactId = contactId;
-            _baseApiPath = baseApiPath;
         }
 
         public Task<ContactNote> GetNoteAsync(string noteId) => GetNoteAsync(noteId, CancellationToken.None);
@@ -29,7 +19,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return GetNoteInternalAsync(noteId, cancellationToken, async response =>
+            return GetAsync(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken, async response =>
             {
                 var note = await response.Content.ReadAsAsync<ContactNote>().ConfigureAwait(false);
                 note.NoteId = noteId; //TODO: Remove this when EM corrects bug
@@ -44,24 +34,12 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return GetNoteInternalAsync(noteId, cancellationToken, response => response.Content.ReadAsStringAsync());
-        }
-
-        private async Task<T> GetNoteInternalAsync<T>(string noteId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.GetAsync($"{ _baseApiPath}/{ContactId}{s_apiPath}/{noteId}", cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(GetNoteAsync), response).ConfigureAwait(false);
-                }
-                return await func(response).ConfigureAwait(false);
-            }
+            return GetRawAsync(noteId, null, nameof(GetNoteRawAsync), noteId, cancellationToken);
         }
 
         public Task<List<ContactNote>> GetNotesAsync() => GetNotesAsync(CancellationToken.None);
 
-        public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken) => GetNotesInternalAsync(cancellationToken, async response =>
+        public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken) => GetAsync(null, null, nameof(GetNotesAsync), null, cancellationToken, async response =>
         {
             var notes = await response.Content.ReadAsAsync<List<ContactNote>>().ConfigureAwait(false);
             foreach (var note in notes)
@@ -73,19 +51,7 @@ namespace EncompassRest.Contacts
 
         public Task<string> GetNotesRawAsync() => GetNotesRawAsync(CancellationToken.None);
 
-        public Task<string> GetNotesRawAsync(CancellationToken cancellationToken) => GetNotesInternalAsync(cancellationToken, response => response.Content.ReadAsStringAsync());
-
-        private async Task<T> GetNotesInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.GetAsync($"{_baseApiPath}/{ContactId}{s_apiPath}", cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(GetNotesAsync), response).ConfigureAwait(false);
-                }
-                return await func(response).ConfigureAwait(false);
-            }
-        }
+        public Task<string> GetNotesRawAsync(CancellationToken cancellationToken) => GetRawAsync(null, null, nameof(GetNotesRawAsync), null, cancellationToken);
 
         public Task<string> CreateNoteAsync(ContactNote note) => CreateNoteAsync(note, false, CancellationToken.None);
 
@@ -96,8 +62,9 @@ namespace EncompassRest.Contacts
         private Task<string> CreateNoteAsync(ContactNote note, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(note, nameof(note));
+            Preconditions.NullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return CreateNoteInternalAsync(JsonStreamContent.Create(note), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return PostAsync(JsonStreamContent.Create(note), null, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(CreateNoteAsync), null, cancellationToken, async response =>
             {
                 var noteId = Path.GetFileName(response.Headers.Location.OriginalString);
                 note.NoteId = noteId;
@@ -120,24 +87,11 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
-            return CreateNoteInternalAsync(new JsonStringContent(note), queryString, cancellationToken, async response =>
+            return PostAsync(new JsonStringContent(note), null, queryString, nameof(CreateNoteRawAsync), null, cancellationToken, async response =>
             {
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
             });
-        }
-
-        private async Task<string> CreateNoteInternalAsync(HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
-        {
-            using (var response = await Client.HttpClient.PostAsync($"{_baseApiPath}/{ContactId}{s_apiPath}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(CreateNoteAsync), response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
-            }
         }
 
         public Task UpdateNoteAsync(ContactNote note) => UpdateNoteAsync(note, false, CancellationToken.None);
@@ -149,8 +103,9 @@ namespace EncompassRest.Contacts
         private Task UpdateNoteAsync(ContactNote note, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(note, nameof(note));
+            Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return UpdateNoteInternalAsync(note.NoteId, JsonStreamContent.Create(note), populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, cancellationToken, async response =>
+            return PatchAsync(JsonStreamContent.Create(note), note.NoteId, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(UpdateNoteAsync), note.NoteId, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -172,32 +127,16 @@ namespace EncompassRest.Contacts
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
-            return UpdateNoteInternalAsync(noteId, new JsonStringContent(note), queryString, cancellationToken, response => response.Content.ReadAsStringAsync());
-        }
-
-        private async Task<string> UpdateNoteInternalAsync(string noteId, HttpContent content, string queryString, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<string>> func)
-        {
-            using (var response = await Client.HttpClient.PatchAsync($"{_baseApiPath}/{ContactId}{s_apiPath}/{noteId}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(UpdateNoteAsync), response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
-            }
+            return PatchRawAsync(new JsonStringContent(note), noteId, queryString, nameof(UpdateNoteRawAsync), noteId, cancellationToken);
         }
 
         public Task<bool> DeleteNoteAsync(string noteId) => DeleteNoteAsync(noteId, CancellationToken.None);
 
-        public async Task<bool> DeleteNoteAsync(string noteId, CancellationToken cancellationToken)
+        public Task<bool> DeleteNoteAsync(string noteId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            using (var response = await Client.HttpClient.DeleteAsync($"{_baseApiPath}/{ContactId}{s_apiPath}/{noteId}", cancellationToken).ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
+            return DeleteAsync(noteId, cancellationToken);
         }
     }
 }

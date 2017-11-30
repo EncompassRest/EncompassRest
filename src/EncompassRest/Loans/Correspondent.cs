@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Correspondent : IDirty
+    public sealed partial class Correspondent : ExtensibleObject
     {
         private DirtyValue<decimal?> _additionalLateFeeCharge;
         public decimal? AdditionalLateFeeCharge { get => _additionalLateFeeCharge; set => _additionalLateFeeCharge = value; }
@@ -108,17 +106,11 @@ namespace EncompassRest.Loans
         public DateTime? VoidedDate { get => _voidedDate; set => _voidedDate = value; }
         private DirtyValue<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get => _withdrawnDate; set => _withdrawnDate = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalLateFeeCharge.Dirty
+                return _additionalLateFeeCharge.Dirty
                     || _approvedToFundDate.Dirty
                     || _basePrice.Dirty
                     || _cancelledDate.Dirty
@@ -167,15 +159,10 @@ namespace EncompassRest.Loans
                     || _totalLateFee.Dirty
                     || _unpaidPrincipalBalance.Dirty
                     || _voidedDate.Dirty
-                    || _withdrawnDate.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _withdrawnDate.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalLateFeeCharge.Dirty = value;
                 _approvedToFundDate.Dirty = value;
                 _basePrice.Dirty = value;
@@ -226,10 +213,7 @@ namespace EncompassRest.Loans
                 _unpaidPrincipalBalance.Dirty = value;
                 _voidedDate.Dirty = value;
                 _withdrawnDate.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

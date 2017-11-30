@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Schema
 {
-    public sealed class EntitySchema
+    public sealed class EntitySchema : ExtensibleObject
     {
         public Dictionary<string, PropertySchema> Properties { get; set; }
     }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Usda : IDirty
+    public sealed partial class Usda : ExtensibleObject
     {
         private DirtyValue<decimal?> _additionalIncomeFromPrimaryEmployment;
         public decimal? AdditionalIncomeFromPrimaryEmployment { get => _additionalIncomeFromPrimaryEmployment; set => _additionalIncomeFromPrimaryEmployment = value; }
@@ -286,17 +284,11 @@ namespace EncompassRest.Loans
         public IList<UsdaHouseholdIncome> UsdaHouseholdIncomes { get => _usdaHouseholdIncomes ?? (_usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>()); set => _usdaHouseholdIncomes = new DirtyList<UsdaHouseholdIncome>(value); }
         private DirtyValue<string> _verificationCode;
         public string VerificationCode { get => _verificationCode; set => _verificationCode = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalIncomeFromPrimaryEmployment.Dirty
+                return _additionalIncomeFromPrimaryEmployment.Dirty
                     || _additionalMemberBaseIncome.Dirty
                     || _adjustedAnnualIncome.Dirty
                     || _adjustedIncomeCalculationDescription1.Dirty
@@ -434,15 +426,10 @@ namespace EncompassRest.Loans
                     || _underwritingDecisionDate.Dirty
                     || _underwritingDecisionType.Dirty
                     || _verificationCode.Dirty
-                    || _usdaHouseholdIncomes?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _usdaHouseholdIncomes?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalIncomeFromPrimaryEmployment.Dirty = value;
                 _additionalMemberBaseIncome.Dirty = value;
                 _adjustedAnnualIncome.Dirty = value;
@@ -582,10 +569,7 @@ namespace EncompassRest.Loans
                 _underwritingDecisionType.Dirty = value;
                 _verificationCode.Dirty = value;
                 if (_usdaHouseholdIncomes != null) _usdaHouseholdIncomes.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

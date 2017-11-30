@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Funding : IDirty
+    public sealed partial class Funding : ExtensibleObject
     {
         private DirtyValue<DateTime?> _collateralSentDate;
         public DateTime? CollateralSentDate { get => _collateralSentDate; set => _collateralSentDate = value; }
@@ -50,17 +48,11 @@ namespace EncompassRest.Loans
         public string WiredToForFurtherCreditTo1 { get => _wiredToForFurtherCreditTo1; set => _wiredToForFurtherCreditTo1 = value; }
         private DirtyValue<string> _wiredToForFurtherCreditTo2;
         public string WiredToForFurtherCreditTo2 { get => _wiredToForFurtherCreditTo2; set => _wiredToForFurtherCreditTo2 = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _collateralSentDate.Dirty
+                return _collateralSentDate.Dirty
                     || _funderName.Dirty
                     || _funderUrl.Dirty
                     || _fundingClearedBy.Dirty
@@ -80,15 +72,10 @@ namespace EncompassRest.Loans
                     || _wiredToForCreditTo1.Dirty
                     || _wiredToForCreditTo2.Dirty
                     || _wiredToForFurtherCreditTo1.Dirty
-                    || _wiredToForFurtherCreditTo2.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _wiredToForFurtherCreditTo2.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _collateralSentDate.Dirty = value;
                 _funderName.Dirty = value;
                 _funderUrl.Dirty = value;
@@ -110,10 +97,7 @@ namespace EncompassRest.Loans
                 _wiredToForCreditTo2.Dirty = value;
                 _wiredToForFurtherCreditTo1.Dirty = value;
                 _wiredToForFurtherCreditTo2.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

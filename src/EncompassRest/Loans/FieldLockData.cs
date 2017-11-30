@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FieldLockData : IDirty
+    public sealed partial class FieldLockData : ExtensibleObject
     {
         private DirtyValue<bool?> _lockRemoved;
         public bool? LockRemoved { get => _lockRemoved; set => _lockRemoved = value; }
@@ -14,34 +12,20 @@ namespace EncompassRest.Loans
         public string ModelPath { get => _modelPath; set => _modelPath = value; }
         private DirtyValue<string> _value;
         public string Value { get => _value; set => _value = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _lockRemoved.Dirty
+                return _lockRemoved.Dirty
                     || _modelPath.Dirty
-                    || _value.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _value.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _lockRemoved.Dirty = value;
                 _modelPath.Dirty = value;
                 _value.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

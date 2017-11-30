@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class TrustAccountItem : IDirty
+    public sealed partial class TrustAccountItem : ExtensibleObject
     {
         private DirtyValue<DateTime?> _date;
         public DateTime? Date { get => _date; set => _date = value; }
@@ -26,17 +24,11 @@ namespace EncompassRest.Loans
         public string ReceiptCheckNo { get => _receiptCheckNo; set => _receiptCheckNo = value; }
         private DirtyValue<int?> _trustAccountItemIndex;
         public int? TrustAccountItemIndex { get => _trustAccountItemIndex; set => _trustAccountItemIndex = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _date.Dirty
+                return _date.Dirty
                     || _description.Dirty
                     || _id.Dirty
                     || _notes.Dirty
@@ -44,15 +36,10 @@ namespace EncompassRest.Loans
                     || _paymentCheckNo.Dirty
                     || _receiptAmount.Dirty
                     || _receiptCheckNo.Dirty
-                    || _trustAccountItemIndex.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _trustAccountItemIndex.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _date.Dirty = value;
                 _description.Dirty = value;
                 _id.Dirty = value;
@@ -62,10 +49,7 @@ namespace EncompassRest.Loans
                 _receiptAmount.Dirty = value;
                 _receiptCheckNo.Dirty = value;
                 _trustAccountItemIndex.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

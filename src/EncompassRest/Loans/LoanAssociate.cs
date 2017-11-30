@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanAssociate : IDirty
+    public sealed partial class LoanAssociate : ExtensibleObject
     {
         private DirtyValue<string> _cellPhone;
         public string CellPhone { get => _cellPhone; set => _cellPhone = value; }
@@ -30,17 +28,11 @@ namespace EncompassRest.Loans
         public string RoleName { get => _roleName; set => _roleName = value; }
         private DirtyValue<string> _writeAccess;
         public string WriteAccess { get => _writeAccess; set => _writeAccess = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _cellPhone.Dirty
+                return _cellPhone.Dirty
                     || _email.Dirty
                     || _fax.Dirty
                     || _id.Dirty
@@ -50,15 +42,10 @@ namespace EncompassRest.Loans
                     || _phone.Dirty
                     || _roleId.Dirty
                     || _roleName.Dirty
-                    || _writeAccess.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _writeAccess.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _cellPhone.Dirty = value;
                 _email.Dirty = value;
                 _fax.Dirty = value;
@@ -70,10 +57,7 @@ namespace EncompassRest.Loans
                 _roleId.Dirty = value;
                 _roleName.Dirty = value;
                 _writeAccess.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Gfe2010Page : IDirty
+    public sealed partial class Gfe2010Page : ExtensibleObject
     {
         private DirtyValue<int?> _balloonPaymentDueInYears;
         public int? BalloonPaymentDueInYears { get => _balloonPaymentDueInYears; set => _balloonPaymentDueInYears = value; }
@@ -186,17 +184,11 @@ namespace EncompassRest.Loans
         public decimal? PrepaidInterest { get => _prepaidInterest; set => _prepaidInterest = value; }
         private DirtyValue<decimal?> _totalToleranceIncreaseAmount;
         public decimal? TotalToleranceIncreaseAmount { get => _totalToleranceIncreaseAmount; set => _totalToleranceIncreaseAmount = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _balloonPaymentDueInYears.Dirty
+                return _balloonPaymentDueInYears.Dirty
                     || _brokerCompensationFwbc.Dirty
                     || _brokerCompensationFwsc.Dirty
                     || _curedGfeTotalTolerance.Dirty
@@ -284,15 +276,10 @@ namespace EncompassRest.Loans
                     || _prepaidInterest.Dirty
                     || _totalToleranceIncreaseAmount.Dirty
                     || _gfe2010FwbcFwscs?.Dirty == true
-                    || _gfe2010GfeCharges?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _gfe2010GfeCharges?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _balloonPaymentDueInYears.Dirty = value;
                 _brokerCompensationFwbc.Dirty = value;
                 _brokerCompensationFwsc.Dirty = value;
@@ -382,10 +369,7 @@ namespace EncompassRest.Loans
                 _totalToleranceIncreaseAmount.Dirty = value;
                 if (_gfe2010FwbcFwscs != null) _gfe2010FwbcFwscs.Dirty = value;
                 if (_gfe2010GfeCharges != null) _gfe2010GfeCharges.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -12,7 +12,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void BatchUpdateParameters_Serialization()
         {
-            var batchUpdateParameters = new BatchUpdateParameters(new StringFieldFilter(CanonicalField.LoanFolder, StringFieldMatchType.Exact, "Active Loans"), new Loan { Tltv = 85.00M });
+            var batchUpdateParameters = new BatchUpdateParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "Active Loans"), new Loan { Tltv = 85.00M });
             Assert.AreEqual(@"{""filter"":{""matchType"":""exact"",""value"":""Active Loans"",""canonicalName"":""Loan.LoanFolder""},""loanData"":{""tltv"":85.00}}", batchUpdateParameters.ToJson());
         }
     }

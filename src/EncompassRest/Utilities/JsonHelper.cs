@@ -8,9 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
-using EnumsNET;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Utilities
@@ -143,82 +141,12 @@ namespace EncompassRest.Utilities
                 NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
             }
 
-            protected override JsonObjectContract CreateObjectContract(Type objectType)
-            {
-                var contract = base.CreateObjectContract(objectType);
-                var extensionDataProperty = contract.Properties.GetClosestMatchProperty("ExtensionData");
-                if (extensionDataProperty != null)
-                {
-                    extensionDataProperty.ShouldSerialize = o => false;
-                    extensionDataProperty.ShouldDeserialize = o => false;
-                    var extensionDataPropertyInfo = GetProperty(objectType, "ExtensionData");
-                    var extensionDataValueProvider = GetValueProvider(extensionDataPropertyInfo);
-                    contract.ExtensionDataGetter = o => GetExtensionData((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))?.Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
-                    contract.ExtensionDataSetter = (o, k, v) => ((DirtyDictionary<string, object>)extensionDataValueProvider.GetValue(o))[k] = v;
-                }
-                return contract;
-            }
-
-            private static PropertyInfo GetProperty(Type type, string propertyName)
-            {
-                var typeInfo = type.GetTypeInfo();
-                var property = typeInfo.GetDeclaredProperty(propertyName);
-                if (property == null)
-                {
-                    var baseType = typeInfo.BaseType;
-                    if (baseType != null)
-                    {
-                        return GetProperty(baseType, propertyName);
-                    }
-                }
-                return property;
-            }
-
-            protected IValueProvider GetValueProvider(MemberInfo member) =>
-#if NET45
-                DynamicCodeGeneration ? new DynamicValueProvider(member) : (IValueProvider)new ReflectionValueProvider(member);
-#else
-                new ReflectionValueProvider(member);
-#endif
-
-            protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
-            {
-                var valueProvider = base.CreateMemberValueProvider(member);
-                var propertyInfo = member as PropertyInfo;
-                if (propertyInfo != null)
-                {
-                    var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == typeof(StringEnumValue<>))
-                    {
-                        valueProvider = new StringEnumValueProvider(valueProvider);
-                    }
-                }
-                return valueProvider;
-            }
-
-            private class StringEnumValueProvider : IValueProvider
-            {
-                private readonly IValueProvider _valueProvider;
-
-                public StringEnumValueProvider(IValueProvider valueProvider)
-                {
-                    _valueProvider = valueProvider;
-                }
-
-                public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
-
-                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value);
-            }
-
-            protected virtual IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary;
-
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
             {
                 var property = base.CreateProperty(member, memberSerialization);
-                var propertyInfo = member as PropertyInfo;
-                if (propertyInfo != null)
+                if (member is PropertyInfo propertyInfo)
                 {
-                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, (false)).FirstOrDefault();
+                    var enumFormatAttribute = (EnumFormatAttribute)property.AttributeProvider.GetAttributes(TypeData<EnumFormatAttribute>.Type, false).FirstOrDefault();
                     if (enumFormatAttribute != null)
                     {
                         property.Converter = new EnumJsonConverter(enumFormatAttribute.EnumFormat);
@@ -236,7 +164,7 @@ namespace EncompassRest.Utilities
                 var typeInfo = typeData.TypeInfo;
                 if (typeData.IsEnum || typeData.NonNullableValueTypeData?.IsEnum == true)
                 {
-                    var enumFormatAttribute = typeInfo.GetCustomAttribute<EnumFormatAttribute>();
+                    var enumFormatAttribute = (typeData.NonNullableValueTypeData?.TypeInfo ?? typeInfo).GetCustomAttribute<EnumFormatAttribute>();
                     if (enumFormatAttribute != null)
                     {
                         return new EnumJsonConverter(enumFormatAttribute.EnumFormat);
@@ -246,7 +174,7 @@ namespace EncompassRest.Utilities
                         return DefaultEnumConverter;
                     }
                 }
-                var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>();
+                var jsonConverterAttribute = typeInfo.GetCustomAttribute<JsonConverterAttribute>(true);
                 if (jsonConverterAttribute != null)
                 {
                     var converterType = jsonConverterAttribute.ConverterType;
@@ -272,15 +200,55 @@ namespace EncompassRest.Utilities
                 var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
                 if (backingField != null)
                 {
-                    var backingFieldValueProvider = GetValueProvider(backingField);
+                    var backingFieldValueProvider = base.CreateMemberValueProvider(backingField);
                     property.ShouldSerialize = o => backingFieldValueProvider.GetValue(o) != null;
                 }
+            }
+
+            private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
+
+            protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
+            {
+                var valueProvider = base.CreateMemberValueProvider(member);
+                if (member is PropertyInfo propertyInfo)
+                {
+                    var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == s_openStringEnumValueType)
+                    {
+                        valueProvider = new StringEnumValueProvider(valueProvider);
+                    }
+                }
+                return valueProvider;
+            }
+
+            // Required for proper Public Serialization
+            private class StringEnumValueProvider : IValueProvider
+            {
+                private readonly IValueProvider _valueProvider;
+
+                public StringEnumValueProvider(IValueProvider valueProvider)
+                {
+                    _valueProvider = valueProvider;
+                }
+
+                public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
+
+                public void SetValue(object target, object value) => _valueProvider.SetValue(target, value);
             }
         }
 
         private sealed class PrivateContractResolver : CustomContractResolver
         {
-            protected override IEnumerable<KeyValuePair<string, object>> GetExtensionData(DirtyDictionary<string, object> dirtyDictionary) => dirtyDictionary?.GetDirtyItems();
+            protected override JsonObjectContract CreateObjectContract(Type objectType)
+            {
+                var contract = base.CreateObjectContract(objectType);
+                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectType.GetTypeInfo()))
+                {
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
+                }
+                return contract;
+            }
 
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
@@ -311,7 +279,7 @@ namespace EncompassRest.Utilities
                         var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type));
                         if (backingField != null)
                         {
-                            var backingFieldValueProvider = GetValueProvider(backingField);
+                            var backingFieldValueProvider = CreateMemberValueProvider(backingField);
                             property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
                         }
                         else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type))

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Hud1Es : IDirty
+    public sealed partial class Hud1Es : ExtensibleObject
     {
         private DirtyValue<decimal?> _annualCityTax;
         public decimal? AnnualCityTax { get => _annualCityTax; set => _annualCityTax = value; }
@@ -180,17 +178,11 @@ namespace EncompassRest.Loans
         public decimal? YearlyMortgageInsurance { get => _yearlyMortgageInsurance; set => _yearlyMortgageInsurance = value; }
         private DirtyValue<decimal?> _yearlyUsdaFee;
         public decimal? YearlyUsdaFee { get => _yearlyUsdaFee; set => _yearlyUsdaFee = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _annualCityTax.Dirty
+                return _annualCityTax.Dirty
                     || _annualFeeCushion.Dirty
                     || _annualFloodInsurance.Dirty
                     || _annualHazardInsurance.Dirty
@@ -275,15 +267,10 @@ namespace EncompassRest.Loans
                     || _hud1EsDueDates?.Dirty == true
                     || _hud1EsItemizes?.Dirty == true
                     || _hud1EsPayTos?.Dirty == true
-                    || _hud1EsSetups?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _hud1EsSetups?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _annualCityTax.Dirty = value;
                 _annualFeeCushion.Dirty = value;
                 _annualFloodInsurance.Dirty = value;
@@ -370,10 +357,7 @@ namespace EncompassRest.Loans
                 if (_hud1EsItemizes != null) _hud1EsItemizes.Dirty = value;
                 if (_hud1EsPayTos != null) _hud1EsPayTos.Dirty = value;
                 if (_hud1EsSetups != null) _hud1EsSetups.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

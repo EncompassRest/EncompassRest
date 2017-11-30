@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LoanEstimate1 : IDirty
+    public sealed partial class LoanEstimate1 : ExtensibleObject
     {
         private DirtyValue<StringEnumValue<TermType>> _adjustsTermType;
         public StringEnumValue<TermType> AdjustsTermType { get => _adjustsTermType; set => _adjustsTermType = value; }
@@ -250,17 +248,11 @@ namespace EncompassRest.Loans
         public decimal? TotalEstimatedCashClose { get => _totalEstimatedCashClose; set => _totalEstimatedCashClose = value; }
         private DirtyValue<int?> _yearsToRecast;
         public int? YearsToRecast { get => _yearsToRecast; set => _yearsToRecast = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adjustsTermType.Dirty
+                return _adjustsTermType.Dirty
                     || _changedCircumstanceComments.Dirty
                     || _closingCostEstimateExpirationDate.Dirty
                     || _closingCostEstimateExpirationTime.Dirty
@@ -380,15 +372,10 @@ namespace EncompassRest.Loans
                     || _reasonRevisions.Dirty
                     || _reasonSettlementCharges.Dirty
                     || _totalEstimatedCashClose.Dirty
-                    || _yearsToRecast.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _yearsToRecast.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adjustsTermType.Dirty = value;
                 _changedCircumstanceComments.Dirty = value;
                 _closingCostEstimateExpirationDate.Dirty = value;
@@ -510,10 +497,7 @@ namespace EncompassRest.Loans
                 _reasonSettlementCharges.Dirty = value;
                 _totalEstimatedCashClose.Dirty = value;
                 _yearsToRecast.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

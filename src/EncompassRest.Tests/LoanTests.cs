@@ -20,9 +20,9 @@ namespace EncompassRest.Tests
         public async Task Loan_GetSupportedEntities()
         {
             var client = await GetTestClientAsync();
-            var entities = new HashSet<string>(await client.Loans.GetSupportedEntitiesAsync());
+            var entities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync()).Select(e => e.Value));
             entities.ExceptWith(new[] { "CoBorrower", "LOCompensation", "ElliUCDFields", "DocumentOrderLog", "NonVols" });
-            var existingEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select((EnumMember<LoanEntity> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var existingEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newEntities = entities.Except(existingEntities).ToList();
             Assert.AreEqual(0, newEntities.Count);
         }

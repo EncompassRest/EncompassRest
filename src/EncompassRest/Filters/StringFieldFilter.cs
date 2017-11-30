@@ -17,7 +17,7 @@ namespace EncompassRest.Filters
         [DefaultValue(true)]
         public bool Include { get; }
 
-        public StringFieldFilter(CanonicalField canonicalField, StringFieldMatchType matchType, string value, bool include = true)
+        public StringFieldFilter(CanonicalLoanField canonicalField, StringFieldMatchType matchType, string value, bool include = true)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), matchType, value, include)
         {
         }

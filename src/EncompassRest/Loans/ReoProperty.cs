@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ReoProperty : IDirty
+    public sealed partial class ReoProperty : ExtensibleObject
     {
         private DirtyValue<DateTime?> _acquiredDate;
         public DateTime? AcquiredDate { get => _acquiredDate; set => _acquiredDate = value; }
@@ -70,17 +68,11 @@ namespace EncompassRest.Loans
         public string TitleFax { get => _titleFax; set => _titleFax = value; }
         private DirtyValue<string> _titlePhone;
         public string TitlePhone { get => _titlePhone; set => _titlePhone = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _acquiredDate.Dirty
+                return _acquiredDate.Dirty
                     || _city.Dirty
                     || _dispositionStatusType.Dirty
                     || _entityDeleted.Dirty
@@ -110,15 +102,10 @@ namespace EncompassRest.Loans
                     || _subjectIndicator.Dirty
                     || _title.Dirty
                     || _titleFax.Dirty
-                    || _titlePhone.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _titlePhone.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _acquiredDate.Dirty = value;
                 _city.Dirty = value;
                 _dispositionStatusType.Dirty = value;
@@ -150,10 +137,7 @@ namespace EncompassRest.Loans
                 _title.Dirty = value;
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

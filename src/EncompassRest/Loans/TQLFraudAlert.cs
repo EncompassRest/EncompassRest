@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class TQLFraudAlert : IDirty
+    public sealed partial class TQLFraudAlert : ExtensibleObject
     {
         private DirtyValue<string> _driveFraudAlertCode;
         public string DriveFraudAlertCode { get => _driveFraudAlertCode; set => _driveFraudAlertCode = value; }
@@ -28,17 +26,11 @@ namespace EncompassRest.Loans
         public string LastFraudOrderDescriptionOfAlerts { get => _lastFraudOrderDescriptionOfAlerts; set => _lastFraudOrderDescriptionOfAlerts = value; }
         private DirtyValue<int?> _tQLFraudAlertIndex;
         public int? TQLFraudAlertIndex { get => _tQLFraudAlertIndex; set => _tQLFraudAlertIndex = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _driveFraudAlertCode.Dirty
+                return _driveFraudAlertCode.Dirty
                     || _driveFraudAlertStatus.Dirty
                     || _fraudGuardFraudAlertCode.Dirty
                     || _fraudGuardFraudAlertStatus.Dirty
@@ -47,15 +39,10 @@ namespace EncompassRest.Loans
                     || _lastFraudOrderAlertID.Dirty
                     || _lastFraudOrderAlertLevel.Dirty
                     || _lastFraudOrderDescriptionOfAlerts.Dirty
-                    || _tQLFraudAlertIndex.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _tQLFraudAlertIndex.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _driveFraudAlertCode.Dirty = value;
                 _driveFraudAlertStatus.Dirty = value;
                 _fraudGuardFraudAlertCode.Dirty = value;
@@ -66,10 +53,7 @@ namespace EncompassRest.Loans
                 _lastFraudOrderAlertLevel.Dirty = value;
                 _lastFraudOrderDescriptionOfAlerts.Dirty = value;
                 _tQLFraudAlertIndex.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

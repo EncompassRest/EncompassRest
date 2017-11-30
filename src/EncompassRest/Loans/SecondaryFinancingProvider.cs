@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class SecondaryFinancingProvider : IDirty
+    public sealed partial class SecondaryFinancingProvider : ExtensibleObject
     {
         private DirtyValue<decimal?> _financingAmount;
         public decimal? FinancingAmount { get => _financingAmount; set => _financingAmount = value; }
@@ -28,17 +26,11 @@ namespace EncompassRest.Loans
         public bool? SourceFromOtherIndicator { get => _sourceFromOtherIndicator; set => _sourceFromOtherIndicator = value; }
         private DirtyValue<string> _sourceOtherDetail;
         public string SourceOtherDetail { get => _sourceOtherDetail; set => _sourceOtherDetail = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _financingAmount.Dirty
+                return _financingAmount.Dirty
                     || _id.Dirty
                     || _secondaryFinancingProviderType.Dirty
                     || _sellerFundedDapIndicator.Dirty
@@ -47,15 +39,10 @@ namespace EncompassRest.Loans
                     || _sourceFromGovernmentIndicator.Dirty
                     || _sourceFromNPIndicator.Dirty
                     || _sourceFromOtherIndicator.Dirty
-                    || _sourceOtherDetail.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _sourceOtherDetail.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _financingAmount.Dirty = value;
                 _id.Dirty = value;
                 _secondaryFinancingProviderType.Dirty = value;
@@ -66,10 +53,7 @@ namespace EncompassRest.Loans
                 _sourceFromNPIndicator.Dirty = value;
                 _sourceFromOtherIndicator.Dirty = value;
                 _sourceOtherDetail.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

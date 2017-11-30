@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class LockCancellationLog : IDirty
+    public sealed partial class LockCancellationLog : ExtensibleObject
     {
         private DirtyValue<bool?> _alertIndicator;
         public bool? AlertIndicator { get => _alertIndicator; set => _alertIndicator = value; }
@@ -38,17 +36,11 @@ namespace EncompassRest.Loans
         public string SystemId { get => _systemId; set => _systemId = value; }
         private DirtyValue<string> _timeCancelled;
         public string TimeCancelled { get => _timeCancelled; set => _timeCancelled = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _alertIndicator.Dirty
+                return _alertIndicator.Dirty
                     || _alertsXml.Dirty
                     || _cancelledBy.Dirty
                     || _cancelledById.Dirty
@@ -62,15 +54,10 @@ namespace EncompassRest.Loans
                     || _logRecordIndex.Dirty
                     || _requestGuid.Dirty
                     || _systemId.Dirty
-                    || _timeCancelled.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _timeCancelled.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _alertIndicator.Dirty = value;
                 _alertsXml.Dirty = value;
                 _cancelledBy.Dirty = value;
@@ -86,10 +73,7 @@ namespace EncompassRest.Loans
                 _requestGuid.Dirty = value;
                 _systemId.Dirty = value;
                 _timeCancelled.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Gfe2010 : IDirty
+    public sealed partial class Gfe2010 : ExtensibleObject
     {
         private DirtyValue<decimal?> _adjustedOriginationCharges;
         public decimal? AdjustedOriginationCharges { get => _adjustedOriginationCharges; set => _adjustedOriginationCharges = value; }
@@ -438,17 +436,11 @@ namespace EncompassRest.Loans
         public decimal? UnderwritingFees { get => _underwritingFees; set => _underwritingFees = value; }
         private DirtyValue<bool?> _useLOCompTool;
         public bool? UseLOCompTool { get => _useLOCompTool; set => _useLOCompTool = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _adjustedOriginationCharges.Dirty
+                return _adjustedOriginationCharges.Dirty
                     || _allOtherServiceAmount.Dirty
                     || _applicationFees.Dirty
                     || _borrowerSelectIndicator10.Dirty
@@ -662,15 +654,10 @@ namespace EncompassRest.Loans
                     || _underwritingFees.Dirty
                     || _useLOCompTool.Dirty
                     || _gfe2010Fees?.Dirty == true
-                    || _gfe2010WholePocs?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _gfe2010WholePocs?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _adjustedOriginationCharges.Dirty = value;
                 _allOtherServiceAmount.Dirty = value;
                 _applicationFees.Dirty = value;
@@ -886,10 +873,7 @@ namespace EncompassRest.Loans
                 _useLOCompTool.Dirty = value;
                 if (_gfe2010Fees != null) _gfe2010Fees.Dirty = value;
                 if (_gfe2010WholePocs != null) _gfe2010WholePocs.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

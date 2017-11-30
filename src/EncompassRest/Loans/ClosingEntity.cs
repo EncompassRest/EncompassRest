@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ClosingEntity : IDirty
+    public sealed partial class ClosingEntity : ExtensibleObject
     {
         private DirtyValue<string> _alias;
         public string Alias { get => _alias; set => _alias = value; }
@@ -80,17 +78,11 @@ namespace EncompassRest.Loans
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => _vestingTrusteeOfType = value; }
         private DirtyValue<StringEnumValue<BorrowerType>> _vestingType;
         public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => _vestingType = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _alias.Dirty
+                return _alias.Dirty
                     || _assignee.Dirty
                     || _authorizedToSignIndicator.Dirty
                     || _borrowerPair.Dirty
@@ -125,15 +117,10 @@ namespace EncompassRest.Loans
                     || _vesting.Dirty
                     || _vestingGuid.Dirty
                     || _vestingTrusteeOfType.Dirty
-                    || _vestingType.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _vestingType.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _alias.Dirty = value;
                 _assignee.Dirty = value;
                 _authorizedToSignIndicator.Dirty = value;
@@ -170,10 +157,7 @@ namespace EncompassRest.Loans
                 _vestingGuid.Dirty = value;
                 _vestingTrusteeOfType.Dirty = value;
                 _vestingType.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

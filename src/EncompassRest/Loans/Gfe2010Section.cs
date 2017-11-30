@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Gfe2010Section : IDirty
+    public sealed partial class Gfe2010Section : ExtensibleObject
     {
         private DirtyValue<bool?> _borrowerSelectIndicator903;
         public bool? BorrowerSelectIndicator903 { get => _borrowerSelectIndicator903; set => _borrowerSelectIndicator903 = value; }
@@ -272,17 +270,11 @@ namespace EncompassRest.Loans
         public decimal? Section900HudGfeVaFundingFee { get => _section900HudGfeVaFundingFee; set => _section900HudGfeVaFundingFee = value; }
         private DirtyValue<bool?> _useActualPaymentChange;
         public bool? UseActualPaymentChange { get => _useActualPaymentChange; set => _useActualPaymentChange = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _borrowerSelectIndicator903.Dirty
+                return _borrowerSelectIndicator903.Dirty
                     || _borrowerSelectIndicator904.Dirty
                     || _borrowerSelectIndicator906.Dirty
                     || _borrowerSelectIndicator907.Dirty
@@ -413,15 +405,10 @@ namespace EncompassRest.Loans
                     || _section800TotalTransferTaxes.Dirty
                     || _section900HomeownerInsurance.Dirty
                     || _section900HudGfeVaFundingFee.Dirty
-                    || _useActualPaymentChange.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _useActualPaymentChange.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _borrowerSelectIndicator903.Dirty = value;
                 _borrowerSelectIndicator904.Dirty = value;
                 _borrowerSelectIndicator906.Dirty = value;
@@ -554,10 +541,7 @@ namespace EncompassRest.Loans
                 _section900HomeownerInsurance.Dirty = value;
                 _section900HudGfeVaFundingFee.Dirty = value;
                 _useActualPaymentChange.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

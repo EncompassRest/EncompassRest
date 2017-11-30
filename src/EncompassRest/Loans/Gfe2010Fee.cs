@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Gfe2010Fee : IDirty
+    public sealed partial class Gfe2010Fee : ExtensibleObject
     {
         private DirtyValue<decimal?> _additionalAmount;
         public decimal? AdditionalAmount { get => _additionalAmount; set => _additionalAmount = value; }
@@ -126,17 +124,11 @@ namespace EncompassRest.Loans
         public decimal? WholePoc { get => _wholePoc; set => _wholePoc = value; }
         private DirtyValue<StringEnumValue<WholePocPaidByType>> _wholePocPaidByType;
         public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get => _wholePocPaidByType; set => _wholePocPaidByType = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalAmount.Dirty
+                return _additionalAmount.Dirty
                     || _amount.Dirty
                     || _aprIndicator.Dirty
                     || _borPaidAmount.Dirty
@@ -194,15 +186,10 @@ namespace EncompassRest.Loans
                     || _totalPaidByBLO2015.Dirty
                     || _undiscountedInsurance2015.Dirty
                     || _wholePoc.Dirty
-                    || _wholePocPaidByType.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _wholePocPaidByType.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalAmount.Dirty = value;
                 _amount.Dirty = value;
                 _aprIndicator.Dirty = value;
@@ -262,10 +249,7 @@ namespace EncompassRest.Loans
                 _undiscountedInsurance2015.Dirty = value;
                 _wholePoc.Dirty = value;
                 _wholePocPaidByType.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

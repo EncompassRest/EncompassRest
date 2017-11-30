@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class ConstructionManagement : IDirty
+    public sealed partial class ConstructionManagement : ExtensibleObject
     {
         private DirtyValue<string> _additionalDisbursementsConditions;
         public string AdditionalDisbursementsConditions { get => _additionalDisbursementsConditions; set => _additionalDisbursementsConditions = value; }
@@ -148,17 +146,11 @@ namespace EncompassRest.Loans
         public DateTime? WaterTestDate { get => _waterTestDate; set => _waterTestDate = value; }
         private DirtyValue<bool?> _waterTestIndicator;
         public bool? WaterTestIndicator { get => _waterTestIndicator; set => _waterTestIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _additionalDisbursementsConditions.Dirty
+                return _additionalDisbursementsConditions.Dirty
                     || _architectsCertificateDate.Dirty
                     || _architectsCertificateIndicator.Dirty
                     || _asCompletedAppraisedValue.Dirty
@@ -227,15 +219,10 @@ namespace EncompassRest.Loans
                     || _utilityLettersDate.Dirty
                     || _utilityLettersIndicator.Dirty
                     || _waterTestDate.Dirty
-                    || _waterTestIndicator.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _waterTestIndicator.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _additionalDisbursementsConditions.Dirty = value;
                 _architectsCertificateDate.Dirty = value;
                 _architectsCertificateIndicator.Dirty = value;
@@ -306,10 +293,7 @@ namespace EncompassRest.Loans
                 _utilityLettersIndicator.Dirty = value;
                 _waterTestDate.Dirty = value;
                 _waterTestIndicator.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

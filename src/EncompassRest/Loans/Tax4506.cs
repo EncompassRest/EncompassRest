@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Tax4506 : IDirty
+    public sealed partial class Tax4506 : ExtensibleObject
     {
         private DirtyValue<bool?> _accountTranscript;
         public bool? AccountTranscript { get => _accountTranscript; set => _accountTranscript = value; }
@@ -128,17 +126,11 @@ namespace EncompassRest.Loans
         public bool? VerificationOfNonfiling { get => _verificationOfNonfiling; set => _verificationOfNonfiling = value; }
         private DirtyValue<string> _zip;
         public string Zip { get => _zip; set => _zip = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _accountTranscript.Dirty
+                return _accountTranscript.Dirty
                     || _address.Dirty
                     || _city.Dirty
                     || _costForEachPeriod.Dirty
@@ -197,15 +189,10 @@ namespace EncompassRest.Loans
                     || _useEIN.Dirty
                     || _useWellsFargoRules.Dirty
                     || _verificationOfNonfiling.Dirty
-                    || _zip.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _zip.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _accountTranscript.Dirty = value;
                 _address.Dirty = value;
                 _city.Dirty = value;
@@ -266,10 +253,7 @@ namespace EncompassRest.Loans
                 _useWellsFargoRules.Dirty = value;
                 _verificationOfNonfiling.Dirty = value;
                 _zip.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

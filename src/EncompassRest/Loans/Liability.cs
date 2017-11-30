@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Liability : IDirty
+    public sealed partial class Liability : ExtensibleObject
     {
         private DirtyValue<string> _accountIdentifier;
         public string AccountIdentifier { get => _accountIdentifier; set => _accountIdentifier = value; }
@@ -122,17 +120,11 @@ namespace EncompassRest.Loans
         public decimal? UnpaidBalanceAmount { get => _unpaidBalanceAmount; set => _unpaidBalanceAmount = value; }
         private DirtyValue<int?> _volIndex;
         public int? VolIndex { get => _volIndex; set => _volIndex = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _accountIdentifier.Dirty
+                return _accountIdentifier.Dirty
                     || _accountIndicator.Dirty
                     || _attention.Dirty
                     || _date.Dirty
@@ -188,15 +180,10 @@ namespace EncompassRest.Loans
                     || _toBePaidOffAmount.Dirty
                     || _uCDPayoffType.Dirty
                     || _unpaidBalanceAmount.Dirty
-                    || _volIndex.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _volIndex.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _accountIdentifier.Dirty = value;
                 _accountIndicator.Dirty = value;
                 _attention.Dirty = value;
@@ -254,10 +241,7 @@ namespace EncompassRest.Loans
                 _uCDPayoffType.Dirty = value;
                 _unpaidBalanceAmount.Dirty = value;
                 _volIndex.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

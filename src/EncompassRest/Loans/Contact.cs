@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class Contact : IDirty
+    public sealed partial class Contact : ExtensibleObject
     {
         private DirtyValue<string> _aBA;
         public string ABA { get => _aBA; set => _aBA = value; }
@@ -186,17 +184,11 @@ namespace EncompassRest.Loans
         public bool? TqlIsPublishingIndicator { get => _tqlIsPublishingIndicator; set => _tqlIsPublishingIndicator = value; }
         private DirtyValue<string> _tqlName;
         public string TqlName { get => _tqlName; set => _tqlName = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _aBA.Dirty
+                return _aBA.Dirty
                     || _accountName.Dirty
                     || _address.Dirty
                     || _address2.Dirty
@@ -284,15 +276,10 @@ namespace EncompassRest.Loans
                     || _tQLConsentSelection.Dirty
                     || _tqlId.Dirty
                     || _tqlIsPublishingIndicator.Dirty
-                    || _tqlName.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _tqlName.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _aBA.Dirty = value;
                 _accountName.Dirty = value;
                 _address.Dirty = value;
@@ -382,10 +369,7 @@ namespace EncompassRest.Loans
                 _tqlId.Dirty = value;
                 _tqlIsPublishingIndicator.Dirty = value;
                 _tqlName.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

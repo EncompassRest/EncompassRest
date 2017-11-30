@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class UsdaHouseholdIncome : IDirty
+    public sealed partial class UsdaHouseholdIncome : ExtensibleObject
     {
         private DirtyValue<int?> _age;
         public int? Age { get => _age; set => _age = value; }
@@ -32,17 +30,11 @@ namespace EncompassRest.Loans
         public string SourceofWageIncomeEmployerName { get => _sourceofWageIncomeEmployerName; set => _sourceofWageIncomeEmployerName = value; }
         private DirtyValue<int?> _usdaHouseholdIncomeIndex;
         public int? UsdaHouseholdIncomeIndex { get => _usdaHouseholdIncomeIndex; set => _usdaHouseholdIncomeIndex = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _age.Dirty
+                return _age.Dirty
                     || _analysisDocumenting.Dirty
                     || _annualNonWageIncome.Dirty
                     || _annualWageIncome.Dirty
@@ -53,15 +45,10 @@ namespace EncompassRest.Loans
                     || _recordOwnerType.Dirty
                     || _sourceofNonWageIncomeDescription.Dirty
                     || _sourceofWageIncomeEmployerName.Dirty
-                    || _usdaHouseholdIncomeIndex.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _usdaHouseholdIncomeIndex.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _age.Dirty = value;
                 _analysisDocumenting.Dirty = value;
                 _annualNonWageIncome.Dirty = value;
@@ -74,10 +61,7 @@ namespace EncompassRest.Loans
                 _sourceofNonWageIncomeDescription.Dirty = value;
                 _sourceofWageIncomeEmployerName.Dirty = value;
                 _usdaHouseholdIncomeIndex.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

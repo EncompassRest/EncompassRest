@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class VaLoanData : IDirty
+    public sealed partial class VaLoanData : ExtensibleObject
     {
         private DirtyValue<decimal?> _acres;
         public decimal? Acres { get => _acres; set => _acres = value; }
@@ -504,17 +502,11 @@ namespace EncompassRest.Loans
         public DateTime? WarrantyProgramExpirationDate { get => _warrantyProgramExpirationDate; set => _warrantyProgramExpirationDate = value; }
         private DirtyValue<bool?> _wWCarpetIndicator;
         public bool? WWCarpetIndicator { get => _wWCarpetIndicator; set => _wWCarpetIndicator = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _acres.Dirty
+                return _acres.Dirty
                     || _additionalSecurityDescription.Dirty
                     || _administratorAddress.Dirty
                     || _administratorCity.Dirty
@@ -761,15 +753,10 @@ namespace EncompassRest.Loans
                     || _warrantyProgramExpirationDate.Dirty
                     || _wWCarpetIndicator.Dirty
                     || _militaryServices?.Dirty == true
-                    || _previousVaLoans?.Dirty == true
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _previousVaLoans?.Dirty == true;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _acres.Dirty = value;
                 _additionalSecurityDescription.Dirty = value;
                 _administratorAddress.Dirty = value;
@@ -1018,10 +1005,7 @@ namespace EncompassRest.Loans
                 _wWCarpetIndicator.Dirty = value;
                 if (_militaryServices != null) _militaryServices.Dirty = value;
                 if (_previousVaLoans != null) _previousVaLoans.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

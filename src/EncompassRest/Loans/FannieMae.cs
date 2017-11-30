@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class FannieMae : IDirty
+    public sealed partial class FannieMae : ExtensibleObject
     {
         private DirtyValue<decimal?> _cltv;
         public decimal? Cltv { get => _cltv; set => _cltv = value; }
@@ -40,17 +38,11 @@ namespace EncompassRest.Loans
         public string UCDPStatus { get => _uCDPStatus; set => _uCDPStatus = value; }
         private DirtyValue<string> _uLDDECStatus;
         public string ULDDECStatus { get => _uLDDECStatus; set => _uLDDECStatus = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _cltv.Dirty
+                return _cltv.Dirty
                     || _collateralUnderwriterScore.Dirty
                     || _community2ndRepaymentStructure.Dirty
                     || _communityLending.Dirty
@@ -65,15 +57,10 @@ namespace EncompassRest.Loans
                     || _startUpMortgage.Dirty
                     || _uCDCollectionStatus.Dirty
                     || _uCDPStatus.Dirty
-                    || _uLDDECStatus.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _uLDDECStatus.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _cltv.Dirty = value;
                 _collateralUnderwriterScore.Dirty = value;
                 _community2ndRepaymentStructure.Dirty = value;
@@ -90,10 +77,7 @@ namespace EncompassRest.Loans
                 _uCDCollectionStatus.Dirty = value;
                 _uCDPStatus.Dirty = value;
                 _uLDDECStatus.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class UnderwriterSummary : IDirty
+    public sealed partial class UnderwriterSummary : ExtensibleObject
     {
         private DirtyValue<string> _appraisal;
         public string Appraisal { get => _appraisal; set => _appraisal = value; }
@@ -116,17 +114,11 @@ namespace EncompassRest.Loans
         public DateTime? SuspendedDate { get => _suspendedDate; set => _suspendedDate = value; }
         private DirtyValue<string> _suspendedReasons;
         public string SuspendedReasons { get => _suspendedReasons; set => _suspendedReasons = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _appraisal.Dirty
+                return _appraisal.Dirty
                     || _appraisalCompletedDate.Dirty
                     || _appraisalExpiredDate.Dirty
                     || _appraisalOrderedDate.Dirty
@@ -179,15 +171,10 @@ namespace EncompassRest.Loans
                     || _supervisoryAppraiserLicenseNumber.Dirty
                     || _suspendedBy.Dirty
                     || _suspendedDate.Dirty
-                    || _suspendedReasons.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _suspendedReasons.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _appraisal.Dirty = value;
                 _appraisalCompletedDate.Dirty = value;
                 _appraisalExpiredDate.Dirty = value;
@@ -242,10 +229,7 @@ namespace EncompassRest.Loans
                 _suspendedBy.Dirty = value;
                 _suspendedDate.Dirty = value;
                 _suspendedReasons.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }

@@ -18,7 +18,7 @@ namespace EncompassRest.Filters
         [DefaultValue(DateFieldMatchPrecision.Day)]
         public DateFieldMatchPrecision Precision { get; }
 
-        public DateFieldFilter(CanonicalField canonicalField, OrdinalFieldMatchType matchType, DateTime value, DateFieldMatchPrecision precision)
+        public DateFieldFilter(CanonicalLoanField canonicalField, OrdinalFieldMatchType matchType, DateTime value, DateFieldMatchPrecision precision)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), matchType, value, precision)
         {
         }

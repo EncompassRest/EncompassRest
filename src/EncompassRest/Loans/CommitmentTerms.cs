@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
-using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public sealed partial class CommitmentTerms : IDirty
+    public sealed partial class CommitmentTerms : ExtensibleObject
     {
         private DirtyValue<DateTime?> _actionDate;
         public DateTime? ActionDate { get => _actionDate; set => _actionDate = value; }
@@ -64,17 +62,11 @@ namespace EncompassRest.Loans
         public string SubdivisionRequirements { get => _subdivisionRequirements; set => _subdivisionRequirements = value; }
         private DirtyValue<decimal?> _totalMonthlyExpense;
         public decimal? TotalMonthlyExpense { get => _totalMonthlyExpense; set => _totalMonthlyExpense = value; }
-        private DirtyDictionary<string, object> _extensionData;
-        public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>()); set => _extensionData = new DirtyDictionary<string, object>(value); }
-        private bool _gettingDirty;
-        private bool _settingDirty; 
-        internal bool Dirty
+        internal override bool DirtyInternal
         {
             get
             {
-                if (_gettingDirty) return false;
-                _gettingDirty = true;
-                var dirty = _actionDate.Dirty
+                return _actionDate.Dirty
                     || _additionalConditions.Dirty
                     || _additionalItems1.Dirty
                     || _additionalItems2.Dirty
@@ -101,15 +93,10 @@ namespace EncompassRest.Loans
                     || _requirementsNumber.Dirty
                     || _subdivisionDescription.Dirty
                     || _subdivisionRequirements.Dirty
-                    || _totalMonthlyExpense.Dirty
-                    || _extensionData?.Dirty == true;
-                _gettingDirty = false;
-                return dirty;
+                    || _totalMonthlyExpense.Dirty;
             }
             set
             {
-                if (_settingDirty) return;
-                _settingDirty = true;
                 _actionDate.Dirty = value;
                 _additionalConditions.Dirty = value;
                 _additionalItems1.Dirty = value;
@@ -138,10 +125,7 @@ namespace EncompassRest.Loans
                 _subdivisionDescription.Dirty = value;
                 _subdivisionRequirements.Dirty = value;
                 _totalMonthlyExpense.Dirty = value;
-                if (_extensionData != null) _extensionData.Dirty = value;
-                _settingDirty = false;
             }
         }
-        bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
     }
 }
