@@ -1,9 +1,7 @@
 # EncompassRest
-Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+ and 2.0.
+Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+
 
-(https://github.com/EncompassRest/EncompassRest/tree/legacy). More documentation forthcoming.
-
-NUGET:[Package](https://www.nuget.org/packages/EncompassRest)
+More documentation forthcoming.
 
 ## Getting Started
 1. Install the [EncompassRest](https://www.nuget.org/packages/EncompassRest) Nuget package.
