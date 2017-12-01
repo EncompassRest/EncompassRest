@@ -1,10 +1,10 @@
 # EncompassRest
 Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
 
-A MAJOR Redesign has been pushed out. The old source code is still available in the [legacy branch](https://github.com/EncompassRest/EncompassRest/tree/legacy). More documentation and a NuGet package forthcoming.
+More documentation forthcoming.
 
 ## Getting Started
-1. Download the source code from this repository and add the `EncompassRest` project file to your Visual Studio 2017 solution. This will be much simpler when the NuGet package gets published and will support older Visual Studio versions.
+1. Install the [EncompassRest](https://www.nuget.org/packages/EncompassRest) Nuget package.
 2. [Create an async method](#create-an-async-method) in your consuming code.
 3. [Create an `EncompassRestClient` object](#create-an-encompassrestclient-object).
 4. [Use `EncompassRestClient` object](#use-encompassrestclient-object) to make API calls.
