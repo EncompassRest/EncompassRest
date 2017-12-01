@@ -1,5 +1,5 @@
 # EncompassRest
-Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+ an 2.0.
+Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+ and 2.0.
 
 (https://github.com/EncompassRest/EncompassRest/tree/legacy). More documentation forthcoming.
 
