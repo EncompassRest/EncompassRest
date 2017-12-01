@@ -96,9 +96,11 @@ namespace EncompassRest
             }
         }
 
-        internal async Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken)
+        internal Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken) => DeleteAsync(requestUri, null, cancellationToken);
+
+        internal async Task<bool> DeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken)
         {
-            using (var response = await Client.HttpClient.DeleteAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}", cancellationToken).ConfigureAwait(false))
+            using (var response = await Client.HttpClient.DeleteAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}{queryString}", cancellationToken).ConfigureAwait(false))
             {
                 return response.IsSuccessStatusCode;
             }
