@@ -4,6 +4,7 @@
     <TargetFrameworks>net45;netcoreapp2.0;netcoreapp1.1</TargetFrameworks>
     <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
     <IsPackable>false</IsPackable>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
