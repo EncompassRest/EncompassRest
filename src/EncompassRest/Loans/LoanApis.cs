@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using EncompassRest.Loans.Attachments;
+﻿using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 
 namespace EncompassRest.Loans
@@ -14,32 +13,11 @@ namespace EncompassRest.Loans
 
         public string LoanId { get; }
 
-        public LoanDocuments Documents
-        {
-            get
-            {
-                var documents = _documents;
-                return documents ?? Interlocked.CompareExchange(ref _documents, (documents = new LoanDocuments(Client, LoanId)), null) ?? documents;
-            }
-        }
+        public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
 
-        public LoanAttachments Attachments
-        {
-            get
-            {
-                var attachments = _attachments;
-                return attachments ?? Interlocked.CompareExchange(ref _attachments, (attachments = new LoanAttachments(Client, LoanId)), null) ?? attachments;
-            }
-        }
+        public LoanAttachments Attachments => _attachments ?? (_attachments = new LoanAttachments(Client, LoanId));
 
-        public LoanCustomDataObjects CustomDataObjects
-        {
-            get
-            {
-                var customDataObjects = _customDataObjects;
-                return customDataObjects ?? Interlocked.CompareExchange(ref _customDataObjects, (customDataObjects = new LoanCustomDataObjects(Client, LoanId)), null) ?? customDataObjects;
-            }
-        }
+        public LoanCustomDataObjects CustomDataObjects => _customDataObjects ?? (_customDataObjects = new LoanCustomDataObjects(Client, LoanId));
 
         internal LoanApis(EncompassRestClient client, string loanId)
         {
