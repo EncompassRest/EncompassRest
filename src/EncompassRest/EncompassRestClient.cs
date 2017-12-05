@@ -68,6 +68,8 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private BorrowerContacts _borrowerContacts;
         private BusinessContacts _businessContacts;
+        private CustomDataObjects.CustomDataObjects _globalCustomDataObjects;
+        private Users.Users _users;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -144,6 +146,24 @@ namespace EncompassRest
             {
                 var businessContacts = _businessContacts;
                 return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
+            }
+        }
+
+        public CustomDataObjects.CustomDataObjects GlobalCustomDataObjects
+        {
+            get
+            {
+                var globalCustomDataObjects = _globalCustomDataObjects;
+                return globalCustomDataObjects ?? Interlocked.CompareExchange(ref _globalCustomDataObjects, (globalCustomDataObjects = new CustomDataObjects.CustomDataObjects(this, "encompass/v1/company/customObjects")), null) ?? globalCustomDataObjects;
+            }
+        }
+
+        public Users.Users Users
+        {
+            get
+            {
+                var users = _users;
+                return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
             }
         }
 
