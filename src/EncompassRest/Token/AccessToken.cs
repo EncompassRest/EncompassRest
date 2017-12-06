@@ -12,15 +12,13 @@ using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Token
 {
-    public sealed class AccessToken
+    public sealed class AccessToken : ApiObject
     {
         private HttpClient _tokenClient;
         private readonly string _clientId;
         private readonly string _clientSecret;
 
         #region Properties
-        public EncompassRestClient Client { get; }
-
         public string Token { get; internal set; }
 
         public string Type { get; internal set; }
@@ -45,38 +43,24 @@ namespace EncompassRest.Token
         #endregion
 
         internal AccessToken(string clientId, string clientSecret, EncompassRestClient client)
+            : base(client, "token")
         {
             _clientId = clientId;
             _clientSecret = clientSecret;
-            Client = client;
         }
 
         #region Public Methods
         public Task<TokenIntrospectionResponse> IntrospectAsync() => IntrospectAsync(CancellationToken.None);
 
-        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken) => IntrospectInternalAsync(cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null));
+        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null), false);
 
         public Task<string> IntrospectRawAsync() => IntrospectRawAsync(CancellationToken.None);
 
-        public Task<string> IntrospectRawAsync(CancellationToken cancellationToken) => IntrospectInternalAsync(cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null));
-
-        private async Task<T> IntrospectInternalAsync<T>(CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await TokenClient.PostAsync("token/introspection", CreateAccessTokenContent(), cancellationToken).ConfigureAwait(false))
-            {
-                return await func(response).ConfigureAwait(false);
-            }
-        }
+        public Task<string> IntrospectRawAsync(CancellationToken cancellationToken) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null), false);
 
         public Task<bool> RevokeAsync() => RevokeAsync(CancellationToken.None);
 
-        public async Task<bool> RevokeAsync(CancellationToken cancellationToken)
-        {
-            using (var response = await TokenClient.PostAsync("token/revocation", CreateAccessTokenContent(), cancellationToken).ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
-            }
-        }
+        public Task<bool> RevokeAsync(CancellationToken cancellationToken) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false); 
 
         public override string ToString() => $"{Type} {Token}";
 
@@ -98,20 +82,14 @@ namespace EncompassRest.Token
 
         private async Task SetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, CancellationToken cancellationToken)
         {
-            using (var response = await TokenClient.PostAsync("token", new FormUrlEncodedContent(nameValueCollection), cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(nameof(SetTokenAsync), response).ConfigureAwait(false);
-                }
-
-                var tokenResponse = await response.Content.ReadAsAsync<TokenResponse>().ConfigureAwait(false);
-                Token = tokenResponse.AccessToken;
-                Type = tokenResponse.TokenType;
-            }
+            var tokenResponse = await PostAsync<TokenResponse>(null, null, new FormUrlEncodedContent(nameValueCollection), nameof(SetTokenAsync), null, cancellationToken).ConfigureAwait(false);
+            Token = tokenResponse.AccessToken;
+            Type = tokenResponse.TokenType;
         }
 
         private FormUrlEncodedContent CreateAccessTokenContent() => new FormUrlEncodedContent(new[] { KeyValuePair.Create("token", Token) });
+
+        internal override HttpClient GetHttpClient() => TokenClient;
 
         [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy), ItemRequired = Required.Always)]
         private sealed class TokenResponse
