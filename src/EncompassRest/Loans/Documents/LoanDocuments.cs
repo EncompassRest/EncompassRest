@@ -92,7 +92,7 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return PostAsync(null, queryString, new JsonStringContent(document), nameof(CreateDocumentRawAsync), null, cancellationToken, ReadContentOrLocationFunc);
+            return PostAsync(null, queryString, new JsonStringContent(document), nameof(CreateDocumentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         public Task UpdateDocumentAsync(LoanDocument document) => UpdateDocumentAsync(document, false, CancellationToken.None);

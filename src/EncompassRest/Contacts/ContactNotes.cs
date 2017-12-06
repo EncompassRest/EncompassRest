@@ -76,7 +76,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
-            return PostAsync(null, queryString, new JsonStringContent(note), nameof(CreateNoteRawAsync), null, cancellationToken, ReadContentOrLocationFunc);
+            return PostAsync(null, queryString, new JsonStringContent(note), nameof(CreateNoteRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         public Task UpdateNoteAsync(ContactNote note) => UpdateNoteAsync(note, false, CancellationToken.None);

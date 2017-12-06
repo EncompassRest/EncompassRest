@@ -66,7 +66,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
-            return PostAsync(null, queryString, new JsonStringContent(contact), nameof(CreateContactRawAsync), null, cancellationToken, ReadContentOrLocationFunc);   
+            return PostAsync(null, queryString, new JsonStringContent(contact), nameof(CreateContactRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);   
         }
 
         public Task UpdateContactAsync(BorrowerContact contact) => UpdateContactAsync(contact, false, CancellationToken.None);

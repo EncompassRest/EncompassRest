@@ -16,11 +16,11 @@ namespace EncompassRest
 
         internal static readonly Func<HttpResponseMessage, Task<string>> ReadLocationFunc = response => Task.FromResult(GetLocation(response));
 
-        internal static readonly Func<HttpResponseMessage, Task<string>> ReadContentOrLocationFunc = response => response.Content.Headers.ContentLength > 0 ? response.Content.ReadAsStringAsync() : Task.FromResult(GetLocation(response));
+        internal static readonly Func<HttpResponseMessage, Task<string>> ReadAsStringElseLocationFunc = response => response.Content.Headers.ContentLength > 0 ? response.Content.ReadAsStringAsync() : Task.FromResult(GetLocation(response));
 
         internal static readonly Func<HttpResponseMessage, Task<bool>> IsSuccessStatusCodeFunc = response => Task.FromResult(response.IsSuccessStatusCode);
 
-        internal const string ViewEntityQueryString = "view=entity";
+        internal const string ViewEntityQueryString = "?view=entity";
 
         internal static string GetLocation(HttpResponseMessage response) => Path.GetFileName(response.Headers.Location.OriginalString);
 
@@ -34,7 +34,7 @@ namespace EncompassRest
             _baseApiPath = baseApiPath;
         }
 
-        internal Task<T> GetAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) where T : class => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
+        internal Task<T> GetAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
 
         internal Task<T> GetDirtyAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) where T : class, IDirty => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, DirtyFuncCache<T>.ReadAsDirtyFunc);
 
@@ -42,7 +42,7 @@ namespace EncompassRest
 
         internal Task<string> GetRawAsync(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) where T : class => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
+        internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
 
         internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
@@ -80,7 +80,7 @@ namespace EncompassRest
         {
             using (var request = new HttpRequestMessage(method, $"{_baseApiPath}{requestUri?.PrecedeWith("/")}{queryString?.PrecedeWith("?")}") { Content = content })
             {
-                using (var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken))
+                using (var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
                 {
                     if (throwOnNonSuccessStatusCode && !response.IsSuccessStatusCode)
                     {
@@ -89,7 +89,7 @@ namespace EncompassRest
 
                     if (func != null)
                     {
-                        return await func.Invoke(response).ConfigureAwait(false);
+                        return await func(response).ConfigureAwait(false);
                     }
                     return default(T);
                 }
@@ -101,7 +101,6 @@ namespace EncompassRest
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 
         internal static class FuncCache<T>
-            where T : class
         {
             public static readonly Func<HttpResponseMessage, Task<T>> ReadAsFunc = response => response.Content.ReadAsAsync<T>();
         }

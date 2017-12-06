@@ -129,7 +129,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loan, nameof(loan));
 
-            return PostAsync(null, queryString, new JsonStringContent(loan), nameof(CreateLoanRawAsync), null, cancellationToken, ReadContentOrLocationFunc);
+            return PostAsync(null, queryString, new JsonStringContent(loan), nameof(CreateLoanRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         public Task UpdateLoanAsync(Loan loan) => UpdateLoanAsync(loan, false, CancellationToken.None);
