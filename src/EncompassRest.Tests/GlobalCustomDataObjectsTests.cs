@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using EncompassRest.CustomDataObjects;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -6,15 +7,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace EncompassRest.Tests
 {
     [TestClass]
-    public class CustomDataObjectsTests : TestBaseClass
+    public class GlobalCustomDataObjectsTests : TestBaseClass
     {
         [TestMethod]
         public async Task CreateGetAppendAndDeleteCustomDataObject()
         {
             var client = await GetTestClientAsync();
-            var existingCdos = client.GlobalCustomDataObjects.GetCustomDataObjectsAsync();
+            var existingCdos = await client.GlobalCustomDataObjects.GetCustomDataObjectsAsync();
             const string firstText = "Hello World!";
-            var cdo = new CustomDataObject { Name = "test.txt", DataObject = Encoding.UTF8.GetBytes(firstText) };
+            var cdo = new CustomDataObject { Name = Guid.NewGuid().ToString().Substring(0, 8) + ".txt", DataObject = Encoding.UTF8.GetBytes(firstText) };
             await client.GlobalCustomDataObjects.CreateOrReplaceCustomDataObjectAsync(cdo);
             var cdo2 = await client.GlobalCustomDataObjects.GetCustomDataObjectAsync(cdo.Name);
             Assert.AreEqual(firstText, Encoding.UTF8.GetString(cdo.DataObject));

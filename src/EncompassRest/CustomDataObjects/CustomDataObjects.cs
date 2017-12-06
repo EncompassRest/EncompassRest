@@ -5,7 +5,7 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.CustomDataObjects
 {
-    public class CustomDataObjects : ApiObject
+    public abstract class CustomDataObjects : ApiObject
     {
         internal CustomDataObjects(EncompassRestClient client, string baseApiPath)
             : base(client, baseApiPath)
