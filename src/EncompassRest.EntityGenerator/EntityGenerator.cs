@@ -165,7 +165,7 @@ namespace EncompassRest
 
         public static void Main(string[] args)
         {
-            Console.ReadLine();
+            //Console.ReadLine();
 
             try
             {
@@ -181,6 +181,7 @@ namespace EncompassRest
             {
                 Console.WriteLine(ex);
             }
+            Console.Write("Press Enter to End.");
             Console.ReadLine();
         }
 
@@ -268,7 +269,8 @@ namespace EncompassRest
         {
             var sb = new StringBuilder();
             sb.Append(
-$@"using System;
+$@"#pragma warning disable 1591
+using System;
 using System.Collections.Generic;
 using {@namespace}.Enums;
 
