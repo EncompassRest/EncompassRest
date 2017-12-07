@@ -36,7 +36,7 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return PostAsync(JsonStreamContent.Create(parameters), null, null, nameof(UpdateLoansAsync), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return PostAsync(null, null, JsonStreamContent.Create(parameters), nameof(UpdateLoansAsync), null, cancellationToken, ReadLocationFunc);
         }
 
         public Task<string> UpdateLoansRawAsync(string parameters) => UpdateLoansRawAsync(parameters, CancellationToken.None);
@@ -45,7 +45,7 @@ namespace EncompassRest.LoanBatch
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return PostAsync(new JsonStringContent(parameters), null, null, nameof(UpdateLoansRawAsync), null, cancellationToken, response => Task.FromResult(Path.GetFileName(response.Headers.Location.OriginalString)));
+            return PostAsync(null, null, new JsonStringContent(parameters), nameof(UpdateLoansRawAsync), null, cancellationToken, ReadLocationFunc);
         }
     }
 }

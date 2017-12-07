@@ -31,7 +31,7 @@ namespace EncompassRest.LoanPipeline
                 new QueryParameter("limit", "1"),
                 new QueryParameter("cursorType", "randomAccess"));
 
-            return PostAsync(JsonStreamContent.Create(parameters), null, queryParameters.ToString(), nameof(CreateCursorAsync), null, cancellationToken, async response =>
+            return PostAsync(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(CreateCursorAsync), null, cancellationToken, async response =>
             {
                 var headers = response.Headers;
                 const string countHeaderName = "x-total-count";
@@ -78,7 +78,7 @@ namespace EncompassRest.LoanPipeline
                 queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
             }
 
-            return PostAsync<List<LoanPipelineData>>(JsonStreamContent.Create(parameters), null, queryParameters.ToString(), nameof(ViewPipelineAsync), null, cancellationToken);
+            return PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(ViewPipelineAsync), null, cancellationToken);
         }
 
         public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, (string)null, CancellationToken.None);
@@ -105,6 +105,6 @@ namespace EncompassRest.LoanPipeline
 
         public Task<string> ViewPipelineRawAsync(string parameters, string queryString) => ViewPipelineRawAsync(parameters, queryString, CancellationToken.None);
 
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => PostRawAsync(new JsonStringContent(parameters), null, queryString, nameof(ViewPipelineRawAsync), null, cancellationToken);
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ViewPipelineRawAsync), null, cancellationToken);
     }
 }

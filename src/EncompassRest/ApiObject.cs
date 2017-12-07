@@ -1,14 +1,28 @@
-﻿using EncompassRest.Utilities;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
     public abstract class ApiObject
     {
-        private static Func<HttpResponseMessage, Task<string>> s_readAsString = response => response.Content.ReadAsStringAsync();
+        private static readonly HttpMethod s_patchMethod = new HttpMethod("PATCH");
+
+        internal static readonly Func<HttpResponseMessage, Task<string>> ReadAsStringFunc = response => response.Content.ReadAsStringAsync();
+
+        internal static readonly Func<HttpResponseMessage, Task<string>> ReadLocationFunc = response => Task.FromResult(GetLocation(response));
+
+        internal static readonly Func<HttpResponseMessage, Task<string>> ReadAsStringElseLocationFunc = response => response.Content.Headers.ContentLength > 0 ? response.Content.ReadAsStringAsync() : Task.FromResult(GetLocation(response));
+
+        internal static readonly Func<HttpResponseMessage, Task<bool>> IsSuccessStatusCodeFunc = response => Task.FromResult(response.IsSuccessStatusCode);
+
+        internal const string ViewEntityQueryString = "?view=entity";
+
+        internal static string GetLocation(HttpResponseMessage response) => Path.GetFileName(response.Headers.Location.OriginalString);
 
         private readonly string _baseApiPath;
 
@@ -20,90 +34,96 @@ namespace EncompassRest
             _baseApiPath = baseApiPath;
         }
 
-        internal Task<T> GetAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => GetAsync(requestUri, queryString, methodName, resourceId, cancellationToken, request => request.Content.ReadAsAsync<T>());
+        internal Task<T> GetAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
 
-        internal Task<string> GetRawAsync(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => GetAsync(requestUri, queryString, methodName, resourceId, cancellationToken, s_readAsString);
+        internal Task<T> GetDirtyAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) where T : class, IDirty => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, DirtyFuncCache<T>.ReadAsDirtyFunc);
 
-        internal async Task<T> GetAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        internal Task<List<T>> GetDirtyListAsync<T>(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) where T : class, IDirty => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, DirtyFuncCache<T>.ReadAsDirtyListFunc);
+
+        internal Task<string> GetRawAsync(string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Get, requestUri, queryString, null, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+
+        internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, FuncCache<T>.ReadAsFunc);
+
+        internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+
+        internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
+
+        internal Task PatchAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
+
+        internal Task<string> PatchRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+
+        internal Task PatchPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, content, methodName, resourceId, cancellationToken, target, populate);
+
+        internal Task<T> PatchAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
+
+        internal Task PutAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
+
+        internal Task<string> PutRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
+
+        internal Task PutPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => PopulateDirtyInternalAsync(HttpMethod.Put, requestUri, content, methodName, resourceId, cancellationToken, target, populate);
+
+        internal Task<T> PutAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
+
+        internal Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, null, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
+
+        private Task PopulateDirtyInternalAsync(HttpMethod method, string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => SendAsync(method, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, cancellationToken, async response =>
         {
-            using (var response = await Client.HttpClient.GetAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", cancellationToken).ConfigureAwait(false))
+            if (populate)
             {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
-                }
-
-                return await func(response).ConfigureAwait(false);
+                await response.Content.PopulateAsync(target).ConfigureAwait(false);
             }
-        }
+            target.Dirty = false;
+            return string.Empty;
+        });
 
-        internal Task<T> PostAsync<T>(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PostAsync(content, requestUri, queryString, methodName, resourceId, cancellationToken, request => request.Content.ReadAsAsync<T>());
-
-        internal Task<string> PostRawAsync(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PostAsync(content, requestUri, queryString, methodName, resourceId, cancellationToken, s_readAsString);
-
-        internal async Task<T> PostAsync<T>(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
+        private async Task<T> SendAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true)
         {
-            using (var response = await Client.HttpClient.PostAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}{(!string.IsNullOrEmpty(queryString) && queryString[0] != '?' ? "?" : string.Empty)}{queryString}", content, cancellationToken).ConfigureAwait(false))
+            using (var request = new HttpRequestMessage(method, $"{_baseApiPath}{requestUri?.PrecedeWith("/")}{queryString?.PrecedeWith("?")}") { Content = content })
             {
-                if (!response.IsSuccessStatusCode)
+                using (var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
                 {
-                    throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
+                    if (throwOnNonSuccessStatusCode && !response.IsSuccessStatusCode)
+                    {
+                        throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
+                    }
+
+                    if (func != null)
+                    {
+                        return await func(response).ConfigureAwait(false);
+                    }
+                    return default(T);
                 }
-
-                return await func(response).ConfigureAwait(false);
-            }
-        }
-
-        internal Task PatchAsync(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PatchAsync<string>(content, requestUri, queryString, methodName, resourceId, cancellationToken, null);
-
-        internal Task<string> PatchRawAsync(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PatchAsync(content, requestUri, queryString, methodName, resourceId, cancellationToken, s_readAsString);
-
-        internal async Task<T> PatchAsync<T>(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.PatchAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}{queryString}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
-                }
-
-                if (func != null)
-                {
-                    return await func.Invoke(response).ConfigureAwait(false);
-                }
-                return default(T);
-            }
-        }
-
-        internal Task PutAsync(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PutAsync<string>(content, requestUri, queryString, methodName, resourceId, cancellationToken, null);
-
-        internal Task<string> PutRawAsync(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken) => PutAsync(content, requestUri, queryString, methodName, resourceId, cancellationToken, s_readAsString);
-
-        internal async Task<T> PutAsync<T>(HttpContent content, string requestUri, string queryString, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func)
-        {
-            using (var response = await Client.HttpClient.PutAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}{queryString}", content, cancellationToken).ConfigureAwait(false))
-            {
-                if (!response.IsSuccessStatusCode)
-                {
-                    throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
-                }
-
-                if (func != null)
-                {
-                    return await func.Invoke(response).ConfigureAwait(false);
-                }
-                return default(T);
-            }
-        }
-
-        internal async Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken)
-        {
-            using (var response = await Client.HttpClient.DeleteAsync($"{_baseApiPath}{(!string.IsNullOrEmpty(requestUri) && requestUri[0] != '/' ? "/" : string.Empty)}{requestUri}", cancellationToken).ConfigureAwait(false))
-            {
-                return response.IsSuccessStatusCode;
             }
         }
 
         internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $": {resourceId}")}";
+
+        internal virtual HttpClient GetHttpClient() => Client.HttpClient;
+
+        internal static class FuncCache<T>
+        {
+            public static readonly Func<HttpResponseMessage, Task<T>> ReadAsFunc = response => response.Content.ReadAsAsync<T>();
+        }
+
+        internal static class DirtyFuncCache<T>
+            where T : class, IDirty
+        {
+            public static readonly Func<HttpResponseMessage, Task<T>> ReadAsDirtyFunc = async response =>
+            {
+                var value = await response.Content.ReadAsAsync<T>().ConfigureAwait(false);
+                value.Dirty = false;
+                return value;
+            };
+
+            public static readonly Func<HttpResponseMessage, Task<List<T>>> ReadAsDirtyListFunc = async response =>
+            {
+                var list = await response.Content.ReadAsAsync<List<T>>().ConfigureAwait(false);
+                foreach (var item in list)
+                {
+                    item.Dirty = false;
+                }
+                return list;
+            };
+        }
     }
 }
