@@ -16,6 +16,12 @@ namespace EncompassRest.Loans
         [JsonIgnore]
         public LoanAttachments Attachments { get; private set; }
 
+        [JsonIgnore]
+        public LoanCustomDataObjects CustomDataObjects { get; private set; }
+
+        [JsonIgnore]
+        public LoanObjectBoundApis LoanApis { get; private set; }
+
         /// <summary>
         /// Loan update constructor
         /// </summary>
@@ -43,6 +49,8 @@ namespace EncompassRest.Loans
             Client = client;
             Documents = new LoanDocuments(client, EncompassId);
             Attachments = new LoanAttachments(client, EncompassId);
+            CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
+            LoanApis = new LoanObjectBoundApis(client, this);
         }
     }
 }

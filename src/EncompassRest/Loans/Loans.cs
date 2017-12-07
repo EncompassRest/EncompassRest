@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -17,6 +19,8 @@ namespace EncompassRest.Loans
         {
         }
 
+        [Obsolete("Use GetLoanApis(loanId).Documents instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public LoanDocuments GetLoanDocuments(string loanId)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
@@ -24,11 +28,20 @@ namespace EncompassRest.Loans
             return new LoanDocuments(Client, loanId);
         }
 
+        [Obsolete("Use GetLoanApis(loanId).Attachments instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public LoanAttachments GetLoanAttachments(string loanId)
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
             return new LoanAttachments(Client, loanId);
+        }
+
+        public LoanApis GetLoanApis(string loanId)
+        {
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+
+            return new LoanApis(Client, loanId);
         }
 
         public Task<Loan> GetLoanAsync(string loanId) => GetLoanAsync(loanId, (IEnumerable<string>)null, CancellationToken.None);
