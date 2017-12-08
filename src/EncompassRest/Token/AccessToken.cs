@@ -50,17 +50,11 @@ namespace EncompassRest.Token
         }
 
         #region Public Methods
-        public Task<TokenIntrospectionResponse> IntrospectAsync() => IntrospectAsync(CancellationToken.None);
+        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null), false);
 
-        public Task<TokenIntrospectionResponse> IntrospectAsync(CancellationToken cancellationToken) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsAsync<TokenIntrospectionResponse>() : Task.FromResult<TokenIntrospectionResponse>(null), false);
+        public Task<string> IntrospectRawAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null), false);
 
-        public Task<string> IntrospectRawAsync() => IntrospectRawAsync(CancellationToken.None);
-
-        public Task<string> IntrospectRawAsync(CancellationToken cancellationToken) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null), false);
-
-        public Task<bool> RevokeAsync() => RevokeAsync(CancellationToken.None);
-
-        public Task<bool> RevokeAsync(CancellationToken cancellationToken) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false); 
+        public Task<bool> RevokeAsync(CancellationToken cancellationToken = default) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false); 
 
         public override string ToString() => $"{Type} {Token}";
 

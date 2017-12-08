@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
 
@@ -12,36 +11,28 @@ namespace EncompassRest.LoanBatch
         {
         }
 
-        public Task<BatchUpdateStatus> GetStatusAsync(string requestId) => GetStatusAsync(requestId, CancellationToken.None);
-
-        public Task<BatchUpdateStatus> GetStatusAsync(string requestId, CancellationToken cancellationToken)
+        public Task<BatchUpdateStatus> GetStatusAsync(string requestId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
             return GetAsync<BatchUpdateStatus>(requestId, null, nameof(GetStatusAsync), requestId, cancellationToken);
         }
 
-        public Task<string> GetStatusRawAsync(string requestId) => GetStatusRawAsync(requestId, CancellationToken.None);
-
-        public Task<string> GetStatusRawAsync(string requestId, CancellationToken cancellationToken)
+        public Task<string> GetStatusRawAsync(string requestId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
             return GetRawAsync(requestId, null, nameof(GetStatusRawAsync), requestId, cancellationToken);
         }
 
-        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters) => UpdateLoansAsync(parameters, CancellationToken.None);
-
-        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters, CancellationToken cancellationToken)
+        public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
             return PostAsync(null, null, JsonStreamContent.Create(parameters), nameof(UpdateLoansAsync), null, cancellationToken, ReadLocationFunc);
         }
 
-        public Task<string> UpdateLoansRawAsync(string parameters) => UpdateLoansRawAsync(parameters, CancellationToken.None);
-
-        public Task<string> UpdateLoansRawAsync(string parameters, CancellationToken cancellationToken)
+        public Task<string> UpdateLoansRawAsync(string parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 

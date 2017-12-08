@@ -36,6 +36,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <LangVersion>7</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>
