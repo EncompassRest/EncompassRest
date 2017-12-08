@@ -20,12 +20,7 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetAsync(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken, async response =>
-            {
-                var document = await response.Content.ReadAsAsync<LoanDocument>().ConfigureAwait(false);
-                document.Dirty = false;
-                return document;
-            });
+            return GetDirtyAsync<LoanDocument>(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken);
         }
 
         public Task<string> GetDocumentRawAsync(string documentId) => GetDocumentRawAsync(documentId, CancellationToken.None);
@@ -39,15 +34,7 @@ namespace EncompassRest.Loans.Documents
 
         public Task<List<LoanDocument>> GetDocumentsAsync() => GetDocumentsAsync(CancellationToken.None);
 
-        public Task<List<LoanDocument>> GetDocumentsAsync(CancellationToken cancellationToken) => GetAsync(null, null, nameof(GetDocumentsAsync), null, cancellationToken, async response =>
-        {
-            var documents = await response.Content.ReadAsAsync<List<LoanDocument>>().ConfigureAwait(false);
-            foreach (var document in documents)
-            {
-                document.Dirty = false;
-            }
-            return documents;
-        });
+        public Task<List<LoanDocument>> GetDocumentsAsync(CancellationToken cancellationToken) => GetDirtyListAsync<LoanDocument>(null, null, nameof(GetDocumentsAsync), null, cancellationToken);
 
         public Task<string> GetDocumentsRawAsync() => GetDocumentsRawAsync(CancellationToken.None);
 
@@ -82,14 +69,16 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PostAsync(JsonStreamContent.Create(document), null, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(CreateDocumentAsync), null, cancellationToken, async response =>
+            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(document), nameof(CreateDocumentAsync), null, cancellationToken, async response =>
             {
+                var documentId = GetLocation(response);
+                document.DocumentId = documentId;
                 if (populate)
                 {
                     await response.Content.PopulateAsync(document).ConfigureAwait(false);
                 }
                 document.Dirty = false;
-                return Path.GetFileName(response.Headers.Location.OriginalString);
+                return documentId;
             });
         }
 
@@ -103,11 +92,7 @@ namespace EncompassRest.Loans.Documents
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return PostAsync(new JsonStringContent(document), null, queryString, nameof(CreateDocumentRawAsync), null, cancellationToken, async response =>
-            {
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
-            });
+            return PostAsync(null, queryString, new JsonStringContent(document), nameof(CreateDocumentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         public Task UpdateDocumentAsync(LoanDocument document) => UpdateDocumentAsync(document, false, CancellationToken.None);
@@ -121,15 +106,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NotNullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PatchAsync(JsonStreamContent.Create(document), document.DocumentId, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(UpdateDocumentAsync), document.DocumentId, cancellationToken, async response =>
-            {
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(document).ConfigureAwait(false);
-                }
-                document.Dirty = false;
-                return string.Empty;
-            });
+            return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, cancellationToken, document, populate);
         }
 
         public Task<string> UpdateDocumentRawAsync(string documentId, string document) => UpdateDocumentRawAsync(documentId, document, null, CancellationToken.None);
@@ -143,7 +120,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
-            return PatchRawAsync(new JsonStringContent(document), documentId, queryString, nameof(UpdateDocumentRawAsync), documentId, cancellationToken);
+            return PatchRawAsync(documentId, queryString, new JsonStringContent(document), nameof(UpdateDocumentRawAsync), documentId, cancellationToken);
         }
 
         public Task AssignDocumentAttachmentsAsync(string documentId, AssignmentAction action, IEnumerable<EntityReference> attachmentEntities) => AssignDocumentAttachmentsAsync(documentId, action, attachmentEntities, CancellationToken.None);
@@ -155,7 +132,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
 
             var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
-            return PatchAsync(JsonStreamContent.Create(attachmentEntities), $"{documentId}/attachments", queryParameters.ToString(), nameof(AssignDocumentAttachmentsAsync), documentId, cancellationToken);
+            return PatchAsync($"{documentId}/attachments", queryParameters.ToString(), JsonStreamContent.Create(attachmentEntities), nameof(AssignDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 
         public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, AssignmentAction action) => AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, action, CancellationToken.None);
@@ -176,7 +153,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNullOrEmpty(attachmentEntities, nameof(attachmentEntities));
             Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
 
-            return PatchAsync(new JsonStringContent(attachmentEntities), $"{documentId}/attachments", queryString, nameof(AssignDocumentAttachmentsRawAsync), documentId, cancellationToken);
+            return PatchAsync($"{documentId}/attachments", queryString, new JsonStringContent(attachmentEntities), nameof(AssignDocumentAttachmentsRawAsync), documentId, cancellationToken);
         }
     }
 }
