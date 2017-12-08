@@ -15,17 +15,14 @@ namespace EncompassRest.Contacts
 
         public Task<ContactNote> GetNoteAsync(string noteId) => GetNoteAsync(noteId, CancellationToken.None);
 
-        public Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken)
+        public async Task<ContactNote> GetNoteAsync(string noteId, CancellationToken cancellationToken)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return GetAsync(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken, async response =>
-            {
-                var note = await response.Content.ReadAsAsync<ContactNote>().ConfigureAwait(false);
-                note.NoteId = noteId; //TODO: Remove this when EM corrects bug
-                note.Dirty = false;
-                return note;
-            });
+            var note = await GetAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
+            note.NoteId = noteId; //TODO: Remove this when EM corrects bug
+            note.Dirty = false;
+            return note;
         }
 
         public Task<string> GetNoteRawAsync(string noteId) => GetNoteRawAsync(noteId, CancellationToken.None);
@@ -39,15 +36,7 @@ namespace EncompassRest.Contacts
 
         public Task<List<ContactNote>> GetNotesAsync() => GetNotesAsync(CancellationToken.None);
 
-        public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken) => GetAsync(null, null, nameof(GetNotesAsync), null, cancellationToken, async response =>
-        {
-            var notes = await response.Content.ReadAsAsync<List<ContactNote>>().ConfigureAwait(false);
-            foreach (var note in notes)
-            {
-                note.Dirty = false;
-            }
-            return notes;
-        });
+        public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken) => GetDirtyListAsync<ContactNote>(null, null, nameof(GetNotesAsync), null, cancellationToken);
 
         public Task<string> GetNotesRawAsync() => GetNotesRawAsync(CancellationToken.None);
 
@@ -64,9 +53,9 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PostAsync(JsonStreamContent.Create(note), null, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(CreateNoteAsync), null, cancellationToken, async response =>
+            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(note), nameof(CreateNoteAsync), null, cancellationToken, async response =>
             {
-                var noteId = Path.GetFileName(response.Headers.Location.OriginalString);
+                var noteId = GetLocation(response);
                 note.NoteId = noteId;
                 if (populate)
                 {
@@ -87,11 +76,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
-            return PostAsync(new JsonStringContent(note), null, queryString, nameof(CreateNoteRawAsync), null, cancellationToken, async response =>
-            {
-                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                return string.IsNullOrEmpty(json) ? Path.GetFileName(response.Headers.Location.OriginalString) : json;
-            });
+            return PostAsync(null, queryString, new JsonStringContent(note), nameof(CreateNoteRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
         public Task UpdateNoteAsync(ContactNote note) => UpdateNoteAsync(note, false, CancellationToken.None);
@@ -105,15 +90,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PatchAsync(JsonStreamContent.Create(note), note.NoteId, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(UpdateNoteAsync), note.NoteId, cancellationToken, async response =>
-            {
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(note).ConfigureAwait(false);
-                }
-                note.Dirty = false;
-                return string.Empty;
-            });
+            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, cancellationToken, note, populate);
         }
 
         public Task<string> UpdateNoteRawAsync(string noteId, string note) => UpdateNoteRawAsync(noteId, note, null, CancellationToken.None);
@@ -127,7 +104,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
-            return PatchRawAsync(new JsonStringContent(note), noteId, queryString, nameof(UpdateNoteRawAsync), noteId, cancellationToken);
+            return PatchRawAsync(noteId, queryString, new JsonStringContent(note), nameof(UpdateNoteRawAsync), noteId, cancellationToken);
         }
 
         public Task<bool> DeleteNoteAsync(string noteId) => DeleteNoteAsync(noteId, CancellationToken.None);

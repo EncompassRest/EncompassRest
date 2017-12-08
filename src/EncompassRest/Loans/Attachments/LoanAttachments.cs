@@ -18,12 +18,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            return GetAsync(attachmentId, null, nameof(GetAttachmentAsync), attachmentId, cancellationToken, async response =>
-            {
-                var attachment = await response.Content.ReadAsAsync<LoanAttachment>().ConfigureAwait(false);
-                attachment.Dirty = false;
-                return attachment;
-            });
+            return GetDirtyAsync<LoanAttachment>(attachmentId, null, nameof(GetAttachmentAsync), attachmentId, cancellationToken);
         }
 
         public Task<string> GetAttachmentRawAsync(string attachmentId) => GetAttachmentRawAsync(attachmentId, CancellationToken.None);
@@ -37,15 +32,7 @@ namespace EncompassRest.Loans.Attachments
 
         public Task<List<LoanAttachment>> GetAttachmentsAsync() => GetAttachmentsAsync(CancellationToken.None);
 
-        public Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken) => GetAsync(null, null, nameof(GetAttachmentsAsync), null, cancellationToken, async response =>
-        {
-            var attachments = await response.Content.ReadAsAsync<List<LoanAttachment>>().ConfigureAwait(false);
-            foreach (var attachment in attachments)
-            {
-                attachment.Dirty = false;
-            }
-            return attachments;
-        });
+        public Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken) => GetDirtyListAsync<LoanAttachment>(null, null, nameof(GetAttachmentsAsync), null, cancellationToken);
 
         public Task<string> GetAttachmentsRawAsync() => GetAttachmentsRawAsync(CancellationToken.None);
 
@@ -80,15 +67,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NotNullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}{nameof(attachment.AttachmentId)}");
 
-            return PatchAsync(JsonStreamContent.Create(attachment), attachment.AttachmentId, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(UpdateAttachmentAsync), attachment.AttachmentId, cancellationToken, async response =>
-            {
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(attachment).ConfigureAwait(false);
-                }
-                attachment.Dirty = false;
-                return string.Empty;
-            });
+            return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, cancellationToken, attachment, populate);
         }
 
         public Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment) => UpdateAttachmentRawAsync(attachmentId, attachment, null, CancellationToken.None);
@@ -102,7 +81,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
-            return PatchRawAsync(new JsonStringContent(attachment), attachmentId, queryString, nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
+            return PatchRawAsync(attachmentId, queryString, new JsonStringContent(attachment), nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
         }
     }
 }

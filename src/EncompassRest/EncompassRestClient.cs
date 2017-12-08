@@ -9,6 +9,7 @@ using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EncompassRest.Contacts;
+using EncompassRest.CustomDataObjects;
 
 namespace EncompassRest
 {
@@ -68,6 +69,8 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private BorrowerContacts _borrowerContacts;
         private BusinessContacts _businessContacts;
+        private GlobalCustomDataObjects _globalCustomDataObjects;
+        private Users.Users _users;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -144,6 +147,24 @@ namespace EncompassRest
             {
                 var businessContacts = _businessContacts;
                 return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
+            }
+        }
+
+        public GlobalCustomDataObjects GlobalCustomDataObjects
+        {
+            get
+            {
+                var globalCustomDataObjects = _globalCustomDataObjects;
+                return globalCustomDataObjects ?? Interlocked.CompareExchange(ref _globalCustomDataObjects, (globalCustomDataObjects = new GlobalCustomDataObjects(this)), null) ?? globalCustomDataObjects;
+            }
+        }
+
+        public Users.Users Users
+        {
+            get
+            {
+                var users = _users;
+                return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
             }
         }
 
