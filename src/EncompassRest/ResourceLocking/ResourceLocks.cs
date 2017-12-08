@@ -15,9 +15,8 @@ namespace EncompassRest.ResourceLocking
         {
         }
 
-        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId) => GetResourceLockAsync(resourceId, lockId, "loan", CancellationToken.None);
-        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId,  CancellationToken cancellationToken) => GetResourceLockAsync(resourceId, lockId, "loan", cancellationToken);
-        private Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId, string resourceType, CancellationToken cancellationToken)
+        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId,  CancellationToken cancellationToken) => GetResourceLockAsync(resourceId, lockId, ResourceEntityType.Loan, cancellationToken);
+        private Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId, ResourceEntityType resourceType, CancellationToken cancellationToken = CancellationToken.None)
         {
             Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
             Preconditions.NotNullOrEmpty(resourceType, nameof(resourceType));
