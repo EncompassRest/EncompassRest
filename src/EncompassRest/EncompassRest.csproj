@@ -3,12 +3,12 @@
     <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
     <Version>0.1.1</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/hfcjweinstock/EncompassRest</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/hfcjweinstock/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/EncompassRest/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
     <Summary>Encompass API Client Library for .NET</Summary>
-    <RepositoryUrl>https://github.com/hfcjweinstock/EncompassRest</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EncompassRest/EncompassRest</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
