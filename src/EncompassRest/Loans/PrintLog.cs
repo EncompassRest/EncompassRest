@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrintLog : ExtensibleObject
+    public sealed partial class PrintLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _action;
         public string Action { get => _action; set => _action = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ATRQMCommon : ExtensibleObject
+    public sealed partial class ATRQMCommon : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _affiliatesFees;
         public decimal? AffiliatesFees { get => _affiliatesFees; set => _affiliatesFees = value; }

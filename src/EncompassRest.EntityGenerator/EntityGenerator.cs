@@ -276,7 +276,7 @@ using {@namespace}.Enums;
 
 namespace {@namespace}
 {{
-    public sealed partial class {entityType} : ExtensibleObject
+    public sealed partial class {entityType} : ExtensibleObject, IIdentifiable
     {{
 ");
 

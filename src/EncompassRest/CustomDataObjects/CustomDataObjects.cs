@@ -45,7 +45,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNull(cdo, nameof(cdo));
             Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
 
-            return PutAsync(JsonStreamContent.Create(cdo), cdo.Name, null, nameof(CreateOrReplaceCustomDataObjectAsync), cdo.Name, cancellationToken);
+            return PutAsync(cdo.Name, null, JsonStreamContent.Create(cdo), nameof(CreateOrReplaceCustomDataObjectAsync), cdo.Name, cancellationToken);
         }
 
         public Task<string> CreateOrReplaceCustomDataObjectRawAsync(string objectName, string cdo) => CreateOrReplaceCustomDataObjectRawAsync(objectName, cdo, CancellationToken.None);
@@ -55,7 +55,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
             Preconditions.NotNullOrEmpty(cdo, nameof(cdo));
 
-            return PutRawAsync(new JsonStringContent(cdo), objectName, null, nameof(CreateOrReplaceCustomDataObjectRawAsync), objectName, cancellationToken);
+            return PutRawAsync(objectName, null, new JsonStringContent(cdo), nameof(CreateOrReplaceCustomDataObjectRawAsync), objectName, cancellationToken);
         }
 
         public Task<bool> DeleteCustomDataObjectAsync(string objectName) => DeleteCustomDataObjectAsync(objectName, CancellationToken.None);
@@ -78,7 +78,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNull(cdo, nameof(cdo));
             Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
 
-            return PatchAsync(JsonStreamContent.Create(cdo), cdo.Name, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, nameof(AppendToCustomDataObjectAsync), cdo.Name, cancellationToken, async response =>
+            return PatchAsync(cdo.Name, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cancellationToken, async response =>
             {
                 if (populate)
                 {
@@ -99,7 +99,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
             Preconditions.NotNullOrEmpty(cdo, nameof(cdo));
 
-            return PatchRawAsync(new JsonStringContent(cdo), objectName, queryString, nameof(AppendToCustomDataObjectRawAsync), objectName, cancellationToken);
+            return PatchRawAsync(objectName, queryString, new JsonStringContent(cdo), nameof(AppendToCustomDataObjectRawAsync), objectName, cancellationToken);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest.Loans.Attachments
 {
-    public abstract class Image : ExtensibleObject
+    public abstract class Image : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _imageKey;
         public string ImageKey { get => _imageKey; set => _imageKey = value; }
@@ -14,6 +14,8 @@
         public float? HorizontalResolution { get => _horizontalResolution; set => _horizontalResolution = value; }
         private DirtyValue<float?> _verticalResolution;
         public float? VeriticalResolution { get => _verticalResolution; set => _verticalResolution = value; }
+        [IdPropertyName(nameof(ImageKey))]
+        string IIdentifiable.Id { get => ImageKey; set => ImageKey = value; }
         internal override bool DirtyInternal
         {
             get

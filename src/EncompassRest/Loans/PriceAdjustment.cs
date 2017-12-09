@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PriceAdjustment : ExtensibleObject
+    public sealed partial class PriceAdjustment : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _adjustmentType;
         public string AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }

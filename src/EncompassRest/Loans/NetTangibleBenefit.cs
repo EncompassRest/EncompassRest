@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class NetTangibleBenefit : ExtensibleObject
+    public sealed partial class NetTangibleBenefit : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _aprNotExceedIndicator;
         public bool? AprNotExceedIndicator { get => _aprNotExceedIndicator; set => _aprNotExceedIndicator = value; }

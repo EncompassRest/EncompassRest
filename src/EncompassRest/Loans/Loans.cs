@@ -113,23 +113,14 @@ namespace EncompassRest.Loans
 
         public Task<string> CreateLoanAsync(Loan loan, bool populate) => CreateLoanAsync(loan, populate, CancellationToken.None);
 
-        public Task<string> CreateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken)
+        public async Task<string> CreateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(loan), nameof(CreateLoanAsync), null, cancellationToken, async response =>
-            {
-                var loanId = GetLocation(response);
-                loan.EncompassId = loanId;
-                loan.Initialize(Client);
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(loan).ConfigureAwait(false);
-                }
-                loan.Dirty = false;
-                return loanId;
-            });
+            var loanId = await PostPopulateDirtyAsync(null, loan, nameof(CreateLoanAsync), populate, cancellationToken);
+            loan.Initialize(Client);
+            return loanId;
         }
 
         public Task<string> CreateLoanRawAsync(string loan) => CreateLoanRawAsync(loan, null, CancellationToken.None);

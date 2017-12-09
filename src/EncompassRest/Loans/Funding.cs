@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Funding : ExtensibleObject
+    public sealed partial class Funding : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _collateralSentDate;
         public DateTime? CollateralSentDate { get => _collateralSentDate; set => _collateralSentDate = value; }

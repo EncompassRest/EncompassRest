@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RespaHudDetail : ExtensibleObject
+    public sealed partial class RespaHudDetail : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<CreditDebt>> _creditDebt;
         public StringEnumValue<CreditDebt> CreditDebt { get => _creditDebt; set => _creditDebt = value; }

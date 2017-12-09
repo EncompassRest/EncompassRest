@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DisclosureNotices : ExtensibleObject
+    public sealed partial class DisclosureNotices : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _antiCoercionStatementIndicator;
         public bool? AntiCoercionStatementIndicator { get => _antiCoercionStatementIndicator; set => _antiCoercionStatementIndicator = value; }

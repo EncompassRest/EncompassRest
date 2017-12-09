@@ -132,17 +132,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return PostAsync("subscriptions", populate ? ViewEntityQueryString : null, JsonStreamContent.Create(subscription), nameof(CreateSubscriptionAsync), null, cancellationToken, async response =>
-            {
-                var subscriptionId = GetLocation(response);
-                subscription.SubscriptionId = subscriptionId;
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(subscription).ConfigureAwait(false);
-                }
-                subscription.Dirty = false;
-                return subscriptionId;
-            });
+            return PostPopulateDirtyAsync("subscriptions", subscription, nameof(CreateSubscriptionAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateSubscriptionRawAsync(string subscription) => CreateSubscriptionRawAsync(subscription, null, CancellationToken.None);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EncompassRest.Loans.Documents
 {
-    public sealed class LoanDocument : ExtensibleObject
+    public sealed class LoanDocument : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _documentId;
         public string DocumentId { get => _documentId; set => _documentId = value; }
@@ -87,6 +87,8 @@ namespace EncompassRest.Loans.Documents
         public IList<FileAttachmentReference> Attachments { get => _attachments ?? (_attachments = new DirtyList<FileAttachmentReference>()); set => _attachments = new DirtyList<FileAttachmentReference>(value); }
         private DirtyList<EntityReference> _roles;
         public IList<EntityReference> Roles { get => _roles ?? (_roles = new DirtyList<EntityReference>()); set => _roles = new DirtyList<EntityReference>(value); }
+        [IdPropertyName(nameof(DocumentId))]
+        string IIdentifiable.Id { get => DocumentId; set => DocumentId = value; }
         internal override bool DirtyInternal
         {
             get

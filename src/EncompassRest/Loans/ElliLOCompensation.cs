@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ElliLOCompensation : ExtensibleObject
+    public sealed partial class ElliLOCompensation : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _adjustedPlanAdditonalAmountForBroker;
         public decimal? AdjustedPlanAdditonalAmountForBroker { get => _adjustedPlanAdditonalAmountForBroker; set => _adjustedPlanAdditonalAmountForBroker = value; }

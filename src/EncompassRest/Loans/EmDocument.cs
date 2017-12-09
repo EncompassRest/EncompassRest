@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EmDocument : ExtensibleObject
+    public sealed partial class EmDocument : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _allngToNtPayToJrsdctn;
         public string AllngToNtPayToJrsdctn { get => _allngToNtPayToJrsdctn; set => _allngToNtPayToJrsdctn = value; }

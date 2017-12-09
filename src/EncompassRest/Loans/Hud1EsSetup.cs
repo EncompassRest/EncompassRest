@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsSetup : ExtensibleObject
+    public sealed partial class Hud1EsSetup : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _annualFeePrepaid;
         public bool? AnnualFeePrepaid { get => _annualFeePrepaid; set => _annualFeePrepaid = value; }

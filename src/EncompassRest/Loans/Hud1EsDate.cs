@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsDate : ExtensibleObject
+    public sealed partial class Hud1EsDate : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _aggrMthDisb;
         public decimal? AggrMthDisb { get => _aggrMthDisb; set => _aggrMthDisb = value; }

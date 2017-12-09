@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StateDisclosure : ExtensibleObject
+    public sealed partial class StateDisclosure : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _acceptedByBorrowerIndicator;
         public bool? AcceptedByBorrowerIndicator { get => _acceptedByBorrowerIndicator; set => _acceptedByBorrowerIndicator = value; }

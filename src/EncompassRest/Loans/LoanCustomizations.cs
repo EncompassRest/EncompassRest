@@ -1,4 +1,5 @@
-﻿using EncompassRest.Loans.Attachments;
+﻿using System.ComponentModel.DataAnnotations;
+using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
@@ -21,6 +22,9 @@ namespace EncompassRest.Loans
 
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis { get; private set; }
+
+        [IdPropertyName(nameof(EncompassId))]
+        string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
 
         /// <summary>
         /// Loan update constructor

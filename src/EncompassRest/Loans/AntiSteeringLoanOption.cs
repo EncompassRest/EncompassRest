@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AntiSteeringLoanOption : ExtensibleObject
+    public sealed partial class AntiSteeringLoanOption : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _antiSteeringLoanOptionIndex;
         public int? AntiSteeringLoanOptionIndex { get => _antiSteeringLoanOptionIndex; set => _antiSteeringLoanOptionIndex = value; }

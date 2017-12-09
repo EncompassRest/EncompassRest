@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CrmLog : ExtensibleObject
+    public sealed partial class CrmLog : ExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }

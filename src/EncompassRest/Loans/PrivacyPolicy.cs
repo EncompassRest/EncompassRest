@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrivacyPolicy : ExtensibleObject
+    public sealed partial class PrivacyPolicy : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalRightsDescription;
         public string AdditionalRightsDescription { get => _additionalRightsDescription; set => _additionalRightsDescription = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UCDDetail : ExtensibleObject
+    public sealed partial class UCDDetail : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
         public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => _feeAccountType = value; }
