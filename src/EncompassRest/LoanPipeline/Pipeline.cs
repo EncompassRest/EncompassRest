@@ -13,17 +13,11 @@ namespace EncompassRest.LoanPipeline
         {
         }
 
-        public Task<CanonicalNames> GetCanonicalNamesAsync() => GetCanonicalNamesAsync(CancellationToken.None);
+        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<CanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
-        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken) => GetAsync<CanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
+        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
-        public Task<string> GetCanonicalNamesRawAsync() => GetCanonicalNamesRawAsync(CancellationToken.None);
-
-        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
-
-        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters) => CreateCursorAsync(parameters, CancellationToken.None);
-
-        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, CancellationToken cancellationToken)
+        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
@@ -58,13 +52,9 @@ namespace EncompassRest.LoanPipeline
             });
         }
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters) => ViewPipelineAsync(parameters, null, CancellationToken.None);
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, cancellationToken);
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken) => ViewPipelineAsync(parameters, null, cancellationToken);
-
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit) => ViewPipelineAsync(parameters, limit, CancellationToken.None);
-
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, CancellationToken cancellationToken)
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
             if (limit.HasValue)
@@ -81,13 +71,9 @@ namespace EncompassRest.LoanPipeline
             return PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(ViewPipelineAsync), null, cancellationToken);
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters) => ViewPipelineRawAsync(parameters, (string)null, CancellationToken.None);
+        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken = default) => ViewPipelineRawAsync(parameters, (string)null, cancellationToken);
 
-        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken) => ViewPipelineRawAsync(parameters, (string)null, cancellationToken);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit) => ViewPipelineRawAsync(parameters, limit, CancellationToken.None);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken)
+        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken = default)
         {
             if (limit.HasValue)
             {
@@ -103,8 +89,6 @@ namespace EncompassRest.LoanPipeline
             return ViewPipelineRawAsync(parameters, queryParameters.ToString(), cancellationToken);
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString) => ViewPipelineRawAsync(parameters, queryString, CancellationToken.None);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken) => PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ViewPipelineRawAsync), null, cancellationToken);
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken = default) => PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ViewPipelineRawAsync), null, cancellationToken);
     }
 }
