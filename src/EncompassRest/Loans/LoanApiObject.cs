@@ -115,6 +115,7 @@ namespace EncompassRest.Loans
                 {
                     list[i] = item;
                     found = true;
+                    break;
                 }
             }
             if (!found)
