@@ -60,14 +60,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNull(cdo, nameof(cdo));
             Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
 
-            return PatchAsync(cdo.Name, populate ? new QueryParameters(new QueryParameter("view", "entity")).ToString() : null, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cancellationToken, async response =>
-            {
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(cdo).ConfigureAwait(false);
-                }
-                return string.Empty;
-            });
+            return PatchPopulateDirtyAsync(cdo.Name, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cancellationToken, cdo, populate);
         }
 
         public Task<string> AppendToCustomDataObjectRawAsync(string objectName, string cdo, CancellationToken cancellationToken = default) => AppendToCustomDataObjectRawAsync(objectName, cdo, null, cancellationToken);

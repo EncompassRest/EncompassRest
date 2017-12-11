@@ -103,12 +103,12 @@ namespace EncompassRest
                     {
                         return await func(response).ConfigureAwait(false);
                     }
-                    return default(T);
+                    return default;
                 }
             }
         }
 
-        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $": {resourceId}")}";
+        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{resourceId?.PrecedeWith(": ")}";
 
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 

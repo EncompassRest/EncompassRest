@@ -1,4 +1,6 @@
-﻿namespace EncompassRest.Users
+﻿using EncompassRest.Utilities;
+
+namespace EncompassRest.Users
 {
     public sealed class UserCustomDataObjects : CustomDataObjects.CustomDataObjects
     {
@@ -10,6 +12,6 @@
             UserId = userId;
         }
 
-        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{(string.IsNullOrEmpty(resourceId) ? string.Empty : "/")}{resourceId}");
+        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{UserId}{resourceId?.PrecedeWith("/")}");
     }
 }

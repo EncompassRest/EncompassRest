@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using EncompassRest.Loans.Attachments;
+﻿using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;

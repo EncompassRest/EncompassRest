@@ -16,7 +16,7 @@ namespace EncompassRest.Loans
             LoanId = loanId;
         }
 
-        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{LoanId}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $"/{resourceId}")}");
+        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{LoanId}{resourceId?.PrecedeWith("/")}");
     }
 
     public abstract class LoanApiObject<T> : LoanApiObject

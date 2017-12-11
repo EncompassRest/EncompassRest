@@ -16,9 +16,8 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            var note = await GetAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
+            var note = await GetDirtyAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
             note.NoteId = noteId; //TODO: Remove this when EM corrects bug
-            note.Dirty = false;
             return note;
         }
 
