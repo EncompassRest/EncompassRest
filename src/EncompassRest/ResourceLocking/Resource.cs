@@ -4,9 +4,12 @@ using System.Text;
 
 namespace EncompassRest.ResourceLocking
 {
-    public sealed class Resource : ExtensibleObject
+    public sealed class Resource : ExtensibleObject, IIdentifiable
     {
         public string EntityId { get; set; }
         public StringEnumValue<ResourceEntityType> EntityType { get; set; }
+
+        [IdPropertyName(nameof(EntityId))]
+        string IIdentifiable.Id { get => EntityId; set => EntityId = value; }
     }
 }

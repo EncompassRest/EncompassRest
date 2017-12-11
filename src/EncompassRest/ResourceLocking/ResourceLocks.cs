@@ -73,17 +73,12 @@ namespace EncompassRest.ResourceLocking
 
             return DeleteAsync(lockId, queryParameters.ToString(), cancellationToken);
         }
-
-        private Task<bool> UnlockResourceAsync(ResourceLock resourceLock, bool force, CancellationToken cancellationToken = default)
+        public Task<bool> UnlockResourceAsync(ResourceLock resourceLock, CancellationToken cancellationToken = default) => UnlockResourceAsync(resourceLock, false, cancellationToken);
+        public Task<bool> UnlockResourceAsync(ResourceLock resourceLock, bool force, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(resourceLock, nameof(resourceLock));
 
-            var queryParameters = new QueryParameters();
-            queryParameters.Add(new QueryParameter("resourceType", resourceLock.LockType));
-            queryParameters.Add(new QueryParameter("resourceId", resourceLock.Resource.EntityId));
-            queryParameters.Add(new QueryParameter("force", force ? "true" : "false"));
-
-            return DeleteAsync(resourceLock.Id, queryParameters.ToString(), cancellationToken);
+            return UnlockResourceAsync(resourceLock.Id, resourceLock.Id, resourceLock.LockType, force, cancellationToken);
         }
     }
 }
