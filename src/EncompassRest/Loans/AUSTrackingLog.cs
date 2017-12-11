@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AUSTrackingLog : ExtensibleObject
+    public sealed partial class AUSTrackingLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _aUSTrackingLogIndex;
         public int? AUSTrackingLogIndex { get => _aUSTrackingLogIndex; set => _aUSTrackingLogIndex = value; }

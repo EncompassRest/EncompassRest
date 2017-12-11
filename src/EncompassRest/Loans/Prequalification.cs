@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Prequalification : ExtensibleObject
+    public sealed partial class Prequalification : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _afterTaxOwnMoSavings;
         public decimal? AfterTaxOwnMoSavings { get => _afterTaxOwnMoSavings; set => _afterTaxOwnMoSavings = value; }

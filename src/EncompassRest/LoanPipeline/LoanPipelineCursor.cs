@@ -23,15 +23,11 @@ namespace EncompassRest.LoanPipeline
             Fields = fields ?? Array<string>.Empty;
         }
 
-        public Task<LoanPipelineData> GetItemAsync(int index) => GetItemAsync(index, null, CancellationToken.None);
-
-        public Task<LoanPipelineData> GetItemAsync(int index, CancellationToken cancellationToken) => GetItemAsync(index, null, cancellationToken);
+        public Task<LoanPipelineData> GetItemAsync(int index, CancellationToken cancellationToken = default) => GetItemAsync(index, null, cancellationToken);
 
         public Task<LoanPipelineData> GetItemAsync(int index, params string[] fields) => GetItemAsync(index, fields, CancellationToken.None);
 
-        public Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields) => GetItemAsync(index, fields, CancellationToken.None);
-
-        public async Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields, CancellationToken cancellationToken)
+        public async Task<LoanPipelineData> GetItemAsync(int index, IEnumerable<string> fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
             Preconditions.LessThan(index, nameof(index), Count, nameof(Count));
@@ -40,15 +36,11 @@ namespace EncompassRest.LoanPipeline
             return data[0];
         }
 
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit) => GetItemsAsync(start, limit, null, CancellationToken.None);
-
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsAsync(start, limit, null, cancellationToken);
+        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, CancellationToken cancellationToken = default) => GetItemsAsync(start, limit, null, cancellationToken);
 
         public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, params string[] fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
 
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsAsync(start, limit, fields, CancellationToken.None);
-
-        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
+        public Task<List<LoanPipelineData>> GetItemsAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
             Preconditions.LessThan(start, nameof(start), Count, nameof(Count));
@@ -68,15 +60,12 @@ namespace EncompassRest.LoanPipeline
 
             return Client.Pipeline.PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), content, nameof(GetItemsAsync), null, cancellationToken);
         }
-        public Task<string> GetItemsRawAsync(int start, int? limit) => GetItemsRawAsync(start, limit, null, CancellationToken.None);
-
-        public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken) => GetItemsRawAsync(start, limit, null, cancellationToken);
+        
+        public Task<string> GetItemsRawAsync(int start, int? limit, CancellationToken cancellationToken = default) => GetItemsRawAsync(start, limit, null, cancellationToken);
 
         public Task<string> GetItemsRawAsync(int start, int? limit, params string[] fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
 
-        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields) => GetItemsRawAsync(start, limit, fields, CancellationToken.None);
-
-        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken)
+        public Task<string> GetItemsRawAsync(int start, int? limit, IEnumerable<string> fields, CancellationToken cancellationToken = default)
         {
             Preconditions.GreaterThanOrEquals(start, nameof(start), 0);
             Preconditions.LessThan(start, nameof(start), Count, nameof(Count));

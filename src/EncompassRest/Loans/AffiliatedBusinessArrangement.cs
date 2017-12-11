@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class AffiliatedBusinessArrangement : ExtensibleObject
+    public sealed partial class AffiliatedBusinessArrangement : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _affiliatedBusinessArrangementIndex;
         public int? AffiliatedBusinessArrangementIndex { get => _affiliatedBusinessArrangementIndex; set => _affiliatedBusinessArrangementIndex = value; }

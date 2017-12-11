@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hud1EsItemize : ExtensibleObject
+    public sealed partial class Hud1EsItemize : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _date;
         public string Date { get => _date; set => _date = value; }

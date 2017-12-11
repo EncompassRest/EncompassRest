@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Uldd : ExtensibleObject
+    public sealed partial class Uldd : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _aCHABARoutingAndTransitIdentifier;
         public string ACHABARoutingAndTransitIdentifier { get => _aCHABARoutingAndTransitIdentifier; set => _aCHABARoutingAndTransitIdentifier = value; }

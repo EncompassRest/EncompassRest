@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Buydown : ExtensibleObject
+    public sealed partial class Buydown : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _buydownIndex;
         public int? BuydownIndex { get => _buydownIndex; set => _buydownIndex = value; }

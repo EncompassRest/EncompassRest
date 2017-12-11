@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Section : ExtensibleObject
+    public sealed partial class Gfe2010Section : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _borrowerSelectIndicator903;
         public bool? BorrowerSelectIndicator903 { get => _borrowerSelectIndicator903; set => _borrowerSelectIndicator903 = value; }

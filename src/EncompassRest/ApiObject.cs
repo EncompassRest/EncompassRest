@@ -46,6 +46,24 @@ namespace EncompassRest
 
         internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri,  T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync<T>(requestUri, queryString, value, methodName, populate, cancellationToken);
+
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable
+        {
+            var _queryString = $"{(populate ? ViewEntityQueryString : null)}{(queryString == "" ? "", $"&{queryString}")}".PrecedeWith("?");
+
+            return SendAsync(HttpMethod.Post, requestUri, _queryString != "?" ? _queryString : null, JsonStreamContent.Create(value), methodName, null, cancellationToken, async response =>
+            {
+                var id = GetLocation(response);
+                value.Id = id;
+                if (populate)
+                {
+                    await response.Content.PopulateAsync(value).ConfigureAwait(false);
+                }
+                value.Dirty = false;
+                return id;
+            });
+        }
         internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
         internal Task PatchAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
@@ -65,6 +83,8 @@ namespace EncompassRest
         internal Task<T> PutAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
 
         internal Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, null, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
+
+        internal Task<bool> DeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
 
         private Task PopulateDirtyInternalAsync(HttpMethod method, string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => SendAsync(method, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, cancellationToken, async response =>
         {
@@ -91,12 +111,12 @@ namespace EncompassRest
                     {
                         return await func(response).ConfigureAwait(false);
                     }
-                    return default(T);
+                    return default;
                 }
             }
         }
 
-        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $": {resourceId}")}";
+        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{resourceId?.PrecedeWith(": ")}";
 
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 

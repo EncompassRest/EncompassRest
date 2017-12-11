@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZInterestRatePeriod : ExtensibleObject
+    public sealed partial class RegulationZInterestRatePeriod : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _adjustmentDate;
         public DateTime? AdjustmentDate { get => _adjustmentDate; set => _adjustmentDate = value; }

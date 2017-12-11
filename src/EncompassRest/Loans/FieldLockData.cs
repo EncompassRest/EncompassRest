@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FieldLockData : ExtensibleObject
+    public sealed partial class FieldLockData : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _lockRemoved;
         public bool? LockRemoved { get => _lockRemoved; set => _lockRemoved = value; }

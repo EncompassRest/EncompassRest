@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SchedulePaymentTransaction : ExtensibleObject
+    public sealed partial class SchedulePaymentTransaction : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _additionalEscrow;
         public decimal? AdditionalEscrow { get => _additionalEscrow; set => _additionalEscrow = value; }

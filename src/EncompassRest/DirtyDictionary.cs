@@ -90,7 +90,7 @@ namespace EncompassRest
         public bool TryGetValue(TKey key, out TValue value)
         {
             var success = _dictionary.TryGetValue(key, out var dirtyValue);
-            value = success ? dirtyValue._value : default(TValue);
+            value = success ? dirtyValue._value : default;
             return success;
         }
 

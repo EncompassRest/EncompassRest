@@ -7,6 +7,6 @@ namespace EncompassRest.ResourceLocking
     public sealed class Resource : ExtensibleObject
     {
         public string EntityId { get; set; }
-        public ResourceEntityType EntityType { get; set; }
+        public StringEnumValue<ResourceEntityType> EntityType { get; set; }
     }
 }

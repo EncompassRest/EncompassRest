@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010Fee : ExtensibleObject
+    public sealed partial class Gfe2010Fee : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _additionalAmount;
         public decimal? AdditionalAmount { get => _additionalAmount; set => _additionalAmount = value; }

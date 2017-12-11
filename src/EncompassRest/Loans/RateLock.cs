@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RateLock : ExtensibleObject
+    public sealed partial class RateLock : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualSellAmount;
         public decimal? ActualSellAmount { get => _actualSellAmount; set => _actualSellAmount = value; }

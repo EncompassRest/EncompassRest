@@ -22,6 +22,9 @@ namespace EncompassRest.Loans
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis { get; private set; }
 
+        [IdPropertyName(nameof(EncompassId))]
+        string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
+
         /// <summary>
         /// Loan update constructor
         /// </summary>

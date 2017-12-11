@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactNote : ExtensibleObject
+    public sealed class ContactNote : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _noteIdInt;
         [JsonProperty("noteId")]
@@ -12,17 +12,7 @@ namespace EncompassRest.Contacts
         public string NoteId
         {
             get => NoteIdInt?.ToString();
-            set
-            {
-                if (value == null || !int.TryParse(value, out var noteId))
-                {
-                    NoteIdInt = null;
-                }
-                else
-                {
-                    NoteIdInt = noteId;
-                }
-            }
+            set => NoteIdInt = value != null && int.TryParse(value, out var noteId) ? noteId : (int?)null;
         }
         private DirtyValue<string> _subject;
         public string Subject { get => _subject; set => _subject = value; }
@@ -30,6 +20,8 @@ namespace EncompassRest.Contacts
         public DateTime? Timestamp { get => _timestamp; set => _timestamp = value; }
         private DirtyValue<string> _details;
         public string Details { get => _details; set => _details = value; }
+        [IdPropertyName(nameof(NoteId))]
+        string IIdentifiable.Id { get => NoteId; set => NoteId = value; }
         internal override bool DirtyInternal
         {
             get

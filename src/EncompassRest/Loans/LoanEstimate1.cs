@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LoanEstimate1 : ExtensibleObject
+    public sealed partial class LoanEstimate1 : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<TermType>> _adjustsTermType;
         public StringEnumValue<TermType> AdjustsTermType { get => _adjustsTermType; set => _adjustsTermType = value; }

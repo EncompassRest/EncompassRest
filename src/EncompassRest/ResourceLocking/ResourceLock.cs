@@ -9,7 +9,7 @@ namespace EncompassRest.ResourceLocking
         public string Id { get; set; }
         public Resource Resource { get; set; }
         public string UserId { get; set; }
-        public ResourceLockType LockType { get; set; }
+        public StringEnumValue<ResourceLockType> LockType { get; set; }
         public string LockTime { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class PrequalificationScenario : ExtensibleObject
+    public sealed partial class PrequalificationScenario : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _appraisedValue;
         public int? AppraisedValue { get => _appraisedValue; set => _appraisedValue = value; }

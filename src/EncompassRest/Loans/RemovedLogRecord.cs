@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RemovedLogRecord : ExtensibleObject
+    public sealed partial class RemovedLogRecord : ExtensibleObject, IIdentifiable
     {
         private DirtyList<LogComment> _commentList;
         public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }

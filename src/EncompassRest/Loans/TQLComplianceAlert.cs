@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLComplianceAlert : ExtensibleObject
+    public sealed partial class TQLComplianceAlert : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

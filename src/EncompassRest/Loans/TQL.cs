@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQL : ExtensibleObject
+    public sealed partial class TQL : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _citibank4506TBaselineReportRequired;
         public string Citibank4506TBaselineReportRequired { get => _citibank4506TBaselineReportRequired; set => _citibank4506TBaselineReportRequired = value; }

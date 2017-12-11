@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class VaLoanData : ExtensibleObject
+    public sealed partial class VaLoanData : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _acres;
         public decimal? Acres { get => _acres; set => _acres = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UnderwritingConditionLog : ExtensibleObject
+    public sealed partial class UnderwritingConditionLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
         public string AddedBy { get => _addedBy; set => _addedBy = value; }

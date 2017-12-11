@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTemplateLog : ExtensibleObject
+    public sealed partial class MilestoneTemplateLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _elliLogRecordId;
         public int? ElliLogRecordId { get => _elliLogRecordId; set => _elliLogRecordId = value; }

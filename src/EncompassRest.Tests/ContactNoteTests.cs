@@ -15,7 +15,7 @@ namespace EncompassRest.Tests
             Assert.AreEqual(contactNote.NoteIdInt, 5);
             Assert.AreEqual(@"{""noteId"":5}", contactNote.ToJson());
             contactNote.Dirty = false;
-            Assert.AreEqual("{}", contactNote.ToJson());
+            Assert.AreEqual(@"{""noteId"":5}", contactNote.ToJson());
         }
 
         [TestMethod]

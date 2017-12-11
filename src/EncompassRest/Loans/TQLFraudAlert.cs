@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TQLFraudAlert : ExtensibleObject
+    public sealed partial class TQLFraudAlert : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _driveFraudAlertCode;
         public string DriveFraudAlertCode { get => _driveFraudAlertCode; set => _driveFraudAlertCode = value; }

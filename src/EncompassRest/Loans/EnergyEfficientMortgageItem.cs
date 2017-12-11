@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EnergyEfficientMortgageItem : ExtensibleObject
+    public sealed partial class EnergyEfficientMortgageItem : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualAmount;
         public decimal? ActualAmount { get => _actualAmount; set => _actualAmount = value; }

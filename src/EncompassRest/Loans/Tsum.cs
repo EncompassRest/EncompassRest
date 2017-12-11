@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Tsum : ExtensibleObject
+    public sealed partial class Tsum : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _aboveOrBelowRatePercent;
         public decimal? AboveOrBelowRatePercent { get => _aboveOrBelowRatePercent; set => _aboveOrBelowRatePercent = value; }

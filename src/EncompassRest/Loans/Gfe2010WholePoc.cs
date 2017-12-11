@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010WholePoc : ExtensibleObject
+    public sealed partial class Gfe2010WholePoc : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _gfe2010WholePocIndex;
         public int? Gfe2010WholePocIndex { get => _gfe2010WholePocIndex; set => _gfe2010WholePocIndex = value; }
