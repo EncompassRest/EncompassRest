@@ -9,7 +9,7 @@ using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EncompassRest.Contacts;
-using EncompassRest.ResourceLocking;
+using EncompassRest.ResourceLocks;
 using EncompassRest.CustomDataObjects;
 
 
@@ -67,7 +67,7 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private BorrowerContacts _borrowerContacts;
         private BusinessContacts _businessContacts;
-        private ResourceLocks _resourceLocks;
+        private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
 
@@ -151,12 +151,12 @@ namespace EncompassRest
         }
 
 
-        public ResourceLocks ResourceLocks
+        public ResourceLocks.ResourceLocks ResourceLocks
         {
             get
             {
                 var resourceLocks = _resourceLocks;
-                return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks(this)), null) ?? resourceLocks;
+                return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks.ResourceLocks(this)), null) ?? resourceLocks;
             }
         }
 

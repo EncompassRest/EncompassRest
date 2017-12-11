@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EncompassRest.ResourceLocking
+namespace EncompassRest.ResourceLocks
 {
     public enum ResourceLockType
     {
