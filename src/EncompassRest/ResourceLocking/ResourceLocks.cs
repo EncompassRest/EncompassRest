@@ -1,4 +1,6 @@
-﻿using EncompassRest.Utilities;
+﻿using EncompassRest.Loans;
+using EncompassRest.Loans.Enums;
+using EncompassRest.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,8 +22,8 @@ namespace EncompassRest.ResourceLocks
             Preconditions.NotNull(resourceLock, nameof(resourceLock));
             return GetResourceLockAsync(resourceLock.Resource.EntityId, resourceLock.Id, resourceLock.Resource.EntityType, cancellationToken);
         }
-        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId,  CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceId, lockId, nameof(ResourceEntityType.Loan), cancellationToken);
-        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId, ResourceEntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceId, lockId, nameof(resourceType), cancellationToken);
+        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId,  CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceId, lockId, nameof(EntityType.Loan), cancellationToken);
+        public Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLockAsync(resourceId, lockId, nameof(resourceType), cancellationToken);
         private async Task<ResourceLock> GetResourceLockAsync(string resourceId, string lockId, string resourceType, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
