@@ -172,7 +172,6 @@ namespace EncompassRest
             {
                 var users = _users;
                 return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
-
             }
         }
 
