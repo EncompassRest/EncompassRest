@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Mcaw : ExtensibleObject
+    public sealed partial class Mcaw : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AcceptOrReject>> _adequacyOfAvailableAssetsType;
         public StringEnumValue<AcceptOrReject> AdequacyOfAvailableAssetsType { get => _adequacyOfAvailableAssetsType; set => _adequacyOfAvailableAssetsType = value; }

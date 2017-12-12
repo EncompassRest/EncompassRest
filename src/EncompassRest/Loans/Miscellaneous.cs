@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Miscellaneous : ExtensibleObject
+    public sealed partial class Miscellaneous : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         public string Address { get => _address; set => _address = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FundingFee : ExtensibleObject
+    public sealed partial class FundingFee : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _balanceChecked;
         public bool? BalanceChecked { get => _balanceChecked; set => _balanceChecked = value; }

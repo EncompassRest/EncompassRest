@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class OtherTransaction : ExtensibleObject
+    public sealed partial class OtherTransaction : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountNumber;
         public string AccountNumber { get => _accountNumber; set => _accountNumber = value; }

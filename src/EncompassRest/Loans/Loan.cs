@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Loan : ExtensibleObject
+    public sealed partial class Loan : ExtensibleObject, IIdentifiable
     {
         private AdditionalRequests _additionalRequests;
         public AdditionalRequests AdditionalRequests { get => _additionalRequests ?? (_additionalRequests = new AdditionalRequests()); set => _additionalRequests = value; }

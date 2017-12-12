@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SelfEmployedIncome : ExtensibleObject
+    public sealed partial class SelfEmployedIncome : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _boolFieldValue;
         public bool? BoolFieldValue { get => _boolFieldValue; set => _boolFieldValue = value; }

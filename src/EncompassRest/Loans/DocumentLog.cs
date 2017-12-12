@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class DocumentLog : ExtensibleObject
+    public sealed partial class DocumentLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accessedBy;
         public string AccessedBy { get => _accessedBy; set => _accessedBy = value; }

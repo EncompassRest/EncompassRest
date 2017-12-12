@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CustomField : ExtensibleObject
+    public sealed partial class CustomField : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dateValue;
         public DateTime? DateValue { get => _dateValue; set => _dateValue = value; }

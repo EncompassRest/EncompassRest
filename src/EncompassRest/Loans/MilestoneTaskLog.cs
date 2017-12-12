@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class MilestoneTaskLog : ExtensibleObject
+    public sealed partial class MilestoneTaskLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _addDate;
         public DateTime? AddDate { get => _addDate; set => _addDate = value; }

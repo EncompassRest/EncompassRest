@@ -7,7 +7,6 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using EncompassRest.Loans;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -15,6 +14,7 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
+        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy();
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
 
         public static JsonSerializer CreatePublicSerializer(JsonSerializer existingSerializer)
@@ -242,51 +242,38 @@ namespace EncompassRest.Utilities
             protected override JsonObjectContract CreateObjectContract(Type objectType)
             {
                 var contract = base.CreateObjectContract(objectType);
-                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectType.GetTypeInfo()))
+                var objectTypeInfo = objectType.GetTypeInfo();
+                if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                 {
                     contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
+                    var idProperty = GetIdProperty(objectTypeInfo);
+                    var idPropertyNameAttribute = idProperty.GetCustomAttribute<IdPropertyNameAttribute>(false);
+                    var idPropertyName = idPropertyNameAttribute != null ? CamelCaseNamingStrategy.GetPropertyName(idPropertyNameAttribute.IdPropertyName, false) : "id";
+                    var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
+                    if (property != null)
+                    {
+                        property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
+                    }
                 }
                 return contract;
             }
 
+            private static PropertyInfo GetIdProperty(TypeInfo typeInfo) => typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "EncompassRest.IIdentifiable.Id") ?? typeInfo.DeclaredProperties.FirstOrDefault(p => p.Name == "Id") ?? GetIdProperty(typeInfo.BaseType.GetTypeInfo());
+
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
-                var toAssignShouldSerializeMethod = true;
                 var propertyName = propertyInfo.Name;
-                if (propertyInfo.DeclaringType == TypeData<CustomField>.Type)
+                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type));
+                if (backingField != null)
                 {
-                    if (propertyName == "Id")
-                    {
-                        property.ShouldSerialize = o => false;
-                        toAssignShouldSerializeMethod = false;
-                    }
-                    else if (propertyName == "FieldName")
-                    {
-                        property.ShouldSerialize = o => true;
-                        toAssignShouldSerializeMethod = false;
-                    }
+                    var backingFieldValueProvider = CreateMemberValueProvider(backingField);
+                    property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
                 }
-                if (toAssignShouldSerializeMethod)
+                else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type))
                 {
-                    if (propertyName == "Id")
-                    {
-                        property.ShouldSerialize = o => property.ValueProvider.GetValue(o) != null;
-                    }
-                    else
-                    {
-                        var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                        var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type));
-                        if (backingField != null)
-                        {
-                            var backingFieldValueProvider = CreateMemberValueProvider(backingField);
-                            property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
-                        }
-                        else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type))
-                        {
-                            property.ShouldSerialize = o => ((IDirty)property.ValueProvider.GetValue(o))?.Dirty == true;
-                        }
-                    }
+                    property.ShouldSerialize = o => ((IDirty)property.ValueProvider.GetValue(o))?.Dirty == true;
                 }
             }
         }

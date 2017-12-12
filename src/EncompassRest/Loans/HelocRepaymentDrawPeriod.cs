@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class HelocRepaymentDrawPeriod : ExtensibleObject
+    public sealed partial class HelocRepaymentDrawPeriod : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _apr;
         public decimal? Apr { get => _apr; set => _apr = value; }

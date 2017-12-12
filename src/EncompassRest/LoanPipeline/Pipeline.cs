@@ -89,6 +89,11 @@ namespace EncompassRest.LoanPipeline
             return ViewPipelineRawAsync(parameters, queryParameters.ToString(), cancellationToken);
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken = default) => PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ViewPipelineRawAsync), null, cancellationToken);
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
+
+            return PostRawAsync(null, queryString, new JsonStringContent(parameters), nameof(ViewPipelineRawAsync), null, cancellationToken);
+        }
     }
 }

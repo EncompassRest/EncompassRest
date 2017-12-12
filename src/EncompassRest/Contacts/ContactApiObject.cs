@@ -1,4 +1,6 @@
-﻿namespace EncompassRest.Contacts
+﻿using EncompassRest.Utilities;
+
+namespace EncompassRest.Contacts
 {
     public abstract class ContactApiObject : ApiObject
     {
@@ -10,6 +12,6 @@
             ContactId = contactId;
         }
 
-        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{ContactId}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $"/{resourceId}")}");
+        internal override string CreateErrorMessage(string methodName, string resourceId = null) => base.CreateErrorMessage(methodName, $"{ContactId}{resourceId?.PrecedeWith("/")}");
     }
 }

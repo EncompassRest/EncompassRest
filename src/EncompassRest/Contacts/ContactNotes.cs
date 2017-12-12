@@ -16,9 +16,8 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            var note = await GetAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
+            var note = await GetDirtyAsync<ContactNote>(noteId, null, nameof(GetNoteAsync), noteId, cancellationToken).ConfigureAwait(false);
             note.NoteId = noteId; //TODO: Remove this when EM corrects bug
-            note.Dirty = false;
             return note;
         }
 
@@ -40,17 +39,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(note), nameof(CreateNoteAsync), null, cancellationToken, async response =>
-            {
-                var noteId = GetLocation(response);
-                note.NoteId = noteId;
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(note).ConfigureAwait(false);
-                }
-                note.Dirty = false;
-                return noteId;
-            });
+            return PostPopulateDirtyAsync(null, note, nameof(CreateNoteAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateNoteRawAsync(string note, CancellationToken cancellationToken = default) => CreateNoteRawAsync(note, null, cancellationToken);

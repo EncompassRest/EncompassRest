@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure1 : ExtensibleObject
+    public sealed partial class ClosingDisclosure1 : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _cDDateIssued;
         public DateTime? CDDateIssued { get => _cDDateIssued; set => _cDDateIssued = value; }

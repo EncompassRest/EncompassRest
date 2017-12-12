@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockDenialLog : ExtensibleObject
+    public sealed partial class LockDenialLog : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _alertIndicator;
         public bool? AlertIndicator { get => _alertIndicator; set => _alertIndicator = value; }

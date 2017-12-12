@@ -30,23 +30,14 @@ namespace EncompassRest.Contacts
 
         public Task<string> CreateContactAsync(TContact contact, CancellationToken cancellationToken = default) => CreateContactAsync(contact, false, cancellationToken);
 
-        private Task<string> CreateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
+        private async Task<string> CreateContactAsync(TContact contact, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(contact, nameof(contact));
             Preconditions.NullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
-            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(contact), nameof(CreateContactAsync), null, cancellationToken, async response =>
-            {
-                var contactId = GetLocation(response);
-                contact.Id = contactId;
-                contact.Initialize(Client);
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(contact).ConfigureAwait(false);
-                }
-                contact.Dirty = false;
-                return contactId;
-            });
+            var contactId = await PostPopulateDirtyAsync(null, contact, nameof(CreateContactAsync), populate, cancellationToken).ConfigureAwait(false);
+            contact.Initialize(Client);
+            return contactId;
         }
 
         public Task<string> CreateContactRawAsync(string contact, CancellationToken cancellationToken = default) => CreateContactRawAsync(contact, null, cancellationToken);

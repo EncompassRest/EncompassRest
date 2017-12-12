@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LockRequestBorrower : ExtensibleObject
+    public sealed partial class LockRequestBorrower : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _equifaxScore;
         public string EquifaxScore { get => _equifaxScore; set => _equifaxScore = value; }

@@ -2,20 +2,12 @@
 using EnumsNET;
 using EnumsNET.NonGeneric;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Utilities
 {
     internal sealed class EnumJsonConverter : JsonConverter
     {
-        internal static readonly EnumFormat CamelCaseNameFormat;
-        private static readonly CamelCaseNamingStrategy s_camelCaseNamingStrategy;
-
-        static EnumJsonConverter()
-        {
-            s_camelCaseNamingStrategy = new CamelCaseNamingStrategy();
-            CamelCaseNameFormat = Enums.RegisterCustomEnumFormat(member => s_camelCaseNamingStrategy.GetPropertyName(member.Name, false));
-        }
+        internal static readonly EnumFormat CamelCaseNameFormat = Enums.RegisterCustomEnumFormat(member => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(member.Name, false));
         
         public EnumFormat EnumFormat { get; }
 

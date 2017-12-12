@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ReoProperty : ExtensibleObject
+    public sealed partial class ReoProperty : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _acquiredDate;
         public DateTime? AcquiredDate { get => _acquiredDate; set => _acquiredDate = value; }

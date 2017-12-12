@@ -52,17 +52,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PostAsync(null, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(document), nameof(CreateDocumentAsync), null, cancellationToken, async response =>
-            {
-                var documentId = GetLocation(response);
-                document.DocumentId = documentId;
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(document).ConfigureAwait(false);
-                }
-                document.Dirty = false;
-                return documentId;
-            });
+            return PostPopulateDirtyAsync(null, document, nameof(CreateDocumentAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken = default) => CreateDocumentRawAsync(document, null, cancellationToken);

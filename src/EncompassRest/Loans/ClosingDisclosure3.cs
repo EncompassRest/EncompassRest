@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDisclosure3 : ExtensibleObject
+    public sealed partial class ClosingDisclosure3 : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualLECD3TotalClosingCostJFromLatestRec;
         public decimal? ActualLECD3TotalClosingCostJFromLatestRec { get => _actualLECD3TotalClosingCostJFromLatestRec; set => _actualLECD3TotalClosingCostJFromLatestRec = value; }

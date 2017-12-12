@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class RegulationZ : ExtensibleObject
+    public sealed partial class RegulationZ : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _acknowledgedDay;
         public string AcknowledgedDay { get => _acknowledgedDay; set => _acknowledgedDay = value; }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EncompassRest
 {
     [JsonConverter(typeof(PublicallySerializableConverter))]
-    public abstract class ExtensibleObject : IDirty
+    public abstract class ExtensibleObject : IDirty, IIdentifiable
     {
         private DirtyDictionary<string, object> _extensionData;
         [JsonExtensionData]
@@ -40,6 +40,7 @@ namespace EncompassRest
         }
         internal virtual bool DirtyInternal { get => false; set { } }
         bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
+        string IIdentifiable.Id { get => string.Empty; set { } }
         internal ExtensibleObject()
         {
         }

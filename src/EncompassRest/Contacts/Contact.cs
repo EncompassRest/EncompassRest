@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    public abstract class Contact : ExtensibleObject
+    public abstract class Contact : ExtensibleObject, IIdentifiable
     {
         internal abstract string ApiPath { get; }
 

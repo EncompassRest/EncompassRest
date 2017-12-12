@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class TPO : ExtensibleObject
+    public sealed partial class TPO : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _archived;
         public bool? Archived { get => _archived; set => _archived = value; }

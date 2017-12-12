@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ConstructionManagement : ExtensibleObject
+    public sealed partial class ConstructionManagement : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalDisbursementsConditions;
         public string AdditionalDisbursementsConditions { get => _additionalDisbursementsConditions; set => _additionalDisbursementsConditions = value; }

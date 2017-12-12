@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Shipping : ExtensibleObject
+    public sealed partial class Shipping : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _actualShipDate;
         public DateTime? ActualShipDate { get => _actualShipDate; set => _actualShipDate = value; }

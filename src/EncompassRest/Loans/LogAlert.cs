@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogAlert : ExtensibleObject
+    public sealed partial class LogAlert : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dueDate;
         public DateTime? DueDate { get => _dueDate; set => _dueDate = value; }

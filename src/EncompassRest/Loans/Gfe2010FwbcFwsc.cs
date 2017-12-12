@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010FwbcFwsc : ExtensibleObject
+    public sealed partial class Gfe2010FwbcFwsc : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _fwbc;
         public string Fwbc { get => _fwbc; set => _fwbc = value; }

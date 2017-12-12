@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Hmda : ExtensibleObject
+    public sealed partial class Hmda : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<ActionTaken>> _actionTaken;
         public StringEnumValue<ActionTaken> ActionTaken { get => _actionTaken; set => _actionTaken = value; }
