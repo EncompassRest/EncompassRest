@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans.Attachments
 {
-    public sealed class LoanAttachment : ExtensibleObject
+    public sealed class LoanAttachment : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _attachmentId;
         public string AttachmentId { get => _attachmentId; set => _attachmentId = value; }
@@ -35,6 +35,8 @@ namespace EncompassRest.Loans.Attachments
         private EntityReference _document;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get => _document; set => _document = value; }
+        [IdPropertyName(nameof(AttachmentId))]
+        string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
         internal override bool DirtyInternal
         {
             get

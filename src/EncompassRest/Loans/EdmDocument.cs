@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class EdmDocument : ExtensibleObject
+    public sealed partial class EdmDocument : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }

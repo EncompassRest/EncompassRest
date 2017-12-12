@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class LogSnapshotField : ExtensibleObject
+    public sealed partial class LogSnapshotField : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _fieldID;
         public string FieldID { get => _fieldID; set => _fieldID = value; }

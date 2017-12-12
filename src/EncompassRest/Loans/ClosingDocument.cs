@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ClosingDocument : ExtensibleObject
+    public sealed partial class ClosingDocument : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _additionalLienHolderAddress;
         public string AdditionalLienHolderAddress { get => _additionalLienHolderAddress; set => _additionalLienHolderAddress = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FannieMae : ExtensibleObject
+    public sealed partial class FannieMae : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _cltv;
         public decimal? Cltv { get => _cltv; set => _cltv = value; }

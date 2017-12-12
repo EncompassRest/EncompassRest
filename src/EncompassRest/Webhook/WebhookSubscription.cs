@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Webhook
 {
-    public sealed class WebhookSubscription : ExtensibleObject
+    public sealed class WebhookSubscription : ExtensibleObject, IIdentifiable
     {
         [JsonRequired]
         public string Endpoint { get; }
@@ -20,6 +20,8 @@ namespace EncompassRest.Webhook
         public string InstanceId { get => _instanceId; set => _instanceId = value; }
         private DirtyList<StringEnumValue<WebhookResourceEvent>> _events;
         public IList<StringEnumValue<WebhookResourceEvent>> Events { get => _events ?? (_events = new DirtyList<StringEnumValue<WebhookResourceEvent>>()); set => _events = new DirtyList<StringEnumValue<WebhookResourceEvent>>(value); }
+        [IdPropertyName(nameof(SubscriptionId))]
+        string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
         internal override bool DirtyInternal
         {
             get

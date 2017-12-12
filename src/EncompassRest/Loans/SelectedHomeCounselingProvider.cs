@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class SelectedHomeCounselingProvider : ExtensibleObject
+    public sealed partial class SelectedHomeCounselingProvider : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _affiliatedWithLenderIndicator;
         public bool? AffiliatedWithLenderIndicator { get => _affiliatedWithLenderIndicator; set => _affiliatedWithLenderIndicator = value; }

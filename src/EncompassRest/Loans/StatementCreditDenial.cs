@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StatementCreditDenial : ExtensibleObject
+    public sealed partial class StatementCreditDenial : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _additionalStatement;
         public bool? AdditionalStatement { get => _additionalStatement; set => _additionalStatement = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Form : ExtensibleObject
+    public sealed partial class Form : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _formId;
         public int? FormId { get => _formId; set => _formId = value; }

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class UsdaHouseholdIncome : ExtensibleObject
+    public sealed partial class UsdaHouseholdIncome : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _age;
         public int? Age { get => _age; set => _age = value; }

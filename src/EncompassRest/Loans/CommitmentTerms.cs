@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class CommitmentTerms : ExtensibleObject
+    public sealed partial class CommitmentTerms : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _actionDate;
         public DateTime? ActionDate { get => _actionDate; set => _actionDate = value; }

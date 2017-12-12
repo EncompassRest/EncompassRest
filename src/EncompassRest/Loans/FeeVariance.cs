@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FeeVariance : ExtensibleObject
+    public sealed partial class FeeVariance : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _cD;
         public decimal? CD { get => _cD; set => _cD = value; }

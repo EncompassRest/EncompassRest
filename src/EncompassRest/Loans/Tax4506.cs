@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Tax4506 : ExtensibleObject
+    public sealed partial class Tax4506 : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _accountTranscript;
         public bool? AccountTranscript { get => _accountTranscript; set => _accountTranscript = value; }

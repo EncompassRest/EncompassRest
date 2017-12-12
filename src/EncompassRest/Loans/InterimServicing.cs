@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class InterimServicing : ExtensibleObject
+    public sealed partial class InterimServicing : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _beginningBalance;
         public decimal? BeginningBalance { get => _beginningBalance; set => _beginningBalance = value; }

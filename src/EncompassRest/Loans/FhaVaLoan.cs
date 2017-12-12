@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class FhaVaLoan : ExtensibleObject
+    public sealed partial class FhaVaLoan : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AddendumType>> _addendumType;
         public StringEnumValue<AddendumType> AddendumType { get => _addendumType; set => _addendumType = value; }

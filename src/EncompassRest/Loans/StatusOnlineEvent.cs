@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class StatusOnlineEvent : ExtensibleObject
+    public sealed partial class StatusOnlineEvent : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _dateText;
         public string DateText { get => _dateText; set => _dateText = value; }

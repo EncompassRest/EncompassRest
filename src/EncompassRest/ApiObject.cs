@@ -46,6 +46,18 @@ namespace EncompassRest
 
         internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendAsync(HttpMethod.Post, requestUri, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(value), methodName, null, cancellationToken, async response =>
+        {
+            var id = GetLocation(response);
+            value.Id = id;
+            if (populate)
+            {
+                await response.Content.PopulateAsync(value).ConfigureAwait(false);
+            }
+            value.Dirty = false;
+            return id;
+        });
+
         internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
         internal Task PatchAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync<string>(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, null);
@@ -91,12 +103,12 @@ namespace EncompassRest
                     {
                         return await func(response).ConfigureAwait(false);
                     }
-                    return default(T);
+                    return default;
                 }
             }
         }
 
-        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{(string.IsNullOrEmpty(resourceId) ? string.Empty : $": {resourceId}")}";
+        internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{resourceId?.PrecedeWith(": ")}";
 
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 

@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class ATRQMBorrower : ExtensibleObject
+    public sealed partial class ATRQMBorrower : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _aTRQMBorrowerIndex;
         public int? ATRQMBorrowerIndex { get => _aTRQMBorrowerIndex; set => _aTRQMBorrowerIndex = value; }

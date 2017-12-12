@@ -5,7 +5,7 @@ using EncompassRest.Loans.Enums;
 
 namespace EncompassRest.Loans
 {
-    public sealed partial class Gfe2010GfeCharge : ExtensibleObject
+    public sealed partial class Gfe2010GfeCharge : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _chargeBelow10Indicator;
         public bool? ChargeBelow10Indicator { get => _chargeBelow10Indicator; set => _chargeBelow10Indicator = value; }
