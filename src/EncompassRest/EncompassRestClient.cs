@@ -9,9 +9,7 @@ using EncompassRest.LoanPipeline;
 using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EncompassRest.Contacts;
-using EncompassRest.ResourceLocks;
 using EncompassRest.CustomDataObjects;
-
 
 namespace EncompassRest
 {
@@ -150,7 +148,6 @@ namespace EncompassRest
             }
         }
 
-
         public ResourceLocks.ResourceLocks ResourceLocks
         {
             get
@@ -159,7 +156,6 @@ namespace EncompassRest
                 return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks.ResourceLocks(this)), null) ?? resourceLocks;
             }
         }
-
 
         public GlobalCustomDataObjects GlobalCustomDataObjects
         {
