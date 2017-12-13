@@ -119,7 +119,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
-            
+
             loan.Initialize(Client);
             return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, cancellationToken, loan, updateLoanOptions?.Populate == true);
         }

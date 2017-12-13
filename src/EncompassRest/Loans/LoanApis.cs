@@ -12,7 +12,6 @@ namespace EncompassRest.Loans
         private LoanAttachments _attachments;
         private LoanCustomDataObjects _customDataObjects;
         private BorrowerPairs _borrowerPairs;
-        private LoanMetadata _metadata;
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
 
