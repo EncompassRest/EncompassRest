@@ -97,7 +97,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return PostPopulateDirtyAsync("subscriptions", subscription, nameof(CreateSubscriptionAsync), populate, cancellationToken);
+            return PostPopulateDirtyAsync("subscriptions", populate ? ViewEntityQueryString : null, subscription, nameof(CreateSubscriptionAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateSubscriptionRawAsync(string subscription, CancellationToken cancellationToken = default) => CreateSubscriptionRawAsync(subscription, null, cancellationToken);
@@ -116,7 +116,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NotNullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return PutPopulateDirtyAsync($"subscriptions/{subscription.SubscriptionId}", JsonStreamContent.Create(subscription), nameof(UpdateSubscriptionAsync), subscription.SubscriptionId, cancellationToken, subscription, populate);
+            return PutPopulateDirtyAsync($"subscriptions/{subscription.SubscriptionId}", populate ? ViewEntityQueryString : null, JsonStreamContent.Create(subscription), nameof(UpdateSubscriptionAsync), subscription.SubscriptionId, cancellationToken, subscription, populate);
         }
 
         public Task<string> UpdateSubscriptionRawAsync(string subscriptionId, string subscription, CancellationToken cancellationToken = default) => UpdateSubscriptionRawAsync(subscriptionId, subscription, null, cancellationToken);

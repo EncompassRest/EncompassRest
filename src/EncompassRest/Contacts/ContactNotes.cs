@@ -39,7 +39,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PostPopulateDirtyAsync(null, note, nameof(CreateNoteAsync), populate, cancellationToken);
+            return PostPopulateDirtyAsync(null, populate ? ViewEntityQueryString : null, note, nameof(CreateNoteAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateNoteRawAsync(string note, CancellationToken cancellationToken = default) => CreateNoteRawAsync(note, null, cancellationToken);
@@ -58,7 +58,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, cancellationToken, note, populate);
+            return PatchPopulateDirtyAsync(note.NoteId, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, cancellationToken, note, populate);
         }
 
         public Task<string> UpdateNoteRawAsync(string noteId, string note, CancellationToken cancellationToken = default) => UpdateNoteRawAsync(noteId, note, null, cancellationToken);

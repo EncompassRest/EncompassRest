@@ -52,7 +52,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PostPopulateDirtyAsync(null, document, nameof(CreateDocumentAsync), populate, cancellationToken);
+            return PostPopulateDirtyAsync(null, populate ? ViewEntityQueryString : null, document, nameof(CreateDocumentAsync), populate, cancellationToken);
         }
 
         public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken = default) => CreateDocumentRawAsync(document, null, cancellationToken);
@@ -71,7 +71,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NotNullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, cancellationToken, document, populate);
+            return PatchPopulateDirtyAsync(document.DocumentId, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, cancellationToken, document, populate);
         }
 
         public Task<string> UpdateDocumentRawAsync(string documentId, string document, CancellationToken cancellationToken = default) => UpdateDocumentRawAsync(documentId, document, null, cancellationToken);

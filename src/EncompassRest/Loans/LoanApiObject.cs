@@ -11,7 +11,7 @@ namespace EncompassRest.Loans
         public string LoanId { get; }
 
         internal LoanApiObject(EncompassRestClient client, string loanId, string baseApiPath)
-            : base(client, $"encompass/v1/loans/{loanId}/{baseApiPath}")
+            : base(client, $"encompass/v1/loans/{loanId}{baseApiPath?.PrecedeWith("/")}")
         {
             LoanId = loanId;
         }
@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
         internal async Task<string> CreateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            var id = await PostPopulateDirtyAsync(null, value, methodName, populate, cancellationToken).ConfigureAwait(false);
+            var id = await PostPopulateDirtyAsync(null, populate ? ViewEntityQueryString : null, value, methodName, populate, cancellationToken).ConfigureAwait(false);
             if (_loanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 GetInLoan(_loanObjectBoundApis.Loan).Add(value);
@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         internal async Task UpdateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, cancellationToken, value, populate).ConfigureAwait(false);
+            await PatchPopulateDirtyAsync(value.Id, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(value), methodName, value.Id, cancellationToken, value, populate).ConfigureAwait(false);
             if (_loanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 AddToOrUpdateLoan(value);
