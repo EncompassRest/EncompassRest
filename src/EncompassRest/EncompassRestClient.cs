@@ -65,6 +65,7 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private BorrowerContacts _borrowerContacts;
         private BusinessContacts _businessContacts;
+        private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
@@ -144,6 +145,15 @@ namespace EncompassRest
             {
                 var businessContacts = _businessContacts;
                 return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
+            }
+        }
+
+        internal ResourceLocks.ResourceLocks ResourceLocks
+        {
+            get
+            {
+                var resourceLocks = _resourceLocks;
+                return resourceLocks ?? Interlocked.CompareExchange(ref _resourceLocks, (resourceLocks = new ResourceLocks.ResourceLocks(this)), null) ?? resourceLocks;
             }
         }
 
