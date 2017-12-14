@@ -83,7 +83,7 @@ namespace EncompassRest.ResourceLocks
             if (force) queryParameters.Add(new QueryParameter("force", "true"));
             if (populate) queryParameters.Add(new QueryParameter("view", "entity"));
 
-            return PostPopulateDirtyAsync<ResourceLock>(null, (force || populate) ? queryParameters.ToString() : null, null, nameof(LockResourceAsync),populate, cancellationToken);
+            return PostPopulateDirtyAsync<ResourceLock>(null, (force || populate) ? queryParameters.ToString() : null, resourceLock, nameof(LockResourceAsync),populate, cancellationToken);
         }
         public Task<string> LockResourceAsync(ResourceLockType lockType, string resourceId, EntityType resourceType, bool force, bool populate, CancellationToken cancellationToken = default) =>
             LockResourceAsync(lockType.ToString(), resourceId, resourceType.ToString(), force, populate, cancellationToken);
