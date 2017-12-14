@@ -4,7 +4,7 @@ namespace EncompassRest.Loans
 {
     public sealed class UpdateLoanOptions : LoanOptions
     {
-        public bool AppendData { get; set; }
+        public bool AppendData { get; set; } = false;
 
         internal override QueryParameters ToQueryParameters()
         {

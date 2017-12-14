@@ -121,7 +121,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client);
-            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, cancellationToken, loan, updateLoanOptions?.Populate == true);
+            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
         public Task<string> UpdateLoanRawAsync(string loanId, string loan, CancellationToken cancellationToken = default) => UpdateLoanRawAsync(loanId, loan, null, cancellationToken);
@@ -138,7 +138,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            return DeleteAsync(loanId, cancellationToken);
+            return DeleteAsync(loanId, null, cancellationToken);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(contact, nameof(contact));
             Preconditions.NullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
-            var contactId = await PostPopulateDirtyAsync(null, populate ? ViewEntityQueryString : null, contact, nameof(CreateContactAsync), populate, cancellationToken).ConfigureAwait(false);
+            var contactId = await PostPopulateDirtyAsync(null, contact, nameof(CreateContactAsync), populate, cancellationToken).ConfigureAwait(false);
             contact.Initialize(Client);
             return contactId;
         }
@@ -57,7 +57,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
             contact.Initialize(Client);
-            return PatchPopulateDirtyAsync(contact.Id, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, cancellationToken, contact, populate);
+            return PatchPopulateDirtyAsync(contact.Id, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, contact, populate, cancellationToken);
         }
 
         public Task<string> UpdateContactRawAsync(string contactId, string contact, CancellationToken cancellationToken = default) => UpdateContactRawAsync(contactId, contact, null, cancellationToken);
@@ -74,7 +74,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
-            return DeleteAsync(contactId, cancellationToken);
+            return DeleteAsync(contactId, null, cancellationToken);
         }
     }
 }

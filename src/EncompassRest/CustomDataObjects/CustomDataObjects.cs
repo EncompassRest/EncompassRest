@@ -50,7 +50,7 @@ namespace EncompassRest.CustomDataObjects
         {
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
 
-            return DeleteAsync(objectName, cancellationToken);
+            return DeleteAsync(objectName, null, cancellationToken);
         }
 
         public Task AppendToCustomDataObjectAsync(CustomDataObject cdo, CancellationToken cancellationToken = default) => AppendToCustomDataObjectAsync(cdo, false, cancellationToken);
@@ -60,7 +60,7 @@ namespace EncompassRest.CustomDataObjects
             Preconditions.NotNull(cdo, nameof(cdo));
             Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
 
-            return PatchPopulateDirtyAsync(cdo.Name, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cancellationToken, cdo, populate);
+            return PatchPopulateDirtyAsync(cdo.Name, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cdo, populate, cancellationToken);
         }
 
         public Task<string> AppendToCustomDataObjectRawAsync(string objectName, string cdo, CancellationToken cancellationToken = default) => AppendToCustomDataObjectRawAsync(objectName, cdo, null, cancellationToken);

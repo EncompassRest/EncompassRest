@@ -48,6 +48,7 @@ namespace EncompassRest.Tests
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             var json = JsonConvert.SerializeObject(loan, serializerSettings);
+            await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
 
@@ -149,6 +150,7 @@ namespace EncompassRest.Tests
             var loanId = await client.Loans.CreateLoanAsync(loan, true).ConfigureAwait(false);
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
+            await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
         }
 
@@ -159,6 +161,7 @@ namespace EncompassRest.Tests
             var loanId = await client.Loans.CreateLoanRawAsync("{}").ConfigureAwait(false);
             Assert.IsNotNull(loanId);
             Assert.IsFalse(loanId.StartsWith("{"));
+            await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
 
             var json = await client.Loans.CreateLoanRawAsync("{}", "?view=entity").ConfigureAwait(false);
@@ -166,6 +169,7 @@ namespace EncompassRest.Tests
             Assert.IsTrue(json.StartsWith("{"));
             var loan = JToken.Parse(json);
             loanId = loan["encompassId"].ToString();
+            await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
         }
 
@@ -185,7 +189,60 @@ namespace EncompassRest.Tests
             ex = await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Loans.UpdateLoanAsync(loan));
             Assert.AreEqual(HttpStatusCode.NotFound, ex.StatusCode);
             Assert.AreEqual($@"{{""encompassId"":""{loan.EncompassId}"",""tltv"":85.00}}", ex.RequestContent);
+            await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
+        [TestMethod]
+        public async Task Loan_CreateInLoanFolder()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan();
+                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanFolder = "My Pipeline" });
+                var metaData = await loan.LoanApis.GetMetadataAsync();
+                Assert.AreEqual("My Pipeline", metaData.LoanFolder);
+                //await client.LoanFolders.MoveLoanToFolderAsync(loanId, "OAPI"); // Unauthorized error
+                //metaData = await loan.LoanApis.GetMetadataAsync();
+                //Assert.AreEqual("OAPI", metaData.LoanFolder);
+                var loan2 = new Loan();
+                var loanId2 = await client.Loans.CreateLoanAsync(loan2, new CreateLoanOptions { LoanFolder = "OAPI" });
+                var metaData2 = await loan2.LoanApis.GetMetadataAsync();
+                Assert.AreEqual("OAPI", metaData2.LoanFolder);
+                await Task.Delay(5000);
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId2));
+            }
+        }
+
+        [TestMethod]
+        public async Task Loan_CreateWithLoanTemplate()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan();
+                var loanId = await client.Loans.CreateLoanAsync(loan, new CreateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
+                var metaData = await loan.LoanApis.GetMetadataAsync();
+                await Task.Delay(5000);
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+            }
+        }
+
+        [TestMethod]
+        public async Task Loan_UpdateWithLoanTemplate()
+        {
+            var client = await GetTestClientAsync();
+            if (client.AccessToken.Token == "Token")
+            {
+                var loan = new Loan();
+                var loanId = await client.Loans.CreateLoanAsync(loan, true);
+                await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { LoanTemplate = @"Public:\\Companywide\Example Purchase Loan Template", Populate = true });
+                var metaData = await loan.LoanApis.GetMetadataAsync();
+                await Task.Delay(5000);
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+            }
         }
     }
 }

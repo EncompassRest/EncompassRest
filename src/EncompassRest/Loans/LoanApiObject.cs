@@ -67,7 +67,7 @@ namespace EncompassRest.Loans
         internal async Task<string> CreateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            var id = await PostPopulateDirtyAsync(null, populate ? ViewEntityQueryString : null, value, methodName, populate, cancellationToken).ConfigureAwait(false);
+            var id = await PostPopulateDirtyAsync(null, value, methodName, populate, cancellationToken).ConfigureAwait(false);
             if (_loanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 GetInLoan(_loanObjectBoundApis.Loan).Add(value);
@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         internal async Task UpdateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            await PatchPopulateDirtyAsync(value.Id, populate ? ViewEntityQueryString : null, JsonStreamContent.Create(value), methodName, value.Id, cancellationToken, value, populate).ConfigureAwait(false);
+            await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, value, populate, cancellationToken).ConfigureAwait(false);
             if (_loanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 AddToOrUpdateLoan(value);
@@ -88,7 +88,7 @@ namespace EncompassRest.Loans
         internal async Task<bool> DeleteAsync<TClass>(string id, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            var success = await DeleteAsync(id, cancellationToken).ConfigureAwait(false);
+            var success = await DeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
             if (success && _loanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 var list = GetInLoan(_loanObjectBoundApis.Loan);

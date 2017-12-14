@@ -4,7 +4,7 @@ namespace EncompassRest.Loans
 {
     public abstract class LoanOptions
     {
-        public bool Populate { get; set; }
+        public bool Populate { get; set; } = false;
 
         public string LoanTemplate { get; set; }
 
