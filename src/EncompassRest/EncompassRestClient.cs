@@ -70,8 +70,6 @@ namespace EncompassRest
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
 
-
-
         #region Properties
         public AccessToken AccessToken { get; }
 
