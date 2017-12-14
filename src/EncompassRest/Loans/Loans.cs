@@ -88,14 +88,16 @@ namespace EncompassRest.Loans
 
         public Task<string> GetSupportedEntitiesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("supportedEntities", null, nameof(GetSupportedEntitiesRawAsync), null, cancellationToken);
 
-        public Task<string> CreateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => CreateLoanAsync(loan, false, cancellationToken);
+        public Task<string> CreateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => CreateLoanAsync(loan, null, cancellationToken);
 
-        public async Task<string> CreateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken = default)
+        public Task<string> CreateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken = default) => CreateLoanAsync(loan, new CreateLoanOptions { Populate = populate }, cancellationToken);
+
+        public async Task<string> CreateLoanAsync(Loan loan, CreateLoanOptions createLoanOptions, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            var loanId = await PostPopulateDirtyAsync(null, loan, nameof(CreateLoanAsync), populate, cancellationToken).ConfigureAwait(false);
+            var loanId = await PostPopulateDirtyAsync(null, createLoanOptions?.ToQueryParameters()?.ToString(), loan, nameof(CreateLoanAsync), createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
             loan.Initialize(Client);
             return loanId;
         }
@@ -109,15 +111,17 @@ namespace EncompassRest.Loans
             return PostAsync(null, queryString, new JsonStringContent(loan), nameof(CreateLoanRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        public Task UpdateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => UpdateLoanAsync(loan, false, cancellationToken);
+        public Task UpdateLoanAsync(Loan loan, CancellationToken cancellationToken = default) => UpdateLoanAsync(loan, null, cancellationToken);
 
-        public Task UpdateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken = default)
+        public Task UpdateLoanAsync(Loan loan, bool populate, CancellationToken cancellationToken = default) => UpdateLoanAsync(loan, new UpdateLoanOptions { Populate = populate }, cancellationToken);
+
+        public Task UpdateLoanAsync(Loan loan, UpdateLoanOptions updateLoanOptions, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client);
-            return PatchPopulateDirtyAsync(loan.EncompassId, JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, cancellationToken, loan, populate);
+            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
         public Task<string> UpdateLoanRawAsync(string loanId, string loan, CancellationToken cancellationToken = default) => UpdateLoanRawAsync(loanId, loan, null, cancellationToken);
@@ -134,7 +138,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            return DeleteAsync(loanId, cancellationToken);
+            return DeleteAsync(loanId, null, cancellationToken);
         }
     }
 }

@@ -58,7 +58,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, cancellationToken, note, populate);
+            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, cancellationToken);
         }
 
         public Task<string> UpdateNoteRawAsync(string noteId, string note, CancellationToken cancellationToken = default) => UpdateNoteRawAsync(noteId, note, null, cancellationToken);
@@ -75,7 +75,7 @@ namespace EncompassRest.Contacts
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return DeleteAsync(noteId, cancellationToken);
+            return DeleteAsync(noteId, null, cancellationToken);
         }
     }
 }
