@@ -61,16 +61,12 @@ namespace EncompassRest.ResourceLocks
             return await GetAsync<List<ResourceLock>>(null, queryParameters.ToString(), nameof(GetResourceLocksAsync), null, cancellationToken);
         }
 
-        public Task<string> GetResourceLocksRawAsync(string resourceId, string resourceType, CancellationToken cancellationToken = default)
+        public Task<string> GetResourceLocksRawAsync(string queryString, CancellationToken cancellationToken = default)
         {
-            Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
-            Preconditions.NotNullOrEmpty(resourceType, nameof(resourceType));
+            Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
 
-            var queryParameters = new QueryParameters();
-            queryParameters.Add(new QueryParameter("resourceType", resourceType));
-            queryParameters.Add(new QueryParameter("resourceId", resourceId));
 
-            return GetRawAsync(null, queryParameters.ToString(), nameof(GetResourceLockRawAsync), resourceId, cancellationToken);
+            return GetRawAsync(null, queryString, nameof(GetResourceLockRawAsync), null, cancellationToken);
         }
 
         public Task<string> LockResourceAsync(ResourceLock resourceLock, CancellationToken cancellationToken = default) => LockResourceAsync(resourceLock, false, false, cancellationToken);
