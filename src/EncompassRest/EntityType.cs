@@ -1,10 +1,12 @@
 ﻿using System.Runtime.Serialization;
 
-namespace EncompassRest.Loans.Enums
+namespace EncompassRest
 {
     public enum EntityType
     {
         [EnumMember(Value = "attachment")]
-        Attachment = 0
+        Attachment = 0,
+        [EnumMember(Value = "loan")]
+        Loan = 1
     }
 }
