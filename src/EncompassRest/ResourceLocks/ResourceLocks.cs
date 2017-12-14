@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EncompassRest.ResourceLocks
 {
-    public sealed class ResourceLocks : ApiObject
+    internal sealed class ResourceLocks : ApiObject
     {
         internal ResourceLocks(EncompassRestClient client) : 
             base(client, "encompass/v1/resourceLocks")
