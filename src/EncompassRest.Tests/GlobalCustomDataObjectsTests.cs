@@ -19,6 +19,7 @@ namespace EncompassRest.Tests
             await client.GlobalCustomDataObjects.CreateOrReplaceCustomDataObjectAsync(cdo);
             var cdo2 = await client.GlobalCustomDataObjects.GetCustomDataObjectAsync(cdo.Name);
             Assert.AreEqual(firstText, Encoding.UTF8.GetString(cdo.DataObject));
+            await Task.Delay(5000);
             const string secondText = "Goodbye World!";
             cdo2.DataObject = Encoding.UTF8.GetBytes(secondText);
             await client.GlobalCustomDataObjects.AppendToCustomDataObjectAsync(cdo2, true);

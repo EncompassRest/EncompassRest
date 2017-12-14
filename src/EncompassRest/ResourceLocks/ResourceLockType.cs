@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EncompassRest.ResourceLocks
+﻿namespace EncompassRest.ResourceLocks
 {
     public enum ResourceLockType
     {
