@@ -149,7 +149,7 @@ namespace EncompassRest
             }
         }
 
-        public ResourceLocks.ResourceLocks ResourceLocks
+        internal ResourceLocks.ResourceLocks ResourceLocks
         {
             get
             {
