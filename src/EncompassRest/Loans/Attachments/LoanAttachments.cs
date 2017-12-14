@@ -51,7 +51,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NotNullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}{nameof(attachment.AttachmentId)}");
 
-            return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, cancellationToken, attachment, populate);
+            return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, attachment, populate, cancellationToken);
         }
 
         public Task<string> UpdateAttachmentRawAsync(string attachmentId, string attachment, CancellationToken cancellationToken = default) => UpdateAttachmentRawAsync(attachmentId, attachment, null, cancellationToken);

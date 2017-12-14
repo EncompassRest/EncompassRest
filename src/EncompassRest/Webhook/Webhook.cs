@@ -116,7 +116,7 @@ namespace EncompassRest.Webhook
             Preconditions.NotNull(subscription, nameof(subscription));
             Preconditions.NotNullOrEmpty(subscription.SubscriptionId, $"{nameof(subscription)}.{nameof(subscription.SubscriptionId)}");
 
-            return PutPopulateDirtyAsync($"subscriptions/{subscription.SubscriptionId}", JsonStreamContent.Create(subscription), nameof(UpdateSubscriptionAsync), subscription.SubscriptionId, cancellationToken, subscription, populate);
+            return PutPopulateDirtyAsync($"subscriptions/{subscription.SubscriptionId}", JsonStreamContent.Create(subscription), nameof(UpdateSubscriptionAsync), subscription.SubscriptionId, subscription, populate, cancellationToken);
         }
 
         public Task<string> UpdateSubscriptionRawAsync(string subscriptionId, string subscription, CancellationToken cancellationToken = default) => UpdateSubscriptionRawAsync(subscriptionId, subscription, null, cancellationToken);
@@ -133,7 +133,7 @@ namespace EncompassRest.Webhook
         {
             Preconditions.NotNullOrEmpty(subscriptionId, nameof(subscriptionId));
 
-            return DeleteAsync($"subscriptions/{subscriptionId}", cancellationToken);
+            return DeleteAsync($"subscriptions/{subscriptionId}", null, cancellationToken);
         }
     }
 }
