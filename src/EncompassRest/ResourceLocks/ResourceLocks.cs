@@ -80,12 +80,17 @@ namespace EncompassRest.ResourceLocks
             Preconditions.NotNull(resourceLock, nameof(resourceLock));
 
             var queryParameters = new QueryParameters();
-            queryParameters.Add(new QueryParameter("force", force? "true" : "false"));
-            queryParameters.Add(new QueryParameter("view", populate ? "entity" : "id"));
+            if (force) queryParameters.Add(new QueryParameter("force", "true"));
+            if (populate) queryParameters.Add(new QueryParameter("view", "entity"));
 
-            return PostPopulateDirtyAsync<ResourceLock>(null, queryParameters.ToString(), null, nameof(LockResourceAsync),populate, cancellationToken);
+            return PostPopulateDirtyAsync<ResourceLock>(null, (force || populate) ? queryParameters.ToString() : null, null, nameof(LockResourceAsync),populate, cancellationToken);
         }
-
+        public Task<string> LockResourceAsync(ResourceLockType lockType, string resourceId, EntityType resourceType, bool force, bool populate, CancellationToken cancellationToken = default) =>
+            LockResourceAsync(lockType.ToString(), resourceId, resourceType.ToString(), force, populate, cancellationToken);
+        public Task<string> LockResourceAsync(string lockType, string resourceId, EntityType resourceType, bool force, bool populate, CancellationToken cancellationToken = default) =>
+            LockResourceAsync(lockType, resourceId, resourceType.ToString(), force, populate, cancellationToken);
+        public Task<string> LockResourceAsync(ResourceLockType lockType, string resourceId, string resourceType, bool force, bool populate, CancellationToken cancellationToken = default) =>
+            LockResourceAsync(lockType.ToString(), resourceId, resourceType, force, populate, cancellationToken);
         public Task<string> LockResourceAsync(string lockType, string resourceId, string resourceType, bool force, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
@@ -106,7 +111,8 @@ namespace EncompassRest.ResourceLocks
 
             return PostAsync(null, queryString, new JsonStringContent(resource), nameof(LockResourceRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc);
         }
-
+        public Task<bool> UnlockResourceAsync(string lockId, string resourceId, EntityType resourceType, bool force, CancellationToken cancellationToken = default) =>
+            UnlockResourceAsync(lockId, resourceId, resourceType.ToString(), force, cancellationToken);
         public Task<bool> UnlockResourceAsync(string lockId, string resourceId, string resourceType, bool force, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
@@ -116,7 +122,7 @@ namespace EncompassRest.ResourceLocks
             var queryParameters = new QueryParameters();
             queryParameters.Add(new QueryParameter("resourceType", resourceType));
             queryParameters.Add(new QueryParameter("resourceId", resourceId));
-            queryParameters.Add(new QueryParameter("force", force? "true" : "false"));
+            if (force) queryParameters.Add(new QueryParameter("force", "true"));
 
             return DeleteAsync(lockId, queryParameters.ToString(), cancellationToken);
         }

@@ -1,8 +1,10 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans.Apis;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
+using EncompassRest.ResourceLocks;
 
 namespace EncompassRest.Loans
 {
@@ -31,5 +33,14 @@ namespace EncompassRest.Loans
         public Task<LoanMetadata> GetMetadataAsync(CancellationToken cancellationToken = default) => GetAsync<LoanMetadata>("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
 
         public Task<string> GetMetadataRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
+
+        public Task<List<ResourceLock>> GetLocksAsync(CancellationToken cancellationToken = default) => Client.ResourceLocks.GetResourceLocksAsync(this.LoanId, EntityType.Loan, cancellationToken);
+        public Task<ResourceLock> GetLockAsync(string lockId, CancellationToken cancellationToken = default) => Client.ResourceLocks.GetResourceLockAsync(lockId, this.LoanId, EntityType.Loan, cancellationToken);
+        public Task<string> LockAsync(ResourceLockType lockType, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, this.LoanId, EntityType.Loan, false, false, cancellationToken);
+        public Task<string> LockAsync(ResourceLockType lockType, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, this.LoanId, EntityType.Loan, force, false, cancellationToken);
+        public Task<string> LockAsync(string lockType, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, this.LoanId, EntityType.Loan, false, false, cancellationToken);
+        public Task<string> LockAsync(string lockType, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.LockResourceAsync(lockType, this.LoanId, EntityType.Loan, force, false, cancellationToken);
+        public Task<bool> UnlockAsync(string lockId, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, this.LoanId, EntityType.Loan, false, cancellationToken);
+        public Task<bool> UnlockAsync(string lockId, bool force, CancellationToken cancellationToken = default) => Client.ResourceLocks.UnlockResourceAsync(lockId, this.LoanId, EntityType.Loan, force, cancellationToken);
     }
 }
