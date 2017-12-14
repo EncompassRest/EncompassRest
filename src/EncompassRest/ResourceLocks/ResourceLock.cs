@@ -22,7 +22,7 @@ namespace EncompassRest.ResourceLocks
             get
             {
                 return _id.Dirty
-                    || _resource.Dirty
+                    || _resource?.Dirty == true
                     || _userId.Dirty
                     || _lockType.Dirty
                     || _lockTime.Dirty;
@@ -30,7 +30,7 @@ namespace EncompassRest.ResourceLocks
             set
             {
                 _id.Dirty = value;
-                _resource.Dirty = value;
+                if (_resource != null) _resource.Dirty = value;
                 _userId.Dirty = value;
                 _lockType.Dirty = value;
                 _lockTime.Dirty = value;
