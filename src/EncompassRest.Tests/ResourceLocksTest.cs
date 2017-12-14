@@ -23,6 +23,7 @@ namespace EncompassRest.Tests
             var locks = await loan.LoanApis.GetLocksAsync();
             var testLock = locks.Find(x => x.Id == lockId);
             Assert.IsNotNull(testLock);
+            Assert.IsTrue(locks.Count == 1);
 
             Assert.IsTrue(await loan.LoanApis.UnlockAsync(lockId));
 
