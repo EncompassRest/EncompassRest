@@ -13,15 +13,17 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var loan = new Loan();
-            var loanId = await client.Loans.CreateLoanAsync(loan,true);
-            var locks = await loan.LoanApis.GetLocksAsync();
-            Assert.IsTrue(locks.Count == 0);
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            Assert.IsTrue((await loan.LoanApis.GetLocksAsync()).Count == 0);
 
             var lockId = await loan.LoanApis.LockAsync(ResourceLockType.Exclusive);
             var loanLock = await loan.LoanApis.GetLockAsync(lockId);
             Assert.AreEqual(loanLock.LockType.ToString(), ResourceLockType.Exclusive.ToString());
 
             Assert.IsTrue(await loan.LoanApis.UnlockAsync(lockId));
+
+            Assert.IsTrue((await loan.LoanApis.GetLocksAsync()).Count == 0);
+
             await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId).ConfigureAwait(false));
         }

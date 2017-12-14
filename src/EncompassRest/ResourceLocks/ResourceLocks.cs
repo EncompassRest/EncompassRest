@@ -36,17 +36,12 @@ namespace EncompassRest.ResourceLocks
             return await GetAsync<ResourceLock>(lockId, queryParameters.ToString(), nameof(GetResourceLockAsync), lockId, cancellationToken);
         }
 
-        public Task<string> GetResourceLockRawAsync(string lockId, string resourceId, string resourceType, CancellationToken cancellationToken = default)
+        public Task<string> GetResourceLockRawAsync(string lockId, string queryString, CancellationToken cancellationToken = default)
         {
-            Preconditions.NotNullOrEmpty(resourceId, nameof(resourceId));
-            Preconditions.NotNullOrEmpty(resourceType, nameof(resourceType));
+            Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
             Preconditions.NotNullOrEmpty(lockId, nameof(lockId));
 
-            var queryParameters = new QueryParameters();
-            queryParameters.Add(new QueryParameter("resourceType", resourceType));
-            queryParameters.Add(new QueryParameter("resourceId", resourceId));
-
-            return GetRawAsync(lockId, queryParameters.ToString(), nameof(GetResourceLockRawAsync), lockId, cancellationToken);
+            return GetRawAsync(lockId, queryString, nameof(GetResourceLockRawAsync), lockId, cancellationToken);
         }
 
         public Task<List<ResourceLock>> GetResourceLocksAsync(string resourceId, EntityType resourceType, CancellationToken cancellationToken = default) => GetResourceLocksAsync(resourceId, resourceType.ToString(), cancellationToken);
@@ -64,7 +59,6 @@ namespace EncompassRest.ResourceLocks
         public Task<string> GetResourceLocksRawAsync(string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(queryString, nameof(queryString));
-
 
             return GetRawAsync(null, queryString, nameof(GetResourceLockRawAsync), null, cancellationToken);
         }
