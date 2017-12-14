@@ -46,24 +46,19 @@ namespace EncompassRest
 
         internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync<T>(requestUri, null, value, methodName, populate, cancellationToken);
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync(requestUri, populate ? ViewEntityQueryString : null, value, methodName, populate, cancellationToken);
 
-        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendAsync(HttpMethod.Post, requestUri, queryString, JsonStreamContent.Create(value), methodName, null, cancellationToken, async response =>
         {
-            var _queryString = $"{(populate ? ViewEntityQueryString : null)}{(queryString == "" ? "": $"&{queryString}")}".PrecedeWith("?");
-
-            return SendAsync(HttpMethod.Post, requestUri, _queryString != "?" ? _queryString : null, JsonStreamContent.Create(value), methodName, null, cancellationToken, async response =>
+            var id = GetLocation(response);
+            value.Id = id;
+            if (populate)
             {
-                var id = GetLocation(response);
-                value.Id = id;
-                if (populate)
-                {
-                    await response.Content.PopulateAsync(value).ConfigureAwait(false);
-                }
-                value.Dirty = false;
-                return id;
-            });
-        }
+                await response.Content.PopulateAsync(value).ConfigureAwait(false);
+            }
+            value.Dirty = false;
+            return id;
+        });
 
         internal Task<T> PostAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
@@ -71,7 +66,9 @@ namespace EncompassRest
 
         internal Task<string> PatchRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task PatchPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, content, methodName, resourceId, cancellationToken, target, populate);
+        internal Task PatchPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, target, populate, cancellationToken);
+
+        internal Task PatchPopulateDirtyAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, target, populate, cancellationToken);
 
         internal Task<T> PatchAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(s_patchMethod, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
 
@@ -79,15 +76,15 @@ namespace EncompassRest
 
         internal Task<string> PutRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task PutPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => PopulateDirtyInternalAsync(HttpMethod.Put, requestUri, content, methodName, resourceId, cancellationToken, target, populate);
+        internal Task PutPopulateDirtyAsync(string requestUri, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(HttpMethod.Put, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, target, populate, cancellationToken);
+
+        internal Task PutPopulateDirtyAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => PopulateDirtyInternalAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, target, populate, cancellationToken);
 
         internal Task<T> PutAsync<T>(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) => SendAsync(HttpMethod.Put, requestUri, queryString, content, methodName, resourceId, cancellationToken, func);
 
-        internal Task<bool> DeleteAsync(string requestUri, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, null, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
-
         internal Task<bool> DeleteAsync(string requestUri, string queryString, CancellationToken cancellationToken) => SendAsync(HttpMethod.Delete, requestUri, queryString, null, null, null, cancellationToken, IsSuccessStatusCodeFunc, false);
 
-        private Task PopulateDirtyInternalAsync(HttpMethod method, string requestUri, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, IDirty target, bool populate) => SendAsync(method, requestUri, populate ? ViewEntityQueryString : null, content, methodName, resourceId, cancellationToken, async response =>
+        private Task PopulateDirtyInternalAsync(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, IDirty target, bool populate, CancellationToken cancellationToken) => SendAsync(method, requestUri, queryString, content, methodName, resourceId, cancellationToken, async response =>
         {
             if (populate)
             {

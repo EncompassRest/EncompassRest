@@ -68,6 +68,7 @@ namespace EncompassRest
         private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
+        private LoanFolders.LoanFolders _loanFolders;
 
 
         #region Properties
@@ -172,6 +173,15 @@ namespace EncompassRest
             {
                 var users = _users;
                 return users ?? Interlocked.CompareExchange(ref _users, (users = new Users.Users(this)), null) ?? users;
+            }
+        }
+
+        public LoanFolders.LoanFolders LoanFolders
+        {
+            get
+            {
+                var loanFolders = _loanFolders;
+                return loanFolders ?? Interlocked.CompareExchange(ref _loanFolders, (loanFolders = new LoanFolders.LoanFolders(this)), null) ?? loanFolders;
             }
         }
 

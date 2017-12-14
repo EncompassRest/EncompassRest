@@ -1,19 +1,17 @@
-﻿using EncompassRest.Loans.Apis;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using EncompassRest.Loans.Apis;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 
 namespace EncompassRest.Loans
 {
-    public class LoanApis
+    public class LoanApis : LoanApiObject
     {
         private LoanDocuments _documents;
         private LoanAttachments _attachments;
         private LoanCustomDataObjects _customDataObjects;
         private BorrowerPairs _borrowerPairs;
-
-        public EncompassRestClient Client { get; }
-
-        public string LoanId { get; }
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
 
@@ -26,9 +24,12 @@ namespace EncompassRest.Loans
         internal virtual BorrowerPairs CreateBorrowerPairs() => new BorrowerPairs(Client, LoanId);
 
         internal LoanApis(EncompassRestClient client, string loanId)
+            : base(client, loanId, null)
         {
-            Client = client;
-            LoanId = loanId;
         }
+
+        public Task<LoanMetadata> GetMetadataAsync(CancellationToken cancellationToken = default) => GetAsync<LoanMetadata>("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
+
+        public Task<string> GetMetadataRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
     }
 }
