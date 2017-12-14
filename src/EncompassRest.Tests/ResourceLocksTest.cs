@@ -20,6 +20,10 @@ namespace EncompassRest.Tests
             var loanLock = await loan.LoanApis.GetLockAsync(lockId);
             Assert.AreEqual(loanLock.LockType.ToString(), ResourceLockType.Exclusive.ToString());
 
+            var locks = await loan.LoanApis.GetLocksAsync();
+            var testLock = locks.Find(x => x.Id == lockId);
+            Assert.IsNotNull(testLock);
+
             Assert.IsTrue(await loan.LoanApis.UnlockAsync(lockId));
 
             Assert.IsTrue((await loan.LoanApis.GetLocksAsync()).Count == 0);
