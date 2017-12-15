@@ -58,7 +58,7 @@ namespace EncompassRest.Loans
             }
 
             var loan = await GetDirtyAsync<Loan>(loanId, queryParameters.ToString(), nameof(GetLoanAsync), loanId, cancellationToken).ConfigureAwait(false);
-            loan.Initialize(Client);
+            loan.Initialize(Client, loan.EncompassId);
             return loan;
         }
 
@@ -98,7 +98,7 @@ namespace EncompassRest.Loans
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             var loanId = await PostPopulateDirtyAsync(null, createLoanOptions?.ToQueryParameters()?.ToString(), loan, nameof(CreateLoanAsync), createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
-            loan.Initialize(Client);
+            loan.Initialize(Client, loanId);
             return loanId;
         }
 
@@ -120,7 +120,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            loan.Initialize(Client);
+            loan.Initialize(Client, loan.EncompassId);
             return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
         }
 
