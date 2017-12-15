@@ -32,11 +32,7 @@ namespace EncompassRest.Loans
         /// <param name="loanId"></param>
         public Loan(EncompassRestClient client, string loanId)
         {
-            Preconditions.NotNull(client, nameof(client));
-            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
-
-            EncompassId = loanId;
-            Initialize(client);
+            Initialize(client, loanId);
         }
 
         /// <summary>
@@ -47,13 +43,20 @@ namespace EncompassRest.Loans
         {
         }
 
-        internal void Initialize(EncompassRestClient client)
+        public void Initialize(EncompassRestClient client, string loanId)
         {
-            Client = client;
-            Documents = new LoanDocuments(client, EncompassId);
-            Attachments = new LoanAttachments(client, EncompassId);
-            CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
-            LoanApis = new LoanObjectBoundApis(client, this);
+            Preconditions.NotNull(client, nameof(client));
+            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
+
+            if (!ReferenceEquals(Client, client))
+            {
+                Client = client;
+                EncompassId = loanId;
+                Documents = new LoanDocuments(client, EncompassId);
+                Attachments = new LoanAttachments(client, EncompassId);
+                CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
+                LoanApis = new LoanObjectBoundApis(client, this);
+            }
         }
     }
 }

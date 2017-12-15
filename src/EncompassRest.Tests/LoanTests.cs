@@ -48,6 +48,9 @@ namespace EncompassRest.Tests
             Assert.IsNotNull(loanId);
             Assert.AreEqual(loanId, loan.EncompassId);
             var json = JsonConvert.SerializeObject(loan, serializerSettings);
+            var deserializedLoan = JsonConvert.DeserializeObject<Loan>(json, serializerSettings);
+            var newJson = JsonConvert.SerializeObject(loan, serializerSettings);
+            Assert.AreEqual(json, newJson);
             await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
         }
@@ -62,6 +65,17 @@ namespace EncompassRest.Tests
             Assert.AreEqual(true, loan.ExtensionData["dog"]);
             loan = JsonConvert.DeserializeObject<Loan>(@"{""applicationTakenMethodType"":""Telephone""}");
             Assert.AreEqual(ApplicationTakenMethodType.Telephone, loan.ApplicationTakenMethodType.EnumValue.Value);
+
+            var value = new { Loan = loan, TestString = "TESTING" };
+            var serializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
+            var json = JsonConvert.SerializeObject(value, serializerSettings);
+            Assert.AreEqual(@"{
+  ""Loan"": {
+    ""applicationTakenMethodType"": ""Telephone""
+  },
+  ""TestString"": ""TESTING""
+}", json);
+            var newValue = JsonConvert.DeserializeAnonymousType(json, value);
         }
 
         [TestMethod]

@@ -11,6 +11,7 @@ namespace EncompassRest
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             var publicSerializer = JsonHelper.CreatePublicSerializer(serializer);
+            publicSerializer.CheckAdditionalContent = false;
             return publicSerializer.Deserialize(reader, objectType);
         }
 

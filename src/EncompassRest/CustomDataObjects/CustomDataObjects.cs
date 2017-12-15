@@ -33,7 +33,7 @@ namespace EncompassRest.CustomDataObjects
         public Task CreateOrReplaceCustomDataObjectAsync(CustomDataObject cdo, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(cdo, nameof(cdo));
-            Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
+            Preconditions.NotNullOrEmpty(cdo.Name, $"{nameof(cdo)}.{nameof(cdo.Name)}");
 
             return PutAsync(cdo.Name, null, JsonStreamContent.Create(cdo), nameof(CreateOrReplaceCustomDataObjectAsync), cdo.Name, cancellationToken);
         }
@@ -58,7 +58,7 @@ namespace EncompassRest.CustomDataObjects
         public Task AppendToCustomDataObjectAsync(CustomDataObject cdo, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(cdo, nameof(cdo));
-            Preconditions.NotNullOrEmpty(cdo.Name, $"{cdo}.{cdo.Name}");
+            Preconditions.NotNullOrEmpty(cdo.Name, $"{nameof(cdo)}.{nameof(cdo.Name)}");
 
             return PatchPopulateDirtyAsync(cdo.Name, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cdo, populate, cancellationToken);
         }
