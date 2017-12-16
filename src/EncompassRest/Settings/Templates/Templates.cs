@@ -4,14 +4,14 @@ namespace EncompassRest.Settings.Templates
 {
     public sealed class Templates : ApiObject
     {
-        private LoanTemplates _loanTemplates;
+        private LoanTemplateSet _loanTemplateSet;
 
-        public LoanTemplates LoanTemplates
+        public LoanTemplateSet LoanTemplateSet
         {
             get
             {
-                var loanTemplates = _loanTemplates;
-                return loanTemplates ?? Interlocked.CompareExchange(ref _loanTemplates, (loanTemplates = new LoanTemplates(Client)), null) ?? loanTemplates;
+                var loanTemplateSet = _loanTemplateSet;
+                return loanTemplateSet ?? Interlocked.CompareExchange(ref _loanTemplateSet, (loanTemplateSet = new LoanTemplateSet(Client)), null) ?? loanTemplateSet;
             }
         }
 
