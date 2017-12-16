@@ -69,6 +69,7 @@ namespace EncompassRest
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
+        private Settings.Settings _settings;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -181,6 +182,15 @@ namespace EncompassRest
             {
                 var loanFolders = _loanFolders;
                 return loanFolders ?? Interlocked.CompareExchange(ref _loanFolders, (loanFolders = new LoanFolders.LoanFolders(this)), null) ?? loanFolders;
+            }
+        }
+
+        public Settings.Settings Settings
+        {
+            get
+            {
+                var settings = _settings;
+                return settings ?? Interlocked.CompareExchange(ref _settings, (settings = new Settings.Settings(this)), null) ?? settings;
             }
         }
 
