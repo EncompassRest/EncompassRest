@@ -1,8 +1,8 @@
 ﻿namespace EncompassRest.Settings.Templates
 {
-    public sealed class LoanTemplates : TemplateApiObject
+    public sealed class LoanTemplateSet : TemplateApiObject
     {
-        internal LoanTemplates(EncompassRestClient client)
+        internal LoanTemplateSet(EncompassRestClient client)
             : base(client, "loanTemplateSet")
         {
         }
