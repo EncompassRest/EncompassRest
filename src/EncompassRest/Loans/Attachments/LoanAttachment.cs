@@ -32,6 +32,8 @@ namespace EncompassRest.Loans.Attachments
         public int? Rotation { get => _rotation; set => _rotation = value; }
         private DirtyValue<string> _title;
         public string Title { get => _title; set => _title = value; }
+        private DirtyValue<string> _fileWithExtension;
+        public string FileWithExtension { get => _fileWithExtension; set => _fileWithExtension = value; }
         private EntityReference _document;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get => _document; set => _document = value; }
@@ -52,6 +54,7 @@ namespace EncompassRest.Loans.Attachments
                     || _pages?.Dirty == true
                     || _rotation.Dirty
                     || _title.Dirty
+                    || _fileWithExtension.Dirty
                     || _document?.Dirty == true;
             }
             set
@@ -67,6 +70,7 @@ namespace EncompassRest.Loans.Attachments
                 if (_pages != null) _pages.Dirty = value;
                 _rotation.Dirty = value;
                 _title.Dirty = value;
+                _fileWithExtension.Dirty = value;
                 if (_document != null) _document.Dirty = value;
             }
         }

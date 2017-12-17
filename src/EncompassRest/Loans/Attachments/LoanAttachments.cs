@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -30,20 +33,6 @@ namespace EncompassRest.Loans.Attachments
 
         public Task<string> GetAttachmentsRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetAttachmentsRawAsync), null, cancellationToken);
 
-        public Task<AttachmentUrl> GetAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken = default)
-        {
-            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
-
-            return GetAsync<AttachmentUrl>($"{attachmentId}/url", null, nameof(GetAttachmentUrlAsync), attachmentId, cancellationToken);
-        }
-
-        public Task<string> GetAttachmentUrlRawAsync(string attachmentId, CancellationToken cancellationToken = default)
-        {
-            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
-
-            return GetRawAsync($"{attachmentId}/url", null, nameof(GetAttachmentUrlRawAsync), attachmentId, cancellationToken);
-        }
-
         public Task UpdateAttachmentAsync(LoanAttachment attachment, CancellationToken cancellationToken = default) => UpdateAttachmentAsync(attachment, false, cancellationToken);
 
         public Task UpdateAttachmentAsync(LoanAttachment attachment, bool populate, CancellationToken cancellationToken = default)
@@ -62,6 +51,150 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
             return PatchRawAsync(attachmentId, queryString, new JsonStringContent(attachment), nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
+        }
+        
+        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(attachmentData, nameof(attachmentData));
+
+            var mediaUrlObject = await GetUploadAttachmentUrlAsync(attachment, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+        }
+
+        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(attachmentData, nameof(attachmentData));
+
+            var mediaUrlObject = await GetUploadAttachmentUrlAsync(attachment, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+        }
+        
+        public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
+            Preconditions.NotNull(attachmentData, nameof(attachmentData));
+
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+        }
+
+        public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
+            Preconditions.NotNull(attachmentData, nameof(attachmentData));
+
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+        }
+
+        public async Task<byte[]> DownloadAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentAsync), attachmentId, cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
+        }
+
+        public async Task<Stream> DownloadAttachmentStreamAsync(string attachmentId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), attachmentId, cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+        }
+
+        public async Task<byte[]> DownloadAttachmentPageAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentPageUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
+        }
+
+        public async Task<Stream> DownloadAttachmentPageStreamAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentPageUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+        }
+
+        public async Task<byte[]> DownloadAttachmentPageThumbnailAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentPageThumbnailUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
+        }
+
+        public async Task<Stream> DownloadAttachmentPageThumbnailStreamAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            var mediaUrlObject = await GetDownloadAttachmentPageThumbnailUrlAsync(attachmentId, pageId, cancellationToken).ConfigureAwait(false);
+
+            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentPageThumbnailStreamAsync), $"{attachmentId}/{pageId}", cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+        }
+
+        public Task<MediaUrlObject> GetUploadAttachmentUrlAsync(LoanAttachment attachment, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(attachment, nameof(attachment));
+            Preconditions.NullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}.{nameof(attachment.AttachmentId)}");
+
+            return GetUploadAttachmentUrlInternalAsync(JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc);
+        }
+
+        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
+
+            return GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, ReadAsStringFunc);
+        }
+
+        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
+            PostAsync("url", null, content, methodName, null, cancellationToken, func);
+
+        public Task<MediaUrlObject> GetDownloadAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+
+            return PostAsync<MediaUrlObject>($"{attachmentId}/url", null, null, nameof(GetDownloadAttachmentUrlAsync), attachmentId, cancellationToken);
+        }
+
+        public Task<string> GetDownloadAttachmentUrlRawAsync(string attachmentId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+
+            return PostRawAsync($"{attachmentId}/url", null, null, nameof(GetDownloadAttachmentUrlRawAsync), attachmentId, cancellationToken);
+        }
+
+        public Task<MediaUrlObject> GetDownloadAttachmentPageUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+            Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
+
+            return PostAsync<MediaUrlObject>($"{attachmentId}/pages/{pageId}/url", null, null, nameof(GetDownloadAttachmentPageUrlAsync), $"{attachmentId}/{pageId}", cancellationToken);
+        }
+
+        public Task<string> GetDownloadAttachmentPageUrlRawAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+            Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
+
+            return PostRawAsync($"{attachmentId}/pages/{pageId}/url", null, null, nameof(GetDownloadAttachmentPageUrlRawAsync), $"{attachmentId}/{pageId}", cancellationToken);
+        }
+
+        public Task<MediaUrlObject> GetDownloadAttachmentPageThumbnailUrlAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+            Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
+
+            return PostAsync<MediaUrlObject>($"{attachmentId}/pages/{pageId}/thumbnail/url", null, null, nameof(GetDownloadAttachmentPageThumbnailUrlAsync), $"{attachmentId}/{pageId}", cancellationToken);
+        }
+
+        public Task<string> GetDownloadAttachmentPageThumbnailUrlRawAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
+            Preconditions.NotNullOrEmpty(pageId, nameof(pageId));
+
+            return PostRawAsync($"{attachmentId}/pages/{pageId}/thumbnail/url", null, null, nameof(GetDownloadAttachmentPageThumbnailUrlRawAsync), $"{attachmentId}/{pageId}", cancellationToken);
         }
     }
 }

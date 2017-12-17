@@ -20,6 +20,10 @@ namespace EncompassRest
 
         internal static readonly Func<HttpResponseMessage, Task<bool>> IsSuccessStatusCodeFunc = response => Task.FromResult(response.IsSuccessStatusCode);
 
+        internal static readonly Func<HttpResponseMessage, Task<byte[]>> ReadAsByteArrayFunc = response => response.Content.ReadAsByteArrayAsync();
+
+        internal static readonly Func<HttpResponseMessage, Task<Stream>> ReadAsStreamFunc = response => response.Content.ReadAsStreamAsync();
+
         internal const string ViewEntityQueryString = "?view=entity";
 
         internal static string GetLocation(HttpResponseMessage response) => Path.GetFileName(response.Headers.Location.OriginalString);
@@ -94,11 +98,15 @@ namespace EncompassRest
             return string.Empty;
         });
 
-        private async Task<T> SendAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true)
+        internal Task<T> SendAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) =>
+            SendFullUriAsync(method, $"{BaseAddress}{_baseApiPath}{requestUri?.PrecedeWith("/")}", queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
+
+        internal async Task<T> SendFullUriAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true)
         {
-            using (var request = new HttpRequestMessage(method, $"{_baseApiPath}{requestUri?.PrecedeWith("/")}{queryString?.PrecedeWith("?")}") { Content = content })
+            using (var request = new HttpRequestMessage(method, $"{requestUri}{queryString?.PrecedeWith("?")}") { Content = content })
             {
-                using (var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
+                var response = await GetHttpClient().SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                try
                 {
                     if (throwOnNonSuccessStatusCode && !response.IsSuccessStatusCode)
                     {
@@ -111,12 +119,21 @@ namespace EncompassRest
                     }
                     return default;
                 }
+                finally
+                {
+                    if (disposeResponse)
+                    {
+                        response.Dispose();
+                    }
+                }
             }
         }
 
         internal virtual string CreateErrorMessage(string methodName, string resourceId = null) => $"{methodName}{resourceId?.PrecedeWith(": ")}";
 
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
+
+        internal virtual string BaseAddress => "https://api.elliemae.com/";
 
         internal static class FuncCache<T>
         {
