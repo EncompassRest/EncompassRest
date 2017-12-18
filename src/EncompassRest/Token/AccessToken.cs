@@ -15,8 +15,8 @@ namespace EncompassRest.Token
     public sealed class AccessToken : ApiObject
     {
         private HttpClient _tokenClient;
-        private readonly string _clientId;
-        private readonly string _clientSecret;
+        private readonly string _apiClientId;
+        private readonly string _apiClientSecret;
 
         #region Properties
         public string Token { get; internal set; }
@@ -34,7 +34,7 @@ namespace EncompassRest.Token
                     {
                         BaseAddress = new Uri("https://api.elliemae.com/oauth2/v1/")
                     };
-                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_clientId)}:{WebUtility.UrlEncode(_clientSecret)}")));
+                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
@@ -42,11 +42,11 @@ namespace EncompassRest.Token
         }
         #endregion
 
-        internal AccessToken(string clientId, string clientSecret, EncompassRestClient client)
+        internal AccessToken(string apiClientId, string apiClientSecret, EncompassRestClient client)
             : base(client, "token")
         {
-            _clientId = clientId;
-            _clientSecret = clientSecret;
+            _apiClientId = apiClientId;
+            _apiClientSecret = apiClientSecret;
         }
 
         #region Public Methods

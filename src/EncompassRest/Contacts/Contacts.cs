@@ -17,7 +17,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
             var contact = await GetDirtyAsync<TContact>(contactId, null, nameof(GetContactAsync), contactId, cancellationToken).ConfigureAwait(false);
-            contact.Initialize(Client);
+            contact.Initialize(Client, contact.Id);
             return contact;
         }
 
@@ -36,7 +36,7 @@ namespace EncompassRest.Contacts
             Preconditions.NullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
             var contactId = await PostPopulateDirtyAsync(null, contact, nameof(CreateContactAsync), populate, cancellationToken).ConfigureAwait(false);
-            contact.Initialize(Client);
+            contact.Initialize(Client, contactId);
             return contactId;
         }
 
@@ -56,7 +56,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(contact, nameof(contact));
             Preconditions.NotNullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
-            contact.Initialize(Client);
+            contact.Initialize(Client, contact.Id);
             return PatchPopulateDirtyAsync(contact.Id, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, contact, populate, cancellationToken);
         }
 

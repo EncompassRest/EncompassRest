@@ -10,12 +10,14 @@
     <Summary>Encompass API Client Library for .NET</Summary>
     <RepositoryUrl>https://github.com/EncompassRest/EncompassRest</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <NetStandardImplicitPackageVersion>2.0.0</NetStandardImplicitPackageVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Enums.NET" Version="2.3.0" />
+    <PackageReference Include="Enums.NET" Version="2.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
@@ -33,11 +35,5 @@
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
   </PropertyGroup>
 </Project>

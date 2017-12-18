@@ -16,21 +16,24 @@ namespace EncompassRest.Contacts
 
         internal Contact(EncompassRestClient client, string contactId)
         {
-            Preconditions.NotNull(client, nameof(client));
-            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
-
-            Id = contactId;
-            Initialize(client);
+            Initialize(client, contactId);
         }
         
         internal Contact()
         {
         }
 
-        internal void Initialize(EncompassRestClient client)
+        public void Initialize(EncompassRestClient client, string contactId)
         {
-            Client = client;
-            Notes = new ContactNotes(client, Id, ApiPath);
+            Preconditions.NotNull(client, nameof(client));
+            Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
+
+            if (!ReferenceEquals(Client, client))
+            {
+                Client = client;
+                Id = contactId;
+                Notes = new ContactNotes(client, Id, ApiPath);
+            }
         }
 
         private DirtyValue<string> _firstName;

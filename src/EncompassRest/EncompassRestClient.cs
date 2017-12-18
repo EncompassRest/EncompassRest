@@ -15,39 +15,39 @@ namespace EncompassRest
 {
     public sealed class EncompassRestClient : IDisposable
     {
-        public static async Task<EncompassRestClient> CreateFromUserCredentialsAsync(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling, CancellationToken cancellationToken = default)
+        public static async Task<EncompassRestClient> CreateFromUserCredentialsAsync(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling, CancellationToken cancellationToken = default)
         {
-            Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
-            Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
+            Preconditions.NotNullOrEmpty(apiClientId, nameof(apiClientId));
+            Preconditions.NotNullOrEmpty(apiClientSecret, nameof(apiClientSecret));
             Preconditions.NotNullOrEmpty(instanceId, nameof(instanceId));
             Preconditions.NotNullOrEmpty(userId, nameof(userId));
             Preconditions.NotNullOrEmpty(password, nameof(password));
 
-            var client = tokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken ? new EncompassRestClient(clientId, clientSecret, instanceId, userId, password, tokenExpirationHandling) : new EncompassRestClient(clientId, clientSecret);
+            var client = tokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken ? new EncompassRestClient(apiClientId, apiClientSecret, instanceId, userId, password, tokenExpirationHandling) : new EncompassRestClient(apiClientId, apiClientSecret);
             await client.AccessToken.SetTokenWithUserCredentialsAsync(instanceId, userId, password, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
-        public static async Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string clientId, string clientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default)
+        public static async Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default)
         {
-            Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
-            Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
+            Preconditions.NotNullOrEmpty(apiClientId, nameof(apiClientId));
+            Preconditions.NotNullOrEmpty(apiClientSecret, nameof(apiClientSecret));
             Preconditions.NotNullOrEmpty(redirectUri, nameof(redirectUri));
             Preconditions.NotNullOrEmpty(authorizationCode, nameof(authorizationCode));
 
-            var client = new EncompassRestClient(clientId, clientSecret);
+            var client = new EncompassRestClient(apiClientId, apiClientSecret);
             await client.AccessToken.SetTokenWithAuthorizationCodeAsync(redirectUri, authorizationCode, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
-        public static EncompassRestClient CreateFromAccessToken(string clientId, string clientSecret, string accessToken, string tokenType = "Bearer")
+        public static EncompassRestClient CreateFromAccessToken(string apiClientId, string apiClientSecret, string accessToken, string tokenType = "Bearer")
         {
-            Preconditions.NotNullOrEmpty(clientId, nameof(clientId));
-            Preconditions.NotNullOrEmpty(clientSecret, nameof(clientSecret));
+            Preconditions.NotNullOrEmpty(apiClientId, nameof(apiClientId));
+            Preconditions.NotNullOrEmpty(apiClientSecret, nameof(apiClientSecret));
             Preconditions.NotNullOrEmpty(accessToken, nameof(accessToken));
             Preconditions.NotNullOrEmpty(tokenType, nameof(tokenType));
 
-            var client = new EncompassRestClient(clientId, clientSecret);
+            var client = new EncompassRestClient(apiClientId, apiClientSecret);
             client.AccessToken.Token = accessToken;
             client.AccessToken.Type = tokenType;
             return client;
@@ -69,6 +69,7 @@ namespace EncompassRest
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
+        private Settings.Settings _settings;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -184,6 +185,15 @@ namespace EncompassRest
             }
         }
 
+        public Settings.Settings Settings
+        {
+            get
+            {
+                var settings = _settings;
+                return settings ?? Interlocked.CompareExchange(ref _settings, (settings = new Settings.Settings(this)), null) ?? settings;
+            }
+        }
+
         internal HttpClient HttpClient
         {
             get
@@ -212,13 +222,13 @@ namespace EncompassRest
         }
         #endregion
 
-        internal EncompassRestClient(string clientId, string clientSecret)
+        internal EncompassRestClient(string apiClientId, string apiClientSecret)
         {
-            AccessToken = new AccessToken(clientId, clientSecret, this);
+            AccessToken = new AccessToken(apiClientId, apiClientSecret, this);
         }
 
-        private EncompassRestClient(string clientId, string clientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling)
-            : this(clientId, clientSecret)
+        private EncompassRestClient(string apiClientId, string apiClientSecret, string instanceId, string userId, string password, TokenExpirationHandling tokenExpirationHandling)
+            : this(apiClientId, apiClientSecret)
         {
             _instanceId = instanceId;
             _userId = userId;
