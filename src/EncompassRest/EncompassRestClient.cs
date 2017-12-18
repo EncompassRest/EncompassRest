@@ -210,10 +210,7 @@ namespace EncompassRest
                             return httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
                         });
                     }
-                    httpClient = new HttpClient(handler)
-                    {
-                        BaseAddress = new Uri("https://api.elliemae.com/")
-                    };
+                    httpClient = new HttpClient(handler);
                     httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }

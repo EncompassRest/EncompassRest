@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/EncompassRest/EncompassRest/blob/master/LICENSE</PackageLicenseUrl>
+    <Title>EncompassRest</Title>
     <PackageTags>encompass rest api client</PackageTags>
     <Description>Encompass API Client Library for .NET</Description>
     <Summary>Encompass API Client Library for .NET</Summary>
@@ -12,8 +13,8 @@
     <RepositoryType>git</RepositoryType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <LangVersion>latest</LangVersion>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
-    <FileVersion>0.1.0.0</FileVersion>
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>0.2.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

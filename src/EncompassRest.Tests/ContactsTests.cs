@@ -50,7 +50,11 @@ namespace EncompassRest.Tests
         public async Task BusinessContact_CreateRetrieveAndDelete()
         {
             var client = await GetTestClientAsync();
-            var businessContact = new BusinessContact();
+            var businessContact = new BusinessContact
+            {
+                FirstName = "Bob",
+                PersonalEmail = "Bob@gmail.com"
+            };
             var contactId = await client.BusinessContacts.CreateContactAsync(businessContact).ConfigureAwait(false);
             Assert.IsNotNull(contactId);
             Assert.AreEqual(contactId, businessContact.Id);

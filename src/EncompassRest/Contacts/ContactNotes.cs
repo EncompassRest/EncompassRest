@@ -39,7 +39,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PostPopulateDirtyAsync(null, note, nameof(CreateNoteAsync), populate, cancellationToken);
+            return PostPopulateDirtyAsync(null, nameof(CreateNoteAsync), note, populate, cancellationToken);
         }
 
         public Task<string> CreateNoteRawAsync(string note, CancellationToken cancellationToken = default) => CreateNoteRawAsync(note, null, cancellationToken);

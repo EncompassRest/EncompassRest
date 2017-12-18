@@ -35,7 +35,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(contact, nameof(contact));
             Preconditions.NullOrEmpty(contact.Id, $"{nameof(contact)}.{nameof(contact.Id)}");
 
-            var contactId = await PostPopulateDirtyAsync(null, contact, nameof(CreateContactAsync), populate, cancellationToken).ConfigureAwait(false);
+            var contactId = await PostPopulateDirtyAsync(null, nameof(CreateContactAsync), contact, populate, cancellationToken).ConfigureAwait(false);
             contact.Initialize(Client, contactId);
             return contactId;
         }
