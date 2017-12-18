@@ -50,9 +50,11 @@ namespace EncompassRest
 
         internal Task<string> PostRawAsync(string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken) => SendAsync(HttpMethod.Post, requestUri, queryString, content, methodName, resourceId, cancellationToken, ReadAsStringFunc);
 
-        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync(requestUri, populate ? ViewEntityQueryString : null, value, methodName, populate, cancellationToken);
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => PostPopulateDirtyAsync(requestUri, populate ? ViewEntityQueryString : null, methodName, value, populate, cancellationToken);
 
-        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, T value, string methodName, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendAsync(HttpMethod.Post, requestUri, queryString, JsonStreamContent.Create(value), methodName, null, cancellationToken, async response =>
+        internal Task<string> PostPopulateDirtyAsync<T>(string requestUri, string queryString, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriPopulateDirtyAsync(HttpMethod.Post, GetFullUri(requestUri), queryString, JsonStreamContent.Create(value), methodName, value, populate, cancellationToken);
+
+        internal Task<string> SendFullUriPopulateDirtyAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, T value, bool populate, CancellationToken cancellationToken) where T : class, IDirty, IIdentifiable => SendFullUriAsync(method, requestUri, queryString, content, methodName, null, cancellationToken, async response =>
         {
             var id = GetLocation(response);
             value.Id = id;
@@ -99,7 +101,7 @@ namespace EncompassRest
         });
 
         internal Task<T> SendAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true) =>
-            SendFullUriAsync(method, $"{BaseAddress}{_baseApiPath}{requestUri?.PrecedeWith("/")}", queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
+            SendFullUriAsync(method, GetFullUri(requestUri), queryString, content, methodName, resourceId, cancellationToken, func, throwOnNonSuccessStatusCode);
 
         internal async Task<T> SendFullUriAsync<T>(HttpMethod method, string requestUri, string queryString, HttpContent content, string methodName, string resourceId, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func, bool throwOnNonSuccessStatusCode = true, bool disposeResponse = true)
         {
@@ -134,6 +136,8 @@ namespace EncompassRest
         internal virtual HttpClient GetHttpClient() => Client.HttpClient;
 
         internal virtual string BaseAddress => "https://api.elliemae.com/";
+
+        private string GetFullUri(string requestUri) => $"{BaseAddress}{_baseApiPath}{requestUri?.PrecedeWith("/")}";
 
         internal static class FuncCache<T>
         {

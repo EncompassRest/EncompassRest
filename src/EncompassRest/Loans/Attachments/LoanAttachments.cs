@@ -52,43 +52,51 @@ namespace EncompassRest.Loans.Attachments
 
             return PatchRawAsync(attachmentId, queryString, new JsonStringContent(attachment), nameof(UpdateAttachmentRawAsync), attachmentId, cancellationToken);
         }
-        
-        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, CancellationToken cancellationToken = default)
+
+        public Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentAsync(attachment, attachmentData, false, cancellationToken);
+
+        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, byte[] attachmentData, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            var mediaUrlObject = await GetUploadAttachmentUrlAsync(attachment, cancellationToken).ConfigureAwait(false);
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+            return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
         }
 
-        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, CancellationToken cancellationToken = default)
+        public Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentAsync(attachment, attachmentData, false, cancellationToken);
+
+        public async Task<string> UploadAttachmentAsync(LoanAttachment attachment, Stream attachmentData, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            var mediaUrlObject = await GetUploadAttachmentUrlAsync(attachment, cancellationToken).ConfigureAwait(false);
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+            return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
         }
-        
-        public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, CancellationToken cancellationToken = default)
+
+        public Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentRawAsync(attachment, attachmentData, null, cancellationToken);
+
+        public async Task<string> UploadAttachmentRawAsync(string attachment, byte[] attachmentData, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(queryString, new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc).ConfigureAwait(false);
         }
 
-        public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, CancellationToken cancellationToken = default)
+        public Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, CancellationToken cancellationToken = default) => UploadAttachmentRawAsync(attachment, attachmentData, null, cancellationToken);
+
+        public async Task<string> UploadAttachmentRawAsync(string attachment, Stream attachmentData, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
-            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
+            var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(queryString, new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadLocationFunc).ConfigureAwait(false);
+            return await SendFullUriAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentRawAsync), null, cancellationToken, ReadAsStringElseLocationFunc).ConfigureAwait(false);
         }
 
         public async Task<byte[]> DownloadAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default)
@@ -138,18 +146,18 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}.{nameof(attachment.AttachmentId)}");
 
-            return GetUploadAttachmentUrlInternalAsync(JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc);
+            return GetUploadAttachmentUrlInternalAsync(null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc);
         }
 
-        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, CancellationToken cancellationToken = default)
+        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
 
-            return GetUploadAttachmentUrlInternalAsync(new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, ReadAsStringFunc);
+            return GetUploadAttachmentUrlInternalAsync(queryString, new JsonStringContent(attachment), nameof(GetUploadAttachmentUrlRawAsync), cancellationToken, ReadAsStringFunc);
         }
 
-        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
-            PostAsync("url", null, content, methodName, null, cancellationToken, func);
+        private Task<T> GetUploadAttachmentUrlInternalAsync<T>(string queryString, HttpContent content, string methodName, CancellationToken cancellationToken, Func<HttpResponseMessage, Task<T>> func) =>
+            PostAsync("url", queryString, content, methodName, null, cancellationToken, func);
 
         public Task<MediaUrlObject> GetDownloadAttachmentUrlAsync(string attachmentId, CancellationToken cancellationToken = default)
         {

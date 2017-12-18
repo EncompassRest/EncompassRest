@@ -31,7 +31,7 @@ namespace EncompassRest.Tests
                 FileWithExtension = "Text.txt"
             };
             var text = "TESTING, TESTING, 1, 2, 3";
-            var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text));
+            var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
             Assert.IsFalse(string.IsNullOrEmpty(attachmentId));
             await Task.Delay(10000);
             var retrievedText = Encoding.UTF8.GetString(await loan.Attachments.DownloadAttachmentAsync(attachmentId));
@@ -48,7 +48,7 @@ namespace EncompassRest.Tests
                 FileWithExtension = "Bobby.txt"
             };
             var newText = "This is a test of the emergency broadcast system, this is only a test.";
-            var newAttachmentId = await loan.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)));
+            var newAttachmentId = await loan.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
             Assert.IsFalse(string.IsNullOrEmpty(newAttachmentId));
             await Task.Delay(10000);
             var newRetrievedText = Encoding.UTF8.GetString(await loan.Attachments.DownloadAttachmentAsync(newAttachmentId));
