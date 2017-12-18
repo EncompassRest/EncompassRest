@@ -41,7 +41,7 @@ namespace EncompassRest.Tests
                     accessToken.Type = "Type";
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
-                    httpClient.BaseAddress = new Uri("https://try.readme.io/" + httpClient.BaseAddress);
+                    httpClient.BaseAddress = new Uri("https://try.readme.io/");
                     var defaultRequestHeaders = httpClient.DefaultRequestHeaders;
                     defaultRequestHeaders.Clear();
                     defaultRequestHeaders.Add("x-api-key", "9JsmcmHyzJuokoWeJJ8HGiRgS5GR8cSKVswz");

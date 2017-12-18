@@ -97,7 +97,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(loan, nameof(loan));
             Preconditions.NullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
-            var loanId = await PostPopulateDirtyAsync(null, createLoanOptions?.ToQueryParameters()?.ToString(), loan, nameof(CreateLoanAsync), createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
+            var loanId = await PostPopulateDirtyAsync(null, createLoanOptions?.ToQueryParameters()?.ToString(), nameof(CreateLoanAsync), loan, createLoanOptions?.Populate == true, cancellationToken).ConfigureAwait(false);
             loan.Initialize(Client, loanId);
             return loanId;
         }
