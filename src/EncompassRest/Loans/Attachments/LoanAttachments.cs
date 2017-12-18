@@ -149,6 +149,8 @@ namespace EncompassRest.Loans.Attachments
             return GetUploadAttachmentUrlInternalAsync(null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc);
         }
 
+        public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, CancellationToken cancellationToken = default) => GetUploadAttachmentUrlRawAsync(attachment, null, cancellationToken);
+
         public Task<string> GetUploadAttachmentUrlRawAsync(string attachment, string queryString, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachment, nameof(attachment));
