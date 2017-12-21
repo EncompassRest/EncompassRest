@@ -75,6 +75,7 @@ namespace EncompassRest
         
         internal readonly string InstanceId;
         private readonly Func<TokenCreator, CancellationToken, Task<string>> _tokenInitializer;
+        private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
 
         private HttpClient _httpClient;
         private Loans.Loans _loans;
@@ -223,14 +224,26 @@ namespace EncompassRest
                     HttpMessageHandler handler = new HttpClientHandler();
                     if (TokenExpirationHandling == TokenExpirationHandling.RetrieveNewToken)
                     {
-                        handler = new RetryHandler(handler, async cancellationToken =>
+                        handler = new RetryHandler(handler, async (requestAuthorizationHeader, cancellationToken) =>
                         {
-                            AccessToken.Token = await _tokenInitializer(new TokenCreator(this), cancellationToken).ConfigureAwait(false);
-                            return httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
+                            await _semaphoreSlim.WaitAsync(cancellationToken);
+                            try
+                            {
+                                if (string.Equals(requestAuthorizationHeader.Parameter, AccessToken.Token, StringComparison.Ordinal))
+                                {
+                                    AccessToken.Token = await _tokenInitializer(new TokenCreator(this), cancellationToken).ConfigureAwait(false);
+                                    httpClient.DefaultRequestHeaders.Authorization = CreateAuthorizationHeader();
+                                }
+                            }
+                            finally
+                            {
+                                _semaphoreSlim.Release();
+                            }
+                            return httpClient.DefaultRequestHeaders.Authorization;
                         });
                     }
                     httpClient = new HttpClient(handler);
-                    httpClient.DefaultRequestHeaders.Authorization = GetAuthorizationHeader();
+                    httpClient.DefaultRequestHeaders.Authorization = CreateAuthorizationHeader();
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }
                 return httpClient;
@@ -256,13 +269,13 @@ namespace EncompassRest
             _httpClient?.Dispose();
         }
 
-        private AuthenticationHeaderValue GetAuthorizationHeader() => new AuthenticationHeaderValue(AccessToken.Type, AccessToken.Token);
+        private AuthenticationHeaderValue CreateAuthorizationHeader() => new AuthenticationHeaderValue(AccessToken.Type, AccessToken.Token);
 
         private sealed class RetryHandler : DelegatingHandler
         {
-            private readonly Func<CancellationToken, Task<AuthenticationHeaderValue>> _reinitializeAuthorizationHeader;
+            private readonly Func<AuthenticationHeaderValue, CancellationToken, Task<AuthenticationHeaderValue>> _reinitializeAuthorizationHeader;
 
-            public RetryHandler(HttpMessageHandler innerHandler, Func<CancellationToken, Task<AuthenticationHeaderValue>> reinitializeAuthorizationHeader)
+            public RetryHandler(HttpMessageHandler innerHandler, Func<AuthenticationHeaderValue, CancellationToken, Task<AuthenticationHeaderValue>> reinitializeAuthorizationHeader)
                 : base(innerHandler)
             {
                 _reinitializeAuthorizationHeader = reinitializeAuthorizationHeader;
@@ -273,7 +286,7 @@ namespace EncompassRest
                 var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    request.Headers.Authorization = await _reinitializeAuthorizationHeader(cancellationToken).ConfigureAwait(false);
+                    request.Headers.Authorization = await _reinitializeAuthorizationHeader(request.Headers.Authorization, cancellationToken).ConfigureAwait(false);
                     response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
                 }
                 return response;
