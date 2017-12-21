@@ -38,7 +38,6 @@ namespace EncompassRest.Tests
                 {
                     client = new EncompassRestClient("ClientId", "ClientSecret");
                     var accessToken = client.AccessToken;
-                    accessToken.Type = "Type";
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
                     httpClient.BaseAddress = new Uri("https://try.readme.io/");

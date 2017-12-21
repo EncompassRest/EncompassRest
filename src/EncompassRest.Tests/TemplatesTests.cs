@@ -9,7 +9,7 @@ namespace EncompassRest.Tests
     public class TemplatesTests : TestBaseClass
     {
         [TestMethod]
-        public async Task LoanFolders_GetTemplateFoldersAndFiles()
+        public async Task LoanTemplateSet_GetTemplateFoldersAndFiles()
         {
             var client = await GetTestClientAsync();
             await GetTemplateFoldersAndFiles(client.Settings.Templates.LoanTemplateSet, "Public\\\\");
