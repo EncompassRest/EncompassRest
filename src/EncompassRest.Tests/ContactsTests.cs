@@ -32,7 +32,11 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             if (client.AccessToken.Token != "Token")
             {
-                var borrowerContact = new BorrowerContact();
+                var borrowerContact = new BorrowerContact
+                {
+                    FirstName = "Bob",
+                    PersonalEmail = "Bob@gmail.com"
+                };
                 var contactId = await client.BorrowerContacts.CreateContactAsync(borrowerContact).ConfigureAwait(false);
 
                 Assert.IsNotNull(contactId);

@@ -21,7 +21,7 @@ namespace EncompassRest.Token
         #region Properties
         public string Token { get; internal set; }
 
-        public string Type { get; internal set; }
+        public string Type => "Bearer";
 
         internal HttpClient TokenClient
         {
@@ -57,25 +57,24 @@ namespace EncompassRest.Token
 
         internal void Dispose() => _tokenClient?.Dispose();
 
-        internal Task SetTokenWithUserCredentialsAsync(string instanceId, string userId, string password, CancellationToken cancellationToken) => SetTokenAsync(new[]
+        internal Task<string> GetTokenFromUserCredentialsAsync(string userId, string password, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
             {
                 KeyValuePair.Create("grant_type", "password"),
-                KeyValuePair.Create("username", $"{userId}@encompass:{instanceId}"),
+                KeyValuePair.Create("username", $"{userId}@encompass:{Client.InstanceId}"),
                 KeyValuePair.Create("password", password)
-            }, cancellationToken);
+            }, methodName, cancellationToken);
 
-        internal Task SetTokenWithAuthorizationCodeAsync(string redirectUri, string authorizationCode, CancellationToken cancellationToken) => SetTokenAsync(new[]
+        internal Task<string> GetTokenFromAuthorizationCodeAsync(string redirectUri, string authorizationCode, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
             {
                 KeyValuePair.Create("grant_type", "authorization_code"),
                 KeyValuePair.Create("redirect_uri", redirectUri),
                 KeyValuePair.Create("code", authorizationCode)
-            }, cancellationToken);
+            }, methodName, cancellationToken);
 
-        private async Task SetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, CancellationToken cancellationToken)
+        private async Task<string> GetTokenAsync(IEnumerable<KeyValuePair<string, string>> nameValueCollection, string methodName, CancellationToken cancellationToken)
         {
-            var tokenResponse = await PostAsync<TokenResponse>(null, null, new FormUrlEncodedContent(nameValueCollection), nameof(SetTokenAsync), null, cancellationToken).ConfigureAwait(false);
-            Token = tokenResponse.AccessToken;
-            Type = tokenResponse.TokenType;
+            var tokenResponse = await PostAsync<TokenResponse>(null, null, new FormUrlEncodedContent(nameValueCollection), methodName, null, cancellationToken).ConfigureAwait(false);
+            return tokenResponse.AccessToken;
         }
 
         private FormUrlEncodedContent CreateAccessTokenContent() => new FormUrlEncodedContent(new[] { KeyValuePair.Create("token", Token) });
@@ -86,8 +85,6 @@ namespace EncompassRest.Token
         private sealed class TokenResponse
         {
             public string AccessToken { get; set; }
-
-            public string TokenType { get; set; }
         }
         #endregion
     }
