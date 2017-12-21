@@ -226,7 +226,7 @@ namespace EncompassRest
                     {
                         handler = new RetryHandler(handler, async (requestAuthorizationHeader, cancellationToken) =>
                         {
-                            await _semaphoreSlim.WaitAsync(cancellationToken);
+                            await _semaphoreSlim.WaitAsync(cancellationToken).ConfigureAwait(false);
                             try
                             {
                                 if (string.Equals(requestAuthorizationHeader.Parameter, AccessToken.Token, StringComparison.Ordinal))
