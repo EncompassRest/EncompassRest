@@ -46,7 +46,7 @@ The `EncompassRestClient` class implements `IDisposable` so it is recommended to
 
 #### From User Credentials
 ```c#
-using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("apiClientId", "apiSecret", "encompassInstance", "encompassUserId", "encompassPassword"))
+using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("apiClientId", "apiClientSecret", "encompassInstanceId", "encompassUserId", "encompassPassword"))
 {
     // use client
 }
@@ -54,7 +54,7 @@ using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync("ap
 
 #### From Authorization Code
 ```c#
-using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync("apiClientId", "apiSecret", "redirectUri", "authorizationCode"))
+using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync("apiClientId", "apiClientSecret", "redirectUri", "authorizationCode"))
 {
     // use client
 }
@@ -62,7 +62,16 @@ using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync("
 
 #### From Access Token
 ```c#
-using (var client = EncompassRestClient.CreateFromAccessToken("apiClientId", "apiSecret", "accessToken"))
+using (var client = EncompassRestClient.CreateFromAccessToken("apiClientId", "apiClientSecret", "accessToken"))
+{
+    // use client
+}
+```
+
+#### Auto-retrieve new token when expired
+```c#
+using (var client = await EncompassRestClient.CreateAsync("apiClientId", "apiClientSecret", "encompassInstanceId",
+    (tokenCreator, ct) => tokenCreator.FromUserCredentialsAsync("encompassUserId", "encompassPassword", ct)))
 {
     // use client
 }
