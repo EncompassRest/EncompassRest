@@ -329,8 +329,8 @@ namespace EncompassRest.Loans
         public decimal? OriginationPointsAdditional { get => _originationPointsAdditional; set => _originationPointsAdditional = value; }
         private DirtyValue<decimal?> _originationPointsPercentage;
         public decimal? OriginationPointsPercentage { get => _originationPointsPercentage; set => _originationPointsPercentage = value; }
-        private DirtyValue<NA<decimal>?> _ownerTitleInsuranceAmount;
-        public NA<decimal>? OwnerTitleInsuranceAmount { get => _ownerTitleInsuranceAmount; set => _ownerTitleInsuranceAmount = value; }
+        private DirtyValue<NA<decimal>> _ownerTitleInsuranceAmount;
+        public NA<decimal> OwnerTitleInsuranceAmount { get => _ownerTitleInsuranceAmount; set => _ownerTitleInsuranceAmount = value; }
         private DirtyValue<bool?> _printNAInLockRateDays;
         public bool? PrintNAInLockRateDays { get => _printNAInLockRateDays; set => _printNAInLockRateDays = value; }
         private DirtyValue<bool?> _printShoppingChartIndicator;

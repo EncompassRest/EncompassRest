@@ -207,26 +207,32 @@ namespace EncompassRest.Utilities
 
             private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
 
+            private static Type s_openNaType = typeof(NA<>);
+
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
                 var valueProvider = base.CreateMemberValueProvider(member);
                 if (member is PropertyInfo propertyInfo)
                 {
                     var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == s_openStringEnumValueType)
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                     {
-                        valueProvider = new StringEnumValueProvider(valueProvider);
+                        var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
+                        if (genericTypeDefinition == s_openStringEnumValueType || genericTypeDefinition == s_openNaType)
+                        {
+                            valueProvider = new StringValueProvider(valueProvider);
+                        }
                     }
                 }
                 return valueProvider;
             }
 
-            // Required for proper Public Serialization
-            private class StringEnumValueProvider : IValueProvider
+            // Required for proper Public Serialization of StringEnumValue and NA
+            private class StringValueProvider : IValueProvider
             {
                 private readonly IValueProvider _valueProvider;
 
-                public StringEnumValueProvider(IValueProvider valueProvider)
+                public StringValueProvider(IValueProvider valueProvider)
                 {
                     _valueProvider = valueProvider;
                 }
