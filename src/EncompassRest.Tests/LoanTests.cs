@@ -56,6 +56,20 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public void Loan_ToString()
+        {
+            var loan = new Loan();
+            Assert.AreEqual("{}", loan.ToString());
+            loan.BaseLoanAmount = 123456.78M;
+            Assert.AreEqual(@"{""baseLoanAmount"":123456.78}", loan.ToString());
+            Assert.AreEqual(@"{
+  ""baseLoanAmount"": 123456.78
+}", loan.ToString(indent: true));
+            loan.BaseLoanAmount = null;
+            Assert.AreEqual("{}", loan.ToString());
+        }
+
+        [TestMethod]
         public void Loan_PublicDeserialization()
         {
             var loan = JsonConvert.DeserializeObject<Loan>(@"{""tltv"":85.00}");

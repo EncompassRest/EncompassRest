@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest
 {
@@ -43,6 +45,18 @@ namespace EncompassRest
         string IIdentifiable.Id { get => string.Empty; set { } }
         internal ExtensibleObject()
         {
+        }
+
+        public override string ToString() => ToString(false);
+
+        public string ToString(bool indent)
+        {
+            var serializer = indent ? JsonHelper.DefaultIndentedPublicSerializer : JsonHelper.DefaultPublicSerializer;
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, this);
+                return writer.ToString();
+            }
         }
     }
 }

@@ -14,8 +14,10 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
-        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy();
+        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
+        internal static readonly JsonSerializer DefaultPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
+        internal static readonly JsonSerializer DefaultIndentedPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
 
         public static JsonSerializer CreatePublicSerializer(JsonSerializer existingSerializer)
         {
@@ -138,7 +140,7 @@ namespace EncompassRest.Utilities
 
             public CustomContractResolver()
             {
-                NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
+                NamingStrategy = CamelCaseNamingStrategy;
             }
 
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
