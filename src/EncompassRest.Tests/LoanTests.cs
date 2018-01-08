@@ -67,6 +67,41 @@ namespace EncompassRest.Tests
 }", loan.ToString(indent: true));
             loan.BaseLoanAmount = null;
             Assert.AreEqual("{}", loan.ToString());
+            loan.ExtensionData.Add("dog", true);
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", loan.ToString(indent: true));
+            loan.CustomFields.Add(new CustomField { FieldName = "CX.TEMP", StringValue = "TempValue" });
+            Assert.AreEqual(@"{
+  ""customFields"": [
+    {
+      ""fieldName"": ""CX.TEMP"",
+      ""stringValue"": ""TempValue""
+    }
+  ],
+  ""dog"": true
+}", loan.ToString(indent: true));
+        }
+
+        [TestMethod]
+        public async Task Loan_Clone()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(new Loan());
+            try
+            {
+                await Task.Delay(5000);
+                var loan = await client.Loans.GetLoanAsync(loanId);
+                loan.Fees.First(f => f.FeeType == "TitleExamination").NewHUDBorPaidAmount = 0.0M; // Required due to issue with number of decimals serialized
+                var clonedLoan = loan.Clone();
+                var loanAsJson = loan.ToString(true);
+                var clonedLoanAsJson = clonedLoan.ToString(true);
+                Assert.AreEqual(loanAsJson, clonedLoanAsJson);
+            }
+            finally
+            {
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+            }
         }
 
         [TestMethod]

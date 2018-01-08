@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
@@ -7,6 +8,9 @@ namespace EncompassRest
 {
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class ExtensibleObject : IDirty, IIdentifiable
+#if HAVE_ICLONEABLE
+        , ICloneable
+#endif
     {
         private DirtyDictionary<string, object> _extensionData;
         [JsonExtensionData]
@@ -58,5 +62,9 @@ namespace EncompassRest
                 return writer.ToString();
             }
         }
+
+#if HAVE_ICLONEABLE
+        object ICloneable.Clone() => this.Clone();
+#endif
     }
 }

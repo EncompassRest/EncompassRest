@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EncompassRest.Utilities
@@ -11,7 +10,6 @@ namespace EncompassRest.Utilities
     internal sealed class JsonStreamContent : HttpContent
     {
         private static readonly Task s_completedTask = Task.FromResult(0);
-        private static readonly Encoding s_utf8NoBOM = new UTF8Encoding(false);
 
         public static JsonStreamContent Create<T>(T value) => new JsonStreamContent(value, TypeData<T>.Type);
 
@@ -34,7 +32,7 @@ namespace EncompassRest.Utilities
 
         protected override Task SerializeToStreamAsync(Stream stream, TransportContext context)
         {
-            using (var writer = new StreamWriter(stream, s_utf8NoBOM, 4096, true))
+            using (var writer = new StreamWriter(stream, JsonHelper.Utf8NoBOM, 4096, true))
             {
                 JsonHelper.ToJson(Value, Type, writer);
             }
