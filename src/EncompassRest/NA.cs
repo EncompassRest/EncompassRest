@@ -33,6 +33,8 @@ namespace EncompassRest
             }
         }
 
+        public bool HasValue => _isNotNull && !IsNA;
+
         public bool IsNull => !_isNotNull;
 
         public bool IsNA { get; }
@@ -53,7 +55,7 @@ namespace EncompassRest
 
         public T GetValueOrDefault() => _value;
 
-        public T GetValueOrDefault(T defaultValue) => _isNotNull && !IsNA ? _value : defaultValue;
+        public T GetValueOrDefault(T defaultValue) => HasValue ? _value : defaultValue;
 
         public override int GetHashCode() => _isNotNull ? (IsNA ? "NA".GetHashCode() : _value.GetHashCode()) : 0;
 
