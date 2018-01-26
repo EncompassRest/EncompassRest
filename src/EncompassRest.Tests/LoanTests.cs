@@ -43,6 +43,31 @@ namespace EncompassRest.Tests
             Assert.AreEqual(@"{
   ""dog"": true
 }", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = 5M;
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {
+      ""ownerTitleInsuranceAmount"": ""5""
+    }
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = "na";
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {
+      ""ownerTitleInsuranceAmount"": ""NA""
+    }
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = null;
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {}
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
             var client = await GetTestClientAsync();
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
@@ -76,6 +101,28 @@ namespace EncompassRest.Tests
   ""TestString"": ""TESTING""
 }", json);
             var newValue = JsonConvert.DeserializeAnonymousType(json, value);
+        }
+
+        [TestMethod]
+        public void NA_Serialization()
+        {
+            NA<decimal> na = null;
+            Assert.AreEqual("null", na.ToJson());
+            na = "na";
+            Assert.AreEqual(@"""NA""", na.ToJson());
+            na = 5.08M;
+            Assert.AreEqual(@"""5.08""", na.ToJson());
+        }
+
+        [TestMethod]
+        public void NA_Deserialization()
+        {
+            var na = JsonHelper.FromJson<NA<decimal>>("null");
+            Assert.IsTrue(na.IsNull);
+            na = JsonHelper.FromJson<NA<decimal>>(@"""NA""");
+            Assert.IsTrue(na.IsNA);
+            na = JsonHelper.FromJson<NA<decimal>>(@"""5.08""");
+            Assert.AreEqual(5.08M, na.Value);
         }
 
         [TestMethod]

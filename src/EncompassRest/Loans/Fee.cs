@@ -41,8 +41,8 @@ namespace EncompassRest.Loans
         public decimal? MonthlyPayment { get => _monthlyPayment; set => _monthlyPayment = value; }
         private DirtyValue<decimal?> _mortgageAmount;
         public decimal? MortgageAmount { get => _mortgageAmount; set => _mortgageAmount = value; }
-        private DirtyValue<NA<decimal>?> _newHUDBorPaidAmount;
-        public NA<decimal>? NewHUDBorPaidAmount { get => _newHUDBorPaidAmount; set => _newHUDBorPaidAmount = value; }
+        private DirtyValue<NA<decimal>> _newHUDBorPaidAmount;
+        public NA<decimal> NewHUDBorPaidAmount { get => _newHUDBorPaidAmount; set => _newHUDBorPaidAmount = value; }
         private DirtyValue<int?> _numberOfMonths;
         public int? NumberOfMonths { get => _numberOfMonths; set => _numberOfMonths = value; }
         private DirtyValue<decimal?> _ownerCoverage;
