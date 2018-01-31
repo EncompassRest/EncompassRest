@@ -84,7 +84,8 @@ namespace EncompassRest
         private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
 
         private HttpClient _httpClient;
-        private Loans.Loans _loans;
+		private TimeSpan _TimeOut = new TimeSpan(0, 0, 100);
+		private Loans.Loans _loans;
         private Schema.Schema _schema;
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
@@ -104,11 +105,14 @@ namespace EncompassRest
 
         public TimeSpan Timeout
         {
-            get => HttpClient.Timeout;
+            get => _TimeOut;
             set
             {
-                HttpClient.Timeout = value;
-                AccessToken.TokenClient.Timeout = value;
+				_httpClient = null;
+				_TimeOut = value;
+
+				AccessToken._tokenClient = null;
+				AccessToken._TimeOut = value;
             }
         }
 
@@ -249,6 +253,7 @@ namespace EncompassRest
                         });
                     }
                     httpClient = new HttpClient(handler);
+					httpClient.Timeout = Timeout;
                     httpClient.DefaultRequestHeaders.Authorization = CreateAuthorizationHeader();
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }

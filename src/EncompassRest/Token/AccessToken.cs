@@ -14,8 +14,10 @@ namespace EncompassRest.Token
 {
     public sealed class AccessToken : ApiObject
     {
-        private HttpClient _tokenClient;
-        private readonly string _apiClientId;
+        internal HttpClient _tokenClient;
+		internal TimeSpan _TimeOut = new TimeSpan(0, 0, 100);
+
+		private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
         #region Properties
@@ -31,7 +33,9 @@ namespace EncompassRest.Token
                 if (tokenClient == null)
                 {
                     tokenClient = new HttpClient();
-                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
+					tokenClient.Timeout = _TimeOut;
+
+					tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
