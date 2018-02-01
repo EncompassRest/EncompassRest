@@ -14,8 +14,11 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
-        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy();
+        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
+        internal static readonly JsonSerializer DefaultPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
+        internal static readonly JsonSerializer DefaultIndentedPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
+        internal static readonly Encoding Utf8NoBOM = new UTF8Encoding(false);
 
         public static JsonSerializer CreatePublicSerializer(JsonSerializer existingSerializer)
         {
@@ -110,6 +113,23 @@ namespace EncompassRest.Utilities
 
         public static void ToJson(object value, Type type, TextWriter writer) => s_serializer.Serialize(writer, value, type);
 
+        public static T Clone<T>(this JsonSerializer jsonSerializer, T value)
+        {
+            var objectType = value?.GetType();
+            using (var ms = new MemoryStream())
+            {
+                using (var sw = new StreamWriter(ms, Utf8NoBOM, 4096, true))
+                {
+                    jsonSerializer.Serialize(sw, value);
+                }
+                ms.Position = 0;
+                using (var sr = new StreamReader(ms))
+                {
+                    return (T)jsonSerializer.Deserialize(sr, objectType);
+                }
+            }
+        }
+
         public static async Task<T> ReadAsAsync<T>(this HttpContent content)
         {
             using (var stream = await content.ReadAsStreamAsync().ConfigureAwait(false))
@@ -138,7 +158,7 @@ namespace EncompassRest.Utilities
 
             public CustomContractResolver()
             {
-                NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
+                NamingStrategy = CamelCaseNamingStrategy;
             }
 
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
@@ -205,7 +225,24 @@ namespace EncompassRest.Utilities
                 }
             }
 
+            protected override JsonConverter ResolveContractConverter(Type objectType)
+            {
+                var typeData = TypeData.Get(objectType);
+                var typeInfo = typeData.TypeInfo;
+                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                {
+                    var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                    if (genericTypeDefinition == s_openDirtyListType || genericTypeDefinition == s_openDirtyDictionaryType)
+                    {
+                        return null;
+                    }
+                }
+                return base.ResolveContractConverter(objectType);
+            }
+
             private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
+            private static Type s_openDirtyListType = typeof(DirtyList<>);
+            private static Type s_openDirtyDictionaryType = typeof(DirtyDictionary<,>);
 
             private static Type s_openNaType = typeof(NA<>);
 

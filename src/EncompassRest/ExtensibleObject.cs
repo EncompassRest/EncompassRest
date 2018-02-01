@@ -1,10 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using EncompassRest.Utilities;
+using Newtonsoft.Json;
 
 namespace EncompassRest
 {
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class ExtensibleObject : IDirty, IIdentifiable
+#if HAVE_ICLONEABLE
+        , ICloneable
+#endif
     {
         private DirtyDictionary<string, object> _extensionData;
         [JsonExtensionData]
@@ -44,5 +50,21 @@ namespace EncompassRest
         internal ExtensibleObject()
         {
         }
+
+        public override string ToString() => ToString(false);
+
+        public string ToString(bool indent)
+        {
+            var serializer = indent ? JsonHelper.DefaultIndentedPublicSerializer : JsonHelper.DefaultPublicSerializer;
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, this);
+                return writer.ToString();
+            }
+        }
+
+#if HAVE_ICLONEABLE
+        object ICloneable.Clone() => this.Clone();
+#endif
     }
 }
