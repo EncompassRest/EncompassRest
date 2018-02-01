@@ -15,9 +15,9 @@ namespace EncompassRest.Token
     public sealed class AccessToken : ApiObject
     {
         internal HttpClient _tokenClient;
-		internal TimeSpan _timeOut = TimeSpan.FromSeconds(100);
+        internal TimeSpan _timeOut = TimeSpan.FromSeconds(100);
 
-		private readonly string _apiClientId;
+        private readonly string _apiClientId;
         private readonly string _apiClientSecret;
 
         #region Properties
@@ -33,9 +33,9 @@ namespace EncompassRest.Token
                 if (tokenClient == null)
                 {
                     tokenClient = new HttpClient();
-					tokenClient.Timeout = _timeOut;
+                    tokenClient.Timeout = _timeOut;
 
-					tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
+                    tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
                 return tokenClient;
@@ -55,7 +55,7 @@ namespace EncompassRest.Token
 
         public Task<string> IntrospectRawAsync(CancellationToken cancellationToken = default) => PostAsync("introspection", null, CreateAccessTokenContent(), nameof(IntrospectRawAsync), Token, cancellationToken, response => response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync() : Task.FromResult<string>(null), false);
 
-        public Task<bool> RevokeAsync(CancellationToken cancellationToken = default) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false); 
+        public Task<bool> RevokeAsync(CancellationToken cancellationToken = default) => PostAsync("revocation", null, CreateAccessTokenContent(), nameof(RevokeAsync), Token, cancellationToken, IsSuccessStatusCodeFunc, false);
 
         public override string ToString() => $"{Type} {Token}";
 
