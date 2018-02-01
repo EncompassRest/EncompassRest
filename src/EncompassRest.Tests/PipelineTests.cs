@@ -89,6 +89,36 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter()
+        {
+            var client = await GetTestClientAsync();
+            var fields = new[] { CanonicalLoanField.LoanAmount.GetCanonicalName() };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(CanonicalLoanField.LoanAmount), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsFalse(string.IsNullOrEmpty(item.Fields["Loan.LoanAmount"]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_EmptyFieldFilter()
+        {
+            var client = await GetTestClientAsync();
+            var fields = new[] { CanonicalLoanField.LoanAmount.GetCanonicalName() };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(CanonicalLoanField.LoanAmount), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields["Loan.LoanAmount"]));
+            }
+        }
+
+        [TestMethod]
         public async Task Pipeline_CreateCursor_ReturnsNullForNoResults()
         {
             var client = await GetTestClientAsync();
