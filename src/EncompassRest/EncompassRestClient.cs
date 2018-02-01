@@ -78,14 +78,14 @@ namespace EncompassRest
             client.AccessToken.Token = accessToken;
             return client;
         }
-        
+
         internal readonly string InstanceId;
         private readonly Func<TokenCreator, CancellationToken, Task<string>> _tokenInitializer;
         private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
 
         private HttpClient _httpClient;
-		private TimeSpan _timeOut = TimeSpan.FromSeconds(100);
-		private Loans.Loans _loans;
+        private TimeSpan _timeOut = TimeSpan.FromSeconds(100);
+        private Loans.Loans _loans;
         private Schema.Schema _schema;
         private Webhook.Webhook _webhook;
         private Pipeline _pipeline;
@@ -108,11 +108,11 @@ namespace EncompassRest
             get => _timeOut;
             set
             {
-				_httpClient = null;
-				_timeOut = value;
+                _httpClient = null;
+                _timeOut = value;
 
-				AccessToken._tokenClient = null;
-				AccessToken._timeOut = value;
+                AccessToken._tokenClient = null;
+                AccessToken._timeOut = value;
             }
         }
 
@@ -253,7 +253,7 @@ namespace EncompassRest
                         });
                     }
                     httpClient = new HttpClient(handler);
-					httpClient.Timeout = Timeout;
+                    httpClient.Timeout = Timeout;
                     httpClient.DefaultRequestHeaders.Authorization = CreateAuthorizationHeader();
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }
