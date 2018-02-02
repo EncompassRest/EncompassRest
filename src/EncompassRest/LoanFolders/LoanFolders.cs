@@ -1,4 +1,4 @@
-﻿using System.Net;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -12,6 +12,6 @@ namespace EncompassRest.LoanFolders
         {
         }
 
-        public Task MoveLoanToFolderAsync(string loanId, string loanFolder, CancellationToken cancellationToken = default) => PatchAsync($"{WebUtility.UrlEncode(loanFolder)}/loans", "?action=add", new JsonStringContent($@"{{""loanGuid"":""{loanId}""}}"), nameof(MoveLoanToFolderAsync), loanId, cancellationToken);
+        public Task MoveLoanToFolderAsync(string loanId, string loanFolder, CancellationToken cancellationToken = default) => PatchAsync($"{Uri.EscapeDataString(loanFolder)}/loans", "?action=add", new JsonStringContent($@"{{""loanGuid"":""{loanId}""}}"), nameof(MoveLoanToFolderAsync), loanId, cancellationToken);
     }
 }
