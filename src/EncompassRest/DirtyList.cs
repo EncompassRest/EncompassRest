@@ -121,7 +121,6 @@ namespace EncompassRest
 
         int IList.Add(object value) => ((IList)_list).Add(value);
 
-
         bool IList.Contains(object value) => ((IList)_list).Contains(value);
 
         int IList.IndexOf(object value) => ((IList)_list).IndexOf(value);
