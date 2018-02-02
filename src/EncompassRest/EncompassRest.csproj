@@ -28,13 +28,16 @@
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <AssemblyTitle>EncompassRest .NET Standard 2.0</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD2_0;HAVE_ICLONEABLE</DefineConstants>
   </PropertyGroup>
     
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
     <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD1_1</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
+    <DefineConstants>NET45;HAVE_ICLONEABLE</DefineConstants>
   </PropertyGroup>
 </Project>

@@ -481,8 +481,9 @@ namespace {@namespace}
                 case PropertySchemaType.String:
                 case PropertySchemaType.Uuid:
                     return "string";
-                case PropertySchemaType.Decimal:
                 case PropertySchemaType.NADecimal:
+                    return "NA<decimal>";
+                case PropertySchemaType.Decimal:
                 case PropertySchemaType.Bool:
                 case PropertySchemaType.Int:
                     return $"{propertyType}?";

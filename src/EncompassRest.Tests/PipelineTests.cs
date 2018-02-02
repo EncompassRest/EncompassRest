@@ -89,6 +89,102 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_Numeric()
+        {
+            var client = await GetTestClientAsync();
+            var field = CanonicalLoanField.LoanAmount.GetCanonicalName();
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsFalse(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_EmptyFieldFilter_Numeric()
+        {
+            var client = await GetTestClientAsync();
+            var field = CanonicalLoanField.LoanAmount.GetCanonicalName();
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_Date()
+        {
+            var client = await GetTestClientAsync();
+            var field = "Fields.762";
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsFalse(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_EmptyFieldFilter_Date()
+        {
+            var client = await GetTestClientAsync();
+            var field = "Fields.762";
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_String()
+        {
+            var client = await GetTestClientAsync();
+            var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new NotEmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsFalse(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_EmptyFieldFilter_String()
+        {
+            var client = await GetTestClientAsync();
+            var field = CanonicalLoanField.CoBorrowerLastName.GetCanonicalName();
+            var fields = new[] { field };
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
         public async Task Pipeline_CreateCursor_ReturnsNullForNoResults()
         {
             var client = await GetTestClientAsync();

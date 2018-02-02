@@ -35,8 +35,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<BusinessOrCommercialPurpose> BusinessOrCommercialPurpose { get => _businessOrCommercialPurpose; set => _businessOrCommercialPurpose = value; }
         private DirtyValue<string> _censusTrack;
         public string CensusTrack { get => _censusTrack; set => _censusTrack = value; }
-        private DirtyValue<NA<decimal>?> _cLTV;
-        public NA<decimal>? CLTV { get => _cLTV; set => _cLTV = value; }
+        private DirtyValue<NA<decimal>> _cLTV;
+        public NA<decimal> CLTV { get => _cLTV; set => _cLTV = value; }
         private DirtyValue<string> _contactEmailAddress;
         public string ContactEmailAddress { get => _contactEmailAddress; set => _contactEmailAddress = value; }
         private DirtyValue<string> _contactFaxNumber;
@@ -55,8 +55,8 @@ namespace EncompassRest.Loans
         public string ContactPhoneNumber { get => _contactPhoneNumber; set => _contactPhoneNumber = value; }
         private DirtyValue<string> _countyCode;
         public string CountyCode { get => _countyCode; set => _countyCode = value; }
-        private DirtyValue<NA<decimal>?> _debtToIncomeRatio;
-        public NA<decimal>? DebtToIncomeRatio { get => _debtToIncomeRatio; set => _debtToIncomeRatio = value; }
+        private DirtyValue<NA<decimal>> _debtToIncomeRatio;
+        public NA<decimal> DebtToIncomeRatio { get => _debtToIncomeRatio; set => _debtToIncomeRatio = value; }
         private DirtyValue<StringEnumValue<DenialReason>> _denialReason1;
         public StringEnumValue<DenialReason> DenialReason1 { get => _denialReason1; set => _denialReason1 = value; }
         private DirtyValue<StringEnumValue<DenialReason>> _denialReason2;
@@ -65,8 +65,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<DenialReason> DenialReason3 { get => _denialReason3; set => _denialReason3 = value; }
         private DirtyValue<StringEnumValue<DenialReason>> _denialReason4;
         public StringEnumValue<DenialReason> DenialReason4 { get => _denialReason4; set => _denialReason4 = value; }
-        private DirtyValue<NA<decimal>?> _discountPoints;
-        public NA<decimal>? DiscountPoints { get => _discountPoints; set => _discountPoints = value; }
+        private DirtyValue<NA<decimal>> _discountPoints;
+        public NA<decimal> DiscountPoints { get => _discountPoints; set => _discountPoints = value; }
         private DirtyValue<bool?> _excludeLoanFromHMDAReportIndicator;
         public bool? ExcludeLoanFromHMDAReportIndicator { get => _excludeLoanFromHMDAReportIndicator; set => _excludeLoanFromHMDAReportIndicator = value; }
         private DirtyValue<StringEnumValue<FederalAgency>> _federalAgency;
@@ -95,18 +95,18 @@ namespace EncompassRest.Loans
         public StringEnumValue<HOEPAStatus> HOEPAStatus { get => _hOEPAStatus; set => _hOEPAStatus = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<NA<decimal>?> _income;
-        public NA<decimal>? Income { get => _income; set => _income = value; }
+        private DirtyValue<NA<decimal>> _income;
+        public NA<decimal> Income { get => _income; set => _income = value; }
         private DirtyValue<StringEnumValue<InitiallyPayableToYourInstitution>> _initiallyPayableToYourInstitution;
         public StringEnumValue<InitiallyPayableToYourInstitution> InitiallyPayableToYourInstitution { get => _initiallyPayableToYourInstitution; set => _initiallyPayableToYourInstitution = value; }
-        private DirtyValue<NA<decimal>?> _interestRate;
-        public NA<decimal>? InterestRate { get => _interestRate; set => _interestRate = value; }
+        private DirtyValue<NA<decimal>> _interestRate;
+        public NA<decimal> InterestRate { get => _interestRate; set => _interestRate = value; }
         private DirtyValue<string> _introRatePeriod;
         public string IntroRatePeriod { get => _introRatePeriod; set => _introRatePeriod = value; }
         private DirtyValue<string> _legalEntityIdentifier;
         public string LegalEntityIdentifier { get => _legalEntityIdentifier; set => _legalEntityIdentifier = value; }
-        private DirtyValue<NA<decimal>?> _lenderCredits;
-        public NA<decimal>? LenderCredits { get => _lenderCredits; set => _lenderCredits = value; }
+        private DirtyValue<NA<decimal>> _lenderCredits;
+        public NA<decimal> LenderCredits { get => _lenderCredits; set => _lenderCredits = value; }
         private DirtyValue<StringEnumValue<LienStatus>> _lienStatus;
         public StringEnumValue<LienStatus> LienStatus { get => _lienStatus; set => _lienStatus = value; }
         private DirtyValue<decimal?> _loanAmount;
@@ -155,12 +155,12 @@ namespace EncompassRest.Loans
         public string PrepaymentPenaltyPeriod { get => _prepaymentPenaltyPeriod; set => _prepaymentPenaltyPeriod = value; }
         private DirtyValue<StringEnumValue<HmdaPropertyType>> _propertyType;
         public StringEnumValue<HmdaPropertyType> PropertyType { get => _propertyType; set => _propertyType = value; }
-        private DirtyValue<NA<decimal>?> _propertyValue;
-        public NA<decimal>? PropertyValue { get => _propertyValue; set => _propertyValue = value; }
+        private DirtyValue<NA<decimal>> _propertyValue;
+        public NA<decimal> PropertyValue { get => _propertyValue; set => _propertyValue = value; }
         private DirtyValue<StringEnumValue<QMStatus>> _qMStatus;
         public StringEnumValue<QMStatus> QMStatus { get => _qMStatus; set => _qMStatus = value; }
-        private DirtyValue<NA<decimal>?> _rateSpread;
-        public NA<decimal>? RateSpread { get => _rateSpread; set => _rateSpread = value; }
+        private DirtyValue<NA<decimal>> _rateSpread;
+        public NA<decimal> RateSpread { get => _rateSpread; set => _rateSpread = value; }
         private DirtyValue<int?> _reportingYear;
         public int? ReportingYear { get => _reportingYear; set => _reportingYear = value; }
         private DirtyValue<bool?> _reportPurposeOfLoanIndicator;
