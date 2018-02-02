@@ -2,7 +2,6 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Token;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Tests
@@ -31,12 +30,12 @@ namespace EncompassRest.Tests
                             credentials = JsonHelper.FromJson<TestClientCredentials>(sr);
                         }
                     }
-                    client = await EncompassRestClient.CreateFromUserCredentialsAsync(credentials.ClientId, credentials.ClientSecret, credentials.InstanceId, credentials.UserId, credentials.Password, TokenExpirationHandling.RetrieveNewToken).ConfigureAwait(false);
+                    client = await EncompassRestClient.CreateAsync(credentials.Parameters, tc => tc.FromUserCredentialsAsync(credentials.InstanceId, credentials.UserId, credentials.Password)).ConfigureAwait(false);
                     Console.WriteLine("Using test client credentials file");
                 }
                 else
                 {
-                    client = new EncompassRestClient("ClientId", "ClientSecret");
+                    client = new EncompassRestClient(new ClientParameters("ApiClientId", "ApiClientSecret"));
                     var accessToken = client.AccessToken;
                     accessToken.Token = "Token";
                     var httpClient = client.HttpClient;
@@ -54,8 +53,7 @@ namespace EncompassRest.Tests
 
         private sealed class TestClientCredentials
         {
-            public string ClientId { get; set; }
-            public string ClientSecret { get; set; }
+            public ClientParameters Parameters { get; set; }
             public string InstanceId { get; set; }
             public string UserId { get; set; }
             public string Password { get; set; }

@@ -30,7 +30,10 @@ namespace EncompassRest.Token
                 var tokenClient = _tokenClient;
                 if (tokenClient == null)
                 {
-                    tokenClient = new HttpClient();
+                    tokenClient = new HttpClient(new EncompassRestClient.RetryHandler(Client, false))
+                    {
+                        Timeout = Client.Timeout
+                    };
                     tokenClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.UTF8.GetBytes($"{WebUtility.UrlEncode(_apiClientId)}:{WebUtility.UrlEncode(_apiClientSecret)}")));
                     tokenClient = Interlocked.CompareExchange(ref _tokenClient, tokenClient, null) ?? tokenClient;
                 }
@@ -57,10 +60,10 @@ namespace EncompassRest.Token
 
         internal void Dispose() => _tokenClient?.Dispose();
 
-        internal Task<string> GetTokenFromUserCredentialsAsync(string userId, string password, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
+        internal Task<string> GetTokenFromUserCredentialsAsync(string instanceId, string userId, string password, string methodName, CancellationToken cancellationToken) => GetTokenAsync(new[]
             {
                 KeyValuePair.Create("grant_type", "password"),
-                KeyValuePair.Create("username", $"{userId}@encompass:{Client.InstanceId}"),
+                KeyValuePair.Create("username", $"{userId}@encompass:{instanceId}"),
                 KeyValuePair.Create("password", password)
             }, methodName, cancellationToken);
 
