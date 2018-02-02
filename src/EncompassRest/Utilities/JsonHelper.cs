@@ -14,8 +14,11 @@ namespace EncompassRest.Utilities
 {
     internal static class JsonHelper
     {
-        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy();
+        internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
+        internal static readonly JsonSerializer DefaultPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
+        internal static readonly JsonSerializer DefaultIndentedPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
+        internal static readonly Encoding Utf8NoBOM = new UTF8Encoding(false);
 
         public static JsonSerializer CreatePublicSerializer(JsonSerializer existingSerializer)
         {
@@ -110,6 +113,23 @@ namespace EncompassRest.Utilities
 
         public static void ToJson(object value, Type type, TextWriter writer) => s_serializer.Serialize(writer, value, type);
 
+        public static T Clone<T>(this JsonSerializer jsonSerializer, T value)
+        {
+            var objectType = value?.GetType();
+            using (var ms = new MemoryStream())
+            {
+                using (var sw = new StreamWriter(ms, Utf8NoBOM, 4096, true))
+                {
+                    jsonSerializer.Serialize(sw, value);
+                }
+                ms.Position = 0;
+                using (var sr = new StreamReader(ms))
+                {
+                    return (T)jsonSerializer.Deserialize(sr, objectType);
+                }
+            }
+        }
+
         public static async Task<T> ReadAsAsync<T>(this HttpContent content)
         {
             using (var stream = await content.ReadAsStreamAsync().ConfigureAwait(false))
@@ -138,7 +158,7 @@ namespace EncompassRest.Utilities
 
             public CustomContractResolver()
             {
-                NamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
+                NamingStrategy = CamelCaseNamingStrategy;
             }
 
             protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
@@ -205,7 +225,26 @@ namespace EncompassRest.Utilities
                 }
             }
 
+            protected override JsonConverter ResolveContractConverter(Type objectType)
+            {
+                var typeData = TypeData.Get(objectType);
+                var typeInfo = typeData.TypeInfo;
+                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                {
+                    var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                    if (genericTypeDefinition == s_openDirtyListType || genericTypeDefinition == s_openDirtyDictionaryType)
+                    {
+                        return null;
+                    }
+                }
+                return base.ResolveContractConverter(objectType);
+            }
+
             private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
+            private static Type s_openDirtyListType = typeof(DirtyList<>);
+            private static Type s_openDirtyDictionaryType = typeof(DirtyDictionary<,>);
+
+            private static Type s_openNaType = typeof(NA<>);
 
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
@@ -213,20 +252,24 @@ namespace EncompassRest.Utilities
                 if (member is PropertyInfo propertyInfo)
                 {
                     var propertyTypeInfo = propertyInfo.PropertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition && propertyTypeInfo.GetGenericTypeDefinition() == s_openStringEnumValueType)
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                     {
-                        valueProvider = new StringEnumValueProvider(valueProvider);
+                        var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
+                        if (genericTypeDefinition == s_openStringEnumValueType || genericTypeDefinition == s_openNaType)
+                        {
+                            valueProvider = new StringValueProvider(valueProvider);
+                        }
                     }
                 }
                 return valueProvider;
             }
 
-            // Required for proper Public Serialization
-            private class StringEnumValueProvider : IValueProvider
+            // Required for proper Public Serialization of StringEnumValue and NA
+            private class StringValueProvider : IValueProvider
             {
                 private readonly IValueProvider _valueProvider;
 
-                public StringEnumValueProvider(IValueProvider valueProvider)
+                public StringValueProvider(IValueProvider valueProvider)
                 {
                     _valueProvider = valueProvider;
                 }

@@ -43,6 +43,31 @@ namespace EncompassRest.Tests
             Assert.AreEqual(@"{
   ""dog"": true
 }", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = 5M;
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {
+      ""ownerTitleInsuranceAmount"": ""5""
+    }
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = "na";
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {
+      ""ownerTitleInsuranceAmount"": ""NA""
+    }
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
+            loan.ClosingCost.Gfe2010.OwnerTitleInsuranceAmount = null;
+            Assert.AreEqual(@"{
+  ""closingCost"": {
+    ""gfe2010"": {}
+  },
+  ""dog"": true
+}", JsonConvert.SerializeObject(loan, serializerSettings));
             var client = await GetTestClientAsync();
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsNotNull(loanId);
@@ -53,6 +78,55 @@ namespace EncompassRest.Tests
             Assert.AreEqual(json, newJson);
             await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
+        [TestMethod]
+        public void Loan_ToString()
+        {
+            var loan = new Loan();
+            Assert.AreEqual("{}", loan.ToString());
+            loan.BaseLoanAmount = 123456.78M;
+            Assert.AreEqual(@"{""baseLoanAmount"":123456.78}", loan.ToString());
+            Assert.AreEqual(@"{
+  ""baseLoanAmount"": 123456.78
+}", loan.ToString(indent: true));
+            loan.BaseLoanAmount = null;
+            Assert.AreEqual("{}", loan.ToString());
+            loan.ExtensionData.Add("dog", true);
+            Assert.AreEqual(@"{
+  ""dog"": true
+}", loan.ToString(indent: true));
+            loan.CustomFields.Add(new CustomField { FieldName = "CX.TEMP", StringValue = "TempValue" });
+            Assert.AreEqual(@"{
+  ""customFields"": [
+    {
+      ""fieldName"": ""CX.TEMP"",
+      ""stringValue"": ""TempValue""
+    }
+  ],
+  ""dog"": true
+}", loan.ToString(indent: true));
+        }
+
+        [TestMethod]
+        public async Task Loan_Clone()
+        {
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(new Loan());
+            try
+            {
+                await Task.Delay(5000);
+                var loan = await client.Loans.GetLoanAsync(loanId);
+                loan.Fees.First(f => f.FeeType == "TitleExamination").NewHUDBorPaidAmount = 0.0M; // Required due to issue with number of decimals serialized
+                var clonedLoan = loan.Clone();
+                var loanAsJson = loan.ToString(true);
+                var clonedLoanAsJson = clonedLoan.ToString(true);
+                Assert.AreEqual(loanAsJson, clonedLoanAsJson);
+            }
+            finally
+            {
+                Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+            }
         }
 
         [TestMethod]
@@ -76,6 +150,28 @@ namespace EncompassRest.Tests
   ""TestString"": ""TESTING""
 }", json);
             var newValue = JsonConvert.DeserializeAnonymousType(json, value);
+        }
+
+        [TestMethod]
+        public void NA_Serialization()
+        {
+            NA<decimal> na = null;
+            Assert.AreEqual("null", na.ToJson());
+            na = "na";
+            Assert.AreEqual(@"""NA""", na.ToJson());
+            na = 5.08M;
+            Assert.AreEqual(@"""5.08""", na.ToJson());
+        }
+
+        [TestMethod]
+        public void NA_Deserialization()
+        {
+            var na = JsonHelper.FromJson<NA<decimal>>("null");
+            Assert.IsTrue(na.IsNull);
+            na = JsonHelper.FromJson<NA<decimal>>(@"""NA""");
+            Assert.IsTrue(na.IsNA);
+            na = JsonHelper.FromJson<NA<decimal>>(@"""5.08""");
+            Assert.AreEqual(5.08M, na.Value);
         }
 
         [TestMethod]

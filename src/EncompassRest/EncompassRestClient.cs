@@ -78,7 +78,7 @@ namespace EncompassRest
             client.AccessToken.Token = accessToken;
             return client;
         }
-        
+
         internal readonly string InstanceId;
         private readonly Func<TokenCreator, CancellationToken, Task<string>> _tokenInitializer;
         private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
