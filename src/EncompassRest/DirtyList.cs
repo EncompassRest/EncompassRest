@@ -12,7 +12,7 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
-    internal sealed class DirtyList<T> : IList<T>, IDirty
+    internal sealed class DirtyList<T> : IList<T>, IList, IDirty
     {
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
 
@@ -39,6 +39,14 @@ namespace EncompassRest
         public int Count => _list.Count;
 
         public bool IsReadOnly => false;
+        
+        bool IList.IsFixedSize => ((IList)_list).IsFixedSize;
+
+        bool ICollection.IsSynchronized => ((IList)_list).IsSynchronized;
+
+        object ICollection.SyncRoot => ((IList)_list).SyncRoot;
+
+        object IList.this[int index] { get => _list[index]; set => ((IList)_list)[index] = value; }
 
         public DirtyList()
         {
@@ -110,6 +118,18 @@ namespace EncompassRest
         public void RemoveAt(int index) => _list.RemoveAt(index);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        int IList.Add(object value) => ((IList)_list).Add(value);
+
+        bool IList.Contains(object value) => ((IList)_list).Contains(value);
+
+        int IList.IndexOf(object value) => ((IList)_list).IndexOf(value);
+
+        void IList.Insert(int index, object value) => ((IList)_list).Insert(index, value);
+
+        void IList.Remove(object value) => ((IList)_list).Remove(value);
+
+        void ICollection.CopyTo(Array array, int index) => ((IList)_list).CopyTo(array, index);
     }
 
     internal sealed class DirtyListConverter<T> : JsonConverter
