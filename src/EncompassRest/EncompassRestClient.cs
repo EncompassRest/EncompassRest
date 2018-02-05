@@ -91,6 +91,8 @@ namespace EncompassRest
         private BatchUpdate _batchUpdate;
         private BorrowerContacts _borrowerContacts;
         private BusinessContacts _businessContacts;
+        private BorrowerContactSelector _borrowerContactSelector;
+        private BusinessContactSelector _businessContactSelector;
         private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
@@ -172,6 +174,24 @@ namespace EncompassRest
             {
                 var businessContacts = _businessContacts;
                 return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContacts(this)), null) ?? businessContacts;
+            }
+        }
+
+        public BorrowerContactSelector BorrowerContactSelector
+        {
+            get
+            {
+                var borrowerContactSelector = _borrowerContactSelector;
+                return borrowerContactSelector ?? Interlocked.CompareExchange(ref _borrowerContactSelector, (borrowerContactSelector = new BorrowerContactSelector(this)), null) ?? borrowerContactSelector;
+            }
+        }
+
+        public BusinessContactSelector BusinessContactSelector
+        {
+            get
+            {
+                var businessContactSelector = _businessContactSelector;
+                return businessContactSelector ?? Interlocked.CompareExchange(ref _businessContactSelector, (businessContactSelector = new BusinessContactSelector(this)), null) ?? businessContactSelector;
             }
         }
 

@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace EncompassRest.LoanPipeline
+namespace EncompassRest.Schema
 {
-    public enum PipelineFieldDefinitionCategory
+    public enum FieldDefinitionCategory
     {
         Alerts = 0,
         ARM = 1,

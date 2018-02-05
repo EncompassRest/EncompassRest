@@ -22,7 +22,7 @@ namespace EncompassRest.Tests
 
             var categories = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.Category.Value));
             categories.Remove(null);
-            var existingCategories = new HashSet<string>(Enums.GetMembers<PipelineFieldDefinitionCategory>().Select((EnumMember<PipelineFieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select((EnumMember<FieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newCategories = categories.Except(existingCategories).ToList();
             Assert.AreEqual(0, newCategories.Count);
 
