@@ -153,6 +153,23 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Pipeline_CreateCursor_EmptyFieldFilter_Date()
+        {
+            var client = await GetTestClientAsync();
+            var field = "Fields.762";
+            var fields = new[] { field };
+            var cursor = await client.Pipeline.CreateCursorAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            var pipelineData = await cursor.GetItemsAsync(1, 10);
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
         public async Task Pipeline_ViewPipeline_NotEmptyFieldFilter_String()
         {
             var client = await GetTestClientAsync();
