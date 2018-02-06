@@ -152,7 +152,6 @@ namespace EncompassRest.Tests
             }
         }
 
-
         [TestMethod]
         public async Task Pipeline_CreateCursor_EmptyFieldFilter_Date()
         {
