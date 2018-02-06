@@ -2,8 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Loans.Apis;
+using EncompassRest.Loans.Associates;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
+using EncompassRest.Loans.MilestoneFreeRoles;
+using EncompassRest.Loans.Milestones;
 using EncompassRest.ResourceLocks;
 using EnumsNET;
 
@@ -14,6 +17,9 @@ namespace EncompassRest.Loans
         private LoanDocuments _documents;
         private LoanAttachments _attachments;
         private LoanCustomDataObjects _customDataObjects;
+        private LoanAssociates _associates;
+        private LoanMilestones _milestones;
+        private LoanMilestoneFreeRoles _milestoneFreeRoles;
         private BorrowerPairs _borrowerPairs;
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
@@ -21,6 +27,12 @@ namespace EncompassRest.Loans
         public LoanAttachments Attachments => _attachments ?? (_attachments = new LoanAttachments(Client, LoanId));
 
         public LoanCustomDataObjects CustomDataObjects => _customDataObjects ?? (_customDataObjects = new LoanCustomDataObjects(Client, LoanId));
+
+        public LoanAssociates Associates => _associates ?? (_associates = new LoanAssociates(Client, LoanId));
+
+        public LoanMilestones Milestones => _milestones ?? (_milestones = new LoanMilestones(Client, LoanId));
+
+        public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ?? (_milestoneFreeRoles = new LoanMilestoneFreeRoles(Client, LoanId));
 
         public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = CreateBorrowerPairs());
 
