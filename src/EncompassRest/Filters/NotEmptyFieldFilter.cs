@@ -4,7 +4,8 @@ namespace EncompassRest.Filters
 {
     public sealed class NotEmptyFieldFilter : FieldFilter
     {
-        public object Value => System.DateTime.MinValue;
+        [JsonProperty("Value")]
+        private object value => System.DateTime.MinValue;
 
         public NotEmptyFieldFilter(CanonicalLoanField canonicalField)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())

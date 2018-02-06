@@ -1,10 +1,12 @@
 ﻿using EnumsNET;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
     public sealed class EmptyFieldFilter : FieldFilter
     {
-        public object Value => System.DateTime.MinValue;
+        [JsonProperty("Value")]
+        private object value => System.DateTime.MinValue;
 
         public EmptyFieldFilter(CanonicalLoanField canonicalField)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())
