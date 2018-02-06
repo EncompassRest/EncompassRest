@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using EncompassRest.Loans.Attachments;
-using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
 using EnumsNET;
 
@@ -16,24 +12,6 @@ namespace EncompassRest.Loans
         internal Loans(EncompassRestClient client)
             : base(client, "encompass/v1/loans")
         {
-        }
-
-        [Obsolete("Use GetLoanApis(loanId).Documents instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public LoanDocuments GetLoanDocuments(string loanId)
-        {
-            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
-
-            return new LoanDocuments(Client, loanId);
-        }
-
-        [Obsolete("Use GetLoanApis(loanId).Attachments instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public LoanAttachments GetLoanAttachments(string loanId)
-        {
-            Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
-
-            return new LoanAttachments(Client, loanId);
         }
 
         public LoanApis GetLoanApis(string loanId)
