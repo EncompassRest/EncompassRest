@@ -9,11 +9,6 @@ namespace EncompassRest.Contacts
     {
         public IEnumerable<string> Fields { get; }
 
-        public ContactListParameters(params string[] fields)
-            : this((IEnumerable<string>)fields)
-        {
-        }
-
         public ContactListParameters(IEnumerable<string> fields)
         {
             Preconditions.NotNull(fields, nameof(fields));

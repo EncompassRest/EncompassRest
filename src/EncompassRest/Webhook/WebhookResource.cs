@@ -6,7 +6,7 @@ namespace EncompassRest.Webhook
     {
         public string Description { get; set; }
 
-        public List<StringEnumValue<WebhookResourceEvent>> Events { get; set; }
+        public List<WebhookResourceEventObject> Events { get; set; }
 
         public StringEnumValue<WebhookResourceType> Name { get; set; }
 

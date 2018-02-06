@@ -16,16 +16,29 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var resources = await client.Webhook.GetResourcesAsync();
+
+            foreach (var resource in resources)
+            {
+                Assert.AreEqual(0, resource.ExtensionData.Count);
+                foreach (var @event in resource.Events)
+                {
+                    Assert.AreEqual(0, @event.ExtensionData.Count);
+                }
+            }
+
+            Assert.IsTrue(resources.All(r => r.Name.EnumValue.HasValue));
             var webhookResourceTypes = new HashSet<string>(resources.Select(r => r.Name.Value));
             var existingWebhookResourceTypes = new HashSet<string>(Enums.GetMembers<WebhookResourceType>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newWebhookResourceTypes = webhookResourceTypes.Except(existingWebhookResourceTypes).ToList();
             Assert.AreEqual(0, newWebhookResourceTypes.Count);
 
-            var webhookEvents = new HashSet<string>(resources.SelectMany(r => r.Events.Select(e => e.Value)));
+            Assert.IsTrue(resources.All(r => r.Events.All(e => e.Name.EnumValue.HasValue)));
+            var webhookEvents = new HashSet<string>(resources.SelectMany(r => r.Events.Select(e => e.Name.Value)));
             var existingWebhookEvents = new HashSet<string>(Enums.GetMembers<WebhookResourceEvent>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newWebhookEvents = webhookEvents.Except(existingWebhookEvents).ToList();
             Assert.AreEqual(0, newWebhookEvents.Count);
 
+            Assert.IsTrue(resources.All(r => r.Status.EnumValue.HasValue));
             var webhookStatuses = new HashSet<string>(resources.Select(r => r.Status.Value));
             var existingWebhookStatuses = new HashSet<string>(Enums.GetMembers<WebhookResourceStatus>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newWebhookStatuses = webhookStatuses.Except(existingWebhookStatuses).ToList();

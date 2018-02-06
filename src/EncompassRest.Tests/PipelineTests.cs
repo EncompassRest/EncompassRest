@@ -20,6 +20,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var canonicalNames = await client.Pipeline.GetCanonicalNamesAsync();
 
+            Assert.IsTrue(canonicalNames.PipelineLoanReportFieldDefs.All(p => p.Category.EnumValue.HasValue || p.Category.Value == null));
             var categories = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.Category.Value));
             categories.Remove(null);
             var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select((EnumMember<FieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
