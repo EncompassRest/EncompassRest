@@ -1,4 +1,5 @@
 ﻿using EnumsNET;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
