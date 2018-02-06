@@ -7,7 +7,7 @@ namespace EncompassRest.LoanPipeline
     {
         public int BorrowerPair { get; set; }
         public bool IsLoanDataField { get; set; }
-        public StringEnumValue<PipelineFieldDefinitionCategory> Category { get; set; }
+        public StringEnumValue<FieldDefinitionCategory> Category { get; set; }
         public string FieldID { get; set; }
         public FieldDefinition FieldDefinition { get; set; }
         public int DataSource { get; set; }

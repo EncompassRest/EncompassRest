@@ -22,22 +22,27 @@ namespace EncompassRest.Tests
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newLoanEntities.Count);
 
+            var ignoredElementTypes = new HashSet<string>(new[] { null, "EntityReference", "FileAttachmentReference" });
+            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.ElementType.EnumValue.HasValue || ignoredElementTypes.Contains(p.ElementType.Value))));
             var elementTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.ElementType.Value)));
-            elementTypes.ExceptWith(new[] { null, "EntityReference", "FileAttachmentReference" });
+            elementTypes.ExceptWith(ignoredElementTypes);
             var newElementTypes = elementTypes.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newElementTypes.Count);
 
+            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.EntityType.EnumValue.HasValue || p.EntityType.Value == null)));
             var entityTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.EntityType.Value)));
             entityTypes.Remove(null);
             var newEntityTypes = entityTypes.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newEntityTypes.Count);
 
+            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.Type.EnumValue.HasValue || p.Type.Value == null)));
             var propertyTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.Type.Value)));
             propertyTypes.Remove(null);
             var existingPropertyTypes = new HashSet<string>(Enums.GetMembers<PropertySchemaType>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newPropertyTypes = propertyTypes.Except(existingPropertyTypes).ToList();
             Assert.AreEqual(0, newPropertyTypes.Count);
 
+            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.Format.EnumValue.HasValue || p.Format.Value == null)));
             var formats = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.Format.Value)));
             formats.Remove(null);
             var existingFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));

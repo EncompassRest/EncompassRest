@@ -13,7 +13,7 @@ namespace EncompassRest.LoanPipeline
         {
         }
 
-        public Task<CanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<CanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
+        public Task<PipelineCanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<PipelineCanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
         public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
