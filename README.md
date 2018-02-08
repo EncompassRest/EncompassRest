@@ -4,9 +4,9 @@ Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
 ## Why does this exist?
 You may wonder why this library exists when Ellie Mae has provided their own [Encompass API .NET Language Bindings](https://github.com/EllieMae/developerconnect-dotnet-bindings).
 
-First, the Encompass API .NET Language Bindings were released long after the API's became available so API users needed a common .NET library for consuming the Encompass API's, hence this library was born.
+First, the Encompass API .NET Language Bindings were released long after the API's became available so users needed a common .NET library for consuming the Encompass API's, hence this library was born.
 
-Secondly, the swagger generated Encompass API .NET Language Bindings are far inferior to the custom crafted and well thought-out EncompassRest library.
+Secondly, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassRest library.
 
 ### More features
 * Dirty checking serialization to only send back the updated data
@@ -19,18 +19,18 @@ Secondly, the swagger generated Encompass API .NET Language Bindings are far inf
 * `CancellationToken` support
 * Properties are lazily created upon gets so you don't need to new them up first to use them
 
-### Better API
+### Simpler API
 * More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
-* Better named Types, e.g. `Loan` instead of `LoanContract`
+* Simpler Type names, e.g. `Loan` instead of `LoanContract`
 * Publicly exposes only relevant .NET API
 * Uses `decimal` instead of `double` to prevent precision loss
 
-### Performs better
+### Optimized for performance
 * Serializes directly to output `Stream` meaning no string allocation
 * Reuses one `JsonSerializer` instance so it's cache isn't needed to be repopulated on each request
 * `HttpClient` is in general more performant over `RestSharp`
 
-## Getting Started
+## Getting started
 1. Install the [EncompassRest](https://www.nuget.org/packages/EncompassRest) Nuget package.
 2. [Create an async method](#create-an-async-method) in your consuming code.
 3. [Create an `EncompassRestClient` object](#create-an-encompassrestclient-object).
@@ -71,7 +71,7 @@ public void Main()
 ### Create an `EncompassRestClient` object
 The `EncompassRestClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
 
-#### From User Credentials
+#### From user credentials
 ```c#
 using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(
     new ClientParameters("apiClientId", "apiClientSecret"),
@@ -81,7 +81,7 @@ using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(
 }
 ```
 
-#### From Authorization Code
+#### From authorization code
 ```c#
 using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync(
     new ClientParameters("apiClientId", "apiClientSecret"), "redirectUri", "authorizationCode"))
@@ -90,7 +90,7 @@ using (var client = await EncompassRestClient.CreateFromAuthorizationCodeAsync(
 }
 ```
 
-#### From Access Token
+#### From access token
 ```c#
 using (var client = EncompassRestClient.CreateFromAccessToken(
     new ClientParameters("apiClientId", "apiClientSecret"), "accessToken"))
