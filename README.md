@@ -4,27 +4,26 @@ Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
 ## Why does this exist?
 You may wonder why this library exists when Ellie Mae has provided their own [Encompass API .NET Language Bindings](https://github.com/EllieMae/developerconnect-dotnet-bindings).
 
-First, the Encompass API .NET Language Bindings were released long after the API's became available to users so in order to provide a common .NET library for consuming the Encompass API's this library was born.
+First, the Encompass API .NET Language Bindings were released long after the API's became available so API users needed a common .NET library for consuming the Encompass API's, hence this library was born.
 
-Secondly, the swagger generated Encompass API .NET Language Bindings are far inferior to the custom crafted and well thought out EncompassRest library.
+Secondly, the swagger generated Encompass API .NET Language Bindings are far inferior to the custom crafted and well thought-out EncompassRest library.
 
 ### More features
-* Dirty checking serialization
+* Dirty checking serialization to only send back the updated data
 * Option to auto retrieve new token and resend the request when using an expired token
 * Option to auto resend the request on server timeouts
 * Raw API calls support
-* Ability to assign and retrieve string properties as enum values to reduce the need to use magic strings
+* Ability to assign and retrieve string properties as enum values to reduce the need of magic strings
 * .NET Standard support
 * Extension data support, for when Ellie Mae adds properties to the returned json objects but the library isn't updated yet
 * `CancellationToken` support
 * Properties are lazily created upon gets so you don't need to new them up first to use them
 
 ### Better API
-* Way more convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
-* Types are better named, e.g. `Loan` instead of `LoanContract`
-* One library package to install
+* More convenient interface with a single defined entry point, the `EncompassRestClient` object which is the equivalent of the `Session` object in the SDK
+* Better named Types, e.g. `Loan` instead of `LoanContract`
 * Publicly exposes only relevant .NET API
-* Uses decimal instead of double to prevent precision loss
+* Uses `decimal` instead of `double` to prevent precision loss
 
 ### Performs better
 * Serializes directly to output `Stream` meaning no string allocation
