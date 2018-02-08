@@ -12,7 +12,7 @@ namespace EncompassRest
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [JsonConverter(typeof(DirtyListConverter<>))]
-    internal sealed class DirtyList<T> : IList<T>, IDirty
+    internal sealed class DirtyList<T> : IList<T>, IList, IDirty
     {
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
 
@@ -39,6 +39,14 @@ namespace EncompassRest
         public int Count => _list.Count;
 
         public bool IsReadOnly => false;
+        
+        bool IList.IsFixedSize => ((IList)_list).IsFixedSize;
+
+        bool ICollection.IsSynchronized => ((IList)_list).IsSynchronized;
+
+        object ICollection.SyncRoot => ((IList)_list).SyncRoot;
+
+        object IList.this[int index] { get => this[index]; set => this[index] = ValidateValue(value); }
 
         public DirtyList()
         {
@@ -110,6 +118,34 @@ namespace EncompassRest
         public void RemoveAt(int index) => _list.RemoveAt(index);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        int IList.Add(object value)
+        {
+            Add(ValidateValue(value));
+            return Count - 1;
+        }
+
+        bool IList.Contains(object value) => Contains(ValidateValue(value));
+
+        int IList.IndexOf(object value) => IndexOf(ValidateValue(value));
+
+        void IList.Insert(int index, object value) => Insert(index, ValidateValue(value));
+
+        void IList.Remove(object value) => Remove(ValidateValue(value));
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            Preconditions.NotNull(array, nameof(array));
+            Preconditions.GreaterThanOrEquals(index, nameof(index), 0);
+            Preconditions.LessThanOrEquals(index + Count, $"{nameof(index)} + {nameof(Count)}", array.Length, $"{nameof(array)}.{nameof(array.Length)}");
+
+            for (var i = 0; i < _list.Count; ++i)
+            {
+                array.SetValue(this[i], index + i);
+            }
+        }
+
+        private T ValidateValue(object value) => value is T tValue ? tValue : throw new ArgumentException($"must be of type {TypeData<T>.Type.Name}", nameof(value));
     }
 
     internal sealed class DirtyListConverter<T> : JsonConverter

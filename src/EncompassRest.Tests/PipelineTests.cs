@@ -20,9 +20,10 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var canonicalNames = await client.Pipeline.GetCanonicalNamesAsync();
 
+            Assert.IsTrue(canonicalNames.PipelineLoanReportFieldDefs.All(p => p.Category.EnumValue.HasValue || p.Category.Value == null));
             var categories = new HashSet<string>(canonicalNames.PipelineLoanReportFieldDefs.Select(p => p.Category.Value));
             categories.Remove(null);
-            var existingCategories = new HashSet<string>(Enums.GetMembers<PipelineFieldDefinitionCategory>().Select((EnumMember<PipelineFieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var existingCategories = new HashSet<string>(Enums.GetMembers<FieldDefinitionCategory>().Select((EnumMember<FieldDefinitionCategory> m) => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newCategories = categories.Except(existingCategories).ToList();
             Assert.AreEqual(0, newCategories.Count);
 
@@ -143,6 +144,23 @@ namespace EncompassRest.Tests
             var field = "Fields.762";
             var fields = new[] { field };
             var pipelineData = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            Assert.IsNotNull(pipelineData);
+            Assert.IsTrue(pipelineData.Count > 0);
+            foreach (var item in pipelineData)
+            {
+                ValidateItem(item, fields);
+                Assert.IsTrue(string.IsNullOrEmpty(item.Fields[field]));
+            }
+        }
+
+        [TestMethod]
+        public async Task Pipeline_CreateCursor_EmptyFieldFilter_Date()
+        {
+            var client = await GetTestClientAsync();
+            var field = "Fields.762";
+            var fields = new[] { field };
+            var cursor = await client.Pipeline.CreateCursorAsync(new PipelineParameters(new EmptyFieldFilter(field), fields));
+            var pipelineData = await cursor.GetItemsAsync(1, 10);
             Assert.IsNotNull(pipelineData);
             Assert.IsTrue(pipelineData.Count > 0);
             foreach (var item in pipelineData)

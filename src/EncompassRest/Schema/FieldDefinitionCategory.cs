@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
 
-namespace EncompassRest.LoanPipeline
+namespace EncompassRest.Schema
 {
-    public enum PipelineFieldDefinitionCategory
+    public enum FieldDefinitionCategory
     {
         Alerts = 0,
         ARM = 1,
@@ -18,6 +18,15 @@ namespace EncompassRest.LoanPipeline
         Pipeline = 9,
         Ratios = 10,
         Servicing = 11,
-        Trade = 12
+        Trade = 12,
+        [EnumMember(Value = "Borrower Contact")]
+        BorrowerContact = 13,
+        Opportunity = 14,
+        [EnumMember(Value = "Recent Events")]
+        RecentEvents = 15,
+        Appointments = 16,
+        [EnumMember(Value = "Business Contact")]
+        BusinessContact = 17,
+        BizPartnerCustomField = 18
     }
 }

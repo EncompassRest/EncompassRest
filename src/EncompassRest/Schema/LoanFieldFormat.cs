@@ -16,6 +16,7 @@ namespace EncompassRest.Schema
         [EnumMember(Value = "ssn")]
         SSN = 107,
         TRACKING = 108,
+        RA_STRING = 199,
         INTEGER = 201,
         [EnumMember(Value = "decimal_1")]
         DECIMAL_1 = 202,
