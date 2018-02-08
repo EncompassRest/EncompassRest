@@ -21,11 +21,11 @@ namespace EncompassRest.Contacts
             return contact;
         }
 
-        public Task<string> GetContactRawAsync(string contactId, CancellationToken cancellationToken = default)
+        public Task<string> GetContactRawAsync(string contactId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
 
-            return GetRawAsync(contactId, null, nameof(GetContactRawAsync), contactId, cancellationToken);
+            return GetRawAsync(contactId, queryString, nameof(GetContactRawAsync), contactId, cancellationToken);
         }
 
         public Task<string> CreateContactAsync(TContact contact, CancellationToken cancellationToken = default) => CreateContactAsync(contact, false, cancellationToken);
@@ -40,9 +40,7 @@ namespace EncompassRest.Contacts
             return contactId;
         }
 
-        public Task<string> CreateContactRawAsync(string contact, CancellationToken cancellationToken = default) => CreateContactRawAsync(contact, null, cancellationToken);
-
-        private Task<string> CreateContactRawAsync(string contact, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> CreateContactRawAsync(string contact, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contact, nameof(contact));
 
@@ -60,9 +58,7 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(contact.Id, JsonStreamContent.Create(contact), nameof(UpdateContactAsync), contact.Id, contact, populate, cancellationToken);
         }
 
-        public Task<string> UpdateContactRawAsync(string contactId, string contact, CancellationToken cancellationToken = default) => UpdateContactRawAsync(contactId, contact, null, cancellationToken);
-
-        private Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> UpdateContactRawAsync(string contactId, string contact, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(contactId, nameof(contactId));
             Preconditions.NotNullOrEmpty(contact, nameof(contact));

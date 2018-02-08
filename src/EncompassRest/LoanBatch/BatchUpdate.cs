@@ -18,11 +18,11 @@ namespace EncompassRest.LoanBatch
             return GetAsync<BatchUpdateStatus>(requestId, null, nameof(GetStatusAsync), requestId, cancellationToken);
         }
 
-        public Task<string> GetStatusRawAsync(string requestId, CancellationToken cancellationToken = default)
+        public Task<string> GetStatusRawAsync(string requestId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(requestId, nameof(requestId));
 
-            return GetRawAsync(requestId, null, nameof(GetStatusRawAsync), requestId, cancellationToken);
+            return GetRawAsync(requestId, queryString, nameof(GetStatusRawAsync), requestId, cancellationToken);
         }
 
         public Task<string> UpdateLoansAsync(BatchUpdateParameters parameters, CancellationToken cancellationToken = default)
@@ -32,11 +32,11 @@ namespace EncompassRest.LoanBatch
             return PostAsync(null, null, JsonStreamContent.Create(parameters), nameof(UpdateLoansAsync), null, cancellationToken, ReadLocationFunc);
         }
 
-        public Task<string> UpdateLoansRawAsync(string parameters, CancellationToken cancellationToken = default)
+        public Task<string> UpdateLoansRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
-            return PostAsync(null, null, new JsonStringContent(parameters), nameof(UpdateLoansRawAsync), null, cancellationToken, ReadLocationFunc);
+            return PostAsync(null, queryString, new JsonStringContent(parameters), nameof(UpdateLoansRawAsync), null, cancellationToken, ReadLocationFunc);
         }
     }
 }

@@ -13,6 +13,6 @@ namespace EncompassRest.Settings.Contacts
 
         public Task<List<ContactFieldDefinition>> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<ContactFieldDefinition>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
-        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
+        public Task<string> GetCanonicalNamesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
     }
 }

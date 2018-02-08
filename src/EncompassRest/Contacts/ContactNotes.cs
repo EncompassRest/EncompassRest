@@ -21,16 +21,16 @@ namespace EncompassRest.Contacts
             return note;
         }
 
-        public Task<string> GetNoteRawAsync(string noteId, CancellationToken cancellationToken = default)
+        public Task<string> GetNoteRawAsync(string noteId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
 
-            return GetRawAsync(noteId, null, nameof(GetNoteRawAsync), noteId, cancellationToken);
+            return GetRawAsync(noteId, queryString, nameof(GetNoteRawAsync), noteId, cancellationToken);
         }
 
         public Task<List<ContactNote>> GetNotesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<ContactNote>(null, null, nameof(GetNotesAsync), null, cancellationToken);
 
-        public Task<string> GetNotesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetNotesRawAsync), null, cancellationToken);
+        public Task<string> GetNotesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetNotesRawAsync), null, cancellationToken);
 
         public Task<string> CreateNoteAsync(ContactNote note, CancellationToken cancellationToken = default) => CreateNoteAsync(note, false, cancellationToken);
 
@@ -42,9 +42,7 @@ namespace EncompassRest.Contacts
             return PostPopulateDirtyAsync(null, nameof(CreateNoteAsync), note, populate, cancellationToken);
         }
 
-        public Task<string> CreateNoteRawAsync(string note, CancellationToken cancellationToken = default) => CreateNoteRawAsync(note, null, cancellationToken);
-
-        private Task<string> CreateNoteRawAsync(string note, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> CreateNoteRawAsync(string note, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(note, nameof(note));
 
@@ -61,9 +59,7 @@ namespace EncompassRest.Contacts
             return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, cancellationToken);
         }
 
-        public Task<string> UpdateNoteRawAsync(string noteId, string note, CancellationToken cancellationToken = default) => UpdateNoteRawAsync(noteId, note, null, cancellationToken);
-
-        private Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(noteId, nameof(noteId));
             Preconditions.NotNullOrEmpty(note, nameof(note));
