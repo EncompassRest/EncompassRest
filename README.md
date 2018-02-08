@@ -74,7 +74,8 @@ The `EncompassRestClient` class implements `IDisposable` so it is recommended to
 #### From User Credentials
 ```c#
 using (var client = await EncompassRestClient.CreateFromUserCredentialsAsync(
-    new ClientParameters("apiClientId", "apiClientSecret"), "encompassInstanceId", "encompassUserId", "encompassPassword"))
+    new ClientParameters("apiClientId", "apiClientSecret"),
+    "encompassInstanceId", "encompassUserId", "encompassPassword"))
 {
     // use client
 }
@@ -100,7 +101,8 @@ using (var client = EncompassRestClient.CreateFromAccessToken(
 
 #### Auto-retrieve new token when expired
 ```c#
-using (var client = await EncompassRestClient.CreateAsync(new ClientParameters("apiClientId", "apiClientSecret"),
+using (var client = await EncompassRestClient.CreateAsync(
+    new ClientParameters("apiClientId", "apiClientSecret"),
     tokenCreator => tokenCreator.FromUserCredentialsAsync("encompassInstanceId", "encompassUserId", "encompassPassword")))
 {
     // use client
