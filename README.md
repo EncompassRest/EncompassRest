@@ -37,7 +37,7 @@ Secondly, the swagger generated Encompass API .NET Language Bindings are far inf
 4. [Use `EncompassRestClient` object](#use-encompassrestclient-object) to make API calls.
 
 ### Create an async method
-EncompassRest is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to write an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
+EncompassRest is a fully asynchronous library meaning all of it's Encompass API calls are made asynchronously to allow great performance for maximum throughput. To get started using the library you need to create an `async` method. To avoid deadlocks with async code it is recommended you **_DO NOT_** use `Task.Result` or the `Task.Wait` methods and instead implement `async` all the way from the top, e.g. `Main` or your `Controller`s actions.
 
 #### Web apps:
 ```c#
@@ -69,7 +69,7 @@ public void Main()
 ```
 
 ### Create an `EncompassRestClient` object
-The `EncompassRestClient` class implements `IDisposable` so it is recommended to use `using` statements to automatically dispose of the object.
+The `EncompassRestClient` class implements `IDisposable` so it is recommended to use a `using` statement to automatically dispose of the object.
 
 #### From User Credentials
 ```c#
