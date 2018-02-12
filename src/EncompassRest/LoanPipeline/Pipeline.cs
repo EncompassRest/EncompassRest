@@ -15,7 +15,7 @@ namespace EncompassRest.LoanPipeline
 
         public Task<PipelineCanonicalNames> GetCanonicalNamesAsync(CancellationToken cancellationToken = default) => GetAsync<PipelineCanonicalNames>("fieldDefinitions", null, nameof(GetCanonicalNamesAsync), null, cancellationToken);
 
-        public Task<string> GetCanonicalNamesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", null, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
+        public Task<string> GetCanonicalNamesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
         public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, CancellationToken cancellationToken = default)
         {
@@ -71,25 +71,7 @@ namespace EncompassRest.LoanPipeline
             return PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(ViewPipelineAsync), null, cancellationToken);
         }
 
-        public Task<string> ViewPipelineRawAsync(string parameters, CancellationToken cancellationToken = default) => ViewPipelineRawAsync(parameters, (string)null, cancellationToken);
-
-        public Task<string> ViewPipelineRawAsync(string parameters, int? limit, CancellationToken cancellationToken = default)
-        {
-            if (limit.HasValue)
-            {
-                Preconditions.GreaterThan(limit.GetValueOrDefault(), nameof(limit), 0);
-            }
-
-            var queryParameters = new QueryParameters();
-            if (limit.HasValue)
-            {
-                queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
-            }
-
-            return ViewPipelineRawAsync(parameters, queryParameters.ToString(), cancellationToken);
-        }
-
-        public Task<string> ViewPipelineRawAsync(string parameters, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> ViewPipelineRawAsync(string parameters, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
 
