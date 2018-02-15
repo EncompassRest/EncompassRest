@@ -115,6 +115,8 @@ namespace EncompassRest
                         throw await EncompassRestException.CreateAsync(CreateErrorMessage(methodName, resourceId), response).ConfigureAwait(false);
                     }
 
+                    Client.AddResponseMessageData(await ResponseMessageData.CreateAsync(response).ConfigureAwait(false));
+
                     if (func != null)
                     {
                         return await func(response).ConfigureAwait(false);

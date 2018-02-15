@@ -10,6 +10,7 @@ using EncompassRest.Token;
 using EncompassRest.Utilities;
 using EncompassRest.Contacts;
 using EncompassRest.CustomDataObjects;
+using System.Collections.Concurrent;
 
 namespace EncompassRest
 {
@@ -91,8 +92,11 @@ namespace EncompassRest
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
+        private ConcurrentBag<ResponseMessageData> responseBag;
 
         #region Properties
+        public ConcurrentBag<ResponseMessageData> ResponseMessages => responseBag;
+
         public AccessToken AccessToken { get; }
 
         public TokenExpirationHandling TokenExpirationHandling => _tokenInitializer != null ? TokenExpirationHandling.RetrieveNewToken : TokenExpirationHandling.Default;
@@ -270,6 +274,16 @@ namespace EncompassRest
         {
             AccessToken.Dispose();
             _httpClient?.Dispose();
+        }
+
+        internal void AddResponseMessageData(ResponseMessageData newData)
+        {
+            if (responseBag == null)
+            {
+                responseBag = new ConcurrentBag<ResponseMessageData>();
+            }
+
+            responseBag.Add(newData);
         }
 
         private RetryHandler GetRetryHandler()
