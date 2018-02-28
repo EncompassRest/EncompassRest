@@ -29,9 +29,7 @@ namespace EncompassRest.Loans.Associates
             return GetDirtyListAsync<LoanAssociate>(null, queryParameters.ToString(), nameof(GetAssociatesAsync), null, cancellationToken);
         }
 
-        public Task<string> GetAssociatesRawAsync(CancellationToken cancellationToken = default) => GetAssociatesRawAsync(null, cancellationToken);
-
-        public Task<string> GetAssociatesRawAsync(string queryString, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAssociatesRawAsync), null, cancellationToken);
+        public Task<string> GetAssociatesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAssociatesRawAsync), null, cancellationToken);
 
         public Task<LoanAssociate> GetAssociateAsync(string logId, CancellationToken cancellationToken = default)
         {
@@ -40,11 +38,11 @@ namespace EncompassRest.Loans.Associates
             return GetAsync<LoanAssociate>(logId, null, nameof(GetAssociateAsync), logId, cancellationToken);
         }
 
-        public Task<string> GetAssociateRawAsync(string logId, CancellationToken cancellationToken = default)
+        public Task<string> GetAssociateRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
-            return GetRawAsync(logId, null, nameof(GetAssociateRawAsync), logId, cancellationToken);
+            return GetRawAsync(logId, queryString, nameof(GetAssociateRawAsync), logId, cancellationToken);
         }
 
         public Task AssignAssociateAsync(string logId, AssignAssociateParameters parameters, CancellationToken cancellationToken = default)
@@ -55,12 +53,12 @@ namespace EncompassRest.Loans.Associates
             return PutAsync(logId, null, JsonStreamContent.Create(parameters), nameof(AssignAssociateAsync), logId, cancellationToken);
         }
 
-        public Task AssignAssociateRawAsync(string logId, string parameters, CancellationToken cancellationToken = default)
+        public Task AssignAssociateRawAsync(string logId, string parameters, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
 
-            return PutAsync(logId, null, new JsonStringContent(parameters), nameof(AssignAssociateRawAsync), logId, cancellationToken);
+            return PutAsync(logId, queryString, new JsonStringContent(parameters), nameof(AssignAssociateRawAsync), logId, cancellationToken);
         }
     }
 }

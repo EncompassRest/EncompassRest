@@ -14,7 +14,7 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
 
         public Task<List<LoanMilestoneFreeRole>> GetMilestoneFreeRolesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanMilestoneFreeRole>(null, null, nameof(GetMilestoneFreeRolesAsync), null, cancellationToken);
 
-        public Task<string> GetMilestoneFreeRolesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetMilestoneFreeRolesRawAsync), null, cancellationToken);
+        public Task<string> GetMilestoneFreeRolesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestoneFreeRolesRawAsync), null, cancellationToken);
 
         public Task<LoanMilestoneFreeRole> GetMilestoneFreeRoleAsync(string logId, CancellationToken cancellationToken = default)
         {
@@ -23,11 +23,11 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
             return GetAsync<LoanMilestoneFreeRole>(logId, null, nameof(GetMilestoneFreeRoleAsync), logId, cancellationToken);
         }
 
-        public Task<string> GetMilestoneFreeRoleRawAsync(string logId, CancellationToken cancellationToken = default)
+        public Task<string> GetMilestoneFreeRoleRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
-            return GetRawAsync(logId, null, nameof(GetMilestoneFreeRoleRawAsync), logId, cancellationToken);
+            return GetRawAsync(logId, queryString, nameof(GetMilestoneFreeRoleRawAsync), logId, cancellationToken);
         }
 
         public Task UpdateMilestoneFreeRoleAsync(LoanMilestoneFreeRole milestoneFreeRole, CancellationToken cancellationToken = default)
@@ -38,12 +38,12 @@ namespace EncompassRest.Loans.MilestoneFreeRoles
             return PatchAsync(milestoneFreeRole.Id, null, JsonStreamContent.Create(milestoneFreeRole), nameof(UpdateMilestoneFreeRoleAsync), milestoneFreeRole.Id, cancellationToken);
         }
 
-        public Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneFreeRoleRawAsync(string logId, string milestoneFreeRole, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(milestoneFreeRole, nameof(milestoneFreeRole));
 
-            return PatchAsync(logId, null, new JsonStringContent(milestoneFreeRole), nameof(UpdateMilestoneFreeRoleRawAsync), logId, cancellationToken);
+            return PatchAsync(logId, queryString, new JsonStringContent(milestoneFreeRole), nameof(UpdateMilestoneFreeRoleRawAsync), logId, cancellationToken);
         }
     }
 }

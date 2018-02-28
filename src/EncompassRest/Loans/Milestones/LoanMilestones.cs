@@ -14,7 +14,7 @@ namespace EncompassRest.Loans.Milestones
 
         public Task<List<LoanMilestone>> GetMilestonesAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanMilestone>(null, null, nameof(GetMilestonesAsync), null, cancellationToken);
 
-        public Task<string> GetMilestonesRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetMilestonesRawAsync), null, cancellationToken);
+        public Task<string> GetMilestonesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetMilestonesRawAsync), null, cancellationToken);
 
         public Task<LoanMilestone> GetMilestoneAsync(string logId, CancellationToken cancellationToken = default)
         {
@@ -23,11 +23,11 @@ namespace EncompassRest.Loans.Milestones
             return GetAsync<LoanMilestone>(logId, null, nameof(GetMilestoneAsync), logId, cancellationToken);
         }
 
-        public Task<string> GetMilestoneRawAsync(string logId, CancellationToken cancellationToken = default)
+        public Task<string> GetMilestoneRawAsync(string logId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
 
-            return GetRawAsync(logId, null, nameof(GetMilestoneRawAsync), logId, cancellationToken);
+            return GetRawAsync(logId, queryString, nameof(GetMilestoneRawAsync), logId, cancellationToken);
         }
 
         public Task UpdateMilestoneAsync(LoanMilestone milestone, CancellationToken cancellationToken = default)
@@ -38,12 +38,12 @@ namespace EncompassRest.Loans.Milestones
             return PatchAsync(milestone.Id, null, JsonStreamContent.Create(milestone), nameof(UpdateMilestoneAsync), milestone.Id, cancellationToken);
         }
 
-        public Task UpdateMilestoneRawAsync(string logId, string milestone, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneRawAsync(string logId, string milestone, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
             Preconditions.NotNullOrEmpty(milestone, nameof(milestone));
 
-            return PatchAsync(logId, null, new JsonStringContent(milestone), nameof(UpdateMilestoneRawAsync), logId, cancellationToken);
+            return PatchAsync(logId, queryString, new JsonStringContent(milestone), nameof(UpdateMilestoneRawAsync), logId, cancellationToken);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace EncompassRest.CustomDataObjects
 
         public Task<List<string>> GetCustomDataObjectsAsync(CancellationToken cancellationToken = default) => GetAsync<List<string>>(null, null, nameof(GetCustomDataObjectsAsync), null, cancellationToken);
 
-        public Task<string> GetCustomDataObjectsRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetCustomDataObjectsRawAsync), null, cancellationToken);
+        public Task<string> GetCustomDataObjectsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetCustomDataObjectsRawAsync), null, cancellationToken);
 
         public Task<CustomDataObject> GetCustomDataObjectAsync(string objectName, CancellationToken cancellationToken = default)
         {
@@ -23,11 +23,11 @@ namespace EncompassRest.CustomDataObjects
             return GetAsync<CustomDataObject>(objectName, null, nameof(GetCustomDataObjectAsync), objectName, cancellationToken);
         }
 
-        public Task<string> GetCustomDataObjectRawAsync(string objectName, CancellationToken cancellationToken = default)
+        public Task<string> GetCustomDataObjectRawAsync(string objectName, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
 
-            return GetRawAsync(objectName, null, nameof(GetCustomDataObjectRawAsync), objectName, cancellationToken);
+            return GetRawAsync(objectName, queryString, nameof(GetCustomDataObjectRawAsync), objectName, cancellationToken);
         }
 
         public Task CreateOrReplaceCustomDataObjectAsync(CustomDataObject cdo, CancellationToken cancellationToken = default)
@@ -38,12 +38,12 @@ namespace EncompassRest.CustomDataObjects
             return PutAsync(cdo.Name, null, JsonStreamContent.Create(cdo), nameof(CreateOrReplaceCustomDataObjectAsync), cdo.Name, cancellationToken);
         }
 
-        public Task<string> CreateOrReplaceCustomDataObjectRawAsync(string objectName, string cdo, CancellationToken cancellationToken = default)
+        public Task<string> CreateOrReplaceCustomDataObjectRawAsync(string objectName, string cdo, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
             Preconditions.NotNullOrEmpty(cdo, nameof(cdo));
 
-            return PutRawAsync(objectName, null, new JsonStringContent(cdo), nameof(CreateOrReplaceCustomDataObjectRawAsync), objectName, cancellationToken);
+            return PutRawAsync(objectName, queryString, new JsonStringContent(cdo), nameof(CreateOrReplaceCustomDataObjectRawAsync), objectName, cancellationToken);
         }
 
         public Task<bool> DeleteCustomDataObjectAsync(string objectName, CancellationToken cancellationToken = default)
@@ -63,9 +63,7 @@ namespace EncompassRest.CustomDataObjects
             return PatchPopulateDirtyAsync(cdo.Name, JsonStreamContent.Create(cdo), nameof(AppendToCustomDataObjectAsync), cdo.Name, cdo, populate, cancellationToken);
         }
 
-        public Task<string> AppendToCustomDataObjectRawAsync(string objectName, string cdo, CancellationToken cancellationToken = default) => AppendToCustomDataObjectRawAsync(objectName, cdo, null, cancellationToken);
-
-        public Task<string> AppendToCustomDataObjectRawAsync(string objectName, string cdo, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> AppendToCustomDataObjectRawAsync(string objectName, string cdo, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(objectName, nameof(objectName));
             Preconditions.NotNullOrEmpty(cdo, nameof(cdo));

@@ -20,16 +20,16 @@ namespace EncompassRest.Loans.Documents
             return GetDirtyAsync<LoanDocument>(documentId, null, nameof(GetDocumentAsync), documentId, cancellationToken);
         }
 
-        public Task<string> GetDocumentRawAsync(string documentId, CancellationToken cancellationToken = default)
+        public Task<string> GetDocumentRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetRawAsync(documentId, null, nameof(GetDocumentRawAsync), documentId, cancellationToken);
+            return GetRawAsync(documentId, queryString, nameof(GetDocumentRawAsync), documentId, cancellationToken);
         }
 
         public Task<List<LoanDocument>> GetDocumentsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanDocument>(null, null, nameof(GetDocumentsAsync), null, cancellationToken);
 
-        public Task<string> GetDocumentsRawAsync(CancellationToken cancellationToken = default) => GetRawAsync(null, null, nameof(GetDocumentsRawAsync), null, cancellationToken);
+        public Task<string> GetDocumentsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetDocumentsRawAsync), null, cancellationToken);
 
         public Task<List<EntityReference>> GetDocumentAttachmentsAsync(string documentId, CancellationToken cancellationToken = default)
         {
@@ -38,11 +38,11 @@ namespace EncompassRest.Loans.Documents
             return GetAsync<List<EntityReference>>($"{documentId}/attachments", null, nameof(GetDocumentAttachmentsAsync), documentId, cancellationToken);
         }
 
-        public Task<string> GetDocumentAttachmentsRawAsync(string documentId, CancellationToken cancellationToken = default)
+        public Task<string> GetDocumentAttachmentsRawAsync(string documentId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
 
-            return GetRawAsync($"{documentId}/attachments", null, nameof(GetDocumentAttachmentsRawAsync), documentId, cancellationToken);
+            return GetRawAsync($"{documentId}/attachments", queryString, nameof(GetDocumentAttachmentsRawAsync), documentId, cancellationToken);
         }
 
         public Task<string> CreateDocumentAsync(LoanDocument document, CancellationToken cancellationToken = default) => CreateDocumentAsync(document, false, cancellationToken);
@@ -55,9 +55,7 @@ namespace EncompassRest.Loans.Documents
             return PostPopulateDirtyAsync(null, nameof(CreateDocumentAsync), document, populate, cancellationToken);
         }
 
-        public Task<string> CreateDocumentRawAsync(string document, CancellationToken cancellationToken = default) => CreateDocumentRawAsync(document, null, cancellationToken);
-
-        public Task<string> CreateDocumentRawAsync(string document, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> CreateDocumentRawAsync(string document, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(document, nameof(document));
 
@@ -74,9 +72,7 @@ namespace EncompassRest.Loans.Documents
             return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, document, populate, cancellationToken);
         }
 
-        public Task<string> UpdateDocumentRawAsync(string documentId, string document, CancellationToken cancellationToken = default) => UpdateDocumentRawAsync(documentId, document, null, cancellationToken);
-
-        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(documentId, nameof(documentId));
             Preconditions.NotNullOrEmpty(document, nameof(document));
@@ -92,14 +88,6 @@ namespace EncompassRest.Loans.Documents
 
             var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
             return PatchAsync($"{documentId}/attachments", queryParameters.ToString(), JsonStreamContent.Create(attachmentEntities), nameof(AssignDocumentAttachmentsAsync), documentId, cancellationToken);
-        }
-
-        public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, AssignmentAction action, CancellationToken cancellationToken = default)
-        {
-            action.Validate(nameof(action));
-
-            var queryParameters = new QueryParameters(new QueryParameter(nameof(action), action.AsString(EnumJsonConverter.CamelCaseNameFormat)));
-            return AssignDocumentAttachmentsRawAsync(documentId, attachmentEntities, queryParameters.ToString(), cancellationToken);
         }
 
         public Task AssignDocumentAttachmentsRawAsync(string documentId, string attachmentEntities, string queryString, CancellationToken cancellationToken = default)
