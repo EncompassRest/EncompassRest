@@ -114,7 +114,7 @@ namespace EncompassRest.ResourceLocks
             return LockResourceAsync(resourceLock, force, false, cancellationToken);
         }
 
-        public Task<string> LockResourceRawAsync(string resourceLock, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> LockResourceRawAsync(string resourceLock, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(resourceLock, nameof(resourceLock));
 

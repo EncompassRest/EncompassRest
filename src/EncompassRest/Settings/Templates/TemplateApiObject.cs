@@ -19,11 +19,11 @@ namespace EncompassRest.Settings.Templates
             return GetAsync<List<EntityReference>>($"folders{path.PrecedeWith("/")}", null, nameof(GetTemplateFoldersAsync), null, cancellationToken);
         }
 
-        public Task<string> GetTemplateFoldersRawAsync(string path, CancellationToken cancellationToken = default)
+        public Task<string> GetTemplateFoldersRawAsync(string path, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(path, nameof(path));
 
-            return GetRawAsync($"folders{path.PrecedeWith("/")}", null, nameof(GetTemplateFoldersRawAsync), null, cancellationToken);
+            return GetRawAsync($"folders{path.PrecedeWith("/")}", queryString, nameof(GetTemplateFoldersRawAsync), null, cancellationToken);
         }
 
         public Task<List<EntityReference>> GetTemplateFilesAsync(string path, CancellationToken cancellationToken = default)

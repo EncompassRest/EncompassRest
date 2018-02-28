@@ -21,7 +21,7 @@ namespace EncompassRest.Loans.Apis
 
         public Task<List<Application>> GetBorrowerPairsAsync(CancellationToken cancellationToken = default) => GetAllAsync<Application>(nameof(GetBorrowerPairsAsync), cancellationToken);
 
-        public Task<string> GetBorrowerPairsRawAsync(CancellationToken cancellation = default) => GetRawAsync(null, null, nameof(GetBorrowerPairsRawAsync), null, cancellation);
+        public Task<string> GetBorrowerPairsRawAsync(string queryString = null, CancellationToken cancellation = default) => GetRawAsync(null, queryString, nameof(GetBorrowerPairsRawAsync), null, cancellation);
 
         public Task<Application> GetBorrowerPairAsync(string applicationId, CancellationToken cancellationToken = default)
         {
@@ -30,11 +30,11 @@ namespace EncompassRest.Loans.Apis
             return GetAsync<Application>(applicationId, nameof(GetBorrowerPairAsync), cancellationToken);
         }
 
-        public Task<string> GetBorrowerPairRawAsync(string applicationId, CancellationToken cancellationToken = default)
+        public Task<string> GetBorrowerPairRawAsync(string applicationId, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 
-            return GetRawAsync(applicationId, null, nameof(GetBorrowerPairRawAsync), applicationId, cancellationToken);
+            return GetRawAsync(applicationId, queryString, nameof(GetBorrowerPairRawAsync), applicationId, cancellationToken);
         }
 
         public Task<string> CreateBorrowerPairAsync(Application application, CancellationToken cancellationToken = default) => CreateBorrowerPairAsync(application, false, cancellationToken);
@@ -47,9 +47,7 @@ namespace EncompassRest.Loans.Apis
             return CreateAsync(application, nameof(CreateBorrowerPairAsync), populate, cancellationToken);
         }
 
-        public Task<string> CreateBorrowerPairRawAsync(string application, CancellationToken cancellationToken = default) => CreateBorrowerPairRawAsync(application, null, cancellationToken);
-
-        private Task<string> CreateBorrowerPairRawAsync(string application, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> CreateBorrowerPairRawAsync(string application, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(application, nameof(application));
 
@@ -66,9 +64,7 @@ namespace EncompassRest.Loans.Apis
             return UpdateAsync(application, nameof(UpdateBorrowerPairAsync), populate, cancellationToken);
         }
 
-        public Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, CancellationToken cancellationToken = default) => UpdateBorrowerPairRawAsync(applicationId, application, null, cancellationToken);
-
-        private Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string queryString, CancellationToken cancellationToken = default)
+        public Task<string> UpdateBorrowerPairRawAsync(string applicationId, string application, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
             Preconditions.NotNullOrEmpty(application, nameof(application));

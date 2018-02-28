@@ -45,7 +45,7 @@ namespace EncompassRest.Loans
 
         public Task<LoanMetadata> GetMetadataAsync(CancellationToken cancellationToken = default) => GetAsync<LoanMetadata>("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
 
-        public Task<string> GetMetadataRawAsync(CancellationToken cancellationToken = default) => GetRawAsync("metadata", null, nameof(GetMetadataAsync), null, cancellationToken);
+        public Task<string> GetMetadataRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("metadata", queryString, nameof(GetMetadataAsync), null, cancellationToken);
 
         public Task<List<ResourceLock>> GetLocksAsync(CancellationToken cancellationToken = default) => Client.ResourceLocks.GetResourceLocksAsync(LoanId, EntityType.Loan, cancellationToken);
 
