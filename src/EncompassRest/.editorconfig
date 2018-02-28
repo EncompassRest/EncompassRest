@@ -18,7 +18,7 @@
  dotnet_style_collection_initializer = true:warning
  # Always prefer expression bodied members when reasonable.
  csharp_style_expression_bodied_methods = true:warning
- csharp_style_expression_bodied_constructors = true:warning
+ csharp_style_expression_bodied_constructors = false:warning
  csharp_style_expression_bodied_operators = true:warning
  csharp_style_expression_bodied_properties = true:warning
  csharp_style_expression_bodied_indexers = true:warning
