@@ -1,5 +1,5 @@
 # EncompassRest
-Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.1+.
+Encompass API Client Library for .NET Framework 4.5+ and .NET Standard 1.3+.
 
 ## Why does this exist?
 You may wonder why this library exists when Ellie Mae has provided their own [Encompass API .NET Language Bindings](https://github.com/EllieMae/developerconnect-dotnet-bindings).

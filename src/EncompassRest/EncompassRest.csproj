@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.1;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.3;net45</TargetFrameworks>
     <Version>0.3.0</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/EncompassRest/EncompassRest</PackageProjectUrl>
@@ -28,14 +28,14 @@
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <AssemblyTitle>EncompassRest .NET Standard 2.0</AssemblyTitle>
-    <DefineConstants>NETSTANDARD;NETSTANDARD2_0;HAVE_ICLONEABLE</DefineConstants>
-  </PropertyGroup>
-    
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <AssemblyTitle>EncompassRest .NET Standard 1.1</AssemblyTitle>
-    <DefineConstants>NETSTANDARD;NETSTANDARD1_1</DefineConstants>
+    <DefineConstants>NETSTANDARD;NETSTANDARD2_0;HAVE_ICLONEABLE;HAVE_SSL_PROTOCOLS</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <AssemblyTitle>EncompassRest .NET Standard 1.3</AssemblyTitle>
+    <DefineConstants>NETSTANDARD;NETSTANDARD1_3;HAVE_SSL_PROTOCOLS</DefineConstants>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(TargetFramework)'=='net45'">
     <AssemblyTitle>EncompassRest .NET 4.5</AssemblyTitle>
     <DefineConstants>NET45;HAVE_ICLONEABLE</DefineConstants>
