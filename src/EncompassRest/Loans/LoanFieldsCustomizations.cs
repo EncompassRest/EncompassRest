@@ -19,13 +19,9 @@ namespace EncompassRest.Loans
                 fieldId = fieldId.ToUpper();
                 if (fieldId.StartsWith("CX.", StringComparison.Ordinal))
                 {
-                    var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.Ordinal));
+                    var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
                     if (customField != null)
                     {
-                        if (customField.StringValue != null)
-                        {
-                            return customField.StringValue;
-                        }
                         if (customField.DateValue.HasValue)
                         {
                             return customField.DateValue;
@@ -34,6 +30,7 @@ namespace EncompassRest.Loans
                         {
                             return customField.NumericValue;
                         }
+                        return customField.StringValue;
                     }
                     return null;
                 }
@@ -60,23 +57,23 @@ namespace EncompassRest.Loans
                 fieldId = fieldId.ToUpper();
                 if (fieldId.StartsWith("CX.", StringComparison.Ordinal))
                 {
-                    var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.Ordinal));
+                    var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
                     if (customField == null)
                     {
                         customField = new CustomField { FieldName = fieldId };
                         _loan.CustomFields.Add(customField);
                     }
-                    if (customField.StringValue != null)
-                    {
-                        customField.StringValue = value?.ToString();
-                    }
-                    else if (customField.DateValue.HasValue)
+                    if (customField.DateValue.HasValue)
                     {
                         customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                     }
                     else if (customField.NumericValue.HasValue)
                     {
                         customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
+                    }
+                    else if (customField.StringValue != null)
+                    {
+                        customField.StringValue = value?.ToString();
                     }
                     else
                     {
