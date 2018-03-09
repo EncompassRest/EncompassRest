@@ -121,16 +121,36 @@ namespace EncompassRest.Loans
 
         private JsonProperty GetFinalProperty(string fieldId, out object target)
         {
+            var resolver = JsonHelper.InternalPrivateContractResolver;
+            JsonObjectContract currentContract;
+            var startIndex = 0;
             if (!FieldMappings.TryGetValue(fieldId, out var fieldMapping))
             {
-                throw new ArgumentException($"Could not find field {fieldId}");
-            }
+                var hashIndex = fieldId.LastIndexOf('#');
+                if (hashIndex < 0 || !int.TryParse(fieldId.Substring(hashIndex + 1), out var bpIndex) || bpIndex < 1 || bpIndex > 6 || !FieldMappings.TryGetValue(fieldId.Substring(0, hashIndex), out fieldMapping))
+                {
+                    throw new ArgumentException($"Could not find field {fieldId}");
+                }
 
-            var resolver = JsonHelper.InternalPrivateContractResolver;
-            target = _loan;
-            var currentContract = (JsonObjectContract)resolver.ResolveContract(TypeData<Loan>.Type);
+                --bpIndex;
+                var borrowerPair = _loan.Applications.FirstOrDefault(a => a.ApplicationIndex == bpIndex);
+                if (borrowerPair == null)
+                {
+                    borrowerPair = new Application { ApplicationIndex = bpIndex };
+                    _loan.Applications.Add(borrowerPair);
+                }
+                target = borrowerPair;
+                currentContract = (JsonObjectContract)resolver.ResolveContract(TypeData<Application>.Type);
+                startIndex = 1;
+            }
+            else
+            {
+                target = _loan;
+                currentContract = (JsonObjectContract)resolver.ResolveContract(TypeData<Loan>.Type);
+            }
+            
             var propertyNames = fieldMapping.Split('.');
-            for (var i = 1; i < propertyNames.Length; ++i)
+            for (var i = startIndex + 1; i < propertyNames.Length; ++i)
             {
                 var property = currentContract.Properties.GetClosestMatchProperty(propertyNames[i - 1]);
                 target = property.ValueProvider.GetValue(target);

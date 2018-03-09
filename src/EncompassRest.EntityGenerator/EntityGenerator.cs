@@ -189,7 +189,7 @@ namespace EncompassRest
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
             var loanEntitySchema = loanSchema.EntityTypes["Loan"];
             var fields = new Dictionary<string, string>(StringComparer.Ordinal);
-            PopulateFieldMappings("Loan", loanEntitySchema, loanSchema, fields);
+            PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields);
             var sb = new StringBuilder();
             sb.Append(@"using System;
 using System.Collections.Generic;
@@ -215,7 +215,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, LoanSchema loanSchema, Dictionary<string, string> fields)
+        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields)
         {
             foreach (var pair in entitySchema.Properties)
             {
@@ -223,19 +223,23 @@ namespace EncompassRest.Loans
                 var propertySchema = pair.Value;
                 if (!string.IsNullOrEmpty(propertySchema.FieldId))
                 {
-                    fields[propertySchema.FieldId.ToUpper()] = $"{currentPath}.{propertyName}";
+                    fields.Add(propertySchema.FieldId.ToUpper(), $"{currentPath}.{propertyName}");
                 }
                 else if (propertySchema.FieldInstances != null)
                 {
                     foreach (var fieldInstancePair in propertySchema.FieldInstances)
                     {
-                        fields[fieldInstancePair.Key.ToUpper()] = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePair.Value.First()}.{propertyName}";
+                        var previousProperty = fieldInstancePair.Value.First();
+                        if (previousEntitySchema.Properties.Any(p => string.Equals(p.Key, previousProperty, StringComparison.Ordinal)))
+                        {
+                            fields.Add(fieldInstancePair.Key.ToUpper(), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{previousProperty}.{propertyName}");
+                        }
                     }
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
                     loanSchema.EntityTypes.Remove(propertySchema.EntityType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, loanSchema, fields);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, loanSchema, fields);
                 }
             }
         }

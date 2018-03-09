@@ -510,5 +510,18 @@ namespace EncompassRest.Tests
             Assert.IsNull(loan.Fields["CX.NUMBER"]);
             Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToJson());
         }
+
+        [TestMethod]
+        public void Loan_FieldsBP()
+        {
+            var loan = new Loan();
+            var value = "Joe";
+            loan.Fields["4000#2"] = value;
+            Assert.AreEqual(value, (string)loan.Fields["4000#2"]);
+            Assert.AreEqual($@"{{""applications"":[{{""applicationIndex"":1,""borrower"":{{""firstName"":""{value}""}}}}]}}", loan.ToJson());
+            loan.Fields["4000#2"] = null;
+            Assert.IsNull(loan.Fields["4000#2"]);
+            Assert.AreEqual($@"{{""applications"":[{{""applicationIndex"":1,""borrower"":{{""firstName"":null}}}}]}}", loan.ToJson());
+        }
     }
 }
