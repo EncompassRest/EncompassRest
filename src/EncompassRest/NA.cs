@@ -62,7 +62,7 @@ namespace EncompassRest
         public override string ToString() => _isNotNull ? (IsNA ? "NA" : _value.ToString()) : null;
     }
     
-    internal sealed class NAConverter<T> : JsonConverter
+    internal sealed class NAConverter<T> : JsonConverter, IStringCreator
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<NA<T>>.Type || objectType == TypeData<NA<T>?>.Type;
 
@@ -80,5 +80,18 @@ namespace EncompassRest
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
+
+        public object Create(string value)
+        {
+            if (value == null)
+            {
+                return new NA<T>();
+            }
+            if (string.Equals(value, "NA", StringComparison.OrdinalIgnoreCase))
+            {
+                return new NA<T>("NA");
+            }
+            return new NA<T>(JsonHelper.FromJson<T>(value));
+        }
     }
 }

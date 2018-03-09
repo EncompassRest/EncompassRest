@@ -7,6 +7,8 @@ namespace EncompassRest.Loans
 {
     public partial class Loan
     {
+        private LoanFields _fields;
+
         [JsonIgnore]
         public EncompassRestClient Client { get; private set; }
 
@@ -21,6 +23,9 @@ namespace EncompassRest.Loans
 
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis { get; private set; }
+
+        [JsonIgnore]
+        public LoanFields Fields => _fields ?? (_fields = new LoanFields(this));
 
         [IdPropertyName(nameof(EncompassId))]
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }

@@ -10,6 +10,14 @@ namespace EncompassRest.Utilities
 
         public static Type OpenNullableType { get; } = typeof(Nullable<>);
 
+        public static Type OpenStringEnumValueType = typeof(StringEnumValue<>);
+
+        public static Type OpenNaType = typeof(NA<>);
+
+        public static Type OpenDirtyListType = typeof(DirtyList<>);
+
+        public static Type OpenDirtyDictionaryType = typeof(DirtyDictionary<,>);
+
         public static TypeData Get(Type type) => s_typeDatas.GetOrAdd(type, t => new TypeData(t));
 
         private bool? _isNullable;

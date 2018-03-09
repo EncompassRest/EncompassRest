@@ -16,6 +16,7 @@ namespace EncompassRest.Utilities
     {
         internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: true, overrideSpecifiedNames: false);
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
+        internal static readonly IContractResolver InternalPrivateContractResolver = new PrivateContractResolver();
         internal static readonly JsonSerializer DefaultPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
         internal static readonly JsonSerializer DefaultIndentedPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
         internal static readonly Encoding Utf8NoBOM = new UTF8Encoding(false);
@@ -63,7 +64,7 @@ namespace EncompassRest.Utilities
         {
             Formatting = Formatting.None,
             ObjectCreationHandling = ObjectCreationHandling.Replace,
-            ContractResolver = new PrivateContractResolver()
+            ContractResolver = InternalPrivateContractResolver
         });
 
         public static T FromJson<T>(string json) => (T)FromJson(json, TypeData<T>.Type);
@@ -232,19 +233,13 @@ namespace EncompassRest.Utilities
                 if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
                 {
                     var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                    if (genericTypeDefinition == s_openDirtyListType || genericTypeDefinition == s_openDirtyDictionaryType)
+                    if (genericTypeDefinition == TypeData.OpenDirtyListType || genericTypeDefinition == TypeData.OpenDirtyDictionaryType)
                     {
                         return null;
                     }
                 }
                 return base.ResolveContractConverter(objectType);
             }
-
-            private static Type s_openStringEnumValueType = typeof(StringEnumValue<>);
-            private static Type s_openDirtyListType = typeof(DirtyList<>);
-            private static Type s_openDirtyDictionaryType = typeof(DirtyDictionary<,>);
-
-            private static Type s_openNaType = typeof(NA<>);
 
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
@@ -255,7 +250,7 @@ namespace EncompassRest.Utilities
                     if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                     {
                         var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
-                        if (genericTypeDefinition == s_openStringEnumValueType || genericTypeDefinition == s_openNaType)
+                        if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
                         {
                             valueProvider = new StringValueProvider(valueProvider);
                         }

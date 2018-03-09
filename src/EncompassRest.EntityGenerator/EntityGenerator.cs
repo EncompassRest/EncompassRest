@@ -165,14 +165,13 @@ namespace EncompassRest
 
         public static void Main(string[] args)
         {
-            //Console.ReadLine();
-
             try
             {
                 Task.Run(async () =>
                 {
                     using (var client = await TestBaseClass.GetTestClientAsync())
                     {
+                        await GenerateFieldMappingsAsync(client, "Loans");
                         await GenerateClassFilesFromSchemaAsync(client, "Loans", "EncompassRest.Loans");
                     }
                 }).Wait();
@@ -183,6 +182,62 @@ namespace EncompassRest
             }
             Console.Write("Press Enter to End.");
             Console.ReadLine();
+        }
+
+        public static async Task GenerateFieldMappingsAsync(EncompassRestClient client, string destinationPath)
+        {
+            var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
+            var loanEntitySchema = loanSchema.EntityTypes["Loan"];
+            var fields = new Dictionary<string, string>(StringComparer.Ordinal);
+            PopulateFieldMappings("Loan", loanEntitySchema, loanSchema, fields);
+            var sb = new StringBuilder();
+            sb.Append(@"using System;
+using System.Collections.Generic;
+
+namespace EncompassRest.Loans
+{
+    public sealed partial class LoanFields
+    {
+        internal static readonly Dictionary<string, string> FieldMappings = new Dictionary<string, string>(StringComparer.Ordinal)
+        {");
+            foreach (var pair in fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value))
+            {
+                sb.AppendLine().Append($@"            {{ ""{pair.Key}"", ""{pair.Value.Substring(5)}"" }},");
+            }
+            --sb.Length;
+            sb.Append(@"
+        };
+    }
+}");
+            using (var sw = new StreamWriter(Path.Combine(destinationPath, "LoanFields.cs")))
+            {
+                await sw.WriteAsync(sb.ToString()).ConfigureAwait(false);
+            }
+        }
+
+        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, LoanSchema loanSchema, Dictionary<string, string> fields)
+        {
+            foreach (var pair in entitySchema.Properties)
+            {
+                var propertyName = pair.Key;
+                var propertySchema = pair.Value;
+                if (!string.IsNullOrEmpty(propertySchema.FieldId))
+                {
+                    fields[propertySchema.FieldId.ToUpper()] = $"{currentPath}.{propertyName}";
+                }
+                else if (propertySchema.FieldInstances != null)
+                {
+                    foreach (var fieldInstancePair in propertySchema.FieldInstances)
+                    {
+                        fields[fieldInstancePair.Key.ToUpper()] = $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePair.Value.First()}.{propertyName}";
+                    }
+                }
+                else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
+                {
+                    loanSchema.EntityTypes.Remove(propertySchema.EntityType);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, loanSchema, fields);
+                }
+            }
         }
 
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
@@ -216,7 +271,6 @@ namespace EncompassRest
                         {
                             Console.WriteLine($"Failed to retrieve entity of type {entity}");
                         }
-
                     }
                     catch (Exception ex)
                     {
