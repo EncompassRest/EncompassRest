@@ -234,6 +234,10 @@ namespace EncompassRest.Loans
                         {
                             fields.Add(fieldInstancePair.Key.ToUpper(), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{previousProperty}.{propertyName}");
                         }
+                        else if (previousProperty == "Application_ATRQMBorrowers_1")
+                        {
+                            fields.Add(fieldInstancePair.Key.ToUpper(), $"{currentPath}.{propertyName}");
+                        }
                     }
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
