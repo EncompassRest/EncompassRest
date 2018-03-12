@@ -361,13 +361,18 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsNullAssignment()
         {
-            var loan = new Loan();
-            foreach (var field in LoanFields.FieldMappings.Keys)
+            foreach (var fieldId in LoanFields.FieldMappings.Keys)
             {
-                loan.Fields[field] = null;
-                Assert.IsNull(loan.Fields[field]);
+                var loan = new Loan();
+                var field = loan.Fields[fieldId];
+                field.Value = null;
+                Assert.IsNull(field.Value);
+                Assert.IsTrue(field.IsEmpty);
+                if (fieldId != "GUID")
+                {
+                    Assert.AreNotEqual("{}", loan.ToJson());
+                }
             }
-            var json = loan.ToJson();
         }
 
         [TestMethod]
@@ -375,11 +380,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var loanNumber = "9876543210";
-            loan.Fields["364"] = loanNumber;
-            Assert.AreEqual(loanNumber, (string)loan.Fields["364"]);
+            var field = loan.Fields["364"];
+            Assert.AreEqual("Loan.LoanNumber", field.ModelPath);
+            field.Value = loanNumber;
+            Assert.AreEqual(loanNumber, (string)field.Value);
+            Assert.AreEqual(loanNumber, field.ToString());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""loanNumber"":""{loanNumber}""}}", loan.ToJson());
-            loan.Fields["364"] = null;
-            Assert.IsNull(loan.Fields["364"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""loanNumber"":null}", loan.ToJson());
         }
 
@@ -388,11 +399,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var now = DateTime.Now;
-            loan.Fields["CD1.X1"] = now;
-            Assert.AreEqual(now, (DateTime?)loan.Fields["CD1.X1"]);
+            var field = loan.Fields["CD1.X1"];
+            Assert.AreEqual("Loan.ClosingCost.ClosingDisclosure1.CDDateIssued", field.ModelPath);
+            field.Value = now;
+            Assert.AreEqual(now, (DateTime?)field.Value);
+            Assert.AreEqual(now, field.ToDateTime());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""closingCost"":{{""closingDisclosure1"":{{""cdDateIssued"":{now.ToJson()}}}}}}}", loan.ToJson());
-            loan.Fields["CD1.X1"] = null;
-            Assert.IsNull(loan.Fields["CD1.X1"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDateTime());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""closingCost"":{""closingDisclosure1"":{""cdDateIssued"":null}}}", loan.ToJson());
         }
 
@@ -400,12 +417,20 @@ namespace EncompassRest.Tests
         public void Loan_FieldsDecimal()
         {
             var loan = new Loan();
-            var baseLoanAmount = 185000M;
-            loan.Fields["2"] = baseLoanAmount;
-            Assert.AreEqual(baseLoanAmount, (decimal?)loan.Fields["2"]);
+            var baseLoanAmount = 185000;
+            var field = loan.Fields["2"];
+            Assert.AreEqual("Loan.BaseLoanAmount", field.ModelPath);
+            field.Value = baseLoanAmount;
+            Assert.AreEqual(baseLoanAmount, (decimal?)field.Value);
+            Assert.AreEqual(baseLoanAmount, field.ToDecimal());
+            Assert.AreEqual(baseLoanAmount, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""baseLoanAmount"":{baseLoanAmount}.0}}", loan.ToJson());
-            loan.Fields["2"] = null;
-            Assert.IsNull(loan.Fields["2"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual($@"{{""baseLoanAmount"":null}}", loan.ToJson());
         }
 
@@ -414,11 +439,19 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var bltv = 75;
-            loan.Fields["4012"] = bltv;
-            Assert.AreEqual(bltv, (int?)loan.Fields["4012"]);
+            var field = loan.Fields["4012"];
+            Assert.AreEqual("Loan.BLTV", field.ModelPath);
+            field.Value = bltv;
+            Assert.AreEqual(bltv, (int?)field.Value);
+            Assert.AreEqual(bltv, field.ToInt32());
+            Assert.AreEqual(bltv, field.ToDecimal());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""bltv"":{bltv}}}", loan.ToJson());
-            loan.Fields["4012"] = null;
-            Assert.IsNull(loan.Fields["4012"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToInt32());
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual($@"{{""bltv"":null}}", loan.ToJson());
         }
 
@@ -427,11 +460,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var borrowerCoBorrowerMarriedIndicator = true;
-            loan.Fields["100"] = borrowerCoBorrowerMarriedIndicator;
-            Assert.AreEqual(borrowerCoBorrowerMarriedIndicator, (bool?)loan.Fields["100"]);
+            var field = loan.Fields["100"];
+            Assert.AreEqual("Loan.BorrowerCoBorrowerMarriedIndicator", field.ModelPath);
+            field.Value = borrowerCoBorrowerMarriedIndicator;
+            Assert.AreEqual(borrowerCoBorrowerMarriedIndicator, (bool?)field.Value);
+            Assert.AreEqual(borrowerCoBorrowerMarriedIndicator, field.ToBoolean());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""borrowerCoBorrowerMarriedIndicator"":{borrowerCoBorrowerMarriedIndicator.ToString().ToLower()}}}", loan.ToJson());
-            loan.Fields["100"] = null;
-            Assert.IsNull(loan.Fields["100"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToBoolean());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual($@"{{""borrowerCoBorrowerMarriedIndicator"":null}}", loan.ToJson());
         }
 
@@ -440,11 +479,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var applicationTakenMethodType = "Internet";
-            loan.Fields["479"] = applicationTakenMethodType;
-            Assert.AreEqual(applicationTakenMethodType, (string)loan.Fields["479"]);
+            var field = loan.Fields["479"];
+            Assert.AreEqual("Loan.ApplicationTakenMethodType", field.ModelPath);
+            field.Value = applicationTakenMethodType;
+            Assert.AreEqual(applicationTakenMethodType, (string)field.Value);
+            Assert.AreEqual(applicationTakenMethodType, field.ToString());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual(@"{""applicationTakenMethodType"":""Internet""}", loan.ToJson());
-            loan.Fields["479"] = null;
-            Assert.IsNull(loan.Fields["479"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""applicationTakenMethodType"":null}", loan.ToJson());
         }
 
@@ -453,18 +498,36 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var income = 4000;
-            loan.Fields["HMDA.X32"] = income;
-            Assert.AreEqual(income.ToString(), (string)loan.Fields["HMDA.X32"]);
+            var field = loan.Fields["HMDA.X32"];
+            Assert.AreEqual("Loan.Hmda.Income", field.ModelPath);
+            field.Value = income;
+            Assert.AreEqual(income.ToString(), (string)field.Value);
+            Assert.AreEqual(income.ToString(), field.ToString());
+            Assert.AreEqual(income, field.ToDecimal());
+            Assert.AreEqual(income, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""hmda"":{{""income"":""{income}""}}}}", loan.ToJson());
-            var incomeStr = "5500";
-            loan.Fields["HMDA.X32"] = incomeStr;
-            Assert.AreEqual(incomeStr, (string)loan.Fields["HMDA.X32"]);
-            Assert.AreEqual($@"{{""hmda"":{{""income"":""{incomeStr}""}}}}", loan.ToJson());
-            loan.Fields["HMDA.X32"] = "NA";
-            Assert.AreEqual("NA", (string)loan.Fields["HMDA.X32"]);
+            income = 5500;
+            field.Value = income.ToString();
+            Assert.AreEqual(income.ToString(), (string)field.Value);
+            Assert.AreEqual(income.ToString(), field.ToString());
+            Assert.AreEqual(income, field.ToDecimal());
+            Assert.AreEqual(income, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual($@"{{""hmda"":{{""income"":""{income}""}}}}", loan.ToJson());
+            field.Value = "NA";
+            Assert.AreEqual("NA", (string)field.Value);
+            Assert.AreEqual("NA", field.ToString());
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual(@"{""hmda"":{""income"":""NA""}}", loan.ToJson());
-            loan.Fields["HMDA.X32"] = null;
-            Assert.IsNull(loan.Fields["HMDA.X32"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""hmda"":{""income"":null}}", loan.ToJson());
         }
 
@@ -473,11 +536,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var value = "ABC";
-            loan.Fields["CX.NAME"] = value;
-            Assert.AreEqual(value, (string)loan.Fields["CX.NAME"]);
+            var field = loan.Fields["CX.NAME"];
+            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NAME')].StringValue", field.ModelPath);
+            field.Value = value;
+            Assert.AreEqual(value, (string)field.Value);
+            Assert.AreEqual(value, field.ToString());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NAME"",""stringValue"":""{value}""}}]}}", loan.ToJson());
-            loan.Fields["CX.NAME"] = null;
-            Assert.IsNull(loan.Fields["CX.NAME"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NAME"",""stringValue"":null}]}", loan.ToJson());
         }
 
@@ -486,11 +555,17 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var value = DateTime.Now;
-            loan.Fields["CX.NOW"] = value;
-            Assert.AreEqual(value, (DateTime?)loan.Fields["CX.NOW"]);
+            var field = loan.Fields["CX.NOW"];
+            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NOW')].StringValue", field.ModelPath);
+            field.Value = value;
+            Assert.AreEqual(value, (DateTime?)field.Value);
+            Assert.AreEqual(value, field.ToDateTime());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""customFields"":[{{""dateValue"":{value.ToJson()},""fieldName"":""CX.NOW""}}]}}", loan.ToJson());
-            loan.Fields["CX.NOW"] = null;
-            Assert.IsNull(loan.Fields["CX.NOW"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDateTime());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""customFields"":[{""dateValue"":null,""fieldName"":""CX.NOW""}]}", loan.ToJson());
         }
 
@@ -499,15 +574,26 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var value = 1234.56M;
-            loan.Fields["CX.NUMBER"] = value;
-            Assert.AreEqual(value, (decimal?)loan.Fields["CX.NUMBER"]);
+            var field = loan.Fields["CX.NUMBER"];
+            Assert.AreEqual("Loan.CustomFields[(FieldName == 'CX.NUMBER')].StringValue", field.ModelPath);
+            field.Value = value;
+            Assert.AreEqual(value, (decimal?)field.Value);
+            Assert.AreEqual(value, field.ToDecimal());
+            Assert.AreEqual(1235, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NUMBER"",""numericValue"":{value}}}]}}", loan.ToJson());
             var integerValue = 98765;
-            loan.Fields["CX.NUMBER"] = integerValue;
-            Assert.AreEqual(integerValue, (decimal?)loan.Fields["CX.NUMBER"]);
+            field.Value = integerValue;
+            Assert.AreEqual(integerValue, (decimal?)field.Value);
+            Assert.AreEqual(integerValue, field.ToDecimal());
+            Assert.AreEqual(integerValue, field.ToInt32());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""customFields"":[{{""fieldName"":""CX.NUMBER"",""numericValue"":{integerValue}.0}}]}}", loan.ToJson());
-            loan.Fields["CX.NUMBER"] = null;
-            Assert.IsNull(loan.Fields["CX.NUMBER"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToJson());
         }
 
@@ -516,12 +602,44 @@ namespace EncompassRest.Tests
         {
             var loan = new Loan();
             var value = "Joe";
-            loan.Fields["4000#2"] = value;
-            Assert.AreEqual(value, (string)loan.Fields["4000#2"]);
+            var field = loan.Fields["4000#2"];
+            Assert.AreEqual("Loan.Applications[(ApplicationIndex == 1)].Borrower.FirstName", field.ModelPath);
+            field.Value = value;
+            Assert.AreEqual(value, (string)field.Value);
+            Assert.AreEqual(value, field.ToString());
+            Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual($@"{{""applications"":[{{""applicationIndex"":1,""borrower"":{{""firstName"":""{value}""}}}}]}}", loan.ToJson());
-            loan.Fields["4000#2"] = null;
-            Assert.IsNull(loan.Fields["4000#2"]);
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToString());
+            Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual($@"{{""applications"":[{{""applicationIndex"":1,""borrower"":{{""firstName"":null}}}}]}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_FieldsInvalidField()
+        {
+            var loan = new Loan();
+            Assert.ThrowsException<ArgumentException>(() => loan.Fields["1"]);
+        }
+
+        [TestMethod]
+        public void Loan_FieldsLocking()
+        {
+            var loan = new Loan();
+            var field = loan.Fields["CD1.X65"];
+            Assert.AreEqual("Loan.ClosingCost.ClosingDisclosure1.Comments", field.ModelPath);
+            Assert.IsFalse(field.Locked);
+            field.Locked = true;
+            Assert.IsTrue(field.Locked);
+            Assert.AreEqual(field.ModelPath, loan.FieldLockData[0].ModelPath);
+            Assert.AreEqual(false, loan.FieldLockData[0].LockRemoved);
+            Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":false,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToJson());
+            field.Locked = false;
+            Assert.IsFalse(field.Locked);
+            Assert.AreEqual(field.ModelPath, loan.FieldLockData[0].ModelPath);
+            Assert.AreEqual(true, loan.FieldLockData[0].LockRemoved);
+            Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":true,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToJson());
         }
     }
 }

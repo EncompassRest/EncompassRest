@@ -10,4 +10,10 @@
         [IdPropertyName(nameof(FieldName))]
         string IIdentifiable.Id { get => FieldName; set => FieldName = value; }
     }
+
+    partial class FieldLockData
+    {
+        [IdPropertyName(nameof(ModelPath))]
+        string IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
+    }
 }
