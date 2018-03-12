@@ -17,7 +17,7 @@ namespace EncompassRest.Loans
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
                 fieldId = fieldId.ToUpper();
-                if (fieldId.StartsWith("CX.", StringComparison.Ordinal))
+                if (fieldId.StartsWith("CX.", StringComparison.Ordinal) || fieldId.StartsWith("CUST", StringComparison.Ordinal))
                 {
                     var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
                     if (customField != null)
@@ -55,7 +55,7 @@ namespace EncompassRest.Loans
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
                 fieldId = fieldId.ToUpper();
-                if (fieldId.StartsWith("CX.", StringComparison.Ordinal))
+                if (fieldId.StartsWith("CX.", StringComparison.Ordinal) || fieldId.StartsWith("CUST", StringComparison.Ordinal))
                 {
                     var customField = _loan.CustomFields.FirstOrDefault(f => string.Equals(fieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
                     if (customField == null)
@@ -124,7 +124,7 @@ namespace EncompassRest.Loans
             if (!FieldMappings.TryGetValue(fieldId, out var fieldMapping))
             {
                 var hashIndex = fieldId.LastIndexOf('#');
-                if (hashIndex < 0 || !int.TryParse(fieldId.Substring(hashIndex + 1), out var bpIndex) || bpIndex < 1 || bpIndex > 6 || !FieldMappings.TryGetValue(fieldId.Substring(0, hashIndex), out fieldMapping))
+                if (hashIndex < 0 || !int.TryParse(fieldId.Substring(hashIndex + 1), out var bpIndex) || bpIndex < 1 || bpIndex > 6 || !FieldMappings.TryGetValue(fieldId.Substring(0, hashIndex), out fieldMapping) || !fieldMapping.StartsWith("CurrentApplication.", StringComparison.Ordinal))
                 {
                     throw new ArgumentException($"Could not find field {fieldId}");
                 }
