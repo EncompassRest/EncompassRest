@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -150,12 +151,14 @@ namespace EncompassRest
 
     internal sealed class DirtyListConverter<T> : JsonConverter
     {
+        private static readonly bool s_serializeWholeList = TypeData<T>.TypeInfo.GetCustomAttribute<EntityAttribute>(false)?.SerializeWholeListWhenDirty == true;
+
         public override bool CanConvert(Type objectType) => objectType == TypeData<DirtyList<T>>.Type;
 
         public override bool CanRead => false;
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyList<T>)value)._list.Where(item => item.Dirty).Select(item => (T)item));
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, (s_serializeWholeList ? ((DirtyList<T>)value)._list : ((DirtyList<T>)value)._list.Where(item => item.Dirty)).Select(item => (T)item));
     }
 }

@@ -293,6 +293,17 @@ namespace EncompassRest.Utilities
                     {
                         property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
                     }
+
+                    var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
+                    if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
+                    {
+                        var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
+                        foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
+                        {
+                            property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
+                            property.ShouldSerialize = o => property.ValueProvider.GetValue(o) != null;
+                        }
+                    }
                 }
                 return contract;
             }

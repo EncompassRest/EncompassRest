@@ -359,12 +359,69 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public void Loan_FieldsNullAssignment()
+        public void Loan_FieldsValueAssignment()
         {
             foreach (var fieldId in LoanFields.FieldMappings.Keys)
             {
                 var loan = new Loan();
                 var field = loan.Fields[fieldId];
+                Assert.IsNull(field.Value);
+                Assert.IsTrue(field.IsEmpty);
+                switch (field.Type)
+                {
+                    case LoanFieldType.String:
+                        var str = "abc";
+                        field.Value = str;
+                        Assert.AreEqual(str, (string)field.Value);
+                        Assert.AreEqual(str, field.ToString());
+                        break;
+                    case LoanFieldType.DateTime:
+                        var now = DateTime.Now;
+                        field.Value = now;
+                        Assert.AreEqual(now, (DateTime?)field.Value);
+                        Assert.AreEqual(now, field.ToDateTime());
+                        break;
+                    case LoanFieldType.Decimal:
+                        var d = 12.5M;
+                        field.Value = d;
+                        Assert.AreEqual(d, (decimal?)field.Value);
+                        Assert.AreEqual(d, field.ToDecimal());
+                        break;
+                    case LoanFieldType.Int32:
+                        var i = 6;
+                        field.Value = i;
+                        Assert.AreEqual(i, (int?)field.Value);
+                        Assert.AreEqual(i, field.ToInt32());
+                        break;
+                    case LoanFieldType.Boolean:
+                        var b = true;
+                        field.Value = b;
+                        Assert.AreEqual(b, (bool?)field.Value);
+                        Assert.AreEqual(b, field.ToBoolean());
+                        break;
+                    case LoanFieldType.NADecimal:
+                        var n = 95.125M;
+                        field.Value = n;
+                        Assert.AreEqual(n.ToString(), (string)field.Value);
+                        Assert.AreEqual(n.ToString(), field.ToString());
+                        Assert.AreEqual(n, field.ToDecimal());
+                        break;
+                    default:
+                        Assert.Fail($"Invalid LoanFieldType for {fieldId}");
+                        break;
+                }
+                Assert.IsFalse(field.IsEmpty);
+                if (fieldId != "GUID")
+                {
+                    Assert.AreNotEqual("{}", loan.ToJson());
+                }
+
+                loan.Dirty = false;
+                if (fieldId != "GUID")
+                {
+                    Assert.AreEqual("{}", loan.ToJson());
+                }
+
                 field.Value = null;
                 Assert.IsNull(field.Value);
                 Assert.IsTrue(field.IsEmpty);
@@ -603,7 +660,7 @@ namespace EncompassRest.Tests
             var loan = new Loan();
             var value = "Joe";
             var field = loan.Fields["4000#2"];
-            Assert.AreEqual("Loan.Applications[(ApplicationIndex == 1)].Borrower.FirstName", field.ModelPath);
+            Assert.AreEqual("Loan.Applications[(ApplicationIndex == '1')].Borrower.FirstName", field.ModelPath);
             field.Value = value;
             Assert.AreEqual(value, (string)field.Value);
             Assert.AreEqual(value, field.ToString());
@@ -640,6 +697,65 @@ namespace EncompassRest.Tests
             Assert.AreEqual(field.ModelPath, loan.FieldLockData[0].ModelPath);
             Assert.AreEqual(true, loan.FieldLockData[0].LockRemoved);
             Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":true,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_ModelPaths()
+        {
+            var loan = new Loan();
+            foreach (var pair in LoanFields.FieldMappings.Distinct(new FieldMappingComparer()))
+            {
+                var parsedModelPath = new ModelPath($"Loan.{pair.Value}");
+                Assert.AreEqual($"Loan.{pair.Value}", parsedModelPath.ToString());
+                var field = loan.Fields[pair.Key];
+                Assert.IsFalse(field.Locked);
+                field.Locked = true;
+                Assert.IsTrue(field.Locked);
+            }
+
+            var fieldsWithDuplicateFieldMappings = new List<string>();
+            foreach (var pair in LoanFields.FieldMappings)
+            {
+                if (LoanFields.FieldMappings.Values.Count(f => string.Equals(f, pair.Value)) > 1)
+                {
+                    fieldsWithDuplicateFieldMappings.Add(pair.Key);
+                }
+            }
+            if (fieldsWithDuplicateFieldMappings.Count > 0)
+            {
+                //Assert.Fail($"Multiple fields have same field mapping {string.Join(", ", fieldsWithDuplicateFieldMappings)}");
+            }
+        }
+
+        private sealed class FieldMappingComparer : IEqualityComparer<KeyValuePair<string, string>>
+        {
+            public bool Equals(KeyValuePair<string, string> x, KeyValuePair<string, string> y) => string.Equals(x.Value, y.Value, StringComparison.OrdinalIgnoreCase);
+
+            public int GetHashCode(KeyValuePair<string, string> obj) => obj.Value?.GetHashCode() ?? 0;
+        }
+
+        [TestMethod]
+        public void Loan_FieldsComplex()
+        {
+            var loan = new Loan();
+            var field = loan.Fields["2181"];
+            Assert.AreEqual("Loan.RateLock.BuySideAdjustments[(PriceAdjustmentType == 'BasePrice' && AdjustmentType == 'Adjustment')][10].Rate", field.ModelPath);
+            Assert.IsTrue(field.IsEmpty);
+            Assert.IsNull(field.Value);
+            var value = 1;
+            field.Value = value;
+            Assert.AreEqual(value, (decimal?)field.Value);
+            Assert.AreEqual(value, field.ToDecimal());
+            Assert.AreEqual(value, field.ToInt32());
+            Assert.AreEqual(value.ToString(), field.ToString());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual(@"{""rateLock"":{""buySideAdjustments"":[{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice"",""rate"":1.0}]}}", loan.ToJson());
+            field.Value = 2.5M;
+            Assert.AreEqual(@"{""rateLock"":{""buySideAdjustments"":[{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice"",""rate"":2.5}]}}", loan.ToJson());
+            loan.Dirty = false;
+            Assert.AreEqual("{}", loan.ToJson());
+            field.Value = 3.25;
+            Assert.AreEqual(@"{""rateLock"":{""buySideAdjustments"":[{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice"",""rate"":3.25}]}}", loan.ToJson());
         }
     }
 }

@@ -2,96 +2,77 @@
 using System.Linq;
 using System.Reflection;
 using EncompassRest.Utilities;
-using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Loans
 {
-    internal sealed class CustomLoanField : LoanField
-    {
-        public override object Value
-        {
-            get
-            {
-                var customField = Loan.CustomFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
-                if (customField != null)
-                {
-                    if (customField.DateValue.HasValue)
-                    {
-                        return customField.DateValue;
-                    }
-                    if (customField.NumericValue.HasValue)
-                    {
-                        return customField.NumericValue;
-                    }
-                    return customField.StringValue;
-                }
-                return null;
-            }
-            set
-            {
-                var customFields = Loan.CustomFields;
-                var customField = customFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
-                if (customField == null)
-                {
-                    customField = new CustomField { FieldName = FieldId };
-                    customFields.Add(customField);
-                }
-                if (customField.DateValue.HasValue)
-                {
-                    customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
-                }
-                else if (customField.NumericValue.HasValue)
-                {
-                    customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
-                }
-                else if (customField.StringValue != null)
-                {
-                    customField.StringValue = value?.ToString();
-                }
-                else
-                {
-                    switch (value)
-                    {
-                        case null:
-                            customField.StringValue = null;
-                            break;
-                        case string str:
-                            customField.StringValue = str;
-                            break;
-                        case DateTime dateTime:
-                            customField.DateValue = dateTime;
-                            break;
-                        default:
-                            customField.NumericValue = Convert.ToDecimal(value);
-                            break;
-                    }
-                }
-            }
-        }
-
-        internal CustomLoanField(string fieldId, Loan loan)
-            : base(fieldId, loan, $"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue")
-        {
-        }
-    }
-
     public class LoanField
     {
-        private readonly JsonProperty _modelProperty;
-        private readonly object _target;
+        private readonly ModelPath _modelPath;
+        private LoanFieldType? _type;
 
-        protected readonly Loan Loan;
+        internal readonly Loan Loan;
 
         public string FieldId { get; }
 
-        public virtual string ModelPath { get; }
+        public string ModelPath => _modelPath.ToString();
+
+        public LoanFieldType Type
+        {
+            get
+            {
+                var type = _type;
+                if (type == null)
+                {
+                    var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
+                    if (declaredType == typeof(string))
+                    {
+                        type = LoanFieldType.String;
+                    }
+                    else if (declaredType == typeof(DateTime?))
+                    {
+                        type = LoanFieldType.DateTime;
+                    }
+                    else if (declaredType == typeof(decimal?))
+                    {
+                        type = LoanFieldType.Decimal;
+                    }
+                    else if (declaredType == typeof(int?))
+                    {
+                        type = LoanFieldType.Int32;
+                    }
+                    else if (declaredType == typeof(bool?))
+                    {
+                        type = LoanFieldType.Boolean;
+                    }
+                    else
+                    {
+                        type = (LoanFieldType)(-1);
+                        var typeInfo = declaredType.GetTypeInfo();
+                        if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                        {
+                            var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                            if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
+                            {
+                                type = LoanFieldType.String;
+                            }
+                            else if (genericTypeDefinition == TypeData.OpenNaType)
+                            {
+                                type = LoanFieldType.NADecimal;
+                            }
+                        }
+                    }
+                    _type = type;
+                }
+                return type.GetValueOrDefault();
+            }
+        }
 
         public virtual object Value
         {
             get
             {
-                var result = _modelProperty.ValueProvider.GetValue(_target);
-                var propertyTypeInfo = _modelProperty.PropertyType.GetTypeInfo();
+                var result = _modelPath.GetValue(Loan, out var propertyType);
+                var propertyTypeInfo = propertyType.GetTypeInfo();
                 if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                 {
                     var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
@@ -104,21 +85,24 @@ namespace EncompassRest.Loans
             }
             set
             {
-                var destinationValue = value;
-                var propertyType = _modelProperty.PropertyType;
-                if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
+#pragma warning disable IDE0027 // Use expression body for accessors
+                _modelPath.SetValue(Loan, propertyType =>
                 {
-                    destinationValue = Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
-                }
-                else
-                {
-                    var propertyTypeContract = JsonHelper.InternalPrivateContractResolver.ResolveContract(propertyType);
-                    if (propertyTypeContract.Converter is IStringCreator stringCreator)
+                    if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                     {
-                        destinationValue = stringCreator.Create(value?.ToString());
+                        return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
                     }
-                }
-                _modelProperty.ValueProvider.SetValue(_target, destinationValue);
+                    else
+                    {
+                        var propertyTypeContract = JsonHelper.InternalPrivateContractResolver.ResolveContract(propertyType);
+                        if (propertyTypeContract.Converter is IStringCreator stringCreator)
+                        {
+                            return stringCreator.Create(value?.ToString());
+                        }
+                    }
+                    return value;
+                });
+#pragma warning restore IDE0027 // Use expression body for accessors
             }
         }
 
@@ -135,29 +119,27 @@ namespace EncompassRest.Loans
         {
             get
             {
-                var fieldLockData = Loan.FieldLockData.FirstOrDefault(f => string.Equals(f.ModelPath, ModelPath, StringComparison.OrdinalIgnoreCase));
+                var fieldLockData = Loan.FieldLockData.FirstOrDefault(f => _modelPath.Equals(f._modelPathInternal));
                 return fieldLockData != null && fieldLockData.LockRemoved != true;
             }
             set
             {
                 var allFieldLockData = Loan.FieldLockData;
-                var fieldLockData = allFieldLockData.FirstOrDefault(f => string.Equals(f.ModelPath, ModelPath, StringComparison.OrdinalIgnoreCase));
+                var fieldLockData = allFieldLockData.FirstOrDefault(f => _modelPath.Equals(f._modelPathInternal));
                 if (fieldLockData == null)
                 {
-                    fieldLockData = new FieldLockData { ModelPath = ModelPath };
+                    fieldLockData = new FieldLockData { _modelPathInternal = _modelPath, _modelPath = ModelPath };
                     allFieldLockData.Add(fieldLockData);
                 }
                 fieldLockData.LockRemoved = !value;
             }
         }
 
-        internal LoanField(string fieldId, Loan loan, string modelPath, JsonProperty modelProperty = null, object target = null)
+        internal LoanField(string fieldId, Loan loan, ModelPath modelPath)
         {
-            Loan = loan;
             FieldId = fieldId;
-            ModelPath = modelPath;
-            _modelProperty = modelProperty;
-            _target = target;
+            Loan = loan;
+            _modelPath = modelPath;
         }
 
         public override string ToString() => Value?.ToString();
