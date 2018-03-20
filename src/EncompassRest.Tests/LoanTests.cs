@@ -361,7 +361,7 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void Loan_FieldsValueAssignment()
         {
-            foreach (var fieldId in LoanFields.FieldMappings.Keys)
+            foreach (var fieldId in LoanFields.FieldMappings.FieldIds)
             {
                 var loan = new Loan();
                 var field = loan.Fields[fieldId];
@@ -703,10 +703,8 @@ namespace EncompassRest.Tests
         public void Loan_ModelPaths()
         {
             var loan = new Loan();
-            foreach (var pair in LoanFields.FieldMappings.Distinct(new FieldMappingComparer()))
+            foreach (var pair in LoanFields.FieldMappings._dictionary.Distinct(new FieldMappingComparer()))
             {
-                var parsedModelPath = new ModelPath($"Loan.{pair.Value}");
-                Assert.AreEqual($"Loan.{pair.Value}", parsedModelPath.ToString());
                 var field = loan.Fields[pair.Key];
                 Assert.IsFalse(field.Locked);
                 field.Locked = true;
@@ -714,9 +712,9 @@ namespace EncompassRest.Tests
             }
 
             var fieldsWithDuplicateFieldMappings = new List<string>();
-            foreach (var pair in LoanFields.FieldMappings)
+            foreach (var pair in LoanFields.FieldMappings._dictionary)
             {
-                if (LoanFields.FieldMappings.Values.Count(f => string.Equals(f, pair.Value)) > 1)
+                if (LoanFields.FieldMappings._dictionary.Values.Count(p => pair.Value.Equals(p)) > 1)
                 {
                     fieldsWithDuplicateFieldMappings.Add(pair.Key);
                 }
@@ -727,11 +725,11 @@ namespace EncompassRest.Tests
             }
         }
 
-        private sealed class FieldMappingComparer : IEqualityComparer<KeyValuePair<string, string>>
+        private sealed class FieldMappingComparer : IEqualityComparer<KeyValuePair<string, ModelPath>>
         {
-            public bool Equals(KeyValuePair<string, string> x, KeyValuePair<string, string> y) => string.Equals(x.Value, y.Value, StringComparison.OrdinalIgnoreCase);
+            public bool Equals(KeyValuePair<string, ModelPath> x, KeyValuePair<string, ModelPath> y) => x.Value.Equals(y.Value);
 
-            public int GetHashCode(KeyValuePair<string, string> obj) => obj.Value?.GetHashCode() ?? 0;
+            public int GetHashCode(KeyValuePair<string, ModelPath> obj) => obj.Value?.GetHashCode() ?? 0;
         }
 
         [TestMethod]
@@ -756,6 +754,51 @@ namespace EncompassRest.Tests
             Assert.AreEqual("{}", loan.ToJson());
             field.Value = 3.25;
             Assert.AreEqual(@"{""rateLock"":{""buySideAdjustments"":[{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice""},{""adjustmentType"":""Adjustment"",""priceAdjustmentType"":""BasePrice"",""rate"":3.25}]}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public void Loan_FieldsCustomMapping()
+        {
+            Assert.IsTrue(LoanFields.FieldMappings.TryAdd("Log.MS.CurrentMilestone", "Loan.VirtualFields['Log.MS.CurrentMilestone']", false));
+            var loan = new Loan();
+            var field = loan.Fields["Log.MS.CurrentMilestone"];
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual("{}", loan.ToJson());
+            var value = "Processing";
+            field.Value = value;
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual(value, (string)field.Value);
+            Assert.AreEqual(value, field.ToString());
+            Assert.AreEqual($@"{{""VirtualFields"":{{""Log.MS.CurrentMilestone"":""{value}""}}}}", loan.ToJson());
+
+            field.Value = null;
+            Assert.IsTrue(field.IsEmpty);
+            Assert.IsNull(field.Value);
+            Assert.AreEqual(@"{""VirtualFields"":{""Log.MS.CurrentMilestone"":null}}", loan.ToJson());
+
+            Assert.IsTrue(LoanFields.FieldMappings.TryAdd("NEWFIELD", "Loan.NewEntity[2].Borrower.BorrowerId", false));
+            loan = new Loan();
+            field = loan.Fields["NEWFIELD"];
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual("{}", loan.ToJson());
+            var intValue = 4;
+            field.Value = intValue;
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual(intValue, (int?)field.Value);
+            Assert.AreEqual(intValue, field.ToInt32());
+            Assert.AreEqual($@"{{""NewEntity"":[{{}},{{""Borrower"":{{""BorrowerId"":4}}}}]}}", loan.ToJson());
+
+            field.Value = null;
+            Assert.IsTrue(field.IsEmpty);
+            Assert.IsNull(field.Value);
+            Assert.AreEqual(@"{""NewEntity"":[{},{""Borrower"":{""BorrowerId"":null}}]}", loan.ToJson());
+
+            loan = new Loan();
+            field = loan.Fields["NEWFIELD"];
+            Assert.IsFalse(field.Locked);
+            field.Locked = true;
+            Assert.IsTrue(field.Locked);
+            Assert.AreEqual(@"{""fieldLockData"":[{""lockRemoved"":false,""modelPath"":""Loan.NewEntity[2].Borrower.BorrowerId""}]}", loan.ToJson());
         }
     }
 }

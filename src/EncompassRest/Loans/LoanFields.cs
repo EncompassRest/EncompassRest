@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
@@ -11,10 +10,11 @@ namespace EncompassRest.Loans
 {
     public sealed class LoanFields
     {
-        public static IDictionary<string, string> FieldMappings { get; }
+        public static LoanFieldMappings FieldMappings { get; }
 
         static LoanFields()
         {
+            // Use embedded resource file for built-in field mappings to save assembly space
             using (var stream = typeof(LoanFields).GetTypeInfo().Assembly.GetManifestResourceStream("EncompassRest.LoanFields.json.zip"))
             {
                 using (var zip = new ZipArchive(stream))
@@ -25,7 +25,7 @@ namespace EncompassRest.Loans
                         {
                             using (var jr = new JsonTextReader(sr))
                             {
-                                FieldMappings = JsonHelper.DefaultPublicSerializer.Deserialize<ConcurrentDictionary<string, string>>(jr);
+                                FieldMappings = new LoanFieldMappings(JsonHelper.DefaultPublicSerializer.Deserialize<ConcurrentDictionary<string, ModelPath>>(jr));
                             }
                         }
                     }
@@ -48,18 +48,18 @@ namespace EncompassRest.Loans
                 }
                 else
                 {
-                    if (!FieldMappings.TryGetValue(fieldId, out var modelPath))
+                    if (!FieldMappings._dictionary.TryGetValue(fieldId, out var modelPath))
                     {
                         var hashIndex = fieldId.LastIndexOf('#');
-                        if (hashIndex < 0 || !int.TryParse(fieldId.Substring(hashIndex + 1), out var bpIndex) || bpIndex < 1 || bpIndex > 6 || !FieldMappings.TryGetValue(fieldId.Substring(0, hashIndex), out modelPath) || !modelPath.StartsWith("CurrentApplication.", StringComparison.Ordinal))
+                        if (hashIndex < 0 || !int.TryParse(fieldId.Substring(hashIndex + 1), out var bpIndex) || bpIndex < 1 || bpIndex > 6 || !FieldMappings.TryGetValue(fieldId.Substring(0, hashIndex), out var path) || !path.StartsWith("Loan.CurrentApplication.", StringComparison.Ordinal))
                         {
                             throw new ArgumentException($"Could not find field {fieldId}");
                         }
 
-                        modelPath = $"Applications[(ApplicationIndex == '{bpIndex - 1}')]{modelPath.Substring(18)}";
+                        modelPath = new ModelPath($"Loan.Applications[(ApplicationIndex == '{bpIndex - 1}')]{path.Substring(23)}");
                     }
 
-                    return new LoanField(fieldId, _loan, new ModelPath($"Loan.{modelPath}"));
+                    return new LoanField(fieldId, _loan, modelPath);
                 }
             }
         }

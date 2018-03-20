@@ -5,6 +5,27 @@ namespace EncompassRest.Loans
 {
     internal sealed class CustomLoanField : LoanField
     {
+        public override LoanFieldType Type
+        {
+            get
+            {
+                var customField = Loan.CustomFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
+                if (customField != null)
+                {
+                    if (customField.DateValue.HasValue)
+                    {
+                        return LoanFieldType.DateTime;
+                    }
+                    if (customField.NumericValue.HasValue)
+                    {
+                        return LoanFieldType.Decimal;
+                    }
+                    return LoanFieldType.String;
+                }
+                return LoanFieldType.Unknown;
+            }
+        }
+
         public override object Value
         {
             get

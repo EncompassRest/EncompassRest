@@ -6,10 +6,12 @@ using System.Reflection;
 using System.Text;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest
 {
+    [JsonConverter(typeof(ModelPathConverter))]
     internal sealed class ModelPath : IEquatable<ModelPath>
     {
         public static ModelPath Create(string modelPath)
@@ -313,7 +315,7 @@ namespace EncompassRest
             for (var i = 1; i < Segments.Count; ++i)
             {
                 var segment = Segments[i - 1];
-                parent = segment.GetValue(parent, out var declaredType, true);
+                parent = segment.GetValue(parent, out var declaredType, true, Segments[i] is PropertySegment);
             }
             Segments[Segments.Count - 1].SetValue(parent, valueProvider);
         }
@@ -324,6 +326,10 @@ namespace EncompassRest
             foreach (var segment in Segments)
             {
                 declaredType = segment.GetDeclaredType(declaredType);
+                if (declaredType == null)
+                {
+                    return null;
+                }
             }
             return declaredType;
         }
@@ -366,7 +372,7 @@ namespace EncompassRest
 
             public object GetValue(object parent) => GetValue(parent, out _);
 
-            public abstract object GetValue(object parent, out Type declaredType, bool createIfNotExists = false);
+            public abstract object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true);
 
             public void SetValue(object parent, object value) => SetValue(parent, t => value);
 
@@ -394,46 +400,116 @@ namespace EncompassRest
 
             public override Type GetDeclaredType(Type parentType)
             {
-                var property = GetProperty(parentType);
-                return property.PropertyType;
+                Preconditions.NotNull(parentType, nameof(parentType));
+
+                var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parentType);
+                switch (contract)
+                {
+                    case JsonObjectContract objectContract:
+                        return objectContract.Properties.GetClosestMatchProperty(PropertyName)?.PropertyType;
+                    default:
+                        return null;
+                }
             }
 
-            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false)
+            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
             {
-                var property = GetProperty(parent?.GetType());
-                declaredType = property.PropertyType;
-                var value = property.ValueProvider.GetValue(parent);
-                if (createIfNotExists && value == null)
+                Preconditions.NotNull(parent, nameof(parent));
+                
+                var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
+                JToken tokenValue;
+                object value;
+                switch (contract)
                 {
-                    var json = declaredType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IEnumerable>.Type) ? "[]" : "{}";
-                    value = JsonHelper.FromJson(json, declaredType);
-                    property.ValueProvider.SetValue(parent, value);
+                    case JsonObjectContract objectContract:
+                        var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
+                        if (property != null)
+                        {
+                            declaredType = property.PropertyType;
+                            value = property.ValueProvider.GetValue(parent);
+                            if (createIfNotExists && value == null)
+                            {
+                                var json = nextIsProperty ? "{}" : "[]";
+                                value = JsonHelper.FromJson(json, declaredType);
+                                property.ValueProvider.SetValue(parent, value);
+                            }
+                            return value;
+                        }
+                        else
+                        {
+                            var extensionData = objectContract.ExtensionDataGetter(parent);
+                            if (extensionData != null)
+                            {
+                                foreach (var pair in extensionData)
+                                {
+                                    if (string.Equals(PropertyName, pair.Key as string, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        declaredType = pair.Value?.GetType();
+                                        return pair.Value;
+                                    }
+                                }
+
+                                if (createIfNotExists)
+                                {
+                                    tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
+                                    objectContract.ExtensionDataSetter(parent, PropertyName, tokenValue);
+                                    declaredType = tokenValue.GetType();
+                                    return tokenValue;
+                                }
+                            }
+                        }
+                        break;
+                    case JsonLinqContract linqContract:
+                        if (parent is JObject jObject)
+                        {
+                            if (jObject.TryGetValue(PropertyName, StringComparison.OrdinalIgnoreCase, out tokenValue))
+                            {
+                                declaredType = tokenValue?.GetType();
+                                return tokenValue;
+                            }
+                            else if (createIfNotExists)
+                            {
+                                tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
+                                jObject.Add(PropertyName, tokenValue);
+                                declaredType = tokenValue.GetType();
+                                return tokenValue;
+                            }
+                        }
+                        break;
                 }
-                return value;
+                declaredType = null;
+                return null;
             }
 
             public override void SetValue(object parent, Func<Type, object> valueProvider)
             {
-                var property = GetProperty(parent?.GetType());
-                var value = valueProvider(property.PropertyType);
-                property.ValueProvider.SetValue(parent, value);
-            }
+                Preconditions.NotNull(parent, nameof(parent));
 
-            private JsonProperty GetProperty(Type parentType)
-            {
-                Preconditions.NotNull(parentType, nameof(parentType));
-
-                var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parentType);
-                if (!(contract is JsonObjectContract objectContract))
+                var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
+                object value;
+                switch (contract)
                 {
-                    throw new InvalidOperationException($"parent's type must resolve to a json object contract");
+                    case JsonObjectContract objectContract:
+                        var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
+                        if (property != null)
+                        {
+                            value = valueProvider(property.PropertyType);
+                            property.ValueProvider.SetValue(parent, value);
+                        }
+                        else
+                        {
+                            value = valueProvider(null);
+                            objectContract.ExtensionDataSetter?.Invoke(parent, PropertyName, value);
+                        }
+                        break;
+                    case JsonLinqContract linqContract:
+                        if (parent is JObject jObject)
+                        {
+                            value = valueProvider(null);
+                            jObject[PropertyName] = value != null ? JToken.FromObject(value) : null;
+                        }
+                        break;
                 }
-                var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
-                if (property == null)
-                {
-                    throw new InvalidOperationException($"Could not find property {PropertyName} on {parentType}");
-                }
-                return property;
             }
 
             public override string ToString()
@@ -444,7 +520,7 @@ namespace EncompassRest
 
             public override int GetHashCode() => PropertyName.GetHashCode();
 
-            public override bool Equals(PathSegment other) => other is PropertySegment propertySegment && string.Equals(PropertyName, propertySegment.PropertyName);
+            public override bool Equals(PathSegment other) => other is PropertySegment propertySegment && string.Equals(PropertyName, propertySegment.PropertyName, StringComparison.OrdinalIgnoreCase);
         }
 
         public sealed class ArraySegment : PathSegment
@@ -472,7 +548,7 @@ namespace EncompassRest
             public override Type GetDeclaredType(Type parentType)
             {
                 var parentTypeInfo = parentType.GetTypeInfo();
-                var declaredType = TypeData<object>.Type;
+                var declaredType = TypeData<JToken>.Type;
                 foreach (var implementedInterface in parentTypeInfo.ImplementedInterfaces)
                 {
                     var implementedInterfaceTypeInfo = implementedInterface.GetTypeInfo();
@@ -488,12 +564,12 @@ namespace EncompassRest
                 return declaredType;
             }
 
-            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false)
+            public override object GetValue(object parent, out Type declaredType, bool createIfNotExists = false, bool nextIsProperty = true)
             {
                 Preconditions.NotNull(parent, nameof(parent));
                 if (!(parent is IList list))
                 {
-                    throw new ArgumentException("must be IEnumerable", nameof(parent));
+                    throw new ArgumentException("must be an IList", nameof(parent));
                 }
 
                 declaredType = GetDeclaredType(parent.GetType());
@@ -525,19 +601,8 @@ namespace EncompassRest
                         sb.Append('{');
                         foreach (var propertyFilter in Filter)
                         {
-                            sb.Append(@"""").Append(propertyFilter.PropertyName).Append(@""":");
-                            var contract = (JsonObjectContract)JsonHelper.InternalPrivateContractResolver.ResolveContract(declaredType);
-                            var property = contract.Properties.GetClosestMatchProperty(propertyFilter.PropertyName);
-                            var propertyType = property.PropertyType;
-                            if (propertyType == TypeData<int?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<bool?>.Type)
-                            {
-                                sb.Append(propertyFilter.Value);
-                            }
-                            else
-                            {
-                                sb.Append('"').Append(propertyFilter.Value).Append('"');
-                            }
-                            sb.Append(',');
+                            sb.Append('"').Append(propertyFilter.PropertyName).Append(@""":");
+                            sb.Append('"').Append(propertyFilter.Value).Append(@""",");
                         }
                         --sb.Length;
                         sb.Append('}');
@@ -558,7 +623,7 @@ namespace EncompassRest
 
             public override string ToString() => $"{(Filter != null ? $"[({Filter.ToString()})]" : string.Empty)}{(Index.HasValue ? $"[{Index}]" : string.Empty)}";
 
-            public override int GetHashCode() => (Index?.GetHashCode() ?? 1) ^ Filter.GetHashCode();
+            public override int GetHashCode() => (Index?.GetHashCode() ?? 1) ^ (Filter?.GetHashCode() ?? 0);
 
             public override bool Equals(PathSegment other) => other is ArraySegment arraySegment && (Index ?? 1) == (arraySegment.Index ?? 1) && (Filter != null ? Filter.Equals(arraySegment.Filter) : arraySegment.Filter == null);
         }
@@ -677,5 +742,14 @@ namespace EncompassRest
 
             public override bool Equals(ObjectFilter other) => other is PropertyFilter propertyFilter && string.Equals(PropertyName, propertyFilter.PropertyName, StringComparison.OrdinalIgnoreCase) && string.Equals(Value, propertyFilter.Value, StringComparison.OrdinalIgnoreCase);
         }
+    }
+
+    internal sealed class ModelPathConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType) => objectType == TypeData<ModelPath>.Type;
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => new ModelPath(reader.Value?.ToString());
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value?.ToString());
     }
 }

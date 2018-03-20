@@ -197,7 +197,7 @@ namespace EncompassRest
             fields = new Dictionary<string, string>();
             foreach (var pair in orderedFields)
             {
-                fields[pair.Key] = pair.Value.Substring(5);
+                fields[pair.Key] = pair.Value;
             }
 
             using (var fs = new FileStream("LoanFields.json", FileMode.Create))
@@ -221,7 +221,7 @@ namespace EncompassRest
             }
         }
 
-        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields, bool isList = false)
+        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields)
         {
             foreach (var pair in entitySchema.Properties)
             {
@@ -547,7 +547,7 @@ namespace EncompassRest
                 else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && loanSchema.EntityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
                 {
                     loanSchema.EntityTypes.Remove(propertySchema.ElementType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields, true);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields);
                 }
             }
         }

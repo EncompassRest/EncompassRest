@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using EncompassRest.Utilities;
+using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Loans
 {
@@ -16,7 +17,7 @@ namespace EncompassRest.Loans
 
         public string ModelPath => _modelPath.ToString();
 
-        public LoanFieldType Type
+        public virtual LoanFieldType Type
         {
             get
             {
@@ -46,18 +47,21 @@ namespace EncompassRest.Loans
                     }
                     else
                     {
-                        type = (LoanFieldType)(-1);
-                        var typeInfo = declaredType.GetTypeInfo();
-                        if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                        type = LoanFieldType.Unknown;
+                        if (declaredType != null)
                         {
-                            var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                            if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
+                            var typeInfo = declaredType.GetTypeInfo();
+                            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
                             {
-                                type = LoanFieldType.String;
-                            }
-                            else if (genericTypeDefinition == TypeData.OpenNaType)
-                            {
-                                type = LoanFieldType.NADecimal;
+                                var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                                if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
+                                {
+                                    type = LoanFieldType.String;
+                                }
+                                else if (genericTypeDefinition == TypeData.OpenNaType)
+                                {
+                                    type = LoanFieldType.NADecimal;
+                                }
                             }
                         }
                     }
@@ -72,13 +76,20 @@ namespace EncompassRest.Loans
             get
             {
                 var result = _modelPath.GetValue(Loan, out var propertyType);
-                var propertyTypeInfo = propertyType.GetTypeInfo();
-                if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
+                if (result is JValue jValue)
                 {
-                    var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
-                    if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
+                    result = jValue.Value;
+                }
+                else if (propertyType != null)
+                {
+                    var propertyTypeInfo = propertyType.GetTypeInfo();
+                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
                     {
-                        result = result.ToString();
+                        var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
+                        if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
+                        {
+                            result = result.ToString();
+                        }
                     }
                 }
                 return result;
@@ -88,16 +99,19 @@ namespace EncompassRest.Loans
 #pragma warning disable IDE0027 // Use expression body for accessors
                 _modelPath.SetValue(Loan, propertyType =>
                 {
-                    if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
+                    if (propertyType != null)
                     {
-                        return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
-                    }
-                    else
-                    {
-                        var propertyTypeContract = JsonHelper.InternalPrivateContractResolver.ResolveContract(propertyType);
-                        if (propertyTypeContract.Converter is IStringCreator stringCreator)
+                        if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                         {
-                            return stringCreator.Create(value?.ToString());
+                            return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);
+                        }
+                        else
+                        {
+                            var propertyTypeContract = JsonHelper.InternalPrivateContractResolver.ResolveContract(propertyType);
+                            if (propertyTypeContract.Converter is IStringCreator stringCreator)
+                            {
+                                return stringCreator.Create(value?.ToString());
+                            }
                         }
                     }
                     return value;
@@ -153,9 +167,8 @@ namespace EncompassRest.Loans
                     return dateTime;
                 case string str:
                     return DateTime.TryParse(str, out var dt) ? dt : (DateTime?)null;
-                default:
-                    return null;
             }
+            return null;
         }
 
         public decimal? ToDecimal()
@@ -169,9 +182,8 @@ namespace EncompassRest.Loans
                     return d;
                 case int i:
                     return i;
-                default:
-                    return null;
             }
+            return null;
         }
 
         public int? ToInt32()
@@ -185,9 +197,8 @@ namespace EncompassRest.Loans
                     return d <= int.MaxValue && d >= int.MinValue ? Convert.ToInt32(d) : (int?)null;
                 case int i:
                     return i;
-                default:
-                    return null;
             }
+            return null;
         }
 
         public bool? ToBoolean()
@@ -199,9 +210,8 @@ namespace EncompassRest.Loans
                     return bool.TryParse(str, out var b) ? b : (bool?)null;
                 case bool boolean:
                     return boolean;
-                default:
-                    return null;
             }
+            return null;
         }
     }
 }

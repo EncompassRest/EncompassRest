@@ -2,11 +2,12 @@
 {
     public enum LoanFieldType
     {
-        String = 0,
-        DateTime = 1,
-        Decimal = 2,
-        Int32 = 3,
-        Boolean = 4,
-        NADecimal = 5
+        Unknown = 0,
+        String = 1,
+        DateTime = 2,
+        Decimal = 3,
+        Int32 = 4,
+        Boolean = 5,
+        NADecimal = 6
     }
 }
