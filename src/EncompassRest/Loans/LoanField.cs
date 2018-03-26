@@ -207,7 +207,16 @@ namespace EncompassRest.Loans
             switch (value)
             {
                 case string str:
-                    return bool.TryParse(str, out var b) ? b : (bool?)null;
+                    switch (str.ToUpper())
+                    {
+                        case "Y":
+                        case "TRUE":
+                            return true;
+                        case "N":
+                        case "FALSE":
+                            return false;
+                    }
+                    return null;
                 case bool boolean:
                     return boolean;
             }
