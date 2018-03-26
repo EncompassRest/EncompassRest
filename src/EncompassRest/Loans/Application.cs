@@ -207,10 +207,18 @@ namespace EncompassRest.Loans
         public bool? IncomeOtherThanBorrowerUsedIndicator { get => _incomeOtherThanBorrowerUsedIndicator; set => _incomeOtherThanBorrowerUsedIndicator = value; }
         private DirtyValue<bool?> _jointAssetLiabilityReportingIndicator;
         public bool? JointAssetLiabilityReportingIndicator { get => _jointAssetLiabilityReportingIndicator; set => _jointAssetLiabilityReportingIndicator = value; }
+        private DirtyValue<string> _lastModified;
+        public string LastModified { get => _lastModified; set => _lastModified = value; }
         private DirtyList<Liability> _liabilities;
         public IList<Liability> Liabilities { get => _liabilities ?? (_liabilities = new DirtyList<Liability>()); set => _liabilities = new DirtyList<Liability>(value); }
         private DirtyValue<decimal?> _liquidAssetsComortSet;
         public decimal? LiquidAssetsComortSet { get => _liquidAssetsComortSet; set => _liquidAssetsComortSet = value; }
+        private DirtyValue<string> _loanAmount;
+        public string LoanAmount { get => _loanAmount; set => _loanAmount = value; }
+        private DirtyValue<string> _loanOfficerId;
+        public string LoanOfficerId { get => _loanOfficerId; set => _loanOfficerId = value; }
+        private DirtyValue<string> _loanOfficerName;
+        public string LoanOfficerName { get => _loanOfficerName; set => _loanOfficerName = value; }
         private DirtyValue<decimal?> _mcawBorrowerOtherMonthlyIncomeAmount;
         public decimal? McawBorrowerOtherMonthlyIncomeAmount { get => _mcawBorrowerOtherMonthlyIncomeAmount; set => _mcawBorrowerOtherMonthlyIncomeAmount = value; }
         private DirtyValue<decimal?> _mcawCoborrowerOtherMonthlyIncomeAmount;
@@ -301,6 +309,8 @@ namespace EncompassRest.Loans
         public int? ReoTotalNetRentalIncomeAmount { get => _reoTotalNetRentalIncomeAmount; set => _reoTotalNetRentalIncomeAmount = value; }
         private DirtyList<Residence> _residences;
         public IList<Residence> Residences { get => _residences ?? (_residences = new DirtyList<Residence>()); set => _residences = new DirtyList<Residence>(value); }
+        private DirtyValue<string> _respa6;
+        public string Respa6 { get => _respa6; set => _respa6 = value; }
         private DirtyList<SelfEmployedIncome> _selfEmployedIncomes;
         public IList<SelfEmployedIncome> SelfEmployedIncomes { get => _selfEmployedIncomes ?? (_selfEmployedIncomes = new DirtyList<SelfEmployedIncome>()); set => _selfEmployedIncomes = new DirtyList<SelfEmployedIncome>(value); }
         private DirtyValue<string> _sofDBorrowerAddress;
@@ -501,7 +511,11 @@ namespace EncompassRest.Loans
                     || _incomeOfBorrowersSpouseUsedIndicator.Dirty
                     || _incomeOtherThanBorrowerUsedIndicator.Dirty
                     || _jointAssetLiabilityReportingIndicator.Dirty
+                    || _lastModified.Dirty
                     || _liquidAssetsComortSet.Dirty
+                    || _loanAmount.Dirty
+                    || _loanOfficerId.Dirty
+                    || _loanOfficerName.Dirty
                     || _mcawBorrowerOtherMonthlyIncomeAmount.Dirty
                     || _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty
                     || _mcawGrossMonthlyIncomeAmount.Dirty
@@ -545,6 +559,7 @@ namespace EncompassRest.Loans
                     || _reoTotalMortgagePaymentsAmount.Dirty
                     || _reoTotalMortgagesAndLiensAmount.Dirty
                     || _reoTotalNetRentalIncomeAmount.Dirty
+                    || _respa6.Dirty
                     || _sofDBorrowerAddress.Dirty
                     || _sofDBorrowerAddressCity.Dirty
                     || _sofDBorrowerAddressState.Dirty
@@ -703,7 +718,11 @@ namespace EncompassRest.Loans
                 _incomeOfBorrowersSpouseUsedIndicator.Dirty = value;
                 _incomeOtherThanBorrowerUsedIndicator.Dirty = value;
                 _jointAssetLiabilityReportingIndicator.Dirty = value;
+                _lastModified.Dirty = value;
                 _liquidAssetsComortSet.Dirty = value;
+                _loanAmount.Dirty = value;
+                _loanOfficerId.Dirty = value;
+                _loanOfficerName.Dirty = value;
                 _mcawBorrowerOtherMonthlyIncomeAmount.Dirty = value;
                 _mcawCoborrowerOtherMonthlyIncomeAmount.Dirty = value;
                 _mcawGrossMonthlyIncomeAmount.Dirty = value;
@@ -747,6 +766,7 @@ namespace EncompassRest.Loans
                 _reoTotalMortgagePaymentsAmount.Dirty = value;
                 _reoTotalMortgagesAndLiensAmount.Dirty = value;
                 _reoTotalNetRentalIncomeAmount.Dirty = value;
+                _respa6.Dirty = value;
                 _sofDBorrowerAddress.Dirty = value;
                 _sofDBorrowerAddressCity.Dirty = value;
                 _sofDBorrowerAddressState.Dirty = value;

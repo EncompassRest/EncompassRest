@@ -21,6 +21,8 @@ namespace EncompassRest.Loans
         public string AltId { get => _altId; set => _altId = value; }
         private DirtyValue<string> _applicantType;
         public string ApplicantType { get => _applicantType; set => _applicantType = value; }
+        private EntityReference _contact;
+        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
         private DirtyValue<string> _county;
         public string County { get => _county; set => _county = value; }
         private DirtyValue<int?> _durationTermMonths;
@@ -109,7 +111,8 @@ namespace EncompassRest.Loans
                     || _residencyType.Dirty
                     || _title.Dirty
                     || _titleFax.Dirty
-                    || _titlePhone.Dirty;
+                    || _titlePhone.Dirty
+                    || _contact?.Dirty == true;
             }
             set
             {
@@ -146,6 +149,7 @@ namespace EncompassRest.Loans
                 _title.Dirty = value;
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
+                if (_contact != null) _contact.Dirty = value;
             }
         }
     }

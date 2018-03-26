@@ -31,6 +31,8 @@ namespace EncompassRest.Loans
         public string ClosingTaxYear { get => _closingTaxYear; set => _closingTaxYear = value; }
         private DirtyValue<decimal?> _closingTaxYearInterestReceived;
         public decimal? ClosingTaxYearInterestReceived { get => _closingTaxYearInterestReceived; set => _closingTaxYearInterestReceived = value; }
+        private DirtyValue<string> _complianceVersion_CD3_X1505;
+        public string ComplianceVersion_CD3_X1505 { get => _complianceVersion_CD3_X1505; set => _complianceVersion_CD3_X1505 = value; }
         private DirtyValue<string> _contactFax;
         public string ContactFax { get => _contactFax; set => _contactFax = value; }
         private DirtyValue<string> _contactName;
@@ -87,6 +89,8 @@ namespace EncompassRest.Loans
         public string Line1008Excluded { get => _line1008Excluded; set => _line1008Excluded = value; }
         private DirtyValue<string> _line1010Excluded;
         public string Line1010Excluded { get => _line1010Excluded; set => _line1010Excluded = value; }
+        private DirtyValue<int?> _loanFileSequenceNumber;
+        public int? LoanFileSequenceNumber { get => _loanFileSequenceNumber; set => _loanFileSequenceNumber = value; }
         private DirtyValue<string> _loanProgramFile;
         public string LoanProgramFile { get => _loanProgramFile; set => _loanProgramFile = value; }
         private DirtyValue<string> _loanTemplateFile;
@@ -155,6 +159,8 @@ namespace EncompassRest.Loans
         public string PartnerPhone { get => _partnerPhone; set => _partnerPhone = value; }
         private DirtyValue<decimal?> _pointsPaid;
         public decimal? PointsPaid { get => _pointsPaid; set => _pointsPaid = value; }
+        private DirtyValue<bool?> _printStateLicenseOn1003;
+        public bool? PrintStateLicenseOn1003 { get => _printStateLicenseOn1003; set => _printStateLicenseOn1003 = value; }
         private DirtyValue<DateTime?> _rateRegistrationExpirationDate;
         public DateTime? RateRegistrationExpirationDate { get => _rateRegistrationExpirationDate; set => _rateRegistrationExpirationDate = value; }
         private DirtyValue<string> _rateRegistrationInvestorName;
@@ -195,6 +201,8 @@ namespace EncompassRest.Loans
         public decimal? TotalBox4 { get => _totalBox4; set => _totalBox4 = value; }
         private DirtyValue<decimal?> _totalYearlyMi;
         public decimal? TotalYearlyMi { get => _totalYearlyMi; set => _totalYearlyMi = value; }
+        private DirtyValue<bool?> _tPOConnectStatusUpdated;
+        public bool? TPOConnectStatusUpdated { get => _tPOConnectStatusUpdated; set => _tPOConnectStatusUpdated = value; }
         private DirtyValue<string> _useGfeTax;
         public string UseGfeTax { get => _useGfeTax; set => _useGfeTax = value; }
         private DirtyValue<string> _useRegZMi;
@@ -217,6 +225,7 @@ namespace EncompassRest.Loans
                     || _closingCostProgramFile.Dirty
                     || _closingTaxYear.Dirty
                     || _closingTaxYearInterestReceived.Dirty
+                    || _complianceVersion_CD3_X1505.Dirty
                     || _contactFax.Dirty
                     || _contactName.Dirty
                     || _contactPhone.Dirty
@@ -245,6 +254,7 @@ namespace EncompassRest.Loans
                     || _line1007Excluded.Dirty
                     || _line1008Excluded.Dirty
                     || _line1010Excluded.Dirty
+                    || _loanFileSequenceNumber.Dirty
                     || _loanProgramFile.Dirty
                     || _loanTemplateFile.Dirty
                     || _maventATRQMResult.Dirty
@@ -279,6 +289,7 @@ namespace EncompassRest.Loans
                     || _partnerName.Dirty
                     || _partnerPhone.Dirty
                     || _pointsPaid.Dirty
+                    || _printStateLicenseOn1003.Dirty
                     || _rateRegistrationExpirationDate.Dirty
                     || _rateRegistrationInvestorName.Dirty
                     || _rateRegistrationLoanIsRegistered.Dirty
@@ -299,6 +310,7 @@ namespace EncompassRest.Loans
                     || _taxId.Dirty
                     || _totalBox4.Dirty
                     || _totalYearlyMi.Dirty
+                    || _tPOConnectStatusUpdated.Dirty
                     || _useGfeTax.Dirty
                     || _useRegZMi.Dirty
                     || _zip.Dirty;
@@ -317,6 +329,7 @@ namespace EncompassRest.Loans
                 _closingCostProgramFile.Dirty = value;
                 _closingTaxYear.Dirty = value;
                 _closingTaxYearInterestReceived.Dirty = value;
+                _complianceVersion_CD3_X1505.Dirty = value;
                 _contactFax.Dirty = value;
                 _contactName.Dirty = value;
                 _contactPhone.Dirty = value;
@@ -345,6 +358,7 @@ namespace EncompassRest.Loans
                 _line1007Excluded.Dirty = value;
                 _line1008Excluded.Dirty = value;
                 _line1010Excluded.Dirty = value;
+                _loanFileSequenceNumber.Dirty = value;
                 _loanProgramFile.Dirty = value;
                 _loanTemplateFile.Dirty = value;
                 _maventATRQMResult.Dirty = value;
@@ -379,6 +393,7 @@ namespace EncompassRest.Loans
                 _partnerName.Dirty = value;
                 _partnerPhone.Dirty = value;
                 _pointsPaid.Dirty = value;
+                _printStateLicenseOn1003.Dirty = value;
                 _rateRegistrationExpirationDate.Dirty = value;
                 _rateRegistrationInvestorName.Dirty = value;
                 _rateRegistrationLoanIsRegistered.Dirty = value;
@@ -399,6 +414,7 @@ namespace EncompassRest.Loans
                 _taxId.Dirty = value;
                 _totalBox4.Dirty = value;
                 _totalYearlyMi.Dirty = value;
+                _tPOConnectStatusUpdated.Dirty = value;
                 _useGfeTax.Dirty = value;
                 _useRegZMi.Dirty = value;
                 _zip.Dirty = value;

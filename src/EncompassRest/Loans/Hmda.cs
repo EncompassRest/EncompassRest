@@ -81,12 +81,28 @@ namespace EncompassRest.Loans
         public bool? HmdaDtiIndicator { get => _hmdaDtiIndicator; set => _hmdaDtiIndicator = value; }
         private DirtyValue<bool?> _hmdaIncomeIndicator;
         public bool? HmdaIncomeIndicator { get => _hmdaIncomeIndicator; set => _hmdaIncomeIndicator = value; }
+        private DirtyValue<bool?> _hmdaInterestOnlyIndicator;
+        public bool? HmdaInterestOnlyIndicator { get => _hmdaInterestOnlyIndicator; set => _hmdaInterestOnlyIndicator = value; }
+        private DirtyValue<StringEnumValue<HmdaLoanPurpose>> _hMDALoanPurpose;
+        public StringEnumValue<HmdaLoanPurpose> HMDALoanPurpose { get => _hMDALoanPurpose; set => _hMDALoanPurpose = value; }
+        private DirtyValue<string> _hMDAProfileApplicationDateValue;
+        public string HMDAProfileApplicationDateValue { get => _hMDAProfileApplicationDateValue; set => _hMDAProfileApplicationDateValue = value; }
+        private DirtyValue<string> _hMDAProfileCLTVValue;
+        public string HMDAProfileCLTVValue { get => _hMDAProfileCLTVValue; set => _hMDAProfileCLTVValue = value; }
+        private DirtyValue<string> _hMDAProfileDTIValue;
+        public string HMDAProfileDTIValue { get => _hMDAProfileDTIValue; set => _hMDAProfileDTIValue = value; }
+        private DirtyValue<string> _hMDAProfileID;
+        public string HMDAProfileID { get => _hMDAProfileID; set => _hMDAProfileID = value; }
+        private DirtyValue<string> _hMDAProfileIncomeValue;
+        public string HMDAProfileIncomeValue { get => _hMDAProfileIncomeValue; set => _hMDAProfileIncomeValue = value; }
         private DirtyValue<string> _hmdaPropertyAddress;
         public string HmdaPropertyAddress { get => _hmdaPropertyAddress; set => _hmdaPropertyAddress = value; }
         private DirtyValue<string> _hmdaPropertyCity;
         public string HmdaPropertyCity { get => _hmdaPropertyCity; set => _hmdaPropertyCity = value; }
         private DirtyValue<string> _hmdaPropertyState;
         public string HmdaPropertyState { get => _hmdaPropertyState; set => _hmdaPropertyState = value; }
+        private DirtyValue<bool?> _hmdaPropertyValueNotReliedUponIndicator;
+        public bool? HmdaPropertyValueNotReliedUponIndicator { get => _hmdaPropertyValueNotReliedUponIndicator; set => _hmdaPropertyValueNotReliedUponIndicator = value; }
         private DirtyValue<string> _hmdaPropertyZipCode;
         public string HmdaPropertyZipCode { get => _hmdaPropertyZipCode; set => _hmdaPropertyZipCode = value; }
         private DirtyValue<bool?> _hmdaSyncAddressIndicator;
@@ -97,6 +113,8 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<NA<decimal>> _income;
         public NA<decimal> Income { get => _income; set => _income = value; }
+        private DirtyValue<decimal?> _incomeExcludedFromHmda;
+        public decimal? IncomeExcludedFromHmda { get => _incomeExcludedFromHmda; set => _incomeExcludedFromHmda = value; }
         private DirtyValue<StringEnumValue<InitiallyPayableToYourInstitution>> _initiallyPayableToYourInstitution;
         public StringEnumValue<InitiallyPayableToYourInstitution> InitiallyPayableToYourInstitution { get => _initiallyPayableToYourInstitution; set => _initiallyPayableToYourInstitution = value; }
         private DirtyValue<NA<decimal>> _interestRate;
@@ -105,6 +123,10 @@ namespace EncompassRest.Loans
         public string IntroRatePeriod { get => _introRatePeriod; set => _introRatePeriod = value; }
         private DirtyValue<string> _legalEntityIdentifier;
         public string LegalEntityIdentifier { get => _legalEntityIdentifier; set => _legalEntityIdentifier = value; }
+        private DirtyValue<string> _legalEntityIdentifierReporting;
+        public string LegalEntityIdentifierReporting { get => _legalEntityIdentifierReporting; set => _legalEntityIdentifierReporting = value; }
+        private DirtyValue<StringEnumValue<LegalEntityIdentifierUsed>> _legalEntityIdentifierUsed;
+        public StringEnumValue<LegalEntityIdentifierUsed> LegalEntityIdentifierUsed { get => _legalEntityIdentifierUsed; set => _legalEntityIdentifierUsed = value; }
         private DirtyValue<NA<decimal>> _lenderCredits;
         public NA<decimal> LenderCredits { get => _lenderCredits; set => _lenderCredits = value; }
         private DirtyValue<StringEnumValue<LienStatus>> _lienStatus;
@@ -232,18 +254,29 @@ namespace EncompassRest.Loans
                     || _hmdaCltvIndicator.Dirty
                     || _hmdaDtiIndicator.Dirty
                     || _hmdaIncomeIndicator.Dirty
+                    || _hmdaInterestOnlyIndicator.Dirty
+                    || _hMDALoanPurpose.Dirty
+                    || _hMDAProfileApplicationDateValue.Dirty
+                    || _hMDAProfileCLTVValue.Dirty
+                    || _hMDAProfileDTIValue.Dirty
+                    || _hMDAProfileID.Dirty
+                    || _hMDAProfileIncomeValue.Dirty
                     || _hmdaPropertyAddress.Dirty
                     || _hmdaPropertyCity.Dirty
                     || _hmdaPropertyState.Dirty
+                    || _hmdaPropertyValueNotReliedUponIndicator.Dirty
                     || _hmdaPropertyZipCode.Dirty
                     || _hmdaSyncAddressIndicator.Dirty
                     || _hOEPAStatus.Dirty
                     || _id.Dirty
                     || _income.Dirty
+                    || _incomeExcludedFromHmda.Dirty
                     || _initiallyPayableToYourInstitution.Dirty
                     || _interestRate.Dirty
                     || _introRatePeriod.Dirty
                     || _legalEntityIdentifier.Dirty
+                    || _legalEntityIdentifierReporting.Dirty
+                    || _legalEntityIdentifierUsed.Dirty
                     || _lenderCredits.Dirty
                     || _lienStatus.Dirty
                     || _loanAmount.Dirty
@@ -327,18 +360,29 @@ namespace EncompassRest.Loans
                 _hmdaCltvIndicator.Dirty = value;
                 _hmdaDtiIndicator.Dirty = value;
                 _hmdaIncomeIndicator.Dirty = value;
+                _hmdaInterestOnlyIndicator.Dirty = value;
+                _hMDALoanPurpose.Dirty = value;
+                _hMDAProfileApplicationDateValue.Dirty = value;
+                _hMDAProfileCLTVValue.Dirty = value;
+                _hMDAProfileDTIValue.Dirty = value;
+                _hMDAProfileID.Dirty = value;
+                _hMDAProfileIncomeValue.Dirty = value;
                 _hmdaPropertyAddress.Dirty = value;
                 _hmdaPropertyCity.Dirty = value;
                 _hmdaPropertyState.Dirty = value;
+                _hmdaPropertyValueNotReliedUponIndicator.Dirty = value;
                 _hmdaPropertyZipCode.Dirty = value;
                 _hmdaSyncAddressIndicator.Dirty = value;
                 _hOEPAStatus.Dirty = value;
                 _id.Dirty = value;
                 _income.Dirty = value;
+                _incomeExcludedFromHmda.Dirty = value;
                 _initiallyPayableToYourInstitution.Dirty = value;
                 _interestRate.Dirty = value;
                 _introRatePeriod.Dirty = value;
                 _legalEntityIdentifier.Dirty = value;
+                _legalEntityIdentifierReporting.Dirty = value;
+                _legalEntityIdentifierUsed.Dirty = value;
                 _lenderCredits.Dirty = value;
                 _lienStatus.Dirty = value;
                 _loanAmount.Dirty = value;

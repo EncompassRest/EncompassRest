@@ -21,11 +21,10 @@ namespace EncompassRest.Loans
             {
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-                return _dictionary[fieldId.ToUpper()].ToString();
+                return _dictionary[fieldId].ToString();
             }
             set
             {
-                fieldId = fieldId?.ToUpper();
                 var path = CreateModelPath(fieldId, value, true);
                 _dictionary[fieldId] = path;
             }
@@ -68,7 +67,6 @@ namespace EncompassRest.Loans
 
         public bool TryAdd(string fieldId, string modelPath, bool validatePathExists = true)
         {
-            fieldId = fieldId?.ToUpper();
             var path = CreateModelPath(fieldId, modelPath, validatePathExists);
             return _dictionary.TryAdd(fieldId, path);
         }
@@ -78,7 +76,11 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNullOrEmpty(modelPath, nameof(modelPath));
 
-            var path = new ModelPath(modelPath);
+            var path = LoanFields.ModelPathContext.Create(modelPath);
+            if (path == null)
+            {
+                throw new ArgumentException("bad modelPath");
+            }
             if (!string.Equals(path.RootObjectName, "Loan", StringComparison.Ordinal))
             {
                 throw new ArgumentException("modelPath must start with Loan");
@@ -100,7 +102,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            return _dictionary.ContainsKey(fieldId.ToUpper());
+            return _dictionary.ContainsKey(fieldId);
         }
 
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
@@ -115,7 +117,7 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            var success = _dictionary.TryRemove(fieldId.ToUpper(), out var path);
+            var success = _dictionary.TryRemove(fieldId, out var path);
             modelPath = path?.ToString();
             return success;
         }
@@ -124,9 +126,19 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            var success = _dictionary.TryGetValue(fieldId.ToUpper(), out var path);
+            var success = _dictionary.TryGetValue(fieldId, out var path);
             modelPath = path?.ToString();
             return success;
+        }
+
+        public string GetOrAdd(string fieldId, string modelPath) => GetOrAdd(fieldId, () => modelPath);
+
+        public string GetOrAdd(string fieldId, Func<string> modelPathFactory)
+        {
+            Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
+            Preconditions.NotNull(modelPathFactory, nameof(modelPathFactory));
+
+            return _dictionary.GetOrAdd(fieldId, f => CreateModelPath(f, modelPathFactory(), true)).ToString();
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -143,9 +155,9 @@ namespace EncompassRest.Loans
 
         bool IDictionary<string, string>.Remove(string key) => TryRemove(key, out _);
 
-        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key?.ToUpper(), out var modelPath) && modelPath.Equals(ModelPath.Create(item.Value)) && _dictionary.TryRemove(item.Key, out modelPath);
+        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.ModelPathContext.Create(item.Value)) && _dictionary.TryRemove(item.Key, out modelPath);
 
-        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key?.ToUpper(), out var modelPath) && modelPath.Equals(ModelPath.Create(item.Value));
+        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.ModelPathContext.Create(item.Value));
 
         void ICollection<KeyValuePair<string, string>>.CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
         {
@@ -210,7 +222,7 @@ namespace EncompassRest.Loans
 
             public bool Contains(string item)
             {
-                var modelPath = ModelPath.Create(item);
+                var modelPath = LoanFields.ModelPathContext.Create(item);
                 if (modelPath != null)
                 {
                     foreach (var pair in _loanFieldMappings._dictionary)

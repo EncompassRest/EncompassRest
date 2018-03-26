@@ -41,6 +41,8 @@ namespace EncompassRest.Loans
         public DateTime? ContractorsAgreementDate { get => _contractorsAgreementDate; set => _contractorsAgreementDate = value; }
         private DirtyValue<bool?> _contractorsAgreementIndicator;
         public bool? ContractorsAgreementIndicator { get => _contractorsAgreementIndicator; set => _contractorsAgreementIndicator = value; }
+        private DirtyValue<bool?> _costImprovementsIncluded;
+        public bool? CostImprovementsIncluded { get => _costImprovementsIncluded; set => _costImprovementsIncluded = value; }
         private DirtyValue<DateTime?> _environmentalAssessmentDate;
         public DateTime? EnvironmentalAssessmentDate { get => _environmentalAssessmentDate; set => _environmentalAssessmentDate = value; }
         private DirtyValue<bool?> _environmentalAssessmentIndicator;
@@ -168,6 +170,7 @@ namespace EncompassRest.Loans
                     || _constructionPeriodIncludedInLoanTermFlag.Dirty
                     || _contractorsAgreementDate.Dirty
                     || _contractorsAgreementIndicator.Dirty
+                    || _costImprovementsIncluded.Dirty
                     || _environmentalAssessmentDate.Dirty
                     || _environmentalAssessmentIndicator.Dirty
                     || _floodHazardDeterminationDate.Dirty
@@ -241,6 +244,7 @@ namespace EncompassRest.Loans
                 _constructionPeriodIncludedInLoanTermFlag.Dirty = value;
                 _contractorsAgreementDate.Dirty = value;
                 _contractorsAgreementIndicator.Dirty = value;
+                _costImprovementsIncluded.Dirty = value;
                 _environmentalAssessmentDate.Dirty = value;
                 _environmentalAssessmentIndicator.Dirty = value;
                 _floodHazardDeterminationDate.Dirty = value;

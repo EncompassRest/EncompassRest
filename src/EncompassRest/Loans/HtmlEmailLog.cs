@@ -31,6 +31,8 @@ namespace EncompassRest.Loans
         public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
         private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        private DirtyValue<bool?> _readReceipt;
+        public bool? ReadReceipt { get => _readReceipt; set => _readReceipt = value; }
         private DirtyValue<string> _recipient;
         public string Recipient { get => _recipient; set => _recipient = value; }
         private DirtyValue<string> _sender;
@@ -53,6 +55,7 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _isSystemSpecificIndicator.Dirty
                     || _logRecordIndex.Dirty
+                    || _readReceipt.Dirty
                     || _recipient.Dirty
                     || _sender.Dirty
                     || _subject.Dirty
@@ -72,6 +75,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _isSystemSpecificIndicator.Dirty = value;
                 _logRecordIndex.Dirty = value;
+                _readReceipt.Dirty = value;
                 _recipient.Dirty = value;
                 _sender.Dirty = value;
                 _subject.Dirty = value;

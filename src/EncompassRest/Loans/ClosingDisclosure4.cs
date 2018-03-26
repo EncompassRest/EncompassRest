@@ -37,6 +37,10 @@ namespace EncompassRest.Loans
         public int? InterestRateAdjustments { get => _interestRateAdjustments; set => _interestRateAdjustments = value; }
         private DirtyValue<bool?> _lender;
         public bool? Lender { get => _lender; set => _lender = value; }
+        private DirtyValue<int?> _maximumARMPaymentAmount;
+        public int? MaximumARMPaymentAmount { get => _maximumARMPaymentAmount; set => _maximumARMPaymentAmount = value; }
+        private DirtyValue<int?> _maximumARMPaymentMonthReached;
+        public int? MaximumARMPaymentMonthReached { get => _maximumARMPaymentMonthReached; set => _maximumARMPaymentMonthReached = value; }
         private DirtyValue<string> _maximumPaymentAmt;
         public string MaximumPaymentAmt { get => _maximumPaymentAmt; set => _maximumPaymentAmt = value; }
         private DirtyValue<string> _maxPayment;
@@ -94,6 +98,8 @@ namespace EncompassRest.Loans
                     || _interestOnlyPayments.Dirty
                     || _interestRateAdjustments.Dirty
                     || _lender.Dirty
+                    || _maximumARMPaymentAmount.Dirty
+                    || _maximumARMPaymentMonthReached.Dirty
                     || _maximumPaymentAmt.Dirty
                     || _maxPayment.Dirty
                     || _maxPaymentAmt.Dirty
@@ -131,6 +137,8 @@ namespace EncompassRest.Loans
                 _interestOnlyPayments.Dirty = value;
                 _interestRateAdjustments.Dirty = value;
                 _lender.Dirty = value;
+                _maximumARMPaymentAmount.Dirty = value;
+                _maximumARMPaymentMonthReached.Dirty = value;
                 _maximumPaymentAmt.Dirty = value;
                 _maxPayment.Dirty = value;
                 _maxPaymentAmt.Dirty = value;

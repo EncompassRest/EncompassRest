@@ -88,7 +88,7 @@ namespace EncompassRest.Loans
         }
 
         internal CustomLoanField(string fieldId, Loan loan)
-            : base(fieldId, loan, new ModelPath($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))
+            : base(fieldId, loan, LoanFields.ModelPathContext.Create($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))
         {
         }
     }

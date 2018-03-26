@@ -11,6 +11,7 @@ using EnumsNET.NonGeneric;
 using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 using System.IO.Compression;
+using System.Globalization;
 
 namespace EncompassRest
 {
@@ -110,7 +111,9 @@ namespace EncompassRest
                 typeof(RiskAssessmentType),
                 typeof(ActionTaken),
                 typeof(IndexMargin),
-                typeof(PropertyFormType)
+                typeof(PropertyFormType),
+                typeof(Conversion),
+                typeof(HmdaLoanPurpose)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>();
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -156,9 +159,9 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields", "DocumentOrderLog.DocumentAudit", "Contact.Contact" };
 
-        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentOrderLog" };
+        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentAudit" };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
@@ -190,14 +193,22 @@ namespace EncompassRest
         {
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
             var loanEntitySchema = loanSchema.EntityTypes["Loan"];
-            var fields = new Dictionary<string, string>();
-            PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields);
+            var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields, fieldPatterns);
 
             var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
             fields = new Dictionary<string, string>();
             foreach (var pair in orderedFields)
             {
                 fields[pair.Key] = pair.Value;
+            }
+
+            var orderedFieldPatterns = fieldPatterns.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
+            fieldPatterns = new Dictionary<string, string>();
+            foreach (var pair in orderedFieldPatterns)
+            {
+                fieldPatterns[pair.Key] = pair.Value;
             }
 
             using (var fs = new FileStream("LoanFields.json", FileMode.Create))
@@ -208,20 +219,34 @@ namespace EncompassRest
                 }
             }
 
-            using (var fs = new FileStream("LoanFields.json.zip", FileMode.Create))
+            using (var fs = new FileStream("LoanFieldPatterns.json", FileMode.Create))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fieldPatterns);
+                }
+            }
+
+            using (var fs = new FileStream("LoanFields.zip", FileMode.Create))
             {
                 using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
                 {
-                    var entry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
-                    using (var sw = new StreamWriter(entry.Open()))
+                    var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(loanFieldsEntry.Open()))
                     {
                         JsonSerializer.Create().Serialize(sw, fields);
+                    }
+
+                    var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
+                    {
+                        JsonSerializer.Create().Serialize(sw, fieldPatterns);
                     }
                 }
             }
         }
 
-        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields)
+        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns)
         {
             foreach (var pair in entitySchema.Properties)
             {
@@ -229,325 +254,105 @@ namespace EncompassRest
                 var propertySchema = pair.Value;
                 if (!string.IsNullOrEmpty(propertySchema.FieldId))
                 {
-                    fields.Add(propertySchema.FieldId.ToUpper(), $"{currentPath}.{propertyName}");
-                }
-                else if (propertySchema.FieldInstances != null)
-                {
-                    foreach (var fieldInstancePair in propertySchema.FieldInstances)
-                    {
-                        var fieldId = fieldInstancePair.Key.ToUpper();
-                        var fieldInstancePath = fieldInstancePair.Value.First();
-                        if (previousEntitySchema.Properties.Any(p => string.Equals(p.Key, fieldInstancePath, StringComparison.Ordinal)))
-                        {
-                            fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Loan_Fees_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(FeeType == '{fieldInstancePath.Substring(10)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RegulationZ_RegulationZPayments_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(RegulationZPaymentIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RegulationZ_RegulationZInterestRatePeriods_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(RegulationZInterestRatePeriodType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("FhaVaLoan_EnergyEfficientMortgageItems_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Income_"))
-                        {
-                            if (char.IsDigit(fieldInstancePath[fieldInstancePath.Length - 1]))
-                            {
-                                fields.Add(fieldId, $"{currentPath}[(IncomeType == 'OtherIncome' && OtherIncomeIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                            }
-                            else
-                            {
-                                var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                                var borrowerStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                                fields.Add(fieldId, $"{currentPath}[(Owner == '{fieldInstancePath.Substring(borrowerStart, lastUnderscore - borrowerStart)}' && IncomeType == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                            }
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Assets_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var assetTypeStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(AssetType == '{fieldInstancePath.Substring(assetTypeStart, lastUnderscore - assetTypeStart)}')][{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf(':') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Liabilities_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            if (char.IsDigit(fieldInstancePath[fieldInstancePath.Length - 1]))
-                            {
-                                var liabilityTypeStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                                fields.Add(fieldId, $"{currentPath}[(LiabilityType == '{fieldInstancePath.Substring(liabilityTypeStart, lastUnderscore - liabilityTypeStart)}')][{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf(':') + 1)}].{propertyName}");
-                            }
-                            else
-                            {
-                                fields.Add(fieldId, $"{currentPath}[(LiabilityType == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                            }
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Residences_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var secondLastUnderscore = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1);
-                            int thirdLastUnderscore;
-                            switch (fieldInstancePath.Count(c => c == '_'))
-                            {
-                                case 3:
-                                    fields.Add(fieldId, $"{currentPath}[(ApplicantType == '{fieldInstancePath.Substring(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1)}' && MailingAddressIndicator == '{fieldInstancePath.Substring(lastUnderscore + 1)}')][1].{propertyName}");
-                                    break;
-                                case 4:
-                                    thirdLastUnderscore = fieldInstancePath.LastIndexOf('_', secondLastUnderscore - 1);
-                                    fields.Add(fieldId, $"{currentPath}[(ApplicantType == '{fieldInstancePath.Substring(thirdLastUnderscore + 1, secondLastUnderscore - thirdLastUnderscore - 1)}' && MailingAddressIndicator == '{fieldInstancePath.Substring(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1)}' && ResidencyType == '{fieldInstancePath.Substring(lastUnderscore + 1)}')][1].{propertyName}");
-                                    break;
-                                default:
-                                    thirdLastUnderscore = fieldInstancePath.LastIndexOf('_', secondLastUnderscore - 1);
-                                    var fourthLastUnderscore = fieldInstancePath.LastIndexOf('_', thirdLastUnderscore - 1);
-                                    fields.Add(fieldId, $"{currentPath}[(ApplicantType == '{fieldInstancePath.Substring(fourthLastUnderscore + 1, thirdLastUnderscore - fourthLastUnderscore - 1)}' && MailingAddressIndicator == '{fieldInstancePath.Substring(thirdLastUnderscore + 1, secondLastUnderscore - thirdLastUnderscore - 1)}' && ResidencyType == '{fieldInstancePath.Substring(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1)}')][{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf(':') + 1)}].{propertyName}");
-                                    break;
-                            }
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Employment_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var ownerStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(Owner == '{fieldInstancePath.Substring(ownerStart, lastUnderscore - ownerStart)}' && CurrentEmploymentIndicator == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_SelfEmployedIncomes_"))
-                        {
-                            switch (fieldInstancePath.Count(c => c == '_'))
-                            {
-                                case 2:
-                                    fields.Add(fieldId, $"{currentPath}[(FormType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                                    break;
-                                default:
-                                    var secondUnderscore = 31;
-                                    var thirdUnderscore = fieldInstancePath.IndexOf('_', secondUnderscore + 1);
-                                    fields.Add(fieldId, $"{currentPath}[(FormType == '{fieldInstancePath.Substring(secondUnderscore + 1, thirdUnderscore - secondUnderscore - 1)}' && FieldName == '{fieldInstancePath.Substring(thirdUnderscore + 1)}')].{propertyName}");
-                                    break;
-                            }
-                            
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_Tax4506s_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var tax4506TIndicatorStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(Tax4506TIndicator == '{fieldInstancePath.Substring(tax4506TIndicatorStart, lastUnderscore - tax4506TIndicatorStart)}' && HistoryIndicator == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_AUSTrackingLogs_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Application_ATRQMBorrowers_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Loan_Contacts_"))
-                        {
-                            var colonIndex = fieldInstancePath.LastIndexOf(':');
-                            if (colonIndex >= 0)
-                            {
-                                fields.Add(fieldId, $"{currentPath}[(ContactType == 'CUSTOM')][{fieldInstancePath.Substring(colonIndex + 1)}].{propertyName}");
-                            }
-                            else
-                            {
-                                fields.Add(fieldId, $"{currentPath}[(ContactType == '{fieldInstancePath.Substring(14)}')].{propertyName}");
-                            }
-                        }
-                        else if (fieldInstancePath.StartsWith("Loan_PurchaseCredits_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("LoanSubmission_LoanSubmissionFees_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(LoanSubmissionFeeType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("VaLoanData_MilitaryServices_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(MilitaryServiceIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("VaLoanData_PreviousVaLoans_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(PreviousVaLoanIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("LoanProductData_Buydowns_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("LoanProductData_PrepaymentPenalties_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe_GfeFees_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var firstStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            var gfeFeeType = fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart);
-                            fields.Add(fieldId, $"{currentPath}[(GfeFeeType == '{gfeFeeType}'{(gfeFeeType != "UserDefined1" ? $" && GfeFeeIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}'" : string.Empty)})].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe_GfePayoffs_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(GfePayoffIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe_GfeLiens_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var firstStart = 13;
-                            fields.Add(fieldId, $"{currentPath}[(GfeLienType == '{fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart)}' && GfeLienIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe_GfePayments_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(GfePaymentIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe2010_Gfe2010Fees_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var nextLastUnderscore = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1);
-                            var firstStart = fieldInstancePath.LastIndexOf('_', nextLastUnderscore - 1) + 1;
-                            var gfe2010FeeParentType = fieldInstancePath.Substring(firstStart, nextLastUnderscore - firstStart);
-                            var gfe2010FeeType = fieldInstancePath.Substring(nextLastUnderscore + 1, lastUnderscore - nextLastUnderscore - 1);
-                            var gfe2010FeeIndex = fieldInstancePath.Substring(lastUnderscore + 1);
-                            fields.Add(fieldId, $"{currentPath}[(Gfe2010FeeParentType == '{gfe2010FeeParentType}'{(gfe2010FeeType != "Undefined" || gfe2010FeeParentType == "Section800BrokerCompensation" ? $" && Gfe2010FeeType == '{gfe2010FeeType}'" : string.Empty)}{(gfe2010FeeIndex != "0" || gfe2010FeeType == "Line801" ? $" && Gfe2010FeeIndex == '{gfe2010FeeIndex}'" : string.Empty)})].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe2010_Gfe2010WholePocs_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var firstStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            var wholePocIndex = fieldInstancePath.Substring(lastUnderscore + 1);
-                            fields.Add(fieldId, $"{currentPath}[(LineNumber == '{fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart)}'{(wholePocIndex != "0" ? $" && Gfe2010WholePocIndex == '{wholePocIndex}'" : string.Empty)})].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe2010Page_Gfe2010GfeCharges_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var firstStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(ChargeBelow10Indicator == '{fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart)}' && Gfe2010GfeChargeIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Gfe2010Page_Gfe2010FwbcFwscs_"))
-                        {
-                            if (char.IsLetter(fieldInstancePath[fieldInstancePath.Length - 1]))
-                            {
-                                var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                                var secondLastUnderscore = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1);
-                                var thirdLastUnderscore = fieldInstancePath.LastIndexOf('_', secondLastUnderscore - 1);
-                                var lineNumber = fieldInstancePath.Substring(thirdLastUnderscore + 1, secondLastUnderscore - thirdLastUnderscore - 1);
-                                fields.Add(fieldId, $"{currentPath}[(LineNumber == '{lineNumber}' && LineLetter == '{fieldInstancePath.Substring(lastUnderscore + 1)}'{(lineNumber == "1102" ? $" && Gfe2010FwbcFwscIndex == '{fieldInstancePath.Substring(secondLastUnderscore + 1, lastUnderscore - secondLastUnderscore - 1)}'" : string.Empty)})].{propertyName}");
-                            }
-                            else
-                            {
-                                var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                                var firstStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                                fields.Add(fieldId, $"{currentPath}[(LineNumber == '{fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart)}' && Gfe2010FwbcFwscIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                            }
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDisclosure3_UCDDetails_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var nextLastUnderscore = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1);
-                            var firstStart = fieldInstancePath.LastIndexOf('_', nextLastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(Section == '{fieldInstancePath.Substring(firstStart, nextLastUnderscore - firstStart)}' && LineNumber == '{fieldInstancePath.Substring(nextLastUnderscore + 1, lastUnderscore - nextLastUnderscore - 1)}' && FeeIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingCost_FeeVariances_"))
-                        {
-                            var lastUnderscore = fieldInstancePath.LastIndexOf('_');
-                            var firstStart = fieldInstancePath.LastIndexOf('_', lastUnderscore - 1) + 1;
-                            fields.Add(fieldId, $"{currentPath}[(FeeVarianceFeeType == '{fieldInstancePath.Substring(firstStart, lastUnderscore - firstStart)}' && FeeVarianceChargeIndex == '{fieldInstancePath.Substring(lastUnderscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDocument_ClosingEntities_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(ClosingEntityType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDocument_AdditionalStateDisclosures_"))
-                        {
-                            var firstStart = 43;
-                            var underscore = fieldInstancePath.IndexOf('_', firstStart);
-                            fields.Add(fieldId, $"{currentPath}[(StateCode == '{fieldInstancePath.Substring(firstStart, underscore - firstStart)}' && DisclosureName == '{fieldInstancePath.Substring(underscore + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDocument_RespaHudDetails_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(LineNumber == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDocument_StateLicenses_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(StateLicenseType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ClosingDocument_AntiSteeringLoanOptions_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(AntiSteeringLoanOptionIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("HudLoanData_SecondaryFinancingProviders_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(SecondaryFinancingProviderType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Shipping_ShippingContacts_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(ShippingContactType == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Loan_SettlementServiceCharges_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("StateDisclosure_NewYorkPrimaryLenders_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(NewYorkPrimaryLenderIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Hud1Es_Hud1EsPayTos_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(Hud1EsPayToIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("ProfitManagement_ProfitManagementItems_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(ProfitManagementItemIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Prequalification_PrequalificationScenarios_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Usda_UsdaHouseholdIncomes_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(UsdaHouseholdIncomeIndex == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("Loan_MilestoneTemplateLogs_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[1].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RateLock_") && fieldInstancePath.Contains("Adjustments_"))
-                        {
-                            var firstUnderscore = fieldInstancePath.IndexOf('_');
-                            var secondUnderscore = fieldInstancePath.IndexOf('_', firstUnderscore + 1);
-                            var thirdUnderscore = fieldInstancePath.IndexOf('_', secondUnderscore + 1);
-                            var fourthUnderscore = fieldInstancePath.IndexOf('_', thirdUnderscore + 1);
-                            fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1)}[(PriceAdjustmentType == '{fieldInstancePath.Substring(secondUnderscore + 1, thirdUnderscore - secondUnderscore - 1)}' && AdjustmentType == '{fieldInstancePath.Substring(thirdUnderscore + 1, fourthUnderscore - thirdUnderscore - 1)}')][{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf(':') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RateLock_PurchaseAdvicePayouts_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RateLock_LockRequestBorrowers_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}].{propertyName}");
-                        }
-                        else if (fieldInstancePath.StartsWith("RateLock_ExtraPayments_"))
-                        {
-                            fields.Add(fieldId, $"{currentPath}[(LineNumber == '{fieldInstancePath.Substring(fieldInstancePath.LastIndexOf('_') + 1)}')].{propertyName}");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"[{fieldId}]: {fieldInstancePath}");
-                        }
-                    }
+                    fields.Add(propertySchema.FieldId, $"{currentPath}.{propertyName}");
                 }
                 else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
                     loanSchema.EntityTypes.Remove(propertySchema.EntityType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, loanSchema, fields);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
                 }
                 else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && loanSchema.EntityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
                 {
                     loanSchema.EntityTypes.Remove(propertySchema.ElementType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
+                }
+                else
+                {
+                    if (propertySchema.FieldInstances != null)
+                    {
+                        foreach (var fieldInstancePair in propertySchema.FieldInstances)
+                        {
+                            var fieldId = fieldInstancePair.Key;
+                            if (fieldInstancePair.Value.Count != 1)
+                            {
+                                Console.WriteLine($"There must be just one field instance value for {fieldId}");
+                            }
+                            var fieldInstancePath = fieldInstancePair.Value[0];
+                            if (fieldInstancePath == "Borrower" || fieldInstancePath == "Coborrower")
+                            {
+                                fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}");
+                            }
+                            else
+                            {
+                                var firstUnderscore = fieldInstancePath.IndexOf('_');
+                                var secondUnderscore = fieldInstancePath.IndexOf('_', firstUnderscore + 1);
+                                var listPropertyName = fieldInstancePath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
+
+                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
+
+                                Instance instance = null;
+                                if (listPropertySchema.Instances?.TryGetValue(fieldInstancePath, out instance) == true)
+                                {
+                                    switch (instance)
+                                    {
+                                        case IntListInstance intListInstance:
+                                            if (intListInstance.Count != 1)
+                                            {
+                                                Console.WriteLine($"There must be just one int list instance value for {fieldInstancePath}");
+                                            }
+                                            fields.Add(fieldId, $"{currentPath}[{intListInstance[0]}].{propertyName}");
+                                            break;
+                                        case StringListInstance stringListInstance:
+                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}");
+                                            break;
+                                        case StringDictionaryInstance stringDictionaryInstance:
+                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}");
+                                            break;
+                                        default:
+                                            Console.WriteLine($"Bad instance type for {fieldInstancePath}");
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    var colonIndex = fieldInstancePath.LastIndexOf(':');
+                                    var index = 0;
+                                    InstancePattern instancePattern = null;
+                                    if (colonIndex < 0 || !int.TryParse(fieldInstancePath.Substring(colonIndex + 1), NumberStyles.None, null, out index) || listPropertySchema.InstancePatterns?.TryGetValue(fieldInstancePath.Substring(0, colonIndex), out instancePattern) != true)
+                                    {
+                                        Console.WriteLine($"[{fieldId}]: {fieldInstancePath}");
+                                    }
+
+                                    fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}");
+                                }
+                            }
+                        }
+                    }
+                    if (propertySchema.FieldPatterns != null)
+                    {
+                        foreach (var fieldPatternPair in propertySchema.FieldPatterns)
+                        {
+                            var fieldPattern = fieldPatternPair.Key;
+                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("FBENN") && !fieldPattern.StartsWith("FCENN") && !fieldPattern.StartsWith("CUSTNN"))
+                            {
+                                if (fieldPatternPair.Value.Count != 1)
+                                {
+                                    Console.WriteLine($"There must be just one field pattern value for {fieldPattern}");
+                                }
+                                var fieldPatternPath = fieldPatternPair.Value[0];
+
+                                var firstUnderscore = fieldPatternPath.IndexOf('_');
+                                var secondUnderscore = fieldPatternPath.IndexOf('_', firstUnderscore + 1);
+                                var listPropertyName = fieldPatternPath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
+
+                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
+
+                                var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
+
+                                fieldPatterns.Add(fieldPattern, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[NN].{propertyName}");
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -557,7 +362,8 @@ namespace EncompassRest
             Directory.CreateDirectory(destinationPath);
             var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value))
             {
-                "NonVol"
+                "NonVol",
+                "DocumentAudit"
             };
             var exceptions = new List<Exception>();
             foreach (var entity in supportedEntities)
@@ -704,7 +510,7 @@ namespace {@namespace}
                     }
                     sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isCollection));
-                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = EncompassRest.ModelPath.Create(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
+                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.ModelPathContext.Create(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
                 }
             }
 
@@ -866,7 +672,8 @@ namespace {@namespace}
                     return propertySchema.ElementType;
                 case PropertySchemaType.Entity:
                     isEntity = true;
-                    return propertySchema.EntityType;
+                    var propertyEntityType = propertySchema.EntityType.Value;
+                    return propertyEntityType == "EntityRefContract" ? "EntityReference" : propertyEntityType;
                 default:
                     return $"PROBLEM<{propertyType}>";
             }

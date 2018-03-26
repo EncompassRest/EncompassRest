@@ -53,6 +53,8 @@ namespace EncompassRest.Loans
         public int? NumDayLocked { get => _numDayLocked; set => _numDayLocked = value; }
         private DirtyValue<string> _parentLockGuid;
         public string ParentLockGuid { get => _parentLockGuid; set => _parentLockGuid = value; }
+        private DirtyValue<int?> _reLockSequenceNumberForInactiveLock;
+        public int? ReLockSequenceNumberForInactiveLock { get => _reLockSequenceNumberForInactiveLock; set => _reLockSequenceNumberForInactiveLock = value; }
         private DirtyValue<string> _requestedBy;
         public string RequestedBy { get => _requestedBy; set => _requestedBy = value; }
         private DirtyValue<string> _requestedName;
@@ -100,6 +102,7 @@ namespace EncompassRest.Loans
                     || _logRecordIndex.Dirty
                     || _numDayLocked.Dirty
                     || _parentLockGuid.Dirty
+                    || _reLockSequenceNumberForInactiveLock.Dirty
                     || _requestedBy.Dirty
                     || _requestedName.Dirty
                     || _requestedStatus.Dirty
@@ -137,6 +140,7 @@ namespace EncompassRest.Loans
                 _logRecordIndex.Dirty = value;
                 _numDayLocked.Dirty = value;
                 _parentLockGuid.Dirty = value;
+                _reLockSequenceNumberForInactiveLock.Dirty = value;
                 _requestedBy.Dirty = value;
                 _requestedName.Dirty = value;
                 _requestedStatus.Dirty = value;

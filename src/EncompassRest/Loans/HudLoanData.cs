@@ -321,6 +321,12 @@ namespace EncompassRest.Loans
         public decimal? UnpaidPrincipalBalanceOfPurchaseJuniorLiens { get => _unpaidPrincipalBalanceOfPurchaseJuniorLiens; set => _unpaidPrincipalBalanceOfPurchaseJuniorLiens = value; }
         private DirtyValue<decimal?> _valueEstablished;
         public decimal? ValueEstablished { get => _valueEstablished; set => _valueEstablished = value; }
+        private DirtyValue<string> _waterPurificationAgent;
+        public string WaterPurificationAgent { get => _waterPurificationAgent; set => _waterPurificationAgent = value; }
+        private DirtyValue<string> _waterPurificationOrganization;
+        public string WaterPurificationOrganization { get => _waterPurificationOrganization; set => _waterPurificationOrganization = value; }
+        private DirtyValue<string> _waterPurificationPayees;
+        public string WaterPurificationPayees { get => _waterPurificationPayees; set => _waterPurificationPayees = value; }
         private DirtyValue<decimal?> _windEnergySystemActualCost;
         public decimal? WindEnergySystemActualCost { get => _windEnergySystemActualCost; set => _windEnergySystemActualCost = value; }
         internal override bool DirtyInternal
@@ -483,6 +489,9 @@ namespace EncompassRest.Loans
                     || _unpaidPrincipalBalanceOfAnyJuniorLiens.Dirty
                     || _unpaidPrincipalBalanceOfPurchaseJuniorLiens.Dirty
                     || _valueEstablished.Dirty
+                    || _waterPurificationAgent.Dirty
+                    || _waterPurificationOrganization.Dirty
+                    || _waterPurificationPayees.Dirty
                     || _windEnergySystemActualCost.Dirty
                     || _secondaryFinancingProviders?.Dirty == true;
             }
@@ -644,6 +653,9 @@ namespace EncompassRest.Loans
                 _unpaidPrincipalBalanceOfAnyJuniorLiens.Dirty = value;
                 _unpaidPrincipalBalanceOfPurchaseJuniorLiens.Dirty = value;
                 _valueEstablished.Dirty = value;
+                _waterPurificationAgent.Dirty = value;
+                _waterPurificationOrganization.Dirty = value;
+                _waterPurificationPayees.Dirty = value;
                 _windEnergySystemActualCost.Dirty = value;
                 if (_secondaryFinancingProviders != null) _secondaryFinancingProviders.Dirty = value;
             }

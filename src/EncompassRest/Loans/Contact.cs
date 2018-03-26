@@ -49,6 +49,10 @@ namespace EncompassRest.Loans
         public string City { get => _city; set => _city = value; }
         private DirtyValue<string> _clause;
         public string Clause { get => _clause; set => _clause = value; }
+        private DirtyValue<string> _closingAgentWebURL;
+        public string ClosingAgentWebURL { get => _closingAgentWebURL; set => _closingAgentWebURL = value; }
+        private DirtyValue<string> _closingCompanyWebURL;
+        public string ClosingCompanyWebURL { get => _closingCompanyWebURL; set => _closingCompanyWebURL = value; }
         private DirtyValue<string> _comments;
         public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<string> _companyId;
@@ -137,6 +141,14 @@ namespace EncompassRest.Loans
         public string LineItemNumber { get => _lineItemNumber; set => _lineItemNumber = value; }
         private DirtyValue<string> _loginId;
         public string LoginId { get => _loginId; set => _loginId = value; }
+        private DirtyValue<string> _mortgageBrokerCompanyWebURL;
+        public string MortgageBrokerCompanyWebURL { get => _mortgageBrokerCompanyWebURL; set => _mortgageBrokerCompanyWebURL = value; }
+        private DirtyValue<string> _mortgageBrokerLoanOfficerWebURL;
+        public string MortgageBrokerLoanOfficerWebURL { get => _mortgageBrokerLoanOfficerWebURL; set => _mortgageBrokerLoanOfficerWebURL = value; }
+        private DirtyValue<string> _mortgageLenderCompanyWebURL;
+        public string MortgageLenderCompanyWebURL { get => _mortgageLenderCompanyWebURL; set => _mortgageLenderCompanyWebURL = value; }
+        private DirtyValue<string> _mortgageLenderLoanOfficerWebURL;
+        public string MortgageLenderLoanOfficerWebURL { get => _mortgageLenderLoanOfficerWebURL; set => _mortgageLenderLoanOfficerWebURL = value; }
         private DirtyValue<string> _name;
         public string Name { get => _name; set => _name = value; }
         private DirtyValue<string> _nmlsLicense;
@@ -163,6 +175,10 @@ namespace EncompassRest.Loans
         public string Phone2 { get => _phone2; set => _phone2 = value; }
         private DirtyValue<string> _postalCode;
         public string PostalCode { get => _postalCode; set => _postalCode = value; }
+        private DirtyValue<string> _realEstateAgencyWebURL;
+        public string RealEstateAgencyWebURL { get => _realEstateAgencyWebURL; set => _realEstateAgencyWebURL = value; }
+        private DirtyValue<string> _realEstateAgentWebURL;
+        public string RealEstateAgentWebURL { get => _realEstateAgentWebURL; set => _realEstateAgentWebURL = value; }
         private DirtyValue<string> _recCity;
         public string RecCity { get => _recCity; set => _recCity = value; }
         private DirtyValue<string> _referenceNumber;
@@ -210,6 +226,8 @@ namespace EncompassRest.Loans
                     || _checkConfirmedDate.Dirty
                     || _city.Dirty
                     || _clause.Dirty
+                    || _closingAgentWebURL.Dirty
+                    || _closingCompanyWebURL.Dirty
                     || _comments.Dirty
                     || _companyId.Dirty
                     || _completionAffidavitPunchListTotal.Dirty
@@ -254,6 +272,10 @@ namespace EncompassRest.Loans
                     || _licenseType.Dirty
                     || _lineItemNumber.Dirty
                     || _loginId.Dirty
+                    || _mortgageBrokerCompanyWebURL.Dirty
+                    || _mortgageBrokerLoanOfficerWebURL.Dirty
+                    || _mortgageLenderCompanyWebURL.Dirty
+                    || _mortgageLenderLoanOfficerWebURL.Dirty
                     || _name.Dirty
                     || _nmlsLicense.Dirty
                     || _notNaturalPersonFlag.Dirty
@@ -267,6 +289,8 @@ namespace EncompassRest.Loans
                     || _phone.Dirty
                     || _phone2.Dirty
                     || _postalCode.Dirty
+                    || _realEstateAgencyWebURL.Dirty
+                    || _realEstateAgentWebURL.Dirty
                     || _recCity.Dirty
                     || _referenceNumber.Dirty
                     || _relationship.Dirty
@@ -302,6 +326,8 @@ namespace EncompassRest.Loans
                 _checkConfirmedDate.Dirty = value;
                 _city.Dirty = value;
                 _clause.Dirty = value;
+                _closingAgentWebURL.Dirty = value;
+                _closingCompanyWebURL.Dirty = value;
                 _comments.Dirty = value;
                 _companyId.Dirty = value;
                 _completionAffidavitPunchListTotal.Dirty = value;
@@ -346,6 +372,10 @@ namespace EncompassRest.Loans
                 _licenseType.Dirty = value;
                 _lineItemNumber.Dirty = value;
                 _loginId.Dirty = value;
+                _mortgageBrokerCompanyWebURL.Dirty = value;
+                _mortgageBrokerLoanOfficerWebURL.Dirty = value;
+                _mortgageLenderCompanyWebURL.Dirty = value;
+                _mortgageLenderLoanOfficerWebURL.Dirty = value;
                 _name.Dirty = value;
                 _nmlsLicense.Dirty = value;
                 _notNaturalPersonFlag.Dirty = value;
@@ -359,6 +389,8 @@ namespace EncompassRest.Loans
                 _phone.Dirty = value;
                 _phone2.Dirty = value;
                 _postalCode.Dirty = value;
+                _realEstateAgencyWebURL.Dirty = value;
+                _realEstateAgentWebURL.Dirty = value;
                 _recCity.Dirty = value;
                 _referenceNumber.Dirty = value;
                 _relationship.Dirty = value;

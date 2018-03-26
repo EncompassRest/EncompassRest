@@ -59,6 +59,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<SignatureType> SignatureType { get => _signatureType; set => _signatureType = value; }
         private DirtyValue<decimal?> _totalInterestPercentage;
         public decimal? TotalInterestPercentage { get => _totalInterestPercentage; set => _totalInterestPercentage = value; }
+        private DirtyValue<string> _totalInterestPercentageUI;
+        public string TotalInterestPercentageUI { get => _totalInterestPercentageUI; set => _totalInterestPercentageUI = value; }
         internal override bool DirtyInternal
         {
             get
@@ -88,7 +90,8 @@ namespace EncompassRest.Loans
                     || _mortgageLenderLoanOfficerLicenseID.Dirty
                     || _servicing.Dirty
                     || _signatureType.Dirty
-                    || _totalInterestPercentage.Dirty;
+                    || _totalInterestPercentage.Dirty
+                    || _totalInterestPercentageUI.Dirty;
             }
             set
             {
@@ -118,6 +121,7 @@ namespace EncompassRest.Loans
                 _servicing.Dirty = value;
                 _signatureType.Dirty = value;
                 _totalInterestPercentage.Dirty = value;
+                _totalInterestPercentageUI.Dirty = value;
             }
         }
     }

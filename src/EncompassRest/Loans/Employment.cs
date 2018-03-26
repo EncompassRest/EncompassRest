@@ -33,6 +33,8 @@ namespace EncompassRest.Loans
         public string BusinessPhone { get => _businessPhone; set => _businessPhone = value; }
         private DirtyValue<decimal?> _commissionsAmount;
         public decimal? CommissionsAmount { get => _commissionsAmount; set => _commissionsAmount = value; }
+        private EntityReference _contact;
+        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
         private DirtyValue<bool?> _currentEmploymentIndicator;
         public bool? CurrentEmploymentIndicator { get => _currentEmploymentIndicator; set => _currentEmploymentIndicator = value; }
         private DirtyValue<string> _email;
@@ -130,7 +132,8 @@ namespace EncompassRest.Loans
                     || _title.Dirty
                     || _titleFax.Dirty
                     || _titlePhone.Dirty
-                    || _verificationRequestDate.Dirty;
+                    || _verificationRequestDate.Dirty
+                    || _contact?.Dirty == true;
             }
             set
             {
@@ -174,6 +177,7 @@ namespace EncompassRest.Loans
                 _titleFax.Dirty = value;
                 _titlePhone.Dirty = value;
                 _verificationRequestDate.Dirty = value;
+                if (_contact != null) _contact.Dirty = value;
             }
         }
     }

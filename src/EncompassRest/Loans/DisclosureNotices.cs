@@ -81,6 +81,8 @@ namespace EncompassRest.Loans
         public string NFIPCommunityNumber { get => _nFIPCommunityNumber; set => _nFIPCommunityNumber = value; }
         private DirtyValue<DateTime?> _nFIPMapEffectiveRevisedDate;
         public DateTime? NFIPMapEffectiveRevisedDate { get => _nFIPMapEffectiveRevisedDate; set => _nFIPMapEffectiveRevisedDate = value; }
+        private DirtyValue<string> _nFIPParticipationStatus;
+        public string NFIPParticipationStatus { get => _nFIPParticipationStatus; set => _nFIPParticipationStatus = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription1;
         public string NonFinancialCompaniesDescription1 { get => _nonFinancialCompaniesDescription1; set => _nonFinancialCompaniesDescription1 = value; }
         private DirtyValue<string> _nonFinancialCompaniesDescription2;
@@ -148,6 +150,7 @@ namespace EncompassRest.Loans
                     || _mapPanelNumber.Dirty
                     || _nFIPCommunityNumber.Dirty
                     || _nFIPMapEffectiveRevisedDate.Dirty
+                    || _nFIPParticipationStatus.Dirty
                     || _nonFinancialCompaniesDescription1.Dirty
                     || _nonFinancialCompaniesDescription2.Dirty
                     || _nonFinancialCompaniesDescription3.Dirty
@@ -201,6 +204,7 @@ namespace EncompassRest.Loans
                 _mapPanelNumber.Dirty = value;
                 _nFIPCommunityNumber.Dirty = value;
                 _nFIPMapEffectiveRevisedDate.Dirty = value;
+                _nFIPParticipationStatus.Dirty = value;
                 _nonFinancialCompaniesDescription1.Dirty = value;
                 _nonFinancialCompaniesDescription2.Dirty = value;
                 _nonFinancialCompaniesDescription3.Dirty = value;

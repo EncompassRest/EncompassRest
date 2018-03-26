@@ -19,6 +19,8 @@ namespace EncompassRest.Loans
         public string Comments { get => _comments; set => _comments = value; }
         private DirtyValue<string> _confirmedBy;
         public string ConfirmedBy { get => _confirmedBy; set => _confirmedBy = value; }
+        private DirtyValue<string> _confirmedById;
+        public string ConfirmedById { get => _confirmedById; set => _confirmedById = value; }
         private DirtyValue<bool?> _confirmedByIdIndicator;
         public bool? ConfirmedByIdIndicator { get => _confirmedByIdIndicator; set => _confirmedByIdIndicator = value; }
         private DirtyValue<DateTime?> _dateUtc;
@@ -53,6 +55,7 @@ namespace EncompassRest.Loans
                     || _buySideExpirationDate.Dirty
                     || _comments.Dirty
                     || _confirmedBy.Dirty
+                    || _confirmedById.Dirty
                     || _confirmedByIdIndicator.Dirty
                     || _dateUtc.Dirty
                     || _fileAttachmentsMigrated.Dirty
@@ -75,6 +78,7 @@ namespace EncompassRest.Loans
                 _buySideExpirationDate.Dirty = value;
                 _comments.Dirty = value;
                 _confirmedBy.Dirty = value;
+                _confirmedById.Dirty = value;
                 _confirmedByIdIndicator.Dirty = value;
                 _dateUtc.Dirty = value;
                 _fileAttachmentsMigrated.Dirty = value;

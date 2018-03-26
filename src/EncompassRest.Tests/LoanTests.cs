@@ -700,7 +700,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public void Loan_ModelPaths()
+        public void Loan_FieldsModelPaths()
         {
             var loan = new Loan();
             foreach (var pair in LoanFields.FieldMappings._dictionary.Distinct(new FieldMappingComparer()))
@@ -722,6 +722,22 @@ namespace EncompassRest.Tests
             if (fieldsWithDuplicateFieldMappings.Count > 0)
             {
                 //Assert.Fail($"Multiple fields have same field mapping {string.Join(", ", fieldsWithDuplicateFieldMappings)}");
+            }
+        }
+
+        [TestMethod]
+        public void Loan_FieldsModelPathPatterns()
+        {
+            var loan = new Loan();
+            foreach (var pair in LoanFields.FieldPatternMappings)
+            {
+                for (var i = 1; i <= 20; ++i)
+                {
+                    var field = loan.Fields[pair.Key.Replace("NN", i.ToString("00"))];
+                    Assert.IsFalse(field.Locked);
+                    field.Locked = true;
+                    Assert.IsTrue(field.Locked);
+                }
             }
         }
 
@@ -776,6 +792,8 @@ namespace EncompassRest.Tests
             Assert.IsNull(field.Value);
             Assert.AreEqual(@"{""VirtualFields"":{""Log.MS.CurrentMilestone"":null}}", loan.ToJson());
 
+            Assert.IsTrue(LoanFields.FieldMappings.TryRemove("Log.MS.CurrentMilestone", out _));
+
             Assert.IsTrue(LoanFields.FieldMappings.TryAdd("NEWFIELD", "Loan.NewEntity[2].Borrower.BorrowerId", false));
             loan = new Loan();
             field = loan.Fields["NEWFIELD"];
@@ -799,6 +817,8 @@ namespace EncompassRest.Tests
             field.Locked = true;
             Assert.IsTrue(field.Locked);
             Assert.AreEqual(@"{""fieldLockData"":[{""lockRemoved"":false,""modelPath"":""Loan.NewEntity[2].Borrower.BorrowerId""}]}", loan.ToJson());
+
+            Assert.IsTrue(LoanFields.FieldMappings.TryRemove("NEWFIELD", out _));
         }
     }
 }

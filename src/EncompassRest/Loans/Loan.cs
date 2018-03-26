@@ -45,6 +45,8 @@ namespace EncompassRest.Loans
         public decimal? BorrowerPaidDiscountPointsAmount { get => _borrowerPaidDiscountPointsAmount; set => _borrowerPaidDiscountPointsAmount = value; }
         private DirtyValue<decimal?> _borrowerPaidFHAVAClosingCostsAmount;
         public decimal? BorrowerPaidFHAVAClosingCostsAmount { get => _borrowerPaidFHAVAClosingCostsAmount; set => _borrowerPaidFHAVAClosingCostsAmount = value; }
+        private DirtyValue<int?> _borrowerPairCount;
+        public int? BorrowerPairCount { get => _borrowerPairCount; set => _borrowerPairCount = value; }
         private DirtyValue<decimal?> _borrowerRequestedLoanAmount;
         public decimal? BorrowerRequestedLoanAmount { get => _borrowerRequestedLoanAmount; set => _borrowerRequestedLoanAmount = value; }
         private DirtyValue<decimal?> _brokerPaidClosingCostsAmount;
@@ -141,6 +143,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<DocEngine> DocEngine { get => _docEngine; set => _docEngine = value; }
         private DirtyList<DocumentLog> _documentLogs;
         public IList<DocumentLog> DocumentLogs { get => _documentLogs ?? (_documentLogs = new DirtyList<DocumentLog>()); set => _documentLogs = new DirtyList<DocumentLog>(value); }
+        private DirtyList<DocumentOrderLog> _documentOrderLogs;
+        public IList<DocumentOrderLog> DocumentOrderLogs { get => _documentOrderLogs ?? (_documentOrderLogs = new DirtyList<DocumentOrderLog>()); set => _documentOrderLogs = new DirtyList<DocumentOrderLog>(value); }
         private DirtyValue<string> _doNotCheckEmail;
         public string DoNotCheckEmail { get => _doNotCheckEmail; set => _doNotCheckEmail = value; }
         private DirtyValue<bool?> _doNotPrintCompensationFees;
@@ -151,6 +155,8 @@ namespace EncompassRest.Loans
         public DownPayment DownPayment { get => _downPayment ?? (_downPayment = new DownPayment()); set => _downPayment = value; }
         private DirtyValue<decimal?> _downPaymentPercent;
         public decimal? DownPaymentPercent { get => _downPaymentPercent; set => _downPaymentPercent = value; }
+        private DirtyValue<int?> _eDeliveryVersion;
+        public int? EDeliveryVersion { get => _eDeliveryVersion; set => _eDeliveryVersion = value; }
         private DirtyList<EdmLog> _edmLogs;
         public IList<EdmLog> EdmLogs { get => _edmLogs ?? (_edmLogs = new DirtyList<EdmLog>()); set => _edmLogs = new DirtyList<EdmLog>(value); }
         private DirtyList<EmailTriggerLog> _emailTriggerLogs;
@@ -259,6 +265,8 @@ namespace EncompassRest.Loans
         public bool? IncludeUSDAFeeInClosing { get => _includeUSDAFeeInClosing; set => _includeUSDAFeeInClosing = value; }
         private DirtyValue<decimal?> _initialInterestRate;
         public decimal? InitialInterestRate { get => _initialInterestRate; set => _initialInterestRate = value; }
+        private DirtyValue<string> _initialInterestRateUI;
+        public string InitialInterestRateUI { get => _initialInterestRateUI; set => _initialInterestRateUI = value; }
         private DirtyValue<string> _insuranceAuthorizationIndicator;
         public string InsuranceAuthorizationIndicator { get => _insuranceAuthorizationIndicator; set => _insuranceAuthorizationIndicator = value; }
         private InterimServicing _interimServicing;
@@ -551,6 +559,8 @@ namespace EncompassRest.Loans
         public string ReferralPostalCode { get => _referralPostalCode; set => _referralPostalCode = value; }
         private DirtyValue<string> _referralSource;
         public string ReferralSource { get => _referralSource; set => _referralSource = value; }
+        private EntityReference _referralSourceContact;
+        public EntityReference ReferralSourceContact { get => _referralSourceContact ?? (_referralSourceContact = new EntityReference()); set => _referralSourceContact = value; }
         private DirtyValue<string> _referralState;
         public string ReferralState { get => _referralState; set => _referralState = value; }
         private DirtyValue<decimal?> _refinanceIncludingDebtsToBePaidOffAmount;
@@ -567,6 +577,8 @@ namespace EncompassRest.Loans
         public DateTime? RepurchaseDate { get => _repurchaseDate; set => _repurchaseDate = value; }
         private DirtyValue<decimal?> _requestedInterestRatePercent;
         public decimal? RequestedInterestRatePercent { get => _requestedInterestRatePercent; set => _requestedInterestRatePercent = value; }
+        private DirtyValue<string> _requestedInterestRatePercentUI;
+        public string RequestedInterestRatePercentUI { get => _requestedInterestRatePercentUI; set => _requestedInterestRatePercentUI = value; }
         private DirtyValue<decimal?> _salesConcessionAmount;
         public decimal? SalesConcessionAmount { get => _salesConcessionAmount; set => _salesConcessionAmount = value; }
         private DirtyValue<decimal?> _secondSubordinateAmount;
@@ -579,6 +591,8 @@ namespace EncompassRest.Loans
         public SelectedHomeCounselingProvider SelectedHomeCounselingProvider { get => _selectedHomeCounselingProvider ?? (_selectedHomeCounselingProvider = new SelectedHomeCounselingProvider()); set => _selectedHomeCounselingProvider = value; }
         private DirtyValue<decimal?> _sellerPaidClosingCostsAmount;
         public decimal? SellerPaidClosingCostsAmount { get => _sellerPaidClosingCostsAmount; set => _sellerPaidClosingCostsAmount = value; }
+        private DirtyValue<DateTime?> _serverDateTimeDDMApplied;
+        public DateTime? ServerDateTimeDDMApplied { get => _serverDateTimeDDMApplied; set => _serverDateTimeDDMApplied = value; }
         private DirtyValue<string> _serviceProviderAdditionalInfo;
         public string ServiceProviderAdditionalInfo { get => _serviceProviderAdditionalInfo; set => _serviceProviderAdditionalInfo = value; }
         private DirtyList<ServiceProviderContact> _serviceProviderContacts;
@@ -702,6 +716,7 @@ namespace EncompassRest.Loans
                     || _borrowerPaidClosingCostsAmount.Dirty
                     || _borrowerPaidDiscountPointsAmount.Dirty
                     || _borrowerPaidFHAVAClosingCostsAmount.Dirty
+                    || _borrowerPairCount.Dirty
                     || _borrowerRequestedLoanAmount.Dirty
                     || _brokerPaidClosingCostsAmount.Dirty
                     || _buydownIndicator.Dirty
@@ -736,6 +751,7 @@ namespace EncompassRest.Loans
                     || _doNotCheckEmail.Dirty
                     || _doNotPrintCompensationFees.Dirty
                     || _downPaymentPercent.Dirty
+                    || _eDeliveryVersion.Dirty
                     || _emXmlVersionId.Dirty
                     || _encompassId.Dirty
                     || _encompassVersion.Dirty
@@ -771,6 +787,7 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _includeUSDAFeeInClosing.Dirty
                     || _initialInterestRate.Dirty
+                    || _initialInterestRateUI.Dirty
                     || _insuranceAuthorizationIndicator.Dirty
                     || _interviewerApplicationSignedDate.Dirty
                     || _interviewerEmail.Dirty
@@ -895,10 +912,12 @@ namespace EncompassRest.Loans
                     || _repurchaseCostAmount.Dirty
                     || _repurchaseDate.Dirty
                     || _requestedInterestRatePercent.Dirty
+                    || _requestedInterestRatePercentUI.Dirty
                     || _salesConcessionAmount.Dirty
                     || _secondSubordinateAmount.Dirty
                     || _sectionOfActType.Dirty
                     || _sellerPaidClosingCostsAmount.Dirty
+                    || _serverDateTimeDDMApplied.Dirty
                     || _serviceProviderAdditionalInfo.Dirty
                     || _serviceProviderDateIssued.Dirty
                     || _setForSettlementServicesOfAnAttorney.Dirty
@@ -955,6 +974,7 @@ namespace EncompassRest.Loans
                     || _disclosureTracking2015Logs?.Dirty == true
                     || _disclosureTrackingLogs?.Dirty == true
                     || _documentLogs?.Dirty == true
+                    || _documentOrderLogs?.Dirty == true
                     || _downloadLogs?.Dirty == true
                     || _downPayment?.Dirty == true
                     || _edmLogs?.Dirty == true
@@ -1003,6 +1023,7 @@ namespace EncompassRest.Loans
                     || _property?.Dirty == true
                     || _purchaseCredits?.Dirty == true
                     || _rateLock?.Dirty == true
+                    || _referralSourceContact?.Dirty == true
                     || _registrationLogs?.Dirty == true
                     || _regulationZ?.Dirty == true
                     || _removedLogRecords?.Dirty == true
@@ -1043,6 +1064,7 @@ namespace EncompassRest.Loans
                 _borrowerPaidClosingCostsAmount.Dirty = value;
                 _borrowerPaidDiscountPointsAmount.Dirty = value;
                 _borrowerPaidFHAVAClosingCostsAmount.Dirty = value;
+                _borrowerPairCount.Dirty = value;
                 _borrowerRequestedLoanAmount.Dirty = value;
                 _brokerPaidClosingCostsAmount.Dirty = value;
                 _buydownIndicator.Dirty = value;
@@ -1077,6 +1099,7 @@ namespace EncompassRest.Loans
                 _doNotCheckEmail.Dirty = value;
                 _doNotPrintCompensationFees.Dirty = value;
                 _downPaymentPercent.Dirty = value;
+                _eDeliveryVersion.Dirty = value;
                 _emXmlVersionId.Dirty = value;
                 _encompassId.Dirty = value;
                 _encompassVersion.Dirty = value;
@@ -1112,6 +1135,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _includeUSDAFeeInClosing.Dirty = value;
                 _initialInterestRate.Dirty = value;
+                _initialInterestRateUI.Dirty = value;
                 _insuranceAuthorizationIndicator.Dirty = value;
                 _interviewerApplicationSignedDate.Dirty = value;
                 _interviewerEmail.Dirty = value;
@@ -1236,10 +1260,12 @@ namespace EncompassRest.Loans
                 _repurchaseCostAmount.Dirty = value;
                 _repurchaseDate.Dirty = value;
                 _requestedInterestRatePercent.Dirty = value;
+                _requestedInterestRatePercentUI.Dirty = value;
                 _salesConcessionAmount.Dirty = value;
                 _secondSubordinateAmount.Dirty = value;
                 _sectionOfActType.Dirty = value;
                 _sellerPaidClosingCostsAmount.Dirty = value;
+                _serverDateTimeDDMApplied.Dirty = value;
                 _serviceProviderAdditionalInfo.Dirty = value;
                 _serviceProviderDateIssued.Dirty = value;
                 _setForSettlementServicesOfAnAttorney.Dirty = value;
@@ -1296,6 +1322,7 @@ namespace EncompassRest.Loans
                 if (_disclosureTracking2015Logs != null) _disclosureTracking2015Logs.Dirty = value;
                 if (_disclosureTrackingLogs != null) _disclosureTrackingLogs.Dirty = value;
                 if (_documentLogs != null) _documentLogs.Dirty = value;
+                if (_documentOrderLogs != null) _documentOrderLogs.Dirty = value;
                 if (_downloadLogs != null) _downloadLogs.Dirty = value;
                 if (_downPayment != null) _downPayment.Dirty = value;
                 if (_edmLogs != null) _edmLogs.Dirty = value;
@@ -1344,6 +1371,7 @@ namespace EncompassRest.Loans
                 if (_property != null) _property.Dirty = value;
                 if (_purchaseCredits != null) _purchaseCredits.Dirty = value;
                 if (_rateLock != null) _rateLock.Dirty = value;
+                if (_referralSourceContact != null) _referralSourceContact.Dirty = value;
                 if (_registrationLogs != null) _registrationLogs.Dirty = value;
                 if (_regulationZ != null) _regulationZ.Dirty = value;
                 if (_removedLogRecords != null) _removedLogRecords.Dirty = value;

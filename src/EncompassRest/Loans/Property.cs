@@ -45,8 +45,12 @@ namespace EncompassRest.Loans
         public string LegalDescriptionText2 { get => _legalDescriptionText2; set => _legalDescriptionText2 = value; }
         private DirtyValue<bool?> _linkedIsConstructionPhaseDisclosedSeparately;
         public bool? LinkedIsConstructionPhaseDisclosedSeparately { get => _linkedIsConstructionPhaseDisclosedSeparately; set => _linkedIsConstructionPhaseDisclosedSeparately = value; }
+        private DirtyValue<StringEnumValue<LienType>> _linkedLienPriorityType;
+        public StringEnumValue<LienType> LinkedLienPriorityType { get => _linkedLienPriorityType; set => _linkedLienPriorityType = value; }
         private DirtyValue<string> _linkedLoanPurposeType;
         public string LinkedLoanPurposeType { get => _linkedLoanPurposeType; set => _linkedLoanPurposeType = value; }
+        private DirtyValue<StringEnumValue<LoanType>> _linkedMortgageType;
+        public StringEnumValue<LoanType> LinkedMortgageType { get => _linkedMortgageType; set => _linkedMortgageType = value; }
         private DirtyValue<StringEnumValue<LoanPurposeType>> _loanPurposeType;
         public StringEnumValue<LoanPurposeType> LoanPurposeType { get => _loanPurposeType; set => _loanPurposeType = value; }
         private DirtyValue<decimal?> _lotAcres;
@@ -67,6 +71,10 @@ namespace EncompassRest.Loans
         public string PriorLoanRecordationBookNumber { get => _priorLoanRecordationBookNumber; set => _priorLoanRecordationBookNumber = value; }
         private DirtyValue<decimal?> _priorLoanRecordationCurrentPrincipalAmount;
         public decimal? PriorLoanRecordationCurrentPrincipalAmount { get => _priorLoanRecordationCurrentPrincipalAmount; set => _priorLoanRecordationCurrentPrincipalAmount = value; }
+        private DirtyValue<DateTime?> _priorLoanRecordationDated;
+        public DateTime? PriorLoanRecordationDated { get => _priorLoanRecordationDated; set => _priorLoanRecordationDated = value; }
+        private DirtyValue<string> _priorLoanRecordationOriginalLoanNumber;
+        public string PriorLoanRecordationOriginalLoanNumber { get => _priorLoanRecordationOriginalLoanNumber; set => _priorLoanRecordationOriginalLoanNumber = value; }
         private DirtyValue<decimal?> _priorLoanRecordationOriginalPrincipalAmount;
         public decimal? PriorLoanRecordationOriginalPrincipalAmount { get => _priorLoanRecordationOriginalPrincipalAmount; set => _priorLoanRecordationOriginalPrincipalAmount = value; }
         private DirtyValue<string> _priorLoanRecordationPageNumber;
@@ -140,7 +148,9 @@ namespace EncompassRest.Loans
                     || _legalDescriptionText1.Dirty
                     || _legalDescriptionText2.Dirty
                     || _linkedIsConstructionPhaseDisclosedSeparately.Dirty
+                    || _linkedLienPriorityType.Dirty
                     || _linkedLoanPurposeType.Dirty
+                    || _linkedMortgageType.Dirty
                     || _loanPurposeType.Dirty
                     || _lotAcres.Dirty
                     || _lotIdentifier.Dirty
@@ -151,6 +161,8 @@ namespace EncompassRest.Loans
                     || _postalCode.Dirty
                     || _priorLoanRecordationBookNumber.Dirty
                     || _priorLoanRecordationCurrentPrincipalAmount.Dirty
+                    || _priorLoanRecordationDated.Dirty
+                    || _priorLoanRecordationOriginalLoanNumber.Dirty
                     || _priorLoanRecordationOriginalPrincipalAmount.Dirty
                     || _priorLoanRecordationPageNumber.Dirty
                     || _prodIsSpInUnderservedArea.Dirty
@@ -198,7 +210,9 @@ namespace EncompassRest.Loans
                 _legalDescriptionText1.Dirty = value;
                 _legalDescriptionText2.Dirty = value;
                 _linkedIsConstructionPhaseDisclosedSeparately.Dirty = value;
+                _linkedLienPriorityType.Dirty = value;
                 _linkedLoanPurposeType.Dirty = value;
+                _linkedMortgageType.Dirty = value;
                 _loanPurposeType.Dirty = value;
                 _lotAcres.Dirty = value;
                 _lotIdentifier.Dirty = value;
@@ -209,6 +223,8 @@ namespace EncompassRest.Loans
                 _postalCode.Dirty = value;
                 _priorLoanRecordationBookNumber.Dirty = value;
                 _priorLoanRecordationCurrentPrincipalAmount.Dirty = value;
+                _priorLoanRecordationDated.Dirty = value;
+                _priorLoanRecordationOriginalLoanNumber.Dirty = value;
                 _priorLoanRecordationOriginalPrincipalAmount.Dirty = value;
                 _priorLoanRecordationPageNumber.Dirty = value;
                 _prodIsSpInUnderservedArea.Dirty = value;
