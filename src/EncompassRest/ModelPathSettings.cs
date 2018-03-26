@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace EncompassRest
 {
-    public sealed class ModelPathSettings
+    internal sealed class ModelPathSettings
     {
         public int? IndexOffset { get; }
 
