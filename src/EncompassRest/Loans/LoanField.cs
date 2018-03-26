@@ -101,6 +101,21 @@ namespace EncompassRest.Loans
                 {
                     if (propertyType != null)
                     {
+                        if (value != null && propertyType == TypeData<bool?>.Type)
+                        {
+                            if (value is string str)
+                            {
+                                switch (str.ToUpper())
+                                {
+                                    case "Y":
+                                    case "TRUE":
+                                        return true;
+                                    case "N":
+                                    case "FALSE":
+                                        return false;
+                                }
+                            }
+                        }
                         if (value != null && (propertyType == TypeData<string>.Type || propertyType == TypeData<DateTime?>.Type || propertyType == TypeData<decimal?>.Type || propertyType == TypeData<int?>.Type || propertyType == TypeData<bool?>.Type))
                         {
                             return Convert.ChangeType(value, Nullable.GetUnderlyingType(propertyType) ?? propertyType);

@@ -529,6 +529,12 @@ namespace EncompassRest.Tests
             Assert.IsNull(field.ToBoolean());
             Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual($@"{{""borrowerCoBorrowerMarriedIndicator"":null}}", loan.ToJson());
+
+            field.Value = "Y";
+            Assert.AreEqual(true, (bool?)field.Value);
+            Assert.AreEqual(true, field.ToBoolean());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual($@"{{""borrowerCoBorrowerMarriedIndicator"":true}}", loan.ToJson());
         }
 
         [TestMethod]
