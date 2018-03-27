@@ -779,6 +779,32 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public void Loan_FieldsZeroBased()
+        {
+            var loan = new Loan();
+            var field = loan.Fields["3669"];
+            Assert.AreEqual("Loan.MilestoneTemplateLogs[0].IsTemplateLocked", field.ModelPath);
+            Assert.IsTrue(field.IsEmpty);
+            Assert.IsNull(field.Value);
+            var value = true;
+            field.Value = value;
+            Assert.AreEqual(value, (bool?)field.Value);
+            Assert.AreEqual(value, field.ToBoolean());
+            Assert.IsFalse(field.IsEmpty);
+            Assert.AreEqual(@"{""milestoneTemplateLogs"":[{""isTemplateLocked"":true}]}", loan.ToJson());
+
+            field.Value = null;
+            Assert.AreEqual(null, (bool?)field.Value);
+            Assert.AreEqual(null, field.ToBoolean());
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual(@"{""milestoneTemplateLogs"":[{""isTemplateLocked"":null}]}", loan.ToJson());
+
+            Assert.IsFalse(field.Locked);
+            field.Locked = true;
+            Assert.IsTrue(field.Locked);
+        }
+
+        [TestMethod]
         public void Loan_FieldsCustomMapping()
         {
             Assert.IsTrue(LoanFields.FieldMappings.TryAdd("Log.MS.CurrentMilestone", "Loan.VirtualFields['Log.MS.CurrentMilestone']", false));

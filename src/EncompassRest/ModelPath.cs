@@ -578,7 +578,9 @@ namespace EncompassRest
                     }
                 }
 
-                var index = (Index ?? 1) - (settings?.IndexOffset ?? Path.Context.DefaultIndexOffset);
+                var indexOffset = settings?.IndexOffset ?? Path.Context.DefaultIndexOffset;
+
+                var index = (Index ?? indexOffset) - indexOffset;
                 if (index < filteredList.Count)
                 {
                     return filteredList[index];
