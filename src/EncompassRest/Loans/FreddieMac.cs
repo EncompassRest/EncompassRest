@@ -37,6 +37,8 @@ namespace EncompassRest.Loans
         public decimal? ConvertibleMaxRateAdjPercent { get => _convertibleMaxRateAdjPercent; set => _convertibleMaxRateAdjPercent = value; }
         private DirtyValue<decimal?> _convertibleMinRateAdjPercent;
         public decimal? ConvertibleMinRateAdjPercent { get => _convertibleMinRateAdjPercent; set => _convertibleMinRateAdjPercent = value; }
+        private DirtyValue<string> _correspondentAssignmentID;
+        public string CorrespondentAssignmentID { get => _correspondentAssignmentID; set => _correspondentAssignmentID = value; }
         private DirtyValue<string> _county;
         public string County { get => _county; set => _county = value; }
         private DirtyValue<StringEnumValue<CreditReportCompany>> _creditReportCompany;
@@ -184,6 +186,7 @@ namespace EncompassRest.Loans
                     || _convertibleFeePercent.Dirty
                     || _convertibleMaxRateAdjPercent.Dirty
                     || _convertibleMinRateAdjPercent.Dirty
+                    || _correspondentAssignmentID.Dirty
                     || _county.Dirty
                     || _creditReportCompany.Dirty
                     || _financingConcessions.Dirty
@@ -266,6 +269,7 @@ namespace EncompassRest.Loans
                 _convertibleFeePercent.Dirty = value;
                 _convertibleMaxRateAdjPercent.Dirty = value;
                 _convertibleMinRateAdjPercent.Dirty = value;
+                _correspondentAssignmentID.Dirty = value;
                 _county.Dirty = value;
                 _creditReportCompany.Dirty = value;
                 _financingConcessions.Dirty = value;

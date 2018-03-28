@@ -83,6 +83,8 @@ namespace EncompassRest.Loans
         public bool? ConfirmedOther { get => _confirmedOther; set => _confirmedOther = value; }
         private DirtyValue<string> _confirmedOtherDescription;
         public string ConfirmedOtherDescription { get => _confirmedOtherDescription; set => _confirmedOtherDescription = value; }
+        private EntityReference _contact;
+        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
         private DirtyValue<bool?> _creditCounseling;
         public bool? CreditCounseling { get => _creditCounseling; set => _creditCounseling = value; }
         private DirtyValue<DateTime?> _creditReceivedDate;
@@ -189,6 +191,10 @@ namespace EncompassRest.Loans
         public string ExperianKeyFactor5 { get => _experianKeyFactor5; set => _experianKeyFactor5 = value; }
         private DirtyValue<bool?> _experianMaterialTermsCreditByScore;
         public bool? ExperianMaterialTermsCreditByScore { get => _experianMaterialTermsCreditByScore; set => _experianMaterialTermsCreditByScore = value; }
+        private DirtyValue<string> _fannie_FirstName;
+        public string Fannie_FirstName { get => _fannie_FirstName; set => _fannie_FirstName = value; }
+        private DirtyValue<string> _fannie_MiddleName;
+        public string Fannie_MiddleName { get => _fannie_MiddleName; set => _fannie_MiddleName = value; }
         private DirtyValue<string> _firstName;
         public string FirstName { get => _firstName; set => _firstName = value; }
         private DirtyValue<string> _firstNameWithMiddleName;
@@ -239,6 +245,8 @@ namespace EncompassRest.Loans
         public bool? HmdaEthnicityDoNotWishIndicator { get => _hmdaEthnicityDoNotWishIndicator; set => _hmdaEthnicityDoNotWishIndicator = value; }
         private DirtyValue<bool?> _hmdaEthnicityHispanicLatinoIndicator;
         public bool? HmdaEthnicityHispanicLatinoIndicator { get => _hmdaEthnicityHispanicLatinoIndicator; set => _hmdaEthnicityHispanicLatinoIndicator = value; }
+        private DirtyValue<bool?> _hmdaEthnicityInfoNotProvided;
+        public bool? HmdaEthnicityInfoNotProvided { get => _hmdaEthnicityInfoNotProvided; set => _hmdaEthnicityInfoNotProvided = value; }
         private DirtyValue<bool?> _hmdaEthnicityNotApplicableIndicator;
         public bool? HmdaEthnicityNotApplicableIndicator { get => _hmdaEthnicityNotApplicableIndicator; set => _hmdaEthnicityNotApplicableIndicator = value; }
         private DirtyValue<bool?> _hmdaEthnicityNotHispanicLatinoIndicator;
@@ -253,6 +261,8 @@ namespace EncompassRest.Loans
         public string HmdaEthnicityReportedField4 { get => _hmdaEthnicityReportedField4; set => _hmdaEthnicityReportedField4 = value; }
         private DirtyValue<string> _hmdaEthnicityReportedField5;
         public string HmdaEthnicityReportedField5 { get => _hmdaEthnicityReportedField5; set => _hmdaEthnicityReportedField5 = value; }
+        private DirtyValue<string> _hmdaEthnicityReportedFields;
+        public string HmdaEthnicityReportedFields { get => _hmdaEthnicityReportedFields; set => _hmdaEthnicityReportedFields = value; }
         private DirtyValue<StringEnumValue<HmdaEthnicityType>> _hmdaEthnicityType;
         public StringEnumValue<HmdaEthnicityType> HmdaEthnicityType { get => _hmdaEthnicityType; set => _hmdaEthnicityType = value; }
         private DirtyValue<bool?> _hmdaFilipinoIndicator;
@@ -299,6 +309,10 @@ namespace EncompassRest.Loans
         public bool? HmdaPacificIslanderOtherIndicator { get => _hmdaPacificIslanderOtherIndicator; set => _hmdaPacificIslanderOtherIndicator = value; }
         private DirtyValue<bool?> _hmdaPuertoRicanIndicator;
         public bool? HmdaPuertoRicanIndicator { get => _hmdaPuertoRicanIndicator; set => _hmdaPuertoRicanIndicator = value; }
+        private DirtyValue<bool?> _hmdaRaceDoNotWishProvideIndicator;
+        public bool? HmdaRaceDoNotWishProvideIndicator { get => _hmdaRaceDoNotWishProvideIndicator; set => _hmdaRaceDoNotWishProvideIndicator = value; }
+        private DirtyValue<bool?> _hmdaRaceInfoNotProvided;
+        public bool? HmdaRaceInfoNotProvided { get => _hmdaRaceInfoNotProvided; set => _hmdaRaceInfoNotProvided = value; }
         private DirtyValue<string> _hmdaRaceReportedField1;
         public string HmdaRaceReportedField1 { get => _hmdaRaceReportedField1; set => _hmdaRaceReportedField1 = value; }
         private DirtyValue<string> _hmdaRaceReportedField2;
@@ -309,10 +323,14 @@ namespace EncompassRest.Loans
         public string HmdaRaceReportedField4 { get => _hmdaRaceReportedField4; set => _hmdaRaceReportedField4 = value; }
         private DirtyValue<string> _hmdaRaceReportedField5;
         public string HmdaRaceReportedField5 { get => _hmdaRaceReportedField5; set => _hmdaRaceReportedField5 = value; }
+        private DirtyValue<string> _hmdaRaceReportedFields;
+        public string HmdaRaceReportedFields { get => _hmdaRaceReportedFields; set => _hmdaRaceReportedFields = value; }
         private DirtyValue<bool?> _hmdaRefusalIndicator;
         public bool? HmdaRefusalIndicator { get => _hmdaRefusalIndicator; set => _hmdaRefusalIndicator = value; }
         private DirtyValue<bool?> _hmdaSamoanIndicator;
         public bool? HmdaSamoanIndicator { get => _hmdaSamoanIndicator; set => _hmdaSamoanIndicator = value; }
+        private DirtyValue<bool?> _hmdaSexInfoNotProvided;
+        public bool? HmdaSexInfoNotProvided { get => _hmdaSexInfoNotProvided; set => _hmdaSexInfoNotProvided = value; }
         private DirtyValue<bool?> _hmdaVietnameseIndicator;
         public bool? HmdaVietnameseIndicator { get => _hmdaVietnameseIndicator; set => _hmdaVietnameseIndicator = value; }
         private DirtyValue<bool?> _hmdaWhiteIndicator;
@@ -617,8 +635,36 @@ namespace EncompassRest.Loans
         public string Vendor11 { get => _vendor11; set => _vendor11 = value; }
         private DirtyValue<string> _vendor12;
         public string Vendor12 { get => _vendor12; set => _vendor12 = value; }
+        private DirtyValue<string> _vendor13;
+        public string Vendor13 { get => _vendor13; set => _vendor13 = value; }
+        private DirtyValue<string> _vendor14;
+        public string Vendor14 { get => _vendor14; set => _vendor14 = value; }
+        private DirtyValue<string> _vendor15;
+        public string Vendor15 { get => _vendor15; set => _vendor15 = value; }
+        private DirtyValue<string> _vendor16;
+        public string Vendor16 { get => _vendor16; set => _vendor16 = value; }
+        private DirtyValue<string> _vendor17;
+        public string Vendor17 { get => _vendor17; set => _vendor17 = value; }
+        private DirtyValue<string> _vendor18;
+        public string Vendor18 { get => _vendor18; set => _vendor18 = value; }
+        private DirtyValue<string> _vendor19;
+        public string Vendor19 { get => _vendor19; set => _vendor19 = value; }
         private DirtyValue<string> _vendor2;
         public string Vendor2 { get => _vendor2; set => _vendor2 = value; }
+        private DirtyValue<string> _vendor20;
+        public string Vendor20 { get => _vendor20; set => _vendor20 = value; }
+        private DirtyValue<string> _vendor21;
+        public string Vendor21 { get => _vendor21; set => _vendor21 = value; }
+        private DirtyValue<string> _vendor22;
+        public string Vendor22 { get => _vendor22; set => _vendor22 = value; }
+        private DirtyValue<string> _vendor23;
+        public string Vendor23 { get => _vendor23; set => _vendor23 = value; }
+        private DirtyValue<string> _vendor24;
+        public string Vendor24 { get => _vendor24; set => _vendor24 = value; }
+        private DirtyValue<string> _vendor25;
+        public string Vendor25 { get => _vendor25; set => _vendor25 = value; }
+        private DirtyValue<string> _vendor26;
+        public string Vendor26 { get => _vendor26; set => _vendor26 = value; }
         private DirtyValue<string> _vendor3;
         public string Vendor3 { get => _vendor3; set => _vendor3 = value; }
         private DirtyValue<string> _vendor4;
@@ -735,6 +781,8 @@ namespace EncompassRest.Loans
                     || _experianKeyFactor4.Dirty
                     || _experianKeyFactor5.Dirty
                     || _experianMaterialTermsCreditByScore.Dirty
+                    || _fannie_FirstName.Dirty
+                    || _fannie_MiddleName.Dirty
                     || _firstName.Dirty
                     || _firstNameWithMiddleName.Dirty
                     || _firstTimeHomeBuyer.Dirty
@@ -760,6 +808,7 @@ namespace EncompassRest.Loans
                     || _hmdaCubanIndicator.Dirty
                     || _hmdaEthnicityDoNotWishIndicator.Dirty
                     || _hmdaEthnicityHispanicLatinoIndicator.Dirty
+                    || _hmdaEthnicityInfoNotProvided.Dirty
                     || _hmdaEthnicityNotApplicableIndicator.Dirty
                     || _hmdaEthnicityNotHispanicLatinoIndicator.Dirty
                     || _hmdaEthnicityReportedField1.Dirty
@@ -767,6 +816,7 @@ namespace EncompassRest.Loans
                     || _hmdaEthnicityReportedField3.Dirty
                     || _hmdaEthnicityReportedField4.Dirty
                     || _hmdaEthnicityReportedField5.Dirty
+                    || _hmdaEthnicityReportedFields.Dirty
                     || _hmdaEthnicityType.Dirty
                     || _hmdaFilipinoIndicator.Dirty
                     || _hmdaGenderType.Dirty
@@ -790,13 +840,17 @@ namespace EncompassRest.Loans
                     || _hmdaPacificIslanderIndicator.Dirty
                     || _hmdaPacificIslanderOtherIndicator.Dirty
                     || _hmdaPuertoRicanIndicator.Dirty
+                    || _hmdaRaceDoNotWishProvideIndicator.Dirty
+                    || _hmdaRaceInfoNotProvided.Dirty
                     || _hmdaRaceReportedField1.Dirty
                     || _hmdaRaceReportedField2.Dirty
                     || _hmdaRaceReportedField3.Dirty
                     || _hmdaRaceReportedField4.Dirty
                     || _hmdaRaceReportedField5.Dirty
+                    || _hmdaRaceReportedFields.Dirty
                     || _hmdaRefusalIndicator.Dirty
                     || _hmdaSamoanIndicator.Dirty
+                    || _hmdaSexInfoNotProvided.Dirty
                     || _hmdaVietnameseIndicator.Dirty
                     || _hmdaWhiteIndicator.Dirty
                     || _homeownerPastThreeYearsIndicator.Dirty
@@ -949,7 +1003,21 @@ namespace EncompassRest.Loans
                     || _vendor10.Dirty
                     || _vendor11.Dirty
                     || _vendor12.Dirty
+                    || _vendor13.Dirty
+                    || _vendor14.Dirty
+                    || _vendor15.Dirty
+                    || _vendor16.Dirty
+                    || _vendor17.Dirty
+                    || _vendor18.Dirty
+                    || _vendor19.Dirty
                     || _vendor2.Dirty
+                    || _vendor20.Dirty
+                    || _vendor21.Dirty
+                    || _vendor22.Dirty
+                    || _vendor23.Dirty
+                    || _vendor24.Dirty
+                    || _vendor25.Dirty
+                    || _vendor26.Dirty
                     || _vendor3.Dirty
                     || _vendor4.Dirty
                     || _vendor5.Dirty
@@ -961,7 +1029,8 @@ namespace EncompassRest.Loans
                     || _veteranIndicator.Dirty
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
-                    || _application?.Dirty == true;
+                    || _application?.Dirty == true
+                    || _contact?.Dirty == true;
             }
             set
             {
@@ -1055,6 +1124,8 @@ namespace EncompassRest.Loans
                 _experianKeyFactor4.Dirty = value;
                 _experianKeyFactor5.Dirty = value;
                 _experianMaterialTermsCreditByScore.Dirty = value;
+                _fannie_FirstName.Dirty = value;
+                _fannie_MiddleName.Dirty = value;
                 _firstName.Dirty = value;
                 _firstNameWithMiddleName.Dirty = value;
                 _firstTimeHomeBuyer.Dirty = value;
@@ -1080,6 +1151,7 @@ namespace EncompassRest.Loans
                 _hmdaCubanIndicator.Dirty = value;
                 _hmdaEthnicityDoNotWishIndicator.Dirty = value;
                 _hmdaEthnicityHispanicLatinoIndicator.Dirty = value;
+                _hmdaEthnicityInfoNotProvided.Dirty = value;
                 _hmdaEthnicityNotApplicableIndicator.Dirty = value;
                 _hmdaEthnicityNotHispanicLatinoIndicator.Dirty = value;
                 _hmdaEthnicityReportedField1.Dirty = value;
@@ -1087,6 +1159,7 @@ namespace EncompassRest.Loans
                 _hmdaEthnicityReportedField3.Dirty = value;
                 _hmdaEthnicityReportedField4.Dirty = value;
                 _hmdaEthnicityReportedField5.Dirty = value;
+                _hmdaEthnicityReportedFields.Dirty = value;
                 _hmdaEthnicityType.Dirty = value;
                 _hmdaFilipinoIndicator.Dirty = value;
                 _hmdaGenderType.Dirty = value;
@@ -1110,13 +1183,17 @@ namespace EncompassRest.Loans
                 _hmdaPacificIslanderIndicator.Dirty = value;
                 _hmdaPacificIslanderOtherIndicator.Dirty = value;
                 _hmdaPuertoRicanIndicator.Dirty = value;
+                _hmdaRaceDoNotWishProvideIndicator.Dirty = value;
+                _hmdaRaceInfoNotProvided.Dirty = value;
                 _hmdaRaceReportedField1.Dirty = value;
                 _hmdaRaceReportedField2.Dirty = value;
                 _hmdaRaceReportedField3.Dirty = value;
                 _hmdaRaceReportedField4.Dirty = value;
                 _hmdaRaceReportedField5.Dirty = value;
+                _hmdaRaceReportedFields.Dirty = value;
                 _hmdaRefusalIndicator.Dirty = value;
                 _hmdaSamoanIndicator.Dirty = value;
+                _hmdaSexInfoNotProvided.Dirty = value;
                 _hmdaVietnameseIndicator.Dirty = value;
                 _hmdaWhiteIndicator.Dirty = value;
                 _homeownerPastThreeYearsIndicator.Dirty = value;
@@ -1269,7 +1346,21 @@ namespace EncompassRest.Loans
                 _vendor10.Dirty = value;
                 _vendor11.Dirty = value;
                 _vendor12.Dirty = value;
+                _vendor13.Dirty = value;
+                _vendor14.Dirty = value;
+                _vendor15.Dirty = value;
+                _vendor16.Dirty = value;
+                _vendor17.Dirty = value;
+                _vendor18.Dirty = value;
+                _vendor19.Dirty = value;
                 _vendor2.Dirty = value;
+                _vendor20.Dirty = value;
+                _vendor21.Dirty = value;
+                _vendor22.Dirty = value;
+                _vendor23.Dirty = value;
+                _vendor24.Dirty = value;
+                _vendor25.Dirty = value;
+                _vendor26.Dirty = value;
                 _vendor3.Dirty = value;
                 _vendor4.Dirty = value;
                 _vendor5.Dirty = value;
@@ -1282,6 +1373,7 @@ namespace EncompassRest.Loans
                 _workEmailAddress.Dirty = value;
                 _yearsofCreditOnFile.Dirty = value;
                 if (_application != null) _application.Dirty = value;
+                if (_contact != null) _contact.Dirty = value;
             }
         }
     }

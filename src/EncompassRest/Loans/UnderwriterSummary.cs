@@ -37,6 +37,10 @@ namespace EncompassRest.Loans
         public string Concerns { get => _concerns; set => _concerns = value; }
         private DirtyValue<string> _conditions;
         public string Conditions { get => _conditions; set => _conditions = value; }
+        private DirtyValue<DateTime?> _counterOfferDate;
+        public DateTime? CounterOfferDate { get => _counterOfferDate; set => _counterOfferDate = value; }
+        private DirtyValue<StringEnumValue<CounterOfferStatus>> _counterOfferStatus;
+        public StringEnumValue<CounterOfferStatus> CounterOfferStatus { get => _counterOfferStatus; set => _counterOfferStatus = value; }
         private DirtyValue<string> _credit;
         public string Credit { get => _credit; set => _credit = value; }
         private DirtyValue<DateTime?> _creditApprovalDate;
@@ -134,6 +138,8 @@ namespace EncompassRest.Loans
                     || _clearToCloseDate.Dirty
                     || _concerns.Dirty
                     || _conditions.Dirty
+                    || _counterOfferDate.Dirty
+                    || _counterOfferStatus.Dirty
                     || _credit.Dirty
                     || _creditApprovalDate.Dirty
                     || _deniedBy.Dirty
@@ -191,6 +197,8 @@ namespace EncompassRest.Loans
                 _clearToCloseDate.Dirty = value;
                 _concerns.Dirty = value;
                 _conditions.Dirty = value;
+                _counterOfferDate.Dirty = value;
+                _counterOfferStatus.Dirty = value;
                 _credit.Dirty = value;
                 _creditApprovalDate.Dirty = value;
                 _deniedBy.Dirty = value;

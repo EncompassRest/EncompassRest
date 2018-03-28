@@ -22,16 +22,16 @@ namespace EncompassRest.Tests
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newLoanEntities.Count);
 
-            var ignoredElementTypes = new HashSet<string>(new[] { null, "EntityReference", "FileAttachmentReference" });
+            var ignoredElementTypes = new HashSet<string>(new[] { null, "EntityReference", "FileAttachmentReference", "EntityRefContract" });
             Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.ElementType.EnumValue.HasValue || ignoredElementTypes.Contains(p.ElementType.Value))));
             var elementTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.ElementType.Value)));
             elementTypes.ExceptWith(ignoredElementTypes);
             var newElementTypes = elementTypes.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newElementTypes.Count);
 
-            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.EntityType.EnumValue.HasValue || p.EntityType.Value == null)));
+            Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.EntityType.EnumValue.HasValue || p.EntityType.Value == null || p.EntityType.Value == "EntityRefContract")));
             var entityTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.EntityType.Value)));
-            entityTypes.Remove(null);
+            entityTypes.ExceptWith(new[] { null, "EntityRefContract" });
             var newEntityTypes = entityTypes.Except(existingLoanEntities).ToList();
             Assert.AreEqual(0, newEntityTypes.Count);
 

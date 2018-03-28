@@ -43,6 +43,8 @@ namespace EncompassRest.Loans
         public string Stage { get => _stage; set => _stage = value; }
         private DirtyValue<string> _systemId;
         public string SystemId { get => _systemId; set => _systemId = value; }
+        private DirtyValue<string> _tPOConnectStatus;
+        public string TPOConnectStatus { get => _tPOConnectStatus; set => _tPOConnectStatus = value; }
         internal override bool DirtyInternal
         {
             get
@@ -62,6 +64,7 @@ namespace EncompassRest.Loans
                     || _roleRequired.Dirty
                     || _stage.Dirty
                     || _systemId.Dirty
+                    || _tPOConnectStatus.Dirty
                     || _alerts?.Dirty == true
                     || _commentList?.Dirty == true
                     || _loanAssociate?.Dirty == true;
@@ -83,6 +86,7 @@ namespace EncompassRest.Loans
                 _roleRequired.Dirty = value;
                 _stage.Dirty = value;
                 _systemId.Dirty = value;
+                _tPOConnectStatus.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;
                 if (_commentList != null) _commentList.Dirty = value;
                 if (_loanAssociate != null) _loanAssociate.Dirty = value;

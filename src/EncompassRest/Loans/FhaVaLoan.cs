@@ -61,6 +61,28 @@ namespace EncompassRest.Loans
         public string CondoPudLookupBy { get => _condoPudLookupBy; set => _condoPudLookupBy = value; }
         private DirtyValue<DateTime?> _condoPudLookupDate;
         public DateTime? CondoPudLookupDate { get => _condoPudLookupDate; set => _condoPudLookupDate = value; }
+        private DirtyValue<decimal?> _conventionalClosingCost;
+        public decimal? ConventionalClosingCost { get => _conventionalClosingCost; set => _conventionalClosingCost = value; }
+        private DirtyValue<decimal?> _conventionalDownPayment;
+        public decimal? ConventionalDownPayment { get => _conventionalDownPayment; set => _conventionalDownPayment = value; }
+        private DirtyValue<decimal?> _conventionalInterestRate;
+        public decimal? ConventionalInterestRate { get => _conventionalInterestRate; set => _conventionalInterestRate = value; }
+        private DirtyValue<int?> _conventionalLoanTerm;
+        public int? ConventionalLoanTerm { get => _conventionalLoanTerm; set => _conventionalLoanTerm = value; }
+        private DirtyValue<decimal?> _conventionalLTV;
+        public decimal? ConventionalLTV { get => _conventionalLTV; set => _conventionalLTV = value; }
+        private DirtyValue<int?> _conventionalMaxYearsMI;
+        public int? ConventionalMaxYearsMI { get => _conventionalMaxYearsMI; set => _conventionalMaxYearsMI = value; }
+        private DirtyValue<decimal?> _conventionalMMI;
+        public decimal? ConventionalMMI { get => _conventionalMMI; set => _conventionalMMI = value; }
+        private DirtyValue<decimal?> _conventionalMonthlyPayment;
+        public decimal? ConventionalMonthlyPayment { get => _conventionalMonthlyPayment; set => _conventionalMonthlyPayment = value; }
+        private DirtyValue<decimal?> _conventionalMortgageAmount;
+        public decimal? ConventionalMortgageAmount { get => _conventionalMortgageAmount; set => _conventionalMortgageAmount = value; }
+        private DirtyValue<decimal?> _conventionalSalesPrice;
+        public decimal? ConventionalSalesPrice { get => _conventionalSalesPrice; set => _conventionalSalesPrice = value; }
+        private DirtyValue<decimal?> _conventionalUMIP;
+        public decimal? ConventionalUMIP { get => _conventionalUMIP; set => _conventionalUMIP = value; }
         private DirtyValue<DateTime?> _dateApprovalExpires;
         public DateTime? DateApprovalExpires { get => _dateApprovalExpires; set => _dateApprovalExpires = value; }
         private DirtyValue<DateTime?> _dateMortgageApproved;
@@ -99,10 +121,34 @@ namespace EncompassRest.Loans
         public decimal? ExistingDebtAmount { get => _existingDebtAmount; set => _existingDebtAmount = value; }
         private DirtyValue<string> _fHACaseOrderedBy;
         public string FHACaseOrderedBy { get => _fHACaseOrderedBy; set => _fHACaseOrderedBy = value; }
+        private DirtyValue<decimal?> _fHAClosingCost;
+        public decimal? FHAClosingCost { get => _fHAClosingCost; set => _fHAClosingCost = value; }
+        private DirtyValue<decimal?> _fHADownPayment;
+        public decimal? FHADownPayment { get => _fHADownPayment; set => _fHADownPayment = value; }
+        private DirtyValue<decimal?> _fHAInterestRate;
+        public decimal? FHAInterestRate { get => _fHAInterestRate; set => _fHAInterestRate = value; }
+        private DirtyValue<int?> _fHALoanTerm;
+        public int? FHALoanTerm { get => _fHALoanTerm; set => _fHALoanTerm = value; }
+        private DirtyValue<decimal?> _fHALTV;
+        public decimal? FHALTV { get => _fHALTV; set => _fHALTV = value; }
         private DirtyValue<StringEnumValue<FHAManagementCounselType>> _fHAManagementCounselType;
         public StringEnumValue<FHAManagementCounselType> FHAManagementCounselType { get => _fHAManagementCounselType; set => _fHAManagementCounselType = value; }
         private DirtyValue<decimal?> _fHAMaxLoanAmount;
         public decimal? FHAMaxLoanAmount { get => _fHAMaxLoanAmount; set => _fHAMaxLoanAmount = value; }
+        private DirtyValue<decimal?> _fHAMMI;
+        public decimal? FHAMMI { get => _fHAMMI; set => _fHAMMI = value; }
+        private DirtyValue<decimal?> _fHAMonthlyPayment;
+        public decimal? FHAMonthlyPayment { get => _fHAMonthlyPayment; set => _fHAMonthlyPayment = value; }
+        private DirtyValue<decimal?> _fHAMortgageAmount;
+        public decimal? FHAMortgageAmount { get => _fHAMortgageAmount; set => _fHAMortgageAmount = value; }
+        private DirtyValue<decimal?> _fHAMortgageAmountUMIP;
+        public decimal? FHAMortgageAmountUMIP { get => _fHAMortgageAmountUMIP; set => _fHAMortgageAmountUMIP = value; }
+        private DirtyValue<decimal?> _fHASalesPrice;
+        public decimal? FHASalesPrice { get => _fHASalesPrice; set => _fHASalesPrice = value; }
+        private DirtyValue<decimal?> _fHAUMIP;
+        public decimal? FHAUMIP { get => _fHAUMIP; set => _fHAUMIP = value; }
+        private DirtyValue<int?> _fHAYearsMonthlyInsurance;
+        public int? FHAYearsMonthlyInsurance { get => _fHAYearsMonthlyInsurance; set => _fHAYearsMonthlyInsurance = value; }
         private DirtyValue<bool?> _foreclosedProperty;
         public bool? ForeclosedProperty { get => _foreclosedProperty; set => _foreclosedProperty = value; }
         private DirtyValue<StringEnumValue<FreddieMacCounselType>> _freddieMacCounselType;
@@ -314,6 +360,17 @@ namespace EncompassRest.Loans
                     || _condoPudID.Dirty
                     || _condoPudLookupBy.Dirty
                     || _condoPudLookupDate.Dirty
+                    || _conventionalClosingCost.Dirty
+                    || _conventionalDownPayment.Dirty
+                    || _conventionalInterestRate.Dirty
+                    || _conventionalLoanTerm.Dirty
+                    || _conventionalLTV.Dirty
+                    || _conventionalMaxYearsMI.Dirty
+                    || _conventionalMMI.Dirty
+                    || _conventionalMonthlyPayment.Dirty
+                    || _conventionalMortgageAmount.Dirty
+                    || _conventionalSalesPrice.Dirty
+                    || _conventionalUMIP.Dirty
                     || _dateApprovalExpires.Dirty
                     || _dateMortgageApproved.Dirty
                     || _detailForOther.Dirty
@@ -331,8 +388,20 @@ namespace EncompassRest.Loans
                     || _excessContributionAmount.Dirty
                     || _existingDebtAmount.Dirty
                     || _fHACaseOrderedBy.Dirty
+                    || _fHAClosingCost.Dirty
+                    || _fHADownPayment.Dirty
+                    || _fHAInterestRate.Dirty
+                    || _fHALoanTerm.Dirty
+                    || _fHALTV.Dirty
                     || _fHAManagementCounselType.Dirty
                     || _fHAMaxLoanAmount.Dirty
+                    || _fHAMMI.Dirty
+                    || _fHAMonthlyPayment.Dirty
+                    || _fHAMortgageAmount.Dirty
+                    || _fHAMortgageAmountUMIP.Dirty
+                    || _fHASalesPrice.Dirty
+                    || _fHAUMIP.Dirty
+                    || _fHAYearsMonthlyInsurance.Dirty
                     || _foreclosedProperty.Dirty
                     || _freddieMacCounselType.Dirty
                     || _fundingFeePaidInCash.Dirty
@@ -455,6 +524,17 @@ namespace EncompassRest.Loans
                 _condoPudID.Dirty = value;
                 _condoPudLookupBy.Dirty = value;
                 _condoPudLookupDate.Dirty = value;
+                _conventionalClosingCost.Dirty = value;
+                _conventionalDownPayment.Dirty = value;
+                _conventionalInterestRate.Dirty = value;
+                _conventionalLoanTerm.Dirty = value;
+                _conventionalLTV.Dirty = value;
+                _conventionalMaxYearsMI.Dirty = value;
+                _conventionalMMI.Dirty = value;
+                _conventionalMonthlyPayment.Dirty = value;
+                _conventionalMortgageAmount.Dirty = value;
+                _conventionalSalesPrice.Dirty = value;
+                _conventionalUMIP.Dirty = value;
                 _dateApprovalExpires.Dirty = value;
                 _dateMortgageApproved.Dirty = value;
                 _detailForOther.Dirty = value;
@@ -472,8 +552,20 @@ namespace EncompassRest.Loans
                 _excessContributionAmount.Dirty = value;
                 _existingDebtAmount.Dirty = value;
                 _fHACaseOrderedBy.Dirty = value;
+                _fHAClosingCost.Dirty = value;
+                _fHADownPayment.Dirty = value;
+                _fHAInterestRate.Dirty = value;
+                _fHALoanTerm.Dirty = value;
+                _fHALTV.Dirty = value;
                 _fHAManagementCounselType.Dirty = value;
                 _fHAMaxLoanAmount.Dirty = value;
+                _fHAMMI.Dirty = value;
+                _fHAMonthlyPayment.Dirty = value;
+                _fHAMortgageAmount.Dirty = value;
+                _fHAMortgageAmountUMIP.Dirty = value;
+                _fHASalesPrice.Dirty = value;
+                _fHAUMIP.Dirty = value;
+                _fHAYearsMonthlyInsurance.Dirty = value;
                 _foreclosedProperty.Dirty = value;
                 _freddieMacCounselType.Dirty = value;
                 _fundingFeePaidInCash.Dirty = value;

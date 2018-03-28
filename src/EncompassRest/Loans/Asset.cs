@@ -21,6 +21,8 @@ namespace EncompassRest.Loans
         public string BorrowerId { get => _borrowerId; set => _borrowerId = value; }
         private DirtyValue<decimal?> _cashOrMarketValueAmount;
         public decimal? CashOrMarketValueAmount { get => _cashOrMarketValueAmount; set => _cashOrMarketValueAmount = value; }
+        private EntityReference _contact;
+        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
         private DirtyValue<string> _depositoryAccountName;
         public string DepositoryAccountName { get => _depositoryAccountName; set => _depositoryAccountName = value; }
         private DirtyValue<DateTime?> _depositoryRequestDate;
@@ -112,7 +114,8 @@ namespace EncompassRest.Loans
                     || _titleFax.Dirty
                     || _titlePhone.Dirty
                     || _total.Dirty
-                    || _vodIndex.Dirty;
+                    || _vodIndex.Dirty
+                    || _contact?.Dirty == true;
             }
             set
             {
@@ -150,6 +153,7 @@ namespace EncompassRest.Loans
                 _titlePhone.Dirty = value;
                 _total.Dirty = value;
                 _vodIndex.Dirty = value;
+                if (_contact != null) _contact.Dirty = value;
             }
         }
     }

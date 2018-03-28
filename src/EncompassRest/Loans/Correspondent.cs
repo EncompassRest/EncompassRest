@@ -55,6 +55,8 @@ namespace EncompassRest.Loans
         public decimal? LateFeeTotalPriceAdjustment { get => _lateFeeTotalPriceAdjustment; set => _lateFeeTotalPriceAdjustment = value; }
         private DirtyValue<DateTime?> _latestConditionsDate;
         public DateTime? LatestConditionsDate { get => _latestConditionsDate; set => _latestConditionsDate = value; }
+        private DirtyValue<decimal?> _lFS_Amount;
+        public decimal? LFS_Amount { get => _lFS_Amount; set => _lFS_Amount = value; }
         private DirtyValue<int?> _lFS_CalculateAs;
         public int? LFS_CalculateAs { get => _lFS_CalculateAs; set => _lFS_CalculateAs = value; }
         private DirtyValue<int?> _lFS_DayCleared;
@@ -75,6 +77,8 @@ namespace EncompassRest.Loans
         public int? LFS_GracePeriodStarts { get => _lFS_GracePeriodStarts; set => _lFS_GracePeriodStarts = value; }
         private DirtyValue<int?> _lFS_IncludeDay;
         public int? LFS_IncludeDay { get => _lFS_IncludeDay; set => _lFS_IncludeDay = value; }
+        private DirtyValue<decimal?> _lFS_LateFee;
+        public decimal? LFS_LateFee { get => _lFS_LateFee; set => _lFS_LateFee = value; }
         private DirtyValue<int?> _lFS_LateFeeBasedOn;
         public int? LFS_LateFeeBasedOn { get => _lFS_LateFeeBasedOn; set => _lFS_LateFeeBasedOn = value; }
         private DirtyValue<int?> _lFS_MaxLateDays;
@@ -105,6 +109,8 @@ namespace EncompassRest.Loans
         public decimal? UnpaidPrincipalBalance { get => _unpaidPrincipalBalance; set => _unpaidPrincipalBalance = value; }
         private DirtyValue<DateTime?> _voidedDate;
         public DateTime? VoidedDate { get => _voidedDate; set => _voidedDate = value; }
+        private DirtyValue<DateTime?> _withdrawalRequestedDate;
+        public DateTime? WithdrawalRequestedDate { get => _withdrawalRequestedDate; set => _withdrawalRequestedDate = value; }
         private DirtyValue<DateTime?> _withdrawnDate;
         public DateTime? WithdrawnDate { get => _withdrawnDate; set => _withdrawnDate = value; }
         internal override bool DirtyInternal
@@ -135,6 +141,7 @@ namespace EncompassRest.Loans
                     || _lateFeePercentage.Dirty
                     || _lateFeeTotalPriceAdjustment.Dirty
                     || _latestConditionsDate.Dirty
+                    || _lFS_Amount.Dirty
                     || _lFS_CalculateAs.Dirty
                     || _lFS_DayCleared.Dirty
                     || _lFS_DayClearedOtherDate.Dirty
@@ -145,6 +152,7 @@ namespace EncompassRest.Loans
                     || _lFS_GracePeriodLaterOf.Dirty
                     || _lFS_GracePeriodStarts.Dirty
                     || _lFS_IncludeDay.Dirty
+                    || _lFS_LateFee.Dirty
                     || _lFS_LateFeeBasedOn.Dirty
                     || _lFS_MaxLateDays.Dirty
                     || _lFS_OtherDate.Dirty
@@ -160,6 +168,7 @@ namespace EncompassRest.Loans
                     || _totalLateFee.Dirty
                     || _unpaidPrincipalBalance.Dirty
                     || _voidedDate.Dirty
+                    || _withdrawalRequestedDate.Dirty
                     || _withdrawnDate.Dirty;
             }
             set
@@ -188,6 +197,7 @@ namespace EncompassRest.Loans
                 _lateFeePercentage.Dirty = value;
                 _lateFeeTotalPriceAdjustment.Dirty = value;
                 _latestConditionsDate.Dirty = value;
+                _lFS_Amount.Dirty = value;
                 _lFS_CalculateAs.Dirty = value;
                 _lFS_DayCleared.Dirty = value;
                 _lFS_DayClearedOtherDate.Dirty = value;
@@ -198,6 +208,7 @@ namespace EncompassRest.Loans
                 _lFS_GracePeriodLaterOf.Dirty = value;
                 _lFS_GracePeriodStarts.Dirty = value;
                 _lFS_IncludeDay.Dirty = value;
+                _lFS_LateFee.Dirty = value;
                 _lFS_LateFeeBasedOn.Dirty = value;
                 _lFS_MaxLateDays.Dirty = value;
                 _lFS_OtherDate.Dirty = value;
@@ -213,6 +224,7 @@ namespace EncompassRest.Loans
                 _totalLateFee.Dirty = value;
                 _unpaidPrincipalBalance.Dirty = value;
                 _voidedDate.Dirty = value;
+                _withdrawalRequestedDate.Dirty = value;
                 _withdrawnDate.Dirty = value;
             }
         }

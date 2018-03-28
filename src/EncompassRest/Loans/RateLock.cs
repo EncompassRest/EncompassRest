@@ -519,10 +519,14 @@ namespace EncompassRest.Loans
         public string CreditScoreToUse { get => _creditScoreToUse; set => _creditScoreToUse = value; }
         private DirtyValue<int?> _cumulatedDaystoExtend;
         public int? CumulatedDaystoExtend { get => _cumulatedDaystoExtend; set => _cumulatedDaystoExtend = value; }
+        private DirtyValue<bool?> _currentAcquisition;
+        public bool? CurrentAcquisition { get => _currentAcquisition; set => _currentAcquisition = value; }
         private DirtyList<PriceAdjustment> _currentAdjustments;
         public IList<PriceAdjustment> CurrentAdjustments { get => _currentAdjustments ?? (_currentAdjustments = new DirtyList<PriceAdjustment>()); set => _currentAdjustments = new DirtyList<PriceAdjustment>(value); }
         private DirtyValue<string> _currentComments;
         public string CurrentComments { get => _currentComments; set => _currentComments = value; }
+        private DirtyValue<bool?> _currentConstructionRefi;
+        public bool? CurrentConstructionRefi { get => _currentConstructionRefi; set => _currentConstructionRefi = value; }
         private DirtyValue<DateTime?> _currentLockDate;
         public DateTime? CurrentLockDate { get => _currentLockDate; set => _currentLockDate = value; }
         private DirtyValue<DateTime?> _currentLockExpires;
@@ -667,6 +671,8 @@ namespace EncompassRest.Loans
         public decimal? Impounds { get => _impounds; set => _impounds = value; }
         private DirtyValue<StringEnumValue<ImpoundType>> _impoundType;
         public StringEnumValue<ImpoundType> ImpoundType { get => _impoundType; set => _impoundType = value; }
+        private DirtyValue<string> _impoundWaived;
+        public string ImpoundWaived { get => _impoundWaived; set => _impoundWaived = value; }
         private DirtyValue<StringEnumValue<ImpoundWaived>> _impoundWavied;
         public StringEnumValue<ImpoundWaived> ImpoundWavied { get => _impoundWavied; set => _impoundWavied = value; }
         private DirtyValue<decimal?> _interest;
@@ -819,6 +825,8 @@ namespace EncompassRest.Loans
         public string RequestFullfilledDateTime { get => _requestFullfilledDateTime; set => _requestFullfilledDateTime = value; }
         private DirtyValue<StringEnumValue<ImpoundType>> _requestImpoundType;
         public StringEnumValue<ImpoundType> RequestImpoundType { get => _requestImpoundType; set => _requestImpoundType = value; }
+        private DirtyValue<string> _requestImpoundWaived;
+        public string RequestImpoundWaived { get => _requestImpoundWaived; set => _requestImpoundWaived = value; }
         private DirtyValue<StringEnumValue<ImpoundWaived>> _requestImpoundWavied;
         public StringEnumValue<ImpoundWaived> RequestImpoundWavied { get => _requestImpoundWavied; set => _requestImpoundWavied = value; }
         private DirtyValue<string> _requestLockCancellationComment;
@@ -1271,7 +1279,9 @@ namespace EncompassRest.Loans
                     || _correspondentWarehouseBankZip.Dirty
                     || _creditScoreToUse.Dirty
                     || _cumulatedDaystoExtend.Dirty
+                    || _currentAcquisition.Dirty
                     || _currentComments.Dirty
+                    || _currentConstructionRefi.Dirty
                     || _currentLockDate.Dirty
                     || _currentLockExpires.Dirty
                     || _currentMarginRate.Dirty
@@ -1343,6 +1353,7 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _impounds.Dirty
                     || _impoundType.Dirty
+                    || _impoundWaived.Dirty
                     || _impoundWavied.Dirty
                     || _interest.Dirty
                     || _investorAddress.Dirty
@@ -1415,6 +1426,7 @@ namespace EncompassRest.Loans
                     || _requestExtendedLockExpires.Dirty
                     || _requestFullfilledDateTime.Dirty
                     || _requestImpoundType.Dirty
+                    || _requestImpoundWaived.Dirty
                     || _requestImpoundWavied.Dirty
                     || _requestLockCancellationComment.Dirty
                     || _requestLockCancellationDate.Dirty
@@ -1777,7 +1789,9 @@ namespace EncompassRest.Loans
                 _correspondentWarehouseBankZip.Dirty = value;
                 _creditScoreToUse.Dirty = value;
                 _cumulatedDaystoExtend.Dirty = value;
+                _currentAcquisition.Dirty = value;
                 _currentComments.Dirty = value;
+                _currentConstructionRefi.Dirty = value;
                 _currentLockDate.Dirty = value;
                 _currentLockExpires.Dirty = value;
                 _currentMarginRate.Dirty = value;
@@ -1849,6 +1863,7 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _impounds.Dirty = value;
                 _impoundType.Dirty = value;
+                _impoundWaived.Dirty = value;
                 _impoundWavied.Dirty = value;
                 _interest.Dirty = value;
                 _investorAddress.Dirty = value;
@@ -1921,6 +1936,7 @@ namespace EncompassRest.Loans
                 _requestExtendedLockExpires.Dirty = value;
                 _requestFullfilledDateTime.Dirty = value;
                 _requestImpoundType.Dirty = value;
+                _requestImpoundWaived.Dirty = value;
                 _requestImpoundWavied.Dirty = value;
                 _requestLockCancellationComment.Dirty = value;
                 _requestLockCancellationDate.Dirty = value;

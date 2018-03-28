@@ -59,8 +59,12 @@ namespace EncompassRest.Loans
         public int? DaysDue { get => _daysDue; set => _daysDue = value; }
         private DirtyValue<int?> _daysTillExpire;
         public int? DaysTillExpire { get => _daysTillExpire; set => _daysTillExpire = value; }
+        private DirtyValue<string> _description;
+        public string Description { get => _description; set => _description = value; }
         private DirtyValue<string> _documentDateTimeType;
         public string DocumentDateTimeType { get => _documentDateTimeType; set => _documentDateTimeType = value; }
+        private DirtyValue<string> _docVerificationsXml;
+        public string DocVerificationsXml { get => _docVerificationsXml; set => _docVerificationsXml = value; }
         private DirtyValue<bool?> _eDisclosureIndicator;
         public bool? EDisclosureIndicator { get => _eDisclosureIndicator; set => _eDisclosureIndicator = value; }
         private DirtyValue<string> _ePassSignature;
@@ -75,14 +79,26 @@ namespace EncompassRest.Loans
         public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
         private DirtyValue<string> _fileAttachmentsXml;
         public string FileAttachmentsXml { get => _fileAttachmentsXml; set => _fileAttachmentsXml = value; }
+        private DirtyValue<string> _groupName;
+        public string GroupName { get => _groupName; set => _groupName = value; }
         private DirtyValue<string> _guid;
         public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
+        private DirtyValue<bool?> _isAssetVerification;
+        public bool? IsAssetVerification { get => _isAssetVerification; set => _isAssetVerification = value; }
+        private DirtyValue<bool?> _isEmploymentVerification;
+        public bool? IsEmploymentVerification { get => _isEmploymentVerification; set => _isEmploymentVerification = value; }
         private DirtyValue<bool?> _isEPassIndicator;
         public bool? IsEPassIndicator { get => _isEPassIndicator; set => _isEPassIndicator = value; }
         private DirtyValue<bool?> _isExpired;
         public bool? IsExpired { get => _isExpired; set => _isExpired = value; }
+        private DirtyValue<bool?> _isExternalIndicator;
+        public bool? IsExternalIndicator { get => _isExternalIndicator; set => _isExternalIndicator = value; }
+        private DirtyValue<bool?> _isIncomeVerification;
+        public bool? IsIncomeVerification { get => _isIncomeVerification; set => _isIncomeVerification = value; }
+        private DirtyValue<bool?> _isObligationVerification;
+        public bool? IsObligationVerification { get => _isObligationVerification; set => _isObligationVerification = value; }
         private DirtyValue<bool?> _isPastDue;
         public bool? IsPastDue { get => _isPastDue; set => _isPastDue = value; }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
@@ -93,6 +109,8 @@ namespace EncompassRest.Loans
         public bool? IsTPOWebcenterPortalIndicator { get => _isTPOWebcenterPortalIndicator; set => _isTPOWebcenterPortalIndicator = value; }
         private DirtyValue<bool?> _isWebCenterIndicator;
         public bool? IsWebCenterIndicator { get => _isWebCenterIndicator; set => _isWebCenterIndicator = value; }
+        private DirtyValue<DateTime?> _lastAttachmentDateUtc;
+        public DateTime? LastAttachmentDateUtc { get => _lastAttachmentDateUtc; set => _lastAttachmentDateUtc = value; }
         private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
         private DirtyValue<DateTime?> _orderDateUtc;
@@ -171,22 +189,31 @@ namespace EncompassRest.Loans
                     || _dateUtc.Dirty
                     || _daysDue.Dirty
                     || _daysTillExpire.Dirty
+                    || _description.Dirty
                     || _documentDateTimeType.Dirty
+                    || _docVerificationsXml.Dirty
                     || _eDisclosureIndicator.Dirty
                     || _ePassSignature.Dirty
                     || _expected.Dirty
                     || _expires.Dirty
                     || _fileAttachmentsMigrated.Dirty
                     || _fileAttachmentsXml.Dirty
+                    || _groupName.Dirty
                     || _guid.Dirty
                     || _id.Dirty
+                    || _isAssetVerification.Dirty
+                    || _isEmploymentVerification.Dirty
                     || _isEPassIndicator.Dirty
                     || _isExpired.Dirty
+                    || _isExternalIndicator.Dirty
+                    || _isIncomeVerification.Dirty
+                    || _isObligationVerification.Dirty
                     || _isPastDue.Dirty
                     || _isSystemSpecificIndicator.Dirty
                     || _isThirdPartyDocIndicator.Dirty
                     || _isTPOWebcenterPortalIndicator.Dirty
                     || _isWebCenterIndicator.Dirty
+                    || _lastAttachmentDateUtc.Dirty
                     || _logRecordIndex.Dirty
                     || _orderDateUtc.Dirty
                     || _pairId.Dirty
@@ -243,22 +270,31 @@ namespace EncompassRest.Loans
                 _dateUtc.Dirty = value;
                 _daysDue.Dirty = value;
                 _daysTillExpire.Dirty = value;
+                _description.Dirty = value;
                 _documentDateTimeType.Dirty = value;
+                _docVerificationsXml.Dirty = value;
                 _eDisclosureIndicator.Dirty = value;
                 _ePassSignature.Dirty = value;
                 _expected.Dirty = value;
                 _expires.Dirty = value;
                 _fileAttachmentsMigrated.Dirty = value;
                 _fileAttachmentsXml.Dirty = value;
+                _groupName.Dirty = value;
                 _guid.Dirty = value;
                 _id.Dirty = value;
+                _isAssetVerification.Dirty = value;
+                _isEmploymentVerification.Dirty = value;
                 _isEPassIndicator.Dirty = value;
                 _isExpired.Dirty = value;
+                _isExternalIndicator.Dirty = value;
+                _isIncomeVerification.Dirty = value;
+                _isObligationVerification.Dirty = value;
                 _isPastDue.Dirty = value;
                 _isSystemSpecificIndicator.Dirty = value;
                 _isThirdPartyDocIndicator.Dirty = value;
                 _isTPOWebcenterPortalIndicator.Dirty = value;
                 _isWebCenterIndicator.Dirty = value;
+                _lastAttachmentDateUtc.Dirty = value;
                 _logRecordIndex.Dirty = value;
                 _orderDateUtc.Dirty = value;
                 _pairId.Dirty = value;

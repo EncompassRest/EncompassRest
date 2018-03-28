@@ -23,6 +23,8 @@ namespace EncompassRest.Loans
         public decimal? AmountFinanced { get => _amountFinanced; set => _amountFinanced = value; }
         private DirtyValue<decimal?> _aprPercent;
         public decimal? AprPercent { get => _aprPercent; set => _aprPercent = value; }
+        private DirtyValue<string> _aprPercentUI;
+        public string AprPercentUI { get => _aprPercentUI; set => _aprPercentUI = value; }
         private DirtyValue<string> _armDisclosureDescription;
         public string ArmDisclosureDescription { get => _armDisclosureDescription; set => _armDisclosureDescription = value; }
         private DirtyValue<StringEnumValue<AssumptionOnYourProperty>> _assumptionOnYourProperty;
@@ -505,6 +507,7 @@ namespace EncompassRest.Loans
                     || _allDateAndNumericalDisclosuresIndicator.Dirty
                     || _amountFinanced.Dirty
                     || _aprPercent.Dirty
+                    || _aprPercentUI.Dirty
                     || _armDisclosureDescription.Dirty
                     || _assumptionOnYourProperty.Dirty
                     || _borrowerIntendToContinueDate.Dirty
@@ -751,6 +754,7 @@ namespace EncompassRest.Loans
                 _allDateAndNumericalDisclosuresIndicator.Dirty = value;
                 _amountFinanced.Dirty = value;
                 _aprPercent.Dirty = value;
+                _aprPercentUI.Dirty = value;
                 _armDisclosureDescription.Dirty = value;
                 _assumptionOnYourProperty.Dirty = value;
                 _borrowerIntendToContinueDate.Dirty = value;

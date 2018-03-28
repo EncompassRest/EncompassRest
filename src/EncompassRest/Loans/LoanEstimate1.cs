@@ -13,10 +13,20 @@ namespace EncompassRest.Loans
         public string ChangedCircumstanceComments { get => _changedCircumstanceComments; set => _changedCircumstanceComments = value; }
         private DirtyValue<DateTime?> _closingCostEstimateExpirationDate;
         public DateTime? ClosingCostEstimateExpirationDate { get => _closingCostEstimateExpirationDate; set => _closingCostEstimateExpirationDate = value; }
+        private DirtyValue<string> _closingCostEstimateExpirationDateUI;
+        public string ClosingCostEstimateExpirationDateUI { get => _closingCostEstimateExpirationDateUI; set => _closingCostEstimateExpirationDateUI = value; }
         private DirtyValue<string> _closingCostEstimateExpirationTime;
         public string ClosingCostEstimateExpirationTime { get => _closingCostEstimateExpirationTime; set => _closingCostEstimateExpirationTime = value; }
+        private DirtyValue<string> _closingCostEstimateExpirationTimeUI;
+        public string ClosingCostEstimateExpirationTimeUI { get => _closingCostEstimateExpirationTimeUI; set => _closingCostEstimateExpirationTimeUI = value; }
         private DirtyValue<string> _closingCostEstimateExpirationTimeZone;
         public string ClosingCostEstimateExpirationTimeZone { get => _closingCostEstimateExpirationTimeZone; set => _closingCostEstimateExpirationTimeZone = value; }
+        private DirtyValue<string> _closingCostEstimateExpirationTimeZoneUI;
+        public string ClosingCostEstimateExpirationTimeZoneUI { get => _closingCostEstimateExpirationTimeZoneUI; set => _closingCostEstimateExpirationTimeZoneUI = value; }
+        private DirtyValue<StringEnumValue<Conversion>> _conversionBegin;
+        public StringEnumValue<Conversion> ConversionBegin { get => _conversionBegin; set => _conversionBegin = value; }
+        private DirtyValue<StringEnumValue<Conversion>> _conversionEnd;
+        public StringEnumValue<Conversion> ConversionEnd { get => _conversionEnd; set => _conversionEnd = value; }
         private DirtyValue<string> _disclosureBy;
         public string DisclosureBy { get => _disclosureBy; set => _disclosureBy = value; }
         private DirtyValue<DateTime?> _disclosureClosingCostExpDate;
@@ -47,6 +57,10 @@ namespace EncompassRest.Loans
         public string InEscrowOther { get => _inEscrowOther; set => _inEscrowOther = value; }
         private DirtyValue<string> _inEscrowPropertyTaxes;
         public string InEscrowPropertyTaxes { get => _inEscrowPropertyTaxes; set => _inEscrowPropertyTaxes = value; }
+        private DirtyValue<decimal?> _initialMonthlyPaymentFor10000Loan;
+        public decimal? InitialMonthlyPaymentFor10000Loan { get => _initialMonthlyPaymentFor10000Loan; set => _initialMonthlyPaymentFor10000Loan = value; }
+        private DirtyValue<decimal?> _initialMonthlyPaymentFor60000Loan;
+        public decimal? InitialMonthlyPaymentFor60000Loan { get => _initialMonthlyPaymentFor60000Loan; set => _initialMonthlyPaymentFor60000Loan = value; }
         private DirtyValue<string> _interestRateAdjustsEveryYears;
         public string InterestRateAdjustsEveryYears { get => _interestRateAdjustsEveryYears; set => _interestRateAdjustsEveryYears = value; }
         private DirtyValue<int?> _interestRateAdjustsInYear;
@@ -71,6 +85,10 @@ namespace EncompassRest.Loans
         public int? LoanTermMonths { get => _loanTermMonths; set => _loanTermMonths = value; }
         private DirtyValue<int?> _loanTermYears;
         public int? LoanTermYears { get => _loanTermYears; set => _loanTermYears = value; }
+        private DirtyValue<decimal?> _maximumMonthlyPaymentFor10000Loan;
+        public decimal? MaximumMonthlyPaymentFor10000Loan { get => _maximumMonthlyPaymentFor10000Loan; set => _maximumMonthlyPaymentFor10000Loan = value; }
+        private DirtyValue<int?> _maximumPaymentMonth;
+        public int? MaximumPaymentMonth { get => _maximumPaymentMonth; set => _maximumPaymentMonth = value; }
         private DirtyValue<StringEnumValue<MonthOrYear>> _monthlyPIAdjustedInDateType;
         public StringEnumValue<MonthOrYear> MonthlyPIAdjustedInDateType { get => _monthlyPIAdjustedInDateType; set => _monthlyPIAdjustedInDateType = value; }
         private DirtyValue<string> _monthlyPIAdjustsEveryYears;
@@ -256,8 +274,13 @@ namespace EncompassRest.Loans
                 return _adjustsTermType.Dirty
                     || _changedCircumstanceComments.Dirty
                     || _closingCostEstimateExpirationDate.Dirty
+                    || _closingCostEstimateExpirationDateUI.Dirty
                     || _closingCostEstimateExpirationTime.Dirty
+                    || _closingCostEstimateExpirationTimeUI.Dirty
                     || _closingCostEstimateExpirationTimeZone.Dirty
+                    || _closingCostEstimateExpirationTimeZoneUI.Dirty
+                    || _conversionBegin.Dirty
+                    || _conversionEnd.Dirty
                     || _disclosureBy.Dirty
                     || _disclosureClosingCostExpDate.Dirty
                     || _disclosureClosingCostExpTime.Dirty
@@ -273,6 +296,8 @@ namespace EncompassRest.Loans
                     || _inEscrowHomeownerInsurance.Dirty
                     || _inEscrowOther.Dirty
                     || _inEscrowPropertyTaxes.Dirty
+                    || _initialMonthlyPaymentFor10000Loan.Dirty
+                    || _initialMonthlyPaymentFor60000Loan.Dirty
                     || _interestRateAdjustsEveryYears.Dirty
                     || _interestRateAdjustsInYear.Dirty
                     || _interestRateAdjustsStartingInType.Dirty
@@ -285,6 +310,8 @@ namespace EncompassRest.Loans
                     || _loanPurpose.Dirty
                     || _loanTermMonths.Dirty
                     || _loanTermYears.Dirty
+                    || _maximumMonthlyPaymentFor10000Loan.Dirty
+                    || _maximumPaymentMonth.Dirty
                     || _monthlyPIAdjustedInDateType.Dirty
                     || _monthlyPIAdjustsEveryYears.Dirty
                     || _monthlyPIAdjustsInYear.Dirty
@@ -380,8 +407,13 @@ namespace EncompassRest.Loans
                 _adjustsTermType.Dirty = value;
                 _changedCircumstanceComments.Dirty = value;
                 _closingCostEstimateExpirationDate.Dirty = value;
+                _closingCostEstimateExpirationDateUI.Dirty = value;
                 _closingCostEstimateExpirationTime.Dirty = value;
+                _closingCostEstimateExpirationTimeUI.Dirty = value;
                 _closingCostEstimateExpirationTimeZone.Dirty = value;
+                _closingCostEstimateExpirationTimeZoneUI.Dirty = value;
+                _conversionBegin.Dirty = value;
+                _conversionEnd.Dirty = value;
                 _disclosureBy.Dirty = value;
                 _disclosureClosingCostExpDate.Dirty = value;
                 _disclosureClosingCostExpTime.Dirty = value;
@@ -397,6 +429,8 @@ namespace EncompassRest.Loans
                 _inEscrowHomeownerInsurance.Dirty = value;
                 _inEscrowOther.Dirty = value;
                 _inEscrowPropertyTaxes.Dirty = value;
+                _initialMonthlyPaymentFor10000Loan.Dirty = value;
+                _initialMonthlyPaymentFor60000Loan.Dirty = value;
                 _interestRateAdjustsEveryYears.Dirty = value;
                 _interestRateAdjustsInYear.Dirty = value;
                 _interestRateAdjustsStartingInType.Dirty = value;
@@ -409,6 +443,8 @@ namespace EncompassRest.Loans
                 _loanPurpose.Dirty = value;
                 _loanTermMonths.Dirty = value;
                 _loanTermYears.Dirty = value;
+                _maximumMonthlyPaymentFor10000Loan.Dirty = value;
+                _maximumPaymentMonth.Dirty = value;
                 _monthlyPIAdjustedInDateType.Dirty = value;
                 _monthlyPIAdjustsEveryYears.Dirty = value;
                 _monthlyPIAdjustsInYear.Dirty = value;

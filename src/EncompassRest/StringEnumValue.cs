@@ -54,7 +54,7 @@ namespace EncompassRest
         public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> && ((StringEnumValue<TEnum>)obj).Value == Value;
     }
 
-    internal sealed class StringEnumValueConverter<TEnum> : JsonConverter
+    internal sealed class StringEnumValueConverter<TEnum> : JsonConverter, IStringCreator
         where TEnum : struct
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<StringEnumValue<TEnum>>.Type;
@@ -62,5 +62,7 @@ namespace EncompassRest
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> ? ((StringEnumValue<TEnum>)value).Value : value?.ToString());
+
+        public object Create(string value) => new StringEnumValue<TEnum>(value);
     }
 }

@@ -323,6 +323,8 @@ namespace EncompassRest.Loans
         public decimal? GuarantyFeePercent { get => _guarantyFeePercent; set => _guarantyFeePercent = value; }
         private DirtyValue<decimal?> _guarantyPercent;
         public decimal? GuarantyPercent { get => _guarantyPercent; set => _guarantyPercent = value; }
+        private DirtyValue<string> _homeOwnerAssociationEin;
+        public string HomeOwnerAssociationEin { get => _homeOwnerAssociationEin; set => _homeOwnerAssociationEin = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<StringEnumValue<IndexType>> _indexType;
@@ -529,10 +531,14 @@ namespace EncompassRest.Loans
         public DateTime? PropertyValuationEffectiveDate { get => _propertyValuationEffectiveDate; set => _propertyValuationEffectiveDate = value; }
         private DirtyValue<StringEnumValue<PropertyValuationMethodType>> _propertyValuationMethodType;
         public StringEnumValue<PropertyValuationMethodType> PropertyValuationMethodType { get => _propertyValuationMethodType; set => _propertyValuationMethodType = value; }
+        private DirtyValue<StringEnumValue<PropertyValuationOther>> _propertyValuationOther;
+        public StringEnumValue<PropertyValuationOther> PropertyValuationOther { get => _propertyValuationOther; set => _propertyValuationOther = value; }
         private DirtyValue<decimal?> _refinanceCashOutAmount;
         public decimal? RefinanceCashOutAmount { get => _refinanceCashOutAmount; set => _refinanceCashOutAmount = value; }
         private DirtyValue<StringEnumValue<RefinanceCashOutDeterminationType>> _refinanceCashOutDeterminationType;
         public StringEnumValue<RefinanceCashOutDeterminationType> RefinanceCashOutDeterminationType { get => _refinanceCashOutDeterminationType; set => _refinanceCashOutDeterminationType = value; }
+        private DirtyValue<bool?> _relatedLoanAffordableIndicator;
+        public bool? RelatedLoanAffordableIndicator { get => _relatedLoanAffordableIndicator; set => _relatedLoanAffordableIndicator = value; }
         private DirtyValue<bool?> _relatedLoanBalloonIndicator;
         public bool? RelatedLoanBalloonIndicator { get => _relatedLoanBalloonIndicator; set => _relatedLoanBalloonIndicator = value; }
         private DirtyValue<bool?> _relatedLoanHELOCIndicator;
@@ -605,6 +611,10 @@ namespace EncompassRest.Loans
         public int? Unit4TotalBedrooms { get => _unit4TotalBedrooms; set => _unit4TotalBedrooms = value; }
         private DirtyValue<decimal?> _uPBAmount;
         public decimal? UPBAmount { get => _uPBAmount; set => _uPBAmount = value; }
+        private DirtyValue<string> _wareHouseLenderId;
+        public string WareHouseLenderId { get => _wareHouseLenderId; set => _wareHouseLenderId = value; }
+        private DirtyValue<bool?> _wareHouseLenderIndicator;
+        public bool? WareHouseLenderIndicator { get => _wareHouseLenderIndicator; set => _wareHouseLenderIndicator = value; }
         internal override bool DirtyInternal
         {
             get
@@ -767,6 +777,7 @@ namespace EncompassRest.Loans
                     || _guarantyFeeAfterAlternatePaymentMethodPercent.Dirty
                     || _guarantyFeePercent.Dirty
                     || _guarantyPercent.Dirty
+                    || _homeOwnerAssociationEin.Dirty
                     || _id.Dirty
                     || _indexType.Dirty
                     || _initialFixedPeriodEffectiveMonthsCount.Dirty
@@ -870,8 +881,10 @@ namespace EncompassRest.Loans
                     || _projectUnitCount.Dirty
                     || _propertyValuationEffectiveDate.Dirty
                     || _propertyValuationMethodType.Dirty
+                    || _propertyValuationOther.Dirty
                     || _refinanceCashOutAmount.Dirty
                     || _refinanceCashOutDeterminationType.Dirty
+                    || _relatedLoanAffordableIndicator.Dirty
                     || _relatedLoanBalloonIndicator.Dirty
                     || _relatedLoanHELOCIndicator.Dirty
                     || _relatedLoanIndicator.Dirty
@@ -907,7 +920,9 @@ namespace EncompassRest.Loans
                     || _unit3TotalBedrooms.Dirty
                     || _unit4SubjectPropertyGrossRentalIncome.Dirty
                     || _unit4TotalBedrooms.Dirty
-                    || _uPBAmount.Dirty;
+                    || _uPBAmount.Dirty
+                    || _wareHouseLenderId.Dirty
+                    || _wareHouseLenderIndicator.Dirty;
             }
             set
             {
@@ -1069,6 +1084,7 @@ namespace EncompassRest.Loans
                 _guarantyFeeAfterAlternatePaymentMethodPercent.Dirty = value;
                 _guarantyFeePercent.Dirty = value;
                 _guarantyPercent.Dirty = value;
+                _homeOwnerAssociationEin.Dirty = value;
                 _id.Dirty = value;
                 _indexType.Dirty = value;
                 _initialFixedPeriodEffectiveMonthsCount.Dirty = value;
@@ -1172,8 +1188,10 @@ namespace EncompassRest.Loans
                 _projectUnitCount.Dirty = value;
                 _propertyValuationEffectiveDate.Dirty = value;
                 _propertyValuationMethodType.Dirty = value;
+                _propertyValuationOther.Dirty = value;
                 _refinanceCashOutAmount.Dirty = value;
                 _refinanceCashOutDeterminationType.Dirty = value;
+                _relatedLoanAffordableIndicator.Dirty = value;
                 _relatedLoanBalloonIndicator.Dirty = value;
                 _relatedLoanHELOCIndicator.Dirty = value;
                 _relatedLoanIndicator.Dirty = value;
@@ -1210,6 +1228,8 @@ namespace EncompassRest.Loans
                 _unit4SubjectPropertyGrossRentalIncome.Dirty = value;
                 _unit4TotalBedrooms.Dirty = value;
                 _uPBAmount.Dirty = value;
+                _wareHouseLenderId.Dirty = value;
+                _wareHouseLenderIndicator.Dirty = value;
             }
         }
     }

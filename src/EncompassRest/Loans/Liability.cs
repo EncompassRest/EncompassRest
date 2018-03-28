@@ -13,6 +13,8 @@ namespace EncompassRest.Loans
         public bool? AccountIndicator { get => _accountIndicator; set => _accountIndicator = value; }
         private DirtyValue<string> _attention;
         public string Attention { get => _attention; set => _attention = value; }
+        private EntityReference _contact;
+        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
         private DirtyValue<DateTime?> _date;
         public DateTime? Date { get => _date; set => _date = value; }
         private DirtyValue<string> _description;
@@ -181,7 +183,8 @@ namespace EncompassRest.Loans
                     || _toBePaidOffAmount.Dirty
                     || _uCDPayoffType.Dirty
                     || _unpaidBalanceAmount.Dirty
-                    || _volIndex.Dirty;
+                    || _volIndex.Dirty
+                    || _contact?.Dirty == true;
             }
             set
             {
@@ -242,6 +245,7 @@ namespace EncompassRest.Loans
                 _uCDPayoffType.Dirty = value;
                 _unpaidBalanceAmount.Dirty = value;
                 _volIndex.Dirty = value;
+                if (_contact != null) _contact.Dirty = value;
             }
         }
     }

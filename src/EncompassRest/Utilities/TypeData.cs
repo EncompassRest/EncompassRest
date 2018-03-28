@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace EncompassRest.Utilities
@@ -9,6 +10,16 @@ namespace EncompassRest.Utilities
         private static ConcurrentDictionary<Type, TypeData> s_typeDatas = new ConcurrentDictionary<Type, TypeData>();
 
         public static Type OpenNullableType { get; } = typeof(Nullable<>);
+
+        public static Type OpenIEnumerableType { get; } = typeof(IEnumerable<>);
+
+        public static Type OpenStringEnumValueType = typeof(StringEnumValue<>);
+
+        public static Type OpenNaType = typeof(NA<>);
+
+        public static Type OpenDirtyListType = typeof(DirtyList<>);
+
+        public static Type OpenDirtyDictionaryType = typeof(DirtyDictionary<,>);
 
         public static TypeData Get(Type type) => s_typeDatas.GetOrAdd(type, t => new TypeData(t));
 

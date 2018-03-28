@@ -7,6 +7,8 @@ namespace EncompassRest.Loans
 {
     public sealed partial class DisclosureTracking2015Log : ExtensibleObject, IIdentifiable
     {
+        private DirtyValue<DateTime?> _actualFulfillmentDate;
+        public DateTime? ActualFulfillmentDate { get => _actualFulfillmentDate; set => _actualFulfillmentDate = value; }
         private DirtyList<LogAlert> _alerts;
         public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
         private DirtyValue<string> _alertsXml;
@@ -15,6 +17,8 @@ namespace EncompassRest.Loans
         public DateTime? ApplicationDate { get => _applicationDate; set => _applicationDate = value; }
         private DirtyValue<string> _appliedCureAmount;
         public string AppliedCureAmount { get => _appliedCureAmount; set => _appliedCureAmount = value; }
+        private DirtyValue<string> _automaticFullfillmentServiceName;
+        public string AutomaticFullfillmentServiceName { get => _automaticFullfillmentServiceName; set => _automaticFullfillmentServiceName = value; }
         private DirtyValue<DateTime?> _borrowerActualReceivedDate;
         public DateTime? BorrowerActualReceivedDate { get => _borrowerActualReceivedDate; set => _borrowerActualReceivedDate = value; }
         private DirtyValue<string> _borrowerDisclosedMethod;
@@ -29,8 +33,12 @@ namespace EncompassRest.Loans
         public DateTime? BorrowerPresumedReceivedDate { get => _borrowerPresumedReceivedDate; set => _borrowerPresumedReceivedDate = value; }
         private DirtyValue<string> _borrowerType;
         public string BorrowerType { get => _borrowerType; set => _borrowerType = value; }
+        private DirtyValue<bool?> _brokerDisclosed;
+        public bool? BrokerDisclosed { get => _brokerDisclosed; set => _brokerDisclosed = value; }
         private DirtyValue<bool?> _cDReasonIs24HourAdvancePreview;
         public bool? CDReasonIs24HourAdvancePreview { get => _cDReasonIs24HourAdvancePreview; set => _cDReasonIs24HourAdvancePreview = value; }
+        private DirtyValue<bool?> _cDReasonIsChangedCircumstanceEligibility;
+        public bool? CDReasonIsChangedCircumstanceEligibility { get => _cDReasonIsChangedCircumstanceEligibility; set => _cDReasonIsChangedCircumstanceEligibility = value; }
         private DirtyValue<bool?> _cDReasonIsChangeInAPR;
         public bool? CDReasonIsChangeInAPR { get => _cDReasonIsChangeInAPR; set => _cDReasonIsChangeInAPR = value; }
         private DirtyValue<bool?> _cDReasonIsChangeInLoanProduct;
@@ -39,10 +47,14 @@ namespace EncompassRest.Loans
         public bool? CDReasonIsChangeInSettlementCharges { get => _cDReasonIsChangeInSettlementCharges; set => _cDReasonIsChangeInSettlementCharges = value; }
         private DirtyValue<bool?> _cDReasonIsClericalErrorCorrection;
         public bool? CDReasonIsClericalErrorCorrection { get => _cDReasonIsClericalErrorCorrection; set => _cDReasonIsClericalErrorCorrection = value; }
+        private DirtyValue<bool?> _cDReasonIsInterestRateDependentCharges;
+        public bool? CDReasonIsInterestRateDependentCharges { get => _cDReasonIsInterestRateDependentCharges; set => _cDReasonIsInterestRateDependentCharges = value; }
         private DirtyValue<bool?> _cDReasonIsOther;
         public bool? CDReasonIsOther { get => _cDReasonIsOther; set => _cDReasonIsOther = value; }
         private DirtyValue<bool?> _cDReasonIsPrepaymentPenaltyAdded;
         public bool? CDReasonIsPrepaymentPenaltyAdded { get => _cDReasonIsPrepaymentPenaltyAdded; set => _cDReasonIsPrepaymentPenaltyAdded = value; }
+        private DirtyValue<bool?> _cDReasonIsRevisionsRequestedByConsumer;
+        public bool? CDReasonIsRevisionsRequestedByConsumer { get => _cDReasonIsRevisionsRequestedByConsumer; set => _cDReasonIsRevisionsRequestedByConsumer = value; }
         private DirtyValue<bool?> _cDReasonIsToleranceCure;
         public bool? CDReasonIsToleranceCure { get => _cDReasonIsToleranceCure; set => _cDReasonIsToleranceCure = value; }
         private DirtyValue<string> _cDReasonOther;
@@ -51,6 +63,8 @@ namespace EncompassRest.Loans
         public string ChangeInCircumstance { get => _changeInCircumstance; set => _changeInCircumstance = value; }
         private DirtyValue<string> _changeInCircumstanceComments;
         public string ChangeInCircumstanceComments { get => _changeInCircumstanceComments; set => _changeInCircumstanceComments = value; }
+        private DirtyValue<DateTime?> _changesReceivedDate;
+        public DateTime? ChangesReceivedDate { get => _changesReceivedDate; set => _changesReceivedDate = value; }
         private DirtyValue<string> _chargesCannotIncrease10Itemization34;
         public string ChargesCannotIncrease10Itemization34 { get => _chargesCannotIncrease10Itemization34; set => _chargesCannotIncrease10Itemization34 = value; }
         private DirtyValue<string> _chargesCannotIncrease10LE32;
@@ -125,10 +139,28 @@ namespace EncompassRest.Loans
         public bool? EDisclosureApprovalPackageIndicator { get => _eDisclosureApprovalPackageIndicator; set => _eDisclosureApprovalPackageIndicator = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerAcceptConsentDate;
         public DateTime? EDisclosureBorrowerAcceptConsentDate { get => _eDisclosureBorrowerAcceptConsentDate; set => _eDisclosureBorrowerAcceptConsentDate = value; }
+        private DirtyValue<string> _eDisclosureBorrowerAcceptConsentIP;
+        public string EDisclosureBorrowerAcceptConsentIP { get => _eDisclosureBorrowerAcceptConsentIP; set => _eDisclosureBorrowerAcceptConsentIP = value; }
+        private DirtyValue<DateTime?> _eDisclosureBorrowerAuthenticatedDate;
+        public DateTime? EDisclosureBorrowerAuthenticatedDate { get => _eDisclosureBorrowerAuthenticatedDate; set => _eDisclosureBorrowerAuthenticatedDate = value; }
+        private DirtyValue<string> _eDisclosureBorrowerAuthenticatedIP;
+        public string EDisclosureBorrowerAuthenticatedIP { get => _eDisclosureBorrowerAuthenticatedIP; set => _eDisclosureBorrowerAuthenticatedIP = value; }
+        private DirtyValue<DateTime?> _eDisclosureBorrowerDocumentViewedDate;
+        public DateTime? EDisclosureBorrowerDocumentViewedDate { get => _eDisclosureBorrowerDocumentViewedDate; set => _eDisclosureBorrowerDocumentViewedDate = value; }
+        private DirtyValue<string> _eDisclosureBorrowerEmail;
+        public string EDisclosureBorrowerEmail { get => _eDisclosureBorrowerEmail; set => _eDisclosureBorrowerEmail = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowereSignedDate;
         public DateTime? EDisclosureBorrowereSignedDate { get => _eDisclosureBorrowereSignedDate; set => _eDisclosureBorrowereSignedDate = value; }
+        private DirtyValue<string> _eDisclosureBorrowereSignedIP;
+        public string EDisclosureBorrowereSignedIP { get => _eDisclosureBorrowereSignedIP; set => _eDisclosureBorrowereSignedIP = value; }
+        private DirtyValue<string> _eDisclosureBorrowerLoanLevelConsent;
+        public string EDisclosureBorrowerLoanLevelConsent { get => _eDisclosureBorrowerLoanLevelConsent; set => _eDisclosureBorrowerLoanLevelConsent = value; }
+        private DirtyValue<string> _eDisclosureBorrowerName;
+        public string EDisclosureBorrowerName { get => _eDisclosureBorrowerName; set => _eDisclosureBorrowerName = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerRejectConsentDate;
         public DateTime? EDisclosureBorrowerRejectConsentDate { get => _eDisclosureBorrowerRejectConsentDate; set => _eDisclosureBorrowerRejectConsentDate = value; }
+        private DirtyValue<string> _eDisclosureBorrowerRejectConsentIP;
+        public string EDisclosureBorrowerRejectConsentIP { get => _eDisclosureBorrowerRejectConsentIP; set => _eDisclosureBorrowerRejectConsentIP = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerViewConsentDate;
         public DateTime? EDisclosureBorrowerViewConsentDate { get => _eDisclosureBorrowerViewConsentDate; set => _eDisclosureBorrowerViewConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerViewMessageDate;
@@ -137,10 +169,28 @@ namespace EncompassRest.Loans
         public DateTime? EDisclosureBorrowerWetSignedDate { get => _eDisclosureBorrowerWetSignedDate; set => _eDisclosureBorrowerWetSignedDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerAcceptConsentDate;
         public DateTime? EDisclosureCoBorrowerAcceptConsentDate { get => _eDisclosureCoBorrowerAcceptConsentDate; set => _eDisclosureCoBorrowerAcceptConsentDate = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerAcceptConsentIP;
+        public string EDisclosureCoBorrowerAcceptConsentIP { get => _eDisclosureCoBorrowerAcceptConsentIP; set => _eDisclosureCoBorrowerAcceptConsentIP = value; }
+        private DirtyValue<DateTime?> _eDisclosureCoBorrowerAuthenticatedDate;
+        public DateTime? EDisclosureCoBorrowerAuthenticatedDate { get => _eDisclosureCoBorrowerAuthenticatedDate; set => _eDisclosureCoBorrowerAuthenticatedDate = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerAuthenticatedIP;
+        public string EDisclosureCoBorrowerAuthenticatedIP { get => _eDisclosureCoBorrowerAuthenticatedIP; set => _eDisclosureCoBorrowerAuthenticatedIP = value; }
+        private DirtyValue<DateTime?> _eDisclosureCoBorrowerDocumentViewedDate;
+        public DateTime? EDisclosureCoBorrowerDocumentViewedDate { get => _eDisclosureCoBorrowerDocumentViewedDate; set => _eDisclosureCoBorrowerDocumentViewedDate = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerEmail;
+        public string EDisclosureCoBorrowerEmail { get => _eDisclosureCoBorrowerEmail; set => _eDisclosureCoBorrowerEmail = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowereSignedDate;
         public DateTime? EDisclosureCoBorrowereSignedDate { get => _eDisclosureCoBorrowereSignedDate; set => _eDisclosureCoBorrowereSignedDate = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowereSignedIP;
+        public string EDisclosureCoBorrowereSignedIP { get => _eDisclosureCoBorrowereSignedIP; set => _eDisclosureCoBorrowereSignedIP = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerLoanLevelConsent;
+        public string EDisclosureCoBorrowerLoanLevelConsent { get => _eDisclosureCoBorrowerLoanLevelConsent; set => _eDisclosureCoBorrowerLoanLevelConsent = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerName;
+        public string EDisclosureCoBorrowerName { get => _eDisclosureCoBorrowerName; set => _eDisclosureCoBorrowerName = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerRejectConsentDate;
         public DateTime? EDisclosureCoBorrowerRejectConsentDate { get => _eDisclosureCoBorrowerRejectConsentDate; set => _eDisclosureCoBorrowerRejectConsentDate = value; }
+        private DirtyValue<string> _eDisclosureCoBorrowerRejectConsentIP;
+        public string EDisclosureCoBorrowerRejectConsentIP { get => _eDisclosureCoBorrowerRejectConsentIP; set => _eDisclosureCoBorrowerRejectConsentIP = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewConsentDate;
         public DateTime? EDisclosureCoBorrowerViewConsentDate { get => _eDisclosureCoBorrowerViewConsentDate; set => _eDisclosureCoBorrowerViewConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewMessageDate;
@@ -153,6 +203,14 @@ namespace EncompassRest.Loans
         public string EDisclosureDisclosedMessage { get => _eDisclosureDisclosedMessage; set => _eDisclosureDisclosedMessage = value; }
         private DirtyValue<bool?> _eDisclosureLockPackageIndicator;
         public bool? EDisclosureLockPackageIndicator { get => _eDisclosureLockPackageIndicator; set => _eDisclosureLockPackageIndicator = value; }
+        private DirtyValue<DateTime?> _eDisclosureLOeSignedDate;
+        public DateTime? EDisclosureLOeSignedDate { get => _eDisclosureLOeSignedDate; set => _eDisclosureLOeSignedDate = value; }
+        private DirtyValue<string> _eDisclosureLOeSignedIP;
+        public string EDisclosureLOeSignedIP { get => _eDisclosureLOeSignedIP; set => _eDisclosureLOeSignedIP = value; }
+        private DirtyValue<string> _eDisclosureLOName;
+        public string EDisclosureLOName { get => _eDisclosureLOName; set => _eDisclosureLOName = value; }
+        private DirtyValue<DateTime?> _eDisclosureLOViewMessageDate;
+        public DateTime? EDisclosureLOViewMessageDate { get => _eDisclosureLOViewMessageDate; set => _eDisclosureLOViewMessageDate = value; }
         private DirtyValue<string> _eDisclosureManualFulfillmentComment;
         public string EDisclosureManualFulfillmentComment { get => _eDisclosureManualFulfillmentComment; set => _eDisclosureManualFulfillmentComment = value; }
         private DirtyValue<DateTime?> _eDisclosureManualFulfillmentDate;
@@ -181,8 +239,12 @@ namespace EncompassRest.Loans
         public string FormsXml { get => _formsXml; set => _formsXml = value; }
         private DirtyValue<string> _fulfillmentOrderedBy;
         public string FulfillmentOrderedBy { get => _fulfillmentOrderedBy; set => _fulfillmentOrderedBy = value; }
+        private DirtyValue<string> _fulfillmentOrderedBy_CoBorrower;
+        public string FulfillmentOrderedBy_CoBorrower { get => _fulfillmentOrderedBy_CoBorrower; set => _fulfillmentOrderedBy_CoBorrower = value; }
         private DirtyValue<string> _fullfillmentProcessedDate;
         public string FullfillmentProcessedDate { get => _fullfillmentProcessedDate; set => _fullfillmentProcessedDate = value; }
+        private DirtyValue<DateTime?> _fullfillmentProcessedDate_CoBorrower;
+        public DateTime? FullfillmentProcessedDate_CoBorrower { get => _fullfillmentProcessedDate_CoBorrower; set => _fullfillmentProcessedDate_CoBorrower = value; }
         private DirtyValue<string> _guid;
         public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
@@ -213,10 +275,14 @@ namespace EncompassRest.Loans
         public string IsDisclosedAprLocked { get => _isDisclosedAprLocked; set => _isDisclosedAprLocked = value; }
         private DirtyValue<string> _isDisclosedByLocked;
         public string IsDisclosedByLocked { get => _isDisclosedByLocked; set => _isDisclosedByLocked = value; }
+        private DirtyValue<bool?> _isDisclosedDailyInterestLocked;
+        public bool? IsDisclosedDailyInterestLocked { get => _isDisclosedDailyInterestLocked; set => _isDisclosedDailyInterestLocked = value; }
         private DirtyValue<string> _isDisclosedFinanceChargeLocked;
         public string IsDisclosedFinanceChargeLocked { get => _isDisclosedFinanceChargeLocked; set => _isDisclosedFinanceChargeLocked = value; }
         private DirtyValue<string> _isDisclosedReceivedDateLocked;
         public string IsDisclosedReceivedDateLocked { get => _isDisclosedReceivedDateLocked; set => _isDisclosedReceivedDateLocked = value; }
+        private DirtyValue<bool?> _isIntentReceivedByLocked;
+        public bool? IsIntentReceivedByLocked { get => _isIntentReceivedByLocked; set => _isIntentReceivedByLocked = value; }
         private DirtyValue<string> _isLocked;
         public string IsLocked { get => _isLocked; set => _isLocked = value; }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
@@ -373,16 +439,26 @@ namespace EncompassRest.Loans
         public string LockedDisclosedAprField { get => _lockedDisclosedAprField; set => _lockedDisclosedAprField = value; }
         private DirtyValue<string> _lockedDisclosedByField;
         public string LockedDisclosedByField { get => _lockedDisclosedByField; set => _lockedDisclosedByField = value; }
+        private DirtyValue<string> _lockedDisclosedDailyInterestField;
+        public string LockedDisclosedDailyInterestField { get => _lockedDisclosedDailyInterestField; set => _lockedDisclosedDailyInterestField = value; }
+        private DirtyValue<DateTime?> _lockedDisclosedDateField;
+        public DateTime? LockedDisclosedDateField { get => _lockedDisclosedDateField; set => _lockedDisclosedDateField = value; }
         private DirtyValue<string> _lockedDisclosedFinanceChargeField;
         public string LockedDisclosedFinanceChargeField { get => _lockedDisclosedFinanceChargeField; set => _lockedDisclosedFinanceChargeField = value; }
         private DirtyValue<DateTime?> _lockedDisclosedReceivedDate;
         public DateTime? LockedDisclosedReceivedDate { get => _lockedDisclosedReceivedDate; set => _lockedDisclosedReceivedDate = value; }
+        private DirtyValue<string> _lockedIntentReceivedByField;
+        public string LockedIntentReceivedByField { get => _lockedIntentReceivedByField; set => _lockedIntentReceivedByField = value; }
         private DirtyValue<int?> _logRecordIndex;
         public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
         private DirtyValue<string> _manuallyCreated;
         public string ManuallyCreated { get => _manuallyCreated; set => _manuallyCreated = value; }
+        private DirtyValue<int?> _numberOfDisclosureDocs;
+        public int? NumberOfDisclosureDocs { get => _numberOfDisclosureDocs; set => _numberOfDisclosureDocs = value; }
         private DirtyValue<string> _prepaymentPenaltyIndicator;
         public string PrepaymentPenaltyIndicator { get => _prepaymentPenaltyIndicator; set => _prepaymentPenaltyIndicator = value; }
+        private DirtyValue<DateTime?> _presumedFulfillmentDate;
+        public DateTime? PresumedFulfillmentDate { get => _presumedFulfillmentDate; set => _presumedFulfillmentDate = value; }
         private DirtyValue<string> _propertyAddress;
         public string PropertyAddress { get => _propertyAddress; set => _propertyAddress = value; }
         private DirtyValue<string> _propertyCity;
@@ -397,6 +473,8 @@ namespace EncompassRest.Loans
         public string PurchasePriceAmount { get => _purchasePriceAmount; set => _purchasePriceAmount = value; }
         private DirtyValue<DateTime?> _receivedDate;
         public DateTime? ReceivedDate { get => _receivedDate; set => _receivedDate = value; }
+        private DirtyValue<DateTime?> _revisedDueDate;
+        public DateTime? RevisedDueDate { get => _revisedDueDate; set => _revisedDueDate = value; }
         private DirtyList<LogSnapshotField> _snapshotFields;
         public IList<LogSnapshotField> SnapshotFields { get => _snapshotFields ?? (_snapshotFields = new DirtyList<LogSnapshotField>()); set => _snapshotFields = new DirtyList<LogSnapshotField>(value); }
         private DirtyValue<string> _snapshotXml;
@@ -407,9 +485,11 @@ namespace EncompassRest.Loans
         {
             get
             {
-                return _alertsXml.Dirty
+                return _actualFulfillmentDate.Dirty
+                    || _alertsXml.Dirty
                     || _applicationDate.Dirty
                     || _appliedCureAmount.Dirty
+                    || _automaticFullfillmentServiceName.Dirty
                     || _borrowerActualReceivedDate.Dirty
                     || _borrowerDisclosedMethod.Dirty
                     || _borrowerDisclosedMethodOther.Dirty
@@ -417,17 +497,22 @@ namespace EncompassRest.Loans
                     || _borrowerPairId.Dirty
                     || _borrowerPresumedReceivedDate.Dirty
                     || _borrowerType.Dirty
+                    || _brokerDisclosed.Dirty
                     || _cDReasonIs24HourAdvancePreview.Dirty
+                    || _cDReasonIsChangedCircumstanceEligibility.Dirty
                     || _cDReasonIsChangeInAPR.Dirty
                     || _cDReasonIsChangeInLoanProduct.Dirty
                     || _cDReasonIsChangeInSettlementCharges.Dirty
                     || _cDReasonIsClericalErrorCorrection.Dirty
+                    || _cDReasonIsInterestRateDependentCharges.Dirty
                     || _cDReasonIsOther.Dirty
                     || _cDReasonIsPrepaymentPenaltyAdded.Dirty
+                    || _cDReasonIsRevisionsRequestedByConsumer.Dirty
                     || _cDReasonIsToleranceCure.Dirty
                     || _cDReasonOther.Dirty
                     || _changeInCircumstance.Dirty
                     || _changeInCircumstanceComments.Dirty
+                    || _changesReceivedDate.Dirty
                     || _chargesCannotIncrease10Itemization34.Dirty
                     || _chargesCannotIncrease10LE32.Dirty
                     || _chargesThatCannotDecreaseItemization9.Dirty
@@ -464,20 +549,42 @@ namespace EncompassRest.Loans
                     || _eDisclosureApplicationPackageIndicator.Dirty
                     || _eDisclosureApprovalPackageIndicator.Dirty
                     || _eDisclosureBorrowerAcceptConsentDate.Dirty
+                    || _eDisclosureBorrowerAcceptConsentIP.Dirty
+                    || _eDisclosureBorrowerAuthenticatedDate.Dirty
+                    || _eDisclosureBorrowerAuthenticatedIP.Dirty
+                    || _eDisclosureBorrowerDocumentViewedDate.Dirty
+                    || _eDisclosureBorrowerEmail.Dirty
                     || _eDisclosureBorrowereSignedDate.Dirty
+                    || _eDisclosureBorrowereSignedIP.Dirty
+                    || _eDisclosureBorrowerLoanLevelConsent.Dirty
+                    || _eDisclosureBorrowerName.Dirty
                     || _eDisclosureBorrowerRejectConsentDate.Dirty
+                    || _eDisclosureBorrowerRejectConsentIP.Dirty
                     || _eDisclosureBorrowerViewConsentDate.Dirty
                     || _eDisclosureBorrowerViewMessageDate.Dirty
                     || _eDisclosureBorrowerWetSignedDate.Dirty
                     || _eDisclosureCoBorrowerAcceptConsentDate.Dirty
+                    || _eDisclosureCoBorrowerAcceptConsentIP.Dirty
+                    || _eDisclosureCoBorrowerAuthenticatedDate.Dirty
+                    || _eDisclosureCoBorrowerAuthenticatedIP.Dirty
+                    || _eDisclosureCoBorrowerDocumentViewedDate.Dirty
+                    || _eDisclosureCoBorrowerEmail.Dirty
                     || _eDisclosureCoBorrowereSignedDate.Dirty
+                    || _eDisclosureCoBorrowereSignedIP.Dirty
+                    || _eDisclosureCoBorrowerLoanLevelConsent.Dirty
+                    || _eDisclosureCoBorrowerName.Dirty
                     || _eDisclosureCoBorrowerRejectConsentDate.Dirty
+                    || _eDisclosureCoBorrowerRejectConsentIP.Dirty
                     || _eDisclosureCoBorrowerViewConsentDate.Dirty
                     || _eDisclosureCoBorrowerViewMessageDate.Dirty
                     || _eDisclosureCoBorrowerWebSignedDate.Dirty
                     || _eDisclosureConsentPdf.Dirty
                     || _eDisclosureDisclosedMessage.Dirty
                     || _eDisclosureLockPackageIndicator.Dirty
+                    || _eDisclosureLOeSignedDate.Dirty
+                    || _eDisclosureLOeSignedIP.Dirty
+                    || _eDisclosureLOName.Dirty
+                    || _eDisclosureLOViewMessageDate.Dirty
                     || _eDisclosureManualFulfillmentComment.Dirty
                     || _eDisclosureManualFulfillmentDate.Dirty
                     || _eDisclosureManualFulfillmentMethod.Dirty
@@ -491,7 +598,9 @@ namespace EncompassRest.Loans
                     || _financeCharge.Dirty
                     || _formsXml.Dirty
                     || _fulfillmentOrderedBy.Dirty
+                    || _fulfillmentOrderedBy_CoBorrower.Dirty
                     || _fullfillmentProcessedDate.Dirty
+                    || _fullfillmentProcessedDate_CoBorrower.Dirty
                     || _guid.Dirty
                     || _id.Dirty
                     || _intentToProceed.Dirty
@@ -507,8 +616,10 @@ namespace EncompassRest.Loans
                     || _isDisclosed.Dirty
                     || _isDisclosedAprLocked.Dirty
                     || _isDisclosedByLocked.Dirty
+                    || _isDisclosedDailyInterestLocked.Dirty
                     || _isDisclosedFinanceChargeLocked.Dirty
                     || _isDisclosedReceivedDateLocked.Dirty
+                    || _isIntentReceivedByLocked.Dirty
                     || _isLocked.Dirty
                     || _isSystemSpecificIndicator.Dirty
                     || _isWetSignedIndicator.Dirty
@@ -587,11 +698,16 @@ namespace EncompassRest.Loans
                     || _lockedCoBorrowerType.Dirty
                     || _lockedDisclosedAprField.Dirty
                     || _lockedDisclosedByField.Dirty
+                    || _lockedDisclosedDailyInterestField.Dirty
+                    || _lockedDisclosedDateField.Dirty
                     || _lockedDisclosedFinanceChargeField.Dirty
                     || _lockedDisclosedReceivedDate.Dirty
+                    || _lockedIntentReceivedByField.Dirty
                     || _logRecordIndex.Dirty
                     || _manuallyCreated.Dirty
+                    || _numberOfDisclosureDocs.Dirty
                     || _prepaymentPenaltyIndicator.Dirty
+                    || _presumedFulfillmentDate.Dirty
                     || _propertyAddress.Dirty
                     || _propertyCity.Dirty
                     || _propertyState.Dirty
@@ -599,6 +715,7 @@ namespace EncompassRest.Loans
                     || _providerListSent.Dirty
                     || _purchasePriceAmount.Dirty
                     || _receivedDate.Dirty
+                    || _revisedDueDate.Dirty
                     || _snapshotXml.Dirty
                     || _systemId.Dirty
                     || _alerts?.Dirty == true
@@ -608,9 +725,11 @@ namespace EncompassRest.Loans
             }
             set
             {
+                _actualFulfillmentDate.Dirty = value;
                 _alertsXml.Dirty = value;
                 _applicationDate.Dirty = value;
                 _appliedCureAmount.Dirty = value;
+                _automaticFullfillmentServiceName.Dirty = value;
                 _borrowerActualReceivedDate.Dirty = value;
                 _borrowerDisclosedMethod.Dirty = value;
                 _borrowerDisclosedMethodOther.Dirty = value;
@@ -618,17 +737,22 @@ namespace EncompassRest.Loans
                 _borrowerPairId.Dirty = value;
                 _borrowerPresumedReceivedDate.Dirty = value;
                 _borrowerType.Dirty = value;
+                _brokerDisclosed.Dirty = value;
                 _cDReasonIs24HourAdvancePreview.Dirty = value;
+                _cDReasonIsChangedCircumstanceEligibility.Dirty = value;
                 _cDReasonIsChangeInAPR.Dirty = value;
                 _cDReasonIsChangeInLoanProduct.Dirty = value;
                 _cDReasonIsChangeInSettlementCharges.Dirty = value;
                 _cDReasonIsClericalErrorCorrection.Dirty = value;
+                _cDReasonIsInterestRateDependentCharges.Dirty = value;
                 _cDReasonIsOther.Dirty = value;
                 _cDReasonIsPrepaymentPenaltyAdded.Dirty = value;
+                _cDReasonIsRevisionsRequestedByConsumer.Dirty = value;
                 _cDReasonIsToleranceCure.Dirty = value;
                 _cDReasonOther.Dirty = value;
                 _changeInCircumstance.Dirty = value;
                 _changeInCircumstanceComments.Dirty = value;
+                _changesReceivedDate.Dirty = value;
                 _chargesCannotIncrease10Itemization34.Dirty = value;
                 _chargesCannotIncrease10LE32.Dirty = value;
                 _chargesThatCannotDecreaseItemization9.Dirty = value;
@@ -665,20 +789,42 @@ namespace EncompassRest.Loans
                 _eDisclosureApplicationPackageIndicator.Dirty = value;
                 _eDisclosureApprovalPackageIndicator.Dirty = value;
                 _eDisclosureBorrowerAcceptConsentDate.Dirty = value;
+                _eDisclosureBorrowerAcceptConsentIP.Dirty = value;
+                _eDisclosureBorrowerAuthenticatedDate.Dirty = value;
+                _eDisclosureBorrowerAuthenticatedIP.Dirty = value;
+                _eDisclosureBorrowerDocumentViewedDate.Dirty = value;
+                _eDisclosureBorrowerEmail.Dirty = value;
                 _eDisclosureBorrowereSignedDate.Dirty = value;
+                _eDisclosureBorrowereSignedIP.Dirty = value;
+                _eDisclosureBorrowerLoanLevelConsent.Dirty = value;
+                _eDisclosureBorrowerName.Dirty = value;
                 _eDisclosureBorrowerRejectConsentDate.Dirty = value;
+                _eDisclosureBorrowerRejectConsentIP.Dirty = value;
                 _eDisclosureBorrowerViewConsentDate.Dirty = value;
                 _eDisclosureBorrowerViewMessageDate.Dirty = value;
                 _eDisclosureBorrowerWetSignedDate.Dirty = value;
                 _eDisclosureCoBorrowerAcceptConsentDate.Dirty = value;
+                _eDisclosureCoBorrowerAcceptConsentIP.Dirty = value;
+                _eDisclosureCoBorrowerAuthenticatedDate.Dirty = value;
+                _eDisclosureCoBorrowerAuthenticatedIP.Dirty = value;
+                _eDisclosureCoBorrowerDocumentViewedDate.Dirty = value;
+                _eDisclosureCoBorrowerEmail.Dirty = value;
                 _eDisclosureCoBorrowereSignedDate.Dirty = value;
+                _eDisclosureCoBorrowereSignedIP.Dirty = value;
+                _eDisclosureCoBorrowerLoanLevelConsent.Dirty = value;
+                _eDisclosureCoBorrowerName.Dirty = value;
                 _eDisclosureCoBorrowerRejectConsentDate.Dirty = value;
+                _eDisclosureCoBorrowerRejectConsentIP.Dirty = value;
                 _eDisclosureCoBorrowerViewConsentDate.Dirty = value;
                 _eDisclosureCoBorrowerViewMessageDate.Dirty = value;
                 _eDisclosureCoBorrowerWebSignedDate.Dirty = value;
                 _eDisclosureConsentPdf.Dirty = value;
                 _eDisclosureDisclosedMessage.Dirty = value;
                 _eDisclosureLockPackageIndicator.Dirty = value;
+                _eDisclosureLOeSignedDate.Dirty = value;
+                _eDisclosureLOeSignedIP.Dirty = value;
+                _eDisclosureLOName.Dirty = value;
+                _eDisclosureLOViewMessageDate.Dirty = value;
                 _eDisclosureManualFulfillmentComment.Dirty = value;
                 _eDisclosureManualFulfillmentDate.Dirty = value;
                 _eDisclosureManualFulfillmentMethod.Dirty = value;
@@ -692,7 +838,9 @@ namespace EncompassRest.Loans
                 _financeCharge.Dirty = value;
                 _formsXml.Dirty = value;
                 _fulfillmentOrderedBy.Dirty = value;
+                _fulfillmentOrderedBy_CoBorrower.Dirty = value;
                 _fullfillmentProcessedDate.Dirty = value;
+                _fullfillmentProcessedDate_CoBorrower.Dirty = value;
                 _guid.Dirty = value;
                 _id.Dirty = value;
                 _intentToProceed.Dirty = value;
@@ -708,8 +856,10 @@ namespace EncompassRest.Loans
                 _isDisclosed.Dirty = value;
                 _isDisclosedAprLocked.Dirty = value;
                 _isDisclosedByLocked.Dirty = value;
+                _isDisclosedDailyInterestLocked.Dirty = value;
                 _isDisclosedFinanceChargeLocked.Dirty = value;
                 _isDisclosedReceivedDateLocked.Dirty = value;
+                _isIntentReceivedByLocked.Dirty = value;
                 _isLocked.Dirty = value;
                 _isSystemSpecificIndicator.Dirty = value;
                 _isWetSignedIndicator.Dirty = value;
@@ -788,11 +938,16 @@ namespace EncompassRest.Loans
                 _lockedCoBorrowerType.Dirty = value;
                 _lockedDisclosedAprField.Dirty = value;
                 _lockedDisclosedByField.Dirty = value;
+                _lockedDisclosedDailyInterestField.Dirty = value;
+                _lockedDisclosedDateField.Dirty = value;
                 _lockedDisclosedFinanceChargeField.Dirty = value;
                 _lockedDisclosedReceivedDate.Dirty = value;
+                _lockedIntentReceivedByField.Dirty = value;
                 _logRecordIndex.Dirty = value;
                 _manuallyCreated.Dirty = value;
+                _numberOfDisclosureDocs.Dirty = value;
                 _prepaymentPenaltyIndicator.Dirty = value;
+                _presumedFulfillmentDate.Dirty = value;
                 _propertyAddress.Dirty = value;
                 _propertyCity.Dirty = value;
                 _propertyState.Dirty = value;
@@ -800,6 +955,7 @@ namespace EncompassRest.Loans
                 _providerListSent.Dirty = value;
                 _purchasePriceAmount.Dirty = value;
                 _receivedDate.Dirty = value;
+                _revisedDueDate.Dirty = value;
                 _snapshotXml.Dirty = value;
                 _systemId.Dirty = value;
                 if (_alerts != null) _alerts.Dirty = value;

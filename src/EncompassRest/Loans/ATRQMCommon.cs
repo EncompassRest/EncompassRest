@@ -15,6 +15,8 @@ namespace EncompassRest.Loans
         public DateTime? ARMRecastDate { get => _aRMRecastDate; set => _aRMRecastDate = value; }
         private DirtyValue<decimal?> _aRMRecastMonthlyPayment;
         public decimal? ARMRecastMonthlyPayment { get => _aRMRecastMonthlyPayment; set => _aRMRecastMonthlyPayment = value; }
+        private DirtyValue<string> _assetRepresentationAndWarrantyReliefEligibilityType;
+        public string AssetRepresentationAndWarrantyReliefEligibilityType { get => _assetRepresentationAndWarrantyReliefEligibilityType; set => _assetRepresentationAndWarrantyReliefEligibilityType = value; }
         private DirtyValue<StringEnumValue<ATRLoanType>> _aTRLoanType;
         public StringEnumValue<ATRLoanType> ATRLoanType { get => _aTRLoanType; set => _aTRLoanType = value; }
         private DirtyValue<string> _aUSDataDiscrepencyResolutionComments;
@@ -253,6 +255,20 @@ namespace EncompassRest.Loans
         public bool? IsEvaluatedResidualIncome { get => _isEvaluatedResidualIncome; set => _isEvaluatedResidualIncome = value; }
         private DirtyValue<StringEnumValue<IsOrIsNot>> _isHigherPricedLoan;
         public StringEnumValue<IsOrIsNot> IsHigherPricedLoan { get => _isHigherPricedLoan; set => _isHigherPricedLoan = value; }
+        private DirtyValue<string> _loanProcessingInformationCode24;
+        public string LoanProcessingInformationCode24 { get => _loanProcessingInformationCode24; set => _loanProcessingInformationCode24 = value; }
+        private DirtyValue<string> _loanProcessingInformationCode31;
+        public string LoanProcessingInformationCode31 { get => _loanProcessingInformationCode31; set => _loanProcessingInformationCode31 = value; }
+        private DirtyValue<string> _loanProcessingInformationCode32;
+        public string LoanProcessingInformationCode32 { get => _loanProcessingInformationCode32; set => _loanProcessingInformationCode32 = value; }
+        private DirtyValue<string> _loanProcessingInformationCode33;
+        public string LoanProcessingInformationCode33 { get => _loanProcessingInformationCode33; set => _loanProcessingInformationCode33 = value; }
+        private DirtyValue<string> _loanProcessingInformationCode97;
+        public string LoanProcessingInformationCode97 { get => _loanProcessingInformationCode97; set => _loanProcessingInformationCode97 = value; }
+        private DirtyValue<string> _loanProcessingInformationCodeJr;
+        public string LoanProcessingInformationCodeJr { get => _loanProcessingInformationCodeJr; set => _loanProcessingInformationCodeJr = value; }
+        private DirtyValue<string> _loanProcessingInformationCodeJt;
+        public string LoanProcessingInformationCodeJt { get => _loanProcessingInformationCodeJt; set => _loanProcessingInformationCodeJt = value; }
         private DirtyValue<string> _loanProcessingInformationD4;
         public string LoanProcessingInformationD4 { get => _loanProcessingInformationD4; set => _loanProcessingInformationD4 = value; }
         private DirtyValue<string> _loanProcessingInformationGO;
@@ -411,6 +427,8 @@ namespace EncompassRest.Loans
         public decimal? TotalPointsFeesSec32Percent { get => _totalPointsFeesSec32Percent; set => _totalPointsFeesSec32Percent = value; }
         private DirtyValue<bool?> _transactionExemptFromRegZ;
         public bool? TransactionExemptFromRegZ { get => _transactionExemptFromRegZ; set => _transactionExemptFromRegZ = value; }
+        private DirtyValue<string> _ucdRequirement;
+        public string UcdRequirement { get => _ucdRequirement; set => _ucdRequirement = value; }
         private DirtyValue<bool?> _unitCount;
         public bool? UnitCount { get => _unitCount; set => _unitCount = value; }
         private DirtyValue<decimal?> _upfrontPMIFees;
@@ -427,6 +445,7 @@ namespace EncompassRest.Loans
                     || _aPORMaxBonaFideDiscountPoint.Dirty
                     || _aRMRecastDate.Dirty
                     || _aRMRecastMonthlyPayment.Dirty
+                    || _assetRepresentationAndWarrantyReliefEligibilityType.Dirty
                     || _aTRLoanType.Dirty
                     || _aUSDataDiscrepencyResolutionComments.Dirty
                     || _aUSDataDiscrepencyResolutionDate.Dirty
@@ -546,6 +565,13 @@ namespace EncompassRest.Loans
                     || _isEvaluatedMonthlySimultaneousLoanPayment.Dirty
                     || _isEvaluatedResidualIncome.Dirty
                     || _isHigherPricedLoan.Dirty
+                    || _loanProcessingInformationCode24.Dirty
+                    || _loanProcessingInformationCode31.Dirty
+                    || _loanProcessingInformationCode32.Dirty
+                    || _loanProcessingInformationCode33.Dirty
+                    || _loanProcessingInformationCode97.Dirty
+                    || _loanProcessingInformationCodeJr.Dirty
+                    || _loanProcessingInformationCodeJt.Dirty
                     || _loanProcessingInformationD4.Dirty
                     || _loanProcessingInformationGO.Dirty
                     || _loanProcessingInformationHA.Dirty
@@ -625,6 +651,7 @@ namespace EncompassRest.Loans
                     || _totalIncome.Dirty
                     || _totalPointsFeesSec32Percent.Dirty
                     || _transactionExemptFromRegZ.Dirty
+                    || _ucdRequirement.Dirty
                     || _unitCount.Dirty
                     || _upfrontPMIFees.Dirty
                     || _withOriginalCreditor.Dirty
@@ -636,6 +663,7 @@ namespace EncompassRest.Loans
                 _aPORMaxBonaFideDiscountPoint.Dirty = value;
                 _aRMRecastDate.Dirty = value;
                 _aRMRecastMonthlyPayment.Dirty = value;
+                _assetRepresentationAndWarrantyReliefEligibilityType.Dirty = value;
                 _aTRLoanType.Dirty = value;
                 _aUSDataDiscrepencyResolutionComments.Dirty = value;
                 _aUSDataDiscrepencyResolutionDate.Dirty = value;
@@ -755,6 +783,13 @@ namespace EncompassRest.Loans
                 _isEvaluatedMonthlySimultaneousLoanPayment.Dirty = value;
                 _isEvaluatedResidualIncome.Dirty = value;
                 _isHigherPricedLoan.Dirty = value;
+                _loanProcessingInformationCode24.Dirty = value;
+                _loanProcessingInformationCode31.Dirty = value;
+                _loanProcessingInformationCode32.Dirty = value;
+                _loanProcessingInformationCode33.Dirty = value;
+                _loanProcessingInformationCode97.Dirty = value;
+                _loanProcessingInformationCodeJr.Dirty = value;
+                _loanProcessingInformationCodeJt.Dirty = value;
                 _loanProcessingInformationD4.Dirty = value;
                 _loanProcessingInformationGO.Dirty = value;
                 _loanProcessingInformationHA.Dirty = value;
@@ -834,6 +869,7 @@ namespace EncompassRest.Loans
                 _totalIncome.Dirty = value;
                 _totalPointsFeesSec32Percent.Dirty = value;
                 _transactionExemptFromRegZ.Dirty = value;
+                _ucdRequirement.Dirty = value;
                 _unitCount.Dirty = value;
                 _upfrontPMIFees.Dirty = value;
                 _withOriginalCreditor.Dirty = value;

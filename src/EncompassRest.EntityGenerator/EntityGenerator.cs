@@ -9,6 +9,9 @@ using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
 using EncompassRest.Loans.Enums;
+using Newtonsoft.Json;
+using System.IO.Compression;
+using System.Globalization;
 
 namespace EncompassRest
 {
@@ -108,7 +111,9 @@ namespace EncompassRest
                 typeof(RiskAssessmentType),
                 typeof(ActionTaken),
                 typeof(IndexMargin),
-                typeof(PropertyFormType)
+                typeof(PropertyFormType),
+                typeof(Conversion),
+                typeof(HmdaLoanPurpose)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>();
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -154,9 +159,9 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields", "DocumentOrderLog.DocumentAudit", "Contact.Contact" };
 
-        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentOrderLog" };
+        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentAudit" };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
@@ -165,14 +170,13 @@ namespace EncompassRest
 
         public static void Main(string[] args)
         {
-            //Console.ReadLine();
-
             try
             {
                 Task.Run(async () =>
                 {
                     using (var client = await TestBaseClass.GetTestClientAsync())
                     {
+                        await GenerateFieldMappingsAsync(client, "Loans");
                         await GenerateClassFilesFromSchemaAsync(client, "Loans", "EncompassRest.Loans");
                     }
                 }).Wait();
@@ -185,12 +189,181 @@ namespace EncompassRest
             Console.ReadLine();
         }
 
+        public static async Task GenerateFieldMappingsAsync(EncompassRestClient client, string destinationPath)
+        {
+            var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
+            var loanEntitySchema = loanSchema.EntityTypes["Loan"];
+            var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields, fieldPatterns);
+
+            var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
+            fields = new Dictionary<string, string>();
+            foreach (var pair in orderedFields)
+            {
+                fields[pair.Key] = pair.Value;
+            }
+
+            var orderedFieldPatterns = fieldPatterns.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
+            fieldPatterns = new Dictionary<string, string>();
+            foreach (var pair in orderedFieldPatterns)
+            {
+                fieldPatterns[pair.Key] = pair.Value;
+            }
+
+            using (var fs = new FileStream("LoanFields.json", FileMode.Create))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fields);
+                }
+            }
+
+            using (var fs = new FileStream("LoanFieldPatterns.json", FileMode.Create))
+            {
+                using (var sw = new StreamWriter(fs))
+                {
+                    JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fieldPatterns);
+                }
+            }
+
+            using (var fs = new FileStream("LoanFields.zip", FileMode.Create))
+            {
+                using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
+                {
+                    var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(loanFieldsEntry.Open()))
+                    {
+                        JsonSerializer.Create().Serialize(sw, fields);
+                    }
+
+                    var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
+                    {
+                        JsonSerializer.Create().Serialize(sw, fieldPatterns);
+                    }
+                }
+            }
+        }
+
+        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns)
+        {
+            foreach (var pair in entitySchema.Properties)
+            {
+                var propertyName = pair.Key;
+                var propertySchema = pair.Value;
+                if (!string.IsNullOrEmpty(propertySchema.FieldId))
+                {
+                    fields.Add(propertySchema.FieldId, $"{currentPath}.{propertyName}");
+                }
+                else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
+                {
+                    loanSchema.EntityTypes.Remove(propertySchema.EntityType);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
+                }
+                else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && loanSchema.EntityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
+                {
+                    loanSchema.EntityTypes.Remove(propertySchema.ElementType);
+                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
+                }
+                else
+                {
+                    if (propertySchema.FieldInstances != null)
+                    {
+                        foreach (var fieldInstancePair in propertySchema.FieldInstances)
+                        {
+                            var fieldId = fieldInstancePair.Key;
+                            if (fieldInstancePair.Value.Count != 1)
+                            {
+                                Console.WriteLine($"There must be just one field instance value for {fieldId}");
+                            }
+                            var fieldInstancePath = fieldInstancePair.Value[0];
+                            if (fieldInstancePath == "Borrower" || fieldInstancePath == "Coborrower")
+                            {
+                                fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{fieldInstancePath}.{propertyName}");
+                            }
+                            else
+                            {
+                                var firstUnderscore = fieldInstancePath.IndexOf('_');
+                                var secondUnderscore = fieldInstancePath.IndexOf('_', firstUnderscore + 1);
+                                var listPropertyName = fieldInstancePath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
+
+                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
+
+                                Instance instance = null;
+                                if (listPropertySchema.Instances?.TryGetValue(fieldInstancePath, out instance) == true)
+                                {
+                                    switch (instance)
+                                    {
+                                        case IntListInstance intListInstance:
+                                            if (intListInstance.Count != 1)
+                                            {
+                                                Console.WriteLine($"There must be just one int list instance value for {fieldInstancePath}");
+                                            }
+                                            fields.Add(fieldId, $"{currentPath}[{intListInstance[0]}].{propertyName}");
+                                            break;
+                                        case StringListInstance stringListInstance:
+                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}");
+                                            break;
+                                        case StringDictionaryInstance stringDictionaryInstance:
+                                            fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}");
+                                            break;
+                                        default:
+                                            Console.WriteLine($"Bad instance type for {fieldInstancePath}");
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    var colonIndex = fieldInstancePath.LastIndexOf(':');
+                                    var index = 0;
+                                    InstancePattern instancePattern = null;
+                                    if (colonIndex < 0 || !int.TryParse(fieldInstancePath.Substring(colonIndex + 1), NumberStyles.None, null, out index) || listPropertySchema.InstancePatterns?.TryGetValue(fieldInstancePath.Substring(0, colonIndex), out instancePattern) != true)
+                                    {
+                                        Console.WriteLine($"[{fieldId}]: {fieldInstancePath}");
+                                    }
+
+                                    fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}");
+                                }
+                            }
+                        }
+                    }
+                    if (propertySchema.FieldPatterns != null)
+                    {
+                        foreach (var fieldPatternPair in propertySchema.FieldPatterns)
+                        {
+                            var fieldPattern = fieldPatternPair.Key;
+                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("FBENN") && !fieldPattern.StartsWith("FCENN") && !fieldPattern.StartsWith("CUSTNN"))
+                            {
+                                if (fieldPatternPair.Value.Count != 1)
+                                {
+                                    Console.WriteLine($"There must be just one field pattern value for {fieldPattern}");
+                                }
+                                var fieldPatternPath = fieldPatternPair.Value[0];
+
+                                var firstUnderscore = fieldPatternPath.IndexOf('_');
+                                var secondUnderscore = fieldPatternPath.IndexOf('_', firstUnderscore + 1);
+                                var listPropertyName = fieldPatternPath.Substring(firstUnderscore + 1, secondUnderscore - firstUnderscore - 1);
+
+                                var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
+
+                                var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
+
+                                fieldPatterns.Add(fieldPattern, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[NN].{propertyName}");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
             Directory.CreateDirectory(destinationPath);
             var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value))
             {
-                "NonVol"
+                "NonVol",
+                "DocumentAudit"
             };
             var exceptions = new List<Exception>();
             foreach (var entity in supportedEntities)
@@ -216,7 +389,6 @@ namespace EncompassRest
                         {
                             Console.WriteLine($"Failed to retrieve entity of type {entity}");
                         }
-
                     }
                     catch (Exception ex)
                     {
@@ -330,11 +502,15 @@ namespace {@namespace}
                     {
                         propertyType = $"DirtyList<{elementType}>";
                     }
+                    var isModelPath = propertyName == "ModelPath";
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                    sb.AppendLine($"        private {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    if (isModelPath)
+                    {
+                        sb.AppendLine("        internal ModelPath _modelPathInternal;");
+                    }
+                    sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isCollection));
-
-                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set => {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")}; }}");
+                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.ModelPathContext.Create(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
                 }
             }
 
@@ -496,7 +672,8 @@ namespace {@namespace}
                     return propertySchema.ElementType;
                 case PropertySchemaType.Entity:
                     isEntity = true;
-                    return propertySchema.EntityType;
+                    var propertyEntityType = propertySchema.EntityType.Value;
+                    return propertyEntityType == "EntityRefContract" ? "EntityReference" : propertyEntityType;
                 default:
                     return $"PROBLEM<{propertyType}>";
             }

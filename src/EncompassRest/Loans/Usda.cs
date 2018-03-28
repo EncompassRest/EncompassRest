@@ -115,6 +115,8 @@ namespace EncompassRest.Loans
         public decimal? FeeRate { get => _feeRate; set => _feeRate = value; }
         private DirtyValue<string> _financedLoanClosingCostDescription;
         public string FinancedLoanClosingCostDescription { get => _financedLoanClosingCostDescription; set => _financedLoanClosingCostDescription = value; }
+        private DirtyValue<decimal?> _financedLoanClosingCosts;
+        public decimal? FinancedLoanClosingCosts { get => _financedLoanClosingCosts; set => _financedLoanClosingCosts = value; }
         private DirtyValue<decimal?> _guaranteeFeeCollected;
         public decimal? GuaranteeFeeCollected { get => _guaranteeFeeCollected; set => _guaranteeFeeCollected = value; }
         private DirtyValue<decimal?> _guaranteeFeeOnCommitment;
@@ -343,6 +345,7 @@ namespace EncompassRest.Loans
                     || _elderlyHouseholdDeduction.Dirty
                     || _feeRate.Dirty
                     || _financedLoanClosingCostDescription.Dirty
+                    || _financedLoanClosingCosts.Dirty
                     || _guaranteeFeeCollected.Dirty
                     || _guaranteeFeeOnCommitment.Dirty
                     || _guaranteeFeePurposeCodeType.Dirty
@@ -485,6 +488,7 @@ namespace EncompassRest.Loans
                 _elderlyHouseholdDeduction.Dirty = value;
                 _feeRate.Dirty = value;
                 _financedLoanClosingCostDescription.Dirty = value;
+                _financedLoanClosingCosts.Dirty = value;
                 _guaranteeFeeCollected.Dirty = value;
                 _guaranteeFeeOnCommitment.Dirty = value;
                 _guaranteeFeePurposeCodeType.Dirty = value;

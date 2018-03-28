@@ -20,10 +20,12 @@
   <ItemGroup>
     <PackageReference Include="Enums.NET" Version="2.3.1" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <EmbeddedResource Include="LoanFields.zip" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.IO.Compression" />
   </ItemGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">

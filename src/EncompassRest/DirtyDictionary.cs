@@ -10,7 +10,7 @@ namespace EncompassRest
     [JsonConverter(typeof(DirtyDictionaryConverter<,>))]
     internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDirty
     {
-        internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary = new Dictionary<TKey, DirtyValue<TValue>>();
+        internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary;
 
         public TValue this[TKey key] { get => _dictionary[key]; set => _dictionary[key] = value; }
 
@@ -37,10 +37,22 @@ namespace EncompassRest
         }
 
         public DirtyDictionary()
+            : this((IEqualityComparer<TKey>)null)
         {
         }
 
+        public DirtyDictionary(IEqualityComparer<TKey> comparer)
+        {
+            _dictionary = new Dictionary<TKey, DirtyValue<TValue>>(comparer);
+        }
+
         public DirtyDictionary(IDictionary<TKey, TValue> dictionary)
+            : this(dictionary, null)
+        {
+        }
+
+        public DirtyDictionary(IDictionary<TKey, TValue> dictionary, IEqualityComparer<TKey> comparer)
+            : this(comparer)
         {
             if (dictionary != null)
             {

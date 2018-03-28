@@ -301,6 +301,8 @@ namespace EncompassRest.Loans
         public decimal? MaximumOwedMonthlyPayment { get => _maximumOwedMonthlyPayment; set => _maximumOwedMonthlyPayment = value; }
         private DirtyValue<decimal?> _maxLifeInterestCapPercent;
         public decimal? MaxLifeInterestCapPercent { get => _maxLifeInterestCapPercent; set => _maxLifeInterestCapPercent = value; }
+        private DirtyValue<string> _maxLifeInterestCapPercentUI;
+        public string MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => _maxLifeInterestCapPercentUI = value; }
         private DirtyValue<int?> _monthlyPaymentFirstIncreaseDate;
         public int? MonthlyPaymentFirstIncreaseDate { get => _monthlyPaymentFirstIncreaseDate; set => _monthlyPaymentFirstIncreaseDate = value; }
         private DirtyValue<bool?> _monthlyPaymentRiseIndicator;
@@ -586,6 +588,7 @@ namespace EncompassRest.Loans
                     || _maximumLoanBalance.Dirty
                     || _maximumOwedMonthlyPayment.Dirty
                     || _maxLifeInterestCapPercent.Dirty
+                    || _maxLifeInterestCapPercentUI.Dirty
                     || _monthlyPaymentFirstIncreaseDate.Dirty
                     || _monthlyPaymentRiseIndicator.Dirty
                     || _mortgageInsurancePremium.Dirty
@@ -804,6 +807,7 @@ namespace EncompassRest.Loans
                 _maximumLoanBalance.Dirty = value;
                 _maximumOwedMonthlyPayment.Dirty = value;
                 _maxLifeInterestCapPercent.Dirty = value;
+                _maxLifeInterestCapPercentUI.Dirty = value;
                 _monthlyPaymentFirstIncreaseDate.Dirty = value;
                 _monthlyPaymentRiseIndicator.Dirty = value;
                 _mortgageInsurancePremium.Dirty = value;

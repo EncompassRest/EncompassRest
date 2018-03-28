@@ -7,6 +7,8 @@ namespace EncompassRest.Loans
 {
     public sealed partial class FannieMae : ExtensibleObject, IIdentifiable
     {
+        private DirtyValue<bool?> _caseIDAssignedByUCDIndicator;
+        public bool? CaseIDAssignedByUCDIndicator { get => _caseIDAssignedByUCDIndicator; set => _caseIDAssignedByUCDIndicator = value; }
         private DirtyValue<decimal?> _cltv;
         public decimal? Cltv { get => _cltv; set => _cltv = value; }
         private DirtyValue<string> _collateralUnderwriterScore;
@@ -15,6 +17,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<Community2ndRepaymentStructure> Community2ndRepaymentStructure { get => _community2ndRepaymentStructure; set => _community2ndRepaymentStructure = value; }
         private DirtyValue<bool?> _communityLending;
         public bool? CommunityLending { get => _communityLending; set => _communityLending = value; }
+        private DirtyValue<string> _correspondentAssignmentID;
+        public string CorrespondentAssignmentID { get => _correspondentAssignmentID; set => _correspondentAssignmentID = value; }
         private DirtyValue<string> _duVersion;
         public string DuVersion { get => _duVersion; set => _duVersion = value; }
         private DirtyValue<string> _eCStatus1003;
@@ -43,10 +47,12 @@ namespace EncompassRest.Loans
         {
             get
             {
-                return _cltv.Dirty
+                return _caseIDAssignedByUCDIndicator.Dirty
+                    || _cltv.Dirty
                     || _collateralUnderwriterScore.Dirty
                     || _community2ndRepaymentStructure.Dirty
                     || _communityLending.Dirty
+                    || _correspondentAssignmentID.Dirty
                     || _duVersion.Dirty
                     || _eCStatus1003.Dirty
                     || _hcltv.Dirty
@@ -62,10 +68,12 @@ namespace EncompassRest.Loans
             }
             set
             {
+                _caseIDAssignedByUCDIndicator.Dirty = value;
                 _cltv.Dirty = value;
                 _collateralUnderwriterScore.Dirty = value;
                 _community2ndRepaymentStructure.Dirty = value;
                 _communityLending.Dirty = value;
+                _correspondentAssignmentID.Dirty = value;
                 _duVersion.Dirty = value;
                 _eCStatus1003.Dirty = value;
                 _hcltv.Dirty = value;

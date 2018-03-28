@@ -12,6 +12,8 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "Cash-out refinancing")]
         CashOutRefinancing = 3,
         [EnumMember(Value = "Other purpose")]
-        OtherPurpose = 4
+        OtherPurpose = 4,
+        [EnumMember(Value = "Not applicable")]
+        NotApplicable = 5
     }
 }

@@ -29,6 +29,8 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "251")]
         n251 = 251,
         [EnumMember(Value = "310")]
-        n310 = 310
+        n310 = 310,
+        [EnumMember(Value = "320")]
+        n320 = 320
     }
 }

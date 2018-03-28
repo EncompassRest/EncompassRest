@@ -43,6 +43,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<FloorBasis> FloorBasis { get => _floorBasis; set => _floorBasis = value; }
         private DirtyValue<decimal?> _floorPercent;
         public decimal? FloorPercent { get => _floorPercent; set => _floorPercent = value; }
+        private DirtyValue<string> _floorPercentUI;
+        public string FloorPercentUI { get => _floorPercentUI; set => _floorPercentUI = value; }
         private DirtyValue<StringEnumValue<FloorVerbiage>> _floorVerbiage;
         public StringEnumValue<FloorVerbiage> FloorVerbiage { get => _floorVerbiage; set => _floorVerbiage = value; }
         private DirtyValue<string> _fnmProductPlanIdentifier;
@@ -71,6 +73,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<IndexLookbackPeriod> IndexLookbackPeriod { get => _indexLookbackPeriod; set => _indexLookbackPeriod = value; }
         private DirtyValue<decimal?> _indexMarginPercent;
         public decimal? IndexMarginPercent { get => _indexMarginPercent; set => _indexMarginPercent = value; }
+        private DirtyValue<string> _indexMarginPercentUI;
+        public string IndexMarginPercentUI { get => _indexMarginPercentUI; set => _indexMarginPercentUI = value; }
         private DirtyValue<decimal?> _initialAdvanceAmount;
         public decimal? InitialAdvanceAmount { get => _initialAdvanceAmount; set => _initialAdvanceAmount = value; }
         private DirtyValue<decimal?> _initialApplicationAmount;
@@ -89,6 +93,8 @@ namespace EncompassRest.Loans
         public decimal? MaximumMonthlyPayment { get => _maximumMonthlyPayment; set => _maximumMonthlyPayment = value; }
         private DirtyValue<decimal?> _maxLifeInterestCapPercent;
         public decimal? MaxLifeInterestCapPercent { get => _maxLifeInterestCapPercent; set => _maxLifeInterestCapPercent = value; }
+        private DirtyValue<string> _maxLifeInterestCapPercentUI;
+        public string MaxLifeInterestCapPercentUI { get => _maxLifeInterestCapPercentUI; set => _maxLifeInterestCapPercentUI = value; }
         private DirtyValue<decimal?> _miCoveragePercent;
         public decimal? MiCoveragePercent { get => _miCoveragePercent; set => _miCoveragePercent = value; }
         private DirtyValue<decimal?> _minimumAdvanceAmount;
@@ -119,6 +125,8 @@ namespace EncompassRest.Loans
         public StringEnumValue<NmlsDocumentationType> NmlsDocumentationType { get => _nmlsDocumentationType; set => _nmlsDocumentationType = value; }
         private DirtyValue<StringEnumValue<NmlsFirstMortgageType>> _nmlsFirstMortgageType;
         public StringEnumValue<NmlsFirstMortgageType> NmlsFirstMortgageType { get => _nmlsFirstMortgageType; set => _nmlsFirstMortgageType = value; }
+        private DirtyValue<StringEnumValue<NmlsLienStatus>> _nmlsLienStatus;
+        public StringEnumValue<NmlsLienStatus> NmlsLienStatus { get => _nmlsLienStatus; set => _nmlsLienStatus = value; }
         private DirtyValue<StringEnumValue<NmlsLoanType>> _nmlsLoanType;
         public StringEnumValue<NmlsLoanType> NmlsLoanType { get => _nmlsLoanType; set => _nmlsLoanType = value; }
         private DirtyValue<bool?> _nmlsOptionARMIndicator;
@@ -127,6 +135,8 @@ namespace EncompassRest.Loans
         public bool? NmlsPiggyBackOrFundedHELOCIndicator { get => _nmlsPiggyBackOrFundedHELOCIndicator; set => _nmlsPiggyBackOrFundedHELOCIndicator = value; }
         private DirtyValue<StringEnumValue<NmlsProductionSoldToType>> _nmlsProductionSoldToType;
         public StringEnumValue<NmlsProductionSoldToType> NmlsProductionSoldToType { get => _nmlsProductionSoldToType; set => _nmlsProductionSoldToType = value; }
+        private DirtyValue<StringEnumValue<NmlsPropertyType>> _nmlsPropertyType;
+        public StringEnumValue<NmlsPropertyType> NmlsPropertyType { get => _nmlsPropertyType; set => _nmlsPropertyType = value; }
         private DirtyValue<StringEnumValue<NmlsRefinancePurposeType>> _nmlsRefinancePurposeType;
         public StringEnumValue<NmlsRefinancePurposeType> NmlsRefinancePurposeType { get => _nmlsRefinancePurposeType; set => _nmlsRefinancePurposeType = value; }
         private DirtyValue<StringEnumValue<NmlsReverseMortgageType>> _nmlsReverseMortgageType;
@@ -167,8 +177,12 @@ namespace EncompassRest.Loans
         public decimal? RateAdjustmentLifetimeCapPercent { get => _rateAdjustmentLifetimeCapPercent; set => _rateAdjustmentLifetimeCapPercent = value; }
         private DirtyValue<decimal?> _rateAdjustmentPercent;
         public decimal? RateAdjustmentPercent { get => _rateAdjustmentPercent; set => _rateAdjustmentPercent = value; }
+        private DirtyValue<string> _rateAdjustmentPercentUI;
+        public string RateAdjustmentPercentUI { get => _rateAdjustmentPercentUI; set => _rateAdjustmentPercentUI = value; }
         private DirtyValue<decimal?> _rateAdjustmentSubsequentCapPercent;
         public decimal? RateAdjustmentSubsequentCapPercent { get => _rateAdjustmentSubsequentCapPercent; set => _rateAdjustmentSubsequentCapPercent = value; }
+        private DirtyValue<string> _rateAdjustmentSubsequentCapPercentUI;
+        public string RateAdjustmentSubsequentCapPercentUI { get => _rateAdjustmentSubsequentCapPercentUI; set => _rateAdjustmentSubsequentCapPercentUI = value; }
         private DirtyValue<decimal?> _releaseRecoringCharge;
         public decimal? ReleaseRecoringCharge { get => _releaseRecoringCharge; set => _releaseRecoringCharge = value; }
         private DirtyValue<decimal?> _remainingBuydownAmount;
@@ -234,6 +248,7 @@ namespace EncompassRest.Loans
                     || _excludeLoanFromNMLSReportIndicator.Dirty
                     || _floorBasis.Dirty
                     || _floorPercent.Dirty
+                    || _floorPercentUI.Dirty
                     || _floorVerbiage.Dirty
                     || _fnmProductPlanIdentifier.Dirty
                     || _freddieMacArmIndexType.Dirty
@@ -247,6 +262,7 @@ namespace EncompassRest.Loans
                     || _indexCurrentValuePercent.Dirty
                     || _indexLookbackPeriod.Dirty
                     || _indexMarginPercent.Dirty
+                    || _indexMarginPercentUI.Dirty
                     || _initialAdvanceAmount.Dirty
                     || _initialApplicationAmount.Dirty
                     || _inquiryOrPreQualificationIndicator.Dirty
@@ -256,6 +272,7 @@ namespace EncompassRest.Loans
                     || _loanScheduledClosingDate.Dirty
                     || _maximumMonthlyPayment.Dirty
                     || _maxLifeInterestCapPercent.Dirty
+                    || _maxLifeInterestCapPercentUI.Dirty
                     || _miCoveragePercent.Dirty
                     || _minimumAdvanceAmount.Dirty
                     || _minimumAllowableApr.Dirty
@@ -271,10 +288,12 @@ namespace EncompassRest.Loans
                     || _netInitialAndFinal.Dirty
                     || _nmlsDocumentationType.Dirty
                     || _nmlsFirstMortgageType.Dirty
+                    || _nmlsLienStatus.Dirty
                     || _nmlsLoanType.Dirty
                     || _nmlsOptionARMIndicator.Dirty
                     || _nmlsPiggyBackOrFundedHELOCIndicator.Dirty
                     || _nmlsProductionSoldToType.Dirty
+                    || _nmlsPropertyType.Dirty
                     || _nmlsRefinancePurposeType.Dirty
                     || _nmlsReverseMortgageType.Dirty
                     || _oralRequestForExtensionOfCreditIndicator.Dirty
@@ -294,7 +313,9 @@ namespace EncompassRest.Loans
                     || _rateAdjustmentDurationMonthsCount.Dirty
                     || _rateAdjustmentLifetimeCapPercent.Dirty
                     || _rateAdjustmentPercent.Dirty
+                    || _rateAdjustmentPercentUI.Dirty
                     || _rateAdjustmentSubsequentCapPercent.Dirty
+                    || _rateAdjustmentSubsequentCapPercentUI.Dirty
                     || _releaseRecoringCharge.Dirty
                     || _remainingBuydownAmount.Dirty
                     || _repayPeriodMonthsCount.Dirty
@@ -340,6 +361,7 @@ namespace EncompassRest.Loans
                 _excludeLoanFromNMLSReportIndicator.Dirty = value;
                 _floorBasis.Dirty = value;
                 _floorPercent.Dirty = value;
+                _floorPercentUI.Dirty = value;
                 _floorVerbiage.Dirty = value;
                 _fnmProductPlanIdentifier.Dirty = value;
                 _freddieMacArmIndexType.Dirty = value;
@@ -353,6 +375,7 @@ namespace EncompassRest.Loans
                 _indexCurrentValuePercent.Dirty = value;
                 _indexLookbackPeriod.Dirty = value;
                 _indexMarginPercent.Dirty = value;
+                _indexMarginPercentUI.Dirty = value;
                 _initialAdvanceAmount.Dirty = value;
                 _initialApplicationAmount.Dirty = value;
                 _inquiryOrPreQualificationIndicator.Dirty = value;
@@ -362,6 +385,7 @@ namespace EncompassRest.Loans
                 _loanScheduledClosingDate.Dirty = value;
                 _maximumMonthlyPayment.Dirty = value;
                 _maxLifeInterestCapPercent.Dirty = value;
+                _maxLifeInterestCapPercentUI.Dirty = value;
                 _miCoveragePercent.Dirty = value;
                 _minimumAdvanceAmount.Dirty = value;
                 _minimumAllowableApr.Dirty = value;
@@ -377,10 +401,12 @@ namespace EncompassRest.Loans
                 _netInitialAndFinal.Dirty = value;
                 _nmlsDocumentationType.Dirty = value;
                 _nmlsFirstMortgageType.Dirty = value;
+                _nmlsLienStatus.Dirty = value;
                 _nmlsLoanType.Dirty = value;
                 _nmlsOptionARMIndicator.Dirty = value;
                 _nmlsPiggyBackOrFundedHELOCIndicator.Dirty = value;
                 _nmlsProductionSoldToType.Dirty = value;
+                _nmlsPropertyType.Dirty = value;
                 _nmlsRefinancePurposeType.Dirty = value;
                 _nmlsReverseMortgageType.Dirty = value;
                 _oralRequestForExtensionOfCreditIndicator.Dirty = value;
@@ -400,7 +426,9 @@ namespace EncompassRest.Loans
                 _rateAdjustmentDurationMonthsCount.Dirty = value;
                 _rateAdjustmentLifetimeCapPercent.Dirty = value;
                 _rateAdjustmentPercent.Dirty = value;
+                _rateAdjustmentPercentUI.Dirty = value;
                 _rateAdjustmentSubsequentCapPercent.Dirty = value;
+                _rateAdjustmentSubsequentCapPercentUI.Dirty = value;
                 _releaseRecoringCharge.Dirty = value;
                 _remainingBuydownAmount.Dirty = value;
                 _repayPeriodMonthsCount.Dirty = value;

@@ -182,6 +182,8 @@
         CustomModelFields = 180,
         NonVol = 181,
         ElliUCDDetail = 182,
-        ExtraPayment = 183
+        ExtraPayment = 183,
+        DocumentOrderLog = 184,
+        DocumentAudit = 185
     }
 }
