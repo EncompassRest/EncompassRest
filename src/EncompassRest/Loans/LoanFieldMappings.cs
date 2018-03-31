@@ -89,7 +89,7 @@ namespace EncompassRest.Loans
             if (validatePathExists)
             {
                 var loanField = new LoanField(fieldId, null, path);
-                if (!loanField.Type.IsDefined())
+                if (loanField.ValueType == LoanFieldValueType.Unknown)
                 {
                     throw new ArgumentException("modelPath must resolve to a valid property type");
                 }

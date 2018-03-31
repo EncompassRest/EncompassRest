@@ -8,15 +8,16 @@ using Newtonsoft.Json;
 namespace EncompassRest
 {
     [JsonConverter(typeof(DirtyDictionaryConverter<,>))]
-    internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDirty
+    internal sealed class DirtyDictionary<TKey, TValue> : IDictionary<TKey, TValue>, IDictionary, IDirty
     {
         internal readonly Dictionary<TKey, DirtyValue<TValue>> _dictionary;
+        private ValueCollection _values;
 
         public TValue this[TKey key] { get => _dictionary[key]; set => _dictionary[key] = value; }
 
         public ICollection<TKey> Keys => _dictionary.Keys;
 
-        public ICollection<TValue> Values => _dictionary.Values.Select(value => value._value).ToList();
+        public ICollection<TValue> Values => _values ?? (_values = new ValueCollection(this));
 
         public int Count => _dictionary.Count;
 
@@ -35,6 +36,20 @@ namespace EncompassRest
                 }
             }
         }
+
+        bool IDictionary.IsFixedSize => false;
+
+        ICollection IDictionary.Keys => _dictionary.Keys;
+
+        ICollection IDictionary.Values => (ICollection)Values;
+
+        int ICollection.Count => Count;
+
+        bool ICollection.IsSynchronized => ((ICollection)_dictionary).IsSynchronized;
+
+        object ICollection.SyncRoot => ((ICollection)_dictionary).SyncRoot;
+
+        object IDictionary.this[object key] { get => this[ValidateKey(key)]; set => this[ValidateKey(key)] = ValidateValue(value); }
 
         public DirtyDictionary()
             : this((IEqualityComparer<TKey>)null)
@@ -87,13 +102,7 @@ namespace EncompassRest
             }
         }
 
-        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
-        {
-            foreach (var pair in _dictionary)
-            {
-                yield return new KeyValuePair<TKey, TValue>(pair.Key, pair.Value);
-            }
-        }
+        public Enumerator GetEnumerator() => new Enumerator(this, false);
 
         public bool Remove(TKey key) => _dictionary.Remove(key);
 
@@ -106,9 +115,158 @@ namespace EncompassRest
             return success;
         }
 
+        IEnumerator<KeyValuePair<TKey, TValue>> IEnumerable<KeyValuePair<TKey, TValue>>.GetEnumerator() => GetEnumerator();
+
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         internal IEnumerable<KeyValuePair<TKey, TValue>> GetDirtyItems() => _dictionary.Where(pair => pair.Value.Dirty).Select(pair => new KeyValuePair<TKey, TValue>(pair.Key, pair.Value));
+
+        void IDictionary.Add(object key, object value) => Add(ValidateKey(key), ValidateValue(value));
+
+        bool IDictionary.Contains(object key) => ContainsKey(ValidateKey(key));
+
+        IDictionaryEnumerator IDictionary.GetEnumerator() => new Enumerator(this, true);
+
+        void IDictionary.Remove(object key) => Remove(ValidateKey(key));
+
+        void ICollection.CopyTo(Array array, int index)
+        {
+            Preconditions.NotNull(array, nameof(array));
+            Preconditions.LessThan(index, nameof(index), array.Length, $"{nameof(array)}.Length");
+            Preconditions.GreaterThanOrEquals(array.Length - index, $"{nameof(array)}.Length - {nameof(index)}", Count, nameof(Count));
+
+            var i = 0;
+            foreach (var pair in _dictionary)
+            {
+                array.SetValue(new KeyValuePair<TKey, TValue>(pair.Key, pair.Value), index + i);
+                ++i;
+            }
+        }
+
+        private TKey ValidateKey(object key)
+        {
+            if (!(key is TKey tKey))
+            {
+                throw new ArgumentException($"key is not of type {TypeData<TKey>.Type.Name}");
+            }
+            return tKey;
+        }
+
+        private TValue ValidateValue(object value)
+        {
+            if (value == null)
+            {
+                return default;
+            }
+            if (!(value is TValue tValue))
+            {
+                throw new ArgumentException($"value is not of type {TypeData<TValue>.Type.Name}");
+            }
+            return tValue;
+        }
+
+        private sealed class ValueCollection : ICollection<TValue>, ICollection
+        {
+            private readonly DirtyDictionary<TKey, TValue> _dictionary;
+
+            public ValueCollection(DirtyDictionary<TKey, TValue> dictionary)
+            {
+                _dictionary = dictionary;
+            }
+
+            public int Count => _dictionary.Count;
+
+            public bool IsReadOnly => true;
+
+            public bool IsSynchronized => ((ICollection)_dictionary._dictionary).IsSynchronized;
+
+            public object SyncRoot => ((ICollection)_dictionary._dictionary).SyncRoot;
+
+            public void Add(TValue item) => throw new NotSupportedException();
+
+            public void Clear() => throw new NotSupportedException();
+
+            public bool Contains(TValue item)
+            {
+                var comparer = EqualityComparer<TValue>.Default;
+                foreach (var pair in _dictionary._dictionary)
+                {
+                    if (comparer.Equals(item, pair.Value))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            public void CopyTo(TValue[] array, int arrayIndex)
+            {
+                Preconditions.NotNull(array, nameof(array));
+                Preconditions.LessThan(arrayIndex, nameof(arrayIndex), array.Length, $"{nameof(array)}.Length");
+                Preconditions.GreaterThanOrEquals(array.Length - arrayIndex, $"{nameof(array)}.Length - {nameof(arrayIndex)}", Count, nameof(Count));
+
+                var i = 0;
+                foreach (var pair in _dictionary._dictionary)
+                {
+                    array[i] = pair.Value;
+                    ++i;
+                }
+            }
+
+            public void CopyTo(Array array, int index)
+            {
+                Preconditions.NotNull(array, nameof(array));
+                Preconditions.LessThan(index, nameof(index), array.Length, $"{nameof(array)}.Length");
+                Preconditions.GreaterThanOrEquals(array.Length - index, $"{nameof(array)}.Length - {nameof(index)}", Count, nameof(Count));
+
+                var i = 0;
+                foreach (var pair in _dictionary._dictionary)
+                {
+                    array.SetValue((TValue)pair.Value, i);
+                    ++i;
+                }
+            }
+
+            public IEnumerator<TValue> GetEnumerator()
+            {
+                foreach (var pair in _dictionary._dictionary)
+                {
+                    yield return pair.Value;
+                }
+            }
+
+            public bool Remove(TValue item) => throw new NotSupportedException();
+
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        }
+
+        public struct Enumerator : IEnumerator<KeyValuePair<TKey, TValue>>, IDictionaryEnumerator
+        {
+            private readonly Dictionary<TKey, DirtyValue<TValue>>.Enumerator _enumerator;
+            private readonly bool _dictionaryEnumerator;
+
+            public KeyValuePair<TKey, TValue> Current => new KeyValuePair<TKey, TValue>(_enumerator.Current.Key, _enumerator.Current.Value);
+
+            public DictionaryEntry Entry => new DictionaryEntry(Current.Key, Current.Value);
+
+            public object Key => Current.Key;
+
+            public object Value => Current.Value;
+
+            object IEnumerator.Current => _dictionaryEnumerator ? Entry : (object)Current;
+
+            internal Enumerator(DirtyDictionary<TKey, TValue> dictionary, bool dictionaryEnumerator)
+            {
+                _enumerator = dictionary._dictionary.GetEnumerator();
+                _dictionaryEnumerator = dictionaryEnumerator;
+            }
+
+            public void Dispose() => _enumerator.Dispose();
+
+            public bool MoveNext() => _enumerator.MoveNext();
+
+            public void Reset() => ((IEnumerator<KeyValuePair<TKey, DirtyValue<TValue>>>)_enumerator).Reset();
+        }
     }
 
     internal sealed class DirtyDictionaryConverter<TKey, TValue> : JsonConverter
@@ -119,6 +277,16 @@ namespace EncompassRest
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => throw new NotSupportedException();
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => serializer.Serialize(writer, ((DirtyDictionary<TKey, TValue>)value).GetDirtyItems());
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var dirtyDictionary = (DirtyDictionary<TKey, TValue>)value;
+            var dirtyItems = dirtyDictionary.GetDirtyItems();
+            var dictionary = new Dictionary<TKey, TValue>(dirtyDictionary._dictionary.Comparer);
+            foreach (var dirtyItem in dirtyItems)
+            {
+                dictionary[dirtyItem.Key] = dirtyItem.Value;
+            }
+            serializer.Serialize(writer, dictionary);
+        }
     }
 }

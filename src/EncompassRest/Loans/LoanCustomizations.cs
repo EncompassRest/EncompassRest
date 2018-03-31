@@ -1,10 +1,13 @@
-﻿using EncompassRest.Loans.Attachments;
+﻿using System;
+using System.Collections.Generic;
+using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
+    [Entity(PropertiesToAlwaysSerialize = nameof(EncompassId) + "," + nameof(CurrentApplicationIndex))]
     public partial class Loan
     {
         private LoanFields _fields;
@@ -29,6 +32,9 @@ namespace EncompassRest.Loans
 
         [IdPropertyName(nameof(EncompassId))]
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
+
+        private DirtyDictionary<string, string> _virtualFields;
+        public IDictionary<string, string> VirtualFields { get => _virtualFields ?? (_virtualFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _virtualFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
 
         /// <summary>
         /// Loan update constructor

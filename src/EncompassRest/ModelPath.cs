@@ -464,6 +464,23 @@ namespace EncompassRest
                             }
                         }
                         break;
+                    case JsonDictionaryContract dictionaryContract:
+                        if (parent is IDictionary dictionary)
+                        {
+                            declaredType = dictionaryContract.DictionaryValueType;
+                            if (dictionary.Contains(PropertyName))
+                            {
+                                return dictionary[PropertyName];
+                            }
+                            else if (createIfNotExists)
+                            {
+                                var json = nextIsProperty ? "{}" : "[]";
+                                value = JsonHelper.FromJson(json, declaredType);
+                                dictionary[PropertyName] = value;
+                                return value;
+                            }
+                        }
+                        break;
                 }
                 declaredType = null;
                 return null;
@@ -495,6 +512,13 @@ namespace EncompassRest
                         {
                             value = valueProvider(null);
                             jObject[PropertyName] = value != null ? JToken.FromObject(value) : null;
+                        }
+                        break;
+                    case JsonDictionaryContract dictionaryContract:
+                        if (parent is IDictionary dictionary)
+                        {
+                            value = valueProvider(dictionaryContract.DictionaryValueType);
+                            dictionary[PropertyName] = value;
                         }
                         break;
                 }

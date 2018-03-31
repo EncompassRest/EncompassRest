@@ -5,7 +5,7 @@ namespace EncompassRest.Loans
 {
     internal sealed class CustomLoanField : LoanField
     {
-        public override LoanFieldType Type
+        public override LoanFieldValueType ValueType
         {
             get
             {
@@ -14,15 +14,15 @@ namespace EncompassRest.Loans
                 {
                     if (customField.DateValue.HasValue)
                     {
-                        return LoanFieldType.DateTime;
+                        return LoanFieldValueType.DateTime;
                     }
                     if (customField.NumericValue.HasValue)
                     {
-                        return LoanFieldType.Decimal;
+                        return LoanFieldValueType.Decimal;
                     }
-                    return LoanFieldType.String;
+                    return LoanFieldValueType.String;
                 }
-                return LoanFieldType.Unknown;
+                return LoanFieldValueType.Unknown;
             }
         }
 
@@ -86,6 +86,8 @@ namespace EncompassRest.Loans
                 }
             }
         }
+
+        public override LoanFieldType Type => LoanFieldType.Custom;
 
         internal CustomLoanField(string fieldId, Loan loan)
             : base(fieldId, loan, LoanFields.ModelPathContext.Create($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))

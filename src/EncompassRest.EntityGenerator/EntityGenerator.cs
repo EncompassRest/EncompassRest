@@ -197,7 +197,7 @@ namespace EncompassRest
             var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields, fieldPatterns);
 
-            var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
+            var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.Value).ToList();
             fields = new Dictionary<string, string>();
             foreach (var pair in orderedFields)
             {
@@ -231,16 +231,50 @@ namespace EncompassRest
             {
                 using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
                 {
+                    var serializer = JsonSerializer.Create();
+
                     var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
                     using (var sw = new StreamWriter(loanFieldsEntry.Open()))
                     {
-                        JsonSerializer.Create().Serialize(sw, fields);
+                        serializer.Serialize(sw, fields);
                     }
 
                     var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
                     using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
                     {
-                        JsonSerializer.Create().Serialize(sw, fieldPatterns);
+                        serializer.Serialize(sw, fieldPatterns);
+                    }
+
+                    var virtualFieldsEntry = zip.CreateEntry("VirtualFields.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(virtualFieldsEntry.Open()))
+                    {
+                        using (var virtualFieldsFs = new FileStream("VirtualFields.json", FileMode.Open))
+                        {
+                            using (var sr = new StreamReader(virtualFieldsFs))
+                            {
+                                using (var jr = new JsonTextReader(sr))
+                                {
+                                    var virtualFields = serializer.Deserialize<List<string>>(jr);
+                                    serializer.Serialize(sw, virtualFields);
+                                }
+                            }
+                        }
+                    }
+
+                    var virtualFieldPatternsEntry = zip.CreateEntry("VirtualFieldPatterns.json", CompressionLevel.Optimal);
+                    using (var sw = new StreamWriter(virtualFieldPatternsEntry.Open()))
+                    {
+                        using (var virtualFieldPatternsFs = new FileStream("VirtualFieldPatterns.json", FileMode.Open))
+                        {
+                            using (var sr = new StreamReader(virtualFieldPatternsFs))
+                            {
+                                using (var jr = new JsonTextReader(sr))
+                                {
+                                    var virtualFieldPatterns = serializer.Deserialize<List<string>>(jr);
+                                    serializer.Serialize(sw, virtualFieldPatterns);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -349,7 +383,7 @@ namespace EncompassRest
 
                                 var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
 
-                                fieldPatterns.Add(fieldPattern, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[NN].{propertyName}");
+                                fieldPatterns.Add(fieldPattern.Replace("NN", "{0:00}"), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}");
                             }
                         }
                     }
