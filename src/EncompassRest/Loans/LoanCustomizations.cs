@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    [Entity(PropertiesToAlwaysSerialize = nameof(EncompassId) + "," + nameof(CurrentApplicationIndex))]
+    [Entity(PropertiesToAlwaysSerialize = nameof(CurrentApplicationIndex))]
     public partial class Loan
     {
         private LoanFields _fields;

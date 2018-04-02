@@ -242,7 +242,7 @@ namespace EncompassRest
 
         public struct Enumerator : IEnumerator<KeyValuePair<TKey, TValue>>, IDictionaryEnumerator
         {
-            private readonly Dictionary<TKey, DirtyValue<TValue>>.Enumerator _enumerator;
+            private readonly IEnumerator<KeyValuePair<TKey, DirtyValue<TValue>>> _enumerator;
             private readonly bool _dictionaryEnumerator;
 
             public KeyValuePair<TKey, TValue> Current => new KeyValuePair<TKey, TValue>(_enumerator.Current.Key, _enumerator.Current.Value);
@@ -265,7 +265,7 @@ namespace EncompassRest
 
             public bool MoveNext() => _enumerator.MoveNext();
 
-            public void Reset() => ((IEnumerator<KeyValuePair<TKey, DirtyValue<TValue>>>)_enumerator).Reset();
+            public void Reset() => _enumerator.Reset();
         }
     }
 
