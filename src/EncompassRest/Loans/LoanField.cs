@@ -10,7 +10,7 @@ namespace EncompassRest.Loans
     {
         private readonly ModelPath _modelPath;
         private LoanFieldValueType? _valueType;
-        private bool? _isBorrowerPairSpecific;
+        private int? _borrowerPairIndex;
 
         internal readonly Loan Loan;
 
@@ -24,7 +24,7 @@ namespace EncompassRest.Loans
 
         public bool IsBorrowerPairSpecific => BorrowerPairIndex.HasValue;
 
-        public int? BorrowerPairIndex { get; }
+        public int? BorrowerPairIndex => _borrowerPairIndex < 0 ? Loan.CurrentApplicationIndex : _borrowerPairIndex;
 
         public virtual LoanFieldValueType ValueType
         {
@@ -176,7 +176,7 @@ namespace EncompassRest.Loans
             FieldId = fieldId;
             Loan = loan;
             _modelPath = modelPath;
-            BorrowerPairIndex = borrowerPairIndex;
+            _borrowerPairIndex = borrowerPairIndex;
             InstanceSpecifier = instanceSpecifier;
         }
 

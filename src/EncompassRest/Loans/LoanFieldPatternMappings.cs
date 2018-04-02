@@ -250,7 +250,7 @@ namespace EncompassRest.Loans
                         if (i == postfix.Length)
                         {
                             instanceSpecifier = originalFieldId.Substring(start, originalFieldId.Length - start - postfix.Length);
-                            modelPath = LoanFields.ModelPathContext.Create(string.Format(pair.Value.ModelPathPattern, instanceSpecifier));
+                            modelPath = LoanFields.CreateModelPath(string.Format(pair.Value.ModelPathPattern, instanceSpecifier));
                             return true;
                         }
                     }
@@ -292,7 +292,7 @@ namespace EncompassRest.Loans
             instanceSpecifierIndex = fieldPattern.IndexOf("{0");
             if (instanceSpecifierIndex < 0 || fieldPattern.IndexOf("{0", instanceSpecifierIndex + 2) >= 0)
             {
-                throw new ArgumentException("fieldPattern's instance specifier {0} is missing, in the wrong spot, or occurs multiple times");
+                throw new ArgumentException("fieldPattern must contain a single instance of an instance specifier {0}");
             }
 
             string.Format(fieldPattern, 1);
@@ -305,10 +305,10 @@ namespace EncompassRest.Loans
             var instanceSpecifierIndex = modelPathPattern.IndexOf("{0");
             if (instanceSpecifierIndex < 0 || modelPathPattern.IndexOf("{0", instanceSpecifierIndex + 2) >= 0)
             {
-                throw new ArgumentException("modelPathPattern must contain a single instance of NN");
+                throw new ArgumentException("modelPathPattern must contain a single instance of an instance specifier {0}");
             }
 
-            var modelPath = LoanFields.ModelPathContext.Create(string.Format(modelPathPattern, 1));
+            var modelPath = LoanFields.CreateModelPath(string.Format(modelPathPattern, 1));
             if (modelPath == null)
             {
                 throw new ArgumentException("bad modelPathPattern");

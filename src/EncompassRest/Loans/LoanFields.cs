@@ -18,12 +18,30 @@ namespace EncompassRest.Loans
 
         internal static ModelPathContext ModelPathContext { get; } = new ModelPathContext(new[]
         {
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010Fees", new ModelPathSettings(new Dictionary<string, string> { { "Gfe2010FeeIndex", "0" }, { "Gfe2010FeeType", "Undefined" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010WholePocs", new ModelPathSettings(new Dictionary<string, string> { { "Gfe2010WholePocIndex", "0" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010Page.Gfe2010FwbcFwscs", new ModelPathSettings(new Dictionary<string, string> { { "Gfe2010FwbcFwscIndex", "0" } })),
-            new KeyValuePair<string, ModelPathSettings>("Loan.Gfe.GfeFees", new ModelPathSettings(new Dictionary<string, string> { { "GfeFeeIndex", "0" } })),
+            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010Fees", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010Fee.Gfe2010FeeIndex), "0" }, { nameof(Gfe2010Fee.Gfe2010FeeType), "Undefined" } })),
+            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010.Gfe2010WholePocs", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010WholePoc.Gfe2010WholePocIndex), "0" } })),
+            new KeyValuePair<string, ModelPathSettings>("Loan.ClosingCost.Gfe2010Page.Gfe2010FwbcFwscs", new ModelPathSettings(new Dictionary<string, string> { { nameof(Gfe2010FwbcFwsc.Gfe2010FwbcFwscIndex), "0" } })),
+            new KeyValuePair<string, ModelPathSettings>("Loan.Gfe.GfeFees", new ModelPathSettings(new Dictionary<string, string> { { nameof(GfeFee.GfeFeeIndex), "0" } })),
             new KeyValuePair<string, ModelPathSettings>("Loan.MilestoneTemplateLogs", new ModelPathSettings(0))
         }, 1);
+
+        internal static ModelPath CreateModelPath(string modelPath)
+        {
+            Preconditions.NotNullOrEmpty(modelPath, nameof(modelPath));
+
+            try
+            {
+                var path = new ModelPath(ModelPathContext, modelPath);
+                if (string.Equals(path.RootObjectName, "Loan", StringComparison.OrdinalIgnoreCase))
+                {
+                    return path;
+                }
+            }
+            catch
+            {
+            }
+            return null;
+        }
 
         static LoanFields()
         {
@@ -54,7 +72,7 @@ namespace EncompassRest.Loans
                                         }
                                     }
                                 }
-                                var concurrentDictionary = new ConcurrentDictionary<string, ModelPath>(dictionary.Select(p => new KeyValuePair<string, ModelPath>(p.Key, ModelPathContext.Create(p.Value))), StringComparer.OrdinalIgnoreCase);
+                                var concurrentDictionary = new ConcurrentDictionary<string, ModelPath>(dictionary.Select(p => new KeyValuePair<string, ModelPath>(p.Key, CreateModelPath(p.Value))), StringComparer.OrdinalIgnoreCase);
                                 FieldMappings = new LoanFieldMappings(concurrentDictionary);
                             }
                         }
@@ -108,17 +126,25 @@ namespace EncompassRest.Loans
                 {
                     var hasHash = fieldId.Length > 1 && fieldId[fieldId.Length - 2] == '#';
                     char lastChar;
-                    if (!hasHash || !char.IsDigit((lastChar = fieldId[fieldId.Length - 1])) || lastChar - '0' > 6 || lastChar == '0' || !FieldMappings.TryGetValue(fieldId.Substring(0, fieldId.Length - 2), out var path) || !path.StartsWith("Loan.CurrentApplication.", StringComparison.Ordinal))
+                    if (!hasHash || !char.IsDigit((lastChar = fieldId[fieldId.Length - 1])) || lastChar - '0' > 6 || lastChar == '0' || !FieldMappings.TryGetValue(fieldId.Substring(0, fieldId.Length - 2), out var path) || !path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
                     {
                         throw new ArgumentException($"Could not find field {fieldId}");
                     }
 
-                    borrowerPairIndex = lastChar - '0' - 1;
-                    modelPath = ModelPathContext.Create($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{path.Substring(23)}");
+                    borrowerPairIndex = lastChar - '1';
+                    modelPath = CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{path.Substring(23)}");
                 }
-                else if (modelPath.ToString().StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+                else
                 {
-                    return new VirtualLoanField(fieldId, _loan, instanceSpecifier);
+                    var path = modelPath.ToString();
+                    if (path.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return new VirtualLoanField(fieldId, _loan, instanceSpecifier);
+                    }
+                    else if (path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+                    {
+                        borrowerPairIndex = -1;
+                    }
                 }
 
                 return new LoanField(fieldId, _loan, modelPath, borrowerPairIndex, instanceSpecifier);

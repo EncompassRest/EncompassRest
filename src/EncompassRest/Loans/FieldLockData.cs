@@ -11,7 +11,7 @@ namespace EncompassRest.Loans
         public bool? LockRemoved { get => _lockRemoved; set => _lockRemoved = value; }
         internal ModelPath _modelPathInternal;
         internal DirtyValue<string> _modelPath;
-        public string ModelPath { get => _modelPath; set { _modelPath = value; _modelPathInternal = LoanFields.ModelPathContext.Create(value); } }
+        public string ModelPath { get => _modelPath; set { _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); } }
         private DirtyValue<string> _value;
         public string Value { get => _value; set => _value = value; }
         internal override bool DirtyInternal

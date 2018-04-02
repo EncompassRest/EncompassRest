@@ -544,7 +544,7 @@ namespace {@namespace}
                     }
                     sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isCollection));
-                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.ModelPathContext.Create(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
+                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
                 }
             }
 
