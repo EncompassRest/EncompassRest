@@ -55,40 +55,40 @@ namespace EncompassRest.Loans
         public decimal? LateFeeTotalPriceAdjustment { get => _lateFeeTotalPriceAdjustment; set => _lateFeeTotalPriceAdjustment = value; }
         private DirtyValue<DateTime?> _latestConditionsDate;
         public DateTime? LatestConditionsDate { get => _latestConditionsDate; set => _latestConditionsDate = value; }
-        private DirtyValue<decimal?> _lFS_Amount;
-        public decimal? LFS_Amount { get => _lFS_Amount; set => _lFS_Amount = value; }
-        private DirtyValue<int?> _lFS_CalculateAs;
-        public int? LFS_CalculateAs { get => _lFS_CalculateAs; set => _lFS_CalculateAs = value; }
-        private DirtyValue<int?> _lFS_DayCleared;
-        public int? LFS_DayCleared { get => _lFS_DayCleared; set => _lFS_DayCleared = value; }
-        private DirtyValue<string> _lFS_DayClearedOtherDate;
-        public string LFS_DayClearedOtherDate { get => _lFS_DayClearedOtherDate; set => _lFS_DayClearedOtherDate = value; }
-        private DirtyValue<string> _lFS_DayClearedOtherDateValue;
-        public string LFS_DayClearedOtherDateValue { get => _lFS_DayClearedOtherDateValue; set => _lFS_DayClearedOtherDateValue = value; }
-        private DirtyValue<int?> _lFS_FeeHandledAs;
-        public int? LFS_FeeHandledAs { get => _lFS_FeeHandledAs; set => _lFS_FeeHandledAs = value; }
-        private DirtyValue<int?> _lFS_GracePeriodCalendar;
-        public int? LFS_GracePeriodCalendar { get => _lFS_GracePeriodCalendar; set => _lFS_GracePeriodCalendar = value; }
-        private DirtyValue<int?> _lFS_GracePeriodDays;
-        public int? LFS_GracePeriodDays { get => _lFS_GracePeriodDays; set => _lFS_GracePeriodDays = value; }
-        private DirtyValue<int?> _lFS_GracePeriodLaterOf;
-        public int? LFS_GracePeriodLaterOf { get => _lFS_GracePeriodLaterOf; set => _lFS_GracePeriodLaterOf = value; }
-        private DirtyValue<int?> _lFS_GracePeriodStarts;
-        public int? LFS_GracePeriodStarts { get => _lFS_GracePeriodStarts; set => _lFS_GracePeriodStarts = value; }
-        private DirtyValue<int?> _lFS_IncludeDay;
-        public int? LFS_IncludeDay { get => _lFS_IncludeDay; set => _lFS_IncludeDay = value; }
-        private DirtyValue<decimal?> _lFS_LateFee;
-        public decimal? LFS_LateFee { get => _lFS_LateFee; set => _lFS_LateFee = value; }
-        private DirtyValue<int?> _lFS_LateFeeBasedOn;
-        public int? LFS_LateFeeBasedOn { get => _lFS_LateFeeBasedOn; set => _lFS_LateFeeBasedOn = value; }
-        private DirtyValue<int?> _lFS_MaxLateDays;
-        public int? LFS_MaxLateDays { get => _lFS_MaxLateDays; set => _lFS_MaxLateDays = value; }
-        private DirtyValue<string> _lFS_OtherDate;
-        public string LFS_OtherDate { get => _lFS_OtherDate; set => _lFS_OtherDate = value; }
-        private DirtyValue<string> _lFS_OtherDateValue;
-        public string LFS_OtherDateValue { get => _lFS_OtherDateValue; set => _lFS_OtherDateValue = value; }
-        private DirtyValue<int?> _lFS_StartOnWeekend;
-        public int? LFS_StartOnWeekend { get => _lFS_StartOnWeekend; set => _lFS_StartOnWeekend = value; }
+        private DirtyValue<decimal?> _lFSAmount;
+        public decimal? LFSAmount { get => _lFSAmount; set => _lFSAmount = value; }
+        private DirtyValue<int?> _lFSCalculateAs;
+        public int? LFSCalculateAs { get => _lFSCalculateAs; set => _lFSCalculateAs = value; }
+        private DirtyValue<int?> _lFSDayCleared;
+        public int? LFSDayCleared { get => _lFSDayCleared; set => _lFSDayCleared = value; }
+        private DirtyValue<string> _lFSDayClearedOtherDate;
+        public string LFSDayClearedOtherDate { get => _lFSDayClearedOtherDate; set => _lFSDayClearedOtherDate = value; }
+        private DirtyValue<string> _lFSDayClearedOtherDateValue;
+        public string LFSDayClearedOtherDateValue { get => _lFSDayClearedOtherDateValue; set => _lFSDayClearedOtherDateValue = value; }
+        private DirtyValue<int?> _lFSFeeHandledAs;
+        public int? LFSFeeHandledAs { get => _lFSFeeHandledAs; set => _lFSFeeHandledAs = value; }
+        private DirtyValue<int?> _lFSGracePeriodCalendar;
+        public int? LFSGracePeriodCalendar { get => _lFSGracePeriodCalendar; set => _lFSGracePeriodCalendar = value; }
+        private DirtyValue<int?> _lFSGracePeriodDays;
+        public int? LFSGracePeriodDays { get => _lFSGracePeriodDays; set => _lFSGracePeriodDays = value; }
+        private DirtyValue<int?> _lFSGracePeriodLaterOf;
+        public int? LFSGracePeriodLaterOf { get => _lFSGracePeriodLaterOf; set => _lFSGracePeriodLaterOf = value; }
+        private DirtyValue<int?> _lFSGracePeriodStarts;
+        public int? LFSGracePeriodStarts { get => _lFSGracePeriodStarts; set => _lFSGracePeriodStarts = value; }
+        private DirtyValue<int?> _lFSIncludeDay;
+        public int? LFSIncludeDay { get => _lFSIncludeDay; set => _lFSIncludeDay = value; }
+        private DirtyValue<decimal?> _lFSLateFee;
+        public decimal? LFSLateFee { get => _lFSLateFee; set => _lFSLateFee = value; }
+        private DirtyValue<int?> _lFSLateFeeBasedOn;
+        public int? LFSLateFeeBasedOn { get => _lFSLateFeeBasedOn; set => _lFSLateFeeBasedOn = value; }
+        private DirtyValue<int?> _lFSMaxLateDays;
+        public int? LFSMaxLateDays { get => _lFSMaxLateDays; set => _lFSMaxLateDays = value; }
+        private DirtyValue<string> _lFSOtherDate;
+        public string LFSOtherDate { get => _lFSOtherDate; set => _lFSOtherDate = value; }
+        private DirtyValue<string> _lFSOtherDateValue;
+        public string LFSOtherDateValue { get => _lFSOtherDateValue; set => _lFSOtherDateValue = value; }
+        private DirtyValue<int?> _lFSStartOnWeekend;
+        public int? LFSStartOnWeekend { get => _lFSStartOnWeekend; set => _lFSStartOnWeekend = value; }
         private DirtyValue<DateTime?> _noteDate;
         public DateTime? NoteDate { get => _noteDate; set => _noteDate = value; }
         private DirtyValue<decimal?> _originalPrincipalBalance;
@@ -141,23 +141,23 @@ namespace EncompassRest.Loans
                     || _lateFeePercentage.Dirty
                     || _lateFeeTotalPriceAdjustment.Dirty
                     || _latestConditionsDate.Dirty
-                    || _lFS_Amount.Dirty
-                    || _lFS_CalculateAs.Dirty
-                    || _lFS_DayCleared.Dirty
-                    || _lFS_DayClearedOtherDate.Dirty
-                    || _lFS_DayClearedOtherDateValue.Dirty
-                    || _lFS_FeeHandledAs.Dirty
-                    || _lFS_GracePeriodCalendar.Dirty
-                    || _lFS_GracePeriodDays.Dirty
-                    || _lFS_GracePeriodLaterOf.Dirty
-                    || _lFS_GracePeriodStarts.Dirty
-                    || _lFS_IncludeDay.Dirty
-                    || _lFS_LateFee.Dirty
-                    || _lFS_LateFeeBasedOn.Dirty
-                    || _lFS_MaxLateDays.Dirty
-                    || _lFS_OtherDate.Dirty
-                    || _lFS_OtherDateValue.Dirty
-                    || _lFS_StartOnWeekend.Dirty
+                    || _lFSAmount.Dirty
+                    || _lFSCalculateAs.Dirty
+                    || _lFSDayCleared.Dirty
+                    || _lFSDayClearedOtherDate.Dirty
+                    || _lFSDayClearedOtherDateValue.Dirty
+                    || _lFSFeeHandledAs.Dirty
+                    || _lFSGracePeriodCalendar.Dirty
+                    || _lFSGracePeriodDays.Dirty
+                    || _lFSGracePeriodLaterOf.Dirty
+                    || _lFSGracePeriodStarts.Dirty
+                    || _lFSIncludeDay.Dirty
+                    || _lFSLateFee.Dirty
+                    || _lFSLateFeeBasedOn.Dirty
+                    || _lFSMaxLateDays.Dirty
+                    || _lFSOtherDate.Dirty
+                    || _lFSOtherDateValue.Dirty
+                    || _lFSStartOnWeekend.Dirty
                     || _noteDate.Dirty
                     || _originalPrincipalBalance.Dirty
                     || _ratesheet.Dirty
@@ -197,23 +197,23 @@ namespace EncompassRest.Loans
                 _lateFeePercentage.Dirty = value;
                 _lateFeeTotalPriceAdjustment.Dirty = value;
                 _latestConditionsDate.Dirty = value;
-                _lFS_Amount.Dirty = value;
-                _lFS_CalculateAs.Dirty = value;
-                _lFS_DayCleared.Dirty = value;
-                _lFS_DayClearedOtherDate.Dirty = value;
-                _lFS_DayClearedOtherDateValue.Dirty = value;
-                _lFS_FeeHandledAs.Dirty = value;
-                _lFS_GracePeriodCalendar.Dirty = value;
-                _lFS_GracePeriodDays.Dirty = value;
-                _lFS_GracePeriodLaterOf.Dirty = value;
-                _lFS_GracePeriodStarts.Dirty = value;
-                _lFS_IncludeDay.Dirty = value;
-                _lFS_LateFee.Dirty = value;
-                _lFS_LateFeeBasedOn.Dirty = value;
-                _lFS_MaxLateDays.Dirty = value;
-                _lFS_OtherDate.Dirty = value;
-                _lFS_OtherDateValue.Dirty = value;
-                _lFS_StartOnWeekend.Dirty = value;
+                _lFSAmount.Dirty = value;
+                _lFSCalculateAs.Dirty = value;
+                _lFSDayCleared.Dirty = value;
+                _lFSDayClearedOtherDate.Dirty = value;
+                _lFSDayClearedOtherDateValue.Dirty = value;
+                _lFSFeeHandledAs.Dirty = value;
+                _lFSGracePeriodCalendar.Dirty = value;
+                _lFSGracePeriodDays.Dirty = value;
+                _lFSGracePeriodLaterOf.Dirty = value;
+                _lFSGracePeriodStarts.Dirty = value;
+                _lFSIncludeDay.Dirty = value;
+                _lFSLateFee.Dirty = value;
+                _lFSLateFeeBasedOn.Dirty = value;
+                _lFSMaxLateDays.Dirty = value;
+                _lFSOtherDate.Dirty = value;
+                _lFSOtherDateValue.Dirty = value;
+                _lFSStartOnWeekend.Dirty = value;
                 _noteDate.Dirty = value;
                 _originalPrincipalBalance.Dirty = value;
                 _ratesheet.Dirty = value;

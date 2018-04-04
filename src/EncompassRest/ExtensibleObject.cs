@@ -26,7 +26,7 @@ namespace EncompassRest
                     return false;
                 }
                 _gettingDirty = true;
-                var dirty = DirtyInternal || _extensionData?.Dirty == true;
+                var dirty = CustomDirty || DirtyInternal || _extensionData?.Dirty == true;
                 _gettingDirty = false;
                 return dirty;
             }
@@ -35,6 +35,7 @@ namespace EncompassRest
                 if (!_settingDirty)
                 {
                     _settingDirty = true;
+                    CustomDirty = value;
                     DirtyInternal = value;
                     if (_extensionData != null)
                     {
@@ -44,6 +45,7 @@ namespace EncompassRest
                 }
             }
         }
+        internal virtual bool CustomDirty { get => false; set { } }
         internal virtual bool DirtyInternal { get => false; set { } }
         bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
         string IIdentifiable.Id { get => string.Empty; set { } }

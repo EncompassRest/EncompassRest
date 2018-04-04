@@ -19,8 +19,6 @@ namespace EncompassRest.Loans
         public string AltId { get => _altId; set => _altId = value; }
         private DirtyValue<string> _applicantType;
         public string ApplicantType { get => _applicantType; set => _applicantType = value; }
-        private Application _application;
-        public Application Application { get => _application ?? (_application = new Application()); set => _application = value; }
         private DirtyValue<StringEnumValue<ApplicationTakenMethodType>> _applicationTakenMethodType;
         public StringEnumValue<ApplicationTakenMethodType> ApplicationTakenMethodType { get => _applicationTakenMethodType; set => _applicationTakenMethodType = value; }
         private DirtyValue<string> _assetRepAndWarrantyMessage;
@@ -191,10 +189,10 @@ namespace EncompassRest.Loans
         public string ExperianKeyFactor5 { get => _experianKeyFactor5; set => _experianKeyFactor5 = value; }
         private DirtyValue<bool?> _experianMaterialTermsCreditByScore;
         public bool? ExperianMaterialTermsCreditByScore { get => _experianMaterialTermsCreditByScore; set => _experianMaterialTermsCreditByScore = value; }
-        private DirtyValue<string> _fannie_FirstName;
-        public string Fannie_FirstName { get => _fannie_FirstName; set => _fannie_FirstName = value; }
-        private DirtyValue<string> _fannie_MiddleName;
-        public string Fannie_MiddleName { get => _fannie_MiddleName; set => _fannie_MiddleName = value; }
+        private DirtyValue<string> _fannieFirstName;
+        public string FannieFirstName { get => _fannieFirstName; set => _fannieFirstName = value; }
+        private DirtyValue<string> _fannieMiddleName;
+        public string FannieMiddleName { get => _fannieMiddleName; set => _fannieMiddleName = value; }
         private DirtyValue<string> _firstName;
         public string FirstName { get => _firstName; set => _firstName = value; }
         private DirtyValue<string> _firstNameWithMiddleName;
@@ -781,8 +779,8 @@ namespace EncompassRest.Loans
                     || _experianKeyFactor4.Dirty
                     || _experianKeyFactor5.Dirty
                     || _experianMaterialTermsCreditByScore.Dirty
-                    || _fannie_FirstName.Dirty
-                    || _fannie_MiddleName.Dirty
+                    || _fannieFirstName.Dirty
+                    || _fannieMiddleName.Dirty
                     || _firstName.Dirty
                     || _firstNameWithMiddleName.Dirty
                     || _firstTimeHomeBuyer.Dirty
@@ -1029,7 +1027,6 @@ namespace EncompassRest.Loans
                     || _veteranIndicator.Dirty
                     || _workEmailAddress.Dirty
                     || _yearsofCreditOnFile.Dirty
-                    || _application?.Dirty == true
                     || _contact?.Dirty == true;
             }
             set
@@ -1124,8 +1121,8 @@ namespace EncompassRest.Loans
                 _experianKeyFactor4.Dirty = value;
                 _experianKeyFactor5.Dirty = value;
                 _experianMaterialTermsCreditByScore.Dirty = value;
-                _fannie_FirstName.Dirty = value;
-                _fannie_MiddleName.Dirty = value;
+                _fannieFirstName.Dirty = value;
+                _fannieMiddleName.Dirty = value;
                 _firstName.Dirty = value;
                 _firstNameWithMiddleName.Dirty = value;
                 _firstTimeHomeBuyer.Dirty = value;
@@ -1372,7 +1369,6 @@ namespace EncompassRest.Loans
                 _veteranIndicator.Dirty = value;
                 _workEmailAddress.Dirty = value;
                 _yearsofCreditOnFile.Dirty = value;
-                if (_application != null) _application.Dirty = value;
                 if (_contact != null) _contact.Dirty = value;
             }
         }

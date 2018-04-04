@@ -31,8 +31,8 @@ namespace EncompassRest.Loans
         public string ClosingTaxYear { get => _closingTaxYear; set => _closingTaxYear = value; }
         private DirtyValue<decimal?> _closingTaxYearInterestReceived;
         public decimal? ClosingTaxYearInterestReceived { get => _closingTaxYearInterestReceived; set => _closingTaxYearInterestReceived = value; }
-        private DirtyValue<string> _complianceVersion_CD3_X1505;
-        public string ComplianceVersion_CD3_X1505 { get => _complianceVersion_CD3_X1505; set => _complianceVersion_CD3_X1505 = value; }
+        private DirtyValue<string> _complianceVersionCD3X1505;
+        public string ComplianceVersionCD3X1505 { get => _complianceVersionCD3X1505; set => _complianceVersionCD3X1505 = value; }
         private DirtyValue<string> _contactFax;
         public string ContactFax { get => _contactFax; set => _contactFax = value; }
         private DirtyValue<string> _contactName;
@@ -225,7 +225,7 @@ namespace EncompassRest.Loans
                     || _closingCostProgramFile.Dirty
                     || _closingTaxYear.Dirty
                     || _closingTaxYearInterestReceived.Dirty
-                    || _complianceVersion_CD3_X1505.Dirty
+                    || _complianceVersionCD3X1505.Dirty
                     || _contactFax.Dirty
                     || _contactName.Dirty
                     || _contactPhone.Dirty
@@ -329,7 +329,7 @@ namespace EncompassRest.Loans
                 _closingCostProgramFile.Dirty = value;
                 _closingTaxYear.Dirty = value;
                 _closingTaxYearInterestReceived.Dirty = value;
-                _complianceVersion_CD3_X1505.Dirty = value;
+                _complianceVersionCD3X1505.Dirty = value;
                 _contactFax.Dirty = value;
                 _contactName.Dirty = value;
                 _contactPhone.Dirty = value;

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using EncompassRest.Filters;
+using EncompassRest.LoanPipeline;
 using EncompassRest.Loans;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
@@ -10,6 +13,7 @@ using EnumsNET;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest.Tests
 {
@@ -367,7 +371,6 @@ namespace EncompassRest.Tests
                 var field = loan.Fields[fieldId];
                 Assert.IsNull(field.Value);
                 Assert.IsTrue(field.IsEmpty);
-                Assert.AreEqual("{}", loan.ToJson());
                 switch (field.Type)
                 {
                     case LoanFieldType.Standard:
@@ -714,7 +717,7 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public void Loan_FieldsLocking()
+        public void Loan_FieldsSimpleLocking()
         {
             var loan = new Loan();
             var field = loan.Fields["CD1.X65"];
@@ -733,53 +736,130 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public void Loan_FieldsModelPaths()
+        public async Task Loan_FieldsLocking()
         {
             var loan = new Loan();
-            foreach (var pair in LoanFields.FieldMappings._dictionary.Distinct(new FieldMappingComparer()))
-            {
-                var field = loan.Fields[pair.Key];
-                Assert.AreEqual(pair.Value.ToString(), field.ModelPath);
-                if (field.Type != LoanFieldType.Virtual)
-                {
-                    Assert.IsFalse(field.Locked);
-                    field.Locked = true;
-                    Assert.IsTrue(field.Locked);
-                }
-            }
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(loan);
 
-            //var fieldsWithDuplicateFieldMappings = new List<string>();
-            //foreach (var pair in LoanFields.FieldMappings._dictionary)
-            //{
-            //    if (LoanFields.FieldMappings._dictionary.Values.Count(p => pair.Value.Equals(p)) > 1)
-            //    {
-            //        fieldsWithDuplicateFieldMappings.Add(pair.Key);
-            //    }
-            //}
-            //if (fieldsWithDuplicateFieldMappings.Count > 0)
-            //{
-            //    Assert.Fail($"Multiple fields have same field mapping {string.Join(", ", fieldsWithDuplicateFieldMappings)}");
-            //}
-        }
-
-        [TestMethod]
-        public void Loan_FieldsModelPathPatterns()
-        {
-            var loan = new Loan();
-            var loanFields = loan.Fields;
-            foreach (var pair in LoanFields.FieldPatternMappings)
+            try
             {
-                var fieldPattern = pair.Key;
-                for (var i = 1; i <= 20; ++i)
+                var distinctFieldMappings = LoanFields.FieldMappings._dictionary.Distinct(new FieldMappingComparer()).ToDictionary(p => p.Key, p => p.Value, StringComparer.OrdinalIgnoreCase);
+                foreach (var pair in distinctFieldMappings)
                 {
-                    var field = loanFields[string.Format(fieldPattern, i)];
-                    Assert.AreEqual(string.Format(pair.Value, i), field.ModelPath);
+                    var field = loan.Fields[pair.Key];
+                    Assert.AreEqual(pair.Value.ToString(), field.ModelPath);
                     if (field.Type != LoanFieldType.Virtual)
                     {
                         Assert.IsFalse(field.Locked);
                         field.Locked = true;
                         Assert.IsTrue(field.Locked);
                     }
+                }
+
+                await client.Loans.UpdateLoanAsync(loan);
+                
+                loan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.FieldLockData });
+
+                var failedLockingFields = new List<string>();
+                foreach (var pair in distinctFieldMappings)
+                {
+                    var field = loan.Fields[pair.Key];
+                    if (field.Type != LoanFieldType.Virtual)
+                    {
+                        if (!field.Locked)
+                        {
+                            failedLockingFields.Add(field.FieldId);
+                        }
+                    }
+                }
+
+                var fieldsUnableToLock = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "4177", "4175", "4174", "4178", "NEWHUD.X720", "NEWHUD2.X3728", "NEWHUD2.X3761", "NEWHUD2.X3794", "NEWHUD2.X3530", "NEWHUD2.X3563", "NEWHUD2.X3596", "NEWHUD2.X3629", "NEWHUD2.X3695", "NEWHUD2.X3662", "NEWHUD2.X3365", "NEWHUD2.X3332", "NEWHUD2.X3398", "NEWHUD2.X3431", "NEWHUD2.X3464", "NEWHUD2.X3497", "NEWHUD2.X3167", "NEWHUD2.X3134", "NEWHUD2.X3101", "NEWHUD2.X3266", "NEWHUD2.X3233", "NEWHUD2.X3200", "NEWHUD2.X3299", "NEWHUD2.X3068", "NEWHUD2.X3035", "NEWHUD2.X3002", "CD1.X52", "CD1.X53", "CD1.X54", "CD1.X55", "CD1.X56", "CD1.X57", "CD1.X58", "CD1.X59", "CD1.X67", "CD1.X66", "CD1.X68", "NEWHUD.X13", "NEWHUD2.X3992", "NEWHUD2.X3959", "NEWHUD2.X3926", "1417", "1416", "1419", "1418", "NEWHUD2.X3893", "NEWHUD2.X3860", "NEWHUD2.X3827", "1519", "1522", "1521", "1520", "NMLS.X4", "MORNET.X68", "NEWHUD2.X2705", "NEWHUD2.X2738", "NEWHUD2.X2771", "NEWHUD2.X2606", "NEWHUD2.X2639", "NEWHUD2.X2672", "NEWHUD2.X2507", "NEWHUD2.X2573", "NEWHUD2.X2540", "NEWHUD2.X2408", "NEWHUD2.X2441", "NEWHUD2.X2474", "NEWHUD2.X2342", "NEWHUD2.X2375", "NEWHUD2.X2309", "NEWHUD2.X2243", "NEWHUD2.X2276", "NEWHUD2.X2210", "NEWHUD2.X2177", "NEWHUD2.X2144", "NEWHUD2.X2111", "NEWHUD2.X2045", "NEWHUD2.X2078", "NEWHUD2.X2012", "NEWHUD2.X2969", "NEWHUD2.X2936", "NEWHUD2.X2903", "NEWHUD2.X2870", "NEWHUD2.X2804", "NEWHUD2.X2837", "NEWHUD2.X2832", "NEWHUD2.X1517", "NEWHUD2.X1550", "NEWHUD2.X1583", "NEWHUD2.X1715", "NEWHUD2.X1748", "NEWHUD2.X1781", "NEWHUD2.X1418", "NEWHUD2.X1451", "NEWHUD2.X1484", "NEWHUD2.X1154", "NEWHUD2.X1121", "NEWHUD2.X1187", "NEWHUD2.X1616", "NEWHUD2.X1649", "NEWHUD2.X1682", "NEWHUD2.X1352", "NEWHUD2.X1319", "NEWHUD2.X1385", "NEWHUD2.X1055", "NEWHUD2.X1022", "NEWHUD2.X1088", "NEWHUD2.X1253", "NEWHUD2.X1220", "NEWHUD2.X1286", "NEWHUD2.X1946", "NEWHUD2.X1979", "NEWHUD2.X1913", "NEWHUD2.X428", "NEWHUD2.X461", "NEWHUD2.X494", "NEWHUD2.X626", "NEWHUD2.X659", "NEWHUD2.X692", "NEWHUD2.X1880", "NEWHUD2.X1847", "NEWHUD2.X1814", "NEWHUD2.X527", "NEWHUD2.X593", "NEWHUD2.X560", "NEWHUD2.X725", "NEWHUD2.X758", "NEWHUD2.X791", "NEWHUD2.X263", "NEWHUD2.X230", "NEWHUD2.X296", "FE0204", "FE0205", "FE0206", "FE0207", "FE0202", "FE0203", "FE0209", "FE0215", "FE0217", "FE0216", "FE0210", "FE0213", "FE0233", "FE0299", "FE0298", "NEWHUD2.X362", "NEWHUD2.X329", "NEWHUD2.X395", "FE0133", "FE0107", "FE0106", "FE0105", "FE0104", "FE0103", "FE0102", "FE0109", "FE0116", "FE0117", "FE0115", "FE0113", "FE0110", "FE0198", "FE0199", "181", "NEWHUD2.X890", "NEWHUD2.X857", "NEWHUD2.X824", "334", "NEWHUD2.X989", "NEWHUD2.X956", "NEWHUD2.X4124", "NEWHUD2.X4157", "NEWHUD2.X4190", "NEWHUD2.X4025", "NEWHUD2.X4058", "NEWHUD2.X4091", "NEWHUD2.X4322", "NEWHUD2.X4355", "NEWHUD2.X4388", "NEWHUD2.X4223", "NEWHUD2.X4256", "NEWHUD2.X4289", "FR0104", "FR0106", "FR0107", "FR0108", "FR0124", "FR0112", "FR0115", "FR0199", "FR0198", "NEWHUD2.X4540", "NEWHUD2.X4573", "NEWHUD2.X4507", "FR0224", "FR0207", "FR0206", "FR0204", "FR0208", "FR0212", "FR0215", "FR0298", "FR0299", "NEWHUD2.X4474", "FR0324", "FR0306", "FR0307", "FR0304", "FR0308", "FR0312", "FR0315", "RE88395.X316", "FR0399", "FR0398", "FR0404", "FR0407", "FR0406", "FR0408", "FR0415", "FR0412", "FR0424", "FR0498", "FR0499", "NEWHUD2.X4606", "FR0504", "FR0506", "FR0507", "FR0508", "FR0524", "FR0515", "FR0512", "FR0599", "FR0598", "FR0624", "FR0607", "FR0606", "FR0604", "FR0608", "FR0615", "FR0612", "LE1.X83", "LE1.X82", "LE1.X81", "LE1.X80", "LE1.X84", "FR0698", "FR0699", "LE1.X78", "LE1.X79" };
+
+                var fieldsThatCanNowBeLocked = fieldsUnableToLock.Except(failedLockingFields).ToList();
+                if (fieldsThatCanNowBeLocked.Count > 0)
+                {
+                    Console.WriteLine($"Can now lock the following fields {string.Join(", ", fieldsThatCanNowBeLocked)}");
+                }
+                var fieldsThatShouldBeAbleToLock = failedLockingFields.Except(fieldsUnableToLock).ToList();
+                if (fieldsThatShouldBeAbleToLock.Count > 0)
+                {
+                    Assert.Fail($"Failed to lock {failedLockingFields.Count} fields {string.Join(", ", fieldsThatShouldBeAbleToLock)}");
+                }
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task Loan_FieldPatternsLocking()
+        {
+            var loan = new Loan();
+            var client = await GetTestClientAsync();
+            var loanId = await client.Loans.CreateLoanAsync(loan);
+
+            try
+            {
+                const int patternCount = 10;
+                var fieldPatternMappings = LoanFields.FieldPatternMappings.Where(p => !p.Key.StartsWith("TQL4506T") && !p.Key.StartsWith("LP")).ToList();
+                foreach (var pair in fieldPatternMappings)
+                {
+                    var fieldPattern = pair.Key;
+                    for (var i = 1; i <= patternCount; ++i)
+                    {
+                        var field = loan.Fields[string.Format(fieldPattern, i)];
+                        Assert.AreEqual(string.Format(pair.Value, i), field.ModelPath);
+                        if (field.Type != LoanFieldType.Virtual)
+                        {
+                            Assert.IsFalse(field.Locked);
+                            field.Locked = true;
+                            Assert.IsTrue(field.Locked);
+                        }
+                    }
+                }
+
+                await client.Loans.UpdateLoanAsync(loan);
+
+                loan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.FieldLockData });
+
+                var failedLockingFields = new List<string>();
+                foreach (var pair in fieldPatternMappings)
+                {
+                    var fieldPattern = pair.Key;
+                    for (var i = 1; i <= patternCount; ++i)
+                    {
+                        var field = loan.Fields[string.Format(fieldPattern, i)];
+                        if (field.Type != LoanFieldType.Virtual)
+                        {
+                            if (!field.Locked)
+                            {
+                                failedLockingFields.Add(field.FieldId);
+                            }
+                        }
+                    }
+                }
+
+                if (failedLockingFields.Count > 0)
+                {
+                    Assert.Fail($"Failed to lock {failedLockingFields.Count} fields {string.Join(", ", failedLockingFields)}");
+                }
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
                 }
             }
         }
@@ -953,6 +1033,70 @@ namespace EncompassRest.Tests
             Assert.IsTrue(field.IsEmpty);
             Assert.IsNull(field.Value);
             Assert.AreEqual(@"{""virtualFields"":{""Log.MS.Date.Clear to Close"":null}}", loan.ToJson());
+        }
+
+        [TestMethod]
+        public async Task Loan_NoExtensionData()
+        {
+            var client = await GetTestClientAsync().ConfigureAwait(false);
+            var list = await client.Pipeline.ViewPipelineAsync(new PipelineParameters(new StringFieldFilter(CanonicalLoanField.LoanFolder, StringFieldMatchType.Exact, "IncludeAllFolders", false)), 200).ConfigureAwait(false);
+            var tasks = new List<Task>();
+            foreach (var item in list)
+            {
+                tasks.Add(client.Loans.GetLoanAsync(item.LoanGuid).ContinueWith(async task =>
+                {
+                    var loan = await task.ConfigureAwait(false);
+                    var fails = new List<string>();
+                    TestForExtensionData(loan, new List<string> { "Loan" }, fails);
+                    Assert.AreEqual(0, fails.Count, $@"{loan.EncompassId} has the following extension data.
+{string.Join(Environment.NewLine, fails)}");
+                }));
+            }
+            await Task.WhenAll(tasks).ConfigureAwait(false);
+        }
+
+        private void TestForExtensionData(ExtensibleObject value, List<string> path, List<string> fails)
+        {
+            if (value.ExtensionData.Count > 0)
+            {
+                fails.Add($"{string.Concat(path)}: {JsonConvert.SerializeObject(new Dictionary<string, object>(value.ExtensionData))}");
+            }
+            var type = value.GetType();
+            var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(type);
+            switch (contract)
+            {
+                case JsonObjectContract jsonObjectContract:
+                    foreach (var property in jsonObjectContract.Properties)
+                    {
+                        var propertyUnderlyingName = property.UnderlyingName;
+                        var propertyValue = property.ValueProvider.GetValue(value);
+                        if (propertyValue != null)
+                        {
+                            switch (propertyValue)
+                            {
+                                case ExtensibleObject extensibleObject:
+                                    path.Add($".{propertyUnderlyingName}");
+                                    TestForExtensionData(extensibleObject, path, fails);
+                                    path.RemoveAt(path.Count - 1);
+                                    break;
+                                case IList list:
+                                    var i = 0;
+                                    foreach (var element in list)
+                                    {
+                                        if (element is ExtensibleObject extObj)
+                                        {
+                                            path.Add($".{propertyUnderlyingName}[{i}]");
+                                            TestForExtensionData(extObj, path, fails);
+                                            path.RemoveAt(path.Count - 1);
+                                        }
+                                        ++i;
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    break;
+            }
         }
     }
 }

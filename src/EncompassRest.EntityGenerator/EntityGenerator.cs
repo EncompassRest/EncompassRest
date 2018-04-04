@@ -159,9 +159,21 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields", "DocumentOrderLog.DocumentAudit", "Contact.Contact" };
+        private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "NonVols", "DocumentAudit" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application" };
+
+        private static readonly Dictionary<string, EntitySchema> s_explicitSchemas = new Dictionary<string, EntitySchema>
+        {
+            { "ElliUCDDetail", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CDFields", new PropertySchema { Type = PropertySchemaType.String } }, { "LEFields", new PropertySchema { Type = PropertySchemaType.String } } } } },
+            { "DocumentAudit", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "ReportKey", new PropertySchema { Type = PropertySchemaType.String } }, { "TimeStamp", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = "DocumentAuditAlert" } } } } },
+            { "DocumentAuditAlert", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Source", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Text", new PropertySchema { Type = PropertySchemaType.String } }, { "Fields", new PropertySchema { Type = PropertySchemaType.List, ElementType = "string" } } } } },
+            { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } }
+        };
+
+        private static readonly HashSet<string> s_additionalSchemaEntities = new HashSet<string> { "ElliUCDDetail", "NonVol", "DocumentAudit", "DocumentAuditAlert", "EntityReference", "FileAttachmentReference", "EmailDocument" };
+
+        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "ElliUCDDetail", "NonVols", "DocumentAudit", "DocumentAuditAlert", "EntityReference", "FileAttachmentReference" };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
@@ -394,48 +406,43 @@ namespace EncompassRest
         public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
         {
             Directory.CreateDirectory(destinationPath);
-            var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value))
-            {
-                "NonVol",
-                "DocumentAudit"
-            };
-            var exceptions = new List<Exception>();
+            var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value));
+            supportedEntities.UnionWith(s_additionalSchemaEntities);
             foreach (var entity in supportedEntities)
             {
+                EntitySchema entitySchema = null;
+                var found = false;
                 Exception exception;
                 var tryCount = 0;
                 do
                 {
                     exception = null;
+                    ++tryCount;
                     try
                     {
                         var loanSchema = await client.Schema.GetLoanSchemaAsync(true, new[] { entity }).ConfigureAwait(false);
-
-                        if (loanSchema.EntityTypes.TryGetValue(entity, out var entitySchema))
-                        {
-                            await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, entity, entitySchema).ConfigureAwait(false);
-                            if (s_missingSchemaEntities.Contains(entity))
-                            {
-                                Console.WriteLine($"Schema for {entity} can now be retrieved");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Failed to retrieve entity of type {entity}");
-                        }
+                        found = loanSchema.EntityTypes.TryGetValue(entity, out entitySchema);
                     }
                     catch (Exception ex)
                     {
-                        if (!s_missingSchemaEntities.Contains(entity))
-                        {
-                            exception = new Exception(entity, ex);
-                        }
+                        exception = new Exception(entity, ex);
                     }
-                    ++tryCount;
                 } while (exception != null && tryCount < 3);
-                if (exception != null)
+
+                if (found || s_explicitSchemas.TryGetValue(entity, out entitySchema))
                 {
-                    exceptions.Add(exception);
+                    await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, entity, entitySchema).ConfigureAwait(false);
+                    if (found && s_missingSchemaEntities.Contains(entity))
+                    {
+                        Console.WriteLine($"Schema for {entity} can now be retrieved");
+                    }
+                }
+                else
+                {
+                    if (!s_missingSchemaEntities.Contains(entity))
+                    {
+                        Console.WriteLine($"Failed to retrieve entity of type {entity}");
+                    }
                 }
             }
             foreach (var enumPair in s_sharedEnums.Concat(s_otherEnums))
@@ -465,10 +472,6 @@ namespace EncompassRest
             {
                 await GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value).ConfigureAwait(false);
             }
-            if (exceptions.Count > 0)
-            {
-                throw new AggregateException(exceptions);
-            }
         }
 
         private static async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string entityType, EntitySchema entitySchema)
@@ -490,12 +493,12 @@ namespace {@namespace}
 
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
-                var propertyName = pair.Key;
+                var propertyName = pair.Key.Replace("_", string.Empty);
                 var entityPropertyName = $"{entityType}.{propertyName}";
                 if (!s_propertiesToNotGenerate.Contains(entityPropertyName))
                 {
                     var propertySchema = pair.Value;
-                    var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isCollection);
+                    var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isList);
                     var hasOptions = propertyType == "string" && propertySchema.AllowedValues?.Count > 0;
                     if (hasOptions)
                     {
@@ -532,7 +535,14 @@ namespace {@namespace}
                         propertyType = $"StringEnumValue<{enumName}>";
                     }
                     var elementType = propertyType;
-                    if (isCollection)
+                    var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);
+                    var additionalConstructorParameters = string.Empty;
+                    if (isStringDictionary)
+                    {
+                        propertyType = "DirtyDictionary<string, string>";
+                        additionalConstructorParameters = "StringComparer.OrdinalIgnoreCase";
+                    }
+                    else if (isList)
                     {
                         propertyType = $"DirtyList<{elementType}>";
                     }
@@ -542,9 +552,9 @@ namespace {@namespace}
                     {
                         sb.AppendLine("        internal ModelPath _modelPathInternal;");
                     }
-                    sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isCollection ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
-                    properties.Add((propertyName, fieldName, isEntity, isCollection));
-                    sb.AppendLine($"        public {(isCollection ? $"IList<{elementType}>" : propertyType)} {propertyName} {{ get => {fieldName}{(isEntity || isCollection ? $" ?? ({fieldName} = new {propertyType}())" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); }" : $"=> {fieldName} = {(isCollection ? $"new {propertyType}(value)" : "value")};")} }}");
+                    sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    properties.Add((propertyName, fieldName, isEntity, isList || isStringDictionary));
+                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {fieldName}{(isEntity || isList || isStringDictionary ? $" ?? ({fieldName} = new {propertyType}({additionalConstructorParameters}))" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); }" : $"=> {fieldName} = {(isList || isStringDictionary ? $"new {propertyType}(value{(string.IsNullOrEmpty(additionalConstructorParameters) ? null : $", {additionalConstructorParameters}")})" : "value")};")} }}");
                 }
             }
 
@@ -681,10 +691,10 @@ namespace {@namespace}
             }
         }
 
-        private static string GetPropertyOrElementType(string entityType, string propertyName, PropertySchema propertySchema, out bool isEntity, out bool isCollection)
+        private static string GetPropertyOrElementType(string entityType, string propertyName, PropertySchema propertySchema, out bool isEntity, out bool isList)
         {
             isEntity = false;
-            isCollection = false;
+            isList = false;
             var propertyType = propertySchema.Type;
             switch (propertyType.EnumValue)
             {
@@ -702,7 +712,7 @@ namespace {@namespace}
                     return "DateTime?";
                 case PropertySchemaType.Set:
                 case PropertySchemaType.List:
-                    isCollection = true;
+                    isList = true;
                     return propertySchema.ElementType;
                 case PropertySchemaType.Entity:
                     isEntity = true;

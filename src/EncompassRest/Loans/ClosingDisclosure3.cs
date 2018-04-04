@@ -33,38 +33,38 @@ namespace EncompassRest.Loans
         public decimal? ActualSTDLETotalClosingCostJ { get => _actualSTDLETotalClosingCostJ; set => _actualSTDLETotalClosingCostJ = value; }
         private DirtyValue<decimal?> _actualSTDLETotalClosingCostJFromLatestRec;
         public decimal? ActualSTDLETotalClosingCostJFromLatestRec { get => _actualSTDLETotalClosingCostJFromLatestRec; set => _actualSTDLETotalClosingCostJFromLatestRec = value; }
-        private DirtyValue<string> _adjustments06_1;
-        public string Adjustments06_1 { get => _adjustments06_1; set => _adjustments06_1 = value; }
-        private DirtyValue<decimal?> _adjustments06_2;
-        public decimal? Adjustments06_2 { get => _adjustments06_2; set => _adjustments06_2 = value; }
-        private DirtyValue<string> _adjustments07_1;
-        public string Adjustments07_1 { get => _adjustments07_1; set => _adjustments07_1 = value; }
-        private DirtyValue<decimal?> _adjustments07_2;
-        public decimal? Adjustments07_2 { get => _adjustments07_2; set => _adjustments07_2 = value; }
-        private DirtyValue<string> _adjustments10_1;
-        public string Adjustments10_1 { get => _adjustments10_1; set => _adjustments10_1 = value; }
-        private DirtyValue<decimal?> _adjustments10_2;
-        public decimal? Adjustments10_2 { get => _adjustments10_2; set => _adjustments10_2 = value; }
-        private DirtyValue<string> _adjustments11_1;
-        public string Adjustments11_1 { get => _adjustments11_1; set => _adjustments11_1 = value; }
-        private DirtyValue<decimal?> _adjustments11_2;
-        public decimal? Adjustments11_2 { get => _adjustments11_2; set => _adjustments11_2 = value; }
-        private DirtyValue<string> _adjustments15_1;
-        public string Adjustments15_1 { get => _adjustments15_1; set => _adjustments15_1 = value; }
-        private DirtyValue<decimal?> _adjustments15_2;
-        public decimal? Adjustments15_2 { get => _adjustments15_2; set => _adjustments15_2 = value; }
-        private DirtyValue<string> _adjustments8_1;
-        public string Adjustments8_1 { get => _adjustments8_1; set => _adjustments8_1 = value; }
-        private DirtyValue<decimal?> _adjustments8_2;
-        public decimal? Adjustments8_2 { get => _adjustments8_2; set => _adjustments8_2 = value; }
-        private DirtyValue<string> _adjustments9_1;
-        public string Adjustments9_1 { get => _adjustments9_1; set => _adjustments9_1 = value; }
-        private DirtyValue<decimal?> _adjustments9_2;
-        public decimal? Adjustments9_2 { get => _adjustments9_2; set => _adjustments9_2 = value; }
-        private DirtyValue<string> _adjustmentsforItemsPaidbySellerinAdvance16_1;
-        public string AdjustmentsforItemsPaidbySellerinAdvance16_1 { get => _adjustmentsforItemsPaidbySellerinAdvance16_1; set => _adjustmentsforItemsPaidbySellerinAdvance16_1 = value; }
-        private DirtyValue<decimal?> _adjustmentsforItemsPaidbySellerinAdvance16_2;
-        public decimal? AdjustmentsforItemsPaidbySellerinAdvance16_2 { get => _adjustmentsforItemsPaidbySellerinAdvance16_2; set => _adjustmentsforItemsPaidbySellerinAdvance16_2 = value; }
+        private DirtyValue<string> _adjustments061;
+        public string Adjustments061 { get => _adjustments061; set => _adjustments061 = value; }
+        private DirtyValue<decimal?> _adjustments062;
+        public decimal? Adjustments062 { get => _adjustments062; set => _adjustments062 = value; }
+        private DirtyValue<string> _adjustments071;
+        public string Adjustments071 { get => _adjustments071; set => _adjustments071 = value; }
+        private DirtyValue<decimal?> _adjustments072;
+        public decimal? Adjustments072 { get => _adjustments072; set => _adjustments072 = value; }
+        private DirtyValue<string> _adjustments101;
+        public string Adjustments101 { get => _adjustments101; set => _adjustments101 = value; }
+        private DirtyValue<decimal?> _adjustments102;
+        public decimal? Adjustments102 { get => _adjustments102; set => _adjustments102 = value; }
+        private DirtyValue<string> _adjustments111;
+        public string Adjustments111 { get => _adjustments111; set => _adjustments111 = value; }
+        private DirtyValue<decimal?> _adjustments112;
+        public decimal? Adjustments112 { get => _adjustments112; set => _adjustments112 = value; }
+        private DirtyValue<string> _adjustments151;
+        public string Adjustments151 { get => _adjustments151; set => _adjustments151 = value; }
+        private DirtyValue<decimal?> _adjustments152;
+        public decimal? Adjustments152 { get => _adjustments152; set => _adjustments152 = value; }
+        private DirtyValue<string> _adjustments81;
+        public string Adjustments81 { get => _adjustments81; set => _adjustments81 = value; }
+        private DirtyValue<decimal?> _adjustments82;
+        public decimal? Adjustments82 { get => _adjustments82; set => _adjustments82 = value; }
+        private DirtyValue<string> _adjustments91;
+        public string Adjustments91 { get => _adjustments91; set => _adjustments91 = value; }
+        private DirtyValue<decimal?> _adjustments92;
+        public decimal? Adjustments92 { get => _adjustments92; set => _adjustments92 = value; }
+        private DirtyValue<string> _adjustmentsforItemsPaidbySellerinAdvance161;
+        public string AdjustmentsforItemsPaidbySellerinAdvance161 { get => _adjustmentsforItemsPaidbySellerinAdvance161; set => _adjustmentsforItemsPaidbySellerinAdvance161 = value; }
+        private DirtyValue<decimal?> _adjustmentsforItemsPaidbySellerinAdvance162;
+        public decimal? AdjustmentsforItemsPaidbySellerinAdvance162 { get => _adjustmentsforItemsPaidbySellerinAdvance162; set => _adjustmentsforItemsPaidbySellerinAdvance162 = value; }
         private DirtyValue<string> _aLTCashToCloseDidChangeCol;
         public string ALTCashToCloseDidChangeCol { get => _aLTCashToCloseDidChangeCol; set => _aLTCashToCloseDidChangeCol = value; }
         private DirtyValue<decimal?> _aLTCashToCloseRemark;
@@ -93,38 +93,38 @@ namespace EncompassRest.Loans
         public string CD3CashToCloseFromToBorrower { get => _cD3CashToCloseFromToBorrower; set => _cD3CashToCloseFromToBorrower = value; }
         private DirtyValue<decimal?> _cD3ClosingCostsPaidBeforeClosing;
         public decimal? CD3ClosingCostsPaidBeforeClosing { get => _cD3ClosingCostsPaidBeforeClosing; set => _cD3ClosingCostsPaidBeforeClosing = value; }
-        private DirtyValue<decimal?> _cD3TotalClosingCost_J;
-        public decimal? CD3TotalClosingCost_J { get => _cD3TotalClosingCost_J; set => _cD3TotalClosingCost_J = value; }
-        private DirtyValue<decimal?> _cD3TotalPayoffsAndPayments_K;
-        public decimal? CD3TotalPayoffsAndPayments_K { get => _cD3TotalPayoffsAndPayments_K; set => _cD3TotalPayoffsAndPayments_K = value; }
+        private DirtyValue<decimal?> _cD3TotalClosingCostJ;
+        public decimal? CD3TotalClosingCostJ { get => _cD3TotalClosingCostJ; set => _cD3TotalClosingCostJ = value; }
+        private DirtyValue<decimal?> _cD3TotalPayoffsAndPaymentsK;
+        public decimal? CD3TotalPayoffsAndPaymentsK { get => _cD3TotalPayoffsAndPaymentsK; set => _cD3TotalPayoffsAndPaymentsK = value; }
         private DirtyValue<decimal?> _closingCostsPaidAtClosing;
         public decimal? ClosingCostsPaidAtClosing { get => _closingCostsPaidAtClosing; set => _closingCostsPaidAtClosing = value; }
-        private DirtyValue<decimal?> _closingCostsPaidatClosing_J;
-        public decimal? ClosingCostsPaidatClosing_J { get => _closingCostsPaidatClosing_J; set => _closingCostsPaidatClosing_J = value; }
-        private DirtyValue<string> _duefromSelleratClosing11_1;
-        public string DuefromSelleratClosing11_1 { get => _duefromSelleratClosing11_1; set => _duefromSelleratClosing11_1 = value; }
-        private DirtyValue<decimal?> _duefromSelleratClosing11_2;
-        public decimal? DuefromSelleratClosing11_2 { get => _duefromSelleratClosing11_2; set => _duefromSelleratClosing11_2 = value; }
-        private DirtyValue<string> _duefromSelleratClosing12_1;
-        public string DuefromSelleratClosing12_1 { get => _duefromSelleratClosing12_1; set => _duefromSelleratClosing12_1 = value; }
-        private DirtyValue<decimal?> _duefromSelleratClosing12_2;
-        public decimal? DuefromSelleratClosing12_2 { get => _duefromSelleratClosing12_2; set => _duefromSelleratClosing12_2 = value; }
-        private DirtyValue<string> _duefromSelleratClosing13_1;
-        public string DuefromSelleratClosing13_1 { get => _duefromSelleratClosing13_1; set => _duefromSelleratClosing13_1 = value; }
-        private DirtyValue<decimal?> _duefromSelleratClosing13_2;
-        public decimal? DuefromSelleratClosing13_2 { get => _duefromSelleratClosing13_2; set => _duefromSelleratClosing13_2 = value; }
-        private DirtyValue<string> _dueToSellerAtClosing6_1;
-        public string DueToSellerAtClosing6_1 { get => _dueToSellerAtClosing6_1; set => _dueToSellerAtClosing6_1 = value; }
-        private DirtyValue<decimal?> _dueToSellerAtClosing6_2;
-        public decimal? DueToSellerAtClosing6_2 { get => _dueToSellerAtClosing6_2; set => _dueToSellerAtClosing6_2 = value; }
-        private DirtyValue<string> _dueToSellerAtClosing7_1;
-        public string DueToSellerAtClosing7_1 { get => _dueToSellerAtClosing7_1; set => _dueToSellerAtClosing7_1 = value; }
-        private DirtyValue<decimal?> _dueToSellerAtClosing7_2;
-        public decimal? DueToSellerAtClosing7_2 { get => _dueToSellerAtClosing7_2; set => _dueToSellerAtClosing7_2 = value; }
-        private DirtyValue<string> _dueToSellerAtClosing8_1;
-        public string DueToSellerAtClosing8_1 { get => _dueToSellerAtClosing8_1; set => _dueToSellerAtClosing8_1 = value; }
-        private DirtyValue<decimal?> _dueToSellerAtClosing8_2;
-        public decimal? DueToSellerAtClosing8_2 { get => _dueToSellerAtClosing8_2; set => _dueToSellerAtClosing8_2 = value; }
+        private DirtyValue<decimal?> _closingCostsPaidatClosingJ;
+        public decimal? ClosingCostsPaidatClosingJ { get => _closingCostsPaidatClosingJ; set => _closingCostsPaidatClosingJ = value; }
+        private DirtyValue<string> _duefromSelleratClosing111;
+        public string DuefromSelleratClosing111 { get => _duefromSelleratClosing111; set => _duefromSelleratClosing111 = value; }
+        private DirtyValue<decimal?> _duefromSelleratClosing112;
+        public decimal? DuefromSelleratClosing112 { get => _duefromSelleratClosing112; set => _duefromSelleratClosing112 = value; }
+        private DirtyValue<string> _duefromSelleratClosing121;
+        public string DuefromSelleratClosing121 { get => _duefromSelleratClosing121; set => _duefromSelleratClosing121 = value; }
+        private DirtyValue<decimal?> _duefromSelleratClosing122;
+        public decimal? DuefromSelleratClosing122 { get => _duefromSelleratClosing122; set => _duefromSelleratClosing122 = value; }
+        private DirtyValue<string> _duefromSelleratClosing131;
+        public string DuefromSelleratClosing131 { get => _duefromSelleratClosing131; set => _duefromSelleratClosing131 = value; }
+        private DirtyValue<decimal?> _duefromSelleratClosing132;
+        public decimal? DuefromSelleratClosing132 { get => _duefromSelleratClosing132; set => _duefromSelleratClosing132 = value; }
+        private DirtyValue<string> _dueToSellerAtClosing61;
+        public string DueToSellerAtClosing61 { get => _dueToSellerAtClosing61; set => _dueToSellerAtClosing61 = value; }
+        private DirtyValue<decimal?> _dueToSellerAtClosing62;
+        public decimal? DueToSellerAtClosing62 { get => _dueToSellerAtClosing62; set => _dueToSellerAtClosing62 = value; }
+        private DirtyValue<string> _dueToSellerAtClosing71;
+        public string DueToSellerAtClosing71 { get => _dueToSellerAtClosing71; set => _dueToSellerAtClosing71 = value; }
+        private DirtyValue<decimal?> _dueToSellerAtClosing72;
+        public decimal? DueToSellerAtClosing72 { get => _dueToSellerAtClosing72; set => _dueToSellerAtClosing72 = value; }
+        private DirtyValue<string> _dueToSellerAtClosing81;
+        public string DueToSellerAtClosing81 { get => _dueToSellerAtClosing81; set => _dueToSellerAtClosing81 = value; }
+        private DirtyValue<decimal?> _dueToSellerAtClosing82;
+        public decimal? DueToSellerAtClosing82 { get => _dueToSellerAtClosing82; set => _dueToSellerAtClosing82 = value; }
         private DirtyValue<bool?> _excludeBorrowerClosingCosts;
         public bool? ExcludeBorrowerClosingCosts { get => _excludeBorrowerClosingCosts; set => _excludeBorrowerClosingCosts = value; }
         private DirtyValue<decimal?> _finalCashToClose;
@@ -141,10 +141,10 @@ namespace EncompassRest.Loans
         public string LECD3CashToCloseFromToBorrower { get => _lECD3CashToCloseFromToBorrower; set => _lECD3CashToCloseFromToBorrower = value; }
         private DirtyValue<decimal?> _lECD3ClosingCostsPaidBeforeClosing;
         public decimal? LECD3ClosingCostsPaidBeforeClosing { get => _lECD3ClosingCostsPaidBeforeClosing; set => _lECD3ClosingCostsPaidBeforeClosing = value; }
-        private DirtyValue<decimal?> _lECD3TotalClosingCost_J;
-        public decimal? LECD3TotalClosingCost_J { get => _lECD3TotalClosingCost_J; set => _lECD3TotalClosingCost_J = value; }
-        private DirtyValue<decimal?> _lECD3TotalPayoffsAndPayments_K;
-        public decimal? LECD3TotalPayoffsAndPayments_K { get => _lECD3TotalPayoffsAndPayments_K; set => _lECD3TotalPayoffsAndPayments_K = value; }
+        private DirtyValue<decimal?> _lECD3TotalClosingCostJ;
+        public decimal? LECD3TotalClosingCostJ { get => _lECD3TotalClosingCostJ; set => _lECD3TotalClosingCostJ = value; }
+        private DirtyValue<decimal?> _lECD3TotalPayoffsAndPaymentsK;
+        public decimal? LECD3TotalPayoffsAndPaymentsK { get => _lECD3TotalPayoffsAndPaymentsK; set => _lECD3TotalPayoffsAndPaymentsK = value; }
         private DirtyValue<decimal?> _lELoanAmount;
         public decimal? LELoanAmount { get => _lELoanAmount; set => _lELoanAmount = value; }
         private DirtyValue<decimal?> _liabilityAmount1;
@@ -215,14 +215,14 @@ namespace EncompassRest.Loans
         public decimal? NonUCDTotalAdjustmentsAndOtherCredits { get => _nonUCDTotalAdjustmentsAndOtherCredits; set => _nonUCDTotalAdjustmentsAndOtherCredits = value; }
         private DirtyValue<bool?> _omitFromPrintSellersTransaction;
         public bool? OmitFromPrintSellersTransaction { get => _omitFromPrintSellersTransaction; set => _omitFromPrintSellersTransaction = value; }
-        private DirtyValue<string> _otherCredits6_1;
-        public string OtherCredits6_1 { get => _otherCredits6_1; set => _otherCredits6_1 = value; }
-        private DirtyValue<decimal?> _otherCredits6_2;
-        public decimal? OtherCredits6_2 { get => _otherCredits6_2; set => _otherCredits6_2 = value; }
-        private DirtyValue<string> _otherCredits7_1;
-        public string OtherCredits7_1 { get => _otherCredits7_1; set => _otherCredits7_1 = value; }
-        private DirtyValue<decimal?> _otherCredits7_2;
-        public decimal? OtherCredits7_2 { get => _otherCredits7_2; set => _otherCredits7_2 = value; }
+        private DirtyValue<string> _otherCredits61;
+        public string OtherCredits61 { get => _otherCredits61; set => _otherCredits61 = value; }
+        private DirtyValue<decimal?> _otherCredits62;
+        public decimal? OtherCredits62 { get => _otherCredits62; set => _otherCredits62 = value; }
+        private DirtyValue<string> _otherCredits71;
+        public string OtherCredits71 { get => _otherCredits71; set => _otherCredits71 = value; }
+        private DirtyValue<decimal?> _otherCredits72;
+        public decimal? OtherCredits72 { get => _otherCredits72; set => _otherCredits72 = value; }
         private DirtyValue<decimal?> _priorToleranceCureAmount;
         public decimal? PriorToleranceCureAmount { get => _priorToleranceCureAmount; set => _priorToleranceCureAmount = value; }
         private DirtyValue<StringEnumValue<STDAdjustmentAndOtherCreditsRemark>> _sTDAdjustmentAndOtherCreditsRemark;
@@ -297,10 +297,10 @@ namespace EncompassRest.Loans
         public decimal? TotalAdjustmentsAndOtherCredits { get => _totalAdjustmentsAndOtherCredits; set => _totalAdjustmentsAndOtherCredits = value; }
         private DirtyValue<decimal?> _totalDuefromBorrowerAtClosing;
         public decimal? TotalDuefromBorrowerAtClosing { get => _totalDuefromBorrowerAtClosing; set => _totalDuefromBorrowerAtClosing = value; }
-        private DirtyValue<decimal?> _totalDuefromSelleratClosing_N;
-        public decimal? TotalDuefromSelleratClosing_N { get => _totalDuefromSelleratClosing_N; set => _totalDuefromSelleratClosing_N = value; }
-        private DirtyValue<decimal?> _totalDuetoSelleratClosing_M;
-        public decimal? TotalDuetoSelleratClosing_M { get => _totalDuetoSelleratClosing_M; set => _totalDuetoSelleratClosing_M = value; }
+        private DirtyValue<decimal?> _totalDuefromSelleratClosingN;
+        public decimal? TotalDuefromSelleratClosingN { get => _totalDuefromSelleratClosingN; set => _totalDuefromSelleratClosingN = value; }
+        private DirtyValue<decimal?> _totalDuetoSelleratClosingM;
+        public decimal? TotalDuetoSelleratClosingM { get => _totalDuetoSelleratClosingM; set => _totalDuetoSelleratClosingM = value; }
         private DirtyValue<decimal?> _totalFromK;
         public decimal? TotalFromK { get => _totalFromK; set => _totalFromK = value; }
         private DirtyValue<decimal?> _totalFromL;
@@ -336,22 +336,22 @@ namespace EncompassRest.Loans
                     || _actualSTDLESellerCreditsFromLatestRec.Dirty
                     || _actualSTDLETotalClosingCostJ.Dirty
                     || _actualSTDLETotalClosingCostJFromLatestRec.Dirty
-                    || _adjustments06_1.Dirty
-                    || _adjustments06_2.Dirty
-                    || _adjustments07_1.Dirty
-                    || _adjustments07_2.Dirty
-                    || _adjustments10_1.Dirty
-                    || _adjustments10_2.Dirty
-                    || _adjustments11_1.Dirty
-                    || _adjustments11_2.Dirty
-                    || _adjustments15_1.Dirty
-                    || _adjustments15_2.Dirty
-                    || _adjustments8_1.Dirty
-                    || _adjustments8_2.Dirty
-                    || _adjustments9_1.Dirty
-                    || _adjustments9_2.Dirty
-                    || _adjustmentsforItemsPaidbySellerinAdvance16_1.Dirty
-                    || _adjustmentsforItemsPaidbySellerinAdvance16_2.Dirty
+                    || _adjustments061.Dirty
+                    || _adjustments062.Dirty
+                    || _adjustments071.Dirty
+                    || _adjustments072.Dirty
+                    || _adjustments101.Dirty
+                    || _adjustments102.Dirty
+                    || _adjustments111.Dirty
+                    || _adjustments112.Dirty
+                    || _adjustments151.Dirty
+                    || _adjustments152.Dirty
+                    || _adjustments81.Dirty
+                    || _adjustments82.Dirty
+                    || _adjustments91.Dirty
+                    || _adjustments92.Dirty
+                    || _adjustmentsforItemsPaidbySellerinAdvance161.Dirty
+                    || _adjustmentsforItemsPaidbySellerinAdvance162.Dirty
                     || _aLTCashToCloseDidChangeCol.Dirty
                     || _aLTCashToCloseRemark.Dirty
                     || _aLTClosingCostBeforeClosingDidChangeCol.Dirty
@@ -366,22 +366,22 @@ namespace EncompassRest.Loans
                     || _cD3CashToClose.Dirty
                     || _cD3CashToCloseFromToBorrower.Dirty
                     || _cD3ClosingCostsPaidBeforeClosing.Dirty
-                    || _cD3TotalClosingCost_J.Dirty
-                    || _cD3TotalPayoffsAndPayments_K.Dirty
+                    || _cD3TotalClosingCostJ.Dirty
+                    || _cD3TotalPayoffsAndPaymentsK.Dirty
                     || _closingCostsPaidAtClosing.Dirty
-                    || _closingCostsPaidatClosing_J.Dirty
-                    || _duefromSelleratClosing11_1.Dirty
-                    || _duefromSelleratClosing11_2.Dirty
-                    || _duefromSelleratClosing12_1.Dirty
-                    || _duefromSelleratClosing12_2.Dirty
-                    || _duefromSelleratClosing13_1.Dirty
-                    || _duefromSelleratClosing13_2.Dirty
-                    || _dueToSellerAtClosing6_1.Dirty
-                    || _dueToSellerAtClosing6_2.Dirty
-                    || _dueToSellerAtClosing7_1.Dirty
-                    || _dueToSellerAtClosing7_2.Dirty
-                    || _dueToSellerAtClosing8_1.Dirty
-                    || _dueToSellerAtClosing8_2.Dirty
+                    || _closingCostsPaidatClosingJ.Dirty
+                    || _duefromSelleratClosing111.Dirty
+                    || _duefromSelleratClosing112.Dirty
+                    || _duefromSelleratClosing121.Dirty
+                    || _duefromSelleratClosing122.Dirty
+                    || _duefromSelleratClosing131.Dirty
+                    || _duefromSelleratClosing132.Dirty
+                    || _dueToSellerAtClosing61.Dirty
+                    || _dueToSellerAtClosing62.Dirty
+                    || _dueToSellerAtClosing71.Dirty
+                    || _dueToSellerAtClosing72.Dirty
+                    || _dueToSellerAtClosing81.Dirty
+                    || _dueToSellerAtClosing82.Dirty
                     || _excludeBorrowerClosingCosts.Dirty
                     || _finalCashToClose.Dirty
                     || _fromToBorrower.Dirty
@@ -390,8 +390,8 @@ namespace EncompassRest.Loans
                     || _lECD3CashToClose.Dirty
                     || _lECD3CashToCloseFromToBorrower.Dirty
                     || _lECD3ClosingCostsPaidBeforeClosing.Dirty
-                    || _lECD3TotalClosingCost_J.Dirty
-                    || _lECD3TotalPayoffsAndPayments_K.Dirty
+                    || _lECD3TotalClosingCostJ.Dirty
+                    || _lECD3TotalPayoffsAndPaymentsK.Dirty
                     || _lELoanAmount.Dirty
                     || _liabilityAmount1.Dirty
                     || _liabilityAmount10.Dirty
@@ -427,10 +427,10 @@ namespace EncompassRest.Loans
                     || _loanAmount.Dirty
                     || _nonUCDTotalAdjustmentsAndOtherCredits.Dirty
                     || _omitFromPrintSellersTransaction.Dirty
-                    || _otherCredits6_1.Dirty
-                    || _otherCredits6_2.Dirty
-                    || _otherCredits7_1.Dirty
-                    || _otherCredits7_2.Dirty
+                    || _otherCredits61.Dirty
+                    || _otherCredits62.Dirty
+                    || _otherCredits71.Dirty
+                    || _otherCredits72.Dirty
                     || _priorToleranceCureAmount.Dirty
                     || _sTDAdjustmentAndOtherCreditsRemark.Dirty
                     || _sTDAdjustmentsDidChangeCol.Dirty
@@ -468,8 +468,8 @@ namespace EncompassRest.Loans
                     || _sTDTotalClosingCostRemark.Dirty
                     || _totalAdjustmentsAndOtherCredits.Dirty
                     || _totalDuefromBorrowerAtClosing.Dirty
-                    || _totalDuefromSelleratClosing_N.Dirty
-                    || _totalDuetoSelleratClosing_M.Dirty
+                    || _totalDuefromSelleratClosingN.Dirty
+                    || _totalDuetoSelleratClosingM.Dirty
                     || _totalFromK.Dirty
                     || _totalFromL.Dirty
                     || _totalFromM.Dirty
@@ -495,22 +495,22 @@ namespace EncompassRest.Loans
                 _actualSTDLESellerCreditsFromLatestRec.Dirty = value;
                 _actualSTDLETotalClosingCostJ.Dirty = value;
                 _actualSTDLETotalClosingCostJFromLatestRec.Dirty = value;
-                _adjustments06_1.Dirty = value;
-                _adjustments06_2.Dirty = value;
-                _adjustments07_1.Dirty = value;
-                _adjustments07_2.Dirty = value;
-                _adjustments10_1.Dirty = value;
-                _adjustments10_2.Dirty = value;
-                _adjustments11_1.Dirty = value;
-                _adjustments11_2.Dirty = value;
-                _adjustments15_1.Dirty = value;
-                _adjustments15_2.Dirty = value;
-                _adjustments8_1.Dirty = value;
-                _adjustments8_2.Dirty = value;
-                _adjustments9_1.Dirty = value;
-                _adjustments9_2.Dirty = value;
-                _adjustmentsforItemsPaidbySellerinAdvance16_1.Dirty = value;
-                _adjustmentsforItemsPaidbySellerinAdvance16_2.Dirty = value;
+                _adjustments061.Dirty = value;
+                _adjustments062.Dirty = value;
+                _adjustments071.Dirty = value;
+                _adjustments072.Dirty = value;
+                _adjustments101.Dirty = value;
+                _adjustments102.Dirty = value;
+                _adjustments111.Dirty = value;
+                _adjustments112.Dirty = value;
+                _adjustments151.Dirty = value;
+                _adjustments152.Dirty = value;
+                _adjustments81.Dirty = value;
+                _adjustments82.Dirty = value;
+                _adjustments91.Dirty = value;
+                _adjustments92.Dirty = value;
+                _adjustmentsforItemsPaidbySellerinAdvance161.Dirty = value;
+                _adjustmentsforItemsPaidbySellerinAdvance162.Dirty = value;
                 _aLTCashToCloseDidChangeCol.Dirty = value;
                 _aLTCashToCloseRemark.Dirty = value;
                 _aLTClosingCostBeforeClosingDidChangeCol.Dirty = value;
@@ -525,22 +525,22 @@ namespace EncompassRest.Loans
                 _cD3CashToClose.Dirty = value;
                 _cD3CashToCloseFromToBorrower.Dirty = value;
                 _cD3ClosingCostsPaidBeforeClosing.Dirty = value;
-                _cD3TotalClosingCost_J.Dirty = value;
-                _cD3TotalPayoffsAndPayments_K.Dirty = value;
+                _cD3TotalClosingCostJ.Dirty = value;
+                _cD3TotalPayoffsAndPaymentsK.Dirty = value;
                 _closingCostsPaidAtClosing.Dirty = value;
-                _closingCostsPaidatClosing_J.Dirty = value;
-                _duefromSelleratClosing11_1.Dirty = value;
-                _duefromSelleratClosing11_2.Dirty = value;
-                _duefromSelleratClosing12_1.Dirty = value;
-                _duefromSelleratClosing12_2.Dirty = value;
-                _duefromSelleratClosing13_1.Dirty = value;
-                _duefromSelleratClosing13_2.Dirty = value;
-                _dueToSellerAtClosing6_1.Dirty = value;
-                _dueToSellerAtClosing6_2.Dirty = value;
-                _dueToSellerAtClosing7_1.Dirty = value;
-                _dueToSellerAtClosing7_2.Dirty = value;
-                _dueToSellerAtClosing8_1.Dirty = value;
-                _dueToSellerAtClosing8_2.Dirty = value;
+                _closingCostsPaidatClosingJ.Dirty = value;
+                _duefromSelleratClosing111.Dirty = value;
+                _duefromSelleratClosing112.Dirty = value;
+                _duefromSelleratClosing121.Dirty = value;
+                _duefromSelleratClosing122.Dirty = value;
+                _duefromSelleratClosing131.Dirty = value;
+                _duefromSelleratClosing132.Dirty = value;
+                _dueToSellerAtClosing61.Dirty = value;
+                _dueToSellerAtClosing62.Dirty = value;
+                _dueToSellerAtClosing71.Dirty = value;
+                _dueToSellerAtClosing72.Dirty = value;
+                _dueToSellerAtClosing81.Dirty = value;
+                _dueToSellerAtClosing82.Dirty = value;
                 _excludeBorrowerClosingCosts.Dirty = value;
                 _finalCashToClose.Dirty = value;
                 _fromToBorrower.Dirty = value;
@@ -549,8 +549,8 @@ namespace EncompassRest.Loans
                 _lECD3CashToClose.Dirty = value;
                 _lECD3CashToCloseFromToBorrower.Dirty = value;
                 _lECD3ClosingCostsPaidBeforeClosing.Dirty = value;
-                _lECD3TotalClosingCost_J.Dirty = value;
-                _lECD3TotalPayoffsAndPayments_K.Dirty = value;
+                _lECD3TotalClosingCostJ.Dirty = value;
+                _lECD3TotalPayoffsAndPaymentsK.Dirty = value;
                 _lELoanAmount.Dirty = value;
                 _liabilityAmount1.Dirty = value;
                 _liabilityAmount10.Dirty = value;
@@ -586,10 +586,10 @@ namespace EncompassRest.Loans
                 _loanAmount.Dirty = value;
                 _nonUCDTotalAdjustmentsAndOtherCredits.Dirty = value;
                 _omitFromPrintSellersTransaction.Dirty = value;
-                _otherCredits6_1.Dirty = value;
-                _otherCredits6_2.Dirty = value;
-                _otherCredits7_1.Dirty = value;
-                _otherCredits7_2.Dirty = value;
+                _otherCredits61.Dirty = value;
+                _otherCredits62.Dirty = value;
+                _otherCredits71.Dirty = value;
+                _otherCredits72.Dirty = value;
                 _priorToleranceCureAmount.Dirty = value;
                 _sTDAdjustmentAndOtherCreditsRemark.Dirty = value;
                 _sTDAdjustmentsDidChangeCol.Dirty = value;
@@ -627,8 +627,8 @@ namespace EncompassRest.Loans
                 _sTDTotalClosingCostRemark.Dirty = value;
                 _totalAdjustmentsAndOtherCredits.Dirty = value;
                 _totalDuefromBorrowerAtClosing.Dirty = value;
-                _totalDuefromSelleratClosing_N.Dirty = value;
-                _totalDuetoSelleratClosing_M.Dirty = value;
+                _totalDuefromSelleratClosingN.Dirty = value;
+                _totalDuetoSelleratClosingM.Dirty = value;
                 _totalFromK.Dirty = value;
                 _totalFromL.Dirty = value;
                 _totalFromM.Dirty = value;
