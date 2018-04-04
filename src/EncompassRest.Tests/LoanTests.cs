@@ -934,12 +934,12 @@ namespace EncompassRest.Tests
             Assert.IsFalse(field.IsEmpty);
             Assert.AreEqual(intValue, (int?)field.Value);
             Assert.AreEqual(intValue, field.ToInt32());
-            Assert.AreEqual($@"{{""NewEntity"":[{{}},{{""Borrower"":{{""BorrowerId"":{intValue}}}}}]}}", loan.ToJson());
+            Assert.AreEqual($@"{{""newEntity"":[{{}},{{""borrower"":{{""borrowerId"":{intValue}}}}}]}}", loan.ToJson());
 
             field.Value = null;
             Assert.IsTrue(field.IsEmpty);
             Assert.IsNull(field.Value);
-            Assert.AreEqual(@"{""NewEntity"":[{},{""Borrower"":{""BorrowerId"":null}}]}", loan.ToJson());
+            Assert.AreEqual(@"{""newEntity"":[{},{""borrower"":{""borrowerId"":null}}]}", loan.ToJson());
 
             loan = new Loan();
             field = loan.Fields["NEWFIELD"];
