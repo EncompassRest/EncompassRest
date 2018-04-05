@@ -161,7 +161,9 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application", "FieldLockData.ModelPath" };
+
+        private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue" };
 
         private static readonly Dictionary<string, EntitySchema> s_explicitSchemas = new Dictionary<string, EntitySchema>
         {
@@ -546,15 +548,10 @@ namespace {@namespace}
                     {
                         propertyType = $"DirtyList<{elementType}>";
                     }
-                    var isModelPath = propertyName == "ModelPath";
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                    if (isModelPath)
-                    {
-                        sb.AppendLine("        internal ModelPath _modelPathInternal;");
-                    }
-                    sb.AppendLine($"        {(isModelPath ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
+                    sb.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isList || isStringDictionary));
-                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {fieldName}{(isEntity || isList || isStringDictionary ? $" ?? ({fieldName} = new {propertyType}({additionalConstructorParameters}))" : string.Empty)}; set {(isModelPath ? "{ _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); }" : $"=> {fieldName} = {(isList || isStringDictionary ? $"new {propertyType}(value{(string.IsNullOrEmpty(additionalConstructorParameters) ? null : $", {additionalConstructorParameters}")})" : "value")};")} }}");
+                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {fieldName}{(isEntity || isList || isStringDictionary ? $" ?? ({fieldName} = new {propertyType}({additionalConstructorParameters}))" : string.Empty)}; set => {fieldName} = {(isList || isStringDictionary ? $"new {propertyType}(value{(string.IsNullOrEmpty(additionalConstructorParameters) ? null : $", {additionalConstructorParameters}")})" : "value")}; }}");
                 }
             }
 

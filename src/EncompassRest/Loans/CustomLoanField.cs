@@ -54,15 +54,19 @@ namespace EncompassRest.Loans
                     customField = new CustomField { FieldName = FieldId };
                     customFields.Add(customField);
                 }
-                if (customField.DateValue.HasValue)
+                if (customField.DateValue.HasValue || customField._dateValue.Dirty)
                 {
+                    customField.StringValue = value?.ToString();
+                    customField._stringValue.Dirty = false;
                     customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                 }
-                else if (customField.NumericValue.HasValue)
+                else if (customField.NumericValue.HasValue || customField._numericValue.Dirty)
                 {
+                    customField.StringValue = value?.ToString();
+                    customField._stringValue.Dirty = false;
                     customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
                 }
-                else if (customField.StringValue != null)
+                else if (customField.StringValue != null || customField._stringValue.Dirty)
                 {
                     customField.StringValue = value?.ToString();
                 }
@@ -92,6 +96,27 @@ namespace EncompassRest.Loans
         internal CustomLoanField(string fieldId, Loan loan)
             : base(fieldId, loan, LoanFields.CreateModelPath($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))
         {
+        }
+
+        public override string ToString()
+        {
+            var customField = Loan.CustomFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
+            if (customField != null)
+            {
+                if (customField.StringValue != null)
+                {
+                    return customField.StringValue;
+                }
+                if (customField.DateValue.HasValue)
+                {
+                    return customField.DateValue.ToString();
+                }
+                if (customField.NumericValue.HasValue)
+                {
+                    return customField.NumericValue.ToString();
+                }
+            }
+            return null;
         }
     }
 }

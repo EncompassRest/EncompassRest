@@ -660,6 +660,11 @@ namespace EncompassRest.Tests
             Assert.IsNull(field.ToDateTime());
             Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""customFields"":[{""dateValue"":null,""fieldName"":""CX.NOW""}]}", loan.ToJson());
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDateTime());
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual(@"{""customFields"":[{""dateValue"":null,""fieldName"":""CX.NOW""}]}", loan.ToJson());
         }
 
         [TestMethod]
@@ -688,6 +693,12 @@ namespace EncompassRest.Tests
             Assert.IsNull(field.ToInt32());
             Assert.IsTrue(field.IsEmpty);
             Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToJson());
+            field.Value = null;
+            Assert.IsNull(field.Value);
+            Assert.IsNull(field.ToDecimal());
+            Assert.IsNull(field.ToInt32());
+            Assert.IsTrue(field.IsEmpty);
+            Assert.AreEqual(@"{""customFields"":[{""fieldName"":""CX.NUMBER"",""numericValue"":null}]}", loan.ToJson());
         }
 
         [TestMethod]
@@ -696,6 +707,8 @@ namespace EncompassRest.Tests
             var loan = new Loan();
             var value = "Joe";
             var field = loan.Fields["4000#2"];
+            Assert.IsTrue(field.IsBorrowerPairSpecific);
+            Assert.AreEqual(1, field.BorrowerPairIndex);
             Assert.AreEqual("Loan.Applications[(ApplicationIndex == '1')].Borrower.FirstName", field.ModelPath);
             field.Value = value;
             Assert.AreEqual(value, (string)field.Value);
