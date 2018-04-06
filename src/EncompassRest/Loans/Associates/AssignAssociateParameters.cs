@@ -1,20 +1,27 @@
-﻿using EncompassRest.Utilities;
+﻿using EncompassRest.Loans.Enums;
+using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Loans.Associates
 {
     public sealed class AssignAssociateParameters
     {
-        public string LoanAssociateType { get; }
+        public StringEnumValue<LoanAssociateType> LoanAssociateType { get; }
 
-        public string UserId { get; }
+        public string Id { get; }
 
-        public AssignAssociateParameters(string loanAssociateType, string userId)
+        public AssignAssociateParameters(LoanAssociateType loanAssociateType, string id)
+            : this(loanAssociateType.Validate(nameof(loanAssociateType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), id)
+        {
+        }
+
+        public AssignAssociateParameters(string loanAssociateType, string id)
         {
             Preconditions.NotNullOrEmpty(loanAssociateType, nameof(loanAssociateType));
-            Preconditions.NotNullOrEmpty(userId, nameof(userId));
+            Preconditions.NotNullOrEmpty(id, nameof(id));
 
             LoanAssociateType = loanAssociateType;
-            UserId = userId;
+            Id = id;
         }
     }
 }

@@ -157,6 +157,8 @@ namespace EncompassRest
             "AppraisalType"
         };
 
+        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) } };
+
         private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
 
         private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Loan.ElliUCDFields", "Loan.VirtualFields", "DocumentOrderLog.DocumentAudit", "Contact.Contact" };
@@ -463,6 +465,7 @@ namespace {@namespace}
                     var propertySchema = pair.Value;
                     var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isCollection);
                     var hasOptions = propertyType == "string" && propertySchema.AllowedValues?.Count > 0;
+                    string enumName = null;
                     if (hasOptions)
                     {
                         var optionValues = new HashSet<string>(propertySchema.AllowedValues.Select(o => o.Value).Where(v => !string.IsNullOrEmpty(v)));
@@ -470,7 +473,6 @@ namespace {@namespace}
                         {
                             optionValues.ExceptWith(ignoredOptions);
                         }
-                        string enumName = null;
                         foreach (var enumPair in s_sharedEnums)
                         {
                             if (s_enumPropertyNamesToUseNotExactSharedEnum.Contains(propertyName) ? optionValues.IsSubsetOf(enumPair.Value) : optionValues.SetEquals(enumPair.Value))
@@ -495,6 +497,9 @@ namespace {@namespace}
                                 s_otherEnums.Add(enumName, optionValues);
                             }
                         }
+                    }
+                    if (enumName != null || s_explicitStringEnumValues.TryGetValue(entityPropertyName, out enumName))
+                    {
                         propertyType = $"StringEnumValue<{enumName}>";
                     }
                     var elementType = propertyType;
