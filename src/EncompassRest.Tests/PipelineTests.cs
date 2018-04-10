@@ -203,11 +203,13 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
-        public async Task Pipeline_CreateCursor_ReturnsNullForNoResults()
+        public async Task Pipeline_CreateCursor_ReturnsNonNullForNoResults()
         {
             var client = await GetTestClientAsync();
             var cursor = await client.Pipeline.CreateCursorAsync(new PipelineParameters(new NumericFieldFilter(CanonicalLoanField.LoanAmount, OrdinalFieldMatchType.LessThan, 0M)));
-            Assert.IsNull(cursor);
+            Assert.IsNotNull(cursor);
+            Assert.AreEqual(0, cursor.Count);
+            Assert.IsNull(cursor.CursorId);
         }
 
         [TestMethod]
