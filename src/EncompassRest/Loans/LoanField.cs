@@ -9,7 +9,8 @@ namespace EncompassRest.Loans
     public class LoanField
     {
         private readonly ModelPath _modelPath;
-        private LoanFieldType? _type;
+        private LoanFieldValueType? _valueType;
+        private int? _borrowerPairIndex;
 
         internal readonly Loan Loan;
 
@@ -17,37 +18,45 @@ namespace EncompassRest.Loans
 
         public string ModelPath => _modelPath.ToString();
 
-        public virtual LoanFieldType Type
+        public bool MultiInstance => InstanceSpecifier != null;
+
+        public string InstanceSpecifier { get; }
+
+        public bool IsBorrowerPairSpecific => BorrowerPairIndex.HasValue;
+
+        public int? BorrowerPairIndex => _borrowerPairIndex < 0 ? Loan.CurrentApplicationIndex : _borrowerPairIndex;
+
+        public virtual LoanFieldValueType ValueType
         {
             get
             {
-                var type = _type;
-                if (type == null)
+                var valueType = _valueType;
+                if (valueType == null)
                 {
                     var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
                     if (declaredType == typeof(string))
                     {
-                        type = LoanFieldType.String;
+                        valueType = LoanFieldValueType.String;
                     }
                     else if (declaredType == typeof(DateTime?))
                     {
-                        type = LoanFieldType.DateTime;
+                        valueType = LoanFieldValueType.DateTime;
                     }
                     else if (declaredType == typeof(decimal?))
                     {
-                        type = LoanFieldType.Decimal;
+                        valueType = LoanFieldValueType.Decimal;
                     }
                     else if (declaredType == typeof(int?))
                     {
-                        type = LoanFieldType.Int32;
+                        valueType = LoanFieldValueType.Int32;
                     }
                     else if (declaredType == typeof(bool?))
                     {
-                        type = LoanFieldType.Boolean;
+                        valueType = LoanFieldValueType.Boolean;
                     }
                     else
                     {
-                        type = LoanFieldType.Unknown;
+                        valueType = LoanFieldValueType.Unknown;
                         if (declaredType != null)
                         {
                             var typeInfo = declaredType.GetTypeInfo();
@@ -56,20 +65,22 @@ namespace EncompassRest.Loans
                                 var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
                                 if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
                                 {
-                                    type = LoanFieldType.String;
+                                    valueType = LoanFieldValueType.String;
                                 }
                                 else if (genericTypeDefinition == TypeData.OpenNaType)
                                 {
-                                    type = LoanFieldType.NADecimal;
+                                    valueType = LoanFieldValueType.NADecimal;
                                 }
                             }
                         }
                     }
-                    _type = type;
+                    _valueType = valueType;
                 }
-                return type.GetValueOrDefault();
+                return valueType.GetValueOrDefault();
             }
         }
+
+        public virtual LoanFieldType Type => LoanFieldType.Standard;
 
         public virtual object Value
         {
@@ -105,14 +116,10 @@ namespace EncompassRest.Loans
                         {
                             if (value is string str)
                             {
-                                switch (str.ToUpper())
+                                var result = ToBoolean(str);
+                                if (result != null)
                                 {
-                                    case "Y":
-                                    case "TRUE":
-                                        return true;
-                                    case "N":
-                                    case "FALSE":
-                                        return false;
+                                    return result;
                                 }
                             }
                         }
@@ -144,7 +151,7 @@ namespace EncompassRest.Loans
             }
         }
 
-        public bool Locked
+        public virtual bool Locked
         {
             get
             {
@@ -164,11 +171,13 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal LoanField(string fieldId, Loan loan, ModelPath modelPath)
+        internal LoanField(string fieldId, Loan loan, ModelPath modelPath, int? borrowerPairIndex = null, string instanceSpecifier = null)
         {
             FieldId = fieldId;
             Loan = loan;
             _modelPath = modelPath;
+            _borrowerPairIndex = borrowerPairIndex;
+            InstanceSpecifier = instanceSpecifier;
         }
 
         public override string ToString() => Value?.ToString();
@@ -222,18 +231,23 @@ namespace EncompassRest.Loans
             switch (value)
             {
                 case string str:
-                    switch (str.ToUpper())
-                    {
-                        case "Y":
-                        case "TRUE":
-                            return true;
-                        case "N":
-                        case "FALSE":
-                            return false;
-                    }
-                    return null;
+                    return ToBoolean(str);
                 case bool boolean:
                     return boolean;
+            }
+            return null;
+        }
+
+        private static bool? ToBoolean(string value)
+        {
+            switch (value.ToUpper())
+            {
+                case "Y":
+                case "TRUE":
+                    return true;
+                case "N":
+                case "FALSE":
+                    return false;
             }
             return null;
         }

@@ -5,7 +5,7 @@ namespace EncompassRest.Loans
 {
     internal sealed class CustomLoanField : LoanField
     {
-        public override LoanFieldType Type
+        public override LoanFieldValueType ValueType
         {
             get
             {
@@ -14,15 +14,15 @@ namespace EncompassRest.Loans
                 {
                     if (customField.DateValue.HasValue)
                     {
-                        return LoanFieldType.DateTime;
+                        return LoanFieldValueType.DateTime;
                     }
                     if (customField.NumericValue.HasValue)
                     {
-                        return LoanFieldType.Decimal;
+                        return LoanFieldValueType.Decimal;
                     }
-                    return LoanFieldType.String;
+                    return LoanFieldValueType.String;
                 }
-                return LoanFieldType.Unknown;
+                return LoanFieldValueType.Unknown;
             }
         }
 
@@ -54,15 +54,19 @@ namespace EncompassRest.Loans
                     customField = new CustomField { FieldName = FieldId };
                     customFields.Add(customField);
                 }
-                if (customField.DateValue.HasValue)
+                if (customField.DateValue.HasValue || customField._dateValue.Dirty)
                 {
+                    customField.StringValue = value?.ToString();
+                    customField._stringValue.Dirty = false;
                     customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                 }
-                else if (customField.NumericValue.HasValue)
+                else if (customField.NumericValue.HasValue || customField._numericValue.Dirty)
                 {
+                    customField.StringValue = value?.ToString();
+                    customField._stringValue.Dirty = false;
                     customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
                 }
-                else if (customField.StringValue != null)
+                else if (customField.StringValue != null || customField._stringValue.Dirty)
                 {
                     customField.StringValue = value?.ToString();
                 }
@@ -87,9 +91,32 @@ namespace EncompassRest.Loans
             }
         }
 
+        public override LoanFieldType Type => LoanFieldType.Custom;
+
         internal CustomLoanField(string fieldId, Loan loan)
-            : base(fieldId, loan, LoanFields.ModelPathContext.Create($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))
+            : base(fieldId, loan, LoanFields.CreateModelPath($"Loan.CustomFields[(FieldName == '{fieldId}')].StringValue"))
         {
+        }
+
+        public override string ToString()
+        {
+            var customField = Loan.CustomFields.FirstOrDefault(f => string.Equals(FieldId, f.FieldName, StringComparison.OrdinalIgnoreCase));
+            if (customField != null)
+            {
+                if (customField.StringValue != null)
+                {
+                    return customField.StringValue;
+                }
+                if (customField.DateValue.HasValue)
+                {
+                    return customField.DateValue.ToString();
+                }
+                if (customField.NumericValue.HasValue)
+                {
+                    return customField.NumericValue.ToString();
+                }
+            }
+            return null;
         }
     }
 }

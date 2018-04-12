@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using EncompassRest.Utilities;
 
 namespace EncompassRest
 {
@@ -11,25 +10,13 @@ namespace EncompassRest
 
         public int DefaultIndexOffset { get; }
 
-        public ModelPathContext(IEnumerable<KeyValuePair<string, ModelPathSettings>> settings, int defaultIndexOffset)
+        public Func<string, string> PropertyNameTransformer { get; }
+
+        public ModelPathContext(IEnumerable<KeyValuePair<string, ModelPathSettings>> settings, int defaultIndexOffset, Func<string, string> propertyNameTransformer = null)
         {
             Settings = new ConcurrentDictionary<string, ModelPathSettings>(settings, StringComparer.OrdinalIgnoreCase);
             DefaultIndexOffset = defaultIndexOffset;
-        }
-
-        public ModelPath Create(string modelPath)
-        {
-            Preconditions.NotNullOrEmpty(modelPath, nameof(modelPath));
-
-            try
-            {
-                return new ModelPath(this, modelPath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return null;
+            PropertyNameTransformer = propertyNameTransformer;
         }
     }
 }

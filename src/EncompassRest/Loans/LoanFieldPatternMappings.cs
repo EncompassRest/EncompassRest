@@ -2,36 +2,87 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans
 {
     public sealed class LoanFieldPatternMappings : IDictionary<string, string>, IReadOnlyDictionary<string, string>
     {
-        private readonly ConcurrentDictionary<string, string> _dictionary;
-
-        public string this[string fieldPattern]
+        private sealed class Node
         {
-            get
-            {
-                Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
+            public readonly ConcurrentDictionary<string, Node> Nodes = new ConcurrentDictionary<string, Node>(StringComparer.OrdinalIgnoreCase);
 
-                return _dictionary[fieldPattern];
+            public ConcurrentDictionary<string, InstanceSpecifierAndModelPathPattern> Values = new ConcurrentDictionary<string, InstanceSpecifierAndModelPathPattern>(StringComparer.OrdinalIgnoreCase);
+
+            public int Count => Nodes.Sum(p => p.Value.Count) + Values.Count;
+
+            public IEnumerable<KeyValuePair<string, string>> Enumerate(List<string> path)
+            {
+                foreach (var pair in Values)
+                {
+                    yield return new KeyValuePair<string, string>(string.Concat(path) + pair.Value.InstanceSpecifier + pair.Key, pair.Value.ModelPathPattern);
+                }
+                foreach (var pair in Nodes)
+                {
+                    path.Add(pair.Key);
+                    foreach (var p in pair.Value.Enumerate(path))
+                    {
+                        yield return p;
+                    }
+                    path.RemoveAt(path.Count - 1);
+                }
             }
-            set
-            {
-                ValidateFieldPattern(fieldPattern);
-                ValidateModelPathPattern(value);
 
-                _dictionary[fieldPattern] = value;
+            public sealed class InstanceSpecifierAndModelPathPattern
+            {
+                public string InstanceSpecifier { get; }
+
+                public string ModelPathPattern { get; }
+
+                public InstanceSpecifierAndModelPathPattern(string instanceSpecifier, string modelPathPattern)
+                {
+                    InstanceSpecifier = instanceSpecifier;
+                    ModelPathPattern = modelPathPattern;
+                }
             }
         }
 
-        public ICollection<string> FieldPatterns => _dictionary.Keys;
+        private readonly Node _root = new Node();
 
-        public ICollection<string> ModelPathPatterns => _dictionary.Values;
+        public string this[string fieldPattern]
+        {
+            get => TryGetValue(fieldPattern, out var modelPathPattern) ? modelPathPattern : throw new KeyNotFoundException();
+            set
+            {
+                ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
+                ValidateModelPathPattern(value);
+                var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
 
-        public int Count => _dictionary.Count;
+                var node = _root;
+                var start = 0;
+                while (start < instanceSpecifierIndex)
+                {
+                    var periodIndex = fieldPattern.IndexOf('.', start, instanceSpecifierIndex - start);
+                    if (periodIndex < 0)
+                    {
+                        periodIndex = instanceSpecifierIndex - 1;
+                    }
+                    node = node.Nodes.GetOrAdd(fieldPattern.Substring(start, periodIndex - start + 1), new Node());
+                    start = periodIndex + 1;
+                }
+
+                var postfix = fieldPattern.Substring(endBracketIndex + 1);
+                var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
+                node.Values[postfix] = new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, value);
+            }
+        }
+
+        public ICollection<string> FieldPatterns => this.Select(p => p.Key).ToList();
+
+        public ICollection<string> ModelPathPatterns => this.Select(p => p.Value).ToList();
+
+        public int Count => _root.Count;
 
         bool ICollection<KeyValuePair<string, string>>.IsReadOnly => false;
 
@@ -43,69 +94,221 @@ namespace EncompassRest.Loans
 
         IEnumerable<string> IReadOnlyDictionary<string, string>.Values => ModelPathPatterns;
 
-        internal LoanFieldPatternMappings(ConcurrentDictionary<string, string> dictionary)
+        internal LoanFieldPatternMappings(IDictionary<string, string> dictionary)
         {
-            _dictionary = dictionary;
+            foreach (var pair in dictionary)
+            {
+                TryAdd(pair.Key, pair.Value);
+            }
         }
 
         public bool TryAdd(string fieldPattern, string modelPathPattern)
         {
-            ValidateFieldPattern(fieldPattern);
+            ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
             ValidateModelPathPattern(modelPathPattern);
+            var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
 
-            return _dictionary.TryAdd(fieldPattern, modelPathPattern);
+            var node = _root;
+            var start = 0;
+            while (start < instanceSpecifierIndex)
+            {
+                var periodIndex = fieldPattern.IndexOf('.', start, instanceSpecifierIndex - start);
+                if (periodIndex < 0)
+                {
+                    periodIndex = instanceSpecifierIndex - 1;
+                }
+                node = node.Nodes.GetOrAdd(fieldPattern.Substring(start, periodIndex - start + 1), new Node());
+                start = periodIndex + 1;
+            }
+
+            var postfix = fieldPattern.Substring(endBracketIndex + 1);
+            var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
+            return node.Values.TryAdd(postfix, new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, modelPathPattern));
         }
 
-        public bool TryRemove(string fieldPattern, out string modelPathPattern) => _dictionary.TryRemove(fieldPattern, out modelPathPattern);
-
-        public bool TryGetValue(string fieldPattern, out string modelPathPattern) => _dictionary.TryGetValue(fieldPattern, out modelPathPattern);
-
-        public string GetOrAdd(string fieldPattern, string modelPathPattern) => GetOrAdd(fieldPattern, () => modelPathPattern);
-
-        public string GetOrAdd(string fieldPattern, Func<string> modelPathPatternFactory)
+        public bool TryRemove(string fieldPattern, out string modelPathPattern)
         {
-            Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
+            ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
+            var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
+
+            var node = _root;
+            var start = 0;
+            while (start < instanceSpecifierIndex)
+            {
+                var periodIndex = fieldPattern.IndexOf('.', start, instanceSpecifierIndex - start);
+                if (periodIndex < 0)
+                {
+                    periodIndex = instanceSpecifierIndex - 1;
+                }
+                if (!node.Nodes.TryGetValue(fieldPattern.Substring(start, periodIndex - start + 1), out node))
+                {
+                    modelPathPattern = null;
+                    return false;
+                }
+                start = periodIndex + 1;
+            }
+
+            var postfix = fieldPattern.Substring(endBracketIndex + 1);
+            if (node.Values.TryRemove(postfix, out var instanceSpecifierAndModelPathPattern))
+            {
+                modelPathPattern = instanceSpecifierAndModelPathPattern.ModelPathPattern;
+                return true;
+            }
+            modelPathPattern = null;
+            return false;
+        }
+
+        public bool TryGetValue(string fieldPattern, out string modelPathPattern)
+        {
+            ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
+            var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
+
+            var node = _root;
+            var start = 0;
+            while (start < instanceSpecifierIndex)
+            {
+                var periodIndex = fieldPattern.IndexOf('.', start, instanceSpecifierIndex - start);
+                if (periodIndex < 0)
+                {
+                    periodIndex = instanceSpecifierIndex - 1;
+                }
+                if (!node.Nodes.TryGetValue(fieldPattern.Substring(start, periodIndex - start + 1), out node))
+                {
+                    modelPathPattern = null;
+                    return false;
+                }
+                start = periodIndex + 1;
+            }
+
+            var postfix = fieldPattern.Substring(endBracketIndex + 1);
+            if (node.Values.TryGetValue(postfix, out var instanceSpecifierAndModelPathPattern))
+            {
+                modelPathPattern = instanceSpecifierAndModelPathPattern.ModelPathPattern;
+                return true;
+            }
+            modelPathPattern = null;
+            return false;
+        }
+
+        public string GetOrAdd(string fieldPattern, string modelPathPattern) => GetOrAdd(fieldPattern, p => modelPathPattern);
+
+        public string GetOrAdd(string fieldPattern, Func<string, string> modelPathPatternFactory)
+        {
             Preconditions.NotNull(modelPathPatternFactory, nameof(modelPathPatternFactory));
 
-            return _dictionary.GetOrAdd(fieldPattern, f =>
+            ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
+            var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
+
+            var node = _root;
+            var start = 0;
+            while (start < instanceSpecifierIndex)
             {
-                ValidateFieldPattern(f);
-                var modelPathPattern = modelPathPatternFactory();
+                var periodIndex = fieldPattern.IndexOf('.', start, instanceSpecifierIndex - start);
+                if (periodIndex < 0)
+                {
+                    periodIndex = instanceSpecifierIndex - 1;
+                }
+                node = node.Nodes.GetOrAdd(fieldPattern.Substring(start, periodIndex - start + 1), new Node());
+                start = periodIndex + 1;
+            }
+
+            var postfix = fieldPattern.Substring(endBracketIndex + 1);
+            var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
+            return node.Values.GetOrAdd(postfix, p =>
+            {
+                var modelPathPattern = modelPathPatternFactory(p);
                 ValidateModelPathPattern(modelPathPattern);
-                return modelPathPattern;
-            });
+                return new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, modelPathPattern);
+            }).ModelPathPattern;
         }
 
-        public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => ((IDictionary<string, string>)_dictionary).CopyTo(array, arrayIndex);
+        public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => this.ToList().CopyTo(array, arrayIndex);
 
-        public bool ContainsKey(string fieldPattern) => _dictionary.ContainsKey(fieldPattern);
+        public bool ContainsKey(string fieldPattern) => TryGetValue(fieldPattern, out _);
 
-        private void ValidateFieldPattern(string fieldPattern)
+        internal bool TryGetModelPathForFieldId(string fieldId, out ModelPath modelPath, out string instanceSpecifier)
         {
-            Preconditions.NotNull(fieldPattern, nameof(fieldPattern));
-            if (fieldPattern.Length < 5)
+            var originalFieldId = fieldId;
+            fieldId = fieldId.ToLower();
+            var node = _root;
+            var start = 0;
+            bool found;
+            do
             {
-                throw new ArgumentException("fieldPattern must be at least 5 characters long");
+                found = false;
+                foreach (var pair in node.Values)
+                {
+                    var postfix = pair.Key;
+                    var instanceSpecifierLength = string.Format(pair.Value.InstanceSpecifier, 1).Length;
+                    if (instanceSpecifierLength > 1 ? fieldId.Length - start - instanceSpecifierLength == postfix.Length : fieldId.Length - postfix.Length > start)
+                    {
+                        var i = 0;
+                        while (i < postfix.Length && char.ToLower(postfix[i]) == fieldId[fieldId.Length - postfix.Length + i])
+                        {
+                            ++i;
+                        }
+                        if (i == postfix.Length)
+                        {
+                            instanceSpecifier = originalFieldId.Substring(start, originalFieldId.Length - start - postfix.Length);
+                            modelPath = LoanFields.CreateModelPath(string.Format(pair.Value.ModelPathPattern, instanceSpecifier));
+                            return true;
+                        }
+                    }
+                }
+                var newStart = start;
+                foreach (var pair in node.Nodes)
+                {
+                    var prefix = pair.Key;
+                    if (start + prefix.Length < fieldId.Length)
+                    {
+                        var i = 0;
+                        while (i < prefix.Length && char.ToLower(prefix[i]) == fieldId[start + i])
+                        {
+                            ++i;
+                        }
+                        if (i == prefix.Length)
+                        {
+                            found = true;
+                            node = pair.Value;
+                            newStart = start + prefix.Length;
+                            if (prefix.Length > 0 && prefix[prefix.Length - 1] == '.')
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+                start = newStart;
+            } while (found);
+            instanceSpecifier = null;
+            modelPath = null;
+            return false;
+        }
+
+        private void ValidateFieldPattern(string fieldPattern, out int instanceSpecifierIndex)
+        {
+            Preconditions.NotNullOrEmpty(fieldPattern, nameof(fieldPattern));
+
+            instanceSpecifierIndex = fieldPattern.IndexOf("{0");
+            if (instanceSpecifierIndex < 0 || fieldPattern.IndexOf("{0", instanceSpecifierIndex + 2) >= 0)
+            {
+                throw new ArgumentException("fieldPattern must contain a single instance of an instance specifier {0}");
             }
 
-            var nnIndex = fieldPattern.IndexOf("NN");
-            if (nnIndex < 0 || (nnIndex != fieldPattern.Length - 5 && nnIndex != fieldPattern.Length - 4) || fieldPattern.IndexOf("NN", nnIndex + 1) >= 0)
-            {
-                throw new ArgumentException("fieldPattern's NN is missing, in the wrong spot, or occurs multiple times");
-            }
+            string.Format(fieldPattern, 1);
         }
 
         private void ValidateModelPathPattern(string modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(modelPathPattern, nameof(modelPathPattern));
 
-            var nnIndex = modelPathPattern.IndexOf("[NN]");
-            if (nnIndex < 0 || modelPathPattern.IndexOf("[NN]", nnIndex + 4) >= 0)
+            var instanceSpecifierIndex = modelPathPattern.IndexOf("{0");
+            if (instanceSpecifierIndex < 0 || modelPathPattern.IndexOf("{0", instanceSpecifierIndex + 2) >= 0)
             {
-                throw new ArgumentException("modelPathPattern must contain a single instance of NN");
+                throw new ArgumentException("modelPathPattern must contain a single instance of an instance specifier {0}");
             }
 
-            var modelPath = LoanFields.ModelPathContext.Create($"{modelPathPattern.Substring(0, nnIndex + 1)}1{modelPathPattern.Substring(nnIndex + 3)}");
+            var modelPath = LoanFields.CreateModelPath(string.Format(modelPathPattern, 1));
             if (modelPath == null)
             {
                 throw new ArgumentException("bad modelPathPattern");
@@ -124,13 +327,19 @@ namespace EncompassRest.Loans
 
         void ICollection<KeyValuePair<string, string>>.Clear() => throw new NotSupportedException();
 
-        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase);
+        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase);
         
-        public IEnumerator<KeyValuePair<string, string>> GetEnumerator() => _dictionary.GetEnumerator();
+        public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
+        {
+            foreach (var pair in _root.Enumerate(new List<string>()))
+            {
+                yield return pair;
+            }
+        }
 
         bool IDictionary<string, string>.Remove(string key) => TryRemove(key, out _);
 
-        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase) && _dictionary.TryRemove(item.Value, out modelPathPattern);
+        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => TryGetValue(item.Key, out var modelPathPattern) && string.Equals(item.Value, modelPathPattern, StringComparison.OrdinalIgnoreCase) && TryRemove(item.Value, out modelPathPattern);
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }

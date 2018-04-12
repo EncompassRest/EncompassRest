@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
 {
-    public enum Log_LCLAEvaluatedServiceType3
+    public enum LogLCLAEvaluatedServiceType3
     {
         ProductEligibility = 0
     }

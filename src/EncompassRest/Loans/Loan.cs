@@ -109,10 +109,6 @@ namespace EncompassRest.Loans
         public string CreditScoreToUse { get => _creditScoreToUse; set => _creditScoreToUse = value; }
         private DirtyList<CrmLog> _crmLogs;
         public IList<CrmLog> CrmLogs { get => _crmLogs ?? (_crmLogs = new DirtyList<CrmLog>()); set => _crmLogs = new DirtyList<CrmLog>(value); }
-        private Application _currentApplication;
-        public Application CurrentApplication { get => _currentApplication ?? (_currentApplication = new Application()); set => _currentApplication = value; }
-        private DirtyValue<int?> _currentApplicationIndex;
-        public int? CurrentApplicationIndex { get => _currentApplicationIndex; set => _currentApplicationIndex = value; }
         private DirtyValue<bool?> _currentApplicationIsPrimary;
         public bool? CurrentApplicationIsPrimary { get => _currentApplicationIsPrimary; set => _currentApplicationIsPrimary = value; }
         private DirtyValue<StringEnumValue<CurrentFirstMortgageHolderType>> _currentFirstMortgageHolderType;
@@ -159,6 +155,8 @@ namespace EncompassRest.Loans
         public int? EDeliveryVersion { get => _eDeliveryVersion; set => _eDeliveryVersion = value; }
         private DirtyList<EdmLog> _edmLogs;
         public IList<EdmLog> EdmLogs { get => _edmLogs ?? (_edmLogs = new DirtyList<EdmLog>()); set => _edmLogs = new DirtyList<EdmLog>(value); }
+        private ElliUCDDetail _elliUCDFields;
+        public ElliUCDDetail ElliUCDFields { get => _elliUCDFields ?? (_elliUCDFields = new ElliUCDDetail()); set => _elliUCDFields = value; }
         private DirtyList<EmailTriggerLog> _emailTriggerLogs;
         public IList<EmailTriggerLog> EmailTriggerLogs { get => _emailTriggerLogs ?? (_emailTriggerLogs = new DirtyList<EmailTriggerLog>()); set => _emailTriggerLogs = new DirtyList<EmailTriggerLog>(value); }
         private EmDocument _emDocument;
@@ -695,6 +693,8 @@ namespace EncompassRest.Loans
         public VaLoanData VaLoanData { get => _vaLoanData ?? (_vaLoanData = new VaLoanData()); set => _vaLoanData = value; }
         private DirtyList<VerificationLog> _verificationLogs;
         public IList<VerificationLog> VerificationLogs { get => _verificationLogs ?? (_verificationLogs = new DirtyList<VerificationLog>()); set => _verificationLogs = new DirtyList<VerificationLog>(value); }
+        private DirtyDictionary<string, string> _virtualFields;
+        public IDictionary<string, string> VirtualFields { get => _virtualFields ?? (_virtualFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _virtualFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
         private DirtyValue<string> _websiteId;
         public string WebsiteId { get => _websiteId; set => _websiteId = value; }
         internal override bool DirtyInternal
@@ -739,7 +739,6 @@ namespace EncompassRest.Loans
                     || _copyBrokerToLenderIndicator.Dirty
                     || _copyLoanNumLenderCaseNum.Dirty
                     || _creditScoreToUse.Dirty
-                    || _currentApplicationIndex.Dirty
                     || _currentApplicationIsPrimary.Dirty
                     || _currentFirstMortgageHolderType.Dirty
                     || _dBIndicator.Dirty
@@ -966,7 +965,6 @@ namespace EncompassRest.Loans
                     || _conversationLogs?.Dirty == true
                     || _correspondent?.Dirty == true
                     || _crmLogs?.Dirty == true
-                    || _currentApplication?.Dirty == true
                     || _customFields?.Dirty == true
                     || _customModelFields?.Dirty == true
                     || _dataTracLogs?.Dirty == true
@@ -978,6 +976,7 @@ namespace EncompassRest.Loans
                     || _downloadLogs?.Dirty == true
                     || _downPayment?.Dirty == true
                     || _edmLogs?.Dirty == true
+                    || _elliUCDFields?.Dirty == true
                     || _emailTriggerLogs?.Dirty == true
                     || _emDocument?.Dirty == true
                     || _emDocumentInvestor?.Dirty == true
@@ -1045,7 +1044,8 @@ namespace EncompassRest.Loans
                     || _underwritingConditionLogs?.Dirty == true
                     || _usda?.Dirty == true
                     || _vaLoanData?.Dirty == true
-                    || _verificationLogs?.Dirty == true;
+                    || _verificationLogs?.Dirty == true
+                    || _virtualFields?.Dirty == true;
             }
             set
             {
@@ -1087,7 +1087,6 @@ namespace EncompassRest.Loans
                 _copyBrokerToLenderIndicator.Dirty = value;
                 _copyLoanNumLenderCaseNum.Dirty = value;
                 _creditScoreToUse.Dirty = value;
-                _currentApplicationIndex.Dirty = value;
                 _currentApplicationIsPrimary.Dirty = value;
                 _currentFirstMortgageHolderType.Dirty = value;
                 _dBIndicator.Dirty = value;
@@ -1314,7 +1313,6 @@ namespace EncompassRest.Loans
                 if (_conversationLogs != null) _conversationLogs.Dirty = value;
                 if (_correspondent != null) _correspondent.Dirty = value;
                 if (_crmLogs != null) _crmLogs.Dirty = value;
-                if (_currentApplication != null) _currentApplication.Dirty = value;
                 if (_customFields != null) _customFields.Dirty = value;
                 if (_customModelFields != null) _customModelFields.Dirty = value;
                 if (_dataTracLogs != null) _dataTracLogs.Dirty = value;
@@ -1326,6 +1324,7 @@ namespace EncompassRest.Loans
                 if (_downloadLogs != null) _downloadLogs.Dirty = value;
                 if (_downPayment != null) _downPayment.Dirty = value;
                 if (_edmLogs != null) _edmLogs.Dirty = value;
+                if (_elliUCDFields != null) _elliUCDFields.Dirty = value;
                 if (_emailTriggerLogs != null) _emailTriggerLogs.Dirty = value;
                 if (_emDocument != null) _emDocument.Dirty = value;
                 if (_emDocumentInvestor != null) _emDocumentInvestor.Dirty = value;
@@ -1394,6 +1393,7 @@ namespace EncompassRest.Loans
                 if (_usda != null) _usda.Dirty = value;
                 if (_vaLoanData != null) _vaLoanData.Dirty = value;
                 if (_verificationLogs != null) _verificationLogs.Dirty = value;
+                if (_virtualFields != null) _virtualFields.Dirty = value;
             }
         }
     }

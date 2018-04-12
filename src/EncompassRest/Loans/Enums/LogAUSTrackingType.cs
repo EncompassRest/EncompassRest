@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
 {
-    public enum Log_AUSTrackingType
+    public enum LogAUSTrackingType
     {
         Manual = 0,
         Automation = 1

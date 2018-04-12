@@ -76,6 +76,12 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="VirtualFieldPatterns.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="VirtualFields.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

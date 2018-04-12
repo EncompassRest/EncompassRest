@@ -239,12 +239,12 @@ namespace EncompassRest.Loans
         public string FormsXml { get => _formsXml; set => _formsXml = value; }
         private DirtyValue<string> _fulfillmentOrderedBy;
         public string FulfillmentOrderedBy { get => _fulfillmentOrderedBy; set => _fulfillmentOrderedBy = value; }
-        private DirtyValue<string> _fulfillmentOrderedBy_CoBorrower;
-        public string FulfillmentOrderedBy_CoBorrower { get => _fulfillmentOrderedBy_CoBorrower; set => _fulfillmentOrderedBy_CoBorrower = value; }
+        private DirtyValue<string> _fulfillmentOrderedByCoBorrower;
+        public string FulfillmentOrderedByCoBorrower { get => _fulfillmentOrderedByCoBorrower; set => _fulfillmentOrderedByCoBorrower = value; }
         private DirtyValue<string> _fullfillmentProcessedDate;
         public string FullfillmentProcessedDate { get => _fullfillmentProcessedDate; set => _fullfillmentProcessedDate = value; }
-        private DirtyValue<DateTime?> _fullfillmentProcessedDate_CoBorrower;
-        public DateTime? FullfillmentProcessedDate_CoBorrower { get => _fullfillmentProcessedDate_CoBorrower; set => _fullfillmentProcessedDate_CoBorrower = value; }
+        private DirtyValue<DateTime?> _fullfillmentProcessedDateCoBorrower;
+        public DateTime? FullfillmentProcessedDateCoBorrower { get => _fullfillmentProcessedDateCoBorrower; set => _fullfillmentProcessedDateCoBorrower = value; }
         private DirtyValue<string> _guid;
         public string Guid { get => _guid; set => _guid = value; }
         private DirtyValue<string> _id;
@@ -598,9 +598,9 @@ namespace EncompassRest.Loans
                     || _financeCharge.Dirty
                     || _formsXml.Dirty
                     || _fulfillmentOrderedBy.Dirty
-                    || _fulfillmentOrderedBy_CoBorrower.Dirty
+                    || _fulfillmentOrderedByCoBorrower.Dirty
                     || _fullfillmentProcessedDate.Dirty
-                    || _fullfillmentProcessedDate_CoBorrower.Dirty
+                    || _fullfillmentProcessedDateCoBorrower.Dirty
                     || _guid.Dirty
                     || _id.Dirty
                     || _intentToProceed.Dirty
@@ -838,9 +838,9 @@ namespace EncompassRest.Loans
                 _financeCharge.Dirty = value;
                 _formsXml.Dirty = value;
                 _fulfillmentOrderedBy.Dirty = value;
-                _fulfillmentOrderedBy_CoBorrower.Dirty = value;
+                _fulfillmentOrderedByCoBorrower.Dirty = value;
                 _fullfillmentProcessedDate.Dirty = value;
-                _fullfillmentProcessedDate_CoBorrower.Dirty = value;
+                _fullfillmentProcessedDateCoBorrower.Dirty = value;
                 _guid.Dirty = value;
                 _id.Dirty = value;
                 _intentToProceed.Dirty = value;

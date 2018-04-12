@@ -1,6 +1,4 @@
-﻿using EncompassRest.Loans.Enums;
-
-namespace EncompassRest
+﻿namespace EncompassRest
 {
     public class EntityReference : ExtensibleObject, IIdentifiable
     {

@@ -43,7 +43,7 @@ namespace EncompassRest
                         {
                             case '(':
                                 Increment(ref i);
-                                EatWhiteSpace(modelPath, ref i);
+                                EatWhiteSpace(ref i);
                                 sb = new StringBuilder();
                                 c = modelPath[i];
                                 ObjectFilter filter = null;
@@ -53,7 +53,7 @@ namespace EncompassRest
                                     {
                                         case '\'':
                                             Increment(ref i);
-                                            propertyName = GetPropertyName(modelPath, ref i);
+                                            propertyName = GetPropertyName(ref i);
                                             if (string.IsNullOrEmpty(propertyName))
                                             {
                                                 throw new ArgumentException("bad path");
@@ -74,7 +74,7 @@ namespace EncompassRest
                                             propertyName = modelPath.Substring(s, i - s);
                                             break;
                                     }
-                                    EatWhiteSpace(modelPath, ref i);
+                                    EatWhiteSpace(ref i);
                                     if (modelPath[i] != '=')
                                     {
                                         throw new ArgumentException("bad path");
@@ -85,7 +85,7 @@ namespace EncompassRest
                                         throw new ArgumentException("bad path");
                                     }
                                     Increment(ref i);
-                                    EatWhiteSpace(modelPath, ref i);
+                                    EatWhiteSpace(ref i);
 
                                     string value;
                                     c = modelPath[i];
@@ -93,7 +93,7 @@ namespace EncompassRest
                                     {
                                         case '\'':
                                             Increment(ref i);
-                                            value = GetPropertyName(modelPath, ref i);
+                                            value = GetPropertyName(ref i);
                                             Increment(ref i);
                                             break;
                                         default:
@@ -113,7 +113,7 @@ namespace EncompassRest
                                             break;
                                     }
                                     var propertyFilter = new PropertyFilter(propertyName, value);
-                                    EatWhiteSpace(modelPath, ref i);
+                                    EatWhiteSpace(ref i);
                                     c = modelPath[i];
                                     if (c == '&')
                                     {
@@ -123,7 +123,7 @@ namespace EncompassRest
                                             throw new ArgumentException("bad path");
                                         }
                                         Increment(ref i);
-                                        EatWhiteSpace(modelPath, ref i);
+                                        EatWhiteSpace(ref i);
                                         if (modelPath[i] == ')')
                                         {
                                             throw new ArgumentException("bad path");
@@ -164,7 +164,7 @@ namespace EncompassRest
                                 throw new ArgumentException("no empty brackets");
                             case '\'':
                                 Increment(ref i);
-                                propertyName = GetPropertyName(modelPath, ref i);
+                                propertyName = GetPropertyName(ref i);
                                 if (string.IsNullOrEmpty(propertyName))
                                 {
                                     throw new ArgumentException("bad path");
@@ -219,6 +219,7 @@ namespace EncompassRest
             }
             Segments = segments.AsReadOnly();
 
+            // Local functions
             void Increment(ref int value)
             {
                 ++i;
@@ -227,46 +228,46 @@ namespace EncompassRest
                     throw new ArgumentException("bad path");
                 }
             }
-        }
 
-        private static void EatWhiteSpace(string modelPath, ref int i, bool throwAtEnd = true)
-        {
-            while (i < modelPath.Length ? char.IsWhiteSpace(modelPath[i]) : (throwAtEnd ? throw new ArgumentException("bad path") : false))
+            string GetPropertyName(ref int value)
             {
-                ++i;
-            }
-        }
-
-        private static string GetPropertyName(string modelPath, ref int i)
-        {
-            var sb = new StringBuilder();
-            var c = modelPath[i];
-            while (c != '\'')
-            {
-                if (c == '\\')
+                var sb = new StringBuilder();
+                var c = modelPath[value];
+                while (c != '\'')
                 {
-                    ++i;
-                    if (i >= modelPath.Length)
+                    if (c == '\\')
+                    {
+                        ++value;
+                        if (value >= modelPath.Length)
+                        {
+                            throw new ArgumentException("bad path");
+                        }
+                        c = modelPath[value];
+                        if (c != '\\' && c != '\'')
+                        {
+                            throw new ArgumentException("bad escape character");
+                        }
+                        sb.Append(c);
+                        break;
+                    }
+                    sb.Append(c);
+                    ++value;
+                    if (value >= modelPath.Length)
                     {
                         throw new ArgumentException("bad path");
                     }
-                    c = modelPath[i];
-                    if (c != '\\' && c != '\'')
-                    {
-                        throw new ArgumentException("bad escape character");
-                    }
-                    sb.Append(c);
-                    break;
+                    c = modelPath[value];
                 }
-                sb.Append(c);
-                ++i;
-                if (i >= modelPath.Length)
-                {
-                    throw new ArgumentException("bad path");
-                }
-                c = modelPath[i];
+                return sb.ToString();
             }
-            return sb.ToString();
+
+            void EatWhiteSpace(ref int index, bool throwAtEnd = true)
+            {
+                while (index < modelPath.Length ? char.IsWhiteSpace(modelPath[index]) : (throwAtEnd ? throw new ArgumentException("bad path") : false))
+                {
+                    ++index;
+                }
+            }
         }
 
         public object GetValue(object root) => GetValue(root, out _);
@@ -386,6 +387,8 @@ namespace EncompassRest
                 PropertyName = propertyName;
             }
 
+            private string GetPropertyName() => Path.Context.PropertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
+
             public override Type GetDeclaredType(Type parentType)
             {
                 Preconditions.NotNull(parentType, nameof(parentType));
@@ -394,7 +397,8 @@ namespace EncompassRest
                 switch (contract)
                 {
                     case JsonObjectContract objectContract:
-                        return objectContract.Properties.GetClosestMatchProperty(PropertyName)?.PropertyType;
+                        var propertyName = GetPropertyName();
+                        return objectContract.Properties.GetClosestMatchProperty(propertyName)?.PropertyType;
                     default:
                         return null;
                 }
@@ -407,10 +411,11 @@ namespace EncompassRest
                 var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
                 JToken tokenValue;
                 object value;
+                var propertyName = GetPropertyName();
                 switch (contract)
                 {
                     case JsonObjectContract objectContract:
-                        var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
+                        var property = objectContract.Properties.GetClosestMatchProperty(propertyName);
                         if (property != null)
                         {
                             declaredType = property.PropertyType;
@@ -430,7 +435,7 @@ namespace EncompassRest
                             {
                                 foreach (var pair in extensionData)
                                 {
-                                    if (string.Equals(PropertyName, pair.Key as string, StringComparison.OrdinalIgnoreCase))
+                                    if (string.Equals(propertyName, pair.Key as string, StringComparison.OrdinalIgnoreCase))
                                     {
                                         declaredType = pair.Value?.GetType();
                                         return pair.Value;
@@ -440,7 +445,7 @@ namespace EncompassRest
                                 if (createIfNotExists)
                                 {
                                     tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
-                                    objectContract.ExtensionDataSetter(parent, PropertyName, tokenValue);
+                                    objectContract.ExtensionDataSetter(parent, propertyName, tokenValue);
                                     declaredType = tokenValue.GetType();
                                     return tokenValue;
                                 }
@@ -450,7 +455,7 @@ namespace EncompassRest
                     case JsonLinqContract linqContract:
                         if (parent is JObject jObject)
                         {
-                            if (jObject.TryGetValue(PropertyName, StringComparison.OrdinalIgnoreCase, out tokenValue))
+                            if (jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out tokenValue))
                             {
                                 declaredType = tokenValue?.GetType();
                                 return tokenValue;
@@ -458,9 +463,26 @@ namespace EncompassRest
                             else if (createIfNotExists)
                             {
                                 tokenValue = nextIsProperty ? new JObject() : (JToken)new JArray();
-                                jObject.Add(PropertyName, tokenValue);
+                                jObject.Add(propertyName, tokenValue);
                                 declaredType = tokenValue.GetType();
                                 return tokenValue;
+                            }
+                        }
+                        break;
+                    case JsonDictionaryContract dictionaryContract:
+                        if (parent is IDictionary dictionary)
+                        {
+                            declaredType = dictionaryContract.DictionaryValueType;
+                            if (dictionary.Contains(propertyName))
+                            {
+                                return dictionary[propertyName];
+                            }
+                            else if (createIfNotExists)
+                            {
+                                var json = nextIsProperty ? "{}" : "[]";
+                                value = JsonHelper.FromJson(json, declaredType);
+                                dictionary[propertyName] = value;
+                                return value;
                             }
                         }
                         break;
@@ -475,10 +497,11 @@ namespace EncompassRest
 
                 var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(parent.GetType());
                 object value;
+                var propertyName = GetPropertyName();
                 switch (contract)
                 {
                     case JsonObjectContract objectContract:
-                        var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
+                        var property = objectContract.Properties.GetClosestMatchProperty(propertyName);
                         if (property != null)
                         {
                             value = valueProvider(property.PropertyType);
@@ -487,14 +510,21 @@ namespace EncompassRest
                         else
                         {
                             value = valueProvider(null);
-                            objectContract.ExtensionDataSetter?.Invoke(parent, PropertyName, value);
+                            objectContract.ExtensionDataSetter?.Invoke(parent, propertyName, value);
                         }
                         break;
                     case JsonLinqContract linqContract:
                         if (parent is JObject jObject)
                         {
                             value = valueProvider(null);
-                            jObject[PropertyName] = value != null ? JToken.FromObject(value) : null;
+                            jObject[propertyName] = value != null ? JToken.FromObject(value) : null;
+                        }
+                        break;
+                    case JsonDictionaryContract dictionaryContract:
+                        if (parent is IDictionary dictionary)
+                        {
+                            value = valueProvider(dictionaryContract.DictionaryValueType);
+                            dictionary[propertyName] = value;
                         }
                         break;
                 }
@@ -565,13 +595,15 @@ namespace EncompassRest
 
                 Path.Context.Settings.TryGetValue(GetPropertyPath(), out var settings);
 
+                var propertyNameTransformer = Path.Context.PropertyNameTransformer;
+
                 var filteredList = list;
                 if (Filter != null)
                 {
                     filteredList = new List<object>();
                     foreach (var item in list)
                     {
-                        if (Filter.Evaluate(item, settings))
+                        if (Filter.Evaluate(item, settings, propertyNameTransformer))
                         {
                             filteredList.Add(item);
                         }
@@ -594,7 +626,8 @@ namespace EncompassRest
                         sb.Append('{');
                         foreach (var propertyFilter in Filter)
                         {
-                            sb.Append('"').Append(propertyFilter.PropertyName).Append(@""":");
+                            var propertyName = Path.Context.PropertyNameTransformer?.Invoke(propertyFilter.PropertyName) ?? propertyFilter.PropertyName;
+                            sb.Append('"').Append(propertyName).Append(@""":");
                             sb.Append('"').Append(propertyFilter.Value).Append(@""",");
                         }
                         --sb.Length;
@@ -710,7 +743,7 @@ namespace EncompassRest
                 return this;
             }
 
-            public virtual bool Evaluate(object value, ModelPathSettings settings) => _terms.All(term => term.Evaluate(value, settings));
+            public virtual bool Evaluate(object value, ModelPathSettings settings, Func<string, string> propertyNameTransformer) => _terms.All(term => term.Evaluate(value, settings, propertyNameTransformer));
 
             public override string ToString() => string.Join(" && ", _terms);
 
@@ -746,7 +779,7 @@ namespace EncompassRest
                 Value = value;
             }
 
-            public override bool Evaluate(object value, ModelPathSettings settings)
+            public override bool Evaluate(object value, ModelPathSettings settings, Func<string, string> propertyNameTransformer)
             {
                 Preconditions.NotNull(value, nameof(value));
 
@@ -756,14 +789,15 @@ namespace EncompassRest
                 {
                     throw new InvalidOperationException($"value's type must resolve to a json object contract");
                 }
-                var property = objectContract.Properties.GetClosestMatchProperty(PropertyName);
+                var propertyName = propertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
+                var property = objectContract.Properties.GetClosestMatchProperty(propertyName);
                 if (property == null)
                 {
-                    throw new InvalidOperationException($"Could not find property {PropertyName} on {valueType}");
+                    throw new InvalidOperationException($"Could not find property {propertyName} on {valueType}");
                 }
 
                 var retrievedValue = property.ValueProvider.GetValue(value);
-                return retrievedValue == null ? settings?.DefaultValues.ContainsKey(PropertyName) == true : string.Equals(Value, retrievedValue.ToString(), StringComparison.OrdinalIgnoreCase);
+                return retrievedValue == null ? settings?.DefaultValues.ContainsKey(propertyName) == true : string.Equals(Value, retrievedValue.ToString(), StringComparison.OrdinalIgnoreCase);
             }
 
             public override string ToString()

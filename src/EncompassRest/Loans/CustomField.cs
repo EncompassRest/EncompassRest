@@ -7,15 +7,15 @@ namespace EncompassRest.Loans
 {
     public sealed partial class CustomField : ExtensibleObject, IIdentifiable
     {
-        private DirtyValue<DateTime?> _dateValue;
+        internal DirtyValue<DateTime?> _dateValue;
         public DateTime? DateValue { get => _dateValue; set => _dateValue = value; }
         private DirtyValue<string> _fieldName;
         public string FieldName { get => _fieldName; set => _fieldName = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<decimal?> _numericValue;
+        internal DirtyValue<decimal?> _numericValue;
         public decimal? NumericValue { get => _numericValue; set => _numericValue = value; }
-        private DirtyValue<string> _stringValue;
+        internal DirtyValue<string> _stringValue;
         public string StringValue { get => _stringValue; set => _stringValue = value; }
         internal override bool DirtyInternal
         {

@@ -2,10 +2,8 @@
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Threading;
 using EncompassRest.Utilities;
-using EnumsNET;
 
 namespace EncompassRest.Loans
 {
@@ -76,7 +74,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNullOrEmpty(modelPath, nameof(modelPath));
 
-            var path = LoanFields.ModelPathContext.Create(modelPath);
+            var path = LoanFields.CreateModelPath(modelPath);
             if (path == null)
             {
                 throw new ArgumentException("bad modelPath");
@@ -89,7 +87,7 @@ namespace EncompassRest.Loans
             if (validatePathExists)
             {
                 var loanField = new LoanField(fieldId, null, path);
-                if (!loanField.Type.IsDefined())
+                if (loanField.ValueType == LoanFieldValueType.Unknown)
                 {
                     throw new ArgumentException("modelPath must resolve to a valid property type");
                 }
@@ -155,9 +153,9 @@ namespace EncompassRest.Loans
 
         bool IDictionary<string, string>.Remove(string key) => TryRemove(key, out _);
 
-        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.ModelPathContext.Create(item.Value)) && _dictionary.TryRemove(item.Key, out modelPath);
+        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.CreateModelPath(item.Value)) && _dictionary.TryRemove(item.Key, out modelPath);
 
-        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.ModelPathContext.Create(item.Value));
+        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.CreateModelPath(item.Value));
 
         void ICollection<KeyValuePair<string, string>>.CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
         {
@@ -222,7 +220,7 @@ namespace EncompassRest.Loans
 
             public bool Contains(string item)
             {
-                var modelPath = LoanFields.ModelPathContext.Create(item);
+                var modelPath = LoanFields.CreateModelPath(item);
                 if (modelPath != null)
                 {
                     foreach (var pair in _loanFieldMappings._dictionary)

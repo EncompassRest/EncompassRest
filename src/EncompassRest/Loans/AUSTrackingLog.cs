@@ -17,426 +17,426 @@ namespace EncompassRest.Loans
         public bool? IsEmpty { get => _isEmpty; set => _isEmpty = value; }
         private DirtyValue<bool?> _isHistory;
         public bool? IsHistory { get => _isHistory; set => _isHistory = value; }
-        private DirtyValue<string> _log_AcceptPlusEligible;
-        public string Log_AcceptPlusEligible { get => _log_AcceptPlusEligible; set => _log_AcceptPlusEligible = value; }
-        private DirtyValue<string> _log_AffordableProductType;
-        public string Log_AffordableProductType { get => _log_AffordableProductType; set => _log_AffordableProductType = value; }
-        private DirtyValue<decimal?> _log_AllOtherPayments;
-        public decimal? Log_AllOtherPayments { get => _log_AllOtherPayments; set => _log_AllOtherPayments = value; }
-        private DirtyValue<int?> _log_AmortizationMonths;
-        public int? Log_AmortizationMonths { get => _log_AmortizationMonths; set => _log_AmortizationMonths = value; }
-        private DirtyValue<StringEnumValue<AmortizationType>> _log_AmortizationType;
-        public StringEnumValue<AmortizationType> Log_AmortizationType { get => _log_AmortizationType; set => _log_AmortizationType = value; }
-        private DirtyValue<decimal?> _log_AmtSubordinateFin;
-        public decimal? Log_AmtSubordinateFin { get => _log_AmtSubordinateFin; set => _log_AmtSubordinateFin = value; }
-        private DirtyValue<string> _log_AppraisalTypeMAF;
-        public string Log_AppraisalTypeMAF { get => _log_AppraisalTypeMAF; set => _log_AppraisalTypeMAF = value; }
-        private DirtyValue<int?> _log_AppraisedValue;
-        public int? Log_AppraisedValue { get => _log_AppraisedValue; set => _log_AppraisedValue = value; }
-        private DirtyValue<decimal?> _log_ARMQualifyingRate;
-        public decimal? Log_ARMQualifyingRate { get => _log_ARMQualifyingRate; set => _log_ARMQualifyingRate = value; }
-        private DirtyValue<string> _log_AssessmentType;
-        public string Log_AssessmentType { get => _log_AssessmentType; set => _log_AssessmentType = value; }
-        private DirtyValue<string> _log_AUSRecommendation;
-        public string Log_AUSRecommendation { get => _log_AUSRecommendation; set => _log_AUSRecommendation = value; }
-        private DirtyValue<string> _log_AUSStatus;
-        public string Log_AUSStatus { get => _log_AUSStatus; set => _log_AUSStatus = value; }
-        private DirtyValue<StringEnumValue<Log_AUSTrackingType>> _log_AUSTrackingType;
-        public StringEnumValue<Log_AUSTrackingType> Log_AUSTrackingType { get => _log_AUSTrackingType; set => _log_AUSTrackingType = value; }
-        private DirtyValue<string> _log_AUSTransactionID;
-        public string Log_AUSTransactionID { get => _log_AUSTransactionID; set => _log_AUSTransactionID = value; }
-        private DirtyValue<string> _log_AUSVersion;
-        public string Log_AUSVersion { get => _log_AUSVersion; set => _log_AUSVersion = value; }
-        private DirtyValue<string> _log_Balloon;
-        public string Log_Balloon { get => _log_Balloon; set => _log_Balloon = value; }
-        private DirtyValue<int?> _log_BalloonTerm;
-        public int? Log_BalloonTerm { get => _log_BalloonTerm; set => _log_BalloonTerm = value; }
-        private DirtyValue<decimal?> _log_BorrowerAssetAmount;
-        public decimal? Log_BorrowerAssetAmount { get => _log_BorrowerAssetAmount; set => _log_BorrowerAssetAmount = value; }
-        private DirtyValue<string> _log_BorrowerAssetName;
-        public string Log_BorrowerAssetName { get => _log_BorrowerAssetName; set => _log_BorrowerAssetName = value; }
-        private DirtyValue<string> _log_BorrowerAssetType;
-        public string Log_BorrowerAssetType { get => _log_BorrowerAssetType; set => _log_BorrowerAssetType = value; }
-        private DirtyValue<string> _log_BorrowerCreditScore1;
-        public string Log_BorrowerCreditScore1 { get => _log_BorrowerCreditScore1; set => _log_BorrowerCreditScore1 = value; }
-        private DirtyValue<string> _log_BorrowerCreditScore2;
-        public string Log_BorrowerCreditScore2 { get => _log_BorrowerCreditScore2; set => _log_BorrowerCreditScore2 = value; }
-        private DirtyValue<string> _log_BorrowerCreditScore3;
-        public string Log_BorrowerCreditScore3 { get => _log_BorrowerCreditScore3; set => _log_BorrowerCreditScore3 = value; }
-        private DirtyValue<string> _log_BorrowerEquifaxBEACON;
-        public string Log_BorrowerEquifaxBEACON { get => _log_BorrowerEquifaxBEACON; set => _log_BorrowerEquifaxBEACON = value; }
-        private DirtyValue<string> _log_BorrowerExperianFICO;
-        public string Log_BorrowerExperianFICO { get => _log_BorrowerExperianFICO; set => _log_BorrowerExperianFICO = value; }
-        private DirtyValue<decimal?> _log_BorrowerIncomeAmount;
-        public decimal? Log_BorrowerIncomeAmount { get => _log_BorrowerIncomeAmount; set => _log_BorrowerIncomeAmount = value; }
-        private DirtyValue<string> _log_BorrowerIncomeName;
-        public string Log_BorrowerIncomeName { get => _log_BorrowerIncomeName; set => _log_BorrowerIncomeName = value; }
-        private DirtyValue<string> _log_BorrowerIncomeType;
-        public string Log_BorrowerIncomeType { get => _log_BorrowerIncomeType; set => _log_BorrowerIncomeType = value; }
-        private DirtyValue<string> _log_BorrowerInstitutionName;
-        public string Log_BorrowerInstitutionName { get => _log_BorrowerInstitutionName; set => _log_BorrowerInstitutionName = value; }
-        private DirtyValue<string> _log_BorrowerName;
-        public string Log_BorrowerName { get => _log_BorrowerName; set => _log_BorrowerName = value; }
-        private DirtyValue<string> _log_BorrowerScoreName;
-        public string Log_BorrowerScoreName { get => _log_BorrowerScoreName; set => _log_BorrowerScoreName = value; }
-        private DirtyValue<string> _log_BorrowerTransUnionEmpirica;
-        public string Log_BorrowerTransUnionEmpirica { get => _log_BorrowerTransUnionEmpirica; set => _log_BorrowerTransUnionEmpirica = value; }
-        private DirtyValue<string> _log_BorrowerType1;
-        public string Log_BorrowerType1 { get => _log_BorrowerType1; set => _log_BorrowerType1 = value; }
-        private DirtyValue<string> _log_BorrowerType2;
-        public string Log_BorrowerType2 { get => _log_BorrowerType2; set => _log_BorrowerType2 = value; }
-        private DirtyValue<decimal?> _log_BoughtDownRate;
-        public decimal? Log_BoughtDownRate { get => _log_BoughtDownRate; set => _log_BoughtDownRate = value; }
-        private DirtyValue<string> _log_Buydown;
-        public string Log_Buydown { get => _log_Buydown; set => _log_Buydown = value; }
-        private DirtyValue<decimal?> _log_CashBack;
-        public decimal? Log_CashBack { get => _log_CashBack; set => _log_CashBack = value; }
-        private DirtyValue<decimal?> _log_CashOutAmount;
-        public decimal? Log_CashOutAmount { get => _log_CashOutAmount; set => _log_CashOutAmount = value; }
-        private DirtyValue<decimal?> _log_CLTV;
-        public decimal? Log_CLTV { get => _log_CLTV; set => _log_CLTV = value; }
-        private DirtyValue<decimal?> _log_CoBorrowerAssetAmount;
-        public decimal? Log_CoBorrowerAssetAmount { get => _log_CoBorrowerAssetAmount; set => _log_CoBorrowerAssetAmount = value; }
-        private DirtyValue<string> _log_CoBorrowerAssetName;
-        public string Log_CoBorrowerAssetName { get => _log_CoBorrowerAssetName; set => _log_CoBorrowerAssetName = value; }
-        private DirtyValue<string> _log_CoBorrowerAssetType;
-        public string Log_CoBorrowerAssetType { get => _log_CoBorrowerAssetType; set => _log_CoBorrowerAssetType = value; }
-        private DirtyValue<string> _log_CoBorrowerCreditScore1;
-        public string Log_CoBorrowerCreditScore1 { get => _log_CoBorrowerCreditScore1; set => _log_CoBorrowerCreditScore1 = value; }
-        private DirtyValue<string> _log_CoBorrowerCreditScore2;
-        public string Log_CoBorrowerCreditScore2 { get => _log_CoBorrowerCreditScore2; set => _log_CoBorrowerCreditScore2 = value; }
-        private DirtyValue<string> _log_CoBorrowerCreditScore3;
-        public string Log_CoBorrowerCreditScore3 { get => _log_CoBorrowerCreditScore3; set => _log_CoBorrowerCreditScore3 = value; }
-        private DirtyValue<string> _log_CoBorrowerEquifaxBEACON;
-        public string Log_CoBorrowerEquifaxBEACON { get => _log_CoBorrowerEquifaxBEACON; set => _log_CoBorrowerEquifaxBEACON = value; }
-        private DirtyValue<string> _log_CoBorrowerExperianFICO;
-        public string Log_CoBorrowerExperianFICO { get => _log_CoBorrowerExperianFICO; set => _log_CoBorrowerExperianFICO = value; }
-        private DirtyValue<decimal?> _log_CoBorrowerIncomeAmount;
-        public decimal? Log_CoBorrowerIncomeAmount { get => _log_CoBorrowerIncomeAmount; set => _log_CoBorrowerIncomeAmount = value; }
-        private DirtyValue<string> _log_CoBorrowerIncomeName;
-        public string Log_CoBorrowerIncomeName { get => _log_CoBorrowerIncomeName; set => _log_CoBorrowerIncomeName = value; }
-        private DirtyValue<string> _log_CoBorrowerIncomeType;
-        public string Log_CoBorrowerIncomeType { get => _log_CoBorrowerIncomeType; set => _log_CoBorrowerIncomeType = value; }
-        private DirtyValue<string> _log_CoBorrowerInstitutionName;
-        public string Log_CoBorrowerInstitutionName { get => _log_CoBorrowerInstitutionName; set => _log_CoBorrowerInstitutionName = value; }
-        private DirtyValue<string> _log_CoborrowerName;
-        public string Log_CoborrowerName { get => _log_CoborrowerName; set => _log_CoborrowerName = value; }
-        private DirtyValue<string> _log_CoBorrowerScoreName;
-        public string Log_CoBorrowerScoreName { get => _log_CoBorrowerScoreName; set => _log_CoBorrowerScoreName = value; }
-        private DirtyValue<string> _log_CoBorrowerTransUnionEmpirica;
-        public string Log_CoBorrowerTransUnionEmpirica { get => _log_CoBorrowerTransUnionEmpirica; set => _log_CoBorrowerTransUnionEmpirica = value; }
-        private DirtyValue<string> _log_Code1;
-        public string Log_Code1 { get => _log_Code1; set => _log_Code1 = value; }
-        private DirtyValue<string> _log_Code2;
-        public string Log_Code2 { get => _log_Code2; set => _log_Code2 = value; }
-        private DirtyValue<string> _log_CodeDescription1;
-        public string Log_CodeDescription1 { get => _log_CodeDescription1; set => _log_CodeDescription1 = value; }
-        private DirtyValue<string> _log_CodeDescription2;
-        public string Log_CodeDescription2 { get => _log_CodeDescription2; set => _log_CodeDescription2 = value; }
-        private DirtyValue<string> _log_CommunityLending;
-        public string Log_CommunityLending { get => _log_CommunityLending; set => _log_CommunityLending = value; }
-        private DirtyValue<DateTime?> _log_CreatedOn;
-        public DateTime? Log_CreatedOn { get => _log_CreatedOn; set => _log_CreatedOn = value; }
-        private DirtyValue<string> _log_CreditAgency1;
-        public string Log_CreditAgency1 { get => _log_CreditAgency1; set => _log_CreditAgency1 = value; }
-        private DirtyValue<string> _log_CreditAgency2;
-        public string Log_CreditAgency2 { get => _log_CreditAgency2; set => _log_CreditAgency2 = value; }
-        private DirtyValue<DateTime?> _log_CreditReportDate1;
-        public DateTime? Log_CreditReportDate1 { get => _log_CreditReportDate1; set => _log_CreditReportDate1 = value; }
-        private DirtyValue<DateTime?> _log_CreditReportDate2;
-        public DateTime? Log_CreditReportDate2 { get => _log_CreditReportDate2; set => _log_CreditReportDate2 = value; }
-        private DirtyValue<string> _log_CreditReportID1;
-        public string Log_CreditReportID1 { get => _log_CreditReportID1; set => _log_CreditReportID1 = value; }
-        private DirtyValue<string> _log_CreditReportID2;
-        public string Log_CreditReportID2 { get => _log_CreditReportID2; set => _log_CreditReportID2 = value; }
-        private DirtyValue<StringEnumValue<AmortizationType>> _log_CuredAmortizationType;
-        public StringEnumValue<AmortizationType> Log_CuredAmortizationType { get => _log_CuredAmortizationType; set => _log_CuredAmortizationType = value; }
-        private DirtyValue<int?> _log_CuredAppraisedValue;
-        public int? Log_CuredAppraisedValue { get => _log_CuredAppraisedValue; set => _log_CuredAppraisedValue = value; }
-        private DirtyValue<decimal?> _log_CuredCLTV;
-        public decimal? Log_CuredCLTV { get => _log_CuredCLTV; set => _log_CuredCLTV = value; }
-        private DirtyValue<decimal?> _log_CuredHousingExpenseRatio;
-        public decimal? Log_CuredHousingExpenseRatio { get => _log_CuredHousingExpenseRatio; set => _log_CuredHousingExpenseRatio = value; }
-        private DirtyValue<StringEnumValue<LoanPurposeType>> _log_CuredLoanPurpose;
-        public StringEnumValue<LoanPurposeType> Log_CuredLoanPurpose { get => _log_CuredLoanPurpose; set => _log_CuredLoanPurpose = value; }
-        private DirtyValue<int?> _log_CuredLoanTerm;
-        public int? Log_CuredLoanTerm { get => _log_CuredLoanTerm; set => _log_CuredLoanTerm = value; }
-        private DirtyValue<StringEnumValue<LoanType>> _log_CuredLoanType;
-        public StringEnumValue<LoanType> Log_CuredLoanType { get => _log_CuredLoanType; set => _log_CuredLoanType = value; }
-        private DirtyValue<decimal?> _log_CuredLTV;
-        public decimal? Log_CuredLTV { get => _log_CuredLTV; set => _log_CuredLTV = value; }
-        private DirtyValue<decimal?> _log_CuredNoteRate;
-        public decimal? Log_CuredNoteRate { get => _log_CuredNoteRate; set => _log_CuredNoteRate = value; }
-        private DirtyValue<decimal?> _log_CuredProposedTotalHousingPayment;
-        public decimal? Log_CuredProposedTotalHousingPayment { get => _log_CuredProposedTotalHousingPayment; set => _log_CuredProposedTotalHousingPayment = value; }
-        private DirtyValue<StringEnumValue<RefinancePurpose>> _log_CuredRefinancePurpose;
-        public StringEnumValue<RefinancePurpose> Log_CuredRefinancePurpose { get => _log_CuredRefinancePurpose; set => _log_CuredRefinancePurpose = value; }
-        private DirtyValue<decimal?> _log_CuredTotalExpenseRatio;
-        public decimal? Log_CuredTotalExpenseRatio { get => _log_CuredTotalExpenseRatio; set => _log_CuredTotalExpenseRatio = value; }
-        private DirtyValue<decimal?> _log_CuredTotalLoanAmount;
-        public decimal? Log_CuredTotalLoanAmount { get => _log_CuredTotalLoanAmount; set => _log_CuredTotalLoanAmount = value; }
-        private DirtyValue<decimal?> _log_CuredTotalMonthlyIncome;
-        public decimal? Log_CuredTotalMonthlyIncome { get => _log_CuredTotalMonthlyIncome; set => _log_CuredTotalMonthlyIncome = value; }
-        private DirtyValue<string> _log_DateTimeAssessed;
-        public string Log_DateTimeAssessed { get => _log_DateTimeAssessed; set => _log_DateTimeAssessed = value; }
-        private DirtyValue<string> _log_DateTimeRequested;
-        public string Log_DateTimeRequested { get => _log_DateTimeRequested; set => _log_DateTimeRequested = value; }
-        private DirtyValue<decimal?> _log_DebtRatio;
-        public decimal? Log_DebtRatio { get => _log_DebtRatio; set => _log_DebtRatio = value; }
-        private DirtyValue<string> _log_DocumentationLevel;
-        public string Log_DocumentationLevel { get => _log_DocumentationLevel; set => _log_DocumentationLevel = value; }
-        private DirtyValue<string> _log_DUCaseIDorLPAUSKey;
-        public string Log_DUCaseIDorLPAUSKey { get => _log_DUCaseIDorLPAUSKey; set => _log_DUCaseIDorLPAUSKey = value; }
-        private DirtyValue<StringEnumValue<PropertyType>> _log_DUPropertyType;
-        public StringEnumValue<PropertyType> Log_DUPropertyType { get => _log_DUPropertyType; set => _log_DUPropertyType = value; }
-        private DirtyValue<string> _log_eFolderGUID;
-        public string Log_eFolderGUID { get => _log_eFolderGUID; set => _log_eFolderGUID = value; }
-        private DirtyValue<decimal?> _log_ExcessAvailableAssetsNoVerified;
-        public decimal? Log_ExcessAvailableAssetsNoVerified { get => _log_ExcessAvailableAssetsNoVerified; set => _log_ExcessAvailableAssetsNoVerified = value; }
-        private DirtyValue<decimal?> _log_FinancedMIAmount;
-        public decimal? Log_FinancedMIAmount { get => _log_FinancedMIAmount; set => _log_FinancedMIAmount = value; }
-        private DirtyValue<decimal?> _log_FirstPandI;
-        public decimal? Log_FirstPandI { get => _log_FirstPandI; set => _log_FirstPandI = value; }
-        private DirtyValue<DateTime?> _log_FirstSubmissionDate;
-        public DateTime? Log_FirstSubmissionDate { get => _log_FirstSubmissionDate; set => _log_FirstSubmissionDate = value; }
-        private DirtyValue<string> _log_FirstSubmissionTime;
-        public string Log_FirstSubmissionTime { get => _log_FirstSubmissionTime; set => _log_FirstSubmissionTime = value; }
-        private DirtyValue<string> _log_FreddieDocClass;
-        public string Log_FreddieDocClass { get => _log_FreddieDocClass; set => _log_FreddieDocClass = value; }
-        private DirtyValue<decimal?> _log_FundsRequiredClose;
-        public decimal? Log_FundsRequiredClose { get => _log_FundsRequiredClose; set => _log_FundsRequiredClose = value; }
-        private DirtyValue<string> _log_GUID;
-        public string Log_GUID { get => _log_GUID; set => _log_GUID = value; }
-        private DirtyValue<decimal?> _log_HLCTV;
-        public decimal? Log_HLCTV { get => _log_HLCTV; set => _log_HLCTV = value; }
-        private DirtyValue<decimal?> _log_HousingExpense;
-        public decimal? Log_HousingExpense { get => _log_HousingExpense; set => _log_HousingExpense = value; }
-        private DirtyValue<decimal?> _log_HousingExpenseRatio;
-        public decimal? Log_HousingExpenseRatio { get => _log_HousingExpenseRatio; set => _log_HousingExpenseRatio = value; }
-        private DirtyValue<decimal?> _log_HousingRatio;
-        public decimal? Log_HousingRatio { get => _log_HousingRatio; set => _log_HousingRatio = value; }
-        private DirtyValue<decimal?> _log_HTLTV;
-        public decimal? Log_HTLTV { get => _log_HTLTV; set => _log_HTLTV = value; }
-        private DirtyValue<string> _log_IncludingLess10Mos;
-        public string Log_IncludingLess10Mos { get => _log_IncludingLess10Mos; set => _log_IncludingLess10Mos = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetBase;
-        public decimal? Log_IncomeAssetBase { get => _log_IncomeAssetBase; set => _log_IncomeAssetBase = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetBonus;
-        public decimal? Log_IncomeAssetBonus { get => _log_IncomeAssetBonus; set => _log_IncomeAssetBonus = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetCommission;
-        public decimal? Log_IncomeAssetCommission { get => _log_IncomeAssetCommission; set => _log_IncomeAssetCommission = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetOther;
-        public decimal? Log_IncomeAssetOther { get => _log_IncomeAssetOther; set => _log_IncomeAssetOther = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetOvertime;
-        public decimal? Log_IncomeAssetOvertime { get => _log_IncomeAssetOvertime; set => _log_IncomeAssetOvertime = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetPosCashFlow;
-        public decimal? Log_IncomeAssetPosCashFlow { get => _log_IncomeAssetPosCashFlow; set => _log_IncomeAssetPosCashFlow = value; }
-        private DirtyValue<decimal?> _log_IncomeAssetPositiveNetRental;
-        public decimal? Log_IncomeAssetPositiveNetRental { get => _log_IncomeAssetPositiveNetRental; set => _log_IncomeAssetPositiveNetRental = value; }
-        private DirtyValue<string> _log_IndicatorScore;
-        public string Log_IndicatorScore { get => _log_IndicatorScore; set => _log_IndicatorScore = value; }
-        private DirtyValue<string> _log_IntendedUseofProperty;
-        public string Log_IntendedUseofProperty { get => _log_IntendedUseofProperty; set => _log_IntendedUseofProperty = value; }
-        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion1;
-        public string Log_LCLAEvaluatedServiceConclusion1 { get => _log_LCLAEvaluatedServiceConclusion1; set => _log_LCLAEvaluatedServiceConclusion1 = value; }
-        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion2;
-        public string Log_LCLAEvaluatedServiceConclusion2 { get => _log_LCLAEvaluatedServiceConclusion2; set => _log_LCLAEvaluatedServiceConclusion2 = value; }
-        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion3;
-        public string Log_LCLAEvaluatedServiceConclusion3 { get => _log_LCLAEvaluatedServiceConclusion3; set => _log_LCLAEvaluatedServiceConclusion3 = value; }
-        private DirtyValue<string> _log_LCLAEvaluatedServiceConclusion4;
-        public string Log_LCLAEvaluatedServiceConclusion4 { get => _log_LCLAEvaluatedServiceConclusion4; set => _log_LCLAEvaluatedServiceConclusion4 = value; }
-        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType1>> _log_LCLAEvaluatedServiceType1;
-        public StringEnumValue<Log_LCLAEvaluatedServiceType1> Log_LCLAEvaluatedServiceType1 { get => _log_LCLAEvaluatedServiceType1; set => _log_LCLAEvaluatedServiceType1 = value; }
-        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType2>> _log_LCLAEvaluatedServiceType2;
-        public StringEnumValue<Log_LCLAEvaluatedServiceType2> Log_LCLAEvaluatedServiceType2 { get => _log_LCLAEvaluatedServiceType2; set => _log_LCLAEvaluatedServiceType2 = value; }
-        private DirtyValue<StringEnumValue<Log_LCLAEvaluatedServiceType3>> _log_LCLAEvaluatedServiceType3;
-        public StringEnumValue<Log_LCLAEvaluatedServiceType3> Log_LCLAEvaluatedServiceType3 { get => _log_LCLAEvaluatedServiceType3; set => _log_LCLAEvaluatedServiceType3 = value; }
-        private DirtyValue<string> _log_LCLAEvaluatedServiceType4;
-        public string Log_LCLAEvaluatedServiceType4 { get => _log_LCLAEvaluatedServiceType4; set => _log_LCLAEvaluatedServiceType4 = value; }
-        private DirtyValue<string> _log_LenderLoan;
-        public string Log_LenderLoan { get => _log_LenderLoan; set => _log_LenderLoan = value; }
-        private DirtyValue<StringEnumValue<LienType>> _log_LienType;
-        public StringEnumValue<LienType> Log_LienType { get => _log_LienType; set => _log_LienType = value; }
-        private DirtyValue<decimal?> _log_LoanAmount;
-        public decimal? Log_LoanAmount { get => _log_LoanAmount; set => _log_LoanAmount = value; }
-        private DirtyValue<string> _log_LoanApplicationID;
-        public string Log_LoanApplicationID { get => _log_LoanApplicationID; set => _log_LoanApplicationID = value; }
-        private DirtyValue<string> _log_LoanProcessingStage;
-        public string Log_LoanProcessingStage { get => _log_LoanProcessingStage; set => _log_LoanProcessingStage = value; }
-        private DirtyValue<string> _log_LoanProspectorID;
-        public string Log_LoanProspectorID { get => _log_LoanProspectorID; set => _log_LoanProspectorID = value; }
-        private DirtyValue<StringEnumValue<LoanPurposeType>> _log_LoanPurpose;
-        public StringEnumValue<LoanPurposeType> Log_LoanPurpose { get => _log_LoanPurpose; set => _log_LoanPurpose = value; }
-        private DirtyValue<int?> _log_LoanTerm;
-        public int? Log_LoanTerm { get => _log_LoanTerm; set => _log_LoanTerm = value; }
-        private DirtyValue<StringEnumValue<LoanType>> _log_LoanType;
-        public StringEnumValue<LoanType> Log_LoanType { get => _log_LoanType; set => _log_LoanType = value; }
-        private DirtyValue<DateTime?> _log_LPAssmtExpDate;
-        public DateTime? Log_LPAssmtExpDate { get => _log_LPAssmtExpDate; set => _log_LPAssmtExpDate = value; }
-        private DirtyValue<StringEnumValue<OtherPropertyType>> _log_LPPropertyType;
-        public StringEnumValue<OtherPropertyType> Log_LPPropertyType { get => _log_LPPropertyType; set => _log_LPPropertyType = value; }
-        private DirtyValue<string> _log_LPVersion;
-        public string Log_LPVersion { get => _log_LPVersion; set => _log_LPVersion = value; }
-        private DirtyValue<string> _log_LQACollateralRepWarrantyServiceConclusion;
-        public string Log_LQACollateralRepWarrantyServiceConclusion { get => _log_LQACollateralRepWarrantyServiceConclusion; set => _log_LQACollateralRepWarrantyServiceConclusion = value; }
-        private DirtyValue<string> _log_LQACreditRiskAssessmentConclusion;
-        public string Log_LQACreditRiskAssessmentConclusion { get => _log_LQACreditRiskAssessmentConclusion; set => _log_LQACreditRiskAssessmentConclusion = value; }
-        private DirtyValue<string> _log_LQADataCompareFieldConclusion;
-        public string Log_LQADataCompareFieldConclusion { get => _log_LQADataCompareFieldConclusion; set => _log_LQADataCompareFieldConclusion = value; }
-        private DirtyValue<string> _log_LQADataCompareFieldName;
-        public string Log_LQADataCompareFieldName { get => _log_LQADataCompareFieldName; set => _log_LQADataCompareFieldName = value; }
-        private DirtyValue<string> _log_LQADataCompareResult;
-        public string Log_LQADataCompareResult { get => _log_LQADataCompareResult; set => _log_LQADataCompareResult = value; }
-        private DirtyValue<string> _log_LQALPKey;
-        public string Log_LQALPKey { get => _log_LQALPKey; set => _log_LQALPKey = value; }
-        private DirtyValue<string> _log_LQAPurchaseEligibilityResult;
-        public string Log_LQAPurchaseEligibilityResult { get => _log_LQAPurchaseEligibilityResult; set => _log_LQAPurchaseEligibilityResult = value; }
-        private DirtyValue<string> _log_LQARiskAssessmentKey;
-        public string Log_LQARiskAssessmentKey { get => _log_LQARiskAssessmentKey; set => _log_LQARiskAssessmentKey = value; }
-        private DirtyValue<DateTime?> _log_LQASubmissionDateTime;
-        public DateTime? Log_LQASubmissionDateTime { get => _log_LQASubmissionDateTime; set => _log_LQASubmissionDateTime = value; }
-        private DirtyValue<decimal?> _log_LTV;
-        public decimal? Log_LTV { get => _log_LTV; set => _log_LTV = value; }
-        private DirtyValue<decimal?> _log_MaxMortgageLimit;
-        public decimal? Log_MaxMortgageLimit { get => _log_MaxMortgageLimit; set => _log_MaxMortgageLimit = value; }
-        private DirtyValue<string> _log_MIDecision;
-        public string Log_MIDecision { get => _log_MIDecision; set => _log_MIDecision = value; }
-        private DirtyValue<string> _log_MortgageType;
-        public string Log_MortgageType { get => _log_MortgageType; set => _log_MortgageType = value; }
-        private DirtyValue<string> _log_NegAmortizationType;
-        public string Log_NegAmortizationType { get => _log_NegAmortizationType; set => _log_NegAmortizationType = value; }
-        private DirtyValue<decimal?> _log_NegativeNetRental;
-        public decimal? Log_NegativeNetRental { get => _log_NegativeNetRental; set => _log_NegativeNetRental = value; }
-        private DirtyValue<decimal?> _log_NetCashBack;
-        public decimal? Log_NetCashBack { get => _log_NetCashBack; set => _log_NetCashBack = value; }
-        private DirtyValue<string> _log_NewConstruction;
-        public string Log_NewConstruction { get => _log_NewConstruction; set => _log_NewConstruction = value; }
-        private DirtyValue<decimal?> _log_NoteRate;
-        public decimal? Log_NoteRate { get => _log_NoteRate; set => _log_NoteRate = value; }
-        private DirtyValue<string> _log_NOTPNumber;
-        public string Log_NOTPNumber { get => _log_NOTPNumber; set => _log_NOTPNumber = value; }
-        private DirtyValue<int?> _log_NoUnits;
-        public int? Log_NoUnits { get => _log_NoUnits; set => _log_NoUnits = value; }
-        private DirtyValue<string> _log_NumberOfSubmissions;
-        public string Log_NumberOfSubmissions { get => _log_NumberOfSubmissions; set => _log_NumberOfSubmissions = value; }
-        private DirtyValue<string> _log_OccupancyStatus;
-        public string Log_OccupancyStatus { get => _log_OccupancyStatus; set => _log_OccupancyStatus = value; }
-        private DirtyValue<decimal?> _log_OccupantDebtRatio;
-        public decimal? Log_OccupantDebtRatio { get => _log_OccupantDebtRatio; set => _log_OccupantDebtRatio = value; }
-        private DirtyValue<decimal?> _log_OccupantHousingRatio;
-        public decimal? Log_OccupantHousingRatio { get => _log_OccupantHousingRatio; set => _log_OccupantHousingRatio = value; }
-        private DirtyValue<string> _log_OfferingIdentifier;
-        public string Log_OfferingIdentifier { get => _log_OfferingIdentifier; set => _log_OfferingIdentifier = value; }
-        private DirtyValue<string> _log_OriginatingCompany;
-        public string Log_OriginatingCompany { get => _log_OriginatingCompany; set => _log_OriginatingCompany = value; }
-        private DirtyValue<decimal?> _log_OwnerExistingMtg;
-        public decimal? Log_OwnerExistingMtg { get => _log_OwnerExistingMtg; set => _log_OwnerExistingMtg = value; }
-        private DirtyValue<decimal?> _log_PandI;
-        public decimal? Log_PandI { get => _log_PandI; set => _log_PandI = value; }
-        private DirtyValue<int?> _log_PaymentFrequency;
-        public int? Log_PaymentFrequency { get => _log_PaymentFrequency; set => _log_PaymentFrequency = value; }
-        private DirtyValue<string> _log_PresentAddress;
-        public string Log_PresentAddress { get => _log_PresentAddress; set => _log_PresentAddress = value; }
-        private DirtyValue<string> _log_PresentAddressCity;
-        public string Log_PresentAddressCity { get => _log_PresentAddressCity; set => _log_PresentAddressCity = value; }
-        private DirtyValue<string> _log_PresentAddressState;
-        public string Log_PresentAddressState { get => _log_PresentAddressState; set => _log_PresentAddressState = value; }
-        private DirtyValue<string> _log_PresentAddressZipCode;
-        public string Log_PresentAddressZipCode { get => _log_PresentAddressZipCode; set => _log_PresentAddressZipCode = value; }
-        private DirtyValue<decimal?> _log_PresentHousingExpense;
-        public decimal? Log_PresentHousingExpense { get => _log_PresentHousingExpense; set => _log_PresentHousingExpense = value; }
-        private DirtyValue<decimal?> _log_PresentPrincipalHousingPayment;
-        public decimal? Log_PresentPrincipalHousingPayment { get => _log_PresentPrincipalHousingPayment; set => _log_PresentPrincipalHousingPayment = value; }
-        private DirtyValue<string> _log_PropertyAddress;
-        public string Log_PropertyAddress { get => _log_PropertyAddress; set => _log_PropertyAddress = value; }
-        private DirtyValue<string> _log_PropertyCity;
-        public string Log_PropertyCity { get => _log_PropertyCity; set => _log_PropertyCity = value; }
-        private DirtyValue<string> _log_PropertyState;
-        public string Log_PropertyState { get => _log_PropertyState; set => _log_PropertyState = value; }
-        private DirtyValue<string> _log_PropertyZipcode;
-        public string Log_PropertyZipcode { get => _log_PropertyZipcode; set => _log_PropertyZipcode = value; }
-        private DirtyValue<decimal?> _log_ProposedHazardInsurance;
-        public decimal? Log_ProposedHazardInsurance { get => _log_ProposedHazardInsurance; set => _log_ProposedHazardInsurance = value; }
-        private DirtyValue<decimal?> _log_ProposedHOAFees;
-        public decimal? Log_ProposedHOAFees { get => _log_ProposedHOAFees; set => _log_ProposedHOAFees = value; }
-        private DirtyValue<decimal?> _log_ProposedHousingPITI;
-        public decimal? Log_ProposedHousingPITI { get => _log_ProposedHousingPITI; set => _log_ProposedHousingPITI = value; }
-        private DirtyValue<decimal?> _log_ProposedMortgageInsurance;
-        public decimal? Log_ProposedMortgageInsurance { get => _log_ProposedMortgageInsurance; set => _log_ProposedMortgageInsurance = value; }
-        private DirtyValue<decimal?> _log_ProposedOtherPayment;
-        public decimal? Log_ProposedOtherPayment { get => _log_ProposedOtherPayment; set => _log_ProposedOtherPayment = value; }
-        private DirtyValue<decimal?> _log_ProposedTaxes;
-        public decimal? Log_ProposedTaxes { get => _log_ProposedTaxes; set => _log_ProposedTaxes = value; }
-        private DirtyValue<decimal?> _log_ProposedTotalHousingPayment;
-        public decimal? Log_ProposedTotalHousingPayment { get => _log_ProposedTotalHousingPayment; set => _log_ProposedTotalHousingPayment = value; }
-        private DirtyValue<decimal?> _log_ProposedTotalMonthlyDebt;
-        public decimal? Log_ProposedTotalMonthlyDebt { get => _log_ProposedTotalMonthlyDebt; set => _log_ProposedTotalMonthlyDebt = value; }
-        private DirtyValue<string> _log_PurchaseEligibility;
-        public string Log_PurchaseEligibility { get => _log_PurchaseEligibility; set => _log_PurchaseEligibility = value; }
-        private DirtyValue<decimal?> _log_QualifyingRate;
-        public decimal? Log_QualifyingRate { get => _log_QualifyingRate; set => _log_QualifyingRate = value; }
-        private DirtyValue<string> _log_RecordType;
-        public string Log_RecordType { get => _log_RecordType; set => _log_RecordType = value; }
-        private DirtyValue<StringEnumValue<RefinancePurpose>> _log_RefinancePurpose;
-        public StringEnumValue<RefinancePurpose> Log_RefinancePurpose { get => _log_RefinancePurpose; set => _log_RefinancePurpose = value; }
-        private DirtyValue<decimal?> _log_Reserves;
-        public decimal? Log_Reserves { get => _log_Reserves; set => _log_Reserves = value; }
-        private DirtyValue<decimal?> _log_ReservesRequiredVerified;
-        public decimal? Log_ReservesRequiredVerified { get => _log_ReservesRequiredVerified; set => _log_ReservesRequiredVerified = value; }
-        private DirtyValue<string> _log_RiskClass;
-        public string Log_RiskClass { get => _log_RiskClass; set => _log_RiskClass = value; }
-        private DirtyValue<string> _log_SalesConcessions;
-        public string Log_SalesConcessions { get => _log_SalesConcessions; set => _log_SalesConcessions = value; }
-        private DirtyValue<decimal?> _log_SalesPrice;
-        public decimal? Log_SalesPrice { get => _log_SalesPrice; set => _log_SalesPrice = value; }
-        private DirtyValue<decimal?> _log_SecondPandI;
-        public decimal? Log_SecondPandI { get => _log_SecondPandI; set => _log_SecondPandI = value; }
-        private DirtyValue<string> _log_SelectedBorrower;
-        public string Log_SelectedBorrower { get => _log_SelectedBorrower; set => _log_SelectedBorrower = value; }
-        private DirtyValue<string> _log_SelectedRepository;
-        public string Log_SelectedRepository { get => _log_SelectedRepository; set => _log_SelectedRepository = value; }
-        private DirtyValue<string> _log_SellerNumber;
-        public string Log_SellerNumber { get => _log_SellerNumber; set => _log_SellerNumber = value; }
-        private DirtyValue<decimal?> _log_SubjNegCashFlow;
-        public decimal? Log_SubjNegCashFlow { get => _log_SubjNegCashFlow; set => _log_SubjNegCashFlow = value; }
-        private DirtyValue<DateTime?> _log_SubmissionDate;
-        public DateTime? Log_SubmissionDate { get => _log_SubmissionDate; set => _log_SubmissionDate = value; }
-        private DirtyValue<string> _log_SubmissionNumber;
-        public string Log_SubmissionNumber { get => _log_SubmissionNumber; set => _log_SubmissionNumber = value; }
-        private DirtyValue<string> _log_SubmissionTime;
-        public string Log_SubmissionTime { get => _log_SubmissionTime; set => _log_SubmissionTime = value; }
-        private DirtyValue<string> _log_SubmittedBy;
-        public string Log_SubmittedBy { get => _log_SubmittedBy; set => _log_SubmittedBy = value; }
-        private DirtyValue<string> _log_SubmittingCompany;
-        public string Log_SubmittingCompany { get => _log_SubmittingCompany; set => _log_SubmittingCompany = value; }
-        private DirtyValue<string> _log_TemporarySubsidyBuydown;
-        public string Log_TemporarySubsidyBuydown { get => _log_TemporarySubsidyBuydown; set => _log_TemporarySubsidyBuydown = value; }
-        private DirtyValue<decimal?> _log_TLTV;
-        public decimal? Log_TLTV { get => _log_TLTV; set => _log_TLTV = value; }
-        private DirtyValue<decimal?> _log_TotalAsset;
-        public decimal? Log_TotalAsset { get => _log_TotalAsset; set => _log_TotalAsset = value; }
-        private DirtyValue<decimal?> _log_TotalExpense;
-        public decimal? Log_TotalExpense { get => _log_TotalExpense; set => _log_TotalExpense = value; }
-        private DirtyValue<decimal?> _log_TotalExpensePmt;
-        public decimal? Log_TotalExpensePmt { get => _log_TotalExpensePmt; set => _log_TotalExpensePmt = value; }
-        private DirtyValue<decimal?> _log_TotalExpenseRatio;
-        public decimal? Log_TotalExpenseRatio { get => _log_TotalExpenseRatio; set => _log_TotalExpenseRatio = value; }
-        private DirtyValue<decimal?> _log_TotalFundsVerified;
-        public decimal? Log_TotalFundsVerified { get => _log_TotalFundsVerified; set => _log_TotalFundsVerified = value; }
-        private DirtyValue<decimal?> _log_TotalLoanAmount;
-        public decimal? Log_TotalLoanAmount { get => _log_TotalLoanAmount; set => _log_TotalLoanAmount = value; }
-        private DirtyValue<decimal?> _log_TotalMonthlyIncome;
-        public decimal? Log_TotalMonthlyIncome { get => _log_TotalMonthlyIncome; set => _log_TotalMonthlyIncome = value; }
-        private DirtyValue<string> _log_TPONumber;
-        public string Log_TPONumber { get => _log_TPONumber; set => _log_TPONumber = value; }
-        private DirtyValue<string> _log_TransactionID;
-        public string Log_TransactionID { get => _log_TransactionID; set => _log_TransactionID = value; }
-        private DirtyValue<string> _log_UnderwritingRiskAssessOther;
-        public string Log_UnderwritingRiskAssessOther { get => _log_UnderwritingRiskAssessOther; set => _log_UnderwritingRiskAssessOther = value; }
-        private DirtyValue<StringEnumValue<RiskAssessmentType>> _log_UnderwritingRiskAssessType;
-        public StringEnumValue<RiskAssessmentType> Log_UnderwritingRiskAssessType { get => _log_UnderwritingRiskAssessType; set => _log_UnderwritingRiskAssessType = value; }
-        private DirtyValue<string> _log_WithUndisclosedDebt;
-        public string Log_WithUndisclosedDebt { get => _log_WithUndisclosedDebt; set => _log_WithUndisclosedDebt = value; }
+        private DirtyValue<string> _logAcceptPlusEligible;
+        public string LogAcceptPlusEligible { get => _logAcceptPlusEligible; set => _logAcceptPlusEligible = value; }
+        private DirtyValue<string> _logAffordableProductType;
+        public string LogAffordableProductType { get => _logAffordableProductType; set => _logAffordableProductType = value; }
+        private DirtyValue<decimal?> _logAllOtherPayments;
+        public decimal? LogAllOtherPayments { get => _logAllOtherPayments; set => _logAllOtherPayments = value; }
+        private DirtyValue<int?> _logAmortizationMonths;
+        public int? LogAmortizationMonths { get => _logAmortizationMonths; set => _logAmortizationMonths = value; }
+        private DirtyValue<StringEnumValue<AmortizationType>> _logAmortizationType;
+        public StringEnumValue<AmortizationType> LogAmortizationType { get => _logAmortizationType; set => _logAmortizationType = value; }
+        private DirtyValue<decimal?> _logAmtSubordinateFin;
+        public decimal? LogAmtSubordinateFin { get => _logAmtSubordinateFin; set => _logAmtSubordinateFin = value; }
+        private DirtyValue<string> _logAppraisalTypeMAF;
+        public string LogAppraisalTypeMAF { get => _logAppraisalTypeMAF; set => _logAppraisalTypeMAF = value; }
+        private DirtyValue<int?> _logAppraisedValue;
+        public int? LogAppraisedValue { get => _logAppraisedValue; set => _logAppraisedValue = value; }
+        private DirtyValue<decimal?> _logARMQualifyingRate;
+        public decimal? LogARMQualifyingRate { get => _logARMQualifyingRate; set => _logARMQualifyingRate = value; }
+        private DirtyValue<string> _logAssessmentType;
+        public string LogAssessmentType { get => _logAssessmentType; set => _logAssessmentType = value; }
+        private DirtyValue<string> _logAUSRecommendation;
+        public string LogAUSRecommendation { get => _logAUSRecommendation; set => _logAUSRecommendation = value; }
+        private DirtyValue<string> _logAUSStatus;
+        public string LogAUSStatus { get => _logAUSStatus; set => _logAUSStatus = value; }
+        private DirtyValue<StringEnumValue<LogAUSTrackingType>> _logAUSTrackingType;
+        public StringEnumValue<LogAUSTrackingType> LogAUSTrackingType { get => _logAUSTrackingType; set => _logAUSTrackingType = value; }
+        private DirtyValue<string> _logAUSTransactionID;
+        public string LogAUSTransactionID { get => _logAUSTransactionID; set => _logAUSTransactionID = value; }
+        private DirtyValue<string> _logAUSVersion;
+        public string LogAUSVersion { get => _logAUSVersion; set => _logAUSVersion = value; }
+        private DirtyValue<string> _logBalloon;
+        public string LogBalloon { get => _logBalloon; set => _logBalloon = value; }
+        private DirtyValue<int?> _logBalloonTerm;
+        public int? LogBalloonTerm { get => _logBalloonTerm; set => _logBalloonTerm = value; }
+        private DirtyValue<decimal?> _logBorrowerAssetAmount;
+        public decimal? LogBorrowerAssetAmount { get => _logBorrowerAssetAmount; set => _logBorrowerAssetAmount = value; }
+        private DirtyValue<string> _logBorrowerAssetName;
+        public string LogBorrowerAssetName { get => _logBorrowerAssetName; set => _logBorrowerAssetName = value; }
+        private DirtyValue<string> _logBorrowerAssetType;
+        public string LogBorrowerAssetType { get => _logBorrowerAssetType; set => _logBorrowerAssetType = value; }
+        private DirtyValue<string> _logBorrowerCreditScore1;
+        public string LogBorrowerCreditScore1 { get => _logBorrowerCreditScore1; set => _logBorrowerCreditScore1 = value; }
+        private DirtyValue<string> _logBorrowerCreditScore2;
+        public string LogBorrowerCreditScore2 { get => _logBorrowerCreditScore2; set => _logBorrowerCreditScore2 = value; }
+        private DirtyValue<string> _logBorrowerCreditScore3;
+        public string LogBorrowerCreditScore3 { get => _logBorrowerCreditScore3; set => _logBorrowerCreditScore3 = value; }
+        private DirtyValue<string> _logBorrowerEquifaxBEACON;
+        public string LogBorrowerEquifaxBEACON { get => _logBorrowerEquifaxBEACON; set => _logBorrowerEquifaxBEACON = value; }
+        private DirtyValue<string> _logBorrowerExperianFICO;
+        public string LogBorrowerExperianFICO { get => _logBorrowerExperianFICO; set => _logBorrowerExperianFICO = value; }
+        private DirtyValue<decimal?> _logBorrowerIncomeAmount;
+        public decimal? LogBorrowerIncomeAmount { get => _logBorrowerIncomeAmount; set => _logBorrowerIncomeAmount = value; }
+        private DirtyValue<string> _logBorrowerIncomeName;
+        public string LogBorrowerIncomeName { get => _logBorrowerIncomeName; set => _logBorrowerIncomeName = value; }
+        private DirtyValue<string> _logBorrowerIncomeType;
+        public string LogBorrowerIncomeType { get => _logBorrowerIncomeType; set => _logBorrowerIncomeType = value; }
+        private DirtyValue<string> _logBorrowerInstitutionName;
+        public string LogBorrowerInstitutionName { get => _logBorrowerInstitutionName; set => _logBorrowerInstitutionName = value; }
+        private DirtyValue<string> _logBorrowerName;
+        public string LogBorrowerName { get => _logBorrowerName; set => _logBorrowerName = value; }
+        private DirtyValue<string> _logBorrowerScoreName;
+        public string LogBorrowerScoreName { get => _logBorrowerScoreName; set => _logBorrowerScoreName = value; }
+        private DirtyValue<string> _logBorrowerTransUnionEmpirica;
+        public string LogBorrowerTransUnionEmpirica { get => _logBorrowerTransUnionEmpirica; set => _logBorrowerTransUnionEmpirica = value; }
+        private DirtyValue<string> _logBorrowerType1;
+        public string LogBorrowerType1 { get => _logBorrowerType1; set => _logBorrowerType1 = value; }
+        private DirtyValue<string> _logBorrowerType2;
+        public string LogBorrowerType2 { get => _logBorrowerType2; set => _logBorrowerType2 = value; }
+        private DirtyValue<decimal?> _logBoughtDownRate;
+        public decimal? LogBoughtDownRate { get => _logBoughtDownRate; set => _logBoughtDownRate = value; }
+        private DirtyValue<string> _logBuydown;
+        public string LogBuydown { get => _logBuydown; set => _logBuydown = value; }
+        private DirtyValue<decimal?> _logCashBack;
+        public decimal? LogCashBack { get => _logCashBack; set => _logCashBack = value; }
+        private DirtyValue<decimal?> _logCashOutAmount;
+        public decimal? LogCashOutAmount { get => _logCashOutAmount; set => _logCashOutAmount = value; }
+        private DirtyValue<decimal?> _logCLTV;
+        public decimal? LogCLTV { get => _logCLTV; set => _logCLTV = value; }
+        private DirtyValue<decimal?> _logCoBorrowerAssetAmount;
+        public decimal? LogCoBorrowerAssetAmount { get => _logCoBorrowerAssetAmount; set => _logCoBorrowerAssetAmount = value; }
+        private DirtyValue<string> _logCoBorrowerAssetName;
+        public string LogCoBorrowerAssetName { get => _logCoBorrowerAssetName; set => _logCoBorrowerAssetName = value; }
+        private DirtyValue<string> _logCoBorrowerAssetType;
+        public string LogCoBorrowerAssetType { get => _logCoBorrowerAssetType; set => _logCoBorrowerAssetType = value; }
+        private DirtyValue<string> _logCoBorrowerCreditScore1;
+        public string LogCoBorrowerCreditScore1 { get => _logCoBorrowerCreditScore1; set => _logCoBorrowerCreditScore1 = value; }
+        private DirtyValue<string> _logCoBorrowerCreditScore2;
+        public string LogCoBorrowerCreditScore2 { get => _logCoBorrowerCreditScore2; set => _logCoBorrowerCreditScore2 = value; }
+        private DirtyValue<string> _logCoBorrowerCreditScore3;
+        public string LogCoBorrowerCreditScore3 { get => _logCoBorrowerCreditScore3; set => _logCoBorrowerCreditScore3 = value; }
+        private DirtyValue<string> _logCoBorrowerEquifaxBEACON;
+        public string LogCoBorrowerEquifaxBEACON { get => _logCoBorrowerEquifaxBEACON; set => _logCoBorrowerEquifaxBEACON = value; }
+        private DirtyValue<string> _logCoBorrowerExperianFICO;
+        public string LogCoBorrowerExperianFICO { get => _logCoBorrowerExperianFICO; set => _logCoBorrowerExperianFICO = value; }
+        private DirtyValue<decimal?> _logCoBorrowerIncomeAmount;
+        public decimal? LogCoBorrowerIncomeAmount { get => _logCoBorrowerIncomeAmount; set => _logCoBorrowerIncomeAmount = value; }
+        private DirtyValue<string> _logCoBorrowerIncomeName;
+        public string LogCoBorrowerIncomeName { get => _logCoBorrowerIncomeName; set => _logCoBorrowerIncomeName = value; }
+        private DirtyValue<string> _logCoBorrowerIncomeType;
+        public string LogCoBorrowerIncomeType { get => _logCoBorrowerIncomeType; set => _logCoBorrowerIncomeType = value; }
+        private DirtyValue<string> _logCoBorrowerInstitutionName;
+        public string LogCoBorrowerInstitutionName { get => _logCoBorrowerInstitutionName; set => _logCoBorrowerInstitutionName = value; }
+        private DirtyValue<string> _logCoborrowerName;
+        public string LogCoborrowerName { get => _logCoborrowerName; set => _logCoborrowerName = value; }
+        private DirtyValue<string> _logCoBorrowerScoreName;
+        public string LogCoBorrowerScoreName { get => _logCoBorrowerScoreName; set => _logCoBorrowerScoreName = value; }
+        private DirtyValue<string> _logCoBorrowerTransUnionEmpirica;
+        public string LogCoBorrowerTransUnionEmpirica { get => _logCoBorrowerTransUnionEmpirica; set => _logCoBorrowerTransUnionEmpirica = value; }
+        private DirtyValue<string> _logCode1;
+        public string LogCode1 { get => _logCode1; set => _logCode1 = value; }
+        private DirtyValue<string> _logCode2;
+        public string LogCode2 { get => _logCode2; set => _logCode2 = value; }
+        private DirtyValue<string> _logCodeDescription1;
+        public string LogCodeDescription1 { get => _logCodeDescription1; set => _logCodeDescription1 = value; }
+        private DirtyValue<string> _logCodeDescription2;
+        public string LogCodeDescription2 { get => _logCodeDescription2; set => _logCodeDescription2 = value; }
+        private DirtyValue<string> _logCommunityLending;
+        public string LogCommunityLending { get => _logCommunityLending; set => _logCommunityLending = value; }
+        private DirtyValue<DateTime?> _logCreatedOn;
+        public DateTime? LogCreatedOn { get => _logCreatedOn; set => _logCreatedOn = value; }
+        private DirtyValue<string> _logCreditAgency1;
+        public string LogCreditAgency1 { get => _logCreditAgency1; set => _logCreditAgency1 = value; }
+        private DirtyValue<string> _logCreditAgency2;
+        public string LogCreditAgency2 { get => _logCreditAgency2; set => _logCreditAgency2 = value; }
+        private DirtyValue<DateTime?> _logCreditReportDate1;
+        public DateTime? LogCreditReportDate1 { get => _logCreditReportDate1; set => _logCreditReportDate1 = value; }
+        private DirtyValue<DateTime?> _logCreditReportDate2;
+        public DateTime? LogCreditReportDate2 { get => _logCreditReportDate2; set => _logCreditReportDate2 = value; }
+        private DirtyValue<string> _logCreditReportID1;
+        public string LogCreditReportID1 { get => _logCreditReportID1; set => _logCreditReportID1 = value; }
+        private DirtyValue<string> _logCreditReportID2;
+        public string LogCreditReportID2 { get => _logCreditReportID2; set => _logCreditReportID2 = value; }
+        private DirtyValue<StringEnumValue<AmortizationType>> _logCuredAmortizationType;
+        public StringEnumValue<AmortizationType> LogCuredAmortizationType { get => _logCuredAmortizationType; set => _logCuredAmortizationType = value; }
+        private DirtyValue<int?> _logCuredAppraisedValue;
+        public int? LogCuredAppraisedValue { get => _logCuredAppraisedValue; set => _logCuredAppraisedValue = value; }
+        private DirtyValue<decimal?> _logCuredCLTV;
+        public decimal? LogCuredCLTV { get => _logCuredCLTV; set => _logCuredCLTV = value; }
+        private DirtyValue<decimal?> _logCuredHousingExpenseRatio;
+        public decimal? LogCuredHousingExpenseRatio { get => _logCuredHousingExpenseRatio; set => _logCuredHousingExpenseRatio = value; }
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _logCuredLoanPurpose;
+        public StringEnumValue<LoanPurposeType> LogCuredLoanPurpose { get => _logCuredLoanPurpose; set => _logCuredLoanPurpose = value; }
+        private DirtyValue<int?> _logCuredLoanTerm;
+        public int? LogCuredLoanTerm { get => _logCuredLoanTerm; set => _logCuredLoanTerm = value; }
+        private DirtyValue<StringEnumValue<LoanType>> _logCuredLoanType;
+        public StringEnumValue<LoanType> LogCuredLoanType { get => _logCuredLoanType; set => _logCuredLoanType = value; }
+        private DirtyValue<decimal?> _logCuredLTV;
+        public decimal? LogCuredLTV { get => _logCuredLTV; set => _logCuredLTV = value; }
+        private DirtyValue<decimal?> _logCuredNoteRate;
+        public decimal? LogCuredNoteRate { get => _logCuredNoteRate; set => _logCuredNoteRate = value; }
+        private DirtyValue<decimal?> _logCuredProposedTotalHousingPayment;
+        public decimal? LogCuredProposedTotalHousingPayment { get => _logCuredProposedTotalHousingPayment; set => _logCuredProposedTotalHousingPayment = value; }
+        private DirtyValue<StringEnumValue<RefinancePurpose>> _logCuredRefinancePurpose;
+        public StringEnumValue<RefinancePurpose> LogCuredRefinancePurpose { get => _logCuredRefinancePurpose; set => _logCuredRefinancePurpose = value; }
+        private DirtyValue<decimal?> _logCuredTotalExpenseRatio;
+        public decimal? LogCuredTotalExpenseRatio { get => _logCuredTotalExpenseRatio; set => _logCuredTotalExpenseRatio = value; }
+        private DirtyValue<decimal?> _logCuredTotalLoanAmount;
+        public decimal? LogCuredTotalLoanAmount { get => _logCuredTotalLoanAmount; set => _logCuredTotalLoanAmount = value; }
+        private DirtyValue<decimal?> _logCuredTotalMonthlyIncome;
+        public decimal? LogCuredTotalMonthlyIncome { get => _logCuredTotalMonthlyIncome; set => _logCuredTotalMonthlyIncome = value; }
+        private DirtyValue<string> _logDateTimeAssessed;
+        public string LogDateTimeAssessed { get => _logDateTimeAssessed; set => _logDateTimeAssessed = value; }
+        private DirtyValue<string> _logDateTimeRequested;
+        public string LogDateTimeRequested { get => _logDateTimeRequested; set => _logDateTimeRequested = value; }
+        private DirtyValue<decimal?> _logDebtRatio;
+        public decimal? LogDebtRatio { get => _logDebtRatio; set => _logDebtRatio = value; }
+        private DirtyValue<string> _logDocumentationLevel;
+        public string LogDocumentationLevel { get => _logDocumentationLevel; set => _logDocumentationLevel = value; }
+        private DirtyValue<string> _logDUCaseIDorLPAUSKey;
+        public string LogDUCaseIDorLPAUSKey { get => _logDUCaseIDorLPAUSKey; set => _logDUCaseIDorLPAUSKey = value; }
+        private DirtyValue<StringEnumValue<PropertyType>> _logDUPropertyType;
+        public StringEnumValue<PropertyType> LogDUPropertyType { get => _logDUPropertyType; set => _logDUPropertyType = value; }
+        private DirtyValue<string> _logeFolderGUID;
+        public string LogeFolderGUID { get => _logeFolderGUID; set => _logeFolderGUID = value; }
+        private DirtyValue<decimal?> _logExcessAvailableAssetsNoVerified;
+        public decimal? LogExcessAvailableAssetsNoVerified { get => _logExcessAvailableAssetsNoVerified; set => _logExcessAvailableAssetsNoVerified = value; }
+        private DirtyValue<decimal?> _logFinancedMIAmount;
+        public decimal? LogFinancedMIAmount { get => _logFinancedMIAmount; set => _logFinancedMIAmount = value; }
+        private DirtyValue<decimal?> _logFirstPandI;
+        public decimal? LogFirstPandI { get => _logFirstPandI; set => _logFirstPandI = value; }
+        private DirtyValue<DateTime?> _logFirstSubmissionDate;
+        public DateTime? LogFirstSubmissionDate { get => _logFirstSubmissionDate; set => _logFirstSubmissionDate = value; }
+        private DirtyValue<string> _logFirstSubmissionTime;
+        public string LogFirstSubmissionTime { get => _logFirstSubmissionTime; set => _logFirstSubmissionTime = value; }
+        private DirtyValue<string> _logFreddieDocClass;
+        public string LogFreddieDocClass { get => _logFreddieDocClass; set => _logFreddieDocClass = value; }
+        private DirtyValue<decimal?> _logFundsRequiredClose;
+        public decimal? LogFundsRequiredClose { get => _logFundsRequiredClose; set => _logFundsRequiredClose = value; }
+        private DirtyValue<string> _logGUID;
+        public string LogGUID { get => _logGUID; set => _logGUID = value; }
+        private DirtyValue<decimal?> _logHLCTV;
+        public decimal? LogHLCTV { get => _logHLCTV; set => _logHLCTV = value; }
+        private DirtyValue<decimal?> _logHousingExpense;
+        public decimal? LogHousingExpense { get => _logHousingExpense; set => _logHousingExpense = value; }
+        private DirtyValue<decimal?> _logHousingExpenseRatio;
+        public decimal? LogHousingExpenseRatio { get => _logHousingExpenseRatio; set => _logHousingExpenseRatio = value; }
+        private DirtyValue<decimal?> _logHousingRatio;
+        public decimal? LogHousingRatio { get => _logHousingRatio; set => _logHousingRatio = value; }
+        private DirtyValue<decimal?> _logHTLTV;
+        public decimal? LogHTLTV { get => _logHTLTV; set => _logHTLTV = value; }
+        private DirtyValue<string> _logIncludingLess10Mos;
+        public string LogIncludingLess10Mos { get => _logIncludingLess10Mos; set => _logIncludingLess10Mos = value; }
+        private DirtyValue<decimal?> _logIncomeAssetBase;
+        public decimal? LogIncomeAssetBase { get => _logIncomeAssetBase; set => _logIncomeAssetBase = value; }
+        private DirtyValue<decimal?> _logIncomeAssetBonus;
+        public decimal? LogIncomeAssetBonus { get => _logIncomeAssetBonus; set => _logIncomeAssetBonus = value; }
+        private DirtyValue<decimal?> _logIncomeAssetCommission;
+        public decimal? LogIncomeAssetCommission { get => _logIncomeAssetCommission; set => _logIncomeAssetCommission = value; }
+        private DirtyValue<decimal?> _logIncomeAssetOther;
+        public decimal? LogIncomeAssetOther { get => _logIncomeAssetOther; set => _logIncomeAssetOther = value; }
+        private DirtyValue<decimal?> _logIncomeAssetOvertime;
+        public decimal? LogIncomeAssetOvertime { get => _logIncomeAssetOvertime; set => _logIncomeAssetOvertime = value; }
+        private DirtyValue<decimal?> _logIncomeAssetPosCashFlow;
+        public decimal? LogIncomeAssetPosCashFlow { get => _logIncomeAssetPosCashFlow; set => _logIncomeAssetPosCashFlow = value; }
+        private DirtyValue<decimal?> _logIncomeAssetPositiveNetRental;
+        public decimal? LogIncomeAssetPositiveNetRental { get => _logIncomeAssetPositiveNetRental; set => _logIncomeAssetPositiveNetRental = value; }
+        private DirtyValue<string> _logIndicatorScore;
+        public string LogIndicatorScore { get => _logIndicatorScore; set => _logIndicatorScore = value; }
+        private DirtyValue<string> _logIntendedUseofProperty;
+        public string LogIntendedUseofProperty { get => _logIntendedUseofProperty; set => _logIntendedUseofProperty = value; }
+        private DirtyValue<string> _logLCLAEvaluatedServiceConclusion1;
+        public string LogLCLAEvaluatedServiceConclusion1 { get => _logLCLAEvaluatedServiceConclusion1; set => _logLCLAEvaluatedServiceConclusion1 = value; }
+        private DirtyValue<string> _logLCLAEvaluatedServiceConclusion2;
+        public string LogLCLAEvaluatedServiceConclusion2 { get => _logLCLAEvaluatedServiceConclusion2; set => _logLCLAEvaluatedServiceConclusion2 = value; }
+        private DirtyValue<string> _logLCLAEvaluatedServiceConclusion3;
+        public string LogLCLAEvaluatedServiceConclusion3 { get => _logLCLAEvaluatedServiceConclusion3; set => _logLCLAEvaluatedServiceConclusion3 = value; }
+        private DirtyValue<string> _logLCLAEvaluatedServiceConclusion4;
+        public string LogLCLAEvaluatedServiceConclusion4 { get => _logLCLAEvaluatedServiceConclusion4; set => _logLCLAEvaluatedServiceConclusion4 = value; }
+        private DirtyValue<StringEnumValue<LogLCLAEvaluatedServiceType1>> _logLCLAEvaluatedServiceType1;
+        public StringEnumValue<LogLCLAEvaluatedServiceType1> LogLCLAEvaluatedServiceType1 { get => _logLCLAEvaluatedServiceType1; set => _logLCLAEvaluatedServiceType1 = value; }
+        private DirtyValue<StringEnumValue<LogLCLAEvaluatedServiceType2>> _logLCLAEvaluatedServiceType2;
+        public StringEnumValue<LogLCLAEvaluatedServiceType2> LogLCLAEvaluatedServiceType2 { get => _logLCLAEvaluatedServiceType2; set => _logLCLAEvaluatedServiceType2 = value; }
+        private DirtyValue<StringEnumValue<LogLCLAEvaluatedServiceType3>> _logLCLAEvaluatedServiceType3;
+        public StringEnumValue<LogLCLAEvaluatedServiceType3> LogLCLAEvaluatedServiceType3 { get => _logLCLAEvaluatedServiceType3; set => _logLCLAEvaluatedServiceType3 = value; }
+        private DirtyValue<string> _logLCLAEvaluatedServiceType4;
+        public string LogLCLAEvaluatedServiceType4 { get => _logLCLAEvaluatedServiceType4; set => _logLCLAEvaluatedServiceType4 = value; }
+        private DirtyValue<string> _logLenderLoan;
+        public string LogLenderLoan { get => _logLenderLoan; set => _logLenderLoan = value; }
+        private DirtyValue<StringEnumValue<LienType>> _logLienType;
+        public StringEnumValue<LienType> LogLienType { get => _logLienType; set => _logLienType = value; }
+        private DirtyValue<decimal?> _logLoanAmount;
+        public decimal? LogLoanAmount { get => _logLoanAmount; set => _logLoanAmount = value; }
+        private DirtyValue<string> _logLoanApplicationID;
+        public string LogLoanApplicationID { get => _logLoanApplicationID; set => _logLoanApplicationID = value; }
+        private DirtyValue<string> _logLoanProcessingStage;
+        public string LogLoanProcessingStage { get => _logLoanProcessingStage; set => _logLoanProcessingStage = value; }
+        private DirtyValue<string> _logLoanProspectorID;
+        public string LogLoanProspectorID { get => _logLoanProspectorID; set => _logLoanProspectorID = value; }
+        private DirtyValue<StringEnumValue<LoanPurposeType>> _logLoanPurpose;
+        public StringEnumValue<LoanPurposeType> LogLoanPurpose { get => _logLoanPurpose; set => _logLoanPurpose = value; }
+        private DirtyValue<int?> _logLoanTerm;
+        public int? LogLoanTerm { get => _logLoanTerm; set => _logLoanTerm = value; }
+        private DirtyValue<StringEnumValue<LoanType>> _logLoanType;
+        public StringEnumValue<LoanType> LogLoanType { get => _logLoanType; set => _logLoanType = value; }
+        private DirtyValue<DateTime?> _logLPAssmtExpDate;
+        public DateTime? LogLPAssmtExpDate { get => _logLPAssmtExpDate; set => _logLPAssmtExpDate = value; }
+        private DirtyValue<StringEnumValue<OtherPropertyType>> _logLPPropertyType;
+        public StringEnumValue<OtherPropertyType> LogLPPropertyType { get => _logLPPropertyType; set => _logLPPropertyType = value; }
+        private DirtyValue<string> _logLPVersion;
+        public string LogLPVersion { get => _logLPVersion; set => _logLPVersion = value; }
+        private DirtyValue<string> _logLQACollateralRepWarrantyServiceConclusion;
+        public string LogLQACollateralRepWarrantyServiceConclusion { get => _logLQACollateralRepWarrantyServiceConclusion; set => _logLQACollateralRepWarrantyServiceConclusion = value; }
+        private DirtyValue<string> _logLQACreditRiskAssessmentConclusion;
+        public string LogLQACreditRiskAssessmentConclusion { get => _logLQACreditRiskAssessmentConclusion; set => _logLQACreditRiskAssessmentConclusion = value; }
+        private DirtyValue<string> _logLQADataCompareFieldConclusion;
+        public string LogLQADataCompareFieldConclusion { get => _logLQADataCompareFieldConclusion; set => _logLQADataCompareFieldConclusion = value; }
+        private DirtyValue<string> _logLQADataCompareFieldName;
+        public string LogLQADataCompareFieldName { get => _logLQADataCompareFieldName; set => _logLQADataCompareFieldName = value; }
+        private DirtyValue<string> _logLQADataCompareResult;
+        public string LogLQADataCompareResult { get => _logLQADataCompareResult; set => _logLQADataCompareResult = value; }
+        private DirtyValue<string> _logLQALPKey;
+        public string LogLQALPKey { get => _logLQALPKey; set => _logLQALPKey = value; }
+        private DirtyValue<string> _logLQAPurchaseEligibilityResult;
+        public string LogLQAPurchaseEligibilityResult { get => _logLQAPurchaseEligibilityResult; set => _logLQAPurchaseEligibilityResult = value; }
+        private DirtyValue<string> _logLQARiskAssessmentKey;
+        public string LogLQARiskAssessmentKey { get => _logLQARiskAssessmentKey; set => _logLQARiskAssessmentKey = value; }
+        private DirtyValue<DateTime?> _logLQASubmissionDateTime;
+        public DateTime? LogLQASubmissionDateTime { get => _logLQASubmissionDateTime; set => _logLQASubmissionDateTime = value; }
+        private DirtyValue<decimal?> _logLTV;
+        public decimal? LogLTV { get => _logLTV; set => _logLTV = value; }
+        private DirtyValue<decimal?> _logMaxMortgageLimit;
+        public decimal? LogMaxMortgageLimit { get => _logMaxMortgageLimit; set => _logMaxMortgageLimit = value; }
+        private DirtyValue<string> _logMIDecision;
+        public string LogMIDecision { get => _logMIDecision; set => _logMIDecision = value; }
+        private DirtyValue<string> _logMortgageType;
+        public string LogMortgageType { get => _logMortgageType; set => _logMortgageType = value; }
+        private DirtyValue<string> _logNegAmortizationType;
+        public string LogNegAmortizationType { get => _logNegAmortizationType; set => _logNegAmortizationType = value; }
+        private DirtyValue<decimal?> _logNegativeNetRental;
+        public decimal? LogNegativeNetRental { get => _logNegativeNetRental; set => _logNegativeNetRental = value; }
+        private DirtyValue<decimal?> _logNetCashBack;
+        public decimal? LogNetCashBack { get => _logNetCashBack; set => _logNetCashBack = value; }
+        private DirtyValue<string> _logNewConstruction;
+        public string LogNewConstruction { get => _logNewConstruction; set => _logNewConstruction = value; }
+        private DirtyValue<decimal?> _logNoteRate;
+        public decimal? LogNoteRate { get => _logNoteRate; set => _logNoteRate = value; }
+        private DirtyValue<string> _logNOTPNumber;
+        public string LogNOTPNumber { get => _logNOTPNumber; set => _logNOTPNumber = value; }
+        private DirtyValue<int?> _logNoUnits;
+        public int? LogNoUnits { get => _logNoUnits; set => _logNoUnits = value; }
+        private DirtyValue<string> _logNumberOfSubmissions;
+        public string LogNumberOfSubmissions { get => _logNumberOfSubmissions; set => _logNumberOfSubmissions = value; }
+        private DirtyValue<string> _logOccupancyStatus;
+        public string LogOccupancyStatus { get => _logOccupancyStatus; set => _logOccupancyStatus = value; }
+        private DirtyValue<decimal?> _logOccupantDebtRatio;
+        public decimal? LogOccupantDebtRatio { get => _logOccupantDebtRatio; set => _logOccupantDebtRatio = value; }
+        private DirtyValue<decimal?> _logOccupantHousingRatio;
+        public decimal? LogOccupantHousingRatio { get => _logOccupantHousingRatio; set => _logOccupantHousingRatio = value; }
+        private DirtyValue<string> _logOfferingIdentifier;
+        public string LogOfferingIdentifier { get => _logOfferingIdentifier; set => _logOfferingIdentifier = value; }
+        private DirtyValue<string> _logOriginatingCompany;
+        public string LogOriginatingCompany { get => _logOriginatingCompany; set => _logOriginatingCompany = value; }
+        private DirtyValue<decimal?> _logOwnerExistingMtg;
+        public decimal? LogOwnerExistingMtg { get => _logOwnerExistingMtg; set => _logOwnerExistingMtg = value; }
+        private DirtyValue<decimal?> _logPandI;
+        public decimal? LogPandI { get => _logPandI; set => _logPandI = value; }
+        private DirtyValue<int?> _logPaymentFrequency;
+        public int? LogPaymentFrequency { get => _logPaymentFrequency; set => _logPaymentFrequency = value; }
+        private DirtyValue<string> _logPresentAddress;
+        public string LogPresentAddress { get => _logPresentAddress; set => _logPresentAddress = value; }
+        private DirtyValue<string> _logPresentAddressCity;
+        public string LogPresentAddressCity { get => _logPresentAddressCity; set => _logPresentAddressCity = value; }
+        private DirtyValue<string> _logPresentAddressState;
+        public string LogPresentAddressState { get => _logPresentAddressState; set => _logPresentAddressState = value; }
+        private DirtyValue<string> _logPresentAddressZipCode;
+        public string LogPresentAddressZipCode { get => _logPresentAddressZipCode; set => _logPresentAddressZipCode = value; }
+        private DirtyValue<decimal?> _logPresentHousingExpense;
+        public decimal? LogPresentHousingExpense { get => _logPresentHousingExpense; set => _logPresentHousingExpense = value; }
+        private DirtyValue<decimal?> _logPresentPrincipalHousingPayment;
+        public decimal? LogPresentPrincipalHousingPayment { get => _logPresentPrincipalHousingPayment; set => _logPresentPrincipalHousingPayment = value; }
+        private DirtyValue<string> _logPropertyAddress;
+        public string LogPropertyAddress { get => _logPropertyAddress; set => _logPropertyAddress = value; }
+        private DirtyValue<string> _logPropertyCity;
+        public string LogPropertyCity { get => _logPropertyCity; set => _logPropertyCity = value; }
+        private DirtyValue<string> _logPropertyState;
+        public string LogPropertyState { get => _logPropertyState; set => _logPropertyState = value; }
+        private DirtyValue<string> _logPropertyZipcode;
+        public string LogPropertyZipcode { get => _logPropertyZipcode; set => _logPropertyZipcode = value; }
+        private DirtyValue<decimal?> _logProposedHazardInsurance;
+        public decimal? LogProposedHazardInsurance { get => _logProposedHazardInsurance; set => _logProposedHazardInsurance = value; }
+        private DirtyValue<decimal?> _logProposedHOAFees;
+        public decimal? LogProposedHOAFees { get => _logProposedHOAFees; set => _logProposedHOAFees = value; }
+        private DirtyValue<decimal?> _logProposedHousingPITI;
+        public decimal? LogProposedHousingPITI { get => _logProposedHousingPITI; set => _logProposedHousingPITI = value; }
+        private DirtyValue<decimal?> _logProposedMortgageInsurance;
+        public decimal? LogProposedMortgageInsurance { get => _logProposedMortgageInsurance; set => _logProposedMortgageInsurance = value; }
+        private DirtyValue<decimal?> _logProposedOtherPayment;
+        public decimal? LogProposedOtherPayment { get => _logProposedOtherPayment; set => _logProposedOtherPayment = value; }
+        private DirtyValue<decimal?> _logProposedTaxes;
+        public decimal? LogProposedTaxes { get => _logProposedTaxes; set => _logProposedTaxes = value; }
+        private DirtyValue<decimal?> _logProposedTotalHousingPayment;
+        public decimal? LogProposedTotalHousingPayment { get => _logProposedTotalHousingPayment; set => _logProposedTotalHousingPayment = value; }
+        private DirtyValue<decimal?> _logProposedTotalMonthlyDebt;
+        public decimal? LogProposedTotalMonthlyDebt { get => _logProposedTotalMonthlyDebt; set => _logProposedTotalMonthlyDebt = value; }
+        private DirtyValue<string> _logPurchaseEligibility;
+        public string LogPurchaseEligibility { get => _logPurchaseEligibility; set => _logPurchaseEligibility = value; }
+        private DirtyValue<decimal?> _logQualifyingRate;
+        public decimal? LogQualifyingRate { get => _logQualifyingRate; set => _logQualifyingRate = value; }
+        private DirtyValue<string> _logRecordType;
+        public string LogRecordType { get => _logRecordType; set => _logRecordType = value; }
+        private DirtyValue<StringEnumValue<RefinancePurpose>> _logRefinancePurpose;
+        public StringEnumValue<RefinancePurpose> LogRefinancePurpose { get => _logRefinancePurpose; set => _logRefinancePurpose = value; }
+        private DirtyValue<decimal?> _logReserves;
+        public decimal? LogReserves { get => _logReserves; set => _logReserves = value; }
+        private DirtyValue<decimal?> _logReservesRequiredVerified;
+        public decimal? LogReservesRequiredVerified { get => _logReservesRequiredVerified; set => _logReservesRequiredVerified = value; }
+        private DirtyValue<string> _logRiskClass;
+        public string LogRiskClass { get => _logRiskClass; set => _logRiskClass = value; }
+        private DirtyValue<string> _logSalesConcessions;
+        public string LogSalesConcessions { get => _logSalesConcessions; set => _logSalesConcessions = value; }
+        private DirtyValue<decimal?> _logSalesPrice;
+        public decimal? LogSalesPrice { get => _logSalesPrice; set => _logSalesPrice = value; }
+        private DirtyValue<decimal?> _logSecondPandI;
+        public decimal? LogSecondPandI { get => _logSecondPandI; set => _logSecondPandI = value; }
+        private DirtyValue<string> _logSelectedBorrower;
+        public string LogSelectedBorrower { get => _logSelectedBorrower; set => _logSelectedBorrower = value; }
+        private DirtyValue<string> _logSelectedRepository;
+        public string LogSelectedRepository { get => _logSelectedRepository; set => _logSelectedRepository = value; }
+        private DirtyValue<string> _logSellerNumber;
+        public string LogSellerNumber { get => _logSellerNumber; set => _logSellerNumber = value; }
+        private DirtyValue<decimal?> _logSubjNegCashFlow;
+        public decimal? LogSubjNegCashFlow { get => _logSubjNegCashFlow; set => _logSubjNegCashFlow = value; }
+        private DirtyValue<DateTime?> _logSubmissionDate;
+        public DateTime? LogSubmissionDate { get => _logSubmissionDate; set => _logSubmissionDate = value; }
+        private DirtyValue<string> _logSubmissionNumber;
+        public string LogSubmissionNumber { get => _logSubmissionNumber; set => _logSubmissionNumber = value; }
+        private DirtyValue<string> _logSubmissionTime;
+        public string LogSubmissionTime { get => _logSubmissionTime; set => _logSubmissionTime = value; }
+        private DirtyValue<string> _logSubmittedBy;
+        public string LogSubmittedBy { get => _logSubmittedBy; set => _logSubmittedBy = value; }
+        private DirtyValue<string> _logSubmittingCompany;
+        public string LogSubmittingCompany { get => _logSubmittingCompany; set => _logSubmittingCompany = value; }
+        private DirtyValue<string> _logTemporarySubsidyBuydown;
+        public string LogTemporarySubsidyBuydown { get => _logTemporarySubsidyBuydown; set => _logTemporarySubsidyBuydown = value; }
+        private DirtyValue<decimal?> _logTLTV;
+        public decimal? LogTLTV { get => _logTLTV; set => _logTLTV = value; }
+        private DirtyValue<decimal?> _logTotalAsset;
+        public decimal? LogTotalAsset { get => _logTotalAsset; set => _logTotalAsset = value; }
+        private DirtyValue<decimal?> _logTotalExpense;
+        public decimal? LogTotalExpense { get => _logTotalExpense; set => _logTotalExpense = value; }
+        private DirtyValue<decimal?> _logTotalExpensePmt;
+        public decimal? LogTotalExpensePmt { get => _logTotalExpensePmt; set => _logTotalExpensePmt = value; }
+        private DirtyValue<decimal?> _logTotalExpenseRatio;
+        public decimal? LogTotalExpenseRatio { get => _logTotalExpenseRatio; set => _logTotalExpenseRatio = value; }
+        private DirtyValue<decimal?> _logTotalFundsVerified;
+        public decimal? LogTotalFundsVerified { get => _logTotalFundsVerified; set => _logTotalFundsVerified = value; }
+        private DirtyValue<decimal?> _logTotalLoanAmount;
+        public decimal? LogTotalLoanAmount { get => _logTotalLoanAmount; set => _logTotalLoanAmount = value; }
+        private DirtyValue<decimal?> _logTotalMonthlyIncome;
+        public decimal? LogTotalMonthlyIncome { get => _logTotalMonthlyIncome; set => _logTotalMonthlyIncome = value; }
+        private DirtyValue<string> _logTPONumber;
+        public string LogTPONumber { get => _logTPONumber; set => _logTPONumber = value; }
+        private DirtyValue<string> _logTransactionID;
+        public string LogTransactionID { get => _logTransactionID; set => _logTransactionID = value; }
+        private DirtyValue<string> _logUnderwritingRiskAssessOther;
+        public string LogUnderwritingRiskAssessOther { get => _logUnderwritingRiskAssessOther; set => _logUnderwritingRiskAssessOther = value; }
+        private DirtyValue<StringEnumValue<RiskAssessmentType>> _logUnderwritingRiskAssessType;
+        public StringEnumValue<RiskAssessmentType> LogUnderwritingRiskAssessType { get => _logUnderwritingRiskAssessType; set => _logUnderwritingRiskAssessType = value; }
+        private DirtyValue<string> _logWithUndisclosedDebt;
+        public string LogWithUndisclosedDebt { get => _logWithUndisclosedDebt; set => _logWithUndisclosedDebt = value; }
         internal override bool DirtyInternal
         {
             get
@@ -446,216 +446,216 @@ namespace EncompassRest.Loans
                     || _id.Dirty
                     || _isEmpty.Dirty
                     || _isHistory.Dirty
-                    || _log_AcceptPlusEligible.Dirty
-                    || _log_AffordableProductType.Dirty
-                    || _log_AllOtherPayments.Dirty
-                    || _log_AmortizationMonths.Dirty
-                    || _log_AmortizationType.Dirty
-                    || _log_AmtSubordinateFin.Dirty
-                    || _log_AppraisalTypeMAF.Dirty
-                    || _log_AppraisedValue.Dirty
-                    || _log_ARMQualifyingRate.Dirty
-                    || _log_AssessmentType.Dirty
-                    || _log_AUSRecommendation.Dirty
-                    || _log_AUSStatus.Dirty
-                    || _log_AUSTrackingType.Dirty
-                    || _log_AUSTransactionID.Dirty
-                    || _log_AUSVersion.Dirty
-                    || _log_Balloon.Dirty
-                    || _log_BalloonTerm.Dirty
-                    || _log_BorrowerAssetAmount.Dirty
-                    || _log_BorrowerAssetName.Dirty
-                    || _log_BorrowerAssetType.Dirty
-                    || _log_BorrowerCreditScore1.Dirty
-                    || _log_BorrowerCreditScore2.Dirty
-                    || _log_BorrowerCreditScore3.Dirty
-                    || _log_BorrowerEquifaxBEACON.Dirty
-                    || _log_BorrowerExperianFICO.Dirty
-                    || _log_BorrowerIncomeAmount.Dirty
-                    || _log_BorrowerIncomeName.Dirty
-                    || _log_BorrowerIncomeType.Dirty
-                    || _log_BorrowerInstitutionName.Dirty
-                    || _log_BorrowerName.Dirty
-                    || _log_BorrowerScoreName.Dirty
-                    || _log_BorrowerTransUnionEmpirica.Dirty
-                    || _log_BorrowerType1.Dirty
-                    || _log_BorrowerType2.Dirty
-                    || _log_BoughtDownRate.Dirty
-                    || _log_Buydown.Dirty
-                    || _log_CashBack.Dirty
-                    || _log_CashOutAmount.Dirty
-                    || _log_CLTV.Dirty
-                    || _log_CoBorrowerAssetAmount.Dirty
-                    || _log_CoBorrowerAssetName.Dirty
-                    || _log_CoBorrowerAssetType.Dirty
-                    || _log_CoBorrowerCreditScore1.Dirty
-                    || _log_CoBorrowerCreditScore2.Dirty
-                    || _log_CoBorrowerCreditScore3.Dirty
-                    || _log_CoBorrowerEquifaxBEACON.Dirty
-                    || _log_CoBorrowerExperianFICO.Dirty
-                    || _log_CoBorrowerIncomeAmount.Dirty
-                    || _log_CoBorrowerIncomeName.Dirty
-                    || _log_CoBorrowerIncomeType.Dirty
-                    || _log_CoBorrowerInstitutionName.Dirty
-                    || _log_CoborrowerName.Dirty
-                    || _log_CoBorrowerScoreName.Dirty
-                    || _log_CoBorrowerTransUnionEmpirica.Dirty
-                    || _log_Code1.Dirty
-                    || _log_Code2.Dirty
-                    || _log_CodeDescription1.Dirty
-                    || _log_CodeDescription2.Dirty
-                    || _log_CommunityLending.Dirty
-                    || _log_CreatedOn.Dirty
-                    || _log_CreditAgency1.Dirty
-                    || _log_CreditAgency2.Dirty
-                    || _log_CreditReportDate1.Dirty
-                    || _log_CreditReportDate2.Dirty
-                    || _log_CreditReportID1.Dirty
-                    || _log_CreditReportID2.Dirty
-                    || _log_CuredAmortizationType.Dirty
-                    || _log_CuredAppraisedValue.Dirty
-                    || _log_CuredCLTV.Dirty
-                    || _log_CuredHousingExpenseRatio.Dirty
-                    || _log_CuredLoanPurpose.Dirty
-                    || _log_CuredLoanTerm.Dirty
-                    || _log_CuredLoanType.Dirty
-                    || _log_CuredLTV.Dirty
-                    || _log_CuredNoteRate.Dirty
-                    || _log_CuredProposedTotalHousingPayment.Dirty
-                    || _log_CuredRefinancePurpose.Dirty
-                    || _log_CuredTotalExpenseRatio.Dirty
-                    || _log_CuredTotalLoanAmount.Dirty
-                    || _log_CuredTotalMonthlyIncome.Dirty
-                    || _log_DateTimeAssessed.Dirty
-                    || _log_DateTimeRequested.Dirty
-                    || _log_DebtRatio.Dirty
-                    || _log_DocumentationLevel.Dirty
-                    || _log_DUCaseIDorLPAUSKey.Dirty
-                    || _log_DUPropertyType.Dirty
-                    || _log_eFolderGUID.Dirty
-                    || _log_ExcessAvailableAssetsNoVerified.Dirty
-                    || _log_FinancedMIAmount.Dirty
-                    || _log_FirstPandI.Dirty
-                    || _log_FirstSubmissionDate.Dirty
-                    || _log_FirstSubmissionTime.Dirty
-                    || _log_FreddieDocClass.Dirty
-                    || _log_FundsRequiredClose.Dirty
-                    || _log_GUID.Dirty
-                    || _log_HLCTV.Dirty
-                    || _log_HousingExpense.Dirty
-                    || _log_HousingExpenseRatio.Dirty
-                    || _log_HousingRatio.Dirty
-                    || _log_HTLTV.Dirty
-                    || _log_IncludingLess10Mos.Dirty
-                    || _log_IncomeAssetBase.Dirty
-                    || _log_IncomeAssetBonus.Dirty
-                    || _log_IncomeAssetCommission.Dirty
-                    || _log_IncomeAssetOther.Dirty
-                    || _log_IncomeAssetOvertime.Dirty
-                    || _log_IncomeAssetPosCashFlow.Dirty
-                    || _log_IncomeAssetPositiveNetRental.Dirty
-                    || _log_IndicatorScore.Dirty
-                    || _log_IntendedUseofProperty.Dirty
-                    || _log_LCLAEvaluatedServiceConclusion1.Dirty
-                    || _log_LCLAEvaluatedServiceConclusion2.Dirty
-                    || _log_LCLAEvaluatedServiceConclusion3.Dirty
-                    || _log_LCLAEvaluatedServiceConclusion4.Dirty
-                    || _log_LCLAEvaluatedServiceType1.Dirty
-                    || _log_LCLAEvaluatedServiceType2.Dirty
-                    || _log_LCLAEvaluatedServiceType3.Dirty
-                    || _log_LCLAEvaluatedServiceType4.Dirty
-                    || _log_LenderLoan.Dirty
-                    || _log_LienType.Dirty
-                    || _log_LoanAmount.Dirty
-                    || _log_LoanApplicationID.Dirty
-                    || _log_LoanProcessingStage.Dirty
-                    || _log_LoanProspectorID.Dirty
-                    || _log_LoanPurpose.Dirty
-                    || _log_LoanTerm.Dirty
-                    || _log_LoanType.Dirty
-                    || _log_LPAssmtExpDate.Dirty
-                    || _log_LPPropertyType.Dirty
-                    || _log_LPVersion.Dirty
-                    || _log_LQACollateralRepWarrantyServiceConclusion.Dirty
-                    || _log_LQACreditRiskAssessmentConclusion.Dirty
-                    || _log_LQADataCompareFieldConclusion.Dirty
-                    || _log_LQADataCompareFieldName.Dirty
-                    || _log_LQADataCompareResult.Dirty
-                    || _log_LQALPKey.Dirty
-                    || _log_LQAPurchaseEligibilityResult.Dirty
-                    || _log_LQARiskAssessmentKey.Dirty
-                    || _log_LQASubmissionDateTime.Dirty
-                    || _log_LTV.Dirty
-                    || _log_MaxMortgageLimit.Dirty
-                    || _log_MIDecision.Dirty
-                    || _log_MortgageType.Dirty
-                    || _log_NegAmortizationType.Dirty
-                    || _log_NegativeNetRental.Dirty
-                    || _log_NetCashBack.Dirty
-                    || _log_NewConstruction.Dirty
-                    || _log_NoteRate.Dirty
-                    || _log_NOTPNumber.Dirty
-                    || _log_NoUnits.Dirty
-                    || _log_NumberOfSubmissions.Dirty
-                    || _log_OccupancyStatus.Dirty
-                    || _log_OccupantDebtRatio.Dirty
-                    || _log_OccupantHousingRatio.Dirty
-                    || _log_OfferingIdentifier.Dirty
-                    || _log_OriginatingCompany.Dirty
-                    || _log_OwnerExistingMtg.Dirty
-                    || _log_PandI.Dirty
-                    || _log_PaymentFrequency.Dirty
-                    || _log_PresentAddress.Dirty
-                    || _log_PresentAddressCity.Dirty
-                    || _log_PresentAddressState.Dirty
-                    || _log_PresentAddressZipCode.Dirty
-                    || _log_PresentHousingExpense.Dirty
-                    || _log_PresentPrincipalHousingPayment.Dirty
-                    || _log_PropertyAddress.Dirty
-                    || _log_PropertyCity.Dirty
-                    || _log_PropertyState.Dirty
-                    || _log_PropertyZipcode.Dirty
-                    || _log_ProposedHazardInsurance.Dirty
-                    || _log_ProposedHOAFees.Dirty
-                    || _log_ProposedHousingPITI.Dirty
-                    || _log_ProposedMortgageInsurance.Dirty
-                    || _log_ProposedOtherPayment.Dirty
-                    || _log_ProposedTaxes.Dirty
-                    || _log_ProposedTotalHousingPayment.Dirty
-                    || _log_ProposedTotalMonthlyDebt.Dirty
-                    || _log_PurchaseEligibility.Dirty
-                    || _log_QualifyingRate.Dirty
-                    || _log_RecordType.Dirty
-                    || _log_RefinancePurpose.Dirty
-                    || _log_Reserves.Dirty
-                    || _log_ReservesRequiredVerified.Dirty
-                    || _log_RiskClass.Dirty
-                    || _log_SalesConcessions.Dirty
-                    || _log_SalesPrice.Dirty
-                    || _log_SecondPandI.Dirty
-                    || _log_SelectedBorrower.Dirty
-                    || _log_SelectedRepository.Dirty
-                    || _log_SellerNumber.Dirty
-                    || _log_SubjNegCashFlow.Dirty
-                    || _log_SubmissionDate.Dirty
-                    || _log_SubmissionNumber.Dirty
-                    || _log_SubmissionTime.Dirty
-                    || _log_SubmittedBy.Dirty
-                    || _log_SubmittingCompany.Dirty
-                    || _log_TemporarySubsidyBuydown.Dirty
-                    || _log_TLTV.Dirty
-                    || _log_TotalAsset.Dirty
-                    || _log_TotalExpense.Dirty
-                    || _log_TotalExpensePmt.Dirty
-                    || _log_TotalExpenseRatio.Dirty
-                    || _log_TotalFundsVerified.Dirty
-                    || _log_TotalLoanAmount.Dirty
-                    || _log_TotalMonthlyIncome.Dirty
-                    || _log_TPONumber.Dirty
-                    || _log_TransactionID.Dirty
-                    || _log_UnderwritingRiskAssessOther.Dirty
-                    || _log_UnderwritingRiskAssessType.Dirty
-                    || _log_WithUndisclosedDebt.Dirty;
+                    || _logAcceptPlusEligible.Dirty
+                    || _logAffordableProductType.Dirty
+                    || _logAllOtherPayments.Dirty
+                    || _logAmortizationMonths.Dirty
+                    || _logAmortizationType.Dirty
+                    || _logAmtSubordinateFin.Dirty
+                    || _logAppraisalTypeMAF.Dirty
+                    || _logAppraisedValue.Dirty
+                    || _logARMQualifyingRate.Dirty
+                    || _logAssessmentType.Dirty
+                    || _logAUSRecommendation.Dirty
+                    || _logAUSStatus.Dirty
+                    || _logAUSTrackingType.Dirty
+                    || _logAUSTransactionID.Dirty
+                    || _logAUSVersion.Dirty
+                    || _logBalloon.Dirty
+                    || _logBalloonTerm.Dirty
+                    || _logBorrowerAssetAmount.Dirty
+                    || _logBorrowerAssetName.Dirty
+                    || _logBorrowerAssetType.Dirty
+                    || _logBorrowerCreditScore1.Dirty
+                    || _logBorrowerCreditScore2.Dirty
+                    || _logBorrowerCreditScore3.Dirty
+                    || _logBorrowerEquifaxBEACON.Dirty
+                    || _logBorrowerExperianFICO.Dirty
+                    || _logBorrowerIncomeAmount.Dirty
+                    || _logBorrowerIncomeName.Dirty
+                    || _logBorrowerIncomeType.Dirty
+                    || _logBorrowerInstitutionName.Dirty
+                    || _logBorrowerName.Dirty
+                    || _logBorrowerScoreName.Dirty
+                    || _logBorrowerTransUnionEmpirica.Dirty
+                    || _logBorrowerType1.Dirty
+                    || _logBorrowerType2.Dirty
+                    || _logBoughtDownRate.Dirty
+                    || _logBuydown.Dirty
+                    || _logCashBack.Dirty
+                    || _logCashOutAmount.Dirty
+                    || _logCLTV.Dirty
+                    || _logCoBorrowerAssetAmount.Dirty
+                    || _logCoBorrowerAssetName.Dirty
+                    || _logCoBorrowerAssetType.Dirty
+                    || _logCoBorrowerCreditScore1.Dirty
+                    || _logCoBorrowerCreditScore2.Dirty
+                    || _logCoBorrowerCreditScore3.Dirty
+                    || _logCoBorrowerEquifaxBEACON.Dirty
+                    || _logCoBorrowerExperianFICO.Dirty
+                    || _logCoBorrowerIncomeAmount.Dirty
+                    || _logCoBorrowerIncomeName.Dirty
+                    || _logCoBorrowerIncomeType.Dirty
+                    || _logCoBorrowerInstitutionName.Dirty
+                    || _logCoborrowerName.Dirty
+                    || _logCoBorrowerScoreName.Dirty
+                    || _logCoBorrowerTransUnionEmpirica.Dirty
+                    || _logCode1.Dirty
+                    || _logCode2.Dirty
+                    || _logCodeDescription1.Dirty
+                    || _logCodeDescription2.Dirty
+                    || _logCommunityLending.Dirty
+                    || _logCreatedOn.Dirty
+                    || _logCreditAgency1.Dirty
+                    || _logCreditAgency2.Dirty
+                    || _logCreditReportDate1.Dirty
+                    || _logCreditReportDate2.Dirty
+                    || _logCreditReportID1.Dirty
+                    || _logCreditReportID2.Dirty
+                    || _logCuredAmortizationType.Dirty
+                    || _logCuredAppraisedValue.Dirty
+                    || _logCuredCLTV.Dirty
+                    || _logCuredHousingExpenseRatio.Dirty
+                    || _logCuredLoanPurpose.Dirty
+                    || _logCuredLoanTerm.Dirty
+                    || _logCuredLoanType.Dirty
+                    || _logCuredLTV.Dirty
+                    || _logCuredNoteRate.Dirty
+                    || _logCuredProposedTotalHousingPayment.Dirty
+                    || _logCuredRefinancePurpose.Dirty
+                    || _logCuredTotalExpenseRatio.Dirty
+                    || _logCuredTotalLoanAmount.Dirty
+                    || _logCuredTotalMonthlyIncome.Dirty
+                    || _logDateTimeAssessed.Dirty
+                    || _logDateTimeRequested.Dirty
+                    || _logDebtRatio.Dirty
+                    || _logDocumentationLevel.Dirty
+                    || _logDUCaseIDorLPAUSKey.Dirty
+                    || _logDUPropertyType.Dirty
+                    || _logeFolderGUID.Dirty
+                    || _logExcessAvailableAssetsNoVerified.Dirty
+                    || _logFinancedMIAmount.Dirty
+                    || _logFirstPandI.Dirty
+                    || _logFirstSubmissionDate.Dirty
+                    || _logFirstSubmissionTime.Dirty
+                    || _logFreddieDocClass.Dirty
+                    || _logFundsRequiredClose.Dirty
+                    || _logGUID.Dirty
+                    || _logHLCTV.Dirty
+                    || _logHousingExpense.Dirty
+                    || _logHousingExpenseRatio.Dirty
+                    || _logHousingRatio.Dirty
+                    || _logHTLTV.Dirty
+                    || _logIncludingLess10Mos.Dirty
+                    || _logIncomeAssetBase.Dirty
+                    || _logIncomeAssetBonus.Dirty
+                    || _logIncomeAssetCommission.Dirty
+                    || _logIncomeAssetOther.Dirty
+                    || _logIncomeAssetOvertime.Dirty
+                    || _logIncomeAssetPosCashFlow.Dirty
+                    || _logIncomeAssetPositiveNetRental.Dirty
+                    || _logIndicatorScore.Dirty
+                    || _logIntendedUseofProperty.Dirty
+                    || _logLCLAEvaluatedServiceConclusion1.Dirty
+                    || _logLCLAEvaluatedServiceConclusion2.Dirty
+                    || _logLCLAEvaluatedServiceConclusion3.Dirty
+                    || _logLCLAEvaluatedServiceConclusion4.Dirty
+                    || _logLCLAEvaluatedServiceType1.Dirty
+                    || _logLCLAEvaluatedServiceType2.Dirty
+                    || _logLCLAEvaluatedServiceType3.Dirty
+                    || _logLCLAEvaluatedServiceType4.Dirty
+                    || _logLenderLoan.Dirty
+                    || _logLienType.Dirty
+                    || _logLoanAmount.Dirty
+                    || _logLoanApplicationID.Dirty
+                    || _logLoanProcessingStage.Dirty
+                    || _logLoanProspectorID.Dirty
+                    || _logLoanPurpose.Dirty
+                    || _logLoanTerm.Dirty
+                    || _logLoanType.Dirty
+                    || _logLPAssmtExpDate.Dirty
+                    || _logLPPropertyType.Dirty
+                    || _logLPVersion.Dirty
+                    || _logLQACollateralRepWarrantyServiceConclusion.Dirty
+                    || _logLQACreditRiskAssessmentConclusion.Dirty
+                    || _logLQADataCompareFieldConclusion.Dirty
+                    || _logLQADataCompareFieldName.Dirty
+                    || _logLQADataCompareResult.Dirty
+                    || _logLQALPKey.Dirty
+                    || _logLQAPurchaseEligibilityResult.Dirty
+                    || _logLQARiskAssessmentKey.Dirty
+                    || _logLQASubmissionDateTime.Dirty
+                    || _logLTV.Dirty
+                    || _logMaxMortgageLimit.Dirty
+                    || _logMIDecision.Dirty
+                    || _logMortgageType.Dirty
+                    || _logNegAmortizationType.Dirty
+                    || _logNegativeNetRental.Dirty
+                    || _logNetCashBack.Dirty
+                    || _logNewConstruction.Dirty
+                    || _logNoteRate.Dirty
+                    || _logNOTPNumber.Dirty
+                    || _logNoUnits.Dirty
+                    || _logNumberOfSubmissions.Dirty
+                    || _logOccupancyStatus.Dirty
+                    || _logOccupantDebtRatio.Dirty
+                    || _logOccupantHousingRatio.Dirty
+                    || _logOfferingIdentifier.Dirty
+                    || _logOriginatingCompany.Dirty
+                    || _logOwnerExistingMtg.Dirty
+                    || _logPandI.Dirty
+                    || _logPaymentFrequency.Dirty
+                    || _logPresentAddress.Dirty
+                    || _logPresentAddressCity.Dirty
+                    || _logPresentAddressState.Dirty
+                    || _logPresentAddressZipCode.Dirty
+                    || _logPresentHousingExpense.Dirty
+                    || _logPresentPrincipalHousingPayment.Dirty
+                    || _logPropertyAddress.Dirty
+                    || _logPropertyCity.Dirty
+                    || _logPropertyState.Dirty
+                    || _logPropertyZipcode.Dirty
+                    || _logProposedHazardInsurance.Dirty
+                    || _logProposedHOAFees.Dirty
+                    || _logProposedHousingPITI.Dirty
+                    || _logProposedMortgageInsurance.Dirty
+                    || _logProposedOtherPayment.Dirty
+                    || _logProposedTaxes.Dirty
+                    || _logProposedTotalHousingPayment.Dirty
+                    || _logProposedTotalMonthlyDebt.Dirty
+                    || _logPurchaseEligibility.Dirty
+                    || _logQualifyingRate.Dirty
+                    || _logRecordType.Dirty
+                    || _logRefinancePurpose.Dirty
+                    || _logReserves.Dirty
+                    || _logReservesRequiredVerified.Dirty
+                    || _logRiskClass.Dirty
+                    || _logSalesConcessions.Dirty
+                    || _logSalesPrice.Dirty
+                    || _logSecondPandI.Dirty
+                    || _logSelectedBorrower.Dirty
+                    || _logSelectedRepository.Dirty
+                    || _logSellerNumber.Dirty
+                    || _logSubjNegCashFlow.Dirty
+                    || _logSubmissionDate.Dirty
+                    || _logSubmissionNumber.Dirty
+                    || _logSubmissionTime.Dirty
+                    || _logSubmittedBy.Dirty
+                    || _logSubmittingCompany.Dirty
+                    || _logTemporarySubsidyBuydown.Dirty
+                    || _logTLTV.Dirty
+                    || _logTotalAsset.Dirty
+                    || _logTotalExpense.Dirty
+                    || _logTotalExpensePmt.Dirty
+                    || _logTotalExpenseRatio.Dirty
+                    || _logTotalFundsVerified.Dirty
+                    || _logTotalLoanAmount.Dirty
+                    || _logTotalMonthlyIncome.Dirty
+                    || _logTPONumber.Dirty
+                    || _logTransactionID.Dirty
+                    || _logUnderwritingRiskAssessOther.Dirty
+                    || _logUnderwritingRiskAssessType.Dirty
+                    || _logWithUndisclosedDebt.Dirty;
             }
             set
             {
@@ -664,216 +664,216 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _isEmpty.Dirty = value;
                 _isHistory.Dirty = value;
-                _log_AcceptPlusEligible.Dirty = value;
-                _log_AffordableProductType.Dirty = value;
-                _log_AllOtherPayments.Dirty = value;
-                _log_AmortizationMonths.Dirty = value;
-                _log_AmortizationType.Dirty = value;
-                _log_AmtSubordinateFin.Dirty = value;
-                _log_AppraisalTypeMAF.Dirty = value;
-                _log_AppraisedValue.Dirty = value;
-                _log_ARMQualifyingRate.Dirty = value;
-                _log_AssessmentType.Dirty = value;
-                _log_AUSRecommendation.Dirty = value;
-                _log_AUSStatus.Dirty = value;
-                _log_AUSTrackingType.Dirty = value;
-                _log_AUSTransactionID.Dirty = value;
-                _log_AUSVersion.Dirty = value;
-                _log_Balloon.Dirty = value;
-                _log_BalloonTerm.Dirty = value;
-                _log_BorrowerAssetAmount.Dirty = value;
-                _log_BorrowerAssetName.Dirty = value;
-                _log_BorrowerAssetType.Dirty = value;
-                _log_BorrowerCreditScore1.Dirty = value;
-                _log_BorrowerCreditScore2.Dirty = value;
-                _log_BorrowerCreditScore3.Dirty = value;
-                _log_BorrowerEquifaxBEACON.Dirty = value;
-                _log_BorrowerExperianFICO.Dirty = value;
-                _log_BorrowerIncomeAmount.Dirty = value;
-                _log_BorrowerIncomeName.Dirty = value;
-                _log_BorrowerIncomeType.Dirty = value;
-                _log_BorrowerInstitutionName.Dirty = value;
-                _log_BorrowerName.Dirty = value;
-                _log_BorrowerScoreName.Dirty = value;
-                _log_BorrowerTransUnionEmpirica.Dirty = value;
-                _log_BorrowerType1.Dirty = value;
-                _log_BorrowerType2.Dirty = value;
-                _log_BoughtDownRate.Dirty = value;
-                _log_Buydown.Dirty = value;
-                _log_CashBack.Dirty = value;
-                _log_CashOutAmount.Dirty = value;
-                _log_CLTV.Dirty = value;
-                _log_CoBorrowerAssetAmount.Dirty = value;
-                _log_CoBorrowerAssetName.Dirty = value;
-                _log_CoBorrowerAssetType.Dirty = value;
-                _log_CoBorrowerCreditScore1.Dirty = value;
-                _log_CoBorrowerCreditScore2.Dirty = value;
-                _log_CoBorrowerCreditScore3.Dirty = value;
-                _log_CoBorrowerEquifaxBEACON.Dirty = value;
-                _log_CoBorrowerExperianFICO.Dirty = value;
-                _log_CoBorrowerIncomeAmount.Dirty = value;
-                _log_CoBorrowerIncomeName.Dirty = value;
-                _log_CoBorrowerIncomeType.Dirty = value;
-                _log_CoBorrowerInstitutionName.Dirty = value;
-                _log_CoborrowerName.Dirty = value;
-                _log_CoBorrowerScoreName.Dirty = value;
-                _log_CoBorrowerTransUnionEmpirica.Dirty = value;
-                _log_Code1.Dirty = value;
-                _log_Code2.Dirty = value;
-                _log_CodeDescription1.Dirty = value;
-                _log_CodeDescription2.Dirty = value;
-                _log_CommunityLending.Dirty = value;
-                _log_CreatedOn.Dirty = value;
-                _log_CreditAgency1.Dirty = value;
-                _log_CreditAgency2.Dirty = value;
-                _log_CreditReportDate1.Dirty = value;
-                _log_CreditReportDate2.Dirty = value;
-                _log_CreditReportID1.Dirty = value;
-                _log_CreditReportID2.Dirty = value;
-                _log_CuredAmortizationType.Dirty = value;
-                _log_CuredAppraisedValue.Dirty = value;
-                _log_CuredCLTV.Dirty = value;
-                _log_CuredHousingExpenseRatio.Dirty = value;
-                _log_CuredLoanPurpose.Dirty = value;
-                _log_CuredLoanTerm.Dirty = value;
-                _log_CuredLoanType.Dirty = value;
-                _log_CuredLTV.Dirty = value;
-                _log_CuredNoteRate.Dirty = value;
-                _log_CuredProposedTotalHousingPayment.Dirty = value;
-                _log_CuredRefinancePurpose.Dirty = value;
-                _log_CuredTotalExpenseRatio.Dirty = value;
-                _log_CuredTotalLoanAmount.Dirty = value;
-                _log_CuredTotalMonthlyIncome.Dirty = value;
-                _log_DateTimeAssessed.Dirty = value;
-                _log_DateTimeRequested.Dirty = value;
-                _log_DebtRatio.Dirty = value;
-                _log_DocumentationLevel.Dirty = value;
-                _log_DUCaseIDorLPAUSKey.Dirty = value;
-                _log_DUPropertyType.Dirty = value;
-                _log_eFolderGUID.Dirty = value;
-                _log_ExcessAvailableAssetsNoVerified.Dirty = value;
-                _log_FinancedMIAmount.Dirty = value;
-                _log_FirstPandI.Dirty = value;
-                _log_FirstSubmissionDate.Dirty = value;
-                _log_FirstSubmissionTime.Dirty = value;
-                _log_FreddieDocClass.Dirty = value;
-                _log_FundsRequiredClose.Dirty = value;
-                _log_GUID.Dirty = value;
-                _log_HLCTV.Dirty = value;
-                _log_HousingExpense.Dirty = value;
-                _log_HousingExpenseRatio.Dirty = value;
-                _log_HousingRatio.Dirty = value;
-                _log_HTLTV.Dirty = value;
-                _log_IncludingLess10Mos.Dirty = value;
-                _log_IncomeAssetBase.Dirty = value;
-                _log_IncomeAssetBonus.Dirty = value;
-                _log_IncomeAssetCommission.Dirty = value;
-                _log_IncomeAssetOther.Dirty = value;
-                _log_IncomeAssetOvertime.Dirty = value;
-                _log_IncomeAssetPosCashFlow.Dirty = value;
-                _log_IncomeAssetPositiveNetRental.Dirty = value;
-                _log_IndicatorScore.Dirty = value;
-                _log_IntendedUseofProperty.Dirty = value;
-                _log_LCLAEvaluatedServiceConclusion1.Dirty = value;
-                _log_LCLAEvaluatedServiceConclusion2.Dirty = value;
-                _log_LCLAEvaluatedServiceConclusion3.Dirty = value;
-                _log_LCLAEvaluatedServiceConclusion4.Dirty = value;
-                _log_LCLAEvaluatedServiceType1.Dirty = value;
-                _log_LCLAEvaluatedServiceType2.Dirty = value;
-                _log_LCLAEvaluatedServiceType3.Dirty = value;
-                _log_LCLAEvaluatedServiceType4.Dirty = value;
-                _log_LenderLoan.Dirty = value;
-                _log_LienType.Dirty = value;
-                _log_LoanAmount.Dirty = value;
-                _log_LoanApplicationID.Dirty = value;
-                _log_LoanProcessingStage.Dirty = value;
-                _log_LoanProspectorID.Dirty = value;
-                _log_LoanPurpose.Dirty = value;
-                _log_LoanTerm.Dirty = value;
-                _log_LoanType.Dirty = value;
-                _log_LPAssmtExpDate.Dirty = value;
-                _log_LPPropertyType.Dirty = value;
-                _log_LPVersion.Dirty = value;
-                _log_LQACollateralRepWarrantyServiceConclusion.Dirty = value;
-                _log_LQACreditRiskAssessmentConclusion.Dirty = value;
-                _log_LQADataCompareFieldConclusion.Dirty = value;
-                _log_LQADataCompareFieldName.Dirty = value;
-                _log_LQADataCompareResult.Dirty = value;
-                _log_LQALPKey.Dirty = value;
-                _log_LQAPurchaseEligibilityResult.Dirty = value;
-                _log_LQARiskAssessmentKey.Dirty = value;
-                _log_LQASubmissionDateTime.Dirty = value;
-                _log_LTV.Dirty = value;
-                _log_MaxMortgageLimit.Dirty = value;
-                _log_MIDecision.Dirty = value;
-                _log_MortgageType.Dirty = value;
-                _log_NegAmortizationType.Dirty = value;
-                _log_NegativeNetRental.Dirty = value;
-                _log_NetCashBack.Dirty = value;
-                _log_NewConstruction.Dirty = value;
-                _log_NoteRate.Dirty = value;
-                _log_NOTPNumber.Dirty = value;
-                _log_NoUnits.Dirty = value;
-                _log_NumberOfSubmissions.Dirty = value;
-                _log_OccupancyStatus.Dirty = value;
-                _log_OccupantDebtRatio.Dirty = value;
-                _log_OccupantHousingRatio.Dirty = value;
-                _log_OfferingIdentifier.Dirty = value;
-                _log_OriginatingCompany.Dirty = value;
-                _log_OwnerExistingMtg.Dirty = value;
-                _log_PandI.Dirty = value;
-                _log_PaymentFrequency.Dirty = value;
-                _log_PresentAddress.Dirty = value;
-                _log_PresentAddressCity.Dirty = value;
-                _log_PresentAddressState.Dirty = value;
-                _log_PresentAddressZipCode.Dirty = value;
-                _log_PresentHousingExpense.Dirty = value;
-                _log_PresentPrincipalHousingPayment.Dirty = value;
-                _log_PropertyAddress.Dirty = value;
-                _log_PropertyCity.Dirty = value;
-                _log_PropertyState.Dirty = value;
-                _log_PropertyZipcode.Dirty = value;
-                _log_ProposedHazardInsurance.Dirty = value;
-                _log_ProposedHOAFees.Dirty = value;
-                _log_ProposedHousingPITI.Dirty = value;
-                _log_ProposedMortgageInsurance.Dirty = value;
-                _log_ProposedOtherPayment.Dirty = value;
-                _log_ProposedTaxes.Dirty = value;
-                _log_ProposedTotalHousingPayment.Dirty = value;
-                _log_ProposedTotalMonthlyDebt.Dirty = value;
-                _log_PurchaseEligibility.Dirty = value;
-                _log_QualifyingRate.Dirty = value;
-                _log_RecordType.Dirty = value;
-                _log_RefinancePurpose.Dirty = value;
-                _log_Reserves.Dirty = value;
-                _log_ReservesRequiredVerified.Dirty = value;
-                _log_RiskClass.Dirty = value;
-                _log_SalesConcessions.Dirty = value;
-                _log_SalesPrice.Dirty = value;
-                _log_SecondPandI.Dirty = value;
-                _log_SelectedBorrower.Dirty = value;
-                _log_SelectedRepository.Dirty = value;
-                _log_SellerNumber.Dirty = value;
-                _log_SubjNegCashFlow.Dirty = value;
-                _log_SubmissionDate.Dirty = value;
-                _log_SubmissionNumber.Dirty = value;
-                _log_SubmissionTime.Dirty = value;
-                _log_SubmittedBy.Dirty = value;
-                _log_SubmittingCompany.Dirty = value;
-                _log_TemporarySubsidyBuydown.Dirty = value;
-                _log_TLTV.Dirty = value;
-                _log_TotalAsset.Dirty = value;
-                _log_TotalExpense.Dirty = value;
-                _log_TotalExpensePmt.Dirty = value;
-                _log_TotalExpenseRatio.Dirty = value;
-                _log_TotalFundsVerified.Dirty = value;
-                _log_TotalLoanAmount.Dirty = value;
-                _log_TotalMonthlyIncome.Dirty = value;
-                _log_TPONumber.Dirty = value;
-                _log_TransactionID.Dirty = value;
-                _log_UnderwritingRiskAssessOther.Dirty = value;
-                _log_UnderwritingRiskAssessType.Dirty = value;
-                _log_WithUndisclosedDebt.Dirty = value;
+                _logAcceptPlusEligible.Dirty = value;
+                _logAffordableProductType.Dirty = value;
+                _logAllOtherPayments.Dirty = value;
+                _logAmortizationMonths.Dirty = value;
+                _logAmortizationType.Dirty = value;
+                _logAmtSubordinateFin.Dirty = value;
+                _logAppraisalTypeMAF.Dirty = value;
+                _logAppraisedValue.Dirty = value;
+                _logARMQualifyingRate.Dirty = value;
+                _logAssessmentType.Dirty = value;
+                _logAUSRecommendation.Dirty = value;
+                _logAUSStatus.Dirty = value;
+                _logAUSTrackingType.Dirty = value;
+                _logAUSTransactionID.Dirty = value;
+                _logAUSVersion.Dirty = value;
+                _logBalloon.Dirty = value;
+                _logBalloonTerm.Dirty = value;
+                _logBorrowerAssetAmount.Dirty = value;
+                _logBorrowerAssetName.Dirty = value;
+                _logBorrowerAssetType.Dirty = value;
+                _logBorrowerCreditScore1.Dirty = value;
+                _logBorrowerCreditScore2.Dirty = value;
+                _logBorrowerCreditScore3.Dirty = value;
+                _logBorrowerEquifaxBEACON.Dirty = value;
+                _logBorrowerExperianFICO.Dirty = value;
+                _logBorrowerIncomeAmount.Dirty = value;
+                _logBorrowerIncomeName.Dirty = value;
+                _logBorrowerIncomeType.Dirty = value;
+                _logBorrowerInstitutionName.Dirty = value;
+                _logBorrowerName.Dirty = value;
+                _logBorrowerScoreName.Dirty = value;
+                _logBorrowerTransUnionEmpirica.Dirty = value;
+                _logBorrowerType1.Dirty = value;
+                _logBorrowerType2.Dirty = value;
+                _logBoughtDownRate.Dirty = value;
+                _logBuydown.Dirty = value;
+                _logCashBack.Dirty = value;
+                _logCashOutAmount.Dirty = value;
+                _logCLTV.Dirty = value;
+                _logCoBorrowerAssetAmount.Dirty = value;
+                _logCoBorrowerAssetName.Dirty = value;
+                _logCoBorrowerAssetType.Dirty = value;
+                _logCoBorrowerCreditScore1.Dirty = value;
+                _logCoBorrowerCreditScore2.Dirty = value;
+                _logCoBorrowerCreditScore3.Dirty = value;
+                _logCoBorrowerEquifaxBEACON.Dirty = value;
+                _logCoBorrowerExperianFICO.Dirty = value;
+                _logCoBorrowerIncomeAmount.Dirty = value;
+                _logCoBorrowerIncomeName.Dirty = value;
+                _logCoBorrowerIncomeType.Dirty = value;
+                _logCoBorrowerInstitutionName.Dirty = value;
+                _logCoborrowerName.Dirty = value;
+                _logCoBorrowerScoreName.Dirty = value;
+                _logCoBorrowerTransUnionEmpirica.Dirty = value;
+                _logCode1.Dirty = value;
+                _logCode2.Dirty = value;
+                _logCodeDescription1.Dirty = value;
+                _logCodeDescription2.Dirty = value;
+                _logCommunityLending.Dirty = value;
+                _logCreatedOn.Dirty = value;
+                _logCreditAgency1.Dirty = value;
+                _logCreditAgency2.Dirty = value;
+                _logCreditReportDate1.Dirty = value;
+                _logCreditReportDate2.Dirty = value;
+                _logCreditReportID1.Dirty = value;
+                _logCreditReportID2.Dirty = value;
+                _logCuredAmortizationType.Dirty = value;
+                _logCuredAppraisedValue.Dirty = value;
+                _logCuredCLTV.Dirty = value;
+                _logCuredHousingExpenseRatio.Dirty = value;
+                _logCuredLoanPurpose.Dirty = value;
+                _logCuredLoanTerm.Dirty = value;
+                _logCuredLoanType.Dirty = value;
+                _logCuredLTV.Dirty = value;
+                _logCuredNoteRate.Dirty = value;
+                _logCuredProposedTotalHousingPayment.Dirty = value;
+                _logCuredRefinancePurpose.Dirty = value;
+                _logCuredTotalExpenseRatio.Dirty = value;
+                _logCuredTotalLoanAmount.Dirty = value;
+                _logCuredTotalMonthlyIncome.Dirty = value;
+                _logDateTimeAssessed.Dirty = value;
+                _logDateTimeRequested.Dirty = value;
+                _logDebtRatio.Dirty = value;
+                _logDocumentationLevel.Dirty = value;
+                _logDUCaseIDorLPAUSKey.Dirty = value;
+                _logDUPropertyType.Dirty = value;
+                _logeFolderGUID.Dirty = value;
+                _logExcessAvailableAssetsNoVerified.Dirty = value;
+                _logFinancedMIAmount.Dirty = value;
+                _logFirstPandI.Dirty = value;
+                _logFirstSubmissionDate.Dirty = value;
+                _logFirstSubmissionTime.Dirty = value;
+                _logFreddieDocClass.Dirty = value;
+                _logFundsRequiredClose.Dirty = value;
+                _logGUID.Dirty = value;
+                _logHLCTV.Dirty = value;
+                _logHousingExpense.Dirty = value;
+                _logHousingExpenseRatio.Dirty = value;
+                _logHousingRatio.Dirty = value;
+                _logHTLTV.Dirty = value;
+                _logIncludingLess10Mos.Dirty = value;
+                _logIncomeAssetBase.Dirty = value;
+                _logIncomeAssetBonus.Dirty = value;
+                _logIncomeAssetCommission.Dirty = value;
+                _logIncomeAssetOther.Dirty = value;
+                _logIncomeAssetOvertime.Dirty = value;
+                _logIncomeAssetPosCashFlow.Dirty = value;
+                _logIncomeAssetPositiveNetRental.Dirty = value;
+                _logIndicatorScore.Dirty = value;
+                _logIntendedUseofProperty.Dirty = value;
+                _logLCLAEvaluatedServiceConclusion1.Dirty = value;
+                _logLCLAEvaluatedServiceConclusion2.Dirty = value;
+                _logLCLAEvaluatedServiceConclusion3.Dirty = value;
+                _logLCLAEvaluatedServiceConclusion4.Dirty = value;
+                _logLCLAEvaluatedServiceType1.Dirty = value;
+                _logLCLAEvaluatedServiceType2.Dirty = value;
+                _logLCLAEvaluatedServiceType3.Dirty = value;
+                _logLCLAEvaluatedServiceType4.Dirty = value;
+                _logLenderLoan.Dirty = value;
+                _logLienType.Dirty = value;
+                _logLoanAmount.Dirty = value;
+                _logLoanApplicationID.Dirty = value;
+                _logLoanProcessingStage.Dirty = value;
+                _logLoanProspectorID.Dirty = value;
+                _logLoanPurpose.Dirty = value;
+                _logLoanTerm.Dirty = value;
+                _logLoanType.Dirty = value;
+                _logLPAssmtExpDate.Dirty = value;
+                _logLPPropertyType.Dirty = value;
+                _logLPVersion.Dirty = value;
+                _logLQACollateralRepWarrantyServiceConclusion.Dirty = value;
+                _logLQACreditRiskAssessmentConclusion.Dirty = value;
+                _logLQADataCompareFieldConclusion.Dirty = value;
+                _logLQADataCompareFieldName.Dirty = value;
+                _logLQADataCompareResult.Dirty = value;
+                _logLQALPKey.Dirty = value;
+                _logLQAPurchaseEligibilityResult.Dirty = value;
+                _logLQARiskAssessmentKey.Dirty = value;
+                _logLQASubmissionDateTime.Dirty = value;
+                _logLTV.Dirty = value;
+                _logMaxMortgageLimit.Dirty = value;
+                _logMIDecision.Dirty = value;
+                _logMortgageType.Dirty = value;
+                _logNegAmortizationType.Dirty = value;
+                _logNegativeNetRental.Dirty = value;
+                _logNetCashBack.Dirty = value;
+                _logNewConstruction.Dirty = value;
+                _logNoteRate.Dirty = value;
+                _logNOTPNumber.Dirty = value;
+                _logNoUnits.Dirty = value;
+                _logNumberOfSubmissions.Dirty = value;
+                _logOccupancyStatus.Dirty = value;
+                _logOccupantDebtRatio.Dirty = value;
+                _logOccupantHousingRatio.Dirty = value;
+                _logOfferingIdentifier.Dirty = value;
+                _logOriginatingCompany.Dirty = value;
+                _logOwnerExistingMtg.Dirty = value;
+                _logPandI.Dirty = value;
+                _logPaymentFrequency.Dirty = value;
+                _logPresentAddress.Dirty = value;
+                _logPresentAddressCity.Dirty = value;
+                _logPresentAddressState.Dirty = value;
+                _logPresentAddressZipCode.Dirty = value;
+                _logPresentHousingExpense.Dirty = value;
+                _logPresentPrincipalHousingPayment.Dirty = value;
+                _logPropertyAddress.Dirty = value;
+                _logPropertyCity.Dirty = value;
+                _logPropertyState.Dirty = value;
+                _logPropertyZipcode.Dirty = value;
+                _logProposedHazardInsurance.Dirty = value;
+                _logProposedHOAFees.Dirty = value;
+                _logProposedHousingPITI.Dirty = value;
+                _logProposedMortgageInsurance.Dirty = value;
+                _logProposedOtherPayment.Dirty = value;
+                _logProposedTaxes.Dirty = value;
+                _logProposedTotalHousingPayment.Dirty = value;
+                _logProposedTotalMonthlyDebt.Dirty = value;
+                _logPurchaseEligibility.Dirty = value;
+                _logQualifyingRate.Dirty = value;
+                _logRecordType.Dirty = value;
+                _logRefinancePurpose.Dirty = value;
+                _logReserves.Dirty = value;
+                _logReservesRequiredVerified.Dirty = value;
+                _logRiskClass.Dirty = value;
+                _logSalesConcessions.Dirty = value;
+                _logSalesPrice.Dirty = value;
+                _logSecondPandI.Dirty = value;
+                _logSelectedBorrower.Dirty = value;
+                _logSelectedRepository.Dirty = value;
+                _logSellerNumber.Dirty = value;
+                _logSubjNegCashFlow.Dirty = value;
+                _logSubmissionDate.Dirty = value;
+                _logSubmissionNumber.Dirty = value;
+                _logSubmissionTime.Dirty = value;
+                _logSubmittedBy.Dirty = value;
+                _logSubmittingCompany.Dirty = value;
+                _logTemporarySubsidyBuydown.Dirty = value;
+                _logTLTV.Dirty = value;
+                _logTotalAsset.Dirty = value;
+                _logTotalExpense.Dirty = value;
+                _logTotalExpensePmt.Dirty = value;
+                _logTotalExpenseRatio.Dirty = value;
+                _logTotalFundsVerified.Dirty = value;
+                _logTotalLoanAmount.Dirty = value;
+                _logTotalMonthlyIncome.Dirty = value;
+                _logTPONumber.Dirty = value;
+                _logTransactionID.Dirty = value;
+                _logUnderwritingRiskAssessOther.Dirty = value;
+                _logUnderwritingRiskAssessType.Dirty = value;
+                _logWithUndisclosedDebt.Dirty = value;
             }
         }
     }

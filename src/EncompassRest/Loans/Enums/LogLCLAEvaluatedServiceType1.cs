@@ -2,8 +2,8 @@ using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
 {
-    public enum Log_LCLAEvaluatedServiceType2
+    public enum LogLCLAEvaluatedServiceType1
     {
-        DataQuality = 0
+        GeneralInformation = 0
     }
 }
