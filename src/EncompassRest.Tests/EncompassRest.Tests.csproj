@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;netcoreapp2.0;netcoreapp1.1</TargetFrameworks>
+    <TargetFrameworks>net46;net45;netcoreapp2.0;netcoreapp1.1</TargetFrameworks>
     <RuntimeFrameworkVersion>2.0.3</RuntimeFrameworkVersion>
     <IsPackable>false</IsPackable>
     <RepositoryType>git</RepositoryType>
@@ -17,7 +17,7 @@
     <ProjectReference Include="..\EncompassRest\EncompassRest.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 
