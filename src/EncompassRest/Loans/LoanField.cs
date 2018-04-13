@@ -75,24 +75,8 @@ namespace EncompassRest.Loans
         {
             get
             {
-                var result = _modelPath.GetValue(Loan, out var propertyType);
-                if (result is JValue jValue)
-                {
-                    result = jValue.Value;
-                }
-                else if (propertyType != null)
-                {
-                    var propertyTypeInfo = propertyType.GetTypeInfo();
-                    if (propertyTypeInfo.IsGenericType && !propertyTypeInfo.IsGenericTypeDefinition)
-                    {
-                        var genericTypeDefinition = propertyTypeInfo.GetGenericTypeDefinition();
-                        if (genericTypeDefinition == TypeData.OpenStringEnumValueType || genericTypeDefinition == TypeData.OpenNaType)
-                        {
-                            result = result.ToString();
-                        }
-                    }
-                }
-                return result;
+                var result = _modelPath.GetValue(Loan, out _);
+                return result is JValue jValue ? jValue.Value : result;
             }
             set
             {
