@@ -38,16 +38,16 @@ namespace EncompassRest.LoanPipeline
                 {
                     throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} invalid {countHeaderName} header value", response).ConfigureAwait(false);
                 }
-                if (count == 0)
+                string cursorId = null;
+                if (count > 0)
                 {
-                    return null;
+                    const string cursorIdHeaderName = "x-cursor";
+                    if (!headers.TryGetValues(cursorIdHeaderName, out var cursorIds))
+                    {
+                        throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {cursorIdHeaderName} header", response).ConfigureAwait(false);
+                    }
+                    cursorId = cursorIds.First();
                 }
-                const string cursorIdHeaderName = "x-cursor";
-                if (!headers.TryGetValues(cursorIdHeaderName, out var cursorIds))
-                {
-                    throw await EncompassRestException.CreateAsync($"{nameof(CreateCursorAsync)} missing {cursorIdHeaderName} header", response).ConfigureAwait(false);
-                }
-                var cursorId = cursorIds.First();
                 return new LoanPipelineCursor(Client, cursorId, count, parameters.Fields);
             });
         }
