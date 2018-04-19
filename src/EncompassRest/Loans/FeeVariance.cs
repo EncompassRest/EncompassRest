@@ -1,44 +1,75 @@
-#pragma warning disable 1591
 using System;
 using System.Collections.Generic;
 using EncompassRest.Loans.Enums;
+using EncompassRest.Schema;
 
 namespace EncompassRest.Loans
 {
+    /// <summary>
+    /// FeeVariance
+    /// </summary>
     public sealed partial class FeeVariance : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _cD;
+        /// <summary>
+        /// FeeVariance CD
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? CD { get => _cD; set => _cD = value; }
         private DirtyValue<string> _description;
+        /// <summary>
+        /// FeeVariance Description
+        /// </summary>
         public string Description { get => _description; set => _description = value; }
         private DirtyValue<int?> _feeVarianceChargeIndex;
+        /// <summary>
+        /// FeeVariance FeeVarianceChargeIndex
+        /// </summary>
         public int? FeeVarianceChargeIndex { get => _feeVarianceChargeIndex; set => _feeVarianceChargeIndex = value; }
         private DirtyValue<string> _feeVarianceFeeType;
+        /// <summary>
+        /// FeeVariance FeeVarianceFeeType
+        /// </summary>
         public string FeeVarianceFeeType { get => _feeVarianceFeeType; set => _feeVarianceFeeType = value; }
         private DirtyValue<string> _id;
+        /// <summary>
+        /// FeeVariance Id
+        /// </summary>
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<decimal?> _initialLE;
+        /// <summary>
+        /// FeeVariance InitialLE
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? InitialLE { get => _initialLE; set => _initialLE = value; }
         private DirtyValue<decimal?> _itemization;
+        /// <summary>
+        /// FeeVariance Itemization
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? Itemization { get => _itemization; set => _itemization = value; }
         private DirtyValue<decimal?> _lE;
+        /// <summary>
+        /// FeeVariance LE
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? LE { get => _lE; set => _lE = value; }
         private DirtyValue<string> _line;
+        /// <summary>
+        /// FeeVariance Line
+        /// </summary>
         public string Line { get => _line; set => _line = value; }
         internal override bool DirtyInternal
         {
-            get
-            {
-                return _cD.Dirty
-                    || _description.Dirty
-                    || _feeVarianceChargeIndex.Dirty
-                    || _feeVarianceFeeType.Dirty
-                    || _id.Dirty
-                    || _initialLE.Dirty
-                    || _itemization.Dirty
-                    || _lE.Dirty
-                    || _line.Dirty;
-            }
+            get => _cD.Dirty
+                || _description.Dirty
+                || _feeVarianceChargeIndex.Dirty
+                || _feeVarianceFeeType.Dirty
+                || _id.Dirty
+                || _initialLE.Dirty
+                || _itemization.Dirty
+                || _lE.Dirty
+                || _line.Dirty;
             set
             {
                 _cD.Dirty = value;

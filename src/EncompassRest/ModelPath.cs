@@ -319,6 +319,51 @@ namespace EncompassRest
             return declaredType;
         }
 
+        public TAttribute GetAttribute<TAttribute>(Type rootType)
+            where TAttribute : Attribute => GetAttributes<TAttribute>(rootType).FirstOrDefault();
+
+        public IList<TAttribute> GetAttributes<TAttribute>(Type rootType)
+            where TAttribute : Attribute
+        {
+            var attributes = GetAttributes(rootType, TypeData<TAttribute>.Type);
+            return attributes.Cast<TAttribute>().ToList();
+        }
+
+        public IList<Attribute> GetAttributes(Type rootType) => GetAttributes(rootType, null);
+
+        public IList<Attribute> GetAttributes(Type rootType, Type attributeType)
+        {
+            var lastSegment = Segments[Segments.Count - 1];
+            if (lastSegment is PropertySegment propertySegment)
+            {
+                var declaredType = rootType;
+                for (var i = 1; i < Segments.Count; ++i)
+                {
+                    var segment = Segments[i - 1];
+                    declaredType = segment.GetDeclaredType(declaredType);
+                    if (declaredType == null)
+                    {
+                        break;
+                    }
+                }
+                if (declaredType != null)
+                {
+                    var contract = JsonHelper.InternalPrivateContractResolver.ResolveContract(declaredType);
+                    if (contract is JsonObjectContract objectContract)
+                    {
+                        var propertyName = propertySegment.GetPropertyName();
+                        var property = objectContract.Properties.GetClosestMatchProperty(propertyName);
+                        if (property != null)
+                        {
+                            var attributeProvider = property.AttributeProvider;
+                            return attributeType != null ? attributeProvider.GetAttributes(attributeType, false) : attributeProvider.GetAttributes(false);
+                        }
+                    }
+                }
+            }
+            return new Attribute[0];
+        }
+
         public override string ToString() => $"{RootObjectName}{string.Concat(Segments)}";
 
         public override int GetHashCode() => Segments.Aggregate(StringComparer.OrdinalIgnoreCase.GetHashCode(RootObjectName), (current, segment) => current ^ segment.GetHashCode());
@@ -387,7 +432,7 @@ namespace EncompassRest
                 PropertyName = propertyName;
             }
 
-            private string GetPropertyName() => Path.Context.PropertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
+            internal string GetPropertyName() => Path.Context.PropertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
 
             public override Type GetDeclaredType(Type parentType)
             {

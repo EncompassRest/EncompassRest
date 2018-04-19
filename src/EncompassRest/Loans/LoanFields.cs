@@ -115,36 +115,35 @@ namespace EncompassRest.Loans
             {
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
                 
-                if (fieldId.StartsWith("CX.", StringComparison.OrdinalIgnoreCase) || fieldId.StartsWith("CUST", StringComparison.OrdinalIgnoreCase))
-                {
-                    return new CustomLoanField(fieldId.ToUpper(), _loan);
-                }
-
                 string instanceSpecifier = null;
                 int? borrowerPairIndex = null;
-                if (!FieldMappings._dictionary.TryGetValue(fieldId, out var modelPath) && !FieldPatternMappings.TryGetModelPathForFieldId(fieldId, out modelPath, out instanceSpecifier))
-                {
-                    var hasHash = fieldId.Length > 1 && fieldId[fieldId.Length - 2] == '#';
-                    char lastChar;
-                    if (!hasHash || !char.IsDigit((lastChar = fieldId[fieldId.Length - 1])) || lastChar - '0' > 6 || lastChar == '0' || !FieldMappings.TryGetValue(fieldId.Substring(0, fieldId.Length - 2), out var path) || !path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new ArgumentException($"Could not find field {fieldId}");
-                    }
-
-                    borrowerPairIndex = lastChar - '1';
-                    modelPath = CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{path.Substring(23)}");
-                }
-                else
+                if (FieldMappings._dictionary.TryGetValue(fieldId, out var modelPath) || FieldPatternMappings.TryGetModelPathForFieldId(fieldId, out modelPath, out instanceSpecifier))
                 {
                     var path = modelPath.ToString();
-                    if (path.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+                    if (path.StartsWith("Loan.CustomFields", StringComparison.OrdinalIgnoreCase))
                     {
-                        return new VirtualLoanField(fieldId, _loan, instanceSpecifier);
+                        return new CustomLoanField(fieldId.ToUpper(), _loan, modelPath);
+                    }
+                    else if (path.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+                    {
+                        return new VirtualLoanField(fieldId, _loan, modelPath, instanceSpecifier);
                     }
                     else if (path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
                     {
                         borrowerPairIndex = -1;
                     }
+                }
+                else
+                {
+                    var hasHash = fieldId.Length > 1 && fieldId[fieldId.Length - 2] == '#';
+                    char lastChar;
+                    if (!hasHash || !char.IsDigit((lastChar = fieldId[fieldId.Length - 1])) || lastChar - '0' > 6 || lastChar == '0' || !FieldMappings.TryGetValue(fieldId.Substring(0, fieldId.Length - 2), out var path) || !path.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new ArgumentException($"Could not find field '{fieldId}'");
+                    }
+
+                    borrowerPairIndex = lastChar - '1';
+                    modelPath = CreateModelPath($"Loan.Applications[(ApplicationIndex == '{borrowerPairIndex}')]{path.Substring(23)}");
                 }
 
                 return new LoanField(fieldId, _loan, modelPath, borrowerPairIndex, instanceSpecifier);

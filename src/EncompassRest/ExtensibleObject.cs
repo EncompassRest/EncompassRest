@@ -6,6 +6,9 @@ using Newtonsoft.Json;
 
 namespace EncompassRest
 {
+    /// <summary>
+    /// Base class that supports extension data and json serialization.
+    /// </summary>
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class ExtensibleObject : IDirty, IIdentifiable
 #if HAVE_ICLONEABLE
@@ -13,6 +16,9 @@ namespace EncompassRest
 #endif
     {
         private DirtyDictionary<string, object> _extensionData;
+        /// <summary>
+        /// Extension Data
+        /// </summary>
         [JsonExtensionData]
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>(StringComparer.OrdinalIgnoreCase)); set => _extensionData = new DirtyDictionary<string, object>(value, StringComparer.OrdinalIgnoreCase); }
         private bool _gettingDirty;
@@ -53,8 +59,17 @@ namespace EncompassRest
         {
         }
 
+        /// <summary>
+        /// Serializes object to it's json representation without indenting.
+        /// </summary>
+        /// <returns>Json representation of the object.</returns>
         public override string ToString() => ToString(false);
 
+        /// <summary>
+        /// Serializes object to it's json representation with indenting if <paramref name="indent"/> is <c>true</c>.
+        /// </summary>
+        /// <param name="indent">Specifies if the json should be indented.</param>
+        /// <returns>Json representation of the object.</returns>
         public string ToString(bool indent)
         {
             var serializer = indent ? JsonHelper.DefaultIndentedPublicSerializer : JsonHelper.DefaultPublicSerializer;

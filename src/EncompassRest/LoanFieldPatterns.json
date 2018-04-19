@@ -367,6 +367,8 @@
   "TQL4506T{0:00}52": "Loan.CurrentApplication.TQLReports[{0}].TotalIncome4",
   "TQL4506T{0:00}08": "Loan.CurrentApplication.TQLReports[{0}].TranscriptType",
   "TQL4506T{0:00}01": "Loan.CurrentApplication.TQLReports[{0}].UserID",
+  "CUST{0:00}FV": "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue",
+  "CX.{0}": "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue",
   "HC{0:00}03": "Loan.HomeCounselingProviders[{0}].AgencyAddress",
   "HC{0:00}04": "Loan.HomeCounselingProviders[{0}].AgencyAddressCity",
   "HC{0:00}06": "Loan.HomeCounselingProviders[{0}].AgencyAddressPostalCode",
