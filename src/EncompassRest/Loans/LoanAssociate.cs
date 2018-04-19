@@ -17,8 +17,8 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<string> _idString;
         public string IdString { get => _idString; set => _idString = value; }
-        private DirtyValue<string> _loanAssociateType;
-        public string LoanAssociateType { get => _loanAssociateType; set => _loanAssociateType = value; }
+        private DirtyValue<StringEnumValue<LoanAssociateType>> _loanAssociateType;
+        public StringEnumValue<LoanAssociateType> LoanAssociateType { get => _loanAssociateType; set => _loanAssociateType = value; }
         private DirtyValue<string> _name;
         public string Name { get => _name; set => _name = value; }
         private DirtyValue<string> _phone;
