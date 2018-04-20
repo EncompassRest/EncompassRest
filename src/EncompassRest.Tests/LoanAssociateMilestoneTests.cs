@@ -1,5 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using EncompassRest.Loans;
+using EncompassRest.Loans.Associates;
+using EncompassRest.Loans.Enums;
+using EncompassRest.Loans.Milestones;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace EncompassRest.Tests
@@ -38,6 +42,54 @@ namespace EncompassRest.Tests
 
             await Task.Delay(5000);
             Assert.IsTrue(await client.Loans.DeleteLoanAsync(loanId));
+        }
+
+        [TestMethod]
+        public async Task LoanMilestonesFinish()
+        {
+            var client = await GetTestClientAsync();
+
+            if (client.AccessToken.Token == "Token")
+            {
+                var loanId = await client.Loans.CreateLoanAsync(new Loan());
+                try
+                {
+                    var loanApis = client.Loans.GetLoanApis(loanId);
+                    var milestonesApi = loanApis.Milestones;
+                    var milestones = await milestonesApi.GetMilestonesAsync();
+                    var milestone = milestones.First(ms => ms.DoneIndicator != true);
+
+                    // Assign user to milestones
+                    var userId = "officer";
+                    await loanApis.Associates.AssignAssociateAsync(milestone.Id, new AssignAssociateParameters(LoanAssociateType.User, userId));
+                    milestones = await milestonesApi.GetMilestonesAsync();
+                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+                    Assert.AreEqual(milestone.LoanAssociate.Id, userId);
+
+                    userId = "opener";
+                    var nextMilestone = milestones.Where(ms => ms.DoneIndicator != true).Skip(1).First();
+                    await loanApis.Associates.AssignAssociateAsync(nextMilestone.Id, new AssignAssociateParameters(LoanAssociateType.User, userId));
+                    milestones = await milestonesApi.GetMilestonesAsync();
+                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
+                    Assert.AreEqual(nextMilestone.LoanAssociate.Id, userId);
+
+                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Finish);
+                    milestones = await milestonesApi.GetMilestonesAsync();
+                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+                    Assert.IsTrue(milestone.DoneIndicator == true);
+
+                    await milestonesApi.UpdateMilestoneAsync(milestone, MilestoneAction.Unfinish);
+                    milestones = await milestonesApi.GetMilestonesAsync();
+                    milestone = milestones.First(ms => ms.Id == milestone.Id);
+                    Assert.IsFalse(milestone.DoneIndicator == true);
+
+                    await Task.Delay(5000);
+                }
+                finally
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+            }
         }
     }
 }

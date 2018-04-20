@@ -152,6 +152,8 @@ namespace EncompassRest
             "AppraisalType"
         };
 
+        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) } };
+
         private static readonly Dictionary<string, Dictionary<string, string>> s_otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
@@ -594,6 +596,10 @@ namespace {@namespace}
                                 attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                             }
                         }
+                    }
+                    if (enumName != null || s_explicitStringEnumValues.TryGetValue(entityPropertyName, out enumName))
+                    {
+                        propertyType = $"StringEnumValue<{enumName}>";
                     }
                     var elementType = propertyType;
                     var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);

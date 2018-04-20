@@ -15,7 +15,7 @@ namespace EncompassRest
 {
     public sealed class EncompassRestClient : IDisposable
     {
-#if !HAVE_SSL_PROTOCOLS
+#if NET45
         static EncompassRestClient()
         {
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
@@ -292,11 +292,7 @@ namespace EncompassRest
             private readonly SemaphoreSlim _semaphoreSlim = new SemaphoreSlim(1);
 
             public RetryHandler(EncompassRestClient client, bool retryOnUnauthorized)
-                : base(new HttpClientHandler()
-#if HAVE_SSL_PROTOCOLS
-                    { SslProtocols = System.Security.Authentication.SslProtocols.Tls12 }
-#endif
-                )
+                : base(new HttpClientHandler())
             {
                 _client = client;
                 _retryOnUnauthorized = retryOnUnauthorized;

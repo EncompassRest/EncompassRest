@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
+using EnumsNET;
 
 namespace EncompassRest.Loans.Milestones
 {
@@ -30,12 +31,21 @@ namespace EncompassRest.Loans.Milestones
             return GetRawAsync(logId, queryString, nameof(GetMilestoneRawAsync), logId, cancellationToken);
         }
 
-        public Task UpdateMilestoneAsync(LoanMilestone milestone, CancellationToken cancellationToken = default)
+        public Task UpdateMilestoneAsync(LoanMilestone milestone, CancellationToken cancellationToken = default) => UpdateMilestoneAsync(milestone, null, cancellationToken);
+
+        public Task UpdateMilestoneAsync(LoanMilestone milestone, MilestoneAction action, CancellationToken cancellationToken = default) => UpdateMilestoneAsync(milestone, action.Validate(nameof(action)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name), cancellationToken);
+
+        public Task UpdateMilestoneAsync(LoanMilestone milestone, string action, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(milestone, nameof(milestone));
             Preconditions.NotNullOrEmpty(milestone.Id, $"{nameof(milestone)}.{nameof(milestone.Id)}");
+            var queryParameters = new QueryParameters();
+            if (!string.IsNullOrEmpty(action))
+            {
+                queryParameters.Add("action", action);
+            }
 
-            return PatchAsync(milestone.Id, null, JsonStreamContent.Create(milestone), nameof(UpdateMilestoneAsync), milestone.Id, cancellationToken);
+            return PatchAsync(milestone.Id, queryParameters.ToString(), JsonStreamContent.Create(milestone), nameof(UpdateMilestoneAsync), milestone.Id, cancellationToken);
         }
 
         public Task UpdateMilestoneRawAsync(string logId, string milestone, string queryString = null, CancellationToken cancellationToken = default)

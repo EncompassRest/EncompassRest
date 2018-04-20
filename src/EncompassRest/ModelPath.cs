@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -217,7 +218,7 @@ namespace EncompassRest
             {
                 throw new ArgumentException("bad path");
             }
-            Segments = segments.AsReadOnly();
+            Segments = new ReadOnlyCollection<PathSegment>(segments);
 
             // Local functions
             void Increment(ref int value)
@@ -388,7 +389,7 @@ namespace EncompassRest
 
         private static string EscapeWithTick(string value, out bool escapeNeeded)
         {
-            escapeNeeded = char.IsDigit(value[0]) || !value.All(c => char.IsLetterOrDigit(c) || c == '_');
+            escapeNeeded = char.IsDigit(value[0]) || !value.Cast<char>().All(c => char.IsLetterOrDigit(c) || c == '_');
             return escapeNeeded ? value.Replace("'", "\\'").Replace("\\", "\\\\") : value;
         }
 

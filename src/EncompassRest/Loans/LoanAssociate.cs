@@ -35,11 +35,11 @@ namespace EncompassRest.Loans
         /// LoanAssociate IdString
         /// </summary>
         public string IdString { get => _idString; set => _idString = value; }
-        private DirtyValue<string> _loanAssociateType;
+        private DirtyValue<StringEnumValue<LoanAssociateType>> _loanAssociateType;
         /// <summary>
         /// LoanAssociate LoanAssociateType
         /// </summary>
-        public string LoanAssociateType { get => _loanAssociateType; set => _loanAssociateType = value; }
+        public StringEnumValue<LoanAssociateType> LoanAssociateType { get => _loanAssociateType; set => _loanAssociateType = value; }
         private DirtyValue<string> _name;
         /// <summary>
         /// LoanAssociate Name
