@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
-using EncompassRest.Loans.Associates;
 using EncompassRest.Loans.Enums;
 using EncompassRest.Loans.Milestones;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -61,14 +60,14 @@ namespace EncompassRest.Tests
 
                     // Assign user to milestones
                     var userId = "officer";
-                    await loanApis.Associates.AssignAssociateAsync(milestone.Id, new AssignAssociateParameters(LoanAssociateType.User, userId));
+                    await loanApis.Associates.AssignAssociateAsync(milestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
                     milestones = await milestonesApi.GetMilestonesAsync();
                     milestone = milestones.First(ms => ms.Id == milestone.Id);
                     Assert.AreEqual(milestone.LoanAssociate.Id, userId);
 
                     userId = "opener";
                     var nextMilestone = milestones.Where(ms => ms.DoneIndicator != true).Skip(1).First();
-                    await loanApis.Associates.AssignAssociateAsync(nextMilestone.Id, new AssignAssociateParameters(LoanAssociateType.User, userId));
+                    await loanApis.Associates.AssignAssociateAsync(nextMilestone.Id, new LoanAssociate(userId, LoanAssociateType.User));
                     milestones = await milestonesApi.GetMilestonesAsync();
                     nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
                     Assert.AreEqual(nextMilestone.LoanAssociate.Id, userId);
@@ -82,6 +81,12 @@ namespace EncompassRest.Tests
                     milestones = await milestonesApi.GetMilestonesAsync();
                     milestone = milestones.First(ms => ms.Id == milestone.Id);
                     Assert.IsFalse(milestone.DoneIndicator == true);
+
+                    // Test unassigning user
+                    await loanApis.Associates.UnassignAssociateAsync(nextMilestone.Id);
+                    milestones = await milestonesApi.GetMilestonesAsync();
+                    nextMilestone = milestones.First(ms => ms.Id == nextMilestone.Id);
+                    Assert.IsNull(nextMilestone.LoanAssociate.Id);
 
                     await Task.Delay(5000);
                 }
