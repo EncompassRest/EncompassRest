@@ -45,20 +45,29 @@ namespace EncompassRest.Loans.Associates
             return GetRawAsync(logId, queryString, nameof(GetAssociateRawAsync), logId, cancellationToken);
         }
 
-        public Task AssignAssociateAsync(string logId, AssignAssociateParameters parameters, CancellationToken cancellationToken = default)
+        public Task AssignAssociateAsync(string logId, LoanAssociate associate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
-            Preconditions.NotNull(parameters, nameof(parameters));
+            Preconditions.NotNull(associate, nameof(associate));
+            Preconditions.NotNullOrEmpty(associate.Id, $"{nameof(associate)}.{nameof(associate.Id)}");
+            Preconditions.NotNullOrEmpty(associate.LoanAssociateType.Value, $"{nameof(associate)}.{nameof(associate.LoanAssociateType)}");
 
-            return PutAsync(logId, null, JsonStreamContent.Create(parameters), nameof(AssignAssociateAsync), logId, cancellationToken);
+            return PutAsync(logId, null, JsonStreamContent.Create(associate), nameof(AssignAssociateAsync), logId, cancellationToken);
         }
 
-        public Task AssignAssociateRawAsync(string logId, string parameters, string queryString = null, CancellationToken cancellationToken = default)
+        public Task AssignAssociateRawAsync(string logId, string associate, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(logId, nameof(logId));
-            Preconditions.NotNullOrEmpty(parameters, nameof(parameters));
+            Preconditions.NotNullOrEmpty(associate, nameof(associate));
 
-            return PutAsync(logId, queryString, new JsonStringContent(parameters), nameof(AssignAssociateRawAsync), logId, cancellationToken);
+            return PutAsync(logId, queryString, new JsonStringContent(associate), nameof(AssignAssociateRawAsync), logId, cancellationToken);
+        }
+
+        public Task<bool> UnassignAssociateAsync(string logId, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(logId, nameof(logId));
+
+            return DeleteAsync(logId, null, cancellationToken);
         }
     }
 }

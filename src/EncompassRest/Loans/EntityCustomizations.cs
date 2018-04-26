@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using EncompassRest.Loans.Enums;
+using EncompassRest.Utilities;
+using EnumsNET;
+using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
@@ -341,6 +345,28 @@ namespace EncompassRest.Loans
                 _id.Dirty = value;
                 _nonVolIndex.Dirty = value;
             }
+        }
+    }
+
+    partial class LoanAssociate
+    {
+        public LoanAssociate(string id, LoanAssociateType loanAssociateType)
+            : this(id, loanAssociateType.Validate(nameof(loanAssociateType)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
+        {
+        }
+
+        public LoanAssociate(string id, string loanAssociateType)
+        {
+            Preconditions.NotNullOrEmpty(id, nameof(id));
+            Preconditions.NotNullOrEmpty(loanAssociateType, nameof(loanAssociateType));
+
+            Id = id;
+            LoanAssociateType = loanAssociateType;
+        }
+
+        [JsonConstructor]
+        public LoanAssociate()
+        {
         }
     }
 }
