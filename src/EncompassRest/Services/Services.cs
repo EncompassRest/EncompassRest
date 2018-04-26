@@ -11,6 +11,13 @@ namespace EncompassRest.Services
         {
         }
 
+        /// <summary>
+        /// This is an UNTESTED feature. Please report back to GitHub for any issues.
+        /// </summary>
+        /// <param name="partnerId"></param>
+        /// <param name="parameters"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         public Task<string> OrderServiceAsync(string partnerId, OrderServiceParameters parameters, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
