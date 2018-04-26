@@ -9,6 +9,7 @@ First, the Encompass API .NET Language Bindings were released long after the API
 Secondly, the swagger generated Encompass API .NET Language Bindings are less robust compared to the custom crafted, well thought-out, and thoroughly tested EncompassRest library.
 
 ### More features
+* Field ID support
 * Dirty checking serialization to only send back the updated data
 * Option to auto retrieve new token and resend the request when using an expired token
 * Option to auto resend the request on server timeouts
