@@ -1,10 +1,22 @@
+using System.ComponentModel;
 using System.Runtime.Serialization;
 
 namespace EncompassRest.Loans.Enums
 {
+    /// <summary>
+    /// VeteranServiceType
+    /// </summary>
     public enum VeteranServiceType
     {
+        /// <summary>
+        /// Separated from Service
+        /// </summary>
+        [Description("Separated from Service")]
         SeparatedFromService = 0,
+        /// <summary>
+        /// In Service
+        /// </summary>
+        [Description("In Service")]
         InService = 1
     }
 }

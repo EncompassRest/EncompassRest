@@ -82,7 +82,7 @@ namespace EncompassRest
                 typeof(DoesOrDoesNot2),
                 typeof(OpenBankruptcy),
                 typeof(InterestRateImpactedStatus),
-                typeof(FeePaidBy),
+                typeof(StateDisclosureFeePaidBy),
                 typeof(Owner),
                 typeof(PaidBy),
                 typeof(PaidType),
@@ -136,12 +136,7 @@ namespace EncompassRest
             "AUSRecommendation5",
             "DenialReason2",
             "DenialReason3",
-            "DenialReason4",
-            "OriginationFeePaidBy",
-            "ServicingFeePaidBy",
-            "TransferFeePaidBy",
-            "YSPPaidBy",
-            "MIPremiumSourceType"
+            "DenialReason4"
         };
 
         private static readonly HashSet<string> s_enumPropertyNamesToUseEntityTypeInName = new HashSet<string>
@@ -159,7 +154,7 @@ namespace EncompassRest
 
         private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) } };
 
-        private static readonly Dictionary<string, HashSet<string>> s_otherEnums = new Dictionary<string, HashSet<string>>();
+        private static readonly Dictionary<string, Dictionary<string, string>> s_otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
@@ -210,7 +205,11 @@ namespace EncompassRest
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
             var loanEntitySchema = loanSchema.EntityTypes["Loan"];
             var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { "CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" },
+                { "CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" }
+            };
             PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields, fieldPatterns);
 
             var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.Value).ToList();
@@ -449,9 +448,12 @@ namespace EncompassRest
                     }
                 }
             }
-            foreach (var enumPair in s_sharedEnums.Concat(s_otherEnums))
+
+            var otherEnumsAsHashSet = s_otherEnums.ToDictionary(p => p.Key, p => new HashSet<string>(p.Value.Keys));
+
+            foreach (var enumPair in s_sharedEnums.Concat(otherEnumsAsHashSet))
             {
-                foreach (var innerEnumPair in s_otherEnums)
+                foreach (var innerEnumPair in otherEnumsAsHashSet)
                 {
                     if (enumPair.Key != innerEnumPair.Key && innerEnumPair.Value.IsSubsetOf(enumPair.Value))
                     {
@@ -472,7 +474,7 @@ namespace EncompassRest
             }
             var enumsPath = $"{destinationPath}\\Enums";
             Directory.CreateDirectory(enumsPath);
-            foreach (var pair in s_sharedEnums.Concat(s_otherEnums))
+            foreach (var pair in s_sharedEnums.ToDictionary(p => p.Key, p => p.Value.ToDictionary(s => s, s => (string)null)).Concat(s_otherEnums))
             {
                 await GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value).ConfigureAwait(false);
             }
@@ -482,13 +484,16 @@ namespace EncompassRest
         {
             var sb = new StringBuilder();
             sb.Append(
-$@"#pragma warning disable 1591
-using System;
+$@"using System;
 using System.Collections.Generic;
 using {@namespace}.Enums;
+using EncompassRest.Schema;
 
 namespace {@namespace}
 {{
+    /// <summary>
+    /// {entityType}
+    /// </summary>
     public sealed partial class {entityType} : ExtensibleObject, IIdentifiable
     {{
 ");
@@ -502,38 +507,93 @@ namespace {@namespace}
                 if (!s_propertiesToNotGenerate.Contains(entityPropertyName))
                 {
                     var propertySchema = pair.Value;
-                    var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isList);
-                    var hasOptions = propertyType == "string" && propertySchema.AllowedValues?.Count > 0;
-                    string enumName = null;
-                    if (hasOptions)
+                    var attributeProperties = new List<string>();
+                    if (!string.IsNullOrEmpty(propertySchema.Format))
                     {
-                        var optionValues = new HashSet<string>(propertySchema.AllowedValues.Select(o => o.Value).Where(v => !string.IsNullOrEmpty(v)));
-                        if (s_enumOptionsToIgnore.TryGetValue(propertyName, out var ignoredOptions))
+                        attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
+                    }
+                    if (propertySchema.ReadOnly == true)
+                    {
+                        attributeProperties.Add($"ReadOnly = {propertySchema.ReadOnly?.ToString().ToLower()}");
+                    }
+                    if (!string.IsNullOrEmpty(propertySchema.Description))
+                    {
+                        attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
+                    }
+                    var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isList);
+                    if (propertySchema.AllowedValues?.Count > 0)
+                    {
+                        if (propertyType == "string")
                         {
-                            optionValues.ExceptWith(ignoredOptions);
+                            var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Value) || !string.IsNullOrEmpty(o.Text)).Distinct().ToDictionary(o => o.Value, o => o.Text);
+                            if (s_enumOptionsToIgnore.TryGetValue(propertyName, out var ignoredOptions))
+                            {
+                                foreach (var ignoredOption in ignoredOptions)
+                                {
+                                    optionValues.Remove(ignoredOption);
+                                }
+                            }
+                            string enumName = null;
+                            foreach (var enumPair in s_sharedEnums)
+                            {
+                                var setEquals = enumPair.Value.SetEquals(optionValues.Keys);
+                                if (setEquals || (s_enumPropertyNamesToUseNotExactSharedEnum.Contains(propertyName) && enumPair.Value.IsSupersetOf(optionValues.Keys)))
+                                {
+                                    if (!setEquals)
+                                    {
+                                        var missingOptions = enumPair.Value.Except(optionValues.Keys);
+                                        attributeProperties.Add($@"MissingOptionsJson = ""{JsonConvert.SerializeObject(missingOptions).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
+                                    }
+                                    enumName = enumPair.Key;
+                                    var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.Enums.{enumName}");
+                                    foreach (var member in NonGenericEnums.GetMembers(existingEnumType))
+                                    {
+                                        var existingText = member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name);
+                                        var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
+                                        if (optionValues.TryGetValue(value, out var text) && string.Equals(existingText, text, StringComparison.Ordinal))
+                                        {
+                                            optionValues.Remove(value);
+                                        }
+                                    }
+                                    if (optionValues.Count > 0)
+                                    {
+                                        attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
+                                    }
+                                    break;
+                                }
+                            }
+                            if (enumName == null)
+                            {
+                                enumName = GetEnumName(entityType, propertyName);
+                                if (s_otherEnums.TryGetValue(enumName, out var enumValues))
+                                {
+                                    Console.WriteLine($"{entityType} Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", enumValues.Keys)}`");
+                                }
+                                else if (s_sharedEnums.TryGetValue(enumName, out var sharedEnumValues))
+                                {
+                                    Console.WriteLine($"{entityType} Shared Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", sharedEnumValues)}`");
+                                }
+                                else
+                                {
+                                    s_otherEnums.Add(enumName, optionValues);
+                                }
+                            }
+                            propertyType = $"StringEnumValue<{enumName}>";
                         }
-                        foreach (var enumPair in s_sharedEnums)
+                        else if (propertyType == "bool?")
                         {
-                            if (s_enumPropertyNamesToUseNotExactSharedEnum.Contains(propertyName) ? optionValues.IsSubsetOf(enumPair.Value) : optionValues.SetEquals(enumPair.Value))
+                            var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Text) && ((string.Equals(o.Value, "true", StringComparison.Ordinal) && !string.Equals(o.Text, "Yes", StringComparison.Ordinal)) || (string.Equals(o.Value, "false", StringComparison.Ordinal) && !string.Equals(o.Text, "No", StringComparison.Ordinal)))).ToDictionary(o => o.Value, o => o.Text);
+                            if (optionValues.Count > 0)
                             {
-                                enumName = enumPair.Key;
-                                break;
+                                attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                             }
                         }
-                        if (enumName == null)
+                        else
                         {
-                            enumName = GetEnumName(entityType, propertyName);
-                            if (s_otherEnums.TryGetValue(enumName, out var enumValues))
+                            var optionValues = propertySchema.AllowedValues.Where(o => !string.IsNullOrEmpty(o.Value) || !string.IsNullOrEmpty(o.Text)).ToDictionary(o => o.Value, o => o.Text);
+                            if (optionValues.Count > 0)
                             {
-                                Console.WriteLine($"{entityType} Duplicate {enumName}: `{string.Join(", ", optionValues)}` - `{string.Join(", ", enumValues)}`");
-                            }
-                            else if (s_sharedEnums.TryGetValue(enumName, out enumValues))
-                            {
-                                Console.WriteLine($"{entityType} Shared Duplicate {enumName}: `{string.Join(", ", optionValues)}` - `{string.Join(", ", enumValues)}`");
-                            }
-                            else
-                            {
-                                s_otherEnums.Add(enumName, optionValues);
+                                attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                             }
                         }
                     }
@@ -556,6 +616,13 @@ namespace {@namespace}
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     sb.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isList || isStringDictionary));
+                    sb.AppendLine($@"        /// <summary>
+        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityType} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
+        /// </summary>");
+                    if (attributeProperties.Count > 0)
+                    {
+                        sb.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
+                    }
                     sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {fieldName}{(isEntity || isList || isStringDictionary ? $" ?? ({fieldName} = new {propertyType}({additionalConstructorParameters}))" : string.Empty)}; set => {fieldName} = {(isList || isStringDictionary ? $"new {propertyType}(value{(string.IsNullOrEmpty(additionalConstructorParameters) ? null : $", {additionalConstructorParameters}")})" : "value")}; }}");
                 }
             }
@@ -566,10 +633,7 @@ namespace {@namespace}
             sb.Append(
 $@"        internal override bool DirtyInternal
         {{
-            get
-            {{
-                return {string.Join($"{Environment.NewLine}                    || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
-            }}
+            get => {string.Join($"{Environment.NewLine}                || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
             set
             {{
                 {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
@@ -591,21 +655,24 @@ $@"        internal override bool DirtyInternal
             }
         }
 
-        private static async Task GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, IEnumerable<string> options)
+        private static async Task GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, Dictionary<string, string> options)
         {
             var sb = new StringBuilder();
             sb.AppendLine(
-$@"using System.Runtime.Serialization;
+$@"using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace {@namespace}
 {{
+    /// <summary>
+    /// {enumName}
+    /// </summary>
     public enum {enumName}
     {{");
 
             var enumMemberNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
             var existingEnumType = typeof(EncompassRestClient).Assembly.GetType($"{@namespace}.{enumName}");
             var existingEnumValues = new HashSet<int>();
-            var optionsSet = new HashSet<string>(options);
             var first = true;
             if (existingEnumType != null)
             {
@@ -615,14 +682,27 @@ namespace {@namespace}
                     {
                         sb.AppendLine(",");
                     }
-                    var enumMemberValue = member.AsString(EnumFormat.EnumMemberValue);
-                    if (enumMemberValue != null)
-                    {
-                        sb.AppendLine($@"        [EnumMember(Value = ""{enumMemberValue.Replace("\"", "\\\"")}"")]");
-                    }
                     var name = member.Name;
+                    var value = member.AsString(EnumFormat.EnumMemberValue);
+                    var text = member.AsString(EnumFormat.Description);
+                    if (options.TryGetValue(value ?? name, out var optionText) && optionText != null)
+                    {
+                        text = optionText;
+                    }
+                    sb.AppendLine($@"        /// <summary>
+        /// {(text ?? value ?? name).Replace("&", "&amp;")}
+        /// </summary>");
+
+                    if (!string.IsNullOrEmpty(text) && !string.Equals(text, value ?? name, StringComparison.Ordinal))
+                    {
+                        sb.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                    }
+                    if (value != null && !string.Equals(value, name, StringComparison.Ordinal))
+                    {
+                        sb.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                    }
                     enumMemberNames.Add(name);
-                    optionsSet.Remove(enumMemberValue ?? name);
+                    options.Remove(value ?? name);
                     var intValue = member.ToInt32();
                     existingEnumValues.Add(intValue);
                     sb.Append($"        {name} = {intValue}");
@@ -630,7 +710,7 @@ namespace {@namespace}
                 }
             }
             var i = 0;
-            foreach (var option in optionsSet)
+            foreach (var pair in options)
             {
                 while (existingEnumValues.Contains(i))
                 {
@@ -639,6 +719,13 @@ namespace {@namespace}
                 if (!first)
                 {
                     sb.AppendLine(",");
+                }
+                var value = pair.Key;
+                var text = pair.Value;
+                var option = value;
+                if (string.IsNullOrEmpty(option))
+                {
+                    option = text;
                 }
                 var nameBuilder = new StringBuilder(option.Length);
                 var startWord = true;
@@ -669,9 +756,16 @@ namespace {@namespace}
                 var name = nameBuilder.ToString();
                 if (name.Length > 0 && enumMemberNames.Add(name))
                 {
-                    if (name != option)
+                    sb.AppendLine($@"        /// <summary>
+        /// {(text ?? value).Replace("&", "&amp;")}
+        /// </summary>");
+                    if (!string.IsNullOrEmpty(text) && !string.Equals(value, text, StringComparison.Ordinal))
                     {
-                        sb.AppendLine($@"        [EnumMember(Value = ""{option.Replace("\"", "\\\"")}"")]");
+                        sb.AppendLine($@"        [Description(""{text.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
+                    }
+                    if (!string.Equals(value, name, StringComparison.Ordinal))
+                    {
+                        sb.AppendLine($@"        [EnumMember(Value = ""{value.Replace("\\", "\\\\").Replace("\"", "\\\"")}"")]");
                     }
                     sb.Append($"        {name} = {i}");
                     first = false;

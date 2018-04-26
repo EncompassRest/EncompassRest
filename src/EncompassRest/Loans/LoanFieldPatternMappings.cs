@@ -232,6 +232,8 @@ namespace EncompassRest.Loans
             fieldId = fieldId.ToLower();
             var node = _root;
             var start = 0;
+            instanceSpecifier = null;
+            modelPath = null;
             bool found;
             do
             {
@@ -240,7 +242,7 @@ namespace EncompassRest.Loans
                 {
                     var postfix = pair.Key;
                     var instanceSpecifierLength = string.Format(pair.Value.InstanceSpecifier, 1).Length;
-                    if (instanceSpecifierLength > 1 ? fieldId.Length - start - instanceSpecifierLength == postfix.Length : fieldId.Length - postfix.Length > start)
+                    if (instanceSpecifierLength > 1 ? fieldId.Length - start - instanceSpecifierLength >= postfix.Length : fieldId.Length - postfix.Length > start)
                     {
                         var i = 0;
                         while (i < postfix.Length && char.ToLower(postfix[i]) == fieldId[fieldId.Length - postfix.Length + i])
@@ -251,9 +253,20 @@ namespace EncompassRest.Loans
                         {
                             instanceSpecifier = originalFieldId.Substring(start, originalFieldId.Length - start - postfix.Length);
                             modelPath = LoanFields.CreateModelPath(string.Format(pair.Value.ModelPathPattern, instanceSpecifier));
-                            return true;
+                            if (instanceSpecifierLength > 1 && (fieldId.Length - start - instanceSpecifierLength) != postfix.Length)
+                            {
+                                found = true;
+                            }
+                            else
+                            {
+                                return true;
+                            }
                         }
                     }
+                }
+                if (found)
+                {
+                    return true;
                 }
                 var newStart = start;
                 foreach (var pair in node.Nodes)
@@ -280,8 +293,6 @@ namespace EncompassRest.Loans
                 }
                 start = newStart;
             } while (found);
-            instanceSpecifier = null;
-            modelPath = null;
             return false;
         }
 
