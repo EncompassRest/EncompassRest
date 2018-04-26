@@ -210,36 +210,6 @@ namespace EncompassRest.Utilities
                 }
                 return base.ResolveContractConverter(objectType);
             }
-        }
-
-        private sealed class PublicContractResolver : CustomContractResolver
-        {
-            protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
-            {
-                var propertyName = propertyInfo.Name;
-                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
-                if (backingField != null)
-                {
-                    var backingFieldValueProvider = base.CreateMemberValueProvider(backingField);
-                    property.ShouldSerialize = o => backingFieldValueProvider.GetValue(o) != null;
-                }
-            }
-
-            protected override JsonConverter ResolveContractConverter(Type objectType)
-            {
-                var typeData = TypeData.Get(objectType);
-                var typeInfo = typeData.TypeInfo;
-                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
-                {
-                    var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                    if (genericTypeDefinition == TypeData.OpenDirtyListType || genericTypeDefinition == TypeData.OpenDirtyDictionaryType)
-                    {
-                        return null;
-                    }
-                }
-                return base.ResolveContractConverter(objectType);
-            }
 
             protected override IValueProvider CreateMemberValueProvider(MemberInfo member)
             {
@@ -259,7 +229,7 @@ namespace EncompassRest.Utilities
                 return valueProvider;
             }
 
-            // Required for proper Public Serialization of StringEnumValue and NA
+            // Required for proper serialization of StringEnumValue and NA
             private class StringValueProvider : IValueProvider
             {
                 private readonly IValueProvider _valueProvider;
@@ -272,6 +242,36 @@ namespace EncompassRest.Utilities
                 public object GetValue(object target) => _valueProvider.GetValue(target).ToString();
 
                 public void SetValue(object target, object value) => _valueProvider.SetValue(target, value);
+            }
+        }
+
+        private sealed class PublicContractResolver : CustomContractResolver
+        {
+            protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
+            {
+                var propertyName = propertyInfo.Name;
+                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
+                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
+                if (backingField != null)
+                {
+                    var backingFieldValueProvider = CreateMemberValueProvider(backingField);
+                    property.ShouldSerialize = o => backingFieldValueProvider.GetValue(o) != null;
+                }
+            }
+
+            protected override JsonConverter ResolveContractConverter(Type objectType)
+            {
+                var typeData = TypeData.Get(objectType);
+                var typeInfo = typeData.TypeInfo;
+                if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                {
+                    var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                    if (genericTypeDefinition == TypeData.OpenDirtyListType || genericTypeDefinition == TypeData.OpenDirtyDictionaryType)
+                    {
+                        return null;
+                    }
+                }
+                return base.ResolveContractConverter(objectType);
             }
         }
 

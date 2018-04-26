@@ -98,6 +98,7 @@ namespace EncompassRest
         private Users.Users _users;
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
+        private Services.Services _services;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -243,6 +244,15 @@ namespace EncompassRest
             {
                 var settings = _settings;
                 return settings ?? Interlocked.CompareExchange(ref _settings, (settings = new Settings.Settings(this)), null) ?? settings;
+            }
+        }
+
+        public Services.Services Services
+        {
+            get
+            {
+                var services = _services;
+                return services ?? Interlocked.CompareExchange(ref _services, (services = new Services.Services(this)), null) ?? services;
             }
         }
 
