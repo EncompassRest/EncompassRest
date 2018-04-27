@@ -521,6 +521,7 @@ namespace {@namespace}
                         attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                     }
                     var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isList);
+                    string enumName = null;
                     if (propertySchema.AllowedValues?.Count > 0)
                     {
                         if (propertyType == "string")
@@ -533,7 +534,6 @@ namespace {@namespace}
                                     optionValues.Remove(ignoredOption);
                                 }
                             }
-                            string enumName = null;
                             foreach (var enumPair in s_sharedEnums)
                             {
                                 var setEquals = enumPair.Value.SetEquals(optionValues.Keys);

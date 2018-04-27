@@ -28,7 +28,8 @@ namespace EncompassRest.Tests
             var attachment = new LoanAttachment
             {
                 Title = "Testing Attachment",
-                FileWithExtension = "Text.txt"
+                FileWithExtension = "Text.txt",
+                CreateReason = AttachmentCreateReason.Upload
             };
             var text = "TESTING, TESTING, 1, 2, 3";
             var attachmentId = await loan.Attachments.UploadAttachmentAsync(attachment, Encoding.UTF8.GetBytes(text), true);
@@ -45,7 +46,8 @@ namespace EncompassRest.Tests
             var newAttachment = new LoanAttachment
             {
                 Title = "Bob",
-                FileWithExtension = "Bobby.txt"
+                FileWithExtension = "Bobby.txt",
+                CreateReason = AttachmentCreateReason.Upload
             };
             var newText = "This is a test of the emergency broadcast system, this is only a test.";
             var newAttachmentId = await loan.Attachments.UploadAttachmentAsync(newAttachment, new MemoryStream(Encoding.UTF8.GetBytes(newText)), true);
