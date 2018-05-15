@@ -92,6 +92,8 @@ namespace EncompassRest.Loans
 
         public override LoanFieldType Type => LoanFieldType.Custom;
 
+        public override LoanEntity? LoanEntity => EncompassRest.Loans.LoanEntity.CustomField;
+
         internal CustomLoanField(string fieldId, Loan loan, ModelPath modelPath)
             : base(fieldId, loan, modelPath)
         {

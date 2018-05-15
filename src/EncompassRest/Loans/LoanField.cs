@@ -19,6 +19,8 @@ namespace EncompassRest.Loans
         private bool _propertyAttributeIsSet;
         private LoanFieldPropertyAttribute _propertyAttribute;
         private ReadOnlyCollection<FieldOption> _options;
+        private bool _loanEntitySet;
+        private LoanEntity? _loanEntity;
 
         internal readonly Loan Loan;
 
@@ -291,6 +293,43 @@ namespace EncompassRest.Loans
                     _options = options;
                 }
                 return options;
+            }
+        }
+
+        public virtual LoanEntity? LoanEntity
+        {
+            get
+            {
+                if (_loanEntitySet)
+                {
+                    return _loanEntity;
+                }
+                else
+                {
+                    var loanEntity = (LoanEntity?)null;
+                    if (_modelPath.Segments.Count == 1)
+                    {
+                        loanEntity = EncompassRest.Loans.LoanEntity.Loan;
+                    }
+                    else
+                    {
+                        var finalSegmentIndex = _modelPath.Segments.Count - 2;
+
+                        var declaredType = TypeData<Loan>.Type;
+                        for (var i = 0; i <= finalSegmentIndex && declaredType != null; ++i)
+                        {
+                            declaredType = _modelPath.Segments[i].GetDeclaredType(declaredType);
+                        }
+                        if (declaredType != null && EnumsNET.Enums.TryParse<LoanEntity>(declaredType.Name, out var newLoanEntity, EnumFormat.Name))
+                        {
+                            loanEntity = newLoanEntity;
+                        }
+                    }
+                    
+                    _loanEntity = loanEntity;
+                    _loanEntitySet = true;
+                    return loanEntity;
+                }
             }
         }
 

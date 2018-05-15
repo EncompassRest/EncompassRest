@@ -26,7 +26,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync();
-            var ignoredEntities = new HashSet<string>(new[] { "CoBorrower", "LOCompensation", "ElliUCDFields", "DocumentOrderLog", "NonVols" });
+            var ignoredEntities = new HashSet<string>(new[] { "CoBorrower", "LOCompensation" });
             Assert.IsTrue(supportedEntities.All(e => e.EnumValue.HasValue || ignoredEntities.Contains(e.Value)));
             var entities = new HashSet<string>(supportedEntities.Select(e => e.Value));
             entities.ExceptWith(ignoredEntities);
@@ -1243,6 +1243,40 @@ namespace EncompassRest.Tests
                     }
                     break;
             }
+        }
+
+        [TestMethod]
+        public void Loan_FieldsLoanEntity()
+        {
+            var loan = new Loan();
+            var loanFields = loan.Fields;
+
+            LoanField field = null;
+
+            foreach (var pair in LoanFields.FieldMappings)
+            {
+                field = loanFields[pair.Key];
+                Assert.IsNotNull(field.LoanEntity);
+            }
+
+            field = loanFields["364"];
+            Assert.AreEqual(LoanEntity.Loan, field.LoanEntity);
+
+            field = loanFields["CX.ABC"];
+            Assert.AreEqual(LoanEntity.CustomField, field.LoanEntity);
+
+            field = loanFields["Log.MS.CurrentMilestone"];
+            Assert.AreEqual(LoanEntity.VirtualFields, field.LoanEntity);
+
+            field = loanFields["NEWHUD.X63"];
+            Assert.AreEqual(LoanEntity.Gfe2010Fee, field.LoanEntity);
+
+            Assert.IsTrue(LoanFields.FieldMappings.TryAdd("NEWFIELD", "Loan.NewEntity[2].Borrower.BorrowerId", false));
+
+            field = loanFields["NEWFIELD"];
+            Assert.IsNull(field.LoanEntity);
+
+            Assert.IsTrue(LoanFields.FieldMappings.TryRemove("NEWFIELD", out _));
         }
     }
 }

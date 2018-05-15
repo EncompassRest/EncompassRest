@@ -20,6 +20,8 @@ namespace EncompassRest.Loans
 
         public override LoanFieldType Type => LoanFieldType.Virtual;
 
+        public override LoanEntity? LoanEntity => EncompassRest.Loans.LoanEntity.VirtualFields;
+
         internal VirtualLoanField(string fieldId, Loan loan, ModelPath modelPath, string instanceSpecifier = null)
             : base(fieldId, loan, modelPath, null, instanceSpecifier)
         {
