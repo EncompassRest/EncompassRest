@@ -382,7 +382,7 @@ namespace EncompassRest
                         foreach (var fieldPatternPair in propertySchema.FieldPatterns)
                         {
                             var fieldPattern = fieldPatternPair.Key;
-                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("FBENN") && !fieldPattern.StartsWith("FCENN") && !fieldPattern.StartsWith("CUSTNN"))
+                            if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("CUSTNN"))
                             {
                                 if (fieldPatternPair.Value.Count != 1)
                                 {

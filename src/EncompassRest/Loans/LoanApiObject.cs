@@ -22,12 +22,12 @@ namespace EncompassRest.Loans
     public abstract class LoanApiObject<T> : LoanApiObject
         where T : class
     {
-        private readonly LoanObjectBoundApis _loanObjectBoundApis;
+        internal readonly LoanObjectBoundApis LoanObjectBoundApis;
 
         internal LoanApiObject(EncompassRestClient client, LoanObjectBoundApis loanObjectBoundApis, string baseApiPath)
             : this(client, loanObjectBoundApis.LoanId, baseApiPath)
         {
-            _loanObjectBoundApis = loanObjectBoundApis;
+            LoanObjectBoundApis = loanObjectBoundApis;
         }
 
         internal LoanApiObject(EncompassRestClient client, string loanId, string baseApiPath)
@@ -41,9 +41,9 @@ namespace EncompassRest.Loans
             where TClass : class, T, IDirty, IIdentifiable
         {
             var list = await GetDirtyListAsync<TClass>(null, null, methodName, null, cancellationToken).ConfigureAwait(false);
-            if (_loanObjectBoundApis?.ReflectToLoanObject == true)
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                var existing = GetInLoan(_loanObjectBoundApis.Loan);
+                var existing = GetInLoan(LoanObjectBoundApis.Loan);
                 existing.Clear();
                 foreach (var item in list)
                 {
@@ -57,7 +57,7 @@ namespace EncompassRest.Loans
             where TClass : class, T, IDirty, IIdentifiable
         {
             var value = await GetDirtyAsync<TClass>(id, null, methodName, id, cancellationToken).ConfigureAwait(false);
-            if (_loanObjectBoundApis?.ReflectToLoanObject == true)
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 AddToOrUpdateLoan(value);
             }
@@ -68,9 +68,9 @@ namespace EncompassRest.Loans
             where TClass : class, T, IDirty, IIdentifiable
         {
             var id = await PostPopulateDirtyAsync(null, methodName, value, populate, cancellationToken).ConfigureAwait(false);
-            if (_loanObjectBoundApis?.ReflectToLoanObject == true)
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                GetInLoan(_loanObjectBoundApis.Loan).Add(value);
+                GetInLoan(LoanObjectBoundApis.Loan).Add(value);
             }
             return id;
         }
@@ -79,7 +79,7 @@ namespace EncompassRest.Loans
             where TClass : class, T, IDirty, IIdentifiable
         {
             await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, value, populate, cancellationToken).ConfigureAwait(false);
-            if (_loanObjectBoundApis?.ReflectToLoanObject == true)
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 AddToOrUpdateLoan(value);
             }
@@ -89,9 +89,9 @@ namespace EncompassRest.Loans
             where TClass : class, T, IDirty, IIdentifiable
         {
             var success = await DeleteAsync(id, null, cancellationToken).ConfigureAwait(false);
-            if (success && _loanObjectBoundApis?.ReflectToLoanObject == true)
+            if (success && LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
-                var list = GetInLoan(_loanObjectBoundApis.Loan);
+                var list = GetInLoan(LoanObjectBoundApis.Loan);
                 for (var i = 0; i < list.Count; ++i)
                 {
                     if (string.Equals(((IIdentifiable)list[i]).Id, id, StringComparison.OrdinalIgnoreCase))
@@ -107,7 +107,7 @@ namespace EncompassRest.Loans
         private void AddToOrUpdateLoan<TClass>(TClass item)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            var list = GetInLoan(_loanObjectBoundApis.Loan);
+            var list = GetInLoan(LoanObjectBoundApis.Loan);
             var found = false;
             for (var i = 0; i < list.Count; ++i)
             {
