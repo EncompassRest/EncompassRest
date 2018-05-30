@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
@@ -9,6 +10,7 @@ namespace EncompassRest.Loans
     public partial class Loan
     {
         private LoanFields _fields;
+        private bool _isInitialized;
 
         [JsonIgnore]
         public EncompassRestClient Client { get; private set; }
@@ -90,7 +92,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan creation constructor
         /// </summary>
+        /// <param name="client"></param>
+        public Loan(EncompassRestClient client)
+        {
+            Preconditions.NotNull(client, nameof(client));
+
+            Client = client;
+        }
+
+        /// <summary>
+        /// Loan deserialization constructor
+        /// </summary>
         [JsonConstructor]
+        [Obsolete("Use EncompassRestClient parameter constructor instead.")]
         public Loan()
         {
         }
@@ -100,7 +114,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            if (!ReferenceEquals(Client, client))
+            if (!ReferenceEquals(Client, client) || !_isInitialized)
             {
                 Client = client;
                 EncompassId = loanId;
@@ -108,19 +122,14 @@ namespace EncompassRest.Loans
                 Attachments = new LoanAttachments(client, EncompassId);
                 CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
                 LoanApis = new LoanObjectBoundApis(client, this);
+                _isInitialized = true;
             }
         }
 
         internal override bool CustomDirty
         {
-            get
-            {
-                return _currentApplicationIndex.Dirty;
-            }
-            set
-            {
-                _currentApplicationIndex.Dirty = value;
-            }
+            get => _currentApplicationIndex.Dirty;
+            set => _currentApplicationIndex.Dirty = value;
         }
     }
 }

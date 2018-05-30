@@ -2,7 +2,7 @@
 {
     public sealed class OrderAUSParameters : OrderServiceParameters
     {
-        public AUSProduct Product => (AUSProduct)base.Product;
+        public new AUSProduct Product => (AUSProduct)base.Product;
 
         public OrderAUSParameters(AUSProduct product)
             : base(product)

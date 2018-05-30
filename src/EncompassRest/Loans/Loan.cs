@@ -920,7 +920,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan Info Loan Created Date [2025]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Loan Info Loan Created Date")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true, Description = "Loan Info Loan Created Date")]
         public DateTime? LoanCreatedDateUtc { get => _loanCreatedDateUtc; set => _loanCreatedDateUtc = value; }
         private DirtyValue<string> _loanIdNumber;
         /// <summary>
@@ -1134,7 +1134,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tracking - Current Milestone Date [MS.STATUSDATE]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Tracking - Current Milestone Date")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true, Description = "Tracking - Current Milestone Date")]
         public DateTime? MilestoneCurrentDateUtc { get => _milestoneCurrentDateUtc; set => _milestoneCurrentDateUtc = value; }
         private DirtyValue<StringEnumValue<MilestoneCurrentName>> _milestoneCurrentName;
         /// <summary>
@@ -1668,7 +1668,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Server Date Time DDM Applied [DMDDM.X1]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Server Date Time DDM Applied")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, ReadOnly = true, Description = "Server Date Time DDM Applied")]
         public DateTime? ServerDateTimeDDMApplied { get => _serverDateTimeDDMApplied; set => _serverDateTimeDDMApplied = value; }
         private DirtyValue<string> _serviceProviderAdditionalInfo;
         /// <summary>

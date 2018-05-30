@@ -14,6 +14,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog AddDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? AddDate { get => _addDate; set => _addDate = value; }
         private DirtyValue<string> _addedBy;
         /// <summary>
@@ -69,6 +70,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog CompletedDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompletedDateUtc { get => _completedDateUtc; set => _completedDateUtc = value; }
         private DirtyValue<int?> _contactCount;
         /// <summary>
@@ -89,6 +91,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<int?> _daysToComplete;
         /// <summary>
@@ -104,6 +107,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog ExpectedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ExpectedDate { get => _expectedDate; set => _expectedDate = value; }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
@@ -139,6 +143,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneTaskLog MilestoneTaskLogDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? MilestoneTaskLogDateUtc { get => _milestoneTaskLogDateUtc; set => _milestoneTaskLogDateUtc = value; }
         private DirtyValue<string> _priority;
         /// <summary>

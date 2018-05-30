@@ -16,7 +16,7 @@ namespace EncompassRest.Schema
             {
                 case JsonToken.String:
                     var value = reader.Value.ToString();
-                    return new FieldOption { Value = value, Text = value };
+                    return new FieldOption(value);
                 default:
                     return serializer.Deserialize<FieldOption>(reader);
             }

@@ -33,6 +33,8 @@ namespace EncompassRest
 
         public TimeSpan Timeout { get; set; }
 
+        public bool InitializeCustomFieldsCache { get; set; }
+
         public int TimeoutRetryCount
         {
             get => _timeoutRetryCount;

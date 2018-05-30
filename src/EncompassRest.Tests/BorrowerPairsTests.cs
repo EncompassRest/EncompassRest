@@ -14,7 +14,7 @@ namespace EncompassRest.Tests
         public async Task BorrowerPairs_ReflectToLoanObject()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan();
+            var loan = new Loan(client);
             var loanId = await client.Loans.CreateLoanAsync(loan);
             Assert.AreEqual(0, loan.Applications.Count);
             loan.LoanApis.ReflectToLoanObject = true;
@@ -45,7 +45,7 @@ namespace EncompassRest.Tests
         public async Task BorrowerPairs_DontReflectToLoanObject()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan();
+            var loan = new Loan(client);
             var loanId = await client.Loans.CreateLoanAsync(loan);
             Assert.AreEqual(0, loan.Applications.Count);
             await BorrowerPairsTest(client, loan, loanId, loan.LoanApis);
@@ -55,7 +55,7 @@ namespace EncompassRest.Tests
         public async Task BorrowerPairs()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan();
+            var loan = new Loan(client);
             var loanId = await client.Loans.CreateLoanAsync(loan);
             Assert.AreEqual(0, loan.Applications.Count);
             await BorrowerPairsTest(client, loan, loanId, client.Loans.GetLoanApis(loanId));

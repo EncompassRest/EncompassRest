@@ -54,41 +54,49 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PostClosingConditionLog DateAddedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => _dateAddedUtc = value; }
         private DirtyValue<DateTime?> _dateClearedUtc;
         /// <summary>
         /// PostClosingConditionLog DateClearedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateClearedUtc { get => _dateClearedUtc; set => _dateClearedUtc = value; }
         private DirtyValue<DateTime?> _dateExpected;
         /// <summary>
         /// PostClosingConditionLog DateExpected
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => _dateExpected = value; }
         private DirtyValue<DateTime?> _dateReceived;
         /// <summary>
         /// PostClosingConditionLog DateReceived
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => _dateReceived = value; }
         private DirtyValue<DateTime?> _dateRequestedUtc;
         /// <summary>
         /// PostClosingConditionLog DateRequestedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequestedUtc { get => _dateRequestedUtc; set => _dateRequestedUtc = value; }
         private DirtyValue<DateTime?> _dateRerequestedUtc;
         /// <summary>
         /// PostClosingConditionLog DateRerequestedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequestedUtc { get => _dateRerequestedUtc; set => _dateRerequestedUtc = value; }
         private DirtyValue<DateTime?> _dateSentUtc;
         /// <summary>
         /// PostClosingConditionLog DateSentUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateSentUtc { get => _dateSentUtc; set => _dateSentUtc = value; }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// PostClosingConditionLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<int?> _daysTillDue;
         /// <summary>
