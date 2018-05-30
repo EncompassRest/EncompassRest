@@ -10,19 +10,18 @@ namespace EncompassRest.Loans
     public partial class Loan
     {
         private LoanFields _fields;
-        private bool _isInitialized;
 
         [JsonIgnore]
         public EncompassRestClient Client { get; private set; }
 
         [JsonIgnore]
-        public LoanDocuments Documents { get; private set; }
+        public LoanDocuments Documents => LoanApis.Documents;
 
         [JsonIgnore]
-        public LoanAttachments Attachments { get; private set; }
+        public LoanAttachments Attachments => LoanApis.Attachments;
 
         [JsonIgnore]
-        public LoanCustomDataObjects CustomDataObjects { get; private set; }
+        public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
 
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis { get; private set; }
@@ -114,15 +113,16 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            if (!ReferenceEquals(Client, client) || !_isInitialized)
+            if (!string.IsNullOrEmpty(EncompassId) && !string.Equals(EncompassId, loanId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException("Cannot initialize with different loanId");
+            }
+
+            if (!ReferenceEquals(Client, client) || LoanApis == null)
             {
                 Client = client;
                 EncompassId = loanId;
-                Documents = new LoanDocuments(client, EncompassId);
-                Attachments = new LoanAttachments(client, EncompassId);
-                CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
                 LoanApis = new LoanObjectBoundApis(client, this);
-                _isInitialized = true;
             }
         }
 

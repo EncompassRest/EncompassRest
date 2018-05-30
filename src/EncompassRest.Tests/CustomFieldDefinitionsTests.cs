@@ -95,5 +95,16 @@ namespace EncompassRest.Tests
             Assert.AreEqual(audit.Data.EnumValue, customField.Audit.Data.EnumValue);
             Assert.IsTrue(await client.Settings.Loan.CustomFields.DeleteCustomFieldAsync(fieldId));
         }
+
+        [TestMethod]
+        public async Task FieldDescriptors_RefreshCustomFields()
+        {
+            var client = await GetTestClientAsync();
+            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var customFields = fieldDescriptors.CustomFields;
+            Assert.AreEqual(0, customFields.Count);
+            await fieldDescriptors.RefreshCustomFieldsAsync();
+            Assert.IsTrue(customFields.Count > 0);
+        }
     }
 }
