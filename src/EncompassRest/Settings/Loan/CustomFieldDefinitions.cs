@@ -30,7 +30,7 @@ namespace EncompassRest.Settings.Loan
             return GetRawAsync(fieldId, queryString, nameof(GetCustomFieldRawAsync), fieldId, cancellationToken);
         }
 
-        public Task CreateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default)
+        internal Task CreateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(customField, nameof(customField));
             Preconditions.NotNullOrEmpty(customField.Id, $"{nameof(customField)}.{nameof(customField.Id)}");
@@ -38,7 +38,7 @@ namespace EncompassRest.Settings.Loan
             return PutAsync(customField.Id, null, JsonStreamContent.Create(customField), nameof(CreateCustomFieldAsync), customField.Id, cancellationToken);
         }
 
-        public Task CreateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
+        internal Task CreateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNull(customField, nameof(customField));
@@ -46,7 +46,7 @@ namespace EncompassRest.Settings.Loan
             return PutAsync(fieldId, queryString, new JsonStringContent(customField), nameof(CreateCustomFieldRawAsync), fieldId, cancellationToken);
         }
 
-        public Task UpdateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default)
+        internal Task UpdateCustomFieldAsync(CustomFieldDefinition customField, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(customField, nameof(customField));
             Preconditions.NotNullOrEmpty(customField.Id, $"{nameof(customField)}.{nameof(customField.Id)}");
@@ -54,7 +54,7 @@ namespace EncompassRest.Settings.Loan
             return PatchAsync(customField.Id, null, JsonStreamContent.Create(customField), nameof(UpdateCustomFieldAsync), customField.Id, cancellationToken);
         }
 
-        public Task UpdateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
+        internal Task UpdateCustomFieldRawAsync(string fieldId, string customField, string queryString = null, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNull(customField, nameof(customField));
@@ -62,7 +62,7 @@ namespace EncompassRest.Settings.Loan
             return PatchAsync(fieldId, queryString, JsonStreamContent.Create(customField), nameof(UpdateCustomFieldRawAsync), fieldId, cancellationToken);
         }
 
-        public Task<bool> DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
+        internal Task<bool> DeleteCustomFieldAsync(string fieldId, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
