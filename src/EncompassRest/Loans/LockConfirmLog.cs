@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog BuySideExpirationDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? BuySideExpirationDate { get => _buySideExpirationDate; set => _buySideExpirationDate = value; }
         private DirtyList<LogComment> _commentList;
         /// <summary>
@@ -54,6 +55,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
@@ -94,11 +96,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockConfirmLog SellSideDeliveryDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideDeliveryDate { get => _sellSideDeliveryDate; set => _sellSideDeliveryDate = value; }
         private DirtyValue<DateTime?> _sellSideExpirationDate;
         /// <summary>
         /// LockConfirmLog SellSideExpirationDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideExpirationDate { get => _sellSideExpirationDate; set => _sellSideExpirationDate = value; }
         private DirtyValue<string> _systemId;
         /// <summary>

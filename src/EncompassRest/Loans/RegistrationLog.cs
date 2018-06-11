@@ -34,11 +34,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegistrationLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<DateTime?> _expiredDate;
         /// <summary>
         /// RegistrationLog ExpiredDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ExpiredDate { get => _expiredDate; set => _expiredDate = value; }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
@@ -89,6 +91,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RegistrationLog RegisteredDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? RegisteredDate { get => _registeredDate; set => _registeredDate = value; }
         private DirtyValue<string> _systemId;
         /// <summary>

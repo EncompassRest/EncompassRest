@@ -29,11 +29,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrincipalDisbursementTransaction CreatedDateTimeUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreatedDateTimeUtc { get => _createdDateTimeUtc; set => _createdDateTimeUtc = value; }
         private DirtyValue<DateTime?> _disbursementDate;
         /// <summary>
         /// PrincipalDisbursementTransaction DisbursementDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DisbursementDate { get => _disbursementDate; set => _disbursementDate = value; }
         private DirtyValue<string> _guid;
         /// <summary>
@@ -64,6 +66,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrincipalDisbursementTransaction ModifiedDateTimeUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ModifiedDateTimeUtc { get => _modifiedDateTimeUtc; set => _modifiedDateTimeUtc = value; }
         private DirtyValue<string> _servicingPaymentMethod;
         /// <summary>
@@ -84,6 +87,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrincipalDisbursementTransaction TransactionDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         internal override bool DirtyInternal
         {

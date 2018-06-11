@@ -223,7 +223,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQL - Fraud Orders - Last Fraud Service Completed Date [TQL.X27]
         /// </summary>
-        [LoanFieldProperty(Description = "TQL - Fraud Orders - Last Fraud Service Completed Date")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "TQL - Fraud Orders - Last Fraud Service Completed Date")]
         public DateTime? LastFraudOrderCompletedDate { get => _lastFraudOrderCompletedDate; set => _lastFraudOrderCompletedDate = value; }
         private DirtyValue<string> _lastFraudOrderProduct;
         /// <summary>

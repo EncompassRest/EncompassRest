@@ -1,108 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
-using EnumsNET;
-using EnumsNET.NonGeneric;
 using Newtonsoft.Json.Linq;
 
 namespace EncompassRest.Loans
 {
     public class LoanField
     {
-        private readonly ModelPath _modelPath;
-        private LoanFieldValueType? _valueType;
-        private int? _borrowerPairIndex;
-        private bool _propertyAttributeIsSet;
-        private LoanFieldPropertyAttribute _propertyAttribute;
-        private ReadOnlyCollection<FieldOption> _options;
-
         internal readonly Loan Loan;
+        private readonly ModelPath _modelPath;
 
-        public string FieldId { get; }
+        public FieldDescriptor Descriptor { get; }
+
+        public string FieldId => Descriptor.FieldId;
 
         public string ModelPath => _modelPath.ToString();
 
-        public bool MultiInstance => InstanceSpecifier != null;
+        [Obsolete("Use Descriptor.MultiInstance instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool MultiInstance => Descriptor.MultiInstance;
 
-        public string InstanceSpecifier { get; }
+        [Obsolete("Use Descriptor.InstanceSpecifier instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string InstanceSpecifier => Descriptor.InstanceSpecifier;
 
-        public bool IsBorrowerPairSpecific => BorrowerPairIndex.HasValue;
+        [Obsolete("Use Descriptor.IsBorrowerPairSpecific instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public bool IsBorrowerPairSpecific => Descriptor.IsBorrowerPairSpecific;
 
-        public int? BorrowerPairIndex => _borrowerPairIndex < 0 ? Loan.CurrentApplicationIndex : _borrowerPairIndex;
+        public int? BorrowerPairIndex { get; }
 
-        public virtual LoanFieldValueType ValueType
-        {
-            get
-            {
-                var valueType = _valueType;
-                if (valueType == null)
-                {
-                    var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
-                    if (declaredType == typeof(string))
-                    {
-                        valueType = LoanFieldValueType.String;
-                    }
-                    else if (declaredType == typeof(DateTime?))
-                    {
-                        valueType = LoanFieldValueType.DateTime;
-                    }
-                    else if (declaredType == typeof(decimal?))
-                    {
-                        valueType = LoanFieldValueType.Decimal;
-                    }
-                    else if (declaredType == typeof(int?))
-                    {
-                        valueType = LoanFieldValueType.Int32;
-                    }
-                    else if (declaredType == typeof(bool?))
-                    {
-                        valueType = LoanFieldValueType.Boolean;
-                    }
-                    else
-                    {
-                        valueType = LoanFieldValueType.Unknown;
-                        if (declaredType != null)
-                        {
-                            var typeInfo = declaredType.GetTypeInfo();
-                            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
-                            {
-                                var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                                if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
-                                {
-                                    valueType = LoanFieldValueType.String;
-                                }
-                                else if (genericTypeDefinition == TypeData.OpenNaType)
-                                {
-                                    valueType = LoanFieldValueType.NADecimal;
-                                }
-                            }
-                        }
-                    }
-                    _valueType = valueType;
-                }
-                return valueType.GetValueOrDefault();
-            }
-        }
+        [Obsolete("Use Descriptor.ValueType instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public LoanFieldValueType ValueType => Descriptor.ValueType;
 
-        public virtual LoanFieldType Type => LoanFieldType.Standard;
+        [Obsolete("Use Descriptor.Type instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public LoanFieldType Type => Descriptor.Type;
 
-        public LoanFieldFormat? Format => PropertyAttribute?._format;
+        public LoanFieldFormat? Format => Descriptor.Format;
 
-        public bool ReadOnly => PropertyAttribute?.ReadOnly == true;
+        public bool ReadOnly => Descriptor.ReadOnly;
 
-        public string Description => PropertyAttribute?.Description;
+        [Obsolete("Use Descriptor.Description instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public string Description => Descriptor.Description;
 
         public string UnformattedValue => GetUnformattedValue() ?? string.Empty;
 
         private string GetUnformattedValue()
         {
-            string value;
             switch (Format)
             {
+                case LoanFieldFormat.DECIMAL:
                 case LoanFieldFormat.DECIMAL_1:
                 case LoanFieldFormat.DECIMAL_2:
                 case LoanFieldFormat.DECIMAL_3:
@@ -112,17 +65,22 @@ namespace EncompassRest.Loans
                 case LoanFieldFormat.DECIMAL_7:
                 case LoanFieldFormat.DECIMAL_10:
                     return ToDecimal()?.ToString();
+                case LoanFieldFormat.DATE:
+                case LoanFieldFormat.DATETIME:
+                    return ToDateTime()?.ToString();
+                case LoanFieldFormat.YN:
+                    var boolValue = ToBoolean();
+                    return boolValue.HasValue ? (boolValue.GetValueOrDefault() ? "Y" : "N") : null;
+                case LoanFieldFormat.INTEGER:
+                    return ToInt32()?.ToString();
                 case LoanFieldFormat.SSN:
-                    value = Value?.ToString();
-                    return value?.Replace("-", string.Empty);
+                    return ToString()?.Replace("-", string.Empty);
                 case LoanFieldFormat.PHONE:
-                    value = Value?.ToString();
-                    return value?.Replace("-", string.Empty).Replace(" ", string.Empty);
+                    return ToString()?.Replace("-", string.Empty).Replace(" ", string.Empty);
                 case LoanFieldFormat.ZIPCODE:
-                    value = Value?.ToString();
-                    return value?.Replace("-", string.Empty);
+                    return ToString()?.Replace("-", string.Empty);
             }
-            return Value?.ToString();
+            return ToString();
         }
 
         public string FormattedValue => GetFormattedValue() ?? string.Empty;
@@ -148,17 +106,26 @@ namespace EncompassRest.Loans
                     return ToDecimal()?.ToString("#,0.0000000");
                 case LoanFieldFormat.DECIMAL_10:
                     return ToDecimal()?.ToString("#,0.0000000000");
+                case LoanFieldFormat.INTEGER:
+                    return ToInt32()?.ToString("#,0");
+                case LoanFieldFormat.DATE:
+                    return ToDateTime()?.ToString("MM/dd/yyyy");
+                case LoanFieldFormat.DATETIME:
+                    return ToDateTime()?.ToString();
+                case LoanFieldFormat.YN:
+                    var boolValue = ToBoolean();
+                    return boolValue.HasValue ? (boolValue.GetValueOrDefault() ? "Y" : "N") : null;
                 case LoanFieldFormat.SSN:
-                    value = Value?.ToString();
+                    value = ToString();
                     return value?.Length == 9 ? $"{value.Substring(0, 4)}-{value.Substring(4, 2)}-{value.Substring(6)}" : value;
                 case LoanFieldFormat.PHONE:
-                    value = Value?.ToString();
+                    value = ToString();
                     return value?.Length >= 7 && value.Cast<char>().All(c => char.IsDigit(c)) ? $"{value.Substring(0, 3)}-{value.Substring(3, 3)}-{value.Substring(6, Math.Min(4, value.Length - 6))}{(value.Length > 10 ? $" {value.Substring(10)}" : string.Empty)}" : value;
                 case LoanFieldFormat.ZIPCODE:
-                    value = Value?.ToString();
+                    value = ToString();
                     return value?.Length == 9 ? $"{value.Substring(0, 5)}-{value.Substring(5)}" : value;
             }
-            return Value?.ToString();
+            return ToString();
         }
 
         public virtual object Value
@@ -233,87 +200,16 @@ namespace EncompassRest.Loans
             }
         }
 
-        public ReadOnlyCollection<FieldOption> Options
-        {
-            get
-            {
-                var options = _options;
-                if (options == null)
-                {
-                    var dictionary = new Dictionary<string, string>();
-                    var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
-                    if (declaredType != null)
-                    {
-                        if (declaredType == TypeData<bool?>.Type)
-                        {
-                            dictionary.Add("true", "Yes");
-                            dictionary.Add("false", "No");
-                        }
-                        else
-                        {
-                            var typeInfo = declaredType.GetTypeInfo();
-                            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
-                            {
-                                var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                                if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
-                                {
-                                    var enumType = typeInfo.GenericTypeArguments[0];
-                                    foreach (var member in NonGenericEnums.GetMembers(enumType))
-                                    {
-                                        var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
-                                        if (!dictionary.ContainsKey(value))
-                                        {
-                                            dictionary.Add(value, member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name));
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    var propertyOptions = PropertyAttribute?.Options;
-                    if (propertyOptions != null)
-                    {
-                        foreach (var pair in propertyOptions)
-                        {
-                            dictionary[pair.Key] = pair.Value;
-                        }
-                    }
-                    var missingOptions = PropertyAttribute?.MissingOptions;
-                    if (missingOptions != null)
-                    {
-                        foreach (var missingOption in missingOptions)
-                        {
-                            dictionary.Remove(missingOption);
-                        }
-                    }
-                    
-                    options = new ReadOnlyCollection<FieldOption>(dictionary.Select(p => new FieldOption { Value = p.Key, Text = p.Value }).ToList());
-                    _options = options;
-                }
-                return options;
-            }
-        }
+        [Obsolete("Use Descriptor.Options instead.")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public ReadOnlyCollection<FieldOption> Options => Descriptor.Options;
 
-        internal LoanFieldPropertyAttribute PropertyAttribute
+        internal LoanField(FieldDescriptor descriptor, Loan loan, ModelPath modelPath = null, int? borrowerPairIndex = null)
         {
-            get
-            {
-                if (!_propertyAttributeIsSet)
-                {
-                    _propertyAttribute = _modelPath.GetAttribute<LoanFieldPropertyAttribute>(TypeData<Loan>.Type);
-                    _propertyAttributeIsSet = true;
-                }
-                return _propertyAttribute;
-            }
-        }
-
-        internal LoanField(string fieldId, Loan loan, ModelPath modelPath, int? borrowerPairIndex = null, string instanceSpecifier = null)
-        {
-            FieldId = fieldId;
+            Descriptor = descriptor;
             Loan = loan;
-            _modelPath = modelPath;
-            _borrowerPairIndex = borrowerPairIndex;
-            InstanceSpecifier = instanceSpecifier;
+            BorrowerPairIndex = borrowerPairIndex;
+            _modelPath = modelPath ?? descriptor._modelPath;
         }
 
         public override string ToString() => Value?.ToString();

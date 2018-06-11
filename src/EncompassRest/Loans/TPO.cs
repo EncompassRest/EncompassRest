@@ -518,7 +518,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TPO Ready to Disclose Date [TPO.X92]
         /// </summary>
-        [LoanFieldProperty(Description = "TPO Ready to Disclose Date")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "TPO Ready to Disclose Date")]
         public DateTime? ReadytoDiscloseDateUtc { get => _readytoDiscloseDateUtc; set => _readytoDiscloseDateUtc = value; }
         private DirtyValue<DateTime?> _registerDate;
         /// <summary>

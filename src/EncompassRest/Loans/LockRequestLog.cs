@@ -24,11 +24,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog BuySideExpirationDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? BuySideExpirationDate { get => _buySideExpirationDate; set => _buySideExpirationDate = value; }
         private DirtyValue<DateTime?> _buySideNewLockExtensionDate;
         /// <summary>
         /// LockRequestLog BuySideNewLockExtensionDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? BuySideNewLockExtensionDate { get => _buySideNewLockExtensionDate; set => _buySideNewLockExtensionDate = value; }
         private DirtyValue<int?> _buySideNumDayExtended;
         /// <summary>
@@ -59,6 +61,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
@@ -154,16 +157,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockRequestLog SellSideDeliveryDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideDeliveryDate { get => _sellSideDeliveryDate; set => _sellSideDeliveryDate = value; }
         private DirtyValue<DateTime?> _sellSideExpirationDate;
         /// <summary>
         /// LockRequestLog SellSideExpirationDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideExpirationDate { get => _sellSideExpirationDate; set => _sellSideExpirationDate = value; }
         private DirtyValue<DateTime?> _sellSideNewLockExtensionDate;
         /// <summary>
         /// LockRequestLog SellSideNewLockExtensionDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? SellSideNewLockExtensionDate { get => _sellSideNewLockExtensionDate; set => _sellSideNewLockExtensionDate = value; }
         private DirtyValue<int?> _sellSideNumDayExtended;
         /// <summary>

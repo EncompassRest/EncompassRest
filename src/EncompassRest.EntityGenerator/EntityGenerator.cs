@@ -12,6 +12,7 @@ using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
 using System.IO.Compression;
 using System.Globalization;
+using Newtonsoft.Json.Linq;
 
 namespace EncompassRest
 {
@@ -269,7 +270,7 @@ namespace EncompassRest
                             {
                                 using (var jr = new JsonTextReader(sr))
                                 {
-                                    var virtualFields = serializer.Deserialize<List<string>>(jr);
+                                    var virtualFields = serializer.Deserialize<JArray>(jr);
                                     serializer.Serialize(sw, virtualFields);
                                 }
                             }
@@ -285,7 +286,7 @@ namespace EncompassRest
                             {
                                 using (var jr = new JsonTextReader(sr))
                                 {
-                                    var virtualFieldPatterns = serializer.Deserialize<List<string>>(jr);
+                                    var virtualFieldPatterns = serializer.Deserialize<JArray>(jr);
                                     serializer.Serialize(sw, virtualFieldPatterns);
                                 }
                             }
@@ -511,6 +512,15 @@ namespace {@namespace}
                     if (!string.IsNullOrEmpty(propertySchema.Format))
                     {
                         attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
+                    }
+                    else
+                    {
+                        switch (propertySchema.Type.EnumValue)
+                        {
+                            case PropertySchemaType.DateTime:
+                                attributeProperties.Add($"Format = LoanFieldFormat.DATETIME");
+                                break;
+                        }
                     }
                     if (propertySchema.ReadOnly == true)
                     {

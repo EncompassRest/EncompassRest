@@ -29,6 +29,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment Date
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? Date { get => _date; set => _date = value; }
         private DirtyValue<int?> _forRoleId;
         /// <summary>
@@ -59,6 +60,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogComment ReviewedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReviewedDate { get => _reviewedDate; set => _reviewedDate = value; }
         internal override bool DirtyInternal
         {

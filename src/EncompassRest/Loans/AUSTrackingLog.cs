@@ -393,6 +393,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUSTrackingLog LogCreatedOn
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LogCreatedOn { get => _logCreatedOn; set => _logCreatedOn = value; }
         private DirtyValue<string> _logCreditAgency1;
         /// <summary>
@@ -865,7 +866,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// AUS Tracking - Freddie Mac LQA - Submission DateTime [AUS.X177]
         /// </summary>
-        [LoanFieldProperty(Description = "AUS Tracking - Freddie Mac LQA - Submission DateTime")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "AUS Tracking - Freddie Mac LQA - Submission DateTime")]
         public DateTime? LogLQASubmissionDateTime { get => _logLQASubmissionDateTime; set => _logLQASubmissionDateTime = value; }
         private DirtyValue<decimal?> _logLTV;
         /// <summary>

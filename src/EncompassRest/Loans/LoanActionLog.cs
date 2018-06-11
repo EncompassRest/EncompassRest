@@ -29,6 +29,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanActionLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<string> _id;
         /// <summary>

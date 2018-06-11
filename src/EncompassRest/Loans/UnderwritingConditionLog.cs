@@ -64,66 +64,79 @@ namespace EncompassRest.Loans
         /// <summary>
         /// UnderwritingConditionLog DateAddedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => _dateAddedUtc = value; }
         private DirtyValue<DateTime?> _dateClearedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateClearedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateClearedUtc { get => _dateClearedUtc; set => _dateClearedUtc = value; }
         private DirtyValue<DateTime?> _dateExpected;
         /// <summary>
         /// UnderwritingConditionLog DateExpected
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => _dateExpected = value; }
         private DirtyValue<DateTime?> _dateExpiredUtc;
         /// <summary>
         /// UnderwritingConditionLog DateExpiredUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpiredUtc { get => _dateExpiredUtc; set => _dateExpiredUtc = value; }
         private DirtyValue<DateTime?> _dateFulfilledUtc;
         /// <summary>
         /// UnderwritingConditionLog DateFulfilledUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFulfilledUtc { get => _dateFulfilledUtc; set => _dateFulfilledUtc = value; }
         private DirtyValue<DateTime?> _dateReceived;
         /// <summary>
         /// UnderwritingConditionLog DateReceived
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => _dateReceived = value; }
         private DirtyValue<DateTime?> _dateReceivedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateReceivedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceivedUtc { get => _dateReceivedUtc; set => _dateReceivedUtc = value; }
         private DirtyValue<DateTime?> _dateRejectedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateRejectedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRejectedUtc { get => _dateRejectedUtc; set => _dateRejectedUtc = value; }
         private DirtyValue<DateTime?> _dateRequestedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateRequestedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequestedUtc { get => _dateRequestedUtc; set => _dateRequestedUtc = value; }
         private DirtyValue<DateTime?> _dateRerequestedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateRerequestedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequestedUtc { get => _dateRerequestedUtc; set => _dateRerequestedUtc = value; }
         private DirtyValue<DateTime?> _dateReviewedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateReviewedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReviewedUtc { get => _dateReviewedUtc; set => _dateReviewedUtc = value; }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// UnderwritingConditionLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<DateTime?> _dateWaivedUtc;
         /// <summary>
         /// UnderwritingConditionLog DateWaivedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateWaivedUtc { get => _dateWaivedUtc; set => _dateWaivedUtc = value; }
         private DirtyValue<string> _description;
         /// <summary>

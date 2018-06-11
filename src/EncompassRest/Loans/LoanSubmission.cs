@@ -90,7 +90,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Lock Date Modification Timestamp [3200]
         /// </summary>
-        [LoanFieldProperty(Description = "Trans Details Lock Date Modification Timestamp")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Trans Details Lock Date Modification Timestamp")]
         public DateTime? LockDateTimestampUtc { get => _lockDateTimestampUtc; set => _lockDateTimestampUtc = value; }
         private DirtyValue<DateTime?> _lockExpiresDate;
         /// <summary>

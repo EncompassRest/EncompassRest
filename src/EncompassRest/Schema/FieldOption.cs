@@ -1,4 +1,5 @@
 ﻿using System;
+using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
 namespace EncompassRest.Schema
@@ -11,7 +12,23 @@ namespace EncompassRest.Schema
         [JsonProperty]
         public string Text { get; internal set; }
 
-        public string ReportingDatabaseValue { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string ReportingDatabaseValue { get; internal set; }
+
+        internal FieldOption(string text)
+            : this(text, text)
+        {
+        }
+
+        [JsonConstructor]
+        internal FieldOption(string text, string value)
+        {
+            Preconditions.NotNull(text, nameof(text));
+            Preconditions.NotNull(value, nameof(value));
+
+            Text = text;
+            Value = value;
+        }
 
         public bool Equals(FieldOption other) => other != null && string.Equals(Value, other.Value, StringComparison.OrdinalIgnoreCase);
 

@@ -24,6 +24,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog ApplicationDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ApplicationDate { get => _applicationDate; set => _applicationDate = value; }
         private DirtyValue<string> _borrowerName;
         /// <summary>
@@ -74,6 +75,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<string> _disclosedAPR;
         /// <summary>
@@ -99,6 +101,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog DisclosureCreatedDttmUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DisclosureCreatedDttmUtc { get => _disclosureCreatedDttmUtc; set => _disclosureCreatedDttmUtc = value; }
         private DirtyValue<bool?> _eDisclosureApplicationPackageIndicator;
         /// <summary>
@@ -114,61 +117,73 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowerAcceptConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowerAcceptConsentDate { get => _eDisclosureBorrowerAcceptConsentDate; set => _eDisclosureBorrowerAcceptConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowereSignedDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowereSignedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowereSignedDate { get => _eDisclosureBorrowereSignedDate; set => _eDisclosureBorrowereSignedDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerRejectConsentDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowerRejectConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowerRejectConsentDate { get => _eDisclosureBorrowerRejectConsentDate; set => _eDisclosureBorrowerRejectConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerViewConsentDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowerViewConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowerViewConsentDate { get => _eDisclosureBorrowerViewConsentDate; set => _eDisclosureBorrowerViewConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerViewMessageDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowerViewMessageDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowerViewMessageDate { get => _eDisclosureBorrowerViewMessageDate; set => _eDisclosureBorrowerViewMessageDate = value; }
         private DirtyValue<DateTime?> _eDisclosureBorrowerWetSignedDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureBorrowerWetSignedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureBorrowerWetSignedDate { get => _eDisclosureBorrowerWetSignedDate; set => _eDisclosureBorrowerWetSignedDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerAcceptConsentDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowerAcceptConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowerAcceptConsentDate { get => _eDisclosureCoBorrowerAcceptConsentDate; set => _eDisclosureCoBorrowerAcceptConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowereSignedDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowereSignedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowereSignedDate { get => _eDisclosureCoBorrowereSignedDate; set => _eDisclosureCoBorrowereSignedDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerRejectConsentDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowerRejectConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowerRejectConsentDate { get => _eDisclosureCoBorrowerRejectConsentDate; set => _eDisclosureCoBorrowerRejectConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewConsentDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowerViewConsentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowerViewConsentDate { get => _eDisclosureCoBorrowerViewConsentDate; set => _eDisclosureCoBorrowerViewConsentDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerViewMessageDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowerViewMessageDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowerViewMessageDate { get => _eDisclosureCoBorrowerViewMessageDate; set => _eDisclosureCoBorrowerViewMessageDate = value; }
         private DirtyValue<DateTime?> _eDisclosureCoBorrowerWebSignedDate;
         /// <summary>
         /// DisclosureTrackingLog EDisclosureCoBorrowerWebSignedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureCoBorrowerWebSignedDate { get => _eDisclosureCoBorrowerWebSignedDate; set => _eDisclosureCoBorrowerWebSignedDate = value; }
         private DirtyValue<string> _eDisclosureConsentPdf;
         /// <summary>
@@ -194,6 +209,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosureManualFulfillmentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosureManualFulfillmentDate { get => _eDisclosureManualFulfillmentDate; set => _eDisclosureManualFulfillmentDate = value; }
         private DirtyValue<string> _eDisclosureManualFulfillmentMethod;
         /// <summary>
@@ -209,6 +225,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog EDisclosurePackageCreatedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? EDisclosurePackageCreatedDate { get => _eDisclosurePackageCreatedDate; set => _eDisclosurePackageCreatedDate = value; }
         private DirtyValue<string> _eDisclosurePackageId;
         /// <summary>
@@ -334,6 +351,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog LockedDisclosedReceivedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LockedDisclosedReceivedDate { get => _lockedDisclosedReceivedDate; set => _lockedDisclosedReceivedDate = value; }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
@@ -369,6 +387,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DisclosureTrackingLog ReceivedDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReceivedDate { get => _receivedDate; set => _receivedDate = value; }
         private DirtyList<LogSnapshotField> _snapshotFields;
         /// <summary>
