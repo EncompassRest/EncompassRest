@@ -5,6 +5,7 @@ using EncompassRest.Loans.Apis;
 using EncompassRest.Loans.Associates;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
+using EncompassRest.Loans.FieldReader;
 using EncompassRest.Loans.MilestoneFreeRoles;
 using EncompassRest.Loans.Milestones;
 using EncompassRest.ResourceLocks;
@@ -20,6 +21,7 @@ namespace EncompassRest.Loans
         private LoanAssociates _associates;
         private LoanMilestones _milestones;
         private LoanMilestoneFreeRoles _milestoneFreeRoles;
+        private LoanFieldReader _fieldReader;
         private BorrowerPairs _borrowerPairs;
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
@@ -33,6 +35,8 @@ namespace EncompassRest.Loans
         public LoanMilestones Milestones => _milestones ?? (_milestones = new LoanMilestones(Client, LoanId));
 
         public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ?? (_milestoneFreeRoles = new LoanMilestoneFreeRoles(Client, LoanId));
+
+        public LoanFieldReader FieldReader => _fieldReader ?? (_fieldReader = new LoanFieldReader(Client, LoanId));
 
         public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = CreateBorrowerPairs());
 
