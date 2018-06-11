@@ -1321,5 +1321,26 @@ namespace EncompassRest.Tests
                     break;
             }
         }
+
+        [TestMethod]
+        public async Task Loan_FieldsPresentAddress()
+        {
+            var client = await GetTestClientAsync();
+            var loan = new Loan();
+            const string address = "123 Main Street";
+            const string addressFieldId = "FR0104";
+            loan.Fields[addressFieldId].Value = address;
+            var loanId = await client.Loans.CreateLoanAsync(loan);
+            try
+            {
+                await Task.Delay(1000);
+                loan = await client.Loans.GetLoanAsync(loanId);
+                Assert.AreEqual(address, loan.Fields[addressFieldId].ToString());
+            }
+            finally
+            {
+                await client.Loans.DeleteLoanAsync(loanId);
+            }
+        }
     }
 }
