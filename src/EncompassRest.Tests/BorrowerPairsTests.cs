@@ -14,7 +14,7 @@ namespace EncompassRest.Tests
         public async Task BorrowerPairs_ReflectToLoanObject()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan
+            var loan = new Loan(client)
             {
                 Applications = new[]
                 {
