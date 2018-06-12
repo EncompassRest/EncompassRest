@@ -14,11 +14,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LogAlert DueDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DueDate { get => _dueDate; set => _dueDate = value; }
         private DirtyValue<DateTime?> _followedUpDate;
         /// <summary>
         /// LogAlert FollowedUpDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? FollowedUpDate { get => _followedUpDate; set => _followedUpDate = value; }
         private DirtyValue<string> _id;
         /// <summary>

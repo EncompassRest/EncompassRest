@@ -23,7 +23,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
 
-            var loan = new Loan();
+            var loan = new Loan(client);
             var loanId = await client.Loans.CreateLoanAsync(loan);
             var attachment = new LoanAttachment
             {

@@ -12,7 +12,7 @@ namespace EncompassRest.Tests
         public async Task Lock_LoanLockAndUnlock()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan();
+            var loan = new Loan(client);
             var loanId = await client.Loans.CreateLoanAsync(loan, true);
             Assert.IsTrue((await loan.LoanApis.GetLocksAsync()).Count == 0);
 

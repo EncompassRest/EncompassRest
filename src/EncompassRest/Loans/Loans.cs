@@ -9,6 +9,17 @@ namespace EncompassRest.Loans
 {
     public sealed class Loans : ApiObject
     {
+        private LoanFieldDescriptors _fieldDescriptors;
+
+        public LoanFieldDescriptors FieldDescriptors
+        {
+            get
+            {
+                var fieldDescriptors = _fieldDescriptors;
+                return fieldDescriptors ?? Interlocked.CompareExchange(ref _fieldDescriptors, (fieldDescriptors = new LoanFieldDescriptors(Client)), null) ?? fieldDescriptors;
+            }
+        }
+
         internal Loans(EncompassRestClient client)
             : base(client, "encompass/v1/loans")
         {
@@ -23,7 +34,7 @@ namespace EncompassRest.Loans
 
         public Task<Loan> GetLoanAsync(string loanId, CancellationToken cancellationToken = default) => GetLoanAsync(loanId, (IEnumerable<string>)null, cancellationToken);
 
-        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanAsync(loanId, entities?.Select(e => e.AsString()), cancellationToken);
+        public Task<Loan> GetLoanAsync(string loanId, IEnumerable<LoanEntity> entities, CancellationToken cancellationToken = default) => GetLoanAsync(loanId, entities?.Select(e => e.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)), cancellationToken);
 
         public async Task<Loan> GetLoanAsync(string loanId, IEnumerable<string> entities, CancellationToken cancellationToken = default)
         {

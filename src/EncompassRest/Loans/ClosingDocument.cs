@@ -264,49 +264,49 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Title Closing Disclosure - Clear to Close Status Received by Lender Date Time [CL.WF.EVNT.CLRTOCLOS]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Clear to Close Status Received by Lender Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Clear to Close Status Received by Lender Date Time")]
         public DateTime? CLClearCloseStatusReceivedByLenderDateTime { get => _cLClearCloseStatusReceivedByLenderDateTime; set => _cLClearCloseStatusReceivedByLenderDateTime = value; }
         private DirtyValue<DateTime?> _cLClosingEscrowOrderAcceptedDateTime;
         /// <summary>
         /// Title Closing Disclosure - Closing + Escrow Order Accepted Date Time [CL.WF.EVNT.CODRACCP]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Closing + Escrow Order Accepted Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Closing + Escrow Order Accepted Date Time")]
         public DateTime? CLClosingEscrowOrderAcceptedDateTime { get => _cLClosingEscrowOrderAcceptedDateTime; set => _cLClosingEscrowOrderAcceptedDateTime = value; }
         private DirtyValue<DateTime?> _cLClosingEscrowOrderSentDateTime;
         /// <summary>
         /// Title Closing Disclosure - Closing + Escrow Order Sent Date Time [CL.WF.EVNT.CODRSENT]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Closing + Escrow Order Sent Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Closing + Escrow Order Sent Date Time")]
         public DateTime? CLClosingEscrowOrderSentDateTime { get => _cLClosingEscrowOrderSentDateTime; set => _cLClosingEscrowOrderSentDateTime = value; }
         private DirtyValue<DateTime?> _cLDraftClosingDisclosureReceivedByLenderDateTime;
         /// <summary>
         /// Title Closing Disclosure - Draft Closing Disclosure Received by the Lender Date Time [CL.WF.EVNT.INIDSCLO]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Draft Closing Disclosure Received by the Lender Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Draft Closing Disclosure Received by the Lender Date Time")]
         public DateTime? CLDraftClosingDisclosureReceivedByLenderDateTime { get => _cLDraftClosingDisclosureReceivedByLenderDateTime; set => _cLDraftClosingDisclosureReceivedByLenderDateTime = value; }
         private DirtyValue<DateTime?> _cLFinalCDSentDateTime;
         /// <summary>
         /// Title Closing Disclosure - Final CD Sent Date Time [CL.WF.EVNT.FINLCDSENT]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Final CD Sent Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Final CD Sent Date Time")]
         public DateTime? CLFinalCDSentDateTime { get => _cLFinalCDSentDateTime; set => _cLFinalCDSentDateTime = value; }
         private DirtyValue<DateTime?> _cLFinalTitlePolicyDateTime;
         /// <summary>
         /// Title Closing Disclosure - Final Title Policy Date Time [CL.WF.EVNT.FINLTITLPLCY]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Final Title Policy Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Final Title Policy Date Time")]
         public DateTime? CLFinalTitlePolicyDateTime { get => _cLFinalTitlePolicyDateTime; set => _cLFinalTitlePolicyDateTime = value; }
         private DirtyValue<DateTime?> _cLLastFeeQuoteReceivedDateTime;
         /// <summary>
         /// Title Closing Disclosure - Last Fee Quote Received Date Time [CL.WF.EVNT.ODRQOTEACCP]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Last Fee Quote Received Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Last Fee Quote Received Date Time")]
         public DateTime? CLLastFeeQuoteReceivedDateTime { get => _cLLastFeeQuoteReceivedDateTime; set => _cLLastFeeQuoteReceivedDateTime = value; }
         private DirtyValue<DateTime?> _cLLastFeeQuoteRequestedDateTime;
         /// <summary>
         /// Title Closing Disclosure - Last Fee Quote Requested Date Time [CL.WF.EVNT.ODRQUOTE]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Last Fee Quote Requested Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Last Fee Quote Requested Date Time")]
         public DateTime? CLLastFeeQuoteRequestedDateTime { get => _cLLastFeeQuoteRequestedDateTime; set => _cLLastFeeQuoteRequestedDateTime = value; }
         private DirtyValue<StringEnumValue<DocsLoanProgramType>> _closingDocsLoanProgramType;
         /// <summary>
@@ -335,31 +335,31 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Title Closing Disclosure - Payoffs Requested Date Time [CL.WF.EVNT.ODRPAYOFF]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Payoffs Requested Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Payoffs Requested Date Time")]
         public DateTime? CLPayoffsRequestedDateTime { get => _cLPayoffsRequestedDateTime; set => _cLPayoffsRequestedDateTime = value; }
         private DirtyValue<DateTime?> _cLPrelimCommitmentReceivedByLenderDateTime;
         /// <summary>
         /// Title Closing Disclosure - Prelim / Commitment Received by the Lender Date Time [CL.WF.EVNT.PRELIMRECV]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Prelim / Commitment Received by the Lender Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Prelim / Commitment Received by the Lender Date Time")]
         public DateTime? CLPrelimCommitmentReceivedByLenderDateTime { get => _cLPrelimCommitmentReceivedByLenderDateTime; set => _cLPrelimCommitmentReceivedByLenderDateTime = value; }
         private DirtyValue<DateTime?> _cLProviderDisburseFundsDateTime;
         /// <summary>
         /// Title Closing Disclosure - Provider Disburse Funds [CL.WF.EVNT.FNDDISB]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Provider Disburse Funds")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Provider Disburse Funds")]
         public DateTime? CLProviderDisburseFundsDateTime { get => _cLProviderDisburseFundsDateTime; set => _cLProviderDisburseFundsDateTime = value; }
         private DirtyValue<DateTime?> _cLTitleOrderAcceptedDateTime;
         /// <summary>
         /// Title Closing Disclosure - Title Order Accepted Date Time [CL.WF.EVNT.TODRACCP]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Title Order Accepted Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Title Order Accepted Date Time")]
         public DateTime? CLTitleOrderAcceptedDateTime { get => _cLTitleOrderAcceptedDateTime; set => _cLTitleOrderAcceptedDateTime = value; }
         private DirtyValue<DateTime?> _cLTitleOrderSentDateTime;
         /// <summary>
         /// Title Closing Disclosure - Title Order Sent Date Time [CL.WF.EVNT.TODRSENT]
         /// </summary>
-        [LoanFieldProperty(Description = "Title Closing Disclosure - Title Order Sent Date Time")]
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME, Description = "Title Closing Disclosure - Title Order Sent Date Time")]
         public DateTime? CLTitleOrderSentDateTime { get => _cLTitleOrderSentDateTime; set => _cLTitleOrderSentDateTime = value; }
         private DirtyValue<string> _complianceJurisdictionCounty;
         /// <summary>

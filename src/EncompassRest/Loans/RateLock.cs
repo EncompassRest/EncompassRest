@@ -511,6 +511,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideExtendedLockExpires
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideExtendedLockExpires { get => _compSideExtendedLockExpires; set => _compSideExtendedLockExpires = value; }
         private DirtyValue<string> _compSideInvestorStatus;
         /// <summary>
@@ -521,6 +522,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideInvestorStatusDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideInvestorStatusDate { get => _compSideInvestorStatusDate; set => _compSideInvestorStatusDate = value; }
         private DirtyValue<string> _compSideInvestorTradeNumber;
         /// <summary>
@@ -595,6 +597,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RateLock CompSideOriginalLockExpires
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CompSideOriginalLockExpires { get => _compSideOriginalLockExpires; set => _compSideOriginalLockExpires = value; }
         private DirtyValue<decimal?> _compSidePriceRate;
         /// <summary>

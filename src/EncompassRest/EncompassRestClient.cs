@@ -29,6 +29,10 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters, tokenInitializer);
             var accessToken = await tokenInitializer(new TokenCreator(client, cancellationToken)).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
+            if (parameters.InitializeCustomFieldsCache)
+            {
+                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
+            }
             return client;
         }
 
@@ -42,6 +46,10 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromUserCredentialsAsync(instanceId, userId, password, nameof(CreateFromUserCredentialsAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
+            if (parameters.InitializeCustomFieldsCache)
+            {
+                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
+            }
             return client;
         }
 
@@ -58,6 +66,10 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromAuthorizationCodeAsync(redirectUri, authorizationCode, nameof(CreateFromAuthorizationCodeAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
+            if (parameters.InitializeCustomFieldsCache)
+            {
+                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
+            }
             return client;
         }
 
@@ -65,6 +77,21 @@ namespace EncompassRest
         public static Task<EncompassRestClient> CreateFromAuthorizationCodeAsync(string apiClientId, string apiClientSecret, string redirectUri, string authorizationCode, CancellationToken cancellationToken = default) =>
             CreateFromAuthorizationCodeAsync(new ClientParameters(apiClientId, apiClientSecret), redirectUri, authorizationCode, cancellationToken);
 
+        public static async Task<EncompassRestClient> CreateFromAccessTokenAsync(ClientParameters parameters, string accessToken, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(parameters, nameof(parameters));
+            Preconditions.NotNullOrEmpty(accessToken, nameof(accessToken));
+
+            var client = new EncompassRestClient(parameters);
+            client.AccessToken.Token = accessToken;
+            if (parameters.InitializeCustomFieldsCache)
+            {
+                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
+            }
+            return client;
+        }
+
+        [Obsolete("Use CreateFromAccessTokenAsync instead.")]
         public static EncompassRestClient CreateFromAccessToken(ClientParameters parameters, string accessToken)
         {
             Preconditions.NotNull(parameters, nameof(parameters));

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Utilities;
@@ -14,13 +15,13 @@ namespace EncompassRest.Loans
         public EncompassRestClient Client { get; private set; }
 
         [JsonIgnore]
-        public LoanDocuments Documents { get; private set; }
+        public LoanDocuments Documents => LoanApis.Documents;
 
         [JsonIgnore]
-        public LoanAttachments Attachments { get; private set; }
+        public LoanAttachments Attachments => LoanApis.Attachments;
 
         [JsonIgnore]
-        public LoanCustomDataObjects CustomDataObjects { get; private set; }
+        public LoanCustomDataObjects CustomDataObjects => LoanApis.CustomDataObjects;
 
         [JsonIgnore]
         public LoanObjectBoundApis LoanApis { get; private set; }
@@ -90,7 +91,19 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Loan creation constructor
         /// </summary>
+        /// <param name="client"></param>
+        public Loan(EncompassRestClient client)
+        {
+            Preconditions.NotNull(client, nameof(client));
+
+            Client = client;
+        }
+
+        /// <summary>
+        /// Loan deserialization constructor
+        /// </summary>
         [JsonConstructor]
+        [Obsolete("Use EncompassRestClient parameter constructor instead.")]
         public Loan()
         {
         }
@@ -100,27 +113,23 @@ namespace EncompassRest.Loans
             Preconditions.NotNull(client, nameof(client));
             Preconditions.NotNullOrEmpty(loanId, nameof(loanId));
 
-            if (!ReferenceEquals(Client, client))
+            if (!string.IsNullOrEmpty(EncompassId) && !string.Equals(EncompassId, loanId, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new InvalidOperationException("Cannot initialize with different loanId");
+            }
+
+            if (!ReferenceEquals(Client, client) || LoanApis == null)
             {
                 Client = client;
                 EncompassId = loanId;
-                Documents = new LoanDocuments(client, EncompassId);
-                Attachments = new LoanAttachments(client, EncompassId);
-                CustomDataObjects = new LoanCustomDataObjects(client, EncompassId);
                 LoanApis = new LoanObjectBoundApis(client, this);
             }
         }
 
         internal override bool CustomDirty
         {
-            get
-            {
-                return _currentApplicationIndex.Dirty;
-            }
-            set
-            {
-                _currentApplicationIndex.Dirty = value;
-            }
+            get => _currentApplicationIndex.Dirty;
+            set => _currentApplicationIndex.Dirty = value;
         }
     }
 }

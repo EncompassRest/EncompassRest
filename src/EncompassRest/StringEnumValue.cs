@@ -1,7 +1,6 @@
 ﻿using System;
 using EncompassRest.Utilities;
 using EnumsNET;
-using EnumsNET.Unsafe;
 using Newtonsoft.Json;
 
 namespace EncompassRest
@@ -14,7 +13,7 @@ namespace EncompassRest
     /// <typeparam name="TEnum"></typeparam>
     [JsonConverter(typeof(StringEnumValueConverter<>))]
     public struct StringEnumValue<TEnum>
-        where TEnum : struct
+        where TEnum : struct, Enum
     {
         public static implicit operator StringEnumValue<TEnum>(string value) => new StringEnumValue<TEnum>(value);
 
@@ -26,7 +25,7 @@ namespace EncompassRest
 
         public string Value { get; }
 
-        public TEnum? EnumValue => !string.IsNullOrEmpty(Value) && UnsafeEnums.TryParse(Value, out TEnum value, EnumFormat.EnumMemberValue, EnumFormat.Name) ? value : (TEnum?)null;
+        public TEnum? EnumValue => Value != null && Enums.TryParse(Value, true, out TEnum value, EnumFormat.EnumMemberValue, EnumFormat.Name) ? value : (TEnum?)null;
 
         public StringEnumValue(string value)
         {
@@ -34,34 +33,25 @@ namespace EncompassRest
         }
 
         public StringEnumValue(TEnum? value)
+            : this(value?.Validate(nameof(value)).AsString(EnumFormat.EnumMemberValue, EnumFormat.Name))
         {
-            if (value.HasValue)
-            {
-                var nonNullableValue = value.GetValueOrDefault();
-                UnsafeEnums.Validate(nonNullableValue, nameof(value));
-                Value = UnsafeEnums.AsString(nonNullableValue, EnumFormat.EnumMemberValue, EnumFormat.Name);
-            }
-            else
-            {
-                Value = null;
-            }
         }
 
         public override string ToString() => Value;
 
         public override int GetHashCode() => Value?.GetHashCode() ?? 0;
 
-        public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> && ((StringEnumValue<TEnum>)obj).Value == Value;
+        public override bool Equals(object obj) => obj != null && obj is StringEnumValue<TEnum> sev && sev.Value == Value;
     }
 
     internal sealed class StringEnumValueConverter<TEnum> : JsonConverter, IStringCreator
-        where TEnum : struct
+        where TEnum : struct, Enum
     {
         public override bool CanConvert(Type objectType) => objectType == TypeData<StringEnumValue<TEnum>>.Type;
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) => new StringEnumValue<TEnum>(reader.Value?.ToString());
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> ? ((StringEnumValue<TEnum>)value).Value : value?.ToString());
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteValue(value is StringEnumValue<TEnum> sev ? sev.Value : value?.ToString());
 
         public object Create(string value) => new StringEnumValue<TEnum>(value);
     }

@@ -1,4 +1,6 @@
-﻿namespace EncompassRest.Loans
+﻿using System.Runtime.Serialization;
+
+namespace EncompassRest.Loans
 {
     public enum LoanEntity
     {
@@ -180,7 +182,9 @@
         PrincipalDisbursementTransaction = 178,
         VirtualFields = 179,
         CustomModelFields = 180,
+        [EnumMember(Value = "NonVols")]
         NonVol = 181,
+        [EnumMember(Value = "ElliUCDFields")]
         ElliUCDDetail = 182,
         ExtraPayment = 183,
         DocumentOrderLog = 184,

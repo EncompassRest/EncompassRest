@@ -18,36 +18,36 @@ namespace EncompassRest.Tests
             var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
 
             var loanEntities = new HashSet<string>(loanSchema.EntityTypes.Keys);
-            var existingLoanEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var existingLoanEntities = new HashSet<string>(Enums.GetMembers<LoanEntity>().Select(m => m.AsString(EnumFormat.Name)));
             var newLoanEntities = loanEntities.Except(existingLoanEntities).ToList();
-            Assert.AreEqual(0, newLoanEntities.Count);
+            Assert.AreEqual(0, newLoanEntities.Count, $"{nameof(LoanEntity)}: {string.Join(", ", newLoanEntities)}");
 
             var ignoredElementTypes = new HashSet<string>(new[] { null, "EntityReference", "FileAttachmentReference", "EntityRefContract" });
             Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.ElementType.EnumValue.HasValue || ignoredElementTypes.Contains(p.ElementType.Value))));
             var elementTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.ElementType.Value)));
             elementTypes.ExceptWith(ignoredElementTypes);
             var newElementTypes = elementTypes.Except(existingLoanEntities).ToList();
-            Assert.AreEqual(0, newElementTypes.Count);
+            Assert.AreEqual(0, newElementTypes.Count, $"{nameof(LoanEntity)} ElementType: {string.Join(", ", newElementTypes)}");
 
             Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.EntityType.EnumValue.HasValue || p.EntityType.Value == null || p.EntityType.Value == "EntityRefContract")));
             var entityTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.EntityType.Value)));
             entityTypes.ExceptWith(new[] { null, "EntityRefContract" });
             var newEntityTypes = entityTypes.Except(existingLoanEntities).ToList();
-            Assert.AreEqual(0, newEntityTypes.Count);
+            Assert.AreEqual(0, newEntityTypes.Count, $"{nameof(LoanEntity)} EntityType: {string.Join(", ", newEntityTypes)}");
 
             Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.Type.EnumValue.HasValue || p.Type.Value == null)));
             var propertyTypes = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.Type.Value)));
             propertyTypes.Remove(null);
             var existingPropertyTypes = new HashSet<string>(Enums.GetMembers<PropertySchemaType>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
             var newPropertyTypes = propertyTypes.Except(existingPropertyTypes).ToList();
-            Assert.AreEqual(0, newPropertyTypes.Count);
+            Assert.AreEqual(0, newPropertyTypes.Count, $"{nameof(PropertySchemaType)}: {string.Join(", ", newPropertyTypes)}");
 
             Assert.IsTrue(loanSchema.EntityTypes.Values.All(e => e.Properties.Values.All(p => p.Format.EnumValue.HasValue || p.Format.Value == null)));
             var formats = new HashSet<string>(loanSchema.EntityTypes.Values.SelectMany(e => e.Properties.Values.Select(p => p.Format.Value)));
             formats.Remove(null);
-            var existingFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name)));
+            var existingFormats = new HashSet<string>(Enums.GetMembers<LoanFieldFormat>().Select(m => m.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name).ToLower()));
             var newFormats = formats.Except(existingFormats).ToList();
-            Assert.AreEqual(0, newFormats.Count);
+            Assert.AreEqual(0, newFormats.Count, $"{nameof(LoanFieldFormat)}: {string.Join(", ", newFormats)}");
 
             Assert.AreEqual(0, loanSchema.ExtensionData.Count);
 

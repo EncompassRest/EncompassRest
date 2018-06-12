@@ -54,6 +54,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction CreatedDateTimeUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? CreatedDateTimeUtc { get => _createdDateTimeUtc; set => _createdDateTimeUtc = value; }
         private DirtyValue<decimal?> _escrow;
         /// <summary>
@@ -159,6 +160,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction LatePaymentDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LatePaymentDate { get => _latePaymentDate; set => _latePaymentDate = value; }
         private DirtyValue<decimal?> _miscFee;
         /// <summary>
@@ -184,6 +186,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction ModifiedDateTimeUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ModifiedDateTimeUtc { get => _modifiedDateTimeUtc; set => _modifiedDateTimeUtc = value; }
         private DirtyValue<decimal?> _mortgageInsurance;
         /// <summary>
@@ -214,6 +217,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction PaymentReceiveDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? PaymentReceiveDate { get => _paymentReceiveDate; set => _paymentReceiveDate = value; }
         private DirtyValue<decimal?> _principal;
         /// <summary>
@@ -254,6 +258,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SchedulePaymentTransaction TransactionDate
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
         private DirtyValue<decimal?> _unpaidLateFeeDue;
         /// <summary>

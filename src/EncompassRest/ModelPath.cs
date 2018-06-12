@@ -843,7 +843,11 @@ namespace EncompassRest
                 }
 
                 var retrievedValue = property.ValueProvider.GetValue(value);
-                return retrievedValue == null ? settings?.DefaultValues.ContainsKey(propertyName) == true : string.Equals(Value, retrievedValue.ToString(), StringComparison.OrdinalIgnoreCase);
+                if (retrievedValue == null && settings != null && settings.DefaultValues.TryGetValue(propertyName, out var defaultValue))
+                {
+                    retrievedValue = defaultValue;
+                }
+                return string.Equals(Value, retrievedValue?.ToString() ?? "false", StringComparison.OrdinalIgnoreCase);
             }
 
             public override string ToString()
