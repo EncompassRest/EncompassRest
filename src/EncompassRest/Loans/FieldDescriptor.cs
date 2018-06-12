@@ -121,11 +121,11 @@ namespace EncompassRest.Loans
         {
             get
             {
-                var loanEntity = ParentDescriptor?.LoanEntity;
-                if (loanEntity == null)
+                var loanEntity = _loanEntity;
+                if (!_loanEntityIsSet)
                 {
-                    loanEntity = _loanEntity;
-                    if (!_loanEntityIsSet)
+                    loanEntity = ParentDescriptor?.LoanEntity;
+                    if (loanEntity == null)
                     {
                         if (Type == LoanFieldType.Virtual)
                         {
@@ -149,10 +149,10 @@ namespace EncompassRest.Loans
                                 loanEntity = newLoanEntity;
                             }
                         }
-
-                        _loanEntity = loanEntity;
-                        _loanEntityIsSet = true;
                     }
+
+                    _loanEntity = loanEntity;
+                    _loanEntityIsSet = true;
                 }
                 return loanEntity;
             }
