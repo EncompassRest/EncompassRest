@@ -15,7 +15,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
 
-            var loanId = await client.Loans.CreateLoanAsync(new Loan());
+            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
             var loanApis = client.Loans.GetLoanApis(loanId);
             var associates = await loanApis.Associates.GetAssociatesAsync();
             foreach (var associate in associates)
@@ -50,7 +50,7 @@ namespace EncompassRest.Tests
 
             if (client.AccessToken.Token == "Token")
             {
-                var loanId = await client.Loans.CreateLoanAsync(new Loan());
+                var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
                 try
                 {
                     var loanApis = client.Loans.GetLoanApis(loanId);

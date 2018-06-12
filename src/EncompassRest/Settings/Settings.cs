@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using EncompassRest.Settings.Contacts;
+using EncompassRest.Settings.Loan;
 
 namespace EncompassRest.Settings
 {
@@ -8,6 +9,7 @@ namespace EncompassRest.Settings
         private Templates.Templates _templates;
         private BorrowerContactsSettings _borrowerContacts;
         private BusinessContactsSettings _businessContacts;
+        private LoanSettings _loan;
 
         public Templates.Templates Templates
         {
@@ -33,6 +35,15 @@ namespace EncompassRest.Settings
             {
                 var businessContacts = _businessContacts;
                 return businessContacts ?? Interlocked.CompareExchange(ref _businessContacts, (businessContacts = new BusinessContactsSettings(Client)), null) ?? businessContacts;
+            }
+        }
+
+        public LoanSettings Loan
+        {
+            get
+            {
+                var loan = _loan;
+                return loan ?? Interlocked.CompareExchange(ref _loan, (loan = new LoanSettings(Client)), null) ?? loan;
             }
         }
 

@@ -16,14 +16,8 @@ namespace EncompassRest.Loans
             set => throw new InvalidOperationException($"cannot lock/unlock field '{FieldId}' as it's virtual");
         }
 
-        public override LoanFieldValueType ValueType => LoanFieldValueType.String;
-
-        public override LoanFieldType Type => LoanFieldType.Virtual;
-
-        public override LoanEntity? LoanEntity => EncompassRest.Loans.LoanEntity.VirtualFields;
-
-        internal VirtualLoanField(string fieldId, Loan loan, ModelPath modelPath, string instanceSpecifier = null)
-            : base(fieldId, loan, modelPath, null, instanceSpecifier)
+        internal VirtualLoanField(FieldDescriptor descriptor, Loan loan)
+            : base(descriptor, loan)
         {
         }
     }

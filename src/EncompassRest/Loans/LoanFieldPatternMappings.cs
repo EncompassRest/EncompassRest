@@ -21,7 +21,7 @@ namespace EncompassRest.Loans
             {
                 foreach (var pair in Values)
                 {
-                    yield return new KeyValuePair<string, string>(string.Concat(path) + pair.Value.InstanceSpecifier + pair.Key, pair.Value.ModelPathPattern);
+                    yield return new KeyValuePair<string, string>(string.Concat(path) + pair.Value.InstanceSpecifier + pair.Key, pair.Value.Descriptor.ModelPath);
                 }
                 foreach (var pair in Nodes)
                 {
@@ -38,12 +38,12 @@ namespace EncompassRest.Loans
             {
                 public string InstanceSpecifier { get; }
 
-                public string ModelPathPattern { get; }
+                public FieldDescriptor Descriptor { get; }
 
-                public InstanceSpecifierAndModelPathPattern(string instanceSpecifier, string modelPathPattern)
+                public InstanceSpecifierAndModelPathPattern(string instanceSpecifier, FieldDescriptor descriptor)
                 {
                     InstanceSpecifier = instanceSpecifier;
-                    ModelPathPattern = modelPathPattern;
+                    Descriptor = descriptor;
                 }
             }
         }
@@ -56,7 +56,7 @@ namespace EncompassRest.Loans
             set
             {
                 ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
-                ValidateModelPathPattern(value);
+                var descriptor = CreateFieldDescriptor(fieldPattern, value);
                 var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
 
                 var node = _root;
@@ -74,7 +74,16 @@ namespace EncompassRest.Loans
 
                 var postfix = fieldPattern.Substring(endBracketIndex + 1);
                 var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
-                node.Values[postfix] = new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, value);
+                node.Values[postfix] = new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, descriptor);
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields[fieldPattern] = descriptor;
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields[fieldPattern] = descriptor;
+                        break;
+                }
             }
         }
 
@@ -94,18 +103,19 @@ namespace EncompassRest.Loans
 
         IEnumerable<string> IReadOnlyDictionary<string, string>.Values => ModelPathPatterns;
 
-        internal LoanFieldPatternMappings(IDictionary<string, string> dictionary)
+        internal LoanFieldPatternMappings()
         {
-            foreach (var pair in dictionary)
-            {
-                TryAdd(pair.Key, pair.Value);
-            }
         }
 
         public bool TryAdd(string fieldPattern, string modelPathPattern)
         {
             ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
-            ValidateModelPathPattern(modelPathPattern);
+            var descriptor = CreateFieldDescriptor(fieldPattern, modelPathPattern);
+            return TryAdd(fieldPattern, instanceSpecifierIndex, descriptor);
+        }
+
+        private bool TryAdd(string fieldPattern, int instanceSpecifierIndex, FieldDescriptor descriptor)
+        {
             var endBracketIndex = fieldPattern.IndexOf('}', instanceSpecifierIndex + 2);
 
             var node = _root;
@@ -123,7 +133,26 @@ namespace EncompassRest.Loans
 
             var postfix = fieldPattern.Substring(endBracketIndex + 1);
             var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
-            return node.Values.TryAdd(postfix, new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, modelPathPattern));
+            if (node.Values.TryAdd(postfix, new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, descriptor)))
+            {
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryAdd(fieldPattern, descriptor);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryAdd(fieldPattern, descriptor);
+                        break;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        internal void AddVirtualField(string fieldPattern, FieldDescriptor descriptor)
+        {
+            ValidateFieldPattern(fieldPattern, out var instanceSpecifierIndex);
+            TryAdd(fieldPattern, instanceSpecifierIndex, descriptor);
         }
 
         public bool TryRemove(string fieldPattern, out string modelPathPattern)
@@ -151,7 +180,17 @@ namespace EncompassRest.Loans
             var postfix = fieldPattern.Substring(endBracketIndex + 1);
             if (node.Values.TryRemove(postfix, out var instanceSpecifierAndModelPathPattern))
             {
-                modelPathPattern = instanceSpecifierAndModelPathPattern.ModelPathPattern;
+                var descriptor = instanceSpecifierAndModelPathPattern.Descriptor;
+                modelPathPattern = descriptor.ModelPath;
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryRemove(fieldPattern, out _);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryRemove(fieldPattern, out _);
+                        break;
+                }
                 return true;
             }
             modelPathPattern = null;
@@ -183,7 +222,7 @@ namespace EncompassRest.Loans
             var postfix = fieldPattern.Substring(endBracketIndex + 1);
             if (node.Values.TryGetValue(postfix, out var instanceSpecifierAndModelPathPattern))
             {
-                modelPathPattern = instanceSpecifierAndModelPathPattern.ModelPathPattern;
+                modelPathPattern = instanceSpecifierAndModelPathPattern.Descriptor.ModelPath;
                 return true;
             }
             modelPathPattern = null;
@@ -214,26 +253,39 @@ namespace EncompassRest.Loans
 
             var postfix = fieldPattern.Substring(endBracketIndex + 1);
             var instanceSpecifier = fieldPattern.Substring(instanceSpecifierIndex, endBracketIndex - instanceSpecifierIndex + 1);
-            return node.Values.GetOrAdd(postfix, p =>
+            FieldDescriptor descriptor = null;
+            var retrievedDescriptor = node.Values.GetOrAdd(postfix, p =>
             {
                 var modelPathPattern = modelPathPatternFactory(p);
-                ValidateModelPathPattern(modelPathPattern);
-                return new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, modelPathPattern);
-            }).ModelPathPattern;
+                descriptor = CreateFieldDescriptor(fieldPattern, modelPathPattern);
+                return new Node.InstanceSpecifierAndModelPathPattern(instanceSpecifier, descriptor);
+            }).Descriptor;
+            if (ReferenceEquals(descriptor, retrievedDescriptor))
+            {
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryAdd(fieldPattern, descriptor);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryAdd(fieldPattern, descriptor);
+                        break;
+                }
+            }
+            return retrievedDescriptor.ModelPath;
         }
 
         public void CopyTo(KeyValuePair<string, string>[] array, int arrayIndex) => this.ToList().CopyTo(array, arrayIndex);
 
         public bool ContainsKey(string fieldPattern) => TryGetValue(fieldPattern, out _);
 
-        internal bool TryGetModelPathForFieldId(string fieldId, out ModelPath modelPath, out string instanceSpecifier)
+        internal bool TryGetDescriptorForFieldId(string fieldId, out FieldDescriptor descriptor)
         {
             var originalFieldId = fieldId;
             fieldId = fieldId.ToLower();
             var node = _root;
             var start = 0;
-            instanceSpecifier = null;
-            modelPath = null;
+            descriptor = null;
             bool found;
             do
             {
@@ -241,7 +293,8 @@ namespace EncompassRest.Loans
                 foreach (var pair in node.Values)
                 {
                     var postfix = pair.Key;
-                    var instanceSpecifierLength = string.Format(pair.Value.InstanceSpecifier, 1).Length;
+                    var instanceSpecifierFormat = pair.Value.InstanceSpecifier;
+                    var instanceSpecifierLength = string.Format(instanceSpecifierFormat, 1).Length;
                     if (instanceSpecifierLength > 1 ? fieldId.Length - start - instanceSpecifierLength >= postfix.Length : fieldId.Length - postfix.Length > start)
                     {
                         var i = 0;
@@ -251,8 +304,8 @@ namespace EncompassRest.Loans
                         }
                         if (i == postfix.Length)
                         {
-                            instanceSpecifier = originalFieldId.Substring(start, originalFieldId.Length - start - postfix.Length);
-                            modelPath = LoanFields.CreateModelPath(string.Format(pair.Value.ModelPathPattern, instanceSpecifier));
+                            var instanceSpecifier = originalFieldId.Substring(start, originalFieldId.Length - start - postfix.Length);
+                            descriptor = pair.Value.Descriptor.GetInstanceDescriptor(instanceSpecifier);
                             if (instanceSpecifierLength > 1 && (fieldId.Length - start - instanceSpecifierLength) != postfix.Length)
                             {
                                 found = true;
@@ -309,7 +362,7 @@ namespace EncompassRest.Loans
             string.Format(fieldPattern, 1);
         }
 
-        private void ValidateModelPathPattern(string modelPathPattern)
+        private FieldDescriptor CreateFieldDescriptor(string fieldPattern, string modelPathPattern)
         {
             Preconditions.NotNullOrEmpty(modelPathPattern, nameof(modelPathPattern));
 
@@ -319,11 +372,28 @@ namespace EncompassRest.Loans
                 throw new ArgumentException("modelPathPattern must contain a single instance of an instance specifier {0}");
             }
 
-            var modelPath = LoanFields.CreateModelPath(string.Format(modelPathPattern, 1));
-            if (modelPath == null)
+            var type = LoanFieldType.Standard;
+            var isBorrowerPairSpecific = false;
+            if (modelPathPattern.StartsWith("Loan.CustomFields", StringComparison.OrdinalIgnoreCase))
+            {
+                type = LoanFieldType.Custom;
+            }
+            else if (modelPathPattern.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+            {
+                type = LoanFieldType.Virtual;
+            }
+            else if (modelPathPattern.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+            {
+                isBorrowerPairSpecific = true;
+            }
+
+            var descriptor = new FieldDescriptor(fieldPattern, modelPathPattern, type, isBorrowerPairSpecific);
+            if (descriptor._modelPath == null)
             {
                 throw new ArgumentException("bad modelPathPattern");
             }
+
+            return descriptor;
         }
 
         void IDictionary<string, string>.Add(string key, string value)

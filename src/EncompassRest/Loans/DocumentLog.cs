@@ -19,6 +19,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog AccessedDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? AccessedDateUtc { get => _accessedDateUtc; set => _accessedDateUtc = value; }
         private DirtyValue<string> _addedBy;
         /// <summary>
@@ -54,6 +55,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog ArchiveDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ArchiveDateUtc { get => _archiveDateUtc; set => _archiveDateUtc = value; }
         private DirtyValue<string> _archivedBy;
         /// <summary>
@@ -99,36 +101,43 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog DateAddedUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateAddedUtc { get => _dateAddedUtc; set => _dateAddedUtc = value; }
         private DirtyValue<DateTime?> _dateExpected;
         /// <summary>
         /// DocumentLog DateExpected
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpected { get => _dateExpected; set => _dateExpected = value; }
         private DirtyValue<DateTime?> _dateExpires;
         /// <summary>
         /// DocumentLog DateExpires
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateExpires { get => _dateExpires; set => _dateExpires = value; }
         private DirtyValue<DateTime?> _dateReceived;
         /// <summary>
         /// DocumentLog DateReceived
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateReceived { get => _dateReceived; set => _dateReceived = value; }
         private DirtyValue<DateTime?> _dateRequested;
         /// <summary>
         /// DocumentLog DateRequested
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRequested { get => _dateRequested; set => _dateRequested = value; }
         private DirtyValue<DateTime?> _dateRerequested;
         /// <summary>
         /// DocumentLog DateRerequested
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateRerequested { get => _dateRerequested; set => _dateRerequested = value; }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// DocumentLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DirtyValue<int?> _daysDue;
         /// <summary>
@@ -269,6 +278,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog LastAttachmentDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? LastAttachmentDateUtc { get => _lastAttachmentDateUtc; set => _lastAttachmentDateUtc = value; }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
@@ -279,6 +289,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog OrderDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? OrderDateUtc { get => _orderDateUtc; set => _orderDateUtc = value; }
         private DirtyValue<string> _pairId;
         /// <summary>
@@ -299,6 +310,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog ReceiveDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReceiveDateUtc { get => _receiveDateUtc; set => _receiveDateUtc = value; }
         private DirtyValue<string> _receivedBy;
         /// <summary>
@@ -309,6 +321,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog ReorderDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReorderDateUtc { get => _reorderDateUtc; set => _reorderDateUtc = value; }
         private DirtyValue<bool?> _requested;
         /// <summary>
@@ -349,6 +362,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog ReviewedDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ReviewedDateUtc { get => _reviewedDateUtc; set => _reviewedDateUtc = value; }
         private DirtyValue<bool?> _shippingReady;
         /// <summary>
@@ -364,6 +378,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog ShippingReadyDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? ShippingReadyDateUtc { get => _shippingReadyDateUtc; set => _shippingReadyDateUtc = value; }
         private DirtyValue<string> _stage;
         /// <summary>
@@ -399,6 +414,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog UnderwritingReadyDateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => _underwritingReadyDateUtc = value; }
         internal override bool DirtyInternal
         {

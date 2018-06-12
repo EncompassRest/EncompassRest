@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
 {
     public sealed class LoanFieldMappings : IDictionary<string, string>, IReadOnlyDictionary<string, string>
     {
-        internal readonly ConcurrentDictionary<string, ModelPath> _dictionary;
+        internal readonly ConcurrentDictionary<string, FieldDescriptor> _dictionary = new ConcurrentDictionary<string, FieldDescriptor>();
         private FieldIdCollection _fieldIds;
         private ModelPathCollection _modelPaths;
 
@@ -19,12 +19,21 @@ namespace EncompassRest.Loans
             {
                 Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-                return _dictionary[fieldId].ToString();
+                return _dictionary[fieldId].ModelPath;
             }
             set
             {
-                var path = CreateModelPath(fieldId, value, true);
-                _dictionary[fieldId] = path;
+                var descriptor = CreateFieldDescriptor(fieldId, value, true);
+                _dictionary[fieldId] = descriptor;
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields[fieldId] = descriptor;
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields[fieldId] = descriptor;
+                        break;
+                }
             }
         }
 
@@ -58,23 +67,42 @@ namespace EncompassRest.Loans
 
         IEnumerable<string> IReadOnlyDictionary<string, string>.Values => ModelPaths;
 
-        internal LoanFieldMappings(ConcurrentDictionary<string, ModelPath> dictionary)
+        internal LoanFieldMappings()
         {
-            _dictionary = dictionary;
         }
 
         public bool TryAdd(string fieldId, string modelPath, bool validatePathExists = true)
         {
-            var path = CreateModelPath(fieldId, modelPath, validatePathExists);
-            return _dictionary.TryAdd(fieldId, path);
+            var descriptor = CreateFieldDescriptor(fieldId, modelPath, validatePathExists);
+            if (_dictionary.TryAdd(fieldId, descriptor))
+            {
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryAdd(fieldId, descriptor);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryAdd(fieldId, descriptor);
+                        break;
+                }
+                return true;
+            }
+            return false;
         }
 
-        private ModelPath CreateModelPath(string fieldId, string modelPath, bool validatePathExists)
+        internal void AddVirtualField(FieldDescriptor descriptor)
+        {
+            var fieldId = descriptor.FieldId;
+            _dictionary.TryAdd(fieldId, descriptor);
+            LoanFieldDescriptors.s_virtualFields.TryAdd(fieldId, descriptor);
+        }
+
+        private FieldDescriptor CreateFieldDescriptor(string fieldId, string modelPath, bool validatePathExists)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNullOrEmpty(modelPath, nameof(modelPath));
 
-            var path = LoanFields.CreateModelPath(modelPath);
+            var path = LoanFieldDescriptors.CreateModelPath(modelPath);
             if (path == null)
             {
                 throw new ArgumentException("bad modelPath");
@@ -84,16 +112,29 @@ namespace EncompassRest.Loans
                 throw new ArgumentException("modelPath must start with Loan");
             }
 
-            if (validatePathExists)
+            var loanFieldType = LoanFieldType.Standard;
+            var isBorrowerPairSpecific = false;
+            if (modelPath.StartsWith("Loan.CustomFields", StringComparison.OrdinalIgnoreCase))
             {
-                var loanField = new LoanField(fieldId, null, path);
-                if (loanField.ValueType == LoanFieldValueType.Unknown)
-                {
-                    throw new ArgumentException("modelPath must resolve to a valid property type");
-                }
+                loanFieldType = LoanFieldType.Custom;
+            }
+            else if (modelPath.StartsWith("Loan.VirtualFields", StringComparison.OrdinalIgnoreCase))
+            {
+                loanFieldType = LoanFieldType.Virtual;
+            }
+            else if (modelPath.StartsWith("Loan.CurrentApplication.", StringComparison.OrdinalIgnoreCase))
+            {
+                isBorrowerPairSpecific = true;
             }
 
-            return path;
+            var descriptor = new FieldDescriptor(fieldId, path, loanFieldType, isBorrowerPairSpecific);
+
+            if (validatePathExists && descriptor.Type != LoanFieldType.Virtual && descriptor.ValueType == LoanFieldValueType.Unknown)
+            {
+                throw new ArgumentException("modelPath must resolve to a valid property type");
+            }
+
+            return descriptor;
         }
 
         public bool ContainsKey(string fieldId)
@@ -107,7 +148,7 @@ namespace EncompassRest.Loans
         {
             foreach (var pair in _dictionary)
             {
-                yield return new KeyValuePair<string, string>(pair.Key, pair.Value.ToString());
+                yield return new KeyValuePair<string, string>(pair.Key, pair.Value.ModelPath);
             }
         }
 
@@ -115,17 +156,30 @@ namespace EncompassRest.Loans
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            var success = _dictionary.TryRemove(fieldId, out var path);
-            modelPath = path?.ToString();
-            return success;
+            if (_dictionary.TryRemove(fieldId, out var descriptor))
+            {
+                modelPath = descriptor?.ModelPath;
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryRemove(fieldId, out _);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryRemove(fieldId, out _);
+                        break;
+                }
+                return true;
+            }
+            modelPath = null;
+            return false;
         }
 
         public bool TryGetValue(string fieldId, out string modelPath)
         {
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
 
-            var success = _dictionary.TryGetValue(fieldId, out var path);
-            modelPath = path?.ToString();
+            var success = _dictionary.TryGetValue(fieldId, out var descriptor);
+            modelPath = descriptor?.ModelPath;
             return success;
         }
 
@@ -136,7 +190,21 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(fieldId, nameof(fieldId));
             Preconditions.NotNull(modelPathFactory, nameof(modelPathFactory));
 
-            return _dictionary.GetOrAdd(fieldId, f => CreateModelPath(f, modelPathFactory(), true)).ToString();
+            FieldDescriptor descriptor = null;
+            var retrievedDescriptor = _dictionary.GetOrAdd(fieldId, f => (descriptor = CreateFieldDescriptor(f, modelPathFactory(), true)));
+            if (ReferenceEquals(descriptor, retrievedDescriptor))
+            {
+                switch (descriptor.Type)
+                {
+                    case LoanFieldType.Standard:
+                        LoanFieldDescriptors.s_standardFields.TryAdd(fieldId, descriptor);
+                        break;
+                    case LoanFieldType.Virtual:
+                        LoanFieldDescriptors.s_virtualFields.TryAdd(fieldId, descriptor);
+                        break;
+                }
+            }
+            return retrievedDescriptor.ModelPath;
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -153,9 +221,9 @@ namespace EncompassRest.Loans
 
         bool IDictionary<string, string>.Remove(string key) => TryRemove(key, out _);
 
-        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.CreateModelPath(item.Value)) && _dictionary.TryRemove(item.Key, out modelPath);
+        bool ICollection<KeyValuePair<string, string>>.Remove(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var descriptor) && descriptor._modelPath.Equals(LoanFieldDescriptors.CreateModelPath(item.Value)) && _dictionary.TryRemove(item.Key, out descriptor);
 
-        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var modelPath) && modelPath.Equals(LoanFields.CreateModelPath(item.Value));
+        bool ICollection<KeyValuePair<string, string>>.Contains(KeyValuePair<string, string> item) => _dictionary.TryGetValue(item.Key, out var descriptor) && descriptor._modelPath.Equals(LoanFieldDescriptors.CreateModelPath(item.Value));
 
         void ICollection<KeyValuePair<string, string>>.CopyTo(KeyValuePair<string, string>[] array, int arrayIndex)
         {
@@ -166,7 +234,7 @@ namespace EncompassRest.Loans
             var i = 0;
             foreach (var pair in _dictionary)
             {
-                array[arrayIndex + i] = new KeyValuePair<string, string>(pair.Key, pair.Value.ToString());
+                array[arrayIndex + i] = new KeyValuePair<string, string>(pair.Key, pair.Value.ModelPath);
                 ++i;
             }
         }
@@ -220,12 +288,12 @@ namespace EncompassRest.Loans
 
             public bool Contains(string item)
             {
-                var modelPath = LoanFields.CreateModelPath(item);
+                var modelPath = LoanFieldDescriptors.CreateModelPath(item);
                 if (modelPath != null)
                 {
                     foreach (var pair in _loanFieldMappings._dictionary)
                     {
-                        if (pair.Value.Equals(modelPath))
+                        if (pair.Value._modelPath.Equals(modelPath))
                         {
                             return true;
                         }
@@ -243,7 +311,7 @@ namespace EncompassRest.Loans
                 var i = 0;
                 foreach (var pair in _loanFieldMappings._dictionary)
                 {
-                    array[arrayIndex + i] = pair.Value.ToString();
+                    array[arrayIndex + i] = pair.Value.ModelPath;
                     ++i;
                 }
             }
@@ -252,7 +320,7 @@ namespace EncompassRest.Loans
             {
                 foreach (var pair in _loanFieldMappings._dictionary)
                 {
-                    yield return pair.Value.ToString();
+                    yield return pair.Value.ModelPath;
                 }
             }
 

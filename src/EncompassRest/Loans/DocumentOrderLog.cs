@@ -14,11 +14,13 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentOrderLog DateFilesPurged
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateFilesPurged { get => _dateFilesPurged; set => _dateFilesPurged = value; }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// DocumentOrderLog DateUtc
         /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
         private DocumentAudit _documentAudit;
         /// <summary>

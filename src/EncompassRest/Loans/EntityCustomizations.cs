@@ -22,7 +22,7 @@ namespace EncompassRest.Loans
     {
         internal ModelPath _modelPathInternal;
         internal DirtyValue<string> _modelPath;
-        public string ModelPath { get => _modelPath; set { _modelPath = value; _modelPathInternal = LoanFields.CreateModelPath(value); } }
+        public string ModelPath { get => _modelPath; set { _modelPath = value; _modelPathInternal = LoanFieldDescriptors.CreateModelPath(value); } }
 
         [IdPropertyName(nameof(ModelPath))]
         string IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
