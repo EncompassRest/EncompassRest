@@ -14,6 +14,8 @@ namespace EncompassRest.Loans
     {
         internal readonly ModelPath _modelPath;
         private LoanFieldValueType? _valueType;
+        private bool _loanEntityIsSet;
+        private LoanEntity? _loanEntity;
         private bool _propertyAttributeIsSet;
         private LoanFieldPropertyAttribute _propertyAttribute;
         private ReadOnlyCollection<FieldOption> _options;
@@ -114,6 +116,47 @@ namespace EncompassRest.Loans
         public virtual bool ReadOnly => ParentDescriptor?.ReadOnly ?? Type == LoanFieldType.Virtual || PropertyAttribute?.ReadOnly == true;
 
         public virtual string Description => ParentDescriptor?.Description ?? PropertyAttribute?.Description;
+
+        public virtual LoanEntity? LoanEntity
+        {
+            get
+            {
+                var loanEntity = ParentDescriptor?.LoanEntity;
+                if (loanEntity == null)
+                {
+                    loanEntity = _loanEntity;
+                    if (!_loanEntityIsSet)
+                    {
+                        if (Type == LoanFieldType.Virtual)
+                        {
+                            loanEntity = EncompassRest.Loans.LoanEntity.VirtualFields;
+                        }
+                        else if (_modelPath.Segments.Count == 1)
+                        {
+                            loanEntity = EncompassRest.Loans.LoanEntity.Loan;
+                        }
+                        else
+                        {
+                            var finalSegmentIndex = _modelPath.Segments.Count - 2;
+
+                            var declaredType = TypeData<Loan>.Type;
+                            for (var i = 0; i <= finalSegmentIndex && declaredType != null; ++i)
+                            {
+                                declaredType = _modelPath.Segments[i].GetDeclaredType(declaredType);
+                            }
+                            if (declaredType != null && EnumsNET.Enums.TryParse<LoanEntity>(declaredType.Name, out var newLoanEntity, EnumFormat.Name))
+                            {
+                                loanEntity = newLoanEntity;
+                            }
+                        }
+
+                        _loanEntity = loanEntity;
+                        _loanEntityIsSet = true;
+                    }
+                }
+                return loanEntity;
+            }
+        }
 
         public virtual ReadOnlyCollection<FieldOption> Options
         {
