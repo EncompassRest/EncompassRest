@@ -13,7 +13,7 @@ namespace EncompassRest.Tests
         public async Task FieldReader_GetValues()
         {
             var client = await GetTestClientAsync().ConfigureAwait(false);
-            var loan = new Loan();
+            var loan = new Loan(client);
             var fieldValues = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
             {
                 { "1109", "250000.00" },

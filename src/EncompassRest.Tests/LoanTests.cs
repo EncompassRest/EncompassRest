@@ -26,7 +26,7 @@ namespace EncompassRest.Tests
         {
             var client = await GetTestClientAsync();
             var supportedEntities = await client.Loans.GetSupportedEntitiesAsync();
-            var ignoredEntities = new HashSet<string>(new[] { "CoBorrower", "LOCompensation", "ElliUCDFields", "DocumentOrderLog", "NonVols" });
+            var ignoredEntities = new HashSet<string>(new[] { "CoBorrower", "LOCompensation" });
             Assert.IsTrue(supportedEntities.All(e => e.EnumValue.HasValue || ignoredEntities.Contains(e.Value)));
             var entities = new HashSet<string>(supportedEntities.Select(e => e.Value));
             entities.ExceptWith(ignoredEntities);
@@ -1326,7 +1326,7 @@ namespace EncompassRest.Tests
         public async Task Loan_FieldsPresentAddress()
         {
             var client = await GetTestClientAsync();
-            var loan = new Loan();
+            var loan = new Loan(client);
             const string address = "123 Main Street";
             const string addressFieldId = "FR0104";
             loan.Fields[addressFieldId].Value = address;
@@ -1341,6 +1341,47 @@ namespace EncompassRest.Tests
             {
                 await client.Loans.DeleteLoanAsync(loanId);
             }
+        }
+
+        [TestMethod]
+        public async Task Loan_FieldsLoanEntity()
+        {
+            var client = await GetTestClientAsync();
+
+            var fieldDescriptors = client.Loans.FieldDescriptors;
+
+            FieldDescriptor fieldDescriptor = null;
+
+            foreach (var pair in LoanFieldDescriptors.FieldMappings)
+            {
+                fieldDescriptor = fieldDescriptors[pair.Key];
+                Assert.IsNotNull(fieldDescriptor.LoanEntity, pair.Key);
+            }
+
+            foreach (var pair in LoanFieldDescriptors.FieldPatternMappings)
+            {
+                fieldDescriptor = fieldDescriptors[string.Format(pair.Key, 1)];
+                Assert.IsNotNull(fieldDescriptor.LoanEntity, pair.Key);
+            }
+
+            fieldDescriptor = fieldDescriptors["364"];
+            Assert.AreEqual(LoanEntity.Loan, fieldDescriptor.LoanEntity);
+
+            fieldDescriptor = fieldDescriptors["CX.ABC"];
+            Assert.AreEqual(LoanEntity.CustomField, fieldDescriptor.LoanEntity);
+
+            fieldDescriptor = fieldDescriptors["Log.MS.CurrentMilestone"];
+            Assert.AreEqual(LoanEntity.VirtualFields, fieldDescriptor.LoanEntity);
+
+            fieldDescriptor = fieldDescriptors["NEWHUD.X63"];
+            Assert.AreEqual(LoanEntity.Gfe2010Fee, fieldDescriptor.LoanEntity);
+
+            Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryAdd("NEWFIELD", "Loan.NewEntity[2].Borrower.BorrowerId", false));
+
+            fieldDescriptor = fieldDescriptors["NEWFIELD"];
+            Assert.IsNull(fieldDescriptor.LoanEntity);
+
+            Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryRemove("NEWFIELD", out _));
         }
     }
 }
