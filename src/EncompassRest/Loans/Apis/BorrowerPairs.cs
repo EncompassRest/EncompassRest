@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using EncompassRest.Utilities;
@@ -77,6 +79,99 @@ namespace EncompassRest.Loans.Apis
             Preconditions.NotNullOrEmpty(applicationId, nameof(applicationId));
 
             return DeleteAsync<Application>(applicationId, cancellationToken);
+        }
+
+        public async Task MoveBorrowerPairsAsync(IList<Application> applications, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(applications, nameof(applications));
+            Preconditions.NotAnyNull(applications, nameof(applications));
+
+            await PatchAsync(null, null, JsonStreamContent.Create(applications), nameof(MoveBorrowerPairsAsync), null, cancellationToken).ConfigureAwait(false);
+            if (LoanObjectBoundApis?.ReflectToLoanObject == true)
+            {
+                var bps = LoanObjectBoundApis.Loan.Applications;
+                var borrowers = new Dictionary<string, Tuple<int, Borrower>>(StringComparer.OrdinalIgnoreCase);
+                foreach (var bp in bps)
+                {
+                    var borrower = bp.Borrower;
+                    var altId = borrower.AltId;
+                    if (!string.IsNullOrEmpty(altId))
+                    {
+                        borrowers.Add(altId, Tuple.Create(0, borrower));
+                    }
+                    borrower = bp.Coborrower;
+                    altId = borrower.AltId;
+                    if (!string.IsNullOrEmpty(altId))
+                    {
+                        borrowers.Add(altId, Tuple.Create(1, borrower));
+                    }
+                }
+                var altIds = bps.Select(bp => new[] { bp.Borrower.AltId, bp.Coborrower.AltId }).ToList();
+                foreach (var application in applications)
+                {
+                    var id = application.Id;
+                    var found = false;
+                    for (var i = 0; i < bps.Count; ++i)
+                    {
+                        var bp = bps[i];
+                        if (string.Equals(id, bp.Id, StringComparison.OrdinalIgnoreCase))
+                        {
+                            var index = application.ApplicationIndex;
+                            if (index.HasValue)
+                            {
+                                bp.ApplicationIndex = index;
+                            }
+                            var altId = application.Borrower.AltId;
+                            if (string.IsNullOrEmpty(altId))
+                            {
+                                bp.Borrower = null;
+                            }
+                            else
+                            {
+                                if (borrowers.TryGetValue(altId, out var tuple))
+                                {
+                                    bp.Borrower = tuple.Item2;
+                                    bp.Borrower.AltId = altIds[i][tuple.Item1];
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            altId = application.Coborrower.AltId;
+                            if (string.IsNullOrEmpty(altId))
+                            {
+                                bp.Coborrower = null;
+                            }
+                            else
+                            {
+                                if (borrowers.TryGetValue(altId, out var tuple))
+                                {
+                                    bp.Coborrower = tuple.Item2;
+                                    bp.Coborrower.AltId = altIds[i][tuple.Item1];
+                                }
+                                else
+                                {
+                                    break;
+                                }
+                            }
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        public Task MoveBorrowerPairsRawAsync(string applications, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(applications, nameof(applications));
+
+            return PatchAsync(null, queryString, new JsonStringContent(applications), nameof(MoveBorrowerPairsRawAsync), null, cancellationToken);
         }
     }
 }

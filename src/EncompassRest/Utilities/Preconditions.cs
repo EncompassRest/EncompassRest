@@ -6,8 +6,7 @@ namespace EncompassRest.Utilities
 {
     internal static class Preconditions
     {
-        public static void NotNull<T>(T value, string paramName)
-            where T : class
+        public static void NotNull(object value, string paramName)
         {
             if (value == null)
             {
@@ -21,6 +20,16 @@ namespace EncompassRest.Utilities
             if (!value.Any())
             {
                 throw new ArgumentException("cannot be empty", paramName);
+            }
+        }
+
+        public static void NotAnyNull<T>(IEnumerable<T> value, string paramName)
+            where T : class
+        {
+            NotNull(value, paramName);
+            if (value.Any(v => v == null))
+            {
+                throw new ArgumentNullException(paramName);
             }
         }
 
