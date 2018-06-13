@@ -1,4 +1,5 @@
 ﻿using EncompassRest.Contacts;
+using EncompassRest.Filters;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -115,9 +116,9 @@ namespace EncompassRest.Tests
         public async Task Contacts_GetContactList()
         {
             var client = await GetTestClientAsync();
-            var fields = new[] { "Contact.FirstName", "Contact.LastName" };
-            var borrowerContacts = await client.BorrowerContactSelector.GetContactListAsync(new ContactListParameters(fields));
-            var businessContacts = await client.BusinessContactSelector.GetContactListAsync(new ContactListParameters(fields));
+            var fields = new[] { CanonicalContactField.FirstName.GetCanonicalName(), CanonicalContactField.LastName.GetCanonicalName() };
+            var borrowerContacts = await client.BorrowerContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            var businessContacts = await client.BusinessContactSelector.GetContactListAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
             var allContacts = borrowerContacts.Concat(businessContacts).ToList();
 
             foreach (var contact in allContacts)
@@ -129,6 +130,57 @@ namespace EncompassRest.Tests
                 foreach (var field in fields)
                 {
                     Assert.IsTrue(contact.Fields.ContainsKey(field));
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task Contacts_Cursor()
+        {
+            var client = await GetTestClientAsync();
+            var fields = new[] { CanonicalContactField.FirstName.GetCanonicalName(), CanonicalContactField.LastName.GetCanonicalName() };
+
+            var borrowerContactCursor = await client.BorrowerContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            await UseCursorAsync(borrowerContactCursor);
+            var businessContactCursor = await client.BusinessContactSelector.CreateCursorAsync(new ContactListParameters { Filter = new StringFieldFilter(CanonicalContactField.LastName, StringFieldMatchType.Contains, "a"), Fields = fields });
+            await UseCursorAsync(businessContactCursor);
+
+            async Task UseCursorAsync(ContactCursor cursor)
+            {
+                Assert.IsNotNull(cursor);
+                CollectionAssert.AreEqual(fields, cursor.Fields.ToList());
+                Assert.IsFalse(string.IsNullOrEmpty(cursor.CursorId));
+                Assert.IsTrue(cursor.Count > 0);
+                var items = await cursor.GetItemsAsync(0, 50);
+                foreach (var item in items)
+                {
+                    ValidateItem(item);
+                }
+                Assert.IsTrue(items.Count() <= 50);
+                await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(-1, 1));
+                await Assert.ThrowsExceptionAsync<ArgumentOutOfRangeException>(() => cursor.GetItemsAsync(cursor.Count, 1));
+                items = await cursor.GetItemsAsync(cursor.Count - 1, 1);
+                ValidateItem(items[0]);
+                items = await cursor.GetItemsAsync(cursor.Count - 1, int.MaxValue); // Does not throw ArgumentOutOfRangeException
+                Assert.AreEqual(1, items.Count);
+                ValidateItem(items[0]);
+
+                void ValidateItem(ContactData item)
+                {
+                    Assert.IsFalse(string.IsNullOrEmpty(item.Id));
+                    if (fields?.Length > 0)
+                    {
+                        Assert.IsNotNull(item.Fields);
+                        Assert.AreEqual(fields.Length, item.Fields.Count);
+                        foreach (var field in fields)
+                        {
+                            Assert.IsTrue(item.Fields.ContainsKey(field));
+                        }
+                    }
+                    else
+                    {
+                        Assert.IsNull(item.Fields);
+                    }
                 }
             }
         }

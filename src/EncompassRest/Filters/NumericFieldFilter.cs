@@ -12,8 +12,13 @@ namespace EncompassRest.Filters
         [JsonRequired]
         public decimal Value { get; }
 
-        public NumericFieldFilter(CanonicalLoanField canonicalField, OrdinalFieldMatchType matchType, decimal value)
-            : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), matchType, value)
+        public NumericFieldFilter(CanonicalLoanField canonicalLoanField, OrdinalFieldMatchType matchType, decimal value)
+            : this(canonicalLoanField.Validate(nameof(canonicalLoanField)).GetCanonicalName(), matchType, value)
+        {
+        }
+
+        public NumericFieldFilter(CanonicalContactField canonicalContactField, OrdinalFieldMatchType matchType, decimal value)
+            : this(canonicalContactField.Validate(nameof(canonicalContactField)).GetCanonicalName(), matchType, value)
         {
         }
 

@@ -3,13 +3,21 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
+    /// <summary>
+    /// Does not currently work with string fields
+    /// </summary>
     public sealed class EmptyFieldFilter : FieldFilter
     {
         [JsonProperty("Value")]
         private object value => System.DateTime.MinValue;
 
-        public EmptyFieldFilter(CanonicalLoanField canonicalField)
-            : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())
+        public EmptyFieldFilter(CanonicalLoanField canonicalLoanField)
+            : this(canonicalLoanField.Validate(nameof(canonicalLoanField)).GetCanonicalName())
+        {
+        }
+
+        public EmptyFieldFilter(CanonicalContactField canonicalContactField)
+            : this(canonicalContactField.Validate(nameof(canonicalContactField)).GetCanonicalName())
         {
         }
 

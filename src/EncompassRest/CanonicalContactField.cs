@@ -1,0 +1,57 @@
+﻿using System.Runtime.Serialization;
+
+namespace EncompassRest
+{
+    public enum CanonicalContactField
+    {
+        Anniversary = 0,
+        Birthdate = 1,
+        LastModified = 2,
+        CategoryID = 100,
+        ContactID = 101,
+        Fees = 102,
+        Income = 103,
+        Married = 104,
+        NoCall = 105,
+        NoFax = 106,
+        NoSpam = 107,
+        SpouseContactID = 108,
+        BizAddress1 = 200,
+        BizAddress2 = 201,
+        BizCity = 202,
+        BizEmail = 203,
+        BizState = 204,
+        BizWebUrl = 205,
+        BizZip = 206,
+        Comment = 207,
+        [EnumMember(Value = "Company.Name")]
+        CompanyName = 208,
+        ContactType = 209,
+        CustField1 = 210,
+        CustField2 = 211,
+        CustField3 = 212,
+        CustField4 = 213,
+        EmployerName = 214,
+        FaxNumber = 215,
+        FirstName = 216,
+        HomeAddress1 = 217,
+        HomeAddress2 = 218,
+        HomeCity = 219,
+        HomePhone = 220,
+        HomeState = 221,
+        HomeZip = 222,
+        JobTitle = 223,
+        LastName = 224,
+        LicenseNumber = 225,
+        MobilePhone = 226,
+        OwnerID = 227,
+        PersonalEmail = 228,
+        PrimaryEmail = 229,
+        PrimaryPhone = 230,
+        Referral = 231,
+        SpouseName = 232,
+        SSN = 233,
+        Status = 234,
+        WorkPhone = 235
+    }
+}
