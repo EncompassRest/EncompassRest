@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EncompassRest.Loans.Apis;
 using EncompassRest.Loans.Associates;
 using EncompassRest.Loans.Attachments;
+using EncompassRest.Loans.Conditions;
 using EncompassRest.Loans.Documents;
 using EncompassRest.Loans.FieldReader;
 using EncompassRest.Loans.MilestoneFreeRoles;
@@ -22,6 +23,7 @@ namespace EncompassRest.Loans
         private LoanMilestones _milestones;
         private LoanMilestoneFreeRoles _milestoneFreeRoles;
         private LoanFieldReader _fieldReader;
+        private LoanConditions _conditions;
         private BorrowerPairs _borrowerPairs;
 
         public LoanDocuments Documents => _documents ?? (_documents = new LoanDocuments(Client, LoanId));
@@ -37,6 +39,8 @@ namespace EncompassRest.Loans
         public LoanMilestoneFreeRoles MilestoneFreeRoles => _milestoneFreeRoles ?? (_milestoneFreeRoles = new LoanMilestoneFreeRoles(Client, LoanId));
 
         public LoanFieldReader FieldReader => _fieldReader ?? (_fieldReader = new LoanFieldReader(Client, LoanId));
+
+        public LoanConditions Conditions => _conditions ?? (_conditions = new LoanConditions(Client, LoanId));
 
         public BorrowerPairs BorrowerPairs => _borrowerPairs ?? (_borrowerPairs = CreateBorrowerPairs());
 

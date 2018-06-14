@@ -5,8 +5,8 @@ namespace EncompassRest.Filters
 {
     public sealed class EmptyFieldFilter : FieldFilter
     {
-        [JsonProperty("Value")]
-        private object value => System.DateTime.MinValue;
+        [JsonProperty]
+        private object Value => System.DateTime.MinValue;
 
         public EmptyFieldFilter(CanonicalLoanField canonicalField)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())
@@ -28,5 +28,7 @@ namespace EncompassRest.Filters
         protected override FieldFilter CloneFieldFilter() => Clone();
 
         protected override string GetMatchType() => "isEmpty";
+
+        internal override string GetQueryStringFormat() => $"{CanonicalName}:==:";
     }
 }

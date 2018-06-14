@@ -31,5 +31,7 @@ namespace EncompassRest.Filters
         protected abstract FieldFilter CloneFieldFilter();
 
         protected abstract string GetMatchType();
+
+        internal abstract string GetQueryStringFormat();
     }
 }
