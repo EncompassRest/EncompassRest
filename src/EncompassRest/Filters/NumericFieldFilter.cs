@@ -26,17 +26,6 @@ namespace EncompassRest.Filters
             Value = value;
         }
 
-        private NumericFieldFilter(NumericFieldFilter numericFieldFilter)
-            : base(numericFieldFilter)
-        {
-            MatchType = numericFieldFilter.MatchType;
-            Value = numericFieldFilter.Value;
-        }
-
-        public new NumericFieldFilter Clone() => new NumericFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
-
         protected override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
     }
 }

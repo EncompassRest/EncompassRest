@@ -18,15 +18,6 @@ namespace EncompassRest.Filters
         {
         }
 
-        private NotEmptyFieldFilter(NotEmptyFieldFilter notEmptyFieldFilter)
-            : base(notEmptyFieldFilter)
-        {
-        }
-
-        public new NotEmptyFieldFilter Clone() => new NotEmptyFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
-
         protected override string GetMatchType() => "isNotEmpty";
     }
 }

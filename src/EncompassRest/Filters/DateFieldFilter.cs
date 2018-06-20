@@ -34,17 +34,6 @@ namespace EncompassRest.Filters
             Precision = precision;
         }
 
-        private DateFieldFilter(DateFieldFilter dateFieldFilter)
-            : base(dateFieldFilter)
-        {
-            MatchType = dateFieldFilter.MatchType;
-            Value = dateFieldFilter.Value;
-        }
-
-        public new DateFieldFilter Clone() => new DateFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
-
         protected override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
     }
 }

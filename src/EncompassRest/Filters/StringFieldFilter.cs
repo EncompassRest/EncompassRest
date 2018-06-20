@@ -32,18 +32,6 @@ namespace EncompassRest.Filters
             Include = include;
         }
 
-        private StringFieldFilter(StringFieldFilter stringFieldFilter)
-            : base(stringFieldFilter)
-        {
-            MatchType = stringFieldFilter.MatchType;
-            Value = stringFieldFilter.Value;
-            Include = stringFieldFilter.Include;
-        }
-
-        public new StringFieldFilter Clone() => new StringFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
-
         protected override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
     }
 }

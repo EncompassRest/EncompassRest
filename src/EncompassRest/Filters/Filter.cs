@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Collections.ObjectModel;
 using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
@@ -7,59 +7,49 @@ namespace EncompassRest.Filters
 {
     public class Filter
     {
-        private Filter _parent;
-
         [JsonProperty("operator", NullValueHandling = NullValueHandling.Ignore)]
         private readonly FilterOperator? _operator;
 
         [JsonProperty("terms", NullValueHandling = NullValueHandling.Ignore)]
-        private readonly List<Filter> _terms;
+        private readonly ReadOnlyCollection<Filter> _terms;
 
         internal Filter()
         {
         }
 
-        internal Filter(Filter filter)
+        private Filter(FilterOperator @operator, ReadOnlyCollection<Filter> terms)
+        {
+            _operator = @operator;
+            _terms = terms;
+        }
+
+        public Filter And(Filter filter) => Combine(FilterOperator.And, filter);
+
+        public Filter Or(Filter filter) => Combine(FilterOperator.Or, filter);
+
+        private Filter Combine(FilterOperator @operator, Filter filter)
         {
             Preconditions.NotNull(filter, nameof(filter));
 
-            _operator = filter._operator;
-            _terms = filter._terms?.Select(term => term.Clone()).ToList();
-        }
-
-        private Filter(FilterOperator @operator, Filter first, Filter second)
-        {
-            first._parent = this;
-            second._parent = this;
-
-            _operator = @operator;
-            _terms = new List<Filter> { first, second };
-        }
-
-        public Filter And(Filter filter) => Combine(FilterOperator.And, this, filter);
-
-        public Filter Or(Filter filter) => Combine(FilterOperator.Or, this, filter);
-
-        public Filter Clone() => CloneFilter();
-
-        protected virtual Filter CloneFilter() => new Filter(this);
-
-        private static Filter Combine(FilterOperator @operator, Filter first, Filter second)
-        {
-            Preconditions.NotNull(second, nameof(second));
-
-            var firstFilter = GetParentlessFilter(first);
-            var secondFilter = GetParentlessFilter(second);
-
-            if (firstFilter._operator == @operator)
+            var terms = new List<Filter>();
+            if (_operator == @operator)
             {
-                firstFilter._terms.Add(secondFilter);
-                return firstFilter;
+                terms.AddRange(_terms);
             }
-            return new Filter(@operator, firstFilter, secondFilter);
+            else
+            {
+                terms.Add(this);
+            }
+            if (filter._operator == @operator)
+            {
+                terms.AddRange(filter._terms);
+            }
+            else
+            {
+                terms.Add(filter);
+            }
+            return new Filter(@operator, new ReadOnlyCollection<Filter>(terms));
         }
-
-        private static Filter GetParentlessFilter(Filter filter) => filter._parent != null ? filter.Clone() : filter;
 
         private enum FilterOperator
         {

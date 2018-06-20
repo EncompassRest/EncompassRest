@@ -15,7 +15,7 @@ namespace EncompassRest.Tests
             var client = await GetTestClientAsync();
             var existingCdos = await client.GlobalCustomDataObjects.GetCustomDataObjectsAsync();
             const string firstText = "Hello World!";
-            var cdo = new CustomDataObject { Name = Guid.NewGuid().ToString().Substring(0, 8) + ".txt", DataObject = Encoding.UTF8.GetBytes(firstText) };
+            var cdo = new CustomDataObject(Guid.NewGuid().ToString().Substring(0, 8) + ".txt", Encoding.UTF8.GetBytes(firstText));
             await client.GlobalCustomDataObjects.CreateOrReplaceCustomDataObjectAsync(cdo);
             await Task.Delay(10000);
             var cdo2 = await client.GlobalCustomDataObjects.GetCustomDataObjectAsync(cdo.Name);
