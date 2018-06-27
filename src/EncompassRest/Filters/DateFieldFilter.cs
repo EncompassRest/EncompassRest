@@ -15,10 +15,10 @@ namespace EncompassRest.Filters
         public DateTime Value { get; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(DateFieldMatchPrecision.Day)]
+        [DefaultValue(DateFieldMatchPrecision.Exact)]
         public DateFieldMatchPrecision Precision { get; }
 
-        public DateFieldFilter(CanonicalLoanField canonicalField, OrdinalFieldMatchType matchType, DateTime value, DateFieldMatchPrecision precision)
+        public DateFieldFilter(CanonicalLoanField canonicalField, OrdinalFieldMatchType matchType, DateTime value, DateFieldMatchPrecision precision = DateFieldMatchPrecision.Day)
             : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName(), matchType, value, precision)
         {
         }

@@ -5,7 +5,7 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactListParameters
+    public sealed class ContactListParameters : SerializableObject
     {
         public IEnumerable<string> Fields { get; }
 

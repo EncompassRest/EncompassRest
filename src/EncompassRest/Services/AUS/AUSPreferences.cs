@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.AUS
 {
-    public sealed class AUSPreferences
+    public sealed class AUSPreferences : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public bool? ImportConditions { get; set; }

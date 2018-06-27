@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanBatch
 {
-    public sealed class BatchUpdateParameters
+    public sealed class BatchUpdateParameters : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Filter Filter { get; }

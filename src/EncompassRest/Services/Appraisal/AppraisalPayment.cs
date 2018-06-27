@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.Appraisal
 {
-    public sealed class AppraisalPayment
+    public sealed class AppraisalPayment : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public StringEnumValue<AppraisalPaymentType> PaymentType { get; set; }

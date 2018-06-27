@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using EncompassRest.Utilities;
 using Newtonsoft.Json;
 
 namespace EncompassRest
@@ -9,8 +7,7 @@ namespace EncompassRest
     /// <summary>
     /// Base class that supports extension data and json serialization.
     /// </summary>
-    [JsonConverter(typeof(PublicallySerializableConverter))]
-    public abstract class ExtensibleObject : IDirty, IIdentifiable
+    public abstract class ExtensibleObject : SerializableObject, IDirty, IIdentifiable
 #if HAVE_ICLONEABLE
         , ICloneable
 #endif
@@ -57,27 +54,6 @@ namespace EncompassRest
         string IIdentifiable.Id { get => string.Empty; set { } }
         internal ExtensibleObject()
         {
-        }
-
-        /// <summary>
-        /// Serializes object to it's json representation without indenting.
-        /// </summary>
-        /// <returns>Json representation of the object.</returns>
-        public override string ToString() => ToString(false);
-
-        /// <summary>
-        /// Serializes object to it's json representation with indenting if <paramref name="indent"/> is <c>true</c>.
-        /// </summary>
-        /// <param name="indent">Specifies if the json should be indented.</param>
-        /// <returns>Json representation of the object.</returns>
-        public string ToString(bool indent)
-        {
-            var serializer = indent ? JsonHelper.DefaultIndentedPublicSerializer : JsonHelper.DefaultPublicSerializer;
-            using (var writer = new StringWriter())
-            {
-                serializer.Serialize(writer, this);
-                return writer.ToString();
-            }
         }
 
 #if HAVE_ICLONEABLE

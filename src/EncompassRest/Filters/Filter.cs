@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
-    public class Filter
+    public class Filter : SerializableObject
     {
         [JsonProperty("operator", NullValueHandling = NullValueHandling.Ignore)]
         private readonly FilterOperator? _operator;

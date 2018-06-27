@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services
 {
-    public abstract class OrderServiceParameters
+    public abstract class OrderServiceParameters : SerializableObject
     {
         public ServiceProduct Product { get; }
 
