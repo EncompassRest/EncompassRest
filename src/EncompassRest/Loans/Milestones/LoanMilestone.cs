@@ -2,6 +2,7 @@
 
 namespace EncompassRest.Loans.Milestones
 {
+    [Entity(PropertiesToAlwaysSerialize = nameof(StartDate))]
     public sealed class LoanMilestone : ExtensibleObject
     {
         private DirtyValue<string> _id;
@@ -24,6 +25,8 @@ namespace EncompassRest.Loans.Milestones
         public string MilestoneName { get => _milestoneName; set => _milestoneName = value; }
         private DirtyValue<string> _milestoneIdString;
         public string MilestoneIdString { get => _milestoneIdString; set => _milestoneIdString = value; }
+        private DirtyValue<string> _comments;
+        public string Comments { get => _comments; set => _comments = value; }
         internal override bool DirtyInternal
         {
             get
@@ -37,7 +40,8 @@ namespace EncompassRest.Loans.Milestones
                     || _reviewedIndicator.Dirty
                     || _roleRequired.Dirty
                     || _milestoneName.Dirty
-                    || _milestoneIdString.Dirty;
+                    || _milestoneIdString.Dirty
+                    || _comments.Dirty;
             }
             set
             {
@@ -51,6 +55,7 @@ namespace EncompassRest.Loans.Milestones
                 _roleRequired.Dirty = value;
                 _milestoneName.Dirty = value;
                 _milestoneIdString.Dirty = value;
+                _comments.Dirty = value;
             }
         }
     }
