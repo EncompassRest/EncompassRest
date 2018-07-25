@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanPipeline
 {
-    public sealed class PipelineParameters
+    public sealed class PipelineParameters : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public Filter Filter { get; }

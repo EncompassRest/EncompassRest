@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.AUS
 {
-    public sealed class AUSOrderCreditDetail
+    public sealed class AUSOrderCreditDetail : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string ApplicationId { get; set; }

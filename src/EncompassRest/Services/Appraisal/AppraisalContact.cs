@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.Appraisal
 {
-    public sealed class AppraisalContact
+    public sealed class AppraisalContact : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public AppraisalContactBorrower Borrower { get; set; }

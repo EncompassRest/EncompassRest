@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.LoanBatch
 {
-    public sealed class FieldValuePair
+    public sealed class FieldValuePair : SerializableObject
     {
         [JsonRequired]
         public string FieldId { get; }

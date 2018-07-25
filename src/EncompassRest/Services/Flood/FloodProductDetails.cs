@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Services.Flood
 {
-    public sealed class FloodProductDetails
+    public sealed class FloodProductDetails : SerializableObject
     {
         private StringEnumValue<FloodProductName> _name;
 

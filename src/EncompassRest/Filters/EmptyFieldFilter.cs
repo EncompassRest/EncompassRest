@@ -26,15 +26,6 @@ namespace EncompassRest.Filters
         {
         }
 
-        private EmptyFieldFilter(EmptyFieldFilter emptyFieldFilter)
-            : base(emptyFieldFilter)
-        {
-        }
-
-        public new EmptyFieldFilter Clone() => new EmptyFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
-
         protected override string GetMatchType() => "isEmpty";
 
         internal override string GetQueryStringFormat() => $"{CanonicalName}:==:";

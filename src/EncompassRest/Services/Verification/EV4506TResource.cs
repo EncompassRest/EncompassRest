@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.Verification
 {
-    public sealed class EV4506TResource
+    public sealed class EV4506TResource : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string AttachmentId { get; set; }

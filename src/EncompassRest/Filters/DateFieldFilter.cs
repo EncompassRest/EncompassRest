@@ -15,7 +15,7 @@ namespace EncompassRest.Filters
         public DateTime Value { get; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        [DefaultValue(DateFieldMatchPrecision.Day)]
+        [DefaultValue(DateFieldMatchPrecision.Exact)]
         public DateFieldMatchPrecision Precision { get; }
 
         public DateFieldFilter(CanonicalLoanField canonicalLoanField, OrdinalFieldMatchType matchType, DateTime value, DateFieldMatchPrecision precision = DateFieldMatchPrecision.Day)
@@ -38,17 +38,6 @@ namespace EncompassRest.Filters
             Value = value;
             Precision = precision;
         }
-
-        private DateFieldFilter(DateFieldFilter dateFieldFilter)
-            : base(dateFieldFilter)
-        {
-            MatchType = dateFieldFilter.MatchType;
-            Value = dateFieldFilter.Value;
-        }
-
-        public new DateFieldFilter Clone() => new DateFieldFilter(this);
-
-        protected override FieldFilter CloneFieldFilter() => Clone();
 
         protected override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
 

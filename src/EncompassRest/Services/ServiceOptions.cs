@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services
 {
-    public abstract class ServiceOptions
+    public abstract class ServiceOptions : SerializableObject
     {
         public string RequestType { get; }
 

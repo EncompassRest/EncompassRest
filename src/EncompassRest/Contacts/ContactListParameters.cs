@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactListParameters
+    public sealed class ContactListParameters : SerializableObject
     {
         private ReadOnlyCollection<string> _fields;
         private ReadOnlyCollection<FieldSort> _sortOrder;

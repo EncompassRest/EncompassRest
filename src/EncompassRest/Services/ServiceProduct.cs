@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Services
 {
-    public abstract class ServiceProduct
+    public abstract class ServiceProduct : SerializableObject
     {
         public EntityReference EntityRef { get; }
 

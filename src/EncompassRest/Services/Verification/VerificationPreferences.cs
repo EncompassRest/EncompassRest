@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Services.Verification
 {
-    public sealed class VerificationPreferences
+    public sealed class VerificationPreferences : SerializableObject
     {
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public bool? ImportLiabilities { get; set; }

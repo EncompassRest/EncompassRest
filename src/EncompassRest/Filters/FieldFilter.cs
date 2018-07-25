@@ -18,18 +18,6 @@ namespace EncompassRest.Filters
             CanonicalName = canonicalName;
         }
 
-        internal FieldFilter(FieldFilter fieldFilter)
-            : base(fieldFilter)
-        {
-            CanonicalName = fieldFilter.CanonicalName;
-        }
-
-        public new FieldFilter Clone() => CloneFieldFilter();
-
-        protected sealed override Filter CloneFilter() => CloneFieldFilter();
-
-        protected abstract FieldFilter CloneFieldFilter();
-
         protected abstract string GetMatchType();
 
         internal abstract string GetQueryStringFormat();

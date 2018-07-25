@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
-    public sealed class FieldSort
+    public sealed class FieldSort : SerializableObject
     {
         [JsonRequired]
         public string CanonicalName { get; }
