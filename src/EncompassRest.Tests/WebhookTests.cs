@@ -48,15 +48,8 @@ namespace EncompassRest.Tests
         [TestMethod]
         public void WebhookSubscription_Serialization()
         {
-            var subscription = new WebhookSubscription("https://google.com");
-            Assert.AreEqual(@"{""endpoint"":""https://google.com""}", subscription.ToJson());
-            subscription.Dirty = false;
-            Assert.AreEqual(@"{""endpoint"":""https://google.com""}", subscription.ToJson());
-            subscription.ClientId = "1234567890";
-            subscription.Events = new StringEnumValue<WebhookResourceEvent>[] { "add", "update", "remove" };
-            Assert.AreEqual(@"{""endpoint"":""https://google.com"",""clientId"":""1234567890"",""events"":[""add"",""update"",""remove""]}", subscription.ToJson());
-            subscription.Dirty = false;
-            Assert.AreEqual(@"{""endpoint"":""https://google.com""}", subscription.ToJson());
+            var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update }) { ClientId = "1234567890" };
+            Assert.AreEqual(@"{""endpoint"":""https://google.com"",""resource"":""Loan"",""events"":[""create"",""update""]}", subscription.ToJson());
         }
 
         [TestMethod]
@@ -70,10 +63,22 @@ namespace EncompassRest.Tests
             {
                 await client.Webhook.DeleteSubscriptionAsync(existingSubscription.SubscriptionId);
             }
-            var subscription = new WebhookSubscription(endpoint);
+            var subscription = new WebhookSubscription(endpoint, WebhookResourceType.Loan, new[] { WebhookResourceEvent.Change });
+            subscription.Filters.Attributes.Add("/milestoneLogs/*/doneIndicator");
             var subscriptionId = await client.Webhook.CreateSubscriptionAsync(subscription);
             Assert.IsFalse(string.IsNullOrEmpty(subscriptionId));
-            Assert.IsTrue(await client.Webhook.DeleteSubscriptionAsync(subscriptionId));
+            try
+            {
+                var retrievedSubscription = await client.Webhook.GetSubscriptionAsync(subscriptionId);
+                Assert.AreEqual(subscription.Endpoint, retrievedSubscription.Endpoint);
+                Assert.AreEqual(subscription.Resource.Value, retrievedSubscription.Resource.Value);
+                CollectionAssert.AreEquivalent(subscription.Events.Select(e => e.Value).ToList(), retrievedSubscription.Events.Select(e => e.Value).ToList());
+                CollectionAssert.AreEquivalent(subscription.Filters.Attributes.ToList(), retrievedSubscription.Filters.Attributes.ToList());
+            }
+            finally
+            {
+                await client.Webhook.DeleteSubscriptionAsync(subscriptionId);
+            }
         }
 
         [TestMethod]

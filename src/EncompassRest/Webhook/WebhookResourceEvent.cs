@@ -9,6 +9,8 @@ namespace EncompassRest.Webhook
         [EnumMember(Value = "update")]
         Update = 1,
         [EnumMember(Value = "submit")]
-        Submit = 2
+        Submit = 2,
+        [EnumMember(Value = "change")]
+        Change = 3
     }
 }
