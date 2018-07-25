@@ -120,6 +120,7 @@ namespace EncompassRest
         private BusinessContacts _businessContacts;
         private BorrowerContactSelector _borrowerContactSelector;
         private BusinessContactSelector _businessContactSelector;
+        private ContactGroups _contactGroups;
         private ResourceLocks.ResourceLocks _resourceLocks;
         private GlobalCustomDataObjects _globalCustomDataObjects;
         private Users.Users _users;
@@ -226,6 +227,15 @@ namespace EncompassRest
             {
                 var businessContactSelector = _businessContactSelector;
                 return businessContactSelector ?? Interlocked.CompareExchange(ref _businessContactSelector, (businessContactSelector = new BusinessContactSelector(this)), null) ?? businessContactSelector;
+            }
+        }
+
+        public ContactGroups ContactGroups
+        {
+            get
+            {
+                var contactGroups = _contactGroups;
+                return contactGroups ?? Interlocked.CompareExchange(ref _contactGroups, (contactGroups = new ContactGroups(this)), null) ?? contactGroups;
             }
         }
 
