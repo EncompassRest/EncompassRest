@@ -50,5 +50,7 @@ namespace EncompassRest.Filters
         protected override FieldFilter CloneFieldFilter() => Clone();
 
         protected override string GetMatchType() => MatchType.AsString(EnumJsonConverter.CamelCaseNameFormat);
+
+        internal override string GetQueryStringFormat() => $"{CanonicalName}:{MatchType.AsString(EnumFormat.Description)}:{Value}";
     }
 }
