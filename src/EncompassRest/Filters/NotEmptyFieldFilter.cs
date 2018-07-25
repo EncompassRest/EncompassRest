@@ -3,13 +3,21 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Filters
 {
+    /// <summary>
+    /// Does not currently work with string fields
+    /// </summary>
     public sealed class NotEmptyFieldFilter : FieldFilter
     {
-        [JsonProperty("Value")]
-        private object value => System.DateTime.MinValue;
+        [JsonProperty]
+        private object Value => System.DateTime.MinValue;
 
-        public NotEmptyFieldFilter(CanonicalLoanField canonicalField)
-            : this(canonicalField.Validate(nameof(canonicalField)).GetCanonicalName())
+        public NotEmptyFieldFilter(CanonicalLoanField canonicalLoanField)
+            : this(canonicalLoanField.Validate(nameof(canonicalLoanField)).GetCanonicalName())
+        {
+        }
+
+        public NotEmptyFieldFilter(CanonicalContactField canonicalContactField)
+            : this(canonicalContactField.Validate(nameof(canonicalContactField)).GetCanonicalName())
         {
         }
 
@@ -19,5 +27,7 @@ namespace EncompassRest.Filters
         }
 
         protected override string GetMatchType() => "isNotEmpty";
+
+        internal override string GetQueryStringFormat() => $"{CanonicalName}:!=:";
     }
 }

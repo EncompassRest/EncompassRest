@@ -1,4 +1,4 @@
-﻿namespace EncompassRest.Loans.Documents
+﻿namespace EncompassRest
 {
     public enum AssignmentAction
     {

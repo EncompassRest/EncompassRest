@@ -19,5 +19,7 @@ namespace EncompassRest.Filters
         }
 
         protected abstract string GetMatchType();
+
+        internal abstract string GetQueryStringFormat();
     }
 }

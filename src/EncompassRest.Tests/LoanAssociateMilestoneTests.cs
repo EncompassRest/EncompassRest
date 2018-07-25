@@ -96,5 +96,31 @@ namespace EncompassRest.Tests
                 }
             }
         }
+
+        [TestMethod]
+        public async Task LoanMilestoneComments()
+        {
+            var client = await GetTestClientAsync();
+
+            var loanId = await client.Loans.CreateLoanAsync(new Loan(client));
+
+            try
+            {
+                var loanApis = client.Loans.GetLoanApis(loanId);
+
+                var milestone = (await loanApis.Milestones.GetMilestonesAsync()).ElementAt(1);
+
+                const string comments = "This is a test comment";
+                milestone.Comments = comments;
+                await loanApis.Milestones.UpdateMilestoneAsync(milestone);
+                var retrievedMilestone = await loanApis.Milestones.GetMilestoneAsync(milestone.Id);
+                Assert.AreEqual(comments, retrievedMilestone.Comments);
+                Assert.AreEqual(milestone.ToString(), retrievedMilestone.ToString());
+            }
+            finally
+            {
+                await client.Loans.DeleteLoanAsync(loanId);
+            }
+        }
     }
 }
