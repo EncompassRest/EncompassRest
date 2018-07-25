@@ -348,6 +348,7 @@ namespace EncompassRest.Loans
         }
     }
 
+    [Entity(PropertiesToAlwaysSerialize = nameof(LoanAssociateType))]
     partial class LoanAssociate
     {
         public LoanAssociate(string id, LoanAssociateType loanAssociateType)
