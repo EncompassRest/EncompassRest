@@ -315,10 +315,7 @@ namespace EncompassRest.Loans
         public IList<EmailDocument> DocList { get => _docList ?? (_docList = new DirtyList<EmailDocument>()); set => _docList = new DirtyList<EmailDocument>(value); }
         internal override bool CustomDirty
         {
-            get
-            {
-                return _docList?.Dirty == true;
-            }
+            get => _docList?.Dirty == true;
             set
             {
                 if (_docList != null) _docList.Dirty = value;
@@ -369,5 +366,15 @@ namespace EncompassRest.Loans
         public LoanAssociate()
         {
         }
+    }
+
+    partial class UCDDetail
+    {
+        private DirtyValue<StringEnumValue<FeePaidBy>> _feePaidBy;
+        /// <summary>
+        /// UCDDetail FeePaidBy
+        /// </summary>
+        public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
+        internal override bool CustomDirty { get => _feePaidBy.Dirty; set => _feePaidBy.Dirty = value; }
     }
 }

@@ -2112,6 +2112,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Rate Lock Request Delivery Type is Visible")]
         public bool? IsDeliveryType { get => _isDeliveryType; set => _isDeliveryType = value; }
+        private DirtyValue<bool?> _lenderFeeWaiverOption;
+        /// <summary>
+        /// Rate Lock Request Lender Fee Waiver Option [4459]
+        /// </summary>
+        [LoanFieldProperty(Description = "Rate Lock Request Lender Fee Waiver Option")]
+        public bool? LenderFeeWaiverOption { get => _lenderFeeWaiverOption; set => _lenderFeeWaiverOption = value; }
         private DirtyValue<bool?> _lenderPaidMortgageInsuranceIndicator;
         /// <summary>
         /// Lock Request Lender Paid Mortgage Insurance [3628]
@@ -3368,6 +3374,7 @@ namespace EncompassRest.Loans
                 || _investorWebsite.Dirty
                 || _isCancelled.Dirty
                 || _isDeliveryType.Dirty
+                || _lenderFeeWaiverOption.Dirty
                 || _lenderPaidMortgageInsuranceIndicator.Dirty
                 || _lienPriorityType.Dirty
                 || _loanAmortizationTermMonths.Dirty
@@ -3877,6 +3884,7 @@ namespace EncompassRest.Loans
                 _investorWebsite.Dirty = value;
                 _isCancelled.Dirty = value;
                 _isDeliveryType.Dirty = value;
+                _lenderFeeWaiverOption.Dirty = value;
                 _lenderPaidMortgageInsuranceIndicator.Dirty = value;
                 _lienPriorityType.Dirty = value;
                 _loanAmortizationTermMonths.Dirty = value;

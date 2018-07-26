@@ -115,6 +115,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// POCPTC700
         /// </summary>
-        POCPTC700 = 26
+        POCPTC700 = 26,
+        /// <summary>
+        /// SectionPC
+        /// </summary>
+        SectionPC = 27,
+        /// <summary>
+        /// POCPTCPC
+        /// </summary>
+        POCPTCPC = 28
     }
 }

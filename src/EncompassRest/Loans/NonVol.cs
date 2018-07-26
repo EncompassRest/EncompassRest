@@ -40,13 +40,41 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Liability Will be Paid Off and will be included", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
         public bool? IncludedIndicator { get => _includedIndicator; set => _includedIndicator = value; }
+        private DirtyValue<StringEnumValue<PaidToOrBy>> _paidBy;
+        /// <summary>
+        /// Paid By [UNFLNN07]
+        /// </summary>
+        [LoanFieldProperty(Description = "Paid By")]
+        public StringEnumValue<PaidToOrBy> PaidBy { get => _paidBy; set => _paidBy = value; }
+        private DirtyValue<StringEnumValue<PaidToOrBy>> _paidTo;
+        /// <summary>
+        /// Paid To [UNFLNN09]
+        /// </summary>
+        [LoanFieldProperty(Description = "Paid To")]
+        public StringEnumValue<PaidToOrBy> PaidTo { get => _paidTo; set => _paidTo = value; }
+        private DirtyValue<bool?> _pOCIndicator;
+        /// <summary>
+        /// POC Indicator [UNFLNN06]
+        /// </summary>
+        [LoanFieldProperty(Description = "POC Indicator", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
+        public bool? POCIndicator { get => _pOCIndicator; set => _pOCIndicator = value; }
+        private DirtyValue<string> _principalCureAddendum;
+        /// <summary>
+        /// PrincipalCureAddendum Amount [UNFLNN08]
+        /// </summary>
+        [LoanFieldProperty(Description = "PrincipalCureAddendum Amount")]
+        public string PrincipalCureAddendum { get => _principalCureAddendum; set => _principalCureAddendum = value; }
         internal override bool DirtyInternal
         {
             get => _adjustmentAmount.Dirty
                 || _adjustmentDescription.Dirty
                 || _adjustmentOtherDescription.Dirty
                 || _adjustmentType.Dirty
-                || _includedIndicator.Dirty;
+                || _includedIndicator.Dirty
+                || _paidBy.Dirty
+                || _paidTo.Dirty
+                || _pOCIndicator.Dirty
+                || _principalCureAddendum.Dirty;
             set
             {
                 _adjustmentAmount.Dirty = value;
@@ -54,6 +82,10 @@ namespace EncompassRest.Loans
                 _adjustmentOtherDescription.Dirty = value;
                 _adjustmentType.Dirty = value;
                 _includedIndicator.Dirty = value;
+                _paidBy.Dirty = value;
+                _paidTo.Dirty = value;
+                _pOCIndicator.Dirty = value;
+                _principalCureAddendum.Dirty = value;
             }
         }
     }

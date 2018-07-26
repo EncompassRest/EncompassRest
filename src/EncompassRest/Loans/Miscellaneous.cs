@@ -16,6 +16,18 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Borr Info Address")]
         public string Address { get => _address; set => _address = value; }
+        private DirtyValue<string> _allRoles;
+        /// <summary>
+        /// All Roles Informaton [EDS.X6]
+        /// </summary>
+        [LoanFieldProperty(Description = "All Roles Informaton")]
+        public string AllRoles { get => _allRoles; set => _allRoles = value; }
+        private DirtyValue<string> _allUserInfo;
+        /// <summary>
+        /// All Users Informaton [EDS.X7]
+        /// </summary>
+        [LoanFieldProperty(Description = "All Users Informaton")]
+        public string AllUserInfo { get => _allUserInfo; set => _allUserInfo = value; }
         private DirtyValue<string> _borrowerDescription1;
         /// <summary>
         /// Borr Info Other Descr 1 [1193]
@@ -519,6 +531,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Borr Info Refund of Overpaid Interest")]
         public decimal? RefundOrOverpaidInterest { get => _refundOrOverpaidInterest; set => _refundOrOverpaidInterest = value; }
+        private DirtyValue<string> _savedLogVersion;
+        /// <summary>
+        /// Encompass Version When Disclosure Tracking Log is Added to Loan [COMPLIANCEVERSION.X1]
+        /// </summary>
+        [LoanFieldProperty(ReadOnly = true, Description = "Encompass Version When Disclosure Tracking Log is Added to Loan")]
+        public string SavedLogVersion { get => _savedLogVersion; set => _savedLogVersion = value; }
         private DirtyValue<string> _schoolTaxExcluded;
         /// <summary>
         /// Expenses Calc Other Hous Exp City Prop Tax Excl [1800]
@@ -618,6 +636,8 @@ namespace EncompassRest.Loans
         internal override bool DirtyInternal
         {
             get => _address.Dirty
+                || _allRoles.Dirty
+                || _allUserInfo.Dirty
                 || _borrowerDescription1.Dirty
                 || _borrowerDescription2.Dirty
                 || _borrowerDescription3.Dirty
@@ -702,6 +722,7 @@ namespace EncompassRest.Loans
                 || _rateRegistrationRegisteredUserId.Dirty
                 || _rateRegistrationRegistrationDate.Dirty
                 || _refundOrOverpaidInterest.Dirty
+                || _savedLogVersion.Dirty
                 || _schoolTaxExcluded.Dirty
                 || _state.Dirty
                 || _statusUrl.Dirty
@@ -721,6 +742,8 @@ namespace EncompassRest.Loans
             set
             {
                 _address.Dirty = value;
+                _allRoles.Dirty = value;
+                _allUserInfo.Dirty = value;
                 _borrowerDescription1.Dirty = value;
                 _borrowerDescription2.Dirty = value;
                 _borrowerDescription3.Dirty = value;
@@ -805,6 +828,7 @@ namespace EncompassRest.Loans
                 _rateRegistrationRegisteredUserId.Dirty = value;
                 _rateRegistrationRegistrationDate.Dirty = value;
                 _refundOrOverpaidInterest.Dirty = value;
+                _savedLogVersion.Dirty = value;
                 _schoolTaxExcluded.Dirty = value;
                 _state.Dirty = value;
                 _statusUrl.Dirty = value;

@@ -1220,6 +1220,30 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Line 900 Total Seller Paid Amount")]
         public decimal? Section900TotalSellerPaidAmount { get => _section900TotalSellerPaidAmount; set => _section900TotalSellerPaidAmount = value; }
+        private DirtyValue<decimal?> _sectionPCTotalBorrowerPaidAmount;
+        /// <summary>
+        /// Line PC Total Borrower Paid Amount [NEWHUD2.X4760]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Line PC Total Borrower Paid Amount")]
+        public decimal? SectionPCTotalBorrowerPaidAmount { get => _sectionPCTotalBorrowerPaidAmount; set => _sectionPCTotalBorrowerPaidAmount = value; }
+        private DirtyValue<decimal?> _sectionPCTotalOtherPaidAmount;
+        /// <summary>
+        /// Line PC Total Other Paid Amount [NEWHUD2.X4762]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Line PC Total Other Paid Amount")]
+        public decimal? SectionPCTotalOtherPaidAmount { get => _sectionPCTotalOtherPaidAmount; set => _sectionPCTotalOtherPaidAmount = value; }
+        private DirtyValue<decimal?> _sectionPCTotalPaidAmount;
+        /// <summary>
+        /// Line PC Total Paid Amount [NEWHUD2.X4763]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Line PC Total Paid Amount")]
+        public decimal? SectionPCTotalPaidAmount { get => _sectionPCTotalPaidAmount; set => _sectionPCTotalPaidAmount = value; }
+        private DirtyValue<decimal?> _sectionPCTotalSellerPaidAmount;
+        /// <summary>
+        /// Line PC Total Seller Amount [NEWHUD2.X4761]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Line PC Total Seller Amount")]
+        public decimal? SectionPCTotalSellerPaidAmount { get => _sectionPCTotalSellerPaidAmount; set => _sectionPCTotalSellerPaidAmount = value; }
         private DirtyValue<decimal?> _shopRequiredServicesAmount;
         /// <summary>
         /// Fees Line 1301l Applied to GFE [NEWHUD.X40]
@@ -1232,6 +1256,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_3, Description = "ARM Rate Cap")]
         public decimal? SubsequentCapPercent { get => _subsequentCapPercent; set => _subsequentCapPercent = value; }
+        private DirtyValue<decimal?> _subsequentlyPaidFinanceCharge;
+        /// <summary>
+        /// Section PC Subsequently Paid Finance Charge [NEWHUD2.X4768]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Section PC Subsequently Paid Finance Charge")]
+        public decimal? SubsequentlyPaidFinanceCharge { get => _subsequentlyPaidFinanceCharge; set => _subsequentlyPaidFinanceCharge = value; }
         private DirtyValue<int?> _subsequentRateAdjustmentMonths;
         /// <summary>
         /// ARM First Period Change [NEWHUD.X556]
@@ -1501,8 +1531,13 @@ namespace EncompassRest.Loans
                 || _section900TotalOtherPaidAmount.Dirty
                 || _section900TotalPaidAmount.Dirty
                 || _section900TotalSellerPaidAmount.Dirty
+                || _sectionPCTotalBorrowerPaidAmount.Dirty
+                || _sectionPCTotalOtherPaidAmount.Dirty
+                || _sectionPCTotalPaidAmount.Dirty
+                || _sectionPCTotalSellerPaidAmount.Dirty
                 || _shopRequiredServicesAmount.Dirty
                 || _subsequentCapPercent.Dirty
+                || _subsequentlyPaidFinanceCharge.Dirty
                 || _subsequentRateAdjustmentMonths.Dirty
                 || _tableFundedIndicator.Dirty
                 || _timeForRate.Dirty
@@ -1719,8 +1754,13 @@ namespace EncompassRest.Loans
                 _section900TotalOtherPaidAmount.Dirty = value;
                 _section900TotalPaidAmount.Dirty = value;
                 _section900TotalSellerPaidAmount.Dirty = value;
+                _sectionPCTotalBorrowerPaidAmount.Dirty = value;
+                _sectionPCTotalOtherPaidAmount.Dirty = value;
+                _sectionPCTotalPaidAmount.Dirty = value;
+                _sectionPCTotalSellerPaidAmount.Dirty = value;
                 _shopRequiredServicesAmount.Dirty = value;
                 _subsequentCapPercent.Dirty = value;
+                _subsequentlyPaidFinanceCharge.Dirty = value;
                 _subsequentRateAdjustmentMonths.Dirty = value;
                 _tableFundedIndicator.Dirty = value;
                 _timeForRate.Dirty = value;

@@ -34,6 +34,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Closing disclosure - Closing Cost Paid by Others")]
         public decimal? ClosingCostPaidByOthers { get => _closingCostPaidByOthers; set => _closingCostPaidByOthers = value; }
+        private DirtyValue<decimal?> _discloseLenderCredits;
+        /// <summary>
+        /// Disclose Lender Credits applied [CD2.X2]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Disclose Lender Credits applied")]
+        public decimal? DiscloseLenderCredits { get => _discloseLenderCredits; set => _discloseLenderCredits = value; }
         private DirtyValue<string> _id;
         /// <summary>
         /// ClosingDisclosure2 Id
@@ -165,6 +171,7 @@ namespace EncompassRest.Loans
                 || _borrowerClosingCostBeforeClosing.Dirty
                 || _closingCostLenderCredits.Dirty
                 || _closingCostPaidByOthers.Dirty
+                || _discloseLenderCredits.Dirty
                 || _id.Dirty
                 || _initialEscrowSubTotal.Dirty
                 || _lastDisclosedLenderCredits.Dirty
@@ -192,6 +199,7 @@ namespace EncompassRest.Loans
                 _borrowerClosingCostBeforeClosing.Dirty = value;
                 _closingCostLenderCredits.Dirty = value;
                 _closingCostPaidByOthers.Dirty = value;
+                _discloseLenderCredits.Dirty = value;
                 _id.Dirty = value;
                 _initialEscrowSubTotal.Dirty = value;
                 _lastDisclosedLenderCredits.Dirty = value;

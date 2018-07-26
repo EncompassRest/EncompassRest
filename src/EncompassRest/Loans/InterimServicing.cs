@@ -257,6 +257,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Intrm Serv Current Status Last Statement Printed")]
         public DateTime? LastStatementPrintedDate { get => _lastStatementPrintedDate; set => _lastStatementPrintedDate = value; }
+        private DirtyList<LoanPurchaseTransaction> _loanPurchaseTransactions;
+        /// <summary>
+        /// InterimServicing LoanPurchaseTransactions
+        /// </summary>
+        public IList<LoanPurchaseTransaction> LoanPurchaseTransactions { get => _loanPurchaseTransactions ?? (_loanPurchaseTransactions = new DirtyList<LoanPurchaseTransaction>()); set => _loanPurchaseTransactions = new DirtyList<LoanPurchaseTransaction>(value); }
         private DirtyValue<string> _loanSnapshotXml;
         /// <summary>
         /// InterimServicing LoanSnapshotXml
@@ -1051,6 +1056,7 @@ namespace EncompassRest.Loans
                 || _escrowInterestTransactions?.Dirty == true
                 || _interimServicingTransactions?.Dirty == true
                 || _lastScheduledPayment?.Dirty == true
+                || _loanPurchaseTransactions?.Dirty == true
                 || _nextScheduledPayment?.Dirty == true
                 || _otherTransactions?.Dirty == true
                 || _paymentReversalTransactions?.Dirty == true
@@ -1204,6 +1210,7 @@ namespace EncompassRest.Loans
                 if (_escrowInterestTransactions != null) _escrowInterestTransactions.Dirty = value;
                 if (_interimServicingTransactions != null) _interimServicingTransactions.Dirty = value;
                 if (_lastScheduledPayment != null) _lastScheduledPayment.Dirty = value;
+                if (_loanPurchaseTransactions != null) _loanPurchaseTransactions.Dirty = value;
                 if (_nextScheduledPayment != null) _nextScheduledPayment.Dirty = value;
                 if (_otherTransactions != null) _otherTransactions.Dirty = value;
                 if (_paymentReversalTransactions != null) _paymentReversalTransactions.Dirty = value;

@@ -20,6 +20,12 @@ namespace EncompassRest.Loans
         /// Residence AddressCity
         /// </summary>
         public string AddressCity { get => _addressCity; set => _addressCity = value; }
+        private DirtyValue<string> _addressCounty;
+        /// <summary>
+        /// Borr Present County [FR0109]
+        /// </summary>
+        [LoanFieldProperty(Description = "Borr Present County")]
+        public string AddressCounty { get => _addressCounty; set => _addressCounty = value; }
         private DirtyValue<string> _addressPostalCode;
         /// <summary>
         /// Residence AddressPostalCode
@@ -194,6 +200,7 @@ namespace EncompassRest.Loans
         {
             get => _accountName.Dirty
                 || _addressCity.Dirty
+                || _addressCounty.Dirty
                 || _addressPostalCode.Dirty
                 || _addressState.Dirty
                 || _addressStreetLine1.Dirty
@@ -230,6 +237,7 @@ namespace EncompassRest.Loans
             {
                 _accountName.Dirty = value;
                 _addressCity.Dirty = value;
+                _addressCounty.Dirty = value;
                 _addressPostalCode.Dirty = value;
                 _addressState.Dirty = value;
                 _addressStreetLine1.Dirty = value;

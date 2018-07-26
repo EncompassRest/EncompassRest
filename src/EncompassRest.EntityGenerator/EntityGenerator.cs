@@ -114,7 +114,8 @@ namespace EncompassRest
                 typeof(IndexMargin),
                 typeof(PropertyFormType),
                 typeof(Conversion),
-                typeof(HmdaLoanPurpose)
+                typeof(HmdaLoanPurpose),
+                typeof(PaidToOrBy)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>();
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -159,7 +160,7 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application", "FieldLockData.ModelPath" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application", "FieldLockData.ModelPath", "UCDDetail.FeePaidBy" };
 
         private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue" };
 
@@ -398,8 +399,8 @@ namespace EncompassRest
                                 var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
 
                                 var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
-
-                                fieldPatterns.Add(fieldPattern.Replace("NN", "{0:00}"), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}");
+                                
+                                fieldPatterns.Add(fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}"), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}");
                             }
                         }
                     }

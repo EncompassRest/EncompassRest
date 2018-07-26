@@ -160,6 +160,18 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Charges That Cannot Increase LE 1")]
         public DateTime? ChargesThatCannotIncreaseLE1 { get => _chargesThatCannotIncreaseLE1; set => _chargesThatCannotIncreaseLE1 = value; }
+        private DirtyValue<decimal?> _cureAppliedToLenderCredit;
+        /// <summary>
+        /// Cure Applied to Lender Credit [FV.X396]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Cure Applied to Lender Credit")]
+        public decimal? CureAppliedToLenderCredit { get => _cureAppliedToLenderCredit; set => _cureAppliedToLenderCredit = value; }
+        private DirtyValue<decimal?> _cureAppliedToPrincipalReduction;
+        /// <summary>
+        /// Cure Applied to Principal Reduction (POC) [FV.X397]
+        /// </summary>
+        [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Cure Applied to Principal Reduction (POC)")]
+        public decimal? CureAppliedToPrincipalReduction { get => _cureAppliedToPrincipalReduction; set => _cureAppliedToPrincipalReduction = value; }
         private DirtyValue<string> _disclosureLogGUIDForECD;
         /// <summary>
         /// Disclosure Log GUID used For ECD calculation [FV.X387]
@@ -282,6 +294,8 @@ namespace EncompassRest.Loans
                 || _chargesThatCannotIncreaseCD1.Dirty
                 || _chargesThatCannotIncreaseInitialLE1.Dirty
                 || _chargesThatCannotIncreaseLE1.Dirty
+                || _cureAppliedToLenderCredit.Dirty
+                || _cureAppliedToPrincipalReduction.Dirty
                 || _disclosureLogGUIDForECD.Dirty
                 || _disclosureLogGUIDReceivedForECD.Dirty
                 || _goodFaithAmountInitialLE1.Dirty
@@ -325,6 +339,8 @@ namespace EncompassRest.Loans
                 _chargesThatCannotIncreaseCD1.Dirty = value;
                 _chargesThatCannotIncreaseInitialLE1.Dirty = value;
                 _chargesThatCannotIncreaseLE1.Dirty = value;
+                _cureAppliedToLenderCredit.Dirty = value;
+                _cureAppliedToPrincipalReduction.Dirty = value;
                 _disclosureLogGUIDForECD.Dirty = value;
                 _disclosureLogGUIDReceivedForECD.Dirty = value;
                 _goodFaithAmountInitialLE1.Dirty = value;

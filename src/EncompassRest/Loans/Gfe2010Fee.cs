@@ -96,6 +96,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? BrokerPOC2015 { get => _brokerPOC2015; set => _brokerPOC2015 = value; }
+        private DirtyValue<bool?> _collectedPostConsummationIndicator2015;
+        /// <summary>
+        /// Gfe2010Fee CollectedPostConsummationIndicator2015
+        /// </summary>
+        public bool? CollectedPostConsummationIndicator2015 { get => _collectedPostConsummationIndicator2015; set => _collectedPostConsummationIndicator2015 = value; }
         private DirtyValue<string> _description;
         /// <summary>
         /// Gfe2010Fee Description
@@ -355,6 +360,7 @@ namespace EncompassRest.Loans
                 || _brokerAmountPaid2015.Dirty
                 || _brokerPAC2015.Dirty
                 || _brokerPOC2015.Dirty
+                || _collectedPostConsummationIndicator2015.Dirty
                 || _description.Dirty
                 || _escrowedIndicator2015.Dirty
                 || _financedIndicator.Dirty
@@ -416,6 +422,7 @@ namespace EncompassRest.Loans
                 _brokerAmountPaid2015.Dirty = value;
                 _brokerPAC2015.Dirty = value;
                 _brokerPOC2015.Dirty = value;
+                _collectedPostConsummationIndicator2015.Dirty = value;
                 _description.Dirty = value;
                 _escrowedIndicator2015.Dirty = value;
                 _financedIndicator.Dirty = value;

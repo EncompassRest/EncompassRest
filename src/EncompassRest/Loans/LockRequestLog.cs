@@ -57,6 +57,11 @@ namespace EncompassRest.Loans
         /// LockRequestLog Comments
         /// </summary>
         public string Comments { get => _comments; set => _comments = value; }
+        private DirtyValue<int?> _cumulatedDaystoExtend;
+        /// <summary>
+        /// LockRequestLog CumulatedDaystoExtend
+        /// </summary>
+        public int? CumulatedDaystoExtend { get => _cumulatedDaystoExtend; set => _cumulatedDaystoExtend = value; }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// LockRequestLog DateUtc
@@ -88,6 +93,11 @@ namespace EncompassRest.Loans
         /// LockRequestLog InvestorCommitment
         /// </summary>
         public string InvestorCommitment { get => _investorCommitment; set => _investorCommitment = value; }
+        private DirtyValue<string> _investorName;
+        /// <summary>
+        /// LockRequestLog InvestorName
+        /// </summary>
+        public string InvestorName { get => _investorName; set => _investorName = value; }
         private DirtyValue<bool?> _isFakeRequestIndicator;
         /// <summary>
         /// LockRequestLog IsFakeRequestIndicator
@@ -128,6 +138,11 @@ namespace EncompassRest.Loans
         /// LockRequestLog ParentLockGuid
         /// </summary>
         public string ParentLockGuid { get => _parentLockGuid; set => _parentLockGuid = value; }
+        private DirtyValue<string> _rateLockAction;
+        /// <summary>
+        /// LockRequestLog RateLockAction
+        /// </summary>
+        public string RateLockAction { get => _rateLockAction; set => _rateLockAction = value; }
         private DirtyValue<int?> _reLockSequenceNumberForInactiveLock;
         /// <summary>
         /// LockRequestLog ReLockSequenceNumberForInactiveLock
@@ -148,6 +163,11 @@ namespace EncompassRest.Loans
         /// LockRequestLog RequestedStatus
         /// </summary>
         public string RequestedStatus { get => _requestedStatus; set => _requestedStatus = value; }
+        private DirtyValue<string> _reviseAction;
+        /// <summary>
+        /// LockRequestLog ReviseAction
+        /// </summary>
+        public string ReviseAction { get => _reviseAction; set => _reviseAction = value; }
         private DirtyValue<string> _sellSideDeliveredBy;
         /// <summary>
         /// LockRequestLog SellSideDeliveredBy
@@ -200,12 +220,14 @@ namespace EncompassRest.Loans
                 || _buySideNumDayLocked.Dirty
                 || _commentListXml.Dirty
                 || _comments.Dirty
+                || _cumulatedDaystoExtend.Dirty
                 || _dateUtc.Dirty
                 || _fileAttachmentsMigrated.Dirty
                 || _guid.Dirty
                 || _hideLogIndicator.Dirty
                 || _id.Dirty
                 || _investorCommitment.Dirty
+                || _investorName.Dirty
                 || _isFakeRequestIndicator.Dirty
                 || _isLockCancellationIndicator.Dirty
                 || _isLockExtensionIndicator.Dirty
@@ -214,10 +236,12 @@ namespace EncompassRest.Loans
                 || _logRecordIndex.Dirty
                 || _numDayLocked.Dirty
                 || _parentLockGuid.Dirty
+                || _rateLockAction.Dirty
                 || _reLockSequenceNumberForInactiveLock.Dirty
                 || _requestedBy.Dirty
                 || _requestedName.Dirty
                 || _requestedStatus.Dirty
+                || _reviseAction.Dirty
                 || _sellSideDeliveredBy.Dirty
                 || _sellSideDeliveryDate.Dirty
                 || _sellSideExpirationDate.Dirty
@@ -237,12 +261,14 @@ namespace EncompassRest.Loans
                 _buySideNumDayLocked.Dirty = value;
                 _commentListXml.Dirty = value;
                 _comments.Dirty = value;
+                _cumulatedDaystoExtend.Dirty = value;
                 _dateUtc.Dirty = value;
                 _fileAttachmentsMigrated.Dirty = value;
                 _guid.Dirty = value;
                 _hideLogIndicator.Dirty = value;
                 _id.Dirty = value;
                 _investorCommitment.Dirty = value;
+                _investorName.Dirty = value;
                 _isFakeRequestIndicator.Dirty = value;
                 _isLockCancellationIndicator.Dirty = value;
                 _isLockExtensionIndicator.Dirty = value;
@@ -251,10 +277,12 @@ namespace EncompassRest.Loans
                 _logRecordIndex.Dirty = value;
                 _numDayLocked.Dirty = value;
                 _parentLockGuid.Dirty = value;
+                _rateLockAction.Dirty = value;
                 _reLockSequenceNumberForInactiveLock.Dirty = value;
                 _requestedBy.Dirty = value;
                 _requestedName.Dirty = value;
                 _requestedStatus.Dirty = value;
+                _reviseAction.Dirty = value;
                 _sellSideDeliveredBy.Dirty = value;
                 _sellSideDeliveryDate.Dirty = value;
                 _sellSideExpirationDate.Dirty = value;

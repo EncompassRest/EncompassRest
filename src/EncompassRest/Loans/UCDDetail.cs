@@ -42,11 +42,6 @@ namespace EncompassRest.Loans
         /// UCDDetail FeeIndex
         /// </summary>
         public int? FeeIndex { get => _feeIndex; set => _feeIndex = value; }
-        private DirtyValue<StringEnumValue<FeePaidBy>> _feePaidBy;
-        /// <summary>
-        /// UCDDetail FeePaidBy
-        /// </summary>
-        public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
         private DirtyValue<string> _feePaidTo;
         /// <summary>
         /// UCDDetail FeePaidTo
@@ -80,7 +75,6 @@ namespace EncompassRest.Loans
                 || _feeDateTo.Dirty
                 || _feeDesc.Dirty
                 || _feeIndex.Dirty
-                || _feePaidBy.Dirty
                 || _feePaidTo.Dirty
                 || _feePOC.Dirty
                 || _id.Dirty
@@ -94,7 +88,6 @@ namespace EncompassRest.Loans
                 _feeDateTo.Dirty = value;
                 _feeDesc.Dirty = value;
                 _feeIndex.Dirty = value;
-                _feePaidBy.Dirty = value;
                 _feePaidTo.Dirty = value;
                 _feePOC.Dirty = value;
                 _id.Dirty = value;

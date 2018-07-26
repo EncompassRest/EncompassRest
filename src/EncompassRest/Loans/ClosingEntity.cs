@@ -220,9 +220,9 @@ namespace EncompassRest.Loans
         public StringEnumValue<VestingTrusteeOfType> VestingTrusteeOfType { get => _vestingTrusteeOfType; set => _vestingTrusteeOfType = value; }
         private DirtyValue<StringEnumValue<BorrowerType>> _vestingType;
         /// <summary>
-        /// Vesting Party - Type [TRNN04]
+        /// Vesting Party - Vesting Type [TRNN04]
         /// </summary>
-        [LoanFieldProperty(Description = "Vesting Party - Type")]
+        [LoanFieldProperty(Description = "Vesting Party - Vesting Type")]
         public StringEnumValue<BorrowerType> VestingType { get => _vestingType; set => _vestingType = value; }
         internal override bool DirtyInternal
         {

@@ -130,6 +130,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Loan Estimate - Estimated Taxes, Insurance and Assessments UI Value")]
         public string EstimatedTaxesInsuranceAssessmentsUI { get => _estimatedTaxesInsuranceAssessmentsUI; set => _estimatedTaxesInsuranceAssessmentsUI = value; }
+        private DirtyValue<DateTime?> _feeChangedDate;
+        /// <summary>
+        /// LE Fee Changed Date [LE1.X98]
+        /// </summary>
+        [LoanFieldProperty(Description = "LE Fee Changed Date")]
+        public DateTime? FeeChangedDate { get => _feeChangedDate; set => _feeChangedDate = value; }
         private DirtyValue<decimal?> _highestMonthlyPI;
         /// <summary>
         /// Loan Estimate - Monthly Principal and Interest Will be Adjusted in Year [LE1.X24]
@@ -811,6 +817,7 @@ namespace EncompassRest.Loans
                 || _disclosureSentMethod.Dirty
                 || _estimatedTaxesInsuranceAssessments.Dirty
                 || _estimatedTaxesInsuranceAssessmentsUI.Dirty
+                || _feeChangedDate.Dirty
                 || _highestMonthlyPI.Dirty
                 || _id.Dirty
                 || _inEscrowHomeownerInsurance.Dirty
@@ -943,6 +950,7 @@ namespace EncompassRest.Loans
                 _disclosureSentMethod.Dirty = value;
                 _estimatedTaxesInsuranceAssessments.Dirty = value;
                 _estimatedTaxesInsuranceAssessmentsUI.Dirty = value;
+                _feeChangedDate.Dirty = value;
                 _highestMonthlyPI.Dirty = value;
                 _id.Dirty = value;
                 _inEscrowHomeownerInsurance.Dirty = value;

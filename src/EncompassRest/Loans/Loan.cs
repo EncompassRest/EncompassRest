@@ -1063,7 +1063,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Trans Details Loan Maturity Date [78]
         /// </summary>
-        [LoanFieldProperty(ReadOnly = true, Description = "Trans Details Loan Maturity Date")]
+        [LoanFieldProperty(Description = "Trans Details Loan Maturity Date")]
         public DateTime? MaturityDate { get => _maturityDate; set => _maturityDate = value; }
         private DirtyValue<decimal?> _maxBackRatio;
         /// <summary>
@@ -1291,6 +1291,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Rate Lock No Closing Cost Option")]
         public bool? NoClosingCostOption { get => _noClosingCostOption; set => _noClosingCostOption = value; }
+        private DirtyList<NonBorrowingOwner> _nonBorrowingOwners;
+        /// <summary>
+        /// Loan NonBorrowingOwners
+        /// </summary>
+        public IList<NonBorrowingOwner> NonBorrowingOwners { get => _nonBorrowingOwners ?? (_nonBorrowingOwners = new DirtyList<NonBorrowingOwner>()); set => _nonBorrowingOwners = new DirtyList<NonBorrowingOwner>(value); }
         private DirtyList<NonVol> _nonVols;
         /// <summary>
         /// Loan NonVols
@@ -2281,6 +2286,7 @@ namespace EncompassRest.Loans
                 || _milestoneTemplateLogs?.Dirty == true
                 || _miscellaneous?.Dirty == true
                 || _netTangibleBenefit?.Dirty == true
+                || _nonBorrowingOwners?.Dirty == true
                 || _nonVols?.Dirty == true
                 || _postClosingConditionLogs?.Dirty == true
                 || _preliminaryConditionLogs?.Dirty == true
@@ -2628,6 +2634,7 @@ namespace EncompassRest.Loans
                 if (_milestoneTemplateLogs != null) _milestoneTemplateLogs.Dirty = value;
                 if (_miscellaneous != null) _miscellaneous.Dirty = value;
                 if (_netTangibleBenefit != null) _netTangibleBenefit.Dirty = value;
+                if (_nonBorrowingOwners != null) _nonBorrowingOwners.Dirty = value;
                 if (_nonVols != null) _nonVols.Dirty = value;
                 if (_postClosingConditionLogs != null) _postClosingConditionLogs.Dirty = value;
                 if (_preliminaryConditionLogs != null) _preliminaryConditionLogs.Dirty = value;

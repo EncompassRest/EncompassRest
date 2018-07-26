@@ -610,6 +610,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Fee Collected Date")]
         public DateTime? FeeCollectedDate { get => _feeCollectedDate; set => _feeCollectedDate = value; }
+        private DirtyValue<bool?> _feeLevelDisclosuresIndicator;
+        /// <summary>
+        /// Fee Level Disclosures Indicator [4461]
+        /// </summary>
+        [LoanFieldProperty(Description = "Fee Level Disclosures Indicator")]
+        public bool? FeeLevelDisclosuresIndicator { get => _feeLevelDisclosuresIndicator; set => _feeLevelDisclosuresIndicator = value; }
         private DirtyValue<decimal?> _filingFees;
         /// <summary>
         /// Trans Details Filing Fees [1707]
@@ -1573,6 +1579,7 @@ namespace EncompassRest.Loans
                 || _eSignConsentDate.Dirty
                 || _extraPaymentForEarlyPayOff.Dirty
                 || _feeCollectedDate.Dirty
+                || _feeLevelDisclosuresIndicator.Dirty
                 || _filingFees.Dirty
                 || _finalPaymentDate.Dirty
                 || _financeCharge.Dirty
@@ -1819,6 +1826,7 @@ namespace EncompassRest.Loans
                 _eSignConsentDate.Dirty = value;
                 _extraPaymentForEarlyPayOff.Dirty = value;
                 _feeCollectedDate.Dirty = value;
+                _feeLevelDisclosuresIndicator.Dirty = value;
                 _filingFees.Dirty = value;
                 _finalPaymentDate.Dirty = value;
                 _financeCharge.Dirty = value;

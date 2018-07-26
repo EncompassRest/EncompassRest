@@ -528,6 +528,30 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Fees Line 912 Descr")]
         public string Line912 { get => _line912; set => _line912 = value; }
+        private DirtyValue<string> _linePC1;
+        /// <summary>
+        /// Fees Line PC1 Descr [NEWHUD2.X4660]
+        /// </summary>
+        [LoanFieldProperty(Description = "Fees Line PC1 Descr")]
+        public string LinePC1 { get => _linePC1; set => _linePC1 = value; }
+        private DirtyValue<string> _linePC2;
+        /// <summary>
+        /// Fees Line PC2 Descr [NEWHUD2.X4683]
+        /// </summary>
+        [LoanFieldProperty(Description = "Fees Line PC2 Descr")]
+        public string LinePC2 { get => _linePC2; set => _linePC2 = value; }
+        private DirtyValue<string> _linePC3;
+        /// <summary>
+        /// Fees Line PC3 Descr [NEWHUD2.X4706]
+        /// </summary>
+        [LoanFieldProperty(Description = "Fees Line PC3 Descr")]
+        public string LinePC3 { get => _linePC3; set => _linePC3 = value; }
+        private DirtyValue<string> _linePC4;
+        /// <summary>
+        /// Fees Line PC4 Descr [NEWHUD2.X4729]
+        /// </summary>
+        [LoanFieldProperty(Description = "Fees Line PC4 Descr")]
+        public string LinePC4 { get => _linePC4; set => _linePC4 = value; }
         private DirtyValue<bool?> _loanTermTableCustomized;
         /// <summary>
         /// Loan Term Table Is Customized [LOANTERMTABLE.CUSTOMIZE]
@@ -875,6 +899,10 @@ namespace EncompassRest.Loans
                 || _line910.Dirty
                 || _line911.Dirty
                 || _line912.Dirty
+                || _linePC1.Dirty
+                || _linePC2.Dirty
+                || _linePC3.Dirty
+                || _linePC4.Dirty
                 || _loanTermTableCustomized.Dirty
                 || _loCompensationItemizeFeesIndicator.Dirty
                 || _loCompensationLenderTotalPaidOriginatorAmount.Dirty
@@ -1009,6 +1037,10 @@ namespace EncompassRest.Loans
                 _line910.Dirty = value;
                 _line911.Dirty = value;
                 _line912.Dirty = value;
+                _linePC1.Dirty = value;
+                _linePC2.Dirty = value;
+                _linePC3.Dirty = value;
+                _linePC4.Dirty = value;
                 _loanTermTableCustomized.Dirty = value;
                 _loCompensationItemizeFeesIndicator.Dirty = value;
                 _loCompensationLenderTotalPaidOriginatorAmount.Dirty = value;
