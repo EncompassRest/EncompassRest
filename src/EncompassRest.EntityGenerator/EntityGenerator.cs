@@ -172,27 +172,24 @@ namespace EncompassRest
             { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } }
         };
 
-        private static readonly HashSet<string> s_additionalSchemaEntities = new HashSet<string> { "ElliUCDDetail", "NonVol", "DocumentAudit", "DocumentAuditAlert", "EntityReference", "FileAttachmentReference", "EmailDocument" };
-
-        private static readonly HashSet<string> s_missingSchemaEntities = new HashSet<string> { "VirtualFields", "ElliUCDFields", "ElliUCDDetail", "NonVols", "DocumentAudit", "DocumentAuditAlert", "EntityReference", "FileAttachmentReference" };
-
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
         {
             { "LoanDocumentationType", new HashSet<string> { "NoIncomeon1003" } }
         };
 
-        public static void Main(string[] args)
+        private static readonly HashSet<string> s_ignoredEntities = new HashSet<string> { "NonBorrowingOwnerContract" };
+
+        public static async Task Main(string[] args)
         {
             try
             {
-                Task.Run(async () =>
+                LoanSchema loanSchema;
+                using (var client = await TestBaseClass.GetTestClientAsync().ConfigureAwait(false))
                 {
-                    using (var client = await TestBaseClass.GetTestClientAsync())
-                    {
-                        await GenerateFieldMappingsAsync(client, "Loans");
-                        await GenerateClassFilesFromSchemaAsync(client, "Loans", "EncompassRest.Loans");
-                    }
-                }).Wait();
+                    loanSchema = await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false);
+                }
+                GenerateClassFilesFromSchema(loanSchema, "Loans", "EncompassRest.Loans");
+                GenerateFieldMappings(loanSchema, "Loans");
             }
             catch (Exception ex)
             {
@@ -202,9 +199,8 @@ namespace EncompassRest
             Console.ReadLine();
         }
 
-        public static async Task GenerateFieldMappingsAsync(EncompassRestClient client, string destinationPath)
+        public static void GenerateFieldMappings(LoanSchema loanSchema, string destinationPath)
         {
-            var loanSchema = await client.Schema.GetLoanSchemaAsync(true);
             var loanEntitySchema = loanSchema.EntityTypes["Loan"];
             var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
@@ -408,46 +404,28 @@ namespace EncompassRest
             }
         }
 
-        public static async Task GenerateClassFilesFromSchemaAsync(EncompassRestClient client, string destinationPath, string @namespace)
+        private static void GenerateClassFilesFromSchema(LoanSchema loanSchema, string destinationPath, string @namespace)
         {
             Directory.CreateDirectory(destinationPath);
-            var supportedEntities = new HashSet<string>((await client.Loans.GetSupportedEntitiesAsync().ConfigureAwait(false)).Select(e => e.Value));
-            supportedEntities.UnionWith(s_additionalSchemaEntities);
-            foreach (var entity in supportedEntities)
+            foreach (var pair in loanSchema.EntityTypes)
             {
-                EntitySchema entitySchema = null;
-                var found = false;
-                Exception exception;
-                var tryCount = 0;
-                do
+                var entityName = pair.Key;
+                if (!s_ignoredEntities.Contains(entityName))
                 {
-                    exception = null;
-                    ++tryCount;
-                    try
-                    {
-                        var loanSchema = await client.Schema.GetLoanSchemaAsync(true, new[] { entity }).ConfigureAwait(false);
-                        found = loanSchema.EntityTypes.TryGetValue(entity, out entitySchema);
-                    }
-                    catch (Exception ex)
-                    {
-                        exception = new Exception(entity, ex);
-                    }
-                } while (exception != null && tryCount < 3);
+                    GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value);
+                }
+            }
 
-                if (found || s_explicitSchemas.TryGetValue(entity, out entitySchema))
+            foreach (var pair in s_explicitSchemas)
+            {
+                var entityName = pair.Key;
+                if (loanSchema.EntityTypes.ContainsKey(entityName))
                 {
-                    await GenerateClassFileFromSchemaAsync(destinationPath, @namespace, entity, entitySchema).ConfigureAwait(false);
-                    if (found && s_missingSchemaEntities.Contains(entity))
-                    {
-                        Console.WriteLine($"Schema for {entity} can now be retrieved");
-                    }
+                    Console.WriteLine($"Can now retrieve schema for {entityName}");
                 }
                 else
                 {
-                    if (!s_missingSchemaEntities.Contains(entity))
-                    {
-                        Console.WriteLine($"Failed to retrieve entity of type {entity}");
-                    }
+                    GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value);
                 }
             }
 
@@ -478,11 +456,11 @@ namespace EncompassRest
             Directory.CreateDirectory(enumsPath);
             foreach (var pair in s_sharedEnums.ToDictionary(p => p.Key, p => p.Value.ToDictionary(s => s, s => (string)null)).Concat(s_otherEnums))
             {
-                await GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value).ConfigureAwait(false);
+                GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value);
             }
         }
 
-        private static async Task GenerateClassFileFromSchemaAsync(string destinationPath, string @namespace, string entityType, EntitySchema entitySchema)
+        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, EntitySchema entitySchema)
         {
             var sb = new StringBuilder();
             sb.Append(
@@ -494,9 +472,9 @@ using EncompassRest.Schema;
 namespace {@namespace}
 {{
     /// <summary>
-    /// {entityType}
+    /// {entityName}
     /// </summary>
-    public sealed partial class {entityType} : ExtensibleObject, IIdentifiable
+    public sealed partial class {entityName} : ExtensibleObject, IIdentifiable
     {{
 ");
 
@@ -505,7 +483,7 @@ namespace {@namespace}
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key.Replace("_", string.Empty);
-                var entityPropertyName = $"{entityType}.{propertyName}";
+                var entityPropertyName = $"{entityName}.{propertyName}";
                 if (!s_propertiesToNotGenerate.Contains(entityPropertyName))
                 {
                     var propertySchema = pair.Value;
@@ -531,7 +509,7 @@ namespace {@namespace}
                     {
                         attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                     }
-                    var propertyType = GetPropertyOrElementType(entityType, propertyName, propertySchema, out var isEntity, out var isList);
+                    var propertyType = GetPropertyOrElementType(entityName, propertyName, propertySchema, out var isEntity, out var isList);
                     string enumName = null;
                     if (propertySchema.AllowedValues?.Count > 0)
                     {
@@ -575,14 +553,14 @@ namespace {@namespace}
                             }
                             if (enumName == null)
                             {
-                                enumName = GetEnumName(entityType, propertyName);
+                                enumName = GetEnumName(entityName, propertyName);
                                 if (s_otherEnums.TryGetValue(enumName, out var enumValues))
                                 {
-                                    Console.WriteLine($"{entityType} Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", enumValues.Keys)}`");
+                                    Console.WriteLine($"{entityName} Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", enumValues.Keys)}`");
                                 }
                                 else if (s_sharedEnums.TryGetValue(enumName, out var sharedEnumValues))
                                 {
-                                    Console.WriteLine($"{entityType} Shared Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", sharedEnumValues)}`");
+                                    Console.WriteLine($"{entityName} Shared Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", sharedEnumValues)}`");
                                 }
                                 else
                                 {
@@ -628,7 +606,7 @@ namespace {@namespace}
                     sb.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
                     properties.Add((propertyName, fieldName, isEntity, isList || isStringDictionary));
                     sb.AppendLine($@"        /// <summary>
-        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityType} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
+        /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
         /// </summary>");
                     if (attributeProperties.Count > 0)
                     {
@@ -660,13 +638,13 @@ $@"        internal override bool DirtyInternal
         }}
     }}
 }}");
-            using (var sw = new StreamWriter(Path.Combine(destinationPath, entityType + ".cs")))
+            using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
             {
-                await sw.WriteAsync(sb.ToString()).ConfigureAwait(false);
+                sw.Write(sb.ToString());
             }
         }
 
-        private static async Task GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, Dictionary<string, string> options)
+        private static void GenerateEnumFileFromOptions(string destinationPath, string @namespace, string enumName, Dictionary<string, string> options)
         {
             var sb = new StringBuilder();
             sb.AppendLine(
@@ -794,7 +772,7 @@ namespace {@namespace}
 }");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, enumName + ".cs")))
             {
-                await sw.WriteAsync(sb.ToString()).ConfigureAwait(false);
+                sw.Write(sb.ToString());
             }
         }
 
