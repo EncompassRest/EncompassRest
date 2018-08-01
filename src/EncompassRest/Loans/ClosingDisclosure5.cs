@@ -75,12 +75,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Lender Phone")]
         public string LenderPhone { get => _lenderPhone; set => _lenderPhone = value; }
-        private DirtyValue<string> _lenderState;
+        private DirtyValue<StringEnumValue<State>> _lenderState;
         /// <summary>
         /// Lender State [CD5.X10]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Lender State")]
-        public string LenderState { get => _lenderState; set => _lenderState = value; }
+        [LoanFieldProperty(Description = "Lender State")]
+        public StringEnumValue<State> LenderState { get => _lenderState; set => _lenderState = value; }
         private DirtyValue<string> _lenderSTLicenseID;
         /// <summary>
         /// Lender ST License ID [CD5.X13]
@@ -147,12 +147,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "MortgageBroker Phone")]
         public string MortgageBrokerPhone { get => _mortgageBrokerPhone; set => _mortgageBrokerPhone = value; }
-        private DirtyValue<string> _mortgageBrokerState;
+        private DirtyValue<StringEnumValue<State>> _mortgageBrokerState;
         /// <summary>
         /// MortgageBroker State [CD5.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "MortgageBroker State")]
-        public string MortgageBrokerState { get => _mortgageBrokerState; set => _mortgageBrokerState = value; }
+        [LoanFieldProperty(Description = "MortgageBroker State")]
+        public StringEnumValue<State> MortgageBrokerState { get => _mortgageBrokerState; set => _mortgageBrokerState = value; }
         private DirtyValue<string> _mortgageBrokerSTLicenseID;
         /// <summary>
         /// MortgageBroker ST License ID [CD5.X25]
@@ -219,12 +219,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "RealEstateBrokerB Phone")]
         public string RealEstateBrokerBPhone { get => _realEstateBrokerBPhone; set => _realEstateBrokerBPhone = value; }
-        private DirtyValue<string> _realEstateBrokerBState;
+        private DirtyValue<StringEnumValue<State>> _realEstateBrokerBState;
         /// <summary>
         /// RealEstateBrokerB State [CD5.X34]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "RealEstateBrokerB State")]
-        public string RealEstateBrokerBState { get => _realEstateBrokerBState; set => _realEstateBrokerBState = value; }
+        [LoanFieldProperty(Description = "RealEstateBrokerB State")]
+        public StringEnumValue<State> RealEstateBrokerBState { get => _realEstateBrokerBState; set => _realEstateBrokerBState = value; }
         private DirtyValue<string> _realEstateBrokerBSTLicenseID;
         /// <summary>
         /// RealEstateBrokerB ST License ID [CD5.X37]
@@ -291,12 +291,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "RealEstateBrokerS Phone")]
         public string RealEstateBrokerSPhone { get => _realEstateBrokerSPhone; set => _realEstateBrokerSPhone = value; }
-        private DirtyValue<string> _realEstateBrokerSState;
+        private DirtyValue<StringEnumValue<State>> _realEstateBrokerSState;
         /// <summary>
         /// RealEstateBrokerS State [CD5.X46]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "RealEstateBrokerS State")]
-        public string RealEstateBrokerSState { get => _realEstateBrokerSState; set => _realEstateBrokerSState = value; }
+        [LoanFieldProperty(Description = "RealEstateBrokerS State")]
+        public StringEnumValue<State> RealEstateBrokerSState { get => _realEstateBrokerSState; set => _realEstateBrokerSState = value; }
         private DirtyValue<string> _realEstateBrokerSSTLicenseID;
         /// <summary>
         /// RealEstateBrokerS ST License ID [CD5.X49]
@@ -363,12 +363,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "SettlementAgent Phone")]
         public string SettlementAgentPhone { get => _settlementAgentPhone; set => _settlementAgentPhone = value; }
-        private DirtyValue<string> _settlementAgentState;
+        private DirtyValue<StringEnumValue<State>> _settlementAgentState;
         /// <summary>
         /// SettlementAgent State [CD5.X58]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "SettlementAgent State")]
-        public string SettlementAgentState { get => _settlementAgentState; set => _settlementAgentState = value; }
+        [LoanFieldProperty(Description = "SettlementAgent State")]
+        public StringEnumValue<State> SettlementAgentState { get => _settlementAgentState; set => _settlementAgentState = value; }
         private DirtyValue<string> _settlementAgentSTLicenseID;
         /// <summary>
         /// SettlementAgent ST License ID [CD5.X61]

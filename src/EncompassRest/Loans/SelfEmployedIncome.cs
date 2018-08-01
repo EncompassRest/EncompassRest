@@ -22,11 +22,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "1084A/1040 Business Information - Business Name")]
         public string BusinessName { get => _businessName; set => _businessName = value; }
-        private DirtyValue<string> _fieldName;
+        private DirtyValue<StringEnumValue<FieldName>> _fieldName;
         /// <summary>
         /// SelfEmployedIncome FieldName [FM1084.X18]
         /// </summary>
-        public string FieldName { get => _fieldName; set => _fieldName = value; }
+        public StringEnumValue<FieldName> FieldName { get => _fieldName; set => _fieldName = value; }
         private DirtyValue<decimal?> _fieldValue;
         /// <summary>
         /// SelfEmployedIncome FieldValue

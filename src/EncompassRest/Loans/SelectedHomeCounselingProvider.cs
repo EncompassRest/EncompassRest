@@ -34,12 +34,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Home Counseling Provider - Agency Address Postal Code")]
         public string AgencyAddressPostalCode { get => _agencyAddressPostalCode; set => _agencyAddressPostalCode = value; }
-        private DirtyValue<string> _agencyAddressState;
+        private DirtyValue<StringEnumValue<State>> _agencyAddressState;
         /// <summary>
         /// Home Counseling Provider - Agency Address State [HOC.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Home Counseling Provider - Agency Address State")]
-        public string AgencyAddressState { get => _agencyAddressState; set => _agencyAddressState = value; }
+        [LoanFieldProperty(Description = "Home Counseling Provider - Agency Address State")]
+        public StringEnumValue<State> AgencyAddressState { get => _agencyAddressState; set => _agencyAddressState = value; }
         private DirtyValue<string> _agencyAffiliationDescription;
         /// <summary>
         /// Home Counseling Provider - Agency Affiliation Description [HOC.X15]

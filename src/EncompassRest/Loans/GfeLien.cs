@@ -20,6 +20,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeLien GfeLienIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? GfeLienIndex { get => _gfeLienIndex; set => _gfeLienIndex = value; }
         private DirtyValue<StringEnumValue<GfeLienType>> _gfeLienType;
         /// <summary>

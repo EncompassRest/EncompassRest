@@ -22,12 +22,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Non-Borrowing Owner File Contact - Address Postal Code")]
         public string AddressPostalCode { get => _addressPostalCode; set => _addressPostalCode = value; }
-        private DirtyValue<string> _addressState;
+        private DirtyValue<StringEnumValue<State>> _addressState;
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address State [NBOCNB07]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Non-Borrowing Owner File Contact - Address State")]
-        public string AddressState { get => _addressState; set => _addressState = value; }
+        [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Address State")]
+        public StringEnumValue<State> AddressState { get => _addressState; set => _addressState = value; }
         private DirtyValue<string> _addressStreet;
         /// <summary>
         /// Non-Borrowing Owner File Contact - Address Street [NBOCNB05]

@@ -68,12 +68,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "NY Fees Company Zip")]
         public string PostalCode { get => _postalCode; set => _postalCode = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// NY Fees Company State [NYFEESNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "NY Fees Company State")]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(Description = "NY Fees Company State")]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         internal override bool DirtyInternal
         {
             get => _address.Dirty

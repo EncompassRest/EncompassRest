@@ -152,12 +152,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.SSN, Description = "Vesting Party - Social Security Number")]
         public string Ssn { get => _ssn; set => _ssn = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// ClosingEntity State
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, ReadOnly = true)]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(ReadOnly = true)]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<string> _streetAddress;
         /// <summary>
         /// ClosingEntity StreetAddress

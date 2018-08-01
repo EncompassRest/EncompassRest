@@ -63,24 +63,24 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Loan Estimate - Lender License ID")]
         public string LenderLicenseID { get => _lenderLicenseID; set => _lenderLicenseID = value; }
-        private DirtyValue<string> _lenderLicenseState;
+        private DirtyValue<StringEnumValue<State>> _lenderLicenseState;
         /// <summary>
         /// Loan Estimate - Lender License State [LE3.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Loan Estimate - Lender License State")]
-        public string LenderLicenseState { get => _lenderLicenseState; set => _lenderLicenseState = value; }
+        [LoanFieldProperty(Description = "Loan Estimate - Lender License State")]
+        public StringEnumValue<State> LenderLicenseState { get => _lenderLicenseState; set => _lenderLicenseState = value; }
         private DirtyValue<string> _lenderLoanOfficer;
         /// <summary>
         /// Loan Estimate - Lender Loan Officer [LE3.X4]
         /// </summary>
         [LoanFieldProperty(Description = "Loan Estimate - Lender Loan Officer")]
         public string LenderLoanOfficer { get => _lenderLoanOfficer; set => _lenderLoanOfficer = value; }
-        private DirtyValue<string> _lenderLoanOfficerLicenseState;
+        private DirtyValue<StringEnumValue<State>> _lenderLoanOfficerLicenseState;
         /// <summary>
         /// Loan Estimate - Lender Loan Officer License State [LE3.X21]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Loan Estimate - Lender Loan Officer License State")]
-        public string LenderLoanOfficerLicenseState { get => _lenderLoanOfficerLicenseState; set => _lenderLoanOfficerLicenseState = value; }
+        [LoanFieldProperty(Description = "Loan Estimate - Lender Loan Officer License State")]
+        public StringEnumValue<State> LenderLoanOfficerLicenseState { get => _lenderLoanOfficerLicenseState; set => _lenderLoanOfficerLicenseState = value; }
         private DirtyValue<string> _lenderLoanOfficerNMLSId;
         /// <summary>
         /// Loan Estimate - Lender Loan Officer NMLS ID [LE3.X5]
@@ -105,12 +105,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Loan Estimate - Mortgage Broker License ID")]
         public string MortgageBrokerLicenseID { get => _mortgageBrokerLicenseID; set => _mortgageBrokerLicenseID = value; }
-        private DirtyValue<string> _mortgageBrokerLicenseState;
+        private DirtyValue<StringEnumValue<State>> _mortgageBrokerLicenseState;
         /// <summary>
         /// Loan Estimate - Mortgage Broker License State [LE3.X22]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Loan Estimate - Mortgage Broker License State")]
-        public string MortgageBrokerLicenseState { get => _mortgageBrokerLicenseState; set => _mortgageBrokerLicenseState = value; }
+        [LoanFieldProperty(Description = "Loan Estimate - Mortgage Broker License State")]
+        public StringEnumValue<State> MortgageBrokerLicenseState { get => _mortgageBrokerLicenseState; set => _mortgageBrokerLicenseState = value; }
         private DirtyValue<string> _mortgageBrokerLoanOfficer;
         /// <summary>
         /// Loan Estimate - Mortgage Broker Loan Officer [LE3.X9]
@@ -123,12 +123,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Loan Estimate - Mortgage Broker Loan Officer License ID")]
         public string MortgageBrokerLoanOfficerLicenseID { get => _mortgageBrokerLoanOfficerLicenseID; set => _mortgageBrokerLoanOfficerLicenseID = value; }
-        private DirtyValue<string> _mortgageBrokerLoanOfficerLicenseState;
+        private DirtyValue<StringEnumValue<State>> _mortgageBrokerLoanOfficerLicenseState;
         /// <summary>
         /// Loan Estimate - Mortgage Broker Loan Officer License State [LE3.X23]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Loan Estimate - Mortgage Broker Loan Officer License State")]
-        public string MortgageBrokerLoanOfficerLicenseState { get => _mortgageBrokerLoanOfficerLicenseState; set => _mortgageBrokerLoanOfficerLicenseState = value; }
+        [LoanFieldProperty(Description = "Loan Estimate - Mortgage Broker Loan Officer License State")]
+        public StringEnumValue<State> MortgageBrokerLoanOfficerLicenseState { get => _mortgageBrokerLoanOfficerLicenseState; set => _mortgageBrokerLoanOfficerLicenseState = value; }
         private DirtyValue<string> _mortgageBrokerLoanOfficerNMLSId;
         /// <summary>
         /// Loan Estimate - Mortgage Broker Loan Officer NMLS ID [LE3.X10]

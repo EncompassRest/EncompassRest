@@ -30,6 +30,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfeFee GfeFeeIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"824\":\"824\",\"825\":\"825\",\"1\":\"1\",\"2\":\"2\",\"0\":\"0\"}")]
         public int? GfeFeeIndex { get => _gfeFeeIndex; set => _gfeFeeIndex = value; }
         private DirtyValue<StringEnumValue<GfeFeeType>> _gfeFeeType;
         /// <summary>

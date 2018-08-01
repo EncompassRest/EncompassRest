@@ -98,12 +98,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string BankContactPostalCode { get => _bankContactPostalCode; set => _bankContactPostalCode = value; }
-        private DirtyValue<string> _bankContactState;
+        private DirtyValue<StringEnumValue<State>> _bankContactState;
         /// <summary>
         /// Borrower BankContactState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string BankContactState { get => _bankContactState; set => _bankContactState = value; }
+        public StringEnumValue<State> BankContactState { get => _bankContactState; set => _bankContactState = value; }
         private DirtyValue<bool?> _bankruptcyIndicator;
         /// <summary>
         /// Borrower BankruptcyIndicator
@@ -1059,12 +1058,11 @@ namespace EncompassRest.Loans
         /// Borrower NearestRelativeRelationship
         /// </summary>
         public string NearestRelativeRelationship { get => _nearestRelativeRelationship; set => _nearestRelativeRelationship = value; }
-        private DirtyValue<string> _nearestRelativeState;
+        private DirtyValue<StringEnumValue<State>> _nearestRelativeState;
         /// <summary>
         /// Borrower NearestRelativeState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string NearestRelativeState { get => _nearestRelativeState; set => _nearestRelativeState = value; }
+        public StringEnumValue<State> NearestRelativeState { get => _nearestRelativeState; set => _nearestRelativeState = value; }
         private DirtyValue<bool?> _no3rdPartyEmailIndicator;
         /// <summary>
         /// Borrower No3rdPartyEmailIndicator

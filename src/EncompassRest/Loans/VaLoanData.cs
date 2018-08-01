@@ -52,12 +52,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "VA To Admin of Benefits Zip")]
         public string AdministratorPostalCode { get => _administratorPostalCode; set => _administratorPostalCode = value; }
-        private DirtyValue<string> _administratorState;
+        private DirtyValue<StringEnumValue<State>> _administratorState;
         /// <summary>
         /// VA To Admin of Benefits State [VAVOB.X5]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "VA To Admin of Benefits State")]
-        public string AdministratorState { get => _administratorState; set => _administratorState = value; }
+        [LoanFieldProperty(Description = "VA To Admin of Benefits State")]
+        public StringEnumValue<State> AdministratorState { get => _administratorState; set => _administratorState = value; }
         private DirtyValue<int?> _ageOfProperty;
         /// <summary>
         /// VA Loan Summ Property Age [VASUMM.X8]
@@ -118,12 +118,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, ReadOnly = true)]
         public string ApplicantAddressPostalCode { get => _applicantAddressPostalCode; set => _applicantAddressPostalCode = value; }
-        private DirtyValue<string> _applicantAddressState;
+        private DirtyValue<StringEnumValue<State>> _applicantAddressState;
         /// <summary>
         /// VaLoanData ApplicantAddressState [VAELIG.X77]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, ReadOnly = true)]
-        public string ApplicantAddressState { get => _applicantAddressState; set => _applicantAddressState = value; }
+        [LoanFieldProperty(ReadOnly = true)]
+        public StringEnumValue<State> ApplicantAddressState { get => _applicantAddressState; set => _applicantAddressState = value; }
         private DirtyValue<string> _applicantAddressStreetLine1;
         /// <summary>
         /// VaLoanData ApplicantAddressStreetLine1 [VAELIG.X75]
@@ -589,12 +589,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "VA Veteran Mailing Addr Zip")]
         public string MailingPostalCode { get => _mailingPostalCode; set => _mailingPostalCode = value; }
-        private DirtyValue<string> _mailingState;
+        private DirtyValue<StringEnumValue<State>> _mailingState;
         /// <summary>
         /// VA Veteran Mailing Addr State [VAELIG.X55]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "VA Veteran Mailing Addr State")]
-        public string MailingState { get => _mailingState; set => _mailingState = value; }
+        [LoanFieldProperty(Description = "VA Veteran Mailing Addr State")]
+        public StringEnumValue<State> MailingState { get => _mailingState; set => _mailingState = value; }
         private DirtyValue<StringEnumValue<ManufacturedHome>> _manufacturedHome;
         /// <summary>
         /// Subject Property Manufactured Home [963]
@@ -840,12 +840,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "VA 261805 Applicable Point of Contact (POC) Information Phone")]
         public string POCPhone { get => _pOCPhone; set => _pOCPhone = value; }
-        private DirtyValue<string> _pOCState;
+        private DirtyValue<StringEnumValue<State>> _pOCState;
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information State [3352]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "VA 261805 Applicable Point of Contact (POC) Information State")]
-        public string POCState { get => _pOCState; set => _pOCState = value; }
+        [LoanFieldProperty(Description = "VA 261805 Applicable Point of Contact (POC) Information State")]
+        public StringEnumValue<State> POCState { get => _pOCState; set => _pOCState = value; }
         private DirtyValue<string> _pOCZipCode;
         /// <summary>
         /// VA 261805 Applicable Point of Contact (POC) Information Zipcode [3353]
@@ -1229,11 +1229,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "VA Management - Has the Veteran been more than 30 days late on a payment in the last 6 months?")]
         public bool? VALatePaymentIn6Months { get => _vALatePaymentIn6Months; set => _vALatePaymentIn6Months = value; }
-        private DirtyValue<StringEnumValue<VaLoanSummaryApplicantType>> _vaLoanSummaryApplicantType;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _vaLoanSummaryApplicantType;
         /// <summary>
         /// VaLoanData VaLoanSummaryApplicantType [VAELIG.X66]
         /// </summary>
-        public StringEnumValue<VaLoanSummaryApplicantType> VaLoanSummaryApplicantType { get => _vaLoanSummaryApplicantType; set => _vaLoanSummaryApplicantType = value; }
+        [LoanFieldProperty(OptionsJson = "{\"CoBorrower\":\"Co-Borrower\"}")]
+        public StringEnumValue<BorrowerOrCoBorrower> VaLoanSummaryApplicantType { get => _vaLoanSummaryApplicantType; set => _vaLoanSummaryApplicantType = value; }
         private DirtyValue<DateTime?> _vANOVDateReceived;
         /// <summary>
         /// VA Management Tool - NOV Date Received [VASUMM.X74]
@@ -1474,12 +1475,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "VA New/Prop Constr Warrantor Zip")]
         public string WarrantorPostalCode { get => _warrantorPostalCode; set => _warrantorPostalCode = value; }
-        private DirtyValue<string> _warrantorState;
+        private DirtyValue<StringEnumValue<State>> _warrantorState;
         /// <summary>
         /// VA New/Prop Constr Warrantor State [GAPPR.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "VA New/Prop Constr Warrantor State")]
-        public string WarrantorState { get => _warrantorState; set => _warrantorState = value; }
+        [LoanFieldProperty(Description = "VA New/Prop Constr Warrantor State")]
+        public StringEnumValue<State> WarrantorState { get => _warrantorState; set => _warrantorState = value; }
         private DirtyValue<DateTime?> _warrantyProgramExpirationDate;
         /// <summary>
         /// Subject Property Warranty Program Expiration Date [725]

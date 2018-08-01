@@ -315,12 +315,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Property Info Section Identifier")]
         public string SectionIdentifier { get => _sectionIdentifier; set => _sectionIdentifier = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Subject Property State [14]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Subject Property State")]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(Description = "Subject Property State")]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<string> _streetAddress;
         /// <summary>
         /// Subject Property Street [11]

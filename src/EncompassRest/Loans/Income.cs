@@ -31,21 +31,22 @@ namespace EncompassRest.Loans
         /// Income Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<string> _incomeType;
+        private DirtyValue<StringEnumValue<IncomeType>> _incomeType;
         /// <summary>
         /// Income IncomeType
         /// </summary>
-        public string IncomeType { get => _incomeType; set => _incomeType = value; }
+        public StringEnumValue<IncomeType> IncomeType { get => _incomeType; set => _incomeType = value; }
         private DirtyValue<int?> _otherIncomeIndex;
         /// <summary>
         /// Income OtherIncomeIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? OtherIncomeIndex { get => _otherIncomeIndex; set => _otherIncomeIndex = value; }
-        private DirtyValue<string> _owner;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _owner;
         /// <summary>
         /// Income Owner
         /// </summary>
-        public string Owner { get => _owner; set => _owner = value; }
+        public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => _owner = value; }
         internal override bool DirtyInternal
         {
             get => _amount.Dirty

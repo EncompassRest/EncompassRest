@@ -39,6 +39,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// NewYorkPrimaryLender NewYorkPrimaryLenderIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? NewYorkPrimaryLenderIndex { get => _newYorkPrimaryLenderIndex; set => _newYorkPrimaryLenderIndex = value; }
         private DirtyValue<string> _postalCode;
         /// <summary>
@@ -46,12 +47,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string PostalCode { get => _postalCode; set => _postalCode = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// NewYorkPrimaryLender State
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string State { get => _state; set => _state = value; }
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         internal override bool DirtyInternal
         {
             get => _address.Dirty

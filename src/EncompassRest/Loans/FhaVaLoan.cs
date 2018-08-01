@@ -124,12 +124,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Borr Cert Other RE Zip")]
         public string BorrowerCertificationPostalCode { get => _borrowerCertificationPostalCode; set => _borrowerCertificationPostalCode = value; }
-        private DirtyValue<string> _borrowerCertificationState;
+        private DirtyValue<StringEnumValue<State>> _borrowerCertificationState;
         /// <summary>
         /// Borr Cert Other RE State [1739]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Borr Cert Other RE State")]
-        public string BorrowerCertificationState { get => _borrowerCertificationState; set => _borrowerCertificationState = value; }
+        [LoanFieldProperty(Description = "Borr Cert Other RE State")]
+        public StringEnumValue<State> BorrowerCertificationState { get => _borrowerCertificationState; set => _borrowerCertificationState = value; }
         private DirtyValue<string> _cAIVRSObtainedBy;
         /// <summary>
         /// FHA Management CAIVRS Obtained By [3068]
@@ -541,12 +541,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "HUD Lenders Rep Title")]
         public string LenderRepresentativeTitle { get => _lenderRepresentativeTitle; set => _lenderRepresentativeTitle = value; }
-        private DirtyValue<string> _lenderState;
+        private DirtyValue<StringEnumValue<State>> _lenderState;
         /// <summary>
         /// HUD 1003 Addendum Lender State [3635]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HUD 1003 Addendum Lender State")]
-        public string LenderState { get => _lenderState; set => _lenderState = value; }
+        [LoanFieldProperty(Description = "HUD 1003 Addendum Lender State")]
+        public StringEnumValue<State> LenderState { get => _lenderState; set => _lenderState = value; }
         private DirtyValue<string> _lenderTaxID;
         /// <summary>
         /// HUD 1003 Addendum Sponsor Agent Info Tax ID [3638]
@@ -853,12 +853,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "File Contacts Sponsor/Agent Zip")]
         public string SponsorAgentPostalCode { get => _sponsorAgentPostalCode; set => _sponsorAgentPostalCode = value; }
-        private DirtyValue<string> _sponsorAgentState;
+        private DirtyValue<StringEnumValue<State>> _sponsorAgentState;
         /// <summary>
         /// File Contacts Sponsor/Agent State [1743]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "File Contacts Sponsor/Agent State")]
-        public string SponsorAgentState { get => _sponsorAgentState; set => _sponsorAgentState = value; }
+        [LoanFieldProperty(Description = "File Contacts Sponsor/Agent State")]
+        public StringEnumValue<State> SponsorAgentState { get => _sponsorAgentState; set => _sponsorAgentState = value; }
         private DirtyValue<string> _sponsorAgentTaxID;
         /// <summary>
         /// HUD 1003 Addendum Sponsor Agent Info Tax ID [3641]

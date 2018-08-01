@@ -192,12 +192,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Disclosure Cred Bureau 3 Co Range Scores To")]
         public string EquifaxScoreRangeTo { get => _equifaxScoreRangeTo; set => _equifaxScoreRangeTo = value; }
-        private DirtyValue<string> _equifaxState;
+        private DirtyValue<StringEnumValue<State>> _equifaxState;
         /// <summary>
         /// Disclosure Cred Bureau 3 Co State [DISCLOSURE.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Disclosure Cred Bureau 3 Co State")]
-        public string EquifaxState { get => _equifaxState; set => _equifaxState = value; }
+        [LoanFieldProperty(Description = "Disclosure Cred Bureau 3 Co State")]
+        public StringEnumValue<State> EquifaxState { get => _equifaxState; set => _equifaxState = value; }
         private DirtyValue<string> _equifaxWebsite;
         /// <summary>
         /// Disclosure Cred Bureau 3 Co Website [DISCLOSURE.X640]
@@ -258,12 +258,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Disclosure Cred Bureau 1 Co Range Scores To")]
         public string ExperianScoreRangeTo { get => _experianScoreRangeTo; set => _experianScoreRangeTo = value; }
-        private DirtyValue<string> _experianState;
+        private DirtyValue<StringEnumValue<State>> _experianState;
         /// <summary>
         /// Disclosure Cred Bureau 1 Co State [DISCLOSURE.X4]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Disclosure Cred Bureau 1 Co State")]
-        public string ExperianState { get => _experianState; set => _experianState = value; }
+        [LoanFieldProperty(Description = "Disclosure Cred Bureau 1 Co State")]
+        public StringEnumValue<State> ExperianState { get => _experianState; set => _experianState = value; }
         private DirtyValue<string> _experianWebsite;
         /// <summary>
         /// Disclosure Cred Bureau 1 Co Website [DISCLOSURE.X638]
@@ -919,12 +919,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Denial Discl Info - Borrower Address - City")]
         public string SofDBorrowerAddressCity { get => _sofDBorrowerAddressCity; set => _sofDBorrowerAddressCity = value; }
-        private DirtyValue<string> _sofDBorrowerAddressState;
+        private DirtyValue<StringEnumValue<State>> _sofDBorrowerAddressState;
         /// <summary>
         /// Denial Discl Info - Borrower Address - State [DENIAL.X84]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Denial Discl Info - Borrower Address - State")]
-        public string SofDBorrowerAddressState { get => _sofDBorrowerAddressState; set => _sofDBorrowerAddressState = value; }
+        [LoanFieldProperty(Description = "Denial Discl Info - Borrower Address - State")]
+        public StringEnumValue<State> SofDBorrowerAddressState { get => _sofDBorrowerAddressState; set => _sofDBorrowerAddressState = value; }
         private DirtyValue<StringEnumValue<SofDBorrowerAddressType>> _sofDBorrowerAddressType;
         /// <summary>
         /// Denial Discl Info - Borrower Address Type [DENIAL.X81]
@@ -949,12 +949,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Denial Discl Info - Coborrower Address - City")]
         public string SofDCoBorrowerAddressCity { get => _sofDCoBorrowerAddressCity; set => _sofDCoBorrowerAddressCity = value; }
-        private DirtyValue<string> _sofDCoBorrowerAddressState;
+        private DirtyValue<StringEnumValue<State>> _sofDCoBorrowerAddressState;
         /// <summary>
         /// Denial Discl Info - Coborrower Address - State [DENIAL.X89]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Denial Discl Info - Coborrower Address - State")]
-        public string SofDCoBorrowerAddressState { get => _sofDCoBorrowerAddressState; set => _sofDCoBorrowerAddressState = value; }
+        [LoanFieldProperty(Description = "Denial Discl Info - Coborrower Address - State")]
+        public StringEnumValue<State> SofDCoBorrowerAddressState { get => _sofDCoBorrowerAddressState; set => _sofDCoBorrowerAddressState = value; }
         private DirtyValue<StringEnumValue<SofDBorrowerAddressType>> _sofDCoBorrowerAddressType;
         /// <summary>
         /// Denial Discl Info - Coborrower Address Type [DENIAL.X86]
@@ -1168,12 +1168,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Disclosure Cred Bureau 2 Co Range Scores To")]
         public string TransUnionScoreRangeTo { get => _transUnionScoreRangeTo; set => _transUnionScoreRangeTo = value; }
-        private DirtyValue<string> _transUnionState;
+        private DirtyValue<StringEnumValue<State>> _transUnionState;
         /// <summary>
         /// Disclosure Cred Bureau 2 Co State [DISCLOSURE.X24]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Disclosure Cred Bureau 2 Co State")]
-        public string TransUnionState { get => _transUnionState; set => _transUnionState = value; }
+        [LoanFieldProperty(Description = "Disclosure Cred Bureau 2 Co State")]
+        public StringEnumValue<State> TransUnionState { get => _transUnionState; set => _transUnionState = value; }
         private DirtyValue<string> _transUnionWebsite;
         /// <summary>
         /// Disclosure Cred Bureau 2 Co Website [DISCLOSURE.X639]

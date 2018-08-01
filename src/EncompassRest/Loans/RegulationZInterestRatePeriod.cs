@@ -57,11 +57,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? PrincipalPayment { get => _principalPayment; set => _principalPayment = value; }
-        private DirtyValue<string> _regulationZInterestRatePeriodType;
+        private DirtyValue<StringEnumValue<RegulationZInterestRatePeriodType>> _regulationZInterestRatePeriodType;
         /// <summary>
         /// RegulationZInterestRatePeriod RegulationZInterestRatePeriodType
         /// </summary>
-        public string RegulationZInterestRatePeriodType { get => _regulationZInterestRatePeriodType; set => _regulationZInterestRatePeriodType = value; }
+        public StringEnumValue<RegulationZInterestRatePeriodType> RegulationZInterestRatePeriodType { get => _regulationZInterestRatePeriodType; set => _regulationZInterestRatePeriodType = value; }
         private DirtyValue<decimal?> _taxInsuranceAmount;
         /// <summary>
         /// RegulationZInterestRatePeriod TaxInsuranceAmount

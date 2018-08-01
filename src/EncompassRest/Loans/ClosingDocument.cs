@@ -28,12 +28,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Closing Docs Mfg Home Postal Code of Additional Lien Holder")]
         public string AdditionalLienHolderAddressPostalCode { get => _additionalLienHolderAddressPostalCode; set => _additionalLienHolderAddressPostalCode = value; }
-        private DirtyValue<string> _additionalLienHolderAddressState;
+        private DirtyValue<StringEnumValue<State>> _additionalLienHolderAddressState;
         /// <summary>
         /// Closing Docs Mfg Home Address State of Additional Lien Holder [3653]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Closing Docs Mfg Home Address State of Additional Lien Holder")]
-        public string AdditionalLienHolderAddressState { get => _additionalLienHolderAddressState; set => _additionalLienHolderAddressState = value; }
+        [LoanFieldProperty(Description = "Closing Docs Mfg Home Address State of Additional Lien Holder")]
+        public StringEnumValue<State> AdditionalLienHolderAddressState { get => _additionalLienHolderAddressState; set => _additionalLienHolderAddressState = value; }
         private DirtyValue<string> _additionalLienHolderName;
         /// <summary>
         /// Closing Docs Mfg Home Name of Additional Lien Holder [3650]
@@ -325,12 +325,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Closing Loan Info Plan Closing Provider")]
         public string ClosingProvider { get => _closingProvider; set => _closingProvider = value; }
-        private DirtyValue<string> _closingState;
+        private DirtyValue<StringEnumValue<State>> _closingState;
         /// <summary>
         /// Closing State [3542]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Closing State")]
-        public string ClosingState { get => _closingState; set => _closingState = value; }
+        [LoanFieldProperty(Description = "Closing State")]
+        public StringEnumValue<State> ClosingState { get => _closingState; set => _closingState = value; }
         private DirtyValue<DateTime?> _cLPayoffsRequestedDateTime;
         /// <summary>
         /// Title Closing Disclosure - Payoffs Requested Date Time [CL.WF.EVNT.ODRPAYOFF]
@@ -541,12 +541,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Closing County")]
         public string DrawCounty { get => _drawCounty; set => _drawCounty = value; }
-        private DirtyValue<string> _drawState;
+        private DirtyValue<StringEnumValue<State>> _drawState;
         /// <summary>
         /// Closing Draw State [L812]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Closing Draw State")]
-        public string DrawState { get => _drawState; set => _drawState = value; }
+        [LoanFieldProperty(Description = "Closing Draw State")]
+        public StringEnumValue<State> DrawState { get => _drawState; set => _drawState = value; }
         private DirtyValue<StringEnumValue<YNOrOther>> _employeeofMortgageLender;
         /// <summary>
         /// State Disc - Broker Is Employee of Mtg Lender [DISCLOSURE.X208]
@@ -684,12 +684,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Closing Docs Mfg Home Postal Code of Lien Holder")]
         public string LienHolderAddressPostalCode { get => _lienHolderAddressPostalCode; set => _lienHolderAddressPostalCode = value; }
-        private DirtyValue<string> _lienHolderAddressState;
+        private DirtyValue<StringEnumValue<State>> _lienHolderAddressState;
         /// <summary>
         /// Closing Docs Mfg Home Address State of Lien Holder [3647]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Closing Docs Mfg Home Address State of Lien Holder")]
-        public string LienHolderAddressState { get => _lienHolderAddressState; set => _lienHolderAddressState = value; }
+        [LoanFieldProperty(Description = "Closing Docs Mfg Home Address State of Lien Holder")]
+        public StringEnumValue<State> LienHolderAddressState { get => _lienHolderAddressState; set => _lienHolderAddressState = value; }
         private DirtyValue<string> _lienHolderName;
         /// <summary>
         /// Closing Docs Mfg Home Name of Lien Holder [3644]
@@ -786,12 +786,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Closing Docs Mfg Home Manufacturer Postal Code")]
         public string MfgHomeManufacturerPostalCode { get => _mfgHomeManufacturerPostalCode; set => _mfgHomeManufacturerPostalCode = value; }
-        private DirtyValue<string> _mfgHomeManufacturerState;
+        private DirtyValue<StringEnumValue<State>> _mfgHomeManufacturerState;
         /// <summary>
         /// Closing Docs Mfg Home Manufacturer State [4066]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Closing Docs Mfg Home Manufacturer State")]
-        public string MfgHomeManufacturerState { get => _mfgHomeManufacturerState; set => _mfgHomeManufacturerState = value; }
+        [LoanFieldProperty(Description = "Closing Docs Mfg Home Manufacturer State")]
+        public StringEnumValue<State> MfgHomeManufacturerState { get => _mfgHomeManufacturerState; set => _mfgHomeManufacturerState = value; }
         private DirtyValue<int?> _mfgHomeManufactureYear;
         /// <summary>
         /// Closing Docs Mfg Home Year [2579]

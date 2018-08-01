@@ -86,12 +86,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Depository Attention Zipcode")]
         public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => _holderAddressPostalCode = value; }
-        private DirtyValue<string> _holderAddressState;
+        private DirtyValue<StringEnumValue<State>> _holderAddressState;
         /// <summary>
         /// Depository Attention State [DDNN06]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Depository Attention State")]
-        public string HolderAddressState { get => _holderAddressState; set => _holderAddressState = value; }
+        [LoanFieldProperty(Description = "Depository Attention State")]
+        public StringEnumValue<State> HolderAddressState { get => _holderAddressState; set => _holderAddressState = value; }
         private DirtyValue<string> _holderAddressStreetLine1;
         /// <summary>
         /// Depository Address [DDNN04]

@@ -285,12 +285,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "File Contacts Seller Zip")]
         public string SellerPostalCode { get => _sellerPostalCode; set => _sellerPostalCode = value; }
-        private DirtyValue<string> _sellerState;
+        private DirtyValue<StringEnumValue<State>> _sellerState;
         /// <summary>
         /// File Contacts Seller State [1292]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "File Contacts Seller State")]
-        public string SellerState { get => _sellerState; set => _sellerState = value; }
+        [LoanFieldProperty(Description = "File Contacts Seller State")]
+        public StringEnumValue<State> SellerState { get => _sellerState; set => _sellerState = value; }
         private DirtyValue<string> _specialFeatureCode1;
         /// <summary>
         /// Tsum SpecialFeatureCode1 [TSUM.X32]

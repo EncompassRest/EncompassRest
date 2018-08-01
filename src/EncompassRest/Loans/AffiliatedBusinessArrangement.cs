@@ -74,12 +74,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender's Address City")]
         public string LenderAddressCity { get => _lenderAddressCity; set => _lenderAddressCity = value; }
-        private DirtyValue<string> _lenderAddressState;
+        private DirtyValue<StringEnumValue<State>> _lenderAddressState;
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address State [ABNN04]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Affiliated Business Arrangements - Lender's Address State")]
-        public string LenderAddressState { get => _lenderAddressState; set => _lenderAddressState = value; }
+        [LoanFieldProperty(Description = "Affiliated Business Arrangements - Lender's Address State")]
+        public StringEnumValue<State> LenderAddressState { get => _lenderAddressState; set => _lenderAddressState = value; }
         private DirtyValue<string> _lenderAddressZipcode;
         /// <summary>
         /// Affiliated Business Arrangements - Lender's Address Zipcode [ABNN05]

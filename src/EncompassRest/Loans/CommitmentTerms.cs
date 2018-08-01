@@ -135,12 +135,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Commitment Mortgagee Zip")]
         public string MortgageePostalCode { get => _mortgageePostalCode; set => _mortgageePostalCode = value; }
-        private DirtyValue<string> _mortgageeState;
+        private DirtyValue<StringEnumValue<State>> _mortgageeState;
         /// <summary>
         /// Commitment Mortgagee State [3345]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Commitment Mortgagee State")]
-        public string MortgageeState { get => _mortgageeState; set => _mortgageeState = value; }
+        [LoanFieldProperty(Description = "Commitment Mortgagee State")]
+        public StringEnumValue<State> MortgageeState { get => _mortgageeState; set => _mortgageeState = value; }
         private DirtyValue<string> _otherMonthlyExpenseDescription;
         /// <summary>
         /// HUD Expenses Oth Mo Expense Descr [1071]

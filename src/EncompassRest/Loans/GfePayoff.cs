@@ -25,6 +25,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// GfePayoff GfePayoffIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? GfePayoffIndex { get => _gfePayoffIndex; set => _gfePayoffIndex = value; }
         private DirtyValue<string> _id;
         /// <summary>

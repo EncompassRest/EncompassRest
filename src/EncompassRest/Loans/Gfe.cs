@@ -371,12 +371,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "MLDS Prepymt - Sources Deemed Reliable")]
         public bool? SourcesDeemedReliableIndicator { get => _sourcesDeemedReliableIndicator; set => _sourcesDeemedReliableIndicator = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// MLDS Broker State [RE88395.X340]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "MLDS Broker State")]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(Description = "MLDS Broker State")]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<decimal?> _subtotalOfAllDeductions;
         /// <summary>
         /// Trans Details Subtotal of Deductions [RE88395.X116]

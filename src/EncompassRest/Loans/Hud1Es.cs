@@ -220,12 +220,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "HUD1ES City Property Tax Pay To Zip")]
         public string CityPropertyTaxPostalCode { get => _cityPropertyTaxPostalCode; set => _cityPropertyTaxPostalCode = value; }
-        private DirtyValue<string> _cityPropertyTaxState;
+        private DirtyValue<StringEnumValue<State>> _cityPropertyTaxState;
         /// <summary>
         /// HUD1ES City Property Tax Pay To State [VEND.X335]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HUD1ES City Property Tax Pay To State")]
-        public string CityPropertyTaxState { get => _cityPropertyTaxState; set => _cityPropertyTaxState = value; }
+        [LoanFieldProperty(Description = "HUD1ES City Property Tax Pay To State")]
+        public StringEnumValue<State> CityPropertyTaxState { get => _cityPropertyTaxState; set => _cityPropertyTaxState = value; }
         private DirtyValue<decimal?> _endingBalance;
         /// <summary>
         /// HUD Ending Balance [HUD25]
@@ -412,12 +412,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "HUD1ES Tax Pay To Zip")]
         public string RealEstateTaxPostalCode { get => _realEstateTaxPostalCode; set => _realEstateTaxPostalCode = value; }
-        private DirtyValue<string> _realEstateTaxState;
+        private DirtyValue<StringEnumValue<State>> _realEstateTaxState;
         /// <summary>
         /// HUD1ES Tax Pay To State [VEND.X326]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HUD1ES Tax Pay To State")]
-        public string RealEstateTaxState { get => _realEstateTaxState; set => _realEstateTaxState = value; }
+        [LoanFieldProperty(Description = "HUD1ES Tax Pay To State")]
+        public StringEnumValue<State> RealEstateTaxState { get => _realEstateTaxState; set => _realEstateTaxState = value; }
         private DirtyValue<int?> _schoolTaxesCushion;
         /// <summary>
         /// No. City Tax Pymts for Cushion [HUD34]
@@ -454,12 +454,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, ReadOnly = true, Description = "Escrow Servicer Zipcode")]
         public string ServicerPostalCode { get => _servicerPostalCode; set => _servicerPostalCode = value; }
-        private DirtyValue<string> _servicerState;
+        private DirtyValue<StringEnumValue<State>> _servicerState;
         /// <summary>
         /// Escrow Servicer State [L633]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, ReadOnly = true, Description = "Escrow Servicer State")]
-        public string ServicerState { get => _servicerState; set => _servicerState = value; }
+        [LoanFieldProperty(ReadOnly = true, Description = "Escrow Servicer State")]
+        public StringEnumValue<State> ServicerState { get => _servicerState; set => _servicerState = value; }
         private DirtyValue<decimal?> _singleLineAnalysis;
         /// <summary>
         /// HUD Single Line Analysis [HUD40]

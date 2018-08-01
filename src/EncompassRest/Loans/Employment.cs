@@ -21,12 +21,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string AddressPostalCode { get => _addressPostalCode; set => _addressPostalCode = value; }
-        private DirtyValue<string> _addressState;
+        private DirtyValue<StringEnumValue<State>> _addressState;
         /// <summary>
         /// Employment AddressState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string AddressState { get => _addressState; set => _addressState = value; }
+        public StringEnumValue<State> AddressState { get => _addressState; set => _addressState = value; }
         private DirtyValue<string> _addressStreetLine1;
         /// <summary>
         /// Employment AddressStreetLine1
@@ -153,12 +152,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? OvertimeAmount { get => _overtimeAmount; set => _overtimeAmount = value; }
-        private DirtyValue<string> _owner;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _owner;
         /// <summary>
         /// Employment Owner
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
-        public string Owner { get => _owner; set => _owner = value; }
+        public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => _owner = value; }
         private DirtyValue<string> _phoneNumber;
         /// <summary>
         /// Employment PhoneNumber

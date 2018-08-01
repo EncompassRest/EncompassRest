@@ -115,7 +115,11 @@ namespace EncompassRest
                 typeof(PropertyFormType),
                 typeof(Conversion),
                 typeof(HmdaLoanPurpose),
-                typeof(PaidToOrBy)
+                typeof(PaidToOrBy),
+                typeof(BorrowerOrCoBorrower),
+                typeof(State),
+                typeof(NonVolAdjustmentType),
+                typeof(HudLoanDataResidencyType)
             };
             s_sharedEnums = new Dictionary<string, HashSet<string>>();
             foreach (var sharedEnumType in sharedEnumTypes)
@@ -154,9 +158,7 @@ namespace EncompassRest
             "AppraisalType"
         };
 
-        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) } };
-
-        private static readonly Dictionary<string, Dictionary<string, string>> s_otherEnums = new Dictionary<string, Dictionary<string, string>>();
+        private static readonly Dictionary<string, string> s_explicitStringEnumValues = new Dictionary<string, string> { { "LoanAssociate.LoanAssociateType", nameof(LoanAssociateType) }, { "AdditionalStateDisclosure.StateCode", nameof(State) } };
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
@@ -183,13 +185,163 @@ namespace EncompassRest
         {
             try
             {
-                LoanSchema loanSchema;
+                Dictionary<string, EntitySchema> entityTypes;
                 using (var client = await TestBaseClass.GetTestClientAsync().ConfigureAwait(false))
                 {
-                    loanSchema = await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false);
+                    entityTypes = (await client.Schema.GetLoanSchemaAsync(true).ConfigureAwait(false)).EntityTypes;
                 }
-                GenerateClassFilesFromSchema(loanSchema, "Loans", "EncompassRest.Loans");
-                GenerateFieldMappings(loanSchema, "Loans");
+                foreach (var pair in s_explicitSchemas)
+                {
+                    var entityName = pair.Key;
+                    if (entityTypes.ContainsKey(entityName))
+                    {
+                        Console.WriteLine($"Can now retrieve schema for {entityName}");
+                    }
+                    else
+                    {
+                        entityTypes.Add(entityName, pair.Value);
+                    }
+                }
+
+                var destinationPath = "Loans";
+                var @namespace = "EncompassRest.Loans";
+                Directory.CreateDirectory(destinationPath);
+
+                var loanEntitySchema = entityTypes["Loan"];
+                var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+                {
+                    { "CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" },
+                    { "CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" }
+                };
+
+                var otherEnums = new Dictionary<string, Dictionary<string, string>>();
+
+                PopulateFieldMappings(destinationPath, @namespace, "Loan", "Loan", loanEntitySchema, null, entityTypes, fields, fieldPatterns, otherEnums);
+
+                entityTypes.Remove("Loan");
+
+                foreach (var pair in entityTypes)
+                {
+                    var entityName = pair.Key;
+                    if (!s_ignoredEntities.Contains(entityName))
+                    {
+                        Console.WriteLine($"{entityName} is not connected to the Loan schema");
+                        GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value, otherEnums);
+                    }
+                }
+
+                var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.Value).ToList();
+                fields = new Dictionary<string, string>();
+                foreach (var pair in orderedFields)
+                {
+                    fields[pair.Key] = pair.Value;
+                }
+
+                var orderedFieldPatterns = fieldPatterns.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
+                fieldPatterns = new Dictionary<string, string>();
+                foreach (var pair in orderedFieldPatterns)
+                {
+                    fieldPatterns[pair.Key] = pair.Value;
+                }
+
+                using (var fs = new FileStream("LoanFields.json", FileMode.Create))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fields);
+                    }
+                }
+
+                using (var fs = new FileStream("LoanFieldPatterns.json", FileMode.Create))
+                {
+                    using (var sw = new StreamWriter(fs))
+                    {
+                        JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fieldPatterns);
+                    }
+                }
+
+                using (var fs = new FileStream("LoanFields.zip", FileMode.Create))
+                {
+                    using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
+                    {
+                        var serializer = JsonSerializer.Create();
+
+                        var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
+                        using (var sw = new StreamWriter(loanFieldsEntry.Open()))
+                        {
+                            serializer.Serialize(sw, fields);
+                        }
+
+                        var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
+                        using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
+                        {
+                            serializer.Serialize(sw, fieldPatterns);
+                        }
+
+                        var virtualFieldsEntry = zip.CreateEntry("VirtualFields.json", CompressionLevel.Optimal);
+                        using (var sw = new StreamWriter(virtualFieldsEntry.Open()))
+                        {
+                            using (var virtualFieldsFs = new FileStream("VirtualFields.json", FileMode.Open))
+                            {
+                                using (var sr = new StreamReader(virtualFieldsFs))
+                                {
+                                    using (var jr = new JsonTextReader(sr))
+                                    {
+                                        var virtualFields = serializer.Deserialize<JArray>(jr);
+                                        serializer.Serialize(sw, virtualFields);
+                                    }
+                                }
+                            }
+                        }
+
+                        var virtualFieldPatternsEntry = zip.CreateEntry("VirtualFieldPatterns.json", CompressionLevel.Optimal);
+                        using (var sw = new StreamWriter(virtualFieldPatternsEntry.Open()))
+                        {
+                            using (var virtualFieldPatternsFs = new FileStream("VirtualFieldPatterns.json", FileMode.Open))
+                            {
+                                using (var sr = new StreamReader(virtualFieldPatternsFs))
+                                {
+                                    using (var jr = new JsonTextReader(sr))
+                                    {
+                                        var virtualFieldPatterns = serializer.Deserialize<JArray>(jr);
+                                        serializer.Serialize(sw, virtualFieldPatterns);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                var otherEnumsAsHashSet = otherEnums.ToDictionary(p => p.Key, p => new HashSet<string>(p.Value.Keys));
+
+                foreach (var enumPair in s_sharedEnums.Concat(otherEnumsAsHashSet))
+                {
+                    foreach (var innerEnumPair in otherEnumsAsHashSet)
+                    {
+                        if (enumPair.Key != innerEnumPair.Key && innerEnumPair.Value.IsSubsetOf(enumPair.Value))
+                        {
+                            if (innerEnumPair.Value.SetEquals(enumPair.Value))
+                            {
+                                Console.WriteLine($"{enumPair.Key} and {innerEnumPair.Key} are equal");
+                            }
+                            else
+                            {
+                                var diff = enumPair.Value.Except(innerEnumPair.Value).ToList();
+                                if (diff.Count <= 2)
+                                {
+                                    Console.WriteLine($"{enumPair.Key} contains all members of {innerEnumPair.Key} but adds {string.Join(", ", diff)}");
+                                }
+                            }
+                        }
+                    }
+                }
+                var enumsPath = $"{destinationPath}\\Enums";
+                Directory.CreateDirectory(enumsPath);
+                foreach (var pair in s_sharedEnums.ToDictionary(p => p.Key, p => p.Value.ToDictionary(s => s, s => (string)null)).Concat(otherEnums))
+                {
+                    GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value);
+                }
             }
             catch (Exception ex)
             {
@@ -199,101 +351,7 @@ namespace EncompassRest
             Console.ReadLine();
         }
 
-        public static void GenerateFieldMappings(LoanSchema loanSchema, string destinationPath)
-        {
-            var loanEntitySchema = loanSchema.EntityTypes["Loan"];
-            var fields = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            var fieldPatterns = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "CX.{0}", "Loan.CustomFields[(FieldName == 'CX.{0}')].StringValue" },
-                { "CUST{0:00}FV", "Loan.CustomFields[(FieldName == 'CUST{0:00}FV')].StringValue" }
-            };
-            PopulateFieldMappings("Loan", loanEntitySchema, null, loanSchema, fields, fieldPatterns);
-
-            var orderedFields = fields.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOfAny(new[] { '.', '[' }))).ThenBy(p => p.Value).ToList();
-            fields = new Dictionary<string, string>();
-            foreach (var pair in orderedFields)
-            {
-                fields[pair.Key] = pair.Value;
-            }
-
-            var orderedFieldPatterns = fieldPatterns.OrderBy(p => p.Value.Substring(0, p.Value.LastIndexOf('.'))).ThenBy(p => p.Value).ToList();
-            fieldPatterns = new Dictionary<string, string>();
-            foreach (var pair in orderedFieldPatterns)
-            {
-                fieldPatterns[pair.Key] = pair.Value;
-            }
-
-            using (var fs = new FileStream("LoanFields.json", FileMode.Create))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fields);
-                }
-            }
-
-            using (var fs = new FileStream("LoanFieldPatterns.json", FileMode.Create))
-            {
-                using (var sw = new StreamWriter(fs))
-                {
-                    JsonSerializer.Create(new JsonSerializerSettings { Formatting = Formatting.Indented }).Serialize(sw, fieldPatterns);
-                }
-            }
-
-            using (var fs = new FileStream("LoanFields.zip", FileMode.Create))
-            {
-                using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
-                {
-                    var serializer = JsonSerializer.Create();
-
-                    var loanFieldsEntry = zip.CreateEntry("LoanFields.json", CompressionLevel.Optimal);
-                    using (var sw = new StreamWriter(loanFieldsEntry.Open()))
-                    {
-                        serializer.Serialize(sw, fields);
-                    }
-
-                    var loanFieldPatternsEntry = zip.CreateEntry("LoanFieldPatterns.json", CompressionLevel.Optimal);
-                    using (var sw = new StreamWriter(loanFieldPatternsEntry.Open()))
-                    {
-                        serializer.Serialize(sw, fieldPatterns);
-                    }
-
-                    var virtualFieldsEntry = zip.CreateEntry("VirtualFields.json", CompressionLevel.Optimal);
-                    using (var sw = new StreamWriter(virtualFieldsEntry.Open()))
-                    {
-                        using (var virtualFieldsFs = new FileStream("VirtualFields.json", FileMode.Open))
-                        {
-                            using (var sr = new StreamReader(virtualFieldsFs))
-                            {
-                                using (var jr = new JsonTextReader(sr))
-                                {
-                                    var virtualFields = serializer.Deserialize<JArray>(jr);
-                                    serializer.Serialize(sw, virtualFields);
-                                }
-                            }
-                        }
-                    }
-
-                    var virtualFieldPatternsEntry = zip.CreateEntry("VirtualFieldPatterns.json", CompressionLevel.Optimal);
-                    using (var sw = new StreamWriter(virtualFieldPatternsEntry.Open()))
-                    {
-                        using (var virtualFieldPatternsFs = new FileStream("VirtualFieldPatterns.json", FileMode.Open))
-                        {
-                            using (var sr = new StreamReader(virtualFieldPatternsFs))
-                            {
-                                using (var jr = new JsonTextReader(sr))
-                                {
-                                    var virtualFieldPatterns = serializer.Deserialize<JArray>(jr);
-                                    serializer.Serialize(sw, virtualFieldPatterns);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        private static void PopulateFieldMappings(string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, LoanSchema loanSchema, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns)
+        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
             foreach (var pair in entitySchema.Properties)
             {
@@ -303,15 +361,15 @@ namespace EncompassRest
                 {
                     fields.Add(propertySchema.FieldId, $"{currentPath}.{propertyName}");
                 }
-                else if (propertySchema.Type == PropertySchemaType.Entity && loanSchema.EntityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
+                else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
-                    loanSchema.EntityTypes.Remove(propertySchema.EntityType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
+                    entityTypes.Remove(propertySchema.EntityType);
+                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.EntityType, $"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
                 }
-                else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && loanSchema.EntityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
+                else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && entityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
                 {
-                    loanSchema.EntityTypes.Remove(propertySchema.ElementType);
-                    PopulateFieldMappings($"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, loanSchema, fields, fieldPatterns);
+                    entityTypes.Remove(propertySchema.ElementType);
+                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.ElementType, $"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
                 }
                 else
                 {
@@ -350,9 +408,41 @@ namespace EncompassRest
                                             fields.Add(fieldId, $"{currentPath}[{intListInstance[0]}].{propertyName}");
                                             break;
                                         case StringListInstance stringListInstance:
+                                            foreach (var (s, i) in stringListInstance.Select((s, i) => (s, i)))
+                                            {
+                                                var property = entitySchema.Properties[listPropertySchema.KeyProperties[i]];
+                                                var allowedValues = property.AllowedValues;
+                                                if (allowedValues == null)
+                                                {
+                                                    allowedValues = new List<FieldOption>();
+                                                    property.AllowedValues = allowedValues;
+                                                }
+                                                var option = new FieldOption(s);
+                                                if (!allowedValues.Contains(option))
+                                                {
+                                                    allowedValues.Add(option);
+                                                }
+                                            }
+
                                             fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringListInstance.Select((s, i) => (s, i)).Where(t => !string.IsNullOrEmpty(t.s)).Select(t => $"{listPropertySchema.KeyProperties[t.i]} == '{t.s}'"))})].{propertyName}");
                                             break;
                                         case StringDictionaryInstance stringDictionaryInstance:
+                                            foreach (var p in stringDictionaryInstance)
+                                            {
+                                                var property = entitySchema.Properties[p.Key];
+                                                var allowedValues = property.AllowedValues;
+                                                if (allowedValues == null)
+                                                {
+                                                    allowedValues = new List<FieldOption>();
+                                                    property.AllowedValues = allowedValues;
+                                                }
+                                                var option = new FieldOption(p.Value);
+                                                if (!allowedValues.Contains(option))
+                                                {
+                                                    allowedValues.Add(option);
+                                                }
+                                            }
+
                                             fields.Add(fieldId, $"{currentPath}[({string.Join(" && ", stringDictionaryInstance.Select(p => $"{p.Key} == '{p.Value}'"))})].{propertyName}");
                                             break;
                                         default:
@@ -368,6 +458,25 @@ namespace EncompassRest
                                     if (colonIndex < 0 || !int.TryParse(fieldInstancePath.Substring(colonIndex + 1), NumberStyles.None, null, out index) || listPropertySchema.InstancePatterns?.TryGetValue(fieldInstancePath.Substring(0, colonIndex), out instancePattern) != true)
                                     {
                                         Console.WriteLine($"[{fieldId}]: {fieldInstancePath}");
+                                    }
+
+                                    if (instancePattern.Match != null)
+                                    {
+                                        foreach (var p in instancePattern.Match)
+                                        {
+                                            var property = entitySchema.Properties[p.Key];
+                                            var allowedValues = property.AllowedValues;
+                                            if (allowedValues == null)
+                                            {
+                                                allowedValues = new List<FieldOption>();
+                                                property.AllowedValues = allowedValues;
+                                            }
+                                            var option = new FieldOption(p.Value);
+                                            if (!allowedValues.Contains(option))
+                                            {
+                                                allowedValues.Add(option);
+                                            }
+                                        }
                                     }
 
                                     fields.Add(fieldId, $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{index}].{propertyName}");
@@ -395,72 +504,37 @@ namespace EncompassRest
                                 var listPropertySchema = previousEntitySchema.Properties[listPropertyName];
 
                                 var instancePattern = listPropertySchema.InstancePatterns[fieldPatternPath];
-                                
+
+                                if (instancePattern.Match != null)
+                                {
+                                    foreach (var p in instancePattern.Match)
+                                    {
+                                        var property = entitySchema.Properties[p.Key];
+                                        var allowedValues = property.AllowedValues;
+                                        if (allowedValues == null)
+                                        {
+                                            allowedValues = new List<FieldOption>();
+                                            property.AllowedValues = allowedValues;
+                                        }
+                                        var option = new FieldOption(p.Value);
+                                        if (!allowedValues.Contains(option))
+                                        {
+                                            allowedValues.Add(option);
+                                        }
+                                    }
+                                }
+
                                 fieldPatterns.Add(fieldPattern.StartsWith("NBOCNB") ? fieldPattern.Replace("NBOCNB", "NBOC{0:00}") : fieldPattern.Replace("NN", "{0:00}"), $"{currentPath.Substring(0, currentPath.LastIndexOf('.'))}.{listPropertyName}{(instancePattern.Match != null ? $"[({string.Join(" && ", instancePattern.Match.Select(p => $"{p.Key} == '{p.Value}'"))})]" : string.Empty)}[{{0}}].{propertyName}");
                             }
                         }
                     }
                 }
             }
+
+            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, entitySchema, otherEnums);
         }
 
-        private static void GenerateClassFilesFromSchema(LoanSchema loanSchema, string destinationPath, string @namespace)
-        {
-            Directory.CreateDirectory(destinationPath);
-            foreach (var pair in loanSchema.EntityTypes)
-            {
-                var entityName = pair.Key;
-                if (!s_ignoredEntities.Contains(entityName))
-                {
-                    GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value);
-                }
-            }
-
-            foreach (var pair in s_explicitSchemas)
-            {
-                var entityName = pair.Key;
-                if (loanSchema.EntityTypes.ContainsKey(entityName))
-                {
-                    Console.WriteLine($"Can now retrieve schema for {entityName}");
-                }
-                else
-                {
-                    GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value);
-                }
-            }
-
-            var otherEnumsAsHashSet = s_otherEnums.ToDictionary(p => p.Key, p => new HashSet<string>(p.Value.Keys));
-
-            foreach (var enumPair in s_sharedEnums.Concat(otherEnumsAsHashSet))
-            {
-                foreach (var innerEnumPair in otherEnumsAsHashSet)
-                {
-                    if (enumPair.Key != innerEnumPair.Key && innerEnumPair.Value.IsSubsetOf(enumPair.Value))
-                    {
-                        if (innerEnumPair.Value.SetEquals(enumPair.Value))
-                        {
-                            Console.WriteLine($"{enumPair.Key} and {innerEnumPair.Key} are equal");
-                        }
-                        else
-                        {
-                            var diff = enumPair.Value.Except(innerEnumPair.Value).ToList();
-                            if (diff.Count <= 2)
-                            {
-                                Console.WriteLine($"{enumPair.Key} contains all members of {innerEnumPair.Key} but adds {string.Join(", ", diff)}");
-                            }
-                        }
-                    }
-                }
-            }
-            var enumsPath = $"{destinationPath}\\Enums";
-            Directory.CreateDirectory(enumsPath);
-            foreach (var pair in s_sharedEnums.ToDictionary(p => p.Key, p => p.Value.ToDictionary(s => s, s => (string)null)).Concat(s_otherEnums))
-            {
-                GenerateEnumFileFromOptions(enumsPath, $"{@namespace}.Enums", pair.Key, pair.Value);
-            }
-        }
-
-        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, EntitySchema entitySchema)
+        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
             var sb = new StringBuilder();
             sb.Append(
@@ -490,7 +564,10 @@ namespace {@namespace}
                     var attributeProperties = new List<string>();
                     if (!string.IsNullOrEmpty(propertySchema.Format))
                     {
-                        attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
+                        if (propertySchema.Format.EnumValue != LoanFieldFormat.STATE)
+                        {
+                            attributeProperties.Add($"Format = LoanFieldFormat.{propertySchema.Format.EnumValue?.GetName()}");
+                        }
                     }
                     else
                     {
@@ -510,8 +587,11 @@ namespace {@namespace}
                         attributeProperties.Add($@"Description = ""{propertySchema.Description.Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                     }
                     var propertyType = GetPropertyOrElementType(entityName, propertyName, propertySchema, out var isEntity, out var isList);
-                    string enumName = null;
-                    if (propertySchema.AllowedValues?.Count > 0)
+                    if (s_explicitStringEnumValues.TryGetValue(entityPropertyName, out var enumName))
+                    {
+                        propertyType = $"StringEnumValue<{enumName}>";
+                    }
+                    else if (propertySchema.AllowedValues?.Count > 0)
                     {
                         if (propertyType == "string")
                         {
@@ -554,7 +634,7 @@ namespace {@namespace}
                             if (enumName == null)
                             {
                                 enumName = GetEnumName(entityName, propertyName);
-                                if (s_otherEnums.TryGetValue(enumName, out var enumValues))
+                                if (otherEnums.TryGetValue(enumName, out var enumValues))
                                 {
                                     Console.WriteLine($"{entityName} Duplicate {enumName}: `{string.Join(", ", optionValues.Keys)}` - `{string.Join(", ", enumValues.Keys)}`");
                                 }
@@ -564,7 +644,7 @@ namespace {@namespace}
                                 }
                                 else
                                 {
-                                    s_otherEnums.Add(enumName, optionValues);
+                                    otherEnums.Add(enumName, optionValues);
                                 }
                             }
                             propertyType = $"StringEnumValue<{enumName}>";
@@ -585,10 +665,6 @@ namespace {@namespace}
                                 attributeProperties.Add($@"OptionsJson = ""{JsonConvert.SerializeObject(optionValues).Replace("\\", "\\\\").Replace("\"", "\\\"")}""");
                             }
                         }
-                    }
-                    if (enumName != null || s_explicitStringEnumValues.TryGetValue(entityPropertyName, out enumName))
-                    {
-                        propertyType = $"StringEnumValue<{enumName}>";
                     }
                     var elementType = propertyType;
                     var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);
@@ -780,6 +856,11 @@ namespace {@namespace}
         {
             isEntity = false;
             isList = false;
+            if (propertySchema.Format.EnumValue == LoanFieldFormat.STATE)
+            {
+                return "StringEnumValue<State>";
+            }
+
             var propertyType = propertySchema.Type;
             switch (propertyType.EnumValue)
             {

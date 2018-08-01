@@ -156,12 +156,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Mortgage Property Request Date")]
         public DateTime? RequestDate { get => _requestDate; set => _requestDate = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Mortgage Property State [FMNN07]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Mortgage Property State")]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(Description = "Mortgage Property State")]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<string> _streetAddress;
         /// <summary>
         /// Mortgage Property Address [FMNN04]

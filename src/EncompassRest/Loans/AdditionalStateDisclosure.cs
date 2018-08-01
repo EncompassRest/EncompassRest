@@ -10,11 +10,11 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class AdditionalStateDisclosure : ExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _disclosureName;
+        private DirtyValue<StringEnumValue<DisclosureName>> _disclosureName;
         /// <summary>
         /// AdditionalStateDisclosure DisclosureName
         /// </summary>
-        public string DisclosureName { get => _disclosureName; set => _disclosureName = value; }
+        public StringEnumValue<DisclosureName> DisclosureName { get => _disclosureName; set => _disclosureName = value; }
         private DirtyValue<string> _disclosureValue;
         /// <summary>
         /// AdditionalStateDisclosure DisclosureValue
@@ -25,11 +25,11 @@ namespace EncompassRest.Loans
         /// AdditionalStateDisclosure Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<string> _stateCode;
+        private DirtyValue<StringEnumValue<State>> _stateCode;
         /// <summary>
         /// AdditionalStateDisclosure StateCode
         /// </summary>
-        public string StateCode { get => _stateCode; set => _stateCode = value; }
+        public StringEnumValue<State> StateCode { get => _stateCode; set => _stateCode = value; }
         internal override bool DirtyInternal
         {
             get => _disclosureName.Dirty

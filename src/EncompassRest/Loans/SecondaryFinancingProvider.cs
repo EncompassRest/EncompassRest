@@ -21,11 +21,11 @@ namespace EncompassRest.Loans
         /// SecondaryFinancingProvider Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<string> _secondaryFinancingProviderType;
+        private DirtyValue<StringEnumValue<SecondaryFinancingProviderType>> _secondaryFinancingProviderType;
         /// <summary>
         /// SecondaryFinancingProvider SecondaryFinancingProviderType
         /// </summary>
-        public string SecondaryFinancingProviderType { get => _secondaryFinancingProviderType; set => _secondaryFinancingProviderType = value; }
+        public StringEnumValue<SecondaryFinancingProviderType> SecondaryFinancingProviderType { get => _secondaryFinancingProviderType; set => _secondaryFinancingProviderType = value; }
         private DirtyValue<bool?> _sellerFundedDapIndicator;
         /// <summary>
         /// HUD 92900 LT Seller Funded DAP [3008]

@@ -52,12 +52,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Disclosure Commit Issued By Zip")]
         public string CommitmentIssuedByPostalCode { get => _commitmentIssuedByPostalCode; set => _commitmentIssuedByPostalCode = value; }
-        private DirtyValue<string> _commitmentIssuedByState;
+        private DirtyValue<StringEnumValue<State>> _commitmentIssuedByState;
         /// <summary>
         /// Disclosure Commit Issued By State [NOTICES.X35]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Disclosure Commit Issued By State")]
-        public string CommitmentIssuedByState { get => _commitmentIssuedByState; set => _commitmentIssuedByState = value; }
+        [LoanFieldProperty(Description = "Disclosure Commit Issued By State")]
+        public StringEnumValue<State> CommitmentIssuedByState { get => _commitmentIssuedByState; set => _commitmentIssuedByState = value; }
         private DirtyValue<StringEnumValue<YOrN>> _consumerHandbookOnAdjustableRateMortgages;
         /// <summary>
         /// Disclosure Consumer/ARM Handbook [NOTICES.X19]
@@ -118,12 +118,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Disclosure ECOA Zip")]
         public string EcoaPostalCode { get => _ecoaPostalCode; set => _ecoaPostalCode = value; }
-        private DirtyValue<string> _ecoaState;
+        private DirtyValue<StringEnumValue<State>> _ecoaState;
         /// <summary>
         /// Disclosure ECOA State [NOTICES.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Disclosure ECOA State")]
-        public string EcoaState { get => _ecoaState; set => _ecoaState = value; }
+        [LoanFieldProperty(Description = "Disclosure ECOA State")]
+        public StringEnumValue<State> EcoaState { get => _ecoaState; set => _ecoaState = value; }
         private DirtyValue<string> _fairLendingNoticeDescription1;
         /// <summary>
         /// Disclosure Fair Lending Contact 1 [NOTICES.X20]

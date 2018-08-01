@@ -62,6 +62,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 HistoryIndicator
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? HistoryIndicator { get => _historyIndicator; set => _historyIndicator = value; }
         private DirtyValue<string> _id;
         /// <summary>
@@ -177,12 +178,11 @@ namespace EncompassRest.Loans
         /// Tax4506 ReturnCity [IRS4506.X42]
         /// </summary>
         public string ReturnCity { get => _returnCity; set => _returnCity = value; }
-        private DirtyValue<string> _returnState;
+        private DirtyValue<StringEnumValue<State>> _returnState;
         /// <summary>
         /// Tax4506 ReturnState [IRS4506.X43]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string ReturnState { get => _returnState; set => _returnState = value; }
+        public StringEnumValue<State> ReturnState { get => _returnState; set => _returnState = value; }
         private DirtyValue<bool?> _returnTranscript;
         /// <summary>
         /// Tax4506 ReturnTranscript [IRS4506.X46]
@@ -227,12 +227,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE)]
         public string SendPhone { get => _sendPhone; set => _sendPhone = value; }
-        private DirtyValue<string> _sendState;
+        private DirtyValue<StringEnumValue<State>> _sendState;
         /// <summary>
         /// Tax4506 SendState [IRS4506.X12]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string SendState { get => _sendState; set => _sendState = value; }
+        public StringEnumValue<State> SendState { get => _sendState; set => _sendState = value; }
         private DirtyValue<string> _sendZip;
         /// <summary>
         /// Tax4506 SendZip [IRS4506.X13]
@@ -275,12 +274,11 @@ namespace EncompassRest.Loans
         /// Tax4506 SSN [IRS4506.X4]
         /// </summary>
         public string SSN { get => _sSN; set => _sSN = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Tax4506 State [IRS4506.X37]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string State { get => _state; set => _state = value; }
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<int?> _tax4506Index;
         /// <summary>
         /// Tax4506 Tax4506Index
@@ -290,6 +288,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Tax4506 Tax4506TIndicator
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? Tax4506TIndicator { get => _tax4506TIndicator; set => _tax4506TIndicator = value; }
         private DirtyValue<string> _taxFormNumber;
         /// <summary>

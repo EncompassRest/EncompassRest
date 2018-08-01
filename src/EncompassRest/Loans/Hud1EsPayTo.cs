@@ -73,6 +73,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Hud1EsPayTo Hud1EsPayToIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\"}")]
         public int? Hud1EsPayToIndex { get => _hud1EsPayToIndex; set => _hud1EsPayToIndex = value; }
         private DirtyValue<string> _id;
         /// <summary>
@@ -134,12 +135,11 @@ namespace EncompassRest.Loans
         /// Hud1EsPayTo RenewalDate
         /// </summary>
         public DateTime? RenewalDate { get => _renewalDate; set => _renewalDate = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Hud1EsPayTo State
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string State { get => _state; set => _state = value; }
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         internal override bool DirtyInternal
         {
             get => _address.Dirty

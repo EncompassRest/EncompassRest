@@ -455,12 +455,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Rate Lock Comparison Investor Program Code")]
         public string CompInvestorProgramCode { get => _compInvestorProgramCode; set => _compInvestorProgramCode = value; }
-        private DirtyValue<string> _compInvestorState;
+        private DirtyValue<StringEnumValue<State>> _compInvestorState;
         /// <summary>
         /// Rate Lock Comparison Side Investor State [3828]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Rate Lock Comparison Side Investor State")]
-        public string CompInvestorState { get => _compInvestorState; set => _compInvestorState = value; }
+        [LoanFieldProperty(Description = "Rate Lock Comparison Side Investor State")]
+        public StringEnumValue<State> CompInvestorState { get => _compInvestorState; set => _compInvestorState = value; }
         private DirtyValue<string> _compInvestorTemplateName;
         /// <summary>
         /// Rate Lock Comparison Investor Template Name [3838]
@@ -1484,12 +1484,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Correspondent Purchase Advice Warehouse Bank Self - Funder Indicator")]
         public bool? CorrespondentWarehouseBankSelfFunderIndicator { get => _correspondentWarehouseBankSelfFunderIndicator; set => _correspondentWarehouseBankSelfFunderIndicator = value; }
-        private DirtyValue<string> _correspondentWarehouseBankState;
+        private DirtyValue<StringEnumValue<State>> _correspondentWarehouseBankState;
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank State [3951]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Correspondent Purchase Advice Warehouse Bank State")]
-        public string CorrespondentWarehouseBankState { get => _correspondentWarehouseBankState; set => _correspondentWarehouseBankState = value; }
+        [LoanFieldProperty(Description = "Correspondent Purchase Advice Warehouse Bank State")]
+        public StringEnumValue<State> CorrespondentWarehouseBankState { get => _correspondentWarehouseBankState; set => _correspondentWarehouseBankState = value; }
         private DirtyValue<bool?> _correspondentWarehouseBankTriPartyContractIndicator;
         /// <summary>
         /// Correspondent Purchase Advice Warehouse Bank Tri - Party Contract Indicator [3957]
@@ -2077,12 +2077,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Rate Lock Sell Side Investor Program Code")]
         public string InvestorProgramCode { get => _investorProgramCode; set => _investorProgramCode = value; }
-        private DirtyValue<string> _investorState;
+        private DirtyValue<StringEnumValue<State>> _investorState;
         /// <summary>
         /// Rate Lock Sell Side Investor State [2283]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Rate Lock Sell Side Investor State")]
-        public string InvestorState { get => _investorState; set => _investorState = value; }
+        [LoanFieldProperty(Description = "Rate Lock Sell Side Investor State")]
+        public StringEnumValue<State> InvestorState { get => _investorState; set => _investorState = value; }
         private DirtyValue<DateTime?> _investorTargetDeliveryDate;
         /// <summary>
         /// Rate Lock Sell Side Target Delivery Date [2206]
@@ -2963,12 +2963,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Lock Request Subject Property Zip")]
         public string SubjectPropertyPostalCode { get => _subjectPropertyPostalCode; set => _subjectPropertyPostalCode = value; }
-        private DirtyValue<string> _subjectPropertyState;
+        private DirtyValue<StringEnumValue<State>> _subjectPropertyState;
         /// <summary>
         /// Lock Request Subject Property State [2945]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Lock Request Subject Property State")]
-        public string SubjectPropertyState { get => _subjectPropertyState; set => _subjectPropertyState = value; }
+        [LoanFieldProperty(Description = "Lock Request Subject Property State")]
+        public StringEnumValue<State> SubjectPropertyState { get => _subjectPropertyState; set => _subjectPropertyState = value; }
         private DirtyValue<string> _subjectPropertyStreetAddress;
         /// <summary>
         /// Lock Request Subject Property Address [2942]

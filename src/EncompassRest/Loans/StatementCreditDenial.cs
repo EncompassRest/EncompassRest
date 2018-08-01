@@ -190,12 +190,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Denial ECOA Zip")]
         public string EcoaPostalCode { get => _ecoaPostalCode; set => _ecoaPostalCode = value; }
-        private DirtyValue<string> _ecoaState;
+        private DirtyValue<StringEnumValue<State>> _ecoaState;
         /// <summary>
         /// Denial ECOA State [ECOA_ST]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Denial ECOA State")]
-        public string EcoaState { get => _ecoaState; set => _ecoaState = value; }
+        [LoanFieldProperty(Description = "Denial ECOA State")]
+        public StringEnumValue<State> EcoaState { get => _ecoaState; set => _ecoaState = value; }
         private DirtyValue<bool?> _excessiveObligations;
         /// <summary>
         /// Denial Credit - Excessive Obligations [DENIAL.X35]
@@ -309,12 +309,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "File Contacts Zip")]
         public string LenderInvestorPostalCode { get => _lenderInvestorPostalCode; set => _lenderInvestorPostalCode = value; }
-        private DirtyValue<string> _lenderInvestorState;
+        private DirtyValue<StringEnumValue<State>> _lenderInvestorState;
         /// <summary>
         /// File Contacts State [DENIAL.X94]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "File Contacts State")]
-        public string LenderInvestorState { get => _lenderInvestorState; set => _lenderInvestorState = value; }
+        [LoanFieldProperty(Description = "File Contacts State")]
+        public StringEnumValue<State> LenderInvestorState { get => _lenderInvestorState; set => _lenderInvestorState = value; }
         private DirtyValue<bool?> _lengthOfEmployment;
         /// <summary>
         /// Denial Empl Status - Length [DENIAL.X43]

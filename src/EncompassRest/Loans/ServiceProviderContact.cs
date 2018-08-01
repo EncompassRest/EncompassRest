@@ -229,12 +229,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Settlement Service Provider Cannot Shop For")]
         public bool? ShopFor { get => _shopFor; set => _shopFor = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Settlement Service Provider State [SPNN05]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Settlement Service Provider State")]
-        public string State { get => _state; set => _state = value; }
+        [LoanFieldProperty(Description = "Settlement Service Provider State")]
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<string> _webUrl;
         /// <summary>
         /// Settlement Service Provider Web Url [SPNN12]

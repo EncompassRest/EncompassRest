@@ -32,12 +32,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string AddressPostalCode { get => _addressPostalCode; set => _addressPostalCode = value; }
-        private DirtyValue<string> _addressState;
+        private DirtyValue<StringEnumValue<State>> _addressState;
         /// <summary>
         /// Residence AddressState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string AddressState { get => _addressState; set => _addressState = value; }
+        public StringEnumValue<State> AddressState { get => _addressState; set => _addressState = value; }
         private DirtyValue<string> _addressStreetLine1;
         /// <summary>
         /// Residence AddressStreetLine1
@@ -49,11 +48,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string AltId { get => _altId; set => _altId = value; }
-        private DirtyValue<string> _applicantType;
+        private DirtyValue<StringEnumValue<BorrowerOrCoBorrower>> _applicantType;
         /// <summary>
         /// Residence ApplicantType
         /// </summary>
-        public string ApplicantType { get => _applicantType; set => _applicantType = value; }
+        public StringEnumValue<BorrowerOrCoBorrower> ApplicantType { get => _applicantType; set => _applicantType = value; }
         private EntityReference _contact;
         /// <summary>
         /// Residence Contact
@@ -127,12 +126,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string LandlordPostalCode { get => _landlordPostalCode; set => _landlordPostalCode = value; }
-        private DirtyValue<string> _landlordState;
+        private DirtyValue<StringEnumValue<State>> _landlordState;
         /// <summary>
         /// Residence LandlordState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string LandlordState { get => _landlordState; set => _landlordState = value; }
+        public StringEnumValue<State> LandlordState { get => _landlordState; set => _landlordState = value; }
         private DirtyValue<string> _landlordStreet;
         /// <summary>
         /// Residence LandlordStreet
@@ -142,6 +140,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Residence MailingAddressIndicator
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"false\":\"false\",\"true\":\"true\"}")]
         public bool? MailingAddressIndicator { get => _mailingAddressIndicator; set => _mailingAddressIndicator = value; }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         /// <summary>
@@ -174,11 +173,11 @@ namespace EncompassRest.Loans
         /// Residence ResidencyBasisType
         /// </summary>
         public string ResidencyBasisType { get => _residencyBasisType; set => _residencyBasisType = value; }
-        private DirtyValue<string> _residencyType;
+        private DirtyValue<StringEnumValue<ResidencyType>> _residencyType;
         /// <summary>
         /// Residence ResidencyType
         /// </summary>
-        public string ResidencyType { get => _residencyType; set => _residencyType = value; }
+        public StringEnumValue<ResidencyType> ResidencyType { get => _residencyType; set => _residencyType = value; }
         private DirtyValue<string> _title;
         /// <summary>
         /// Residence Title

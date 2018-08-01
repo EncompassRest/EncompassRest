@@ -1584,12 +1584,12 @@ namespace EncompassRest.Loans
         /// Loan ReferralSourceContact
         /// </summary>
         public EntityReference ReferralSourceContact { get => _referralSourceContact ?? (_referralSourceContact = new EntityReference()); set => _referralSourceContact = value; }
-        private DirtyValue<string> _referralState;
+        private DirtyValue<StringEnumValue<State>> _referralState;
         /// <summary>
         /// File Contacts Referral State [1832]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "File Contacts Referral State")]
-        public string ReferralState { get => _referralState; set => _referralState = value; }
+        [LoanFieldProperty(Description = "File Contacts Referral State")]
+        public StringEnumValue<State> ReferralState { get => _referralState; set => _referralState = value; }
         private DirtyValue<decimal?> _refinanceIncludingDebtsToBePaidOffAmount;
         /// <summary>
         /// Trans Details Refinance [1092]

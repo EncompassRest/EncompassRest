@@ -279,12 +279,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Intrm Serv Mailing Address ZIP Code")]
         public string MailingPostalCode { get => _mailingPostalCode; set => _mailingPostalCode = value; }
-        private DirtyValue<string> _mailingState;
+        private DirtyValue<StringEnumValue<State>> _mailingState;
         /// <summary>
         /// Intrm Serv Mailing Address State [SERVICE.X6]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Intrm Serv Mailing Address State")]
-        public string MailingState { get => _mailingState; set => _mailingState = value; }
+        [LoanFieldProperty(Description = "Intrm Serv Mailing Address State")]
+        public StringEnumValue<State> MailingState { get => _mailingState; set => _mailingState = value; }
         private DirtyValue<string> _mailingStreetAddress;
         /// <summary>
         /// Intrm Serv Mailing Address Street [SERVICE.X4]

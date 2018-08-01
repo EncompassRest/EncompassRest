@@ -124,12 +124,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "HMDA Contact Person City")]
         public string ContactOfficeCity { get => _contactOfficeCity; set => _contactOfficeCity = value; }
-        private DirtyValue<string> _contactOfficeState;
+        private DirtyValue<StringEnumValue<State>> _contactOfficeState;
         /// <summary>
         /// HMDA Contact Person State [HMDA.X65]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HMDA Contact Person State")]
-        public string ContactOfficeState { get => _contactOfficeState; set => _contactOfficeState = value; }
+        [LoanFieldProperty(Description = "HMDA Contact Person State")]
+        public StringEnumValue<State> ContactOfficeState { get => _contactOfficeState; set => _contactOfficeState = value; }
         private DirtyValue<string> _contactOfficeStreetAddress;
         /// <summary>
         /// HMDA Contact Person Street Address [HMDA.X63]
@@ -286,12 +286,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "HMDA Property City")]
         public string HmdaPropertyCity { get => _hmdaPropertyCity; set => _hmdaPropertyCity = value; }
-        private DirtyValue<string> _hmdaPropertyState;
+        private DirtyValue<StringEnumValue<State>> _hmdaPropertyState;
         /// <summary>
         /// HMDA Property State [HMDA.X90]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HMDA Property State")]
-        public string HmdaPropertyState { get => _hmdaPropertyState; set => _hmdaPropertyState = value; }
+        [LoanFieldProperty(Description = "HMDA Property State")]
+        public StringEnumValue<State> HmdaPropertyState { get => _hmdaPropertyState; set => _hmdaPropertyState = value; }
         private DirtyValue<bool?> _hmdaPropertyValueNotReliedUponIndicator;
         /// <summary>
         /// Property Value Not Relied Upon [HMDA.X108]
@@ -489,12 +489,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "HMDA Parent Contact Name")]
         public string ParentName { get => _parentName; set => _parentName = value; }
-        private DirtyValue<string> _parentState;
+        private DirtyValue<StringEnumValue<State>> _parentState;
         /// <summary>
         /// HMDA Parent State [HMDA.X75]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HMDA Parent State")]
-        public string ParentState { get => _parentState; set => _parentState = value; }
+        [LoanFieldProperty(Description = "HMDA Parent State")]
+        public StringEnumValue<State> ParentState { get => _parentState; set => _parentState = value; }
         private DirtyValue<string> _parentZip;
         /// <summary>
         /// HMDA Parent Zipcode [HMDA.X76]

@@ -10,11 +10,11 @@ namespace EncompassRest.Loans
     /// </summary>
     public sealed partial class PriceAdjustment : ExtensibleObject, IIdentifiable
     {
-        private DirtyValue<string> _adjustmentType;
+        private DirtyValue<StringEnumValue<AdjustmentType>> _adjustmentType;
         /// <summary>
         /// PriceAdjustment AdjustmentType
         /// </summary>
-        public string AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }
+        public StringEnumValue<AdjustmentType> AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }
         private DirtyValue<string> _description;
         /// <summary>
         /// PriceAdjustment Description
@@ -26,11 +26,11 @@ namespace EncompassRest.Loans
         /// PriceAdjustment Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        private DirtyValue<string> _priceAdjustmentType;
+        private DirtyValue<StringEnumValue<PriceAdjustmentType>> _priceAdjustmentType;
         /// <summary>
         /// PriceAdjustment PriceAdjustmentType
         /// </summary>
-        public string PriceAdjustmentType { get => _priceAdjustmentType; set => _priceAdjustmentType = value; }
+        public StringEnumValue<PriceAdjustmentType> PriceAdjustmentType { get => _priceAdjustmentType; set => _priceAdjustmentType = value; }
         private DirtyValue<decimal?> _rate;
         /// <summary>
         /// PriceAdjustment Rate

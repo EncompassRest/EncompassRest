@@ -196,12 +196,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "HUD Property Improve Dealer/Contractor Zip")]
         public string DealerContractorPostalCode { get => _dealerContractorPostalCode; set => _dealerContractorPostalCode = value; }
-        private DirtyValue<string> _dealerContractorState;
+        private DirtyValue<StringEnumValue<State>> _dealerContractorState;
         /// <summary>
         /// HUD Property Improve Dealer/Contractor State [CAPIAP.X146]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HUD Property Improve Dealer/Contractor State")]
-        public string DealerContractorState { get => _dealerContractorState; set => _dealerContractorState = value; }
+        [LoanFieldProperty(Description = "HUD Property Improve Dealer/Contractor State")]
+        public StringEnumValue<State> DealerContractorState { get => _dealerContractorState; set => _dealerContractorState = value; }
         private DirtyValue<decimal?> _discountPointsAmount;
         /// <summary>
         /// FHA 203k B12 Discount Points Amt [MAX23K.X27]
@@ -651,12 +651,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "HUD Property Improve Owner Zip")]
         public string PropertyOwnerPostalCode { get => _propertyOwnerPostalCode; set => _propertyOwnerPostalCode = value; }
-        private DirtyValue<string> _propertyOwnerState;
+        private DirtyValue<StringEnumValue<State>> _propertyOwnerState;
         /// <summary>
         /// HUD Property Improve Owner State [CAPIAP.X52]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "HUD Property Improve Owner State")]
-        public string PropertyOwnerState { get => _propertyOwnerState; set => _propertyOwnerState = value; }
+        [LoanFieldProperty(Description = "HUD Property Improve Owner State")]
+        public StringEnumValue<State> PropertyOwnerState { get => _propertyOwnerState; set => _propertyOwnerState = value; }
         private DirtyValue<StringEnumValue<PropertyToBeImproved>> _propertyToBeImproved;
         /// <summary>
         /// HUD Property Improve HUD Property Type [CAPIAP.X60]
@@ -729,12 +729,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "HUD 92900 LT Rental Cash Flow Balance")]
         public decimal? RentalCashFlowBalance { get => _rentalCashFlowBalance; set => _rentalCashFlowBalance = value; }
-        private DirtyValue<StringEnumValue<ResidencyType>> _residencyType;
+        private DirtyValue<StringEnumValue<HudLoanDataResidencyType>> _residencyType;
         /// <summary>
         /// FHA 203k Owner Type [MAX23K.X69]
         /// </summary>
         [LoanFieldProperty(Description = "FHA 203k Owner Type")]
-        public StringEnumValue<ResidencyType> ResidencyType { get => _residencyType; set => _residencyType = value; }
+        public StringEnumValue<HudLoanDataResidencyType> ResidencyType { get => _residencyType; set => _residencyType = value; }
         private DirtyValue<StringEnumValue<HudLoanDataRiskClass>> _riskClass;
         /// <summary>
         /// HUD 92900 LT Risk Class [3029]

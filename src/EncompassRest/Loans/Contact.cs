@@ -52,12 +52,11 @@ namespace EncompassRest.Loans
         /// Contact BizLicenseAuthName
         /// </summary>
         public string BizLicenseAuthName { get => _bizLicenseAuthName; set => _bizLicenseAuthName = value; }
-        private DirtyValue<string> _bizLicenseAuthStateCode;
+        private DirtyValue<StringEnumValue<State>> _bizLicenseAuthStateCode;
         /// <summary>
         /// Contact BizLicenseAuthStateCode
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string BizLicenseAuthStateCode { get => _bizLicenseAuthStateCode; set => _bizLicenseAuthStateCode = value; }
+        public StringEnumValue<State> BizLicenseAuthStateCode { get => _bizLicenseAuthStateCode; set => _bizLicenseAuthStateCode = value; }
         private DirtyValue<StringEnumValue<LicenseAuthType>> _bizLicenseAuthType;
         /// <summary>
         /// Contact BizLicenseAuthType
@@ -363,12 +362,12 @@ namespace EncompassRest.Loans
         /// Contact LicenseExempt
         /// </summary>
         public bool? LicenseExempt { get => _licenseExempt; set => _licenseExempt = value; }
-        private DirtyValue<string> _licenseHomeState;
+        private DirtyValue<StringEnumValue<State>> _licenseHomeState;
         /// <summary>
         /// File Contacts-Lender License Home State [3896]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "File Contacts-Lender License Home State")]
-        public string LicenseHomeState { get => _licenseHomeState; set => _licenseHomeState = value; }
+        [LoanFieldProperty(Description = "File Contacts-Lender License Home State")]
+        public StringEnumValue<State> LicenseHomeState { get => _licenseHomeState; set => _licenseHomeState = value; }
         private DirtyValue<string> _licenseType;
         /// <summary>
         /// Contact LicenseType
@@ -443,12 +442,11 @@ namespace EncompassRest.Loans
         /// Contact PersonalLicenseAuthName
         /// </summary>
         public string PersonalLicenseAuthName { get => _personalLicenseAuthName; set => _personalLicenseAuthName = value; }
-        private DirtyValue<string> _personalLicenseAuthStateCode;
+        private DirtyValue<StringEnumValue<State>> _personalLicenseAuthStateCode;
         /// <summary>
         /// Contact PersonalLicenseAuthStateCode
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string PersonalLicenseAuthStateCode { get => _personalLicenseAuthStateCode; set => _personalLicenseAuthStateCode = value; }
+        public StringEnumValue<State> PersonalLicenseAuthStateCode { get => _personalLicenseAuthStateCode; set => _personalLicenseAuthStateCode = value; }
         private DirtyValue<StringEnumValue<LicenseAuthType>> _personalLicenseAuthType;
         /// <summary>
         /// Contact PersonalLicenseAuthType
@@ -510,12 +508,11 @@ namespace EncompassRest.Loans
         /// Contact SettlementAgent
         /// </summary>
         public bool? SettlementAgent { get => _settlementAgent; set => _settlementAgent = value; }
-        private DirtyValue<string> _state;
+        private DirtyValue<StringEnumValue<State>> _state;
         /// <summary>
         /// Contact State
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string State { get => _state; set => _state = value; }
+        public StringEnumValue<State> State { get => _state; set => _state = value; }
         private DirtyValue<string> _taxID;
         /// <summary>
         /// Contact TaxID

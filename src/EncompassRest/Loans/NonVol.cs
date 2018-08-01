@@ -28,12 +28,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Adjustment Other Description")]
         public string AdjustmentOtherDescription { get => _adjustmentOtherDescription; set => _adjustmentOtherDescription = value; }
-        private DirtyValue<StringEnumValue<AdjustmentType>> _adjustmentType;
+        private DirtyValue<StringEnumValue<NonVolAdjustmentType>> _adjustmentType;
         /// <summary>
         /// UCD Adjustment Type [UNFLNN01]
         /// </summary>
         [LoanFieldProperty(Description = "UCD Adjustment Type")]
-        public StringEnumValue<AdjustmentType> AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }
+        public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }
         private DirtyValue<bool?> _includedIndicator;
         /// <summary>
         /// Liability Will be Paid Off and will be included [UNFLNN05]

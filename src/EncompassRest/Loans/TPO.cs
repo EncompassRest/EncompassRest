@@ -100,12 +100,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TPO Branch Rating")]
         public string BranchRating { get => _branchRating; set => _branchRating = value; }
-        private DirtyValue<string> _branchState;
+        private DirtyValue<StringEnumValue<State>> _branchState;
         /// <summary>
         /// TPO Branch Address State [TPO.X44]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "TPO Branch Address State")]
-        public string BranchState { get => _branchState; set => _branchState = value; }
+        [LoanFieldProperty(Description = "TPO Branch Address State")]
+        public StringEnumValue<State> BranchState { get => _branchState; set => _branchState = value; }
         private DirtyValue<string> _branchZip;
         /// <summary>
         /// TPO Branch Address Zipcode [TPO.X45]
@@ -172,12 +172,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TPO Correspondent File Contact SR/AE User ID")]
         public string CFCSRAEUserName { get => _cFCSRAEUserName; set => _cFCSRAEUserName = value; }
-        private DirtyValue<string> _cFCState;
+        private DirtyValue<StringEnumValue<State>> _cFCState;
         /// <summary>
         /// TPO Correspondent File Contact Address State [TPO.X104]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "TPO Correspondent File Contact Address State")]
-        public string CFCState { get => _cFCState; set => _cFCState = value; }
+        [LoanFieldProperty(Description = "TPO Correspondent File Contact Address State")]
+        public StringEnumValue<State> CFCState { get => _cFCState; set => _cFCState = value; }
         private DirtyValue<string> _cFCStatus;
         /// <summary>
         /// TPO Correspondent File Contact Status [TPO.X98]
@@ -280,12 +280,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TPO Company Rating")]
         public string CompanyRating { get => _companyRating; set => _companyRating = value; }
-        private DirtyValue<string> _companyState;
+        private DirtyValue<StringEnumValue<State>> _companyState;
         /// <summary>
         /// TPO Company Address State [TPO.X20]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "TPO Company Address State")]
-        public string CompanyState { get => _companyState; set => _companyState = value; }
+        [LoanFieldProperty(Description = "TPO Company Address State")]
+        public StringEnumValue<State> CompanyState { get => _companyState; set => _companyState = value; }
         private DirtyValue<string> _companyZip;
         /// <summary>
         /// TPO Company Address Zipcode [TPO.X21]
@@ -400,12 +400,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TPO Loan Officer Notes")]
         public string LONotes { get => _lONotes; set => _lONotes = value; }
-        private DirtyValue<string> _lOState;
+        private DirtyValue<StringEnumValue<State>> _lOState;
         /// <summary>
         /// TPO Loan Officer Address State [TPO.X70]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "TPO Loan Officer Address State")]
-        public string LOState { get => _lOState; set => _lOState = value; }
+        [LoanFieldProperty(Description = "TPO Loan Officer Address State")]
+        public StringEnumValue<State> LOState { get => _lOState; set => _lOState = value; }
         private DirtyValue<string> _lOStatus;
         /// <summary>
         /// TPO Loan Officer Status [TPO.X64]
@@ -484,12 +484,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TPO Loan Processor Notes")]
         public string LPNotes { get => _lPNotes; set => _lPNotes = value; }
-        private DirtyValue<string> _lPState;
+        private DirtyValue<StringEnumValue<State>> _lPState;
         /// <summary>
         /// TPO Loan Processor Address State [TPO.X83]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "TPO Loan Processor Address State")]
-        public string LPState { get => _lPState; set => _lPState = value; }
+        [LoanFieldProperty(Description = "TPO Loan Processor Address State")]
+        public StringEnumValue<State> LPState { get => _lPState; set => _lPState = value; }
         private DirtyValue<string> _lPStatus;
         /// <summary>
         /// TPO Loan Processor Status [TPO.X77]

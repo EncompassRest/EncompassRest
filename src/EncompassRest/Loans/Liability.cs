@@ -19,6 +19,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Liability AccountIndicator
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"true\"}")]
         public bool? AccountIndicator { get => _accountIndicator; set => _accountIndicator = value; }
         private DirtyValue<string> _attention;
         /// <summary>
@@ -72,12 +73,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Liability Creditor Zipcode")]
         public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => _holderAddressPostalCode = value; }
-        private DirtyValue<string> _holderAddressState;
+        private DirtyValue<StringEnumValue<State>> _holderAddressState;
         /// <summary>
         /// Liability Creditor State [FLNN06]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Liability Creditor State")]
-        public string HolderAddressState { get => _holderAddressState; set => _holderAddressState = value; }
+        [LoanFieldProperty(Description = "Liability Creditor State")]
+        public StringEnumValue<State> HolderAddressState { get => _holderAddressState; set => _holderAddressState = value; }
         private DirtyValue<string> _holderAddressStreetLine1;
         /// <summary>
         /// Liability Creditor Address [FLNN04]

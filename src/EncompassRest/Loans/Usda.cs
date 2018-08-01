@@ -214,12 +214,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "USDA - Child Care Provider - Name")]
         public string ChildCareProviderProviderName { get => _childCareProviderProviderName; set => _childCareProviderProviderName = value; }
-        private DirtyValue<string> _childCareProviderState;
+        private DirtyValue<StringEnumValue<State>> _childCareProviderState;
         /// <summary>
         /// USDA - Child Care Provider - State [USDA.X101]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "USDA - Child Care Provider - State")]
-        public string ChildCareProviderState { get => _childCareProviderState; set => _childCareProviderState = value; }
+        [LoanFieldProperty(Description = "USDA - Child Care Provider - State")]
+        public StringEnumValue<State> ChildCareProviderState { get => _childCareProviderState; set => _childCareProviderState = value; }
         private DirtyValue<string> _childCareProviderZip;
         /// <summary>
         /// USDA - Child Care Provider - Zip [USDA.X102]
@@ -591,12 +591,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "USDA - Present Landloard - Phone Number")]
         public string PresentLandloardPhone { get => _presentLandloardPhone; set => _presentLandloardPhone = value; }
-        private DirtyValue<string> _presentLandloardState;
+        private DirtyValue<StringEnumValue<State>> _presentLandloardState;
         /// <summary>
         /// USDA - Present Landloard - State [USDA.X111]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "USDA - Present Landloard - State")]
-        public string PresentLandloardState { get => _presentLandloardState; set => _presentLandloardState = value; }
+        [LoanFieldProperty(Description = "USDA - Present Landloard - State")]
+        public StringEnumValue<State> PresentLandloardState { get => _presentLandloardState; set => _presentLandloardState = value; }
         private DirtyValue<string> _presentLandloardZip;
         /// <summary>
         /// USDA - Present Landloard - Zip [USDA.X112]
@@ -627,12 +627,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "USDA - Previous Landloard - Phone Number")]
         public string PreviousLandloardPhone { get => _previousLandloardPhone; set => _previousLandloardPhone = value; }
-        private DirtyValue<string> _previousLandloardState;
+        private DirtyValue<StringEnumValue<State>> _previousLandloardState;
         /// <summary>
         /// USDA - Previous Landloard - State [USDA.X117]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "USDA - Previous Landloard - State")]
-        public string PreviousLandloardState { get => _previousLandloardState; set => _previousLandloardState = value; }
+        [LoanFieldProperty(Description = "USDA - Previous Landloard - State")]
+        public StringEnumValue<State> PreviousLandloardState { get => _previousLandloardState; set => _previousLandloardState = value; }
         private DirtyValue<string> _previousLandloardZip;
         /// <summary>
         /// USDA - Previous Landloard - Zip [USDA.X118]
@@ -753,12 +753,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "USDA - Submitting Lender Information - Name")]
         public string SubmittingLenderName { get => _submittingLenderName; set => _submittingLenderName = value; }
-        private DirtyValue<string> _submittingLenderState;
+        private DirtyValue<StringEnumValue<State>> _submittingLenderState;
         /// <summary>
         /// USDA - Submitting Lender Information - State [USDA.X38]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "USDA - Submitting Lender Information - State")]
-        public string SubmittingLenderState { get => _submittingLenderState; set => _submittingLenderState = value; }
+        [LoanFieldProperty(Description = "USDA - Submitting Lender Information - State")]
+        public StringEnumValue<State> SubmittingLenderState { get => _submittingLenderState; set => _submittingLenderState = value; }
         private DirtyValue<string> _submittingLenderTaxId;
         /// <summary>
         /// USDA - Submitting Lender Information - Tax ID No. [USDA.X35]

@@ -1000,12 +1000,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "AUS Tracking - Freddie Mac - Present Address City")]
         public string LogPresentAddressCity { get => _logPresentAddressCity; set => _logPresentAddressCity = value; }
-        private DirtyValue<string> _logPresentAddressState;
+        private DirtyValue<StringEnumValue<State>> _logPresentAddressState;
         /// <summary>
         /// AUS Tracking - Freddie Mac - Present Address State [AUS.X140]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "AUS Tracking - Freddie Mac - Present Address State")]
-        public string LogPresentAddressState { get => _logPresentAddressState; set => _logPresentAddressState = value; }
+        [LoanFieldProperty(Description = "AUS Tracking - Freddie Mac - Present Address State")]
+        public StringEnumValue<State> LogPresentAddressState { get => _logPresentAddressState; set => _logPresentAddressState = value; }
         private DirtyValue<string> _logPresentAddressZipCode;
         /// <summary>
         /// AUS Tracking - Freddie Mac - Present Address Zipcode [AUS.X141]
@@ -1036,12 +1036,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "AUS Tracking - Fannie Mae - Property City")]
         public string LogPropertyCity { get => _logPropertyCity; set => _logPropertyCity = value; }
-        private DirtyValue<string> _logPropertyState;
+        private DirtyValue<StringEnumValue<State>> _logPropertyState;
         /// <summary>
         /// AUS Tracking - Fannie Mae - Property State [AUS.X48]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "AUS Tracking - Fannie Mae - Property State")]
-        public string LogPropertyState { get => _logPropertyState; set => _logPropertyState = value; }
+        [LoanFieldProperty(Description = "AUS Tracking - Fannie Mae - Property State")]
+        public StringEnumValue<State> LogPropertyState { get => _logPropertyState; set => _logPropertyState = value; }
         private DirtyValue<string> _logPropertyZipcode;
         /// <summary>
         /// AUS Tracking - Fannie Mae - Property Zipcode [AUS.X49]

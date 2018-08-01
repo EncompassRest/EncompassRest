@@ -1015,12 +1015,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Mailing City")]
         public string RegulatorMailingCity { get => _regulatorMailingCity; set => _regulatorMailingCity = value; }
-        private DirtyValue<string> _regulatorMailingState;
+        private DirtyValue<StringEnumValue<State>> _regulatorMailingState;
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing State [DISCLOSURE.X1072]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "South Carolina State Specific Disclosure -  Regulator Mailing State")]
-        public string RegulatorMailingState { get => _regulatorMailingState; set => _regulatorMailingState = value; }
+        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator Mailing State")]
+        public StringEnumValue<State> RegulatorMailingState { get => _regulatorMailingState; set => _regulatorMailingState = value; }
         private DirtyValue<string> _regulatorMailingZipCode;
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Mailing Zip Code [DISCLOSURE.X1073]
@@ -1033,12 +1033,12 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "South Carolina State Specific Disclosure -  Regulator Phone")]
         public string RegulatorPhone { get => _regulatorPhone; set => _regulatorPhone = value; }
-        private DirtyValue<string> _regulatorState;
+        private DirtyValue<StringEnumValue<State>> _regulatorState;
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator State [DISCLOSURE.X1066]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "South Carolina State Specific Disclosure -  Regulator State")]
-        public string RegulatorState { get => _regulatorState; set => _regulatorState = value; }
+        [LoanFieldProperty(Description = "South Carolina State Specific Disclosure -  Regulator State")]
+        public StringEnumValue<State> RegulatorState { get => _regulatorState; set => _regulatorState = value; }
         private DirtyValue<string> _regulatorTollFreePhone;
         /// <summary>
         /// South Carolina State Specific Disclosure -  Regulator Toll-free Phone [DISCLOSURE.X1069]

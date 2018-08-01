@@ -35,6 +35,7 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PreviousVaLoan PreviousVaLoanIndex
         /// </summary>
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\"}")]
         public int? PreviousVaLoanIndex { get => _previousVaLoanIndex; set => _previousVaLoanIndex = value; }
         private DirtyValue<string> _propertyAddress;
         /// <summary>
@@ -58,12 +59,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE)]
         public string PropertyPostalCode { get => _propertyPostalCode; set => _propertyPostalCode = value; }
-        private DirtyValue<string> _propertyState;
+        private DirtyValue<StringEnumValue<State>> _propertyState;
         /// <summary>
         /// PreviousVaLoan PropertyState
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE)]
-        public string PropertyState { get => _propertyState; set => _propertyState = value; }
+        public StringEnumValue<State> PropertyState { get => _propertyState; set => _propertyState = value; }
         private DirtyValue<string> _vALoanNumber;
         /// <summary>
         /// PreviousVaLoan VALoanNumber
