@@ -127,6 +127,7 @@ namespace EncompassRest
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
+        private BaseApiClient _baseApiClient;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -308,6 +309,15 @@ namespace EncompassRest
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }
                 return httpClient;
+            }
+        }
+
+        public BaseApiClient BaseApiClient
+        {
+            get
+            {
+                var baseApiClient = _baseApiClient;
+                return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
             }
         }
         #endregion
