@@ -110,7 +110,6 @@ namespace EncompassRest
         private int _timeoutRetryCount;
 
         private HttpClient _httpClient;
-        private RetryHandler _retryHandler;
         private Loans.Loans _loans;
         private Schema.Schema _schema;
         private Webhook.Webhook _webhook;
@@ -301,7 +300,7 @@ namespace EncompassRest
                 var httpClient = _httpClient;
                 if (httpClient == null)
                 {
-                    httpClient = new HttpClient(GetRetryHandler())
+                    httpClient = new HttpClient(new RetryHandler(this, _tokenInitializer != null))
                     {
                         Timeout = Timeout
                     };
@@ -336,12 +335,6 @@ namespace EncompassRest
             _httpClient?.Dispose();
         }
 
-        private RetryHandler GetRetryHandler()
-        {
-            var retryHandler = _retryHandler;
-            return retryHandler ?? Interlocked.CompareExchange(ref _retryHandler, (retryHandler = new RetryHandler(this, _tokenInitializer != null)), null) ?? retryHandler;
-        }
-
         internal sealed class RetryHandler : DelegatingHandler
         {
             private readonly EncompassRestClient _client;
@@ -371,7 +364,7 @@ namespace EncompassRest
                                     if (string.Equals(request.Headers.Authorization.Parameter, _client.AccessToken.Token, StringComparison.Ordinal))
                                     {
                                         _client.AccessToken.Token = await _client._tokenInitializer(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
-                                        _client._httpClient = null;
+                                        _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_client.AccessToken.Type, _client.AccessToken.Token);
                                     }
                                 }
                                 finally
