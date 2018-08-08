@@ -93,7 +93,7 @@ namespace EncompassRest.Loans
             Preconditions.NotNullOrEmpty(loan.EncompassId, $"{nameof(loan)}.{nameof(loan.EncompassId)}");
 
             loan.Initialize(Client, loan.EncompassId);
-            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, cancellationToken);
+            return PatchPopulateDirtyAsync(loan.EncompassId, updateLoanOptions?.ToQueryParameters()?.ToString(), JsonStreamContent.Create(loan), nameof(UpdateLoanAsync), loan.EncompassId, loan, updateLoanOptions?.Populate == true, updateLoanOptions?.Persistent != false, cancellationToken);
         }
 
         public Task<string> UpdateLoanRawAsync(string loanId, string loan, string queryString = null, CancellationToken cancellationToken = default)

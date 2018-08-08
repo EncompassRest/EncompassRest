@@ -56,7 +56,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(note, nameof(note));
             Preconditions.NotNullOrEmpty(note.NoteId, $"{nameof(note)}.{nameof(note.NoteId)}");
 
-            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, cancellationToken);
+            return PatchPopulateDirtyAsync(note.NoteId, JsonStreamContent.Create(note), nameof(UpdateNoteAsync), note.NoteId, note, populate, true, cancellationToken);
         }
 
         public Task<string> UpdateNoteRawAsync(string noteId, string note, string queryString = null, CancellationToken cancellationToken = default)

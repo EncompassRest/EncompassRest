@@ -122,6 +122,7 @@ namespace EncompassRest.Loans
             {
                 Client = client;
                 EncompassId = loanId;
+                _encompassId.Dirty = false;
                 LoanApis = new LoanObjectBoundApis(client, this);
             }
         }

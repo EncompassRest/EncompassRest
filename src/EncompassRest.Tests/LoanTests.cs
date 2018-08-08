@@ -1383,5 +1383,58 @@ namespace EncompassRest.Tests
 
             Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryRemove("NEWFIELD", out _));
         }
+
+        [TestMethod]
+        public async Task Loan_Recalculate()
+        {
+            var client = await GetTestClientAsync();
+            var loan = new Loan(client)
+            {
+                BorrowerRequestedLoanAmount = 200000M
+            };
+            var loanId = await client.Loans.CreateLoanAsync(loan, true);
+            try
+            {
+                Assert.IsFalse(loan.Dirty);
+                Assert.AreEqual(200000M, loan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(200000M, loan.BaseLoanAmount);
+                var retrievedLoan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.Loan });
+                Assert.AreEqual(200000M, retrievedLoan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(200000M, retrievedLoan.BaseLoanAmount);
+                loan.BorrowerRequestedLoanAmount = 250000M;
+                await client.Loans.UpdateLoanAsync(loan, true);
+                Assert.IsFalse(loan.Dirty);
+                Assert.AreEqual(250000M, loan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(250000M, loan.BaseLoanAmount);
+                retrievedLoan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.Loan });
+                Assert.AreEqual(250000M, retrievedLoan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(250000M, retrievedLoan.BaseLoanAmount);
+                loan.BorrowerRequestedLoanAmount = 200000M;
+                await client.Loans.UpdateLoanAsync(loan, new UpdateLoanOptions { Populate = true, Persistent = false });
+                Assert.IsTrue(loan.Dirty);
+                Assert.AreEqual(200000M, loan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(200000M, loan.BaseLoanAmount);
+                retrievedLoan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.Loan });
+                Assert.AreEqual(250000M, retrievedLoan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(250000M, retrievedLoan.BaseLoanAmount);
+                await client.Loans.UpdateLoanAsync(loan, true);
+                Assert.IsFalse(loan.Dirty);
+                Assert.AreEqual(200000M, loan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(200000M, loan.BaseLoanAmount);
+                retrievedLoan = await client.Loans.GetLoanAsync(loanId, new[] { LoanEntity.Loan });
+                Assert.AreEqual(200000M, retrievedLoan.BorrowerRequestedLoanAmount);
+                Assert.AreEqual(200000M, retrievedLoan.BaseLoanAmount);
+            }
+            finally
+            {
+                try
+                {
+                    await client.Loans.DeleteLoanAsync(loanId);
+                }
+                catch
+                {
+                }
+            }
+        }
     }
 }
