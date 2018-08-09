@@ -96,45 +96,5 @@ namespace EncompassRest.Loans
         /// ConversationLog UserId
         /// </summary>
         public string UserId { get => _userId; set => _userId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _company.Dirty
-                || _dateUtc.Dirty
-                || _email.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _inLogIndicator.Dirty
-                || _isEmailIndicator.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _name.Dirty
-                || _phone.Dirty
-                || _systemId.Dirty
-                || _userId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _company.Dirty = value;
-                _dateUtc.Dirty = value;
-                _email.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _inLogIndicator.Dirty = value;
-                _isEmailIndicator.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _name.Dirty = value;
-                _phone.Dirty = value;
-                _systemId.Dirty = value;
-                _userId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

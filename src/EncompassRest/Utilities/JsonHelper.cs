@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -16,7 +17,7 @@ namespace EncompassRest.Utilities
     {
         internal static readonly CamelCaseNamingStrategy CamelCaseNamingStrategy = new CamelCaseNamingStrategy(processDictionaryKeys: false, overrideSpecifiedNames: false);
         private static readonly PublicContractResolver s_publicContractResolver = new PublicContractResolver();
-        internal static readonly IContractResolver InternalPrivateContractResolver = new PrivateContractResolver();
+        internal static readonly CustomContractResolver InternalPrivateContractResolver = new PrivateContractResolver();
         internal static readonly JsonSerializer DefaultPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.None };
         internal static readonly JsonSerializer DefaultIndentedPublicSerializer = new JsonSerializer { ContractResolver = s_publicContractResolver, NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented };
         internal static readonly Encoding Utf8NoBOM = new UTF8Encoding(false);
@@ -153,9 +154,11 @@ namespace EncompassRest.Utilities
             }
         }
 
-        private abstract class CustomContractResolver : DefaultContractResolver
+        internal abstract class CustomContractResolver : DefaultContractResolver
         {
             protected static readonly JsonConverter DefaultEnumConverter = new EnumJsonConverter(EnumJsonConverter.CamelCaseNameFormat);
+
+            private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo>> s_backingFieldProviders = new ConcurrentDictionary<Type, ConcurrentDictionary<string, BackingFieldInfo>>();
 
             public CustomContractResolver()
             {
@@ -229,6 +232,17 @@ namespace EncompassRest.Utilities
                 return valueProvider;
             }
 
+            internal BackingFieldInfo GetBackingFieldInfo(Type type, string propertyName)
+            {
+                var propertyBackingFields = s_backingFieldProviders.GetOrAdd(type, t => new ConcurrentDictionary<string, BackingFieldInfo>());
+                return propertyBackingFields.GetOrAdd(propertyName, n =>
+                {
+                    var backingFieldName = $"_{char.ToLower(n[0])}{n.Substring(1)}";
+                    var backingField = type.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
+                    return backingField != null ? new BackingFieldInfo(base.CreateMemberValueProvider(backingField), backingField) : null;
+                });
+            }
+
             // Required for proper serialization of StringEnumValue and NA
             private class StringValueProvider : IValueProvider
             {
@@ -245,17 +259,27 @@ namespace EncompassRest.Utilities
             }
         }
 
+        internal class BackingFieldInfo
+        {
+            public IValueProvider ValueProvider { get; }
+
+            public FieldInfo FieldInfo { get; }
+            
+            public BackingFieldInfo(IValueProvider valueProvider, FieldInfo fieldInfo)
+            {
+                ValueProvider = valueProvider;
+                FieldInfo = fieldInfo;
+            }
+        }
+
         private sealed class PublicContractResolver : CustomContractResolver
         {
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
-                var propertyName = propertyInfo.Name;
-                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName);
-                if (backingField != null)
+                var valueProvider = GetBackingFieldInfo(propertyInfo.DeclaringType, propertyInfo.Name)?.ValueProvider;
+                if (valueProvider != null)
                 {
-                    var backingFieldValueProvider = CreateMemberValueProvider(backingField);
-                    property.ShouldSerialize = o => backingFieldValueProvider.GetValue(o) != null;
+                    property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
                 }
             }
 
@@ -301,7 +325,8 @@ namespace EncompassRest.Utilities
                         foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
                         {
                             property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
-                            property.ShouldSerialize = o => property.ValueProvider.GetValue(o) != null;
+                            var valueProvider = property.ValueProvider;
+                            property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
                         }
                     }
                 }
@@ -312,17 +337,19 @@ namespace EncompassRest.Utilities
 
             protected override void PopulateShouldSerializeMethod(JsonProperty property, PropertyInfo propertyInfo)
             {
-                var propertyName = propertyInfo.Name;
-                var backingFieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
-                var backingField = propertyInfo.DeclaringType.GetTypeInfo().DeclaredFields.FirstOrDefault(f => f.Name == backingFieldName && f.FieldType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type));
-                if (backingField != null)
+                var backingFieldInfo = GetBackingFieldInfo(propertyInfo.DeclaringType, propertyInfo.Name);
+                IValueProvider valueProvider = null;
+                if (backingFieldInfo != null && backingFieldInfo.FieldInfo.FieldType.GetTypeInfo().ImplementedInterfaces.Any(t => t == TypeData<IDirty>.Type))
                 {
-                    var backingFieldValueProvider = CreateMemberValueProvider(backingField);
-                    property.ShouldSerialize = o => ((IDirty)backingFieldValueProvider.GetValue(o))?.Dirty == true;
+                    valueProvider = backingFieldInfo.ValueProvider;
                 }
-                else if (propertyInfo.PropertyType.GetTypeInfo().ImplementedInterfaces.Contains(TypeData<IDirty>.Type))
+                else if (property.PropertyType.GetTypeInfo().ImplementedInterfaces.Any(t => t == TypeData<IDirty>.Type))
                 {
-                    property.ShouldSerialize = o => ((IDirty)property.ValueProvider.GetValue(o))?.Dirty == true;
+                    valueProvider = property.ValueProvider;
+                }
+                if (valueProvider != null)
+                {
+                    property.ShouldSerialize = o => ((IDirty)valueProvider.GetValue(o))?.Dirty == true;
                 }
             }
         }

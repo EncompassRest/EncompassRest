@@ -74,33 +74,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Escrow User Defined 3 Date")]
         public DateTime? UserDefined3 { get => _userDefined3; set => _userDefined3 = value; }
-        internal override bool DirtyInternal
-        {
-            get => _annualFee.Dirty
-                || _floodInsDisb.Dirty
-                || _hazInsDisb.Dirty
-                || _hud1EsDueDateIndex.Dirty
-                || _id.Dirty
-                || _mtgInsDisb.Dirty
-                || _schoolTaxes.Dirty
-                || _taxDisb.Dirty
-                || _userDefined1.Dirty
-                || _userDefined2.Dirty
-                || _userDefined3.Dirty;
-            set
-            {
-                _annualFee.Dirty = value;
-                _floodInsDisb.Dirty = value;
-                _hazInsDisb.Dirty = value;
-                _hud1EsDueDateIndex.Dirty = value;
-                _id.Dirty = value;
-                _mtgInsDisb.Dirty = value;
-                _schoolTaxes.Dirty = value;
-                _taxDisb.Dirty = value;
-                _userDefined1.Dirty = value;
-                _userDefined2.Dirty = value;
-                _userDefined3.Dirty = value;
-            }
-        }
     }
 }

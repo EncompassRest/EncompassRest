@@ -65,33 +65,5 @@ namespace EncompassRest.Loans
         /// DocumentTrackingLog Phone
         /// </summary>
         public bool? Phone { get => _phone; set => _phone = value; }
-        internal override bool DirtyInternal
-        {
-            get => _action.Dirty
-                || _actionCd.Dirty
-                || _contact.Dirty
-                || _dOT.Dirty
-                || _email.Dirty
-                || _fTP.Dirty
-                || _id.Dirty
-                || _logBy.Dirty
-                || _logDate.Dirty
-                || _organization.Dirty
-                || _phone.Dirty;
-            set
-            {
-                _action.Dirty = value;
-                _actionCd.Dirty = value;
-                _contact.Dirty = value;
-                _dOT.Dirty = value;
-                _email.Dirty = value;
-                _fTP.Dirty = value;
-                _id.Dirty = value;
-                _logBy.Dirty = value;
-                _logDate.Dirty = value;
-                _organization.Dirty = value;
-                _phone.Dirty = value;
-            }
-        }
     }
 }

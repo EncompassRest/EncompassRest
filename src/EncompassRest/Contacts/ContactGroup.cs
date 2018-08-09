@@ -38,22 +38,5 @@ namespace EncompassRest.Contacts
         {
             Name = name;
         }
-
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _contactType.Dirty
-                || _groupType.Dirty
-                || _name.Dirty
-                || _description.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _contactType.Dirty = value;
-                _groupType.Dirty = value;
-                _name.Dirty = value;
-                _description.Dirty = value;
-            }
-        }
     }
 }

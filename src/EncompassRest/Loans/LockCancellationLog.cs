@@ -86,41 +86,5 @@ namespace EncompassRest.Loans
         /// LockCancellationLog TimeCancelled
         /// </summary>
         public string TimeCancelled { get => _timeCancelled; set => _timeCancelled = value; }
-        internal override bool DirtyInternal
-        {
-            get => _alertIndicator.Dirty
-                || _alertsXml.Dirty
-                || _cancelledBy.Dirty
-                || _cancelledById.Dirty
-                || _commentListXml.Dirty
-                || _comments.Dirty
-                || _dateUtc.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _requestGuid.Dirty
-                || _systemId.Dirty
-                || _timeCancelled.Dirty;
-            set
-            {
-                _alertIndicator.Dirty = value;
-                _alertsXml.Dirty = value;
-                _cancelledBy.Dirty = value;
-                _cancelledById.Dirty = value;
-                _commentListXml.Dirty = value;
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _requestGuid.Dirty = value;
-                _systemId.Dirty = value;
-                _timeCancelled.Dirty = value;
-            }
-        }
     }
 }

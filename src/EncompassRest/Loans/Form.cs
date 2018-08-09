@@ -30,19 +30,5 @@ namespace EncompassRest.Loans
         /// Form SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _formId.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _systemId.Dirty;
-            set
-            {
-                _formId.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _systemId.Dirty = value;
-            }
-        }
     }
 }

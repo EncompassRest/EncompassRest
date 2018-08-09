@@ -62,31 +62,5 @@ namespace EncompassRest.Loans
         /// SecondaryFinancingProvider SourceOtherDetail
         /// </summary>
         public string SourceOtherDetail { get => _sourceOtherDetail; set => _sourceOtherDetail = value; }
-        internal override bool DirtyInternal
-        {
-            get => _financingAmount.Dirty
-                || _id.Dirty
-                || _secondaryFinancingProviderType.Dirty
-                || _sellerFundedDapIndicator.Dirty
-                || _source.Dirty
-                || _sourceFromFamilyIndicator.Dirty
-                || _sourceFromGovernmentIndicator.Dirty
-                || _sourceFromNPIndicator.Dirty
-                || _sourceFromOtherIndicator.Dirty
-                || _sourceOtherDetail.Dirty;
-            set
-            {
-                _financingAmount.Dirty = value;
-                _id.Dirty = value;
-                _secondaryFinancingProviderType.Dirty = value;
-                _sellerFundedDapIndicator.Dirty = value;
-                _source.Dirty = value;
-                _sourceFromFamilyIndicator.Dirty = value;
-                _sourceFromGovernmentIndicator.Dirty = value;
-                _sourceFromNPIndicator.Dirty = value;
-                _sourceFromOtherIndicator.Dirty = value;
-                _sourceOtherDetail.Dirty = value;
-            }
-        }
     }
 }

@@ -43,23 +43,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? Total { get => _total; set => _total = value; }
-        internal override bool DirtyInternal
-        {
-            get => _description.Dirty
-                || _dueBroker.Dirty
-                || _dueLender.Dirty
-                || _id.Dirty
-                || _loanSubmissionFeeType.Dirty
-                || _total.Dirty;
-            set
-            {
-                _description.Dirty = value;
-                _dueBroker.Dirty = value;
-                _dueLender.Dirty = value;
-                _id.Dirty = value;
-                _loanSubmissionFeeType.Dirty = value;
-                _total.Dirty = value;
-            }
-        }
     }
 }

@@ -42,23 +42,5 @@ namespace EncompassRest.Loans
         /// PriceAdjustment RateLockAdjustmentType
         /// </summary>
         public string RateLockAdjustmentType { get => _rateLockAdjustmentType; set => _rateLockAdjustmentType = value; }
-        internal override bool DirtyInternal
-        {
-            get => _adjustmentType.Dirty
-                || _description.Dirty
-                || _id.Dirty
-                || _priceAdjustmentType.Dirty
-                || _rate.Dirty
-                || _rateLockAdjustmentType.Dirty;
-            set
-            {
-                _adjustmentType.Dirty = value;
-                _description.Dirty = value;
-                _id.Dirty = value;
-                _priceAdjustmentType.Dirty = value;
-                _rate.Dirty = value;
-                _rateLockAdjustmentType.Dirty = value;
-            }
-        }
     }
 }

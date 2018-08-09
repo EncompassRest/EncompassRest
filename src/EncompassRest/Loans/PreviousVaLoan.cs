@@ -70,33 +70,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public string VALoanNumber { get => _vALoanNumber; set => _vALoanNumber = value; }
-        internal override bool DirtyInternal
-        {
-            get => _dateOfLoan.Dirty
-                || _dateSold.Dirty
-                || _id.Dirty
-                || _loanType.Dirty
-                || _previousVaLoanIndex.Dirty
-                || _propertyAddress.Dirty
-                || _propertyCity.Dirty
-                || _propertyOwned.Dirty
-                || _propertyPostalCode.Dirty
-                || _propertyState.Dirty
-                || _vALoanNumber.Dirty;
-            set
-            {
-                _dateOfLoan.Dirty = value;
-                _dateSold.Dirty = value;
-                _id.Dirty = value;
-                _loanType.Dirty = value;
-                _previousVaLoanIndex.Dirty = value;
-                _propertyAddress.Dirty = value;
-                _propertyCity.Dirty = value;
-                _propertyOwned.Dirty = value;
-                _propertyPostalCode.Dirty = value;
-                _propertyState.Dirty = value;
-                _vALoanNumber.Dirty = value;
-            }
-        }
     }
 }

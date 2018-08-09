@@ -65,33 +65,5 @@ namespace EncompassRest.Loans
         /// MilestoneTaskContact Zip
         /// </summary>
         public string Zip { get => _zip; set => _zip = value; }
-        internal override bool DirtyInternal
-        {
-            get => _address.Dirty
-                || _city.Dirty
-                || _contactId.Dirty
-                || _email.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _phone.Dirty
-                || _role.Dirty
-                || _state.Dirty
-                || _zip.Dirty;
-            set
-            {
-                _address.Dirty = value;
-                _city.Dirty = value;
-                _contactId.Dirty = value;
-                _email.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _phone.Dirty = value;
-                _role.Dirty = value;
-                _state.Dirty = value;
-                _zip.Dirty = value;
-            }
-        }
     }
 }

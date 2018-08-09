@@ -56,29 +56,5 @@ namespace EncompassRest.Loans
         /// LockRequestBorrower TransUnionScore
         /// </summary>
         public string TransUnionScore { get => _transUnionScore; set => _transUnionScore = value; }
-        internal override bool DirtyInternal
-        {
-            get => _equifaxScore.Dirty
-                || _experianScore.Dirty
-                || _firstName.Dirty
-                || _id.Dirty
-                || _isEmpty.Dirty
-                || _lastName.Dirty
-                || _lrbIndex.Dirty
-                || _sSN.Dirty
-                || _transUnionScore.Dirty;
-            set
-            {
-                _equifaxScore.Dirty = value;
-                _experianScore.Dirty = value;
-                _firstName.Dirty = value;
-                _id.Dirty = value;
-                _isEmpty.Dirty = value;
-                _lastName.Dirty = value;
-                _lrbIndex.Dirty = value;
-                _sSN.Dirty = value;
-                _transUnionScore.Dirty = value;
-            }
-        }
     }
 }

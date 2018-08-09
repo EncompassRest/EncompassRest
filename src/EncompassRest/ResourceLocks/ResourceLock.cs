@@ -14,25 +14,5 @@ namespace EncompassRest.ResourceLocks
         public StringEnumValue<ResourceLockType> LockType { get => _lockType; set => _lockType = value; }
         private DirtyValue<DateTime?> _lockTime;
         public DateTime? LockTime { get => _lockTime; set => _lockTime = value; }
-
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _id.Dirty
-                    || _resource?.Dirty == true
-                    || _userId.Dirty
-                    || _lockType.Dirty
-                    || _lockTime.Dirty;
-            }
-            set
-            {
-                _id.Dirty = value;
-                if (_resource != null) _resource.Dirty = value;
-                _userId.Dirty = value;
-                _lockType.Dirty = value;
-                _lockTime.Dirty = value;
-            }
-        }
     }
 }

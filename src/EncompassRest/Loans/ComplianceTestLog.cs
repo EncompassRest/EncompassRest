@@ -30,19 +30,5 @@ namespace EncompassRest.Loans
         /// ComplianceTestLog ShowAlert
         /// </summary>
         public bool? ShowAlert { get => _showAlert; set => _showAlert = value; }
-        internal override bool DirtyInternal
-        {
-            get => _details.Dirty
-                || _name.Dirty
-                || _result.Dirty
-                || _showAlert.Dirty;
-            set
-            {
-                _details.Dirty = value;
-                _name.Dirty = value;
-                _result.Dirty = value;
-                _showAlert.Dirty = value;
-            }
-        }
     }
 }

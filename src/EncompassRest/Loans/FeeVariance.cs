@@ -60,29 +60,5 @@ namespace EncompassRest.Loans
         /// FeeVariance Line
         /// </summary>
         public string Line { get => _line; set => _line = value; }
-        internal override bool DirtyInternal
-        {
-            get => _cD.Dirty
-                || _description.Dirty
-                || _feeVarianceChargeIndex.Dirty
-                || _feeVarianceFeeType.Dirty
-                || _id.Dirty
-                || _initialLE.Dirty
-                || _itemization.Dirty
-                || _lE.Dirty
-                || _line.Dirty;
-            set
-            {
-                _cD.Dirty = value;
-                _description.Dirty = value;
-                _feeVarianceChargeIndex.Dirty = value;
-                _feeVarianceFeeType.Dirty = value;
-                _id.Dirty = value;
-                _initialLE.Dirty = value;
-                _itemization.Dirty = value;
-                _lE.Dirty = value;
-                _line.Dirty = value;
-            }
-        }
     }
 }

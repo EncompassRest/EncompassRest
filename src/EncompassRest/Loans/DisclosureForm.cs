@@ -25,17 +25,5 @@ namespace EncompassRest.Loans
         /// DisclosureForm Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        internal override bool DirtyInternal
-        {
-            get => _formName.Dirty
-                || _formType.Dirty
-                || _id.Dirty;
-            set
-            {
-                _formName.Dirty = value;
-                _formType.Dirty = value;
-                _id.Dirty = value;
-            }
-        }
     }
 }

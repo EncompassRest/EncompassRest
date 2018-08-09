@@ -50,25 +50,5 @@ namespace EncompassRest.Loans
         /// ProfitManagementItem Type
         /// </summary>
         public StringEnumValue<ProfitManagementItemType> Type { get => _type; set => _type = value; }
-        internal override bool DirtyInternal
-        {
-            get => _atPercent.Dirty
-                || _description.Dirty
-                || _id.Dirty
-                || _plusAmount.Dirty
-                || _profitManagementItemIndex.Dirty
-                || _total.Dirty
-                || _type.Dirty;
-            set
-            {
-                _atPercent.Dirty = value;
-                _description.Dirty = value;
-                _id.Dirty = value;
-                _plusAmount.Dirty = value;
-                _profitManagementItemIndex.Dirty = value;
-                _total.Dirty = value;
-                _type.Dirty = value;
-            }
-        }
     }
 }

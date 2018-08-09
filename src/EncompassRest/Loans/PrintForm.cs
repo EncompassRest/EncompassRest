@@ -20,15 +20,5 @@ namespace EncompassRest.Loans
         /// PrintForm Name
         /// </summary>
         public string Name { get => _name; set => _name = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _name.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _name.Dirty = value;
-            }
-        }
     }
 }

@@ -134,53 +134,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Escrow Setup User Defined 3 Prepaid")]
         public bool? UserDefinedPrepaid3 { get => _userDefinedPrepaid3; set => _userDefinedPrepaid3 = value; }
-        internal override bool DirtyInternal
-        {
-            get => _annualFeePrepaid.Dirty
-                || _annualFees.Dirty
-                || _date.Dirty
-                || _floodInsDisb.Dirty
-                || _floodInsPrepaid.Dirty
-                || _hazInsDisb.Dirty
-                || _hazInsPrepaid.Dirty
-                || _hud1EsSetupIndex.Dirty
-                || _id.Dirty
-                || _mtgInsDisb.Dirty
-                || _mtgInsPrepaid.Dirty
-                || _schoolTaxes.Dirty
-                || _schoolTaxesPrepaid.Dirty
-                || _taxDisb.Dirty
-                || _taxPrepaid.Dirty
-                || _userDefined1.Dirty
-                || _userDefined2.Dirty
-                || _userDefined3.Dirty
-                || _userDefinedPrepaid1.Dirty
-                || _userDefinedPrepaid2.Dirty
-                || _userDefinedPrepaid3.Dirty;
-            set
-            {
-                _annualFeePrepaid.Dirty = value;
-                _annualFees.Dirty = value;
-                _date.Dirty = value;
-                _floodInsDisb.Dirty = value;
-                _floodInsPrepaid.Dirty = value;
-                _hazInsDisb.Dirty = value;
-                _hazInsPrepaid.Dirty = value;
-                _hud1EsSetupIndex.Dirty = value;
-                _id.Dirty = value;
-                _mtgInsDisb.Dirty = value;
-                _mtgInsPrepaid.Dirty = value;
-                _schoolTaxes.Dirty = value;
-                _schoolTaxesPrepaid.Dirty = value;
-                _taxDisb.Dirty = value;
-                _taxPrepaid.Dirty = value;
-                _userDefined1.Dirty = value;
-                _userDefined2.Dirty = value;
-                _userDefined3.Dirty = value;
-                _userDefinedPrepaid1.Dirty = value;
-                _userDefinedPrepaid2.Dirty = value;
-                _userDefinedPrepaid3.Dirty = value;
-            }
-        }
     }
 }

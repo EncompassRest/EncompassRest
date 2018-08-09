@@ -81,39 +81,5 @@ namespace EncompassRest.Loans
         /// PrintLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _action.Dirty
-                || _comments.Dirty
-                || _dateUtc.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _printedBy.Dirty
-                || _printedByFullName.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true
-                || _printForms?.Dirty == true;
-            set
-            {
-                _action.Dirty = value;
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _printedBy.Dirty = value;
-                _printedByFullName.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-                if (_printForms != null) _printForms.Dirty = value;
-            }
-        }
     }
 }

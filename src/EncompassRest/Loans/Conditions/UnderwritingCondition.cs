@@ -48,58 +48,5 @@ namespace EncompassRest.Loans.Conditions
         public DateTime? WaivedDate { get => _waivedDate; set => _waivedDate = value; }
         private EntityReference _waivedBy;
         public EntityReference WaivedBy { get => _waivedBy ?? (_waivedBy = new EntityReference()); set => _waivedBy = value; }
-
-        internal override bool DirtyInternal
-        {
-            get => base.DirtyInternal
-                || _priorTo.Dirty
-                || _category.Dirty
-                || _ownerRole.Dirty
-                || _allowToClear.Dirty
-                || _printExternally.Dirty
-                || _printInternally.Dirty
-                || _expirationDate.Dirty
-                || _isFulfilled.Dirty
-                || _fulfilledDate.Dirty
-                || _isReviewed.Dirty
-                || _reviewedDate.Dirty
-                || _isRejected.Dirty
-                || _rejectedDate.Dirty
-                || _isCleared.Dirty
-                || _clearedDate.Dirty
-                || _isWaived.Dirty
-                || _waivedDate.Dirty
-                || _fulfilledBy?.Dirty == true
-                || _reviewedBy?.Dirty == true
-                || _rejectedBy?.Dirty == true
-                || _clearedBy?.Dirty == true
-                || _waivedBy?.Dirty == true;
-            set
-            {
-                base.DirtyInternal = value;
-                _priorTo.Dirty = value;
-                _category.Dirty = value;
-                _ownerRole.Dirty = value;
-                _allowToClear.Dirty = value;
-                _printExternally.Dirty = value;
-                _printInternally.Dirty = value;
-                _expirationDate.Dirty = value;
-                _isFulfilled.Dirty = value;
-                _fulfilledDate.Dirty = value;
-                _isReviewed.Dirty = value;
-                _reviewedDate.Dirty = value;
-                _isRejected.Dirty = value;
-                _rejectedDate.Dirty = value;
-                _isCleared.Dirty = value;
-                _clearedDate.Dirty = value;
-                _isWaived.Dirty = value;
-                _waivedDate.Dirty = value;
-                if (_fulfilledBy != null) _fulfilledBy.Dirty = value;
-                if (_reviewedBy != null) _reviewedBy.Dirty = value;
-                if (_rejectedBy != null) _rejectedBy.Dirty = value;
-                if (_clearedBy != null) _clearedBy.Dirty = value;
-                if (_waivedBy != null) _waivedBy.Dirty = value;
-            }
-        }
     }
 }

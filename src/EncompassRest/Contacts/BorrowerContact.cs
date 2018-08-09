@@ -13,23 +13,6 @@ namespace EncompassRest.Contacts
         public DateTime? Birthdate { get => _birthdate; set => _birthdate = value; }
         private DirtyValue<string> _referral;
         public string Referral { get => _referral; set => _referral = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return base.DirtyInternal
-                    || _employerName.Dirty
-                    || _birthdate.Dirty
-                    || _referral.Dirty;
-            }
-            set
-            {
-                base.DirtyInternal = value;
-                _employerName.Dirty = value;
-                _birthdate.Dirty = value;
-                _referral.Dirty = value;
-            }
-        }
 
         /// <summary>
         /// BorrowerContact creation constructor

@@ -26,17 +26,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TimeStamp { get => _timeStamp; set => _timeStamp = value; }
-        internal override bool DirtyInternal
-        {
-            get => _reportKey.Dirty
-                || _timeStamp.Dirty
-                || _alerts?.Dirty == true;
-            set
-            {
-                _reportKey.Dirty = value;
-                _timeStamp.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-            }
-        }
     }
 }

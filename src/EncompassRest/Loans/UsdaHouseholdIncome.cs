@@ -74,35 +74,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\"}")]
         public int? UsdaHouseholdIncomeIndex { get => _usdaHouseholdIncomeIndex; set => _usdaHouseholdIncomeIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _age.Dirty
-                || _analysisDocumenting.Dirty
-                || _annualNonWageIncome.Dirty
-                || _annualWageIncome.Dirty
-                || _disabledIndicator.Dirty
-                || _fullTimeStudentIndicator.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _recordOwnerType.Dirty
-                || _sourceofNonWageIncomeDescription.Dirty
-                || _sourceofWageIncomeEmployerName.Dirty
-                || _usdaHouseholdIncomeIndex.Dirty;
-            set
-            {
-                _age.Dirty = value;
-                _analysisDocumenting.Dirty = value;
-                _annualNonWageIncome.Dirty = value;
-                _annualWageIncome.Dirty = value;
-                _disabledIndicator.Dirty = value;
-                _fullTimeStudentIndicator.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _recordOwnerType.Dirty = value;
-                _sourceofNonWageIncomeDescription.Dirty = value;
-                _sourceofWageIncomeEmployerName.Dirty = value;
-                _usdaHouseholdIncomeIndex.Dirty = value;
-            }
-        }
     }
 }

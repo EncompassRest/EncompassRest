@@ -98,45 +98,5 @@ namespace EncompassRest.Loans
         /// RegistrationLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _currentIndicator.Dirty
-                || _dateUtc.Dirty
-                || _expiredDate.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _investorName.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _reference.Dirty
-                || _registeredById.Dirty
-                || _registeredByName.Dirty
-                || _registeredDate.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _currentIndicator.Dirty = value;
-                _dateUtc.Dirty = value;
-                _expiredDate.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _investorName.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _reference.Dirty = value;
-                _registeredById.Dirty = value;
-                _registeredByName.Dirty = value;
-                _registeredDate.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

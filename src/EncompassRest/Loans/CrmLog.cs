@@ -40,23 +40,5 @@ namespace EncompassRest.Loans
         /// CrmLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _contactGuid.Dirty
-                || _id.Dirty
-                || _mappingId.Dirty
-                || _mappingType.Dirty
-                || _roleType.Dirty
-                || _systemId.Dirty;
-            set
-            {
-                _contactGuid.Dirty = value;
-                _id.Dirty = value;
-                _mappingId.Dirty = value;
-                _mappingType.Dirty = value;
-                _roleType.Dirty = value;
-                _systemId.Dirty = value;
-            }
-        }
     }
 }

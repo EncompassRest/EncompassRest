@@ -86,41 +86,5 @@ namespace EncompassRest.Loans
         /// LockDenialLog TimeDenied
         /// </summary>
         public string TimeDenied { get => _timeDenied; set => _timeDenied = value; }
-        internal override bool DirtyInternal
-        {
-            get => _alertIndicator.Dirty
-                || _comments.Dirty
-                || _dateUtc.Dirty
-                || _deniedBy.Dirty
-                || _deniedById.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _requestGuid.Dirty
-                || _systemId.Dirty
-                || _timeDenied.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _alertIndicator.Dirty = value;
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _deniedBy.Dirty = value;
-                _deniedById.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _requestGuid.Dirty = value;
-                _systemId.Dirty = value;
-                _timeDenied.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

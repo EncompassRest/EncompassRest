@@ -27,36 +27,5 @@ namespace EncompassRest.Loans.Milestones
         public string MilestoneIdString { get => _milestoneIdString; set => _milestoneIdString = value; }
         private DirtyValue<string> _comments;
         public string Comments { get => _comments; set => _comments = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _id.Dirty
-                    || _startDate.Dirty
-                    || _loanAssociate?.Dirty == true
-                    || _expectedDays.Dirty
-                    || _doneIndicator.Dirty
-                    || _actualDays.Dirty
-                    || _reviewedIndicator.Dirty
-                    || _roleRequired.Dirty
-                    || _milestoneName.Dirty
-                    || _milestoneIdString.Dirty
-                    || _comments.Dirty;
-            }
-            set
-            {
-                _id.Dirty = value;
-                _startDate.Dirty = value;
-                if (_loanAssociate != null) _loanAssociate.Dirty = value;
-                _expectedDays.Dirty = value;
-                _doneIndicator.Dirty = value;
-                _actualDays.Dirty = value;
-                _reviewedIndicator.Dirty = value;
-                _roleRequired.Dirty = value;
-                _milestoneName.Dirty = value;
-                _milestoneIdString.Dirty = value;
-                _comments.Dirty = value;
-            }
-        }
     }
 }

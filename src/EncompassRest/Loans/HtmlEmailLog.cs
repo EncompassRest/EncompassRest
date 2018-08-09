@@ -96,45 +96,5 @@ namespace EncompassRest.Loans
         /// HtmlEmailLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _body.Dirty
-                || _comments.Dirty
-                || _creator.Dirty
-                || _dateUtc.Dirty
-                || _description.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _readReceipt.Dirty
-                || _recipient.Dirty
-                || _sender.Dirty
-                || _subject.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _body.Dirty = value;
-                _comments.Dirty = value;
-                _creator.Dirty = value;
-                _dateUtc.Dirty = value;
-                _description.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _readReceipt.Dirty = value;
-                _recipient.Dirty = value;
-                _sender.Dirty = value;
-                _subject.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

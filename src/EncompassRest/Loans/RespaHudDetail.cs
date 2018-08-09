@@ -58,29 +58,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? RealValue { get => _realValue; set => _realValue = value; }
-        internal override bool DirtyInternal
-        {
-            get => _creditDebt.Dirty
-                || _fWBC.Dirty
-                || _hUD1LineItemFromDate.Dirty
-                || _hUD1LineItemToDate.Dirty
-                || _id.Dirty
-                || _lineItemAmount.Dirty
-                || _lineItemDescription.Dirty
-                || _lineNumber.Dirty
-                || _realValue.Dirty;
-            set
-            {
-                _creditDebt.Dirty = value;
-                _fWBC.Dirty = value;
-                _hUD1LineItemFromDate.Dirty = value;
-                _hUD1LineItemToDate.Dirty = value;
-                _id.Dirty = value;
-                _lineItemAmount.Dirty = value;
-                _lineItemDescription.Dirty = value;
-                _lineNumber.Dirty = value;
-                _realValue.Dirty = value;
-            }
-        }
     }
 }

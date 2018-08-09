@@ -13,23 +13,5 @@
 
         [IdPropertyName(nameof(EntityId))]
         string IIdentifiable.Id { get => EntityId; set => EntityId = value; }
-
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _entityId.Dirty
-                    || _entityType.Dirty
-                    || _entityName.Dirty
-                    || _entityUri.Dirty;
-            }
-            set
-            {
-                _entityId.Dirty = value;
-                _entityType.Dirty = value;
-                _entityName.Dirty = value;
-                _entityUri.Dirty = value;
-            }
-        }
     }
 }

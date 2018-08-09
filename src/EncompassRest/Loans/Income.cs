@@ -47,25 +47,5 @@ namespace EncompassRest.Loans
         /// Income Owner
         /// </summary>
         public StringEnumValue<BorrowerOrCoBorrower> Owner { get => _owner; set => _owner = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _currentIndicator.Dirty
-                || _description.Dirty
-                || _id.Dirty
-                || _incomeType.Dirty
-                || _otherIncomeIndex.Dirty
-                || _owner.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _currentIndicator.Dirty = value;
-                _description.Dirty = value;
-                _id.Dirty = value;
-                _incomeType.Dirty = value;
-                _otherIncomeIndex.Dirty = value;
-                _owner.Dirty = value;
-            }
-        }
     }
 }

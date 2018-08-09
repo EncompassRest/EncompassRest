@@ -20,15 +20,5 @@ namespace EncompassRest.Loans
         /// EmailDocument DocTitle
         /// </summary>
         public string DocTitle { get => _docTitle; set => _docTitle = value; }
-        internal override bool DirtyInternal
-        {
-            get => _docId.Dirty
-                || _docTitle.Dirty;
-            set
-            {
-                _docId.Dirty = value;
-                _docTitle.Dirty = value;
-            }
-        }
     }
 }

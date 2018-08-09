@@ -69,33 +69,5 @@ namespace EncompassRest.Loans
         /// UCDDetail Section
         /// </summary>
         public StringEnumValue<Section> Section { get => _section; set => _section = value; }
-        internal override bool DirtyInternal
-        {
-            get => _feeAccountType.Dirty
-                || _feeAmount.Dirty
-                || _feeDateFrom.Dirty
-                || _feeDateTo.Dirty
-                || _feeDesc.Dirty
-                || _feeIndex.Dirty
-                || _feePaidTo.Dirty
-                || _feePOC.Dirty
-                || _id.Dirty
-                || _lineNumber.Dirty
-                || _section.Dirty;
-            set
-            {
-                _feeAccountType.Dirty = value;
-                _feeAmount.Dirty = value;
-                _feeDateFrom.Dirty = value;
-                _feeDateTo.Dirty = value;
-                _feeDesc.Dirty = value;
-                _feeIndex.Dirty = value;
-                _feePaidTo.Dirty = value;
-                _feePOC.Dirty = value;
-                _id.Dirty = value;
-                _lineNumber.Dirty = value;
-                _section.Dirty = value;
-            }
-        }
     }
 }

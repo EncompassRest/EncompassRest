@@ -62,29 +62,5 @@ namespace EncompassRest.Loans
         /// TrustAccountItem TrustAccountItemIndex
         /// </summary>
         public int? TrustAccountItemIndex { get => _trustAccountItemIndex; set => _trustAccountItemIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _date.Dirty
-                || _description.Dirty
-                || _id.Dirty
-                || _notes.Dirty
-                || _paymentAmount.Dirty
-                || _paymentCheckNo.Dirty
-                || _receiptAmount.Dirty
-                || _receiptCheckNo.Dirty
-                || _trustAccountItemIndex.Dirty;
-            set
-            {
-                _date.Dirty = value;
-                _description.Dirty = value;
-                _id.Dirty = value;
-                _notes.Dirty = value;
-                _paymentAmount.Dirty = value;
-                _paymentCheckNo.Dirty = value;
-                _receiptAmount.Dirty = value;
-                _receiptCheckNo.Dirty = value;
-                _trustAccountItemIndex.Dirty = value;
-            }
-        }
     }
 }

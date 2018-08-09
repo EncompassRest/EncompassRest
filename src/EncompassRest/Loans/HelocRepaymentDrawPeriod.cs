@@ -50,25 +50,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true)]
         public int? Year { get => _year; set => _year = value; }
-        internal override bool DirtyInternal
-        {
-            get => _apr.Dirty
-                || _drawIndicator.Dirty
-                || _id.Dirty
-                || _indexRatePercent.Dirty
-                || _marginRatePercent.Dirty
-                || _minimumMonthlyPaymentAmount.Dirty
-                || _year.Dirty;
-            set
-            {
-                _apr.Dirty = value;
-                _drawIndicator.Dirty = value;
-                _id.Dirty = value;
-                _indexRatePercent.Dirty = value;
-                _marginRatePercent.Dirty = value;
-                _minimumMonthlyPaymentAmount.Dirty = value;
-                _year.Dirty = value;
-            }
-        }
     }
 }

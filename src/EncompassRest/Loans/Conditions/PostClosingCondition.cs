@@ -18,18 +18,5 @@ namespace EncompassRest.Loans.Conditions
         public DateTime? ClearedDate { get => _clearedDate; set => _clearedDate = value; }
         private EntityReference _clearedBy;
         public EntityReference ClearedBy { get => _clearedBy ?? (_clearedBy = new EntityReference()); set => _clearedBy = value; }
-
-        internal override bool DirtyInternal
-        {
-            get => base.DirtyInternal
-                || _recipient.Dirty
-                || _isSent.Dirty
-                || _sentDate.Dirty
-                || _isCleared.Dirty
-                || _clearedDate.Dirty
-                || _sentBy?.Dirty == true
-                || _clearedBy?.Dirty == true;
-            set => base.DirtyInternal = value;
-        }
     }
 }

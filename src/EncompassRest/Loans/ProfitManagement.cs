@@ -86,37 +86,5 @@ namespace EncompassRest.Loans
         /// ProfitManagement ProfitManagementItems
         /// </summary>
         public IList<ProfitManagementItem> ProfitManagementItems { get => _profitManagementItems ?? (_profitManagementItems = new DirtyList<ProfitManagementItem>()); set => _profitManagementItems = new DirtyList<ProfitManagementItem>(value); }
-        internal override bool DirtyInternal
-        {
-            get => _commissionableGrossProfit.Dirty
-                || _expenseAmount1.Dirty
-                || _expenseAmount2.Dirty
-                || _expenseAmount3.Dirty
-                || _expenseAmount4.Dirty
-                || _expenseDescription1.Dirty
-                || _expenseDescription2.Dirty
-                || _expenseDescription3.Dirty
-                || _expenseDescription4.Dirty
-                || _grossCheckAmount.Dirty
-                || _id.Dirty
-                || _netProfit.Dirty
-                || _profitManagementItems?.Dirty == true;
-            set
-            {
-                _commissionableGrossProfit.Dirty = value;
-                _expenseAmount1.Dirty = value;
-                _expenseAmount2.Dirty = value;
-                _expenseAmount3.Dirty = value;
-                _expenseAmount4.Dirty = value;
-                _expenseDescription1.Dirty = value;
-                _expenseDescription2.Dirty = value;
-                _expenseDescription3.Dirty = value;
-                _expenseDescription4.Dirty = value;
-                _grossCheckAmount.Dirty = value;
-                _id.Dirty = value;
-                _netProfit.Dirty = value;
-                if (_profitManagementItems != null) _profitManagementItems.Dirty = value;
-            }
-        }
     }
 }

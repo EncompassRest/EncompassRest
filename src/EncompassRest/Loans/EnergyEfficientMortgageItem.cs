@@ -42,23 +42,5 @@ namespace EncompassRest.Loans
         /// EnergyEfficientMortgageItem LineNumber
         /// </summary>
         public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
-        internal override bool DirtyInternal
-        {
-            get => _actualAmount.Dirty
-                || _allowedAmount.Dirty
-                || _energyEfficientMortgageItemIndex.Dirty
-                || _id.Dirty
-                || _item.Dirty
-                || _lineNumber.Dirty;
-            set
-            {
-                _actualAmount.Dirty = value;
-                _allowedAmount.Dirty = value;
-                _energyEfficientMortgageItemIndex.Dirty = value;
-                _id.Dirty = value;
-                _item.Dirty = value;
-                _lineNumber.Dirty = value;
-            }
-        }
     }
 }

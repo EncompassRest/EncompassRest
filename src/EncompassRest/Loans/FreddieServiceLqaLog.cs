@@ -81,39 +81,5 @@ namespace EncompassRest.Loans
         /// FreddieServiceLqaLog SystemId
         /// </summary>
         public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _details.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _name.Dirty
-                || _result.Dirty
-                || _showAlert.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _details.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _name.Dirty = value;
-                _result.Dirty = value;
-                _showAlert.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

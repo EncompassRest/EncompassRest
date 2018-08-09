@@ -37,21 +37,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\",\"8\":\"8\",\"9\":\"9\",\"10\":\"10\",\"11\":\"11\"}")]
         public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _date.Dirty
-                || _extraPaymentIndex.Dirty
-                || _id.Dirty
-                || _lineNumber.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _date.Dirty = value;
-                _extraPaymentIndex.Dirty = value;
-                _id.Dirty = value;
-                _lineNumber.Dirty = value;
-            }
-        }
     }
 }

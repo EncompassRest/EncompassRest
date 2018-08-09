@@ -129,51 +129,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Disclosure 2 0-25%", OptionsJson = "{\"true\":\"0 to 25%\"}")]
         public bool? ZeroTo25Indicator { get => _zeroTo25Indicator; set => _zeroTo25Indicator = value; }
-        internal override bool DirtyInternal
-        {
-            get => _disclosurePercent1.Dirty
-                || _disclosurePercent2.Dirty
-                || _disclosurePercent3.Dirty
-                || _disclosureYear1.Dirty
-                || _disclosureYear2.Dirty
-                || _disclosureYear3.Dirty
-                || _fiftyOneTo75Indicator.Dirty
-                || _id.Dirty
-                || _seventySixTo100Indicator.Dirty
-                || _thisEstimateType.Dirty
-                || _thisInformationType.Dirty
-                || _thisIsOurRecordOfTransferingIndicator.Dirty
-                || _twentySixTo50Indicator.Dirty
-                || _weAreAbleType.Dirty
-                || _weDoNotSellMortgageLoansIndicator.Dirty
-                || _weDoNotServiceMortgageLoansIndicator.Dirty
-                || _weHaveNotServicedMortgLoansIn3YrsIndicator.Dirty
-                || _weHavePreviouslyAssignedIndicator.Dirty
-                || _weMayAssignIndicator.Dirty
-                || _zeroTo25Indicator.Dirty;
-            set
-            {
-                _disclosurePercent1.Dirty = value;
-                _disclosurePercent2.Dirty = value;
-                _disclosurePercent3.Dirty = value;
-                _disclosureYear1.Dirty = value;
-                _disclosureYear2.Dirty = value;
-                _disclosureYear3.Dirty = value;
-                _fiftyOneTo75Indicator.Dirty = value;
-                _id.Dirty = value;
-                _seventySixTo100Indicator.Dirty = value;
-                _thisEstimateType.Dirty = value;
-                _thisInformationType.Dirty = value;
-                _thisIsOurRecordOfTransferingIndicator.Dirty = value;
-                _twentySixTo50Indicator.Dirty = value;
-                _weAreAbleType.Dirty = value;
-                _weDoNotSellMortgageLoansIndicator.Dirty = value;
-                _weDoNotServiceMortgageLoansIndicator.Dirty = value;
-                _weHaveNotServicedMortgLoansIn3YrsIndicator.Dirty = value;
-                _weHavePreviouslyAssignedIndicator.Dirty = value;
-                _weMayAssignIndicator.Dirty = value;
-                _zeroTo25Indicator.Dirty = value;
-            }
-        }
     }
 }

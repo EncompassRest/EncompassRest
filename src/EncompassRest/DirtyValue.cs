@@ -7,9 +7,9 @@ namespace EncompassRest
     /// Value wrapper to use for dirty checking.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal struct DirtyValue<T> : IDirty
+    internal sealed class DirtyValue<T> : IDirty
     {
-        public static implicit operator T(DirtyValue<T> value) => value._value;
+        public static implicit operator T(DirtyValue<T> value) => value != null ? value._value : default;
 
         public static implicit operator DirtyValue<T>(T value) => new DirtyValue<T>(value);
 

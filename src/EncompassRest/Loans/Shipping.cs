@@ -103,43 +103,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Shipping Target Delivery Date")]
         public DateTime? TargetDeliveryDate { get => _targetDeliveryDate; set => _targetDeliveryDate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _actualShipDate.Dirty
-                || _carrierName.Dirty
-                || _downPaymentAmount.Dirty
-                || _id.Dirty
-                || _investorDeliveryDate.Dirty
-                || _packageTrackingNumber.Dirty
-                || _physicalFileStorageComments.Dirty
-                || _physicalFileStorageId.Dirty
-                || _physicalFileStorageLocation.Dirty
-                || _poolID.Dirty
-                || _poolNumber.Dirty
-                || _recordingNumber.Dirty
-                || _shipmentMethod.Dirty
-                || _shipperName.Dirty
-                || _targetDeliveryDate.Dirty
-                || _shippingContacts?.Dirty == true;
-            set
-            {
-                _actualShipDate.Dirty = value;
-                _carrierName.Dirty = value;
-                _downPaymentAmount.Dirty = value;
-                _id.Dirty = value;
-                _investorDeliveryDate.Dirty = value;
-                _packageTrackingNumber.Dirty = value;
-                _physicalFileStorageComments.Dirty = value;
-                _physicalFileStorageId.Dirty = value;
-                _physicalFileStorageLocation.Dirty = value;
-                _poolID.Dirty = value;
-                _poolNumber.Dirty = value;
-                _recordingNumber.Dirty = value;
-                _shipmentMethod.Dirty = value;
-                _shipperName.Dirty = value;
-                _targetDeliveryDate.Dirty = value;
-                if (_shippingContacts != null) _shippingContacts.Dirty = value;
-            }
-        }
     }
 }

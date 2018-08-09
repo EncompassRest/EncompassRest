@@ -42,23 +42,5 @@ namespace EncompassRest.Loans
         /// MilestoneTemplateLog MilestoneTemplateName
         /// </summary>
         public string MilestoneTemplateName { get => _milestoneTemplateName; set => _milestoneTemplateName = value; }
-        internal override bool DirtyInternal
-        {
-            get => _elliLogRecordId.Dirty
-                || _id.Dirty
-                || _isTemplateDatesLocked.Dirty
-                || _isTemplateLocked.Dirty
-                || _milestoneTemplateID.Dirty
-                || _milestoneTemplateName.Dirty;
-            set
-            {
-                _elliLogRecordId.Dirty = value;
-                _id.Dirty = value;
-                _isTemplateDatesLocked.Dirty = value;
-                _isTemplateLocked.Dirty = value;
-                _milestoneTemplateID.Dirty = value;
-                _milestoneTemplateName.Dirty = value;
-            }
-        }
     }
 }

@@ -32,19 +32,19 @@ namespace EncompassRest.Loans
                     customField = new CustomField { FieldName = FieldId };
                     Loan.CustomFields.Add(customField);
                 }
-                if (customField.DateValue.HasValue || customField._dateValue.Dirty)
+                if (customField.DateValue.HasValue || customField._dateValue?.Dirty == true)
                 {
                     customField.DateValue = value != null ? Convert.ToDateTime(value) : (DateTime?)null;
                     customField.StringValue = value?.ToString();
                     customField._stringValue.Dirty = false;
                 }
-                else if (customField.NumericValue.HasValue || customField._numericValue.Dirty)
+                else if (customField.NumericValue.HasValue || customField._numericValue?.Dirty == true)
                 {
                     customField.NumericValue = value != null ? Convert.ToDecimal(value) : (decimal?)null;
                     customField.StringValue = value != null ? FormattedValue : null;
                     customField._stringValue.Dirty = false;
                 }
-                else if (customField.StringValue != null || customField._stringValue.Dirty)
+                else if (customField.StringValue != null || customField._stringValue?.Dirty == true)
                 {
                     customField.StringValue = value?.ToString();
                 }

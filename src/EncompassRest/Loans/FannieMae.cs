@@ -117,47 +117,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Fannie Mae ULDD EC Status")]
         public string ULDDECStatus { get => _uLDDECStatus; set => _uLDDECStatus = value; }
-        internal override bool DirtyInternal
-        {
-            get => _caseIDAssignedByUCDIndicator.Dirty
-                || _cltv.Dirty
-                || _collateralUnderwriterScore.Dirty
-                || _community2ndRepaymentStructure.Dirty
-                || _communityLending.Dirty
-                || _correspondentAssignmentID.Dirty
-                || _duVersion.Dirty
-                || _eCStatus1003.Dirty
-                || _hcltv.Dirty
-                || _id.Dirty
-                || _interestedPartyContribution.Dirty
-                || _ltv.Dirty
-                || _mornetPlusCaseFileId.Dirty
-                || _propertyInspectionWaiverMessage.Dirty
-                || _startUpMortgage.Dirty
-                || _uCDCollectionStatus.Dirty
-                || _uCDPStatus.Dirty
-                || _uLDDECStatus.Dirty;
-            set
-            {
-                _caseIDAssignedByUCDIndicator.Dirty = value;
-                _cltv.Dirty = value;
-                _collateralUnderwriterScore.Dirty = value;
-                _community2ndRepaymentStructure.Dirty = value;
-                _communityLending.Dirty = value;
-                _correspondentAssignmentID.Dirty = value;
-                _duVersion.Dirty = value;
-                _eCStatus1003.Dirty = value;
-                _hcltv.Dirty = value;
-                _id.Dirty = value;
-                _interestedPartyContribution.Dirty = value;
-                _ltv.Dirty = value;
-                _mornetPlusCaseFileId.Dirty = value;
-                _propertyInspectionWaiverMessage.Dirty = value;
-                _startUpMortgage.Dirty = value;
-                _uCDCollectionStatus.Dirty = value;
-                _uCDPStatus.Dirty = value;
-                _uLDDECStatus.Dirty = value;
-            }
-        }
     }
 }

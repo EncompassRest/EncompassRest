@@ -58,29 +58,5 @@ namespace EncompassRest.Loans
         /// MilitaryService StartDate
         /// </summary>
         public DateTime? StartDate { get => _startDate; set => _startDate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _branch.Dirty
-                || _endDate.Dirty
-                || _id.Dirty
-                || _militaryServiceIndex.Dirty
-                || _name.Dirty
-                || _officerOrEnlisted.Dirty
-                || _serviceNumber.Dirty
-                || _sSN.Dirty
-                || _startDate.Dirty;
-            set
-            {
-                _branch.Dirty = value;
-                _endDate.Dirty = value;
-                _id.Dirty = value;
-                _militaryServiceIndex.Dirty = value;
-                _name.Dirty = value;
-                _officerOrEnlisted.Dirty = value;
-                _serviceNumber.Dirty = value;
-                _sSN.Dirty = value;
-                _startDate.Dirty = value;
-            }
-        }
     }
 }

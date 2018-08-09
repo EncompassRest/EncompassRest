@@ -38,21 +38,5 @@ namespace EncompassRest.Loans
         /// TrustAccount TrustAccountItems
         /// </summary>
         public IList<TrustAccountItem> TrustAccountItems { get => _trustAccountItems ?? (_trustAccountItems = new DirtyList<TrustAccountItem>()); set => _trustAccountItems = new DirtyList<TrustAccountItem>(value); }
-        internal override bool DirtyInternal
-        {
-            get => _balance.Dirty
-                || _id.Dirty
-                || _total1.Dirty
-                || _total2.Dirty
-                || _trustAccountItems?.Dirty == true;
-            set
-            {
-                _balance.Dirty = value;
-                _id.Dirty = value;
-                _total1.Dirty = value;
-                _total2.Dirty = value;
-                if (_trustAccountItems != null) _trustAccountItems.Dirty = value;
-            }
-        }
     }
 }

@@ -39,40 +39,5 @@ namespace EncompassRest.Loans.Attachments
         public EntityReference Document { get => _document; set => _document = value; }
         [IdPropertyName(nameof(AttachmentId))]
         string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _attachmentId.Dirty
-                    || _dateCreated.Dirty
-                    || _createdBy.Dirty
-                    || _createdByName.Dirty
-                    || _createReason.Dirty
-                    || _attachmentType.Dirty
-                    || _fileSize.Dirty
-                    || _isActive.Dirty
-                    || _pages?.Dirty == true
-                    || _rotation.Dirty
-                    || _title.Dirty
-                    || _fileWithExtension.Dirty
-                    || _document?.Dirty == true;
-            }
-            set
-            {
-                _attachmentId.Dirty = value;
-                _dateCreated.Dirty = value;
-                _createdBy.Dirty = value;
-                _createdByName.Dirty = value;
-                _createReason.Dirty = value;
-                _attachmentType.Dirty = value;
-                _fileSize.Dirty = value;
-                _isActive.Dirty = value;
-                if (_pages != null) _pages.Dirty = value;
-                _rotation.Dirty = value;
-                _title.Dirty = value;
-                _fileWithExtension.Dirty = value;
-                if (_document != null) _document.Dirty = value;
-            }
-        }
     }
 }

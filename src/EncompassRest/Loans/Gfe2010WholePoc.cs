@@ -39,21 +39,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Other\":\"O\"}")]
         public StringEnumValue<WholePocPaidByType> WholePocPaidByType { get => _wholePocPaidByType; set => _wholePocPaidByType = value; }
-        internal override bool DirtyInternal
-        {
-            get => _gfe2010WholePocIndex.Dirty
-                || _id.Dirty
-                || _lineNumber.Dirty
-                || _wholePoc.Dirty
-                || _wholePocPaidByType.Dirty;
-            set
-            {
-                _gfe2010WholePocIndex.Dirty = value;
-                _id.Dirty = value;
-                _lineNumber.Dirty = value;
-                _wholePoc.Dirty = value;
-                _wholePocPaidByType.Dirty = value;
-            }
-        }
     }
 }

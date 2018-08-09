@@ -128,51 +128,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "MLDS Pymt S6 Loan Balance Reduced Status")]
         public StringEnumValue<ReducedStatus> ReducedStatus { get => _reducedStatus; set => _reducedStatus = value; }
-        internal override bool DirtyInternal
-        {
-            get => _fixedRate.Dirty
-                || _gfePaymentIndex.Dirty
-                || _id.Dirty
-                || _indexRate.Dirty
-                || _isBalanceReduced.Dirty
-                || _loanTypeExplanation.Dirty
-                || _marginRate.Dirty
-                || _maximumDifference.Dirty
-                || _maximumRate.Dirty
-                || _minimumDifference.Dirty
-                || _minimumMonthlyPayment.Dirty
-                || _monthlyPaymentYear1.Dirty
-                || _monthlyPaymentYear6.Dirty
-                || _monthlyPaymentYear6Change.Dirty
-                || _monthlyPaymentYear6MaxChange.Dirty
-                || _notOfferedIndicator.Dirty
-                || _owedAfter5Years.Dirty
-                || _rateInMonth2.Dirty
-                || _reducedLoanBalance.Dirty
-                || _reducedStatus.Dirty;
-            set
-            {
-                _fixedRate.Dirty = value;
-                _gfePaymentIndex.Dirty = value;
-                _id.Dirty = value;
-                _indexRate.Dirty = value;
-                _isBalanceReduced.Dirty = value;
-                _loanTypeExplanation.Dirty = value;
-                _marginRate.Dirty = value;
-                _maximumDifference.Dirty = value;
-                _maximumRate.Dirty = value;
-                _minimumDifference.Dirty = value;
-                _minimumMonthlyPayment.Dirty = value;
-                _monthlyPaymentYear1.Dirty = value;
-                _monthlyPaymentYear6.Dirty = value;
-                _monthlyPaymentYear6Change.Dirty = value;
-                _monthlyPaymentYear6MaxChange.Dirty = value;
-                _notOfferedIndicator.Dirty = value;
-                _owedAfter5Years.Dirty = value;
-                _rateInMonth2.Dirty = value;
-                _reducedLoanBalance.Dirty = value;
-                _reducedStatus.Dirty = value;
-            }
-        }
     }
 }

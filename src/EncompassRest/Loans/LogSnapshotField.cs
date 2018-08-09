@@ -30,19 +30,5 @@ namespace EncompassRest.Loans
         /// LogSnapshotField Value
         /// </summary>
         public string Value { get => _value; set => _value = value; }
-        internal override bool DirtyInternal
-        {
-            get => _fieldID.Dirty
-                || _id.Dirty
-                || _modalPath.Dirty
-                || _value.Dirty;
-            set
-            {
-                _fieldID.Dirty = value;
-                _id.Dirty = value;
-                _modalPath.Dirty = value;
-                _value.Dirty = value;
-            }
-        }
     }
 }

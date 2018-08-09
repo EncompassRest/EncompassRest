@@ -35,21 +35,5 @@ namespace EncompassRest.Loans
         /// CustomModelFields ProvideWorstCaseScenario
         /// </summary>
         public bool? ProvideWorstCaseScenario { get => _provideWorstCaseScenario; set => _provideWorstCaseScenario = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _provideAmortizationScenario.Dirty
-                || _provideBestCaseScenario.Dirty
-                || _provideFHAScenario.Dirty
-                || _provideWorstCaseScenario.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _provideAmortizationScenario.Dirty = value;
-                _provideBestCaseScenario.Dirty = value;
-                _provideFHAScenario.Dirty = value;
-                _provideWorstCaseScenario.Dirty = value;
-            }
-        }
     }
 }

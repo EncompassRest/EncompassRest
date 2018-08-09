@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using EncompassRest.Utilities;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace EncompassRest
 {
@@ -29,7 +31,24 @@ namespace EncompassRest
                     return false;
                 }
                 _gettingDirty = true;
-                var dirty = CustomDirty || DirtyInternal || _extensionData?.Dirty == true;
+                var dirty = _extensionData?.Dirty == true;
+                if (!dirty)
+                {
+                    var customContractResolver = JsonHelper.InternalPrivateContractResolver;
+                    var contract = (JsonObjectContract)customContractResolver.ResolveContract(GetType());
+                    foreach (var property in contract.Properties)
+                    {
+                        if (!property.Ignored)
+                        {
+                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType, property.UnderlyingName)?.ValueProvider ?? property.ValueProvider;
+                            if ((valueProvider.GetValue(this) as IDirty)?.Dirty == true)
+                            {
+                                dirty = true;
+                                break;
+                            }
+                        }
+                    }
+                }
                 _gettingDirty = false;
                 return dirty;
             }
@@ -38,8 +57,19 @@ namespace EncompassRest
                 if (!_settingDirty)
                 {
                     _settingDirty = true;
-                    CustomDirty = value;
-                    DirtyInternal = value;
+                    var customContractResolver = JsonHelper.InternalPrivateContractResolver;
+                    var contract = (JsonObjectContract)customContractResolver.ResolveContract(GetType());
+                    foreach (var property in contract.Properties)
+                    {
+                        if (!property.Ignored)
+                        {
+                            var valueProvider = customContractResolver.GetBackingFieldInfo(property.DeclaringType, property.UnderlyingName)?.ValueProvider ?? property.ValueProvider;
+                            if (valueProvider.GetValue(this) is IDirty dirtyObject)
+                            {
+                                dirtyObject.Dirty = value;
+                            }
+                        }
+                    }
                     if (_extensionData != null)
                     {
                         _extensionData.Dirty = value;
@@ -48,8 +78,6 @@ namespace EncompassRest
                 }
             }
         }
-        internal virtual bool CustomDirty { get => false; set { } }
-        internal virtual bool DirtyInternal { get => false; set { } }
         bool IDirty.Dirty { get => Dirty; set => Dirty = value; }
         string IIdentifiable.Id { get => string.Empty; set { } }
         internal ExtensibleObject()

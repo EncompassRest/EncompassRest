@@ -26,18 +26,6 @@ namespace EncompassRest.Loans
 
         [IdPropertyName(nameof(ModelPath))]
         string IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
-
-        internal override bool CustomDirty
-        {
-            get
-            {
-                return _modelPath.Dirty;
-            }
-            set
-            {
-                _modelPath.Dirty = value;
-            }
-        }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeType))]
@@ -290,37 +278,12 @@ namespace EncompassRest.Loans
         public decimal? PacOther2015 { get => _pacOther2015; set => _pacOther2015 = value; }
         private DirtyValue<decimal?> _pocBorrower2015;
         public decimal? PocBorrower2015 { get => _pocBorrower2015; set => _pocBorrower2015 = value; }
-        internal override bool CustomDirty
-        {
-            get
-            {
-                return _amount.Dirty
-                    || _pacLender2015.Dirty
-                    || _pacOther2015.Dirty
-                    || _pocBorrower2015.Dirty;
-            }
-            set
-            {
-                _amount.Dirty = value;
-                _pacLender2015.Dirty = value;
-                _pacOther2015.Dirty = value;
-                _pocBorrower2015.Dirty = value;
-            }
-        }
     }
 
     partial class HtmlEmailLog
     {
         private DirtyList<EmailDocument> _docList;
         public IList<EmailDocument> DocList { get => _docList ?? (_docList = new DirtyList<EmailDocument>()); set => _docList = new DirtyList<EmailDocument>(value); }
-        internal override bool CustomDirty
-        {
-            get => _docList?.Dirty == true;
-            set
-            {
-                if (_docList != null) _docList.Dirty = value;
-            }
-        }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(NonVolIndex))]
@@ -330,19 +293,6 @@ namespace EncompassRest.Loans
         public string Id { get => _id; set => _id = value; }
         private DirtyValue<int?> _nonVolIndex;
         public int? NonVolIndex { get => _nonVolIndex; set => _nonVolIndex = value; }
-        internal override bool CustomDirty
-        {
-            get
-            {
-                return _id.Dirty
-                    || _nonVolIndex.Dirty;
-            }
-            set
-            {
-                _id.Dirty = value;
-                _nonVolIndex.Dirty = value;
-            }
-        }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(LoanAssociateType))]
@@ -375,6 +325,5 @@ namespace EncompassRest.Loans
         /// UCDDetail FeePaidBy
         /// </summary>
         public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
-        internal override bool CustomDirty { get => _feePaidBy.Dirty; set => _feePaidBy.Dirty = value; }
     }
 }

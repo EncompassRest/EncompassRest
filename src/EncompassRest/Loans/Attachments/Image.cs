@@ -16,26 +16,5 @@
         public float? VeriticalResolution { get => _verticalResolution; set => _verticalResolution = value; }
         [IdPropertyName(nameof(ImageKey))]
         string IIdentifiable.Id { get => ImageKey; set => ImageKey = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _imageKey.Dirty
-                    || _zipKey.Dirty
-                    || _width.Dirty
-                    || _height.Dirty
-                    || _horizontalResolution.Dirty
-                    || _verticalResolution.Dirty;
-            }
-            set
-            {
-                _imageKey.Dirty = value;
-                _zipKey.Dirty = value;
-                _width.Dirty = value;
-                _height.Dirty = value;
-                _horizontalResolution.Dirty = value;
-                _verticalResolution.Dirty = value;
-            }
-        }
     }
 }

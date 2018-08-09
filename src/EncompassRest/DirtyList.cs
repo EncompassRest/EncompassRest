@@ -30,9 +30,7 @@ namespace EncompassRest
             {
                 for (var i = 0; i < _list.Count; ++i)
                 {
-                    var item = _list[i];
-                    item.Dirty = value;
-                    _list[i] = item;
+                    _list[i].Dirty = value;
                 }
             }
         }

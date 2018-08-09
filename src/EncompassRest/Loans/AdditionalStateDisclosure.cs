@@ -30,19 +30,5 @@ namespace EncompassRest.Loans
         /// AdditionalStateDisclosure StateCode
         /// </summary>
         public StringEnumValue<State> StateCode { get => _stateCode; set => _stateCode = value; }
-        internal override bool DirtyInternal
-        {
-            get => _disclosureName.Dirty
-                || _disclosureValue.Dirty
-                || _id.Dirty
-                || _stateCode.Dirty;
-            set
-            {
-                _disclosureName.Dirty = value;
-                _disclosureValue.Dirty = value;
-                _id.Dirty = value;
-                _stateCode.Dirty = value;
-            }
-        }
     }
 }

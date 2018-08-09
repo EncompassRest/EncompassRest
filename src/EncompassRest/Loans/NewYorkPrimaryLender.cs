@@ -52,27 +52,5 @@ namespace EncompassRest.Loans
         /// NewYorkPrimaryLender State
         /// </summary>
         public StringEnumValue<State> State { get => _state; set => _state = value; }
-        internal override bool DirtyInternal
-        {
-            get => _address.Dirty
-                || _city.Dirty
-                || _comments.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _newYorkPrimaryLenderIndex.Dirty
-                || _postalCode.Dirty
-                || _state.Dirty;
-            set
-            {
-                _address.Dirty = value;
-                _city.Dirty = value;
-                _comments.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _newYorkPrimaryLenderIndex.Dirty = value;
-                _postalCode.Dirty = value;
-                _state.Dirty = value;
-            }
-        }
     }
 }

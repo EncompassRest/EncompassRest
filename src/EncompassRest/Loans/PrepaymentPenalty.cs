@@ -31,19 +31,5 @@ namespace EncompassRest.Loans
         /// PrepaymentPenalty TermMonthsCount
         /// </summary>
         public int? TermMonthsCount { get => _termMonthsCount; set => _termMonthsCount = value; }
-        internal override bool DirtyInternal
-        {
-            get => _fullPrepaymentPenaltyOptionType.Dirty
-                || _id.Dirty
-                || _prepaymentPenaltyPercent.Dirty
-                || _termMonthsCount.Dirty;
-            set
-            {
-                _fullPrepaymentPenaltyOptionType.Dirty = value;
-                _id.Dirty = value;
-                _prepaymentPenaltyPercent.Dirty = value;
-                _termMonthsCount.Dirty = value;
-            }
-        }
     }
 }

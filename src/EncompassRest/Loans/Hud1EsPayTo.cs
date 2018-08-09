@@ -140,59 +140,5 @@ namespace EncompassRest.Loans
         /// Hud1EsPayTo State
         /// </summary>
         public StringEnumValue<State> State { get => _state; set => _state = value; }
-        internal override bool DirtyInternal
-        {
-            get => _address.Dirty
-                || _amountLastPay.Dirty
-                || _amountNextDue.Dirty
-                || _city.Dirty
-                || _contactName.Dirty
-                || _coverageAmount.Dirty
-                || _datePaid.Dirty
-                || _delinquentDate.Dirty
-                || _email.Dirty
-                || _fax.Dirty
-                || _feeType.Dirty
-                || _hud1EsPayToIndex.Dirty
-                || _id.Dirty
-                || _maxDeductibleAmount.Dirty
-                || _maxDeductiblePercentage.Dirty
-                || _name.Dirty
-                || _nextDueDate.Dirty
-                || _paymentSchedule.Dirty
-                || _phone.Dirty
-                || _policyNumber.Dirty
-                || _postalCode.Dirty
-                || _premium.Dirty
-                || _renewalDate.Dirty
-                || _state.Dirty;
-            set
-            {
-                _address.Dirty = value;
-                _amountLastPay.Dirty = value;
-                _amountNextDue.Dirty = value;
-                _city.Dirty = value;
-                _contactName.Dirty = value;
-                _coverageAmount.Dirty = value;
-                _datePaid.Dirty = value;
-                _delinquentDate.Dirty = value;
-                _email.Dirty = value;
-                _fax.Dirty = value;
-                _feeType.Dirty = value;
-                _hud1EsPayToIndex.Dirty = value;
-                _id.Dirty = value;
-                _maxDeductibleAmount.Dirty = value;
-                _maxDeductiblePercentage.Dirty = value;
-                _name.Dirty = value;
-                _nextDueDate.Dirty = value;
-                _paymentSchedule.Dirty = value;
-                _phone.Dirty = value;
-                _policyNumber.Dirty = value;
-                _postalCode.Dirty = value;
-                _premium.Dirty = value;
-                _renewalDate.Dirty = value;
-                _state.Dirty = value;
-            }
-        }
     }
 }

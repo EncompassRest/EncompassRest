@@ -33,19 +33,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Borr Funds to Close - Down Pymt Source Descr")]
         public string SourceDescription { get => _sourceDescription; set => _sourceDescription = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _downPaymentType.Dirty
-                || _id.Dirty
-                || _sourceDescription.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _downPaymentType.Dirty = value;
-                _id.Dirty = value;
-                _sourceDescription.Dirty = value;
-            }
-        }
     }
 }

@@ -20,15 +20,5 @@ namespace EncompassRest.Loans
         /// EdmDocument Title
         /// </summary>
         public string Title { get => _title; set => _title = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _title.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _title.Dirty = value;
-            }
-        }
     }
 }

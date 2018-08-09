@@ -26,17 +26,5 @@ namespace EncompassRest.Loans
         /// PurchaseCredit PurchaseCreditType
         /// </summary>
         public StringEnumValue<PurchaseCreditType> PurchaseCreditType { get => _purchaseCreditType; set => _purchaseCreditType = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _id.Dirty
-                || _purchaseCreditType.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _id.Dirty = value;
-                _purchaseCreditType.Dirty = value;
-            }
-        }
     }
 }

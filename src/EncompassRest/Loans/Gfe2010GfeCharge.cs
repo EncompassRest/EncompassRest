@@ -49,25 +49,5 @@ namespace EncompassRest.Loans
         /// Gfe2010GfeCharge Line
         /// </summary>
         public string Line { get => _line; set => _line = value; }
-        internal override bool DirtyInternal
-        {
-            get => _chargeBelow10Indicator.Dirty
-                || _description.Dirty
-                || _gfe2010GfeChargeIndex.Dirty
-                || _gfeCharge.Dirty
-                || _hudCharge.Dirty
-                || _id.Dirty
-                || _line.Dirty;
-            set
-            {
-                _chargeBelow10Indicator.Dirty = value;
-                _description.Dirty = value;
-                _gfe2010GfeChargeIndex.Dirty = value;
-                _gfeCharge.Dirty = value;
-                _hudCharge.Dirty = value;
-                _id.Dirty = value;
-                _line.Dirty = value;
-            }
-        }
     }
 }

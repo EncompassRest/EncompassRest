@@ -74,33 +74,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? TotalPayment { get => _totalPayment; set => _totalPayment = value; }
-        internal override bool DirtyInternal
-        {
-            get => _adjustmentDate.Dirty
-                || _adjustmentMonths.Dirty
-                || _id.Dirty
-                || _interestPayment.Dirty
-                || _interestPrincipalPayment.Dirty
-                || _interestRatePercent.Dirty
-                || _monthlyPayment.Dirty
-                || _principalPayment.Dirty
-                || _regulationZInterestRatePeriodType.Dirty
-                || _taxInsuranceAmount.Dirty
-                || _totalPayment.Dirty;
-            set
-            {
-                _adjustmentDate.Dirty = value;
-                _adjustmentMonths.Dirty = value;
-                _id.Dirty = value;
-                _interestPayment.Dirty = value;
-                _interestPrincipalPayment.Dirty = value;
-                _interestRatePercent.Dirty = value;
-                _monthlyPayment.Dirty = value;
-                _principalPayment.Dirty = value;
-                _regulationZInterestRatePeriodType.Dirty = value;
-                _taxInsuranceAmount.Dirty = value;
-                _totalPayment.Dirty = value;
-            }
-        }
     }
 }

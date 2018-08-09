@@ -125,11 +125,5 @@ namespace EncompassRest.Loans
                 LoanApis = new LoanObjectBoundApis(client, this);
             }
         }
-
-        internal override bool CustomDirty
-        {
-            get => _currentApplicationIndex.Dirty;
-            set => _currentApplicationIndex.Dirty = value;
-        }
     }
 }

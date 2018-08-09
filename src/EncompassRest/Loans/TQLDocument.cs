@@ -21,15 +21,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "TQL Documents Delivered to Investor")]
         public DateTime? TQLDocumentDeliveredDate { get => _tQLDocumentDeliveredDate; set => _tQLDocumentDeliveredDate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _tQLDocumentDeliveredDate.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _tQLDocumentDeliveredDate.Dirty = value;
-            }
-        }
     }
 }

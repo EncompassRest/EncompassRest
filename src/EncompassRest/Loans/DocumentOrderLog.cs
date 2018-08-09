@@ -47,25 +47,5 @@ namespace EncompassRest.Loans
         /// DocumentOrderLog UserId
         /// </summary>
         public string UserId { get => _userId; set => _userId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _dateFilesPurged.Dirty
-                || _dateUtc.Dirty
-                || _orderId.Dirty
-                || _orderType.Dirty
-                || _userId.Dirty
-                || _documentAudit?.Dirty == true
-                || _documentFields?.Dirty == true;
-            set
-            {
-                _dateFilesPurged.Dirty = value;
-                _dateUtc.Dirty = value;
-                _orderId.Dirty = value;
-                _orderType.Dirty = value;
-                _userId.Dirty = value;
-                if (_documentAudit != null) _documentAudit.Dirty = value;
-                if (_documentFields != null) _documentFields.Dirty = value;
-            }
-        }
     }
 }

@@ -47,25 +47,5 @@ namespace EncompassRest.Loans
         /// LogAlert UserId
         /// </summary>
         public string UserId { get => _userId; set => _userId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _dueDate.Dirty
-                || _followedUpDate.Dirty
-                || _id.Dirty
-                || _roleId.Dirty
-                || _systemId.Dirty
-                || _userId.Dirty
-                || _logRecord?.Dirty == true;
-            set
-            {
-                _dueDate.Dirty = value;
-                _followedUpDate.Dirty = value;
-                _id.Dirty = value;
-                _roleId.Dirty = value;
-                _systemId.Dirty = value;
-                _userId.Dirty = value;
-                if (_logRecord != null) _logRecord.Dirty = value;
-            }
-        }
     }
 }

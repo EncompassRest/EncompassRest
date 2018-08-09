@@ -55,27 +55,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
         public decimal? SecondYearAmount { get => _secondYearAmount; set => _secondYearAmount = value; }
-        internal override bool DirtyInternal
-        {
-            get => _boolFieldValue.Dirty
-                || _businessName.Dirty
-                || _fieldName.Dirty
-                || _fieldValue.Dirty
-                || _firstYearAmount.Dirty
-                || _formType.Dirty
-                || _id.Dirty
-                || _secondYearAmount.Dirty;
-            set
-            {
-                _boolFieldValue.Dirty = value;
-                _businessName.Dirty = value;
-                _fieldName.Dirty = value;
-                _fieldValue.Dirty = value;
-                _firstYearAmount.Dirty = value;
-                _formType.Dirty = value;
-                _id.Dirty = value;
-                _secondYearAmount.Dirty = value;
-            }
-        }
     }
 }

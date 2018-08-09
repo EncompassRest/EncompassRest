@@ -106,49 +106,5 @@ namespace EncompassRest.Loans
         /// MilestoneLog TPOConnectStatus
         /// </summary>
         public string TPOConnectStatus { get => _tPOConnectStatus; set => _tPOConnectStatus = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _days.Dirty
-                || _doneIndicator.Dirty
-                || _duration.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _milestoneIdString.Dirty
-                || _reviewedIndicator.Dirty
-                || _roleRequired.Dirty
-                || _stage.Dirty
-                || _systemId.Dirty
-                || _tPOConnectStatus.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true
-                || _loanAssociate?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _days.Dirty = value;
-                _doneIndicator.Dirty = value;
-                _duration.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _milestoneIdString.Dirty = value;
-                _reviewedIndicator.Dirty = value;
-                _roleRequired.Dirty = value;
-                _stage.Dirty = value;
-                _systemId.Dirty = value;
-                _tPOConnectStatus.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-                if (_loanAssociate != null) _loanAssociate.Dirty = value;
-            }
-        }
     }
 }

@@ -68,31 +68,5 @@ namespace EncompassRest.Loans
         /// TQLFraudAlert TQLFraudAlertIndex
         /// </summary>
         public int? TQLFraudAlertIndex { get => _tQLFraudAlertIndex; set => _tQLFraudAlertIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _driveFraudAlertCode.Dirty
-                || _driveFraudAlertStatus.Dirty
-                || _fraudGuardFraudAlertCode.Dirty
-                || _fraudGuardFraudAlertStatus.Dirty
-                || _id.Dirty
-                || _lastFraudOrderAlertCategories.Dirty
-                || _lastFraudOrderAlertID.Dirty
-                || _lastFraudOrderAlertLevel.Dirty
-                || _lastFraudOrderDescriptionOfAlerts.Dirty
-                || _tQLFraudAlertIndex.Dirty;
-            set
-            {
-                _driveFraudAlertCode.Dirty = value;
-                _driveFraudAlertStatus.Dirty = value;
-                _fraudGuardFraudAlertCode.Dirty = value;
-                _fraudGuardFraudAlertStatus.Dirty = value;
-                _id.Dirty = value;
-                _lastFraudOrderAlertCategories.Dirty = value;
-                _lastFraudOrderAlertID.Dirty = value;
-                _lastFraudOrderAlertLevel.Dirty = value;
-                _lastFraudOrderDescriptionOfAlerts.Dirty = value;
-                _tQLFraudAlertIndex.Dirty = value;
-            }
-        }
     }
 }

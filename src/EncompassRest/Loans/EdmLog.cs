@@ -81,39 +81,5 @@ namespace EncompassRest.Loans
         /// EdmLog Url
         /// </summary>
         public string Url { get => _url; set => _url = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _creator.Dirty
-                || _dateUtc.Dirty
-                || _description.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _systemId.Dirty
-                || _url.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true
-                || _documents?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _creator.Dirty = value;
-                _dateUtc.Dirty = value;
-                _description.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _systemId.Dirty = value;
-                _url.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-                if (_documents != null) _documents.Dirty = value;
-            }
-        }
     }
 }

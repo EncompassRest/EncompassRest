@@ -30,19 +30,5 @@ namespace EncompassRest.Loans
         /// DocumentAuditAlert Type
         /// </summary>
         public string Type { get => _type; set => _type = value; }
-        internal override bool DirtyInternal
-        {
-            get => _source.Dirty
-                || _text.Dirty
-                || _type.Dirty
-                || _fields?.Dirty == true;
-            set
-            {
-                _source.Dirty = value;
-                _text.Dirty = value;
-                _type.Dirty = value;
-                if (_fields != null) _fields.Dirty = value;
-            }
-        }
     }
 }

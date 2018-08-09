@@ -21,29 +21,6 @@ namespace EncompassRest.Contacts
         public bool? NoSpam { get => _noSpam; set => _noSpam = value; }
         private DirtyValue<int?> _fees;
         public int? Fees { get => Fees; set => _fees = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return base.DirtyInternal
-                    || _categoryId.Dirty
-                    || _companyName.Dirty
-                    || _personalContactLicense?.Dirty == true
-                    || _businessContactLicense?.Dirty == true
-                    || _noSpam.Dirty
-                    || _fees.Dirty;
-            }
-            set
-            {
-                base.DirtyInternal = value;
-                _categoryId.Dirty = value;
-                _companyName.Dirty = value;
-                if (_personalContactLicense!= null) _personalContactLicense.Dirty = value;
-                if (_businessContactLicense!= null) _businessContactLicense.Dirty = value;
-                _noSpam.Dirty = value;
-                _fees.Dirty = value;
-            }
-        }
 
         /// <summary>
         /// BusinessContact creation constructor

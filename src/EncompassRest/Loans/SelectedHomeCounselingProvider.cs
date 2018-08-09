@@ -153,59 +153,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Home Counseling Provider - Selected Record ID")]
         public string SelectedGUID { get => _selectedGUID; set => _selectedGUID = value; }
-        internal override bool DirtyInternal
-        {
-            get => _affiliatedWithLenderIndicator.Dirty
-                || _agencyAddress.Dirty
-                || _agencyAddressCity.Dirty
-                || _agencyAddressPostalCode.Dirty
-                || _agencyAddressState.Dirty
-                || _agencyAffiliationDescription.Dirty
-                || _agencyEmail.Dirty
-                || _agencyFax.Dirty
-                || _agencyName.Dirty
-                || _agencyPhoneDirect.Dirty
-                || _agencyPhoneTollFree.Dirty
-                || _agencyWebAddress.Dirty
-                || _brrowerSelectCounselorIndicator.Dirty
-                || _certificationIssuedIndicator.Dirty
-                || _counselingServicesProvided.Dirty
-                || _distanceMiles.Dirty
-                || _explanation.Dirty
-                || _homeCounselingCompletionDate.Dirty
-                || _homeCounselingDisclosureDate.Dirty
-                || _homeCounselingGeneratedDate.Dirty
-                || _homeCounselingRequiredIndicator.Dirty
-                || _id.Dirty
-                || _languagesSupported.Dirty
-                || _selectedGUID.Dirty;
-            set
-            {
-                _affiliatedWithLenderIndicator.Dirty = value;
-                _agencyAddress.Dirty = value;
-                _agencyAddressCity.Dirty = value;
-                _agencyAddressPostalCode.Dirty = value;
-                _agencyAddressState.Dirty = value;
-                _agencyAffiliationDescription.Dirty = value;
-                _agencyEmail.Dirty = value;
-                _agencyFax.Dirty = value;
-                _agencyName.Dirty = value;
-                _agencyPhoneDirect.Dirty = value;
-                _agencyPhoneTollFree.Dirty = value;
-                _agencyWebAddress.Dirty = value;
-                _brrowerSelectCounselorIndicator.Dirty = value;
-                _certificationIssuedIndicator.Dirty = value;
-                _counselingServicesProvided.Dirty = value;
-                _distanceMiles.Dirty = value;
-                _explanation.Dirty = value;
-                _homeCounselingCompletionDate.Dirty = value;
-                _homeCounselingDisclosureDate.Dirty = value;
-                _homeCounselingGeneratedDate.Dirty = value;
-                _homeCounselingRequiredIndicator.Dirty = value;
-                _id.Dirty = value;
-                _languagesSupported.Dirty = value;
-                _selectedGUID.Dirty = value;
-            }
-        }
     }
 }

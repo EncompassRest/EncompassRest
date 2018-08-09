@@ -92,39 +92,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Escrow User Defined 3")]
         public decimal? UserDefined3 { get => _userDefined3; set => _userDefined3 = value; }
-        internal override bool DirtyInternal
-        {
-            get => _aggrMthDisb.Dirty
-                || _annualFee.Dirty
-                || _balance.Dirty
-                || _date.Dirty
-                || _floodInsDisb.Dirty
-                || _hazInsDisb.Dirty
-                || _hud1EsDateIndex.Dirty
-                || _id.Dirty
-                || _mtgInsDisb.Dirty
-                || _schoolTaxes.Dirty
-                || _taxDisb.Dirty
-                || _userDefined1.Dirty
-                || _userDefined2.Dirty
-                || _userDefined3.Dirty;
-            set
-            {
-                _aggrMthDisb.Dirty = value;
-                _annualFee.Dirty = value;
-                _balance.Dirty = value;
-                _date.Dirty = value;
-                _floodInsDisb.Dirty = value;
-                _hazInsDisb.Dirty = value;
-                _hud1EsDateIndex.Dirty = value;
-                _id.Dirty = value;
-                _mtgInsDisb.Dirty = value;
-                _schoolTaxes.Dirty = value;
-                _taxDisb.Dirty = value;
-                _userDefined1.Dirty = value;
-                _userDefined2.Dirty = value;
-                _userDefined3.Dirty = value;
-            }
-        }
     }
 }

@@ -38,21 +38,5 @@ namespace EncompassRest.Loans
         /// TQLComplianceAlert TQLComplianceAlertIndex
         /// </summary>
         public int? TQLComplianceAlertIndex { get => _tQLComplianceAlertIndex; set => _tQLComplianceAlertIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _lastComplianceOrderAlertCategories.Dirty
-                || _lastComplianceOrderAlertMessage.Dirty
-                || _lastComplianceOrderDescriptionOfAlerts.Dirty
-                || _tQLComplianceAlertIndex.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _lastComplianceOrderAlertCategories.Dirty = value;
-                _lastComplianceOrderAlertMessage.Dirty = value;
-                _lastComplianceOrderDescriptionOfAlerts.Dirty = value;
-                _tQLComplianceAlertIndex.Dirty = value;
-            }
-        }
     }
 }

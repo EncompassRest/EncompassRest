@@ -32,19 +32,5 @@ namespace EncompassRest.Loans
         /// GfePayoff Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _description.Dirty
-                || _gfePayoffIndex.Dirty
-                || _id.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _description.Dirty = value;
-                _gfePayoffIndex.Dirty = value;
-                _id.Dirty = value;
-            }
-        }
     }
 }

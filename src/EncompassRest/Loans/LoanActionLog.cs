@@ -46,25 +46,5 @@ namespace EncompassRest.Loans
         /// LoanActionLog TriggeredBy
         /// </summary>
         public string TriggeredBy { get => _triggeredBy; set => _triggeredBy = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _id.Dirty
-                || _loanActionType.Dirty
-                || _triggeredBy.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _id.Dirty = value;
-                _loanActionType.Dirty = value;
-                _triggeredBy.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

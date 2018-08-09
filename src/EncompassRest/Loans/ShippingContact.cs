@@ -73,35 +73,5 @@ namespace EncompassRest.Loans
         /// ShippingContact State
         /// </summary>
         public StringEnumValue<State> State { get => _state; set => _state = value; }
-        internal override bool DirtyInternal
-        {
-            get => _address.Dirty
-                || _address2.Dirty
-                || _city.Dirty
-                || _contactName.Dirty
-                || _email.Dirty
-                || _fax.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _phone.Dirty
-                || _postalCode.Dirty
-                || _shippingContactType.Dirty
-                || _state.Dirty;
-            set
-            {
-                _address.Dirty = value;
-                _address2.Dirty = value;
-                _city.Dirty = value;
-                _contactName.Dirty = value;
-                _email.Dirty = value;
-                _fax.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _phone.Dirty = value;
-                _postalCode.Dirty = value;
-                _shippingContactType.Dirty = value;
-                _state.Dirty = value;
-            }
-        }
     }
 }

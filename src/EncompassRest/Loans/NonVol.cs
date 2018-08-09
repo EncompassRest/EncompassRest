@@ -64,29 +64,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "PrincipalCureAddendum Amount")]
         public string PrincipalCureAddendum { get => _principalCureAddendum; set => _principalCureAddendum = value; }
-        internal override bool DirtyInternal
-        {
-            get => _adjustmentAmount.Dirty
-                || _adjustmentDescription.Dirty
-                || _adjustmentOtherDescription.Dirty
-                || _adjustmentType.Dirty
-                || _includedIndicator.Dirty
-                || _paidBy.Dirty
-                || _paidTo.Dirty
-                || _pOCIndicator.Dirty
-                || _principalCureAddendum.Dirty;
-            set
-            {
-                _adjustmentAmount.Dirty = value;
-                _adjustmentDescription.Dirty = value;
-                _adjustmentOtherDescription.Dirty = value;
-                _adjustmentType.Dirty = value;
-                _includedIndicator.Dirty = value;
-                _paidBy.Dirty = value;
-                _paidTo.Dirty = value;
-                _pOCIndicator.Dirty = value;
-                _principalCureAddendum.Dirty = value;
-            }
-        }
     }
 }

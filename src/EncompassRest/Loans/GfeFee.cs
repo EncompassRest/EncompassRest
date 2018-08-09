@@ -53,27 +53,5 @@ namespace EncompassRest.Loans
         /// GfeFee Rate
         /// </summary>
         public string Rate { get => _rate; set => _rate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amountDescription.Dirty
-                || _brokerAmount.Dirty
-                || _description.Dirty
-                || _gfeFeeIndex.Dirty
-                || _gfeFeeType.Dirty
-                || _id.Dirty
-                || _otherAmount.Dirty
-                || _rate.Dirty;
-            set
-            {
-                _amountDescription.Dirty = value;
-                _brokerAmount.Dirty = value;
-                _description.Dirty = value;
-                _gfeFeeIndex.Dirty = value;
-                _gfeFeeType.Dirty = value;
-                _id.Dirty = value;
-                _otherAmount.Dirty = value;
-                _rate.Dirty = value;
-            }
-        }
     }
 }

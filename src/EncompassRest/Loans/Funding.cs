@@ -135,53 +135,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Funding Wired To 2 - For Further Credit To")]
         public string WiredToForFurtherCreditTo2 { get => _wiredToForFurtherCreditTo2; set => _wiredToForFurtherCreditTo2 = value; }
-        internal override bool DirtyInternal
-        {
-            get => _collateralSentDate.Dirty
-                || _funderName.Dirty
-                || _funderUrl.Dirty
-                || _fundingClearedBy.Dirty
-                || _fundingCloseDate.Dirty
-                || _fundingFees.Dirty
-                || _fundingOrderDate.Dirty
-                || _fundingType.Dirty
-                || _fundsReleasedDate.Dirty
-                || _fundsReleaseNumber.Dirty
-                || _fundsSentDate.Dirty
-                || _fundsWireTo.Dirty
-                || _id.Dirty
-                || _sentToFunderDate.Dirty
-                || _wiredToAbaNumber.Dirty
-                || _wiredToAccountNumber.Dirty
-                || _wiredToForCreditTo.Dirty
-                || _wiredToForCreditTo1.Dirty
-                || _wiredToForCreditTo2.Dirty
-                || _wiredToForFurtherCreditTo1.Dirty
-                || _wiredToForFurtherCreditTo2.Dirty;
-            set
-            {
-                _collateralSentDate.Dirty = value;
-                _funderName.Dirty = value;
-                _funderUrl.Dirty = value;
-                _fundingClearedBy.Dirty = value;
-                _fundingCloseDate.Dirty = value;
-                _fundingFees.Dirty = value;
-                _fundingOrderDate.Dirty = value;
-                _fundingType.Dirty = value;
-                _fundsReleasedDate.Dirty = value;
-                _fundsReleaseNumber.Dirty = value;
-                _fundsSentDate.Dirty = value;
-                _fundsWireTo.Dirty = value;
-                _id.Dirty = value;
-                _sentToFunderDate.Dirty = value;
-                _wiredToAbaNumber.Dirty = value;
-                _wiredToAccountNumber.Dirty = value;
-                _wiredToForCreditTo.Dirty = value;
-                _wiredToForCreditTo1.Dirty = value;
-                _wiredToForCreditTo2.Dirty = value;
-                _wiredToForFurtherCreditTo1.Dirty = value;
-                _wiredToForFurtherCreditTo2.Dirty = value;
-            }
-        }
     }
 }

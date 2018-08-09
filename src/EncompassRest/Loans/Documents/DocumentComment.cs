@@ -22,30 +22,5 @@ namespace EncompassRest.Loans.Documents
         public string ReviewedBy { get => _reviewedBy; set => _reviewedBy = value; }
         [IdPropertyName(nameof(CommentId))]
         string IIdentifiable.Id { get => CommentId; set => CommentId = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _comments.Dirty
-                    || _forRoleId.Dirty
-                    || _commentId.Dirty
-                    || _dateCreated.Dirty
-                    || _createdBy.Dirty
-                    || _createdByName.Dirty
-                    || _dateReviewed.Dirty
-                    || _reviewedBy.Dirty;
-            }
-            set
-            {
-                _comments.Dirty = value;
-                _forRoleId.Dirty = value;
-                _commentId.Dirty = value;
-                _dateCreated.Dirty = value;
-                _createdBy.Dirty = value;
-                _createdByName.Dirty = value;
-                _dateReviewed.Dirty = value;
-                _reviewedBy.Dirty = value;
-            }
-        }
     }
 }

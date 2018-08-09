@@ -67,44 +67,5 @@ namespace EncompassRest.Contacts
         public string Salutation { get => _salutation; set => _salutation = value; }
         private DirtyValue<string> _id;
         public string Id { get => _id; set => _id = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _firstName.Dirty
-                    || _lastName.Dirty
-                    || _ownerId.Dirty
-                    || _accessLevel.Dirty
-                    || _currentMailingAddress?.Dirty == true
-                    || _businessWebUrl.Dirty
-                    || _jobTitle.Dirty
-                    || _workPhone.Dirty
-                    || _homePhone.Dirty
-                    || _mobilePhone.Dirty
-                    || _faxNumber.Dirty
-                    || _personalEmail.Dirty
-                    || _businessEmail.Dirty
-                    || _salutation.Dirty
-                    || _id.Dirty;
-            }
-            set
-            {
-                _firstName.Dirty = value;
-                _lastName.Dirty = value;
-                _ownerId.Dirty = value;
-                _accessLevel.Dirty = value;
-                if (_currentMailingAddress != null) _currentMailingAddress.Dirty = value;
-                _businessWebUrl.Dirty = value;
-                _jobTitle.Dirty = value;
-                _workPhone.Dirty = value;
-                _homePhone.Dirty = value;
-                _mobilePhone.Dirty = value;
-                _faxNumber.Dirty = value;
-                _personalEmail.Dirty = value;
-                _businessEmail.Dirty = value;
-                _salutation.Dirty = value;
-                _id.Dirty = value;
-            }
-        }
     }
 }

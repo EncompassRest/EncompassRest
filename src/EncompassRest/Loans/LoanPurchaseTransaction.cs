@@ -111,49 +111,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _createdById.Dirty
-                || _createdByName.Dirty
-                || _createdDateTimeUtc.Dirty
-                || _createdTime.Dirty
-                || _firstPaymenttoInvestor.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _investor.Dirty
-                || _investorLoanNumber.Dirty
-                || _modifiedById.Dirty
-                || _modifiedByName.Dirty
-                || _modifiedDateTimeUtc.Dirty
-                || _purchaseAdivceDate.Dirty
-                || _purchaseAmount.Dirty
-                || _servicingPaymentMethod.Dirty
-                || _servicingTransactionType.Dirty
-                || _transactionAmount.Dirty
-                || _transactionDate.Dirty;
-            set
-            {
-                _comments.Dirty = value;
-                _createdById.Dirty = value;
-                _createdByName.Dirty = value;
-                _createdDateTimeUtc.Dirty = value;
-                _createdTime.Dirty = value;
-                _firstPaymenttoInvestor.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _investor.Dirty = value;
-                _investorLoanNumber.Dirty = value;
-                _modifiedById.Dirty = value;
-                _modifiedByName.Dirty = value;
-                _modifiedDateTimeUtc.Dirty = value;
-                _purchaseAdivceDate.Dirty = value;
-                _purchaseAmount.Dirty = value;
-                _servicingPaymentMethod.Dirty = value;
-                _servicingTransactionType.Dirty = value;
-                _transactionAmount.Dirty = value;
-                _transactionDate.Dirty = value;
-            }
-        }
     }
 }

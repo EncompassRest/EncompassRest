@@ -42,23 +42,5 @@ namespace EncompassRest.Loans
         /// GfeLien Priority
         /// </summary>
         public string Priority { get => _priority; set => _priority = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amountOwing.Dirty
-                || _gfeLienIndex.Dirty
-                || _gfeLienType.Dirty
-                || _holderName.Dirty
-                || _id.Dirty
-                || _priority.Dirty;
-            set
-            {
-                _amountOwing.Dirty = value;
-                _gfeLienIndex.Dirty = value;
-                _gfeLienType.Dirty = value;
-                _holderName.Dirty = value;
-                _id.Dirty = value;
-                _priority.Dirty = value;
-            }
-        }
     }
 }

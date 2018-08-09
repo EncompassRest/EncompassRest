@@ -20,15 +20,5 @@ namespace EncompassRest.Loans
         /// ElliUCDDetail LEFields
         /// </summary>
         public IDictionary<string, string> LEFields { get => _lEFields ?? (_lEFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _lEFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
-        internal override bool DirtyInternal
-        {
-            get => _cDFields?.Dirty == true
-                || _lEFields?.Dirty == true;
-            set
-            {
-                if (_cDFields != null) _cDFields.Dirty = value;
-                if (_lEFields != null) _lEFields.Dirty = value;
-            }
-        }
     }
 }

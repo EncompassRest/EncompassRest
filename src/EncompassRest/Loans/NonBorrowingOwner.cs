@@ -106,43 +106,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Non-Borrowing Owner File Contact - Suffix Name")]
         public string SuffixName { get => _suffixName; set => _suffixName = value; }
-        internal override bool DirtyInternal
-        {
-            get => _addressCity.Dirty
-                || _addressPostalCode.Dirty
-                || _addressState.Dirty
-                || _addressStreet.Dirty
-                || _borrowerType.Dirty
-                || _businessPhoneNumber.Dirty
-                || _cellPhoneNumber.Dirty
-                || _dateOfBirth.Dirty
-                || _email.Dirty
-                || _faxNumber.Dirty
-                || _firstName.Dirty
-                || _homePhoneNumber.Dirty
-                || _lastName.Dirty
-                || _middleName.Dirty
-                || _no3rdPartyEmailIndicator.Dirty
-                || _suffixName.Dirty;
-            set
-            {
-                _addressCity.Dirty = value;
-                _addressPostalCode.Dirty = value;
-                _addressState.Dirty = value;
-                _addressStreet.Dirty = value;
-                _borrowerType.Dirty = value;
-                _businessPhoneNumber.Dirty = value;
-                _cellPhoneNumber.Dirty = value;
-                _dateOfBirth.Dirty = value;
-                _email.Dirty = value;
-                _faxNumber.Dirty = value;
-                _firstName.Dirty = value;
-                _homePhoneNumber.Dirty = value;
-                _lastName.Dirty = value;
-                _middleName.Dirty = value;
-                _no3rdPartyEmailIndicator.Dirty = value;
-                _suffixName.Dirty = value;
-            }
-        }
     }
 }

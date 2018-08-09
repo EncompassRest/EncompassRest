@@ -21,26 +21,5 @@ namespace EncompassRest.Loans.Conditions
 
         [IdPropertyName(nameof(CommentId))]
         string IIdentifiable.Id { get => _commentId; set => _commentId = value; }
-
-        internal override bool DirtyInternal
-        {
-            get => _commentId.Dirty
-                || _comments.Dirty
-                || _forRoleId.Dirty
-                || _dateCreated.Dirty
-                || _createdBy.Dirty
-                || _createdByName.Dirty
-                || _forRole?.Dirty == true;
-            set
-            {
-                _commentId.Dirty = value;
-                _comments.Dirty = value;
-                _forRoleId.Dirty = value;
-                _dateCreated.Dirty = value;
-                _createdBy.Dirty = value;
-                _createdByName.Dirty = value;
-                if (_forRole != null) _forRole.Dirty = value;
-            }
-        }
     }
 }

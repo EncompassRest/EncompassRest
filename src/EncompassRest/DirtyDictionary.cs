@@ -28,11 +28,9 @@ namespace EncompassRest
             get => _dictionary.Any(pair => pair.Value.Dirty);
             set
             {
-                foreach (var pair in _dictionary.ToList())
+                foreach (var pair in _dictionary)
                 {
-                    var pairValue = pair.Value;
-                    pairValue.Dirty = value;
-                    _dictionary[pair.Key] = pairValue;
+                    pair.Value.Dirty = value;
                 }
             }
         }

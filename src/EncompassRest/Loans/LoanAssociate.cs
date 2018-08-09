@@ -65,33 +65,5 @@ namespace EncompassRest.Loans
         /// LoanAssociate WriteAccess
         /// </summary>
         public string WriteAccess { get => _writeAccess; set => _writeAccess = value; }
-        internal override bool DirtyInternal
-        {
-            get => _cellPhone.Dirty
-                || _email.Dirty
-                || _fax.Dirty
-                || _id.Dirty
-                || _idString.Dirty
-                || _loanAssociateType.Dirty
-                || _name.Dirty
-                || _phone.Dirty
-                || _roleId.Dirty
-                || _roleName.Dirty
-                || _writeAccess.Dirty;
-            set
-            {
-                _cellPhone.Dirty = value;
-                _email.Dirty = value;
-                _fax.Dirty = value;
-                _id.Dirty = value;
-                _idString.Dirty = value;
-                _loanAssociateType.Dirty = value;
-                _name.Dirty = value;
-                _phone.Dirty = value;
-                _roleId.Dirty = value;
-                _roleName.Dirty = value;
-                _writeAccess.Dirty = value;
-            }
-        }
     }
 }

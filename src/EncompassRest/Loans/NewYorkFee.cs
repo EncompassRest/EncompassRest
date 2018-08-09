@@ -74,33 +74,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "NY Fees Company State")]
         public StringEnumValue<State> State { get => _state; set => _state = value; }
-        internal override bool DirtyInternal
-        {
-            get => _address.Dirty
-                || _amount.Dirty
-                || _city.Dirty
-                || _comments.Dirty
-                || _date.Dirty
-                || _feeType.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _newYorkFeeIndex.Dirty
-                || _postalCode.Dirty
-                || _state.Dirty;
-            set
-            {
-                _address.Dirty = value;
-                _amount.Dirty = value;
-                _city.Dirty = value;
-                _comments.Dirty = value;
-                _date.Dirty = value;
-                _feeType.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _newYorkFeeIndex.Dirty = value;
-                _postalCode.Dirty = value;
-                _state.Dirty = value;
-            }
-        }
     }
 }

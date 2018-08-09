@@ -50,25 +50,5 @@ namespace EncompassRest.Loans
         /// Hud1EsItemize Id
         /// </summary>
         public string Id { get => _id; set => _id = value; }
-        internal override bool DirtyInternal
-        {
-            get => _date.Dirty
-                || _escrowPaymentBalance.Dirty
-                || _escrowPaymentDescription.Dirty
-                || _escrowPaymentFrom.Dirty
-                || _escrowPaymentTo.Dirty
-                || _hud1EsItemizeIndex.Dirty
-                || _id.Dirty;
-            set
-            {
-                _date.Dirty = value;
-                _escrowPaymentBalance.Dirty = value;
-                _escrowPaymentDescription.Dirty = value;
-                _escrowPaymentFrom.Dirty = value;
-                _escrowPaymentTo.Dirty = value;
-                _hud1EsItemizeIndex.Dirty = value;
-                _id.Dirty = value;
-            }
-        }
     }
 }

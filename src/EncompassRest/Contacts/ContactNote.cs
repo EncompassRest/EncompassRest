@@ -22,22 +22,5 @@ namespace EncompassRest.Contacts
         public string Details { get => _details; set => _details = value; }
         [IdPropertyName(nameof(NoteId))]
         string IIdentifiable.Id { get => NoteId; set => NoteId = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return _noteIdInt.Dirty
-                    || _subject.Dirty
-                    || _timestamp.Dirty
-                    || _details.Dirty;
-            }
-            set
-            {
-                _noteIdInt.Dirty = value;
-                _subject.Dirty = value;
-                _timestamp.Dirty = value;
-                _details.Dirty = value;
-            }
-        }
     }
 }

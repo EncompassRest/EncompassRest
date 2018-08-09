@@ -37,21 +37,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Custom Field Value")]
         public string StringValue { get => _stringValue; set => _stringValue = value; }
-        internal override bool DirtyInternal
-        {
-            get => _dateValue.Dirty
-                || _fieldName.Dirty
-                || _id.Dirty
-                || _numericValue.Dirty
-                || _stringValue.Dirty;
-            set
-            {
-                _dateValue.Dirty = value;
-                _fieldName.Dirty = value;
-                _id.Dirty = value;
-                _numericValue.Dirty = value;
-                _stringValue.Dirty = value;
-            }
-        }
     }
 }

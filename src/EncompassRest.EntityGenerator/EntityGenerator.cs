@@ -551,9 +551,7 @@ namespace {@namespace}
     public sealed partial class {entityName} : ExtensibleObject, IIdentifiable
     {{
 ");
-
-            var properties = new List<(string Name, string FieldName, bool IsEntity, bool IsCollection)>();
-
+            
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key.Replace("_", string.Empty);
@@ -680,7 +678,6 @@ namespace {@namespace}
                     }
                     var fieldName = $"_{char.ToLower(propertyName[0])}{propertyName.Substring(1)}";
                     sb.AppendLine($"        {(s_propertiesWithInternalFields.Contains(entityPropertyName) ? "internal" : "private")} {(isEntity || isList || isStringDictionary ? propertyType : $"DirtyValue<{propertyType}>")} {fieldName};");
-                    properties.Add((propertyName, fieldName, isEntity, isList || isStringDictionary));
                     sb.AppendLine($@"        /// <summary>
         /// {(string.IsNullOrEmpty(propertySchema.Description) ? $"{entityName} {propertyName}" : propertySchema.Description.Replace("&", "&amp;"))}{(string.IsNullOrEmpty(propertySchema.FieldId) ? (propertySchema.FieldInstances?.Count == 1 ? $" [{propertySchema.FieldInstances.First().Key}]" : (propertySchema.FieldPatterns?.Count == 1 ? $" [{propertySchema.FieldPatterns.First().Key}]" : string.Empty)) : $" [{propertySchema.FieldId}]")}
         /// </summary>");
@@ -692,28 +689,9 @@ namespace {@namespace}
                 }
             }
 
-            // Sorts non entity types first
-            properties = properties.OrderBy(property => property.IsEntity || property.IsCollection).ToList();
-
             sb.Append(
-$@"        internal override bool DirtyInternal
-        {{
-            get => {string.Join($"{Environment.NewLine}                || ", properties.Select(property => $"{property.FieldName}{(property.IsEntity || property.IsCollection ? "?.Dirty == true" : ".Dirty")}"))};
-            set
-            {{
-                {string.Join($"{Environment.NewLine}                ", properties.Select(property =>
-                    {
-                        var propertyName = property.FieldName;
-                        if (property.IsEntity || property.IsCollection)
-                        {
-                            return $"if ({propertyName} != null) {propertyName}.Dirty = value;";
-                        }
-                        return $"{propertyName}.Dirty = value;";
-                    }))}
-            }}
-        }}
-    }}
-}}");
+@"    }
+}");
             using (var sw = new StreamWriter(Path.Combine(destinationPath, entityName + ".cs")))
             {
                 sw.Write(sb.ToString());

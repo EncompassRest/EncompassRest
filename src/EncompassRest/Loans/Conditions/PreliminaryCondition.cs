@@ -16,26 +16,5 @@ namespace EncompassRest.Loans.Conditions
         public DateTime? FulfilledDate { get => _fulfilledDate; set => _fulfilledDate = value; }
         private EntityReference _fulfilledBy;
         public EntityReference FulfilledBy { get => _fulfilledBy ?? (_fulfilledBy = new EntityReference()); set => _fulfilledBy = value; }
-
-        internal override bool DirtyInternal
-        {
-            get => base.DirtyInternal
-                || _uwAccess.Dirty
-                || _priorTo.Dirty
-                || _category.Dirty
-                || _isFulfilled.Dirty
-                || _fulfilledDate.Dirty
-                || _fulfilledBy?.Dirty == true;
-            set
-            {
-                base.DirtyInternal = value;
-                _uwAccess.Dirty = value;
-                _priorTo.Dirty = value;
-                _category.Dirty = value;
-                _isFulfilled.Dirty = value;
-                _fulfilledDate.Dirty = value;
-                if (_fulfilledBy != null) _fulfilledBy.Dirty = value;
-            }
-        }
     }
 }

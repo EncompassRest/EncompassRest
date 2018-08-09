@@ -20,15 +20,5 @@ namespace EncompassRest.Loans
         /// FieldLockData Value
         /// </summary>
         public string Value { get => _value; set => _value = value; }
-        internal override bool DirtyInternal
-        {
-            get => _lockRemoved.Dirty
-                || _value.Dirty;
-            set
-            {
-                _lockRemoved.Dirty = value;
-                _value.Dirty = value;
-            }
-        }
     }
 }

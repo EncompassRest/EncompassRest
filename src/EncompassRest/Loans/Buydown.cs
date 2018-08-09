@@ -67,31 +67,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
         public decimal? SubsidyAmount { get => _subsidyAmount; set => _subsidyAmount = value; }
-        internal override bool DirtyInternal
-        {
-            get => _buydownIndex.Dirty
-                || _buydownRatePercent.Dirty
-                || _changeFrequencyMonthsCount.Dirty
-                || _durationMonthsCount.Dirty
-                || _fundBalanceAmount.Dirty
-                || _fundTotalAmount.Dirty
-                || _id.Dirty
-                || _increaseRatePercent.Dirty
-                || _remainingMonthsCount.Dirty
-                || _subsidyAmount.Dirty;
-            set
-            {
-                _buydownIndex.Dirty = value;
-                _buydownRatePercent.Dirty = value;
-                _changeFrequencyMonthsCount.Dirty = value;
-                _durationMonthsCount.Dirty = value;
-                _fundBalanceAmount.Dirty = value;
-                _fundTotalAmount.Dirty = value;
-                _id.Dirty = value;
-                _increaseRatePercent.Dirty = value;
-                _remainingMonthsCount.Dirty = value;
-                _subsidyAmount.Dirty = value;
-            }
-        }
     }
 }

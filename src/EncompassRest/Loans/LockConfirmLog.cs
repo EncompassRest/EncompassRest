@@ -114,51 +114,5 @@ namespace EncompassRest.Loans
         /// LockConfirmLog TimeConfirmed
         /// </summary>
         public string TimeConfirmed { get => _timeConfirmed; set => _timeConfirmed = value; }
-        internal override bool DirtyInternal
-        {
-            get => _alertIndicator.Dirty
-                || _buySideExpirationDate.Dirty
-                || _comments.Dirty
-                || _confirmedBy.Dirty
-                || _confirmedById.Dirty
-                || _confirmedByIdIndicator.Dirty
-                || _dateUtc.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _requestGuid.Dirty
-                || _sellSideDeliveredBy.Dirty
-                || _sellSideDeliveryDate.Dirty
-                || _sellSideExpirationDate.Dirty
-                || _systemId.Dirty
-                || _timeConfirmed.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _alertIndicator.Dirty = value;
-                _buySideExpirationDate.Dirty = value;
-                _comments.Dirty = value;
-                _confirmedBy.Dirty = value;
-                _confirmedById.Dirty = value;
-                _confirmedByIdIndicator.Dirty = value;
-                _dateUtc.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _requestGuid.Dirty = value;
-                _sellSideDeliveredBy.Dirty = value;
-                _sellSideDeliveryDate.Dirty = value;
-                _sellSideExpirationDate.Dirty = value;
-                _systemId.Dirty = value;
-                _timeConfirmed.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
     }
 }

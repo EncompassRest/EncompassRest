@@ -98,45 +98,5 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
         public DateTime? TransactionDate { get => _transactionDate; set => _transactionDate = value; }
-        internal override bool DirtyInternal
-        {
-            get => _accountNumber.Dirty
-                || _comments.Dirty
-                || _createdById.Dirty
-                || _createdByName.Dirty
-                || _createdDateTimeUtc.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _institutionName.Dirty
-                || _institutionRouting.Dirty
-                || _modifiedById.Dirty
-                || _modifiedByName.Dirty
-                || _modifiedDateTimeUtc.Dirty
-                || _reference.Dirty
-                || _servicingPaymentMethod.Dirty
-                || _servicingTransactionType.Dirty
-                || _transactionAmount.Dirty
-                || _transactionDate.Dirty;
-            set
-            {
-                _accountNumber.Dirty = value;
-                _comments.Dirty = value;
-                _createdById.Dirty = value;
-                _createdByName.Dirty = value;
-                _createdDateTimeUtc.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _institutionName.Dirty = value;
-                _institutionRouting.Dirty = value;
-                _modifiedById.Dirty = value;
-                _modifiedByName.Dirty = value;
-                _modifiedDateTimeUtc.Dirty = value;
-                _reference.Dirty = value;
-                _servicingPaymentMethod.Dirty = value;
-                _servicingTransactionType.Dirty = value;
-                _transactionAmount.Dirty = value;
-                _transactionDate.Dirty = value;
-            }
-        }
     }
 }
