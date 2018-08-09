@@ -28,9 +28,9 @@ namespace EncompassRest
             get => _list.Any(item => item.Dirty);
             set
             {
-                for (var i = 0; i < _list.Count; ++i)
+                foreach (var dirtyValue in _list)
                 {
-                    _list[i].Dirty = value;
+                    dirtyValue.Dirty = value;
                 }
             }
         }
