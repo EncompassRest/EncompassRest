@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using EncompassRest.Loans.Enums;
+﻿using EncompassRest.Loans.Enums;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
@@ -268,31 +267,9 @@ namespace EncompassRest.Loans
     {
     }
 
-    partial class FundingFee
-    {
-        private DirtyValue<decimal?> _amount;
-        public decimal? Amount { get => _amount; set => _amount = value; }
-        private DirtyValue<decimal?> _pacLender2015;
-        public decimal? PacLender2015 { get => _pacLender2015; set => _pacLender2015 = value; }
-        private DirtyValue<decimal?> _pacOther2015;
-        public decimal? PacOther2015 { get => _pacOther2015; set => _pacOther2015 = value; }
-        private DirtyValue<decimal?> _pocBorrower2015;
-        public decimal? PocBorrower2015 { get => _pocBorrower2015; set => _pocBorrower2015 = value; }
-    }
-
-    partial class HtmlEmailLog
-    {
-        private DirtyList<EmailDocument> _docList;
-        public IList<EmailDocument> DocList { get => _docList ?? (_docList = new DirtyList<EmailDocument>()); set => _docList = new DirtyList<EmailDocument>(value); }
-    }
-
     [Entity(PropertiesToAlwaysSerialize = nameof(NonVolIndex))]
     partial class NonVol : IIdentifiable
     {
-        private DirtyValue<string> _id;
-        public string Id { get => _id; set => _id = value; }
-        private DirtyValue<int?> _nonVolIndex;
-        public int? NonVolIndex { get => _nonVolIndex; set => _nonVolIndex = value; }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(LoanAssociateType))]

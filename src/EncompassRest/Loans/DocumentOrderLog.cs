@@ -32,6 +32,11 @@ namespace EncompassRest.Loans
         /// DocumentOrderLog DocumentFields
         /// </summary>
         public IDictionary<string, string> DocumentFields { get => _documentFields ?? (_documentFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _documentFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
+        private DirtyList<OrderedDocument> _orderedDocuments;
+        /// <summary>
+        /// DocumentOrderLog OrderedDocuments
+        /// </summary>
+        public IList<OrderedDocument> OrderedDocuments { get => _orderedDocuments ?? (_orderedDocuments = new DirtyList<OrderedDocument>()); set => _orderedDocuments = new DirtyList<OrderedDocument>(value); }
         private DirtyValue<string> _orderId;
         /// <summary>
         /// DocumentOrderLog OrderId

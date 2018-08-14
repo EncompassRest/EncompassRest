@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Elli.Api.Loans.Model;
+using EncompassRest.Loans;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 using EncompassRest.Tests;
 using EnumsNET;
 using EnumsNET.NonGeneric;
-using EncompassRest.Loans.Enums;
 using Newtonsoft.Json;
-using System.IO.Compression;
-using System.Globalization;
 using Newtonsoft.Json.Linq;
 
 namespace EncompassRest
@@ -171,7 +173,18 @@ namespace EncompassRest
             { "ElliUCDDetail", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CDFields", new PropertySchema { Type = PropertySchemaType.String } }, { "LEFields", new PropertySchema { Type = PropertySchemaType.String } } } } },
             { "DocumentAudit", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "ReportKey", new PropertySchema { Type = PropertySchemaType.String } }, { "TimeStamp", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = "DocumentAuditAlert" } } } } },
             { "DocumentAuditAlert", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Source", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Text", new PropertySchema { Type = PropertySchemaType.String } }, { "Fields", new PropertySchema { Type = PropertySchemaType.List, ElementType = "string" } } } } },
-            { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } }
+            { "EmailDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "DocId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocTitle", new PropertySchema { Type = PropertySchemaType.String } } } } },
+            { "OrderedDocument", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "Id", new PropertySchema { Type = PropertySchemaType.String } }, { "Title", new PropertySchema { Type = PropertySchemaType.String } }, { "Type", new PropertySchema { Type = PropertySchemaType.String } }, { "Category", new PropertySchema { Type = PropertySchemaType.String } }, { "SignatureType", new PropertySchema { Type = PropertySchemaType.String } }, { "PairId", new PropertySchema { Type = PropertySchemaType.String } }, { "DataKey", new PropertySchema { Type = PropertySchemaType.String } }, { "Size", new PropertySchema { Type = PropertySchemaType.Int } }, { "TemplateId", new PropertySchema { Type = PropertySchemaType.String } }, { "DocumentServiceId", new PropertySchema { Type = PropertySchemaType.String } }, { "OverflowDataKey", new PropertySchema { Type = PropertySchemaType.String } }, { "Overflows", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocumentOverflow" } } } } },
+            { "OrderedDocumentOverflow", new EntitySchema { Properties = new Dictionary<string, PropertySchema> { { "CoordinateBottom", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateTop", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateLeft", new PropertySchema { Type = PropertySchemaType.String } }, { "CoordinateRight", new PropertySchema { Type = PropertySchemaType.String } }, { "OriginalText", new PropertySchema { Type = PropertySchemaType.String } }, { "PageNumber", new PropertySchema { Type = PropertySchemaType.Int } }, { "TemplateFieldName", new PropertySchema { Type = PropertySchemaType.String } } } } },
+        };
+
+        private static readonly Dictionary<string, Dictionary<string, PropertySchema>> s_explicitPropertySchemas = new Dictionary<string, Dictionary<string, PropertySchema>>
+        {
+            { "NonVol", new Dictionary<string, PropertySchema> { { "Id", new PropertySchema { Type = PropertySchemaType.String } }, { "NonVolIndex", new PropertySchema { Type = PropertySchemaType.Int } }, { "NonVolId", new PropertySchema { Type = PropertySchemaType.String } } } },
+            { "CrmLog", new Dictionary<string, PropertySchema> { { "Alerts", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogAlert } }, { "CommentList", new PropertySchema { Type = PropertySchemaType.List, ElementType = LoanEntity.LogComment } }, { "Comments", new PropertySchema { Type = PropertySchemaType.String } }, { "DateUtc", new PropertySchema { Type = PropertySchemaType.DateTime } }, { "FileAttachmentsMigrated", new PropertySchema { Type = PropertySchemaType.Bool } }, { "Guid", new PropertySchema { Type = PropertySchemaType.String } }, { "IsSystemSpecificIndicator", new PropertySchema { Type = PropertySchemaType.Bool } }, { "LogRecordIndex", new PropertySchema { Type = PropertySchemaType.Int } } } },
+            { "DocumentOrderLog", new Dictionary<string, PropertySchema> { { "OrderedDocuments", new PropertySchema { Type = PropertySchemaType.List, ElementType = "OrderedDocument" } } } },
+            { "FundingFee", new Dictionary<string, PropertySchema> { { "Amount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PtcAmount", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBorrower2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocSeller2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacBroker2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PacOther2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, { "PocLender2015", new PropertySchema { Type = PropertySchemaType.Decimal } }, } },
+            { "HtmlEmailLog", new Dictionary<string, PropertySchema> { { "DocList", new PropertySchema { Type = PropertySchemaType.List, ElementType = "EmailDocument" } } } }
         };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>
@@ -203,6 +216,24 @@ namespace EncompassRest
                     }
                 }
 
+                foreach (var pair in s_explicitPropertySchemas)
+                {
+                    var entityName = pair.Key;
+                    var properties = entityTypes[entityName].Properties;
+                    foreach (var p in pair.Value)
+                    {
+                        var propertyName = p.Key;
+                        if (properties.ContainsKey(propertyName))
+                        {
+                            Console.WriteLine($"Can now retrieve schema property {entityName}.{propertyName}");
+                        }
+                        else
+                        {
+                            properties.Add(propertyName, p.Value);
+                        }
+                    }
+                }
+
                 var destinationPath = "Loans";
                 var @namespace = "EncompassRest.Loans";
                 Directory.CreateDirectory(destinationPath);
@@ -217,7 +248,7 @@ namespace EncompassRest
 
                 var otherEnums = new Dictionary<string, Dictionary<string, string>>();
 
-                PopulateFieldMappings(destinationPath, @namespace, "Loan", "Loan", loanEntitySchema, null, entityTypes, fields, fieldPatterns, otherEnums);
+                PopulateFieldMappings(destinationPath, @namespace, "Loan", "Loan", typeof(LoanContract), loanEntitySchema, null, entityTypes, fields, fieldPatterns, otherEnums);
 
                 entityTypes.Remove("Loan");
 
@@ -227,7 +258,7 @@ namespace EncompassRest
                     if (!s_ignoredEntities.Contains(entityName))
                     {
                         Console.WriteLine($"{entityName} is not connected to the Loan schema");
-                        GenerateClassFileFromSchema(destinationPath, @namespace, entityName, pair.Value, otherEnums);
+                        GenerateClassFileFromSchema(destinationPath, @namespace, entityName, null, pair.Value, otherEnums);
                     }
                 }
 
@@ -351,12 +382,14 @@ namespace EncompassRest
             Console.ReadLine();
         }
 
-        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
+        private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
             foreach (var pair in entitySchema.Properties)
             {
                 var propertyName = pair.Key;
                 var propertySchema = pair.Value;
+                var ellieProperty = ellieType?.GetProperty(propertyName);
+                var elliePropertyType = ellieProperty?.PropertyType;
                 if (!string.IsNullOrEmpty(propertySchema.FieldId))
                 {
                     fields.Add(propertySchema.FieldId, $"{currentPath}.{propertyName}");
@@ -364,12 +397,28 @@ namespace EncompassRest
                 else if (propertySchema.Type == PropertySchemaType.Entity && entityTypes.TryGetValue(propertySchema.EntityType, out var nestedEntitySchema))
                 {
                     entityTypes.Remove(propertySchema.EntityType);
-                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.EntityType, $"{currentPath}.{propertyName}", nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
+                    if (ellieType == typeof(LoanContract) && propertyName == "CurrentApplication")
+                    {
+                        elliePropertyType = typeof(LoanContractApplications);
+                    }
+                    else if (ellieType != null && elliePropertyType == null)
+                    {
+                        Console.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.EntityType.Value}");
+                    }
+                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.EntityType, $"{currentPath}.{propertyName}", elliePropertyType, nestedEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
                 }
                 else if ((propertySchema.Type == PropertySchemaType.List || propertySchema.Type == PropertySchemaType.Set) && entityTypes.TryGetValue(propertySchema.ElementType, out var elementEntitySchema))
                 {
                     entityTypes.Remove(propertySchema.ElementType);
-                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.ElementType, $"{currentPath}.{propertyName}", elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
+                    if (ellieProperty != null)
+                    {
+                        elliePropertyType = elliePropertyType.GetInterface("IEnumerable`1").GenericTypeArguments[0];
+                    }
+                    else if (ellieType != null)
+                    {
+                        Console.WriteLine($"Did not get ellie type for {currentPath}.{propertyName} of type {propertySchema.ElementType.Value}");
+                    }
+                    PopulateFieldMappings(destinationPath, @namespace, propertySchema.ElementType, $"{currentPath}.{propertyName}", elliePropertyType, elementEntitySchema, entitySchema, entityTypes, fields, fieldPatterns, otherEnums);
                 }
                 else
                 {
@@ -531,10 +580,10 @@ namespace EncompassRest
                 }
             }
 
-            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, entitySchema, otherEnums);
+            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums);
         }
 
-        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums)
+        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, Type ellieType, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
             var sb = new StringBuilder();
             sb.Append(
@@ -551,11 +600,31 @@ namespace {@namespace}
     public sealed partial class {entityName} : ExtensibleObject, IIdentifiable
     {{
 ");
-            
+
+            if (ellieType != null)
+            {
+                foreach (var property in ellieType.GetProperties())
+                {
+                    if (!entitySchema.Properties.Any(p => string.Equals(p.Key.Replace("_", string.Empty), property.Name.Replace("_", string.Empty), StringComparison.OrdinalIgnoreCase)))
+                    {
+                        Console.WriteLine($"EncompassRest missing {ellieType.Name}.{property.Name} on {entityName}");
+                    }
+                }
+            }
+
             foreach (var pair in entitySchema.Properties.OrderBy(pair => pair.Key, StringComparer.OrdinalIgnoreCase))
             {
                 var propertyName = pair.Key.Replace("_", string.Empty);
                 var entityPropertyName = $"{entityName}.{propertyName}";
+                if (ellieType != null)
+                {
+                    var ellieProperty = ellieType.GetProperties().FirstOrDefault(p => string.Equals(propertyName, p.Name.Replace("_", string.Empty), StringComparison.OrdinalIgnoreCase));
+                    var elliePropertyType = ellieProperty?.PropertyType;
+                    if (ellieProperty == null)
+                    {
+                        Console.WriteLine($"Ellie missing {entityName}.{propertyName}");
+                    }
+                }
                 if (!s_propertiesToNotGenerate.Contains(entityPropertyName))
                 {
                     var propertySchema = pair.Value;

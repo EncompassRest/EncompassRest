@@ -46,6 +46,11 @@ namespace EncompassRest.Loans
         /// HtmlEmailLog Description
         /// </summary>
         public string Description { get => _description; set => _description = value; }
+        private DirtyList<EmailDocument> _docList;
+        /// <summary>
+        /// HtmlEmailLog DocList
+        /// </summary>
+        public IList<EmailDocument> DocList { get => _docList ?? (_docList = new DirtyList<EmailDocument>()); set => _docList = new DirtyList<EmailDocument>(value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// HtmlEmailLog FileAttachmentsMigrated

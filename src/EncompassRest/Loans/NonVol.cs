@@ -34,12 +34,27 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "UCD Adjustment Type")]
         public StringEnumValue<NonVolAdjustmentType> AdjustmentType { get => _adjustmentType; set => _adjustmentType = value; }
+        private DirtyValue<string> _id;
+        /// <summary>
+        /// NonVol Id
+        /// </summary>
+        public string Id { get => _id; set => _id = value; }
         private DirtyValue<bool?> _includedIndicator;
         /// <summary>
         /// Liability Will be Paid Off and will be included [UNFLNN05]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Will be Paid Off and will be included", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
         public bool? IncludedIndicator { get => _includedIndicator; set => _includedIndicator = value; }
+        private DirtyValue<string> _nonVolId;
+        /// <summary>
+        /// NonVol NonVolId
+        /// </summary>
+        public string NonVolId { get => _nonVolId; set => _nonVolId = value; }
+        private DirtyValue<int?> _nonVolIndex;
+        /// <summary>
+        /// NonVol NonVolIndex
+        /// </summary>
+        public int? NonVolIndex { get => _nonVolIndex; set => _nonVolIndex = value; }
         private DirtyValue<StringEnumValue<PaidToOrBy>> _paidBy;
         /// <summary>
         /// Paid By [UNFLNN07]

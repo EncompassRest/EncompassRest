@@ -36,11 +36,23 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elli.Api.Base, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Base.1.2.1\lib\Elli.Api.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Elli.Api.Loans, Version=1.2.1.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Loans.1.2.1\lib\Elli.Api.Loans.dll</HintPath>
+    </Reference>
+    <Reference Include="Elli.Api.OAuth, Version=1.2.1.0, Culture=neutral, PublicKeyToken=6aaa18227aa217d3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elli.Api.Base.1.2.1\lib\Elli.Api.OAuth.dll</HintPath>
+    </Reference>
     <Reference Include="Enums.NET, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7ea1c1650d506225, processorArchitecture=MSIL">
       <HintPath>..\packages\Enums.NET.2.3.1\lib\net45\Enums.NET.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharpSigned.105.1.0\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -63,16 +75,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EncompassRest.Tests\EncompassRest.Tests.csproj">
-      <Project>{3292c30a-1f1d-40a4-886c-3fe0477b6d56}</Project>
-      <Name>EncompassRest.Tests</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EncompassRest\EncompassRest.csproj">
-      <Project>{1bc65f57-9279-4e7e-a43f-0de40de559e4}</Project>
-      <Name>EncompassRest</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -82,6 +85,16 @@
     <None Include="VirtualFields.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EncompassRest.Tests\EncompassRest.Tests.csproj">
+      <Project>{3292c30a-1f1d-40a4-886c-3fe0477b6d56}</Project>
+      <Name>EncompassRest.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EncompassRest\EncompassRest.csproj">
+      <Project>{1bc65f57-9279-4e7e-a43f-0de40de559e4}</Project>
+      <Name>EncompassRest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
