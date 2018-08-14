@@ -15,12 +15,32 @@ namespace EncompassRest
     [JsonConverter(typeof(DirtyListConverter<>))]
     internal sealed class DirtyList<T> : IList<T>, IList, IDirty
     {
+        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.ImplementedInterfaces.Contains(TypeData<IIdentifiable>.Type);
+
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
+        private readonly Dictionary<string, T> _dictionary;
 
         public T this[int index]
         {
             get => _list[index];
-            set => _list[index] = value;
+            set
+            {
+                if (s_tIsIIdentifiable)
+                {
+                    var existingValue = _list[index];
+                    var existingId = GetId(existingValue._value);
+                    if (!string.IsNullOrEmpty(existingId))
+                    {
+                        _dictionary.Remove(existingId);
+                    }
+                    var newId = GetId(value);
+                    if (!string.IsNullOrEmpty(newId))
+                    {
+                        _dictionary[newId] = value;
+                    }
+                }
+                _list[index] = value;
+            }
         }
 
         public bool Dirty
@@ -51,9 +71,14 @@ namespace EncompassRest
 
         public DirtyList()
         {
+            if (s_tIsIIdentifiable)
+            {
+                _dictionary = new Dictionary<string, T>(StringComparer.Ordinal);
+            }
         }
 
         public DirtyList(IEnumerable<T> list)
+            : this()
         {
             if (list != null)
             {
@@ -64,9 +89,31 @@ namespace EncompassRest
             }
         }
 
-        public void Add(T item) => _list.Add(item);
+        private string GetId(T value) => ((IIdentifiable)value)?.Id;
 
-        public void Clear() => _list.Clear();
+        internal T GetById(string id) => s_tIsIIdentifiable && _dictionary.TryGetValue(id, out var value) ? value : default;
+
+        public void Add(T item)
+        {
+            _list.Add(item);
+            if (s_tIsIIdentifiable)
+            {
+                var id = GetId(item);
+                if (!string.IsNullOrEmpty(id))
+                {
+                    _dictionary[id] = item;
+                }
+            }
+        }
+
+        public void Clear()
+        {
+            if (s_tIsIIdentifiable)
+            {
+                _dictionary.Clear();
+            }
+            _list.Clear();
+        }
 
         public bool Contains(T item) => IndexOf(item) >= 0;
 
@@ -103,7 +150,18 @@ namespace EncompassRest
             return -1;
         }
 
-        public void Insert(int index, T item) => _list.Insert(index, item);
+        public void Insert(int index, T item)
+        {
+            _list.Insert(index, item);
+            if (s_tIsIIdentifiable)
+            {
+                var id = GetId(item);
+                if (!string.IsNullOrEmpty(id))
+                {
+                    _dictionary[id] = item;
+                }
+            }
+        }
 
         public bool Remove(T item)
         {
@@ -116,7 +174,19 @@ namespace EncompassRest
             return false;
         }
 
-        public void RemoveAt(int index) => _list.RemoveAt(index);
+        public void RemoveAt(int index)
+        {
+            var item = _list[index];
+            if (s_tIsIIdentifiable)
+            {
+                var id = GetId(item);
+                if (!string.IsNullOrEmpty(id))
+                {
+                    _dictionary.Remove(id);
+                }
+            }
+            _list.RemoveAt(index);
+        }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 

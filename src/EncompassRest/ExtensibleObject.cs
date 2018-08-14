@@ -20,6 +20,7 @@ namespace EncompassRest
         public IDictionary<string, object> ExtensionData { get => _extensionData ?? (_extensionData = new DirtyDictionary<string, object>(StringComparer.OrdinalIgnoreCase)); set => _extensionData = new DirtyDictionary<string, object>(value, StringComparer.OrdinalIgnoreCase); }
         private bool _gettingDirty;
         private bool _settingDirty;
+
         internal bool Dirty
         {
             get
