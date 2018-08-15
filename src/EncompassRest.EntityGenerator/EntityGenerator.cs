@@ -164,9 +164,9 @@ namespace EncompassRest
 
         private static readonly HashSet<string> s_stringDictionaryProperties = new HashSet<string> { "Loan.VirtualFields", "DocumentOrderLog.DocumentFields", "ElliUCDDetail.CDFields", "ElliUCDDetail.LEFields" };
 
-        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Loan.CurrentApplicationIndex", "Borrower.Application", "FieldLockData.ModelPath", "UCDDetail.FeePaidBy" };
+        private static readonly HashSet<string> s_propertiesToNotGenerate = new HashSet<string> { "Contact.Contact", "Loan.CurrentApplication", "Borrower.Application" };
 
-        private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue" };
+        private static readonly HashSet<string> s_propertiesWithInternalFields = new HashSet<string> { "CustomField.DateValue", "CustomField.NumericValue", "CustomField.StringValue", "FieldLockData.ModelPath" };
 
         private static readonly Dictionary<string, EntitySchema> s_explicitSchemas = new Dictionary<string, EntitySchema>
         {
@@ -735,11 +735,9 @@ namespace {@namespace}
                     }
                     var elementType = propertyType;
                     var isStringDictionary = s_stringDictionaryProperties.Contains(entityPropertyName);
-                    var additionalConstructorParameters = string.Empty;
                     if (isStringDictionary)
                     {
                         propertyType = "DirtyDictionary<string, string>";
-                        additionalConstructorParameters = "StringComparer.OrdinalIgnoreCase";
                     }
                     else if (isList)
                     {
@@ -754,7 +752,7 @@ namespace {@namespace}
                     {
                         sb.AppendLine($"        [LoanFieldProperty({string.Join(", ", attributeProperties)})]");
                     }
-                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {fieldName}{(isEntity || isList || isStringDictionary ? $" ?? ({fieldName} = new {propertyType}({additionalConstructorParameters}))" : string.Empty)}; set => {fieldName} = {(isList || isStringDictionary ? $"new {propertyType}(value{(string.IsNullOrEmpty(additionalConstructorParameters) ? null : $", {additionalConstructorParameters}")})" : "value")}; }}");
+                    sb.AppendLine($"        public {(isStringDictionary ? $"IDictionary<string, string>" : (isList ? $"IList<{elementType}>" : propertyType))} {propertyName} {{ get => {(isEntity || isList || isStringDictionary ? $"GetField(ref {fieldName})" : fieldName)}; set => SetField(ref {fieldName}, value); }}");
                 }
             }
 

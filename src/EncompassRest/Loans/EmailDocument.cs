@@ -14,11 +14,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EmailDocument DocId
         /// </summary>
-        public string DocId { get => _docId; set => _docId = value; }
+        public string DocId { get => _docId; set => SetField(ref _docId, value); }
         private DirtyValue<string> _docTitle;
         /// <summary>
         /// EmailDocument DocTitle
         /// </summary>
-        public string DocTitle { get => _docTitle; set => _docTitle = value; }
+        public string DocTitle { get => _docTitle; set => SetField(ref _docTitle, value); }
     }
 }

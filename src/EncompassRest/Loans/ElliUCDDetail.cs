@@ -14,11 +14,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// ElliUCDDetail CDFields
         /// </summary>
-        public IDictionary<string, string> CDFields { get => _cDFields ?? (_cDFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _cDFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
+        public IDictionary<string, string> CDFields { get => GetField(ref _cDFields); set => SetField(ref _cDFields, value); }
         private DirtyDictionary<string, string> _lEFields;
         /// <summary>
         /// ElliUCDDetail LEFields
         /// </summary>
-        public IDictionary<string, string> LEFields { get => _lEFields ?? (_lEFields = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase)); set => _lEFields = new DirtyDictionary<string, string>(value, StringComparer.OrdinalIgnoreCase); }
+        public IDictionary<string, string> LEFields { get => GetField(ref _lEFields); set => SetField(ref _lEFields, value); }
     }
 }

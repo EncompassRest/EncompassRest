@@ -14,17 +14,17 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentAudit Alerts
         /// </summary>
-        public IList<DocumentAuditAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<DocumentAuditAlert>()); set => _alerts = new DirtyList<DocumentAuditAlert>(value); }
+        public IList<DocumentAuditAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyValue<string> _reportKey;
         /// <summary>
         /// DocumentAudit ReportKey
         /// </summary>
-        public string ReportKey { get => _reportKey; set => _reportKey = value; }
+        public string ReportKey { get => _reportKey; set => SetField(ref _reportKey, value); }
         private DirtyValue<DateTime?> _timeStamp;
         /// <summary>
         /// DocumentAudit TimeStamp
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? TimeStamp { get => _timeStamp; set => _timeStamp = value; }
+        public DateTime? TimeStamp { get => _timeStamp; set => SetField(ref _timeStamp, value); }
     }
 }

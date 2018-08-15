@@ -14,34 +14,34 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanSubmissionFee Description
         /// </summary>
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private DirtyValue<decimal?> _dueBroker;
         /// <summary>
         /// LoanSubmissionFee DueBroker
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? DueBroker { get => _dueBroker; set => _dueBroker = value; }
+        public decimal? DueBroker { get => _dueBroker; set => SetField(ref _dueBroker, value); }
         private DirtyValue<decimal?> _dueLender;
         /// <summary>
         /// LoanSubmissionFee DueLender
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? DueLender { get => _dueLender; set => _dueLender = value; }
+        public decimal? DueLender { get => _dueLender; set => SetField(ref _dueLender, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// LoanSubmissionFee Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<StringEnumValue<LoanSubmissionFeeType>> _loanSubmissionFeeType;
         /// <summary>
         /// LoanSubmissionFee LoanSubmissionFeeType
         /// </summary>
-        public StringEnumValue<LoanSubmissionFeeType> LoanSubmissionFeeType { get => _loanSubmissionFeeType; set => _loanSubmissionFeeType = value; }
+        public StringEnumValue<LoanSubmissionFeeType> LoanSubmissionFeeType { get => _loanSubmissionFeeType; set => SetField(ref _loanSubmissionFeeType, value); }
         private DirtyValue<decimal?> _total;
         /// <summary>
         /// LoanSubmissionFee Total
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, ReadOnly = true)]
-        public decimal? Total { get => _total; set => _total = value; }
+        public decimal? Total { get => _total; set => SetField(ref _total, value); }
     }
 }

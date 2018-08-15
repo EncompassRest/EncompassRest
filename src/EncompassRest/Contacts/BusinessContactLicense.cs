@@ -5,14 +5,14 @@ namespace EncompassRest.Contacts
     public sealed class BusinessContactLicense : ExtensibleObject
     {
         private DirtyValue<string> _licenseAuthName;
-        public string LicenseAuthName { get => _licenseAuthName; set => _licenseAuthName = value; }
+        public string LicenseAuthName { get => _licenseAuthName; set => SetField(ref _licenseAuthName, value); }
         private DirtyValue<string> _licenseAuthType;
-        public string LicenseAuthType { get => _licenseAuthType; set => _licenseAuthType = value; }
+        public string LicenseAuthType { get => _licenseAuthType; set => SetField(ref _licenseAuthType, value); }
         private DirtyValue<DateTime?> _licenseIssueDate;
-        public DateTime? LicenseIssueDate { get => _licenseIssueDate; set => _licenseIssueDate = value; }
+        public DateTime? LicenseIssueDate { get => _licenseIssueDate; set => SetField(ref _licenseIssueDate, value); }
         private DirtyValue<string> _licenseNumber;
-        public string LicenseNumber { get => _licenseNumber; set => _licenseNumber = value; }
+        public string LicenseNumber { get => _licenseNumber; set => SetField(ref _licenseNumber, value); }
         private DirtyValue<string> _licenseStateCode;
-        public string LicenseStateCode { get => _licenseStateCode; set => _licenseStateCode = value; }
+        public string LicenseStateCode { get => _licenseStateCode; set => SetField(ref _licenseStateCode, value); }
     }
 }

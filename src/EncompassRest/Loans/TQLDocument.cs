@@ -14,12 +14,12 @@ namespace EncompassRest.Loans
         /// <summary>
         /// TQLDocument Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<DateTime?> _tQLDocumentDeliveredDate;
         /// <summary>
         /// TQL Documents Delivered to Investor [TQLDOCDATENN01]
         /// </summary>
         [LoanFieldProperty(Description = "TQL Documents Delivered to Investor")]
-        public DateTime? TQLDocumentDeliveredDate { get => _tQLDocumentDeliveredDate; set => _tQLDocumentDeliveredDate = value; }
+        public DateTime? TQLDocumentDeliveredDate { get => _tQLDocumentDeliveredDate; set => SetField(ref _tQLDocumentDeliveredDate, value); }
     }
 }

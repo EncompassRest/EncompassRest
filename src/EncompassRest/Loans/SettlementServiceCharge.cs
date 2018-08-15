@@ -14,16 +14,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// SettlementServiceCharge Amount
         /// </summary>
-        public string Amount { get => _amount; set => _amount = value; }
+        public string Amount { get => _amount; set => SetField(ref _amount, value); }
         private DirtyValue<string> _description;
         /// <summary>
         /// SettlementServiceCharge Description
         /// </summary>
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// SettlementServiceCharge Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
     }
 }

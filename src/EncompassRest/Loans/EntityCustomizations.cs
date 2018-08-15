@@ -20,11 +20,20 @@ namespace EncompassRest.Loans
     partial class FieldLockData
     {
         internal ModelPath _modelPathInternal;
-        internal DirtyValue<string> _modelPath;
-        public string ModelPath { get => _modelPath; set { _modelPath = value; _modelPathInternal = LoanFieldDescriptors.CreateModelPath(value); } }
 
         [IdPropertyName(nameof(ModelPath))]
         string IIdentifiable.Id { get => ModelPath; set => ModelPath = value; }
+
+        internal override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            switch (propertyName)
+            {
+                case nameof(ModelPath):
+                    _modelPathInternal = LoanFieldDescriptors.CreateModelPath(_modelPath);
+                    break;
+            }
+        }
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(FeeType))]
@@ -268,7 +277,7 @@ namespace EncompassRest.Loans
     }
 
     [Entity(PropertiesToAlwaysSerialize = nameof(NonVolIndex))]
-    partial class NonVol : IIdentifiable
+    partial class NonVol
     {
     }
 
@@ -293,14 +302,5 @@ namespace EncompassRest.Loans
         public LoanAssociate()
         {
         }
-    }
-
-    partial class UCDDetail
-    {
-        private DirtyValue<StringEnumValue<FeePaidBy>> _feePaidBy;
-        /// <summary>
-        /// UCDDetail FeePaidBy
-        /// </summary>
-        public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
     }
 }

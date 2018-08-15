@@ -32,17 +32,6 @@ namespace EncompassRest.Loans
         [IdPropertyName(nameof(EncompassId))]
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
 
-        private DirtyValue<int?> _currentApplicationIndex;
-        public int? CurrentApplicationIndex
-        {
-            get => _currentApplicationIndex;
-            set
-            {
-                _currentApplicationIndex = value;
-                _currentApplication = null;
-            }
-        }
-
         private Application _currentApplication;
         [JsonIgnore]
         public Application CurrentApplication
@@ -123,6 +112,17 @@ namespace EncompassRest.Loans
                 Client = client;
                 EncompassId = loanId;
                 LoanApis = new LoanObjectBoundApis(client, this);
+            }
+        }
+
+        internal override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            switch (propertyName)
+            {
+                case nameof(CurrentApplicationIndex):
+                    _currentApplication = null;
+                    break;
             }
         }
     }

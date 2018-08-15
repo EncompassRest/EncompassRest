@@ -14,11 +14,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// PrintForm Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _name;
         /// <summary>
         /// PrintForm Name
         /// </summary>
-        public string Name { get => _name; set => _name = value; }
+        public string Name { get => _name; set => SetField(ref _name, value); }
     }
 }

@@ -14,36 +14,36 @@ namespace EncompassRest.Loans
         /// <summary>
         /// OrderedDocumentOverflow CoordinateBottom
         /// </summary>
-        public string CoordinateBottom { get => _coordinateBottom; set => _coordinateBottom = value; }
+        public string CoordinateBottom { get => _coordinateBottom; set => SetField(ref _coordinateBottom, value); }
         private DirtyValue<string> _coordinateLeft;
         /// <summary>
         /// OrderedDocumentOverflow CoordinateLeft
         /// </summary>
-        public string CoordinateLeft { get => _coordinateLeft; set => _coordinateLeft = value; }
+        public string CoordinateLeft { get => _coordinateLeft; set => SetField(ref _coordinateLeft, value); }
         private DirtyValue<string> _coordinateRight;
         /// <summary>
         /// OrderedDocumentOverflow CoordinateRight
         /// </summary>
-        public string CoordinateRight { get => _coordinateRight; set => _coordinateRight = value; }
+        public string CoordinateRight { get => _coordinateRight; set => SetField(ref _coordinateRight, value); }
         private DirtyValue<string> _coordinateTop;
         /// <summary>
         /// OrderedDocumentOverflow CoordinateTop
         /// </summary>
-        public string CoordinateTop { get => _coordinateTop; set => _coordinateTop = value; }
+        public string CoordinateTop { get => _coordinateTop; set => SetField(ref _coordinateTop, value); }
         private DirtyValue<string> _originalText;
         /// <summary>
         /// OrderedDocumentOverflow OriginalText
         /// </summary>
-        public string OriginalText { get => _originalText; set => _originalText = value; }
+        public string OriginalText { get => _originalText; set => SetField(ref _originalText, value); }
         private DirtyValue<int?> _pageNumber;
         /// <summary>
         /// OrderedDocumentOverflow PageNumber
         /// </summary>
-        public int? PageNumber { get => _pageNumber; set => _pageNumber = value; }
+        public int? PageNumber { get => _pageNumber; set => SetField(ref _pageNumber, value); }
         private DirtyValue<string> _templateFieldName;
         /// <summary>
         /// OrderedDocumentOverflow TemplateFieldName
         /// </summary>
-        public string TemplateFieldName { get => _templateFieldName; set => _templateFieldName = value; }
+        public string TemplateFieldName { get => _templateFieldName; set => SetField(ref _templateFieldName, value); }
     }
 }
