@@ -812,12 +812,12 @@ namespace EncompassRest.Tests
             Assert.IsTrue(field.Locked);
             Assert.AreEqual(field.ModelPath, loan.FieldLockData[0].ModelPath);
             Assert.AreEqual(false, loan.FieldLockData[0].LockRemoved);
-            Assert.AreEqual($@"{{""fieldLockData"":[{{""modelPath"":""{field.ModelPath}"",""lockRemoved"":false}}]}}", loan.ToJson());
+            Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":false,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToJson());
             field.Locked = false;
             Assert.IsFalse(field.Locked);
             Assert.AreEqual(field.ModelPath, loan.FieldLockData[0].ModelPath);
             Assert.AreEqual(true, loan.FieldLockData[0].LockRemoved);
-            Assert.AreEqual($@"{{""fieldLockData"":[{{""modelPath"":""{field.ModelPath}"",""lockRemoved"":true}}]}}", loan.ToJson());
+            Assert.AreEqual($@"{{""fieldLockData"":[{{""lockRemoved"":true,""modelPath"":""{field.ModelPath}""}}]}}", loan.ToJson());
         }
 
         [TestMethod]
@@ -1124,7 +1124,7 @@ namespace EncompassRest.Tests
             Assert.IsFalse(field.Locked);
             field.Locked = true;
             Assert.IsTrue(field.Locked);
-            Assert.AreEqual(@"{""fieldLockData"":[{""modelPath"":""Loan.NewEntity[2].Borrower.BorrowerId"",""lockRemoved"":false}]}", loan.ToJson());
+            Assert.AreEqual(@"{""fieldLockData"":[{""lockRemoved"":false,""modelPath"":""Loan.NewEntity[2].Borrower.BorrowerId""}]}", loan.ToJson());
 
             Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryRemove("NEWFIELD", out _));
         }
