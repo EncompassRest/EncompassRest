@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Contact
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(ContactType), SerializeWholeListWhenDirty = true)]
     public sealed partial class Contact : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _aBA;

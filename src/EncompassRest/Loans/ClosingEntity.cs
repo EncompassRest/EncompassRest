@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingEntity
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(ClosingEntityType), SerializeWholeListWhenDirty = true)]
     public sealed partial class ClosingEntity : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _alias;

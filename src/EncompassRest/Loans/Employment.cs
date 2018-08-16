@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Employment
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(CurrentEmploymentIndicator) + "," + nameof(Owner), SerializeWholeListWhenDirty = true)]
     public sealed partial class Employment : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addressCity;

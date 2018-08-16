@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// NonVol
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class NonVol : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _adjustmentAmount;

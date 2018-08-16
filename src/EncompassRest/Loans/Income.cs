@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Income
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(IncomeType) + "," + nameof(OtherIncomeIndex) + "," + nameof(Owner))]
     public sealed partial class Income : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amount;

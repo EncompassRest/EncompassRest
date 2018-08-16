@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanSubmissionFee
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(LoanSubmissionFeeType))]
     public sealed partial class LoanSubmissionFee : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _description;

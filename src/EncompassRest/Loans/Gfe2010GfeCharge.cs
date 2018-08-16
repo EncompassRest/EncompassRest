@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe2010GfeCharge
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(ChargeBelow10Indicator) + "," + nameof(Gfe2010GfeChargeIndex))]
     public sealed partial class Gfe2010GfeCharge : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _chargeBelow10Indicator;

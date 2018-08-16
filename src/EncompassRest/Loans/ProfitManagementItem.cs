@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ProfitManagementItem
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(ProfitManagementItemIndex))]
     public sealed partial class ProfitManagementItem : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _atPercent;

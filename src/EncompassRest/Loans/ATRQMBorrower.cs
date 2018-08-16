@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ATRQMBorrower
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class ATRQMBorrower : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _aTRQMBorrowerIndex;

@@ -258,7 +258,7 @@ namespace EncompassRest
                     if (!s_ignoredEntities.Contains(entityName))
                     {
                         Console.WriteLine($"{entityName} is not connected to the Loan schema");
-                        GenerateClassFileFromSchema(destinationPath, @namespace, entityName, null, pair.Value, otherEnums);
+                        GenerateClassFileFromSchema(destinationPath, @namespace, entityName, null, pair.Value, otherEnums, null, false);
                     }
                 }
 
@@ -384,6 +384,9 @@ namespace EncompassRest
 
         private static void PopulateFieldMappings(string destinationPath, string @namespace, string entityName, string currentPath, Type ellieType, EntitySchema entitySchema, EntitySchema previousEntitySchema, Dictionary<string, EntitySchema> entityTypes, Dictionary<string, string> fields, Dictionary<string, string> fieldPatterns, Dictionary<string, Dictionary<string, string>> otherEnums)
         {
+            var requiredProperties = new HashSet<string>();
+            var serializeWholeList = false;
+
             foreach (var pair in entitySchema.Properties)
             {
                 var propertyName = pair.Key;
@@ -454,12 +457,15 @@ namespace EncompassRest
                                             {
                                                 Console.WriteLine($"There must be just one int list instance value for {fieldInstancePath}");
                                             }
+                                            serializeWholeList = true;
                                             fields.Add(fieldId, $"{currentPath}[{intListInstance[0]}].{propertyName}");
                                             break;
                                         case StringListInstance stringListInstance:
                                             foreach (var (s, i) in stringListInstance.Select((s, i) => (s, i)))
                                             {
-                                                var property = entitySchema.Properties[listPropertySchema.KeyProperties[i]];
+                                                var keyPropertyName = listPropertySchema.KeyProperties[i];
+                                                requiredProperties.Add(keyPropertyName);
+                                                var property = entitySchema.Properties[keyPropertyName];
                                                 var allowedValues = property.AllowedValues;
                                                 if (allowedValues == null)
                                                 {
@@ -478,7 +484,9 @@ namespace EncompassRest
                                         case StringDictionaryInstance stringDictionaryInstance:
                                             foreach (var p in stringDictionaryInstance)
                                             {
-                                                var property = entitySchema.Properties[p.Key];
+                                                var keyPropertyName = p.Key;
+                                                requiredProperties.Add(keyPropertyName);
+                                                var property = entitySchema.Properties[keyPropertyName];
                                                 var allowedValues = property.AllowedValues;
                                                 if (allowedValues == null)
                                                 {
@@ -501,6 +509,7 @@ namespace EncompassRest
                                 }
                                 else
                                 {
+                                    serializeWholeList = true;
                                     var colonIndex = fieldInstancePath.LastIndexOf(':');
                                     var index = 0;
                                     InstancePattern instancePattern = null;
@@ -513,7 +522,9 @@ namespace EncompassRest
                                     {
                                         foreach (var p in instancePattern.Match)
                                         {
-                                            var property = entitySchema.Properties[p.Key];
+                                            var keyPropertyName = p.Key;
+                                            requiredProperties.Add(keyPropertyName);
+                                            var property = entitySchema.Properties[keyPropertyName];
                                             var allowedValues = property.AllowedValues;
                                             if (allowedValues == null)
                                             {
@@ -540,6 +551,7 @@ namespace EncompassRest
                             var fieldPattern = fieldPatternPair.Key;
                             if (!fieldPattern.StartsWith("DDNN") && !fieldPattern.StartsWith("CUSTNN"))
                             {
+                                serializeWholeList = true;
                                 if (fieldPatternPair.Value.Count != 1)
                                 {
                                     Console.WriteLine($"There must be just one field pattern value for {fieldPattern}");
@@ -558,7 +570,9 @@ namespace EncompassRest
                                 {
                                     foreach (var p in instancePattern.Match)
                                     {
-                                        var property = entitySchema.Properties[p.Key];
+                                        var keyPropertyName = p.Key;
+                                        requiredProperties.Add(keyPropertyName);
+                                        var property = entitySchema.Properties[keyPropertyName];
                                         var allowedValues = property.AllowedValues;
                                         if (allowedValues == null)
                                         {
@@ -580,12 +594,23 @@ namespace EncompassRest
                 }
             }
 
-            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums);
+            GenerateClassFileFromSchema(destinationPath, @namespace, entityName, ellieType, entitySchema, otherEnums, requiredProperties, serializeWholeList);
         }
 
-        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, Type ellieType, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums)
+        private static void GenerateClassFileFromSchema(string destinationPath, string @namespace, string entityName, Type ellieType, EntitySchema entitySchema, Dictionary<string, Dictionary<string, string>> otherEnums, HashSet<string> requiredProperties, bool serializeWholeList)
         {
             var sb = new StringBuilder();
+
+            var entityArguments = string.Empty;
+            if (requiredProperties?.Count > 0)
+            {
+                entityArguments = $"PropertiesToAlwaysSerialize = nameof({string.Join(") + \",\" + nameof(", requiredProperties.OrderBy(p => p))})";
+            }
+            if (serializeWholeList)
+            {
+                entityArguments += $"{(entityArguments.Length > 0 ? ", " : string.Empty)}SerializeWholeListWhenDirty = true";
+            }
+
             sb.Append(
 $@"using System;
 using System.Collections.Generic;
@@ -597,7 +622,8 @@ namespace {@namespace}
     /// <summary>
     /// {entityName}
     /// </summary>
-    public sealed partial class {entityName} : ExtensibleObject, IIdentifiable
+    {(entityArguments.Length > 0 ? $@"[Entity({entityArguments})]
+    " : string.Empty)}public sealed partial class {entityName} : ExtensibleObject, IIdentifiable
     {{
 ");
 

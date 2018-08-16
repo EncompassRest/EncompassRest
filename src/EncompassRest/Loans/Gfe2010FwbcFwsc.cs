@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe2010FwbcFwsc
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(Gfe2010FwbcFwscIndex) + "," + nameof(LineLetter) + "," + nameof(LineNumber))]
     public sealed partial class Gfe2010FwbcFwsc : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _fwbc;

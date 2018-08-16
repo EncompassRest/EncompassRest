@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// NonBorrowingOwner
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class NonBorrowingOwner : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addressCity;

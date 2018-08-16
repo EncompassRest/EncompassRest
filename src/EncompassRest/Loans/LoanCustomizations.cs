@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public partial class Loan
+    partial class Loan
     {
         private LoanFields _fields;
 

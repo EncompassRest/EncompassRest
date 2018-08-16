@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ServiceProviderContact
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class ServiceProviderContact : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;

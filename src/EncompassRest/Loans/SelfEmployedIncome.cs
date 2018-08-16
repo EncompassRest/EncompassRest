@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// SelfEmployedIncome
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(FieldName) + "," + nameof(FormType))]
     public sealed partial class SelfEmployedIncome : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _boolFieldValue;

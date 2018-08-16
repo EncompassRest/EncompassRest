@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// NewYorkPrimaryLender
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(NewYorkPrimaryLenderIndex))]
     public sealed partial class NewYorkPrimaryLender : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;

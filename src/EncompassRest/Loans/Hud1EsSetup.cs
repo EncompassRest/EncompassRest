@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Hud1EsSetup
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Hud1EsSetup : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _annualFeePrepaid;

@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PrepaymentPenalty
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class PrepaymentPenalty : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<FullPrepaymentPenaltyOptionType>> _fullPrepaymentPenaltyOptionType;

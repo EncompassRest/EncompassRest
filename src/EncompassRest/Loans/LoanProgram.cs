@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanProgram
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class LoanProgram : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<YOrN>> _acquisition;

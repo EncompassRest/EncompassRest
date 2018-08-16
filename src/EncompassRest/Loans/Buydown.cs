@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Buydown
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class Buydown : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _buydownIndex;

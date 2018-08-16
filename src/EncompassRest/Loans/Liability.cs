@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Liability
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(AccountIndicator) + "," + nameof(LiabilityType), SerializeWholeListWhenDirty = true)]
     public sealed partial class Liability : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountIdentifier;

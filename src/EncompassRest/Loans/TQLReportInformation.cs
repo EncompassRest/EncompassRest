@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// TQLReportInformation
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class TQLReportInformation : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _altId;

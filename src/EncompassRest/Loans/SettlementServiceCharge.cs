@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// SettlementServiceCharge
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class SettlementServiceCharge : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _amount;

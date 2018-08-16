@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// AntiSteeringLoanOption
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(AntiSteeringLoanOptionIndex))]
     public sealed partial class AntiSteeringLoanOption : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _antiSteeringLoanOptionIndex;

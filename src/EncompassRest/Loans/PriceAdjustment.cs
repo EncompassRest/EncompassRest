@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PriceAdjustment
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(AdjustmentType) + "," + nameof(PriceAdjustmentType), SerializeWholeListWhenDirty = true)]
     public sealed partial class PriceAdjustment : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<AdjustmentType>> _adjustmentType;
