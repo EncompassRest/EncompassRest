@@ -17,13 +17,20 @@ namespace EncompassRest.LoanPipeline
 
         public Task<string> GetCanonicalNamesRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync("fieldDefinitions", queryString, nameof(GetCanonicalNamesRawAsync), null, cancellationToken);
 
-        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, CancellationToken cancellationToken = default)
+        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, CancellationToken cancellationToken = default) => CreateCursorAsync(parameters, null, cancellationToken);
+
+        public Task<LoanPipelineCursor> CreateCursorAsync(PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
 
             var queryParameters = new QueryParameters(
                 new QueryParameter("limit", "1"),
                 new QueryParameter("cursorType", "randomAccess"));
+
+            if (ignoreInvalidFields.HasValue)
+            {
+                queryParameters.Add("ignoreInvalidFields", ignoreInvalidFields.ToString().ToLower());
+            }
 
             return PostAsync(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(CreateCursorAsync), null, cancellationToken, async response =>
             {
@@ -52,9 +59,13 @@ namespace EncompassRest.LoanPipeline
             });
         }
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, cancellationToken);
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, null, cancellationToken);
 
-        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, CancellationToken cancellationToken = default)
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, limit, null, cancellationToken);
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => ViewPipelineAsync(parameters, null, ignoreInvalidFields, cancellationToken);
+
+        public Task<List<LoanPipelineData>> ViewPipelineAsync(PipelineParameters parameters, int? limit, bool? ignoreInvalidFields, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(parameters, nameof(parameters));
             if (limit.HasValue)
@@ -65,7 +76,11 @@ namespace EncompassRest.LoanPipeline
             var queryParameters = new QueryParameters();
             if (limit.HasValue)
             {
-                queryParameters.Add(new QueryParameter("limit", limit.GetValueOrDefault().ToString()));
+                queryParameters.Add("limit", limit.GetValueOrDefault().ToString());
+            }
+            if (ignoreInvalidFields.HasValue)
+            {
+                queryParameters.Add("ignoreInvalidFields", ignoreInvalidFields.ToString().ToLower());
             }
 
             return PostAsync<List<LoanPipelineData>>(null, queryParameters.ToString(), JsonStreamContent.Create(parameters), nameof(ViewPipelineAsync), null, cancellationToken);
