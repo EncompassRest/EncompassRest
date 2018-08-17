@@ -312,12 +312,15 @@ namespace EncompassRest
         }
         #endregion
 
+        public event EventHandler<ApiResponseEventArgs> ApiResponse;
+
         internal EncompassRestClient(ClientParameters parameters, Func<TokenCreator, Task<string>> tokenInitializer = null)
         {
             Timeout = parameters.Timeout > TimeSpan.Zero ? parameters.Timeout : TimeSpan.FromSeconds(100);
             _timeoutRetryCount = parameters.TimeoutRetryCount;
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
             _tokenInitializer = tokenInitializer;
+            ApiResponse = parameters.ApiResponse;
         }
 
         public void Dispose()
@@ -347,7 +350,7 @@ namespace EncompassRest
 
             protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                var response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     switch (response.StatusCode)
@@ -369,7 +372,7 @@ namespace EncompassRest
                                     _semaphoreSlim.Release();
                                 }
                                 request.Headers.Authorization = _client.HttpClient.DefaultRequestHeaders.Authorization;
-                                response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                                response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                             }
                             break;
                         case HttpStatusCode.GatewayTimeout:
@@ -378,11 +381,18 @@ namespace EncompassRest
                             {
                                 ++retryCount;
                                 _client.TimeoutRetry?.Invoke(_client, new TimeoutRetryEventArgs(request, response, retryCount));
-                                response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                                response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                             }
                             break;
                     }
                 }
+                return response;
+            }
+
+            private async Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                _client.ApiResponse?.Invoke(_client, new ApiResponseEventArgs(response));
                 return response;
             }
         }

@@ -47,6 +47,8 @@ namespace EncompassRest
             }
         }
 
+        public EventHandler<ApiResponseEventArgs> ApiResponse { get; set; }
+
         public ClientParameters(string apiClientId, string apiClientSecret)
         {
             ApiClientId = apiClientId;
