@@ -69,7 +69,7 @@ namespace EncompassRest.Loans.Documents
             Preconditions.NotNull(document, nameof(document));
             Preconditions.NotNullOrEmpty(document.DocumentId, $"{nameof(document)}.{nameof(document.DocumentId)}");
 
-            return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, document, populate, true, cancellationToken);
+            return PatchPopulateDirtyAsync(document.DocumentId, JsonStreamContent.Create(document), nameof(UpdateDocumentAsync), document.DocumentId, document, populate, cancellationToken);
         }
 
         public Task<string> UpdateDocumentRawAsync(string documentId, string document, string queryString = null, CancellationToken cancellationToken = default)

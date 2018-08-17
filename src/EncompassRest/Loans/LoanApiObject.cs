@@ -78,7 +78,7 @@ namespace EncompassRest.Loans
         internal async Task UpdateAsync<TClass>(TClass value, string methodName, bool populate, CancellationToken cancellationToken)
             where TClass : class, T, IDirty, IIdentifiable
         {
-            await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, value, populate, true, cancellationToken).ConfigureAwait(false);
+            await PatchPopulateDirtyAsync(value.Id, JsonStreamContent.Create(value), methodName, value.Id, value, populate, cancellationToken).ConfigureAwait(false);
             if (LoanObjectBoundApis?.ReflectToLoanObject == true)
             {
                 AddToOrUpdateLoan(value);

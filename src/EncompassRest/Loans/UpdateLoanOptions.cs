@@ -12,14 +12,14 @@ namespace EncompassRest.Loans
         /// </summary>
         public bool? Persistent { get; set; }
 
-        internal override QueryParameters ToQueryParameters()
+        internal override QueryParameters ToQueryParameters(bool forPersistingTransientUpdates = false)
         {
             var queryParameters = base.ToQueryParameters();
             if (!string.IsNullOrEmpty(LoanTemplate))
             {
                 queryParameters.Add("appendData", AppendData.ToString().ToLower());
             }
-            if (Persistent.HasValue)
+            if (Persistent.HasValue && !forPersistingTransientUpdates)
             {
                 queryParameters.Add("persistent", Persistent.ToString().ToLower());
             }

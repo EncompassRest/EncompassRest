@@ -113,7 +113,7 @@ namespace EncompassRest.Contacts
             Preconditions.NotNull(group, nameof(group));
             Preconditions.NotNullOrEmpty(group.Id, $"{nameof(group)}.{nameof(group.Id)}");
 
-            return PatchPopulateDirtyAsync(group.Id, JsonStreamContent.Create(group), nameof(UpdateGroupAsync), group.Id, group, false, true, cancellationToken);
+            return PatchPopulateDirtyAsync(group.Id, JsonStreamContent.Create(group), nameof(UpdateGroupAsync), group.Id, group, false, cancellationToken);
         }
 
         public Task<string> UpdateGroupRawAsync(string groupId, string group, string queryString = null, CancellationToken cancellationToken = default)
