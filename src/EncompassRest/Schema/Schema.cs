@@ -52,5 +52,35 @@ namespace EncompassRest.Schema
 
             return GetRawAsync(fieldId, queryString, nameof(GetFieldSchemaRawAsync), fieldId, cancellationToken);
         }
+
+        public Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, CancellationToken cancellationToken = default) => GeneratePathsAsync(fieldIds, null, null, cancellationToken);
+
+        public Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, bool? ignoreInvalidFields, CancellationToken cancellationToken = default) => GeneratePathsAsync(fieldIds, ignoreInvalidFields, null, cancellationToken);
+
+        public Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, string fieldNamePattern, CancellationToken cancellationToken = default) => GeneratePathsAsync(fieldIds, null, fieldNamePattern, cancellationToken);
+
+        public Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, bool? ignoreInvalidFields, string fieldNamePattern, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNull(fieldIds, nameof(fieldIds));
+
+            var queryParameters = new QueryParameters();
+            if (ignoreInvalidFields.HasValue)
+            {
+                queryParameters.Add("ignoreInvalidFields", ignoreInvalidFields.ToString().ToLower());
+            }
+            if (!string.IsNullOrEmpty(fieldNamePattern))
+            {
+                queryParameters.Add("fieldNamePattern", fieldNamePattern);
+            }
+
+            return PostAsync<Dictionary<string, string>>("pathGenerator", queryParameters.ToString(), JsonStreamContent.Create(fieldIds), nameof(GeneratePathsAsync), null, cancellationToken);
+        }
+
+        public Task<string> GeneratePathsRawAsync(string fieldIds, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldIds, nameof(fieldIds));
+
+            return PostRawAsync("pathGenerator", queryString, new JsonStringContent(fieldIds), nameof(GeneratePathsRawAsync), null, cancellationToken);
+        }
     }
 }
