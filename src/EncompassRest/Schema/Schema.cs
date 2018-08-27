@@ -52,5 +52,28 @@ namespace EncompassRest.Schema
 
             return GetRawAsync(fieldId, queryString, nameof(GetFieldSchemaRawAsync), fieldId, cancellationToken);
         }
+
+        public Task<Loan> GenerateContractAsync(IDictionary<string, object> fieldValues, CancellationToken cancellationToken = default) => GenerateContractAsync(fieldValues, null, cancellationToken);
+
+        public async Task<Loan> GenerateContractAsync(IDictionary<string, object> fieldValues, bool? ignoreInvalidFields, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldValues, nameof(fieldValues));
+
+            var queryParameters = new QueryParameters();
+            if (ignoreInvalidFields.HasValue)
+            {
+                queryParameters.Add("ignoreInvalidFields", ignoreInvalidFields.ToString().ToLower());
+            }
+            var loan = await PostAsync<Loan>("contractGenerator", queryParameters.ToString(), JsonStreamContent.Create(fieldValues), nameof(GenerateContractAsync), null, cancellationToken).ConfigureAwait(false);
+            loan.Client = Client;
+            return loan;
+        }
+
+        public Task<string> GenerateContractRawAsync(string fieldValues, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldValues, nameof(fieldValues));
+
+            return PostRawAsync("contractGenerator", queryString, new JsonStringContent(fieldValues), nameof(GenerateContractRawAsync), null, cancellationToken);
+        }
     }
 }

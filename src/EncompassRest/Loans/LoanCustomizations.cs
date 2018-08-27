@@ -12,7 +12,7 @@ namespace EncompassRest.Loans
         private LoanFields _fields;
 
         [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
         public LoanDocuments Documents => LoanApis.Documents;
