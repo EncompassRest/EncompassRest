@@ -15,11 +15,22 @@ namespace EncompassRest.Loans.Attachments
         {
         }
 
-        public Task<LoanAttachment> GetAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default)
+        public Task<LoanAttachment> GetAttachmentAsync(string attachmentId, CancellationToken cancellationToken = default) => GetAttachmentAsync(attachmentId, null, cancellationToken);
+
+        public async Task<LoanAttachment> GetAttachmentAsync(string attachmentId, bool? generateUrl, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(attachmentId, nameof(attachmentId));
 
-            return GetDirtyAsync<LoanAttachment>(attachmentId, null, nameof(GetAttachmentAsync), attachmentId, cancellationToken);
+            var queryParameters = new QueryParameters();
+
+            if (generateUrl.HasValue)
+            {
+                queryParameters.Add("generateURL", generateUrl.ToString().ToLower());
+            }
+
+            var attachment = await GetDirtyAsync<LoanAttachment>(attachmentId, queryParameters.ToString(), nameof(GetAttachmentAsync), attachmentId, cancellationToken).ConfigureAwait(false);
+            attachment.Attachments = this;
+            return attachment;
         }
 
         public Task<string> GetAttachmentRawAsync(string attachmentId, string queryString = null, CancellationToken cancellationToken = default)
@@ -29,7 +40,15 @@ namespace EncompassRest.Loans.Attachments
             return GetRawAsync(attachmentId, queryString, nameof(GetAttachmentRawAsync), attachmentId, cancellationToken);
         }
 
-        public Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken = default) => GetDirtyListAsync<LoanAttachment>(null, null, nameof(GetAttachmentsAsync), null, cancellationToken);
+        public async Task<List<LoanAttachment>> GetAttachmentsAsync(CancellationToken cancellationToken = default)
+        {
+            var list = await GetDirtyListAsync<LoanAttachment>(null, null, nameof(GetAttachmentsAsync), null, cancellationToken).ConfigureAwait(false);
+            foreach (var attachment in list)
+            {
+                attachment.Attachments = this;
+            }
+            return list;
+        }
 
         public Task<string> GetAttachmentsRawAsync(string queryString = null, CancellationToken cancellationToken = default) => GetRawAsync(null, queryString, nameof(GetAttachmentsRawAsync), null, cancellationToken);
 
@@ -40,6 +59,7 @@ namespace EncompassRest.Loans.Attachments
             Preconditions.NotNull(attachment, nameof(attachment));
             Preconditions.NotNullOrEmpty(attachment.AttachmentId, $"{nameof(attachment)}{nameof(attachment.AttachmentId)}");
 
+            attachment.Attachments = this;
             return PatchPopulateDirtyAsync(attachment.AttachmentId, JsonStreamContent.Create(attachment), nameof(UpdateAttachmentAsync), attachment.AttachmentId, attachment, populate, cancellationToken);
         }
 
@@ -57,6 +77,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
+            attachment.Attachments = this;
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new ByteArrayContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
@@ -68,6 +89,7 @@ namespace EncompassRest.Loans.Attachments
         {
             Preconditions.NotNull(attachmentData, nameof(attachmentData));
 
+            attachment.Attachments = this;
             var mediaUrlObject = await GetUploadAttachmentUrlInternalAsync(populate ? ViewEntityQueryString : null, JsonStreamContent.Create(attachment), nameof(GetUploadAttachmentUrlAsync), cancellationToken, FuncCache<MediaUrlObject>.ReadAsFunc).ConfigureAwait(false);
 
             return await SendFullUriPopulateDirtyAsync(HttpMethod.Put, mediaUrlObject.MediaUrl, null, new StreamContent(attachmentData), nameof(UploadAttachmentAsync), attachment, populate, cancellationToken).ConfigureAwait(false);
@@ -97,15 +119,19 @@ namespace EncompassRest.Loans.Attachments
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentAsync), attachmentId, cancellationToken, ReadAsByteArrayFunc).ConfigureAwait(false);
+            return await DownloadAttachmentFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
         }
+
+        internal Task<byte[]> DownloadAttachmentFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentAsync), null, cancellationToken, ReadAsByteArrayFunc);
 
         public async Task<Stream> DownloadAttachmentStreamAsync(string attachmentId, CancellationToken cancellationToken = default)
         {
             var mediaUrlObject = await GetDownloadAttachmentUrlAsync(attachmentId, cancellationToken).ConfigureAwait(false);
 
-            return await SendFullUriAsync(HttpMethod.Get, mediaUrlObject.MediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), attachmentId, cancellationToken, ReadAsStreamFunc, true, false).ConfigureAwait(false);
+            return await DownloadAttachmentStreamFromMediaUrlAsync(mediaUrlObject.MediaUrl, cancellationToken).ConfigureAwait(false);
         }
+
+        internal Task<Stream> DownloadAttachmentStreamFromMediaUrlAsync(string mediaUrl, CancellationToken cancellationToken = default) => SendFullUriAsync(HttpMethod.Get, mediaUrl, null, null, nameof(DownloadAttachmentStreamAsync), null, cancellationToken, ReadAsStreamFunc, true, false);
 
         public async Task<byte[]> DownloadAttachmentPageAsync(string attachmentId, string pageId, CancellationToken cancellationToken = default)
         {
