@@ -1383,5 +1383,41 @@ namespace EncompassRest.Tests
 
             Assert.IsTrue(LoanFieldDescriptors.FieldMappings.TryRemove("NEWFIELD", out _));
         }
+
+        [TestMethod]
+        public async Task Loan_FieldsFilterPath()
+        {
+            var client = await GetTestClientAsync();
+
+            var fieldDescriptors = client.Loans.FieldDescriptors;
+            var loanFields = new Loan(client).Fields;
+
+            foreach (var pair in LoanFieldDescriptors.FieldMappings)
+            {
+                var fieldId = pair.Key;
+                var fieldDescriptor = fieldDescriptors[fieldId];
+                Assert.IsNotNull(fieldDescriptor.AttributePath, fieldId);
+                var loanField = loanFields[fieldId];
+                Assert.IsNotNull(loanField.AttributePath, fieldId);
+            }
+
+            foreach (var pair in LoanFieldDescriptors.FieldPatternMappings)
+            {
+                var fieldId = string.Format(pair.Key, 1);
+                var fieldDescriptor = fieldDescriptors[fieldId];
+                Assert.IsNotNull(fieldDescriptor.AttributePath, fieldId);
+                var loanField = loanFields[fieldId];
+                Assert.IsNotNull(loanField.AttributePath, fieldId);
+            }
+
+            Assert.AreEqual("/baseLoanAmount", fieldDescriptors["2"].AttributePath);
+            Assert.AreEqual("/baseLoanAmount", loanFields["2"].AttributePath);
+            Assert.AreEqual("/applications/*/borrower/taxIdentificationIdentifier", fieldDescriptors["65"].AttributePath);
+            Assert.AreEqual("/applications/*/borrower/taxIdentificationIdentifier", loanFields["65"].AttributePath);
+            Assert.AreEqual("/contacts[?(@/contactType == \"TITLE_COMPANY\")]/email", fieldDescriptors["88"].AttributePath);
+            Assert.AreEqual("/contacts[?(@/contactType == \"TITLE_COMPANY\")]/email", loanFields["88"].AttributePath);
+            Assert.AreEqual("/fhaVaLoan/energyEfficientMortgageItems/1/actualAmount", fieldDescriptors["EEM.X5"].AttributePath);
+            Assert.AreEqual("/fhaVaLoan/energyEfficientMortgageItems/1/actualAmount", loanFields["EEM.X5"].AttributePath);
+        }
     }
 }
