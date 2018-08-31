@@ -110,7 +110,6 @@ namespace EncompassRest
         private int _timeoutRetryCount;
 
         private HttpClient _httpClient;
-        private RetryHandler _retryHandler;
         private Loans.Loans _loans;
         private Schema.Schema _schema;
         private Webhook.Webhook _webhook;
@@ -127,6 +126,7 @@ namespace EncompassRest
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
+        private BaseApiClient _baseApiClient;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -300,7 +300,7 @@ namespace EncompassRest
                 var httpClient = _httpClient;
                 if (httpClient == null)
                 {
-                    httpClient = new HttpClient(GetRetryHandler())
+                    httpClient = new HttpClient(new RetryHandler(this, _tokenInitializer != null))
                     {
                         Timeout = Timeout
                     };
@@ -310,7 +310,18 @@ namespace EncompassRest
                 return httpClient;
             }
         }
+
+        public BaseApiClient BaseApiClient
+        {
+            get
+            {
+                var baseApiClient = _baseApiClient;
+                return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
+            }
+        }
         #endregion
+
+        public event EventHandler<ApiResponseEventArgs> ApiResponse;
 
         internal EncompassRestClient(ClientParameters parameters, Func<TokenCreator, Task<string>> tokenInitializer = null)
         {
@@ -318,18 +329,13 @@ namespace EncompassRest
             _timeoutRetryCount = parameters.TimeoutRetryCount;
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
             _tokenInitializer = tokenInitializer;
+            ApiResponse = parameters.ApiResponse;
         }
 
         public void Dispose()
         {
             AccessToken.Dispose();
             _httpClient?.Dispose();
-        }
-
-        private RetryHandler GetRetryHandler()
-        {
-            var retryHandler = _retryHandler;
-            return retryHandler ?? Interlocked.CompareExchange(ref _retryHandler, (retryHandler = new RetryHandler(this, _tokenInitializer != null)), null) ?? retryHandler;
         }
 
         internal sealed class RetryHandler : DelegatingHandler
@@ -347,7 +353,7 @@ namespace EncompassRest
 
             protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                var response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     switch (response.StatusCode)
@@ -361,7 +367,7 @@ namespace EncompassRest
                                     if (string.Equals(request.Headers.Authorization.Parameter, _client.AccessToken.Token, StringComparison.Ordinal))
                                     {
                                         _client.AccessToken.Token = await _client._tokenInitializer(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
-                                        _client._httpClient = null;
+                                        _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_client.AccessToken.Type, _client.AccessToken.Token);
                                     }
                                 }
                                 finally
@@ -369,7 +375,7 @@ namespace EncompassRest
                                     _semaphoreSlim.Release();
                                 }
                                 request.Headers.Authorization = _client.HttpClient.DefaultRequestHeaders.Authorization;
-                                response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                                response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                             }
                             break;
                         case HttpStatusCode.GatewayTimeout:
@@ -378,11 +384,18 @@ namespace EncompassRest
                             {
                                 ++retryCount;
                                 _client.TimeoutRetry?.Invoke(_client, new TimeoutRetryEventArgs(request, response, retryCount));
-                                response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                                response = await SendRequestAsync(request, cancellationToken).ConfigureAwait(false);
                             }
                             break;
                     }
                 }
+                return response;
+            }
+
+            private async Task<HttpResponseMessage> SendRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                var response = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
+                _client.ApiResponse?.Invoke(_client, new ApiResponseEventArgs(response));
                 return response;
             }
         }

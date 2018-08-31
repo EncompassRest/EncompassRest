@@ -5,7 +5,7 @@ using EncompassRest.Utilities;
 
 namespace EncompassRest.Loans.FieldReader
 {
-    public sealed class LoanFieldReader : LoanApiObject
+    internal sealed class LoanFieldReader : LoanApiObject
     {
         internal LoanFieldReader(EncompassRestClient client, string loanId)
             : base(client, loanId, "fieldReader")

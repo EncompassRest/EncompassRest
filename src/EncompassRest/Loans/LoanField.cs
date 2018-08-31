@@ -17,7 +17,15 @@ namespace EncompassRest.Loans
 
         public string FieldId => Descriptor.FieldId;
 
+        /// <summary>
+        /// For use with loan field locking.
+        /// </summary>
         public string ModelPath => _modelPath.ToString();
+
+        /// <summary>
+        /// For use with Webhook filter attributes.
+        /// </summary>
+        public string AttributePath => _modelPath.ToString(name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name, false), true).Replace("/currentApplication", "/applications/*");
 
         [Obsolete("Use Descriptor.MultiInstance instead.")]
         [EditorBrowsable(EditorBrowsableState.Never)]

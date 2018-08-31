@@ -18,10 +18,11 @@ namespace EncompassRest.Tests
             {
                 var groupType = contactType == ContactType.Business ? ContactGroupType.Public : ContactGroupType.Private;
                 var groupAdded = new ContactGroup("ABC") { ContactType = contactType, GroupType = groupType, Description = "123" };
-                var groupId = await contactGroups.CreateGroupAsync(groupAdded);
+                var groupId = await contactGroups.CreateGroupAsync(groupAdded, true);
                 try
                 {
                     Assert.AreEqual(groupId, groupAdded.Id);
+                    Assert.IsNotNull(groupAdded.CreatedDate);
                     var groups = await contactGroups.GetGroupsAsync(contactType, groupType);
                     Assert.IsNotNull(groups);
                     Assert.IsTrue(groups.Count > 0);

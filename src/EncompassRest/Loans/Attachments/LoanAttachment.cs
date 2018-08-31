@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 using EncompassRest.Utilities;
 using EnumsNET;
 using Newtonsoft.Json;
@@ -37,7 +40,37 @@ namespace EncompassRest.Loans.Attachments
         private EntityReference _document;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public EntityReference Document { get => _document; set => SetField(ref _document, value); }
+        private NeverSerializeValue<string> _mediaUrl;
+        public string MediaUrl { get => _mediaUrl; set => _mediaUrl = value; }
         [IdPropertyName(nameof(AttachmentId))]
         string IIdentifiable.Id { get => AttachmentId; set => AttachmentId = value; }
+
+        internal LoanAttachments Attachments;
+
+        public async Task<byte[]> DownloadAsync(CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
+
+            var mediaUrl = MediaUrl;
+            if (string.IsNullOrEmpty(mediaUrl))
+            {
+                mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                MediaUrl = mediaUrl;
+            }
+            return await Attachments.DownloadAttachmentFromMediaUrlAsync(mediaUrl, cancellationToken).ConfigureAwait(false);
+        }
+
+        public async Task<Stream> DownloadStreamAsync(CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(AttachmentId, nameof(AttachmentId));
+
+            var mediaUrl = MediaUrl;
+            if (string.IsNullOrEmpty(mediaUrl))
+            {
+                mediaUrl = (await Attachments.GetDownloadAttachmentUrlAsync(AttachmentId, cancellationToken).ConfigureAwait(false)).MediaUrl;
+                MediaUrl = mediaUrl;
+            }
+            return await Attachments.DownloadAttachmentStreamFromMediaUrlAsync(mediaUrl, cancellationToken).ConfigureAwait(false);
+        }
     }
 }
