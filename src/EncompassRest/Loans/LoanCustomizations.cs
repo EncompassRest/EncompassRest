@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
@@ -10,9 +11,10 @@ namespace EncompassRest.Loans
     public partial class Loan
     {
         private LoanFields _fields;
+        internal List<TransientLoanUpdate> TransientLoanUpdates;
 
         [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
         public LoanDocuments Documents => LoanApis.Documents;
@@ -122,6 +124,7 @@ namespace EncompassRest.Loans
             {
                 Client = client;
                 EncompassId = loanId;
+                _encompassId.Dirty = false;
                 LoanApis = new LoanObjectBoundApis(client, this);
             }
         }
@@ -130,6 +133,13 @@ namespace EncompassRest.Loans
         {
             get => _currentApplicationIndex.Dirty;
             set => _currentApplicationIndex.Dirty = value;
+        }
+
+        internal sealed class TransientLoanUpdate
+        {
+            public string Body { get; set; }
+
+            public string QueryString { get; set; }
         }
     }
 }

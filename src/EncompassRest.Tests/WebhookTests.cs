@@ -48,6 +48,19 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Webhook_GetResource()
+        {
+            var client = await GetTestClientAsync();
+            var resources = await client.Webhook.GetResourcesAsync();
+
+            foreach (var resource in resources)
+            {
+                var retrievedResource = await client.Webhook.GetResourceAsync(resource.Name);
+                Assert.AreEqual(resource.ToString(), retrievedResource.ToString());
+            }
+        }
+
+        [TestMethod]
         public void WebhookSubscription_Serialization()
         {
             var subscription = new WebhookSubscription("https://google.com", WebhookResourceType.Loan, new[] { WebhookResourceEvent.Create, WebhookResourceEvent.Update }) { ClientId = "1234567890" };

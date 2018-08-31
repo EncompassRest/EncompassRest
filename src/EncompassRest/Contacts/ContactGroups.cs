@@ -74,12 +74,14 @@ namespace EncompassRest.Contacts
             return GetRawAsync($"{groupId}/contacts", queryString, nameof(GetGroupContactsRawAsync), groupId, cancellationToken);
         }
 
-        public Task<string> CreateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default)
+        public Task<string> CreateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default) => CreateGroupAsync(group, false, cancellationToken);
+
+        public Task<string> CreateGroupAsync(ContactGroup group, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(group, nameof(group));
             Preconditions.NullOrEmpty(group.Id, $"{nameof(group)}.{nameof(group.Id)}");
 
-            return PostPopulateDirtyAsync(null, nameof(CreateGroupAsync), group, false, cancellationToken);
+            return PostPopulateDirtyAsync(null, nameof(CreateGroupAsync), group, populate, cancellationToken);
         }
 
         public Task<string> CreateGroupRawAsync(string group, string queryString = null, CancellationToken cancellationToken = default)
@@ -108,12 +110,14 @@ namespace EncompassRest.Contacts
             return PatchAsync($"{groupId}/contacts", queryString, new JsonStringContent(contacts), nameof(AssignGroupContactsRawAsync), groupId, cancellationToken);
         }
 
-        public Task UpdateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default)
+        public Task UpdateGroupAsync(ContactGroup group, CancellationToken cancellationToken = default) => UpdateGroupAsync(group, false, cancellationToken);
+
+        public Task UpdateGroupAsync(ContactGroup group, bool populate, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(group, nameof(group));
             Preconditions.NotNullOrEmpty(group.Id, $"{nameof(group)}.{nameof(group.Id)}");
 
-            return PatchPopulateDirtyAsync(group.Id, JsonStreamContent.Create(group), nameof(UpdateGroupAsync), group.Id, group, false, cancellationToken);
+            return PatchPopulateDirtyAsync(group.Id, JsonStreamContent.Create(group), nameof(UpdateGroupAsync), group.Id, group, populate, cancellationToken);
         }
 
         public Task<string> UpdateGroupRawAsync(string groupId, string group, string queryString = null, CancellationToken cancellationToken = default)
