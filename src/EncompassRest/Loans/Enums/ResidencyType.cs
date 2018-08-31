@@ -9,18 +9,12 @@ namespace EncompassRest.Loans.Enums
     public enum ResidencyType
     {
         /// <summary>
-        /// Owner-Occupant
+        /// Current
         /// </summary>
-        [Description("Owner-Occupant")]
-        OwnedOccupant = 0,
+        Current = 0,
         /// <summary>
-        /// Government Agency
+        /// Prior
         /// </summary>
-        [Description("Government Agency")]
-        GovernmentAgency = 1,
-        /// <summary>
-        /// Nonprofit
-        /// </summary>
-        Nonprofit = 2
+        Prior = 1
     }
 }

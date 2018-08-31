@@ -14,569 +14,407 @@ namespace EncompassRest.Loans
         /// <summary>
         /// DocumentLog AccessedBy
         /// </summary>
-        public string AccessedBy { get => _accessedBy; set => _accessedBy = value; }
+        public string AccessedBy { get => _accessedBy; set => SetField(ref _accessedBy, value); }
         private DirtyValue<DateTime?> _accessedDateUtc;
         /// <summary>
         /// DocumentLog AccessedDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? AccessedDateUtc { get => _accessedDateUtc; set => _accessedDateUtc = value; }
+        public DateTime? AccessedDateUtc { get => _accessedDateUtc; set => SetField(ref _accessedDateUtc, value); }
         private DirtyValue<string> _addedBy;
         /// <summary>
         /// DocumentLog AddedBy
         /// </summary>
-        public string AddedBy { get => _addedBy; set => _addedBy = value; }
+        public string AddedBy { get => _addedBy; set => SetField(ref _addedBy, value); }
         private DirtyList<LogAlert> _alerts;
         /// <summary>
         /// DocumentLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyValue<string> _alertsXml;
         /// <summary>
         /// DocumentLog AlertsXml
         /// </summary>
-        public string AlertsXml { get => _alertsXml; set => _alertsXml = value; }
+        public string AlertsXml { get => _alertsXml; set => SetField(ref _alertsXml, value); }
         private DirtyValue<string> _allowedRoleDelimitedList;
         /// <summary>
         /// DocumentLog AllowedRoleDelimitedList
         /// </summary>
-        public string AllowedRoleDelimitedList { get => _allowedRoleDelimitedList; set => _allowedRoleDelimitedList = value; }
+        public string AllowedRoleDelimitedList { get => _allowedRoleDelimitedList; set => SetField(ref _allowedRoleDelimitedList, value); }
         private DirtyList<EntityReference> _allowedRoles;
         /// <summary>
         /// DocumentLog AllowedRoles
         /// </summary>
-        public IList<EntityReference> AllowedRoles { get => _allowedRoles ?? (_allowedRoles = new DirtyList<EntityReference>()); set => _allowedRoles = new DirtyList<EntityReference>(value); }
+        public IList<EntityReference> AllowedRoles { get => GetField(ref _allowedRoles); set => SetField(ref _allowedRoles, value); }
         private DirtyValue<string> _allowedRolesXml;
         /// <summary>
         /// DocumentLog AllowedRolesXml
         /// </summary>
-        public string AllowedRolesXml { get => _allowedRolesXml; set => _allowedRolesXml = value; }
+        public string AllowedRolesXml { get => _allowedRolesXml; set => SetField(ref _allowedRolesXml, value); }
         private DirtyValue<DateTime?> _archiveDateUtc;
         /// <summary>
         /// DocumentLog ArchiveDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? ArchiveDateUtc { get => _archiveDateUtc; set => _archiveDateUtc = value; }
+        public DateTime? ArchiveDateUtc { get => _archiveDateUtc; set => SetField(ref _archiveDateUtc, value); }
         private DirtyValue<string> _archivedBy;
         /// <summary>
         /// DocumentLog ArchivedBy
         /// </summary>
-        public string ArchivedBy { get => _archivedBy; set => _archivedBy = value; }
+        public string ArchivedBy { get => _archivedBy; set => SetField(ref _archivedBy, value); }
         private DirtyValue<bool?> _closingDocumentIndicator;
         /// <summary>
         /// DocumentLog ClosingDocumentIndicator
         /// </summary>
-        public bool? ClosingDocumentIndicator { get => _closingDocumentIndicator; set => _closingDocumentIndicator = value; }
+        public bool? ClosingDocumentIndicator { get => _closingDocumentIndicator; set => SetField(ref _closingDocumentIndicator, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// DocumentLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _commentListXml;
         /// <summary>
         /// DocumentLog CommentListXml
         /// </summary>
-        public string CommentListXml { get => _commentListXml; set => _commentListXml = value; }
+        public string CommentListXml { get => _commentListXml; set => SetField(ref _commentListXml, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// DocumentLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<string> _company;
         /// <summary>
         /// DocumentLog Company
         /// </summary>
-        public string Company { get => _company; set => _company = value; }
+        public string Company { get => _company; set => SetField(ref _company, value); }
         private DirtyList<EntityReference> _conditions;
         /// <summary>
         /// DocumentLog Conditions
         /// </summary>
-        public IList<EntityReference> Conditions { get => _conditions ?? (_conditions = new DirtyList<EntityReference>()); set => _conditions = new DirtyList<EntityReference>(value); }
+        public IList<EntityReference> Conditions { get => GetField(ref _conditions); set => SetField(ref _conditions, value); }
         private DirtyValue<string> _conditionsXml;
         /// <summary>
         /// DocumentLog ConditionsXml
         /// </summary>
-        public string ConditionsXml { get => _conditionsXml; set => _conditionsXml = value; }
+        public string ConditionsXml { get => _conditionsXml; set => SetField(ref _conditionsXml, value); }
         private DirtyValue<DateTime?> _dateAddedUtc;
         /// <summary>
         /// DocumentLog DateAddedUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateAddedUtc { get => _dateAddedUtc; set => _dateAddedUtc = value; }
+        public DateTime? DateAddedUtc { get => _dateAddedUtc; set => SetField(ref _dateAddedUtc, value); }
         private DirtyValue<DateTime?> _dateExpected;
         /// <summary>
         /// DocumentLog DateExpected
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateExpected { get => _dateExpected; set => _dateExpected = value; }
+        public DateTime? DateExpected { get => _dateExpected; set => SetField(ref _dateExpected, value); }
         private DirtyValue<DateTime?> _dateExpires;
         /// <summary>
         /// DocumentLog DateExpires
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateExpires { get => _dateExpires; set => _dateExpires = value; }
+        public DateTime? DateExpires { get => _dateExpires; set => SetField(ref _dateExpires, value); }
         private DirtyValue<DateTime?> _dateReceived;
         /// <summary>
         /// DocumentLog DateReceived
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateReceived { get => _dateReceived; set => _dateReceived = value; }
+        public DateTime? DateReceived { get => _dateReceived; set => SetField(ref _dateReceived, value); }
         private DirtyValue<DateTime?> _dateRequested;
         /// <summary>
         /// DocumentLog DateRequested
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateRequested { get => _dateRequested; set => _dateRequested = value; }
+        public DateTime? DateRequested { get => _dateRequested; set => SetField(ref _dateRequested, value); }
         private DirtyValue<DateTime?> _dateRerequested;
         /// <summary>
         /// DocumentLog DateRerequested
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateRerequested { get => _dateRerequested; set => _dateRerequested = value; }
+        public DateTime? DateRerequested { get => _dateRerequested; set => SetField(ref _dateRerequested, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// DocumentLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<int?> _daysDue;
         /// <summary>
         /// DocumentLog DaysDue
         /// </summary>
-        public int? DaysDue { get => _daysDue; set => _daysDue = value; }
+        public int? DaysDue { get => _daysDue; set => SetField(ref _daysDue, value); }
         private DirtyValue<int?> _daysTillExpire;
         /// <summary>
         /// DocumentLog DaysTillExpire
         /// </summary>
-        public int? DaysTillExpire { get => _daysTillExpire; set => _daysTillExpire = value; }
+        public int? DaysTillExpire { get => _daysTillExpire; set => SetField(ref _daysTillExpire, value); }
         private DirtyValue<string> _description;
         /// <summary>
         /// DocumentLog Description
         /// </summary>
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private DirtyValue<string> _documentDateTimeType;
         /// <summary>
         /// DocumentLog DocumentDateTimeType
         /// </summary>
-        public string DocumentDateTimeType { get => _documentDateTimeType; set => _documentDateTimeType = value; }
+        public string DocumentDateTimeType { get => _documentDateTimeType; set => SetField(ref _documentDateTimeType, value); }
         private DirtyValue<string> _docVerificationsXml;
         /// <summary>
         /// DocumentLog DocVerificationsXml
         /// </summary>
-        public string DocVerificationsXml { get => _docVerificationsXml; set => _docVerificationsXml = value; }
+        public string DocVerificationsXml { get => _docVerificationsXml; set => SetField(ref _docVerificationsXml, value); }
         private DirtyValue<bool?> _eDisclosureIndicator;
         /// <summary>
         /// DocumentLog EDisclosureIndicator
         /// </summary>
-        public bool? EDisclosureIndicator { get => _eDisclosureIndicator; set => _eDisclosureIndicator = value; }
+        public bool? EDisclosureIndicator { get => _eDisclosureIndicator; set => SetField(ref _eDisclosureIndicator, value); }
         private DirtyValue<string> _ePassSignature;
         /// <summary>
         /// DocumentLog EPassSignature
         /// </summary>
-        public string EPassSignature { get => _ePassSignature; set => _ePassSignature = value; }
+        public string EPassSignature { get => _ePassSignature; set => SetField(ref _ePassSignature, value); }
         private DirtyValue<bool?> _expected;
         /// <summary>
         /// DocumentLog Expected
         /// </summary>
-        public bool? Expected { get => _expected; set => _expected = value; }
+        public bool? Expected { get => _expected; set => SetField(ref _expected, value); }
         private DirtyValue<bool?> _expires;
         /// <summary>
         /// DocumentLog Expires
         /// </summary>
-        public bool? Expires { get => _expires; set => _expires = value; }
+        public bool? Expires { get => _expires; set => SetField(ref _expires, value); }
         private DirtyList<FileAttachmentReference> _fileAttachmentReferences;
         /// <summary>
         /// DocumentLog FileAttachmentReferences
         /// </summary>
-        public IList<FileAttachmentReference> FileAttachmentReferences { get => _fileAttachmentReferences ?? (_fileAttachmentReferences = new DirtyList<FileAttachmentReference>()); set => _fileAttachmentReferences = new DirtyList<FileAttachmentReference>(value); }
+        public IList<FileAttachmentReference> FileAttachmentReferences { get => GetField(ref _fileAttachmentReferences); set => SetField(ref _fileAttachmentReferences, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// DocumentLog FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _fileAttachmentsXml;
         /// <summary>
         /// DocumentLog FileAttachmentsXml
         /// </summary>
-        public string FileAttachmentsXml { get => _fileAttachmentsXml; set => _fileAttachmentsXml = value; }
+        public string FileAttachmentsXml { get => _fileAttachmentsXml; set => SetField(ref _fileAttachmentsXml, value); }
         private DirtyValue<string> _groupName;
         /// <summary>
         /// DocumentLog GroupName
         /// </summary>
-        public string GroupName { get => _groupName; set => _groupName = value; }
+        public string GroupName { get => _groupName; set => SetField(ref _groupName, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// DocumentLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// DocumentLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isAssetVerification;
         /// <summary>
         /// DocumentLog IsAssetVerification
         /// </summary>
-        public bool? IsAssetVerification { get => _isAssetVerification; set => _isAssetVerification = value; }
+        public bool? IsAssetVerification { get => _isAssetVerification; set => SetField(ref _isAssetVerification, value); }
         private DirtyValue<bool?> _isEmploymentVerification;
         /// <summary>
         /// DocumentLog IsEmploymentVerification
         /// </summary>
-        public bool? IsEmploymentVerification { get => _isEmploymentVerification; set => _isEmploymentVerification = value; }
+        public bool? IsEmploymentVerification { get => _isEmploymentVerification; set => SetField(ref _isEmploymentVerification, value); }
         private DirtyValue<bool?> _isEPassIndicator;
         /// <summary>
         /// DocumentLog IsEPassIndicator
         /// </summary>
-        public bool? IsEPassIndicator { get => _isEPassIndicator; set => _isEPassIndicator = value; }
+        public bool? IsEPassIndicator { get => _isEPassIndicator; set => SetField(ref _isEPassIndicator, value); }
         private DirtyValue<bool?> _isExpired;
         /// <summary>
         /// DocumentLog IsExpired
         /// </summary>
-        public bool? IsExpired { get => _isExpired; set => _isExpired = value; }
+        public bool? IsExpired { get => _isExpired; set => SetField(ref _isExpired, value); }
         private DirtyValue<bool?> _isExternalIndicator;
         /// <summary>
         /// DocumentLog IsExternalIndicator
         /// </summary>
-        public bool? IsExternalIndicator { get => _isExternalIndicator; set => _isExternalIndicator = value; }
+        public bool? IsExternalIndicator { get => _isExternalIndicator; set => SetField(ref _isExternalIndicator, value); }
         private DirtyValue<bool?> _isIncomeVerification;
         /// <summary>
         /// DocumentLog IsIncomeVerification
         /// </summary>
-        public bool? IsIncomeVerification { get => _isIncomeVerification; set => _isIncomeVerification = value; }
+        public bool? IsIncomeVerification { get => _isIncomeVerification; set => SetField(ref _isIncomeVerification, value); }
         private DirtyValue<bool?> _isObligationVerification;
         /// <summary>
         /// DocumentLog IsObligationVerification
         /// </summary>
-        public bool? IsObligationVerification { get => _isObligationVerification; set => _isObligationVerification = value; }
+        public bool? IsObligationVerification { get => _isObligationVerification; set => SetField(ref _isObligationVerification, value); }
         private DirtyValue<bool?> _isPastDue;
         /// <summary>
         /// DocumentLog IsPastDue
         /// </summary>
-        public bool? IsPastDue { get => _isPastDue; set => _isPastDue = value; }
+        public bool? IsPastDue { get => _isPastDue; set => SetField(ref _isPastDue, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// DocumentLog IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private DirtyValue<bool?> _isThirdPartyDocIndicator;
         /// <summary>
         /// DocumentLog IsThirdPartyDocIndicator
         /// </summary>
-        public bool? IsThirdPartyDocIndicator { get => _isThirdPartyDocIndicator; set => _isThirdPartyDocIndicator = value; }
+        public bool? IsThirdPartyDocIndicator { get => _isThirdPartyDocIndicator; set => SetField(ref _isThirdPartyDocIndicator, value); }
         private DirtyValue<bool?> _isTPOWebcenterPortalIndicator;
         /// <summary>
         /// DocumentLog IsTPOWebcenterPortalIndicator
         /// </summary>
-        public bool? IsTPOWebcenterPortalIndicator { get => _isTPOWebcenterPortalIndicator; set => _isTPOWebcenterPortalIndicator = value; }
+        public bool? IsTPOWebcenterPortalIndicator { get => _isTPOWebcenterPortalIndicator; set => SetField(ref _isTPOWebcenterPortalIndicator, value); }
         private DirtyValue<bool?> _isWebCenterIndicator;
         /// <summary>
         /// DocumentLog IsWebCenterIndicator
         /// </summary>
-        public bool? IsWebCenterIndicator { get => _isWebCenterIndicator; set => _isWebCenterIndicator = value; }
+        public bool? IsWebCenterIndicator { get => _isWebCenterIndicator; set => SetField(ref _isWebCenterIndicator, value); }
         private DirtyValue<DateTime?> _lastAttachmentDateUtc;
         /// <summary>
         /// DocumentLog LastAttachmentDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? LastAttachmentDateUtc { get => _lastAttachmentDateUtc; set => _lastAttachmentDateUtc = value; }
+        public DateTime? LastAttachmentDateUtc { get => _lastAttachmentDateUtc; set => SetField(ref _lastAttachmentDateUtc, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// DocumentLog LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<DateTime?> _orderDateUtc;
         /// <summary>
         /// DocumentLog OrderDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? OrderDateUtc { get => _orderDateUtc; set => _orderDateUtc = value; }
+        public DateTime? OrderDateUtc { get => _orderDateUtc; set => SetField(ref _orderDateUtc, value); }
         private DirtyValue<string> _pairId;
         /// <summary>
         /// DocumentLog PairId
         /// </summary>
-        public string PairId { get => _pairId; set => _pairId = value; }
+        public string PairId { get => _pairId; set => SetField(ref _pairId, value); }
         private DirtyValue<bool?> _preClosingDocumentIndicator;
         /// <summary>
         /// DocumentLog PreClosingDocumentIndicator
         /// </summary>
-        public bool? PreClosingDocumentIndicator { get => _preClosingDocumentIndicator; set => _preClosingDocumentIndicator = value; }
+        public bool? PreClosingDocumentIndicator { get => _preClosingDocumentIndicator; set => SetField(ref _preClosingDocumentIndicator, value); }
         private DirtyValue<bool?> _received;
         /// <summary>
         /// DocumentLog Received
         /// </summary>
-        public bool? Received { get => _received; set => _received = value; }
+        public bool? Received { get => _received; set => SetField(ref _received, value); }
         private DirtyValue<DateTime?> _receiveDateUtc;
         /// <summary>
         /// DocumentLog ReceiveDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? ReceiveDateUtc { get => _receiveDateUtc; set => _receiveDateUtc = value; }
+        public DateTime? ReceiveDateUtc { get => _receiveDateUtc; set => SetField(ref _receiveDateUtc, value); }
         private DirtyValue<string> _receivedBy;
         /// <summary>
         /// DocumentLog ReceivedBy
         /// </summary>
-        public string ReceivedBy { get => _receivedBy; set => _receivedBy = value; }
+        public string ReceivedBy { get => _receivedBy; set => SetField(ref _receivedBy, value); }
         private DirtyValue<DateTime?> _reorderDateUtc;
         /// <summary>
         /// DocumentLog ReorderDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? ReorderDateUtc { get => _reorderDateUtc; set => _reorderDateUtc = value; }
+        public DateTime? ReorderDateUtc { get => _reorderDateUtc; set => SetField(ref _reorderDateUtc, value); }
         private DirtyValue<bool?> _requested;
         /// <summary>
         /// DocumentLog Requested
         /// </summary>
-        public bool? Requested { get => _requested; set => _requested = value; }
+        public bool? Requested { get => _requested; set => SetField(ref _requested, value); }
         private DirtyValue<string> _requestedBy;
         /// <summary>
         /// DocumentLog RequestedBy
         /// </summary>
-        public string RequestedBy { get => _requestedBy; set => _requestedBy = value; }
+        public string RequestedBy { get => _requestedBy; set => SetField(ref _requestedBy, value); }
         private DirtyValue<string> _requestedFrom;
         /// <summary>
         /// DocumentLog RequestedFrom
         /// </summary>
-        public string RequestedFrom { get => _requestedFrom; set => _requestedFrom = value; }
+        public string RequestedFrom { get => _requestedFrom; set => SetField(ref _requestedFrom, value); }
         private DirtyValue<bool?> _rerequested;
         /// <summary>
         /// DocumentLog Rerequested
         /// </summary>
-        public bool? Rerequested { get => _rerequested; set => _rerequested = value; }
+        public bool? Rerequested { get => _rerequested; set => SetField(ref _rerequested, value); }
         private DirtyValue<string> _rerequestedBy;
         /// <summary>
         /// DocumentLog RerequestedBy
         /// </summary>
-        public string RerequestedBy { get => _rerequestedBy; set => _rerequestedBy = value; }
+        public string RerequestedBy { get => _rerequestedBy; set => SetField(ref _rerequestedBy, value); }
         private DirtyValue<bool?> _reviewed;
         /// <summary>
         /// DocumentLog Reviewed
         /// </summary>
-        public bool? Reviewed { get => _reviewed; set => _reviewed = value; }
+        public bool? Reviewed { get => _reviewed; set => SetField(ref _reviewed, value); }
         private DirtyValue<string> _reviewedBy;
         /// <summary>
         /// DocumentLog ReviewedBy
         /// </summary>
-        public string ReviewedBy { get => _reviewedBy; set => _reviewedBy = value; }
+        public string ReviewedBy { get => _reviewedBy; set => SetField(ref _reviewedBy, value); }
         private DirtyValue<DateTime?> _reviewedDateUtc;
         /// <summary>
         /// DocumentLog ReviewedDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? ReviewedDateUtc { get => _reviewedDateUtc; set => _reviewedDateUtc = value; }
+        public DateTime? ReviewedDateUtc { get => _reviewedDateUtc; set => SetField(ref _reviewedDateUtc, value); }
         private DirtyValue<bool?> _shippingReady;
         /// <summary>
         /// DocumentLog ShippingReady
         /// </summary>
-        public bool? ShippingReady { get => _shippingReady; set => _shippingReady = value; }
+        public bool? ShippingReady { get => _shippingReady; set => SetField(ref _shippingReady, value); }
         private DirtyValue<string> _shippingReadyBy;
         /// <summary>
         /// DocumentLog ShippingReadyBy
         /// </summary>
-        public string ShippingReadyBy { get => _shippingReadyBy; set => _shippingReadyBy = value; }
+        public string ShippingReadyBy { get => _shippingReadyBy; set => SetField(ref _shippingReadyBy, value); }
         private DirtyValue<DateTime?> _shippingReadyDateUtc;
         /// <summary>
         /// DocumentLog ShippingReadyDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? ShippingReadyDateUtc { get => _shippingReadyDateUtc; set => _shippingReadyDateUtc = value; }
+        public DateTime? ShippingReadyDateUtc { get => _shippingReadyDateUtc; set => SetField(ref _shippingReadyDateUtc, value); }
         private DirtyValue<string> _stage;
         /// <summary>
         /// DocumentLog Stage
         /// </summary>
-        public string Stage { get => _stage; set => _stage = value; }
+        public string Stage { get => _stage; set => SetField(ref _stage, value); }
         private DirtyValue<string> _status;
         /// <summary>
         /// DocumentLog Status
         /// </summary>
-        public string Status { get => _status; set => _status = value; }
+        public string Status { get => _status; set => SetField(ref _status, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// DocumentLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
         private DirtyValue<string> _title;
         /// <summary>
         /// DocumentLog Title
         /// </summary>
-        public string Title { get => _title; set => _title = value; }
+        public string Title { get => _title; set => SetField(ref _title, value); }
         private DirtyValue<bool?> _underwritingReady;
         /// <summary>
         /// DocumentLog UnderwritingReady
         /// </summary>
-        public bool? UnderwritingReady { get => _underwritingReady; set => _underwritingReady = value; }
+        public bool? UnderwritingReady { get => _underwritingReady; set => SetField(ref _underwritingReady, value); }
         private DirtyValue<string> _underwritingReadyBy;
         /// <summary>
         /// DocumentLog UnderwritingReadyBy
         /// </summary>
-        public string UnderwritingReadyBy { get => _underwritingReadyBy; set => _underwritingReadyBy = value; }
+        public string UnderwritingReadyBy { get => _underwritingReadyBy; set => SetField(ref _underwritingReadyBy, value); }
         private DirtyValue<DateTime?> _underwritingReadyDateUtc;
         /// <summary>
         /// DocumentLog UnderwritingReadyDateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => _underwritingReadyDateUtc = value; }
-        internal override bool DirtyInternal
-        {
-            get => _accessedBy.Dirty
-                || _accessedDateUtc.Dirty
-                || _addedBy.Dirty
-                || _alertsXml.Dirty
-                || _allowedRoleDelimitedList.Dirty
-                || _allowedRolesXml.Dirty
-                || _archiveDateUtc.Dirty
-                || _archivedBy.Dirty
-                || _closingDocumentIndicator.Dirty
-                || _commentListXml.Dirty
-                || _comments.Dirty
-                || _company.Dirty
-                || _conditionsXml.Dirty
-                || _dateAddedUtc.Dirty
-                || _dateExpected.Dirty
-                || _dateExpires.Dirty
-                || _dateReceived.Dirty
-                || _dateRequested.Dirty
-                || _dateRerequested.Dirty
-                || _dateUtc.Dirty
-                || _daysDue.Dirty
-                || _daysTillExpire.Dirty
-                || _description.Dirty
-                || _documentDateTimeType.Dirty
-                || _docVerificationsXml.Dirty
-                || _eDisclosureIndicator.Dirty
-                || _ePassSignature.Dirty
-                || _expected.Dirty
-                || _expires.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _fileAttachmentsXml.Dirty
-                || _groupName.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isAssetVerification.Dirty
-                || _isEmploymentVerification.Dirty
-                || _isEPassIndicator.Dirty
-                || _isExpired.Dirty
-                || _isExternalIndicator.Dirty
-                || _isIncomeVerification.Dirty
-                || _isObligationVerification.Dirty
-                || _isPastDue.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _isThirdPartyDocIndicator.Dirty
-                || _isTPOWebcenterPortalIndicator.Dirty
-                || _isWebCenterIndicator.Dirty
-                || _lastAttachmentDateUtc.Dirty
-                || _logRecordIndex.Dirty
-                || _orderDateUtc.Dirty
-                || _pairId.Dirty
-                || _preClosingDocumentIndicator.Dirty
-                || _received.Dirty
-                || _receiveDateUtc.Dirty
-                || _receivedBy.Dirty
-                || _reorderDateUtc.Dirty
-                || _requested.Dirty
-                || _requestedBy.Dirty
-                || _requestedFrom.Dirty
-                || _rerequested.Dirty
-                || _rerequestedBy.Dirty
-                || _reviewed.Dirty
-                || _reviewedBy.Dirty
-                || _reviewedDateUtc.Dirty
-                || _shippingReady.Dirty
-                || _shippingReadyBy.Dirty
-                || _shippingReadyDateUtc.Dirty
-                || _stage.Dirty
-                || _status.Dirty
-                || _systemId.Dirty
-                || _title.Dirty
-                || _underwritingReady.Dirty
-                || _underwritingReadyBy.Dirty
-                || _underwritingReadyDateUtc.Dirty
-                || _alerts?.Dirty == true
-                || _allowedRoles?.Dirty == true
-                || _commentList?.Dirty == true
-                || _conditions?.Dirty == true
-                || _fileAttachmentReferences?.Dirty == true;
-            set
-            {
-                _accessedBy.Dirty = value;
-                _accessedDateUtc.Dirty = value;
-                _addedBy.Dirty = value;
-                _alertsXml.Dirty = value;
-                _allowedRoleDelimitedList.Dirty = value;
-                _allowedRolesXml.Dirty = value;
-                _archiveDateUtc.Dirty = value;
-                _archivedBy.Dirty = value;
-                _closingDocumentIndicator.Dirty = value;
-                _commentListXml.Dirty = value;
-                _comments.Dirty = value;
-                _company.Dirty = value;
-                _conditionsXml.Dirty = value;
-                _dateAddedUtc.Dirty = value;
-                _dateExpected.Dirty = value;
-                _dateExpires.Dirty = value;
-                _dateReceived.Dirty = value;
-                _dateRequested.Dirty = value;
-                _dateRerequested.Dirty = value;
-                _dateUtc.Dirty = value;
-                _daysDue.Dirty = value;
-                _daysTillExpire.Dirty = value;
-                _description.Dirty = value;
-                _documentDateTimeType.Dirty = value;
-                _docVerificationsXml.Dirty = value;
-                _eDisclosureIndicator.Dirty = value;
-                _ePassSignature.Dirty = value;
-                _expected.Dirty = value;
-                _expires.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _fileAttachmentsXml.Dirty = value;
-                _groupName.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isAssetVerification.Dirty = value;
-                _isEmploymentVerification.Dirty = value;
-                _isEPassIndicator.Dirty = value;
-                _isExpired.Dirty = value;
-                _isExternalIndicator.Dirty = value;
-                _isIncomeVerification.Dirty = value;
-                _isObligationVerification.Dirty = value;
-                _isPastDue.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _isThirdPartyDocIndicator.Dirty = value;
-                _isTPOWebcenterPortalIndicator.Dirty = value;
-                _isWebCenterIndicator.Dirty = value;
-                _lastAttachmentDateUtc.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _orderDateUtc.Dirty = value;
-                _pairId.Dirty = value;
-                _preClosingDocumentIndicator.Dirty = value;
-                _received.Dirty = value;
-                _receiveDateUtc.Dirty = value;
-                _receivedBy.Dirty = value;
-                _reorderDateUtc.Dirty = value;
-                _requested.Dirty = value;
-                _requestedBy.Dirty = value;
-                _requestedFrom.Dirty = value;
-                _rerequested.Dirty = value;
-                _rerequestedBy.Dirty = value;
-                _reviewed.Dirty = value;
-                _reviewedBy.Dirty = value;
-                _reviewedDateUtc.Dirty = value;
-                _shippingReady.Dirty = value;
-                _shippingReadyBy.Dirty = value;
-                _shippingReadyDateUtc.Dirty = value;
-                _stage.Dirty = value;
-                _status.Dirty = value;
-                _systemId.Dirty = value;
-                _title.Dirty = value;
-                _underwritingReady.Dirty = value;
-                _underwritingReadyBy.Dirty = value;
-                _underwritingReadyDateUtc.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_allowedRoles != null) _allowedRoles.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-                if (_conditions != null) _conditions.Dirty = value;
-                if (_fileAttachmentReferences != null) _fileAttachmentReferences.Dirty = value;
-            }
-        }
+        public DateTime? UnderwritingReadyDateUtc { get => _underwritingReadyDateUtc; set => SetField(ref _underwritingReadyDateUtc, value); }
     }
 }

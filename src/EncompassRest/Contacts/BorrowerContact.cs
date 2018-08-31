@@ -8,28 +8,11 @@ namespace EncompassRest.Contacts
         internal override string ApiPath => "encompass/v1/borrowerContacts";
 
         private DirtyValue<string> _employerName;
-        public string EmployerName { get => _employerName; set => _employerName = value; }
+        public string EmployerName { get => _employerName; set => SetField(ref _employerName, value); }
         private DirtyValue<DateTime?> _birthdate;
-        public DateTime? Birthdate { get => _birthdate; set => _birthdate = value; }
+        public DateTime? Birthdate { get => _birthdate; set => SetField(ref _birthdate, value); }
         private DirtyValue<string> _referral;
-        public string Referral { get => _referral; set => _referral = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return base.DirtyInternal
-                    || _employerName.Dirty
-                    || _birthdate.Dirty
-                    || _referral.Dirty;
-            }
-            set
-            {
-                base.DirtyInternal = value;
-                _employerName.Dirty = value;
-                _birthdate.Dirty = value;
-                _referral.Dirty = value;
-            }
-        }
+        public string Referral { get => _referral; set => SetField(ref _referral, value); }
 
         /// <summary>
         /// BorrowerContact creation constructor

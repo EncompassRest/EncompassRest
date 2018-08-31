@@ -639,6 +639,22 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Line1320
         /// </summary>
-        Line1320 = 157
+        Line1320 = 157,
+        /// <summary>
+        /// Line2001
+        /// </summary>
+        Line2001 = 158,
+        /// <summary>
+        /// Line2002
+        /// </summary>
+        Line2002 = 159,
+        /// <summary>
+        /// Line2003
+        /// </summary>
+        Line2003 = 160,
+        /// <summary>
+        /// Line2004
+        /// </summary>
+        Line2004 = 161
     }
 }

@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// TQLFraudAlert
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class TQLFraudAlert : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _driveFraudAlertCode;
@@ -15,84 +16,58 @@ namespace EncompassRest.Loans
         /// TQL - Fraud Orders -DRIVE  Fraud Alert Code #1-99 [TQLFRAUDALERTNN06]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders -DRIVE  Fraud Alert Code #1-99")]
-        public string DriveFraudAlertCode { get => _driveFraudAlertCode; set => _driveFraudAlertCode = value; }
+        public string DriveFraudAlertCode { get => _driveFraudAlertCode; set => SetField(ref _driveFraudAlertCode, value); }
         private DirtyValue<string> _driveFraudAlertStatus;
         /// <summary>
         /// TQL - Fraud Orders - DRIVE Fraud Alert Status #1-99 [TQLFRAUDALERTNN05]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - DRIVE Fraud Alert Status #1-99")]
-        public string DriveFraudAlertStatus { get => _driveFraudAlertStatus; set => _driveFraudAlertStatus = value; }
+        public string DriveFraudAlertStatus { get => _driveFraudAlertStatus; set => SetField(ref _driveFraudAlertStatus, value); }
         private DirtyValue<string> _fraudGuardFraudAlertCode;
         /// <summary>
         /// TQL - Fraud Orders - FraudGuard Fraud Alert Code #1-99 [TQLFRAUDALERTNN08]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - FraudGuard Fraud Alert Code #1-99")]
-        public string FraudGuardFraudAlertCode { get => _fraudGuardFraudAlertCode; set => _fraudGuardFraudAlertCode = value; }
+        public string FraudGuardFraudAlertCode { get => _fraudGuardFraudAlertCode; set => SetField(ref _fraudGuardFraudAlertCode, value); }
         private DirtyValue<string> _fraudGuardFraudAlertStatus;
         /// <summary>
         /// TQL - Fraud Orders - FraudGuard Fraud Alert Status #1-99 [TQLFRAUDALERTNN07]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - FraudGuard Fraud Alert Status #1-99")]
-        public string FraudGuardFraudAlertStatus { get => _fraudGuardFraudAlertStatus; set => _fraudGuardFraudAlertStatus = value; }
+        public string FraudGuardFraudAlertStatus { get => _fraudGuardFraudAlertStatus; set => SetField(ref _fraudGuardFraudAlertStatus, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// TQLFraudAlert Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _lastFraudOrderAlertCategories;
         /// <summary>
         /// TQL - Fraud Orders - Last Fraud Categories [TQLFRAUDALERTNN01]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - Last Fraud Categories")]
-        public string LastFraudOrderAlertCategories { get => _lastFraudOrderAlertCategories; set => _lastFraudOrderAlertCategories = value; }
+        public string LastFraudOrderAlertCategories { get => _lastFraudOrderAlertCategories; set => SetField(ref _lastFraudOrderAlertCategories, value); }
         private DirtyValue<string> _lastFraudOrderAlertID;
         /// <summary>
         /// TQL - Fraud Orders - Fraud Alert ID [TQLFRAUDALERTNN04]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - Fraud Alert ID")]
-        public string LastFraudOrderAlertID { get => _lastFraudOrderAlertID; set => _lastFraudOrderAlertID = value; }
+        public string LastFraudOrderAlertID { get => _lastFraudOrderAlertID; set => SetField(ref _lastFraudOrderAlertID, value); }
         private DirtyValue<string> _lastFraudOrderAlertLevel;
         /// <summary>
         /// TQL - Fraud Orders - Last Alert Level [TQLFRAUDALERTNN03]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - Last Alert Level")]
-        public string LastFraudOrderAlertLevel { get => _lastFraudOrderAlertLevel; set => _lastFraudOrderAlertLevel = value; }
+        public string LastFraudOrderAlertLevel { get => _lastFraudOrderAlertLevel; set => SetField(ref _lastFraudOrderAlertLevel, value); }
         private DirtyValue<string> _lastFraudOrderDescriptionOfAlerts;
         /// <summary>
         /// TQL - Fraud Orders - Last Alert Message [TQLFRAUDALERTNN02]
         /// </summary>
         [LoanFieldProperty(Description = "TQL - Fraud Orders - Last Alert Message")]
-        public string LastFraudOrderDescriptionOfAlerts { get => _lastFraudOrderDescriptionOfAlerts; set => _lastFraudOrderDescriptionOfAlerts = value; }
+        public string LastFraudOrderDescriptionOfAlerts { get => _lastFraudOrderDescriptionOfAlerts; set => SetField(ref _lastFraudOrderDescriptionOfAlerts, value); }
         private DirtyValue<int?> _tQLFraudAlertIndex;
         /// <summary>
         /// TQLFraudAlert TQLFraudAlertIndex
         /// </summary>
-        public int? TQLFraudAlertIndex { get => _tQLFraudAlertIndex; set => _tQLFraudAlertIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _driveFraudAlertCode.Dirty
-                || _driveFraudAlertStatus.Dirty
-                || _fraudGuardFraudAlertCode.Dirty
-                || _fraudGuardFraudAlertStatus.Dirty
-                || _id.Dirty
-                || _lastFraudOrderAlertCategories.Dirty
-                || _lastFraudOrderAlertID.Dirty
-                || _lastFraudOrderAlertLevel.Dirty
-                || _lastFraudOrderDescriptionOfAlerts.Dirty
-                || _tQLFraudAlertIndex.Dirty;
-            set
-            {
-                _driveFraudAlertCode.Dirty = value;
-                _driveFraudAlertStatus.Dirty = value;
-                _fraudGuardFraudAlertCode.Dirty = value;
-                _fraudGuardFraudAlertStatus.Dirty = value;
-                _id.Dirty = value;
-                _lastFraudOrderAlertCategories.Dirty = value;
-                _lastFraudOrderAlertID.Dirty = value;
-                _lastFraudOrderAlertLevel.Dirty = value;
-                _lastFraudOrderDescriptionOfAlerts.Dirty = value;
-                _tQLFraudAlertIndex.Dirty = value;
-            }
-        }
+        public int? TQLFraudAlertIndex { get => _tQLFraudAlertIndex; set => SetField(ref _tQLFraudAlertIndex, value); }
     }
 }

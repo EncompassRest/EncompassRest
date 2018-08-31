@@ -68,6 +68,14 @@ namespace EncompassRest.Loans.Enums
         /// <summary>
         /// Taxes
         /// </summary>
-        Taxes = 12
+        Taxes = 12,
+        /// <summary>
+        /// JobRelatedExpenses
+        /// </summary>
+        JobRelatedExpenses = 13,
+        /// <summary>
+        /// Alimony
+        /// </summary>
+        Alimony = 14
     }
 }

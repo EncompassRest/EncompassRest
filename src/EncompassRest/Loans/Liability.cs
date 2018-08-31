@@ -8,469 +8,349 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Liability
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(AccountIndicator) + "," + nameof(LiabilityType), SerializeWholeListWhenDirty = true)]
     public sealed partial class Liability : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountIdentifier;
         /// <summary>
         /// Liability AccountIdentifier [FLNN10]
         /// </summary>
-        public string AccountIdentifier { get => _accountIdentifier; set => _accountIdentifier = value; }
+        public string AccountIdentifier { get => _accountIdentifier; set => SetField(ref _accountIdentifier, value); }
         private DirtyValue<bool?> _accountIndicator;
         /// <summary>
         /// Liability AccountIndicator
         /// </summary>
-        public bool? AccountIndicator { get => _accountIndicator; set => _accountIndicator = value; }
+        [LoanFieldProperty(OptionsJson = "{\"true\":\"true\"}")]
+        public bool? AccountIndicator { get => _accountIndicator; set => SetField(ref _accountIndicator, value); }
         private DirtyValue<string> _attention;
         /// <summary>
         /// Liability Creditor Contact [FLNN03]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor Contact")]
-        public string Attention { get => _attention; set => _attention = value; }
+        public string Attention { get => _attention; set => SetField(ref _attention, value); }
         private EntityReference _contact;
         /// <summary>
         /// Liability Contact
         /// </summary>
-        public EntityReference Contact { get => _contact ?? (_contact = new EntityReference()); set => _contact = value; }
+        public EntityReference Contact { get => GetField(ref _contact); set => SetField(ref _contact, value); }
         private DirtyValue<DateTime?> _date;
         /// <summary>
         /// Liability Request Date [FLNN98]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Request Date")]
-        public DateTime? Date { get => _date; set => _date = value; }
+        public DateTime? Date { get => _date; set => SetField(ref _date, value); }
         private DirtyValue<string> _description;
         /// <summary>
         /// Liabilities Alimony/Child Support Descr [271]
         /// </summary>
         [LoanFieldProperty(Description = "Liabilities Alimony/Child Support Descr")]
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private DirtyValue<string> _descriptionOfPurpose;
         /// <summary>
         /// .Description Of Purpose [FLNN43]
         /// </summary>
         [LoanFieldProperty(Description = ".Description Of Purpose")]
-        public string DescriptionOfPurpose { get => _descriptionOfPurpose; set => _descriptionOfPurpose = value; }
+        public string DescriptionOfPurpose { get => _descriptionOfPurpose; set => SetField(ref _descriptionOfPurpose, value); }
         private DirtyValue<bool?> _entityDeleted;
         /// <summary>
         /// Liability EntityDeleted
         /// </summary>
-        public bool? EntityDeleted { get => _entityDeleted; set => _entityDeleted = value; }
+        public bool? EntityDeleted { get => _entityDeleted; set => SetField(ref _entityDeleted, value); }
         private DirtyValue<bool?> _exclusionIndicator;
         /// <summary>
         /// Liability Exclude from URLA Total [FLNN17]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Exclude from URLA Total", OptionsJson = "{\"true\":\"Exclude from URLA page 2 Liabilities Total\"}")]
-        public bool? ExclusionIndicator { get => _exclusionIndicator; set => _exclusionIndicator = value; }
+        public bool? ExclusionIndicator { get => _exclusionIndicator; set => SetField(ref _exclusionIndicator, value); }
         private DirtyValue<string> _holderAddressCity;
         /// <summary>
         /// Liability Creditor City [FLNN05]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor City")]
-        public string HolderAddressCity { get => _holderAddressCity; set => _holderAddressCity = value; }
+        public string HolderAddressCity { get => _holderAddressCity; set => SetField(ref _holderAddressCity, value); }
         private DirtyValue<string> _holderAddressPostalCode;
         /// <summary>
         /// Liability Creditor Zipcode [FLNN07]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.ZIPCODE, Description = "Liability Creditor Zipcode")]
-        public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => _holderAddressPostalCode = value; }
-        private DirtyValue<string> _holderAddressState;
+        public string HolderAddressPostalCode { get => _holderAddressPostalCode; set => SetField(ref _holderAddressPostalCode, value); }
+        private DirtyValue<StringEnumValue<State>> _holderAddressState;
         /// <summary>
         /// Liability Creditor State [FLNN06]
         /// </summary>
-        [LoanFieldProperty(Format = LoanFieldFormat.STATE, Description = "Liability Creditor State")]
-        public string HolderAddressState { get => _holderAddressState; set => _holderAddressState = value; }
+        [LoanFieldProperty(Description = "Liability Creditor State")]
+        public StringEnumValue<State> HolderAddressState { get => _holderAddressState; set => SetField(ref _holderAddressState, value); }
         private DirtyValue<string> _holderAddressStreetLine1;
         /// <summary>
         /// Liability Creditor Address [FLNN04]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor Address")]
-        public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => _holderAddressStreetLine1 = value; }
+        public string HolderAddressStreetLine1 { get => _holderAddressStreetLine1; set => SetField(ref _holderAddressStreetLine1, value); }
         private DirtyValue<string> _holderComments;
         /// <summary>
         /// Liability Creditor Comments [FLNN23]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor Comments")]
-        public string HolderComments { get => _holderComments; set => _holderComments = value; }
+        public string HolderComments { get => _holderComments; set => SetField(ref _holderComments, value); }
         private DirtyValue<string> _holderEmail;
         /// <summary>
         /// Liability Creditor Email [FLNN22]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor Email")]
-        public string HolderEmail { get => _holderEmail; set => _holderEmail = value; }
+        public string HolderEmail { get => _holderEmail; set => SetField(ref _holderEmail, value); }
         private DirtyValue<string> _holderFax;
         /// <summary>
         /// Liability Creditor Fax [FLNN21]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Liability Creditor Fax")]
-        public string HolderFax { get => _holderFax; set => _holderFax = value; }
+        public string HolderFax { get => _holderFax; set => SetField(ref _holderFax, value); }
         private DirtyValue<string> _holderName;
         /// <summary>
         /// Liability Creditor Name [FLNN02]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Creditor Name")]
-        public string HolderName { get => _holderName; set => _holderName = value; }
+        public string HolderName { get => _holderName; set => SetField(ref _holderName, value); }
         private DirtyValue<string> _holderPhone;
         /// <summary>
         /// Liability Creditor Phone [FLNN20]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Liability Creditor Phone")]
-        public string HolderPhone { get => _holderPhone; set => _holderPhone = value; }
+        public string HolderPhone { get => _holderPhone; set => SetField(ref _holderPhone, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// Liability Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isDebtNotSecuredToSubjectPropertyIndicator;
         /// <summary>
         /// Liability Debt is NOT secured to Subject Property [FLNN61]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Debt is NOT secured to Subject Property", OptionsJson = "{\"true\":\"This Debt is NOT secured to Subject Property?\"}")]
-        public bool? IsDebtNotSecuredToSubjectPropertyIndicator { get => _isDebtNotSecuredToSubjectPropertyIndicator; set => _isDebtNotSecuredToSubjectPropertyIndicator = value; }
+        public bool? IsDebtNotSecuredToSubjectPropertyIndicator { get => _isDebtNotSecuredToSubjectPropertyIndicator; set => SetField(ref _isDebtNotSecuredToSubjectPropertyIndicator, value); }
         private DirtyValue<int?> _lates12Month120Day;
         /// <summary>
         /// Liability 12 Month 120 Day Lates [FLNN55]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 12 Month 120 Day Lates")]
-        public int? Lates12Month120Day { get => _lates12Month120Day; set => _lates12Month120Day = value; }
+        public int? Lates12Month120Day { get => _lates12Month120Day; set => SetField(ref _lates12Month120Day, value); }
         private DirtyValue<int?> _lates12Month150Day;
         /// <summary>
         /// Liability 12 Month 150 Day Lates [FLNN58]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 12 Month 150 Day Lates")]
-        public int? Lates12Month150Day { get => _lates12Month150Day; set => _lates12Month150Day = value; }
+        public int? Lates12Month150Day { get => _lates12Month150Day; set => SetField(ref _lates12Month150Day, value); }
         private DirtyValue<int?> _lates12Month30Day;
         /// <summary>
         /// Liability 12 Month 30 Day Lates [FLNN46]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 12 Month 30 Day Lates")]
-        public int? Lates12Month30Day { get => _lates12Month30Day; set => _lates12Month30Day = value; }
+        public int? Lates12Month30Day { get => _lates12Month30Day; set => SetField(ref _lates12Month30Day, value); }
         private DirtyValue<int?> _lates12Month60Day;
         /// <summary>
         /// Liability 12 Month 60 Day Lates [FLNN49]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 12 Month 60 Day Lates")]
-        public int? Lates12Month60Day { get => _lates12Month60Day; set => _lates12Month60Day = value; }
+        public int? Lates12Month60Day { get => _lates12Month60Day; set => SetField(ref _lates12Month60Day, value); }
         private DirtyValue<int?> _lates12Month90Day;
         /// <summary>
         /// Liability 12 Month 90 Day Lates [FLNN52]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 12 Month 90 Day Lates")]
-        public int? Lates12Month90Day { get => _lates12Month90Day; set => _lates12Month90Day = value; }
+        public int? Lates12Month90Day { get => _lates12Month90Day; set => SetField(ref _lates12Month90Day, value); }
         private DirtyValue<int?> _lates24Month120Day;
         /// <summary>
         /// Liability 24 Month 120 Day Lates [FLNN56]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 24 Month 120 Day Lates")]
-        public int? Lates24Month120Day { get => _lates24Month120Day; set => _lates24Month120Day = value; }
+        public int? Lates24Month120Day { get => _lates24Month120Day; set => SetField(ref _lates24Month120Day, value); }
         private DirtyValue<int?> _lates24Month150Day;
         /// <summary>
         /// Liability 24 Month 150 Day Lates [FLNN59]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 24 Month 150 Day Lates")]
-        public int? Lates24Month150Day { get => _lates24Month150Day; set => _lates24Month150Day = value; }
+        public int? Lates24Month150Day { get => _lates24Month150Day; set => SetField(ref _lates24Month150Day, value); }
         private DirtyValue<int?> _lates24Month30Day;
         /// <summary>
         /// Liability 24 Month 30 Day Lates [FLNN47]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 24 Month 30 Day Lates")]
-        public int? Lates24Month30Day { get => _lates24Month30Day; set => _lates24Month30Day = value; }
+        public int? Lates24Month30Day { get => _lates24Month30Day; set => SetField(ref _lates24Month30Day, value); }
         private DirtyValue<int?> _lates24Month60Day;
         /// <summary>
         /// Liability 24 Month 60 Day Lates [FLNN50]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 24 Month 60 Day Lates")]
-        public int? Lates24Month60Day { get => _lates24Month60Day; set => _lates24Month60Day = value; }
+        public int? Lates24Month60Day { get => _lates24Month60Day; set => SetField(ref _lates24Month60Day, value); }
         private DirtyValue<int?> _lates24Month90Day;
         /// <summary>
         /// Liability 24 Month 90 Day Lates [FLNN53]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 24 Month 90 Day Lates")]
-        public int? Lates24Month90Day { get => _lates24Month90Day; set => _lates24Month90Day = value; }
+        public int? Lates24Month90Day { get => _lates24Month90Day; set => SetField(ref _lates24Month90Day, value); }
         private DirtyValue<int?> _lates25Month120Day;
         /// <summary>
         /// Liability 25 Month 120 Day Lates [FLNN57]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 25 Month 120 Day Lates")]
-        public int? Lates25Month120Day { get => _lates25Month120Day; set => _lates25Month120Day = value; }
+        public int? Lates25Month120Day { get => _lates25Month120Day; set => SetField(ref _lates25Month120Day, value); }
         private DirtyValue<int?> _lates25Month150Day;
         /// <summary>
         /// Liability 25 Month 150 Day Lates [FLNN60]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 25 Month 150 Day Lates")]
-        public int? Lates25Month150Day { get => _lates25Month150Day; set => _lates25Month150Day = value; }
+        public int? Lates25Month150Day { get => _lates25Month150Day; set => SetField(ref _lates25Month150Day, value); }
         private DirtyValue<int?> _lates25Month30Day;
         /// <summary>
         /// Liability 25 Month 30 Day Lates [FLNN48]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 25 Month 30 Day Lates")]
-        public int? Lates25Month30Day { get => _lates25Month30Day; set => _lates25Month30Day = value; }
+        public int? Lates25Month30Day { get => _lates25Month30Day; set => SetField(ref _lates25Month30Day, value); }
         private DirtyValue<int?> _lates25Month60Day;
         /// <summary>
         /// Liability 25 Month 60 Day Lates [FLNN51]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 25 Month 60 Day Lates")]
-        public int? Lates25Month60Day { get => _lates25Month60Day; set => _lates25Month60Day = value; }
+        public int? Lates25Month60Day { get => _lates25Month60Day; set => SetField(ref _lates25Month60Day, value); }
         private DirtyValue<int?> _lates25Month90Day;
         /// <summary>
         /// Liability 25 Month 90 Day Lates [FLNN54]
         /// </summary>
         [LoanFieldProperty(Description = "Liability 25 Month 90 Day Lates")]
-        public int? Lates25Month90Day { get => _lates25Month90Day; set => _lates25Month90Day = value; }
+        public int? Lates25Month90Day { get => _lates25Month90Day; set => SetField(ref _lates25Month90Day, value); }
         private DirtyValue<int?> _liabilityIndex;
         /// <summary>
         /// Liability LiabilityIndex
         /// </summary>
-        public int? LiabilityIndex { get => _liabilityIndex; set => _liabilityIndex = value; }
+        public int? LiabilityIndex { get => _liabilityIndex; set => SetField(ref _liabilityIndex, value); }
         private DirtyValue<StringEnumValue<LiabilityType>> _liabilityType;
         /// <summary>
         /// Liability Account Type [FLNN08]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Account Type")]
-        public StringEnumValue<LiabilityType> LiabilityType { get => _liabilityType; set => _liabilityType = value; }
+        public StringEnumValue<LiabilityType> LiabilityType { get => _liabilityType; set => SetField(ref _liabilityType, value); }
         private DirtyValue<decimal?> _monthlyPaymentAmount;
         /// <summary>
         /// Liability MonthlyPaymentAmount [FLNN11]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? MonthlyPaymentAmount { get => _monthlyPaymentAmount; set => _monthlyPaymentAmount = value; }
+        public decimal? MonthlyPaymentAmount { get => _monthlyPaymentAmount; set => SetField(ref _monthlyPaymentAmount, value); }
         private DirtyValue<int?> _monthsToExclude;
         /// <summary>
         /// Liabilities Install Mos to Exclude [FLNN14]
         /// </summary>
         [LoanFieldProperty(Description = "Liabilities Install Mos to Exclude")]
-        public int? MonthsToExclude { get => _monthsToExclude; set => _monthsToExclude = value; }
+        public int? MonthsToExclude { get => _monthsToExclude; set => SetField(ref _monthsToExclude, value); }
         private DirtyValue<string> _nameInAccount;
         /// <summary>
         /// Liability Account Name [FLNN09]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Account Name")]
-        public string NameInAccount { get => _nameInAccount; set => _nameInAccount = value; }
+        public string NameInAccount { get => _nameInAccount; set => SetField(ref _nameInAccount, value); }
         private DirtyValue<bool?> _noLinkToDocTrackIndicator;
         /// <summary>
         /// Liability No Link to Doc Tracking [FLNN97]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Liability No Link to Doc Tracking")]
-        public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => _noLinkToDocTrackIndicator = value; }
+        public bool? NoLinkToDocTrackIndicator { get => _noLinkToDocTrackIndicator; set => SetField(ref _noLinkToDocTrackIndicator, value); }
         private DirtyValue<StringEnumValue<Owner>> _owner;
         /// <summary>
         /// Liability Verif is For [FLNN15]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Verif is For")]
-        public StringEnumValue<Owner> Owner { get => _owner; set => _owner = value; }
+        public StringEnumValue<Owner> Owner { get => _owner; set => SetField(ref _owner, value); }
         private DirtyValue<bool?> _payoffIncludedIndicator;
         /// <summary>
         /// Liability Will be Paid Off and will be included [FLNN63]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Will be Paid Off and will be included", OptionsJson = "{\"true\":\"Paid off (*) will be included\"}")]
-        public bool? PayoffIncludedIndicator { get => _payoffIncludedIndicator; set => _payoffIncludedIndicator = value; }
+        public bool? PayoffIncludedIndicator { get => _payoffIncludedIndicator; set => SetField(ref _payoffIncludedIndicator, value); }
         private DirtyValue<bool?> _payoffStatusIndicator;
         /// <summary>
         /// Liability Will be Paid Off [FLNN18]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Will be Paid Off", OptionsJson = "{\"true\":\"Will be paid off (*)\"}")]
-        public bool? PayoffStatusIndicator { get => _payoffStatusIndicator; set => _payoffStatusIndicator = value; }
+        public bool? PayoffStatusIndicator { get => _payoffStatusIndicator; set => SetField(ref _payoffStatusIndicator, value); }
         private DirtyValue<decimal?> _prepaymentPenaltyAmount;
         /// <summary>
         /// Liability Prepayment Penalty [FLNN39]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Liability Prepayment Penalty")]
-        public decimal? PrepaymentPenaltyAmount { get => _prepaymentPenaltyAmount; set => _prepaymentPenaltyAmount = value; }
+        public decimal? PrepaymentPenaltyAmount { get => _prepaymentPenaltyAmount; set => SetField(ref _prepaymentPenaltyAmount, value); }
         private DirtyValue<bool?> _printAttachmentIndicator;
         /// <summary>
         /// Liability Print - See Attached Authorization [FLNN36]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Print - See Attached Authorization", OptionsJson = "{\"true\":\"Print \\\"See attached borrower's authorization\\\" on signature line.\"}")]
-        public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => _printAttachmentIndicator = value; }
+        public bool? PrintAttachmentIndicator { get => _printAttachmentIndicator; set => SetField(ref _printAttachmentIndicator, value); }
         private DirtyValue<bool?> _printUserNameIndicator;
         /// <summary>
         /// Liability Print User Name as Title [FLNN38]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Print User Name as Title", OptionsJson = "{\"true\":\"Print user's name as title\"}")]
-        public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => _printUserNameIndicator = value; }
+        public bool? PrintUserNameIndicator { get => _printUserNameIndicator; set => SetField(ref _printUserNameIndicator, value); }
         private DirtyValue<int?> _remainingTermMonths;
         /// <summary>
         /// Liability RemainingTermMonths [FLNN12]
         /// </summary>
-        public int? RemainingTermMonths { get => _remainingTermMonths; set => _remainingTermMonths = value; }
+        public int? RemainingTermMonths { get => _remainingTermMonths; set => SetField(ref _remainingTermMonths, value); }
         private DirtyValue<string> _reoId;
         /// <summary>
         /// Liability REO ID [FLNN25]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Liability REO ID")]
-        public string ReoId { get => _reoId; set => _reoId = value; }
+        public string ReoId { get => _reoId; set => SetField(ref _reoId, value); }
         private DirtyValue<string> _requestId;
         /// <summary>
         /// Liability Request ID [FLNN99]
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Liability Request ID")]
-        public string RequestId { get => _requestId; set => _requestId = value; }
+        public string RequestId { get => _requestId; set => SetField(ref _requestId, value); }
         private DirtyValue<bool?> _subjectLoanResubordinationIndicator;
         /// <summary>
         /// Liability Resubordinated Indicator [FLNN26]
         /// </summary>
         [LoanFieldProperty(Description = "Liability Resubordinated Indicator", OptionsJson = "{\"true\":\"Resubordinated Indicator\"}")]
-        public bool? SubjectLoanResubordinationIndicator { get => _subjectLoanResubordinationIndicator; set => _subjectLoanResubordinationIndicator = value; }
+        public bool? SubjectLoanResubordinationIndicator { get => _subjectLoanResubordinationIndicator; set => SetField(ref _subjectLoanResubordinationIndicator, value); }
         private DirtyValue<string> _title;
         /// <summary>
         /// Liability From Title [FLNN37]
         /// </summary>
         [LoanFieldProperty(Description = "Liability From Title")]
-        public string Title { get => _title; set => _title = value; }
+        public string Title { get => _title; set => SetField(ref _title, value); }
         private DirtyValue<string> _titleFax;
         /// <summary>
         /// Liability From Fax [FLNN45]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Liability From Fax")]
-        public string TitleFax { get => _titleFax; set => _titleFax = value; }
+        public string TitleFax { get => _titleFax; set => SetField(ref _titleFax, value); }
         private DirtyValue<string> _titlePhone;
         /// <summary>
         /// Liability From Phone [FLNN44]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.PHONE, Description = "Liability From Phone")]
-        public string TitlePhone { get => _titlePhone; set => _titlePhone = value; }
+        public string TitlePhone { get => _titlePhone; set => SetField(ref _titlePhone, value); }
         private DirtyValue<decimal?> _toBePaidOffAmount;
         /// <summary>
         /// Liability Payoff Amount [FLNN16]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Liability Payoff Amount")]
-        public decimal? ToBePaidOffAmount { get => _toBePaidOffAmount; set => _toBePaidOffAmount = value; }
+        public decimal? ToBePaidOffAmount { get => _toBePaidOffAmount; set => SetField(ref _toBePaidOffAmount, value); }
         private DirtyValue<StringEnumValue<UCDPayoffType>> _uCDPayoffType;
         /// <summary>
         /// Liability UCD Payoff Type [FLNN62]
         /// </summary>
         [LoanFieldProperty(Description = "Liability UCD Payoff Type")]
-        public StringEnumValue<UCDPayoffType> UCDPayoffType { get => _uCDPayoffType; set => _uCDPayoffType = value; }
+        public StringEnumValue<UCDPayoffType> UCDPayoffType { get => _uCDPayoffType; set => SetField(ref _uCDPayoffType, value); }
         private DirtyValue<decimal?> _unpaidBalanceAmount;
         /// <summary>
         /// Liability Balance [FLNN13]
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2, Description = "Liability Balance")]
-        public decimal? UnpaidBalanceAmount { get => _unpaidBalanceAmount; set => _unpaidBalanceAmount = value; }
+        public decimal? UnpaidBalanceAmount { get => _unpaidBalanceAmount; set => SetField(ref _unpaidBalanceAmount, value); }
         private DirtyValue<int?> _volIndex;
         /// <summary>
         /// Liability VolIndex
         /// </summary>
-        public int? VolIndex { get => _volIndex; set => _volIndex = value; }
-        internal override bool DirtyInternal
-        {
-            get => _accountIdentifier.Dirty
-                || _accountIndicator.Dirty
-                || _attention.Dirty
-                || _date.Dirty
-                || _description.Dirty
-                || _descriptionOfPurpose.Dirty
-                || _entityDeleted.Dirty
-                || _exclusionIndicator.Dirty
-                || _holderAddressCity.Dirty
-                || _holderAddressPostalCode.Dirty
-                || _holderAddressState.Dirty
-                || _holderAddressStreetLine1.Dirty
-                || _holderComments.Dirty
-                || _holderEmail.Dirty
-                || _holderFax.Dirty
-                || _holderName.Dirty
-                || _holderPhone.Dirty
-                || _id.Dirty
-                || _isDebtNotSecuredToSubjectPropertyIndicator.Dirty
-                || _lates12Month120Day.Dirty
-                || _lates12Month150Day.Dirty
-                || _lates12Month30Day.Dirty
-                || _lates12Month60Day.Dirty
-                || _lates12Month90Day.Dirty
-                || _lates24Month120Day.Dirty
-                || _lates24Month150Day.Dirty
-                || _lates24Month30Day.Dirty
-                || _lates24Month60Day.Dirty
-                || _lates24Month90Day.Dirty
-                || _lates25Month120Day.Dirty
-                || _lates25Month150Day.Dirty
-                || _lates25Month30Day.Dirty
-                || _lates25Month60Day.Dirty
-                || _lates25Month90Day.Dirty
-                || _liabilityIndex.Dirty
-                || _liabilityType.Dirty
-                || _monthlyPaymentAmount.Dirty
-                || _monthsToExclude.Dirty
-                || _nameInAccount.Dirty
-                || _noLinkToDocTrackIndicator.Dirty
-                || _owner.Dirty
-                || _payoffIncludedIndicator.Dirty
-                || _payoffStatusIndicator.Dirty
-                || _prepaymentPenaltyAmount.Dirty
-                || _printAttachmentIndicator.Dirty
-                || _printUserNameIndicator.Dirty
-                || _remainingTermMonths.Dirty
-                || _reoId.Dirty
-                || _requestId.Dirty
-                || _subjectLoanResubordinationIndicator.Dirty
-                || _title.Dirty
-                || _titleFax.Dirty
-                || _titlePhone.Dirty
-                || _toBePaidOffAmount.Dirty
-                || _uCDPayoffType.Dirty
-                || _unpaidBalanceAmount.Dirty
-                || _volIndex.Dirty
-                || _contact?.Dirty == true;
-            set
-            {
-                _accountIdentifier.Dirty = value;
-                _accountIndicator.Dirty = value;
-                _attention.Dirty = value;
-                _date.Dirty = value;
-                _description.Dirty = value;
-                _descriptionOfPurpose.Dirty = value;
-                _entityDeleted.Dirty = value;
-                _exclusionIndicator.Dirty = value;
-                _holderAddressCity.Dirty = value;
-                _holderAddressPostalCode.Dirty = value;
-                _holderAddressState.Dirty = value;
-                _holderAddressStreetLine1.Dirty = value;
-                _holderComments.Dirty = value;
-                _holderEmail.Dirty = value;
-                _holderFax.Dirty = value;
-                _holderName.Dirty = value;
-                _holderPhone.Dirty = value;
-                _id.Dirty = value;
-                _isDebtNotSecuredToSubjectPropertyIndicator.Dirty = value;
-                _lates12Month120Day.Dirty = value;
-                _lates12Month150Day.Dirty = value;
-                _lates12Month30Day.Dirty = value;
-                _lates12Month60Day.Dirty = value;
-                _lates12Month90Day.Dirty = value;
-                _lates24Month120Day.Dirty = value;
-                _lates24Month150Day.Dirty = value;
-                _lates24Month30Day.Dirty = value;
-                _lates24Month60Day.Dirty = value;
-                _lates24Month90Day.Dirty = value;
-                _lates25Month120Day.Dirty = value;
-                _lates25Month150Day.Dirty = value;
-                _lates25Month30Day.Dirty = value;
-                _lates25Month60Day.Dirty = value;
-                _lates25Month90Day.Dirty = value;
-                _liabilityIndex.Dirty = value;
-                _liabilityType.Dirty = value;
-                _monthlyPaymentAmount.Dirty = value;
-                _monthsToExclude.Dirty = value;
-                _nameInAccount.Dirty = value;
-                _noLinkToDocTrackIndicator.Dirty = value;
-                _owner.Dirty = value;
-                _payoffIncludedIndicator.Dirty = value;
-                _payoffStatusIndicator.Dirty = value;
-                _prepaymentPenaltyAmount.Dirty = value;
-                _printAttachmentIndicator.Dirty = value;
-                _printUserNameIndicator.Dirty = value;
-                _remainingTermMonths.Dirty = value;
-                _reoId.Dirty = value;
-                _requestId.Dirty = value;
-                _subjectLoanResubordinationIndicator.Dirty = value;
-                _title.Dirty = value;
-                _titleFax.Dirty = value;
-                _titlePhone.Dirty = value;
-                _toBePaidOffAmount.Dirty = value;
-                _uCDPayoffType.Dirty = value;
-                _unpaidBalanceAmount.Dirty = value;
-                _volIndex.Dirty = value;
-                if (_contact != null) _contact.Dirty = value;
-            }
-        }
+        public int? VolIndex { get => _volIndex; set => SetField(ref _volIndex, value); }
     }
 }

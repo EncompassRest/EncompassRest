@@ -19,9 +19,8 @@ namespace EncompassRest.Loans.Enums
         [EnumMember(Value = "Not Hispanic or Latino")]
         NotHispanicOrLatino = 1,
         /// <summary>
-        /// I do not wish to provide this information
+        /// Information not provided
         /// </summary>
-        [Description("I do not wish to provide this information")]
         [EnumMember(Value = "Information not provided")]
         InformationNotProvided = 2,
         /// <summary>

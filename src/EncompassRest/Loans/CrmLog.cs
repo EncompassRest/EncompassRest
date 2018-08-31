@@ -14,106 +14,72 @@ namespace EncompassRest.Loans
         /// <summary>
         /// CrmLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// CrmLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// CrmLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<string> _contactGuid;
         /// <summary>
         /// CrmLog ContactGuid
         /// </summary>
-        public string ContactGuid { get => _contactGuid; set => _contactGuid = value; }
+        public string ContactGuid { get => _contactGuid; set => SetField(ref _contactGuid, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// CrmLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// CrmLog FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// CrmLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// CrmLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// CrmLog IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// CrmLog LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<string> _mappingId;
         /// <summary>
         /// CrmLog MappingId
         /// </summary>
-        public string MappingId { get => _mappingId; set => _mappingId = value; }
+        public string MappingId { get => _mappingId; set => SetField(ref _mappingId, value); }
         private DirtyValue<int?> _mappingType;
         /// <summary>
         /// CrmLog MappingType
         /// </summary>
-        public int? MappingType { get => _mappingType; set => _mappingType = value; }
+        public int? MappingType { get => _mappingType; set => SetField(ref _mappingType, value); }
         private DirtyValue<int?> _roleType;
         /// <summary>
         /// CrmLog RoleType
         /// </summary>
-        public int? RoleType { get => _roleType; set => _roleType = value; }
+        public int? RoleType { get => _roleType; set => SetField(ref _roleType, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// CrmLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _contactGuid.Dirty
-                || _dateUtc.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _mappingId.Dirty
-                || _mappingType.Dirty
-                || _roleType.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _contactGuid.Dirty = value;
-                _dateUtc.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _mappingId.Dirty = value;
-                _mappingType.Dirty = value;
-                _roleType.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
     }
 }

@@ -14,21 +14,16 @@ namespace EncompassRest.Loans
         /// <summary>
         /// FieldLockData LockRemoved
         /// </summary>
-        public bool? LockRemoved { get => _lockRemoved; set => _lockRemoved = value; }
+        public bool? LockRemoved { get => _lockRemoved; set => SetField(ref _lockRemoved, value); }
+        internal DirtyValue<string> _modelPath;
+        /// <summary>
+        /// FieldLockData ModelPath
+        /// </summary>
+        public string ModelPath { get => _modelPath; set => SetField(ref _modelPath, value); }
         private DirtyValue<string> _value;
         /// <summary>
         /// FieldLockData Value
         /// </summary>
-        public string Value { get => _value; set => _value = value; }
-        internal override bool DirtyInternal
-        {
-            get => _lockRemoved.Dirty
-                || _value.Dirty;
-            set
-            {
-                _lockRemoved.Dirty = value;
-                _value.Dirty = value;
-            }
-        }
+        public string Value { get => _value; set => SetField(ref _value, value); }
     }
 }

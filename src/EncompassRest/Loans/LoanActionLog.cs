@@ -14,57 +14,37 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LoanActionLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// LoanActionLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// LoanActionLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// LoanActionLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// LoanActionLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _loanActionType;
         /// <summary>
         /// LoanActionLog LoanActionType
         /// </summary>
-        public string LoanActionType { get => _loanActionType; set => _loanActionType = value; }
+        public string LoanActionType { get => _loanActionType; set => SetField(ref _loanActionType, value); }
         private DirtyValue<string> _triggeredBy;
         /// <summary>
         /// LoanActionLog TriggeredBy
         /// </summary>
-        public string TriggeredBy { get => _triggeredBy; set => _triggeredBy = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _id.Dirty
-                || _loanActionType.Dirty
-                || _triggeredBy.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _id.Dirty = value;
-                _loanActionType.Dirty = value;
-                _triggeredBy.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
+        public string TriggeredBy { get => _triggeredBy; set => SetField(ref _triggeredBy, value); }
     }
 }

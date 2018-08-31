@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public partial class Loan
+    partial class Loan
     {
         private LoanFields _fields;
         internal List<TransientLoanUpdate> TransientLoanUpdates;
@@ -33,17 +33,6 @@ namespace EncompassRest.Loans
 
         [IdPropertyName(nameof(EncompassId))]
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
-
-        private DirtyValue<int?> _currentApplicationIndex;
-        public int? CurrentApplicationIndex
-        {
-            get => _currentApplicationIndex;
-            set
-            {
-                _currentApplicationIndex = value;
-                _currentApplication = null;
-            }
-        }
 
         private Application _currentApplication;
         [JsonIgnore]
@@ -129,10 +118,15 @@ namespace EncompassRest.Loans
             }
         }
 
-        internal override bool CustomDirty
+        internal override void OnPropertyChanged(string propertyName)
         {
-            get => _currentApplicationIndex.Dirty;
-            set => _currentApplicationIndex.Dirty = value;
+            base.OnPropertyChanged(propertyName);
+            switch (propertyName)
+            {
+                case nameof(CurrentApplicationIndex):
+                    _currentApplication = null;
+                    break;
+            }
         }
 
         internal sealed class TransientLoanUpdate

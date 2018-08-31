@@ -17,9 +17,9 @@ namespace EncompassRest.Loans.Enums
         /// </summary>
         Female = 1,
         /// <summary>
-        /// I do not wish to provide this information
+        /// Not Provided/Unknown
         /// </summary>
-        [Description("I do not wish to provide this information")]
+        [Description("Not Provided/Unknown")]
         InformationNotProvidedUnknown = 2,
         /// <summary>
         /// Not Applicable

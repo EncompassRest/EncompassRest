@@ -10,40 +10,17 @@ namespace EncompassRest.Contacts
 
         private DirtyValue<BusinessContactCategory?> _categoryId;
         [EnumFormat(EnumFormat.DecimalValue)]
-        public BusinessContactCategory? CategoryId { get => _categoryId; set => _categoryId = value; }
+        public BusinessContactCategory? CategoryId { get => _categoryId; set => SetField(ref _categoryId, value); }
         private DirtyValue<string> _companyName;
-        public string CompanyName { get => _companyName; set => _companyName = value; }
+        public string CompanyName { get => _companyName; set => SetField(ref _companyName, value); }
         private BusinessContactLicense _personalContactLicense;
-        public BusinessContactLicense PersonalContactLicense { get => _personalContactLicense ?? (_personalContactLicense = new BusinessContactLicense()); set => _personalContactLicense = value; }
+        public BusinessContactLicense PersonalContactLicense { get => GetField(ref _personalContactLicense); set => SetField(ref _personalContactLicense, value); }
         private BusinessContactLicense _businessContactLicense;
-        public BusinessContactLicense BusinessContactLicense { get => _businessContactLicense ?? (_businessContactLicense = new BusinessContactLicense()); set => _businessContactLicense = value; }
+        public BusinessContactLicense BusinessContactLicense { get => GetField(ref _businessContactLicense); set => SetField(ref _businessContactLicense, value); }
         private DirtyValue<bool?> _noSpam;
-        public bool? NoSpam { get => _noSpam; set => _noSpam = value; }
+        public bool? NoSpam { get => _noSpam; set => SetField(ref _noSpam, value); }
         private DirtyValue<int?> _fees;
-        public int? Fees { get => Fees; set => _fees = value; }
-        internal override bool DirtyInternal
-        {
-            get
-            {
-                return base.DirtyInternal
-                    || _categoryId.Dirty
-                    || _companyName.Dirty
-                    || _personalContactLicense?.Dirty == true
-                    || _businessContactLicense?.Dirty == true
-                    || _noSpam.Dirty
-                    || _fees.Dirty;
-            }
-            set
-            {
-                base.DirtyInternal = value;
-                _categoryId.Dirty = value;
-                _companyName.Dirty = value;
-                if (_personalContactLicense!= null) _personalContactLicense.Dirty = value;
-                if (_businessContactLicense!= null) _businessContactLicense.Dirty = value;
-                _noSpam.Dirty = value;
-                _fees.Dirty = value;
-            }
-        }
+        public int? Fees { get => Fees; set => SetField(ref _fees, value); }
 
         /// <summary>
         /// BusinessContact creation constructor
