@@ -272,5 +272,25 @@ namespace EncompassRest.Tests
                 Assert.IsNull(item.Fields);
             }
         }
+
+        [TestMethod]
+        public async Task Pipeline_Cursor_IgnoreInvalidFields()
+        {
+            var client = await GetTestClientAsync();
+            var pipelineParameters = new PipelineParameters(new NumericFieldFilter(CanonicalLoanField.LoanAmount, OrdinalFieldMatchType.GreaterThanOrEquals, 0M), new[] { "InvalidFieldName" });
+            await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Pipeline.CreateCursorAsync(pipelineParameters, false));
+            var cursor = await client.Pipeline.CreateCursorAsync(pipelineParameters, true);
+            Assert.IsTrue(cursor.Count > 0);
+            var item = await cursor.GetItemAsync(0);
+        }
+
+        [TestMethod]
+        public async Task Pipeline_ViewPipeline_IgnoreInvalidFields()
+        {
+            var client = await GetTestClientAsync();
+            var pipelineParameters = new PipelineParameters(new NumericFieldFilter(CanonicalLoanField.LoanAmount, OrdinalFieldMatchType.GreaterThanOrEquals, 0M), new[] { "InvalidFieldName" });
+            await Assert.ThrowsExceptionAsync<EncompassRestException>(() => client.Pipeline.ViewPipelineAsync(pipelineParameters, 1, false));
+            var pipelineData = await client.Pipeline.ViewPipelineAsync(pipelineParameters, 1, true);
+        }
     }
 }
