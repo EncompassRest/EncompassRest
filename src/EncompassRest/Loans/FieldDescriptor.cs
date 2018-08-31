@@ -22,7 +22,26 @@ namespace EncompassRest.Loans
 
         public string FieldId { get; }
 
+        /// <summary>
+        /// For use with loan field locking.
+        /// </summary>
         public string ModelPath { get; }
+
+        /// <summary>
+        /// For use with Webhook filter attributes.
+        /// </summary>
+        public string AttributePath
+        {
+            get
+            {
+                if (MultiInstance && !IsInstance)
+                {
+                    throw new InvalidOperationException("field descriptor must be an instance descriptor for multi-instance descriptors");
+                }
+
+                return _modelPath.ToString(name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name, false), true).Replace("/currentApplication", "/applications/*");
+            }
+        }
 
         public bool MultiInstance { get; }
 
