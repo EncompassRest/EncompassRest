@@ -14,7 +14,7 @@ namespace EncompassRest.Loans
         internal List<TransientLoanUpdate> TransientLoanUpdates;
 
         [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
         public LoanDocuments Documents => LoanApis.Documents;

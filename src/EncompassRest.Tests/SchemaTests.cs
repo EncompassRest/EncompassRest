@@ -80,6 +80,24 @@ namespace EncompassRest.Tests
         }
 
         [TestMethod]
+        public async Task Schema_GenerateContract()
+        {
+            var client = await GetTestClientAsync();
+
+            var fieldValues = new Dictionary<string, object>
+            {
+                { "1393", "Loan Originated" },
+                { "1109", 150000M },
+                { "100", true }
+            };
+            var loan = await client.Schema.GenerateContractAsync(fieldValues).ConfigureAwait(false);
+            Assert.IsTrue(loan.Dirty);
+            Assert.AreEqual((string)fieldValues["1393"], loan.Fields["1393"].ToString());
+            Assert.AreEqual((decimal)fieldValues["1109"], loan.Fields["1109"].ToDecimal());
+            Assert.AreEqual((bool)fieldValues["100"], loan.Fields["100"].ToBoolean());
+        }
+
+        [TestMethod]
         public async Task Schema_GeneratePaths()
         {
             var client = await GetTestClientAsync();

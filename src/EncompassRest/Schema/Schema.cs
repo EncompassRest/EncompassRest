@@ -62,7 +62,7 @@ namespace EncompassRest.Schema
         public Task<Dictionary<string, string>> GeneratePathsAsync(IEnumerable<string> fieldIds, bool? ignoreInvalidFields, string fieldNamePattern, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNull(fieldIds, nameof(fieldIds));
-
+            
             var queryParameters = new QueryParameters();
             if (ignoreInvalidFields.HasValue)
             {
@@ -81,6 +81,30 @@ namespace EncompassRest.Schema
             Preconditions.NotNullOrEmpty(fieldIds, nameof(fieldIds));
 
             return PostRawAsync("pathGenerator", queryString, new JsonStringContent(fieldIds), nameof(GeneratePathsRawAsync), null, cancellationToken);
+        }
+
+        public Task<Loan> GenerateContractAsync(IDictionary<string, object> fieldValues, CancellationToken cancellationToken = default) => GenerateContractAsync(fieldValues, null, cancellationToken);
+
+        public async Task<Loan> GenerateContractAsync(IDictionary<string, object> fieldValues, bool? ignoreInvalidFields, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldValues, nameof(fieldValues));
+
+            var queryParameters = new QueryParameters();
+            if (ignoreInvalidFields.HasValue)
+            {
+                queryParameters.Add("ignoreInvalidFields", ignoreInvalidFields.ToString().ToLower());
+            }
+            
+            var loan = await PostAsync<Loan>("contractGenerator", queryParameters.ToString(), JsonStreamContent.Create(fieldValues), nameof(GenerateContractAsync), null, cancellationToken).ConfigureAwait(false);
+            loan.Client = Client;
+            return loan;
+        }
+
+        public Task<string> GenerateContractRawAsync(string fieldValues, string queryString = null, CancellationToken cancellationToken = default)
+        {
+            Preconditions.NotNullOrEmpty(fieldValues, nameof(fieldValues));
+
+            return PostRawAsync("contractGenerator", queryString, new JsonStringContent(fieldValues), nameof(GenerateContractRawAsync), null, cancellationToken);
         }
     }
 }
