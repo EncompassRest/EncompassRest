@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EncompassRest.Loans;
@@ -75,6 +76,28 @@ namespace EncompassRest.Tests
                         }
                     }
                 }
+            }
+        }
+
+        [TestMethod]
+        public async Task Schema_GeneratePaths()
+        {
+            var client = await GetTestClientAsync();
+
+            var paths = await client.Schema.GeneratePathsAsync(new[] { "1393", "4000", "211" });
+            Assert.AreEqual(3, paths.Count);
+            Assert.AreEqual("/hmda/actionTaken", paths["1393"]);
+            Assert.AreEqual("/applications/*/borrower/firstName", paths["4000"]);
+            Assert.AreEqual("/loanSubmission/loanSubmissionFees[?(@/loanSubmissionFeeType == \"UserDefined4\")]/description", paths["211"]);
+
+            paths = await client.Schema.GeneratePathsAsync(new string[0]);
+            Assert.IsTrue(paths.Count > 10000);
+
+            paths = await client.Schema.GeneratePathsAsync(new string[0], "address");
+            Assert.IsTrue(paths.Count > 0);
+            foreach (var pair in paths)
+            {
+                Assert.IsTrue(pair.Value.IndexOf("address", StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
     }
