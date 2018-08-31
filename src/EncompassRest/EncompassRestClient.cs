@@ -110,7 +110,6 @@ namespace EncompassRest
         private int _timeoutRetryCount;
 
         private HttpClient _httpClient;
-        private RetryHandler _retryHandler;
         private Loans.Loans _loans;
         private Schema.Schema _schema;
         private Webhook.Webhook _webhook;
@@ -127,6 +126,7 @@ namespace EncompassRest
         private LoanFolders.LoanFolders _loanFolders;
         private Settings.Settings _settings;
         private Services.Services _services;
+        private BaseApiClient _baseApiClient;
 
         #region Properties
         public AccessToken AccessToken { get; }
@@ -300,7 +300,7 @@ namespace EncompassRest
                 var httpClient = _httpClient;
                 if (httpClient == null)
                 {
-                    httpClient = new HttpClient(GetRetryHandler())
+                    httpClient = new HttpClient(new RetryHandler(this, _tokenInitializer != null))
                     {
                         Timeout = Timeout
                     };
@@ -308,6 +308,15 @@ namespace EncompassRest
                     httpClient = Interlocked.CompareExchange(ref _httpClient, httpClient, null) ?? httpClient;
                 }
                 return httpClient;
+            }
+        }
+
+        public BaseApiClient BaseApiClient
+        {
+            get
+            {
+                var baseApiClient = _baseApiClient;
+                return baseApiClient ?? Interlocked.CompareExchange(ref _baseApiClient, (baseApiClient = new BaseApiClient(this)), null) ?? baseApiClient;
             }
         }
         #endregion
@@ -324,12 +333,6 @@ namespace EncompassRest
         {
             AccessToken.Dispose();
             _httpClient?.Dispose();
-        }
-
-        private RetryHandler GetRetryHandler()
-        {
-            var retryHandler = _retryHandler;
-            return retryHandler ?? Interlocked.CompareExchange(ref _retryHandler, (retryHandler = new RetryHandler(this, _tokenInitializer != null)), null) ?? retryHandler;
         }
 
         internal sealed class RetryHandler : DelegatingHandler
@@ -361,7 +364,7 @@ namespace EncompassRest
                                     if (string.Equals(request.Headers.Authorization.Parameter, _client.AccessToken.Token, StringComparison.Ordinal))
                                     {
                                         _client.AccessToken.Token = await _client._tokenInitializer(new TokenCreator(_client, cancellationToken)).ConfigureAwait(false);
-                                        _client._httpClient = null;
+                                        _client.HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_client.AccessToken.Type, _client.AccessToken.Token);
                                     }
                                 }
                                 finally
