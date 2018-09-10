@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PaymentReversalTransaction
     /// </summary>
-    public sealed partial class PaymentReversalTransaction : ExtensibleObject, IIdentifiable
+    public sealed partial class PaymentReversalTransaction : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _comments;
         /// <summary>

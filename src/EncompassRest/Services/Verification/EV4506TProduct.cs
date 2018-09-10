@@ -8,5 +8,10 @@
             : base(entityRef, options)
         {
         }
+
+        public EV4506TProduct(EntityReference entityRef, EV4506TOptions options, string name)
+            : base(entityRef, options, name)
+        {
+        }
     }
 }

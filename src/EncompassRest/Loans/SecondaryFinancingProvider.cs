@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// SecondaryFinancingProvider
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(SecondaryFinancingProviderType))]
-    public sealed partial class SecondaryFinancingProvider : ExtensibleObject, IIdentifiable
+    public sealed partial class SecondaryFinancingProvider : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _financingAmount;
         /// <summary>

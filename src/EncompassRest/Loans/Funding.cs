@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Funding
     /// </summary>
-    public sealed partial class Funding : ExtensibleObject, IIdentifiable
+    public sealed partial class Funding : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _collateralSentDate;
         /// <summary>

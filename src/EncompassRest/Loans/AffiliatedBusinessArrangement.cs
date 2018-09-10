@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// AffiliatedBusinessArrangement
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class AffiliatedBusinessArrangement : ExtensibleObject, IIdentifiable
+    public sealed partial class AffiliatedBusinessArrangement : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _affiliatedBusinessArrangementIndex;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Miscellaneous
     /// </summary>
-    public sealed partial class Miscellaneous : ExtensibleObject, IIdentifiable
+    public sealed partial class Miscellaneous : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

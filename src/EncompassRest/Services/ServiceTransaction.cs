@@ -11,5 +11,7 @@ namespace EncompassRest.Services
         public ServiceTransactionProduct Product { get; set; }
 
         public ServiceTransactionIdentity Identity { get; set; }
+
+        public List<ServiceResource> Resources { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DocumentOrderLog
     /// </summary>
-    public sealed partial class DocumentOrderLog : ExtensibleObject, IIdentifiable
+    public sealed partial class DocumentOrderLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _dateFilesPurged;
         /// <summary>

@@ -307,26 +307,29 @@ namespace EncompassRest.Utilities
                 var objectTypeInfo = objectType.GetTypeInfo();
                 if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                 {
-                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((ExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((DirtyExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
-                    var idProperty = GetIdProperty(objectTypeInfo);
-                    var idPropertyNameAttribute = idProperty.GetCustomAttribute<IdPropertyNameAttribute>(false);
-                    var idPropertyName = idPropertyNameAttribute != null ? CamelCaseNamingStrategy.GetPropertyName(idPropertyNameAttribute.IdPropertyName, false) : "id";
-                    var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
-                    if (property != null)
+                    if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
-                        property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
-                    }
-
-                    var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
-                    if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
-                    {
-                        var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
-                        foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
+                        var idProperty = GetIdProperty(objectTypeInfo);
+                        var idPropertyNameAttribute = idProperty.GetCustomAttribute<IdPropertyNameAttribute>(false);
+                        var idPropertyName = idPropertyNameAttribute != null ? CamelCaseNamingStrategy.GetPropertyName(idPropertyNameAttribute.IdPropertyName, false) : "id";
+                        var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
+                        if (property != null)
                         {
-                            property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
-                            var valueProvider = property.ValueProvider;
-                            property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
+                            property.ShouldSerialize = o => ((IIdentifiable)o).Id != null;
+                        }
+
+                        var entityAttribute = objectTypeInfo.GetCustomAttribute<EntityAttribute>(false);
+                        if (entityAttribute != null && !string.IsNullOrEmpty(entityAttribute.PropertiesToAlwaysSerialize))
+                        {
+                            var propertiesToAlwaysSerialize = entityAttribute.PropertiesToAlwaysSerialize.Split(',');
+                            foreach (var propertyToAlwaysSerialize in propertiesToAlwaysSerialize)
+                            {
+                                property = contract.Properties.GetClosestMatchProperty(propertyToAlwaysSerialize);
+                                var valueProvider = property.ValueProvider;
+                                property.ShouldSerialize = o => valueProvider.GetValue(o) != null;
+                            }
                         }
                     }
                 }

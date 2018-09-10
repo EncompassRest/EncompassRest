@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EscrowInterestTransaction
     /// </summary>
-    public sealed partial class EscrowInterestTransaction : ExtensibleObject, IIdentifiable
+    public sealed partial class EscrowInterestTransaction : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _comments;
         /// <summary>

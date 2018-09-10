@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Contacts
 {
-    public sealed class ContactNote : ExtensibleObject, IIdentifiable
+    public sealed class ContactNote : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _noteIdInt;
         [JsonProperty("noteId")]

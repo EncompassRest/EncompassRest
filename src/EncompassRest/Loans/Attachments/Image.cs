@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest.Loans.Attachments
 {
-    public abstract class Image : ExtensibleObject, IIdentifiable
+    public abstract class Image : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _imageKey;
         public string ImageKey { get => _imageKey; set => SetField(ref _imageKey, value); }

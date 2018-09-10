@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// AUSTrackingLog
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class AUSTrackingLog : ExtensibleObject, IIdentifiable
+    public sealed partial class AUSTrackingLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _aUSTrackingLogIndex;
         /// <summary>

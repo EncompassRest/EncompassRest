@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Loans.Documents
 {
-    public sealed class DocumentComment : ExtensibleObject, IIdentifiable
+    public sealed class DocumentComment : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _comments;
         public string Comments { get => _comments; set => SetField(ref _comments, value); }

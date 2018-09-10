@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Gfe
     /// </summary>
-    public sealed partial class Gfe : ExtensibleObject, IIdentifiable
+    public sealed partial class Gfe : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

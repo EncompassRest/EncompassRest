@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// TrustAccount
     /// </summary>
-    public sealed partial class TrustAccount : ExtensibleObject, IIdentifiable
+    public sealed partial class TrustAccount : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _balance;
         /// <summary>

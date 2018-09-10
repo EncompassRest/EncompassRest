@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// ClosingEntity
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(ClosingEntityType), SerializeWholeListWhenDirty = true)]
-    public sealed partial class ClosingEntity : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingEntity : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _alias;
         /// <summary>
@@ -75,6 +75,11 @@ namespace EncompassRest.Loans
         /// ClosingEntity Id
         /// </summary>
         public string Id { get => _id; set => SetField(ref _id, value); }
+        private DirtyValue<string> _nBORecordID;
+        /// <summary>
+        /// ClosingEntity NBORecordID
+        /// </summary>
+        public string NBORecordID { get => _nBORecordID; set => SetField(ref _nBORecordID, value); }
         private DirtyValue<StringEnumValue<OccupancyIntent>> _occupancyIntent;
         /// <summary>
         /// Vesting Party - POA Occupancy Intent [TRNN14]
@@ -171,6 +176,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "Borrower Vesting Seller Org Tax ID")]
         public string TaxIdentificationNumberIdentifier { get => _taxIdentificationNumberIdentifier; set => SetField(ref _taxIdentificationNumberIdentifier, value); }
+        private DirtyValue<int?> _trusteeIndex;
+        /// <summary>
+        /// ClosingEntity TrusteeIndex
+        /// </summary>
+        public int? TrusteeIndex { get => _trusteeIndex; set => SetField(ref _trusteeIndex, value); }
         private DirtyValue<string> _trustOfficerName1;
         /// <summary>
         /// Vesting Seller Corp/Trust Officer 1 Name [Vesting.SelOfcr1Nm]

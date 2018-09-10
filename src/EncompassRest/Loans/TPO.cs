@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// TPO
     /// </summary>
-    public sealed partial class TPO : ExtensibleObject, IIdentifiable
+    public sealed partial class TPO : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _archived;
         /// <summary>
@@ -334,6 +334,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Initial TPO Submittal Date")]
         public DateTime? InitialSubmitDate { get => _initialSubmitDate; set => SetField(ref _initialSubmitDate, value); }
+        private DirtyValue<string> _lEIssuedBy;
+        /// <summary>
+        /// TPO LEIssuedBy
+        /// </summary>
+        public string LEIssuedBy { get => _lEIssuedBy; set => SetField(ref _lEIssuedBy, value); }
         private DirtyValue<string> _lOAddress;
         /// <summary>
         /// TPO Loan Officer Address [TPO.X68]

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Hud1EsItemize
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class Hud1EsItemize : ExtensibleObject, IIdentifiable
+    public sealed partial class Hud1EsItemize : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _date;
         /// <summary>

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// TQLFraudAlert
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class TQLFraudAlert : ExtensibleObject, IIdentifiable
+    public sealed partial class TQLFraudAlert : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _driveFraudAlertCode;
         /// <summary>

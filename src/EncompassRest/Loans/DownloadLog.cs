@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DownloadLog
     /// </summary>
-    public sealed partial class DownloadLog : ExtensibleObject, IIdentifiable
+    public sealed partial class DownloadLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

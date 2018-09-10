@@ -1349,7 +1349,7 @@ namespace EncompassRest.Tests
             await Task.WhenAll(tasks).ConfigureAwait(false);
         }
 
-        private void TestForExtensionData(ExtensibleObject value, List<string> path, List<string> fails)
+        private void TestForExtensionData(DirtyExtensibleObject value, List<string> path, List<string> fails)
         {
             if (value.ExtensionData.Count > 0)
             {
@@ -1368,7 +1368,7 @@ namespace EncompassRest.Tests
                         {
                             switch (propertyValue)
                             {
-                                case ExtensibleObject extensibleObject:
+                                case DirtyExtensibleObject extensibleObject:
                                     path.Add($".{propertyUnderlyingName}");
                                     TestForExtensionData(extensibleObject, path, fails);
                                     path.RemoveAt(path.Count - 1);
@@ -1377,7 +1377,7 @@ namespace EncompassRest.Tests
                                     var i = 0;
                                     foreach (var element in list)
                                     {
-                                        if (element is ExtensibleObject extObj)
+                                        if (element is DirtyExtensibleObject extObj)
                                         {
                                             path.Add($".{propertyUnderlyingName}[{i}]");
                                             TestForExtensionData(extObj, path, fails);

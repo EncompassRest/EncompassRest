@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// GfeFee
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(GfeFeeIndex) + "," + nameof(GfeFeeType))]
-    public sealed partial class GfeFee : ExtensibleObject, IIdentifiable
+    public sealed partial class GfeFee : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _amountDescription;
         /// <summary>

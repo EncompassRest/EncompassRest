@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// StatusOnlineLog
     /// </summary>
-    public sealed partial class StatusOnlineLog : ExtensibleObject, IIdentifiable
+    public sealed partial class StatusOnlineLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// PurchaseCredit
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class PurchaseCredit : ExtensibleObject, IIdentifiable
+    public sealed partial class PurchaseCredit : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amount;
         /// <summary>

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace EncompassRest.Contacts
 {
     [Entity(PropertiesToAlwaysSerialize = nameof(Name) + "," + nameof(Description))]
-    public sealed class ContactGroup : ExtensibleObject, IIdentifiable
+    public sealed class ContactGroup : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
@@ -24,7 +24,7 @@ namespace EncompassRest.Contacts
             {
                 Preconditions.NotNullOrEmpty(value, nameof(Name));
 
-                _name = value;
+                SetField(ref _name, value);
             }
         }
         private DirtyValue<string> _description;
@@ -32,7 +32,7 @@ namespace EncompassRest.Contacts
         public string Description { get => _description; set => SetField(ref _description, value); }
         private NeverSerializeValue<DateTime?> _createdDate;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? CreatedDate { get => _createdDate; private set => _createdDate = value; }
+        public DateTime? CreatedDate { get => _createdDate; private set => SetField(ref _createdDate, value); }
 
         public ContactGroup(string name)
         {

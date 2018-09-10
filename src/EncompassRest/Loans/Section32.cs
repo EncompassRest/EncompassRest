@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Section32
     /// </summary>
-    public sealed partial class Section32 : ExtensibleObject, IIdentifiable
+    public sealed partial class Section32 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _appraisalFeeToBeFinancedIndicator;
         /// <summary>

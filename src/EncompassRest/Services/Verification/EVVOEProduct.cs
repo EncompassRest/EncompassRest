@@ -8,5 +8,10 @@
             : base(entityRef, options)
         {
         }
+
+        public EVVOEProduct(EntityReference entityRef, EVVOEOptions options, string name)
+            : base(entityRef, options, name)
+        {
+        }
     }
 }

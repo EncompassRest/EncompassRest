@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// AdditionalStateDisclosure
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(DisclosureName) + "," + nameof(StateCode))]
-    public sealed partial class AdditionalStateDisclosure : ExtensibleObject, IIdentifiable
+    public sealed partial class AdditionalStateDisclosure : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<DisclosureName>> _disclosureName;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// NetTangibleBenefit
     /// </summary>
-    public sealed partial class NetTangibleBenefit : ExtensibleObject, IIdentifiable
+    public sealed partial class NetTangibleBenefit : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _aprNotExceedIndicator;
         /// <summary>

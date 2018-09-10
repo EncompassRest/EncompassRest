@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// MilestoneTaskLog
     /// </summary>
-    public sealed partial class MilestoneTaskLog : ExtensibleObject, IIdentifiable
+    public sealed partial class MilestoneTaskLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _addDate;
         /// <summary>

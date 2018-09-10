@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Tsum
     /// </summary>
-    public sealed partial class Tsum : ExtensibleObject, IIdentifiable
+    public sealed partial class Tsum : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _aboveOrBelowRatePercent;
         /// <summary>

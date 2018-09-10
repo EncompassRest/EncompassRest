@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// HomeCounselingProvider
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class HomeCounselingProvider : ExtensibleObject, IIdentifiable
+    public sealed partial class HomeCounselingProvider : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _agencyAddress;
         /// <summary>

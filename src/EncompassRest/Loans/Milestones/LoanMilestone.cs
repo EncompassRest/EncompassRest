@@ -3,7 +3,7 @@
 namespace EncompassRest.Loans.Milestones
 {
     [Entity(PropertiesToAlwaysSerialize = nameof(StartDate))]
-    public sealed class LoanMilestone : ExtensibleObject
+    public sealed class LoanMilestone : DirtyExtensibleObject
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => SetField(ref _id, value); }

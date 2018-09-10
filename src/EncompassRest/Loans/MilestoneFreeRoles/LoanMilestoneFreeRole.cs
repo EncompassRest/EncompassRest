@@ -1,6 +1,6 @@
 ﻿namespace EncompassRest.Loans.MilestoneFreeRoles
 {
-    public sealed class LoanMilestoneFreeRole : ExtensibleObject
+    public sealed class LoanMilestoneFreeRole : DirtyExtensibleObject
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => SetField(ref _id, value); }

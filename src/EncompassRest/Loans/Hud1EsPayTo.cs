@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Hud1EsPayTo
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(Hud1EsPayToIndex))]
-    public sealed partial class Hud1EsPayTo : ExtensibleObject, IIdentifiable
+    public sealed partial class Hud1EsPayTo : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

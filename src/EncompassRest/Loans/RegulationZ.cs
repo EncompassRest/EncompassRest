@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// RegulationZ
     /// </summary>
-    public sealed partial class RegulationZ : ExtensibleObject, IIdentifiable
+    public sealed partial class RegulationZ : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _acknowledgedDay;
         /// <summary>

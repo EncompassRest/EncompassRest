@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// InterimServicing
     /// </summary>
-    public sealed partial class InterimServicing : ExtensibleObject, IIdentifiable
+    public sealed partial class InterimServicing : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _beginningBalance;
         /// <summary>

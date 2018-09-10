@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Income
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(IncomeType) + "," + nameof(OtherIncomeIndex) + "," + nameof(Owner))]
-    public sealed partial class Income : ExtensibleObject, IIdentifiable
+    public sealed partial class Income : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _amount;
         /// <summary>

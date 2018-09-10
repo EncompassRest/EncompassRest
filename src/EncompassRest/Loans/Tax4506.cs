@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Tax4506
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(HistoryIndicator) + "," + nameof(Tax4506TIndicator), SerializeWholeListWhenDirty = true)]
-    public sealed partial class Tax4506 : ExtensibleObject, IIdentifiable
+    public sealed partial class Tax4506 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _accountTranscript;
         /// <summary>

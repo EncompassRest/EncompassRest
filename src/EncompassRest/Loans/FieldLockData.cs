@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FieldLockData
     /// </summary>
-    public sealed partial class FieldLockData : ExtensibleObject, IIdentifiable
+    public sealed partial class FieldLockData : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _lockRemoved;
         /// <summary>

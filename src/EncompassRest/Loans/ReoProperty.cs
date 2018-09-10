@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// ReoProperty
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class ReoProperty : ExtensibleObject, IIdentifiable
+    public sealed partial class ReoProperty : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<DateTime?> _acquiredDate;
         /// <summary>

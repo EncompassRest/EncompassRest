@@ -2,7 +2,7 @@
 
 namespace EncompassRest.ResourceLocks
 {
-    public sealed class ResourceLock : ExtensibleObject, IIdentifiable
+    public sealed class ResourceLock : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         public string Id { get => _id; set => SetField(ref _id, value); }

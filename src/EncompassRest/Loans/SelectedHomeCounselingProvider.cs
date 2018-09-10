@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// SelectedHomeCounselingProvider
     /// </summary>
-    public sealed partial class SelectedHomeCounselingProvider : ExtensibleObject, IIdentifiable
+    public sealed partial class SelectedHomeCounselingProvider : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _affiliatedWithLenderIndicator;
         /// <summary>

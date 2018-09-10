@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// LoanAssociate
     /// </summary>
-    public sealed partial class LoanAssociate : ExtensibleObject, IIdentifiable
+    public sealed partial class LoanAssociate : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _cellPhone;
         /// <summary>
@@ -20,6 +20,11 @@ namespace EncompassRest.Loans
         /// LoanAssociate Email
         /// </summary>
         public string Email { get => _email; set => SetField(ref _email, value); }
+        private DirtyValue<StringEnumValue<YOrN>> _enableWriteAccess;
+        /// <summary>
+        /// LoanAssociate EnableWriteAccess
+        /// </summary>
+        public StringEnumValue<YOrN> EnableWriteAccess { get => _enableWriteAccess; set => SetField(ref _enableWriteAccess, value); }
         private DirtyValue<string> _fax;
         /// <summary>
         /// LoanAssociate Fax

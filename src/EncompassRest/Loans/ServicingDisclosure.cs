@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ServicingDisclosure
     /// </summary>
-    public sealed partial class ServicingDisclosure : ExtensibleObject, IIdentifiable
+    public sealed partial class ServicingDisclosure : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _disclosurePercent1;
         /// <summary>

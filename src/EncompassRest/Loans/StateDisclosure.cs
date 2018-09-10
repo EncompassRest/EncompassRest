@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// StateDisclosure
     /// </summary>
-    public sealed partial class StateDisclosure : ExtensibleObject, IIdentifiable
+    public sealed partial class StateDisclosure : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _acceptedByBorrowerIndicator;
         /// <summary>

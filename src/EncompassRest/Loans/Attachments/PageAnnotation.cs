@@ -4,7 +4,7 @@ using EnumsNET;
 
 namespace EncompassRest.Loans.Attachments
 {
-    public sealed class PageAnnotation : ExtensibleObject
+    public sealed class PageAnnotation : DirtyExtensibleObject
     {
         private DirtyValue<DateTime?> _dateCreated;
         public DateTime? DateCreated { get => _dateCreated; set => SetField(ref _dateCreated, value); }

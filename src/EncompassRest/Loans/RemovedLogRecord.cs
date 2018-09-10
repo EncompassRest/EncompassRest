@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// RemovedLogRecord
     /// </summary>
-    public sealed partial class RemovedLogRecord : ExtensibleObject, IIdentifiable
+    public sealed partial class RemovedLogRecord : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogComment> _commentList;
         /// <summary>

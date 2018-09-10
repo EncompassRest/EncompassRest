@@ -5,11 +5,10 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.CustomDataObjects
 {
-    public sealed class CustomDataObject : ExtensibleObject, IIdentifiable
+    [Entity(PropertiesToAlwaysSerialize = nameof(DataObject))]
+    public sealed class CustomDataObject : DirtyExtensibleObject, IIdentifiable
     {
-        private string _name;
-        private byte[] _dataObject;
-
+        private DirtyValue<string> _name;
         public string Name
         {
             get => _name;
@@ -17,10 +16,10 @@ namespace EncompassRest.CustomDataObjects
             {
                 Preconditions.NotNullOrEmpty(value, nameof(Name));
 
-                _name = value;
+                SetField(ref _name, value);
             }
         }
-
+        private DirtyValue<byte[]> _dataObject;
         public byte[] DataObject
         {
             get => _dataObject;
@@ -28,10 +27,9 @@ namespace EncompassRest.CustomDataObjects
             {
                 Preconditions.NotNull(value, nameof(DataObject));
 
-                _dataObject = value;
+                SetField(ref _dataObject, value);
             }
         }
-
         [IdPropertyName(nameof(Name))]
         string IIdentifiable.Id { get => Name; set => Name = value; }
 

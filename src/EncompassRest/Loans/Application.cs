@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Application
     /// </summary>
-    public sealed partial class Application : ExtensibleObject, IIdentifiable
+    public sealed partial class Application : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountNumber1;
         /// <summary>

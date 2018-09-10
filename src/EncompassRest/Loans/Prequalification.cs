@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Prequalification
     /// </summary>
-    public sealed partial class Prequalification : ExtensibleObject, IIdentifiable
+    public sealed partial class Prequalification : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _afterTaxOwnMoSavings;
         /// <summary>

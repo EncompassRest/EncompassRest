@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// UnderwritingConditionLog
     /// </summary>
-    public sealed partial class UnderwritingConditionLog : ExtensibleObject, IIdentifiable
+    public sealed partial class UnderwritingConditionLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _addedBy;
         /// <summary>

@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// StateLicense
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(StateLicenseType))]
-    public sealed partial class StateLicense : ExtensibleObject, IIdentifiable
+    public sealed partial class StateLicense : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _aK;
         /// <summary>

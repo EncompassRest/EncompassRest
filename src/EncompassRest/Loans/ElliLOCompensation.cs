@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ElliLOCompensation
     /// </summary>
-    public sealed partial class ElliLOCompensation : ExtensibleObject, IIdentifiable
+    public sealed partial class ElliLOCompensation : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _adjustedPlanAdditonalAmountForBroker;
         /// <summary>

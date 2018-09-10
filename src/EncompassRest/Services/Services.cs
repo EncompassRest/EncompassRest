@@ -34,12 +34,20 @@ namespace EncompassRest.Services
             return PostAsync($"{partnerId}/transactions", queryString, new JsonStringContent(parameters), nameof(OrderServiceRawAsync), partnerId, cancellationToken, ReadAsStringElseLocationFunc);
         }
 
-        public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, CancellationToken cancellationToken = default)
+        public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, CancellationToken cancellationToken = default) => GetServiceOrderStatusAsync(partnerId, transactionId, null, cancellationToken);
+
+        public Task<ServiceTransaction> GetServiceOrderStatusAsync(string partnerId, string transactionId, bool? generateFileUrls, CancellationToken cancellationToken = default)
         {
             Preconditions.NotNullOrEmpty(partnerId, nameof(partnerId));
             Preconditions.NotNullOrEmpty(transactionId, nameof(transactionId));
 
-            return GetAsync<ServiceTransaction>($"{partnerId}/transactions/{transactionId}", null, nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
+            var queryParameters = new QueryParameters();
+            if (generateFileUrls.HasValue)
+            {
+                queryParameters.Add("generateFileUrls", generateFileUrls.ToString().ToLower());
+            }
+
+            return GetAsync<ServiceTransaction>($"{partnerId}/transactions/{transactionId}", queryParameters.ToString(), nameof(GetServiceOrderStatusAsync), $"{partnerId}/{transactionId}", cancellationToken);
         }
 
         public Task<string> GetServiceOrderStatusRawAsync(string partnerId, string transactionId, string queryString = null, CancellationToken cancellationToken = default)

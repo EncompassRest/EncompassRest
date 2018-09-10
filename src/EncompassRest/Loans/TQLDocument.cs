@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// TQLDocument
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class TQLDocument : ExtensibleObject, IIdentifiable
+    public sealed partial class TQLDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DataTracLog
     /// </summary>
-    public sealed partial class DataTracLog : ExtensibleObject, IIdentifiable
+    public sealed partial class DataTracLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

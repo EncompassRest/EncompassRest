@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EmDocumentInvestor
     /// </summary>
-    public sealed partial class EmDocumentInvestor : ExtensibleObject, IIdentifiable
+    public sealed partial class EmDocumentInvestor : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _id;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// HudLoanData
     /// </summary>
-    public sealed partial class HudLoanData : ExtensibleObject, IIdentifiable
+    public sealed partial class HudLoanData : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualCashInvRequired;
         /// <summary>

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Usda
     /// </summary>
-    public sealed partial class Usda : ExtensibleObject, IIdentifiable
+    public sealed partial class Usda : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _additionalIncomeFromPrimaryEmployment;
         /// <summary>
@@ -663,6 +663,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(ReadOnly = true, Description = "USDA Refinance Loan Indicator")]
         public bool? RefinanceLoanIndicator { get => _refinanceLoanIndicator; set => SetField(ref _refinanceLoanIndicator, value); }
+        private DirtyValue<string> _refinanceType;
+        /// <summary>
+        /// Usda RefinanceType
+        /// </summary>
+        public string RefinanceType { get => _refinanceType; set => SetField(ref _refinanceType, value); }
         private DirtyValue<decimal?> _repairOtherAmount;
         /// <summary>
         /// USDA - Repair / Other Amount [USDA.X24]

@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// TQL
     /// </summary>
-    public sealed partial class TQL : ExtensibleObject, IIdentifiable
+    public sealed partial class TQL : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _citibank4506TBaselineReportRequired;
         /// <summary>

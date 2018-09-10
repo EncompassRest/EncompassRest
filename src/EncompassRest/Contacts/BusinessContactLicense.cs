@@ -2,7 +2,7 @@
 
 namespace EncompassRest.Contacts
 {
-    public sealed class BusinessContactLicense : ExtensibleObject
+    public sealed class BusinessContactLicense : DirtyExtensibleObject
     {
         private DirtyValue<string> _licenseAuthName;
         public string LicenseAuthName { get => _licenseAuthName; set => SetField(ref _licenseAuthName, value); }

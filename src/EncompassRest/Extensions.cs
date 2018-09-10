@@ -5,7 +5,7 @@ namespace EncompassRest
     public static class Extensions
     {
         public static T Clone<T>(this T value)
-            where T : ExtensibleObject
+            where T : DirtyExtensibleObject
         {
             Preconditions.NotNull(value, nameof(value));
 

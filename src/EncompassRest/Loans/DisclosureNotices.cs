@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// DisclosureNotices
     /// </summary>
-    public sealed partial class DisclosureNotices : ExtensibleObject, IIdentifiable
+    public sealed partial class DisclosureNotices : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _antiCoercionStatementIndicator;
         /// <summary>

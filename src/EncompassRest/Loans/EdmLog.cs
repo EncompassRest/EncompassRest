@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// EdmLog
     /// </summary>
-    public sealed partial class EdmLog : ExtensibleObject, IIdentifiable
+    public sealed partial class EdmLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

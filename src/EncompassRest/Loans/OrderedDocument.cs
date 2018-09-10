@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// OrderedDocument
     /// </summary>
-    public sealed partial class OrderedDocument : ExtensibleObject, IIdentifiable
+    public sealed partial class OrderedDocument : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _category;
         /// <summary>

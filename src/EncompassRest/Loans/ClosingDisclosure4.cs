@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// ClosingDisclosure4
     /// </summary>
-    public sealed partial class ClosingDisclosure4 : ExtensibleObject, IIdentifiable
+    public sealed partial class ClosingDisclosure4 : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<DemandFeature>> _demandFeature;
         /// <summary>
@@ -16,6 +16,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Demand Feature")]
         public StringEnumValue<DemandFeature> DemandFeature { get => _demandFeature; set => SetField(ref _demandFeature, value); }
+        private DirtyValue<string> _escrowedPropertyCostsBasis;
+        /// <summary>
+        /// ClosingDisclosure4 EscrowedPropertyCostsBasis
+        /// </summary>
+        public string EscrowedPropertyCostsBasis { get => _escrowedPropertyCostsBasis; set => SetField(ref _escrowedPropertyCostsBasis, value); }
         private DirtyValue<bool?> _escrowIndicator;
         /// <summary>
         /// Closing Disclosure Page 4 Escrow Indicator [CD4.X9]

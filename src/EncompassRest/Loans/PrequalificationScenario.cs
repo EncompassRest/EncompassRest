@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// PrequalificationScenario
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class PrequalificationScenario : ExtensibleObject, IIdentifiable
+    public sealed partial class PrequalificationScenario : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<int?> _appraisedValue;
         /// <summary>

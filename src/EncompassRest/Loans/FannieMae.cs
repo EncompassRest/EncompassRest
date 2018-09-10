@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FannieMae
     /// </summary>
-    public sealed partial class FannieMae : ExtensibleObject, IIdentifiable
+    public sealed partial class FannieMae : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<bool?> _caseIDAssignedByUCDIndicator;
         /// <summary>

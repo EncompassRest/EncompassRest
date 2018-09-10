@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// PrintLog
     /// </summary>
-    public sealed partial class PrintLog : ExtensibleObject, IIdentifiable
+    public sealed partial class PrintLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _action;
         /// <summary>

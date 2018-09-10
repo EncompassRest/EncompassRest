@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// NewYorkFee
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class NewYorkFee : ExtensibleObject, IIdentifiable
+    public sealed partial class NewYorkFee : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _address;
         /// <summary>

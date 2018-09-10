@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FreddieServiceLpaLog
     /// </summary>
-    public sealed partial class FreddieServiceLpaLog : ExtensibleObject, IIdentifiable
+    public sealed partial class FreddieServiceLpaLog : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyList<LogAlert> _alerts;
         /// <summary>

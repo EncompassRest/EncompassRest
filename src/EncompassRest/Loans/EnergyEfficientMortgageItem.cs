@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// EnergyEfficientMortgageItem
     /// </summary>
     [Entity(SerializeWholeListWhenDirty = true)]
-    public sealed partial class EnergyEfficientMortgageItem : ExtensibleObject, IIdentifiable
+    public sealed partial class EnergyEfficientMortgageItem : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _actualAmount;
         /// <summary>

@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Settings.Loan
 {
-    public sealed class FieldAudit : ExtensibleObject, IDirty
+    public sealed class FieldAudit : DirtyExtensibleObject, IDirty, IIdentifiable
     {
-        public string FieldId { get; set; }
-
-        public StringEnumValue<AuditData> Data { get; set; }
-
+        private string _fieldId;
+        public string FieldId { get => _fieldId; set => SetField(ref _fieldId, value); }
+        private StringEnumValue<AuditData> _data;
+        public StringEnumValue<AuditData> Data { get => _data; set => SetField(ref _data, value); }
         bool IDirty.Dirty { get => true; set { } }
 
         public FieldAudit(string fieldId, AuditData data)

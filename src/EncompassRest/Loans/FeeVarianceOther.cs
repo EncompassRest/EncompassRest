@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// FeeVarianceOther
     /// </summary>
-    public sealed partial class FeeVarianceOther : ExtensibleObject, IIdentifiable
+    public sealed partial class FeeVarianceOther : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _appliedCureAmount;
         /// <summary>

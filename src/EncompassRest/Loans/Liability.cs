@@ -9,7 +9,7 @@ namespace EncompassRest.Loans
     /// Liability
     /// </summary>
     [Entity(PropertiesToAlwaysSerialize = nameof(AccountIndicator) + "," + nameof(LiabilityType), SerializeWholeListWhenDirty = true)]
-    public sealed partial class Liability : ExtensibleObject, IIdentifiable
+    public sealed partial class Liability : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _accountIdentifier;
         /// <summary>

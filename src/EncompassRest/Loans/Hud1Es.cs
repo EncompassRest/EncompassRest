@@ -8,7 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// Hud1Es
     /// </summary>
-    public sealed partial class Hud1Es : ExtensibleObject, IIdentifiable
+    public sealed partial class Hud1Es : DirtyExtensibleObject, IIdentifiable
     {
         private DirtyValue<decimal?> _annualCityTax;
         /// <summary>
