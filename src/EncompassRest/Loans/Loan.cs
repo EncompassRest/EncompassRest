@@ -32,6 +32,11 @@ namespace EncompassRest.Loans
         /// </summary>
         [LoanFieldProperty(Description = "Trans Details Agency Case #")]
         public string AgencyCaseIdentifier { get => _agencyCaseIdentifier; set => SetField(ref _agencyCaseIdentifier, value); }
+        private DirtyValue<string> _alertChangeCircumstanceApplyLECD;
+        /// <summary>
+        /// Loan AlertChangeCircumstanceApplyLECD
+        /// </summary>
+        public string AlertChangeCircumstanceApplyLECD { get => _alertChangeCircumstanceApplyLECD; set => SetField(ref _alertChangeCircumstanceApplyLECD, value); }
         private DirtyList<AlertChangeCircumstance> _alertChangeCircumstances;
         /// <summary>
         /// Loan AlertChangeCircumstances

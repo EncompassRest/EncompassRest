@@ -252,16 +252,16 @@ namespace EncompassRest.Loans
         /// DisclosureTracking2015Log ContainSafeHarbor
         /// </summary>
         public bool? ContainSafeHarbor { get => _containSafeHarbor; set => SetField(ref _containSafeHarbor, value); }
-        private DirtyValue<decimal?> _cureAppliedToLenderCredit;
+        private DirtyValue<string> _cureAppliedToLenderCredit;
         /// <summary>
         /// DisclosureTracking2015Log CureAppliedToLenderCredit
         /// </summary>
-        public decimal? CureAppliedToLenderCredit { get => _cureAppliedToLenderCredit; set => SetField(ref _cureAppliedToLenderCredit, value); }
-        private DirtyValue<decimal?> _cureAppliedToPrincipalReduction;
+        public string CureAppliedToLenderCredit { get => _cureAppliedToLenderCredit; set => SetField(ref _cureAppliedToLenderCredit, value); }
+        private DirtyValue<string> _cureAppliedToPrincipalReduction;
         /// <summary>
         /// DisclosureTracking2015Log CureAppliedToPrincipalReduction
         /// </summary>
-        public decimal? CureAppliedToPrincipalReduction { get => _cureAppliedToPrincipalReduction; set => SetField(ref _cureAppliedToPrincipalReduction, value); }
+        public string CureAppliedToPrincipalReduction { get => _cureAppliedToPrincipalReduction; set => SetField(ref _cureAppliedToPrincipalReduction, value); }
         private DirtyValue<DateTime?> _dateAdded;
         /// <summary>
         /// DisclosureTracking2015Log DateAdded
