@@ -56,6 +56,8 @@ namespace EncompassRest
 
         internal IList<T> GetField<T>(ref DirtyList<T> field) => field ?? (field = new DirtyList<T>());
 
+        internal IList<T> GetField<T>(ref IList<T> field) => field ?? (field = new List<T>());
+
         internal IDictionary<string, string> GetField(ref DirtyDictionary<string, string> field) => field ?? (field = new DirtyDictionary<string, string>(StringComparer.OrdinalIgnoreCase));
 
         private bool _gettingDirty;

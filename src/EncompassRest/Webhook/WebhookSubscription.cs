@@ -19,7 +19,7 @@ namespace EncompassRest.Webhook
         public StringEnumValue<WebhookResourceType> Resource { get => _resource; set => SetField(ref _resource, value); }
         private IList<StringEnumValue<WebhookResourceEvent>> _events;
         [JsonRequired]
-        public IList<StringEnumValue<WebhookResourceEvent>> Events { get => _events ?? (_events = new List<StringEnumValue<WebhookResourceEvent>>()); set => SetField(ref _events, value); }
+        public IList<StringEnumValue<WebhookResourceEvent>> Events { get => GetField(ref _events); set => SetField(ref _events, value); }
         private WebhookFilters _filters;
         public WebhookFilters Filters { get => GetField(ref _filters); set => SetField(ref _filters, value); }
         private NeverSerializeValue<string> _objectUrn;

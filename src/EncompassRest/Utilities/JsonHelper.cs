@@ -307,7 +307,7 @@ namespace EncompassRest.Utilities
                 var objectTypeInfo = objectType.GetTypeInfo();
                 if (TypeData<ExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                 {
-                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)(((DirtyExtensibleObject)o).ExtensionData)).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
+                    contract.ExtensionDataGetter = o => ((DirtyDictionary<string, object>)((ExtensibleObject)o).ExtensionData).GetDirtyItems().Select(p => new KeyValuePair<object, object>(p.Key, p.Value));
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
                     if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
