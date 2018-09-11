@@ -14,141 +14,97 @@ namespace EncompassRest.Loans
         /// <summary>
         /// MilestoneLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// MilestoneLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// MilestoneLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// MilestoneLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<int?> _days;
         /// <summary>
         /// MilestoneLog Days
         /// </summary>
-        public int? Days { get => _days; set => _days = value; }
+        public int? Days { get => _days; set => SetField(ref _days, value); }
         private DirtyValue<bool?> _doneIndicator;
         /// <summary>
         /// MilestoneLog DoneIndicator
         /// </summary>
-        public bool? DoneIndicator { get => _doneIndicator; set => _doneIndicator = value; }
+        public bool? DoneIndicator { get => _doneIndicator; set => SetField(ref _doneIndicator, value); }
         private DirtyValue<int?> _duration;
         /// <summary>
         /// MilestoneLog Duration
         /// </summary>
-        public int? Duration { get => _duration; set => _duration = value; }
+        public int? Duration { get => _duration; set => SetField(ref _duration, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// MilestoneLog FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// MilestoneLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// MilestoneLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// MilestoneLog IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private LoanAssociate _loanAssociate;
         /// <summary>
         /// MilestoneLog LoanAssociate
         /// </summary>
-        public LoanAssociate LoanAssociate { get => _loanAssociate ?? (_loanAssociate = new LoanAssociate()); set => _loanAssociate = value; }
+        public LoanAssociate LoanAssociate { get => GetField(ref _loanAssociate); set => SetField(ref _loanAssociate, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// MilestoneLog LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<string> _milestoneIdString;
         /// <summary>
         /// MilestoneLog MilestoneIdString
         /// </summary>
-        public string MilestoneIdString { get => _milestoneIdString; set => _milestoneIdString = value; }
+        public string MilestoneIdString { get => _milestoneIdString; set => SetField(ref _milestoneIdString, value); }
         private DirtyValue<bool?> _reviewedIndicator;
         /// <summary>
         /// MilestoneLog ReviewedIndicator
         /// </summary>
-        public bool? ReviewedIndicator { get => _reviewedIndicator; set => _reviewedIndicator = value; }
+        public bool? ReviewedIndicator { get => _reviewedIndicator; set => SetField(ref _reviewedIndicator, value); }
         private DirtyValue<string> _roleRequired;
         /// <summary>
         /// MilestoneLog RoleRequired
         /// </summary>
-        public string RoleRequired { get => _roleRequired; set => _roleRequired = value; }
+        public string RoleRequired { get => _roleRequired; set => SetField(ref _roleRequired, value); }
         private DirtyValue<string> _stage;
         /// <summary>
         /// MilestoneLog Stage
         /// </summary>
-        public string Stage { get => _stage; set => _stage = value; }
+        public string Stage { get => _stage; set => SetField(ref _stage, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// MilestoneLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
         private DirtyValue<string> _tPOConnectStatus;
         /// <summary>
         /// MilestoneLog TPOConnectStatus
         /// </summary>
-        public string TPOConnectStatus { get => _tPOConnectStatus; set => _tPOConnectStatus = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _days.Dirty
-                || _doneIndicator.Dirty
-                || _duration.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _milestoneIdString.Dirty
-                || _reviewedIndicator.Dirty
-                || _roleRequired.Dirty
-                || _stage.Dirty
-                || _systemId.Dirty
-                || _tPOConnectStatus.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true
-                || _loanAssociate?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _days.Dirty = value;
-                _doneIndicator.Dirty = value;
-                _duration.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _milestoneIdString.Dirty = value;
-                _reviewedIndicator.Dirty = value;
-                _roleRequired.Dirty = value;
-                _stage.Dirty = value;
-                _systemId.Dirty = value;
-                _tPOConnectStatus.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-                if (_loanAssociate != null) _loanAssociate.Dirty = value;
-            }
-        }
+        public string TPOConnectStatus { get => _tPOConnectStatus; set => SetField(ref _tPOConnectStatus, value); }
     }
 }

@@ -8,6 +8,7 @@ namespace EncompassRest.Loans
     /// <summary>
     /// UCDDetail
     /// </summary>
+    [Entity(PropertiesToAlwaysSerialize = nameof(FeeIndex) + "," + nameof(LineNumber) + "," + nameof(Section))]
     public sealed partial class UCDDetail : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<StringEnumValue<UCDPayoffType>> _feeAccountType;
@@ -15,92 +16,64 @@ namespace EncompassRest.Loans
         /// UCDDetail FeeAccountType
         /// </summary>
         [LoanFieldProperty(OptionsJson = "{\"Open30DayChargeAccount\":\"Open 30 Day Charge Account\"}")]
-        public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => _feeAccountType = value; }
+        public StringEnumValue<UCDPayoffType> FeeAccountType { get => _feeAccountType; set => SetField(ref _feeAccountType, value); }
         private DirtyValue<decimal?> _feeAmount;
         /// <summary>
         /// UCDDetail FeeAmount
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DECIMAL_2)]
-        public decimal? FeeAmount { get => _feeAmount; set => _feeAmount = value; }
+        public decimal? FeeAmount { get => _feeAmount; set => SetField(ref _feeAmount, value); }
         private DirtyValue<DateTime?> _feeDateFrom;
         /// <summary>
         /// UCDDetail FeeDateFrom
         /// </summary>
-        public DateTime? FeeDateFrom { get => _feeDateFrom; set => _feeDateFrom = value; }
+        public DateTime? FeeDateFrom { get => _feeDateFrom; set => SetField(ref _feeDateFrom, value); }
         private DirtyValue<DateTime?> _feeDateTo;
         /// <summary>
         /// UCDDetail FeeDateTo
         /// </summary>
-        public DateTime? FeeDateTo { get => _feeDateTo; set => _feeDateTo = value; }
+        public DateTime? FeeDateTo { get => _feeDateTo; set => SetField(ref _feeDateTo, value); }
         private DirtyValue<string> _feeDesc;
         /// <summary>
         /// UCDDetail FeeDesc
         /// </summary>
-        public string FeeDesc { get => _feeDesc; set => _feeDesc = value; }
+        public string FeeDesc { get => _feeDesc; set => SetField(ref _feeDesc, value); }
         private DirtyValue<int?> _feeIndex;
         /// <summary>
         /// UCDDetail FeeIndex
         /// </summary>
-        public int? FeeIndex { get => _feeIndex; set => _feeIndex = value; }
-        private DirtyValue<StringEnumValue<FeePaidBy>> _feePaidBy;
+        [LoanFieldProperty(OptionsJson = "{\"1\":\"1\",\"2\":\"2\",\"3\":\"3\",\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\",\"8\":\"8\",\"9\":\"9\",\"10\":\"10\",\"11\":\"11\",\"12\":\"12\",\"13\":\"13\",\"14\":\"14\",\"15\":\"15\",\"16\":\"16\",\"17\":\"17\",\"18\":\"18\",\"19\":\"19\",\"20\":\"20\",\"21\":\"21\",\"0\":\"0\"}")]
+        public int? FeeIndex { get => _feeIndex; set => SetField(ref _feeIndex, value); }
+        private DirtyValue<StringEnumValue<PaidToOrBy>> _feePaidBy;
         /// <summary>
         /// UCDDetail FeePaidBy
         /// </summary>
-        public StringEnumValue<FeePaidBy> FeePaidBy { get => _feePaidBy; set => _feePaidBy = value; }
+        public StringEnumValue<PaidToOrBy> FeePaidBy { get => _feePaidBy; set => SetField(ref _feePaidBy, value); }
         private DirtyValue<string> _feePaidTo;
         /// <summary>
         /// UCDDetail FeePaidTo
         /// </summary>
-        public string FeePaidTo { get => _feePaidTo; set => _feePaidTo = value; }
+        public string FeePaidTo { get => _feePaidTo; set => SetField(ref _feePaidTo, value); }
         private DirtyValue<bool?> _feePOC;
         /// <summary>
         /// UCDDetail FeePOC
         /// </summary>
-        public bool? FeePOC { get => _feePOC; set => _feePOC = value; }
+        public bool? FeePOC { get => _feePOC; set => SetField(ref _feePOC, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// UCDDetail Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<int?> _lineNumber;
         /// <summary>
         /// UCDDetail LineNumber
         /// </summary>
-        public int? LineNumber { get => _lineNumber; set => _lineNumber = value; }
-        private DirtyValue<string> _section;
+        [LoanFieldProperty(OptionsJson = "{\"4\":\"4\",\"5\":\"5\",\"6\":\"6\",\"7\":\"7\",\"8\":\"8\",\"9\":\"9\",\"10\":\"10\",\"11\":\"11\",\"17\":\"17\",\"3\":\"3\",\"16\":\"16\",\"13\":\"13\",\"19\":\"19\",\"12\":\"12\",\"14\":\"14\",\"15\":\"15\",\"18\":\"18\"}")]
+        public int? LineNumber { get => _lineNumber; set => SetField(ref _lineNumber, value); }
+        private DirtyValue<StringEnumValue<Section>> _section;
         /// <summary>
         /// UCDDetail Section
         /// </summary>
-        public string Section { get => _section; set => _section = value; }
-        internal override bool DirtyInternal
-        {
-            get => _feeAccountType.Dirty
-                || _feeAmount.Dirty
-                || _feeDateFrom.Dirty
-                || _feeDateTo.Dirty
-                || _feeDesc.Dirty
-                || _feeIndex.Dirty
-                || _feePaidBy.Dirty
-                || _feePaidTo.Dirty
-                || _feePOC.Dirty
-                || _id.Dirty
-                || _lineNumber.Dirty
-                || _section.Dirty;
-            set
-            {
-                _feeAccountType.Dirty = value;
-                _feeAmount.Dirty = value;
-                _feeDateFrom.Dirty = value;
-                _feeDateTo.Dirty = value;
-                _feeDesc.Dirty = value;
-                _feeIndex.Dirty = value;
-                _feePaidBy.Dirty = value;
-                _feePaidTo.Dirty = value;
-                _feePOC.Dirty = value;
-                _id.Dirty = value;
-                _lineNumber.Dirty = value;
-                _section.Dirty = value;
-            }
-        }
+        public StringEnumValue<Section> Section { get => _section; set => SetField(ref _section, value); }
     }
 }

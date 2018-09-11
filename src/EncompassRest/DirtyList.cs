@@ -48,11 +48,9 @@ namespace EncompassRest
             get => _list.Any(item => item.Dirty);
             set
             {
-                for (var i = 0; i < _list.Count; ++i)
+                foreach (var dirtyValue in _list)
                 {
-                    var item = _list[i];
-                    item.Dirty = value;
-                    _list[i] = item;
+                    dirtyValue.Dirty = value;
                 }
             }
         }

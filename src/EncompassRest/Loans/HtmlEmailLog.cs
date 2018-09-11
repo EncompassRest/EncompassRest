@@ -14,127 +14,92 @@ namespace EncompassRest.Loans
         /// <summary>
         /// HtmlEmailLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyValue<string> _body;
         /// <summary>
         /// HtmlEmailLog Body
         /// </summary>
-        public string Body { get => _body; set => _body = value; }
+        public string Body { get => _body; set => SetField(ref _body, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// HtmlEmailLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// HtmlEmailLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<string> _creator;
         /// <summary>
         /// HtmlEmailLog Creator
         /// </summary>
-        public string Creator { get => _creator; set => _creator = value; }
+        public string Creator { get => _creator; set => SetField(ref _creator, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// HtmlEmailLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<string> _description;
         /// <summary>
         /// HtmlEmailLog Description
         /// </summary>
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
+        private DirtyList<EmailDocument> _docList;
+        /// <summary>
+        /// HtmlEmailLog DocList
+        /// </summary>
+        public IList<EmailDocument> DocList { get => GetField(ref _docList); set => SetField(ref _docList, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// HtmlEmailLog FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// HtmlEmailLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// HtmlEmailLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// HtmlEmailLog IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// HtmlEmailLog LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<bool?> _readReceipt;
         /// <summary>
         /// HtmlEmailLog ReadReceipt
         /// </summary>
-        public bool? ReadReceipt { get => _readReceipt; set => _readReceipt = value; }
+        public bool? ReadReceipt { get => _readReceipt; set => SetField(ref _readReceipt, value); }
         private DirtyValue<string> _recipient;
         /// <summary>
         /// HtmlEmailLog Recipient
         /// </summary>
-        public string Recipient { get => _recipient; set => _recipient = value; }
+        public string Recipient { get => _recipient; set => SetField(ref _recipient, value); }
         private DirtyValue<string> _sender;
         /// <summary>
         /// HtmlEmailLog Sender
         /// </summary>
-        public string Sender { get => _sender; set => _sender = value; }
+        public string Sender { get => _sender; set => SetField(ref _sender, value); }
         private DirtyValue<string> _subject;
         /// <summary>
         /// HtmlEmailLog Subject
         /// </summary>
-        public string Subject { get => _subject; set => _subject = value; }
+        public string Subject { get => _subject; set => SetField(ref _subject, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// HtmlEmailLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _body.Dirty
-                || _comments.Dirty
-                || _creator.Dirty
-                || _dateUtc.Dirty
-                || _description.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _readReceipt.Dirty
-                || _recipient.Dirty
-                || _sender.Dirty
-                || _subject.Dirty
-                || _systemId.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _body.Dirty = value;
-                _comments.Dirty = value;
-                _creator.Dirty = value;
-                _dateUtc.Dirty = value;
-                _description.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _readReceipt.Dirty = value;
-                _recipient.Dirty = value;
-                _sender.Dirty = value;
-                _subject.Dirty = value;
-                _systemId.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
     }
 }

@@ -14,71 +14,47 @@ namespace EncompassRest.Loans
         /// <summary>
         /// RemovedLogRecord CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// RemovedLogRecord Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// RemovedLogRecord DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// RemovedLogRecord FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// RemovedLogRecord Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// RemovedLogRecord Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// RemovedLogRecord IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// RemovedLogRecord LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// RemovedLogRecord SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _comments.Dirty
-                || _dateUtc.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _systemId.Dirty
-                || _commentList?.Dirty == true;
-            set
-            {
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _systemId.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
     }
 }

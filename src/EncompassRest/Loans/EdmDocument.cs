@@ -14,21 +14,11 @@ namespace EncompassRest.Loans
         /// <summary>
         /// EdmDocument Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _title;
         /// <summary>
         /// EdmDocument Title
         /// </summary>
-        public string Title { get => _title; set => _title = value; }
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _title.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _title.Dirty = value;
-            }
-        }
+        public string Title { get => _title; set => SetField(ref _title, value); }
     }
 }

@@ -14,113 +14,77 @@ namespace EncompassRest.Loans
         /// <summary>
         /// LockDenialLog AlertIndicator
         /// </summary>
-        public bool? AlertIndicator { get => _alertIndicator; set => _alertIndicator = value; }
+        public bool? AlertIndicator { get => _alertIndicator; set => SetField(ref _alertIndicator, value); }
         private DirtyList<LogAlert> _alerts;
         /// <summary>
         /// LockDenialLog Alerts
         /// </summary>
-        public IList<LogAlert> Alerts { get => _alerts ?? (_alerts = new DirtyList<LogAlert>()); set => _alerts = new DirtyList<LogAlert>(value); }
+        public IList<LogAlert> Alerts { get => GetField(ref _alerts); set => SetField(ref _alerts, value); }
         private DirtyList<LogComment> _commentList;
         /// <summary>
         /// LockDenialLog CommentList
         /// </summary>
-        public IList<LogComment> CommentList { get => _commentList ?? (_commentList = new DirtyList<LogComment>()); set => _commentList = new DirtyList<LogComment>(value); }
+        public IList<LogComment> CommentList { get => GetField(ref _commentList); set => SetField(ref _commentList, value); }
         private DirtyValue<string> _comments;
         /// <summary>
         /// LockDenialLog Comments
         /// </summary>
-        public string Comments { get => _comments; set => _comments = value; }
+        public string Comments { get => _comments; set => SetField(ref _comments, value); }
         private DirtyValue<DateTime?> _dateUtc;
         /// <summary>
         /// LockDenialLog DateUtc
         /// </summary>
         [LoanFieldProperty(Format = LoanFieldFormat.DATETIME)]
-        public DateTime? DateUtc { get => _dateUtc; set => _dateUtc = value; }
+        public DateTime? DateUtc { get => _dateUtc; set => SetField(ref _dateUtc, value); }
         private DirtyValue<string> _deniedBy;
         /// <summary>
         /// LockDenialLog DeniedBy
         /// </summary>
-        public string DeniedBy { get => _deniedBy; set => _deniedBy = value; }
+        public string DeniedBy { get => _deniedBy; set => SetField(ref _deniedBy, value); }
         private DirtyValue<string> _deniedById;
         /// <summary>
         /// LockDenialLog DeniedById
         /// </summary>
-        public string DeniedById { get => _deniedById; set => _deniedById = value; }
+        public string DeniedById { get => _deniedById; set => SetField(ref _deniedById, value); }
         private DirtyValue<bool?> _fileAttachmentsMigrated;
         /// <summary>
         /// LockDenialLog FileAttachmentsMigrated
         /// </summary>
-        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => _fileAttachmentsMigrated = value; }
+        public bool? FileAttachmentsMigrated { get => _fileAttachmentsMigrated; set => SetField(ref _fileAttachmentsMigrated, value); }
         private DirtyValue<string> _guid;
         /// <summary>
         /// LockDenialLog Guid
         /// </summary>
-        public string Guid { get => _guid; set => _guid = value; }
+        public string Guid { get => _guid; set => SetField(ref _guid, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// LockDenialLog Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<bool?> _isSystemSpecificIndicator;
         /// <summary>
         /// LockDenialLog IsSystemSpecificIndicator
         /// </summary>
-        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => _isSystemSpecificIndicator = value; }
+        public bool? IsSystemSpecificIndicator { get => _isSystemSpecificIndicator; set => SetField(ref _isSystemSpecificIndicator, value); }
         private DirtyValue<int?> _logRecordIndex;
         /// <summary>
         /// LockDenialLog LogRecordIndex
         /// </summary>
-        public int? LogRecordIndex { get => _logRecordIndex; set => _logRecordIndex = value; }
+        public int? LogRecordIndex { get => _logRecordIndex; set => SetField(ref _logRecordIndex, value); }
         private DirtyValue<string> _requestGuid;
         /// <summary>
         /// LockDenialLog RequestGuid
         /// </summary>
-        public string RequestGuid { get => _requestGuid; set => _requestGuid = value; }
+        public string RequestGuid { get => _requestGuid; set => SetField(ref _requestGuid, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// LockDenialLog SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
         private DirtyValue<string> _timeDenied;
         /// <summary>
         /// LockDenialLog TimeDenied
         /// </summary>
-        public string TimeDenied { get => _timeDenied; set => _timeDenied = value; }
-        internal override bool DirtyInternal
-        {
-            get => _alertIndicator.Dirty
-                || _comments.Dirty
-                || _dateUtc.Dirty
-                || _deniedBy.Dirty
-                || _deniedById.Dirty
-                || _fileAttachmentsMigrated.Dirty
-                || _guid.Dirty
-                || _id.Dirty
-                || _isSystemSpecificIndicator.Dirty
-                || _logRecordIndex.Dirty
-                || _requestGuid.Dirty
-                || _systemId.Dirty
-                || _timeDenied.Dirty
-                || _alerts?.Dirty == true
-                || _commentList?.Dirty == true;
-            set
-            {
-                _alertIndicator.Dirty = value;
-                _comments.Dirty = value;
-                _dateUtc.Dirty = value;
-                _deniedBy.Dirty = value;
-                _deniedById.Dirty = value;
-                _fileAttachmentsMigrated.Dirty = value;
-                _guid.Dirty = value;
-                _id.Dirty = value;
-                _isSystemSpecificIndicator.Dirty = value;
-                _logRecordIndex.Dirty = value;
-                _requestGuid.Dirty = value;
-                _systemId.Dirty = value;
-                _timeDenied.Dirty = value;
-                if (_alerts != null) _alerts.Dirty = value;
-                if (_commentList != null) _commentList.Dirty = value;
-            }
-        }
+        public string TimeDenied { get => _timeDenied; set => SetField(ref _timeDenied, value); }
     }
 }

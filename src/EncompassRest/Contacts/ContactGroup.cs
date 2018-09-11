@@ -9,13 +9,13 @@ namespace EncompassRest.Contacts
     {
         private DirtyValue<string> _id;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<StringEnumValue<ContactType>> _contactType;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public StringEnumValue<ContactType> ContactType { get => _contactType; set => _contactType = value; }
+        public StringEnumValue<ContactType> ContactType { get => _contactType; set => SetField(ref _contactType, value); }
         private DirtyValue<StringEnumValue<ContactGroupType>> _groupType;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public StringEnumValue<ContactGroupType> GroupType { get => _groupType; set => _groupType = value; }
+        public StringEnumValue<ContactGroupType> GroupType { get => _groupType; set => SetField(ref _groupType, value); }
         private DirtyValue<string> _name;
         public string Name
         {
@@ -29,7 +29,7 @@ namespace EncompassRest.Contacts
         }
         private DirtyValue<string> _description;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private NeverSerializeValue<DateTime?> _createdDate;
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public DateTime? CreatedDate { get => _createdDate; private set => _createdDate = value; }
@@ -37,23 +37,6 @@ namespace EncompassRest.Contacts
         public ContactGroup(string name)
         {
             Name = name;
-        }
-
-        internal override bool DirtyInternal
-        {
-            get => _id.Dirty
-                || _contactType.Dirty
-                || _groupType.Dirty
-                || _name.Dirty
-                || _description.Dirty;
-            set
-            {
-                _id.Dirty = value;
-                _contactType.Dirty = value;
-                _groupType.Dirty = value;
-                _name.Dirty = value;
-                _description.Dirty = value;
-            }
         }
     }
 }

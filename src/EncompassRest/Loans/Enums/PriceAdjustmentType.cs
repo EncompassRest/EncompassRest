@@ -4,26 +4,25 @@ using System.Runtime.Serialization;
 namespace EncompassRest.Loans.Enums
 {
     /// <summary>
-    /// FeePaidBy
+    /// PriceAdjustmentType
     /// </summary>
-    public enum FeePaidBy
+    public enum PriceAdjustmentType
     {
         /// <summary>
-        /// Borrower
+        /// BaseRate
         /// </summary>
-        Borrower = 0,
+        BaseRate = 0,
         /// <summary>
-        /// Lender
+        /// BasePrice
         /// </summary>
-        Lender = 1,
+        BasePrice = 1,
         /// <summary>
-        /// Seller
+        /// BaseMargin
         /// </summary>
-        Seller = 2,
+        BaseMargin = 2,
         /// <summary>
-        /// Broker (Realtor)
+        /// ProfitMargin
         /// </summary>
-        [EnumMember(Value = "Broker (Realtor)")]
-        BrokerRealtor = 3
+        ProfitMargin = 3
     }
 }

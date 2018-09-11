@@ -14,35 +14,21 @@ namespace EncompassRest.Loans
         /// <summary>
         /// Form FormId
         /// </summary>
-        public int? FormId { get => _formId; set => _formId = value; }
+        public int? FormId { get => _formId; set => SetField(ref _formId, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// Form Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
+        public string Id { get => _id; set => SetField(ref _id, value); }
         private DirtyValue<string> _name;
         /// <summary>
         /// Form Name
         /// </summary>
-        public string Name { get => _name; set => _name = value; }
+        public string Name { get => _name; set => SetField(ref _name, value); }
         private DirtyValue<string> _systemId;
         /// <summary>
         /// Form SystemId
         /// </summary>
-        public string SystemId { get => _systemId; set => _systemId = value; }
-        internal override bool DirtyInternal
-        {
-            get => _formId.Dirty
-                || _id.Dirty
-                || _name.Dirty
-                || _systemId.Dirty;
-            set
-            {
-                _formId.Dirty = value;
-                _id.Dirty = value;
-                _name.Dirty = value;
-                _systemId.Dirty = value;
-            }
-        }
+        public string SystemId { get => _systemId; set => SetField(ref _systemId, value); }
     }
 }

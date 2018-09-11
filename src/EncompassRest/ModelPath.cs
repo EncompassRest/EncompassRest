@@ -365,7 +365,9 @@ namespace EncompassRest
             return new Attribute[0];
         }
 
-        public override string ToString() => $"{RootObjectName}{string.Concat(Segments)}";
+        public override string ToString() => ToString(null, false);
+
+        public string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => $"{(attributePath ? null : propertyNameTransformer?.Invoke(RootObjectName) ?? RootObjectName)}{string.Concat(Segments.Select(segment => segment.ToString(propertyNameTransformer, attributePath)))}";
 
         public override int GetHashCode() => Segments.Aggregate(StringComparer.OrdinalIgnoreCase.GetHashCode(RootObjectName), (current, segment) => current ^ segment.GetHashCode());
 
@@ -412,7 +414,9 @@ namespace EncompassRest
 
             public abstract void SetValue(object parent, Func<Type, object> valueProvider);
 
-            public abstract override string ToString();
+            public sealed override string ToString() => ToString(null, false);
+
+            public abstract string ToString(Func<string, string> propertyNameTransformer, bool attributePath);
 
             public abstract override int GetHashCode();
 
@@ -576,9 +580,14 @@ namespace EncompassRest
                 }
             }
 
-            public override string ToString()
+            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
             {
-                var escapedPropertyName = EscapeWithTick(PropertyName, out var escapeNeeded);
+                var propertyName = propertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
+                if (attributePath)
+                {
+                    return $"/{propertyName}";
+                }
+                var escapedPropertyName = EscapeWithTick(propertyName, out var escapeNeeded);
                 return escapeNeeded ? $"['{escapedPropertyName}']" : $".{escapedPropertyName}";
             }
 
@@ -712,7 +721,17 @@ namespace EncompassRest
 
             public override void SetValue(object parent, Func<Type, object> valueProvider) => throw new NotSupportedException();
 
-            public override string ToString() => $"{(Filter != null ? $"[({Filter})]" : string.Empty)}{(Index.HasValue ? $"[{Index}]" : string.Empty)}";
+            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
+            {
+                var index = Index;
+                if (index.HasValue && attributePath)
+                {
+                    Path.Context.Settings.TryGetValue(GetPropertyPath(), out var settings);
+                    var indexOffset = settings?.IndexOffset ?? Path.Context.DefaultIndexOffset;
+                    index -= indexOffset;
+                }
+                return $"{(Filter != null ? $"[{(attributePath ? "?" : string.Empty)}({Filter.ToString(propertyNameTransformer, attributePath)})]" : string.Empty)}{(index.HasValue ? (attributePath ? (Filter == null ? $"/{index}" : string.Empty) : $"[{index}]") : string.Empty)}";
+            }
 
             public override int GetHashCode()
             {
@@ -791,7 +810,9 @@ namespace EncompassRest
 
             public virtual bool Evaluate(object value, ModelPathSettings settings, Func<string, string> propertyNameTransformer) => _terms.All(term => term.Evaluate(value, settings, propertyNameTransformer));
 
-            public override string ToString() => string.Join(" && ", _terms);
+            public sealed override string ToString() => ToString(null, false);
+
+            public virtual string ToString(Func<string, string> propertyNameTransformer, bool attributePath) => string.Join(" && ", _terms.Select(term => term.ToString(propertyNameTransformer, attributePath)));
 
             public IEnumerator<PropertyFilter> GetEnumerator()
             {
@@ -850,10 +871,11 @@ namespace EncompassRest
                 return string.Equals(Value, retrievedValue?.ToString() ?? "false", StringComparison.OrdinalIgnoreCase);
             }
 
-            public override string ToString()
+            public override string ToString(Func<string, string> propertyNameTransformer, bool attributePath)
             {
-                var propertyNameEscaped = EscapeWithTick(PropertyName, out var escapeNeeded);
-                return $"{(escapeNeeded ? $"'{propertyNameEscaped}'" : propertyNameEscaped)} == '{EscapeWithTick(Value, out _)}'";
+                var propertyName = propertyNameTransformer?.Invoke(PropertyName) ?? PropertyName;
+                var propertyNameEscaped = EscapeWithTick(propertyName, out var escapeNeeded);
+                return $"{(attributePath ? $"@/{propertyName}" : (escapeNeeded ? $"'{propertyNameEscaped}'" : propertyNameEscaped))} == {(attributePath ? "\"" : "'")}{EscapeWithTick(Value, out _)}{(attributePath ? "\"" : "'")}";
             }
         }
     }

@@ -18,13 +18,13 @@ namespace EncompassRest.Webhook
         [JsonRequired]
         public IList<StringEnumValue<WebhookResourceEvent>> Events { get => _events ?? (_events = new List<StringEnumValue<WebhookResourceEvent>>()); set => _events = value != null ? new List<StringEnumValue<WebhookResourceEvent>>(value) : null; }
         private WebhookFilters _filters;
-        public WebhookFilters Filters { get => _filters ?? (_filters = new WebhookFilters()); set => _filters = value; }
+        public WebhookFilters Filters { get => GetField(ref _filters); set => SetField(ref _filters, value); }
         private NeverSerializeValue<string> _objectUrn;
-        public string ObjectUrn { get => _objectUrn; set => _objectUrn = value; }
+        public string ObjectUrn { get => _objectUrn; set => SetField(ref _objectUrn, value); }
         private NeverSerializeValue<string> _clientId;
-        public string ClientId { get => _clientId; set => _clientId = value; }
+        public string ClientId { get => _clientId; set => SetField(ref _clientId, value); }
         private NeverSerializeValue<string> _instanceId;
-        public string InstanceId { get => _instanceId; set => _instanceId = value; }
+        public string InstanceId { get => _instanceId; set => SetField(ref _instanceId, value); }
         [IdPropertyName(nameof(SubscriptionId))]
         string IIdentifiable.Id { get => SubscriptionId; set => SubscriptionId = value; }
 

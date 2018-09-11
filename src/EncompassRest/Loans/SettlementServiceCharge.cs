@@ -8,34 +8,23 @@ namespace EncompassRest.Loans
     /// <summary>
     /// SettlementServiceCharge
     /// </summary>
+    [Entity(SerializeWholeListWhenDirty = true)]
     public sealed partial class SettlementServiceCharge : ExtensibleObject, IIdentifiable
     {
         private DirtyValue<string> _amount;
         /// <summary>
         /// SettlementServiceCharge Amount
         /// </summary>
-        public string Amount { get => _amount; set => _amount = value; }
+        public string Amount { get => _amount; set => SetField(ref _amount, value); }
         private DirtyValue<string> _description;
         /// <summary>
         /// SettlementServiceCharge Description
         /// </summary>
-        public string Description { get => _description; set => _description = value; }
+        public string Description { get => _description; set => SetField(ref _description, value); }
         private DirtyValue<string> _id;
         /// <summary>
         /// SettlementServiceCharge Id
         /// </summary>
-        public string Id { get => _id; set => _id = value; }
-        internal override bool DirtyInternal
-        {
-            get => _amount.Dirty
-                || _description.Dirty
-                || _id.Dirty;
-            set
-            {
-                _amount.Dirty = value;
-                _description.Dirty = value;
-                _id.Dirty = value;
-            }
-        }
+        public string Id { get => _id; set => SetField(ref _id, value); }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using EncompassRest.Loans.Enums;
 using EncompassRest.Schema;
 using EncompassRest.Utilities;
 using EnumsNET;
@@ -19,10 +20,33 @@ namespace EncompassRest.Loans
         private bool _propertyAttributeIsSet;
         private LoanFieldPropertyAttribute _propertyAttribute;
         private ReadOnlyCollection<FieldOption> _options;
+        private bool _declaredTypeIsSet;
+        private Type _declaredType;
+        private bool _enumTypeIsSet;
+        private Type _enumType;
 
         public string FieldId { get; }
 
+        /// <summary>
+        /// For use with loan field locking.
+        /// </summary>
         public string ModelPath { get; }
+
+        /// <summary>
+        /// For use with Webhook filter attributes.
+        /// </summary>
+        public string AttributePath
+        {
+            get
+            {
+                if (MultiInstance && !IsInstance)
+                {
+                    throw new InvalidOperationException("field descriptor must be an instance descriptor for multi-instance descriptors");
+                }
+
+                return _modelPath.ToString(name => JsonHelper.CamelCaseNamingStrategy.GetPropertyName(name, false), true).Replace("/currentApplication", "/applications/*");
+            }
+        }
 
         public bool MultiInstance { get; }
 
@@ -39,7 +63,7 @@ namespace EncompassRest.Loans
                 var valueType = ParentDescriptor?.ValueType ?? _valueType;
                 if (!valueType.HasValue)
                 {
-                    var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
+                    var declaredType = DeclaredType;
                     if (declaredType == typeof(string))
                     {
                         valueType = LoanFieldValueType.String;
@@ -96,6 +120,10 @@ namespace EncompassRest.Loans
                 if (format.HasValue)
                 {
                     return format;
+                }
+                if (EnumType == TypeData<State>.Type)
+                {
+                    return LoanFieldFormat.STATE;
                 }
                 switch (ValueType)
                 {
@@ -166,7 +194,7 @@ namespace EncompassRest.Loans
                 if (options == null)
                 {
                     var dictionary = new Dictionary<string, string>();
-                    var declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
+                    var declaredType = DeclaredType;
                     if (declaredType != null)
                     {
                         if (declaredType == TypeData<bool?>.Type)
@@ -176,20 +204,15 @@ namespace EncompassRest.Loans
                         }
                         else
                         {
-                            var typeInfo = declaredType.GetTypeInfo();
-                            if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                            var enumType = EnumType;
+                            if (enumType != null)
                             {
-                                var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
-                                if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
+                                foreach (var member in NonGenericEnums.GetMembers(enumType))
                                 {
-                                    var enumType = typeInfo.GenericTypeArguments[0];
-                                    foreach (var member in NonGenericEnums.GetMembers(enumType))
+                                    var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
+                                    if (!dictionary.ContainsKey(value))
                                     {
-                                        var value = member.AsString(EnumFormat.EnumMemberValue, EnumFormat.Name);
-                                        if (!dictionary.ContainsKey(value))
-                                        {
-                                            dictionary.Add(value, member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name));
-                                        }
+                                        dictionary.Add(value, member.AsString(EnumFormat.Description, EnumFormat.EnumMemberValue, EnumFormat.Name));
                                     }
                                 }
                             }
@@ -231,6 +254,48 @@ namespace EncompassRest.Loans
                     _propertyAttributeIsSet = true;
                 }
                 return _propertyAttribute;
+            }
+        }
+
+        private Type DeclaredType
+        {
+            get
+            {
+                var declaredType = _declaredType;
+                if (!_declaredTypeIsSet)
+                {
+                    declaredType = _modelPath.GetDeclaredType(TypeData<Loan>.Type);
+                    _declaredType = declaredType;
+                    _declaredTypeIsSet = true;
+                }
+                return declaredType;
+            }
+        }
+
+        private Type EnumType
+        {
+            get
+            {
+                var enumType = _enumType;
+                if (!_enumTypeIsSet)
+                {
+                    var declaredType = DeclaredType;
+                    if (declaredType != null)
+                    {
+                        var typeInfo = declaredType.GetTypeInfo();
+                        if (typeInfo.IsGenericType && !typeInfo.IsGenericTypeDefinition)
+                        {
+                            var genericTypeDefinition = typeInfo.GetGenericTypeDefinition();
+                            if (genericTypeDefinition == TypeData.OpenStringEnumValueType)
+                            {
+                                enumType = typeInfo.GenericTypeArguments[0];
+                                _enumType = enumType;
+                            }
+                        }
+                    }
+                    _enumTypeIsSet = true;
+                }
+                return enumType;
             }
         }
 

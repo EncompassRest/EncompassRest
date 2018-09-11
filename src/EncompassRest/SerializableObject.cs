@@ -10,6 +10,10 @@ namespace EncompassRest
     [JsonConverter(typeof(PublicallySerializableConverter))]
     public abstract class SerializableObject
     {
+        internal SerializableObject()
+        {
+        }
+
         /// <summary>
         /// Serializes object to it's json representation without indenting.
         /// </summary>

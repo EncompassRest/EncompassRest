@@ -188,6 +188,14 @@ namespace EncompassRest.Loans
         ElliUCDDetail = 182,
         ExtraPayment = 183,
         DocumentOrderLog = 184,
-        DocumentAudit = 185
+        DocumentAudit = 185,
+        DocumentTrackingLog = 186,
+        LoanPurchaseTransaction = 187,
+        FannieServiceEcLog = 188,
+        FannieServiceDuLog = 189,
+        FreddieServiceLpaLog = 190,
+        FreddieServiceLqaLog = 191,
+        NonBorrowingOwner = 192,
+        AlertChangeCircumstance = 193
     }
 }

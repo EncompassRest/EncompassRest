@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EncompassRest.Loans.Attachments;
 using EncompassRest.Loans.Documents;
@@ -7,12 +8,13 @@ using Newtonsoft.Json;
 
 namespace EncompassRest.Loans
 {
-    public partial class Loan
+    partial class Loan
     {
         private LoanFields _fields;
+        internal List<TransientLoanUpdate> TransientLoanUpdates;
 
         [JsonIgnore]
-        public EncompassRestClient Client { get; private set; }
+        public EncompassRestClient Client { get; internal set; }
 
         [JsonIgnore]
         public LoanDocuments Documents => LoanApis.Documents;
@@ -31,17 +33,6 @@ namespace EncompassRest.Loans
 
         [IdPropertyName(nameof(EncompassId))]
         string IIdentifiable.Id { get => EncompassId ?? Id; set { EncompassId = value; Id = value; } }
-
-        private DirtyValue<int?> _currentApplicationIndex;
-        public int? CurrentApplicationIndex
-        {
-            get => _currentApplicationIndex;
-            set
-            {
-                _currentApplicationIndex = value;
-                _currentApplication = null;
-            }
-        }
 
         private Application _currentApplication;
         [JsonIgnore]
@@ -122,14 +113,27 @@ namespace EncompassRest.Loans
             {
                 Client = client;
                 EncompassId = loanId;
+                _encompassId.Dirty = false;
                 LoanApis = new LoanObjectBoundApis(client, this);
             }
         }
 
-        internal override bool CustomDirty
+        internal override void OnPropertyChanged(string propertyName)
         {
-            get => _currentApplicationIndex.Dirty;
-            set => _currentApplicationIndex.Dirty = value;
+            base.OnPropertyChanged(propertyName);
+            switch (propertyName)
+            {
+                case nameof(CurrentApplicationIndex):
+                    _currentApplication = null;
+                    break;
+            }
+        }
+
+        internal sealed class TransientLoanUpdate
+        {
+            public string Body { get; set; }
+
+            public string QueryString { get; set; }
         }
     }
 }

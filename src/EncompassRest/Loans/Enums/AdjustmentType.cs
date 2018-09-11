@@ -9,21 +9,12 @@ namespace EncompassRest.Loans.Enums
     public enum AdjustmentType
     {
         /// <summary>
-        /// Gift
+        /// Adjustment
         /// </summary>
-        Gift = 0,
+        Adjustment = 0,
         /// <summary>
-        /// Grant
+        /// LockExtensionAdjustment
         /// </summary>
-        Grant = 1,
-        /// <summary>
-        /// Rebate Credit
-        /// </summary>
-        [Description("Rebate Credit")]
-        RebateCredit = 2,
-        /// <summary>
-        /// Other
-        /// </summary>
-        Other = 3
+        LockExtensionAdjustment = 1
     }
 }
