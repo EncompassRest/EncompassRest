@@ -311,7 +311,7 @@ namespace EncompassRest.Utilities
                     contract.ExtensionDataSetter = (o, k, v) => ((ExtensibleObject)o).ExtensionData[k] = v;
                     if (TypeData<DirtyExtensibleObject>.TypeInfo.IsAssignableFrom(objectTypeInfo))
                     {
-                        var idPropertyName = ExtensibleObject.GetIdPropertyName(objectTypeInfo);
+                        var idPropertyName = DirtyExtensibleObject.GetIdPropertyName(objectTypeInfo);
                         idPropertyName = CamelCaseNamingStrategy.GetPropertyName(idPropertyName, false);
                         var property = contract.Properties.GetClosestMatchProperty(idPropertyName);
                         if (property != null)

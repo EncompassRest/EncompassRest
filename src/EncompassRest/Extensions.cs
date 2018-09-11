@@ -16,7 +16,7 @@ namespace EncompassRest
         }
 
         public static T GetById<T>(this IList<T> list, string id)
-            where T : ExtensibleObject
+            where T : DirtyExtensibleObject
         {
             Preconditions.NotNull(list, nameof(list));
             Preconditions.NotNullOrEmpty(id, nameof(id));

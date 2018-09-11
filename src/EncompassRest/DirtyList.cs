@@ -17,8 +17,8 @@ namespace EncompassRest
     [JsonConverter(typeof(DirtyListConverter<>))]
     internal sealed class DirtyList<T> : IList<T>, IList, IDirty
     {
-        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<ExtensibleObject>.Type);
-        private static string s_idPropertyName = s_tIsIIdentifiable ? ExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
+        private static readonly bool s_tIsIIdentifiable = TypeData<T>.TypeInfo.IsSubclassOf(TypeData<DirtyExtensibleObject>.Type);
+        private static string s_idPropertyName = s_tIsIIdentifiable ? DirtyExtensibleObject.GetIdPropertyName(TypeData<T>.TypeInfo) : string.Empty;
 
         internal readonly List<DirtyValue<T>> _list = new List<DirtyValue<T>>();
         private readonly Dictionary<string, T> _dictionary;
@@ -30,7 +30,7 @@ namespace EncompassRest
             {
                 if (s_tIsIIdentifiable)
                 {
-                    var existingObj = (ExtensibleObject)(object)_list[index]._value;
+                    var existingObj = (DirtyExtensibleObject)(object)_list[index]._value;
                     if (existingObj != null)
                     {
                         var existingId = ((IIdentifiable)existingObj).Id;
@@ -40,7 +40,7 @@ namespace EncompassRest
                         }
                         existingObj.PropertyChanged -= PropertyChangedHandler;
                     }
-                    var newObj = (ExtensibleObject)(object)value;
+                    var newObj = (DirtyExtensibleObject)(object)value;
                     if (newObj != null)
                     {
                         var newId = ((IIdentifiable)newObj).Id;
@@ -164,7 +164,7 @@ namespace EncompassRest
             _list.Insert(index, item);
             if (s_tIsIIdentifiable)
             {
-                var obj = (ExtensibleObject)(object)item;
+                var obj = (DirtyExtensibleObject)(object)item;
                 if (obj != null)
                 {
                     var id = ((IIdentifiable)obj)?.Id;
@@ -194,7 +194,7 @@ namespace EncompassRest
             var item = _list[index];
             if (s_tIsIIdentifiable)
             {
-                var obj = (ExtensibleObject)(object)item._value;
+                var obj = (DirtyExtensibleObject)(object)item._value;
                 if (obj != null)
                 {
                     var id = ((IIdentifiable)obj)?.Id;
@@ -212,7 +212,7 @@ namespace EncompassRest
         {
             if (e.PropertyName == s_idPropertyName)
             {
-                var obj = (ExtensibleObject)sender;
+                var obj = (DirtyExtensibleObject)sender;
                 if (!string.IsNullOrEmpty(obj.LastId))
                 {
                     _dictionary.Remove(obj.LastId);
