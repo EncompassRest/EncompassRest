@@ -13,13 +13,16 @@ namespace EncompassRest
 {
     public sealed class CommonCache
     {
-        private ConcurrentDictionary<string, FieldDescriptor> _customFields;
+        private ConcurrentDictionary<string, FieldDescriptor> _customFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase);
 
-        private ReadOnlyDictionary<string, FieldDescriptor> _readOnlyCustomFields;
-
-        public ReadOnlyDictionary<string, FieldDescriptor> CustomFields => _readOnlyCustomFields;
+        public ReadOnlyDictionary<string, FieldDescriptor> CustomFields { get; }
 
         public DateTime? CustomFieldsLastRefreshedUtc { get; private set; }
+
+        public CommonCache()
+        {
+            CustomFields = new ReadOnlyDictionary<string, FieldDescriptor>(_customFields);
+        }
 
         public async Task RefreshCustomFieldsAsync(EncompassRestClient client, CancellationToken cancellationToken = default)
         {
@@ -35,12 +38,6 @@ namespace EncompassRest
             }
 
             var customFields = _customFields;
-            if (customFields == null)
-            {
-                customFields = Interlocked.CompareExchange(ref _customFields, (customFields = new ConcurrentDictionary<string, FieldDescriptor>(StringComparer.OrdinalIgnoreCase)), null) ?? customFields;
-                Interlocked.CompareExchange(ref _readOnlyCustomFields, new ReadOnlyDictionary<string, FieldDescriptor>(customFields), null);
-            }
-
             foreach (var pair in customFields)
             {
                 if (retrievedCustomFields.TryGetValue(pair.Key, out var descriptor))
