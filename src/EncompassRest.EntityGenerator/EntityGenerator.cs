@@ -194,7 +194,7 @@ namespace EncompassRest
             { "Usda", new Dictionary<string, PropertySchema> { { "RefinanceType", new PropertySchema { Type = PropertySchemaType.String } } } },
             { "Loan", new Dictionary<string, PropertySchema> { { "AlertChangeCircumstances", new PropertySchema { Type = PropertySchemaType.List, ElementType = "AlertChangeCircumstance" } }, { "AlertChangeCircumstanceApplyLECD", new PropertySchema { Type = PropertySchemaType.String } } } },
             { "DisclosureTracking2015Log", new Dictionary<string, PropertySchema> { { "CureAppliedToLenderCredit", new PropertySchema { Type = PropertySchemaType.String } }, { "CureAppliedToPrincipalReduction", new PropertySchema { Type = PropertySchemaType.String } } } },
-            { "LoanAssociate", new Dictionary<string, PropertySchema> { { "EnableWriteAccess", new PropertySchema { Type = PropertySchemaType.String, AllowedValues = new List<FieldOption> { new FieldOption("Yes", "Y"), new FieldOption("No", "N") } } } } }
+            { "LoanAssociate", new Dictionary<string, PropertySchema> { { "EnableWriteAccess", new PropertySchema { Type = PropertySchemaType.String, AllowedValues = new List<FieldOption> { new FieldOption("Y", "Yes"), new FieldOption("N", "No") } } } } }
         };
 
         private static readonly Dictionary<string, HashSet<string>> s_enumOptionsToIgnore = new Dictionary<string, HashSet<string>>

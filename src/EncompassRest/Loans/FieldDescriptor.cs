@@ -235,7 +235,7 @@ namespace EncompassRest.Loans
                         }
                     }
 
-                    options = new ReadOnlyCollection<FieldOption>(dictionary.Select(p => new FieldOption(p.Value, p.Key)).ToList());
+                    options = new ReadOnlyCollection<FieldOption>(dictionary.Select(p => new FieldOption(p.Key, p.Value)).ToList());
                     _options = options;
                 }
                 return options;

@@ -29,10 +29,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters, tokenInitializer);
             var accessToken = await tokenInitializer(new TokenCreator(client, cancellationToken)).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            if (parameters.InitializeCustomFieldsCache)
-            {
-                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
-            }
+            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -46,10 +43,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromUserCredentialsAsync(instanceId, userId, password, nameof(CreateFromUserCredentialsAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            if (parameters.InitializeCustomFieldsCache)
-            {
-                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
-            }
+            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -66,10 +60,7 @@ namespace EncompassRest
             var client = new EncompassRestClient(parameters);
             var accessToken = await client.AccessToken.GetTokenFromAuthorizationCodeAsync(redirectUri, authorizationCode, nameof(CreateFromAuthorizationCodeAsync), cancellationToken).ConfigureAwait(false);
             client.AccessToken.Token = accessToken;
-            if (parameters.InitializeCustomFieldsCache)
-            {
-                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
-            }
+            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -84,10 +75,7 @@ namespace EncompassRest
 
             var client = new EncompassRestClient(parameters);
             client.AccessToken.Token = accessToken;
-            if (parameters.InitializeCustomFieldsCache)
-            {
-                await client.Loans.FieldDescriptors.RefreshCustomFieldsAsync(cancellationToken).ConfigureAwait(false);
-            }
+            await client.CommonCache.TryInitializeAsync(client, parameters, cancellationToken).ConfigureAwait(false);
             return client;
         }
 
@@ -293,6 +281,8 @@ namespace EncompassRest
             }
         }
 
+        public CommonCache CommonCache { get; }
+
         internal HttpClient HttpClient
         {
             get
@@ -330,6 +320,7 @@ namespace EncompassRest
             AccessToken = new AccessToken(parameters.ApiClientId, parameters.ApiClientSecret, this);
             _tokenInitializer = tokenInitializer;
             ApiResponse = parameters.ApiResponse;
+            CommonCache = parameters.CommonCache ?? (parameters.CommonCache = new CommonCache());
         }
 
         public void Dispose()

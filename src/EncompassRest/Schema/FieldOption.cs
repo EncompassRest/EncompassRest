@@ -15,13 +15,13 @@ namespace EncompassRest.Schema
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string ReportingDatabaseValue { get; internal set; }
 
-        public FieldOption(string text)
-            : this(text, text)
+        public FieldOption(string value)
+            : this(value, value)
         {
         }
 
         [JsonConstructor]
-        public FieldOption(string text, string value)
+        public FieldOption(string value, string text)
         {
             Preconditions.NotNull(text, nameof(text));
             Preconditions.NotNull(value, nameof(value));
